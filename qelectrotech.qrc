@@ -1,0 +1,38 @@
+<!DOCTYPE RCC><RCC version="1.0">
+<qresource>
+    <file>ico/qet.png</file>
+	<file>ico/qelectrotech.png</file>
+	<file>ico/button_cancel.png</file>
+	<file>ico/button_ok.png</file>
+	<file>ico/configure.png</file>
+	<file>ico/copy.png</file>
+	<file>ico/cut.png</file>
+	<file>ico/delete.png</file>
+	<file>ico/editdelete.png</file>
+	<file>ico/entrer_fs.png</file>
+	<file>ico/exit.png</file>
+	<file>ico/export.png</file>
+	<file>ico/fileclose.png</file>
+	<file>ico/import.png</file>
+	<file>ico/masquer.png</file>
+	<file>ico/move.png</file>
+	<file>ico/new.png</file>
+	<file>ico/open.png</file>
+	<file>ico/paste.png</file>
+	<file>ico/pivoter.png</file>
+	<file>ico/print.png</file>
+	<file>ico/qt.png</file>
+	<file>ico/redo.png</file>
+	<file>ico/restaurer.png</file>
+	<file>ico/saveas.png</file>
+	<file>ico/save.png</file>
+	<file>ico/select.png</file>
+	<file>ico/sortir_fs.png</file>
+	<file>ico/toolbars.png</file>
+	<file>ico/undo.png</file>
+	<file>ico/viewmagfit.png</file>
+	<file>ico/viewmag-.png</file>
+	<file>ico/viewmag.png</file>
+	<file>ico/viewmag+.png</file>
+</qresource>
+</RCC>

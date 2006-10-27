@@ -1,0 +1,6 @@
+<definition	type="element" nom="entree" width="20" height="40" hotspot_x="10" hotspot_y="15" orientation="dnny">
+<!-- note : 7.5 a la place de 8	 -->
+	<polygone x1="-8" y1="-13" x2="8" y2="-13" x3="0" y3="0" antialias="true" style="normal" />
+	<ligne x1="0"  y1="0" x2="0"  y2="13" antialias="false" style="normal" />
+	<borne orientation="s" x="0" y="15" />
+</definition>

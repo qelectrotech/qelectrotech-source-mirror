@@ -1,0 +1,8 @@
+<!-- orientation : 4 lettres = nord/sud/est/ouest avec d = default, y = yes et n = no -->
+<definition	type="element" nom="contacteur" width="15" height="70" hotspot_x="10" hotspot_y="5" orientation="dnny">
+	<ligne x1="-5" y1="19" x2="0" y2="40" antialias="true"  style="normal" />
+	<ligne x1="0"  y1="0"  x2="0" y2="20" antialias="false" style="normal" />
+	<ligne x1="0"  y1="40" x2="0" y2="60" antialias="false" style="normal" />
+	<borne orientation="n" x="0" y="0"  />
+	<borne orientation="s" x="0" y="60" />
+</definition>

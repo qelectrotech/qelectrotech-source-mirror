@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="256" height="256" stroke="black" stroke-width="10">
+	<defs>
+		<mask id="Masque">
+			<circle cx="128" cy="128" r="100" fill="white" stroke-width="1" />
+		</mask>
+	</defs>
+	<path d="M128,0 128,256" fill="none" />
+	<circle cx="128" cy="128" r="100" fill="white" />
+	<path d="M0,0 256,256" fill="none" mask="url(#Masque)" />
+	<path d="M256,0 0,256" fill="none" mask="url(#Masque)" />
+</svg>
