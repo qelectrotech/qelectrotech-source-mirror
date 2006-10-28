@@ -732,3 +732,25 @@ void QETApp::slot_updateMenuFenetres() {
 		windowMapper.setMapping(action, sv);
 	}
 }
+
+/**
+	@return Le chemin du dossier dans lequel QET doit chercher les definitions XML des elements communs
+*/
+QString QETApp::commonElementsDir() {
+	return(QDir::current().path() + "/elements/");
+}
+
+/**
+	@return Le chemin du dossier dans lequel QET doit chercher les definitions XML des elements propres a l'utilisateur
+*/
+QString QETApp::customElementsDir() {
+	return(QETApp::configDir() + "elements/");
+}
+
+QString QETApp::configDir() {
+#ifdef Q_OS_WIN32
+	return(QDir::homePath() + "\Application Data\qet\\");
+#else
+	return(QDir::homePath() + "/.qet/");
+#endif
+}

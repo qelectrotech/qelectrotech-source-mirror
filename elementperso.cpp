@@ -7,8 +7,6 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 	elmt_etat = -1;
 	
 	// le fichier doit exister
-	QString chemin_elements = "elements/";
-	nomfichier = chemin_elements + nom_fichier;
 	if (!QFileInfo(nomfichier).exists()) {
 		if (etat != NULL) *etat = 1;
 		elmt_etat = 1;

@@ -135,11 +135,17 @@ QDomDocument Schema::toXml(bool schema) {
 	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Borne *, int> table_adr_id;
 	QDomElement elements = document.createElement("elements");
+	QDir dossier_elmts_persos = QDir(QETApp::customElementsDir());
 	foreach(Element *elmt, liste_elements) {
 		QDomElement element = document.createElement("element");
 		
-		// type, position, selection et orientation
-		element.setAttribute("type", QFileInfo(elmt -> typeId()).fileName());
+		// type
+		QString chemin_elmt = elmt -> typeId();
+		QString type_elmt = QString("");
+		if (QFileInfo(chemin_elmt).dir() == dossier_elmts_persos) type_elmt = "perso://";
+		element.setAttribute("type", type_elmt + QFileInfo(chemin_elmt).fileName());
+		
+		// position, selection et orientation
 		element.setAttribute("x", elmt -> pos().x());
 		element.setAttribute("y", elmt -> pos().y());
 		if (elmt -> isSelected()) element.setAttribute("selected", "selected");
@@ -291,13 +297,11 @@ bool Schema::fromXml(QDomDocument &document, QPointF position) {
 Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_adr) {
 	// cree un element dont le type correspond à l'id type
 	QString type = e.attribute("type");
+	QString chemin_fichier;
+	if (type.startsWith("perso://")) chemin_fichier = QETApp::commonElementsDir() + type.right(type.size()-8);
+	else chemin_fichier = QETApp::commonElementsDir() + type;
 	int etat;
-	Element *nvel_elmt = new ElementPerso(type, 0, 0, &etat);
-	/*switch(e.attribute("type").toInt()) {
-		case 0: nvel_elmt = new Contacteur(); break;
-		case 1: nvel_elmt = new DEL();        break;
-		case 2: nvel_elmt = new Entree();     break;
-	}*/
+	Element *nvel_elmt = new ElementPerso(chemin_fichier, 0, 0, &etat);
 	if (etat != 0) return(false);
 	bool retour = nvel_elmt -> fromXml(e, table_id_adr);
 	if (!retour) {

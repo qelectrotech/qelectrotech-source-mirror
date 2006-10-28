@@ -4,6 +4,7 @@
 	#define GRILLE_Y 10
 	#include <QtGui>
 	#include <QtXml>
+	#include <qetapp.h>
 	class Element;
 	class Borne;
 	class Schema : public QGraphicsScene {

@@ -4,51 +4,33 @@
 /**
 	Constructeur
 	@param parent Le QWidget parent du panel d'appareils
-	@todo : definir une classe heritant de QListWidgetItem et automatiser tout ca
 */
-PanelAppareils::PanelAppareils(QWidget *parent) :  QListWidget(parent) {
+PanelAppareils::PanelAppareils(QWidget *parent) :  QTreeWidget(parent) {
 	
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
+	setColumnCount(1);
+	setHeaderLabel("Elements");
 	
 	// drag'n drop autorise
 	setDragEnabled(true);
 	setAcceptDrops(false);
 	setDropIndicatorShown(false);
 	
-	// style, mouvement et taille des elements
+	// taille des elements
 	setIconSize(QSize(50, 50));
-	setMovement(QListView::Free);
-	setViewMode(QListView::ListMode);
 	
-	// donnees
-	/*Element *del = new DEL(0,0);
-	Element *contacteur = new Contacteur(0,0);
-	Element *entree = new Entree(0, 0);*/
-	
-	QListWidgetItem *qlwi;
-	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
-	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
+	QTreeWidgetItem *elmts_qet = new QTreeWidgetItem(this, QStringList(tr("Collection QET")));
+	QTreeWidgetItem *elmts_perso = new QTreeWidgetItem(this, QStringList(tr("Collection utilisateur")));
 	
 	// remplissage de la liste
-	QDir dossier_elements("elements/");
-	QStringList filtres;
-	filtres << "*.elmt";
-	QStringList fichiers = dossier_elements.entryList(filtres, QDir::Files, QDir::Name);
-	foreach(QString fichier, fichiers) {
-		int etat;
-		ElementPerso *elmt_perso = new ElementPerso(fichier, 0, 0, &etat);
-		if (etat != 0) {
-			qDebug() << "Le chargement du composant" << fichier << "a echoue avec le code d'erreur" << etat;
-			continue;
-		}
-		qlwi = new QListWidgetItem(QIcon(elmt_perso -> pixmap()), elmt_perso -> nom(), this);
-		qlwi -> setStatusTip(tool_tip + "\253 " + elmt_perso -> nom() + " \273");
-		qlwi -> setToolTip(elmt_perso -> nom());
-		qlwi -> setWhatsThis(whats_this);
-		qlwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
-		qlwi -> setData(42, fichier);
-	}
+	QDir dossier_elmts_qet(QETApp::commonElementsDir());
+	QDir dossier_elmts_perso(QETApp::customElementsDir());
+	QStringList filtres("*.elmt");
+	QStringList fichiers1 = dossier_elmts_qet.entryList(filtres, QDir::Files, QDir::Name);
+	foreach(QString fichier, fichiers1) ajouterFichier(elmts_qet, QETApp::commonElementsDir()+fichier);
+	QStringList fichiers2 = dossier_elmts_perso.entryList(filtres, QDir::Files, QDir::Name);
+	foreach(QString fichier, fichiers2) ajouterFichier(elmts_perso, QETApp::customElementsDir()+fichier);
 	
 	// force du noir sur une alternance de blanc (comme le schema) et de bleu clair
 	QPalette qp = palette();
@@ -77,6 +59,10 @@ void PanelAppareils::dropEvent(QDropEvent */*e*/) {
 	@todo virer les lignes type «if ("tel appareil") construire TelAppareil» => trouver un moyen d'automatiser ca
  */
 void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
+	// recupere le nom du fichier decrivant l'element
+	QString nom_fichier = currentItem() -> data(0, 42).toString();
+	if (nom_fichier == QString()) return;
+	
 	// objet QDrag pour realiser le drag'n drop
 	QDrag *drag = new QDrag(this);
 	
@@ -84,10 +70,8 @@ void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
 	QMimeData *mimeData = new QMimeData();
 	
 	// appareil temporaire pour fournir un apercu
-	Element *appar;
 	int etat;
-	QString nom_fichier = currentItem() -> data(42).toString();
-	appar = new ElementPerso(nom_fichier, 0, 0, &etat);
+	Element *appar = new ElementPerso(nom_fichier, 0, 0, &etat);
 	if (etat != 0) {
 		delete appar;
 		return;
@@ -105,4 +89,27 @@ void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
 	
 	// suppression de l'appareil temporaire
 	delete appar;
+}
+
+/**
+	Methode privee permettant d'ajouter un element au panel d'appareils
+	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
+	@param fichier Chemin absolu du fichier XML decrivant l'element a inserer
+*/
+void PanelAppareils::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichier) {
+	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
+	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
+	int etat;
+	ElementPerso *elmt_perso = new ElementPerso(fichier, 0, 0, &etat);
+	if (etat != 0) {
+		qDebug() << "Le chargement du composant" << fichier << "a echoue avec le code d'erreur" << etat;
+		return;
+	}
+	QTreeWidgetItem *qtwi = new QTreeWidgetItem(qtwi_parent, QStringList(elmt_perso -> nom()));
+	qtwi -> setStatusTip(0, tool_tip + "\253 " + elmt_perso -> nom() + " \273");
+	qtwi -> setToolTip(0, elmt_perso -> nom());
+	qtwi -> setWhatsThis(0, whats_this);
+	qtwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
+	qtwi -> setIcon(0, QIcon(elmt_perso -> pixmap()));
+	qtwi -> setData(0, 42, fichier);
 }

@@ -15,7 +15,9 @@
 		QETApp(QWidget *parent=0);
 		void closeEvent(QCloseEvent * event );
 		void addSchemaVue(SchemaVue *);
-		
+		static QString commonElementsDir();
+		static QString customElementsDir();
+		static QString QETApp::configDir();
 		public slots:
 		void systray(QSystemTrayIcon::ActivationReason raison);
 		void systrayReduire();
