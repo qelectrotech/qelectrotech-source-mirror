@@ -7,11 +7,11 @@
 		ElementPerso(QString &, QGraphicsItem * = 0, Schema * = 0, int * = NULL);
 		virtual int nbBornes() const;
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
-		QString typeId() { return(nomfichier); }
-		QString fichier() { return(nomfichier); }
-		bool isNull() { return(elmt_etat != 0); }
-		int etat() { return(elmt_etat); }
-		QString nom() { return(priv_nom); }
+		inline QString typeId() { return(nomfichier); }
+		inline QString fichier() { return(nomfichier); }
+		inline bool isNull() { return(elmt_etat != 0); }
+		inline int etat() { return(elmt_etat); }
+		inline QString nom() { return(priv_nom); }
 		
 		private:
 		int elmt_etat; // contient le code d'erreur si l'instanciation a echoue ou 0 si l'instanciation s'est bien passe

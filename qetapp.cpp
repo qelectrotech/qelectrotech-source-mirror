@@ -140,15 +140,15 @@ void QETApp::systrayRestaurer() {
 /**
 	Permet de quitter l'application lors de la fermeture de la fenetre principale
 */
-void QETApp::closeEvent(QCloseEvent *) {
-	quitter();
+void QETApp::closeEvent(QCloseEvent *qce) {
+	quitter(qce);
 }
 
 /**
 	Gere la sortie de l'application
 	@todo gerer les eventuelles fermetures de fichiers
 */
-void QETApp::quitter() {
+void QETApp::quitter(QCloseEvent *e) {
 	if (!schemaEnCours()) qApp -> quit();
 	else {
 		bool peut_quitter = true;
@@ -157,6 +157,7 @@ void QETApp::quitter() {
 				workspace.setActiveWindow(fenetre);
 				if (!fermer()) {
 					peut_quitter = false;
+					if (e != NULL) e -> ignore();
 					break;
 				}
 			}
@@ -279,7 +280,7 @@ void QETApp::actions() {
 	entrer_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	sortir_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	
-	// 
+	// affichage dans la barre de statut
 	f_mosaique        -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que"));
 	f_cascade         -> setStatusTip(tr("Dispose les fen\352tres en cascade"));
 	f_reorganise      -> setStatusTip(tr("Aligne les fen\352tres réduites"));

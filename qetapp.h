@@ -20,7 +20,7 @@
 		void systray(QSystemTrayIcon::ActivationReason raison);
 		void systrayReduire();
 		void systrayRestaurer();
-		void quitter();
+		void quitter(QCloseEvent * = NULL);
 		void toggleFullScreen();
 		void toggleAntialiasing();
 		void aPropos();
