@@ -350,7 +350,7 @@ void SchemaVue::closeEvent(QCloseEvent *event) {
 	QMessageBox::StandardButton reponse = QMessageBox::question(
 		this,
 		tr("Enregistrer le sch\351ma en cours ?"),
-		tr("Voulez-vous enregistrer le sch\351ma en cours ?"),
+		tr("Voulez-vous enregistrer le sch\351ma ") + windowTitle() + tr(" ?"),
 		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
 		QMessageBox::Cancel
 	);
