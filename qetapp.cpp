@@ -744,12 +744,16 @@ QString QETApp::commonElementsDir() {
 	@return Le chemin du dossier dans lequel QET doit chercher les definitions XML des elements propres a l'utilisateur
 */
 QString QETApp::customElementsDir() {
+#ifdef Q_OS_WIN32
+	return(QETApp::configDir() + "elements\\");
+#else
 	return(QETApp::configDir() + "elements/");
+#endif
 }
 
 QString QETApp::configDir() {
 #ifdef Q_OS_WIN32
-	return(QDir::homePath() + "\Application Data\qet\\");
+	return(QDir::homePath() + "\\Application Data\\qet\\");
 #else
 	return(QDir::homePath() + "/.qet/");
 #endif
