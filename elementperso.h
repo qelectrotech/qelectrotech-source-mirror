@@ -24,7 +24,8 @@
 		bool parsePolygone(QDomElement &, QPainter &);
 		bool parseBorne(QDomElement &, Schema *);
 		void setQPainterAntiAliasing(QPainter *, bool);
-		int attributeIsAnInteger(QDomElement &, QString, int * = NULL);
+		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
+		bool attributeIsAReal(QDomElement &, QString, double * = NULL);
 		int nb_bornes;
 	};
 #endif

@@ -118,33 +118,33 @@ bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Schema *s) {
 
 bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
 	// verifie la presence et la validite des attributs obligatoires
-	int x1, y1, x2, y2;
-	if (!attributeIsAnInteger(e, QString("x1"), &x1)) return(false);
-	if (!attributeIsAnInteger(e, QString("y1"), &y1)) return(false);
-	if (!attributeIsAnInteger(e, QString("x2"), &x2)) return(false);
-	if (!attributeIsAnInteger(e, QString("y2"), &y2)) return(false);
+	double x1, y1, x2, y2;
+	if (!attributeIsAReal(e, QString("x1"), &x1)) return(false);
+	if (!attributeIsAReal(e, QString("y1"), &y1)) return(false);
+	if (!attributeIsAReal(e, QString("x2"), &x2)) return(false);
+	if (!attributeIsAReal(e, QString("y2"), &y2)) return(false);
 	/// @todo : gerer l'antialiasing (mieux que ca !) et le type de trait
 	setQPainterAntiAliasing(&qp, e.attribute("antialias") == "true");
-	qp.drawLine(x1, y1, x2, y2);
+	qp.drawLine(QLineF(x1, y1, x2, y2));
 	return(true);
 }
 
 bool ElementPerso::parseCercle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
-	int cercle_x, cercle_y, cercle_r;
-	if (!attributeIsAnInteger(e, QString("x"),     &cercle_x)) return(false);
-	if (!attributeIsAnInteger(e, QString("y"),     &cercle_y)) return(false);
-	if (!attributeIsAnInteger(e, QString("rayon"), &cercle_r)) return(false);
+	double cercle_x, cercle_y, cercle_r;
+	if (!attributeIsAReal(e, QString("x"),     &cercle_x)) return(false);
+	if (!attributeIsAReal(e, QString("y"),     &cercle_y)) return(false);
+	if (!attributeIsAReal(e, QString("rayon"), &cercle_r)) return(false);
 	/// @todo : gerer l'antialiasing (mieux que ca !) et le type de trait
 	setQPainterAntiAliasing(&qp, e.attribute("antialias") == "true");
-	qp.drawEllipse(cercle_x, cercle_y, cercle_r, cercle_r);
+	qp.drawEllipse(QRectF(cercle_x, cercle_y, cercle_r, cercle_r));
 	return(true);
 }
 
 bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 	int i = 1;
 	while(true) {
-		if (attributeIsAnInteger(e, QString("x%1").arg(i)) && attributeIsAnInteger(e, QString("y%1").arg(i))) ++ i;
+		if (attributeIsAReal(e, QString("x%1").arg(i)) && attributeIsAReal(e, QString("y%1").arg(i))) ++ i;
 		else break;
 	}
 	if (i < 3) return(false);
@@ -162,10 +162,10 @@ bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 
 bool ElementPerso::parseBorne(QDomElement &e, Schema *s) {
 	// verifie la presence et la validite des attributs obligatoires
-	int bornex, borney;
+	double bornex, borney;
 	Borne::Orientation borneo;
-	if (!attributeIsAnInteger(e, QString("x"), &bornex)) return(false);
-	if (!attributeIsAnInteger(e, QString("y"), &borney)) return(false);
+	if (!attributeIsAReal(e, QString("x"), &bornex)) return(false);
+	if (!attributeIsAReal(e, QString("y"), &borney)) return(false);
 	if (!e.hasAttribute("orientation")) return(false);
 	if (e.attribute("orientation") == "n") borneo = Borne::Nord;
 	else if (e.attribute("orientation") == "s") borneo = Borne::Sud;
@@ -183,7 +183,7 @@ void ElementPerso::setQPainterAntiAliasing(QPainter *qp, bool aa) {
 	qp -> setRenderHint(QPainter::SmoothPixmapTransform, aa);
 }
 
-int ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
+bool ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -194,3 +194,13 @@ int ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int
 	return(true);
 }
 
+bool ElementPerso::attributeIsAReal(QDomElement &e, QString nom_attribut, double *reel) {
+	// verifie la presence de l'attribut
+	if (!e.hasAttribute(nom_attribut)) return(false);
+	// verifie la validite de l'attribut
+	bool ok;
+	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
+	if (!ok) return(false);
+	if (reel != NULL) *reel = tmp;
+	return(true);
+}
