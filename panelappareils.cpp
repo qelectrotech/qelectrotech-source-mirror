@@ -1,7 +1,4 @@
 #include "panelappareils.h"
-#include "contacteur.h"
-#include "del.h"
-#include "entree.h"
 #include "elementperso.h"
 
 /**

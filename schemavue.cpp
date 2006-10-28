@@ -1,9 +1,6 @@
 #include "schemavue.h"
 #include "schema.h"
 #include "elementperso.h"
-#include "contacteur.h"
-#include "del.h"
-#include "entree.h"
 
 /**
 	Initialise le SchemaVue

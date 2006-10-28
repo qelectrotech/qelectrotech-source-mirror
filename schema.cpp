@@ -1,6 +1,5 @@
 #include <math.h>
 #include "conducteur.h"
-#include "contacteur.h"
 #include "elementperso.h"
 #include "schema.h"
 
