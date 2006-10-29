@@ -10,7 +10,7 @@ PanelAppareils::PanelAppareils(QWidget *parent) :  QTreeWidget(parent) {
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setColumnCount(1);
-	setHeaderLabel("Elements");
+	header() -> hide();
 	
 	// drag'n drop autorise
 	setDragEnabled(true);
@@ -21,7 +21,9 @@ PanelAppareils::PanelAppareils(QWidget *parent) :  QTreeWidget(parent) {
 	setIconSize(QSize(50, 50));
 	
 	QTreeWidgetItem *elmts_qet = new QTreeWidgetItem(this, QStringList(tr("Collection QET")));
+	elmts_qet -> setExpanded(true);
 	QTreeWidgetItem *elmts_perso = new QTreeWidgetItem(this, QStringList(tr("Collection utilisateur")));
+	elmts_perso -> setExpanded(true);
 	
 	// remplissage de la liste
 	QDir dossier_elmts_qet(QETApp::commonElementsDir());
