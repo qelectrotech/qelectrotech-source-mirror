@@ -17,7 +17,7 @@
 		void addSchemaVue(SchemaVue *);
 		static QString commonElementsDir();
 		static QString customElementsDir();
-		static QString QETApp::configDir();
+		static QString configDir();
 		public slots:
 		void systray(QSystemTrayIcon::ActivationReason raison);
 		void systrayReduire();
