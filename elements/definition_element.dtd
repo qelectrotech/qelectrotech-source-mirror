@@ -1,0 +1,63 @@
+<!ELEMENT definition (borne+|ligne*|cercle*|polygone*)+>
+<!ATTLIST definition
+	type        CDATA #FIXED "element"
+	nom         CDATA #REQUIRED
+	width       CDATA #REQUIRED
+	height      CDATA #REQUIRED
+	hotspot_x   CDATA #REQUIRED
+	hotspot_y   CDATA #REQUIRED
+	orientation CDATA "dnnn"
+>
+
+<!ELEMENT borne    EMPTY>
+<!ATTLIST borne
+	x           CDATA     #REQUIRED
+	y           CDATA     #REQUIRED
+	orientation (n|s|e|o) "n"
+>
+
+<!ELEMENT ligne    EMPTY>
+<!ATTLIST ligne
+	x1         CDATA       #REQUIRED
+	y1         CDATA       #REQUIRED
+	x2         CDATA       #REQUIRED
+	y2         CDATA       #REQUIRED
+	antialias (true|false) "false"
+	style      CDATA       ""
+>
+
+<!ELEMENT cercle   EMPTY>
+<!ATTLIST cercle
+	x         CDATA        #REQUIRED
+	y         CDATA        #REQUIRED
+	rayon     CDATA        #REQUIRED
+	antialias (true|false) "false"
+	style     CDATA        ""
+>
+
+<!ELEMENT polygone EMPTY>
+<!ATTLIST polygone
+	x1          CDATA        #IMPLIED
+	y1          CDATA        #IMPLIED
+	x2          CDATA        #IMPLIED
+	y2          CDATA        #IMPLIED
+	x3          CDATA        #IMPLIED
+	y3          CDATA        #IMPLIED
+	x4          CDATA        #IMPLIED
+	y4          CDATA        #IMPLIED
+	x5          CDATA        #IMPLIED
+	y5          CDATA        #IMPLIED
+	x6          CDATA        #IMPLIED
+	y6          CDATA        #IMPLIED
+	x7          CDATA        #IMPLIED
+	y7          CDATA        #IMPLIED
+	x8          CDATA        #IMPLIED
+	y8          CDATA        #IMPLIED
+	x9          CDATA        #IMPLIED
+	y9          CDATA        #IMPLIED
+	x10         CDATA        #IMPLIED
+	y10         CDATA        #IMPLIED
+	antialias   (true|false) "false"
+	style       CDATA        ""
+>
+
