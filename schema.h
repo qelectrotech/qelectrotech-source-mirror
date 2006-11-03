@@ -26,6 +26,7 @@
 		bool fromXml(QDomDocument &, QPointF = QPointF());
 		void reset();
 		QGraphicsItem *getElementById(uint id);
+		inline void setAffichageGrille(bool ddg) { doit_dessiner_grille = ddg; }
 		
 		private:
 		QGraphicsLineItem *poseur_de_conducteur;

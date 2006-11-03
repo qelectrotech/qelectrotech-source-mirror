@@ -462,7 +462,10 @@ void QETApp::dialogue_exporter() {
 	if (nom_fichier != "") {
 		if (!nom_fichier.endsWith(".png", Qt::CaseInsensitive)) nom_fichier += ".png";
 		QFile fichier(nom_fichier);
-		QImage image = schemaEnCours() -> scene -> toImage();
+		Schema *sc = schemaEnCours() -> scene;
+		sc -> setAffichageGrille(false);
+		QImage image = sc -> toImage();
+		sc -> setAffichageGrille(true);
 		image.save(&fichier, "PNG");
 		fichier.close();
 	}
