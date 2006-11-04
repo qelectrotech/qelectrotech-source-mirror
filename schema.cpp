@@ -298,7 +298,7 @@ Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_ad
 	// cree un element dont le type correspond à l'id type
 	QString type = e.attribute("type");
 	QString chemin_fichier;
-	if (type.startsWith("perso://")) chemin_fichier = QETApp::commonElementsDir() + type.right(type.size()-8);
+	if (type.startsWith("perso://")) chemin_fichier = QETApp::customElementsDir() + type.right(type.size()-8);
 	else chemin_fichier = QETApp::commonElementsDir() + type;
 	int etat;
 	Element *nvel_elmt = new ElementPerso(chemin_fichier, 0, 0, &etat);
