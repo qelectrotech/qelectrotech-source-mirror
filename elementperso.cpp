@@ -123,7 +123,14 @@ bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
 	if (!attributeIsAReal(e, QString("y2"), &y2)) return(false);
 	/// @todo : gerer l'antialiasing (mieux que ca !) et le type de trait
 	setQPainterAntiAliasing(&qp, e.attribute("antialias") == "true");
+	qp.save();
+	if (e.attribute("style") == "dashed") {
+		QPen t = qp.pen();
+		t.setStyle(Qt::DashLine);
+		qp.setPen(t);
+	}
 	qp.drawLine(QLineF(x1, y1, x2, y2));
+	qp.restore();
 	return(true);
 }
 
