@@ -55,7 +55,7 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 	priv_nom = racine.attribute("nom");
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
-	
+	setConnexionsInternesAcceptees(racine.attribute("ci") == "true");
 	// la definition est supposee avoir des enfants
 	if (racine.firstChild().isNull()) {
 		if (etat != NULL) *etat = 6;

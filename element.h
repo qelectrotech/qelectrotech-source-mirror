@@ -29,16 +29,17 @@
 		bool     invertOrientation();
 		void     setPos(const QPointF &);
 		void     setPos(qreal, qreal);
-		bool     connexionsInternesAcceptees() { return(peut_relier_ses_propres_bornes); }
+		inline bool     connexionsInternesAcceptees() { return(peut_relier_ses_propres_bornes); }
+		inline void     setConnexionsInternesAcceptees(bool cia) { peut_relier_ses_propres_bornes = cia; }
 		static bool     valideXml(QDomElement &);
 		virtual bool fromXml(QDomElement &, QHash<int, Borne *>&) = 0;
 		
 		protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-		bool peut_relier_ses_propres_bornes;
 		
 		private:
+		bool peut_relier_ses_propres_bornes;
 		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
 		bool    sens;
