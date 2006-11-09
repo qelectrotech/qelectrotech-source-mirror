@@ -212,7 +212,7 @@ void SchemaVue::setVisualisationMode() {
 */
 void SchemaVue::setSelectionMode() {
 	setDragMode(RubberBandDrag);
-	setCursor(Qt::ArrowCursor);
+	viewport() -> setCursor(Qt::ArrowCursor);
 	emit(modeChanged());
 }
 
