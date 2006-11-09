@@ -151,7 +151,7 @@ void SchemaVue::pivoter() {
 	if (scene -> selectedItems().isEmpty()) return;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *elt = qgraphicsitem_cast<Element *>(item)) {
-			elt -> invertOrientation();
+			elt -> setOrientation(elt -> nextAcceptableOrientation());
 			elt -> update();
 		}
 	}

@@ -8,7 +8,6 @@
 	Constructeur pour un element sans scene ni parent
 */
 Element::Element(QGraphicsItem *parent, Schema *scene) : QGraphicsItem(parent, scene) {
-	sens = true;
 	peut_relier_ses_propres_bornes = false;
 }
 
@@ -110,29 +109,19 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 	return(QGraphicsItem::itemChange(change, value));
 }
 
-/**
-	@return L'orientation en cours de l'element : true pour une orientation verticale, false pour une orientation horizontale
-*/
-bool Element::orientation() const {
-	return(sens);
-}
-
-/**
-	Inverse l'orientation de l'element
-	@return La nouvelle orientation : true pour une orientation verticale, false pour une orientation horizontale
-*/
-bool Element::invertOrientation() {
-	// inversion du sens
-	sens = !sens;
+bool Element::setOrientation(Borne::Orientation o) {
+	// verifie que l'orientation demandee est acceptee
+	if (!acceptOrientation(o)) return(false);
 	// on cache temporairement l'element pour eviter un bug graphique
 	hide();
 	// rotation en consequence et rafraichissement de l'element graphique
-	rotate(sens ? 90.0 : -90.0);
+	rotate(90.0 * (o - ori));
+	ori = o;
 	// on raffiche l'element, on le reselectionne et on le rafraichit
 	show();
 	select();
 	update();
-	return(sens);
+	return(true);
 }
 
 /*** Methodes protegees ***/

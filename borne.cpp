@@ -92,17 +92,16 @@ Borne::~Borne() {
 Borne::Orientation Borne::orientation() const {
 	//true pour une orientation verticale, false pour une orientation horizontale
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
-		if (elt -> orientation()) return(sens);
+		// orientations actuelle et par defaut de l'element
+		Borne::Orientation ori_cur = elt -> orientation();
+		Borne::Orientation ori_def = elt -> defaultOrientation();
+		if (ori_cur == ori_def) return(sens);
 		else {
-			Borne::Orientation retour;
-			switch(sens) {
-				case Borne::Nord  : retour = Borne::Ouest; break;
-				case Borne::Est   : retour = Borne::Nord;  break;
-				case Borne::Ouest : retour = Borne::Sud;   break;
-				case Borne::Sud   :
-				default           : retour = Borne::Est;
-			}
-			return(retour);
+			/* calcul l'angle de rotation implique par l'orientation de l'element parent */
+			// angle de rotation de la borne sur la scene, divise par 90
+			int angle = ori_cur - ori_def + sens;
+			while (angle >= 4) angle -= 4;
+			return((Borne::Orientation)angle);
 		}
 	} else return(sens);
 }

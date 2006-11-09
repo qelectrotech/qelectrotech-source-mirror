@@ -44,7 +44,8 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 		!attributeIsAnInteger(racine, QString("width"), &w) ||\
 		!attributeIsAnInteger(racine, QString("height"), &h) ||\
 		!attributeIsAnInteger(racine, QString("hotspot_x"), &hot_x) ||\
-		!attributeIsAnInteger(racine, QString("hotspot_y"), &hot_y)
+		!attributeIsAnInteger(racine, QString("hotspot_y"), &hot_y) ||\
+		!validOrientationAttribute(racine)
 	) {
 		if (etat != NULL) *etat = 5;
 		elmt_etat = 5;
@@ -207,5 +208,32 @@ bool ElementPerso::attributeIsAReal(QDomElement &e, QString nom_attribut, double
 	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
 	if (!ok) return(false);
 	if (reel != NULL) *reel = tmp;
+	return(true);
+}
+
+bool ElementPerso::validOrientationAttribute(QDomElement &e) {
+	// verifie la presence de l'attribut orientation
+	if (!e.hasAttribute("orientation")) return(false);
+	QString t = e.attribute("orientation");
+	// verification syntaxique : 4 lettres, un d, que des y ou des n pour le reste
+	if (t.length() != 4) return(false);
+	int d_pos = -1;
+	for (int i = 0 ; i < 4 ; ++ i) {
+		QChar c = t.at(i);
+		if (c != 'd' && c != 'y' && c != 'n') return(false);
+		if (c == 'd') {
+			if (d_pos == -1) d_pos = i;
+			else return(false);
+		}
+	}
+	if (d_pos == -1) return(false);
+	
+	// orientation : 4 lettres = nord/est/sud/ouest avec d = default, y = yes et n = no
+	ori_n = (t.at(0) == 'd' || t.at(0) == 'y');
+	ori_e = (t.at(1) == 'd' || t.at(1) == 'y');
+	ori_s = (t.at(2) == 'd' || t.at(2) == 'y');
+	ori_w = (t.at(3) == 'd' || t.at(3) == 'y');
+	ori_d = (Borne::Orientation)d_pos;
+	ori = ori_d;
 	return(true);
 }

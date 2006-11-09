@@ -149,7 +149,7 @@ QDomDocument Schema::toXml(bool schema) {
 		element.setAttribute("x", elmt -> pos().x());
 		element.setAttribute("y", elmt -> pos().y());
 		if (elmt -> isSelected()) element.setAttribute("selected", "selected");
-		element.setAttribute("sens", elmt -> orientation() ? "true" : "false");
+		element.setAttribute("sens", QString("%1").arg(elmt -> orientation()));
 		
 		// enregistrements des bornes de chaque appareil
 		QDomElement bornes = document.createElement("bornes");
@@ -303,6 +303,8 @@ Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_ad
 	int etat;
 	Element *nvel_elmt = new ElementPerso(chemin_fichier, 0, 0, &etat);
 	if (etat != 0) return(false);
+	
+	// charge les caracteristiques de l'element
 	bool retour = nvel_elmt -> fromXml(e, table_id_adr);
 	if (!retour) {
 		delete nvel_elmt;
@@ -311,7 +313,10 @@ Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_ad
 		addItem(nvel_elmt);
 		nvel_elmt -> setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 		nvel_elmt -> setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-		if (e.attribute("sens") == "false") nvel_elmt -> invertOrientation();
+		bool conv_ok;
+		int read_ori = e.attribute("sens").toInt(&conv_ok);
+		if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = nvel_elmt -> defaultOrientation();
+		nvel_elmt -> setOrientation((Borne::Orientation)read_ori);
 		nvel_elmt -> setSelected(e.attribute("selected") == "selected");
 	}
 	return(retour ? nvel_elmt : NULL);

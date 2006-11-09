@@ -13,7 +13,7 @@
 	class Borne : public QGraphicsItem {
 		public:
 		// enum definissant l'orientation de la borne
-		enum Orientation {Nord, Sud, Est, Ouest};
+		enum Orientation {Nord, Est, Sud, Ouest};
 		
 		// permet de caster un QGraphicsItem en Borne avec qgraphicsitem_cast
 		enum { Type = UserType + 1002 };

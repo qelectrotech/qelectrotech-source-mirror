@@ -33,16 +33,62 @@
 		inline void     setConnexionsInternesAcceptees(bool cia) { peut_relier_ses_propres_bornes = cia; }
 		static bool     valideXml(QDomElement &);
 		virtual bool fromXml(QDomElement &, QHash<int, Borne *>&) = 0;
+		// methodes d'acces aux possibilites d'orientation
+		inline Borne::Orientation orientation() { return(ori); }
+		inline bool acceptOrientation(Borne::Orientation o) {
+			switch(o) {
+				case Borne::Nord:  return(ori_n);
+				case Borne::Est:   return(ori_e);
+				case Borne::Sud:   return(ori_s);
+				case Borne::Ouest: return(ori_w);
+				default: return(false);
+			}
+		}
+		inline Borne::Orientation defaultOrientation() { return(ori_d); }
+		inline Borne::Orientation nextAcceptableOrientation() {
+			Borne::Orientation retour = nextOrientation(ori);
+			for (int i = 0 ; i < 4 ; ++ i) {
+				if (acceptOrientation(retour)) return(retour);
+				retour = nextOrientation(retour);
+			}
+			// on ne devrait pas arriver la : renvoi d'une valeur par defaut = nord
+			return(Borne::Nord);
+		}
+		inline Borne::Orientation previousAcceptableOrientation() {
+			Borne::Orientation retour = previousOrientation(ori);
+			for (int i = 0 ; i < 4 ; ++ i) {
+				if (acceptOrientation(retour)) return(retour);
+				retour = previousOrientation(retour);
+			}
+			// on ne devrait pas arriver la : renvoi d'une valeur par defaut = nord
+			return(Borne::Nord);
+		}
+		bool setOrientation(Borne::Orientation o);
 		
 		protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+		bool    ori_n;
+		bool    ori_s;
+		bool    ori_e;
+		bool    ori_w;
+		Borne::Orientation ori_d;
+		Borne::Orientation ori;
 		
 		private:
 		bool peut_relier_ses_propres_bornes;
 		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
-		bool    sens;
+		inline Borne::Orientation nextOrientation(Borne::Orientation o) {
+			if (o < 0 || o > 2) return(Borne::Nord);
+			return((Borne::Orientation)(o + 1));
+		}
+		inline Borne::Orientation previousOrientation(Borne::Orientation o) {
+			if (o < 0 || o > 3) return(Borne::Nord);
+			if (o == Borne::Nord) return(Borne::Ouest);
+			return((Borne::Orientation)(o - 1));
+		}
+		
 		QSize   dimensions;
 		QPoint  hotspot_coord;
 		QPixmap apercu;

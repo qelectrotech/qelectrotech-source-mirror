@@ -26,6 +26,7 @@
 		void setQPainterAntiAliasing(QPainter *, bool);
 		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
 		bool attributeIsAReal(QDomElement &, QString, double * = NULL);
+		bool validOrientationAttribute(QDomElement &);
 		int nb_bornes;
 	};
 #endif
