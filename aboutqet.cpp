@@ -56,13 +56,16 @@ QWidget *AboutQET::titre() {
 */
 QWidget *AboutQET::ongletAPropos() {
 	QLabel *apropos = new QLabel(
-		tr(
-			"QElectroTech, une application de "
-			"r\351alisation de sch\351mas \351lectriques.\n\n\251 2006 Les "
-			"d\351veloppeurs de QElectroTech\n\nMerde on n'a pas de site web"
-		)
+		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
+		"<br><br>" +
+		tr("\251 2006 Les d\351veloppeurs de QElectroTech") +
+		"<br><br>"
+		"<a href=\"http://qelectrotech.tuxfamily.org/\">"
+		"http://qelectrotech.tuxfamily.org/</a>"
 	);
 	apropos -> setAlignment(Qt::AlignCenter);
+	apropos -> setOpenExternalLinks(true);
+	apropos -> setTextFormat(Qt::RichText);
 	return(apropos);
 }
 
@@ -71,12 +74,21 @@ QWidget *AboutQET::ongletAPropos() {
 */
 QWidget *AboutQET::ongletAuteurs() {
 	QLabel *auteurs = new QLabel(
-		tr(
-			"Id\351e originale : Beno\356t Ansieau <benoit.ansieau@gmail.com>\n\n"
-			"Programmation : Xavier Guerrin <xavier.guerrin@gmail.com>"
-		)
+		"<span style=\"text-decoration: underline;\">" +
+		tr("Id\351e originale") +
+		"</span> : Beno\356t Ansieau "
+		"&lt;<a href=\"mailto:benoit.ansieau@gmail.com\">"
+		"benoit.ansieau@gmail.com</a>&gt;"
+		"<br><br>"
+		"<span style=\"text-decoration: underline;\">" +
+		tr("Programmation") +
+		"</span> : Xavier Guerrin "
+		"&lt;<a href=\"mailto:xavier.guerrin@gmail.com\">"
+		"xavier.guerrin@gmail.com</a>&gt;"
 	);
 	auteurs -> setAlignment(Qt::AlignCenter);
+	auteurs -> setOpenExternalLinks(true);
+	auteurs -> setTextFormat(Qt::RichText);
 	return(auteurs);
 }
 

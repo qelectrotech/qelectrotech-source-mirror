@@ -112,15 +112,10 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 bool Element::setOrientation(Borne::Orientation o) {
 	// verifie que l'orientation demandee est acceptee
 	if (!acceptOrientation(o)) return(false);
-	// on cache temporairement l'element pour eviter un bug graphique
-	hide();
+	prepareGeometryChange();
 	// rotation en consequence et rafraichissement de l'element graphique
 	rotate(90.0 * (o - ori));
 	ori = o;
-	// on raffiche l'element, on le reselectionne et on le rafraichit
-	show();
-	select();
-	update();
 	return(true);
 }
 
