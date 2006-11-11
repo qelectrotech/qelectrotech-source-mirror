@@ -63,8 +63,11 @@ void Schema::drawBackground(QPainter *p, const QRectF &r) {
 	p -> restore();
 }
 
+/**
+	Exporte le schema vers une image
+	@return Une QImage representant le schema
+*/
 QImage Schema::toImage() {
-	
 	QRectF vue = itemsBoundingRect();
 	// la marge  = 5 % de la longueur necessaire
 	qreal marge = 0.05 * vue.width();
@@ -90,7 +93,8 @@ QImage Schema::toImage() {
 
 /**
 	Exporte tout ou partie du schema 
-	@param schema Booleen (a vrai par defaut) indiquant si le XML genere doit representer tout le schema ou seulement les elements selectionnes
+	@param schema Booleen (a vrai par defaut) indiquant si le XML genere doit
+	representer tout le schema ou seulement les elements selectionnes
 	@return Un Document XML (QDomDocument)
 */
 QDomDocument Schema::toXml(bool schema) {
@@ -189,12 +193,11 @@ QDomDocument Schema::toXml(bool schema) {
 	return(document);
 }
 
-void Schema::reset() {
-	/// @todo implementer cette fonction
-}
-
 /**
-	Importe le schema decrit dans un document XML. Si une position est precisee, les elements importes sont positionnes de maniere a ce que le coin superieur gauche du plus petit rectangle pouvant les entourant tous (le bounding rect) soit a cette position.
+	Importe le schema decrit dans un document XML. Si une position est
+	precisee, les elements importes sont positionnes de maniere a ce que le
+	coin superieur gauche du plus petit rectangle pouvant les entourant tous
+	(le bounding rect) soit a cette position.
 	@param document Le document XML a analyser
 	@param position La position du schema importe
 	@return true si l'import a reussi, false sinon

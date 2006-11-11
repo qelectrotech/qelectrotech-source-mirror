@@ -24,7 +24,6 @@
 		QImage toImage();
 		QDomDocument toXml(bool = true);
 		bool fromXml(QDomDocument &, QPointF = QPointF());
-		void reset();
 		QGraphicsItem *getElementById(uint id);
 		inline void setAffichageGrille(bool ddg) { doit_dessiner_grille = ddg; }
 		

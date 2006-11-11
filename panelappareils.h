@@ -17,5 +17,6 @@
 		void startDrag(Qt::DropActions);
 		private:
 		void ajouterFichier(QTreeWidgetItem *, QString);
+		void ajouterDossier(QTreeWidgetItem *, QString, QString = QString());
 	};
 #endif

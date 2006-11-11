@@ -20,26 +20,20 @@ PanelAppareils::PanelAppareils(QWidget *parent) :  QTreeWidget(parent) {
 	// taille des elements
 	setIconSize(QSize(50, 50));
 	
-	QTreeWidgetItem *elmts_qet = new QTreeWidgetItem(this, QStringList(tr("Collection QET")));
-	elmts_qet -> setExpanded(true);
-	QTreeWidgetItem *elmts_perso = new QTreeWidgetItem(this, QStringList(tr("Collection utilisateur")));
-	elmts_perso -> setExpanded(true);
+	// chargement des elements de la collection QET
+	ajouterDossier(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
 	
-	// remplissage de la liste
-	QDir dossier_elmts_qet(QETApp::commonElementsDir());
-	QDir dossier_elmts_perso(QETApp::customElementsDir());
-	QStringList filtres("*.elmt");
-	QStringList fichiers1 = dossier_elmts_qet.entryList(filtres, QDir::Files, QDir::Name);
-	foreach(QString fichier, fichiers1) ajouterFichier(elmts_qet, QETApp::commonElementsDir()+fichier);
-	QStringList fichiers2 = dossier_elmts_perso.entryList(filtres, QDir::Files, QDir::Name);
-	foreach(QString fichier, fichiers2) ajouterFichier(elmts_perso, QETApp::customElementsDir()+fichier);
+	// chargement des elements de la collection utilisateur
+	ajouterDossier(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 	
-	// force du noir sur une alternance de blanc (comme le schema) et de bleu clair
+	// force du noir sur une alternance de blanc (comme le schema) et de gris
+	// clair, avec du blanc sur bleu pas trop fonce pour la selection
 	QPalette qp = palette();
-	setAlternatingRowColors(true);
 	qp.setColor(QPalette::Text, Qt::black);
 	qp.setColor(QPalette::Base, Qt::white);
-	//qp.setColor(QPalette::AlternateBase, QColor(240, 255, 255));
+	qp.setColor(QPalette::AlternateBase, QColor("#e8e8e8"));
+	qp.setColor(QPalette::Highlight, QColor("#678db2"));
+	qp.setColor(QPalette::HighlightedText, Qt::white);
 	setPalette(qp);
 }
 
@@ -91,6 +85,56 @@ void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
 	
 	// suppression de l'appareil temporaire
 	delete appar;
+}
+
+
+/**
+	Methode privee permettant d'ajouter un dossier au panel d'appareils
+	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
+	@param dossier Chemin absolu du dossier a inserer
+	@param nom Parametre facultatif permettant de forcer le nom du dossier.
+	S'il n'est pas precise, la fonction ouvre le fichier qet_directory situe
+	dans le dossier et y lit le nom du dossier ; si ce fichier n'existe pas ou
+	est invalide, la fonction utilise le nom du dossier.
+*/
+void PanelAppareils::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QString nom) {
+	QDir dossier(adr_dossier);
+	if (!dossier.exists()) return;
+	adr_dossier = dossier.canonicalPath() + "/";
+	
+	// recupere le nom de la categorie
+	QString nom_categorie = nom;
+	if (nom == QString()) {
+		QFile config_dossier(adr_dossier + "qet_directory");
+		// verifie l'existence du fichier
+		if (config_dossier.exists()) {
+			// ouvre le fichier
+			if (config_dossier.open(QIODevice::ReadOnly | QIODevice::Text)) {
+				// lit la premiere ligne
+				char data[512];
+				if (config_dossier.readLine(data, sizeof(data)) != -1) {
+					nom_categorie = QString(data).trimmed();
+				}
+			}
+		}
+		if (nom_categorie == QString()) nom_categorie = dossier.dirName();
+	}
+	
+	// creation du QTreeWidgetItem representant le dossier
+	QTreeWidgetItem *qtwi_dossier = new QTreeWidgetItem(qtwi_parent, QStringList(nom_categorie));
+	QLinearGradient t(0, 0, 200, 0);
+	t.setColorAt(0, QColor("#e8e8e8"));
+	t.setColorAt(1, QColor("#ffffff"));
+	qtwi_dossier -> setBackground(0, QBrush(t));
+	qtwi_dossier -> setExpanded(true);
+	
+	// ajout des sous-categories / sous-dossiers
+	QStringList dossiers = dossier.entryList(QStringList(), QDir::AllDirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDir::Name);
+	foreach(QString dossier, dossiers) ajouterDossier(qtwi_dossier, adr_dossier + dossier);
+	
+	// ajout des elements / fichiers
+	QStringList fichiers = dossier.entryList(QStringList("*.elmt"), QDir::Files, QDir::Name);
+	foreach(QString fichier, fichiers) ajouterFichier(qtwi_dossier, adr_dossier + fichier);
 }
 
 /**
