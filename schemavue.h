@@ -6,8 +6,7 @@
 	#include "conducteur.h"
 	#define TAILLE_GRILLE 10
 	/**
-		Classe representant un SchemaVue electrique
-		@todo creer une structure capable de retenir les differents composants du SchemaVue : elements, fils, indications eventuelles => revoir les SchemaVues
+		Classe representant graphiquement un schema electrique
 	*/
 	class SchemaVue : public QGraphicsView {
 		Q_OBJECT

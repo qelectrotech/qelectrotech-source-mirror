@@ -6,8 +6,9 @@
 	/**
 		Cette classe represente la fenetre principale de QElectroTech et,
 		ipso facto, la plus grande partie de l'interface graphique de QElectroTech.
-		Il s'agit d'un objet QMainWindow avec un objet « Schema » en guise de widget central
-		et un « Panel d'Appareils » en guise de widget « Dock ».
+		Il s'agit d'un objet QMainWindow avec un QWorkSpace contenant des objets
+		« Schema » en guise de widget central et un « Panel d'Appareils » en guise
+		de widget « Dock ».
 	*/
 	class QETApp : public QMainWindow {
 		Q_OBJECT

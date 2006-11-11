@@ -139,6 +139,7 @@ void QETApp::systrayRestaurer() {
 
 /**
 	Permet de quitter l'application lors de la fermeture de la fenetre principale
+	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
 void QETApp::closeEvent(QCloseEvent *qce) {
 	quitter(qce);
@@ -146,11 +147,13 @@ void QETApp::closeEvent(QCloseEvent *qce) {
 
 /**
 	Gere la sortie de l'application
-	@todo gerer les eventuelles fermetures de fichiers
+	@param e Le QCloseEvent correspondant a l'evenement de fermeture
 */
 void QETApp::quitter(QCloseEvent *e) {
+	// quitte directement s'il n'y a aucun schema ouvert
 	if (!schemaEnCours()) qApp -> quit();
 	else {
+		// sinon demande la permission de fermer chaque schema
 		bool peut_quitter = true;
 		foreach(QWidget *fenetre, workspace.windowList()) {
 			if (qobject_cast<SchemaVue *>(fenetre)) {
@@ -164,11 +167,10 @@ void QETApp::quitter(QCloseEvent *e) {
 		}
 		if (peut_quitter) qApp -> quit();
 	}
-	
 }
 
 /**
-	Fait passer la fenetre en mode plein ecran au mode normal et vice-versa
+	Fait passer la fenetre du mode plein ecran au mode normal et vice-versa
 */
 void QETApp::toggleFullScreen() {
 	setWindowState(windowState() ^ Qt::WindowFullScreen);
@@ -247,7 +249,7 @@ void QETApp::actions() {
 	masquer_appli     = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                       this);
 	restaurer_appli   = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                     this);
 	
-	// info-bulles / indications dans la barre de statut
+	// info-bulles
 	masquer_appli     -> setToolTip(tr("Reduire QElectroTech dans le systray"));
 	restaurer_appli   -> setToolTip(tr("Restaurer QElectroTech"));
 	
@@ -281,11 +283,48 @@ void QETApp::actions() {
 	sortir_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	
 	// affichage dans la barre de statut
+	nouveau_fichier   -> setStatusTip(tr("Cr\351e un nouveau sch\351ma"));
+	ouvrir_fichier    -> setStatusTip(tr("Ouvre un sch\351ma existant"));
+	fermer_fichier    -> setStatusTip(tr("Ferme le sch\351ma courant"));
+	enr_fichier       -> setStatusTip(tr("Enregistre le sch\351ma courant"));
+	enr_fichier_sous  -> setStatusTip(tr("Enregistre le sch\351ma courant avec un autre nom de fichier"));
+	importer          -> setStatusTip(tr("Importe un sch\351ma dans le sch\351ma courant"));
+	exporter          -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format"));
+	imprimer          -> setStatusTip(tr("Imprime le sch\351ma courant"));
+	quitter_qet       -> setStatusTip(tr("Ferme l'application QElectroTech"));
+	
+	annuler           -> setStatusTip(tr("Annule l'action pr\351c\351dente"));
+	refaire           -> setStatusTip(tr("Restaure l'action annul\351e"));
+	couper            -> setStatusTip(tr("Transf\350re les \351l\351ments s\351lectionn\351s dans le presse-papier"));
+	copier            -> setStatusTip(tr("Copie les \351l\351ments s\351lectionn\351s dans le presse-papier"));
+	coller            -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma"));
+	sel_tout          -> setStatusTip(tr("S\351lectionne tous les \351l\351ments du sch\351ma"));
+	sel_rien          -> setStatusTip(tr("D\351s\351lectionne tous les \351l\351ments du sch\351ma"));
+	sel_inverse       -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
+	supprimer         -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
+	pivoter           -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
+	
+	toggle_aa         -> setStatusTip(tr("Active / d\351sactive l'antialiasing pour le rendu du sch\351ma courant"));
+	zoom_avant        -> setStatusTip(tr("Agrandit le sch\351ma"));
+	zoom_arriere      -> setStatusTip(tr("R\351tr\351cit le sch\351ma"));
+	zoom_adapte       -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible"));
+	zoom_reset        -> setStatusTip(tr("Restaure le zoom par d\351faut"));
+	
+	mode_selection    -> setStatusTip(tr("Permet de s\351lectionner les \351l\351ments"));
+	mode_visualise    -> setStatusTip(tr("Permet de visualiser le sch\351ma sans pouvoir le modifier"));
+	
+	entrer_pe         -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran"));
+	sortir_pe         -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351"));
+	configurer        -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech"));
+	
 	f_mosaique        -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que"));
 	f_cascade         -> setStatusTip(tr("Dispose les fen\352tres en cascade"));
 	f_reorganise      -> setStatusTip(tr("Aligne les fen\352tres réduites"));
 	f_suiv            -> setStatusTip(tr("Active la fen\352tre suivante"));
 	f_prec            -> setStatusTip(tr("Active la fen\352tre pr\351c\351dente"));
+	
+	a_propos_de_qet   -> setStatusTip(tr("Affiche des informations sur QElectroTech"));
+	a_propos_de_qt    -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt"));
 	
 	// traitements speciaux
 	mode_selection    -> setCheckable(true);
@@ -385,8 +424,11 @@ void QETApp::menus() {
 	
 	// menu Affichage > Afficher
 	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
+	menu_aff_aff -> setTearOffEnabled(true);
 	menu_aff_aff -> addAction(barre_outils -> toggleViewAction());
+	barre_outils -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils"));
 	menu_aff_aff -> addAction(qdw_pa -> toggleViewAction());
+	qdw_pa -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
 	
 	// menu Affichage
 	menu_affichage -> addMenu(menu_aff_aff);
@@ -452,13 +494,18 @@ void QETApp::dialogue_imprimer() {
 	qpd -> exec();
 }
 
+/**
+	Gere l'export de schema vers un autre format (PNG pour le moment)
+*/
 void QETApp::dialogue_exporter() {
+	// demande un nom de fichier
 	QString nom_fichier = QFileDialog::getSaveFileName(
 		this,
 		tr("Exporter vers le fichier"),
 		QDir::homePath(),
 		tr("Image PNG (*.png)")
 	);
+	// exporte le schema
 	if (nom_fichier != "") {
 		if (!nom_fichier.endsWith(".png", Qt::CaseInsensitive)) nom_fichier += ".png";
 		QFile fichier(nom_fichier);
@@ -568,58 +615,100 @@ SchemaVue *QETApp::schemaEnCours() {
 	return(qobject_cast<SchemaVue *>(workspace.activeWindow()));
 }
 
+/**
+	Effectue l'action "couper" sur le schema en cours
+*/
 void QETApp::slot_couper() {
 	if(schemaEnCours()) schemaEnCours() -> couper();
 }
 
+/**
+	Effectue l'action "copier" sur le schema en cours
+*/
 void QETApp::slot_copier() {
 	if(schemaEnCours()) schemaEnCours() -> copier();
 }
 
+/**
+	Effectue l'action "coller" sur le schema en cours
+*/
 void QETApp::slot_coller() {
 	if(schemaEnCours()) schemaEnCours() -> coller();
 }
 
+/**
+	Effectue l'action "zoom avant" sur le schema en cours
+*/
 void QETApp::slot_zoomPlus() {
 	if(schemaEnCours()) schemaEnCours() -> zoomPlus();
 }
 
+/**
+	Effectue l'action "zoom arriere" sur le schema en cours
+*/
 void QETApp::slot_zoomMoins() {
 	if(schemaEnCours()) schemaEnCours() -> zoomMoins();
 }
 
+/**
+	Effectue l'action "zoom arriere" sur le schema en cours
+*/
 void QETApp::slot_zoomFit() {
 	if(schemaEnCours()) schemaEnCours() -> zoomFit();
 }
 
+/**
+	Effectue l'action "zoom par defaut" sur le schema en cours
+*/
 void QETApp::slot_zoomReset() {
 	if(schemaEnCours()) schemaEnCours() -> zoomReset();
 }
 
+/**
+	Effectue l'action "selectionner tout" sur le schema en cours
+*/
 void QETApp::slot_selectAll() {
 	if(schemaEnCours()) schemaEnCours() -> selectAll();
 }
 
+/**
+	Effectue l'action "deselectionenr tout" sur le schema en cours
+*/
 void QETApp::slot_selectNothing() {
 	if(schemaEnCours()) schemaEnCours() -> selectNothing();
 }
 
+/**
+	Effectue l'action "inverser la selection" sur le schema en cours
+*/
 void QETApp::slot_selectInvert() {
 	if(schemaEnCours()) schemaEnCours() -> selectInvert();
 }
 
+/**
+	Effectue l'action "supprimer" sur le schema en cours
+*/
 void QETApp::slot_supprimer() {
 	if(schemaEnCours()) schemaEnCours() -> supprimer();
 }
 
+/**
+	Effectue l'action "pivoter" sur le schema en cours
+*/
 void QETApp::slot_pivoter() {
 	if(schemaEnCours()) schemaEnCours() -> pivoter();
 }
 
+/**
+	Effectue l'action "mode selection" sur le schema en cours
+*/
 void QETApp::slot_setSelectionMode() {
 	if(schemaEnCours()) schemaEnCours() -> setSelectionMode();
 }
 
+/**
+	Effectue l'action "mode visualisation" sur le schema en cours
+*/
 void QETApp::slot_setVisualisationMode() {
 	if(schemaEnCours()) schemaEnCours() -> setVisualisationMode();
 }
@@ -693,6 +782,10 @@ void QETApp::slot_updateActions() {
 	slot_updateMenuFenetres();
 }
 
+/**
+	Ajoute un schema dans l'espace de travail
+	@param sv L'objet SchemaVue a ajouter a l'espace de travail
+*/
 void QETApp::addSchemaVue(SchemaVue *sv) {
 	if (!sv) return;
 	SchemaVue *s_v = schemaEnCours();
@@ -704,6 +797,9 @@ void QETApp::addSchemaVue(SchemaVue *sv) {
 	else p -> show();
 }
 
+/**
+	met a jour le menu "Fenetres"
+*/
 void QETApp::slot_updateMenuFenetres() {
 	// nettoyage du menu
 	menu_fenetres -> clear();
@@ -728,7 +824,9 @@ void QETApp::slot_updateMenuFenetres() {
 	if (!fenetres.isEmpty()) menu_fenetres -> addSeparator();
 	for (int i = 0 ; i < fenetres.size() ; ++ i) {
 		SchemaVue *sv = qobject_cast<SchemaVue *>(fenetres.at(i));
-		QAction *action  = menu_fenetres -> addAction(sv -> windowTitle().left(sv -> windowTitle().length()-3));
+		QString sv_titre = sv -> windowTitle().left(sv -> windowTitle().length() - 3);
+		QAction *action  = menu_fenetres -> addAction(sv_titre);
+		action -> setStatusTip(tr("Active la fen\352tre ") + sv_titre);
 		action -> setCheckable(true);
 		action -> setChecked(sv == schemaEnCours());
 		connect(action, SIGNAL(triggered()), &windowMapper, SLOT(map()));
@@ -737,14 +835,19 @@ void QETApp::slot_updateMenuFenetres() {
 }
 
 /**
-	@return Le chemin du dossier dans lequel QET doit chercher les definitions XML des elements communs
+	Renvoie le dossier des elements communs, c-a-d le chemin du dossier dans
+	lequel QET doit chercher les definitions XML des elements de la collection QET.
+	@return Le chemin du dossier des elements communs
 */
 QString QETApp::commonElementsDir() {
 	return(QDir::current().path() + "/elements/");
 }
 
 /**
-	@return Le chemin du dossier dans lequel QET doit chercher les definitions XML des elements propres a l'utilisateur
+	Renvoie le dossier des elements de l'utilisateur, c-a-d le chemin du dossier
+	dans lequel QET chercher les definitions XML des elements propres a
+	l'utilisateur.
+	@return Le chemin du dossier des elements persos
 */
 QString QETApp::customElementsDir() {
 #ifdef Q_OS_WIN32
@@ -754,6 +857,14 @@ QString QETApp::customElementsDir() {
 #endif
 }
 
+/**
+	Renvoie le dossier de configuration de QET, c-a-d le chemin du dossier dans
+	lequel QET lira les informations de configuration et de personnalisation
+	propres a l'utilisateur courant. Ce dossier est generalement
+	C:\Documents And Settings\utilisateur\Application Data\qet sous Windows et
+	~/.qet sous les systèmes type UNIX.
+	@return Le chemin du dossier de configuration de QElectroTech
+*/
 QString QETApp::configDir() {
 #ifdef Q_OS_WIN32
 	return(QDir::homePath() + "\\Application Data\\qet\\");
