@@ -145,9 +145,8 @@ QDomDocument Schema::toXml(bool schema) {
 		
 		// type
 		QString chemin_elmt = elmt -> typeId();
-		QString type_elmt = QString("");
-		if (QFileInfo(chemin_elmt).dir() == dossier_elmts_persos) type_elmt = "perso://";
-		element.setAttribute("type", type_elmt + QFileInfo(chemin_elmt).fileName());
+		QString type_elmt = QETApp::symbolicPath(chemin_elmt);
+		element.setAttribute("type", type_elmt);
 		
 		// position, selection et orientation
 		element.setAttribute("x", elmt -> pos().x());
@@ -300,9 +299,7 @@ bool Schema::fromXml(QDomDocument &document, QPointF position) {
 Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_adr) {
 	// cree un element dont le type correspond à l'id type
 	QString type = e.attribute("type");
-	QString chemin_fichier;
-	if (type.startsWith("perso://")) chemin_fichier = QETApp::customElementsDir() + type.right(type.size()-8);
-	else chemin_fichier = QETApp::commonElementsDir() + type;
+	QString chemin_fichier = QETApp::realPath(type);
 	int etat;
 	Element *nvel_elmt = new ElementPerso(chemin_fichier, 0, 0, &etat);
 	if (etat != 0) return(false);

@@ -19,6 +19,8 @@
 		static QString commonElementsDir();
 		static QString customElementsDir();
 		static QString configDir();
+		static QString realPath(QString &);
+		static QString symbolicPath(QString &);
 		public slots:
 		void systray(QSystemTrayIcon::ActivationReason raison);
 		void systrayReduire();

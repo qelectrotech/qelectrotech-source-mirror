@@ -840,7 +840,7 @@ void QETApp::slot_updateMenuFenetres() {
 	@return Le chemin du dossier des elements communs
 */
 QString QETApp::commonElementsDir() {
-	return(QDir::current().path() + "/elements/");
+	return(QDir::current().path() + QDir::separator() + "elements" + QDir::separator());
 }
 
 /**
@@ -850,11 +850,7 @@ QString QETApp::commonElementsDir() {
 	@return Le chemin du dossier des elements persos
 */
 QString QETApp::customElementsDir() {
-#ifdef Q_OS_WIN32
-	return(QETApp::configDir() + "elements\\");
-#else
-	return(QETApp::configDir() + "elements/");
-#endif
+	return(QETApp::configDir() + "elements" + QDir::separator());
 }
 
 /**
@@ -871,4 +867,42 @@ QString QETApp::configDir() {
 #else
 	return(QDir::homePath() + "/.qet/");
 #endif
+}
+
+/**
+	Permet de connaitre le chemin absolu du fichier *.elmt correspondant a un
+	chemin symbolique (du type custom://outils_pervers/sado_maso/contact_bizarre)
+	@param sym_path Chaine de caracteres representant le chemin absolu du fichier
+	@return Une chaine de caracteres vide en cas d'erreur ou le chemin absolu du
+	fichier *.elmt.
+*/
+QString QETApp::realPath(QString &sym_path) {
+	QString directory;
+	if (sym_path.startsWith("common://")) {
+		directory = commonElementsDir();
+	} else if (sym_path.startsWith("custom://")) {
+		directory = customElementsDir();
+	} else return(QString());
+	return(directory + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
+}
+
+/**
+	Construit le chemin symbolique (du type custom://outils_pervers/sado_maso/
+	contact_bizarre) correspondant a un fichier.
+	@param real_pathChaine de caracteres representant le chemin symbolique du fichier
+	@return Une chaine de caracteres vide en cas d'erreur ou le chemin
+	symbolique designant l'element.
+*/
+QString QETApp::symbolicPath(QString &real_path) {
+	// recupere les dossier common et custom
+	QString commond = commonElementsDir();
+	QString customd = customElementsDir();
+	QString chemin;
+	// analyse le chemin de fichier passe en parametre
+	if (real_path.startsWith(commond)) {
+		chemin = "common://" + real_path.right(real_path.length() - commond.length());
+	} else if (real_path.startsWith(customd)) {
+		chemin = "custom://" + real_path.right(real_path.length() - customd.length());
+	} else chemin = QString();
+	return(chemin);
 }
