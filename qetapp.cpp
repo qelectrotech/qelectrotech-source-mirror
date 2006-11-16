@@ -151,10 +151,9 @@ void QETApp::closeEvent(QCloseEvent *qce) {
 */
 void QETApp::quitter(QCloseEvent *e) {
 	// quitte directement s'il n'y a aucun schema ouvert
-	if (!schemaEnCours()) qApp -> quit();
-	else {
+	bool peut_quitter = true;
+	if (schemaEnCours()) {
 		// sinon demande la permission de fermer chaque schema
-		bool peut_quitter = true;
 		foreach(QWidget *fenetre, workspace.windowList()) {
 			if (qobject_cast<SchemaVue *>(fenetre)) {
 				workspace.setActiveWindow(fenetre);
@@ -165,7 +164,10 @@ void QETApp::quitter(QCloseEvent *e) {
 				}
 			}
 		}
-		if (peut_quitter) qApp -> quit();
+	}
+	if (peut_quitter) {
+		if (QSystemTrayIcon::isSystemTrayAvailable()) qsti -> hide();
+		qApp -> quit();
 	}
 }
 
@@ -840,7 +842,7 @@ void QETApp::slot_updateMenuFenetres() {
 	@return Le chemin du dossier des elements communs
 */
 QString QETApp::commonElementsDir() {
-	return(QDir::current().path() + QDir::separator() + "elements" + QDir::separator());
+	return(QDir::current().path() + "/elements/");
 }
 
 /**
@@ -850,7 +852,7 @@ QString QETApp::commonElementsDir() {
 	@return Le chemin du dossier des elements persos
 */
 QString QETApp::customElementsDir() {
-	return(QETApp::configDir() + "elements" + QDir::separator());
+	return(QETApp::configDir() + "elements/");
 }
 
 /**
@@ -863,7 +865,7 @@ QString QETApp::customElementsDir() {
 */
 QString QETApp::configDir() {
 #ifdef Q_OS_WIN32
-	return(QDir::homePath() + "\\Application Data\\qet\\");
+	return(QDir::homePath() + "/Application Data/qet/");
 #else
 	return(QDir::homePath() + "/.qet/");
 #endif
@@ -911,6 +913,6 @@ QString QETApp::symbolicPath(QString &real_path) {
 	@return Le chemin du dossier contenant les fichiers de langue
 */
 QString QETApp::languagesPath() {
-	return(QDir::current().path() + QDir::separator() + "lang" + QDir::separator());
+	return(QDir::current().path() + "/lang/");
 }
 
