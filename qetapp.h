@@ -19,6 +19,7 @@
 		static QString commonElementsDir();
 		static QString customElementsDir();
 		static QString configDir();
+		static QString languagesPath();
 		static QString realPath(QString &);
 		static QString symbolicPath(QString &);
 		public slots:

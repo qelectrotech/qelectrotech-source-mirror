@@ -906,3 +906,11 @@ QString QETApp::symbolicPath(QString &real_path) {
 	} else chemin = QString();
 	return(chemin);
 }
+
+/**
+	@return Le chemin du dossier contenant les fichiers de langue
+*/
+QString QETApp::languagesPath() {
+	return(QDir::current().path() + QDir::separator() + "lang" + QDir::separator());
+}
+
