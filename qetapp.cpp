@@ -491,9 +491,19 @@ void QETApp::toolbar() {
 	gere l'impression
 */
 void QETApp::dialogue_imprimer() {
-	QPrinter *qprin = new QPrinter();
-	QPrintDialog *qpd = new QPrintDialog(qprin, this);
-	qpd -> exec();
+	QPrinter qprin;
+	qprin.setOrientation(QPrinter::Landscape);
+	qprin.setPageSize(QPrinter::A4);
+	//qprin.setPrintProgram("lp");
+	QPrintDialog qpd(&qprin, this);
+	
+	if (qpd.exec() == QDialog::Accepted) {
+		QPainter qp(&qprin);
+		Schema *sc = schemaEnCours() -> scene;
+		sc -> setAffichageGrille(false);
+		sc -> render(&qp);
+		sc -> setAffichageGrille(true);
+	}
 }
 
 /**
