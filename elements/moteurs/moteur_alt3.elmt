@@ -1,0 +1,15 @@
+<definition	type="element" nom="Moteur Asyncrone triphasé" width="45" height="65" hotspot_x="25" hotspot_y="45" orientation="dnny">
+	<cercle x="-20"  y="-20"  rayon="40"        antialias="true"   style="normal" />
+	<ligne  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false"  style="normal" />
+	<ligne  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true"   style="normal" />
+	<ligne  x1="0"   y1="-40" x2="0"   y2="-20" antialias="false"  style="normal" />
+	<ligne  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false"  style="normal" />
+	<ligne  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true"   style="normal" />
+	<ligne  x1="-10" y1="-10" x2="-10" y2="10"  antialias="false"  style="normal" />
+	<ligne  x1="-10" y1="-10" x2="0"   y2="0"   antialias="true"   style="normal" />
+	<ligne  x1="0"   y1="0"   x2="10"  y2="-10" antialias="true"   style="normal" />
+	<ligne  x1="10"  y1="-10" x2="10"  y2="10"  antialias="false"  style="normal" />
+	<borne  orientation="n"   x="-20"  y="-40"  />
+	<borne  orientation="n"   x="0"    y="-40"  />
+	<borne  orientation="n"   x="20"   y="-40"  />
+</definition>

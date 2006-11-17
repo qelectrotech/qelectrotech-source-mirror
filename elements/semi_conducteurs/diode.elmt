@@ -1,0 +1,7 @@
+<definition	type="element" nom="Diode" width="25" height="45" hotspot_x="15" hotspot_y="25" orientation="dyyy">
+	<polygone x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" style="normal" />
+	<ligne x1="0"   y1="-20" x2="0"  y2="20" antialias="false" style="normal" />
+	<ligne x1="-10" y1="10"  x2="10" y2="10" antialias="false" style="normal" />
+	<borne orientation="s" x="0" y="20"  />
+	<borne orientation="n" x="0" y="-20" />
+</definition>
