@@ -1,9 +1,12 @@
 <definition	type="element" nom="Disjoncteur" width="25" height="70" hotspot_x="15" hotspot_y="5" orientation="dnny">
+	<!--Contact-->
 	<ligne x1="-10" y1="20" x2="0"  y2="40" antialias="true"  style="normal" />
 	<ligne x1="0"  y1="0"  x2="0"  y2="20" antialias="false" style="normal" />
 	<ligne x1="0"  y1="40" x2="0"  y2="60" antialias="false" style="normal" />
+	<!--Partie Disjoncteur-->
 	<ligne x1="-5" y1="19" x2="5"  y2="9" antialias="true"  style="normal" />
 	<ligne x1="5"  y1="19" x2="-5" y2="9" antialias="true"  style="normal" />
+	<!--Bornes-->
 	<borne orientation="n" x="0" y="0"  />
 	<borne orientation="s" x="0" y="60" />
 </definition>
