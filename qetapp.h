@@ -30,6 +30,7 @@
 		void toggleFullScreen();
 		void toggleAntialiasing();
 		void aPropos();
+		void editInfos();
 		void dialogue_imprimer();
 		void dialogue_exporter();
 		bool dialogue_enregistrer_sous();
@@ -62,6 +63,7 @@
 		QAction *supprimer;
 		QAction *selectionner;
 		QAction *pivoter;
+		QAction *infos_schema;
 		QAction *poser_fil;
 		QAction *masquer_appli;
 		QAction *restaurer_appli;

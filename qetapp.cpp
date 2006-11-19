@@ -225,6 +225,7 @@ void QETApp::actions() {
 	sel_inverse       = new QAction(                               tr("Inverser la s\351lection"),       this);
 	supprimer         = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                      this);
 	pivoter           = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                        this);
+	infos_schema      = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),  this);
 	
 	toggle_aa         = new QAction(                               tr("D\351sactiver l'&antialiasing"),  this);
 	zoom_avant        = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                     this);
@@ -305,6 +306,7 @@ void QETApp::actions() {
 	sel_inverse       -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
 	supprimer         -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
 	pivoter           -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
+	infos_schema      -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	
 	toggle_aa         -> setStatusTip(tr("Active / d\351sactive l'antialiasing pour le rendu du sch\351ma courant"));
 	zoom_avant        -> setStatusTip(tr("Agrandit le sch\351ma"));
@@ -368,11 +370,12 @@ void QETApp::actions() {
 	connect(copier,           SIGNAL(triggered()), this,       SLOT(slot_copier())              );
 	connect(coller,           SIGNAL(triggered()), this,       SLOT(slot_coller())              );
 	connect(toggle_aa,        SIGNAL(triggered()), this,       SLOT(toggleAntialiasing())       );
-	connect(f_mosaique,       SIGNAL(triggered()), &workspace, SLOT(tile()));
-	connect(f_cascade,        SIGNAL(triggered()), &workspace, SLOT(cascade()));
-	connect(f_reorganise,     SIGNAL(triggered()), &workspace, SLOT(arrangeIcons()));
-	connect(f_suiv,           SIGNAL(triggered()), &workspace, SLOT(activateNextWindow()));
-	connect(f_prec,           SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow()));
+	connect(f_mosaique,       SIGNAL(triggered()), &workspace, SLOT(tile())                     );
+	connect(f_cascade,        SIGNAL(triggered()), &workspace, SLOT(cascade())                  );
+	connect(f_reorganise,     SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
+	connect(f_suiv,           SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
+	connect(f_prec,           SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
+	connect(infos_schema,     SIGNAL(activated()), this,       SLOT(editInfos())                );
 }
 
 /**
@@ -423,6 +426,8 @@ void QETApp::menus() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(supprimer);
 	menu_edition -> addAction(pivoter);
+	menu_edition -> addSeparator();
+	menu_edition -> addAction(infos_schema);
 	
 	// menu Affichage > Afficher
 	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
@@ -747,6 +752,7 @@ void QETApp::slot_updateActions() {
 	zoom_adapte      -> setEnabled(document_ouvert);
 	zoom_reset       -> setEnabled(document_ouvert);
 	toggle_aa        -> setEnabled(document_ouvert);
+	infos_schema     -> setEnabled(document_ouvert);
 	
 	// actions ayant aussi besoin d'un historique des actions
 	annuler          -> setEnabled(document_ouvert);
@@ -926,3 +932,44 @@ QString QETApp::languagesPath() {
 	return(QDir::current().path() + "/lang/");
 }
 
+void QETApp::editInfos() {
+	// ne fait rien s'il n'y a pas de schema ouvert
+	SchemaVue *sv = schemaEnCours();
+	if (!sv) return;
+	
+	// construit le dialogue
+	QDialog popup;
+	popup.setMinimumWidth(400);
+	popup.setWindowTitle(tr("Cartouche du sch\351ma"));
+	
+	QLineEdit *titre = new QLineEdit(sv -> scene -> titre);
+	QLineEdit *auteur = new QLineEdit(sv -> scene -> auteur);
+	QDate date_schema = QDate(sv -> scene -> date);
+	if (date_schema.isNull() || !date_schema.isValid()) date_schema = QDate::currentDate();
+	QDateEdit *date = new QDateEdit(date_schema);
+	date -> setCalendarPopup(true);
+	QWidget bidon;
+	QGridLayout layout_champs(&bidon);
+	layout_champs.addWidget(new QLabel(tr("Titre : ")), 0, 0);
+	layout_champs.addWidget(titre, 0, 1);
+	layout_champs.addWidget(new QLabel(tr("Auteur : ")), 1, 0);
+	layout_champs.addWidget(auteur, 1, 1);
+	layout_champs.addWidget(new QLabel(tr("Date : ")), 2, 0);
+	layout_champs.addWidget(date, 2, 1);
+	
+	// boutons
+	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
+	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(accept()));
+	
+	// ajout dans une disposition verticale
+	QVBoxLayout layout_v(&popup);
+	layout_v.addWidget(&bidon);
+	layout_v.addWidget(&boutons);
+	if (popup.exec() == QDialog::Accepted) {
+		sv -> scene -> titre = titre -> text();
+		sv -> scene -> auteur = auteur -> text();
+		sv -> scene -> date = date -> date();
+		
+	}
+}
