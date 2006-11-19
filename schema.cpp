@@ -283,6 +283,10 @@ bool Schema::fromXml(QDomDocument &document, QPointF position) {
 					bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
 					if (!cia) foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) if (item == p1) peut_poser_conducteur = false;
 					if (peut_poser_conducteur) new Conducteur(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+					/*if (peut_poser_conducteur) {
+						Conducteur *nc = new Conducteur(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+						nc -> setFlags(QGraphicsItem::ItemIsSelectable);
+					}*/
 				}
 			} else qDebug() << "Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 		}

@@ -11,6 +11,7 @@
 		Q_OBJECT
 		public:
 		PanelAppareils(QWidget * = 0);
+		static QString categoryName(QDir &);
 		public slots:
 		void dragMoveEvent(QDragMoveEvent *);
 		void dropEvent(QDropEvent *);

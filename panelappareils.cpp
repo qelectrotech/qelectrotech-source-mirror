@@ -103,22 +103,7 @@ void PanelAppareils::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_do
 	adr_dossier = dossier.canonicalPath() + "/";
 	
 	// recupere le nom de la categorie
-	QString nom_categorie = nom;
-	if (nom == QString()) {
-		QFile config_dossier(adr_dossier + "qet_directory");
-		// verifie l'existence du fichier
-		if (config_dossier.exists()) {
-			// ouvre le fichier
-			if (config_dossier.open(QIODevice::ReadOnly | QIODevice::Text)) {
-				// lit la premiere ligne
-				char data[512];
-				if (config_dossier.readLine(data, sizeof(data)) != -1) {
-					nom_categorie = QString(data).trimmed();
-				}
-			}
-		}
-		if (nom_categorie == QString()) nom_categorie = dossier.dirName();
-	}
+	QString nom_categorie = (nom != QString()) ? nom : categoryName(dossier);
 	
 	// creation du QTreeWidgetItem representant le dossier
 	QTreeWidgetItem *qtwi_dossier = new QTreeWidgetItem(qtwi_parent, QStringList(nom_categorie));
@@ -158,4 +143,61 @@ void PanelAppareils::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichie
 	qtwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
 	qtwi -> setIcon(0, QIcon(elmt_perso -> pixmap()));
 	qtwi -> setData(0, 42, fichier);
+}
+
+
+/**
+	Methode permettant d'obtenir le nom affichable d'une categorie etant donne
+	son chemin (dossier).
+	@param directory le chemin du dossier representant la categorie
+	@return Le nom affichable de la categorie
+*/
+QString PanelAppareils::categoryName(QDir &directory) {
+	// en cas d'echec de la lecture du fichier de configuration
+	// "qet_directory", le nom du dossier est retourne
+	QString category_name = directory.dirName();
+	// repere le chemin du fichier de configuration de la categorie
+	QFile directory_conf(directory.canonicalPath() + "/qet_directory");
+	// verifie l'existence du fichier
+	if (directory_conf.exists()) {
+		// ouvre le fichier
+		if (directory_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
+			// recupere les deux premiers caracteres de la lcoale en cours du systeme
+			QString system_language = QLocale::system().name().left(2);
+			// lit le contenu du fichier dans un QDomDocument XML
+			QDomDocument document;
+			if (document.setContent(&directory_conf)) {
+				/* parcourt le document XML a la recherche d'un nom
+				par ordre de preference, on prendra :
+					- le nom dans la langue du systeme
+					- le nom en anglais
+					- le nom du dossier
+				*/
+				QDomElement root = document.documentElement();
+				if (root.tagName() == "qet-directory") {
+					bool name_found = false;
+					// parcourt les "names"
+					for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+						QDomElement names = node.toElement();
+						if (names.isNull() || names.tagName() != "names") continue;
+						// parcourt les "name"
+						for (QDomNode n = names.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+							QDomElement name = n.toElement();
+							if (name.isNull() || name.tagName() != "name") continue;
+							if (name.attribute("lang") == system_language) {
+								category_name = name.text();
+								name_found = true;
+								break;
+							} else if (name.attribute("lang") == "en") {
+								category_name = name.text();
+							}
+						}
+						if (name_found) break;
+					}
+				}
+			}
+			directory_conf.close();
+		}
+	}
+	return(category_name);
 }
