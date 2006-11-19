@@ -1,4 +1,5 @@
-<definition	type="element" nom="Contact NF" width="45" height="70" hotspot_x="20" hotspot_y="5" orientation="dnny">
+<definition	type="element" nom="Capteur NF" width="45" 
+height="70" hotspot_x="20" hotspot_y="5" orientation="dnny">
 	<!--Contact-->
 	<ligne x1="10"  y1="20" x2="0"    y2="40" antialias="true"  style="normal" />
 	<ligne x1="0"   y1="0"  x2="0"    y2="20" antialias="false" style="normal" />
