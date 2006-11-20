@@ -1,13 +1,19 @@
-<!ELEMENT definition (borne+|ligne*|cercle*|polygone*)+>
+<!ELEMENT definition (names+|description+)>
 <!ATTLIST definition
 	type        CDATA #FIXED "element"
-	nom         CDATA #REQUIRED
 	width       CDATA #REQUIRED
 	height      CDATA #REQUIRED
 	hotspot_x   CDATA #REQUIRED
 	hotspot_y   CDATA #REQUIRED
 	orientation CDATA "dnnn"
 >
+
+<!ELEMENT names (name)+>
+
+<!ELEMENT name (#PCDATA)>
+<!ATTLIST name lang CDATA #REQUIRED>
+
+<!ELEMENT description (borne+|ligne*|cercle*|polygone*)+>
 
 <!ELEMENT borne    EMPTY>
 <!ATTLIST borne

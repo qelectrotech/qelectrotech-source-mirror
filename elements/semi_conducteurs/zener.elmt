@@ -1,12 +1,19 @@
-<definition	type="element" nom="Zener" width="25" height="45" hotspot_x="15" hotspot_y="25" orientation="dyyy">
-	<!--Diode-->
-	<polygone x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" style="normal" />
-	<ligne x1="0"   y1="-20" x2="0"  y2="20" antialias="false" style="normal" />
-	<ligne x1="-10" y1="10"  x2="10" y2="10" antialias="false" style="normal" />
-	<!--Zener-->
-	<ligne x1="-10" y1="10"  x2="-10" y2="5" antialias="false" style="normal" />
-	<ligne x1="10" y1="10"  x2="10" y2="15" antialias="false" style="normal" />
-	<!--Bornes-->
-	<borne orientation="s" x="0" y="20"  />
-	<borne orientation="n" x="0" y="-20" />
+<!DOCTYPE definition SYSTEM "definition_element.dtd">
+<definition	type="element" width="25" height="45" hotspot_x="15" hotspot_y="25" orientation="dyyy">
+	<names>
+		<name lang="fr">Zener</name>
+		<name lang="en">Zener</name>
+	</names>
+	<description>
+		<!--Diode-->
+		<polygone x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" style="normal" />
+		<ligne x1="0"   y1="-20" x2="0"  y2="20" antialias="false" style="normal" />
+		<ligne x1="-10" y1="10"  x2="10" y2="10" antialias="false" style="normal" />
+		<!--Zener-->
+		<ligne x1="-10" y1="10"  x2="-10" y2="5" antialias="false" style="normal" />
+		<ligne x1="10" y1="10"  x2="10" y2="15" antialias="false" style="normal" />
+		<!--Bornes-->
+		<borne orientation="s" x="0" y="20"  />
+		<borne orientation="n" x="0" y="-20" />
+	</description>
 </definition>

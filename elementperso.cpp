@@ -7,7 +7,8 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 	elmt_etat = -1;
 	
 	// le fichier doit exister
-	if (!QFileInfo(nomfichier).exists()) {
+	QFileInfo infos_file(nomfichier);
+	if (!infos_file.exists() || !infos_file.isFile()) {
 		if (etat != NULL) *etat = 1;
 		elmt_etat = 1;
 		return;
@@ -40,7 +41,6 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 	// ces attributs doivent etre presents et valides
 	int w, h, hot_x, hot_y;
 	if (
-		racine.attribute("nom") == QString("") ||\
 		!attributeIsAnInteger(racine, QString("width"), &w) ||\
 		!attributeIsAnInteger(racine, QString("height"), &h) ||\
 		!attributeIsAnInteger(racine, QString("hotspot_x"), &hot_x) ||\
@@ -52,8 +52,7 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 		return;
 	}
 	
-	// on peut d'ores et deja specifier le nom, la taille et le hotspot
-	priv_nom = racine.attribute("nom");
+	// on peut d'ores et deja specifier la taille et le hotspot
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
 	setConnexionsInternesAcceptees(racine.attribute("ci") == "true");
@@ -64,8 +63,7 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 		return;
 	}
 	
-	// parcours des enfants de la definition
-	int nb_elements_parses = 0;
+	// initialisation du QPainter (pour dessiner l'element)
 	QPainter qp;
 	qp.begin(&dessin);
 	QPen t;
@@ -73,16 +71,53 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 	t.setWidthF(1.0);
 	t.setJoinStyle(Qt::MiterJoin);
 	qp.setPen(t);
+	
+	// recupere les deux premiers caracteres de la locale en cours du systeme
+	QString system_language = QLocale::system().name().left(2);
+	
+	// au depart, le nom de l'element est celui du fichier le decrivant
+	bool name_found = false;
+	QString name_elmt = infos_file.baseName();
+	
+	// parcours des enfants de la definition : noms et parties du dessin
+	int nb_elements_parses = 0;
 	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		QDomElement elmts = node.toElement();
-		if(elmts.isNull()) continue;
-		if (parseElement(elmts, qp, s)) ++ nb_elements_parses;
-		else {
-			if (etat != NULL) *etat = 7;
-			elmt_etat = 7;
-			return;
+		if (elmts.isNull()) continue;
+		if (elmts.tagName() == "names") {
+			// gestion des noms de l'element
+			if (name_found) continue;
+			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+				QDomElement qde = n.toElement();
+				if (qde.isNull() || qde.tagName() != "name" || !qde.hasAttribute("lang")) continue;
+				if (qde.attribute("lang") == system_language) {
+					name_elmt = qde.text();
+					name_found = true;
+					break;
+				} else if (qde.attribute("lang") == "en") {
+					name_elmt = qde.text();
+				}
+			}
+		} else if (elmts.tagName() == "description") {
+			// gestion de la description graphique de l'element
+			//  = parcours des differentes parties du dessin
+			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+				QDomElement qde = n.toElement();
+				if (qde.isNull()) continue;
+				if (parseElement(qde, qp, s)) ++ nb_elements_parses;
+				else {
+					if (etat != NULL) *etat = 7;
+					elmt_etat = 7;
+					return;
+				}
+			}
 		}
 	}
+	
+	// on garde le nom trouve
+	priv_nom = name_elmt;
+	
+	// fin du dessin
 	qp.end();
 	
 	// il doit y avoir au moins un element charge

@@ -1,23 +1,30 @@
-<definition	type="element" nom="Transformateur monophasé" width="45" height="105" hotspot_x="25" hotspot_y="45" orientation="dnny">
-	<!--Transforateur-->
-	<cercle x="-20"  y="-20"  rayon="40"        antialias="true"   style="normal" />
-	<cercle x="-20"  y="0"    rayon="40"        antialias="true"   style="normal" />
-	<!--Phase 1-->
-	<ligne  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false"  style="normal" />
-	<ligne  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true"   style="normal" />
-	<!--Neutre 1-->
-	<ligne  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false"  style="normal" />
-	<ligne  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true"   style="normal" />
-	<!--Phase 2-->
-	<ligne  x1="-20" y1="60" x2="-20" y2="40" antialias="false"  style="normal" />
-	<ligne  x1="-20" y1="40" x2="-14" y2="34" antialias="true"   style="normal" />
-	<!--Neutre 2-->
-	<ligne  x1="20"  y1="60" x2="20"  y2="40" antialias="false"  style="normal" />
-	<ligne  x1="20"  y1="40" x2="14"  y2="34" antialias="true"   style="normal" />
-	<!--Bornes supérieurs-->
-	<borne  orientation="n"   x="-20"  y="-40"  />
-	<borne  orientation="n"   x="20"   y="-40"  />
-	<!--Bornes inférieurs-->
-	<borne  orientation="s"   x="-20"  y="60"  />
-	<borne  orientation="s"   x="20"   y="60"  />
+<!DOCTYPE definition SYSTEM "definition_element.dtd">
+<definition	type="element" width="45" height="105" hotspot_x="25" hotspot_y="45" orientation="dnny">
+	<names>
+		<name lang="fr">Transformateur monophasé</name>
+		<name lang="en">One-phase transformer</name>
+	</names>
+	<description>
+		<!--Transforateur-->
+		<cercle x="-20"  y="-20"  rayon="40"        antialias="true"   style="normal" />
+		<cercle x="-20"  y="0"    rayon="40"        antialias="true"   style="normal" />
+		<!--Phase 1-->
+		<ligne  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false"  style="normal" />
+		<ligne  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true"   style="normal" />
+		<!--Neutre 1-->
+		<ligne  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false"  style="normal" />
+		<ligne  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true"   style="normal" />
+		<!--Phase 2-->
+		<ligne  x1="-20" y1="60" x2="-20" y2="40" antialias="false"  style="normal" />
+		<ligne  x1="-20" y1="40" x2="-14" y2="34" antialias="true"   style="normal" />
+		<!--Neutre 2-->
+		<ligne  x1="20"  y1="60" x2="20"  y2="40" antialias="false"  style="normal" />
+		<ligne  x1="20"  y1="40" x2="14"  y2="34" antialias="true"   style="normal" />
+		<!--Bornes supérieurs-->
+		<borne  orientation="n"   x="-20"  y="-40"  />
+		<borne  orientation="n"   x="20"   y="-40"  />
+		<!--Bornes inférieurs-->
+		<borne  orientation="s"   x="-20"  y="60"  />
+		<borne  orientation="s"   x="20"   y="60"  />
+	</description>
 </definition>
