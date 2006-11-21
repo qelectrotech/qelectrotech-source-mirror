@@ -147,6 +147,7 @@ bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Schema *s) {
 	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
 	else if (e.tagName() == "cercle") return(parseCercle(e, qp));
+	else if (e.tagName() == "arc") return(parseArc(e, qp));
 	else if (e.tagName() == "polygone") return(parsePolygone(e, qp));
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
 }
@@ -188,6 +189,23 @@ bool ElementPerso::parseEllipse(QDomElement &e, QPainter &qp) {
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
+	qp.restore();
+	return(true);
+}
+
+bool ElementPerso::parseArc(QDomElement &e, QPainter &qp) {
+	// verifie la presence des attributs obligatoires
+	double arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
+	if (!attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
+	if (!attributeIsAReal(e, QString("y"),       &arc_y))  return(false);
+	if (!attributeIsAReal(e, QString("largeur"), &arc_l))  return(false);
+	if (!attributeIsAReal(e, QString("hauteur"), &arc_h))  return(false);
+	if (!attributeIsAReal(e, QString("start"),   &arc_s))  return(false);
+	if (!attributeIsAReal(e, QString("angle"),   &arc_a))  return(false);
+	
+	qp.save();
+	setPainterStyle(e, qp);
+	qp.drawArc(QRectF(arc_x, arc_y, arc_l, arc_h), (int)(arc_s * 16), (int)(arc_a * 16));
 	qp.restore();
 	return(true);
 }

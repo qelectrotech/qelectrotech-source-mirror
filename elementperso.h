@@ -22,6 +22,7 @@
 		bool parseLigne(QDomElement &, QPainter &);
 		bool parseEllipse(QDomElement &, QPainter &);
 		bool parseCercle(QDomElement &, QPainter &);
+		bool parseArc(QDomElement &, QPainter &);
 		bool parsePolygone(QDomElement &, QPainter &);
 		bool parseBorne(QDomElement &, Schema *);
 		void setQPainterAntiAliasing(QPainter &, bool);
