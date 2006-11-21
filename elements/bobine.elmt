@@ -6,13 +6,13 @@
 	</names>
 	<description>
 		<!--Bobine-->
-		<ligne  x1="-20" y1="-20" x2="-20"  y2="20"  antialias="false"  style="normal" />
-		<ligne  x1="-20" y1="20"  x2="40"   y2="20"  antialias="false"  style="normal" />
-		<ligne  x1="40"  y1="20"  x2="40"   y2="-20" antialias="false"  style="normal" />
-		<ligne  x1="40"  y1="-20" x2="-20"  y2="-20" antialias="false"  style="normal" />
+		<ligne  x1="-20" y1="-20" x2="-20"  y2="20"  antialias="false" />
+		<ligne  x1="-20" y1="20"  x2="40"   y2="20"  antialias="false" />
+		<ligne  x1="40"  y1="20"  x2="40"   y2="-20" antialias="false" />
+		<ligne  x1="40"  y1="-20" x2="-20"  y2="-20" antialias="false" />
 		<!--Fils-->
-		<ligne  x1="0"   y1="-20" x2="0"    y2="-40" antialias="false"  style="normal" />
-		<ligne  x1="0"   y1="20"  x2="0"    y2="40"  antialias="false"  style="normal" />
+		<ligne  x1="0"   y1="-20" x2="0"    y2="-40" antialias="false" />
+		<ligne  x1="0"   y1="20"  x2="0"    y2="40"  antialias="false" />
 		<!--Borne A2-->
 		<borne  orientation="s"   x="0"  y="40"  />
 		<!--Borne A1-->

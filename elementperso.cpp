@@ -145,6 +145,7 @@ void ElementPerso::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Schema *s) {
 	if (e.tagName() == "borne") return(parseBorne(e, s));
 	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
+	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
 	else if (e.tagName() == "cercle") return(parseCercle(e, qp));
 	else if (e.tagName() == "polygone") return(parsePolygone(e, qp));
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
@@ -157,14 +158,8 @@ bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
 	if (!attributeIsAReal(e, QString("y1"), &y1)) return(false);
 	if (!attributeIsAReal(e, QString("x2"), &x2)) return(false);
 	if (!attributeIsAReal(e, QString("y2"), &y2)) return(false);
-	/// @todo : gerer l'antialiasing (mieux que ca !) et le type de trait
-	setQPainterAntiAliasing(&qp, e.attribute("antialias") == "true");
 	qp.save();
-	if (e.attribute("style") == "dashed") {
-		QPen t = qp.pen();
-		t.setStyle(Qt::DashLine);
-		qp.setPen(t);
-	}
+	setPainterStyle(e, qp);
 	qp.drawLine(QLineF(x1, y1, x2, y2));
 	qp.restore();
 	return(true);
@@ -176,9 +171,24 @@ bool ElementPerso::parseCercle(QDomElement &e, QPainter &qp) {
 	if (!attributeIsAReal(e, QString("x"),     &cercle_x)) return(false);
 	if (!attributeIsAReal(e, QString("y"),     &cercle_y)) return(false);
 	if (!attributeIsAReal(e, QString("rayon"), &cercle_r)) return(false);
-	/// @todo : gerer l'antialiasing (mieux que ca !) et le type de trait
-	setQPainterAntiAliasing(&qp, e.attribute("antialias") == "true");
+	qp.save();
+	setPainterStyle(e, qp);
 	qp.drawEllipse(QRectF(cercle_x, cercle_y, cercle_r, cercle_r));
+	qp.restore();
+	return(true);
+}
+
+bool ElementPerso::parseEllipse(QDomElement &e, QPainter &qp) {
+	// verifie la presence des attributs obligatoires
+	double ellipse_x, ellipse_y, ellipse_l, ellipse_h;
+	if (!attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
+	if (!attributeIsAReal(e, QString("y"),       &ellipse_y))  return(false);
+	if (!attributeIsAReal(e, QString("largeur"), &ellipse_l))  return(false);
+	if (!attributeIsAReal(e, QString("hauteur"), &ellipse_h))  return(false);
+	qp.save();
+	setPainterStyle(e, qp);
+	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
+	qp.restore();
 	return(true);
 }
 
@@ -196,8 +206,10 @@ bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 			e.attribute(QString("y%1").arg(j)).toDouble()
 		);
 	}
-	setQPainterAntiAliasing(&qp, e.attribute("antialias") == "true");
+	qp.save();
+	setPainterStyle(e, qp);
 	qp.drawPolygon(points, i-1);
+	qp.restore();
 	return(true);
 }
 
@@ -218,10 +230,10 @@ bool ElementPerso::parseBorne(QDomElement &e, Schema *s) {
 	return(true);
 }
 
-void ElementPerso::setQPainterAntiAliasing(QPainter *qp, bool aa) {
-	qp -> setRenderHint(QPainter::Antialiasing,          aa);
-	qp -> setRenderHint(QPainter::TextAntialiasing,      aa);
-	qp -> setRenderHint(QPainter::SmoothPixmapTransform, aa);
+void ElementPerso::setQPainterAntiAliasing(QPainter &qp, bool aa) {
+	qp.setRenderHint(QPainter::Antialiasing,          aa);
+	qp.setRenderHint(QPainter::TextAntialiasing,      aa);
+	qp.setRenderHint(QPainter::SmoothPixmapTransform, aa);
 }
 
 bool ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
@@ -271,4 +283,78 @@ bool ElementPerso::validOrientationAttribute(QDomElement &e) {
 	ori_d = (Borne::Orientation)d_pos;
 	ori = ori_d;
 	return(true);
+}
+
+/**
+	Applique les parametres de style definis dans l'attribut "style" de
+	l'element XML e au QPainter qp
+	Les styles possibles sont :
+		- line-style : style du trait
+			- dashed : trait en pointilles
+			- normal : trait plein [par defaut]
+		- line-weight : epaiseur du trait
+			- thin : trait fin
+			- normal : trait d'epaisseur 1 [par defaut]
+		- filling : remplissage de la forme
+			- white : remplissage blanc
+			- black : remplissage noir
+			- none : pas de remplissage [par defaut]
+	Les autres valeurs ne sont pas prises en compte.
+	@param e L'element XML a parser
+	@param qp Le QPainter a modifier en fonction des styles
+*/
+void ElementPerso::setPainterStyle(QDomElement &e, QPainter &qp) {
+	// recupere le QPen et la QBrush du QPainter
+	QPen pen = qp.pen();
+	QBrush brush = qp.brush();
+	
+	// attributs par defaut
+	pen.setJoinStyle(Qt::MiterJoin);
+	pen.setCapStyle(Qt::SquareCap);
+	pen.setColor(Qt::black);
+	pen.setStyle(Qt::SolidLine);
+	pen.setWidthF(1.0);
+	brush.setStyle(Qt::NoBrush);
+	
+	// recupere la liste des couples style / valeur
+	QStringList styles = e.attribute("style").split(";", QString::SkipEmptyParts);
+	
+	// agit sur le QPen et la QBrush en fonction des valeurs rencontrees
+	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
+	foreach (QString style, styles) {
+		if (rx.exactMatch(style)) {
+			QString style_name = rx.cap(1);
+			QString style_value = rx.cap(2);
+			if (style_name == "line-style") {
+				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
+				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
+			} else if (style_name == "line-weight") {
+				if (style_value == "thin") pen.setWidth(0);
+				else if (style_value == "normal") pen.setWidthF(1.0);
+			} else if (style_name == "filling") {
+				if (style_value == "white") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::white);
+				} else if (style_value == "black") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::black);
+				} else if (style_value == "none") {
+					brush.setStyle(Qt::NoBrush);
+				}
+			}
+		}
+	}
+	/*line-style:dashed;
+	if (e.attribute("style") == "dashed") {
+		
+		pen.setStyle(Qt::DashLine);
+		
+	}*/
+	
+	// affectation du QPen et de la QBrush modifies au QPainter 
+	qp.setPen(pen);
+	qp.setBrush(brush);
+	
+	// mise en place (ou non) de l'antialiasing
+	setQPainterAntiAliasing(qp, e.attribute("antialias") == "true");
 }

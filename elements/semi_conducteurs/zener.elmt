@@ -6,12 +6,12 @@
 	</names>
 	<description>
 		<!--Diode-->
-		<polygone x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" style="normal" />
-		<ligne x1="0"   y1="-20" x2="0"  y2="20" antialias="false" style="normal" />
-		<ligne x1="-10" y1="10"  x2="10" y2="10" antialias="false" style="normal" />
+		<polygone x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" />
+		<ligne x1="0"   y1="-20" x2="0"  y2="20" antialias="false" />
+		<ligne x1="-10" y1="10"  x2="10" y2="10" antialias="false" />
 		<!--Zener-->
-		<ligne x1="-10" y1="10"  x2="-10" y2="5" antialias="false" style="normal" />
-		<ligne x1="10" y1="10"  x2="10" y2="15" antialias="false" style="normal" />
+		<ligne x1="-10" y1="10"  x2="-10" y2="5" antialias="false" />
+		<ligne x1="10" y1="10"  x2="10" y2="15" antialias="false" />
 		<!--Bornes-->
 		<borne orientation="s" x="0" y="20"  />
 		<borne orientation="n" x="0" y="-20" />

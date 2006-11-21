@@ -20,13 +20,15 @@
 		QPicture dessin;
 		bool parseElement(QDomElement &, QPainter &, Schema *);
 		bool parseLigne(QDomElement &, QPainter &);
+		bool parseEllipse(QDomElement &, QPainter &);
 		bool parseCercle(QDomElement &, QPainter &);
 		bool parsePolygone(QDomElement &, QPainter &);
 		bool parseBorne(QDomElement &, Schema *);
-		void setQPainterAntiAliasing(QPainter *, bool);
+		void setQPainterAntiAliasing(QPainter &, bool);
 		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
 		bool attributeIsAReal(QDomElement &, QString, double * = NULL);
 		bool validOrientationAttribute(QDomElement &);
+		void setPainterStyle(QDomElement &, QPainter &);
 		int nb_bornes;
 	};
 #endif

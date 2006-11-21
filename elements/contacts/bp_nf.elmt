@@ -6,15 +6,15 @@
 	</names>
 	<description>
 		<!--Contact-->
-		<ligne x1="10"  y1="20" x2="0"    y2="40" antialias="true"  style="normal" />
-		<ligne x1="0"   y1="0"  x2="0"    y2="20" antialias="false" style="normal" />
-		<ligne x1="0"   y1="40" x2="0"    y2="60" antialias="false" style="normal" />
-		<ligne x1="15"  y1="20" x2="0"    y2="20" antialias="false" style="normal" />
+		<ligne x1="10"  y1="20" x2="0"    y2="40" antialias="true" />
+		<ligne x1="0"   y1="0"  x2="0"    y2="20" antialias="false" />
+		<ligne x1="0"   y1="40" x2="0"    y2="60" antialias="false" />
+		<ligne x1="15"  y1="20" x2="0"    y2="20" antialias="false" />
 		<!--Poussoir-->
-		<ligne x1="-20"  y1="20" x2="-20"  y2="40" antialias="false" style="dashed" />
-		<ligne x1="-20"  y1="20" x2="-15"  y2="20" antialias="false" style="dashed" />
-		<ligne x1="-20"  y1="40" x2="-15"  y2="40" antialias="false" style="dashed" />
-		<ligne x1="-20"  y1="30" x2="5"   y2="30" antialias="false" style="dashed" />
+		<ligne x1="-20"  y1="20" x2="-20"  y2="40" antialias="false" style="line-style:dashed;" />
+		<ligne x1="-20"  y1="20" x2="-15"  y2="20" antialias="false" style="line-style:dashed;" />
+		<ligne x1="-20"  y1="40" x2="-15"  y2="40" antialias="false" style="line-style:dashed;" />
+		<ligne x1="-20"  y1="30" x2="5"    y2="30" antialias="false" style="line-style:dashed;" />
 		<!--Bornes-->
 		<borne orientation="n" x="0" y="0"  />
 		<borne orientation="s" x="0" y="60" />
