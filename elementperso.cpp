@@ -1,5 +1,25 @@
 #include "elementperso.h"
 
+/**
+	Constructeur de la classe ElementPerso. Permet d'instancier un element
+	utilisable comme un element fixe a la difference que l'element perso lit
+	sa description (noms, dessin, comportement) dans un fichier XML a fournir
+	en parametre.
+	@param nom_fichier Le chemin du fichier XML decrivant l'element
+	@param qgi Le QGraphicsItem parent de cet element
+	@param s Le Schema affichant cet element
+	@param etat Un pointeur facultatif vers un entier. La valeur de cet entier
+	sera changee de maniere a refleter le deroulement de l'instanciation :
+		- 0 : L'instanciation a reussi
+		- 1 : Le fichier n'existe pas
+		- 2 : Le fichier n'a pu etre ouvert
+		- 3 : Le fichier n'est pas un document XML
+		- 4 : Le document XML n'a pas une "definition" comme racine
+		- 5 : Les attributs de la definition ne sont pas presents et / ou valides
+		- 6 : La definition est vide
+		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
+		- 8 : Aucune partie du dessin n'a pu etre chargee
+*/
 ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, int *etat) : ElementFixe(qgi, s) {
 	nomfichier = nom_fichier;
 	nb_bornes = 0;
@@ -134,14 +154,35 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, 
 	elmt_etat = 0;
 }
 
+/**
+	@return Le nombre de bornes que l'element possede
+*/
 int ElementPerso::nbBornes() const {
 	return(nb_bornes);
 }
 
+/**
+	Dessine le composant sur le Schema
+	@param qp Le QPainter a utiliser pour dessiner l'element
+	@param qsogi Les options graphiques
+*/
 void ElementPerso::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	dessin.play(qp);
 }
 
+/**
+	Analyse et prend en compte un element XML decrivant une partie du dessin
+	de l'element perso. Si l'analyse reussit, la partie est ajoutee au dessin.
+	Cette partie peut etre une borne, une ligne, une ellipse, un cercle, un arc
+	de cercle ou un polygone. Cette methode renvoie false si l'analyse
+	d'une de ces formes echoue. Si l'analyse reussit ou dans le cas d'une forme
+	inconnue, cette methode renvoie true. A l'exception des bornes, toutes les
+	formes peuvent avoir un attribut style. @see setPainterStyle
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@param s Le schema sur lequel sera affiche l'element perso
+	@return true si l'analyse reussit, false sinon
+*/
 bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Schema *s) {
 	if (e.tagName() == "borne") return(parseBorne(e, s));
 	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
@@ -152,6 +193,17 @@ bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Schema *s) {
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
 }
 
+/**
+	Analyse un element XML suppose representer une ligne. Si l'analyse
+	reussit, la ligne est ajoutee au dessin.
+	La ligne est definie par les attributs suivants :
+		- x1, y1 : reels, coordonnees d'une extremite de la ligne
+		- x2, y2 : reels, coordonnees de l'autre extremite de la ligne
+		
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+*/
 bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
 	// verifie la presence et la validite des attributs obligatoires
 	double x1, y1, x2, y2;
@@ -166,6 +218,19 @@ bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
 	return(true);
 }
 
+/**
+	Analyse un element XML suppose representer un cercle. Si l'analyse
+	reussit, le cercle est ajoute au dessin.
+	Le cercle est defini par les attributs suivants :
+		- x : abscisse du coin superieur gauche de la quadrature du cercle
+		- y : ordonnee du coin superieur gauche de la quadrature du cercle
+		- rayon : diametre du cercle
+		
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+	@todo utiliser des attributs plus coherents : x et y = centre, rayon = vrai rayon 
+*/
 bool ElementPerso::parseCercle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double cercle_x, cercle_y, cercle_r;
@@ -179,6 +244,20 @@ bool ElementPerso::parseCercle(QDomElement &e, QPainter &qp) {
 	return(true);
 }
 
+/**
+	Analyse un element XML suppose representer une ellipse. Si l'analyse
+	reussit, l'ellipse est ajoutee au dessin.
+	L'ellipse est definie par les attributs suivants :
+		- x : abscisse du coin superieur gauche du rectangle dans lequel s'inscrit l'ellipse
+		- y : ordonnee du coin superieur gauche du rectangle dans lequel s'inscrit l'ellipse
+		- largeur : dimension de la diagonale horizontale de l'ellipse
+		- hauteur : dimension de la diagonale verticale de l'ellipse
+		
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+	@todo utiliser des attributs plus coherents : x et y = centre
+*/
 bool ElementPerso::parseEllipse(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double ellipse_x, ellipse_y, ellipse_l, ellipse_h;
@@ -193,6 +272,20 @@ bool ElementPerso::parseEllipse(QDomElement &e, QPainter &qp) {
 	return(true);
 }
 
+/**
+	Analyse un element XML suppose representer un arc de cercle. Si l'analyse
+	reussit, l'arc de cercle est ajoute au dessin.
+	L'arc de cercle est defini par les quatres parametres d'une ellipse (en fait
+	l'ellipse dans laquelle s'inscrit l'arc de cercle) auxquels s'ajoutent les
+	attributs suivants :
+		- start : angle de depart : l'angle "0 degre" est a trois heures
+		- angle : etendue (en degres) de l'arc de cercle ; une valeur positive
+		va dans le sens contraire des aiguilles d'une montre
+		
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+*/
 bool ElementPerso::parseArc(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
@@ -210,6 +303,16 @@ bool ElementPerso::parseArc(QDomElement &e, QPainter &qp) {
 	return(true);
 }
 
+/**
+	Analyse un element XML suppose representer un polygone. Si l'analyse
+	reussit, le polygone est ajoute au dessin.
+	Le polygone est defini par une serie d'attributs x1, x2, ..., xn et autant
+	d'attributs y1, y2, ..., yn representant les coordonnees des differents
+	points du polygone.
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+*/
 bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 	int i = 1;
 	while(true) {
@@ -231,6 +334,17 @@ bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 	return(true);
 }
 
+/**
+	Analyse un element XML suppose representer une borne. Si l'analyse
+	reussit, la borne est ajoutee a l'element.
+	Une borne est definie par les attributs suivants :
+		- x, y : coordonnees de la borne
+		- orientation  : orientation de la borne = Nord (n), Sud (s), Est (e) ou Ouest (w)
+		
+	@param e L'element XML a analyser
+	@param s Le schema sur lequel l'element perso sera affiche
+	@return true si l'analyse reussit, false sinon
+*/
 bool ElementPerso::parseBorne(QDomElement &e, Schema *s) {
 	// verifie la presence et la validite des attributs obligatoires
 	double bornex, borney;
@@ -241,19 +355,32 @@ bool ElementPerso::parseBorne(QDomElement &e, Schema *s) {
 	if (e.attribute("orientation") == "n") borneo = Borne::Nord;
 	else if (e.attribute("orientation") == "s") borneo = Borne::Sud;
 	else if (e.attribute("orientation") == "e") borneo = Borne::Est;
-	else if (e.attribute("orientation") == "o") borneo = Borne::Ouest;
+	else if (e.attribute("orientation") == "w") borneo = Borne::Ouest;
 	else return(false);
 	new Borne(bornex, borney, borneo, this, s);
 	++ nb_bornes;
 	return(true);
 }
 
+/**
+	Active / desactive l'antialiasing sur un QPainter
+	@param qp Le QPainter a modifier
+	@param aa Booleen a true pour activer l'antialiasing, a false pour le desactiver
+*/
 void ElementPerso::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 	qp.setRenderHint(QPainter::Antialiasing,          aa);
 	qp.setRenderHint(QPainter::TextAntialiasing,      aa);
 	qp.setRenderHint(QPainter::SmoothPixmapTransform, aa);
 }
 
+/**
+	Permet de savoir si l'attribut nom_attribut d'un element XML e est bien un
+	entier. Si oui, sa valeur est copiee dans entier.
+	@param e Element XML
+	@param nom_attribut Nom de l'attribut a analyser
+	@param entier Pointeur facultatif vers un entier
+	@return true si l'attribut est bien un entier, false sinon
+*/
 bool ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
@@ -265,6 +392,14 @@ bool ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, in
 	return(true);
 }
 
+/**
+	Permet de savoir si l'attribut nom_attribut d'un element XML e est bien un
+	reel. Si oui, sa valeur est copiee dans reel.
+	@param e Element XML
+	@param nom_attribut Nom de l'attribut a analyser
+	@param reel Pointeur facultatif vers un double
+	@return true si l'attribut est bien un reel, false sinon
+*/
 bool ElementPerso::attributeIsAReal(QDomElement &e, QString nom_attribut, double *reel) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
@@ -276,6 +411,25 @@ bool ElementPerso::attributeIsAReal(QDomElement &e, QString nom_attribut, double
 	return(true);
 }
 
+/**
+	Verifie si l'attribut "orientation" de l'element XML e correspond bien a la
+	syntaxe decrivant les orientations possibles pour un element.
+	Cette syntaxe comprend exactement 4 lettres :
+		- une pour le Nord
+		- une pour l'Est
+		- une pour le Sud
+		- une pour l'Ouest
+	 
+	Pour chaque orientation, on indique si elle est :
+		- l'orientation par defaut : d
+		- une orientation autorisee : y
+		- une orientation interdire : n
+		
+	Exemple : "dnny" represente un element par defaut oriente vers le nord et qui
+	peut etre oriente vers l'ouest mais pas vers le sud ou vers l'est.
+	@param e Element XML
+	@return true si l'attribut "orientation" est valide, false sinon
+*/
 bool ElementPerso::validOrientationAttribute(QDomElement &e) {
 	// verifie la presence de l'attribut orientation
 	if (!e.hasAttribute("orientation")) return(false);
@@ -317,6 +471,7 @@ bool ElementPerso::validOrientationAttribute(QDomElement &e) {
 			- white : remplissage blanc
 			- black : remplissage noir
 			- none : pas de remplissage [par defaut]
+			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
 	@param qp Le QPainter a modifier en fonction des styles

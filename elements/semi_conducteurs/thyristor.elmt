@@ -16,6 +16,6 @@
 		<borne orientation="s" x="0"   y="20"  />
 		<borne orientation="n" x="0"   y="-20" />
 		<!--Borne Gachette-->
-		<borne orientation="o" x="-15" y="15"  />
+		<borne orientation="w" x="-15" y="15"  />
 	</description>
 </definition>
