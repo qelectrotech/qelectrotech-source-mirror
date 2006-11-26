@@ -25,6 +25,7 @@ Conducteur::Conducteur(Borne *p1, Borne* p2, Element *parent, QGraphicsScene *sc
 	setPen(t);
 	// calcul du rendu du conducteur
 	calculeConducteur();
+	setFlags(QGraphicsItem::ItemIsSelectable);
 }
 
 /**
@@ -47,14 +48,6 @@ void Conducteur::update(qreal x, qreal y, qreal width, qreal height) {
 	calculeConducteur();
 	QGraphicsPathItem::update(x, y, width, height);
 }
-
-/**
-	Destructeur du Conducteur. Avant d'etre detruit, le conducteur se decroche des bornes
-	auxquelles il est lie.
-*/
-/*Conducteur::~Conducteur() {
-
-}*/
 
 /**
 	Met a jour le QPainterPath constituant le conducteur pour obtenir
@@ -125,12 +118,30 @@ void Conducteur::calculeConducteur() {
 	@param qsogi Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
-void Conducteur::paint(QPainter *qp, const QStyleOptionGraphicsItem *qsogi, QWidget *qw) {
+void Conducteur::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QWidget */*qw*/) {
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing,          false);
 	qp -> setRenderHint(QPainter::TextAntialiasing,      false);
 	qp -> setRenderHint(QPainter::SmoothPixmapTransform, false);
-	QGraphicsPathItem::paint(qp, qsogi, qw);
+	
+	// recupere le QPen et la QBrush du QPainter
+	QPen pen = qp -> pen();
+	QBrush brush = qp -> brush();
+	
+	// attributs par defaut
+	pen.setJoinStyle(Qt::MiterJoin);
+	pen.setCapStyle(Qt::SquareCap);
+	pen.setColor(isSelected() ? Qt::red : Qt::black);
+	pen.setStyle(Qt::SolidLine);
+	pen.setWidthF(1.0);
+	brush.setStyle(Qt::NoBrush);
+	
+	// affectation du QPen et de la QBrush modifies au QPainter 
+	qp -> setPen(pen);
+	qp -> setBrush(brush);
+	
+	qp -> drawPath(path());
+	//QGraphicsPathItem::paint(qp, qsogi, qw);
 	qp -> restore();
 }
 

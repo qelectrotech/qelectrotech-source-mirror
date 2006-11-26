@@ -81,19 +81,27 @@ void SchemaVue::selectInvert() {
 	Supprime les composants selectionnes
 */
 void SchemaVue::supprimer() {
-	QList<QGraphicsItem *> garbage_elmt;
-	QList<QGraphicsItem *>   garbage_conducteurs;
 	
-	// useless but careful : creating two lists : one for wires, one for elements
+	QList<QGraphicsItem *> garbage_elmt;
+	QList<QGraphicsItem *> garbage_conducteurs;
+	
+	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
-		if (!garbage_elmt.contains(qgi)) garbage_elmt.append(qgi);
-		// pour chaque enfant de l'element
-		foreach (QGraphicsItem *child, qgi -> children()) {
-			// si cet enfant est une borne
-			if (Borne *p = qgraphicsitem_cast<Borne *>(child)) {
-				// alors chaque conducteur de la borne est recense
-				foreach (Conducteur *f, p -> conducteurs()) {
-					if (!garbage_conducteurs.contains(f)) garbage_conducteurs.append(f);
+		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
+		if (qgraphicsitem_cast<Conducteur *>(qgi)) {
+			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
+			if (!garbage_conducteurs.contains(qgi)) garbage_conducteurs.append(qgi);
+		} else if (qgraphicsitem_cast<Element *>(qgi)) {
+			// s'il s'agit d'un element, on veille a enlever ses conducteurs
+			if (!garbage_elmt.contains(qgi)) garbage_elmt.append(qgi);
+			// pour chaque enfant de l'element
+			foreach (QGraphicsItem *child, qgi -> children()) {
+				// si cet enfant est une borne
+				if (Borne *p = qgraphicsitem_cast<Borne *>(child)) {
+					// alors chaque conducteur de la borne est recense
+					foreach (Conducteur *f, p -> conducteurs()) {
+						if (!garbage_conducteurs.contains(f)) garbage_conducteurs.append(f);
+					}
 				}
 			}
 		}
