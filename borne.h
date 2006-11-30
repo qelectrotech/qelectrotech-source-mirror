@@ -40,7 +40,7 @@
 		QList<Conducteur *> conducteurs() const; 
 		Borne::Orientation orientation() const;
 		inline QPointF amarrageConducteur() const { return(mapToScene(amarrage_conducteur)); }
-		void updateConducteur();
+		void updateConducteur(QPointF = QPointF());
 		
 		// methodes relatives a l'import/export au format XML
 		static bool valideXml(QDomElement  &);

@@ -38,6 +38,18 @@ void Conducteur::update(const QRectF &rect = QRectF()) {
 }
 
 /**
+	Met a jour la representation graphique du conducteur en considerant que la borne b
+	a pour position pos
+	@param rect Rectangle a mettre a jour
+	@param b Borne
+	@param pos position de la borne b
+*/
+void Conducteur::updateWithNewPos(const QRectF &rect, const Borne *b, const QPointF &newpos) {
+	calculeConducteurWithNewPos(b, newpos);
+	QGraphicsPathItem::update(rect);
+}
+
+/**
 	Met a jour la representation graphique du conducteur.
 	@param x      abscisse  du rectangle a mettre a jour
 	@param y      ordonnee du rectangle a mettre a jour
@@ -54,11 +66,32 @@ void Conducteur::update(qreal x, qreal y, qreal width, qreal height) {
 	un conducteur uniquement compose de droites reliant les deux bornes.
 */
 void Conducteur::calculeConducteur() {
-	QPainterPath t;
-	
 	QPointF p1 = borne1 -> amarrageConducteur();
 	QPointF p2 = borne2 -> amarrageConducteur();
-	
+	priv_calculeConducteur(p1, p2);
+}
+
+/**
+	Met a jour le QPainterPath constituant le conducteur pour obtenir
+	un conducteur uniquement compose de droites reliant les deux bornes.
+*/
+void Conducteur::calculeConducteurWithNewPos(const Borne *b, const QPointF &newpos) {
+	QPointF p1, p2;
+	if (b == borne1) {
+		p1 = newpos;
+		p2 = borne2 -> amarrageConducteur();
+	} else if (b == borne2) {
+		p1 = borne1 -> amarrageConducteur();
+		p2 = newpos;
+	} else {
+		p1 = borne1 -> amarrageConducteur();
+		p2 = borne2 -> amarrageConducteur();
+	}
+	priv_calculeConducteur(p1, p2);
+}
+
+void Conducteur::priv_calculeConducteur(const QPointF &p1, const QPointF &p2) {
+	QPainterPath t;
 	QPointF depart, arrivee;
 	Borne::Orientation ori_depart, ori_arrivee;
 	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite

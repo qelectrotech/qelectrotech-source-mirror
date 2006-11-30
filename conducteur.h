@@ -15,8 +15,9 @@
 		
 		void destroy();
 		bool isDestroyed() const { return(destroyed); }
-		void update(const QRectF & rect);
-		void update(qreal x, qreal y, qreal width, qreal height);
+		void updateWithNewPos(const QRectF &, const Borne *, const QPointF &);
+		void update(const QRectF &);
+		void update(qreal, qreal, qreal, qreal);
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 		static bool valideXml(QDomElement &);
 		
@@ -29,6 +30,8 @@
 		bool destroyed;
 		
 		void calculeConducteur();
+		void calculeConducteurWithNewPos(const Borne *, const QPointF &);
+		void priv_calculeConducteur(const QPointF &, const QPointF &);
 		bool surLeMemeAxe(Borne::Orientation, Borne::Orientation);
 		bool estHorizontale(Borne::Orientation a);
 		bool estVerticale(Borne::Orientation a);

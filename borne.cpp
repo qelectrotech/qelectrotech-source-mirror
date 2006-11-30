@@ -334,10 +334,19 @@ void Borne::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 
 /**
 	Met a jour l'eventuel conducteur relie a la Borne.
+	@param newpos Position de l'element parent a prendre en compte
 */
-void Borne::updateConducteur() {
-	if (scene()) {
-		foreach (Conducteur *conducteur, liste_conducteurs) if (!conducteur -> isDestroyed()) conducteur -> update(QRectF()/*scene()->sceneRect()*/);
+void Borne::updateConducteur(QPointF newpos) {
+	if (!scene() || !parentItem()) return;
+	foreach (Conducteur *conducteur, liste_conducteurs) {
+		if (conducteur -> isDestroyed()) continue;
+		if (newpos == QPointF()) conducteur -> update(QRectF());
+		else {
+			// determine la translation subie par l'element parent
+			QPointF translation = newpos - parentItem() -> pos();
+			// rafraichit le conducteur en tenant compte de la translation
+			conducteur -> updateWithNewPos(QRectF(), this, amarrageConducteur() + translation);
+		}
 	}
 }
 
@@ -409,3 +418,4 @@ bool Borne::fromXml(QDomElement &borne) {
 		borne.attribute("orientation").toInt() == sens
 	);
 }
+

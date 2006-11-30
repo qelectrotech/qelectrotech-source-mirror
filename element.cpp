@@ -98,10 +98,17 @@ QPixmap Element::pixmap() {
 }
 
 /**
-	@todo distinguer les bornes avec un cast dynamique
+	Gere les changements d'etat de l'element
+	@param change type du changement d'etat
+	@param value valeur du changement d'etat
+	@return la valeur du changement d'etat
 */
 QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
+	if (change == QGraphicsItem::ItemPositionChange) {
+		foreach(QGraphicsItem *qgi, children()) {
+			if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur(value.toPointF());
+		}
+	} else if (change == QGraphicsItem::ItemSelectedChange) {
 		foreach(QGraphicsItem *qgi, children()) {
 			if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur();
 		}
@@ -192,10 +199,6 @@ void Element::setPos(const QPointF &p) {
 		int p_y = qRound(p.y() / 10.0) * 10;
 		QGraphicsItem::setPos(p_x, p_y);
 	} else QGraphicsItem::setPos(p);
-	// actualise les bornes / conducteurs
-	foreach(QGraphicsItem *qgi, children()) {
-		if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur();
-	}
 }
 
 /**
@@ -215,7 +218,7 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	/*&& (flags() & ItemIsMovable)*/ // on le sait qu'il est movable
 	if (e -> buttons() & Qt::LeftButton) {
 		QPointF oldPos = pos();
-		setPos(mapToParent(e->pos()) - matrix().map(e->buttonDownPos(Qt::LeftButton)));
+		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
 		QPointF diff = pos() - oldPos;
 		
 		// Recupere la liste des elements selectionnes
@@ -223,13 +226,13 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		if (scene()) {
 			selectedItems = scene() -> selectedItems();
 		} else if (QGraphicsItem *parent = parentItem()) {
-			while (parent && parent->isSelected()) selectedItems << parent;
+			while (parent && parent -> isSelected()) selectedItems << parent;
 		}
 		
 		// Deplace tous les elements selectionnes
 		foreach (QGraphicsItem *item, selectedItems) {
-			if (!item->parentItem() || !item->parentItem()->isSelected())
-				if (item != this) item->setPos(item->pos() + diff);
+			if (!item -> parentItem() || !item -> parentItem() -> isSelected())
+				if (item != this) item -> setPos(item -> pos() + diff);
 		}
 	} else e -> ignore();
 }
