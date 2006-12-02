@@ -123,6 +123,10 @@ bool Element::setOrientation(Borne::Orientation o) {
 	// rotation en consequence et rafraichissement de l'element graphique
 	rotate(90.0 * (o - ori));
 	ori = o;
+	update();
+	foreach(QGraphicsItem *qgi, children()) {
+		if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur();
+	}
 	return(true);
 }
 
@@ -215,7 +219,6 @@ void Element::setPos(qreal x, qreal y) {
 	Gere les mouvements de souris lies a l'element, notamment
 */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	/*&& (flags() & ItemIsMovable)*/ // on le sait qu'il est movable
 	if (e -> buttons() & Qt::LeftButton) {
 		QPointF oldPos = pos();
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
@@ -232,7 +235,7 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		// Deplace tous les elements selectionnes
 		foreach (QGraphicsItem *item, selectedItems) {
 			if (!item -> parentItem() || !item -> parentItem() -> isSelected())
-				if (item != this) item -> setPos(item -> pos() + diff);
+				if (item != this && qgraphicsitem_cast<Element *>(item)) item -> setPos(item -> pos() + diff);
 		}
 	} else e -> ignore();
 }

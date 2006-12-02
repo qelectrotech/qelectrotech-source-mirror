@@ -33,14 +33,10 @@
 		QString folio;       // vraiment necessaire ce truc ?
 		QString nom_fichier; // meme remarque
 		
-		protected:
-		virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-		virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 		private:
 		QGraphicsLineItem *poseur_de_conducteur;
 		bool doit_dessiner_grille;
-		Element *elementFromXml(QDomElement &e, QHash<int, Borne *> &);
-		QPoint translation;
+		Element *elementFromXml(QDomElement &, QHash<int, Borne *> &);
 		
 		private slots:
 		void slot_checkSelectionChange();

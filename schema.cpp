@@ -18,7 +18,6 @@ Schema::Schema(QObject *parent) : QGraphicsScene(parent) {
 	poseur_de_conducteur -> setPen(t);
 	poseur_de_conducteur -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	doit_dessiner_grille = true;
-	translation = QPoint(0, 0);
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChange()));
 }
 
@@ -332,55 +331,4 @@ void Schema::slot_checkSelectionChange() {
 	QList<QGraphicsItem *> selecteditems = selectedItems();
 	if (cache_selecteditems != selecteditems) emit(selectionChanged());
 	cache_selecteditems = selecteditems;
-}
-
-/**
-	Gere les mouvements de souris sur le schema et, ipso facto, les
-	deplacements d'elements. Cette fonction veille a ne deplacer que les
-	elements (les conducteurs sont remis a jour par les bornes des elements)
-	et tient compte de la grille.
-	@param mouseEvent Un QGraphicsSceneMouseEvent decrivant l'evenement
-	"mouvement de souris"
-*/
-void Schema::mouseMoveEvent(QGraphicsSceneMouseEvent *mouseEvent) {
-	if (mouseEvent -> buttons() & Qt::LeftButton) {
-		translation += (mouseEvent -> scenePos() - mouseEvent -> lastScenePos()).toPoint();
-		
-		bool doit_translater = false;
-		int coeffx = 0, coeffy = 0;
-		
-		if (translation.x() >= GRILLE_X) {
-			doit_translater = true;
-			coeffx = translation.x() / GRILLE_X;
-			translation.setX(translation.x() % GRILLE_X);
-		} else if (translation.x() <= -GRILLE_X) {
-			doit_translater = true;
-			coeffx = translation.x() / GRILLE_X;
-			translation.setX(translation.x() % GRILLE_X);
-		}
-		
-		if (translation.y() >= GRILLE_Y) {
-			doit_translater = true;
-			coeffy = translation.y() / GRILLE_Y;
-			translation.setY(translation.y() % GRILLE_Y);
-		} else if (translation.y() <= -GRILLE_Y) {
-			doit_translater = true;
-			coeffy = translation.y() / GRILLE_Y;
-			translation.setY(translation.y() % GRILLE_Y);
-		}
-		
-		if (doit_translater) {
-			// parcourt la listes des QGraphicsItem
-			foreach (QGraphicsItem *qgi, selectedItems()) {
-				// translate uniquement les elements (pas les conducteurs)
-				if (Element *e = qgraphicsitem_cast<Element *>(qgi))
-					e -> setPos(e -> pos() + QPointF(GRILLE_X * coeffx, GRILLE_Y * coeffy));
-			}
-		}
-	}
-}
-
-void Schema::mouseReleaseEvent(QGraphicsSceneMouseEvent *mouseEvent) {
-	translation = QPoint(0, 0);
-	QGraphicsScene::mouseReleaseEvent(mouseEvent);
 }

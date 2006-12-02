@@ -228,7 +228,6 @@ void Borne::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 		s -> poseConducteur(true);
 		setCursor(Qt::CrossCursor);
 	}
-	//QGraphicsItem::mouseReleaseEvent(e);
 }
 
 /**
