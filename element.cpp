@@ -9,6 +9,7 @@
 */
 Element::Element(QGraphicsItem *parent, Schema *scene) : QGraphicsItem(parent, scene) {
 	peut_relier_ses_propres_bornes = false;
+	setZValue(10);
 }
 
 /**
