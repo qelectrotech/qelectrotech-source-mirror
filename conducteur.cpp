@@ -90,25 +90,85 @@ void Conducteur::calculeConducteurWithNewPos(const Borne *b, const QPointF &newp
 	priv_calculeConducteur(p1, p2);
 }
 
+/**
+	@param p1 Coordonnees du point d'amarrage de la borne 1
+	@param p2 Coordonnees du point d'amarrage de la borne 2
+*/
 void Conducteur::priv_calculeConducteur(const QPointF &p1, const QPointF &p2) {
 	QPainterPath t;
-	QPointF depart, arrivee;
-	Borne::Orientation ori_depart, ori_arrivee;
+	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
+	Borne::Orientation ori_borne1, ori_borne2, ori_depart, ori_arrivee;
+	
+	// recupere les orientations des bornes
+	ori_borne1 = borne1 -> orientation();
+	ori_borne2 = borne2 -> orientation();
+	
+	// mappe les points par rapport a la scene
+	sp1 = mapFromScene(p1);
+	sp2 = mapFromScene(p2);
+	
+	// tailles des prolongements
+	qreal first_seg_size = 10;
+	qreal last_seg_size  = 10;
+	
+	// prolonge la borne 1
+	switch(ori_borne1) {
+		case Borne::Nord:
+			newp1 = QPointF(sp1.x(), sp1.y() - first_seg_size);
+			break;
+		case Borne::Est:
+			newp1 = QPointF(sp1.x() + first_seg_size, sp1.y());
+			break;
+		case Borne::Sud:
+			newp1 = QPointF(sp1.x(), sp1.y() + first_seg_size);
+			break;
+		case Borne::Ouest:
+			newp1 = QPointF(sp1.x() - first_seg_size, sp1.y());
+			break;
+		default: newp1 = sp1;
+	}
+	
+	// prolonge la borne 2
+	switch(ori_borne2) {
+		case Borne::Nord:
+			newp2 = QPointF(sp2.x(), sp2.y() - last_seg_size);
+			break;
+		case Borne::Est:
+			newp2 = QPointF(sp2.x() + last_seg_size, sp2.y());
+			break;
+		case Borne::Sud:
+			newp2 = QPointF(sp2.x(), sp2.y() + last_seg_size);
+			break;
+		case Borne::Ouest:
+			newp2 = QPointF(sp2.x() - last_seg_size, sp2.y());
+			break;
+		default: newp2 = sp2;
+	}
+	
 	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite
-	if (p1.x() <= p2.x()) {
-		depart      = mapFromScene(p1);
-		arrivee     = mapFromScene(p2);
-		ori_depart  = borne1 -> orientation();
-		ori_arrivee = borne2 -> orientation();
+	if (newp1.x() <= newp2.x()) {
+		depart      = newp1;
+		arrivee     = newp2;
+		depart0     = sp1;
+		arrivee0    = sp2;
+		ori_depart  = ori_borne1;
+		ori_arrivee = ori_borne2;
 	} else {
-		depart      = mapFromScene(p2);
-		arrivee     = mapFromScene(p1);
-		ori_depart  = borne2 -> orientation();
-		ori_arrivee = borne1 -> orientation();
+		depart      = newp2;
+		arrivee     = newp1;
+		depart0     = sp2;
+		arrivee0    = sp1;
+		ori_depart  = ori_borne2;
+		ori_arrivee = ori_borne1;
 	}
 	
 	// debut du trajet
-	t.moveTo(depart);
+	t.moveTo(depart0);
+	
+	// prolongement de la borne de depart 
+	t.lineTo(depart);
+	
+	// commence le vrai trajet
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
 		if ((ori_depart == Borne::Nord && (ori_arrivee == Borne::Sud || ori_arrivee == Borne::Ouest)) || (ori_depart == Borne::Est && ori_arrivee == Borne::Ouest)) {
@@ -140,8 +200,13 @@ void Conducteur::priv_calculeConducteur(const QPointF &p1, const QPointF &p2) {
 			t.lineTo(depart.x(), arrivee.y()); // cas « 2 »
 		} else t.lineTo(arrivee.x(), depart.y()); // cas « 1 »
 	}
-	// fin du trajet
+	
+	// fin du vrai trajet
 	t.lineTo(arrivee);
+	
+	// prolongement de la borne d'arrivee
+	t.lineTo(arrivee0);
+	
 	setPath(t);
 }
 
