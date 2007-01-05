@@ -52,7 +52,6 @@ void SchemaVue::setAntialiasing(bool aa) {
 
 /**
 	appelle la methode select sur tous les elements de la liste d'elements
-	@todo modifier selectAll pour l'integration des conducteurs
 */
 void SchemaVue::selectAll() {
 	if (scene -> items().isEmpty()) return;
@@ -61,7 +60,6 @@ void SchemaVue::selectAll() {
 
 /**
 	appelle la methode deselect sur tous les elements de la liste d'elements
-	@todo modifier selectNothing pour l'integration des conducteurs
 */
 void SchemaVue::selectNothing() {
 	if (scene -> items().isEmpty()) return;
@@ -70,7 +68,6 @@ void SchemaVue::selectNothing() {
 
 /**
 	Inverse l'etat de selection de tous les elements de la liste d'elements
-	@todo modifier selectInvert pour l'integration des conducteurs
  */
 void SchemaVue::selectInvert() {
 	if (scene -> items().isEmpty()) return;
@@ -389,7 +386,6 @@ bool SchemaVue::enregistrer() {
 	Si l'enregistrement reussit, le nom du fichier est conserve et la fonction renvoie true.
 	Sinon, faux est renvoye.
 	@return true si l'enregistrement a reussi, false sinon
-	@todo detecter le chemin du bureau automatiquement
 */
 bool SchemaVue::enregistrer_sous() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer le schema

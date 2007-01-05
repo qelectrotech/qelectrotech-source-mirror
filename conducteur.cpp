@@ -2,6 +2,10 @@
 #include "conducteur.h"
 #include "element.h"
 
+bool Conducteur::pen_and_brush_initialized = false;
+QPen Conducteur::conducer_pen = QPen();
+QBrush Conducteur::conducer_brush = QBrush();
+
 /**
 	Constructeur
 	@param p1     Premiere Borne auquel le conducteur est lie
@@ -19,12 +23,20 @@ Conducteur::Conducteur(Borne *p1, Borne* p2, Element *parent, QGraphicsScene *sc
 	// en cas d'echec de l'ajout (conducteur deja existant notamment)
 	if (!ajout_p1 || !ajout_p2) return;
 	destroyed = false;
-	// le conducteur est represente par un trait fin
-	QPen t;
-	t.setWidthF(1.0);
-	setPen(t);
+	modified_path = false;
+	// attributs de dessin par defaut (communs a tous les conducteurs)
+	if (!pen_and_brush_initialized) {
+		conducer_pen.setJoinStyle(Qt::MiterJoin);
+		conducer_pen.setCapStyle(Qt::SquareCap);
+		conducer_pen.setColor(Qt::black);
+		conducer_pen.setStyle(Qt::SolidLine);
+		conducer_pen.setWidthF(1.0);
+		conducer_brush.setColor(Qt::white);
+		conducer_brush.setStyle(Qt::NoBrush);
+		pen_and_brush_initialized = true;
+	}
 	// calcul du rendu du conducteur
-	calculeConducteur();
+	priv_calculeConducteur(borne1 -> amarrageConducteur(), borne1 -> orientation(), borne2 -> amarrageConducteur(), borne2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 }
 
@@ -32,8 +44,16 @@ Conducteur::Conducteur(Borne *p1, Borne* p2, Element *parent, QGraphicsScene *sc
 	Met a jour la representation graphique du conducteur.
 	@param rect Rectangle a mettre a jour
 */
-void Conducteur::update(const QRectF &rect = QRectF()) {
-	calculeConducteur();
+void Conducteur::update(const QRectF &rect) {
+	// utilise soit la fonction priv_modifieConducteur soit la fonction priv_calculeConducteur
+	void (Conducteur::* fonction_update) (const QPointF &, Borne::Orientation, const QPointF &, Borne::Orientation);
+	fonction_update = (points.count() && modified_path) ? &Conducteur::priv_modifieConducteur : &Conducteur::priv_calculeConducteur;
+	
+	// appelle la bonne fonction pour calculer l'aspect du conducteur
+	(this ->* fonction_update)(
+		borne1 -> amarrageConducteur(), borne1 -> orientation(),
+		borne2 -> amarrageConducteur(), borne2 -> orientation()
+	);
 	QGraphicsPathItem::update(rect);
 }
 
@@ -45,37 +65,6 @@ void Conducteur::update(const QRectF &rect = QRectF()) {
 	@param pos position de la borne b
 */
 void Conducteur::updateWithNewPos(const QRectF &rect, const Borne *b, const QPointF &newpos) {
-	calculeConducteurWithNewPos(b, newpos);
-	QGraphicsPathItem::update(rect);
-}
-
-/**
-	Met a jour la representation graphique du conducteur.
-	@param x      abscisse  du rectangle a mettre a jour
-	@param y      ordonnee du rectangle a mettre a jour
-	@param width  longueur du rectangle a mettre a jour
-	@param height hauteur du rectangle a mettre a jour
-*/
-void Conducteur::update(qreal x, qreal y, qreal width, qreal height) {
-	calculeConducteur();
-	QGraphicsPathItem::update(x, y, width, height);
-}
-
-/**
-	Met a jour le QPainterPath constituant le conducteur pour obtenir
-	un conducteur uniquement compose de droites reliant les deux bornes.
-*/
-void Conducteur::calculeConducteur() {
-	QPointF p1 = borne1 -> amarrageConducteur();
-	QPointF p2 = borne2 -> amarrageConducteur();
-	priv_calculeConducteur(p1, p2);
-}
-
-/**
-	Met a jour le QPainterPath constituant le conducteur pour obtenir
-	un conducteur uniquement compose de droites reliant les deux bornes.
-*/
-void Conducteur::calculeConducteurWithNewPos(const Borne *b, const QPointF &newpos) {
 	QPointF p1, p2;
 	if (b == borne1) {
 		p1 = newpos;
@@ -87,86 +76,116 @@ void Conducteur::calculeConducteurWithNewPos(const Borne *b, const QPointF &newp
 		p1 = borne1 -> amarrageConducteur();
 		p2 = borne2 -> amarrageConducteur();
 	}
-	priv_calculeConducteur(p1, p2);
+	if (points.count() && modified_path)
+		priv_modifieConducteur(p1, borne1 -> orientation(), p2, borne2 -> orientation());
+	else
+		priv_calculeConducteur(p1, borne1 -> orientation(), p2, borne2 -> orientation());
+	QGraphicsPathItem::update(rect);
 }
 
 /**
-	@param p1 Coordonnees du point d'amarrage de la borne 1
-	@param p2 Coordonnees du point d'amarrage de la borne 2
+	Genere le QPainterPath a partir de la liste des points
 */
-void Conducteur::priv_calculeConducteur(const QPointF &p1, const QPointF &p2) {
-	QPainterPath t;
+void Conducteur::pointsToPath() {
+	QPainterPath path;
+	bool moveto_done = false;
+	foreach(QPointF point, points) {
+		if (!moveto_done) {
+			path.moveTo(point);
+			moveto_done = true;
+		} else path.lineTo(point);
+	}
+	setPath(path);
+}
+
+/**
+	Gere les updates 
+	@param p1 Coordonnees du point d'amarrage de la borne 1
+	@param o1 Orientation de la borne 1
+	@param p2 Coordonnees du point d'amarrage de la borne 2
+	@param o2 Orientation de la borne 2
+*/
+void Conducteur::priv_modifieConducteur(const QPointF &p1, Borne::Orientation, const QPointF &p2, Borne::Orientation) {
+	Q_ASSERT_X(points.count() > 1, "priv_modifieConducteur", "pas de points a modifier");
+	
+	// recupere les dernieres coordonnees connues des bornes
+	QPointF old_p1 = mapFromScene(borne1 -> amarrageConducteur());
+	QPointF old_p2 = mapFromScene(borne2 -> amarrageConducteur());
+	
+	// recupere les coordonnees fournies des bornes
+	QPointF new_p1 = mapFromScene(p1);
+	QPointF new_p2 = mapFromScene(p2);
+	
+	// les distances horizontales et verticales entre les anciennes bornes
+	// sont stockees dans orig_dist_2_terms_x et orig_dist_2_terms_y
+	
+	// calcule les distances horizontales et verticales entre les nouvelles bornes
+	qreal new_dist_2_bornes_x = new_p2.x() - new_p1.x();
+	qreal new_dist_2_bornes_y = new_p2.y() - new_p1.y();
+	
+	// en deduit les coefficients de "redimensionnement"
+	qreal coeff_x = new_dist_2_bornes_x / orig_dist_2_terms_x;
+	qreal coeff_y = new_dist_2_bornes_y / orig_dist_2_terms_y;
+	
+	// genere les nouveaux points
+	int limite = moves_x.size() - 1;
+	int coeff = type_trajet_x ? 1 : -1;
+	points.clear();
+	points << (type_trajet_x ? new_p1 : new_p2);
+	for (int i = 0 ; i < limite ; ++ i) {
+		QPointF previous_point = points.last();
+		points << QPointF (
+			previous_point.x() + (moves_x.at(i) * coeff_x * coeff),
+			previous_point.y() + (moves_y.at(i) * coeff_y * coeff)
+		);
+	}
+	points << (type_trajet_x ? new_p2 : new_p1);
+	
+	pointsToPath();
+}
+
+/**
+	Calcule un trajet "par defaut" pour le conducteur
+	@param p1 Coordonnees du point d'amarrage de la borne 1
+	@param o1 Orientation de la borne 1
+	@param p2 Coordonnees du point d'amarrage de la borne 2
+	@param o2 Orientation de la borne 2
+*/
+void Conducteur::priv_calculeConducteur(const QPointF &p1, Borne::Orientation o1, const QPointF &p2, Borne::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
-	Borne::Orientation ori_borne1, ori_borne2, ori_depart, ori_arrivee;
-	
-	// recupere les orientations des bornes
-	ori_borne1 = borne1 -> orientation();
-	ori_borne2 = borne2 -> orientation();
-	
+	Borne::Orientation ori_depart, ori_arrivee;
+	points.clear();
+	type_trajet_x = p1.x() < p2.x();
 	// mappe les points par rapport a la scene
 	sp1 = mapFromScene(p1);
 	sp2 = mapFromScene(p2);
 	
-	// tailles des prolongements
-	qreal first_seg_size = 10;
-	qreal last_seg_size  = 10;
+	// prolonge les bornes
+	newp1 = extendTerminal(sp1, o1);
+	newp2 = extendTerminal(sp2, o2);
 	
-	// prolonge la borne 1
-	switch(ori_borne1) {
-		case Borne::Nord:
-			newp1 = QPointF(sp1.x(), sp1.y() - first_seg_size);
-			break;
-		case Borne::Est:
-			newp1 = QPointF(sp1.x() + first_seg_size, sp1.y());
-			break;
-		case Borne::Sud:
-			newp1 = QPointF(sp1.x(), sp1.y() + first_seg_size);
-			break;
-		case Borne::Ouest:
-			newp1 = QPointF(sp1.x() - first_seg_size, sp1.y());
-			break;
-		default: newp1 = sp1;
-	}
-	
-	// prolonge la borne 2
-	switch(ori_borne2) {
-		case Borne::Nord:
-			newp2 = QPointF(sp2.x(), sp2.y() - last_seg_size);
-			break;
-		case Borne::Est:
-			newp2 = QPointF(sp2.x() + last_seg_size, sp2.y());
-			break;
-		case Borne::Sud:
-			newp2 = QPointF(sp2.x(), sp2.y() + last_seg_size);
-			break;
-		case Borne::Ouest:
-			newp2 = QPointF(sp2.x() - last_seg_size, sp2.y());
-			break;
-		default: newp2 = sp2;
-	}
-	
-	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite
+	// distingue le depart de l'arrivee : le trajet se fait toujours de gauche a droite (apres prolongation)
 	if (newp1.x() <= newp2.x()) {
 		depart      = newp1;
 		arrivee     = newp2;
 		depart0     = sp1;
 		arrivee0    = sp2;
-		ori_depart  = ori_borne1;
-		ori_arrivee = ori_borne2;
+		ori_depart  = o1;
+		ori_arrivee = o2;
 	} else {
 		depart      = newp2;
 		arrivee     = newp1;
 		depart0     = sp2;
 		arrivee0    = sp1;
-		ori_depart  = ori_borne2;
-		ori_arrivee = ori_borne1;
+		ori_depart  = o2;
+		ori_arrivee = o1;
 	}
 	
 	// debut du trajet
-	t.moveTo(depart0);
+	points << depart0;
 	
 	// prolongement de la borne de depart 
-	t.lineTo(depart);
+	points << depart;
 	
 	// commence le vrai trajet
 	if (depart.y() < arrivee.y()) {
@@ -174,40 +193,71 @@ void Conducteur::priv_calculeConducteur(const QPointF &p1, const QPointF &p2) {
 		if ((ori_depart == Borne::Nord && (ori_arrivee == Borne::Sud || ori_arrivee == Borne::Ouest)) || (ori_depart == Borne::Est && ori_arrivee == Borne::Ouest)) {
 			// cas « 3 »
 			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
-			t.lineTo(ligne_inter_x, depart.y());
-			t.lineTo(ligne_inter_x, arrivee.y());
+			points << QPointF(ligne_inter_x, depart.y());
+			points << QPointF(ligne_inter_x, arrivee.y());
 		} else if ((ori_depart == Borne::Sud && (ori_arrivee == Borne::Nord || ori_arrivee == Borne::Est)) || (ori_depart == Borne::Ouest && ori_arrivee == Borne::Est)) {
 			// cas « 4 »
 			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
-			t.lineTo(depart.x(), ligne_inter_y);
-			t.lineTo(arrivee.x(), ligne_inter_y);
+			points << QPointF(depart.x(), ligne_inter_y);
+			points << QPointF(arrivee.x(), ligne_inter_y);
 		} else if ((ori_depart == Borne::Nord || ori_depart == Borne::Est) && (ori_arrivee == Borne::Nord || ori_arrivee == Borne::Est)) {
-			t.lineTo(arrivee.x(), depart.y()); // cas « 2 »
-		} else t.lineTo(depart.x(), arrivee.y()); // cas « 1 »
+			points << QPointF(arrivee.x(), depart.y()); // cas « 2 »
+		} else {
+			points << QPointF(depart.x(), arrivee.y()); // cas « 1 »
+		}
 	} else {
 		// trajet montant
 		if ((ori_depart == Borne::Ouest && (ori_arrivee == Borne::Est || ori_arrivee == Borne::Sud)) || (ori_depart == Borne::Nord && ori_arrivee == Borne::Sud)) {
 			// cas « 3 »
 			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
-			t.lineTo(depart.x(), ligne_inter_y);
-			t.lineTo(arrivee.x(), ligne_inter_y);
+			points << QPointF(depart.x(), ligne_inter_y);
+			points << QPointF(arrivee.x(), ligne_inter_y);
 		} else if ((ori_depart == Borne::Est && (ori_arrivee == Borne::Ouest || ori_arrivee == Borne::Nord)) || (ori_depart == Borne::Sud && ori_arrivee == Borne::Nord)) {
 			// cas « 4 »
 			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
-			t.lineTo(ligne_inter_x, depart.y());
-			t.lineTo(ligne_inter_x, arrivee.y());
+			points << QPointF(ligne_inter_x, depart.y());
+			points << QPointF(ligne_inter_x, arrivee.y());
 		} else if ((ori_depart == Borne::Ouest || ori_depart == Borne::Nord) && (ori_arrivee == Borne::Ouest || ori_arrivee == Borne::Nord)) {
-			t.lineTo(depart.x(), arrivee.y()); // cas « 2 »
-		} else t.lineTo(arrivee.x(), depart.y()); // cas « 1 »
+			points << QPointF(depart.x(), arrivee.y()); // cas « 2 »
+		} else {
+			points << QPointF(arrivee.x(), depart.y()); // cas « 1 »
+		}
 	}
 	
 	// fin du vrai trajet
-	t.lineTo(arrivee);
+	points << arrivee;
 	
 	// prolongement de la borne d'arrivee
-	t.lineTo(arrivee0);
+	points << arrivee0;
 	
-	setPath(t);
+	pointsToPath();
+}
+
+/**
+	Prolonge une borne.
+	@param terminal Le point correspondant a la borne
+	@param terminal_orientation L'orientation de la borne
+	@param ext_size la taille de la prolongation
+	@return le point correspondant a la borne apres prolongation
+*/
+QPointF Conducteur::extendTerminal(const QPointF &terminal, Borne::Orientation terminal_orientation, qreal ext_size) {
+	QPointF extended_terminal;
+	switch(terminal_orientation) {
+		case Borne::Nord:
+			extended_terminal = QPointF(terminal.x(), terminal.y() - ext_size);
+			break;
+		case Borne::Est:
+			extended_terminal = QPointF(terminal.x() + ext_size, terminal.y());
+			break;
+		case Borne::Sud:
+			extended_terminal = QPointF(terminal.x(), terminal.y() + ext_size);
+			break;
+		case Borne::Ouest:
+			extended_terminal = QPointF(terminal.x() - ext_size, terminal.y());
+			break;
+		default: extended_terminal = terminal;
+	}
+	return(extended_terminal);
 }
 
 /**
@@ -218,28 +268,29 @@ void Conducteur::priv_calculeConducteur(const QPointF &p1, const QPointF &p2) {
 */
 void Conducteur::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QWidget */*qw*/) {
 	qp -> save();
-	qp -> setRenderHint(QPainter::Antialiasing,          false);
-	qp -> setRenderHint(QPainter::TextAntialiasing,      false);
-	qp -> setRenderHint(QPainter::SmoothPixmapTransform, false);
+	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
-	// recupere le QPen et la QBrush du QPainter
-	QPen pen = qp -> pen();
-	QBrush brush = qp -> brush();
+	// affectation du QPen et de la QBrush modifies au QPainter
+	qp -> setBrush(conducer_brush);
+	//qp -> setBrush(Qt::green);
+	qp -> setPen(conducer_pen);
+	if (isSelected()) {
+		QPen tmp = qp -> pen();
+		tmp.setColor(Qt::red);
+		qp -> setPen(tmp);
+	}
 	
-	// attributs par defaut
-	pen.setJoinStyle(Qt::MiterJoin);
-	pen.setCapStyle(Qt::SquareCap);
-	pen.setColor(isSelected() ? Qt::red : Qt::black);
-	pen.setStyle(Qt::SolidLine);
-	pen.setWidthF(1.0);
-	brush.setStyle(Qt::NoBrush);
-	
-	// affectation du QPen et de la QBrush modifies au QPainter 
-	qp -> setPen(pen);
-	qp -> setBrush(brush);
-	
+	// dessin du conducteur
 	qp -> drawPath(path());
-	//QGraphicsPathItem::paint(qp, qsogi, qw);
+	
+	// dessin des points d'accroche du conducteur si celui-ci est selectionne
+	if (isSelected()) {
+		qp -> setRenderHint(QPainter::Antialiasing, true);
+		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
+			QPointF point = points.at(i);
+			qp -> drawEllipse(QRectF(point.x() - 3.0, point.y() - 3.0, 6.0, 6.0));
+		}
+	}
 	qp -> restore();
 }
 
@@ -304,4 +355,239 @@ bool Conducteur::valideXml(QDomElement &e){
 	e.attribute("borne2").toInt(&conv_ok);
 	if (!conv_ok) return(false);
 	return(true);
+}
+
+/**
+	Gere les clics sur le conducteur.
+	@param e L'evenement decrivant le clic.
+*/
+void Conducteur::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	// clic gauche
+	if (e -> buttons() & Qt::LeftButton) {
+		press_point = mapFromScene(e -> pos());
+		moving_point = false;
+		for (int i = 1 ; i < points.count() ; ++ i) {
+			QPointF point = points.at(i);
+			if (
+				press_point.x() >= point.x() - 5.0 &&\
+				press_point.x() <  point.x() + 5.0 &&\
+				press_point.y() >= point.y() - 5.0 &&\
+				press_point.y() <  point.y() + 5.0
+			) {
+				moving_point = true;
+				moved_point = i;
+				break;
+			}
+		}
+	}
+	QGraphicsPathItem::mousePressEvent(e);
+}
+
+/**
+	Gere les deplacements de souris sur le conducteur.
+	@param e L'evenement decrivant le deplacement de souris.
+	@todo
+	-calculer le trajet du conducteur differemment selon l'etat du flag "trajet modifie"
+	-garder une liste des points constituants le trajet
+	-lorsque le fil est selectionne, dessiner ces points (cercles)
+	-lors d'un mousemoveevent: detecter la position du clic : si cela tombe dans la zone d'un point :
+		-deplacer ce point en consequence
+		-mettre le flag "trajet modifie" a true
+	-gerer les contraintes
+*/
+void Conducteur::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+	// clic gauche
+	if (e -> buttons() & Qt::LeftButton) {
+		if (moving_point) {
+			/* recuperation de quelques joyeusetes tres souvent consultees */
+			// indice du dernier point ( = point non modifiable)
+			int ind_max_point = points.count() - 1;
+			
+			// position precedente du point
+			QPointF p = points.at(moved_point);
+			qreal p_x = p.x();
+			qreal p_y = p.y();
+			
+			// position pointee par la souris
+			qreal mouse_x = e -> pos().x();
+			qreal mouse_y = e -> pos().y();
+			
+			// position du point apres le deplacement
+			qreal new_pos_x;
+			qreal new_pos_y;
+			
+			if (moved_point == 1 || moved_point == ind_max_point - 1) {
+				/* premier et dernier points modifiables du conducteur */
+				// repere le point qui va imposer la contrainte de base
+				int ind_depend = moved_point == 1 ? 0 : ind_max_point;
+				qreal depend_x = points.at(ind_depend).x();
+				qreal depend_y = points.at(ind_depend).y();
+				
+				// repere le point voisin suivant
+				int ind_voisin = moved_point == 1 ? 2 : moved_point - 1;
+				qreal voisin_x = points.at(ind_voisin).x();
+				qreal voisin_y = points.at(ind_voisin).y();
+			 
+				if (p_x == depend_x && p_y != depend_y) {
+					// deplacements limites a l'axe vertical
+					new_pos_x = p_x;
+					// si on peut aller plus loin que le point voisin suivant, on le fait... en deplacant le point voisin
+					if (p_x > voisin_x - 1 && p_x < voisin_x + 1) new_pos_y = conducer_bound(mouse_y, depend_y, voisin_y);
+					else {
+						new_pos_y = conducer_bound(mouse_y, depend_y, depend_y < voisin_y);
+						points.replace(ind_voisin, QPointF(voisin_x, new_pos_y));
+					}
+				} else {
+					// deplacements limites a l'axe horizontal
+					// si on peut aller plus loin que le point voisin suivant, on le fait... en deplacant le point voisin
+					if (p_y > voisin_y - 1 && p_y < voisin_y + 1) new_pos_x = conducer_bound(mouse_x, depend_x, voisin_x);
+					else {
+						new_pos_x = conducer_bound(mouse_x, depend_x, depend_x < voisin_x);
+						points.replace(ind_voisin, QPointF(new_pos_x, voisin_y));
+					}
+					new_pos_y = p_y;
+				}
+			} else {
+				/* autres points */
+				new_pos_x = mouse_x;
+				new_pos_y = mouse_y;
+				
+				/* deplace les deux points voisins (sans cela, le deplacement du point n'est pas possible) */
+				// point precedent
+				int ind_point_precedent = moved_point - 1;
+				qreal pp_x = points.at(ind_point_precedent).x();
+				qreal pp_y = points.at(ind_point_precedent).y();
+				if (ind_point_precedent != 1) {
+					if (pp_x > p_x - 1 && pp_x < p_x + 1) {
+						points.replace(ind_point_precedent, QPointF(new_pos_x, pp_y));
+					} else {
+						points.replace(ind_point_precedent, QPointF(pp_x, new_pos_y));
+					}
+				} else {
+					if (pp_x > p_x - 1 && pp_x < p_x + 1) {
+						new_pos_x = p_x;
+					} else {
+						new_pos_y = p_y;
+					}
+				}
+				
+				// point suivant
+				int ind_point_suivant = moved_point + 1;
+				qreal ps_x = points.at(ind_point_suivant).x();
+				qreal ps_y = points.at(ind_point_suivant).y();
+				if (ind_point_suivant != ind_max_point - 1) {
+					if (ps_x > p_x - 1 && ps_x < p_x + 1) {
+						points.replace(ind_point_suivant, QPointF(new_pos_x, ps_y));
+					} else {
+						points.replace(ind_point_suivant, QPointF(ps_x, new_pos_y));
+					}
+				} else {
+					if (ps_x > p_x - 1 && ps_x < p_x + 1) {
+						new_pos_x = p_x;
+					} else {
+						new_pos_y = p_y;
+					}
+				}
+			}
+			
+			// application du deplacement
+			modified_path = true;
+			points.replace(moved_point, QPointF(new_pos_x, new_pos_y));
+			updatePoints();
+			pointsToPath();
+		}
+	}
+	QGraphicsPathItem::mouseMoveEvent(e);
+}
+
+/**
+	Gere les relachements de boutons de souris sur le conducteur 
+	@param e L'evenement decrivant le lacher de bouton.
+*/
+void Conducteur::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+	// clic gauche
+	if (e -> buttons() & Qt::LeftButton) {
+		moving_point = false;
+		QGraphicsPathItem::mouseReleaseEvent(e);
+	}
+}
+
+/**
+	@return Le rectangle delimitant l'espace de dessin du conducteur
+*/
+QRectF Conducteur::boundingRect() const {
+	QRectF retour = QGraphicsPathItem::boundingRect();
+	retour.adjust(-5.0, -5.0, 5.0, 5.0);
+	return(retour);
+}
+
+/**
+	@return La forme / zone "cliquable" du conducteur
+*/
+QPainterPath Conducteur::shape() const {
+	QPainterPath area;
+	QPointF previous_point;
+	QPointF *point1, *point2;
+	foreach(QPointF point, points) {
+		if (!previous_point.isNull()) {
+			if (point.x() == previous_point.x()) {
+				if (point.y() <= previous_point.y()) {
+					point1 = &point;
+					point2 = &previous_point;
+				} else {
+					point1 = &previous_point;
+					point2 = &point;
+				}
+			} else {
+				if (point.x() <= previous_point.x()) {
+					point1 = &point;
+					point2 = &previous_point;
+				} else {
+					point1 = &previous_point;
+					point2 = &point;
+				}
+			}
+			qreal p1_x = point1 -> x();
+			qreal p1_y = point1 -> y();
+			qreal p2_x = point2 -> x();
+			qreal p2_y = point2 -> y();
+			area.setFillRule(Qt::OddEvenFill);
+			area.addRect(p1_x - 5.0, p1_y - 5.0, 10.0 + p2_x - p1_x, 10.0 + p2_y - p1_y);
+		}
+		previous_point = point;
+		area.setFillRule(Qt::WindingFill);
+		area.addRect(point.x() - 5.0, point.y() - 5.0, 10.0, 10.0);
+	}
+	return(area);
+}
+
+/**
+	Met à jour deux listes de reels.
+*/
+void Conducteur::updatePoints() {
+	int s = points.size();
+	moves_x.clear();
+	moves_y.clear();
+	for (int i = 1 ; i < s ; ++ i) {
+		moves_x << points.at(i).x() - points.at(i - 1).x();
+		moves_y << points.at(i).y() - points.at(i - 1).y();
+	}
+	QPointF b1 = points.at(0);
+	QPointF b2 = points.at(s - 1);
+	orig_dist_2_terms_x = b2.x() - b1.x();
+	orig_dist_2_terms_y = b2.y() - b1.y();
+}
+
+qreal Conducteur::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
+	qreal space = 5.0;
+	if (bound1 < bound2) {
+		return(qBound(bound1 + space, tobound, bound2 - space));
+	} else {
+		return(qBound(bound2 + space, tobound, bound1 - space));
+	}
+}
+
+qreal Conducteur::conducer_bound(qreal tobound, qreal bound, bool positive) {
+	qreal space = 5.0;
+	return(positive ? qMax(tobound, bound + space) : qMin(tobound, bound - space));
 }
