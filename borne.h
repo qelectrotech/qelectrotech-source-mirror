@@ -34,7 +34,7 @@
 		// methodes de manipulation des conducteurs lies a cette borne
 		bool addConducteur(Conducteur *);
 		void removeConducteur(Conducteur *);
-		inline int nbConducteurs() { return(liste_conducteurs.size()); }
+		inline int nbConducteurs() const { return(liste_conducteurs.size()); }
 		
 		// methodes de lecture
 		QList<Conducteur *> conducteurs() const; 
@@ -45,8 +45,9 @@
 		// methodes relatives a l'import/export au format XML
 		static bool valideXml(QDomElement  &);
 		bool        fromXml  (QDomElement  &);
-		QDomElement toXml    (QDomDocument &);
+		QDomElement toXml    (QDomDocument &) const;
 		
+		protected:
 		// methodes de gestion des evenements
 		void hoverEnterEvent  (QGraphicsSceneHoverEvent *);
 		void hoverMoveEvent   (QGraphicsSceneHoverEvent *);

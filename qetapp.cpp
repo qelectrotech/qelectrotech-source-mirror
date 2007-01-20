@@ -3,6 +3,7 @@
 #include "schema.h"
 #include "panelappareils.h"
 #include "aboutqet.h"
+#include "exportdialog.h"
 
 /**
 	constructeur
@@ -515,13 +516,12 @@ void QETApp::dialogue_imprimer() {
 	Gere l'export de schema vers un autre format (PNG pour le moment)
 */
 void QETApp::dialogue_exporter() {
+	Schema *sc = schemaEnCours() -> scene;
+	ExportDialog ed(*sc);
+	ed.exec();
+	/*
 	// demande un nom de fichier
-	QString nom_fichier = QFileDialog::getSaveFileName(
-		this,
-		tr("Exporter vers le fichier"),
-		QDir::homePath(),
-		tr("Image PNG (*.png)")
-	);
+	
 	// exporte le schema
 	if (nom_fichier != "") {
 		if (!nom_fichier.endsWith(".png", Qt::CaseInsensitive)) nom_fichier += ".png";
@@ -533,6 +533,7 @@ void QETApp::dialogue_exporter() {
 		image.save(&fichier, "PNG");
 		fichier.close();
 	}
+	*/
 }
 
 /**

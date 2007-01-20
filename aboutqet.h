@@ -10,9 +10,9 @@
 		public:
 		AboutQET(QWidget * = 0);
 		private:
-		QWidget *titre();
-		QWidget *ongletAPropos();
-		QWidget *ongletAuteurs();
-		QWidget *ongletLicence();
+		QWidget *titre() const;
+		QWidget *ongletAPropos() const;
+		QWidget *ongletAuteurs() const;
+		QWidget *ongletLicence() const;
 	};
 #endif

@@ -21,7 +21,8 @@
 		}
 		inline void setDepart (QPointF d) { poseur_de_conducteur -> setLine(QLineF(d, poseur_de_conducteur -> line().p2())); }
 		inline void setArrivee(QPointF a) { poseur_de_conducteur -> setLine(QLineF(poseur_de_conducteur -> line().p1(), a)); }
-		QImage toImage();
+		QImage toImage(int = -1, int = -1, bool = true);
+		QSize imageSize() const;
 		QDomDocument toXml(bool = true);
 		bool fromXml(QDomDocument &, QPointF = QPointF());
 		QGraphicsItem *getElementById(uint id);

@@ -33,7 +33,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 /**
 	@return Le titre QElectroTech avec son icone
 */
-QWidget *AboutQET::titre() {
+QWidget *AboutQET::titre() const {
 	QWidget *icone_et_titre = new QWidget();
 	// icone
 	QLabel *icone = new QLabel();
@@ -54,7 +54,7 @@ QWidget *AboutQET::titre() {
 /**
 	@return Le widget contenu par l'onglet « A propos »
 */
-QWidget *AboutQET::ongletAPropos() {
+QWidget *AboutQET::ongletAPropos() const {
 	QLabel *apropos = new QLabel(
 		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
 		"<br><br>" +
@@ -72,7 +72,7 @@ QWidget *AboutQET::ongletAPropos() {
 /**
 	@return Le widget contenu par l'onglet « Auteurs »
 */
-QWidget *AboutQET::ongletAuteurs() {
+QWidget *AboutQET::ongletAuteurs() const {
 	QLabel *auteurs = new QLabel(
 		"<span style=\"text-decoration: underline;\">" +
 		tr("Id\351e originale") +
@@ -95,7 +95,7 @@ QWidget *AboutQET::ongletAuteurs() {
 /**
 	@return Le widget contenu par l'onglet « Accord de Licence »
 */
-QWidget *AboutQET::ongletLicence() {
+QWidget *AboutQET::ongletLicence() const {
 	QWidget *licence = new QWidget();
 	// label
 	QLabel *titre_licence = new QLabel(tr("Ce programme est sous licence GNU/GPL."));

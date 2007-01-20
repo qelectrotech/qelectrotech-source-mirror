@@ -67,16 +67,26 @@ void Schema::drawBackground(QPainter *p, const QRectF &r) {
 	Exporte le schema vers une image
 	@return Une QImage representant le schema
 */
-QImage Schema::toImage() {
-	QRectF vue = itemsBoundingRect();
-	// la marge  = 5 % de la longueur necessaire
-	qreal marge = 0.05 * vue.width();
-	vue.translate(-marge, -marge);
-	vue.setWidth(vue.width() + 2.0 * marge);
-	vue.setHeight(vue.height() + 2.0 * marge);
-	QSize dimensions_image = vue.size().toSize();
+QImage Schema::toImage(int width, int height, bool respectRatio) {
+	// determine le contenu du schema
+	QRectF schema_content = itemsBoundingRect();
 	
-	QImage pix = QImage(dimensions_image, QImage::Format_RGB32);
+	// calcule la marge  = 5 % de la longueur necessaire
+	qreal margin = 0.05 * schema_content.width();
+	
+	// en deduit la zone source utilisee pour l'image
+	QRectF source_area = schema_content;
+	source_area.translate(-margin, -margin);
+	source_area.setWidth(schema_content.width() + 2.0 * margin);
+	source_area.setHeight(schema_content.height() + 2.0 * margin);
+	
+	// si les dimensions ne sont pas precisees, l'image est exportee a l'echelle 1:1
+	QSize image_size = (width == -1 && height == -1) ? source_area.size().toSize() : QSize(width, height);
+	
+	// initialise une image avec ces dimensions
+	QImage pix = QImage(image_size, QImage::Format_RGB32);
+	
+	// prepare le rendu
 	QPainter p;
 	bool painter_ok = p.begin(&pix);
 	if (!painter_ok) return(QImage());
@@ -86,9 +96,39 @@ QImage Schema::toImage() {
 	p.setRenderHint(QPainter::TextAntialiasing, true);
 	p.setRenderHint(QPainter::SmoothPixmapTransform, true);
 	
-	render(&p, pix.rect(), vue, Qt::KeepAspectRatio);
+	// deselectionne tous les elements
+	QList<QGraphicsItem *> selected_elmts = selectedItems();
+	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
+	
+	// effectue le rendu lui-meme
+	render(&p, pix.rect(), source_area, respectRatio ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio);
 	p.end();
+	
+	// restaure les elements selectionnes
+	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
+	
 	return(pix);
+}
+
+/**
+	Permet de connaitre les dimensions qu'aura l'image generee par la methode toImage()
+	@return La taille de l'image generee par toImage()
+*/
+QSize Schema::imageSize() const {
+	// determine le contenu du schema
+	QRectF schema_content = itemsBoundingRect();
+	
+	// calcule la marge  = 5 % de la longueur necessaire
+	qreal margin = 0.05 * schema_content.width();
+	
+	// en deduit la zone source utilisee pour l'image
+	QRectF source_area = schema_content;
+	source_area.translate(-margin, -margin);
+	source_area.setWidth(schema_content.width() + 2.0 * margin);
+	source_area.setHeight(schema_content.height() + 2.0 * margin);
+	
+	// renvoie la taille de la zone source
+	return(source_area.size().toSize());
 }
 
 /**

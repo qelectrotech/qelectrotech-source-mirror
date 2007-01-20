@@ -4,7 +4,7 @@
 
 TEMPLATE = app
 TARGET = 
-DEPENDPATH += .
+DEPENDPATH += . lang
 INCLUDEPATH += .
 
 # Input
@@ -14,6 +14,7 @@ HEADERS += aboutqet.h \
            element.h \
            elementfixe.h \
            elementperso.h \
+           exportdialog.h \
            panelappareils.h \
            qetapp.h \
            schema.h \
@@ -24,12 +25,13 @@ SOURCES += aboutqet.cpp \
            element.cpp \
            elementfixe.cpp \
            elementperso.cpp \
+           exportdialog.cpp \
            main.cpp \
            panelappareils.cpp \
            qetapp.cpp \
            schema.cpp \
            schemavue.cpp
 RESOURCES += qelectrotech.qrc
-TRANSLATIONS += qet_en.ts
+TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml
 

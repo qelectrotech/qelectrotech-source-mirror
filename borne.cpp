@@ -97,7 +97,7 @@ Borne::Orientation Borne::orientation() const {
 		Borne::Orientation ori_def = elt -> defaultOrientation();
 		if (ori_cur == ori_def) return(sens);
 		else {
-			/* calcul l'angle de rotation implique par l'orientation de l'element parent */
+			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
 			int angle = ori_cur - ori_def + sens;
 			while (angle >= 4) angle -= 4;
@@ -361,7 +361,7 @@ QList<Conducteur *> Borne::conducteurs() const {
 	@param doc Le Document XML a utiliser pour creer l'element XML
 	@return un QDomElement representant cette borne
 */
-QDomElement Borne::toXml(QDomDocument &doc) {
+QDomElement Borne::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("borne");
 	qdo.setAttribute("x", amarrage_elmt.x());
 	qdo.setAttribute("y", amarrage_elmt.y());

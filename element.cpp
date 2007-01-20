@@ -62,8 +62,8 @@ QPoint Element::setHotspot(QPoint hs) {
 	if (dimensions.isNull()) hotspot_coord = QPoint(0, 0);
 	else {
 		// les coordonnees indiquees ne doivent pas depasser les dimensions de l'element
-		int hsx = hs.x() > dimensions.width() ? dimensions.width() : hs.x();
-		int hsy = hs.y() > dimensions.height() ? dimensions.height() : hs.y();
+		int hsx = qMin(hs.x(), dimensions.width());
+		int hsy = qMin(hs.y(), dimensions.height());
 		hotspot_coord = QPoint(hsx, hsy);
 	}
 	return(hotspot_coord);
