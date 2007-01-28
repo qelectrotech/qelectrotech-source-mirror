@@ -28,10 +28,10 @@
 		bool dontchangeheight;
 		
 		// elements relatifs au traitement effectue par le dialogue
-		Schema *schema_schema;
-		QSize schema_size;
-		QString schema_path;
-		qreal schema_ratio;
+		Schema *diagram;
+		QSize diagram_size;
+		QString diagram_path;
+		qreal diagram_ratio;
 		
 		QGroupBox *setupDimensionsGroupBox();
 		QGroupBox *setupOptionsGroupBox();

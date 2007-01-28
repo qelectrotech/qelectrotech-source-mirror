@@ -4,6 +4,7 @@
 #include "panelappareils.h"
 #include "aboutqet.h"
 #include "exportdialog.h"
+// #include "borderinset.h"
 
 /**
 	constructeur
@@ -227,6 +228,8 @@ void QETApp::actions() {
 	supprimer         = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                      this);
 	pivoter           = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                        this);
 	infos_schema      = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),  this);
+	add_column        = new QAction(                               tr("Ajouter une colonne"),            this);
+	remove_column     = new QAction(                               tr("Enlever une colonne"),            this);
 	
 	toggle_aa         = new QAction(                               tr("D\351sactiver l'&antialiasing"),  this);
 	zoom_avant        = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                     this);
@@ -308,6 +311,8 @@ void QETApp::actions() {
 	supprimer         -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
 	pivoter           -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
 	infos_schema      -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
+	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
+	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
 	
 	toggle_aa         -> setStatusTip(tr("Active / d\351sactive l'antialiasing pour le rendu du sch\351ma courant"));
 	zoom_avant        -> setStatusTip(tr("Agrandit le sch\351ma"));
@@ -377,6 +382,8 @@ void QETApp::actions() {
 	connect(f_suiv,           SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
 	connect(f_prec,           SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
 	connect(infos_schema,     SIGNAL(activated()), this,       SLOT(editInfos())                );
+	connect(add_column,       SIGNAL(activated()), this,       SLOT(slot_addColumn())           );
+	connect(remove_column,    SIGNAL(activated()), this,       SLOT(slot_removeColumn())        );
 }
 
 /**
@@ -429,6 +436,8 @@ void QETApp::menus() {
 	menu_edition -> addAction(pivoter);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_schema);
+	menu_edition -> addAction(add_column);
+	menu_edition -> addAction(remove_column);
 	
 	// menu Affichage > Afficher
 	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
@@ -519,21 +528,6 @@ void QETApp::dialogue_exporter() {
 	Schema *sc = schemaEnCours() -> scene;
 	ExportDialog ed(*sc);
 	ed.exec();
-	/*
-	// demande un nom de fichier
-	
-	// exporte le schema
-	if (nom_fichier != "") {
-		if (!nom_fichier.endsWith(".png", Qt::CaseInsensitive)) nom_fichier += ".png";
-		QFile fichier(nom_fichier);
-		Schema *sc = schemaEnCours() -> scene;
-		sc -> setAffichageGrille(false);
-		QImage image = sc -> toImage();
-		sc -> setAffichageGrille(true);
-		image.save(&fichier, "PNG");
-		fichier.close();
-	}
-	*/
 }
 
 /**
@@ -938,25 +932,34 @@ void QETApp::editInfos() {
 	SchemaVue *sv = schemaEnCours();
 	if (!sv) return;
 	
+	// recupere le cartouche du schema
+	BorderInset *inset = &(sv -> scene -> border_and_inset);
+	
 	// construit le dialogue
 	QDialog popup;
 	popup.setMinimumWidth(400);
 	popup.setWindowTitle(tr("Cartouche du sch\351ma"));
 	
-	QLineEdit *titre = new QLineEdit(sv -> scene -> titre);
-	QLineEdit *auteur = new QLineEdit(sv -> scene -> auteur);
-	QDate date_schema = QDate(sv -> scene -> date);
+	QLineEdit *titre = new QLineEdit(inset -> title(), &popup);
+	QLineEdit *auteur = new QLineEdit(inset -> author(), &popup);
+	QDate date_schema = QDate(inset -> date());
 	if (date_schema.isNull() || !date_schema.isValid()) date_schema = QDate::currentDate();
-	QDateEdit *date = new QDateEdit(date_schema);
+	QDateEdit *date = new QDateEdit(date_schema, &popup);
 	date -> setCalendarPopup(true);
-	QWidget bidon;
+	QLineEdit *fichier = new QLineEdit(inset -> fileName(), &popup);
+	QLineEdit *folio = new QLineEdit(inset -> folio(), &popup);
+	QWidget bidon(&popup);
 	QGridLayout layout_champs(&bidon);
-	layout_champs.addWidget(new QLabel(tr("Titre : ")), 0, 0);
-	layout_champs.addWidget(titre, 0, 1);
-	layout_champs.addWidget(new QLabel(tr("Auteur : ")), 1, 0);
-	layout_champs.addWidget(auteur, 1, 1);
-	layout_champs.addWidget(new QLabel(tr("Date : ")), 2, 0);
-	layout_champs.addWidget(date, 2, 1);
+	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
+	layout_champs.addWidget(titre,                        0, 1);
+	layout_champs.addWidget(new QLabel(tr("Auteur : ")),  1, 0);
+	layout_champs.addWidget(auteur,                       1, 1);
+	layout_champs.addWidget(new QLabel(tr("Date : ")),    2, 0);
+	layout_champs.addWidget(date,                         2, 1);
+	layout_champs.addWidget(new QLabel(tr("Fichier : ")), 3, 0);
+	layout_champs.addWidget(fichier,                      3, 1);
+	layout_champs.addWidget(new QLabel(tr("Folio : ")),   4, 0);
+	layout_champs.addWidget(folio,                        4, 1);
 	
 	// boutons
 	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -968,9 +971,37 @@ void QETApp::editInfos() {
 	layout_v.addWidget(&bidon);
 	layout_v.addWidget(&boutons);
 	if (popup.exec() == QDialog::Accepted) {
-		sv -> scene -> titre = titre -> text();
-		sv -> scene -> auteur = auteur -> text();
-		sv -> scene -> date = date -> date();
-		
+		inset -> setTitle(titre -> text());
+		inset -> setAuthor(auteur -> text());
+		inset -> setDate(date -> date());
+		inset -> setFileName(fichier -> text());
+		inset -> setFolio(folio -> text());
 	}
+}
+
+void QETApp::slot_addColumn() {
+	SchemaVue *sv = schemaEnCours();
+	if (!sv) return;
+	
+	// ajoute la colonne
+	sv -> scene -> border_and_inset.addColumn();
+	
+	// met a jour la zone affichee par la vue
+	QRectF sr = sv -> sceneRect();
+	sr.setWidth(5.0 + sv -> scene -> border_and_inset.borderWidth());
+	sv -> setSceneRect(sr);
+	
+	// rafraichit la vue
+	sv -> scene -> update(sv -> sceneRect());
+}
+
+void QETApp::slot_removeColumn() {
+	SchemaVue *sv = schemaEnCours();
+	if (!sv) return;
+	sv -> scene -> border_and_inset.removeColumn();
+	
+	// on pourrait mettre a jour la zone affichee par la vue
+	
+	// rafraichit la vue
+	sv -> scene -> update(sv -> sceneRect());
 }

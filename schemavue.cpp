@@ -12,6 +12,10 @@ void SchemaVue::initialise() {
 	setDragMode(RubberBandDrag);
 	setAcceptDrops(true);
 	setWindowTitle(tr("Nouveau sch\351ma") + "[*]");
+	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
+	setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	setSceneRect(QRectF(0.0, 0.0, scene -> border_and_inset.borderWidth() + 10.0, scene -> border_and_inset.borderHeight() + 10.0));
 	connect(scene, SIGNAL(selectionChanged()), this, SLOT(slot_selectionChanged()));
 }
 
@@ -165,7 +169,6 @@ void SchemaVue::pivoter() {
 /**
 	accepte ou refuse le drag'n drop en fonction du type de donnees entrant
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
-	@todo trouver un MIME Type plus adapte
 */
 void SchemaVue::dragEnterEvent(QDragEnterEvent *e) {
 	if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
@@ -190,7 +193,6 @@ void SchemaVue::dragMoveEvent(QDragMoveEvent *e) {
 /**
 	gere les depots (drop) acceptes sur le Schema
 	@param e le QDropEvent correspondant au drag'n drop effectue
-	@todo Ajouter directement l'objet Element a la scene lorsque le drag'n drop aura ete ameliore
 */
 void SchemaVue::dropEvent(QDropEvent *e) {
 	QString fichier = e -> mimeData() -> text();
@@ -287,7 +289,7 @@ void SchemaVue::coller() {
 	QDomDocument document_xml;
 	if ((texte_presse_papier = QApplication::clipboard() -> text()) == QString()) return;
 	if (!document_xml.setContent(texte_presse_papier)) return;
-	scene -> fromXml(document_xml);
+	scene -> fromXml(document_xml, QPointF(), false);
 }
 
 /**
@@ -299,7 +301,7 @@ void SchemaVue::mousePressEvent(QMouseEvent *e) {
 		QDomDocument document_xml;
 		if ((texte_presse_papier = QApplication::clipboard() -> text(QClipboard::Selection)) == QString()) return;
 		if (!document_xml.setContent(texte_presse_papier)) return;
-		scene -> fromXml(document_xml, mapToScene(e -> pos()));
+		scene -> fromXml(document_xml, mapToScene(e -> pos()), false);
 	}
 	QGraphicsView::mousePressEvent(e);
 }

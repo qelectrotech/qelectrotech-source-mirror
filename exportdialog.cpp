@@ -2,14 +2,14 @@
 
 /**
 	Constructeur
-	@param schema Le schema a exporter
+	@param dia Le schema a exporter
 	@param parent Le Widget parent de ce dialogue
 */
-ExportDialog::ExportDialog(Schema &schema, QWidget *parent) : QDialog(parent) {
+ExportDialog::ExportDialog(Schema &dia, QWidget *parent) : QDialog(parent) {
 	// recupere le schema a exporter, sa taille et ses proportions
-	schema_schema = &schema;
-	schema_size = schema_schema -> imageSize();
-	schema_ratio = (qreal)schema_size.width() / (qreal)schema_size.height();
+	diagram = &dia;
+	diagram_size = diagram -> imageSize();
+	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
 	
 	// la taille du dialogue est fixee
 	setFixedSize(400, 310);
@@ -80,7 +80,7 @@ QGroupBox *ExportDialog::setupDimensionsGroupBox() {
 	
 	width = new QSpinBox(groupbox_dimensions);
 	width -> setRange(1, 10000);
-	width -> setValue(schema_size.width());
+	width -> setValue(diagram_size.width());
 	gridLayout -> addWidget(width, 0, 1, 1, 1);
 	
 	gridLayout -> addWidget(new QLabel(tr("px"), groupbox_dimensions), 0, 2, 1, 1);
@@ -90,7 +90,7 @@ QGroupBox *ExportDialog::setupDimensionsGroupBox() {
 	
 	height = new QSpinBox(groupbox_dimensions);
 	height -> setRange(1, 10000);
-	height -> setValue(schema_size.height());
+	height -> setValue(diagram_size.height());
 	gridLayout -> addWidget(height, 2, 1, 1, 1);
 	
 	gridLayout -> addWidget(new QLabel(tr("px"), groupbox_dimensions), 2, 2, 1, 1);
@@ -127,14 +127,14 @@ QGroupBox *ExportDialog::setupOptionsGroupBox() {
 void ExportDialog::slot_correctWidth() {
 	if (!keep_aspect_ratio -> isChecked() || dontchangewidth) return;
 	dontchangeheight = true;
-	width -> setValue(qRound(height -> value() * schema_ratio));
+	width -> setValue(qRound(height -> value() * diagram_ratio));
 	dontchangeheight = false;
 }
 
 void ExportDialog::slot_correctHeight() {
 	if (!keep_aspect_ratio -> isChecked() || dontchangeheight) return;
 	dontchangewidth = true;
-	height -> setValue(qRound(width -> value() / schema_ratio));
+	height -> setValue(qRound(width -> value() / diagram_ratio));
 	dontchangewidth = false;
 }
 
@@ -146,15 +146,15 @@ void ExportDialog::slot_chooseAFile() {
 		tr("Images (*.png *.bmp *.jpg)")
 	);
 	if (user_file != "") {
-		schema_path = user_file;
-		filename -> setText(schema_path);
+		diagram_path = user_file;
+		filename -> setText(diagram_path);
 	}
 }
 
 void ExportDialog::slot_check() {
 	
 	// verifie que le fichier a ete specifie
-	if (schema_path == "") {
+	if (diagram_path == "") {
 		QMessageBox::information(
 			this,
 			tr("Fichier non sp\351cifi\351"),
@@ -169,10 +169,10 @@ void ExportDialog::slot_check() {
 	QString format_extension = "." + format_acronym.toLower();
 	
 	// corrige l'extension du fichier
-	if (!schema_path.endsWith(format_extension, Qt::CaseInsensitive)) schema_path += format_extension;
+	if (!diagram_path.endsWith(format_extension, Qt::CaseInsensitive)) diagram_path += format_extension;
 	
 	// recupere des informations sur le fichier specifie
-	QFileInfo file_infos(schema_path);
+	QFileInfo file_infos(diagram_path);
 	
 	// verifie qu'il est possible d'ecrire dans le fichier en question
 	if (file_infos.exists() && !file_infos.isWritable()) {
@@ -186,12 +186,12 @@ void ExportDialog::slot_check() {
 	}
 	
 	// ouvre le fichier
-	QFile fichier(schema_path);
+	QFile fichier(diagram_path);
 	
 	// genere l'image
-	if (!export_grid -> isChecked()) schema_schema -> setAffichageGrille(false);
-	QImage image = schema_schema -> toImage(width -> value(), height -> value(), keep_aspect_ratio -> isChecked());
-	if (!export_grid -> isChecked()) schema_schema -> setAffichageGrille(true);
+	if (!export_grid -> isChecked()) diagram -> setAffichageGrille(false);
+	QImage image = diagram -> toImage(width -> value(), height -> value(), keep_aspect_ratio -> isChecked());
+	if (!export_grid -> isChecked()) diagram -> setAffichageGrille(true);
 	
 	// convertit l'image en niveaux de gris si besoin
 	if (!keep_colors -> isChecked()) {

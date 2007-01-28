@@ -56,10 +56,9 @@ void Schema::drawBackground(QPainter *p, const QRectF &r) {
 				p -> drawPoint(gx, gy);
 			}
 		}
-		
-		p -> drawLine(0, 0, 0, 10);
-		p -> drawLine(0, 0, 10, 0);
 	}
+	
+	border_and_inset.draw(p, MARGIN, MARGIN);
 	p -> restore();
 }
 
@@ -146,9 +145,11 @@ QDomDocument Schema::toXml(bool schema) {
 	
 	// proprietes du schema
 	if (schema) {
-		if (!auteur.isNull()) racine.setAttribute("auteur", auteur);
-		if (!date.isNull())   racine.setAttribute("date", date.toString("yyyyMMdd"));
-		if (!titre.isNull())  racine.setAttribute("titre", titre);
+		if (!border_and_inset.author().isNull())    racine.setAttribute("auteur",   border_and_inset.author());
+		if (!border_and_inset.date().isNull())      racine.setAttribute("date",     border_and_inset.date().toString("yyyyMMdd"));
+		if (!border_and_inset.title().isNull())     racine.setAttribute("titre",    border_and_inset.title());
+		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
+		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
 	}
 	document.appendChild(racine);
 	
@@ -239,16 +240,21 @@ QDomDocument Schema::toXml(bool schema) {
 	(le bounding rect) soit a cette position.
 	@param document Le document XML a analyser
 	@param position La position du schema importe
+	@param consider_informations Si vrai, les informations complementaires (auteur, titre, ...) seront prises en compte
 	@return true si l'import a reussi, false sinon
 */
-bool Schema::fromXml(QDomDocument &document, QPointF position) {
+bool Schema::fromXml(QDomDocument &document, QPointF position, bool consider_informations) {
 	QDomElement racine = document.documentElement();
 	// le premier element doit etre un schema
 	if (racine.tagName() != "schema") return(false);
 	// lecture des attributs de ce schema
-	auteur = racine.attribute("auteur");
-	titre  = racine.attribute("titre");
-	date   = QDate::fromString(racine.attribute("date"), "yyyyMMdd");
+	if (consider_informations) {
+		border_and_inset.setAuthor(racine.attribute("auteur"));
+		border_and_inset.setTitle(racine.attribute("titre"));
+		border_and_inset.setDate(QDate::fromString(racine.attribute("date"), "yyyyMMdd"));
+		border_and_inset.setFileName(racine.attribute("filename"));
+		border_and_inset.setFolio(racine.attribute("folio"));
+	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
 	if (racine.firstChild().isNull()) return(true);
@@ -366,9 +372,27 @@ Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_ad
 	return(retour ? nvel_elmt : NULL);
 }
 
+/**
+	Verifie si la liste des elements selectionnes a change. Si oui, le signal
+	selectionChanged() est emis.
+*/
 void Schema::slot_checkSelectionChange() {
 	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
 	QList<QGraphicsItem *> selecteditems = selectedItems();
 	if (cache_selecteditems != selecteditems) emit(selectionChanged());
 	cache_selecteditems = selecteditems;
+}
+
+/**
+	@return Le rectangle (coordonnees par rapport a la scene) delimitant le bord du schema
+*/
+QRectF Schema::border() const {
+	return(
+		QRectF(
+			MARGIN,
+			MARGIN,
+			border_and_inset.borderWidth(),
+			border_and_inset.borderHeight()
+		)
+	);
 }

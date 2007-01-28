@@ -9,6 +9,7 @@ INCLUDEPATH += .
 
 # Input
 HEADERS += aboutqet.h \
+           borderinset.h \
            borne.h \
            conducteur.h \
            element.h \
@@ -20,6 +21,7 @@ HEADERS += aboutqet.h \
            schema.h \
            schemavue.h
 SOURCES += aboutqet.cpp \
+           borderinset.cpp \
            borne.cpp \
            conducteur.cpp \
            element.cpp \

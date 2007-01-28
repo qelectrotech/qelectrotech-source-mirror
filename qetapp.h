@@ -64,6 +64,8 @@
 		QAction *selectionner;
 		QAction *pivoter;
 		QAction *infos_schema;
+		QAction *add_column;
+		QAction *remove_column;
 		QAction *poser_fil;
 		QAction *masquer_appli;
 		QAction *restaurer_appli;
@@ -126,5 +128,7 @@
 		void slot_setVisualisationMode();
 		void slot_updateActions();
 		void slot_updateMenuFenetres();
+		void slot_addColumn();
+		void slot_removeColumn();
 	};
 #endif

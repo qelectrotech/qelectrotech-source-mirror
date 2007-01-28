@@ -2,9 +2,11 @@
 	#define SCHEMA_H
 	#define GRILLE_X 10
 	#define GRILLE_Y 10
+	#define MARGIN   5.0
 	#include <QtGui>
 	#include <QtXml>
-	#include <qetapp.h>
+	#include "qetapp.h"
+	#include "borderinset.h"
 	class Element;
 	class Borne;
 	class Schema : public QGraphicsScene {
@@ -24,15 +26,11 @@
 		QImage toImage(int = -1, int = -1, bool = true);
 		QSize imageSize() const;
 		QDomDocument toXml(bool = true);
-		bool fromXml(QDomDocument &, QPointF = QPointF());
+		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true);
 		QGraphicsItem *getElementById(uint id);
 		inline void setAffichageGrille(bool ddg) { doit_dessiner_grille = ddg; }
-		// elements du cartouche
-		QString auteur;
-		QDate   date;
-		QString titre;
-		QString folio;       // vraiment necessaire ce truc ?
-		QString nom_fichier; // meme remarque
+		BorderInset border_and_inset;
+		QRectF border() const;
 		
 		private:
 		QGraphicsLineItem *poseur_de_conducteur;
