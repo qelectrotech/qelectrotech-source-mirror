@@ -107,11 +107,11 @@ QPixmap Element::pixmap() {
 QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemPositionChange) {
 		foreach(QGraphicsItem *qgi, children()) {
-			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducteur(value.toPointF());
+			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer(value.toPointF());
 		}
 	} else if (change == QGraphicsItem::ItemSelectedChange) {
 		foreach(QGraphicsItem *qgi, children()) {
-			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducteur();
+			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer();
 		}
 	}
 	return(QGraphicsItem::itemChange(change, value));
@@ -126,7 +126,7 @@ bool Element::setOrientation(Terminal::Orientation o) {
 	ori = o;
 	update();
 	foreach(QGraphicsItem *qgi, children()) {
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducteur();
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer();
 	}
 	return(true);
 }

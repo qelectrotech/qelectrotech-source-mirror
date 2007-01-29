@@ -6,12 +6,12 @@
 	/**
 		Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
 	*/
-	class Conducteur : public QGraphicsPathItem {
+	class Conducer : public QGraphicsPathItem {
 		public:
 		enum { Type = UserType + 1001 };
     	virtual int type() const { return Type; }
-		Conducteur(Terminal *, Terminal *, Element * = 0, QGraphicsScene * = 0);
-		//virtual ~Conducteur();
+		Conducer(Terminal *, Terminal *, Element * = 0, QGraphicsScene * = 0);
+		//virtual ~Conducer();
 		
 		void destroy();
 		bool isDestroyed() const { return(destroyed); }
@@ -51,8 +51,8 @@
 		
 		void pointsToPath();
 		void updatePoints();
-		void priv_calculeConducteur(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
-		void priv_modifieConducteur(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+		void priv_calculeConducer(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+		void priv_modifieConducer(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
 		static QPointF extendTerminal(const QPointF &, Terminal::Orientation, qreal = 12.0);
 		static bool surLeMemeAxe(Terminal::Orientation, Terminal::Orientation);
 		static bool estHorizontale(Terminal::Orientation a);

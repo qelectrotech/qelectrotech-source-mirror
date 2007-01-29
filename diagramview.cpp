@@ -84,14 +84,14 @@ void DiagramView::selectInvert() {
 void DiagramView::supprimer() {
 	
 	QList<QGraphicsItem *> garbage_elmt;
-	QList<QGraphicsItem *> garbage_conducteurs;
+	QList<QGraphicsItem *> garbage_conducers;
 	
 	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
 		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (qgraphicsitem_cast<Conducteur *>(qgi)) {
+		if (qgraphicsitem_cast<Conducer *>(qgi)) {
 			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
-			if (!garbage_conducteurs.contains(qgi)) garbage_conducteurs.append(qgi);
+			if (!garbage_conducers.contains(qgi)) garbage_conducers.append(qgi);
 		} else if (qgraphicsitem_cast<Element *>(qgi)) {
 			// s'il s'agit d'un element, on veille a enlever ses conducteurs
 			if (!garbage_elmt.contains(qgi)) garbage_elmt.append(qgi);
@@ -100,8 +100,8 @@ void DiagramView::supprimer() {
 				// si cet enfant est une borne
 				if (Terminal *p = qgraphicsitem_cast<Terminal *>(child)) {
 					// alors chaque conducteur de la borne est recense
-					foreach (Conducteur *f, p -> conducteurs()) {
-						if (!garbage_conducteurs.contains(f)) garbage_conducteurs.append(f);
+					foreach (Conducer *f, p -> conducers()) {
+						if (!garbage_conducers.contains(f)) garbage_conducers.append(f);
 					}
 				}
 			}
@@ -110,8 +110,8 @@ void DiagramView::supprimer() {
 	scene -> clearSelection();
 	
 	// "destroying" the wires, removing them from the scene and stocking them into the « garbage »
-	foreach (QGraphicsItem *qgi, garbage_conducteurs) {
-		if (Conducteur *f = qgraphicsitem_cast<Conducteur *>(qgi)) {
+	foreach (QGraphicsItem *qgi, garbage_conducers) {
+		if (Conducer *f = qgraphicsitem_cast<Conducer *>(qgi)) {
 			f -> destroy();
 			scene -> removeItem(f);
 			throwToGarbage(f);

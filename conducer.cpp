@@ -1,10 +1,10 @@
 #include <QtDebug>
-#include "conducteur.h"
+#include "conducer.h"
 #include "element.h"
 
-bool Conducteur::pen_and_brush_initialized = false;
-QPen Conducteur::conducer_pen = QPen();
-QBrush Conducteur::conducer_brush = QBrush();
+bool Conducer::pen_and_brush_initialized = false;
+QPen Conducer::conducer_pen = QPen();
+QBrush Conducer::conducer_brush = QBrush();
 
 /**
 	Constructeur
@@ -13,13 +13,13 @@ QBrush Conducteur::conducer_brush = QBrush();
 	@param parent Element parent du conducteur (0 par defaut)
 	@param scene  QGraphicsScene auquelle appartient le conducteur
 */
-Conducteur::Conducteur(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) : QGraphicsPathItem(parent, scene) {
+Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) : QGraphicsPathItem(parent, scene) {
 	// bornes que le conducteur relie
 	terminal1 = p1;
 	terminal2 = p2;
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
-	bool ajout_p1 = terminal1 -> addConducteur(this);
-	bool ajout_p2 = terminal2 -> addConducteur(this);
+	bool ajout_p1 = terminal1 -> addConducer(this);
+	bool ajout_p2 = terminal2 -> addConducer(this);
 	// en cas d'echec de l'ajout (conducteur deja existant notamment)
 	if (!ajout_p1 || !ajout_p2) return;
 	destroyed = false;
@@ -36,7 +36,7 @@ Conducteur::Conducteur(Terminal *p1, Terminal* p2, Element *parent, QGraphicsSce
 		pen_and_brush_initialized = true;
 	}
 	// calcul du rendu du conducteur
-	priv_calculeConducteur(terminal1 -> amarrageConducteur(), terminal1 -> orientation(), terminal2 -> amarrageConducteur(), terminal2 -> orientation());
+	priv_calculeConducer(terminal1 -> amarrageConducer(), terminal1 -> orientation(), terminal2 -> amarrageConducer(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 }
 
@@ -44,15 +44,15 @@ Conducteur::Conducteur(Terminal *p1, Terminal* p2, Element *parent, QGraphicsSce
 	Met a jour la representation graphique du conducteur.
 	@param rect Rectangle a mettre a jour
 */
-void Conducteur::update(const QRectF &rect) {
+void Conducer::update(const QRectF &rect) {
 	// utilise soit la fonction priv_modifieConducteur soit la fonction priv_calculeConducteur
-	void (Conducteur::* fonction_update) (const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
-	fonction_update = (points.count() && modified_path) ? &Conducteur::priv_modifieConducteur : &Conducteur::priv_calculeConducteur;
+	void (Conducer::* fonction_update) (const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+	fonction_update = (points.count() && modified_path) ? &Conducer::priv_modifieConducer : &Conducer::priv_calculeConducer;
 	
 	// appelle la bonne fonction pour calculer l'aspect du conducteur
 	(this ->* fonction_update)(
-		terminal1 -> amarrageConducteur(), terminal1 -> orientation(),
-		terminal2 -> amarrageConducteur(), terminal2 -> orientation()
+		terminal1 -> amarrageConducer(), terminal1 -> orientation(),
+		terminal2 -> amarrageConducer(), terminal2 -> orientation()
 	);
 	QGraphicsPathItem::update(rect);
 }
@@ -64,29 +64,29 @@ void Conducteur::update(const QRectF &rect) {
 	@param b Borne
 	@param pos position de la borne b
 */
-void Conducteur::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPointF &newpos) {
+void Conducer::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPointF &newpos) {
 	QPointF p1, p2;
 	if (b == terminal1) {
 		p1 = newpos;
-		p2 = terminal2 -> amarrageConducteur();
+		p2 = terminal2 -> amarrageConducer();
 	} else if (b == terminal2) {
-		p1 = terminal1 -> amarrageConducteur();
+		p1 = terminal1 -> amarrageConducer();
 		p2 = newpos;
 	} else {
-		p1 = terminal1 -> amarrageConducteur();
-		p2 = terminal2 -> amarrageConducteur();
+		p1 = terminal1 -> amarrageConducer();
+		p2 = terminal2 -> amarrageConducer();
 	}
 	if (points.count() && modified_path)
-		priv_modifieConducteur(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
+		priv_modifieConducer(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else
-		priv_calculeConducteur(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
+		priv_calculeConducer(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	QGraphicsPathItem::update(rect);
 }
 
 /**
 	Genere le QPainterPath a partir de la liste des points
 */
-void Conducteur::pointsToPath() {
+void Conducer::pointsToPath() {
 	QPainterPath path;
 	bool moveto_done = false;
 	foreach(QPointF point, points) {
@@ -105,12 +105,12 @@ void Conducteur::pointsToPath() {
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conducteur::priv_modifieConducteur(const QPointF &p1, Terminal::Orientation, const QPointF &p2, Terminal::Orientation) {
-	Q_ASSERT_X(points.count() > 1, "priv_modifieConducteur", "pas de points a modifier");
+void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, const QPointF &p2, Terminal::Orientation) {
+	Q_ASSERT_X(points.count() > 1, "priv_modifieConducer", "pas de points a modifier");
 	
 	// recupere les dernieres coordonnees connues des bornes
-	QPointF old_p1 = mapFromScene(terminal1 -> amarrageConducteur());
-	QPointF old_p2 = mapFromScene(terminal2 -> amarrageConducteur());
+	QPointF old_p1 = mapFromScene(terminal1 -> amarrageConducer());
+	QPointF old_p2 = mapFromScene(terminal2 -> amarrageConducer());
 	
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);
@@ -151,7 +151,7 @@ void Conducteur::priv_modifieConducteur(const QPointF &p1, Terminal::Orientation
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conducteur::priv_calculeConducteur(const QPointF &p1, Terminal::Orientation o1, const QPointF &p2, Terminal::Orientation o2) {
+void Conducer::priv_calculeConducer(const QPointF &p1, Terminal::Orientation o1, const QPointF &p2, Terminal::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
 	Terminal::Orientation ori_depart, ori_arrivee;
 	points.clear();
@@ -240,7 +240,7 @@ void Conducteur::priv_calculeConducteur(const QPointF &p1, Terminal::Orientation
 	@param ext_size la taille de la prolongation
 	@return le point correspondant a la borne apres prolongation
 */
-QPointF Conducteur::extendTerminal(const QPointF &terminal, Terminal::Orientation terminal_orientation, qreal ext_size) {
+QPointF Conducer::extendTerminal(const QPointF &terminal, Terminal::Orientation terminal_orientation, qreal ext_size) {
 	QPointF extended_terminal;
 	switch(terminal_orientation) {
 		case Terminal::Nord:
@@ -266,7 +266,7 @@ QPointF Conducteur::extendTerminal(const QPointF &terminal, Terminal::Orientatio
 	@param qsogi Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
-void Conducteur::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QWidget */*qw*/) {
+void Conducer::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QWidget */*qw*/) {
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
@@ -300,7 +300,7 @@ void Conducteur::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, 
 	@param b La seconde orientation de Borne
 	@return Un booleen a true si les deux orientations de bornes sont sur le meme axe
 */
-bool Conducteur::surLeMemeAxe(Terminal::Orientation a, Terminal::Orientation b) {
+bool Conducer::surLeMemeAxe(Terminal::Orientation a, Terminal::Orientation b) {
 	if ((a == Terminal::Nord || a == Terminal::Sud) && (b == Terminal::Nord || b == Terminal::Sud)) return(true);
 	else if ((a == Terminal::Est || a == Terminal::Ouest) && (b == Terminal::Est || b == Terminal::Ouest)) return(true);
 	else return(false);
@@ -311,7 +311,7 @@ bool Conducteur::surLeMemeAxe(Terminal::Orientation a, Terminal::Orientation b) 
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est horizontale, false sinon
 */
-bool Conducteur::estHorizontale(Terminal::Orientation a) {
+bool Conducer::estHorizontale(Terminal::Orientation a) {
 	return(a == Terminal::Est || a == Terminal::Ouest);
 }
 
@@ -320,17 +320,17 @@ bool Conducteur::estHorizontale(Terminal::Orientation a) {
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est verticale, false sinon
 */
-bool Conducteur::estVerticale(Terminal::Orientation a) {
+bool Conducer::estVerticale(Terminal::Orientation a) {
 	return(a == Terminal::Nord || a == Terminal::Sud);
 }
 
 /**
 	Methode de preparation a la destruction du conducteur ; le conducteur se detache de ses deux bornes
 */
-void Conducteur::destroy() {
+void Conducer::destroy() {
 	destroyed = true;
-	terminal1 -> removeConducteur(this);
-	terminal2 -> removeConducteur(this);
+	terminal1 -> removeConducer(this);
+	terminal2 -> removeConducer(this);
 }
 
 /**
@@ -338,7 +338,7 @@ void Conducteur::destroy() {
 	@param e Un element XML sense represente un Conducteur
 	@return true si l'element XML represente bien un Conducteur ; false sinon
 */
-bool Conducteur::valideXml(QDomElement &e){
+bool Conducer::valideXml(QDomElement &e){
 	// verifie le nom du tag
 	if (e.tagName() != "conducteur") return(false);
 	
@@ -361,7 +361,7 @@ bool Conducteur::valideXml(QDomElement &e){
 	Gere les clics sur le conducteur.
 	@param e L'evenement decrivant le clic.
 */
-void Conducteur::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+void Conducer::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
 		press_point = mapFromScene(e -> pos());
@@ -395,7 +395,7 @@ void Conducteur::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 		-mettre le flag "trajet modifie" a true
 	-gerer les contraintes
 */
-void Conducteur::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+void Conducer::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
 		if (moving_point) {
@@ -504,7 +504,7 @@ void Conducteur::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	Gere les relachements de boutons de souris sur le conducteur 
 	@param e L'evenement decrivant le lacher de bouton.
 */
-void Conducteur::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+void Conducer::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
 		moving_point = false;
@@ -515,7 +515,7 @@ void Conducteur::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 /**
 	@return Le rectangle delimitant l'espace de dessin du conducteur
 */
-QRectF Conducteur::boundingRect() const {
+QRectF Conducer::boundingRect() const {
 	QRectF retour = QGraphicsPathItem::boundingRect();
 	retour.adjust(-5.0, -5.0, 5.0, 5.0);
 	return(retour);
@@ -524,7 +524,7 @@ QRectF Conducteur::boundingRect() const {
 /**
 	@return La forme / zone "cliquable" du conducteur
 */
-QPainterPath Conducteur::shape() const {
+QPainterPath Conducer::shape() const {
 	QPainterPath area;
 	QPointF previous_point;
 	QPointF *point1, *point2;
@@ -564,7 +564,7 @@ QPainterPath Conducteur::shape() const {
 /**
 	Met à jour deux listes de reels.
 */
-void Conducteur::updatePoints() {
+void Conducer::updatePoints() {
 	int s = points.size();
 	moves_x.clear();
 	moves_y.clear();
@@ -578,7 +578,7 @@ void Conducteur::updatePoints() {
 	orig_dist_2_terms_y = b2.y() - b1.y();
 }
 
-qreal Conducteur::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
+qreal Conducer::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
 	qreal space = 5.0;
 	if (bound1 < bound2) {
 		return(qBound(bound1 + space, tobound, bound2 - space));
@@ -587,7 +587,7 @@ qreal Conducteur::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
 	}
 }
 
-qreal Conducteur::conducer_bound(qreal tobound, qreal bound, bool positive) {
+qreal Conducer::conducer_bound(qreal tobound, qreal bound, bool positive) {
 	qreal space = 5.0;
 	return(positive ? qMax(tobound, bound + space) : qMin(tobound, bound - space));
 }

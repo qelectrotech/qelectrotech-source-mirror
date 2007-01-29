@@ -1,7 +1,7 @@
 #include "terminal.h"
 #include "diagram.h"
 #include "element.h"
-#include "conducteur.h"
+#include "conducer.h"
 
 /**
 	Fonction privee pour initialiser la borne.
@@ -10,14 +10,14 @@
 */
 void Terminal::initialise(QPointF pf, Terminal::Orientation o) {
 	// definition du pount d'amarrage pour un conducteur
-	amarrage_conducteur  = pf;
+	amarrage_conducer  = pf;
 	
 	// definition de l'orientation de la terminal (par defaut : sud)
 	if (o < Terminal::Nord || o > Terminal::Ouest) sens = Terminal::Sud;
 	else sens = o;
 	
 	// calcul de la position du point d'amarrage a l'element
-	amarrage_elmt = amarrage_conducteur;
+	amarrage_elmt = amarrage_conducer;
 	switch(sens) {
 		case Terminal::Nord  : amarrage_elmt += QPointF(0, TAILLE_BORNE);  break;
 		case Terminal::Est   : amarrage_elmt += QPointF(-TAILLE_BORNE, 0); break;
@@ -107,37 +107,37 @@ Terminal::Orientation Terminal::orientation() const {
 }
 
 /**
-	Attribue un conducteur a la borne
+	Attribue un conducer a la borne
 	@param f Le conducteur a rattacher a cette borne
 */
-bool Terminal::addConducteur(Conducteur *f) {
+bool Terminal::addConducer(Conducer *f) {
 	// pointeur 0 refuse
 	if (!f) return(false);
 	
 	// une seule des deux bornes du conducteur doit etre this
-	Q_ASSERT_X((f -> terminal1 == this ^ f -> terminal2 == this), "Terminal::addConducteur", "Le conducteur devrait etre relie exactement une fois a la terminal en cours");
+	Q_ASSERT_X((f -> terminal1 == this ^ f -> terminal2 == this), "Terminal::addConducer", "Le conducer devrait etre relie exactement une fois a la terminal en cours");
 	
 	// determine l'autre borne a laquelle cette borne va etre relie grace au conducteur
 	Terminal *autre_terminal = (f -> terminal1 == this) ? f -> terminal2 : f -> terminal1;
 	
 	// verifie que la borne n'est pas deja reliee avec l'autre borne
 	bool deja_liees = false;
-	foreach (Conducteur* conducteur, liste_conducteurs) {
-		if (conducteur -> terminal1 == autre_terminal || conducteur -> terminal2 == autre_terminal) deja_liees = true;
+	foreach (Conducer* conducer, liste_conducers) {
+		if (conducer -> terminal1 == autre_terminal || conducer -> terminal2 == autre_terminal) deja_liees = true;
 	}
 	
 	// si les deux bornes sont deja reliees, on refuse d'ajouter le conducteur
 	if (deja_liees) return(false);
 	
 	// sinon on ajoute le conducteur
-	liste_conducteurs.append(f);
+	liste_conducers.append(f);
 	return(true);
 }
 
-void Terminal::removeConducteur(Conducteur *f) {
-	int index = liste_conducteurs.indexOf(f);
+void Terminal::removeConducer(Conducer *f) {
+	int index = liste_conducers.indexOf(f);
 	if (index == -1) return;
-	liste_conducteurs.removeAt(index);
+	liste_conducers.removeAt(index);
 }
 
 /**
@@ -155,7 +155,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
 	// on travaille avec les coordonnees de l'element parent
-	QPointF f = mapFromParent(amarrage_conducteur);
+	QPointF f = mapFromParent(amarrage_conducer);
 	QPointF e = mapFromParent(amarrage_elmt);
 	
 	QPen t;
@@ -181,12 +181,12 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
 */
 QRectF Terminal::boundingRect() const {
 	if (br -> isNull()) {
-		qreal afx = amarrage_conducteur.x();
-		qreal afy = amarrage_conducteur.y();
+		qreal afx = amarrage_conducer.x();
+		qreal afy = amarrage_conducer.y();
 		qreal aex = amarrage_elmt.x();
 		qreal aey = amarrage_elmt.y();
 		QPointF origine;
-		origine = (afx <= aex && afy <= aey ? amarrage_conducteur : amarrage_elmt);
+		origine = (afx <= aex && afy <= aey ? amarrage_conducer : amarrage_elmt);
 		origine += QPointF(-3.0, -3.0);
 		qreal w = qAbs((int)(afx - aex)) + 7;
 		qreal h = qAbs((int)(afy - aey)) + 7;
@@ -223,9 +223,9 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
-		s -> setDepart(mapToScene(QPointF(amarrage_conducteur)));
+		s -> setDepart(mapToScene(QPointF(amarrage_conducer)));
 		s -> setArrivee(e -> scenePos());
-		s -> poseConducteur(true);
+		s -> poseConducer(true);
 		setCursor(Qt::CrossCursor);
 	}
 }
@@ -253,7 +253,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	QList<QGraphicsItem *> qgis = scene() -> items(e -> scenePos());
 	
 	/* le qgi le plus haut
-	   = le poseur de conducteur
+	   = le poseur de conducer
 	   = le premier element de la liste
 	   = la liste ne peut etre vide
 	   = on prend le deuxieme element de la liste
@@ -275,11 +275,11 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				if (((Element *)parentItem()) -> connexionsInternesAcceptees())
 					p -> couleur_hovered = p -> couleur_autorise;
 				else p -> couleur_hovered = p -> couleur_interdit;
-			} else if (p -> nbConducteurs()) {
+			} else if (p -> nbConducers()) {
 				// si la borne a deja un conducteur
 				// verifie que cette borne n'est pas deja reliee a l'autre borne
 				bool deja_reliee = false;
-				foreach (Conducteur *f, liste_conducteurs) {
+				foreach (Conducer *f, liste_conducers) {
 					if (f -> terminal1 == p || f -> terminal2 == p) {
 						deja_reliee = true;
 						break;
@@ -309,7 +309,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	// verifie que la scene est bien un Diagram
 	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
 		// on arrete de dessiner l'apercu du conducteur
-		s -> poseConducteur(false);
+		s -> poseConducer(false);
 		// on recupere l'element sous le pointeur lors du MouseReleaseEvent
 		QGraphicsItem *qgi = s -> itemAt(e -> scenePos());
 		// s'il n'y a rien, on arrete la
@@ -325,9 +325,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		bool cia = ((Element *)parentItem()) -> connexionsInternesAcceptees();
 		if (!cia) foreach(QGraphicsItem *item, parentItem() -> children()) if (item == p) return;
 		// derniere verification : verifier que cette borne n'est pas deja reliee a l'autre borne
-		foreach (Conducteur *f, liste_conducteurs) if (f -> terminal1 == p || f -> terminal2 == p) return;
+		foreach (Conducer *f, liste_conducers) if (f -> terminal1 == p || f -> terminal2 == p) return;
 		// autrement, on pose un conducteur
-		new Conducteur(this, (Terminal *)qgi, 0, scene());
+		new Conducer(this, (Terminal *)qgi, 0, scene());
 	}
 }
 
@@ -335,16 +335,16 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	Met a jour l'eventuel conducteur relie a la Terminal.
 	@param newpos Position de l'element parent a prendre en compte
 */
-void Terminal::updateConducteur(QPointF newpos) {
+void Terminal::updateConducer(QPointF newpos) {
 	if (!scene() || !parentItem()) return;
-	foreach (Conducteur *conducteur, liste_conducteurs) {
-		if (conducteur -> isDestroyed()) continue;
-		if (newpos == QPointF()) conducteur -> update(QRectF());
+	foreach (Conducer *conducer, liste_conducers) {
+		if (conducer -> isDestroyed()) continue;
+		if (newpos == QPointF()) conducer -> update(QRectF());
 		else {
 			// determine la translation subie par l'element parent
 			QPointF translation = newpos - parentItem() -> pos();
 			// rafraichit le conducteur en tenant compte de la translation
-			conducteur -> updateWithNewPos(QRectF(), this, amarrageConducteur() + translation);
+			conducer -> updateWithNewPos(QRectF(), this, amarrageConducer() + translation);
 		}
 	}
 }
@@ -352,8 +352,8 @@ void Terminal::updateConducteur(QPointF newpos) {
 /**
 	@return La liste des conducteurs lies a cette borne
 */
-QList<Conducteur *> Terminal::conducteurs() const {
-	return(liste_conducteurs);
+QList<Conducer *> Terminal::conducers() const {
+	return(liste_conducers);
 }
 
 /**

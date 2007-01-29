@@ -3,7 +3,7 @@
 	#include <QtGui>
 	class Diagram;
 	#include "element.h"
-	#include "conducteur.h"
+	#include "conducer.h"
 	#define TAILLE_GRILLE 10
 	/**
 		Classe representant graphiquement un schema electrique

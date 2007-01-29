@@ -1,5 +1,5 @@
 #include <math.h>
-#include "conducteur.h"
+#include "conducer.h"
 #include "elementperso.h"
 #include "diagram.h"
 
@@ -9,14 +9,14 @@
 */
 Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
 	setBackgroundBrush(Qt::white);
-	poseur_de_conducteur = new QGraphicsLineItem(0, 0);
-	poseur_de_conducteur -> setZValue(1000000);
+	poseur_de_conducer = new QGraphicsLineItem(0, 0);
+	poseur_de_conducer -> setZValue(1000000);
 	QPen t;
 	t.setColor(Qt::black);
 	t.setWidthF(1.5);
 	t.setStyle(Qt::DashLine);
-	poseur_de_conducteur -> setPen(t);
-	poseur_de_conducteur -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
+	poseur_de_conducer -> setPen(t);
+	poseur_de_conducer -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	doit_dessiner_grille = true;
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChange()));
 }
@@ -158,7 +158,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 	
 	// creation de deux listes : une qui contient les elements, une qui contient les conducteurs
 	QList<Element *> liste_elements;
-	QList<Conducteur *> liste_conducteurs;
+	QList<Conducer *> liste_conducers;
 	
 	
 	// Determine les elements a « XMLiser »
@@ -166,11 +166,11 @@ QDomDocument Diagram::toXml(bool diagram) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			if (diagram) liste_elements << elmt;
 			else if (elmt -> isSelected()) liste_elements << elmt;
-		} else if (Conducteur *f = qgraphicsitem_cast<Conducteur *>(qgi)) {
-			if (diagram) liste_conducteurs << f;
+		} else if (Conducer *f = qgraphicsitem_cast<Conducer *>(qgi)) {
+			if (diagram) liste_conducers << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
 			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas relie
-			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) liste_conducteurs << f;
+			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) liste_conducers << f;
 		}
 	}
 	
@@ -219,15 +219,15 @@ QDomDocument Diagram::toXml(bool diagram) {
 	racine.appendChild(elements);
 	
 	// enregistrement des conducteurs
-	if (liste_conducteurs.isEmpty()) return(document);
-	QDomElement conducteurs = document.createElement("conducteurs");
-	foreach(Conducteur *f, liste_conducteurs) {
-		QDomElement conducteur = document.createElement("conducteur");
-		conducteur.setAttribute("borne1", table_adr_id.value(f -> terminal1));
-		conducteur.setAttribute("borne2", table_adr_id.value(f -> terminal2));
-		conducteurs.appendChild(conducteur);
+	if (liste_conducers.isEmpty()) return(document);
+	QDomElement conducers = document.createElement("conducteurs");
+	foreach(Conducer *f, liste_conducers) {
+		QDomElement conducer = document.createElement("conducteur");
+		conducer.setAttribute("borne1", table_adr_id.value(f -> terminal1));
+		conducer.setAttribute("borne2", table_adr_id.value(f -> terminal2));
+		conducers.appendChild(conducer);
 	}
-	racine.appendChild(conducteurs);
+	racine.appendChild(conducers);
 	
 	// on retourne le document XML ainsi genere
 	return(document);
@@ -312,13 +312,13 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	// chargement de tous les Conducteurs du fichier XML
 	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		// on s'interesse a l'element XML "conducteurs" (= groupe de conducteurs)
-		QDomElement conducteurs = node.toElement();
-		if(conducteurs.isNull() || conducteurs.tagName() != "conducteurs") continue;
+		QDomElement conducers = node.toElement();
+		if(conducers.isNull() || conducers.tagName() != "conducteurs") continue;
 		// parcours des enfants de l'element XML "conducteurs"
-		for (QDomNode n = conducteurs.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+		for (QDomNode n = conducers.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
 			// on s'interesse a l'element XML "element" (elements eux-memes)
 			QDomElement f = n.toElement();
-			if (f.isNull() || !Conducteur::valideXml(f)) continue;
+			if (f.isNull() || !Conducer::valideXml(f)) continue;
 			// verifie que les bornes que le conducteur relie sont connues
 			int id_p1 = f.attribute("borne1").toInt();
 			int id_p2 = f.attribute("borne2").toInt();
@@ -327,12 +327,12 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 				Terminal *p1 = table_adr_id.value(id_p1);
 				Terminal *p2 = table_adr_id.value(id_p2);
 				if (p1 != p2) {
-					bool peut_poser_conducteur = true;
+					bool peut_poser_conducer = true;
 					bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
-					if (!cia) foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) if (item == p1) peut_poser_conducteur = false;
-					if (peut_poser_conducteur) new Conducteur(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+					if (!cia) foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) if (item == p1) peut_poser_conducer = false;
+					if (peut_poser_conducer) new Conducer(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
 				}
-			} else qDebug() << "Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
+			} else qDebug() << "Le chargement du conducer" << id_p1 << id_p2 << "a echoue";
 		}
 	}
 	return(true);

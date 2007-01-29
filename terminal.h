@@ -3,7 +3,7 @@
 	#define TAILLE_BORNE 4
 	#include <QtGui>
 	#include <QtXml>
-	class Conducteur;
+	class Conducer;
 	class Element;
 	class Diagram;
 	/**
@@ -32,15 +32,15 @@
 		QRectF boundingRect() const;
 		
 		// methodes de manipulation des conducteurs lies a cette borne
-		bool addConducteur(Conducteur *);
-		void removeConducteur(Conducteur *);
-		inline int nbConducteurs() const { return(liste_conducteurs.size()); }
+		bool addConducer(Conducer *);
+		void removeConducer(Conducer *);
+		inline int nbConducers() const { return(liste_conducers.size()); }
 		
 		// methodes de lecture
-		QList<Conducteur *> conducteurs() const; 
+		QList<Conducer *> conducers() const; 
 		Terminal::Orientation orientation() const;
-		inline QPointF amarrageConducteur() const { return(mapToScene(amarrage_conducteur)); }
-		void updateConducteur(QPointF = QPointF());
+		inline QPointF amarrageConducer() const { return(mapToScene(amarrage_conducer)); }
+		void updateConducer(QPointF = QPointF());
 		
 		// methodes relatives a l'import/export au format XML
 		static bool valideXml(QDomElement  &);
@@ -60,12 +60,12 @@
 		// pointeur vers la QGraphicsScene de type Diagram (evite quelques casts en interne)
 		Diagram *diagram_scene;
 		// coordonnees des points d'amarrage
-		QPointF amarrage_conducteur;
+		QPointF amarrage_conducer;
 		QPointF amarrage_elmt;
 		// orientation de la borne
 		Terminal::Orientation sens;
-		// liste des conducteurs lies a cette borne
-		QList<Conducteur *> liste_conducteurs;
+		// liste des conducers lies a cette borne
+		QList<Conducer *> liste_conducers;
 		// pointeur vers un rectangle correspondant au bounding rect ; permet de ne calculer le bounding rect qu'une seule fois ; le pointeur c'est parce que le compilo exige une methode const
 		QRectF *br;
 		Terminal *terminal_precedente;

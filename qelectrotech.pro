@@ -11,7 +11,7 @@ INCLUDEPATH += .
 HEADERS += aboutqet.h \
            borderinset.h \
            terminal.h \
-           conducteur.h \
+           conducer.h \
            element.h \
            elementfixe.h \
            elementperso.h \
@@ -23,7 +23,7 @@ HEADERS += aboutqet.h \
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            terminal.cpp \
-           conducteur.cpp \
+           conducer.cpp \
            element.cpp \
            elementfixe.cpp \
            elementperso.cpp \
