@@ -3,7 +3,7 @@
 	#include "element.h"
 	class ElementFixe : public Element {
 		public:
-		ElementFixe(QGraphicsItem * = 0, Schema * = 0);
+		ElementFixe(QGraphicsItem * = 0, Diagram * = 0);
 		int nbBornesMin() const;
 		int nbBornesMax() const;
 		virtual bool fromXml(QDomElement &, QHash<int, Borne *>&);

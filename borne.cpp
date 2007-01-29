@@ -1,5 +1,5 @@
 #include "borne.h"
-#include "schema.h"
+#include "diagram.h"
 #include "element.h"
 #include "conducteur.h"
 
@@ -48,7 +48,7 @@ void Borne::initialise(QPointF pf, Borne::Orientation o) {
 */
 Borne::Borne() : QGraphicsItem(0, 0) {
 	initialise(QPointF(0.0, 0.0), Borne::Sud);
-	schema_scene = 0;
+	diagram_scene = 0;
 }
 
 /**
@@ -58,9 +58,9 @@ Borne::Borne() : QGraphicsItem(0, 0) {
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Borne::Borne(QPointF pf, Borne::Orientation o, Element *e, Schema *s) : QGraphicsItem(e, s) {
+Borne::Borne(QPointF pf, Borne::Orientation o, Element *e, Diagram *s) : QGraphicsItem(e, s) {
 	initialise(pf, o);
-	schema_scene = s;
+	diagram_scene = s;
 }
 
 /**
@@ -71,7 +71,7 @@ Borne::Borne(QPointF pf, Borne::Orientation o, Element *e, Schema *s) : QGraphic
 	@param e    Element auquel cette borne appartient
 	@param s    Scene sur laquelle figure cette borne
 */
-Borne::Borne(qreal pf_x, qreal pf_y, Borne::Orientation o, Element *e, Schema *s) : QGraphicsItem(e, s) {
+Borne::Borne(qreal pf_x, qreal pf_y, Borne::Orientation o, Element *e, Diagram *s) : QGraphicsItem(e, s) {
 	initialise(QPointF(pf_x, pf_y), o);
 }
 
@@ -222,7 +222,7 @@ void Borne::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 	@param e L'evenement souris correspondant
 */
 void Borne::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if (Schema *s = qobject_cast<Schema *>(scene())) {
+	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
 		s -> setDepart(mapToScene(QPointF(amarrage_conducteur)));
 		s -> setArrivee(e -> scenePos());
 		s -> poseConducteur(true);
@@ -246,8 +246,8 @@ void Borne::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		borne_precedente -> update();
 	}
 	
-	// si la scene est un Schema, on actualise le poseur de conducteur
-	if (Schema *s = qobject_cast<Schema *>(scene())) s -> setArrivee(e -> scenePos());
+	// si la scene est un Diagram, on actualise le poseur de conducteur
+	if (Diagram *s = qobject_cast<Diagram *>(scene())) s -> setArrivee(e -> scenePos());
 	
 	// on recupere la liste des qgi sous le pointeur
 	QList<QGraphicsItem *> qgis = scene() -> items(e -> scenePos());
@@ -306,8 +306,8 @@ void Borne::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	setCursor(Qt::ArrowCursor);
 	borne_precedente = NULL;
 	couleur_hovered  = couleur_neutre;
-	// verifie que la scene est bien un Schema
-	if (Schema *s = qobject_cast<Schema *>(scene())) {
+	// verifie que la scene est bien un Diagram
+	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
 		// on arrete de dessiner l'apercu du conducteur
 		s -> poseConducteur(false);
 		// on recupere l'element sous le pointeur lors du MouseReleaseEvent

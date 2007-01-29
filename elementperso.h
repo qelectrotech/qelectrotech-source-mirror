@@ -4,7 +4,7 @@
 	#include <QtGui>
 	class ElementPerso : public ElementFixe {
 		public:
-		ElementPerso(QString &, QGraphicsItem * = 0, Schema * = 0, int * = NULL);
+		ElementPerso(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
 		virtual int nbBornes() const;
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 		inline QString typeId() { return(nomfichier); }
@@ -18,13 +18,13 @@
 		QString priv_nom;
 		QString nomfichier;
 		QPicture dessin;
-		bool parseElement(QDomElement &, QPainter &, Schema *);
+		bool parseElement(QDomElement &, QPainter &, Diagram *);
 		bool parseLigne(QDomElement &, QPainter &);
 		bool parseEllipse(QDomElement &, QPainter &);
 		bool parseCercle(QDomElement &, QPainter &);
 		bool parseArc(QDomElement &, QPainter &);
 		bool parsePolygone(QDomElement &, QPainter &);
-		bool parseBorne(QDomElement &, Schema *);
+		bool parseBorne(QDomElement &, Diagram *);
 		void setQPainterAntiAliasing(QPainter &, bool);
 		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
 		bool attributeIsAReal(QDomElement &, QString, double * = NULL);

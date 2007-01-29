@@ -1,7 +1,7 @@
 #ifndef EXPORTDIALOG_H
 	#define EXPORTDIALOG_H
 	#include <QtGui>
-	#include "schema.h"
+	#include "diagram.h"
 	/**
 		Cette classe represente le dialogue permettant d'exporter un schema
 		sous forme d'image selon les desirs de l'utilisateur
@@ -9,7 +9,7 @@
 	class ExportDialog : public QDialog {
 		Q_OBJECT
 		public:
-		ExportDialog(Schema &, QWidget * = 0);
+		ExportDialog(Diagram &, QWidget * = 0);
 		
 		private:
 		// elements graphiques
@@ -28,7 +28,7 @@
 		bool dontchangeheight;
 		
 		// elements relatifs au traitement effectue par le dialogue
-		Schema *diagram;
+		Diagram *diagram;
 		QSize diagram_size;
 		QString diagram_path;
 		qreal diagram_ratio;

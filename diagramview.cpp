@@ -1,14 +1,14 @@
-#include "schemavue.h"
-#include "schema.h"
+#include "diagramview.h"
+#include "diagram.h"
 #include "elementperso.h"
 
 /**
-	Initialise le SchemaVue
+	Initialise le DiagramView
 */
-void SchemaVue::initialise() {
+void DiagramView::initialise() {
 	setInteractive(true);
 	setAntialiasing(true);
-	setScene(scene = new Schema(this));
+	setScene(scene = new Diagram(this));
 	setDragMode(RubberBandDrag);
 	setAcceptDrops(true);
 	setWindowTitle(tr("Nouveau sch\351ma") + "[*]");
@@ -22,7 +22,7 @@ void SchemaVue::initialise() {
 /**
 	Constructeur par defaut
 */
-SchemaVue::SchemaVue() : QGraphicsView() {
+DiagramView::DiagramView() : QGraphicsView() {
 	initialise();
 }
 
@@ -30,23 +30,23 @@ SchemaVue::SchemaVue() : QGraphicsView() {
 	Constructeur
 	@param parent Le QWidegt parent de cette vue de schema
 */
-SchemaVue::SchemaVue(QWidget *parent) : QGraphicsView(parent) {
+DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
 	initialise();
 }
 
 /**
-	Permet de savoir si le rendu graphique du SchemaVue est antialiase ou non.
-	@return Un booleen indiquant si le SchemaVue est antialiase
+	Permet de savoir si le rendu graphique du DiagramView est antialiase ou non.
+	@return Un booleen indiquant si le DiagramView est antialiase
 */
-bool SchemaVue::antialiased() const {
+bool DiagramView::antialiased() const {
 	return(antialiasing);
 }
 
 /**
-	Active ou desactive l'antialiasing pour le rendu graphique du SchemaVue.
-	@param aa un booleen indiquant si le SchemaVue doit etre antialiase ou non
+	Active ou desactive l'antialiasing pour le rendu graphique du DiagramView.
+	@param aa un booleen indiquant si le DiagramView doit etre antialiase ou non
 */
-void SchemaVue::setAntialiasing(bool aa) {
+void DiagramView::setAntialiasing(bool aa) {
 	antialiasing = aa;
 	setRenderHint(QPainter::Antialiasing, aa);
 	setRenderHint(QPainter::TextAntialiasing, aa);
@@ -57,7 +57,7 @@ void SchemaVue::setAntialiasing(bool aa) {
 /**
 	appelle la methode select sur tous les elements de la liste d'elements
 */
-void SchemaVue::selectAll() {
+void DiagramView::selectAll() {
 	if (scene -> items().isEmpty()) return;
 	foreach (QGraphicsItem *item, scene -> items()) item -> setSelected(true);
 }
@@ -65,7 +65,7 @@ void SchemaVue::selectAll() {
 /**
 	appelle la methode deselect sur tous les elements de la liste d'elements
 */
-void SchemaVue::selectNothing() {
+void DiagramView::selectNothing() {
 	if (scene -> items().isEmpty()) return;
 	foreach (QGraphicsItem *item, scene -> items()) item -> setSelected(false);
 }
@@ -73,7 +73,7 @@ void SchemaVue::selectNothing() {
 /**
 	Inverse l'etat de selection de tous les elements de la liste d'elements
  */
-void SchemaVue::selectInvert() {
+void DiagramView::selectInvert() {
 	if (scene -> items().isEmpty()) return;
 	foreach (QGraphicsItem *item, scene -> items()) item -> setSelected(!item -> isSelected());
 }
@@ -81,7 +81,7 @@ void SchemaVue::selectInvert() {
 /**
 	Supprime les composants selectionnes
 */
-void SchemaVue::supprimer() {
+void DiagramView::supprimer() {
 	
 	QList<QGraphicsItem *> garbage_elmt;
 	QList<QGraphicsItem *> garbage_conducteurs;
@@ -131,7 +131,7 @@ void SchemaVue::supprimer() {
 	Envoie un item vers le "garbage" pour qu'il soit supprime plus tard
 	@param qgi L'item a supprimer
 */
-void SchemaVue::throwToGarbage(QGraphicsItem *qgi) {
+void DiagramView::throwToGarbage(QGraphicsItem *qgi) {
 	// pas de doublon dans le garbage (sinon ca va sentir la segfault)
 	bool qgi_deja_dans_le_garbage = false;
 	foreach(QGraphicsItem *gbg_qgi, garbage) {
@@ -146,7 +146,7 @@ void SchemaVue::throwToGarbage(QGraphicsItem *qgi) {
 /**
 	Supprime tous les elements du "garbage"
 */
-void SchemaVue::flushGarbage() {
+void DiagramView::flushGarbage() {
 	foreach(QGraphicsItem *qgi, garbage) {
 		delete(qgi);
 		garbage.removeAll(qgi);
@@ -156,7 +156,7 @@ void SchemaVue::flushGarbage() {
 /**
 	Pivote les composants selectionnes
 */
-void SchemaVue::pivoter() {
+void DiagramView::pivoter() {
 	if (scene -> selectedItems().isEmpty()) return;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *elt = qgraphicsitem_cast<Element *>(item)) {
@@ -170,7 +170,7 @@ void SchemaVue::pivoter() {
 	accepte ou refuse le drag'n drop en fonction du type de donnees entrant
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
 */
-void SchemaVue::dragEnterEvent(QDragEnterEvent *e) {
+void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
 	else e-> ignore();
 }
@@ -179,22 +179,22 @@ void SchemaVue::dragEnterEvent(QDragEnterEvent *e) {
 	gere les dragleaveevent
 	@param e le QDragEnterEvent correspondant au drag'n drop sortant
 */
-void SchemaVue::dragLeaveEvent(QDragLeaveEvent *) {}
+void DiagramView::dragLeaveEvent(QDragLeaveEvent *) {}
 
 /**
 	accepte ou refuse le drag'n drop en fonction du type de donnees entrant
 	@param e le QDragMoveEvent correspondant au drag'n drop tente
 */
-void SchemaVue::dragMoveEvent(QDragMoveEvent *e) {
+void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 	if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
 	else e-> ignore();
 }
 
 /**
-	gere les depots (drop) acceptes sur le Schema
+	gere les depots (drop) acceptes sur le Diagram
 	@param e le QDropEvent correspondant au drag'n drop effectue
 */
-void SchemaVue::dropEvent(QDropEvent *e) {
+void DiagramView::dropEvent(QDropEvent *e) {
 	QString fichier = e -> mimeData() -> text();
 	int etat;
 	Element *el = new ElementPerso(fichier, 0, 0, &etat);
@@ -207,17 +207,17 @@ void SchemaVue::dropEvent(QDropEvent *e) {
 }
 
 /**
-	Passe le Schema en mode visualisation
+	Passe le Diagram en mode visualisation
 */
-void SchemaVue::setVisualisationMode() {
+void DiagramView::setVisualisationMode() {
 	setDragMode(ScrollHandDrag);
 	emit(modeChanged());
 }
 
 /**
-	Passe le Schema en mode Selection
+	Passe le Diagram en mode Selection
 */
-void SchemaVue::setSelectionMode() {
+void DiagramView::setSelectionMode() {
 	setDragMode(RubberBandDrag);
 	viewport() -> setCursor(Qt::ArrowCursor);
 	emit(modeChanged());
@@ -226,14 +226,14 @@ void SchemaVue::setSelectionMode() {
 /**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
-void SchemaVue::zoomPlus() {
+void DiagramView::zoomPlus() {
 	scale(4.0/3.0, 4.0/3.0);
 }
 
 /**
 	Retrecit le schema (-25% = inverse des +33 % de zoomPlus())
 */
-void SchemaVue::zoomMoins() {
+void DiagramView::zoomMoins() {
 	scale(0.75, 0.75);
 }
 
@@ -242,7 +242,7 @@ void SchemaVue::zoomMoins() {
 	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
 	le zoom est reinitialise
 */
-void SchemaVue::zoomFit() {
+void DiagramView::zoomFit() {
 	if (scene -> items().isEmpty()) {
 		zoomReset();
 		return;
@@ -259,14 +259,14 @@ void SchemaVue::zoomFit() {
 /**
 	Reinitialise le zoom
 */
-void SchemaVue::zoomReset() {
+void DiagramView::zoomReset() {
 	resetMatrix();
 }
 
 /**
 	copie les elements selectionnes du schema dans le presse-papier puis les supprime
 */
-void SchemaVue::couper() {
+void DiagramView::couper() {
 	copier();
 	supprimer();
 }
@@ -274,7 +274,7 @@ void SchemaVue::couper() {
 /**
 	copie les elements selectionnes du schema dans le presse-papier
 */
-void SchemaVue::copier() {
+void DiagramView::copier() {
 	QClipboard *presse_papier = QApplication::clipboard();
 	QString contenu_presse_papier = scene -> toXml(false).toString(4);
 	if (presse_papier -> supportsSelection()) presse_papier -> setText(contenu_presse_papier, QClipboard::Selection);
@@ -284,7 +284,7 @@ void SchemaVue::copier() {
 /**
 	importe les elements contenus dans le presse-papier dans le schema
 */
-void SchemaVue::coller() {
+void DiagramView::coller() {
 	QString texte_presse_papier;
 	QDomDocument document_xml;
 	if ((texte_presse_papier = QApplication::clipboard() -> text()) == QString()) return;
@@ -295,7 +295,7 @@ void SchemaVue::coller() {
 /**
 	gere les clics et plus particulierement le clic du milieu (= coller pour X11)
 */
-void SchemaVue::mousePressEvent(QMouseEvent *e) {
+void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (e -> buttons() == Qt::MidButton) {
 		QString texte_presse_papier;
 		QDomDocument document_xml;
@@ -307,12 +307,12 @@ void SchemaVue::mousePressEvent(QMouseEvent *e) {
 }
 
 /**
-	Ouvre un fichier *.qet dans cette SchemaVue
+	Ouvre un fichier *.qet dans cette DiagramView
 	@param nom_fichier Nom du fichier a ouvrir
 	@param erreur Si le pointeur est specifie, cet entier est mis a 0 en cas de reussite de l'ouverture, 1 si le fichier n'existe pas, 2 si le fichier n'est pas lisible, 3 si le fichier n'est pas un element XML, 4 si l'ouverture du fichier a echoue pour une autre raison (c'est pas ca qui manque ^^)
 	@return true si l'ouverture a reussi, false sinon
 */
-bool SchemaVue::ouvrir(QString n_fichier, int *erreur) {
+bool DiagramView::ouvrir(QString n_fichier, int *erreur) {
 	// verifie l'existence du fichier
 	if (!QFileInfo(n_fichier).exists()) {
 		if (erreur != NULL) *erreur = 1;
@@ -348,11 +348,11 @@ bool SchemaVue::ouvrir(QString n_fichier, int *erreur) {
 	}
 }
 
-void SchemaVue::slot_selectionChanged() {
+void DiagramView::slot_selectionChanged() {
 	emit(selectionChanged());
 }
 
-void SchemaVue::closeEvent(QCloseEvent *event) {
+void DiagramView::closeEvent(QCloseEvent *event) {
 	// demande d'abord a l'utilisateur s'il veut enregistrer le schema en cours
 	QMessageBox::StandardButton reponse = QMessageBox::question(
 		this,
@@ -376,7 +376,7 @@ void SchemaVue::closeEvent(QCloseEvent *event) {
 	Si aucun nom de fichier n'est connu, cette methode appelle la methode enregistrer_sous
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool SchemaVue::enregistrer() {
+bool DiagramView::enregistrer() {
 	if (nom_fichier == QString()) return(enregistrer_sous());
 	else return(private_enregistrer(nom_fichier));
 }
@@ -389,13 +389,13 @@ bool SchemaVue::enregistrer() {
 	Sinon, faux est renvoye.
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool SchemaVue::enregistrer_sous() {
+bool DiagramView::enregistrer_sous() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer le schema
 	QString n_fichier = QFileDialog::getSaveFileName(
 		this,
 		tr("Enregistrer sous"),
 		QDir::homePath(),
-		tr("Schema QelectroTech (*.qet)")
+		tr("Diagram QelectroTech (*.qet)")
 	);
 	// si aucun nom n'est entre, renvoie faux.
 	if (n_fichier == "") return(false);
@@ -419,7 +419,7 @@ bool SchemaVue::enregistrer_sous() {
 	@param nom_fichier Nom du fichier dans lequel l'arbre XML doit etre ecrit
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool SchemaVue::private_enregistrer(QString &n_fichier) {
+bool DiagramView::private_enregistrer(QString &n_fichier) {
 	QFile fichier(n_fichier);
 	if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		QMessageBox::warning(this, tr("Erreur"), tr("Impossible d'ecrire dans ce fichier"));

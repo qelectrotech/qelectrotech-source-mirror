@@ -18,8 +18,8 @@ HEADERS += aboutqet.h \
            exportdialog.h \
            panelappareils.h \
            qetapp.h \
-           schema.h \
-           schemavue.h
+           diagram.h \
+           diagramview.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            borne.cpp \
@@ -31,8 +31,8 @@ SOURCES += aboutqet.cpp \
            main.cpp \
            panelappareils.cpp \
            qetapp.cpp \
-           schema.cpp \
-           schemavue.cpp
+           diagram.cpp \
+           diagramview.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml

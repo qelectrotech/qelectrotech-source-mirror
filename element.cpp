@@ -1,5 +1,5 @@
 #include "element.h"
-#include "schema.h"
+#include "diagram.h"
 #include <QtDebug>
 
 /*** Methodes publiques ***/
@@ -7,7 +7,7 @@
 /**
 	Constructeur pour un element sans scene ni parent
 */
-Element::Element(QGraphicsItem *parent, Schema *scene) : QGraphicsItem(parent, scene) {
+Element::Element(QGraphicsItem *parent, Diagram *scene) : QGraphicsItem(parent, scene) {
 	peut_relier_ses_propres_bornes = false;
 	setZValue(10);
 }
@@ -191,12 +191,12 @@ void Element::updatePixmap() {
 
 /**
 	Change la position de l'element en veillant a ce que l'element
-	reste sur la grille du Schema auquel il appartient.
+	reste sur la grille du Diagram auquel il appartient.
 	@param p Nouvelles coordonnees de l'element
 */
 void Element::setPos(const QPointF &p) {
 	if (p == pos()) return;
-	// pas la peine de positionner sur la grille si l'element n'est pas sur un Schema
+	// pas la peine de positionner sur la grille si l'element n'est pas sur un Diagram
 	if (scene()) {
 		// arrondit l'abscisse a 10 px pres
 		int p_x = qRound(p.x() / 10.0) * 10;
@@ -208,7 +208,7 @@ void Element::setPos(const QPointF &p) {
 
 /**
 	Change la position de l'element en veillant a ce que l'element
-	reste sur la grille du Schema auquel il appartient.
+	reste sur la grille du Diagram auquel il appartient.
 	@param x Nouvelle abscisse de l'element
 	@param y Nouvelle ordonnee de l'element
 */

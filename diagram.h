@@ -9,10 +9,10 @@
 	#include "borderinset.h"
 	class Element;
 	class Borne;
-	class Schema : public QGraphicsScene {
+	class Diagram : public QGraphicsScene {
 		Q_OBJECT
 		public:
-		Schema(QObject * = 0);
+		Diagram(QObject * = 0);
 		void drawBackground(QPainter *, const QRectF &);
 		inline void poseConducteur(bool pf) {
 			if (pf) {

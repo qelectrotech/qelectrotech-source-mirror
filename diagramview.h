@@ -1,22 +1,22 @@
-#ifndef SCHEMAVUE_H
-	#define SCHEMAVUE_H
+#ifndef DIAGRAMVIEW_H
+	#define DIAGRAMVIEW_H
 	#include <QtGui>
-	class Schema;
+	class Diagram;
 	#include "element.h"
 	#include "conducteur.h"
 	#define TAILLE_GRILLE 10
 	/**
 		Classe representant graphiquement un schema electrique
 	*/
-	class SchemaVue : public QGraphicsView {
+	class DiagramView : public QGraphicsView {
 		Q_OBJECT
 		public:
 		// constructeurs
-		SchemaVue();
-		SchemaVue(QWidget * = 0);
+		DiagramView();
+		DiagramView(QWidget * = 0);
 		
 		// nouveaux attributs
-		Schema *scene;
+		Diagram *scene;
 		
 		// methodes publiques
 		bool antialiased() const;
@@ -30,7 +30,7 @@
 		private:
 		bool private_enregistrer(QString &);
 		void initialise();
-		bool antialiasing; // booleen indiquant s'il faut effectuer un antialiasing sur le rendu graphique du SchemaVue
+		bool antialiasing; // booleen indiquant s'il faut effectuer un antialiasing sur le rendu graphique du DiagramView
 		QList<QGraphicsItem *> garbage;
 		
 		void throwToGarbage(QGraphicsItem *);

@@ -2,7 +2,7 @@
 /**
 	Constructeur
 */
-ElementFixe::ElementFixe(QGraphicsItem *parent, Schema *scene) : Element(parent, scene) {
+ElementFixe::ElementFixe(QGraphicsItem *parent, Diagram *scene) : Element(parent, scene) {
 }
 
 /**

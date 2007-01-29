@@ -5,7 +5,7 @@
 	#include <QtXml>
 	class Conducteur;
 	class Element;
-	class Schema;
+	class Diagram;
 	/**
 		Classe modelisant la « borne » d'un appareil, c'est-a-dire un
 		branchement possible pour un Conducteur.
@@ -21,8 +21,8 @@
 		
 		// constructeurs
 		Borne();
-		Borne(QPointF,      Borne::Orientation, Element * = 0, Schema * = 0);
-		Borne(qreal, qreal, Borne::Orientation, Element * = 0, Schema * = 0);
+		Borne(QPointF,      Borne::Orientation, Element * = 0, Diagram * = 0);
+		Borne(qreal, qreal, Borne::Orientation, Element * = 0, Diagram * = 0);
 		
 		// destructeur
 		~Borne();
@@ -57,8 +57,8 @@
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 		
 		private:
-		// pointeur vers la QGraphicsScene de type Schema (evite quelques casts en interne)
-		Schema *schema_scene;
+		// pointeur vers la QGraphicsScene de type Diagram (evite quelques casts en interne)
+		Diagram *diagram_scene;
 		// coordonnees des points d'amarrage
 		QPointF amarrage_conducteur;
 		QPointF amarrage_elmt;

@@ -1,13 +1,13 @@
 #include <math.h>
 #include "conducteur.h"
 #include "elementperso.h"
-#include "schema.h"
+#include "diagram.h"
 
 /**
 	Constructeur
 	@param parent Le QObject parent du schema
 */
-Schema::Schema(QObject *parent) : QGraphicsScene(parent) {
+Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
 	setBackgroundBrush(Qt::white);
 	poseur_de_conducteur = new QGraphicsLineItem(0, 0);
 	poseur_de_conducteur -> setZValue(1000000);
@@ -26,7 +26,7 @@ Schema::Schema(QObject *parent) : QGraphicsScene(parent) {
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner
 */
-void Schema::drawBackground(QPainter *p, const QRectF &r) {
+void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> save();
 	
 	// desactive tout antialiasing
@@ -66,18 +66,18 @@ void Schema::drawBackground(QPainter *p, const QRectF &r) {
 	Exporte le schema vers une image
 	@return Une QImage representant le schema
 */
-QImage Schema::toImage(int width, int height, bool respectRatio) {
+QImage Diagram::toImage(int width, int height, bool respectRatio) {
 	// determine le contenu du schema
-	QRectF schema_content = itemsBoundingRect();
+	QRectF diagram_content = itemsBoundingRect();
 	
 	// calcule la marge  = 5 % de la longueur necessaire
-	qreal margin = 0.05 * schema_content.width();
+	qreal margin = 0.05 * diagram_content.width();
 	
 	// en deduit la zone source utilisee pour l'image
-	QRectF source_area = schema_content;
+	QRectF source_area = diagram_content;
 	source_area.translate(-margin, -margin);
-	source_area.setWidth(schema_content.width() + 2.0 * margin);
-	source_area.setHeight(schema_content.height() + 2.0 * margin);
+	source_area.setWidth(diagram_content.width() + 2.0 * margin);
+	source_area.setHeight(diagram_content.height() + 2.0 * margin);
 	
 	// si les dimensions ne sont pas precisees, l'image est exportee a l'echelle 1:1
 	QSize image_size = (width == -1 && height == -1) ? source_area.size().toSize() : QSize(width, height);
@@ -113,18 +113,18 @@ QImage Schema::toImage(int width, int height, bool respectRatio) {
 	Permet de connaitre les dimensions qu'aura l'image generee par la methode toImage()
 	@return La taille de l'image generee par toImage()
 */
-QSize Schema::imageSize() const {
+QSize Diagram::imageSize() const {
 	// determine le contenu du schema
-	QRectF schema_content = itemsBoundingRect();
+	QRectF diagram_content = itemsBoundingRect();
 	
 	// calcule la marge  = 5 % de la longueur necessaire
-	qreal margin = 0.05 * schema_content.width();
+	qreal margin = 0.05 * diagram_content.width();
 	
 	// en deduit la zone source utilisee pour l'image
-	QRectF source_area = schema_content;
+	QRectF source_area = diagram_content;
 	source_area.translate(-margin, -margin);
-	source_area.setWidth(schema_content.width() + 2.0 * margin);
-	source_area.setHeight(schema_content.height() + 2.0 * margin);
+	source_area.setWidth(diagram_content.width() + 2.0 * margin);
+	source_area.setHeight(diagram_content.height() + 2.0 * margin);
 	
 	// renvoie la taille de la zone source
 	return(source_area.size().toSize());
@@ -136,15 +136,15 @@ QSize Schema::imageSize() const {
 	representer tout le schema ou seulement les elements selectionnes
 	@return Un Document XML (QDomDocument)
 */
-QDomDocument Schema::toXml(bool schema) {
+QDomDocument Diagram::toXml(bool diagram) {
 	// document
 	QDomDocument document;
 	
 	// racine de l'arbre XML
-	QDomElement racine = document.createElement("schema");
+	QDomElement racine = document.createElement("diagram");
 	
 	// proprietes du schema
-	if (schema) {
+	if (diagram) {
 		if (!border_and_inset.author().isNull())    racine.setAttribute("auteur",   border_and_inset.author());
 		if (!border_and_inset.date().isNull())      racine.setAttribute("date",     border_and_inset.date().toString("yyyyMMdd"));
 		if (!border_and_inset.title().isNull())     racine.setAttribute("titre",    border_and_inset.title());
@@ -164,11 +164,11 @@ QDomDocument Schema::toXml(bool schema) {
 	// Determine les elements a « XMLiser »
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-			if (schema) liste_elements << elmt;
+			if (diagram) liste_elements << elmt;
 			else if (elmt -> isSelected()) liste_elements << elmt;
 		} else if (Conducteur *f = qgraphicsitem_cast<Conducteur *>(qgi)) {
-			if (schema) liste_conducteurs << f;
-			// lorsqu'on n'exporte pas tout le schema, il faut retirer les conducteurs non selectionnes
+			if (diagram) liste_conducteurs << f;
+			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
 			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas relie
 			else if (f -> borne1 -> parentItem() -> isSelected() && f -> borne2 -> parentItem() -> isSelected()) liste_conducteurs << f;
 		}
@@ -234,19 +234,21 @@ QDomDocument Schema::toXml(bool schema) {
 }
 
 /**
-	Importe le schema decrit dans un document XML. Si une position est
+	Importe le diagram decrit dans un document XML. Si une position est
 	precisee, les elements importes sont positionnes de maniere a ce que le
 	coin superieur gauche du plus petit rectangle pouvant les entourant tous
 	(le bounding rect) soit a cette position.
 	@param document Le document XML a analyser
-	@param position La position du schema importe
+	@param position La position du diagram importe
 	@param consider_informations Si vrai, les informations complementaires (auteur, titre, ...) seront prises en compte
 	@return true si l'import a reussi, false sinon
 */
-bool Schema::fromXml(QDomDocument &document, QPointF position, bool consider_informations) {
+bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations) {
 	QDomElement racine = document.documentElement();
 	// le premier element doit etre un schema
+	/// @todo renommer schema en diagram
 	if (racine.tagName() != "schema") return(false);
+	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
 		border_and_inset.setAuthor(racine.attribute("auteur"));
@@ -329,10 +331,6 @@ bool Schema::fromXml(QDomDocument &document, QPointF position, bool consider_inf
 					bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
 					if (!cia) foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) if (item == p1) peut_poser_conducteur = false;
 					if (peut_poser_conducteur) new Conducteur(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
-					/*if (peut_poser_conducteur) {
-						Conducteur *nc = new Conducteur(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
-						nc -> setFlags(QGraphicsItem::ItemIsSelectable);
-					}*/
 				}
 			} else qDebug() << "Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 		}
@@ -346,7 +344,7 @@ bool Schema::fromXml(QDomDocument &document, QPointF position, bool consider_inf
 	@param table_id_adr Table de correspondance entre les entiers et les bornes
 	@return true si l'ajout a parfaitement reussi, false sinon 
 */
-Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_adr) {
+Element *Diagram::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_adr) {
 	// cree un element dont le type correspond à l'id type
 	QString type = e.attribute("type");
 	QString chemin_fichier = QETApp::realPath(type);
@@ -376,7 +374,7 @@ Element *Schema::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_ad
 	Verifie si la liste des elements selectionnes a change. Si oui, le signal
 	selectionChanged() est emis.
 */
-void Schema::slot_checkSelectionChange() {
+void Diagram::slot_checkSelectionChange() {
 	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
 	QList<QGraphicsItem *> selecteditems = selectedItems();
 	if (cache_selecteditems != selecteditems) emit(selectionChanged());
@@ -386,7 +384,7 @@ void Schema::slot_checkSelectionChange() {
 /**
 	@return Le rectangle (coordonnees par rapport a la scene) delimitant le bord du schema
 */
-QRectF Schema::border() const {
+QRectF Diagram::border() const {
 	return(
 		QRectF(
 			MARGIN,

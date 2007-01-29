@@ -1,21 +1,21 @@
 #ifndef QETAPP_H
 	#define QETAPP_H
 	#include <QtGui>
-	class SchemaVue;
+	class DiagramView;
 	class PanelAppareils;
 	/**
 		Cette classe represente la fenetre principale de QElectroTech et,
 		ipso facto, la plus grande partie de l'interface graphique de QElectroTech.
 		Il s'agit d'un objet QMainWindow avec un QWorkSpace contenant des objets
-		« Schema » en guise de widget central et un « Panel d'Appareils » en guise
+		« Diagram » en guise de widget central et un « Panel d'Appareils » en guise
 		de widget « Dock ».
 	*/
 	class QETApp : public QMainWindow {
 		Q_OBJECT
 		public:
-		QETApp(QWidget *parent=0);
-		void closeEvent(QCloseEvent * event );
-		void addSchemaVue(SchemaVue *);
+		QETApp(QWidget * = 0);
+		void closeEvent(QCloseEvent *);
+		void addDiagramView(DiagramView *);
 		static QString commonElementsDir();
 		static QString customElementsDir();
 		static QString configDir();
@@ -23,10 +23,10 @@
 		static QString realPath(QString &);
 		static QString symbolicPath(QString &);
 		public slots:
-		void systray(QSystemTrayIcon::ActivationReason raison);
-		void systrayReduire();
-		void systrayRestaurer();
-		void quitter(QCloseEvent * = NULL);
+		void systray(QSystemTrayIcon::ActivationReason);
+		void systrayReduce();
+		void systrayRestore();
+		void quit(QCloseEvent * = NULL);
 		void toggleFullScreen();
 		void toggleAntialiasing();
 		void aPropos();
@@ -63,12 +63,12 @@
 		QAction *supprimer;
 		QAction *selectionner;
 		QAction *pivoter;
-		QAction *infos_schema;
+		QAction *infos_diagram;
 		QAction *add_column;
 		QAction *remove_column;
 		QAction *poser_fil;
-		QAction *masquer_appli;
-		QAction *restaurer_appli;
+		QAction *reduce_appli;
+		QAction *restore_appli;
 		QAction *zoom_avant;
 		QAction *zoom_arriere;
 		QAction *zoom_adapte;
@@ -91,7 +91,7 @@
 		
 		private:
 		QWorkspace workspace;
-		SchemaVue *schemaEnCours();
+		DiagramView *diagramEnCours();
 		QSignalMapper windowMapper;
 		/// Dock pour le Panel d'Appareils
 		QDockWidget *qdw_pa;
@@ -101,7 +101,6 @@
 		QMenu *menu_systray;
 		QAction *systray_masquer;
 		QAction * config_fullscreen;
-		QAction *systray_quitter;
 		QMenu *menu_fenetres;
 		/// Icone dans le systray
 		QSystemTrayIcon *qsti;

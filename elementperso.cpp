@@ -7,7 +7,7 @@
 	en parametre.
 	@param nom_fichier Le chemin du fichier XML decrivant l'element
 	@param qgi Le QGraphicsItem parent de cet element
-	@param s Le Schema affichant cet element
+	@param s Le Diagram affichant cet element
 	@param etat Un pointeur facultatif vers un entier. La valeur de cet entier
 	sera changee de maniere a refleter le deroulement de l'instanciation :
 		- 0 : L'instanciation a reussi
@@ -20,7 +20,7 @@
 		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
-ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Schema *s, int *etat) : ElementFixe(qgi, s) {
+ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : ElementFixe(qgi, s) {
 	nomfichier = nom_fichier;
 	nb_bornes = 0;
 	// pessimisme inside : par defaut, ca foire
@@ -162,7 +162,7 @@ int ElementPerso::nbBornes() const {
 }
 
 /**
-	Dessine le composant sur le Schema
+	Dessine le composant sur le Diagram
 	@param qp Le QPainter a utiliser pour dessiner l'element
 	@param qsogi Les options graphiques
 */
@@ -183,7 +183,7 @@ void ElementPerso::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	@param s Le schema sur lequel sera affiche l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Schema *s) {
+bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	if (e.tagName() == "borne") return(parseBorne(e, s));
 	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
@@ -345,7 +345,7 @@ bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 	@param s Le schema sur lequel l'element perso sera affiche
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseBorne(QDomElement &e, Schema *s) {
+bool ElementPerso::parseBorne(QDomElement &e, Diagram *s) {
 	// verifie la presence et la validite des attributs obligatoires
 	double bornex, borney;
 	Borne::Orientation borneo;

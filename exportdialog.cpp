@@ -5,7 +5,7 @@
 	@param dia Le schema a exporter
 	@param parent Le Widget parent de ce dialogue
 */
-ExportDialog::ExportDialog(Schema &dia, QWidget *parent) : QDialog(parent) {
+ExportDialog::ExportDialog(Diagram &dia, QWidget *parent) : QDialog(parent) {
 	// recupere le schema a exporter, sa taille et ses proportions
 	diagram = &dia;
 	diagram_size = diagram -> imageSize();
