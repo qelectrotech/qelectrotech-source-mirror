@@ -22,7 +22,7 @@
 */
 ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : ElementFixe(qgi, s) {
 	nomfichier = nom_fichier;
-	nb_bornes = 0;
+	nb_terminals = 0;
 	// pessimisme inside : par defaut, ca foire
 	elmt_etat = -1;
 	
@@ -157,8 +157,8 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s,
 /**
 	@return Le nombre de bornes que l'element possede
 */
-int ElementPerso::nbBornes() const {
-	return(nb_bornes);
+int ElementPerso::nbTerminals() const {
+	return(nb_terminals);
 }
 
 /**
@@ -184,7 +184,7 @@ void ElementPerso::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	@return true si l'analyse reussit, false sinon
 */
 bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
-	if (e.tagName() == "borne") return(parseBorne(e, s));
+	if (e.tagName() == "borne") return(parseTerminal(e, s));
 	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
 	else if (e.tagName() == "cercle") return(parseCercle(e, qp));
@@ -345,20 +345,20 @@ bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 	@param s Le schema sur lequel l'element perso sera affiche
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseBorne(QDomElement &e, Diagram *s) {
+bool ElementPerso::parseTerminal(QDomElement &e, Diagram *s) {
 	// verifie la presence et la validite des attributs obligatoires
-	double bornex, borney;
-	Borne::Orientation borneo;
-	if (!attributeIsAReal(e, QString("x"), &bornex)) return(false);
-	if (!attributeIsAReal(e, QString("y"), &borney)) return(false);
+	double terminalx, terminaly;
+	Terminal::Orientation terminalo;
+	if (!attributeIsAReal(e, QString("x"), &terminalx)) return(false);
+	if (!attributeIsAReal(e, QString("y"), &terminaly)) return(false);
 	if (!e.hasAttribute("orientation")) return(false);
-	if (e.attribute("orientation") == "n") borneo = Borne::Nord;
-	else if (e.attribute("orientation") == "s") borneo = Borne::Sud;
-	else if (e.attribute("orientation") == "e") borneo = Borne::Est;
-	else if (e.attribute("orientation") == "w") borneo = Borne::Ouest;
+	if (e.attribute("orientation") == "n") terminalo = Terminal::Nord;
+	else if (e.attribute("orientation") == "s") terminalo = Terminal::Sud;
+	else if (e.attribute("orientation") == "e") terminalo = Terminal::Est;
+	else if (e.attribute("orientation") == "w") terminalo = Terminal::Ouest;
 	else return(false);
-	new Borne(bornex, borney, borneo, this, s);
-	++ nb_bornes;
+	new Terminal(terminalx, terminaly, terminalo, this, s);
+	++ nb_terminals;
 	return(true);
 }
 
@@ -452,7 +452,7 @@ bool ElementPerso::validOrientationAttribute(QDomElement &e) {
 	ori_e = (t.at(1) == 'd' || t.at(1) == 'y');
 	ori_s = (t.at(2) == 'd' || t.at(2) == 'y');
 	ori_w = (t.at(3) == 'd' || t.at(3) == 'y');
-	ori_d = (Borne::Orientation)d_pos;
+	ori_d = (Terminal::Orientation)d_pos;
 	ori = ori_d;
 	return(true);
 }

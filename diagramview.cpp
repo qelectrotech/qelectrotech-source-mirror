@@ -98,7 +98,7 @@ void DiagramView::supprimer() {
 			// pour chaque enfant de l'element
 			foreach (QGraphicsItem *child, qgi -> children()) {
 				// si cet enfant est une borne
-				if (Borne *p = qgraphicsitem_cast<Borne *>(child)) {
+				if (Terminal *p = qgraphicsitem_cast<Terminal *>(child)) {
 					// alors chaque conducteur de la borne est recense
 					foreach (Conducteur *f, p -> conducteurs()) {
 						if (!garbage_conducteurs.contains(f)) garbage_conducteurs.append(f);

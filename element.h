@@ -1,7 +1,7 @@
 #ifndef ELEMENT_H
 	#define ELEMENT_H
 	#include <QtGui>
-	#include "borne.h"
+	#include "terminal.h"
 	class Diagram;
 	class Element : public QGraphicsItem {
 		public:
@@ -9,9 +9,9 @@
     	virtual int type() const { return Type; }
 		Element(QGraphicsItem * = 0, Diagram * = 0);
 		
-		virtual  int nbBornes()    const = 0;
-		virtual  int nbBornesMin() const = 0;
-		virtual  int nbBornesMax() const = 0;
+		virtual  int nbTerminals()    const = 0;
+		virtual  int nbTerminalsMin() const = 0;
+		virtual  int nbTerminalsMax() const = 0;
 		virtual  void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
 		virtual  QString typeId() = 0;
 		
@@ -29,41 +29,41 @@
 		bool     invertOrientation();
 		void     setPos(const QPointF &);
 		void     setPos(qreal, qreal);
-		inline bool     connexionsInternesAcceptees() { return(peut_relier_ses_propres_bornes); }
-		inline void     setConnexionsInternesAcceptees(bool cia) { peut_relier_ses_propres_bornes = cia; }
+		inline bool     connexionsInternesAcceptees() { return(peut_relier_ses_propres_terminals); }
+		inline void     setConnexionsInternesAcceptees(bool cia) { peut_relier_ses_propres_terminals = cia; }
 		static bool     valideXml(QDomElement &);
-		virtual bool fromXml(QDomElement &, QHash<int, Borne *>&) = 0;
+		virtual bool fromXml(QDomElement &, QHash<int, Terminal *>&) = 0;
 		// methodes d'acces aux possibilites d'orientation
-		inline Borne::Orientation orientation() { return(ori); }
-		inline bool acceptOrientation(Borne::Orientation o) {
+		inline Terminal::Orientation orientation() { return(ori); }
+		inline bool acceptOrientation(Terminal::Orientation o) {
 			switch(o) {
-				case Borne::Nord:  return(ori_n);
-				case Borne::Est:   return(ori_e);
-				case Borne::Sud:   return(ori_s);
-				case Borne::Ouest: return(ori_w);
+				case Terminal::Nord:  return(ori_n);
+				case Terminal::Est:   return(ori_e);
+				case Terminal::Sud:   return(ori_s);
+				case Terminal::Ouest: return(ori_w);
 				default: return(false);
 			}
 		}
-		inline Borne::Orientation defaultOrientation() { return(ori_d); }
-		inline Borne::Orientation nextAcceptableOrientation() {
-			Borne::Orientation retour = nextOrientation(ori);
+		inline Terminal::Orientation defaultOrientation() { return(ori_d); }
+		inline Terminal::Orientation nextAcceptableOrientation() {
+			Terminal::Orientation retour = nextOrientation(ori);
 			for (int i = 0 ; i < 4 ; ++ i) {
 				if (acceptOrientation(retour)) return(retour);
 				retour = nextOrientation(retour);
 			}
 			// on ne devrait pas arriver la : renvoi d'une valeur par defaut = nord
-			return(Borne::Nord);
+			return(Terminal::Nord);
 		}
-		inline Borne::Orientation previousAcceptableOrientation() {
-			Borne::Orientation retour = previousOrientation(ori);
+		inline Terminal::Orientation previousAcceptableOrientation() {
+			Terminal::Orientation retour = previousOrientation(ori);
 			for (int i = 0 ; i < 4 ; ++ i) {
 				if (acceptOrientation(retour)) return(retour);
 				retour = previousOrientation(retour);
 			}
 			// on ne devrait pas arriver la : renvoi d'une valeur par defaut = nord
-			return(Borne::Nord);
+			return(Terminal::Nord);
 		}
-		bool setOrientation(Borne::Orientation o);
+		bool setOrientation(Terminal::Orientation o);
 		
 		protected:
 		void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
@@ -72,21 +72,21 @@
 		bool    ori_s;
 		bool    ori_e;
 		bool    ori_w;
-		Borne::Orientation ori_d;
-		Borne::Orientation ori;
+		Terminal::Orientation ori_d;
+		Terminal::Orientation ori;
 		
 		private:
-		bool peut_relier_ses_propres_bornes;
+		bool peut_relier_ses_propres_terminals;
 		void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 		void updatePixmap();
-		inline Borne::Orientation nextOrientation(Borne::Orientation o) {
-			if (o < 0 || o > 2) return(Borne::Nord);
-			return((Borne::Orientation)(o + 1));
+		inline Terminal::Orientation nextOrientation(Terminal::Orientation o) {
+			if (o < 0 || o > 2) return(Terminal::Nord);
+			return((Terminal::Orientation)(o + 1));
 		}
-		inline Borne::Orientation previousOrientation(Borne::Orientation o) {
-			if (o < 0 || o > 3) return(Borne::Nord);
-			if (o == Borne::Nord) return(Borne::Ouest);
-			return((Borne::Orientation)(o - 1));
+		inline Terminal::Orientation previousOrientation(Terminal::Orientation o) {
+			if (o < 0 || o > 3) return(Terminal::Nord);
+			if (o == Terminal::Nord) return(Terminal::Ouest);
+			return((Terminal::Orientation)(o - 1));
 		}
 		
 		QSize   dimensions;

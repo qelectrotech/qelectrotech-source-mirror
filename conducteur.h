@@ -1,7 +1,7 @@
 #ifndef CONDUCTEUR_H
 	#define CONDUCTEUR_H
 	#include <QtGui>
-	#include "borne.h"
+	#include "terminal.h"
 	class Element;
 	/**
 		Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
@@ -10,12 +10,12 @@
 		public:
 		enum { Type = UserType + 1001 };
     	virtual int type() const { return Type; }
-		Conducteur(Borne *, Borne *, Element * = 0, QGraphicsScene * = 0);
+		Conducteur(Terminal *, Terminal *, Element * = 0, QGraphicsScene * = 0);
 		//virtual ~Conducteur();
 		
 		void destroy();
 		bool isDestroyed() const { return(destroyed); }
-		void updateWithNewPos(const QRectF &, const Borne *, const QPointF &);
+		void updateWithNewPos(const QRectF &, const Terminal *, const QPointF &);
 		void update(const QRectF & = QRectF());
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 		QRectF boundingRect() const;
@@ -23,9 +23,9 @@
 		static bool valideXml(QDomElement &);
 		
 		///Premiere borne a laquelle le fil est rattache
-		Borne *borne1;
+		Terminal *terminal1;
 		///Deuxieme borne a laquelle le fil est rattache
-		Borne *borne2;
+		Terminal *terminal2;
 		
 		protected:
 		void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -51,12 +51,12 @@
 		
 		void pointsToPath();
 		void updatePoints();
-		void priv_calculeConducteur(const QPointF &, Borne::Orientation, const QPointF &, Borne::Orientation);
-		void priv_modifieConducteur(const QPointF &, Borne::Orientation, const QPointF &, Borne::Orientation);
-		static QPointF extendTerminal(const QPointF &, Borne::Orientation, qreal = 12.0);
-		static bool surLeMemeAxe(Borne::Orientation, Borne::Orientation);
-		static bool estHorizontale(Borne::Orientation a);
-		static bool estVerticale(Borne::Orientation a);
+		void priv_calculeConducteur(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+		void priv_modifieConducteur(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+		static QPointF extendTerminal(const QPointF &, Terminal::Orientation, qreal = 12.0);
+		static bool surLeMemeAxe(Terminal::Orientation, Terminal::Orientation);
+		static bool estHorizontale(Terminal::Orientation a);
+		static bool estVerticale(Terminal::Orientation a);
 		static qreal conducer_bound(qreal tobound, qreal bound1, qreal bound2);
 		static qreal conducer_bound(qreal tobound, qreal bound, bool positive);
 	};

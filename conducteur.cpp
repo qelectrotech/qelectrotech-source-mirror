@@ -13,13 +13,13 @@ QBrush Conducteur::conducer_brush = QBrush();
 	@param parent Element parent du conducteur (0 par defaut)
 	@param scene  QGraphicsScene auquelle appartient le conducteur
 */
-Conducteur::Conducteur(Borne *p1, Borne* p2, Element *parent, QGraphicsScene *scene) : QGraphicsPathItem(parent, scene) {
+Conducteur::Conducteur(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) : QGraphicsPathItem(parent, scene) {
 	// bornes que le conducteur relie
-	borne1 = p1;
-	borne2 = p2;
+	terminal1 = p1;
+	terminal2 = p2;
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
-	bool ajout_p1 = borne1 -> addConducteur(this);
-	bool ajout_p2 = borne2 -> addConducteur(this);
+	bool ajout_p1 = terminal1 -> addConducteur(this);
+	bool ajout_p2 = terminal2 -> addConducteur(this);
 	// en cas d'echec de l'ajout (conducteur deja existant notamment)
 	if (!ajout_p1 || !ajout_p2) return;
 	destroyed = false;
@@ -36,7 +36,7 @@ Conducteur::Conducteur(Borne *p1, Borne* p2, Element *parent, QGraphicsScene *sc
 		pen_and_brush_initialized = true;
 	}
 	// calcul du rendu du conducteur
-	priv_calculeConducteur(borne1 -> amarrageConducteur(), borne1 -> orientation(), borne2 -> amarrageConducteur(), borne2 -> orientation());
+	priv_calculeConducteur(terminal1 -> amarrageConducteur(), terminal1 -> orientation(), terminal2 -> amarrageConducteur(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 }
 
@@ -46,13 +46,13 @@ Conducteur::Conducteur(Borne *p1, Borne* p2, Element *parent, QGraphicsScene *sc
 */
 void Conducteur::update(const QRectF &rect) {
 	// utilise soit la fonction priv_modifieConducteur soit la fonction priv_calculeConducteur
-	void (Conducteur::* fonction_update) (const QPointF &, Borne::Orientation, const QPointF &, Borne::Orientation);
+	void (Conducteur::* fonction_update) (const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
 	fonction_update = (points.count() && modified_path) ? &Conducteur::priv_modifieConducteur : &Conducteur::priv_calculeConducteur;
 	
 	// appelle la bonne fonction pour calculer l'aspect du conducteur
 	(this ->* fonction_update)(
-		borne1 -> amarrageConducteur(), borne1 -> orientation(),
-		borne2 -> amarrageConducteur(), borne2 -> orientation()
+		terminal1 -> amarrageConducteur(), terminal1 -> orientation(),
+		terminal2 -> amarrageConducteur(), terminal2 -> orientation()
 	);
 	QGraphicsPathItem::update(rect);
 }
@@ -64,22 +64,22 @@ void Conducteur::update(const QRectF &rect) {
 	@param b Borne
 	@param pos position de la borne b
 */
-void Conducteur::updateWithNewPos(const QRectF &rect, const Borne *b, const QPointF &newpos) {
+void Conducteur::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPointF &newpos) {
 	QPointF p1, p2;
-	if (b == borne1) {
+	if (b == terminal1) {
 		p1 = newpos;
-		p2 = borne2 -> amarrageConducteur();
-	} else if (b == borne2) {
-		p1 = borne1 -> amarrageConducteur();
+		p2 = terminal2 -> amarrageConducteur();
+	} else if (b == terminal2) {
+		p1 = terminal1 -> amarrageConducteur();
 		p2 = newpos;
 	} else {
-		p1 = borne1 -> amarrageConducteur();
-		p2 = borne2 -> amarrageConducteur();
+		p1 = terminal1 -> amarrageConducteur();
+		p2 = terminal2 -> amarrageConducteur();
 	}
 	if (points.count() && modified_path)
-		priv_modifieConducteur(p1, borne1 -> orientation(), p2, borne2 -> orientation());
+		priv_modifieConducteur(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else
-		priv_calculeConducteur(p1, borne1 -> orientation(), p2, borne2 -> orientation());
+		priv_calculeConducteur(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	QGraphicsPathItem::update(rect);
 }
 
@@ -105,12 +105,12 @@ void Conducteur::pointsToPath() {
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conducteur::priv_modifieConducteur(const QPointF &p1, Borne::Orientation, const QPointF &p2, Borne::Orientation) {
+void Conducteur::priv_modifieConducteur(const QPointF &p1, Terminal::Orientation, const QPointF &p2, Terminal::Orientation) {
 	Q_ASSERT_X(points.count() > 1, "priv_modifieConducteur", "pas de points a modifier");
 	
 	// recupere les dernieres coordonnees connues des bornes
-	QPointF old_p1 = mapFromScene(borne1 -> amarrageConducteur());
-	QPointF old_p2 = mapFromScene(borne2 -> amarrageConducteur());
+	QPointF old_p1 = mapFromScene(terminal1 -> amarrageConducteur());
+	QPointF old_p2 = mapFromScene(terminal2 -> amarrageConducteur());
 	
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);
@@ -120,12 +120,12 @@ void Conducteur::priv_modifieConducteur(const QPointF &p1, Borne::Orientation, c
 	// sont stockees dans orig_dist_2_terms_x et orig_dist_2_terms_y
 	
 	// calcule les distances horizontales et verticales entre les nouvelles bornes
-	qreal new_dist_2_bornes_x = new_p2.x() - new_p1.x();
-	qreal new_dist_2_bornes_y = new_p2.y() - new_p1.y();
+	qreal new_dist_2_terminals_x = new_p2.x() - new_p1.x();
+	qreal new_dist_2_terminals_y = new_p2.y() - new_p1.y();
 	
 	// en deduit les coefficients de "redimensionnement"
-	qreal coeff_x = new_dist_2_bornes_x / orig_dist_2_terms_x;
-	qreal coeff_y = new_dist_2_bornes_y / orig_dist_2_terms_y;
+	qreal coeff_x = new_dist_2_terminals_x / orig_dist_2_terms_x;
+	qreal coeff_y = new_dist_2_terminals_y / orig_dist_2_terms_y;
 	
 	// genere les nouveaux points
 	int limite = moves_x.size() - 1;
@@ -151,9 +151,9 @@ void Conducteur::priv_modifieConducteur(const QPointF &p1, Borne::Orientation, c
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conducteur::priv_calculeConducteur(const QPointF &p1, Borne::Orientation o1, const QPointF &p2, Borne::Orientation o2) {
+void Conducteur::priv_calculeConducteur(const QPointF &p1, Terminal::Orientation o1, const QPointF &p2, Terminal::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
-	Borne::Orientation ori_depart, ori_arrivee;
+	Terminal::Orientation ori_depart, ori_arrivee;
 	points.clear();
 	type_trajet_x = p1.x() < p2.x();
 	// mappe les points par rapport a la scene
@@ -190,34 +190,34 @@ void Conducteur::priv_calculeConducteur(const QPointF &p1, Borne::Orientation o1
 	// commence le vrai trajet
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
-		if ((ori_depart == Borne::Nord && (ori_arrivee == Borne::Sud || ori_arrivee == Borne::Ouest)) || (ori_depart == Borne::Est && ori_arrivee == Borne::Ouest)) {
+		if ((ori_depart == Terminal::Nord && (ori_arrivee == Terminal::Sud || ori_arrivee == Terminal::Ouest)) || (ori_depart == Terminal::Est && ori_arrivee == Terminal::Ouest)) {
 			// cas « 3 »
 			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
-		} else if ((ori_depart == Borne::Sud && (ori_arrivee == Borne::Nord || ori_arrivee == Borne::Est)) || (ori_depart == Borne::Ouest && ori_arrivee == Borne::Est)) {
+		} else if ((ori_depart == Terminal::Sud && (ori_arrivee == Terminal::Nord || ori_arrivee == Terminal::Est)) || (ori_depart == Terminal::Ouest && ori_arrivee == Terminal::Est)) {
 			// cas « 4 »
 			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
-		} else if ((ori_depart == Borne::Nord || ori_depart == Borne::Est) && (ori_arrivee == Borne::Nord || ori_arrivee == Borne::Est)) {
+		} else if ((ori_depart == Terminal::Nord || ori_depart == Terminal::Est) && (ori_arrivee == Terminal::Nord || ori_arrivee == Terminal::Est)) {
 			points << QPointF(arrivee.x(), depart.y()); // cas « 2 »
 		} else {
 			points << QPointF(depart.x(), arrivee.y()); // cas « 1 »
 		}
 	} else {
 		// trajet montant
-		if ((ori_depart == Borne::Ouest && (ori_arrivee == Borne::Est || ori_arrivee == Borne::Sud)) || (ori_depart == Borne::Nord && ori_arrivee == Borne::Sud)) {
+		if ((ori_depart == Terminal::Ouest && (ori_arrivee == Terminal::Est || ori_arrivee == Terminal::Sud)) || (ori_depart == Terminal::Nord && ori_arrivee == Terminal::Sud)) {
 			// cas « 3 »
 			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
-		} else if ((ori_depart == Borne::Est && (ori_arrivee == Borne::Ouest || ori_arrivee == Borne::Nord)) || (ori_depart == Borne::Sud && ori_arrivee == Borne::Nord)) {
+		} else if ((ori_depart == Terminal::Est && (ori_arrivee == Terminal::Ouest || ori_arrivee == Terminal::Nord)) || (ori_depart == Terminal::Sud && ori_arrivee == Terminal::Nord)) {
 			// cas « 4 »
 			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
-		} else if ((ori_depart == Borne::Ouest || ori_depart == Borne::Nord) && (ori_arrivee == Borne::Ouest || ori_arrivee == Borne::Nord)) {
+		} else if ((ori_depart == Terminal::Ouest || ori_depart == Terminal::Nord) && (ori_arrivee == Terminal::Ouest || ori_arrivee == Terminal::Nord)) {
 			points << QPointF(depart.x(), arrivee.y()); // cas « 2 »
 		} else {
 			points << QPointF(arrivee.x(), depart.y()); // cas « 1 »
@@ -240,19 +240,19 @@ void Conducteur::priv_calculeConducteur(const QPointF &p1, Borne::Orientation o1
 	@param ext_size la taille de la prolongation
 	@return le point correspondant a la borne apres prolongation
 */
-QPointF Conducteur::extendTerminal(const QPointF &terminal, Borne::Orientation terminal_orientation, qreal ext_size) {
+QPointF Conducteur::extendTerminal(const QPointF &terminal, Terminal::Orientation terminal_orientation, qreal ext_size) {
 	QPointF extended_terminal;
 	switch(terminal_orientation) {
-		case Borne::Nord:
+		case Terminal::Nord:
 			extended_terminal = QPointF(terminal.x(), terminal.y() - ext_size);
 			break;
-		case Borne::Est:
+		case Terminal::Est:
 			extended_terminal = QPointF(terminal.x() + ext_size, terminal.y());
 			break;
-		case Borne::Sud:
+		case Terminal::Sud:
 			extended_terminal = QPointF(terminal.x(), terminal.y() + ext_size);
 			break;
-		case Borne::Ouest:
+		case Terminal::Ouest:
 			extended_terminal = QPointF(terminal.x() - ext_size, terminal.y());
 			break;
 		default: extended_terminal = terminal;
@@ -300,9 +300,9 @@ void Conducteur::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, 
 	@param b La seconde orientation de Borne
 	@return Un booleen a true si les deux orientations de bornes sont sur le meme axe
 */
-bool Conducteur::surLeMemeAxe(Borne::Orientation a, Borne::Orientation b) {
-	if ((a == Borne::Nord || a == Borne::Sud) && (b == Borne::Nord || b == Borne::Sud)) return(true);
-	else if ((a == Borne::Est || a == Borne::Ouest) && (b == Borne::Est || b == Borne::Ouest)) return(true);
+bool Conducteur::surLeMemeAxe(Terminal::Orientation a, Terminal::Orientation b) {
+	if ((a == Terminal::Nord || a == Terminal::Sud) && (b == Terminal::Nord || b == Terminal::Sud)) return(true);
+	else if ((a == Terminal::Est || a == Terminal::Ouest) && (b == Terminal::Est || b == Terminal::Ouest)) return(true);
 	else return(false);
 }
 
@@ -311,8 +311,8 @@ bool Conducteur::surLeMemeAxe(Borne::Orientation a, Borne::Orientation b) {
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est horizontale, false sinon
 */
-bool Conducteur::estHorizontale(Borne::Orientation a) {
-	return(a == Borne::Est || a == Borne::Ouest);
+bool Conducteur::estHorizontale(Terminal::Orientation a) {
+	return(a == Terminal::Est || a == Terminal::Ouest);
 }
 
 /**
@@ -320,8 +320,8 @@ bool Conducteur::estHorizontale(Borne::Orientation a) {
 	@param a L'orientation de borne
 	@return True si l'orientation de borne est verticale, false sinon
 */
-bool Conducteur::estVerticale(Borne::Orientation a) {
-	return(a == Borne::Nord || a == Borne::Sud);
+bool Conducteur::estVerticale(Terminal::Orientation a) {
+	return(a == Terminal::Nord || a == Terminal::Sud);
 }
 
 /**
@@ -329,8 +329,8 @@ bool Conducteur::estVerticale(Borne::Orientation a) {
 */
 void Conducteur::destroy() {
 	destroyed = true;
-	borne1 -> removeConducteur(this);
-	borne2 -> removeConducteur(this);
+	terminal1 -> removeConducteur(this);
+	terminal2 -> removeConducteur(this);
 }
 
 /**

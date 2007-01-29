@@ -4,10 +4,10 @@
 	class ElementFixe : public Element {
 		public:
 		ElementFixe(QGraphicsItem * = 0, Diagram * = 0);
-		int nbBornesMin() const;
-		int nbBornesMax() const;
-		virtual bool fromXml(QDomElement &, QHash<int, Borne *>&);
-		virtual int nbBornes() const = 0;
+		int nbTerminalsMin() const;
+		int nbTerminalsMax() const;
+		virtual bool fromXml(QDomElement &, QHash<int, Terminal *>&);
+		virtual int nbTerminals() const = 0;
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
 		virtual QString typeId() = 0;
 		virtual QString  nom() = 0;

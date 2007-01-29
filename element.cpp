@@ -8,7 +8,7 @@
 	Constructeur pour un element sans scene ni parent
 */
 Element::Element(QGraphicsItem *parent, Diagram *scene) : QGraphicsItem(parent, scene) {
-	peut_relier_ses_propres_bornes = false;
+	peut_relier_ses_propres_terminals = false;
 	setZValue(10);
 }
 
@@ -107,17 +107,17 @@ QPixmap Element::pixmap() {
 QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemPositionChange) {
 		foreach(QGraphicsItem *qgi, children()) {
-			if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur(value.toPointF());
+			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducteur(value.toPointF());
 		}
 	} else if (change == QGraphicsItem::ItemSelectedChange) {
 		foreach(QGraphicsItem *qgi, children()) {
-			if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur();
+			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducteur();
 		}
 	}
 	return(QGraphicsItem::itemChange(change, value));
 }
 
-bool Element::setOrientation(Borne::Orientation o) {
+bool Element::setOrientation(Terminal::Orientation o) {
 	// verifie que l'orientation demandee est acceptee
 	if (!acceptOrientation(o)) return(false);
 	prepareGeometryChange();
@@ -126,7 +126,7 @@ bool Element::setOrientation(Borne::Orientation o) {
 	ori = o;
 	update();
 	foreach(QGraphicsItem *qgi, children()) {
-		if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) p -> updateConducteur();
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducteur();
 	}
 	return(true);
 }

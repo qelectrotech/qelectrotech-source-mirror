@@ -141,7 +141,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 	QDomDocument document;
 	
 	// racine de l'arbre XML
-	QDomElement racine = document.createElement("diagram");
+	QDomElement racine = document.createElement("schema");
 	
 	// proprietes du schema
 	if (diagram) {
@@ -170,15 +170,15 @@ QDomDocument Diagram::toXml(bool diagram) {
 			if (diagram) liste_conducteurs << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
 			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas relie
-			else if (f -> borne1 -> parentItem() -> isSelected() && f -> borne2 -> parentItem() -> isSelected()) liste_conducteurs << f;
+			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) liste_conducteurs << f;
 		}
 	}
 	
 	// enregistrement des elements
 	if (liste_elements.isEmpty()) return(document);
-	int id_borne = 0;
+	int id_terminal = 0;
 	// table de correspondance entre les adresses des bornes et leurs ids
-	QHash<Borne *, int> table_adr_id;
+	QHash<Terminal *, int> table_adr_id;
 	QDomElement elements = document.createElement("elements");
 	QDir dossier_elmts_persos = QDir(QETApp::customElementsDir());
 	foreach(Element *elmt, liste_elements) {
@@ -196,19 +196,19 @@ QDomDocument Diagram::toXml(bool diagram) {
 		element.setAttribute("sens", QString("%1").arg(elmt -> orientation()));
 		
 		// enregistrements des bornes de chaque appareil
-		QDomElement bornes = document.createElement("bornes");
+		QDomElement terminals = document.createElement("bornes");
 		// pour chaque enfant de l'element
 		foreach(QGraphicsItem *child, elmt -> children()) {
 			// si cet enfant est une borne
-			if (Borne *p = qgraphicsitem_cast<Borne *>(child)) {
+			if (Terminal *p = qgraphicsitem_cast<Terminal *>(child)) {
 				// alors on enregistre la borne
-				QDomElement borne = p -> toXml(document);
-				borne.setAttribute("id", id_borne);
-				table_adr_id.insert(p, id_borne ++);
-				bornes.appendChild(borne);
+				QDomElement terminal = p -> toXml(document);
+				terminal.setAttribute("id", id_terminal);
+				table_adr_id.insert(p, id_terminal ++);
+				terminals.appendChild(terminal);
 			}
 		}
-		element.appendChild(bornes);
+		element.appendChild(terminals);
 		
 		/**
 			@todo appeler une methode virtuelle de la classe Element qui permettra
@@ -223,8 +223,8 @@ QDomDocument Diagram::toXml(bool diagram) {
 	QDomElement conducteurs = document.createElement("conducteurs");
 	foreach(Conducteur *f, liste_conducteurs) {
 		QDomElement conducteur = document.createElement("conducteur");
-		conducteur.setAttribute("borne1", table_adr_id.value(f -> borne1));
-		conducteur.setAttribute("borne2", table_adr_id.value(f -> borne2));
+		conducteur.setAttribute("borne1", table_adr_id.value(f -> terminal1));
+		conducteur.setAttribute("borne2", table_adr_id.value(f -> terminal2));
 		conducteurs.appendChild(conducteur);
 	}
 	racine.appendChild(conducteurs);
@@ -264,8 +264,8 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	// chargement de tous les Elements du fichier XML
 	QList<Element *> elements_ajoutes;
 	//uint nb_elements = 0;
-	QHash< int, Borne *> table_adr_id;
-	QHash< int, Borne *> &ref_table_adr_id = table_adr_id;
+	QHash< int, Terminal *> table_adr_id;
+	QHash< int, Terminal *> &ref_table_adr_id = table_adr_id;
 	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		// on s'interesse a l'element XML "elements" (= groupe d'elements)
 		QDomElement elmts = node.toElement();
@@ -324,8 +324,8 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 			int id_p2 = f.attribute("borne2").toInt();
 			if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2)) {
 				// pose le conducteur... si c'est possible
-				Borne *p1 = table_adr_id.value(id_p1);
-				Borne *p2 = table_adr_id.value(id_p2);
+				Terminal *p1 = table_adr_id.value(id_p1);
+				Terminal *p2 = table_adr_id.value(id_p2);
 				if (p1 != p2) {
 					bool peut_poser_conducteur = true;
 					bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
@@ -344,7 +344,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	@param table_id_adr Table de correspondance entre les entiers et les bornes
 	@return true si l'ajout a parfaitement reussi, false sinon 
 */
-Element *Diagram::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_adr) {
+Element *Diagram::elementFromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	// cree un element dont le type correspond à l'id type
 	QString type = e.attribute("type");
 	QString chemin_fichier = QETApp::realPath(type);
@@ -364,7 +364,7 @@ Element *Diagram::elementFromXml(QDomElement &e, QHash<int, Borne *> &table_id_a
 		bool conv_ok;
 		int read_ori = e.attribute("sens").toInt(&conv_ok);
 		if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = nvel_elmt -> defaultOrientation();
-		nvel_elmt -> setOrientation((Borne::Orientation)read_ori);
+		nvel_elmt -> setOrientation((Terminal::Orientation)read_ori);
 		nvel_elmt -> setSelected(e.attribute("selected") == "selected");
 	}
 	return(retour ? nvel_elmt : NULL);

@@ -8,7 +8,7 @@
 	#include "qetapp.h"
 	#include "borderinset.h"
 	class Element;
-	class Borne;
+	class Terminal;
 	class Diagram : public QGraphicsScene {
 		Q_OBJECT
 		public:
@@ -35,7 +35,7 @@
 		private:
 		QGraphicsLineItem *poseur_de_conducteur;
 		bool doit_dessiner_grille;
-		Element *elementFromXml(QDomElement &, QHash<int, Borne *> &);
+		Element *elementFromXml(QDomElement &, QHash<int, Terminal *> &);
 		
 		private slots:
 		void slot_checkSelectionChange();

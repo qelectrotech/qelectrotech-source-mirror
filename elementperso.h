@@ -5,7 +5,7 @@
 	class ElementPerso : public ElementFixe {
 		public:
 		ElementPerso(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
-		virtual int nbBornes() const;
+		virtual int nbTerminals() const;
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 		inline QString typeId() { return(nomfichier); }
 		inline QString fichier() { return(nomfichier); }
@@ -24,12 +24,12 @@
 		bool parseCercle(QDomElement &, QPainter &);
 		bool parseArc(QDomElement &, QPainter &);
 		bool parsePolygone(QDomElement &, QPainter &);
-		bool parseBorne(QDomElement &, Diagram *);
+		bool parseTerminal(QDomElement &, Diagram *);
 		void setQPainterAntiAliasing(QPainter &, bool);
 		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
 		bool attributeIsAReal(QDomElement &, QString, double * = NULL);
 		bool validOrientationAttribute(QDomElement &);
 		void setPainterStyle(QDomElement &, QPainter &);
-		int nb_bornes;
+		int nb_terminals;
 	};
 #endif

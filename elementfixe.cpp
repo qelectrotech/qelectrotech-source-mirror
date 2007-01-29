@@ -8,15 +8,15 @@ ElementFixe::ElementFixe(QGraphicsItem *parent, Diagram *scene) : Element(parent
 /**
 	@return Le nombre minimal de bornes que l'element peut avoir
 */
-int ElementFixe::nbBornesMin() const {
-	return(nbBornes());
+int ElementFixe::nbTerminalsMin() const {
+	return(nbTerminals());
 }
 
 /**
 	@return Le nombre maximal de bornes que l'element peut avoir
 */
-int ElementFixe::nbBornesMax() const {
-	return(nbBornes());
+int ElementFixe::nbTerminalsMax() const {
+	return(nbTerminals());
 }
 
 /**
@@ -26,43 +26,43 @@ int ElementFixe::nbBornesMax() const {
 	@return true si l'import a reussi, false sinon
 	
 */
-bool ElementFixe::fromXml(QDomElement &e, QHash<int, Borne *> &table_id_adr) {
+bool ElementFixe::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id à leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
 	*/
 	
-	QList<QDomElement> liste_bornes;
+	QList<QDomElement> liste_terminals;
 	// parcours des enfants de l'element
 	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
 		// on s'interesse a l'element XML "bornes"
-		QDomElement bornes = enfant.toElement();
-		if (bornes.isNull() || bornes.tagName() != "bornes") continue;
+		QDomElement terminals = enfant.toElement();
+		if (terminals.isNull() || terminals.tagName() != "bornes") continue;
 		// parcours des enfants de l'element XML "bornes"
-		for (QDomNode node_borne = bornes.firstChild() ; !node_borne.isNull() ; node_borne = node_borne.nextSibling()) {
+		for (QDomNode node_terminal = terminals.firstChild() ; !node_terminal.isNull() ; node_terminal = node_terminal.nextSibling()) {
 			// on s'interesse a l'element XML "borne"
-			QDomElement borne = node_borne.toElement();
-			if (!borne.isNull() && Borne::valideXml(borne)) liste_bornes.append(borne);
+			QDomElement terminal = node_terminal.toElement();
+			if (!terminal.isNull() && Terminal::valideXml(terminal)) liste_terminals.append(terminal);
 		}
 	}
 	
-	QHash<int, Borne *> priv_id_adr;
-	int bornes_non_trouvees = 0;
+	QHash<int, Terminal *> priv_id_adr;
+	int terminals_non_trouvees = 0;
 	foreach(QGraphicsItem *qgi, children()) {
-		if (Borne *p = qgraphicsitem_cast<Borne *>(qgi)) {
-			bool borne_trouvee = false;
-			foreach(QDomElement qde, liste_bornes) {
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
+			bool terminal_trouvee = false;
+			foreach(QDomElement qde, liste_terminals) {
 				if (p -> fromXml(qde)) {
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
-					borne_trouvee = true;
+					terminal_trouvee = true;
 					break;
 				}
 			}
-			if (!borne_trouvee) ++ bornes_non_trouvees;
+			if (!terminal_trouvee) ++ terminals_non_trouvees;
 		}
 	}
 	
-	if (bornes_non_trouvees > 0) {
+	if (terminals_non_trouvees > 0) {
 		return(false);
 	} else {
 		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr

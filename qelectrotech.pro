@@ -10,7 +10,7 @@ INCLUDEPATH += .
 # Input
 HEADERS += aboutqet.h \
            borderinset.h \
-           borne.h \
+           terminal.h \
            conducteur.h \
            element.h \
            elementfixe.h \
@@ -22,7 +22,7 @@ HEADERS += aboutqet.h \
            diagramview.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
-           borne.cpp \
+           terminal.cpp \
            conducteur.cpp \
            element.cpp \
            elementfixe.cpp \
