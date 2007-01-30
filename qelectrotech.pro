@@ -13,7 +13,7 @@ HEADERS += aboutqet.h \
            terminal.h \
            conducer.h \
            element.h \
-           elementfixe.h \
+           fixedelement.h \
            elementperso.h \
            exportdialog.h \
            panelappareils.h \
@@ -25,7 +25,7 @@ SOURCES += aboutqet.cpp \
            terminal.cpp \
            conducer.cpp \
            element.cpp \
-           elementfixe.cpp \
+           fixedelement.cpp \
            elementperso.cpp \
            exportdialog.cpp \
            main.cpp \

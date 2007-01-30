@@ -1,8 +1,8 @@
 #ifndef ELEMENTPERSO_H
 	#define ELEMENTPERSO_H
-	#include "elementfixe.h"
+	#include "fixedelement.h"
 	#include <QtGui>
-	class ElementPerso : public ElementFixe {
+	class ElementPerso : public FixedElement {
 		public:
 		ElementPerso(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
 		virtual int nbTerminals() const;

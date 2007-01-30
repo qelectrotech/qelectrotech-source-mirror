@@ -20,7 +20,7 @@
 		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
-ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : ElementFixe(qgi, s) {
+ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : FixedElement(qgi, s) {
 	nomfichier = nom_fichier;
 	nb_terminals = 0;
 	// pessimisme inside : par defaut, ca foire

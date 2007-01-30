@@ -1,9 +1,9 @@
 #ifndef ELEMENTFIXE_H
 	#define ELEMENTFIXE_H
 	#include "element.h"
-	class ElementFixe : public Element {
+	class FixedElement : public Element {
 		public:
-		ElementFixe(QGraphicsItem * = 0, Diagram * = 0);
+		FixedElement(QGraphicsItem * = 0, Diagram * = 0);
 		int nbTerminalsMin() const;
 		int nbTerminalsMax() const;
 		virtual bool fromXml(QDomElement &, QHash<int, Terminal *>&);

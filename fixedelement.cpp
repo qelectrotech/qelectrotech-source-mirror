@@ -1,21 +1,21 @@
-#include "elementfixe.h"
+#include "fixedelement.h"
 /**
 	Constructeur
 */
-ElementFixe::ElementFixe(QGraphicsItem *parent, Diagram *scene) : Element(parent, scene) {
+FixedElement::FixedElement(QGraphicsItem *parent, Diagram *scene) : Element(parent, scene) {
 }
 
 /**
 	@return Le nombre minimal de bornes que l'element peut avoir
 */
-int ElementFixe::nbTerminalsMin() const {
+int FixedElement::nbTerminalsMin() const {
 	return(nbTerminals());
 }
 
 /**
 	@return Le nombre maximal de bornes que l'element peut avoir
 */
-int ElementFixe::nbTerminalsMax() const {
+int FixedElement::nbTerminalsMax() const {
 	return(nbTerminals());
 }
 
@@ -26,7 +26,7 @@ int ElementFixe::nbTerminalsMax() const {
 	@return true si l'import a reussi, false sinon
 	
 */
-bool ElementFixe::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
+bool FixedElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id à leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
