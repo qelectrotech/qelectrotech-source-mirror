@@ -7,10 +7,10 @@
 		graphique) dans lequel l'utilisateur choisit les composants de
 		son choix et les depose sur le schema par drag'n drop.
 	*/
-	class PanelAppareils : public QTreeWidget {
+	class ElementsPanel : public QTreeWidget {
 		Q_OBJECT
 		public:
-		PanelAppareils(QWidget * = 0);
+		ElementsPanel(QWidget * = 0);
 		static QString categoryName(QDir &);
 		public slots:
 		void dragMoveEvent(QDragMoveEvent *);

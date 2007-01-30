@@ -1,7 +1,7 @@
 #include "qetapp.h"
 #include "diagramview.h"
 #include "diagram.h"
-#include "panelappareils.h"
+#include "elementspanel.h"
 #include "aboutqet.h"
 #include "exportdialog.h"
 
@@ -56,7 +56,7 @@ QETApp::QETApp(QWidget *parent) : QMainWindow(parent) {
 	qdw_pa -> setAllowedAreas(Qt::AllDockWidgetAreas);
 	qdw_pa -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	qdw_pa -> setMinimumWidth(160);
-	qdw_pa -> setWidget(pa = new PanelAppareils(qdw_pa));
+	qdw_pa -> setWidget(pa = new ElementsPanel(qdw_pa));
 	addDockWidget(Qt::LeftDockWidgetArea, qdw_pa);
 	
 	// mise en place des actions

@@ -14,9 +14,9 @@ HEADERS += aboutqet.h \
            conducer.h \
            element.h \
            fixedelement.h \
-           elementperso.h \
+           customelement.h \
            exportdialog.h \
-           panelappareils.h \
+           elementspanel.h \
            qetapp.h \
            diagram.h \
            diagramview.h
@@ -26,10 +26,10 @@ SOURCES += aboutqet.cpp \
            conducer.cpp \
            element.cpp \
            fixedelement.cpp \
-           elementperso.cpp \
+           customelement.cpp \
            exportdialog.cpp \
            main.cpp \
-           panelappareils.cpp \
+           elementspanel.cpp \
            qetapp.cpp \
            diagram.cpp \
            diagramview.cpp

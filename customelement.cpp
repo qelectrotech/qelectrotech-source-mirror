@@ -1,4 +1,4 @@
-#include "elementperso.h"
+#include "customelement.h"
 
 /**
 	Constructeur de la classe ElementPerso. Permet d'instancier un element
@@ -7,7 +7,7 @@
 	en parametre.
 	@param nom_fichier Le chemin du fichier XML decrivant l'element
 	@param qgi Le QGraphicsItem parent de cet element
-	@param s Le Diagram affichant cet element
+	@param s Le Schema affichant cet element
 	@param etat Un pointeur facultatif vers un entier. La valeur de cet entier
 	sera changee de maniere a refleter le deroulement de l'instanciation :
 		- 0 : L'instanciation a reussi
@@ -20,7 +20,7 @@
 		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
-ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : FixedElement(qgi, s) {
+CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : FixedElement(qgi, s) {
 	nomfichier = nom_fichier;
 	nb_terminals = 0;
 	// pessimisme inside : par defaut, ca foire
@@ -157,7 +157,7 @@ ElementPerso::ElementPerso(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s,
 /**
 	@return Le nombre de bornes que l'element possede
 */
-int ElementPerso::nbTerminals() const {
+int CustomElement::nbTerminals() const {
 	return(nb_terminals);
 }
 
@@ -166,7 +166,7 @@ int ElementPerso::nbTerminals() const {
 	@param qp Le QPainter a utiliser pour dessiner l'element
 	@param qsogi Les options graphiques
 */
-void ElementPerso::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
+void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	dessin.play(qp);
 }
 
@@ -183,7 +183,7 @@ void ElementPerso::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	@param s Le schema sur lequel sera affiche l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
+bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	if (e.tagName() == "borne") return(parseTerminal(e, s));
 	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
@@ -204,7 +204,7 @@ bool ElementPerso::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseLigne(QDomElement &e, QPainter &qp) {
 	// verifie la presence et la validite des attributs obligatoires
 	double x1, y1, x2, y2;
 	if (!attributeIsAReal(e, QString("x1"), &x1)) return(false);
@@ -231,7 +231,7 @@ bool ElementPerso::parseLigne(QDomElement &e, QPainter &qp) {
 	@return true si l'analyse reussit, false sinon
 	@todo utiliser des attributs plus coherents : x et y = centre, rayon = vrai rayon 
 */
-bool ElementPerso::parseCercle(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseCercle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double cercle_x, cercle_y, cercle_r;
 	if (!attributeIsAReal(e, QString("x"),     &cercle_x)) return(false);
@@ -258,7 +258,7 @@ bool ElementPerso::parseCercle(QDomElement &e, QPainter &qp) {
 	@return true si l'analyse reussit, false sinon
 	@todo utiliser des attributs plus coherents : x et y = centre
 */
-bool ElementPerso::parseEllipse(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double ellipse_x, ellipse_y, ellipse_l, ellipse_h;
 	if (!attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
@@ -286,7 +286,7 @@ bool ElementPerso::parseEllipse(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseArc(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
 	if (!attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
@@ -313,7 +313,7 @@ bool ElementPerso::parseArc(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
+bool CustomElement::parsePolygone(QDomElement &e, QPainter &qp) {
 	int i = 1;
 	while(true) {
 		if (attributeIsAReal(e, QString("x%1").arg(i)) && attributeIsAReal(e, QString("y%1").arg(i))) ++ i;
@@ -345,7 +345,7 @@ bool ElementPerso::parsePolygone(QDomElement &e, QPainter &qp) {
 	@param s Le schema sur lequel l'element perso sera affiche
 	@return true si l'analyse reussit, false sinon
 */
-bool ElementPerso::parseTerminal(QDomElement &e, Diagram *s) {
+bool CustomElement::parseTerminal(QDomElement &e, Diagram *s) {
 	// verifie la presence et la validite des attributs obligatoires
 	double terminalx, terminaly;
 	Terminal::Orientation terminalo;
@@ -367,7 +367,7 @@ bool ElementPerso::parseTerminal(QDomElement &e, Diagram *s) {
 	@param qp Le QPainter a modifier
 	@param aa Booleen a true pour activer l'antialiasing, a false pour le desactiver
 */
-void ElementPerso::setQPainterAntiAliasing(QPainter &qp, bool aa) {
+void CustomElement::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 	qp.setRenderHint(QPainter::Antialiasing,          aa);
 	qp.setRenderHint(QPainter::TextAntialiasing,      aa);
 	qp.setRenderHint(QPainter::SmoothPixmapTransform, aa);
@@ -381,7 +381,7 @@ void ElementPerso::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 	@param entier Pointeur facultatif vers un entier
 	@return true si l'attribut est bien un entier, false sinon
 */
-bool ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
+bool CustomElement::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -400,7 +400,7 @@ bool ElementPerso::attributeIsAnInteger(QDomElement &e, QString nom_attribut, in
 	@param reel Pointeur facultatif vers un double
 	@return true si l'attribut est bien un reel, false sinon
 */
-bool ElementPerso::attributeIsAReal(QDomElement &e, QString nom_attribut, double *reel) {
+bool CustomElement::attributeIsAReal(QDomElement &e, QString nom_attribut, double *reel) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
@@ -430,7 +430,7 @@ bool ElementPerso::attributeIsAReal(QDomElement &e, QString nom_attribut, double
 	@param e Element XML
 	@return true si l'attribut "orientation" est valide, false sinon
 */
-bool ElementPerso::validOrientationAttribute(QDomElement &e) {
+bool CustomElement::validOrientationAttribute(QDomElement &e) {
 	// verifie la presence de l'attribut orientation
 	if (!e.hasAttribute("orientation")) return(false);
 	QString t = e.attribute("orientation");
@@ -476,7 +476,7 @@ bool ElementPerso::validOrientationAttribute(QDomElement &e) {
 	@param e L'element XML a parser
 	@param qp Le QPainter a modifier en fonction des styles
 */
-void ElementPerso::setPainterStyle(QDomElement &e, QPainter &qp) {
+void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	// recupere le QPen et la QBrush du QPainter
 	QPen pen = qp.pen();
 	QBrush brush = qp.brush();

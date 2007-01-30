@@ -1,6 +1,6 @@
 #include "diagramview.h"
 #include "diagram.h"
-#include "elementperso.h"
+#include "customelement.h"
 
 /**
 	Initialise le DiagramView
@@ -197,7 +197,7 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 void DiagramView::dropEvent(QDropEvent *e) {
 	QString fichier = e -> mimeData() -> text();
 	int etat;
-	Element *el = new ElementPerso(fichier, 0, 0, &etat);
+	Element *el = new CustomElement(fichier, 0, 0, &etat);
 	if (etat != 0) delete el;
 	else {
 		scene -> addItem(el);

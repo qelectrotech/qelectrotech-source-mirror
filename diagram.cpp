@@ -1,6 +1,6 @@
 #include <math.h>
 #include "conducer.h"
-#include "elementperso.h"
+#include "customelement.h"
 #include "diagram.h"
 
 /**
@@ -349,7 +349,7 @@ Element *Diagram::elementFromXml(QDomElement &e, QHash<int, Terminal *> &table_i
 	QString type = e.attribute("type");
 	QString chemin_fichier = QETApp::realPath(type);
 	int etat;
-	Element *nvel_elmt = new ElementPerso(chemin_fichier, 0, 0, &etat);
+	Element *nvel_elmt = new CustomElement(chemin_fichier, 0, 0, &etat);
 	if (etat != 0) return(false);
 	
 	// charge les caracteristiques de l'element

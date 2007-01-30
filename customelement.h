@@ -2,9 +2,9 @@
 	#define ELEMENTPERSO_H
 	#include "fixedelement.h"
 	#include <QtGui>
-	class ElementPerso : public FixedElement {
+	class CustomElement : public FixedElement {
 		public:
-		ElementPerso(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
+		CustomElement(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
 		virtual int nbTerminals() const;
 		virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 		inline QString typeId() { return(nomfichier); }

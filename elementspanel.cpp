@@ -1,11 +1,11 @@
-#include "panelappareils.h"
-#include "elementperso.h"
+#include "elementspanel.h"
+#include "customelement.h"
 
 /**
 	Constructeur
 	@param parent Le QWidget parent du panel d'appareils
 */
-PanelAppareils::PanelAppareils(QWidget *parent) :  QTreeWidget(parent) {
+ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
 	
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
@@ -40,13 +40,13 @@ PanelAppareils::PanelAppareils(QWidget *parent) :  QTreeWidget(parent) {
 /**
 	Gere le mouvement lors d'un drag'n drop
 */
-void PanelAppareils::dragMoveEvent(QDragMoveEvent */*e*/) {
+void ElementsPanel::dragMoveEvent(QDragMoveEvent */*e*/) {
 }
 
 /**
 	Gere le depot lors d'un drag'n drop
 */
-void PanelAppareils::dropEvent(QDropEvent */*e*/) {
+void ElementsPanel::dropEvent(QDropEvent */*e*/) {
 }
 
 /**
@@ -54,7 +54,7 @@ void PanelAppareils::dropEvent(QDropEvent */*e*/) {
 	@param supportedActions Les actions supportees
 	@todo virer les lignes type «if ("tel appareil") construire TelAppareil» => trouver un moyen d'automatiser ca
  */
-void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
+void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
 	// recupere le nom du fichier decrivant l'element
 	QString nom_fichier = currentItem() -> data(0, 42).toString();
 	if (nom_fichier == QString()) return;
@@ -67,7 +67,7 @@ void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
 	
 	// appareil temporaire pour fournir un apercu
 	int etat;
-	Element *appar = new ElementPerso(nom_fichier, 0, 0, &etat);
+	Element *appar = new CustomElement(nom_fichier, 0, 0, &etat);
 	if (etat != 0) {
 		delete appar;
 		return;
@@ -97,7 +97,7 @@ void PanelAppareils::startDrag(Qt::DropActions /*supportedActions*/) {
 	dans le dossier et y lit le nom du dossier ; si ce fichier n'existe pas ou
 	est invalide, la fonction utilise le nom du dossier.
 */
-void PanelAppareils::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QString nom) {
+void ElementsPanel::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QString nom) {
 	QDir dossier(adr_dossier);
 	if (!dossier.exists()) return;
 	adr_dossier = dossier.canonicalPath() + "/";
@@ -127,11 +127,11 @@ void PanelAppareils::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_do
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
 	@param fichier Chemin absolu du fichier XML decrivant l'element a inserer
 */
-void PanelAppareils::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichier) {
+void ElementsPanel::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichier) {
 	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
 	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
 	int etat;
-	ElementPerso *elmt_perso = new ElementPerso(fichier, 0, 0, &etat);
+	CustomElement *elmt_perso = new CustomElement(fichier, 0, 0, &etat);
 	if (etat != 0) {
 		qDebug() << "Le chargement du composant" << fichier << "a echoue avec le code d'erreur" << etat;
 		return;
@@ -152,7 +152,7 @@ void PanelAppareils::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichie
 	@param directory le chemin du dossier representant la categorie
 	@return Le nom affichable de la categorie
 */
-QString PanelAppareils::categoryName(QDir &directory) {
+QString ElementsPanel::categoryName(QDir &directory) {
 	// en cas d'echec de la lecture du fichier de configuration
 	// "qet_directory", le nom du dossier est retourne
 	QString category_name = directory.dirName();
