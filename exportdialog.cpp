@@ -5,11 +5,13 @@
 	@param dia Le schema a exporter
 	@param parent Le Widget parent de ce dialogue
 */
-ExportDialog::ExportDialog(Diagram &dia, QWidget *parent) : QDialog(parent) {
+ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
+	if (!dia) return;
 	// recupere le schema a exporter, sa taille et ses proportions
-	diagram = &dia;
+	diagram = dia;
 	diagram_size = diagram -> imageSize();
 	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
+	dontchangewidth = dontchangeheight = false;
 	
 	// la taille du dialogue est fixee
 	setFixedSize(400, 310);
@@ -190,7 +192,11 @@ void ExportDialog::slot_check() {
 	
 	// genere l'image
 	if (!export_grid -> isChecked()) diagram -> setAffichageGrille(false);
-	QImage image = diagram -> toImage(width -> value(), height -> value(), keep_aspect_ratio -> isChecked());
+	QImage image = diagram -> toImage(
+		width -> value(),
+		height -> value(),
+		keep_aspect_ratio -> isChecked() ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
+	);
 	if (!export_grid -> isChecked()) diagram -> setAffichageGrille(true);
 	
 	// convertit l'image en niveaux de gris si besoin

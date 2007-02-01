@@ -1,9 +1,8 @@
 #include "qetapp.h"
+//#include "diagram.h"
 #include "diagramview.h"
-#include "diagram.h"
 #include "elementspanel.h"
 #include "aboutqet.h"
-#include "exportdialog.h"
 
 /**
 	constructeur
@@ -364,8 +363,8 @@ void QETApp::actions() {
 	connect(zoom_arriere,     SIGNAL(triggered()), this,       SLOT(slot_zoomMoins())           );
 	connect(zoom_adapte,      SIGNAL(triggered()), this,       SLOT(slot_zoomFit())             );
 	connect(zoom_reset,       SIGNAL(triggered()), this,       SLOT(slot_zoomReset())           );
-	connect(imprimer,         SIGNAL(triggered()), this,       SLOT(dialogue_imprimer())        );
-	connect(exporter,         SIGNAL(triggered()), this,       SLOT(dialogue_exporter())        );
+	connect(imprimer,         SIGNAL(triggered()), this,       SLOT(dialog_print())             );
+	connect(exporter,         SIGNAL(triggered()), this,       SLOT(dialog_export())            );
 	connect(enr_fichier_sous, SIGNAL(triggered()), this,       SLOT(dialogue_enregistrer_sous()));
 	connect(enr_fichier,      SIGNAL(triggered()), this,       SLOT(enregistrer())              );
 	connect(nouveau_fichier,  SIGNAL(triggered()), this,       SLOT(nouveau())                  );
@@ -380,7 +379,7 @@ void QETApp::actions() {
 	connect(f_reorganise,     SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
 	connect(f_suiv,           SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
 	connect(f_prec,           SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
-	connect(infos_diagram,     SIGNAL(activated()), this,       SLOT(editInfos())                );
+	connect(infos_diagram,    SIGNAL(activated()), this,       SLOT(slot_editInfos())           );
 	connect(add_column,       SIGNAL(activated()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(activated()), this,       SLOT(slot_removeColumn())        );
 }
@@ -502,31 +501,21 @@ void QETApp::toolbar() {
 }
 
 /**
-	gere l'impression
+	Imprime le schema courant
 */
-void QETApp::dialogue_imprimer() {
-	QPrinter qprin;
-	qprin.setOrientation(QPrinter::Landscape);
-	qprin.setPageSize(QPrinter::A4);
-	//qprin.setPrintProgram("lp");
-	QPrintDialog qpd(&qprin, this);
-	
-	if (qpd.exec() == QDialog::Accepted) {
-		QPainter qp(&qprin);
-		Diagram *sc = diagramEnCours() -> scene;
-		sc -> setAffichageGrille(false);
-		sc -> render(&qp);
-		sc -> setAffichageGrille(true);
-	}
+void QETApp::dialog_print() {
+	DiagramView *sv = diagramEnCours();
+	if (!sv) return;
+	sv -> dialogPrint();
 }
 
 /**
-	Gere l'export de schema vers un autre format (PNG pour le moment)
+	Gere l'export de schema sous forme d'image
 */
-void QETApp::dialogue_exporter() {
-	Diagram *sc = diagramEnCours() -> scene;
-	ExportDialog ed(*sc);
-	ed.exec();
+void QETApp::dialog_export() {
+	DiagramView *sv = diagramEnCours();
+	if (!sv) return;
+	sv -> dialogExport();
 }
 
 /**
@@ -753,7 +742,7 @@ void QETApp::slot_updateActions() {
 	refaire          -> setEnabled(document_ouvert);
 	
 	// actions ayant aussi besoin d'elements selectionnes
-	bool elements_selectionnes = document_ouvert ? (sv -> scene -> selectedItems().size() > 0) : false;
+	bool elements_selectionnes = document_ouvert ? (sv -> hasSelectedItems()) : false;
 	couper           -> setEnabled(elements_selectionnes);
 	copier           -> setEnabled(elements_selectionnes);
 	supprimer        -> setEnabled(elements_selectionnes);
@@ -932,81 +921,29 @@ QString QETApp::languagesPath() {
 	return(QDir::current().path() + "/lang/");
 }
 
-void QETApp::editInfos() {
-	// ne fait rien s'il n'y a pas de schema ouvert
+/**
+	Edite les informations du schema en cours
+*/
+void QETApp::slot_editInfos() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
-	
-	// recupere le cartouche du schema
-	BorderInset *inset = &(sv -> scene -> border_and_inset);
-	
-	// construit le dialogue
-	QDialog popup;
-	popup.setMinimumWidth(400);
-	popup.setWindowTitle(tr("Cartouche du sch\351ma"));
-	
-	QLineEdit *titre = new QLineEdit(inset -> title(), &popup);
-	QLineEdit *auteur = new QLineEdit(inset -> author(), &popup);
-	QDate date_diagram = QDate(inset -> date());
-	if (date_diagram.isNull() || !date_diagram.isValid()) date_diagram = QDate::currentDate();
-	QDateEdit *date = new QDateEdit(date_diagram, &popup);
-	date -> setCalendarPopup(true);
-	QLineEdit *fichier = new QLineEdit(inset -> fileName(), &popup);
-	QLineEdit *folio = new QLineEdit(inset -> folio(), &popup);
-	QWidget bidon(&popup);
-	QGridLayout layout_champs(&bidon);
-	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
-	layout_champs.addWidget(titre,                        0, 1);
-	layout_champs.addWidget(new QLabel(tr("Auteur : ")),  1, 0);
-	layout_champs.addWidget(auteur,                       1, 1);
-	layout_champs.addWidget(new QLabel(tr("Date : ")),    2, 0);
-	layout_champs.addWidget(date,                         2, 1);
-	layout_champs.addWidget(new QLabel(tr("Fichier : ")), 3, 0);
-	layout_champs.addWidget(fichier,                      3, 1);
-	layout_champs.addWidget(new QLabel(tr("Folio : ")),   4, 0);
-	layout_champs.addWidget(folio,                        4, 1);
-	
-	// boutons
-	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
-	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(accept()));
-	
-	// ajout dans une disposition verticale
-	QVBoxLayout layout_v(&popup);
-	layout_v.addWidget(&bidon);
-	layout_v.addWidget(&boutons);
-	if (popup.exec() == QDialog::Accepted) {
-		inset -> setTitle(titre -> text());
-		inset -> setAuthor(auteur -> text());
-		inset -> setDate(date -> date());
-		inset -> setFileName(fichier -> text());
-		inset -> setFolio(folio -> text());
-	}
+	sv -> dialogEditInfos();
 }
 
+/**
+	Ajoute une colonne au schema en cours
+*/
 void QETApp::slot_addColumn() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
-	
-	// ajoute la colonne
-	sv -> scene -> border_and_inset.addColumn();
-	
-	// met a jour la zone affichee par la vue
-	QRectF sr = sv -> sceneRect();
-	sr.setWidth(5.0 + sv -> scene -> border_and_inset.borderWidth());
-	sv -> setSceneRect(sr);
-	
-	// rafraichit la vue
-	sv -> scene -> update(sv -> sceneRect());
+	sv -> addColumn();
 }
 
+/**
+	Enleve une colonne au schema en cours
+*/
 void QETApp::slot_removeColumn() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
-	sv -> scene -> border_and_inset.removeColumn();
-	
-	// on pourrait mettre a jour la zone affichee par la vue
-	
-	// rafraichit la vue
-	sv -> scene -> update(sv -> sceneRect());
+	sv -> removeColumn();
 }

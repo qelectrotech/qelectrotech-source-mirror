@@ -22,6 +22,7 @@
 		static QString languagesPath();
 		static QString realPath(QString &);
 		static QString symbolicPath(QString &);
+		
 		public slots:
 		void systray(QSystemTrayIcon::ActivationReason);
 		void systrayReduce();
@@ -30,14 +31,32 @@
 		void toggleFullScreen();
 		void toggleAntialiasing();
 		void aPropos();
-		void editInfos();
-		void dialogue_imprimer();
-		void dialogue_exporter();
+		void dialog_print();
+		void dialog_export();
 		bool dialogue_enregistrer_sous();
 		bool enregistrer();
 		bool nouveau();
 		bool ouvrir();
 		bool fermer();
+		void slot_editInfos();
+		void slot_couper();
+		void slot_copier();
+		void slot_coller();
+		void slot_zoomPlus();
+		void slot_zoomMoins();
+		void slot_zoomFit();
+		void slot_zoomReset();
+		void slot_selectAll();
+		void slot_selectNothing();
+		void slot_selectInvert();
+		void slot_supprimer();
+		void slot_pivoter();
+		void slot_setSelectionMode();
+		void slot_setVisualisationMode();
+		void slot_updateActions();
+		void slot_updateMenuFenetres();
+		void slot_addColumn();
+		void slot_removeColumn();
 		
 		protected:
 		// Actions faisables au travers de menus dans l'application QElectroTech
@@ -109,25 +128,5 @@
 		void menus();
 		void toolbar();
 		QToolBar *barre_outils;
-		
-		private slots:
-		void slot_couper();
-		void slot_copier();
-		void slot_coller();
-		void slot_zoomPlus();
-		void slot_zoomMoins();
-		void slot_zoomFit();
-		void slot_zoomReset();
-		void slot_selectAll();
-		void slot_selectNothing();
-		void slot_selectInvert();
-		void slot_supprimer();
-		void slot_pivoter();
-		void slot_setSelectionMode();
-		void slot_setVisualisationMode();
-		void slot_updateActions();
-		void slot_updateMenuFenetres();
-		void slot_addColumn();
-		void slot_removeColumn();
 	};
 #endif

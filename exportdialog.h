@@ -9,7 +9,7 @@
 	class ExportDialog : public QDialog {
 		Q_OBJECT
 		public:
-		ExportDialog(Diagram &, QWidget * = 0);
+		ExportDialog(Diagram *, QWidget * = 0);
 		
 		private:
 		// elements graphiques

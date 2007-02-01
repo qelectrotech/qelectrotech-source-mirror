@@ -12,6 +12,9 @@ BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	inset_width           = nb_columns * columns_width;
 	inset_height          = 50.0;
 	columns_header_height = 20.0;
+	display_inset         = true;
+	display_columns       = true;
+	display_border        = true;
 	updateRectangles();
 }
 
@@ -61,40 +64,43 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	qp -> setBrush(Qt::NoBrush);
 	
 	// dessine le cadre
-	qp -> drawRect(border);
+	if (display_border) qp -> drawRect(border);
 	
 	// dessine la numerotation des colonnes
-	qp -> setBrush(Qt::white);
-	for (int i = 1 ; i <= nb_columns ; ++ i) {
-		QRectF numbered_rectangle = QRectF(
-			border.topLeft().x() + ((i - 1) * columns_width),
-			border.topLeft().y(),
-			columns_width,
-			columns_header_height
-		);
-		qp -> drawRect(numbered_rectangle);
-		qp -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i));
+	if (display_columns) {
+		qp -> setBrush(Qt::white);
+		for (int i = 1 ; i <= nb_columns ; ++ i) {
+			QRectF numbered_rectangle = QRectF(
+				border.topLeft().x() + ((i - 1) * columns_width),
+				border.topLeft().y(),
+				columns_width,
+				columns_header_height
+			);
+			qp -> drawRect(numbered_rectangle);
+			qp -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i));
+		}
 	}
 	
 	// dessine le cartouche
-	qp -> drawRect(inset);
-	
-	qp -> drawRect(inset_author);
-	qp -> drawText(inset_author, Qt::AlignVCenter | Qt::AlignLeft,   tr(" Auteur : ") + bi_author);
-	
-	qp -> drawRect(inset_date);
-	qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Date : ") + bi_date.toString());
-	
-	qp -> drawRect(inset_title);
-	qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, tr("Titre du document: ") + bi_title);
-	
-	qp -> drawRect(inset_file);
-	qp -> drawText(inset_file,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Fichier : ") + bi_filename);
-	
-	qp -> drawRect(inset_folio);
-	qp -> drawText(inset_folio,  Qt::AlignVCenter | Qt::AlignLeft,   tr(" Folio : ") + bi_folio);
-	qp -> restore();
-	
+	if (display_inset) {
+		qp -> drawRect(inset);
+		
+		qp -> drawRect(inset_author);
+		qp -> drawText(inset_author, Qt::AlignVCenter | Qt::AlignLeft,   tr(" Auteur : ") + bi_author);
+		
+		qp -> drawRect(inset_date);
+		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Date : ") + bi_date.toString());
+		
+		qp -> drawRect(inset_title);
+		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, tr("Titre du document: ") + bi_title);
+		
+		qp -> drawRect(inset_file);
+		qp -> drawText(inset_file,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Fichier : ") + bi_filename);
+		
+		qp -> drawRect(inset_folio);
+		qp -> drawText(inset_folio,  Qt::AlignVCenter | Qt::AlignLeft,   tr(" Folio : ") + bi_folio);
+		qp -> restore();
+	}
 	// annule la translation des rectangles
 	border      .translate(-x, -y);
 	inset       .translate(-x, -y);

@@ -21,18 +21,18 @@ ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
 	setIconSize(QSize(50, 50));
 	
 	// chargement des elements de la collection QET
-	ajouterDossier(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
+	addDir(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
 	
 	// chargement des elements de la collection utilisateur
-	ajouterDossier(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
+	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 	
 	// force du noir sur une alternance de blanc (comme le schema) et de gris
 	// clair, avec du blanc sur bleu pas trop fonce pour la selection
 	QPalette qp = palette();
-	qp.setColor(QPalette::Text, Qt::black);
-	qp.setColor(QPalette::Base, Qt::white);
-	qp.setColor(QPalette::AlternateBase, QColor("#e8e8e8"));
-	qp.setColor(QPalette::Highlight, QColor("#678db2"));
+	qp.setColor(QPalette::Text,            Qt::black);
+	qp.setColor(QPalette::Base,            Qt::white);
+	qp.setColor(QPalette::AlternateBase,   QColor("#e8e8e8"));
+	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
 	qp.setColor(QPalette::HighlightedText, Qt::white);
 	setPalette(qp);
 }
@@ -87,7 +87,6 @@ void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
 	delete appar;
 }
 
-
 /**
 	Methode privee permettant d'ajouter un dossier au panel d'appareils
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
@@ -97,7 +96,7 @@ void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
 	dans le dossier et y lit le nom du dossier ; si ce fichier n'existe pas ou
 	est invalide, la fonction utilise le nom du dossier.
 */
-void ElementsPanel::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QString nom) {
+void ElementsPanel::addDir(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QString nom) {
 	QDir dossier(adr_dossier);
 	if (!dossier.exists()) return;
 	adr_dossier = dossier.canonicalPath() + "/";
@@ -115,11 +114,11 @@ void ElementsPanel::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_dos
 	
 	// ajout des sous-categories / sous-dossiers
 	QStringList dossiers = dossier.entryList(QStringList(), QDir::AllDirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDir::Name);
-	foreach(QString dossier, dossiers) ajouterDossier(qtwi_dossier, adr_dossier + dossier);
+	foreach(QString dossier, dossiers) addDir(qtwi_dossier, adr_dossier + dossier);
 	
 	// ajout des elements / fichiers
 	QStringList fichiers = dossier.entryList(QStringList("*.elmt"), QDir::Files, QDir::Name);
-	foreach(QString fichier, fichiers) ajouterFichier(qtwi_dossier, adr_dossier + fichier);
+	foreach(QString fichier, fichiers) addFile(qtwi_dossier, adr_dossier + fichier);
 }
 
 /**
@@ -127,7 +126,7 @@ void ElementsPanel::ajouterDossier(QTreeWidgetItem *qtwi_parent, QString adr_dos
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
 	@param fichier Chemin absolu du fichier XML decrivant l'element a inserer
 */
-void ElementsPanel::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichier) {
+void ElementsPanel::addFile(QTreeWidgetItem *qtwi_parent, QString fichier) {
 	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
 	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
 	int etat;
@@ -145,7 +144,6 @@ void ElementsPanel::ajouterFichier(QTreeWidgetItem *qtwi_parent, QString fichier
 	qtwi -> setData(0, 42, fichier);
 }
 
-
 /**
 	Methode permettant d'obtenir le nom affichable d'une categorie etant donne
 	son chemin (dossier).
@@ -162,7 +160,7 @@ QString ElementsPanel::categoryName(QDir &directory) {
 	if (directory_conf.exists()) {
 		// ouvre le fichier
 		if (directory_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			// recupere les deux premiers caracteres de la lcoale en cours du systeme
+			// recupere les deux premiers caracteres de la locale en cours du systeme
 			QString system_language = QLocale::system().name().left(2);
 			// lit le contenu du fichier dans un QDomDocument XML
 			QDomDocument document;

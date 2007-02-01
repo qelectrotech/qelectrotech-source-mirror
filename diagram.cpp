@@ -2,6 +2,7 @@
 #include "conducer.h"
 #include "customelement.h"
 #include "diagram.h"
+#include "exportdialog.h"
 
 /**
 	Constructeur
@@ -17,7 +18,8 @@ Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
 	t.setStyle(Qt::DashLine);
 	poseur_de_conducer -> setPen(t);
 	poseur_de_conducer -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
-	doit_dessiner_grille = true;
+	draw_grid  = true;
+	use_border = true;
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChange()));
 }
 
@@ -29,9 +31,9 @@ Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
 void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> save();
 	
-	// desactive tout antialiasing
+	// desactive tout antialiasing, sauf pour le texte
 	p -> setRenderHint(QPainter::Antialiasing, false);
-	p -> setRenderHint(QPainter::TextAntialiasing, false);
+	p -> setRenderHint(QPainter::TextAntialiasing, true);
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
 	// dessine un fond blanc
@@ -39,7 +41,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
 	
-	if (doit_dessiner_grille) {
+	if (draw_grid) {
 		// dessine les points de la grille
 		p -> setPen(Qt::black);
 		p -> setBrush(Qt::NoBrush);
@@ -58,7 +60,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		}
 	}
 	
-	border_and_inset.draw(p, MARGIN, MARGIN);
+	if (use_border) border_and_inset.draw(p, MARGIN, MARGIN);
 	p -> restore();
 }
 
@@ -66,18 +68,22 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	Exporte le schema vers une image
 	@return Une QImage representant le schema
 */
-QImage Diagram::toImage(int width, int height, bool respectRatio) {
-	// determine le contenu du schema
-	QRectF diagram_content = itemsBoundingRect();
-	
-	// calcule la marge  = 5 % de la longueur necessaire
-	qreal margin = 0.05 * diagram_content.width();
-	
-	// en deduit la zone source utilisee pour l'image
-	QRectF source_area = diagram_content;
-	source_area.translate(-margin, -margin);
-	source_area.setWidth(diagram_content.width() + 2.0 * margin);
-	source_area.setHeight(diagram_content.height() + 2.0 * margin);
+QImage Diagram::toImage(int width, int height, Qt::AspectRatioMode aspectRatioMode) {
+	// determine la zone source =  contenu du schema + marges
+	QRectF source_area;
+	if (!use_border) {
+		source_area = itemsBoundingRect();
+		source_area.translate(-MARGIN, -MARGIN);
+		source_area.setWidth (source_area.width () + 2.0 * MARGIN);
+		source_area.setHeight(source_area.height() + 2.0 * MARGIN);
+	} else {
+		source_area = QRectF(
+			0.0,
+			0.0,
+			border_and_inset.borderWidth () + 2.0 * MARGIN,
+			border_and_inset.borderHeight() + 2.0 * MARGIN
+		);
+	}
 	
 	// si les dimensions ne sont pas precisees, l'image est exportee a l'echelle 1:1
 	QSize image_size = (width == -1 && height == -1) ? source_area.size().toSize() : QSize(width, height);
@@ -87,8 +93,7 @@ QImage Diagram::toImage(int width, int height, bool respectRatio) {
 	
 	// prepare le rendu
 	QPainter p;
-	bool painter_ok = p.begin(&pix);
-	if (!painter_ok) return(QImage());
+	if (!p.begin(&pix)) return(QImage());
 	
 	// rendu antialiase
 	p.setRenderHint(QPainter::Antialiasing, true);
@@ -100,7 +105,7 @@ QImage Diagram::toImage(int width, int height, bool respectRatio) {
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
 	
 	// effectue le rendu lui-meme
-	render(&p, pix.rect(), source_area, respectRatio ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio);
+	render(&p, pix.rect(), source_area, aspectRatioMode);
 	p.end();
 	
 	// restaure les elements selectionnes
@@ -112,22 +117,25 @@ QImage Diagram::toImage(int width, int height, bool respectRatio) {
 /**
 	Permet de connaitre les dimensions qu'aura l'image generee par la methode toImage()
 	@return La taille de l'image generee par toImage()
+	@todo tenir compte des arguments
 */
 QSize Diagram::imageSize() const {
-	// determine le contenu du schema
-	QRectF diagram_content = itemsBoundingRect();
+	// determine la zone source =  contenu du schema + marges
+	qreal image_width, image_height;
+	if (!use_border) {
+		QRectF items_rect = itemsBoundingRect();
+		image_width  = items_rect.width();
+		image_height = items_rect.height();
+	} else {
+		image_width  = border_and_inset.borderWidth();
+		image_height = border_and_inset.borderHeight();
+	}
 	
-	// calcule la marge  = 5 % de la longueur necessaire
-	qreal margin = 0.05 * diagram_content.width();
-	
-	// en deduit la zone source utilisee pour l'image
-	QRectF source_area = diagram_content;
-	source_area.translate(-margin, -margin);
-	source_area.setWidth(diagram_content.width() + 2.0 * margin);
-	source_area.setHeight(diagram_content.height() + 2.0 * margin);
+	image_width  += 2.0 * MARGIN;
+	image_height += 2.0 * MARGIN;
 	
 	// renvoie la taille de la zone source
-	return(source_area.size().toSize());
+	return(QSizeF(image_width, image_height).toSize());
 }
 
 /**

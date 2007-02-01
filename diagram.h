@@ -11,9 +11,12 @@
 	class Terminal;
 	class Diagram : public QGraphicsScene {
 		Q_OBJECT
+		enum BorderOptions { EmptyBorder, Inset, Columns };
 		public:
 		Diagram(QObject * = 0);
 		void drawBackground(QPainter *, const QRectF &);
+		
+		// fonctions relatives a la pose de conducteurs
 		inline void poseConducer(bool pf) {
 			if (pf) {
 				if (!poseur_de_conducer -> scene()) addItem(poseur_de_conducer);
@@ -23,18 +26,38 @@
 		}
 		inline void setDepart (QPointF d) { poseur_de_conducer -> setLine(QLineF(d, poseur_de_conducer -> line().p2())); }
 		inline void setArrivee(QPointF a) { poseur_de_conducer -> setLine(QLineF(poseur_de_conducer -> line().p1(), a)); }
-		QImage toImage(int = -1, int = -1, bool = true);
-		QSize imageSize() const;
+		
+		// fonctions relatives a l'import / export XML
 		QDomDocument toXml(bool = true);
 		bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true);
-		QGraphicsItem *getElementById(uint id);
-		inline void setAffichageGrille(bool ddg) { doit_dessiner_grille = ddg; }
+		
+		// fonctions relatives aux options graphiques
+		inline void setAffichageGrille(bool dg) { draw_grid = dg; }
+		inline bool displayGrid() { return(draw_grid); }
+		inline void setUseBorder(bool ub) { use_border = ub; }
+		inline bool useBorder() { return(use_border); }
+		inline void setBorderOptions(BorderOptions bo) {
+			border_and_inset.displayBorder(!(bo & EmptyBorder));
+			border_and_inset.displayColumns(bo & Columns);
+			border_and_inset.displayInset(bo & Inset);
+		}
+		inline BorderOptions borderOptions() {
+			BorderOptions retour = EmptyBorder;
+			if (border_and_inset.insetIsDisplayed()) retour = (BorderOptions)(retour|Inset);
+			if (border_and_inset.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
+			return(retour);
+		}
+		
 		BorderInset border_and_inset;
 		QRectF border() const;
+		QImage toImage(int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
+		QSize imageSize() const;
 		
 		private:
 		QGraphicsLineItem *poseur_de_conducer;
-		bool doit_dessiner_grille;
+		bool draw_grid;
+		bool use_border;
+		
 		Element *elementFromXml(QDomElement &, QHash<int, Terminal *> &);
 		
 		private slots:

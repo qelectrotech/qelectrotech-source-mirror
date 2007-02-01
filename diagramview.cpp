@@ -1,6 +1,7 @@
 #include "diagramview.h"
 #include "diagram.h"
 #include "customelement.h"
+#include "exportdialog.h"
 
 /**
 	Initialise le DiagramView
@@ -432,3 +433,96 @@ bool DiagramView::private_enregistrer(QString &n_fichier) {
 	return(true);
 }
 
+void DiagramView::dialogExport() {
+	ExportDialog ed(scene, this);
+	ed.exec();
+}
+
+void DiagramView::dialogPrint() {
+	QPrinter qprin;
+	qprin.setOutputFormat(QPrinter::PdfFormat);
+	qprin.setOrientation(QPrinter::Landscape);
+	qprin.setPageSize(QPrinter::A4);
+	QPrintDialog qpd(&qprin, this);
+	
+	if (qpd.exec() == QDialog::Accepted) {
+		QPainter qp(&qprin);
+		scene -> setAffichageGrille(false);
+		scene -> render(&qp);
+		scene -> setAffichageGrille(true);
+	}
+}
+
+void DiagramView::dialogEditInfos() {
+	// recupere le cartouche du schema
+	BorderInset *inset = &(scene -> border_and_inset);
+	
+	// construit le dialogue
+	QDialog popup;
+	popup.setMinimumWidth(400);
+	popup.setWindowTitle(tr("Cartouche du sch\351ma"));
+	
+	QLineEdit *titre = new QLineEdit(inset -> title(), &popup);
+	QLineEdit *auteur = new QLineEdit(inset -> author(), &popup);
+	QDate date_diagram = QDate(inset -> date());
+	if (date_diagram.isNull() || !date_diagram.isValid()) date_diagram = QDate::currentDate();
+	QDateEdit *date = new QDateEdit(date_diagram, &popup);
+	date -> setCalendarPopup(true);
+	QLineEdit *fichier = new QLineEdit(inset -> fileName(), &popup);
+	QLineEdit *folio = new QLineEdit(inset -> folio(), &popup);
+	QWidget bidon(&popup);
+	QGridLayout layout_champs(&bidon);
+	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
+	layout_champs.addWidget(titre,                        0, 1);
+	layout_champs.addWidget(new QLabel(tr("Auteur : ")),  1, 0);
+	layout_champs.addWidget(auteur,                       1, 1);
+	layout_champs.addWidget(new QLabel(tr("Date : ")),    2, 0);
+	layout_champs.addWidget(date,                         2, 1);
+	layout_champs.addWidget(new QLabel(tr("Fichier : ")), 3, 0);
+	layout_champs.addWidget(fichier,                      3, 1);
+	layout_champs.addWidget(new QLabel(tr("Folio : ")),   4, 0);
+	layout_champs.addWidget(folio,                        4, 1);
+	
+	// boutons
+	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
+	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(accept()));
+	
+	// ajout dans une disposition verticale
+	QVBoxLayout layout_v(&popup);
+	layout_v.addWidget(&bidon);
+	layout_v.addWidget(&boutons);
+	if (popup.exec() == QDialog::Accepted) {
+		inset -> setTitle(titre -> text());
+		inset -> setAuthor(auteur -> text());
+		inset -> setDate(date -> date());
+		inset -> setFileName(fichier -> text());
+		inset -> setFolio(folio -> text());
+	}
+}
+
+bool DiagramView::hasSelectedItems() {
+	return(scene -> selectedItems().size() > 0);
+}
+
+void DiagramView::addColumn() {
+	// ajoute la colonne
+	scene -> border_and_inset.addColumn();
+	
+	// met a jour la zone affichee par la vue
+	QRectF sr = sceneRect();
+	sr.setWidth(5.0 + scene -> border_and_inset.borderWidth());
+	setSceneRect(sr);
+	
+	// rafraichit la vue
+	scene -> update(sceneRect());
+}
+
+void DiagramView::removeColumn() {
+	scene -> border_and_inset.removeColumn();
+	
+	// on pourrait mettre a jour la zone affichee par la vue
+	
+	// rafraichit la vue
+	scene -> update(sceneRect());
+}

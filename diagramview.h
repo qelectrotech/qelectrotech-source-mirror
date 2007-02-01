@@ -26,6 +26,13 @@
 		QString nom_fichier;
 		bool enregistrer();
 		bool enregistrer_sous();
+		void dialogExport();
+		void dialogEditInfos();
+		void dialogPrint();
+		void addColumn();
+		void removeColumn();
+		Diagram *diagram() { return(scene); }
+		bool hasSelectedItems();
 		
 		private:
 		bool private_enregistrer(QString &);
