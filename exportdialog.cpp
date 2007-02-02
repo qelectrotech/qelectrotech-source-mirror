@@ -7,6 +7,7 @@
 */
 ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	if (!dia) return;
+	
 	// recupere le schema a exporter, sa taille et ses proportions
 	diagram = dia;
 	diagram_size = diagram -> imageSize();
@@ -21,7 +22,6 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	buttons = new QDialogButtonBox(this);
 	buttons -> setOrientation(Qt::Horizontal);
 	buttons -> setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Save);
-	setTabOrder(keep_aspect_ratio, buttons);
 	
 	// disposition des elements
 	QGridLayout *layout = new QGridLayout(this);
@@ -33,6 +33,8 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	layout -> addWidget(leftPart(),  0, 0);
 	layout -> addWidget(rightPart(), 0, 1);
 	layout -> addWidget(buttons,     1, 1);
+	
+	setTabOrder(keep_aspect_ratio, buttons);
 	
 	// connexions signaux/slots
 	connect(button_browse,     SIGNAL(released()),         this, SLOT(slot_chooseAFile()));
