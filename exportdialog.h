@@ -10,6 +10,7 @@
 		Q_OBJECT
 		public:
 		ExportDialog(Diagram *, QWidget * = 0);
+		~ExportDialog();
 		
 		private:
 		// elements graphiques
@@ -19,9 +20,16 @@
 		QSpinBox *width;
 		QSpinBox *height;
 		QCheckBox *keep_aspect_ratio;
-		QCheckBox *export_grid;
+		QCheckBox *draw_grid;
+		QCheckBox *draw_border;
+		QCheckBox *draw_inset;
+		QCheckBox *draw_columns;
 		QCheckBox *keep_colors;
+		QRadioButton *export_elements;
+		QRadioButton *export_border;
 		QDialogButtonBox *buttons;
+		QGraphicsScene *preview_scene;
+		QGraphicsView *preview_view;
 		
 		// booleens pour ne pas avoir de boucle lors de l'edition des dimensions de l'image
 		bool dontchangewidth;
@@ -33,13 +41,18 @@
 		QString diagram_path;
 		qreal diagram_ratio;
 		
+		QWidget *leftPart();
+		QWidget *rightPart();
 		QGroupBox *setupDimensionsGroupBox();
 		QGroupBox *setupOptionsGroupBox();
+		QImage generateImage();
 		
 		public slots:
 		void slot_correctWidth();
 		void slot_correctHeight();
 		void slot_chooseAFile();
 		void slot_check();
+		void slot_changeUseBorder();
+		void slot_refreshPreview();
 	};
 #endif

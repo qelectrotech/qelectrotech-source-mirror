@@ -10,29 +10,30 @@ INCLUDEPATH += .
 # Input
 HEADERS += aboutqet.h \
            borderinset.h \
-           terminal.h \
            conducer.h \
-           element.h \
-           fixedelement.h \
            customelement.h \
-           exportdialog.h \
-           elementspanel.h \
-           qetapp.h \
            diagram.h \
-           diagramview.h
+           diagramview.h \
+           element.h \
+           elementspanel.h \
+           exportdialog.h \
+           fixedelement.h \
+           qetapp.h \
+           terminal.h \
+           divers/export_fichier.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
-           terminal.cpp \
            conducer.cpp \
-           element.cpp \
-           fixedelement.cpp \
            customelement.cpp \
-           exportdialog.cpp \
-           main.cpp \
-           elementspanel.cpp \
-           qetapp.cpp \
            diagram.cpp \
-           diagramview.cpp
+           diagramview.cpp \
+           element.cpp \
+           elementspanel.cpp \
+           exportdialog.cpp \
+           fixedelement.cpp \
+           main.cpp \
+           qetapp.cpp \
+           terminal.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml

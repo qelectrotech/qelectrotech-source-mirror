@@ -89,7 +89,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 		qp -> drawText(inset_author, Qt::AlignVCenter | Qt::AlignLeft,   tr(" Auteur : ") + bi_author);
 		
 		qp -> drawRect(inset_date);
-		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Date : ") + bi_date.toString());
+		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Date : ") + bi_date.toString("dd/MM/yyyy"));
 		
 		qp -> drawRect(inset_title);
 		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, tr("Titre du document: ") + bi_title);
@@ -99,8 +99,10 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 		
 		qp -> drawRect(inset_folio);
 		qp -> drawText(inset_folio,  Qt::AlignVCenter | Qt::AlignLeft,   tr(" Folio : ") + bi_folio);
-		qp -> restore();
 	}
+	
+	qp -> restore();
+	
 	// annule la translation des rectangles
 	border      .translate(-x, -y);
 	inset       .translate(-x, -y);
