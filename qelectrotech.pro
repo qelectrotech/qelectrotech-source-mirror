@@ -19,8 +19,7 @@ HEADERS += aboutqet.h \
            exportdialog.h \
            fixedelement.h \
            qetapp.h \
-           terminal.h \
-           divers/export_fichier.h
+           terminal.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
