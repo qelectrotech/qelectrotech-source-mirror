@@ -34,7 +34,7 @@ void BorderInset::updateRectangles() {
 	border = QRectF(0, 0, nb_columns * columns_width, columns_height);
 	
 	// rectangles relatifs au cartouche
-	inset        = QRectF(border.bottomRight().x() - inset_width, border.bottomRight().y() - inset_height, inset_width, inset_height);
+	inset        = QRectF(border.bottomLeft().x(), border.bottomLeft().y(), inset_width, inset_height);
 	inset_author = QRectF(inset.topLeft(), QSizeF(2.0 * inset_width / 9.0, 0.5 * inset_height));
 	inset_date   = QRectF(inset_author.bottomLeft(), inset_author.size());
 	inset_title  = QRectF(inset_author.topRight(), QSizeF(5.0 * inset_width / 9.0, inset_height));
@@ -118,6 +118,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 */
 void BorderInset::addColumn() {
 	++ nb_columns;
+	setInsetWidth(nb_columns * columns_width);
 	updateRectangles();
 }
 
@@ -127,6 +128,7 @@ void BorderInset::addColumn() {
 void BorderInset::removeColumn() {
 	if (nb_columns == 3) return;
 	-- nb_columns;
+	setInsetWidth(nb_columns * columns_width);
 	updateRectangles();
 }
 
@@ -150,10 +152,10 @@ void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
 
 /**
 	Change la hauteur des colonnes (et donc du cadre). Cette hauteur doit
-	rester superieure a 10px.
+	rester superieure a la hauteur des en-tetes de colonnes + 20px.
 */
 void BorderInset::setColumnsHeight(const qreal &new_ch) {
-	columns_height = qMax(10.0, new_ch);
+	columns_height = qMax(columns_header_height + 20.0, new_ch);
 	updateRectangles();
 }
 

@@ -526,3 +526,24 @@ void DiagramView::removeColumn() {
 	// rafraichit la vue
 	scene -> update(sceneRect());
 }
+
+void DiagramView::expand() {
+	// ajoute 10 pixels
+	scene -> border_and_inset.setColumnsHeight(scene -> border_and_inset.columnsHeight() + 20.0);
+	
+	// met a jour la zone affichee par la vue
+	QRectF sr = sceneRect();
+	sr.setHeight(20.0 + sr.height());
+	setSceneRect(sr);
+	
+	// rafraichit la vue
+	scene -> update(sceneRect());
+}
+
+void DiagramView::shrink() {
+	// enleve 10 pixels
+	scene -> border_and_inset.setColumnsHeight(scene -> border_and_inset.columnsHeight() - 20.0);
+	
+	// rafraichit la vue
+	scene -> update(sceneRect());
+}

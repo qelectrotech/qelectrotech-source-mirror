@@ -225,9 +225,11 @@ void QETApp::actions() {
 	sel_inverse       = new QAction(                               tr("Inverser la s\351lection"),             this);
 	supprimer         = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
 	pivoter           = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
-	infos_diagram      = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
+	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
 	add_column        = new QAction(                               tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(                               tr("Enlever une colonne"),                  this);
+	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
+	shrink_diagram    = new QAction(                               tr("R\351tr\351cir le sch\351ma"),          this);
 	
 	toggle_aa         = new QAction(                               tr("D\351sactiver l'&antialiasing"),        this);
 	zoom_avant        = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                           this);
@@ -308,9 +310,11 @@ void QETApp::actions() {
 	sel_inverse       -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
 	supprimer         -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
 	pivoter           -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
-	infos_diagram      -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
+	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
 	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
+	expand_diagram    -> setStatusTip(tr("Agrandit le sch\351ma en hauteur"));
+	shrink_diagram    -> setStatusTip(tr("R\351tr\351cit le sch\351ma en hauteur"));
 	
 	toggle_aa         -> setStatusTip(tr("Active / d\351sactive l'antialiasing pour le rendu du sch\351ma courant"));
 	zoom_avant        -> setStatusTip(tr("Agrandit le sch\351ma"));
@@ -382,6 +386,8 @@ void QETApp::actions() {
 	connect(infos_diagram,    SIGNAL(activated()), this,       SLOT(slot_editInfos())           );
 	connect(add_column,       SIGNAL(activated()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(activated()), this,       SLOT(slot_removeColumn())        );
+	connect(expand_diagram,   SIGNAL(activated()), this,       SLOT(slot_expand())              );
+	connect(shrink_diagram,   SIGNAL(activated()), this,       SLOT(slot_shrink())              );
 }
 
 /**
@@ -436,6 +442,8 @@ void QETApp::menus() {
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addAction(add_column);
 	menu_edition -> addAction(remove_column);
+	menu_edition -> addAction(expand_diagram);
+	menu_edition -> addAction(shrink_diagram);
 	
 	// menu Affichage > Afficher
 	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
@@ -946,4 +954,22 @@ void QETApp::slot_removeColumn() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> removeColumn();
+}
+
+/**
+	Allonge le schema en cours en hauteur
+*/
+void QETApp::slot_expand() {
+	DiagramView *sv = diagramEnCours();
+	if (!sv) return;
+	sv -> expand();
+}
+
+/**
+	Retrecit le schema en cours en hauteur
+*/
+void QETApp::slot_shrink() {
+	DiagramView *sv = diagramEnCours();
+	if (!sv) return;
+	sv -> shrink();
 }

@@ -57,6 +57,8 @@
 		void slot_updateMenuFenetres();
 		void slot_addColumn();
 		void slot_removeColumn();
+		void slot_expand();
+		void slot_shrink();
 		
 		protected:
 		// Actions faisables au travers de menus dans l'application QElectroTech
@@ -85,6 +87,8 @@
 		QAction *infos_diagram;
 		QAction *add_column;
 		QAction *remove_column;
+		QAction *expand_diagram;
+		QAction *shrink_diagram;
 		QAction *poser_fil;
 		QAction *reduce_appli;
 		QAction *restore_appli;

@@ -16,14 +16,14 @@
 		void draw(QPainter *, qreal = 0.0, qreal = 0.0);
 		
 		// methodes d'acces en lecture aux dimensions
-		int     nbColumn()            const { return(nb_columns);                 }
-		qreal   columnsWidth()        const { return(columns_width);              }
-		qreal   columnsHeaderHeight() const { return(columns_header_height);      }
-		qreal   columnsHeight()       const { return(columns_height);             }
-		qreal   borderWidth()         const { return(nb_columns * columns_width); }
-		qreal   borderHeight()        const { return(columns_height);             }
-		qreal   insetWidth()          const { return(inset_width);                }
-		qreal   insetHeight()         const { return(inset_height);               }
+		int     nbColumn()            const { return(nb_columns);                    }
+		qreal   columnsWidth()        const { return(columns_width);                 }
+		qreal   columnsHeaderHeight() const { return(columns_header_height);         }
+		qreal   columnsHeight()       const { return(columns_height);                }
+		qreal   borderWidth()         const { return(nb_columns * columns_width);    }
+		qreal   borderHeight()        const { return(columns_height + inset_height); }
+		qreal   insetWidth()          const { return(inset_width);                   }
+		qreal   insetHeight()         const { return(inset_height);                  }
 		
 		// methodes d'acces en lecture aux informations du cartouche
 		QString author()              const { return(bi_author);             }

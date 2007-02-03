@@ -31,6 +31,8 @@
 		void dialogPrint();
 		void addColumn();
 		void removeColumn();
+		void expand();
+		void shrink();
 		Diagram *diagram() { return(scene); }
 		bool hasSelectedItems();
 		
