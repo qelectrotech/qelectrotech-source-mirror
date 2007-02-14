@@ -1,5 +1,6 @@
 #include <QtDebug>
 #include "conducer.h"
+#include "conducersegment.h"
 #include "element.h"
 
 bool Conducer::pen_and_brush_initialized = false;
@@ -36,6 +37,7 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 		pen_and_brush_initialized = true;
 	}
 	// calcul du rendu du conducteur
+	segments = NULL;
 	priv_calculeConducer(terminal1 -> amarrageConducer(), terminal1 -> orientation(), terminal2 -> amarrageConducer(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 }
@@ -47,7 +49,7 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 void Conducer::update(const QRectF &rect) {
 	// utilise soit la fonction priv_modifieConducteur soit la fonction priv_calculeConducteur
 	void (Conducer::* fonction_update) (const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
-	fonction_update = (points.count() && modified_path) ? &Conducer::priv_modifieConducer : &Conducer::priv_calculeConducer;
+	fonction_update = (nbSegments() && modified_path) ? &Conducer::priv_modifieConducer : &Conducer::priv_calculeConducer;
 	
 	// appelle la bonne fonction pour calculer l'aspect du conducteur
 	(this ->* fonction_update)(
@@ -76,7 +78,7 @@ void Conducer::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPo
 		p1 = terminal1 -> amarrageConducer();
 		p2 = terminal2 -> amarrageConducer();
 	}
-	if (points.count() && modified_path)
+	if (nbSegments() && modified_path)
 		priv_modifieConducer(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else
 		priv_calculeConducer(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
@@ -86,15 +88,27 @@ void Conducer::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPo
 /**
 	Genere le QPainterPath a partir de la liste des points
 */
-void Conducer::pointsToPath() {
+void Conducer::segmentsToPath() {
+	// chemin qui sera dessine
 	QPainterPath path;
-	bool moveto_done = false;
-	foreach(QPointF point, points) {
-		if (!moveto_done) {
-			path.moveTo(point);
-			moveto_done = true;
-		} else path.lineTo(point);
+	
+	// s'il n'y a pa des segments, on arrete la
+	if (segments == NULL) setPath(path);
+	
+	// demarre le chemin
+	path.moveTo(segments -> firstPoint());
+	
+	// parcourt les segments pour dessiner le chemin
+	ConducerSegment *segment = segments;
+	while(segment -> hasNextSegment()) {
+		path.lineTo(segment -> secondPoint());
+		segment = segment -> nextSegment();
 	}
+	
+	// termine le chemin
+	path.lineTo(segment -> secondPoint());
+	
+	// affecte le chemin au conducteur
 	setPath(path);
 }
 
@@ -106,7 +120,7 @@ void Conducer::pointsToPath() {
 	@param o2 Orientation de la borne 2
 */
 void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, const QPointF &p2, Terminal::Orientation) {
-	Q_ASSERT_X(points.count() > 1, "priv_modifieConducer", "pas de points a modifier");
+	Q_ASSERT_X(nbSegments() > 1, "priv_modifieConducer", "pas de points a modifier");
 	
 	// recupere les dernieres coordonnees connues des bornes
 	QPointF old_p1 = mapFromScene(terminal1 -> amarrageConducer());
@@ -130,7 +144,8 @@ void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, co
 	// genere les nouveaux points
 	int limite = moves_x.size() - 1;
 	int coeff = type_trajet_x ? 1 : -1;
-	points.clear();
+	
+	QList<QPointF> points;
 	points << (type_trajet_x ? new_p1 : new_p2);
 	for (int i = 0 ; i < limite ; ++ i) {
 		QPointF previous_point = points.last();
@@ -140,8 +155,8 @@ void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, co
 		);
 	}
 	points << (type_trajet_x ? new_p2 : new_p1);
-	
-	pointsToPath();
+	pointsToSegments(points);
+	segmentsToPath();
 }
 
 /**
@@ -154,7 +169,10 @@ void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, co
 void Conducer::priv_calculeConducer(const QPointF &p1, Terminal::Orientation o1, const QPointF &p2, Terminal::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
 	Terminal::Orientation ori_depart, ori_arrivee;
-	points.clear();
+	
+	// s'assure qu'il n'y a ni points
+	QList<QPointF> points;
+	
 	type_trajet_x = p1.x() < p2.x();
 	// mappe les points par rapport a la scene
 	sp1 = mapFromScene(p1);
@@ -230,7 +248,8 @@ void Conducer::priv_calculeConducer(const QPointF &p1, Terminal::Orientation o1,
 	// prolongement de la borne d'arrivee
 	points << arrivee0;
 	
-	pointsToPath();
+	pointsToSegments(points);
+	segmentsToPath();
 }
 
 /**
@@ -272,7 +291,6 @@ void Conducer::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QW
 	
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conducer_brush);
-	//qp -> setBrush(Qt::green);
 	qp -> setPen(conducer_pen);
 	if (isSelected()) {
 		QPen tmp = qp -> pen();
@@ -286,9 +304,25 @@ void Conducer::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QW
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
 	if (isSelected()) {
 		qp -> setRenderHint(QPainter::Antialiasing, true);
+		QList<QPointF> points = segmentsToPoints();
+		QPointF previous_point;
+		QBrush square_brush(Qt::darkGreen);
 		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
 			QPointF point = points.at(i);
+			
+			if (i > 1) {
+				qp -> fillRect(
+					QRectF(
+						((previous_point.x() + point.x()) / 2.0 ) - 2.5,
+						((previous_point.y() + point.y()) / 2.0 ) - 2.5,
+						5.0,
+						5.0
+					),
+					square_brush
+				);
+			}
 			qp -> drawEllipse(QRectF(point.x() - 3.0, point.y() - 3.0, 6.0, 6.0));
+			previous_point = point;
 		}
 	}
 	qp -> restore();
@@ -364,20 +398,29 @@ bool Conducer::valideXml(QDomElement &e){
 void Conducer::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
+		// recupere les coordonnees du clic
 		press_point = mapFromScene(e -> pos());
-		moving_point = false;
-		for (int i = 1 ; i < points.count() ; ++ i) {
-			QPointF point = points.at(i);
-			if (
-				press_point.x() >= point.x() - 5.0 &&\
-				press_point.x() <  point.x() + 5.0 &&\
-				press_point.y() >= point.y() - 5.0 &&\
-				press_point.y() <  point.y() + 5.0
-			) {
+		
+		/*
+			parcourt les segments pour determiner si le clic a eu lieu
+			- sur l'extremite d'un segment
+			- sur le milieu d'un segment
+			- ailleurs
+		*/
+		ConducerSegment *segment = segments;
+		while (segment -> hasNextSegment()) {
+			if (hasClickedOn(press_point, segment -> secondPoint())) {
 				moving_point = true;
-				moved_point = i;
+				moving_segment = false;
+				moved_segment = segment;
+				break;
+			} else if (hasClickedOn(press_point, segment -> middle())) {
+				moving_point = false;
+				moving_segment = true;
+				moved_segment = segment;
 				break;
 			}
+			segment = segment -> nextSegment();
 		}
 	}
 	QGraphicsPathItem::mousePressEvent(e);
@@ -398,103 +441,39 @@ void Conducer::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 void Conducer::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
+		// position pointee par la souris
+		qreal mouse_x = e -> pos().x();
+		qreal mouse_y = e -> pos().y();
+		
 		if (moving_point) {
-			/* recuperation de quelques joyeusetes tres souvent consultees */
-			// indice du dernier point ( = point non modifiable)
-			int ind_max_point = points.count() - 1;
-			
+			// la modification par points revient bientot
+			/*
 			// position precedente du point
-			QPointF p = points.at(moved_point);
+			QPointF p = moved_segment -> secondPoint();
 			qreal p_x = p.x();
 			qreal p_y = p.y();
 			
-			// position pointee par la souris
-			qreal mouse_x = e -> pos().x();
-			qreal mouse_y = e -> pos().y();
-			
-			// position du point apres le deplacement
-			qreal new_pos_x;
-			qreal new_pos_y;
-			
-			if (moved_point == 1 || moved_point == ind_max_point - 1) {
-				/* premier et dernier points modifiables du conducteur */
-				// repere le point qui va imposer la contrainte de base
-				int ind_depend = moved_point == 1 ? 0 : ind_max_point;
-				qreal depend_x = points.at(ind_depend).x();
-				qreal depend_y = points.at(ind_depend).y();
-				
-				// repere le point voisin suivant
-				int ind_voisin = moved_point == 1 ? 2 : moved_point - 1;
-				qreal voisin_x = points.at(ind_voisin).x();
-				qreal voisin_y = points.at(ind_voisin).y();
-			 
-				if (p_x == depend_x && p_y != depend_y) {
-					// deplacements limites a l'axe vertical
-					new_pos_x = p_x;
-					// si on peut aller plus loin que le point voisin suivant, on le fait... en deplacant le point voisin
-					if (p_x > voisin_x - 1 && p_x < voisin_x + 1) new_pos_y = conducer_bound(mouse_y, depend_y, voisin_y);
-					else {
-						new_pos_y = conducer_bound(mouse_y, depend_y, depend_y < voisin_y);
-						points.replace(ind_voisin, QPointF(voisin_x, new_pos_y));
-					}
-				} else {
-					// deplacements limites a l'axe horizontal
-					// si on peut aller plus loin que le point voisin suivant, on le fait... en deplacant le point voisin
-					if (p_y > voisin_y - 1 && p_y < voisin_y + 1) new_pos_x = conducer_bound(mouse_x, depend_x, voisin_x);
-					else {
-						new_pos_x = conducer_bound(mouse_x, depend_x, depend_x < voisin_x);
-						points.replace(ind_voisin, QPointF(new_pos_x, voisin_y));
-					}
-					new_pos_y = p_y;
-				}
-			} else {
-				/* autres points */
-				new_pos_x = mouse_x;
-				new_pos_y = mouse_y;
-				
-				/* deplace les deux points voisins (sans cela, le deplacement du point n'est pas possible) */
-				// point precedent
-				int ind_point_precedent = moved_point - 1;
-				qreal pp_x = points.at(ind_point_precedent).x();
-				qreal pp_y = points.at(ind_point_precedent).y();
-				if (ind_point_precedent != 1) {
-					if (pp_x > p_x - 1 && pp_x < p_x + 1) {
-						points.replace(ind_point_precedent, QPointF(new_pos_x, pp_y));
-					} else {
-						points.replace(ind_point_precedent, QPointF(pp_x, new_pos_y));
-					}
-				} else {
-					if (pp_x > p_x - 1 && pp_x < p_x + 1) {
-						new_pos_x = p_x;
-					} else {
-						new_pos_y = p_y;
-					}
-				}
-				
-				// point suivant
-				int ind_point_suivant = moved_point + 1;
-				qreal ps_x = points.at(ind_point_suivant).x();
-				qreal ps_y = points.at(ind_point_suivant).y();
-				if (ind_point_suivant != ind_max_point - 1) {
-					if (ps_x > p_x - 1 && ps_x < p_x + 1) {
-						points.replace(ind_point_suivant, QPointF(new_pos_x, ps_y));
-					} else {
-						points.replace(ind_point_suivant, QPointF(ps_x, new_pos_y));
-					}
-				} else {
-					if (ps_x > p_x - 1 && ps_x < p_x + 1) {
-						new_pos_x = p_x;
-					} else {
-						new_pos_y = p_y;
-					}
-				}
-			}
+			// calcul du deplacement
+			moved_segment -> moveX(mouse_x - p_x());
+			moved_segment -> moveY(mouse_y - p_y());
 			
 			// application du deplacement
 			modified_path = true;
-			points.replace(moved_point, QPointF(new_pos_x, new_pos_y));
 			updatePoints();
-			pointsToPath();
+			segmentsToPath();
+			*/
+		} else if (moving_segment) {
+			// position precedente du point
+			QPointF p = moved_segment -> middle();
+			
+			// calcul du deplacement
+			moved_segment -> moveX(mouse_x - p.x());
+			moved_segment -> moveY(mouse_y - p.y());
+			
+			// application du deplacement
+			modified_path = true;
+			updatePoints();
+			segmentsToPath();
 		}
 	}
 	QGraphicsPathItem::mouseMoveEvent(e);
@@ -506,10 +485,9 @@ void Conducer::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 */
 void Conducer::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
-	if (e -> buttons() & Qt::LeftButton) {
-		moving_point = false;
-		QGraphicsPathItem::mouseReleaseEvent(e);
-	}
+	moving_point = false;
+	moving_segment = false;
+	QGraphicsPathItem::mouseReleaseEvent(e);
 }
 
 /**
@@ -525,6 +503,7 @@ QRectF Conducer::boundingRect() const {
 	@return La forme / zone "cliquable" du conducteur
 */
 QPainterPath Conducer::shape() const {
+	QList<QPointF> points = segmentsToPoints();
 	QPainterPath area;
 	QPointF previous_point;
 	QPointF *point1, *point2;
@@ -565,6 +544,7 @@ QPainterPath Conducer::shape() const {
 	Met à jour deux listes de reels.
 */
 void Conducer::updatePoints() {
+	QList<QPointF> points = segmentsToPoints();
 	int s = points.size();
 	moves_x.clear();
 	moves_y.clear();
@@ -590,4 +570,75 @@ qreal Conducer::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
 qreal Conducer::conducer_bound(qreal tobound, qreal bound, bool positive) {
 	qreal space = 5.0;
 	return(positive ? qMax(tobound, bound + space) : qMin(tobound, bound - space));
+}
+
+int Conducer::nbSegments() {
+	if (segments == NULL) return(0);
+	int nb_seg = 1;
+	ConducerSegment *segment = segments;
+	while (segment -> hasNextSegment()) {
+		++ nb_seg;
+		segment = segment -> nextSegment();
+	}
+	return(nb_seg);
+}
+
+/**
+	Genere une liste de points a partir des segments de ce conducteur
+	@return La liste de points representant ce conducteur
+*/
+QList<QPointF> Conducer::segmentsToPoints() const {
+	// liste qui sera retournee
+	QList<QPointF> points_list;
+	
+	// on retourne la liste tout de suite s'il n'y a pas de segments
+	if (segments == NULL) return(points_list);
+	
+	// recupere le premier point
+	points_list << segments -> firstPoint();
+	
+	// parcourt les segments pour recuperer les autres points
+	ConducerSegment *segment = segments;
+	while(segment -> hasNextSegment()) {
+		points_list << segment -> secondPoint();
+		segment = segment -> nextSegment();
+	}
+	
+	// recupere le dernier point
+	points_list << segment -> secondPoint();
+	
+	//retourne la liste
+	return(points_list);
+}
+
+/**
+	Regenere les segments de ce conducteur a partir de la liste de points passee en parametre
+	@param points_list Liste de points a utiliser pour generer les segments
+*/
+void Conducer::pointsToSegments(QList<QPointF> points_list) {
+	// supprime les segments actuels
+	if (segments != NULL) {
+		ConducerSegment *segment = segments;
+		while (segment -> hasNextSegment()) {
+			ConducerSegment *nextsegment = segment -> nextSegment();
+			delete segment;
+			segment = nextsegment;
+		}
+	}
+	
+	// cree les segments a partir de la liste de points
+	ConducerSegment *last_segment = NULL;
+	for (int i = 0 ; i < points_list.size() - 1 ; ++ i) {
+		last_segment = new ConducerSegment(points_list.at(i), points_list.at(i + 1), last_segment);
+		if (!i) segments = last_segment;
+	}
+}
+
+bool Conducer::hasClickedOn(QPointF press_point, QPointF point) {
+	return (
+		press_point.x() >= point.x() - 5.0 &&\
+		press_point.x() <  point.x() + 5.0 &&\
+		press_point.y() >= point.y() - 5.0 &&\
+		press_point.y() <  point.y() + 5.0
+	);
 }

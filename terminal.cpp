@@ -170,8 +170,10 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
 	t.setColor(couleur_hovered);
 	p -> setPen(t);
 	p -> setBrush(couleur_hovered);
-	if (hovered) p -> drawEllipse(((int)f.x())-2, ((int)f.y())-2, 5, 5);
-	else p -> drawPoint(f);
+	if (hovered) {
+		p -> setRenderHint(QPainter::Antialiasing, true);
+		p -> drawEllipse(((int)f.x())-2, ((int)f.y())-2, 5, 5);
+	} else p -> drawPoint(f);
 	
 	p -> restore();
 }

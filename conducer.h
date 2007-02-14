@@ -2,6 +2,7 @@
 	#define CONDUCTEUR_H
 	#include <QtGui>
 	#include "terminal.h"
+	class ConducerSegment;
 	class Element;
 	/**
 		Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
@@ -35,7 +36,7 @@
 		private:
 		/// booleen indiquant si le fil est encore valide
 		bool destroyed;
-		QList<QPointF> points;
+		ConducerSegment *segments;
 		QList<qreal> moves_x;
 		QList<qreal> moves_y;
 		qreal orig_dist_2_terms_x;
@@ -43,16 +44,23 @@
 		bool type_trajet_x;
 		QPointF press_point;
 		bool moving_point;
+		bool moving_segment;
 		int moved_point;
+		ConducerSegment *moved_segment;
 		bool modified_path;
 		static QPen conducer_pen;
 		static QBrush conducer_brush;
 		static bool pen_and_brush_initialized;
 		
-		void pointsToPath();
+		void segmentsToPath();
 		void updatePoints();
 		void priv_calculeConducer(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
 		void priv_modifieConducer(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+		int nbSegments();
+		
+		QList<QPointF> segmentsToPoints() const;
+		void pointsToSegments(QList<QPointF>);
+		bool hasClickedOn(QPointF, QPointF);
 		static QPointF extendTerminal(const QPointF &, Terminal::Orientation, qreal = 12.0);
 		static bool surLeMemeAxe(Terminal::Orientation, Terminal::Orientation);
 		static bool estHorizontale(Terminal::Orientation a);

@@ -19,7 +19,8 @@ HEADERS += aboutqet.h \
            exportdialog.h \
            fixedelement.h \
            qetapp.h \
-           terminal.h
+           terminal.h \
+           conducersegment.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -32,7 +33,8 @@ SOURCES += aboutqet.cpp \
            fixedelement.cpp \
            main.cpp \
            qetapp.cpp \
-           terminal.cpp
+           terminal.cpp \
+           conducersegment.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml
