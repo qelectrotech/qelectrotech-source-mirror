@@ -56,7 +56,7 @@ bool ConducerSegment::canMove1stPointX(qreal asked_dx, qreal &possible_dx) {
 	/// que le segment statique conserve une taille minimale.
 	if (previous_segment -> length() > 0.0) {
 		if (first_x + asked_dx < prev_segment_first_x + 12.0) {
-			possible_dx = -(first_x - prev_segment_first_x - 12.0);
+			possible_dx = -first_x + prev_segment_first_x + 12.0;
 			return(false);
 		} else {
 			possible_dx = asked_dx;
@@ -115,7 +115,7 @@ bool ConducerSegment::canMove2ndPointX(qreal asked_dx, qreal &possible_dx) {
 	/// que le segment statique conserve une taille minimale.
 	if (next_segment -> length() < 0.0) {
 		if (second_x + asked_dx < next_segment_second_x + 12.0) {
-			possible_dx = second_x - next_segment_second_x - 12.0;
+			possible_dx = -second_x + next_segment_second_x + 12.0;
 			return(false);
 		} else {
 			possible_dx = asked_dx;
@@ -174,7 +174,7 @@ bool ConducerSegment::canMove1stPointY(qreal asked_dy, qreal &possible_dy) {
 	/// que le segment statique conserve une taille minimale.
 	if (previous_segment -> length() > 0.0) {
 		if (first_y + asked_dy < prev_segment_first_y + 12.0) {
-			possible_dy = -(first_y - prev_segment_first_y - 12.0);
+			possible_dy = -first_y + prev_segment_first_y + 12.0;
 			return(false);
 		} else {
 			possible_dy = asked_dy;
@@ -233,7 +233,7 @@ bool ConducerSegment::canMove2ndPointY(qreal asked_dy, qreal &possible_dy) {
 	/// que le segment statique conserve une taille minimale.
 	if (next_segment -> length() < 0.0) {
 		if (second_y + asked_dy < next_segment_second_y + 12.0) {
-			possible_dy = second_y - next_segment_second_y - 12.0;
+			possible_dy = -second_y + next_segment_second_y + 12.0;
 			return(false);
 		} else {
 			possible_dy = asked_dy;
