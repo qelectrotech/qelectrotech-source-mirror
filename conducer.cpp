@@ -40,6 +40,8 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	segments = NULL;
 	priv_calculeConducer(terminal1 -> amarrageConducer(), terminal1 -> orientation(), terminal2 -> amarrageConducer(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
+	setAcceptsHoverEvents(true);
+	previous_z_value = zValue();
 }
 
 /**
@@ -412,11 +414,15 @@ void Conducer::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			if (hasClickedOn(press_point, segment -> secondPoint())) {
 				moving_point = true;
 				moving_segment = false;
+				previous_z_value = zValue();
+				setZValue(5000.0);
 				moved_segment = segment;
 				break;
 			} else if (hasClickedOn(press_point, segment -> middle())) {
 				moving_point = false;
 				moving_segment = true;
+				previous_z_value = zValue();
+				setZValue(5000.0);
 				moved_segment = segment;
 				break;
 			}
@@ -487,7 +493,28 @@ void Conducer::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	moving_point = false;
 	moving_segment = false;
+	setZValue(previous_z_value);
 	QGraphicsPathItem::mouseReleaseEvent(e);
+}
+
+void Conducer::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
+	if (isSelected()) {
+		QPointF hover_point = mapFromScene(e -> pos());
+		ConducerSegment *segment = segments;
+		bool cursor_set = false;
+		while (segment -> hasNextSegment()) {
+			/*if (hasClickedOn(hover_point, segment -> secondPoint())) {
+				setCursor(Qt::CrossCursor);
+				cursor_set = true;
+			} else */if (hasClickedOn(hover_point, segment -> middle())) {
+				setCursor(segment -> isVertical() ? Qt::SplitHCursor : Qt::SplitVCursor);
+				cursor_set = true;
+			}
+			segment = segment -> nextSegment();
+		}
+		if (!cursor_set) setCursor(Qt::ArrowCursor);
+	}
+	QGraphicsPathItem::hoverMoveEvent(e);
 }
 
 /**

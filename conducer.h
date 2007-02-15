@@ -32,6 +32,7 @@
 		void mousePressEvent(QGraphicsSceneMouseEvent *);
 		void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 		void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+		void hoverMoveEvent(QGraphicsSceneHoverEvent *);
 		
 		private:
 		/// booleen indiquant si le fil est encore valide
@@ -46,6 +47,7 @@
 		bool moving_point;
 		bool moving_segment;
 		int moved_point;
+		qreal previous_z_value;
 		ConducerSegment *moved_segment;
 		bool modified_path;
 		static QPen conducer_pen;
