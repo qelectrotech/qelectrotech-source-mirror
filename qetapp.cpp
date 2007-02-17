@@ -179,16 +179,6 @@ void QETApp::toggleFullScreen() {
 }
 
 /**
-	Active ou desactive l'antialiasing sur le rendu graphique du Diagram
-*/
-void QETApp::toggleAntialiasing() {
-	DiagramView *sv = diagramEnCours();
-	if (!sv) return;
-	sv -> setAntialiasing(!sv -> antialiased());
-	toggle_aa -> setText(sv -> antialiased() ? tr("D\351sactiver l'&antialiasing") : tr("Activer l'&antialiasing"));
-}
-
-/**
 	Dialogue « A propos de QElectroTech »
 	Le dialogue en question est cree lors du premier appel de cette fonction.
 	En consequence, sa premiere apparition n'est pas immediate. Par la suite,
@@ -231,7 +221,6 @@ void QETApp::actions() {
 	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
 	shrink_diagram    = new QAction(                               tr("R\351tr\351cir le sch\351ma"),          this);
 	
-	toggle_aa         = new QAction(                               tr("D\351sactiver l'&antialiasing"),        this);
 	zoom_avant        = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                           this);
 	zoom_arriere      = new QAction(QIcon(":/ico/viewmag-.png"),   tr("Zoom arri\350re"),                      this);
 	zoom_adapte       = new QAction(QIcon(":/ico/viewmagfit.png"), tr("Zoom adapt\351"),                       this);
@@ -316,7 +305,6 @@ void QETApp::actions() {
 	expand_diagram    -> setStatusTip(tr("Agrandit le sch\351ma en hauteur"));
 	shrink_diagram    -> setStatusTip(tr("R\351tr\351cit le sch\351ma en hauteur"));
 	
-	toggle_aa         -> setStatusTip(tr("Active / d\351sactive l'antialiasing pour le rendu du sch\351ma courant"));
 	zoom_avant        -> setStatusTip(tr("Agrandit le sch\351ma"));
 	zoom_arriere      -> setStatusTip(tr("R\351tr\351cit le sch\351ma"));
 	zoom_adapte       -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible"));
@@ -377,7 +365,6 @@ void QETApp::actions() {
 	connect(couper,           SIGNAL(triggered()), this,       SLOT(slot_couper())              );
 	connect(copier,           SIGNAL(triggered()), this,       SLOT(slot_copier())              );
 	connect(coller,           SIGNAL(triggered()), this,       SLOT(slot_coller())              );
-	connect(toggle_aa,        SIGNAL(triggered()), this,       SLOT(toggleAntialiasing())       );
 	connect(f_mosaique,       SIGNAL(triggered()), &workspace, SLOT(tile())                     );
 	connect(f_cascade,        SIGNAL(triggered()), &workspace, SLOT(cascade())                  );
 	connect(f_reorganise,     SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
@@ -455,8 +442,6 @@ void QETApp::menus() {
 	
 	// menu Affichage
 	menu_affichage -> addMenu(menu_aff_aff);
-	menu_affichage -> addSeparator();
-	menu_affichage -> addAction(toggle_aa);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(zoom_avant);
 	menu_affichage -> addAction(zoom_arriere);
@@ -742,8 +727,7 @@ void QETApp::slot_updateActions() {
 	zoom_arriere     -> setEnabled(document_ouvert);
 	zoom_adapte      -> setEnabled(document_ouvert);
 	zoom_reset       -> setEnabled(document_ouvert);
-	toggle_aa        -> setEnabled(document_ouvert);
-	infos_diagram     -> setEnabled(document_ouvert);
+	infos_diagram    -> setEnabled(document_ouvert);
 	
 	// actions ayant aussi besoin d'un historique des actions
 	annuler          -> setEnabled(document_ouvert);
@@ -784,9 +768,6 @@ void QETApp::slot_updateActions() {
 				break;
 		}
 	}
-	
-	// actions ayant besoin de la connaissance de son mode
-	if (document_ouvert) toggle_aa -> setText(sv -> antialiased() ? tr("D\351sactiver l'&antialiasing") : tr("Activer l'&antialiasing"));
 	
 	slot_updateMenuFenetres();
 }

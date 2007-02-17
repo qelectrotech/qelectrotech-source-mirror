@@ -8,7 +8,12 @@
 */
 void DiagramView::initialise() {
 	setInteractive(true);
-	setAntialiasing(true);
+	
+	// active l'antialiasing
+	setRenderHint(QPainter::Antialiasing, true);
+	setRenderHint(QPainter::TextAntialiasing, true);
+	setRenderHint(QPainter::SmoothPixmapTransform, true);
+	
 	setScene(scene = new Diagram(this));
 	setDragMode(RubberBandDrag);
 	setAcceptDrops(true);
@@ -33,26 +38,6 @@ DiagramView::DiagramView() : QGraphicsView() {
 */
 DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
 	initialise();
-}
-
-/**
-	Permet de savoir si le rendu graphique du DiagramView est antialiase ou non.
-	@return Un booleen indiquant si le DiagramView est antialiase
-*/
-bool DiagramView::antialiased() const {
-	return(antialiasing);
-}
-
-/**
-	Active ou desactive l'antialiasing pour le rendu graphique du DiagramView.
-	@param aa un booleen indiquant si le DiagramView doit etre antialiase ou non
-*/
-void DiagramView::setAntialiasing(bool aa) {
-	antialiasing = aa;
-	setRenderHint(QPainter::Antialiasing, aa);
-	setRenderHint(QPainter::TextAntialiasing, aa);
-	setRenderHint(QPainter::SmoothPixmapTransform, aa);
-	repaint();
 }
 
 /**

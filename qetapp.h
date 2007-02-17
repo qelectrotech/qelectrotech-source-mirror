@@ -29,7 +29,6 @@
 		void systrayRestore();
 		void quit(QCloseEvent * = NULL);
 		void toggleFullScreen();
-		void toggleAntialiasing();
 		void aPropos();
 		void dialog_print();
 		void dialog_export();
@@ -101,7 +100,6 @@
 		QAction *configurer;
 		QAction *entrer_pe;
 		QAction *sortir_pe;
-		QAction *toggle_aa;
 		QAction *f_mosaique;
 		QAction *f_cascade;
 		QAction *f_reorganise;

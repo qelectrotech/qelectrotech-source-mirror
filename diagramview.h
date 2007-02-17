@@ -19,8 +19,6 @@
 		Diagram *scene;
 		
 		// methodes publiques
-		bool antialiased() const;
-		void setAntialiasing(bool);
 		bool ouvrir(QString, int * = NULL);
 		void closeEvent(QCloseEvent *);
 		QString nom_fichier;
@@ -39,7 +37,6 @@
 		private:
 		bool private_enregistrer(QString &);
 		void initialise();
-		bool antialiasing; // booleen indiquant s'il faut effectuer un antialiasing sur le rendu graphique du DiagramView
 		QList<QGraphicsItem *> garbage;
 		
 		void throwToGarbage(QGraphicsItem *);
