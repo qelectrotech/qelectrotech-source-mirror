@@ -6,7 +6,7 @@
 	</names>
 	<description>
 		<!--Rotor-->
-		<cercle x="-20"  y="-20"  rayon="40"        antialias="true" />
+		<cercle x="-20"  y="-20"  rayon="40"        antialias="true" style="filling:white;"/>
 		<!--Balait inférieur-->
 		<ligne  x1="-14" y1="-25" x2="-14" y2="-14"  antialias="false" />
 		<ligne  x1="14"  y1="-25" x2="14"  y2="-14"  antialias="false" />

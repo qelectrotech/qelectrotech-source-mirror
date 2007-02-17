@@ -5,7 +5,7 @@
 		<name lang="en">Three-phase induction motor (not coupled)</name>
 	</names>
 	<description>
-		<cercle x="-20"  y="-20"  rayon="40"        antialias="true" />
+		<cercle x="-20"  y="-20"  rayon="40"        antialias="true" style="filling:white;"/>
 		<!--U1-->
 		<ligne  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false" />
 		<ligne  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true" />
