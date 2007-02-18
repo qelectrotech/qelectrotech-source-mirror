@@ -700,34 +700,38 @@ bool Conducer::fromXml(QDomElement &e) {
 	if (!segments_x.size()) return(true);
 	
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
-	qreal width = 0.0, height= 0.0;
+	qreal width = 0.0, height = 0.0;
 	foreach (qreal t, segments_x) width  += t;
 	foreach (qreal t, segments_y) height += t;
 	QPointF t1 = terminal1 -> amarrageConducer();
 	QPointF t2 = terminal2 -> amarrageConducer();
-	qreal expected_width = qAbs(t2.x() - t1.x());
+	qreal expected_width  = qAbs(t2.x() - t1.x());
 	qreal expected_height = qAbs(t2.y() - t1.y());
-	
-	if (expected_width != width || expected_height != height) return(false);
+	if (
+		expected_width > width + 0.001 ||\
+		expected_width < width - 0.001 ||\
+		expected_height > height + 0.001 ||\
+		expected_height < height - 0.001
+	) return(false);
 	
 	/* on recree les segments a partir des donnes XML */
 	// cree la liste de points
 	QList<QPointF> points_list;
-	points_list << t1;
+	points_list << (t1.x() < t2.x() ? t1 : t2);
 	for (int i = 0 ; i < segments_x.size() ; ++ i) {
 		points_list << QPointF(
 			points_list.last().x() + segments_x.at(i),
 			points_list.last().y() + segments_y.at(i)
 		);
 	}
-	qDebug() << points_list;
+	
 	pointsToSegments(points_list);
 	
 	// initialise divers parametres lies a la modification des conducteurs
 	modified_path = true;
 	moves_x = segments_x;
 	moves_y = segments_y;
-	type_trajet_x = points_list.at(0).x() < points_list.at(points_list.size() - 1).x();
+	type_trajet_x = t1.x() < t2.x();
 	orig_dist_2_terms_x = points_list.at(points_list.size() - 1).x() - points_list.at(0).x();
 	orig_dist_2_terms_y = points_list.at(points_list.size() - 1).y() - points_list.at(0).y();
 	
