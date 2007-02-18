@@ -6,13 +6,13 @@
 	</names>
 	<description>
 		<!--Bobine-->
-		<polygone x1="-20" y1="-20" x2="-20" y2="20" x3="40" y3="20" x4="40" y4="-20" style="filling:white;" />
+		<polygon x1="-20" y1="-20" x2="-20" y2="20" x3="40" y3="20" x4="40" y4="-20" style="filling:white;" />
 		<!--Fils-->
-		<ligne  x1="0"   y1="-20" x2="0"    y2="-40" antialias="false" />
-		<ligne  x1="0"   y1="20"  x2="0"    y2="40"  antialias="false" />
+		<line  x1="0"   y1="-20" x2="0"    y2="-40" antialias="false" />
+		<line  x1="0"   y1="20"  x2="0"    y2="40"  antialias="false" />
 		<!--Borne A2-->
-		<borne  orientation="s"   x="0"  y="40"  />
+		<terminal  orientation="s"   x="0"  y="40"  />
 		<!--Borne A1-->
-		<borne  orientation="n"   x="0"   y="-40"  />
+		<terminal  orientation="n"   x="0"   y="-40"  />
 	</description>
 </definition>

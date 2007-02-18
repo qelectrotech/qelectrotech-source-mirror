@@ -6,16 +6,16 @@
 	</names>
 	<description>
 		<!--Diode-->
-		<polygone x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" style="filling:white;" />
-		<ligne x1="0"   y1="-20" x2="0"   y2="20" antialias="false" />
-		<ligne x1="-10" y1="10"  x2="10"  y2="10" antialias="false" />
+		<polygon x1="-10" y1="-10" x2="10" y2="-10" x3="0" y3="10" antialias="true" style="filling:white;" />
+		<line x1="0"   y1="-20" x2="0"   y2="20" antialias="false" />
+		<line x1="-10" y1="10"  x2="10"  y2="10" antialias="false" />
 		<!--Gachette-->
-		<ligne x1="-5"   y1="10"  x2="-10"  y2="15" antialias="true" />
-		<ligne x1="-10"  y1="15"  x2="-15" y2="15" antialias="false" />
+		<line x1="-5"   y1="10"  x2="-10"  y2="15" antialias="true" />
+		<line x1="-10"  y1="15"  x2="-15" y2="15" antialias="false" />
 		<!--Borne Diode-->
-		<borne orientation="s" x="0"   y="20"  />
-		<borne orientation="n" x="0"   y="-20" />
+		<terminal orientation="s" x="0"   y="20"  />
+		<terminal orientation="n" x="0"   y="-20" />
 		<!--Borne Gachette-->
-		<borne orientation="w" x="-15" y="15"  />
+		<terminal orientation="w" x="-15" y="15"  />
 	</description>
 </definition>

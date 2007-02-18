@@ -6,25 +6,26 @@
 	</names>
 	<description>
 		<!--Transforateur-->
-		<cercle x="-20"  y="-20"  rayon="40"        antialias="true" style="filling:white;" />
-		<cercle x="-20"  y="0"    rayon="40"        antialias="true" style="filling:white;" />
+		<circle x="-20"  y="-20"  diameter="40"        antialias="true" style="line-weight:none;filling:white;" />
+		<circle x="-20"  y="0"   diameter="40"        antialias="true" style="filling:white;" />
+		<circle x="-20" y="-20"  diameter="40"        antialias="true" />
 		<!--Phase 1-->
-		<ligne  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false" />
-		<ligne  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true" />
+		<line  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false" />
+		<line  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true" />
 		<!--Neutre 1-->
-		<ligne  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false" />
-		<ligne  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true" />
+		<line  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false" />
+		<line  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true" />
 		<!--Phase 2-->
-		<ligne  x1="-20" y1="60" x2="-20" y2="40" antialias="false" />
-		<ligne  x1="-20" y1="40" x2="-14" y2="34" antialias="true" />
+		<line  x1="-20" y1="60" x2="-20" y2="40" antialias="false" />
+		<line  x1="-20" y1="40" x2="-14" y2="34" antialias="true" />
 		<!--Neutre 2-->
-		<ligne  x1="20"  y1="60" x2="20"  y2="40" antialias="false" />
-		<ligne  x1="20"  y1="40" x2="14"  y2="34" antialias="true" />
+		<line  x1="20"  y1="60" x2="20"  y2="40" antialias="false" />
+		<line  x1="20"  y1="40" x2="14"  y2="34" antialias="true" />
 		<!--Bornes supérieurs-->
-		<borne  orientation="n"   x="-20"  y="-40"  />
-		<borne  orientation="n"   x="20"   y="-40"  />
+		<terminal  orientation="n"   x="-20"  y="-40"  />
+		<terminal  orientation="n"   x="20"   y="-40"  />
 		<!--Bornes inférieurs-->
-		<borne  orientation="s"   x="-20"  y="60"  />
-		<borne  orientation="s"   x="20"   y="60"  />
+		<terminal  orientation="s"   x="-20"  y="60"  />
+		<terminal  orientation="s"   x="20"   y="60"  />
 	</description>
 </definition>

@@ -6,15 +6,15 @@
 	</names>
 	<description>
 		<!--Contact-->
-		<ligne x1="10"  y1="20" x2="0"    y2="40" antialias="true" />
-		<ligne x1="0"   y1="0"  x2="0"    y2="20" antialias="false" />
-		<ligne x1="0"   y1="40" x2="0"    y2="60" antialias="false" />
-		<ligne x1="15"  y1="20" x2="0"    y2="20" antialias="false" />
+		<line x1="10"  y1="20" x2="0"    y2="40" antialias="true" />
+		<line x1="0"   y1="0"  x2="0"    y2="20" antialias="false" />
+		<line x1="0"   y1="40" x2="0"    y2="60" antialias="false" />
+		<line x1="15"  y1="20" x2="0"    y2="20" antialias="false" />
 		<!--Modification Capteur-->
-		<ligne x1="2.5" y1="25" x2="2.5" y2="35" antialias="false" />
-		<ligne x1="7.5" y1="25" x2="2.5" y2="25" antialias="false" />
+		<line x1="2.5" y1="25" x2="2.5" y2="35" antialias="false" />
+		<line x1="7.5" y1="25" x2="2.5" y2="25" antialias="false" />
 		<!--Bornes-->
-		<borne orientation="n" x="0" y="0"  />
-		<borne orientation="s" x="0" y="60" />
+		<terminal orientation="n" x="0" y="0"  />
+		<terminal orientation="s" x="0" y="60" />
 	</description>
 </definition>

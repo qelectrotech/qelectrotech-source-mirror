@@ -184,12 +184,12 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	@return true si l'analyse reussit, false sinon
 */
 bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
-	if (e.tagName() == "borne") return(parseTerminal(e, s));
-	else if (e.tagName() == "ligne") return(parseLigne(e, qp));
+	if (e.tagName() == "terminal") return(parseTerminal(e, s));
+	else if (e.tagName() == "line") return(parseLigne(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
-	else if (e.tagName() == "cercle") return(parseCercle(e, qp));
+	else if (e.tagName() == "circle") return(parseCercle(e, qp));
 	else if (e.tagName() == "arc") return(parseArc(e, qp));
-	else if (e.tagName() == "polygone") return(parsePolygone(e, qp));
+	else if (e.tagName() == "polygon") return(parsePolygone(e, qp));
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
 }
 
@@ -224,7 +224,7 @@ bool CustomElement::parseLigne(QDomElement &e, QPainter &qp) {
 	Le cercle est defini par les attributs suivants :
 		- x : abscisse du coin superieur gauche de la quadrature du cercle
 		- y : ordonnee du coin superieur gauche de la quadrature du cercle
-		- rayon : diametre du cercle
+		- diameter : diametre du cercle
 		
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
@@ -234,9 +234,9 @@ bool CustomElement::parseLigne(QDomElement &e, QPainter &qp) {
 bool CustomElement::parseCercle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double cercle_x, cercle_y, cercle_r;
-	if (!attributeIsAReal(e, QString("x"),     &cercle_x)) return(false);
-	if (!attributeIsAReal(e, QString("y"),     &cercle_y)) return(false);
-	if (!attributeIsAReal(e, QString("rayon"), &cercle_r)) return(false);
+	if (!attributeIsAReal(e, QString("x"),        &cercle_x)) return(false);
+	if (!attributeIsAReal(e, QString("y"),        &cercle_y)) return(false);
+	if (!attributeIsAReal(e, QString("diameter"), &cercle_r)) return(false);
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawEllipse(QRectF(cercle_x, cercle_y, cercle_r, cercle_r));
@@ -250,8 +250,8 @@ bool CustomElement::parseCercle(QDomElement &e, QPainter &qp) {
 	L'ellipse est definie par les attributs suivants :
 		- x : abscisse du coin superieur gauche du rectangle dans lequel s'inscrit l'ellipse
 		- y : ordonnee du coin superieur gauche du rectangle dans lequel s'inscrit l'ellipse
-		- largeur : dimension de la diagonale horizontale de l'ellipse
-		- hauteur : dimension de la diagonale verticale de l'ellipse
+		- width : dimension de la diagonale horizontale de l'ellipse
+		- height : dimension de la diagonale verticale de l'ellipse
 		
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
@@ -263,8 +263,8 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	double ellipse_x, ellipse_y, ellipse_l, ellipse_h;
 	if (!attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
 	if (!attributeIsAReal(e, QString("y"),       &ellipse_y))  return(false);
-	if (!attributeIsAReal(e, QString("largeur"), &ellipse_l))  return(false);
-	if (!attributeIsAReal(e, QString("hauteur"), &ellipse_h))  return(false);
+	if (!attributeIsAReal(e, QString("width"), &ellipse_l))  return(false);
+	if (!attributeIsAReal(e, QString("height"), &ellipse_h))  return(false);
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
@@ -291,8 +291,8 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	double arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
 	if (!attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
 	if (!attributeIsAReal(e, QString("y"),       &arc_y))  return(false);
-	if (!attributeIsAReal(e, QString("largeur"), &arc_l))  return(false);
-	if (!attributeIsAReal(e, QString("hauteur"), &arc_h))  return(false);
+	if (!attributeIsAReal(e, QString("width"),   &arc_l))  return(false);
+	if (!attributeIsAReal(e, QString("height"),  &arc_h))  return(false);
 	if (!attributeIsAReal(e, QString("start"),   &arc_s))  return(false);
 	if (!attributeIsAReal(e, QString("angle"),   &arc_a))  return(false);
 	
@@ -504,6 +504,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			} else if (style_name == "line-weight") {
 				if (style_value == "thin") pen.setWidth(0);
 				else if (style_value == "normal") pen.setWidthF(1.0);
+				else if (style_value == "none") pen.setColor(QColor(0, 0, 0, 0));
 			} else if (style_name == "filling") {
 				if (style_value == "white") {
 					brush.setStyle(Qt::SolidPattern);
