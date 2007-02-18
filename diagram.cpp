@@ -233,6 +233,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 		QDomElement conducer = document.createElement("conducteur");
 		conducer.setAttribute("borne1", table_adr_id.value(f -> terminal1));
 		conducer.setAttribute("borne2", table_adr_id.value(f -> terminal2));
+		f -> toXml(document, conducer);
 		conducers.appendChild(conducer);
 	}
 	racine.appendChild(conducers);
@@ -338,7 +339,10 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 					bool peut_poser_conducer = true;
 					bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
 					if (!cia) foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) if (item == p1) peut_poser_conducer = false;
-					if (peut_poser_conducer) new Conducer(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+					if (peut_poser_conducer) {
+						Conducer *c = new Conducer(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+						c -> fromXml(f);
+					}
 				}
 			} else qDebug() << "Le chargement du conducer" << id_p1 << id_p2 << "a echoue";
 		}

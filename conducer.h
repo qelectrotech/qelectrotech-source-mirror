@@ -22,6 +22,8 @@
 		QRectF boundingRect() const;
 		virtual QPainterPath shape() const;
 		static bool valideXml(QDomElement &);
+		bool fromXml(QDomElement &);
+		void toXml(QDomDocument &, QDomElement &);
 		
 		///Premiere borne a laquelle le fil est rattache
 		Terminal *terminal1;

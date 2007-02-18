@@ -669,3 +669,89 @@ bool Conducer::hasClickedOn(QPointF press_point, QPointF point) {
 		press_point.y() <  point.y() + 5.0
 	);
 }
+
+bool Conducer::fromXml(QDomElement &e) {
+	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
+	// les segments non valides sont ignores
+	QList<qreal> segments_x, segments_y;
+	for (QDomNode node = e.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+		// on s'interesse aux elements XML "segment"
+		QDomElement current_segment = node.toElement();
+		if (current_segment.isNull() || current_segment.tagName() != "segment") continue;
+		
+		// le segment doit avoir une longueur
+		if (!current_segment.hasAttribute("length")) continue;
+		
+		// cette longueur doit etre un reel
+		bool ok;
+		qreal segment_length = current_segment.attribute("length").toDouble(&ok);
+		if (!ok) continue;
+		
+		if (current_segment.attribute("orientation") == "horizontal") {
+			segments_x << segment_length;
+			segments_y << 0.0;
+		} else {
+			segments_x << 0.0;
+			segments_y << segment_length;
+		}
+	}
+	
+	// s'il n'y a pas de segments, on renvoie true
+	if (!segments_x.size()) return(true);
+	
+	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
+	qreal width = 0.0, height= 0.0;
+	foreach (qreal t, segments_x) width  += t;
+	foreach (qreal t, segments_y) height += t;
+	QPointF t1 = terminal1 -> amarrageConducer();
+	QPointF t2 = terminal2 -> amarrageConducer();
+	qreal expected_width = qAbs(t2.x() - t1.x());
+	qreal expected_height = qAbs(t2.y() - t1.y());
+	
+	if (expected_width != width || expected_height != height) return(false);
+	
+	/* on recree les segments a partir des donnes XML */
+	// cree la liste de points
+	QList<QPointF> points_list;
+	points_list << t1;
+	for (int i = 0 ; i < segments_x.size() ; ++ i) {
+		points_list << QPointF(
+			points_list.last().x() + segments_x.at(i),
+			points_list.last().y() + segments_y.at(i)
+		);
+	}
+	qDebug() << points_list;
+	pointsToSegments(points_list);
+	
+	// initialise divers parametres lies a la modification des conducteurs
+	modified_path = true;
+	moves_x = segments_x;
+	moves_y = segments_y;
+	type_trajet_x = points_list.at(0).x() < points_list.at(points_list.size() - 1).x();
+	orig_dist_2_terms_x = points_list.at(points_list.size() - 1).x() - points_list.at(0).x();
+	orig_dist_2_terms_y = points_list.at(points_list.size() - 1).y() - points_list.at(0).y();
+	
+	segmentsToPath();
+	return(true);
+}
+
+void Conducer::toXml(QDomDocument &d, QDomElement &e) {
+	// on n'exporte les segments du conducteur que si ceux-ci ont
+	// ete modifies par l'utilisateur
+	if (!modified_path) return;
+	
+	// parcours et export des segments
+	ConducerSegment *segment = segments;
+	QDomElement current_segment;
+	while (segment -> hasNextSegment()) {
+		current_segment = d.createElement("segment");
+		current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+		current_segment.setAttribute("length", segment -> length());
+		e.appendChild(current_segment);
+		segment = segment -> nextSegment();
+	}
+	current_segment = d.createElement("segment");
+	current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+	current_segment.setAttribute("length", segment -> length());
+	e.appendChild(current_segment);
+}
