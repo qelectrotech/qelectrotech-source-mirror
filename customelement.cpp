@@ -311,6 +311,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	Le polygone est defini par une serie d'attributs x1, x2, ..., xn et autant
 	d'attributs y1, y2, ..., yn representant les coordonnees des differents
 	points du polygone.
+	Il est possible d'obtenir un polygone non ferme en utilisant closed="false"
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
@@ -331,7 +332,8 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 	}
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.drawPolygon(points, i-1);
+	if (e.attribute("closed") == "false") qp.drawPolyline(points, i-1);
+	else qp.drawPolygon(points, i-1);
 	qp.restore();
 	return(true);
 }
@@ -556,12 +558,6 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			}
 		}
 	}
-	/*line-style:dashed;
-	if (e.attribute("style") == "dashed") {
-		
-		pen.setStyle(Qt::DashLine);
-		
-	}*/
 	
 	// affectation du QPen et de la QBrush modifies au QPainter 
 	qp.setPen(pen);
