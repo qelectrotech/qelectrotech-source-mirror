@@ -5,31 +5,27 @@
 		<name lang="en">Three-phase transformer</name>
 	</names>
 	<description>
-		<!--Transformateur-->
-		<circle x="-20"  y="-20"  diameter="40"        antialias="true" style="line-weight:none;filling:white;" />
-		<circle x="-20"  y="0"    diameter="40"        antialias="true" style="filling:white;" />
-		<circle x="-20"  y="-20"  diameter="40"        antialias="true" />
 		<!--U1-->
-		<line  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false" />
-		<line  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true" />
+		<polygon x1="-20" y1="-40" x2="-20" y2="-20" x3="-14" y3="-14" closed="false" antialias="false" />
 		<!--V1-->
 		<line  x1="0"   y1="-40" x2="0"   y2="-20" antialias="false"  style="line-style:dashed;" />
 		<!--W1-->
-		<line  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false" />
-		<line  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true" />
+		<polygon x1="20" y1="-40" x2="20" y2="-20" x3="14" y3="-14" closed="false" antialias="false" />
 		<!--U2-->
-		<line  x1="-20" y1="60" x2="-20" y2="40" antialias="false" />
-		<line  x1="-20" y1="40" x2="-14" y2="34" antialias="true" />
+		<polygon x1="-20" y1="60" x2="-20" y2="40" x3="-14" y3="34" closed="false" antialias="false" />
 		<!--V2-->
 		<line  x1="0"   y1="60" x2="0"   y2="40" antialias="false" />
 		<!--W2-->
-		<line  x1="20"  y1="60" x2="20"  y2="40" antialias="false" />
-		<line  x1="20"  y1="40" x2="14"  y2="34" antialias="true" />
-		<!--Bornes supérieurs-->
+		<polygon x1="20" y1="60" x2="20" y2="40" x3="14" y3="34" closed="false" antialias="false" />
+		<!--Transformateur-->
+		<circle x="-20"  y="-20"  diameter="40" antialias="true" style="line-weight:none;filling:white;" />
+		<circle x="-20"  y="0"    diameter="40" antialias="true" style="filling:white;" />
+		<circle x="-20"  y="-20"  diameter="40" antialias="true" />
+		<!--Bornes superieures-->
 		<terminal  orientation="n"   x="-20"  y="-40"  />
 		<terminal  orientation="n"   x="0"    y="-40"  />
 		<terminal  orientation="n"   x="20"   y="-40"  />
-		<!--Bornes inférieurs-->
+		<!--Bornes inferieures-->
 		<terminal  orientation="s"   x="-20"  y="60"  />
 		<terminal  orientation="s"   x="0"    y="60"  />
 		<terminal  orientation="s"   x="20"   y="60"  />

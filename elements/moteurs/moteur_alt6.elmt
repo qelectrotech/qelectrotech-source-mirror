@@ -5,33 +5,26 @@
 		<name lang="en">Three-phase induction motor (not coupled)</name>
 	</names>
 	<description>
-		<circle x="-20"  y="-20"  diameter="40"        antialias="true" style="filling:white;"/>
 		<!--U1-->
-		<line  x1="-20" y1="-40" x2="-20" y2="-20" antialias="false" />
-		<line  x1="-20" y1="-20" x2="-14" y2="-14" antialias="true" />
+		<polygon  x1="-20" y1="-40" x2="-20" y2="-20" x3="-14" y3="-14" antialias="false" closed="false" />
 		<!--V1-->
 		<line  x1="0"   y1="-40" x2="0"   y2="-20" antialias="false" />
 		<!--W1-->
-		<line  x1="20"  y1="-40" x2="20"  y2="-20" antialias="false" />
-		<line  x1="20"  y1="-20" x2="14"  y2="-14" antialias="true" />
+		<polygon  x1="20"  y1="-40" x2="20"  y2="-20" x3="14"  y3="-14" antialias="false" closed="false" />
 		<!--U2-->
-		<line  x1="-20" y1="40" x2="-20" y2="20" antialias="false" />
-		<line  x1="-20" y1="20" x2="-14" y2="14" antialias="true" />
+		<polygon  x1="-20" y1="40" x2="-20" y2="20" x3="-14" y3="14" antialias="false" closed="false" />
 		<!--V2-->
 		<line  x1="0"   y1="40" x2="0"   y2="20" antialias="false" />
 		<!--W2-->
-		<line  x1="20"  y1="40" x2="20"  y2="20" antialias="false" />
-		<line  x1="20"  y1="20" x2="14"  y2="14" antialias="true" />
+		<polygon  x1="20"  y1="40" x2="20"  y2="20" x3="14"  y3="14" antialias="false" closed="false" />
+		<circle x="-20"  y="-20"  diameter="40"  antialias="true" style="filling:white;"/>
 		<!--Lettre M-->
-		<line  x1="-10" y1="-10" x2="-10" y2="10"  antialias="false" />
-		<line  x1="-10" y1="-10" x2="0"   y2="0"   antialias="true" />
-		<line  x1="0"   y1="0"   x2="10"  y2="-10" antialias="true" />
-		<line  x1="10"  y1="-10" x2="10"  y2="10"  antialias="false" />
-		<!--Bornes Supérieurs-->
+		<text x="-13.5" y="12" size="24" text="M" />
+		<!--Bornes Superieures-->
 		<terminal  orientation="n"   x="-20"  y="-40"  />
 		<terminal  orientation="n"   x="0"    y="-40"  />
 		<terminal  orientation="n"   x="20"   y="-40"  />
-		<!--Bornes Inférieurs-->
+		<!--Bornes Inferieures-->
 		<terminal  orientation="s"   x="-20"  y="40"  />
 		<terminal  orientation="s"   x="0"    y="40"  />
 		<terminal  orientation="s"   x="20"   y="40"  />

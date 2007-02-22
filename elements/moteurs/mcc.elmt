@@ -5,27 +5,24 @@
 		<name lang="en">Direct-current motor</name>
 	</names>
 	<description>
-		<!--Rotor-->
-		<circle x="-20"  y="-20"  diameter="40"        antialias="true" style="filling:white;"/>
-		<!--Balait inférieur-->
-		<line  x1="-14" y1="-25" x2="-14" y2="-14"  antialias="false" />
-		<line  x1="14"  y1="-25" x2="14"  y2="-14"  antialias="false" />
-		<line  x1="14"  y1="-25" x2="-14"  y2="-25" antialias="false" />
-		<!--Fil inférieur-->
-		<line  x1="0"   y1="-40" x2="0"   y2="-25"  antialias="false" />
-		<!--Balait supérieur-->
-		<line  x1="-14" y1="25" x2="-14" y2="14"  antialias="false" />
-		<line  x1="14"  y1="25" x2="14"  y2="14"  antialias="false" />
-		<line  x1="14"  y1="25" x2="-14"  y2="25" antialias="false" />
+		<!--Balai inferieur-->
+		<line x1="-14" y1="-25" x2="-14" y2="-14" antialias="false" />
+		<line x1="14"  y1="-25" x2="14"  y2="-14" antialias="false" />
+		<line x1="14"  y1="-25" x2="-14" y2="-25" antialias="false" />
+		<!--Fil inferieur-->
+		<line x1="0"   y1="-40" x2="0"   y2="-25" antialias="false" />
+		<!--Balai superieur-->
+		<line x1="-14" y1="25"  x2="-14" y2="14"  antialias="false" />
+		<line x1="14"  y1="25"  x2="14"  y2="14"  antialias="false" />
+		<line x1="14"  y1="25"  x2="-14" y2="25"  antialias="false" />
 		<!--Fil superieur-->
-		<line  x1="0"   y1="40" x2="0"   y2="25"    antialias="false" />
+		<line x1="0"   y1="40"  x2="0"   y2="25"  antialias="false" />
+		<!--Rotor-->
+		<circle x="-20"  y="-20"  diameter="40"   antialias="true" style="filling:white;"/>
 		<!--Lettre M-->
-		<line  x1="-10" y1="-10" x2="-10" y2="10"  antialias="false" />
-		<line  x1="-10" y1="-10" x2="0"   y2="0"   antialias="true" />
-		<line  x1="0"   y1="0"   x2="10"  y2="-10" antialias="true" />
-		<line  x1="10"  y1="-10" x2="10"  y2="10"  antialias="false" />
+		<text x="-13.5" y="12" size="24" text="M" />
 		<!--Bornes-->
-		<terminal  orientation="n"   x="0"    y="-40"  />
-		<terminal  orientation="s"   x="0"    y="40"   />
+		<terminal orientation="n" x="0" y="-40" />
+		<terminal orientation="s" x="0" y="40"  />
 	</description>
 </definition>
