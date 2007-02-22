@@ -150,6 +150,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	// fermeture du fichier
 	fichier.close();
 	
+	//(new QGraphicsTextItem("plop", this, scene())) -> setTextInteractionFlags(Qt::TextEditorInteraction);
 	if (etat != NULL) *etat = 0;
 	elmt_etat = 0;
 }
@@ -185,11 +186,12 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 */
 bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	if (e.tagName() == "terminal") return(parseTerminal(e, s));
-	else if (e.tagName() == "line") return(parseLigne(e, qp));
+	else if (e.tagName() == "line") return(parseLine(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
-	else if (e.tagName() == "circle") return(parseCercle(e, qp));
+	else if (e.tagName() == "circle") return(parseCircle(e, qp));
 	else if (e.tagName() == "arc") return(parseArc(e, qp));
-	else if (e.tagName() == "polygon") return(parsePolygone(e, qp));
+	else if (e.tagName() == "polygon") return(parsePolygon(e, qp));
+	else if (e.tagName() == "text") return(parseText(e, qp));
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
 }
 
@@ -204,7 +206,7 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseLigne(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	// verifie la presence et la validite des attributs obligatoires
 	double x1, y1, x2, y2;
 	if (!attributeIsAReal(e, QString("x1"), &x1)) return(false);
@@ -231,7 +233,7 @@ bool CustomElement::parseLigne(QDomElement &e, QPainter &qp) {
 	@return true si l'analyse reussit, false sinon
 	@todo utiliser des attributs plus coherents : x et y = centre, rayon = vrai rayon 
 */
-bool CustomElement::parseCercle(QDomElement &e, QPainter &qp) {
+bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double cercle_x, cercle_y, cercle_r;
 	if (!attributeIsAReal(e, QString("x"),        &cercle_x)) return(false);
@@ -313,7 +315,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parsePolygone(QDomElement &e, QPainter &qp) {
+bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 	int i = 1;
 	while(true) {
 		if (attributeIsAReal(e, QString("x%1").arg(i)) && attributeIsAReal(e, QString("y%1").arg(i))) ++ i;
@@ -330,6 +332,33 @@ bool CustomElement::parsePolygone(QDomElement &e, QPainter &qp) {
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawPolygon(points, i-1);
+	qp.restore();
+	return(true);
+}
+
+/**
+	Analyse un element XML suppose representer un texte. Si l'analyse
+	reussit, le texte est ajoute au dessin.
+	Le texte est defini par une position, une chaine de caractères et une
+	taille.
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+*/
+bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
+	qreal pos_x, pos_y;
+	int size;
+	if (
+		!attributeIsAReal(e, "x", &pos_x) ||\
+		!attributeIsAReal(e, "y", &pos_y) ||\
+		!attributeIsAnInteger(e, "size", &size) ||\
+		!e.hasAttribute("text")
+	) return(false);
+	
+	qp.save();
+	setPainterStyle(e, qp);
+	qp.setFont(QFont(QString("Sans Serif"), size));
+	qp.drawText(QPointF(pos_x, pos_y), e.attribute("text"));
 	qp.restore();
 	return(true);
 }
@@ -471,6 +500,9 @@ bool CustomElement::validOrientationAttribute(QDomElement &e) {
 			- white : remplissage blanc
 			- black : remplissage noir
 			- none : pas de remplissage [par defaut]
+		- color : couleur du trait et du texte
+			- white : trait noir [par defaut]
+			- black : trait blanc
 			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
@@ -514,6 +546,12 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 					brush.setColor(Qt::black);
 				} else if (style_value == "none") {
 					brush.setStyle(Qt::NoBrush);
+				}
+			} else if (style_name == "color") {
+				if (style_value == "black") {
+					pen.setColor(QColor(0, 0, 0, pen.color().alpha()));
+				} else if (style_value == "white") {
+					pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
 				}
 			}
 		}

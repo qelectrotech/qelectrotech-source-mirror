@@ -19,11 +19,12 @@
 		QString nomfichier;
 		QPicture dessin;
 		bool parseElement(QDomElement &, QPainter &, Diagram *);
-		bool parseLigne(QDomElement &, QPainter &);
+		bool parseLine(QDomElement &, QPainter &);
 		bool parseEllipse(QDomElement &, QPainter &);
-		bool parseCercle(QDomElement &, QPainter &);
+		bool parseCircle(QDomElement &, QPainter &);
 		bool parseArc(QDomElement &, QPainter &);
-		bool parsePolygone(QDomElement &, QPainter &);
+		bool parsePolygon(QDomElement &, QPainter &);
+		bool parseText(QDomElement &, QPainter &);
 		bool parseTerminal(QDomElement &, Diagram *);
 		void setQPainterAntiAliasing(QPainter &, bool);
 		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
