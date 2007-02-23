@@ -554,7 +554,7 @@ bool QETApp::ouvrir() {
 		this,
 		tr("Ouvrir un fichier"),
 		QDir::homePath(),
-		tr("Diagram QelectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)")
+		tr("Sch\351mas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
 	if (nom_fichier == "") return(false);
 	

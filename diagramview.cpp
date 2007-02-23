@@ -381,7 +381,7 @@ bool DiagramView::enregistrer_sous() {
 		this,
 		tr("Enregistrer sous"),
 		QDir::homePath(),
-		tr("Diagram QelectroTech (*.qet)")
+		tr("Sch\351ma QElectroTech (*.qet)")
 	);
 	// si aucun nom n'est entre, renvoie faux.
 	if (n_fichier == "") return(false);
