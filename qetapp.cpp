@@ -267,8 +267,8 @@ void QETApp::actions() {
 	sel_tout          -> setShortcut(QKeySequence::SelectAll);
 	sel_rien          -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	sel_inverse       -> setShortcut(QKeySequence(tr("Ctrl+I")));
-	supprimer         -> setShortcut(QKeySequence::Delete);
-	pivoter           -> setShortcut(QKeySequence(tr("P")));
+	supprimer         -> setShortcut(QKeySequence(tr("Ctrl+Suppr")));
+	pivoter           -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	
 	zoom_avant        -> setShortcut(QKeySequence::ZoomIn);
 	zoom_arriere      -> setShortcut(QKeySequence::ZoomOut);
@@ -395,6 +395,7 @@ void QETApp::menus() {
 	menu_affichage -> setTearOffEnabled(true);
 	menu_outils    -> setTearOffEnabled(true);
 	menu_config    -> setTearOffEnabled(true);
+	menu_fenetres  -> setTearOffEnabled(true);
 	menu_aide      -> setTearOffEnabled(true);
 	
 	// menu Fichier
