@@ -23,7 +23,7 @@
 		virtual QPainterPath shape() const;
 		static bool valideXml(QDomElement &);
 		bool fromXml(QDomElement &);
-		void toXml(QDomDocument &, QDomElement &);
+		QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 		
 		///Premiere borne a laquelle le fil est rattache
 		Terminal *terminal1;

@@ -140,7 +140,7 @@ QSize Diagram::imageSize() const {
 
 /**
 	Exporte tout ou partie du schema 
-	@param schema Booleen (a vrai par defaut) indiquant si le XML genere doit
+	@param diagram Booleen (a vrai par defaut) indiquant si le XML genere doit
 	representer tout le schema ou seulement les elements selectionnes
 	@return Un Document XML (QDomDocument)
 */
@@ -168,7 +168,6 @@ QDomDocument Diagram::toXml(bool diagram) {
 	QList<Element *> liste_elements;
 	QList<Conducer *> liste_conducers;
 	
-	
 	// Determine les elements a « XMLiser »
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
@@ -182,59 +181,22 @@ QDomDocument Diagram::toXml(bool diagram) {
 		}
 	}
 	
-	// enregistrement des elements
-	if (liste_elements.isEmpty()) return(document);
-	int id_terminal = 0;
 	// table de correspondance entre les adresses des bornes et leurs ids
 	QHash<Terminal *, int> table_adr_id;
+	
+	// enregistrement des elements
+	if (liste_elements.isEmpty()) return(document);
 	QDomElement elements = document.createElement("elements");
-	QDir dossier_elmts_persos = QDir(QETApp::customElementsDir());
 	foreach(Element *elmt, liste_elements) {
-		QDomElement element = document.createElement("element");
-		
-		// type
-		QString chemin_elmt = elmt -> typeId();
-		QString type_elmt = QETApp::symbolicPath(chemin_elmt);
-		element.setAttribute("type", type_elmt);
-		
-		// position, selection et orientation
-		element.setAttribute("x", elmt -> pos().x());
-		element.setAttribute("y", elmt -> pos().y());
-		if (elmt -> isSelected()) element.setAttribute("selected", "selected");
-		element.setAttribute("sens", QString("%1").arg(elmt -> orientation()));
-		
-		// enregistrements des bornes de chaque appareil
-		QDomElement terminals = document.createElement("bornes");
-		// pour chaque enfant de l'element
-		foreach(QGraphicsItem *child, elmt -> children()) {
-			// si cet enfant est une borne
-			if (Terminal *p = qgraphicsitem_cast<Terminal *>(child)) {
-				// alors on enregistre la borne
-				QDomElement terminal = p -> toXml(document);
-				terminal.setAttribute("id", id_terminal);
-				table_adr_id.insert(p, id_terminal ++);
-				terminals.appendChild(terminal);
-			}
-		}
-		element.appendChild(terminals);
-		
-		/**
-			@todo appeler une methode virtuelle de la classe Element qui permettra
-			aux developpeurs d'elements de personnaliser l'enregistrement des elements
-		*/
-		elements.appendChild(element);
+		elements.appendChild(elmt -> toXml(document, table_adr_id));
 	}
 	racine.appendChild(elements);
 	
 	// enregistrement des conducteurs
 	if (liste_conducers.isEmpty()) return(document);
 	QDomElement conducers = document.createElement("conducteurs");
-	foreach(Conducer *f, liste_conducers) {
-		QDomElement conducer = document.createElement("conducteur");
-		conducer.setAttribute("borne1", table_adr_id.value(f -> terminal1));
-		conducer.setAttribute("borne2", table_adr_id.value(f -> terminal2));
-		f -> toXml(document, conducer);
-		conducers.appendChild(conducer);
+	foreach(Conducer *cond, liste_conducers) {
+		conducers.appendChild(cond -> toXml(document, table_adr_id));
 	}
 	racine.appendChild(conducers);
 	
@@ -272,7 +234,6 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	
 	// chargement de tous les Elements du fichier XML
 	QList<Element *> elements_ajoutes;
-	//uint nb_elements = 0;
 	QHash< int, Terminal *> table_adr_id;
 	QHash< int, Terminal *> &ref_table_adr_id = table_adr_id;
 	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
@@ -284,9 +245,27 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 			// on s'interesse a l'element XML "element" (elements eux-memes)
 			QDomElement e = n.toElement();
 			if (e.isNull() || !Element::valideXml(e)) continue;
-			Element *element_ajoute;
-			if ((element_ajoute = elementFromXml(e, ref_table_adr_id)) != NULL) elements_ajoutes << element_ajoute;
-			else qDebug("Le chargement d'un element a echoue");
+			
+			// cree un element dont le type correspond à l'id type
+			QString type_id = e.attribute("type");
+			QString chemin_fichier = QETApp::realPath(type_id);
+			CustomElement *nvel_elmt = new CustomElement(chemin_fichier);
+			if (nvel_elmt -> isNull()) {
+				QString debug_message = QString("Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(chemin_fichier).arg(nvel_elmt -> etat());
+				delete nvel_elmt;
+				qDebug(debug_message.toLatin1().data());
+				continue;
+			}
+			
+			// charge les caracteristiques de l'element
+			if (nvel_elmt -> fromXml(e, ref_table_adr_id)) {
+				// ajout de l'element au schema et a la liste des elements ajoutes
+				addItem(nvel_elmt);
+				elements_ajoutes << nvel_elmt;
+			} else {
+				delete nvel_elmt;
+				qDebug("Le chargement des parametres d'un element a echoue");
+			}
 		}
 	}
 	
@@ -348,38 +327,6 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		}
 	}
 	return(true);
-}
-
-/**
-	Ajoute au schema l'Element correspondant au QDomElement passe en parametre
-	@param e QDomElement a analyser
-	@param table_id_adr Table de correspondance entre les entiers et les bornes
-	@return true si l'ajout a parfaitement reussi, false sinon 
-*/
-Element *Diagram::elementFromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
-	// cree un element dont le type correspond à l'id type
-	QString type = e.attribute("type");
-	QString chemin_fichier = QETApp::realPath(type);
-	int etat;
-	Element *nvel_elmt = new CustomElement(chemin_fichier, 0, 0, &etat);
-	if (etat != 0) return(false);
-	
-	// charge les caracteristiques de l'element
-	bool retour = nvel_elmt -> fromXml(e, table_id_adr);
-	if (!retour) {
-		delete nvel_elmt;
-	} else {
-		// ajout de l'element au schema
-		addItem(nvel_elmt);
-		nvel_elmt -> setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-		nvel_elmt -> setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-		bool conv_ok;
-		int read_ori = e.attribute("sens").toInt(&conv_ok);
-		if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = nvel_elmt -> defaultOrientation();
-		nvel_elmt -> setOrientation((Terminal::Orientation)read_ori);
-		nvel_elmt -> setSelected(e.attribute("selected") == "selected");
-	}
-	return(retour ? nvel_elmt : NULL);
 }
 
 /**

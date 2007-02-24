@@ -13,9 +13,9 @@
 		virtual  int nbTerminalsMin() const = 0;
 		virtual  int nbTerminalsMax() const = 0;
 		virtual  void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
-		virtual  QString typeId() = 0;
+		virtual  QString typeId() const = 0;
 		
-		virtual QString  nom() = 0;
+		virtual QString  nom() const = 0;
 		void     paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 		QRectF   boundingRect() const;
 		QSize    setSize(int, int);
@@ -25,16 +25,15 @@
 		void     deselect();
 		QPixmap  pixmap();
 		QVariant itemChange(GraphicsItemChange, const QVariant &);
-		bool     orientation() const;
-		bool     invertOrientation();
 		void     setPos(const QPointF &);
 		void     setPos(qreal, qreal);
 		inline bool     connexionsInternesAcceptees() { return(peut_relier_ses_propres_terminals); }
 		inline void     setConnexionsInternesAcceptees(bool cia) { peut_relier_ses_propres_terminals = cia; }
 		static bool     valideXml(QDomElement &);
-		virtual bool fromXml(QDomElement &, QHash<int, Terminal *>&) = 0;
+		virtual bool fromXml(QDomElement  &, QHash<int, Terminal *>&);
+		virtual QDomElement toXml (QDomDocument &, QHash<Terminal *, int>&) const;
 		// methodes d'acces aux possibilites d'orientation
-		inline Terminal::Orientation orientation() { return(ori); }
+		inline Terminal::Orientation orientation() const { return(ori); }
 		inline bool acceptOrientation(Terminal::Orientation o) {
 			switch(o) {
 				case Terminal::Nord:  return(ori_n);

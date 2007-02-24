@@ -279,3 +279,130 @@ bool Element::valideXml(QDomElement &e) {
 	if (!conv_ok) return(false);
 	return(true);
 }
+
+/**
+	Methode d'import XML. Cette methode est appelee lors de l'import de contenu
+	XML (coller, import, ouverture de fichier...) afin que l'element puisse
+	gerer lui-meme l'importation de ses bornes. Ici, comme cette classe est
+	caracterisee par un nombre fixe de bornes, l'implementation exige de
+	retrouver exactement ses bornes dans le fichier XML.
+	@param e L'element XML a analyser.
+	@param table_id_adr Reference vers la table de correspondance entre les IDs
+	du fichier XML et les adresses en memoire. Si l'import reussit, il faut y
+	ajouter les bons couples (id, adresse).
+	@return true si l'import a reussi, false sinon
+	
+*/
+bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
+	/*
+		les bornes vont maintenant etre recensees pour associer leurs id à leur adresse reelle
+		ce recensement servira lors de la mise en place des fils
+	*/
+	
+	QList<QDomElement> liste_terminals;
+	// parcours des enfants de l'element
+	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
+		// on s'interesse a l'element XML "bornes"
+		QDomElement terminals = enfant.toElement();
+		if (terminals.isNull() || terminals.tagName() != "bornes") continue;
+		// parcours des enfants de l'element XML "bornes"
+		for (QDomNode node_terminal = terminals.firstChild() ; !node_terminal.isNull() ; node_terminal = node_terminal.nextSibling()) {
+			// on s'interesse a l'element XML "borne"
+			QDomElement terminal = node_terminal.toElement();
+			if (!terminal.isNull() && Terminal::valideXml(terminal)) liste_terminals.append(terminal);
+		}
+	}
+	
+	QHash<int, Terminal *> priv_id_adr;
+	int terminals_non_trouvees = 0;
+	foreach(QGraphicsItem *qgi, children()) {
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
+			bool terminal_trouvee = false;
+			foreach(QDomElement qde, liste_terminals) {
+				if (p -> fromXml(qde)) {
+					priv_id_adr.insert(qde.attribute("id").toInt(), p);
+					terminal_trouvee = true;
+					break;
+				}
+			}
+			if (!terminal_trouvee) ++ terminals_non_trouvees;
+		}
+	}
+	
+	if (terminals_non_trouvees > 0) {
+		return(false);
+	} else {
+		// verifie que les associations id / adr n'entrent pas en conflit avec table_id_adr
+		foreach(int id_trouve, priv_id_adr.keys()) {
+			if (table_id_adr.contains(id_trouve)) {
+				// cet element possede un id qui est deja reference (= conflit)
+				return(false);
+			}
+		}
+		// copie des associations id / adr
+		foreach(int id_trouve, priv_id_adr.keys()) {
+			table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
+		}
+	}
+	
+	// position, selection et orientation
+	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
+	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	bool conv_ok;
+	int read_ori = e.attribute("sens").toInt(&conv_ok);
+	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = defaultOrientation();
+	setOrientation((Terminal::Orientation)read_ori);
+	setSelected(e.attribute("selected") == "selected");
+	
+	return(true);
+}
+
+/**
+	Permet d'exporter l'element en XML
+	@param document Document XML a utiliser
+	@param table_adr_id Table de correspondance entre les adresses des bornes
+	et leur id dans la representation XML ; cette table completee par cette
+	methode
+	@return L'element XML representant cet element electrique
+*/
+QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table_adr_id) const {
+	QDomElement element = document.createElement("element");
+	
+	// type
+	QString chemin_elmt = typeId();
+	QString type_elmt = QETApp::symbolicPath(chemin_elmt);
+	element.setAttribute("type", type_elmt);
+	
+	// position, selection et orientation
+	element.setAttribute("x", pos().x());
+	element.setAttribute("y", pos().y());
+	if (isSelected()) element.setAttribute("selected", "selected");
+	element.setAttribute("sens", QString("%1").arg(orientation()));
+	
+	/* recupere le premier id a utiliser pour les bornes de cet element */
+	int id_terminal = 0;
+	if (!table_adr_id.isEmpty()) {
+		// trouve le plus grand id
+		int max_id_t = -1;
+		foreach (int id_t, table_adr_id.values()) {
+			if (id_t > max_id_t) max_id_t = id_t;
+		}
+		id_terminal = max_id_t + 1;
+	}
+	
+	// enregistrement des bornes de l'appareil
+	QDomElement terminals = document.createElement("bornes");
+	// pour chaque enfant de l'element
+	foreach(QGraphicsItem *child, children()) {
+		// si cet enfant est une borne
+		if (Terminal *t = qgraphicsitem_cast<Terminal *>(child)) {
+			// alors on enregistre la borne
+			QDomElement terminal = t -> toXml(document);
+			terminal.setAttribute("id", id_terminal);
+			table_adr_id.insert(t, id_terminal ++);
+			terminals.appendChild(terminal);
+		}
+	}
+	element.appendChild(terminals);
+	return(element);
+}

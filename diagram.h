@@ -58,8 +58,6 @@
 		bool draw_grid;
 		bool use_border;
 		
-		Element *elementFromXml(QDomElement &, QHash<int, Terminal *> &);
-		
 		private slots:
 		void slot_checkSelectionChange();
 		

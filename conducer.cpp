@@ -739,10 +739,14 @@ bool Conducer::fromXml(QDomElement &e) {
 	return(true);
 }
 
-void Conducer::toXml(QDomDocument &d, QDomElement &e) {
+QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_id) const {
+	QDomElement e = d.createElement("conducteur");
+	e.setAttribute("borne1", table_adr_id.value(terminal1));
+	e.setAttribute("borne2", table_adr_id.value(terminal2));
+	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
-	if (!modified_path) return;
+	if (!modified_path) return(e);
 	
 	// parcours et export des segments
 	ConducerSegment *segment = segments;
@@ -758,4 +762,5 @@ void Conducer::toXml(QDomDocument &d, QDomElement &e) {
 	current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
 	current_segment.setAttribute("length", segment -> length());
 	e.appendChild(current_segment);
+	return(e);
 }
