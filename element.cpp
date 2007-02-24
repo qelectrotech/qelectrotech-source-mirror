@@ -298,19 +298,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 		les bornes vont maintenant etre recensees pour associer leurs id à leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
 	*/
-	
 	QList<QDomElement> liste_terminals;
-	// parcours des enfants de l'element
-	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
-		// on s'interesse a l'element XML "bornes"
-		QDomElement terminals = enfant.toElement();
-		if (terminals.isNull() || terminals.tagName() != "bornes") continue;
-		// parcours des enfants de l'element XML "bornes"
-		for (QDomNode node_terminal = terminals.firstChild() ; !node_terminal.isNull() ; node_terminal = node_terminal.nextSibling()) {
-			// on s'interesse a l'element XML "borne"
-			QDomElement terminal = node_terminal.toElement();
-			if (!terminal.isNull() && Terminal::valideXml(terminal)) liste_terminals.append(terminal);
-		}
+	foreach(QDomElement qde, findInDomElement(e, "bornes", "borne")) {
+		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
 	
 	QHash<int, Terminal *> priv_id_adr;
@@ -342,6 +332,14 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 		// copie des associations id / adr
 		foreach(int id_trouve, priv_id_adr.keys()) {
 			table_id_adr.insert(id_trouve, priv_id_adr.value(id_trouve));
+		}
+	}
+	
+	// importe les valeurs des champs de texte
+	QList<QDomElement> inputs = findInDomElement(e, "inputs", "input");
+	foreach(QGraphicsItem *qgi, children()) {
+		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
+			foreach(QDomElement input, inputs) eti -> fromXml(input);
 		}
 	}
 	
@@ -404,5 +402,46 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 		}
 	}
 	element.appendChild(terminals);
+	
+	// enregistrement des champ de texte de l'appareil
+	QDomElement inputs = document.createElement("inputs");
+	// pour chaque enfant de l'element
+	foreach(QGraphicsItem *child, children()) {
+		// si cet enfant est un champ de texte
+		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(child)) {
+			// alors on enregistre le champ de texte
+			inputs.appendChild(eti -> toXml(document));
+		}
+	}
+	element.appendChild(inputs);
+	
 	return(element);
+}
+
+
+/**
+	Methode statique sans rapport direct avec la manipulation des elements.
+	Etant donne un element XML e, elle renvoie la liste de tous les elements
+	children imbriques dans les elements parent, eux-memes enfants de l'elememt e
+	@param e Element XML a explorer
+	@param parent tag XML intermediaire
+	@param children tag XML a rechercher
+	@return La liste des elements XML children
+*/
+QList<QDomElement> Element::findInDomElement(QDomElement e, QString parent, QString children) {
+	// recense les champs de texte
+	QList<QDomElement> return_list;
+	// parcours des enfants de l'element
+	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
+		// on s'interesse a l'element XML "parent"
+		QDomElement parents = enfant.toElement();
+		if (parents.isNull() || parents.tagName() != parent) continue;
+		// parcours des enfants de l'element XML "parent"
+		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling()) {
+			// on s'interesse a l'element XML "children"
+			QDomElement children = node_children.toElement();
+			if (!children.isNull()) return_list.append(children);
+		}
+	}
+	return(return_list);
 }

@@ -1,6 +1,7 @@
 #ifndef ELEMENT_TEXT_ITEM_H
 	#define ELEMENT_TEXT_ITEM_H
 	#include <QGraphicsTextItem>
+	#include <QtXml>
 	class ElementTextItem : public QGraphicsTextItem {
 		// constructeurs
 		public:
@@ -17,6 +18,8 @@
     	virtual int type() const { return Type; }
 		inline bool followParentRotations() const { return(follow_parent_rotations); }
 		inline void setFollowParentRotations(bool frp) { follow_parent_rotations = frp; }
+		void fromXml(QDomElement &);
+		QDomElement toXml(QDomDocument &);
 		void setPos(const QPointF &);
 		void setPos(qreal, qreal);
 		QPointF pos() const;

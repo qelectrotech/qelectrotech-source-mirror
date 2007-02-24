@@ -87,6 +87,7 @@
 			if (o == Terminal::Nord) return(Terminal::Ouest);
 			return((Terminal::Orientation)(o - 1));
 		}
+		static QList<QDomElement> findInDomElement(QDomElement, QString, QString);
 		
 		QSize   dimensions;
 		QPoint  hotspot_coord;
