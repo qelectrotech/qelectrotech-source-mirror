@@ -1,5 +1,6 @@
 #include "element.h"
 #include "diagram.h"
+#include "elementtextitem.h"
 #include <QtDebug>
 
 /*** Methodes publiques ***/
@@ -122,11 +123,24 @@ bool Element::setOrientation(Terminal::Orientation o) {
 	if (!acceptOrientation(o)) return(false);
 	prepareGeometryChange();
 	// rotation en consequence et rafraichissement de l'element graphique
-	rotate(90.0 * (o - ori));
+	qreal rotation_value = 90.0 * (o - ori);
+	rotate(rotation_value);
 	ori = o;
 	update();
 	foreach(QGraphicsItem *qgi, children()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer();
+		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
+			// applique une rotation contraire si besoin
+			if (!eti -> followParentRotations())  {
+				QMatrix new_matrix = eti -> matrix();
+				qreal dx = eti -> boundingRect().width()  / 2.0;
+				qreal dy = eti -> boundingRect().height() / 2.0;
+				new_matrix.translate(dx, dy);
+				new_matrix.rotate(-rotation_value);
+				new_matrix.translate(-dx, -dy);
+				eti -> setMatrix(new_matrix);
+			}
+		}
 	}
 	return(true);
 }

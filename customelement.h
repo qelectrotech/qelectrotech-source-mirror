@@ -25,6 +25,7 @@
 		bool parseArc(QDomElement &, QPainter &);
 		bool parsePolygon(QDomElement &, QPainter &);
 		bool parseText(QDomElement &, QPainter &);
+		bool parseInput(QDomElement &, Diagram *);
 		bool parseTerminal(QDomElement &, Diagram *);
 		void setQPainterAntiAliasing(QPainter &, bool);
 		bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);

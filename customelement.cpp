@@ -1,4 +1,6 @@
 #include "customelement.h"
+#include "elementtextitem.h"
+#include "diagram.h"
 
 /**
 	Constructeur de la classe ElementPerso. Permet d'instancier un element
@@ -150,7 +152,6 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	// fermeture du fichier
 	fichier.close();
 	
-	//(new QGraphicsTextItem("plop", this, scene())) -> setTextInteractionFlags(Qt::TextEditorInteraction);
 	if (etat != NULL) *etat = 0;
 	elmt_etat = 0;
 }
@@ -192,6 +193,7 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	else if (e.tagName() == "arc") return(parseArc(e, qp));
 	else if (e.tagName() == "polygon") return(parsePolygon(e, qp));
 	else if (e.tagName() == "text") return(parseText(e, qp));
+	else if (e.tagName() == "input") return(parseInput(e, s));
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
 }
 
@@ -362,6 +364,34 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	qp.setFont(QFont(QString("Sans Serif"), size));
 	qp.drawText(QPointF(pos_x, pos_y), e.attribute("text"));
 	qp.restore();
+	return(true);
+}
+
+/**
+	Analyse un element XML suppose representer un champ de texte editable par
+	l'utilisateur. Si l'analyse reussit, le champ est ajoute au dessin.
+	Le texte est defini par :
+		- une position
+		- une chaine de caractères facultative utilisee comme valeur par defaut
+		- une taille
+		- le fait de subir les rotations de l'element ou non
+	@param e L'element XML a analyser
+	@param s Le schema sur lequel l'element perso sera affiche
+	@return true si l'analyse reussit, false sinon
+*/
+bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
+	qreal pos_x, pos_y;
+	int size;
+	if (
+		!attributeIsAReal(e, "x", &pos_x) ||\
+		!attributeIsAReal(e, "y", &pos_y) ||\
+		!attributeIsAnInteger(e, "size", &size)
+	) return(false);
+	
+	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this, s);
+	eti -> setFont(QFont("Sans Serif", size));
+	eti -> setPos(pos_x, pos_y);
+	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
 	return(true);
 }
 
