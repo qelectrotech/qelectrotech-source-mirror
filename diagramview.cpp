@@ -22,7 +22,7 @@ void DiagramView::initialise() {
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	setSceneRect(QRectF(0.0, 0.0, scene -> border_and_inset.borderWidth() + 10.0, scene -> border_and_inset.borderHeight() + 10.0));
-	connect(scene, SIGNAL(selectionChanged()), this, SLOT(slot_selectionChanged()));
+	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SLOT(slot_selectionChanged()));
 }
 
 /**

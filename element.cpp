@@ -439,8 +439,8 @@ QList<QDomElement> Element::findInDomElement(QDomElement e, QString parent, QStr
 		// parcours des enfants de l'element XML "parent"
 		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling()) {
 			// on s'interesse a l'element XML "children"
-			QDomElement children = node_children.toElement();
-			if (!children.isNull()) return_list.append(children);
+			QDomElement n_children = node_children.toElement();
+			if (!n_children.isNull() && n_children.tagName() == children) return_list.append(n_children);
 		}
 	}
 	return(return_list);
