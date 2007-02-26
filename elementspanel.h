@@ -16,6 +16,7 @@
 		void dragMoveEvent(QDragMoveEvent *);
 		void dropEvent(QDropEvent *);
 		void startDrag(Qt::DropActions);
+		void reload();
 		private:
 		void addFile(QTreeWidgetItem *, QString);
 		void addDir(QTreeWidgetItem *, QString, QString = QString());

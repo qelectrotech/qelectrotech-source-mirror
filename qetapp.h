@@ -2,7 +2,7 @@
 	#define QETAPP_H
 	#include <QtGui>
 	class DiagramView;
-	class ElementsPanel;
+	class ElementsPanelWidget;
 	/**
 		Cette classe represente la fenetre principale de QElectroTech et,
 		ipso facto, la plus grande partie de l'interface graphique de QElectroTech.
@@ -117,7 +117,7 @@
 		/// Dock pour le Panel d'Appareils
 		QDockWidget *qdw_pa;
 		/// Panel d'Appareils
-		ElementsPanel *pa;
+		ElementsPanelWidget *pa;
 		/// Elements de menus pour l'icone du systray
 		QMenu *menu_systray;
 		QAction *systray_masquer;

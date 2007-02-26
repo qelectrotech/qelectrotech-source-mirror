@@ -21,7 +21,8 @@ HEADERS += aboutqet.h \
            qetapp.h \
            terminal.h \
            conducersegment.h \
-           elementtextitem.h
+           elementtextitem.h \
+           elementspanelwidget.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -36,7 +37,8 @@ SOURCES += aboutqet.cpp \
            qetapp.cpp \
            terminal.cpp \
            conducersegment.cpp \
-           elementtextitem.cpp
+           elementtextitem.cpp \
+           elementspanelwidget.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml

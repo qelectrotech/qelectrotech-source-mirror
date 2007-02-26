@@ -20,11 +20,8 @@ ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
 	// taille des elements
 	setIconSize(QSize(50, 50));
 	
-	// chargement des elements de la collection QET
-	addDir(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
-	
-	// chargement des elements de la collection utilisateur
-	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
+	// charge les collections
+	reload();
 	
 	// force du noir sur une alternance de blanc (comme le schema) et de gris
 	// clair, avec du blanc sur bleu pas trop fonce pour la selection
@@ -198,4 +195,18 @@ QString ElementsPanel::categoryName(QDir &directory) {
 		}
 	}
 	return(category_name);
+}
+
+/**
+	Recharge l'arbre des elements
+*/
+void ElementsPanel::reload() {
+	// vide l'arbre
+	while (takeTopLevelItem(0));
+	
+	// chargement des elements de la collection QET
+	addDir(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
+	
+	// chargement des elements de la collection utilisateur
+	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 }
