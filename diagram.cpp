@@ -158,6 +158,9 @@ QDomDocument Diagram::toXml(bool diagram) {
 		if (!border_and_inset.title().isNull())     racine.setAttribute("titre",    border_and_inset.title());
 		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
 		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
+		racine.setAttribute("cols",    border_and_inset.nbColumn());
+		racine.setAttribute("colsize", border_and_inset.columnsWidth());
+		racine.setAttribute("height",  border_and_inset.columnsHeight());
 	}
 	document.appendChild(racine);
 	
@@ -227,6 +230,19 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		border_and_inset.setDate(QDate::fromString(racine.attribute("date"), "yyyyMMdd"));
 		border_and_inset.setFileName(racine.attribute("filename"));
 		border_and_inset.setFolio(racine.attribute("folio"));
+		
+		bool ok;
+		// nombre de colonnes
+		int nb_cols = racine.attribute("cols").toInt(&ok);
+		if (ok) border_and_inset.setNbColumns(nb_cols);
+		
+		// taille des colonnes
+		double col_size = racine.attribute("colsize").toDouble(&ok);
+		if (ok) border_and_inset.setColumnsWidth(col_size);
+		
+		// hauteur du schema
+		double height = racine.attribute("height").toDouble(&ok);
+		if (ok) border_and_inset.setColumnsHeight(height);
 	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)

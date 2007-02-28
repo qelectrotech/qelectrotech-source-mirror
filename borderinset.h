@@ -40,6 +40,7 @@
 		// methodes d'acces en ecriture aux dimensions
 		void addColumn             ();
 		void removeColumn          ();
+		void setNbColumns          (int);
 		void setColumnsWidth       (const qreal &);
 		void setColumnsHeaderHeight(const qreal &);
 		void setColumnsHeight      (const qreal &);

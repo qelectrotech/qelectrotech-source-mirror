@@ -132,6 +132,13 @@ void BorderInset::removeColumn() {
 	updateRectangles();
 }
 
+void BorderInset::setNbColumns(int nb_c) {
+	if (nb_c < 3) return;
+	nb_columns = nb_c;
+	setInsetWidth(nb_columns * columns_width);
+	updateRectangles();
+}
+
 /**
 	Change la largeur des colonnes ; celle-ci doit rester comprise entre 10 et
 	200px.
