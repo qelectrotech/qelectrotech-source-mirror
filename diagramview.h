@@ -4,7 +4,6 @@
 	class Diagram;
 	#include "element.h"
 	#include "conducer.h"
-	#define TAILLE_GRILLE 10
 	/**
 		Classe representant graphiquement un schema electrique
 	*/
@@ -29,6 +28,8 @@
 		void dialogPrint();
 		void addColumn();
 		void removeColumn();
+		void adjustHeight(qreal);
+		void adjustSceneRect();
 		void expand();
 		void shrink();
 		Diagram *diagram() { return(scene); }

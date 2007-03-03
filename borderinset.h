@@ -24,6 +24,8 @@
 		qreal   borderHeight()        const { return(columns_height + inset_height); }
 		qreal   insetWidth()          const { return(inset_width);                   }
 		qreal   insetHeight()         const { return(inset_height);                  }
+		qreal   minColumnsHeight()    const { return(min_columns_height);            }
+		int     minNbColumns()        const { return(min_nb_columns);                }
 		
 		// methodes d'acces en lecture aux informations du cartouche
 		QString author()              const { return(bi_author);             }
@@ -69,9 +71,11 @@
 		
 		// dimensions du cadre et du cartouche
 		int    nb_columns;
+		int    min_nb_columns;
 		qreal  columns_width;
 		qreal  columns_header_height;
 		qreal  columns_height;
+		qreal  min_columns_height;
 		qreal  inset_width;
 		qreal  inset_height;
 		

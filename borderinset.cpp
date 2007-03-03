@@ -7,8 +7,10 @@
 */
 BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	nb_columns            = 15;
+	min_nb_columns        = 3;
 	columns_width         = 50.0;
 	columns_height        = 500.0;
+	min_columns_height    = 20.0;
 	inset_width           = nb_columns * columns_width;
 	inset_height          = 50.0;
 	columns_header_height = 20.0;
@@ -126,14 +128,14 @@ void BorderInset::addColumn() {
 	Enleve une colonne. Il doit rester au moins 3 colonnes.
 */
 void BorderInset::removeColumn() {
-	if (nb_columns == 3) return;
+	if (nb_columns == min_nb_columns) return;
 	-- nb_columns;
 	setInsetWidth(nb_columns * columns_width);
 	updateRectangles();
 }
 
 void BorderInset::setNbColumns(int nb_c) {
-	if (nb_c < 3) return;
+	if (nb_c < min_nb_columns) return;
 	nb_columns = nb_c;
 	setInsetWidth(nb_columns * columns_width);
 	updateRectangles();
@@ -162,7 +164,7 @@ void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
 	rester superieure a la hauteur des en-tetes de colonnes + 20px.
 */
 void BorderInset::setColumnsHeight(const qreal &new_ch) {
-	columns_height = qMax(columns_header_height + 20.0, new_ch);
+	columns_height = qMax(columns_header_height + min_columns_height, new_ch);
 	updateRectangles();
 }
 
