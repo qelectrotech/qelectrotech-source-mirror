@@ -42,6 +42,12 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	setFlags(QGraphicsItem::ItemIsSelectable);
 	setAcceptsHoverEvents(true);
 	previous_z_value = zValue();
+	
+	// ajout du champ de texte editable
+	text_item = new QGraphicsTextItem(this, scene);
+	text_item -> setPlainText("_");
+	text_item -> setTextInteractionFlags(Qt::TextEditorInteraction);
+	calculateTextItemPosition();
 }
 
 /**
@@ -58,6 +64,7 @@ void Conducer::update(const QRectF &rect) {
 		terminal1 -> amarrageConducer(), terminal1 -> orientation(),
 		terminal2 -> amarrageConducer(), terminal2 -> orientation()
 	);
+	calculateTextItemPosition();
 	QGraphicsPathItem::update(rect);
 }
 
@@ -84,6 +91,7 @@ void Conducer::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPo
 		priv_modifieConducer(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else
 		priv_calculeConducer(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
+	calculateTextItemPosition();
 	QGraphicsPathItem::update(rect);
 }
 
@@ -480,6 +488,7 @@ void Conducer::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 			modified_path = true;
 			updatePoints();
 			segmentsToPath();
+			calculateTextItemPosition();
 		}
 	}
 	QGraphicsPathItem::mouseMoveEvent(e);
@@ -495,6 +504,7 @@ void Conducer::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	moving_segment = false;
 	setZValue(previous_z_value);
 	QGraphicsPathItem::mouseReleaseEvent(e);
+	calculateTextItemPosition();
 }
 
 void Conducer::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
@@ -671,6 +681,8 @@ bool Conducer::hasClickedOn(QPointF press_point, QPointF point) {
 }
 
 bool Conducer::fromXml(QDomElement &e) {
+	text_item -> setPlainText(e.attribute("num"));
+	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
 	// les segments non valides sont ignores
 	QList<qreal> segments_x, segments_y;
@@ -743,6 +755,7 @@ QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_i
 	QDomElement e = d.createElement("conducteur");
 	e.setAttribute("borne1", table_adr_id.value(terminal1));
 	e.setAttribute("borne2", table_adr_id.value(terminal2));
+	e.setAttribute("num",    text_item -> toPlainText());
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
@@ -763,4 +776,43 @@ QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_i
 	current_segment.setAttribute("length", segment -> length());
 	e.appendChild(current_segment);
 	return(e);
+}
+
+/**
+	@return La longueur totale du conducteur
+*/
+qreal Conducer::length() {
+	qreal length = 0.0;
+	
+	ConducerSegment *s = segments;
+	while (s -> hasNextSegment()) {
+		length += qAbs(s -> length());
+		s = s -> nextSegment();
+	}
+	
+	return(length);
+}
+
+/**
+	@return Le segment qui contient le point au milieu du conducteur
+*/
+ConducerSegment *Conducer::middleSegment() {
+	if (segments == NULL) return(NULL);
+	
+	qreal half_length = length() / 2.0;
+	
+	ConducerSegment *s = segments;
+	qreal l = 0;
+	
+	while (s -> hasNextSegment()) {
+		l += qAbs(s -> length());
+		if (l >= half_length) break;
+		s = s -> nextSegment();
+	}
+	// s est le segment qui contient le point au milieu du conducteur
+	return(s);
+}
+
+void Conducer::calculateTextItemPosition() {
+	text_item -> setPos(middleSegment() -> middle());
 }

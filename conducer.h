@@ -21,6 +21,8 @@
 		void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 		QRectF boundingRect() const;
 		virtual QPainterPath shape() const;
+		qreal length();
+		ConducerSegment *middleSegment();
 		static bool valideXml(QDomElement &);
 		bool fromXml(QDomElement &);
 		QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
@@ -39,6 +41,7 @@
 		private:
 		/// booleen indiquant si le fil est encore valide
 		bool destroyed;
+		QGraphicsTextItem *text_item;
 		ConducerSegment *segments;
 		QList<qreal> moves_x;
 		QList<qreal> moves_y;
@@ -65,6 +68,7 @@
 		QList<QPointF> segmentsToPoints() const;
 		void pointsToSegments(QList<QPointF>);
 		bool hasClickedOn(QPointF, QPointF);
+		void calculateTextItemPosition();
 		static QPointF extendTerminal(const QPointF &, Terminal::Orientation, qreal = 12.0);
 		static bool surLeMemeAxe(Terminal::Orientation, Terminal::Orientation);
 		static bool estHorizontale(Terminal::Orientation a);
