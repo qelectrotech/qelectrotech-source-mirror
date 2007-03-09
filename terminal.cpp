@@ -364,7 +364,7 @@ QList<Conducer *> Terminal::conducers() const {
 	@return un QDomElement representant cette borne
 */
 QDomElement Terminal::toXml(QDomDocument &doc) const {
-	QDomElement qdo = doc.createElement("borne");
+	QDomElement qdo = doc.createElement("terminal");
 	qdo.setAttribute("x", amarrage_elmt.x());
 	qdo.setAttribute("y", amarrage_elmt.y());
 	qdo.setAttribute("orientation", sens);
@@ -378,7 +378,7 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 */
 bool Terminal::valideXml(QDomElement &terminal) {
 	// verifie le nom du tag
-	if (terminal.tagName() != "borne") return(false);
+	if (terminal.tagName() != "terminal") return(false);
 	
 	// verifie la presence des attributs minimaux
 	if (!terminal.hasAttribute("x")) return(false);

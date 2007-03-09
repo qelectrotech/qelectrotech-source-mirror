@@ -149,13 +149,13 @@ QDomDocument Diagram::toXml(bool diagram) {
 	QDomDocument document;
 	
 	// racine de l'arbre XML
-	QDomElement racine = document.createElement("schema");
+	QDomElement racine = document.createElement("diagram");
 	
 	// proprietes du schema
 	if (diagram) {
-		if (!border_and_inset.author().isNull())    racine.setAttribute("auteur",   border_and_inset.author());
+		if (!border_and_inset.author().isNull())    racine.setAttribute("author",   border_and_inset.author());
 		if (!border_and_inset.date().isNull())      racine.setAttribute("date",     border_and_inset.date().toString("yyyyMMdd"));
-		if (!border_and_inset.title().isNull())     racine.setAttribute("titre",    border_and_inset.title());
+		if (!border_and_inset.title().isNull())     racine.setAttribute("title",    border_and_inset.title());
 		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
 		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
 		racine.setAttribute("cols",    border_and_inset.nbColumn());
@@ -197,7 +197,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 	
 	// enregistrement des conducteurs
 	if (liste_conducers.isEmpty()) return(document);
-	QDomElement conducers = document.createElement("conducteurs");
+	QDomElement conducers = document.createElement("conducers");
 	foreach(Conducer *cond, liste_conducers) {
 		conducers.appendChild(cond -> toXml(document, table_adr_id));
 	}
@@ -221,12 +221,12 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	QDomElement racine = document.documentElement();
 	// le premier element doit etre un schema
 	/// @todo renommer schema en diagram
-	if (racine.tagName() != "schema") return(false);
+	if (racine.tagName() != "diagram") return(false);
 	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
-		border_and_inset.setAuthor(racine.attribute("auteur"));
-		border_and_inset.setTitle(racine.attribute("titre"));
+		border_and_inset.setAuthor(racine.attribute("author"));
+		border_and_inset.setTitle(racine.attribute("title"));
 		border_and_inset.setDate(QDate::fromString(racine.attribute("date"), "yyyyMMdd"));
 		border_and_inset.setFileName(racine.attribute("filename"));
 		border_and_inset.setFolio(racine.attribute("folio"));
@@ -317,15 +317,15 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		// on s'interesse a l'element XML "conducteurs" (= groupe de conducteurs)
 		QDomElement conducers = node.toElement();
-		if(conducers.isNull() || conducers.tagName() != "conducteurs") continue;
+		if(conducers.isNull() || conducers.tagName() != "conducers") continue;
 		// parcours des enfants de l'element XML "conducteurs"
 		for (QDomNode n = conducers.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
 			// on s'interesse a l'element XML "element" (elements eux-memes)
 			QDomElement f = n.toElement();
 			if (f.isNull() || !Conducer::valideXml(f)) continue;
 			// verifie que les bornes que le conducteur relie sont connues
-			int id_p1 = f.attribute("borne1").toInt();
-			int id_p2 = f.attribute("borne2").toInt();
+			int id_p1 = f.attribute("terminal1").toInt();
+			int id_p2 = f.attribute("terminal2").toInt();
 			if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2)) {
 				// pose le conducteur... si c'est possible
 				Terminal *p1 = table_adr_id.value(id_p1);

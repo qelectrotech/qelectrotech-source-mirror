@@ -299,7 +299,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 		ce recensement servira lors de la mise en place des fils
 	*/
 	QList<QDomElement> liste_terminals;
-	foreach(QDomElement qde, findInDomElement(e, "bornes", "borne")) {
+	foreach(QDomElement qde, findInDomElement(e, "terminals", "terminal")) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
 	
@@ -347,7 +347,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	bool conv_ok;
-	int read_ori = e.attribute("sens").toInt(&conv_ok);
+	int read_ori = e.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = defaultOrientation();
 	setOrientation((Terminal::Orientation)read_ori);
 	setSelected(e.attribute("selected") == "selected");
@@ -375,7 +375,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("x", pos().x());
 	element.setAttribute("y", pos().y());
 	if (isSelected()) element.setAttribute("selected", "selected");
-	element.setAttribute("sens", QString("%1").arg(orientation()));
+	element.setAttribute("orientation", QString("%1").arg(orientation()));
 	
 	/* recupere le premier id a utiliser pour les bornes de cet element */
 	int id_terminal = 0;
@@ -389,7 +389,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	}
 	
 	// enregistrement des bornes de l'appareil
-	QDomElement terminals = document.createElement("bornes");
+	QDomElement terminals = document.createElement("terminals");
 	// pour chaque enfant de l'element
 	foreach(QGraphicsItem *child, children()) {
 		// si cet enfant est une borne

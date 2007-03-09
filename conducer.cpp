@@ -384,19 +384,19 @@ void Conducer::destroy() {
 */
 bool Conducer::valideXml(QDomElement &e){
 	// verifie le nom du tag
-	if (e.tagName() != "conducteur") return(false);
+	if (e.tagName() != "conducer") return(false);
 	
 	// verifie la presence des attributs minimaux
-	if (!e.hasAttribute("borne1")) return(false);
-	if (!e.hasAttribute("borne2")) return(false);
+	if (!e.hasAttribute("terminal1")) return(false);
+	if (!e.hasAttribute("terminal2")) return(false);
 	
 	bool conv_ok;
 	// parse l'abscisse
-	e.attribute("borne1").toInt(&conv_ok);
+	e.attribute("terminal1").toInt(&conv_ok);
 	if (!conv_ok) return(false);
 	
 	// parse l'ordonnee
-	e.attribute("borne2").toInt(&conv_ok);
+	e.attribute("terminal2").toInt(&conv_ok);
 	if (!conv_ok) return(false);
 	return(true);
 }
@@ -752,9 +752,9 @@ bool Conducer::fromXml(QDomElement &e) {
 }
 
 QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_id) const {
-	QDomElement e = d.createElement("conducteur");
-	e.setAttribute("borne1", table_adr_id.value(terminal1));
-	e.setAttribute("borne2", table_adr_id.value(terminal2));
+	QDomElement e = d.createElement("conducer");
+	e.setAttribute("terminal1", table_adr_id.value(terminal1));
+	e.setAttribute("terminal2", table_adr_id.value(terminal2));
 	e.setAttribute("num",    text_item -> toPlainText());
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
