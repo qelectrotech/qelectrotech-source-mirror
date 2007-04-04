@@ -423,6 +423,9 @@ void DiagramView::dialogPrint() {
 	qprin.setOutputFormat(QPrinter::PdfFormat);
 	qprin.setOrientation(QPrinter::Landscape);
 	qprin.setPageSize(QPrinter::A4);
+#ifdef Q_WS_X11
+// 	qprin.setPrintProgram("lpr");
+#endif
 	QPrintDialog qpd(&qprin, this);
 	
 	if (qpd.exec() == QDialog::Accepted) {

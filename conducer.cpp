@@ -2,6 +2,7 @@
 #include "conducer.h"
 #include "conducersegment.h"
 #include "element.h"
+#define PR(x) qDebug() << #x " = " << x;
 
 bool Conducer::pen_and_brush_initialized = false;
 QPen Conducer::conducer_pen = QPen();

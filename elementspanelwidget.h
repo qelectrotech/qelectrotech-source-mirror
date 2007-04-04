@@ -17,5 +17,8 @@
 		// methodes
 		public:
 		inline ElementsPanel &elementsPanel() const { return(*elements_panel); }
+		
+		public slots:
+		void newElement();
 	};
 #endif
