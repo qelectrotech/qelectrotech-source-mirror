@@ -1,5 +1,6 @@
 #include "elementspanel.h"
 #include "customelement.h"
+#include "elementscategory.h"
 
 /**
 	Constructeur
@@ -94,12 +95,11 @@ void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
 	est invalide, la fonction utilise le nom du dossier.
 */
 void ElementsPanel::addDir(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QString nom) {
-	QDir dossier(adr_dossier);
-	if (!dossier.exists()) return;
-	adr_dossier = dossier.canonicalPath() + "/";
+	ElementsCategory category(adr_dossier);
+	if (!category.exists()) return;
 	
 	// recupere le nom de la categorie
-	QString nom_categorie = (nom != QString()) ? nom : categoryName(dossier);
+	QString nom_categorie = (nom != QString()) ? nom : category.name();
 	
 	// creation du QTreeWidgetItem representant le dossier
 	QTreeWidgetItem *qtwi_dossier = new QTreeWidgetItem(qtwi_parent, QStringList(nom_categorie));
@@ -110,11 +110,11 @@ void ElementsPanel::addDir(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QS
 	qtwi_dossier -> setExpanded(true);
 	
 	// ajout des sous-categories / sous-dossiers
-	QStringList dossiers = dossier.entryList(QStringList(), QDir::AllDirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDir::Name);
-	foreach(QString dossier, dossiers) addDir(qtwi_dossier, adr_dossier + dossier);
+	QStringList dossiers = category.entryList(QStringList(), QDir::AllDirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDir::Name);
+	foreach(QString dossier, dossiers) addDir(qtwi_dossier, adr_dossier + dossier + "/");
 	
 	// ajout des elements / fichiers
-	QStringList fichiers = dossier.entryList(QStringList("*.elmt"), QDir::Files, QDir::Name);
+	QStringList fichiers = category.entryList(QStringList("*.elmt"), QDir::Files, QDir::Name);
 	foreach(QString fichier, fichiers) addFile(qtwi_dossier, adr_dossier + fichier);
 }
 
@@ -139,62 +139,6 @@ void ElementsPanel::addFile(QTreeWidgetItem *qtwi_parent, QString fichier) {
 	qtwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
 	qtwi -> setIcon(0, QIcon(elmt_perso -> pixmap()));
 	qtwi -> setData(0, 42, fichier);
-}
-
-/**
-	Methode permettant d'obtenir le nom affichable d'une categorie etant donne
-	son chemin (dossier).
-	@param directory le chemin du dossier representant la categorie
-	@return Le nom affichable de la categorie
-*/
-QString ElementsPanel::categoryName(QDir &directory) {
-	// en cas d'echec de la lecture du fichier de configuration
-	// "qet_directory", le nom du dossier est retourne
-	QString category_name = directory.dirName();
-	// repere le chemin du fichier de configuration de la categorie
-	QFile directory_conf(directory.canonicalPath() + "/qet_directory");
-	// verifie l'existence du fichier
-	if (directory_conf.exists()) {
-		// ouvre le fichier
-		if (directory_conf.open(QIODevice::ReadOnly | QIODevice::Text)) {
-			// recupere les deux premiers caracteres de la locale en cours du systeme
-			QString system_language = QLocale::system().name().left(2);
-			// lit le contenu du fichier dans un QDomDocument XML
-			QDomDocument document;
-			if (document.setContent(&directory_conf)) {
-				/* parcourt le document XML a la recherche d'un nom
-				par ordre de preference, on prendra :
-					- le nom dans la langue du systeme
-					- le nom en anglais
-					- le nom du dossier
-				*/
-				QDomElement root = document.documentElement();
-				if (root.tagName() == "qet-directory") {
-					bool name_found = false;
-					// parcourt les "names"
-					for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-						QDomElement names = node.toElement();
-						if (names.isNull() || names.tagName() != "names") continue;
-						// parcourt les "name"
-						for (QDomNode n = names.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
-							QDomElement name = n.toElement();
-							if (name.isNull() || name.tagName() != "name") continue;
-							if (name.attribute("lang") == system_language) {
-								category_name = name.text();
-								name_found = true;
-								break;
-							} else if (name.attribute("lang") == "en") {
-								category_name = name.text();
-							}
-						}
-						if (name_found) break;
-					}
-				}
-			}
-			directory_conf.close();
-		}
-	}
-	return(category_name);
 }
 
 /**

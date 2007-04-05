@@ -10,7 +10,7 @@ class ElementsCategoriesWidget : public QWidget {
 	Q_OBJECT
 	// Constructeur, destructeur
 	public:
-	ElementsCategoriesWidget();
+	ElementsCategoriesWidget(QWidget * = 0);
 	~ElementsCategoriesWidget();
 	
 	// attributs
@@ -19,6 +19,8 @@ class ElementsCategoriesWidget : public QWidget {
 	QToolBar *toolbar;
 	
 	// methodes
+	bool rmdir(const QString &);
+	
 	public:
 	inline ElementsCategoriesList &elementsCategoriesList() const { return(*elementscategorieslist); }
 	

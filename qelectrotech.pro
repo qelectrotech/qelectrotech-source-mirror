@@ -26,7 +26,9 @@ HEADERS += aboutqet.h \
            newelementwizard.h \
            qetapp.h \
            terminal.h \
-           ui_export_fichier.h
+           ui_export_fichier.h \
+           elementscategoryeditor.h \
+           elementscategory.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -45,7 +47,9 @@ SOURCES += aboutqet.cpp \
            main.cpp \
            newelementwizard.cpp \
            qetapp.cpp \
-           terminal.cpp
+           terminal.cpp \
+           elementscategoryeditor.cpp \
+           elementscategory.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 CONFIG += debug warn_on

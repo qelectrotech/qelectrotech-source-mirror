@@ -25,12 +25,10 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) : QDialog
 	etape1_layout -> addLayout(grid_layout);
 	etape1 -> setLayout(etape1_layout);
 	
-	// 2eme etape : enregistrement
+	// 2eme etape : Categorie
 	etape2 = new QWidget(this);
 	QVBoxLayout *etape2_layout = new QVBoxLayout();
-	etape2_layout -> addWidget(new QLabel(tr("Entrez un nom et une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.")));
-	qle_nom_element = new QLineEdit();
-	etape2_layout -> addWidget(qle_nom_element);
+	etape2_layout -> addWidget(new QLabel(tr("S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.")));
 	categories_list = new ElementsCategoriesWidget();
 	etape2_layout -> addWidget(categories_list);
 	etape2 -> setLayout(etape2_layout);
@@ -65,7 +63,7 @@ void NewElementWizard::previous() {
 	switch(current_state) {
 		case Dimensions:
 			return;
-		case Enregistrement:
+		case Category:
 			current_state = Dimensions;
 			etape1 -> show();
 			etape2 -> hide();
@@ -77,13 +75,13 @@ void NewElementWizard::previous() {
 void NewElementWizard::next() {
 	switch(current_state) {
 		case Dimensions:
-			current_state = Enregistrement;
+			current_state = Category;
 			etape1 -> hide();
 			etape2 -> show();
 			button_next -> setText(tr("Valider"));
 			button_previous -> setEnabled(true);
 			break;
-		case Enregistrement:
+		case Category:
 			valid();
 	}
 }
@@ -93,7 +91,7 @@ void NewElementWizard::valid() {
 	switch(current_state) {
 		case Dimensions:
 			
-		case Enregistrement:
+		case Category:
 			
 			current_state = Dimensions;
 			button_next -> setText(tr("Suivant"));
