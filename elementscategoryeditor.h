@@ -1,6 +1,10 @@
 #ifndef ELEMENTS_CATEGORY_EDITOR_H
 #define ELEMENTS_CATEGORY_EDITOR_H
 #include <QtGui>
+/**
+	Cette classe permet d'editer une categorie existante ou de creer une
+	categorie.
+*/
 class ElementsCategory;
 class ElementsCategoryEditor : public QDialog {
 	Q_OBJECT
@@ -15,13 +19,20 @@ class ElementsCategoryEditor : public QDialog {
 	QTreeWidget *category_names;
 	ElementsCategory *category;
 	QDialogButtonBox *buttons;
+	QPushButton *button_add_line;
+	QHash<QString, QString> hash_names;
+	
 	bool mode_edit;
 	// methodes
 	private:
 	void buildDialog();
+	void clean();
+	bool checkOneName();
+	void updateHash();
 	
 	public slots:
 	void acceptCreation();
 	void acceptUpdate();
+	void addLine();
 };
 #endif

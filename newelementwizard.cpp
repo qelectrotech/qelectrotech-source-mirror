@@ -92,10 +92,7 @@ void NewElementWizard::valid() {
 		case Dimensions:
 			
 		case Category:
-			
 			current_state = Dimensions;
 			button_next -> setText(tr("Suivant"));
 	}
 }
-
-

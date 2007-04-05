@@ -58,11 +58,15 @@ void ElementsCategoryEditor::buildDialog() {
 	headers << tr("Langue") << tr("Nom");
 	category_names -> setHeaderLabels(headers);
 	
+	button_add_line = new QPushButton(tr("Ajouter une ligne"));
+	connect(button_add_line, SIGNAL(released()), this, SLOT(addLine()));
+	
 	buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
 	
 	editor_layout -> addWidget(new QLabel(tr("Vous pouvez sp\351cifier un nom par langue pour la cat\351gorie.")));
 	editor_layout -> addWidget(category_names);
+	editor_layout -> addWidget(button_add_line);
 	editor_layout -> addWidget(buttons);
 }
 
@@ -72,22 +76,15 @@ void ElementsCategoryEditor::buildDialog() {
 */
 void ElementsCategoryEditor::acceptCreation() {
 	// il doit y avoir au moins un nom
-	int names_count = category_names -> topLevelItemCount();
-	if (!names_count || (category_names -> topLevelItem(0) -> text(1)) == QString()) {
-		QMessageBox::critical(
-			this,
-			tr("La cat\351gorie doit avoir au moins un nom."),
-			tr("Vous devez entrer au moins un nom pour la cat\351gorie.")
-		);
-	}
+	if (!checkOneName()) return;
 	
 	// chargement des noms
 	category -> clearNames();
+	int names_count = category_names -> topLevelItemCount();
 	for (int i = 0 ; i < names_count ; ++ i) {
-		category -> addName(
-			category_names -> topLevelItem(i) -> text(0),
-			category_names -> topLevelItem(i) -> text(1)
-		);
+		QString lang  = category_names -> topLevelItem(i) -> text(0);
+		QString value = category_names -> topLevelItem(i) -> text(1);
+		if (lang != "" && value != "") category -> addName(lang, value);
 	}
 	
 	// cree un nom de dossier a partir du 1er nom de la categorie
@@ -103,5 +100,73 @@ void ElementsCategoryEditor::acceptCreation() {
 	categorie
 */
 void ElementsCategoryEditor::acceptUpdate() {
-	qDebug() << "acceptUpdate";
+	// il doit y avoir au moins un nom
+	if (!checkOneName()) return;
+	
+	// chargement des noms
+	category -> clearNames();
+	int names_count = category_names -> topLevelItemCount();
+	for (int i = 0 ; i < names_count ; ++ i) {
+		QString lang  = category_names -> topLevelItem(i) -> text(0);
+		QString value = category_names -> topLevelItem(i) -> text(1);
+		if (lang != "" && value != "") category -> addName(lang, value);
+	}
+	
+	category -> write();
+	
+	QDialog::accept();
+}
+
+/**
+	Nettoie la liste des noms en enlevant les lignes vides
+*/
+void ElementsCategoryEditor::clean() {
+	int names_count = category_names -> topLevelItemCount() - 1;
+	for (int i = names_count ; i >= 0 ; -- i) {
+		if (
+			category_names -> topLevelItem(i) -> text(0) == QString() &&\
+			category_names -> topLevelItem(i) -> text(1) == QString()
+		) {
+			category_names -> takeTopLevelItem(i);
+		}
+	}
+}
+
+/**
+	Ajoute une ligne a l'editeur
+*/
+void ElementsCategoryEditor::addLine() {
+	clean();
+	QTreeWidgetItem *qtwi = new QTreeWidgetItem();
+	qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+	category_names -> addTopLevelItem(qtwi);
+}
+
+/**
+	Verifie qu'il y a au moins un nom
+*/
+bool ElementsCategoryEditor::checkOneName() {
+	updateHash();
+	if (!hash_names.size()) {
+		QMessageBox::critical(
+			this,
+			tr("La cat\351gorie doit avoir au moins un nom."),
+			tr("Vous devez entrer au moins un nom pour la cat\351gorie.")
+		);
+		return(false);
+	}
+	return(true);
+}
+
+/**
+	Lit les noms valides dans hash_names
+*/
+void ElementsCategoryEditor::updateHash() {
+	hash_names.clear();
+	int names_count = category_names -> topLevelItemCount();
+	for (int i = 0 ; i < names_count ; ++ i) {
+		QString lang  = category_names -> topLevelItem(i) -> text(0);
+		QString value = category_names -> topLevelItem(i) -> text(1);
+		if (lang != "" && value != "") hash_names.insert(lang, value);
+	}
 }

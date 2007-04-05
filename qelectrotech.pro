@@ -26,7 +26,6 @@ HEADERS += aboutqet.h \
            newelementwizard.h \
            qetapp.h \
            terminal.h \
-           ui_export_fichier.h \
            elementscategoryeditor.h \
            elementscategory.h
 SOURCES += aboutqet.cpp \
