@@ -17,6 +17,10 @@ class ElementsCategoriesWidget : public QWidget {
 	private:
 	ElementsCategoriesList *elementscategorieslist;
 	QToolBar *toolbar;
+	QAction *action_reload;
+	QAction *action_new;
+	QAction *action_open;
+	QAction *action_delete;
 	
 	// methodes
 	bool rmdir(const QString &);
@@ -28,5 +32,6 @@ class ElementsCategoriesWidget : public QWidget {
 	void newCategory();
 	void editCategory();
 	void removeCategory();
+	void updateButtons();
 };
 #endif

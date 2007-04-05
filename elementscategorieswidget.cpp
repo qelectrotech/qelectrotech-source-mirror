@@ -7,13 +7,27 @@ ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget * parent) : QWidget(p
 	// initialise la liste des categories
 	elementscategorieslist = new ElementsCategoriesList(this);
 	
+	// actions
+	action_reload = new QAction(QIcon(":/ico/reload.png"),     tr("Recharger les cat\351gories"), this);
+	action_new    = new QAction(QIcon(":/ico/new.png"),        tr("Nouvelle cat\351gorie"),       this);
+	action_open   = new QAction(QIcon(":/ico/open.png"),       tr("\311diter la cat\351gorie"),   this);
+	action_delete = new QAction(QIcon(":/ico/editdelete.png"), tr("Supprimer la cat\351gorie"),   this);
+	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);
 	toolbar -> setMovable(false);
-	toolbar -> addAction(QIcon(":/ico/reload.png"),     tr("Recharger les cat\351gories"), elementscategorieslist, SLOT(reload())        );
-	toolbar -> addAction(QIcon(":/ico/new.png"),        tr("Nouvelle cat\351gorie"),       this,                   SLOT(newCategory())   );
-	toolbar -> addAction(QIcon(":/ico/open.png"),       tr("\311diter la cat\351gorie"),   this,                   SLOT(editCategory())  );
-	toolbar -> addAction(QIcon(":/ico/editdelete.png"), tr("Supprimer la cat\351gorie"),   this,                   SLOT(removeCategory()));
+	toolbar -> addAction(action_reload);
+	toolbar -> addAction(action_new);
+	toolbar -> addAction(action_open);
+	toolbar -> addAction(action_delete);
+	
+	connect(action_reload,          SIGNAL(triggered()),              elementscategorieslist, SLOT(reload())        );
+	connect(action_new,             SIGNAL(triggered()),              this,                   SLOT(newCategory())   );
+	connect(action_open,            SIGNAL(triggered()),              this,                   SLOT(editCategory())  );
+	connect(action_delete,          SIGNAL(triggered()),              this,                   SLOT(removeCategory()));
+	connect(elementscategorieslist, SIGNAL(itemSelectionChanged()),   this,                   SLOT(updateButtons()) );
+	
+	updateButtons();
 	
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
@@ -87,4 +101,13 @@ void ElementsCategoriesWidget::removeCategory() {
 	
 	// recharge la liste des categories
 	elementscategorieslist -> reload();
+}
+
+void ElementsCategoriesWidget::updateButtons() {
+	QList<QTreeWidgetItem *> sel_items = elementscategorieslist -> selectedItems();
+	bool sel_items_empty = !sel_items.isEmpty();
+	bool is_top_lvl_item = sel_items_empty && (elementscategorieslist -> indexOfTopLevelItem(sel_items.at(0)) != -1);
+	action_new    -> setEnabled(sel_items_empty);
+	action_open   -> setEnabled(sel_items_empty && !is_top_lvl_item);
+	action_delete -> setEnabled(sel_items_empty && !is_top_lvl_item);
 }
