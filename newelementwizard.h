@@ -19,23 +19,33 @@ class NewElementWizard : public QDialog {
 	
 	// attributs
 	private:
-	enum WizardState { Dimensions, Category };
+	enum WizardState { Category, Filename, Names, Dimensions, Orientations };
+	QString str_next, str_previous, str_finish;
+	QWidget *step1, *step2, *step3, *step4, *step5;
+	ElementsCategoriesWidget* categories_list;
+	QLineEdit *qle_filename;
 	QSpinBox *sb_largeur;
 	QSpinBox *sb_hauteur;
-	QWidget *etape1;
-	QWidget *etape2;
+	
 	QPushButton *button_previous;
 	QPushButton *button_next;
-	ElementsCategoriesWidget* categories_list;
 	WizardState current_state;
 	
 	// methodes
-	public:
+	private:
+	void buildStep1();
+	void buildStep2();
+	void buildStep3();
+	void buildStep4();
+	void buildStep5();
+	bool validStep1();
+	bool validStep2();
+	bool validStep3();
+	bool validStep4();
+	bool validStep5();
 	
-	// slots
 	public slots:
 	void previous();
 	void next();
-	void valid();
 };
 #endif
