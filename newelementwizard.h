@@ -10,6 +10,8 @@
 	  - et euh... pleins de choses interessantes
 */
 class ElementsCategoriesWidget;
+class NamesList;
+class Diagram;
 class NewElementWizard : public QDialog {
 	Q_OBJECT
 	// Constructeur, destructeur
@@ -24,12 +26,16 @@ class NewElementWizard : public QDialog {
 	QWidget *step1, *step2, *step3, *step4, *step5;
 	ElementsCategoriesWidget* categories_list;
 	QLineEdit *qle_filename;
-	QSpinBox *sb_largeur;
-	QSpinBox *sb_hauteur;
-	
+	QSpinBox *sb_width;
+	QSpinBox *sb_height;
+	QSpinBox *sb_hotspot_x;
+	QSpinBox *sb_hotspot_y;
+	NamesList *element_names;
 	QPushButton *button_previous;
 	QPushButton *button_next;
 	WizardState current_state;
+	QGraphicsView *diagram_view;
+	Diagram *diagram_scene;
 	
 	// methodes
 	private:
@@ -47,5 +53,7 @@ class NewElementWizard : public QDialog {
 	public slots:
 	void previous();
 	void next();
+	void updateScene();
+	void updateHotspotLimits();
 };
 #endif

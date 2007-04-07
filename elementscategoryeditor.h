@@ -6,6 +6,7 @@
 	categorie.
 */
 class ElementsCategory;
+class NamesList;
 class ElementsCategoryEditor : public QDialog {
 	Q_OBJECT
 	//Constructeurs, destructeur
@@ -16,23 +17,18 @@ class ElementsCategoryEditor : public QDialog {
 	
 	// attributs
 	private:
-	QTreeWidget *category_names;
 	ElementsCategory *category;
 	QDialogButtonBox *buttons;
-	QPushButton *button_add_line;
-	QHash<QString, QString> hash_names;
-	
+	NamesList *names_list;
 	bool mode_edit;
+	
 	// methodes
 	private:
 	void buildDialog();
-	void clean();
-	bool checkOneName();
-	void updateHash();
 	
 	public slots:
 	void acceptCreation();
 	void acceptUpdate();
-	void addLine();
+	
 };
 #endif

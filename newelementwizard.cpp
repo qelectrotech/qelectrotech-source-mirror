@@ -1,8 +1,11 @@
 #include "newelementwizard.h"
 #include "elementscategorieswidget.h"
 #include "elementscategorieslist.h"
+#include "nameslist.h"
+#include "diagram.h"
 
 NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) : QDialog(parent, f) {
+	setFixedSize(480, 280);
 	QVBoxLayout *dialog_layout = new QVBoxLayout();
 	setLayout(dialog_layout);
 	
@@ -141,7 +144,11 @@ void NewElementWizard::buildStep3() {
 	step3 = new QWidget(this);
 	QVBoxLayout *step3_layout = new QVBoxLayout();
 	step3_layout -> addWidget(new QLabel(tr("\311tape 3/5 : Indiquez le ou les noms de l'\351l\351ment.")));
-	/// @todo
+	element_names = new NamesList();
+	QHash<QString, QString> hash_name;
+	hash_name.insert(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment"));
+	element_names -> setNames(hash_name);
+	step3_layout -> addWidget(element_names);
 	step3 -> setLayout(step3_layout);
 }
 
@@ -150,23 +157,67 @@ void NewElementWizard::buildStep3() {
 */
 void NewElementWizard::buildStep4() {
 	step4 = new QWidget(this);
-	sb_largeur = new QSpinBox();
-	sb_largeur -> setMinimum(1);
-	sb_hauteur = new QSpinBox();
-	sb_hauteur -> setMinimum(1);
+	sb_width = new QSpinBox();
+	sb_width -> setMinimum(1);
+	sb_width -> setValue(3);
+	sb_width -> setSuffix(tr(" \32710 px"));
+	sb_height = new QSpinBox();
+	sb_height -> setMinimum(1);
+	sb_height -> setValue(7);
+	sb_height -> setSuffix(tr(" \32710 px"));
+	
+	sb_hotspot_x = new QSpinBox();
+	sb_hotspot_x -> setValue(15);
+	sb_hotspot_x -> setSuffix(tr(" px"));
+	sb_hotspot_y = new QSpinBox();
+	sb_hotspot_y -> setValue(35);
+	sb_hotspot_y -> setSuffix(tr(" px"));
+	
+	diagram_scene = new Diagram();
+	diagram_scene -> border_and_inset.setNbColumns(4);
+	diagram_scene -> border_and_inset.setColumnsHeight(140);
+	diagram_scene -> border_and_inset.displayInset(false);
+	diagram_view = new QGraphicsView(diagram_scene);
+	diagram_view -> setMaximumSize(
+		static_cast<int>((5 * diagram_scene -> border_and_inset.columnsWidth()) + (3 * MARGIN)),
+		300
+	);
+	diagram_view -> setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
+	diagram_view -> setResizeAnchor(QGraphicsView::AnchorUnderMouse);
+	diagram_view -> setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	
+	connect(sb_width,     SIGNAL(valueChanged(int)), this, SLOT(updateHotspotLimits()));
+	connect(sb_height,    SIGNAL(valueChanged(int)), this, SLOT(updateHotspotLimits()));
+	connect(sb_width,     SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
+	connect(sb_height,    SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
+	connect(sb_hotspot_x, SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
+	connect(sb_hotspot_y, SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
 	
 	QGridLayout *grid_layout = new QGridLayout();
-	grid_layout -> addWidget(new QLabel(tr("Largeur :")),  0, 0);
-	grid_layout -> addWidget(sb_largeur,                   0, 1);
-	grid_layout -> addWidget(new QLabel(tr("\327 10 px")), 0, 2);
-	grid_layout -> addWidget(new QLabel(tr("Hauteur :")),  1, 0);
-	grid_layout -> addWidget(sb_hauteur,                   1, 1);
-	grid_layout -> addWidget(new QLabel(tr("\327 10 px")), 1, 2);
+	grid_layout -> addWidget(new QLabel(tr("<span style=\"text-decoration:underline;\">Dimensions</span>")),   0, 0);
+	grid_layout -> addWidget(new QLabel(tr("Largeur :")),      1, 0);
+	grid_layout -> addWidget(sb_width,                         1, 1);
+	grid_layout -> addWidget(new QLabel(tr("Hauteur :")),      2, 0);
+	grid_layout -> addWidget(sb_height,                        2, 1);
+	grid_layout -> addWidget(new QLabel(tr("<span style=\"text-decoration:underline;\">Hotspot</span>")),      3, 0);
+	grid_layout -> addWidget(new QLabel(tr("Abscisse :")),     4, 0);
+	grid_layout -> addWidget(sb_hotspot_x,                     4, 1);
+	grid_layout -> addWidget(new QLabel(tr("Ordonn\351e :")),  5, 0);
+	grid_layout -> addWidget(sb_hotspot_y,                     5, 1);
+	
+	QHBoxLayout *step4_hlayout = new QHBoxLayout();
+	
+	step4_hlayout -> addLayout(grid_layout);
+	step4_hlayout -> addWidget(diagram_view);
+	
 	
 	QVBoxLayout *step4_layout = new QVBoxLayout();
-	step4_layout -> addWidget(new QLabel(tr("\311tape 4/5 : Saisissez la largeur et la hauteur du nouvel \351l\351ment")));
-	step4_layout -> addLayout(grid_layout);
+	step4_layout -> addWidget(new QLabel(tr("\311tape 4/5 : Saisissez les dimensions du nouvel \351l\351ment ainsi\n que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris)")));
+	step4_layout -> addLayout(step4_hlayout);
 	step4 -> setLayout(step4_layout);
+	
+	updateScene();
+	updateHotspotLimits();
 }
 
 /**
@@ -207,6 +258,8 @@ bool NewElementWizard::validStep2() {
 		return(false);
 	}
 	
+	if (!file_name.endsWith(".elmt")) file_name += ".elmt";
+	
 	// le fichier existe peut etre deja
 	if (QFileInfo(dir_path + "/" + file_name).exists()) {
 		QMessageBox::StandardButton answer = QMessageBox::question(
@@ -223,7 +276,7 @@ bool NewElementWizard::validStep2() {
 }
 
 bool NewElementWizard::validStep3() {
-	return(true);
+	return(element_names -> checkOneName());
 }
 
 bool NewElementWizard::validStep4() {
@@ -234,3 +287,43 @@ bool NewElementWizard::validStep5() {
 	return(true);
 }
 
+void NewElementWizard::updateScene() {
+	foreach (QGraphicsItem *qgi, diagram_scene -> items()) {
+		diagram_scene -> removeItem(qgi);
+		delete qgi;
+	}
+	int elmt_width  = sb_width  -> value() * 10;
+	int elmt_height = sb_height -> value() * 10;
+	int hotspot_x   = sb_hotspot_x -> value();
+	int hotspot_y   = sb_hotspot_y -> value();
+	int margin_x = 10;
+	int margin_y = 30;
+	diagram_scene -> addRect(QRectF(margin_x, margin_y, sb_width -> value() * 10.0, sb_height -> value() * 10.0));
+	QPen hotspot_pen(Qt::red);
+	QGraphicsLineItem *line_hotspot_x = diagram_scene -> addLine(
+		QLine(
+			margin_x,
+			margin_y + hotspot_y,
+			margin_x + elmt_width,
+			margin_y + hotspot_y
+		),
+		hotspot_pen
+	);
+	QGraphicsLineItem *line_hotspot_y = diagram_scene -> addLine(
+		QLine(
+			margin_x + hotspot_x,
+			margin_y,
+			margin_x + hotspot_x,
+			margin_y + elmt_height
+		),
+		hotspot_pen
+	);
+	line_hotspot_x -> setZValue(10);
+	line_hotspot_y -> setZValue(10);
+	diagram_scene -> setSceneRect(QRect(0, 0, elmt_width + 10, elmt_height + 10));
+}
+
+void NewElementWizard::updateHotspotLimits() {
+	sb_hotspot_x -> setMaximum(sb_width  -> value() * 10);
+	sb_hotspot_y -> setMaximum(sb_height -> value() * 10);
+}
