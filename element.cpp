@@ -445,3 +445,4 @@ QList<QDomElement> Element::findInDomElement(QDomElement e, QString parent, QStr
 	}
 	return(return_list);
 }
+

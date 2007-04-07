@@ -5,9 +5,12 @@
 	Cette classe represente un dialogue qui permet a l'utilisateur de specifier
 	les premiers parametres de l'element qu'il va construire.
 	Ces parametres sont :
-	  - la largeur
-	  - la hauteur
-	  - et euh... pleins de choses interessantes
+	  - la categorie dans laquelle il faut enregistrer l'element
+	  - le nom du fichier dans lequel il faut enregistrer l'element
+	  - les noms de cet element
+	  - les dimensions
+	  - la position du hotspot
+	  - les orientations possibles
 */
 class ElementsCategoriesWidget;
 class NamesList;
@@ -36,6 +39,10 @@ class NewElementWizard : public QDialog {
 	WizardState current_state;
 	QGraphicsView *diagram_view;
 	Diagram *diagram_scene;
+	QComboBox *north_orientation;
+	QComboBox *east_orientation;
+	QComboBox *south_orientation;
+	QComboBox *west_orientation;
 	
 	// methodes
 	private:
@@ -49,6 +56,7 @@ class NewElementWizard : public QDialog {
 	bool validStep3();
 	bool validStep4();
 	bool validStep5();
+	void createNewElement();
 	
 	public slots:
 	void previous();

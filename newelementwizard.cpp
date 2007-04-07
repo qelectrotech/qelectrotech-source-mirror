@@ -3,7 +3,13 @@
 #include "elementscategorieslist.h"
 #include "nameslist.h"
 #include "diagram.h"
+#include "element.h"
 
+/**
+	Constructeur
+	@param parent QWidget parent de ce dialogue
+	@param f flags pour le dialogue
+*/
 NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) : QDialog(parent, f) {
 	setFixedSize(480, 280);
 	QVBoxLayout *dialog_layout = new QVBoxLayout();
@@ -48,9 +54,15 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) : QDialog
 	
 }
 
+/**
+	Destructeur
+*/
 NewElementWizard::~NewElementWizard() {
 }
 
+/**
+	Passe a l'etape precedente
+*/
 void NewElementWizard::previous() {
 	switch(current_state) {
 		case Category:
@@ -80,6 +92,9 @@ void NewElementWizard::previous() {
 	}
 }
 
+/**
+	Passe a l'etape suivante
+*/
 void NewElementWizard::next() {
 	switch(current_state) {
 		case Category:
@@ -111,6 +126,7 @@ void NewElementWizard::next() {
 			break;
 		case Orientations:
 			if (!validStep5()) return;
+			createNewElement();
 	}
 }
 
@@ -120,7 +136,10 @@ void NewElementWizard::next() {
 void NewElementWizard::buildStep1() {
 	step1 = new QWidget(this);
 	QVBoxLayout *step1_layout = new QVBoxLayout();
-	step1_layout -> addWidget(new QLabel(tr("\311tape 1/5 : S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.")));
+	QLabel *explication = new QLabel(tr("\311tape 1/5 : S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment."));
+	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	explication -> setWordWrap(true);
+	step1_layout -> addWidget(explication);
 	categories_list = new ElementsCategoriesWidget();
 	step1_layout -> addWidget(categories_list);
 	step1 -> setLayout(step1_layout);
@@ -132,8 +151,16 @@ void NewElementWizard::buildStep1() {
 void NewElementWizard::buildStep2() {
 	step2 = new QWidget(this);
 	QVBoxLayout *step2_layout = new QVBoxLayout();
-	step2_layout -> addWidget(new QLabel(tr("\311tape 2/5 : Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment.")));
+	QLabel *explication1 = new QLabel(tr("\311tape 2/5 : Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment."));
+	explication1 -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	explication1 -> setWordWrap(true);
+	QLabel *explication2 = new QLabel(tr("Vous n'\352tes pas oblig\351 de pr\351ciser l'extension *.elmt. Elle sera ajout\351e automatiquement."));
+	explication2 -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	explication2 -> setWordWrap(true);
+	step2_layout -> addWidget(explication1);
 	step2_layout -> addWidget(qle_filename = new QLineEdit());
+	step2_layout -> addWidget(explication2);
+	step2_layout -> addSpacing(100);
 	step2 -> setLayout(step2_layout);
 }
 
@@ -143,7 +170,10 @@ void NewElementWizard::buildStep2() {
 void NewElementWizard::buildStep3() {
 	step3 = new QWidget(this);
 	QVBoxLayout *step3_layout = new QVBoxLayout();
-	step3_layout -> addWidget(new QLabel(tr("\311tape 3/5 : Indiquez le ou les noms de l'\351l\351ment.")));
+	QLabel *explication = new QLabel(tr("\311tape 3/5 : Indiquez le ou les noms de l'\351l\351ment."));
+	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	explication -> setWordWrap(true);
+	step3_layout -> addWidget(explication);
 	element_names = new NamesList();
 	QHash<QString, QString> hash_name;
 	hash_name.insert(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment"));
@@ -193,6 +223,10 @@ void NewElementWizard::buildStep4() {
 	connect(sb_hotspot_x, SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
 	connect(sb_hotspot_y, SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
 	
+	QLabel *explication = new QLabel(tr("\311tape 4/5 : Saisissez les dimensions du nouvel \351l\351ment ainsi que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris) en consid\351rant que l'\351l\351ment est dans son orientation par d\351faut."));
+	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	explication -> setWordWrap(true);
+	
 	QGridLayout *grid_layout = new QGridLayout();
 	grid_layout -> addWidget(new QLabel(tr("<span style=\"text-decoration:underline;\">Dimensions</span>")),   0, 0);
 	grid_layout -> addWidget(new QLabel(tr("Largeur :")),      1, 0);
@@ -212,7 +246,7 @@ void NewElementWizard::buildStep4() {
 	
 	
 	QVBoxLayout *step4_layout = new QVBoxLayout();
-	step4_layout -> addWidget(new QLabel(tr("\311tape 4/5 : Saisissez les dimensions du nouvel \351l\351ment ainsi\n que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris)")));
+	step4_layout -> addWidget(explication);
 	step4_layout -> addLayout(step4_hlayout);
 	step4 -> setLayout(step4_layout);
 	
@@ -225,12 +259,49 @@ void NewElementWizard::buildStep4() {
 */
 void NewElementWizard::buildStep5() {
 	step5 = new QWidget(this);
+	
+	QLabel *explication = new QLabel(tr("\311tape 5/5 : Indiquez les orientations possibles pour le nouvel \351l\351ment."));
+	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	explication -> setWordWrap(true);
+	
+	#define MK_COMBO_BOX(a) a##_orientation = new QComboBox(); \
+	a##_orientation -> addItem(tr("Par d\351faut"), "d"); \
+	a##_orientation -> addItem(tr("Possible"),      "y"); \
+	a##_orientation -> addItem(tr("Impossible"),    "n");
+	
+	// 4 combo box
+	MK_COMBO_BOX(north)
+	MK_COMBO_BOX(east)
+	MK_COMBO_BOX(south)
+	MK_COMBO_BOX(west)
+	
+	#undef MK_COMBO_BOX
+	
+	east_orientation  -> setCurrentIndex(1);
+	south_orientation -> setCurrentIndex(1);
+	west_orientation  -> setCurrentIndex(1);
+	
+	QGridLayout *qgl = new QGridLayout();
+	qgl -> addWidget(new QLabel(tr("Nord :")),  0, 0);
+	qgl -> addWidget(north_orientation,         0, 1);
+	qgl -> addWidget(new QLabel(tr("Est :")),   1, 0);
+	qgl -> addWidget(east_orientation,          1, 1);
+	qgl -> addWidget(new QLabel(tr("Sud :")),   2, 0);
+	qgl -> addWidget(south_orientation,         2, 1);
+	qgl -> addWidget(new QLabel(tr("Ouest :")), 3, 0);
+	qgl -> addWidget(west_orientation,          3, 1);
+	
 	QVBoxLayout *step5_layout = new QVBoxLayout();
-	step5_layout -> addWidget(new QLabel(tr("\311tape 5/5 : Indiquez les orientations possibles pour le nouvel \351l\351ment.")));
-	/// @todo
+	step5_layout -> addWidget(explication);
+	step5_layout -> addLayout(qgl);
+	step5_layout -> addSpacing(75);
 	step5 -> setLayout(step5_layout);
 }
 
+/**
+	Valide l'etape 1
+	@return true si l'etape est validee, false sinon
+*/
 bool NewElementWizard::validStep1() {
 	// il doit y avoir une categorie selectionnee
 	bool step1_ok = categories_list -> elementsCategoriesList().selectedCategoryPath() != QString();
@@ -244,6 +315,10 @@ bool NewElementWizard::validStep1() {
 	return(step1_ok);
 }
 
+/**
+	Valide l'etape 2
+	@return true si l'etape est validee, false sinon
+*/
 bool NewElementWizard::validStep2() {
 	QString dir_path = categories_list -> elementsCategoriesList().selectedCategoryPath();
 	QString file_name = qle_filename -> text();
@@ -275,18 +350,50 @@ bool NewElementWizard::validStep2() {
 	return(true);
 }
 
+/**
+	Valide l'etape 3
+	@return true si l'etape est validee, false sinon
+*/
 bool NewElementWizard::validStep3() {
+	// il doit y avoir au moins un nom
 	return(element_names -> checkOneName());
 }
 
+/**
+	Valide l'etape 4
+	@return true si l'etape est validee, false sinon
+*/
 bool NewElementWizard::validStep4() {
+	// les contraintes imposees par les widgets sont suffisantes
 	return(true);
 }
 
+/**
+	Valide l'etape 5
+	Cette fonction s'assure qu'il y ait toujours exactement une orientation
+	"par defaut"
+	@return true si l'etape est validee, false sinon
+*/
 bool NewElementWizard::validStep5() {
+	int nb_orientations = 0;
+	if (!north_orientation -> currentIndex()) ++ nb_orientations;
+	if (!east_orientation  -> currentIndex()) ++ nb_orientations;
+	if (!south_orientation -> currentIndex()) ++ nb_orientations;
+	if (!west_orientation  -> currentIndex()) ++ nb_orientations;
+	if (nb_orientations != 1) {
+		QMessageBox::critical(
+			this,
+			tr("Erreur"),
+			tr("Il doit y avoir exactement une orientation par d\351faut.")
+		);
+		return(false);
+	}
 	return(true);
 }
 
+/**
+	Met a jour le schema de l'etape 4
+*/
 void NewElementWizard::updateScene() {
 	foreach (QGraphicsItem *qgi, diagram_scene -> items()) {
 		diagram_scene -> removeItem(qgi);
@@ -323,7 +430,18 @@ void NewElementWizard::updateScene() {
 	diagram_scene -> setSceneRect(QRect(0, 0, elmt_width + 10, elmt_height + 10));
 }
 
+/**
+	Met a jour les limites des QSpinBox de l'etape 4
+*/
 void NewElementWizard::updateHotspotLimits() {
 	sb_hotspot_x -> setMaximum(sb_width  -> value() * 10);
 	sb_hotspot_y -> setMaximum(sb_height -> value() * 10);
+}
+
+/**
+	Cree le nouvel element
+*/
+void NewElementWizard::createNewElement() {
+	/// @todo
+	QMessageBox::warning(this, "Creation de l'element", "Not Implemented Yet");
 }
