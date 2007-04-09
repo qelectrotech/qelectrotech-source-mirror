@@ -134,6 +134,10 @@ bool Terminal::addConducer(Conducer *f) {
 	return(true);
 }
 
+/**
+	Enleve un conducteur donne a la borne
+	@param f Conducteur a enlever
+*/
 void Terminal::removeConducer(Conducer *f) {
 	int index = liste_conducers.indexOf(f);
 	if (index == -1) return;
@@ -419,4 +423,3 @@ bool Terminal::fromXml(QDomElement &terminal) {
 		terminal.attribute("orientation").toInt() == sens
 	);
 }
-

@@ -1,6 +1,13 @@
 #include "conducersegment.h"
 #include <QDebug>
 
+/**
+	Constructeur
+	@param p1 Le point 
+	@param p2 
+	@param cs1 Le segment precedent
+	@param cs2 Le segment suivant
+*/
 ConducerSegment::ConducerSegment(QPointF p1, QPointF p2, ConducerSegment *cs1, ConducerSegment *cs2) {
 	setFirstPoint(p1);
 	setSecondPoint(p2);
@@ -8,6 +15,9 @@ ConducerSegment::ConducerSegment(QPointF p1, QPointF p2, ConducerSegment *cs1, C
 	setNextSegment(cs2);
 }
 
+/**
+	Destructeur - Relie le segment precedent au suivant
+*/
 ConducerSegment::~ConducerSegment() {
 	if (hasPreviousSegment()) previousSegment() -> setNextSegment(nextSegment());
 	if (hasNextSegment()) nextSegment() -> setPreviousSegment(previousSegment());
@@ -250,6 +260,10 @@ bool ConducerSegment::canMove2ndPointY(qreal asked_dy, qreal &possible_dy) {
 	}
 }
 
+/**
+	Gere les mouvements sur l'axe horizontal
+	@param dx taille du deplacement en pixels
+*/
 void ConducerSegment::moveX(qreal dx) {
 	if (isHorizontal()) return;
 	Q_ASSERT_X(isVertical(), "ConducerSegment::moveX", "segment non vertical");
@@ -294,6 +308,10 @@ void ConducerSegment::moveX(qreal dx) {
 	}
 }
 
+/**
+	Gere les mouvements sur l'axe vertical
+	@param dx taille du deplacement en pixels
+*/
 void ConducerSegment::moveY(qreal dy) {
 	if (isVertical()) return;
 	Q_ASSERT_X(isHorizontal(), "ConducerSegment::moveY", "segment non horizontal");
@@ -406,6 +424,10 @@ void ConducerSegment::moveY(qreal dy) {
 	}
 }
 */
+/**
+	Change le segment precedent
+	@param ps Le nouveau segment precedent
+*/
 void ConducerSegment::setPreviousSegment(ConducerSegment *ps) {
 	previous_segment = ps;
 	if (hasPreviousSegment()) {
@@ -413,6 +435,10 @@ void ConducerSegment::setPreviousSegment(ConducerSegment *ps) {
 	}
 }
 
+/**
+	Change le segment suivant
+	@param ps Le nouveau segment suivant
+*/
 void ConducerSegment::setNextSegment(ConducerSegment *ns) {
 	next_segment = ns;
 	if (hasNextSegment()) {
@@ -420,46 +446,81 @@ void ConducerSegment::setNextSegment(ConducerSegment *ns) {
 	}
 }
 
+/**
+	@return Le segment precedent
+*/
 ConducerSegment *ConducerSegment::previousSegment() {
 	return(previous_segment);
 }
 
+/**
+	@return Le segment suivant
+*/
 ConducerSegment *ConducerSegment::nextSegment() {
 	return(next_segment);
 }
 
+/**
+	@return true si le segment est vertical, false sinon
+*/
 bool ConducerSegment::isVertical() {
 	return(point1.x() == point2.x());
 }
 
+/**
+	@return true si le segment est horizontal, false sinon
+*/
 bool ConducerSegment::isHorizontal() {
 	return(point1.y() == point2.y());
 }
 
+/**
+	@return le premier point du segment
+*/
 QPointF ConducerSegment::firstPoint() {
 	return(point1);
 }
 
+/**
+	@return le second point du segment
+*/
 QPointF ConducerSegment::secondPoint() {
 	return(point2);
 }
 
+/**
+	Permet de changer la position du premier point du segment
+	@param p La nouvelle position du premier point
+*/
 void ConducerSegment::setFirstPoint(QPointF p) {
 	point1 = p;
 }
 
+/**
+	Permet de changer la position du second point du segment
+	@param p La nouvelle position du second point
+*/
 void ConducerSegment::setSecondPoint(QPointF p) {
 	point2 = p;
 }
 
+/**
+	@return true si le segment a un segment precedent, false sinon
+*/
 bool ConducerSegment::hasPreviousSegment() {
 	return(previous_segment != NULL);
 }
 
+/**
+	@return true si le segment a un segment suivant, false sinon
+*/
 bool ConducerSegment::hasNextSegment() {
 	return(next_segment != NULL);
 }
 
+/**
+	@return Le centre du rectangle delimitant le conducteur
+*/
 QPointF ConducerSegment::middle() {
 	return(
 		QPointF(
@@ -469,6 +530,9 @@ QPointF ConducerSegment::middle() {
 	);
 }
 
+/**
+	@return La longueur du conducteur
+*/
 qreal ConducerSegment::length() {
 	if (isHorizontal()) {
 		return(secondPoint().x() - firstPoint().x());

@@ -216,6 +216,9 @@ QWidget *ExportDialog::rightPart() {
 	return(retour);
 }
 
+/**
+	Slot corrigeant la largeur (typiquement lors d'un changement de la hauteur)
+*/
 void ExportDialog::slot_correctWidth() {
 	if (!keep_aspect_ratio -> isChecked() || dontchangewidth) return;
 	dontchangeheight = true;
@@ -223,6 +226,9 @@ void ExportDialog::slot_correctWidth() {
 	dontchangeheight = false;
 }
 
+/**
+	Slot corrigeant la hauteur (typiquement lors d'un changement de la largeur)
+*/
 void ExportDialog::slot_correctHeight() {
 	if (!keep_aspect_ratio -> isChecked() || dontchangeheight) return;
 	dontchangewidth = true;
@@ -230,6 +236,9 @@ void ExportDialog::slot_correctHeight() {
 	dontchangewidth = false;
 }
 
+/**
+	Slot demandant a l'utilisateur de choisir un fichier
+*/
 void ExportDialog::slot_chooseAFile() {
 	QString user_file = QFileDialog::getSaveFileName(
 		this,
@@ -243,6 +252,10 @@ void ExportDialog::slot_chooseAFile() {
 	}
 }
 
+/**
+	Genere l'image a exporter
+	@return l'image a exporter
+*/
 QImage ExportDialog::generateImage() {
 	// memorise les parametres relatifs au schema
 	bool state_drawBorder  = diagram -> border_and_inset.borderIsDisplayed();
@@ -280,6 +293,10 @@ QImage ExportDialog::generateImage() {
 	return(image);
 }
 
+/**
+	Slot effectuant les verifications necessaires apres la validation du
+	dialogue.
+*/
 void ExportDialog::slot_check() {
 	
 	// verifie que le fichier a ete specifie

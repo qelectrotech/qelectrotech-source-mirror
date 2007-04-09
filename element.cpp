@@ -118,6 +118,11 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 	return(QGraphicsItem::itemChange(change, value));
 }
 
+/**
+	Permet de specifier l'orientation de l'element
+	@param o la nouvelle orientation de l'objet
+	@return true si l'orientation a pu etre appliquee, false sinon
+*/
 bool Element::setOrientation(Terminal::Orientation o) {
 	// verifie que l'orientation demandee est acceptee
 	if (!acceptOrientation(o)) return(false);
@@ -418,7 +423,6 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	return(element);
 }
 
-
 /**
 	Methode statique sans rapport direct avec la manipulation des elements.
 	Etant donne un element XML e, elle renvoie la liste de tous les elements
@@ -445,4 +449,3 @@ QList<QDomElement> Element::findInDomElement(QDomElement e, QString parent, QStr
 	}
 	return(return_list);
 }
-

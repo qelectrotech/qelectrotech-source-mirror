@@ -329,10 +329,17 @@ bool DiagramView::ouvrir(QString n_fichier, int *erreur) {
 	}
 }
 
+/**
+	Slot appele lorsque la selection change.
+*/
 void DiagramView::slot_selectionChanged() {
 	emit(selectionChanged());
 }
 
+/**
+	Gere la fermeture du schema.
+	@param event Le QCloseEvent decrivant l'evenement
+*/
 void DiagramView::closeEvent(QCloseEvent *event) {
 	// demande d'abord a l'utilisateur s'il veut enregistrer le schema en cours
 	QMessageBox::StandardButton reponse = QMessageBox::question(
@@ -413,11 +420,17 @@ bool DiagramView::private_enregistrer(QString &n_fichier) {
 	return(true);
 }
 
+/**
+	Exporte le schema.
+*/
 void DiagramView::dialogExport() {
 	ExportDialog ed(scene, this);
 	ed.exec();
 }
 
+/**
+	Imprime le schema.
+*/
 void DiagramView::dialogPrint() {
 	QPrinter qprin;
 	qprin.setOutputFormat(QPrinter::PdfFormat);
@@ -436,6 +449,9 @@ void DiagramView::dialogPrint() {
 	}
 }
 
+/**
+	Edite les informations du schema.
+*/
 void DiagramView::dialogEditInfos() {
 	// recupere le cartouche du schema
 	BorderInset *inset = &(scene -> border_and_inset);
@@ -484,10 +500,16 @@ void DiagramView::dialogEditInfos() {
 	}
 }
 
+/**
+	@return true s'il y a des elements selectionnes sur le schema, false sinon
+*/
 bool DiagramView::hasSelectedItems() {
 	return(scene -> selectedItems().size() > 0);
 }
 
+/**
+	Ajoute une colonne au schema.
+*/
 void DiagramView::addColumn() {
 	// ajoute la colonne
 	scene -> border_and_inset.addColumn();
@@ -499,6 +521,9 @@ void DiagramView::addColumn() {
 	scene -> update(sceneRect());
 }
 
+/**
+	Enleve une colonne au schema.
+*/
 void DiagramView::removeColumn() {
 	scene -> border_and_inset.removeColumn();
 	
@@ -510,10 +535,16 @@ void DiagramView::removeColumn() {
 	scene -> update(old_sr);
 }
 
+/**
+	Agrandit le schema en hauteur
+*/
 void DiagramView::expand() {
 	adjustHeight(20.0);
 }
 
+/**
+	Retrecit le schema en hauteur
+*/
 void DiagramView::shrink() {
 	adjustHeight(-20.0);
 }

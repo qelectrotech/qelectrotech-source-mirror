@@ -103,14 +103,27 @@ QHash<QString, QString> ElementsCategory::categoryNames() const {
 	return(category_names);
 }
 
+/**
+	Vide la liste des noms de la categorie
+*/
 void ElementsCategory::clearNames() {
 	category_names.clear();
 }
 
+/**
+	Ajoute un nom a la categorie.
+	Si la langue existe deja, le nom pour cette langue est remplace.
+	@param lang La langue pour laquelle le nom est utilisable
+	@param value Le nom
+*/
 void ElementsCategory::addName(const QString &lang, const QString &value) {
 	category_names.insert(lang, value);
 }
 
+/**
+	Cree la categorie
+	@return true si la creation a reussi, false sinon
+*/
 bool ElementsCategory::write() const {
 	
 	// cree le dossier de la categorie

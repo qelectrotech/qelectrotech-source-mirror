@@ -1,6 +1,11 @@
 #ifndef ELEMENTS_CATEGORY_H
 #define ELEMENTS_CATEGORY_H
 #include <QtCore>
+/**
+	Cette classe represente une categorie d'elements.
+	Une categorie d'elements est en fait un dossier avec un fichier
+	qet_directory contenant ses caracteristiques (pour le moment : ses noms).
+*/
 class ElementsCategory : public QDir {
 	// Constructeur, destructeur
 	public:

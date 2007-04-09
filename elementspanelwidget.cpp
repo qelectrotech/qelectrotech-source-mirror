@@ -1,6 +1,10 @@
 #include "elementspanelwidget.h"
 #include "newelementwizard.h"
 
+/**
+	Constructeur
+	@param parent Le QWidget parent de ce widget
+*/
 ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	// initalise le panel d'elements
 	elements_panel = new ElementsPanel(this);
@@ -21,6 +25,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	setLayout(vlayout);
 }
 
+/**
+	Appelle l'assistant de creation de nouvel element
+*/
 void ElementsPanelWidget::newElement() {
 	NewElementWizard *new_element_wizard = new NewElementWizard();
 	new_element_wizard -> exec();

@@ -3,7 +3,11 @@
 #include "elementscategoryeditor.h"
 #include "elementscategory.h"
 
-ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget * parent) : QWidget(parent) {
+/**
+	Constructeur
+	@param parent Le QWidget parent
+*/
+ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget *parent) : QWidget(parent) {
 	// initialise la liste des categories
 	elementscategorieslist = new ElementsCategoriesList(this);
 	
@@ -39,10 +43,16 @@ ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget * parent) : QWidget(p
 	setLayout(vlayout);
 }
 
+/**
+	Destructeur
+*/
 ElementsCategoriesWidget::~ElementsCategoriesWidget() {
 	
 }
 
+/**
+	Lance un editeur de categorie en mode "creation de categorie"
+*/
 void ElementsCategoriesWidget::newCategory() {
 	QString s_c_path = elementscategorieslist -> selectedCategoryPath();
 	if (s_c_path.isNull()) return;
@@ -50,6 +60,9 @@ void ElementsCategoriesWidget::newCategory() {
 	elementscategorieslist -> reload();
 }
 
+/**
+	Lance un editeur de categorie en mode "edition de categorie"
+*/
 void ElementsCategoriesWidget::editCategory() {
 	QString s_c_path = elementscategorieslist -> selectedCategoryPath();
 	if (s_c_path.isNull()) return;
@@ -57,6 +70,9 @@ void ElementsCategoriesWidget::editCategory() {
 	elementscategorieslist -> reload();
 }
 
+/**
+	Supprime la categorie selectionnee
+*/
 void ElementsCategoriesWidget::removeCategory() {
 	// recupere le nom et le chemin de la categorie
 	QString s_c_name = elementscategorieslist -> selectedCategoryName();
@@ -103,6 +119,10 @@ void ElementsCategoriesWidget::removeCategory() {
 	elementscategorieslist -> reload();
 }
 
+/**
+	Met a jour l'etat (active / desactive) des boutons en fonction de ce qui
+	est selectionne.
+*/
 void ElementsCategoriesWidget::updateButtons() {
 	QList<QTreeWidgetItem *> sel_items = elementscategorieslist -> selectedItems();
 	bool sel_items_empty = !sel_items.isEmpty();

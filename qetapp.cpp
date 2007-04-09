@@ -1,5 +1,4 @@
 #include "qetapp.h"
-//#include "diagram.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
 #include "aboutqet.h"

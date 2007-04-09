@@ -134,6 +134,13 @@ void BorderInset::removeColumn() {
 	updateRectangles();
 }
 
+/**
+	Permet de changer le nombre de colonnes.
+	Si ce nombre de colonnes est inferieur au minimum requis, cette fonction ne
+	fait rien
+	@param nb_c nouveau nombre de colonnes
+	@see minNbColumns()
+*/
 void BorderInset::setNbColumns(int nb_c) {
 	if (nb_c < min_nb_columns) return;
 	nb_columns = nb_c;

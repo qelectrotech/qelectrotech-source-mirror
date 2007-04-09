@@ -3,7 +3,8 @@
 #include <QtGui>
 /**
 	Cette classe represente un widget integrant la liste des categories
-	de l'utilisteur surplombee de boutons permettant d'ajouter 
+	de l'utilisteur surplombee de boutons permettant d'ajouter, de modifier
+	ou de supprimer des categories
 */
 class ElementsCategoriesList;
 class ElementsCategoriesWidget : public QWidget {
@@ -26,7 +27,7 @@ class ElementsCategoriesWidget : public QWidget {
 	bool rmdir(const QString &);
 	
 	public:
-	inline ElementsCategoriesList &elementsCategoriesList() const { return(*elementscategorieslist); }
+	ElementsCategoriesList &elementsCategoriesList() const;
 	
 	public slots:
 	void newCategory();
@@ -34,4 +35,12 @@ class ElementsCategoriesWidget : public QWidget {
 	void removeCategory();
 	void updateButtons();
 };
+
+/**
+	@return La liste des categories d'elements du widget
+*/
+inline ElementsCategoriesList &ElementsCategoriesWidget::elementsCategoriesList() const {
+	return(*elementscategorieslist);
+}
+
 #endif

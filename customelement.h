@@ -2,6 +2,12 @@
 	#define ELEMENTPERSO_H
 	#include "fixedelement.h"
 	#include <QtGui>
+	/**
+		Cette classe represente un element electrique. Elle est utilisable
+		comme un element fixe. La difference est que l'element perso lit
+		sa description (noms, dessin, comportement) dans un fichier XML a fournir
+		en parametre.
+	*/
 	class CustomElement : public FixedElement {
 		public:
 		CustomElement(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);

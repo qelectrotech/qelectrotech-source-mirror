@@ -508,6 +508,10 @@ void Conducer::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	calculateTextItemPosition();
 }
 
+/**
+	Gere les mouvements de souris au dessus du conducteur
+	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
+*/
 void Conducer::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 	if (isSelected()) {
 		QPointF hover_point = mapFromScene(e -> pos());
@@ -596,6 +600,14 @@ void Conducer::updatePoints() {
 	orig_dist_2_terms_y = b2.y() - b1.y();
 }
 
+/**
+	Renvoie une valeur donnee apres l'avoir bornee entre deux autres valeurs,
+	en y ajoutant une marge interne.
+	@param tobound valeur a borner
+	@param bound1 borne 1
+	@param bound2 borne 2
+	@return La valeur bornee
+*/
 qreal Conducer::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
 	qreal space = 5.0;
 	if (bound1 < bound2) {
@@ -605,11 +617,21 @@ qreal Conducer::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
 	}
 }
 
+/**
+	Renvoie une valeur donnee apres l'avoir bornee avant ou apres une valeur.
+	@param tobound valeur a borner
+	@param bound borne
+	@param positive true pour borner la valeur avant la borne, false sinon
+	@return La valeur bornee
+*/
 qreal Conducer::conducer_bound(qreal tobound, qreal bound, bool positive) {
 	qreal space = 5.0;
 	return(positive ? qMax(tobound, bound + space) : qMin(tobound, bound - space));
 }
 
+/**
+	@return Le nombre de segments composant le conducteur.
+*/
 int Conducer::nbSegments() {
 	if (segments == NULL) return(0);
 	int nb_seg = 1;
@@ -672,6 +694,13 @@ void Conducer::pointsToSegments(QList<QPointF> points_list) {
 	}
 }
 
+/**
+	Permet de savoir si un point est tres proche d'un autre. Cela sert surtout
+	pour determiner si un clic a ete effectue pres d'un point donne.
+	@param press_point Point effectivement clique
+	@param point point cliquable
+	@return true si l'on peut considerer que le point a ete clique, false sinon
+*/
 bool Conducer::hasClickedOn(QPointF press_point, QPointF point) {
 	return (
 		press_point.x() >= point.x() - 5.0 &&\
@@ -681,6 +710,11 @@ bool Conducer::hasClickedOn(QPointF press_point, QPointF point) {
 	);
 }
 
+/**
+	Charge les caracteristiques du conducteur depuis un element XML.
+	@param e Un element XML
+	@return true si le chargement a reussi, false sinon
+*/
 bool Conducer::fromXml(QDomElement &e) {
 	text_item -> setPlainText(e.attribute("num"));
 	
@@ -752,6 +786,13 @@ bool Conducer::fromXml(QDomElement &e) {
 	return(true);
 }
 
+/**
+	Exporte les caracteristiques du conducteur sous forme d'une element XML.
+	@param d Le document XML a utiliser pour creer l'element XML
+	@param table_adr_id Hash stockant les correspondances entre les ids des
+	bornes dans le document XML et leur adresse en memoire
+	@return Un element XML representant le conducteur
+*/
 QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_id) const {
 	QDomElement e = d.createElement("conducer");
 	e.setAttribute("terminal1", table_adr_id.value(terminal1));
@@ -814,6 +855,11 @@ ConducerSegment *Conducer::middleSegment() {
 	return(s);
 }
 
+/**
+	Positionne le texte du conducteur au milieu du segment qui contient le
+	point au milieu du conducteur
+	@see middleSegment()
+*/
 void Conducer::calculateTextItemPosition() {
 	text_item -> setPos(middleSegment() -> middle());
 }
