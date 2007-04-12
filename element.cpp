@@ -3,14 +3,18 @@
 #include "elementtextitem.h"
 #include <QtDebug>
 
-/*** Methodes publiques ***/
-
 /**
 	Constructeur pour un element sans scene ni parent
 */
 Element::Element(QGraphicsItem *parent, Diagram *scene) : QGraphicsItem(parent, scene) {
 	peut_relier_ses_propres_terminals = false;
 	setZValue(10);
+}
+
+/**
+	Destructeur
+*/
+Element::~Element() {
 }
 
 /**
@@ -109,10 +113,6 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemPositionChange) {
 		foreach(QGraphicsItem *qgi, children()) {
 			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer(value.toPointF());
-		}
-	} else if (change == QGraphicsItem::ItemSelectedChange) {
-		foreach(QGraphicsItem *qgi, children()) {
-			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer();
 		}
 	}
 	return(QGraphicsItem::itemChange(change, value));

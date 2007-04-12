@@ -26,6 +26,12 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 }
 
 /**
+	Destructeur
+*/
+ElementsPanelWidget::~ElementsPanelWidget() {
+}
+
+/**
 	Appelle l'assistant de creation de nouvel element
 */
 void ElementsPanelWidget::newElement() {

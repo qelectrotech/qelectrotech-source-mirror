@@ -58,7 +58,6 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	Destructeur - ne fait rien
 */
 ExportDialog::~ExportDialog() {
-	
 }
 
 /**
@@ -266,7 +265,7 @@ QImage ExportDialog::generateImage() {
 	
 	// genere l'image
 	diagram -> setUseBorder(export_border -> isChecked());
-	diagram -> setAffichageGrille(draw_grid -> isChecked());
+	diagram -> setDisplayGrid(draw_grid -> isChecked());
 	diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
 	diagram -> border_and_inset.displayColumns(draw_columns -> isChecked());
 	diagram -> border_and_inset.displayInset(draw_inset -> isChecked());
@@ -287,7 +286,7 @@ QImage ExportDialog::generateImage() {
 	diagram -> border_and_inset.displayBorder(state_drawBorder);
 	diagram -> border_and_inset.displayColumns(state_drawColumns);
 	diagram -> border_and_inset.displayInset(state_drawInset);
-	diagram -> setAffichageGrille(state_drawGrid);
+	diagram -> setDisplayGrid(state_drawGrid);
 	diagram -> setUseBorder(state_useBorder);
 	
 	return(image);

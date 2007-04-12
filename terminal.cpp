@@ -77,8 +77,12 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, Terminal::Orientation o, Element *e, 
 
 /**
 	Destructeur
+	La destruction de la borne entraine la destruction des conducteurs
+	associes.
 */
 Terminal::~Terminal() {
+	//qDebug() << "Terminal::~Terminal" << (void *)this;
+	foreach(Conducer *c, liste_conducers) delete c;
 	delete br;
 }
 
@@ -139,6 +143,7 @@ bool Terminal::addConducer(Conducer *f) {
 	@param f Conducteur a enlever
 */
 void Terminal::removeConducer(Conducer *f) {
+	//qDebug() << "Terminal::removeConducer" << (void *)this;
 	int index = liste_conducers.indexOf(f);
 	if (index == -1) return;
 	liste_conducers.removeAt(index);
@@ -229,9 +234,9 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
-		s -> setDepart(mapToScene(QPointF(amarrage_conducer)));
-		s -> setArrivee(e -> scenePos());
-		s -> poseConducer(true);
+		s -> setConducerStart(mapToScene(QPointF(amarrage_conducer)));
+		s -> setConducerStop(e -> scenePos());
+		s -> setConducer(true);
 		setCursor(Qt::CrossCursor);
 	}
 }
@@ -253,7 +258,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 	
 	// si la scene est un Diagram, on actualise le poseur de conducteur
-	if (Diagram *s = qobject_cast<Diagram *>(scene())) s -> setArrivee(e -> scenePos());
+	if (Diagram *s = qobject_cast<Diagram *>(scene())) s -> setConducerStop(e -> scenePos());
 	
 	// on recupere la liste des qgi sous le pointeur
 	QList<QGraphicsItem *> qgis = scene() -> items(e -> scenePos());
@@ -315,7 +320,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	// verifie que la scene est bien un Diagram
 	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
 		// on arrete de dessiner l'apercu du conducteur
-		s -> poseConducer(false);
+		s -> setConducer(false);
 		// on recupere l'element sous le pointeur lors du MouseReleaseEvent
 		QGraphicsItem *qgi = s -> itemAt(e -> scenePos());
 		// s'il n'y a rien, on arrete la

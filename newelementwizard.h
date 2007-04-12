@@ -17,10 +17,14 @@ class NamesList;
 class Diagram;
 class NewElementWizard : public QDialog {
 	Q_OBJECT
-	// Constructeur, destructeur
+	
+	// constructeurs, destructeur
 	public:
 	NewElementWizard(QWidget * = 0, Qt::WindowFlags = 0);
-	~NewElementWizard();
+	virtual ~NewElementWizard();
+	
+	private:
+	NewElementWizard(const NewElementWizard &);
 	
 	// attributs
 	private:

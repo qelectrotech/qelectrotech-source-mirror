@@ -21,7 +21,6 @@ ElementsCategoriesList::ElementsCategoriesList(QWidget *parent) : QTreeWidget(pa
 	Destructeur
 */
 ElementsCategoriesList::~ElementsCategoriesList() {
-	
 }
 
 /**

@@ -21,6 +21,9 @@ ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGr
 	setTextInteractionFlags(Qt::TextEditorInteraction);
 }
 
+ElementTextItem::~ElementTextItem() {
+}
+
 /**
 	Modifie la position du champ de texte
 	@param pos La nouvelle position du champ de texte
@@ -55,7 +58,7 @@ QPointF ElementTextItem::pos() const {
 	valeur a ce champ.
 	@param e L'element XML representant le champ de texte
 */
-void ElementTextItem::fromXml(QDomElement &e) {
+void ElementTextItem::fromXml(const QDomElement &e) {
 	QPointF _pos = pos();
 	if (e.attribute("x").toDouble() == _pos.x() && e.attribute("y").toDouble() == _pos.y()) {
 		setPlainText(e.attribute("text"));
@@ -66,7 +69,7 @@ void ElementTextItem::fromXml(QDomElement &e) {
 	@param document Le document XML a utiliser
 	@return L'element XML representant ce champ de texte
 */
-QDomElement ElementTextItem::toXml(QDomDocument &document) {
+QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
 	result.setAttribute("x", pos().x());
 	result.setAttribute("y", pos().y());

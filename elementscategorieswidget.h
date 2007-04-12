@@ -9,10 +9,14 @@
 class ElementsCategoriesList;
 class ElementsCategoriesWidget : public QWidget {
 	Q_OBJECT
-	// Constructeur, destructeur
+	
+	// Constructeurs, destructeur
 	public:
 	ElementsCategoriesWidget(QWidget * = 0);
-	~ElementsCategoriesWidget();
+	virtual ~ElementsCategoriesWidget();
+	
+	private:
+	ElementsCategoriesWidget(const ElementsCategoriesWidget &);
 	
 	// attributs
 	private:
@@ -24,8 +28,6 @@ class ElementsCategoriesWidget : public QWidget {
 	QAction *action_delete;
 	
 	// methodes
-	bool rmdir(const QString &);
-	
 	public:
 	ElementsCategoriesList &elementsCategoriesList() const;
 	

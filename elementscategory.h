@@ -7,20 +7,19 @@
 	qet_directory contenant ses caracteristiques (pour le moment : ses noms).
 */
 class ElementsCategory : public QDir {
-	// Constructeur, destructeur
+	// constructeurs, destructeur
 	public:
 	ElementsCategory(const QString & = QString());
-	~ElementsCategory();
+	virtual ~ElementsCategory();
+	
+	private:
+	ElementsCategory(const ElementsCategory &);
 	
 	// attributs
 	private:
 	QHash<QString, QString> category_names;
 	
 	// methodes
-	private:
-	bool rmdir(const QString &) const;
-	void loadNames();
-	
 	public:
 	QString name() const;
 	QHash<QString, QString> categoryNames() const;
@@ -29,5 +28,9 @@ class ElementsCategory : public QDir {
 	bool write() const;
 	bool remove() const;
 	//bool move(const QString &new_parent);
+	
+	private:
+	bool rmdir(const QString &) const;
+	void loadNames();
 };
 #endif

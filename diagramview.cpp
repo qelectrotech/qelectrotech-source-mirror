@@ -2,6 +2,7 @@
 #include "diagram.h"
 #include "customelement.h"
 #include "exportdialog.h"
+#include "conducer.h"
 
 /**
 	Initialise le DiagramView
@@ -38,6 +39,12 @@ DiagramView::DiagramView() : QGraphicsView() {
 */
 DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
 	initialise();
+}
+
+/**
+	Destructeur
+*/
+DiagramView::~DiagramView() {
 }
 
 /**
@@ -443,9 +450,9 @@ void DiagramView::dialogPrint() {
 	
 	if (qpd.exec() == QDialog::Accepted) {
 		QPainter qp(&qprin);
-		scene -> setAffichageGrille(false);
+		scene -> setDisplayGrid(false);
 		scene -> render(&qp);
-		scene -> setAffichageGrille(true);
+		scene -> setDisplayGrid(true);
 	}
 }
 

@@ -6,6 +6,12 @@ FixedElement::FixedElement(QGraphicsItem *parent, Diagram *scene) : Element(pare
 }
 
 /**
+	Destructeur
+*/
+FixedElement::~FixedElement() {
+}
+
+/**
 	@return Le nombre minimal de bornes que l'element peut avoir
 */
 int FixedElement::nbTerminalsMin() const {

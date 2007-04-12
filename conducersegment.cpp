@@ -8,9 +8,15 @@
 	@param cs1 Le segment precedent
 	@param cs2 Le segment suivant
 */
-ConducerSegment::ConducerSegment(QPointF p1, QPointF p2, ConducerSegment *cs1, ConducerSegment *cs2) {
-	setFirstPoint(p1);
-	setSecondPoint(p2);
+ConducerSegment::ConducerSegment(
+	const QPointF &p1,
+	const QPointF &p2,
+	ConducerSegment *cs1,
+	ConducerSegment *cs2
+) :
+point1(p1),
+point2(p2)
+{
 	setPreviousSegment(cs1);
 	setNextSegment(cs2);
 }
@@ -19,6 +25,7 @@ ConducerSegment::ConducerSegment(QPointF p1, QPointF p2, ConducerSegment *cs1, C
 	Destructeur - Relie le segment precedent au suivant
 */
 ConducerSegment::~ConducerSegment() {
+	//qDebug() << "~ConducerSegment()" << (void *)this;
 	if (hasPreviousSegment()) previousSegment() -> setNextSegment(nextSegment());
 	if (hasNextSegment()) nextSegment() -> setPreviousSegment(previousSegment());
 }
@@ -32,7 +39,7 @@ ConducerSegment::~ConducerSegment() {
 	@param possible_dx La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove1stPointX(qreal asked_dx, qreal &possible_dx) {
+bool ConducerSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx) const {
 	
 	Q_ASSERT_X(isVertical(), "ConducerSegment::canMove1stPointX", "segment non vertical");
 	
@@ -91,7 +98,7 @@ bool ConducerSegment::canMove1stPointX(qreal asked_dx, qreal &possible_dx) {
 	@param possible_dx La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove2ndPointX(qreal asked_dx, qreal &possible_dx) {
+bool ConducerSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx) const {
 	
 	Q_ASSERT_X(isVertical(), "ConducerSegment::canMove2ndPointX", "segment non vertical");
 	
@@ -150,7 +157,7 @@ bool ConducerSegment::canMove2ndPointX(qreal asked_dx, qreal &possible_dx) {
 	@param possible_dy La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove1stPointY(qreal asked_dy, qreal &possible_dy) {
+bool ConducerSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy) const {
 	
 	Q_ASSERT_X(isHorizontal(), "ConducerSegment::canMove1stPointY", "segment non horizontal");
 	
@@ -209,7 +216,7 @@ bool ConducerSegment::canMove1stPointY(qreal asked_dy, qreal &possible_dy) {
 	@param possible_dy La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove2ndPointY(qreal asked_dy, qreal &possible_dy) {
+bool ConducerSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy) const {
 	
 	Q_ASSERT_X(isHorizontal(), "ConducerSegment::canMove2ndPointY", "segment non horizontal");
 	
@@ -264,7 +271,7 @@ bool ConducerSegment::canMove2ndPointY(qreal asked_dy, qreal &possible_dy) {
 	Gere les mouvements sur l'axe horizontal
 	@param dx taille du deplacement en pixels
 */
-void ConducerSegment::moveX(qreal dx) {
+void ConducerSegment::moveX(const qreal &dx) {
 	if (isHorizontal()) return;
 	Q_ASSERT_X(isVertical(), "ConducerSegment::moveX", "segment non vertical");
 	
@@ -312,7 +319,7 @@ void ConducerSegment::moveX(qreal dx) {
 	Gere les mouvements sur l'axe vertical
 	@param dx taille du deplacement en pixels
 */
-void ConducerSegment::moveY(qreal dy) {
+void ConducerSegment::moveY(const qreal &dy) {
 	if (isVertical()) return;
 	Q_ASSERT_X(isHorizontal(), "ConducerSegment::moveY", "segment non horizontal");
 	
@@ -449,42 +456,42 @@ void ConducerSegment::setNextSegment(ConducerSegment *ns) {
 /**
 	@return Le segment precedent
 */
-ConducerSegment *ConducerSegment::previousSegment() {
+ConducerSegment *ConducerSegment::previousSegment()  const {
 	return(previous_segment);
 }
 
 /**
 	@return Le segment suivant
 */
-ConducerSegment *ConducerSegment::nextSegment() {
+ConducerSegment *ConducerSegment::nextSegment()  const {
 	return(next_segment);
 }
 
 /**
 	@return true si le segment est vertical, false sinon
 */
-bool ConducerSegment::isVertical() {
+bool ConducerSegment::isVertical() const {
 	return(point1.x() == point2.x());
 }
 
 /**
 	@return true si le segment est horizontal, false sinon
 */
-bool ConducerSegment::isHorizontal() {
+bool ConducerSegment::isHorizontal() const {
 	return(point1.y() == point2.y());
 }
 
 /**
 	@return le premier point du segment
 */
-QPointF ConducerSegment::firstPoint() {
+QPointF ConducerSegment::firstPoint() const {
 	return(point1);
 }
 
 /**
 	@return le second point du segment
 */
-QPointF ConducerSegment::secondPoint() {
+QPointF ConducerSegment::secondPoint() const {
 	return(point2);
 }
 
@@ -492,7 +499,7 @@ QPointF ConducerSegment::secondPoint() {
 	Permet de changer la position du premier point du segment
 	@param p La nouvelle position du premier point
 */
-void ConducerSegment::setFirstPoint(QPointF p) {
+void ConducerSegment::setFirstPoint(const QPointF &p) {
 	point1 = p;
 }
 
@@ -500,28 +507,28 @@ void ConducerSegment::setFirstPoint(QPointF p) {
 	Permet de changer la position du second point du segment
 	@param p La nouvelle position du second point
 */
-void ConducerSegment::setSecondPoint(QPointF p) {
+void ConducerSegment::setSecondPoint(const QPointF &p) {
 	point2 = p;
 }
 
 /**
 	@return true si le segment a un segment precedent, false sinon
 */
-bool ConducerSegment::hasPreviousSegment() {
+bool ConducerSegment::hasPreviousSegment() const {
 	return(previous_segment != NULL);
 }
 
 /**
 	@return true si le segment a un segment suivant, false sinon
 */
-bool ConducerSegment::hasNextSegment() {
+bool ConducerSegment::hasNextSegment() const {
 	return(next_segment != NULL);
 }
 
 /**
 	@return Le centre du rectangle delimitant le conducteur
 */
-QPointF ConducerSegment::middle() {
+QPointF ConducerSegment::middle() const {
 	return(
 		QPointF(
 			(point1.x() + point2.x()) / 2.0,
@@ -533,7 +540,7 @@ QPointF ConducerSegment::middle() {
 /**
 	@return La longueur du conducteur
 */
-qreal ConducerSegment::length() {
+qreal ConducerSegment::length() const {
 	if (isHorizontal()) {
 		return(secondPoint().x() - firstPoint().x());
 	} else {

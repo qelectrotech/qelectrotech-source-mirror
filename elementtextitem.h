@@ -8,23 +8,26 @@
 	malgre les rotations de son element parent.
 */
 class ElementTextItem : public QGraphicsTextItem {
-	// constructeurs
+	// constructeurs, destructeur
 	public:
 	ElementTextItem(QGraphicsItem * = 0, QGraphicsScene * = 0);
 	ElementTextItem(const QString &, QGraphicsItem * = 0, QGraphicsScene * = 0);
+	virtual ~ElementTextItem();
 	
 	// attributs
+	public:
+	enum { Type = UserType + 1003 };
+	
 	private:
 	bool follow_parent_rotations;
 	
 	// methodes
 	public:
-	enum { Type = UserType + 1003 };
 	virtual int type() const { return Type; }
 	bool followParentRotations() const;
 	void setFollowParentRotations(bool);
-	void fromXml(QDomElement &);
-	QDomElement toXml(QDomDocument &);
+	void fromXml(const QDomElement &);
+	QDomElement toXml(QDomDocument &) const;
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
 	QPointF pos() const;

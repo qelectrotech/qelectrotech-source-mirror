@@ -10,18 +10,24 @@
 */
 Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
 	setBackgroundBrush(Qt::white);
-	poseur_de_conducer = new QGraphicsLineItem(0, 0);
-	poseur_de_conducer -> setZValue(1000000);
+	conducer_setter = new QGraphicsLineItem(0, 0);
+	conducer_setter -> setZValue(1000000);
 	QPen t;
 	t.setColor(Qt::black);
 	t.setWidthF(1.5);
 	t.setStyle(Qt::DashLine);
-	poseur_de_conducer -> setPen(t);
-	poseur_de_conducer -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
+	conducer_setter -> setPen(t);
+	conducer_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	draw_grid  = true;
 	use_border = true;
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionEmptinessChange()));
 }
+
+/**
+	Destructeur
+*/
+Diagram::~Diagram() {
+};
 
 /**
 	Dessine l'arriere-plan du schema, cad la grille.
@@ -41,7 +47,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
 	
-	if (draw_grid) {
+	if (draw_grid && r.width() < 2500 && r.height() < 2500) {
 		// dessine les points de la grille
 		p -> setPen(Qt::black);
 		p -> setBrush(Qt::NoBrush);

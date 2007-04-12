@@ -7,10 +7,14 @@
 */
 class NamesList : public QWidget {
 	Q_OBJECT
-	//Constructeur, destructeur
+	
+	// constructeurs, destructeur
 	public:
 	NamesList(QWidget * = 0);
-	~NamesList();
+	virtual ~NamesList();
+	
+	private:
+	NamesList(const NamesList &);
 	
 	// attributs
 	private:
@@ -23,6 +27,7 @@ class NamesList : public QWidget {
 	bool checkOneName();
 	QHash<QString, QString> names();
 	void setNames(QHash<QString, QString> &);
+	
 	private:
 	void clean();
 	void updateHash();

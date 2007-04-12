@@ -4,28 +4,29 @@
 #include <QtGui>
 #include <QtXml>
 class Conducer;
-class Element;
 class Diagram;
+class Element;
 /**
 	Classe modelisant la « borne » d'un appareil, c'est-a-dire un
 	branchement possible pour un Conducteur.
 */
 class Terminal : public QGraphicsItem {
+	
+	// constructeurs, destructeur
 	public:
-	// enum definissant l'orientation de la borne
 	enum Orientation {Nord, Est, Sud, Ouest};
-	
-	// permet de caster un QGraphicsItem en Borne avec qgraphicsitem_cast
-	enum { Type = UserType + 1002 };
-	virtual int type() const { return Type; }
-	
-	// constructeurs
 	Terminal();
 	Terminal(QPointF,      Terminal::Orientation, Element * = 0, Diagram * = 0);
 	Terminal(qreal, qreal, Terminal::Orientation, Element * = 0, Diagram * = 0);
+	virtual ~Terminal();
 	
-	// destructeur
-	~Terminal();
+	private:
+	Terminal(const Terminal &);
+	
+	// methodes
+	public:
+	// permet de caster un QGraphicsItem en Borne avec qgraphicsitem_cast
+	virtual int type() const { return Type; }
 	
 	// implementation des methodes virtuelles pures de QGraphicsItem
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
@@ -37,15 +38,15 @@ class Terminal : public QGraphicsItem {
 	int nbConducers() const;
 	
 	// methodes de lecture
-	QList<Conducer *> conducers() const; 
+	QList<Conducer *> conducers() const;
 	Terminal::Orientation orientation() const;
 	QPointF amarrageConducer() const;
 	void updateConducer(QPointF = QPointF());
 	
 	// methodes relatives a l'import/export au format XML
 	static bool valideXml(QDomElement  &);
-	bool        fromXml  (QDomElement  &);
-	QDomElement toXml    (QDomDocument &) const;
+	bool fromXml (QDomElement &);
+	QDomElement toXml (QDomDocument &) const;
 	
 	protected:
 	// methodes de gestion des evenements
@@ -55,6 +56,10 @@ class Terminal : public QGraphicsItem {
 	void mousePressEvent  (QGraphicsSceneMouseEvent *);
 	void mouseMoveEvent   (QGraphicsSceneMouseEvent *);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	
+	// attributs
+	public:
+	enum { Type = UserType + 1002 };
 	
 	private:
 	// pointeur vers la QGraphicsScene de type Diagram (evite quelques casts en interne)

@@ -52,6 +52,21 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 }
 
 /**
+	Destructeur
+	Detruit le conducteur ainsi que ses segments. Il ne detruit pas les bornes
+	mais s'en detache
+*/
+Conducer::~Conducer() {
+// 	qDebug() << "~Conducer()" << (void *)this;
+	// se detache des bornes
+	if (!isDestroyed()) destroy();
+	
+	// supprime les segments
+	while (segments -> hasNextSegment()) delete segments -> nextSegment();
+	delete segments;
+}
+
+/**
 	Met a jour la representation graphique du conducteur.
 	@param rect Rectangle a mettre a jour
 */
@@ -632,7 +647,7 @@ qreal Conducer::conducer_bound(qreal tobound, qreal bound, bool positive) {
 /**
 	@return Le nombre de segments composant le conducteur.
 */
-int Conducer::nbSegments() {
+int Conducer::nbSegments() const {
 	if (segments == NULL) return(0);
 	int nb_seg = 1;
 	ConducerSegment *segment = segments;
@@ -701,7 +716,7 @@ void Conducer::pointsToSegments(QList<QPointF> points_list) {
 	@param point point cliquable
 	@return true si l'on peut considerer que le point a ete clique, false sinon
 */
-bool Conducer::hasClickedOn(QPointF press_point, QPointF point) {
+bool Conducer::hasClickedOn(QPointF press_point, QPointF point) const {
 	return (
 		press_point.x() >= point.x() - 5.0 &&\
 		press_point.x() <  point.x() + 5.0 &&\

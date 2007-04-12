@@ -89,6 +89,12 @@ QETApp::QETApp(QWidget *parent) : QMainWindow(parent) {
 }
 
 /**
+	Destructeur
+*/
+QETApp::~QETApp() {
+}
+
+/**
 	Gere les evenements relatifs au QSystemTrayIcon
 	@param raison un entier representant l'evenement survenu sur le systray
 */
@@ -604,7 +610,7 @@ bool QETApp::fermer() {
 /**
 	@return Le DiagramView qui a le focus dans l'interface MDI
 */
-DiagramView *QETApp::diagramEnCours() {
+DiagramView *QETApp::diagramEnCours() const {
 	return(qobject_cast<DiagramView *>(workspace.activeWindow()));
 }
 

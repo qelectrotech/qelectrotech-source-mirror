@@ -9,11 +9,15 @@ class ElementsCategory;
 class NamesList;
 class ElementsCategoryEditor : public QDialog {
 	Q_OBJECT
-	//Constructeurs, destructeur
+	
+	// constructeurs, destructeur
 	public:
 	ElementsCategoryEditor(QWidget * = 0);
 	ElementsCategoryEditor(const QString &, bool = true, QWidget * = 0);
-	~ElementsCategoryEditor();
+	virtual ~ElementsCategoryEditor();
+	
+	private:
+	ElementsCategoryEditor(const ElementsCategoryEditor &);
 	
 	// attributs
 	private:
@@ -29,6 +33,5 @@ class ElementsCategoryEditor : public QDialog {
 	public slots:
 	void acceptCreation();
 	void acceptUpdate();
-	
 };
 #endif

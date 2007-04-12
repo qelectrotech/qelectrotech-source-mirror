@@ -36,6 +36,12 @@ ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
 }
 
 /**
+	Destructeur
+*/
+ElementsPanel::~ElementsPanel() {
+}
+
+/**
 	Gere le mouvement lors d'un drag'n drop
 */
 void ElementsPanel::dragMoveEvent(QDragMoveEvent */*e*/) {

@@ -7,22 +7,23 @@
 */
 class ElementsCategoriesList : public QTreeWidget {
 	Q_OBJECT
-	// Constructeur, destructeur
+	
+	// Constructeurs, destructeur
 	public:
 	ElementsCategoriesList(QWidget * = 0);
-	~ElementsCategoriesList();
+	virtual ~ElementsCategoriesList();
 	
-	// attributs
-	
+	private:
+	ElementsCategoriesList(const ElementsCategoriesList &);
 	
 	// methodes
-	private:
-	void addDir(QTreeWidgetItem *, QString, QString = QString());
-	QString categoryName(QDir &);
-	
 	public:
 	QString selectedCategoryPath();
 	QString selectedCategoryName();
+	
+	private:
+	void addDir(QTreeWidgetItem *, QString, QString = QString());
+	QString categoryName(QDir &);
 	
 	public slots:
 	void reload();

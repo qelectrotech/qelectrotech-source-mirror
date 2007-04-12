@@ -1,43 +1,47 @@
 #ifndef CONDUCER_SEGMENT_H
-	#define CONDUCER_SEGMENT_H
-	#include <QPointF>
-	/**
-		Cette classe represente un segment de conducteur.
-	*/
-	class ConducerSegment {
-		// constructeurs et destructeur
-		public:
-		ConducerSegment(QPointF, QPointF, ConducerSegment * = NULL, ConducerSegment * = NULL);
-		~ConducerSegment();
-		
-		// attributs
-		private:
-		ConducerSegment *previous_segment;
-		ConducerSegment *next_segment;
-		QPointF point1;
-		QPointF point2;
-		
-		// methodes
-		public:
-		void moveX(qreal);
-		void moveY(qreal);
-		ConducerSegment *previousSegment();
-		ConducerSegment *nextSegment();
-		bool hasPreviousSegment();
-		bool hasNextSegment();
-		void setPreviousSegment(ConducerSegment *);
-		void setNextSegment(ConducerSegment *);
-		QPointF firstPoint();
-		QPointF secondPoint();
-		void setFirstPoint(QPointF);
-		void setSecondPoint(QPointF);
-		QPointF middle();
-		bool isHorizontal();
-		bool isVertical();
-		qreal length();
-		bool canMove1stPointX(qreal, qreal &);
-		bool canMove2ndPointX(qreal, qreal &);
-		bool canMove1stPointY(qreal, qreal &);
-		bool canMove2ndPointY(qreal, qreal &);
-	};
+#define CONDUCER_SEGMENT_H
+#include <QPointF>
+/**
+	Cette classe represente un segment de conducteur.
+*/
+class ConducerSegment {
+	
+	// constructeurs, destructeur
+	public:
+	ConducerSegment(const QPointF &, const QPointF &, ConducerSegment * = NULL, ConducerSegment * = NULL);
+	virtual ~ConducerSegment();
+	
+	private:
+	ConducerSegment(const ConducerSegment &);
+	
+	// attributs
+	private:
+	ConducerSegment *previous_segment;
+	ConducerSegment *next_segment;
+	QPointF point1;
+	QPointF point2;
+	
+	// methodes
+	public:
+	void moveX(const qreal &);
+	void moveY(const qreal &);
+	ConducerSegment *previousSegment() const;
+	ConducerSegment *nextSegment()  const;
+	bool hasPreviousSegment() const;
+	bool hasNextSegment() const;
+	void setPreviousSegment(ConducerSegment *);
+	void setNextSegment(ConducerSegment *);
+	QPointF firstPoint() const;
+	QPointF secondPoint() const;
+	void setFirstPoint(const QPointF &);
+	void setSecondPoint(const QPointF &);
+	QPointF middle() const;
+	bool isHorizontal() const;
+	bool isVertical() const;
+	qreal length() const;
+	bool canMove1stPointX(const qreal &, qreal &) const;
+	bool canMove2ndPointX(const qreal &, qreal &) const;
+	bool canMove1stPointY(const qreal &, qreal &) const;
+	bool canMove2ndPointY(const qreal &, qreal &) const;
+};
 #endif

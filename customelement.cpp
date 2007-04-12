@@ -157,6 +157,12 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 }
 
 /**
+	Destructeur
+*/
+CustomElement::~CustomElement() {
+}
+
+/**
 	@return Le nombre de bornes que l'element possede
 */
 int CustomElement::nbTerminals() const {

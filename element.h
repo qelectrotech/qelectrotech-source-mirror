@@ -7,45 +7,20 @@
 */
 class Diagram;
 class Element : public QGraphicsItem {
+	
+	// constructeurs, destructeur
+	public:
+	Element(QGraphicsItem * = 0, Diagram * = 0);
+	virtual ~Element();
+	
+	private:
+	Element(const Element &);
+	
+	// attributs
 	public:
 	enum { Type = UserType + 1000 };
-	virtual int type() const { return Type; }
-	Element(QGraphicsItem * = 0, Diagram * = 0);
-	
-	virtual  int nbTerminals()    const = 0;
-	virtual  int nbTerminalsMin() const = 0;
-	virtual  int nbTerminalsMax() const = 0;
-	virtual  void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
-	virtual  QString typeId() const = 0;
-	
-	virtual QString  nom() const = 0;
-	void     paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	QRectF   boundingRect() const;
-	QSize    setSize(int, int);
-	QPoint   setHotspot(QPoint);
-	QPoint   hotspot() const;
-	void     select();
-	void     deselect();
-	QPixmap  pixmap();
-	QVariant itemChange(GraphicsItemChange, const QVariant &);
-	void     setPos(const QPointF &);
-	void     setPos(qreal, qreal);
-	bool     connexionsInternesAcceptees();
-	void     setConnexionsInternesAcceptees(bool cia);
-	static bool     valideXml(QDomElement &);
-	virtual bool fromXml(QDomElement  &, QHash<int, Terminal *>&);
-	virtual QDomElement toXml (QDomDocument &, QHash<Terminal *, int>&) const;
-	// methodes d'acces aux possibilites d'orientation
-	Terminal::Orientation orientation() const;
-	bool acceptOrientation(Terminal::Orientation o) const;
-	Terminal::Orientation defaultOrientation() const;
-	Terminal::Orientation nextAcceptableOrientation() const;
-	Terminal::Orientation previousAcceptableOrientation() const;
-	bool setOrientation(Terminal::Orientation o);
 	
 	protected:
-	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
-	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	bool    ori_n;
 	bool    ori_s;
 	bool    ori_e;
@@ -54,17 +29,69 @@ class Element : public QGraphicsItem {
 	Terminal::Orientation ori;
 	
 	private:
+	QSize   dimensions;
+	QPoint  hotspot_coord;
+	QPixmap apercu;
+	QMenu   menu;
+	
+	// methodes
+	public:
+	virtual int type() const { return Type; }
+	
+	// methodes virtuelles pures a definir dans les classes enfants
+	virtual int nbTerminals() const = 0;
+	virtual int nbTerminalsMin() const = 0;
+	virtual int nbTerminalsMax() const = 0;
+	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
+	virtual QString typeId() const = 0;
+	virtual QString nom() const = 0;
+	
+	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+	QVariant itemChange(GraphicsItemChange, const QVariant &);
+	QRectF boundingRect() const;
+	QSize setSize(int, int);
+	QPixmap  pixmap();
+	
+	// methodes relatives au point de saisie
+	QPoint setHotspot(QPoint);
+	QPoint hotspot() const;
+	
+	// methodes relatives a la selection
+	void select();
+	void deselect();
+	
+	// methodes relatives a la position
+	void setPos(const QPointF &);
+	void setPos(qreal, qreal);
+	
+	// methodes relatives aux connexions internes
+	bool connexionsInternesAcceptees();
+	void setConnexionsInternesAcceptees(bool cia);
+	
+	// methodes relatives aux fichiers XML
+	static bool valideXml(QDomElement &);
+	virtual bool fromXml(QDomElement &, QHash<int, Terminal *>&);
+	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int>&) const;
+	
+	// methodes d'acces aux possibilites d'orientation
+	Terminal::Orientation orientation() const;
+	Terminal::Orientation defaultOrientation() const;
+	bool acceptOrientation(Terminal::Orientation o) const;
+	Terminal::Orientation nextAcceptableOrientation() const;
+	Terminal::Orientation previousAcceptableOrientation() const;
+	bool setOrientation(Terminal::Orientation o);
+	
+	protected:
+	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
+	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+	
+	private:
 	bool peut_relier_ses_propres_terminals;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
 	Terminal::Orientation nextOrientation(Terminal::Orientation o) const;
 	Terminal::Orientation previousOrientation(Terminal::Orientation o) const;
 	static QList<QDomElement> findInDomElement(QDomElement, QString, QString);
-	
-	QSize   dimensions;
-	QPoint  hotspot_coord;
-	QPixmap apercu;
-	QMenu   menu;
 };
 
 /**

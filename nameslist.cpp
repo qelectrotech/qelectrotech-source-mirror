@@ -25,7 +25,6 @@ NamesList::NamesList(QWidget *parent) : QWidget(parent) {
 	Destructeur
 */
 NamesList::~NamesList() {
-	
 }
 
 /**

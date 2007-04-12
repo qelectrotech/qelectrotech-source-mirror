@@ -11,37 +11,49 @@ class Element;
 class Terminal;
 class Diagram : public QGraphicsScene {
 	Q_OBJECT
-	enum BorderOptions { EmptyBorder, Inset, Columns };
+	
+	// constructeurs, destructeur
 	public:
 	Diagram(QObject * = 0);
+	virtual ~Diagram();
+	
+	private:
+	Diagram(const Diagram &diagram);
+	
+	// attributs
+	public:
+	enum BorderOptions { EmptyBorder, Inset, Columns };
+	BorderInset border_and_inset;
+	
+	private:
+	QGraphicsLineItem *conducer_setter;
+	bool draw_grid;
+	bool use_border;
+	
+	// methodes
+	public:
 	void drawBackground(QPainter *, const QRectF &);
 	
 	// fonctions relatives a la pose de conducteurs
-	void poseConducer(bool);
-	
-	void setDepart (QPointF);
-	void setArrivee(QPointF);
+	void setConducer(bool);
+	void setConducerStart (QPointF);
+	void setConducerStop(QPointF);
 	
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
 	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true);
 	
 	// fonctions relatives aux options graphiques
-	void setAffichageGrille(bool);
+	void setDisplayGrid(bool);
 	bool displayGrid();
 	void setUseBorder(bool);
 	bool useBorder();
 	void setBorderOptions(BorderOptions);
 	BorderOptions borderOptions();
-	BorderInset border_and_inset;
+	
 	QRectF border() const;
 	QImage toImage(int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
 	QSize imageSize() const;
-	
-	private:
-	QGraphicsLineItem *poseur_de_conducer;
-	bool draw_grid;
-	bool use_border;
 	
 	private slots:
 	void slot_checkSelectionChange();
@@ -58,11 +70,11 @@ class Diagram : public QGraphicsScene {
 	bornes.
 	@param true pour ajouter le poseur de conducteur, false pour l'enlever
 */
-inline void Diagram::poseConducer(bool pf) {
+inline void Diagram::setConducer(bool pf) {
 	if (pf) {
-		if (!poseur_de_conducer -> scene()) addItem(poseur_de_conducer);
+		if (!conducer_setter -> scene()) addItem(conducer_setter);
 	} else {
-		if (poseur_de_conducer -> scene()) removeItem(poseur_de_conducer);
+		if (conducer_setter -> scene()) removeItem(conducer_setter);
 	}
 }
 
@@ -70,23 +82,23 @@ inline void Diagram::poseConducer(bool pf) {
 	Specifie les coordonnees du point de depart du poseur de conducteur
 	@param d Le nouveau point de depart du poseur de conducteur
 */
-inline void Diagram::setDepart(QPointF d) {
-	poseur_de_conducer -> setLine(QLineF(d, poseur_de_conducer -> line().p2()));
+inline void Diagram::setConducerStart(QPointF d) {
+	conducer_setter -> setLine(QLineF(d, conducer_setter -> line().p2()));
 }
 
 /**
 	Specifie les coordonnees du point d'arrivee du poseur de conducteur
 	@param d Le nouveau point d'arrivee du poseur de conducteur
 */
-inline void Diagram::setArrivee(QPointF a) {
-	poseur_de_conducer -> setLine(QLineF(poseur_de_conducer -> line().p1(), a));
+inline void Diagram::setConducerStop(QPointF a) {
+	conducer_setter -> setLine(QLineF(conducer_setter -> line().p1(), a));
 }
 
 /**
 	Permet de specifier si la grille du schema doit etre dessinee ou non
 	@param dg true pour afficher la grille, false pour ne pas l'afficher
 */
-inline void Diagram::setAffichageGrille(bool dg) {
+inline void Diagram::setDisplayGrid(bool dg) {
 	draw_grid = dg;
 }
 

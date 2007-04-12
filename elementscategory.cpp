@@ -13,7 +13,6 @@ ElementsCategory::ElementsCategory(const QString &path) : QDir(path) {
 	Destructeur
 */
 ElementsCategory::~ElementsCategory() {
-	
 }
 
 /**

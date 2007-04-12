@@ -10,9 +10,13 @@
 class ElementsPanelWidget : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs
+	// constructeurs, destructeur
 	public:
 	ElementsPanelWidget(QWidget * = 0);
+	virtual ~ElementsPanelWidget();
+	
+	private:
+	ElementsPanelWidget(const ElementsPanelWidget &);
 	
 	// attributs
 	private:
@@ -21,9 +25,17 @@ class ElementsPanelWidget : public QWidget {
 	
 	// methodes
 	public:
-	inline ElementsPanel &elementsPanel() const { return(*elements_panel); }
+	inline ElementsPanel &elementsPanel() const;
 	
 	public slots:
 	void newElement();
 };
+
+/**
+	@return Le panel d'elements imbrique dans ce widget
+*/
+inline ElementsPanel &ElementsPanelWidget::elementsPanel() const {
+	return(*elements_panel);
+}
+
 #endif
