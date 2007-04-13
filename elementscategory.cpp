@@ -57,17 +57,7 @@ void ElementsCategory::loadNames() {
 	QDomElement root = document.documentElement();
 	if (root.tagName() != "qet-directory") return;
 	
-	// parcourt les "names"
-	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-		QDomElement names = node.toElement();
-		if (names.isNull() || names.tagName() != "names") continue;
-		// parcourt les "name"
-		for (QDomNode n = names.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
-			QDomElement name = n.toElement();
-			if (name.isNull() || name.tagName() != "name") continue;
-			category_names.insert(name.attribute("lang"), name.text());
-		}
-	}
+	category_names.fromXml(root);
 	
 	// ferme le fichier
 	directory_conf.close();
@@ -98,7 +88,7 @@ QString ElementsCategory::name() const {
 /**
 	@return La liste des differents noms possibles pour la categorie
 */
-QHash<QString, QString> ElementsCategory::categoryNames() const {
+NamesList ElementsCategory::categoryNames() const {
 	return(category_names);
 }
 
@@ -106,7 +96,7 @@ QHash<QString, QString> ElementsCategory::categoryNames() const {
 	Vide la liste des noms de la categorie
 */
 void ElementsCategory::clearNames() {
-	category_names.clear();
+	category_names.clearNames();
 }
 
 /**
@@ -116,7 +106,7 @@ void ElementsCategory::clearNames() {
 	@param value Le nom
 */
 void ElementsCategory::addName(const QString &lang, const QString &value) {
-	category_names.insert(lang, value);
+	category_names.addName(lang, value);
 }
 
 /**
@@ -132,15 +122,7 @@ bool ElementsCategory::write() const {
 	QDomDocument document;
 	QDomElement root = document.createElement("qet-directory");
 	document.appendChild(root);
-	QDomElement names = document.createElement("names");
-	root.appendChild(names);
-	foreach(QString lang, category_names.keys()) {
-		QDomElement name = document.createElement("name");
-		name.setAttribute("lang", lang);
-		QDomText name_value = document.createTextNode(category_names[lang]);
-		name.appendChild(name_value);
-		names.appendChild(name);
-	}
+	root.appendChild(category_names.toXml(document));
 	
 	// repere le chemin du fichier de configuration de la categorie
 	QFile directory_conf(canonicalPath() + "/qet_directory");

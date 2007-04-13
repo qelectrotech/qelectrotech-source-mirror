@@ -175,8 +175,8 @@ void NewElementWizard::buildStep3() {
 	explication -> setWordWrap(true);
 	step3_layout -> addWidget(explication);
 	element_names = new NamesListWidget();
-	QHash<QString, QString> hash_name;
-	hash_name.insert(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment"));
+	NamesList hash_name;
+	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment"));
 	element_names -> setNames(hash_name);
 	step3_layout -> addWidget(element_names);
 	step3 -> setLayout(step3_layout);

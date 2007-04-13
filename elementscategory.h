@@ -1,6 +1,7 @@
 #ifndef ELEMENTS_CATEGORY_H
 #define ELEMENTS_CATEGORY_H
 #include <QtCore>
+#include "nameslist.h"
 /**
 	Cette classe represente une categorie d'elements.
 	Une categorie d'elements est en fait un dossier avec un fichier
@@ -17,12 +18,12 @@ class ElementsCategory : public QDir {
 	
 	// attributs
 	private:
-	QHash<QString, QString> category_names;
+	NamesList category_names;
 	
 	// methodes
 	public:
 	QString name() const;
-	QHash<QString, QString> categoryNames() const;
+	NamesList categoryNames() const;
 	void clearNames();
 	void addName(const QString &, const QString &);
 	bool write() const;

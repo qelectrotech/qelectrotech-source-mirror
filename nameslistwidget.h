@@ -1,6 +1,7 @@
 #ifndef NAMES_LIST_WIDGET_H
 #define NAMES_LIST_WIDGET_H
 #include <QtGui>
+#include "nameslist.h"
 /**
 	Cette classe represente une interface permettant de saisir les noms des
 	categories et elements.
@@ -20,13 +21,13 @@ class NamesListWidget : public QWidget {
 	private:
 	QTreeWidget *tree_names;
 	QPushButton *button_add_line;
-	QHash<QString, QString> hash_names;
+	NamesList hash_names;
 	
 	// methodes
 	public:
 	bool checkOneName();
-	QHash<QString, QString> names();
-	void setNames(QHash<QString, QString> &);
+	NamesList names();
+	void setNames(const NamesList &);
 	
 	private:
 	void clean();

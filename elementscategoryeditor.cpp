@@ -18,15 +18,14 @@ ElementsCategoryEditor::ElementsCategoryEditor(const QString &category_path, boo
 		connect(buttons, SIGNAL(accepted()), this, SLOT(acceptUpdate()));
 		
 		// edition de categorie = affichage des noms deja existants
-		QHash<QString, QString> cat_names = category -> categoryNames();
-		names_list -> setNames(cat_names);
+		names_list -> setNames(category -> categoryNames());
 	} else {
 		setWindowTitle(tr("Cr\351er une nouvelle cat\351gorie"));
 		connect(buttons, SIGNAL(accepted()), this, SLOT(acceptCreation()));
 		
 		// nouvelle categorie = une ligne pre-machee
-		QHash<QString, QString> cat_names;
-		cat_names.insert(QLocale::system().name().left(2), tr("Nom de la nouvelle cat\351gorie"));
+		NamesList cat_names;
+		cat_names.addName(QLocale::system().name().left(2), tr("Nom de la nouvelle cat\351gorie"));
 		names_list -> setNames(cat_names);
 		//names_list -> openPersistentEditor(qtwi, 1);
 	}
@@ -66,13 +65,13 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// chargement des noms
 	category -> clearNames();
-	QHash<QString, QString> names = names_list -> names();
-	foreach(QString lang, names.keys()) {
+	NamesList names = names_list -> names();
+	foreach(QString lang, names.langs()) {
 		category -> addName(lang, names[lang]);
 	}
 	
 	// cree un nom de dossier a partir du 1er nom de la categorie
-	QString dirname = names[names.keys().first()].toLower().replace(" ", "_");
+	QString dirname = names[names.langs().first()].toLower().replace(" ", "_");
 	category -> setPath(category -> path() + "/" + dirname);
 	category -> write();
 	
@@ -89,8 +88,8 @@ void ElementsCategoryEditor::acceptUpdate() {
 	
 	// chargement des noms
 	category -> clearNames();
-	QHash<QString, QString> names = names_list -> names();
-	foreach(QString lang, names.keys()) {
+	NamesList names = names_list -> names();
+	foreach(QString lang, names.langs()) {
 		category -> addName(lang, names[lang]);
 	}
 	

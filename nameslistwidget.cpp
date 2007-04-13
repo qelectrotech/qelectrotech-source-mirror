@@ -42,7 +42,7 @@ void NamesListWidget::addLine() {
 */
 bool NamesListWidget::checkOneName() {
 	updateHash();
-	if (!hash_names.size()) {
+	if (!hash_names.count()) {
 		QMessageBox::critical(
 			this,
 			tr("La cat\351gorie doit avoir au moins un nom."),
@@ -57,12 +57,12 @@ bool NamesListWidget::checkOneName() {
 	Lit les noms valides dans hash_names
 */
 void NamesListWidget::updateHash() {
-	hash_names.clear();
+	hash_names.clearNames();
 	int names_count = tree_names -> topLevelItemCount();
 	for (int i = 0 ; i < names_count ; ++ i) {
 		QString lang  = tree_names -> topLevelItem(i) -> text(0);
 		QString value = tree_names -> topLevelItem(i) -> text(1);
-		if (lang != "" && value != "") hash_names.insert(lang, value);
+		hash_names.addName(lang, value);
 	}
 }
 
@@ -84,19 +84,14 @@ void NamesListWidget::clean() {
 /**
 	@return Les noms entres dans la Names List
 */
-QHash<QString, QString> NamesListWidget::names() {
+NamesList NamesListWidget::names() {
 	updateHash();
 	return(hash_names);
 }
 
-/**
-	Specifie les noms que la liste doit afficher
-	@param provided_names Hash des noms a afficher
-*/
-void NamesListWidget::setNames(QHash<QString, QString> &provided_names) {
-	foreach(QString lang, provided_names.keys()) {
+void NamesListWidget::setNames(const NamesList &provided_names) {
+	foreach(QString lang, provided_names.langs()) {
 		QString value = provided_names[lang];
-		if (lang == "" || value == "") continue;
 		QStringList values;
 		values << lang << value;
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(values);

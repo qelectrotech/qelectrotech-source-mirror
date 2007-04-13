@@ -25,6 +25,7 @@ HEADERS += aboutqet.h \
            elementtextitem.h \
            exportdialog.h \
            fixedelement.h \
+           nameslist.h \
            nameslistwidget.h \
            newelementwizard.h \
            qetapp.h \
@@ -47,6 +48,7 @@ SOURCES += aboutqet.cpp \
            exportdialog.cpp \
            fixedelement.cpp \
            main.cpp \
+           nameslist.cpp \
            nameslistwidget.cpp \
            newelementwizard.cpp \
            qetapp.cpp \
