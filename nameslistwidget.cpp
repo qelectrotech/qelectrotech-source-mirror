@@ -1,10 +1,10 @@
-#include "nameslist.h"
+#include "nameslistwidget.h"
 
 /**
 	Constructeur
 	@param parent QWidget parent de la liste de noms
 */
-NamesList::NamesList(QWidget *parent) : QWidget(parent) {
+NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent) {
 	QVBoxLayout *names_list_layout = new QVBoxLayout();
 	setLayout(names_list_layout);
 	
@@ -24,13 +24,13 @@ NamesList::NamesList(QWidget *parent) : QWidget(parent) {
 /**
 	Destructeur
 */
-NamesList::~NamesList() {
+NamesListWidget::~NamesListWidget() {
 }
 
 /**
 	Ajoute une ligne a l'editeur
 */
-void NamesList::addLine() {
+void NamesListWidget::addLine() {
 	clean();
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem();
 	qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
@@ -40,7 +40,7 @@ void NamesList::addLine() {
 /**
 	Verifie qu'il y a au moins un nom
 */
-bool NamesList::checkOneName() {
+bool NamesListWidget::checkOneName() {
 	updateHash();
 	if (!hash_names.size()) {
 		QMessageBox::critical(
@@ -56,7 +56,7 @@ bool NamesList::checkOneName() {
 /**
 	Lit les noms valides dans hash_names
 */
-void NamesList::updateHash() {
+void NamesListWidget::updateHash() {
 	hash_names.clear();
 	int names_count = tree_names -> topLevelItemCount();
 	for (int i = 0 ; i < names_count ; ++ i) {
@@ -69,7 +69,7 @@ void NamesList::updateHash() {
 /**
 	Nettoie la liste des noms en enlevant les lignes vides
 */
-void NamesList::clean() {
+void NamesListWidget::clean() {
 	int names_count = tree_names -> topLevelItemCount() - 1;
 	for (int i = names_count ; i >= 0 ; -- i) {
 		if (
@@ -84,7 +84,7 @@ void NamesList::clean() {
 /**
 	@return Les noms entres dans la Names List
 */
-QHash<QString, QString> NamesList::names() {
+QHash<QString, QString> NamesListWidget::names() {
 	updateHash();
 	return(hash_names);
 }
@@ -93,7 +93,7 @@ QHash<QString, QString> NamesList::names() {
 	Specifie les noms que la liste doit afficher
 	@param provided_names Hash des noms a afficher
 */
-void NamesList::setNames(QHash<QString, QString> &provided_names) {
+void NamesListWidget::setNames(QHash<QString, QString> &provided_names) {
 	foreach(QString lang, provided_names.keys()) {
 		QString value = provided_names[lang];
 		if (lang == "" || value == "") continue;

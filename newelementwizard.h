@@ -13,7 +13,7 @@
 	  - les orientations possibles
 */
 class ElementsCategoriesWidget;
-class NamesList;
+class NamesListWidget;
 class Diagram;
 class NewElementWizard : public QDialog {
 	Q_OBJECT
@@ -37,7 +37,7 @@ class NewElementWizard : public QDialog {
 	QSpinBox *sb_height;
 	QSpinBox *sb_hotspot_x;
 	QSpinBox *sb_hotspot_y;
-	NamesList *element_names;
+	NamesListWidget *element_names;
 	QPushButton *button_previous;
 	QPushButton *button_next;
 	WizardState current_state;

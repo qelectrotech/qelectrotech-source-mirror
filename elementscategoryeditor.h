@@ -6,7 +6,7 @@
 	categorie.
 */
 class ElementsCategory;
-class NamesList;
+class NamesListWidget;
 class ElementsCategoryEditor : public QDialog {
 	Q_OBJECT
 	
@@ -23,7 +23,7 @@ class ElementsCategoryEditor : public QDialog {
 	private:
 	ElementsCategory *category;
 	QDialogButtonBox *buttons;
-	NamesList *names_list;
+	NamesListWidget *names_list;
 	bool mode_edit;
 	
 	// methodes

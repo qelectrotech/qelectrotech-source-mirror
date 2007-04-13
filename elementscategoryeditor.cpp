@@ -1,6 +1,6 @@
 #include "elementscategoryeditor.h"
 #include "elementscategory.h"
-#include "nameslist.h"
+#include "nameslistwidget.h"
 
 /**
 	Constructeur fournissant un dialogue d'edition de categorie.
@@ -46,7 +46,7 @@ void ElementsCategoryEditor::buildDialog() {
 	QVBoxLayout *editor_layout = new QVBoxLayout();
 	setLayout(editor_layout);
 	
-	names_list = new NamesList();
+	names_list = new NamesListWidget();
 	
 	buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));

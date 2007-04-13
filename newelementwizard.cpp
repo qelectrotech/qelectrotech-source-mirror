@@ -1,7 +1,7 @@
 #include "newelementwizard.h"
 #include "elementscategorieswidget.h"
 #include "elementscategorieslist.h"
-#include "nameslist.h"
+#include "nameslistwidget.h"
 #include "diagram.h"
 #include "element.h"
 
@@ -174,7 +174,7 @@ void NewElementWizard::buildStep3() {
 	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication -> setWordWrap(true);
 	step3_layout -> addWidget(explication);
-	element_names = new NamesList();
+	element_names = new NamesListWidget();
 	QHash<QString, QString> hash_name;
 	hash_name.insert(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment"));
 	element_names -> setNames(hash_name);

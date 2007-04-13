@@ -1,20 +1,20 @@
-#ifndef NAMES_LIST_H
-#define NAMES_LIST_H
+#ifndef NAMES_LIST_WIDGET_H
+#define NAMES_LIST_WIDGET_H
 #include <QtGui>
 /**
 	Cette classe represente une interface permettant de saisir les noms des
 	categories et elements.
 */
-class NamesList : public QWidget {
+class NamesListWidget : public QWidget {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:
-	NamesList(QWidget * = 0);
-	virtual ~NamesList();
+	NamesListWidget(QWidget * = 0);
+	virtual ~NamesListWidget();
 	
 	private:
-	NamesList(const NamesList &);
+	NamesListWidget(const NamesListWidget &);
 	
 	// attributs
 	private:
