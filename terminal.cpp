@@ -237,7 +237,7 @@ void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 		s -> setConducerStart(mapToScene(QPointF(amarrage_conducer)));
 		s -> setConducerStop(e -> scenePos());
 		s -> setConducer(true);
-		setCursor(Qt::CrossCursor);
+		//setCursor(Qt::CrossCursor);
 	}
 }
 
@@ -247,7 +247,7 @@ void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 */
 void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	// pendant la pose d'un conducteur, on adopte un autre curseur 
-	setCursor(Qt::CrossCursor);
+	//setCursor(Qt::CrossCursor);
 	
 	// d'un mouvement a l'autre, il faut retirer l'effet hover de la borne precedente
 	if (terminal_precedente != NULL) {
@@ -314,7 +314,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	@param e L'evenement souris correspondant
 */
 void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	setCursor(Qt::ArrowCursor);
+	//setCursor(Qt::ArrowCursor);
 	terminal_precedente = NULL;
 	couleur_hovered  = couleur_neutre;
 	// verifie que la scene est bien un Diagram
