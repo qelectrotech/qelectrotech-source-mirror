@@ -338,7 +338,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		// derniere verification : verifier que cette borne n'est pas deja reliee a l'autre borne
 		foreach (Conducer *f, liste_conducers) if (f -> terminal1 == p || f -> terminal2 == p) return;
 		// autrement, on pose un conducteur
-		new Conducer(this, (Terminal *)qgi, 0, scene());
+		new Conducer(this, p, 0, scene());
 	}
 }
 

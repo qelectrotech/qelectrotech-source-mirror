@@ -45,10 +45,12 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	previous_z_value = zValue();
 	
 	// ajout du champ de texte editable
-	text_item = new QGraphicsTextItem(this, scene);
+	text_item = new QGraphicsTextItem();
 	text_item -> setPlainText("_");
 	text_item -> setTextInteractionFlags(Qt::TextEditorInteraction);
 	calculateTextItemPosition();
+	scene -> addItem(text_item);
+	text_item -> setParentItem(this);
 }
 
 /**
