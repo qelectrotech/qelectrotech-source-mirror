@@ -199,9 +199,11 @@ void NewElementWizard::buildStep4() {
 	sb_hotspot_x = new QSpinBox();
 	sb_hotspot_x -> setValue(15);
 	sb_hotspot_x -> setSuffix(tr(" px"));
+	sb_hotspot_x -> setSingleStep(10);
 	sb_hotspot_y = new QSpinBox();
 	sb_hotspot_y -> setValue(35);
 	sb_hotspot_y -> setSuffix(tr(" px"));
+	sb_hotspot_y -> setSingleStep(10);
 	
 	diagram_scene = new Diagram();
 	diagram_scene -> border_and_inset.setNbColumns(4);
@@ -405,7 +407,7 @@ void NewElementWizard::updateScene() {
 	int hotspot_y   = sb_hotspot_y -> value();
 	int margin_x = 10;
 	int margin_y = 30;
-	diagram_scene -> addRect(QRectF(margin_x, margin_y, sb_width -> value() * 10.0, sb_height -> value() * 10.0));
+	diagram_scene -> addRect(QRectF(margin_x, margin_y, elmt_width, elmt_height));
 	QPen hotspot_pen(Qt::red);
 	QGraphicsLineItem *line_hotspot_x = diagram_scene -> addLine(
 		QLine(
@@ -427,7 +429,8 @@ void NewElementWizard::updateScene() {
 	);
 	line_hotspot_x -> setZValue(10);
 	line_hotspot_y -> setZValue(10);
-	diagram_scene -> setSceneRect(QRect(0, 0, elmt_width + 10, elmt_height + 10));
+	diagram_scene -> setSceneRect(QRect(0, 0, elmt_width + (2 * margin_x) + 15, elmt_height + (2 * margin_y)));
+	diagram_scene -> update();
 }
 
 /**
