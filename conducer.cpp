@@ -773,11 +773,12 @@ bool Conducer::fromXml(QDomElement &e) {
 	QPointF t2 = terminal2 -> amarrageConducer();
 	qreal expected_width  = qAbs(t2.x() - t1.x());
 	qreal expected_height = qAbs(t2.y() - t1.y());
+	qreal precision = std::numeric_limits<qreal>::epsilon();
 	if (
-		expected_width > width + 0.001 ||\
-		expected_width < width - 0.001 ||\
-		expected_height > height + 0.001 ||\
-		expected_height < height - 0.001
+		expected_width > width + precision ||\
+		expected_width < width - precision ||\
+		expected_height > height + precision ||\
+		expected_height < height - precision
 	) return(false);
 	
 	/* on recree les segments a partir des donnes XML */
