@@ -65,24 +65,10 @@ void ElementsCategory::loadNames() {
 
 /**
 	Methode permettant d'obtenir le nom affichable de cette categorie.
-	Par ordre de preference, on prendra :
-		- le nom dans la langue du systeme
-		- le nom en anglais
-		- le nom du dossier
 	@return Le nom affichable de la categorie
 */
 QString ElementsCategory::name() const {
-	// recupere les deux premiers caracteres de la locale en cours du systeme
-	QString system_language = QLocale::system().name().left(2);
-	QString category_name;
-	if (category_names[system_language] != QString()) {
-		category_name = category_names[system_language];
-	} else if (category_names["en"] != QString()) {
-		category_name = category_names["en"];
-	} else {
-		category_name = dirName();
-	}
-	return(category_name);
+	return(category_names.name(dirName()));
 }
 
 /**

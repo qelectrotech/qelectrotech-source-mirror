@@ -2,6 +2,7 @@
 #define ELEMENTPERSO_H
 #include "fixedelement.h"
 #include <QtGui>
+#include "nameslist.h"
 /**
 	Cette classe represente un element electrique. Elle est utilisable
 	comme un element fixe. La difference est que l'element perso lit
@@ -20,7 +21,7 @@ class CustomElement : public FixedElement {
 	// attributs
 	private:
 	int elmt_etat; // contient le code d'erreur si l'instanciation a echoue ou 0 si l'instanciation s'est bien passe
-	QString priv_nom;
+	NamesList names;
 	QString nomfichier;
 	QPicture dessin;
 	int nb_terminals;
@@ -96,7 +97,7 @@ inline int CustomElement::etat() const {
 	@return Le nom de l'element
 */
 inline QString CustomElement::nom() const {
-	return(priv_nom);
+	return(names.name(QFileInfo(nomfichier).baseName()));
 }
 
 #endif

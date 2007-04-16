@@ -126,3 +126,26 @@ QDomElement NamesList::toXml(QDomDocument &xml_document) const {
 	}
 	return(names_elmt);
 }
+
+/**
+	Retourne le nom approprie en fonction de la langue du systeme
+	Par ordre de preference, on prendra :
+		- le nom dans la langue du systeme
+		- le nom en anglais
+		- le nom du dossier
+	@param fallback_name Le nom a retourner si aucun nom approprie n'est trouve
+	@return Le nom approprie en fonction de la langue du systeme
+*/
+const QString &NamesList::name(const QString &fallback_name) const {
+	// recupere les deux premiers caracteres de la locale en cours du systeme
+	QString system_language = QLocale::system().name().left(2);
+	QString *returned_name;
+	if (hash_names[system_language] != QString()) {
+		returned_name = new QString(hash_names[system_language]);
+	} else if (hash_names["en"] != QString()) {
+		returned_name = new QString(hash_names["en"]);
+	} else {
+		returned_name = new QString(fallback_name);
+	}
+	return(*returned_name);
+}

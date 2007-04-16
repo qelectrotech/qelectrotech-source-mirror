@@ -23,6 +23,7 @@ class NamesList {
 	int count() const;
 	QString &operator[](const QString &);
 	const QString operator[](const QString &) const;
+	const QString &name(const QString & = QString()) const;
 	
 	// methodes relatives a XML
 	void fromXml(const QDomElement &);
