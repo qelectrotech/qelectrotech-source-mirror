@@ -4,7 +4,7 @@
 	Constructeur
 	@param parent QWidget parent de la liste de noms
 */
-NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent) {
+NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent), read_only(false) {
 	QVBoxLayout *names_list_layout = new QVBoxLayout();
 	setLayout(names_list_layout);
 	
@@ -32,6 +32,7 @@ NamesListWidget::~NamesListWidget() {
 */
 void NamesListWidget::addLine() {
 	clean();
+	if (read_only) return;
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem();
 	qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 	tree_names -> addTopLevelItem(qtwi);
@@ -45,8 +46,8 @@ bool NamesListWidget::checkOneName() {
 	if (!hash_names.count()) {
 		QMessageBox::critical(
 			this,
-			tr("La cat\351gorie doit avoir au moins un nom."),
-			tr("Vous devez entrer au moins un nom pour la cat\351gorie.")
+			tr("Il doit y avoir au moins un nom."),
+			tr("Vous devez entrer au moins un nom.")
 		);
 		return(false);
 	}
@@ -62,7 +63,7 @@ void NamesListWidget::updateHash() {
 	for (int i = 0 ; i < names_count ; ++ i) {
 		QString lang  = tree_names -> topLevelItem(i) -> text(0);
 		QString value = tree_names -> topLevelItem(i) -> text(1);
-		hash_names.addName(lang, value);
+		if (lang != "" && value != "") hash_names.addName(lang, value);
 	}
 }
 
@@ -95,7 +96,25 @@ void NamesListWidget::setNames(const NamesList &provided_names) {
 		QStringList values;
 		values << lang << value;
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(values);
-		qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
+		if (!read_only) qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 		tree_names -> addTopLevelItem(qtwi);
 	}
+}
+
+void NamesListWidget::check() {
+	if (checkOneName()) emit(inputChecked());
+}
+
+void NamesListWidget::setReadOnly(bool ro) {
+	read_only = ro;
+	int names_count = tree_names -> topLevelItemCount() - 1;
+	for (int i = names_count ; i >= 0 ; -- i) {
+		Qt::ItemFlags flags = Qt::ItemIsEnabled | Qt::ItemIsSelectable;
+		if (!read_only) flags |= Qt::ItemIsEditable;
+		tree_names -> topLevelItem(i) -> setFlags(flags);
+	}
+}
+
+bool NamesListWidget::isReadOnly() const {
+	return(read_only);
 }

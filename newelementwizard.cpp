@@ -2,8 +2,10 @@
 #include "elementscategorieswidget.h"
 #include "elementscategorieslist.h"
 #include "nameslistwidget.h"
+#include "orientationsetwidget.h"
 #include "diagram.h"
 #include "element.h"
+#include "customelementeditor.h"
 
 /**
 	Constructeur
@@ -76,6 +78,7 @@ void NewElementWizard::previous() {
 		case Names:
 			current_state = Filename;
 			step2 -> show();
+			qle_filename -> setFocus();
 			step3 -> hide();
 			break;
 		case Dimensions:
@@ -102,6 +105,7 @@ void NewElementWizard::next() {
 			current_state = Filename;
 			step1 -> hide();
 			step2 -> show();
+			qle_filename -> setFocus();
 			button_previous -> setEnabled(true);
 			break;
 		case Filename:
@@ -158,7 +162,9 @@ void NewElementWizard::buildStep2() {
 	explication2 -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication2 -> setWordWrap(true);
 	step2_layout -> addWidget(explication1);
-	step2_layout -> addWidget(qle_filename = new QLineEdit());
+	qle_filename = new QLineEdit(tr("nouvel_element"));
+	qle_filename -> selectAll();
+	step2_layout -> addWidget(qle_filename);
 	step2_layout -> addWidget(explication2);
 	step2_layout -> addSpacing(100);
 	step2 -> setLayout(step2_layout);
@@ -266,37 +272,12 @@ void NewElementWizard::buildStep5() {
 	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication -> setWordWrap(true);
 	
-	#define MK_COMBO_BOX(a) a##_orientation = new QComboBox(); \
-	a##_orientation -> addItem(tr("Par d\351faut"), "d"); \
-	a##_orientation -> addItem(tr("Possible"),      "y"); \
-	a##_orientation -> addItem(tr("Impossible"),    "n");
-	
-	// 4 combo box
-	MK_COMBO_BOX(north)
-	MK_COMBO_BOX(east)
-	MK_COMBO_BOX(south)
-	MK_COMBO_BOX(west)
-	
-	#undef MK_COMBO_BOX
-	
-	east_orientation  -> setCurrentIndex(1);
-	south_orientation -> setCurrentIndex(1);
-	west_orientation  -> setCurrentIndex(1);
-	
-	QGridLayout *qgl = new QGridLayout();
-	qgl -> addWidget(new QLabel(tr("Nord :")),  0, 0);
-	qgl -> addWidget(north_orientation,         0, 1);
-	qgl -> addWidget(new QLabel(tr("Est :")),   1, 0);
-	qgl -> addWidget(east_orientation,          1, 1);
-	qgl -> addWidget(new QLabel(tr("Sud :")),   2, 0);
-	qgl -> addWidget(south_orientation,         2, 1);
-	qgl -> addWidget(new QLabel(tr("Ouest :")), 3, 0);
-	qgl -> addWidget(west_orientation,          3, 1);
+	orientation_set = new OrientationSetWidget();
 	
 	QVBoxLayout *step5_layout = new QVBoxLayout();
 	step5_layout -> addWidget(explication);
-	step5_layout -> addLayout(qgl);
-	step5_layout -> addSpacing(75);
+	step5_layout -> addWidget(orientation_set);
+	step5_layout -> addSpacing(25);
 	step5 -> setLayout(step5_layout);
 }
 
@@ -349,6 +330,7 @@ bool NewElementWizard::validStep2() {
 		return(answer == QMessageBox::Yes);
 	}
 	
+	chosen_file = dir_path + "/" + file_name;
 	return(true);
 }
 
@@ -377,19 +359,7 @@ bool NewElementWizard::validStep4() {
 	@return true si l'etape est validee, false sinon
 */
 bool NewElementWizard::validStep5() {
-	int nb_orientations = 0;
-	if (!north_orientation -> currentIndex()) ++ nb_orientations;
-	if (!east_orientation  -> currentIndex()) ++ nb_orientations;
-	if (!south_orientation -> currentIndex()) ++ nb_orientations;
-	if (!west_orientation  -> currentIndex()) ++ nb_orientations;
-	if (nb_orientations != 1) {
-		QMessageBox::critical(
-			this,
-			tr("Erreur"),
-			tr("Il doit y avoir exactement une orientation par d\351faut.")
-		);
-		return(false);
-	}
+	// l'editeur d'orientations se charge deja de valider tout ca
 	return(true);
 }
 
@@ -445,6 +415,12 @@ void NewElementWizard::updateHotspotLimits() {
 	Cree le nouvel element
 */
 void NewElementWizard::createNewElement() {
-	/// @todo
-	QMessageBox::warning(this, "Creation de l'element", "Not Implemented Yet");
+	CustomElementEditor *edit_new_element = new CustomElementEditor(parentWidget());
+	edit_new_element -> setSize(QSize(sb_width  -> value() * 10, sb_height -> value() * 10));
+	edit_new_element -> setHotspot(QPoint(sb_hotspot_x -> value(), sb_hotspot_y -> value()));
+	edit_new_element -> setNames(element_names -> names());
+	edit_new_element -> setOrientations(orientation_set -> orientationSet());
+	edit_new_element -> setFileName(chosen_file);
+	edit_new_element -> show();
+	accept();
 }

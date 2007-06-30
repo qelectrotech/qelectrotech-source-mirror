@@ -1,7 +1,6 @@
 #include "customelement.h"
 #include "elementtextitem.h"
 #include "diagram.h"
-
 /**
 	Constructeur de la classe ElementPerso. Permet d'instancier un element
 	utilisable comme un element fixe a la difference que l'element perso lit
@@ -63,10 +62,10 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	// ces attributs doivent etre presents et valides
 	int w, h, hot_x, hot_y;
 	if (
-		!attributeIsAnInteger(racine, QString("width"), &w) ||\
-		!attributeIsAnInteger(racine, QString("height"), &h) ||\
-		!attributeIsAnInteger(racine, QString("hotspot_x"), &hot_x) ||\
-		!attributeIsAnInteger(racine, QString("hotspot_y"), &hot_y) ||\
+		!QET::attributeIsAnInteger(racine, QString("width"), &w) ||\
+		!QET::attributeIsAnInteger(racine, QString("height"), &h) ||\
+		!QET::attributeIsAnInteger(racine, QString("hotspot_x"), &hot_x) ||\
+		!QET::attributeIsAnInteger(racine, QString("hotspot_y"), &hot_y) ||\
 		!validOrientationAttribute(racine)
 	) {
 		if (etat != NULL) *etat = 5;
@@ -78,6 +77,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
 	setConnexionsInternesAcceptees(racine.attribute("ci") == "true");
+	
 	// la definition est supposee avoir des enfants
 	if (racine.firstChild().isNull()) {
 		if (etat != NULL) *etat = 6;
@@ -194,12 +194,20 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
 	@return true si l'analyse reussit, false sinon
 */
 bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
+	//qDebug() << "parseLine sur " << (void *)(&dessin);
+// 	qDebug() << names.name() << (void *)(&dessin);
+// 	qp.end();
+// 	PartLine t;
+// 	t.fromXml(e);
+// 	t.renderToCustomElement(*this);
+// 	qp.begin(&dessin);
+	//return(true);
 	// verifie la presence et la validite des attributs obligatoires
 	double x1, y1, x2, y2;
-	if (!attributeIsAReal(e, QString("x1"), &x1)) return(false);
-	if (!attributeIsAReal(e, QString("y1"), &y1)) return(false);
-	if (!attributeIsAReal(e, QString("x2"), &x2)) return(false);
-	if (!attributeIsAReal(e, QString("y2"), &y2)) return(false);
+	if (!QET::attributeIsAReal(e, QString("x1"), &x1)) return(false);
+	if (!QET::attributeIsAReal(e, QString("y1"), &y1)) return(false);
+	if (!QET::attributeIsAReal(e, QString("x2"), &x2)) return(false);
+	if (!QET::attributeIsAReal(e, QString("y2"), &y2)) return(false);
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawLine(QLineF(x1, y1, x2, y2));
@@ -223,9 +231,9 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double cercle_x, cercle_y, cercle_r;
-	if (!attributeIsAReal(e, QString("x"),        &cercle_x)) return(false);
-	if (!attributeIsAReal(e, QString("y"),        &cercle_y)) return(false);
-	if (!attributeIsAReal(e, QString("diameter"), &cercle_r)) return(false);
+	if (!QET::attributeIsAReal(e, QString("x"),        &cercle_x)) return(false);
+	if (!QET::attributeIsAReal(e, QString("y"),        &cercle_y)) return(false);
+	if (!QET::attributeIsAReal(e, QString("diameter"), &cercle_r)) return(false);
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawEllipse(QRectF(cercle_x, cercle_y, cercle_r, cercle_r));
@@ -250,10 +258,10 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double ellipse_x, ellipse_y, ellipse_l, ellipse_h;
-	if (!attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
-	if (!attributeIsAReal(e, QString("y"),       &ellipse_y))  return(false);
-	if (!attributeIsAReal(e, QString("width"), &ellipse_l))  return(false);
-	if (!attributeIsAReal(e, QString("height"), &ellipse_h))  return(false);
+	if (!QET::attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
+	if (!QET::attributeIsAReal(e, QString("y"),       &ellipse_y))  return(false);
+	if (!QET::attributeIsAReal(e, QString("width"), &ellipse_l))  return(false);
+	if (!QET::attributeIsAReal(e, QString("height"), &ellipse_h))  return(false);
 	qp.save();
 	setPainterStyle(e, qp);
 	qp.drawEllipse(QRectF(ellipse_x, ellipse_y, ellipse_l, ellipse_h));
@@ -278,12 +286,12 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
 	double arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
-	if (!attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
-	if (!attributeIsAReal(e, QString("y"),       &arc_y))  return(false);
-	if (!attributeIsAReal(e, QString("width"),   &arc_l))  return(false);
-	if (!attributeIsAReal(e, QString("height"),  &arc_h))  return(false);
-	if (!attributeIsAReal(e, QString("start"),   &arc_s))  return(false);
-	if (!attributeIsAReal(e, QString("angle"),   &arc_a))  return(false);
+	if (!QET::attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
+	if (!QET::attributeIsAReal(e, QString("y"),       &arc_y))  return(false);
+	if (!QET::attributeIsAReal(e, QString("width"),   &arc_l))  return(false);
+	if (!QET::attributeIsAReal(e, QString("height"),  &arc_h))  return(false);
+	if (!QET::attributeIsAReal(e, QString("start"),   &arc_s))  return(false);
+	if (!QET::attributeIsAReal(e, QString("angle"),   &arc_a))  return(false);
 	
 	qp.save();
 	setPainterStyle(e, qp);
@@ -306,7 +314,7 @@ bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 	int i = 1;
 	while(true) {
-		if (attributeIsAReal(e, QString("x%1").arg(i)) && attributeIsAReal(e, QString("y%1").arg(i))) ++ i;
+		if (QET::attributeIsAReal(e, QString("x%1").arg(i)) && QET::attributeIsAReal(e, QString("y%1").arg(i))) ++ i;
 		else break;
 	}
 	if (i < 3) return(false);
@@ -338,9 +346,9 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	qreal pos_x, pos_y;
 	int size;
 	if (
-		!attributeIsAReal(e, "x", &pos_x) ||\
-		!attributeIsAReal(e, "y", &pos_y) ||\
-		!attributeIsAnInteger(e, "size", &size) ||\
+		!QET::attributeIsAReal(e, "x", &pos_x) ||\
+		!QET::attributeIsAReal(e, "y", &pos_y) ||\
+		!QET::attributeIsAnInteger(e, "size", &size) ||\
 		!e.hasAttribute("text")
 	) return(false);
 	
@@ -368,9 +376,9 @@ bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
 	qreal pos_x, pos_y;
 	int size;
 	if (
-		!attributeIsAReal(e, "x", &pos_x) ||\
-		!attributeIsAReal(e, "y", &pos_y) ||\
-		!attributeIsAnInteger(e, "size", &size)
+		!QET::attributeIsAReal(e, "x", &pos_x) ||\
+		!QET::attributeIsAReal(e, "y", &pos_y) ||\
+		!QET::attributeIsAnInteger(e, "size", &size)
 	) return(false);
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this, s);
@@ -394,14 +402,14 @@ bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
 bool CustomElement::parseTerminal(QDomElement &e, Diagram *s) {
 	// verifie la presence et la validite des attributs obligatoires
 	double terminalx, terminaly;
-	Terminal::Orientation terminalo;
-	if (!attributeIsAReal(e, QString("x"), &terminalx)) return(false);
-	if (!attributeIsAReal(e, QString("y"), &terminaly)) return(false);
+	QET::Orientation terminalo;
+	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(false);
+	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(false);
 	if (!e.hasAttribute("orientation")) return(false);
-	if (e.attribute("orientation") == "n") terminalo = Terminal::Nord;
-	else if (e.attribute("orientation") == "s") terminalo = Terminal::Sud;
-	else if (e.attribute("orientation") == "e") terminalo = Terminal::Est;
-	else if (e.attribute("orientation") == "w") terminalo = Terminal::Ouest;
+	if (e.attribute("orientation") == "n") terminalo = QET::North;
+	else if (e.attribute("orientation") == "s") terminalo = QET::South;
+	else if (e.attribute("orientation") == "e") terminalo = QET::East;
+	else if (e.attribute("orientation") == "w") terminalo = QET::West;
 	else return(false);
 	new Terminal(terminalx, terminaly, terminalo, this, s);
 	++ nb_terminals;
@@ -417,44 +425,6 @@ void CustomElement::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 	qp.setRenderHint(QPainter::Antialiasing,          aa);
 	qp.setRenderHint(QPainter::TextAntialiasing,      aa);
 	qp.setRenderHint(QPainter::SmoothPixmapTransform, aa);
-}
-
-/**
-	Permet de savoir si l'attribut nom_attribut d'un element XML e est bien un
-	entier. Si oui, sa valeur est copiee dans entier.
-	@param e Element XML
-	@param nom_attribut Nom de l'attribut a analyser
-	@param entier Pointeur facultatif vers un entier
-	@return true si l'attribut est bien un entier, false sinon
-*/
-bool CustomElement::attributeIsAnInteger(QDomElement &e, QString nom_attribut, int *entier) {
-	// verifie la presence de l'attribut
-	if (!e.hasAttribute(nom_attribut)) return(false);
-	// verifie la validite de l'attribut
-	bool ok;
-	int tmp = e.attribute(nom_attribut).toInt(&ok);
-	if (!ok) return(false);
-	if (entier != NULL) *entier = tmp;
-	return(true);
-}
-
-/**
-	Permet de savoir si l'attribut nom_attribut d'un element XML e est bien un
-	reel. Si oui, sa valeur est copiee dans reel.
-	@param e Element XML
-	@param nom_attribut Nom de l'attribut a analyser
-	@param reel Pointeur facultatif vers un double
-	@return true si l'attribut est bien un reel, false sinon
-*/
-bool CustomElement::attributeIsAReal(QDomElement &e, QString nom_attribut, double *reel) {
-	// verifie la presence de l'attribut
-	if (!e.hasAttribute(nom_attribut)) return(false);
-	// verifie la validite de l'attribut
-	bool ok;
-	qreal tmp = e.attribute(nom_attribut).toDouble(&ok);
-	if (!ok) return(false);
-	if (reel != NULL) *reel = tmp;
-	return(true);
 }
 
 /**
@@ -477,30 +447,7 @@ bool CustomElement::attributeIsAReal(QDomElement &e, QString nom_attribut, doubl
 	@return true si l'attribut "orientation" est valide, false sinon
 */
 bool CustomElement::validOrientationAttribute(QDomElement &e) {
-	// verifie la presence de l'attribut orientation
-	if (!e.hasAttribute("orientation")) return(false);
-	QString t = e.attribute("orientation");
-	// verification syntaxique : 4 lettres, un d, que des y ou des n pour le reste
-	if (t.length() != 4) return(false);
-	int d_pos = -1;
-	for (int i = 0 ; i < 4 ; ++ i) {
-		QChar c = t.at(i);
-		if (c != 'd' && c != 'y' && c != 'n') return(false);
-		if (c == 'd') {
-			if (d_pos == -1) d_pos = i;
-			else return(false);
-		}
-	}
-	if (d_pos == -1) return(false);
-	
-	// orientation : 4 lettres = nord/est/sud/ouest avec d = default, y = yes et n = no
-	ori_n = (t.at(0) == 'd' || t.at(0) == 'y');
-	ori_e = (t.at(1) == 'd' || t.at(1) == 'y');
-	ori_s = (t.at(2) == 'd' || t.at(2) == 'y');
-	ori_w = (t.at(3) == 'd' || t.at(3) == 'y');
-	ori_d = (Terminal::Orientation)d_pos;
-	ori = ori_d;
-	return(true);
+	return(ori.fromString(e.attribute("orientation")));
 }
 
 /**

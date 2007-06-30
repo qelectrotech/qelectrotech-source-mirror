@@ -123,14 +123,14 @@ QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
 	@param o la nouvelle orientation de l'objet
 	@return true si l'orientation a pu etre appliquee, false sinon
 */
-bool Element::setOrientation(Terminal::Orientation o) {
+bool Element::setOrientation(QET::Orientation o) {
 	// verifie que l'orientation demandee est acceptee
-	if (!acceptOrientation(o)) return(false);
+	if (!ori.accept(o)) return(false);
 	prepareGeometryChange();
 	// rotation en consequence et rafraichissement de l'element graphique
-	qreal rotation_value = 90.0 * (o - ori);
+	qreal rotation_value = 90.0 * (o - ori.current());
 	rotate(rotation_value);
-	ori = o;
+	ori.setCurrent(o);
 	update();
 	foreach(QGraphicsItem *qgi, children()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer();
@@ -353,8 +353,8 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	bool conv_ok;
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
-	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = defaultOrientation();
-	setOrientation((Terminal::Orientation)read_ori);
+	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = ori.defaultOrientation();
+	setOrientation((QET::Orientation)read_ori);
 	setSelected(e.attribute("selected") == "selected");
 	
 	return(true);
@@ -380,7 +380,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("x", pos().x());
 	element.setAttribute("y", pos().y());
 	if (isSelected()) element.setAttribute("selected", "selected");
-	element.setAttribute("orientation", QString("%1").arg(orientation()));
+	element.setAttribute("orientation", QString("%1").arg(ori.current()));
 	
 	/* recupere le premier id a utiliser pour les bornes de cet element */
 	int id_terminal = 0;

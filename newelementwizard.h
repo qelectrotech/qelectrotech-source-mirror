@@ -14,6 +14,7 @@
 */
 class ElementsCategoriesWidget;
 class NamesListWidget;
+class OrientationSetWidget;
 class Diagram;
 class NewElementWizard : public QDialog {
 	Q_OBJECT
@@ -38,6 +39,7 @@ class NewElementWizard : public QDialog {
 	QSpinBox *sb_hotspot_x;
 	QSpinBox *sb_hotspot_y;
 	NamesListWidget *element_names;
+	OrientationSetWidget *orientation_set;
 	QPushButton *button_previous;
 	QPushButton *button_next;
 	WizardState current_state;
@@ -47,6 +49,7 @@ class NewElementWizard : public QDialog {
 	QComboBox *east_orientation;
 	QComboBox *south_orientation;
 	QComboBox *west_orientation;
+	QString chosen_file;
 	
 	// methodes
 	private:

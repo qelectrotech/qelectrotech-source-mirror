@@ -221,8 +221,8 @@ void QETApp::actions() {
 	supprimer         = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
 	pivoter           = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
-	add_column        = new QAction(                               tr("Ajouter une colonne"),                  this);
-	remove_column     = new QAction(                               tr("Enlever une colonne"),                  this);
+	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
+	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
 	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
 	shrink_diagram    = new QAction(                               tr("R\351tr\351cir le sch\351ma"),          this);
 	

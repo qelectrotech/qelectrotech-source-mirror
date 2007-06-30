@@ -1,6 +1,8 @@
 #include "elementspanel.h"
-#include "customelement.h"
 #include "elementscategory.h"
+#include "elementscategoryeditor.h"
+#include "customelement.h"
+#include "customelementeditor.h"
 
 /**
 	Constructeur
@@ -33,6 +35,9 @@ ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
 	qp.setColor(QPalette::Highlight,       QColor("#678db2"));
 	qp.setColor(QPalette::HighlightedText, Qt::white);
 	setPalette(qp);
+	
+	// double-cliquer sur un element permet de l'editer
+	connect(this, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(slot_doubleClick(QTreeWidgetItem *, int)));
 }
 
 /**
@@ -114,6 +119,7 @@ void ElementsPanel::addDir(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QS
 	t.setColorAt(1, QColor("#ffffff"));
 	qtwi_dossier -> setBackground(0, QBrush(t));
 	qtwi_dossier -> setExpanded(true);
+	qtwi_dossier -> setData(0, 42, adr_dossier);
 	
 	// ajout des sous-categories / sous-dossiers
 	QStringList dossiers = category.entryList(QStringList(), QDir::AllDirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDir::Name);
@@ -159,4 +165,26 @@ void ElementsPanel::reload() {
 	
 	// chargement des elements de la collection utilisateur
 	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
+}
+
+void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
+	// recupere le fichier ou le dossier correspondant au QTreeWidgetItem
+	QString filename = qtwi -> data(0, 42).toString();
+	
+	// le fichier doit exister
+	QFileInfo infos_file(filename);
+	if (!infos_file.exists()) return;
+	
+	
+	if (infos_file.isFile()) {
+		// il s'agit d'un element
+		CustomElementEditor *cee = new CustomElementEditor();
+		cee -> fromFile(filename);
+		cee -> show();
+	} else if (infos_file.isDir()) {
+		// il s'agit d'une categorie
+		ElementsCategory c(filename);
+		ElementsCategoryEditor ece(filename, true);
+		if (ece.exec() == QDialog::Accepted) reload();
+	}
 }

@@ -3,6 +3,9 @@
 #include "fixedelement.h"
 #include <QtGui>
 #include "nameslist.h"
+class CustomElementPart;
+// #include "customelementpart.h"
+// #include "cep_line.h"
 /**
 	Cette classe represente un element electrique. Elle est utilisable
 	comme un element fixe. La difference est que l'element perso lit
@@ -14,6 +17,8 @@ class CustomElement : public FixedElement {
 	public:
 	CustomElement(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
 	virtual ~CustomElement();
+	
+	friend class CustomElementPart;
 	
 	private:
 	CustomElement(const CustomElement &);
@@ -47,8 +52,6 @@ class CustomElement : public FixedElement {
 	bool parseInput(QDomElement &, Diagram *);
 	bool parseTerminal(QDomElement &, Diagram *);
 	void setQPainterAntiAliasing(QPainter &, bool);
-	bool attributeIsAnInteger(QDomElement &, QString, int * = NULL);
-	bool attributeIsAReal(QDomElement &, QString, double * = NULL);
 	bool validOrientationAttribute(QDomElement &);
 	void setPainterStyle(QDomElement &, QPainter &);
 };

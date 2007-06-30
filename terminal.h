@@ -3,6 +3,7 @@
 #define TAILLE_BORNE 4
 #include <QtGui>
 #include <QtXml>
+#include "qet.h"
 class Conducer;
 class Diagram;
 class Element;
@@ -14,10 +15,9 @@ class Terminal : public QGraphicsItem {
 	
 	// constructeurs, destructeur
 	public:
-	enum Orientation {Nord, Est, Sud, Ouest};
 	Terminal();
-	Terminal(QPointF,      Terminal::Orientation, Element * = 0, Diagram * = 0);
-	Terminal(qreal, qreal, Terminal::Orientation, Element * = 0, Diagram * = 0);
+	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
+	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
 	virtual ~Terminal();
 	
 	private:
@@ -39,7 +39,7 @@ class Terminal : public QGraphicsItem {
 	
 	// methodes de lecture
 	QList<Conducer *> conducers() const;
-	Terminal::Orientation orientation() const;
+	QET::Orientation orientation() const;
 	QPointF amarrageConducer() const;
 	void updateConducer(QPointF = QPointF());
 	
@@ -61,6 +61,12 @@ class Terminal : public QGraphicsItem {
 	public:
 	enum { Type = UserType + 1002 };
 	
+	// differentes couleurs statiques utilisables pour l'effet "hover"
+	static QColor couleur_neutre;
+	static QColor couleur_autorise;
+	static QColor couleur_prudence;
+	static QColor couleur_interdit;
+	
 	private:
 	// pointeur vers la QGraphicsScene de type Diagram (evite quelques casts en interne)
 	Diagram *diagram_scene;
@@ -68,7 +74,7 @@ class Terminal : public QGraphicsItem {
 	QPointF amarrage_conducer;
 	QPointF amarrage_elmt;
 	// orientation de la borne
-	Terminal::Orientation sens;
+	QET::Orientation sens;
 	// liste des conducers lies a cette borne
 	QList<Conducer *> liste_conducers;
 	// pointeur vers un rectangle correspondant au bounding rect ; permet de ne calculer le bounding rect qu'une seule fois ; le pointeur c'est parce que le compilo exige une methode const
@@ -76,13 +82,9 @@ class Terminal : public QGraphicsItem {
 	Terminal *terminal_precedente;
 	bool hovered;
 	// methode initialisant les differents membres de la borne
-	void initialise(QPointF, Terminal::Orientation);
-	// differentes couleurs utilisables pour l'effet "hover"
+	void initialise(QPointF, QET::Orientation);
+	// couleur de l'effet hover de la patte
 	QColor couleur_hovered;
-	QColor couleur_neutre;
-	QColor couleur_autorise;
-	QColor couleur_prudence;
-	QColor couleur_interdit;
 };
 
 /**

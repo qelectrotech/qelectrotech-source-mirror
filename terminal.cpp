@@ -3,27 +3,32 @@
 #include "element.h"
 #include "conducer.h"
 
+QColor Terminal::couleur_neutre   = QColor(Qt::blue);
+QColor Terminal::couleur_autorise = QColor(Qt::darkGreen);
+QColor Terminal::couleur_prudence = QColor("#ff8000");
+QColor Terminal::couleur_interdit = QColor(Qt::red);
+
 /**
 	Fonction privee pour initialiser la borne.
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 */
-void Terminal::initialise(QPointF pf, Terminal::Orientation o) {
+void Terminal::initialise(QPointF pf, QET::Orientation o) {
 	// definition du pount d'amarrage pour un conducteur
 	amarrage_conducer  = pf;
 	
 	// definition de l'orientation de la terminal (par defaut : sud)
-	if (o < Terminal::Nord || o > Terminal::Ouest) sens = Terminal::Sud;
+	if (o < QET::North || o > QET::West) sens = QET::South;
 	else sens = o;
 	
 	// calcul de la position du point d'amarrage a l'element
 	amarrage_elmt = amarrage_conducer;
 	switch(sens) {
-		case Terminal::Nord  : amarrage_elmt += QPointF(0, TAILLE_BORNE);  break;
-		case Terminal::Est   : amarrage_elmt += QPointF(-TAILLE_BORNE, 0); break;
-		case Terminal::Ouest : amarrage_elmt += QPointF(TAILLE_BORNE, 0);  break;
-		case Terminal::Sud   :
-		default           : amarrage_elmt += QPointF(0, -TAILLE_BORNE);
+		case QET::North: amarrage_elmt += QPointF(0, TAILLE_BORNE);  break;
+		case QET::East : amarrage_elmt += QPointF(-TAILLE_BORNE, 0); break;
+		case QET::West : amarrage_elmt += QPointF(TAILLE_BORNE, 0);  break;
+		case QET::South:
+		default        : amarrage_elmt += QPointF(0, -TAILLE_BORNE);
 	}
 	
 	// par defaut : pas de conducteur
@@ -36,18 +41,16 @@ void Terminal::initialise(QPointF pf, Terminal::Orientation o) {
 	setAcceptedMouseButtons(Qt::LeftButton);
 	hovered = false;
 	setToolTip("Terminal");
-	couleur_neutre   = QColor(Qt::blue);
-	couleur_autorise = QColor(Qt::darkGreen);
-	couleur_prudence = QColor("#ff8000");
-	couleur_interdit = QColor(Qt::red);
-	couleur_hovered  = couleur_neutre;
 }
 
 /**
 	Constructeur par defaut
 */
-Terminal::Terminal() : QGraphicsItem(0, 0) {
-	initialise(QPointF(0.0, 0.0), Terminal::Sud);
+Terminal::Terminal() :
+	QGraphicsItem(0, 0),
+	couleur_hovered(Terminal::couleur_neutre)
+{
+	initialise(QPointF(0.0, 0.0), QET::South);
 	diagram_scene = 0;
 }
 
@@ -58,7 +61,10 @@ Terminal::Terminal() : QGraphicsItem(0, 0) {
 	@param e   Element auquel cette borne appartient
 	@param s   Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(QPointF pf, Terminal::Orientation o, Element *e, Diagram *s) : QGraphicsItem(e, s) {
+Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
+	QGraphicsItem(e, s),
+	couleur_hovered(Terminal::couleur_neutre)
+{
 	initialise(pf, o);
 	diagram_scene = s;
 }
@@ -71,7 +77,10 @@ Terminal::Terminal(QPointF pf, Terminal::Orientation o, Element *e, Diagram *s) 
 	@param e    Element auquel cette borne appartient
 	@param s    Scene sur laquelle figure cette borne
 */
-Terminal::Terminal(qreal pf_x, qreal pf_y, Terminal::Orientation o, Element *e, Diagram *s) : QGraphicsItem(e, s) {
+Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagram *s) :
+	QGraphicsItem(e, s),
+	couleur_hovered(Terminal::couleur_neutre)
+{
 	initialise(QPointF(pf_x, pf_y), o);
 }
 
@@ -93,19 +102,18 @@ Terminal::~Terminal() {
 	pivote. Sinon elle renvoie son sens normal.
 	@return L'orientation actuelle de la Terminal.
 */
-Terminal::Orientation Terminal::orientation() const {
-	//true pour une orientation verticale, false pour une orientation horizontale
+QET::Orientation Terminal::orientation() const {
 	if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
 		// orientations actuelle et par defaut de l'element
-		Terminal::Orientation ori_cur = elt -> orientation();
-		Terminal::Orientation ori_def = elt -> defaultOrientation();
+		QET::Orientation ori_cur = elt -> orientation().current();
+		QET::Orientation ori_def = elt -> orientation().defaultOrientation();
 		if (ori_cur == ori_def) return(sens);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
 			int angle = ori_cur - ori_def + sens;
 			while (angle >= 4) angle -= 4;
-			return((Terminal::Orientation)angle);
+			return((QET::Orientation)angle);
 		}
 	} else return(sens);
 }
@@ -410,7 +418,7 @@ bool Terminal::valideXml(QDomElement &terminal) {
 	// parse l'orientation
 	int terminal_or = terminal.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok) return(false);
-	if (terminal_or != Terminal::Nord && terminal_or != Terminal::Sud && terminal_or != Terminal::Est && terminal_or != Terminal::Ouest) return(false);
+	if (terminal_or != QET::North && terminal_or != QET::South && terminal_or != QET::East && terminal_or != QET::West) return(false);
 	
 	// a ce stade, la borne est syntaxiquement correcte
 	return(true);

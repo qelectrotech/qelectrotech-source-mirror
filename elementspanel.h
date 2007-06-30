@@ -24,6 +24,7 @@ class ElementsPanel : public QTreeWidget {
 	void addDir(QTreeWidgetItem *, QString, QString = QString());
 	
 	public slots:
+	void slot_doubleClick(QTreeWidgetItem *, int);
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
 	void startDrag(Qt::DropActions);

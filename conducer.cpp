@@ -74,7 +74,7 @@ Conducer::~Conducer() {
 */
 void Conducer::update(const QRectF &rect) {
 	// utilise soit la fonction priv_modifieConducteur soit la fonction priv_calculeConducteur
-	void (Conducer::* fonction_update) (const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+	void (Conducer::* fonction_update) (const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
 	fonction_update = (nbSegments() && modified_path) ? &Conducer::priv_modifieConducer : &Conducer::priv_calculeConducer;
 	
 	// appelle la bonne fonction pour calculer l'aspect du conducteur
@@ -147,7 +147,7 @@ void Conducer::segmentsToPath() {
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, const QPointF &p2, Terminal::Orientation) {
+void Conducer::priv_modifieConducer(const QPointF &p1, QET::Orientation, const QPointF &p2, QET::Orientation) {
 	Q_ASSERT_X(nbSegments() > 1, "priv_modifieConducer", "pas de points a modifier");
 	
 	// recupere les dernieres coordonnees connues des bornes
@@ -194,9 +194,9 @@ void Conducer::priv_modifieConducer(const QPointF &p1, Terminal::Orientation, co
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conducer::priv_calculeConducer(const QPointF &p1, Terminal::Orientation o1, const QPointF &p2, Terminal::Orientation o2) {
+void Conducer::priv_calculeConducer(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
-	Terminal::Orientation ori_depart, ori_arrivee;
+	QET::Orientation ori_depart, ori_arrivee;
 	
 	// s'assure qu'il n'y a ni points
 	QList<QPointF> points;
@@ -236,34 +236,34 @@ void Conducer::priv_calculeConducer(const QPointF &p1, Terminal::Orientation o1,
 	// commence le vrai trajet
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
-		if ((ori_depart == Terminal::Nord && (ori_arrivee == Terminal::Sud || ori_arrivee == Terminal::Ouest)) || (ori_depart == Terminal::Est && ori_arrivee == Terminal::Ouest)) {
+		if ((ori_depart == QET::North && (ori_arrivee == QET::South || ori_arrivee == QET::West)) || (ori_depart == QET::East && ori_arrivee == QET::West)) {
 			// cas « 3 »
 			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
-		} else if ((ori_depart == Terminal::Sud && (ori_arrivee == Terminal::Nord || ori_arrivee == Terminal::Est)) || (ori_depart == Terminal::Ouest && ori_arrivee == Terminal::Est)) {
+		} else if ((ori_depart == QET::South && (ori_arrivee == QET::North || ori_arrivee == QET::East)) || (ori_depart == QET::West && ori_arrivee == QET::East)) {
 			// cas « 4 »
 			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
-		} else if ((ori_depart == Terminal::Nord || ori_depart == Terminal::Est) && (ori_arrivee == Terminal::Nord || ori_arrivee == Terminal::Est)) {
+		} else if ((ori_depart == QET::North || ori_depart == QET::East) && (ori_arrivee == QET::North || ori_arrivee == QET::East)) {
 			points << QPointF(arrivee.x(), depart.y()); // cas « 2 »
 		} else {
 			points << QPointF(depart.x(), arrivee.y()); // cas « 1 »
 		}
 	} else {
 		// trajet montant
-		if ((ori_depart == Terminal::Ouest && (ori_arrivee == Terminal::Est || ori_arrivee == Terminal::Sud)) || (ori_depart == Terminal::Nord && ori_arrivee == Terminal::Sud)) {
+		if ((ori_depart == QET::West && (ori_arrivee == QET::East || ori_arrivee == QET::South)) || (ori_depart == QET::North && ori_arrivee == QET::South)) {
 			// cas « 3 »
 			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
-		} else if ((ori_depart == Terminal::Est && (ori_arrivee == Terminal::Ouest || ori_arrivee == Terminal::Nord)) || (ori_depart == Terminal::Sud && ori_arrivee == Terminal::Nord)) {
+		} else if ((ori_depart == QET::East && (ori_arrivee == QET::West || ori_arrivee == QET::North)) || (ori_depart == QET::South && ori_arrivee == QET::North)) {
 			// cas « 4 »
 			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
-		} else if ((ori_depart == Terminal::Ouest || ori_depart == Terminal::Nord) && (ori_arrivee == Terminal::Ouest || ori_arrivee == Terminal::Nord)) {
+		} else if ((ori_depart == QET::West || ori_depart == QET::North) && (ori_arrivee == QET::West || ori_arrivee == QET::North)) {
 			points << QPointF(depart.x(), arrivee.y()); // cas « 2 »
 		} else {
 			points << QPointF(arrivee.x(), depart.y()); // cas « 1 »
@@ -287,19 +287,19 @@ void Conducer::priv_calculeConducer(const QPointF &p1, Terminal::Orientation o1,
 	@param ext_size la taille de la prolongation
 	@return le point correspondant a la borne apres prolongation
 */
-QPointF Conducer::extendTerminal(const QPointF &terminal, Terminal::Orientation terminal_orientation, qreal ext_size) {
+QPointF Conducer::extendTerminal(const QPointF &terminal, QET::Orientation terminal_orientation, qreal ext_size) {
 	QPointF extended_terminal;
 	switch(terminal_orientation) {
-		case Terminal::Nord:
+		case QET::North:
 			extended_terminal = QPointF(terminal.x(), terminal.y() - ext_size);
 			break;
-		case Terminal::Est:
+		case QET::East:
 			extended_terminal = QPointF(terminal.x() + ext_size, terminal.y());
 			break;
-		case Terminal::Sud:
+		case QET::South:
 			extended_terminal = QPointF(terminal.x(), terminal.y() + ext_size);
 			break;
-		case Terminal::Ouest:
+		case QET::West:
 			extended_terminal = QPointF(terminal.x() - ext_size, terminal.y());
 			break;
 		default: extended_terminal = terminal;
@@ -354,36 +354,6 @@ void Conducer::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QW
 		}
 	}
 	qp -> restore();
-}
-
-/**
-	Indique si deux orientations de Borne sont sur le meme axe (Vertical / Horizontal).
-	@param a La premiere orientation de Borne
-	@param b La seconde orientation de Borne
-	@return Un booleen a true si les deux orientations de bornes sont sur le meme axe
-*/
-bool Conducer::surLeMemeAxe(Terminal::Orientation a, Terminal::Orientation b) {
-	if ((a == Terminal::Nord || a == Terminal::Sud) && (b == Terminal::Nord || b == Terminal::Sud)) return(true);
-	else if ((a == Terminal::Est || a == Terminal::Ouest) && (b == Terminal::Est || b == Terminal::Ouest)) return(true);
-	else return(false);
-}
-
-/**
-	Indique si une orientation de borne est horizontale (Est / Ouest).
-	@param a L'orientation de borne
-	@return True si l'orientation de borne est horizontale, false sinon
-*/
-bool Conducer::estHorizontale(Terminal::Orientation a) {
-	return(a == Terminal::Est || a == Terminal::Ouest);
-}
-
-/**
-	Indique si une orientation de borne est verticale (Nord / Sud).
-	@param a L'orientation de borne
-	@return True si l'orientation de borne est verticale, false sinon
-*/
-bool Conducer::estVerticale(Terminal::Orientation a) {
-	return(a == Terminal::Nord || a == Terminal::Sud);
 }
 
 /**

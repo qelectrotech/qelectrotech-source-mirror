@@ -28,6 +28,7 @@ class ElementsCategory : public QDir {
 	void addName(const QString &, const QString &);
 	bool write() const;
 	bool remove() const;
+	bool isWritable() const;
 	//bool move(const QString &new_parent);
 	
 	private:

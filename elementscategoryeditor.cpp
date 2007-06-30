@@ -29,6 +29,16 @@ ElementsCategoryEditor::ElementsCategoryEditor(const QString &category_path, boo
 		names_list -> setNames(cat_names);
 		//names_list -> openPersistentEditor(qtwi, 1);
 	}
+	
+	// gestion de la lecture seule
+	if (!category -> isWritable()) {
+		QMessageBox::warning(
+			this,
+			tr("\311dition en lecture seule"),
+			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cette cat\351gorie. Elle sera donc ouverte en lecture seule.")
+		);
+		names_list -> setReadOnly(true);
+	}
 }
 
 /**
@@ -60,6 +70,8 @@ void ElementsCategoryEditor::buildDialog() {
 	categorie
 */
 void ElementsCategoryEditor::acceptCreation() {
+	if (!category -> isWritable()) QDialog::accept();
+	
 	// il doit y avoir au moins un nom
 	if (!names_list -> checkOneName()) return;
 	
@@ -83,6 +95,8 @@ void ElementsCategoryEditor::acceptCreation() {
 	categorie
 */
 void ElementsCategoryEditor::acceptUpdate() {
+	if (!category -> isWritable()) QDialog::accept();
+	
 	// il doit y avoir au moins un nom
 	if (!names_list -> checkOneName()) return;
 	

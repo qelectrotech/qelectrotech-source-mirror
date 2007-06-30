@@ -71,17 +71,14 @@ class Conducer : public QGraphicsPathItem {
 	private:
 	void segmentsToPath();
 	void updatePoints();
-	void priv_calculeConducer(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
-	void priv_modifieConducer(const QPointF &, Terminal::Orientation, const QPointF &, Terminal::Orientation);
+	void priv_calculeConducer(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
+	void priv_modifieConducer(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
 	int nbSegments() const;
 	QList<QPointF> segmentsToPoints() const;
 	void pointsToSegments(QList<QPointF>);
 	bool hasClickedOn(QPointF, QPointF) const;
 	void calculateTextItemPosition();
-	static QPointF extendTerminal(const QPointF &, Terminal::Orientation, qreal = 12.0);
-	static bool surLeMemeAxe(Terminal::Orientation, Terminal::Orientation);
-	static bool estHorizontale(Terminal::Orientation a);
-	static bool estVerticale(Terminal::Orientation a);
+	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 12.0);
 	static qreal conducer_bound(qreal tobound, qreal bound1, qreal bound2);
 	static qreal conducer_bound(qreal tobound, qreal bound, bool positive);
 };

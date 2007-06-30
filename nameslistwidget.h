@@ -22,12 +22,15 @@ class NamesListWidget : public QWidget {
 	QTreeWidget *tree_names;
 	QPushButton *button_add_line;
 	NamesList hash_names;
+	bool read_only;
 	
 	// methodes
 	public:
 	bool checkOneName();
 	NamesList names();
 	void setNames(const NamesList &);
+	void setReadOnly(bool);
+	bool isReadOnly() const;
 	
 	private:
 	void clean();
@@ -35,5 +38,9 @@ class NamesListWidget : public QWidget {
 	
 	public slots:
 	void addLine();
+	void check();
+	
+	signals:
+	void inputChecked();
 };
 #endif

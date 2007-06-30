@@ -35,6 +35,6 @@ ElementsPanelWidget::~ElementsPanelWidget() {
 	Appelle l'assistant de creation de nouvel element
 */
 void ElementsPanelWidget::newElement() {
-	NewElementWizard *new_element_wizard = new NewElementWizard();
-	new_element_wizard -> exec();
+	NewElementWizard new_element_wizard;
+	new_element_wizard.exec();
 }

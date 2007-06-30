@@ -135,3 +135,20 @@ bool ElementsCategory::remove() const {
 	return(rmdir(absolutePath()));
 }
 
+/**
+	@return true s'il est possible d'ecrire le fichier qet_directory dans la
+	categorie
+*/
+bool ElementsCategory::isWritable() const {
+	// informations sur le dossier de la categorie
+	QFileInfo category(canonicalPath());
+	QFileInfo qet_directory(canonicalPath() + "/.qet_directory");
+	/*
+	soit .qet_directory n'existe pas et le dossier est accessible en ecriture,
+	soit .qet_directory existe et est accessible en ecriture
+	*/
+	return(
+		(!qet_directory.exists() && category.isWritable()) ||\
+		(qet_directory.exists()  && qet_directory.isWritable())
+	);
+}

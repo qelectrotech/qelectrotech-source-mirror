@@ -153,7 +153,7 @@ void DiagramView::pivoter() {
 	if (scene -> selectedItems().isEmpty()) return;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *elt = qgraphicsitem_cast<Element *>(item)) {
-			elt -> setOrientation(elt -> nextAcceptableOrientation());
+			elt -> setOrientation(elt -> orientation().next());
 			elt -> update();
 		}
 	}
