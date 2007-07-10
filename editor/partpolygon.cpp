@@ -39,6 +39,7 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("polygon");
 	int i = 1;
 	foreach(QPointF point, polygon()) {
+		point = mapToScene(point);
 		xml_element.setAttribute(QString("x%1").arg(i), point.x());
 		xml_element.setAttribute(QString("y%1").arg(i), point.y());
 		++ i;

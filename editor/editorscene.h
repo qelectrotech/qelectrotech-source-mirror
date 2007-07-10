@@ -8,6 +8,7 @@ class PartLine;
 class PartEllipse;
 class PartCircle;
 class PartPolygon;
+class PartArc;
 class EditorScene : public QGraphicsScene {
 	Q_OBJECT
 	
@@ -41,6 +42,7 @@ class EditorScene : public QGraphicsScene {
 	PartEllipse *current_ellipse;
 	PartCircle *current_circle;
 	PartPolygon *current_polygon;
+	PartArc *current_arc;
 	
 	// methodes
 	public:

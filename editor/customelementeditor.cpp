@@ -22,19 +22,6 @@ CustomElementEditor::CustomElementEditor(QWidget *parent) :
 
 CustomElementEditor::~CustomElementEditor() {
 	qDebug() << "~CustomElementEditor()";
-	// recupere le layout
-// 	QLayout *layout = tools_dock -> widget() -> layout();
-// 	
-// 	// enleve les widgets deja presents
-// 	QLayoutItem *qli;
-// 	while ((qli = layout -> takeAt(0)) != 0) {
-// 		if (qli -> widget()) {
-// 			layout -> removeWidget(qli -> widget());
-// 			qli -> widget() -> setParent(0);
-// 		}
-// 	}
-	
-	
 }
 
 void CustomElementEditor::setupActions() {

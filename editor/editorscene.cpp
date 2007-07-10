@@ -6,6 +6,7 @@
 #include "partpolygon.h"
 #include "partterminal.h"
 #include "parttext.h"
+#include "partarc.h"
 #define GRILLE_X 10
 #define GRILLE_Y 10
 
@@ -78,6 +79,11 @@ void EditorScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				temp_rect.setBottomRight(e -> scenePos());
 				current_ellipse -> setRect(temp_rect);
 				break;
+			case Arc:
+				temp_rect = current_arc -> rect();
+				temp_rect.setBottomRight(e -> scenePos());
+				current_arc -> setRect(temp_rect);
+				break;
 			case Circle:
 				temp_rect = current_circle -> rect();
 				temp_point = e -> scenePos() - current_circle -> mapToScene(temp_rect.center());
@@ -122,6 +128,10 @@ void EditorScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 				current_ellipse = new PartEllipse(0, this);
 				current_ellipse -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
 				break;
+			case Arc:
+				current_arc = new PartArc(0, this);
+				current_arc -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
+				break;
 			case Circle:
 				current_circle = new PartCircle(0, this);
 				current_circle -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
@@ -155,6 +165,9 @@ void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				break;
 			case Ellipse:
 				current_ellipse -> setRect(current_ellipse -> rect().normalized());
+				break;
+			case Arc:
+				current_arc-> setRect(current_arc -> rect().normalized());
 				break;
 			case Circle:
 				current_circle -> setRect(current_circle -> rect().normalized());
@@ -336,6 +349,7 @@ void EditorScene::fromXml(const QDomDocument &xml_document) {
 					else if (qde.tagName() == "polygon")  cep = new PartPolygon (0, this);
 					else if (qde.tagName() == "terminal") cep = new PartTerminal(0, this);
 					else if (qde.tagName() == "text")     cep = new PartText    (0, this);
+					else if (qde.tagName() == "arc")      cep = new PartArc     (0, this);
 					else continue;
 					if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) qgi -> setZValue(z++);
 					cep -> fromXml(qde);
