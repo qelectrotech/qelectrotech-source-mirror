@@ -8,6 +8,14 @@
 	@param parent le widget parent de la fenetre principale
  */
 QETApp::QETApp(QWidget *parent) : QMainWindow(parent) {
+	
+	// cree les dossiers de configuration si necessaire
+	QDir config_dir(configDir());
+	if (!config_dir.exists()) config_dir.mkpath(configDir());
+	
+	QDir custom_elements_dir(customElementsDir());
+	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(customElementsDir());
+	
 	// mise en place de l'interface MDI au centre de l'application
 	setCentralWidget(&workspace);
 	
