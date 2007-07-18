@@ -383,11 +383,11 @@ void QETApp::actions() {
 	connect(f_reorganise,     SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
 	connect(f_suiv,           SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
 	connect(f_prec,           SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
-	connect(infos_diagram,    SIGNAL(activated()), this,       SLOT(slot_editInfos())           );
-	connect(add_column,       SIGNAL(activated()), this,       SLOT(slot_addColumn())           );
-	connect(remove_column,    SIGNAL(activated()), this,       SLOT(slot_removeColumn())        );
-	connect(expand_diagram,   SIGNAL(activated()), this,       SLOT(slot_expand())              );
-	connect(shrink_diagram,   SIGNAL(activated()), this,       SLOT(slot_shrink())              );
+	connect(infos_diagram,    SIGNAL(triggered()), this,       SLOT(slot_editInfos())           );
+	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
+	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
+	connect(expand_diagram,   SIGNAL(triggered()), this,       SLOT(slot_expand())              );
+	connect(shrink_diagram,   SIGNAL(triggered()), this,       SLOT(slot_shrink())              );
 }
 
 /**
