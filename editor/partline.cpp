@@ -21,9 +21,17 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, Q
 }
 
 const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
-	QDomElement xml_element = xml_document.createElement("line");
+	
 	QPointF p1(sceneP1());
 	QPointF p2(sceneP2());
+	
+	// cas particulier : on n'enregistre pas les lignes equivalentes a un point
+	if (p1 == p2) {
+		QDomElement *null_qdom_elmt = new QDomElement();
+		return(*null_qdom_elmt);
+	}
+	
+	QDomElement xml_element = xml_document.createElement("line");
 	xml_element.setAttribute("x1", p1.x());
 	xml_element.setAttribute("y1", p1.y());
 	xml_element.setAttribute("x2", p2.x());
@@ -106,32 +114,43 @@ QRectF PartLine::boundingRect() const {
 	@return une liste contenant les deux points de la droite + les 4 points entourant ces deux points
 */
 QList<QPointF> PartLine::fourShapePoints() const {
+	const qreal marge = 2.0;
 	// on a donc A(xa , ya) et B(xb, yb)
 	QPointF a = line().p1();
 	QPointF b = line().p2();
 	
-	// on calcule le vecteur AB : (xb-xa, yb-ya)
-	QPointF v_ab = b - a;
-	
-	// et la distance AB : racine des coordonnees du vecteur au carre
-	qreal ab = sqrt(pow(v_ab.x(), 2) + pow(v_ab.y(), 2));
-	
-	// ensuite on definit le vecteur u(a, b) qui est egal au vecteur AB divise
-	// par sa longueur et multiplie par la longueur de la marge  que tu veux
-	// laisser
-	QPointF u = v_ab / ab * 2.0;
-	
-	// on définit le vecteur v(-b , a)  qui est perpendiculaire à AB
-	QPointF v(-u.y(), u.x());
-	QPointF m = -u + v; // on a le vecteur M = -u + v
-	QPointF n = -u - v; // et le vecteur N=-u-v
-	QPointF h =  a + m; // H = A + M
-	QPointF k =  a + n; // K = A + N
-	QPointF i =  b - n; // I = B - N
-	QPointF j =  b - m; // J = B - M
-	
 	QList<QPointF> result;
-	result << h << i << j << k;
+	
+	// cas particulier : la droite se ramene a un point
+	if (a == b) {
+		result << QPointF(a.x() - marge, a.y() - marge);
+		result << QPointF(a.x() - marge, a.y() + marge);
+		result << QPointF(a.x() + marge, a.y() + marge);
+		result << QPointF(a.x() + marge, a.y() - marge);
+	} else {
+		
+		// on calcule le vecteur AB : (xb-xa, yb-ya)
+		QPointF v_ab = b - a;
+		
+		// et la distance AB : racine des coordonnees du vecteur au carre
+		qreal ab = sqrt(pow(v_ab.x(), 2) + pow(v_ab.y(), 2));
+		
+		// ensuite on definit le vecteur u(a, b) qui est egal au vecteur AB divise
+		// par sa longueur et multiplie par la longueur de la marge  que tu veux
+		// laisser
+		QPointF u = v_ab / ab * marge;
+		
+		// on définit le vecteur v(-b , a)  qui est perpendiculaire à AB
+		QPointF v(-u.y(), u.x());
+		QPointF m = -u + v; // on a le vecteur M = -u + v
+		QPointF n = -u - v; // et le vecteur N=-u-v
+		QPointF h =  a + m; // H = A + M
+		QPointF k =  a + n; // K = A + N
+		QPointF i =  b - n; // I = B - N
+		QPointF j =  b - m; // J = B - M
+		
+		result << h << i << j << k;
+	}
 	return(result);
 }
 

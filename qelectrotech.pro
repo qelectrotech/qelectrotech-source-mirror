@@ -100,3 +100,4 @@ SOURCES += aboutqet.cpp \
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml
+CONFIG += release
