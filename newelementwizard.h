@@ -15,7 +15,7 @@
 class ElementsCategoriesWidget;
 class NamesListWidget;
 class OrientationSetWidget;
-class Diagram;
+class HotspotEditor;
 class NewElementWizard : public QDialog {
 	Q_OBJECT
 	
@@ -34,21 +34,12 @@ class NewElementWizard : public QDialog {
 	QWidget *step1, *step2, *step3, *step4, *step5;
 	ElementsCategoriesWidget* categories_list;
 	QLineEdit *qle_filename;
-	QSpinBox *sb_width;
-	QSpinBox *sb_height;
-	QSpinBox *sb_hotspot_x;
-	QSpinBox *sb_hotspot_y;
 	NamesListWidget *element_names;
 	OrientationSetWidget *orientation_set;
+	HotspotEditor *hotspot_editor;
 	QPushButton *button_previous;
 	QPushButton *button_next;
 	WizardState current_state;
-	QGraphicsView *diagram_view;
-	Diagram *diagram_scene;
-	QComboBox *north_orientation;
-	QComboBox *east_orientation;
-	QComboBox *south_orientation;
-	QComboBox *west_orientation;
 	QString chosen_file;
 	
 	// methodes
@@ -68,7 +59,5 @@ class NewElementWizard : public QDialog {
 	public slots:
 	void previous();
 	void next();
-	void updateScene();
-	void updateHotspotLimits();
 };
 #endif

@@ -30,8 +30,8 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 
 const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("input");
-	xml_element.setAttribute("x", QString("%1").arg(pos().x()));
-	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
+	xml_element.setAttribute("x", QString("%1").arg((scenePos() + margin()).x()));
+	xml_element.setAttribute("y", QString("%1").arg((scenePos() + margin()).y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
 	if (follow_parent_rotations) xml_element.setAttribute("rotate", "false");

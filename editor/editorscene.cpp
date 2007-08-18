@@ -8,6 +8,7 @@
 #include "parttext.h"
 #include "parttextfield.h"
 #include "partarc.h"
+#include "hotspoteditor.h"
 #define GRILLE_X 10
 #define GRILLE_Y 10
 
@@ -397,12 +398,42 @@ void EditorScene::slot_delete() {
 	}
 }
 
-void EditorScene::slot_editSize() {
-
-}
-
-void EditorScene::slot_editHotSpot() {
-
+void EditorScene::slot_editSizeHotSpot() {
+	// cree un dialogue
+	QDialog dialog_sh;
+	dialog_sh.setModal(true);
+	dialog_sh.setMinimumSize(400, 230);
+	dialog_sh.setWindowTitle(tr("\311diter la taille et le point de saisie"));
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_sh);
+	
+	// ajoute un HotspotEditor au dialogue
+	HotspotEditor *hotspot_editor = new HotspotEditor();
+	hotspot_editor -> setElementWidth(static_cast<uint>(width() / 10));
+	hotspot_editor -> setElementHeight(static_cast<uint>(height() / 10));
+	hotspot_editor -> setHotspot(hotspot());
+	hotspot_editor -> setOldHotspot(hotspot());
+	hotspot_editor -> setPartsRect(itemsBoundingRect());
+	hotspot_editor -> setPartsRectEnabled(true);
+	dialog_layout -> addWidget(hotspot_editor);
+	
+	// ajoute deux boutons au dialogue
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout -> addWidget(dialog_buttons);
+	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_sh, SLOT(accept()));
+	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_sh, SLOT(reject()));
+	
+	// lance le dialogue
+	if (dialog_sh.exec() == QDialog::Accepted) {
+		setWidth(hotspot_editor -> elementWidth());
+		setHeight(hotspot_editor -> elementHeight());
+		setHotspot(hotspot_editor -> hotspot());
+		if (hotspot_editor -> mustTranslateParts()) {
+			QPoint translation = hotspot_editor -> offsetParts();
+			foreach(QGraphicsItem *qgi, items()) {
+				qgi -> translate(translation.x(), translation.y());
+			}
+		}
+	}
 }
 
 void EditorScene::slot_editOrientations() {

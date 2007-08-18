@@ -29,7 +29,7 @@ class CustomElementEditor : public QMainWindow {
 	QAction *new_element, *open, *save, *save_as, *quit;
 	/// actions du menu edition
 	QAction *selectall, *deselectall, *inv_select;
-	QAction *edit_delete, *edit_size, *edit_hotspot, *edit_names, *edit_ori;
+	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
 	/// barre d'outils
 	QToolBar *parts_toolbar;
 	/// actions de la barre d'outils

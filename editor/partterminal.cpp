@@ -34,8 +34,8 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("terminal");
 	
 	// ecrit la position de la borne
-	xml_element.setAttribute("x", QString("%1").arg(pos().x()));
-	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
+	xml_element.setAttribute("x", QString("%1").arg(scenePos().x()));
+	xml_element.setAttribute("y", QString("%1").arg(scenePos().y()));
 	
 	// ecrit l'orientation de la borne
 	xml_element.setAttribute("orientation", orientationToString(_orientation));

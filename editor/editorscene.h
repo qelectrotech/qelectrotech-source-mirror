@@ -81,8 +81,7 @@ class EditorScene : public QGraphicsScene {
 	void slot_deselectAll();
 	void slot_invertSelection();
 	void slot_delete();
-	void slot_editSize();
-	void slot_editHotSpot();
+	void slot_editSizeHotSpot();
 	void slot_editNames();
 	void slot_editOrientations();
 	

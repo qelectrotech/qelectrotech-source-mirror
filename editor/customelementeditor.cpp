@@ -34,8 +34,7 @@ void CustomElementEditor::setupActions() {
 	deselectall   = new QAction(                                 tr("D\351s\351lectionner tout"),   this);
 	inv_select    = new QAction(                                 tr("Inverser la s\351lection"),    this);
 	edit_delete   = new QAction(QIcon(":/ico/delete.png"),       tr("&Supprimer"),                  this);
-	edit_size     = new QAction(                                 tr("Modifier la taille"),          this);
-	edit_hotspot  = new QAction(                                 tr("Modifier le point de saisie"), this);
+	edit_size_hs  = new QAction(                                 tr("\311diter la taille et le point de saisie"), this);
 	edit_names    = new QAction(                                 tr("\311diter les noms"),          this);
 	edit_ori      = new QAction(QIcon(":/ico/orientations.png"), tr("\311diter les orientations"),  this);
 	move          = new QAction(QIcon(":/ico/select.png"),       tr("D\351placer un objet"),        this);
@@ -47,10 +46,6 @@ void CustomElementEditor::setupActions() {
 	add_arc       = new QAction(QIcon(":/ico/arc.png"),          tr("Ajouter un arc de cercle"),    this);
 	add_terminal  = new QAction(QIcon(":/ico/terminal.png"),     tr("Ajouter une borne"),           this);
 	add_textfield = new QAction(QIcon(":/ico/textfield.png"),    tr("Ajouter un champ de texte"),   this);
-	
-	edit_delete  -> setEnabled(false);
-	edit_size    -> setEnabled(false);
-	edit_hotspot -> setEnabled(false);
 	
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
@@ -66,8 +61,7 @@ void CustomElementEditor::setupActions() {
 	connect(deselectall,   SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
 	connect(inv_select,    SIGNAL(triggered()), ce_scene, SLOT(slot_invertSelection()));
 	connect(edit_delete,   SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
-	connect(edit_size,     SIGNAL(triggered()), ce_scene, SLOT(slot_editSize()));
-	connect(edit_hotspot,  SIGNAL(triggered()), ce_scene, SLOT(slot_editHotSpot()));
+	connect(edit_size_hs,  SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
 	connect(edit_names,    SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
 	connect(edit_ori,      SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
 	connect(move,          SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
@@ -156,8 +150,7 @@ void CustomElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_delete);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_names);
-	edit_menu -> addAction(edit_size);
-	edit_menu -> addAction(edit_hotspot);
+	edit_menu -> addAction(edit_size_hs);
 	edit_menu -> addAction(edit_ori);
 	
 	menuBar() -> addMenu(file_menu);
@@ -341,8 +334,7 @@ void CustomElementEditor::setReadOnly(bool ro) {
 	ce_view -> setInteractive(!ro);
 	
 	// active / desactive l'edition de la taille, du hotspot, des noms et des orientations
-	edit_size    -> setEnabled(!ro);
-	edit_hotspot -> setEnabled(!ro);
+	edit_size_hs -> setEnabled(!ro);
 	edit_names   -> setEnabled(!ro);
 	edit_ori     -> setEnabled(!ro);
 }

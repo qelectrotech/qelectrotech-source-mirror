@@ -3,7 +3,7 @@
 #include "elementscategorieslist.h"
 #include "nameslistwidget.h"
 #include "orientationsetwidget.h"
-#include "diagram.h"
+#include "hotspoteditor.h"
 #include "element.h"
 #include "customelementeditor.h"
 
@@ -193,73 +193,14 @@ void NewElementWizard::buildStep3() {
 */
 void NewElementWizard::buildStep4() {
 	step4 = new QWidget(this);
-	sb_width = new QSpinBox();
-	sb_width -> setMinimum(1);
-	sb_width -> setValue(3);
-	sb_width -> setSuffix(tr(" \32710 px"));
-	sb_height = new QSpinBox();
-	sb_height -> setMinimum(1);
-	sb_height -> setValue(7);
-	sb_height -> setSuffix(tr(" \32710 px"));
-	
-	sb_hotspot_x = new QSpinBox();
-	sb_hotspot_x -> setValue(15);
-	sb_hotspot_x -> setSuffix(tr(" px"));
-	sb_hotspot_x -> setSingleStep(10);
-	sb_hotspot_y = new QSpinBox();
-	sb_hotspot_y -> setValue(35);
-	sb_hotspot_y -> setSuffix(tr(" px"));
-	sb_hotspot_y -> setSingleStep(10);
-	
-	diagram_scene = new Diagram();
-	diagram_scene -> border_and_inset.setNbColumns(4);
-	diagram_scene -> border_and_inset.setColumnsHeight(140);
-	diagram_scene -> border_and_inset.displayInset(false);
-	diagram_view = new QGraphicsView(diagram_scene);
-	diagram_view -> setMaximumSize(
-		static_cast<int>((5 * diagram_scene -> border_and_inset.columnsWidth()) + (3 * MARGIN)),
-		300
-	);
-	diagram_view -> setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
-	diagram_view -> setResizeAnchor(QGraphicsView::AnchorUnderMouse);
-	diagram_view -> setAlignment(Qt::AlignLeft | Qt::AlignTop);
-	
-	connect(sb_width,     SIGNAL(valueChanged(int)), this, SLOT(updateHotspotLimits()));
-	connect(sb_height,    SIGNAL(valueChanged(int)), this, SLOT(updateHotspotLimits()));
-	connect(sb_width,     SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
-	connect(sb_height,    SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
-	connect(sb_hotspot_x, SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
-	connect(sb_hotspot_y, SIGNAL(valueChanged(int)), this, SLOT(updateScene()));
-	
+	QVBoxLayout *step4_layout = new QVBoxLayout(step4);
 	QLabel *explication = new QLabel(tr("\311tape 4/5 : Saisissez les dimensions du nouvel \351l\351ment ainsi que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris) en consid\351rant que l'\351l\351ment est dans son orientation par d\351faut."));
 	explication -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
 	explication -> setWordWrap(true);
-	
-	QGridLayout *grid_layout = new QGridLayout();
-	grid_layout -> addWidget(new QLabel(tr("<span style=\"text-decoration:underline;\">Dimensions</span>")),   0, 0);
-	grid_layout -> addWidget(new QLabel(tr("Largeur :")),      1, 0);
-	grid_layout -> addWidget(sb_width,                         1, 1);
-	grid_layout -> addWidget(new QLabel(tr("Hauteur :")),      2, 0);
-	grid_layout -> addWidget(sb_height,                        2, 1);
-	grid_layout -> addWidget(new QLabel(tr("<span style=\"text-decoration:underline;\">Hotspot</span>")),      3, 0);
-	grid_layout -> addWidget(new QLabel(tr("Abscisse :")),     4, 0);
-	grid_layout -> addWidget(sb_hotspot_x,                     4, 1);
-	grid_layout -> addWidget(new QLabel(tr("Ordonn\351e :")),  5, 0);
-	grid_layout -> addWidget(sb_hotspot_y,                     5, 1);
-	
-	QHBoxLayout *step4_hlayout = new QHBoxLayout();
-	
-	step4_hlayout -> addLayout(grid_layout);
-	step4_hlayout -> addWidget(diagram_view);
-	
-	
-	QVBoxLayout *step4_layout = new QVBoxLayout();
 	step4_layout -> addWidget(explication);
-	step4_layout -> addLayout(step4_hlayout);
-	step4 -> setLayout(step4_layout);
-	
-	updateScene();
-	updateHotspotLimits();
+	hotspot_editor = new HotspotEditor();
+	step4_layout -> addWidget(hotspot_editor, 0);
+	step4_layout -> setSpacing(0);
 }
 
 /**
@@ -348,7 +289,7 @@ bool NewElementWizard::validStep3() {
 	@return true si l'etape est validee, false sinon
 */
 bool NewElementWizard::validStep4() {
-	// les contraintes imposees par les widgets sont suffisantes
+	// l'editeur de hotspot se charge deja de valider tout ca
 	return(true);
 }
 
@@ -364,60 +305,12 @@ bool NewElementWizard::validStep5() {
 }
 
 /**
-	Met a jour le schema de l'etape 4
-*/
-void NewElementWizard::updateScene() {
-	foreach (QGraphicsItem *qgi, diagram_scene -> items()) {
-		diagram_scene -> removeItem(qgi);
-		delete qgi;
-	}
-	int elmt_width  = sb_width  -> value() * 10;
-	int elmt_height = sb_height -> value() * 10;
-	int hotspot_x   = sb_hotspot_x -> value();
-	int hotspot_y   = sb_hotspot_y -> value();
-	int margin_x = 10;
-	int margin_y = 30;
-	diagram_scene -> addRect(QRectF(margin_x, margin_y, elmt_width, elmt_height));
-	QPen hotspot_pen(Qt::red);
-	QGraphicsLineItem *line_hotspot_x = diagram_scene -> addLine(
-		QLine(
-			margin_x,
-			margin_y + hotspot_y,
-			margin_x + elmt_width,
-			margin_y + hotspot_y
-		),
-		hotspot_pen
-	);
-	QGraphicsLineItem *line_hotspot_y = diagram_scene -> addLine(
-		QLine(
-			margin_x + hotspot_x,
-			margin_y,
-			margin_x + hotspot_x,
-			margin_y + elmt_height
-		),
-		hotspot_pen
-	);
-	line_hotspot_x -> setZValue(10);
-	line_hotspot_y -> setZValue(10);
-	diagram_scene -> setSceneRect(QRect(0, 0, elmt_width + (2 * margin_x) + 15, elmt_height + (2 * margin_y)));
-	diagram_scene -> update();
-}
-
-/**
-	Met a jour les limites des QSpinBox de l'etape 4
-*/
-void NewElementWizard::updateHotspotLimits() {
-	sb_hotspot_x -> setMaximum(sb_width  -> value() * 10);
-	sb_hotspot_y -> setMaximum(sb_height -> value() * 10);
-}
-
-/**
 	Cree le nouvel element
 */
 void NewElementWizard::createNewElement() {
 	CustomElementEditor *edit_new_element = new CustomElementEditor(parentWidget());
-	edit_new_element -> setSize(QSize(sb_width  -> value() * 10, sb_height -> value() * 10));
-	edit_new_element -> setHotspot(QPoint(sb_hotspot_x -> value(), sb_hotspot_y -> value()));
+	edit_new_element -> setSize(hotspot_editor -> elementSize());
+	edit_new_element -> setHotspot(hotspot_editor -> hotspot());
 	edit_new_element -> setNames(element_names -> names());
 	edit_new_element -> setOrientations(orientation_set -> orientationSet());
 	edit_new_element -> setFileName(chosen_file);
