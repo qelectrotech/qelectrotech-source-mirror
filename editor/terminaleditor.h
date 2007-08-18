@@ -5,7 +5,7 @@ class PartTerminal;
 /**
 	Cette classe represente un editeur de borne.
 	Elle permet d'editer a travers une interface graphique les
-		proprietes d'une borne d'element.
+	proprietes d'une borne d'element.
 */
 class TerminalEditor : public QWidget {
 	Q_OBJECT

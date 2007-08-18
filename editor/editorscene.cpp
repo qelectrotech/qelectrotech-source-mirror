@@ -6,6 +6,7 @@
 #include "partpolygon.h"
 #include "partterminal.h"
 #include "parttext.h"
+#include "parttextfield.h"
 #include "partarc.h"
 #define GRILLE_X 10
 #define GRILLE_Y 10
@@ -155,6 +156,7 @@ void EditorScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	PartTerminal *terminal;
 	PartText *text;
+	PartTextField *textfield;
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
@@ -179,6 +181,10 @@ void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 			case Text:
 				text = new PartText(0, this);
 				text -> setPos(e -> scenePos());
+				break;
+			case TextField:
+				textfield = new PartTextField(0, this);
+				textfield -> setPos(e -> scenePos());
 				break;
 			default:
 				QGraphicsScene::mouseReleaseEvent(e);
@@ -343,13 +349,14 @@ void EditorScene::fromXml(const QDomDocument &xml_document) {
 					QDomElement qde = n.toElement();
 					if (qde.isNull()) continue;
 					CustomElementPart *cep;
-					if      (qde.tagName() == "line")     cep = new PartLine    (0, this);
-					else if (qde.tagName() == "ellipse")  cep = new PartEllipse (0, this);
-					else if (qde.tagName() == "circle")   cep = new PartCircle  (0, this);
-					else if (qde.tagName() == "polygon")  cep = new PartPolygon (0, this);
-					else if (qde.tagName() == "terminal") cep = new PartTerminal(0, this);
-					else if (qde.tagName() == "text")     cep = new PartText    (0, this);
-					else if (qde.tagName() == "arc")      cep = new PartArc     (0, this);
+					if      (qde.tagName() == "line")     cep = new PartLine     (0, this);
+					else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (0, this);
+					else if (qde.tagName() == "circle")   cep = new PartCircle   (0, this);
+					else if (qde.tagName() == "polygon")  cep = new PartPolygon  (0, this);
+					else if (qde.tagName() == "terminal") cep = new PartTerminal (0, this);
+					else if (qde.tagName() == "text")     cep = new PartText     (0, this);
+					else if (qde.tagName() == "input")    cep = new PartTextField(0, this);
+					else if (qde.tagName() == "arc")      cep = new PartArc      (0, this);
 					else continue;
 					if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) qgi -> setZValue(z++);
 					cep -> fromXml(qde);

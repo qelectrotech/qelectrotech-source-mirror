@@ -1,19 +1,20 @@
-#ifndef PART_TEXT
-#define PART_TEXT
+#ifndef PART_TEXTFIELD
+#define PART_TEXTFIELD
 #include <QtGui>
 #include "customelementpart.h"
-class TextEditor;
-class PartText : public QGraphicsTextItem, public CustomElementPart {
+class TextFieldEditor;
+class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	// constructeurs, destructeur
 	public:
-	PartText(QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartText();
+	PartTextField(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	virtual ~PartTextField();
 	
 	private:
-	PartText(const PartText &);
+	PartTextField(const PartTextField &);
 	
 	// attributs
-	TextEditor *infos;
+	TextFieldEditor *infos;
+	bool follow_parent_rotations;
 	
 	// methodes
 	public:
@@ -23,6 +24,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	QPointF pos() const;
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
+	bool followParentRotations();
+	void setFollowParentRotations(bool);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);

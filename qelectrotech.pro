@@ -51,7 +51,9 @@ HEADERS += aboutqet.h \
  editor/parttext.h \
  editor/texteditor.h \
  editor/partarc.h \
- editor/arceditor.h
+ editor/arceditor.h \
+ editor/parttextfield.h \
+ editor/textfieldeditor.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -96,7 +98,9 @@ SOURCES += aboutqet.cpp \
  editor/parttext.cpp \
  editor/texteditor.cpp \
  editor/partarc.cpp \
- editor/arceditor.cpp
+ editor/arceditor.cpp \
+ editor/parttextfield.cpp \
+ editor/textfieldeditor.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml
