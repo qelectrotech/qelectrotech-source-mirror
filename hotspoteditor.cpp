@@ -240,9 +240,8 @@ void HotspotEditor::updateScene() {
 	// dessin eventuel du rectangle representant l'element
 	if (parts_rect_enabled) {
 		QPen element_pen(Qt::blue);
+		QBrush element_brush(QColor(0, 0, 255, 100));
 		QRectF parts_rect_to_draw;
-		
-		
 		
 		if (!hotspot_sync -> isChecked() && !old_hotspot.isNull()) {
 			// coordonnees de l'ancien hotspot sur le schema
@@ -259,7 +258,7 @@ void HotspotEditor::updateScene() {
 			// deplace l'element en meme temps que le hotspot
 			parts_rect_to_draw = parts_rect.translated(current_hotspot);
 		}
-		QGraphicsRectItem *rect_element = diagram_scene -> addRect(parts_rect_to_draw, element_pen);
+		QGraphicsRectItem *rect_element = diagram_scene -> addRect(parts_rect_to_draw, element_pen, element_brush);
 		rect_element -> setZValue(5);
 	}
 	
