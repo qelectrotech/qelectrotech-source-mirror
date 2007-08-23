@@ -36,10 +36,10 @@ class EditorScene : public QGraphicsScene {
 	NamesList _names;
 	/// Liste des orientations de l'element
 	OrientationSet ori;
-	/// Pile des actions annulables
-	QUndoStack undo_stack;
 	/// Gestionnaire de QGraphicsItem
 	QGIManager qgi_manager;
+	/// Pile des actions annulables
+	QUndoStack undo_stack;
 	
 	/// Variables relatives a la gestion du dessin des parties sur la scene
 	Behavior behavior;
