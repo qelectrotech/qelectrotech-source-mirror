@@ -25,6 +25,8 @@ class CustomElementEditor : public QMainWindow {
 	EditorScene *ce_scene;
 	/// container pour les widgets d'edition des parties
 	QDockWidget *tools_dock;
+	/// container pour la liste des annulations
+	QDockWidget *undo_dock;
 	/// actions du menu fichier
 	QAction *new_element, *open, *save, *save_as, *quit;
 	/// actions du menu edition

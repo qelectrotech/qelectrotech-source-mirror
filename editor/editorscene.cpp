@@ -9,6 +9,7 @@
 #include "parttextfield.h"
 #include "partarc.h"
 #include "hotspoteditor.h"
+#include "editorcommands.h"
 #define GRILLE_X 10
 #define GRILLE_Y 10
 
@@ -16,7 +17,8 @@ EditorScene::EditorScene(QObject *parent) :
 	QGraphicsScene(parent),
 	_width(3),
 	_height(7),
-	_hotspot(15, 35)
+	_hotspot(15, 35),
+	qgi_manager(this)
 {
 	current_polygon = NULL;
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChanged()));
@@ -161,38 +163,51 @@ void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Normal:
-				QGraphicsScene::mouseReleaseEvent(e);
-				break;
 			case Line:
+				undo_stack.push(new AddPartCommand(tr("ligne"), this, current_line));
 				break;
 			case Ellipse:
 				current_ellipse -> setRect(current_ellipse -> rect().normalized());
+				undo_stack.push(new AddPartCommand(tr("ellipse"), this, current_ellipse));
 				break;
 			case Arc:
 				current_arc-> setRect(current_arc -> rect().normalized());
+				undo_stack.push(new AddPartCommand(tr("arc"), this, current_arc));
 				break;
 			case Circle:
 				current_circle -> setRect(current_circle -> rect().normalized());
+				undo_stack.push(new AddPartCommand(tr("cercle"), this, current_circle));
 				break;
 			case Terminal:
 				terminal = new PartTerminal(0, this);
 				terminal -> setPos(e -> scenePos());
+				undo_stack.push(new AddPartCommand(tr("borne"), this, terminal));
 				break;
 			case Text:
 				text = new PartText(0, this);
 				text -> setPos(e -> scenePos());
+				undo_stack.push(new AddPartCommand(tr("texte"), this, text));
 				break;
 			case TextField:
 				textfield = new PartTextField(0, this);
 				textfield -> setPos(e -> scenePos());
+				undo_stack.push(new AddPartCommand(tr("champ de texte"), this, textfield));
 				break;
+			case Normal:
 			default:
 				QGraphicsScene::mouseReleaseEvent(e);
+				// detecte les deplacements de parties
+				if (!selectedItems().isEmpty()) {
+					QPointF movement = e -> scenePos() - e -> buttonDownScenePos(Qt::LeftButton);
+					if (!movement.isNull()) {
+						undo_stack.push(new MovePartsCommand(movement, this, selectedItems()));
+					}
+				}
 		}
 	} else if (e -> button() & Qt::RightButton) {
 		if (behavior == Polygon) {
 			behavior = Normal;
+			undo_stack.push(new AddPartCommand(tr("polygone"), this, current_polygon));
 			current_polygon = NULL;
 			emit(needNormalMode());
 		} else QGraphicsScene::mouseReleaseEvent(e);
@@ -367,6 +382,14 @@ void EditorScene::fromXml(const QDomDocument &xml_document) {
 	}
 }
 
+QUndoStack &EditorScene::undoStack() {
+	return(undo_stack);
+}
+
+QGIManager &EditorScene::qgiManager() {
+	return(qgi_manager);
+}
+
 void EditorScene::slot_checkSelectionChanged() {
 	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
 	QList<QGraphicsItem *> selecteditems = selectedItems();
@@ -392,10 +415,7 @@ void EditorScene::slot_delete() {
 	if (selected_items.isEmpty()) return;
 	
 	// efface tout ce qui est selectionne
-	foreach(QGraphicsItem *qgi, selected_items) {
-		removeItem(qgi);
-		delete qgi;
-	}
+	undo_stack.push(new DeletePartsCommand(this, selected_items));
 }
 
 void EditorScene::slot_editSizeHotSpot() {

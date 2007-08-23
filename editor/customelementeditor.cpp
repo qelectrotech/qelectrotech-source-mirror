@@ -143,6 +143,14 @@ void CustomElementEditor::setupMenus() {
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(quit);
 	
+	QAction *undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
+	QAction *redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
+	undo -> setShortcuts(QKeySequence::Undo);
+	redo -> setShortcuts(QKeySequence::Redo);
+	
+	edit_menu -> addAction(undo);
+	edit_menu -> addAction(redo);
+	edit_menu -> addSeparator();
 	edit_menu -> addAction(selectall);
 	edit_menu -> addAction(deselectall);
 	edit_menu -> addAction(inv_select);
@@ -181,7 +189,7 @@ void CustomElementEditor::setupInterface() {
 	// widget par defaut dans le QDockWidget
 	default_informations = new QLabel();
 	
-	// panel sur le cote
+	// panel sur le cote pour editer les parties
 	tools_dock = new QDockWidget(tr("Informations"), this);
 	tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
@@ -190,6 +198,15 @@ void CustomElementEditor::setupInterface() {
 	QWidget *info_widget = new QWidget();
 	info_widget -> setLayout(new QVBoxLayout(info_widget));
 	tools_dock -> setWidget(info_widget);
+	
+	// panel sur le cote pour les annulations
+	undo_dock = new QDockWidget(tr("Annulations"), this);
+	undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	undo_dock -> setMinimumWidth(285);
+	addDockWidget(Qt::RightDockWidgetArea, undo_dock);
+	undo_dock -> setWidget(new QUndoView(&(ce_scene -> undoStack()), this));
+	
 	slot_updateInformations();
 	
 	// barre d'etat

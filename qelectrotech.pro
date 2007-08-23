@@ -54,7 +54,9 @@ HEADERS += aboutqet.h \
  editor/arceditor.h \
  editor/parttextfield.h \
  editor/textfieldeditor.h \
- hotspoteditor.h
+ hotspoteditor.h \
+ editor/editorcommands.h \
+ qgimanager.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -102,7 +104,9 @@ SOURCES += aboutqet.cpp \
  editor/arceditor.cpp \
  editor/parttextfield.cpp \
  editor/textfieldeditor.cpp \
- hotspoteditor.cpp
+ hotspoteditor.cpp \
+ editor/editorcommands.cpp \
+ qgimanager.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml

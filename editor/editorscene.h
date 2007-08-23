@@ -4,6 +4,7 @@
 #include <QtXml>
 #include "nameslistwidget.h"
 #include "orientationsetwidget.h"
+#include "qgimanager.h"
 class PartLine;
 class PartEllipse;
 class PartCircle;
@@ -35,6 +36,10 @@ class EditorScene : public QGraphicsScene {
 	NamesList _names;
 	/// Liste des orientations de l'element
 	OrientationSet ori;
+	/// Pile des actions annulables
+	QUndoStack undo_stack;
+	/// Gestionnaire de QGraphicsItem
+	QGIManager qgi_manager;
 	
 	/// Variables relatives a la gestion du dessin des parties sur la scene
 	Behavior behavior;
@@ -58,6 +63,8 @@ class EditorScene : public QGraphicsScene {
 	void setOrientations(const OrientationSet &);
 	virtual const QDomDocument toXml() const;
 	virtual void fromXml(const QDomDocument &);
+	QUndoStack &undoStack();
+	QGIManager &qgiManager();
 	
 	protected:
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
