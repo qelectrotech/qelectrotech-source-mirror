@@ -19,6 +19,7 @@ void DiagramView::initialise() {
 	setDragMode(RubberBandDrag);
 	setAcceptDrops(true);
 	setWindowTitle(tr("Nouveau sch\351ma") + "[*]");
+	setWindowIcon(QIcon(":/ico/qet-16.png"));
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
