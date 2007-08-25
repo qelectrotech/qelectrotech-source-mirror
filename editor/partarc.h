@@ -6,7 +6,7 @@ class ArcEditor;
 class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
-	PartArc(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartArc(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartArc() {
 		qDebug() << "~PartArc()";
 	}
@@ -30,6 +30,8 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	virtual void setStartAngle(int);
 	virtual int angle() const;
 	virtual int startAngle() const;
+	virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

@@ -1,7 +1,7 @@
 #include "ellipseeditor.h"
 #include "partellipse.h"
 
-EllipseEditor::EllipseEditor(PartEllipse *ellipse, QWidget *parent) : QWidget(parent) {
+EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = ellipse;
 	
@@ -29,12 +29,8 @@ EllipseEditor::EllipseEditor(PartEllipse *ellipse, QWidget *parent) : QWidget(pa
 	grid -> addWidget(new QLabel(tr("vertical :")),      4, 0);
 	grid -> addWidget(v,                                 4, 1);
 	
+	activeConnections(true);
 	updateForm();
-	
-	connect(x, SIGNAL(editingFinished()), this, SLOT(updateEllipse()));
-	connect(y, SIGNAL(editingFinished()), this, SLOT(updateEllipse()));
-	connect(h, SIGNAL(editingFinished()), this, SLOT(updateEllipse()));
-	connect(v, SIGNAL(editingFinished()), this, SLOT(updateEllipse()));
 }
 
 EllipseEditor::~EllipseEditor() {
@@ -42,25 +38,36 @@ EllipseEditor::~EllipseEditor() {
 }
 
 void EllipseEditor::updateEllipse() {
-	qreal _x = x -> text().toDouble();
-	qreal _y = y -> text().toDouble();
-	qreal _h = h -> text().toDouble();
-	qreal _v = v -> text().toDouble();
-	_v = _v < 0 ? -_v : _v;
-	part -> setRect(
-		QRectF(
-			part -> mapFromScene(QPointF(_x - (_h / 2.0), _y - (_v / 2.0))),
-			QSizeF(_h, _v)
-		)
-	);
+	part -> setProperty("x", x -> text().toDouble());
+	part -> setProperty("y", x -> text().toDouble());
+	part -> setProperty("diameter_h", x -> text().toDouble());
+	part -> setProperty("diameter_v", x -> text().toDouble());
 }
 
+void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> text().toDouble());       }
+void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> text().toDouble());       }
+void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> text().toDouble());       }
+void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> text().toDouble());       }
+
 void EllipseEditor::updateForm() {
-	qreal _h = part -> rect().width();
-	qreal _v = part -> rect().height();
-	QPointF top_left(part -> sceneTopLeft());
-	x -> setText(QString("%1").arg(top_left.x() + (_h / 2.0)));
-	y -> setText(QString("%1").arg(top_left.y() + (_v / 2.0)));
-	h -> setText(QString("%1").arg(_h));
-	v -> setText(QString("%1").arg(_v));
+	activeConnections(false);
+	x -> setText(part -> property("x").toString());
+	y -> setText(part -> property("y").toString());
+	h -> setText(part -> property("diameter_h").toString());
+	v -> setText(part -> property("diameter_v").toString());
+	activeConnections(true);
+}
+
+void EllipseEditor::activeConnections(bool active) {
+	if (active) {
+		connect(x, SIGNAL(editingFinished()), this, SLOT(updateEllipseX()));
+		connect(y, SIGNAL(editingFinished()), this, SLOT(updateEllipseY()));
+		connect(h, SIGNAL(editingFinished()), this, SLOT(updateEllipseH()));
+		connect(v, SIGNAL(editingFinished()), this, SLOT(updateEllipseV()));
+	} else {
+		disconnect(x, SIGNAL(editingFinished()), this, SLOT(updateEllipseX()));
+		disconnect(y, SIGNAL(editingFinished()), this, SLOT(updateEllipseY()));
+		disconnect(h, SIGNAL(editingFinished()), this, SLOT(updateEllipseH()));
+		disconnect(v, SIGNAL(editingFinished()), this, SLOT(updateEllipseV()));
+	}
 }

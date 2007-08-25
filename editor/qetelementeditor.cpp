@@ -1,10 +1,11 @@
-#include "customelementeditor.h"
-#include "editorscene.h"
+#include "qetelementeditor.h"
+#include "elementscene.h"
+#include "elementview.h"
 #include "customelementpart.h"
 #include "newelementwizard.h"
 #include "qetapp.h"
 
-CustomElementEditor::CustomElementEditor(QWidget *parent) :
+QETElementEditor::QETElementEditor(QWidget *parent) :
 	QMainWindow(parent),
 	read_only(false),
 	min_title(tr("QElectroTech - \311diteur d'\351l\351ment")),
@@ -20,11 +21,11 @@ CustomElementEditor::CustomElementEditor(QWidget *parent) :
 	setupMenus();
 }
 
-CustomElementEditor::~CustomElementEditor() {
-	qDebug() << "~CustomElementEditor()";
+QETElementEditor::~QETElementEditor() {
+	qDebug() << "~QETElementEditor()";
 }
 
-void CustomElementEditor::setupActions() {
+void QETElementEditor::setupActions() {
 	new_element   = new QAction(QIcon(":/ico/new.png"),          tr("&Nouveau"),                    this);
 	open          = new QAction(QIcon(":/ico/open.png"),         tr("&Ouvrir"),                     this);
 	save          = new QAction(QIcon(":/ico/save.png"),         tr("&Enregistrer"),                this);
@@ -123,7 +124,7 @@ void CustomElementEditor::setupActions() {
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateMenus()));
 }
 
-void CustomElementEditor::setupMenus() {
+void QETElementEditor::setupMenus() {
 	file_menu    = new QMenu(tr("Fichier"));
 	edit_menu    = new QMenu(tr("\311dition"));
 	display_menu = new QMenu(tr("Affichage"));
@@ -168,21 +169,15 @@ void CustomElementEditor::setupMenus() {
 	menuBar() -> addMenu(help_menu);
 }
 
-void CustomElementEditor::slot_updateMenus() {
+void QETElementEditor::slot_updateMenus() {
 	edit_delete -> setEnabled(!ce_scene -> selectedItems().isEmpty());
 }
 
-void CustomElementEditor::setupInterface() {
+void QETElementEditor::setupInterface() {
 	// editeur
-	ce_scene = new EditorScene(this);
+	ce_scene = new ElementScene(this, this);
 	ce_scene -> slot_move();
-	ce_view = new QGraphicsView(ce_scene, this);
-	ce_view -> setInteractive(true);
-	ce_view -> setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-	//ce_view -> setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
-	ce_view -> setResizeAnchor(QGraphicsView::AnchorUnderMouse);
-	//ce_view -> setSceneRect(QRectF(0.0, 0.0, 50.0, 200.0));
-	ce_view -> scale(4.0, 4.0);
+	ce_view = new ElementView(ce_scene, this);
 	slot_setRubberBandToView();
 	setCentralWidget(ce_view);
 	
@@ -213,21 +208,21 @@ void CustomElementEditor::setupInterface() {
 	statusBar() -> showMessage(tr("\311diteur d'\351l\351ments"));
 }
 
-void CustomElementEditor::slot_setRubberBandToView() {
+void QETElementEditor::slot_setRubberBandToView() {
 	ce_view -> setDragMode(QGraphicsView::RubberBandDrag);
 }
 
-void CustomElementEditor::slot_setNoDragToView() {
+void QETElementEditor::slot_setNoDragToView() {
 	ce_view -> setDragMode(QGraphicsView::NoDrag);
 }
 
-void CustomElementEditor::slot_setNormalMode() {
+void QETElementEditor::slot_setNormalMode() {
 	if (!move -> isChecked()) move -> setChecked(true);
 	ce_view -> setDragMode(QGraphicsView::RubberBandDrag);
 	ce_scene -> slot_move();
 }
 
-void CustomElementEditor::slot_updateInformations() {
+void QETElementEditor::slot_updateInformations() {
 	QList<QGraphicsItem *> selected_qgis = ce_scene -> selectedItems();
 	QList<CustomElementPart *> selected_parts;
 	foreach(QGraphicsItem *qgi, selected_qgis) {
@@ -260,7 +255,7 @@ void CustomElementEditor::slot_updateInformations() {
 	}
 }
 
-void CustomElementEditor::xmlPreview() {
+void QETElementEditor::xmlPreview() {
 	QMessageBox::information(
 		this,
 		"Export XML",
@@ -268,7 +263,7 @@ void CustomElementEditor::xmlPreview() {
 	);
 }
 
-void CustomElementEditor::fromFile(const QString &filepath) {
+void QETElementEditor::fromFile(const QString &filepath) {
 	bool state = true;
 	QString error_message;
 	
@@ -325,7 +320,7 @@ void CustomElementEditor::fromFile(const QString &filepath) {
 	setWindowTitle(new_title);
 }
 
-bool CustomElementEditor::toFile(const QString &fn) {
+bool QETElementEditor::toFile(const QString &fn) {
 	QFile file(fn);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		QMessageBox::warning(this, tr("Erreur"), tr("Impossible d'ecrire dans ce fichier"));
@@ -342,7 +337,7 @@ bool CustomElementEditor::toFile(const QString &fn) {
 	specifie si l'editeur d'element doit etre en mode lecture seule
 	@param ro true pour activer le mode lecture seule, false pour le desactiver
 */
-void CustomElementEditor::setReadOnly(bool ro) {
+void QETElementEditor::setReadOnly(bool ro) {
 	read_only = ro;
 	// active / desactive les actions
 	foreach (QAction *action, parts -> actions()) action -> setEnabled(!ro);
@@ -359,16 +354,16 @@ void CustomElementEditor::setReadOnly(bool ro) {
 /**
 	@return true si l'editeur d'element est en mode lecture seule
 */
-bool CustomElementEditor::isReadOnly() const {
+bool QETElementEditor::isReadOnly() const {
 	return(read_only);
 }
 
-void CustomElementEditor::slot_new() {
+void QETElementEditor::slot_new() {
 	NewElementWizard new_element_wizard;
 	new_element_wizard.exec();
 }
 
-void CustomElementEditor::slot_open() {
+void QETElementEditor::slot_open() {
 	// demande un nom de fichier a ouvrir a l'utilisateur
 	QString user_filename = QFileDialog::getOpenFileName(
 		this,
@@ -377,19 +372,19 @@ void CustomElementEditor::slot_open() {
 		tr("\311l\351ments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
 	if (user_filename == "") return;
-	CustomElementEditor *cee = new CustomElementEditor();
+	QETElementEditor *cee = new QETElementEditor();
 	cee -> fromFile(user_filename);
 	cee -> show();
 }
 
-bool CustomElementEditor::slot_save() {
+bool QETElementEditor::slot_save() {
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (_filename == QString()) return(slot_saveAs());
 	// sinon on enregistre dans le nom de fichier connu
 	return(toFile(_filename));
 }
 
-bool CustomElementEditor::slot_saveAs() {
+bool QETElementEditor::slot_saveAs() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer l'element
 	QString fn = QFileDialog::getSaveFileName(
 		this,
@@ -409,14 +404,14 @@ bool CustomElementEditor::slot_saveAs() {
 	return(result_save);
 }
 
-void CustomElementEditor::slot_quit(QCloseEvent *event) {
+void QETElementEditor::slot_quit(QCloseEvent *event) {
 	if (close()) {
 		if (event != NULL) event -> accept();
 		delete(this);
 	} else if (event != NULL) event -> ignore();
 }
 
-bool CustomElementEditor::close() {
+bool QETElementEditor::close() {
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QMessageBox::question(
 		this,
@@ -438,6 +433,6 @@ bool CustomElementEditor::close() {
 	Permet de quitter l'editeur lors de la fermeture de la fenetre principale
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
-void CustomElementEditor::closeEvent(QCloseEvent *qce) {
+void QETElementEditor::closeEvent(QCloseEvent *qce) {
 	slot_quit(qce);
 }

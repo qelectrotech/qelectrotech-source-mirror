@@ -1,12 +1,13 @@
 #ifndef ELLIPSE_EDITOR_H
 #define ELLIPSE_EDITOR_H
 #include <QtGui>
+#include "elementitemeditor.h"
 class PartEllipse;
-class EllipseEditor : public QWidget {
+class EllipseEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur
 	public:
-	EllipseEditor(PartEllipse *, QWidget * = 0);
+	EllipseEditor(QETElementEditor *, PartEllipse *, QWidget * = 0);
 	~EllipseEditor();
 	private:
 	EllipseEditor(const EllipseEditor &);
@@ -19,6 +20,13 @@ class EllipseEditor : public QWidget {
 	// methodes
 	public slots:
 	void updateEllipse();
+	void updateEllipseX();
+	void updateEllipseY();
+	void updateEllipseH();
+	void updateEllipseV();
 	void updateForm();
+	
+	private:
+	void activeConnections(bool);
 };
 #endif

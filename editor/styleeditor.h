@@ -1,12 +1,13 @@
 #ifndef STYLE_EDITOR_H
 #define STYLE_EDITOR_H
 #include <QtGui>
+#include "elementitemeditor.h"
 class CustomElementGraphicPart;
-class StyleEditor : public QWidget {
+class StyleEditor : public ElementItemEditor {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
-	StyleEditor(CustomElementGraphicPart *, QWidget * = 0);
+	StyleEditor(QETElementEditor *, CustomElementGraphicPart *, QWidget * = 0);
 	virtual ~StyleEditor();
 	
 	private:
@@ -29,5 +30,13 @@ class StyleEditor : public QWidget {
 	public slots:
 	void updatePart();
 	void updateForm();
+	void updatePartAntialiasing();
+	void updatePartColor();
+	void updatePartLineStyle();
+	void updatePartLineWeight();
+	void updatePartFilling();
+	
+	private:
+	void activeConnections(bool);
 };
 #endif

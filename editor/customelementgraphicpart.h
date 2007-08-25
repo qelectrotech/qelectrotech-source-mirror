@@ -3,6 +3,7 @@
 #include <QPainter>
 #include "customelementpart.h"
 #include "styleeditor.h"
+class QETElementEditor;
 /**
 	Cette classe represente une partie graphique d'element
 	Elle encapsule des methodes afin de gerer les attributs de style communs
@@ -18,14 +19,15 @@ class CustomElementGraphicPart : public CustomElementPart {
 	
 	// constructeurs, destructeur
 	public:
-	CustomElementGraphicPart() :
+	CustomElementGraphicPart(QETElementEditor *editor) :
+		CustomElementPart(editor),
 		_linestyle(NormalStyle),
 		_lineweight(NormalWeight),
 		_filling(NoneFilling),
 		_color(BlackColor),
 		_antialiased(false)
 	{
-		style_editor = new StyleEditor(this);
+		style_editor = new StyleEditor(elementEditor(), this);
 	};
 	
 	virtual ~CustomElementGraphicPart() {
@@ -59,6 +61,8 @@ class CustomElementGraphicPart : public CustomElementPart {
 	bool antialiased() const;
 	
 	QWidget *elementInformations();
+	void setProperty(const QString &, const QVariant &);
+	QVariant property(const QString &);
 	
 	protected:
 	void stylesToXml(QDomElement &) const;

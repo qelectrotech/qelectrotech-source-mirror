@@ -1,7 +1,7 @@
 #include "circleeditor.h"
 #include "partcircle.h"
 
-CircleEditor::CircleEditor(PartCircle *circle, QWidget *parent) : QWidget(parent) {
+CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = circle;
 	
@@ -24,11 +24,8 @@ CircleEditor::CircleEditor(PartCircle *circle, QWidget *parent) : QWidget(parent
 	grid -> addWidget(new QLabel(tr("Diam\350tre : ")),  2, 0);
 	grid -> addWidget(r,                                 2, 1);
 	
+	activeConnections(true);
 	updateForm();
-	
-	connect(x, SIGNAL(editingFinished()), this, SLOT(updateCircle()));
-	connect(y, SIGNAL(editingFinished()), this, SLOT(updateCircle()));
-	connect(r, SIGNAL(editingFinished()), this, SLOT(updateCircle()));
 }
 
 CircleEditor::~CircleEditor() {
@@ -36,21 +33,31 @@ CircleEditor::~CircleEditor() {
 }
 
 void CircleEditor::updateCircle() {
-	qreal _x = x -> text().toDouble();
-	qreal _y = y -> text().toDouble();
-	qreal _d = r -> text().toDouble();
-	part -> setRect(
-		QRectF(
-			part -> mapFromScene(QPointF(_x - _d / 2.0, _y - _d / 2.0)),
-			QSizeF(_d, _d)
-		)
-	);
+	part -> setProperty("x", x -> text().toDouble());
+	part -> setProperty("y", y -> text().toDouble());
+	part -> setProperty("diameter", r -> text().toDouble());
 }
 
+void CircleEditor::updateCircleX() { addChangePartCommand(tr("abscisse"),    part, "x",        x -> text().toDouble()); }
+void CircleEditor::updateCircleY() { addChangePartCommand(tr("ordonn\351e"), part, "y",        y -> text().toDouble()); }
+void CircleEditor::updateCircleD() { addChangePartCommand(tr("diam\350tre"), part, "diameter", r -> text().toDouble()); }
+
 void CircleEditor::updateForm() {
-	qreal _d = part -> rect().width();
-	QPointF top_left(part -> sceneTopLeft());
-	x -> setText(QString("%1").arg(top_left.x() + _d / 2.0));
-	y -> setText(QString("%1").arg(top_left.y() + _d / 2.0));
-	r -> setText(QString("%1").arg(_d));
+	activeConnections(false);
+	x -> setText(part -> property("x").toString());
+	y -> setText(part -> property("y").toString());
+	r -> setText(part -> property("diameter").toString());
+	activeConnections(true);
+}
+
+void CircleEditor::activeConnections(bool active) {
+	if (active) {
+		connect(x, SIGNAL(editingFinished()), this, SLOT(updateCircleX()));
+		connect(y, SIGNAL(editingFinished()), this, SLOT(updateCircleY()));
+		connect(r, SIGNAL(editingFinished()), this, SLOT(updateCircleD()));
+	} else {
+		disconnect(x, SIGNAL(editingFinished()), this, SLOT(updateCircleX()));
+		disconnect(y, SIGNAL(editingFinished()), this, SLOT(updateCircleY()));
+		disconnect(r, SIGNAL(editingFinished()), this, SLOT(updateCircleD()));
+	}
 }

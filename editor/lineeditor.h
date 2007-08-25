@@ -1,12 +1,13 @@
 #ifndef LINE_EDITOR_H
 #define LINE_EDITOR_H
 #include <QtGui>
+#include "elementitemeditor.h"
 class PartLine;
-class LineEditor : public QWidget {
+class LineEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur
 	public:
-	LineEditor(PartLine *, QWidget * = 0);
+	LineEditor(QETElementEditor *, PartLine *, QWidget * = 0);
 	~LineEditor();
 	private:
 	LineEditor(const LineEditor &);
@@ -19,6 +20,13 @@ class LineEditor : public QWidget {
 	// methodes
 	public slots:
 	void updateLine();
+	void updateLineX1();
+	void updateLineY1();
+	void updateLineX2();
+	void updateLineY2();
 	void updateForm();
+	
+	private:
+	void activeConnections(bool);
 };
 #endif

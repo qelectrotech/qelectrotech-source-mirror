@@ -131,3 +131,32 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 QWidget *CustomElementGraphicPart::elementInformations() {
 	return(style_editor);
 }
+
+void CustomElementGraphicPart::setProperty(const QString &property, const QVariant &value) {
+	if (property == "line-style") {
+		setLineStyle(static_cast<LineStyle>(value.toInt()));
+	} else if (property == "line-weight") {
+		setLineWeight(static_cast<LineWeight>(value.toInt()));
+	} else if (property == "filling") {
+		setFilling(static_cast<Filling>(value.toInt()));
+	} else if (property == "color") {
+		setColor(static_cast<Color>(value.toInt()));
+	} else if (property == "antialias") {
+		setAntialiased(value.toBool());
+	}
+}
+
+QVariant CustomElementGraphicPart::property(const QString &property) {
+	if (property == "line-style") {
+		return(lineStyle());
+	} else if (property == "line-weight") {
+		return(lineWeight());
+	} else if (property == "filling") {
+		return(filling());
+	} else if (property == "color") {
+		return(color());
+	} else if (property == "antialias") {
+		return(antialiased());
+	}
+	return(QVariant());
+}

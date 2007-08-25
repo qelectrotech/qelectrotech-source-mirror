@@ -3,10 +3,11 @@
 #include <QtGui>
 #include "customelementpart.h"
 class TextFieldEditor;
+class QETElementEditor;
 class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	// constructeurs, destructeur
 	public:
-	PartTextField(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartTextField(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartTextField();
 	
 	private:
@@ -26,15 +27,14 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	void setPos(qreal, qreal);
 	bool followParentRotations();
 	void setFollowParentRotations(bool);
+	virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	QRectF boundingRect() const;
-	
-	public:
-	bool can_check_changes;
 	
 	private:
 	QPointF margin() const;

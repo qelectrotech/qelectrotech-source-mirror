@@ -1,7 +1,7 @@
 #include "lineeditor.h"
 #include "partline.h"
 
-LineEditor::LineEditor(PartLine *line, QWidget *parent) : QWidget(parent) {
+LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = line;
 	
@@ -21,11 +21,6 @@ LineEditor::LineEditor(PartLine *line, QWidget *parent) : QWidget(parent) {
 	grid -> addWidget(y2,               1, 3);
 	
 	updateForm();
-	
-	connect(x1, SIGNAL(editingFinished()), this, SLOT(updateLine()));
-	connect(y1, SIGNAL(editingFinished()), this, SLOT(updateLine()));
-	connect(x2, SIGNAL(editingFinished()), this, SLOT(updateLine()));
-	connect(y2, SIGNAL(editingFinished()), this, SLOT(updateLine()));
 }
 
 LineEditor::~LineEditor() {
@@ -47,11 +42,32 @@ void LineEditor::updateLine() {
 	);
 }
 
+void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "x1", x1 -> text().toDouble()); }
+void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "y1", y1 -> text().toDouble()); }
+void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "x2", x2 -> text().toDouble()); }
+void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "y2", y2 -> text().toDouble()); }
+
 void LineEditor::updateForm() {
+	activeConnections(false);
 	QPointF p1(part -> sceneP1());
 	QPointF p2(part -> sceneP2());
 	x1 -> setText(QString("%1").arg(p1.x()));
 	y1 -> setText(QString("%1").arg(p1.y()));
 	x2 -> setText(QString("%1").arg(p2.x()));
 	y2 -> setText(QString("%1").arg(p2.y()));
+	activeConnections(true);
+}
+
+void LineEditor::activeConnections(bool active) {
+	if (active) {
+		connect(x1, SIGNAL(editingFinished()), this, SLOT(updateLineX1()));
+		connect(y1, SIGNAL(editingFinished()), this, SLOT(updateLineY1()));
+		connect(x2, SIGNAL(editingFinished()), this, SLOT(updateLineX2()));
+		connect(y2, SIGNAL(editingFinished()), this, SLOT(updateLineY2()));
+	} else {
+		connect(x1, SIGNAL(editingFinished()), this, SLOT(updateLineX1()));
+		connect(y1, SIGNAL(editingFinished()), this, SLOT(updateLineY1()));
+		connect(x2, SIGNAL(editingFinished()), this, SLOT(updateLineX2()));
+		connect(y2, SIGNAL(editingFinished()), this, SLOT(updateLineY2()));
+	}
 }

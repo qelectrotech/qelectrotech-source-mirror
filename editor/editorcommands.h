@@ -1,7 +1,7 @@
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
 #include "customelementpart.h"
-#include "editorscene.h"
+#include "elementscene.h"
 #include "qgimanager.h"
 #include <QtGui>
 /**
@@ -11,7 +11,7 @@
 class DeletePartsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	DeletePartsCommand(EditorScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
+	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
 	virtual ~DeletePartsCommand();
 	private:
 	DeletePartsCommand(const DeletePartsCommand &);
@@ -25,7 +25,7 @@ class DeletePartsCommand : public QUndoCommand {
 	/// Liste des parties supprimees
 	QList<QGraphicsItem *> deleted_parts;
 	/// scene sur laquelle se produisent les actions
-	EditorScene *editor_scene;
+	ElementScene *editor_scene;
 };
 
 /**
@@ -35,7 +35,7 @@ class DeletePartsCommand : public QUndoCommand {
 class MovePartsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	MovePartsCommand(const QPointF &, EditorScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
+	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
 	virtual ~MovePartsCommand();
 	private:
 	MovePartsCommand(const MovePartsCommand &);
@@ -49,7 +49,7 @@ class MovePartsCommand : public QUndoCommand {
 	/// Liste des parties supprimees
 	QList<QGraphicsItem *> moved_parts;
 	/// scene sur laquelle se produisent les actions
-	EditorScene *editor_scene;
+	ElementScene *editor_scene;
 	/// translation appliquee
 	QPointF movement;
 	/// booleen pour eviter d'appeler redo() lors de la construction de l'objet
@@ -63,7 +63,7 @@ class MovePartsCommand : public QUndoCommand {
 class AddPartCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	AddPartCommand(const QString &, EditorScene *, QGraphicsItem *, QUndoCommand * = 0);
+	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = 0);
 	virtual ~AddPartCommand();
 	private:
 	AddPartCommand(const AddPartCommand &);
@@ -77,9 +77,36 @@ class AddPartCommand : public QUndoCommand {
 	/// Liste des parties supprimees
 	QGraphicsItem *part;
 	/// scene sur laquelle se produisent les actions
-	EditorScene *editor_scene;
+	ElementScene *editor_scene;
 	/// booleen pour eviter d'appeler redo() lors de la construction de l'objet
 	bool first_redo;
 };
 
+/**
+	Cette classe represente l'action de modifier une propriete d'une partie
+	lors de l'edition d'un element
+*/
+class ChangePartCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangePartCommand(const QString &, CustomElementPart *, const QString &, const QVariant &, const QVariant &, QUndoCommand * = 0);
+	virtual ~ChangePartCommand();
+	private:
+	ChangePartCommand(const ChangePartCommand &);
+	
+	// methodes
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Partie modifiee
+	CustomElementPart *cep;
+	/// Propriete modifiee
+	QString property;
+	/// ancienne valeur
+	QVariant old_value;
+	/// nouvelle valeur
+	QVariant new_value;
+};
 #endif

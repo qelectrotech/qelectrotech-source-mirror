@@ -2,12 +2,13 @@
 #include "terminal.h"
 #include "terminaleditor.h"
 
-PartTerminal::PartTerminal(QGraphicsItem *parent, QGraphicsScene *scene) :
-	CustomElementPart(),
+PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
+	CustomElementPart(editor),
 	QGraphicsItem(parent, scene),
 	_orientation(QET::North)
 {
-	informations = new TerminalEditor(this);
+	informations = new TerminalEditor(elementEditor(), this);
+	informations -> setElementTypeName(QObject::tr("borne"));
 	updateSecondPoint();
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setZValue(100000);
@@ -95,6 +96,30 @@ void PartTerminal::setOrientation(QET::Orientation ori) {
 	_orientation = ori;
 	updateSecondPoint();
 	informations -> updateForm();
+}
+
+void PartTerminal::setProperty(const QString &property, const QVariant &value) {
+	if (property == "x") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setPos(value.toDouble(), pos().y());
+	} else if (property == "y") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setPos(pos().x(), value.toDouble());
+	} else if (property == "orientation") {
+		if (!value.canConvert(QVariant::Int)) return;
+		setOrientation(static_cast<QET::Orientation>(value.toInt()));
+	}
+}
+
+QVariant PartTerminal::property(const QString &property) {
+	if (property == "x") {
+		return(scenePos().x());
+	} else if (property == "y") {
+		return(scenePos().y());
+	} else if (property == "orientation") {
+		return(_orientation);
+	}
+	return(QVariant());
 }
 
 QVariant PartTerminal::itemChange(GraphicsItemChange change, const QVariant &value) {

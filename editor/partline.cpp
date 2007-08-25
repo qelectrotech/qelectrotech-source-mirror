@@ -2,11 +2,13 @@
 #include "lineeditor.h"
 #include <cmath>
 
-PartLine::PartLine(QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene), CustomElementGraphicPart() {
+PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene), CustomElementGraphicPart(editor) {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new LineEditor(this);
+	informations = new LineEditor(elementEditor(), this);
+	informations -> setElementTypeName(QObject::tr("ligne"));
 	style_editor -> appendWidget(informations);
+	style_editor -> setElementTypeName(QObject::tr("ligne"));
 }
 
 void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, QWidget */*w*/) {
@@ -56,6 +58,40 @@ void PartLine::fromXml(const QDomElement &qde) {
 	);
 }
 
+void PartLine::setProperty(const QString &property, const QVariant &value) {
+	CustomElementGraphicPart::setProperty(property, value);
+	if (!value.canConvert(QVariant::Double)) return;
+	QPointF new_p1(sceneP1()), new_p2(sceneP2());
+	bool setline = true;
+	if (property == "x1") {
+		new_p1.setX(value.toDouble());
+	} else if (property == "y1") {
+		new_p1.setY(value.toDouble());
+	} else if (property == "x2") {
+		new_p2.setX(value.toDouble());
+	} else if (property == "y2") {
+		new_p2.setY(value.toDouble());
+	} else setline = false;
+	setLine(QLineF(mapFromScene(new_p1), mapFromScene(new_p2)));
+}
+
+QVariant PartLine::property(const QString &property) {
+	// appelle la methode property de CustomElementGraphicpart pour les styles
+	QVariant style_property = CustomElementGraphicPart::property(property);
+	if (style_property != QVariant()) return(style_property);
+	
+	if (property == "x1") {
+		return(sceneP1().x());
+	} else if (property == "y1") {
+		return(sceneP1().y());
+	} else if (property == "x2") {
+		return(sceneP2().x());
+	} else if (property == "y2") {
+		return(sceneP2().y());
+	}
+	return(QVariant());
+}
+
 QVariant PartLine::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
@@ -73,13 +109,6 @@ QPointF PartLine::sceneP2() const {
 	return(mapToScene(line().p2()));
 }
 
-/*
-
-
-
-
-*/
-
 QPainterPath PartLine::shape() const {
 	QList<QPointF> points = fourShapePoints();
 	QPainterPath t;
@@ -92,24 +121,6 @@ QPainterPath PartLine::shape() const {
 	return(t);
 }
 
-/*
-QRectF PartLine::boundingRect() const {
-	QList<QPointF> points = fourShapePoints();
-	qreal min_x = points.first().x();
-	qreal max_x = points.first().x();
-	qreal min_y = points.first().y();
-	qreal max_y = points.first().y();
-	foreach(QPointF p, points) {
-		if (p.x() > max_x) max_x = p.x();
-		if (p.x() < min_x) min_x = p.x();
-		if (p.y() > max_y) max_y = p.y();
-		if (p.y() < min_y) min_y = p.y();
-	}
-	QRectF r;
-	r.setCoords(min_x, min_y, max_x, max_y);
-	return(r);
-}
-*/
 /**
 	@return une liste contenant les deux points de la droite + les 4 points entourant ces deux points
 */

@@ -1,17 +1,18 @@
 #ifndef CUSTOM_ELEMENT_EDITOR_H
 #define CUSTOM_ELEMENT_EDITOR_H
 #include <QtGui>
-#include "editorscene.h"
+#include "elementscene.h"
 #include "orientationset.h"
-class CustomElementEditor : public QMainWindow {
+class ElementView;
+class QETElementEditor : public QMainWindow {
 	Q_OBJECT
 	
 	// constructeur, destructeur
 	public:
-	CustomElementEditor(QWidget * = 0);
-	virtual ~CustomElementEditor();
+	QETElementEditor(QWidget * = 0);
+	virtual ~QETElementEditor();
 	private:
-	CustomElementEditor(const CustomElementEditor &);
+	QETElementEditor(const QETElementEditor &);
 	
 	// attributs
 	private:
@@ -20,9 +21,9 @@ class CustomElementEditor : public QMainWindow {
 	/// menus
 	QMenu *file_menu, *edit_menu, *display_menu, *tools_menu, *help_menu;
 	/// vue sur la scene d'edition
-	QGraphicsView *ce_view;
+	ElementView *ce_view;
 	/// scene d'edition
-	EditorScene *ce_scene;
+	ElementScene *ce_scene;
 	/// container pour les widgets d'edition des parties
 	QDockWidget *tools_dock;
 	/// container pour la liste des annulations
@@ -60,6 +61,7 @@ class CustomElementEditor : public QMainWindow {
 	bool isReadOnly() const;
 	void fromFile(const QString &);
 	bool toFile(const QString &);
+	ElementScene *elementScene() const;
 	
 	protected:
 	void closeEvent(QCloseEvent *);
@@ -84,12 +86,12 @@ class CustomElementEditor : public QMainWindow {
 	void xmlPreview();
 };
 
-inline void CustomElementEditor::setSize(const QSize &siz) {
+inline void QETElementEditor::setSize(const QSize &siz) {
 	ce_scene -> setWidth(siz.width());
 	ce_scene -> setHeight(siz.height());
 }
 
-inline QSize CustomElementEditor::size() const {
+inline QSize QETElementEditor::size() const {
 	return(
 		QSize(
 			ce_scene -> width(),
@@ -98,33 +100,37 @@ inline QSize CustomElementEditor::size() const {
 	);
 }
 
-inline void CustomElementEditor::setHotspot(const QPoint &hs) {
+inline void QETElementEditor::setHotspot(const QPoint &hs) {
 	ce_scene -> setHotspot(hs);
 }
 
-inline QPoint CustomElementEditor::hotspot() const {
+inline QPoint QETElementEditor::hotspot() const {
 	return(ce_scene -> hotspot());
 }
 
-inline void CustomElementEditor::setNames(const NamesList &nameslist) {
+inline void QETElementEditor::setNames(const NamesList &nameslist) {
 	ce_scene -> setNames(nameslist);
 }
 
-inline void CustomElementEditor::setOrientations(const OrientationSet &orientation_set) {
+inline void QETElementEditor::setOrientations(const OrientationSet &orientation_set) {
 	ce_scene -> setOrientations(orientation_set);
 }
 
-inline OrientationSet CustomElementEditor::orientations() const {
+inline OrientationSet QETElementEditor::orientations() const {
 	return(ce_scene -> orientations());
 }
 
-inline void CustomElementEditor::setFileName(const QString &fn) {
+inline void QETElementEditor::setFileName(const QString &fn) {
 	setWindowTitle(min_title + " - " + fn);
 	_filename = fn;
 }
 
-inline QString CustomElementEditor::fileName() const {
+inline QString QETElementEditor::fileName() const {
 	return(_filename);
+}
+
+inline ElementScene *QETElementEditor::elementScene() const {
+	return(ce_scene);
 }
 
 #endif

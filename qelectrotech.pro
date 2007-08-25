@@ -25,38 +25,40 @@ HEADERS += aboutqet.h \
            elementtextitem.h \
            exportdialog.h \
            fixedelement.h \
+           hotspoteditor.h \
            nameslist.h \
            nameslistwidget.h \
            newelementwizard.h \
-           qet.h \
-           qetapp.h \
-           terminal.h \
-           editor/customelementeditor.h \
-           editor/customelementgraphicpart.h \
-           editor/customelementpart.h \
-           editor/editorscene.h \
-           editor/ellipseeditor.h \
-           editor/lineeditor.h \
-           editor/partellipse.h \
-           editor/partline.h \
-           editor/styleeditor.h \
-           editor/partcircle.h \
-           editor/circleeditor.h \
            orientationset.h \
            orientationsetwidget.h \
+           qet.h \
+           qetapp.h \
+           qgimanager.h \
+           terminal.h \
+           editor/arceditor.h \
+           editor/circleeditor.h \
+           editor/customelementgraphicpart.h \
+           editor/customelementpart.h \
+           editor/editorcommands.h \
+           editor/elementitemeditor.h \
+           editor/elementscene.h \
+           editor/elementview.h \
+           editor/ellipseeditor.h \
+           editor/lineeditor.h \
+           editor/partarc.h \
+           editor/partcircle.h \
+           editor/partellipse.h \
+           editor/partline.h \
            editor/partpolygon.h \
-           editor/polygoneditor.h \
            editor/partterminal.h \
+           editor/parttext.h \
+           editor/parttextfield.h \
+           editor/polygoneditor.h \
+           editor/qetelementeditor.h \
+           editor/styleeditor.h \
            editor/terminaleditor.h \
- editor/parttext.h \
- editor/texteditor.h \
- editor/partarc.h \
- editor/arceditor.h \
- editor/parttextfield.h \
- editor/textfieldeditor.h \
- hotspoteditor.h \
- editor/editorcommands.h \
- qgimanager.h
+           editor/texteditor.h \
+           editor/textfieldeditor.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -74,39 +76,41 @@ SOURCES += aboutqet.cpp \
            elementtextitem.cpp \
            exportdialog.cpp \
            fixedelement.cpp \
+           hotspoteditor.cpp \
            main.cpp \
            nameslist.cpp \
            nameslistwidget.cpp \
            newelementwizard.cpp \
-           qetapp.cpp \
-           terminal.cpp \
-           editor/customelementeditor.cpp \
-           editor/customelementgraphicpart.cpp \
-           editor/customelementpart.cpp \
-           editor/editorscene.cpp \
-           editor/ellipseeditor.cpp \
-           editor/lineeditor.cpp \
-           editor/partellipse.cpp \
-           editor/partline.cpp \
-           editor/styleeditor.cpp \
-           editor/qet.cpp \
-           editor/partcircle.cpp \
-           editor/circleeditor.cpp \
            orientationset.cpp \
            orientationsetwidget.cpp \
+           qetapp.cpp \
+           qgimanager.cpp \
+           terminal.cpp \
+           editor/arceditor.cpp \
+           editor/circleeditor.cpp \
+           editor/customelementgraphicpart.cpp \
+           editor/customelementpart.cpp \
+           editor/editorcommands.cpp \
+           editor/elementitemeditor.cpp \
+           editor/elementscene.cpp \
+           editor/elementview.cpp \
+           editor/ellipseeditor.cpp \
+           editor/lineeditor.cpp \
+           editor/partarc.cpp \
+           editor/partcircle.cpp \
+           editor/partellipse.cpp \
+           editor/partline.cpp \
            editor/partpolygon.cpp \
-           editor/polygoneditor.cpp \
            editor/partterminal.cpp \
+           editor/parttext.cpp \
+           editor/parttextfield.cpp \
+           editor/polygoneditor.cpp \
+           editor/qet.cpp \
+           editor/qetelementeditor.cpp \
+           editor/styleeditor.cpp \
            editor/terminaleditor.cpp \
- editor/parttext.cpp \
- editor/texteditor.cpp \
- editor/partarc.cpp \
- editor/arceditor.cpp \
- editor/parttextfield.cpp \
- editor/textfieldeditor.cpp \
- hotspoteditor.cpp \
- editor/editorcommands.cpp \
- qgimanager.cpp
+           editor/texteditor.cpp \
+           editor/textfieldeditor.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml

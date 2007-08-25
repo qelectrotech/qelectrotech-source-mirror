@@ -6,7 +6,7 @@ class PolygonEditor;
 class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
-	PartPolygon(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartPolygon(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartPolygon() {
 		qDebug() << "~PartPolygon()";
 	}
@@ -38,6 +38,8 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	void setClosed(bool c);
 	bool isClosed() const;
+	void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

@@ -6,7 +6,7 @@ class EllipseEditor;
 class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
-	PartEllipse(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartEllipse(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartEllipse() {
 		qDebug() << "~PartEllipse()";
 	}
@@ -24,6 +24,8 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;
+	virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

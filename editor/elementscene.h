@@ -1,16 +1,17 @@
-#ifndef EDITOR_SCNE_H
-#define EDITOR_SCNE_H
+#ifndef ELEMENT_SCENE_H
+#define ELEMENT_SCENE_H
 #include <QtGui>
 #include <QtXml>
 #include "nameslistwidget.h"
 #include "orientationsetwidget.h"
 #include "qgimanager.h"
+class QETElementEditor;
 class PartLine;
 class PartEllipse;
 class PartCircle;
 class PartPolygon;
 class PartArc;
-class EditorScene : public QGraphicsScene {
+class ElementScene : public QGraphicsScene {
 	Q_OBJECT
 	
 	// enum
@@ -18,11 +19,11 @@ class EditorScene : public QGraphicsScene {
 	
 	// constructeurs, destructeur
 	public:
-	EditorScene(QObject * = 0);
-	virtual ~EditorScene();
+	ElementScene(QETElementEditor *, QObject * = 0);
+	virtual ~ElementScene();
 	
 	private:
-	EditorScene(const EditorScene &);
+	ElementScene(const ElementScene &);
 	
 	// attributs
 	private:
@@ -48,6 +49,7 @@ class EditorScene : public QGraphicsScene {
 	PartCircle *current_circle;
 	PartPolygon *current_polygon;
 	PartArc *current_arc;
+	QETElementEditor *element_editor;
 	
 	// methodes
 	public:
@@ -97,47 +99,47 @@ class EditorScene : public QGraphicsScene {
 	void needNormalMode();
 };
 
-inline void EditorScene::setWidth(const uint &wid) {
+inline void ElementScene::setWidth(const uint &wid) {
 	_width = wid;
 	while (_width % 10) ++ _width;
 	_width /= 10;
 }
 
-inline uint EditorScene::width() const {
+inline uint ElementScene::width() const {
 	return(_width * 10);
 }
 
-inline void EditorScene::setHeight(const uint &hei) {
+inline void ElementScene::setHeight(const uint &hei) {
 	_height = hei;
 	while (_height % 10) ++ _height;
 	_height /= 10;
 }
 
-inline uint EditorScene::height() const {
+inline uint ElementScene::height() const {
 	return(_height * 10);
 }
 
-inline void EditorScene::setHotspot(const QPoint &hs) {
+inline void ElementScene::setHotspot(const QPoint &hs) {
 	_hotspot = hs;
 }
 
-inline QPoint EditorScene::hotspot() const {
+inline QPoint ElementScene::hotspot() const {
 	return(_hotspot);
 }
 
-inline void EditorScene::setNames(const NamesList nameslist) {
+inline void ElementScene::setNames(const NamesList nameslist) {
 	_names = nameslist;
 }
 
-inline NamesList EditorScene::names() const {
+inline NamesList ElementScene::names() const {
 	return(_names);
 }
 
-inline OrientationSet EditorScene::orientations() {
+inline OrientationSet ElementScene::orientations() {
 	return(ori);
 }
 
-inline void EditorScene::setOrientations(const OrientationSet &orientation_set) {
+inline void ElementScene::setOrientations(const OrientationSet &orientation_set) {
 	ori = orientation_set;
 }
 

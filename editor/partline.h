@@ -6,7 +6,7 @@ class LineEditor;
 class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
-	PartLine(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartLine(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartLine() {
 		qDebug() << "~PartLine()";
 	}
@@ -27,6 +27,8 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	virtual QPointF sceneP2() const;
 	virtual QPainterPath shape() const;
 	virtual QRectF boundingRect() const;
+	virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

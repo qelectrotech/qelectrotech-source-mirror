@@ -1,17 +1,18 @@
 #ifndef TERMINAL_EDITOR_H
 #define TERMINAL_EDITOR_H
 #include <QtGui>
+#include "elementitemeditor.h"
 class PartTerminal;
 /**
 	Cette classe represente un editeur de borne.
 	Elle permet d'editer a travers une interface graphique les
 	proprietes d'une borne d'element.
 */
-class TerminalEditor : public QWidget {
+class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	TerminalEditor(PartTerminal *, QWidget * = 0);
+	TerminalEditor(QETElementEditor *, PartTerminal *, QWidget * = 0);
 	virtual ~TerminalEditor();
 	private:
 	TerminalEditor(const TerminalEditor &);
@@ -25,6 +26,12 @@ class TerminalEditor : public QWidget {
 	// methodes
 	public slots:
 	void updateTerminal();
+	void updateTerminalX();
+	void updateTerminalY();
+	void updateTerminalO();
 	void updateForm();
+	
+	private:
+	void activeConnections(bool);
 };
 #endif

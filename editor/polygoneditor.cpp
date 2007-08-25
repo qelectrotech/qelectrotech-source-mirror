@@ -1,13 +1,15 @@
 #include "polygoneditor.h"
 #include "partpolygon.h"
+#include "elementscene.h"
+#include "editorcommands.h"
 
 /**
 	Constructeur
 	@param p Le polygone a editer
 	@param parent le Widget parent
 */
-PolygonEditor::PolygonEditor(PartPolygon *p, QWidget *parent) :
-	QWidget(parent),
+PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *parent) :
+	ElementItemEditor(editor, parent),
 	points_list(this),
 	close_polygon(tr("Polygone ferm\351"), this)
 {
@@ -50,7 +52,16 @@ void PolygonEditor::updatePolygonPoints() {
 }
 
 void PolygonEditor::updatePolygonClosedState() {
-	part -> setClosed(close_polygon.isChecked());
+	undoStack().push(
+		new ChangePartCommand(
+			tr("fermeture du polygone"),
+			part,
+			"closed",
+			QVariant(!close_polygon.isChecked()),
+			QVariant(close_polygon.isChecked())
+		)
+	);
+// 	part -> setClosed(close_polygon.isChecked());
 }
 
 void PolygonEditor::updateForm() {

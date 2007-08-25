@@ -384,7 +384,7 @@ bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this, s);
 	eti -> setFont(QFont("Sans Serif", size));
 	eti -> setPos(pos_x, pos_y);
-	if (e.attribute("rotate") == "false") eti -> setFollowParentRotations(true);
+	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
 	return(true);
 }
 

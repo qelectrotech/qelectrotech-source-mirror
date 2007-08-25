@@ -1,15 +1,17 @@
 #include "partpolygon.h"
 #include "qet.h"
 #include "polygoneditor.h"
-PartPolygon::PartPolygon(QGraphicsItem *parent, QGraphicsScene *scene) : 
+PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : 
 	QGraphicsPolygonItem(parent, scene),
-	CustomElementGraphicPart(),
+	CustomElementGraphicPart(editor),
 	closed(false)
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new PolygonEditor(this);
+	informations = new PolygonEditor(elementEditor(), this);
+	informations -> setElementTypeName(QObject::tr("polygone"));
 	style_editor -> appendWidget(informations);
+	style_editor -> setElementTypeName(QObject::tr("polygone"));
 }
 
 void PartPolygon::fromXml(const QDomElement &qde) {
@@ -58,6 +60,20 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/
 	}
 	if (closed) painter -> drawPolygon(polygon());
 	else painter -> drawPolyline(polygon());
+}
+
+void PartPolygon::setProperty(const QString &property, const QVariant &value) {
+	CustomElementGraphicPart::setProperty(property, value);
+	if (property == "closed") closed = value.toBool();
+}
+
+QVariant PartPolygon::property(const QString &property) {
+	// appelle la methode property de CustomElementGraphicpart pour les styles
+	QVariant style_property = CustomElementGraphicPart::property(property);
+	if (style_property != QVariant()) return(style_property);
+	
+	if (property == "closed") return(closed);
+	return(QVariant());
 }
 
 QVariant PartPolygon::itemChange(GraphicsItemChange change, const QVariant &value) {

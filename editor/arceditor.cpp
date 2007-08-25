@@ -1,7 +1,7 @@
 #include "arceditor.h"
 #include "partarc.h"
 
-ArcEditor::ArcEditor(PartArc *arc, QWidget *parent) : QWidget(parent) {
+ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = arc;
 	
@@ -31,12 +31,7 @@ ArcEditor::ArcEditor(PartArc *arc, QWidget *parent) : QWidget(parent) {
 	grid -> addWidget(angle,                                  6, 1);
 	updateForm();
 	
-	connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArc()));
-	connect(y,           SIGNAL(editingFinished()), this, SLOT(updateArc()));
-	connect(h,           SIGNAL(editingFinished()), this, SLOT(updateArc()));
-	connect(v,           SIGNAL(editingFinished()), this, SLOT(updateArc()));
-	connect(start_angle, SIGNAL(valueChanged(int)), this, SLOT(updateArc()));
-	connect(angle,       SIGNAL(valueChanged(int)), this, SLOT(updateArc()));
+	activeConnections(true);
 }
 
 ArcEditor::~ArcEditor() {
@@ -44,33 +39,46 @@ ArcEditor::~ArcEditor() {
 }
 
 void ArcEditor::updateArc() {
-	qreal _x = x -> text().toDouble();
-	qreal _y = y -> text().toDouble();
-	qreal _h = h -> text().toDouble();
-	qreal _v = v -> text().toDouble();
-	_v = _v < 0 ? -_v : _v;
-	part -> setRect(
-		QRectF(
-			part -> mapFromScene(QPointF(_x - (_h / 2.0), _y - (_v / 2.0))),
-			QSizeF(_h, _v)
-		)
-	);
+	part -> setProperty("x",          x -> text().toDouble());
+	part -> setProperty("y",          y -> text().toDouble());
+	part -> setProperty("diameter_h", h -> text().toDouble());
+	part -> setProperty("diameter_v", v -> text().toDouble());
 	part -> setStartAngle(-start_angle -> value() + 90);
 	part -> setAngle(-angle -> value());
 }
 
+void ArcEditor::updateArcX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> text().toDouble());       }
+void ArcEditor::updateArcY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> text().toDouble());       }
+void ArcEditor::updateArcH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> text().toDouble());       }
+void ArcEditor::updateArcV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> text().toDouble());       }
+void ArcEditor::updateArcS() { addChangePartCommand(tr("angle de d\351part"),     part, "start_angle", -start_angle -> value() + 90); }
+void ArcEditor::updateArcA() { addChangePartCommand(tr("angle"),                  part, "angle",       -angle -> value());            }
+
 void ArcEditor::updateForm() {
-	qreal _h = part -> rect().width();
-	qreal _v = part -> rect().height();
-	QPointF top_left(part -> sceneTopLeft());
-	x -> setText(QString("%1").arg(top_left.x() + (_h / 2.0)));
-	y -> setText(QString("%1").arg(top_left.y() + (_v / 2.0)));
-	h -> setText(QString("%1").arg(_h));
-	v -> setText(QString("%1").arg(_v));
-	disconnect(start_angle, SIGNAL(valueChanged(int)), this, SLOT(updateArc()));
-	disconnect(angle,       SIGNAL(valueChanged(int)), this, SLOT(updateArc()));
+	activeConnections(false);
+	x -> setText(part -> property("x").toString());
+	y -> setText(part -> property("y").toString());
+	h -> setText(part -> property("diameter_h").toString());
+	v -> setText(part -> property("diameter_v").toString());
 	start_angle -> setValue(-part -> startAngle() + 90);
 	angle -> setValue(-part -> angle());
-	connect(start_angle, SIGNAL(valueChanged(int)), this, SLOT(updateArc()));
-	connect(angle,       SIGNAL(valueChanged(int)), this, SLOT(updateArc()));
+	activeConnections(true);
+}
+
+void ArcEditor::activeConnections(bool active) {
+	if (active) {
+		connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcX()));
+		connect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcY()));
+		connect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcH()));
+		connect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcV()));
+		connect(start_angle, SIGNAL(editingFinished()), this, SLOT(updateArcS()));
+		connect(angle,       SIGNAL(editingFinished()), this, SLOT(updateArcA()));
+	} else {
+		disconnect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcX()));
+		disconnect(y,           SIGNAL(editingFinished()), this, SLOT(updateArcY()));
+		disconnect(h,           SIGNAL(editingFinished()), this, SLOT(updateArcH()));
+		disconnect(v,           SIGNAL(editingFinished()), this, SLOT(updateArcV()));
+		disconnect(start_angle, SIGNAL(editingFinished()), this, SLOT(updateArcS()));
+		disconnect(angle,       SIGNAL(editingFinished()), this, SLOT(updateArcA()));
+	}
 }

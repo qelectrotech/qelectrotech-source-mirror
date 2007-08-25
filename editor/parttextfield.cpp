@@ -2,10 +2,15 @@
 #include "textfieldeditor.h"
 
 
-PartTextField::PartTextField(QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsTextItem(parent, scene), CustomElementPart(), follow_parent_rotations(true), can_check_changes(true) {
+PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
+	QGraphicsTextItem(parent, scene),
+	CustomElementPart(editor),
+	follow_parent_rotations(true)
+{
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(tr("_"));
-	infos = new TextFieldEditor(this);
+	infos = new TextFieldEditor(elementEditor(), this);
+	infos -> setElementTypeName(QObject::tr("champ de texte"));
 }
 
 PartTextField::~PartTextField() {
@@ -25,7 +30,7 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 		xml_element.attribute("y").toDouble()
 	);
 	
-	follow_parent_rotations = (xml_element.attribute("rotate") == "false");
+	follow_parent_rotations = (xml_element.attribute("rotate") == "true");
 }
 
 const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
@@ -34,7 +39,7 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y", QString("%1").arg((scenePos() + margin()).y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
-	if (follow_parent_rotations) xml_element.setAttribute("rotate", "false");
+	if (follow_parent_rotations) xml_element.setAttribute("rotate", "true");
 	return(xml_element);
 }
 
@@ -100,8 +105,40 @@ void PartTextField::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	setFocus(Qt::MouseFocusReason);
 }
 
+void PartTextField::setProperty(const QString &property, const QVariant &value) {
+	if (property == "x") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setPos(value.toDouble(), pos().y());
+	} else if (property == "y") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setPos(pos().x(), value.toDouble());
+	} else if (property == "size") {
+		if (!value.canConvert(QVariant::Int)) return;
+		setFont(QFont(font().family(), value.toInt()));
+	} else if (property == "text") {
+		setPlainText(value.toString());
+	} else if (property == "rotate") {
+		follow_parent_rotations = value.toBool();
+	}
+}
+
+QVariant PartTextField::property(const QString &property) {
+	if (property == "x") {
+		return((scenePos() + margin()).x());
+	} else if (property == "y") {
+		return((scenePos() + margin()).y());
+	} else if (property == "size") {
+		return(font().pointSize());
+	} else if (property == "text") {
+		return(toPlainText());
+	} else if (property == "rotate") {
+		return(follow_parent_rotations);
+	}
+	return(QVariant());
+}
+
 QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene() && can_check_changes) {
+	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
 			infos -> updateForm();
 		}

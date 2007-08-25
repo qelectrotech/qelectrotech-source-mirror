@@ -5,7 +5,7 @@
 #include "orientationsetwidget.h"
 #include "hotspoteditor.h"
 #include "element.h"
-#include "customelementeditor.h"
+#include "qetelementeditor.h"
 
 /**
 	Constructeur
@@ -308,7 +308,7 @@ bool NewElementWizard::validStep5() {
 	Cree le nouvel element
 */
 void NewElementWizard::createNewElement() {
-	CustomElementEditor *edit_new_element = new CustomElementEditor(parentWidget());
+	QETElementEditor *edit_new_element = new QETElementEditor(parentWidget());
 	edit_new_element -> setSize(hotspot_editor -> elementSize());
 	edit_new_element -> setHotspot(hotspot_editor -> hotspot());
 	edit_new_element -> setNames(element_names -> names());

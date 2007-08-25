@@ -6,7 +6,7 @@
 	@param term Champ de texte a editer
 	@param parent QWidget parent de ce widget
 */
-TextEditor::TextEditor(PartText *text, QWidget *parent) : QWidget(parent) {
+TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent) : ElementItemEditor(editor, parent) {
 	part = text;
 	
 	qle_x     = new QLineEdit();
@@ -37,12 +37,9 @@ TextEditor::TextEditor(PartText *text, QWidget *parent) : QWidget(parent) {
 	main_layout -> addStretch();
 	setLayout(main_layout);
 	
-	connect(qle_x,     SIGNAL(textEdited(const QString &)), this, SLOT(updateText()));
-	connect(qle_y,     SIGNAL(textEdited(const QString &)), this, SLOT(updateText()));
-	connect(qle_text,  SIGNAL(textEdited(const QString &)), this, SLOT(updateText()));
-	connect(font_size, SIGNAL(valueChanged(int)),           this, SLOT(updateText()));
 	
-	//updateForm();
+	
+	updateForm();
 }
 
 /**
@@ -52,17 +49,42 @@ TextEditor::~TextEditor() {
 	qDebug() << "~TextEditor()";
 }
 
+/**
+	Met a jour le champ de texte a partir des donnees du formulaire
+*/
 void TextEditor::updateText() {
-	part -> can_check_changes = false;
-	part -> setFont(QFont(part -> font().family(), font_size -> value()));
+	part -> setProperty("size", font_size -> value());
 	part -> setPlainText(qle_text -> text());
 	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
-	part ->  can_check_changes = true;
 }
 
+void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "x",    qle_x -> text().toDouble()); updateForm(); }
+void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "y",    qle_y -> text().toDouble()); updateForm(); }
+void TextEditor::updateTextT() { addChangePartCommand(tr("texte"),       part, "text", qle_text -> text());         }
+void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "size", font_size -> value());       }
+
+/**
+	Met a jour le formulaire a partir du champ de texte
+*/
 void TextEditor::updateForm() {
-	qle_x -> setText(QString("%1").arg(part -> pos().x()));
-	qle_y -> setText(QString("%1").arg(part -> pos().y()));
-	qle_text -> setText(part -> toPlainText());
-	font_size -> setValue(part -> font().pointSize());
+	activeConnections(false);
+	qle_x     -> setText(part -> property("x").toString());
+	qle_y     -> setText(part -> property("y").toString());
+	qle_text  -> setText(part -> property("text").toString());
+	font_size -> setValue(part -> property("size").toInt());
+	activeConnections(true);
+}
+
+void TextEditor::activeConnections(bool active) {
+	if (active) {
+		connect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextX()));
+		connect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextY()));
+		connect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextT()));
+		connect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextS()));
+	} else {
+		disconnect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextX()));
+		disconnect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextY()));
+		disconnect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextT()));
+		disconnect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextS()));
+	}
 }

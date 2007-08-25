@@ -2,7 +2,7 @@
 #include "elementscategory.h"
 #include "elementscategoryeditor.h"
 #include "customelement.h"
-#include "customelementeditor.h"
+#include "qetelementeditor.h"
 
 /**
 	Constructeur
@@ -178,9 +178,9 @@ void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 	
 	if (infos_file.isFile()) {
 		// il s'agit d'un element
-		CustomElementEditor *cee = new CustomElementEditor();
-		cee -> fromFile(filename);
-		cee -> show();
+		QETElementEditor *editor = new QETElementEditor();
+		editor -> fromFile(filename);
+		editor -> show();
 	} else if (infos_file.isDir()) {
 		// il s'agit d'une categorie
 		ElementsCategory c(filename);

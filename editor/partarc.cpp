@@ -1,16 +1,18 @@
 #include "partarc.h"
 #include "arceditor.h"
 
-PartArc::PartArc(QGraphicsItem *parent, QGraphicsScene *scene) :
+PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
 	QGraphicsEllipseItem(parent, scene),
-	CustomElementGraphicPart(),
+	CustomElementGraphicPart(editor),
 	_angle(-90),
 	start_angle(0)
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new ArcEditor(this);
+	informations = new ArcEditor(elementEditor(), this);
+	informations -> setElementTypeName(QObject::tr("arc"));
 	style_editor -> appendWidget(informations);
+	style_editor -> setElementTypeName(QObject::tr("arc"));
 }
 
 void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
@@ -70,6 +72,57 @@ void PartArc::fromXml(const QDomElement &qde) {
 
 QPointF PartArc::sceneTopLeft() const {
 	return(mapToScene(rect().topLeft()));
+}
+
+void PartArc::setProperty(const QString &property, const QVariant &value) {
+	CustomElementGraphicPart::setProperty(property, value);
+	if (!value.canConvert(QVariant::Double)) return;
+	if (property == "x") {
+		QRectF current_rect = rect();
+		QPointF current_pos = mapToScene(current_rect.center());
+		setRect(current_rect.translated(value.toDouble() - current_pos.x(), 0.0));
+	} else if (property == "y") {
+		QRectF current_rect = rect();
+		QPointF current_pos = mapToScene(current_rect.center());
+		setRect(current_rect.translated(0.0, value.toDouble() - current_pos.y()));
+	} else if (property == "diameter_h") {
+		qreal new_width = qAbs(value.toDouble());
+		QRectF current_rect = rect();
+		current_rect.translate((new_width - current_rect.width()) / -2.0, 0.0);
+		current_rect.setWidth(new_width);
+		setRect(current_rect);
+	} else if (property == "diameter_v") {
+		qreal new_height = qAbs(value.toDouble());
+		QRectF current_rect = rect();
+		current_rect.translate(0.0, (new_height - current_rect.height()) / -2.0);
+		current_rect.setHeight(new_height);
+		setRect(current_rect);
+	} else if (property == "start_angle") {
+		setStartAngle(value.toInt() );
+	} else if (property == "angle") {
+		setAngle(value.toInt());
+	}
+}
+
+QVariant PartArc::property(const QString &property) {
+	// appelle la methode property de CustomElementGraphicpart pour les styles
+	QVariant style_property = CustomElementGraphicPart::property(property);
+	if (style_property != QVariant()) return(style_property);
+	
+	if (property == "x") {
+		return(mapToScene(rect().center()).x());
+	} else if (property == "y") {
+		return(mapToScene(rect().center()).y());
+	} else if (property == "diameter_h") {
+		return(rect().width());
+	} else if (property == "diameter_v") {
+		return(rect().height());
+	} else if (property == "start_angle") {
+		return(start_angle);
+	} else if (property == "angle") {
+		return(_angle);
+	}
+	return(QVariant());
 }
 
 QVariant PartArc::itemChange(GraphicsItemChange change, const QVariant &value) {

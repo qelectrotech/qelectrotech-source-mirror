@@ -1,37 +1,32 @@
 #include "styleeditor.h"
 #include "customelementgraphicpart.h"
 
-StyleEditor::StyleEditor(CustomElementGraphicPart *p, QWidget *parent) : QWidget(parent), part(p) {
+StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, QWidget *parent) : ElementItemEditor(editor, parent), part(p) {
 	// couleur
 	color = new QButtonGroup(this);
 	color -> addButton(black_color = new QRadioButton(tr("Noir")),  CustomElementGraphicPart::BlackColor);
 	color -> addButton(white_color = new QRadioButton(tr("Blanc")), CustomElementGraphicPart::WhiteColor);
-	connect(color, SIGNAL(buttonClicked(int)), this, SLOT(updatePart()));
 	
 	// style
 	style = new QButtonGroup(this);
 	style -> addButton(normal_style = new QRadioButton(tr("Normal")),       CustomElementGraphicPart::NormalStyle);
 	style -> addButton(dashed_style = new QRadioButton(tr("Pointill\351")), CustomElementGraphicPart::DashedStyle);
 	style -> button(part -> lineStyle()) -> setChecked(true);
-	connect(style, SIGNAL(buttonClicked(int)), this, SLOT(updatePart()));
 	
 	// epaisseur
 	weight = new QButtonGroup(this);
 	weight -> addButton(none_weight   = new QRadioButton(tr("Nulle")),   CustomElementGraphicPart::NoneWeight);
 	weight -> addButton(thin_weight   = new QRadioButton(tr("Fine")),    CustomElementGraphicPart::ThinWeight);
 	weight -> addButton(normal_weight = new QRadioButton(tr("Normale")), CustomElementGraphicPart::NormalWeight);
-	connect(weight, SIGNAL(buttonClicked(int)), this, SLOT(updatePart()));
 	
 	// remplissage
 	filling = new QButtonGroup(this);
 	filling -> addButton(no_filling    = new QRadioButton(tr("Aucun")), CustomElementGraphicPart::NoneFilling );
 	filling -> addButton(black_filling = new QRadioButton(tr("Noir")),  CustomElementGraphicPart::BlackFilling);
 	filling -> addButton(white_filling = new QRadioButton(tr("Blanc")), CustomElementGraphicPart::WhiteFilling);
-	connect(filling, SIGNAL(buttonClicked(int)), this, SLOT(updatePart()));
 	
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
-	connect(antialiasing, SIGNAL(stateChanged(int)), this, SLOT(updatePart()));
 	
 	updateForm();
 	
@@ -97,11 +92,16 @@ void StyleEditor::updatePart() {
 	part -> setFilling(static_cast<CEGP::Filling>(filling -> checkedId()));
 }
 
+void StyleEditor::updatePartAntialiasing()   { addChangePartCommand("style antialiasing", part, "antialias",   antialiasing -> isChecked()); }
+void StyleEditor::updatePartColor()          { addChangePartCommand("style couleur",      part, "color",       color -> checkedId());        }
+void StyleEditor::updatePartLineStyle()      { addChangePartCommand("style ligne",        part, "line-style",  style -> checkedId());        }
+void StyleEditor::updatePartLineWeight()     { addChangePartCommand("style epaisseur",    part, "line-weight", weight -> checkedId());       }
+void StyleEditor::updatePartFilling()        { addChangePartCommand("style remplissage",  part, "filling",     filling -> checkedId());      }
+
 void StyleEditor::updateForm() {
-	// lit l'antialiasing : deconnexion du slot pour eviter l'appel a updatePart()
-	disconnect(antialiasing, SIGNAL(stateChanged(int)), this, SLOT(updatePart()));
+	activeConnections(false);
+	// lit l'antialiasing
 	antialiasing -> setChecked(part -> antialiased());
-	connect(antialiasing, SIGNAL(stateChanged(int)), this, SLOT(updatePart()));
 	
 	// lit la couleur
 	color -> button(part -> color()) -> setChecked(true);
@@ -114,8 +114,25 @@ void StyleEditor::updateForm() {
 	
 	// lit le remplissage
 	filling -> button(part -> filling()) -> setChecked(true);
+	activeConnections(true);
 }
 
 void StyleEditor::appendWidget(QWidget *w) {
 	main_layout -> insertWidget(7, w);
+}
+
+void StyleEditor::activeConnections(bool active) {
+	if (active) {
+		connect(color,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartColor()));
+		connect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
+		connect(weight,       SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineWeight()));
+		connect(filling,      SIGNAL(buttonClicked(int)), this, SLOT(updatePartFilling()));
+		connect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
+	} else {
+		disconnect(color,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartColor()));
+		disconnect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
+		disconnect(weight,       SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineWeight()));
+		disconnect(filling,      SIGNAL(buttonClicked(int)), this, SLOT(updatePartFilling()));
+		disconnect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
+	}
 }

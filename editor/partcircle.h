@@ -6,7 +6,7 @@ class CircleEditor;
 class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
-	PartCircle(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartCircle(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartCircle() {
 		qDebug() << "~PartCircle()";
 	}
@@ -26,6 +26,8 @@ class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart 
 	virtual QPointF sceneTopLeft() const;
 	virtual QRectF boundingRect() const;
 	QPointF sceneCenter() const;
+	virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

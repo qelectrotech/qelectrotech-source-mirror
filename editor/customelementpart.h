@@ -4,6 +4,8 @@
 #include <QtXml>
 #include <QImage>
 class CustomElement;
+class QETElementEditor;
+class ElementScene;
 /**
 	Cette classe abstraite represente une partie de la representation graphique
 	d'un element de schema electrique. Les attributs et methodes qu'elle
@@ -15,7 +17,7 @@ class CustomElement;
 class CustomElementPart {
 	// constructeurs, destructeur
 	public:
-	CustomElementPart() {};
+	CustomElementPart(QETElementEditor *editor) : element_editor(editor) {};
 	virtual ~CustomElementPart() {
 		qDebug() << "~CustomElementPart()";
 	};
@@ -24,6 +26,7 @@ class CustomElementPart {
 	
 	// attributs
 	private:
+	QETElementEditor *element_editor;
 	
 	// methodes
 	public:
@@ -33,6 +36,12 @@ class CustomElementPart {
 	//virtual void renderToCustomElement(CustomElement &) const = 0;
 	//virtual void toEditorPart(const EditorPart &);
 	//virtual void fromEditorPart(const EditorPart &) = 0;
+	virtual void setProperty(const QString &, const QVariant &) = 0;
+	virtual QVariant property(const QString &) = 0;
+	virtual QETElementEditor *elementEditor() const;
+	virtual ElementScene *elementScene() const;
+	virtual QUndoStack &undoStack() const;
+	
 	protected:
 	QPicture *getCustomElementQPicture(CustomElement &ce) const;
 };

@@ -3,12 +3,12 @@
 /*** DeletePartsCommand ***/
 /**
 	Constructeur
-	@param scene EditorScene concernee
+	@param scene ElementScene concernee
 	@param parts Liste des parties supprimees
 	@param parent QUndoCommand parent
 */
 DeletePartsCommand::DeletePartsCommand(
-	EditorScene *scene,
+	ElementScene *scene,
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
@@ -46,13 +46,13 @@ void DeletePartsCommand::redo() {
 /**
 	Constructeur
 	@param m Mouvement sous forme de QPointF
-	@param scene EditorScene concernee
+	@param scene ElementScene concernee
 	@param parts Liste des parties deplacees
 	@param parent QUndoCommand parent
 */
 MovePartsCommand::MovePartsCommand(
 	const QPointF &m,
-	EditorScene *scene,
+	ElementScene *scene,
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
@@ -92,7 +92,7 @@ void MovePartsCommand::redo() {
 */
 AddPartCommand::AddPartCommand(
 	const QString &name,
-	EditorScene *scene,
+	ElementScene *scene,
 	QGraphicsItem *p,
 	QUndoCommand *parent
 ) :
@@ -122,4 +122,43 @@ void AddPartCommand::redo() {
 		return;
 	}
 	editor_scene -> addItem(part);
+}
+
+/**
+	Constructeur
+	@param name   nom de la propriete modifiee
+	@param part   partie modifiee
+	@param prop   propriete modifiee
+	@param old_v  ancienne valeur
+	@param new_v  nouvelle valeur
+	@param parent qUndoCommand parent
+*/
+ChangePartCommand::ChangePartCommand(
+	const QString &name,
+	CustomElementPart *part,
+	const QString &prop,
+	const QVariant &old_v,
+	const QVariant &new_v,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modification ") + name, parent),
+	cep(part),
+	property(prop),
+	old_value(old_v),
+	new_value(new_v)
+{
+}
+
+/// Destructeur
+ChangePartCommand::~ChangePartCommand() {
+}
+
+/// Annule le changement
+void ChangePartCommand::undo() {
+	cep -> setProperty(property, old_value);
+}
+
+/// Refait le changement
+void ChangePartCommand::redo() {
+	cep -> setProperty(property, new_value);
 }

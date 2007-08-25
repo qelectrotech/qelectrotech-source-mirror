@@ -1,14 +1,14 @@
 #ifndef POLYGON_EDITOR_H
 #define POLYGON_EDITOR_H
-#include <QtGui>
+#include "elementitemeditor.h"
 class PartPolygon;
-class PolygonEditor : public QWidget {
+class PolygonEditor : public ElementItemEditor {
 	
 	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:
-	PolygonEditor(PartPolygon *, QWidget * = 0);
+	PolygonEditor(QETElementEditor *, PartPolygon *, QWidget * = 0);
 	~PolygonEditor() {
 		qDebug() << "~PolygonEditor()";
 	}

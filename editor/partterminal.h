@@ -4,10 +4,11 @@
 #include "qet.h"
 #include <QtGui>
 class TerminalEditor;
+class QETElementEditor;
 class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	public:
 	// constructeurs, destructeur
-	PartTerminal(QGraphicsItem * = 0, QGraphicsScene * = 0);
+	PartTerminal(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartTerminal();
 	private:
 	PartTerminal(const PartTerminal &);
@@ -27,6 +28,8 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	virtual QRectF boundingRect() const;
 	QET::Orientation orientation() const;
 	void setOrientation(QET::Orientation);
+	virtual void setProperty(const QString &, const QVariant &);
+	virtual QVariant property(const QString &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

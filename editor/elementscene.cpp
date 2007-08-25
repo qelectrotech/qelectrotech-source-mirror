@@ -1,4 +1,5 @@
-#include "editorscene.h"
+#include "elementscene.h"
+#include "qetelementeditor.h"
 #include <cmath>
 #include "partline.h"
 #include "partellipse.h"
@@ -13,58 +14,59 @@
 #define GRILLE_X 10
 #define GRILLE_Y 10
 
-EditorScene::EditorScene(QObject *parent) :
+ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
 	_width(3),
 	_height(7),
 	_hotspot(15, 35),
-	qgi_manager(this)
+	qgi_manager(this),
+	element_editor(editor)
 {
 	current_polygon = NULL;
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChanged()));
 }
 
-EditorScene::~EditorScene() {
-	qDebug() << "~EditorScene()";
+ElementScene::~ElementScene() {
+	qDebug() << "~ElementScene()";
 }
 
-void EditorScene::slot_move() {
+void ElementScene::slot_move() {
 	behavior = Normal;
 }
 
-void EditorScene::slot_addLine() {
+void ElementScene::slot_addLine() {
 	behavior = Line;
 }
 
-void EditorScene::slot_addCircle() {
+void ElementScene::slot_addCircle() {
 	behavior = Circle;
 }
 
-void EditorScene::slot_addEllipse() {
+void ElementScene::slot_addEllipse() {
 	behavior = Ellipse;
 }
 
-void EditorScene::slot_addPolygon() {
+void ElementScene::slot_addPolygon() {
 	behavior = Polygon;
 }
 
-void EditorScene::slot_addText() {
+void ElementScene::slot_addText() {
 	behavior = Text;
 }
 
-void EditorScene::slot_addTerminal() {
+void ElementScene::slot_addTerminal() {
 	behavior = Terminal;
 }
 
-void EditorScene::slot_addArc() {
+void ElementScene::slot_addArc() {
 	behavior = Arc;
 }
 
-void EditorScene::slot_addTextField() {
+void ElementScene::slot_addTextField() {
 	behavior = TextField;
 }
 
-void EditorScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	QRectF temp_rect;
 	qreal radius;
@@ -116,7 +118,7 @@ void EditorScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	} else QGraphicsScene::mouseMoveEvent(e);
 }
 
-void EditorScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	QPolygonF temp_polygon;
 	if (e -> button() & Qt::LeftButton) {
@@ -125,24 +127,24 @@ void EditorScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 				QGraphicsScene::mousePressEvent(e);
 				break;
 			case Line:
-				current_line = new PartLine(0, this);
+				current_line = new PartLine(element_editor, 0, this);
 				current_line -> setLine(QLineF(e -> scenePos(), e -> scenePos()));
 				break;
 			case Ellipse:
-				current_ellipse = new PartEllipse(0, this);
+				current_ellipse = new PartEllipse(element_editor, 0, this);
 				current_ellipse -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
 				break;
 			case Arc:
-				current_arc = new PartArc(0, this);
+				current_arc = new PartArc(element_editor, 0, this);
 				current_arc -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
 				break;
 			case Circle:
-				current_circle = new PartCircle(0, this);
+				current_circle = new PartCircle(element_editor, 0, this);
 				current_circle -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
 				break;
 			case Polygon:
 				if (current_polygon == NULL) {
-					current_polygon = new PartPolygon(0, this);
+					current_polygon = new PartPolygon(element_editor, 0, this);
 					temp_polygon = QPolygonF(0);
 				} else temp_polygon = current_polygon -> polygon();
 				// au debut, on insere deux points
@@ -156,7 +158,7 @@ void EditorScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	} else QGraphicsScene::mousePressEvent(e);
 }
 
-void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	PartTerminal *terminal;
 	PartText *text;
 	PartTextField *textfield;
@@ -179,17 +181,17 @@ void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				undo_stack.push(new AddPartCommand(tr("cercle"), this, current_circle));
 				break;
 			case Terminal:
-				terminal = new PartTerminal(0, this);
+				terminal = new PartTerminal(element_editor, 0, this);
 				terminal -> setPos(e -> scenePos());
 				undo_stack.push(new AddPartCommand(tr("borne"), this, terminal));
 				break;
 			case Text:
-				text = new PartText(0, this);
+				text = new PartText(element_editor, 0, this);
 				text -> setPos(e -> scenePos());
 				undo_stack.push(new AddPartCommand(tr("texte"), this, text));
 				break;
 			case TextField:
-				textfield = new PartTextField(0, this);
+				textfield = new PartTextField(element_editor, 0, this);
 				textfield -> setPos(e -> scenePos());
 				undo_stack.push(new AddPartCommand(tr("champ de texte"), this, textfield));
 				break;
@@ -219,7 +221,7 @@ void EditorScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner
 */
-void EditorScene::drawBackground(QPainter *p, const QRectF &r) {
+void ElementScene::drawBackground(QPainter *p, const QRectF &r) {
 	p -> save();
 	
 	// desactive tout antialiasing, sauf pour le texte
@@ -264,7 +266,7 @@ void EditorScene::drawBackground(QPainter *p, const QRectF &r) {
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner
 */
-void EditorScene::drawForeground(QPainter *p, const QRectF &) {
+void ElementScene::drawForeground(QPainter *p, const QRectF &) {
 	p -> save();
 	
 	// desactive tout antialiasing, sauf pour le texte
@@ -279,7 +281,7 @@ void EditorScene::drawForeground(QPainter *p, const QRectF &) {
 	p -> restore();
 }
 
-const QDomDocument EditorScene::toXml() const {
+const QDomDocument ElementScene::toXml() const {
 	// document XML
 	QDomDocument xml_document;
 	
@@ -308,7 +310,7 @@ const QDomDocument EditorScene::toXml() const {
 	return(xml_document);
 }
 
-void EditorScene::fromXml(const QDomDocument &xml_document) {
+void ElementScene::fromXml(const QDomDocument &xml_document) {
 	
 	QString error_message;
 	bool state = true;
@@ -365,14 +367,14 @@ void EditorScene::fromXml(const QDomDocument &xml_document) {
 					QDomElement qde = n.toElement();
 					if (qde.isNull()) continue;
 					CustomElementPart *cep;
-					if      (qde.tagName() == "line")     cep = new PartLine     (0, this);
-					else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (0, this);
-					else if (qde.tagName() == "circle")   cep = new PartCircle   (0, this);
-					else if (qde.tagName() == "polygon")  cep = new PartPolygon  (0, this);
-					else if (qde.tagName() == "terminal") cep = new PartTerminal (0, this);
-					else if (qde.tagName() == "text")     cep = new PartText     (0, this);
-					else if (qde.tagName() == "input")    cep = new PartTextField(0, this);
-					else if (qde.tagName() == "arc")      cep = new PartArc      (0, this);
+					if      (qde.tagName() == "line")     cep = new PartLine     (element_editor, 0, this);
+					else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (element_editor, 0, this);
+					else if (qde.tagName() == "circle")   cep = new PartCircle   (element_editor, 0, this);
+					else if (qde.tagName() == "polygon")  cep = new PartPolygon  (element_editor, 0, this);
+					else if (qde.tagName() == "terminal") cep = new PartTerminal (element_editor, 0, this);
+					else if (qde.tagName() == "text")     cep = new PartText     (element_editor, 0, this);
+					else if (qde.tagName() == "input")    cep = new PartTextField(element_editor, 0, this);
+					else if (qde.tagName() == "arc")      cep = new PartArc      (element_editor, 0, this);
 					else continue;
 					if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) qgi -> setZValue(z++);
 					cep -> fromXml(qde);
@@ -382,34 +384,34 @@ void EditorScene::fromXml(const QDomDocument &xml_document) {
 	}
 }
 
-QUndoStack &EditorScene::undoStack() {
+QUndoStack &ElementScene::undoStack() {
 	return(undo_stack);
 }
 
-QGIManager &EditorScene::qgiManager() {
+QGIManager &ElementScene::qgiManager() {
 	return(qgi_manager);
 }
 
-void EditorScene::slot_checkSelectionChanged() {
+void ElementScene::slot_checkSelectionChanged() {
 	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
 	QList<QGraphicsItem *> selecteditems = selectedItems();
 	if (cache_selecteditems != selecteditems) emit(selectionChanged());
 	cache_selecteditems = selecteditems;
 }
 
-void EditorScene::slot_selectAll() {
+void ElementScene::slot_selectAll() {
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
 }
 
-void EditorScene::slot_deselectAll() {
+void ElementScene::slot_deselectAll() {
 	clearSelection();
 }
 
-void EditorScene::slot_invertSelection() {
+void ElementScene::slot_invertSelection() {
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(!qgi -> isSelected());
 }
 
-void EditorScene::slot_delete() {
+void ElementScene::slot_delete() {
 	// verifie qu'il y a qqc de selectionne
 	QList<QGraphicsItem *> selected_items = selectedItems();
 	if (selected_items.isEmpty()) return;
@@ -418,7 +420,7 @@ void EditorScene::slot_delete() {
 	undo_stack.push(new DeletePartsCommand(this, selected_items));
 }
 
-void EditorScene::slot_editSizeHotSpot() {
+void ElementScene::slot_editSizeHotSpot() {
 	// cree un dialogue
 	QDialog dialog_sh;
 	dialog_sh.setModal(true);
@@ -456,7 +458,7 @@ void EditorScene::slot_editSizeHotSpot() {
 	}
 }
 
-void EditorScene::slot_editOrientations() {
+void ElementScene::slot_editOrientations() {
 	
 	// cree un dialogue
 	QDialog dialog_ori;
@@ -486,7 +488,7 @@ void EditorScene::slot_editOrientations() {
 	if (dialog_ori.exec() == QDialog::Accepted) ori = ori_widget -> orientationSet();
 }
 
-void EditorScene::slot_editNames() {
+void ElementScene::slot_editNames() {
 	
 	// cree un dialogue
 	QDialog dialog;

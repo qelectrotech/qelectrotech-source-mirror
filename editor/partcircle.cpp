@@ -1,11 +1,13 @@
 #include "partcircle.h"
 #include "circleeditor.h"
 
-PartCircle::PartCircle(QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsEllipseItem(parent, scene), CustomElementGraphicPart() {
+PartCircle::PartCircle(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsEllipseItem(parent, scene), CustomElementGraphicPart(editor) {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new CircleEditor(this);
+	informations = new CircleEditor(elementEditor(), this);
+	informations -> setElementTypeName(QObject::tr("cercle"));
 	style_editor -> appendWidget(informations);
+	style_editor -> setElementTypeName(QObject::tr("cercle"));
 }
 
 void PartCircle::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
@@ -50,6 +52,44 @@ void PartCircle::fromXml(const QDomElement &qde) {
 			)
 		)
 	);
+}
+
+void PartCircle::setProperty(const QString &property, const QVariant &value) {
+	CustomElementGraphicPart::setProperty(property, value);
+	if (!value.canConvert(QVariant::Double)) return;
+	if (property == "x") {
+		QRectF current_rect = rect();
+		QPointF current_pos = mapToScene(current_rect.center());
+		setRect(current_rect.translated(value.toDouble() - current_pos.x(), 0.0));
+	} else if (property == "y") {
+		QRectF current_rect = rect();
+		QPointF current_pos = mapToScene(current_rect.center());
+		setRect(current_rect.translated(0.0, value.toDouble() - current_pos.y()));
+	} else if (property == "diameter") {
+		QRectF current_rect = rect();
+		qreal new_diameter = qAbs(value.toDouble());
+		current_rect.translate(
+			(new_diameter - current_rect.width()) / -2.0,
+			(new_diameter - current_rect.height()) / -2.0
+		);
+		current_rect.setSize(QSizeF(new_diameter, new_diameter));
+		setRect(current_rect);
+	}
+}
+
+QVariant PartCircle::property(const QString &property) {
+	// appelle la methode property de CustomElementGraphicpart pour les styles
+	QVariant style_property = CustomElementGraphicPart::property(property);
+	if (style_property != QVariant()) return(style_property);
+	
+	if (property == "x") {
+		return(mapToScene(rect().center()).x());
+	} else if (property == "y") {
+		return(mapToScene(rect().center()).y());
+	} else if (property == "diameter") {
+		return(rect().width());
+	}
+	return(QVariant());
 }
 
 QVariant PartCircle::itemChange(GraphicsItemChange change, const QVariant &value) {

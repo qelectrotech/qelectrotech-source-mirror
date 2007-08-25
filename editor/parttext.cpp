@@ -1,10 +1,14 @@
 #include "parttext.h"
 #include "texteditor.h"
-
-PartText::PartText(QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsTextItem(parent, scene), CustomElementPart(), can_check_changes(true) {
+#include "elementscene.h"
+PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene *scene) :
+	QGraphicsTextItem(parent, scene),
+	CustomElementPart(editor)
+{
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(tr("T"));
-	infos = new TextEditor(this);
+	infos = new TextEditor(elementEditor(), this);
+	infos -> setElementTypeName(QObject::tr("texte"));
 }
 
 PartText::~PartText() {
@@ -88,8 +92,36 @@ void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	setFocus(Qt::MouseFocusReason);
 }
 
+void PartText::setProperty(const QString &property, const QVariant &value) {
+	if (property == "x") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setPos(value.toDouble(), pos().y());
+	} else if (property == "y") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setPos(pos().x(), value.toDouble());
+	} else if (property == "size") {
+		if (!value.canConvert(QVariant::Int)) return;
+		setFont(QFont(font().family(), value.toInt()));
+	} else if (property == "text") {
+		setPlainText(value.toString());
+	}
+}
+
+QVariant PartText::property(const QString &property) {
+	if (property == "x") {
+		return((scenePos() + margin()).x());
+	} else if (property == "y") {
+		return((scenePos() + margin()).y());
+	} else if (property == "size") {
+		return(font().pointSize());
+	} else if (property == "text") {
+		return(toPlainText());
+	}
+	return(QVariant());
+}
+
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene() && can_check_changes) {
+	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
 			infos -> updateForm();
 		}
