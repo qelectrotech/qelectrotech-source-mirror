@@ -63,7 +63,6 @@ void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"),
 
 void TerminalEditor::updateForm() {
 	activeConnections(false);
-	qDebug() << part -> pos() << part -> scenePos();
 	qle_x -> setText(part -> property("x").toString());
 	qle_y -> setText(part -> property("y").toString());
 	orientation -> setCurrentIndex(static_cast<int>(part -> orientation()));

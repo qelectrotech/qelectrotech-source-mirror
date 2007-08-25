@@ -291,6 +291,9 @@ void QETApp::actions() {
 	entrer_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	sortir_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	
+	f_suiv            -> setShortcut(QKeySequence::NextChild);
+	f_prec            -> setShortcut(QKeySequence::PreviousChild);
+	
 	// affichage dans la barre de statut
 	nouveau_fichier   -> setStatusTip(tr("Cr\351e un nouveau sch\351ma"));
 	ouvrir_fichier    -> setStatusTip(tr("Ouvre un sch\351ma existant"));

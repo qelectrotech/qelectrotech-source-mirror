@@ -11,14 +11,13 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	min_title(tr("QElectroTech - \311diteur d'\351l\351ment")),
 	_filename(QString())
 {
-	setMinimumWidth(700);
-	setMinimumHeight(450);
 	setWindowTitle(min_title);
 	setWindowIcon(QIcon(":/ico/qet.png"));
 	
 	setupInterface();
 	setupActions();
 	setupMenus();
+	showMaximized();
 }
 
 QETElementEditor::~QETElementEditor() {
@@ -48,6 +47,17 @@ void QETElementEditor::setupActions() {
 	add_terminal  = new QAction(QIcon(":/ico/terminal.png"),     tr("Ajouter une borne"),           this);
 	add_textfield = new QAction(QIcon(":/ico/textfield.png"),    tr("Ajouter un champ de texte"),   this);
 	
+	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
+	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
+	undo -> setIcon(QIcon(":/ico/undo.png"));
+	redo -> setIcon(QIcon(":/ico/redo.png"));
+	undo -> setShortcuts(QKeySequence::Undo);
+	redo -> setShortcuts(QKeySequence::Redo);
+	
+	new_element       -> setShortcut(QKeySequence::New);
+	open              -> setShortcut(QKeySequence::Open);
+	save              -> setShortcut(QKeySequence::Save);
+	quit              -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	inv_select        -> setShortcut(QKeySequence(tr("Ctrl+I")));
@@ -144,11 +154,6 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(quit);
 	
-	QAction *undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
-	QAction *redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
-	undo -> setShortcuts(QKeySequence::Undo);
-	redo -> setShortcuts(QKeySequence::Redo);
-	
 	edit_menu -> addAction(undo);
 	edit_menu -> addAction(redo);
 	edit_menu -> addSeparator();
@@ -164,9 +169,11 @@ void QETElementEditor::setupMenus() {
 	
 	menuBar() -> addMenu(file_menu);
 	menuBar() -> addMenu(edit_menu);
+	/*
 	menuBar() -> addMenu(display_menu);
 	menuBar() -> addMenu(tools_menu);
 	menuBar() -> addMenu(help_menu);
+	*/
 }
 
 void QETElementEditor::slot_updateMenus() {
@@ -188,7 +195,7 @@ void QETElementEditor::setupInterface() {
 	tools_dock = new QDockWidget(tr("Informations"), this);
 	tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	tools_dock -> setMinimumWidth(285);
+	tools_dock -> setMinimumWidth(290);
 	addDockWidget(Qt::RightDockWidgetArea, tools_dock);
 	QWidget *info_widget = new QWidget();
 	info_widget -> setLayout(new QVBoxLayout(info_widget));
@@ -198,7 +205,7 @@ void QETElementEditor::setupInterface() {
 	undo_dock = new QDockWidget(tr("Annulations"), this);
 	undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	undo_dock -> setMinimumWidth(285);
+	undo_dock -> setMinimumWidth(290);
 	addDockWidget(Qt::RightDockWidgetArea, undo_dock);
 	undo_dock -> setWidget(new QUndoView(&(ce_scene -> undoStack()), this));
 	
