@@ -48,7 +48,7 @@ void PolygonEditor::updatePolygonPoints() {
 		);
 		return;
 	}
-	part -> setPolygon(points);
+	undoStack().push(new ChangePolygonPointsCommand(part, part -> polygon(), points));
 }
 
 void PolygonEditor::updatePolygonClosedState() {
@@ -61,7 +61,6 @@ void PolygonEditor::updatePolygonClosedState() {
 			QVariant(close_polygon.isChecked())
 		)
 	);
-// 	part -> setClosed(close_polygon.isChecked());
 }
 
 void PolygonEditor::updateForm() {

@@ -162,3 +162,27 @@ void ChangePartCommand::undo() {
 void ChangePartCommand::redo() {
 	cep -> setProperty(property, new_value);
 }
+
+ChangePolygonPointsCommand::ChangePolygonPointsCommand(
+	PartPolygon *p,
+	const QVector<QPointF> &o_points,
+	const QVector<QPointF> &n_points,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modification points polygone"), parent),
+	polygon(p),
+	old_points(o_points),
+	new_points(n_points)
+{
+}
+
+ChangePolygonPointsCommand::~ChangePolygonPointsCommand() {
+}
+
+void ChangePolygonPointsCommand::undo() {
+	polygon -> setPolygon(old_points);
+}
+
+void ChangePolygonPointsCommand::redo() {
+	polygon -> setPolygon(new_points);
+}

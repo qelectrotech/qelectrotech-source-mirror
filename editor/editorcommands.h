@@ -1,6 +1,7 @@
 #ifndef EDITOR_COMMANDS_H
 #define EDITOR_COMMANDS_H
 #include "customelementpart.h"
+#include "partpolygon.h"
 #include "elementscene.h"
 #include "qgimanager.h"
 #include <QtGui>
@@ -108,5 +109,29 @@ class ChangePartCommand : public QUndoCommand {
 	QVariant old_value;
 	/// nouvelle valeur
 	QVariant new_value;
+};
+
+/**
+	Cette classe represente l'action de modifier les points composants un polygone
+*/
+class ChangePolygonPointsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangePolygonPointsCommand(PartPolygon *, const QVector<QPointF> &, const QVector<QPointF> &, QUndoCommand * = 0);
+	virtual ~ChangePolygonPointsCommand();
+	private:
+	ChangePolygonPointsCommand(const ChangePolygonPointsCommand &);
+	
+	// methodes
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	/// Polygone  modifie
+	PartPolygon *polygon;
+	/// anciens points
+	QVector<QPointF> old_points;
+	/// nouveaux points
+	QVector<QPointF> new_points;
 };
 #endif
