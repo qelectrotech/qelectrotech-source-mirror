@@ -28,9 +28,7 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *
 	layout -> addWidget(&points_list);
 	layout -> addWidget(&close_polygon);
 	
-	// connexions signaux/slots
-	connect(&close_polygon, SIGNAL(stateChanged(int)),                   this, SLOT(updatePolygonClosedState()));
-	connect(&points_list,   SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(validColumn(QTreeWidgetItem *, int)));
+	updateForm();
 }
 
 void PolygonEditor::updatePolygon() {
@@ -64,6 +62,7 @@ void PolygonEditor::updatePolygonClosedState() {
 }
 
 void PolygonEditor::updateForm() {
+	activeConnections(false);
 	while(points_list.takeTopLevelItem(0));
 	foreach(QPointF point, part -> polygon()) {
 		point = part -> mapToScene(point);
@@ -74,6 +73,7 @@ void PolygonEditor::updateForm() {
 		points_list.addTopLevelItem(qtwi);
 	}
 	close_polygon.setChecked(part -> isClosed());
+	activeConnections(true);
 }
 
 QVector<QPointF> PolygonEditor::getPointsFromTree() {
@@ -96,4 +96,14 @@ void PolygonEditor::validColumn(QTreeWidgetItem *qtwi, int column) {
 		points_list.closePersistentEditor(qtwi, column);
 		updatePolygonPoints();
 	} else points_list.openPersistentEditor(qtwi, column);
+}
+
+void PolygonEditor::activeConnections(bool active) {
+	if (active) {
+		connect(&close_polygon, SIGNAL(stateChanged(int)),                   this, SLOT(updatePolygonClosedState()));
+		connect(&points_list,   SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(validColumn(QTreeWidgetItem *, int)));
+	} else {
+		disconnect(&close_polygon, SIGNAL(stateChanged(int)),                   this, SLOT(updatePolygonClosedState()));
+		disconnect(&points_list,   SIGNAL(itemChanged(QTreeWidgetItem *, int)), this, SLOT(validColumn(QTreeWidgetItem *, int)));
+	}
 }

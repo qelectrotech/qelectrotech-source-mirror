@@ -84,6 +84,7 @@ class QETElementEditor : public QMainWindow {
 	void slot_setNormalMode();
 	void slot_updateInformations();
 	void slot_updateMenus();
+	void slot_updateTitle();
 	void xmlPreview();
 };
 
@@ -122,8 +123,8 @@ inline OrientationSet QETElementEditor::orientations() const {
 }
 
 inline void QETElementEditor::setFileName(const QString &fn) {
-	setWindowTitle(min_title + " - " + fn);
 	_filename = fn;
+	slot_updateTitle();
 }
 
 inline QString QETElementEditor::fileName() const {

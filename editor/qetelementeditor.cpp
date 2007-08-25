@@ -132,6 +132,8 @@ void QETElementEditor::setupActions() {
 	
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()));
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateMenus()));
+	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateMenus()));
+	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateTitle()));
 }
 
 void QETElementEditor::setupMenus() {
@@ -178,6 +180,17 @@ void QETElementEditor::setupMenus() {
 
 void QETElementEditor::slot_updateMenus() {
 	edit_delete -> setEnabled(!ce_scene -> selectedItems().isEmpty());
+	save -> setEnabled(!ce_scene -> undoStack().isClean());
+}
+
+void QETElementEditor::slot_updateTitle() {
+	QString title = min_title;
+	title += " - " + ce_scene -> names().name() + " ";
+	if (_filename != QString()) {
+		if (!ce_scene -> undoStack().isClean()) title += tr("[Modifi\351]");
+		if (isReadOnly()) title += tr(" [lecture seule]");
+	}
+	setWindowTitle(title);
 }
 
 void QETElementEditor::setupInterface() {
@@ -319,12 +332,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	}
 	
 	// memorise le fichier
-	_filename = filepath;
-	
-	// modifie le titre de la fenetre
-	QString new_title = min_title + " - " + ce_scene -> names().name();
-	if (isReadOnly()) new_title += tr(" [lecture seule]");
-	setWindowTitle(new_title);
+	setFileName(filepath);
 }
 
 bool QETElementEditor::toFile(const QString &fn) {
@@ -353,6 +361,12 @@ void QETElementEditor::setReadOnly(bool ro) {
 	ce_view -> setInteractive(!ro);
 	
 	// active / desactive l'edition de la taille, du hotspot, des noms et des orientations
+	selectall    -> setEnabled(!ro);
+	deselectall  -> setEnabled(!ro);
+	inv_select   -> setEnabled(!ro);
+	undo         -> setEnabled(!ro);
+	redo         -> setEnabled(!ro);
+	edit_delete  -> setEnabled(!ro);
 	edit_size_hs -> setEnabled(!ro);
 	edit_names   -> setEnabled(!ro);
 	edit_ori     -> setEnabled(!ro);
@@ -388,7 +402,9 @@ bool QETElementEditor::slot_save() {
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (_filename == QString()) return(slot_saveAs());
 	// sinon on enregistre dans le nom de fichier connu
-	return(toFile(_filename));
+	bool result_save = toFile(_filename);
+	if (result_save) ce_scene -> undoStack().setClean();
+	return(result_save);
 }
 
 bool QETElementEditor::slot_saveAs() {
@@ -406,7 +422,10 @@ bool QETElementEditor::slot_saveAs() {
 	// tente d'enregistrer le fichier
 	bool result_save = toFile(fn);
 	// si l'enregistrement reussit, le nom du fichier est conserve
-	if (result_save) setFileName(fn);
+	if (result_save) {
+		setFileName(fn);
+		ce_scene -> undoStack().setClean();
+	}
 	// retourne un booleen representatif de la reussite de l'enregistrement
 	return(result_save);
 }
@@ -419,6 +438,7 @@ void QETElementEditor::slot_quit(QCloseEvent *event) {
 }
 
 bool QETElementEditor::close() {
+	if (ce_scene -> undoStack().isClean()) return(true);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QMessageBox::question(
 		this,

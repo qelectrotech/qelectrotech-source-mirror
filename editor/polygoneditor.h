@@ -31,5 +31,8 @@ class PolygonEditor : public ElementItemEditor {
 	void updatePolygonClosedState();
 	void updateForm();
 	void validColumn(QTreeWidgetItem *qtwi, int column);
+	
+	private:
+	void activeConnections(bool);
 };
 #endif

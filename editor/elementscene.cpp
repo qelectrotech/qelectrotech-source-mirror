@@ -23,6 +23,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	element_editor(editor)
 {
 	current_polygon = NULL;
+	undo_stack.setClean();
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChanged()));
 }
 
