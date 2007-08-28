@@ -58,7 +58,9 @@ HEADERS += aboutqet.h \
            editor/styleeditor.h \
            editor/terminaleditor.h \
            editor/texteditor.h \
-           editor/textfieldeditor.h
+           editor/textfieldeditor.h \
+ elementscategorydeleter.h \
+ elementdeleter.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -110,8 +112,10 @@ SOURCES += aboutqet.cpp \
            editor/styleeditor.cpp \
            editor/terminaleditor.cpp \
            editor/texteditor.cpp \
-           editor/textfieldeditor.cpp
+           editor/textfieldeditor.cpp \
+ elementscategorydeleter.cpp \
+ elementdeleter.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml
-CONFIG += release
+CONFIG += debug_and_release

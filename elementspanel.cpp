@@ -1,6 +1,8 @@
 #include "elementspanel.h"
 #include "elementscategory.h"
 #include "elementscategoryeditor.h"
+#include "elementscategorydeleter.h"
+#include "elementdeleter.h"
 #include "customelement.h"
 #include "qetelementeditor.h"
 
@@ -44,6 +46,20 @@ ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
 	Destructeur
 */
 ElementsPanel::~ElementsPanel() {
+}
+
+/// @return true si un element est selectionne, false sinon
+bool ElementsPanel::selectedItemIsAnElement() const {
+	QFileInfo infos_file = selectedFile();
+	if (!infos_file.exists()) return(false);
+	return(infos_file.isFile());
+}
+
+/// @return true si une categorie est selectionnee, false sinon
+bool ElementsPanel::selectedItemIsACategory() const {
+	QFileInfo infos_file = selectedFile();
+	if (!infos_file.exists()) return(false);
+	return(infos_file.isDir());
 }
 
 /**
@@ -167,24 +183,73 @@ void ElementsPanel::reload() {
 	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 }
 
-void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
-	// recupere le fichier ou le dossier correspondant au QTreeWidgetItem
-	QString filename = qtwi -> data(0, 42).toString();
+void ElementsPanel::editCategory() {
+	QFileInfo infos_file = selectedFile();
+	if (!infos_file.exists() || !infos_file.isDir()) return;
+	lauchCategoryEditor(infos_file.absoluteFilePath());
+}
+
+void ElementsPanel::editElement() {
+	QFileInfo infos_file = selectedFile();
+	if (!infos_file.exists() || !infos_file.isFile()) return;
+	launchElementEditor(infos_file.absoluteFilePath());
+}
+
+void ElementsPanel::deleteCategory() {
+	QFileInfo infos_file = selectedFile();
+	if (!infos_file.exists() || !infos_file.isDir()) return;
 	
+	// supprime la categorie
+	ElementsCategoryDeleter cat_deleter(infos_file.absoluteFilePath(), this);
+	cat_deleter.exec();
+	
+	// recharge la liste des categories
+	reload();
+}
+
+/**
+	supprime l'element selectionne
+*/
+void ElementsPanel::deleteElement() {
+	QFileInfo infos_file = selectedFile();
+	if (!infos_file.exists() || !infos_file.isFile()) return;
+	
+	// supprime l'element
+	ElementDeleter elmt_deleter(infos_file.absoluteFilePath(), this);
+	elmt_deleter.exec();
+	
+	// recharge la liste des categories
+	reload();
+}
+
+void ElementsPanel::slot_doubleClick(QTreeWidgetItem *, int) {
 	// le fichier doit exister
-	QFileInfo infos_file(filename);
+	QFileInfo infos_file = selectedFile();
 	if (!infos_file.exists()) return;
-	
 	
 	if (infos_file.isFile()) {
 		// il s'agit d'un element
-		QETElementEditor *editor = new QETElementEditor();
-		editor -> fromFile(filename);
-		editor -> show();
+		launchElementEditor(infos_file.absoluteFilePath());
 	} else if (infos_file.isDir()) {
 		// il s'agit d'une categorie
-		ElementsCategory c(filename);
-		ElementsCategoryEditor ece(filename, true);
-		if (ece.exec() == QDialog::Accepted) reload();
+		lauchCategoryEditor(infos_file.absoluteFilePath());
 	}
+}
+
+/// @return un QFileInfo decrivant le fichier ou le dossier correspondant au QTreeWidgetItem selectionne
+QFileInfo ElementsPanel::selectedFile() const {
+	QTreeWidgetItem *current_qtwi = currentItem();
+	if(!current_qtwi) return(QFileInfo());
+	return(QFileInfo(currentItem() -> data(0, 42).toString()));
+}
+
+void ElementsPanel::launchElementEditor(const QString &filename) {
+	QETElementEditor *editor = new QETElementEditor();
+	editor -> fromFile(filename);
+	editor -> show();
+}
+
+void ElementsPanel::lauchCategoryEditor(const QString &filename) {
+	ElementsCategoryEditor ece(filename, true);
+	if (ece.exec() == QDialog::Accepted) reload();
 }

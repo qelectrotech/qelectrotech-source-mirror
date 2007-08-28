@@ -22,6 +22,9 @@ class ElementsPanelWidget : public QWidget {
 	private:
 	ElementsPanel *elements_panel;
 	QToolBar *toolbar;
+	QAction *reload;
+	QAction *new_category, *edit_category, *delete_category;
+	QAction *new_element,  *edit_element,  *delete_element;
 	
 	// methodes
 	public:
@@ -29,6 +32,8 @@ class ElementsPanelWidget : public QWidget {
 	
 	public slots:
 	void newElement();
+	void newCategory();
+	void updateButtons();
 };
 
 /**

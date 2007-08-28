@@ -19,9 +19,17 @@ class ElementsPanel : public QTreeWidget {
 	ElementsPanel(const ElementsPanel &);
 	
 	// methodes
+	public:
+	bool selectedItemIsAnElement() const;
+	bool selectedItemIsACategory() const;
+	
 	private:
 	void addFile(QTreeWidgetItem *, QString);
 	void addDir(QTreeWidgetItem *, QString, QString = QString());
+	QFileInfo selectedFile() const;
+	void launchElementEditor(const QString &);
+	void lauchCategoryEditor(const QString &);
+	
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
@@ -29,5 +37,9 @@ class ElementsPanel : public QTreeWidget {
 	void dropEvent(QDropEvent *);
 	void startDrag(Qt::DropActions);
 	void reload();
+	void editCategory();
+	void editElement();
+	void deleteCategory();
+	void deleteElement();
 };
 #endif

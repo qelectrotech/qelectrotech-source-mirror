@@ -8,12 +8,16 @@
 	<file>ico/arc.png</file>
 	<file>ico/button_cancel.png</file>
 	<file>ico/button_ok.png</file>
+	<file>ico/category_delete.png</file>
+	<file>ico/category_edit.png</file>
+	<file>ico/category_new.png</file>
 	<file>ico/circle.png</file>
 	<file>ico/configure.png</file>
 	<file>ico/copy.png</file>
 	<file>ico/cut.png</file>
 	<file>ico/delete.png</file>
 	<file>ico/east.png</file>
+	<file>ico/edit.png</file>
 	<file>ico/editdelete.png</file>
 	<file>ico/ellipse.png</file>
 	<file>ico/entrer_fs.png</file>

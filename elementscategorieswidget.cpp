@@ -1,6 +1,7 @@
 #include "elementscategorieswidget.h"
 #include "elementscategorieslist.h"
 #include "elementscategoryeditor.h"
+#include "elementscategorydeleter.h"
 #include "elementscategory.h"
 
 /**
@@ -12,10 +13,10 @@ ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget *parent) : QWidget(pa
 	elementscategorieslist = new ElementsCategoriesList(this);
 	
 	// actions
-	action_reload = new QAction(QIcon(":/ico/reload.png"),     tr("Recharger les cat\351gories"), this);
-	action_new    = new QAction(QIcon(":/ico/new.png"),        tr("Nouvelle cat\351gorie"),       this);
-	action_open   = new QAction(QIcon(":/ico/open.png"),       tr("\311diter la cat\351gorie"),   this);
-	action_delete = new QAction(QIcon(":/ico/editdelete.png"), tr("Supprimer la cat\351gorie"),   this);
+	action_reload = new QAction(QIcon(":/ico/reload.png"),          tr("Recharger les cat\351gories"), this);
+	action_new    = new QAction(QIcon(":/ico/category_new.png"),    tr("Nouvelle cat\351gorie"),       this);
+	action_open   = new QAction(QIcon(":/ico/category_edit.png"),   tr("\311diter la cat\351gorie"),   this);
+	action_delete = new QAction(QIcon(":/ico/category_delete.png"), tr("Supprimer la cat\351gorie"),   this);
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);
@@ -74,46 +75,12 @@ void ElementsCategoriesWidget::editCategory() {
 	Supprime la categorie selectionnee
 */
 void ElementsCategoriesWidget::removeCategory() {
-	// recupere le nom et le chemin de la categorie
-	QString s_c_name = elementscategorieslist -> selectedCategoryName();
+	// recupere le chemin de la categorie
 	QString s_c_path = elementscategorieslist -> selectedCategoryPath();
 	
-	if (s_c_path.isNull()) return;
-	
-	// confirmation #1
-	QMessageBox::StandardButton answer_1 = QMessageBox::question(
-		this,
-		tr("Supprimer la cat\351gorie ?"),
-		tr("\312tes-vous s\373r de vouloir supprimer cette cat\351gorie ?\n"
-		"Tous les \351l\351ments et les cat\351gories contenus dans cette "
-		"cat\351gorie seront supprim\351s"),
-		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel
-	);
-	if (answer_1 != QMessageBox::Yes) return;
-	
-	// confirmation #2
-	QMessageBox::StandardButton answer_2 = QMessageBox::question(
-		this,
-		tr("Supprimer la cat\351gorie ?"),
-		tr("\312tes-vous vraiment s\373r de vouloir supprimer cette "
-		"cat\351gorie ?\nLes changements seront d\351finitifs."),
-		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel
-	);
-	if (answer_2 != QMessageBox::Yes) return;
-	
-	// verifie l'existence de la categorie
-	ElementsCategory category(s_c_path);
-	if (!category.exists()) return;
-	
 	// supprime la categorie
-	if (!category.remove()) {
-		QMessageBox::warning(
-			this,
-			tr("Suppression de la cat\351gorie"),
-			tr("La suppression de la cat\351gorie a \351chou\351.\n"
-			"V\351rifiez vos droits sur le dossier ") + s_c_path + tr(".")
-		);
-	}
+	ElementsCategoryDeleter cat_deleter(s_c_path, this);
+	cat_deleter.exec();
 	
 	// recharge la liste des categories
 	elementscategorieslist -> reload();
