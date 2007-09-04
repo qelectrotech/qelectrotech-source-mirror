@@ -31,6 +31,9 @@ class ConducerSegment {
 	bool hasNextSegment() const;
 	void setPreviousSegment(ConducerSegment *);
 	void setNextSegment(ConducerSegment *);
+	bool isStatic() const;
+	bool isFirstSegment() const;
+	bool isLastSegment() const;
 	QPointF firstPoint() const;
 	QPointF secondPoint() const;
 	void setFirstPoint(const QPointF &);

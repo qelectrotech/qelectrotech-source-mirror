@@ -14,8 +14,8 @@ ConducerSegment::ConducerSegment(
 	ConducerSegment *cs1,
 	ConducerSegment *cs2
 ) :
-point1(p1),
-point2(p2)
+	point1(p1),
+	point2(p2)
 {
 	setPreviousSegment(cs1);
 	setNextSegment(cs2);
@@ -44,7 +44,7 @@ bool ConducerSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx
 	Q_ASSERT_X(isVertical(), "ConducerSegment::canMove1stPointX", "segment non vertical");
 	
 	/// On ne bouge jamais le premier point d'un segment statique.
-	if (!hasPreviousSegment()) {
+	if (isStatic()) {
 		possible_dx = 0.0;
 		return(false);
 	}
@@ -102,8 +102,8 @@ bool ConducerSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx
 	
 	Q_ASSERT_X(isVertical(), "ConducerSegment::canMove2ndPointX", "segment non vertical");
 	
-	/// On ne modifie jamais l'ordonnee du second point d'un segment statique.
-	if (!hasNextSegment()) {
+	/// On ne modifie jamais l'abscisse du second point d'un segment statique.
+	if (isStatic()) {
 		possible_dx = 0.0;
 		return(false);
 	}
@@ -162,7 +162,7 @@ bool ConducerSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy
 	Q_ASSERT_X(isHorizontal(), "ConducerSegment::canMove1stPointY", "segment non horizontal");
 	
 	/// On ne bouge jamais le premier point d'un segment statique.
-	if (!hasPreviousSegment()) {
+	if (isStatic()) {
 		possible_dy = 0.0;
 		return(false);
 	}
@@ -221,7 +221,7 @@ bool ConducerSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy
 	Q_ASSERT_X(isHorizontal(), "ConducerSegment::canMove2ndPointY", "segment non horizontal");
 	
 	/// On ne modifie jamais l'abscisse du second point d'un segment statique.
-	if (!hasNextSegment()) {
+	if (isStatic()) {
 		possible_dy = 0.0;
 		return(false);
 	}
@@ -278,7 +278,7 @@ void ConducerSegment::moveX(const qreal &dx) {
 	bool has_prev_segment = hasPreviousSegment();
 	bool has_next_segment = hasNextSegment();
 	
-	if (!has_prev_segment || !has_next_segment) return;
+	if (isStatic()) return;
 	
 	// determine si le mouvement demande doit etre limite et, le cas echeant, a quelle valeur il faut le limiter
 	qreal real_dx_for_1st_point = 0.0;
@@ -291,7 +291,7 @@ void ConducerSegment::moveX(const qreal &dx) {
 	// applique le mouvement au premier point
 	if (has_prev_segment) {
 		point1.rx() += final_movement;
-		if (!previous_segment -> hasPreviousSegment() && previous_segment -> isVertical()) {
+		if (previous_segment -> isFirstSegment()) {
 			new ConducerSegment(
 				previous_segment -> point2,
 				point1,
@@ -304,7 +304,7 @@ void ConducerSegment::moveX(const qreal &dx) {
 	// applique le mouvement au second point
 	if (has_next_segment) {
 		point2.rx() += final_movement;
-		if (!next_segment -> hasNextSegment() && next_segment -> isVertical()) {
+		if (next_segment -> isLastSegment()) {
 			new ConducerSegment(
 				point2,
 				next_segment -> point1,
@@ -326,7 +326,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 	bool has_prev_segment = hasPreviousSegment();
 	bool has_next_segment = hasNextSegment();
 	
-	if (!has_prev_segment || !has_next_segment) return;
+	if (isStatic()) return;
 	
 	// determine si le mouvement demande doit etre limite et, le cas echeant, a quelle valeur il faut le limiter
 	qreal real_dy_for_1st_point = 0.0;
@@ -339,7 +339,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 	// applique le mouvement au premier point
 	if (has_prev_segment) {
 		point1.ry() += final_movement;
-		if (!previous_segment -> hasPreviousSegment() && previous_segment -> isHorizontal()) {
+		if (previous_segment -> isFirstSegment()) {
 			new ConducerSegment(
 				previous_segment -> point2,
 				point1,
@@ -352,7 +352,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 	// applique le mouvement au second point
 	if (has_next_segment) {
 		point2.ry() += final_movement;
-		if (!next_segment -> hasNextSegment() && next_segment -> isHorizontal()) {
+		if (next_segment -> isLastSegment()) {
 			new ConducerSegment(
 				point2,
 				next_segment -> point1,
@@ -362,75 +362,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 		} else next_segment -> setFirstPoint(point2);
 	}
 }
-/*
-void ConducerSegment::moveY(qreal dy) {
-	if (isVertical()) return;
-	Q_ASSERT_X(isHorizontal(), "ConducerSegment::moveY", "segment non horizontal");
-	
-	bool has_prev_segment = hasPreviousSegment();
-	bool has_next_segment = hasNextSegment();
-	
-	if (!has_prev_segment || !has_next_segment) return;
-	
-	// s'il y a un segment precedent
-	if (has_prev_segment) {
-		// et que celui-ci est statique,
-		if (!previous_segment -> hasPreviousSegment()) {
-			// on agit differemment selon que le segment statique est vertical...
-			if (previous_segment -> isVertical()) {
-				// auquel cas, on limite le deplacement
-				qreal real_dy;
-				/// @todo limiter le deplacement
-				real_dy = 0.0;
-				point1.ry() += real_dy;
-				previous_segment -> setSecondPoint(point1);
-			} else {
-				// ou horizontal : auquel cas, on ajoute un segment vertical
-				point1.ry() += dy;
-				new ConducerSegment(
-					previous_segment -> point2,
-					point1,
-					previous_segment,
-					this
-				);
-			}
-		} else {
-			// si le segment n'est pas statique, on applique le deplacement
-			point1.ry() += dy;
-			previous_segment -> setSecondPoint(point1);
-		}
-	}
-	
-	// s'il y a un segment suivant
-	if (has_next_segment) {
-		// et que celui-ci est statique,
-		if (!next_segment -> hasNextSegment()) {
-			// on agit differemment selon que le segment statique est vertical...
-			if (next_segment -> isVertical()) {
-				// auquel cas, on limite le deplacement
-				qreal real_dy;
-				/// @todo limiter le deplacement
-				real_dy = 0.0;
-				point2.ry() += real_dy;
-				next_segment -> setFirstPoint(point2);
-			} else {
-				// ou horizontal : auquel cas, on ajoute un segment horizontal
-				point2.ry() += dy;
-				new ConducerSegment(
-					point2,
-					next_segment -> point1,
-					this,
-					next_segment
-				);
-			}
-		} else {
-			// si le segment n'est pas statique, on applique le deplacement
-			point2.ry() += dy;
-			next_segment -> setFirstPoint(point2);
-		}
-	}
-}
-*/
+
 /**
 	Change le segment precedent
 	@param ps Le nouveau segment precedent
@@ -451,6 +383,21 @@ void ConducerSegment::setNextSegment(ConducerSegment *ns) {
 	if (hasNextSegment()) {
 		if (nextSegment() -> previousSegment() != this) nextSegment() -> setPreviousSegment(this);
 	}
+}
+
+/// @return true si ce segment est un segment statique, cad un segment relie a une borne
+bool ConducerSegment::isStatic() const {
+	return(isFirstSegment() || isLastSegment());
+}
+
+/// @return true si ce segment est le premier du conducteur
+bool ConducerSegment::isFirstSegment() const {
+	return(!hasPreviousSegment());
+}
+
+/// @return true si ce segment est le dernier du conducteur
+bool ConducerSegment::isLastSegment() const {
+	return(!hasNextSegment());
 }
 
 /**
