@@ -222,6 +222,7 @@ void DiagramView::setSelectionMode() {
 */
 void DiagramView::zoomPlus() {
 	scale(4.0/3.0, 4.0/3.0);
+	adjustGridToZoom();
 }
 
 /**
@@ -229,6 +230,7 @@ void DiagramView::zoomPlus() {
 */
 void DiagramView::zoomMoins() {
 	scale(0.75, 0.75);
+	adjustGridToZoom();
 }
 
 /**
@@ -243,6 +245,7 @@ void DiagramView::zoomFit() {
 	}
 	adjustSceneRect();
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
+	adjustGridToZoom();
 }
 
 /**
@@ -250,6 +253,7 @@ void DiagramView::zoomFit() {
 */
 void DiagramView::zoomReset() {
 	resetMatrix();
+	adjustGridToZoom();
 }
 
 /**
@@ -596,4 +600,24 @@ void DiagramView::adjustSceneRect() {
 	
 	// ajuste la sceneRect
 	setSceneRect(elements_bounding_rect.united(border_bounding_rect));
+}
+
+void DiagramView::adjustGridToZoom() {
+	QRectF viewed_scene = viewedSceneRect();
+	scene -> setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
+}
+
+QRectF DiagramView::viewedSceneRect() const {
+	// recupere la taille du widget viewport
+	QSize viewport_size = viewport() -> size();
+	
+	// recupere la transformation viewport -> scene
+	QTransform view_to_scene   = viewportTransform().inverted();
+	
+	// mappe le coin superieur gauche et le coin inferieur droit de la viewport sur la scene
+	QPointF scene_left_top     = view_to_scene.map(QPointF(0.0, 0.0));
+	QPointF scene_right_bottom = view_to_scene.map(QPointF(viewport_size.width(), viewport_size.height()));
+	
+	// en deduit le rectangle visualise par la scene
+	return(QRectF(scene_left_top, scene_right_bottom));
 }

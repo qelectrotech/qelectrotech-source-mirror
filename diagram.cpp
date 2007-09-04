@@ -47,7 +47,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
 	
-	if (draw_grid && r.width() < 2500 && r.height() < 2500) {
+	if (draw_grid) {
 		// dessine les points de la grille
 		p -> setPen(Qt::black);
 		p -> setBrush(Qt::NoBrush);

@@ -50,6 +50,7 @@ class DiagramView : public QGraphicsView {
 	void dragLeaveEvent(QDragLeaveEvent *);
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
+	QRectF viewedSceneRect() const;
 	
 	signals:
 	void selectionChanged();
@@ -75,5 +76,6 @@ class DiagramView : public QGraphicsView {
 	private slots:
 	void flushGarbage();
 	void slot_selectionChanged();
+	void adjustGridToZoom();
 };
 #endif

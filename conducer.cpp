@@ -168,7 +168,13 @@ void Conducer::priv_modifieConducer(const QPointF &p1, QET::Orientation, const Q
 	// en deduit les coefficients de "redimensionnement"
 	qreal coeff_x = new_dist_2_terminals_x / orig_dist_2_terms_x;
 	qreal coeff_y = new_dist_2_terminals_y / orig_dist_2_terms_y;
-	
+	/*
+	if (!orig_dist_2_terms_x || !orig_dist_2_terms_y) {
+		qDebug() << "ca va planter";
+		PR(coeff_x)
+		PR(coeff_y)
+	}
+	*/
 	// genere les nouveaux points
 	int limite = moves_x.size() - 1;
 	int coeff = type_trajet_x ? 1 : -1;
