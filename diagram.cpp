@@ -20,7 +20,7 @@ Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
 	conducer_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	draw_grid  = true;
 	use_border = true;
-	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionEmptinessChange()));
+	connect(this, SIGNAL(selectionChanged()), this, SLOT(slot_checkSelectionEmptinessChange()));
 }
 
 /**
@@ -352,17 +352,6 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 }
 
 /**
-	Verifie si la liste des elements selectionnes a change. Si oui, le signal
-	selectionChanged() est emis.
-*/
-void Diagram::slot_checkSelectionChange() {
-	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
-	QList<QGraphicsItem *> selecteditems = selectedItems();
-	if (cache_selecteditems != selecteditems) emit(selectionChanged());
-	cache_selecteditems = selecteditems;
-}
-
-/**
 	Verifie si la selection est passe d'un etat ou elle est vide a un etat ou
 	elle ne l'est pas, et inversement. Si c'est le cas, le signal
 	EmptinessChanged() est emis.
@@ -389,3 +378,4 @@ QRectF Diagram::border() const {
 		)
 	);
 }
+

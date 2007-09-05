@@ -56,11 +56,9 @@ class Diagram : public QGraphicsScene {
 	QSize imageSize() const;
 	
 	private slots:
-	void slot_checkSelectionChange();
 	void slot_checkSelectionEmptinessChange();
 	
 	signals:
-	void selectionChanged();
 	void selectionEmptinessChanged();
 };
 

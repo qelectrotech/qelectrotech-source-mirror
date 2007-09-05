@@ -23,7 +23,6 @@
 */
 CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : FixedElement(qgi, s) {
 	nomfichier = nom_fichier;
-	nb_terminals = 0;
 	// pessimisme inside : par defaut, ca foire
 	elmt_etat = -1;
 	
@@ -108,7 +107,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
 				QDomElement qde = n.toElement();
 				if (qde.isNull()) continue;
-				if (parseElement(qde, qp, s)) ++ nb_elements_parses;
+				if (parseElement(qde, qp)) ++ nb_elements_parses;
 				else {
 					if (etat != NULL) *etat = 7;
 					elmt_etat = 7;
@@ -141,11 +140,21 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 CustomElement::~CustomElement() {
 }
 
+QList<Terminal *> CustomElement::terminals() const {
+	return(list_terminals);
+}
+
+QList<Conducer *> CustomElement::conducers() const {
+	QList<Conducer *> conducers;
+	foreach(Terminal *t, list_terminals) conducers << t -> conducers();
+	return(conducers);
+}
+
 /**
 	@return Le nombre de bornes que l'element possede
 */
 int CustomElement::nbTerminals() const {
-	return(nb_terminals);
+	return(list_terminals.size());
 }
 
 /**
@@ -170,15 +179,15 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	@param s Le schema sur lequel sera affiche l'element perso
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseElement(QDomElement &e, QPainter &qp, Diagram *s) {
-	if (e.tagName() == "terminal") return(parseTerminal(e, s));
+bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {
+	if (e.tagName() == "terminal") return(parseTerminal(e));
 	else if (e.tagName() == "line") return(parseLine(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
 	else if (e.tagName() == "circle") return(parseCircle(e, qp));
 	else if (e.tagName() == "arc") return(parseArc(e, qp));
 	else if (e.tagName() == "polygon") return(parsePolygon(e, qp));
 	else if (e.tagName() == "text") return(parseText(e, qp));
-	else if (e.tagName() == "input") return(parseInput(e, s));
+	else if (e.tagName() == "input") return(parseInput(e));
 	else return(true);	// on n'est pas chiant, on ignore l'element inconnu
 }
 
@@ -372,7 +381,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	@param s Le schema sur lequel l'element perso sera affiche
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
+bool CustomElement::parseInput(QDomElement &e) {
 	qreal pos_x, pos_y;
 	int size;
 	if (
@@ -381,7 +390,7 @@ bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
 		!QET::attributeIsAnInteger(e, "size", &size)
 	) return(false);
 	
-	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this, s);
+	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QFont("Sans Serif", size));
 	eti -> setPos(pos_x, pos_y);
 	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
@@ -399,7 +408,7 @@ bool CustomElement::parseInput(QDomElement &e, Diagram *s) {
 	@param s Le schema sur lequel l'element perso sera affiche
 	@return true si l'analyse reussit, false sinon
 */
-bool CustomElement::parseTerminal(QDomElement &e, Diagram *s) {
+bool CustomElement::parseTerminal(QDomElement &e) {
 	// verifie la presence et la validite des attributs obligatoires
 	double terminalx, terminaly;
 	QET::Orientation terminalo;
@@ -411,8 +420,7 @@ bool CustomElement::parseTerminal(QDomElement &e, Diagram *s) {
 	else if (e.attribute("orientation") == "e") terminalo = QET::East;
 	else if (e.attribute("orientation") == "w") terminalo = QET::West;
 	else return(false);
-	new Terminal(terminalx, terminaly, terminalo, this, s);
-	++ nb_terminals;
+	list_terminals << new Terminal(terminalx, terminaly, terminalo, this);
 	return(true);
 }
 

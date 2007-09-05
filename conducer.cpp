@@ -91,7 +91,7 @@ void Conducer::update(const QRectF &rect) {
 	a pour position pos
 	@param rect Rectangle a mettre a jour
 	@param b Borne
-	@param pos position de la borne b
+	@param newpos position de la borne b
 */
 void Conducer::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPointF &newpos) {
 	QPointF p1, p2;

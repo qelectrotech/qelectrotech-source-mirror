@@ -110,7 +110,7 @@ QPixmap Element::pixmap() {
 	@return la valeur du changement d'etat
 */
 QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionChange) {
+	if (change == QGraphicsItem::ItemPositionHasChanged) {
 		foreach(QGraphicsItem *qgi, children()) {
 			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer(value.toPointF());
 		}

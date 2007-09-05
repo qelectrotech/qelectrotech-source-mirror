@@ -29,10 +29,12 @@ class CustomElement : public FixedElement {
 	NamesList names;
 	QString nomfichier;
 	QPicture dessin;
-	int nb_terminals;
+	QList<Terminal *> list_terminals;
 	
 	// methodes
 	public:
+	virtual QList<Terminal *> terminals() const;
+	virtual QList<Conducer *> conducers() const;
 	virtual int nbTerminals() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;
@@ -42,15 +44,15 @@ class CustomElement : public FixedElement {
 	QString nom() const;
 	
 	private:
-	bool parseElement(QDomElement &, QPainter &, Diagram *);
+	bool parseElement(QDomElement &, QPainter &);
 	bool parseLine(QDomElement &, QPainter &);
 	bool parseEllipse(QDomElement &, QPainter &);
 	bool parseCircle(QDomElement &, QPainter &);
 	bool parseArc(QDomElement &, QPainter &);
 	bool parsePolygon(QDomElement &, QPainter &);
 	bool parseText(QDomElement &, QPainter &);
-	bool parseInput(QDomElement &, Diagram *);
-	bool parseTerminal(QDomElement &, Diagram *);
+	bool parseInput(QDomElement &);
+	bool parseTerminal(QDomElement &);
 	void setQPainterAntiAliasing(QPainter &, bool);
 	bool validOrientationAttribute(QDomElement &);
 	void setPainterStyle(QDomElement &, QPainter &);
