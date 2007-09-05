@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr">
+<defaultcodec></defaultcodec>
 <context>
     <name>PPDOptionsModel</name>
     <message>
@@ -871,7 +872,7 @@ en
     <message>
         <location filename="../src/plugins/accessible/widgets/complexwidgets.cpp" line="1394"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
 </context>
 <context>
@@ -1109,7 +1110,7 @@ en
     <message>
         <location filename="../src/gui/itemviews/qdirmodel.cpp" line="431"/>
         <source>Date Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifié</translation>
     </message>
 </context>
 <context>
@@ -1117,17 +1118,17 @@ en
     <message>
         <location filename="../src/plugins/accessible/widgets/qaccessiblewidgets.cpp" line="1198"/>
         <source>Close</source>
-        <translation type="unfinished">Fermer</translation>
+        <translation>Fermer</translation>
     </message>
     <message>
         <location filename="../src/plugins/accessible/widgets/qaccessiblewidgets.cpp" line="1201"/>
         <source>Dock</source>
-        <translation type="unfinished"></translation>
+        <translation>Intégrer</translation>
     </message>
     <message>
         <location filename="../src/plugins/accessible/widgets/qaccessiblewidgets.cpp" line="1201"/>
         <source>Float</source>
-        <translation type="unfinished"></translation>
+        <translation>Détacher</translation>
     </message>
 </context>
 <context>
@@ -1135,12 +1136,12 @@ en
     <message>
         <location filename="../src/plugins/accessible/widgets/rangecontrols.cpp" line="387"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus</translation>
     </message>
     <message>
         <location filename="../src/plugins/accessible/widgets/rangecontrols.cpp" line="389"/>
         <source>Less</source>
-        <translation type="unfinished"></translation>
+        <translation>Moins</translation>
     </message>
 </context>
 <context>
@@ -1261,21 +1262,23 @@ Veuillez vérifier que le nom du fichier est correct.</translation>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="749"/>
         <source>Directory:</source>
-        <translation type="unfinished">Dossier :</translation>
+        <translation>Dossier :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="1518"/>
         <source>
 File not found.
 Please verify the correct file name was given</source>
-        <translation type="unfinished"></translation>
+        <translation>
+Fichier non trouvé.
+Veuillez vérifiez que le nom de fichier est correct</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="2269"/>
         <source>%1
 Directory not found.
 Please verify the correct directory name was given.</source>
-        <translation type="unfinished">%1
+        <translation>%1
 Dossier introuvable.
 Veuillez vérifier que le nom du dossier est correct.</translation>
     </message>
@@ -1283,92 +1286,93 @@ Veuillez vérifier que le nom du dossier est correct.</translation>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="2104"/>
         <source>&apos;%1&apos; is write protected.
 Do you want to delete it anyway?</source>
-        <translation type="unfinished"></translation>
+        <translation>&apos;%1&apos; est protégé.
+Voulez-vous le supprimer quand même ?</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="2109"/>
         <source>Are sure you want to delete &apos;%1&apos;?</source>
-        <translation type="unfinished"></translation>
+        <translation>Êtes-vous sûr de vouloir supprimer &apos;%1&apos; ?</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="2120"/>
         <source>Could not delete directory.</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de supprimer le dossier.</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog_win.cpp" line="105"/>
         <source>All Files (*.*)</source>
-        <translation type="unfinished">Tous les fichiers (*.*)</translation>
+        <translation>Tous les fichiers (*.*)</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="418"/>
         <source>Save As</source>
-        <translation type="unfinished">Enregistrer sous</translation>
+        <translation>Enregistrer sous</translation>
     </message>
     <message>
         <location filename="../src/gui/itemviews/qfileiconprovider.cpp" line="332"/>
         <source>Drive</source>
-        <translation type="unfinished">Unité</translation>
+        <translation>Unité</translation>
     </message>
     <message>
         <location filename="../src/gui/itemviews/qfileiconprovider.cpp" line="336"/>
         <source>File</source>
-        <translation type="unfinished">Fichier</translation>
+        <translation>Fichier</translation>
     </message>
     <message>
         <location filename="../src/gui/itemviews/qfileiconprovider.cpp" line="365"/>
         <source>Unknown</source>
-        <translation type="unfinished">Inconnu</translation>
+        <translation>Inconnu</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="420"/>
         <source>Find Directory</source>
-        <translation type="unfinished">Chercher dans le dossier</translation>
+        <translation>Chercher dans le dossier</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="438"/>
         <source>Show </source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher </translation>
     </message>
     <message>
         <location filename="../src/gui/ui_qfiledialog.h" line="258"/>
         <source>Forward</source>
-        <translation type="unfinished">Successeur (historique)</translation>
+        <translation>Successeur (historique)</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="1997"/>
         <source>New Folder</source>
-        <translation type="unfinished">Nouveau dossier</translation>
+        <translation>Nouveau dossier</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="445"/>
         <source>&amp;New Folder</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Nouveau dossier</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="782"/>
         <source>&amp;Choose</source>
-        <translation type="unfinished"></translation>
+        <translation>Séle&amp;ctionner</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qsidebar.cpp" line="376"/>
         <source>Remove</source>
-        <translation type="unfinished"></translation>
+        <translation>Enlever</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="752"/>
         <source>File &amp;name:</source>
-        <translation type="unfinished">&amp;Nom de fichier :</translation>
+        <translation>&amp;Nom de fichier :</translation>
     </message>
     <message>
         <location filename="../src/gui/ui_qfiledialog.h" line="256"/>
         <source>Look in:</source>
-        <translation type="unfinished"></translation>
+        <translation>Chercher dans :</translation>
     </message>
     <message>
         <location filename="../src/gui/ui_qfiledialog.h" line="260"/>
         <source>Create New Folder</source>
-        <translation type="unfinished">Créer un nouveau dossier</translation>
+        <translation>Créer un nouveau dossier</translation>
     </message>
 </context>
 <context>
@@ -1376,47 +1380,47 @@ Do you want to delete it anyway?</source>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="479"/>
         <source>%1 TB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 To</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="481"/>
         <source>%1 GB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Go</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="483"/>
         <source>%1 MB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Mo</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="485"/>
         <source>%1 KB</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 Ko</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="486"/>
         <source>%1 bytes</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 o</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="560"/>
         <source>Invalid filename</source>
-        <translation type="unfinished"></translation>
+        <translation>Nom de fichier non valide</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="562"/>
         <source>&lt;b&gt;The name &quot;%1&quot; can not be used.&lt;/b&gt;&lt;p&gt;Try using another name, with fewer characters or no punctuations marks.</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Le nom &quot;%1&quot; ne peut pas être utilisé.&lt;/b&gt;&lt;p&gt;Essayez un autre nom, avec moins de caractères ou sans signes de ponctuation.</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="607"/>
         <source>Name</source>
-        <translation type="unfinished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="609"/>
         <source>Size</source>
-        <translation type="unfinished">Taille</translation>
+        <translation>Taille</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="613"/>
@@ -1428,22 +1432,22 @@ Do you want to delete it anyway?</source>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="615"/>
         <source>Type</source>
         <comment>All other platforms</comment>
-        <translation type="unfinished">Type</translation>
+        <translation>Type</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel.cpp" line="622"/>
         <source>Date Modified</source>
-        <translation type="unfinished"></translation>
+        <translation>Modifié</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel_p.h" line="261"/>
         <source>My Computer</source>
-        <translation type="unfinished">Mon ordinateur</translation>
+        <translation>Mon ordinateur</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfilesystemmodel_p.h" line="263"/>
         <source>Computer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordinateur</translation>
     </message>
 </context>
 <context>
@@ -1726,12 +1730,12 @@ Do you want to delete it anyway?</source>
     <message>
         <location filename="../src/network/qhttp.cpp" line="2652"/>
         <source>Proxy authentication required</source>
-        <translation type="unfinished"></translation>
+        <translation>Il est nécessaire de s&apos;identifier auprès du proxy</translation>
     </message>
     <message>
         <location filename="../src/network/qhttp.cpp" line="2656"/>
         <source>Authentication required</source>
-        <translation type="unfinished"></translation>
+        <translation>Il est nécessaire de s&apos;identifier</translation>
     </message>
 </context>
 <context>
@@ -2245,22 +2249,22 @@ Do you want to delete it anyway?</source>
     <message>
         <location filename="../src/gui/dialogs/qmessagebox.cpp" line="1635"/>
         <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.&lt;/p&gt;&lt;p&gt;Qt is a Trolltech product. See &lt;a href=&quot;http://www.trolltech.com/qt/&quot;&gt;www.trolltech.com/qt/&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;h3&gt;À propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est une boîte à outils C++ pour le développement multi-plateforme d&apos;applications graphiques.&lt;/p&gt;&lt;p&gt;Qt permet de porter un même source code sur MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux ainsi que les principales versions Unix commerciales. Qt est aussi disponible pour les systèmes embarqués sous le nom de Qtopia Core.&lt;/p&gt;&lt;p&gt;Qt est un produit de Trolltech. Consultez &lt;tt&gt;http://www.trolltech.com/qt/&lt;/tt&gt; pour de plus amples renseignements.&lt;/p&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qmessagebox.cpp" line="83"/>
         <source>Show Details...</source>
-        <translation type="unfinished"></translation>
+        <translation>Afficher les détails...</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qmessagebox.cpp" line="83"/>
         <source>Hide Details...</source>
-        <translation type="unfinished"></translation>
+        <translation>Cacher les détails...</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qmessagebox.cpp" line="1644"/>
         <source>&lt;p&gt;This program uses Qt Open Source Edition version %1.&lt;/p&gt;&lt;p&gt;Qt Open Source Edition is intended for the development of Open Source applications. You need a commercial Qt license for development of proprietary (closed source) applications.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://www.trolltech.com/company/model/&quot;&gt;www.trolltech.com/company/model/&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;p&gt;Ce programme utilise l&apos;édition Open Source de Qt version %1.&lt;/p&gt;&lt;p&gt;L&apos;édition Open Source de Qt est destinée au développement de programmes Open Source. Si vous désirez écrire des applications commerciales (code source fermé), vous devez posséder une licence Qt commerciale.&lt;/p&gt;&lt;p&gt;Veuillez consulter &lt;a href=&quot;http://www.trolltech.com/company/model/&quot;&gt;http://www.trolltech.com/company/model/&lt;/a&gt; pour un aperçu des licences applicables à Qt.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -2607,32 +2611,32 @@ Do you want to delete it anyway?</source>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="460"/>
         <source>Print in color if available</source>
-        <translation type="unfinished">Imprimer en couleur si possible</translation>
+        <translation>Imprimer en couleur si possible</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="345"/>
         <source>Print all</source>
-        <translation type="unfinished">Imprimer tout</translation>
+        <translation>Imprimer tout</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="347"/>
         <source>Print range</source>
-        <translation type="unfinished">Imprimer la sélection</translation>
+        <translation>Imprimer la sélection</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="430"/>
         <source>Print last page first</source>
-        <translation type="unfinished">Imprimer d&apos;abord la dernière page</translation>
+        <translation>Imprimer d&apos;abord la dernière page</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="388"/>
         <source>Number of copies:</source>
-        <translation type="unfinished">Nombre de copies :</translation>
+        <translation>Nombre de copies :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="37"/>
         <source>Paper format</source>
-        <translation type="unfinished">Format du papier</translation>
+        <translation>Format du papier</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="947"/>
@@ -2802,7 +2806,7 @@ Do you want to delete it anyway?</source>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="346"/>
         <source>Print selection</source>
-        <translation type="unfinished">Imprimer la sélection</translation>
+        <translation>Imprimer la sélection</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qpagesetupdialog_unix.cpp" line="130"/>
@@ -2822,115 +2826,118 @@ Do you want to delete it anyway?</source>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="951"/>
         <source>Print</source>
-        <translation type="unfinished">Impr écran</translation>
+        <translation>Imprimer</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="1025"/>
         <source>File</source>
-        <translation type="unfinished">Fichier</translation>
+        <translation>Fichier</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="1050"/>
         <source>Printer</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimante</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="1136"/>
         <source>Print To File ...</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimer vers un fichier...</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="25"/>
         <source>Print dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimer</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="49"/>
         <source>Size:</source>
-        <translation type="unfinished"></translation>
+        <translation>Format :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="162"/>
         <source>Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriétés</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="179"/>
         <source>Printer info:</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimante :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="239"/>
         <source>Browse</source>
-        <translation type="unfinished"></translation>
+        <translation>Parcourir</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="259"/>
         <source>Print to file</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimer vers un fichier</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="307"/>
         <source>Pages from</source>
-        <translation type="unfinished"></translation>
+        <translation>Plage de</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="321"/>
         <source>to</source>
-        <translation type="unfinished"></translation>
+        <translation>à</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="350"/>
         <source>Selection</source>
-        <translation type="unfinished"></translation>
+        <translation>Sélection</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="368"/>
         <source>Copies</source>
-        <translation type="unfinished"></translation>
+        <translation>Copies</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="423"/>
         <source>Collate</source>
-        <translation type="unfinished"></translation>
+        <translation>Assembler</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="448"/>
         <source>Other</source>
-        <translation type="unfinished"></translation>
+        <translation>Autre</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog.ui" line="470"/>
         <source>Double side printing</source>
-        <translation type="unfinished"></translation>
+        <translation>Impression recto/verso</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="1178"/>
         <source>File %1 is not writable.
 Please choose a different file name.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier %1 n&apos;est pas accessible en écriture.
+Veuillez choisir un nom de fichier différent.</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="1182"/>
         <source>%1 already exists.
 Do you want to overwrite it?</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 existe déjà.
+Voulez-vous l&apos;écraser ?</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="118"/>
         <source>File exists</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier existe</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="119"/>
         <source>&lt;qt&gt;Do you want to overwrite it?&lt;/qt&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;qt&gt;Voulez-vous l&apos;écraser ?&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="1174"/>
         <source>%1 is a directory.
 Please choose a different file name.</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 est un dossier.
+Veuillez choisir un nom de fichier différent.</translation>
     </message>
 </context>
 <context>
@@ -2938,17 +2945,17 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/gui/dialogs/qprintpropertiesdialog.ui" line="27"/>
         <source>PPD Properties</source>
-        <translation type="unfinished"></translation>
+        <translation>Propriétés PPD</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintpropertiesdialog.ui" line="54"/>
         <source>Save</source>
-        <translation type="unfinished">Enregistrer</translation>
+        <translation>Enregistrer</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintpropertiesdialog.ui" line="74"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
@@ -2964,7 +2971,7 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/plugins/accessible/widgets/simplewidgets.cpp" line="80"/>
         <source>Open</source>
-        <translation type="unfinished">Ouvrir</translation>
+        <translation>Ouvrir</translation>
     </message>
 </context>
 <context>
@@ -2972,7 +2979,7 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/plugins/accessible/widgets/simplewidgets.cpp" line="92"/>
         <source>Check</source>
-        <translation type="unfinished">Cocher</translation>
+        <translation>Cocher</translation>
     </message>
 </context>
 <context>
@@ -3703,12 +3710,12 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/plugins/accessible/widgets/rangecontrols.cpp" line="120"/>
         <source>More</source>
-        <translation type="unfinished"></translation>
+        <translation>Plus</translation>
     </message>
     <message>
         <location filename="../src/plugins/accessible/widgets/rangecontrols.cpp" line="122"/>
         <source>Less</source>
-        <translation type="unfinished"></translation>
+        <translation>Moins</translation>
     </message>
 </context>
 <context>
@@ -3925,12 +3932,12 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/gui/util/qundogroup.cpp" line="341"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../src/gui/util/qundogroup.cpp" line="369"/>
         <source>Redo</source>
-        <translation type="unfinished"></translation>
+        <translation>Refaire</translation>
     </message>
 </context>
 <context>
@@ -3938,7 +3945,7 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/gui/util/qundoview.cpp" line="71"/>
         <source>&lt;empty&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Pas d&apos;annulations</translation>
     </message>
 </context>
 <context>
@@ -3946,12 +3953,12 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/gui/util/qundostack.cpp" line="816"/>
         <source>Undo</source>
-        <translation type="unfinished"></translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../src/gui/util/qundostack.cpp" line="843"/>
         <source>Redo</source>
-        <translation type="unfinished"></translation>
+        <translation>Refaire</translation>
     </message>
 </context>
 <context>
@@ -4033,52 +4040,52 @@ Please choose a different file name.</source>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="554"/>
         <source>Go Back</source>
-        <translation type="unfinished"></translation>
+        <translation>Précédent</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="555"/>
         <source>Continue</source>
-        <translation type="unfinished"></translation>
+        <translation>Suivant</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="565"/>
         <source>Commit</source>
-        <translation type="unfinished"></translation>
+        <translation>Appliquer</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="557"/>
         <source>Done</source>
-        <translation type="unfinished"></translation>
+        <translation>Effectué</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="558"/>
         <source>Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitter</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="559"/>
         <source>Help</source>
-        <translation type="unfinished">Aide</translation>
+        <translation>Aide</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="561"/>
         <source>&lt; &amp;Back</source>
-        <translation type="unfinished">&lt; &amp;Précédent</translation>
+        <translation>&lt; &amp;Précédent</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="566"/>
         <source>&amp;Finish</source>
-        <translation type="unfinished">&amp;Terminer</translation>
+        <translation>&amp;Terminer</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="567"/>
         <source>Cancel</source>
-        <translation type="unfinished">Annuler</translation>
+        <translation>Annuler</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qwizard.cpp" line="568"/>
         <source>&amp;Help</source>
-        <translation type="unfinished">&amp;Aide</translation>
+        <translation>&amp;Aide</translation>
     </message>
 </context>
 <context>
