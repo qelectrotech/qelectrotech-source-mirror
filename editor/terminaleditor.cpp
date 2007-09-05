@@ -19,7 +19,7 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	orientation -> addItem(QIcon(":/ico/west.png"),  tr("Ouest"), QET::West);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
-	main_layout -> addWidget(new QLabel(tr("Postion : ")));
+	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
 	QHBoxLayout *position = new QHBoxLayout();
 	position -> addWidget(new QLabel(tr("x : ")));

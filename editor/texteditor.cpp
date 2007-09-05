@@ -16,7 +16,7 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	font_size -> setRange(0, 144);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
-	main_layout -> addWidget(new QLabel(tr("Postion : ")));
+	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
 	QHBoxLayout *position = new QHBoxLayout();
 	position -> addWidget(new QLabel(tr("x : ")));

@@ -18,7 +18,7 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	rotate -> setChecked(true);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
-	main_layout -> addWidget(new QLabel(tr("Postion : ")));
+	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
 	QHBoxLayout *position = new QHBoxLayout();
 	position -> addWidget(new QLabel(tr("x : ")));

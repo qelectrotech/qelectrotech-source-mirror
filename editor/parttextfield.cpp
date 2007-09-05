@@ -8,7 +8,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	follow_parent_rotations(true)
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	setPlainText(tr("_"));
+	setPlainText(QObject::tr("_"));
 	infos = new TextFieldEditor(elementEditor(), this);
 	infos -> setElementTypeName(QObject::tr("champ de texte"));
 }

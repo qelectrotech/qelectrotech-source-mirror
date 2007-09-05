@@ -6,7 +6,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	CustomElementPart(editor)
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	setPlainText(tr("T"));
+	setPlainText(QObject::tr("T"));
 	infos = new TextEditor(elementEditor(), this);
 	infos -> setElementTypeName(QObject::tr("texte"));
 }
