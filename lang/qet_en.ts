@@ -949,12 +949,12 @@ Please check rights of the directory </translation>
         <translation type="obsolete">Abscissa :</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="32"/>
+        <location filename="../newelementwizard.cpp" line="17"/>
         <source>Cr&#xe9;er un nouvel &#xe9;l&#xe9;ment : Assistant</source>
         <translation>Create a new element : wizard</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="254"/>
+        <location filename="../newelementwizard.cpp" line="171"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
@@ -966,27 +966,27 @@ Please check rights of the directory </translation>
     <message>
         <location filename="../newelementwizard.cpp" line="143"/>
         <source>&#xc9;tape 1/5 : S&#xe9;lectionnez une cat&#xe9;gorie dans laquelle enregistrer le nouvel &#xe9;l&#xe9;ment.</source>
-        <translation>Step 1 of 5 : Please select a category in which to save the new element.</translation>
+        <translation type="obsolete">Step 1 of 5 : Please select a category in which to save the new element.</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="158"/>
         <source>&#xc9;tape 2/5 : Indiquez le nom du fichier dans lequel enregistrer le nouvel &#xe9;l&#xe9;ment.</source>
-        <translation>Step 2 of 5 : Enter the filename for the new element.</translation>
+        <translation type="obsolete">Step 2 of 5 : Enter the filename for the new element.</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="179"/>
         <source>&#xc9;tape 3/5 : Indiquez le ou les noms de l&apos;&#xe9;l&#xe9;ment.</source>
-        <translation>Step 3 of 5 : Enter the new element name(s).</translation>
+        <translation type="obsolete">Step 3 of 5 : Enter the new element name(s).</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="197"/>
         <source>&#xc9;tape 4/5 : Saisissez les dimensions du nouvel &#xe9;l&#xe9;ment ainsi que la position du hotspot (point de saisie de l&apos;&#xe9;l&#xe9;ment &#xe0; la souris) en consid&#xe9;rant que l&apos;&#xe9;l&#xe9;ment est dans son orientation par d&#xe9;faut.</source>
-        <translation>Step 4 of 5 : Enter the new element size and its hotspot position (i.e. the spot used to drag the element). Consider the element aims its default orientation.</translation>
+        <translation type="obsolete">Step 4 of 5 : Enter the new element size and its hotspot position (i.e. the spot used to drag the element). Consider the element aims its default orientation.</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="212"/>
         <source>&#xc9;tape 5/5 : Indiquez les orientations possibles pour le nouvel &#xe9;l&#xe9;ment.</source>
-        <translation>Step 5 of 5 : Specify the the new element allowed orientations.</translation>
+        <translation type="obsolete">Step 5 of 5 : Specify the the new element allowed orientations.</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="234"/>
@@ -1009,7 +1009,7 @@ Please check rights of the directory </translation>
         <translation type="obsolete">Width :</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="185"/>
+        <location filename="../newelementwizard.cpp" line="85"/>
         <source>Nom du nouvel &#xe9;l&#xe9;ment</source>
         <translation>New element name</translation>
     </message>
@@ -1041,7 +1041,7 @@ Please check rights of the directory </translation>
     <message>
         <location filename="../newelementwizard.cpp" line="22"/>
         <source>Pr&#xe9;c&#xe9;dent</source>
-        <translation>Back</translation>
+        <translation type="obsolete">Back</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="204"/>
@@ -1066,32 +1066,87 @@ Please check rights of the directory </translation>
     <message>
         <location filename="../newelementwizard.cpp" line="21"/>
         <source>Suivant</source>
-        <translation>Next</translation>
+        <translation type="obsolete">Next</translation>
     </message>
     <message>
         <location filename="../newelementwizard.cpp" line="23"/>
         <source>Valider</source>
-        <translation>Finish</translation>
+        <translation type="obsolete">Finish</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="256"/>
+        <location filename="../newelementwizard.cpp" line="173"/>
         <source>Vous devez entrer un nom de fichier</source>
         <translation>You must enter a filename</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="237"/>
+        <location filename="../newelementwizard.cpp" line="154"/>
         <source>Vous devez s&#xe9;lectionner une cat&#xe9;gorie.</source>
         <translation>You must select a category.</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="161"/>
+        <location filename="../newelementwizard.cpp" line="62"/>
         <source>Vous n&apos;&#xea;tes pas oblig&#xe9; de pr&#xe9;ciser l&apos;extension *.elmt. Elle sera ajout&#xe9;e automatiquement.</source>
         <translation>You don&apos;t have to specify the *.elmt extension. It will be added automatically.</translation>
     </message>
     <message>
-        <location filename="../newelementwizard.cpp" line="165"/>
+        <location filename="../newelementwizard.cpp" line="60"/>
         <source>nouvel_element</source>
         <translation>new_element</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="18"/>
+        <source>&amp;Suivant &gt;</source>
+        <translation>&amp;Next &gt;</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="39"/>
+        <source>&#xc9;tape 1/5 : Cat&#xe9;gorie parente</source>
+        <translation>Step 1 of 5 : Parent Category</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="40"/>
+        <source>S&#xe9;lectionnez une cat&#xe9;gorie dans laquelle enregistrer le nouvel &#xe9;l&#xe9;ment.</source>
+        <translation>Select a category which to save the new element in.</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="56"/>
+        <source>&#xc9;tape 2/5 : Nom du fichier</source>
+        <translation>Step 2 of 5 : Filename</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="57"/>
+        <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel &#xe9;l&#xe9;ment.</source>
+        <translation type="unfinished">Enter the name of the file for the new element.</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="79"/>
+        <source>&#xc9;tape 3/5 : Noms de l&apos;&#xe9;l&#xe9;ment</source>
+        <translation>Step 3 of 5 : Element names</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="80"/>
+        <source>Indiquez le ou les noms de l&apos;&#xe9;l&#xe9;ment.</source>
+        <translation>Enter one or more names for the element.</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="99"/>
+        <source>&#xc9;tape 4/5 : Dimensions et point de saisie</source>
+        <translation>Step 4 of 5 : Size and hotspot</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="100"/>
+        <source>Saisissez les dimensions du nouvel &#xe9;l&#xe9;ment ainsi que la position du hotspot (point de saisie de l&apos;&#xe9;l&#xe9;ment &#xe0; la souris) en consid&#xe9;rant que l&apos;&#xe9;l&#xe9;ment est dans son orientation par d&#xe9;faut.</source>
+        <translation>Enter the new element size and its hotspot, considering the element is default-oriented.</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="117"/>
+        <source>&#xc9;tape 5/5 : Orientations</source>
+        <translation>Step 5 of 5 : Orientations</translation>
+    </message>
+    <message>
+        <location filename="../newelementwizard.cpp" line="118"/>
+        <source>Indiquez les orientations possibles pour le nouvel &#xe9;l&#xe9;ment.</source>
+        <translation>Enter the allowed and forbidden orientations for the new element.</translation>
     </message>
 </context>
 <context>
