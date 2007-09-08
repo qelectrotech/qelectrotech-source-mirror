@@ -370,8 +370,11 @@ void DiagramView::closeEvent(QCloseEvent *event) {
 		case QMessageBox::Yes:    retour = enregistrer(); break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
 		default:                  retour = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
 	}
-	if (retour) event -> accept();
-	else event -> ignore();
+	if (retour) {
+		event -> accept();
+		delete this;
+	} else event -> ignore();
+	
 }
 
 /**

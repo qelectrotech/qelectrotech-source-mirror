@@ -613,12 +613,7 @@ bool QETApp::ouvrir() {
 bool QETApp::fermer() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return(false);
-	bool fermeture_diagram = sv -> close();
-	if (fermeture_diagram) {
-		delete sv;
-		slot_updateMenuFenetres();
-	}
-	return(fermeture_diagram);
+	return(sv -> close());
 }
 
 /**
@@ -748,6 +743,10 @@ void QETApp::slot_updateActions() {
 	zoom_adapte      -> setEnabled(document_ouvert);
 	zoom_reset       -> setEnabled(document_ouvert);
 	infos_diagram    -> setEnabled(document_ouvert);
+	add_column       -> setEnabled(document_ouvert);
+	remove_column    -> setEnabled(document_ouvert);
+	expand_diagram   -> setEnabled(document_ouvert);
+	shrink_diagram   -> setEnabled(document_ouvert);
 	
 	// actions ayant aussi besoin d'un historique des actions
 	annuler          -> setEnabled(document_ouvert);
@@ -837,6 +836,13 @@ void QETApp::slot_updateMenuFenetres() {
 	
 	// liste des fenetres
 	QList<QWidget *> fenetres = workspace.windowList();
+	
+	f_mosaique    -> setEnabled(!fenetres.isEmpty());
+	f_cascade     -> setEnabled(!fenetres.isEmpty());
+	f_reorganise  -> setEnabled(!fenetres.isEmpty());
+	f_suiv        -> setEnabled(!fenetres.isEmpty());
+	f_prec        -> setEnabled(!fenetres.isEmpty());
+	
 	if (!fenetres.isEmpty()) menu_fenetres -> addSeparator();
 	for (int i = 0 ; i < fenetres.size() ; ++ i) {
 		DiagramView *sv = qobject_cast<DiagramView *>(fenetres.at(i));
