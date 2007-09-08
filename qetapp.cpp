@@ -614,7 +614,10 @@ bool QETApp::fermer() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return(false);
 	bool fermeture_diagram = sv -> close();
-	if (fermeture_diagram) delete sv;
+	if (fermeture_diagram) {
+		delete sv;
+		slot_updateMenuFenetres();
+	}
 	return(fermeture_diagram);
 }
 
@@ -815,7 +818,7 @@ void QETApp::addDiagramView(DiagramView *sv) {
 */
 void QETApp::slot_updateMenuFenetres() {
 	// nettoyage du menu
-	menu_fenetres -> clear();
+	foreach(QAction *a, menu_fenetres -> actions()) menu_fenetres -> removeAction(a);
 	
 	// actions de fermeture
 	menu_fenetres -> addAction(fermer_fichier);

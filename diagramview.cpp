@@ -9,6 +9,8 @@
 */
 void DiagramView::initialise() {
 	setInteractive(true);
+	setCacheMode(QGraphicsView::CacheBackground);
+	setOptimizationFlags(QGraphicsView::DontClipPainter|QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
 	
 	// active l'antialiasing
 	setRenderHint(QPainter::Antialiasing, true);
@@ -205,6 +207,7 @@ void DiagramView::dropEvent(QDropEvent *e) {
 */
 void DiagramView::setVisualisationMode() {
 	setDragMode(ScrollHandDrag);
+	setInteractive(false);
 	emit(modeChanged());
 }
 
@@ -213,7 +216,7 @@ void DiagramView::setVisualisationMode() {
 */
 void DiagramView::setSelectionMode() {
 	setDragMode(RubberBandDrag);
-	viewport() -> setCursor(Qt::ArrowCursor);
+	setInteractive(true);
 	emit(modeChanged());
 }
 
