@@ -449,17 +449,14 @@ void ElementScene::slot_editSizeHotSpot() {
 	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_sh, SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog_sh.exec() == QDialog::Accepted) {
-		undo_stack.push(
-			new ChangeHotspotCommand(
-				this,
-				QSize(width(), height()),
-				hotspot_editor -> elementSize(),
-				_hotspot,
-				hotspot_editor -> hotspot(),
-				hotspot_editor -> mustTranslateParts() ? hotspot_editor -> offsetParts() : QPoint()
-			)
-		);
+	if (dialog_sh.exec() != QDialog::Accepted) return;
+	QSize new_size(hotspot_editor -> elementSize());
+	QSize old_size(width(), height());
+	QPoint new_hotspot(hotspot_editor -> hotspot());
+	QPoint old_hotspot(_hotspot);
+	
+	if (new_size != old_size || new_hotspot != old_hotspot) {
+		undo_stack.push(new ChangeHotspotCommand(this, old_size, new_size, old_hotspot, new_hotspot, hotspot_editor -> offsetParts()));
 	}
 }
 
@@ -521,6 +518,9 @@ void ElementScene::slot_editNames() {
 	connect(dialog_buttons, SIGNAL(rejected()),     &dialog,      SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog.exec() == QDialog::Accepted) _names = names_widget -> names();
+	if (dialog.exec() == QDialog::Accepted) {
+		NamesList new_names(names_widget -> names());
+		if (new_names != _names) undoStack().push(new ChangeNamesCommand(this, _names, new_names));
+	}
 }
 

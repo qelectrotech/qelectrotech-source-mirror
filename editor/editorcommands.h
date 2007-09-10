@@ -168,4 +168,29 @@ class ChangeHotspotCommand : public QUndoCommand {
 	/// decalage a appliquer aux elements
 	QPoint offset;
 };
+
+/**
+	Cette classe represente l'action de changer les noms d'un element
+*/
+class ChangeNamesCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeNamesCommand(ElementScene *, const NamesList &, const NamesList &, QUndoCommand * = 0);
+	virtual ~ChangeNamesCommand();
+	private:
+	ChangeNamesCommand(const ChangeNamesCommand &);
+	
+	// methodes
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Liste des noms avant changement
+	NamesList names_before;
+	/// Liste des noms apres changement
+	NamesList names_after;
+	/// scene sur laquelle se produisent les actions
+	ElementScene *element;
+};
 #endif

@@ -128,6 +128,22 @@ QDomElement NamesList::toXml(QDomDocument &xml_document) const {
 }
 
 /**
+	@param nl une autre liste de noms
+	@return true si les listes de noms sont differentes, false sinon
+*/
+bool NamesList::operator!=(const NamesList &nl) const {
+	return(hash_names != nl.hash_names);
+}
+
+/**
+	@param nl une autre liste de noms
+	@return true si les listes de noms sont identiques, false sinon
+*/
+bool NamesList::operator==(const NamesList &nl) const {
+	return(hash_names == nl.hash_names);
+}
+
+/**
 	Retourne le nom approprie en fonction de la langue du systeme
 	Par ordre de preference, on prendra :
 		- le nom dans la langue du systeme

@@ -263,3 +263,37 @@ void ChangeHotspotCommand::applyOffset(const QPointF &o) {
 		qgi -> translate(o.x(), o.y());
 	}
 }
+
+/**
+	Constructeur
+	@param element_scene Element edite
+	@param before Listes des noms avant changement
+	@param after Listes des noms apres changement
+	@param parent QUndoCommand parent
+*/
+ChangeNamesCommand::ChangeNamesCommand(
+	ElementScene *element_scene,
+	const NamesList &before,
+	const NamesList &after,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modification noms"), parent),
+	names_before(before),
+	names_after(after),
+	element(element_scene)
+{
+}
+
+/// Destructeur
+ChangeNamesCommand::~ChangeNamesCommand() {
+}
+
+/// Annule le changement
+void ChangeNamesCommand::undo() {
+	element -> setNames(names_before);
+}
+
+/// Refait le changement
+void ChangeNamesCommand::redo() {
+	element -> setNames(names_after);
+}
