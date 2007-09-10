@@ -96,12 +96,12 @@ uint HotspotEditor::elementHeight10px() const {
 	return(sb_height -> value());
 }
 
-/// @return la Largeur de l'element en dizaines de pixels
+/// @return la Largeur de l'element en pixels
 uint HotspotEditor::elementWidth() const {
 	return(sb_width -> value() * 10);
 }
 
-/// @return la hauteur de l'element en dizaines de pixels
+/// @return la hauteur de l'element en pixels
 uint HotspotEditor::elementHeight() const {
 	return(sb_height -> value() * 10);
 }
@@ -117,7 +117,7 @@ QSize HotspotEditor::elementSize10px() const {
 	return(QSize(elementWidth10px(), elementHeight10px()));
 }
 
-/// @return la taille de l'element, en dizaines de pixels
+/// @return la taille de l'element, en pixels
 QSize HotspotEditor::elementSize() const {
 	return(QSize(elementWidth(), elementHeight()));
 }

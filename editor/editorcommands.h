@@ -134,4 +134,38 @@ class ChangePolygonPointsCommand : public QUndoCommand {
 	/// nouveaux points
 	QVector<QPointF> new_points;
 };
+
+/**
+	Cette classe represente l'action de modifier les dimensions et le point de saisie d'un element
+*/
+class ChangeHotspotCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeHotspotCommand(ElementScene *, const QSize &, const QSize &, const QPoint &, const QPoint &, const QPoint & = QPoint(), QUndoCommand * = 0);
+	virtual ~ChangeHotspotCommand();
+	private:
+	ChangeHotspotCommand(const ChangeHotspotCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	private:
+	void applyOffset(const QPointF &);
+	
+	// attributs
+	/// Element edite auquel il faut appliquer les modifications
+	ElementScene *element;
+	/// dimensions avant l'action
+	QSize size_before;
+	/// dimensions apres l'action
+	QSize size_after;
+	/// point de saisie avant l'action
+	QPoint hotspot_before;
+	/// point de saisie apres l'action
+	QPoint hotspot_after;
+	/// decalage a appliquer aux elements
+	QPoint offset;
+};
 #endif

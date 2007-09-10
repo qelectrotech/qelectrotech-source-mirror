@@ -384,6 +384,10 @@ void ElementScene::fromXml(const QDomDocument &xml_document) {
 	}
 }
 
+QRectF ElementScene::sceneContent() const {
+	return(itemsBoundingRect().unite(QRectF(-_hotspot, QSizeF(width(), height()))));
+}
+
 QUndoStack &ElementScene::undoStack() {
 	return(undo_stack);
 }
@@ -446,15 +450,16 @@ void ElementScene::slot_editSizeHotSpot() {
 	
 	// lance le dialogue
 	if (dialog_sh.exec() == QDialog::Accepted) {
-		setWidth(hotspot_editor -> elementWidth());
-		setHeight(hotspot_editor -> elementHeight());
-		setHotspot(hotspot_editor -> hotspot());
-		if (hotspot_editor -> mustTranslateParts()) {
-			QPoint translation = hotspot_editor -> offsetParts();
-			foreach(QGraphicsItem *qgi, items()) {
-				qgi -> translate(translation.x(), translation.y());
-			}
-		}
+		undo_stack.push(
+			new ChangeHotspotCommand(
+				this,
+				QSize(width(), height()),
+				hotspot_editor -> elementSize(),
+				_hotspot,
+				hotspot_editor -> hotspot(),
+				hotspot_editor -> mustTranslateParts() ? hotspot_editor -> offsetParts() : QPoint()
+			)
+		);
 	}
 }
 

@@ -65,6 +65,7 @@ class ElementScene : public QGraphicsScene {
 	void setOrientations(const OrientationSet &);
 	virtual const QDomDocument toXml() const;
 	virtual void fromXml(const QDomDocument &);
+	QRectF sceneContent() const;
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
 	
