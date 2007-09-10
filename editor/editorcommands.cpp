@@ -297,3 +297,38 @@ void ChangeNamesCommand::undo() {
 void ChangeNamesCommand::redo() {
 	element -> setNames(names_after);
 }
+
+/**
+	Constructeur
+	@param element_scene Element edite
+	@param before Orientations avant changement
+	@param after Orientationss apres changement
+	@param parent QUndoCommand parent
+*/
+ChangeOrientationsCommand::ChangeOrientationsCommand(
+	ElementScene *element_scene,
+	const OrientationSet &before,
+	const OrientationSet &after,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modification orientations"), parent),
+	ori_before(before),
+	ori_after(after),
+	element(element_scene)
+{
+}
+
+/// Destructeur
+ChangeOrientationsCommand::~ChangeOrientationsCommand() {
+}
+
+/// Annule le changement
+void ChangeOrientationsCommand::undo() {
+	element -> setOrientations(ori_before);
+}
+
+/// Refait le changement
+void ChangeOrientationsCommand::redo() {
+	element -> setOrientations(ori_after);
+}
+

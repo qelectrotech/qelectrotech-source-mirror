@@ -131,6 +131,20 @@ const OrientationSet OrientationSet::operator--() {
 	return(*this);
 }
 
+bool OrientationSet::operator==(const OrientationSet &os) const {
+	if (north_ori   != os.north_ori)   return(false);
+	if (east_ori    != os.east_ori)    return(false);
+	if (south_ori   != os.south_ori)   return(false);
+	if (west_ori    != os.west_ori)    return(false);
+	if (default_ori != os.default_ori) return(false);
+	if (current_ori != os.current_ori) return(false);
+	return(true);
+}
+
+bool OrientationSet::operator!=(const OrientationSet &os) const {
+	return(!(this -> operator==(os)));
+}
+
 bool OrientationSet::fromString(const QString &str) {
 	QRegExp osv("^([dyn])([dyn])([dyn])([dyn])$");	// osv : Orientation String Validator
 	if (osv.indexIn(str) == -1) return(false);

@@ -190,7 +190,32 @@ class ChangeNamesCommand : public QUndoCommand {
 	NamesList names_before;
 	/// Liste des noms apres changement
 	NamesList names_after;
-	/// scene sur laquelle se produisent les actions
+	/// Element edite auquel il faut appliquer les modifications
+	ElementScene *element;
+};
+
+/**
+	Cette classe represente l'action de changer les noms d'un element
+*/
+class ChangeOrientationsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeOrientationsCommand(ElementScene *, const OrientationSet &, const OrientationSet &, QUndoCommand * = 0);
+	virtual ~ChangeOrientationsCommand();
+	private:
+	ChangeOrientationsCommand(const ChangeOrientationsCommand &);
+	
+	// methodes
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Orientations avant changement
+	OrientationSet ori_before;
+	/// Orientations apres changement
+	OrientationSet ori_after;
+	/// Element edite auquel il faut appliquer les modifications
 	ElementScene *element;
 };
 #endif

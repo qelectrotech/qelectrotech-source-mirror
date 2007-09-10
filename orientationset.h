@@ -40,6 +40,8 @@ class OrientationSet {
 	const OrientationSet operator--(int);
 	const OrientationSet operator++();
 	const OrientationSet operator--();
+	bool operator==(const OrientationSet &) const;
+	bool operator!=(const OrientationSet &) const;
 	bool fromString(const QString &);
 	QString toString() const;
 };

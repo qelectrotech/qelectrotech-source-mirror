@@ -487,7 +487,12 @@ void ElementScene::slot_editOrientations() {
 	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_ori, SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog_ori.exec() == QDialog::Accepted) ori = ori_widget -> orientationSet();
+	if (dialog_ori.exec() == QDialog::Accepted) {
+		OrientationSet new_ori = ori_widget -> orientationSet();
+		if (new_ori != ori) {
+			undoStack().push(new ChangeOrientationsCommand(this, ori, new_ori));
+		}
+	}
 }
 
 void ElementScene::slot_editNames() {
