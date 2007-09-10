@@ -15,7 +15,6 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGra
 }
 
 PartTerminal::~PartTerminal() {
-	qDebug() << "~PartTerminal()";
 	delete informations;
 };
 

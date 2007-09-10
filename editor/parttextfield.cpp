@@ -14,7 +14,6 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 }
 
 PartTextField::~PartTextField() {
-	qDebug() << "~PartTextField()";
 	delete infos;
 }
 

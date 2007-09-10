@@ -31,7 +31,6 @@ class CustomElementGraphicPart : public CustomElementPart {
 	};
 	
 	virtual ~CustomElementGraphicPart() {
-		qDebug() << "~CustomElementGraphicPart()";
 		delete style_editor;
 	};
 	

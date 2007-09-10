@@ -29,7 +29,6 @@ CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget
 }
 
 CircleEditor::~CircleEditor() {
-	qDebug() << "~CircleEditor()";
 }
 
 void CircleEditor::updateCircle() {

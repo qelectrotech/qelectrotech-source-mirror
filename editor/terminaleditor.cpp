@@ -43,7 +43,6 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	Destructeur
 */
 TerminalEditor::~TerminalEditor() {
-	qDebug() << "~TerminalEditor()";
 };
 
 void TerminalEditor::updateTerminal() {

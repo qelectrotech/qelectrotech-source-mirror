@@ -21,7 +21,6 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 }
 
 QETElementEditor::~QETElementEditor() {
-	qDebug() << "~QETElementEditor()";
 }
 
 void QETElementEditor::setupActions() {

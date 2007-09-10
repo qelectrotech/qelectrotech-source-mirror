@@ -28,7 +28,6 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 }
 
 ElementScene::~ElementScene() {
-	qDebug() << "~ElementScene()";
 }
 
 void ElementScene::slot_move() {

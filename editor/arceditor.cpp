@@ -35,7 +35,6 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : 
 }
 
 ArcEditor::~ArcEditor() {
-	qDebug() << "~ArcEditor()";
 }
 
 void ArcEditor::updateArc() {

@@ -9,9 +9,8 @@ class PolygonEditor : public ElementItemEditor {
 	// constructeurs, destructeur
 	public:
 	PolygonEditor(QETElementEditor *, PartPolygon *, QWidget * = 0);
-	~PolygonEditor() {
-		qDebug() << "~PolygonEditor()";
-	}
+	virtual ~PolygonEditor() {}
+	
 	private:
 	PolygonEditor(const PolygonEditor &);
 	

@@ -17,10 +17,9 @@ class ElementScene;
 class CustomElementPart {
 	// constructeurs, destructeur
 	public:
-	CustomElementPart(QETElementEditor *editor) : element_editor(editor) {};
-	virtual ~CustomElementPart() {
-		qDebug() << "~CustomElementPart()";
-	};
+	CustomElementPart(QETElementEditor *editor) : element_editor(editor) {}
+	virtual ~CustomElementPart() {}
+	
 	private:
 	CustomElementPart(const CustomElementPart &);
 	

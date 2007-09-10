@@ -46,7 +46,6 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	Destructeur
 */
 TextEditor::~TextEditor() {
-	qDebug() << "~TextEditor()";
 }
 
 /**

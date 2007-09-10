@@ -7,9 +7,7 @@ class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart 
 	// constructeurs, destructeur
 	public:
 	PartCircle(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartCircle() {
-		qDebug() << "~PartCircle()";
-	}
+	virtual ~PartCircle() {}
 	
 	private:
 	PartCircle(const PartCircle &);

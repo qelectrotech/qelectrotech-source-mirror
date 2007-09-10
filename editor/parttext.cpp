@@ -12,7 +12,6 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 }
 
 PartText::~PartText() {
-	qDebug() << "~PartText()";
 	delete infos;
 }
 

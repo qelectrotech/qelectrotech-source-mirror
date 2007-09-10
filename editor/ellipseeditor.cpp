@@ -34,7 +34,6 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 }
 
 EllipseEditor::~EllipseEditor() {
-	qDebug() << "~EllipseEditor()";
 }
 
 void EllipseEditor::updateEllipse() {

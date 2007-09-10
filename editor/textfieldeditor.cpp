@@ -50,7 +50,6 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	Destructeur
 */
 TextFieldEditor::~TextFieldEditor() {
-	qDebug() << "~TextFieldEditor()";
 }
 
 /**

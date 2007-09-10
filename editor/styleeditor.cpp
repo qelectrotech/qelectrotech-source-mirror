@@ -72,7 +72,6 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 }
 
 StyleEditor::~StyleEditor() {
-	qDebug() << "~StyleEditor()";
 }
 
 void StyleEditor::updatePart() {

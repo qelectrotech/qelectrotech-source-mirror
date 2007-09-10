@@ -24,7 +24,6 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 }
 
 LineEditor::~LineEditor() {
-	qDebug() << "~LineEditor()";
 }
 
 void LineEditor::updateLine() {
