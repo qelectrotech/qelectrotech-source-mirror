@@ -38,6 +38,8 @@ class Diagram : public QGraphicsScene {
 	// methodes
 	public:
 	void drawBackground(QPainter *, const QRectF &);
+	void keyPressEvent(QKeyEvent *);
+	void keyReleaseEvent(QKeyEvent *);
 	
 	// fonctions relatives a la pose de conducteurs
 	void setConducer(bool);

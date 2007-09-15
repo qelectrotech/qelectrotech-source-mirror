@@ -71,6 +71,39 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 }
 
 /**
+	Gere le clavier
+	@param e QKeyEvent decrivant l'evenement clavier
+*/
+void Diagram::keyPressEvent(QKeyEvent *e) {
+	qDebug() << "Diagram::keyPressEvent";
+	QPointF movement;
+	switch(e -> key()) {
+		case Qt::Key_Left:  movement = QPointF(-GRILLE_X, 0.0); break;
+		case Qt::Key_Right: movement = QPointF(+GRILLE_X, 0.0); break;
+		case Qt::Key_Up:    movement = QPointF(0.0, -GRILLE_Y); break;
+		case Qt::Key_Down:  movement = QPointF(0.0, +GRILLE_Y); break;
+	}
+	if (!movement.isNull()) {
+		QSet<Element *> moved_elements = elementsToMove();
+		if (!moved_elements.isEmpty()) {
+			Element *first_elmt;
+			foreach(Element *elmt, moved_elements) {
+				first_elmt = elmt;
+				break;
+			}
+			first_elmt -> setPos(first_elmt -> pos() + movement);
+			first_elmt -> moveOtherElements(movement);
+		}
+	}
+	QGraphicsScene::keyPressEvent(e);
+}
+
+void Diagram::keyReleaseEvent(QKeyEvent *e) {
+	invalidateMovedElements();
+	QGraphicsScene::keyReleaseEvent(e);
+}
+
+/**
 	Exporte le schema vers une image
 	@return Une QImage representant le schema
 */

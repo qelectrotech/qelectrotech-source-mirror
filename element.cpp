@@ -228,33 +228,35 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (e -> buttons() & Qt::LeftButton) {
 		QPointF oldPos = pos();
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		QPointF diff = pos() - oldPos;
-		
-		// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
-		if (diff.isNull()) return;
-		
-		// recupere le schema parent
-		if (!scene()) return;
-		Diagram *diagram = qobject_cast<Diagram *>(scene());
-		if (!diagram) return;
-		
-		// deplace les elements selectionnes
-		foreach(Element *element, diagram -> elementsToMove()) {
-			if (element == this) continue;
-			element -> setPos(element -> pos() + diff);
-		};
-		
-		// deplace certains conducteurs
-		foreach(Conducer *conducer, diagram -> conducersToMove()) {
-			conducer -> setPos(conducer -> pos() + diff);
-		}
-		
-		// recalcule les autres conducteurs
-		const QHash<Conducer *, Terminal *> &conducers_modify = diagram -> conducersToUpdate();
-		foreach(Conducer *conducer, conducers_modify.keys()) {
-			conducer -> updateWithNewPos(QRectF(), conducers_modify[conducer], conducers_modify[conducer] -> scenePos());
-		}
+		moveOtherElements(pos() - oldPos);
 	} else e -> ignore();
+}
+
+void Element::moveOtherElements(const QPointF &diff) {
+	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
+	if (diff.isNull()) return;
+	
+	// recupere le schema parent
+	if (!scene()) return;
+	Diagram *diagram = qobject_cast<Diagram *>(scene());
+	if (!diagram) return;
+	
+	// deplace les elements selectionnes
+	foreach(Element *element, diagram -> elementsToMove()) {
+		if (element == this) continue;
+		element -> setPos(element -> pos() + diff);
+	};
+	
+	// deplace certains conducteurs
+	foreach(Conducer *conducer, diagram -> conducersToMove()) {
+		conducer -> setPos(conducer -> pos() + diff);
+	}
+	
+	// recalcule les autres conducteurs
+	const QHash<Conducer *, Terminal *> &conducers_modify = diagram -> conducersToUpdate();
+	foreach(Conducer *conducer, conducers_modify.keys()) {
+		conducer -> updateWithNewPos(QRectF(), conducers_modify[conducer], conducers_modify[conducer] -> amarrageConducer());
+	}
 }
 
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {

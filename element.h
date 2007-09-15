@@ -60,6 +60,7 @@ class Element : public QGraphicsItem {
 	// methodes relatives a la position
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
+	void moveOtherElements(const QPointF &);
 	
 	// methodes relatives aux connexions internes
 	bool connexionsInternesAcceptees();
