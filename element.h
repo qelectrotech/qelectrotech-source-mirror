@@ -45,7 +45,6 @@ class Element : public QGraphicsItem {
 	virtual QString nom() const = 0;
 	
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
-	QVariant itemChange(GraphicsItemChange, const QVariant &);
 	QRectF boundingRect() const;
 	QSize setSize(int, int);
 	QPixmap  pixmap();
@@ -78,6 +77,7 @@ class Element : public QGraphicsItem {
 	protected:
 	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
 	private:
 	bool peut_relier_ses_propres_terminals;

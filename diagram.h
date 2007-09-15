@@ -9,6 +9,7 @@
 #include "borderinset.h"
 class Element;
 class Terminal;
+class Conducer;
 class Diagram : public QGraphicsScene {
 	Q_OBJECT
 	
@@ -29,6 +30,10 @@ class Diagram : public QGraphicsScene {
 	QGraphicsLineItem *conducer_setter;
 	bool draw_grid;
 	bool use_border;
+	bool moved_elements_fetched;
+	QSet<Element *> elements_to_move;
+	QSet<Conducer *> conducers_to_move;
+	QHash<Conducer *, Terminal *> conducers_to_update;
 	
 	// methodes
 	public:
@@ -54,6 +59,12 @@ class Diagram : public QGraphicsScene {
 	QRectF border() const;
 	QImage toImage(int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
 	QSize imageSize() const;
+	
+	void invalidateMovedElements();
+	void fetchMovedElements();
+	const QSet<Element *> &elementsToMove();
+	const QSet<Conducer *> &conducersToMove();
+	const QHash<Conducer *, Terminal *> &conducersToUpdate();
 	
 	private slots:
 	void slot_checkSelectionEmptinessChange();
@@ -147,6 +158,24 @@ inline Diagram::BorderOptions Diagram::borderOptions() {
 	if (border_and_inset.insetIsDisplayed()) retour = (BorderOptions)(retour|Inset);
 	if (border_and_inset.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
 	return(retour);
+}
+
+/// @return la liste des elements a deplacer
+inline const QSet<Element *> &Diagram::elementsToMove() {
+	if (!moved_elements_fetched) fetchMovedElements();
+	return(elements_to_move);
+}
+
+/// @return la liste des conducteurs a deplacer
+inline const QSet<Conducer *> &Diagram::conducersToMove() {
+	if (!moved_elements_fetched) fetchMovedElements();
+	return(conducers_to_move);
+}
+
+/// @return la liste des conducteurs a modifier (typiquement les conducteurs dont seul un element est deplace)
+inline const QHash<Conducer *, Terminal *> &Diagram::conducersToUpdate() {
+	if (!moved_elements_fetched) fetchMovedElements();
+	return(conducers_to_update);
 }
 
 #endif

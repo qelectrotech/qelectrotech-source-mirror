@@ -379,3 +379,42 @@ QRectF Diagram::border() const {
 	);
 }
 
+/// oublie la liste des elements et conducteurs en mouvement
+void Diagram::invalidateMovedElements() {
+	if (!moved_elements_fetched) return;
+	moved_elements_fetched = false;
+	elements_to_move.clear();
+	conducers_to_move.clear();
+	conducers_to_update.clear();
+}
+
+/// reconstruit la liste des elements et conducteurs en mouvement
+void Diagram::fetchMovedElements() {
+	// recupere les elements deplaces
+	foreach (QGraphicsItem *item, selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			elements_to_move << elmt;
+		}
+	}
+	
+	// pour chaque element deplace, determine les conducteurs qui seront modifies
+	foreach(Element *elmt, elements_to_move) {
+		foreach(Terminal *terminal, elmt -> terminals()) {
+			foreach(Conducer *conducer, terminal -> conducers()) {
+				Terminal *other_terminal;
+				if (conducer -> terminal1 == terminal) {
+					other_terminal = conducer -> terminal2;
+				} else {
+					other_terminal = conducer -> terminal1;
+				}
+				// si les deux elements du conducteur sont deplaces
+				if (elements_to_move.contains(static_cast<Element *>(other_terminal -> parentItem()))) {
+					conducers_to_move << conducer;
+				} else {
+					conducers_to_update.insert(conducer, terminal);
+				}
+			}
+		}
+	}
+	moved_elements_fetched = true;
+}

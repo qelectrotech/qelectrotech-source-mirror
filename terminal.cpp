@@ -40,7 +40,7 @@ void Terminal::initialise(QPointF pf, QET::Orientation o) {
 	setAcceptsHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	hovered = false;
-	setToolTip("Terminal");
+	setToolTip(QObject::tr("Borne"));
 }
 
 /**

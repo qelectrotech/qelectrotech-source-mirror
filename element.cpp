@@ -1,5 +1,6 @@
 #include "element.h"
 #include "diagram.h"
+#include "conducer.h"
 #include "elementtextitem.h"
 #include <QtDebug>
 
@@ -104,21 +105,6 @@ QPixmap Element::pixmap() {
 }
 
 /**
-	Gere les changements d'etat de l'element
-	@param change type du changement d'etat
-	@param value valeur du changement d'etat
-	@return la valeur du changement d'etat
-*/
-QVariant Element::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionHasChanged) {
-		foreach(QGraphicsItem *qgi, children()) {
-			if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer(value.toPointF());
-		}
-	}
-	return(QGraphicsItem::itemChange(change, value));
-}
-
-/**
 	Permet de specifier l'orientation de l'element
 	@param o la nouvelle orientation de l'objet
 	@return true si l'orientation a pu etre appliquee, false sinon
@@ -187,7 +173,7 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *)
 	t.setStyle(Qt::DashDotLine);
 	painter -> setPen(t);
 	// Le dessin se fait a partir du rectangle delimitant
-	painter -> drawRoundRect(boundingRect(), 10, 10);
+	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 	painter -> restore();
 }
 
@@ -236,7 +222,7 @@ void Element::setPos(qreal x, qreal y) {
 }
 
 /**
-	Gere les mouvements de souris lies a l'element, notamment
+	Gere les mouvements de souris lies a l'element
 */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (e -> buttons() & Qt::LeftButton) {
@@ -244,20 +230,39 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
 		QPointF diff = pos() - oldPos;
 		
-		// Recupere la liste des elements selectionnes
-		QList<QGraphicsItem *> selectedItems;
-		if (scene()) {
-			selectedItems = scene() -> selectedItems();
-		} else if (QGraphicsItem *parent = parentItem()) {
-			while (parent && parent -> isSelected()) selectedItems << parent;
+		// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
+		if (diff.isNull()) return;
+		
+		// recupere le schema parent
+		if (!scene()) return;
+		Diagram *diagram = qobject_cast<Diagram *>(scene());
+		if (!diagram) return;
+		
+		// deplace les elements selectionnes
+		foreach(Element *element, diagram -> elementsToMove()) {
+			if (element == this) continue;
+			element -> setPos(element -> pos() + diff);
+		};
+		
+		// deplace certains conducteurs
+		foreach(Conducer *conducer, diagram -> conducersToMove()) {
+			conducer -> setPos(conducer -> pos() + diff);
 		}
 		
-		// Deplace tous les elements selectionnes
-		foreach (QGraphicsItem *item, selectedItems) {
-			if (!item -> parentItem() || !item -> parentItem() -> isSelected())
-				if (item != this && qgraphicsitem_cast<Element *>(item)) item -> setPos(item -> pos() + diff);
+		// recalcule les autres conducteurs
+		const QHash<Conducer *, Terminal *> &conducers_modify = diagram -> conducersToUpdate();
+		foreach(Conducer *conducer, conducers_modify.keys()) {
+			conducer -> updateWithNewPos(QRectF(), conducers_modify[conducer], conducers_modify[conducer] -> scenePos());
 		}
 	} else e -> ignore();
+}
+
+void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+	if (scene()) {
+		Diagram *diagram = qobject_cast<Diagram *>(scene());
+		if (diagram) diagram -> invalidateMovedElements();
+	}
+	QGraphicsItem::mouseReleaseEvent(e);
 }
 
 /**
