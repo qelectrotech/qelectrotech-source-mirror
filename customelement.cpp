@@ -95,6 +95,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	
 	// extrait les noms de la definition XML
 	names.fromXml(racine);
+	setToolTip(nom());
 	
 	// parcours des enfants de la definition : parties du dessin
 	int nb_elements_parses = 0;

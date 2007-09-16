@@ -75,7 +75,6 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyPressEvent(QKeyEvent *e) {
-	qDebug() << "Diagram::keyPressEvent";
 	QPointF movement;
 	switch(e -> key()) {
 		case Qt::Key_Left:  movement = QPointF(-GRILLE_X, 0.0); break;
