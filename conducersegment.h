@@ -1,6 +1,7 @@
 #ifndef CONDUCER_SEGMENT_H
 #define CONDUCER_SEGMENT_H
 #include <QPointF>
+#include "qet.h"
 /**
 	Cette classe represente un segment de conducteur.
 */
@@ -41,6 +42,7 @@ class ConducerSegment {
 	QPointF middle() const;
 	bool isHorizontal() const;
 	bool isVertical() const;
+	QET::ConducerSegmentType type() const;
 	qreal length() const;
 	bool canMove1stPointX(const qreal &, qreal &) const;
 	bool canMove2ndPointX(const qreal &, qreal &) const;

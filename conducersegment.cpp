@@ -25,7 +25,6 @@ ConducerSegment::ConducerSegment(
 	Destructeur - Relie le segment precedent au suivant
 */
 ConducerSegment::~ConducerSegment() {
-	//qDebug() << "~ConducerSegment()" << (void *)this;
 	if (hasPreviousSegment()) previousSegment() -> setNextSegment(nextSegment());
 	if (hasNextSegment()) nextSegment() -> setPreviousSegment(previousSegment());
 }
@@ -493,4 +492,8 @@ qreal ConducerSegment::length() const {
 	} else {
 		return(secondPoint().y() - firstPoint().y());
 	}
+}
+
+QET::ConducerSegmentType ConducerSegment::type() const {
+	return(isHorizontal() ? QET::Horizontal : QET::Vertical);
 }

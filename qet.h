@@ -8,6 +8,7 @@
 */
 namespace QET {
 	enum Orientation {North, East, South, West};
+	enum ConducerSegmentType { Horizontal = 1, Vertical = 2, Both = 3 };
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);
 	QET::Orientation orientationFromString(const QString &);

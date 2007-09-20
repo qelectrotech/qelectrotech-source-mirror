@@ -2,6 +2,7 @@
 #define CONDUCTEUR_H
 #include <QtGui>
 #include "terminal.h"
+#include "conducerprofile.h"
 class ConducerSegment;
 class Element;
 /**
@@ -20,6 +21,7 @@ class Conducer : public QGraphicsPathItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1001 };
+	
 	///Premiere borne a laquelle le fil est rattache
 	Terminal *terminal1;
 	///Deuxieme borne a laquelle le fil est rattache
@@ -30,11 +32,6 @@ class Conducer : public QGraphicsPathItem {
 	bool destroyed;
 	QGraphicsTextItem *text_item;
 	ConducerSegment *segments;
-	QList<qreal> moves_x;
-	QList<qreal> moves_y;
-	qreal orig_dist_2_terms_x;
-	qreal orig_dist_2_terms_y;
-	bool type_trajet_x;
 	QPointF press_point;
 	bool moving_point;
 	bool moving_segment;
@@ -42,6 +39,8 @@ class Conducer : public QGraphicsPathItem {
 	qreal previous_z_value;
 	ConducerSegment *moved_segment;
 	bool modified_path;
+	bool has_to_save_profile;
+	ConducerProfile conducer_profile;
 	static QPen conducer_pen;
 	static QBrush conducer_brush;
 	static bool pen_and_brush_initialized;
@@ -61,6 +60,7 @@ class Conducer : public QGraphicsPathItem {
 	static bool valideXml(QDomElement &);
 	bool fromXml(QDomElement &);
 	QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
+	const QList<ConducerSegment *> segmentsList() const;
 	
 	protected:
 	void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -70,16 +70,19 @@ class Conducer : public QGraphicsPathItem {
 	
 	private:
 	void segmentsToPath();
-	void updatePoints();
+	void saveProfile();
 	void priv_calculeConducer(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
 	void priv_modifieConducer(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
-	int nbSegments() const;
+	uint nbSegments(QET::ConducerSegmentType = QET::Both) const;
 	QList<QPointF> segmentsToPoints() const;
 	void pointsToSegments(QList<QPointF>);
 	bool hasClickedOn(QPointF, QPointF) const;
 	void calculateTextItemPosition();
+	static int getCoeff(const qreal &, const qreal &);
+	static int getSign(const qreal &);
+	QHash<ConducerSegmentProfile *, qreal> shareOffsetBetweenSegments(const qreal &offset, const QList<ConducerSegmentProfile *> &, const qreal & = 0.01) const;
 	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 12.0);
-	static qreal conducer_bound(qreal tobound, qreal bound1, qreal bound2);
-	static qreal conducer_bound(qreal tobound, qreal bound, bool positive);
+	static qreal conducer_bound(qreal, qreal, qreal, qreal = 0.0);
+	static qreal conducer_bound(qreal, qreal, bool);
 };
 #endif

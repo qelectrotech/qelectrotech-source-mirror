@@ -1,6 +1,7 @@
 #include <QtDebug>
 #include "conducer.h"
 #include "conducersegment.h"
+#include "conducersegmentprofile.h"
 #include "element.h"
 #define PR(x) qDebug() << #x " = " << x;
 
@@ -15,17 +16,23 @@ QBrush Conducer::conducer_brush = QBrush();
 	@param parent Element parent du conducteur (0 par defaut)
 	@param scene  QGraphicsScene auquelle appartient le conducteur
 */
-Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) : QGraphicsPathItem(parent, scene) {
-	// bornes que le conducteur relie
-	terminal1 = p1;
-	terminal2 = p2;
+Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) :
+	QGraphicsPathItem(parent, scene),
+	terminal1(p1),
+	terminal2(p2),
+	destroyed(false),
+	segments(NULL),
+	previous_z_value(zValue()),
+	modified_path(false),
+	has_to_save_profile(false)
+{
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
 	bool ajout_p1 = terminal1 -> addConducer(this);
 	bool ajout_p2 = terminal2 -> addConducer(this);
+	
 	// en cas d'echec de l'ajout (conducteur deja existant notamment)
 	if (!ajout_p1 || !ajout_p2) return;
-	destroyed = false;
-	modified_path = false;
+	
 	// attributs de dessin par defaut (communs a tous les conducteurs)
 	if (!pen_and_brush_initialized) {
 		conducer_pen.setJoinStyle(Qt::MiterJoin);
@@ -37,12 +44,11 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 		conducer_brush.setStyle(Qt::NoBrush);
 		pen_and_brush_initialized = true;
 	}
+	
 	// calcul du rendu du conducteur
-	segments = NULL;
 	priv_calculeConducer(terminal1 -> amarrageConducer(), terminal1 -> orientation(), terminal2 -> amarrageConducer(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 	setAcceptsHoverEvents(true);
-	previous_z_value = zValue();
 	
 	// ajout du champ de texte editable
 	text_item = new QGraphicsTextItem();
@@ -148,49 +154,123 @@ void Conducer::segmentsToPath() {
 	@param o2 Orientation de la borne 2
 */
 void Conducer::priv_modifieConducer(const QPointF &p1, QET::Orientation, const QPointF &p2, QET::Orientation) {
-	Q_ASSERT_X(nbSegments() > 1, "priv_modifieConducer", "pas de points a modifier");
+	// determine le nombre de segments horizontaux et verticaux
+	uint nb_horiz_segments = conducer_profile.nbSegments(QET::Horizontal);
+	uint nb_verti_segments = conducer_profile.nbSegments(QET::Vertical);
 	
-	// recupere les dernieres coordonnees connues des bornes
-	QPointF old_p1 = mapFromScene(terminal1 -> amarrageConducer());
-	QPointF old_p2 = mapFromScene(terminal2 -> amarrageConducer());
+	Q_ASSERT_X(nb_horiz_segments + nb_verti_segments > 1, "Conducer::priv_modifieConducer", "pas de points a modifier");
+	Q_ASSERT_X(!conducer_profile.isNull(),                "Conducer::priv_modifieConducer", "pas de profil utilisable");
 	
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);
 	QPointF new_p2 = mapFromScene(p2);
+	QRectF new_rect = QRectF(new_p1, new_p2);
 	
-	// les distances horizontales et verticales entre les anciennes bornes
-	// sont stockees dans orig_dist_2_terms_x et orig_dist_2_terms_y
+	// recupere la largeur et la hauteur du profil
+	qreal profile_width  = conducer_profile.width();
+	qreal profile_height = conducer_profile.height();
 	
-	// calcule les distances horizontales et verticales entre les nouvelles bornes
-	qreal new_dist_2_terminals_x = new_p2.x() - new_p1.x();
-	qreal new_dist_2_terminals_y = new_p2.y() - new_p1.y();
+	// calcule les differences verticales et horizontales a appliquer
+	qreal h_diff = (qAbs(new_rect.width())  - qAbs(profile_width) ) * getSign(profile_width);
+	qreal v_diff = (qAbs(new_rect.height()) - qAbs(profile_height)) * getSign(profile_height);
 	
-	// en deduit les coefficients de "redimensionnement"
-	qreal coeff_x = new_dist_2_terminals_x / orig_dist_2_terms_x;
-	qreal coeff_y = new_dist_2_terminals_y / orig_dist_2_terms_y;
-	/*
-	if (!orig_dist_2_terms_x || !orig_dist_2_terms_y) {
-		qDebug() << "ca va planter";
-		PR(coeff_x)
-		PR(coeff_y)
-	}
-	*/
+	// applique les differences aux segments
+	QHash<ConducerSegmentProfile *, qreal> segments_lengths;
+	segments_lengths.unite(shareOffsetBetweenSegments(h_diff, conducer_profile.horizontalSegments()));
+	segments_lengths.unite(shareOffsetBetweenSegments(v_diff, conducer_profile.verticalSegments()));
+	
+	// en deduit egalement les coefficients d'inversion (-1 pour une inversion, +1 pour conserver le meme sens)
+	int horiz_coeff = getCoeff(new_rect.width(),  profile_width);
+	int verti_coeff = getCoeff(new_rect.height(), profile_height);
+	
 	// genere les nouveaux points
-	int limite = moves_x.size() - 1;
-	int coeff = type_trajet_x ? 1 : -1;
-	
 	QList<QPointF> points;
-	points << (type_trajet_x ? new_p1 : new_p2);
-	for (int i = 0 ; i < limite ; ++ i) {
+	points << new_p1;
+	int limit = conducer_profile.segments.count() - 1;
+	for (int i = 0 ; i < limit ; ++ i) {
+		// dernier point
 		QPointF previous_point = points.last();
-		points << QPointF (
-			previous_point.x() + (moves_x.at(i) * coeff_x * coeff),
-			previous_point.y() + (moves_y.at(i) * coeff_y * coeff)
-		);
+		
+		// profil de segment de conducteur en cours
+		ConducerSegmentProfile *csp = conducer_profile.segments.at(i);
+		
+		// coefficient et offset a utiliser pour ce point
+		qreal coeff = csp -> isHorizontal ? horiz_coeff : verti_coeff;
+		qreal offset_applied = segments_lengths[csp];
+		
+		// applique l'offset et le coeff au point
+		if (csp -> isHorizontal) {
+			points << QPointF (
+				previous_point.x() + (coeff * offset_applied),
+				previous_point.y()
+			);
+		} else {
+			points << QPointF (
+				previous_point.x(),
+				previous_point.y() + (coeff * offset_applied)
+			);
+		}
 	}
-	points << (type_trajet_x ? new_p2 : new_p1);
+	points << new_p2;
 	pointsToSegments(points);
 	segmentsToPath();
+}
+
+/**
+	@param offset Longueur a repartir entre les segments
+	@param segments_list Segments sur lesquels il faut repartir la longueur
+	@param precision seuil en-deca duquel on considere qu'il ne reste rien a repartir
+*/
+QHash<ConducerSegmentProfile *, qreal> Conducer::shareOffsetBetweenSegments(
+	const qreal &offset,
+	const QList<ConducerSegmentProfile *> &segments_list,
+	const qreal &precision
+) const {
+	// construit le QHash qui sera retourne
+	QHash<ConducerSegmentProfile *, qreal> segments_hash;
+	foreach(ConducerSegmentProfile *csp, segments_list) {
+		segments_hash.insert(csp, csp -> length);
+	}
+	
+	// memorise le signe de la longueur de chaque segement
+	QHash<ConducerSegmentProfile *, int> segments_signs;
+	foreach(ConducerSegmentProfile *csp, segments_hash.keys()) {
+		segments_signs.insert(csp, getSign(csp -> length));
+	}
+	
+	//qDebug() << "repartition d'un offset de" << offset << "px sur" << segments_list.count() << "segments";
+	
+	// repartit l'offset sur les segments
+	qreal remaining_offset = offset;
+	while (remaining_offset > precision || remaining_offset < -precision) {
+		// recupere le nombre de segments differents ayant une longueur non nulle
+		uint segments_count = 0;
+		foreach(ConducerSegmentProfile *csp, segments_hash.keys()) if (segments_hash[csp]) ++ segments_count;
+		//qDebug() << "  remaining_offset =" << remaining_offset;
+		qreal local_offset = remaining_offset / segments_count;
+		//qDebug() << "  repartition d'un offset local de" << local_offset << "px sur" << segments_count << "segments";
+		remaining_offset = 0.0;
+		foreach(ConducerSegmentProfile *csp, segments_hash.keys()) {
+			// ignore les segments de longueur nulle
+			if (!segments_hash[csp]) continue;
+			// applique l'offset au segment
+			//qreal segment_old_length = segments_hash[csp];
+			segments_hash[csp] += local_offset;
+			
+			// (la longueur du segment change de signe) <=> (le segment n'a pu absorbe tout l'offset)
+			if (segments_signs[csp] != getSign(segments_hash[csp])) {
+				
+				// on remet le trop-plein dans la reserve d'offset
+				remaining_offset += qAbs(segments_hash[csp]) * getSign(local_offset);
+				//qDebug() << "    trop-plein de" << qAbs(segments_hash[csp]) * getSign(local_offset) << "remaining_offset =" << remaining_offset;
+				segments_hash[csp] = 0.0;
+			} else {
+				//qDebug() << "    offset local de" << local_offset << "accepte";
+			}
+		}
+	}
+	
+	return(segments_hash);
 }
 
 /**
@@ -207,7 +287,6 @@ void Conducer::priv_calculeConducer(const QPointF &p1, QET::Orientation o1, cons
 	// s'assure qu'il n'y a ni points
 	QList<QPointF> points;
 	
-	type_trajet_x = p1.x() < p2.x();
 	// mappe les points par rapport a la scene
 	sp1 = mapFromScene(p1);
 	sp2 = mapFromScene(p2);
@@ -281,6 +360,13 @@ void Conducer::priv_calculeConducer(const QPointF &p1, QET::Orientation o1, cons
 	
 	// prolongement de la borne d'arrivee
 	points << arrivee0;
+	
+	// inverse eventuellement l'ordre des points afin que le trajet soit exprime de la borne 1 vers la borne 2
+	if (newp1.x() > newp2.x()) {
+		QList<QPointF> points2;
+		for (int i = points.size() - 1 ; i >= 0 ; -- i) points2 << points.at(i);
+		points = points2;
+	}
 	
 	pointsToSegments(points);
 	segmentsToPath();
@@ -480,7 +566,7 @@ void Conducer::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 			
 			// application du deplacement
 			modified_path = true;
-			updatePoints();
+			has_to_save_profile = true;
 			segmentsToPath();
 			calculateTextItemPosition();
 		}
@@ -496,6 +582,10 @@ void Conducer::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	moving_point = false;
 	moving_segment = false;
+	if (has_to_save_profile) {
+		saveProfile();
+		has_to_save_profile = false;
+	}
 	setZValue(previous_z_value);
 	QGraphicsPathItem::mouseReleaseEvent(e);
 	calculateTextItemPosition();
@@ -578,24 +668,6 @@ QPainterPath Conducer::shape() const {
 }
 
 /**
-	Met à jour deux listes de reels.
-*/
-void Conducer::updatePoints() {
-	QList<QPointF> points = segmentsToPoints();
-	int s = points.size();
-	moves_x.clear();
-	moves_y.clear();
-	for (int i = 1 ; i < s ; ++ i) {
-		moves_x << points.at(i).x() - points.at(i - 1).x();
-		moves_y << points.at(i).y() - points.at(i - 1).y();
-	}
-	QPointF b1 = points.at(0);
-	QPointF b2 = points.at(s - 1);
-	orig_dist_2_terms_x = b2.x() - b1.x();
-	orig_dist_2_terms_y = b2.y() - b1.y();
-}
-
-/**
 	Renvoie une valeur donnee apres l'avoir bornee entre deux autres valeurs,
 	en y ajoutant une marge interne.
 	@param tobound valeur a borner
@@ -603,8 +675,8 @@ void Conducer::updatePoints() {
 	@param bound2 borne 2
 	@return La valeur bornee
 */
-qreal Conducer::conducer_bound(qreal tobound, qreal bound1, qreal bound2) {
-	qreal space = 5.0;
+qreal Conducer::conducer_bound(qreal tobound, qreal bound1, qreal bound2, qreal space) {
+	qDebug() << "will bound" << tobound << "between" << bound1 << "and" << bound2 ;
 	if (bound1 < bound2) {
 		return(qBound(bound1 + space, tobound, bound2 - space));
 	} else {
@@ -625,15 +697,15 @@ qreal Conducer::conducer_bound(qreal tobound, qreal bound, bool positive) {
 }
 
 /**
+	@param type Type de Segments
 	@return Le nombre de segments composant le conducteur.
 */
-int Conducer::nbSegments() const {
-	if (segments == NULL) return(0);
-	int nb_seg = 1;
-	ConducerSegment *segment = segments;
-	while (segment -> hasNextSegment()) {
-		++ nb_seg;
-		segment = segment -> nextSegment();
+uint Conducer::nbSegments(QET::ConducerSegmentType type) const {
+	QList<ConducerSegment *> segments_list = segmentsList();
+	if (type == QET::Both) return(segments_list.count());
+	uint nb_seg = 0;
+	foreach(ConducerSegment *conducer_segment, segments_list) {
+		if (conducer_segment -> type() == type) ++ nb_seg;
 	}
 	return(nb_seg);
 }
@@ -740,15 +812,14 @@ bool Conducer::fromXml(QDomElement &e) {
 	
 	// s'il n'y a pas de segments, on renvoie true
 	if (!segments_x.size()) return(true);
-	
 	// les longueurs recueillies doivent etre coherentes avec les positions des bornes
 	qreal width = 0.0, height = 0.0;
 	foreach (qreal t, segments_x) width  += t;
 	foreach (qreal t, segments_y) height += t;
 	QPointF t1 = terminal1 -> amarrageConducer();
 	QPointF t2 = terminal2 -> amarrageConducer();
-	qreal expected_width  = qAbs(t2.x() - t1.x());
-	qreal expected_height = qAbs(t2.y() - t1.y());
+	qreal expected_width  = t2.x() - t1.x();
+	qreal expected_height = t2.y() - t1.y();
 	qreal precision = std::numeric_limits<qreal>::epsilon();
 	if (
 		expected_width > width + precision ||\
@@ -760,7 +831,7 @@ bool Conducer::fromXml(QDomElement &e) {
 	/* on recree les segments a partir des donnes XML */
 	// cree la liste de points
 	QList<QPointF> points_list;
-	points_list << (t1.x() < t2.x() ? t1 : t2);
+	points_list << t1;
 	for (int i = 0 ; i < segments_x.size() ; ++ i) {
 		points_list << QPointF(
 			points_list.last().x() + segments_x.at(i),
@@ -772,11 +843,7 @@ bool Conducer::fromXml(QDomElement &e) {
 	
 	// initialise divers parametres lies a la modification des conducteurs
 	modified_path = true;
-	moves_x = segments_x;
-	moves_y = segments_y;
-	type_trajet_x = t1.x() < t2.x();
-	orig_dist_2_terms_x = points_list.at(points_list.size() - 1).x() - points_list.at(0).x();
-	orig_dist_2_terms_y = points_list.at(points_list.size() - 1).y() - points_list.at(0).y();
+	saveProfile();
 	
 	segmentsToPath();
 	return(true);
@@ -800,20 +867,29 @@ QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_i
 	if (!modified_path) return(e);
 	
 	// parcours et export des segments
-	ConducerSegment *segment = segments;
 	QDomElement current_segment;
-	while (segment -> hasNextSegment()) {
+	foreach(ConducerSegment *segment, segmentsList()) {
 		current_segment = d.createElement("segment");
 		current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
 		current_segment.setAttribute("length", segment -> length());
 		e.appendChild(current_segment);
+	}
+	return(e);
+}
+
+/// @return les segments de ce conducteur
+const QList<ConducerSegment *> Conducer::segmentsList() const {
+	if (segments == NULL) return(QList<ConducerSegment *>());
+	
+	QList<ConducerSegment *> segments_vector;
+	ConducerSegment *segment = segments;
+	
+	while (segment -> hasNextSegment()) {
+		segments_vector << segment;
 		segment = segment -> nextSegment();
 	}
-	current_segment = d.createElement("segment");
-	current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-	current_segment.setAttribute("length", segment -> length());
-	e.appendChild(current_segment);
-	return(e);
+	segments_vector << segment;
+	return(segments_vector);
 }
 
 /**
@@ -858,4 +934,29 @@ ConducerSegment *Conducer::middleSegment() {
 */
 void Conducer::calculateTextItemPosition() {
 	text_item -> setPos(middleSegment() -> middle());
+}
+
+/**
+	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
+	dans priv_modifieConducer.
+*/
+void Conducer::saveProfile() {
+	conducer_profile = ConducerProfile(this);
+}
+
+/**
+	@param value1 Premiere valeur
+	@param value2 Deuxieme valeur
+	@return 1 si les deux valeurs sont de meme signe, -1 sinon
+*/
+int Conducer::getCoeff(const qreal &value1, const qreal &value2) {
+	return(getSign(value1) * getSign(value2));
+}
+
+/**
+	@param value valeur
+	@return 1 si valeur est negatif, 1 s'il est positif ou nul
+*/
+int Conducer::getSign(const qreal &value) {
+	return(value < 0 ? -1 : 1);
 }

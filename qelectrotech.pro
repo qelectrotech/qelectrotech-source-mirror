@@ -60,7 +60,9 @@ HEADERS += aboutqet.h \
            editor/texteditor.h \
            editor/textfieldeditor.h \
  elementscategorydeleter.h \
- elementdeleter.h
+ elementdeleter.h \
+ conducersegmentprofile.h \
+ conducerprofile.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
@@ -114,7 +116,8 @@ SOURCES += aboutqet.cpp \
            editor/texteditor.cpp \
            editor/textfieldeditor.cpp \
  elementscategorydeleter.cpp \
- elementdeleter.cpp
+ elementdeleter.cpp \
+ conducerprofile.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 QT += xml
