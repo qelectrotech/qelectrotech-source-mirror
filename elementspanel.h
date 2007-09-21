@@ -1,7 +1,7 @@
 #ifndef PANELAPPAREILS_H
 #define PANELAPPAREILS_H
 #include <QtGui>
-#include "qetapp.h"
+#include "qetdiagrameditor.h"
 /**
 	Cette classe represente le panel d'appareils (en tant qu'element
 	graphique) dans lequel l'utilisateur choisit les composants de

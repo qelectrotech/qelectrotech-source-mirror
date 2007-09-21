@@ -380,7 +380,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	
 	// type
 	QString chemin_elmt = typeId();
-	QString type_elmt = QETApp::symbolicPath(chemin_elmt);
+	QString type_elmt = QETDiagramEditor::symbolicPath(chemin_elmt);
 	element.setAttribute("type", type_elmt);
 	
 	// position, selection et orientation

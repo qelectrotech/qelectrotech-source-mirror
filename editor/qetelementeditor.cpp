@@ -3,7 +3,7 @@
 #include "elementview.h"
 #include "customelementpart.h"
 #include "newelementwizard.h"
-#include "qetapp.h"
+#include "qetdiagrameditor.h"
 
 QETElementEditor::QETElementEditor(QWidget *parent) :
 	QMainWindow(parent),
@@ -388,7 +388,7 @@ void QETElementEditor::slot_open() {
 	QString user_filename = QFileDialog::getOpenFileName(
 		this,
 		tr("Ouvrir un fichier"),
-		QETApp::customElementsDir(),
+		QETDiagramEditor::customElementsDir(),
 		tr("\311l\351ments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
 	if (user_filename == "") return;
@@ -411,7 +411,7 @@ bool QETElementEditor::slot_saveAs() {
 	QString fn = QFileDialog::getSaveFileName(
 		this,
 		tr("Enregistrer sous"),
-		QETApp::customElementsDir(),
+		QETDiagramEditor::customElementsDir(),
 		tr("\311l\351ments QElectroTech (*.elmt)")
 	);
 	// si aucun nom n'est entre, renvoie faux.

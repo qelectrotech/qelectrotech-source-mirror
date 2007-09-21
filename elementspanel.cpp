@@ -177,10 +177,10 @@ void ElementsPanel::reload() {
 	while (takeTopLevelItem(0));
 	
 	// chargement des elements de la collection QET
-	addDir(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
+	addDir(invisibleRootItem(), QETDiagramEditor::commonElementsDir(), tr("Collection QET"));
 	
 	// chargement des elements de la collection utilisateur
-	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
+	addDir(invisibleRootItem(), QETDiagramEditor::customElementsDir(), tr("Collection utilisateur"));
 }
 
 void ElementsPanel::editCategory() {

@@ -1,4 +1,4 @@
-#include "qetapp.h"
+#include "qetdiagrameditor.h"
 #include "diagramview.h"
 #include "elementspanelwidget.h"
 #include "aboutqet.h"
@@ -7,7 +7,7 @@
 	constructeur
 	@param parent le widget parent de la fenetre principale
  */
-QETApp::QETApp(QWidget *parent) : QMainWindow(parent) {
+QETDiagramEditor::QETDiagramEditor(QWidget *parent) : QMainWindow(parent) {
 	
 	// cree les dossiers de configuration si necessaire
 	QDir config_dir(configDir());
@@ -99,14 +99,14 @@ QETApp::QETApp(QWidget *parent) : QMainWindow(parent) {
 /**
 	Destructeur
 */
-QETApp::~QETApp() {
+QETDiagramEditor::~QETDiagramEditor() {
 }
 
 /**
 	Gere les evenements relatifs au QSystemTrayIcon
 	@param raison un entier representant l'evenement survenu sur le systray
 */
-void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
+void QETDiagramEditor::systray(QSystemTrayIcon::ActivationReason reason) {
 	if (!QSystemTrayIcon::isSystemTrayAvailable()) return;
 	switch(reason) {
 		case QSystemTrayIcon::Context:
@@ -127,7 +127,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 /**
 	Reduit l'application dans le systray
 */
-void QETApp::systrayReduce() {
+void QETDiagramEditor::systrayReduce() {
 	// on sauvegarde la position et les dimensions de l'application
 	wg = saveGeometry();
 	// on cache l'application
@@ -140,7 +140,7 @@ void QETApp::systrayReduce() {
 /**
 	Restaure l'application reduite dans le systray
 */
-void QETApp::systrayRestore() {
+void QETDiagramEditor::systrayRestore() {
 	// on restaure la position et les dimensions de l'application
 	restoreGeometry(wg);
 	// on affiche l'application
@@ -154,7 +154,7 @@ void QETApp::systrayRestore() {
 	Permet de quitter l'application lors de la fermeture de la fenetre principale
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
-void QETApp::closeEvent(QCloseEvent *qce) {
+void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 	quit(qce);
 }
 
@@ -162,7 +162,7 @@ void QETApp::closeEvent(QCloseEvent *qce) {
 	Gere la sortie de l'application
 	@param e Le QCloseEvent correspondant a l'evenement de fermeture
 */
-void QETApp::quit(QCloseEvent *e) {
+void QETDiagramEditor::quit(QCloseEvent *e) {
 	// quitte directement s'il n'y a aucun schema ouvert
 	bool peut_quitter = true;
 	if (diagramEnCours()) {
@@ -187,7 +187,7 @@ void QETApp::quit(QCloseEvent *e) {
 /**
 	Fait passer la fenetre du mode plein ecran au mode normal et vice-versa
 */
-void QETApp::toggleFullScreen() {
+void QETDiagramEditor::toggleFullScreen() {
 	setWindowState(windowState() ^ Qt::WindowFullScreen);
 }
 
@@ -196,9 +196,9 @@ void QETApp::toggleFullScreen() {
 	Le dialogue en question est cree lors du premier appel de cette fonction.
 	En consequence, sa premiere apparition n'est pas immediate. Par la suite,
 	le dialogue n'a pas a etre recree et il apparait instantanement. Il est
-	detruit en meme temps que son parent (ici, la QETApp).
+	detruit en meme temps que son parent (ici, la QETDiagramEditor).
 */
-void QETApp::aPropos() {
+void QETDiagramEditor::aPropos() {
 	static AboutQET *apqet = new AboutQET(this);
 	apqet -> exec();
 }
@@ -206,7 +206,7 @@ void QETApp::aPropos() {
 /**
 	Mise en place des actions
 */
-void QETApp::actions() {
+void QETDiagramEditor::actions() {
 	// icones et labels
 	nouveau_fichier   = new QAction(QIcon(":/ico/new.png"),        tr("&Nouveau"),                             this);
 	ouvrir_fichier    = new QAction(QIcon(":/ico/open.png"),       tr("&Ouvrir"),                              this);
@@ -396,7 +396,7 @@ void QETApp::actions() {
 /**
 	Mise en place des menus
 */
-void QETApp::menus() {
+void QETDiagramEditor::menus() {
 	QMenu *menu_fichier   = menuBar() -> addMenu(tr("&Fichier"));
 	QMenu *menu_edition   = menuBar() -> addMenu(tr("&\311dition"));
 	QMenu *menu_affichage = menuBar() -> addMenu(tr("Afficha&ge"));
@@ -484,7 +484,7 @@ void QETApp::menus() {
 /**
 	Mise en place de la barre d'outils
 */
-void QETApp::toolbar() {
+void QETDiagramEditor::toolbar() {
 	barre_outils = new QToolBar(tr("Outils"), this);
 	
 	// Modes selection / visualisation
@@ -513,7 +513,7 @@ void QETApp::toolbar() {
 /**
 	Imprime le schema courant
 */
-void QETApp::dialog_print() {
+void QETDiagramEditor::dialog_print() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> dialogPrint();
@@ -522,7 +522,7 @@ void QETApp::dialog_print() {
 /**
 	Gere l'export de schema sous forme d'image
 */
-void QETApp::dialog_export() {
+void QETDiagramEditor::dialog_export() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> dialogExport();
@@ -533,7 +533,7 @@ void QETApp::dialog_export() {
 	Si aucun nom de fichier n'est connu, cette methode appelle la methode enregistrer_sous
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool QETApp::enregistrer() {
+bool QETDiagramEditor::enregistrer() {
 	if (!diagramEnCours()) return(false);
 	return(diagramEnCours() -> enregistrer());
 }
@@ -547,7 +547,7 @@ bool QETApp::enregistrer() {
 	@return true si l'enregistrement a reussi, false sinon
 	@todo detecter le chemin du bureau automatiquement
 */
-bool QETApp::dialogue_enregistrer_sous() {
+bool QETDiagramEditor::dialogue_enregistrer_sous() {
 	if (!diagramEnCours()) return(false);
 	return(diagramEnCours() -> enregistrer_sous());
 }
@@ -556,7 +556,7 @@ bool QETApp::dialogue_enregistrer_sous() {
 	Cette methode cree un nouveau schema.
 	@return true si tout s'est bien passe ; false si vous executez cette fonction dans un univers non cartesien (en fait y'a pas de return(false) :p)
 */
-bool QETApp::nouveau() {
+bool QETDiagramEditor::nouveau() {
 	addDiagramView(new DiagramView(this));
 	return(true);
 }
@@ -565,7 +565,7 @@ bool QETApp::nouveau() {
 	Cette fonction demande un nom de fichier a ouvrir a l'utilisateur
 	@return true si l'ouverture a reussi, false sinon
 */
-bool QETApp::ouvrir() {
+bool QETDiagramEditor::ouvrir() {
 	// demande un nom de fichier a ouvrir a l'utilisateur
 	QString nom_fichier = QFileDialog::getOpenFileName(
 		this,
@@ -610,7 +610,7 @@ bool QETApp::ouvrir() {
 	@return true si la fermeture du fichier a reussi, false sinon
 	@todo detecter les modifications et ne demander que si besoin est
 */
-bool QETApp::fermer() {
+bool QETDiagramEditor::fermer() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return(false);
 	return(sv -> close());
@@ -619,112 +619,112 @@ bool QETApp::fermer() {
 /**
 	@return Le DiagramView qui a le focus dans l'interface MDI
 */
-DiagramView *QETApp::diagramEnCours() const {
+DiagramView *QETDiagramEditor::diagramEnCours() const {
 	return(qobject_cast<DiagramView *>(workspace.activeWindow()));
 }
 
 /**
 	Effectue l'action "couper" sur le schema en cours
 */
-void QETApp::slot_couper() {
+void QETDiagramEditor::slot_couper() {
 	if(diagramEnCours()) diagramEnCours() -> couper();
 }
 
 /**
 	Effectue l'action "copier" sur le diagram en cours
 */
-void QETApp::slot_copier() {
+void QETDiagramEditor::slot_copier() {
 	if(diagramEnCours()) diagramEnCours() -> copier();
 }
 
 /**
 	Effectue l'action "coller" sur le schema en cours
 */
-void QETApp::slot_coller() {
+void QETDiagramEditor::slot_coller() {
 	if(diagramEnCours()) diagramEnCours() -> coller();
 }
 
 /**
 	Effectue l'action "zoom avant" sur le diagram en cours
 */
-void QETApp::slot_zoomPlus() {
+void QETDiagramEditor::slot_zoomPlus() {
 	if(diagramEnCours()) diagramEnCours() -> zoomPlus();
 }
 
 /**
 	Effectue l'action "zoom arriere" sur le schema en cours
 */
-void QETApp::slot_zoomMoins() {
+void QETDiagramEditor::slot_zoomMoins() {
 	if(diagramEnCours()) diagramEnCours() -> zoomMoins();
 }
 
 /**
 	Effectue l'action "zoom arriere" sur le diagram en cours
 */
-void QETApp::slot_zoomFit() {
+void QETDiagramEditor::slot_zoomFit() {
 	if(diagramEnCours()) diagramEnCours() -> zoomFit();
 }
 
 /**
 	Effectue l'action "zoom par defaut" sur le schema en cours
 */
-void QETApp::slot_zoomReset() {
+void QETDiagramEditor::slot_zoomReset() {
 	if(diagramEnCours()) diagramEnCours() -> zoomReset();
 }
 
 /**
 	Effectue l'action "selectionner tout" sur le schema en cours
 */
-void QETApp::slot_selectAll() {
+void QETDiagramEditor::slot_selectAll() {
 	if(diagramEnCours()) diagramEnCours() -> selectAll();
 }
 
 /**
 	Effectue l'action "deselectionenr tout" sur le schema en cours
 */
-void QETApp::slot_selectNothing() {
+void QETDiagramEditor::slot_selectNothing() {
 	if(diagramEnCours()) diagramEnCours() -> selectNothing();
 }
 
 /**
 	Effectue l'action "inverser la selection" sur le schema en cours
 */
-void QETApp::slot_selectInvert() {
+void QETDiagramEditor::slot_selectInvert() {
 	if(diagramEnCours()) diagramEnCours() -> selectInvert();
 }
 
 /**
 	Effectue l'action "supprimer" sur le schema en cours
 */
-void QETApp::slot_supprimer() {
+void QETDiagramEditor::slot_supprimer() {
 	if(diagramEnCours()) diagramEnCours() -> supprimer();
 }
 
 /**
 	Effectue l'action "pivoter" sur le schema en cours
 */
-void QETApp::slot_pivoter() {
+void QETDiagramEditor::slot_pivoter() {
 	if(diagramEnCours()) diagramEnCours() -> pivoter();
 }
 
 /**
 	Effectue l'action "mode selection" sur le schema en cours
 */
-void QETApp::slot_setSelectionMode() {
+void QETDiagramEditor::slot_setSelectionMode() {
 	if(diagramEnCours()) diagramEnCours() -> setSelectionMode();
 }
 
 /**
 	Effectue l'action "mode visualisation" sur le schema en cours
 */
-void QETApp::slot_setVisualisationMode() {
+void QETDiagramEditor::slot_setVisualisationMode() {
 	if(diagramEnCours()) diagramEnCours() -> setVisualisationMode();
 }
 
 /**
 	gere les actions ayant besoin d'un document ouvert
 */
-void QETApp::slot_updateActions() {
+void QETDiagramEditor::slot_updateActions() {
 	DiagramView *sv = diagramEnCours();
 	bool document_ouvert = (sv != 0);
 	
@@ -795,7 +795,7 @@ void QETApp::slot_updateActions() {
 	Ajoute un schema dans l'espace de travail
 	@param sv L'objet DiagramView a ajouter a l'espace de travail
 */
-void QETApp::addDiagramView(DiagramView *sv) {
+void QETDiagramEditor::addDiagramView(DiagramView *sv) {
 	if (!sv) return;
 	
 	// on maximise la nouvelle fenetre si la fenetre en cours est inexistante ou bien maximisee
@@ -815,7 +815,7 @@ void QETApp::addDiagramView(DiagramView *sv) {
 /**
 	met a jour le menu "Fenetres"
 */
-void QETApp::slot_updateMenuFenetres() {
+void QETDiagramEditor::slot_updateMenuFenetres() {
 	// nettoyage du menu
 	foreach(QAction *a, menu_fenetres -> actions()) menu_fenetres -> removeAction(a);
 	
@@ -861,7 +861,7 @@ void QETApp::slot_updateMenuFenetres() {
 	lequel QET doit chercher les definitions XML des elements de la collection QET.
 	@return Le chemin du dossier des elements communs
 */
-QString QETApp::commonElementsDir() {
+QString QETDiagramEditor::commonElementsDir() {
 	return(QDir::current().path() + "/elements/");
 }
 
@@ -871,8 +871,8 @@ QString QETApp::commonElementsDir() {
 	l'utilisateur.
 	@return Le chemin du dossier des elements persos
 */
-QString QETApp::customElementsDir() {
-	return(QETApp::configDir() + "elements/");
+QString QETDiagramEditor::customElementsDir() {
+	return(QETDiagramEditor::configDir() + "elements/");
 }
 
 /**
@@ -883,7 +883,7 @@ QString QETApp::customElementsDir() {
 	~/.qet sous les systemes type UNIX.
 	@return Le chemin du dossier de configuration de QElectroTech
 */
-QString QETApp::configDir() {
+QString QETDiagramEditor::configDir() {
 #ifdef Q_OS_WIN32
 	return(QDir::homePath() + "/Application Data/qet/");
 #else
@@ -898,7 +898,7 @@ QString QETApp::configDir() {
 	@return Une chaine de caracteres vide en cas d'erreur ou le chemin absolu du
 	fichier *.elmt.
 */
-QString QETApp::realPath(QString &sym_path) {
+QString QETDiagramEditor::realPath(QString &sym_path) {
 	QString directory;
 	if (sym_path.startsWith("common://")) {
 		directory = commonElementsDir();
@@ -915,7 +915,7 @@ QString QETApp::realPath(QString &sym_path) {
 	@return Une chaine de caracteres vide en cas d'erreur ou le chemin
 	symbolique designant l'element.
 */
-QString QETApp::symbolicPath(QString &real_path) {
+QString QETDiagramEditor::symbolicPath(QString &real_path) {
 	// recupere les dossier common et custom
 	QString commond = commonElementsDir();
 	QString customd = customElementsDir();
@@ -932,14 +932,14 @@ QString QETApp::symbolicPath(QString &real_path) {
 /**
 	@return Le chemin du dossier contenant les fichiers de langue
 */
-QString QETApp::languagesPath() {
+QString QETDiagramEditor::languagesPath() {
 	return(QDir::current().path() + "/lang/");
 }
 
 /**
 	Edite les informations du schema en cours
 */
-void QETApp::slot_editInfos() {
+void QETDiagramEditor::slot_editInfos() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> dialogEditInfos();
@@ -948,7 +948,7 @@ void QETApp::slot_editInfos() {
 /**
 	Ajoute une colonne au schema en cours
 */
-void QETApp::slot_addColumn() {
+void QETDiagramEditor::slot_addColumn() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> addColumn();
@@ -957,7 +957,7 @@ void QETApp::slot_addColumn() {
 /**
 	Enleve une colonne au schema en cours
 */
-void QETApp::slot_removeColumn() {
+void QETDiagramEditor::slot_removeColumn() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> removeColumn();
@@ -966,7 +966,7 @@ void QETApp::slot_removeColumn() {
 /**
 	Allonge le schema en cours en hauteur
 */
-void QETApp::slot_expand() {
+void QETDiagramEditor::slot_expand() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> expand();
@@ -975,7 +975,7 @@ void QETApp::slot_expand() {
 /**
 	Retrecit le schema en cours en hauteur
 */
-void QETApp::slot_shrink() {
+void QETDiagramEditor::slot_shrink() {
 	DiagramView *sv = diagramEnCours();
 	if (!sv) return;
 	sv -> shrink();

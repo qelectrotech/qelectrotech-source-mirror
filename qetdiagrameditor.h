@@ -1,5 +1,5 @@
-#ifndef QETAPP_H
-#define QETAPP_H
+#ifndef QET_DIAGRAM_EDITOR_H
+#define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
 class DiagramView;
 class ElementsPanelWidget;
@@ -10,16 +10,16 @@ class ElementsPanelWidget;
 	« Diagram » en guise de widget central et un « Panel d'Appareils » en guise
 	de widget « Dock ».
 */
-class QETApp : public QMainWindow {
+class QETDiagramEditor : public QMainWindow {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:
-	QETApp(QWidget * = 0);
-	virtual ~QETApp();
+	QETDiagramEditor(QWidget * = 0);
+	virtual ~QETDiagramEditor();
 	
 	private:
-	QETApp(const QETApp &);
+	QETDiagramEditor(const QETDiagramEditor &);
 	
 	// methodes
 	public:

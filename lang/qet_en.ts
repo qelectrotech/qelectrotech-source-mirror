@@ -1289,7 +1289,7 @@ Please check rights of the directory </translation>
     </message>
 </context>
 <context>
-    <name>QETApp</name>
+    <name>QETDiagramEditor</name>
     <message>
         <location filename="" line="0"/>
         <source>Active / d&#xe9;sactive l&apos;antialiasing pour le rendu du sch&#xe9;ma courant</source>

@@ -5,7 +5,7 @@
 #define MARGIN   5.0
 #include <QtGui>
 #include <QtXml>
-#include "qetapp.h"
+#include "qetdiagrameditor.h"
 #include "borderinset.h"
 class Element;
 class Terminal;
