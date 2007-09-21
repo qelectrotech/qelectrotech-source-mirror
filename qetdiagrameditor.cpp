@@ -60,6 +60,7 @@ QETDiagramEditor::QETDiagramEditor(QWidget *parent) : QMainWindow(parent) {
 	
 	// ajout du panel d'Appareils en tant que QDockWidget
 	qdw_pa = new QDockWidget(tr("Panel d'appareils"), this);
+	qdw_pa -> setObjectName("elements panel");
 	qdw_pa -> setAllowedAreas(Qt::AllDockWidgetAreas);
 	qdw_pa -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	qdw_pa -> setMinimumWidth(160);
@@ -74,18 +75,6 @@ QETDiagramEditor::QETDiagramEditor(QWidget *parent) : QMainWindow(parent) {
 	
 	// mise en place des menus
 	menus();
-	
-	// systray de l'application
-	if (QSystemTrayIcon::isSystemTrayAvailable()) {
-		qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
-		qsti -> setToolTip(tr("QElectroTech"));
-		connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
-		menu_systray = new QMenu(tr("QElectroTech"));
-		menu_systray -> addAction(reduce_appli);
-		menu_systray -> addAction(quitter_qet);
-		qsti -> setContextMenu(menu_systray);
-		qsti -> show();
-	}
 	
 	// la fenetre est maximisee par defaut
 	setMinimumWidth(500);
@@ -104,66 +93,10 @@ QETDiagramEditor::~QETDiagramEditor() {
 }
 
 /**
-	Gere les evenements relatifs au QSystemTrayIcon
-	@param raison un entier representant l'evenement survenu sur le systray
-*/
-void QETDiagramEditor::systray(QSystemTrayIcon::ActivationReason reason) {
-	if (!QSystemTrayIcon::isSystemTrayAvailable()) return;
-	switch(reason) {
-		case QSystemTrayIcon::Context:
-			// affichage du menu
-			(qsti -> contextMenu()) -> show();
-			break;
-		case QSystemTrayIcon::DoubleClick:
-		case QSystemTrayIcon::Trigger:
-			// reduction ou restauration de l'application
-			if (isVisible()) systrayReduce(); else systrayRestore();
-			break;
-		case QSystemTrayIcon::Unknown:
-		default: // ne rien faire
-		break;
-	}
-}
-
-/**
-	Reduit l'application dans le systray
-*/
-void QETDiagramEditor::systrayReduce() {
-	// on sauvegarde la position et les dimensions de l'application
-	wg = saveGeometry();
-	// on cache l'application
-	hide();
-	// on ajoute le menu "Restaurer" et on enleve le menu "Masquer"
-	menu_systray -> insertAction(reduce_appli, restore_appli);
-	menu_systray -> removeAction(reduce_appli);
-}
-
-/**
-	Restaure l'application reduite dans le systray
-*/
-void QETDiagramEditor::systrayRestore() {
-	// on restaure la position et les dimensions de l'application
-	restoreGeometry(wg);
-	// on affiche l'application
-	show();
-	// on ajoute le menu "Masquer" et on enleve le menu "Restaurer"
-	menu_systray -> insertAction(restore_appli, reduce_appli);
-	menu_systray -> removeAction(restore_appli);
-}
-
-/**
 	Permet de quitter l'application lors de la fermeture de la fenetre principale
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
 void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
-	quit(qce);
-}
-
-/**
-	Gere la sortie de l'application
-	@param e Le QCloseEvent correspondant a l'evenement de fermeture
-*/
-void QETDiagramEditor::quit(QCloseEvent *e) {
 	// quitte directement s'il n'y a aucun schema ouvert
 	bool peut_quitter = true;
 	if (diagramEnCours()) {
@@ -173,15 +106,15 @@ void QETDiagramEditor::quit(QCloseEvent *e) {
 				workspace.setActiveWindow(fenetre);
 				if (!fermer()) {
 					peut_quitter = false;
-					if (e != NULL) e -> ignore();
+					qce -> ignore();
 					break;
 				}
 			}
 		}
 	}
 	if (peut_quitter) {
-		if (QSystemTrayIcon::isSystemTrayAvailable()) qsti -> hide();
-		qApp -> quit();
+		setAttribute(Qt::WA_DeleteOnClose);
+		qce -> accept();
 	}
 }
 
@@ -255,13 +188,6 @@ void QETDiagramEditor::actions() {
 	
 	a_propos_de_qet   = new QAction(QIcon(":/ico/qet.png"),        tr("\300 &propos de QElectroTech"),         this);
 	a_propos_de_qt    = new QAction(QIcon(":/ico/qt.png"),         tr("\300 propos de &Qt"),                   this);
-	
-	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                             this);
-	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                           this);
-	
-	// info-bulles
-	reduce_appli      -> setToolTip(tr("Reduire QElectroTech dans le systray"));
-	restore_appli     -> setToolTip(tr("Restaurer QElectroTech"));
 	
 	// raccourcis clavier
 	nouveau_fichier   -> setShortcut(QKeySequence::New);
@@ -354,7 +280,7 @@ void QETDiagramEditor::actions() {
 	grp_visu_sel -> setExclusive(true);
 	
 	// connexion a des slots
-	connect(quitter_qet,      SIGNAL(triggered()), this,       SLOT(quit())                     );
+	connect(quitter_qet,      SIGNAL(triggered()), this,       SLOT(close())                     );
 	connect(sel_tout,         SIGNAL(triggered()), this,       SLOT(slot_selectAll())           );
 	connect(sel_rien,         SIGNAL(triggered()), this,       SLOT(slot_selectNothing())       );
 	connect(sel_inverse,      SIGNAL(triggered()), this,       SLOT(slot_selectInvert())        );
@@ -366,8 +292,6 @@ void QETDiagramEditor::actions() {
 	connect(mode_visualise,   SIGNAL(triggered()), this,       SLOT(slot_setVisualisationMode()));
 	connect(a_propos_de_qet,  SIGNAL(triggered()), this,       SLOT(aPropos())                  );
 	connect(a_propos_de_qt,   SIGNAL(triggered()), qApp,       SLOT(aboutQt())                  );
-	connect(reduce_appli,     SIGNAL(triggered()), this,       SLOT(systrayReduce())            );
-	connect(restore_appli,    SIGNAL(triggered()), this,       SLOT(systrayRestore())           );
 	connect(zoom_avant,       SIGNAL(triggered()), this,       SLOT(slot_zoomPlus())            );
 	connect(zoom_arriere,     SIGNAL(triggered()), this,       SLOT(slot_zoomMoins())           );
 	connect(zoom_adapte,      SIGNAL(triggered()), this,       SLOT(slot_zoomFit())             );
@@ -487,6 +411,7 @@ void QETDiagramEditor::menus() {
 */
 void QETDiagramEditor::toolbar() {
 	barre_outils = new QToolBar(tr("Outils"), this);
+	barre_outils -> setObjectName("toolbar");
 	
 	// Modes selection / visualisation
 	barre_outils -> addAction(mode_selection);

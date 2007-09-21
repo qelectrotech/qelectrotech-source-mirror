@@ -1,5 +1,5 @@
 #include "qetapp.h"
-
+#include "qetdiagrameditor.h"
 /**
 	Fonction principale du programme QElectroTech
 	@param argc nombre de parametres

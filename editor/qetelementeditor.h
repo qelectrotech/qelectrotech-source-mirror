@@ -71,14 +71,13 @@ class QETElementEditor : public QMainWindow {
 	void setupActions();
 	void setupMenus();
 	void setupInterface();
-	bool close();
+	bool canClose();
 	
 	public slots:
 	void slot_new();
 	void slot_open();
 	bool slot_save();
 	bool slot_saveAs();
-	void slot_quit(QCloseEvent * = NULL);
 	void slot_setRubberBandToView();
 	void slot_setNoDragToView();
 	void slot_setNormalMode();

@@ -9,7 +9,7 @@
 QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 	// QET se loge dans le systray et ne doit donc pas quitter des que toutes
 	// les fenetres sont cachees
-	setQuitOnLastWindowClosed(false);
+	//setQuitOnLastWindowClosed(false);
 	
 	// selectionne le langage du systeme
 	QString system_language = QLocale::system().name().left(2);
@@ -22,9 +22,9 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 	quitter_qet       -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	reduce_appli      -> setToolTip(tr("Reduire QElectroTech dans le systray"));
 	restore_appli     -> setToolTip(tr("Restaurer QElectroTech"));
-	connect(quitter_qet,      SIGNAL(triggered()), this,       SLOT(quit())                     );
-	connect(reduce_appli,     SIGNAL(triggered()), this,       SLOT(systrayReduce())            );
-	connect(restore_appli,    SIGNAL(triggered()), this,       SLOT(systrayRestore())           );
+	connect(quitter_qet,      SIGNAL(triggered()), this,       SLOT(closeEveryEditor()));
+	connect(reduce_appli,     SIGNAL(triggered()), this,       SLOT(systrayReduce()));
+	connect(restore_appli,    SIGNAL(triggered()), this,       SLOT(systrayRestore()));
 	if (QSystemTrayIcon::isSystemTrayAvailable()) {
 		qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
 		qsti -> setToolTip(tr("QElectroTech"));
@@ -35,6 +35,7 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		menu_systray -> addAction(quitter_qet);
 		qsti -> setContextMenu(menu_systray);
 		qsti -> show();
+		every_editor_reduced = false;
 	}
 	
 }
@@ -78,7 +79,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 		case QSystemTrayIcon::DoubleClick:
 		case QSystemTrayIcon::Trigger:
 			// reduction ou restauration de l'application
-			//if (isVisible()) systrayReduce(); else systrayRestore();
+			if (every_editor_reduced) systrayRestore(); else systrayReduce();
 			break;
 		case QSystemTrayIcon::Unknown:
 		default: // ne rien faire
@@ -95,6 +96,7 @@ void QETApp::systrayReduce() {
 	// on ajoute le menu "Restaurer" et on enleve le menu "Masquer"
 	menu_systray -> insertAction(reduce_appli, restore_appli);
 	menu_systray -> removeAction(reduce_appli);
+	every_editor_reduced = true;
 }
 
 /**
@@ -106,6 +108,7 @@ void QETApp::systrayRestore() {
 	// on ajoute le menu "Masquer" et on enleve le menu "Restaurer"
 	menu_systray -> insertAction(restore_appli, reduce_appli);
 	menu_systray -> removeAction(restore_appli);
+	every_editor_reduced = false;
 }
 
 /**
@@ -186,6 +189,16 @@ QString QETApp::symbolicPath(QString &real_path) {
 */
 QString QETApp::languagesPath() {
 	return(QDir::current().path() + "/lang/");
+}
+
+/**
+	Ferme tous les editeurs
+*/
+void QETApp::closeEveryEditor() {
+	// s'assure que toutes les fenetres soient visibles avant de quitter
+	systrayRestore();
+	foreach(QETDiagramEditor *e, diagramEditors()) e -> close();
+	foreach(QETElementEditor *e, elementEditors()) e -> close();
 }
 
 /**

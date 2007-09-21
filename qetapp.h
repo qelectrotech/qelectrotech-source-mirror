@@ -47,11 +47,13 @@ class QETApp : public QApplication {
 	QAction *quitter_qet;
 	QHash<QMainWindow *, QByteArray> window_geometries;
 	QHash<QMainWindow *, QByteArray> window_states;
+	bool every_editor_reduced;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);
 	void systrayReduce();
 	void systrayRestore();
+	void closeEveryEditor();
 	
 	// methodes privees
 	private slots:

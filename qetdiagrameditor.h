@@ -35,10 +35,6 @@ class QETDiagramEditor : public QMainWindow {
 	void toolbar();
 	
 	public slots:
-	void systray(QSystemTrayIcon::ActivationReason);
-	void systrayReduce();
-	void systrayRestore();
-	void quit(QCloseEvent * = NULL);
 	void toggleFullScreen();
 	void aPropos();
 	void dialog_print();
@@ -101,8 +97,6 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *expand_diagram;
 	QAction *shrink_diagram;
 	QAction *poser_fil;
-	QAction *reduce_appli;
-	QAction *restore_appli;
 	QAction *zoom_avant;
 	QAction *zoom_arriere;
 	QAction *zoom_adapte;
@@ -117,7 +111,6 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *f_reorganise;
 	QAction *f_prec;
 	QAction *f_suiv;
-	QAction *menu_systray_masquer_restaurer;
 	
 	private:
 	QWorkspace workspace;
@@ -126,15 +119,7 @@ class QETDiagramEditor : public QMainWindow {
 	QDockWidget *qdw_pa;
 	/// Panel d'Appareils
 	ElementsPanelWidget *pa;
-	/// Elements de menus pour l'icone du systray
-	QMenu *menu_systray;
-	QAction *systray_masquer;
-	QAction * config_fullscreen;
 	QMenu *menu_fenetres;
-	/// Icone dans le systray
-	QSystemTrayIcon *qsti;
-	/// Geometrie de la fenetre principale
-	QByteArray wg;
 	QToolBar *barre_outils;
 };
 #endif

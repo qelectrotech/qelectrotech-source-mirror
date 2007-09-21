@@ -66,7 +66,7 @@ void QETElementEditor::setupActions() {
 	connect(open,          SIGNAL(triggered()), this,     SLOT(slot_open()));
 	connect(save,          SIGNAL(triggered()), this,     SLOT(slot_save()));
 	connect(save_as,       SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
-	connect(quit,          SIGNAL(triggered()), this,     SLOT(slot_quit()));
+	connect(quit,          SIGNAL(triggered()), this,     SLOT(close()));
 	connect(selectall,     SIGNAL(triggered()), ce_scene, SLOT(slot_selectAll()));
 	connect(deselectall,   SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
 	connect(inv_select,    SIGNAL(triggered()), ce_scene, SLOT(slot_invertSelection()));
@@ -119,6 +119,7 @@ void QETElementEditor::setupActions() {
 	parts -> setExclusive(true);
 	
 	parts_toolbar = new QToolBar(tr("Parties"), this);
+	parts_toolbar -> setObjectName("parts");
 	foreach (QAction *action, parts -> actions()) parts_toolbar -> addAction(action);
 	move -> setChecked(true);
 	parts_toolbar -> setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea);
@@ -205,6 +206,7 @@ void QETElementEditor::setupInterface() {
 	
 	// panel sur le cote pour editer les parties
 	tools_dock = new QDockWidget(tr("Informations"), this);
+	tools_dock -> setObjectName("informations");
 	tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	tools_dock -> setMinimumWidth(290);
@@ -215,6 +217,7 @@ void QETElementEditor::setupInterface() {
 	
 	// panel sur le cote pour les annulations
 	undo_dock = new QDockWidget(tr("Annulations"), this);
+	undo_dock -> setObjectName("undo");
 	undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	undo_dock -> setMinimumWidth(290);
@@ -429,14 +432,7 @@ bool QETElementEditor::slot_saveAs() {
 	return(result_save);
 }
 
-void QETElementEditor::slot_quit(QCloseEvent *event) {
-	if (close()) {
-		if (event != NULL) event -> accept();
-		delete(this);
-	} else if (event != NULL) event -> ignore();
-}
-
-bool QETElementEditor::close() {
+bool QETElementEditor::canClose() {
 	if (ce_scene -> undoStack().isClean()) return(true);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QMessageBox::question(
@@ -460,5 +456,8 @@ bool QETElementEditor::close() {
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
 void QETElementEditor::closeEvent(QCloseEvent *qce) {
-	slot_quit(qce);
+	if (canClose()) {
+		setAttribute(Qt::WA_DeleteOnClose);
+		qce -> accept();
+	} else qce -> ignore();
 }
