@@ -243,10 +243,28 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 		window_geometries.insert(window, window -> saveGeometry());
 		window_states.insert(window, window -> saveState());
 		window -> hide();
-		/// @todo cacher aussi les toolbars et les docks ?
+		// cache aussi les toolbars et les docks
+		foreach (QWidget *qw, floatingToolbarsAndDocksForMainWindow(window)) {
+			qw -> hide();
+		}
 	} else {
 		window -> show();
 		window -> restoreGeometry(window_geometries[window]);
 		window -> restoreState(window_states[window]);
 	}
+}
+
+/**
+	@param window fenetre dont il faut trouver les barres d'outils et dock flottants
+	@return les barres d'outils et dock flottants de la fenetre
+*/
+QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *window) const {
+	QList<QWidget *> widgets;
+	foreach(QWidget *qw, topLevelWidgets()) {
+		if (!qw -> isWindow()) continue;
+		if (qobject_cast<QToolBar *>(qw) || qobject_cast<QDockWidget *>(qw)) {
+			if (qw -> parent() == window) widgets << qw;
+		}
+	}
+	return(widgets);
 }

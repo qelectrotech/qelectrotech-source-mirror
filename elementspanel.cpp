@@ -78,7 +78,6 @@ void ElementsPanel::dropEvent(QDropEvent */*e*/) {
 /**
 	Gere le debut des drag'n drop
 	@param supportedActions Les actions supportees
-	@todo virer les lignes type «if ("tel appareil") construire TelAppareil» => trouver un moyen d'automatiser ca
  */
 void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
 	// recupere le nom du fichier decrivant l'element

@@ -62,6 +62,7 @@ class QETApp : public QApplication {
 	private:
 	QList<QETDiagramEditor *> diagramEditors() const;
 	QList<QETElementEditor *> elementEditors() const;
+	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
 	void setMainWindowVisible(QMainWindow *, bool);
 };
 #endif

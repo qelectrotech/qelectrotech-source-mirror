@@ -169,10 +169,17 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_size_hs);
 	edit_menu -> addAction(edit_ori);
 	
+	// menu Affichage > Afficher
+	QMenu *display_toolbars = createPopupMenu();
+	display_toolbars -> setTearOffEnabled(true);
+	display_toolbars -> setTitle(tr("Afficher"));
+	display_menu -> addMenu(display_toolbars);
+	
 	menuBar() -> addMenu(file_menu);
 	menuBar() -> addMenu(edit_menu);
-	/*
 	menuBar() -> addMenu(display_menu);
+	
+	/*
 	menuBar() -> addMenu(tools_menu);
 	menuBar() -> addMenu(help_menu);
 	*/
