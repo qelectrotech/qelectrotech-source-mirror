@@ -25,12 +25,6 @@ class QETDiagramEditor : public QMainWindow {
 	public:
 	void closeEvent(QCloseEvent *);
 	void addDiagramView(DiagramView *);
-	static QString commonElementsDir();
-	static QString customElementsDir();
-	static QString configDir();
-	static QString languagesPath();
-	static QString realPath(QString &);
-	static QString symbolicPath(QString &);
 	
 	protected:
 	void actions();

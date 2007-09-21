@@ -36,6 +36,7 @@ HEADERS += aboutqet.h \
            orientationset.h \
            orientationsetwidget.h \
            qet.h \
+		   qetapp.h \
            qetdiagrameditor.h \
            qgimanager.h \
            terminal.h \
@@ -90,6 +91,7 @@ SOURCES += aboutqet.cpp \
            newelementwizard.cpp \
            orientationset.cpp \
            orientationsetwidget.cpp \
+		   qetapp.cpp \
            qetdiagrameditor.cpp \
            qgimanager.cpp \
            terminal.cpp \

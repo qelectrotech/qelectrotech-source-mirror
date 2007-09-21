@@ -1,5 +1,6 @@
 #include <QtXml>
 #include "elementscategorieslist.h"
+#include "qetapp.h"
 #include "elementscategory.h"
 #include "qetdiagrameditor.h"
 
@@ -31,7 +32,7 @@ void ElementsCategoriesList::reload() {
 	while (takeTopLevelItem(0));
 	
 	// chargement des elements de la collection utilisateur
-	addDir(invisibleRootItem(), QETDiagramEditor::customElementsDir(), tr("Collection utilisateur"));
+	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 }
 
 /**
