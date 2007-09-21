@@ -41,6 +41,8 @@ class ElementScene : public QGraphicsScene {
 	QGIManager qgi_manager;
 	/// Pile des actions annulables
 	QUndoStack undo_stack;
+	/// Position du premier item selectionne (utilise pour annuler les deplacements)
+	QPointF fsi_pos;
 	
 	/// Variables relatives a la gestion du dessin des parties sur la scene
 	Behavior behavior;

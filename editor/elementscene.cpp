@@ -74,9 +74,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> buttons() & Qt::LeftButton) {
 		switch(behavior) {
-			case Normal:
-				QGraphicsScene::mouseMoveEvent(e);
-				break;
 			case Line:
 				current_line -> setLine(QLineF(current_line -> line().p1(), e -> scenePos()));
 				break;
@@ -107,6 +104,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				temp_polygon << e -> scenePos();
 				current_polygon -> setPolygon(temp_polygon);
 				break;
+			case Normal:
 			default:
 				QGraphicsScene::mouseMoveEvent(e);
 		}
@@ -123,9 +121,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	QPolygonF temp_polygon;
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
-			case Normal:
-				QGraphicsScene::mousePressEvent(e);
-				break;
 			case Line:
 				current_line = new PartLine(element_editor, 0, this);
 				current_line -> setLine(QLineF(e -> scenePos(), e -> scenePos()));
@@ -152,8 +147,10 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 				temp_polygon << e -> scenePos();
 				current_polygon -> setPolygon(temp_polygon);
 				break;
+			case Normal:
 			default:
 				QGraphicsScene::mousePressEvent(e);
+				if (!selectedItems().isEmpty()) fsi_pos = selectedItems().first() -> scenePos();
 		}
 	} else QGraphicsScene::mousePressEvent(e);
 }
@@ -200,7 +197,7 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				QGraphicsScene::mouseReleaseEvent(e);
 				// detecte les deplacements de parties
 				if (!selectedItems().isEmpty()) {
-					QPointF movement = e -> scenePos() - e -> buttonDownScenePos(Qt::LeftButton);
+					QPointF movement = selectedItems().first() -> scenePos() - fsi_pos;
 					if (!movement.isNull()) {
 						undo_stack.push(new MovePartsCommand(movement, this, selectedItems()));
 					}
