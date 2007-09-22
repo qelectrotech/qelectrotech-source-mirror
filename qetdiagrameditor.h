@@ -15,7 +15,7 @@ class QETDiagramEditor : public QMainWindow {
 	
 	// constructeurs, destructeur
 	public:
-	QETDiagramEditor(QWidget * = 0);
+	QETDiagramEditor(const QStringList & = QStringList(), QWidget * = 0);
 	virtual ~QETDiagramEditor();
 	
 	private:

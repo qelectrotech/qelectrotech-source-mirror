@@ -35,25 +35,38 @@ class QETApp : public QApplication {
 	QTranslator qtTranslator;
 	QTranslator qetTranslator;
 	QSystemTrayIcon *qsti;
-	/// Elements de menus pour l'icone du systray
 	QMenu *menu_systray;
-	QAction *systray_masquer;
-	QAction *config_fullscreen;
-	/// Geometrie de la fenetre principale
-	QByteArray wg;
+	QAction *quitter_qet;
 	QAction *reduce_appli;
 	QAction *restore_appli;
-	QAction *menu_systray_masquer_restaurer;
-	QAction *quitter_qet;
+	QAction *reduce_diagrams;
+	QAction *restore_diagrams;
+	QAction *reduce_elements;
+	QAction *restore_elements;
+	QAction *new_diagram;
+	QAction *new_element;
 	QHash<QMainWindow *, QByteArray> window_geometries;
 	QHash<QMainWindow *, QByteArray> window_states;
 	bool every_editor_reduced;
+	bool every_diagram_reduced;
+	bool every_diagram_visible;
+	bool every_element_reduced;
+	bool every_element_visible;
+	QSignalMapper signal_map;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);
-	void systrayReduce();
-	void systrayRestore();
+	void reduceEveryEditor();
+	void restoreEveryEditor();
+	void reduceDiagramEditors();
+	void restoreDiagramEditors();
+	void reduceElementEditors();
+	void restoreElementEditors();
+	void newDiagramEditor();
+	void newElementEditor();
 	void closeEveryEditor();
+	void setMainWindowVisible(QMainWindow *, bool);
+	void invertMainWindowVisibility(QWidget *);
 	
 	// methodes privees
 	private slots:
@@ -63,6 +76,7 @@ class QETApp : public QApplication {
 	QList<QETDiagramEditor *> diagramEditors() const;
 	QList<QETElementEditor *> elementEditors() const;
 	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
-	void setMainWindowVisible(QMainWindow *, bool);
+	void buildSystemTrayMenu();
+	void fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements);
 };
 #endif

@@ -6,9 +6,10 @@
 
 /**
 	constructeur
+	@param files Liste de fichiers a ouvrir
 	@param parent le widget parent de la fenetre principale
  */
-QETDiagramEditor::QETDiagramEditor(QWidget *parent) : QMainWindow(parent) {
+QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : QMainWindow(parent) {
 	
 	// cree les dossiers de configuration si necessaire
 	QDir config_dir(QETApp::configDir());
@@ -22,15 +23,6 @@ QETDiagramEditor::QETDiagramEditor(QWidget *parent) : QMainWindow(parent) {
 	
 	// mise en place du signalmapper
 	connect(&windowMapper, SIGNAL(mapped(QWidget *)), &workspace, SLOT(setActiveWindow(QWidget *)));
-	
-	// recupere les arguments passes au programme
-	QStringList args = QCoreApplication::arguments();
-	
-	// recupere les chemins de fichiers parmi les arguments
-	QStringList files;
-	for (int i = 1 ; i < args.size() ; ++ i) {
-		if (QFileInfo(args.at(i)).exists()) files << args.at(i);
-	}
 	
 	// si des chemins de fichiers valides sont passes en arguments
 	QList<DiagramView *> diagram_views;
@@ -84,6 +76,9 @@ QETDiagramEditor::QETDiagramEditor(QWidget *parent) : QMainWindow(parent) {
 	// connexions signaux / slots pour une interface sensee
 	connect(&workspace,                SIGNAL(windowActivated(QWidget *)), this, SLOT(slot_updateActions()));
 	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updateActions()));
+	
+	// affichage
+	show();
 }
 
 /**
@@ -346,9 +341,9 @@ void QETDiagramEditor::menus() {
 	menu_fichier -> addAction(enr_fichier_sous);
 	menu_fichier -> addAction(fermer_fichier);
 	menu_fichier -> addSeparator();
-	menu_fichier -> addAction(importer);
+	//menu_fichier -> addAction(importer);
 	menu_fichier -> addAction(exporter);
-	menu_fichier -> addSeparator();
+	//menu_fichier -> addSeparator();
 	menu_fichier -> addAction(imprimer);
 	menu_fichier -> addSeparator();
 	menu_fichier -> addAction(quitter_qet);

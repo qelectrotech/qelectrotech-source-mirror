@@ -58,5 +58,6 @@
 	<file>ico/viewmag.png</file>
 	<file>ico/viewmag+.png</file>
 	<file>ico/west.png</file>
+	<file>ico/window_new.png</file>
 </qresource>
 </RCC>

@@ -1,43 +1,66 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
+
 /**
 	Constructeur
 	@param argc Nombre d'arguments passes a l'application
 	@param argv Arguments passes a l'application
 */
 QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
-	// QET se loge dans le systray et ne doit donc pas quitter des que toutes
-	// les fenetres sont cachees
-	//setQuitOnLastWindowClosed(false);
-	
 	// selectionne le langage du systeme
 	QString system_language = QLocale::system().name().left(2);
 	setLanguage(system_language);
 	
+	// nettoyage avant de quitter l'application
+	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
+	
 	// systray de l'application
-	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                             this);
-	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                             this);
-	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                           this);
-	quitter_qet       -> setStatusTip(tr("Ferme l'application QElectroTech"));
-	reduce_appli      -> setToolTip(tr("Reduire QElectroTech dans le systray"));
-	restore_appli     -> setToolTip(tr("Restaurer QElectroTech"));
-	connect(quitter_qet,      SIGNAL(triggered()), this,       SLOT(closeEveryEditor()));
-	connect(reduce_appli,     SIGNAL(triggered()), this,       SLOT(systrayReduce()));
-	connect(restore_appli,    SIGNAL(triggered()), this,       SLOT(systrayRestore()));
 	if (QSystemTrayIcon::isSystemTrayAvailable()) {
+		// initialisation des menus de l'icone dans le systray
+		menu_systray = new QMenu(tr("QElectroTech"));
+		
+		quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
+		reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
+		restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
+		reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
+		restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
+		reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
+		restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
+		new_diagram       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
+		new_element       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
+		
+		quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
+		reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
+		restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
+		
+		connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(closeEveryEditor()));
+		connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
+		connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
+		connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
+		connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
+		connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
+		connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
+		connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
+		connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+		
+		// connexion pour le signalmapper
+		connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
+		
+		// initialisation de l'icone du systray
 		qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
 		qsti -> setToolTip(tr("QElectroTech"));
 		connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
-		connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
-		menu_systray = new QMenu(tr("QElectroTech"));
-		menu_systray -> addAction(reduce_appli);
-		menu_systray -> addAction(quitter_qet);
 		qsti -> setContextMenu(menu_systray);
 		qsti -> show();
-		every_editor_reduced = false;
 	}
 	
+	// Creation et affichage d'un editeur de schema
+	QStringList files;
+	foreach(QString argument, arguments()) {
+		if (QFileInfo(argument).exists()) files << argument;
+	}
+	new QETDiagramEditor(files);
 }
 
 /// Destructeur
@@ -74,12 +97,14 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 	switch(reason) {
 		case QSystemTrayIcon::Context:
 			// affichage du menu
-			(qsti -> contextMenu()) -> show();
+			buildSystemTrayMenu();
+			qsti -> contextMenu() -> show();
 			break;
 		case QSystemTrayIcon::DoubleClick:
 		case QSystemTrayIcon::Trigger:
 			// reduction ou restauration de l'application
-			if (every_editor_reduced) systrayRestore(); else systrayReduce();
+			fetchWindowStats(diagramEditors(), elementEditors());
+			if (every_editor_reduced) restoreEveryEditor(); else reduceEveryEditor();
 			break;
 		case QSystemTrayIcon::Unknown:
 		default: // ne rien faire
@@ -87,28 +112,48 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 	}
 }
 
-/**
-	Reduit toutes les fenetres de l'application dans le systray
-*/
-void QETApp::systrayReduce() {
-	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, false);
-	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, false);
-	// on ajoute le menu "Restaurer" et on enleve le menu "Masquer"
-	menu_systray -> insertAction(reduce_appli, restore_appli);
-	menu_systray -> removeAction(reduce_appli);
+/// Reduit toutes les fenetres de l'application dans le systray
+void QETApp::reduceEveryEditor() {
+	reduceDiagramEditors();
+	reduceElementEditors();
 	every_editor_reduced = true;
 }
 
-/**
-	Restaure toutes les fenetres de l'application dans le systray
-*/
-void QETApp::systrayRestore() {
-	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, true);
-	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, true);
-	// on ajoute le menu "Masquer" et on enleve le menu "Restaurer"
-	menu_systray -> insertAction(restore_appli, reduce_appli);
-	menu_systray -> removeAction(restore_appli);
+/// Restaure toutes les fenetres de l'application dans le systray
+void QETApp::restoreEveryEditor() {
+	restoreDiagramEditors();
+	restoreElementEditors();
 	every_editor_reduced = false;
+}
+
+/// Reduit tous les editeurs de schemas dans le systray
+void QETApp::reduceDiagramEditors() {
+	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, false);
+}
+
+/// Restaure tous les editeurs de schemas dans le systray
+void QETApp::restoreDiagramEditors() {
+	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, true);
+}
+
+/// Reduit tous les editeurs d'element dans le systray
+void QETApp::reduceElementEditors() {
+	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, false);
+}
+
+/// Restaure tous les editeurs d'element dans le systray
+void QETApp::restoreElementEditors() {
+	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, true);
+}
+
+/// lance un nouvel editeur de schemas
+void QETApp::newDiagramEditor() {
+	new QETDiagramEditor();
+}
+
+/// lance un nouvel editeur d'element
+void QETApp::newElementEditor() {
+	new QETElementEditor();
 }
 
 /**
@@ -196,7 +241,7 @@ QString QETApp::languagesPath() {
 */
 void QETApp::closeEveryEditor() {
 	// s'assure que toutes les fenetres soient visibles avant de quitter
-	systrayRestore();
+	restoreEveryEditor();
 	foreach(QETDiagramEditor *e, diagramEditors()) e -> close();
 	foreach(QETElementEditor *e, elementEditors()) e -> close();
 }
@@ -249,9 +294,20 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 		}
 	} else {
 		window -> show();
+#ifndef Q_OS_WIN32
 		window -> restoreGeometry(window_geometries[window]);
+#endif
 		window -> restoreState(window_states[window]);
 	}
+}
+
+/**
+	Affiche une fenetre (editeurs de schemas / editeurs d élements) si
+	celle-ci est cachee ou la cache si elle est affichee.
+	@param window fenetre a afficher / cacher
+*/
+void QETApp::invertMainWindowVisibility(QWidget *window) {
+	if (QMainWindow *w = qobject_cast<QMainWindow *>(window)) setMainWindowVisible(w, !w -> isVisible());
 }
 
 /**
@@ -267,4 +323,71 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *wind
 		}
 	}
 	return(widgets);
+}
+
+/// construit le menu de l'icone dans le systray
+void QETApp::buildSystemTrayMenu() {
+	menu_systray -> clear();
+	
+	// recupere les editeurs
+	QList<QETDiagramEditor *> diagrams = diagramEditors();
+	QList<QETElementEditor *> elements = elementEditors();
+	fetchWindowStats(diagrams, elements);
+	
+	// ajoute le bouton reduire / restaurer au menu
+	menu_systray -> addAction(every_editor_reduced ? restore_appli : reduce_appli);
+	
+	// ajoute les editeurs de schemas dans un sous-menu
+	QMenu *diagrams_submenu = menu_systray -> addMenu(tr("\311diteurs de sch\351mas"));
+	diagrams_submenu -> addAction(reduce_diagrams);
+	diagrams_submenu -> addAction(restore_diagrams);
+	diagrams_submenu -> addAction(new_diagram);
+	reduce_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_reduced);
+	restore_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_visible);
+	diagrams_submenu -> addSeparator();
+	foreach(QETDiagramEditor *diagram, diagrams) {
+		QAction *current_diagram_menu = diagrams_submenu -> addAction(diagram -> windowTitle());
+		current_diagram_menu -> setCheckable(true);
+		current_diagram_menu -> setChecked(diagram -> isVisible());
+		connect(current_diagram_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		signal_map.setMapping(current_diagram_menu, diagram);
+	}
+	
+	// ajoute les editeurs d'elements au menu
+	QMenu *elements_submenu = menu_systray -> addMenu(tr("\311diteurs d'\351l\351ment"));
+	elements_submenu -> addAction(reduce_elements);
+	elements_submenu -> addAction(restore_elements);
+	elements_submenu -> addAction(new_element);
+	reduce_elements -> setEnabled(!elements.isEmpty() && !every_element_reduced);
+	restore_elements -> setEnabled(!elements.isEmpty() && !every_element_visible);
+	elements_submenu -> addSeparator();
+	foreach(QETElementEditor *element, elements) {
+		QAction *current_element_menu = elements_submenu -> addAction(element -> windowTitle());
+		current_element_menu -> setCheckable(true);
+		current_element_menu -> setChecked(element -> isVisible());
+		connect(current_element_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		signal_map.setMapping(current_element_menu, element);
+	}
+	
+	// ajoute le bouton quitter au menu
+	menu_systray -> addSeparator();
+	menu_systray -> addAction(quitter_qet);
+}
+
+/// Met a jour les booleens concernant l'etat des fenetres
+void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements) {
+	// compte le nombre de schemas visibles
+	int visible_diagrams = 0;
+	foreach(QMainWindow *w, diagrams) if (w -> isVisible()) ++ visible_diagrams;
+	every_diagram_reduced = !visible_diagrams;
+	every_diagram_visible = visible_diagrams == diagrams.count();
+	
+	// compte le nombre de schemas visibles
+	int visible_elements = 0;
+	foreach(QMainWindow *w, elements) if (w -> isVisible()) ++ visible_elements;
+	every_element_reduced = !visible_elements;
+	every_element_visible = visible_elements == elements.count();
+	
+	// determine si tous les elements sont reduits
+	every_editor_reduced = every_element_reduced && every_diagram_reduced;
 }
