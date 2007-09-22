@@ -86,7 +86,7 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 	if (!movement.isNull()) {
 		QSet<Element *> moved_elements = elementsToMove();
 		if (!moved_elements.isEmpty()) {
-			Element *first_elmt;
+			Element *first_elmt = NULL;
 			foreach(Element *elmt, moved_elements) {
 				first_elmt = elmt;
 				break;

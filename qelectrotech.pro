@@ -122,5 +122,6 @@ SOURCES += aboutqet.cpp \
            editor/textfieldeditor.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
+RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc
 QT += xml
 CONFIG += debug_and_release
