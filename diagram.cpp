@@ -9,7 +9,7 @@
 	Constructeur
 	@param parent Le QObject parent du schema
 */
-Diagram::Diagram(QObject *parent) : QGraphicsScene(parent) {
+Diagram::Diagram(QObject *parent) : QGraphicsScene(parent), qgi_manager(this) {
 	setBackgroundBrush(Qt::white);
 	conducer_setter = new QGraphicsLineItem(0, 0);
 	conducer_setter -> setZValue(1000000);
@@ -156,7 +156,6 @@ QImage Diagram::toImage(int width, int height, Qt::AspectRatioMode aspectRatioMo
 /**
 	Permet de connaitre les dimensions qu'aura l'image generee par la methode toImage()
 	@return La taille de l'image generee par toImage()
-	@todo tenir compte des arguments
 */
 QSize Diagram::imageSize() const {
 	// determine la zone source =  contenu du schema + marges
@@ -259,7 +258,6 @@ QDomDocument Diagram::toXml(bool diagram) {
 bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations) {
 	QDomElement racine = document.documentElement();
 	// le premier element doit etre un schema
-	/// @todo renommer schema en diagram
 	if (racine.tagName() != "diagram") return(false);
 	
 	// lecture des attributs de ce schema

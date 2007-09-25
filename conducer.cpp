@@ -3,6 +3,7 @@
 #include "conducersegment.h"
 #include "conducersegmentprofile.h"
 #include "element.h"
+#include "diagram.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conducer::pen_and_brush_initialized = false;
@@ -55,7 +56,6 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	text_item -> setPlainText("_");
 	text_item -> setTextInteractionFlags(Qt::TextEditorInteraction);
 	calculateTextItemPosition();
-	scene -> addItem(text_item);
 	text_item -> setParentItem(this);
 }
 
@@ -457,6 +457,11 @@ void Conducer::destroy() {
 	terminal2 -> removeConducer(this);
 }
 
+/// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant
+Diagram *Conducer::diagram() const {
+	return(qobject_cast<Diagram *>(scene()));
+}
+
 /**
 	Methode de validation d'element XML
 	@param e Un element XML sense represente un Conducteur
@@ -523,14 +528,6 @@ void Conducer::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 /**
 	Gere les deplacements de souris sur le conducteur.
 	@param e L'evenement decrivant le deplacement de souris.
-	@todo
-	-calculer le trajet du conducteur differemment selon l'etat du flag "trajet modifie"
-	-garder une liste des points constituants le trajet
-	-lorsque le fil est selectionne, dessiner ces points (cercles)
-	-lors d'un mousemoveevent: detecter la position du clic : si cela tombe dans la zone d'un point :
-		-deplacer ce point en consequence
-		-mettre le flag "trajet modifie" a true
-	-gerer les contraintes
 */
 void Conducer::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche

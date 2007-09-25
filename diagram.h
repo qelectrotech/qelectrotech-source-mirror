@@ -7,6 +7,7 @@
 #include <QtXml>
 #include "qetdiagrameditor.h"
 #include "borderinset.h"
+#include "qgimanager.h"
 class Element;
 class Terminal;
 class Conducer;
@@ -34,6 +35,9 @@ class Diagram : public QGraphicsScene {
 	QSet<Element *> elements_to_move;
 	QSet<Conducer *> conducers_to_move;
 	QHash<Conducer *, Terminal *> conducers_to_update;
+	QGIManager qgi_manager;
+	QUndoStack undo_stack;
+	
 	
 	// methodes
 	public:
@@ -67,6 +71,9 @@ class Diagram : public QGraphicsScene {
 	const QSet<Element *> &elementsToMove();
 	const QSet<Conducer *> &conducersToMove();
 	const QHash<Conducer *, Terminal *> &conducersToUpdate();
+	
+	QUndoStack &undoStack();
+	QGIManager &qgiManager();
 	
 	private slots:
 	void slot_checkSelectionEmptinessChange();
@@ -178,6 +185,16 @@ inline const QSet<Conducer *> &Diagram::conducersToMove() {
 inline const QHash<Conducer *, Terminal *> &Diagram::conducersToUpdate() {
 	if (!moved_elements_fetched) fetchMovedElements();
 	return(conducers_to_update);
+}
+
+/// @return la pile d'annulations de ce schema
+inline QUndoStack &Diagram::undoStack() {
+	return(undo_stack);
+}
+
+/// @return le egstionnaire de QGraphicsItem de ce schema
+inline QGIManager &Diagram::qgiManager() {
+	return(qgi_manager);
 }
 
 #endif

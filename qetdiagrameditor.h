@@ -30,7 +30,7 @@ class QETDiagramEditor : public QMainWindow {
 	void actions();
 	
 	private:
-	DiagramView *diagramEnCours() const;
+	DiagramView *currentDiagram() const;
 	void menus();
 	void toolbar();
 	
@@ -121,5 +121,6 @@ class QETDiagramEditor : public QMainWindow {
 	ElementsPanelWidget *pa;
 	QMenu *menu_fenetres;
 	QToolBar *barre_outils;
+	QUndoGroup undo_group;
 };
 #endif

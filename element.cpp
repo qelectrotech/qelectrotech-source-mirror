@@ -457,3 +457,8 @@ QList<QDomElement> Element::findInDomElement(QDomElement e, QString parent, QStr
 	}
 	return(return_list);
 }
+
+/// @return le Diagram auquel cet element appartient, ou 0 si cet element est independant
+Diagram *Element::diagram() const {
+	return(qobject_cast<Diagram *>(scene()));
+}

@@ -36,6 +36,7 @@ class Terminal : public QGraphicsItem {
 	bool addConducer(Conducer *);
 	void removeConducer(Conducer *);
 	int nbConducers() const;
+	Diagram *diagram() const;
 	
 	// methodes de lecture
 	QList<Conducer *> conducers() const;
@@ -68,8 +69,6 @@ class Terminal : public QGraphicsItem {
 	static QColor couleur_interdit;
 	
 	private:
-	// pointeur vers la QGraphicsScene de type Diagram (evite quelques casts en interne)
-	Diagram *diagram_scene;
 	// coordonnees des points d'amarrage
 	QPointF amarrage_conducer;
 	QPointF amarrage_elmt;

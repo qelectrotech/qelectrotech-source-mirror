@@ -2,6 +2,7 @@
 #define ELEMENT_TEXT_ITEM_H
 #include <QGraphicsTextItem>
 #include <QtXml>
+class Diagram;
 /**
 	Cette classe represente un element de texte editable.
 	Il est possible pour ce champ de texte de rester dans le sens de la lecture
@@ -31,6 +32,7 @@ class ElementTextItem : public QGraphicsTextItem {
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
 	QPointF pos() const;
+	Diagram *diagram() const;
 };
 
 /**

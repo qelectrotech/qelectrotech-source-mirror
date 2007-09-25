@@ -87,7 +87,8 @@ void MovePartsCommand::redo() {
 /**
 	Constructeur
 	@param name Nom de la partie ajoutee
-	@param parts Liste des parties deplacees
+	@param scene ElementScene concernee
+	@param p partie ajoutee
 	@param parent QUndoCommand parent
 */
 AddPartCommand::AddPartCommand(
@@ -109,12 +110,12 @@ AddPartCommand::~AddPartCommand() {
 	editor_scene -> qgiManager().release(part);
 }
 
-/// Annule le deplacement
+/// Annule l'ajout
 void AddPartCommand::undo() {
 	editor_scene -> removeItem(part);
 }
 
-/// Refait le deplacement
+/// Refait l'ajout
 void AddPartCommand::redo() {
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {

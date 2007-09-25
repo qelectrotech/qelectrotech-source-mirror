@@ -50,6 +50,7 @@ class Conducer : public QGraphicsPathItem {
 	virtual int type() const { return Type; }
 	void destroy();
 	bool isDestroyed() const { return(destroyed); }
+	Diagram *diagram() const;
 	void updateWithNewPos(const QRectF &, const Terminal *, const QPointF &);
 	void update(const QRectF & = QRectF());
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);

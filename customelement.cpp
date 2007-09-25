@@ -421,7 +421,7 @@ bool CustomElement::parseTerminal(QDomElement &e) {
 	else if (e.attribute("orientation") == "e") terminalo = QET::East;
 	else if (e.attribute("orientation") == "w") terminalo = QET::West;
 	else return(false);
-	list_terminals << new Terminal(terminalx, terminaly, terminalo, this);
+	list_terminals << new Terminal(terminalx, terminaly, terminalo, this, qobject_cast<Diagram *>(scene()));
 	return(true);
 }
 

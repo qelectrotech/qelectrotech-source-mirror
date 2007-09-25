@@ -3,6 +3,7 @@
 #include "customelement.h"
 #include "exportdialog.h"
 #include "conducer.h"
+#include "diagramcommands.h"
 
 /**
 	Initialise le DiagramView
@@ -79,74 +80,23 @@ void DiagramView::selectInvert() {
 */
 void DiagramView::supprimer() {
 	
-	QList<QGraphicsItem *> garbage_elmt;
-	QList<QGraphicsItem *> garbage_conducers;
+	QSet<Element *> garbage_elmt;
+	QSet<Conducer *> garbage_conducers;
 	
 	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
 		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (qgraphicsitem_cast<Conducer *>(qgi)) {
+		if (Conducer * c = qgraphicsitem_cast<Conducer *>(qgi)) {
 			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
-			if (!garbage_conducers.contains(qgi)) garbage_conducers.append(qgi);
-		} else if (qgraphicsitem_cast<Element *>(qgi)) {
+			garbage_conducers << c;
+		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
+			garbage_elmt << e;
 			// s'il s'agit d'un element, on veille a enlever ses conducteurs
-			if (!garbage_elmt.contains(qgi)) garbage_elmt.append(qgi);
-			// pour chaque enfant de l'element
-			foreach (QGraphicsItem *child, qgi -> children()) {
-				// si cet enfant est une borne
-				if (Terminal *p = qgraphicsitem_cast<Terminal *>(child)) {
-					// alors chaque conducteur de la borne est recense
-					foreach (Conducer *f, p -> conducers()) {
-						if (!garbage_conducers.contains(f)) garbage_conducers.append(f);
-					}
-				}
-			}
+			garbage_conducers += e -> conducers().toSet();
 		}
 	}
 	scene -> clearSelection();
-	
-	// "destroying" the wires, removing them from the scene and stocking them into the « garbage »
-	foreach (QGraphicsItem *qgi, garbage_conducers) {
-		if (Conducer *f = qgraphicsitem_cast<Conducer *>(qgi)) {
-			f -> destroy();
-			scene -> removeItem(f);
-			throwToGarbage(f);
-		}
-	}
-	
-	// removing the elements from the scene and stocking them into the « garbage »
-	foreach (QGraphicsItem *qgi, garbage_elmt) {
-		scene -> removeItem(qgi);
-		throwToGarbage(qgi);
-	}
-	resetCachedContent();
-	QTimer::singleShot(5000, this, SLOT(flushGarbage()));
-}
-
-/**
-	Envoie un item vers le "garbage" pour qu'il soit supprime plus tard
-	@param qgi L'item a supprimer
-*/
-void DiagramView::throwToGarbage(QGraphicsItem *qgi) {
-	// pas de doublon dans le garbage (sinon ca va sentir la segfault)
-	bool qgi_deja_dans_le_garbage = false;
-	foreach(QGraphicsItem *gbg_qgi, garbage) {
-		if ((void *)gbg_qgi == (void *)qgi) {
-			qgi_deja_dans_le_garbage = true;
-			break;
-		}
-	}
-	if (!qgi_deja_dans_le_garbage) garbage.append(qgi);
-}
-
-/**
-	Supprime tous les elements du "garbage"
-*/
-void DiagramView::flushGarbage() {
-	foreach(QGraphicsItem *qgi, garbage) {
-		delete(qgi);
-		garbage.removeAll(qgi);
-	}
+	scene -> undoStack().push(new DeleteElementsCommand(scene, garbage_elmt, garbage_conducers));
 }
 
 /**
@@ -175,7 +125,8 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	gere les dragleaveevent
 	@param e le QDragEnterEvent correspondant au drag'n drop sortant
 */
-void DiagramView::dragLeaveEvent(QDragLeaveEvent *) {}
+void DiagramView::dragLeaveEvent(QDragLeaveEvent *) {
+}
 
 /**
 	accepte ou refuse le drag'n drop en fonction du type de donnees entrant
@@ -194,11 +145,9 @@ void DiagramView::dropEvent(QDropEvent *e) {
 	QString fichier = e -> mimeData() -> text();
 	int etat;
 	Element *el = new CustomElement(fichier, 0, 0, &etat);
-	if (etat != 0) delete el;
+	if (etat) delete el;
 	else {
-		scene -> addItem(el);
-		el -> setPos(mapToScene(e -> pos().x(), e -> pos().y()));
-		el -> setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+		diagram() -> undoStack().push(new AddElementCommand(diagram(), el, mapToScene(e -> pos())));
 	}
 }
 

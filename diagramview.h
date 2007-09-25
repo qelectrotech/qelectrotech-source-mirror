@@ -44,7 +44,6 @@ class DiagramView : public QGraphicsView {
 	private:
 	bool private_enregistrer(QString &);
 	void initialise();
-	void throwToGarbage(QGraphicsItem *);
 	void mousePressEvent(QMouseEvent *);
 	void dragEnterEvent(QDragEnterEvent *);
 	void dragLeaveEvent(QDragLeaveEvent *);
@@ -74,7 +73,6 @@ class DiagramView : public QGraphicsView {
 	void coller();
 	
 	private slots:
-	void flushGarbage();
 	void slot_selectionChanged();
 	void adjustGridToZoom();
 };

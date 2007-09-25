@@ -43,6 +43,7 @@ class Element : public QGraphicsItem {
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
 	virtual QString typeId() const = 0;
 	virtual QString nom() const = 0;
+	Diagram *diagram() const;
 	
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;

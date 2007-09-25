@@ -1,4 +1,5 @@
 #include "elementtextitem.h"
+#include "diagram.h"
 
 /**
 	Constructeur
@@ -75,4 +76,9 @@ QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	result.setAttribute("y", pos().y());
 	result.setAttribute("text", toPlainText());
 	return(result);
+}
+
+/// @return le Diagram auquel ce texte appartient, ou 0 si ce texte est independant
+Diagram *ElementTextItem::diagram() const {
+	return(qobject_cast<Diagram *>(scene()));
 }

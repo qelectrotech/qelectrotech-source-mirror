@@ -58,8 +58,8 @@ class MovePartsCommand : public QUndoCommand {
 };
 
 /**
-	Cette classe represente l'action de deplacer une ou plusieurs
-	parties lors de l'edition d'un element
+	Cette classe represente l'action d'ajouter une partie lors de l'edition
+	d'un element
 */
 class AddPartCommand : public QUndoCommand {
 	// constructeurs, destructeur

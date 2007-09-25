@@ -1,6 +1,7 @@
 #include "qetdiagrameditor.h"
 #include "qetapp.h"
 #include "diagramview.h"
+#include "diagram.h"
 #include "elementspanelwidget.h"
 #include "aboutqet.h"
 
@@ -94,7 +95,7 @@ QETDiagramEditor::~QETDiagramEditor() {
 void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 	// quitte directement s'il n'y a aucun schema ouvert
 	bool peut_quitter = true;
-	if (diagramEnCours()) {
+	if (currentDiagram()) {
 		// sinon demande la permission de fermer chaque schema
 		foreach(QWidget *fenetre, workspace.windowList()) {
 			if (qobject_cast<DiagramView *>(fenetre)) {
@@ -147,8 +148,10 @@ void QETDiagramEditor::actions() {
 	imprimer          = new QAction(QIcon(":/ico/print.png"),      tr("Imprimer"),                             this);
 	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                             this);
 	
-	annuler           = new QAction(QIcon(":/ico/undo.png"),       tr("Annu&ler"),                             this);
-	refaire           = new QAction(QIcon(":/ico/redo.png"),       tr("Re&faire"),                             this);
+	annuler = undo_group.createUndoAction(this, tr("Annuler"));
+	annuler -> setIcon(QIcon(":/ico/undo.png"));
+	refaire = undo_group.createRedoAction(this, tr("Refaire"));
+	refaire -> setIcon(QIcon(":/ico/redo.png"));
 	couper            = new QAction(QIcon(":/ico/cut.png"),        tr("Co&uper"),                              this);
 	copier            = new QAction(QIcon(":/ico/copy.png"),       tr("Cop&ier"),                              this);
 	coller            = new QAction(QIcon(":/ico/paste.png"),      tr("C&oller"),                              this);
@@ -228,7 +231,7 @@ void QETDiagramEditor::actions() {
 	quitter_qet       -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	
 	annuler           -> setStatusTip(tr("Annule l'action pr\351c\351dente"));
-	refaire           -> setStatusTip(tr("Restaure l'action annul\351e"));
+	annuler           -> setStatusTip(tr("Restaure l'action annul\351e"));
 	couper            -> setStatusTip(tr("Transf\350re les \351l\351ments s\351lectionn\351s dans le presse-papier"));
 	copier            -> setStatusTip(tr("Copie les \351l\351ments s\351lectionn\351s dans le presse-papier"));
 	coller            -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma"));
@@ -435,7 +438,7 @@ void QETDiagramEditor::toolbar() {
 	Imprime le schema courant
 */
 void QETDiagramEditor::dialog_print() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> dialogPrint();
 }
@@ -444,7 +447,7 @@ void QETDiagramEditor::dialog_print() {
 	Gere l'export de schema sous forme d'image
 */
 void QETDiagramEditor::dialog_export() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> dialogExport();
 }
@@ -455,8 +458,8 @@ void QETDiagramEditor::dialog_export() {
 	@return true si l'enregistrement a reussi, false sinon
 */
 bool QETDiagramEditor::enregistrer() {
-	if (!diagramEnCours()) return(false);
-	return(diagramEnCours() -> enregistrer());
+	if (!currentDiagram()) return(false);
+	return(currentDiagram() -> enregistrer());
 }
 
 /**
@@ -469,8 +472,8 @@ bool QETDiagramEditor::enregistrer() {
 	@todo detecter le chemin du bureau automatiquement
 */
 bool QETDiagramEditor::dialogue_enregistrer_sous() {
-	if (!diagramEnCours()) return(false);
-	return(diagramEnCours() -> enregistrer_sous());
+	if (!currentDiagram()) return(false);
+	return(currentDiagram() -> enregistrer_sous());
 }
 
 /**
@@ -532,7 +535,7 @@ bool QETDiagramEditor::ouvrir() {
 	@todo detecter les modifications et ne demander que si besoin est
 */
 bool QETDiagramEditor::fermer() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return(false);
 	return(sv -> close());
 }
@@ -540,7 +543,7 @@ bool QETDiagramEditor::fermer() {
 /**
 	@return Le DiagramView qui a le focus dans l'interface MDI
 */
-DiagramView *QETDiagramEditor::diagramEnCours() const {
+DiagramView *QETDiagramEditor::currentDiagram() const {
 	return(qobject_cast<DiagramView *>(workspace.activeWindow()));
 }
 
@@ -548,105 +551,105 @@ DiagramView *QETDiagramEditor::diagramEnCours() const {
 	Effectue l'action "couper" sur le schema en cours
 */
 void QETDiagramEditor::slot_couper() {
-	if(diagramEnCours()) diagramEnCours() -> couper();
+	if(currentDiagram()) currentDiagram() -> couper();
 }
 
 /**
 	Effectue l'action "copier" sur le diagram en cours
 */
 void QETDiagramEditor::slot_copier() {
-	if(diagramEnCours()) diagramEnCours() -> copier();
+	if(currentDiagram()) currentDiagram() -> copier();
 }
 
 /**
 	Effectue l'action "coller" sur le schema en cours
 */
 void QETDiagramEditor::slot_coller() {
-	if(diagramEnCours()) diagramEnCours() -> coller();
+	if(currentDiagram()) currentDiagram() -> coller();
 }
 
 /**
 	Effectue l'action "zoom avant" sur le diagram en cours
 */
 void QETDiagramEditor::slot_zoomPlus() {
-	if(diagramEnCours()) diagramEnCours() -> zoomPlus();
+	if(currentDiagram()) currentDiagram() -> zoomPlus();
 }
 
 /**
 	Effectue l'action "zoom arriere" sur le schema en cours
 */
 void QETDiagramEditor::slot_zoomMoins() {
-	if(diagramEnCours()) diagramEnCours() -> zoomMoins();
+	if(currentDiagram()) currentDiagram() -> zoomMoins();
 }
 
 /**
 	Effectue l'action "zoom arriere" sur le diagram en cours
 */
 void QETDiagramEditor::slot_zoomFit() {
-	if(diagramEnCours()) diagramEnCours() -> zoomFit();
+	if(currentDiagram()) currentDiagram() -> zoomFit();
 }
 
 /**
 	Effectue l'action "zoom par defaut" sur le schema en cours
 */
 void QETDiagramEditor::slot_zoomReset() {
-	if(diagramEnCours()) diagramEnCours() -> zoomReset();
+	if(currentDiagram()) currentDiagram() -> zoomReset();
 }
 
 /**
 	Effectue l'action "selectionner tout" sur le schema en cours
 */
 void QETDiagramEditor::slot_selectAll() {
-	if(diagramEnCours()) diagramEnCours() -> selectAll();
+	if(currentDiagram()) currentDiagram() -> selectAll();
 }
 
 /**
 	Effectue l'action "deselectionenr tout" sur le schema en cours
 */
 void QETDiagramEditor::slot_selectNothing() {
-	if(diagramEnCours()) diagramEnCours() -> selectNothing();
+	if(currentDiagram()) currentDiagram() -> selectNothing();
 }
 
 /**
 	Effectue l'action "inverser la selection" sur le schema en cours
 */
 void QETDiagramEditor::slot_selectInvert() {
-	if(diagramEnCours()) diagramEnCours() -> selectInvert();
+	if(currentDiagram()) currentDiagram() -> selectInvert();
 }
 
 /**
 	Effectue l'action "supprimer" sur le schema en cours
 */
 void QETDiagramEditor::slot_supprimer() {
-	if(diagramEnCours()) diagramEnCours() -> supprimer();
+	if(currentDiagram()) currentDiagram() -> supprimer();
 }
 
 /**
 	Effectue l'action "pivoter" sur le schema en cours
 */
 void QETDiagramEditor::slot_pivoter() {
-	if(diagramEnCours()) diagramEnCours() -> pivoter();
+	if(currentDiagram()) currentDiagram() -> pivoter();
 }
 
 /**
 	Effectue l'action "mode selection" sur le schema en cours
 */
 void QETDiagramEditor::slot_setSelectionMode() {
-	if(diagramEnCours()) diagramEnCours() -> setSelectionMode();
+	if(currentDiagram()) currentDiagram() -> setSelectionMode();
 }
 
 /**
 	Effectue l'action "mode visualisation" sur le schema en cours
 */
 void QETDiagramEditor::slot_setVisualisationMode() {
-	if(diagramEnCours()) diagramEnCours() -> setVisualisationMode();
+	if(currentDiagram()) currentDiagram() -> setVisualisationMode();
 }
 
 /**
 	gere les actions ayant besoin d'un document ouvert
 */
 void QETDiagramEditor::slot_updateActions() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	bool document_ouvert = (sv != 0);
 	
 	// actions ayant juste besoin d'un document ouvert
@@ -669,9 +672,12 @@ void QETDiagramEditor::slot_updateActions() {
 	expand_diagram   -> setEnabled(document_ouvert);
 	shrink_diagram   -> setEnabled(document_ouvert);
 	
-	// actions ayant aussi besoin d'un historique des actions
-	annuler          -> setEnabled(document_ouvert);
-	refaire          -> setEnabled(document_ouvert);
+	// affiche les actions correspondant au diagram view en cours
+	if (sv) undo_group.setActiveStack(&(sv -> diagram() -> undoStack()));
+	else {
+		annuler -> setEnabled(false);
+		refaire -> setEnabled(false);
+	}
 	
 	// actions ayant aussi besoin d'elements selectionnes
 	bool elements_selectionnes = document_ouvert ? (sv -> hasSelectedItems()) : false;
@@ -716,17 +722,18 @@ void QETDiagramEditor::slot_updateActions() {
 	Ajoute un schema dans l'espace de travail
 	@param sv L'objet DiagramView a ajouter a l'espace de travail
 */
-void QETDiagramEditor::addDiagramView(DiagramView *sv) {
-	if (!sv) return;
+void QETDiagramEditor::addDiagramView(DiagramView *dv) {
+	if (!dv) return;
+	undo_group.addStack(&(dv -> diagram() -> undoStack()));
 	
 	// on maximise la nouvelle fenetre si la fenetre en cours est inexistante ou bien maximisee
-	DiagramView *s_v = diagramEnCours();
-	bool maximise = ((!s_v) || (s_v -> windowState() & Qt::WindowMaximized));
+	DiagramView *d_v = currentDiagram();
+	bool maximise = ((!d_v) || (d_v -> windowState() & Qt::WindowMaximized));
 	
 	// ajoute la fenetre
-	QWidget *p = workspace.addWindow(sv);
-	connect(sv, SIGNAL(selectionChanged()), this, SLOT(slot_updateActions()));
-	connect(sv, SIGNAL(modeChanged()),      this, SLOT(slot_updateActions()));
+	QWidget *p = workspace.addWindow(dv);
+	connect(dv, SIGNAL(selectionChanged()), this, SLOT(slot_updateActions()));
+	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateActions()));
 	
 	// affiche la fenetre
 	if (maximise) p -> showMaximized();
@@ -771,7 +778,7 @@ void QETDiagramEditor::slot_updateMenuFenetres() {
 		QAction *action  = menu_fenetres -> addAction(sv_titre);
 		action -> setStatusTip(tr("Active la fen\352tre ") + sv_titre);
 		action -> setCheckable(true);
-		action -> setChecked(sv == diagramEnCours());
+		action -> setChecked(sv == currentDiagram());
 		connect(action, SIGNAL(triggered()), &windowMapper, SLOT(map()));
 		windowMapper.setMapping(action, sv);
 	}
@@ -781,7 +788,7 @@ void QETDiagramEditor::slot_updateMenuFenetres() {
 	Edite les informations du schema en cours
 */
 void QETDiagramEditor::slot_editInfos() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> dialogEditInfos();
 }
@@ -790,7 +797,7 @@ void QETDiagramEditor::slot_editInfos() {
 	Ajoute une colonne au schema en cours
 */
 void QETDiagramEditor::slot_addColumn() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> addColumn();
 }
@@ -799,7 +806,7 @@ void QETDiagramEditor::slot_addColumn() {
 	Enleve une colonne au schema en cours
 */
 void QETDiagramEditor::slot_removeColumn() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> removeColumn();
 }
@@ -808,7 +815,7 @@ void QETDiagramEditor::slot_removeColumn() {
 	Allonge le schema en cours en hauteur
 */
 void QETDiagramEditor::slot_expand() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> expand();
 }
@@ -817,7 +824,7 @@ void QETDiagramEditor::slot_expand() {
 	Retrecit le schema en cours en hauteur
 */
 void QETDiagramEditor::slot_shrink() {
-	DiagramView *sv = diagramEnCours();
+	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> shrink();
 }

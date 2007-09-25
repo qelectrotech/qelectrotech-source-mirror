@@ -2,6 +2,7 @@
 #include "diagram.h"
 #include "element.h"
 #include "conducer.h"
+#include "diagramcommands.h"
 
 QColor Terminal::couleur_neutre   = QColor(Qt::blue);
 QColor Terminal::couleur_autorise = QColor(Qt::darkGreen);
@@ -51,7 +52,6 @@ Terminal::Terminal() :
 	couleur_hovered(Terminal::couleur_neutre)
 {
 	initialise(QPointF(0.0, 0.0), QET::South);
-	diagram_scene = 0;
 }
 
 /**
@@ -66,7 +66,6 @@ Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 	couleur_hovered(Terminal::couleur_neutre)
 {
 	initialise(pf, o);
-	diagram_scene = s;
 }
 
 /**
@@ -241,7 +240,7 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 	@param e L'evenement souris correspondant
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
+	if (Diagram *s = diagram()) {
 		s -> setConducerStart(mapToScene(QPointF(amarrage_conducer)));
 		s -> setConducerStop(e -> scenePos());
 		s -> setConducer(true);
@@ -265,11 +264,14 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		terminal_precedente -> update();
 	}
 	
+	
+	Diagram *s = diagram();
+	if (!s) return;
 	// si la scene est un Diagram, on actualise le poseur de conducteur
-	if (Diagram *s = qobject_cast<Diagram *>(scene())) s -> setConducerStop(e -> scenePos());
+	s -> setConducerStop(e -> scenePos());
 	
 	// on recupere la liste des qgi sous le pointeur
-	QList<QGraphicsItem *> qgis = scene() -> items(e -> scenePos());
+	QList<QGraphicsItem *> qgis = s -> items(e -> scenePos());
 	
 	/* le qgi le plus haut
 	   = le poseur de conducer
@@ -326,7 +328,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	terminal_precedente = NULL;
 	couleur_hovered  = couleur_neutre;
 	// verifie que la scene est bien un Diagram
-	if (Diagram *s = qobject_cast<Diagram *>(scene())) {
+	if (Diagram *s = diagram()) {
 		// on arrete de dessiner l'apercu du conducteur
 		s -> setConducer(false);
 		// on recupere l'element sous le pointeur lors du MouseReleaseEvent
@@ -346,7 +348,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		// derniere verification : verifier que cette borne n'est pas deja reliee a l'autre borne
 		foreach (Conducer *f, liste_conducers) if (f -> terminal1 == p || f -> terminal2 == p) return;
 		// autrement, on pose un conducteur
-		new Conducer(this, p, 0, scene());
+		s -> undoStack().push(new AddConducerCommand(s, new Conducer(this, p)));
 	}
 }
 
@@ -435,4 +437,9 @@ bool Terminal::fromXml(QDomElement &terminal) {
 		terminal.attribute("y").toDouble() == amarrage_elmt.y() &&\
 		terminal.attribute("orientation").toInt() == sens
 	);
+}
+
+/// @return le Diagram auquel cette borne appartient, ou 0 si cette borne est independant
+Diagram *Terminal::diagram() const {
+	return(qobject_cast<Diagram *>(scene()));
 }
