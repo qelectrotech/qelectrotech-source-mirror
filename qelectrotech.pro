@@ -92,6 +92,7 @@ SOURCES += aboutqet.cpp \
            newelementwizard.cpp \
            orientationset.cpp \
            orientationsetwidget.cpp \
+		   qet.cpp \
 		   qetapp.cpp \
            qetdiagrameditor.cpp \
            qgimanager.cpp \
@@ -115,7 +116,6 @@ SOURCES += aboutqet.cpp \
            editor/parttext.cpp \
            editor/parttextfield.cpp \
            editor/polygoneditor.cpp \
-           editor/qet.cpp \
            editor/qetelementeditor.cpp \
            editor/styleeditor.cpp \
            editor/terminaleditor.cpp \
