@@ -15,7 +15,7 @@ AddElementCommand::AddElementCommand(
 	const QPointF &p,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("ajout ") + elmt -> nom(), parent),
+	QUndoCommand(QObject::tr("ajouter 1 ") + elmt -> nom(), parent),
 	element(elmt),
 	diagram(d),
 	position(p)
@@ -52,7 +52,7 @@ AddConducerCommand::AddConducerCommand(
 	Conducer *c,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("ajout conducteur"), parent),
+	QUndoCommand(QObject::tr("ajouter un conducteur"), parent),
 	conducer(c),
 	diagram(d)
 {
@@ -79,6 +79,10 @@ void AddConducerCommand::redo() {
 
 /**
 	Constructeur
+	@param dia Schema dont on supprime des elements et conducteurs
+	@param elements Elements supprimes
+	@param conducers Conducteurs supprimes
+	@param parent QUndoCommand parent
 */
 DeleteElementsCommand::DeleteElementsCommand(
 	Diagram *dia,
@@ -91,6 +95,7 @@ DeleteElementsCommand::DeleteElementsCommand(
 	removed_conducers(conducers),
 	diagram(dia)
 {
+	setText(QObject::tr("supprimer ") + QET::ElementsAndConducersSentence(removed_elements.count(), removed_conducers.count()));
 	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().manage(qgi);
 	foreach(QGraphicsItem *qgi, removed_conducers) diagram -> qgiManager().manage(qgi);
 }
@@ -129,4 +134,87 @@ void DeleteElementsCommand::redo() {
 	foreach(Element *e, removed_elements) {
 		diagram -> removeItem(e);
 	}
+}
+
+/**
+	Constructeur
+	@param dia Schema sur lequel on colle les elements et conducteurs
+	@param e Elements colles sur le schema
+	@param c Conducteurs colles sur le schema
+	@param parent QUndoCommand parent
+*/
+PasteDiagramCommand::PasteDiagramCommand(
+	Diagram *dia,
+	const QList<Element *> &e,
+	const QList<Conducer *> &c,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	elements(e),
+	conducers(c),
+	diagram(dia),
+	first_redo(true)
+{
+	setText(QObject::tr("coller ") + QET::ElementsAndConducersSentence(elements.count(), conducers.count()));
+	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, conducers) diagram -> qgiManager().manage(qgi);
+}
+
+/// Destructeur
+PasteDiagramCommand::~PasteDiagramCommand() {
+	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, conducers) diagram -> qgiManager().release(qgi);
+}
+
+/// annule le coller
+void PasteDiagramCommand::undo() {
+	// enleve les conducteurs
+	foreach(Conducer *c, conducers) {
+		c -> terminal1 -> removeConducer(c);
+		c -> terminal2 -> removeConducer(c);
+		diagram -> removeItem(c);
+	}
+	
+	// enleve les elements
+	foreach(Element *e, elements)  diagram -> removeItem(e);
+}
+
+/// refait le coller
+void PasteDiagramCommand::redo() {
+	if (first_redo) first_redo = false;
+	else {
+		// pose les elements
+		foreach(Element *e, elements)  diagram -> addItem(e);
+		
+		// pose les conducteurs
+		foreach(Conducer *c, conducers) {
+			diagram -> addItem(c);
+			c -> terminal1 -> addConducer(c);
+			c -> terminal2 -> addConducer(c);
+		}
+	}
+	foreach(Element *e, elements)   e -> setSelected(true);
+	foreach(Conducer *c, conducers) c -> setSelected(true);
+}
+
+/**
+	Constructeur
+	@param dia Schema dont on supprime des elements et conducteurs
+	@param elements Elements supprimes
+	@param conducers Conducteurs supprimes
+	@param parent QUndoCommand parent
+*/
+CutDiagramCommand::CutDiagramCommand(
+	Diagram *dia,
+	QSet<Element *> elements,
+	QSet<Conducer *> conducers,
+	QUndoCommand *parent
+) : 
+	DeleteElementsCommand(dia, elements, conducers, parent)
+{
+	setText(QObject::tr("couper ") + QET::ElementsAndConducersSentence(elements.count(), conducers.count()));
+}
+
+/// Destructeur
+CutDiagramCommand::~CutDiagramCommand() {
 }

@@ -76,4 +76,44 @@ class DeleteElementsCommand : public QUndoCommand {
 	Diagram *diagram;
 };
 
+/**
+	Cette classe represente l'action de coller quelque chose sur un schema
+*/
+class PasteDiagramCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	PasteDiagramCommand(Diagram *, const QList<Element *> &, const QList<Conducer *> &, QUndoCommand * = 0);
+	virtual ~PasteDiagramCommand();
+	private:
+	PasteDiagramCommand(const PasteDiagramCommand &);
+	
+	// methodes
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Elements ajoutes
+	QList<Element *> elements;
+	/// conducteurs ajoutes
+	QList<Conducer *> conducers;
+	/// schema sur lequel on colle les elements et conducteurs
+	Diagram *diagram;
+	/// booleen pour empecher le premier appel a redo
+	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de supprimer des elements et / ou
+	conducteurs d'un schema
+*/
+class CutDiagramCommand : public DeleteElementsCommand {
+	// constructeurs, destructeur
+	public:
+	CutDiagramCommand(Diagram *, QSet<Element *>, QSet<Conducer *>, QUndoCommand * = 0);
+	virtual ~CutDiagramCommand();
+	private:
+	CutDiagramCommand(const CutDiagramCommand &);
+};
+
 #endif

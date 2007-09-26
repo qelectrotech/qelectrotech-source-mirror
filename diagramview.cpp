@@ -213,7 +213,23 @@ void DiagramView::zoomReset() {
 */
 void DiagramView::couper() {
 	copier();
-	supprimer();
+	QSet<Element *> cut_elmt;
+	QSet<Conducer *> cut_conducers;
+	
+	// creation de deux listes : une pour les conducteurs, une pour les elements
+	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
+		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
+		if (Conducer * c = qgraphicsitem_cast<Conducer *>(qgi)) {
+			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
+			cut_conducers << c;
+		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
+			cut_elmt << e;
+			// s'il s'agit d'un element, on veille a enlever ses conducteurs
+			cut_conducers += e -> conducers().toSet();
+		}
+	}
+	scene -> clearSelection();
+	scene -> undoStack().push(new CutDiagramCommand(scene, cut_elmt, cut_conducers));
 }
 
 /**
@@ -234,7 +250,17 @@ void DiagramView::coller() {
 	QDomDocument document_xml;
 	if ((texte_presse_papier = QApplication::clipboard() -> text()) == QString()) return;
 	if (!document_xml.setContent(texte_presse_papier)) return;
-	scene -> fromXml(document_xml, QPointF(), false);
+	
+	// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
+	QList<Element *> elements_pasted;
+	QList<Conducer *> conducers_pasted;
+	scene -> fromXml(document_xml, QPointF(), false, &elements_pasted, &conducers_pasted);
+	
+	// si quelque chose a effectivement ete ajoute au schema, on cree
+	if (elements_pasted.count() || conducers_pasted.count()) {
+		scene -> clearSelection();
+		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conducers_pasted));
+	}
 }
 
 /**
@@ -246,9 +272,20 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		QDomDocument document_xml;
 		if ((texte_presse_papier = QApplication::clipboard() -> text(QClipboard::Selection)) == QString()) return;
 		if (!document_xml.setContent(texte_presse_papier)) return;
-		scene -> fromXml(document_xml, mapToScene(e -> pos()), false);
+		
+		// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
+		QList<Element *> elements_pasted;
+		QList<Conducer *> conducers_pasted;
+		scene -> fromXml(document_xml, mapToScene(e -> pos()), false, &elements_pasted, &conducers_pasted);
+		
+		// si quelque chose a effectivement ete ajoute au schema, on cree
+		if (elements_pasted.count() || conducers_pasted.count()) {
+			scene -> clearSelection();
+			scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conducers_pasted));
+		}
+	} else {
+		QGraphicsView::mousePressEvent(e);
 	}
-	QGraphicsView::mousePressEvent(e);
 }
 
 /**

@@ -18,5 +18,6 @@ namespace QET {
 	bool estVerticale(QET::Orientation);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
 	bool attributeIsAReal(const QDomElement &, QString , double * = NULL);
+	QString ElementsAndConducersSentence(int, int);
 }
 #endif

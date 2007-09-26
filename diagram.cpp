@@ -252,10 +252,16 @@ QDomDocument Diagram::toXml(bool diagram) {
 	(le bounding rect) soit a cette position.
 	@param document Le document XML a analyser
 	@param position La position du diagram importe
-	@param consider_informations Si vrai, les informations complementaires (auteur, titre, ...) seront prises en compte
+	@param consider_informations Si vrai, les informations complementaires
+	(auteur, titre, ...) seront prises en compte
+	@param added_elements si ce pointeur vers une liste d'elements n'est pas
+	NULL, il sera rempli avec les elements ajoutes au schema par le fromXml
+	@param added_elements si ce pointeur vers une liste de conducteurs n'est
+	pas NULL, il sera rempli avec les conducteurs ajoutes au schema par le
+	fromXml
 	@return true si l'import a reussi, false sinon
 */
-bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations) {
+bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, QList<Element *> *added_elements, QList<Conducer *> *added_conducers) {
 	QDomElement racine = document.documentElement();
 	// le premier element doit etre un schema
 	if (racine.tagName() != "diagram") return(false);
@@ -322,6 +328,8 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		}
 	}
 	
+	if (added_elements) (*added_elements) << elements_ajoutes;
+	
 	// aucun Element n'a ete ajoute - inutile de chercher des conducteurs - le chargement est fini
 	if (!elements_ajoutes.size()) return(true);
 	
@@ -374,6 +382,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 					if (peut_poser_conducer) {
 						Conducer *c = new Conducer(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
 						c -> fromXml(f);
+						if (added_conducers) (*added_conducers) << c;
 					}
 				}
 			} else qDebug() << "Le chargement du conducer" << id_p1 << id_p2 << "a echoue";

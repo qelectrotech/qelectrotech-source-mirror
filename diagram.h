@@ -52,7 +52,7 @@ class Diagram : public QGraphicsScene {
 	
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
-	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true);
+	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, QList<Element *> * = NULL, QList<Conducer *> * = NULL);
 	
 	// fonctions relatives aux options graphiques
 	void setDisplayGrid(bool);

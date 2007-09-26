@@ -123,3 +123,23 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, double *r
 	if (reel != NULL) *reel = tmp;
 	return(true);
 }
+
+/**
+	Permet de composer rapidement la proposition "x elements et y conducteurs"
+	@param elements_count nombre d élements
+	@param conducers_count nombre de conducteurs
+	@return la proposition decrivant le nombre d'elements et de conducteurs
+*/
+QString QET::ElementsAndConducersSentence(int elements_count, int conducers_count) {
+	QString text;
+	if (elements_count) {
+		text += QString::number(elements_count) + " ";
+		text += elements_count > 1 ? QObject::tr("\351l\351ments") : QObject::tr("\351l\351ment");
+		if (conducers_count) text += QObject::tr(" et ");
+	}
+	if (conducers_count) {
+		text += QString::number(conducers_count) + " ";
+		text += conducers_count > 1 ? QObject::tr("conducteurs") : QObject::tr("conducteur");
+	}
+	return(text);
+}
