@@ -14,6 +14,7 @@ class AddElementCommand : public QUndoCommand {
 	AddElementCommand(const AddElementCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -39,6 +40,7 @@ class AddConducerCommand : public QUndoCommand {
 	AddConducerCommand(const AddConducerCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -63,6 +65,7 @@ class DeleteElementsCommand : public QUndoCommand {
 	DeleteElementsCommand(const DeleteElementsCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -88,6 +91,7 @@ class PasteDiagramCommand : public QUndoCommand {
 	PasteDiagramCommand(const PasteDiagramCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -116,4 +120,37 @@ class CutDiagramCommand : public DeleteElementsCommand {
 	CutDiagramCommand(const CutDiagramCommand &);
 };
 
+/**
+	Cette classe represente l'action de deplacer des elements et des
+	conducteurs sur un schema
+*/
+class MoveElementsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	MoveElementsCommand(Diagram *, const QSet<Element *> &, const QSet<Conducer *> &, const QHash<Conducer *, Terminal *> &, const QPointF &m, QUndoCommand * = 0);
+	virtual ~MoveElementsCommand();
+	private:
+	MoveElementsCommand(const MoveElementsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void move(const QPointF &);
+	
+	// attributs
+	private:
+	/// Schema sur lequel on deplace les elements
+	Diagram *diagram;
+	/// Elements a deplacer
+	QSet<Element *> elements_to_move;
+	/// Conducteurs a deplacer
+	QSet<Conducer *> conducers_to_move;
+	/// Conducteurs a actualiser
+	QHash<Conducer *, Terminal *> conducers_to_update;
+	/// mouvement effectue
+	QPointF movement;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
+};
 #endif

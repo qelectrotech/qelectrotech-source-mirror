@@ -4,6 +4,7 @@
 #include "customelement.h"
 #include "diagram.h"
 #include "exportdialog.h"
+#include "diagramcommands.h"
 
 /**
 	Constructeur
@@ -99,7 +100,25 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 }
 
 void Diagram::keyReleaseEvent(QKeyEvent *e) {
-	invalidateMovedElements();
+	// detecte le relachement d'une touche de direction ( = deplacement d'elements)
+	if (
+		(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||\
+		 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
+		!current_movement.isNull()  && !e -> isAutoRepeat()
+	) {
+		// cree un object d'annulation pour le mouvement qui vient de se finir
+		undoStack().push(
+			new MoveElementsCommand(
+				this,
+				elementsToMove(),
+				conducersToMove(),
+				conducersToUpdate(),
+				current_movement
+			)
+		);
+		invalidateMovedElements();
+		current_movement = QPointF();
+	}
 	QGraphicsScene::keyReleaseEvent(e);
 }
 

@@ -218,3 +218,64 @@ CutDiagramCommand::CutDiagramCommand(
 /// Destructeur
 CutDiagramCommand::~CutDiagramCommand() {
 }
+
+/**
+	Constructeur
+	@param
+*/
+MoveElementsCommand::MoveElementsCommand(
+	Diagram *dia,
+	const QSet<Element *> &move_elements,
+	const QSet<Conducer *> &move_conducers,
+	const QHash<Conducer *, Terminal *> &modify_conducers,
+	const QPointF &m,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	diagram(dia),
+	elements_to_move(move_elements),
+	conducers_to_move(move_conducers),
+	conducers_to_update(modify_conducers),
+	movement(m)
+{
+	setText(QObject::tr("d\351placer ") + QET::ElementsAndConducersSentence(elements_to_move.count(), conducers_to_move.count()));
+	foreach(QGraphicsItem *qgi, elements_to_move)    diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, conducers_to_move)   diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, conducers_to_update) diagram -> qgiManager().manage(qgi);
+}
+
+/// Destructeur
+MoveElementsCommand::~MoveElementsCommand() {
+	foreach(QGraphicsItem *qgi, elements_to_move)    diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, conducers_to_move)   diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, conducers_to_update) diagram -> qgiManager().release(qgi);
+}
+
+/// annule le deplacement
+void MoveElementsCommand::undo() {
+	move(-movement);
+}
+
+/// refait le deplacement
+void MoveElementsCommand::redo() {
+	if (first_redo) first_redo = false;
+	else move(movement);
+}
+
+/// 
+void MoveElementsCommand::move(const QPointF &actual_movement) {
+	// deplace les elements
+	foreach(Element *element, elements_to_move) {
+		element -> setPos(element -> pos() + actual_movement);
+	}
+	
+	// deplace certains conducteurs
+	foreach(Conducer *conducer, conducers_to_move) {
+		conducer -> setPos(conducer -> pos() + actual_movement);
+	}
+	
+	// recalcule les autres conducteurs
+	foreach(Conducer *conducer, conducers_to_update.keys()) {
+		conducer -> updateWithNewPos(QRectF(), conducers_to_update[conducer], conducers_to_update[conducer] -> amarrageConducer());
+	}
+}

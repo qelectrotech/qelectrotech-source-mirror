@@ -26,6 +26,7 @@ class Diagram : public QGraphicsScene {
 	public:
 	enum BorderOptions { EmptyBorder, Inset, Columns };
 	BorderInset border_and_inset;
+	QPointF current_movement;
 	
 	private:
 	QGraphicsLineItem *conducer_setter;

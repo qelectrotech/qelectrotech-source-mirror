@@ -18,6 +18,7 @@ class DeletePartsCommand : public QUndoCommand {
 	DeletePartsCommand(const DeletePartsCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -42,6 +43,7 @@ class MovePartsCommand : public QUndoCommand {
 	MovePartsCommand(const MovePartsCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -70,6 +72,7 @@ class AddPartCommand : public QUndoCommand {
 	AddPartCommand(const AddPartCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -96,6 +99,7 @@ class ChangePartCommand : public QUndoCommand {
 	ChangePartCommand(const ChangePartCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -123,6 +127,7 @@ class ChangePolygonPointsCommand : public QUndoCommand {
 	ChangePolygonPointsCommand(const ChangePolygonPointsCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -181,6 +186,7 @@ class ChangeNamesCommand : public QUndoCommand {
 	ChangeNamesCommand(const ChangeNamesCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	
@@ -206,6 +212,7 @@ class ChangeOrientationsCommand : public QUndoCommand {
 	ChangeOrientationsCommand(const ChangeOrientationsCommand &);
 	
 	// methodes
+	public:
 	virtual void undo();
 	virtual void redo();
 	

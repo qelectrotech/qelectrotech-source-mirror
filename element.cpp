@@ -3,6 +3,7 @@
 #include "diagram.h"
 #include "conducer.h"
 #include "elementtextitem.h"
+#include "diagramcommands.h"
 #include <QtDebug>
 
 /**
@@ -238,32 +239,43 @@ void Element::moveOtherElements(const QPointF &diff) {
 	if (diff.isNull()) return;
 	
 	// recupere le schema parent
-	if (!scene()) return;
-	Diagram *diagram = qobject_cast<Diagram *>(scene());
-	if (!diagram) return;
+	Diagram *diagram_ptr = diagram();
+	if (!diagram_ptr) return;
+	
+	diagram_ptr -> current_movement += diff;
 	
 	// deplace les elements selectionnes
-	foreach(Element *element, diagram -> elementsToMove()) {
+	foreach(Element *element, diagram_ptr -> elementsToMove()) {
 		if (element == this) continue;
 		element -> setPos(element -> pos() + diff);
-	};
+	}
 	
 	// deplace certains conducteurs
-	foreach(Conducer *conducer, diagram -> conducersToMove()) {
+	foreach(Conducer *conducer, diagram_ptr -> conducersToMove()) {
 		conducer -> setPos(conducer -> pos() + diff);
 	}
 	
 	// recalcule les autres conducteurs
-	const QHash<Conducer *, Terminal *> &conducers_modify = diagram -> conducersToUpdate();
+	const QHash<Conducer *, Terminal *> &conducers_modify = diagram_ptr -> conducersToUpdate();
 	foreach(Conducer *conducer, conducers_modify.keys()) {
 		conducer -> updateWithNewPos(QRectF(), conducers_modify[conducer], conducers_modify[conducer] -> amarrageConducer());
 	}
 }
 
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (scene()) {
-		Diagram *diagram = qobject_cast<Diagram *>(scene());
-		if (diagram) diagram -> invalidateMovedElements();
+	Diagram *diagram_ptr = diagram();
+	if (diagram_ptr && !diagram_ptr -> current_movement.isNull()) {
+		diagram_ptr -> undoStack().push(
+			new MoveElementsCommand(
+				diagram_ptr,
+				diagram_ptr -> elementsToMove(),
+				diagram_ptr -> conducersToMove(),
+				diagram_ptr -> conducersToUpdate(),
+				diagram_ptr -> current_movement
+			)
+		);
+		diagram_ptr -> invalidateMovedElements();
+		diagram_ptr -> current_movement = QPointF();
 	}
 	QGraphicsItem::mouseReleaseEvent(e);
 }
