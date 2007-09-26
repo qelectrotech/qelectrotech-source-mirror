@@ -52,9 +52,9 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	setAcceptsHoverEvents(true);
 	
 	// ajout du champ de texte editable
-	text_item = new QGraphicsTextItem();
+	text_item = new DiagramTextItem();
 	text_item -> setPlainText("_");
-	text_item -> setTextInteractionFlags(Qt::TextEditorInteraction);
+	text_item -> previous_text = "_";
 	calculateTextItemPosition();
 	text_item -> setParentItem(this);
 }
@@ -781,6 +781,7 @@ bool Conducer::hasClickedOn(QPointF press_point, QPointF point) const {
 */
 bool Conducer::fromXml(QDomElement &e) {
 	text_item -> setPlainText(e.attribute("num"));
+	text_item -> previous_text = e.attribute("num");
 	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
 	// les segments non valides sont ignores

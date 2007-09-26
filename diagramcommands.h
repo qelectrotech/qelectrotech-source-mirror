@@ -1,6 +1,7 @@
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
 #include "diagram.h"
+#include "diagramtextitem.h"
 #include <QtGui>
 /**
 	Cette classe represente l'action d'ajouter un element au schema
@@ -152,5 +153,34 @@ class MoveElementsCommand : public QUndoCommand {
 	QPointF movement;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
+};
+
+/**
+	Cette classe represente la modification d'un champ de texte
+*/
+class ChangeDiagramTextCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeDiagramTextCommand(DiagramTextItem *, const QString &before, const QString &after, QUndoCommand * = 0);
+	virtual ~ChangeDiagramTextCommand();
+	private:
+	ChangeDiagramTextCommand(const ChangeDiagramTextCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// DiagramTextItem modifie
+	DiagramTextItem *text_item;
+	/// texte avant changement
+	QString text_before;
+	/// texte apres changement
+	QString text_after;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
+	
 };
 #endif

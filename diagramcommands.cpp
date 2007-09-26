@@ -221,7 +221,12 @@ CutDiagramCommand::~CutDiagramCommand() {
 
 /**
 	Constructeur
-	@param
+	@param dia Schema sur lequel on deplace des elements
+	@param move_elements Elements a deplacer
+	@param move_conducers Conducteurs a deplacer
+	@param modify_conducers Conducteurs a mettre a jour
+	@param m translation subie par les elements
+	@param parent QUndoCommand parent
 */
 MoveElementsCommand::MoveElementsCommand(
 	Diagram *dia,
@@ -262,7 +267,10 @@ void MoveElementsCommand::redo() {
 	else move(movement);
 }
 
-/// 
+/**
+	deplace les elements et conducteurs
+	@param actual_movement translation a effectuer sur les elements et conducteurs
+*/
 void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// deplace les elements
 	foreach(Element *element, elements_to_move) {
@@ -277,5 +285,45 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// recalcule les autres conducteurs
 	foreach(Conducer *conducer, conducers_to_update.keys()) {
 		conducer -> updateWithNewPos(QRectF(), conducers_to_update[conducer], conducers_to_update[conducer] -> amarrageConducer());
+	}
+}
+
+/**
+	Constructeur
+	@param dti Champ de texte modifie
+	@param before texte avant
+	@param after texte apres
+	@param parent QUndoCommand parent
+*/
+ChangeDiagramTextCommand::ChangeDiagramTextCommand(
+	DiagramTextItem *dti,
+	const QString &before,
+	const QString &after,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modifier le texte"), parent),
+	text_item(dti),
+	text_before(before),
+	text_after(after),
+	first_redo(true)
+{
+}
+
+/// destructeur
+ChangeDiagramTextCommand::~ChangeDiagramTextCommand() {
+}
+
+/// annule la modification de texte
+void ChangeDiagramTextCommand::undo() {
+	text_item -> setPlainText(text_before);
+	text_item -> previous_text = text_before;
+}
+
+/// refait la modification de texte
+void ChangeDiagramTextCommand::redo() {
+	if (first_redo) first_redo = false;
+	else {
+		text_item -> setPlainText(text_after);
+		text_item -> previous_text = text_after;
 	}
 }

@@ -1,6 +1,6 @@
 #ifndef ELEMENT_TEXT_ITEM_H
 #define ELEMENT_TEXT_ITEM_H
-#include <QGraphicsTextItem>
+#include "diagramtextitem.h"
 #include <QtXml>
 class Diagram;
 /**
@@ -8,7 +8,7 @@ class Diagram;
 	Il est possible pour ce champ de texte de rester dans le sens de la lecture
 	malgre les rotations de son element parent.
 */
-class ElementTextItem : public QGraphicsTextItem {
+class ElementTextItem : public DiagramTextItem {
 	// constructeurs, destructeur
 	public:
 	ElementTextItem(QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -32,7 +32,6 @@ class ElementTextItem : public QGraphicsTextItem {
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
 	QPointF pos() const;
-	Diagram *diagram() const;
 };
 
 /**

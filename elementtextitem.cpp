@@ -1,14 +1,16 @@
 #include "elementtextitem.h"
 #include "diagram.h"
+#include "diagramcommands.h"
 
 /**
 	Constructeur
 	@param parent Le QGraphicsItem parent du champ de texte
 	@param scene La scene a laquelle appartient le champ de texte
 */
-ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsTextItem(parent, scene) {
-	follow_parent_rotations = false;
-	setTextInteractionFlags(Qt::TextEditorInteraction);
+ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
+	DiagramTextItem(parent, scene),
+	follow_parent_rotations(false)
+{
 }
 
 /**
@@ -17,11 +19,13 @@ ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 	@param scene La scene a laquelle appartient le champ de texte
 	@param text Le texte affiche par le champ de texte
 */
-ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsTextItem(text, parent, scene) {
-	follow_parent_rotations = false;
-	setTextInteractionFlags(Qt::TextEditorInteraction);
+ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) :
+	DiagramTextItem(text, parent, scene),
+	follow_parent_rotations(false)
+{
 }
 
+/// Destructeur
 ElementTextItem::~ElementTextItem() {
 }
 
@@ -32,7 +36,7 @@ ElementTextItem::~ElementTextItem() {
 void ElementTextItem::setPos(const QPointF &pos) {
 	QPointF actual_pos = pos;
 	actual_pos -= QPointF(0.0, boundingRect().height() / 2.0);
-	QGraphicsItem::setPos(actual_pos);
+	DiagramTextItem::setPos(actual_pos);
 }
 
 /**
@@ -48,7 +52,7 @@ void ElementTextItem::setPos(qreal x, qreal y) {
 	@return La position (bidouillee) du champ de texte
 */
 QPointF ElementTextItem::pos() const {
-	QPointF actual_pos = QGraphicsTextItem::pos();
+	QPointF actual_pos = DiagramTextItem::pos();
 	actual_pos += QPointF(0.0, boundingRect().height() / 2.0);
 	return(actual_pos);
 }
@@ -63,6 +67,7 @@ void ElementTextItem::fromXml(const QDomElement &e) {
 	QPointF _pos = pos();
 	if (e.attribute("x").toDouble() == _pos.x() && e.attribute("y").toDouble() == _pos.y()) {
 		setPlainText(e.attribute("text"));
+		previous_text = e.attribute("text");
 	}
 }
 
@@ -76,9 +81,4 @@ QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	result.setAttribute("y", pos().y());
 	result.setAttribute("text", toPlainText());
 	return(result);
-}
-
-/// @return le Diagram auquel ce texte appartient, ou 0 si ce texte est independant
-Diagram *ElementTextItem::diagram() const {
-	return(qobject_cast<Diagram *>(scene()));
 }

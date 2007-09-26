@@ -3,6 +3,7 @@
 #include <QtGui>
 #include "terminal.h"
 #include "conducerprofile.h"
+#include "diagramtextitem.h"
 class ConducerSegment;
 class Element;
 /**
@@ -30,7 +31,7 @@ class Conducer : public QGraphicsPathItem {
 	private:
 	/// booleen indiquant si le fil est encore valide
 	bool destroyed;
-	QGraphicsTextItem *text_item;
+	DiagramTextItem *text_item;
 	ConducerSegment *segments;
 	QPointF press_point;
 	bool moving_point;
@@ -64,10 +65,10 @@ class Conducer : public QGraphicsPathItem {
 	const QList<ConducerSegment *> segmentsList() const;
 	
 	protected:
-	void mousePressEvent(QGraphicsSceneMouseEvent *);
-	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
+	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
 	
 	private:
 	void segmentsToPath();
