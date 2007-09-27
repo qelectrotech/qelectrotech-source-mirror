@@ -29,6 +29,7 @@ class ConducerProfile {
 	uint nbSegments(QET::ConducerSegmentType) const;
 	QList<ConducerSegmentProfile *> horizontalSegments();
 	QList<ConducerSegmentProfile *> verticalSegments();
+	void fromConducer(Conducer *);
 };
 QDebug &operator<<(QDebug d, ConducerProfile &);
 #endif

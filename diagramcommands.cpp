@@ -327,3 +327,33 @@ void ChangeDiagramTextCommand::redo() {
 		text_item -> previous_text = text_after;
 	}
 }
+
+/**
+	Constructeur
+	@param elements Elements a pivoter associes a leur orientation d'origine
+	@param parent QUndoCommand parent
+*/
+RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("pivoter ") + QET::ElementsAndConducersSentence(elements.count(), 0), parent),
+	elements_to_rotate(elements)
+{
+}
+
+/// Destructeur
+RotateElementsCommand::~RotateElementsCommand() {
+}
+
+/// defait le pivotement
+void RotateElementsCommand::undo() {
+	foreach(Element *e, elements_to_rotate.keys()) {
+		e -> setOrientation(elements_to_rotate[e]);
+	}
+}
+
+/// refait le pivotement
+void RotateElementsCommand::redo() {
+	foreach(Element *e, elements_to_rotate.keys()) {
+		e -> setOrientation(e -> orientation().next());
+		e -> update();
+	}
+}

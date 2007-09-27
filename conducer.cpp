@@ -65,7 +65,6 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	mais s'en detache
 */
 Conducer::~Conducer() {
-// 	qDebug() << "~Conducer()" << (void *)this;
 	// se detache des bornes
 	if (!isDestroyed()) destroy();
 	
@@ -939,7 +938,7 @@ void Conducer::calculateTextItemPosition() {
 	dans priv_modifieConducer.
 */
 void Conducer::saveProfile() {
-	conducer_profile = ConducerProfile(this);
+	conducer_profile.fromConducer(this);
 }
 
 /**

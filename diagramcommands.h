@@ -1,5 +1,6 @@
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
+#include "qet.h"
 #include "diagram.h"
 #include "diagramtextitem.h"
 #include <QtGui>
@@ -182,5 +183,27 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 	
+};
+
+/**
+	Cette classe represente l'action de pivoter plusieurs elements
+*/
+class RotateElementsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand * = 0);
+	virtual ~RotateElementsCommand();
+	private:
+	RotateElementsCommand(const RotateElementsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// texte avant changement
+	QHash<Element *, QET::Orientation> elements_to_rotate;
 };
 #endif

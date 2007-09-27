@@ -104,12 +104,13 @@ void DiagramView::supprimer() {
 */
 void DiagramView::pivoter() {
 	if (scene -> selectedItems().isEmpty()) return;
+	QHash<Element *, QET::Orientation> elements_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
-		if (Element *elt = qgraphicsitem_cast<Element *>(item)) {
-			elt -> setOrientation(elt -> orientation().next());
-			elt -> update();
+		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
+			elements_to_rotate.insert(e, e -> orientation().current());
 		}
 	}
+	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate));
 }
 
 /**

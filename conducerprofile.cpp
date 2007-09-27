@@ -11,15 +11,14 @@ ConducerProfile::ConducerProfile() {
 	@param Conducer conducteur dont il faut extraire le profil
 */
 ConducerProfile::ConducerProfile(Conducer *conducer) {
-	foreach(ConducerSegment *conducer_segment, conducer -> segmentsList()) {
-		segments << new ConducerSegmentProfile(conducer_segment);
-	}
-	beginOrientation = conducer -> terminal1 -> orientation();
-	endOrientation   = conducer -> terminal2 -> orientation();
+	fromConducer(conducer);
 }
 
 /// destructeur
 ConducerProfile::~ConducerProfile() {
+	foreach(ConducerSegmentProfile * s, segments) {
+		delete s;
+	}
 }
 
 /// @return true si le profil est nul
@@ -75,6 +74,18 @@ QList<ConducerSegmentProfile *> ConducerProfile::verticalSegments() {
 		if (!csp -> isHorizontal) segments_list << csp;
 	}
 	return(segments_list);
+}
+
+void ConducerProfile::fromConducer(Conducer *conducer) {
+	// supprime les segments precedents
+	foreach(ConducerSegmentProfile *csp, segments) delete csp;
+	segments.clear();
+	
+	foreach(ConducerSegment *conducer_segment, conducer -> segmentsList()) {
+		segments << new ConducerSegmentProfile(conducer_segment);
+	}
+	beginOrientation = conducer -> terminal1 -> orientation();
+	endOrientation   = conducer -> terminal2 -> orientation();
 }
 
 /**
