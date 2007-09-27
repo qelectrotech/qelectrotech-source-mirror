@@ -4,6 +4,7 @@
 #include "conducersegmentprofile.h"
 #include "element.h"
 #include "diagram.h"
+#include "diagramcommands.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conducer::pen_and_brush_initialized = false;
@@ -938,7 +939,11 @@ void Conducer::calculateTextItemPosition() {
 	dans priv_modifieConducer.
 */
 void Conducer::saveProfile() {
+	ConducerProfile old_profile = conducer_profile;
 	conducer_profile.fromConducer(this);
+	if (Diagram *dia = diagram()) {
+		dia -> undoStack().push(new ChangeConducerCommand(this, old_profile, conducer_profile));
+	}
 }
 
 /**
@@ -956,4 +961,20 @@ int Conducer::getCoeff(const qreal &value1, const qreal &value2) {
 */
 int Conducer::getSign(const qreal &value) {
 	return(value < 0 ? -1 : 1);
+}
+
+/**
+	Applique un nouveau profil a ce conducteur
+	@param cp Profil a appliquer a ce conducteur
+*/
+void Conducer::setProfile(const ConducerProfile &cp) {
+	conducer_profile = cp;
+	if (conducer_profile.isNull()) {
+		priv_calculeConducer(terminal1 -> amarrageConducer(), terminal1 -> orientation(), terminal2 -> amarrageConducer(), terminal2 -> orientation());
+		modified_path = false;
+	} else {
+		priv_modifieConducer(terminal1 -> amarrageConducer(), terminal1 -> orientation(), terminal2 -> amarrageConducer(), terminal2 -> orientation());
+		modified_path = true;
+	}
+	calculateTextItemPosition();
 }

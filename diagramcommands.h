@@ -3,6 +3,7 @@
 #include "qet.h"
 #include "diagram.h"
 #include "diagramtextitem.h"
+#include "conducer.h"
 #include <QtGui>
 /**
 	Cette classe represente l'action d'ajouter un element au schema
@@ -182,7 +183,6 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 	QString text_after;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
-	
 };
 
 /**
@@ -205,5 +205,33 @@ class RotateElementsCommand : public QUndoCommand {
 	private:
 	/// texte avant changement
 	QHash<Element *, QET::Orientation> elements_to_rotate;
+};
+
+/**
+	Cette classe represente l'action de modifier un conducteur
+*/
+class ChangeConducerCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeConducerCommand(Conducer *, const ConducerProfile &, const ConducerProfile &, QUndoCommand * = 0);
+	virtual ~ChangeConducerCommand();
+	private:
+	ChangeConducerCommand(const ChangeConducerCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// DiagramTextItem modifie
+	Conducer *conducer;
+	/// texte avant changement
+	ConducerProfile old_profile;
+	/// texte apres changement
+	ConducerProfile new_profile;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
 };
 #endif

@@ -244,16 +244,10 @@ MoveElementsCommand::MoveElementsCommand(
 	movement(m)
 {
 	setText(QObject::tr("d\351placer ") + QET::ElementsAndConducersSentence(elements_to_move.count(), conducers_to_move.count()));
-	foreach(QGraphicsItem *qgi, elements_to_move)    diagram -> qgiManager().manage(qgi);
-	foreach(QGraphicsItem *qgi, conducers_to_move)   diagram -> qgiManager().manage(qgi);
-	foreach(QGraphicsItem *qgi, conducers_to_update) diagram -> qgiManager().manage(qgi);
 }
 
 /// Destructeur
 MoveElementsCommand::~MoveElementsCommand() {
-	foreach(QGraphicsItem *qgi, elements_to_move)    diagram -> qgiManager().release(qgi);
-	foreach(QGraphicsItem *qgi, conducers_to_move)   diagram -> qgiManager().release(qgi);
-	foreach(QGraphicsItem *qgi, conducers_to_update) diagram -> qgiManager().release(qgi);
 }
 
 /// annule le deplacement
@@ -356,4 +350,40 @@ void RotateElementsCommand::redo() {
 		e -> setOrientation(e -> orientation().next());
 		e -> update();
 	}
+}
+
+/**
+	Constructeur
+	@param c Conducteur modifie
+	@param old_p ancien profil du conducteur
+	@param new_p nouveau profil du conducteur
+	@param parent QUndoCommand parent
+*/
+ChangeConducerCommand::ChangeConducerCommand(
+	Conducer *c,
+	const ConducerProfile &old_p,
+	const ConducerProfile &new_p,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modifier un conducteur"), parent),
+	conducer(c),
+	old_profile(old_p),
+	new_profile(new_p),
+	first_redo(true)
+{
+}
+
+/// Destructeur
+ChangeConducerCommand::~ChangeConducerCommand() {
+}
+
+/// Annule la modification du conducteur
+void ChangeConducerCommand::undo() {
+	conducer -> setProfile(old_profile);
+}
+
+/// Refait la modification du conducteur
+void ChangeConducerCommand::redo() {
+	if (first_redo) first_redo = false;
+	else conducer -> setProfile(new_profile);
 }

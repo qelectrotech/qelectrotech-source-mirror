@@ -13,6 +13,8 @@ class ConducerProfile {
 	// constructeurs, destructeur
 	ConducerProfile();
 	ConducerProfile(Conducer *conducer);
+	ConducerProfile(const ConducerProfile &);
+	ConducerProfile &operator=(const ConducerProfile &);
 	virtual ~ConducerProfile();
 	
 	// attributs
@@ -24,6 +26,7 @@ class ConducerProfile {
 	// methodes
 	public:
 	bool isNull() const;
+	void setNull();
 	qreal width() const;
 	qreal height() const;
 	uint nbSegments(QET::ConducerSegmentType) const;

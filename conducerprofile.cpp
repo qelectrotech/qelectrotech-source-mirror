@@ -14,16 +14,51 @@ ConducerProfile::ConducerProfile(Conducer *conducer) {
 	fromConducer(conducer);
 }
 
+/**
+	Constructeur de copie
+	@param c autre conducteur
+*/
+ConducerProfile::ConducerProfile(const ConducerProfile &c) {
+	beginOrientation = c.beginOrientation;
+	endOrientation   = c.endOrientation;
+	foreach(ConducerSegmentProfile *csp, c.segments) {
+		segments << new ConducerSegmentProfile(*csp);
+	}
+}
+
+/**
+	Operateur =
+	@param c autre conducteur
+*/
+ConducerProfile &ConducerProfile::operator=(const ConducerProfile &c) {
+	if (&c == this) return(*this);
+	
+	// supprime ses informations
+	setNull();
+	
+	// copie les informations de l'autre profil de conducteur
+	beginOrientation = c.beginOrientation;
+	endOrientation   = c.endOrientation;
+	foreach(ConducerSegmentProfile *csp, c.segments) {
+		segments << new ConducerSegmentProfile(*csp);
+	}
+	return(*this);
+}
+
 /// destructeur
 ConducerProfile::~ConducerProfile() {
-	foreach(ConducerSegmentProfile * s, segments) {
-		delete s;
-	}
+	setNull();
 }
 
 /// @return true si le profil est nul
 bool ConducerProfile::isNull() const {
 	return(segments.isEmpty());
+}
+
+/// supprime les segments du profil de conducteur
+void ConducerProfile::setNull() {
+	foreach(ConducerSegmentProfile *csp, segments) delete csp;
+	segments.clear();
 }
 
 /// @return la largeur occupee par le conducteur
@@ -78,8 +113,7 @@ QList<ConducerSegmentProfile *> ConducerProfile::verticalSegments() {
 
 void ConducerProfile::fromConducer(Conducer *conducer) {
 	// supprime les segments precedents
-	foreach(ConducerSegmentProfile *csp, segments) delete csp;
-	segments.clear();
+	setNull();
 	
 	foreach(ConducerSegment *conducer_segment, conducer -> segmentsList()) {
 		segments << new ConducerSegmentProfile(conducer_segment);

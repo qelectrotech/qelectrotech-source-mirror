@@ -63,6 +63,7 @@ class Conducer : public QGraphicsPathItem {
 	bool fromXml(QDomElement &);
 	QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	const QList<ConducerSegment *> segmentsList() const;
+	void setProfile(const ConducerProfile &);
 	
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
