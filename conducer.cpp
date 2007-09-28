@@ -841,7 +841,7 @@ bool Conducer::fromXml(QDomElement &e) {
 	
 	// initialise divers parametres lies a la modification des conducteurs
 	modified_path = true;
-	saveProfile();
+	saveProfile(false);
 	
 	segmentsToPath();
 	return(true);
@@ -938,10 +938,11 @@ void Conducer::calculateTextItemPosition() {
 	Sauvegarde le profil courant du conducteur pour l'utiliser ulterieurement
 	dans priv_modifieConducer.
 */
-void Conducer::saveProfile() {
+void Conducer::saveProfile(bool undo) {
 	ConducerProfile old_profile = conducer_profile;
 	conducer_profile.fromConducer(this);
-	if (Diagram *dia = diagram()) {
+	Diagram *dia = diagram();
+	if (undo && dia) {
 		dia -> undoStack().push(new ChangeConducerCommand(this, old_profile, conducer_profile));
 	}
 }

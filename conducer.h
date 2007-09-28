@@ -73,7 +73,7 @@ class Conducer : public QGraphicsPathItem {
 	
 	private:
 	void segmentsToPath();
-	void saveProfile();
+	void saveProfile(bool = true);
 	void priv_calculeConducer(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
 	void priv_modifieConducer(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
 	uint nbSegments(QET::ConducerSegmentType = QET::Both) const;
