@@ -378,6 +378,6 @@ void ExportDialog::slot_refreshPreview() {
 	// ajoute le nouvel apercu
 	QGraphicsPixmapItem *qgpi = new QGraphicsPixmapItem(QPixmap::fromImage(preview_image));
 	preview_scene -> addItem(qgpi);
-	preview_scene -> setSceneRect(QRectF(0.0, 0.0, preview_image.width() + 15.0, preview_image.height() + 15.0));
+	preview_scene -> setSceneRect(QRectF(0.0, 0.0, preview_image.width(), preview_image.height()));
 }
 

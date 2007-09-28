@@ -89,6 +89,15 @@ class BorderInset : public QObject {
 	private:
 	void updateRectangles();
 	
+	// signaux
+	signals:
+	/**
+		Signal emis lorsque la bordure change
+		@param old_border Ancienne bordure
+		@param new_border Nouvelle bordure
+	*/
+	void borderChanged(QRectF old_border, QRectF new_border);
+	
 	// attributs
 	private:
 	// informations du cartouche

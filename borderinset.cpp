@@ -33,7 +33,9 @@ BorderInset::~BorderInset() {
 */
 void BorderInset::updateRectangles() {
 	// rectangle delimitant le schema
+	QRectF previous_border = border;
 	border = QRectF(0, 0, nb_columns * columns_width, columns_height);
+	if (border != previous_border) emit(borderChanged(previous_border, border));
 	
 	// rectangles relatifs au cartouche
 	inset        = QRectF(border.bottomLeft().x(), border.bottomLeft().y(), inset_width, inset_height);

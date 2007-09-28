@@ -34,8 +34,6 @@ class DiagramView : public QGraphicsView {
 	void dialogPrint();
 	void addColumn();
 	void removeColumn();
-	void adjustHeight(qreal);
-	void adjustSceneRect();
 	void expand();
 	void shrink();
 	Diagram *diagram() { return(scene); }
@@ -71,6 +69,7 @@ class DiagramView : public QGraphicsView {
 	void couper();
 	void copier();
 	void coller();
+	void adjustSceneRect();
 	
 	private slots:
 	void slot_selectionChanged();

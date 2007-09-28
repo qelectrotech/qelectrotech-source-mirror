@@ -28,6 +28,7 @@ void DiagramView::initialise() {
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	adjustSceneRect();
 	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SLOT(slot_selectionChanged()));
+	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 }
 
 /**
@@ -523,14 +524,7 @@ bool DiagramView::hasSelectedItems() {
 	Ajoute une colonne au schema.
 */
 void DiagramView::addColumn() {
-	// ajoute la colonne
 	scene -> border_and_inset.addColumn();
-	
-	// met a jour la zone affichee par la vue
-	adjustSceneRect();
-	
-	// rafraichit la vue
-	scene -> update(sceneRect());
 }
 
 /**
@@ -538,52 +532,22 @@ void DiagramView::addColumn() {
 */
 void DiagramView::removeColumn() {
 	scene -> border_and_inset.removeColumn();
-	
-	// met a jour la zone affichee par la vue
-	QRectF old_sr = sceneRect();
-	adjustSceneRect();
-	
-	// rafraichit la vue
-	scene -> update(old_sr);
 }
 
 /**
 	Agrandit le schema en hauteur
 */
 void DiagramView::expand() {
-	adjustHeight(20.0);
+	qreal new_height = scene -> border_and_inset.columnsHeight() + 20.0;
+	scene -> border_and_inset.setColumnsHeight(new_height);
 }
 
 /**
 	Retrecit le schema en hauteur
 */
 void DiagramView::shrink() {
-	adjustHeight(-20.0);
-}
-
-/**
-	Change la hauteur du schema
-	@param height_change Le changement de hauteur ; exemple : -5.0 retrecit
-	le cadre de 5 pixels
-*/
-void DiagramView::adjustHeight(qreal height_change) {
-	// reference vers le "border and inset" du schema
-	BorderInset &border = scene -> border_and_inset;
-	
-	// calcule la nouvelle hauteur des colonnes
-	qreal new_height = border.columnsHeight() + height_change;
-	if (new_height <= border.minColumnsHeight()) return;
-	
-	// applique la reduction
-	border.setColumnsHeight(new_height);
-	
-	// met a jour la zone affichee par la vue
-	QRectF old_sr = sceneRect();
-	adjustSceneRect();
-	QRectF new_sr = sceneRect();
-	
-	// rafraichit la vue
-	scene -> update(height_change < 0 ? old_sr : new_sr);
+	qreal new_height = scene -> border_and_inset.columnsHeight() - 20.0;
+	scene -> border_and_inset.setColumnsHeight(new_height);
 }
 
 /**
@@ -592,6 +556,8 @@ void DiagramView::adjustHeight(qreal height_change) {
 	lui-meme.
 */
 void DiagramView::adjustSceneRect() {
+	QRectF old_scene_rect = sceneRect();
+	
 	// rectangle delimitant l'ensemble des elements
 	QRectF elements_bounding_rect = scene -> itemsBoundingRect();
 	
@@ -599,7 +565,11 @@ void DiagramView::adjustSceneRect() {
 	QRectF border_bounding_rect = scene -> border().adjusted(-MARGIN, -MARGIN, MARGIN, MARGIN);
 	
 	// ajuste la sceneRect
-	setSceneRect(elements_bounding_rect.united(border_bounding_rect));
+	QRectF new_scene_rect = elements_bounding_rect.united(border_bounding_rect);
+	setSceneRect(new_scene_rect);
+	
+	// met a jour la scene
+	scene -> update(old_scene_rect.united(new_scene_rect));
 }
 
 void DiagramView::adjustGridToZoom() {
