@@ -1,5 +1,6 @@
 #ifndef BORDERINSET_H
 #define BORDERINSET_H
+#include "insetproperties.h"
 #include <QObject>
 #include <QRectF>
 #include <QPainter>
@@ -63,6 +64,22 @@ class BorderInset : public QObject {
 	void setTitle              (const QString &title)    { bi_title        = title;    }
 	void setFolio              (const QString &folio)    { bi_folio        = folio;    }
 	void setFileName           (const QString &filename) { bi_filename     = filename; }
+	InsetProperties exportInset() {
+		InsetProperties ip;
+		ip.author = bi_author;
+		ip.date = bi_date;
+		ip.title = bi_title;
+		ip.folio = bi_folio;
+		ip.filename = bi_filename;
+		return(ip);
+	}
+	void importInset(const InsetProperties &ip) {
+		bi_author = ip.author;
+		bi_date = ip.date;
+		bi_title = ip.title;
+		bi_folio = ip.folio;
+		bi_filename = ip.filename;
+	}
 	
 	// methodes d'acces en ecriture aux options
 	void displayInset          (bool di)                 { display_inset   = di;       }
@@ -78,8 +95,8 @@ class BorderInset : public QObject {
 	QString bi_author;
 	QDate   bi_date;
 	QString bi_title;
-	QString bi_folio;       // vraiment necessaire ce truc ?
-	QString bi_filename;    // meme remarque
+	QString bi_folio;
+	QString bi_filename;
 	
 	// dimensions du cadre et du cartouche
 	int    nb_columns;

@@ -459,21 +459,21 @@ void DiagramView::dialogPrint() {
 */
 void DiagramView::dialogEditInfos() {
 	// recupere le cartouche du schema
-	BorderInset *inset = &(scene -> border_and_inset);
+	InsetProperties inset = scene -> border_and_inset.exportInset();
 	
 	// construit le dialogue
 	QDialog popup;
 	popup.setMinimumWidth(400);
 	popup.setWindowTitle(tr("Cartouche du sch\351ma"));
 	
-	QLineEdit *titre = new QLineEdit(inset -> title(), &popup);
-	QLineEdit *auteur = new QLineEdit(inset -> author(), &popup);
-	QDate date_diagram = QDate(inset -> date());
+	QLineEdit *titre = new QLineEdit(inset.title, &popup);
+	QLineEdit *auteur = new QLineEdit(inset.author, &popup);
+	QDate date_diagram = QDate(inset.date);
 	if (date_diagram.isNull() || !date_diagram.isValid()) date_diagram = QDate::currentDate();
 	QDateEdit *date = new QDateEdit(date_diagram, &popup);
 	date -> setCalendarPopup(true);
-	QLineEdit *fichier = new QLineEdit(inset -> fileName(), &popup);
-	QLineEdit *folio = new QLineEdit(inset -> folio(), &popup);
+	QLineEdit *fichier = new QLineEdit(inset.filename, &popup);
+	QLineEdit *folio = new QLineEdit(inset.folio, &popup);
 	QWidget bidon(&popup);
 	QGridLayout layout_champs(&bidon);
 	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
@@ -496,12 +496,19 @@ void DiagramView::dialogEditInfos() {
 	QVBoxLayout layout_v(&popup);
 	layout_v.addWidget(&bidon);
 	layout_v.addWidget(&boutons);
+	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted) {
-		inset -> setTitle(titre -> text());
-		inset -> setAuthor(auteur -> text());
-		inset -> setDate(date -> date());
-		inset -> setFileName(fichier -> text());
-		inset -> setFolio(folio -> text());
+		InsetProperties new_inset;
+		new_inset.title = titre -> text();
+		new_inset.author = auteur -> text();
+		new_inset.date = date -> date();
+		new_inset.filename = fichier -> text();
+		new_inset.folio = folio -> text();
+		
+		// s'il y a des modifications
+		if (new_inset != inset) {
+			scene -> undoStack().push(new ChangeInsetCommand(scene, inset, new_inset));
+		}
 	}
 }
 

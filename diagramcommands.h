@@ -234,4 +234,30 @@ class ChangeConducerCommand : public QUndoCommand {
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
+
+/**
+	Cette classe represente l'action de modifier les informations du cartouche d'un schema
+*/
+class ChangeInsetCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeInsetCommand(Diagram *, const InsetProperties &, const InsetProperties &, QUndoCommand * = 0);
+	virtual ~ChangeInsetCommand();
+	private:
+	ChangeInsetCommand(const ChangeInsetCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// DiagramTextItem modifie
+	Diagram *diagram;
+	/// texte avant changement
+	InsetProperties old_inset;
+	/// texte apres changement
+	InsetProperties new_inset;
+};
 #endif

@@ -387,3 +387,37 @@ void ChangeConducerCommand::redo() {
 	if (first_redo) first_redo = false;
 	else conducer -> setProfile(new_profile);
 }
+
+/**
+	Constructeur
+	@param d Schema dont on modifie le cartouche
+	@param old_ip Anciennes proprietes du cartouches
+	@param new_ip Nouvelles proprietes du cartouches
+	@param parent QUndoCommand parent
+*/
+ChangeInsetCommand::ChangeInsetCommand(
+	Diagram *d,
+	const InsetProperties &old_ip,
+	const InsetProperties &new_ip,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("modifier le cartouche"), parent),
+	diagram(d),
+	old_inset(old_ip),
+	new_inset(new_ip)
+{
+}
+
+/// Destructeur
+ChangeInsetCommand::~ChangeInsetCommand() {
+}
+
+/// Annule la modification de cartouche
+void ChangeInsetCommand::undo() {
+	diagram -> border_and_inset.importInset(old_inset);
+}
+
+/// Refait la modification de cartouche
+void ChangeInsetCommand::redo() {
+	diagram -> border_and_inset.importInset(new_inset);
+}

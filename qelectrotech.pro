@@ -66,7 +66,8 @@ HEADERS += aboutqet.h \
            editor/textfieldeditor.h \
  diagramcommands.h \
  diagramitem.h \
- diagramtextitem.h
+ diagramtextitem.h \
+ insetproperties.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conducer.cpp \
