@@ -253,11 +253,48 @@ class ChangeInsetCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// DiagramTextItem modifie
+	/// Schema modifie
 	Diagram *diagram;
-	/// texte avant changement
+	/// proprietes avant changement
 	InsetProperties old_inset;
-	/// texte apres changement
+	/// proprietes apres changement
 	InsetProperties new_inset;
+};
+
+/**
+	Cette classe represente l'action de modifier :
+	-le nombre de colonnes d'un schema
+	-la hauteur des colonnes
+	-la largeur des colonnes
+	-la hauteur des en-tetes des colonnes
+*/
+class ChangeBorderCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeBorderCommand(Diagram *, QUndoCommand * = 0);
+	virtual ~ChangeBorderCommand();
+	private:
+	ChangeBorderCommand(const ChangeBorderCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	private:
+	virtual void applyChanges(int = 1);
+	
+	// attributs
+	private:
+	/// Diagram modifie
+	Diagram *diagram;
+	public:
+	/// Nombre de colonnes ajoutees / enlevees
+	int columnsCountDifference;
+	/// Delta pour la hauteur des colonnes
+	qreal columnsHeightDifference;
+	/// Delta pour la largeur des colonnes
+	qreal columnsWidthDifference;
+	/// Delta pour la hauteur des entetes des colonnes
+	qreal headersHeightDifference;
 };
 #endif

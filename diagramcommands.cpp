@@ -421,3 +421,54 @@ void ChangeInsetCommand::undo() {
 void ChangeInsetCommand::redo() {
 	diagram -> border_and_inset.importInset(new_inset);
 }
+
+/**
+	Constructeur
+	@param dia Schema modifie
+	@param parent QUndoCommand parent
+*/
+ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("modifier les dimensions du sch\351ma"), parent),
+	diagram(dia),
+	columnsCountDifference(0),
+	columnsHeightDifference(0.0),
+	columnsWidthDifference(0.0),
+	headersHeightDifference(0.0)
+{
+}
+
+/// Destructeur
+ChangeBorderCommand::~ChangeBorderCommand() {
+}
+
+/**
+	Applique les changements au schema
+	@param coeff comme les changements s'expriment sous forme de nombres dont
+	il suffit d'inverser le signe pour les annuler, ces valeurs sont ici
+	multipliees par le coefficient passe en parametre avant d'etre appliquees.
+	Pour resumer : 1 pour refaire, -1 pour annuler.
+*/
+void ChangeBorderCommand::applyChanges(int coeff) {
+	// reference vers l'objet border_and_inset du schema
+	BorderInset &border = diagram -> border_and_inset;
+	if (columnsCountDifference) {
+		border.setNbColumns(border.nbColumn() + (columnsCountDifference * coeff));
+	}
+	if (columnsHeightDifference) {
+		border.setColumnsHeight(border.columnsHeight() + (columnsHeightDifference * coeff));
+	}
+	if (columnsWidthDifference) {
+		border.setColumnsWidth(border.columnsWidth() + (columnsWidthDifference * coeff));
+	}
+	if (headersHeightDifference) {
+		border.setColumnsHeaderHeight(border.columnsHeaderHeight() + (headersHeightDifference * coeff));
+	}
+}
+
+void ChangeBorderCommand::undo() {
+	applyChanges(-1);
+}
+
+void ChangeBorderCommand::redo() {
+	applyChanges(1);
+}

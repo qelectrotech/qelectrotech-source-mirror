@@ -524,30 +524,36 @@ bool DiagramView::hasSelectedItems() {
 	Ajoute une colonne au schema.
 */
 void DiagramView::addColumn() {
-	scene -> border_and_inset.addColumn();
+	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
+	cbc -> columnsCountDifference = 1;
+	scene -> undoStack().push(cbc);
 }
 
 /**
 	Enleve une colonne au schema.
 */
 void DiagramView::removeColumn() {
-	scene -> border_and_inset.removeColumn();
+	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
+	cbc -> columnsCountDifference = -1;
+	scene -> undoStack().push(cbc);
 }
 
 /**
 	Agrandit le schema en hauteur
 */
 void DiagramView::expand() {
-	qreal new_height = scene -> border_and_inset.columnsHeight() + 20.0;
-	scene -> border_and_inset.setColumnsHeight(new_height);
+	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
+	cbc -> columnsHeightDifference = 20.0;
+	scene -> undoStack().push(cbc);
 }
 
 /**
 	Retrecit le schema en hauteur
 */
 void DiagramView::shrink() {
-	qreal new_height = scene -> border_and_inset.columnsHeight() - 20.0;
-	scene -> border_and_inset.setColumnsHeight(new_height);
+	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
+	cbc -> columnsHeightDifference = 20.0;
+	scene -> undoStack().push(cbc);
 }
 
 /**
