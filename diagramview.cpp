@@ -548,7 +548,7 @@ void DiagramView::expand() {
 */
 void DiagramView::shrink() {
 	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsHeightDifference = 20.0;
+	cbc -> columnsHeightDifference = -20.0;
 	scene -> undoStack().push(cbc);
 }
 

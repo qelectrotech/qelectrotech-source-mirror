@@ -620,7 +620,7 @@ Please check rights of the directory </translation>
     <message>
         <location filename="../elementspanelwidget.cpp" line="19"/>
         <source>Supprimer l&apos;&#xe9;l&#xe9;ment</source>
-        <translation>Eelete element</translation>
+        <translation>Delete element</translation>
     </message>
     <message>
         <location filename="../elementspanelwidget.cpp" line="71"/>
