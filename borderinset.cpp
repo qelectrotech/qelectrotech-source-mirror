@@ -87,6 +87,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	
 	// dessine le cartouche
 	if (display_inset) {
+		qp -> setBrush(Qt::white);
 		qp -> drawRect(inset);
 		
 		qp -> drawRect(inset_author);

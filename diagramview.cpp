@@ -19,16 +19,19 @@ void DiagramView::initialise() {
 	setRenderHint(QPainter::SmoothPixmapTransform, true);
 	
 	setScene(scene = new Diagram(this));
+	scene -> undoStack().setClean();
 	setDragMode(RubberBandDrag);
 	setAcceptDrops(true);
-	setWindowTitle(tr("Nouveau sch\351ma") + "[*]");
 	setWindowIcon(QIcon(":/ico/qet-16.png"));
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
 	adjustSceneRect();
+	updateWindowTitle();
+	
 	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SLOT(slot_selectionChanged()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
+	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
 }
 
 /**
@@ -324,7 +327,7 @@ bool DiagramView::ouvrir(QString n_fichier, int *erreur) {
 	if (scene -> fromXml(doc)) {
 		if (erreur != NULL) *erreur = 0;
 		nom_fichier = n_fichier;
-		setWindowTitle(nom_fichier + "[*]");
+		scene -> undoStack().setClean();
 		return(true);
 	} else {
 		if (erreur != NULL) *erreur = 4;
@@ -344,19 +347,24 @@ void DiagramView::slot_selectionChanged() {
 	@param event Le QCloseEvent decrivant l'evenement
 */
 void DiagramView::closeEvent(QCloseEvent *event) {
-	// demande d'abord a l'utilisateur s'il veut enregistrer le schema en cours
-	QMessageBox::StandardButton reponse = QMessageBox::question(
-		this,
-		tr("Enregistrer le sch\351ma en cours ?"),
-		tr("Voulez-vous enregistrer le sch\351ma ") + windowTitle() + tr(" ?"),
-		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
-		QMessageBox::Cancel
-	);
 	bool retour;
-	switch(reponse) {
-		case QMessageBox::Cancel: retour = false;         break; // l'utilisateur annule : echec de la fermeture
-		case QMessageBox::Yes:    retour = enregistrer(); break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
-		default:                  retour = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
+	// si le schema est modifie
+	if (!isWindowModified()) {
+		retour = true;
+	} else {
+		// demande d'abord a l'utilisateur s'il veut enregistrer le schema en cours
+		QMessageBox::StandardButton reponse = QMessageBox::question(
+			this,
+			tr("Enregistrer le sch\351ma en cours ?"),
+			tr("Voulez-vous enregistrer le sch\351ma ") + windowTitle() + tr(" ?"),
+			QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
+			QMessageBox::Cancel
+		);
+		switch(reponse) {
+			case QMessageBox::Cancel: retour = false;         break; // l'utilisateur annule : echec de la fermeture
+			case QMessageBox::Yes:    retour = enregistrer(); break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
+			default:                  retour = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
+		}
 	}
 	if (retour) {
 		event -> accept();
@@ -423,6 +431,7 @@ bool DiagramView::private_enregistrer(QString &n_fichier) {
 	out.setCodec("UTF-8");
 	out << scene -> toXml().toString(4);
 	fichier.close();
+	scene -> undoStack().setClean();
 	return(true);
 }
 
@@ -576,6 +585,15 @@ void DiagramView::adjustSceneRect() {
 	
 	// met a jour la scene
 	scene -> update(old_scene_rect.united(new_scene_rect));
+}
+
+void DiagramView::updateWindowTitle() {
+	QString window_title;
+	if (nom_fichier.isNull()) window_title += tr("nouveau sch\351ma");
+	else window_title += nom_fichier;
+	window_title += "[*]";
+	setWindowTitle(window_title);
+	setWindowModified(!(scene -> undoStack().isClean()));
 }
 
 void DiagramView::adjustGridToZoom() {

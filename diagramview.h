@@ -70,6 +70,7 @@ class DiagramView : public QGraphicsView {
 	void copier();
 	void coller();
 	void adjustSceneRect();
+	void updateWindowTitle();
 	
 	private slots:
 	void slot_selectionChanged();
