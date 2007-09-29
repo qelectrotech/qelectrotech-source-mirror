@@ -29,7 +29,7 @@ Diagram::Diagram(QObject *parent) : QGraphicsScene(parent), qgi_manager(this) {
 	Destructeur
 */
 Diagram::~Diagram() {
-};
+}
 
 /**
 	Dessine l'arriere-plan du schema, cad la grille.

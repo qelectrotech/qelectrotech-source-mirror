@@ -31,7 +31,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 		// alors on ouvre ces fichiers
 		foreach(QString file, files) {
 			DiagramView *sv = new DiagramView(this);
-			if (sv -> ouvrir(file)) diagram_views << sv;
+			if (sv -> open(file)) diagram_views << sv;
 			else delete sv;
 		}
 	}
@@ -49,7 +49,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	setWindowIcon(QIcon(":/ico/qet.png"));
 	
 	// barre de statut de la fenetre
-	statusBar() -> showMessage(tr("QElectrotech"));
+	statusBar() -> showMessage(tr("QElectroTech"));
 	
 	// ajout du panel d'Appareils en tant que QDockWidget
 	qdw_pa = new QDockWidget(tr("Panel d'appareils"), this);
@@ -94,21 +94,21 @@ QETDiagramEditor::~QETDiagramEditor() {
 */
 void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 	// quitte directement s'il n'y a aucun schema ouvert
-	bool peut_quitter = true;
+	bool can_quit = true;
 	if (currentDiagram()) {
 		// sinon demande la permission de fermer chaque schema
-		foreach(QWidget *fenetre, workspace.windowList()) {
-			if (qobject_cast<DiagramView *>(fenetre)) {
-				workspace.setActiveWindow(fenetre);
-				if (!fermer()) {
-					peut_quitter = false;
+		foreach(QWidget *diagram_window, workspace.windowList()) {
+			if (qobject_cast<DiagramView *>(diagram_window)) {
+				workspace.setActiveWindow(diagram_window);
+				if (!closeDiagram()) {
+					can_quit = false;
 					qce -> ignore();
 					break;
 				}
 			}
 		}
 	}
-	if (peut_quitter) {
+	if (can_quit) {
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
 	}
@@ -128,7 +128,7 @@ void QETDiagramEditor::toggleFullScreen() {
 	le dialogue n'a pas a etre recree et il apparait instantanement. Il est
 	detruit en meme temps que son parent (ici, la QETDiagramEditor).
 */
-void QETDiagramEditor::aPropos() {
+void QETDiagramEditor::aboutQET() {
 	static AboutQET *apqet = new AboutQET(this);
 	apqet -> exec();
 }
@@ -138,134 +138,134 @@ void QETDiagramEditor::aPropos() {
 */
 void QETDiagramEditor::actions() {
 	// icones et labels
-	nouveau_fichier   = new QAction(QIcon(":/ico/new.png"),        tr("&Nouveau"),                             this);
-	ouvrir_fichier    = new QAction(QIcon(":/ico/open.png"),       tr("&Ouvrir"),                              this);
-	fermer_fichier    = new QAction(QIcon(":/ico/fileclose.png"),  tr("&Fermer"),                              this);
-	enr_fichier       = new QAction(QIcon(":/ico/save.png"),       tr("&Enregistrer"),                         this);
-	enr_fichier_sous  = new QAction(QIcon(":/ico/saveas.png"),     tr("Enregistrer sous"),                     this);
-	importer          = new QAction(QIcon(":/ico/import.png"),     tr("&Importer"),                            this);
-	exporter          = new QAction(QIcon(":/ico/export.png"),     tr("E&xporter"),                            this);
-	imprimer          = new QAction(QIcon(":/ico/print.png"),      tr("Imprimer"),                             this);
-	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                             this);
+	new_file          = new QAction(QIcon(":/ico/new.png"),        tr("&Nouveau"),                             this);
+	open_file         = new QAction(QIcon(":/ico/open.png"),       tr("&Ouvrir"),                              this);
+	close_file        = new QAction(QIcon(":/ico/fileclose.png"),  tr("&Fermer"),                              this);
+	save_file         = new QAction(QIcon(":/ico/save.png"),       tr("&Enregistrer"),                         this);
+	save_file_sous    = new QAction(QIcon(":/ico/saveas.png"),     tr("Enregistrer sous"),                     this);
+	import_diagram    = new QAction(QIcon(":/ico/import.png"),     tr("&Importer"),                            this);
+	export_diagram    = new QAction(QIcon(":/ico/export.png"),     tr("E&xporter"),                            this);
+	print             = new QAction(QIcon(":/ico/print.png"),      tr("Imprimer"),                             this);
+	quit_editor       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                             this);
 	
-	annuler = undo_group.createUndoAction(this, tr("Annuler"));
-	annuler -> setIcon(QIcon(":/ico/undo.png"));
-	refaire = undo_group.createRedoAction(this, tr("Refaire"));
-	refaire -> setIcon(QIcon(":/ico/redo.png"));
-	couper            = new QAction(QIcon(":/ico/cut.png"),        tr("Co&uper"),                              this);
-	copier            = new QAction(QIcon(":/ico/copy.png"),       tr("Cop&ier"),                              this);
-	coller            = new QAction(QIcon(":/ico/paste.png"),      tr("C&oller"),                              this);
-	sel_tout          = new QAction(                               tr("Tout s\351lectionner"),                 this);
-	sel_rien          = new QAction(                               tr("D\351s\351lectionner tout"),            this);
-	sel_inverse       = new QAction(                               tr("Inverser la s\351lection"),             this);
-	supprimer         = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
-	pivoter           = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
+	undo = undo_group.createUndoAction(this, tr("Annuler"));
+	undo -> setIcon(QIcon(":/ico/undo.png"));
+	redo = undo_group.createRedoAction(this, tr("Refaire"));
+	redo -> setIcon(QIcon(":/ico/redo.png"));
+	cut               = new QAction(QIcon(":/ico/cut.png"),        tr("Co&uper"),                              this);
+	copy              = new QAction(QIcon(":/ico/copy.png"),       tr("Cop&ier"),                              this);
+	paste             = new QAction(QIcon(":/ico/paste.png"),      tr("C&oller"),                              this);
+	select_all        = new QAction(                               tr("Tout s\351lectionner"),                 this);
+	select_nothing    = new QAction(                               tr("D\351s\351lectionner tout"),            this);
+	select_invert     = new QAction(                               tr("Inverser la s\351lection"),             this);
+	delete_selection  = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
+	rotate_selection  = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
 	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
 	shrink_diagram    = new QAction(                               tr("R\351tr\351cir le sch\351ma"),          this);
 	
-	zoom_avant        = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                           this);
-	zoom_arriere      = new QAction(QIcon(":/ico/viewmag-.png"),   tr("Zoom arri\350re"),                      this);
-	zoom_adapte       = new QAction(QIcon(":/ico/viewmagfit.png"), tr("Zoom adapt\351"),                       this);
+	zoom_in           = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                           this);
+	zoom_out          = new QAction(QIcon(":/ico/viewmag-.png"),   tr("Zoom arri\350re"),                      this);
+	zoom_fit          = new QAction(QIcon(":/ico/viewmagfit.png"), tr("Zoom adapt\351"),                       this);
 	zoom_reset        = new QAction(QIcon(":/ico/viewmag.png"),    tr("Pas de zoom"),                          this);
 	
 	mode_selection    = new QAction(QIcon(":/ico/select.png"),     tr("Mode Selection"),                       this);
 	mode_visualise    = new QAction(QIcon(":/ico/move.png"),       tr("Mode Visualisation"),                   this);
 	
-	entrer_pe         = new QAction(QIcon(":/ico/entrer_fs.png"),  tr("Passer en &mode plein \351cran"),       this);
-	sortir_pe         = new QAction(QIcon(":/ico/sortir_fs.png"),  tr("Sortir du &mode plein \351cran"),       this);
-	configurer        = new QAction(QIcon(":/ico/configure.png"),  tr("&Configurer QElectroTech"),             this);
+	fullscreen_on     = new QAction(QIcon(":/ico/entrer_fs.png"),  tr("Passer en &mode plein \351cran"),       this);
+	fullscreen_off    = new QAction(QIcon(":/ico/sortir_fs.png"),  tr("Sortir du &mode plein \351cran"),       this);
+	configure         = new QAction(QIcon(":/ico/configure.png"),  tr("&Configurer QElectroTech"),             this);
 	
-	f_mosaique        = new QAction(                               tr("&Mosa\357que"),                         this);
-	f_cascade         = new QAction(                               tr("&Cascade"),                             this);
-	f_reorganise      = new QAction(                               tr("Arranger les fen\352tres r\351duites"), this);
-	f_suiv            = new QAction(                               tr("Fen\352tre suivante"),                  this);
-	f_prec            = new QAction(                               tr("Fen\352tre pr\351c\351dente"),          this);
+	tile_window        = new QAction(                               tr("&Mosa\357que"),                         this);
+	cascade_window     = new QAction(                               tr("&Cascade"),                             this);
+	arrange_window     = new QAction(                               tr("Arranger les fen\352tres r\351duites"), this);
+	next_window        = new QAction(                               tr("Fen\352tre suivante"),                  this);
+	prev_window        = new QAction(                               tr("Fen\352tre pr\351c\351dente"),          this);
 	
-	a_propos_de_qet   = new QAction(QIcon(":/ico/qet.png"),        tr("\300 &propos de QElectroTech"),         this);
-	a_propos_de_qt    = new QAction(QIcon(":/ico/qt.png"),         tr("\300 propos de &Qt"),                   this);
+	about_qet         = new QAction(QIcon(":/ico/qet.png"),        tr("\300 &propos de QElectroTech"),         this);
+	about_qt          = new QAction(QIcon(":/ico/qt.png"),         tr("\300 propos de &Qt"),                   this);
 	
 	// raccourcis clavier
-	nouveau_fichier   -> setShortcut(QKeySequence::New);
-	ouvrir_fichier    -> setShortcut(QKeySequence::Open);
-	fermer_fichier    -> setShortcut(QKeySequence::Close);
-	enr_fichier       -> setShortcut(QKeySequence::Save);
-	importer          -> setShortcut(QKeySequence(tr("Ctrl+Shift+I")));
-	exporter          -> setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
-	imprimer          -> setShortcut(QKeySequence(QKeySequence::Print));
-	quitter_qet       -> setShortcut(QKeySequence(tr("Ctrl+Q")));
+	new_file          -> setShortcut(QKeySequence::New);
+	open_file         -> setShortcut(QKeySequence::Open);
+	close_file        -> setShortcut(QKeySequence::Close);
+	save_file         -> setShortcut(QKeySequence::Save);
+	import_diagram    -> setShortcut(QKeySequence(tr("Ctrl+Shift+I")));
+	export_diagram    -> setShortcut(QKeySequence(tr("Ctrl+Shift+X")));
+	print             -> setShortcut(QKeySequence(QKeySequence::Print));
+	quit_editor       -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	
-	annuler           -> setShortcut(QKeySequence::Undo);
-	refaire           -> setShortcut(QKeySequence::Redo);
-	couper            -> setShortcut(QKeySequence::Cut);
-	copier            -> setShortcut(QKeySequence::Copy);
-	coller            -> setShortcut(QKeySequence::Paste);
-	sel_tout          -> setShortcut(QKeySequence::SelectAll);
-	sel_rien          -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
-	sel_inverse       -> setShortcut(QKeySequence(tr("Ctrl+I")));
-	supprimer         -> setShortcut(QKeySequence(tr("Ctrl+Suppr")));
-	pivoter           -> setShortcut(QKeySequence(tr("Ctrl+R")));
+	undo              -> setShortcut(QKeySequence::Undo);
+	redo              -> setShortcut(QKeySequence::Redo);
+	cut               -> setShortcut(QKeySequence::Cut);
+	copy              -> setShortcut(QKeySequence::Copy);
+	paste             -> setShortcut(QKeySequence::Paste);
+	select_all        -> setShortcut(QKeySequence::SelectAll);
+	select_nothing    -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
+	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
+	delete_selection  -> setShortcut(QKeySequence(tr("Ctrl+Suppr")));
+	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	
-	zoom_avant        -> setShortcut(QKeySequence::ZoomIn);
-	zoom_arriere      -> setShortcut(QKeySequence::ZoomOut);
-	zoom_adapte       -> setShortcut(QKeySequence(tr("Ctrl+9")));
+	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
+	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
+	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
 	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
 	
-	entrer_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
-	sortir_pe         -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
+	fullscreen_on     -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
+	fullscreen_off    -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	
-	f_suiv            -> setShortcut(QKeySequence::NextChild);
-	f_prec            -> setShortcut(QKeySequence::PreviousChild);
+	next_window       -> setShortcut(QKeySequence::NextChild);
+	prev_window       -> setShortcut(QKeySequence::PreviousChild);
 	
 	// affichage dans la barre de statut
-	nouveau_fichier   -> setStatusTip(tr("Cr\351e un nouveau sch\351ma"));
-	ouvrir_fichier    -> setStatusTip(tr("Ouvre un sch\351ma existant"));
-	fermer_fichier    -> setStatusTip(tr("Ferme le sch\351ma courant"));
-	enr_fichier       -> setStatusTip(tr("Enregistre le sch\351ma courant"));
-	enr_fichier_sous  -> setStatusTip(tr("Enregistre le sch\351ma courant avec un autre nom de fichier"));
-	importer          -> setStatusTip(tr("Importe un sch\351ma dans le sch\351ma courant"));
-	exporter          -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format"));
-	imprimer          -> setStatusTip(tr("Imprime le sch\351ma courant"));
-	quitter_qet       -> setStatusTip(tr("Ferme l'application QElectroTech"));
+	new_file          -> setStatusTip(tr("Cr\351e un nouveau sch\351ma"));
+	open_file         -> setStatusTip(tr("Ouvre un sch\351ma existant"));
+	close_file        -> setStatusTip(tr("Ferme le sch\351ma courant"));
+	save_file         -> setStatusTip(tr("Enregistre le sch\351ma courant"));
+	save_file_sous    -> setStatusTip(tr("Enregistre le sch\351ma courant avec un autre nom de fichier"));
+	import_diagram    -> setStatusTip(tr("Importe un sch\351ma dans le sch\351ma courant"));
+	export_diagram    -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format"));
+	print             -> setStatusTip(tr("Imprime le sch\351ma courant"));
+	quit_editor       -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	
-	annuler           -> setStatusTip(tr("Annule l'action pr\351c\351dente"));
-	annuler           -> setStatusTip(tr("Restaure l'action annul\351e"));
-	couper            -> setStatusTip(tr("Transf\350re les \351l\351ments s\351lectionn\351s dans le presse-papier"));
-	copier            -> setStatusTip(tr("Copie les \351l\351ments s\351lectionn\351s dans le presse-papier"));
-	coller            -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma"));
-	sel_tout          -> setStatusTip(tr("S\351lectionne tous les \351l\351ments du sch\351ma"));
-	sel_rien          -> setStatusTip(tr("D\351s\351lectionne tous les \351l\351ments du sch\351ma"));
-	sel_inverse       -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
-	supprimer         -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
-	pivoter           -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
+	undo              -> setStatusTip(tr("Annule l'action pr\351c\351dente"));
+	undo              -> setStatusTip(tr("Restaure l'action annul\351e"));
+	cut               -> setStatusTip(tr("Transf\350re les \351l\351ments s\351lectionn\351s dans le presse-papier"));
+	copy              -> setStatusTip(tr("Copie les \351l\351ments s\351lectionn\351s dans le presse-papier"));
+	paste             -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma"));
+	select_all        -> setStatusTip(tr("S\351lectionne tous les \351l\351ments du sch\351ma"));
+	select_nothing    -> setStatusTip(tr("D\351s\351lectionne tous les \351l\351ments du sch\351ma"));
+	select_invert     -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
+	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
+	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
 	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
 	expand_diagram    -> setStatusTip(tr("Agrandit le sch\351ma en hauteur"));
 	shrink_diagram    -> setStatusTip(tr("R\351tr\351cit le sch\351ma en hauteur"));
 	
-	zoom_avant        -> setStatusTip(tr("Agrandit le sch\351ma"));
-	zoom_arriere      -> setStatusTip(tr("R\351tr\351cit le sch\351ma"));
-	zoom_adapte       -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible"));
+	zoom_in           -> setStatusTip(tr("Agrandit le sch\351ma"));
+	zoom_out          -> setStatusTip(tr("R\351tr\351cit le sch\351ma"));
+	zoom_fit          -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible"));
 	zoom_reset        -> setStatusTip(tr("Restaure le zoom par d\351faut"));
 	
 	mode_selection    -> setStatusTip(tr("Permet de s\351lectionner les \351l\351ments"));
 	mode_visualise    -> setStatusTip(tr("Permet de visualiser le sch\351ma sans pouvoir le modifier"));
 	
-	entrer_pe         -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran"));
-	sortir_pe         -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351"));
-	configurer        -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech"));
+	fullscreen_on     -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran"));
+	fullscreen_off    -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351"));
+	configure         -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech"));
 	
-	f_mosaique        -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que"));
-	f_cascade         -> setStatusTip(tr("Dispose les fen\352tres en cascade"));
-	f_reorganise      -> setStatusTip(tr("Aligne les fen\352tres r\351duites"));
-	f_suiv            -> setStatusTip(tr("Active la fen\352tre suivante"));
-	f_prec            -> setStatusTip(tr("Active la fen\352tre pr\351c\351dente"));
+	tile_window       -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que"));
+	cascade_window    -> setStatusTip(tr("Dispose les fen\352tres en cascade"));
+	arrange_window    -> setStatusTip(tr("Aligne les fen\352tres r\351duites"));
+	next_window       -> setStatusTip(tr("Active la fen\352tre suivante"));
+	prev_window       -> setStatusTip(tr("Active la fen\352tre pr\351c\351dente"));
 	
-	a_propos_de_qet   -> setStatusTip(tr("Affiche des informations sur QElectroTech"));
-	a_propos_de_qt    -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt"));
+	about_qet         -> setStatusTip(tr("Affiche des informations sur QElectroTech"));
+	about_qt          -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt"));
 	
 	// traitements speciaux
 	mode_selection    -> setCheckable(true);
@@ -278,37 +278,37 @@ void QETDiagramEditor::actions() {
 	grp_visu_sel -> setExclusive(true);
 	
 	// connexion a des slots
-	connect(quitter_qet,      SIGNAL(triggered()), this,       SLOT(close())                     );
-	connect(sel_tout,         SIGNAL(triggered()), this,       SLOT(slot_selectAll())           );
-	connect(sel_rien,         SIGNAL(triggered()), this,       SLOT(slot_selectNothing())       );
-	connect(sel_inverse,      SIGNAL(triggered()), this,       SLOT(slot_selectInvert())        );
-	connect(supprimer,        SIGNAL(triggered()), this,       SLOT(slot_supprimer())           );
-	connect(pivoter,          SIGNAL(triggered()), this,       SLOT(slot_pivoter())             );
-	connect(entrer_pe,        SIGNAL(triggered()), this,       SLOT(toggleFullScreen())         );
-	connect(sortir_pe,        SIGNAL(triggered()), this,       SLOT(toggleFullScreen())         );
+	connect(quit_editor,      SIGNAL(triggered()), this,       SLOT(close())                    );
+	connect(select_all,       SIGNAL(triggered()), this,       SLOT(slot_selectAll())           );
+	connect(select_nothing,   SIGNAL(triggered()), this,       SLOT(slot_selectNothing())       );
+	connect(select_invert,    SIGNAL(triggered()), this,       SLOT(slot_selectInvert())        );
+	connect(delete_selection, SIGNAL(triggered()), this,       SLOT(slot_delete())              );
+	connect(rotate_selection, SIGNAL(triggered()), this,       SLOT(slot_rotate())              );
+	connect(fullscreen_on,    SIGNAL(triggered()), this,       SLOT(toggleFullScreen())         );
+	connect(fullscreen_off,   SIGNAL(triggered()), this,       SLOT(toggleFullScreen())         );
 	connect(mode_selection,   SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())    );
 	connect(mode_visualise,   SIGNAL(triggered()), this,       SLOT(slot_setVisualisationMode()));
-	connect(a_propos_de_qet,  SIGNAL(triggered()), this,       SLOT(aPropos())                  );
-	connect(a_propos_de_qt,   SIGNAL(triggered()), qApp,       SLOT(aboutQt())                  );
-	connect(zoom_avant,       SIGNAL(triggered()), this,       SLOT(slot_zoomPlus())            );
-	connect(zoom_arriere,     SIGNAL(triggered()), this,       SLOT(slot_zoomMoins())           );
-	connect(zoom_adapte,      SIGNAL(triggered()), this,       SLOT(slot_zoomFit())             );
+	connect(about_qet,        SIGNAL(triggered()), this,       SLOT(aboutQET())                 );
+	connect(about_qt,         SIGNAL(triggered()), qApp,       SLOT(aboutQt())                  );
+	connect(zoom_in,          SIGNAL(triggered()), this,       SLOT(slot_zoomIn())              );
+	connect(zoom_out,         SIGNAL(triggered()), this,       SLOT(slot_zoomOut())             );
+	connect(zoom_fit,         SIGNAL(triggered()), this,       SLOT(slot_zoomFit())             );
 	connect(zoom_reset,       SIGNAL(triggered()), this,       SLOT(slot_zoomReset())           );
-	connect(imprimer,         SIGNAL(triggered()), this,       SLOT(dialog_print())             );
-	connect(exporter,         SIGNAL(triggered()), this,       SLOT(dialog_export())            );
-	connect(enr_fichier_sous, SIGNAL(triggered()), this,       SLOT(dialogue_enregistrer_sous()));
-	connect(enr_fichier,      SIGNAL(triggered()), this,       SLOT(enregistrer())              );
-	connect(nouveau_fichier,  SIGNAL(triggered()), this,       SLOT(nouveau())                  );
-	connect(ouvrir_fichier,   SIGNAL(triggered()), this,       SLOT(ouvrir())                   );
-	connect(fermer_fichier,   SIGNAL(triggered()), this,       SLOT(fermer())                   );
-	connect(couper,           SIGNAL(triggered()), this,       SLOT(slot_couper())              );
-	connect(copier,           SIGNAL(triggered()), this,       SLOT(slot_copier())              );
-	connect(coller,           SIGNAL(triggered()), this,       SLOT(slot_coller())              );
-	connect(f_mosaique,       SIGNAL(triggered()), &workspace, SLOT(tile())                     );
-	connect(f_cascade,        SIGNAL(triggered()), &workspace, SLOT(cascade())                  );
-	connect(f_reorganise,     SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
-	connect(f_suiv,           SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
-	connect(f_prec,           SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
+	connect(print,            SIGNAL(triggered()), this,       SLOT(printDialog())              );
+	connect(export_diagram,   SIGNAL(triggered()), this,       SLOT(exportDialog())             );
+	connect(save_file_sous,   SIGNAL(triggered()), this,       SLOT(saveAsDialog())             );
+	connect(save_file,        SIGNAL(triggered()), this,       SLOT(save())                     );
+	connect(new_file,         SIGNAL(triggered()), this,       SLOT(newDiagram())               );
+	connect(open_file,        SIGNAL(triggered()), this,       SLOT(openDiagram())              );
+	connect(close_file,       SIGNAL(triggered()), this,       SLOT(closeDiagram())             );
+	connect(cut,              SIGNAL(triggered()), this,       SLOT(slot_cut())                 );
+	connect(copy,             SIGNAL(triggered()), this,       SLOT(slot_copy())                );
+	connect(paste,            SIGNAL(triggered()), this,       SLOT(slot_paste())               );
+	connect(tile_window,      SIGNAL(triggered()), &workspace, SLOT(tile())                     );
+	connect(cascade_window,   SIGNAL(triggered()), &workspace, SLOT(cascade())                  );
+	connect(arrange_window,   SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
+	connect(next_window,      SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
+	connect(prev_window,      SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
 	connect(infos_diagram,    SIGNAL(triggered()), this,       SLOT(slot_editInfos())           );
 	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
@@ -325,7 +325,7 @@ void QETDiagramEditor::menus() {
 	QMenu *menu_affichage = menuBar() -> addMenu(tr("Afficha&ge"));
 	QMenu *menu_outils    = menuBar() -> addMenu(tr("O&utils"));
 	QMenu *menu_config    = menuBar() -> addMenu(tr("&Configuration"));
-	menu_fenetres         = menuBar() -> addMenu(tr("Fe&n\352tres"));
+	windows_menu          = menuBar() -> addMenu(tr("Fe&n\352tres"));
 	QMenu *menu_aide      = menuBar() -> addMenu(tr("&Aide"));
 	
 	// tear off feature rulezz... pas ^^ mais bon...
@@ -334,37 +334,37 @@ void QETDiagramEditor::menus() {
 	menu_affichage -> setTearOffEnabled(true);
 	menu_outils    -> setTearOffEnabled(true);
 	menu_config    -> setTearOffEnabled(true);
-	menu_fenetres  -> setTearOffEnabled(true);
+	windows_menu   -> setTearOffEnabled(true);
 	menu_aide      -> setTearOffEnabled(true);
 	
 	// menu Fichier
-	menu_fichier -> addAction(nouveau_fichier);
-	menu_fichier -> addAction(ouvrir_fichier);
-	menu_fichier -> addAction(enr_fichier);
-	menu_fichier -> addAction(enr_fichier_sous);
-	menu_fichier -> addAction(fermer_fichier);
+	menu_fichier -> addAction(new_file);
+	menu_fichier -> addAction(open_file);
+	menu_fichier -> addAction(save_file);
+	menu_fichier -> addAction(save_file_sous);
+	menu_fichier -> addAction(close_file);
 	menu_fichier -> addSeparator();
-	//menu_fichier -> addAction(importer);
-	menu_fichier -> addAction(exporter);
+	//menu_fichier -> addAction(import_diagram);
+	menu_fichier -> addAction(export_diagram);
 	//menu_fichier -> addSeparator();
-	menu_fichier -> addAction(imprimer);
+	menu_fichier -> addAction(print);
 	menu_fichier -> addSeparator();
-	menu_fichier -> addAction(quitter_qet);
+	menu_fichier -> addAction(quit_editor);
 	
 	// menu Edition
-	menu_edition -> addAction(annuler);
-	menu_edition -> addAction(refaire);
+	menu_edition -> addAction(undo);
+	menu_edition -> addAction(redo);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(couper);
-	menu_edition -> addAction(copier);
-	menu_edition -> addAction(coller);
+	menu_edition -> addAction(cut);
+	menu_edition -> addAction(copy);
+	menu_edition -> addAction(paste);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(sel_tout);
-	menu_edition -> addAction(sel_rien);
-	menu_edition -> addAction(sel_inverse);
+	menu_edition -> addAction(select_all);
+	menu_edition -> addAction(select_nothing);
+	menu_edition -> addAction(select_invert);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(supprimer);
-	menu_edition -> addAction(pivoter);
+	menu_edition -> addAction(delete_selection);
+	menu_edition -> addAction(rotate_selection);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addAction(add_column);
@@ -383,9 +383,9 @@ void QETDiagramEditor::menus() {
 	// menu Affichage
 	menu_affichage -> addMenu(menu_aff_aff);
 	menu_affichage -> addSeparator();
-	menu_affichage -> addAction(zoom_avant);
-	menu_affichage -> addAction(zoom_arriere);
-	menu_affichage -> addAction(zoom_adapte);
+	menu_affichage -> addAction(zoom_in);
+	menu_affichage -> addAction(zoom_out);
+	menu_affichage -> addAction(zoom_fit);
 	menu_affichage -> addAction(zoom_reset);
 	
 	// menu Outils
@@ -393,15 +393,15 @@ void QETDiagramEditor::menus() {
 	menu_outils -> addAction(mode_visualise);
 	
 	// menu Configuration
-	menu_config -> addAction(entrer_pe);
-	menu_config -> addAction(configurer);
+	menu_config -> addAction(fullscreen_on);
+	menu_config -> addAction(configure);
 	
 	// menu Fenetres
-	slot_updateMenuFenetres();
+	slot_updateWindowsMenu();
 	
 	// menu Aide
-	menu_aide -> addAction(a_propos_de_qet);
-	menu_aide -> addAction(a_propos_de_qt);
+	menu_aide -> addAction(about_qet);
+	menu_aide -> addAction(about_qt);
 }
 
 /**
@@ -415,19 +415,19 @@ void QETDiagramEditor::toolbar() {
 	barre_outils -> addAction(mode_selection);
 	barre_outils -> addAction(mode_visualise);
 	barre_outils -> addSeparator();
-	barre_outils -> addAction(annuler);
-	barre_outils -> addAction(refaire);
+	barre_outils -> addAction(undo);
+	barre_outils -> addAction(redo);
 	barre_outils -> addSeparator();
-	barre_outils -> addAction(couper);
-	barre_outils -> addAction(copier);
-	barre_outils -> addAction(coller);
+	barre_outils -> addAction(cut);
+	barre_outils -> addAction(copy);
+	barre_outils -> addAction(paste);
 	barre_outils -> addSeparator();
-	barre_outils -> addAction(supprimer);
-	barre_outils -> addAction(pivoter);
+	barre_outils -> addAction(delete_selection);
+	barre_outils -> addAction(rotate_selection);
 	barre_outils -> addSeparator();
-	barre_outils -> addAction(zoom_avant);
-	barre_outils -> addAction(zoom_arriere);
-	barre_outils -> addAction(zoom_adapte);
+	barre_outils -> addAction(zoom_in);
+	barre_outils -> addAction(zoom_out);
+	barre_outils -> addAction(zoom_fit);
 	barre_outils -> addAction(zoom_reset);
 	
 	// ajout de la barre d'outils a la fenetre principale
@@ -437,7 +437,7 @@ void QETDiagramEditor::toolbar() {
 /**
 	Imprime le schema courant
 */
-void QETDiagramEditor::dialog_print() {
+void QETDiagramEditor::printDialog() {
 	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> dialogPrint();
@@ -446,7 +446,7 @@ void QETDiagramEditor::dialog_print() {
 /**
 	Gere l'export de schema sous forme d'image
 */
-void QETDiagramEditor::dialog_export() {
+void QETDiagramEditor::exportDialog() {
 	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> dialogExport();
@@ -454,33 +454,27 @@ void QETDiagramEditor::dialog_export() {
 
 /**
 	Methode enregistrant le schema dans le dernier nom de fichier connu.
-	Si aucun nom de fichier n'est connu, cette methode appelle la methode enregistrer_sous
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool QETDiagramEditor::enregistrer() {
+bool QETDiagramEditor::save() {
 	if (!currentDiagram()) return(false);
-	return(currentDiagram() -> enregistrer());
+	return(currentDiagram() -> save());
 }
 
 /**
 	Cette methode demande un nom de fichier a l'utilisateur pour enregistrer le schema
-	Si aucun nom n'est entre, elle renvoie faux.
-	Si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee.
-	Si l'enregistrement reussit, le nom du fichier est conserve et la fonction renvoie true.
-	Sinon, faux est renvoye.
 	@return true si l'enregistrement a reussi, false sinon
-	@todo detecter le chemin du bureau automatiquement
 */
-bool QETDiagramEditor::dialogue_enregistrer_sous() {
+bool QETDiagramEditor::saveAsDialog() {
 	if (!currentDiagram()) return(false);
-	return(currentDiagram() -> enregistrer_sous());
+	return(currentDiagram() -> saveAs());
 }
 
 /**
 	Cette methode cree un nouveau schema.
 	@return true si tout s'est bien passe ; false si vous executez cette fonction dans un univers non cartesien (en fait y'a pas de return(false) :p)
 */
-bool QETDiagramEditor::nouveau() {
+bool QETDiagramEditor::newDiagram() {
 	addDiagramView(new DiagramView(this));
 	return(true);
 }
@@ -489,7 +483,7 @@ bool QETDiagramEditor::nouveau() {
 	Cette fonction demande un nom de fichier a ouvrir a l'utilisateur
 	@return true si l'ouverture a reussi, false sinon
 */
-bool QETDiagramEditor::ouvrir() {
+bool QETDiagramEditor::openDiagram() {
 	// demande un nom de fichier a ouvrir a l'utilisateur
 	QString nom_fichier = QFileDialog::getOpenFileName(
 		this,
@@ -503,7 +497,7 @@ bool QETDiagramEditor::ouvrir() {
 	QString chemin_fichier = QFileInfo(nom_fichier).canonicalFilePath();
 	foreach (QWidget *fenetre, workspace.windowList()) {
 		DiagramView *fenetre_en_cours = qobject_cast<DiagramView *>(fenetre);
-		if (QFileInfo(fenetre_en_cours -> nom_fichier).canonicalFilePath() == chemin_fichier) {
+		if (QFileInfo(fenetre_en_cours -> file_name).canonicalFilePath() == chemin_fichier) {
 			workspace.setActiveWindow(fenetre);
 			return(false);
 		}
@@ -512,7 +506,7 @@ bool QETDiagramEditor::ouvrir() {
 	// ouvre le fichier
 	DiagramView *sv = new DiagramView(this);
 	int code_erreur;
-	if (sv -> ouvrir(nom_fichier, &code_erreur)) {
+	if (sv -> open(nom_fichier, &code_erreur)) {
 		addDiagramView(sv);
 		return(true);
 	} else {
@@ -534,7 +528,7 @@ bool QETDiagramEditor::ouvrir() {
 	@return true si la fermeture du fichier a reussi, false sinon
 	@todo detecter les modifications et ne demander que si besoin est
 */
-bool QETDiagramEditor::fermer() {
+bool QETDiagramEditor::closeDiagram() {
 	DiagramView *sv = currentDiagram();
 	if (!sv) return(false);
 	return(sv -> close());
@@ -550,36 +544,36 @@ DiagramView *QETDiagramEditor::currentDiagram() const {
 /**
 	Effectue l'action "couper" sur le schema en cours
 */
-void QETDiagramEditor::slot_couper() {
-	if(currentDiagram()) currentDiagram() -> couper();
+void QETDiagramEditor::slot_cut() {
+	if(currentDiagram()) currentDiagram() -> cut();
 }
 
 /**
 	Effectue l'action "copier" sur le diagram en cours
 */
-void QETDiagramEditor::slot_copier() {
-	if(currentDiagram()) currentDiagram() -> copier();
+void QETDiagramEditor::slot_copy() {
+	if(currentDiagram()) currentDiagram() -> copy();
 }
 
 /**
 	Effectue l'action "coller" sur le schema en cours
 */
-void QETDiagramEditor::slot_coller() {
-	if(currentDiagram()) currentDiagram() -> coller();
+void QETDiagramEditor::slot_paste() {
+	if(currentDiagram()) currentDiagram() -> paste();
 }
 
 /**
 	Effectue l'action "zoom avant" sur le diagram en cours
 */
-void QETDiagramEditor::slot_zoomPlus() {
-	if(currentDiagram()) currentDiagram() -> zoomPlus();
+void QETDiagramEditor::slot_zoomIn() {
+	if(currentDiagram()) currentDiagram() -> zoomIn();
 }
 
 /**
 	Effectue l'action "zoom arriere" sur le schema en cours
 */
-void QETDiagramEditor::slot_zoomMoins() {
-	if(currentDiagram()) currentDiagram() -> zoomMoins();
+void QETDiagramEditor::slot_zoomOut() {
+	if(currentDiagram()) currentDiagram() -> zoomOut();
 }
 
 /**
@@ -620,15 +614,15 @@ void QETDiagramEditor::slot_selectInvert() {
 /**
 	Effectue l'action "supprimer" sur le schema en cours
 */
-void QETDiagramEditor::slot_supprimer() {
-	if(currentDiagram()) currentDiagram() -> supprimer();
+void QETDiagramEditor::slot_delete() {
+	if(currentDiagram()) currentDiagram() -> deleteSelection();
 }
 
 /**
 	Effectue l'action "pivoter" sur le schema en cours
 */
-void QETDiagramEditor::slot_pivoter() {
-	if(currentDiagram()) currentDiagram() -> pivoter();
+void QETDiagramEditor::slot_rotate() {
+	if(currentDiagram()) currentDiagram() -> rotateSelection();
 }
 
 /**
@@ -650,48 +644,48 @@ void QETDiagramEditor::slot_setVisualisationMode() {
 */
 void QETDiagramEditor::slot_updateActions() {
 	DiagramView *sv = currentDiagram();
-	bool document_ouvert = (sv != 0);
+	bool opened_document = (sv != 0);
 	
 	// actions ayant juste besoin d'un document ouvert
-	fermer_fichier   -> setEnabled(document_ouvert);
-	enr_fichier      -> setEnabled(document_ouvert);
-	enr_fichier_sous -> setEnabled(document_ouvert);
-	importer         -> setEnabled(document_ouvert);
-	exporter         -> setEnabled(document_ouvert);
-	imprimer         -> setEnabled(document_ouvert);
-	sel_tout         -> setEnabled(document_ouvert);
-	sel_rien         -> setEnabled(document_ouvert);
-	sel_inverse      -> setEnabled(document_ouvert);
-	zoom_avant       -> setEnabled(document_ouvert);
-	zoom_arriere     -> setEnabled(document_ouvert);
-	zoom_adapte      -> setEnabled(document_ouvert);
-	zoom_reset       -> setEnabled(document_ouvert);
-	infos_diagram    -> setEnabled(document_ouvert);
-	add_column       -> setEnabled(document_ouvert);
-	remove_column    -> setEnabled(document_ouvert);
-	expand_diagram   -> setEnabled(document_ouvert);
-	shrink_diagram   -> setEnabled(document_ouvert);
+	close_file       -> setEnabled(opened_document);
+	save_file        -> setEnabled(opened_document);
+	save_file_sous   -> setEnabled(opened_document);
+	import_diagram   -> setEnabled(opened_document);
+	export_diagram   -> setEnabled(opened_document);
+	print            -> setEnabled(opened_document);
+	select_all       -> setEnabled(opened_document);
+	select_nothing   -> setEnabled(opened_document);
+	select_invert    -> setEnabled(opened_document);
+	zoom_in          -> setEnabled(opened_document);
+	zoom_out         -> setEnabled(opened_document);
+	zoom_fit         -> setEnabled(opened_document);
+	zoom_reset       -> setEnabled(opened_document);
+	infos_diagram    -> setEnabled(opened_document);
+	add_column       -> setEnabled(opened_document);
+	remove_column    -> setEnabled(opened_document);
+	expand_diagram   -> setEnabled(opened_document);
+	shrink_diagram   -> setEnabled(opened_document);
 	
 	// affiche les actions correspondant au diagram view en cours
 	if (sv) undo_group.setActiveStack(&(sv -> diagram() -> undoStack()));
 	else {
-		annuler -> setEnabled(false);
-		refaire -> setEnabled(false);
+		undo -> setEnabled(false);
+		redo -> setEnabled(false);
 	}
 	
 	// actions ayant aussi besoin d'elements selectionnes
-	bool elements_selectionnes = document_ouvert ? (sv -> hasSelectedItems()) : false;
-	couper           -> setEnabled(elements_selectionnes);
-	copier           -> setEnabled(elements_selectionnes);
-	supprimer        -> setEnabled(elements_selectionnes);
-	pivoter          -> setEnabled(elements_selectionnes);
+	bool selected_elements = opened_document ? (sv -> hasSelectedItems()) : false;
+	cut              -> setEnabled(selected_elements);
+	copy             -> setEnabled(selected_elements);
+	delete_selection -> setEnabled(selected_elements);
+	rotate_selection -> setEnabled(selected_elements);
 	
 	// action ayant aussi besoin d'un presse-papier plein
-	bool peut_coller = QApplication::clipboard() -> text() != QString();
-	coller           -> setEnabled(document_ouvert && peut_coller);
+	bool can_paste = QApplication::clipboard() -> text() != QString();
+	paste          -> setEnabled(opened_document && can_paste);
 	
 	// actions ayant aussi besoin d'un document ouvert et de la connaissance de son mode
-	if (!document_ouvert) {
+	if (!opened_document) {
 		mode_selection   -> setEnabled(false);
 		mode_visualise   -> setEnabled(false);
 	} else {
@@ -715,7 +709,7 @@ void QETDiagramEditor::slot_updateActions() {
 		}
 	}
 	
-	slot_updateMenuFenetres();
+	slot_updateWindowsMenu();
 }
 
 /**
@@ -743,44 +737,44 @@ void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 /**
 	met a jour le menu "Fenetres"
 */
-void QETDiagramEditor::slot_updateMenuFenetres() {
+void QETDiagramEditor::slot_updateWindowsMenu() {
 	// nettoyage du menu
-	foreach(QAction *a, menu_fenetres -> actions()) menu_fenetres -> removeAction(a);
+	foreach(QAction *a, windows_menu -> actions()) windows_menu -> removeAction(a);
 	
 	// actions de fermeture
-	menu_fenetres -> addAction(fermer_fichier);
-	//menu_fenetres -> addAction(closeAllAct);
+	windows_menu -> addAction(close_file);
+	//windows_menu -> addAction(closeAllAct);
 	
 	// actions de reorganisation des fenetres
-	menu_fenetres -> addSeparator();
-	menu_fenetres -> addAction(f_mosaique);
-	menu_fenetres -> addAction(f_cascade);
-	menu_fenetres -> addAction(f_reorganise);
+	windows_menu -> addSeparator();
+	windows_menu -> addAction(tile_window);
+	windows_menu -> addAction(cascade_window);
+	windows_menu -> addAction(arrange_window);
 	
 	// actiosn de deplacement entre les fenetres
-	menu_fenetres -> addSeparator();
-	menu_fenetres -> addAction(f_suiv);
-	menu_fenetres -> addAction(f_prec);
+	windows_menu -> addSeparator();
+	windows_menu -> addAction(next_window);
+	windows_menu -> addAction(prev_window);
 	
 	// liste des fenetres
-	QList<QWidget *> fenetres = workspace.windowList();
+	QList<QWidget *> windows = workspace.windowList();
 	
-	f_mosaique    -> setEnabled(!fenetres.isEmpty());
-	f_cascade     -> setEnabled(!fenetres.isEmpty());
-	f_reorganise  -> setEnabled(!fenetres.isEmpty());
-	f_suiv        -> setEnabled(!fenetres.isEmpty());
-	f_prec        -> setEnabled(!fenetres.isEmpty());
+	tile_window    -> setEnabled(!windows.isEmpty());
+	cascade_window -> setEnabled(!windows.isEmpty());
+	arrange_window -> setEnabled(!windows.isEmpty());
+	next_window    -> setEnabled(!windows.isEmpty());
+	prev_window    -> setEnabled(!windows.isEmpty());
 	
-	if (!fenetres.isEmpty()) menu_fenetres -> addSeparator();
-	for (int i = 0 ; i < fenetres.size() ; ++ i) {
-		DiagramView *sv = qobject_cast<DiagramView *>(fenetres.at(i));
-		QString sv_titre = sv -> windowTitle().left(sv -> windowTitle().length() - 3);
-		QAction *action  = menu_fenetres -> addAction(sv_titre);
-		action -> setStatusTip(tr("Active la fen\352tre ") + sv_titre);
+	if (!windows.isEmpty()) windows_menu -> addSeparator();
+	for (int i = 0 ; i < windows.size() ; ++ i) {
+		DiagramView *dv = qobject_cast<DiagramView *>(windows.at(i));
+		QString dv_title = dv -> windowTitle().left(dv -> windowTitle().length() - 3);
+		QAction *action  = windows_menu -> addAction(dv_title);
+		action -> setStatusTip(tr("Active la fen\352tre ") + dv_title);
 		action -> setCheckable(true);
-		action -> setChecked(sv == currentDiagram());
+		action -> setChecked(dv == currentDiagram());
 		connect(action, SIGNAL(triggered()), &windowMapper, SLOT(map()));
-		windowMapper.setMapping(action, sv);
+		windowMapper.setMapping(action, dv);
 	}
 }
 

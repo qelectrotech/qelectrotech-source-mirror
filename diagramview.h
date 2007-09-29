@@ -10,7 +10,6 @@ class DiagramView : public QGraphicsView {
 	
 	// constructeurs, destructeur
 	public:
-	DiagramView();
 	DiagramView(QWidget * = 0);
 	virtual ~DiagramView();
 	
@@ -18,17 +17,18 @@ class DiagramView : public QGraphicsView {
 	DiagramView(const DiagramView &);
 	
 	// attributs
+	public:
+	QString file_name;
+	
 	private:
 	Diagram *scene;
-	QList<QGraphicsItem *> garbage;
 	
 	// methodes
 	public:
-	bool ouvrir(QString, int * = NULL);
+	bool open(QString, int * = NULL);
 	void closeEvent(QCloseEvent *);
-	QString nom_fichier;
-	bool enregistrer();
-	bool enregistrer_sous();
+	bool save();
+	bool saveAs();
 	void dialogExport();
 	void dialogEditInfos();
 	void dialogPrint();
@@ -40,8 +40,7 @@ class DiagramView : public QGraphicsView {
 	bool hasSelectedItems();
 	
 	private:
-	bool private_enregistrer(QString &);
-	void initialise();
+	bool saveDiagramToFile(QString &);
 	void mousePressEvent(QMouseEvent *);
 	void dragEnterEvent(QDragEnterEvent *);
 	void dragLeaveEvent(QDragLeaveEvent *);
@@ -58,17 +57,17 @@ class DiagramView : public QGraphicsView {
 	void selectNothing();
 	void selectAll();
 	void selectInvert();
-	void supprimer();
-	void pivoter();
+	void deleteSelection();
+	void rotateSelection();
 	void setVisualisationMode();
 	void setSelectionMode();
-	void zoomPlus();
-	void zoomMoins();
+	void zoomIn();
+	void zoomOut();
 	void zoomFit();
 	void zoomReset();
-	void couper();
-	void copier();
-	void coller();
+	void cut();
+	void copy();
+	void paste();
 	void adjustSceneRect();
 	void updateWindowTitle();
 	

@@ -6,9 +6,10 @@
 #include "diagramcommands.h"
 
 /**
-	Initialise le DiagramView
+	Constructeur
+	@param parent Le QWidegt parent de cette vue de schema
 */
-void DiagramView::initialise() {
+DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
 	setInteractive(true);
 	setCacheMode(QGraphicsView::CacheBackground);
 	setOptimizationFlags(QGraphicsView::DontClipPainter|QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
@@ -32,21 +33,6 @@ void DiagramView::initialise() {
 	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SLOT(slot_selectionChanged()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
-}
-
-/**
-	Constructeur par defaut
-*/
-DiagramView::DiagramView() : QGraphicsView() {
-	initialise();
-}
-
-/**
-	Constructeur
-	@param parent Le QWidegt parent de cette vue de schema
-*/
-DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
-	initialise();
 }
 
 /**
@@ -82,7 +68,7 @@ void DiagramView::selectInvert() {
 /**
 	Supprime les composants selectionnes
 */
-void DiagramView::supprimer() {
+void DiagramView::deleteSelection() {
 	
 	QSet<Element *> garbage_elmt;
 	QSet<Conducer *> garbage_conducers;
@@ -106,7 +92,7 @@ void DiagramView::supprimer() {
 /**
 	Pivote les composants selectionnes
 */
-void DiagramView::pivoter() {
+void DiagramView::rotateSelection() {
 	if (scene -> selectedItems().isEmpty()) return;
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
@@ -177,7 +163,7 @@ void DiagramView::setSelectionMode() {
 /**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
-void DiagramView::zoomPlus() {
+void DiagramView::zoomIn() {
 	scale(4.0/3.0, 4.0/3.0);
 	adjustGridToZoom();
 }
@@ -185,7 +171,7 @@ void DiagramView::zoomPlus() {
 /**
 	Retrecit le schema (-25% = inverse des +33 % de zoomPlus())
 */
-void DiagramView::zoomMoins() {
+void DiagramView::zoomOut() {
 	scale(0.75, 0.75);
 	adjustGridToZoom();
 }
@@ -216,8 +202,8 @@ void DiagramView::zoomReset() {
 /**
 	copie les elements selectionnes du schema dans le presse-papier puis les supprime
 */
-void DiagramView::couper() {
-	copier();
+void DiagramView::cut() {
+	copy();
 	QSet<Element *> cut_elmt;
 	QSet<Conducer *> cut_conducers;
 	
@@ -240,7 +226,7 @@ void DiagramView::couper() {
 /**
 	copie les elements selectionnes du schema dans le presse-papier
 */
-void DiagramView::copier() {
+void DiagramView::copy() {
 	QClipboard *presse_papier = QApplication::clipboard();
 	QString contenu_presse_papier = scene -> toXml(false).toString(4);
 	if (presse_papier -> supportsSelection()) presse_papier -> setText(contenu_presse_papier, QClipboard::Selection);
@@ -250,7 +236,7 @@ void DiagramView::copier() {
 /**
 	importe les elements contenus dans le presse-papier dans le schema
 */
-void DiagramView::coller() {
+void DiagramView::paste() {
 	QString texte_presse_papier;
 	QDomDocument document_xml;
 	if ((texte_presse_papier = QApplication::clipboard() -> text()) == QString()) return;
@@ -295,11 +281,11 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 
 /**
 	Ouvre un fichier *.qet dans cette DiagramView
-	@param nom_fichier Nom du fichier a ouvrir
+	@param n_fichier Nom du fichier a ouvrir
 	@param erreur Si le pointeur est specifie, cet entier est mis a 0 en cas de reussite de l'ouverture, 1 si le fichier n'existe pas, 2 si le fichier n'est pas lisible, 3 si le fichier n'est pas un element XML, 4 si l'ouverture du fichier a echoue pour une autre raison (c'est pas ca qui manque ^^)
 	@return true si l'ouverture a reussi, false sinon
 */
-bool DiagramView::ouvrir(QString n_fichier, int *erreur) {
+bool DiagramView::open(QString n_fichier, int *erreur) {
 	// verifie l'existence du fichier
 	if (!QFileInfo(n_fichier).exists()) {
 		if (erreur != NULL) *erreur = 1;
@@ -326,7 +312,7 @@ bool DiagramView::ouvrir(QString n_fichier, int *erreur) {
 	QDomDocument &doc = document;
 	if (scene -> fromXml(doc)) {
 		if (erreur != NULL) *erreur = 0;
-		nom_fichier = n_fichier;
+		file_name = n_fichier;
 		scene -> undoStack().setClean();
 		return(true);
 	} else {
@@ -362,7 +348,7 @@ void DiagramView::closeEvent(QCloseEvent *event) {
 		);
 		switch(reponse) {
 			case QMessageBox::Cancel: retour = false;         break; // l'utilisateur annule : echec de la fermeture
-			case QMessageBox::Yes:    retour = enregistrer(); break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
+			case QMessageBox::Yes:    retour = save(); break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
 			default:                  retour = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
 		}
 	}
@@ -375,12 +361,12 @@ void DiagramView::closeEvent(QCloseEvent *event) {
 
 /**
 	Methode enregistrant le schema dans le dernier nom de fichier connu.
-	Si aucun nom de fichier n'est connu, cette methode appelle la methode enregistrer_sous
+	Si aucun nom de fichier n'est connu, cette methode appelle la methode saveAs
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool DiagramView::enregistrer() {
-	if (nom_fichier == QString()) return(enregistrer_sous());
-	else return(private_enregistrer(nom_fichier));
+bool DiagramView::save() {
+	if (file_name == QString()) return(saveAs());
+	else return(saveDiagramToFile(file_name));
 }
 
 /**
@@ -390,8 +376,9 @@ bool DiagramView::enregistrer() {
 	Si l'enregistrement reussit, le nom du fichier est conserve et la fonction renvoie true.
 	Sinon, faux est renvoye.
 	@return true si l'enregistrement a reussi, false sinon
+	@todo detecter le chemin du bureau automatiquement
 */
-bool DiagramView::enregistrer_sous() {
+bool DiagramView::saveAs() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer le schema
 	QString n_fichier = QFileDialog::getSaveFileName(
 		this,
@@ -404,11 +391,11 @@ bool DiagramView::enregistrer_sous() {
 	// si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee
 	if (!n_fichier.endsWith(".qet", Qt::CaseInsensitive)) n_fichier += ".qet";
 	// tente d'enregistrer le fichier
-	bool resultat_enregistrement = private_enregistrer(n_fichier);
+	bool resultat_enregistrement = saveDiagramToFile(n_fichier);
 	// si l'enregistrement reussit, le nom du fichier est conserve
 	if (resultat_enregistrement) {
-		nom_fichier = n_fichier;
-		setWindowTitle(nom_fichier + "[*]");
+		file_name = n_fichier;
+		updateWindowTitle();
 	}
 	// retourne un booleen representatif de la reussite de l'enregistrement
 	return(resultat_enregistrement);
@@ -418,10 +405,10 @@ bool DiagramView::enregistrer_sous() {
 	Methode privee gerant l'enregistrement du fichier XML. S'il n'est pas possible
 	d'ecrire dans le fichier, cette fonction affiche un message d'erreur et renvoie false.
 	Autrement, elle renvoie true.
-	@param nom_fichier Nom du fichier dans lequel l'arbre XML doit etre ecrit
+	@param n_fichier Nom du fichier dans lequel l'arbre XML doit etre ecrit
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool DiagramView::private_enregistrer(QString &n_fichier) {
+bool DiagramView::saveDiagramToFile(QString &n_fichier) {
 	QFile fichier(n_fichier);
 	if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
 		QMessageBox::warning(this, tr("Erreur"), tr("Impossible d'ecrire dans ce fichier"));
@@ -589,8 +576,8 @@ void DiagramView::adjustSceneRect() {
 
 void DiagramView::updateWindowTitle() {
 	QString window_title;
-	if (nom_fichier.isNull()) window_title += tr("nouveau sch\351ma");
-	else window_title += nom_fichier;
+	if (file_name.isNull()) window_title += tr("nouveau sch\351ma");
+	else window_title += file_name;
 	window_title += "[*]";
 	setWindowTitle(window_title);
 	setWindowModified(!(scene -> undoStack().isClean()));
