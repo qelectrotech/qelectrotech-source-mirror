@@ -264,18 +264,20 @@ void Element::moveOtherElements(const QPointF &diff) {
 
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	Diagram *diagram_ptr = diagram();
-	if (diagram_ptr && !diagram_ptr -> current_movement.isNull()) {
-		diagram_ptr -> undoStack().push(
-			new MoveElementsCommand(
-				diagram_ptr,
-				diagram_ptr -> elementsToMove(),
-				diagram_ptr -> conducersToMove(),
-				diagram_ptr -> conducersToUpdate(),
-				diagram_ptr -> current_movement
-			)
-		);
+	if (diagram_ptr) {
+		if (!diagram_ptr -> current_movement.isNull()) {
+			diagram_ptr -> undoStack().push(
+				new MoveElementsCommand(
+					diagram_ptr,
+					diagram_ptr -> elementsToMove(),
+					diagram_ptr -> conducersToMove(),
+					diagram_ptr -> conducersToUpdate(),
+					diagram_ptr -> current_movement
+				)
+			);
+			diagram_ptr -> current_movement = QPointF();
+		}
 		diagram_ptr -> invalidateMovedElements();
-		diagram_ptr -> current_movement = QPointF();
 	}
 	QGraphicsItem::mouseReleaseEvent(e);
 }

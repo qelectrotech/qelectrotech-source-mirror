@@ -22,6 +22,7 @@ Diagram::Diagram(QObject *parent) : QGraphicsScene(parent), qgi_manager(this) {
 	conducer_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	draw_grid  = true;
 	use_border = true;
+	moved_elements_fetched = false;
 	connect(this, SIGNAL(selectionChanged()), this, SLOT(slot_checkSelectionEmptinessChange()));
 }
 

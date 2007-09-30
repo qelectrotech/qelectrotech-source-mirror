@@ -154,12 +154,8 @@ void Conducer::segmentsToPath() {
 	@param o2 Orientation de la borne 2
 */
 void Conducer::priv_modifieConducer(const QPointF &p1, QET::Orientation, const QPointF &p2, QET::Orientation) {
-	// determine le nombre de segments horizontaux et verticaux
-	uint nb_horiz_segments = conducer_profile.nbSegments(QET::Horizontal);
-	uint nb_verti_segments = conducer_profile.nbSegments(QET::Vertical);
-	
-	Q_ASSERT_X(nb_horiz_segments + nb_verti_segments > 1, "Conducer::priv_modifieConducer", "pas de points a modifier");
-	Q_ASSERT_X(!conducer_profile.isNull(),                "Conducer::priv_modifieConducer", "pas de profil utilisable");
+	Q_ASSERT_X(conducer_profile.nbSegments(QET::Both) > 1, "Conducer::priv_modifieConducer", "pas de points a modifier");
+	Q_ASSERT_X(!conducer_profile.isNull(),                 "Conducer::priv_modifieConducer", "pas de profil utilisable");
 	
 	// recupere les coordonnees fournies des bornes
 	QPointF new_p1 = mapFromScene(p1);

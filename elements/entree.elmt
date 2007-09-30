@@ -6,7 +6,7 @@
 	</names>
 	<description>
 		<polygon x1="-7.5" y1="-13" x2="7.5" y2="-13" x3="0" y3="0" antialias="true" style="filling:white;" />
-		<line x1="0"  y1="0" x2="0"  y2="13" antialias="false" />
+		<line x1="0"  y1="0" x2="0"  y2="15" antialias="false" />
 		<terminal orientation="s" x="0" y="15" />
 	</description>
 </definition>
