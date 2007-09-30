@@ -48,6 +48,7 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	connect(draw_border,       SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_inset,        SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_columns,      SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
+	connect(draw_terminals,    SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(keep_colors,       SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(width,             SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(height,            SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
@@ -140,6 +141,10 @@ QGroupBox *ExportDialog::setupOptionsGroupBox() {
 	// Conserver les couleurs
 	keep_colors = new QCheckBox(tr("Conserver les couleurs"), groupbox_options);
 	optionshlayout -> addWidget(keep_colors, 3, 0);
+	
+	// dessiner les bornes
+	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
+	optionshlayout -> addWidget(draw_terminals, 3, 1);
 	
 	return(groupbox_options);
 }
@@ -261,10 +266,12 @@ QImage ExportDialog::generateImage() {
 	bool state_drawColumns = diagram -> border_and_inset.columnsAreDisplayed();
 	bool state_drawInset   = diagram -> border_and_inset.insetIsDisplayed();
 	bool state_drawGrid    = diagram -> displayGrid();
+	bool state_drawTerm    = diagram -> drawTerminals();
 	bool state_useBorder   = diagram -> useBorder();
 	
 	// genere l'image
 	diagram -> setUseBorder(export_border -> isChecked());
+	diagram -> setDrawTerminals(draw_terminals -> isChecked());
 	diagram -> setDisplayGrid(draw_grid -> isChecked());
 	diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
 	diagram -> border_and_inset.displayColumns(draw_columns -> isChecked());
@@ -287,6 +294,7 @@ QImage ExportDialog::generateImage() {
 	diagram -> border_and_inset.displayColumns(state_drawColumns);
 	diagram -> border_and_inset.displayInset(state_drawInset);
 	diagram -> setDisplayGrid(state_drawGrid);
+	diagram -> setDrawTerminals(state_drawTerm);
 	diagram -> setUseBorder(state_useBorder);
 	
 	return(image);

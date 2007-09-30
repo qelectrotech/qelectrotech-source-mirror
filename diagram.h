@@ -38,7 +38,7 @@ class Diagram : public QGraphicsScene {
 	QHash<Conducer *, Terminal *> conducers_to_update;
 	QGIManager qgi_manager;
 	QUndoStack undo_stack;
-	
+	bool draw_terminals;
 	
 	// methodes
 	public:
@@ -62,6 +62,9 @@ class Diagram : public QGraphicsScene {
 	bool useBorder();
 	void setBorderOptions(BorderOptions);
 	BorderOptions borderOptions();
+	
+	bool drawTerminals() const;
+	void setDrawTerminals(bool);
 	
 	QRectF border() const;
 	QImage toImage(int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
@@ -196,6 +199,10 @@ inline QUndoStack &Diagram::undoStack() {
 /// @return le egstionnaire de QGraphicsItem de ce schema
 inline QGIManager &Diagram::qgiManager() {
 	return(qgi_manager);
+}
+
+inline bool Diagram::drawTerminals() const {
+	return(draw_terminals);
 }
 
 #endif

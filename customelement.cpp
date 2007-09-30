@@ -204,14 +204,6 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {
 	@return true si l'analyse reussit, false sinon
 */
 bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
-	//qDebug() << "parseLine sur " << (void *)(&dessin);
-// 	qDebug() << names.name() << (void *)(&dessin);
-// 	qp.end();
-// 	PartLine t;
-// 	t.fromXml(e);
-// 	t.renderToCustomElement(*this);
-// 	qp.begin(&dessin);
-	//return(true);
 	// verifie la presence et la validite des attributs obligatoires
 	double x1, y1, x2, y2;
 	if (!QET::attributeIsAReal(e, QString("x1"), &x1)) return(false);

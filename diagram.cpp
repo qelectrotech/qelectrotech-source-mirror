@@ -477,3 +477,11 @@ void Diagram::fetchMovedElements() {
 	}
 	moved_elements_fetched = true;
 }
+
+void Diagram::setDrawTerminals(bool dt) {
+	foreach(QGraphicsItem *qgi, items()) {
+		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
+			t -> setVisible(dt);
+		}
+	}
+}
