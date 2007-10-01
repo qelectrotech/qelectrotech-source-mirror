@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutQET</name>
     <message>
@@ -679,47 +678,47 @@ Please check rights of the directory </translation>
 <context>
     <name>ExportDialog</name>
     <message>
-        <location filename="../exportdialog.cpp" line="201"/>
+        <location filename="../exportdialog.cpp" line="206"/>
         <source>Aper&#xe7;u</source>
         <translation>Preview</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="171"/>
+        <location filename="../exportdialog.cpp" line="176"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="141"/>
+        <location filename="../exportdialog.cpp" line="142"/>
         <source>Conserver les couleurs</source>
         <translation>Keep colors</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="93"/>
+        <location filename="../exportdialog.cpp" line="94"/>
         <source>Conserver les proportions</source>
         <translation>Keep aspect ratio</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="121"/>
+        <location filename="../exportdialog.cpp" line="122"/>
         <source>Dessiner la grille</source>
         <translation>Draw the grid</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="126"/>
+        <location filename="../exportdialog.cpp" line="127"/>
         <source>Dessiner le cadre</source>
         <translation>Draw the border</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="131"/>
+        <location filename="../exportdialog.cpp" line="132"/>
         <source>Dessiner le cartouche</source>
         <translation>Draw the inset</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="136"/>
+        <location filename="../exportdialog.cpp" line="137"/>
         <source>Dessiner les colonnes</source>
         <translation>Draw columns</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="69"/>
+        <location filename="../exportdialog.cpp" line="70"/>
         <source>Dimensions</source>
         <translation>Dimensions</translation>
     </message>
@@ -729,89 +728,94 @@ Please check rights of the directory </translation>
         <translation>Export</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="112"/>
+        <location filename="../exportdialog.cpp" line="113"/>
         <source>Exporter le cadre</source>
         <translation>Export the border</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="115"/>
+        <location filename="../exportdialog.cpp" line="116"/>
         <source>Exporter les &#xe9;l&#xe9;ments</source>
         <translation>Export only elements</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="244"/>
+        <location filename="../exportdialog.cpp" line="249"/>
         <source>Exporter vers le fichier</source>
         <translation>Export to file</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="305"/>
+        <location filename="../exportdialog.cpp" line="313"/>
         <source>Fichier non sp&#xe9;cifi&#xe9;</source>
         <translation>Filename not given</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="167"/>
+        <location filename="../exportdialog.cpp" line="172"/>
         <source>Format :</source>
         <translation>Format :</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="73"/>
+        <location filename="../exportdialog.cpp" line="74"/>
         <source>Hauteur :</source>
         <translation>Height :</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="327"/>
+        <location filename="../exportdialog.cpp" line="335"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions n&#xe9;cessaires pour &#xe9;crire dans ce fichier..</source>
         <translation>It seems you don&apos;t have the permissions needed to write this file..</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="247"/>
+        <location filename="../exportdialog.cpp" line="252"/>
         <source>Images (*.png *.bmp *.jpg)</source>
         <translation>Pictures (*.png *.bmp *.jpg)</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="326"/>
+        <location filename="../exportdialog.cpp" line="334"/>
         <source>Impossible d&apos;&#xe9;crire dans ce fichier</source>
         <translation>Can&apos;t Write to the file</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="170"/>
+        <location filename="../exportdialog.cpp" line="175"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="83"/>
+        <location filename="../exportdialog.cpp" line="84"/>
         <source>Largeur :</source>
         <translation>Width :</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="159"/>
+        <location filename="../exportdialog.cpp" line="164"/>
         <source>Nom de fichier :</source>
         <translation>Filename : </translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="107"/>
+        <location filename="../exportdialog.cpp" line="108"/>
         <source>Options</source>
         <translation>Options</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="161"/>
+        <location filename="../exportdialog.cpp" line="166"/>
         <source>Parcourir</source>
         <translation>Browse</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="169"/>
+        <location filename="../exportdialog.cpp" line="174"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="90"/>
+        <location filename="../exportdialog.cpp" line="91"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../exportdialog.cpp" line="306"/>
+        <location filename="../exportdialog.cpp" line="314"/>
         <source>Vous devez sp&#xe9;cifier le chemin du fichier dans lequel sera enregistr&#xe9;e l&apos;image.</source>
         <translation>You must give a filename to save the picture.</translation>
+    </message>
+    <message>
+        <location filename="../exportdialog.cpp" line="146"/>
+        <source>Dessiner les bornes</source>
+        <translation>Draw terminals</translation>
     </message>
 </context>
 <context>

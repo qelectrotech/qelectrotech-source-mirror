@@ -57,6 +57,7 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	text_item -> setPlainText("_");
 	text_item -> previous_text = "_";
 	calculateTextItemPosition();
+	//setSingleLine(true);
 	text_item -> setParentItem(this);
 }
 
@@ -416,6 +417,13 @@ void Conducer::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QW
 	
 	// dessin du conducteur
 	qp -> drawPath(path());
+	if (isSingleLine()) {
+		singleLineProperties.draw(
+			qp,
+			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
+			QRectF(middleSegment() -> middle() - QPointF(7.5, 7.5), QSizeF(15.0, 15.0))
+		);
+	}
 	
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
 	if (isSelected()) {
@@ -776,8 +784,17 @@ bool Conducer::hasClickedOn(QPointF press_point, QPointF point) const {
 	@return true si le chargement a reussi, false sinon
 */
 bool Conducer::fromXml(QDomElement &e) {
-	text_item -> setPlainText(e.attribute("num"));
-	text_item -> previous_text = e.attribute("num");
+	// recupere la "configuration" du conducteur
+	if (e.attribute("singleline") == "true") {
+		// recupere les parametres specifiques a un conducteur unifilaire
+		singleLineProperties.fromXml(e);
+		setSingleLine(true);
+	} else {
+		// recupere le champ de texte
+		text_item -> setPlainText(e.attribute("num"));
+		text_item -> previous_text = e.attribute("num");
+		setSingleLine(false);
+	}
 	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
 	// les segments non valides sont ignores
@@ -854,19 +871,26 @@ QDomElement Conducer::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_i
 	QDomElement e = d.createElement("conducer");
 	e.setAttribute("terminal1", table_adr_id.value(terminal1));
 	e.setAttribute("terminal2", table_adr_id.value(terminal2));
-	e.setAttribute("num",    text_item -> toPlainText());
 	
 	// on n'exporte les segments du conducteur que si ceux-ci ont
 	// ete modifies par l'utilisateur
-	if (!modified_path) return(e);
+	if (modified_path) {
+		// parcours et export des segments
+		QDomElement current_segment;
+		foreach(ConducerSegment *segment, segmentsList()) {
+			current_segment = d.createElement("segment");
+			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
+			current_segment.setAttribute("length", segment -> length());
+			e.appendChild(current_segment);
+		}
+	}
 	
-	// parcours et export des segments
-	QDomElement current_segment;
-	foreach(ConducerSegment *segment, segmentsList()) {
-		current_segment = d.createElement("segment");
-		current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-		current_segment.setAttribute("length", segment -> length());
-		e.appendChild(current_segment);
+	// exporte la "configuration" du conducteur
+	e.setAttribute("singleline", isSingleLine() ? "true" : "false");
+	if (isSingleLine()) {
+		singleLineProperties.toXml(d, e);
+	} else {
+		e.setAttribute("num", text_item -> toPlainText());
 	}
 	return(e);
 }
@@ -974,4 +998,176 @@ void Conducer::setProfile(const ConducerProfile &cp) {
 		modified_path = true;
 	}
 	calculateTextItemPosition();
+}
+
+bool Conducer::isSingleLine() const {
+	return(is_single_line);
+}
+
+void Conducer::setSingleLine(bool sl) {
+	is_single_line = sl;
+	text_item -> setVisible(!is_single_line);
+}
+
+/**
+	Constructeur par defaut
+*/
+SingleLineProperties::SingleLineProperties() :
+	hasGround(true),
+	hasNeutral(true),
+	phases(1)
+{
+}
+
+/// Destructeur
+SingleLineProperties::~SingleLineProperties() {
+}
+
+/**
+	Definit le nombre de phases (0, 1, 2, ou 3)
+	@param n Nombre de phases
+*/
+void SingleLineProperties::setPhasesCount(int n) {
+	phases = qBound(0, n, 3);
+}
+
+/// @return le nombre de phases (0, 1, 2, ou 3)
+unsigned short int SingleLineProperties::phasesCount() {
+	return(phases);
+}
+
+/**
+	Dessine les symboles propres a un conducteur unifilaire
+	@param painter QPainter a utiliser pour dessiner les symboles
+	@param direction direction du segment sur lequel les symboles apparaitront
+	@param rect rectangle englobant le dessin ; utilise pour specifier a la fois la position et la taille du dessin
+*/
+void SingleLineProperties::draw(QPainter *painter, QET::ConducerSegmentType direction, const QRectF &rect) {
+	// s'il n'y a rien a dessiner, on retourne immediatement
+	if (!hasNeutral && !hasGround && !phases) return;
+	
+	// prepare le QPainter
+	painter -> save();
+	QPen pen(painter -> pen());
+	pen.setCapStyle(Qt::FlatCap);
+	pen.setJoinStyle(Qt::MiterJoin);
+	painter -> setPen(pen);
+	painter -> setRenderHint(QPainter::Antialiasing, true);
+	
+	uint symbols_count = (hasNeutral ? 1 : 0) + (hasGround ? 1 : 0) + phases;
+	qreal interleave;
+	qreal symbol_width;
+	if (direction == QET::Horizontal) {
+		interleave = rect.width() / symbols_count;
+		symbol_width = rect.width() / 12;
+		for (uint i = 1 ; i <= symbols_count ; ++ i) {
+			// dessine le tronc du symbole
+			QPointF symbol_p1(rect.x() + (i * interleave) + symbol_width, rect.y() + rect.height() * 0.75);
+			QPointF symbol_p2(rect.x() + (i * interleave) - symbol_width, rect.y() + rect.height() * 0.25);
+			painter -> drawLine(QLineF(symbol_p1, symbol_p2));
+			
+			// dessine le reste des symboles terre et neutre
+			if (hasGround && i == 1) {
+				drawGround(painter, direction, symbol_p2, symbol_width * 2.0);
+			} else if (hasNeutral && ((i == 1 && !hasGround) || (i == 2 && hasGround))) {
+				drawNeutral(painter, direction, symbol_p2, symbol_width * 1.5);
+			}
+		}
+	} else {
+		interleave = rect.height() / symbols_count;
+		symbol_width = rect.height() / 12;
+		for (uint i = 1 ; i <= symbols_count ; ++ i) {
+			// dessine le tronc du symbole
+			QPointF symbol_p2(rect.x() + rect.width() * 0.75, rect.y() + (i * interleave) - symbol_width);
+			QPointF symbol_p1(rect.x() + rect.width() * 0.25, rect.y() + (i * interleave) + symbol_width);
+			painter -> drawLine(QLineF(symbol_p1, symbol_p2));
+			
+			// dessine le reste des symboles terre et neutre
+			if (hasGround && i == 1) {
+				drawGround(painter, direction, symbol_p2, symbol_width * 2.0);
+			} else if (hasNeutral && ((i == 1 && !hasGround) || (i == 2 && hasGround))) {
+				drawNeutral(painter, direction, symbol_p2, symbol_width * 1.5);
+			}
+		}
+	}
+	painter -> restore();
+}
+
+/**
+	Dessine le segment correspondant au symbole de la terre sur un conducteur unifilaire
+	@param painter QPainter a utiliser pour dessiner le segment
+	@param direction direction du segment sur lequel le symbole apparaitra
+	@param center centre du segment
+	@param size taille du segment
+*/
+void SingleLineProperties::drawGround(QPainter *painter, QET::ConducerSegmentType direction, QPointF center, qreal size) {
+	painter -> save();
+	
+	// prepare le QPainter
+	painter -> setRenderHint(QPainter::Antialiasing, false);
+	QPen pen2(painter -> pen());
+	pen2.setCapStyle(Qt::SquareCap);
+	painter -> setPen(pen2);
+	
+	// dessine le segment representant la terre
+	qreal half_size = size / 2.0;
+	QPointF offset_point(
+		(direction == QET::Horizontal) ? half_size : 0.0,
+		(direction == QET::Horizontal) ? 0.0 : half_size
+	);
+	painter -> drawLine(
+		QLineF(
+			center + offset_point,
+			center - offset_point
+		)
+	);
+	
+	painter -> restore();
+}
+
+/**
+	Dessine le cercle correspondant au symbole du neutre sur un conducteur unifilaire
+	@param painter QPainter a utiliser pour dessiner le segment
+	@param direction direction du segment sur lequel le symbole apparaitra
+	@param center centre du cercle
+	@param size diametre du cercle
+*/
+void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConducerSegmentType, QPointF center, qreal size) {
+	painter -> save();
+	
+	// prepare le QPainter
+	painter -> setBrush(Qt::black);
+	
+	// desine le cercle representant le neutre
+	painter -> drawEllipse(
+		QRectF(
+			center - QPointF(size / 2.0, size / 2.0),
+			QSizeF(size, size)
+		)
+	);
+	
+	painter -> restore();
+}
+
+/**
+	exporte les parametres du conducteur unifilaire sous formes d'attributs XML
+	ajoutes a l'element e.
+	@param d Document XML ; utilise pour ajouter (potentiellement) des elements XML
+	@param e Element XML auquel seront ajoutes des attributs
+*/
+void SingleLineProperties::toXml(QDomDocument &, QDomElement &e) const {
+	e.setAttribute("ground",  hasGround  ? "true" : "false");
+	e.setAttribute("neutral", hasNeutral ? "true" : "false");
+	e.setAttribute("phase",   phases);
+}
+
+/**
+	importe les parametres du conducteur unifilaire a partir des attributs XML
+	de l'element e
+	@param e Element XML dont les attributs seront lus
+*/
+void SingleLineProperties::fromXml(QDomElement &e) {
+	hasGround  = e.attribute("ground")  == "true";
+	hasNeutral = e.attribute("neutral") == "true";
+	setPhasesCount(e.attribute("phase").toInt());
 }
