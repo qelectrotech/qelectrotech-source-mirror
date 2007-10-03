@@ -75,6 +75,7 @@ class Diagram : public QGraphicsScene {
 	const QSet<Element *> &elementsToMove();
 	const QSet<Conducer *> &conducersToMove();
 	const QHash<Conducer *, Terminal *> &conducersToUpdate();
+	QSet<Conducer *> selectedConducers() const;
 	
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();

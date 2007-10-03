@@ -63,6 +63,8 @@ class Conducer : public QGraphicsPathItem {
 	virtual QPainterPath shape() const;
 	qreal length();
 	ConducerSegment *middleSegment();
+	QString text() const;
+	void setText(const QString &);
 	static bool valideXml(QDomElement &);
 	bool fromXml(QDomElement &);
 	QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;

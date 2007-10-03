@@ -57,7 +57,6 @@ Conducer::Conducer(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *
 	text_item -> setPlainText("_");
 	text_item -> previous_text = "_";
 	calculateTextItemPosition();
-	//setSingleLine(true);
 	text_item -> setParentItem(this);
 }
 
@@ -1004,10 +1003,29 @@ bool Conducer::isSingleLine() const {
 	return(is_single_line);
 }
 
+/**
+	Definit le conducteur comme etant unifilaire ou multifilaire
+	Un conducteur unifilaire peut arborer des symboles mais pas de texte
+	et vice-versa.
+	@param sl true pour un conducteur unifilaire, false pour un conducteur multifilaire
+*/
 void Conducer::setSingleLine(bool sl) {
 	is_single_line = sl;
 	text_item -> setVisible(!is_single_line);
 }
+
+/// @return le texte du conducteur
+QString Conducer::text() const {
+	return(text_item -> toPlainText());
+}
+
+/**
+	@param t Nouveau texte du conducteur
+*/
+void Conducer::setText(const QString &t) {
+	text_item -> setPlainText(t);
+}
+
 
 /**
 	Constructeur par defaut
@@ -1058,7 +1076,7 @@ void SingleLineProperties::draw(QPainter *painter, QET::ConducerSegmentType dire
 	qreal interleave;
 	qreal symbol_width;
 	if (direction == QET::Horizontal) {
-		interleave = rect.width() / symbols_count;
+		interleave = rect.width() / (symbols_count + 1);
 		symbol_width = rect.width() / 12;
 		for (uint i = 1 ; i <= symbols_count ; ++ i) {
 			// dessine le tronc du symbole
@@ -1074,7 +1092,7 @@ void SingleLineProperties::draw(QPainter *painter, QET::ConducerSegmentType dire
 			}
 		}
 	} else {
-		interleave = rect.height() / symbols_count;
+		interleave = rect.height() / (symbols_count + 1);
 		symbol_width = rect.height() / 12;
 		for (uint i = 1 ; i <= symbols_count ; ++ i) {
 			// dessine le tronc du symbole

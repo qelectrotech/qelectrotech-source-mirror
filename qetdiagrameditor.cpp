@@ -4,6 +4,7 @@
 #include "diagram.h"
 #include "elementspanelwidget.h"
 #include "aboutqet.h"
+#include "conducerproperties.h"
 
 /**
 	constructeur
@@ -160,6 +161,7 @@ void QETDiagramEditor::actions() {
 	select_invert     = new QAction(                               tr("Inverser la s\351lection"),             this);
 	delete_selection  = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
 	rotate_selection  = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
+	conducer_prop     = new QAction(QIcon(":/ico/conductor.png"),  tr("Propri\351t\351s du conducteur"),       this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
@@ -240,6 +242,7 @@ void QETDiagramEditor::actions() {
 	select_invert     -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
 	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
 	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
+	conducer_prop     -> setStatusTip(tr("\311dite les propri\351t\351s du conducteur s\351lectionn\351"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
 	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
@@ -309,6 +312,7 @@ void QETDiagramEditor::actions() {
 	connect(arrange_window,   SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
 	connect(next_window,      SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
 	connect(prev_window,      SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
+	connect(conducer_prop,    SIGNAL(triggered()), this,       SLOT(slot_editConducer())        );
 	connect(infos_diagram,    SIGNAL(triggered()), this,       SLOT(slot_editInfos())           );
 	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
@@ -365,6 +369,8 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(delete_selection);
 	menu_edition -> addAction(rotate_selection);
+	menu_edition -> addSeparator();
+	menu_edition -> addAction(conducer_prop);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addAction(add_column);
@@ -660,6 +666,7 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_out         -> setEnabled(opened_document);
 	zoom_fit         -> setEnabled(opened_document);
 	zoom_reset       -> setEnabled(opened_document);
+	conducer_prop    -> setEnabled(opened_document && sv -> diagram() -> selectedConducers().count() == 1);
 	infos_diagram    -> setEnabled(opened_document);
 	add_column       -> setEnabled(opened_document);
 	remove_column    -> setEnabled(opened_document);
@@ -821,4 +828,10 @@ void QETDiagramEditor::slot_shrink() {
 	DiagramView *sv = currentDiagram();
 	if (!sv) return;
 	sv -> shrink();
+}
+
+void QETDiagramEditor::slot_editConducer() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> editConducer();
+	}
 }

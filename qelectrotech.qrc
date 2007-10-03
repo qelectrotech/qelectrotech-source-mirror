@@ -12,6 +12,7 @@
 	<file>ico/category_edit.png</file>
 	<file>ico/category_new.png</file>
 	<file>ico/circle.png</file>
+	<file>ico/conductor.png</file>
 	<file>ico/configure.png</file>
 	<file>ico/copy.png</file>
 	<file>ico/cut.png</file>
@@ -25,16 +26,19 @@
 	<file>ico/export.png</file>
 	<file>ico/fileclose.png</file>
 	<file>ico/forbidden.png</file>
+	<file>ico/ground.png</file>
 	<file>ico/import.png</file>
 	<file>ico/info.png</file>
 	<file>ico/line.png</file>
 	<file>ico/masquer.png</file>
 	<file>ico/move.png</file>
+	<file>ico/neutral.png</file>
 	<file>ico/new.png</file>
 	<file>ico/north.png</file>
 	<file>ico/open.png</file>
 	<file>ico/orientations.png</file>
 	<file>ico/paste.png</file>
+	<file>ico/phase.png</file>
 	<file>ico/pivoter.png</file>
 	<file>ico/polygon.png</file>
 	<file>ico/print.png</file>

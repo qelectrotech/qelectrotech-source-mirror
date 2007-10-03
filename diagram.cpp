@@ -486,3 +486,13 @@ void Diagram::setDrawTerminals(bool dt) {
 		}
 	}
 }
+
+QSet<Conducer *> Diagram::selectedConducers() const {
+	QSet<Conducer *> conducers_set;
+	foreach(QGraphicsItem *qgi, selectedItems()) {
+		if (Conducer *c = qgraphicsitem_cast<Conducer *>(qgi)) {
+			conducers_set << c;
+		}
+	}
+	return(conducers_set);
+}

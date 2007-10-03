@@ -4,6 +4,7 @@
 #include "exportdialog.h"
 #include "conducer.h"
 #include "diagramcommands.h"
+#include "conducerproperties.h"
 
 /**
 	Constructeur
@@ -314,6 +315,7 @@ bool DiagramView::open(QString n_fichier, int *erreur) {
 		if (erreur != NULL) *erreur = 0;
 		file_name = n_fichier;
 		scene -> undoStack().setClean();
+		updateWindowTitle();
 		return(true);
 	} else {
 		if (erreur != NULL) *erreur = 4;
@@ -601,4 +603,35 @@ QRectF DiagramView::viewedSceneRect() const {
 	
 	// en deduit le rectangle visualise par la scene
 	return(QRectF(scene_left_top, scene_right_bottom));
+}
+
+void DiagramView::editConducer() {
+	QList<Conducer *> selected_conducers(scene -> selectedConducers().toList());
+	
+	// on ne peut editer qu'un conducteur a la fois
+	if (selected_conducers.count() != 1) return;
+	Conducer *edited_conducer = selected_conducers.first();
+	
+	// initialise l'editeur de proprietes pour le conducteur
+	ConducerPropertiesWidget *cpw = new ConducerPropertiesWidget();
+	cpw -> setSingleLine(edited_conducer -> isSingleLine());
+	cpw -> setConducerText(edited_conducer -> text());
+	cpw -> setSingleLineProperties(edited_conducer -> singleLineProperties);
+	
+	// l'insere dans un dialogue
+	QDialog conducer_dialog;
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&conducer_dialog);
+	dialog_layout -> addWidget(cpw);
+	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout -> addWidget(dbb);
+	connect(dbb, SIGNAL(accepted()), &conducer_dialog, SLOT(accept()));
+	connect(dbb, SIGNAL(rejected()), &conducer_dialog, SLOT(reject()));
+	
+	// execute le dialogue et met a jour le conducteur
+	if (conducer_dialog.exec() == QDialog::Accepted) {
+		edited_conducer -> setSingleLine(cpw -> isSingleLine());
+		edited_conducer -> setText(cpw -> conducerText());
+		edited_conducer -> singleLineProperties = cpw -> singleLineProperties();
+		edited_conducer -> update();
+	}
 }
