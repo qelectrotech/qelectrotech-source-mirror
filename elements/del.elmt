@@ -1,8 +1,8 @@
 <!DOCTYPE definition SYSTEM "definition_element.dtd">
 <definition	type="element" width="30" height="70" hotspot_x="15" hotspot_y="5" orientation="dnny">
 	<names>
-		<name lang="fr">DEL</name>
-		<name lang="en">LED</name>
+		<name lang="fr">Voyant</name>
+		<name lang="en">Indicator</name>
 	</names>
 	<description>
 		<!--Lampe-->

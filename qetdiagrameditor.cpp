@@ -207,7 +207,7 @@ void QETDiagramEditor::actions() {
 	select_all        -> setShortcut(QKeySequence::SelectAll);
 	select_nothing    -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
-	delete_selection  -> setShortcut(QKeySequence(tr("Ctrl+Suppr")));
+	delete_selection  -> setShortcut(QKeySequence(tr("Suppr")));
 	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);

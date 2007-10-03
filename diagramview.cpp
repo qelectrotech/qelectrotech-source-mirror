@@ -70,6 +70,10 @@ void DiagramView::selectInvert() {
 	Supprime les composants selectionnes
 */
 void DiagramView::deleteSelection() {
+	// si un item a le focus et que ce slot est appele, c'est sans doute parce
+	// que la touche suppr a ete enfoncee pour effacer une lettre et non la
+	// selection
+	if (scene -> focusItem()) return;
 	
 	QSet<Element *> garbage_elmt;
 	QSet<Conductor *> garbage_conductors;
@@ -448,7 +452,9 @@ void DiagramView::dialogPrint() {
 	if (qpd.exec() == QDialog::Accepted) {
 		QPainter qp(&qprin);
 		scene -> setDisplayGrid(false);
+		scene -> setDrawTerminals(false);
 		scene -> render(&qp);
+		scene -> setDrawTerminals(true);
 		scene -> setDisplayGrid(true);
 	}
 }

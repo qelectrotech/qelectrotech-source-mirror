@@ -60,7 +60,10 @@ void QETElementEditor::setupActions() {
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	inv_select        -> setShortcut(QKeySequence(tr("Ctrl+I")));
-	edit_delete       -> setShortcut(QKeySequence(tr("Ctrl+Suppr")));
+	edit_delete       -> setShortcut(QKeySequence(tr("Suppr")));
+	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
+	edit_size_hs      -> setShortcut(QKeySequence(tr("Ctrl+R")));
+	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
 	
 	connect(new_element,   SIGNAL(triggered()), this,     SLOT(slot_new()));
 	connect(open,          SIGNAL(triggered()), this,     SLOT(slot_open()));

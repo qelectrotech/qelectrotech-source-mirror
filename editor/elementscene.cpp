@@ -413,6 +413,11 @@ void ElementScene::slot_invertSelection() {
 }
 
 void ElementScene::slot_delete() {
+	// si un item a le focus et que ce slot est appele, c'est sans doute parce
+	// que la touche suppr a ete enfoncee pour effacer une lettre et non la
+	// selection
+	if (focusItem()) return;
+	
 	// verifie qu'il y a qqc de selectionne
 	QList<QGraphicsItem *> selected_items = selectedItems();
 	if (selected_items.isEmpty()) return;
