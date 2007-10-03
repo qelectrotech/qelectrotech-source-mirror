@@ -1,24 +1,24 @@
-#ifndef CONDUCER_SEGMENT_H
-#define CONDUCER_SEGMENT_H
+#ifndef CONDUCTOR_SEGMENT_H
+#define CONDUCTOR_SEGMENT_H
 #include <QPointF>
 #include "qet.h"
 /**
 	Cette classe represente un segment de conducteur.
 */
-class ConducerSegment {
+class ConductorSegment {
 	
 	// constructeurs, destructeur
 	public:
-	ConducerSegment(const QPointF &, const QPointF &, ConducerSegment * = NULL, ConducerSegment * = NULL);
-	virtual ~ConducerSegment();
+	ConductorSegment(const QPointF &, const QPointF &, ConductorSegment * = NULL, ConductorSegment * = NULL);
+	virtual ~ConductorSegment();
 	
 	private:
-	ConducerSegment(const ConducerSegment &);
+	ConductorSegment(const ConductorSegment &);
 	
 	// attributs
 	private:
-	ConducerSegment *previous_segment;
-	ConducerSegment *next_segment;
+	ConductorSegment *previous_segment;
+	ConductorSegment *next_segment;
 	QPointF point1;
 	QPointF point2;
 	
@@ -26,12 +26,12 @@ class ConducerSegment {
 	public:
 	void moveX(const qreal &);
 	void moveY(const qreal &);
-	ConducerSegment *previousSegment() const;
-	ConducerSegment *nextSegment()  const;
+	ConductorSegment *previousSegment() const;
+	ConductorSegment *nextSegment()  const;
 	bool hasPreviousSegment() const;
 	bool hasNextSegment() const;
-	void setPreviousSegment(ConducerSegment *);
-	void setNextSegment(ConducerSegment *);
+	void setPreviousSegment(ConductorSegment *);
+	void setNextSegment(ConductorSegment *);
 	bool isStatic() const;
 	bool isFirstSegment() const;
 	bool isLastSegment() const;
@@ -42,7 +42,7 @@ class ConducerSegment {
 	QPointF middle() const;
 	bool isHorizontal() const;
 	bool isVertical() const;
-	QET::ConducerSegmentType type() const;
+	QET::ConductorSegmentType type() const;
 	qreal length() const;
 	bool canMove1stPointX(const qreal &, qreal &) const;
 	bool canMove2ndPointX(const qreal &, qreal &) const;

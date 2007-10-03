@@ -1,6 +1,6 @@
 #include "diagramcommands.h"
 #include "element.h"
-#include "conducer.h"
+#include "conductor.h"
 #include "diagram.h"
 #include "qgimanager.h"
 /**
@@ -47,63 +47,63 @@ void AddElementCommand::redo() {
 	@param t2 Seconde borne du conducteur
 	@param parent QUndoCommand parent
 */
-AddConducerCommand::AddConducerCommand(
+AddConductorCommand::AddConductorCommand(
 	Diagram *d,
-	Conducer *c,
+	Conductor *c,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(QObject::tr("ajouter un conducteur"), parent),
-	conducer(c),
+	conductor(c),
 	diagram(d)
 {
-	diagram -> qgiManager().manage(conducer);
+	diagram -> qgiManager().manage(conductor);
 }
 
 /// Destructeur
-AddConducerCommand::~AddConducerCommand() {
-	diagram -> qgiManager().release(conducer);
+AddConductorCommand::~AddConductorCommand() {
+	diagram -> qgiManager().release(conductor);
 }
 
 /// Annule l'ajout
-void AddConducerCommand::undo() {
+void AddConductorCommand::undo() {
 	// detache le conducteur sans le detruire
-	conducer -> terminal1 -> removeConducer(conducer);
-	conducer -> terminal2 -> removeConducer(conducer);
-	diagram -> removeItem(conducer);
+	conductor -> terminal1 -> removeConductor(conductor);
+	conductor -> terminal2 -> removeConductor(conductor);
+	diagram -> removeItem(conductor);
 }
 
 /// Refait l'ajout
-void AddConducerCommand::redo() {
-	diagram -> addItem(conducer);
+void AddConductorCommand::redo() {
+	diagram -> addItem(conductor);
 }
 
 /**
 	Constructeur
 	@param dia Schema dont on supprime des elements et conducteurs
 	@param elements Elements supprimes
-	@param conducers Conducteurs supprimes
+	@param conductors Conducteurs supprimes
 	@param parent QUndoCommand parent
 */
 DeleteElementsCommand::DeleteElementsCommand(
 	Diagram *dia,
 	QSet<Element *> elements,
-	QSet<Conducer *> conducers,
+	QSet<Conductor *> conductors,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(parent),
 	removed_elements(elements),
-	removed_conducers(conducers),
+	removed_conductors(conductors),
 	diagram(dia)
 {
-	setText(QObject::tr("supprimer ") + QET::ElementsAndConducersSentence(removed_elements.count(), removed_conducers.count()));
+	setText(QObject::tr("supprimer ") + QET::ElementsAndConductorsSentence(removed_elements.count(), removed_conductors.count()));
 	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().manage(qgi);
-	foreach(QGraphicsItem *qgi, removed_conducers) diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, removed_conductors) diagram -> qgiManager().manage(qgi);
 }
 
 /// Destructeur
 DeleteElementsCommand::~DeleteElementsCommand() {
 	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().release(qgi);
-	foreach(QGraphicsItem *qgi, removed_conducers) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, removed_conductors) diagram -> qgiManager().release(qgi);
 }
 
 /// annule les suppressions
@@ -114,19 +114,19 @@ void DeleteElementsCommand::undo() {
 	}
 	
 	// remet les conducteurs
-	foreach(Conducer *c, removed_conducers) {
+	foreach(Conductor *c, removed_conductors) {
 		diagram -> addItem(c);
-		c -> terminal1 -> addConducer(c);
-		c -> terminal2 -> addConducer(c);
+		c -> terminal1 -> addConductor(c);
+		c -> terminal2 -> addConductor(c);
 	}
 }
 
 /// refait les suppressions
 void DeleteElementsCommand::redo() {
 	// enleve les conducteurs
-	foreach(Conducer *c, removed_conducers) {
-		c -> terminal1 -> removeConducer(c);
-		c -> terminal2 -> removeConducer(c);
+	foreach(Conductor *c, removed_conductors) {
+		c -> terminal1 -> removeConductor(c);
+		c -> terminal2 -> removeConductor(c);
 		diagram -> removeItem(c);
 	}
 	
@@ -146,32 +146,32 @@ void DeleteElementsCommand::redo() {
 PasteDiagramCommand::PasteDiagramCommand(
 	Diagram *dia,
 	const QList<Element *> &e,
-	const QList<Conducer *> &c,
+	const QList<Conductor *> &c,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(parent),
 	elements(e),
-	conducers(c),
+	conductors(c),
 	diagram(dia),
 	first_redo(true)
 {
-	setText(QObject::tr("coller ") + QET::ElementsAndConducersSentence(elements.count(), conducers.count()));
+	setText(QObject::tr("coller ") + QET::ElementsAndConductorsSentence(elements.count(), conductors.count()));
 	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().manage(qgi);
-	foreach(QGraphicsItem *qgi, conducers) diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, conductors) diagram -> qgiManager().manage(qgi);
 }
 
 /// Destructeur
 PasteDiagramCommand::~PasteDiagramCommand() {
 	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().release(qgi);
-	foreach(QGraphicsItem *qgi, conducers) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, conductors) diagram -> qgiManager().release(qgi);
 }
 
 /// annule le coller
 void PasteDiagramCommand::undo() {
 	// enleve les conducteurs
-	foreach(Conducer *c, conducers) {
-		c -> terminal1 -> removeConducer(c);
-		c -> terminal2 -> removeConducer(c);
+	foreach(Conductor *c, conductors) {
+		c -> terminal1 -> removeConductor(c);
+		c -> terminal2 -> removeConductor(c);
 		diagram -> removeItem(c);
 	}
 	
@@ -187,32 +187,32 @@ void PasteDiagramCommand::redo() {
 		foreach(Element *e, elements)  diagram -> addItem(e);
 		
 		// pose les conducteurs
-		foreach(Conducer *c, conducers) {
+		foreach(Conductor *c, conductors) {
 			diagram -> addItem(c);
-			c -> terminal1 -> addConducer(c);
-			c -> terminal2 -> addConducer(c);
+			c -> terminal1 -> addConductor(c);
+			c -> terminal2 -> addConductor(c);
 		}
 	}
 	foreach(Element *e, elements)   e -> setSelected(true);
-	foreach(Conducer *c, conducers) c -> setSelected(true);
+	foreach(Conductor *c, conductors) c -> setSelected(true);
 }
 
 /**
 	Constructeur
 	@param dia Schema dont on supprime des elements et conducteurs
 	@param elements Elements supprimes
-	@param conducers Conducteurs supprimes
+	@param conductors Conducteurs supprimes
 	@param parent QUndoCommand parent
 */
 CutDiagramCommand::CutDiagramCommand(
 	Diagram *dia,
 	QSet<Element *> elements,
-	QSet<Conducer *> conducers,
+	QSet<Conductor *> conductors,
 	QUndoCommand *parent
 ) : 
-	DeleteElementsCommand(dia, elements, conducers, parent)
+	DeleteElementsCommand(dia, elements, conductors, parent)
 {
-	setText(QObject::tr("couper ") + QET::ElementsAndConducersSentence(elements.count(), conducers.count()));
+	setText(QObject::tr("couper ") + QET::ElementsAndConductorsSentence(elements.count(), conductors.count()));
 }
 
 /// Destructeur
@@ -223,27 +223,27 @@ CutDiagramCommand::~CutDiagramCommand() {
 	Constructeur
 	@param dia Schema sur lequel on deplace des elements
 	@param move_elements Elements a deplacer
-	@param move_conducers Conducteurs a deplacer
-	@param modify_conducers Conducteurs a mettre a jour
+	@param move_conductors Conducteurs a deplacer
+	@param modify_conductors Conducteurs a mettre a jour
 	@param m translation subie par les elements
 	@param parent QUndoCommand parent
 */
 MoveElementsCommand::MoveElementsCommand(
 	Diagram *dia,
 	const QSet<Element *> &move_elements,
-	const QSet<Conducer *> &move_conducers,
-	const QHash<Conducer *, Terminal *> &modify_conducers,
+	const QSet<Conductor *> &move_conductors,
+	const QHash<Conductor *, Terminal *> &modify_conductors,
 	const QPointF &m,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(parent),
 	diagram(dia),
 	elements_to_move(move_elements),
-	conducers_to_move(move_conducers),
-	conducers_to_update(modify_conducers),
+	conductors_to_move(move_conductors),
+	conductors_to_update(modify_conductors),
 	movement(m)
 {
-	setText(QObject::tr("d\351placer ") + QET::ElementsAndConducersSentence(elements_to_move.count(), conducers_to_move.count()));
+	setText(QObject::tr("d\351placer ") + QET::ElementsAndConductorsSentence(elements_to_move.count(), conductors_to_move.count()));
 }
 
 /// Destructeur
@@ -272,13 +272,13 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	}
 	
 	// deplace certains conducteurs
-	foreach(Conducer *conducer, conducers_to_move) {
-		conducer -> setPos(conducer -> pos() + actual_movement);
+	foreach(Conductor *conductor, conductors_to_move) {
+		conductor -> setPos(conductor -> pos() + actual_movement);
 	}
 	
 	// recalcule les autres conducteurs
-	foreach(Conducer *conducer, conducers_to_update.keys()) {
-		conducer -> updateWithNewPos(QRectF(), conducers_to_update[conducer], conducers_to_update[conducer] -> amarrageConducer());
+	foreach(Conductor *conductor, conductors_to_update.keys()) {
+		conductor -> updateWithNewPos(QRectF(), conductors_to_update[conductor], conductors_to_update[conductor] -> amarrageConductor());
 	}
 }
 
@@ -328,7 +328,7 @@ void ChangeDiagramTextCommand::redo() {
 	@param parent QUndoCommand parent
 */
 RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("pivoter ") + QET::ElementsAndConducersSentence(elements.count(), 0), parent),
+	QUndoCommand(QObject::tr("pivoter ") + QET::ElementsAndConductorsSentence(elements.count(), 0), parent),
 	elements_to_rotate(elements)
 {
 }
@@ -359,14 +359,14 @@ void RotateElementsCommand::redo() {
 	@param new_p nouveau profil du conducteur
 	@param parent QUndoCommand parent
 */
-ChangeConducerCommand::ChangeConducerCommand(
-	Conducer *c,
-	const ConducerProfile &old_p,
-	const ConducerProfile &new_p,
+ChangeConductorCommand::ChangeConductorCommand(
+	Conductor *c,
+	const ConductorProfile &old_p,
+	const ConductorProfile &new_p,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(QObject::tr("modifier un conducteur"), parent),
-	conducer(c),
+	conductor(c),
 	old_profile(old_p),
 	new_profile(new_p),
 	first_redo(true)
@@ -374,18 +374,18 @@ ChangeConducerCommand::ChangeConducerCommand(
 }
 
 /// Destructeur
-ChangeConducerCommand::~ChangeConducerCommand() {
+ChangeConductorCommand::~ChangeConductorCommand() {
 }
 
 /// Annule la modification du conducteur
-void ChangeConducerCommand::undo() {
-	conducer -> setProfile(old_profile);
+void ChangeConductorCommand::undo() {
+	conductor -> setProfile(old_profile);
 }
 
 /// Refait la modification du conducteur
-void ChangeConducerCommand::redo() {
+void ChangeConductorCommand::redo() {
 	if (first_redo) first_redo = false;
-	else conducer -> setProfile(new_profile);
+	else conductor -> setProfile(new_profile);
 }
 
 /**
@@ -473,45 +473,45 @@ void ChangeBorderCommand::redo() {
 	applyChanges(1);
 }
 
-ChangeConducerPropertiesCommand::ChangeConducerPropertiesCommand(Conducer *c, QUndoCommand *parent) :
+ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur"), parent),
-	conducer(c),
+	conductor(c),
 	old_settings_set(false),
 	new_settings_set(false)
 {
 }
 
-ChangeConducerPropertiesCommand::~ChangeConducerPropertiesCommand() {
+ChangeConductorPropertiesCommand::~ChangeConductorPropertiesCommand() {
 }
 
-void ChangeConducerPropertiesCommand::setOldSettings(bool single, const QString &text, const SingleLineProperties &slp) {
+void ChangeConductorPropertiesCommand::setOldSettings(bool single, const QString &text, const SingleLineProperties &slp) {
 	old_is_single_line = single;
-	old_conducer_text = text;
+	old_conductor_text = text;
 	old_slp = slp;
 	old_settings_set = true;
 }
 
-void ChangeConducerPropertiesCommand::setNewSettings(bool single, const QString &text, const SingleLineProperties &slp) {
+void ChangeConductorPropertiesCommand::setNewSettings(bool single, const QString &text, const SingleLineProperties &slp) {
 	new_is_single_line = single;
-	new_conducer_text = text;
+	new_conductor_text = text;
 	new_slp = slp;
 	new_settings_set = true;
 }
 
-void ChangeConducerPropertiesCommand::undo() {
+void ChangeConductorPropertiesCommand::undo() {
 	if (old_settings_set && new_settings_set) {
-		conducer -> setSingleLine(old_is_single_line);
-		conducer -> setText(old_conducer_text);
-		conducer -> singleLineProperties = old_slp;
-		conducer -> update();
+		conductor -> setSingleLine(old_is_single_line);
+		conductor -> setText(old_conductor_text);
+		conductor -> singleLineProperties = old_slp;
+		conductor -> update();
 	}
 }
 
-void ChangeConducerPropertiesCommand::redo() {
+void ChangeConductorPropertiesCommand::redo() {
 	if (old_settings_set && new_settings_set) {
-		conducer -> setSingleLine(new_is_single_line);
-		conducer -> setText(new_conducer_text);
-		conducer -> singleLineProperties = new_slp;
-		conducer -> update();
+		conductor -> setSingleLine(new_is_single_line);
+		conductor -> setText(new_conductor_text);
+		conductor -> singleLineProperties = new_slp;
+		conductor -> update();
 	}
 }

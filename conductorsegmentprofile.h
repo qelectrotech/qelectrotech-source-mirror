@@ -1,12 +1,12 @@
-#ifndef CONDUCER_SEGMENT_PROFILE_H
-#define CONDUCER_SEGMENT_PROFILE_H
+#ifndef CONDUCTOR_SEGMENT_PROFILE_H
+#define CONDUCTOR_SEGMENT_PROFILE_H
 #include <QtCore>
-#include "conducersegment.h"
+#include "conductorsegment.h"
 /**
 	Cette classe contient le profil (= les caracteristiques essentielles) d'un
 	segment de conducteur.
 */
-class ConducerSegmentProfile {
+class ConductorSegmentProfile {
 	// constructeurs, destructeur
 	public:
 	/**
@@ -14,7 +14,7 @@ class ConducerSegmentProfile {
 		@param l longueur du segment
 		@param ori true si le segment est horizontal, false s'il est vertical
 	*/
-	ConducerSegmentProfile(qreal l, bool ori = true) :
+	ConductorSegmentProfile(qreal l, bool ori = true) :
 		length(l),
 		isHorizontal(ori)
 	{
@@ -22,16 +22,16 @@ class ConducerSegmentProfile {
 	
 	/**
 		Constructeur
-		@param segment ConducerSegment dont il faut extraire le profil
+		@param segment ConductorSegment dont il faut extraire le profil
 	*/
-	ConducerSegmentProfile(ConducerSegment *segment) :
+	ConductorSegmentProfile(ConductorSegment *segment) :
 		length(segment -> length()),
 		isHorizontal(segment -> isHorizontal())
 	{
 	}
 	
 	/// Destructeur
-	virtual ~ConducerSegmentProfile() {
+	virtual ~ConductorSegmentProfile() {
 	}
 	
 	// attributs

@@ -36,7 +36,7 @@ class Element : public QGraphicsItem {
 	
 	// methodes virtuelles pures a definir dans les classes enfants
 	virtual QList<Terminal *> terminals() const = 0;
-	virtual QList<Conducer *> conducers() const = 0;
+	virtual QList<Conductor *> conductors() const = 0;
 	virtual int nbTerminals() const = 0;
 	virtual int nbTerminalsMin() const = 0;
 	virtual int nbTerminalsMax() const = 0;

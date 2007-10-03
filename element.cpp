@@ -1,7 +1,7 @@
 #include "element.h"
 #include "qetapp.h"
 #include "diagram.h"
-#include "conducer.h"
+#include "conductor.h"
 #include "elementtextitem.h"
 #include "diagramcommands.h"
 #include <QtDebug>
@@ -121,7 +121,7 @@ bool Element::setOrientation(QET::Orientation o) {
 	ori.setCurrent(o);
 	update();
 	foreach(QGraphicsItem *qgi, children()) {
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConducer();
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConductor();
 		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
 			// applique une rotation contraire si besoin
 			if (!eti -> followParentRotations())  {
@@ -251,14 +251,14 @@ void Element::moveOtherElements(const QPointF &diff) {
 	}
 	
 	// deplace certains conducteurs
-	foreach(Conducer *conducer, diagram_ptr -> conducersToMove()) {
-		conducer -> setPos(conducer -> pos() + diff);
+	foreach(Conductor *conductor, diagram_ptr -> conductorsToMove()) {
+		conductor -> setPos(conductor -> pos() + diff);
 	}
 	
 	// recalcule les autres conducteurs
-	const QHash<Conducer *, Terminal *> &conducers_modify = diagram_ptr -> conducersToUpdate();
-	foreach(Conducer *conducer, conducers_modify.keys()) {
-		conducer -> updateWithNewPos(QRectF(), conducers_modify[conducer], conducers_modify[conducer] -> amarrageConducer());
+	const QHash<Conductor *, Terminal *> &conductors_modify = diagram_ptr -> conductorsToUpdate();
+	foreach(Conductor *conductor, conductors_modify.keys()) {
+		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> amarrageConductor());
 	}
 }
 
@@ -270,8 +270,8 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				new MoveElementsCommand(
 					diagram_ptr,
 					diagram_ptr -> elementsToMove(),
-					diagram_ptr -> conducersToMove(),
-					diagram_ptr -> conducersToUpdate(),
+					diagram_ptr -> conductorsToMove(),
+					diagram_ptr -> conductorsToUpdate(),
 					diagram_ptr -> current_movement
 				)
 			);

@@ -10,10 +10,10 @@ INCLUDEPATH += . editor
 # Input
 HEADERS += aboutqet.h \
            borderinset.h \
-           conducer.h \
-           conducerprofile.h \
-           conducersegment.h \
-           conducersegmentprofile.h \
+           conductor.h \
+           conductorprofile.h \
+           conductorsegment.h \
+           conductorsegmentprofile.h \
            customelement.h \
            diagram.h \
            diagramview.h \
@@ -67,12 +67,12 @@ HEADERS += aboutqet.h \
  diagramcommands.h \
  diagramtextitem.h \
  insetproperties.h \
- conducerproperties.h
+ conductorproperties.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
-           conducer.cpp \
-           conducerprofile.cpp \
-           conducersegment.cpp \
+           conductor.cpp \
+           conductorprofile.cpp \
+           conductorsegment.cpp \
            customelement.cpp \
            diagram.cpp \
            diagramview.cpp \
@@ -126,7 +126,7 @@ SOURCES += aboutqet.cpp \
            editor/textfieldeditor.cpp \
            diagramcommands.cpp \
  diagramtextitem.cpp \
- conducerproperties.cpp
+ conductorproperties.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc

@@ -2,9 +2,9 @@
 #include "diagram.h"
 #include "customelement.h"
 #include "exportdialog.h"
-#include "conducer.h"
+#include "conductor.h"
 #include "diagramcommands.h"
-#include "conducerproperties.h"
+#include "conductorproperties.h"
 
 /**
 	Constructeur
@@ -72,22 +72,22 @@ void DiagramView::selectInvert() {
 void DiagramView::deleteSelection() {
 	
 	QSet<Element *> garbage_elmt;
-	QSet<Conducer *> garbage_conducers;
+	QSet<Conductor *> garbage_conductors;
 	
 	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
 		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (Conducer * c = qgraphicsitem_cast<Conducer *>(qgi)) {
+		if (Conductor * c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
-			garbage_conducers << c;
+			garbage_conductors << c;
 		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			garbage_elmt << e;
 			// s'il s'agit d'un element, on veille a enlever ses conducteurs
-			garbage_conducers += e -> conducers().toSet();
+			garbage_conductors += e -> conductors().toSet();
 		}
 	}
 	scene -> clearSelection();
-	scene -> undoStack().push(new DeleteElementsCommand(scene, garbage_elmt, garbage_conducers));
+	scene -> undoStack().push(new DeleteElementsCommand(scene, garbage_elmt, garbage_conductors));
 }
 
 /**
@@ -206,22 +206,22 @@ void DiagramView::zoomReset() {
 void DiagramView::cut() {
 	copy();
 	QSet<Element *> cut_elmt;
-	QSet<Conducer *> cut_conducers;
+	QSet<Conductor *> cut_conductors;
 	
 	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
 		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (Conducer * c = qgraphicsitem_cast<Conducer *>(qgi)) {
+		if (Conductor * c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
-			cut_conducers << c;
+			cut_conductors << c;
 		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			cut_elmt << e;
 			// s'il s'agit d'un element, on veille a enlever ses conducteurs
-			cut_conducers += e -> conducers().toSet();
+			cut_conductors += e -> conductors().toSet();
 		}
 	}
 	scene -> clearSelection();
-	scene -> undoStack().push(new CutDiagramCommand(scene, cut_elmt, cut_conducers));
+	scene -> undoStack().push(new CutDiagramCommand(scene, cut_elmt, cut_conductors));
 }
 
 /**
@@ -245,13 +245,13 @@ void DiagramView::paste() {
 	
 	// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
 	QList<Element *> elements_pasted;
-	QList<Conducer *> conducers_pasted;
-	scene -> fromXml(document_xml, QPointF(), false, &elements_pasted, &conducers_pasted);
+	QList<Conductor *> conductors_pasted;
+	scene -> fromXml(document_xml, QPointF(), false, &elements_pasted, &conductors_pasted);
 	
 	// si quelque chose a effectivement ete ajoute au schema, on cree
-	if (elements_pasted.count() || conducers_pasted.count()) {
+	if (elements_pasted.count() || conductors_pasted.count()) {
 		scene -> clearSelection();
-		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conducers_pasted));
+		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted));
 	}
 }
 
@@ -267,13 +267,13 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		
 		// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
 		QList<Element *> elements_pasted;
-		QList<Conducer *> conducers_pasted;
-		scene -> fromXml(document_xml, mapToScene(e -> pos()), false, &elements_pasted, &conducers_pasted);
+		QList<Conductor *> conductors_pasted;
+		scene -> fromXml(document_xml, mapToScene(e -> pos()), false, &elements_pasted, &conductors_pasted);
 		
 		// si quelque chose a effectivement ete ajoute au schema, on cree
-		if (elements_pasted.count() || conducers_pasted.count()) {
+		if (elements_pasted.count() || conductors_pasted.count()) {
 			scene -> clearSelection();
-			scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conducers_pasted));
+			scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted));
 		}
 	} else {
 		QGraphicsView::mousePressEvent(e);
@@ -605,36 +605,36 @@ QRectF DiagramView::viewedSceneRect() const {
 	return(QRectF(scene_left_top, scene_right_bottom));
 }
 
-void DiagramView::editConducer() {
-	QList<Conducer *> selected_conducers(scene -> selectedConducers().toList());
+void DiagramView::editConductor() {
+	QList<Conductor *> selected_conductors(scene -> selectedConductors().toList());
 	
 	// on ne peut editer qu'un conducteur a la fois
-	if (selected_conducers.count() != 1) return;
-	Conducer *edited_conducer = selected_conducers.first();
+	if (selected_conductors.count() != 1) return;
+	Conductor *edited_conductor = selected_conductors.first();
 	
 	// initialise l'editeur de proprietes pour le conducteur
-	ConducerPropertiesWidget *cpw = new ConducerPropertiesWidget();
-	cpw -> setSingleLine(edited_conducer -> isSingleLine());
-	cpw -> setConducerText(edited_conducer -> text());
-	cpw -> setSingleLineProperties(edited_conducer -> singleLineProperties);
+	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget();
+	cpw -> setSingleLine(edited_conductor -> isSingleLine());
+	cpw -> setConductorText(edited_conductor -> text());
+	cpw -> setSingleLineProperties(edited_conductor -> singleLineProperties);
 	
 	// initialise egalement l'objet UndoCommand correspondant
-	ChangeConducerPropertiesCommand *ccpc = new ChangeConducerPropertiesCommand(edited_conducer);
-	ccpc -> setOldSettings(edited_conducer -> isSingleLine(), edited_conducer -> text(), edited_conducer -> singleLineProperties);
+	ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
+	ccpc -> setOldSettings(edited_conductor -> isSingleLine(), edited_conductor -> text(), edited_conductor -> singleLineProperties);
 	
 	// l'insere dans un dialogue
-	QDialog conducer_dialog;
-	conducer_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&conducer_dialog);
+	QDialog conductor_dialog;
+	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur"));
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dbb);
-	connect(dbb, SIGNAL(accepted()), &conducer_dialog, SLOT(accept()));
-	connect(dbb, SIGNAL(rejected()), &conducer_dialog, SLOT(reject()));
+	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));
+	connect(dbb, SIGNAL(rejected()), &conductor_dialog, SLOT(reject()));
 	
 	// execute le dialogue et met a jour le conducteur
-	if (conducer_dialog.exec() == QDialog::Accepted) {
-		ccpc -> setNewSettings(cpw -> isSingleLine(), cpw -> conducerText(), cpw -> singleLineProperties());
+	if (conductor_dialog.exec() == QDialog::Accepted) {
+		ccpc -> setNewSettings(cpw -> isSingleLine(), cpw -> conductorText(), cpw -> singleLineProperties());
 		diagram() -> undoStack().push(ccpc);
 	} else {
 		delete ccpc;

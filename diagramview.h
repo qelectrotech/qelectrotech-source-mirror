@@ -70,7 +70,7 @@ class DiagramView : public QGraphicsView {
 	void paste();
 	void adjustSceneRect();
 	void updateWindowTitle();
-	void editConducer();
+	void editConductor();
 	
 	private slots:
 	void slot_selectionChanged();

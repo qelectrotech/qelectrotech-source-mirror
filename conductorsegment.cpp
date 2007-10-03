@@ -1,4 +1,4 @@
-#include "conducersegment.h"
+#include "conductorsegment.h"
 #include <QDebug>
 
 /**
@@ -8,11 +8,11 @@
 	@param cs1 Le segment precedent
 	@param cs2 Le segment suivant
 */
-ConducerSegment::ConducerSegment(
+ConductorSegment::ConductorSegment(
 	const QPointF &p1,
 	const QPointF &p2,
-	ConducerSegment *cs1,
-	ConducerSegment *cs2
+	ConductorSegment *cs1,
+	ConductorSegment *cs2
 ) :
 	point1(p1),
 	point2(p2)
@@ -24,7 +24,7 @@ ConducerSegment::ConducerSegment(
 /**
 	Destructeur - Relie le segment precedent au suivant
 */
-ConducerSegment::~ConducerSegment() {
+ConductorSegment::~ConductorSegment() {
 	if (hasPreviousSegment()) previousSegment() -> setNextSegment(nextSegment());
 	if (hasNextSegment()) nextSegment() -> setPreviousSegment(previousSegment());
 }
@@ -38,9 +38,9 @@ ConducerSegment::~ConducerSegment() {
 	@param possible_dx La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx) const {
+bool ConductorSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx) const {
 	
-	Q_ASSERT_X(isVertical(), "ConducerSegment::canMove1stPointX", "segment non vertical");
+	Q_ASSERT_X(isVertical(), "ConductorSegment::canMove1stPointX", "segment non vertical");
 	
 	/// On ne bouge jamais le premier point d'un segment statique.
 	if (isStatic()) {
@@ -97,9 +97,9 @@ bool ConducerSegment::canMove1stPointX(const qreal &asked_dx, qreal &possible_dx
 	@param possible_dx La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx) const {
+bool ConductorSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx) const {
 	
-	Q_ASSERT_X(isVertical(), "ConducerSegment::canMove2ndPointX", "segment non vertical");
+	Q_ASSERT_X(isVertical(), "ConductorSegment::canMove2ndPointX", "segment non vertical");
 	
 	/// On ne modifie jamais l'abscisse du second point d'un segment statique.
 	if (isStatic()) {
@@ -156,9 +156,9 @@ bool ConducerSegment::canMove2ndPointX(const qreal &asked_dx, qreal &possible_dx
 	@param possible_dy La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy) const {
+bool ConductorSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy) const {
 	
-	Q_ASSERT_X(isHorizontal(), "ConducerSegment::canMove1stPointY", "segment non horizontal");
+	Q_ASSERT_X(isHorizontal(), "ConductorSegment::canMove1stPointY", "segment non horizontal");
 	
 	/// On ne bouge jamais le premier point d'un segment statique.
 	if (isStatic()) {
@@ -215,9 +215,9 @@ bool ConducerSegment::canMove1stPointY(const qreal &asked_dy, qreal &possible_dy
 	@param possible_dy La valeur du mouvement possible (au maximum)
 	@return true si le mouvement est possible ; false s'il doit etre limite
 */
-bool ConducerSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy) const {
+bool ConductorSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy) const {
 	
-	Q_ASSERT_X(isHorizontal(), "ConducerSegment::canMove2ndPointY", "segment non horizontal");
+	Q_ASSERT_X(isHorizontal(), "ConductorSegment::canMove2ndPointY", "segment non horizontal");
 	
 	/// On ne modifie jamais l'abscisse du second point d'un segment statique.
 	if (isStatic()) {
@@ -270,9 +270,9 @@ bool ConducerSegment::canMove2ndPointY(const qreal &asked_dy, qreal &possible_dy
 	Gere les mouvements sur l'axe horizontal
 	@param dx taille du deplacement en pixels
 */
-void ConducerSegment::moveX(const qreal &dx) {
+void ConductorSegment::moveX(const qreal &dx) {
 	if (isHorizontal()) return;
-	Q_ASSERT_X(isVertical(), "ConducerSegment::moveX", "segment non vertical");
+	Q_ASSERT_X(isVertical(), "ConductorSegment::moveX", "segment non vertical");
 	
 	bool has_prev_segment = hasPreviousSegment();
 	bool has_next_segment = hasNextSegment();
@@ -291,7 +291,7 @@ void ConducerSegment::moveX(const qreal &dx) {
 	if (has_prev_segment) {
 		point1.rx() += final_movement;
 		if (previous_segment -> isFirstSegment()) {
-			new ConducerSegment(
+			new ConductorSegment(
 				previous_segment -> point2,
 				point1,
 				previous_segment,
@@ -304,7 +304,7 @@ void ConducerSegment::moveX(const qreal &dx) {
 	if (has_next_segment) {
 		point2.rx() += final_movement;
 		if (next_segment -> isLastSegment()) {
-			new ConducerSegment(
+			new ConductorSegment(
 				point2,
 				next_segment -> point1,
 				this,
@@ -318,9 +318,9 @@ void ConducerSegment::moveX(const qreal &dx) {
 	Gere les mouvements sur l'axe vertical
 	@param dx taille du deplacement en pixels
 */
-void ConducerSegment::moveY(const qreal &dy) {
+void ConductorSegment::moveY(const qreal &dy) {
 	if (isVertical()) return;
-	Q_ASSERT_X(isHorizontal(), "ConducerSegment::moveY", "segment non horizontal");
+	Q_ASSERT_X(isHorizontal(), "ConductorSegment::moveY", "segment non horizontal");
 	
 	bool has_prev_segment = hasPreviousSegment();
 	bool has_next_segment = hasNextSegment();
@@ -339,7 +339,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 	if (has_prev_segment) {
 		point1.ry() += final_movement;
 		if (previous_segment -> isFirstSegment()) {
-			new ConducerSegment(
+			new ConductorSegment(
 				previous_segment -> point2,
 				point1,
 				previous_segment,
@@ -352,7 +352,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 	if (has_next_segment) {
 		point2.ry() += final_movement;
 		if (next_segment -> isLastSegment()) {
-			new ConducerSegment(
+			new ConductorSegment(
 				point2,
 				next_segment -> point1,
 				this,
@@ -366,7 +366,7 @@ void ConducerSegment::moveY(const qreal &dy) {
 	Change le segment precedent
 	@param ps Le nouveau segment precedent
 */
-void ConducerSegment::setPreviousSegment(ConducerSegment *ps) {
+void ConductorSegment::setPreviousSegment(ConductorSegment *ps) {
 	previous_segment = ps;
 	if (hasPreviousSegment()) {
 		if (previousSegment() -> nextSegment() != this) previousSegment() -> setNextSegment(this);
@@ -377,7 +377,7 @@ void ConducerSegment::setPreviousSegment(ConducerSegment *ps) {
 	Change le segment suivant
 	@param ps Le nouveau segment suivant
 */
-void ConducerSegment::setNextSegment(ConducerSegment *ns) {
+void ConductorSegment::setNextSegment(ConductorSegment *ns) {
 	next_segment = ns;
 	if (hasNextSegment()) {
 		if (nextSegment() -> previousSegment() != this) nextSegment() -> setPreviousSegment(this);
@@ -385,59 +385,59 @@ void ConducerSegment::setNextSegment(ConducerSegment *ns) {
 }
 
 /// @return true si ce segment est un segment statique, cad un segment relie a une borne
-bool ConducerSegment::isStatic() const {
+bool ConductorSegment::isStatic() const {
 	return(isFirstSegment() || isLastSegment());
 }
 
 /// @return true si ce segment est le premier du conducteur
-bool ConducerSegment::isFirstSegment() const {
+bool ConductorSegment::isFirstSegment() const {
 	return(!hasPreviousSegment());
 }
 
 /// @return true si ce segment est le dernier du conducteur
-bool ConducerSegment::isLastSegment() const {
+bool ConductorSegment::isLastSegment() const {
 	return(!hasNextSegment());
 }
 
 /**
 	@return Le segment precedent
 */
-ConducerSegment *ConducerSegment::previousSegment()  const {
+ConductorSegment *ConductorSegment::previousSegment()  const {
 	return(previous_segment);
 }
 
 /**
 	@return Le segment suivant
 */
-ConducerSegment *ConducerSegment::nextSegment()  const {
+ConductorSegment *ConductorSegment::nextSegment()  const {
 	return(next_segment);
 }
 
 /**
 	@return true si le segment est vertical, false sinon
 */
-bool ConducerSegment::isVertical() const {
+bool ConductorSegment::isVertical() const {
 	return(point1.x() == point2.x());
 }
 
 /**
 	@return true si le segment est horizontal, false sinon
 */
-bool ConducerSegment::isHorizontal() const {
+bool ConductorSegment::isHorizontal() const {
 	return(point1.y() == point2.y());
 }
 
 /**
 	@return le premier point du segment
 */
-QPointF ConducerSegment::firstPoint() const {
+QPointF ConductorSegment::firstPoint() const {
 	return(point1);
 }
 
 /**
 	@return le second point du segment
 */
-QPointF ConducerSegment::secondPoint() const {
+QPointF ConductorSegment::secondPoint() const {
 	return(point2);
 }
 
@@ -445,7 +445,7 @@ QPointF ConducerSegment::secondPoint() const {
 	Permet de changer la position du premier point du segment
 	@param p La nouvelle position du premier point
 */
-void ConducerSegment::setFirstPoint(const QPointF &p) {
+void ConductorSegment::setFirstPoint(const QPointF &p) {
 	point1 = p;
 }
 
@@ -453,28 +453,28 @@ void ConducerSegment::setFirstPoint(const QPointF &p) {
 	Permet de changer la position du second point du segment
 	@param p La nouvelle position du second point
 */
-void ConducerSegment::setSecondPoint(const QPointF &p) {
+void ConductorSegment::setSecondPoint(const QPointF &p) {
 	point2 = p;
 }
 
 /**
 	@return true si le segment a un segment precedent, false sinon
 */
-bool ConducerSegment::hasPreviousSegment() const {
+bool ConductorSegment::hasPreviousSegment() const {
 	return(previous_segment != NULL);
 }
 
 /**
 	@return true si le segment a un segment suivant, false sinon
 */
-bool ConducerSegment::hasNextSegment() const {
+bool ConductorSegment::hasNextSegment() const {
 	return(next_segment != NULL);
 }
 
 /**
 	@return Le centre du rectangle delimitant le conducteur
 */
-QPointF ConducerSegment::middle() const {
+QPointF ConductorSegment::middle() const {
 	return(
 		QPointF(
 			(point1.x() + point2.x()) / 2.0,
@@ -486,7 +486,7 @@ QPointF ConducerSegment::middle() const {
 /**
 	@return La longueur du conducteur
 */
-qreal ConducerSegment::length() const {
+qreal ConductorSegment::length() const {
 	if (isHorizontal()) {
 		return(secondPoint().x() - firstPoint().x());
 	} else {
@@ -494,6 +494,6 @@ qreal ConducerSegment::length() const {
 	}
 }
 
-QET::ConducerSegmentType ConducerSegment::type() const {
+QET::ConductorSegmentType ConductorSegment::type() const {
 	return(isHorizontal() ? QET::Horizontal : QET::Vertical);
 }

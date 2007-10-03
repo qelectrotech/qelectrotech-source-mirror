@@ -3,7 +3,7 @@
 #include "qet.h"
 #include "diagram.h"
 #include "diagramtextitem.h"
-#include "conducer.h"
+#include "conductor.h"
 #include <QtGui>
 /**
 	Cette classe represente l'action d'ajouter un element au schema
@@ -34,13 +34,13 @@ class AddElementCommand : public QUndoCommand {
 /**
 	Cette classe represente l'action d'ajouter un conducteur au schema
 */
-class AddConducerCommand : public QUndoCommand {
+class AddConductorCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	AddConducerCommand(Diagram *, Conducer *, QUndoCommand * = 0);
-	virtual ~AddConducerCommand();
+	AddConductorCommand(Diagram *, Conductor *, QUndoCommand * = 0);
+	virtual ~AddConductorCommand();
 	private:
-	AddConducerCommand(const AddConducerCommand &);
+	AddConductorCommand(const AddConductorCommand &);
 	
 	// methodes
 	public:
@@ -50,7 +50,7 @@ class AddConducerCommand : public QUndoCommand {
 	// attributs
 	private:
 	/// Conducteur ajoute
-	Conducer *conducer;
+	Conductor *conductor;
 	/// schema auquel on ajoute le conducteur
 	Diagram *diagram;
 };
@@ -62,7 +62,7 @@ class AddConducerCommand : public QUndoCommand {
 class DeleteElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	DeleteElementsCommand(Diagram *, QSet<Element *>, QSet<Conducer *>, QUndoCommand * = 0);
+	DeleteElementsCommand(Diagram *, QSet<Element *>, QSet<Conductor *>, QUndoCommand * = 0);
 	virtual ~DeleteElementsCommand();
 	private:
 	DeleteElementsCommand(const DeleteElementsCommand &);
@@ -77,7 +77,7 @@ class DeleteElementsCommand : public QUndoCommand {
 	/// Liste des elements enleves
 	QSet<Element *> removed_elements;
 	/// List des conducteurs enleves
-	QSet<Conducer *> removed_conducers;
+	QSet<Conductor *> removed_conductors;
 	/// schema dont on supprime des elements et conducteurs
 	Diagram *diagram;
 };
@@ -88,7 +88,7 @@ class DeleteElementsCommand : public QUndoCommand {
 class PasteDiagramCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	PasteDiagramCommand(Diagram *, const QList<Element *> &, const QList<Conducer *> &, QUndoCommand * = 0);
+	PasteDiagramCommand(Diagram *, const QList<Element *> &, const QList<Conductor *> &, QUndoCommand * = 0);
 	virtual ~PasteDiagramCommand();
 	private:
 	PasteDiagramCommand(const PasteDiagramCommand &);
@@ -103,7 +103,7 @@ class PasteDiagramCommand : public QUndoCommand {
 	/// Elements ajoutes
 	QList<Element *> elements;
 	/// conducteurs ajoutes
-	QList<Conducer *> conducers;
+	QList<Conductor *> conductors;
 	/// schema sur lequel on colle les elements et conducteurs
 	Diagram *diagram;
 	/// booleen pour empecher le premier appel a redo
@@ -117,7 +117,7 @@ class PasteDiagramCommand : public QUndoCommand {
 class CutDiagramCommand : public DeleteElementsCommand {
 	// constructeurs, destructeur
 	public:
-	CutDiagramCommand(Diagram *, QSet<Element *>, QSet<Conducer *>, QUndoCommand * = 0);
+	CutDiagramCommand(Diagram *, QSet<Element *>, QSet<Conductor *>, QUndoCommand * = 0);
 	virtual ~CutDiagramCommand();
 	private:
 	CutDiagramCommand(const CutDiagramCommand &);
@@ -130,7 +130,7 @@ class CutDiagramCommand : public DeleteElementsCommand {
 class MoveElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	MoveElementsCommand(Diagram *, const QSet<Element *> &, const QSet<Conducer *> &, const QHash<Conducer *, Terminal *> &, const QPointF &m, QUndoCommand * = 0);
+	MoveElementsCommand(Diagram *, const QSet<Element *> &, const QSet<Conductor *> &, const QHash<Conductor *, Terminal *> &, const QPointF &m, QUndoCommand * = 0);
 	virtual ~MoveElementsCommand();
 	private:
 	MoveElementsCommand(const MoveElementsCommand &);
@@ -148,9 +148,9 @@ class MoveElementsCommand : public QUndoCommand {
 	/// Elements a deplacer
 	QSet<Element *> elements_to_move;
 	/// Conducteurs a deplacer
-	QSet<Conducer *> conducers_to_move;
+	QSet<Conductor *> conductors_to_move;
 	/// Conducteurs a actualiser
-	QHash<Conducer *, Terminal *> conducers_to_update;
+	QHash<Conductor *, Terminal *> conductors_to_update;
 	/// mouvement effectue
 	QPointF movement;
 	/// booleen pour ne pas executer le premier redo()
@@ -210,13 +210,13 @@ class RotateElementsCommand : public QUndoCommand {
 /**
 	Cette classe represente l'action de modifier un conducteur
 */
-class ChangeConducerCommand : public QUndoCommand {
+class ChangeConductorCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ChangeConducerCommand(Conducer *, const ConducerProfile &, const ConducerProfile &, QUndoCommand * = 0);
-	virtual ~ChangeConducerCommand();
+	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, QUndoCommand * = 0);
+	virtual ~ChangeConductorCommand();
 	private:
-	ChangeConducerCommand(const ChangeConducerCommand &);
+	ChangeConductorCommand(const ChangeConductorCommand &);
 	
 	// methodes
 	public:
@@ -226,11 +226,11 @@ class ChangeConducerCommand : public QUndoCommand {
 	// attributs
 	private:
 	/// DiagramTextItem modifie
-	Conducer *conducer;
+	Conductor *conductor;
 	/// texte avant changement
-	ConducerProfile old_profile;
+	ConductorProfile old_profile;
 	/// texte apres changement
-	ConducerProfile new_profile;
+	ConductorProfile new_profile;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
@@ -301,13 +301,13 @@ class ChangeBorderCommand : public QUndoCommand {
 /**
 	Cette classe represente l'action de modifier les proprietes d'un conducteur
 */
-class ChangeConducerPropertiesCommand : public QUndoCommand {
+class ChangeConductorPropertiesCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ChangeConducerPropertiesCommand(Conducer *, QUndoCommand * = 0);
-	virtual ~ChangeConducerPropertiesCommand();
+	ChangeConductorPropertiesCommand(Conductor *, QUndoCommand * = 0);
+	virtual ~ChangeConductorPropertiesCommand();
 	private:
-	ChangeConducerPropertiesCommand(const ChangeConducerPropertiesCommand &);
+	ChangeConductorPropertiesCommand(const ChangeConductorPropertiesCommand &);
 	
 	// methodes
 	public:
@@ -319,14 +319,14 @@ class ChangeConducerPropertiesCommand : public QUndoCommand {
 	// attributs
 	private:
 	/// Conducteur modifie
-	Conducer *conducer;
+	Conductor *conductor;
 	/// anciennes proprietes
 	bool old_is_single_line;
-	QString old_conducer_text;
+	QString old_conductor_text;
 	SingleLineProperties old_slp;
 	/// nouvelles proprietes
 	bool new_is_single_line;
-	QString new_conducer_text;
+	QString new_conductor_text;
 	SingleLineProperties new_slp;
 	bool old_settings_set;
 	bool new_settings_set;

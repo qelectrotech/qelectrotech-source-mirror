@@ -1,13 +1,13 @@
-#include "conducerproperties.h"
-#include "conducer.h"
+#include "conductorproperties.h"
+#include "conductor.h"
 
-ConducerPropertiesWidget::ConducerPropertiesWidget(QWidget *parent) :
+ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent)
 {
 	buildInterface();
 }
 
-void ConducerPropertiesWidget::buildInterface() {
+void ConductorPropertiesWidget::buildInterface() {
 	
 	setFixedSize(380, 245);
 	
@@ -64,7 +64,7 @@ void ConducerPropertiesWidget::buildInterface() {
 	setSingleLine(false);
 }
 
-void ConducerPropertiesWidget::buildConnections() {
+void ConductorPropertiesWidget::buildConnections() {
 	connect(phase_slider,      SIGNAL(valueChanged(int)),  phase_spinbox, SLOT(setValue(int)));
 	connect(phase_spinbox,     SIGNAL(valueChanged(int)),  phase_slider,  SLOT(setValue(int)));
 	connect(ground_checkbox,   SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
@@ -75,7 +75,7 @@ void ConducerPropertiesWidget::buildConnections() {
 	
 }
 
-void ConducerPropertiesWidget::destroyConnections() {
+void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(phase_slider,      SIGNAL(valueChanged(int)),  phase_spinbox, SLOT(setValue(int)));
 	disconnect(phase_spinbox,     SIGNAL(valueChanged(int)),  phase_slider,  SLOT(setValue(int)));
 	disconnect(ground_checkbox,   SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
@@ -85,18 +85,18 @@ void ConducerPropertiesWidget::destroyConnections() {
 	disconnect(singleline,        SIGNAL(toggled(bool)),      this,          SLOT(setSingleLine(bool)));
 }
 
-ConducerPropertiesWidget::~ConducerPropertiesWidget() {
+ConductorPropertiesWidget::~ConductorPropertiesWidget() {
 }
 
 
-void ConducerPropertiesWidget::updateSingleLineConfig() {
+void ConductorPropertiesWidget::updateSingleLineConfig() {
 	slp.hasGround = ground_checkbox -> isChecked();
 	slp.hasNeutral = neutral_checkbox -> isChecked();
 	slp.setPhasesCount(phase_checkbox -> isChecked() ? phase_spinbox -> value() : 0);
 	updatePreview();
 }
 
-void ConducerPropertiesWidget::updateSingleLineDisplay() {
+void ConductorPropertiesWidget::updateSingleLineDisplay() {
 	destroyConnections();
 	ground_checkbox -> setChecked(slp.hasGround);
 	neutral_checkbox -> setChecked(slp.hasNeutral);
@@ -106,7 +106,7 @@ void ConducerPropertiesWidget::updateSingleLineDisplay() {
 	updatePreview();
 }
 
-void ConducerPropertiesWidget::updatePreview() {
+void ConductorPropertiesWidget::updatePreview() {
 	const QRect pixmap_rect(0, 0, 96, 96);
 	QPixmap pixmap(pixmap_rect.width(), pixmap_rect.height());
 	QPainter painter;
@@ -119,11 +119,11 @@ void ConducerPropertiesWidget::updatePreview() {
 	preview -> setPixmap(pixmap);
 }
 
-bool ConducerPropertiesWidget::isSingleLine() const {
+bool ConductorPropertiesWidget::isSingleLine() const {
 	return(singleline -> isChecked());
 }
 
-void ConducerPropertiesWidget::setSingleLine(bool sl) {
+void ConductorPropertiesWidget::setSingleLine(bool sl) {
 	singleline       -> setChecked(sl);
 	multiline        -> setChecked(!sl);
 	text_field       -> setEnabled(!sl);
@@ -137,22 +137,22 @@ void ConducerPropertiesWidget::setSingleLine(bool sl) {
 }
 
 /// @param prop Les nouvelles proprietes unifilaires de ce conducteur
-void ConducerPropertiesWidget::setSingleLineProperties(const SingleLineProperties &prop) {
+void ConductorPropertiesWidget::setSingleLineProperties(const SingleLineProperties &prop) {
 	slp = prop;
 	updateSingleLineDisplay();
 }
 
 /// @return les proprietes unifilaires de ce conducteur
-SingleLineProperties ConducerPropertiesWidget::singleLineProperties() const {
+SingleLineProperties ConductorPropertiesWidget::singleLineProperties() const {
 	return(slp);
 }
 
 /// @param text Le texte de ce conducteur
-void ConducerPropertiesWidget::setConducerText(const QString &text) {
+void ConductorPropertiesWidget::setConductorText(const QString &text) {
 	text_field -> setText(text);
 }
 
 /// @return Le texte de ce conducteur
-QString ConducerPropertiesWidget::conducerText() const {
+QString ConductorPropertiesWidget::conductorText() const {
 	return(text_field -> text());
 }

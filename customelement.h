@@ -34,7 +34,7 @@ class CustomElement : public FixedElement {
 	// methodes
 	public:
 	virtual QList<Terminal *> terminals() const;
-	virtual QList<Conducer *> conducers() const;
+	virtual QList<Conductor *> conductors() const;
 	virtual int nbTerminals() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;

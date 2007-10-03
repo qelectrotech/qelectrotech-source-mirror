@@ -10,7 +10,7 @@
 #include "qgimanager.h"
 class Element;
 class Terminal;
-class Conducer;
+class Conductor;
 class Diagram : public QGraphicsScene {
 	Q_OBJECT
 	
@@ -29,13 +29,13 @@ class Diagram : public QGraphicsScene {
 	QPointF current_movement;
 	
 	private:
-	QGraphicsLineItem *conducer_setter;
+	QGraphicsLineItem *conductor_setter;
 	bool draw_grid;
 	bool use_border;
 	bool moved_elements_fetched;
 	QSet<Element *> elements_to_move;
-	QSet<Conducer *> conducers_to_move;
-	QHash<Conducer *, Terminal *> conducers_to_update;
+	QSet<Conductor *> conductors_to_move;
+	QHash<Conductor *, Terminal *> conductors_to_update;
 	QGIManager qgi_manager;
 	QUndoStack undo_stack;
 	bool draw_terminals;
@@ -47,13 +47,13 @@ class Diagram : public QGraphicsScene {
 	void keyReleaseEvent(QKeyEvent *);
 	
 	// fonctions relatives a la pose de conducteurs
-	void setConducer(bool);
-	void setConducerStart (QPointF);
-	void setConducerStop(QPointF);
+	void setConductor(bool);
+	void setConductorStart (QPointF);
+	void setConductorStop(QPointF);
 	
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
-	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, QList<Element *> * = NULL, QList<Conducer *> * = NULL);
+	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, QList<Element *> * = NULL, QList<Conductor *> * = NULL);
 	
 	// fonctions relatives aux options graphiques
 	void setDisplayGrid(bool);
@@ -73,9 +73,9 @@ class Diagram : public QGraphicsScene {
 	void invalidateMovedElements();
 	void fetchMovedElements();
 	const QSet<Element *> &elementsToMove();
-	const QSet<Conducer *> &conducersToMove();
-	const QHash<Conducer *, Terminal *> &conducersToUpdate();
-	QSet<Conducer *> selectedConducers() const;
+	const QSet<Conductor *> &conductorsToMove();
+	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
+	QSet<Conductor *> selectedConductors() const;
 	
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
@@ -93,11 +93,11 @@ class Diagram : public QGraphicsScene {
 	bornes.
 	@param true pour ajouter le poseur de conducteur, false pour l'enlever
 */
-inline void Diagram::setConducer(bool pf) {
+inline void Diagram::setConductor(bool pf) {
 	if (pf) {
-		if (!conducer_setter -> scene()) addItem(conducer_setter);
+		if (!conductor_setter -> scene()) addItem(conductor_setter);
 	} else {
-		if (conducer_setter -> scene()) removeItem(conducer_setter);
+		if (conductor_setter -> scene()) removeItem(conductor_setter);
 	}
 }
 
@@ -105,16 +105,16 @@ inline void Diagram::setConducer(bool pf) {
 	Specifie les coordonnees du point de depart du poseur de conducteur
 	@param d Le nouveau point de depart du poseur de conducteur
 */
-inline void Diagram::setConducerStart(QPointF d) {
-	conducer_setter -> setLine(QLineF(d, conducer_setter -> line().p2()));
+inline void Diagram::setConductorStart(QPointF d) {
+	conductor_setter -> setLine(QLineF(d, conductor_setter -> line().p2()));
 }
 
 /**
 	Specifie les coordonnees du point d'arrivee du poseur de conducteur
 	@param d Le nouveau point d'arrivee du poseur de conducteur
 */
-inline void Diagram::setConducerStop(QPointF a) {
-	conducer_setter -> setLine(QLineF(conducer_setter -> line().p1(), a));
+inline void Diagram::setConductorStop(QPointF a) {
+	conductor_setter -> setLine(QLineF(conductor_setter -> line().p1(), a));
 }
 
 /**
@@ -181,15 +181,15 @@ inline const QSet<Element *> &Diagram::elementsToMove() {
 }
 
 /// @return la liste des conducteurs a deplacer
-inline const QSet<Conducer *> &Diagram::conducersToMove() {
+inline const QSet<Conductor *> &Diagram::conductorsToMove() {
 	if (!moved_elements_fetched) fetchMovedElements();
-	return(conducers_to_move);
+	return(conductors_to_move);
 }
 
 /// @return la liste des conducteurs a modifier (typiquement les conducteurs dont seul un element est deplace)
-inline const QHash<Conducer *, Terminal *> &Diagram::conducersToUpdate() {
+inline const QHash<Conductor *, Terminal *> &Diagram::conductorsToUpdate() {
 	if (!moved_elements_fetched) fetchMovedElements();
-	return(conducers_to_update);
+	return(conductors_to_update);
 }
 
 /// @return la pile d'annulations de ce schema

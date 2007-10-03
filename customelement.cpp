@@ -145,10 +145,10 @@ QList<Terminal *> CustomElement::terminals() const {
 	return(list_terminals);
 }
 
-QList<Conducer *> CustomElement::conducers() const {
-	QList<Conducer *> conducers;
-	foreach(Terminal *t, list_terminals) conducers << t -> conducers();
-	return(conducers);
+QList<Conductor *> CustomElement::conductors() const {
+	QList<Conductor *> conductors;
+	foreach(Terminal *t, list_terminals) conductors << t -> conductors();
+	return(conductors);
 }
 
 /**

@@ -4,7 +4,7 @@
 #include <QtGui>
 #include <QtXml>
 #include "qet.h"
-class Conducer;
+class Conductor;
 class Diagram;
 class Element;
 /**
@@ -33,16 +33,16 @@ class Terminal : public QGraphicsItem {
 	QRectF boundingRect() const;
 	
 	// methodes de manipulation des conducteurs lies a cette borne
-	bool addConducer(Conducer *);
-	void removeConducer(Conducer *);
-	int nbConducers() const;
+	bool addConductor(Conductor *);
+	void removeConductor(Conductor *);
+	int nbConductors() const;
 	Diagram *diagram() const;
 	
 	// methodes de lecture
-	QList<Conducer *> conducers() const;
+	QList<Conductor *> conductors() const;
 	QET::Orientation orientation() const;
-	QPointF amarrageConducer() const;
-	void updateConducer(QPointF = QPointF());
+	QPointF amarrageConductor() const;
+	void updateConductor(QPointF = QPointF());
 	
 	// methodes relatives a l'import/export au format XML
 	static bool valideXml(QDomElement  &);
@@ -70,12 +70,12 @@ class Terminal : public QGraphicsItem {
 	
 	private:
 	// coordonnees des points d'amarrage
-	QPointF amarrage_conducer;
+	QPointF amarrage_conductor;
 	QPointF amarrage_elmt;
 	// orientation de la borne
 	QET::Orientation sens;
-	// liste des conducers lies a cette borne
-	QList<Conducer *> liste_conducers;
+	// liste des conductors lies a cette borne
+	QList<Conductor *> liste_conductors;
 	// pointeur vers un rectangle correspondant au bounding rect ; permet de ne calculer le bounding rect qu'une seule fois ; le pointeur c'est parce que le compilo exige une methode const
 	QRectF *br;
 	Terminal *terminal_precedente;
@@ -89,15 +89,15 @@ class Terminal : public QGraphicsItem {
 /**
 	@return Le nombre de conducteurs associes a la borne
 */
-inline int Terminal::nbConducers() const {
-	return(liste_conducers.size());
+inline int Terminal::nbConductors() const {
+	return(liste_conductors.size());
 }
 
 /**
 	@return La position du point d'amarrage de la borne
 */
-inline QPointF Terminal::amarrageConducer() const {
-	return(mapToScene(amarrage_conducer));
+inline QPointF Terminal::amarrageConductor() const {
+	return(mapToScene(amarrage_conductor));
 }
 
 #endif

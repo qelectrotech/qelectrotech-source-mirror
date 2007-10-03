@@ -8,7 +8,7 @@
 */
 namespace QET {
 	enum Orientation {North, East, South, West};
-	enum ConducerSegmentType { Horizontal = 1, Vertical = 2, Both = 3 };
+	enum ConductorSegmentType { Horizontal = 1, Vertical = 2, Both = 3 };
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);
 	QET::Orientation orientationFromString(const QString &);
@@ -18,6 +18,6 @@ namespace QET {
 	bool estVerticale(QET::Orientation);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
 	bool attributeIsAReal(const QDomElement &, QString , double * = NULL);
-	QString ElementsAndConducersSentence(int, int);
+	QString ElementsAndConductorsSentence(int, int);
 }
 #endif
