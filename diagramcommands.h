@@ -297,4 +297,38 @@ class ChangeBorderCommand : public QUndoCommand {
 	/// Delta pour la hauteur des entetes des colonnes
 	qreal headersHeightDifference;
 };
+
+/**
+	Cette classe represente l'action de modifier les proprietes d'un conducteur
+*/
+class ChangeConducerPropertiesCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeConducerPropertiesCommand(Conducer *, QUndoCommand * = 0);
+	virtual ~ChangeConducerPropertiesCommand();
+	private:
+	ChangeConducerPropertiesCommand(const ChangeConducerPropertiesCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void setOldSettings(bool, const QString &, const SingleLineProperties &);
+	virtual void setNewSettings(bool, const QString &, const SingleLineProperties &);
+	
+	// attributs
+	private:
+	/// Conducteur modifie
+	Conducer *conducer;
+	/// anciennes proprietes
+	bool old_is_single_line;
+	QString old_conducer_text;
+	SingleLineProperties old_slp;
+	/// nouvelles proprietes
+	bool new_is_single_line;
+	QString new_conducer_text;
+	SingleLineProperties new_slp;
+	bool old_settings_set;
+	bool new_settings_set;
+};
 #endif

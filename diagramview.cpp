@@ -618,8 +618,13 @@ void DiagramView::editConducer() {
 	cpw -> setConducerText(edited_conducer -> text());
 	cpw -> setSingleLineProperties(edited_conducer -> singleLineProperties);
 	
+	// initialise egalement l'objet UndoCommand correspondant
+	ChangeConducerPropertiesCommand *ccpc = new ChangeConducerPropertiesCommand(edited_conducer);
+	ccpc -> setOldSettings(edited_conducer -> isSingleLine(), edited_conducer -> text(), edited_conducer -> singleLineProperties);
+	
 	// l'insere dans un dialogue
 	QDialog conducer_dialog;
+	conducer_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conducer_dialog);
 	dialog_layout -> addWidget(cpw);
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -629,9 +634,9 @@ void DiagramView::editConducer() {
 	
 	// execute le dialogue et met a jour le conducteur
 	if (conducer_dialog.exec() == QDialog::Accepted) {
-		edited_conducer -> setSingleLine(cpw -> isSingleLine());
-		edited_conducer -> setText(cpw -> conducerText());
-		edited_conducer -> singleLineProperties = cpw -> singleLineProperties();
-		edited_conducer -> update();
+		ccpc -> setNewSettings(cpw -> isSingleLine(), cpw -> conducerText(), cpw -> singleLineProperties());
+		diagram() -> undoStack().push(ccpc);
+	} else {
+		delete ccpc;
 	}
 }

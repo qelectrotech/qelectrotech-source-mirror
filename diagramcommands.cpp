@@ -472,3 +472,46 @@ void ChangeBorderCommand::undo() {
 void ChangeBorderCommand::redo() {
 	applyChanges(1);
 }
+
+ChangeConducerPropertiesCommand::ChangeConducerPropertiesCommand(Conducer *c, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur"), parent),
+	conducer(c),
+	old_settings_set(false),
+	new_settings_set(false)
+{
+}
+
+ChangeConducerPropertiesCommand::~ChangeConducerPropertiesCommand() {
+}
+
+void ChangeConducerPropertiesCommand::setOldSettings(bool single, const QString &text, const SingleLineProperties &slp) {
+	old_is_single_line = single;
+	old_conducer_text = text;
+	old_slp = slp;
+	old_settings_set = true;
+}
+
+void ChangeConducerPropertiesCommand::setNewSettings(bool single, const QString &text, const SingleLineProperties &slp) {
+	new_is_single_line = single;
+	new_conducer_text = text;
+	new_slp = slp;
+	new_settings_set = true;
+}
+
+void ChangeConducerPropertiesCommand::undo() {
+	if (old_settings_set && new_settings_set) {
+		conducer -> setSingleLine(old_is_single_line);
+		conducer -> setText(old_conducer_text);
+		conducer -> singleLineProperties = old_slp;
+		conducer -> update();
+	}
+}
+
+void ChangeConducerPropertiesCommand::redo() {
+	if (old_settings_set && new_settings_set) {
+		conducer -> setSingleLine(new_is_single_line);
+		conducer -> setText(new_conducer_text);
+		conducer -> singleLineProperties = new_slp;
+		conducer -> update();
+	}
+}

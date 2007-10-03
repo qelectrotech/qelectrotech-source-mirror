@@ -1024,6 +1024,7 @@ QString Conducer::text() const {
 */
 void Conducer::setText(const QString &t) {
 	text_item -> setPlainText(t);
+	text_item -> previous_text = t;
 }
 
 
