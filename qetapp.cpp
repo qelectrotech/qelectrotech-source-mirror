@@ -34,7 +34,7 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
 		restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
 		
-		connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(closeEveryEditor()));
+		connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
 		connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
 		connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
 		connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
@@ -53,6 +53,9 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
 		qsti -> setContextMenu(menu_systray);
 		qsti -> show();
+		
+		setQuitOnLastWindowClosed(false);
+		connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	}
 	
 	// Creation et affichage d'un editeur de schema
@@ -238,12 +241,19 @@ QString QETApp::languagesPath() {
 
 /**
 	Ferme tous les editeurs
+	@return true si l'utilisateur a accepte toutes les fermetures, false sinon
 */
-void QETApp::closeEveryEditor() {
+bool QETApp::closeEveryEditor() {
 	// s'assure que toutes les fenetres soient visibles avant de quitter
 	restoreEveryEditor();
-	foreach(QETDiagramEditor *e, diagramEditors()) e -> close();
-	foreach(QETElementEditor *e, elementEditors()) e -> close();
+	bool every_window_closed = true;
+	foreach(QETDiagramEditor *e, diagramEditors()) {
+		every_window_closed = every_window_closed && e -> close();
+	}
+	foreach(QETElementEditor *e, elementEditors()) {
+		every_window_closed = every_window_closed && e -> close();
+	}
+	return(every_window_closed);
 }
 
 /**
@@ -308,6 +318,36 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 */
 void QETApp::invertMainWindowVisibility(QWidget *window) {
 	if (QMainWindow *w = qobject_cast<QMainWindow *>(window)) setMainWindowVisible(w, !w -> isVisible());
+}
+
+/**
+	Demande la fermeture de toutes les fenetres ; si l'utilisateur les accepte,
+	l'application quitte
+*/
+void QETApp::quitQET() {
+	if (closeEveryEditor()) {
+		quit();
+	}
+}
+
+/**
+	Verifie s'il reste des fenetres (cachees ou non) et quitte s'il n'en reste
+	plus.
+*/
+void QETApp::checkRemainingWindows() {
+	/* petite bidouille : le slot se rappelle apres 500 ms d'attente
+	afin de compenser le fait que certaines fenetres peuvent encore
+	paraitre vivantes alors qu'elles viennent d'etre fermees
+	*/
+	static bool sleep = true;
+	if (sleep) {
+		QTimer::singleShot(500, this, SLOT(checkRemainingWindows()));
+	} else {
+		if (!diagramEditors().count() && !elementEditors().count()) {
+			quit();
+		}
+	}
+	sleep = !sleep;
 }
 
 /**

@@ -64,9 +64,11 @@ class QETApp : public QApplication {
 	void restoreElementEditors();
 	void newDiagramEditor();
 	void newElementEditor();
-	void closeEveryEditor();
+	bool closeEveryEditor();
 	void setMainWindowVisible(QMainWindow *, bool);
 	void invertMainWindowVisibility(QWidget *);
+	void quitQET();
+	void checkRemainingWindows();
 	
 	// methodes privees
 	private slots:
