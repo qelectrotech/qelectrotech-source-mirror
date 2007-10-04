@@ -161,7 +161,7 @@ void QETDiagramEditor::actions() {
 	select_invert     = new QAction(                               tr("Inverser la s\351lection"),             this);
 	delete_selection  = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
 	rotate_selection  = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
-	conductor_prop     = new QAction(QIcon(":/ico/conductor.png"),  tr("Propri\351t\351s du conducteur"),       this);
+	conductor_prop    = new QAction(QIcon(":/ico/conductor.png"),  tr("Propri\351t\351s du conducteur"),       this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
@@ -209,6 +209,7 @@ void QETDiagramEditor::actions() {
 	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
 	delete_selection  -> setShortcut(QKeySequence(tr("Suppr")));
 	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
+	conductor_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);

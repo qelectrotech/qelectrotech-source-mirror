@@ -7,6 +7,7 @@
 	classes de l'application
 */
 namespace QET {
+	const QString version = "0.1";
 	enum Orientation {North, East, South, West};
 	enum ConductorSegmentType { Horizontal = 1, Vertical = 2, Both = 3 };
 	QET::Orientation nextOrientation(QET::Orientation);

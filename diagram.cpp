@@ -219,6 +219,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 		racine.setAttribute("cols",    border_and_inset.nbColumn());
 		racine.setAttribute("colsize", border_and_inset.columnsWidth());
 		racine.setAttribute("height",  border_and_inset.columnsHeight());
+		racine.setAttribute("version", QET::version);
 	}
 	document.appendChild(racine);
 	

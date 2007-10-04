@@ -290,6 +290,7 @@ const QDomDocument ElementScene::toXml() const {
 	root.setAttribute("hotspot_x",   QString("%1").arg(_hotspot.x()));
 	root.setAttribute("hotspot_y",   QString("%1").arg(_hotspot.y()));
 	root.setAttribute("orientation", ori.toString());
+	root.setAttribute("version", QET::version);
 	
 	// noms de l'element
 	root.appendChild(_names.toXml(xml_document));

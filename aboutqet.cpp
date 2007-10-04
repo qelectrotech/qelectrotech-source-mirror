@@ -1,4 +1,5 @@
 #include "aboutqet.h"
+#include "qet.h"
 
 /**
 	Constructeur
@@ -45,7 +46,7 @@ QWidget *AboutQET::titre() const {
 	QLabel *icone = new QLabel();
 	icone -> setPixmap(QIcon(":/ico/qelectrotech.png").pixmap(48, 48));
 	// label "QElectroTech"
-	QLabel *titre = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech</span>");
+	QLabel *titre = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::version + "</span>");
 	titre -> setTextFormat(Qt::RichText);
 	// le tout dans une grille
 	QGridLayout *dispo_horiz = new QGridLayout();
