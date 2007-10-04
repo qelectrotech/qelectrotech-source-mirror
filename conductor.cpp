@@ -417,11 +417,13 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, Q
 	// dessin du conducteur
 	qp -> drawPath(path());
 	if (isSingleLine()) {
+		if (isSelected()) qp -> setBrush(Qt::red);
 		singleLineProperties.draw(
 			qp,
 			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
-			QRectF(middleSegment() -> middle() - QPointF(7.5, 7.5), QSizeF(15.0, 15.0))
+			QRectF(middleSegment() -> middle() - QPointF(10.0, 7.5), QSizeF(20.0, 15.0))
 		);
+		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
 	
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
@@ -1089,7 +1091,7 @@ void SingleLineProperties::draw(QPainter *painter, QET::ConductorSegmentType dir
 			if (hasGround && i == 1) {
 				drawGround(painter, direction, symbol_p2, symbol_width * 2.0);
 			} else if (hasNeutral && ((i == 1 && !hasGround) || (i == 2 && hasGround))) {
-				drawNeutral(painter, direction, symbol_p2, symbol_width * 1.5);
+				drawNeutral(painter, direction, symbol_p2, symbol_width * 1.35);
 			}
 		}
 	} else {
@@ -1155,7 +1157,8 @@ void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentT
 	painter -> save();
 	
 	// prepare le QPainter
-	painter -> setBrush(Qt::black);
+	if (painter -> brush() == Qt::NoBrush) painter -> setBrush(Qt::black);
+	painter -> setPen(Qt::NoPen);
 	
 	// desine le cercle representant le neutre
 	painter -> drawEllipse(

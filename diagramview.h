@@ -39,6 +39,9 @@ class DiagramView : public QGraphicsView {
 	Diagram *diagram() { return(scene); }
 	bool hasSelectedItems();
 	
+	protected:
+	virtual void wheelEvent(QWheelEvent *);
+	
 	private:
 	bool saveDiagramToFile(QString &);
 	void mousePressEvent(QMouseEvent *);

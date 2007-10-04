@@ -408,6 +408,23 @@ bool DiagramView::saveAs() {
 }
 
 /**
+	Gere les actions liees a la rollette de la souris
+	@param e QWheelEvent decrivant l'evenement rollette
+*/
+void DiagramView::wheelEvent(QWheelEvent *e) {
+	// si la touche Ctrl est enfoncee, on zoome / dezoome
+	if (e -> modifiers() & Qt::ControlModifier) {
+		if (e -> delta() > 0) {
+			zoomIn();
+		} else {
+			zoomOut();
+		}
+	} else {
+		QAbstractScrollArea::wheelEvent(e);
+	}
+}
+
+/**
 	Methode privee gerant l'enregistrement du fichier XML. S'il n'est pas possible
 	d'ecrire dans le fichier, cette fonction affiche un message d'erreur et renvoie false.
 	Autrement, elle renvoie true.

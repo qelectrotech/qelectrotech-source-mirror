@@ -188,7 +188,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
 	p -> setBrush(couleur_hovered);
 	if (hovered) {
 		p -> setRenderHint(QPainter::Antialiasing, true);
-		p -> drawEllipse(((int)f.x())-2, ((int)f.y())-2, 5, 5);
+		p -> drawEllipse(QRectF(f.x() - 2.5, f.y() - 2.5, 5.0, 5.0));
 	} else p -> drawPoint(f);
 	
 	p -> restore();

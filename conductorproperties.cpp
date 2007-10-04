@@ -101,6 +101,7 @@ void ConductorPropertiesWidget::updateSingleLineDisplay() {
 	ground_checkbox -> setChecked(slp.hasGround);
 	neutral_checkbox -> setChecked(slp.hasNeutral);
 	phase_spinbox -> setValue(slp.phasesCount());
+	phase_slider -> setValue(slp.phasesCount());
 	phase_checkbox -> setChecked(slp.phasesCount());
 	buildConnections();
 	updatePreview();
