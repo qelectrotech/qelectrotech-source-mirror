@@ -3,7 +3,6 @@
 ######################################################################
 
 TEMPLATE = app
-TARGET = 
 DEPENDPATH += . editor lang
 INCLUDEPATH += . editor
 
@@ -64,10 +63,10 @@ HEADERS += aboutqet.h \
            editor/terminaleditor.h \
            editor/texteditor.h \
            editor/textfieldeditor.h \
- diagramcommands.h \
- diagramtextitem.h \
- insetproperties.h \
- conductorproperties.h
+           diagramcommands.h \
+           diagramtextitem.h \
+           insetproperties.h \
+           conductorproperties.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conductor.cpp \
@@ -125,10 +124,18 @@ SOURCES += aboutqet.cpp \
            editor/texteditor.cpp \
            editor/textfieldeditor.cpp \
            diagramcommands.cpp \
- diagramtextitem.cpp \
- conductorproperties.cpp
+           diagramtextitem.cpp \
+           conductorproperties.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc
 QT += xml
 CONFIG += debug_and_release
+CONFIG(debug, debug|release) {
+	TARGET = qelectrotech
+} else {
+	TARGET = qelectrotech.release
+}
+;DEFINES += QET_LANG_PATH='\\"/path/to/qelectrotech/lang/\\"'
+;DEFINES += QET_COMMON_COLLECTION_PATH='\\"/path/to/qelectrotech/elements/\\"'
+DEFINES += QET_ALLOW_OVERRIDE_CED_OPTION

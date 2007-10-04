@@ -27,8 +27,13 @@ class QETApp : public QApplication {
 	static QString customElementsDir();
 	static QString configDir();
 	static QString languagesPath();
-	static QString realPath(QString &);
-	static QString symbolicPath(QString &);
+	static QString realPath(const QString &);
+	static QString symbolicPath(const QString &);
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	static void overrideCommonElementsDir(const QString &);
+	private:
+	static QString common_elements_dir;
+#endif
 	
 	// attributs
 	private:

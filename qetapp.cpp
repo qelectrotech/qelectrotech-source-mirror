@@ -2,6 +2,8 @@
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
 
+QString QETApp::common_elements_dir = QString();
+
 /**
 	Constructeur
 	@param argc Nombre d'arguments passes a l'application
@@ -56,6 +58,17 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		
 		setQuitOnLastWindowClosed(false);
 		connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
+	}
+	
+	// parse les arguments
+	foreach(QString argument, arguments()) {
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+		QString ced_arg("--common-elements-dir=");
+		if (argument.startsWith(ced_arg)) {
+			QString ced_value = argument.right(argument.length() - ced_arg.length());
+			overrideCommonElementsDir(ced_value);
+		}
+#endif
 	}
 	
 	// Creation et affichage d'un editeur de schema
@@ -165,7 +178,14 @@ void QETApp::newElementEditor() {
 	@return Le chemin du dossier des elements communs
 */
 QString QETApp::commonElementsDir() {
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	if (common_elements_dir != QString()) return(common_elements_dir);
+#endif
+#ifdef QET_COMMON_COLLECTION_PATH
+	return(QET_COMMON_COLLECTION_PATH);
+#else
 	return(QDir::current().path() + "/elements/");
+#endif
 }
 
 /**
@@ -201,7 +221,7 @@ QString QETApp::configDir() {
 	@return Une chaine de caracteres vide en cas d'erreur ou le chemin absolu du
 	fichier *.elmt.
 */
-QString QETApp::realPath(QString &sym_path) {
+QString QETApp::realPath(const QString &sym_path) {
 	QString directory;
 	if (sym_path.startsWith("common://")) {
 		directory = commonElementsDir();
@@ -218,7 +238,7 @@ QString QETApp::realPath(QString &sym_path) {
 	@return Une chaine de caracteres vide en cas d'erreur ou le chemin
 	symbolique designant l'element.
 */
-QString QETApp::symbolicPath(QString &real_path) {
+QString QETApp::symbolicPath(const QString &real_path) {
 	// recupere les dossier common et custom
 	QString commond = commonElementsDir();
 	QString customd = customElementsDir();
@@ -232,11 +252,28 @@ QString QETApp::symbolicPath(QString &real_path) {
 	return(chemin);
 }
 
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+/**
+	Redefinit le chemin du dossier des elements communs.
+*/
+void QETApp::overrideCommonElementsDir(const QString &new_ced) {
+	QFileInfo new_ced_info(new_ced);
+	if (new_ced_info.isDir()) {
+		common_elements_dir = new_ced_info.absoluteFilePath();
+		if (!common_elements_dir.endsWith("/")) common_elements_dir += "/";
+	}
+}
+#endif
+
 /**
 	@return Le chemin du dossier contenant les fichiers de langue
 */
 QString QETApp::languagesPath() {
+#ifndef QET_LANG_PATH
 	return(QDir::current().path() + "/lang/");
+#else
+	return(QET_LANG_PATH);
+#endif
 }
 
 /**
