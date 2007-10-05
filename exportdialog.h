@@ -2,6 +2,7 @@
 #define EXPORTDIALOG_H
 #include <QtGui>
 #include "diagram.h"
+class QSvgGenerator;
 /**
 	Cette classe represente le dialogue permettant d'exporter un schema
 	sous forme d'image selon les desirs de l'utilisateur
@@ -47,6 +48,7 @@ class ExportDialog : public QDialog {
 	QSize diagram_size;
 	QString diagram_path;
 	qreal diagram_ratio;
+	QVector<QRgb> ColorTab;
 	
 	// methodes
 	private:
@@ -54,6 +56,8 @@ class ExportDialog : public QDialog {
 	QWidget *rightPart();
 	QGroupBox *setupDimensionsGroupBox();
 	QGroupBox *setupOptionsGroupBox();
+	void saveReloadDiagramParameters(bool = true);
+	void generateSvg(QFile &file);
 	QImage generateImage();
 	
 	public slots:

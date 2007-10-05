@@ -67,7 +67,7 @@ class Diagram : public QGraphicsScene {
 	void setDrawTerminals(bool);
 	
 	QRectF border() const;
-	QImage toImage(int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
+	bool toPaintDevice(QPaintDevice &, int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
 	QSize imageSize() const;
 	
 	void invalidateMovedElements();

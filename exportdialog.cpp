@@ -1,4 +1,6 @@
 #include "exportdialog.h"
+#include <QSvgGenerator>
+#include <QtXml>
 
 /**
 	Constructeur
@@ -13,6 +15,9 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	diagram_size = diagram -> imageSize();
 	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
 	dontchangewidth = dontchangeheight = false;
+	
+	// vecteur contenant 256 nuances de gris, pour exporter les images sans couleur
+	for (int i = 0 ; i < 256 ; ++ i) ColorTab << qRgb(i, i, i);
 	
 	// la taille du dialogue est fixee
 	setFixedSize(800, 360);
@@ -174,6 +179,7 @@ QWidget *ExportDialog::leftPart() {
 	format -> addItem(tr("PNG (*.png)"),    "PNG");
 	format -> addItem(tr("JPEG (*.jpg)"),   "JPG");
 	format -> addItem(tr("Bitmap (*.bmp)"), "BMP");
+	format -> addItem(tr("SVG (*.svg)"),    "SVG");
 	
 	vboxLayout -> addLayout(hboxLayout1);
 	
@@ -248,7 +254,7 @@ void ExportDialog::slot_chooseAFile() {
 		this,
 		tr("Exporter vers le fichier"),
 		QDir::homePath(),
-		tr("Images (*.png *.bmp *.jpg)")
+		tr("Images (*.png *.bmp *.jpg *.svg)")
 	);
 	if (user_file != "") {
 		diagram_path = user_file;
@@ -261,22 +267,11 @@ void ExportDialog::slot_chooseAFile() {
 	@return l'image a exporter
 */
 QImage ExportDialog::generateImage() {
-	// memorise les parametres relatifs au schema
-	bool state_drawBorder  = diagram -> border_and_inset.borderIsDisplayed();
-	bool state_drawColumns = diagram -> border_and_inset.columnsAreDisplayed();
-	bool state_drawInset   = diagram -> border_and_inset.insetIsDisplayed();
-	bool state_drawGrid    = diagram -> displayGrid();
-	bool state_drawTerm    = diagram -> drawTerminals();
-	bool state_useBorder   = diagram -> useBorder();
+	saveReloadDiagramParameters(true);
 	
-	// genere l'image
-	diagram -> setUseBorder(export_border -> isChecked());
-	diagram -> setDrawTerminals(draw_terminals -> isChecked());
-	diagram -> setDisplayGrid(draw_grid -> isChecked());
-	diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
-	diagram -> border_and_inset.displayColumns(draw_columns -> isChecked());
-	diagram -> border_and_inset.displayInset(draw_inset -> isChecked());
-	QImage image = diagram -> toImage(
+	QImage image(width -> value(), height -> value(), QImage::Format_RGB32);
+	diagram -> toPaintDevice(
+		image,
 		width -> value(),
 		height -> value(),
 		keep_aspect_ratio -> isChecked() ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
@@ -284,20 +279,77 @@ QImage ExportDialog::generateImage() {
 	
 	// convertit l'image en niveaux de gris si besoin
 	if (!keep_colors -> isChecked()) {
-		QVector<QRgb> ColorTab;
-		for (int i = 0 ; i < 256 ; ++ i) ColorTab << qRgb(i, i, i);
 		image = image.convertToFormat(QImage::Format_Indexed8, ColorTab, Qt::ThresholdDither);
 	}
 	
-	// restaure les parametres relatifs au schema
-	diagram -> border_and_inset.displayBorder(state_drawBorder);
-	diagram -> border_and_inset.displayColumns(state_drawColumns);
-	diagram -> border_and_inset.displayInset(state_drawInset);
-	diagram -> setDisplayGrid(state_drawGrid);
-	diagram -> setDrawTerminals(state_drawTerm);
-	diagram -> setUseBorder(state_useBorder);
+	saveReloadDiagramParameters(false);
 	
 	return(image);
+}
+
+/**
+	Sauve ou restaure les parametres du schema
+	@param save true pour memoriser les parametres du schema et appliquer ceux
+	definis par le formulaire, false pour restaurer les parametres
+*/
+void ExportDialog::saveReloadDiagramParameters(bool save) {
+	static bool state_drawBorder;
+	static bool state_drawColumns;
+	static bool state_drawInset;
+	static bool state_drawGrid;
+	static bool state_drawTerm;
+	static bool state_useBorder;
+	
+	if (save) {
+		// memorise les parametres relatifs au schema
+		state_drawBorder  = diagram -> border_and_inset.borderIsDisplayed();
+		state_drawColumns = diagram -> border_and_inset.columnsAreDisplayed();
+		state_drawInset   = diagram -> border_and_inset.insetIsDisplayed();
+		state_drawGrid    = diagram -> displayGrid();
+		state_drawTerm    = diagram -> drawTerminals();
+		state_useBorder   = diagram -> useBorder();
+		
+		diagram -> setUseBorder(export_border -> isChecked());
+		diagram -> setDrawTerminals(draw_terminals -> isChecked());
+		diagram -> setDisplayGrid(draw_grid -> isChecked());
+		diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
+		diagram -> border_and_inset.displayColumns(draw_columns -> isChecked());
+		diagram -> border_and_inset.displayInset(draw_inset -> isChecked());
+	} else {
+		// restaure les parametres relatifs au schema
+		diagram -> border_and_inset.displayBorder(state_drawBorder);
+		diagram -> border_and_inset.displayColumns(state_drawColumns);
+		diagram -> border_and_inset.displayInset(state_drawInset);
+		diagram -> setDisplayGrid(state_drawGrid);
+		diagram -> setDrawTerminals(state_drawTerm);
+		diagram -> setUseBorder(state_useBorder);
+	}
+}
+
+/**
+	Exporte le schema en SVG
+	@param file Fichier dans lequel sera enregistre le code SVG
+*/
+void ExportDialog::generateSvg(QFile &file) {
+	saveReloadDiagramParameters(true);
+	
+	// genere une QPicture a partir du schema
+	QPicture picture;
+	diagram -> toPaintDevice(
+		picture,
+		width -> value(),
+		height -> value(),
+		keep_aspect_ratio -> isChecked() ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
+	);
+	
+	// "joue" la QPicture sur un QSvgGenerator
+	QSvgGenerator svg_engine;
+	svg_engine.setSize(QSize(width -> value(), height -> value()));
+	svg_engine.setOutputDevice(&file);
+	QPainter svg_painter(&svg_engine);
+	picture.play(&svg_painter);
+	/// @todo gerer l'enlevement des couleurs
+	saveReloadDiagramParameters(false);
 }
 
 /**
@@ -341,16 +393,18 @@ void ExportDialog::slot_check() {
 	// ouvre le fichier
 	QFile fichier(diagram_path);
 	
-	QImage image = generateImage();
-	
 	// enregistre l'image dans le fichier
-	image.save(&fichier, format_acronym.toUtf8().data());
+	if (format_acronym == "SVG") {
+		generateSvg(fichier);
+	} else {
+		QImage image = generateImage();
+		image.save(&fichier, format_acronym.toUtf8().data());
+	}
 	fichier.close();
 	
 	// fermeture du dialogue
 	accept();
 }
-
 
 /**
 	Slot appele lorsque l'utilisateur change la zone du schema qui doit etre

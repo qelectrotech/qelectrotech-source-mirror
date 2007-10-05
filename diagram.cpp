@@ -127,7 +127,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 	Exporte le schema vers une image
 	@return Une QImage representant le schema
 */
-QImage Diagram::toImage(int width, int height, Qt::AspectRatioMode aspectRatioMode) {
+bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::AspectRatioMode aspectRatioMode) {
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
 	if (!use_border) {
@@ -147,12 +147,9 @@ QImage Diagram::toImage(int width, int height, Qt::AspectRatioMode aspectRatioMo
 	// si les dimensions ne sont pas precisees, l'image est exportee a l'echelle 1:1
 	QSize image_size = (width == -1 && height == -1) ? source_area.size().toSize() : QSize(width, height);
 	
-	// initialise une image avec ces dimensions
-	QImage pix = QImage(image_size, QImage::Format_RGB32);
-	
 	// prepare le rendu
 	QPainter p;
-	if (!p.begin(&pix)) return(QImage());
+	if (!p.begin(&pix)) return(false);
 	
 	// rendu antialiase
 	p.setRenderHint(QPainter::Antialiasing, true);
@@ -164,13 +161,13 @@ QImage Diagram::toImage(int width, int height, Qt::AspectRatioMode aspectRatioMo
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
 	
 	// effectue le rendu lui-meme
-	render(&p, pix.rect(), source_area, aspectRatioMode);
+	render(&p, QRect(QPoint(0, 0), image_size), source_area, aspectRatioMode);
 	p.end();
 	
 	// restaure les elements selectionnes
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
 	
-	return(pix);
+	return(true);
 }
 
 /**
