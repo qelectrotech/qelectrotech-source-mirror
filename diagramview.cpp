@@ -457,20 +457,26 @@ void DiagramView::dialogExport() {
 	Imprime le schema.
 */
 void DiagramView::dialogPrint() {
+	// initialise l'acces a l'imprimante
 	QPrinter qprin;
 	qprin.setOutputFormat(QPrinter::PdfFormat);
 	qprin.setOrientation(QPrinter::Landscape);
 	qprin.setPageSize(QPrinter::A4);
-#ifdef Q_WS_X11
-// 	qprin.setPrintProgram("lpr");
-#endif
 	QPrintDialog qpd(&qprin, this);
 	
 	if (qpd.exec() == QDialog::Accepted) {
 		QPainter qp(&qprin);
+		// impression physique (!= fichier PDF)
+		if (qprin.outputFileName() == QString()) {
+			// lorsqu'on imprime en paysage sur imprimante reelle, il faut pivoter soi-meme le rendu
+			if (qprin.orientation() == QPrinter::Landscape) {
+				qp.rotate(90.0);
+				qp.translate(0.0, -qprin.pageRect().height());
+			}
+		}
 		scene -> setDisplayGrid(false);
 		scene -> setDrawTerminals(false);
-		scene -> render(&qp);
+		scene -> render(&qp, QRectF(), scene -> border(), Qt::KeepAspectRatio);
 		scene -> setDrawTerminals(true);
 		scene -> setDisplayGrid(true);
 	}
