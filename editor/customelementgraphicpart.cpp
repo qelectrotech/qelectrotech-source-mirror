@@ -133,16 +133,25 @@ QWidget *CustomElementGraphicPart::elementInformations() {
 }
 
 void CustomElementGraphicPart::setProperty(const QString &property, const QVariant &value) {
+	bool change_made = false;
 	if (property == "line-style") {
 		setLineStyle(static_cast<LineStyle>(value.toInt()));
+		change_made = true;
 	} else if (property == "line-weight") {
 		setLineWeight(static_cast<LineWeight>(value.toInt()));
+		change_made = true;
 	} else if (property == "filling") {
 		setFilling(static_cast<Filling>(value.toInt()));
+		change_made = true;
 	} else if (property == "color") {
 		setColor(static_cast<Color>(value.toInt()));
+		change_made = true;
 	} else if (property == "antialias") {
 		setAntialiased(value.toBool());
+		change_made = true;
+	}
+	if (change_made) {
+		style_editor -> updateForm();
 	}
 }
 

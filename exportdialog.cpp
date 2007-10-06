@@ -16,9 +16,6 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
 	dontchangewidth = dontchangeheight = false;
 	
-	// vecteur contenant 256 nuances de gris, pour exporter les images sans couleur
-	for (int i = 0 ; i < 256 ; ++ i) ColorTab << qRgb(i, i, i);
-	
 	// la taille du dialogue est fixee
 	setFixedSize(800, 360);
 	setWindowTitle(tr("Exporter"));
@@ -54,7 +51,6 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	connect(draw_inset,        SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_columns,      SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_terminals,    SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(keep_colors,       SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(width,             SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(height,            SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(export_border,     SIGNAL(toggled     (bool)), this, SLOT(slot_changeUseBorder()));
@@ -126,7 +122,6 @@ QGroupBox *ExportDialog::setupOptionsGroupBox() {
 	// dessiner la grille
 	draw_grid = new QCheckBox(tr("Dessiner la grille"), groupbox_options);
 	optionshlayout -> addWidget(draw_grid, 1, 0);
-	draw_grid -> setChecked(diagram -> displayGrid());
 	
 	// dessiner le cadre
 	draw_border = new QCheckBox(tr("Dessiner le cadre"), groupbox_options);
@@ -143,13 +138,9 @@ QGroupBox *ExportDialog::setupOptionsGroupBox() {
 	optionshlayout -> addWidget(draw_columns, 2, 1);
 	draw_columns -> setChecked(diagram -> border_and_inset.columnsAreDisplayed());
 	
-	// Conserver les couleurs
-	keep_colors = new QCheckBox(tr("Conserver les couleurs"), groupbox_options);
-	optionshlayout -> addWidget(keep_colors, 3, 0);
-	
 	// dessiner les bornes
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
-	optionshlayout -> addWidget(draw_terminals, 3, 1);
+	optionshlayout -> addWidget(draw_terminals, 3, 0);
 	
 	return(groupbox_options);
 }
@@ -277,11 +268,6 @@ QImage ExportDialog::generateImage() {
 		keep_aspect_ratio -> isChecked() ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
 	);
 	
-	// convertit l'image en niveaux de gris si besoin
-	if (!keep_colors -> isChecked()) {
-		image = image.convertToFormat(QImage::Format_Indexed8, ColorTab, Qt::ThresholdDither);
-	}
-	
 	saveReloadDiagramParameters(false);
 	
 	return(image);
@@ -348,7 +334,7 @@ void ExportDialog::generateSvg(QFile &file) {
 	svg_engine.setOutputDevice(&file);
 	QPainter svg_painter(&svg_engine);
 	picture.play(&svg_painter);
-	/// @todo gerer l'enlevement des couleurs
+	
 	saveReloadDiagramParameters(false);
 }
 

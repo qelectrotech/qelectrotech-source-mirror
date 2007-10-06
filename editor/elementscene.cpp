@@ -128,14 +128,17 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			case Ellipse:
 				current_ellipse = new PartEllipse(element_editor, 0, this);
 				current_ellipse -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
+				current_ellipse -> setProperty("antialias", true);
 				break;
 			case Arc:
 				current_arc = new PartArc(element_editor, 0, this);
 				current_arc -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
+				current_arc -> setProperty("antialias", true);
 				break;
 			case Circle:
 				current_circle = new PartCircle(element_editor, 0, this);
 				current_circle -> setRect(QRectF(e -> scenePos(), QSizeF(0.0, 0.0)));
+				current_circle -> setProperty("antialias", true);
 				break;
 			case Polygon:
 				if (current_polygon == NULL) {
