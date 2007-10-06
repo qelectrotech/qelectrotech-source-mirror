@@ -1,6 +1,7 @@
 #include "customelement.h"
 #include "elementtextitem.h"
 #include "diagram.h"
+#include <iostream>
 /**
 	Constructeur de la classe ElementPerso. Permet d'instancier un element
 	utilisable comme un element fixe a la difference que l'element perso lit
@@ -56,6 +57,19 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 		if (etat != NULL) *etat = 4;
 		elmt_etat = 4;
 		return;
+	}
+	
+	// verifie basiquement que la version actuelle est capable de lire ce fichier
+	if (racine.hasAttribute("version")) {
+		bool conv_ok;
+		qreal element_version = racine.attribute("version").toDouble(&conv_ok);
+		if (conv_ok && QET::version.toDouble() < element_version) {
+			std::cerr << qPrintable(
+				QObject::tr("Avertissement : l'\351l\351ment ") + nom_fichier
+				+ QObject::tr(" a \351t\351 enregistr\351 avec une version"
+				" ult\351rieure de QElectroTech.")
+			);
+		}
 	}
 	
 	// ces attributs doivent etre presents et valides
