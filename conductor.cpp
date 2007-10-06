@@ -1001,6 +1001,11 @@ void Conductor::setProfile(const ConductorProfile &cp) {
 	calculateTextItemPosition();
 }
 
+/// @return le profil de ce conducteur
+ConductorProfile Conductor::profile() const {
+	return(conductor_profile);
+}
+
 bool Conductor::isSingleLine() const {
 	return(is_single_line);
 }

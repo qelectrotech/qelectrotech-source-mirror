@@ -225,14 +225,36 @@ class ChangeConductorCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// DiagramTextItem modifie
+	/// Conducteur modifie
 	Conductor *conductor;
-	/// texte avant changement
+	/// profil avant changement
 	ConductorProfile old_profile;
-	/// texte apres changement
+	/// profil apres changement
 	ConductorProfile new_profile;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de reinitialiser des conducteurs
+*/
+class ResetConductorCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ResetConductorCommand(const QHash<Conductor *, ConductorProfile> &, QUndoCommand * = 0);
+	virtual ~ResetConductorCommand();
+	private:
+	ResetConductorCommand(const ResetConductorCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Conducteurs reinitialises et leurs anciens profils
+	QHash<Conductor *, ConductorProfile> conductors_profiles;
 };
 
 /**

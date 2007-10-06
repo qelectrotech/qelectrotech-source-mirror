@@ -390,6 +390,40 @@ void ChangeConductorCommand::redo() {
 
 /**
 	Constructeur
+	@param c Conducteurs reinitialises
+	@param p Anciens profils des conducteurs
+	@param parent QUndoCommand parent
+*/
+ResetConductorCommand::ResetConductorCommand(
+	const QHash<Conductor *, ConductorProfile> &cp,
+	QUndoCommand *parent
+) :
+	QUndoCommand(QObject::tr("R\351initialiser ") + QET::ElementsAndConductorsSentence(0, cp.count()), parent),
+	conductors_profiles(cp)
+{
+}
+
+/// Destructeur
+ResetConductorCommand::~ResetConductorCommand() {
+}
+
+/// Annule la reinitialisation des conducteurs
+void ResetConductorCommand::undo() {
+	foreach(Conductor *c, conductors_profiles.keys()) {
+		c -> setProfile(conductors_profiles[c]);
+	}
+}
+
+/// Refait la reinitialisation des conducteurs
+void ResetConductorCommand::redo() {
+	foreach(Conductor *c, conductors_profiles.keys()) {
+		ConductorProfile t(conductors_profiles[c]);
+		c -> setProfile(ConductorProfile());
+	}
+}
+
+/**
+	Constructeur
 	@param d Schema dont on modifie le cartouche
 	@param old_ip Anciennes proprietes du cartouches
 	@param new_ip Nouvelles proprietes du cartouches

@@ -162,6 +162,7 @@ void QETDiagramEditor::actions() {
 	delete_selection  = new QAction(QIcon(":/ico/delete.png"),     tr("Supprimer"),                            this);
 	rotate_selection  = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
 	conductor_prop    = new QAction(QIcon(":/ico/conductor.png"),  tr("Propri\351t\351s du conducteur"),       this);
+	conductor_reset   = new QAction(QIcon(":/ico/conductor2.png"), tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
@@ -210,6 +211,7 @@ void QETDiagramEditor::actions() {
 	delete_selection  -> setShortcut(QKeySequence(tr("Suppr")));
 	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	conductor_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
+	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
@@ -313,7 +315,8 @@ void QETDiagramEditor::actions() {
 	connect(arrange_window,   SIGNAL(triggered()), &workspace, SLOT(arrangeIcons())             );
 	connect(next_window,      SIGNAL(triggered()), &workspace, SLOT(activateNextWindow())       );
 	connect(prev_window,      SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
-	connect(conductor_prop,    SIGNAL(triggered()), this,       SLOT(slot_editConductor())        );
+	connect(conductor_prop,   SIGNAL(triggered()), this,       SLOT(slot_editConductor())       );
+	connect(conductor_reset,  SIGNAL(triggered()), this,       SLOT(slot_resetConductors())     );
 	connect(infos_diagram,    SIGNAL(triggered()), this,       SLOT(slot_editInfos())           );
 	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
@@ -372,6 +375,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(rotate_selection);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(conductor_prop);
+	menu_edition -> addAction(conductor_reset);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addAction(add_column);
@@ -653,6 +657,9 @@ void QETDiagramEditor::slot_updateActions() {
 	DiagramView *sv = currentDiagram();
 	bool opened_document = (sv != 0);
 	
+	// nombre de conducteurs selectionnes
+	int selected_conductors_count = opened_document ? sv -> diagram() -> selectedConductors().count() : 0;
+	
 	// actions ayant juste besoin d'un document ouvert
 	close_file       -> setEnabled(opened_document);
 	save_file        -> setEnabled(opened_document);
@@ -667,7 +674,8 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_out         -> setEnabled(opened_document);
 	zoom_fit         -> setEnabled(opened_document);
 	zoom_reset       -> setEnabled(opened_document);
-	conductor_prop    -> setEnabled(opened_document && sv -> diagram() -> selectedConductors().count() == 1);
+	conductor_prop   -> setEnabled(opened_document && selected_conductors_count == 1);
+	conductor_reset  -> setEnabled(opened_document && selected_conductors_count);
 	infos_diagram    -> setEnabled(opened_document);
 	add_column       -> setEnabled(opened_document);
 	remove_column    -> setEnabled(opened_document);
@@ -734,7 +742,7 @@ void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 	
 	// ajoute la fenetre
 	QWidget *p = workspace.addWindow(dv);
-	connect(dv, SIGNAL(selectionChanged()), this, SLOT(slot_updateActions()));
+	connect(dv -> diagram(), SIGNAL(selectionChanged()), this, SLOT(slot_updateActions()));
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateActions()));
 	
 	// affiche la fenetre
@@ -776,6 +784,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	if (!windows.isEmpty()) windows_menu -> addSeparator();
 	for (int i = 0 ; i < windows.size() ; ++ i) {
 		DiagramView *dv = qobject_cast<DiagramView *>(windows.at(i));
+		if (!dv) continue;
 		QString dv_title = dv -> windowTitle().left(dv -> windowTitle().length() - 3);
 		QAction *action  = windows_menu -> addAction(dv_title);
 		action -> setStatusTip(tr("Active la fen\352tre ") + dv_title);
@@ -831,8 +840,20 @@ void QETDiagramEditor::slot_shrink() {
 	sv -> shrink();
 }
 
+/**
+	Edite les proprietes du conducteur selectionne
+*/
 void QETDiagramEditor::slot_editConductor() {
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> editConductor();
+	}
+}
+
+/**
+	Reinitialise les conducteurs selectionnes
+*/
+void QETDiagramEditor::slot_resetConductors() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> resetConductors();
 	}
 }

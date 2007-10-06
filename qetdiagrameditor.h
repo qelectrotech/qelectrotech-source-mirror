@@ -66,6 +66,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_expand();
 	void slot_shrink();
 	void slot_editConductor();
+	void slot_resetConductors();
 	
 	// attributs
 	protected:
@@ -92,6 +93,7 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *delete_selection;
 	QAction *rotate_selection;
 	QAction *conductor_prop;
+	QAction *conductor_reset;
 	QAction *infos_diagram;
 	QAction *add_column;
 	QAction *remove_column;

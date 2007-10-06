@@ -669,3 +669,21 @@ void DiagramView::editConductor() {
 		delete ccpc;
 	}
 }
+
+/**
+	Reinitialise le profil des conducteurs selectionnes
+*/
+void DiagramView::resetConductors() {
+	// recupere les conducteurs selectionnes
+	QSet<Conductor *> selected_conductors = scene -> selectedConductors();
+	
+	// repere les conducteurs modifies (= profil non nul)
+	QHash<Conductor *, ConductorProfile> conductors_and_profiles;
+	foreach(Conductor *conductor, selected_conductors) {
+		ConductorProfile profile = conductor -> profile();
+		if (!profile.isNull()) conductors_and_profiles.insert(conductor, profile);
+	}
+	
+	if (conductors_and_profiles.isEmpty()) return;
+	scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
+}

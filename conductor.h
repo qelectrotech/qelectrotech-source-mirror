@@ -70,6 +70,7 @@ class Conductor : public QGraphicsPathItem {
 	QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	const QList<ConductorSegment *> segmentsList() const;
 	void setProfile(const ConductorProfile &);
+	ConductorProfile profile() const;
 	void setSingleLine(bool);
 	bool isSingleLine() const;
 	
