@@ -18,6 +18,8 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	
 	// methodes
 	public:
+	enum { Type = UserType + 1104 };
+	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);

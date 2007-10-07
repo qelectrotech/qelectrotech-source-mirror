@@ -6,6 +6,7 @@
 	<file>ico/allowed.png</file>
 	<file>ico/add_col.png</file>
 	<file>ico/arc.png</file>
+	<file>ico/bring_forward.png</file>
 	<file>ico/button_cancel.png</file>
 	<file>ico/button_ok.png</file>
 	<file>ico/category_delete.png</file>
@@ -31,6 +32,7 @@
 	<file>ico/import.png</file>
 	<file>ico/info.png</file>
 	<file>ico/line.png</file>
+	<file>ico/lower.png</file>
 	<file>ico/masquer.png</file>
 	<file>ico/move.png</file>
 	<file>ico/neutral.png</file>
@@ -44,6 +46,7 @@
 	<file>ico/polygon.png</file>
 	<file>ico/print.png</file>
 	<file>ico/qt.png</file>
+	<file>ico/raise.png</file>
 	<file>ico/redo.png</file>
 	<file>ico/reload.png</file>
 	<file>ico/remove_col.png</file>
@@ -51,6 +54,7 @@
 	<file>ico/saveas.png</file>
 	<file>ico/save.png</file>
 	<file>ico/select.png</file>
+	<file>ico/send_backward.png</file>
 	<file>ico/sortir_fs.png</file>
 	<file>ico/south.png</file>
 	<file>ico/terminal.png</file>

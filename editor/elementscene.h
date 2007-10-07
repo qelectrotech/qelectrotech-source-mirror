@@ -67,6 +67,7 @@ class ElementScene : public QGraphicsScene {
 	void setOrientations(const OrientationSet &);
 	virtual const QDomDocument toXml() const;
 	virtual void fromXml(const QDomDocument &);
+	virtual QList<QGraphicsItem *> zItems(bool = false) const;
 	QRectF sceneContent() const;
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
@@ -96,6 +97,10 @@ class ElementScene : public QGraphicsScene {
 	void slot_editSizeHotSpot();
 	void slot_editNames();
 	void slot_editOrientations();
+	void slot_bringForward();
+	void slot_raise();
+	void slot_lower();
+	void slot_sendBackward();
 	
 	signals:
 	void selectionChanged();

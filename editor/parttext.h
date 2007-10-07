@@ -17,6 +17,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	
 	// methodes
 	public:
+	enum { Type = UserType + 1107 };
+	virtual int type() const { return Type; }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
 	QWidget *elementInformations();

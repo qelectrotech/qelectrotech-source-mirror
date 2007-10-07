@@ -34,6 +34,7 @@ class QETElementEditor : public QMainWindow {
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *undo, *redo;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
+	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
 	/// barre d'outils
 	QToolBar *parts_toolbar;
 	/// actions de la barre d'outils

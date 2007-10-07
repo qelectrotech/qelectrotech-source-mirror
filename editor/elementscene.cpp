@@ -300,7 +300,7 @@ const QDomDocument ElementScene::toXml() const {
 	
 	QDomElement description = xml_document.createElement("description");
 	// description de l'element
-	foreach(QGraphicsItem *qgi, items()) {
+	foreach(QGraphicsItem *qgi, zItems(true)) {
 		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi)) {
 			description.appendChild(ce -> toXml(xml_document));
 		}
@@ -535,3 +535,58 @@ void ElementScene::slot_editNames() {
 	}
 }
 
+/**
+	Amene les elements selectionnes au premier plan
+*/
+void ElementScene::slot_bringForward() {
+	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::BringForward));
+}
+
+/**
+	Remonte les elements selectionnes d'un plan
+*/
+void ElementScene::slot_raise() {
+	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::Raise));
+}
+
+/**
+	Descend les elements selectionnes d'un plan
+*/
+void ElementScene::slot_lower() {
+	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::Lower));
+}
+
+/**
+	Envoie les elements selectionnes au fond
+*/
+void ElementScene::slot_sendBackward() {
+	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::SendBackward));
+}
+
+/**
+	@param include_terminals true pour inclure les bornes, false sinon
+	@return les parties de l'element ordonnes par zValue croissante
+*/
+QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
+	// recupere les elements
+	QList<QGraphicsItem *> all_items_list(items());
+	
+	// enleve les bornes
+	QList<QGraphicsItem *> terminals;
+	foreach(QGraphicsItem *qgi, all_items_list) {
+		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+			all_items_list.removeAt(all_items_list.indexOf(qgi));
+			terminals << qgi;
+		}
+	}
+	
+	// ordonne les parties par leur zValue
+	QMultiMap<qreal, QGraphicsItem *> mm;
+	foreach(QGraphicsItem *qgi, all_items_list) mm.insert(qgi -> zValue(), qgi);
+	all_items_list.clear();
+	foreach(qreal z, mm.keys()) all_items_list += mm.values(z);
+	
+	// rajoute eventuellement les bornes
+	if (include_terminals) all_items_list += terminals;
+	return(all_items_list);
+}

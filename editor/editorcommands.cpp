@@ -335,3 +335,126 @@ void ChangeOrientationsCommand::redo() {
 	element -> setOrientations(ori_after);
 }
 
+/**
+	Constructeur
+	@param element ElementScene concernee
+	@param o Option decrivant le type de traitement applique aux zValues des parties de l'element
+	@param parent QUndoCommand parent
+*/
+ChangeZValueCommand::ChangeZValueCommand(
+	ElementScene *elmt,
+	ChangeZValueCommand::Option o,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	element(elmt),
+	option(o)
+{
+	// recupere les parties de l'elements, sauf les bornes
+	QList<QGraphicsItem *> items_list = element -> zItems();
+	
+	// prend un snapshot des zValues
+	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
+	
+	// choisit le nom en fonction du traitement
+	if (option == BringForward) {
+		setText(QObject::tr("amener au premier plan"));
+		applyBringForward(items_list);
+	} else if (option == Raise) {
+		setText(QObject::tr("rapprocher"));
+		applyRaise(items_list);
+	} else if (option == Lower) {
+		setText(QObject::tr("\351loigner"));
+		applyLower(items_list);
+	} else if (option == SendBackward) {
+		setText(QObject::tr("envoyer au fond"));
+		applySendBackward(items_list);
+	}
+}
+
+/// Destructeur
+ChangeZValueCommand::~ChangeZValueCommand() {
+}
+
+/// Annule les changements de zValue
+void ChangeZValueCommand::undo() {
+	foreach(QGraphicsItem *qgi, undo_hash.keys()) qgi -> setZValue(undo_hash[qgi]);
+}
+
+/// Refait les changements de zValue
+void ChangeZValueCommand::redo() {
+	foreach(QGraphicsItem *qgi, redo_hash.keys()) qgi -> setZValue(redo_hash[qgi]);
+}
+
+/**
+	Amene les elements selectionnes au premier plan
+	@param items_list Liste des elements (selectionnes et non selectionnes)
+*/
+void ChangeZValueCommand::applyBringForward(const QList<QGraphicsItem *> &items_list) {
+	QList<QGraphicsItem *> non_selected_items = items_list;
+	QList<QGraphicsItem *> selected_items;
+	foreach(QGraphicsItem *qgi, non_selected_items) {
+		if (qgi -> isSelected()) {
+			selected_items << qgi;
+			non_selected_items.removeAt(non_selected_items.indexOf(qgi));
+		}
+	}
+	int z = 1;
+	foreach(QGraphicsItem *qgi, non_selected_items) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi,     selected_items) redo_hash.insert(qgi, z ++);
+}
+
+/**
+	Remonte les elements selectionnes d'un plan
+	@param items_list Liste des elements (selectionnes et non selectionnes)
+*/
+void ChangeZValueCommand::applyRaise(const QList<QGraphicsItem *> &items_list) {
+	QList<QGraphicsItem *> my_items_list = items_list;
+	
+	for (int i = my_items_list.count() - 2 ; i >= 0 ; -- i) {
+		if (my_items_list[i] -> isSelected()) {
+			if (!my_items_list[i +1] -> isSelected()) {
+				my_items_list.swap(i, i + 1);
+			}
+		}
+	}
+	int z = 1;
+	foreach(QGraphicsItem *qgi, my_items_list) redo_hash.insert(qgi, z ++);
+}
+
+/**
+	Descend les elements selectionnes d'un plan
+	@param items_list Liste des elements (selectionnes et non selectionnes)
+*/
+void ChangeZValueCommand::applyLower(const QList<QGraphicsItem *> &items_list) {
+	QList<QGraphicsItem *> my_items_list = items_list;
+	
+	for (int i = 1 ; i < my_items_list.count() ; ++ i) {
+		if (my_items_list[i] -> isSelected()) {
+			if (!my_items_list[i - 1] -> isSelected()) {
+				my_items_list.swap(i, i - 1);
+			}
+		}
+	}
+	
+	int z = 1;
+	foreach(QGraphicsItem *qgi, my_items_list) redo_hash.insert(qgi, z ++);
+}
+
+/**
+	Envoie les elements selectionnes au fond
+	@param items_list Liste des elements (selectionnes et non selectionnes)
+*/
+void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_list) {
+	QList<QGraphicsItem *> non_selected_items = items_list;
+	QList<QGraphicsItem *> selected_items;
+	foreach(QGraphicsItem *qgi, non_selected_items) {
+		if (qgi -> isSelected()) {
+			selected_items << qgi;
+			non_selected_items.removeAt(non_selected_items.indexOf(qgi));
+		}
+	}
+	int z = 1;
+	foreach(QGraphicsItem *qgi,     selected_items) redo_hash.insert(qgi, z ++);
+	foreach(QGraphicsItem *qgi, non_selected_items) redo_hash.insert(qgi, z ++);
+}

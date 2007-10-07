@@ -31,6 +31,8 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	*/
 	// methodes
 	public:
+	enum { Type = UserType + 1105 };
+	virtual int type() const { return Type; }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);

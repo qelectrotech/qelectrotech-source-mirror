@@ -225,4 +225,39 @@ class ChangeOrientationsCommand : public QUndoCommand {
 	/// Element edite auquel il faut appliquer les modifications
 	ElementScene *element;
 };
+
+/**
+	Cette classe represente l'action de changer les noms d'un element
+*/
+class ChangeZValueCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	enum Option { BringForward, Raise, Lower, SendBackward };
+	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = 0);
+	virtual ~ChangeZValueCommand();
+	private:
+	ChangeZValueCommand(const ChangeZValueCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	private:
+	void applyBringForward(const QList<QGraphicsItem *> &);
+	void applyRaise(const QList<QGraphicsItem *> &);
+	void applyLower(const QList<QGraphicsItem *> &);
+	void applySendBackward(const QList<QGraphicsItem *> &);
+	
+	// attributs
+	private:
+	/// zValues avant changement
+	QHash<QGraphicsItem *, qreal> undo_hash;
+	/// zValues apres changement
+	QHash<QGraphicsItem *, qreal> redo_hash;
+	/// Element edite auquel il faut appliquer les modifications
+	ElementScene *element;
+	/// type de traitement
+	Option option;
+};
 #endif

@@ -36,6 +36,10 @@ void QETElementEditor::setupActions() {
 	edit_size_hs  = new QAction(                                 tr("\311diter la taille et le point de saisie"), this);
 	edit_names    = new QAction(                                 tr("\311diter les noms"),          this);
 	edit_ori      = new QAction(QIcon(":/ico/orientations.png"), tr("\311diter les orientations"),  this);
+	edit_raise    = new QAction(QIcon(":/ico/raise.png"),        tr("Rapprocher"),                  this);
+	edit_lower    = new QAction(QIcon(":/ico/lower.png"),        tr("\311loigner"),                 this);
+	edit_backward = new QAction(QIcon(":/ico/send_backward.png"),tr("Envoyer au fond"),             this);
+	edit_forward  = new QAction(QIcon(":/ico/bring_forward.png"),tr("Amener au premier plan"),      this);
 	move          = new QAction(QIcon(":/ico/select.png"),       tr("D\351placer un objet"),        this);
 	add_line      = new QAction(QIcon(":/ico/line.png"),         tr("Ajouter une ligne"),           this);
 	add_ellipse   = new QAction(QIcon(":/ico/ellipse.png"),      tr("Ajouter une ellipse"),         this);
@@ -65,6 +69,11 @@ void QETElementEditor::setupActions() {
 	edit_size_hs      -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
 	
+	edit_raise        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
+	edit_lower        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
+	edit_backward     -> setShortcut(QKeySequence(tr("Ctrl+Shift+End")));
+	edit_forward      -> setShortcut(QKeySequence(tr("Ctrl+Shift+Home")));
+	
 	connect(new_element,   SIGNAL(triggered()), this,     SLOT(slot_new()));
 	connect(open,          SIGNAL(triggered()), this,     SLOT(slot_open()));
 	connect(save,          SIGNAL(triggered()), this,     SLOT(slot_save()));
@@ -77,6 +86,10 @@ void QETElementEditor::setupActions() {
 	connect(edit_size_hs,  SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
 	connect(edit_names,    SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
 	connect(edit_ori,      SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
+	connect(edit_forward,  SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
+	connect(edit_raise,    SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
+	connect(edit_lower,    SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
+	connect(edit_backward, SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
 	connect(move,          SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
 	connect(add_line,      SIGNAL(triggered()), ce_scene, SLOT(slot_addLine()));
 	connect(add_ellipse,   SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
@@ -127,9 +140,11 @@ void QETElementEditor::setupActions() {
 	move -> setChecked(true);
 	parts_toolbar -> setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea);
 	
+	/*
 	QAction *xml_preview = new QAction(QIcon(":/ico/info.png"), tr("XML"), this);
 	connect(xml_preview, SIGNAL(triggered()), this, SLOT(xmlPreview()));
 	parts_toolbar -> addAction(xml_preview);
+	*/
 	
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
 	
@@ -171,6 +186,11 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_names);
 	edit_menu -> addAction(edit_size_hs);
 	edit_menu -> addAction(edit_ori);
+	edit_menu -> addSeparator();
+	edit_menu -> addAction(edit_forward);
+	edit_menu -> addAction(edit_raise);
+	edit_menu -> addAction(edit_lower);
+	edit_menu -> addAction(edit_backward);
 	
 	// menu Affichage > Afficher
 	QMenu *display_toolbars = createPopupMenu();
@@ -189,7 +209,12 @@ void QETElementEditor::setupMenus() {
 }
 
 void QETElementEditor::slot_updateMenus() {
-	edit_delete -> setEnabled(!ce_scene -> selectedItems().isEmpty());
+	bool selected_items = !ce_scene -> selectedItems().isEmpty();
+	edit_delete   -> setEnabled(selected_items);
+	edit_forward  -> setEnabled(selected_items);
+	edit_raise    -> setEnabled(selected_items);
+	edit_lower    -> setEnabled(selected_items);
+	edit_backward -> setEnabled(selected_items);
 	save -> setEnabled(!ce_scene -> undoStack().isClean());
 }
 
