@@ -1,5 +1,5 @@
-#ifndef PART_TEXT
-#define PART_TEXT
+#ifndef PART_TEXT_H
+#define PART_TEXT_H
 #include <QtGui>
 #include "customelementpart.h"
 class TextEditor;

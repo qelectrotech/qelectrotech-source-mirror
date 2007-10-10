@@ -47,7 +47,9 @@ DiagramView::~DiagramView() {
 */
 void DiagramView::selectAll() {
 	if (scene -> items().isEmpty()) return;
-	foreach (QGraphicsItem *item, scene -> items()) item -> setSelected(true);
+	QPainterPath path;
+	path.addRect(scene -> itemsBoundingRect());
+	scene -> setSelectionArea(path);
 }
 
 /**
@@ -55,7 +57,7 @@ void DiagramView::selectAll() {
 */
 void DiagramView::selectNothing() {
 	if (scene -> items().isEmpty()) return;
-	foreach (QGraphicsItem *item, scene -> items()) item -> setSelected(false);
+	scene -> clearSelection();
 }
 
 /**
@@ -595,7 +597,7 @@ void DiagramView::adjustSceneRect() {
 	QRectF elements_bounding_rect = scene -> itemsBoundingRect();
 	
 	// rectangle contenant le cadre = colonnes + cartouche
-	QRectF border_bounding_rect = scene -> border().adjusted(-MARGIN, -MARGIN, MARGIN, MARGIN);
+	QRectF border_bounding_rect = scene -> border().adjusted(-Diagram::margin, -Diagram::margin, Diagram::margin, Diagram::margin);
 	
 	// ajuste la sceneRect
 	QRectF new_scene_rect = elements_bounding_rect.united(border_bounding_rect);

@@ -6,6 +6,10 @@
 #include "exportdialog.h"
 #include "diagramcommands.h"
 
+const int   Diagram::xGrid  = 10;
+const int   Diagram::yGrid  = 10;
+const qreal Diagram::margin = 5.0;
+
 /**
 	Constructeur
 	@param parent Le QObject parent du schema
@@ -58,18 +62,18 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		qreal limite_y = r.y() + r.height();
 		
 		int g_x = (int)ceil(r.x());
-		while (g_x % GRILLE_X) ++ g_x;
+		while (g_x % xGrid) ++ g_x;
 		int g_y = (int)ceil(r.y());
-		while (g_y % GRILLE_Y) ++ g_y;
+		while (g_y % yGrid) ++ g_y;
 		
-		for (int gx = g_x ; gx < limite_x ; gx += GRILLE_X) {
-			for (int gy = g_y ; gy < limite_y ; gy += GRILLE_Y) {
+		for (int gx = g_x ; gx < limite_x ; gx += xGrid) {
+			for (int gy = g_y ; gy < limite_y ; gy += yGrid) {
 				p -> drawPoint(gx, gy);
 			}
 		}
 	}
 	
-	if (use_border) border_and_inset.draw(p, MARGIN, MARGIN);
+	if (use_border) border_and_inset.draw(p, margin, margin);
 	p -> restore();
 }
 
@@ -80,10 +84,10 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 void Diagram::keyPressEvent(QKeyEvent *e) {
 	QPointF movement;
 	switch(e -> key()) {
-		case Qt::Key_Left:  movement = QPointF(-GRILLE_X, 0.0); break;
-		case Qt::Key_Right: movement = QPointF(+GRILLE_X, 0.0); break;
-		case Qt::Key_Up:    movement = QPointF(0.0, -GRILLE_Y); break;
-		case Qt::Key_Down:  movement = QPointF(0.0, +GRILLE_Y); break;
+		case Qt::Key_Left:  movement = QPointF(-xGrid, 0.0); break;
+		case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
+		case Qt::Key_Up:    movement = QPointF(0.0, -yGrid); break;
+		case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
 	}
 	if (!movement.isNull()) {
 		QSet<Element *> moved_elements = elementsToMove();
@@ -136,15 +140,15 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 	QRectF source_area;
 	if (!use_border) {
 		source_area = itemsBoundingRect();
-		source_area.translate(-MARGIN, -MARGIN);
-		source_area.setWidth (source_area.width () + 2.0 * MARGIN);
-		source_area.setHeight(source_area.height() + 2.0 * MARGIN);
+		source_area.translate(-margin, -margin);
+		source_area.setWidth (source_area.width () + 2.0 * margin);
+		source_area.setHeight(source_area.height() + 2.0 * margin);
 	} else {
 		source_area = QRectF(
 			0.0,
 			0.0,
-			border_and_inset.borderWidth () + 2.0 * MARGIN,
-			border_and_inset.borderHeight() + 2.0 * MARGIN
+			border_and_inset.borderWidth () + 2.0 * margin,
+			border_and_inset.borderHeight() + 2.0 * margin
 		);
 	}
 	
@@ -190,8 +194,8 @@ QSize Diagram::imageSize() const {
 		image_height = border_and_inset.borderHeight();
 	}
 	
-	image_width  += 2.0 * MARGIN;
-	image_height += 2.0 * MARGIN;
+	image_width  += 2.0 * margin;
+	image_height += 2.0 * margin;
 	
 	// renvoie la taille de la zone source
 	return(QSizeF(image_width, image_height).toSize());
@@ -448,8 +452,8 @@ void Diagram::slot_checkSelectionEmptinessChange() {
 QRectF Diagram::border() const {
 	return(
 		QRectF(
-			MARGIN,
-			MARGIN,
+			margin,
+			margin,
 			border_and_inset.borderWidth(),
 			border_and_inset.borderHeight()
 		)

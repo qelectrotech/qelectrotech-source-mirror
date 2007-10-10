@@ -1,5 +1,5 @@
-#ifndef PART_TEXTFIELD
-#define PART_TEXTFIELD
+#ifndef PART_TEXTFIELD_H
+#define PART_TEXTFIELD_H
 #include <QtGui>
 #include "customelementpart.h"
 class TextFieldEditor;

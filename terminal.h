@@ -61,6 +61,7 @@ class Terminal : public QGraphicsItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1002 };
+	static const qreal terminalSize;
 	
 	// differentes couleurs statiques utilisables pour l'effet "hover"
 	static QColor couleur_neutre;

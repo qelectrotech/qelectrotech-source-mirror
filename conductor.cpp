@@ -499,7 +499,7 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
 		// recupere les coordonnees du clic
-		press_point = mapFromScene(e -> pos());
+		press_point = e -> pos();
 		
 		/*
 			parcourt les segments pour determiner si le clic a eu lieu
@@ -541,6 +541,11 @@ void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		qreal mouse_x = e -> pos().x();
 		qreal mouse_y = e -> pos().y();
 		
+		bool snap_conductors_to_grid = e -> modifiers() ^ Qt::ShiftModifier;
+		if (snap_conductors_to_grid) {
+			mouse_x = qRound(mouse_x / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
+			mouse_y = qRound(mouse_y / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
+		}
 		if (moving_point) {
 			// la modification par points revient bientot
 			/*

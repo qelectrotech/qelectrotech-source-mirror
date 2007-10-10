@@ -26,6 +26,10 @@ class ElementScene : public QGraphicsScene {
 	ElementScene(const ElementScene &);
 	
 	// attributs
+	public:
+	static const int xGrid;
+	static const int yGrid;
+	
 	private:
 	/// longueur de l'element en dizaines de pixels
 	uint _width;

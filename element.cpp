@@ -206,9 +206,9 @@ void Element::setPos(const QPointF &p) {
 	// pas la peine de positionner sur la grille si l'element n'est pas sur un Diagram
 	if (scene()) {
 		// arrondit l'abscisse a 10 px pres
-		int p_x = qRound(p.x() / 10.0) * 10;
+		int p_x = qRound(p.x() / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
 		// arrondit l'ordonnee a 10 px pres
-		int p_y = qRound(p.y() / 10.0) * 10;
+		int p_y = qRound(p.y() / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
 		QGraphicsItem::setPos(p_x, p_y);
 	} else QGraphicsItem::setPos(p);
 }

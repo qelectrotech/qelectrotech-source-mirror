@@ -11,8 +11,9 @@
 #include "partarc.h"
 #include "hotspoteditor.h"
 #include "editorcommands.h"
-#define GRILLE_X 10
-#define GRILLE_Y 10
+
+const int ElementScene::xGrid = 10;
+const int ElementScene::yGrid = 10;
 
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
@@ -248,12 +249,12 @@ void ElementScene::drawBackground(QPainter *p, const QRectF &r) {
 		qreal limite_y = r.y() + r.height();
 		
 		int g_x = (int)ceil(r.x());
-		while (g_x % GRILLE_X) ++ g_x;
+		while (g_x % xGrid) ++ g_x;
 		int g_y = (int)ceil(r.y());
-		while (g_y % GRILLE_Y) ++ g_y;
+		while (g_y % yGrid) ++ g_y;
 		
-		for (int gx = g_x ; gx < limite_x ; gx += GRILLE_X) {
-			for (int gy = g_y ; gy < limite_y ; gy += GRILLE_Y) {
+		for (int gx = g_x ; gx < limite_x ; gx += xGrid) {
+			for (int gy = g_y ; gy < limite_y ; gy += yGrid) {
 				p -> drawPoint(gx, gy);
 			}
 		}

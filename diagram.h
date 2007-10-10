@@ -1,8 +1,5 @@
 #ifndef SCHEMA_H
 #define SCHEMA_H
-#define GRILLE_X 10
-#define GRILLE_Y 10
-#define MARGIN   5.0
 #include <QtGui>
 #include <QtXml>
 #include "qetdiagrameditor.h"
@@ -32,6 +29,12 @@ class Diagram : public QGraphicsScene {
 	enum BorderOptions { EmptyBorder, Inset, Columns };
 	BorderInset border_and_inset;
 	QPointF current_movement;
+	/// taille de la grille en abscisse
+	static const int xGrid;
+	/// taille de la grille en ordonnee
+	static const int yGrid;
+	/// marge autour du schema
+	static const qreal margin;
 	
 	private:
 	QGraphicsLineItem *conductor_setter;

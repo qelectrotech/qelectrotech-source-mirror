@@ -33,7 +33,7 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	
 	diagram_view = new QGraphicsView(diagram_scene);
 	diagram_view -> setMaximumSize(
-		static_cast<int>((5 * diagram_scene -> border_and_inset.columnsWidth()) + (3 * MARGIN)),
+		static_cast<int>((5 * diagram_scene -> border_and_inset.columnsWidth()) + (3 * Diagram::margin)),
 		300
 	);
 	diagram_view -> setTransformationAnchor(QGraphicsView::AnchorUnderMouse);

@@ -8,6 +8,7 @@ QColor Terminal::couleur_neutre   = QColor(Qt::blue);
 QColor Terminal::couleur_autorise = QColor(Qt::darkGreen);
 QColor Terminal::couleur_prudence = QColor("#ff8000");
 QColor Terminal::couleur_interdit = QColor(Qt::red);
+const qreal Terminal::terminalSize = 4.0;
 
 /**
 	Fonction privee pour initialiser la borne.
@@ -25,11 +26,11 @@ void Terminal::initialise(QPointF pf, QET::Orientation o) {
 	// calcul de la position du point d'amarrage a l'element
 	amarrage_elmt = amarrage_conductor;
 	switch(sens) {
-		case QET::North: amarrage_elmt += QPointF(0, TAILLE_BORNE);  break;
-		case QET::East : amarrage_elmt += QPointF(-TAILLE_BORNE, 0); break;
-		case QET::West : amarrage_elmt += QPointF(TAILLE_BORNE, 0);  break;
+		case QET::North: amarrage_elmt += QPointF(0, Terminal::terminalSize);  break;
+		case QET::East : amarrage_elmt += QPointF(-Terminal::terminalSize, 0); break;
+		case QET::West : amarrage_elmt += QPointF(Terminal::terminalSize, 0);  break;
 		case QET::South:
-		default        : amarrage_elmt += QPointF(0, -TAILLE_BORNE);
+		default        : amarrage_elmt += QPointF(0, -Terminal::terminalSize);
 	}
 	
 	// par defaut : pas de conducteur
