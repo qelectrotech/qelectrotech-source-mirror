@@ -11,6 +11,11 @@
 class Element;
 class Terminal;
 class Conductor;
+/**
+	Cette classe represente un schema electrique.
+	Elle gere les differents elements et conducteurs qui le composent
+	et en effectue le rendu graphique.
+*/
 class Diagram : public QGraphicsScene {
 	Q_OBJECT
 	
@@ -202,6 +207,7 @@ inline QGIManager &Diagram::qgiManager() {
 	return(qgi_manager);
 }
 
+/// @return true si les bornes sont affichees, false sinon
 inline bool Diagram::drawTerminals() const {
 	return(draw_terminals);
 }

@@ -4,8 +4,7 @@
 #include <QtGui>
 #include "nameslist.h"
 class CustomElementPart;
-// #include "customelementpart.h"
-// #include "cep_line.h"
+
 /**
 	Cette classe represente un element electrique. Elle est utilisable
 	comme un element fixe. La difference est que l'element perso lit

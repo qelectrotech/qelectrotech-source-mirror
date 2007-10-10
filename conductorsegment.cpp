@@ -29,7 +29,6 @@ ConductorSegment::~ConductorSegment() {
 	if (hasNextSegment()) nextSegment() -> setPreviousSegment(previousSegment());
 }
 
-
 /**
 	Permet de savoir s'il est possible de deplacer le premier point du segment
 	sans creer d'incoherence. La valeur du mouvement maximum qu'il est possible de faire
@@ -494,6 +493,7 @@ qreal ConductorSegment::length() const {
 	}
 }
 
+/// @return QET::Horizontal si le segment est horizontal, QET::Vertical sinon
 QET::ConductorSegmentType ConductorSegment::type() const {
 	return(isHorizontal() ? QET::Horizontal : QET::Vertical);
 }

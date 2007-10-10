@@ -74,7 +74,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 }
 
 /**
-	Gere le clavier
+	Gere les enfoncements de touches du clavier
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyPressEvent(QKeyEvent *e) {
@@ -100,6 +100,10 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 	QGraphicsScene::keyPressEvent(e);
 }
 
+/**
+	Gere les relachements de touches du clavier
+	@param e QKeyEvent decrivant l'evenement clavier
+*/
 void Diagram::keyReleaseEvent(QKeyEvent *e) {
 	// detecte le relachement d'une touche de direction ( = deplacement d'elements)
 	if (
@@ -107,7 +111,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 		 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
 		!current_movement.isNull()  && !e -> isAutoRepeat()
 	) {
-		// cree un object d'annulation pour le mouvement qui vient de se finir
+		// cree un objet d'annulation pour le mouvement qui vient de se finir
 		undoStack().push(
 			new MoveElementsCommand(
 				this,
@@ -492,6 +496,10 @@ void Diagram::fetchMovedElements() {
 	moved_elements_fetched = true;
 }
 
+/**
+	Definit s'il faut afficher ou non les bornes
+	@param dt true pour afficher les bornes, false sinon
+*/
 void Diagram::setDrawTerminals(bool dt) {
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(qgi)) {
@@ -500,6 +508,9 @@ void Diagram::setDrawTerminals(bool dt) {
 	}
 }
 
+/**
+	@return la liste des conducteurs selectionnes sur le schema
+*/
 QSet<Conductor *> Diagram::selectedConductors() const {
 	QSet<Conductor *> conductors_set;
 	foreach(QGraphicsItem *qgi, selectedItems()) {

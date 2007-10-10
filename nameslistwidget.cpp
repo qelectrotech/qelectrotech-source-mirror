@@ -90,6 +90,9 @@ NamesList NamesListWidget::names() {
 	return(hash_names);
 }
 
+/**
+	Definit les noms que le widget doit afficher
+*/
 void NamesListWidget::setNames(const NamesList &provided_names) {
 	foreach(QString lang, provided_names.langs()) {
 		QString value = provided_names[lang];
@@ -101,10 +104,18 @@ void NamesListWidget::setNames(const NamesList &provided_names) {
 	}
 }
 
+/**
+	Verifie qu'il y a au moins un nom de saisi - si c'est le cas, le signal
+	imputChecked() est emis.
+*/
 void NamesListWidget::check() {
 	if (checkOneName()) emit(inputChecked());
 }
 
+/**
+	Definit le mode d'edition du widget
+	@param ro true pour que la liste de noms soit en lecture seule, false sinon
+*/
 void NamesListWidget::setReadOnly(bool ro) {
 	read_only = ro;
 	int names_count = tree_names -> topLevelItemCount() - 1;
@@ -115,6 +126,7 @@ void NamesListWidget::setReadOnly(bool ro) {
 	}
 }
 
+/// @return true si la liste de noms est en lecture seule, false sinon
 bool NamesListWidget::isReadOnly() const {
 	return(read_only);
 }

@@ -1,6 +1,14 @@
 #ifndef NAMES_LIST_H
 #define NAMES_LIST_H
 #include <QtXml>
+/**
+	Cette classe represente une liste de noms, utilisee
+	par les elements et categories pour embarquer un meme nom en plusieurs
+	langues.
+	Les langues sont representees par deux lettres (typiquement : les deux
+	premieres de la locale du systeme) ; exemples : en pour l'anglais, fr
+	pour le francais.
+*/
 class NamesList {
 	// constructeurs, destructeur
 	public:

@@ -111,6 +111,9 @@ QList<ConductorSegmentProfile *> ConductorProfile::verticalSegments() {
 	return(segments_list);
 }
 
+/**
+	Reconstruit le profil a partir d'un conducteur existant
+*/
 void ConductorProfile::fromConductor(Conductor *conductor) {
 	// supprime les segments precedents
 	setNull();

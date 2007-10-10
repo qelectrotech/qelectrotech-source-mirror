@@ -24,7 +24,6 @@ BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	Destructeur - ne fait rien
 */
 BorderInset::~BorderInset() {
-	
 }
 
 /**
@@ -156,7 +155,7 @@ void BorderInset::setNbColumns(int nb_c) {
 	200px.
 */
 void BorderInset::setColumnsWidth(const qreal &new_cw) {
-	columns_width = qMax(10.0, qMin(200.0, new_cw));
+	columns_width = qBound(10.0, new_cw, 200.0);
 	updateRectangles();
 }
 
@@ -165,7 +164,7 @@ void BorderInset::setColumnsWidth(const qreal &new_cw) {
 	doit rester comprise entre 5 et 50 px.
 */
 void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
-	columns_header_height = qMax(5.0, qMin(50.0, new_chh));
+	columns_header_height = qBound(5.0, new_chh, 50.0);
 	updateRectangles();
 }
 

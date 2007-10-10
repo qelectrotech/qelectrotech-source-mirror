@@ -23,7 +23,7 @@ class AddElementCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Element ajoute
+	/// element ajoute
 	Element *element;
 	/// schema sur lequel on ajoute l'element
 	Diagram *diagram;
@@ -49,7 +49,7 @@ class AddConductorCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Conducteur ajoute
+	/// conducteur ajoute
 	Conductor *conductor;
 	/// schema auquel on ajoute le conducteur
 	Diagram *diagram;
@@ -74,9 +74,9 @@ class DeleteElementsCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Liste des elements enleves
+	/// liste des elements enleves
 	QSet<Element *> removed_elements;
-	/// List des conducteurs enleves
+	/// liste des conducteurs enleves
 	QSet<Conductor *> removed_conductors;
 	/// schema dont on supprime des elements et conducteurs
 	Diagram *diagram;
@@ -100,7 +100,7 @@ class PasteDiagramCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Elements ajoutes
+	/// elements ajoutes
 	QList<Element *> elements;
 	/// conducteurs ajoutes
 	QList<Conductor *> conductors;
@@ -143,13 +143,13 @@ class MoveElementsCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Schema sur lequel on deplace les elements
+	/// schema sur lequel on deplace les elements
 	Diagram *diagram;
-	/// Elements a deplacer
+	/// elements a deplacer
 	QSet<Element *> elements_to_move;
-	/// Conducteurs a deplacer
+	/// conducteurs a deplacer
 	QSet<Conductor *> conductors_to_move;
-	/// Conducteurs a actualiser
+	/// conducteurs a actualiser
 	QHash<Conductor *, Terminal *> conductors_to_update;
 	/// mouvement effectue
 	QPointF movement;
@@ -203,7 +203,7 @@ class RotateElementsCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// texte avant changement
+	/// elements pivotes associes a leur ancienne orientation
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 };
 
@@ -225,7 +225,7 @@ class ChangeConductorCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Conducteur modifie
+	/// conducteur modifie
 	Conductor *conductor;
 	/// profil avant changement
 	ConductorProfile old_profile;
@@ -253,7 +253,7 @@ class ResetConductorCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Conducteurs reinitialises et leurs anciens profils
+	/// conducteurs reinitialises associes a leur ancien profil
 	QHash<Conductor *, ConductorProfile> conductors_profiles;
 };
 
@@ -275,7 +275,7 @@ class ChangeInsetCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Schema modifie
+	/// schema modifie
 	Diagram *diagram;
 	/// proprietes avant changement
 	InsetProperties old_inset;
@@ -307,16 +307,16 @@ class ChangeBorderCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Diagram modifie
+	/// schema modifie
 	Diagram *diagram;
 	public:
-	/// Nombre de colonnes ajoutees / enlevees
+	/// nombre de colonnes ajoutees / enlevees
 	int columnsCountDifference;
-	/// Delta pour la hauteur des colonnes
+	/// delta pour la hauteur des colonnes
 	qreal columnsHeightDifference;
-	/// Delta pour la largeur des colonnes
+	/// delta pour la largeur des colonnes
 	qreal columnsWidthDifference;
-	/// Delta pour la hauteur des entetes des colonnes
+	/// delta pour la hauteur des entetes des colonnes
 	qreal headersHeightDifference;
 };
 
@@ -340,7 +340,7 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	
 	// attributs
 	private:
-	/// Conducteur modifie
+	/// conducteur modifie
 	Conductor *conductor;
 	/// anciennes proprietes
 	bool old_is_single_line;
@@ -350,6 +350,7 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	bool new_is_single_line;
 	QString new_conductor_text;
 	SingleLineProperties new_slp;
+	/// booleens indiquant si les proprietes ont ete definies ou non
 	bool old_settings_set;
 	bool new_settings_set;
 };

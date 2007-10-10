@@ -1,6 +1,16 @@
 #ifndef ORIENTATION_SET_H
 #define ORIENTATION_SET_H
 #include "qet.h"
+/**
+	Cette classe represente un containeur d'orientations, c'est-a-dire une
+	structure de donnees stockant une orientation par defaut, une orientation
+	courante et l'autorisation ou non d'utiliser les quatre autres orientations
+	: nord, est, sud, ouest.
+	Elle possede des methodes pour definir les autorisations. Le changement
+	d'autorisation peut echouer car il faut au moins une orientation autorisee.
+	Le changement d'autorisation peut eventuellement modifier les orientations
+	par defaut et courante.
+*/
 class OrientationSet {
 	
 	// constructeurs, destructeur

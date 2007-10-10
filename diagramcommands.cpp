@@ -43,8 +43,7 @@ void AddElementCommand::redo() {
 /**
 	Constructeur
 	@param d Schema auquel on ajoute un conducteur
-	@param t1 Premiere borne du conducteur
-	@param t2 Seconde borne du conducteur
+	@param c Conducteur ajoute
 	@param parent QUndoCommand parent
 */
 AddConductorCommand::AddConductorCommand(
@@ -199,9 +198,9 @@ void PasteDiagramCommand::redo() {
 
 /**
 	Constructeur
-	@param dia Schema dont on supprime des elements et conducteurs
-	@param elements Elements supprimes
-	@param conductors Conducteurs supprimes
+	@param dia Schema dont on coupe des elements et conducteurs
+	@param elements Elements coupes
+	@param conductors Conducteurs coupes
 	@param parent QUndoCommand parent
 */
 CutDiagramCommand::CutDiagramCommand(
@@ -390,8 +389,7 @@ void ChangeConductorCommand::redo() {
 
 /**
 	Constructeur
-	@param c Conducteurs reinitialises
-	@param p Anciens profils des conducteurs
+	@param cp Conducteurs reinitialises, associes a leur ancien profil
 	@param parent QUndoCommand parent
 */
 ResetConductorCommand::ResetConductorCommand(
@@ -425,8 +423,8 @@ void ResetConductorCommand::redo() {
 /**
 	Constructeur
 	@param d Schema dont on modifie le cartouche
-	@param old_ip Anciennes proprietes du cartouches
-	@param new_ip Nouvelles proprietes du cartouches
+	@param old_ip Anciennes proprietes du cartouche
+	@param new_ip Nouvelles proprietes du cartouche
 	@param parent QUndoCommand parent
 */
 ChangeInsetCommand::ChangeInsetCommand(
@@ -499,14 +497,21 @@ void ChangeBorderCommand::applyChanges(int coeff) {
 	}
 }
 
+/// Annule les changements apportes au schema
 void ChangeBorderCommand::undo() {
 	applyChanges(-1);
 }
 
+/// Refait les changements apportes au schema
 void ChangeBorderCommand::redo() {
 	applyChanges(1);
 }
 
+/**
+	Constructeur
+	@param c Le conducteur dont on modifie les proprietes
+	@param parent QUndoCommand parent
+*/
 ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur"), parent),
 	conductor(c),
@@ -515,9 +520,11 @@ ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c,
 {
 }
 
+/// Destructeur
 ChangeConductorPropertiesCommand::~ChangeConductorPropertiesCommand() {
 }
 
+/// definit l'ancienne configuration
 void ChangeConductorPropertiesCommand::setOldSettings(bool single, const QString &text, const SingleLineProperties &slp) {
 	old_is_single_line = single;
 	old_conductor_text = text;
@@ -525,6 +532,7 @@ void ChangeConductorPropertiesCommand::setOldSettings(bool single, const QString
 	old_settings_set = true;
 }
 
+/// definit la nouvelle configuration
 void ChangeConductorPropertiesCommand::setNewSettings(bool single, const QString &text, const SingleLineProperties &slp) {
 	new_is_single_line = single;
 	new_conductor_text = text;
@@ -532,6 +540,10 @@ void ChangeConductorPropertiesCommand::setNewSettings(bool single, const QString
 	new_settings_set = true;
 }
 
+/**
+	Annule les changements - Attention : les anciens et nouveaux parametres
+	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
+*/
 void ChangeConductorPropertiesCommand::undo() {
 	if (old_settings_set && new_settings_set) {
 		conductor -> setSingleLine(old_is_single_line);
@@ -541,6 +553,10 @@ void ChangeConductorPropertiesCommand::undo() {
 	}
 }
 
+/**
+	Refait les changements - Attention : les anciens et nouveaux parametres
+	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
+*/
 void ChangeConductorPropertiesCommand::redo() {
 	if (old_settings_set && new_settings_set) {
 		conductor -> setSingleLine(new_is_single_line);

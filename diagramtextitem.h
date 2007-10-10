@@ -2,6 +2,9 @@
 #define DIAGRAM_TEXT_ITEM_H
 #include <QtGui>
 #include "diagram.h"
+/**
+	Cette classe represente un champ de texte editable sur le schema.
+*/
 class DiagramTextItem : public QGraphicsTextItem {
 	// constructeurs, destructeur
 	public:

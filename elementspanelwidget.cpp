@@ -65,6 +65,9 @@ void ElementsPanelWidget::newElement() {
 	new_element_wizard.exec();
 }
 
+/**
+	Lance le gestionnaire de categories
+*/
 void ElementsPanelWidget::newCategory() {
 	QDialog new_category_dialog;
 	new_category_dialog.setFixedSize(480, 280);
@@ -86,6 +89,9 @@ void ElementsPanelWidget::newCategory() {
 	elements_panel -> reload();
 }
 
+/**
+	Met a jour les boutons afin d'assurer la coherence de l'interface
+*/
 void ElementsPanelWidget::updateButtons() {
 	bool category_selected = elements_panel -> selectedItemIsACategory();
 	bool element_selected = elements_panel -> selectedItemIsAnElement();

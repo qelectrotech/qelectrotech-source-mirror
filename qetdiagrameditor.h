@@ -7,8 +7,8 @@ class ElementsPanelWidget;
 	Cette classe represente la fenetre principale de QElectroTech et,
 	ipso facto, la plus grande partie de l'interface graphique de QElectroTech.
 	Il s'agit d'un objet QMainWindow avec un QWorkSpace contenant des objets
-	« Diagram » en guise de widget central et un « Panel d'Appareils » en guise
-	de widget « Dock ».
+	« DiagramView » en guise de widget central et un « Panel d'Appareils » en
+	guise de widget « Dock ».
 */
 class QETDiagramEditor : public QMainWindow {
 	Q_OBJECT

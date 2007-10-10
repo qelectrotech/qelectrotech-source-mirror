@@ -468,3 +468,37 @@ void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const Q
 	// determine si tous les elements sont reduits
 	every_editor_reduced = every_element_reduced && every_diagram_reduced;
 }
+
+/**
+	Gere les evenement
+	@param e Evenement a gerer
+*/
+bool QETApp::event(QEvent *e) {
+	// gere l'ouverture de fichiers (sous MacOs)
+	if (e -> type() == QEvent::FileOpen) {
+		// nom du fichier a ouvrir
+		QString filename = static_cast<QFileOpenEvent *>(e) -> file();
+		// liste des editeurs de schema ouverts
+		QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
+		if (diagrams_editors.count()) {
+			// s'il y a des editeur de schemas ouvert, on cherche ceux qui sont visibles
+			QList<QETDiagramEditor *> visible_diagrams_editors;
+			foreach(QETDiagramEditor *de, diagrams_editors) {
+				if (de -> isVisible()) visible_diagrams_editors << de;
+			}
+			// ob choisit soit le premier visible soit le premier tout court
+			QETDiagramEditor *de_open;
+			if (visible_diagrams_editors.count()) {
+				de_open = visible_diagrams_editors.first();
+			} else {
+				de_open = diagrams_editors.first();
+				de_open -> setVisible(true);
+			}
+		} else {
+			new QETDiagramEditor(QStringList() << filename);
+		}
+		return(true);
+	} else {
+		return(QApplication::event(e));
+	}
+}

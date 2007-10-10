@@ -3,6 +3,11 @@
 #include <QtCore>
 #include <QGraphicsScene>
 #include <QGraphicsItem>
+/**
+	Cette classe represente un gestionnaire de QGraphicsItem.
+	Elle permet de supprimer des QGraphicsItem lorsqu'il n'y a plus aucune
+	reference vers eux et qu'ils ne sont plus sur la scene.
+*/
 class QGIManager {
 	// constructeurs, destructeurs
 	public:

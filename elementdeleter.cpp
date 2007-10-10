@@ -1,14 +1,24 @@
 #include "elementdeleter.h"
 
+/**
+	Constructeur
+	@param elmt_path Chemin du fichier representant l'element a supprimer
+	@param parent QWidget parent
+*/
 ElementDeleter::ElementDeleter(const QString &elmt_path, QWidget *parent) :
 	QWidget(parent),
 	element_path(elmt_path)
 {
 }
 
+/// Destructeur
 ElementDeleter::~ElementDeleter() {
 }
 
+/**
+	Supprime l'element : verifie l'existence du fichier, demande confirmation a
+	l'utilisateur et avertit ce dernier si la suppression a echoue.
+*/
 void ElementDeleter::exec() {
 	// verifie l'existence de l'element
 	QFile elmt_file(element_path);

@@ -1,5 +1,9 @@
 #include "orientationsetwidget.h"
 
+/**
+	Constructeur
+	@param parent QWidget parent
+*/
 OrientationSetWidget::OrientationSetWidget(QWidget *parent) : QWidget(parent) {
 	
 	default_radios = new QButtonGroup(this);
@@ -61,15 +65,26 @@ OrientationSetWidget::OrientationSetWidget(QWidget *parent) : QWidget(parent) {
 	slot_defaultChanged(north_default);
 }
 
+/**
+	@return l'OrientationSet
+*/
 OrientationSet OrientationSetWidget::orientationSet() const {
 	return(ori);
 }
 
+/**
+	@param os l'OrientationSet a editer
+*/
 void OrientationSetWidget::setOrientationSet(const OrientationSet &os) {
 	ori = os;
 	updateForm();
 }
 
+/**
+	Slot gerant le changement d'orientation par defaut.
+	L'orientation concernee affiche alors "Possible" et ce statut devient
+	impossible a modifier.
+*/
 void OrientationSetWidget::slot_defaultChanged(QAbstractButton *button) {
 	if      (button == north_default) north_orientation -> setCurrentIndex(0);
 	else if (button == east_default)  east_orientation  -> setCurrentIndex(0);
@@ -84,6 +99,9 @@ void OrientationSetWidget::slot_defaultChanged(QAbstractButton *button) {
 	updateOrientationSet();
 }
 
+/**
+	Met a jour les donnees de la classe a partir du dialogue
+*/
 void OrientationSetWidget::updateOrientationSet() {
 	ori.setNorth(!north_orientation -> currentIndex());
 	ori.setEast (!east_orientation  -> currentIndex());
@@ -92,6 +110,9 @@ void OrientationSetWidget::updateOrientationSet() {
 	ori.setDefaultOrientation(static_cast<QET::Orientation>(default_radios -> checkedId()));
 }
 
+/**
+	Met a jour le dialogue a partir des donnees de la classe
+*/
 void OrientationSetWidget::updateForm() {
 	north_orientation -> setCurrentIndex(ori.north() ? 0 : 1);
 	east_orientation  -> setCurrentIndex(ori.east()  ? 0 : 1);

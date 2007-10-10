@@ -98,13 +98,13 @@ void DiagramView::deleteSelection() {
 	Pivote les composants selectionnes
 */
 void DiagramView::rotateSelection() {
-	if (scene -> selectedItems().isEmpty()) return;
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_rotate.insert(e, e -> orientation().current());
 		}
 	}
+	if (elements_to_rotate.isEmpty()) return;
 	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate));
 }
 
@@ -605,6 +605,9 @@ void DiagramView::adjustSceneRect() {
 	scene -> update(old_scene_rect.united(new_scene_rect));
 }
 
+/**
+	Met a jour le titre du widget
+*/
 void DiagramView::updateWindowTitle() {
 	QString window_title;
 	if (file_name.isNull()) window_title += tr("nouveau sch\351ma");
@@ -614,11 +617,17 @@ void DiagramView::updateWindowTitle() {
 	setWindowModified(!(scene -> undoStack().isClean()));
 }
 
+/**
+	Active ou desactive le dessin de grille selon la quantite de pixels affichee
+*/
 void DiagramView::adjustGridToZoom() {
 	QRectF viewed_scene = viewedSceneRect();
 	scene -> setDisplayGrid(viewed_scene.width() < 2000 || viewed_scene.height() < 2000);
 }
 
+/**
+	@return le rectangle du schema (classe Diagram) visualise par ce DiagramView
+*/
 QRectF DiagramView::viewedSceneRect() const {
 	// recupere la taille du widget viewport
 	QSize viewport_size = viewport() -> size();
@@ -634,6 +643,10 @@ QRectF DiagramView::viewedSceneRect() const {
 	return(QRectF(scene_left_top, scene_right_bottom));
 }
 
+/**
+	Affiche un dialogue permettant d'editer le conducteur selectionne.
+	Ne fait rien s'il y a 0 ou plusieurs conducteurs selectionnes.
+*/
 void DiagramView::editConductor() {
 	QList<Conductor *> selected_conductors(scene -> selectedConductors().toList());
 	

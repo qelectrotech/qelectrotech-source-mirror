@@ -28,7 +28,7 @@ class ElementsPanel : public QTreeWidget {
 	void addDir(QTreeWidgetItem *, QString, QString = QString());
 	QFileInfo selectedFile() const;
 	void launchElementEditor(const QString &);
-	void lauchCategoryEditor(const QString &);
+	void launchCategoryEditor(const QString &);
 	
 	
 	public slots:

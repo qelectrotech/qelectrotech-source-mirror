@@ -2,6 +2,9 @@
 #define ORIENTATION_SET_WIDGET_H
 #include <QtGui>
 #include "orientationset.h"
+/**
+	Widget permettant d'editer un OrientationSet
+*/
 class OrientationSetWidget : public QWidget {
 	Q_OBJECT
 	// constructeurs, destructeur

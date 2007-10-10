@@ -234,6 +234,12 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	} else e -> ignore();
 }
 
+/**
+	Deplace les autres elements selectionnes en gerant au mieux les conducteurs
+	(seuls les conducteurs dont un seul des elements est deplace sont
+	recalcules, les autres sont deplaces).
+	@param diff Translation a effectuer
+*/
 void Element::moveOtherElements(const QPointF &diff) {
 	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
 	if (diff.isNull()) return;
@@ -262,6 +268,11 @@ void Element::moveOtherElements(const QPointF &diff) {
 	}
 }
 
+/**
+	Gere le relachement de souris
+	Cette methode a ete reimplementee pour tenir a jour la liste des elements
+	et conducteurs a deplacer au niveau du schema.
+*/
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	Diagram *diagram_ptr = diagram();
 	if (diagram_ptr) {

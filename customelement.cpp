@@ -155,10 +155,12 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 CustomElement::~CustomElement() {
 }
 
+/// @return la liste des bornes de cet element
 QList<Terminal *> CustomElement::terminals() const {
 	return(list_terminals);
 }
 
+/// @return la liste des conducteurs rattaches a cet element
 QList<Conductor *> CustomElement::conductors() const {
 	QList<Conductor *> conductors;
 	foreach(Terminal *t, list_terminals) conductors << t -> conductors();

@@ -11,7 +11,7 @@
 	Constructeur
 	@param parent Le QWidget parent du panel d'appareils
 */
-ElementsPanel::ElementsPanel(QWidget *parent) :  QTreeWidget(parent) {
+ElementsPanel::ElementsPanel(QWidget *parent) : QTreeWidget(parent) {
 	
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
@@ -183,18 +183,27 @@ void ElementsPanel::reload() {
 	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 }
 
+/**
+	Edite la categorie selectionnee
+*/
 void ElementsPanel::editCategory() {
 	QFileInfo infos_file = selectedFile();
 	if (!infos_file.exists() || !infos_file.isDir()) return;
-	lauchCategoryEditor(infos_file.absoluteFilePath());
+	launchCategoryEditor(infos_file.absoluteFilePath());
 }
 
+/**
+	Edite l'element selectionne
+*/
 void ElementsPanel::editElement() {
 	QFileInfo infos_file = selectedFile();
 	if (!infos_file.exists() || !infos_file.isFile()) return;
 	launchElementEditor(infos_file.absoluteFilePath());
 }
 
+/**
+	Supprime la categorie selectionnee
+*/
 void ElementsPanel::deleteCategory() {
 	QFileInfo infos_file = selectedFile();
 	if (!infos_file.exists() || !infos_file.isDir()) return;
@@ -208,7 +217,7 @@ void ElementsPanel::deleteCategory() {
 }
 
 /**
-	supprime l'element selectionne
+	Supprime l'element selectionne
 */
 void ElementsPanel::deleteElement() {
 	QFileInfo infos_file = selectedFile();
@@ -222,6 +231,10 @@ void ElementsPanel::deleteElement() {
 	reload();
 }
 
+/**
+	Gere le double-clic sur un element. Permet de lancer l'editeur de
+	categorie ou d'element.
+*/
 void ElementsPanel::slot_doubleClick(QTreeWidgetItem *, int) {
 	// le fichier doit exister
 	QFileInfo infos_file = selectedFile();
@@ -232,7 +245,7 @@ void ElementsPanel::slot_doubleClick(QTreeWidgetItem *, int) {
 		launchElementEditor(infos_file.absoluteFilePath());
 	} else if (infos_file.isDir()) {
 		// il s'agit d'une categorie
-		lauchCategoryEditor(infos_file.absoluteFilePath());
+		launchCategoryEditor(infos_file.absoluteFilePath());
 	}
 }
 
@@ -243,13 +256,21 @@ QFileInfo ElementsPanel::selectedFile() const {
 	return(QFileInfo(currentItem() -> data(0, 42).toString()));
 }
 
+/**
+	Lance l'editeur d'element pour l'element filename
+	@param filename Chemin du fichier representant l'element
+*/
 void ElementsPanel::launchElementEditor(const QString &filename) {
 	QETElementEditor *editor = new QETElementEditor();
 	editor -> fromFile(filename);
 	editor -> show();
 }
 
-void ElementsPanel::lauchCategoryEditor(const QString &filename) {
+/**
+	Lance l'editeur de categorie pour la categorie filename
+	@param filename Chemin du dossier representant la categorie
+*/
+void ElementsPanel::launchCategoryEditor(const QString &filename) {
 	ElementsCategoryEditor ece(filename, true);
 	if (ece.exec() == QDialog::Accepted) reload();
 }

@@ -1,5 +1,10 @@
 #include "elementscategorydeleter.h"
 
+/**
+	Constructeur
+	@param category_path Chemin du dossier representant la categorie a supprimer
+	@param parent QWidget parent
+*/
 ElementsCategoryDeleter::ElementsCategoryDeleter(const QString &category_path, QWidget *parent) :
 	QWidget(parent),
 	cat(category_path),
@@ -7,9 +12,15 @@ ElementsCategoryDeleter::ElementsCategoryDeleter(const QString &category_path, Q
 {
 }
 
+/// Destructeur
 ElementsCategoryDeleter::~ElementsCategoryDeleter() {
 }
 
+/**
+	Supprime la categorie et ses elements : verifie l'existence du dossier,
+	demande deux fois confirmation a l'utilisateur et avertit ce dernier si la
+	suppression a echoue.
+*/
 void ElementsCategoryDeleter::exec() {
 	// verifie l'existence de la categorie
 	if (!cat.exists() || empty_category_path) return;

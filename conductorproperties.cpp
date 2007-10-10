@@ -1,12 +1,17 @@
 #include "conductorproperties.h"
 #include "conductor.h"
 
+/**
+	Constructeur
+	@param parent QWidget parent
+*/
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 	QWidget(parent)
 {
 	buildInterface();
 }
 
+/// construit l'interface du widget
 void ConductorPropertiesWidget::buildInterface() {
 	
 	setFixedSize(380, 245);
@@ -64,6 +69,7 @@ void ConductorPropertiesWidget::buildInterface() {
 	setSingleLine(false);
 }
 
+/// Met en place les connexions signaux/slots
 void ConductorPropertiesWidget::buildConnections() {
 	connect(phase_slider,      SIGNAL(valueChanged(int)),  phase_spinbox, SLOT(setValue(int)));
 	connect(phase_spinbox,     SIGNAL(valueChanged(int)),  phase_slider,  SLOT(setValue(int)));
@@ -75,6 +81,7 @@ void ConductorPropertiesWidget::buildConnections() {
 	
 }
 
+/// Enleve les connexions signaux/slots
 void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(phase_slider,      SIGNAL(valueChanged(int)),  phase_spinbox, SLOT(setValue(int)));
 	disconnect(phase_spinbox,     SIGNAL(valueChanged(int)),  phase_slider,  SLOT(setValue(int)));
@@ -85,10 +92,11 @@ void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(singleline,        SIGNAL(toggled(bool)),      this,          SLOT(setSingleLine(bool)));
 }
 
+/// Destructeur
 ConductorPropertiesWidget::~ConductorPropertiesWidget() {
 }
 
-
+/// Met a jour les proprietes unifilaires
 void ConductorPropertiesWidget::updateSingleLineConfig() {
 	slp.hasGround = ground_checkbox -> isChecked();
 	slp.hasNeutral = neutral_checkbox -> isChecked();
@@ -96,6 +104,7 @@ void ConductorPropertiesWidget::updateSingleLineConfig() {
 	updatePreview();
 }
 
+/// Met a jour l'affichage des proprietes unifilaires
 void ConductorPropertiesWidget::updateSingleLineDisplay() {
 	destroyConnections();
 	ground_checkbox -> setChecked(slp.hasGround);
@@ -107,6 +116,7 @@ void ConductorPropertiesWidget::updateSingleLineDisplay() {
 	updatePreview();
 }
 
+/// Met a jour la previsualisation des attributs unifilaires
 void ConductorPropertiesWidget::updatePreview() {
 	const QRect pixmap_rect(0, 0, 96, 96);
 	QPixmap pixmap(pixmap_rect.width(), pixmap_rect.height());
@@ -120,10 +130,15 @@ void ConductorPropertiesWidget::updatePreview() {
 	preview -> setPixmap(pixmap);
 }
 
+/// @return true si le widget est en mode unifilaire, false sinon
 bool ConductorPropertiesWidget::isSingleLine() const {
 	return(singleline -> isChecked());
 }
 
+/**
+	Passe le widget en mode unifilaire ou multifilaire
+	@param sl true pour passer le widget en mode "unifilaire", false sinon
+*/
 void ConductorPropertiesWidget::setSingleLine(bool sl) {
 	singleline       -> setChecked(sl);
 	multiline        -> setChecked(!sl);

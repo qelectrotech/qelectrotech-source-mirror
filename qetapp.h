@@ -34,6 +34,8 @@ class QETApp : public QApplication {
 	private:
 	static QString common_elements_dir;
 #endif
+	protected:
+	bool event(QEvent *);
 	
 	// attributs
 	private:

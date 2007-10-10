@@ -1,5 +1,10 @@
 #include "orientationset.h"
 
+/**
+	Constructeur
+	Par defaut, toutes les orientations sont autorisees. L'orientation courante
+	vaut l'orientation par defaut, c'est-a-dire Nord.
+*/
 OrientationSet::OrientationSet() :
 	north_ori(true),
 	east_ori(true),
@@ -9,6 +14,10 @@ OrientationSet::OrientationSet() :
 	current_ori(QET::North)
 {}
 
+/**
+	@param ori true pour autoriser l'orientation vers le Nord, false pour l'interdire
+	@return true si le changement d'autorisation a reussi, false sinon
+*/
 bool OrientationSet::setNorth (bool ori) {
 	// pour desactiver une orientation, il doit y avoir au moins une autre orientation possible
 	bool can_set_ori = ori ? true : east_ori || south_ori || west_ori;
@@ -23,6 +32,10 @@ bool OrientationSet::setNorth (bool ori) {
 	return(can_set_ori);
 }
 
+/**
+	@param ori true pour autoriser l'orientation vers l'Est, false pour l'interdire
+	@return true si le changement d'autorisation a reussi, false sinon
+*/
 bool OrientationSet::setEast (bool ori) {
 	// pour desactiver une orientation, il doit y avoir au moins une autre orientation possible
 	bool can_set_ori = ori ? true : south_ori || west_ori || north_ori;
@@ -37,6 +50,10 @@ bool OrientationSet::setEast (bool ori) {
 	return(can_set_ori);
 }
 
+/**
+	@param ori true pour autoriser l'orientation vers le Sud, false pour l'interdire
+	@return true si le changement d'autorisation a reussi, false sinon
+*/
 bool OrientationSet::setSouth (bool ori) {
 	// pour desactiver une orientation, il doit y avoir au moins une autre orientation possible
 	bool can_set_ori = ori ? true : west_ori || north_ori || east_ori;
@@ -51,6 +68,10 @@ bool OrientationSet::setSouth (bool ori) {
 	return(can_set_ori);
 }
 
+/**
+	@param ori true pour autoriser l'orientation vers l'Ouest, false pour l'interdire
+	@return true si le changement d'autorisation a reussi, false sinon
+*/
 bool OrientationSet::setWest (bool ori) {
 	// pour desactiver une orientation, il doit y avoir au moins une autre orientation possible
 	bool can_set_ori = ori ? true : north_ori || east_ori || south_ori;
@@ -65,30 +86,49 @@ bool OrientationSet::setWest (bool ori) {
 	return(can_set_ori);
 }
 
+/**
+	Definit l'orientation courante
+	@param ori nouvelle orientation courante
+	@return true si le changement d'orientation a reussi, false sinon
+*/
 bool OrientationSet::setCurrent(QET::Orientation ori) {
 	bool can_set_ori = accept(ori);
 	if (can_set_ori) current_ori = ori;
 	return(can_set_ori);
 }
 
+/**
+	@return l'orientation suivant l'orientation courante
+*/
 QET::Orientation OrientationSet::next() const {
 	QET::Orientation result = current_ori;
 	do result = QET::nextOrientation(result); while (!accept(result));
 	return(result);
 }
 
+/**
+	@return l'orientation precedant l'orientation courante
+*/
 QET::Orientation OrientationSet::previous() const {
 	QET::Orientation result = current_ori;
 	do result = QET::previousOrientation(result); while (!accept(result));
 	return(result);
 }
 
+/**
+	Equivaut a setNext()
+	@return l'OrientationSet precedent
+*/
 const OrientationSet OrientationSet::operator++(int) {
 	OrientationSet before(*this);
 	setNext();
 	return(before);
 }
 
+/**
+	Equivaut a setPrevious()
+	@return l'OrientationSet precedent
+*/
 const OrientationSet OrientationSet::operator--(int) {
 	OrientationSet before(*this);
 	setPrevious();
@@ -111,26 +151,46 @@ bool OrientationSet::accept(QET::Orientation ori) const {
 	return(accepted_ori);
 }
 
+/**
+	Definit l'orientation suivante comme etant l'orientation courante
+	@return la nouvelle orientation courante
+*/
 QET::Orientation OrientationSet::setNext() {
 	setCurrent(next());
 	return(current_ori);
 }
 
+/**
+	Definit l'orientation precedente comme etant l'orientation courante
+	@return la nouvelle orientation courante
+*/
 QET::Orientation OrientationSet::setPrevious() {
 	setCurrent(previous());
 	return(current_ori);
 }
 
+/**
+	Equivaut a setNext()
+	@return l'OrientationSet courant
+*/
 const OrientationSet OrientationSet::operator++() {
 	setNext();
 	return(*this);
 }
 
+/**
+	Equivaut a setPrevious()
+	@return l'OrientationSet courant
+*/
 const OrientationSet OrientationSet::operator--() {
 	setPrevious();
 	return(*this);
 }
 
+/**
+	@param os autre OrientationSet
+	@return true si os et cet OrientationSet sont identiques, false sinon
+*/
 bool OrientationSet::operator==(const OrientationSet &os) const {
 	if (north_ori   != os.north_ori)   return(false);
 	if (east_ori    != os.east_ori)    return(false);
@@ -141,10 +201,24 @@ bool OrientationSet::operator==(const OrientationSet &os) const {
 	return(true);
 }
 
+/**
+	@param os autre OrientationSet
+	@return false si os et cet OrientationSet sont identiques, true sinon
+*/
 bool OrientationSet::operator!=(const OrientationSet &os) const {
 	return(!(this -> operator==(os)));
 }
 
+/**
+	Charge l'orientationSet depuis une chaine de caractere.
+	Cette chaine doit faire 4 caracteres, representant respectivement
+	le Nord, l'Est, le Sud et l'Ouest. Le caractere y indique que l'orientation
+	est autorisee, le caractere n indique que l'orientation est interdite et le
+	caractere d designe l'orientation par defaut. L'orientation courante est
+	celle par defaut.
+	@param str Chaine de caracteres a analyser et charger
+	@return true si l'analyse a reussie, false sinon
+*/
 bool OrientationSet::fromString(const QString &str) {
 	QRegExp osv("^([dyn])([dyn])([dyn])([dyn])$");	// osv : Orientation String Validator
 	if (osv.indexIn(str) == -1) return(false);
@@ -166,6 +240,10 @@ bool OrientationSet::fromString(const QString &str) {
 	return(true);
 }
 
+/**
+	@return Une chaine de caracteres representant cet OrientationSet.
+	@see fromString
+*/
 QString OrientationSet::toString() const {
 	bool ori_pointers[4] = { north_ori, east_ori, south_ori, west_ori };
 	QET::Orientation ori_ints[4] = { QET::North, QET::East, QET::South, QET::West };

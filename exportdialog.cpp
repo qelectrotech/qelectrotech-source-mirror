@@ -412,6 +412,9 @@ void ExportDialog::slot_changeUseBorder() {
 	slot_refreshPreview();
 }
 
+/**
+	Rafraichit l'apercu de l'export
+*/
 void ExportDialog::slot_refreshPreview() {
 	
 	// genere le nouvel apercu

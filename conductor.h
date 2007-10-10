@@ -43,9 +43,9 @@ class Conductor : public QGraphicsPathItem {
 	public:
 	enum { Type = UserType + 1001 };
 	
-	///Premiere borne a laquelle le fil est rattache
+	/// premiere borne a laquelle le fil est rattache
 	Terminal *terminal1;
-	///Deuxieme borne a laquelle le fil est rattache
+	/// deuxieme borne a laquelle le fil est rattache
 	Terminal *terminal2;
 	/// caracteristiques des conducteurs unifilaires
 	SingleLineProperties singleLineProperties;
@@ -87,9 +87,9 @@ class Conductor : public QGraphicsPathItem {
 	bool is_single_line;
 	/// champ de texte editable pour les conducteurs non unifilaires
 	DiagramTextItem *text_item;
-	/// Segments composant le conducteur
+	/// segments composant le conducteur
 	ConductorSegment *segments;
-	/// Attributs lies aux manipulations a la souris
+	/// attributs lies aux manipulations a la souris
 	QPointF press_point;
 	bool moving_point;
 	bool moving_segment;
