@@ -163,8 +163,31 @@ void Terminal::removeConductor(Conductor *f) {
 	@param options Les options de dessin
 	@param widget Le widget sur lequel on dessine
 */
-void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
+void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *widget) {
 	p -> save();
+	
+#ifdef Q_WS_X11
+	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
+	static bool must_correct_rendering_bug = !QString(qVersion()).startsWith("4.4");
+	if (must_correct_rendering_bug) {
+		Diagram *dia = diagram();
+		if (dia && options -> levelOfDetail == 1.0 && widget) {
+			// calcule la rotation qu'a subi l'element
+			qreal applied_rotation = 0.0;
+			if (Element *elt = qgraphicsitem_cast<Element *>(parentItem())) {
+				// orientations actuelle et par defaut de l'element
+				QET::Orientation ori_cur = elt -> orientation().current();
+				QET::Orientation ori_def = elt -> orientation().defaultOrientation();
+				applied_rotation = 90.0 * (ori_cur - ori_def);
+				while (applied_rotation < 360.0) applied_rotation += 360.0;
+				while (applied_rotation > 360.0) applied_rotation -= 360.0;
+			}
+			if (applied_rotation == 90.0) p -> translate(1.0, -1.0);
+			else if (applied_rotation == 180.0) p -> translate(-1.0, -1.0);
+			else if (applied_rotation == 270.0) p -> translate(-1.0, 1.0);
+		}
+	}
+#endif
 	
 	//annulation des renderhints
 	p -> setRenderHint(QPainter::Antialiasing,          false);

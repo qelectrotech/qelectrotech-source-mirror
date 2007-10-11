@@ -26,7 +26,24 @@ Element::~Element() {
 	@param options Les options de style a prendre en compte
 	@param widget  Le widget sur lequel on dessine
 */
-void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
+void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+	
+#ifdef Q_WS_X11
+	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
+	static bool must_correct_rendering_bug = !QString(qVersion()).startsWith("4.4");
+	if (must_correct_rendering_bug) {
+		Diagram *dia = diagram();
+		if (dia && options -> levelOfDetail == 1.0 && widget) {
+			// calcule la rotation qu'a subi l'element
+			qreal applied_rotation = 90.0 * (ori.current() - ori.defaultOrientation());
+			while (applied_rotation < 360.0) applied_rotation += 360.0;
+			while (applied_rotation > 360.0) applied_rotation -= 360.0;
+			if (applied_rotation == 90.0) painter -> translate(1.0, -1.0);
+			else if (applied_rotation == 180.0) painter -> translate(-1.0, -1.0);
+			else if (applied_rotation == 270.0) painter -> translate(-1.0, 1.0);
+		}
+	}
+#endif
 	// Dessin de l'element lui-meme
 	paint(painter, options);
 	
