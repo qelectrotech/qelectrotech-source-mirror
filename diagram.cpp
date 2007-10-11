@@ -14,7 +14,14 @@ const qreal Diagram::margin = 5.0;
 	Constructeur
 	@param parent Le QObject parent du schema
 */
-Diagram::Diagram(QObject *parent) : QGraphicsScene(parent), qgi_manager(this) {
+Diagram::Diagram(QObject *parent) :
+	QGraphicsScene(parent),
+	draw_grid(true),
+	use_border(true),
+	moved_elements_fetched(false),
+	qgi_manager(this),
+	draw_terminals(true)
+{
 	setBackgroundBrush(Qt::white);
 	conductor_setter = new QGraphicsLineItem(0, 0);
 	conductor_setter -> setZValue(1000000);
@@ -24,9 +31,6 @@ Diagram::Diagram(QObject *parent) : QGraphicsScene(parent), qgi_manager(this) {
 	t.setStyle(Qt::DashLine);
 	conductor_setter -> setPen(t);
 	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
-	draw_grid  = true;
-	use_border = true;
-	moved_elements_fetched = false;
 	connect(this, SIGNAL(selectionChanged()), this, SLOT(slot_checkSelectionEmptinessChange()));
 }
 
