@@ -14,7 +14,7 @@ class ConductorPropertiesWidget : public QWidget {
 	
 	// methodes
 	public:
-	bool isSingleLine() const;
+	Conductor::ConductorType conductorType() const;
 	void setSingleLineProperties(const SingleLineProperties &);
 	SingleLineProperties singleLineProperties() const;
 	QString conductorText() const;
@@ -24,10 +24,13 @@ class ConductorPropertiesWidget : public QWidget {
 	void updatePreview();
 	void updateSingleLineConfig();
 	void updateSingleLineDisplay();
-	void setSingleLine(bool);
+	void setConductorType(Conductor::ConductorType);
+	void setConductorType(int);
 	
 	// attributs prives
 	private:
+	QButtonGroup *radio_buttons;
+	QRadioButton *simple;
 	QRadioButton *multiline;
 	QLineEdit *text_field;
 	QRadioButton *singleline;
@@ -38,6 +41,7 @@ class ConductorPropertiesWidget : public QWidget {
 	QCheckBox *neutral_checkbox;
 	QLabel *preview;
 	
+	Conductor::ConductorType type_;
 	SingleLineProperties slp;
 	QString conductor_text;
 	

@@ -23,6 +23,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	terminal1(p1),
 	terminal2(p2),
 	destroyed(false),
+	type_(Multi),
 	segments(NULL),
 	previous_z_value(zValue()),
 	modified_path(false),
@@ -416,7 +417,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, Q
 	
 	// dessin du conducteur
 	qp -> drawPath(path());
-	if (isSingleLine()) {
+	if (type_ == Single) {
 		if (isSelected()) qp -> setBrush(Qt::red);
 		singleLineProperties.draw(
 			qp,
@@ -791,15 +792,17 @@ bool Conductor::hasClickedOn(QPointF press_point, QPointF point) const {
 */
 bool Conductor::fromXml(QDomElement &e) {
 	// recupere la "configuration" du conducteur
-	if (e.attribute("singleline") == "true") {
+	if (e.attribute("type") == typeToString(Single)) {
 		// recupere les parametres specifiques a un conducteur unifilaire
 		singleLineProperties.fromXml(e);
-		setSingleLine(true);
+		setConductorType(Conductor::Single);
+	} else if (e.attribute("type") == typeToString(Simple)) {
+		setConductorType(Conductor::Simple);
 	} else {
 		// recupere le champ de texte
 		text_item -> setPlainText(e.attribute("num"));
 		text_item -> previous_text = e.attribute("num");
-		setSingleLine(false);
+		setConductorType(Conductor::Multi);
 	}
 	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
@@ -892,10 +895,10 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 	}
 	
 	// exporte la "configuration" du conducteur
-	e.setAttribute("singleline", isSingleLine() ? "true" : "false");
-	if (isSingleLine()) {
+	e.setAttribute("type", typeToString(type_));
+	if (type_ == Single) {
 		singleLineProperties.toXml(d, e);
-	} else {
+	} else if (type_ == Multi) {
 		e.setAttribute("num", text_item -> toPlainText());
 	}
 	return(e);
@@ -1011,8 +1014,9 @@ ConductorProfile Conductor::profile() const {
 	return(conductor_profile);
 }
 
-bool Conductor::isSingleLine() const {
-	return(is_single_line);
+/// @return le type du conducteur
+Conductor::ConductorType Conductor::conductorType() const {
+	return(type_);
 }
 
 /**
@@ -1021,9 +1025,10 @@ bool Conductor::isSingleLine() const {
 	et vice-versa.
 	@param sl true pour un conducteur unifilaire, false pour un conducteur multifilaire
 */
-void Conductor::setSingleLine(bool sl) {
-	is_single_line = sl;
-	text_item -> setVisible(!is_single_line);
+void Conductor::setConductorType(ConductorType t) {
+	if (typeToString(t).isNull()) return;
+	type_ = t;
+	text_item -> setVisible(type_ == Conductor::Multi);
 }
 
 /// @return le texte du conducteur
@@ -1038,7 +1043,6 @@ void Conductor::setText(const QString &t) {
 	text_item -> setPlainText(t);
 	text_item -> previous_text = t;
 }
-
 
 /**
 	Constructeur par defaut
@@ -1202,4 +1206,16 @@ void SingleLineProperties::fromXml(QDomElement &e) {
 	hasGround  = e.attribute("ground")  == "true";
 	hasNeutral = e.attribute("neutral") == "true";
 	setPhasesCount(e.attribute("phase").toInt());
+}
+
+/**
+	
+*/
+QString Conductor::typeToString(ConductorType t) {
+	switch(t) {
+		case Simple: return("simple");
+		case Single: return("single");
+		case Multi:  return("mutli");
+		default: return(QString());
+	}
 }

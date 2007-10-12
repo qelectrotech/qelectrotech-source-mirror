@@ -335,19 +335,19 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
-	virtual void setOldSettings(bool, const QString &, const SingleLineProperties &);
-	virtual void setNewSettings(bool, const QString &, const SingleLineProperties &);
+	virtual void setOldSettings(Conductor::ConductorType, const QString &, const SingleLineProperties &);
+	virtual void setNewSettings(Conductor::ConductorType, const QString &, const SingleLineProperties &);
 	
 	// attributs
 	private:
 	/// conducteur modifie
 	Conductor *conductor;
 	/// anciennes proprietes
-	bool old_is_single_line;
+	Conductor::ConductorType old_type;
 	QString old_conductor_text;
 	SingleLineProperties old_slp;
 	/// nouvelles proprietes
-	bool new_is_single_line;
+	Conductor::ConductorType new_type;
 	QString new_conductor_text;
 	SingleLineProperties new_slp;
 	/// booleens indiquant si les proprietes ont ete definies ou non

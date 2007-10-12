@@ -42,6 +42,7 @@ class Conductor : public QGraphicsPathItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1001 };
+	enum ConductorType { Simple, Single, Multi };
 	
 	/// premiere borne a laquelle le fil est rattache
 	Terminal *terminal1;
@@ -71,8 +72,8 @@ class Conductor : public QGraphicsPathItem {
 	const QList<ConductorSegment *> segmentsList() const;
 	void setProfile(const ConductorProfile &);
 	ConductorProfile profile() const;
-	void setSingleLine(bool);
-	bool isSingleLine() const;
+	ConductorType conductorType() const;
+	void setConductorType(ConductorType);
 	
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -83,8 +84,8 @@ class Conductor : public QGraphicsPathItem {
 	private:
 	/// booleen indiquant si le fil est encore valide
 	bool destroyed;
-	/// booleen indiquant le mode du conducteur : unifilaire ou non
-	bool is_single_line;
+	/// enum indiquant le mode du conducteur : simple, unifilaire ou non
+	ConductorType type_;
 	/// champ de texte editable pour les conducteurs non unifilaires
 	DiagramTextItem *text_item;
 	/// segments composant le conducteur
@@ -123,5 +124,6 @@ class Conductor : public QGraphicsPathItem {
 	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 12.0);
 	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
 	static qreal conductor_bound(qreal, qreal, bool);
+	static QString typeToString(ConductorType);
 };
 #endif

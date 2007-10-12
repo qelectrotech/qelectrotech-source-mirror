@@ -526,16 +526,16 @@ ChangeConductorPropertiesCommand::~ChangeConductorPropertiesCommand() {
 }
 
 /// definit l'ancienne configuration
-void ChangeConductorPropertiesCommand::setOldSettings(bool single, const QString &text, const SingleLineProperties &slp) {
-	old_is_single_line = single;
+void ChangeConductorPropertiesCommand::setOldSettings(Conductor::ConductorType single, const QString &text, const SingleLineProperties &slp) {
+	old_type = single;
 	old_conductor_text = text;
 	old_slp = slp;
 	old_settings_set = true;
 }
 
 /// definit la nouvelle configuration
-void ChangeConductorPropertiesCommand::setNewSettings(bool single, const QString &text, const SingleLineProperties &slp) {
-	new_is_single_line = single;
+void ChangeConductorPropertiesCommand::setNewSettings(Conductor::ConductorType single, const QString &text, const SingleLineProperties &slp) {
+	new_type = single;
 	new_conductor_text = text;
 	new_slp = slp;
 	new_settings_set = true;
@@ -547,7 +547,7 @@ void ChangeConductorPropertiesCommand::setNewSettings(bool single, const QString
 */
 void ChangeConductorPropertiesCommand::undo() {
 	if (old_settings_set && new_settings_set) {
-		conductor -> setSingleLine(old_is_single_line);
+		conductor -> setConductorType(old_type);
 		conductor -> setText(old_conductor_text);
 		conductor -> singleLineProperties = old_slp;
 		conductor -> update();
@@ -560,7 +560,7 @@ void ChangeConductorPropertiesCommand::undo() {
 */
 void ChangeConductorPropertiesCommand::redo() {
 	if (old_settings_set && new_settings_set) {
-		conductor -> setSingleLine(new_is_single_line);
+		conductor -> setConductorType(new_type);
 		conductor -> setText(new_conductor_text);
 		conductor -> singleLineProperties = new_slp;
 		conductor -> update();

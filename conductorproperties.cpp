@@ -6,7 +6,8 @@
 	@param parent QWidget parent
 */
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
-	QWidget(parent)
+	QWidget(parent),
+	type_(Conductor::Multi)
 {
 	buildInterface();
 }
@@ -14,7 +15,7 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
 /// construit l'interface du widget
 void ConductorPropertiesWidget::buildInterface() {
 	
-	setFixedSize(380, 245);
+	setFixedSize(380, 270);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	
@@ -24,6 +25,7 @@ void ConductorPropertiesWidget::buildInterface() {
 	QVBoxLayout *groupbox_layout = new QVBoxLayout();
 	groupbox -> setLayout(groupbox_layout);
 	
+	simple = new QRadioButton(tr("Simple"));
 	multiline = new QRadioButton(tr("Multifilaire"));
 	
 	QHBoxLayout *multiline_layout = new QHBoxLayout();
@@ -60,13 +62,19 @@ void ConductorPropertiesWidget::buildInterface() {
 	singleline_layout1 -> addWidget(preview);
 	singleline_layout1 -> addLayout(singleline_layout2);
 	
+	groupbox_layout -> addWidget(simple);
 	groupbox_layout -> addWidget(multiline);
 	groupbox_layout -> addLayout(multiline_layout);
 	groupbox_layout -> addWidget(singleline);
 	groupbox_layout -> addLayout(singleline_layout1);
 	
+	radio_buttons = new QButtonGroup(this);
+	radio_buttons -> addButton(simple,     Conductor::Simple);
+	radio_buttons -> addButton(multiline,  Conductor::Multi);
+	radio_buttons -> addButton(singleline, Conductor::Single);
+	
 	buildConnections();
-	setSingleLine(false);
+	setConductorType(Conductor::Multi);
 }
 
 /// Met en place les connexions signaux/slots
@@ -77,8 +85,7 @@ void ConductorPropertiesWidget::buildConnections() {
 	connect(neutral_checkbox,  SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
 	connect(phase_checkbox,    SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
 	connect(phase_slider,      SIGNAL(valueChanged(int)),  this,          SLOT(updateSingleLineConfig()));
-	connect(singleline,        SIGNAL(toggled(bool)),      this,          SLOT(setSingleLine(bool)));
-	
+	connect(radio_buttons,     SIGNAL(buttonClicked(int)), this,          SLOT(setConductorType(int)));
 }
 
 /// Enleve les connexions signaux/slots
@@ -89,7 +96,7 @@ void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(neutral_checkbox,  SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
 	disconnect(phase_checkbox,    SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
 	disconnect(phase_slider,      SIGNAL(valueChanged(int)),  this,          SLOT(updateSingleLineConfig()));
-	disconnect(singleline,        SIGNAL(toggled(bool)),      this,          SLOT(setSingleLine(bool)));
+	disconnect(radio_buttons,     SIGNAL(buttonClicked(int)), this,          SLOT(setConductorType(int)));
 }
 
 /// Destructeur
@@ -131,18 +138,26 @@ void ConductorPropertiesWidget::updatePreview() {
 }
 
 /// @return true si le widget est en mode unifilaire, false sinon
-bool ConductorPropertiesWidget::isSingleLine() const {
-	return(singleline -> isChecked());
+Conductor::ConductorType ConductorPropertiesWidget::conductorType() const {
+	return(type_);
 }
 
 /**
-	Passe le widget en mode unifilaire ou multifilaire
-	@param sl true pour passer le widget en mode "unifilaire", false sinon
+	Passe le widget en mode simple, unifilaire ou multifilaire
+	@param t le type de conducteur
 */
-void ConductorPropertiesWidget::setSingleLine(bool sl) {
+void ConductorPropertiesWidget::setConductorType(Conductor::ConductorType t) {
+	type_ = t;
+	// widgets lies au simple
+	simple        -> setChecked(t == Conductor::Simple);
+	
+	// widgets lies au mode multifilaire
+	multiline        -> setChecked(t == Conductor::Multi);
+	text_field       -> setEnabled(t == Conductor::Multi);
+	
+	// widgets lies au mode unifilaire
+	bool sl = (t == Conductor::Single);
 	singleline       -> setChecked(sl);
-	multiline        -> setChecked(!sl);
-	text_field       -> setEnabled(!sl);
 	preview          -> setEnabled(sl);
 	phase_checkbox   -> setEnabled(sl);
 	phase_slider     -> setEnabled(sl);
@@ -150,6 +165,10 @@ void ConductorPropertiesWidget::setSingleLine(bool sl) {
 	ground_checkbox  -> setEnabled(sl);
 	neutral_checkbox -> setEnabled(sl);
 	updateSingleLineDisplay();
+}
+
+void ConductorPropertiesWidget::setConductorType(int t) {
+	setConductorType(static_cast<Conductor::ConductorType>(t));
 }
 
 /// @param prop Les nouvelles proprietes unifilaires de ce conducteur

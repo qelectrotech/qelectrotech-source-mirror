@@ -708,13 +708,13 @@ void DiagramView::editConductor() {
 	
 	// initialise l'editeur de proprietes pour le conducteur
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget();
-	cpw -> setSingleLine(edited_conductor -> isSingleLine());
+	cpw -> setConductorType(edited_conductor -> conductorType());
 	cpw -> setConductorText(edited_conductor -> text());
 	cpw -> setSingleLineProperties(edited_conductor -> singleLineProperties);
 	
 	// initialise egalement l'objet UndoCommand correspondant
 	ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
-	ccpc -> setOldSettings(edited_conductor -> isSingleLine(), edited_conductor -> text(), edited_conductor -> singleLineProperties);
+	ccpc -> setOldSettings(edited_conductor -> conductorType(), edited_conductor -> text(), edited_conductor -> singleLineProperties);
 	
 	// l'insere dans un dialogue
 	QDialog conductor_dialog;
@@ -728,7 +728,7 @@ void DiagramView::editConductor() {
 	
 	// execute le dialogue et met a jour le conducteur
 	if (conductor_dialog.exec() == QDialog::Accepted) {
-		ccpc -> setNewSettings(cpw -> isSingleLine(), cpw -> conductorText(), cpw -> singleLineProperties());
+		ccpc -> setNewSettings(cpw -> conductorType(), cpw -> conductorText(), cpw -> singleLineProperties());
 		diagram() -> undoStack().push(ccpc);
 	} else {
 		delete ccpc;
