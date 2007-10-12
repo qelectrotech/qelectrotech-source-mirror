@@ -47,16 +47,3 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 		}
 	}
 }
-
-/**
-	Gere le relachement des touches du clavier.
-	Cette methode a ete reimplementee pour gerer la touche Suppr/Del
-*/
-void DiagramTextItem::keyReleaseEvent(QKeyEvent *e) {
-	if (e -> key() == Qt::Key_Delete) {
-		QTextCursor text_cursor = textCursor();
-		text_cursor.deleteChar();
-		setTextCursor(text_cursor);
-	}
-	QGraphicsTextItem::keyReleaseEvent(e);
-}

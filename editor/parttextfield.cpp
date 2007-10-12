@@ -150,12 +150,3 @@ QRectF PartTextField::boundingRect() const {
 	r.adjust(0.0, -2.0, 0.0, 0.0);
 	return(r);
 }
-
-void PartTextField::keyReleaseEvent(QKeyEvent *e) {
-	if (e -> key() == Qt::Key_Delete) {
-		QTextCursor text_cursor = textCursor();
-		text_cursor.deleteChar();
-		setTextCursor(text_cursor);
-	}
-	QGraphicsTextItem::keyReleaseEvent(e);
-}

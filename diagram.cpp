@@ -93,7 +93,7 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 		case Qt::Key_Up:    movement = QPointF(0.0, -yGrid); break;
 		case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
 	}
-	if (!movement.isNull()) {
+	if (!movement.isNull() && !focusItem()) {
 		QSet<Element *> moved_elements = elementsToMove();
 		if (!moved_elements.isEmpty()) {
 			Element *first_elmt = NULL;

@@ -31,7 +31,6 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
-	virtual void keyReleaseEvent(QKeyEvent *);
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	QRectF boundingRect() const;
 	

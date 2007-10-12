@@ -702,3 +702,17 @@ void DiagramView::resetConductors() {
 	if (conductors_and_profiles.isEmpty()) return;
 	scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
 }
+
+/**
+	Gere les evenements de la DiagramView
+	@param e Evenement
+*/
+bool DiagramView::event(QEvent *e) {
+	// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
+	// vue plutot que de remonter vers les QMenu / QAction
+	if (e -> type() == QEvent::ShortcutOverride && scene -> focusItem()) {
+		e -> accept();
+		return(true);
+	}
+	return(QGraphicsView::event(e));
+}

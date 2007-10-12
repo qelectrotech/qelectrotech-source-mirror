@@ -41,6 +41,7 @@ class DiagramView : public QGraphicsView {
 	
 	protected:
 	virtual void wheelEvent(QWheelEvent *);
+	virtual bool event(QEvent *);
 	
 	private:
 	bool saveDiagramToFile(QString &);

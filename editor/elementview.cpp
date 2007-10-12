@@ -6,7 +6,7 @@
 */
 ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent),
-	_scene(scene)
+	scene_(scene)
 {
 	setInteractive(true);
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
@@ -22,7 +22,7 @@ ElementView::~ElementView() {
 
 /// @return l'ElementScene visualisee par cette ElementView
 ElementScene *ElementView::scene() const {
-	return(_scene);
+	return(scene_);
 }
 
 /**
@@ -31,5 +31,13 @@ ElementScene *ElementView::scene() const {
 */
 void ElementView::setScene(ElementScene *s) {
 	QGraphicsView::setScene(s);
-	_scene = s;
+	scene_ = s;
+}
+
+bool ElementView::event(QEvent *e) {
+	if (e -> type() == QEvent::ShortcutOverride && scene_ -> focusItem()) {
+		e -> accept();
+		return(true);
+	}
+	return(QGraphicsView::event(e));
 }

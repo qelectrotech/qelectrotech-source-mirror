@@ -24,6 +24,5 @@ class DiagramTextItem : public QGraphicsTextItem {
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
-	virtual void keyReleaseEvent(QKeyEvent *);
 };
 #endif

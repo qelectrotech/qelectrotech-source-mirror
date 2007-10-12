@@ -16,9 +16,11 @@ class ElementView : public QGraphicsView {
 	public:
 	ElementScene *scene() const;
 	void setScene(ElementScene *);
+	protected:
+	bool event(QEvent *);
 	
 	//attributs
 	private:
-	ElementScene *_scene;
+	ElementScene *scene_;
 };
 #endif
