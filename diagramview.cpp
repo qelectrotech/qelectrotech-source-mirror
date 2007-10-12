@@ -13,7 +13,7 @@
 DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
 	setInteractive(true);
 	setCacheMode(QGraphicsView::CacheBackground);
-	setOptimizationFlags(QGraphicsView::DontClipPainter|QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
+	setOptimizationFlags(QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
 	
 	// active l'antialiasing
 	setRenderHint(QPainter::Antialiasing, true);
@@ -491,10 +491,46 @@ void DiagramView::dialogEditInfos() {
 	// recupere le cartouche du schema
 	InsetProperties inset = scene -> border_and_inset.exportInset();
 	
+	// recupere les dimensions du schema
+	int columns_count_value  = scene -> border_and_inset.nbColumn();
+	int columns_width_value  = scene -> border_and_inset.columnsWidth();
+	int columns_height_value = scene -> border_and_inset.columnsHeight();
+	
 	// construit le dialogue
 	QDialog popup;
 	popup.setMinimumWidth(400);
-	popup.setWindowTitle(tr("Cartouche du sch\351ma"));
+	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma"));
+	
+	QGroupBox *diagram_size_box = new QGroupBox(tr("Dimensions du sch\351ma"), &popup);
+	QGridLayout diagram_size_box_layout(diagram_size_box);
+	
+	QLabel *ds1 = new QLabel(tr("Colonnes :"));
+	
+	QSpinBox *columns_count  = new QSpinBox(diagram_size_box);
+	columns_count -> setMinimum(scene -> border_and_inset.minNbColumns());
+	columns_count -> setValue(columns_count_value);
+	
+	QSpinBox *columns_width  = new QSpinBox(diagram_size_box);
+	columns_width -> setMinimum(1);
+	columns_width -> setSingleStep(10);
+	columns_width -> setValue(columns_width_value);
+	columns_width -> setPrefix(tr("\327"));
+	columns_width -> setSuffix(tr("px"));
+	
+	QLabel *ds2 = new QLabel(tr("Hauteur :"));
+	
+	QSpinBox *columns_height = new QSpinBox(diagram_size_box);
+	columns_height -> setRange(scene -> border_and_inset.minColumnsHeight(), 10000);
+	columns_height -> setSingleStep(80);
+	columns_height -> setValue(columns_height_value);
+	
+	diagram_size_box_layout.addWidget(ds1,            0, 0);
+	diagram_size_box_layout.addWidget(columns_count,  0, 1);
+	diagram_size_box_layout.addWidget(columns_width,  0, 2);
+	diagram_size_box_layout.addWidget(ds2,            1, 0);
+	diagram_size_box_layout.addWidget(columns_height, 1, 1);
+	
+	QGroupBox *inset_infos = new QGroupBox(tr("Informations du cartouche"), &popup);
 	
 	QLineEdit *titre = new QLineEdit(inset.title, &popup);
 	QLineEdit *auteur = new QLineEdit(inset.author, &popup);
@@ -504,8 +540,8 @@ void DiagramView::dialogEditInfos() {
 	date -> setCalendarPopup(true);
 	QLineEdit *fichier = new QLineEdit(inset.filename, &popup);
 	QLineEdit *folio = new QLineEdit(inset.folio, &popup);
-	QWidget bidon(&popup);
-	QGridLayout layout_champs(&bidon);
+	QGridLayout layout_champs(inset_infos);
+	
 	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
 	layout_champs.addWidget(titre,                        0, 1);
 	layout_champs.addWidget(new QLabel(tr("Auteur : ")),  1, 0);
@@ -524,7 +560,8 @@ void DiagramView::dialogEditInfos() {
 	
 	// ajout dans une disposition verticale
 	QVBoxLayout layout_v(&popup);
-	layout_v.addWidget(&bidon);
+	layout_v.addWidget(diagram_size_box);
+	layout_v.addWidget(inset_infos);
 	layout_v.addWidget(&boutons);
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted) {
@@ -535,9 +572,22 @@ void DiagramView::dialogEditInfos() {
 		new_inset.filename = fichier -> text();
 		new_inset.folio = folio -> text();
 		
-		// s'il y a des modifications
+		// s'il y a des modifications au cartouche
 		if (new_inset != inset) {
 			scene -> undoStack().push(new ChangeInsetCommand(scene, inset, new_inset));
+		}
+		
+		// s'il y a des modifications
+		if (
+			columns_count_value  != columns_count  -> value() ||\
+			columns_width_value  != columns_width  -> value() ||\
+			columns_height_value != columns_height -> value()
+		) {
+			ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
+			cbc -> columnsCountDifference  = columns_count  -> value() - columns_count_value;
+			cbc -> columnsWidthDifference  = columns_width  -> value() - columns_width_value;
+			cbc -> columnsHeightDifference = columns_height -> value() - columns_height_value;
+			scene -> undoStack().push(cbc);
 		}
 	}
 }
@@ -572,7 +622,7 @@ void DiagramView::removeColumn() {
 */
 void DiagramView::expand() {
 	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsHeightDifference = 20.0;
+	cbc -> columnsHeightDifference = 80.0;
 	scene -> undoStack().push(cbc);
 }
 
@@ -581,7 +631,7 @@ void DiagramView::expand() {
 */
 void DiagramView::shrink() {
 	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsHeightDifference = -20.0;
+	cbc -> columnsHeightDifference = -80.0;
 	scene -> undoStack().push(cbc);
 }
 

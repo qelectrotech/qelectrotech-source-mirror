@@ -495,6 +495,7 @@ void ChangeBorderCommand::applyChanges(int coeff) {
 	if (headersHeightDifference) {
 		border.setColumnsHeaderHeight(border.columnsHeaderHeight() + (headersHeightDifference * coeff));
 	}
+	border.adjustInsetToColumns();
 }
 
 /// Annule les changements apportes au schema

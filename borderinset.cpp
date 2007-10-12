@@ -10,7 +10,7 @@ BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	min_nb_columns        = 3;
 	columns_width         = 50.0;
 	columns_height        = 500.0;
-	min_columns_height    = 20.0;
+	min_columns_height    = 80.0;
 	inset_width           = nb_columns * columns_width;
 	inset_height          = 50.0;
 	columns_header_height = 20.0;
@@ -193,4 +193,12 @@ void BorderInset::setInsetWidth(const qreal &new_iw) {
 void BorderInset::setInsetHeight(const qreal &new_ih) {
 	inset_height = qMax(20.0, qMin(columns_height, new_ih));
 	updateRectangles();
+}
+
+/**
+	Ajuste la largeur du cartouche de facon a ce que celui-ci soit aussi large
+	que le schema
+*/
+void BorderInset::adjustInsetToColumns() {
+	setInsetWidth(nbColumn() * columnsWidth());
 }

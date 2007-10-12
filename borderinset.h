@@ -57,6 +57,7 @@ class BorderInset : public QObject {
 	void setColumnsHeight      (const qreal &);
 	void setInsetWidth         (const qreal &);
 	void setInsetHeight        (const qreal &);
+	void adjustInsetToColumns  ();
 	
 	// methodes d'acces en ecriture aux informations du cartouche
 	void setAuthor             (const QString &author)   { bi_author       = author;   }

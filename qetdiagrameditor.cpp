@@ -163,7 +163,7 @@ void QETDiagramEditor::actions() {
 	rotate_selection  = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
 	conductor_prop    = new QAction(QIcon(":/ico/conductor.png"),  tr("Propri\351t\351s du conducteur"),       this);
 	conductor_reset   = new QAction(QIcon(":/ico/conductor2.png"), tr("R\351initialiser les conducteurs"),     this);
-	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Informations sur le sch\351ma"),        this);
+	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Propri\351t\351s du sch\351ma"),        this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
 	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
@@ -212,6 +212,7 @@ void QETDiagramEditor::actions() {
 	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	conductor_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
+	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
