@@ -237,7 +237,7 @@ void QETDiagramEditor::actions() {
 	quit_editor       -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	
 	undo              -> setStatusTip(tr("Annule l'action pr\351c\351dente"));
-	undo              -> setStatusTip(tr("Restaure l'action annul\351e"));
+	redo              -> setStatusTip(tr("Restaure l'action annul\351e"));
 	cut               -> setStatusTip(tr("Transf\350re les \351l\351ments s\351lectionn\351s dans le presse-papier"));
 	copy              -> setStatusTip(tr("Copie les \351l\351ments s\351lectionn\351s dans le presse-papier"));
 	paste             -> setStatusTip(tr("Place les \351l\351ments du presse-papier sur le sch\351ma"));
@@ -246,7 +246,8 @@ void QETDiagramEditor::actions() {
 	select_invert     -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s"));
 	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma"));
 	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
-	conductor_prop     -> setStatusTip(tr("\311dite les propri\351t\351s du conducteur s\351lectionn\351"));
+	conductor_prop    -> setStatusTip(tr("\311dite les propri\351t\351s du conducteur s\351lectionn\351"));
+	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
 	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
@@ -332,7 +333,7 @@ void QETDiagramEditor::menus() {
 	QMenu *menu_fichier   = menuBar() -> addMenu(tr("&Fichier"));
 	QMenu *menu_edition   = menuBar() -> addMenu(tr("&\311dition"));
 	QMenu *menu_affichage = menuBar() -> addMenu(tr("Afficha&ge"));
-	QMenu *menu_outils    = menuBar() -> addMenu(tr("O&utils"));
+	//QMenu *menu_outils    = menuBar() -> addMenu(tr("O&utils"));
 	QMenu *menu_config    = menuBar() -> addMenu(tr("&Configuration"));
 	windows_menu          = menuBar() -> addMenu(tr("Fe&n\352tres"));
 	QMenu *menu_aide      = menuBar() -> addMenu(tr("&Aide"));
@@ -341,7 +342,7 @@ void QETDiagramEditor::menus() {
 	menu_fichier   -> setTearOffEnabled(true);
 	menu_edition   -> setTearOffEnabled(true);
 	menu_affichage -> setTearOffEnabled(true);
-	menu_outils    -> setTearOffEnabled(true);
+	//menu_outils    -> setTearOffEnabled(true);
 	menu_config    -> setTearOffEnabled(true);
 	windows_menu   -> setTearOffEnabled(true);
 	menu_aide      -> setTearOffEnabled(true);
@@ -384,29 +385,31 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(expand_diagram);
 	menu_edition -> addAction(shrink_diagram);
 	
-	// menu Affichage > Afficher
+	// menu Configurer > Afficher
 	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
 	menu_aff_aff -> setTearOffEnabled(true);
-	menu_aff_aff -> addAction(barre_outils -> toggleViewAction());
-	barre_outils -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils"));
+	menu_aff_aff -> addAction(main_bar -> toggleViewAction());
+	main_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
+	menu_aff_aff -> addAction(view_bar -> toggleViewAction());
+	view_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
+	menu_aff_aff -> addAction(diagram_bar -> toggleViewAction());
+	diagram_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Sch\351ma"));
 	menu_aff_aff -> addAction(qdw_pa -> toggleViewAction());
 	qdw_pa -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
 	
 	// menu Affichage
-	menu_affichage -> addMenu(menu_aff_aff);
+	menu_affichage -> addAction(mode_selection);
+	menu_affichage -> addAction(mode_visualise);
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(zoom_in);
 	menu_affichage -> addAction(zoom_out);
 	menu_affichage -> addAction(zoom_fit);
 	menu_affichage -> addAction(zoom_reset);
 	
-	// menu Outils
-	menu_outils -> addAction(mode_selection);
-	menu_outils -> addAction(mode_visualise);
-	
 	// menu Configuration
+	menu_config -> addMenu(menu_aff_aff);
 	menu_config -> addAction(fullscreen_on);
-	menu_config -> addAction(configure);
+	//menu_config -> addAction(configure);
 	
 	// menu Fenetres
 	slot_updateWindowsMenu();
@@ -420,30 +423,49 @@ void QETDiagramEditor::menus() {
 	Mise en place de la barre d'outils
 */
 void QETDiagramEditor::toolbar() {
-	barre_outils = new QToolBar(tr("Outils"), this);
-	barre_outils -> setObjectName("toolbar");
+	main_bar = new QToolBar(tr("Outils"), this);
+	main_bar -> setObjectName("toolbar");
 	
-	// Modes selection / visualisation
-	barre_outils -> addAction(mode_selection);
-	barre_outils -> addAction(mode_visualise);
-	barre_outils -> addSeparator();
-	barre_outils -> addAction(undo);
-	barre_outils -> addAction(redo);
-	barre_outils -> addSeparator();
-	barre_outils -> addAction(cut);
-	barre_outils -> addAction(copy);
-	barre_outils -> addAction(paste);
-	barre_outils -> addSeparator();
-	barre_outils -> addAction(delete_selection);
-	barre_outils -> addAction(rotate_selection);
-	barre_outils -> addSeparator();
-	barre_outils -> addAction(zoom_in);
-	barre_outils -> addAction(zoom_out);
-	barre_outils -> addAction(zoom_fit);
-	barre_outils -> addAction(zoom_reset);
+	view_bar = new QToolBar(tr("Affichage"), this);
+	view_bar -> setObjectName("display");
+	
+	diagram_bar = new QToolBar(tr("Sch\351ma"), this);
+	diagram_bar -> setObjectName("diagram");
+	
+	main_bar -> addAction(new_file);
+	main_bar -> addAction(open_file);
+	main_bar -> addAction(save_file);
+	main_bar -> addAction(save_file_sous);
+	main_bar -> addAction(close_file);
+	main_bar -> addAction(print);
+	main_bar -> addSeparator();
+	main_bar -> addAction(undo);
+	main_bar -> addAction(redo);
+	main_bar -> addSeparator();
+	main_bar -> addAction(cut);
+	main_bar -> addAction(copy);
+	main_bar -> addAction(paste);
+	main_bar -> addSeparator();
+	main_bar -> addAction(delete_selection);
+	main_bar -> addAction(rotate_selection);
+	
+	// Modes selection / visualisation et zoom
+	view_bar -> addAction(mode_selection);
+	view_bar -> addAction(mode_visualise);
+	view_bar -> addSeparator();
+	view_bar -> addAction(zoom_in);
+	view_bar -> addAction(zoom_out);
+	view_bar -> addAction(zoom_fit);
+	view_bar -> addAction(zoom_reset);
+	
+	diagram_bar -> addAction(infos_diagram);
+	diagram_bar -> addAction(conductor_prop);
+	diagram_bar -> addAction(conductor_reset);
 	
 	// ajout de la barre d'outils a la fenetre principale
-	addToolBar(Qt::TopToolBarArea, barre_outils);
+	addToolBar(Qt::TopToolBarArea, main_bar);
+	addToolBar(Qt::TopToolBarArea, view_bar);
+	addToolBar(Qt::TopToolBarArea, diagram_bar);
 }
 
 /**

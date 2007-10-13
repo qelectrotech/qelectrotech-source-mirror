@@ -122,7 +122,9 @@ class QETDiagramEditor : public QMainWindow {
 	/// Panel d'Appareils
 	ElementsPanelWidget *pa;
 	QMenu *windows_menu;
-	QToolBar *barre_outils;
+	QToolBar *main_bar;
+	QToolBar *view_bar;
+	QToolBar *diagram_bar;
 	QUndoGroup undo_group;
 };
 #endif
