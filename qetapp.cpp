@@ -1,6 +1,8 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
+#define QUOTE(x) STRINGIFY(x)
+#define STRINGIFY(x) #x
 
 QString QETApp::common_elements_dir = QString();
 
@@ -182,7 +184,7 @@ QString QETApp::commonElementsDir() {
 	if (common_elements_dir != QString()) return(common_elements_dir);
 #endif
 #ifdef QET_COMMON_COLLECTION_PATH
-	return(QET_COMMON_COLLECTION_PATH);
+	return(QUOTE(QET_COMMON_COLLECTION_PATH));
 #else
 	return(QDir::current().path() + "/elements/");
 #endif
@@ -272,7 +274,7 @@ QString QETApp::languagesPath() {
 #ifndef QET_LANG_PATH
 	return(QDir::current().path() + "/lang/");
 #else
-	return(QET_LANG_PATH);
+	return(QUOTE(QET_LANG_PATH));
 #endif
 }
 

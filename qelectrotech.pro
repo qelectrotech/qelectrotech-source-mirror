@@ -136,6 +136,12 @@ CONFIG(debug, debug|release) {
 } else {
 	TARGET = qelectrotech.release
 }
-;DEFINES += QET_LANG_PATH='\\"/path/to/qelectrotech/lang/\\"'
-;DEFINES += QET_COMMON_COLLECTION_PATH='\\"/path/to/qelectrotech/elements/\\"'
+
+#Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
+#DEFINES += QET_LANG_PATH='/path/to/qelectrotech/lang/'
+
+#Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
+#DEFINES += QET_COMMON_COLLECTION_PATH='/path/to/qelectrotech/elements/'
+
+#Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
 DEFINES += QET_ALLOW_OVERRIDE_CED_OPTION

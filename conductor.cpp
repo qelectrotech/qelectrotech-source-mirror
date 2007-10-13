@@ -402,7 +402,7 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, QET::Orientation term
 	@param qsogi Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
-void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, QWidget */*qw*/) {
+void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget */*qw*/) {
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
@@ -429,24 +429,24 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem */*qsogi*/, Q
 	
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
 	if (isSelected()) {
-		qp -> setRenderHint(QPainter::Antialiasing, true);
 		QList<QPointF> points = segmentsToPoints();
 		QPointF previous_point;
 		QBrush square_brush(Qt::darkGreen);
 		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
 			QPointF point = points.at(i);
-			
+			qp -> setRenderHint(QPainter::Antialiasing, false);
 			if (i > 1) {
 				qp -> fillRect(
 					QRectF(
-						((previous_point.x() + point.x()) / 2.0 ) - 2.5,
-						((previous_point.y() + point.y()) / 2.0 ) - 2.5,
+						((previous_point.x() + point.x()) / 2.0 ) - (options -> levelOfDetail == 1 ? 2.0 : 2.5),
+						((previous_point.y() + point.y()) / 2.0 ) - (options -> levelOfDetail == 1 ? 2.0 : 2.5),
 						5.0,
 						5.0
 					),
 					square_brush
 				);
 			}
+			qp -> setRenderHint(QPainter::Antialiasing, true);
 			qp -> drawEllipse(QRectF(point.x() - 3.0, point.y() - 3.0, 6.0, 6.0));
 			previous_point = point;
 		}

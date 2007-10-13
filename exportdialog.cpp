@@ -159,6 +159,10 @@ QWidget *ExportDialog::leftPart() {
 	QHBoxLayout *hboxLayout = new QHBoxLayout();
 	hboxLayout -> addWidget(new QLabel(tr("Nom de fichier :"), this));
 	hboxLayout -> addWidget(filename = new QLineEdit(this));
+	filename -> setText(QDir::toNativeSeparators(QDir::homePath()));
+	QCompleter *completer = new QCompleter(this);
+	completer -> setModel(new QDirModel(completer));
+	filename -> setCompleter(completer);
 	hboxLayout -> addWidget(button_browse = new QPushButton(tr("Parcourir"), this));
 	
 	vboxLayout -> addLayout(hboxLayout);
