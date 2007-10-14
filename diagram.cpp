@@ -229,6 +229,11 @@ QDomDocument Diagram::toXml(bool diagram) {
 		racine.setAttribute("colsize", border_and_inset.columnsWidth());
 		racine.setAttribute("height",  border_and_inset.columnsHeight());
 		racine.setAttribute("version", QET::version);
+		
+		// type de conducteur par defaut
+		QDomElement default_conductor = document.createElement("defaultconductor");
+		defaultConductorProperties.toXml(document, default_conductor);
+		racine.appendChild(default_conductor);
 	}
 	document.appendChild(racine);
 	
@@ -331,6 +336,15 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		// hauteur du schema
 		double height = racine.attribute("height").toDouble(&ok);
 		if (ok) border_and_inset.setColumnsHeight(height);
+		
+		// repere le permier element "defaultconductor"
+		for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+			QDomElement elmts = node.toElement();
+			if(elmts.isNull() || elmts.tagName() != "defaultconductor") continue;
+			defaultConductorProperties.fromXml(elmts);
+			break;
+		}
+		
 	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
