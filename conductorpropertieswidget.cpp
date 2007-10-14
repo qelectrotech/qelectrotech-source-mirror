@@ -1,4 +1,4 @@
-#include "conductorproperties.h"
+#include "conductorpropertieswidget.h"
 #include "conductor.h"
 
 /**

@@ -4,7 +4,7 @@
 #include "diagram.h"
 #include "elementspanelwidget.h"
 #include "aboutqet.h"
-#include "conductorproperties.h"
+#include "conductorpropertieswidget.h"
 
 /**
 	constructeur

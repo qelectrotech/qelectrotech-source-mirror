@@ -4,7 +4,7 @@
 #include "exportdialog.h"
 #include "conductor.h"
 #include "diagramcommands.h"
-#include "conductorproperties.h"
+#include "conductorpropertieswidget.h"
 
 /**
 	Constructeur

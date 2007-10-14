@@ -66,7 +66,7 @@ HEADERS += aboutqet.h \
            diagramcommands.h \
            diagramtextitem.h \
            insetproperties.h \
-           conductorproperties.h
+           conductorpropertieswidget.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conductor.cpp \
@@ -125,7 +125,7 @@ SOURCES += aboutqet.cpp \
            editor/textfieldeditor.cpp \
            diagramcommands.cpp \
            diagramtextitem.cpp \
-           conductorproperties.cpp
+           conductorpropertieswidget.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc
