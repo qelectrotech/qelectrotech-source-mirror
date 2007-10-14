@@ -7,6 +7,7 @@ class ConductorPropertiesWidget : public QWidget {
 	// constructeurs, destructeur
 	public:
 	ConductorPropertiesWidget(QWidget * = 0);
+	ConductorPropertiesWidget(const ConductorProperties &, QWidget * = 0);
 	virtual ~ConductorPropertiesWidget();
 	
 	private:
@@ -14,18 +15,16 @@ class ConductorPropertiesWidget : public QWidget {
 	
 	// methodes
 	public:
-	Conductor::ConductorType conductorType() const;
-	void setSingleLineProperties(const SingleLineProperties &);
-	SingleLineProperties singleLineProperties() const;
-	QString conductorText() const;
-	void setConductorText(const QString &);
+	void setConductorProperties(const ConductorProperties &);
+	ConductorProperties conductorProperties() const;
+	
+	private:
+	void setConductorType(ConductorProperties::ConductorType);
 	
 	public slots:
 	void updatePreview();
-	void updateSingleLineConfig();
-	void updateSingleLineDisplay();
-	void setConductorType(Conductor::ConductorType);
-	void setConductorType(int);
+	void updateConfig();
+	void updateDisplay();
 	
 	// attributs prives
 	private:
@@ -41,9 +40,7 @@ class ConductorPropertiesWidget : public QWidget {
 	QCheckBox *neutral_checkbox;
 	QLabel *preview;
 	
-	Conductor::ConductorType type_;
-	SingleLineProperties slp;
-	QString conductor_text;
+	ConductorProperties properties_;
 	
 	// methodes privees
 	void buildInterface();

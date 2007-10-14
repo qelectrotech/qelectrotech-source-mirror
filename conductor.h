@@ -3,28 +3,10 @@
 #include <QtGui>
 #include "terminal.h"
 #include "conductorprofile.h"
+#include "conductorproperties.h"
 #include "diagramtextitem.h"
 class ConductorSegment;
 class Element;
-/**
-	Cette classe represente les proprietes specifiques a un conducteur unifilaire
-*/
-class SingleLineProperties {
-	public:
-	SingleLineProperties();
-	virtual ~SingleLineProperties();
-	void setPhasesCount(int);
-	unsigned short int phasesCount();
-	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-	void toXml(QDomDocument &, QDomElement &) const;
-	void fromXml(QDomElement &);
-	bool hasGround;
-	bool hasNeutral;
-	private:
-	unsigned short int phases;
-	void drawGround (QPainter *, QET::ConductorSegmentType, QPointF, qreal);
-	void drawNeutral(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
-};
 
 /**
 	Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
@@ -42,14 +24,11 @@ class Conductor : public QGraphicsPathItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1001 };
-	enum ConductorType { Simple, Single, Multi };
 	
 	/// premiere borne a laquelle le fil est rattache
 	Terminal *terminal1;
 	/// deuxieme borne a laquelle le fil est rattache
 	Terminal *terminal2;
-	/// caracteristiques des conducteurs unifilaires
-	SingleLineProperties singleLineProperties;
 	
 	// methodes
 	public:
@@ -70,10 +49,11 @@ class Conductor : public QGraphicsPathItem {
 	bool fromXml(QDomElement &);
 	QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	const QList<ConductorSegment *> segmentsList() const;
+	void setProperties(const ConductorProperties &);
+	ConductorProperties properties() const;
 	void setProfile(const ConductorProfile &);
 	ConductorProfile profile() const;
-	ConductorType conductorType() const;
-	void setConductorType(ConductorType);
+	void readProperties();
 	
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -82,10 +62,10 @@ class Conductor : public QGraphicsPathItem {
 	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
 	
 	private:
+	/// caracteristiques du conducteur
+	ConductorProperties properties_;
 	/// booleen indiquant si le fil est encore valide
 	bool destroyed;
-	/// enum indiquant le mode du conducteur : simple, unifilaire ou non
-	ConductorType type_;
 	/// champ de texte editable pour les conducteurs non unifilaires
 	DiagramTextItem *text_item;
 	/// segments composant le conducteur
@@ -124,6 +104,5 @@ class Conductor : public QGraphicsPathItem {
 	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 12.0);
 	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
 	static qreal conductor_bound(qreal, qreal, bool);
-	static QString typeToString(ConductorType);
 };
 #endif

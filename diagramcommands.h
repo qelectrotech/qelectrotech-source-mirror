@@ -4,6 +4,7 @@
 #include "diagram.h"
 #include "diagramtextitem.h"
 #include "conductor.h"
+#include "conductorproperties.h"
 #include <QtGui>
 /**
 	Cette classe represente l'action d'ajouter un element au schema
@@ -335,21 +336,17 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
-	virtual void setOldSettings(Conductor::ConductorType, const QString &, const SingleLineProperties &);
-	virtual void setNewSettings(Conductor::ConductorType, const QString &, const SingleLineProperties &);
+	virtual void setOldSettings(const ConductorProperties &);
+	virtual void setNewSettings(const ConductorProperties &);
 	
 	// attributs
 	private:
 	/// conducteur modifie
 	Conductor *conductor;
 	/// anciennes proprietes
-	Conductor::ConductorType old_type;
-	QString old_conductor_text;
-	SingleLineProperties old_slp;
+	ConductorProperties old_properties;
 	/// nouvelles proprietes
-	Conductor::ConductorType new_type;
-	QString new_conductor_text;
-	SingleLineProperties new_slp;
+	ConductorProperties new_properties;
 	/// booleens indiquant si les proprietes ont ete definies ou non
 	bool old_settings_set;
 	bool new_settings_set;

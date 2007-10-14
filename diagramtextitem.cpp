@@ -44,6 +44,19 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 		if (Diagram *dia = diagram()) {
 			dia -> undoStack().push(new ChangeDiagramTextCommand(this, previous_text, toPlainText()));
 			previous_text = toPlainText();
+			
+			// si l'object parent est un conducteur, previent celui-ci du changement de texte
+			Conductor *c;
+			if (parentItem() && (c = qgraphicsitem_cast<Conductor *>(parentItem()))) {
+				ConductorProperties cp = c -> properties();
+				cp.text = toPlainText();
+				c -> setProperties(cp);
+			}
 		}
 	}
+	
+	// deselectionne le texte
+	QTextCursor cursor = textCursor();
+	cursor.clearSelection();
+	setTextCursor(cursor);
 }

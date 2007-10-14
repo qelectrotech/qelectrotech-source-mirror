@@ -6,10 +6,21 @@
 	@param parent QWidget parent
 */
 ConductorPropertiesWidget::ConductorPropertiesWidget(QWidget *parent) :
-	QWidget(parent),
-	type_(Conductor::Multi)
+	QWidget(parent)
 {
 	buildInterface();
+}
+
+/**
+	Constructeur
+	@param parent QWidget parent
+	@param cp Proprietes a editer
+*/
+ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &cp, QWidget *parent) :
+	QWidget(parent)
+{
+	buildInterface();
+	setConductorProperties(cp);
 }
 
 /// construit l'interface du widget
@@ -69,56 +80,65 @@ void ConductorPropertiesWidget::buildInterface() {
 	groupbox_layout -> addLayout(singleline_layout1);
 	
 	radio_buttons = new QButtonGroup(this);
-	radio_buttons -> addButton(simple,     Conductor::Simple);
-	radio_buttons -> addButton(multiline,  Conductor::Multi);
-	radio_buttons -> addButton(singleline, Conductor::Single);
+	radio_buttons -> addButton(simple,     ConductorProperties::Simple);
+	radio_buttons -> addButton(multiline,  ConductorProperties::Multi);
+	radio_buttons -> addButton(singleline, ConductorProperties::Single);
 	
 	buildConnections();
-	setConductorType(Conductor::Multi);
+	setConductorType(ConductorProperties::Multi);
 }
 
 /// Met en place les connexions signaux/slots
 void ConductorPropertiesWidget::buildConnections() {
-	connect(phase_slider,      SIGNAL(valueChanged(int)),  phase_spinbox, SLOT(setValue(int)));
-	connect(phase_spinbox,     SIGNAL(valueChanged(int)),  phase_slider,  SLOT(setValue(int)));
-	connect(ground_checkbox,   SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
-	connect(neutral_checkbox,  SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
-	connect(phase_checkbox,    SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
-	connect(phase_slider,      SIGNAL(valueChanged(int)),  this,          SLOT(updateSingleLineConfig()));
-	connect(radio_buttons,     SIGNAL(buttonClicked(int)), this,          SLOT(setConductorType(int)));
+	connect(phase_slider,      SIGNAL(valueChanged(int)),            phase_spinbox, SLOT(setValue(int)));
+	connect(phase_spinbox,     SIGNAL(valueChanged(int)),            phase_slider,  SLOT(setValue(int)));
+	connect(ground_checkbox,   SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
+	connect(neutral_checkbox,  SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
+	connect(phase_checkbox,    SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
+	connect(phase_slider,      SIGNAL(valueChanged(int)),            this,          SLOT(updateConfig()));
+	connect(radio_buttons,     SIGNAL(buttonClicked(int)),           this,          SLOT(updateConfig()));
+	connect(text_field,        SIGNAL(textChanged(const QString &)), this,          SLOT(updateConfig()));
 }
 
 /// Enleve les connexions signaux/slots
 void ConductorPropertiesWidget::destroyConnections() {
-	disconnect(phase_slider,      SIGNAL(valueChanged(int)),  phase_spinbox, SLOT(setValue(int)));
-	disconnect(phase_spinbox,     SIGNAL(valueChanged(int)),  phase_slider,  SLOT(setValue(int)));
-	disconnect(ground_checkbox,   SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
-	disconnect(neutral_checkbox,  SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
-	disconnect(phase_checkbox,    SIGNAL(toggled(bool)),      this,          SLOT(updateSingleLineConfig()));
-	disconnect(phase_slider,      SIGNAL(valueChanged(int)),  this,          SLOT(updateSingleLineConfig()));
-	disconnect(radio_buttons,     SIGNAL(buttonClicked(int)), this,          SLOT(setConductorType(int)));
+	disconnect(phase_slider,      SIGNAL(valueChanged(int)),            phase_spinbox, SLOT(setValue(int)));
+	disconnect(phase_spinbox,     SIGNAL(valueChanged(int)),            phase_slider,  SLOT(setValue(int)));
+	disconnect(ground_checkbox,   SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
+	disconnect(neutral_checkbox,  SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
+	disconnect(phase_checkbox,    SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
+	disconnect(phase_slider,      SIGNAL(valueChanged(int)),            this,          SLOT(updateConfig()));
+	disconnect(radio_buttons,     SIGNAL(buttonClicked(int)),           this,          SLOT(updateConfig()));
+	disconnect(text_field,        SIGNAL(textChanged(const QString &)), this,          SLOT(updateConfig()));
 }
 
 /// Destructeur
 ConductorPropertiesWidget::~ConductorPropertiesWidget() {
 }
 
-/// Met a jour les proprietes unifilaires
-void ConductorPropertiesWidget::updateSingleLineConfig() {
-	slp.hasGround = ground_checkbox -> isChecked();
-	slp.hasNeutral = neutral_checkbox -> isChecked();
-	slp.setPhasesCount(phase_checkbox -> isChecked() ? phase_spinbox -> value() : 0);
-	updatePreview();
+/// Met a jour les proprietes
+void ConductorPropertiesWidget::updateConfig() {
+	properties_.type = static_cast<ConductorProperties::ConductorType>(radio_buttons -> checkedId());
+	properties_.text = text_field -> text();
+	properties_.singleLineProperties.hasGround = ground_checkbox -> isChecked();
+	properties_.singleLineProperties.hasNeutral = neutral_checkbox -> isChecked();
+	properties_.singleLineProperties.setPhasesCount(phase_checkbox -> isChecked() ? phase_spinbox -> value() : 0);
+	
+	updateDisplay();
 }
 
-/// Met a jour l'affichage des proprietes unifilaires
-void ConductorPropertiesWidget::updateSingleLineDisplay() {
+/// Met a jour l'affichage des proprietes
+void ConductorPropertiesWidget::updateDisplay() {
 	destroyConnections();
-	ground_checkbox -> setChecked(slp.hasGround);
-	neutral_checkbox -> setChecked(slp.hasNeutral);
-	phase_spinbox -> setValue(slp.phasesCount());
-	phase_slider -> setValue(slp.phasesCount());
-	phase_checkbox -> setChecked(slp.phasesCount());
+	
+	setConductorType(properties_.type);
+	text_field -> setText(properties_.text);
+	ground_checkbox -> setChecked(properties_.singleLineProperties.hasGround);
+	neutral_checkbox -> setChecked(properties_.singleLineProperties.hasNeutral);
+	phase_spinbox -> setValue(properties_.singleLineProperties.phasesCount());
+	phase_slider -> setValue(properties_.singleLineProperties.phasesCount());
+	phase_checkbox -> setChecked(properties_.singleLineProperties.phasesCount());
+	
 	buildConnections();
 	updatePreview();
 }
@@ -132,31 +152,26 @@ void ConductorPropertiesWidget::updatePreview() {
 	painter.eraseRect(pixmap_rect);
 	painter.drawRect(pixmap_rect.adjusted(0,0,-1,-1));
 	painter.drawLine(QLineF(0, pixmap_rect.height() / 2, pixmap_rect.width(), pixmap_rect.height() / 2));
-	slp.draw(&painter, QET::Horizontal, pixmap_rect);
+	properties_.singleLineProperties.draw(&painter, QET::Horizontal, pixmap_rect);
 	painter.end();
 	preview -> setPixmap(pixmap);
-}
-
-/// @return true si le widget est en mode unifilaire, false sinon
-Conductor::ConductorType ConductorPropertiesWidget::conductorType() const {
-	return(type_);
 }
 
 /**
 	Passe le widget en mode simple, unifilaire ou multifilaire
 	@param t le type de conducteur
 */
-void ConductorPropertiesWidget::setConductorType(Conductor::ConductorType t) {
-	type_ = t;
+void ConductorPropertiesWidget::setConductorType(ConductorProperties::ConductorType t) {
+	
 	// widgets lies au simple
-	simple        -> setChecked(t == Conductor::Simple);
+	simple        -> setChecked(t == ConductorProperties::Simple);
 	
 	// widgets lies au mode multifilaire
-	multiline        -> setChecked(t == Conductor::Multi);
-	text_field       -> setEnabled(t == Conductor::Multi);
+	multiline        -> setChecked(t == ConductorProperties::Multi);
+	text_field       -> setEnabled(t == ConductorProperties::Multi);
 	
 	// widgets lies au mode unifilaire
-	bool sl = (t == Conductor::Single);
+	bool sl = (t == ConductorProperties::Single);
 	singleline       -> setChecked(sl);
 	preview          -> setEnabled(sl);
 	phase_checkbox   -> setEnabled(sl);
@@ -164,30 +179,15 @@ void ConductorPropertiesWidget::setConductorType(Conductor::ConductorType t) {
 	phase_spinbox    -> setEnabled(sl);
 	ground_checkbox  -> setEnabled(sl);
 	neutral_checkbox -> setEnabled(sl);
-	updateSingleLineDisplay();
 }
 
-void ConductorPropertiesWidget::setConductorType(int t) {
-	setConductorType(static_cast<Conductor::ConductorType>(t));
+/// @param p les nouvelles proprietes
+void ConductorPropertiesWidget::setConductorProperties(const ConductorProperties &p) {
+	properties_ = p;
+	updateDisplay();
 }
 
-/// @param prop Les nouvelles proprietes unifilaires de ce conducteur
-void ConductorPropertiesWidget::setSingleLineProperties(const SingleLineProperties &prop) {
-	slp = prop;
-	updateSingleLineDisplay();
-}
-
-/// @return les proprietes unifilaires de ce conducteur
-SingleLineProperties ConductorPropertiesWidget::singleLineProperties() const {
-	return(slp);
-}
-
-/// @param text Le texte de ce conducteur
-void ConductorPropertiesWidget::setConductorText(const QString &text) {
-	text_field -> setText(text);
-}
-
-/// @return Le texte de ce conducteur
-QString ConductorPropertiesWidget::conductorText() const {
-	return(text_field -> text());
+/// @return les proprietes editees
+ConductorProperties ConductorPropertiesWidget::conductorProperties() const {
+	return(properties_);
 }
