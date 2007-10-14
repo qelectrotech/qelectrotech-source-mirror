@@ -372,7 +372,9 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		// derniere verification : verifier que cette borne n'est pas deja reliee a l'autre borne
 		foreach (Conductor *f, liste_conductors) if (f -> terminal1 == p || f -> terminal2 == p) return;
 		// autrement, on pose un conducteur
-		s -> undoStack().push(new AddConductorCommand(s, new Conductor(this, p)));
+		Conductor * new_conductor = new Conductor(this, p);
+		new_conductor -> setProperties(s -> defaultConductorProperties);
+		s -> undoStack().push(new AddConductorCommand(s, new_conductor));
 	}
 }
 

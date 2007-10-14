@@ -163,6 +163,7 @@ void QETDiagramEditor::actions() {
 	rotate_selection  = new QAction(QIcon(":/ico/pivoter.png"),    tr("Pivoter"),                              this);
 	conductor_prop    = new QAction(QIcon(":/ico/conductor.png"),  tr("Propri\351t\351s du conducteur"),       this);
 	conductor_reset   = new QAction(QIcon(":/ico/conductor2.png"), tr("R\351initialiser les conducteurs"),     this);
+	conductor_default = new QAction(QIcon(":/ico/conductor3.png"), tr("Conducteurs par d\351faut"),            this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Propri\351t\351s du sch\351ma"),        this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
@@ -213,6 +214,7 @@ void QETDiagramEditor::actions() {
 	conductor_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
 	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
+	conductor_default -> setShortcut(QKeySequence(tr("Ctrl+D")));
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
@@ -248,6 +250,7 @@ void QETDiagramEditor::actions() {
 	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s"));
 	conductor_prop    -> setStatusTip(tr("\311dite les propri\351t\351s du conducteur s\351lectionn\351"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications"));
+	conductor_default -> setStatusTip(tr("Sp\351cifie les propri\351t\351s par d\351faut des conducteurs"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
 	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
@@ -319,6 +322,7 @@ void QETDiagramEditor::actions() {
 	connect(prev_window,      SIGNAL(triggered()), &workspace, SLOT(activatePreviousWindow())   );
 	connect(conductor_prop,   SIGNAL(triggered()), this,       SLOT(slot_editConductor())       );
 	connect(conductor_reset,  SIGNAL(triggered()), this,       SLOT(slot_resetConductors())     );
+	connect(conductor_default,SIGNAL(triggered()), this,       SLOT(slot_editDefaultConductors()));
 	connect(infos_diagram,    SIGNAL(triggered()), this,       SLOT(slot_editInfos())           );
 	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
@@ -378,6 +382,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(conductor_prop);
 	menu_edition -> addAction(conductor_reset);
+	menu_edition -> addAction(conductor_default);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addAction(add_column);
@@ -459,6 +464,7 @@ void QETDiagramEditor::toolbar() {
 	view_bar -> addAction(zoom_reset);
 	
 	diagram_bar -> addAction(infos_diagram);
+	diagram_bar -> addAction(conductor_default);
 	diagram_bar -> addAction(conductor_prop);
 	diagram_bar -> addAction(conductor_reset);
 	
@@ -699,6 +705,7 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_reset       -> setEnabled(opened_document);
 	conductor_prop   -> setEnabled(opened_document && selected_conductors_count == 1);
 	conductor_reset  -> setEnabled(opened_document && selected_conductors_count);
+	conductor_default-> setEnabled(opened_document);
 	infos_diagram    -> setEnabled(opened_document);
 	add_column       -> setEnabled(opened_document);
 	remove_column    -> setEnabled(opened_document);
@@ -878,5 +885,14 @@ void QETDiagramEditor::slot_editConductor() {
 void QETDiagramEditor::slot_resetConductors() {
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> resetConductors();
+	}
+}
+
+/**
+	Edite les proprietes par defaut des conducteurs
+*/
+void QETDiagramEditor::slot_editDefaultConductors() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv->editDefaultConductorProperties();
 	}
 }

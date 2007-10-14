@@ -5,6 +5,7 @@
 #include "qetdiagrameditor.h"
 #include "borderinset.h"
 #include "qgimanager.h"
+#include "conductorproperties.h"
 class Element;
 class Terminal;
 class Conductor;
@@ -27,6 +28,9 @@ class Diagram : public QGraphicsScene {
 	// attributs
 	public:
 	enum BorderOptions { EmptyBorder, Inset, Columns };
+	/// Proprietes par defaut des nouveaux conducteurs
+	ConductorProperties defaultConductorProperties;
+	/// Dimensions et cartouches du schema
 	BorderInset border_and_inset;
 	QPointF current_movement;
 	/// taille de la grille en abscisse

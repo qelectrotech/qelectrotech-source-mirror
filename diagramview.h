@@ -76,6 +76,7 @@ class DiagramView : public QGraphicsView {
 	void updateWindowTitle();
 	void editConductor();
 	void resetConductors();
+	void editDefaultConductorProperties();
 	
 	private slots:
 	void slot_selectionChanged();

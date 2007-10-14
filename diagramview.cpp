@@ -722,7 +722,7 @@ void DiagramView::editConductor() {
 	
 	// execute le dialogue et met a jour le conducteur
 	if (conductor_dialog.exec() == QDialog::Accepted) {
-		// recupere les nouvelles propietes
+		// recupere les nouvelles proprietes
 		ConductorProperties new_properties = cpw -> conductorProperties();
 		
 		if (new_properties != old_properties) {
@@ -751,6 +751,30 @@ void DiagramView::resetConductors() {
 	
 	if (conductors_and_profiles.isEmpty()) return;
 	scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
+}
+
+/**
+	Lance un dialogue permettant de modifier les proprietes par defaut des
+	futurs nouveaux conducteurs
+*/
+void DiagramView::editDefaultConductorProperties() {
+	// initialise l'editeur de proprietes pour le conducteur
+	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(scene -> defaultConductorProperties);
+	
+	// l'insere dans un dialogue
+	QDialog conductor_dialog;
+	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s par d\351faut des conducteurs"));
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
+	dialog_layout -> addWidget(cpw);
+	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout -> addWidget(dbb);
+	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));
+	connect(dbb, SIGNAL(rejected()), &conductor_dialog, SLOT(reject()));
+	
+	// execute le dialogue et met a jour le conducteur
+	if (conductor_dialog.exec() == QDialog::Accepted) {
+		scene -> defaultConductorProperties = cpw -> conductorProperties();
+	}
 }
 
 /**
