@@ -447,11 +447,13 @@ ChangeInsetCommand::~ChangeInsetCommand() {
 /// Annule la modification de cartouche
 void ChangeInsetCommand::undo() {
 	diagram -> border_and_inset.importInset(old_inset);
+	diagram -> invalidate(diagram -> border());
 }
 
 /// Refait la modification de cartouche
 void ChangeInsetCommand::redo() {
 	diagram -> border_and_inset.importInset(new_inset);
+	diagram -> invalidate(diagram -> border());
 }
 
 /**
