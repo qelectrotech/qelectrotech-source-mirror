@@ -219,7 +219,11 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 }
 
 int ConductorProperties::operator!=(const ConductorProperties &other) {
-	return(!(other == (*this)));
+	return(
+		other.type != type ||\
+		other.text != text ||\
+		other.singleLineProperties != singleLineProperties
+	);
 }
 
 int SingleLineProperties::operator==(const SingleLineProperties &other) const {
