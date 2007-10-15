@@ -189,10 +189,6 @@ void DiagramView::zoomOut() {
 	le zoom est reinitialise
 */
 void DiagramView::zoomFit() {
-	if (scene -> items().isEmpty()) {
-		zoomReset();
-		return;
-	}
 	adjustSceneRect();
 	fitInView(sceneRect(), Qt::KeepAspectRatio);
 	adjustGridToZoom();
