@@ -137,6 +137,9 @@ void ElementsPanel::addDir(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QS
 	qtwi_dossier -> setExpanded(true);
 	qtwi_dossier -> setData(0, 42, adr_dossier);
 	
+	// reduit le dossier si besoin
+	qtwi_dossier -> setExpanded(!collapsed_directories.contains(adr_dossier));
+	
 	// ajout des sous-categories / sous-dossiers
 	QStringList dossiers = category.entryList(QStringList(), QDir::AllDirs | QDir::NoSymLinks | QDir::NoDotAndDotDot, QDir::Name);
 	foreach(QString dossier, dossiers) addDir(qtwi_dossier, adr_dossier + dossier + "/");
@@ -173,6 +176,9 @@ void ElementsPanel::addFile(QTreeWidgetItem *qtwi_parent, QString fichier) {
 	Recharge l'arbre des elements
 */
 void ElementsPanel::reload() {
+	// sauvegarde la liste des repertoires reduits
+	saveCollapsedCategories();
+	
 	// vide l'arbre
 	while (takeTopLevelItem(0));
 	
@@ -273,4 +279,18 @@ void ElementsPanel::launchElementEditor(const QString &filename) {
 void ElementsPanel::launchCategoryEditor(const QString &filename) {
 	ElementsCategoryEditor ece(filename, true);
 	if (ece.exec() == QDialog::Accepted) reload();
+}
+
+/**
+	Enregistre la liste des categories repliees
+*/
+void ElementsPanel::saveCollapsedCategories() {
+	collapsed_directories.clear();
+	QList<QTreeWidgetItem *> items = findItems("*", Qt::MatchRecursive|Qt::MatchWildcard);
+	foreach(QTreeWidgetItem *item, items) {
+		QString file = item -> data(0, 42).toString();
+		if (!file.endsWith(".elmt") && !item -> isExpanded()) {
+			collapsed_directories << file;
+		}
+	}
 }
