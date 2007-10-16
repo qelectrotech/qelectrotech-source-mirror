@@ -180,13 +180,19 @@ void ElementsPanel::reload() {
 	saveCollapsedCategories();
 	
 	// vide l'arbre
-	while (takeTopLevelItem(0));
+	clear();
 	
 	// chargement des elements de la collection QET
 	addDir(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
 	
 	// chargement des elements de la collection utilisateur
 	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
+	
+	// reselectionne le dernier element selectionne
+	if (!last_selected_item.isNull()) {
+		QTreeWidgetItem *qtwi = findFile(last_selected_item);
+		if (qtwi) setCurrentItem(qtwi);
+	}
 }
 
 /**
@@ -282,7 +288,8 @@ void ElementsPanel::launchCategoryEditor(const QString &filename) {
 }
 
 /**
-	Enregistre la liste des categories repliees
+	Enregistre la liste des categories repliees ainsi que le dernier element
+	selectionne
 */
 void ElementsPanel::saveCollapsedCategories() {
 	collapsed_directories.clear();
@@ -293,4 +300,20 @@ void ElementsPanel::saveCollapsedCategories() {
 			collapsed_directories << file;
 		}
 	}
+	
+	// sauvegarde egalement le dernier element selectionne
+	QTreeWidgetItem *current_item = currentItem();
+	if (current_item) last_selected_item = current_item -> data(0, 42).toString();
+}
+
+/**
+	@param file fichier ou dossier a retrouver dans l'arborescence
+	@return le QTreeWidgetItem correspondant au fichier file ou 0 si celui-ci n'est pas trouve
+*/
+QTreeWidgetItem *ElementsPanel::findFile(const QString &file) const {
+	QList<QTreeWidgetItem *> items = findItems("*", Qt::MatchRecursive|Qt::MatchWildcard);
+	foreach(QTreeWidgetItem *item, items) {
+		if (item -> data(0, 42).toString() == file) return(item);
+	}
+	return(0);
 }

@@ -30,7 +30,9 @@ class ElementsPanel : public QTreeWidget {
 	void launchElementEditor(const QString &);
 	void launchCategoryEditor(const QString &);
 	void saveCollapsedCategories();
+	QTreeWidgetItem *findFile(const QString &) const;
 	QStringList collapsed_directories;
+	QString last_selected_item;
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
