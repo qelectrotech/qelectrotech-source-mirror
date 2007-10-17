@@ -205,7 +205,7 @@ QString ConductorProperties::typeToString(ConductorType t) {
 	switch(t) {
 		case Simple: return("simple");
 		case Single: return("single");
-		case Multi:  return("mutli");
+		case Multi:  return("multi");
 		default: return(QString());
 	}
 }
