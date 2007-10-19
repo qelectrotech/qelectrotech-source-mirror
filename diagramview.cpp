@@ -489,8 +489,8 @@ void DiagramView::dialogEditInfos() {
 	
 	// recupere les dimensions du schema
 	int columns_count_value  = scene -> border_and_inset.nbColumn();
-	int columns_width_value  = scene -> border_and_inset.columnsWidth();
-	int columns_height_value = scene -> border_and_inset.columnsHeight();
+	int columns_width_value  = qRound(scene -> border_and_inset.columnsWidth());
+	int columns_height_value = qRound(scene -> border_and_inset.columnsHeight());
 	
 	// construit le dialogue
 	QDialog popup;
@@ -516,7 +516,7 @@ void DiagramView::dialogEditInfos() {
 	QLabel *ds2 = new QLabel(tr("Hauteur :"));
 	
 	QSpinBox *columns_height = new QSpinBox(diagram_size_box);
-	columns_height -> setRange(scene -> border_and_inset.minColumnsHeight(), 10000);
+	columns_height -> setRange(qRound(scene -> border_and_inset.minColumnsHeight()), 10000);
 	columns_height -> setSingleStep(80);
 	columns_height -> setValue(columns_height_value);
 	

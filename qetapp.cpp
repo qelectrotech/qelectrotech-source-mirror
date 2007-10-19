@@ -79,6 +79,7 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		if (QFileInfo(argument).exists()) files << argument;
 	}
 	new QETDiagramEditor(files);
+	buildSystemTrayMenu();
 }
 
 /// Destructeur
