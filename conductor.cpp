@@ -10,7 +10,7 @@
 bool Conductor::pen_and_brush_initialized = false;
 QPen Conductor::conductor_pen = QPen();
 QBrush Conductor::conductor_brush = QBrush();
-
+QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
 /**
 	Constructeur
 	@param p1     Premiere Borne auquel le conducteur est lie
@@ -426,28 +426,41 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
 	
+	// decalage ideal pour le rendu centre d'un carre / cercle de 5.0 px de cote / diametre
+	qreal pretty_offset = (options -> levelOfDetail == 1 ? 2.0 : 2.5);
+	
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
 	if (isSelected()) {
 		QList<QPointF> points = segmentsToPoints();
 		QPointF previous_point;
-		QBrush square_brush(Qt::darkGreen);
 		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
 			QPointF point = points.at(i);
-			qp -> setRenderHint(QPainter::Antialiasing, false);
+			
+			// dessine le carre de saisie du segment
 			if (i > 1) {
 				qp -> fillRect(
 					QRectF(
-						((previous_point.x() + point.x()) / 2.0 ) - (options -> levelOfDetail == 1 ? 2.0 : 2.5),
-						((previous_point.y() + point.y()) / 2.0 ) - (options -> levelOfDetail == 1 ? 2.0 : 2.5),
+						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset,
+						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset,
 						5.0,
 						5.0
 					),
 					square_brush
 				);
 			}
-			qp -> setRenderHint(QPainter::Antialiasing, true);
-			qp -> drawEllipse(QRectF(point.x() - 3.0, point.y() - 3.0, 6.0, 6.0));
 			previous_point = point;
+		}
+	}
+	
+	// dessine les eventuelles jonctions
+	QList<QPointF> junctions_list = junctions();
+	if (!junctions_list.isEmpty()) {
+		QBrush junction_brush(Qt::SolidPattern);
+		junction_brush.setColor(isSelected() ? Qt::red : Qt::black);
+		qp -> setBrush(junction_brush);
+		qp -> setRenderHint(QPainter::Antialiasing, true);
+		foreach(QPointF point, junctions_list) {
+			qp -> drawEllipse(QRectF(point.x() - pretty_offset, point.y() - pretty_offset, 5.0, 5.0));
 		}
 	}
 	qp -> restore();
@@ -1028,4 +1041,139 @@ ConductorProperties Conductor::properties() const {
 void Conductor::readProperties() {
 	setText(properties_.text);
 	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
+}
+
+/**
+	@return les conducteurs avec lesquels ce conducteur partage des bornes
+	communes
+*/
+QSet<Conductor *> Conductor::relatedConductors() const {
+	QList<Conductor *> other_conductors_list = terminal1 -> conductors();
+	other_conductors_list += terminal2 -> conductors();
+	QSet<Conductor *> other_conductors = other_conductors_list.toSet();
+	other_conductors.remove(const_cast<Conductor *>(this));
+	return(other_conductors);
+}
+
+/**
+	@return la liste des positions des jonctions avec d'autres conducteurs
+*/
+QList<QPointF> Conductor::junctions() const {
+	QList<QPointF> junctions_list;
+	
+	// pour qu'il y ait des jonctions, il doit y avoir d'autres conducteurs et des bifurcations
+	QSet<Conductor *> other_conductors = relatedConductors();
+	QList<ConductorBend> bends_list = bends();
+	if (other_conductors.isEmpty() || bends_list.isEmpty()) {
+		return(junctions_list);
+	}
+	
+	QList<QPointF> points = segmentsToPoints();
+	for (int i = 1 ; i < (points.size() -1) ; ++ i) {
+		QPointF point = points.at(i);
+		
+		// determine si le point est une bifurcation ou non
+		bool is_bend = false;
+		Qt::Corner current_bend_type;
+		foreach(ConductorBend cb, bends_list) {
+			if (cb.first == point) {
+				is_bend = true;
+				current_bend_type = cb.second;
+				break;
+			}
+		}
+		// si le point n'est pas une bifurcation, il ne peut etre une jonction (enfin pas au niveau de ce conducteur)
+		if (!is_bend) continue;
+		
+		bool is_junction = false;
+		QPointF scene_point = mapToScene(point);
+		foreach(Conductor *c, other_conductors) {
+			// exprime le point dans les coordonnees de l'autre conducteur
+			QPointF conductor_point = c -> mapFromScene(scene_point);
+			// recupere les segments de l'autre conducteur
+			QList<ConductorSegment *> c_segments = c -> segmentsList();
+			if (c_segments.isEmpty()) continue;
+			// parcoure les segments a la recherche d'un point commun
+			for (int j = 0 ; j < c_segments.count() ; ++ j) {
+				ConductorSegment *segment = c_segments[j];
+				QRectF rect(segment -> firstPoint(), segment -> secondPoint());
+				// un point commun a ete trouve sur ce segment
+				if (rect.contains(conductor_point)) {
+					is_junction = true;
+					// ce point commun ne doit pas etre une bifurcation identique a celle-ci
+					QList<ConductorBend> other_conductor_bends = c -> bends();
+					foreach(ConductorBend cb, other_conductor_bends) {
+						if (cb.first == conductor_point && cb.second == current_bend_type) {
+							is_junction = false;
+						}
+					}
+				}
+				if (is_junction) junctions_list << point;
+			}
+		}
+	}
+	return(junctions_list);
+}
+
+/**
+	@return la liste des bifurcations de ce conducteur ; ConductorBend est un
+	typedef pour une QPair\<QPointF, Qt::Corner\>. Le point indique la position
+	(en coordonnees locales) de la bifurcation tandis que le Corner indique le
+	type de bifurcation.
+*/
+QList<ConductorBend> Conductor::bends() const {
+	QList<ConductorBend> points;
+	if (!segments) return(points);
+	ConductorSegment *segment = segments;
+	while (segment -> hasNextSegment()) {
+		ConductorSegment *next_segment = segment -> nextSegment();
+		if (!segment -> isPoint() && !next_segment -> isPoint()) {
+			// si les deux segments ne sont pas dans le meme sens, on a une bifurcation
+			if (next_segment -> type() != segment -> type()) {
+				Qt::Corner bend_type;
+				qreal sl = segment -> length();
+				qreal nsl = next_segment -> length();
+				
+				if (segment -> isHorizontal()) {
+					if (sl < 0 && nsl < 0) {
+						bend_type = Qt::BottomLeftCorner;
+					} else if (sl < 0 && nsl > 0) {
+						bend_type = Qt::TopLeftCorner;
+					} else if (sl > 0 && nsl < 0) {
+						bend_type = Qt::BottomRightCorner;
+					} else {
+						bend_type = Qt::TopRightCorner;
+					}
+				} else {
+					if (sl < 0 && nsl < 0) {
+						bend_type = Qt::TopRightCorner;
+					} else if (sl < 0 && nsl > 0) {
+						bend_type = Qt::TopLeftCorner;
+					} else if (sl > 0 && nsl < 0) {
+						bend_type = Qt::BottomRightCorner;
+					} else {
+						bend_type = Qt::BottomLeftCorner;
+					}
+				}
+				points << qMakePair(segment -> secondPoint(), bend_type);
+			}
+		}
+		segment = next_segment;
+	}
+	return(points);
+}
+
+/**
+	@param p Point, en coordonnees locales
+	@return true si le point p appartient au trajet du conducteur
+*/
+bool Conductor::containsPoint(const QPointF &p) const {
+	if (!segments) return(false);
+	ConductorSegment *segment = segments;
+	while (segment -> hasNextSegment()) {
+		QRectF rect(segment -> firstPoint(), segment -> secondPoint());
+		if (rect.contains(p)) return(true);
+		segment = segment -> nextSegment();
+	}
+	return(false);
 }

@@ -7,6 +7,7 @@
 #include "diagramtextitem.h"
 class ConductorSegment;
 class Element;
+typedef QPair<QPointF, Qt::Corner> ConductorBend;
 
 /**
 	Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
@@ -43,6 +44,7 @@ class Conductor : public QGraphicsPathItem {
 	virtual QPainterPath shape() const;
 	qreal length();
 	ConductorSegment *middleSegment();
+	bool containsPoint(const QPointF &) const;
 	QString text() const;
 	void setText(const QString &);
 	static bool valideXml(QDomElement &);
@@ -86,6 +88,7 @@ class Conductor : public QGraphicsPathItem {
 	/// QPen et QBrush utilises pour dessiner les conducteurs
 	static QPen conductor_pen;
 	static QBrush conductor_brush;
+	static QBrush square_brush;
 	static bool pen_and_brush_initialized;
 	
 	private:
@@ -95,6 +98,9 @@ class Conductor : public QGraphicsPathItem {
 	void priv_modifieConductor(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
 	uint nbSegments(QET::ConductorSegmentType = QET::Both) const;
 	QList<QPointF> segmentsToPoints() const;
+	QSet<Conductor *> relatedConductors() const;
+	QList<ConductorBend> bends() const;
+	QList<QPointF> junctions() const;
 	void pointsToSegments(QList<QPointF>);
 	bool hasClickedOn(QPointF, QPointF) const;
 	void calculateTextItemPosition();

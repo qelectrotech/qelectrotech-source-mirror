@@ -44,6 +44,7 @@ class ConductorSegment {
 	bool isVertical() const;
 	QET::ConductorSegmentType type() const;
 	qreal length() const;
+	bool isPoint() const;
 	bool canMove1stPointX(const qreal &, qreal &) const;
 	bool canMove2ndPointX(const qreal &, qreal &) const;
 	bool canMove1stPointY(const qreal &, qreal &) const;

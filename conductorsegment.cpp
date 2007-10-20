@@ -497,3 +497,8 @@ qreal ConductorSegment::length() const {
 QET::ConductorSegmentType ConductorSegment::type() const {
 	return(isHorizontal() ? QET::Horizontal : QET::Vertical);
 }
+
+/// @return true si les deux points constituant le segment sont egaux
+bool ConductorSegment::isPoint() const {
+	return(point1 == point2);
+}
