@@ -242,7 +242,7 @@ void DiagramView::copy() {
 void DiagramView::paste() {
 	QString texte_presse_papier;
 	QDomDocument document_xml;
-	if ((texte_presse_papier = QApplication::clipboard() -> text()) == QString()) return;
+	if ((texte_presse_papier = QApplication::clipboard() -> text()).isEmpty()) return;
 	if (!document_xml.setContent(texte_presse_papier)) return;
 	
 	// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
@@ -264,7 +264,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (e -> buttons() == Qt::MidButton) {
 		QString texte_presse_papier;
 		QDomDocument document_xml;
-		if ((texte_presse_papier = QApplication::clipboard() -> text(QClipboard::Selection)) == QString()) return;
+		if ((texte_presse_papier = QApplication::clipboard() -> text(QClipboard::Selection)).isEmpty()) return;
 		if (!document_xml.setContent(texte_presse_papier)) return;
 		
 		// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
@@ -369,7 +369,7 @@ void DiagramView::closeEvent(QCloseEvent *event) {
 	@return true si l'enregistrement a reussi, false sinon
 */
 bool DiagramView::save() {
-	if (file_name == QString()) return(saveAs());
+	if (file_name.isEmpty()) return(saveAs());
 	else return(saveDiagramToFile(file_name));
 }
 
@@ -387,11 +387,11 @@ bool DiagramView::saveAs() {
 	QString n_fichier = QFileDialog::getSaveFileName(
 		this,
 		tr("Enregistrer sous"),
-		QDir::homePath(),
+		(file_name.isEmpty() ? QDir::homePath() : QDir(file_name)).absolutePath(),
 		tr("Sch\351ma QElectroTech (*.qet)")
 	);
 	// si aucun nom n'est entre, renvoie faux.
-	if (n_fichier == "") return(false);
+	if (n_fichier.isEmpty()) return(false);
 	// si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee
 	if (!n_fichier.endsWith(".qet", Qt::CaseInsensitive)) n_fichier += ".qet";
 	// tente d'enregistrer le fichier
@@ -465,7 +465,7 @@ void DiagramView::dialogPrint() {
 	if (qpd.exec() == QDialog::Accepted) {
 		QPainter qp(&qprin);
 		// impression physique (!= fichier PDF)
-		if (qprin.outputFileName() == QString()) {
+		if (qprin.outputFileName().isEmpty()) {
 			// lorsqu'on imprime en paysage sur imprimante reelle, il faut pivoter soi-meme le rendu
 			if (qprin.orientation() == QPrinter::Landscape) {
 				qp.rotate(90.0);

@@ -74,8 +74,8 @@ void NamesListWidget::clean() {
 	int names_count = tree_names -> topLevelItemCount() - 1;
 	for (int i = names_count ; i >= 0 ; -- i) {
 		if (
-			tree_names -> topLevelItem(i) -> text(0) == QString() &&\
-			tree_names -> topLevelItem(i) -> text(1) == QString()
+			tree_names -> topLevelItem(i) -> text(0).isEmpty() &&\
+			tree_names -> topLevelItem(i) -> text(1).isEmpty()
 		) {
 			tree_names -> takeTopLevelItem(i);
 		}

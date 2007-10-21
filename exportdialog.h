@@ -45,7 +45,6 @@ class ExportDialog : public QDialog {
 	// elements relatifs au traitement effectue par le dialogue
 	Diagram *diagram;
 	QSize diagram_size;
-	QString diagram_path;
 	qreal diagram_ratio;
 	QVector<QRgb> ColorTab;
 	

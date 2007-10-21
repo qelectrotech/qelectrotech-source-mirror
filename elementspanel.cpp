@@ -82,7 +82,7 @@ void ElementsPanel::dropEvent(QDropEvent */*e*/) {
 void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
 	// recupere le nom du fichier decrivant l'element
 	QString nom_fichier = currentItem() -> data(0, 42).toString();
-	if (nom_fichier == QString()) return;
+	if (nom_fichier.isEmpty()) return;
 	
 	// objet QDrag pour realiser le drag'n drop
 	QDrag *drag = new QDrag(this);

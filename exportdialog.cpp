@@ -251,9 +251,8 @@ void ExportDialog::slot_chooseAFile() {
 		QDir::homePath(),
 		tr("Images (*.png *.bmp *.jpg *.svg)")
 	);
-	if (user_file != "") {
-		diagram_path = user_file;
-		filename -> setText(diagram_path);
+	if (!user_file.isEmpty()) {
+		filename -> setText(user_file);
 	}
 }
 
@@ -347,9 +346,10 @@ void ExportDialog::generateSvg(QFile &file) {
 	dialogue.
 */
 void ExportDialog::slot_check() {
+	QString diagram_path = filename -> text();
 	
 	// verifie que le fichier a ete specifie
-	if (diagram_path == "") {
+	if (diagram_path.isEmpty()) {
 		QMessageBox::information(
 			this,
 			tr("Fichier non sp\351cifi\351"),

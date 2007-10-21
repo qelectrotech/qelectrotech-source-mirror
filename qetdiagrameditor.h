@@ -119,6 +119,8 @@ class QETDiagramEditor : public QMainWindow {
 	private:
 	QWorkspace workspace;
 	QSignalMapper windowMapper;
+	/// Dossier a utiliser pour Fichier > ouvrir
+	QDir open_dialog_dir;
 	/// Dock pour le Panel d'Appareils
 	QDockWidget *qdw_pa;
 	/// Panel d'Appareils

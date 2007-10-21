@@ -426,10 +426,10 @@ void QETElementEditor::slot_open() {
 	QString user_filename = QFileDialog::getOpenFileName(
 		this,
 		tr("Ouvrir un fichier"),
-		QETApp::customElementsDir(),
+		_filename.isEmpty() ? QETApp::customElementsDir() : QDir(_filename).absolutePath(),
 		tr("\311l\351ments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
-	if (user_filename == "") return;
+	if (user_filename.isEmpty()) return;
 	QETElementEditor *cee = new QETElementEditor();
 	cee -> fromFile(user_filename);
 	cee -> show();
@@ -437,7 +437,7 @@ void QETElementEditor::slot_open() {
 
 bool QETElementEditor::slot_save() {
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
-	if (_filename == QString()) return(slot_saveAs());
+	if (_filename.isEmpty()) return(slot_saveAs());
 	// sinon on enregistre dans le nom de fichier connu
 	bool result_save = toFile(_filename);
 	if (result_save) ce_scene -> undoStack().setClean();
@@ -449,11 +449,11 @@ bool QETElementEditor::slot_saveAs() {
 	QString fn = QFileDialog::getSaveFileName(
 		this,
 		tr("Enregistrer sous"),
-		QETApp::customElementsDir(),
+		_filename.isEmpty() ? QETApp::customElementsDir() : QDir(_filename).absolutePath(),
 		tr("\311l\351ments QElectroTech (*.elmt)")
 	);
 	// si aucun nom n'est entre, renvoie faux.
-	if (fn == "") return(false);
+	if (fn.isEmpty()) return(false);
 	// si le nom ne se termine pas par l'extension .elmt, celle-ci est ajoutee
 	if (!fn.endsWith(".elmt", Qt::CaseInsensitive)) fn += ".elmt";
 	// tente d'enregistrer le fichier

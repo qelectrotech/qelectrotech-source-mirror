@@ -165,7 +165,7 @@ bool NewElementWizard::validStep2() {
 	QString file_name = qle_filename -> text();
 	
 	// un nom doit avoir ete entre
-	if (file_name == QString()) {
+	if (file_name.isEmpty()) {
 		QMessageBox::critical(
 			this,
 			tr("Erreur"),

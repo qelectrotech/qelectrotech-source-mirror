@@ -1074,7 +1074,7 @@ QList<QPointF> Conductor::junctions() const {
 		
 		// determine si le point est une bifurcation ou non
 		bool is_bend = false;
-		Qt::Corner current_bend_type;
+		Qt::Corner current_bend_type = Qt::TopLeftCorner;
 		foreach(ConductorBend cb, bends_list) {
 			if (cb.first == point) {
 				is_bend = true;

@@ -11,7 +11,7 @@
 	@param files Liste de fichiers a ouvrir
 	@param parent le widget parent de la fenetre principale
  */
-QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : QMainWindow(parent) {
+QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : QMainWindow(parent), open_dialog_dir(QDir::homePath()) {
 	
 	// cree les dossiers de configuration si necessaire
 	QDir config_dir(QETApp::configDir());
@@ -528,11 +528,12 @@ bool QETDiagramEditor::openDiagram() {
 	QString nom_fichier = QFileDialog::getOpenFileName(
 		this,
 		tr("Ouvrir un fichier"),
-		QDir::homePath(),
+		open_dialog_dir.absolutePath(),
 		tr("Sch\351mas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
-	if (nom_fichier == "") return(false);
+	if (nom_fichier.isEmpty()) return(false);
 	
+	open_dialog_dir = QDir(nom_fichier);
 	// verifie que le fichier n'est pas deja ouvert
 	QString chemin_fichier = QFileInfo(nom_fichier).canonicalFilePath();
 	foreach (QWidget *fenetre, workspace.windowList()) {
