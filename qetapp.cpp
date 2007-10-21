@@ -109,7 +109,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 
 /**
 	Gere les evenements relatifs au QSystemTrayIcon
-	@param raison un entier representant l'evenement survenu sur le systray
+	@param reason un entier representant l'evenement survenu sur le systray
 */
 void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 	if (!QSystemTrayIcon::isSystemTrayAvailable()) return;
@@ -205,7 +205,7 @@ QString QETApp::customElementsDir() {
 	Renvoie le dossier de configuration de QET, c-a-d le chemin du dossier dans
 	lequel QET lira les informations de configuration et de personnalisation
 	propres a l'utilisateur courant. Ce dossier est generalement
-	C:\Documents And Settings\utilisateur\Application Data\qet sous Windows et
+	C:\\Documents And Settings\\utilisateur\\Application Data\\qet sous Windows et
 	~/.qet sous les systemes type UNIX.
 	@return Le chemin du dossier de configuration de QElectroTech
 */
@@ -237,7 +237,7 @@ QString QETApp::realPath(const QString &sym_path) {
 /**
 	Construit le chemin symbolique (du type custom://outils_pervers/sado_maso/
 	contact_bizarre) correspondant a un fichier.
-	@param real_pathChaine de caracteres representant le chemin symbolique du fichier
+	@param real_path Chaine de caracteres representant le chemin symbolique du fichier
 	@return Une chaine de caracteres vide en cas d'erreur ou le chemin
 	symbolique designant l'element.
 */

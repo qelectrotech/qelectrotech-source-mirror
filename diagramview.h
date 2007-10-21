@@ -53,8 +53,9 @@ class DiagramView : public QGraphicsView {
 	QRectF viewedSceneRect() const;
 	
 	signals:
+	/// Signal emis lorsque la selection change
 	void selectionChanged();
-	void antialiasingChanged();
+	/// Signal emis lorsque le mode de selection change
 	void modeChanged();
 	
 	public slots:

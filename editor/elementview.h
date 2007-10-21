@@ -2,6 +2,10 @@
 #define ELEMENT_VIEW_H
 #include <QGraphicsView>
 #include "elementscene.h"
+/**
+	Cette classe represente un widget permettant de visualiser une
+	ElementScene, c'est-a-dire la classe d'edition des elements.
+*/
 class ElementView : public QGraphicsView {
 	Q_OBJECT
 	// constructeurs, destructeur

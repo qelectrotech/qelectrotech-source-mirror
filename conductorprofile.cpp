@@ -8,7 +8,7 @@ ConductorProfile::ConductorProfile() {
 
 /**
 	Constructeur
-	@param Conductor conducteur dont il faut extraire le profil
+	@param conductor conducteur dont il faut extraire le profil
 */
 ConductorProfile::ConductorProfile(Conductor *conductor) {
 	fromConductor(conductor);

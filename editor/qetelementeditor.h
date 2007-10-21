@@ -4,6 +4,11 @@
 #include "elementscene.h"
 #include "orientationset.h"
 class ElementView;
+/**
+	Cette classe represente un editeur d'element. Elle permet a l'utilisateur
+	de dessiner, modifier et parametrer un element electrique. Le dessin se
+	fait par ajout de parties (Part).
+*/
 class QETElementEditor : public QMainWindow {
 	Q_OBJECT
 	

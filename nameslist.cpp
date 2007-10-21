@@ -2,14 +2,13 @@
 
 /**
 	Constructeur
-	@param parent QObject parent
 */
 NamesList::NamesList() {
 }
 
 /**
 	Constructeur de copie
-	@param other La NamesList a copie
+	@param other La NamesList a copier
 */
 NamesList::NamesList(const NamesList &other) : hash_names(other.hash_names) {	
 }

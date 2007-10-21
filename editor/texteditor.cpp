@@ -3,7 +3,8 @@
 
 /**
 	Constructeur
-	@param term Champ de texte a editer
+	@param editor L'editeur d'element concerne
+	@param text Champ de texte a editer
 	@param parent QWidget parent de ce widget
 */
 TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent) : ElementItemEditor(editor, parent) {

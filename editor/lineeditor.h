@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartLine;
+/**
+	Cette classe represente le widget d'edition d'une ligne dans l'editeur
+	d'element.
+*/
 class LineEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur

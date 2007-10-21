@@ -19,8 +19,11 @@ class ConductorProfile {
 	
 	// attributs
 	public:
+	/// Segment composant le profil du conducteur
 	QList<ConductorSegmentProfile *> segments;
+	/// Orientation de la borne de depart du profil
 	QET::Orientation beginOrientation;
+	/// Orientation de la borne d'arrivee du profil
 	QET::Orientation endOrientation;
 	
 	// methodes

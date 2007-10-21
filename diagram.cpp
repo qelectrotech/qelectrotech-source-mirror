@@ -291,7 +291,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 	(auteur, titre, ...) seront prises en compte
 	@param added_elements si ce pointeur vers une liste d'elements n'est pas
 	NULL, il sera rempli avec les elements ajoutes au schema par le fromXml
-	@param added_elements si ce pointeur vers une liste de conducteurs n'est
+	@param added_conductors si ce pointeur vers une liste de conducteurs n'est
 	pas NULL, il sera rempli avec les conducteurs ajoutes au schema par le
 	fromXml
 	@return true si l'import a reussi, false sinon

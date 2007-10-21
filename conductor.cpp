@@ -398,7 +398,7 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, QET::Orientation term
 /**
 	Dessine le conducteur sans antialiasing.
 	@param qp Le QPainter a utiliser pour dessiner le conducteur
-	@param qsogi Les options de style pour le conducteur
+	@param options Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
 void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget */*qw*/) {

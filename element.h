@@ -3,10 +3,10 @@
 #include <QtGui>
 #include "terminal.h"
 #include "orientationset.h"
+class Diagram;
 /**
 	Cette classe abstraite represente un element electrique.
 */
-class Diagram;
 class Element : public QGraphicsItem {
 	
 	// constructeurs, destructeur

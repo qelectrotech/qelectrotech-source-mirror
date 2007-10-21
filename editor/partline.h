@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 class LineEditor;
+/**
+	Cette classe represente une ligne pouvant etre utilisee pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:

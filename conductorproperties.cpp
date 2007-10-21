@@ -210,6 +210,10 @@ QString ConductorProperties::typeToString(ConductorType t) {
 	}
 }
 
+/**
+	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
+	@return true si les deux ensembles de proprietes sont identiques, false sinon
+*/
 int ConductorProperties::operator==(const ConductorProperties &other) {
 	return(
 		other.type == type &&\
@@ -218,6 +222,10 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 	);
 }
 
+/**
+	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
+	@return true si les deux ensembles de proprietes sont differents, false sinon
+*/
 int ConductorProperties::operator!=(const ConductorProperties &other) {
 	return(
 		other.type != type ||\
@@ -226,6 +234,10 @@ int ConductorProperties::operator!=(const ConductorProperties &other) {
 	);
 }
 
+/**
+	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
+	@return true si les deux ensembles de proprietes sont identiques, false sinon
+*/
 int SingleLineProperties::operator==(const SingleLineProperties &other) const {
 	return(
 		other.hasGround == hasGround &&\
@@ -234,6 +246,10 @@ int SingleLineProperties::operator==(const SingleLineProperties &other) const {
 	);
 }
 
+/**
+	@param other l'autre ensemble de proprietes avec lequel il faut effectuer la comparaison
+	@return true si les deux ensembles de proprietes sont differents, false sinon
+*/
 int SingleLineProperties::operator!=(const SingleLineProperties &other) const {
 	return(!(other == (*this)));
 }

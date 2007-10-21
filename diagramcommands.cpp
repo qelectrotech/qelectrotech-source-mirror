@@ -5,8 +5,9 @@
 #include "qgimanager.h"
 /**
 	Constructeur
-	@param name Nom de la partie ajoutee
-	@param parts Liste des parties deplacees
+	@param d Schema auquel on ajoute un element
+	@param elmt Element ajoute
+	@param p Position a laquelle l'element est ajoute
 	@param parent QUndoCommand parent
 */
 AddElementCommand::AddElementCommand(

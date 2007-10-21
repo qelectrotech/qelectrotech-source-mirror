@@ -1,12 +1,12 @@
 #ifndef ELEMENTS_CATEGORIES_WIDGET_H
 #define ELEMENTS_CATEGORIES_WIDGET_H
 #include <QtGui>
+class ElementsCategoriesList;
 /**
 	Cette classe represente un widget integrant la liste des categories
 	de l'utilisteur surplombee de boutons permettant d'ajouter, de modifier
 	ou de supprimer des categories
 */
-class ElementsCategoriesList;
 class ElementsCategoriesWidget : public QWidget {
 	Q_OBJECT
 	

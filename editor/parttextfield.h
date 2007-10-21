@@ -4,6 +4,12 @@
 #include "customelementpart.h"
 class TextFieldEditor;
 class QETElementEditor;
+/**
+	Cette classe represente un champ de texte editable pouvant etre utilise
+	pour composer le dessin d'un element dans l'editeur d'element.
+	L'utilisateur peut specifier un valeur par defaut. Le champ sera editable
+	lorsque l'element sera pose sur un schema.
+*/
 class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	// constructeurs, destructeur
 	public:

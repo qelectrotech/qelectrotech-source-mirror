@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartEllipse;
+/**
+	Cette classe represente le widget d'edition d'une ellipse dans l'editeur
+	d'element.
+*/
 class EllipseEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur

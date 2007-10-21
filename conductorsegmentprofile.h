@@ -36,7 +36,9 @@ class ConductorSegmentProfile {
 	
 	// attributs
 	public:
-	qreal length; /// longueur du segment
-	bool isHorizontal; /// orientation du segment
+	/// longueur du segment
+	qreal length;
+	/// orientation du segment
+	bool isHorizontal;
 };
 #endif

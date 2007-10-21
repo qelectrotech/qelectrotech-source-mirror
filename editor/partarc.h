@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 class ArcEditor;
+/**
+	Cette classe represente un arc pouvant etre utilise pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:

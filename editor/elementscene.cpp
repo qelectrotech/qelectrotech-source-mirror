@@ -263,7 +263,7 @@ void ElementScene::drawBackground(QPainter *p, const QRectF &r) {
 }
 
 /**
-	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspotó.
+	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner
 */

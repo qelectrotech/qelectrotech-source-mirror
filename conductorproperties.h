@@ -49,6 +49,12 @@ class ConductorProperties {
 	virtual ~ConductorProperties() {
 	}
 	
+	/**
+		Represente le type d'un conducteur :
+		 * Simple : ni symbole ni champ de texte
+		 * Single : symboles unifilaires, pas de champ de texte
+		 * Multi : champ de texte, pas de symbole
+	*/
 	enum ConductorType { Simple, Single, Multi };
 	
 	// attributs

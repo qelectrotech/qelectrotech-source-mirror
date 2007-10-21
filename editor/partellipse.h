@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 class EllipseEditor;
+/**
+	Cette classe represente une ellipse pouvant etre utilisee pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:

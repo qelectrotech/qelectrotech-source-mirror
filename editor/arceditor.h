@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartArc;
+/**
+	Cette classe represente le widget d'edition d'un arc dans l'editeur
+	d'element.
+*/
 class ArcEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur

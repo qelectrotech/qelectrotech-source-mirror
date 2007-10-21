@@ -2,6 +2,10 @@
 #define POLYGON_EDITOR_H
 #include "elementitemeditor.h"
 class PartPolygon;
+/**
+	Cette classe represente le widget d'edition d'un polygone dans l'editeur
+	d'element.
+*/
 class PolygonEditor : public ElementItemEditor {
 	
 	Q_OBJECT

@@ -4,6 +4,12 @@
 class QETElementEditor;
 class ElementScene;
 class CustomElementPart;
+/**
+	Cette classe est la classe de base pour les editeurs de aprties dans
+	l'editeur d'element. Elle fournit des methodes pour acceder facilement
+	a l'editeur, a la pile d'annulation, a la scene d'edition ou encore pour
+	ajouter facilement une annulation de type ChangePartCommand.
+*/
 class ElementItemEditor : public QWidget {
 	Q_OBJECT
 	// constructeurs, destructeur

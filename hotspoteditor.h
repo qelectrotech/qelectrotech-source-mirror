@@ -2,6 +2,10 @@
 #define HOTSPOT_EDITOR_H
 #include <QtGui>
 #include "diagram.h"
+/**
+	Ce widget permet a l'utilisateur d'editer les dimensions ainsi que le point
+	de saisie d'un element.
+*/
 class HotspotEditor : public QWidget {
 	Q_OBJECT
 	

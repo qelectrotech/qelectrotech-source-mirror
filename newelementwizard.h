@@ -1,6 +1,10 @@
 #ifndef NEW_ELEMENT_WIZARD_H
 #define NEW_ELEMENT_WIZARD_H
 #include <QtGui>
+class ElementsCategoriesWidget;
+class NamesListWidget;
+class OrientationSetWidget;
+class HotspotEditor;
 /**
 	Cette classe represente un dialogue qui permet a l'utilisateur de specifier
 	les premiers parametres de l'element qu'il va construire.
@@ -12,10 +16,6 @@
 	  - la position du hotspot
 	  - les orientations possibles
 */
-class ElementsCategoriesWidget;
-class NamesListWidget;
-class OrientationSetWidget;
-class HotspotEditor;
 class NewElementWizard : public QWizard {
 	Q_OBJECT
 	

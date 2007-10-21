@@ -418,7 +418,7 @@ QDomElement Terminal::toXml(QDomDocument &doc) const {
 
 /**
 	Permet de savoir si un element XML represente une borne
-	@param e Le QDomElement a analyser
+	@param terminal Le QDomElement a analyser
 	@return true si le QDomElement passe en parametre est une borne, false sinon
 */
 bool Terminal::valideXml(QDomElement &terminal) {
@@ -454,7 +454,7 @@ bool Terminal::valideXml(QDomElement &terminal) {
 
 /**
 	Permet de savoir si un element XML represente cette borne. Attention, l'element XML n'est pas verifie
-	@param e Le QDomElement a analyser
+	@param terminal Le QDomElement a analyser
 	@return true si la borne "se reconnait" (memes coordonnes, meme orientation), false sinon
 */
 bool Terminal::fromXml(QDomElement &terminal) {

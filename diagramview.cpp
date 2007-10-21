@@ -380,7 +380,6 @@ bool DiagramView::save() {
 	Si l'enregistrement reussit, le nom du fichier est conserve et la fonction renvoie true.
 	Sinon, faux est renvoye.
 	@return true si l'enregistrement a reussi, false sinon
-	@todo detecter le chemin du bureau automatiquement
 */
 bool DiagramView::saveAs() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer le schema

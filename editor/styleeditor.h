@@ -3,6 +3,12 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class CustomElementGraphicPart;
+/**
+	Cette classe represente un widget d'edition des styles que peut comporter
+	une partie d'elements (couleur, epaisseur et style du trait, remplissage,
+	antialiasing). Elle peut accueillir un widget sous cette interface grace a
+	la methode appendWidget.
+*/
 class StyleEditor : public ElementItemEditor {
 	Q_OBJECT
 	// constructeurs, destructeur

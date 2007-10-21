@@ -315,7 +315,7 @@ void ConductorSegment::moveX(const qreal &dx) {
 
 /**
 	Gere les mouvements sur l'axe vertical
-	@param dx taille du deplacement en pixels
+	@param dy taille du deplacement en pixels
 */
 void ConductorSegment::moveY(const qreal &dy) {
 	if (isVertical()) return;
@@ -374,7 +374,7 @@ void ConductorSegment::setPreviousSegment(ConductorSegment *ps) {
 
 /**
 	Change le segment suivant
-	@param ps Le nouveau segment suivant
+	@param ns Le nouveau segment suivant
 */
 void ConductorSegment::setNextSegment(ConductorSegment *ns) {
 	next_segment = ns;

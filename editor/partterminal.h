@@ -5,6 +5,10 @@
 #include <QtGui>
 class TerminalEditor;
 class QETElementEditor;
+/**
+	Cette classe represente une borne pouvant etre utilisee pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	public:
 	// constructeurs, destructeur

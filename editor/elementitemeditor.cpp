@@ -31,7 +31,7 @@ QUndoStack &ElementItemEditor::undoStack() const {
 /**
 	Ajoute une ChangePartCommand a l'UndoStack. L'ancienne valeur sera
 	automatiquement recuperee.
-	@param name   nom de la propriete modifiee
+	@param desc   nom de la propriete modifiee
 	@param part   partie modifiee
 	@param prop   propriete modifiee
 	@param new_v  nouvelle valeur

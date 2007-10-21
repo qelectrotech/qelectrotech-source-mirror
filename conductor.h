@@ -35,6 +35,7 @@ class Conductor : public QGraphicsPathItem {
 	public:
 	virtual int type() const { return Type; }
 	void destroy();
+	/// @return true si ce conducteur est detruit
 	bool isDestroyed() const { return(destroyed); }
 	Diagram *diagram() const;
 	void updateWithNewPos(const QRectF &, const Terminal *, const QPointF &);

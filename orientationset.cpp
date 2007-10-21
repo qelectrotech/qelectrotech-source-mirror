@@ -137,7 +137,7 @@ const OrientationSet OrientationSet::operator--(int) {
 
 /**
 	Permet de savoir si une orientation donnee peut etre utilisee.
-	@param o L'orientation en question
+	@param ori L'orientation en question
 	@return true si l'orientation est utilisable, false sinon
 */
 bool OrientationSet::accept(QET::Orientation ori) const {

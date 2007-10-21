@@ -11,6 +11,12 @@ class PartEllipse;
 class PartCircle;
 class PartPolygon;
 class PartArc;
+/**
+	Cette classe est le canevas permettant l'edition d'un element electrique.
+	Elle regroupe les differentes parties composant le dessin de l'element mais
+	egalement les informations complementaires : dimensions, orientations,
+	noms.
+*/
 class ElementScene : public QGraphicsScene {
 	Q_OBJECT
 	

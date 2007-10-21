@@ -567,7 +567,6 @@ bool QETDiagramEditor::openDiagram() {
 /**
 	Ferme le document courant
 	@return true si la fermeture du fichier a reussi, false sinon
-	@todo detecter les modifications et ne demander que si besoin est
 */
 bool QETDiagramEditor::closeDiagram() {
 	DiagramView *sv = currentDiagram();
@@ -761,7 +760,7 @@ void QETDiagramEditor::slot_updateActions() {
 
 /**
 	Ajoute un schema dans l'espace de travail
-	@param sv L'objet DiagramView a ajouter a l'espace de travail
+	@param dv L'objet DiagramView a ajouter a l'espace de travail
 */
 void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 	if (!dv) return;

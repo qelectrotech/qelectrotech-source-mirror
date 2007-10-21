@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "customelementpart.h"
 class TextEditor;
+/**
+	Cette classe represente un texte pouvant etre utilise pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartText : public QGraphicsTextItem, public CustomElementPart {
 	// constructeurs, destructeur
 	public:

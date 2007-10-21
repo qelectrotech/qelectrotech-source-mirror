@@ -78,8 +78,7 @@ QSize Element::setSize(int wid, int hei) {
 /**
 	Definit le hotspot de l'element par rapport au coin superieur gauche de son rectangle delimitant.
 	Necessite que la taille ait deja ete definie
-	@param hsx Abscisse du hotspot
-	@param hsy Ordonnee du hotspot
+	@param hs Coordonnees du hotspot
 */
 QPoint Element::setHotspot(QPoint hs) {
 	// la taille doit avoir ete definie

@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 class CircleEditor;
+/**
+	Cette classe represente un cercle pouvant etre utilise pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:

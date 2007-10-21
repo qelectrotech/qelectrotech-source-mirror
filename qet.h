@@ -7,8 +7,11 @@
 	classes de l'application
 */
 namespace QET {
+	/// version de QElectroTech
 	const QString version = "0.1";
+	/// Orientation (utilise pour les bornes mais aussi pour les elements)
 	enum Orientation {North, East, South, West};
+	/// Types de segment de conducteurs
 	enum ConductorSegmentType { Horizontal = 1, Vertical = 2, Both = 3 };
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);

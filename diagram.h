@@ -27,11 +27,18 @@ class Diagram : public QGraphicsScene {
 	
 	// attributs
 	public:
+	/**
+		Represente les options possibles pour l'affichage du schema :
+		 * EmptyBorder : N'afficher que la bordure
+		 * Inset : Afficher le cartouche
+		 * Columns : Afficher les colonnes
+	*/
 	enum BorderOptions { EmptyBorder, Inset, Columns };
 	/// Proprietes par defaut des nouveaux conducteurs
 	ConductorProperties defaultConductorProperties;
 	/// Dimensions et cartouches du schema
 	BorderInset border_and_inset;
+	/// Mouvement en cours lors d'un deplacement d'elements et conducteurs
 	QPointF current_movement;
 	/// taille de la grille en abscisse
 	static const int xGrid;
@@ -96,6 +103,11 @@ class Diagram : public QGraphicsScene {
 	void slot_checkSelectionEmptinessChange();
 	
 	signals:
+	/**
+		Ce signal est emis lorsque la selection passe de l'etat rempli (par un
+		nombre quelconque d'elements et conducteurs) a l'etat vide et
+		vice-versa.
+	*/
 	void selectionEmptinessChanged();
 };
 
@@ -103,7 +115,7 @@ class Diagram : public QGraphicsScene {
 	Permet d'ajouter ou enlever le « poseur de conducteur », c'est-a-dire la
 	droite en pointilles qui apparait lorsqu'on pose un conducteur entre deux
 	bornes.
-	@param true pour ajouter le poseur de conducteur, false pour l'enlever
+	@param pf true pour ajouter le poseur de conducteur, false pour l'enlever
 */
 inline void Diagram::setConductor(bool pf) {
 	if (pf) {
@@ -123,7 +135,7 @@ inline void Diagram::setConductorStart(QPointF d) {
 
 /**
 	Specifie les coordonnees du point d'arrivee du poseur de conducteur
-	@param d Le nouveau point d'arrivee du poseur de conducteur
+	@param a Le nouveau point d'arrivee du poseur de conducteur
 */
 inline void Diagram::setConductorStop(QPointF a) {
 	conductor_setter -> setLine(QLineF(conductor_setter -> line().p1(), a));
@@ -157,7 +169,6 @@ inline void Diagram::setUseBorder(bool ub) {
 /**
 	Permet de savoir si le cadre du schema est pris en compte pour
 	determiner le contour du schema.
-	@param ub true le cadre est pris en compte, false sinon
 */
 inline bool Diagram::useBorder() {
 	return(use_border);

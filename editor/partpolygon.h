@@ -3,6 +3,10 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 class PolygonEditor;
+/**
+	Cette classe represente un polygone pouvant etre utilise pour composer le
+	dessin d'un element dans l'editeur d'element.
+*/
 class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:

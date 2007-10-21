@@ -337,7 +337,7 @@ void ChangeOrientationsCommand::redo() {
 
 /**
 	Constructeur
-	@param element ElementScene concernee
+	@param elmt ElementScene concernee
 	@param o Option decrivant le type de traitement applique aux zValues des parties de l'element
 	@param parent QUndoCommand parent
 */

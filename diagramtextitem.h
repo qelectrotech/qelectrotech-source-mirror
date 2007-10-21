@@ -15,10 +15,15 @@ class DiagramTextItem : public QGraphicsTextItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1004 };
+	/// Texte precedent
 	QString previous_text;
 	
 	// methodes
 	public:
+	/**
+		Cette methode permet d'utiliser qgraphicsitem_cast sur cet objet
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	Diagram *diagram() const;
 	

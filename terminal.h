@@ -25,7 +25,10 @@ class Terminal : public QGraphicsItem {
 	
 	// methodes
 	public:
-	// permet de caster un QGraphicsItem en Borne avec qgraphicsitem_cast
+	/**
+		permet de caster un QGraphicsItem en Borne avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	
 	// implementation des methodes virtuelles pures de QGraphicsItem
@@ -61,12 +64,17 @@ class Terminal : public QGraphicsItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1002 };
+	/// Longueur d'une borne
 	static const qreal terminalSize;
 	
 	// differentes couleurs statiques utilisables pour l'effet "hover"
+	/// couleur par defaut
 	static QColor couleur_neutre;
+	/// couleur indiquant une action autorisee
 	static QColor couleur_autorise;
+	/// couleur indiquant une action autorisee mais pas forcement recommandee
 	static QColor couleur_prudence;
+	/// couleur indiquant une action interdite
 	static QColor couleur_interdit;
 	
 	private:

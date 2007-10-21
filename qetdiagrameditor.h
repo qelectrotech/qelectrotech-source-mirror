@@ -70,7 +70,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_editDefaultConductors();
 	
 	// attributs
-	protected:
+	private:
 	// Actions faisables au travers de menus dans l'application QElectroTech
 	QAction *mode_selection;
 	QAction *mode_visualise;

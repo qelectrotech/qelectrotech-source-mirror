@@ -4,12 +4,12 @@
 #include "customelementpart.h"
 #include "styleeditor.h"
 class QETElementEditor;
+typedef CustomElementGraphicPart CEGP;
 /**
 	Cette classe represente une partie graphique d'element
 	Elle encapsule des methodes afin de gerer les attributs de style communs
 	a la plupart des parties d'elements 
 */
-typedef CustomElementGraphicPart CEGP;
 class CustomElementGraphicPart : public CustomElementPart {
 	public:
 	enum LineStyle { NormalStyle, DashedStyle };
