@@ -214,7 +214,7 @@ class RotateElementsCommand : public QUndoCommand {
 class ChangeConductorCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, QUndoCommand * = 0);
+	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, Qt::Corner, QUndoCommand * = 0);
 	virtual ~ChangeConductorCommand();
 	private:
 	ChangeConductorCommand(const ChangeConductorCommand &);
@@ -232,6 +232,8 @@ class ChangeConductorCommand : public QUndoCommand {
 	ConductorProfile old_profile;
 	/// profil apres changement
 	ConductorProfile new_profile;
+	/// Type de trajet
+	Qt::Corner path_type;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
@@ -242,7 +244,7 @@ class ChangeConductorCommand : public QUndoCommand {
 class ResetConductorCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ResetConductorCommand(const QHash<Conductor *, ConductorProfile> &, QUndoCommand * = 0);
+	ResetConductorCommand(const QHash<Conductor *, ConductorProfilesGroup> &, QUndoCommand * = 0);
 	virtual ~ResetConductorCommand();
 	private:
 	ResetConductorCommand(const ResetConductorCommand &);
@@ -255,7 +257,7 @@ class ResetConductorCommand : public QUndoCommand {
 	// attributs
 	private:
 	/// conducteurs reinitialises associes a leur ancien profil
-	QHash<Conductor *, ConductorProfile> conductors_profiles;
+	QHash<Conductor *, ConductorProfilesGroup> conductors_profiles;
 };
 
 /**

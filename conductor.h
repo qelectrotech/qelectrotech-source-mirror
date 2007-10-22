@@ -8,7 +8,7 @@
 class ConductorSegment;
 class Element;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
-
+typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 /**
 	Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
 */
@@ -54,8 +54,10 @@ class Conductor : public QGraphicsPathItem {
 	const QList<ConductorSegment *> segmentsList() const;
 	void setProperties(const ConductorProperties &);
 	ConductorProperties properties() const;
-	void setProfile(const ConductorProfile &);
-	ConductorProfile profile() const;
+	void setProfile(const ConductorProfile &, Qt::Corner);
+	ConductorProfile profile(Qt::Corner) const;
+	void setProfiles(const ConductorProfilesGroup &);
+	ConductorProfilesGroup profiles() const;
 	void readProperties();
 	
 	protected:
@@ -84,8 +86,8 @@ class Conductor : public QGraphicsPathItem {
 	bool modified_path;
 	/// booleen indiquant s'il faut sauver le profil courant au plus tot
 	bool has_to_save_profile;
-	/// profil du conducteur : "photo" de ce a quoi le conducteur doit ressembler
-	ConductorProfile conductor_profile;
+	/// profil du conducteur : "photo" de ce a quoi le conducteur doit ressembler - il y a un profil par type de trajet
+	ConductorProfilesGroup conductor_profiles;
 	/// QPen et QBrush utilises pour dessiner les conducteurs
 	static QPen conductor_pen;
 	static QBrush conductor_brush;
@@ -105,11 +107,13 @@ class Conductor : public QGraphicsPathItem {
 	void pointsToSegments(QList<QPointF>);
 	bool hasClickedOn(QPointF, QPointF) const;
 	void calculateTextItemPosition();
+	Qt::Corner currentPathType() const;
 	static int getCoeff(const qreal &, const qreal &);
 	static int getSign(const qreal &);
 	QHash<ConductorSegmentProfile *, qreal> shareOffsetBetweenSegments(const qreal &offset, const QList<ConductorSegmentProfile *> &, const qreal & = 0.01) const;
 	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 12.0);
 	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
 	static qreal conductor_bound(qreal, qreal, bool);
+	static Qt::Corner movementType(const QPointF &, const QPointF &);
 };
 #endif

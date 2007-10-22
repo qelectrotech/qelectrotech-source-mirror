@@ -47,6 +47,12 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 		pen_and_brush_initialized = true;
 	}
 	
+	// par defaut, les 4 profils sont des profils nuls = il faut utiliser priv_calculeConductor
+	conductor_profiles.insert(Qt::TopLeftCorner,     ConductorProfile());
+	conductor_profiles.insert(Qt::TopRightCorner,    ConductorProfile());
+	conductor_profiles.insert(Qt::BottomLeftCorner,  ConductorProfile());
+	conductor_profiles.insert(Qt::BottomRightCorner, ConductorProfile());
+
 	// calcul du rendu du conducteur
 	priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
@@ -79,22 +85,27 @@ Conductor::~Conductor() {
 	@param rect Rectangle a mettre a jour
 */
 void Conductor::update(const QRectF &rect) {
-	// utilise soit la fonction priv_modifieConducteur soit la fonction priv_calculeConducteur
-	void (Conductor::* fonction_update) (const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
-	fonction_update = (nbSegments() && modified_path) ? &Conductor::priv_modifieConductor : &Conductor::priv_calculeConductor;
-	
 	// appelle la bonne fonction pour calculer l'aspect du conducteur
-	(this ->* fonction_update)(
-		terminal1 -> amarrageConductor(), terminal1 -> orientation(),
-		terminal2 -> amarrageConductor(), terminal2 -> orientation()
-	);
+	if (nbSegments() && !conductor_profiles[currentPathType()].isNull()) {
+		priv_modifieConductor(
+			terminal1 -> amarrageConductor(), terminal1 -> orientation(),
+			terminal2 -> amarrageConductor(), terminal2 -> orientation()
+		);
+	} else {
+		priv_calculeConductor(
+			terminal1 -> amarrageConductor(), terminal1 -> orientation(),
+			terminal2 -> amarrageConductor(), terminal2 -> orientation()
+		);
+	}
+	
 	calculateTextItemPosition();
 	QGraphicsPathItem::update(rect);
 }
 
 /**
-	Met a jour la representation graphique du conducteur en considerant que la borne b
-	a pour position pos
+	Met a jour la representation graphique du conducteur en considerant que la
+	borne b a pour position pos. Cette fonction est appelee lorsqu'une seule
+	des bornes du conducteur a change de position.
 	@param rect Rectangle a mettre a jour
 	@param b Borne
 	@param newpos position de la borne b
@@ -111,7 +122,7 @@ void Conductor::updateWithNewPos(const QRectF &rect, const Terminal *b, const QP
 		p1 = terminal1 -> amarrageConductor();
 		p2 = terminal2 -> amarrageConductor();
 	}
-	if (nbSegments() && modified_path)
+	if (nbSegments() && !conductor_profiles[currentPathType()].isNull())
 		priv_modifieConductor(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else
 		priv_calculeConductor(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
@@ -154,6 +165,9 @@ void Conductor::segmentsToPath() {
 	@param o2 Orientation de la borne 2
 */
 void Conductor::priv_modifieConductor(const QPointF &p1, QET::Orientation, const QPointF &p2, QET::Orientation) {
+	
+	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
+	
 	Q_ASSERT_X(conductor_profile.nbSegments(QET::Both) > 1, "Conductor::priv_modifieConductor", "pas de points a modifier");
 	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
 	
@@ -957,6 +971,7 @@ ConductorSegment *Conductor::middleSegment() {
 	@see middleSegment()
 */
 void Conductor::calculateTextItemPosition() {
+	if (properties_.type != ConductorProperties::Multi) return;
 	text_item -> setPos(middleSegment() -> middle());
 }
 
@@ -965,11 +980,12 @@ void Conductor::calculateTextItemPosition() {
 	dans priv_modifieConductor.
 */
 void Conductor::saveProfile(bool undo) {
-	ConductorProfile old_profile = conductor_profile;
-	conductor_profile.fromConductor(this);
+	Qt::Corner current_path_type = currentPathType();
+	ConductorProfile old_profile(conductor_profiles[current_path_type]);
+	conductor_profiles[current_path_type].fromConductor(this);
 	Diagram *dia = diagram();
 	if (undo && dia) {
-		dia -> undoStack().push(new ChangeConductorCommand(this, old_profile, conductor_profile));
+		dia -> undoStack().push(new ChangeConductorCommand(this, old_profile, conductor_profiles[current_path_type], current_path_type));
 	}
 }
 
@@ -993,22 +1009,28 @@ int Conductor::getSign(const qreal &value) {
 /**
 	Applique un nouveau profil a ce conducteur
 	@param cp Profil a appliquer a ce conducteur
+	@param path_type Type de trajet pour lequel ce profil convient
 */
-void Conductor::setProfile(const ConductorProfile &cp) {
-	conductor_profile = cp;
-	if (conductor_profile.isNull()) {
-		priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
-		modified_path = false;
-	} else {
-		priv_modifieConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
-		modified_path = true;
+void Conductor::setProfile(const ConductorProfile &cp, Qt::Corner path_type) {
+	conductor_profiles[path_type] = cp;
+	// si le type de trajet correspond a l'actuel
+	if (currentPathType() == path_type) {
+		if (conductor_profiles[path_type].isNull()) {
+			priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+			modified_path = false;
+		} else {
+			priv_modifieConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+			modified_path = true;
+		}
+		if (type() == ConductorProperties::Multi) {
+			calculateTextItemPosition();
+		}
 	}
-	calculateTextItemPosition();
 }
 
 /// @return le profil de ce conducteur
-ConductorProfile Conductor::profile() const {
-	return(conductor_profile);
+ConductorProfile Conductor::profile(Qt::Corner path_type) const {
+	return(conductor_profiles[path_type]);
 }
 
 /// @return le texte du conducteur
@@ -1176,4 +1198,46 @@ bool Conductor::containsPoint(const QPointF &p) const {
 		segment = segment -> nextSegment();
 	}
 	return(false);
+}
+
+/**
+	@param start Point de depart
+	@param end Point d'arrivee
+	@return le coin vers lequel se dirige le trajet de start vers end
+*/
+Qt::Corner Conductor::movementType(const QPointF &start, const QPointF &end) {
+	Qt::Corner result = Qt::BottomRightCorner;
+	if (start.x() <= end.x()) {
+		result = start.y() <= end.y() ? Qt::BottomRightCorner : Qt::TopRightCorner;
+	} else {
+		result = start.y() <= end.y() ? Qt::BottomLeftCorner : Qt::TopLeftCorner;
+	}
+	return(result);
+}
+
+/// @return le type de trajet actuel de ce conducteur
+Qt::Corner Conductor::currentPathType() const {
+	return(movementType(terminal1 -> amarrageConductor(), terminal2 -> amarrageConductor()));
+}
+
+/// @return les profils de ce conducteur
+ConductorProfilesGroup Conductor::profiles() const {
+	return(conductor_profiles);
+}
+
+/**
+	@param cpg Les nouveaux profils de ce conducteur
+*/
+void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
+	conductor_profiles = cpg;
+	if (conductor_profiles[currentPathType()].isNull()) {
+		priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+		modified_path = false;
+	} else {
+		priv_modifieConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+		modified_path = true;
+	}
+	if (type() == ConductorProperties::Multi) {
+		calculateTextItemPosition();
+	}
 }

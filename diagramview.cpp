@@ -738,10 +738,17 @@ void DiagramView::resetConductors() {
 	QSet<Conductor *> selected_conductors = scene -> selectedConductors();
 	
 	// repere les conducteurs modifies (= profil non nul)
-	QHash<Conductor *, ConductorProfile> conductors_and_profiles;
+	QHash<Conductor *, ConductorProfilesGroup> conductors_and_profiles;
 	foreach(Conductor *conductor, selected_conductors) {
-		ConductorProfile profile = conductor -> profile();
-		if (!profile.isNull()) conductors_and_profiles.insert(conductor, profile);
+		ConductorProfilesGroup profile = conductor -> profiles();
+		if (
+			!profile[Qt::TopLeftCorner].isNull() ||\
+			!profile[Qt::TopRightCorner].isNull() ||\
+			!profile[Qt::BottomLeftCorner].isNull() ||\
+			!profile[Qt::BottomRightCorner].isNull()
+		) {
+			conductors_and_profiles.insert(conductor, profile);
+		}
 	}
 	
 	if (conductors_and_profiles.isEmpty()) return;

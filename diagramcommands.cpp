@@ -363,12 +363,14 @@ ChangeConductorCommand::ChangeConductorCommand(
 	Conductor *c,
 	const ConductorProfile &old_p,
 	const ConductorProfile &new_p,
+	Qt::Corner path_t,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(QObject::tr("modifier un conducteur"), parent),
 	conductor(c),
 	old_profile(old_p),
 	new_profile(new_p),
+	path_type(path_t),
 	first_redo(true)
 {
 }
@@ -379,13 +381,13 @@ ChangeConductorCommand::~ChangeConductorCommand() {
 
 /// Annule la modification du conducteur
 void ChangeConductorCommand::undo() {
-	conductor -> setProfile(old_profile);
+	conductor -> setProfile(old_profile, path_type);
 }
 
 /// Refait la modification du conducteur
 void ChangeConductorCommand::redo() {
 	if (first_redo) first_redo = false;
-	else conductor -> setProfile(new_profile);
+	else conductor -> setProfile(new_profile, path_type);
 }
 
 /**
@@ -394,7 +396,7 @@ void ChangeConductorCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ResetConductorCommand::ResetConductorCommand(
-	const QHash<Conductor *, ConductorProfile> &cp,
+	const QHash<Conductor *, ConductorProfilesGroup> &cp,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(QObject::tr("R\351initialiser ") + QET::ElementsAndConductorsSentence(0, cp.count()), parent),
@@ -409,15 +411,14 @@ ResetConductorCommand::~ResetConductorCommand() {
 /// Annule la reinitialisation des conducteurs
 void ResetConductorCommand::undo() {
 	foreach(Conductor *c, conductors_profiles.keys()) {
-		c -> setProfile(conductors_profiles[c]);
+		c -> setProfiles(conductors_profiles[c]);
 	}
 }
 
 /// Refait la reinitialisation des conducteurs
 void ResetConductorCommand::redo() {
 	foreach(Conductor *c, conductors_profiles.keys()) {
-		ConductorProfile t(conductors_profiles[c]);
-		c -> setProfile(ConductorProfile());
+		c -> setProfiles(ConductorProfilesGroup());
 	}
 }
 
