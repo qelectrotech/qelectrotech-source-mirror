@@ -6,6 +6,7 @@
 	Cette classe represente un champ de texte editable sur le schema.
 */
 class DiagramTextItem : public QGraphicsTextItem {
+	Q_OBJECT
 	// constructeurs, destructeur
 	public:
 	DiagramTextItem(QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -26,8 +27,23 @@ class DiagramTextItem : public QGraphicsTextItem {
 	*/
 	virtual int type() const { return Type; }
 	Diagram *diagram() const;
+	virtual void fromXml(const QDomElement &);
+	virtual QDomElement toXml(QDomDocument &) const;
+	virtual void setPos(const QPointF &);
+	virtual void setPos(qreal, qreal);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
+	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	
+	// signaux
+	signals:
+	void lostFocus();
+	
+	// slots
+	public slots:
+	void setNonFocusable();
 };
 #endif

@@ -40,9 +40,6 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	// si aucun schema n'a ete ouvert jusqu'a maintenant, on ouvre un nouveau schema
 	if (!diagram_views.size()) diagram_views << new DiagramView(this);
 	
-	// ajout de tous les DiagramView necessaires
-	foreach (DiagramView *sv, diagram_views) addDiagramView(sv);
-	
 	// titre de la fenetre
 	setWindowTitle(tr("QElectroTech"));
 	
@@ -78,6 +75,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	// connexions signaux / slots pour une interface sensee
 	connect(&workspace,                SIGNAL(windowActivated(QWidget *)), this, SLOT(slot_updateActions()));
 	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updateActions()));
+	
+	// ajout de tous les DiagramView necessaires
+	foreach (DiagramView *sv, diagram_views) addDiagramView(sv);
 	
 	// affichage
 	show();
@@ -165,6 +165,7 @@ void QETDiagramEditor::actions() {
 	conductor_reset   = new QAction(QIcon(":/ico/conductor2.png"), tr("R\351initialiser les conducteurs"),     this);
 	conductor_default = new QAction(QIcon(":/ico/conductor3.png"), tr("Conducteurs par d\351faut"),            this);
 	infos_diagram     = new QAction(QIcon(":/ico/info.png"),       tr("Propri\351t\351s du sch\351ma"),        this);
+	add_text          = new QAction(QIcon(":/ico/textfield.png"),  tr("Ajouter un champ de texte"),            this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
 	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
@@ -279,6 +280,7 @@ void QETDiagramEditor::actions() {
 	about_qt          -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt"));
 	
 	// traitements speciaux
+	add_text          -> setCheckable(true);
 	mode_selection    -> setCheckable(true);
 	mode_visualise    -> setCheckable(true);
 	mode_selection    -> setChecked(true);
@@ -324,6 +326,7 @@ void QETDiagramEditor::actions() {
 	connect(conductor_reset,  SIGNAL(triggered()), this,       SLOT(slot_resetConductors())     );
 	connect(conductor_default,SIGNAL(triggered()), this,       SLOT(slot_editDefaultConductors()));
 	connect(infos_diagram,    SIGNAL(triggered()), this,       SLOT(slot_editInfos())           );
+	connect(add_text,         SIGNAL(triggered()), this,       SLOT(slot_addText())             );
 	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
 	connect(expand_diagram,   SIGNAL(triggered()), this,       SLOT(slot_expand())              );
@@ -464,6 +467,7 @@ void QETDiagramEditor::toolbar() {
 	view_bar -> addAction(zoom_reset);
 	
 	diagram_bar -> addAction(infos_diagram);
+	diagram_bar -> addAction(add_text);
 	diagram_bar -> addAction(conductor_default);
 	diagram_bar -> addAction(conductor_prop);
 	diagram_bar -> addAction(conductor_reset);
@@ -707,6 +711,7 @@ void QETDiagramEditor::slot_updateActions() {
 	conductor_reset  -> setEnabled(opened_document && selected_conductors_count);
 	conductor_default-> setEnabled(opened_document);
 	infos_diagram    -> setEnabled(opened_document);
+	add_text         -> setEnabled(opened_document);
 	add_column       -> setEnabled(opened_document);
 	remove_column    -> setEnabled(opened_document);
 	expand_diagram   -> setEnabled(opened_document);
@@ -774,6 +779,7 @@ void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 	QWidget *p = workspace.addWindow(dv);
 	connect(dv -> diagram(), SIGNAL(selectionChanged()), this, SLOT(slot_updateActions()));
 	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateActions()));
+	connect(dv, SIGNAL(textAdded(bool)), add_text, SLOT(setChecked(bool)));
 	
 	// affiche la fenetre
 	if (maximise) p -> showMaximized();
@@ -893,6 +899,15 @@ void QETDiagramEditor::slot_resetConductors() {
 */
 void QETDiagramEditor::slot_editDefaultConductors() {
 	if (DiagramView *dv = currentDiagram()) {
-		dv->editDefaultConductorProperties();
+		dv -> editDefaultConductorProperties();
+	}
+}
+
+/**
+	Ajoute un texte au schema courant
+*/
+void QETDiagramEditor::slot_addText() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addText();
 	}
 }

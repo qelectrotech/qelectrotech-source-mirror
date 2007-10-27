@@ -22,6 +22,7 @@ class DiagramView : public QGraphicsView {
 	
 	private:
 	Diagram *scene;
+	bool is_adding_text;
 	
 	// methodes
 	public:
@@ -38,6 +39,7 @@ class DiagramView : public QGraphicsView {
 	void shrink();
 	Diagram *diagram() { return(scene); }
 	bool hasSelectedItems();
+	void addText();
 	
 	protected:
 	virtual void wheelEvent(QWheelEvent *);
@@ -57,6 +59,8 @@ class DiagramView : public QGraphicsView {
 	void selectionChanged();
 	/// Signal emis lorsque le mode de selection change
 	void modeChanged();
+	/// Signal emis lorsqu'un texte a ete pose
+	void textAdded(bool);
 	
 	public slots:
 	void selectNothing();

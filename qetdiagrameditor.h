@@ -68,6 +68,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_editConductor();
 	void slot_resetConductors();
 	void slot_editDefaultConductors();
+	void slot_addText();
 	
 	// attributs
 	private:
@@ -97,6 +98,7 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *conductor_reset;
 	QAction *conductor_default;
 	QAction *infos_diagram;
+	QAction *add_text;
 	QAction *add_column;
 	QAction *remove_column;
 	QAction *expand_diagram;

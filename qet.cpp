@@ -130,16 +130,48 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, double *r
 	@param conductors_count nombre de conducteurs
 	@return la proposition decrivant le nombre d'elements et de conducteurs
 */
-QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count) {
+QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count) {
 	QString text;
 	if (elements_count) {
 		text += QString::number(elements_count) + " ";
 		text += elements_count > 1 ? QObject::tr("\351l\351ments") : QObject::tr("\351l\351ment");
-		if (conductors_count) text += QObject::tr(" et ");
+		if (conductors_count ^ texts_count) text += QObject::tr(" et ");
+		else if (conductors_count && texts_count) text += QObject::tr(", ");
 	}
 	if (conductors_count) {
 		text += QString::number(conductors_count) + " ";
 		text += conductors_count > 1 ? QObject::tr("conducteurs") : QObject::tr("conducteur");
+		if (texts_count) text += QObject::tr(" et ");
+	}
+	if (texts_count) {
+		text += QString::number(texts_count) + " ";
+		text += texts_count > 1 ? QObject::tr("champs de texte") : QObject::tr("champ de texte");
 	}
 	return(text);
+}
+
+/**
+	Etant donne un element XML e, renvoie la liste de tous les elements
+	children imbriques dans les elements parent, eux-memes enfants de l'elememt e
+	@param e Element XML a explorer
+	@param parent tag XML intermediaire
+	@param children tag XML a rechercher
+	@return La liste des elements XML children
+*/
+QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &parent, const QString &children) {
+	QList<QDomElement> return_list;
+	
+	// parcours des elements parents
+	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
+		// on s'interesse a l'element XML "parent"
+		QDomElement parents = enfant.toElement();
+		if (parents.isNull() || parents.tagName() != parent) continue;
+		// parcours des enfants de l'element XML "parent"
+		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling()) {
+			// on s'interesse a l'element XML "children"
+			QDomElement n_children = node_children.toElement();
+			if (!n_children.isNull() && n_children.tagName() == children) return_list.append(n_children);
+		}
+	}
+	return(return_list);
 }

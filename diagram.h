@@ -9,6 +9,7 @@
 class Element;
 class Terminal;
 class Conductor;
+class DiagramTextItem;
 /**
 	Cette classe represente un schema electrique.
 	Elle gere les differents elements et conducteurs qui le composent
@@ -55,6 +56,7 @@ class Diagram : public QGraphicsScene {
 	QSet<Element *> elements_to_move;
 	QSet<Conductor *> conductors_to_move;
 	QHash<Conductor *, Terminal *> conductors_to_update;
+	QSet<DiagramTextItem *> texts_to_move;
 	QGIManager qgi_manager;
 	QUndoStack undo_stack;
 	bool draw_terminals;
@@ -72,7 +74,7 @@ class Diagram : public QGraphicsScene {
 	
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
-	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, QList<Element *> * = NULL, QList<Conductor *> * = NULL);
+	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, QList<Element *> * = NULL, QList<Conductor *> * = NULL, QList<DiagramTextItem *> * = NULL);
 	
 	// fonctions relatives aux options graphiques
 	void setDisplayGrid(bool);
@@ -94,7 +96,9 @@ class Diagram : public QGraphicsScene {
 	const QSet<Element *> &elementsToMove();
 	const QSet<Conductor *> &conductorsToMove();
 	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
+	const QSet<DiagramTextItem *> &textsToMove();
 	QSet<Conductor *> selectedConductors() const;
+	void moveElements(const QPointF &, QGraphicsItem * = NULL);
 	
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
@@ -213,6 +217,12 @@ inline const QSet<Conductor *> &Diagram::conductorsToMove() {
 inline const QHash<Conductor *, Terminal *> &Diagram::conductorsToUpdate() {
 	if (!moved_elements_fetched) fetchMovedElements();
 	return(conductors_to_update);
+}
+
+/// @return la liste des textes a deplacer
+inline const QSet<DiagramTextItem *> &Diagram::textsToMove() {
+	if (!moved_elements_fetched) fetchMovedElements();
+	return(texts_to_move);
 }
 
 /// @return la pile d'annulations de ce schema

@@ -246,42 +246,10 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (e -> buttons() & Qt::LeftButton) {
 		QPointF oldPos = pos();
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		moveOtherElements(pos() - oldPos);
+		if (Diagram *diagram_ptr = diagram()) {
+			diagram_ptr -> moveElements(pos() - oldPos, this);
+		}
 	} else e -> ignore();
-}
-
-/**
-	Deplace les autres elements selectionnes en gerant au mieux les conducteurs
-	(seuls les conducteurs dont un seul des elements est deplace sont
-	recalcules, les autres sont deplaces).
-	@param diff Translation a effectuer
-*/
-void Element::moveOtherElements(const QPointF &diff) {
-	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
-	if (diff.isNull()) return;
-	
-	// recupere le schema parent
-	Diagram *diagram_ptr = diagram();
-	if (!diagram_ptr) return;
-	
-	diagram_ptr -> current_movement += diff;
-	
-	// deplace les elements selectionnes
-	foreach(Element *element, diagram_ptr -> elementsToMove()) {
-		if (element == this) continue;
-		element -> setPos(element -> pos() + diff);
-	}
-	
-	// deplace certains conducteurs
-	foreach(Conductor *conductor, diagram_ptr -> conductorsToMove()) {
-		conductor -> setPos(conductor -> pos() + diff);
-	}
-	
-	// recalcule les autres conducteurs
-	const QHash<Conductor *, Terminal *> &conductors_modify = diagram_ptr -> conductorsToUpdate();
-	foreach(Conductor *conductor, conductors_modify.keys()) {
-		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> amarrageConductor());
-	}
 }
 
 /**
@@ -299,6 +267,7 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 					diagram_ptr -> elementsToMove(),
 					diagram_ptr -> conductorsToMove(),
 					diagram_ptr -> conductorsToUpdate(),
+					diagram_ptr -> textsToMove(),
 					diagram_ptr -> current_movement
 				)
 			);
@@ -353,7 +322,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 		ce recensement servira lors de la mise en place des fils
 	*/
 	QList<QDomElement> liste_terminals;
-	foreach(QDomElement qde, findInDomElement(e, "terminals", "terminal")) {
+	foreach(QDomElement qde, QET::findInDomElement(e, "terminals", "terminal")) {
 		if (Terminal::valideXml(qde)) liste_terminals << qde;
 	}
 	
@@ -390,7 +359,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	}
 	
 	// importe les valeurs des champs de texte
-	QList<QDomElement> inputs = findInDomElement(e, "inputs", "input");
+	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
 	foreach(QGraphicsItem *qgi, children()) {
 		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
 			foreach(QDomElement input, inputs) eti -> fromXml(input);
@@ -468,33 +437,6 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.appendChild(inputs);
 	
 	return(element);
-}
-
-/**
-	Methode statique sans rapport direct avec la manipulation des elements.
-	Etant donne un element XML e, elle renvoie la liste de tous les elements
-	children imbriques dans les elements parent, eux-memes enfants de l'elememt e
-	@param e Element XML a explorer
-	@param parent tag XML intermediaire
-	@param children tag XML a rechercher
-	@return La liste des elements XML children
-*/
-QList<QDomElement> Element::findInDomElement(QDomElement e, QString parent, QString children) {
-	// recense les champs de texte
-	QList<QDomElement> return_list;
-	// parcours des enfants de l'element
-	for (QDomNode enfant = e.firstChild() ; !enfant.isNull() ; enfant = enfant.nextSibling()) {
-		// on s'interesse a l'element XML "parent"
-		QDomElement parents = enfant.toElement();
-		if (parents.isNull() || parents.tagName() != parent) continue;
-		// parcours des enfants de l'element XML "parent"
-		for (QDomNode node_children = parents.firstChild() ; !node_children.isNull() ; node_children = node_children.nextSibling()) {
-			// on s'interesse a l'element XML "children"
-			QDomElement n_children = node_children.toElement();
-			if (!n_children.isNull() && n_children.tagName() == children) return_list.append(n_children);
-		}
-	}
-	return(return_list);
 }
 
 /// @return le Diagram auquel cet element appartient, ou 0 si cet element est independant

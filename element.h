@@ -61,7 +61,6 @@ class Element : public QGraphicsItem {
 	// methodes relatives a la position
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
-	void moveOtherElements(const QPointF &);
 	
 	// methodes relatives aux connexions internes
 	bool connexionsInternesAcceptees();
@@ -69,8 +68,8 @@ class Element : public QGraphicsItem {
 	
 	// methodes relatives aux fichiers XML
 	static bool valideXml(QDomElement &);
-	virtual bool fromXml(QDomElement &, QHash<int, Terminal *>&);
-	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int>&) const;
+	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &);
+	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	
 	// methodes d'acces aux possibilites d'orientation
 	bool setOrientation(QET::Orientation o);
@@ -85,7 +84,6 @@ class Element : public QGraphicsItem {
 	bool peut_relier_ses_propres_terminals;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
-	static QList<QDomElement> findInDomElement(QDomElement, QString, QString);
 };
 
 /**

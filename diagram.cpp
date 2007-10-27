@@ -94,16 +94,7 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 		case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
 	}
 	if (!movement.isNull() && !focusItem()) {
-		QSet<Element *> moved_elements = elementsToMove();
-		if (!moved_elements.isEmpty()) {
-			Element *first_elmt = NULL;
-			foreach(Element *elmt, moved_elements) {
-				first_elmt = elmt;
-				break;
-			}
-			first_elmt -> setPos(first_elmt -> pos() + movement);
-			first_elmt -> moveOtherElements(movement);
-		}
+		moveElements(movement);
 	}
 	QGraphicsScene::keyPressEvent(e);
 }
@@ -126,6 +117,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 				elementsToMove(),
 				conductorsToMove(),
 				conductorsToUpdate(),
+				textsToMove(),
 				current_movement
 			)
 		);
@@ -240,20 +232,26 @@ QDomDocument Diagram::toXml(bool diagram) {
 	// si le schema ne contient pas d'element (et donc pas de conducteurs), on retourne de suite le document XML
 	if (items().isEmpty()) return(document);
 	
-	// creation de deux listes : une qui contient les elements, une qui contient les conducteurs
-	QList<Element *> liste_elements;
-	QList<Conductor *> liste_conductors;
+	// creation de trois listes : une qui contient les elements, une qui contient les conducteurs, une qui contient les champs de texte
+	QList<Element *> list_elements;
+	QList<Conductor *> list_conductors;
+	QList<DiagramTextItem *> list_texts;
 	
 	// Determine les elements a « XMLiser »
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-			if (diagram) liste_elements << elmt;
-			else if (elmt -> isSelected()) liste_elements << elmt;
+			if (diagram) list_elements << elmt;
+			else if (elmt -> isSelected()) list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
-			if (diagram) liste_conductors << f;
+			if (diagram) list_conductors << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
 			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas relie
-			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) liste_conductors << f;
+			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) list_conductors << f;
+		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
+			if (!dti -> parentItem()) {
+				if (diagram) list_texts << dti;
+				else if (dti -> isSelected()) list_texts << dti;
+			}
 		}
 	}
 	
@@ -261,20 +259,31 @@ QDomDocument Diagram::toXml(bool diagram) {
 	QHash<Terminal *, int> table_adr_id;
 	
 	// enregistrement des elements
-	if (liste_elements.isEmpty()) return(document);
-	QDomElement elements = document.createElement("elements");
-	foreach(Element *elmt, liste_elements) {
-		elements.appendChild(elmt -> toXml(document, table_adr_id));
+	if (!list_elements.isEmpty()) {
+		QDomElement elements = document.createElement("elements");
+		foreach(Element *elmt, list_elements) {
+			elements.appendChild(elmt -> toXml(document, table_adr_id));
+		}
+		racine.appendChild(elements);
 	}
-	racine.appendChild(elements);
 	
 	// enregistrement des conducteurs
-	if (liste_conductors.isEmpty()) return(document);
-	QDomElement conductors = document.createElement("conductors");
-	foreach(Conductor *cond, liste_conductors) {
-		conductors.appendChild(cond -> toXml(document, table_adr_id));
+	if (!list_conductors.isEmpty()) {
+		QDomElement conductors = document.createElement("conductors");
+		foreach(Conductor *cond, list_conductors) {
+			conductors.appendChild(cond -> toXml(document, table_adr_id));
+		}
+		racine.appendChild(conductors);
 	}
-	racine.appendChild(conductors);
+	
+	// enregistrement des champs de texte
+	if (!list_texts.isEmpty()) {
+		QDomElement inputs = document.createElement("inputs");
+		foreach(DiagramTextItem *dti, list_texts) {
+			inputs.appendChild(dti -> toXml(document));
+		}
+		racine.appendChild(inputs);
+	}
 	
 	// on retourne le document XML ainsi genere
 	return(document);
@@ -296,15 +305,15 @@ QDomDocument Diagram::toXml(bool diagram) {
 	fromXml
 	@return true si l'import a reussi, false sinon
 */
-bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, QList<Element *> *added_elements, QList<Conductor *> *added_conductors) {
-	QDomElement racine = document.documentElement();
+bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, QList<Element *> *added_elements_ptr, QList<Conductor *> *added_conductors_ptr, QList<DiagramTextItem *> *added_texts_ptr) {
+	QDomElement root = document.documentElement();
 	// le premier element doit etre un schema
-	if (racine.tagName() != "diagram") return(false);
+	if (root.tagName() != "diagram") return(false);
 	
 	// verifie basiquement que la version actuelle est capable de lire ce fichier
-	if (racine.hasAttribute("version")) {
+	if (root.hasAttribute("version")) {
 		bool conv_ok;
-		qreal diagram_version = racine.attribute("version").toDouble(&conv_ok);
+		qreal diagram_version = root.attribute("version").toDouble(&conv_ok);
 		if (conv_ok && QET::version.toDouble() < diagram_version) {
 			QMessageBox::warning(
 				0,
@@ -318,27 +327,27 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
-		border_and_inset.setAuthor(racine.attribute("author"));
-		border_and_inset.setTitle(racine.attribute("title"));
-		border_and_inset.setDate(QDate::fromString(racine.attribute("date"), "yyyyMMdd"));
-		border_and_inset.setFileName(racine.attribute("filename"));
-		border_and_inset.setFolio(racine.attribute("folio"));
+		border_and_inset.setAuthor(root.attribute("author"));
+		border_and_inset.setTitle(root.attribute("title"));
+		border_and_inset.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
+		border_and_inset.setFileName(root.attribute("filename"));
+		border_and_inset.setFolio(root.attribute("folio"));
 		
 		bool ok;
 		// nombre de colonnes
-		int nb_cols = racine.attribute("cols").toInt(&ok);
+		int nb_cols = root.attribute("cols").toInt(&ok);
 		if (ok) border_and_inset.setNbColumns(nb_cols);
 		
 		// taille des colonnes
-		double col_size = racine.attribute("colsize").toDouble(&ok);
+		double col_size = root.attribute("colsize").toDouble(&ok);
 		if (ok) border_and_inset.setColumnsWidth(col_size);
 		
 		// hauteur du schema
-		double height = racine.attribute("height").toDouble(&ok);
+		double height = root.attribute("height").toDouble(&ok);
 		if (ok) border_and_inset.setColumnsHeight(height);
 		
 		// repere le permier element "defaultconductor"
-		for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+		for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 			QDomElement elmts = node.toElement();
 			if(elmts.isNull() || elmts.tagName() != "defaultconductor") continue;
 			defaultConductorProperties.fromXml(elmts);
@@ -348,57 +357,54 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
-	if (racine.firstChild().isNull()) return(true);
+	if (root.firstChild().isNull()) return(true);
 	
-	// chargement de tous les Elements du fichier XML
-	QList<Element *> elements_ajoutes;
-	QHash< int, Terminal *> table_adr_id;
-	QHash< int, Terminal *> &ref_table_adr_id = table_adr_id;
-	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-		// on s'interesse a l'element XML "elements" (= groupe d'elements)
-		QDomElement elmts = node.toElement();
-		if(elmts.isNull() || elmts.tagName() != "elements") continue;
-		// parcours des enfants de l'element XML "elements"
-		for (QDomNode n = elmts.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
-			// on s'interesse a l'element XML "element" (elements eux-memes)
-			QDomElement e = n.toElement();
-			if (e.isNull() || !Element::valideXml(e)) continue;
-			
-			// cree un element dont le type correspond à l'id type
-			QString type_id = e.attribute("type");
-			QString chemin_fichier = QETApp::realPath(type_id);
-			CustomElement *nvel_elmt = new CustomElement(chemin_fichier);
-			if (nvel_elmt -> isNull()) {
-				QString debug_message = QString("Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(chemin_fichier).arg(nvel_elmt -> etat());
-				delete nvel_elmt;
-				qDebug(debug_message.toLatin1().data());
-				continue;
-			}
-			
-			// charge les caracteristiques de l'element
-			if (nvel_elmt -> fromXml(e, ref_table_adr_id)) {
-				// ajout de l'element au schema et a la liste des elements ajoutes
-				addItem(nvel_elmt);
-				elements_ajoutes << nvel_elmt;
-			} else {
-				delete nvel_elmt;
-				qDebug("Le chargement des parametres d'un element a echoue");
-			}
+	// chargement de tous les elements du fichier XML
+	QList<Element *> added_elements;
+	QHash<int, Terminal *> table_adr_id;
+	foreach (QDomElement e, QET::findInDomElement(root, "elements", "element")) {
+		if (!Element::valideXml(e)) continue;
+		
+		// cree un element dont le type correspond à l'id type
+		QString type_id = e.attribute("type");
+		QString chemin_fichier = QETApp::realPath(type_id);
+		CustomElement *nvel_elmt = new CustomElement(chemin_fichier);
+		if (nvel_elmt -> isNull()) {
+			QString debug_message = QString("Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(chemin_fichier).arg(nvel_elmt -> etat());
+			delete nvel_elmt;
+			qDebug(debug_message.toLatin1().data());
+			continue;
+		}
+		
+		// charge les caracteristiques de l'element
+		if (nvel_elmt -> fromXml(e, table_adr_id)) {
+			// ajout de l'element au schema et a la liste des elements ajoutes
+			addItem(nvel_elmt);
+			added_elements << nvel_elmt;
+		} else {
+			delete nvel_elmt;
+			qDebug("Le chargement des parametres d'un element a echoue");
 		}
 	}
 	
-	if (added_elements) (*added_elements) << elements_ajoutes;
+	// chargement de tous les textes du fichiers XML
+	QList<DiagramTextItem *> added_texts;
+	foreach (QDomElement f, QET::findInDomElement(root, "inputs", "input")) {
+		DiagramTextItem *dti = new DiagramTextItem(0, this);
+		dti -> fromXml(f);
+		added_texts << dti;
+	}
 	
-	// aucun Element n'a ete ajoute - inutile de chercher des conducteurs - le chargement est fini
-	if (!elements_ajoutes.size()) return(true);
-	
-	// gere la translation des nouveaux elements si celle-ci est demandee
+	// gere la translation des nouveaux elements et texte si celle-ci est demandee
 	if (position != QPointF()) {
 		// determine quel est le coin superieur gauche du rectangle entourant les elements ajoutes
 		qreal minimum_x = 0, minimum_y = 0;
 		bool init = false;
-		foreach (Element *elmt_ajoute, elements_ajoutes) {
-			QPointF csg = elmt_ajoute -> mapToScene(elmt_ajoute -> boundingRect().topLeft());
+		QList<QGraphicsItem *> added_items;
+		foreach (Element *added_element, added_elements) added_items << added_element;
+		foreach (DiagramTextItem *added_text, added_texts) added_items << added_text;
+		foreach (QGraphicsItem *item, added_items) {
+			QPointF csg = item -> mapToScene(item -> boundingRect().topLeft());
 			qreal px = csg.x();
 			qreal py = csg.y();
 			if (!init) {
@@ -412,41 +418,47 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		}
 		qreal diff_x = position.x() - minimum_x;
 		qreal diff_y = position.y() - minimum_y;
-		foreach (Element *elmt_ajoute, elements_ajoutes) {
-			elmt_ajoute -> setPos(elmt_ajoute -> pos().x() + diff_x, elmt_ajoute -> pos().y() + diff_y);
+		foreach (Element *added_element, added_elements) {
+			added_element -> setPos(added_element -> pos().x() + diff_x, added_element -> pos().y() + diff_y);
+		}
+		foreach (DiagramTextItem *added_text, added_texts) {
+			added_text -> setPos(added_text -> pos().x() + diff_x, added_text -> pos().y() + diff_y);
 		}
 	}
 	
 	// chargement de tous les Conducteurs du fichier XML
-	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-		// on s'interesse a l'element XML "conducteurs" (= groupe de conducteurs)
-		QDomElement conductors = node.toElement();
-		if(conductors.isNull() || conductors.tagName() != "conductors") continue;
-		// parcours des enfants de l'element XML "conducteurs"
-		for (QDomNode n = conductors.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
-			// on s'interesse a l'element XML "element" (elements eux-memes)
-			QDomElement f = n.toElement();
-			if (f.isNull() || !Conductor::valideXml(f)) continue;
-			// verifie que les bornes que le conducteur relie sont connues
-			int id_p1 = f.attribute("terminal1").toInt();
-			int id_p2 = f.attribute("terminal2").toInt();
-			if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2)) {
-				// pose le conducteur... si c'est possible
-				Terminal *p1 = table_adr_id.value(id_p1);
-				Terminal *p2 = table_adr_id.value(id_p2);
-				if (p1 != p2) {
-					bool peut_poser_conductor = true;
-					bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
-					if (!cia) foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) if (item == p1) peut_poser_conductor = false;
-					if (peut_poser_conductor) {
-						Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
-						c -> fromXml(f);
-						if (added_conductors) (*added_conductors) << c;
+	QList<Conductor *> added_conductors;
+	foreach (QDomElement f, QET::findInDomElement(root, "conductors", "conductor")) {
+		if (!Conductor::valideXml(f)) continue;
+		// verifie que les bornes que le conducteur relie sont connues
+		int id_p1 = f.attribute("terminal1").toInt();
+		int id_p2 = f.attribute("terminal2").toInt();
+		if (table_adr_id.contains(id_p1) && table_adr_id.contains(id_p2)) {
+			// pose le conducteur... si c'est possible
+			Terminal *p1 = table_adr_id.value(id_p1);
+			Terminal *p2 = table_adr_id.value(id_p2);
+			if (p1 != p2) {
+				bool can_add_conductor = true;
+				bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
+				if (!cia) {
+					foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) {
+						if (item == p1) can_add_conductor = false;
 					}
 				}
-			} else qDebug() << "Le chargement du conductor" << id_p1 << id_p2 << "a echoue";
-		}
+				if (can_add_conductor) {
+					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+					c -> fromXml(f);
+					added_conductors << c;
+				}
+			}
+		} else qDebug() << "Le chargement du conductor" << id_p1 << id_p2 << "a echoue";
 	}
+	
+	// remplissage des listes facultatives
+	if (added_elements_ptr   != NULL) *added_elements_ptr   = added_elements;
+	if (added_conductors_ptr != NULL) *added_conductors_ptr = added_conductors;
+	if (added_texts_ptr      != NULL) *added_texts_ptr      = added_texts;
+	
 	return(true);
 }
 
@@ -485,6 +497,7 @@ void Diagram::invalidateMovedElements() {
 	elements_to_move.clear();
 	conductors_to_move.clear();
 	conductors_to_update.clear();
+	texts_to_move.clear();
 }
 
 /// reconstruit la liste des elements et conducteurs en mouvement
@@ -493,6 +506,8 @@ void Diagram::fetchMovedElements() {
 	foreach (QGraphicsItem *item, selectedItems()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_move << elmt;
+		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(item)) {
+			if (!t -> parentItem()) texts_to_move << t;
 		}
 	}
 	
@@ -516,6 +531,44 @@ void Diagram::fetchMovedElements() {
 		}
 	}
 	moved_elements_fetched = true;
+}
+
+/**
+	Deplace les elements, conducteurs et textes selectionnes en gerant au
+	mieux les conducteurs (seuls les conducteurs dont un seul des elements
+	est deplace sont recalcules, les autres sont deplaces).
+	@param diff Translation a effectuer
+	@param dontmove QGraphicsItem (optionnel) a ne pas deplacer ; note : ce
+	parametre ne concerne que les elements et les champs de texte.
+*/
+void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
+	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
+	if (diff.isNull()) return;
+	
+	current_movement += diff;
+	
+	// deplace les elements selectionnes
+	foreach(Element *element, elementsToMove()) {
+		if (dontmove != NULL && element == dontmove) continue;
+		element -> setPos(element -> pos() + diff);
+	}
+	
+	// deplace certains conducteurs
+	foreach(Conductor *conductor, conductorsToMove()) {
+		conductor -> setPos(conductor -> pos() + diff);
+	}
+	
+	// recalcule les autres conducteurs
+	const QHash<Conductor *, Terminal *> &conductors_modify = conductorsToUpdate();
+	foreach(Conductor *conductor, conductors_modify.keys()) {
+		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> amarrageConductor());
+	}
+	
+	// deplace les champs de texte
+	foreach(DiagramTextItem *dti, textsToMove()) {
+		if (dontmove != NULL && dti == dontmove) continue;
+		dti -> setPos(dti -> pos() + diff);
+	}
 }
 
 /**

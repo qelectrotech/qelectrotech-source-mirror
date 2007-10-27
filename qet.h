@@ -22,6 +22,7 @@ namespace QET {
 	bool estVerticale(QET::Orientation);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
 	bool attributeIsAReal(const QDomElement &, QString , double * = NULL);
-	QString ElementsAndConductorsSentence(int, int);
+	QString ElementsAndConductorsSentence(int, int, int = 0);
+	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 }
 #endif

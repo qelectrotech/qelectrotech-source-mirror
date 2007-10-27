@@ -33,6 +33,32 @@ class AddElementCommand : public QUndoCommand {
 };
 
 /**
+	Cette classe represente l'action d'ajouter du texte au schema
+*/
+class AddTextCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	AddTextCommand(Diagram *, DiagramTextItem *, const QPointF &, QUndoCommand * = 0);
+	virtual ~AddTextCommand();
+	private:
+	AddTextCommand(const AddTextCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// texte ajoute
+	DiagramTextItem *textitem;
+	/// schema sur lequel on ajoute le texte
+	Diagram *diagram;
+	/// position du texte sur le schema
+	QPointF position;
+};
+
+/**
 	Cette classe represente l'action d'ajouter un conducteur au schema
 */
 class AddConductorCommand : public QUndoCommand {
@@ -63,7 +89,7 @@ class AddConductorCommand : public QUndoCommand {
 class DeleteElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	DeleteElementsCommand(Diagram *, QSet<Element *>, QSet<Conductor *>, QUndoCommand * = 0);
+	DeleteElementsCommand(Diagram *, QSet<Element *>, QSet<Conductor *>, QSet<DiagramTextItem *>, QUndoCommand * = 0);
 	virtual ~DeleteElementsCommand();
 	private:
 	DeleteElementsCommand(const DeleteElementsCommand &);
@@ -79,6 +105,8 @@ class DeleteElementsCommand : public QUndoCommand {
 	QSet<Element *> removed_elements;
 	/// liste des conducteurs enleves
 	QSet<Conductor *> removed_conductors;
+	/// liste des textes enleves
+	QSet<DiagramTextItem *> removed_texts;
 	/// schema dont on supprime des elements et conducteurs
 	Diagram *diagram;
 };
@@ -89,7 +117,7 @@ class DeleteElementsCommand : public QUndoCommand {
 class PasteDiagramCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	PasteDiagramCommand(Diagram *, const QList<Element *> &, const QList<Conductor *> &, QUndoCommand * = 0);
+	PasteDiagramCommand(Diagram *, const QList<Element *> &, const QList<Conductor *> &, const QList<DiagramTextItem *> &, QUndoCommand * = 0);
 	virtual ~PasteDiagramCommand();
 	private:
 	PasteDiagramCommand(const PasteDiagramCommand &);
@@ -105,6 +133,8 @@ class PasteDiagramCommand : public QUndoCommand {
 	QList<Element *> elements;
 	/// conducteurs ajoutes
 	QList<Conductor *> conductors;
+	/// textes ajoutes
+	QList<DiagramTextItem *> texts;
 	/// schema sur lequel on colle les elements et conducteurs
 	Diagram *diagram;
 	/// booleen pour empecher le premier appel a redo
@@ -118,7 +148,7 @@ class PasteDiagramCommand : public QUndoCommand {
 class CutDiagramCommand : public DeleteElementsCommand {
 	// constructeurs, destructeur
 	public:
-	CutDiagramCommand(Diagram *, QSet<Element *>, QSet<Conductor *>, QUndoCommand * = 0);
+	CutDiagramCommand(Diagram *, QSet<Element *>, QSet<Conductor *>, QSet<DiagramTextItem *>, QUndoCommand * = 0);
 	virtual ~CutDiagramCommand();
 	private:
 	CutDiagramCommand(const CutDiagramCommand &);
@@ -131,7 +161,7 @@ class CutDiagramCommand : public DeleteElementsCommand {
 class MoveElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	MoveElementsCommand(Diagram *, const QSet<Element *> &, const QSet<Conductor *> &, const QHash<Conductor *, Terminal *> &, const QPointF &m, QUndoCommand * = 0);
+	MoveElementsCommand(Diagram *, const QSet<Element *> &, const QSet<Conductor *> &, const QHash<Conductor *, Terminal *> &, const QSet<DiagramTextItem *> &, const QPointF &m, QUndoCommand * = 0);
 	virtual ~MoveElementsCommand();
 	private:
 	MoveElementsCommand(const MoveElementsCommand &);
@@ -152,6 +182,8 @@ class MoveElementsCommand : public QUndoCommand {
 	QSet<Conductor *> conductors_to_move;
 	/// conducteurs a actualiser
 	QHash<Conductor *, Terminal *> conductors_to_update;
+	/// textes a deplacer
+	QSet<DiagramTextItem *> texts_to_move;
 	/// mouvement effectue
 	QPointF movement;
 	/// booleen pour ne pas executer le premier redo()

@@ -43,6 +43,39 @@ void AddElementCommand::redo() {
 
 /**
 	Constructeur
+	@param dia Schema auquel on ajoute du texte
+	@param elmt Texte ajoute
+	@param p Position a laquelle le texte est ajoute
+	@param parent QUndoCommand parent
+*/
+AddTextCommand::AddTextCommand(Diagram *dia, DiagramTextItem *text, const QPointF &pos, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("Ajouter un champ de texte"), parent),
+	textitem(text),
+	diagram(dia),
+	position(pos)
+{
+	diagram -> qgiManager().manage(textitem);
+}
+
+/// Destructeur
+AddTextCommand::~AddTextCommand() {
+	diagram -> qgiManager().release(textitem);
+}
+
+/// Annule l'ajout
+void AddTextCommand::undo() {
+	diagram -> removeItem(textitem);
+}
+
+/// Refait l'ajour
+void AddTextCommand::redo() {
+	diagram -> addItem(textitem);
+	textitem -> setPos(position);
+	textitem -> setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
+}
+
+/**
+	Constructeur
 	@param d Schema auquel on ajoute un conducteur
 	@param c Conducteur ajoute
 	@param parent QUndoCommand parent
@@ -82,28 +115,33 @@ void AddConductorCommand::redo() {
 	@param dia Schema dont on supprime des elements et conducteurs
 	@param elements Elements supprimes
 	@param conductors Conducteurs supprimes
+	@param texts Textes supprimes
 	@param parent QUndoCommand parent
 */
 DeleteElementsCommand::DeleteElementsCommand(
 	Diagram *dia,
 	QSet<Element *> elements,
 	QSet<Conductor *> conductors,
+	QSet<DiagramTextItem *> texts,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(parent),
 	removed_elements(elements),
 	removed_conductors(conductors),
+	removed_texts(texts),
 	diagram(dia)
 {
-	setText(QObject::tr("supprimer ") + QET::ElementsAndConductorsSentence(removed_elements.count(), removed_conductors.count()));
+	setText(QObject::tr("supprimer ") + QET::ElementsAndConductorsSentence(removed_elements.count(), removed_conductors.count(), removed_texts.count()));
 	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().manage(qgi);
 	foreach(QGraphicsItem *qgi, removed_conductors) diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, removed_texts) diagram -> qgiManager().manage(qgi);
 }
 
 /// Destructeur
 DeleteElementsCommand::~DeleteElementsCommand() {
 	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().release(qgi);
 	foreach(QGraphicsItem *qgi, removed_conductors) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, removed_texts) diagram -> qgiManager().release(qgi);
 }
 
 /// annule les suppressions
@@ -118,6 +156,11 @@ void DeleteElementsCommand::undo() {
 		diagram -> addItem(c);
 		c -> terminal1 -> addConductor(c);
 		c -> terminal2 -> addConductor(c);
+	}
+	
+	// remet les textes
+	foreach(DiagramTextItem *t, removed_texts) {
+		diagram -> addItem(t);
 	}
 }
 
@@ -134,6 +177,11 @@ void DeleteElementsCommand::redo() {
 	foreach(Element *e, removed_elements) {
 		diagram -> removeItem(e);
 	}
+	
+	// enleve les textes
+	foreach(DiagramTextItem *t, removed_texts) {
+		diagram -> removeItem(t);
+	}
 }
 
 /**
@@ -141,29 +189,34 @@ void DeleteElementsCommand::redo() {
 	@param dia Schema sur lequel on colle les elements et conducteurs
 	@param e Elements colles sur le schema
 	@param c Conducteurs colles sur le schema
+	@param t Textes colles sur le schema
 	@param parent QUndoCommand parent
 */
 PasteDiagramCommand::PasteDiagramCommand(
 	Diagram *dia,
 	const QList<Element *> &e,
 	const QList<Conductor *> &c,
+	const QList<DiagramTextItem *> &t,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(parent),
 	elements(e),
 	conductors(c),
+	texts(t),
 	diagram(dia),
 	first_redo(true)
 {
 	setText(QObject::tr("coller ") + QET::ElementsAndConductorsSentence(elements.count(), conductors.count()));
 	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().manage(qgi);
 	foreach(QGraphicsItem *qgi, conductors) diagram -> qgiManager().manage(qgi);
+	foreach(QGraphicsItem *qgi, texts) diagram -> qgiManager().manage(qgi);
 }
 
 /// Destructeur
 PasteDiagramCommand::~PasteDiagramCommand() {
 	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().release(qgi);
 	foreach(QGraphicsItem *qgi, conductors) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, texts) diagram -> qgiManager().release(qgi);
 }
 
 /// annule le coller
@@ -177,6 +230,9 @@ void PasteDiagramCommand::undo() {
 	
 	// enleve les elements
 	foreach(Element *e, elements)  diagram -> removeItem(e);
+	
+	// enleve les textes
+	foreach(DiagramTextItem *t, texts)  diagram -> removeItem(t);
 }
 
 /// refait le coller
@@ -192,9 +248,13 @@ void PasteDiagramCommand::redo() {
 			c -> terminal1 -> addConductor(c);
 			c -> terminal2 -> addConductor(c);
 		}
+		
+		// pose les textes
+		foreach(DiagramTextItem *t, texts) diagram -> addItem(t);
 	}
 	foreach(Element *e, elements)   e -> setSelected(true);
 	foreach(Conductor *c, conductors) c -> setSelected(true);
+	foreach(DiagramTextItem *t, texts) t -> setSelected(true);
 }
 
 /**
@@ -208,11 +268,12 @@ CutDiagramCommand::CutDiagramCommand(
 	Diagram *dia,
 	QSet<Element *> elements,
 	QSet<Conductor *> conductors,
+	QSet<DiagramTextItem *> texts,
 	QUndoCommand *parent
 ) : 
-	DeleteElementsCommand(dia, elements, conductors, parent)
+	DeleteElementsCommand(dia, elements, conductors, texts, parent)
 {
-	setText(QObject::tr("couper ") + QET::ElementsAndConductorsSentence(elements.count(), conductors.count()));
+	setText(QObject::tr("couper ") + QET::ElementsAndConductorsSentence(elements.count(), conductors.count(), texts.count()));
 }
 
 /// Destructeur
@@ -225,6 +286,7 @@ CutDiagramCommand::~CutDiagramCommand() {
 	@param move_elements Elements a deplacer
 	@param move_conductors Conducteurs a deplacer
 	@param modify_conductors Conducteurs a mettre a jour
+	@param move_texts Textes a deplacer
 	@param m translation subie par les elements
 	@param parent QUndoCommand parent
 */
@@ -233,6 +295,7 @@ MoveElementsCommand::MoveElementsCommand(
 	const QSet<Element *> &move_elements,
 	const QSet<Conductor *> &move_conductors,
 	const QHash<Conductor *, Terminal *> &modify_conductors,
+	const QSet<DiagramTextItem *> &move_texts,
 	const QPointF &m,
 	QUndoCommand *parent
 ) :
@@ -241,9 +304,11 @@ MoveElementsCommand::MoveElementsCommand(
 	elements_to_move(move_elements),
 	conductors_to_move(move_conductors),
 	conductors_to_update(modify_conductors),
-	movement(m)
+	texts_to_move(move_texts),
+	movement(m),
+	first_redo(true)
 {
-	setText(QObject::tr("d\351placer ") + QET::ElementsAndConductorsSentence(elements_to_move.count(), conductors_to_move.count()));
+	setText(QObject::tr("d\351placer ") + QET::ElementsAndConductorsSentence(elements_to_move.count(), conductors_to_move.count(), texts_to_move.count()));
 }
 
 /// Destructeur
@@ -279,6 +344,11 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	// recalcule les autres conducteurs
 	foreach(Conductor *conductor, conductors_to_update.keys()) {
 		conductor -> updateWithNewPos(QRectF(), conductors_to_update[conductor], conductors_to_update[conductor] -> amarrageConductor());
+	}
+	
+	// deplace les textes
+	foreach(DiagramTextItem *text, texts_to_move) {
+		text -> setPos(text -> pos() + actual_movement);
 	}
 }
 

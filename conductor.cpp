@@ -60,6 +60,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	
 	// ajout du champ de texte editable
 	text_item = new DiagramTextItem();
+	text_item -> setFlag(QGraphicsItem::ItemIsMovable, false);
+	text_item -> setTextInteractionFlags(Qt::TextEditorInteraction);
 	text_item -> setPlainText(properties_.text);
 	text_item -> previous_text = properties_.text;
 	calculateTextItemPosition();

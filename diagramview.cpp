@@ -10,7 +10,7 @@
 	Constructeur
 	@param parent Le QWidegt parent de cette vue de schema
 */
-DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent) {
+DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
 	setInteractive(true);
 	setCacheMode(QGraphicsView::CacheBackground);
 	setOptimizationFlags(QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
@@ -79,6 +79,7 @@ void DiagramView::deleteSelection() {
 	
 	QSet<Element *> garbage_elmt;
 	QSet<Conductor *> garbage_conductors;
+	QSet<DiagramTextItem *> garbage_texts;
 	
 	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
@@ -90,10 +91,12 @@ void DiagramView::deleteSelection() {
 			garbage_elmt << e;
 			// s'il s'agit d'un element, on veille a enlever ses conducteurs
 			garbage_conductors += e -> conductors().toSet();
+		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
+			if (!t -> parentItem()) garbage_texts << t;
 		}
 	}
 	scene -> clearSelection();
-	scene -> undoStack().push(new DeleteElementsCommand(scene, garbage_elmt, garbage_conductors));
+	scene -> undoStack().push(new DeleteElementsCommand(scene, garbage_elmt, garbage_conductors, garbage_texts));
 }
 
 /**
@@ -209,21 +212,25 @@ void DiagramView::cut() {
 	copy();
 	QSet<Element *> cut_elmt;
 	QSet<Conductor *> cut_conductors;
+	QSet<DiagramTextItem *> cut_texts;
 	
 	// creation de deux listes : une pour les conducteurs, une pour les elements
 	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
 		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (Conductor * c = qgraphicsitem_cast<Conductor *>(qgi)) {
+		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
 			cut_conductors << c;
 		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			cut_elmt << e;
 			// s'il s'agit d'un element, on veille a enlever ses conducteurs
 			cut_conductors += e -> conductors().toSet();
+		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
+			// les textes recherches n'ont pas de parent
+			if (!t -> parentItem()) cut_texts << t;
 		}
 	}
 	scene -> clearSelection();
-	scene -> undoStack().push(new CutDiagramCommand(scene, cut_elmt, cut_conductors));
+	scene -> undoStack().push(new CutDiagramCommand(scene, cut_elmt, cut_conductors, cut_texts));
 }
 
 /**
@@ -248,12 +255,13 @@ void DiagramView::paste() {
 	// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
 	QList<Element *> elements_pasted;
 	QList<Conductor *> conductors_pasted;
-	scene -> fromXml(document_xml, QPointF(), false, &elements_pasted, &conductors_pasted);
+	QList<DiagramTextItem *> texts_pasted;
+	scene -> fromXml(document_xml, QPointF(), false, &elements_pasted, &conductors_pasted, &texts_pasted);
 	
 	// si quelque chose a effectivement ete ajoute au schema, on cree
 	if (elements_pasted.count() || conductors_pasted.count()) {
 		scene -> clearSelection();
-		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted));
+		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted, texts_pasted));
 	}
 }
 
@@ -270,14 +278,23 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
 		QList<Element *> elements_pasted;
 		QList<Conductor *> conductors_pasted;
-		scene -> fromXml(document_xml, mapToScene(e -> pos()), false, &elements_pasted, &conductors_pasted);
+		QList<DiagramTextItem *> texts_pasted;
+		scene -> fromXml(document_xml, mapToScene(e -> pos()), false, &elements_pasted, &conductors_pasted, &texts_pasted);
 		
 		// si quelque chose a effectivement ete ajoute au schema, on cree
 		if (elements_pasted.count() || conductors_pasted.count()) {
 			scene -> clearSelection();
-			scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted));
+			scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted, texts_pasted));
 		}
 	} else {
+		if (is_adding_text && e -> buttons() == Qt::LeftButton) {
+			DiagramTextItem *dti = new DiagramTextItem();
+			dti -> setPlainText("_");
+			dti -> previous_text = "_";
+			scene -> undoStack().push(new AddTextCommand(scene, dti, e -> pos()));
+			is_adding_text = false;
+			emit(textAdded(false));
+		}
 		QGraphicsView::mousePressEvent(e);
 	}
 }
@@ -791,4 +808,8 @@ bool DiagramView::event(QEvent *e) {
 		return(true);
 	}
 	return(QGraphicsView::event(e));
+}
+
+void DiagramView::addText() {
+	is_adding_text = true;
 }

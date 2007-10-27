@@ -11,6 +11,8 @@ ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 	DiagramTextItem(parent, scene),
 	follow_parent_rotations(false)
 {
+	setFlags(QGraphicsItem::ItemIsSelectable);
+	setTextInteractionFlags(Qt::TextEditorInteraction);
 }
 
 /**
@@ -23,6 +25,8 @@ ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGr
 	DiagramTextItem(text, parent, scene),
 	follow_parent_rotations(false)
 {
+	setFlags(QGraphicsItem::ItemIsSelectable);
+	setTextInteractionFlags(Qt::TextEditorInteraction);
 }
 
 /// Destructeur
