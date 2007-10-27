@@ -71,7 +71,6 @@ void AddTextCommand::undo() {
 void AddTextCommand::redo() {
 	diagram -> addItem(textitem);
 	textitem -> setPos(position);
-	textitem -> setFlags(QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
 }
 
 /**
