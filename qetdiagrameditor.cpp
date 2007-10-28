@@ -73,8 +73,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	setWindowState(Qt::WindowMaximized);
 	
 	// connexions signaux / slots pour une interface sensee
+	connect(&workspace,                SIGNAL(windowActivated(QWidget *)), this, SLOT(slot_updateWindowsMenu()));
 	connect(&workspace,                SIGNAL(windowActivated(QWidget *)), this, SLOT(slot_updateActions()));
-	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updateActions()));
+	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updatePasteAction()));
 	
 	// ajout de tous les DiagramView necessaires
 	foreach (DiagramView *sv, diagram_views) addDiagramView(sv);
@@ -285,7 +286,7 @@ void QETDiagramEditor::actions() {
 	mode_visualise    -> setCheckable(true);
 	mode_selection    -> setChecked(true);
 	
-	QActionGroup *grp_visu_sel = new QActionGroup(this);
+	grp_visu_sel = new QActionGroup(this);
 	grp_visu_sel -> addAction(mode_selection);
 	grp_visu_sel -> addAction(mode_visualise);
 	grp_visu_sel -> setExclusive(true);
@@ -684,14 +685,11 @@ void QETDiagramEditor::slot_setVisualisationMode() {
 }
 
 /**
-	gere les actions ayant besoin d'un document ouvert
+	gere les actions
 */
 void QETDiagramEditor::slot_updateActions() {
 	DiagramView *sv = currentDiagram();
 	bool opened_document = (sv != 0);
-	
-	// nombre de conducteurs selectionnes
-	int selected_conductors_count = opened_document ? sv -> diagram() -> selectedConductors().count() : 0;
 	
 	// actions ayant juste besoin d'un document ouvert
 	close_file       -> setEnabled(opened_document);
@@ -707,8 +705,6 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_out         -> setEnabled(opened_document);
 	zoom_fit         -> setEnabled(opened_document);
 	zoom_reset       -> setEnabled(opened_document);
-	conductor_prop   -> setEnabled(opened_document && selected_conductors_count == 1);
-	conductor_reset  -> setEnabled(opened_document && selected_conductors_count);
 	conductor_default-> setEnabled(opened_document);
 	infos_diagram    -> setEnabled(opened_document);
 	add_text         -> setEnabled(opened_document);
@@ -724,43 +720,69 @@ void QETDiagramEditor::slot_updateActions() {
 		redo -> setEnabled(false);
 	}
 	
+	slot_updateModeActions();
+	slot_updatePasteAction();
+	slot_updateComplexActions();
+}
+
+/**
+	gere les actions ayant des besoins precis pour etre active ou non
+	Cette methode ne fait rien si aucun document n'est ouvert
+*/
+void QETDiagramEditor::slot_updateComplexActions() {
+	DiagramView *dv = currentDiagram();
+	bool opened_document = (dv != 0);
+	
+	// nombre de conducteurs selectionnes
+	int selected_conductors_count = opened_document ? dv -> diagram() -> selectedConductors().count() : 0;
+	conductor_prop   -> setEnabled(opened_document && selected_conductors_count == 1);
+	conductor_reset  -> setEnabled(opened_document && selected_conductors_count);
+	
 	// actions ayant aussi besoin d'elements selectionnes
-	bool selected_elements = opened_document ? (sv -> hasSelectedItems()) : false;
+	bool selected_elements = opened_document ? (dv -> hasSelectedItems()) : false;
 	cut              -> setEnabled(selected_elements);
 	copy             -> setEnabled(selected_elements);
 	delete_selection -> setEnabled(selected_elements);
 	rotate_selection -> setEnabled(selected_elements);
-	
-	// action ayant aussi besoin d'un presse-papier plein
-	bool can_paste = QApplication::clipboard() -> text() != QString();
-	paste          -> setEnabled(opened_document && can_paste);
+}
+
+/**
+	Gere les actions realtives au mode du schema
+*/
+void QETDiagramEditor::slot_updateModeActions() {
+	DiagramView *dv = currentDiagram();
 	
 	// actions ayant aussi besoin d'un document ouvert et de la connaissance de son mode
-	if (!opened_document) {
-		mode_selection   -> setEnabled(false);
-		mode_visualise   -> setEnabled(false);
+	if (!dv) {
+		grp_visu_sel -> setEnabled(false);
 	} else {
-		switch((int)(sv -> dragMode())) {
+		switch((int)(dv -> dragMode())) {
 			case QGraphicsView::NoDrag:
-				mode_selection -> setEnabled(false);
-				mode_visualise -> setEnabled(false);
+				grp_visu_sel -> setEnabled(false);
 				break;
 			case QGraphicsView::ScrollHandDrag:
-				mode_selection -> setEnabled(true);
-				mode_visualise -> setEnabled(true);
-				mode_selection -> setChecked(false);
+				grp_visu_sel -> setEnabled(true);
 				mode_visualise -> setChecked(true);
 				break;
 			case QGraphicsView::RubberBandDrag:
-				mode_selection -> setEnabled(true);
-				mode_visualise -> setEnabled(true);
+				grp_visu_sel -> setEnabled(true);
 				mode_selection -> setChecked(true);
-				mode_visualise -> setChecked(false);
 				break;
 		}
 	}
-	
-	slot_updateWindowsMenu();
+}
+
+/**
+	Gere les actions ayant besoin du presse-papier
+*/
+void QETDiagramEditor::slot_updatePasteAction() {
+	if (!currentDiagram()) {
+		paste -> setEnabled(false);
+	} else {
+		QString clipboard_text = QApplication::clipboard() -> text();
+		bool can_paste = clipboard_text.startsWith("<diagram") && clipboard_text.endsWith("</diagram>\n");
+		paste -> setEnabled(can_paste);
+	}
 }
 
 /**
@@ -777,8 +799,8 @@ void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 	
 	// ajoute la fenetre
 	QWidget *p = workspace.addWindow(dv);
-	connect(dv -> diagram(), SIGNAL(selectionChanged()), this, SLOT(slot_updateActions()));
-	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateActions()));
+	connect(dv -> diagram(), SIGNAL(selectionChanged()), this, SLOT(slot_updateComplexActions()));
+	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
 	connect(dv, SIGNAL(textAdded(bool)), add_text, SLOT(setChecked(bool)));
 	
 	// affiche la fenetre
@@ -803,7 +825,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	windows_menu -> addAction(cascade_window);
 	windows_menu -> addAction(arrange_window);
 	
-	// actiosn de deplacement entre les fenetres
+	// actions de deplacement entre les fenetres
 	windows_menu -> addSeparator();
 	windows_menu -> addAction(next_window);
 	windows_menu -> addAction(prev_window);
@@ -814,8 +836,8 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	tile_window    -> setEnabled(!windows.isEmpty());
 	cascade_window -> setEnabled(!windows.isEmpty());
 	arrange_window -> setEnabled(!windows.isEmpty());
-	next_window    -> setEnabled(!windows.isEmpty());
-	prev_window    -> setEnabled(!windows.isEmpty());
+	next_window    -> setEnabled(windows.count() > 1);
+	prev_window    -> setEnabled(windows.count() > 1);
 	
 	if (!windows.isEmpty()) windows_menu -> addSeparator();
 	for (int i = 0 ; i < windows.size() ; ++ i) {

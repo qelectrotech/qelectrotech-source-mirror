@@ -60,6 +60,9 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_setSelectionMode();
 	void slot_setVisualisationMode();
 	void slot_updateActions();
+	void slot_updateModeActions();
+	void slot_updateComplexActions();
+	void slot_updatePasteAction();
 	void slot_updateWindowsMenu();
 	void slot_addColumn();
 	void slot_removeColumn();
@@ -73,6 +76,7 @@ class QETDiagramEditor : public QMainWindow {
 	// attributs
 	private:
 	// Actions faisables au travers de menus dans l'application QElectroTech
+	QActionGroup *grp_visu_sel;
 	QAction *mode_selection;
 	QAction *mode_visualise;
 	QAction *new_file;

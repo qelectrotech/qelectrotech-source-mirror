@@ -135,8 +135,8 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 	if (elements_count) {
 		text += QString::number(elements_count) + " ";
 		text += elements_count > 1 ? QObject::tr("\351l\351ments") : QObject::tr("\351l\351ment");
-		if (conductors_count ^ texts_count) text += QObject::tr(" et ");
-		else if (conductors_count && texts_count) text += QObject::tr(", ");
+		if (conductors_count && texts_count) text += QObject::tr(", ");
+		else if (conductors_count || texts_count) text += QObject::tr(" et ");
 	}
 	if (conductors_count) {
 		text += QString::number(conductors_count) + " ";
