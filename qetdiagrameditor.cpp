@@ -396,6 +396,7 @@ void QETDiagramEditor::menus() {
 	
 	// menu Configurer > Afficher
 	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
+	menu_aff_aff -> setIcon(QIcon(":/ico/toolbars.png"));
 	menu_aff_aff -> setTearOffEnabled(true);
 	menu_aff_aff -> addAction(main_bar -> toggleViewAction());
 	main_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
