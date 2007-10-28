@@ -18,6 +18,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	edit_element    = new QAction(QIcon(":/ico/edit.png"),            tr("\311diter l'\351l\351ment"), this);
 	delete_element  = new QAction(QIcon(":/ico/delete.png"),          tr("Supprimer l'\351l\351ment"), this);
 	
+	context_menu = new QMenu(this);
+	
 	connect(reload,          SIGNAL(triggered()), elements_panel, SLOT(reload()));
 	connect(new_category,    SIGNAL(triggered()), this,           SLOT(newCategory()));
 	connect(edit_category,   SIGNAL(triggered()), elements_panel, SLOT(editCategory()));
@@ -27,6 +29,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(delete_element,  SIGNAL(triggered()), elements_panel, SLOT(deleteElement()));
 	
 	connect(elements_panel, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
+	connect(elements_panel, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(handleContextMenu(const QPoint &)));
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);
@@ -99,4 +102,33 @@ void ElementsPanelWidget::updateButtons() {
 	delete_category -> setEnabled(category_selected);
 	edit_element    -> setEnabled(element_selected);
 	delete_element  -> setEnabled(element_selected);
+}
+
+/**
+	Gere le menu contextuel du panel d'elements
+	@param pos Position ou le menu contextuel a ete demande
+*/
+void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
+	// recupere l'item concerne par l'evenement ainsi que son chemin
+	QTreeWidgetItem *item =  elements_panel -> itemAt(pos);
+	if (!item) return;
+	
+	// recupere le fichier associe a l'item
+	QString item_file = item -> data(0, 42).toString();
+	QFileInfo item_file_infos(item_file);
+	if (item_file.isNull() || !item_file_infos.exists()) return;
+	
+	// remplit le menu differemment selon qu'il s'agit d'un element ou d'une categorie
+	if (item_file_infos.isDir()) {
+		context_menu -> addAction(new_category);
+		context_menu -> addAction(edit_category);
+		context_menu -> addAction(delete_category);
+		context_menu -> addAction(new_element);
+	} else {
+		context_menu -> addAction(edit_element);
+		context_menu -> addAction(delete_element);
+	}
+	
+	// affiche le menu
+	context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos)));
 }

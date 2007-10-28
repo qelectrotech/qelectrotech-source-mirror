@@ -41,6 +41,9 @@ ElementsPanel::ElementsPanel(QWidget *parent) : QTreeWidget(parent) {
 	
 	// double-cliquer sur un element permet de l'editer
 	connect(this, SIGNAL(itemDoubleClicked(QTreeWidgetItem *, int)), this, SLOT(slot_doubleClick(QTreeWidgetItem *, int)));
+	
+	// emet un signal au lieu de gerer son menu contextuel
+	setContextMenuPolicy(Qt::CustomContextMenu);
 }
 
 /**

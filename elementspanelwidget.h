@@ -25,6 +25,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *new_element,  *edit_element,  *delete_element;
+	QMenu *context_menu;
 	
 	// methodes
 	public:
@@ -34,6 +35,7 @@ class ElementsPanelWidget : public QWidget {
 	void newElement();
 	void newCategory();
 	void updateButtons();
+	void handleContextMenu(const QPoint &);
 };
 
 /**
