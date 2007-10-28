@@ -22,6 +22,9 @@ class QETApp : public QApplication {
 	// methodes
 	public:
 	void setLanguage(const QString &);
+	static void printHelp();
+	static void printVersion();
+	static void printLicense();
 	
 	static QString commonElementsDir();
 	static QString customElementsDir();

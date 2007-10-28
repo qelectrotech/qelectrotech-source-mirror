@@ -1,6 +1,7 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
+#include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
 
@@ -15,6 +16,31 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 	// selectionne le langage du systeme
 	QString system_language = QLocale::system().name().left(2);
 	setLanguage(system_language);
+	
+	// parse les arguments
+	foreach(QString argument, arguments()) {
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+		QString ced_arg("--common-elements-dir=");
+		if (argument.startsWith(ced_arg)) {
+			QString ced_value = argument.right(argument.length() - ced_arg.length());
+			overrideCommonElementsDir(ced_value);
+		}
+#endif
+		bool must_exit = false;
+		if (argument == QString("--help")) {
+			printHelp();
+			must_exit = true;
+		} else if (argument == QString("--version") || argument == QString("-v")) {
+			printVersion();
+			must_exit = true;
+		} else if (argument == QString("--license")) {
+			printLicense();
+			must_exit = true;
+		}
+		if (must_exit) {
+			std::exit(EXIT_SUCCESS);
+		}
+	}
 	
 	// nettoyage avant de quitter l'application
 	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
@@ -60,17 +86,6 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		
 		setQuitOnLastWindowClosed(false);
 		connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
-	}
-	
-	// parse les arguments
-	foreach(QString argument, arguments()) {
-#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-		QString ced_arg("--common-elements-dir=");
-		if (argument.startsWith(ced_arg)) {
-			QString ced_value = argument.right(argument.length() - ced_arg.length());
-			overrideCommonElementsDir(ced_value);
-		}
-#endif
 	}
 	
 	// Creation et affichage d'un editeur de schema
@@ -504,4 +519,27 @@ bool QETApp::event(QEvent *e) {
 	} else {
 		return(QApplication::event(e));
 	}
+}
+
+void QETApp::printHelp() {
+	QString help(
+		tr("Usage : ") + QFileInfo(applicationFilePath()).fileName() + tr(" [options] [fichier]...\n\n") +
+		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.\n\n"
+		"Options disponibles : \n"
+		"  --help                        Afficher l'aide sur les options\n"
+		"  -v, --version                 Afficher la version\n"
+		"  --license                     Afficher la licence\n")
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+		+ tr("  --common-elements-dir=DIR     Definir le dossier de la collection d'elements\n")
+#endif
+	);
+	std::cout << qPrintable(help) << std::endl;
+}
+
+void QETApp::printVersion() {
+	std::cout << qPrintable(QET::version) << std::endl;
+}
+
+void QETApp::printLicense() {
+	std::cout << qPrintable(QET::license()) << std::endl;
 }

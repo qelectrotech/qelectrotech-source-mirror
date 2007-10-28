@@ -175,3 +175,27 @@ QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &pa
 	}
 	return(return_list);
 }
+
+/// @return le texte de la licence de QElectroTech (GNU/GPL)
+QString QET::license() {
+	// Recuperation du texte de la GNU/GPL dans un fichier integre a l'application
+	QFile *file_license = new QFile(":/LICENSE");
+	QString txt_license;
+	// verifie que le fichier existe
+	if (!file_license -> exists()) {
+		txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute fa\347on, vous la connaissez par coeur non ?"));
+	} else {
+		// ouvre le fichier en mode texte et en lecture seule
+		if (!file_license -> open(QIODevice::ReadOnly | QIODevice::Text)) {
+			txt_license = QString(QObject::tr("Le fichier texte contenant la licence GNU/GPL existe mais n'a pas pu \352tre ouvert - bon bah de toute fa\347on, vous la connaissez par coeur non ?"));
+		} else {
+			// charge le contenu du fichier dans une QString
+			QTextStream in(file_license);
+			txt_license = QString("");
+			while (!in.atEnd()) txt_license += in.readLine()+"\n";
+			// ferme le fichier
+			file_license -> close();
+		}
+	}
+	return(txt_license);
+};

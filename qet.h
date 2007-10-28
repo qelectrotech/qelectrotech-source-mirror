@@ -9,6 +9,7 @@
 namespace QET {
 	/// version de QElectroTech
 	const QString version = "0.1";
+	QString license();
 	/// Orientation (utilise pour les bornes mais aussi pour les elements)
 	enum Orientation {North, East, South, West};
 	/// Types de segment de conducteurs
