@@ -91,4 +91,19 @@ class QETApp : public QApplication {
 	void buildSystemTrayMenu();
 	void fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements);
 };
+
+/**
+	Cette classe represente le style de QElectroTech
+	Il s'agit de modifications simples appliquees aux styles communs de Qt
+*/
+class QETStyle : public QPlastiqueStyle {
+	Q_OBJECT
+	public:
+	QETStyle();
+	virtual ~QETStyle();
+	virtual int styleHint(StyleHint hint, const QStyleOption * = 0, const QWidget * = 0, QStyleHintReturn * = 0) const;
+	
+	protected slots:
+	virtual QIcon standardIconImplementation(StandardPixmap, const QStyleOption * = 0, const QWidget * = 0) const;
+};
 #endif

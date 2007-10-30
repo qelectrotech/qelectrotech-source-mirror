@@ -119,6 +119,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	if (item_file.isNull() || !item_file_infos.exists()) return;
 	
 	// remplit le menu differemment selon qu'il s'agit d'un element ou d'une categorie
+	context_menu -> clear();
 	if (item_file_infos.isDir()) {
 		context_menu -> addAction(new_category);
 		context_menu -> addAction(edit_category);

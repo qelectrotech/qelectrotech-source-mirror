@@ -88,6 +88,11 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	}
 	
+	// Lorsque le style Plastique est active, on le remplace par une version amelioree
+	if (qobject_cast<QPlastiqueStyle *>(style())) {
+		setStyle(new QETStyle());
+	}
+	
 	// Creation et affichage d'un editeur de schema
 	QStringList files;
 	foreach(QString argument, arguments()) {
@@ -504,7 +509,7 @@ bool QETApp::event(QEvent *e) {
 			foreach(QETDiagramEditor *de, diagrams_editors) {
 				if (de -> isVisible()) visible_diagrams_editors << de;
 			}
-			// ob choisit soit le premier visible soit le premier tout court
+			// on choisit soit le premier visible soit le premier tout court
 			QETDiagramEditor *de_open;
 			if (visible_diagrams_editors.count()) {
 				de_open = visible_diagrams_editors.first();
@@ -542,4 +547,49 @@ void QETApp::printVersion() {
 
 void QETApp::printLicense() {
 	std::cout << qPrintable(QET::license()) << std::endl;
+}
+
+/// Constructeur
+QETStyle::QETStyle() : QPlastiqueStyle() {
+}
+
+/// Destructeur
+QETStyle::~QETStyle() {
+}
+
+/// Gere les parametres de style
+int QETStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidget *widget, QStyleHintReturn *returndata) const {
+	if (hint == QStyle::SH_DialogButtonBox_ButtonsHaveIcons) {
+		return(int(true));
+	} else {
+		return(QPlastiqueStyle::styleHint(hint, option, widget, returndata));
+	}
+}
+
+/// Gere les icones standard
+QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QStyleOption *option, const QWidget* widget) const {
+	switch(standardIcon) {
+		case QStyle::SP_DialogSaveButton:
+			return(QIcon(":/ico/save.png"));
+		case QStyle::SP_DialogOpenButton:
+			return(QIcon(":/ico/open.png"));
+		case QStyle::SP_DialogCancelButton:
+			return(QIcon(":/ico/button_cancel.png"));
+		case QStyle::SP_DialogOkButton:
+		case QStyle::SP_DialogApplyButton:
+			return(QIcon(":/ico/button_ok.png"));
+		case QStyle::SP_DialogCloseButton:
+			return(QIcon(":/ico/fileclose.png"));
+		case QStyle::SP_DialogYesButton:
+			return(QIcon(":/ico/allowed.png"));
+		case QStyle::SP_DialogNoButton:
+			return(QIcon(":/ico/forbidden.png"));
+		case QStyle::SP_DialogResetButton:
+			return(QIcon(":/ico/undo.png"));
+		case QStyle::SP_DialogHelpButton:
+		case QStyle::SP_DialogDiscardButton:
+			return(QIcon());
+		default:
+			return(QPlastiqueStyle::standardIconImplementation(standardIcon, option, widget));
+	}
 }
