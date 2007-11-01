@@ -7,6 +7,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	CustomElementPart(editor),
 	follow_parent_rotations(true)
 {
+	setDefaultTextColor(Qt::black);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(QObject::tr("_"));
 	infos = new TextFieldEditor(elementEditor(), this);

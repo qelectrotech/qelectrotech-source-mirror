@@ -5,6 +5,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor)
 {
+	setDefaultTextColor(Qt::black);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(QObject::tr("T"));
 	infos = new TextEditor(elementEditor(), this);

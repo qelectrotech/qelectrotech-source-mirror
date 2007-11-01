@@ -841,11 +841,13 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	prev_window    -> setEnabled(windows.count() > 1);
 	
 	if (!windows.isEmpty()) windows_menu -> addSeparator();
+	QActionGroup *windows_actions = new QActionGroup(this);
 	for (int i = 0 ; i < windows.size() ; ++ i) {
 		DiagramView *dv = qobject_cast<DiagramView *>(windows.at(i));
 		if (!dv) continue;
 		QString dv_title = dv -> windowTitle().left(dv -> windowTitle().length() - 3);
 		QAction *action  = windows_menu -> addAction(dv_title);
+		windows_actions -> addAction(action);
 		action -> setStatusTip(tr("Active la fen\352tre ") + dv_title);
 		action -> setCheckable(true);
 		action -> setChecked(dv == currentDiagram());
