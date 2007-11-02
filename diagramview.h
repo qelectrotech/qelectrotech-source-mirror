@@ -2,6 +2,7 @@
 #define DIAGRAMVIEW_H
 #include <QtGui>
 class Diagram;
+class QETDiagramEditor;
 /**
 	Classe representant graphiquement un schema electrique
 */
@@ -22,6 +23,9 @@ class DiagramView : public QGraphicsView {
 	
 	private:
 	Diagram *scene;
+	QMenu *context_menu;
+	QAction *paste_here;
+	QPoint paste_here_pos;
 	bool is_adding_text;
 	
 	// methodes
@@ -38,10 +42,12 @@ class DiagramView : public QGraphicsView {
 	void expand();
 	void shrink();
 	Diagram *diagram() { return(scene); }
+	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
 	void addText();
 	
 	protected:
+	virtual void contextMenuEvent(QContextMenuEvent *);
 	virtual void wheelEvent(QWheelEvent *);
 	virtual bool event(QEvent *);
 	
@@ -76,7 +82,8 @@ class DiagramView : public QGraphicsView {
 	void zoomReset();
 	void cut();
 	void copy();
-	void paste();
+	void paste(const QPointF & = QPointF(), QClipboard::Mode = QClipboard::Clipboard);
+	void pasteHere();
 	void adjustSceneRect();
 	void updateWindowTitle();
 	void editConductor();

@@ -31,6 +31,10 @@ DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_tex
 	adjustSceneRect();
 	updateWindowTitle();
 	
+	context_menu = new QMenu(this);
+	paste_here = new QAction(QIcon(":/ico/paste.png"), tr("Coller ici"), this);
+	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
+	
 	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SLOT(slot_selectionChanged()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
@@ -244,25 +248,34 @@ void DiagramView::copy() {
 }
 
 /**
-	importe les elements contenus dans le presse-papier dans le schema
+	Importe les elements contenus dans le presse-papier dans le schema
+	@param pos coin superieur gauche (en coordonnees de la scene) du rectangle
+	englobant le contenu colle
+	@param clipboard_mode Type de presse-papier a prendre en compte
 */
-void DiagramView::paste() {
-	QString texte_presse_papier;
+void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
+	QString texte_presse_papier = QApplication::clipboard() -> text(clipboard_mode);
+	if ((texte_presse_papier).isEmpty()) return;
+	
 	QDomDocument document_xml;
-	if ((texte_presse_papier = QApplication::clipboard() -> text()).isEmpty()) return;
 	if (!document_xml.setContent(texte_presse_papier)) return;
 	
 	// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
 	QList<Element *> elements_pasted;
 	QList<Conductor *> conductors_pasted;
 	QList<DiagramTextItem *> texts_pasted;
-	scene -> fromXml(document_xml, QPointF(), false, &elements_pasted, &conductors_pasted, &texts_pasted);
+	scene -> fromXml(document_xml, pos, false, &elements_pasted, &conductors_pasted, &texts_pasted);
 	
-	// si quelque chose a effectivement ete ajoute au schema, on cree
-	if (elements_pasted.count() || conductors_pasted.count()) {
+	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
+	if (elements_pasted.count() || conductors_pasted.count() || texts_pasted.count()) {
 		scene -> clearSelection();
 		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted, texts_pasted));
 	}
+}
+
+/// Colle le contenu du presse-papier sur le schema a la position de la souris
+void DiagramView::pasteHere() {
+	paste(mapToScene(paste_here_pos));
 }
 
 /**
@@ -270,22 +283,7 @@ void DiagramView::paste() {
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (e -> buttons() == Qt::MidButton) {
-		QString texte_presse_papier;
-		QDomDocument document_xml;
-		if ((texte_presse_papier = QApplication::clipboard() -> text(QClipboard::Selection)).isEmpty()) return;
-		if (!document_xml.setContent(texte_presse_papier)) return;
-		
-		// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
-		QList<Element *> elements_pasted;
-		QList<Conductor *> conductors_pasted;
-		QList<DiagramTextItem *> texts_pasted;
-		scene -> fromXml(document_xml, mapToScene(e -> pos()), false, &elements_pasted, &conductors_pasted, &texts_pasted);
-		
-		// si quelque chose a effectivement ete ajoute au schema, on cree
-		if (elements_pasted.count() || conductors_pasted.count()) {
-			scene -> clearSelection();
-			scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted, texts_pasted));
-		}
+		paste(mapToScene(e -> pos()), QClipboard::Selection);
 	} else {
 		if (is_adding_text && e -> buttons() == Qt::LeftButton) {
 			DiagramTextItem *dti = new DiagramTextItem();
@@ -812,4 +810,53 @@ bool DiagramView::event(QEvent *e) {
 
 void DiagramView::addText() {
 	is_adding_text = true;
+}
+
+/**
+	Gere le menu contextuel
+	@param e Evenement decrivant la demande de menu contextuel
+*/
+void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
+	if (QGraphicsItem *qgi = scene -> itemAt(mapToScene(e -> pos()))) {
+		if (!qgi -> isSelected()) scene -> clearSelection();
+		qgi -> setSelected(true);
+	}
+	
+	if (QETDiagramEditor *qde = diagramEditor()) {
+		context_menu -> clear();
+		if (scene -> selectedItems().isEmpty()) {
+			paste_here_pos = e -> pos();
+			context_menu -> addAction(paste_here);
+			context_menu -> addSeparator();
+			context_menu -> addAction(qde -> infos_diagram);
+			context_menu -> addAction(qde -> add_column);
+			context_menu -> addAction(qde -> remove_column);
+			context_menu -> addAction(qde -> expand_diagram);
+			context_menu -> addAction(qde -> shrink_diagram);
+		} else {
+			context_menu -> addAction(qde -> cut);
+			context_menu -> addAction(qde -> copy);
+			context_menu -> addSeparator();
+			context_menu -> addAction(qde -> delete_selection);
+			context_menu -> addAction(qde -> rotate_selection);
+			context_menu -> addSeparator();
+			context_menu -> addAction(qde -> conductor_prop);
+			context_menu -> addAction(qde -> conductor_reset);
+		}
+		
+		// affiche le menu contextuel
+		context_menu -> popup(e -> globalPos());
+	}
+	e -> accept();
+}
+
+/// @return l'editeur de schemas parent ou 0
+QETDiagramEditor *DiagramView::diagramEditor() const {
+	// remonte la hierarchie des widgets
+	QWidget *w = const_cast<DiagramView *>(this);
+	while (w -> parentWidget() && !w -> isWindow()) {
+		w = w -> parentWidget();
+	}
+	// la fenetre est supposee etre un QETDiagramEditor
+	return(qobject_cast<QETDiagramEditor *>(w));
 }

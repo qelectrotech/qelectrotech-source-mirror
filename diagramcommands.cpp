@@ -138,9 +138,9 @@ DeleteElementsCommand::DeleteElementsCommand(
 
 /// Destructeur
 DeleteElementsCommand::~DeleteElementsCommand() {
-	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().release(qgi);
-	foreach(QGraphicsItem *qgi, removed_conductors) diagram -> qgiManager().release(qgi);
 	foreach(QGraphicsItem *qgi, removed_texts) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, removed_conductors) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, removed_elements)  diagram -> qgiManager().release(qgi);
 }
 
 /// annule les suppressions
@@ -213,9 +213,9 @@ PasteDiagramCommand::PasteDiagramCommand(
 
 /// Destructeur
 PasteDiagramCommand::~PasteDiagramCommand() {
-	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().release(qgi);
-	foreach(QGraphicsItem *qgi, conductors) diagram -> qgiManager().release(qgi);
 	foreach(QGraphicsItem *qgi, texts) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, conductors) diagram -> qgiManager().release(qgi);
+	foreach(QGraphicsItem *qgi, elements)  diagram -> qgiManager().release(qgi);
 }
 
 /// annule le coller

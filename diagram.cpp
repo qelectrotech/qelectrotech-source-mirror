@@ -404,7 +404,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		foreach (Element *added_element, added_elements) added_items << added_element;
 		foreach (DiagramTextItem *added_text, added_texts) added_items << added_text;
 		foreach (QGraphicsItem *item, added_items) {
-			QPointF csg = item -> mapToScene(item -> boundingRect().topLeft());
+			QPointF csg = item -> mapToScene(item -> boundingRect()).boundingRect().topLeft();
 			qreal px = csg.x();
 			qreal py = csg.y();
 			if (!init) {

@@ -74,7 +74,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_addText();
 	
 	// attributs
-	private:
+	public:
 	// Actions faisables au travers de menus dans l'application QElectroTech
 	QActionGroup *grp_visu_sel;
 	QAction *mode_selection;
