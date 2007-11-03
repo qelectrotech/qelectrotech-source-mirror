@@ -777,13 +777,8 @@ void QETDiagramEditor::slot_updateModeActions() {
 	Gere les actions ayant besoin du presse-papier
 */
 void QETDiagramEditor::slot_updatePasteAction() {
-	if (!currentDiagram()) {
-		paste -> setEnabled(false);
-	} else {
-		QString clipboard_text = QApplication::clipboard() -> text();
-		bool can_paste = clipboard_text.startsWith("<diagram") && clipboard_text.endsWith("</diagram>\n");
-		paste -> setEnabled(can_paste);
-	}
+	// pour coller, il faut un schema ouvert et un schema dans le presse-papier
+	paste -> setEnabled(currentDiagram() && Diagram::clipboardMayContainDiagram());
 }
 
 /**

@@ -826,6 +826,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 		context_menu -> clear();
 		if (scene -> selectedItems().isEmpty()) {
 			paste_here_pos = e -> pos();
+			paste_here -> setEnabled(Diagram::clipboardMayContainDiagram());
 			context_menu -> addAction(paste_here);
 			context_menu -> addSeparator();
 			context_menu -> addAction(qde -> infos_diagram);

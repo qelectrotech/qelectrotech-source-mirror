@@ -595,3 +595,10 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 	}
 	return(conductors_set);
 }
+
+/// @return true si le presse-papier semble contenir un schema
+bool Diagram::clipboardMayContainDiagram() {
+	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
+	bool may_be_diagram = clipboard_text.startsWith("<diagram") && clipboard_text.endsWith("</diagram>");
+	return(may_be_diagram);
+}

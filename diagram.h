@@ -62,10 +62,13 @@ class Diagram : public QGraphicsScene {
 	bool draw_terminals;
 	
 	// methodes
+	protected:
+	virtual void drawBackground(QPainter *, const QRectF &);
+	virtual void keyPressEvent(QKeyEvent *);
+	virtual void keyReleaseEvent(QKeyEvent *);
+	
 	public:
-	void drawBackground(QPainter *, const QRectF &);
-	void keyPressEvent(QKeyEvent *);
-	void keyReleaseEvent(QKeyEvent *);
+	static bool clipboardMayContainDiagram();
 	
 	// fonctions relatives a la pose de conducteurs
 	void setConductor(bool);

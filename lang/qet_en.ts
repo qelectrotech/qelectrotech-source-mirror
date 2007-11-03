@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutQET</name>
     <message>
@@ -226,114 +227,119 @@
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../diagramview.cpp" line="366"/>
+        <location filename="../diagramview.cpp" line="364"/>
         <source> ?</source>
         <translation> ?</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="559"/>
+        <location filename="../diagramview.cpp" line="557"/>
         <source>Auteur : </source>
         <translation>Author : </translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="561"/>
+        <location filename="../diagramview.cpp" line="559"/>
         <source>Date : </source>
         <translation>Date : </translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="365"/>
+        <location filename="../diagramview.cpp" line="363"/>
         <source>Enregistrer le sch&#xe9;ma en cours ?</source>
         <translation>Save the current diagram ?</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="405"/>
+        <location filename="../diagramview.cpp" line="403"/>
         <source>Enregistrer sous</source>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="451"/>
+        <location filename="../diagramview.cpp" line="449"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="563"/>
+        <location filename="../diagramview.cpp" line="561"/>
         <source>Fichier : </source>
         <translation>File : </translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="565"/>
+        <location filename="../diagramview.cpp" line="563"/>
         <source>Folio : </source>
         <translation>Folio : </translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="451"/>
+        <location filename="../diagramview.cpp" line="449"/>
         <source>Impossible d&apos;ecrire dans ce fichier</source>
         <translation>Can&apos;t write to the file</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="408"/>
+        <location filename="../diagramview.cpp" line="406"/>
         <source>Sch&#xe9;ma QElectroTech (*.qet)</source>
         <translation>QElectroTech Diagram (*.qet)</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="557"/>
+        <location filename="../diagramview.cpp" line="555"/>
         <source>Titre : </source>
         <translation>Title :</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="366"/>
+        <location filename="../diagramview.cpp" line="364"/>
         <source>Voulez-vous enregistrer le sch&#xe9;ma </source>
         <translation>Do you wish to save the diagram </translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="677"/>
+        <location filename="../diagramview.cpp" line="675"/>
         <source>nouveau sch&#xe9;ma</source>
         <translation>new diagram</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="727"/>
+        <location filename="../diagramview.cpp" line="725"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s d&apos;un conducteur</source>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="514"/>
+        <location filename="../diagramview.cpp" line="512"/>
         <source>Propri&#xe9;t&#xe9;s du sch&#xe9;ma</source>
         <translation>Diagram properties</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="516"/>
+        <location filename="../diagramview.cpp" line="514"/>
         <source>Dimensions du sch&#xe9;ma</source>
         <translation>Diagram size</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="519"/>
+        <location filename="../diagramview.cpp" line="517"/>
         <source>Colonnes :</source>
         <translation>Columns :</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="529"/>
+        <location filename="../diagramview.cpp" line="527"/>
         <source>&#xd7;</source>
         <translation>×</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="530"/>
+        <location filename="../diagramview.cpp" line="528"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="532"/>
+        <location filename="../diagramview.cpp" line="530"/>
         <source>Hauteur :</source>
         <translation>Height :</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="545"/>
+        <location filename="../diagramview.cpp" line="543"/>
         <source>Informations du cartouche</source>
         <translation>Inset properties</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="785"/>
+        <location filename="../diagramview.cpp" line="783"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s par d&#xe9;faut des conducteurs</source>
         <translation>Edit conductors default properties</translation>
+    </message>
+    <message>
+        <location filename="../diagramview.cpp" line="35"/>
+        <source>Coller ici</source>
+        <translation>Paste Here</translation>
     </message>
 </context>
 <context>
@@ -557,22 +563,22 @@ Please check rights of the directory </translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../elementspanel.cpp" line="158"/>
+        <location filename="../elementspanel.cpp" line="161"/>
         <source>Ceci est un &#xe9;l&#xe9;ment que vous pouvez ins&#xe9;rer dans votre sch&#xe9;ma par cliquer-d&#xe9;placer</source>
         <translation>This is an element you can drag&apos;n drop onto your diagram</translation>
     </message>
     <message>
-        <location filename="../elementspanel.cpp" line="159"/>
+        <location filename="../elementspanel.cpp" line="162"/>
         <source>Cliquer-d&#xe9;posez cet &#xe9;l&#xe9;ment sur le sch&#xe9;ma pour ins&#xe9;rer un &#xe9;l&#xe9;ment </source>
         <translation>Drag&apos;n drop this element to the diagram to insert a </translation>
     </message>
     <message>
-        <location filename="../elementspanel.cpp" line="186"/>
+        <location filename="../elementspanel.cpp" line="189"/>
         <source>Collection QET</source>
         <translation>QET Collection</translation>
     </message>
     <message>
-        <location filename="../elementspanel.cpp" line="189"/>
+        <location filename="../elementspanel.cpp" line="192"/>
         <source>Collection utilisateur</source>
         <translation>User Collection</translation>
     </message>
@@ -615,12 +621,12 @@ Please check rights of the directory </translation>
         <translation>Delete element</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="74"/>
+        <location filename="../elementspanelwidget.cpp" line="77"/>
         <source>Gestionnaire de cat&#xe9;gories</source>
         <translation>Categories manager</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="77"/>
+        <location filename="../elementspanelwidget.cpp" line="80"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les cat&#xe9;gories.</source>
         <translation>Use this manager to add, delete or modify categories.</translation>
     </message>
@@ -1147,22 +1153,22 @@ Please check rights of the directory </translation>
         <translation>Restore QElectroTech</translation>
     </message>
     <message>
-        <location filename="../qetapp.cpp" line="436"/>
+        <location filename="../qetapp.cpp" line="441"/>
         <source>&#xc9;diteurs de sch&#xe9;mas</source>
         <translation>Diagram editors</translation>
     </message>
     <message>
-        <location filename="../qetapp.cpp" line="452"/>
+        <location filename="../qetapp.cpp" line="457"/>
         <source>&#xc9;diteurs d&apos;&#xe9;l&#xe9;ment</source>
         <translation>Element editors</translation>
     </message>
     <message>
-        <location filename="../qetapp.cpp" line="526"/>
+        <location filename="../qetapp.cpp" line="531"/>
         <source>Usage : </source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="../qetapp.cpp" line="532"/>
+        <location filename="../qetapp.cpp" line="537"/>
         <source>QElectroTech, une application de r&#xe9;alisation de sch&#xe9;mas &#xe9;lectriques.
 
 Options disponibles : 
@@ -1179,7 +1185,7 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../qetapp.cpp" line="527"/>
+        <location filename="../qetapp.cpp" line="532"/>
         <source> [options] [fichier]...
 
 </source>
@@ -1188,7 +1194,7 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../qetapp.cpp" line="535"/>
+        <location filename="../qetapp.cpp" line="540"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
@@ -1198,7 +1204,7 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="848"/>
+        <location filename="../qetdiagrameditor.cpp" line="846"/>
         <source>Active la fen&#xea;tre </source>
         <translation>Activates the window </translation>
     </message>
@@ -1233,7 +1239,7 @@ Available options:
         <translation>Displays informations about QElectroTech</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="407"/>
+        <location filename="../qetdiagrameditor.cpp" line="408"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Displays or not the elements panel</translation>
     </message>
@@ -1313,12 +1319,12 @@ Available options:
         <translation>&amp;Cascade</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="563"/>
+        <location filename="../qetdiagrameditor.cpp" line="564"/>
         <source>Ce fichier n&apos;est pas un document XML valide.</source>
         <translation>This file is not a valid XML Document.</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="561"/>
+        <location filename="../qetdiagrameditor.cpp" line="562"/>
         <source>Ce fichier n&apos;existe pas.</source>
         <translation>This file does not exist.</translation>
     </message>
@@ -1473,7 +1479,7 @@ Available options:
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="566"/>
+        <location filename="../qetdiagrameditor.cpp" line="567"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
@@ -1533,7 +1539,7 @@ Available options:
         <translation>Imports a plan into the current plan</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="562"/>
+        <location filename="../qetdiagrameditor.cpp" line="563"/>
         <source>Impossible de lire ce fichier.</source>
         <translation>Could not read file.</translation>
     </message>
@@ -1573,7 +1579,7 @@ Available options:
         <translation>&amp;New</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="435"/>
+        <location filename="../qetdiagrameditor.cpp" line="436"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
@@ -1588,7 +1594,7 @@ Available options:
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="535"/>
+        <location filename="../qetdiagrameditor.cpp" line="536"/>
         <source>Ouvrir un fichier</source>
         <translation>Open a file</translation>
     </message>
@@ -1673,7 +1679,7 @@ Available options:
         <translation>Shrink the diagram&apos;s height</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="538"/>
+        <location filename="../qetdiagrameditor.cpp" line="539"/>
         <source>Sch&#xe9;mas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech Diagrams (*.qet);;XML Files (*.xml);;All files (*)</translation>
     </message>
@@ -1703,7 +1709,7 @@ Available options:
         <translation>Puts selected elements into the clipboard</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="564"/>
+        <location filename="../qetdiagrameditor.cpp" line="565"/>
         <source>Une erreur s&apos;est produite lors de l&apos;ouverture du fichier.</source>
         <translation>An error occured while opening the file.</translation>
     </message>
@@ -1778,27 +1784,27 @@ Available options:
         <translation>Reset the conductors path ignoring the user changes</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="401"/>
+        <location filename="../qetdiagrameditor.cpp" line="402"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Display or hide the main toolbar</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="403"/>
+        <location filename="../qetdiagrameditor.cpp" line="404"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Display or hide the Display toolbar</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="405"/>
+        <location filename="../qetdiagrameditor.cpp" line="406"/>
         <source>Affiche ou non la barre d&apos;outils Sch&#xe9;ma</source>
         <translation>Display or hide the Diagram toolbar</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="438"/>
+        <location filename="../qetdiagrameditor.cpp" line="439"/>
         <source>Affichage</source>
         <translation>Display</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="441"/>
+        <location filename="../qetdiagrameditor.cpp" line="442"/>
         <source>Sch&#xe9;ma</source>
         <translation>Diagram</translation>
     </message>
@@ -2219,17 +2225,17 @@ Available options:
         <translation>terminal</translation>
     </message>
     <message>
-        <location filename="../editor/parttext.cpp" line="9"/>
+        <location filename="../editor/parttext.cpp" line="10"/>
         <source>T</source>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../editor/parttext.cpp" line="11"/>
+        <location filename="../editor/parttext.cpp" line="12"/>
         <source>texte</source>
         <translation>text</translation>
     </message>
     <message>
-        <location filename="../editor/parttextfield.cpp" line="11"/>
+        <location filename="../editor/parttextfield.cpp" line="12"/>
         <source>_</source>
         <translation>_</translation>
     </message>
