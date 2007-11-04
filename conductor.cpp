@@ -78,8 +78,7 @@ Conductor::~Conductor() {
 	if (!isDestroyed()) destroy();
 	
 	// supprime les segments
-	while (segments -> hasNextSegment()) delete segments -> nextSegment();
-	delete segments;
+	deleteSegments();
 }
 
 /**
@@ -780,14 +779,7 @@ QList<QPointF> Conductor::segmentsToPoints() const {
 */
 void Conductor::pointsToSegments(QList<QPointF> points_list) {
 	// supprime les segments actuels
-	if (segments != NULL) {
-		ConductorSegment *segment = segments;
-		while (segment -> hasNextSegment()) {
-			ConductorSegment *nextsegment = segment -> nextSegment();
-			delete segment;
-			segment = nextsegment;
-		}
-	}
+	deleteSegments();
 	
 	// cree les segments a partir de la liste de points
 	ConductorSegment *last_segment = NULL;
@@ -1241,5 +1233,14 @@ void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	}
 	if (type() == ConductorProperties::Multi) {
 		calculateTextItemPosition();
+	}
+}
+
+/// Supprime les segments
+void Conductor::deleteSegments() {
+	if (segments != NULL) {
+		while (segments -> hasNextSegment()) delete segments -> nextSegment();
+		delete segments;
+		segments = NULL;
 	}
 }

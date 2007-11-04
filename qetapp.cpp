@@ -104,6 +104,7 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 
 /// Destructeur
 QETApp::~QETApp() {
+	delete qsti;
 }
 
 /**

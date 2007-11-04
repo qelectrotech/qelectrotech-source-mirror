@@ -108,6 +108,7 @@ class Conductor : public QGraphicsPathItem {
 	bool hasClickedOn(QPointF, QPointF) const;
 	void calculateTextItemPosition();
 	Qt::Corner currentPathType() const;
+	void deleteSegments();
 	static int getCoeff(const qreal &, const qreal &);
 	static int getSign(const qreal &);
 	QHash<ConductorSegmentProfile *, qreal> shareOffsetBetweenSegments(const qreal &offset, const QList<ConductorSegmentProfile *> &, const qreal & = 0.01) const;

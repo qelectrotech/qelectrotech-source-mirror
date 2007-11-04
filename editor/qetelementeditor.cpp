@@ -155,11 +155,11 @@ void QETElementEditor::setupActions() {
 }
 
 void QETElementEditor::setupMenus() {
-	file_menu    = new QMenu(tr("Fichier"));
-	edit_menu    = new QMenu(tr("\311dition"));
-	display_menu = new QMenu(tr("Affichage"));
-	tools_menu   = new QMenu(tr("Outils"));
-	help_menu    = new QMenu(tr("Aide"));
+	file_menu    = new QMenu(tr("Fichier"),    this);
+	edit_menu    = new QMenu(tr("\311dition"), this);
+	display_menu = new QMenu(tr("Affichage"),  this);
+	tools_menu   = new QMenu(tr("Outils"),     this);
+	help_menu    = new QMenu(tr("Aide"),       this);
 	
 	file_menu    -> setTearOffEnabled(true);
 	edit_menu    -> setTearOffEnabled(true);

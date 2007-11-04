@@ -28,7 +28,6 @@ class Element : public QGraphicsItem {
 	QSize   dimensions;
 	QPoint  hotspot_coord;
 	QPixmap apercu;
-	QMenu   menu;
 	
 	// methodes
 	public:

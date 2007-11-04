@@ -395,7 +395,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(shrink_diagram);
 	
 	// menu Configurer > Afficher
-	QMenu *menu_aff_aff = new QMenu(tr("Afficher"));
+	QMenu *menu_aff_aff = new QMenu(tr("Afficher"), this);
 	menu_aff_aff -> setIcon(QIcon(":/ico/toolbars.png"));
 	menu_aff_aff -> setTearOffEnabled(true);
 	menu_aff_aff -> addAction(main_bar -> toggleViewAction());

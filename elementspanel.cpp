@@ -161,17 +161,17 @@ void ElementsPanel::addFile(QTreeWidgetItem *qtwi_parent, QString fichier) {
 	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
 	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
 	int etat;
-	CustomElement *elmt_perso = new CustomElement(fichier, 0, 0, &etat);
+	CustomElement elmt_perso(fichier, 0, 0, &etat);
 	if (etat != 0) {
 		qDebug() << "Le chargement du composant" << fichier << "a echoue avec le code d'erreur" << etat;
 		return;
 	}
-	QTreeWidgetItem *qtwi = new QTreeWidgetItem(qtwi_parent, QStringList(elmt_perso -> nom()));
-	qtwi -> setStatusTip(0, tool_tip + "\253 " + elmt_perso -> nom() + " \273");
-	qtwi -> setToolTip(0, elmt_perso -> nom());
+	QTreeWidgetItem *qtwi = new QTreeWidgetItem(qtwi_parent, QStringList(elmt_perso.nom()));
+	qtwi -> setStatusTip(0, tool_tip + "\253 " + elmt_perso.nom() + " \273");
+	qtwi -> setToolTip(0, elmt_perso.nom());
 	qtwi -> setWhatsThis(0, whats_this);
 	qtwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
-	qtwi -> setIcon(0, QIcon(elmt_perso -> pixmap()));
+	qtwi -> setIcon(0, QIcon(elmt_perso.pixmap()));
 	qtwi -> setData(0, 42, fichier);
 }
 

@@ -38,6 +38,8 @@ Diagram::Diagram(QObject *parent) :
 	Destructeur
 */
 Diagram::~Diagram() {
+	if (conductor_setter -> scene()) removeItem(conductor_setter);
+	delete conductor_setter;
 }
 
 /**
