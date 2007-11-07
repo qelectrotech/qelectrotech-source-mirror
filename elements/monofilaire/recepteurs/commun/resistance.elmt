@@ -1,0 +1,12 @@
+<definition width="30" version="0.1" hotspot_x="6" hotspot_y="25" height="40" type="element" orientation="dnnn" >
+    <names>
+        <name lang="en" >Resistor</name>
+        <name lang="fr" >Résistance</name>
+    </names>
+    <description>
+        <input x="8" y="0" size="9" rotate="true" text="R_" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-20" x2="0" />
+        <polygon x4="-5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="-5" y2="-13" x2="5" y3="12" x3="5" y4="12" />
+        <terminal x="0" y="-21" orientation="n" />
+    </description>
+</definition>
