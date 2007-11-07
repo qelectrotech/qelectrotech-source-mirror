@@ -5,9 +5,9 @@ PartCircle::PartCircle(QETElementEditor *editor, QGraphicsItem *parent, QGraphic
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new CircleEditor(elementEditor(), this);
-	informations -> setElementTypeName(QObject::tr("cercle"));
+	informations -> setElementTypeName(name());
 	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(QObject::tr("cercle"));
+	style_editor -> setElementTypeName(name());
 }
 
 void PartCircle::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {

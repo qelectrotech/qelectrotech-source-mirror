@@ -32,16 +32,11 @@ class CustomElementPart {
 	virtual void fromXml(const QDomElement &) = 0;
 	virtual const QDomElement toXml(QDomDocument &) const = 0;
 	virtual QWidget *elementInformations() = 0;
-	//virtual void renderToCustomElement(CustomElement &) const = 0;
-	//virtual void toEditorPart(const EditorPart &);
-	//virtual void fromEditorPart(const EditorPart &) = 0;
 	virtual void setProperty(const QString &, const QVariant &) = 0;
 	virtual QVariant property(const QString &) = 0;
 	virtual QETElementEditor *elementEditor() const;
 	virtual ElementScene *elementScene() const;
 	virtual QUndoStack &undoStack() const;
-	
-	protected:
-	QPicture *getCustomElementQPicture(CustomElement &ce) const;
+	virtual QString name() const = 0;
 };
 #endif

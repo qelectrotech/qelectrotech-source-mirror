@@ -4,6 +4,7 @@
 #include "elementview.h"
 #include "customelementpart.h"
 #include "newelementwizard.h"
+#include "elementitemeditor.h"
 
 QETElementEditor::QETElementEditor(QWidget *parent) :
 	QMainWindow(parent),
@@ -259,7 +260,24 @@ void QETElementEditor::setupInterface() {
 	addDockWidget(Qt::RightDockWidgetArea, undo_dock);
 	undo_dock -> setWidget(new QUndoView(&(ce_scene -> undoStack()), this));
 	
+	// panel sur le côté pour la liste des parties
+	parts_list = new QListWidget(this);
+	parts_list -> setSelectionMode(QAbstractItemView::ExtendedSelection);
+	connect(ce_scene,   SIGNAL(partsAdded()),           this, SLOT(slot_createPartsList()));
+	connect(ce_scene,   SIGNAL(partsRemoved()),         this, SLOT(slot_createPartsList()));
+	connect(ce_scene,   SIGNAL(partsZValueChanged()),   this, SLOT(slot_createPartsList()));
+	connect(ce_scene,   SIGNAL(selectionChanged()),     this, SLOT(slot_updatePartsList()));
+	connect(parts_list, SIGNAL(itemSelectionChanged()), this, SLOT(slot_updateSelectionFromPartsList()));
+	parts_dock = new QDockWidget(tr("Parties"), this);
+	parts_dock -> setObjectName("parts_list");
+	parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
+	parts_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	parts_dock -> setMinimumWidth(290);
+	addDockWidget(Qt::RightDockWidgetArea, parts_dock);
+	parts_dock -> setWidget(parts_list);
+	
 	slot_updateInformations();
+	slot_createPartsList();
 	
 	// barre d'etat
 	statusBar() -> showMessage(tr("\311diteur d'\351l\351ments"));
@@ -357,6 +375,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	
 	// chargement de l'element
 	ce_scene -> fromXml(document_xml);
+	slot_createPartsList();
 	
 	// gestion de la lecture seule
 	if (!infos_file.isWritable()) {
@@ -495,4 +514,60 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
 	} else qce -> ignore();
+}
+
+/**
+	Remplit la liste des parties
+*/
+void QETElementEditor::slot_createPartsList() {
+	parts_list -> blockSignals(true);
+	parts_list -> clear();
+	QList<QGraphicsItem *> qgis = ce_scene -> zItems(true);
+	for (int j = qgis.count() - 1 ; j >= 0 ; -- j) {
+		QGraphicsItem *qgi = qgis[j];
+		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
+			QString part_desc = cep -> name();
+			QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
+			QVariant v;
+			v.setValue<QGraphicsItem *>(qgi);
+			qlwi -> setData(42, v);
+			parts_list -> addItem(qlwi);
+			qlwi -> setSelected(qgi -> isSelected());
+		}
+	}
+	parts_list -> blockSignals(false);
+}
+
+/**
+	Met a jour la selection dans la liste des parties
+*/
+void QETElementEditor::slot_updatePartsList() {
+	parts_list -> blockSignals(true);
+	int i = 0;
+	QList<QGraphicsItem *> items = ce_scene -> zItems(true);
+	for (int j = items.count() - 1 ; j >= 0 ; -- j) {
+		QGraphicsItem *qgi = items[j];
+		QListWidgetItem *qlwi = parts_list -> item(i);
+		if (qlwi) qlwi -> setSelected(qgi -> isSelected());
+		++ i;
+	}
+	parts_list -> blockSignals(false);
+}
+
+/**
+	Met a jour la selection des parties de l'element a partir de la liste des
+	parties
+*/
+void QETElementEditor::slot_updateSelectionFromPartsList() {
+	ce_scene  -> blockSignals(true);
+	parts_list -> blockSignals(true);
+	for (int i = 0 ; i < parts_list -> count() ; ++ i) {
+		QListWidgetItem *qlwi = parts_list -> item(i);
+		QGraphicsItem *qgi = qlwi -> data(42).value<QGraphicsItem *>();
+		if (qgi) {
+			qgi -> setSelected(qlwi -> isSelected());
+		}
+	}
+	parts_list -> blockSignals(false);
+	ce_scene -> blockSignals(false);
 }

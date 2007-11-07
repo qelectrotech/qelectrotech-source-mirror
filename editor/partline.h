@@ -25,6 +25,7 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	enum { Type = UserType + 1104 };
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+	virtual QString name() const { return(QObject::tr("ligne")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneP1() const;

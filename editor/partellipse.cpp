@@ -5,9 +5,9 @@ PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new EllipseEditor(elementEditor(), this);
-	informations -> setElementTypeName(QObject::tr("ellipse"));
+	informations -> setElementTypeName(name());
 	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(QObject::tr("ellipse"));
+	style_editor -> setElementTypeName(name());
 }
 
 void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {

@@ -25,6 +25,7 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	enum { Type = UserType + 1103 };
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
+	virtual QString name() const { return(QObject::tr("ellipse")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;

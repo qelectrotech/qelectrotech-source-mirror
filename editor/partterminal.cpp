@@ -8,7 +8,7 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGra
 	_orientation(QET::North)
 {
 	informations = new TerminalEditor(elementEditor(), this);
-	informations -> setElementTypeName(QObject::tr("borne"));
+	informations -> setElementTypeName(name());
 	updateSecondPoint();
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setZValue(100000);
@@ -59,12 +59,12 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget 
 	t.setWidthF(1.0);
 	
 	// dessin de la borne en rouge
-	t.setColor(Qt::red);
+	t.setColor(isSelected() ? Terminal::couleur_neutre : Qt::red);
 	p -> setPen(t);
 	p -> drawLine(QPointF(0.0, 0.0), second_point);
 	
 	// dessin du point d'amarrage au conducteur en bleu
-	t.setColor(Terminal::couleur_neutre);
+	t.setColor(isSelected() ? Qt::red : Terminal::couleur_neutre);
 	p -> setPen(t);
 	p -> setBrush(Terminal::couleur_neutre);
 	p -> drawPoint(QPointF(0.0, 0.0));

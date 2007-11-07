@@ -2,10 +2,6 @@
 #include "customelement.h"
 #include "qetelementeditor.h"
 
-QPicture *CustomElementPart::getCustomElementQPicture(CustomElement &ce) const {
-	return(&(ce.dessin));
-}
-
 /// @return le QETElementEditor auquel cet editeur appartient
 QETElementEditor *CustomElementPart::elementEditor() const {
 	return(element_editor);

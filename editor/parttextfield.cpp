@@ -11,7 +11,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(QObject::tr("_"));
 	infos = new TextFieldEditor(elementEditor(), this);
-	infos -> setElementTypeName(QObject::tr("champ de texte"));
+	infos -> setElementTypeName(name());
 }
 
 PartTextField::~PartTextField() {

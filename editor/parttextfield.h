@@ -27,6 +27,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	public:
 	enum { Type = UserType + 1108 };
 	virtual int type() const { return Type; }
+	virtual QString name() const { return(QObject::tr("champ de texte")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
 	QWidget *elementInformations();

@@ -27,6 +27,7 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	public:
 	enum { Type = UserType + 1106 };
 	virtual int type() const { return Type; }
+	virtual QString name() const { return(QObject::tr("borne")); }
 	virtual void fromXml(const QDomElement &);
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual QWidget *elementInformations();

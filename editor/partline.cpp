@@ -6,9 +6,9 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsSce
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new LineEditor(elementEditor(), this);
-	informations -> setElementTypeName(QObject::tr("ligne"));
+	informations -> setElementTypeName(name());
 	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(QObject::tr("ligne"));
+	style_editor -> setElementTypeName(name());
 }
 
 void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, QWidget */*w*/) {

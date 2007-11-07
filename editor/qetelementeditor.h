@@ -33,6 +33,10 @@ class QETElementEditor : public QMainWindow {
 	QDockWidget *tools_dock;
 	/// container pour la liste des annulations
 	QDockWidget *undo_dock;
+	/// Container pour la liste des parties
+	QDockWidget *parts_dock;
+	/// Liste des parties
+	QListWidget *parts_list;
 	/// actions du menu fichier
 	QAction *new_element, *open, *save, *save_as, *quit;
 	/// actions du menu edition
@@ -90,6 +94,9 @@ class QETElementEditor : public QMainWindow {
 	void slot_updateInformations();
 	void slot_updateMenus();
 	void slot_updateTitle();
+	void slot_createPartsList();
+	void slot_updatePartsList();
+	void slot_updateSelectionFromPartsList();
 	void xmlPreview();
 };
 

@@ -9,7 +9,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(QObject::tr("T"));
 	infos = new TextEditor(elementEditor(), this);
-	infos -> setElementTypeName(QObject::tr("texte"));
+	infos -> setElementTypeName(name());
 }
 
 PartText::~PartText() {

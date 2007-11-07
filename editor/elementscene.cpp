@@ -168,33 +168,40 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		switch(behavior) {
 			case Line:
 				undo_stack.push(new AddPartCommand(tr("ligne"), this, current_line));
+				emit(partsAdded());
 				break;
 			case Ellipse:
 				current_ellipse -> setRect(current_ellipse -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("ellipse"), this, current_ellipse));
+				emit(partsAdded());
 				break;
 			case Arc:
 				current_arc-> setRect(current_arc -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("arc"), this, current_arc));
+				emit(partsAdded());
 				break;
 			case Circle:
 				current_circle -> setRect(current_circle -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("cercle"), this, current_circle));
+				emit(partsAdded());
 				break;
 			case Terminal:
 				terminal = new PartTerminal(element_editor, 0, this);
 				terminal -> setPos(e -> scenePos());
 				undo_stack.push(new AddPartCommand(tr("borne"), this, terminal));
+				emit(partsAdded());
 				break;
 			case Text:
 				text = new PartText(element_editor, 0, this);
 				text -> setPos(e -> scenePos());
 				undo_stack.push(new AddPartCommand(tr("texte"), this, text));
+				emit(partsAdded());
 				break;
 			case TextField:
 				textfield = new PartTextField(element_editor, 0, this);
 				textfield -> setPos(e -> scenePos());
 				undo_stack.push(new AddPartCommand(tr("champ de texte"), this, textfield));
+				emit(partsAdded());
 				break;
 			case Normal:
 			default:
@@ -212,6 +219,7 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 			behavior = Normal;
 			undo_stack.push(new AddPartCommand(tr("polygone"), this, current_polygon));
 			current_polygon = NULL;
+			emit(partsAdded());
 			emit(needNormalMode());
 		} else QGraphicsScene::mouseReleaseEvent(e);
 	} else QGraphicsScene::mouseReleaseEvent(e);
@@ -424,6 +432,7 @@ void ElementScene::slot_delete() {
 	
 	// efface tout ce qui est selectionne
 	undo_stack.push(new DeletePartsCommand(this, selected_items));
+	emit(partsRemoved());
 }
 
 void ElementScene::slot_editSizeHotSpot() {
@@ -536,6 +545,7 @@ void ElementScene::slot_editNames() {
 */
 void ElementScene::slot_bringForward() {
 	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::BringForward));
+	emit(partsZValueChanged());
 }
 
 /**
@@ -543,6 +553,7 @@ void ElementScene::slot_bringForward() {
 */
 void ElementScene::slot_raise() {
 	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::Raise));
+	emit(partsZValueChanged());
 }
 
 /**
@@ -550,6 +561,7 @@ void ElementScene::slot_raise() {
 */
 void ElementScene::slot_lower() {
 	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::Lower));
+	emit(partsZValueChanged());
 }
 
 /**
@@ -557,6 +569,7 @@ void ElementScene::slot_lower() {
 */
 void ElementScene::slot_sendBackward() {
 	undoStack().push(new ChangeZValueCommand(this, ChangeZValueCommand::SendBackward));
+	emit(partsZValueChanged());
 }
 
 /**

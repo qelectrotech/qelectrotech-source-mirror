@@ -115,6 +115,9 @@ class ElementScene : public QGraphicsScene {
 	signals:
 	void selectionChanged();
 	void needNormalMode();
+	void partsAdded();
+	void partsRemoved();
+	void partsZValueChanged();
 };
 
 inline void ElementScene::setWidth(const uint &wid) {

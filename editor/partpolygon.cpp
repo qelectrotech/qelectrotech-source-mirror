@@ -9,9 +9,9 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new PolygonEditor(elementEditor(), this);
-	informations -> setElementTypeName(QObject::tr("polygone"));
+	informations -> setElementTypeName(name());
 	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(QObject::tr("polygone"));
+	style_editor -> setElementTypeName(name());
 }
 
 void PartPolygon::fromXml(const QDomElement &qde) {

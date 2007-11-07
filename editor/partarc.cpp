@@ -10,9 +10,9 @@ PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new ArcEditor(elementEditor(), this);
-	informations -> setElementTypeName(QObject::tr("arc"));
+	informations -> setElementTypeName(name());
 	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(QObject::tr("arc"));
+	style_editor -> setElementTypeName(name());
 }
 
 void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
