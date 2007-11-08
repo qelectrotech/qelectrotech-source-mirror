@@ -273,7 +273,7 @@ void QETElementEditor::setupInterface() {
 	parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	parts_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	parts_dock -> setMinimumWidth(290);
-	addDockWidget(Qt::RightDockWidgetArea, parts_dock);
+	tabifyDockWidget(undo_dock, parts_dock);
 	parts_dock -> setWidget(parts_list);
 	
 	slot_updateInformations();
@@ -426,6 +426,7 @@ void QETElementEditor::setReadOnly(bool ro) {
 	edit_size_hs -> setEnabled(!ro);
 	edit_names   -> setEnabled(!ro);
 	edit_ori     -> setEnabled(!ro);
+	parts_list   -> setEnabled(!ro);
 }
 
 /**
