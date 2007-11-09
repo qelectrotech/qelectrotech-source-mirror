@@ -258,7 +258,9 @@ void QETElementEditor::setupInterface() {
 	undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	undo_dock -> setMinimumWidth(290);
 	addDockWidget(Qt::RightDockWidgetArea, undo_dock);
-	undo_dock -> setWidget(new QUndoView(&(ce_scene -> undoStack()), this));
+	QUndoView* undo_view = new QUndoView(&(ce_scene -> undoStack()), this);
+	undo_view -> setEmptyLabel(tr("Aucune modification"));
+	undo_dock -> setWidget(undo_view);
 	
 	// panel sur le côté pour la liste des parties
 	parts_list = new QListWidget(this);

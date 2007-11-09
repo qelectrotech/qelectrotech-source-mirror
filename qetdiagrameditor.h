@@ -129,6 +129,8 @@ class QETDiagramEditor : public QMainWindow {
 	QDir open_dialog_dir;
 	/// Dock pour le Panel d'Appareils
 	QDockWidget *qdw_pa;
+	/// Dock pour la liste des annulations
+	QDockWidget *qdw_undo;
 	/// Panel d'Appareils
 	ElementsPanelWidget *pa;
 	QMenu *windows_menu;

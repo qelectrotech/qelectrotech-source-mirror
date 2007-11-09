@@ -56,7 +56,19 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	qdw_pa -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	qdw_pa -> setMinimumWidth(160);
 	qdw_pa -> setWidget(pa = new ElementsPanelWidget(qdw_pa));
-	addDockWidget(Qt::LeftDockWidgetArea, qdw_pa);
+	
+	qdw_undo = new QDockWidget(tr("Annulations"));
+	qdw_undo -> setObjectName("diagram_undo");
+	qdw_undo -> setAllowedAreas(Qt::AllDockWidgetAreas);
+	qdw_undo -> setFeatures(QDockWidget::AllDockWidgetFeatures);
+	qdw_undo -> setMinimumWidth(160);
+	tabifyDockWidget(qdw_pa, qdw_undo);
+	QUndoView *undo_view = new QUndoView(&undo_group, this);
+	undo_view -> setEmptyLabel(tr("Aucune modification"));
+	qdw_undo -> setWidget(undo_view);
+	
+	addDockWidget(Qt::LeftDockWidgetArea, qdw_undo);
+	tabifyDockWidget(qdw_undo, qdw_pa);
 	
 	// mise en place des actions
 	actions();
@@ -395,17 +407,15 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(shrink_diagram);
 	
 	// menu Configurer > Afficher
-	QMenu *menu_aff_aff = new QMenu(tr("Afficher"), this);
-	menu_aff_aff -> setIcon(QIcon(":/ico/toolbars.png"));
-	menu_aff_aff -> setTearOffEnabled(true);
-	menu_aff_aff -> addAction(main_bar -> toggleViewAction());
-	main_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
-	menu_aff_aff -> addAction(view_bar -> toggleViewAction());
-	view_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
-	menu_aff_aff -> addAction(diagram_bar -> toggleViewAction());
+	QMenu *display_toolbars = createPopupMenu();
+	display_toolbars -> setTearOffEnabled(true);
+	display_toolbars -> setTitle(tr("Afficher"));
+	display_toolbars -> setIcon(QIcon(":/ico/toolbars.png"));
+	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
+	view_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
 	diagram_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Sch\351ma"));
-	menu_aff_aff -> addAction(qdw_pa -> toggleViewAction());
-	qdw_pa -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
+	qdw_pa      -> toggleViewAction() -> setStatusTip(tr("Affiche ou non le panel d'appareils"));
+	qdw_undo    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la liste des modifications"));
 	
 	// menu Affichage
 	menu_affichage -> addAction(mode_selection);
@@ -417,7 +427,7 @@ void QETDiagramEditor::menus() {
 	menu_affichage -> addAction(zoom_reset);
 	
 	// menu Configuration
-	menu_config -> addMenu(menu_aff_aff);
+	menu_config -> addMenu(display_toolbars);
 	menu_config -> addAction(fullscreen_on);
 	//menu_config -> addAction(configure);
 	
