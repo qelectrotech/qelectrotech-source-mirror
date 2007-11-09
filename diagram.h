@@ -10,6 +10,7 @@ class Element;
 class Terminal;
 class Conductor;
 class DiagramTextItem;
+class DiagramContent;
 /**
 	Cette classe represente un schema electrique.
 	Elle gere les differents elements et conducteurs qui le composent
@@ -77,7 +78,7 @@ class Diagram : public QGraphicsScene {
 	
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
-	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, QList<Element *> * = NULL, QList<Conductor *> * = NULL, QList<DiagramTextItem *> * = NULL);
+	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = NULL);
 	
 	// fonctions relatives aux options graphiques
 	void setDisplayGrid(bool);
@@ -101,6 +102,8 @@ class Diagram : public QGraphicsScene {
 	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
 	const QSet<DiagramTextItem *> &textsToMove();
 	QSet<Conductor *> selectedConductors() const;
+	DiagramContent content() const;
+	DiagramContent selectedContent();
 	void moveElements(const QPointF &, QGraphicsItem * = NULL);
 	
 	QUndoStack &undoStack();

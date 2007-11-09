@@ -5,6 +5,7 @@
 #include "diagram.h"
 #include "exportdialog.h"
 #include "diagramcommands.h"
+#include "diagramcontent.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -113,16 +114,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 		!current_movement.isNull()  && !e -> isAutoRepeat()
 	) {
 		// cree un objet d'annulation pour le mouvement qui vient de se finir
-		undoStack().push(
-			new MoveElementsCommand(
-				this,
-				elementsToMove(),
-				conductorsToMove(),
-				conductorsToUpdate(),
-				textsToMove(),
-				current_movement
-			)
-		);
+		undoStack().push(new MoveElementsCommand(this, selectedContent(), current_movement));
 		invalidateMovedElements();
 		current_movement = QPointF();
 	}
@@ -300,14 +292,11 @@ QDomDocument Diagram::toXml(bool diagram) {
 	@param position La position du diagram importe
 	@param consider_informations Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param added_elements si ce pointeur vers une liste d'elements n'est pas
-	NULL, il sera rempli avec les elements ajoutes au schema par le fromXml
-	@param added_conductors si ce pointeur vers une liste de conducteurs n'est
-	pas NULL, il sera rempli avec les conducteurs ajoutes au schema par le
-	fromXml
+	@param content_ptr si ce pointeur vers un DiagramContentn'est pas NULL, il
+	sera rempli avec le contenu ajoute au schema par le fromXml
 	@return true si l'import a reussi, false sinon
 */
-bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, QList<Element *> *added_elements_ptr, QList<Conductor *> *added_conductors_ptr, QList<DiagramTextItem *> *added_texts_ptr) {
+bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	QDomElement root = document.documentElement();
 	// le premier element doit etre un schema
 	if (root.tagName() != "diagram") return(false);
@@ -457,9 +446,11 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	}
 	
 	// remplissage des listes facultatives
-	if (added_elements_ptr   != NULL) *added_elements_ptr   = added_elements;
-	if (added_conductors_ptr != NULL) *added_conductors_ptr = added_conductors;
-	if (added_texts_ptr      != NULL) *added_texts_ptr      = added_texts;
+	if (content_ptr != NULL) {
+		content_ptr -> elements         = added_elements;
+		content_ptr -> conductorsToMove = added_conductors;
+		content_ptr -> textFields       = added_texts;
+	}
 	
 	return(true);
 }
@@ -603,4 +594,34 @@ bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
 	bool may_be_diagram = clipboard_text.startsWith("<diagram") && clipboard_text.endsWith("</diagram>");
 	return(may_be_diagram);
+}
+
+/**
+	@return Le contenu du schema. Les conducteurs sont tous places dans
+	conductorsToMove.
+*/
+DiagramContent Diagram::content() const {
+	DiagramContent dc;
+	foreach(QGraphicsItem *qgi, items()) {
+		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
+			dc.elements << e;
+		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
+			dc.textFields << dti;
+		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+			dc.conductorsToMove << c;
+		}
+	}
+	return(dc);
+}
+
+/**
+	@return le contenu selectionne du schema.
+*/
+DiagramContent Diagram::selectedContent() {
+	DiagramContent dc;
+	dc.elements           = elementsToMove().toList();
+	dc.textFields         = textsToMove().toList();
+	dc.conductorsToMove   = conductorsToMove().toList();
+	dc.conductorsToUpdate = conductorsToUpdate();
+	return(dc);
 }

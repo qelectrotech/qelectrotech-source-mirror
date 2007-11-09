@@ -128,6 +128,7 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, double *r
 	Permet de composer rapidement la proposition "x elements et y conducteurs"
 	@param elements_count nombre d élements
 	@param conductors_count nombre de conducteurs
+	@param texts_count nombre de champs de texte
 	@return la proposition decrivant le nombre d'elements et de conducteurs
 */
 QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count) {

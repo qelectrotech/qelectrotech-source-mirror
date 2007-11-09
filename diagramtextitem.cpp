@@ -135,10 +135,7 @@ void DiagramTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 			diagram_ptr -> undoStack().push(
 				new MoveElementsCommand(
 					diagram_ptr,
-					diagram_ptr -> elementsToMove(),
-					diagram_ptr -> conductorsToMove(),
-					diagram_ptr -> conductorsToUpdate(),
-					diagram_ptr -> textsToMove(),
+					diagram_ptr -> selectedContent(),
 					diagram_ptr -> current_movement
 				)
 			);

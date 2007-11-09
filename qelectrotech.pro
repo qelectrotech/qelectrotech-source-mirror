@@ -80,6 +80,7 @@ HEADERS += aboutqet.h \
            diagramtextitem.h \
            insetproperties.h \
            conductorpropertieswidget.h \
+           diagramcontent.h \
            conductorproperties.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
@@ -140,6 +141,7 @@ SOURCES += aboutqet.cpp \
            diagramcommands.cpp \
            diagramtextitem.cpp \
            conductorpropertieswidget.cpp \
+           diagramcontent.cpp \
            conductorproperties.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts

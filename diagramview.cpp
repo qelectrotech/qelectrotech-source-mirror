@@ -80,27 +80,10 @@ void DiagramView::deleteSelection() {
 	// que la touche suppr a ete enfoncee pour effacer une lettre et non la
 	// selection
 	if (scene -> focusItem()) return;
-	
-	QSet<Element *> garbage_elmt;
-	QSet<Conductor *> garbage_conductors;
-	QSet<DiagramTextItem *> garbage_texts;
-	
-	// creation de deux listes : une pour les conducteurs, une pour les elements
-	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
-		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (Conductor * c = qgraphicsitem_cast<Conductor *>(qgi)) {
-			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
-			garbage_conductors << c;
-		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
-			garbage_elmt << e;
-			// s'il s'agit d'un element, on veille a enlever ses conducteurs
-			garbage_conductors += e -> conductors().toSet();
-		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
-			if (!t -> parentItem()) garbage_texts << t;
-		}
-	}
+
+	DiagramContent removed_content = scene -> selectedContent();
 	scene -> clearSelection();
-	scene -> undoStack().push(new DeleteElementsCommand(scene, garbage_elmt, garbage_conductors, garbage_texts));
+	scene -> undoStack().push(new DeleteElementsCommand(scene, removed_content));
 }
 
 /**
@@ -214,27 +197,9 @@ void DiagramView::zoomReset() {
 */
 void DiagramView::cut() {
 	copy();
-	QSet<Element *> cut_elmt;
-	QSet<Conductor *> cut_conductors;
-	QSet<DiagramTextItem *> cut_texts;
-	
-	// creation de deux listes : une pour les conducteurs, une pour les elements
-	foreach (QGraphicsItem *qgi, scene -> selectedItems()) {
-		// pour chaque qgi selectionne, il s'agit soit d'un element soit d'un conducteur
-		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
-			// s'il s'agit d'un conducteur, on le met dans la liste des conducteurs
-			cut_conductors << c;
-		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
-			cut_elmt << e;
-			// s'il s'agit d'un element, on veille a enlever ses conducteurs
-			cut_conductors += e -> conductors().toSet();
-		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
-			// les textes recherches n'ont pas de parent
-			if (!t -> parentItem()) cut_texts << t;
-		}
-	}
+	DiagramContent removed_content = scene -> selectedContent();
 	scene -> clearSelection();
-	scene -> undoStack().push(new CutDiagramCommand(scene, cut_elmt, cut_conductors, cut_texts));
+	scene -> undoStack().push(new CutDiagramCommand(scene, scene -> selectedContent()));
 }
 
 /**
@@ -260,16 +225,14 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	QDomDocument document_xml;
 	if (!document_xml.setContent(texte_presse_papier)) return;
 	
-	// listes pour recupere les elements et conducteurs ajoutes au schema par le coller
-	QList<Element *> elements_pasted;
-	QList<Conductor *> conductors_pasted;
-	QList<DiagramTextItem *> texts_pasted;
-	scene -> fromXml(document_xml, pos, false, &elements_pasted, &conductors_pasted, &texts_pasted);
+	// objet pour recuperer le contenu ajoute au schema par le coller
+	DiagramContent content_pasted;
+	scene -> fromXml(document_xml, pos, false, &content_pasted);
 	
 	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
-	if (elements_pasted.count() || conductors_pasted.count() || texts_pasted.count()) {
+	if (content_pasted.count()) {
 		scene -> clearSelection();
-		scene -> undoStack().push(new PasteDiagramCommand(scene, elements_pasted, conductors_pasted, texts_pasted));
+		scene -> undoStack().push(new PasteDiagramCommand(scene, content_pasted));
 	}
 }
 

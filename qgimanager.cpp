@@ -49,6 +49,25 @@ void QGIManager::release(QGraphicsItem *qgi) {
 }
 
 /**
+	Demande au QGIManager de gerer plusieurs QGI
+	@param qgis QGraphicsItems a gerer
+*/
+void QGIManager::manage(const QList<QGraphicsItem *> &qgis) {
+	foreach(QGraphicsItem *qgi, qgis) manage(qgi);
+}
+
+/**
+	Indique au QGIManager que pour chaque QGI fourni, une reference vers celui-ci
+	a ete detruite.
+	S'il n'y a plus de references vers un QGI et que celui-ci n'est pas present
+	sur la scene de ce QGIManager, alors il sera detruit.
+	@param qgis QGraphicsItems a ne plus gerer
+*/
+void QGIManager::release(const QList<QGraphicsItem *> &qgis) {
+	foreach(QGraphicsItem *qgi, qgis) release(qgi);
+}
+
+/**
 	Indique au QGIManager de detruire les QGraphicsItem restants lors de sa
 	destruction si ceux-ci n'appartiennent pas a la scene
 */
