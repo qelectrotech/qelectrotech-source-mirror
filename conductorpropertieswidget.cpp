@@ -26,7 +26,7 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &
 /// construit l'interface du widget
 void ConductorPropertiesWidget::buildInterface() {
 	
-	setFixedSize(380, 270);
+	setFixedSize(380, 280);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	
