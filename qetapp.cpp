@@ -6,6 +6,7 @@
 #define STRINGIFY(x) #x
 
 QString QETApp::common_elements_dir = QString();
+QString QETApp::config_dir = QString();
 
 /**
 	Constructeur
@@ -24,6 +25,13 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		if (argument.startsWith(ced_arg)) {
 			QString ced_value = argument.right(argument.length() - ced_arg.length());
 			overrideCommonElementsDir(ced_value);
+		}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+		QString cd_arg("--config-dir=");
+		if (argument.startsWith(cd_arg)) {
+			QString cd_value = argument.right(argument.length() - cd_arg.length());
+			overrideConfigDir(cd_value);
 		}
 #endif
 		bool must_exit = false;
@@ -231,6 +239,9 @@ QString QETApp::customElementsDir() {
 	@return Le chemin du dossier de configuration de QElectroTech
 */
 QString QETApp::configDir() {
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+	if (config_dir != QString()) return(config_dir);
+#endif
 #ifdef Q_OS_WIN32
 	return(QDir::homePath() + "/Application Data/qet/");
 #else
@@ -278,13 +289,28 @@ QString QETApp::symbolicPath(const QString &real_path) {
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 /**
-	Redefinit le chemin du dossier des elements communs.
+	Redefinit le chemin du dossier des elements communs
+	@param new_ced Nouveau chemin du dossier des elements communs
 */
 void QETApp::overrideCommonElementsDir(const QString &new_ced) {
 	QFileInfo new_ced_info(new_ced);
 	if (new_ced_info.isDir()) {
 		common_elements_dir = new_ced_info.absoluteFilePath();
 		if (!common_elements_dir.endsWith("/")) common_elements_dir += "/";
+	}
+}
+#endif
+
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+/**
+	Redefinit le chemin du dossier de configuration
+	@param new_cd Nouveau chemin du dossier de configuration
+*/
+void QETApp::overrideConfigDir(const QString &new_cd) {
+	QFileInfo new_cd_info(new_cd);
+	if (new_cd_info.isDir()) {
+		config_dir = new_cd_info.absoluteFilePath();
+		if (!config_dir.endsWith("/")) config_dir += "/";
 	}
 }
 #endif

@@ -434,7 +434,9 @@ void DiagramView::dialogExport() {
 void DiagramView::dialogPrint() {
 	// initialise l'acces a l'imprimante
 	QPrinter qprin;
+#ifndef Q_OS_WIN32
 	qprin.setOutputFormat(QPrinter::PdfFormat);
+#endif
 	qprin.setOrientation(QPrinter::Landscape);
 	qprin.setPageSize(QPrinter::A4);
 	QPrintDialog qpd(&qprin, this);

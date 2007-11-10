@@ -33,10 +33,18 @@ class QETApp : public QApplication {
 	static QString realPath(const QString &);
 	static QString symbolicPath(const QString &);
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	public:
 	static void overrideCommonElementsDir(const QString &);
 	private:
 	static QString common_elements_dir;
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+	public:
+	static void overrideConfigDir(const QString &);
+	private:
+	static QString config_dir;
+#endif
+	
 	protected:
 	bool event(QEvent *);
 	

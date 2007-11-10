@@ -3,15 +3,29 @@
 ######################################################################
 
 # Chemins utilises pour la compilation et l'installation de QET
-COMPIL_PREFIX              = '/usr/local/'
-INSTALL_PREFIX             = '/usr/local/'
-QET_BINARY_PATH            = 'bin/'
-QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
-QET_LANG_PATH              = 'share/qelectrotech/lang/'
-QET_LICENSE_PATH           = 'doc/qelectrotech/'
+!win32 {
+	# Chemins UNIX
+	COMPIL_PREFIX              = '/usr/local/'
+	INSTALL_PREFIX             = '/usr/local/'
+	QET_BINARY_PATH            = 'bin/'
+	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
+	QET_LANG_PATH              = 'share/qelectrotech/lang/'
+	QET_LICENSE_PATH           = 'doc/qelectrotech/'
+} else {
+	# Chemins Windows
+	COMPIL_PREFIX              = './'
+	INSTALL_PREFIX             = './'
+	QET_BINARY_PATH            = './'
+	QET_COMMON_COLLECTION_PATH = 'elements/'
+	QET_LANG_PATH              = 'lang/'
+	QET_LICENSE_PATH           = './'
+}
 
-#Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
+# Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
 DEFINES += QET_ALLOW_OVERRIDE_CED_OPTION
+
+# Commenter la ligne ci-dessous pour desactiver l'option --config-dir
+DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 ######################################################################
 
