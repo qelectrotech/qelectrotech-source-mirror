@@ -76,11 +76,6 @@ void DiagramView::selectInvert() {
 	Supprime les composants selectionnes
 */
 void DiagramView::deleteSelection() {
-	// si un item a le focus et que ce slot est appele, c'est sans doute parce
-	// que la touche suppr a ete enfoncee pour effacer une lettre et non la
-	// selection
-	if (scene -> focusItem()) return;
-
 	DiagramContent removed_content = scene -> selectedContent();
 	scene -> clearSelection();
 	scene -> undoStack().push(new DeleteElementsCommand(scene, removed_content));
@@ -197,9 +192,9 @@ void DiagramView::zoomReset() {
 */
 void DiagramView::cut() {
 	copy();
-	DiagramContent removed_content = scene -> selectedContent();
+	DiagramContent cut_content = scene -> selectedContent();
 	scene -> clearSelection();
-	scene -> undoStack().push(new CutDiagramCommand(scene, scene -> selectedContent()));
+	scene -> undoStack().push(new CutDiagramCommand(scene, cut_content));
 }
 
 /**

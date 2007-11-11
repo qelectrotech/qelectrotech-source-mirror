@@ -130,6 +130,8 @@ class PasteDiagramCommand : public QUndoCommand {
 	DiagramContent content;
 	/// schema sur lequel on colle les elements et conducteurs
 	Diagram *diagram;
+	/// entien pour filtrer le contenu du schema
+	int filter;
 	/// booleen pour empecher le premier appel a redo
 	bool first_redo;
 };

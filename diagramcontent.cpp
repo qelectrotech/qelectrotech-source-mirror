@@ -17,7 +17,8 @@ DiagramContent::DiagramContent(const DiagramContent &other) :
 	elements(other.elements),
 	textFields(other.textFields),
 	conductorsToUpdate(other.conductorsToUpdate),
-	conductorsToMove(other.conductorsToMove)
+	conductorsToMove(other.conductorsToMove),
+	otherConductors(other.otherConductors)
 {
 }
 
@@ -28,10 +29,15 @@ DiagramContent::~DiagramContent() {
 }
 
 /**
+	@param filter Types de conducteurs desires
 	@return tous les conducteurs
 */
-QList<Conductor *> DiagramContent::conductors() const {
-	return(conductorsToMove + conductorsToUpdate.keys());
+QList<Conductor *> DiagramContent::conductors(int filter) const {
+	QList<Conductor *> result;
+	if (filter & ConductorsToMove)   result += conductorsToMove;
+	if (filter & ConductorsToUpdate) result += conductorsToUpdate.keys();
+	if (filter & OtherConductors)    result += otherConductors;
+	return(result);
 }
 
 /**
@@ -42,50 +48,66 @@ void DiagramContent::clear() {
 	textFields.clear();
 	conductorsToUpdate.clear();
 	conductorsToMove.clear();
+	otherConductors.clear();
 }
 
 /**
+	@param filter Types desires
 	@return la liste des items formant le contenu du schema
 */
-QList<QGraphicsItem *> DiagramContent::items() const {
+QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 	QList<QGraphicsItem *> items_list;
-	foreach(QGraphicsItem *qgi, conductors()) items_list << qgi;
-	foreach(QGraphicsItem *qgi, elements)     items_list << qgi;
-	foreach(QGraphicsItem *qgi, textFields)   items_list << qgi;
+	foreach(QGraphicsItem *qgi, conductors(filter)) items_list << qgi;
+	if (filter & Elements)   foreach(QGraphicsItem *qgi, elements)   items_list << qgi;
+	if (filter & TextFields) foreach(QGraphicsItem *qgi, textFields)  items_list << qgi;
 	return(items_list);
 }
 
 /**
-	@param include_updated_conductors true pour compter les conducteurs mis a jour, false sinon
+	@param filter Types desires
 	@return le nombre d'items formant le contenu du schema
 */
-int DiagramContent::count(bool include_updated_conductors) const {
-	int conductors_count = conductorsToMove.count();
-	if (include_updated_conductors) conductors_count += conductorsToUpdate.count();
-	
-	return(
-		elements.count()
-		+ textFields.count()
-		+ conductors_count
-		+ conductorsToUpdate.count()
-	);
+int DiagramContent::count(int filter) const {
+	int count = 0;
+	if (filter & Elements)           count += elements.count();
+	if (filter & TextFields)         count += textFields.count();
+	if (filter & ConductorsToMove)   count += conductorsToMove.count();
+	if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
+	if (filter & OtherConductors)    count += otherConductors.count();
+	return(count);
 }
 
 /**
 	Permet de composer rapidement la proposition "x elements, y conducteurs et
 	z champs de texte".
-	@param include_updated_conductors true pour compter les conducteurs mis a jour, false sinon
+	@param filter Types desires
 	@return la proposition decrivant le contenu.
 */
-QString DiagramContent::sentence(bool include_updated_conductors) const {
-	int conductors_count = conductorsToMove.count();
-	if (include_updated_conductors) conductors_count += conductorsToUpdate.count();
+QString DiagramContent::sentence(int filter) const {
+	int elements_count   = (filter & Elements) ? elements.count() : 0;
+	int conductors_count = conductors(filter).count();
+	int textfields_count = (filter & TextFields) ? textFields.count() : 0;
 	
 	return(
 		QET::ElementsAndConductorsSentence(
-			elements.count(),
+			elements_count,
 			conductors_count,
-			textFields.count()
+			textfields_count
 		)
 	);
+}
+
+/**
+	Permet de debugger un contenu de schema
+	@param d Object QDebug a utiliser pour l'affichage des informations de debug
+	@param c Contenu de schema a debugger
+*/
+QDebug &operator<<(QDebug d, DiagramContent &c) {
+	d << "DiagramContent {" << "\n";
+	d << "  elements :" << c.elements << "\n";
+	d << "  conductorsToUpdate :" << c.conductorsToUpdate.keys() << "\n";
+	d << "  conductorsToMove :" << c.conductorsToMove << "\n";
+	d << "  otherConductors :" << c.otherConductors << "\n";
+	d << "}";
+	return(d.space());
 }

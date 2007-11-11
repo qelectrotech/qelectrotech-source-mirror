@@ -21,6 +21,17 @@ class DiagramContent {
 	DiagramContent(const DiagramContent &);
 	~DiagramContent();
 	
+	/// Permet de filtrer facilement les differentes parties d'un schema
+	enum Filter {
+		Elements = 1,
+		TextFields = 2,
+		ConductorsToMove = 4,
+		ConductorsToUpdate = 8,
+		OtherConductors = 16,
+		AnyConductor = 28,
+		All = 31
+	};
+	
 	/// Elements de texte du schema
 	QList<Element *> elements;
 	/// Champs de texte du schema
@@ -29,11 +40,14 @@ class DiagramContent {
 	QHash<Conductor *, Terminal *> conductorsToUpdate;
 	/// Conducteurs a deplacer du schema
 	QList<Conductor *> conductorsToMove;
+	/// Conducteurs isoles (ni a deplacer, ni a mettre a jour)
+	QList<Conductor *> otherConductors;
 	
-	QList<Conductor *> conductors() const;
-	QList<QGraphicsItem *> items() const;
-	QString sentence(bool = false) const;
-	int count(bool = false) const;
+	QList<Conductor *> conductors(int = AnyConductor) const;
+	QList<QGraphicsItem *> items(int = All) const;
+	QString sentence(int = All) const;
+	int count(int = All) const;
 	void clear();
 };
+QDebug &operator<<(QDebug, DiagramContent &);
 #endif

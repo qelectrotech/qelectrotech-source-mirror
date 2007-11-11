@@ -124,13 +124,13 @@ DeleteElementsCommand::DeleteElementsCommand(
 	removed_content(content),
 	diagram(dia)
 {
-	setText(QObject::tr("supprimer ") + removed_content.sentence(true));
-	diagram -> qgiManager().manage(removed_content.items());
+	setText(QObject::tr("supprimer ") + removed_content.sentence(DiagramContent::All));
+	diagram -> qgiManager().manage(removed_content.items(DiagramContent::All));
 }
 
 /// Destructeur
 DeleteElementsCommand::~DeleteElementsCommand() {
-	diagram -> qgiManager().release(removed_content.items());
+	diagram -> qgiManager().release(removed_content.items(DiagramContent::All));
 }
 
 /// annule les suppressions
@@ -141,7 +141,7 @@ void DeleteElementsCommand::undo() {
 	}
 	
 	// remet les conducteurs
-	foreach(Conductor *c, removed_content.conductors()) {
+	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
 		diagram -> addItem(c);
 		c -> terminal1 -> addConductor(c);
 		c -> terminal2 -> addConductor(c);
@@ -156,7 +156,7 @@ void DeleteElementsCommand::undo() {
 /// refait les suppressions
 void DeleteElementsCommand::redo() {
 	// enleve les conducteurs
-	foreach(Conductor *c, removed_content.conductors()) {
+	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
 		c -> terminal1 -> removeConductor(c);
 		c -> terminal2 -> removeConductor(c);
 		diagram -> removeItem(c);
@@ -189,15 +189,17 @@ PasteDiagramCommand::PasteDiagramCommand(
 	QUndoCommand(parent),
 	content(c),
 	diagram(dia),
+	filter(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::ConductorsToMove),
 	first_redo(true)
 {
-	setText(QObject::tr("coller ") + content.sentence());
-	diagram -> qgiManager().manage(content.items());
+	
+	setText(QObject::tr("coller ") + content.sentence(filter));
+	diagram -> qgiManager().manage(content.items(filter));
 }
 
 /// Destructeur
 PasteDiagramCommand::~PasteDiagramCommand() {
-	diagram -> qgiManager().release(content.items());
+	diagram -> qgiManager().release(content.items(filter));
 }
 
 /// annule le coller
@@ -251,7 +253,7 @@ CutDiagramCommand::CutDiagramCommand(
 ) : 
 	DeleteElementsCommand(dia, content, parent)
 {
-	setText(QObject::tr("couper ") + content.sentence(true));
+	setText(QObject::tr("couper ") + content.sentence(DiagramContent::All));
 }
 
 /// Destructeur
@@ -277,7 +279,7 @@ MoveElementsCommand::MoveElementsCommand(
 	movement(m),
 	first_redo(true)
 {
-	setText(QObject::tr("d\351placer ") + content_to_move.sentence());
+	setText(QObject::tr("d\351placer ") + content_to_move.sentence(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::ConductorsToUpdate|DiagramContent::ConductorsToMove));
 }
 
 /// Destructeur

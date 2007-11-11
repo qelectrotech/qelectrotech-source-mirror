@@ -618,10 +618,25 @@ DiagramContent Diagram::content() const {
 	@return le contenu selectionne du schema.
 */
 DiagramContent Diagram::selectedContent() {
+	invalidateMovedElements();
 	DiagramContent dc;
 	dc.elements           = elementsToMove().toList();
 	dc.textFields         = textsToMove().toList();
 	dc.conductorsToMove   = conductorsToMove().toList();
 	dc.conductorsToUpdate = conductorsToUpdate();
+	
+	// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
+	foreach(QGraphicsItem *qgi, items()) {
+		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+			if (
+				c -> isSelected() &&\
+				!c -> terminal1 -> parentItem() -> isSelected() &&\
+				!c -> terminal2 -> parentItem() -> isSelected()
+			) {
+				dc.otherConductors << c;
+			}
+		}
+	}
+	invalidateMovedElements();
 	return(dc);
 }
