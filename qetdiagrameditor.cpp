@@ -80,8 +80,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	menus();
 	
 	// la fenetre est maximisee par defaut
-	setMinimumWidth(500);
-	setMinimumHeight(350);
+	setMinimumSize(QSize(500, 350));
 	setWindowState(Qt::WindowMaximized);
 	
 	// connexions signaux / slots pour une interface sensee
@@ -91,6 +90,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	
 	// ajout de tous les DiagramView necessaires
 	foreach (DiagramView *sv, diagram_views) addDiagramView(sv);
+	
+	// lecture des parametres
+	readSettings();
 	
 	// affichage
 	show();
@@ -123,6 +125,7 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 		}
 	}
 	if (can_quit) {
+		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
 	}
@@ -940,4 +943,24 @@ void QETDiagramEditor::slot_addText() {
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> addText();
 	}
+}
+
+/// Lit les parametres de l'editeur de schemas
+void QETDiagramEditor::readSettings() {
+	QSettings &settings = QETApp::settings();
+	
+	// dimensions et position de la fenetre
+	QVariant geometry = settings.value("diagrameditor/geometry");
+	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
+	
+	// etat de la fenetre (barres d'outils, docks...)
+	QVariant state = settings.value("diagrameditor/state");
+	if (state.isValid()) restoreState(state.toByteArray());
+}
+
+/// Enregistre les parametres de l'editeur de schemas
+void QETDiagramEditor::writeSettings() {
+	QSettings &settings = QETApp::settings();
+	settings.setValue("diagrameditor/geometry", saveGeometry());
+	settings.setValue("diagrameditor/state", saveState());
 }

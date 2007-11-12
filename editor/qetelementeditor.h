@@ -73,6 +73,8 @@ class QETElementEditor : public QMainWindow {
 	void fromFile(const QString &);
 	bool toFile(const QString &);
 	ElementScene *elementScene() const;
+	void readSettings();
+	void writeSettings();
 	
 	protected:
 	void closeEvent(QCloseEvent *);

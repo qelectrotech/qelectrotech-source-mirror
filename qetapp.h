@@ -29,6 +29,7 @@ class QETApp : public QApplication {
 	static QString commonElementsDir();
 	static QString customElementsDir();
 	static QString configDir();
+	static QSettings &settings();
 	static QString languagesPath();
 	static QString realPath(const QString &);
 	static QString symbolicPath(const QString &);
@@ -71,6 +72,7 @@ class QETApp : public QApplication {
 	bool every_element_reduced;
 	bool every_element_visible;
 	QSignalMapper signal_map;
+	QSettings *qet_settings;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);

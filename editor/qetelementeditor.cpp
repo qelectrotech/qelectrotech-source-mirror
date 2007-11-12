@@ -18,7 +18,16 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	setupInterface();
 	setupActions();
 	setupMenus();
-	showMaximized();
+	
+	// la fenetre est maximisee par defaut
+	setMinimumSize(QSize(500, 350));
+	setWindowState(Qt::WindowMaximized);
+	
+	// lecture des parametres
+	readSettings();
+	
+	// affichage
+	show();
 }
 
 QETElementEditor::~QETElementEditor() {
@@ -514,6 +523,7 @@ bool QETElementEditor::canClose() {
 */
 void QETElementEditor::closeEvent(QCloseEvent *qce) {
 	if (canClose()) {
+		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
 	} else qce -> ignore();
@@ -574,3 +584,24 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 	parts_list -> blockSignals(false);
 	ce_scene -> blockSignals(false);
 }
+
+/// Lit les parametres de l'editeur d'element
+void QETElementEditor::readSettings() {
+	QSettings &settings = QETApp::settings();
+	
+	// dimensions et position de la fenetre
+	QVariant geometry = settings.value("elementeditor/geometry");
+	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
+	
+	// etat de la fenetre (barres d'outils, docks...)
+	QVariant state = settings.value("elementeditor/state");
+	if (state.isValid()) restoreState(state.toByteArray());
+}
+
+/// Enregistre les parametres de l'editeur d'element
+void QETElementEditor::writeSettings() {
+	QSettings &settings = QETApp::settings();
+	settings.setValue("elementeditor/geometry", saveGeometry());
+	settings.setValue("elementeditor/state", saveState());
+}
+

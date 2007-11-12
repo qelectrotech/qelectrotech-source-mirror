@@ -72,6 +72,8 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_resetConductors();
 	void slot_editDefaultConductors();
 	void slot_addText();
+	void readSettings();
+	void writeSettings();
 	
 	// attributs
 	public:

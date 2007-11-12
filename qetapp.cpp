@@ -101,6 +101,9 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 		setStyle(new QETStyle());
 	}
 	
+	// lit le fichier de configuration
+	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
+	
 	// Creation et affichage d'un editeur de schema
 	QStringList files;
 	foreach(QString argument, arguments()) {
@@ -619,4 +622,9 @@ QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QS
 		default:
 			return(QPlastiqueStyle::standardIconImplementation(standardIcon, option, widget));
 	}
+}
+
+/// @return une reference vers les parametres de QElectroTEch
+QSettings &QETApp::settings() {
+	return(*(static_cast<QETApp *>(qApp) -> qet_settings));
 }
