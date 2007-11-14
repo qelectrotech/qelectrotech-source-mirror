@@ -16,6 +16,8 @@ class SingleLineProperties {
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
 	void toXml(QDomDocument &, QDomElement &) const;
 	void fromXml(QDomElement &);
+	void toSettings(QSettings &, const QString & = QString()) const;
+	void fromSettings(QSettings &, const QString & = QString());
 	
 	/// indique si le conducteur unifilaire doit afficher le symbole terre
 	bool hasGround;
@@ -70,6 +72,8 @@ class ConductorProperties {
 	// methodes
 	void toXml(QDomDocument &, QDomElement &) const;
 	void fromXml(QDomElement &);
+	void toSettings(QSettings &, const QString & = QString()) const;
+	void fromSettings(QSettings &, const QString & = QString());
 	static QString typeToString(ConductorType);
 	
 	// operateurs

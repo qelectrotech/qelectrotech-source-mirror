@@ -1,4 +1,5 @@
 #include "borderinset.h"
+#include "qetapp.h"
 
 /**
 	Constructeur simple : construit une bordure de 15 colonnes de 50x500 avec
@@ -6,10 +7,10 @@
 	@param parent QObject parent de ce BorderInset
 */
 BorderInset::BorderInset(QObject *parent) : QObject(parent) {
-	nb_columns            = 15;
+	nb_columns            = qMax(3, QETApp::settings().value("diagrameditor/defaultcols", 15).toInt());
 	min_nb_columns        = 3;
-	columns_width         = 50.0;
-	columns_height        = 500.0;
+	columns_width         = QETApp::settings().value("diagrameditor/defaultcolsize", 50.0).toDouble();
+	columns_height        = QETApp::settings().value("diagrameditor/defaultheight", 500.0).toDouble();
 	min_columns_height    = 80.0;
 	inset_width           = nb_columns * columns_width;
 	inset_height          = 50.0;
@@ -18,6 +19,15 @@ BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	display_columns       = true;
 	display_border        = true;
 	updateRectangles();
+	
+	bi_author   = QETApp::settings().value("diagrameditor/defaultauthor").toString();
+	bi_title    = QETApp::settings().value("diagrameditor/defaulttitle").toString();
+	bi_folio    = QETApp::settings().value("diagrameditor/defaultfolio").toString();
+	bi_filename = QETApp::settings().value("diagrameditor/defaultfilename").toString();
+	QString settings_date = QETApp::settings().value("diagrameditor/defaultdate").toString();
+	if (settings_date == "now") bi_date = QDate::currentDate();
+	else if (settings_date.isEmpty() || settings_date == "null") bi_date = QDate();
+	else bi_date = QDate::fromString(settings_date, "yyyyMMdd");
 }
 
 /**

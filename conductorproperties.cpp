@@ -199,6 +199,33 @@ void ConductorProperties::fromXml(QDomElement &e) {
 }
 
 /**
+	@param settings Parametres a ecrire
+	@param prefix prefix a ajouter devant les noms des parametres
+*/
+void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const {
+	settings.setValue(prefix + "type", typeToString(type));
+	settings.setValue(prefix + "text", text);
+	singleLineProperties.toSettings(settings, prefix);
+}
+
+/**
+	@param settings Parametres a lire
+	@param prefix prefix a ajouter devant les noms des parametres
+*/
+void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix) {
+	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
+	if (setting_type == typeToString(Single)) {
+		type = Single;
+	} else if (setting_type == typeToString(Simple)) {
+		type = Simple;
+	} else {
+		type = Multi;
+	}
+	singleLineProperties.fromSettings(settings, prefix);
+	text = settings.value(prefix + "text", "_").toString();
+}
+
+/**
 	@param t type du conducteur
 */
 QString ConductorProperties::typeToString(ConductorType t) {
@@ -252,4 +279,24 @@ int SingleLineProperties::operator==(const SingleLineProperties &other) const {
 */
 int SingleLineProperties::operator!=(const SingleLineProperties &other) const {
 	return(!(other == (*this)));
+}
+
+/**
+	@param settings Parametres a ecrire
+	@param prefix prefix a ajouter devant les noms des parametres
+*/
+void SingleLineProperties::toSettings(QSettings &settings, const QString &prefix) const {
+	settings.setValue(prefix + "hasGround",  hasGround);
+	settings.setValue(prefix + "hasNeutral", hasNeutral);
+	settings.setValue(prefix + "phases",     phases);
+}
+
+/**
+	@param settings Parametres a lire
+	@param prefix prefix a ajouter devant les noms des parametres
+*/
+void SingleLineProperties::fromSettings(QSettings &settings, const QString &prefix) {
+	hasGround  = settings.value(prefix + "hasGround",  true).toBool();
+	hasNeutral = settings.value(prefix + "hasNeutral", true).toBool();
+	phases     = settings.value(prefix + "phases",     1).toInt();
 }

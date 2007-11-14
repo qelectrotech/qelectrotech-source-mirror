@@ -33,6 +33,9 @@ Diagram::Diagram(QObject *parent) :
 	conductor_setter -> setPen(t);
 	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	connect(this, SIGNAL(selectionChanged()), this, SLOT(slot_checkSelectionEmptinessChange()));
+	
+	// lit les caracteristiques des conducteurs par defaut dans la configuration
+	defaultConductorProperties.fromSettings(QETApp::settings(), "diagrameditor/defaultconductor");
 }
 
 /**
@@ -336,6 +339,8 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		// hauteur du schema
 		double height = root.attribute("height").toDouble(&ok);
 		if (ok) border_and_inset.setColumnsHeight(height);
+		
+		border_and_inset.adjustInsetToColumns();
 		
 		// repere le permier element "defaultconductor"
 		for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
