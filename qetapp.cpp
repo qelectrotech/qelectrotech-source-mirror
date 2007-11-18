@@ -556,6 +556,9 @@ bool QETApp::event(QEvent *e) {
 	}
 }
 
+/**
+	Affiche l'aide et l'usage sur la sortie standard
+*/
 void QETApp::printHelp() {
 	QString help(
 		tr("Usage : ") + QFileInfo(applicationFilePath()).fileName() + tr(" [options] [fichier]...\n\n") +
@@ -567,14 +570,23 @@ void QETApp::printHelp() {
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 		+ tr("  --common-elements-dir=DIR     Definir le dossier de la collection d'elements\n")
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+		+ tr("  --config-dir=DIR              Definir le dossier de configuration\n")
+#endif
 	);
 	std::cout << qPrintable(help) << std::endl;
 }
 
+/**
+	Affiche la version sur la sortie standard
+*/
 void QETApp::printVersion() {
 	std::cout << qPrintable(QET::version) << std::endl;
 }
 
+/**
+	Affiche la licence sur la sortie standard
+*/
 void QETApp::printLicense() {
 	std::cout << qPrintable(QET::license()) << std::endl;
 }

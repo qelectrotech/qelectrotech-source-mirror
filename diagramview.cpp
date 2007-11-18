@@ -504,29 +504,45 @@ void DiagramView::dialogEditInfos() {
 	
 	QLineEdit *titre = new QLineEdit(inset.title, &popup);
 	QLineEdit *auteur = new QLineEdit(inset.author, &popup);
-	QDate date_diagram = QDate(inset.date);
-	if (date_diagram.isNull() || !date_diagram.isValid()) date_diagram = QDate::currentDate();
-	QDateEdit *date = new QDateEdit(date_diagram, &popup);
+	
+	QButtonGroup *date_policy_group = new QButtonGroup(this);
+	QRadioButton *inset_no_date = new QRadioButton(tr("Pas de date"));
+	QRadioButton *inset_fixed_date = new QRadioButton(tr("Date fixe : "));
+	date_policy_group -> addButton(inset_no_date);
+	date_policy_group -> addButton(inset_fixed_date);
+	
+	QDate date_diagram(inset.date);
+	inset_no_date -> setChecked(date_diagram.isNull());
+	inset_fixed_date -> setChecked(!date_diagram.isNull());
+	QDateEdit *date = new QDateEdit(date_diagram.isNull() ? QDate::currentDate() : date_diagram);
 	date -> setCalendarPopup(true);
+	date -> setEnabled(inset_fixed_date -> isChecked());
+	connect(inset_fixed_date, SIGNAL(toggled(bool)), date, SLOT(setEnabled(bool)));
+	
 	QLineEdit *fichier = new QLineEdit(inset.filename, &popup);
 	QLineEdit *folio = new QLineEdit(inset.folio, &popup);
 	QGridLayout layout_champs(inset_infos);
+	
+	QGridLayout *layout_date = new QGridLayout();
+	layout_date -> addWidget(inset_no_date,      0, 0);
+	layout_date -> addWidget(inset_fixed_date,   1, 0);
+	layout_date -> addWidget(date,               1, 1);
 	
 	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
 	layout_champs.addWidget(titre,                        0, 1);
 	layout_champs.addWidget(new QLabel(tr("Auteur : ")),  1, 0);
 	layout_champs.addWidget(auteur,                       1, 1);
 	layout_champs.addWidget(new QLabel(tr("Date : ")),    2, 0);
-	layout_champs.addWidget(date,                         2, 1);
-	layout_champs.addWidget(new QLabel(tr("Fichier : ")), 3, 0);
-	layout_champs.addWidget(fichier,                      3, 1);
-	layout_champs.addWidget(new QLabel(tr("Folio : ")),   4, 0);
-	layout_champs.addWidget(folio,                        4, 1);
+	layout_champs.addLayout(layout_date,                  3, 1);
+	layout_champs.addWidget(new QLabel(tr("Fichier : ")), 4, 0);
+	layout_champs.addWidget(fichier,                      4, 1);
+	layout_champs.addWidget(new QLabel(tr("Folio : ")),   5, 0);
+	layout_champs.addWidget(folio,                        5, 1);
 	
 	// boutons
 	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
-	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(accept()));
+	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(reject()));
 	
 	// ajout dans une disposition verticale
 	QVBoxLayout layout_v(&popup);
@@ -538,7 +554,7 @@ void DiagramView::dialogEditInfos() {
 		InsetProperties new_inset;
 		new_inset.title = titre -> text();
 		new_inset.author = auteur -> text();
-		new_inset.date = date -> date();
+		new_inset.date = inset_no_date -> isChecked() ? QDate() : date -> date();
 		new_inset.filename = fichier -> text();
 		new_inset.folio = folio -> text();
 		

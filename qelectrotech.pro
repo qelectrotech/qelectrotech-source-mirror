@@ -40,6 +40,8 @@ HEADERS += aboutqet.h \
            conductorprofile.h \
            conductorsegment.h \
            conductorsegmentprofile.h \
+           configdialog.h \
+           configpages.h \
            customelement.h \
            diagram.h \
            diagramview.h \
@@ -102,6 +104,8 @@ SOURCES += aboutqet.cpp \
            conductorprofile.cpp \
            conductorsegment.cpp \
            customelement.cpp \
+           configdialog.cpp \
+           configpages.cpp \
            diagram.cpp \
            diagramview.cpp \
            element.cpp \

@@ -5,6 +5,7 @@
 #include "elementspanelwidget.h"
 #include "aboutqet.h"
 #include "conductorpropertieswidget.h"
+#include "configdialog.h"
 
 /**
 	constructeur
@@ -315,6 +316,7 @@ void QETDiagramEditor::actions() {
 	connect(rotate_selection, SIGNAL(triggered()), this,       SLOT(slot_rotate())              );
 	connect(fullscreen_on,    SIGNAL(triggered()), this,       SLOT(toggleFullScreen())         );
 	connect(fullscreen_off,   SIGNAL(triggered()), this,       SLOT(toggleFullScreen())         );
+	connect(configure,        SIGNAL(triggered()), this,       SLOT(configureQET())             );
 	connect(mode_selection,   SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())    );
 	connect(mode_visualise,   SIGNAL(triggered()), this,       SLOT(slot_setVisualisationMode()));
 	connect(about_qet,        SIGNAL(triggered()), this,       SLOT(aboutQET())                 );
@@ -432,7 +434,7 @@ void QETDiagramEditor::menus() {
 	// menu Configuration
 	menu_config -> addMenu(display_toolbars);
 	menu_config -> addAction(fullscreen_on);
-	//menu_config -> addAction(configure);
+	menu_config -> addAction(configure);
 	
 	// menu Fenetres
 	slot_updateWindowsMenu();
@@ -963,4 +965,9 @@ void QETDiagramEditor::writeSettings() {
 	QSettings &settings = QETApp::settings();
 	settings.setValue("diagrameditor/geometry", saveGeometry());
 	settings.setValue("diagrameditor/state", saveState());
+}
+
+void QETDiagramEditor::configureQET() {
+	ConfigDialog cd;
+	cd.exec();
 }

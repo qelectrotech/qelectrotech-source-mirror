@@ -36,6 +36,7 @@ class QETDiagramEditor : public QMainWindow {
 	
 	public slots:
 	void toggleFullScreen();
+	void configureQET();
 	void aboutQET();
 	void printDialog();
 	void exportDialog();
