@@ -294,8 +294,9 @@ bool DiagramView::open(QString n_fichier, int *erreur) {
 		ouverts comme etant des fichiers separes
 	*/
 	// repere les schemas dans le fichier
+	QDomElement root = document.documentElement();
 	// cas 1 : l'element racine est un "diagram" : un seul schema, pas de probleme
-	if (document.documentElement().tagName() == "diagram") {
+	if (root.tagName() == "diagram") {
 		// construit le schema a partir du QDomDocument
 		QDomDocument &doc = document;
 		if (scene -> fromXml(doc)) {
@@ -309,11 +310,26 @@ bool DiagramView::open(QString n_fichier, int *erreur) {
 			return(false);
 		}
 	// cas 2 : l'element racine est un "project"
-	} else if (document.documentElement().tagName() == "project") {
+	} else if (root.tagName() == "project") {
+		// verifie basiquement que la version actuelle est capable de lire ce fichier
+		if (root.hasAttribute("version")) {
+			bool conv_ok;
+			qreal diagram_version = root.attribute("version").toDouble(&conv_ok);
+			if (conv_ok && QET::version.toDouble() < diagram_version) {
+				QMessageBox::warning(
+					0,
+					tr("Avertissement"),
+					tr("Ce document semble avoir \351t\351 enregistr\351 avec une "
+					"version ult\351rieure de QElectroTech. Il est possible que "
+					"l'ouverture de tout ou partie de ce document \351choue.")
+				);
+			}
+		}
+		
 		// compte le nombre de schemas dans le projet
 		QList<QDomElement> diagrams;
 		
-		QDomNodeList diagram_nodes = document.documentElement().elementsByTagName("diagram");
+		QDomNodeList diagram_nodes = root.elementsByTagName("diagram");
 		for (uint i = 0 ; i < diagram_nodes.length() ; ++ i) {
 			if (diagram_nodes.at(i).isElement()) {
 				diagrams << diagram_nodes.at(i).toElement();

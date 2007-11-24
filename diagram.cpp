@@ -303,21 +303,6 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	// le premier element doit etre un schema
 	if (root.tagName() != "diagram") return(false);
 	
-	// verifie basiquement que la version actuelle est capable de lire ce fichier
-	if (root.hasAttribute("version")) {
-		bool conv_ok;
-		qreal diagram_version = root.attribute("version").toDouble(&conv_ok);
-		if (conv_ok && QET::version.toDouble() < diagram_version) {
-			QMessageBox::warning(
-				0,
-				tr("Avertissement"),
-				tr("Ce document semble avoir \351t\351 enregistr\351 avec une "
-				"version ult\351rieure de QElectroTech. Il est possible que "
-				"l'ouverture de tout ou partie de ce document \351choue.")
-			);
-		}
-	}
-	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
 		border_and_inset.setAuthor(root.attribute("author"));
