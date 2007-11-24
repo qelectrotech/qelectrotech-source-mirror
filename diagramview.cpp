@@ -284,14 +284,78 @@ bool DiagramView::open(QString n_fichier, int *erreur) {
 	}
 	fichier.close();
 	
-	// construit le schema a partir du QDomDocument
-	QDomDocument &doc = document;
-	if (scene -> fromXml(doc)) {
-		if (erreur != NULL) *erreur = 0;
-		file_name = n_fichier;
-		scene -> undoStack().setClean();
-		updateWindowTitle();
-		return(true);
+	/**
+		La notion de projet (ensemble de documents [schemas, nomenclatures,
+		...] et d'elements) n'est pas encore geree.
+		Toutefois, pour gerer au mieux la transition de la 0.1 a la 0.2,
+		les schemas enregistres (element XML "diagram") sont integres dans un
+		pseudo projet (element XML "project").
+		S'il y a plusieurs schemas dans un projet, tous les schemas seront
+		ouverts comme etant des fichiers separes
+	*/
+	// repere les schemas dans le fichier
+	// cas 1 : l'element racine est un "diagram" : un seul schema, pas de probleme
+	if (document.documentElement().tagName() == "diagram") {
+		// construit le schema a partir du QDomDocument
+		QDomDocument &doc = document;
+		if (scene -> fromXml(doc)) {
+			if (erreur != NULL) *erreur = 0;
+			file_name = n_fichier;
+			scene -> undoStack().setClean();
+			updateWindowTitle();
+			return(true);
+		} else {
+			if (erreur != NULL) *erreur = 4;
+			return(false);
+		}
+	// cas 2 : l'element racine est un "project"
+	} else if (document.documentElement().tagName() == "project") {
+		// compte le nombre de schemas dans le projet
+		QList<QDomElement> diagrams;
+		
+		QDomNodeList diagram_nodes = document.documentElement().elementsByTagName("diagram");
+		for (uint i = 0 ; i < diagram_nodes.length() ; ++ i) {
+			if (diagram_nodes.at(i).isElement()) {
+				diagrams << diagram_nodes.at(i).toElement();
+			}
+		}
+		
+		// il n'y aucun schema la-dedans
+		if (!diagrams.count()) {
+			if (erreur != NULL) *erreur = 4;
+			return(false);
+		} else {
+			
+			bool keep_doc_name = diagrams.count() == 1;
+			bool current_dv_loaded = false;
+			for (int i = 0 ; i < diagrams.count() ; ++ i) {
+				// cree un QDomDocument representant le schema
+				QDomDocument diagram_doc;
+				diagram_doc.appendChild(diagram_doc.importNode(diagrams[i], true));
+				
+				// charge le premier schema valide et cree de nouveau DiagramView pour les suivants
+				if (!current_dv_loaded) {
+					if (scene -> fromXml(diagram_doc)) {
+						if (keep_doc_name) file_name = n_fichier;
+						scene -> undoStack().setClean();
+						updateWindowTitle();
+						current_dv_loaded = true;
+					}
+				} else {
+					DiagramView *new_dv = new DiagramView(parentWidget());
+					if (new_dv -> scene -> fromXml(diagram_doc)) {
+						if (keep_doc_name) new_dv -> file_name = n_fichier;
+						new_dv -> scene -> undoStack().setClean();
+						new_dv -> updateWindowTitle();
+						diagramEditor() -> addDiagramView(new_dv);
+					} else {
+						delete(new_dv);
+					}
+				}
+			}
+			return(true);
+		}
+		
 	} else {
 		if (erreur != NULL) *erreur = 4;
 		return(false);
@@ -409,7 +473,15 @@ bool DiagramView::saveDiagramToFile(QString &n_fichier) {
 	}
 	QTextStream out(&fichier);
 	out.setCodec("UTF-8");
-	out << scene -> toXml().toString(4);
+	
+	// l'export XML du schema est encapsule dans un pseudo-projet
+	QDomDocument final_document;
+	QDomElement project_root = final_document.createElement("project");
+	project_root.setAttribute("version", QET::version);
+	project_root.appendChild(final_document.importNode(scene -> toXml().documentElement(), true));
+	final_document.appendChild(project_root);
+	
+	out << final_document.toString(4);
 	fichier.close();
 	scene -> undoStack().setClean();
 	return(true);
