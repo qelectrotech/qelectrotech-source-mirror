@@ -64,6 +64,7 @@ class DiagramView : public QGraphicsView {
 	void addText();
 	
 	protected:
+	virtual void mouseDoubleClickEvent(QMouseEvent *);
 	virtual void contextMenuEvent(QContextMenuEvent *);
 	virtual void wheelEvent(QWheelEvent *);
 	virtual bool event(QEvent *);

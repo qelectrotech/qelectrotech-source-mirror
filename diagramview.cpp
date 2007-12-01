@@ -901,3 +901,37 @@ QETDiagramEditor *DiagramView::diagramEditor() const {
 	// la fenetre est supposee etre un QETDiagramEditor
 	return(qobject_cast<QETDiagramEditor *>(w));
 }
+
+/**
+	Gere les double-clics sur le schema
+*/
+void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
+	BorderInset &bi = scene -> border_and_inset;
+	
+	// recupere le rectangle corespondant au cartouche
+	QRectF inset_rect(
+		Diagram::margin,
+		Diagram::margin + /*bi.columnsHeaderHeight() + */bi.columnsHeight(),
+		bi.insetWidth(),
+		bi.insetHeight()
+	);
+	
+	// recupere le rectangle correspondant aux en-tetes des colonnes
+	QRectF columns_rect(
+		Diagram::margin,
+		Diagram::margin,
+		bi.borderWidth(),
+		bi.columnsHeaderHeight()
+	);
+	
+	// coordonnees du clic par rapport au schema
+	QPointF click_pos = viewportTransform().inverted().map(e -> pos());
+	
+	// detecte le double-clic sur le cartouche ou les colonnes
+	if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos)) {
+		// edite les proprietes du schema
+		dialogEditInfos();
+	} else {
+		QGraphicsView::mouseDoubleClickEvent(e);
+	}
+}
