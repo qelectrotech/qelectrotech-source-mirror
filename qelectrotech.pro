@@ -38,13 +38,18 @@ HEADERS += aboutqet.h \
            borderinset.h \
            conductor.h \
            conductorprofile.h \
+           conductorproperties.h \
+           conductorpropertieswidget.h \
            conductorsegment.h \
            conductorsegmentprofile.h \
            configdialog.h \
            configpages.h \
            customelement.h \
            diagram.h \
+           diagramcommands.h \
+           diagramcontent.h \
            diagramview.h \
+           diagramtextitem.h \
            element.h \
            elementdeleter.h \
            elementscategorieslist.h \
@@ -58,6 +63,8 @@ HEADERS += aboutqet.h \
            exportdialog.h \
            fixedelement.h \
            hotspoteditor.h \
+           insetproperties.h \
+           insetpropertieswidget.h \
            nameslist.h \
            nameslistwidget.h \
            newelementwizard.h \
@@ -91,22 +98,21 @@ HEADERS += aboutqet.h \
            editor/styleeditor.h \
            editor/terminaleditor.h \
            editor/texteditor.h \
-           editor/textfieldeditor.h \
-           diagramcommands.h \
-           diagramtextitem.h \
-           insetproperties.h \
-           conductorpropertieswidget.h \
-           diagramcontent.h \
-           conductorproperties.h
+           editor/textfieldeditor.h
 SOURCES += aboutqet.cpp \
            borderinset.cpp \
            conductor.cpp \
            conductorprofile.cpp \
+           conductorproperties.cpp \
+           conductorpropertieswidget.cpp \
            conductorsegment.cpp \
            customelement.cpp \
            configdialog.cpp \
            configpages.cpp \
            diagram.cpp \
+           diagramcommands.cpp \
+           diagramcontent.cpp \
+           diagramtextitem.cpp \
            diagramview.cpp \
            element.cpp \
            elementdeleter.cpp \
@@ -121,6 +127,8 @@ SOURCES += aboutqet.cpp \
            exportdialog.cpp \
            fixedelement.cpp \
            hotspoteditor.cpp \
+           insetproperties.cpp \
+           insetpropertieswidget.cpp \
            main.cpp \
            nameslist.cpp \
            nameslistwidget.cpp \
@@ -155,12 +163,7 @@ SOURCES += aboutqet.cpp \
            editor/styleeditor.cpp \
            editor/terminaleditor.cpp \
            editor/texteditor.cpp \
-           editor/textfieldeditor.cpp \
-           diagramcommands.cpp \
-           diagramtextitem.cpp \
-           conductorpropertieswidget.cpp \
-           diagramcontent.cpp \
-           conductorproperties.cpp
+           editor/textfieldeditor.cpp
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc

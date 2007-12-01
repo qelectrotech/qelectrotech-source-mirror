@@ -967,7 +967,39 @@ void QETDiagramEditor::writeSettings() {
 	settings.setValue("diagrameditor/state", saveState());
 }
 
+/**
+	Permet a l'utilisateur de configurer QET en lancant un dialogue approprie.
+	@see ConfigDialog
+*/
 void QETDiagramEditor::configureQET() {
 	ConfigDialog cd;
 	cd.exec();
+}
+
+/**
+	@return Les proprietes par defaut pour le cartouche d'un schema
+*/
+InsetProperties QETDiagramEditor::defaultInsetProperties() {
+	// accede a la configuration de l'application
+	QSettings &settings = QETApp::settings();
+	
+	InsetProperties def;
+	def.title    = settings.value("diagrameditor/defaulttitle").toString();
+	def.author   = settings.value("diagrameditor/defaultauthor").toString();
+	def.filename = settings.value("diagrameditor/defaultfilename").toString();
+	def.folio    = settings.value("diagrameditor/defaultfolio").toString();
+	
+	QString settings_date = settings.value("diagrameditor/defaultdate").toString();
+	if (settings_date == "now") {
+		def.date = QDate::currentDate();
+		def.useDate = InsetProperties::CurrentDate;
+	} else if (settings_date.isEmpty() || settings_date == "null") {
+		def.date = QDate();
+		def.useDate = InsetProperties::UseDateValue;
+	} else {
+		def.date = QDate::fromString(settings_date, "yyyyMMdd");
+		def.useDate = InsetProperties::UseDateValue;
+	}
+	
+	return(def);
 }

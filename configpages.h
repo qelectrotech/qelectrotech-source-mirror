@@ -2,6 +2,7 @@
 #define CONFIG_PAGES_H
 #include <QtGui>
 #include "conductorpropertieswidget.h"
+#include "insetpropertieswidget.h"
 
 /**
 	Cette classe abstraite contient les methodes que toutes les pages de
@@ -40,14 +41,7 @@ class NewDiagramPage : public ConfigPage {
 	QSpinBox *columns_count;
 	QSpinBox *columns_width;
 	QSpinBox *columns_height;
-	QLineEdit *inset_title;
-	QLineEdit *inset_author;
-	QDateEdit *inset_date;
-	QLineEdit *inset_filename;
-	QLineEdit *inset_folio;
-	QRadioButton *inset_no_date;
-	QRadioButton *inset_current_date;
-	QRadioButton *inset_fixed_date;
+	InsetPropertiesWidget *ipw;
 	ConductorPropertiesWidget *cpw;
 };
 #endif

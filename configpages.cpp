@@ -57,56 +57,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	diagram_size_box_layout -> addWidget(ds2,            1, 0);
 	diagram_size_box_layout -> addWidget(columns_height, 1, 1);
 	
-	QGroupBox *inset_infos = new QGroupBox(tr("Informations du cartouche"), this);
-	inset_infos -> setMinimumWidth(300);
-	
-	inset_title = new QLineEdit(settings.value("diagrameditor/defaulttitle").toString(), this);
-	inset_author = new QLineEdit(settings.value("diagrameditor/defaultauthor").toString(), this);
-	
-	QButtonGroup *date_policy_group = new QButtonGroup(this);
-	inset_no_date = new QRadioButton(tr("Pas de date"), this);
-	inset_current_date = new QRadioButton(tr("Date courante"), this);
-	inset_fixed_date = new QRadioButton(tr("Date fixe : "), this);
-	date_policy_group -> addButton(inset_no_date);
-	date_policy_group -> addButton(inset_current_date);
-	date_policy_group -> addButton(inset_fixed_date);
-	QString settings_date = settings.value("diagrameditor/defaultdate").toString();
-	QDate date_diagram;
-	if (settings_date == "now") {
-		date_diagram = QDate::currentDate();
-		inset_current_date -> setChecked(true);
-	} else if (settings_date.isEmpty() || settings_date == "null") {
-		date_diagram = QDate();
-		inset_no_date -> setChecked(true);
-	} else {
-		date_diagram = QDate::fromString(settings_date, "yyyyMMdd");
-		inset_fixed_date -> setChecked(true);
-	}
-	inset_date = new QDateEdit(date_diagram, this);
-	inset_date -> setEnabled(inset_fixed_date -> isChecked());
-	connect(inset_fixed_date, SIGNAL(toggled(bool)), inset_date, SLOT(setEnabled(bool)));
-	inset_date -> setCalendarPopup(true);
-	
-	QGridLayout *layout_date = new QGridLayout();
-	layout_date -> addWidget(inset_no_date,      0, 0);
-	layout_date -> addWidget(inset_current_date, 1, 0);
-	layout_date -> addWidget(inset_fixed_date,   2, 0);
-	layout_date -> addWidget(inset_date,         2, 1);
-	
-	inset_filename = new QLineEdit(settings.value("diagrameditor/defaultfilename").toString(), this);
-	inset_folio = new QLineEdit(settings.value("diagrameditor/defaultfolio").toString(), this);
-	QGridLayout *layout_champs = new QGridLayout(inset_infos);
-	
-	layout_champs -> addWidget(new QLabel(tr("Titre : ")),   0, 0);
-	layout_champs -> addWidget(inset_title,                  0, 1);
-	layout_champs -> addWidget(new QLabel(tr("Auteur : ")),  1, 0);
-	layout_champs -> addWidget(inset_author,                 1, 1);
-	layout_champs -> addWidget(new QLabel(tr("Date : ")),    2, 0);
-	layout_champs -> addLayout(layout_date,                  3, 1);
-	layout_champs -> addWidget(new QLabel(tr("Fichier : ")), 4, 0);
-	layout_champs -> addWidget(inset_filename,               4, 1);
-	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   5, 0);
-	layout_champs -> addWidget(inset_folio,                  5, 1);
+	ipw = new InsetPropertiesWidget(QETDiagramEditor::defaultInsetProperties(), true, this);
 	
 	// proprietes par defaut des conducteurs
 	ConductorProperties cp;
@@ -114,7 +65,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	cpw = new ConductorPropertiesWidget(cp);
 	
 	vlayout2 -> addWidget(diagram_size_box);
-	vlayout2 -> addWidget(inset_infos);
+	vlayout2 -> addWidget(ipw);
 	hlayout1 -> addLayout(vlayout2);
 	hlayout1 -> addWidget(cpw);
 	vlayout1 -> addLayout(hlayout1);
@@ -139,14 +90,18 @@ void NewDiagramPage::applyConf() {
 	settings.setValue("diagrameditor/defaultheight",  columns_height -> value());
 	
 	// proprietes du cartouche
-	settings.setValue("diagrameditor/defaulttitle",    inset_title -> text());
-	settings.setValue("diagrameditor/defaultauthor",   inset_author -> text());
-	settings.setValue("diagrameditor/defaultfilename", inset_filename -> text());
-	settings.setValue("diagrameditor/defaultfolio",    inset_folio -> text());
+	InsetProperties inset = ipw-> insetProperties();
+	settings.setValue("diagrameditor/defaulttitle",    inset.title);
+	settings.setValue("diagrameditor/defaultauthor",   inset.author);
+	settings.setValue("diagrameditor/defaultfilename", inset.filename);
+	settings.setValue("diagrameditor/defaultfolio",    inset.folio);
 	QString date_setting_value;
-	if (inset_no_date -> isChecked()) date_setting_value = "null";
-	else if (inset_current_date -> isChecked()) date_setting_value = "now";
-	else date_setting_value = inset_date -> date().toString("yyyyMMdd");
+	if (inset.useDate == InsetProperties::UseDateValue) {
+		if (inset.date.isNull()) date_setting_value = "null";
+		else date_setting_value = inset.date.toString("yyyyMMdd");
+	} else {
+		date_setting_value = "now";
+	}
 	settings.setValue("diagrameditor/defaultdate", date_setting_value);
 	
 	// proprietes par defaut des conducteurs

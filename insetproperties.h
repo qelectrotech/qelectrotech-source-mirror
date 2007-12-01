@@ -8,37 +8,23 @@
 */
 class InsetProperties {
 	public:
-	/// Constructeur
-	InsetProperties() {
-	}
-	/// Destructeur
-	virtual ~InsetProperties() {
-	}
-	/**
-		@param ip autre conteneur InsetProperties
-		@return true si ip et ce conteneur sont identiques, false sinon
-	*/
-	bool operator==(const InsetProperties &ip) {
-		return(
-			ip.title == title &&\
-			ip.author == author &&\
-			ip.date == date &&\
-			ip.filename == filename &&\
-			ip.folio == folio
-		);
-	}
-	/**
-		@param ip autre conteneur InsetProperties
-		@return false si ip et ce conteneur sont identiques, true sinon
-	*/
-	bool operator!=(const InsetProperties &ip) {
-		return(!(*this == ip));
-	}
+	InsetProperties();
+	virtual ~InsetProperties();
+	enum DateManagement {
+		UseDateValue, ///< utilise l'attribut date
+		CurrentDate   ///< utilise la date courante
+	};
+	
+	bool operator==(const InsetProperties &);
+	bool operator!=(const InsetProperties &);
+	QDate finalDate() const ;
+	
 	// attributs
-	QString title;
-	QString author;
-	QDate date;
-	QString filename;
-	QString folio;
+	QString title;            ///< Titre affiche par le cartouche
+	QString author;           ///< Auteur affiche par le cartouche
+	QDate date;               ///< Date affichee par le cartouche ; si la date est nulle, le champ reste vide
+	QString filename;         ///< Nom de fichier affiche par le cartouche
+	QString folio;            ///< Folio affiche par le cartouche
+	DateManagement useDate;   ///< Indique s'il faut utiliser ou non l'attribut date
 };
 #endif

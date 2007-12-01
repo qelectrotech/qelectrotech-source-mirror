@@ -5,6 +5,7 @@
 #include "conductor.h"
 #include "diagramcommands.h"
 #include "conductorpropertieswidget.h"
+#include "insetpropertieswidget.h"
 
 /**
 	Constructeur
@@ -588,44 +589,7 @@ void DiagramView::dialogEditInfos() {
 	diagram_size_box_layout.addWidget(ds2,            1, 0);
 	diagram_size_box_layout.addWidget(columns_height, 1, 1);
 	
-	QGroupBox *inset_infos = new QGroupBox(tr("Informations du cartouche"), &popup);
-	
-	QLineEdit *titre = new QLineEdit(inset.title, &popup);
-	QLineEdit *auteur = new QLineEdit(inset.author, &popup);
-	
-	QButtonGroup *date_policy_group = new QButtonGroup(this);
-	QRadioButton *inset_no_date = new QRadioButton(tr("Pas de date"));
-	QRadioButton *inset_fixed_date = new QRadioButton(tr("Date fixe : "));
-	date_policy_group -> addButton(inset_no_date);
-	date_policy_group -> addButton(inset_fixed_date);
-	
-	QDate date_diagram(inset.date);
-	inset_no_date -> setChecked(date_diagram.isNull());
-	inset_fixed_date -> setChecked(!date_diagram.isNull());
-	QDateEdit *date = new QDateEdit(date_diagram.isNull() ? QDate::currentDate() : date_diagram);
-	date -> setCalendarPopup(true);
-	date -> setEnabled(inset_fixed_date -> isChecked());
-	connect(inset_fixed_date, SIGNAL(toggled(bool)), date, SLOT(setEnabled(bool)));
-	
-	QLineEdit *fichier = new QLineEdit(inset.filename, &popup);
-	QLineEdit *folio = new QLineEdit(inset.folio, &popup);
-	QGridLayout layout_champs(inset_infos);
-	
-	QGridLayout *layout_date = new QGridLayout();
-	layout_date -> addWidget(inset_no_date,      0, 0);
-	layout_date -> addWidget(inset_fixed_date,   1, 0);
-	layout_date -> addWidget(date,               1, 1);
-	
-	layout_champs.addWidget(new QLabel(tr("Titre : ")),   0, 0);
-	layout_champs.addWidget(titre,                        0, 1);
-	layout_champs.addWidget(new QLabel(tr("Auteur : ")),  1, 0);
-	layout_champs.addWidget(auteur,                       1, 1);
-	layout_champs.addWidget(new QLabel(tr("Date : ")),    2, 0);
-	layout_champs.addLayout(layout_date,                  3, 1);
-	layout_champs.addWidget(new QLabel(tr("Fichier : ")), 4, 0);
-	layout_champs.addWidget(fichier,                      4, 1);
-	layout_champs.addWidget(new QLabel(tr("Folio : ")),   5, 0);
-	layout_champs.addWidget(folio,                        5, 1);
+	InsetPropertiesWidget *inset_infos = new InsetPropertiesWidget(inset, false, &popup);
 	
 	// boutons
 	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -639,19 +603,14 @@ void DiagramView::dialogEditInfos() {
 	layout_v.addWidget(&boutons);
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted) {
-		InsetProperties new_inset;
-		new_inset.title = titre -> text();
-		new_inset.author = auteur -> text();
-		new_inset.date = inset_no_date -> isChecked() ? QDate() : date -> date();
-		new_inset.filename = fichier -> text();
-		new_inset.folio = folio -> text();
+		InsetProperties new_inset = inset_infos -> insetProperties();
 		
 		// s'il y a des modifications au cartouche
 		if (new_inset != inset) {
 			scene -> undoStack().push(new ChangeInsetCommand(scene, inset, new_inset));
 		}
 		
-		// s'il y a des modifications
+		// s'il y a des modifications aux dimensions du schema
 		if (
 			columns_count_value  != columns_count  -> value() ||\
 			columns_width_value  != columns_width  -> value() ||\

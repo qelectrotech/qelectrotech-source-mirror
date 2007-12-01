@@ -1,6 +1,7 @@
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
+#include "insetproperties.h"
 class DiagramView;
 class ElementsPanelWidget;
 /**
@@ -25,6 +26,7 @@ class QETDiagramEditor : public QMainWindow {
 	public:
 	void closeEvent(QCloseEvent *);
 	void addDiagramView(DiagramView *);
+	static InsetProperties defaultInsetProperties();
 	
 	protected:
 	void actions();
