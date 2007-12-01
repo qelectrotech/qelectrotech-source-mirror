@@ -452,4 +452,3 @@ void ExportDialog::slot_refreshPreview() {
 	preview_scene -> addItem(qgpi);
 	preview_scene -> setSceneRect(QRectF(0.0, 0.0, preview_image.width(), preview_image.height()));
 }
-

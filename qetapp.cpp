@@ -263,7 +263,14 @@ QString QETApp::configDir() {
 	if (config_dir != QString()) return(config_dir);
 #endif
 #ifdef Q_OS_WIN32
-	return(QDir::homePath() + "/Application Data/qet/");
+	// recupere l'emplacement du dossier Application Data
+	char *app_data_env = getenv("APPDATA");
+	QString app_data_str(app_data_env);
+	delete app_data_env;
+	if (app_data_str.isEmpty()) {
+		app_data_str = QDir::homePath() + "/Application Data";
+	}
+	return(app_data_str + "/qet/");
 #else
 	return(QDir::homePath() + "/.qet/");
 #endif

@@ -621,4 +621,3 @@ void QETElementEditor::writeSettings() {
 	settings.setValue("elementeditor/geometry", saveGeometry());
 	settings.setValue("elementeditor/state", saveState());
 }
-
