@@ -610,7 +610,11 @@ QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
 	QMultiMap<qreal, QGraphicsItem *> mm;
 	foreach(QGraphicsItem *qgi, all_items_list) mm.insert(qgi -> zValue(), qgi);
 	all_items_list.clear();
-	foreach(qreal z, mm.keys()) all_items_list += mm.values(z);
+	QMapIterator<qreal, QGraphicsItem *> i(mm);
+	while (i.hasNext()) {
+		i.next();
+		all_items_list << i.value();
+	}
 	
 	// rajoute eventuellement les bornes
 	if (include_terminals) all_items_list += terminals;
