@@ -756,6 +756,16 @@ void DiagramView::editConductor() {
 	if (selected_conductors.count() != 1) return;
 	Conductor *edited_conductor = selected_conductors.first();
 	
+	editConductor(edited_conductor);
+}
+
+/**
+	Edite le conducteur passe en parametre
+	@param edited_conductor Conducteur a editer
+*/
+void DiagramView::editConductor(Conductor *edited_conductor) {
+	if (!edited_conductor) return;
+	
 	// initialise l'editeur de proprietes pour le conducteur
 	ConductorProperties old_properties = edited_conductor -> properties();
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(old_properties);
@@ -911,7 +921,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	// recupere le rectangle corespondant au cartouche
 	QRectF inset_rect(
 		Diagram::margin,
-		Diagram::margin + /*bi.columnsHeaderHeight() + */bi.columnsHeight(),
+		Diagram::margin + bi.columnsHeight(),
 		bi.insetWidth(),
 		bi.insetHeight()
 	);
@@ -931,6 +941,10 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos)) {
 		// edite les proprietes du schema
 		dialogEditInfos();
+	} else if (QGraphicsItem *qgi = itemAt(e -> pos())) {
+		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+			editConductor(c);
+		}
 	} else {
 		QGraphicsView::mouseDoubleClickEvent(e);
 	}

@@ -20,6 +20,7 @@
 #include <QtGui>
 class Diagram;
 class QETDiagramEditor;
+class Conductor;
 /**
 	Classe representant graphiquement un schema electrique
 */
@@ -105,6 +106,7 @@ class DiagramView : public QGraphicsView {
 	void adjustSceneRect();
 	void updateWindowTitle();
 	void editConductor();
+	void editConductor(Conductor *);
 	void resetConductors();
 	void editDefaultConductorProperties();
 	
