@@ -18,6 +18,12 @@
 #include "lineeditor.h"
 #include "partline.h"
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param line La ligne a editer
+	@param parent le Widget parent
+*/
 LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = line;
@@ -40,9 +46,13 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	updateForm();
 }
 
+/// Destructeur
 LineEditor::~LineEditor() {
 }
 
+/**
+	Met a jour la ligne a partir des donnees du formulaire
+*/
 void LineEditor::updateLine() {
 	part -> setLine(
 		QLineF(
@@ -58,11 +68,18 @@ void LineEditor::updateLine() {
 	);
 }
 
+/// Met a jour l'abscisse du premier point de la ligne et cree un objet d'annulation
 void LineEditor::updateLineX1() { addChangePartCommand(tr("abscisse point 1"),    part, "x1", x1 -> text().toDouble()); }
+/// Met a jour l'ordonnee du premier point de la ligne et cree un objet d'annulation
 void LineEditor::updateLineY1() { addChangePartCommand(tr("ordonn\351e point 1"), part, "y1", y1 -> text().toDouble()); }
+/// Met a jour l'abscisse du second point de la ligne et cree un objet d'annulation
 void LineEditor::updateLineX2() { addChangePartCommand(tr("abscisse point 2"),    part, "x2", x2 -> text().toDouble()); }
+/// Met a jour l'ordonnee du second point de la ligne et cree un objet d'annulation
 void LineEditor::updateLineY2() { addChangePartCommand(tr("ordonn\351e point 2"), part, "y2", y2 -> text().toDouble()); }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void LineEditor::updateForm() {
 	activeConnections(false);
 	QPointF p1(part -> sceneP1());
@@ -74,6 +91,10 @@ void LineEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void LineEditor::activeConnections(bool active) {
 	if (active) {
 		connect(x1, SIGNAL(editingFinished()), this, SLOT(updateLineX1()));

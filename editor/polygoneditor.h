@@ -30,7 +30,7 @@ class PolygonEditor : public ElementItemEditor {
 	// constructeurs, destructeur
 	public:
 	PolygonEditor(QETElementEditor *, PartPolygon *, QWidget * = 0);
-	virtual ~PolygonEditor() {}
+	virtual ~PolygonEditor();
 	
 	private:
 	PolygonEditor(const PolygonEditor &);

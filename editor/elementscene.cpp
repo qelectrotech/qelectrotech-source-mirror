@@ -32,6 +32,11 @@
 const int ElementScene::xGrid = 10;
 const int ElementScene::yGrid = 10;
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param parent le Widget parent
+*/
 ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	QGraphicsScene(parent),
 	_width(3),
@@ -45,45 +50,79 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChanged()));
 }
 
+/// Destructeur
 ElementScene::~ElementScene() {
 }
 
+/**
+	Passe la scene en mode "selection et deplacement de parties"
+*/
 void ElementScene::slot_move() {
 	behavior = Normal;
 }
 
+/**
+	Passe la scene en mode "ajout de ligne"
+*/
 void ElementScene::slot_addLine() {
 	behavior = Line;
 }
 
+/**
+	Passe la scene en mode "ajout de cercle"
+*/
 void ElementScene::slot_addCircle() {
 	behavior = Circle;
 }
 
+/**
+	Passe la scene en mode "ajout d'ellipse"
+*/
 void ElementScene::slot_addEllipse() {
 	behavior = Ellipse;
 }
 
+/**
+	Passe la scene en mode "ajout de polygone"
+*/
 void ElementScene::slot_addPolygon() {
 	behavior = Polygon;
 }
 
+
+/**
+	Passe la scene en mode "ajout de texte statique"
+*/
 void ElementScene::slot_addText() {
 	behavior = Text;
 }
 
+/**
+	Passe la scene en mode "ajout de borne"
+*/
 void ElementScene::slot_addTerminal() {
 	behavior = Terminal;
 }
 
+
+/**
+	Passe la scene en mode "ajout d'arc de cercle"
+*/
 void ElementScene::slot_addArc() {
 	behavior = Arc;
 }
 
+/**
+	Passe la scene en mode "ajout de champ de texte"
+*/
 void ElementScene::slot_addTextField() {
 	behavior = TextField;
 }
 
+/**
+	Gere les mouvements de la souris
+	@param e objet decrivant l'evenement
+*/
 void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	QRectF temp_rect;
@@ -134,6 +173,10 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	} else QGraphicsScene::mouseMoveEvent(e);
 }
 
+/**
+	Gere les appuis sur les boutons de la souris
+	@param e objet decrivant l'evenement
+*/
 void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if (behavior != Polygon && current_polygon != NULL) current_polygon = NULL;
 	QPolygonF temp_polygon;
@@ -176,6 +219,10 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	} else QGraphicsScene::mousePressEvent(e);
 }
 
+/**
+	Gere les relachements de boutons de la souris
+	@param e objet decrivant l'evenement
+*/
 void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	PartTerminal *terminal;
 	PartText *text;
@@ -307,6 +354,10 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &) {
 	p -> restore();
 }
 
+/**
+	Exporte l'element en XML
+	@return un document XML decrivant l'element
+*/
 const QDomDocument ElementScene::toXml() const {
 	// document XML
 	QDomDocument xml_document;
@@ -337,6 +388,10 @@ const QDomDocument ElementScene::toXml() const {
 	return(xml_document);
 }
 
+/**
+	Lit un element depuis un document XML
+	@param xml_document un document XML decrivant l'element
+*/
 void ElementScene::fromXml(const QDomDocument &xml_document) {
 	
 	QString error_message;
@@ -411,18 +466,31 @@ void ElementScene::fromXml(const QDomDocument &xml_document) {
 	}
 }
 
+/**
+	@return un rectangle englobant toutes les parties ainsi que le
+	"bounding rect" de l'element
+*/
 QRectF ElementScene::sceneContent() const {
 	return(itemsBoundingRect().unite(QRectF(-_hotspot, QSizeF(width(), height()))));
 }
 
+/**
+	@return la pile d'annulations de cet editeur d'element
+*/
 QUndoStack &ElementScene::undoStack() {
 	return(undo_stack);
 }
 
+/**
+	@return le gestionnaire de QGraphicsItem de cet editeur d'element
+*/
 QGIManager &ElementScene::qgiManager() {
 	return(qgi_manager);
 }
 
+/**
+	Detecte les changements de selection
+*/
 void ElementScene::slot_checkSelectionChanged() {
 	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
 	QList<QGraphicsItem *> selecteditems = selectedItems();
@@ -430,18 +498,30 @@ void ElementScene::slot_checkSelectionChanged() {
 	cache_selecteditems = selecteditems;
 }
 
+/**
+	Selectionne tout
+*/
 void ElementScene::slot_selectAll() {
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
 }
 
+/**
+	Deselectionne tout
+*/
 void ElementScene::slot_deselectAll() {
 	clearSelection();
 }
 
+/**
+	Inverse la selection
+*/
 void ElementScene::slot_invertSelection() {
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(!qgi -> isSelected());
 }
 
+/**
+	Supprime les elements selectionnes
+*/
 void ElementScene::slot_delete() {
 	// verifie qu'il y a qqc de selectionne
 	QList<QGraphicsItem *> selected_items = selectedItems();
@@ -452,6 +532,10 @@ void ElementScene::slot_delete() {
 	emit(partsRemoved());
 }
 
+/**
+	Lance un dialogue pour editer les dimensions et le point de saisie
+	(hotspot) de l'element.
+*/
 void ElementScene::slot_editSizeHotSpot() {
 	// cree un dialogue
 	QDialog dialog_sh;
@@ -488,6 +572,9 @@ void ElementScene::slot_editSizeHotSpot() {
 	}
 }
 
+/**
+	Lance un dialogue pour editer les noms de cete element
+*/
 void ElementScene::slot_editOrientations() {
 	
 	// cree un dialogue
@@ -523,6 +610,9 @@ void ElementScene::slot_editOrientations() {
 	}
 }
 
+/**
+	Lance un dialogue pour editer les noms de cet element
+*/
 void ElementScene::slot_editNames() {
 	
 	// cree un dialogue

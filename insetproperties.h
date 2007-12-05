@@ -27,6 +27,7 @@ class InsetProperties {
 	public:
 	InsetProperties();
 	virtual ~InsetProperties();
+	/// Specifie comment gerer la date
 	enum DateManagement {
 		UseDateValue, ///< utilise l'attribut date
 		CurrentDate   ///< utilise la date courante

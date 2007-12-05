@@ -51,6 +51,12 @@ void ElementView::setScene(ElementScene *s) {
 	scene_ = s;
 }
 
+/**
+	Gere les evenements envoyes a la vue.
+	Methode reimplentee pour gerer le conflit de raccourcis avec Suppr
+	(supprimer une partie ou supprimer le caractere suivant)
+	@param e evenement a gerer
+*/
 bool ElementView::event(QEvent *e) {
 	if (e -> type() == QEvent::ShortcutOverride && scene_ -> focusItem()) {
 		e -> accept();

@@ -21,7 +21,7 @@
 /**
 	Constructeur
 	@param editor L'editeur d'element concerne
-	@param textfield Champ de texte a editer
+	@param textfield Le champ de texte a editer
 	@param parent QWidget parent
 */
 TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfield, QWidget *parent) : ElementItemEditor(editor, parent) {
@@ -64,9 +64,7 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	updateForm();
 }
 
-/**
-	Destructeur
-*/
+/// Destructeur
 TextFieldEditor::~TextFieldEditor() {
 }
 
@@ -80,14 +78,19 @@ void TextFieldEditor::updateTextField() {
 	part -> setFollowParentRotations(!rotate -> isChecked());
 }
 
+/// Met a jour l'abscisse de la position du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldX() { addChangePartCommand(tr("abscisse"),        part, "x",      qle_x -> text().toDouble()); updateForm(); }
+/// Met a jour l'ordonnee de la position du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldY() { addChangePartCommand(tr("ordonn\351e"),     part, "y",      qle_y -> text().toDouble()); updateForm(); }
+/// Met a jour le texte du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldT() { addChangePartCommand(tr("texte"),           part, "text",   qle_text -> text());         }
+/// Met a jour la taille du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldS() { addChangePartCommand(tr("taille"),          part, "size",   font_size -> value());       }
+/// Met a jour la taille du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldR() { addChangePartCommand(tr("propri\351t\351"), part, "rotate", !rotate -> isChecked());     }
 
 /**
-	Met a jour le formulaire a partir du champ de texte
+	Met a jour le formulaire d'edition
 */
 void TextFieldEditor::updateForm() {
 	activeConnections(false);
@@ -99,6 +102,10 @@ void TextFieldEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void TextFieldEditor::activeConnections(bool active) {
 	if (active) {
 		connect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextFieldX()));

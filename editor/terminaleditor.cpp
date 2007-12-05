@@ -20,7 +20,8 @@
 
 /**
 	Constructeur
-	@param term Borne a editer
+	@param editor L'editeur d'element concerne
+	@param term La borne a editer
 	@param parent QWidget parent de ce widget
 */
 TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWidget *parent) : ElementItemEditor(editor, parent) {
@@ -56,12 +57,13 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	updateForm();
 }
 
-/**
-	Destructeur
-*/
+/// Destructeur
 TerminalEditor::~TerminalEditor() {
 };
 
+/**
+	Met a jour la borne a partir des donnees du formulaire
+*/
 void TerminalEditor::updateTerminal() {
 	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
 	part -> setOrientation(
@@ -73,10 +75,16 @@ void TerminalEditor::updateTerminal() {
 	);
 }
 
+/// Met a jour l'abscisse de la position de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalX() { addChangePartCommand(tr("abscisse"),    part, "x",           qle_x -> text().toDouble()); updateForm(); }
+/// Met a jour l'ordonnee de la position de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalY() { addChangePartCommand(tr("ordonn\351e"), part, "y",           qle_y -> text().toDouble()); updateForm(); }
+/// Met a jour l'orientation de la borne et cree un objet d'annulation
 void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"), part, "orientation", orientation -> itemData(orientation -> currentIndex()).toInt()); }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void TerminalEditor::updateForm() {
 	activeConnections(false);
 	qle_x -> setText(part -> property("x").toString());
@@ -85,6 +93,10 @@ void TerminalEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void TerminalEditor::activeConnections(bool active) {
 	if (active) {
 		connect(qle_x,       SIGNAL(editingFinished()), this, SLOT(updateTerminalX()));

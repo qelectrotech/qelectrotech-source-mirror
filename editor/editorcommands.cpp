@@ -322,7 +322,7 @@ void ChangeNamesCommand::redo() {
 	Constructeur
 	@param element_scene Element edite
 	@param before Orientations avant changement
-	@param after Orientationss apres changement
+	@param after Orientations apres changement
 	@param parent QUndoCommand parent
 */
 ChangeOrientationsCommand::ChangeOrientationsCommand(

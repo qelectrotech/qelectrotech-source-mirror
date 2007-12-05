@@ -28,7 +28,7 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	// constructeurs, destructeur
 	public:
 	PartEllipse(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartEllipse() {}
+	virtual ~PartEllipse();
 	
 	private:
 	PartEllipse(const PartEllipse &);

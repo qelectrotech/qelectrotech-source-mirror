@@ -18,7 +18,12 @@
 #include "parttextfield.h"
 #include "textfieldeditor.h"
 
-
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param parent Le QGraphicsItem parent de ce champ de texte
+	@param scene La scene sur laquelle figure ce champ de texte
+*/
 PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor),
@@ -31,10 +36,15 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	infos -> setElementTypeName(name());
 }
 
+/// Destructeur
 PartTextField::~PartTextField() {
 	delete infos;
 }
 
+/**
+	Importe les proprietes d'un champ de texte depuis un element XML
+	@param xml_element Element XML a lire
+*/
 void PartTextField::fromXml(const QDomElement &xml_element) {
 	bool ok;
 	int font_size = xml_element.attribute("size").toInt(&ok);
@@ -50,6 +60,11 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 	follow_parent_rotations = (xml_element.attribute("rotate") == "true");
 }
 
+/**
+	Exporte le champ de texte en XML
+	@param xml_document Document XML a utiliser pour creer l'element XML
+	@return un element XML decrivant le champ de texte
+*/
 const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("input");
 	xml_element.setAttribute("x", QString("%1").arg((scenePos() + margin()).x()));
@@ -60,6 +75,9 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	return(xml_element);
 }
 
+/**
+	@return Le widget permettant d'editer ce champ de texte
+*/
 QWidget *PartTextField::elementInformations() {
 	return(infos);
 }
@@ -73,18 +91,35 @@ QPointF PartTextField::pos() const {
 	return(QGraphicsTextItem::pos() + margin());
 }
 
+/**
+	Specifie la position du champ de texte
+	@param left_corner_pos Nouvelle position
+*/
 void PartTextField::setPos(const QPointF &left_corner_pos) {
 	QGraphicsTextItem::setPos(left_corner_pos - margin());
 }
 
+/**
+	Specifie la position du champ de texte
+	@param x abscisse de la nouvelle position
+	@param y ordonnee de la nouvelle position
+*/
 void PartTextField::setPos(qreal x, qreal y) {
 	QGraphicsTextItem::setPos(QPointF(x, y) - margin());
 }
 
+/**
+	@return true si le champ de texte suit les rotation de l'element, false
+	sinon
+*/
 bool PartTextField::followParentRotations() {
 	return(follow_parent_rotations);
 }
 
+/**
+	@param  fpr true pour que le champ de texte suive les rotation de
+	l'element, false sinon
+*/
 void PartTextField::setFollowParentRotations(bool fpr) {
 	follow_parent_rotations = fpr;
 }
@@ -122,6 +157,16 @@ void PartTextField::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	setFocus(Qt::MouseFocusReason);
 }
 
+/**
+	Specifie la valeur d'une propriete donnee du champ de texte
+	@param property propriete a modifier. Valeurs acceptees :
+		* x : abscisse de la position
+		* y : ordonnee de la position
+		* size : taille du texte
+		* text : texte
+		* rotate : suivi de la rotation de l'element parent
+	@param value Valeur a attribuer a la propriete
+*/
 void PartTextField::setProperty(const QString &property, const QVariant &value) {
 	if (property == "x") {
 		if (!value.canConvert(QVariant::Double)) return;
@@ -139,6 +184,16 @@ void PartTextField::setProperty(const QString &property, const QVariant &value) 
 	}
 }
 
+/**
+	Permet d'acceder a la valeur d'une propriete donnee du champ de texte
+	@param property propriete lue. Valeurs acceptees :
+		* x : abscisse de la position
+		* y : ordonnee de la position
+		* size : taille du texte
+		* text : texte
+		* rotate : suivi de la rotation de l'element parent
+	@return La valeur de la propriete property
+*/
 QVariant PartTextField::property(const QString &property) {
 	if (property == "x") {
 		return((scenePos() + margin()).x());
@@ -154,6 +209,11 @@ QVariant PartTextField::property(const QString &property) {
 	return(QVariant());
 }
 
+/**
+	Gere les changements intervenant sur cette partie
+	@param change Type de changement
+	@param value Valeur numerique relative au changement
+*/
 QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
@@ -163,6 +223,9 @@ QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &va
 	return(QGraphicsTextItem::itemChange(change, value));
 }
 
+/**
+	@return le rectangle delimitant cette partie.
+*/
 QRectF PartTextField::boundingRect() const {
 	QRectF r = QGraphicsTextItem::boundingRect();
 	r.adjust(0.0, -2.0, 0.0, 0.0);

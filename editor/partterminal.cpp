@@ -19,6 +19,12 @@
 #include "terminal.h"
 #include "terminaleditor.h"
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param parent Le QGraphicsItem parent de cette borne
+	@param scene La scene sur laquelle figure cette borne
+*/
 PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
 	CustomElementPart(editor),
 	QGraphicsItem(parent, scene),
@@ -31,10 +37,15 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGra
 	setZValue(100000);
 }
 
+/// Destructeur
 PartTerminal::~PartTerminal() {
 	delete informations;
 };
 
+/**
+	Importe les proprietes d'une borne depuis un element XML
+	@param xml_elmt Element XML a lire
+*/
 void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	// lit la position de la borne
 	qreal term_x = 0.0, term_y = 0.0;
@@ -47,6 +58,11 @@ void PartTerminal::fromXml(const QDomElement &xml_elmt) {
 	updateSecondPoint();
 }
 
+/**
+	Exporte la borne en XML
+	@param xml_document Document XML a utiliser pour creer l'element XML
+	@return un element XML decrivant la borne
+*/
 const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("terminal");
 	
@@ -60,10 +76,19 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	return(xml_element);
 }
 
+/**
+	@return Le widget permettant d'editer cette borne
+*/
 QWidget *PartTerminal::elementInformations() {
 	return(informations);
 }
 
+/**
+	Dessine la borne
+	@param painter QPainter a utiliser pour rendre le dessin
+	@param options Options pour affiner le rendu
+	@param widget Widget sur lequel le rendu est effectue
+*/
 void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
 	p -> save();
 	
@@ -88,6 +113,9 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget 
 	p -> restore();
 }
 
+/**
+	@return le rectangle delimitant cette partie.
+*/
 QRectF PartTerminal::boundingRect() const {
 	QPointF p1, p2;
 	if (second_point.x() <= 0.0 && second_point.y() <= 0.0) {
@@ -103,10 +131,17 @@ QRectF PartTerminal::boundingRect() const {
 	return(br);
 }
 
+/**
+	@return L'orientation de la borne
+*/
 QET::Orientation PartTerminal::orientation() const {
 	return(_orientation);
 }
 
+/**
+	Definit l'orientation de la borne
+	@param ori la nouvelle orientation de la borne
+*/
 void PartTerminal::setOrientation(QET::Orientation ori) {
 	prepareGeometryChange();
 	_orientation = ori;
@@ -114,6 +149,14 @@ void PartTerminal::setOrientation(QET::Orientation ori) {
 	informations -> updateForm();
 }
 
+/**
+	Specifie la valeur d'une propriete donnee de la borne
+	@param property propriete a modifier. Valeurs acceptees :
+		* x : abscisse de la borne
+		* y : ordonnee de la borne
+		* orientation : orientation de la borne
+	@param value Valeur a attribuer a la propriete
+*/
 void PartTerminal::setProperty(const QString &property, const QVariant &value) {
 	if (property == "x") {
 		if (!value.canConvert(QVariant::Double)) return;
@@ -127,6 +170,14 @@ void PartTerminal::setProperty(const QString &property, const QVariant &value) {
 	}
 }
 
+/**
+	Permet d'acceder a la valeur d'une propriete donnee de la borne
+	@param property propriete lue. Valeurs acceptees :
+		* x : abscisse de la borne
+		* y : ordonnee de la borne
+		* orientation : orientation de la borne
+	@return La valeur de la propriete property
+*/
 QVariant PartTerminal::property(const QString &property) {
 	if (property == "x") {
 		return(scenePos().x());
@@ -138,6 +189,11 @@ QVariant PartTerminal::property(const QString &property) {
 	return(QVariant());
 }
 
+/**
+	Gere les changements intervenant sur cette partie
+	@param change Type de changement
+	@param value Valeur numerique relative au changement
+*/
 QVariant PartTerminal::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
@@ -147,6 +203,10 @@ QVariant PartTerminal::itemChange(GraphicsItemChange change, const QVariant &val
 	return(QGraphicsItem::itemChange(change, value));
 }
 
+/**
+	Met a jour la position du second point en fonction de la position et de
+	l'orientation de la borne.
+*/
 void PartTerminal::updateSecondPoint() {
 	qreal ts = 4.0; // terminal size
 	switch(_orientation) {

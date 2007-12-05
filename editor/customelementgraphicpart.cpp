@@ -149,6 +149,16 @@ QWidget *CustomElementGraphicPart::elementInformations() {
 	return(style_editor);
 }
 
+/**
+	Specifie la valeur d'une propriete de style donnee.
+	@param property propriete a modifier. Valeurs acceptees :
+		* line-style : type de trait (@see LineStyle)
+		* line-weight : epaisseur du traut (@see LineWeight)
+		* filling : couleur de remplissage (@see Color)
+		* color : couleur du trait (@see Color)
+		* antialias : utiliser l'antialiasing ou non (booleen)
+	@param value Valeur a attribuer a la propriete
+*/
 void CustomElementGraphicPart::setProperty(const QString &property, const QVariant &value) {
 	bool change_made = false;
 	if (property == "line-style") {
@@ -172,6 +182,16 @@ void CustomElementGraphicPart::setProperty(const QString &property, const QVaria
 	}
 }
 
+/**
+	Permet d'acceder a la valeur d'une propriete de style donnee.
+	@param property propriete lue. Valeurs acceptees :
+		* line-style : type de trait (@see LineStyle)
+		* line-weight : epaisseur du traut (@see LineWeight)
+		* filling : couleur de remplissage (@see Color)
+		* color : couleur du trait (@see Color)
+		* antialias : utiliser l'antialiasing ou non (booleen)
+	@return La valeur de la propriete property
+*/
 QVariant CustomElementGraphicPart::property(const QString &property) {
 	if (property == "line-style") {
 		return(lineStyle());

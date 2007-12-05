@@ -28,7 +28,7 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
 	PartArc(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartArc() {}
+	virtual ~PartArc();
 	
 	private:
 	PartArc(const PartArc &);

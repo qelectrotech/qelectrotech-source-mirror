@@ -61,8 +61,8 @@ void AddElementCommand::redo() {
 /**
 	Constructeur
 	@param dia Schema auquel on ajoute du texte
-	@param elmt Texte ajoute
-	@param p Position a laquelle le texte est ajoute
+	@param text Texte ajoute
+	@param pos Position a laquelle le texte est ajoute
 	@param parent QUndoCommand parent
 */
 AddTextCommand::AddTextCommand(Diagram *dia, DiagramTextItem *text, const QPointF &pos, QUndoCommand *parent) :
@@ -193,9 +193,7 @@ void DeleteElementsCommand::redo() {
 /**
 	Constructeur
 	@param dia Schema sur lequel on colle les elements et conducteurs
-	@param e Elements colles sur le schema
-	@param c Conducteurs colles sur le schema
-	@param t Textes colles sur le schema
+	@param c Contenu a coller sur le schema
 	@param parent QUndoCommand parent
 */
 PasteDiagramCommand::PasteDiagramCommand(
@@ -419,6 +417,7 @@ void RotateElementsCommand::redo() {
 	@param c Conducteur modifie
 	@param old_p ancien profil du conducteur
 	@param new_p nouveau profil du conducteur
+	@param path_t Trajectoire du trajet modifie
 	@param parent QUndoCommand parent
 */
 ChangeConductorCommand::ChangeConductorCommand(

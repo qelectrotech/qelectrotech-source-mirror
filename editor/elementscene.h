@@ -137,46 +137,76 @@ class ElementScene : public QGraphicsScene {
 	void partsZValueChanged();
 };
 
+/**
+	@param wid Nouvelle largeur de l'element edite
+*/
 inline void ElementScene::setWidth(const uint &wid) {
 	_width = wid;
 	while (_width % 10) ++ _width;
 	_width /= 10;
 }
 
+/**
+	@return la largeur de l'element edite
+*/
 inline uint ElementScene::width() const {
 	return(_width * 10);
 }
 
+/**
+	@param wid Nouvelle hauteur de l'element edite
+*/
 inline void ElementScene::setHeight(const uint &hei) {
 	_height = hei;
 	while (_height % 10) ++ _height;
 	_height /= 10;
 }
 
+/**
+	@return la largeur de l'element edite
+*/
 inline uint ElementScene::height() const {
 	return(_height * 10);
 }
 
+/**
+	@param hs Nouveau point de saisie de l'element edite
+*/
 inline void ElementScene::setHotspot(const QPoint &hs) {
 	_hotspot = hs;
 }
 
+/**
+	@return le point de saisie de l'element edite
+*/
 inline QPoint ElementScene::hotspot() const {
 	return(_hotspot);
 }
 
+/**
+	@param hs Nouvel ensemble de noms de l'element edite
+*/
 inline void ElementScene::setNames(const NamesList nameslist) {
 	_names = nameslist;
 }
 
+/**
+	@return l'ensemble de noms de l'element edite
+*/
 inline NamesList ElementScene::names() const {
 	return(_names);
 }
 
+/**
+	@return l'ensemble d'orientations de l'element edite
+*/
 inline OrientationSet ElementScene::orientations() {
 	return(ori);
 }
 
+/**
+	@param orientation_set Nouvel ensemble d'orientations de l'element edite
+*/
 inline void ElementScene::setOrientations(const OrientationSet &orientation_set) {
 	ori = orientation_set;
 }

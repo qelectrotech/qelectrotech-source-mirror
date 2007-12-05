@@ -19,6 +19,12 @@
 #include "lineeditor.h"
 #include <cmath>
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param parent Le QGraphicsItem parent de cette ligne
+	@param scene La scene sur laquelle figure cette ligne
+*/
 PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsLineItem(parent, scene), CustomElementGraphicPart(editor) {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setAcceptedMouseButtons(Qt::LeftButton);
@@ -28,6 +34,16 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsSce
 	style_editor -> setElementTypeName(name());
 }
 
+/// Destructeur
+PartLine::~PartLine() {
+}
+
+/**
+	Dessine la ligne
+	@param painter QPainter a utiliser pour rendre le dessin
+	@param options Options pour affiner le rendu
+	@param widget Widget sur lequel le rendu est effectue
+*/
 void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, QWidget */*w*/) {
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
@@ -39,6 +55,11 @@ void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, Q
 	painter -> drawLine(line());
 }
 
+/**
+	Exporte la ligne en XML
+	@param xml_document Document XML a utiliser pour creer l'element XML
+	@return un element XML decrivant la ligne
+*/
 const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 	
 	QPointF p1(sceneP1());
@@ -59,6 +80,10 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 	return(xml_element);
 }
 
+/**
+	Importe les proprietes d'une ligne depuis un element XML
+	@param qde Element XML a lire
+*/
 void PartLine::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
 	setLine(
@@ -75,6 +100,15 @@ void PartLine::fromXml(const QDomElement &qde) {
 	);
 }
 
+/**
+	Specifie la valeur d'une propriete donnee de la ligne
+	@param property propriete a modifier. Valeurs acceptees :
+		* x1 : abscisse du premier point
+		* y1 : ordonnee du second point
+		* x2 : abscisse du premier point
+		* y2 : ordonnee du second point
+	@param value Valeur a attribuer a la propriete
+*/
 void PartLine::setProperty(const QString &property, const QVariant &value) {
 	CustomElementGraphicPart::setProperty(property, value);
 	if (!value.canConvert(QVariant::Double)) return;
@@ -92,6 +126,15 @@ void PartLine::setProperty(const QString &property, const QVariant &value) {
 	setLine(QLineF(mapFromScene(new_p1), mapFromScene(new_p2)));
 }
 
+/**
+	Permet d'acceder a la valeur d'une propriete donnee de la ligne
+	@param property propriete lue. Valeurs acceptees :
+		* x1 : abscisse du premier point
+		* y1 : ordonnee du second point
+		* x2 : abscisse du premier point
+		* y2 : ordonnee du second point
+	@return La valeur de la propriete property
+*/
 QVariant PartLine::property(const QString &property) {
 	// appelle la methode property de CustomElementGraphicpart pour les styles
 	QVariant style_property = CustomElementGraphicPart::property(property);
@@ -109,6 +152,11 @@ QVariant PartLine::property(const QString &property) {
 	return(QVariant());
 }
 
+/**
+	Gere les changements intervenant sur cette partie
+	@param change Type de changement
+	@param value Valeur numerique relative au changement
+*/
 QVariant PartLine::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
@@ -118,14 +166,23 @@ QVariant PartLine::itemChange(GraphicsItemChange change, const QVariant &value) 
 	return(QGraphicsLineItem::itemChange(change, value));
 }
 
+/**
+	@return le premier point, dans les coordonnees de la scene.
+*/
 QPointF PartLine::sceneP1() const {
 	return(mapToScene(line().p1()));
 }
 
+/**
+	@return le second point, dans les coordonnees de la scene.
+*/
 QPointF PartLine::sceneP2() const {
 	return(mapToScene(line().p2()));
 }
 
+/**
+	@return la forme selectionnable de la ligne
+*/
 QPainterPath PartLine::shape() const {
 	QList<QPointF> points = fourShapePoints();
 	QPainterPath t;
@@ -168,7 +225,7 @@ QList<QPointF> PartLine::fourShapePoints() const {
 		// laisser
 		QPointF u = v_ab / ab * marge;
 		
-		// on définit le vecteur v(-b , a)  qui est perpendiculaire à AB
+		// on definit le vecteur v(-b , a) qui est perpendiculaire a AB
 		QPointF v(-u.y(), u.x());
 		QPointF m = -u + v; // on a le vecteur M = -u + v
 		QPointF n = -u - v; // et le vecteur N=-u-v
@@ -182,6 +239,9 @@ QList<QPointF> PartLine::fourShapePoints() const {
 	return(result);
 }
 
+/**
+	@return le rectangle delimitant cette partie.
+*/
 QRectF PartLine::boundingRect() const {
 	qreal adjust = 1.5;
 	QRectF r(QGraphicsLineItem::boundingRect());

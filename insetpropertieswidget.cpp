@@ -21,7 +21,7 @@
 /**
 	Constructeur
 	@param inset InsetProperties a afficher
-	@param fixed true pour afficher l'option "Date courante"
+	@param current true pour afficher l'option "Date courante"
 	@param parent QWidget parent
 */
 InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool current, QWidget *parent) : QWidget(parent), display_current_date(false) {

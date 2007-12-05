@@ -18,6 +18,12 @@
 #include "arceditor.h"
 #include "partarc.h"
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param arc L'arc a editer
+	@param parent le Widget parent
+*/
 ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = arc;
@@ -51,9 +57,13 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : 
 	activeConnections(true);
 }
 
+/// Destructeur
 ArcEditor::~ArcEditor() {
 }
 
+/**
+	Met a jour l'arc a partir a partir des donnees du formulaire
+*/
 void ArcEditor::updateArc() {
 	part -> setProperty("x",          x -> text().toDouble());
 	part -> setProperty("y",          y -> text().toDouble());
@@ -63,13 +73,22 @@ void ArcEditor::updateArc() {
 	part -> setAngle(-angle -> value());
 }
 
+/// Met a jour l'abscisse du centre de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> text().toDouble());       }
+/// Met a jour l'ordonnee du centre de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> text().toDouble());       }
+/// Met a jour le diametre horizontal de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> text().toDouble());       }
+/// Met a jour le diametre vertical de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> text().toDouble());       }
+/// Met a jour l'angle de depart de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcS() { addChangePartCommand(tr("angle de d\351part"),     part, "start_angle", -start_angle -> value() + 90); }
+/// Met a jour l'etendue de l'arc et cree un objet d'annulation
 void ArcEditor::updateArcA() { addChangePartCommand(tr("angle"),                  part, "angle",       -angle -> value());            }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void ArcEditor::updateForm() {
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
@@ -81,6 +100,10 @@ void ArcEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void ArcEditor::activeConnections(bool active) {
 	if (active) {
 		connect(x,           SIGNAL(editingFinished()), this, SLOT(updateArcX()));

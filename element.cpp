@@ -332,7 +332,7 @@ bool Element::valideXml(QDomElement &e) {
 */
 bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	/*
-		les bornes vont maintenant etre recensees pour associer leurs id à leur adresse reelle
+		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
 	*/
 	QList<QDomElement> liste_terminals;

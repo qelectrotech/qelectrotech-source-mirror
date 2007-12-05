@@ -28,7 +28,7 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	// constructeurs, destructeur
 	public:
 	PartLine(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartLine() {}
+	virtual ~PartLine();
 	
 	private:
 	PartLine(const PartLine &);

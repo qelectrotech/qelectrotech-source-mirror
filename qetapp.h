@@ -54,13 +54,13 @@ class QETApp : public QApplication {
 	public:
 	static void overrideCommonElementsDir(const QString &);
 	private:
-	static QString common_elements_dir;
+	static QString common_elements_dir; ///< Dossier contenant la collection d'elements commune
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	public:
 	static void overrideConfigDir(const QString &);
 	private:
-	static QString config_dir;
+	static QString config_dir; ///< Dossier contenant la configuration et la collection d'elements de l'utilisateur
 #endif
 	
 	protected:

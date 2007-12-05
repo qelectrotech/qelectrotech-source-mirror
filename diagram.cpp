@@ -362,7 +362,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	foreach (QDomElement e, QET::findInDomElement(root, "elements", "element")) {
 		if (!Element::valideXml(e)) continue;
 		
-		// cree un element dont le type correspond à l'id type
+		// cree un element dont le type correspond a l'id type
 		QString type_id = e.attribute("type");
 		QString chemin_fichier = QETApp::realPath(type_id);
 		CustomElement *nvel_elmt = new CustomElement(chemin_fichier);

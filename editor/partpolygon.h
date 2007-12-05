@@ -28,7 +28,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	// constructeurs, destructeur
 	public:
 	PartPolygon(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
-	virtual ~PartPolygon() {}
+	virtual ~PartPolygon();
 	
 	private:
 	PartPolygon(const PartPolygon &);

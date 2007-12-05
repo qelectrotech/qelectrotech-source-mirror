@@ -18,6 +18,13 @@
 #include "partpolygon.h"
 #include "qet.h"
 #include "polygoneditor.h"
+
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param parent Le QGraphicsItem parent de ce polygone
+	@param scene La scene sur laquelle figure ce polygone
+*/
 PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : 
 	QGraphicsPolygonItem(parent, scene),
 	CustomElementGraphicPart(editor),
@@ -31,6 +38,14 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	style_editor -> setElementTypeName(name());
 }
 
+/// Destructeur
+PartPolygon::~PartPolygon() {
+}
+
+/**
+	Importe les proprietes d'un polygone depuis un element XML
+	@param qde Element XML a lire
+*/
 void PartPolygon::fromXml(const QDomElement &qde) {
 	stylesFromXml(qde);
 	int i = 1;
@@ -54,6 +69,11 @@ void PartPolygon::fromXml(const QDomElement &qde) {
 	closed = qde.attribute("closed") != "false";
 }
 
+/**
+	Exporte le polygone en XML
+	@param xml_document Document XML a utiliser pour creer l'element XML
+	@return un element XML decrivant le polygone
+*/
 const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("polygon");
 	int i = 1;
@@ -68,7 +88,13 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
 	return(xml_element);
 }
 
-void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, QWidget */*w*/) {
+/**
+	Dessine le polygone
+	@param painter QPainter a utiliser pour rendre le dessin
+	@param options Options pour affiner le rendu
+	@param widget Widget sur lequel le rendu est effectue
+*/
+void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	if (isSelected()) {
@@ -79,11 +105,23 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/
 	else painter -> drawPolyline(polygon());
 }
 
+/**
+	Specifie la valeur d'une propriete donnee du polygone
+	@param property propriete a modifier. Valeurs acceptees :
+		* closed : true pour fermer le polygone, false sinon
+	@param value Valeur a attribuer a la propriete
+*/
 void PartPolygon::setProperty(const QString &property, const QVariant &value) {
 	CustomElementGraphicPart::setProperty(property, value);
 	if (property == "closed") closed = value.toBool();
 }
 
+/**
+	Permet d'acceder a la valeur d'une propriete donnee de la ligne
+	@param property propriete lue. Valeurs acceptees :
+		* closed : true pour fermer le polygone, false sinon
+	@return La valeur de la propriete property
+*/
 QVariant PartPolygon::property(const QString &property) {
 	// appelle la methode property de CustomElementGraphicpart pour les styles
 	QVariant style_property = CustomElementGraphicPart::property(property);
@@ -93,6 +131,11 @@ QVariant PartPolygon::property(const QString &property) {
 	return(QVariant());
 }
 
+/**
+	Gere les changements intervenant sur cette partie
+	@param change Type de changement
+	@param value Valeur numerique relative au changement
+*/
 QVariant PartPolygon::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {

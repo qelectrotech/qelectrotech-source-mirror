@@ -288,7 +288,7 @@ void QETElementEditor::setupInterface() {
 	undo_view -> setEmptyLabel(tr("Aucune modification"));
 	undo_dock -> setWidget(undo_view);
 	
-	// panel sur le côté pour la liste des parties
+	// panel sur le cote pour la liste des parties
 	parts_list = new QListWidget(this);
 	parts_list -> setSelectionMode(QAbstractItemView::ExtendedSelection);
 	connect(ce_scene,   SIGNAL(partsAdded()),           this, SLOT(slot_createPartsList()));

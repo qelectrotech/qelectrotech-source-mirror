@@ -99,7 +99,7 @@ void ElementsPanel::dropEvent(QDropEvent */*e*/) {
 	Gere le debut des drag'n drop
 	@param supportedActions Les actions supportees
  */
-void ElementsPanel::startDrag(Qt::DropActions /*supportedActions*/) {
+void ElementsPanel::startDrag(Qt::DropActions) {
 	// recupere le nom du fichier decrivant l'element
 	QString nom_fichier = currentItem() -> data(0, 42).toString();
 	if (nom_fichier.isEmpty()) return;

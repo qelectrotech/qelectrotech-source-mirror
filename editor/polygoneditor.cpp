@@ -22,6 +22,7 @@
 
 /**
 	Constructeur
+	@param editor L'editeur d'element concerne
 	@param p Le polygone a editer
 	@param parent le Widget parent
 */
@@ -48,11 +49,21 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *
 	updateForm();
 }
 
+/// Destructeur
+PolygonEditor::~PolygonEditor() {
+}
+
+/**
+	Met a jour le polygone a partir des donnees du formulaire : points et etat ferme ou non
+*/
 void PolygonEditor::updatePolygon() {
 	updatePolygonPoints();
 	updatePolygonClosedState();
 }
 
+/**
+	Met a jour les points du polygone et cree un objet d'annulation
+*/
 void PolygonEditor::updatePolygonPoints() {
 	QVector<QPointF> points = getPointsFromTree();
 	if (points.count() < 2) {
@@ -66,6 +77,9 @@ void PolygonEditor::updatePolygonPoints() {
 	undoStack().push(new ChangePolygonPointsCommand(part, part -> polygon(), points));
 }
 
+/**
+	Met a jour l'etat ferme ou non du polygone
+*/
 void PolygonEditor::updatePolygonClosedState() {
 	undoStack().push(
 		new ChangePartCommand(
@@ -78,6 +92,9 @@ void PolygonEditor::updatePolygonClosedState() {
 	);
 }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void PolygonEditor::updateForm() {
 	activeConnections(false);
 	while(points_list.takeTopLevelItem(0));
@@ -93,6 +110,10 @@ void PolygonEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	@return Un vecteur contenant les points composant le polygone a partir du
+	formulaire d'edition
+*/
 QVector<QPointF> PolygonEditor::getPointsFromTree() {
 	QVector<QPointF> points;
 	for(int i = 0 ; i < points_list.topLevelItemCount() ; ++ i) {
@@ -106,6 +127,10 @@ QVector<QPointF> PolygonEditor::getPointsFromTree() {
 	return(points);
 }
 
+/**
+	@param qtwi QTreeWidgetItem a valider
+	@param column Colonne exacte du QTreeWidgetItem a valider
+*/
 void PolygonEditor::validColumn(QTreeWidgetItem *qtwi, int column) {
 	bool convert_ok;
 	qtwi -> text(column).toDouble(&convert_ok);
@@ -115,6 +140,10 @@ void PolygonEditor::validColumn(QTreeWidgetItem *qtwi, int column) {
 	} else points_list.openPersistentEditor(qtwi, column);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void PolygonEditor::activeConnections(bool active) {
 	if (active) {
 		connect(&close_polygon, SIGNAL(stateChanged(int)),                   this, SLOT(updatePolygonClosedState()));

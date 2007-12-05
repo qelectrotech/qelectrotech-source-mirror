@@ -18,6 +18,12 @@
 #include "ellipseeditor.h"
 #include "partellipse.h"
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param ellipse L'ellipse a editer
+	@param parent le Widget parent
+*/
 EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = ellipse;
@@ -50,9 +56,13 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	updateForm();
 }
 
+/// Destructeur
 EllipseEditor::~EllipseEditor() {
 }
 
+/**
+	Met a jour l'ellipse a partir des donnees du formulaire
+*/
 void EllipseEditor::updateEllipse() {
 	part -> setProperty("x", x -> text().toDouble());
 	part -> setProperty("y", x -> text().toDouble());
@@ -60,11 +70,18 @@ void EllipseEditor::updateEllipse() {
 	part -> setProperty("diameter_v", x -> text().toDouble());
 }
 
+/// Met a jour l'abscisse du centre de l'ellipse et cree un objet d'annulation
 void EllipseEditor::updateEllipseX() { addChangePartCommand(tr("abscisse"),               part, "x",           x -> text().toDouble());       }
+/// Met a jour l'ordonnee du centre de l'ellipse et cree un objet d'annulation
 void EllipseEditor::updateEllipseY() { addChangePartCommand(tr("ordonn\351e"),            part, "y",           y -> text().toDouble());       }
+/// Met a jour le diametre horizontal de l'ellipse et cree un objet d'annulation
 void EllipseEditor::updateEllipseH() { addChangePartCommand(tr("diam\350tre horizontal"), part, "diameter_h",  h -> text().toDouble());       }
+/// Met a jour le diametre vertical de l'ellipse et cree un objet d'annulation
 void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vertical"),   part, "diameter_v",  v -> text().toDouble());       }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void EllipseEditor::updateForm() {
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
@@ -74,6 +91,10 @@ void EllipseEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void EllipseEditor::activeConnections(bool active) {
 	if (active) {
 		connect(x, SIGNAL(editingFinished()), this, SLOT(updateEllipseX()));

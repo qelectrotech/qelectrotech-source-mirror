@@ -194,7 +194,7 @@ int CustomElement::nbTerminals() const {
 /**
 	Dessine le composant sur le Diagram
 	@param qp Le QPainter a utiliser pour dessiner l'element
-	@param qsogi Les options graphiques
+	@param options Les options graphiques
 */
 void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 	dessin.play(qp);
@@ -371,7 +371,7 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 /**
 	Analyse un element XML suppose representer un texte. Si l'analyse
 	reussit, le texte est ajoute au dessin.
-	Le texte est defini par une position, une chaine de caractères et une
+	Le texte est defini par une position, une chaine de caracteres et une
 	taille.
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
@@ -400,7 +400,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	l'utilisateur. Si l'analyse reussit, le champ est ajoute au dessin.
 	Le texte est defini par :
 		- une position
-		- une chaine de caractères facultative utilisee comme valeur par defaut
+		- une chaine de caracteres facultative utilisee comme valeur par defaut
 		- une taille
 		- le fait de subir les rotations de l'element ou non
 	@param e L'element XML a analyser

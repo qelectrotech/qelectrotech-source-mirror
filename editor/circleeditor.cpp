@@ -18,6 +18,12 @@
 #include "circleeditor.h"
 #include "partcircle.h"
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param circle Le cercle a editer
+	@param parent le Widget parent
+*/
 CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget *parent) : ElementItemEditor(editor, parent) {
 	
 	part = circle;
@@ -45,19 +51,31 @@ CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget
 	updateForm();
 }
 
+/// Destructeur
 CircleEditor::~CircleEditor() {
 }
 
+/**
+	met a jour le cercle a partir des donnees du formulaire
+*/
 void CircleEditor::updateCircle() {
 	part -> setProperty("x", x -> text().toDouble());
 	part -> setProperty("y", y -> text().toDouble());
 	part -> setProperty("diameter", r -> text().toDouble());
 }
 
+/// Met a jour l'abscisse du cercle et cree un objet d'annulation
 void CircleEditor::updateCircleX() { addChangePartCommand(tr("abscisse"),    part, "x",        x -> text().toDouble()); }
+
+/// Met a jour l'ordonnee du cercle et cree un objet d'annulation
 void CircleEditor::updateCircleY() { addChangePartCommand(tr("ordonn\351e"), part, "y",        y -> text().toDouble()); }
+
+/// Met a jour le diametre du cercle et cree un objet d'annulation
 void CircleEditor::updateCircleD() { addChangePartCommand(tr("diam\350tre"), part, "diameter", r -> text().toDouble()); }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void CircleEditor::updateForm() {
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
@@ -66,6 +84,10 @@ void CircleEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void CircleEditor::activeConnections(bool active) {
 	if (active) {
 		connect(x, SIGNAL(editingFinished()), this, SLOT(updateCircleX()));

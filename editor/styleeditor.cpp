@@ -18,6 +18,12 @@
 #include "styleeditor.h"
 #include "customelementgraphicpart.h"
 
+/**
+	Constructeur
+	@param editor L'editeur d'element concerne
+	@param p La partie a editer
+	@param parent le Widget parent
+*/
 StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, QWidget *parent) : ElementItemEditor(editor, parent), part(p) {
 	// couleur
 	color = new QButtonGroup(this);
@@ -88,9 +94,13 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	setLayout(main_layout);
 }
 
+/// Destructeur
 StyleEditor::~StyleEditor() {
 }
 
+/**
+	Met a jour le style de la partie a partir des donnees du formulaire
+*/
 void StyleEditor::updatePart() {
 	// applique l'antialiasing
 	part -> setAntialiased(antialiasing -> isChecked());
@@ -108,12 +118,20 @@ void StyleEditor::updatePart() {
 	part -> setFilling(static_cast<CEGP::Filling>(filling -> checkedId()));
 }
 
+/// Met a jour l'antialiasing et cree un objet d'annulation
 void StyleEditor::updatePartAntialiasing()   { addChangePartCommand("style antialiasing", part, "antialias",   antialiasing -> isChecked()); }
+/// Met a jour la couleur du trait et cree un objet d'annulation
 void StyleEditor::updatePartColor()          { addChangePartCommand("style couleur",      part, "color",       color -> checkedId());        }
+/// Met a jour le style du trait et cree un objet d'annulation
 void StyleEditor::updatePartLineStyle()      { addChangePartCommand("style ligne",        part, "line-style",  style -> checkedId());        }
+/// Met a jour l'epaisseur du trait et cree un objet d'annulation
 void StyleEditor::updatePartLineWeight()     { addChangePartCommand("style epaisseur",    part, "line-weight", weight -> checkedId());       }
+/// Met a jour la couleur de fond et cree un objet d'annulation
 void StyleEditor::updatePartFilling()        { addChangePartCommand("style remplissage",  part, "filling",     filling -> checkedId());      }
 
+/**
+	Met a jour le formulaire d'edition
+*/
 void StyleEditor::updateForm() {
 	activeConnections(false);
 	// lit l'antialiasing
@@ -133,10 +151,18 @@ void StyleEditor::updateForm() {
 	activeConnections(true);
 }
 
+/**
+	Ajoute un widget en bas de l'editeur de style
+	@param w Widget a inserer
+*/
 void StyleEditor::appendWidget(QWidget *w) {
 	main_layout -> insertWidget(7, w);
 }
 
+/**
+	Active ou desactive les connexionx signaux/slots entre les widgets internes.
+	@param active true pour activer les connexions, false pour les desactiver
+*/
 void StyleEditor::activeConnections(bool active) {
 	if (active) {
 		connect(color,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartColor()));

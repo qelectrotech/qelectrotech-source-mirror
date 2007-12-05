@@ -402,7 +402,7 @@ QList<QETElementEditor *> QETApp::elementEditors() const {
 }
 
 /**
-	Affiche ou cache une fenetre (editeurs de schemas / editeurs d élements)
+	Affiche ou cache une fenetre (editeurs de schemas / editeurs d'elements)
 	@param window fenetre a afficher / cacher
 	@param visible true pour affiche la fenetre, false sinon
 */
@@ -426,7 +426,7 @@ void QETApp::setMainWindowVisible(QMainWindow *window, bool visible) {
 }
 
 /**
-	Affiche une fenetre (editeurs de schemas / editeurs d élements) si
+	Affiche une fenetre (editeurs de schemas / editeurs d'elements) si
 	celle-ci est cachee ou la cache si elle est affichee.
 	@param window fenetre a afficher / cacher
 */
