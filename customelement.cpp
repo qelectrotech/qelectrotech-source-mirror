@@ -106,7 +106,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	// on peut d'ores et deja specifier la taille et le hotspot
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
-	setConnexionsInternesAcceptees(racine.attribute("ci") == "true");
+	setInternalConnections(racine.attribute("ic") == "true");
 	
 	// la definition est supposee avoir des enfants
 	if (racine.firstChild().isNull()) {

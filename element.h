@@ -79,8 +79,8 @@ class Element : public QGraphicsItem {
 	void setPos(qreal, qreal);
 	
 	// methodes relatives aux connexions internes
-	bool connexionsInternesAcceptees();
-	void setConnexionsInternesAcceptees(bool cia);
+	bool internalConnections();
+	void setInternalConnections(bool);
 	
 	// methodes relatives aux fichiers XML
 	static bool valideXml(QDomElement &);
@@ -97,7 +97,7 @@ class Element : public QGraphicsItem {
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
 	private:
-	bool peut_relier_ses_propres_terminals;
+	bool internal_connections;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
 };
@@ -107,8 +107,8 @@ class Element : public QGraphicsItem {
 	c'est-a-dire que ses bornes peuvent etre reliees entre elles
 	@return true si l'element accepte les connexions internes, false sinon
 */
-inline bool Element::connexionsInternesAcceptees() {
-	return(peut_relier_ses_propres_terminals);
+inline bool Element::internalConnections() {
+	return(internal_connections);
 }
 
 /**
@@ -117,8 +117,8 @@ inline bool Element::connexionsInternesAcceptees() {
 	@param cia true pour que l'element accepte les connexions internes, false pour
 	qu'il les interdise
 */
-inline void Element::setConnexionsInternesAcceptees(bool cia) {
-	peut_relier_ses_propres_terminals = cia;
+inline void Element::setInternalConnections(bool ic) {
+	internal_connections = ic;
 }
 
 /**

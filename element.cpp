@@ -26,8 +26,10 @@
 /**
 	Constructeur pour un element sans scene ni parent
 */
-Element::Element(QGraphicsItem *parent, Diagram *scene) : QGraphicsItem(parent, scene) {
-	peut_relier_ses_propres_terminals = false;
+Element::Element(QGraphicsItem *parent, Diagram *scene) :
+	QGraphicsItem(parent, scene),
+	internal_connections(false)
+{
 	setZValue(10);
 }
 

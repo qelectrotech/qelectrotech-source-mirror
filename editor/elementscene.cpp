@@ -42,6 +42,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	_width(3),
 	_height(7),
 	_hotspot(15, 35),
+	internal_connections(false),
 	qgi_manager(this),
 	element_editor(editor)
 {
@@ -371,6 +372,7 @@ const QDomDocument ElementScene::toXml() const {
 	root.setAttribute("hotspot_y",   QString("%1").arg(_hotspot.y()));
 	root.setAttribute("orientation", ori.toString());
 	root.setAttribute("version", QET::version);
+	if (internal_connections) root.setAttribute("ic", "true");
 	
 	// noms de l'element
 	root.appendChild(_names.toXml(xml_document));
@@ -423,8 +425,10 @@ void ElementScene::fromXml(const QDomDocument &xml_document) {
 		}
 	}
 	
-	// orientations
+	// orientations et connexions internes
 	if (state) {
+		internal_connections = (root.attribute("ic") == "true");
+		
 		if (!ori.fromString(root.attribute("orientation"))) {
 			state = false;
 			error_message = tr("Les orientations ne sont pas valides.");

@@ -334,7 +334,7 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				couleur_hovered = couleur_interdit;
 			} else if (p -> parentItem() == parentItem()) {
 				// effet si l'on hover sur une borne du meme appareil
-				if (((Element *)parentItem()) -> connexionsInternesAcceptees())
+				if (((Element *)parentItem()) -> internalConnections())
 					p -> couleur_hovered = p -> couleur_autorise;
 				else p -> couleur_hovered = p -> couleur_interdit;
 			} else if (p -> nbConductors()) {
@@ -384,7 +384,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		// idem s'il s'agit de la borne actuelle
 		if (p == this) return;
 		// idem s'il s'agit d'une borne de l'element actuel et que l'element n'a pas le droit de relier ses propres bornes
-		bool cia = ((Element *)parentItem()) -> connexionsInternesAcceptees();
+		bool cia = ((Element *)parentItem()) -> internalConnections();
 		if (!cia) foreach(QGraphicsItem *item, parentItem() -> children()) if (item == p) return;
 		// derniere verification : verifier que cette borne n'est pas deja reliee a l'autre borne
 		foreach (Conductor *f, liste_conductors) if (f -> terminal1 == p || f -> terminal2 == p) return;

@@ -64,6 +64,8 @@ class ElementScene : public QGraphicsScene {
 	NamesList _names;
 	/// Liste des orientations de l'element
 	OrientationSet ori;
+	/// booleen indiquant si les bornes de l'element peuvent etre reliees a des bornes de ce meme element
+	bool internal_connections;
 	/// Gestionnaire de QGraphicsItem
 	QGIManager qgi_manager;
 	/// Pile des actions annulables

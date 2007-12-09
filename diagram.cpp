@@ -436,7 +436,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 			Terminal *p2 = table_adr_id.value(id_p2);
 			if (p1 != p2) {
 				bool can_add_conductor = true;
-				bool cia = ((Element *)p2 -> parentItem()) -> connexionsInternesAcceptees();
+				bool cia = ((Element *)p2 -> parentItem()) -> internalConnections();
 				if (!cia) {
 					foreach(QGraphicsItem *item, p2 -> parentItem() -> children()) {
 						if (item == p1) can_add_conductor = false;
