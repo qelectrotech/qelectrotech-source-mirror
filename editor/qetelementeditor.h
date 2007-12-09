@@ -119,11 +119,17 @@ class QETElementEditor : public QMainWindow {
 	void xmlPreview();
 };
 
+/**
+	@param siz La nouvelle taille de l'element edite
+*/
 inline void QETElementEditor::setSize(const QSize &siz) {
 	ce_scene -> setWidth(siz.width());
 	ce_scene -> setHeight(siz.height());
 }
 
+/**
+	@return la taille de l'element edite
+*/
 inline QSize QETElementEditor::size() const {
 	return(
 		QSize(
@@ -133,35 +139,59 @@ inline QSize QETElementEditor::size() const {
 	);
 }
 
+/**
+	@param hs Le nouveau point de saisie de l'element edite
+*/
 inline void QETElementEditor::setHotspot(const QPoint &hs) {
 	ce_scene -> setHotspot(hs);
 }
 
+/**
+	@return le point de saisie de l'element edite
+*/
 inline QPoint QETElementEditor::hotspot() const {
 	return(ce_scene -> hotspot());
 }
 
+/**
+	@param nameslist le nouvel ensemble de noms de l'element edite
+*/
 inline void QETElementEditor::setNames(const NamesList &nameslist) {
 	ce_scene -> setNames(nameslist);
 }
 
+/**
+	@param orientation_set le nouvel ensemble d'orientations de l'element edite
+*/
 inline void QETElementEditor::setOrientations(const OrientationSet &orientation_set) {
 	ce_scene -> setOrientations(orientation_set);
 }
 
+/**
+	@return le nouvel ensemble d'orientations de l'element edite
+*/
 inline OrientationSet QETElementEditor::orientations() const {
 	return(ce_scene -> orientations());
 }
 
+/**
+	@param fn Le nouveau nom de fichier de l'element edite
+*/
 inline void QETElementEditor::setFileName(const QString &fn) {
 	_filename = fn;
 	slot_updateTitle();
 }
 
+/**
+	@return le nomde fichier de l'element edite
+*/
 inline QString QETElementEditor::fileName() const {
 	return(_filename);
 }
 
+/**
+	@return la scene d'edition de l'element
+*/
 inline ElementScene *QETElementEditor::elementScene() const {
 	return(ce_scene);
 }

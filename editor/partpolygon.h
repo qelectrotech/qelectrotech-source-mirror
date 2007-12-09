@@ -66,6 +66,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);
 };
+
 /**
 	Specifie si le polygone doit etre ferme
 	@param c true pour un polygone ferme, false sinon

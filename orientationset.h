@@ -73,31 +73,51 @@ class OrientationSet {
 	QString toString() const;
 };
 
+/**
+	@return true si l'orientation "Nord" est autorisee, false sinon
+*/
 inline bool OrientationSet::north() const {
 	return(north_ori);
 }
 
+/**
+	@return true si l'orientation "Est" est autorisee, false sinon
+*/
 inline bool OrientationSet::east() const {
 	return(east_ori);
 }
 
+/**
+	@return true si l'orientation "Sud" est autorisee, false sinon
+*/
 inline bool OrientationSet::south() const {
 	return(south_ori);
 }
 
+/**
+	@return true si l'orientation "Ouest" est autorisee, false sinon
+*/
 inline bool OrientationSet::west() const {
 	return(west_ori);
 }
 
+/**
+	@param theValue La nouvelle orientation par defaut
+*/
 inline void OrientationSet::setDefaultOrientation(const QET::Orientation& theValue) {
 	default_ori = theValue;
-	
 }
 
+/**
+	@return L'orientation par defaut
+*/
 inline QET::Orientation OrientationSet::defaultOrientation() const {
 	return(default_ori);
 }
 
+/**
+	@return L'orientation actuelle
+*/
 inline QET::Orientation OrientationSet::current() const {
 	return(current_ori);
 }
