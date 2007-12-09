@@ -55,6 +55,7 @@ void QETElementEditor::setupActions() {
 	open          = new QAction(QIcon(":/ico/open.png"),         tr("&Ouvrir"),                     this);
 	save          = new QAction(QIcon(":/ico/save.png"),         tr("&Enregistrer"),                this);
 	save_as       = new QAction(QIcon(":/ico/saveas.png"),       tr("Enregistrer sous"),            this);
+	reload        = new QAction(QIcon(":/ico/reload.png"),       tr("Recharger"),                   this);
 	quit          = new QAction(QIcon(":/ico/exit.png"),         tr("&Quitter"),                    this);
 	selectall     = new QAction(                                 tr("Tout s\351lectionner"),        this);
 	deselectall   = new QAction(                                 tr("D\351s\351lectionner tout"),   this);
@@ -87,6 +88,7 @@ void QETElementEditor::setupActions() {
 	new_element       -> setShortcut(QKeySequence::New);
 	open              -> setShortcut(QKeySequence::Open);
 	save              -> setShortcut(QKeySequence::Save);
+	reload            -> setShortcut(QKeySequence::Refresh);
 	quit              -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
@@ -105,6 +107,7 @@ void QETElementEditor::setupActions() {
 	connect(open,          SIGNAL(triggered()), this,     SLOT(slot_open()));
 	connect(save,          SIGNAL(triggered()), this,     SLOT(slot_save()));
 	connect(save_as,       SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
+	connect(reload,        SIGNAL(triggered()), this,     SLOT(slot_reload()));
 	connect(quit,          SIGNAL(triggered()), this,     SLOT(close()));
 	connect(selectall,     SIGNAL(triggered()), ce_scene, SLOT(slot_selectAll()));
 	connect(deselectall,   SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
@@ -198,6 +201,8 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addAction(open);
 	file_menu    -> addAction(save);
 	file_menu    -> addAction(save_as);
+	file_menu    -> addSeparator();
+	file_menu    -> addAction(reload);
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(quit);
 	
@@ -481,6 +486,31 @@ void QETElementEditor::slot_open() {
 	QETElementEditor *cee = new QETElementEditor();
 	cee -> fromFile(user_filename);
 	cee -> show();
+}
+
+/**
+	Recharge l'element edite
+*/
+void QETElementEditor::slot_reload() {
+	// impossible de recharger un element non enregistre
+	if (_filename.isEmpty()) return;
+	
+	// s'il ya des modifications, on demande a l'utilisateur s'il est certain
+	// de vouloir recharger
+	if (!ce_scene -> undoStack().isClean()) {
+		QMessageBox::StandardButton answer = QMessageBox::question(
+			this,
+			tr("Recharger l'\351l\351ment"),
+			tr("Vous avez efffectu\351 des modifications sur cet \351l\351ment. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'\351l\351ment ?"),
+			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
+			QMessageBox::Cancel
+		);
+		if (answer != QMessageBox::Yes) return;
+	}
+	
+	// recharge l'element
+	ce_scene -> reset();
+	fromFile(_filename);
 }
 
 bool QETElementEditor::slot_save() {

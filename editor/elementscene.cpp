@@ -722,3 +722,17 @@ QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
 	if (include_terminals) all_items_list += terminals;
 	return(all_items_list);
 }
+
+/**
+	Supprime les parties de l'element et les objets d'annulations.
+	Les autres caracteristiques sont conservees.
+*/
+void ElementScene::reset() {
+	// supprime les objets d'annulation
+	undoStack().clear();
+	// enleve les elements de la scene
+	foreach (QGraphicsItem *qgi, items()) {
+		removeItem(qgi);
+		qgiManager().release(qgi);
+	}
+}

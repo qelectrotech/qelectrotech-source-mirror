@@ -55,7 +55,7 @@ class QETElementEditor : public QMainWindow {
 	/// Liste des parties
 	QListWidget *parts_list;
 	/// actions du menu fichier
-	QAction *new_element, *open, *save, *save_as, *quit;
+	QAction *new_element, *open, *save, *save_as, *reload, *quit;
 	/// actions du menu edition
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *undo, *redo;
@@ -105,6 +105,7 @@ class QETElementEditor : public QMainWindow {
 	public slots:
 	void slot_new();
 	void slot_open();
+	void slot_reload();
 	bool slot_save();
 	bool slot_saveAs();
 	void slot_setRubberBandToView();

@@ -98,6 +98,7 @@ class ElementScene : public QGraphicsScene {
 	void setInternalConnections(bool);
 	virtual const QDomDocument toXml() const;
 	virtual void fromXml(const QDomDocument &);
+	virtual void reset();
 	virtual QList<QGraphicsItem *> zItems(bool = false) const;
 	QRectF sceneContent() const;
 	QUndoStack &undoStack();
