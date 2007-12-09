@@ -584,7 +584,7 @@ void ElementScene::slot_editOrientations() {
 	// cree un dialogue
 	QDialog dialog_ori;
 	dialog_ori.setModal(true);
-	dialog_ori.setFixedSize(400, 230);
+	dialog_ori.setFixedSize(400, 260);
 	dialog_ori.setWindowTitle(tr("\311diter les orientations"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_ori);
 	
@@ -599,6 +599,11 @@ void ElementScene::slot_editOrientations() {
 	ori_widget -> setOrientationSet(ori);
 	dialog_layout -> addWidget(ori_widget);
 	
+	// ajoute une case a cocher pour les connexions internes
+	QCheckBox *ic_checkbox = new QCheckBox(tr("Autoriser les connexions internes"));
+	ic_checkbox -> setChecked(internal_connections);
+	dialog_layout -> addWidget(ic_checkbox);
+	
 	// ajoute deux boutons au dialogue
 	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
@@ -610,6 +615,9 @@ void ElementScene::slot_editOrientations() {
 		OrientationSet new_ori = ori_widget -> orientationSet();
 		if (new_ori != ori) {
 			undoStack().push(new ChangeOrientationsCommand(this, ori, new_ori));
+		}
+		if (ic_checkbox -> isChecked() != internal_connections) {
+			undoStack().push(new AllowInternalConnectionsCommand(this, ic_checkbox -> isChecked()));
 		}
 	}
 }

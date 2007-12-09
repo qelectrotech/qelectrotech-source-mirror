@@ -94,6 +94,8 @@ class ElementScene : public QGraphicsScene {
 	NamesList names() const;
 	OrientationSet orientations();
 	void setOrientations(const OrientationSet &);
+	bool internalConnections();
+	void setInternalConnections(bool);
 	virtual const QDomDocument toXml() const;
 	virtual void fromXml(const QDomDocument &);
 	virtual QList<QGraphicsItem *> zItems(bool = false) const;
@@ -211,6 +213,20 @@ inline OrientationSet ElementScene::orientations() {
 */
 inline void ElementScene::setOrientations(const OrientationSet &orientation_set) {
 	ori = orientation_set;
+}
+
+/**
+	@return true si les connexions internes sont acceptees, false sinon
+*/
+inline bool ElementScene::internalConnections() {
+	return(internal_connections);
+}
+
+/**
+	@param ic true pour que les connexions internes soient acceptees, false sinon
+*/
+inline void ElementScene::setInternalConnections(bool ic) {
+	internal_connections = ic;
 }
 
 #endif

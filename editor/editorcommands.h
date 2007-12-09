@@ -277,4 +277,29 @@ class ChangeZValueCommand : public QUndoCommand {
 	/// type de traitement
 	Option option;
 };
+
+/**
+	Cette classe represente l'action d'autoriser ou non les connexions
+	internes pour un element.
+*/
+class AllowInternalConnectionsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	AllowInternalConnectionsCommand(ElementScene *, bool, QUndoCommand * = 0);
+	virtual ~AllowInternalConnectionsCommand();
+	private:
+	AllowInternalConnectionsCommand(const AllowInternalConnectionsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Element edite auquel il faut appliquer les modifications
+	ElementScene *element;
+	/// autorisation des connexions internes apres modification
+	bool ic;
+};
 #endif

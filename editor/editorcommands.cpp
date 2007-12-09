@@ -475,3 +475,30 @@ void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_
 	foreach(QGraphicsItem *qgi,     selected_items) redo_hash.insert(qgi, z ++);
 	foreach(QGraphicsItem *qgi, non_selected_items) redo_hash.insert(qgi, z ++);
 }
+
+/**
+	Constructeur
+	@param elmt ElementScene concernee
+	@param allow true pour que les connexions internes soient acceptees, false sinon
+	@param parent QUndoCommand parent
+*/
+AllowInternalConnectionsCommand::AllowInternalConnectionsCommand(ElementScene *elmt, bool allow, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("modification connexions internes"), parent),
+	element(elmt),
+	ic(allow)
+{
+}
+
+/// Destructeur
+AllowInternalConnectionsCommand::~AllowInternalConnectionsCommand() {
+}
+
+/// Annule le changement d'autorisation pour les connexions internes
+void AllowInternalConnectionsCommand::undo() {
+	element -> setInternalConnections(!ic);
+}
+
+/// Refait le changement d'autorisation pour les connexions internes
+void AllowInternalConnectionsCommand::redo() {
+	element -> setInternalConnections(ic);
+}
