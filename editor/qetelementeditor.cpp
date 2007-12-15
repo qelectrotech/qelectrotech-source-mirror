@@ -602,16 +602,20 @@ void QETElementEditor::slot_createPartsList() {
 	Met a jour la selection dans la liste des parties
 */
 void QETElementEditor::slot_updatePartsList() {
-	parts_list -> blockSignals(true);
-	int i = 0;
-	QList<QGraphicsItem *> items = ce_scene -> zItems(true);
-	for (int j = items.count() - 1 ; j >= 0 ; -- j) {
-		QGraphicsItem *qgi = items[j];
-		QListWidgetItem *qlwi = parts_list -> item(i);
-		if (qlwi) qlwi -> setSelected(qgi -> isSelected());
-		++ i;
+	if (parts_list -> count() != ce_scene -> items().count()) {
+		slot_createPartsList();
+	} else {
+		parts_list -> blockSignals(true);
+		int i = 0;
+		QList<QGraphicsItem *> items = ce_scene -> zItems(true);
+		for (int j = items.count() - 1 ; j >= 0 ; -- j) {
+			QGraphicsItem *qgi = items[j];
+			QListWidgetItem *qlwi = parts_list -> item(i);
+			if (qlwi) qlwi -> setSelected(qgi -> isSelected());
+			++ i;
+		}
+		parts_list -> blockSignals(false);
 	}
-	parts_list -> blockSignals(false);
 }
 
 /**
