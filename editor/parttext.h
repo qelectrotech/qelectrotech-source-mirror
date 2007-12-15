@@ -49,6 +49,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	void setPos(qreal, qreal);
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
+	virtual bool isUseless() const;
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);

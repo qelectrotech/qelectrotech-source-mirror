@@ -178,3 +178,12 @@ QVariant PartEllipse::itemChange(GraphicsItemChange change, const QVariant &valu
 QPointF PartEllipse::sceneTopLeft() const {
 	return(mapToScene(rect().topLeft()));
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Une ellipse est pertinente des lors que ses dimensions ne sont pas nulles
+*/
+bool PartEllipse::isUseless() const {
+	return(rect().isNull());
+}

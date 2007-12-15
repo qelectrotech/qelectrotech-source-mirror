@@ -51,6 +51,7 @@ class CustomElementPart {
 	virtual QWidget *elementInformations() = 0;
 	virtual void setProperty(const QString &, const QVariant &) = 0;
 	virtual QVariant property(const QString &) = 0;
+	virtual bool isUseless() const = 0;
 	virtual QETElementEditor *elementEditor() const;
 	virtual ElementScene *elementScene() const;
 	virtual QUndoStack &undoStack() const;

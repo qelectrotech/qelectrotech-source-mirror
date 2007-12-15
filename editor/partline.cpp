@@ -65,12 +65,6 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 	QPointF p1(sceneP1());
 	QPointF p2(sceneP2());
 	
-	// cas particulier : on n'enregistre pas les lignes equivalentes a un point
-	if (p1 == p2) {
-		QDomElement *null_qdom_elmt = new QDomElement();
-		return(*null_qdom_elmt);
-	}
-	
 	QDomElement xml_element = xml_document.createElement("line");
 	xml_element.setAttribute("x1", p1.x());
 	xml_element.setAttribute("y1", p1.y());
@@ -248,3 +242,13 @@ QRectF PartLine::boundingRect() const {
 	r.adjust(-adjust, -adjust, adjust, adjust);
 	return(r);
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Une ligne est pertinente des lors que ses deux points sont differents
+*/
+bool PartLine::isUseless() const {
+	return(sceneP1() == sceneP2());
+}
+

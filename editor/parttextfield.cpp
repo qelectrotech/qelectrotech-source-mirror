@@ -231,3 +231,13 @@ QRectF PartTextField::boundingRect() const {
 	r.adjust(0.0, -2.0, 0.0, 0.0);
 	return(r);
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Un champ de texte est toujours pertinent ; cette fonction renvoie donc
+	toujours false
+*/
+bool PartTextField::isUseless() const {
+	return(false);
+}

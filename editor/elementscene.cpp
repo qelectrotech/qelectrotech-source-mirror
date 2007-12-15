@@ -232,20 +232,24 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (e -> button() & Qt::LeftButton) {
 		switch(behavior) {
 			case Line:
+				if (qgiManager().manages(current_line)) break;
 				undo_stack.push(new AddPartCommand(tr("ligne"), this, current_line));
 				emit(partsAdded());
 				break;
 			case Ellipse:
+				if (qgiManager().manages(current_ellipse)) break;
 				current_ellipse -> setRect(current_ellipse -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("ellipse"), this, current_ellipse));
 				emit(partsAdded());
 				break;
 			case Arc:
+				if (qgiManager().manages(current_arc)) break;
 				current_arc-> setRect(current_arc -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("arc"), this, current_arc));
 				emit(partsAdded());
 				break;
 			case Circle:
+				if (qgiManager().manages(current_circle)) break;
 				current_circle -> setRect(current_circle -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("cercle"), this, current_circle));
 				emit(partsAdded());
@@ -381,6 +385,7 @@ const QDomDocument ElementScene::toXml() const {
 	// description de l'element
 	foreach(QGraphicsItem *qgi, zItems(true)) {
 		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi)) {
+			if (ce -> isUseless()) continue;
 			description.appendChild(ce -> toXml(xml_document));
 		}
 	}

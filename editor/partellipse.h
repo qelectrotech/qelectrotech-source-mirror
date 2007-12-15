@@ -48,6 +48,7 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	virtual QPointF sceneTopLeft() const;
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
+	virtual bool isUseless() const;
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

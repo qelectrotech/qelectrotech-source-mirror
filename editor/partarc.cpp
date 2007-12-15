@@ -241,3 +241,13 @@ int PartArc::angle() const {
 int PartArc::startAngle() const {
 	return(start_angle);
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Un arc est pertinent des lors que ses dimensions et son etendue ne sont
+	pas nulles.
+*/
+bool PartArc::isUseless() const {
+	return(rect().isNull() || !angle());
+}

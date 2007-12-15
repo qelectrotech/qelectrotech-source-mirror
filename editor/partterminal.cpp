@@ -216,3 +216,13 @@ void PartTerminal::updateSecondPoint() {
 		case QET::West : second_point = QPointF(ts,  0.0); break;
 	}
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Une borne est toujours pertinente ; cette fonction renvoie donc
+	toujours false
+*/
+bool PartTerminal::isUseless() const {
+	return(false);
+}

@@ -188,3 +188,12 @@ QRectF PartCircle::boundingRect() const {
 	r.adjust(-adjust, -adjust, adjust, adjust);
 	return(r);
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Un cercle est pertinent des lors que son rayon n'est pas nul
+*/
+bool PartCircle::isUseless() const {
+	return(rect().isNull());
+}

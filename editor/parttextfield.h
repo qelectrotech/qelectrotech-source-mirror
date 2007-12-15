@@ -55,6 +55,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	void setFollowParentRotations(bool);
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
+	virtual bool isUseless() const;
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);

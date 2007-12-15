@@ -62,6 +62,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	bool isClosed() const;
 	void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
+	virtual bool isUseless() const;
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

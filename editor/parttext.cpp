@@ -207,3 +207,12 @@ QRectF PartText::boundingRect() const {
 	r.adjust(0.0, -2.0, 0.0, 0.0);
 	return(r);
 }
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Un texte statique n'est pas pertinent lorsque son texte est vide.
+*/
+bool PartText::isUseless() const {
+	return(toPlainText().isEmpty());
+}

@@ -51,6 +51,7 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	virtual QRectF boundingRect() const;
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
+	virtual bool isUseless() const;
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

@@ -46,5 +46,6 @@ class QGIManager {
 	void manage(const QList<QGraphicsItem *> &);
 	void release(const QList<QGraphicsItem *> &);
 	void setDestroyQGIOnDelete(bool);
+	bool manages(QGraphicsItem *) const;
 };
 #endif

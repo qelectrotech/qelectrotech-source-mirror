@@ -54,6 +54,7 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	void setOrientation(QET::Orientation);
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
+	virtual bool isUseless() const;
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

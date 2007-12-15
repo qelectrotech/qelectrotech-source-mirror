@@ -91,3 +91,12 @@ void QGIManager::release(const QList<QGraphicsItem *> &qgis) {
 void QGIManager::setDestroyQGIOnDelete(bool b) {
 	destroy_qgi_on_delete = b;
 }
+
+/**
+	Permet de savoir si ce QGIManager gere ou non un item donne
+	@param qgi QGraphicsItem dont il faut verifier la presence
+	@return true si l'item est gere, false sinon
+*/
+bool QGIManager::manages(QGraphicsItem *qgi) const {
+	return(qgi_manager.contains(qgi));
+}

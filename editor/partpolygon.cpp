@@ -144,3 +144,22 @@ QVariant PartPolygon::itemChange(GraphicsItemChange change, const QVariant &valu
 	}
 	return(QGraphicsPolygonItem::itemChange(change, value));
 }
+
+
+/**
+	@return true si cette partie n'est pas pertinente et ne merite pas d'etre
+	conservee / enregistree.
+	Un polygone est pertinent des lors qu'il possede deux points differents.
+*/
+bool PartPolygon::isUseless() const {
+	QPolygonF poly(polygon());
+	
+	if (polygon().count() < 2) return(true);
+	
+	QPointF previous_point;
+	for (int i = 1 ; i < poly.count() ; ++ i) {
+		if (poly[i] != poly[i-1]) return(false);
+	}
+	
+	return(true);
+}
