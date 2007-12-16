@@ -48,16 +48,30 @@ class Element : public QGraphicsItem {
 	
 	// methodes
 	public:
+	/**
+		permet de caster un QGraphicsItem en Element avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	
 	// methodes virtuelles pures a definir dans les classes enfants
+	/// @return la liste des bornes de cet element
 	virtual QList<Terminal *> terminals() const = 0;
+	/// @return la liste des conducteurs relies a cet element
 	virtual QList<Conductor *> conductors() const = 0;
+	/// @return le nombre de bornes actuel de cet element
 	virtual int nbTerminals() const = 0;
+	/// @return le nombre de bornes minimum de cet element
 	virtual int nbTerminalsMin() const = 0;
+	/// @return le nombre de bornes maximum de cet element
 	virtual int nbTerminalsMax() const = 0;
+	/**
+		Dessine l'element
+	*/
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
+	/// @return L'ID du type de l'element
 	virtual QString typeId() const = 0;
+	/// @return Le nom de l'element
 	virtual QString nom() const = 0;
 	Diagram *diagram() const;
 	

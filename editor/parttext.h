@@ -39,6 +39,10 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	// methodes
 	public:
 	enum { Type = UserType + 1107 };
+	/**
+		permet de caster un QGraphicsItem en PartText avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("texte")); }
 	void fromXml(const QDomElement &);

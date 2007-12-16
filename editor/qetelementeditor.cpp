@@ -23,6 +23,10 @@
 #include "newelementwizard.h"
 #include "elementitemeditor.h"
 
+/**
+	Constructeur
+	@param parent QWidget parent
+*/
 QETElementEditor::QETElementEditor(QWidget *parent) :
 	QMainWindow(parent),
 	read_only(false),
@@ -47,9 +51,13 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	show();
 }
 
+/// Destructeur
 QETElementEditor::~QETElementEditor() {
 }
 
+/**
+	Met en place les actions
+*/
 void QETElementEditor::setupActions() {
 	new_element   = new QAction(QIcon(":/ico/new.png"),          tr("&Nouveau"),                    this);
 	open          = new QAction(QIcon(":/ico/open.png"),         tr("&Ouvrir"),                     this);
@@ -184,6 +192,9 @@ void QETElementEditor::setupActions() {
 	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateTitle()));
 }
 
+/**
+	Met en place les menus.
+*/
 void QETElementEditor::setupMenus() {
 	file_menu    = new QMenu(tr("Fichier"),    this);
 	edit_menu    = new QMenu(tr("\311dition"), this);
@@ -240,6 +251,9 @@ void QETElementEditor::setupMenus() {
 	*/
 }
 
+/**
+	Met a jour les menus
+*/
 void QETElementEditor::slot_updateMenus() {
 	bool selected_items = !ce_scene -> selectedItems().isEmpty();
 	edit_delete   -> setEnabled(selected_items);
@@ -250,6 +264,9 @@ void QETElementEditor::slot_updateMenus() {
 	save -> setEnabled(!ce_scene -> undoStack().isClean());
 }
 
+/**
+	Met a jour le titre de la fenetre
+*/
 void QETElementEditor::slot_updateTitle() {
 	QString title = min_title;
 	title += " - " + ce_scene -> names().name() + " ";
@@ -260,6 +277,9 @@ void QETElementEditor::slot_updateTitle() {
 	setWindowTitle(title);
 }
 
+/**
+	Met en place l'interface
+*/
 void QETElementEditor::setupInterface() {
 	// editeur
 	ce_scene = new ElementScene(this, this);
@@ -316,20 +336,36 @@ void QETElementEditor::setupInterface() {
 	statusBar() -> showMessage(tr("\311diteur d'\351l\351ments"));
 }
 
+/**
+	Passe l'editeur d'element en mode selection : le pointeur deplace les
+	elements selectionnes et il est possible d'utiliser un rectangle de selection.
+*/
 void QETElementEditor::slot_setRubberBandToView() {
 	ce_view -> setDragMode(QGraphicsView::RubberBandDrag);
 }
 
+/**
+	Passe l'editeur d'element en mode immobile (utilise pour la lecture seule)
+*/
 void QETElementEditor::slot_setNoDragToView() {
 	ce_view -> setDragMode(QGraphicsView::NoDrag);
 }
 
+/**
+	Passe l'editeur en mode normal
+*/
 void QETElementEditor::slot_setNormalMode() {
 	if (!move -> isChecked()) move -> setChecked(true);
 	ce_view -> setDragMode(QGraphicsView::RubberBandDrag);
 	ce_scene -> slot_move();
 }
 
+/**
+	Met a jour la zone d'information et d'edition.
+	Si plusieurs parties sont selectionnees, seul leur nombre est affiche.
+	Sinon, le widget d'edition de la partie est insere.
+	@see CustomElementPart::elementInformations()
+*/
 void QETElementEditor::slot_updateInformations() {
 	QList<QGraphicsItem *> selected_qgis = ce_scene -> selectedItems();
 	QList<CustomElementPart *> selected_parts;
@@ -363,6 +399,10 @@ void QETElementEditor::slot_updateInformations() {
 	}
 }
 
+/**
+	Affiche le code XML correspondant a l'element dans son etat actuel dans
+	une boite de dialogue.
+*/
 void QETElementEditor::xmlPreview() {
 	QMessageBox::information(
 		this,
@@ -371,6 +411,10 @@ void QETElementEditor::xmlPreview() {
 	);
 }
 
+/**
+	Charge un fichier
+	@param filepath Chemin du fichier a charger
+*/
 void QETElementEditor::fromFile(const QString &filepath) {
 	bool state = true;
 	QString error_message;
@@ -424,6 +468,12 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	setFileName(filepath);
 }
 
+
+/**
+	Enregistre l'element vers un fichier
+	@param fn Chemin du fichier a enregistrer
+	@return true en cas de reussite, false sinon
+*/
 bool QETElementEditor::toFile(const QString &fn) {
 	QFile file(fn);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
@@ -469,11 +519,17 @@ bool QETElementEditor::isReadOnly() const {
 	return(read_only);
 }
 
+/**
+	Lance l'assistant de creation d'un nouvel element.
+*/
 void QETElementEditor::slot_new() {
 	NewElementWizard new_element_wizard;
 	new_element_wizard.exec();
 }
 
+/**
+	Ouvre un fichier
+*/
 void QETElementEditor::slot_open() {
 	// demande un nom de fichier a ouvrir a l'utilisateur
 	QString user_filename = QFileDialog::getOpenFileName(
@@ -513,6 +569,12 @@ void QETElementEditor::slot_reload() {
 	fromFile(_filename);
 }
 
+/**
+	Enregistre l'element en cours d'edition.
+	Si le nom du fichier en cours n'est pas connu, cette methode equivaut a
+	l'action "Enregistrer sous"
+	@see slot_saveAs()
+*/
 bool QETElementEditor::slot_save() {
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (_filename.isEmpty()) return(slot_saveAs());
@@ -522,6 +584,9 @@ bool QETElementEditor::slot_save() {
 	return(result_save);
 }
 
+/**
+	Demande un nom de fichier a l'utilisateur et enregistre l'element
+*/
 bool QETElementEditor::slot_saveAs() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer l'element
 	QString fn = QFileDialog::getSaveFileName(
@@ -545,6 +610,12 @@ bool QETElementEditor::slot_saveAs() {
 	return(result_save);
 }
 
+/**
+	@return true si l'element peut etre ferme.
+	Un element peut etre ferme s'il ne comporte aucune modification.
+	Si l'element comporte des modifications, la question est posee a
+	l'utilisateur.
+*/
 bool QETElementEditor::canClose() {
 	if (ce_scene -> undoStack().isClean()) return(true);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours

@@ -43,6 +43,10 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	// methodes
 	public:
 	enum { Type = UserType + 1106 };
+	/**
+		permet de caster un QGraphicsItem en PartTerminal avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("borne")); }
 	virtual void fromXml(const QDomElement &);

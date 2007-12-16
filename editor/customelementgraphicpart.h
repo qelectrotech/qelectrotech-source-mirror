@@ -36,6 +36,10 @@ class CustomElementGraphicPart : public CustomElementPart {
 	
 	// constructeurs, destructeur
 	public:
+	/**
+		Constructeur
+		@param editor Editeur d'element auquel cette partie est rattachee
+	*/
 	CustomElementGraphicPart(QETElementEditor *editor) :
 		CustomElementPart(editor),
 		_linestyle(NormalStyle),
@@ -47,6 +51,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 		style_editor = new StyleEditor(elementEditor(), this);
 	};
 	
+	/// Destructeur
 	virtual ~CustomElementGraphicPart() {
 		delete style_editor;
 	};

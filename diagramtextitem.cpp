@@ -104,6 +104,10 @@ QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
 	return(result);
 }
 
+/**
+	Gere les double-clics sur ce champ de texte.
+	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
+*/
 void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 	if (flags() & QGraphicsItem::ItemIsMovable && !(textInteractionFlags() & Qt::TextEditable)) {
 		// rend le champ de texte editable

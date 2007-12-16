@@ -43,7 +43,7 @@ class Terminal : public QGraphicsItem {
 	// methodes
 	public:
 	/**
-		permet de caster un QGraphicsItem en Borne avec qgraphicsitem_cast
+		permet de caster un QGraphicsItem en Terminal avec qgraphicsitem_cast
 		@return le type de QGraphicsItem
 	*/
 	virtual int type() const { return Type; }

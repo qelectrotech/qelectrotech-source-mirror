@@ -43,6 +43,10 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	// methodes
 	public:
 	enum { Type = UserType + 1108 };
+	/**
+		permet de caster un QGraphicsItem en PartTextField avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("champ de texte")); }
 	void fromXml(const QDomElement &);

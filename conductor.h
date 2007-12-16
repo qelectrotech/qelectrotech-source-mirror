@@ -50,6 +50,10 @@ class Conductor : public QGraphicsPathItem {
 	
 	// methodes
 	public:
+	/**
+		permet de caster un QGraphicsItem en Conductor avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	void destroy();
 	/// @return true si ce conducteur est detruit

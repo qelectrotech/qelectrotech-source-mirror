@@ -59,6 +59,7 @@ class DiagramView : public QGraphicsView {
 	void removeColumn();
 	void expand();
 	void shrink();
+	/// @return Le schema visualise par ce DiagramView
 	Diagram *diagram() { return(scene); }
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();

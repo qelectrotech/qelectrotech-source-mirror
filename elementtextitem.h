@@ -42,6 +42,7 @@ class ElementTextItem : public DiagramTextItem {
 	// methodes
 	public:
 	virtual int type() const { return Type; }
+	/// @return le rectangle delimitant le champ de texte
 	virtual QRectF boundingRect() const { return(QGraphicsTextItem::boundingRect().adjusted(0.0, -1.1, 0.0, 0.0)); }
 	bool followParentRotations() const;
 	void setFollowParentRotations(bool);

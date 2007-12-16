@@ -40,6 +40,10 @@ class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart 
 	// methodes
 	public:
 	enum { Type = UserType + 1102 };
+	/**
+		permet de caster un QGraphicsItem en PartCircle avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual QString name() const { return(QObject::tr("cercle")); }

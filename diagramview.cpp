@@ -858,6 +858,10 @@ bool DiagramView::event(QEvent *e) {
 	return(QGraphicsView::event(e));
 }
 
+/**
+	Passe le DiagramView en mode "ajout de texte". Un clic cree alors un
+	nouveau champ de texte.
+*/
 void DiagramView::addText() {
 	is_adding_text = true;
 }

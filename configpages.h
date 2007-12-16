@@ -28,10 +28,18 @@
 class ConfigPage : public QWidget {
 	Q_OBJECT
 	public:
+	/**
+		Constructeur
+		@param parent QWidget parent
+	*/
 	ConfigPage(QWidget *parent) : QWidget(parent) {};
+	/// Destructeur
 	virtual ~ConfigPage() {};
+	/// Applique la configuration saisie par l'utilisateur dans la page de configuration
 	virtual void applyConf() = 0;
+	/// @return le titre de la page de configuration
 	virtual QString title() const = 0;
+	/// @return l'icone de la page de configuration
 	virtual QIcon icon() const = 0;
 };
 

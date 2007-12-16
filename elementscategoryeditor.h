@@ -29,7 +29,6 @@ class ElementsCategoryEditor : public QDialog {
 	
 	// constructeurs, destructeur
 	public:
-	ElementsCategoryEditor(QWidget * = 0);
 	ElementsCategoryEditor(const QString &, bool = true, QWidget * = 0);
 	virtual ~ElementsCategoryEditor();
 	

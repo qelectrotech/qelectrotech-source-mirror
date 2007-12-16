@@ -42,6 +42,10 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	// methodes
 	public:
 	enum { Type = UserType + 1101 };
+	/**
+		permet de caster un QGraphicsItem en PartArc avec qgraphicsitem_cast
+		@return le type de QGraphicsItem
+	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual QString name() const { return(QObject::tr("arc")); }

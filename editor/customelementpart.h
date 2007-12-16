@@ -34,7 +34,12 @@ class ElementScene;
 class CustomElementPart {
 	// constructeurs, destructeur
 	public:
+	/**
+		Constructeur
+		@param editor Editeur d'element auquel cette partie est rattachee
+	*/
 	CustomElementPart(QETElementEditor *editor) : element_editor(editor) {}
+	/// Destructeur
 	virtual ~CustomElementPart() {}
 	
 	private:
@@ -46,15 +51,37 @@ class CustomElementPart {
 	
 	// methodes
 	public:
+	/**
+		Charge la partie depuis un element XML sense le decrire
+	*/
 	virtual void fromXml(const QDomElement &) = 0;
+	/**
+		Enregistre la partie dans un document XML
+	*/
 	virtual const QDomElement toXml(QDomDocument &) const = 0;
+	/// @return un widget suppose decrire et/ou permettre de modifier la partie
 	virtual QWidget *elementInformations() = 0;
+	/**
+		Permet de modifier une des proprietes de la partie
+	*/
 	virtual void setProperty(const QString &, const QVariant &) = 0;
+	/**
+		Permet de lire une des proprietes de la partie
+	*/
 	virtual QVariant property(const QString &) = 0;
+	/**
+		@return true si la partie n'est pas pertinente, false sinon
+		Typiquement, une partie non pertinente n'est pas conservee lors de
+		l'enregistrement de l'element.
+	*/
 	virtual bool isUseless() const = 0;
+	/// @return un pointeur vers l'editeur d'element parent
 	virtual QETElementEditor *elementEditor() const;
+	/// @return un pointeur vers la scene d'edition parente
 	virtual ElementScene *elementScene() const;
+	/// @return la pile d'annulations a utiliser
 	virtual QUndoStack &undoStack() const;
+	/// @return le nom de la partie
 	virtual QString name() const = 0;
 };
 #endif
