@@ -129,7 +129,7 @@ class Conductor : public QGraphicsPathItem {
 	static int getCoeff(const qreal &, const qreal &);
 	static int getSign(const qreal &);
 	QHash<ConductorSegmentProfile *, qreal> shareOffsetBetweenSegments(const qreal &offset, const QList<ConductorSegmentProfile *> &, const qreal & = 0.01) const;
-	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 12.0);
+	static QPointF extendTerminal(const QPointF &, QET::Orientation, qreal = 9.0);
 	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
 	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);

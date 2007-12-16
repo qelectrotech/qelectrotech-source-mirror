@@ -30,10 +30,10 @@ QBrush Conductor::conductor_brush = QBrush();
 QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
 /**
 	Constructeur
-	@param p1     Premiere Borne auquel le conducteur est lie
-	@param p2     Seconde Borne auquel le conducteur est lie
+	@param p1     Premiere Borne a laquelle le conducteur est lie
+	@param p2     Seconde Borne a laquelle le conducteur est lie
 	@param parent Element parent du conducteur (0 par defaut)
-	@param scene  QGraphicsScene auquelle appartient le conducteur
+	@param scene  QGraphicsScene a laquelle appartient le conducteur
 */
 Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) :
 	QGraphicsPathItem(parent, scene),
@@ -351,12 +351,14 @@ void Conductor::priv_calculeConductor(const QPointF &p1, QET::Orientation o1, co
 		// trajet descendant
 		if ((ori_depart == QET::North && (ori_arrivee == QET::South || ori_arrivee == QET::West)) || (ori_depart == QET::East && ori_arrivee == QET::West)) {
 			// cas « 3 »
-			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
+			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
+			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
 		} else if ((ori_depart == QET::South && (ori_arrivee == QET::North || ori_arrivee == QET::East)) || (ori_depart == QET::West && ori_arrivee == QET::East)) {
 			// cas « 4 »
-			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
+			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
+			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
 		} else if ((ori_depart == QET::North || ori_depart == QET::East) && (ori_arrivee == QET::North || ori_arrivee == QET::East)) {
@@ -368,12 +370,14 @@ void Conductor::priv_calculeConductor(const QPointF &p1, QET::Orientation o1, co
 		// trajet montant
 		if ((ori_depart == QET::West && (ori_arrivee == QET::East || ori_arrivee == QET::South)) || (ori_depart == QET::North && ori_arrivee == QET::South)) {
 			// cas « 3 »
-			qreal ligne_inter_y = (depart.y() + arrivee.y()) / 2.0;
+			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
+			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
 		} else if ((ori_depart == QET::East && (ori_arrivee == QET::West || ori_arrivee == QET::North)) || (ori_depart == QET::South && ori_arrivee == QET::North)) {
 			// cas « 4 »
-			qreal ligne_inter_x = (depart.x() + arrivee.x()) / 2.0;
+			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
+			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
 		} else if ((ori_depart == QET::West || ori_depart == QET::North) && (ori_arrivee == QET::West || ori_arrivee == QET::North)) {
@@ -1157,9 +1161,20 @@ QList<QPointF> Conductor::junctions() const {
 QList<ConductorBend> Conductor::bends() const {
 	QList<ConductorBend> points;
 	if (!segments) return(points);
+	
+	// recupere la liste des segments de taille non nulle
+	QList<ConductorSegment *> visible_segments;
 	ConductorSegment *segment = segments;
 	while (segment -> hasNextSegment()) {
-		ConductorSegment *next_segment = segment -> nextSegment();
+		if (!segment -> isPoint()) visible_segments << segment;
+		segment = segment -> nextSegment();
+	}
+	if (!segment  -> isPoint()) visible_segments << segment;
+	
+	ConductorSegment *next_segment;
+	for (int i = 0 ; i < visible_segments.count() -1 ; ++ i) {
+		segment = visible_segments[i];
+		next_segment = visible_segments[i + 1];
 		if (!segment -> isPoint() && !next_segment -> isPoint()) {
 			// si les deux segments ne sont pas dans le meme sens, on a une bifurcation
 			if (next_segment -> type() != segment -> type()) {
@@ -1191,7 +1206,6 @@ QList<ConductorBend> Conductor::bends() const {
 				points << qMakePair(segment -> secondPoint(), bend_type);
 			}
 		}
-		segment = next_segment;
 	}
 	return(points);
 }
