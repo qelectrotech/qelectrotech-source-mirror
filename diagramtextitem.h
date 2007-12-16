@@ -57,6 +57,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	
 	// signaux
 	signals:
+	/// signal emis lorsque le champ de texte perd le focus
 	void lostFocus();
 	
 	// slots

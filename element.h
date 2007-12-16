@@ -39,6 +39,13 @@ class Element : public QGraphicsItem {
 	enum { Type = UserType + 1000 };
 	
 	protected:
+	/**
+		orientations de l'element :
+			* autorisations
+			* orientation en cours
+			* orientation par defaut
+		@see OrientationSet
+	*/
 	OrientationSet ori;
 	
 	private:
@@ -128,7 +135,7 @@ inline bool Element::internalConnections() {
 /**
 	Permet de specifier si l'element accepte les connexions internes,
 	c'est-a-dire que ses bornes peuvent etre reliees entre elles
-	@param cia true pour que l'element accepte les connexions internes, false pour
+	@param ic true pour que l'element accepte les connexions internes, false pour
 	qu'il les interdise
 */
 inline void Element::setInternalConnections(bool ic) {

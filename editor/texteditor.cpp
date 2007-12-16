@@ -75,9 +75,13 @@ void TextEditor::updateText() {
 	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
 }
 
+/// Met a jour l'abscisse de la position du texte et cree un objet d'annulation
 void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "x",    qle_x -> text().toDouble()); updateForm(); }
+/// Met a jour l'ordonnee de la position du texte et cree un objet d'annulation
 void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "y",    qle_y -> text().toDouble()); updateForm(); }
+/// Met a jour le texte et cree un objet d'annulation
 void TextEditor::updateTextT() { addChangePartCommand(tr("texte"),       part, "text", qle_text -> text());         }
+/// Met a jour la taille du texte et cree un objet d'annulation
 void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "size", font_size -> value());       }
 
 /**

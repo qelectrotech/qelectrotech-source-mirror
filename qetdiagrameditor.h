@@ -98,51 +98,51 @@ class QETDiagramEditor : public QMainWindow {
 	// attributs
 	public:
 	// Actions faisables au travers de menus dans l'application QElectroTech
-	QActionGroup *grp_visu_sel;
-	QAction *mode_selection;
-	QAction *mode_visualise;
-	QAction *new_file;
-	QAction *open_file;
-	QAction *close_file;
-	QAction *save_file;
-	QAction *save_file_sous;
-	QAction *import_diagram;
-	QAction *export_diagram;
-	QAction *print;
-	QAction *quit_editor;
-	QAction *undo;
-	QAction *redo;
-	QAction *cut;
-	QAction *copy;
-	QAction *paste;
-	QAction *select_all;
-	QAction *select_nothing;
-	QAction *select_invert;
-	QAction *delete_selection;
-	QAction *rotate_selection;
-	QAction *conductor_prop;
-	QAction *conductor_reset;
-	QAction *conductor_default;
-	QAction *infos_diagram;
-	QAction *add_text;
-	QAction *add_column;
-	QAction *remove_column;
-	QAction *expand_diagram;
-	QAction *shrink_diagram;
-	QAction *zoom_in;
-	QAction *zoom_out;
-	QAction *zoom_fit;
-	QAction *zoom_reset;
-	QAction *about_qet;
-	QAction *about_qt;
-	QAction *configure;
-	QAction *fullscreen_on;
-	QAction *fullscreen_off;
-	QAction *tile_window;
-	QAction *cascade_window;
-	QAction *arrange_window;
-	QAction *prev_window;
-	QAction *next_window;
+	QActionGroup *grp_visu_sel;  ///< Groupe d'actions pour les modes (edition et visualisation)
+	QAction *mode_selection;     ///< Passe en mode edition
+	QAction *mode_visualise;     ///< Passe en mode visualisation
+	QAction *new_file;           ///< Cree un nouveau schema
+	QAction *open_file;          ///< OUvre un fichier
+	QAction *close_file;         ///< Ferme le fichier
+	QAction *save_file;          ///< Enregistre le fichier
+	QAction *save_file_sous;     ///< Enregistrer le fichier sous un nom donne
+	QAction *import_diagram;     ///< Importe un schema existant (non implemente)
+	QAction *export_diagram;     ///< Exporte le schema sous forme d'image
+	QAction *print;              ///< Imprime le schema
+	QAction *quit_editor;        ///< Quitte l'editeur de schema
+	QAction *undo;               ///< Annule la derniere action
+	QAction *redo;               ///< Refait une action annulee
+	QAction *cut;                ///< Coupe la selection dans le presse-papier
+	QAction *copy;               ///< Copie la selection dans le presse-papier
+	QAction *paste;              ///< Colle le contenu du presse-papier sur le schema
+	QAction *select_all;         ///< Selectionne tout
+	QAction *select_nothing;     ///< Deselectionne tout
+	QAction *select_invert;      ///< Inverse la selection
+	QAction *delete_selection;   ///< Supprime la selection
+	QAction *rotate_selection;   ///< Pivote les elements selectionnes
+	QAction *conductor_prop;     ///< Lance le dialogue d'edition du conducteur selectionne
+	QAction *conductor_reset;    ///< Reinitialise les conducteurs selectionnes
+	QAction *conductor_default;  ///< Lance le dialogue d'edition des conducteurs par defaut
+	QAction *infos_diagram;      ///< Lance le dialogue d'edition des proprietes du schema
+	QAction *add_text;           ///< Passe en mode "Ajout de texte"
+	QAction *add_column;         ///< Ajoute une colonne au schema
+	QAction *remove_column;      ///< Enleve une colonne du schema
+	QAction *expand_diagram;     ///< Augmente la hauteur du schema
+	QAction *shrink_diagram;     ///< Reduit la hauteur du schema
+	QAction *zoom_in;            ///< Zoome avant
+	QAction *zoom_out;           ///< Zoome arriere
+	QAction *zoom_fit;           ///< Ajuste le zoom de facon a voir l'integralite des elements
+	QAction *zoom_reset;         ///< Remet le zoom 1:1
+	QAction *about_qet;          ///< Lance le dialogue "A propos de QElectroTech"
+	QAction *about_qt;           ///< Lance le dialogue "A propos de Qt"
+	QAction *configure;          ///< Lance le dialogue de configuration de QElectroTech
+	QAction *fullscreen_on;      ///< Passe en mode plein ecran
+	QAction *fullscreen_off;     ///< Sort du mode plein ecran
+	QAction *tile_window;        ///< Affiche les fenetre MDI en mosaique
+	QAction *cascade_window;     ///< Affiche les fenetres MDI en cascade
+	QAction *arrange_window;     ///< Reorganise les fenetres MDI
+	QAction *prev_window;        ///< Affiche la fenetre MDI precedente
+	QAction *next_window;        ///< Affiche la fenetre MDI suivante
 	
 	private:
 	QWorkspace workspace;

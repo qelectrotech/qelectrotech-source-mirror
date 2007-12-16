@@ -50,8 +50,8 @@ class ElementScene : public QGraphicsScene {
 	
 	// attributs
 	public:
-	static const int xGrid;
-	static const int yGrid;
+	static const int xGrid; ///< Taille horizontale de la grille
+	static const int yGrid; ///< Taille verticale de la grille
 	
 	private:
 	/// longueur de l'element en dizaines de pixels
@@ -84,13 +84,13 @@ class ElementScene : public QGraphicsScene {
 	
 	// methodes
 	public:
-	void setWidth(const uint& theValue);
+	void setWidth(const uint &);
 	uint width() const;
-	void setHeight(const uint& theValue);
+	void setHeight(const uint &);
 	uint height() const;
 	void setHotspot(const QPoint &);
 	QPoint hotspot() const;
-	void setNames(const NamesList);
+	void setNames(const NamesList &);
 	NamesList names() const;
 	OrientationSet orientations();
 	void setOrientations(const OrientationSet &);
@@ -135,10 +135,18 @@ class ElementScene : public QGraphicsScene {
 	void slot_sendBackward();
 	
 	signals:
+	/// Signal emis lorsque la selection change
 	void selectionChanged();
+	/**
+		Signal emis lorsque la scene exige que l'editeur d'element repasse
+		en mode normal
+	*/
 	void needNormalMode();
+	/// Signal emis lorsqu'une ou plusieurs parties sont ajoutees
 	void partsAdded();
+	/// Signal emis lorsqu'une ou plusieurs parties sont enlevees
 	void partsRemoved();
+	/// Signal emis lorsque la zValue d'une ou plusieurs parties change
 	void partsZValueChanged();
 };
 
@@ -159,7 +167,7 @@ inline uint ElementScene::width() const {
 }
 
 /**
-	@param wid Nouvelle hauteur de l'element edite
+	@param hei Nouvelle hauteur de l'element edite
 */
 inline void ElementScene::setHeight(const uint &hei) {
 	_height = hei;
@@ -189,9 +197,9 @@ inline QPoint ElementScene::hotspot() const {
 }
 
 /**
-	@param hs Nouvel ensemble de noms de l'element edite
+	@param nameslist Nouvel ensemble de noms de l'element edite
 */
-inline void ElementScene::setNames(const NamesList nameslist) {
+inline void ElementScene::setNames(const NamesList &nameslist) {
 	_names = nameslist;
 }
 

@@ -58,6 +58,10 @@ class NamesListWidget : public QWidget {
 	void check();
 	
 	signals:
+	/**
+		Signal emis lors de la verification de la saisie s'il y a au moins un
+		nom saisi
+	*/
 	void inputChecked();
 };
 #endif

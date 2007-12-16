@@ -37,6 +37,7 @@ class DiagramView : public QGraphicsView {
 	
 	// attributs
 	public:
+	/// Nom de fichier du schema edite
 	QString file_name;
 	
 	private:

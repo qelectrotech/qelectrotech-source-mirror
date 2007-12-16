@@ -29,10 +29,31 @@ typedef CustomElementGraphicPart CEGP;
 */
 class CustomElementGraphicPart : public CustomElementPart {
 	public:
-	enum LineStyle { NormalStyle, DashedStyle };
-	enum LineWeight { NormalWeight, ThinWeight, NoneWeight };
-	enum Filling { NoneFilling, BlackFilling, WhiteFilling };
-	enum Color { BlackColor, WhiteColor };
+	/// Qualifie le style de ligne utilise pour dessiner la partie
+	enum LineStyle {
+		NormalStyle, ///< Ligne pleine
+		DashedStyle  ///< Ligne pointillee
+	};
+	
+	/// Qualifie l'epaisseur de ligne utilisee pour dessiner la partie
+	enum LineWeight {
+		NormalWeight, ///< Ligne normale
+		ThinWeight,   ///< Ligne fine
+		NoneWeight    ///< Ligne invisible
+	};
+	
+	/// Qualifie la couleur utilisee pour remplir la partie
+	enum Filling {
+		NoneFilling,  ///< Remplissage transparent
+		BlackFilling, ///< Remplissage en noir
+		WhiteFilling  ///< Remplissage en blanc
+	};
+	
+	/// Qualifie la couleur de ligne utilisee pour dessiner la partie
+	enum Color {
+		BlackColor, ///< Ligne noire
+		WhiteColor  ///< Ligne blanche
+	};
 	
 	// constructeurs, destructeur
 	public:
@@ -65,6 +86,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 	bool _antialiased;
 	
 	protected:
+	/// Widget d'edition des styles de cette partie graphique
 	StyleEditor *style_editor;
 	
 	//methodes

@@ -249,7 +249,13 @@ class ChangeOrientationsCommand : public QUndoCommand {
 class ChangeZValueCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	enum Option { BringForward, Raise, Lower, SendBackward };
+	/// Qualifie le type de changement de zValue
+	enum Option {
+		BringForward, ///< Amene la partie a l'avant-plan ; elle a alors la plus haute zValue
+		Raise,        ///< Amene la partie un plan au-dessus ; la zValue de la partie est incrementee
+		Lower,        ///< Envoie la partie un plan en-dessous ; la zValue de la partie est decrementee
+		SendBackward  ///< Envoie la partie a l'arriere-plan ; elle a alors la plus faible zValue
+	};
 	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = 0);
 	virtual ~ChangeZValueCommand();
 	private:
