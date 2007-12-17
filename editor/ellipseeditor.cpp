@@ -33,12 +33,10 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	h = new QLineEdit();
 	v = new QLineEdit();
 	
-// 	QDoubleValidator *format = new QDoubleValidator(-1000.0, -1000.0, 4, this);
-// 	x -> setValidator(new QDoubleValidator(-1000.0, 1000.0, 4, this));
-// 	y -> setValidator(new QDoubleValidator(-1000.0, 1000.0, 4, this));
-// 	h -> setValidator(new QDoubleValidator(0.0, 1000.0, 4, this));
-// 	v -> setValidator(new QDoubleValidator(0.0, 1000.0, 4, this));
-	
+	x -> setValidator(new QDoubleValidator(x));
+	y -> setValidator(new QDoubleValidator(y));
+	h -> setValidator(new QDoubleValidator(h));
+	v -> setValidator(new QDoubleValidator(v));
 	
 	QGridLayout *grid = new QGridLayout(this);
 	grid -> addWidget(new QLabel(tr("Centre : ")),       0, 0);

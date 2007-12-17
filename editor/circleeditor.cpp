@@ -32,11 +32,9 @@ CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget
 	y = new QLineEdit();
 	r = new QLineEdit();
 	
-// 	QDoubleValidator *format = new QDoubleValidator(-1000.0, -1000.0, 4, this);
-// 	x -> setValidator(new QDoubleValidator(-1000.0, 1000.0, 4, this));
-// 	y -> setValidator(new QDoubleValidator(-1000.0, 1000.0, 4, this));
-// 	h -> setValidator(new QDoubleValidator(0.0, 1000.0, 4, this));
-	
+	x -> setValidator(new QDoubleValidator(x));
+	y -> setValidator(new QDoubleValidator(y));
+	r -> setValidator(new QDoubleValidator(r));
 	
 	QGridLayout *grid = new QGridLayout(this);
 	grid -> addWidget(new QLabel(tr("Centre : ")),       0, 0);

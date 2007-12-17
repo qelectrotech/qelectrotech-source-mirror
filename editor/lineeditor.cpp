@@ -33,6 +33,11 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	x2 = new QLineEdit();
 	y2 = new QLineEdit();
 	
+	x1 -> setValidator(new QDoubleValidator(x1));
+	y1 -> setValidator(new QDoubleValidator(y1));
+	x2 -> setValidator(new QDoubleValidator(x2));
+	y2 -> setValidator(new QDoubleValidator(y2));
+	
 	QGridLayout *grid = new QGridLayout(this);
 	grid -> addWidget(new QLabel("x1"), 0, 0);
 	grid -> addWidget(x1,               0, 1);

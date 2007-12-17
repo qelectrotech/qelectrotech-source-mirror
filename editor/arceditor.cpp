@@ -37,6 +37,11 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : 
 	start_angle -> setRange(-360, 360);
 	angle       -> setRange(-360, 360);
 	
+	x -> setValidator(new QDoubleValidator(x));
+	y -> setValidator(new QDoubleValidator(y));
+	h -> setValidator(new QDoubleValidator(h));
+	v -> setValidator(new QDoubleValidator(v));
+	
 	QGridLayout *grid = new QGridLayout(this);
 	grid -> addWidget(new QLabel(tr("Centre : ")),            0, 0);
 	grid -> addWidget(new QLabel("x"),                        1, 0);

@@ -30,6 +30,9 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	qle_x = new QLineEdit();
 	qle_y = new QLineEdit();
 	
+	qle_x -> setValidator(new QDoubleValidator(qle_x));
+	qle_y -> setValidator(new QDoubleValidator(qle_y));
+	
 	orientation = new QComboBox();
 	orientation -> addItem(QIcon(":/ico/north.png"), tr("Nord"),  QET::North);
 	orientation -> addItem(QIcon(":/ico/east.png"),  tr("Est"),   QET::East);

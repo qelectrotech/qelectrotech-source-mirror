@@ -35,6 +35,9 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	rotate    = new QCheckBox(tr("Maintenir horizontal malgr\351\n les rotations de l'\351l\351ment"));
 	rotate -> setChecked(true);
 	
+	qle_x -> setValidator(new QDoubleValidator(qle_x));
+	qle_y -> setValidator(new QDoubleValidator(qle_y));
+	
 	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
 	
