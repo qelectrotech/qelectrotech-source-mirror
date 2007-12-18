@@ -48,6 +48,16 @@ void ElementsCategoriesList::reload() {
 	// vide l'arbre
 	while (takeTopLevelItem(0));
 	
+	// chargement des elements de la collection commune si droits d'ecriture
+	QFileInfo common_collection_info(QETApp::commonElementsDir());
+	if (
+		common_collection_info.exists() &&
+		common_collection_info.isDir() &&
+		common_collection_info.isWritable()
+	) {
+		addDir(invisibleRootItem(), QETApp::commonElementsDir(), tr("Collection QET"));
+	}
+	
 	// chargement des elements de la collection utilisateur
 	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
 }
@@ -88,7 +98,7 @@ QString ElementsCategoriesList::selectedCategoryPath() {
 }
 
 /**
-	@return Le nom de la categorie selectionnee
+	@return Le nom de la categorie selecti onnee
 */
 QString ElementsCategoriesList::selectedCategoryName() {
 	QTreeWidgetItem *qtwi = currentItem();
