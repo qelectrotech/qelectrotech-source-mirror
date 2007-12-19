@@ -25,7 +25,6 @@
 ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	
 	setWindowTitle(tr("Configurer QElectroTech"));
-	setMinimumSize(900, 400);
 	
 	// liste des pages
 	pages_list = new QListWidget();

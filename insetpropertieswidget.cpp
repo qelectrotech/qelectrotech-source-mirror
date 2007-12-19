@@ -29,7 +29,7 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	QVBoxLayout *this_layout = new QVBoxLayout(this);
 	this_layout -> setContentsMargins(0, 0, 0, 0);
 	QGroupBox *inset_infos = new QGroupBox(tr("Informations du cartouche"), this);
-	inset_infos -> setMinimumWidth(300);
+	inset_infos -> setMinimumSize(300, 260);
 	this_layout -> addWidget(inset_infos);
 	
 	inset_title = new QLineEdit(this);
@@ -53,6 +53,8 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	layout_date -> addWidget(inset_current_date, 1, 0);
 	layout_date -> addWidget(inset_fixed_date,   2, 0);
 	layout_date -> addWidget(inset_date,         2, 1);
+	layout_date -> setColumnStretch(0, 1);
+	layout_date -> setColumnStretch(1, 500);
 	
 	inset_filename = new QLineEdit(this);
 	inset_folio = new QLineEdit(this);

@@ -33,8 +33,9 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
 	dontchangewidth = dontchangeheight = false;
 	
-	// la taille du dialogue est fixee
-	setFixedSize(800, 360);
+	// la taille minimale du dialogue est fixee
+	setMinimumSize(800, 360);
+	resize(minimumSize());
 	setWindowTitle(tr("Exporter"));
 	
 	// le dialogue comporte deux boutons
@@ -52,6 +53,8 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	layout -> addWidget(leftPart(),  0, 0);
 	layout -> addWidget(rightPart(), 0, 1);
 	layout -> addWidget(buttons,     1, 1);
+	layout -> setColumnStretch(0, 1);
+	layout -> setColumnStretch(1, 500);
 	
 	setTabOrder(keep_aspect_ratio, buttons);
 	
@@ -200,6 +203,7 @@ QWidget *ExportDialog::leftPart() {
 	
 	/* un cadre permettant de specifier les options de l'image finale */
 	vboxLayout -> addWidget(setupOptionsGroupBox());
+	vboxLayout -> addStretch();
 	
 	// ordre des input selectionnes avec la touche tab
 	setTabOrder(filename, button_browse);
@@ -222,7 +226,7 @@ QWidget *ExportDialog::rightPart() {
 	
 	// la partie droite contient une GroupBox intitulee "Apercu"
 	QGroupBox *groupbox_preview = new QGroupBox(tr("Aper\347u"), this);
-	groupbox_preview -> setFixedWidth(390);
+	groupbox_preview -> setMinimumWidth(390);
 	QHBoxLayout *hboxlayout1 = new QHBoxLayout(groupbox_preview);
 	hboxlayout1 -> setMargin(0);
 	

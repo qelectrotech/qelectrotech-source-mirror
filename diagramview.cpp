@@ -605,6 +605,10 @@ void DiagramView::dialogEditInfos() {
 	diagram_size_box_layout.addWidget(columns_width,  0, 2);
 	diagram_size_box_layout.addWidget(ds2,            1, 0);
 	diagram_size_box_layout.addWidget(columns_height, 1, 1);
+	diagram_size_box_layout.setColumnStretch(0, 1);
+	diagram_size_box_layout.setColumnStretch(1, 1);
+	diagram_size_box_layout.setColumnStretch(2, 1);
+	diagram_size_box_layout.setColumnStretch(3, 500);
 	
 	InsetPropertiesWidget *inset_infos = new InsetPropertiesWidget(inset, false, &popup);
 	
@@ -617,6 +621,7 @@ void DiagramView::dialogEditInfos() {
 	QVBoxLayout layout_v(&popup);
 	layout_v.addWidget(diagram_size_box);
 	layout_v.addWidget(inset_infos);
+	layout_v.addStretch();
 	layout_v.addWidget(&boutons);
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted) {
@@ -775,6 +780,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
+	dialog_layout -> addStretch();
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dbb);
 	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));

@@ -589,7 +589,7 @@ void ElementScene::slot_editOrientations() {
 	// cree un dialogue
 	QDialog dialog_ori;
 	dialog_ori.setModal(true);
-	dialog_ori.setFixedSize(400, 260);
+	dialog_ori.setMinimumSize(400, 260);
 	dialog_ori.setWindowTitle(tr("\311diter les orientations"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_ori);
 	
@@ -608,7 +608,7 @@ void ElementScene::slot_editOrientations() {
 	QCheckBox *ic_checkbox = new QCheckBox(tr("Autoriser les connexions internes"));
 	ic_checkbox -> setChecked(internal_connections);
 	dialog_layout -> addWidget(ic_checkbox);
-	
+	dialog_layout -> addStretch();
 	// ajoute deux boutons au dialogue
 	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
@@ -635,7 +635,7 @@ void ElementScene::slot_editNames() {
 	// cree un dialogue
 	QDialog dialog;
 	dialog.setModal(true);
-	dialog.setFixedSize(400, 330);
+	dialog.setMinimumSize(400, 330);
 	dialog.setWindowTitle(tr("\311diter les noms"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog);
 	

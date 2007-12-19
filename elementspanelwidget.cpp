@@ -90,7 +90,7 @@ void ElementsPanelWidget::newElement() {
 */
 void ElementsPanelWidget::newCategory() {
 	QDialog new_category_dialog;
-	new_category_dialog.setFixedSize(480, 280);
+	new_category_dialog.setMinimumSize(480, 280);
 	new_category_dialog.setWindowTitle(tr("Gestionnaire de cat\351gories"));
 	
 	QVBoxLayout *layout = new QVBoxLayout(&new_category_dialog);
