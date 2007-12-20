@@ -29,14 +29,18 @@
 	<file>ico/exit.png</file>
 	<file>ico/export.png</file>
 	<file>ico/fileclose.png</file>
+	<file>ico/folder.png</file>
+	<file>ico/folder_home.png</file>
 	<file>ico/forbidden.png</file>
 	<file>ico/ground.png</file>
+	<file>ico/hotspot.png</file>
 	<file>ico/import.png</file>
 	<file>ico/info.png</file>
 	<file>ico/line.png</file>
 	<file>ico/lower.png</file>
 	<file>ico/masquer.png</file>
 	<file>ico/move.png</file>
+	<file>ico/names.png</file>
 	<file>ico/neutral.png</file>
 	<file>ico/new.png</file>
 	<file>ico/north.png</file>

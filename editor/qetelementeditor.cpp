@@ -69,8 +69,8 @@ void QETElementEditor::setupActions() {
 	deselectall   = new QAction(                                 tr("D\351s\351lectionner tout"),   this);
 	inv_select    = new QAction(                                 tr("Inverser la s\351lection"),    this);
 	edit_delete   = new QAction(QIcon(":/ico/delete.png"),       tr("&Supprimer"),                  this);
-	edit_size_hs  = new QAction(                                 tr("\311diter la taille et le point de saisie"), this);
-	edit_names    = new QAction(                                 tr("\311diter les noms"),          this);
+	edit_size_hs  = new QAction(QIcon(":/ico/hotspot.png"),      tr("\311diter la taille et le point de saisie"), this);
+	edit_names    = new QAction(QIcon(":/ico/names.png"),        tr("\311diter les noms"),          this);
 	edit_ori      = new QAction(QIcon(":/ico/orientations.png"), tr("\311diter les orientations"),  this);
 	edit_raise    = new QAction(QIcon(":/ico/raise.png"),        tr("Rapprocher"),                  this);
 	edit_lower    = new QAction(QIcon(":/ico/lower.png"),        tr("\311loigner"),                 this);

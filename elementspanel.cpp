@@ -150,6 +150,7 @@ void ElementsPanel::addDir(QTreeWidgetItem *qtwi_parent, QString adr_dossier, QS
 	
 	// creation du QTreeWidgetItem representant le dossier
 	QTreeWidgetItem *qtwi_dossier = new QTreeWidgetItem(qtwi_parent, QStringList(nom_categorie));
+	qtwi_dossier -> setIcon(0, QIcon(":/ico/folder.png"));
 	QLinearGradient t(0, 0, 200, 0);
 	t.setColorAt(0, QColor("#e8e8e8"));
 	t.setColorAt(1, QColor("#ffffff"));
@@ -207,6 +208,13 @@ void ElementsPanel::reload() {
 	
 	// chargement des elements de la collection utilisateur
 	addDir(invisibleRootItem(), QETApp::customElementsDir(), tr("Collection utilisateur"));
+	
+	// icones
+	QList<QTreeWidgetItem *> items = findItems("*", Qt::MatchWildcard);
+	if (items.count() == 2) {
+		items[0] -> setIcon(0, QIcon(":/ico/qet-16.png"));
+		items[1] -> setIcon(0, QIcon(":/ico/folder_home.png"));
+	}
 	
 	// reselectionne le dernier element selectionne
 	if (!last_selected_item.isNull()) {
