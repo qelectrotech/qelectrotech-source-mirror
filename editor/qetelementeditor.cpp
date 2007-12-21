@@ -176,7 +176,7 @@ void QETElementEditor::setupActions() {
 	parts_toolbar -> setObjectName("parts");
 	foreach (QAction *action, parts -> actions()) parts_toolbar -> addAction(action);
 	move -> setChecked(true);
-	parts_toolbar -> setAllowedAreas(Qt::LeftToolBarArea | Qt::RightToolBarArea);
+	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	
 	/*
 	QAction *xml_preview = new QAction(QIcon(":/ico/info.png"), tr("XML"), this);

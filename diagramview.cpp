@@ -948,13 +948,15 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	QPointF click_pos = viewportTransform().inverted().map(e -> pos());
 	
 	// detecte le double-clic sur le cartouche ou les colonnes
-	if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos)) {
-		// edite les proprietes du schema
-		dialogEditInfos();
-	} else if (QGraphicsItem *qgi = itemAt(e -> pos())) {
+	if (QGraphicsItem *qgi = itemAt(e -> pos())) {
 		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			editConductor(c);
+		} else {
+			QGraphicsView::mouseDoubleClickEvent(e);
 		}
+	} else if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos)) {
+		// edite les proprietes du schema
+		dialogEditInfos();
 	} else {
 		QGraphicsView::mouseDoubleClickEvent(e);
 	}
