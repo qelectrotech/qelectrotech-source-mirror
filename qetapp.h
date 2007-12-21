@@ -62,6 +62,8 @@ class QETApp : public QApplication {
 	private:
 	static QString config_dir; ///< Dossier contenant la configuration et la collection d'elements de l'utilisateur
 #endif
+	public:
+	static QString diagramTextsFont();
 	
 	protected:
 	bool event(QEvent *);
@@ -90,6 +92,7 @@ class QETApp : public QApplication {
 	bool every_element_visible;
 	QSignalMapper signal_map;
 	QSettings *qet_settings;
+	static QString diagram_texts_font;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);

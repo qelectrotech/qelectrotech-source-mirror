@@ -18,6 +18,7 @@
 #include "parttext.h"
 #include "texteditor.h"
 #include "elementscene.h"
+#include "qetapp.h"
 
 /**
 	Constructeur
@@ -51,7 +52,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	int font_size = xml_element.attribute("size").toInt(&ok);
 	if (!ok || font_size < 1) font_size = 20;
 	
-	setFont(QFont(QString("Sans Serif"), font_size));
+	setFont(QFont(QString(QETApp::diagramTextsFont()), font_size));
 	setPlainText(xml_element.attribute("text"));
 	setPos(
 		xml_element.attribute("x").toDouble(),

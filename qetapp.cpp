@@ -24,6 +24,7 @@
 
 QString QETApp::common_elements_dir = QString();
 QString QETApp::config_dir = QString();
+QString QETApp::diagram_texts_font = QString();
 
 /**
 	Constructeur
@@ -121,6 +122,9 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 	// lit le fichier de configuration
 	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
 	
+	// police a utiliser pour le rendu de texte
+	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
+	
 	// Creation et affichage d'un editeur de schema
 	QStringList files;
 	foreach(QString argument, arguments()) {
@@ -140,7 +144,7 @@ QETApp::~QETApp() {
 	@param desired_language langage voulu
 */
 void QETApp::setLanguage(const QString &desired_language) {
-	QString languages_path = QETApp::languagesPath();
+	QString languages_path = languagesPath();
 	
 	// charge les eventuelles traductions pour la lib Qt
 	qtTranslator.load("qt_" + desired_language, languages_path);
@@ -247,7 +251,7 @@ QString QETApp::commonElementsDir() {
 	@return Le chemin du dossier des elements persos
 */
 QString QETApp::customElementsDir() {
-	return(QETApp::configDir() + "elements/");
+	return(configDir() + "elements/");
 }
 
 /**
@@ -368,6 +372,10 @@ bool QETApp::closeEveryEditor() {
 		every_window_closed = every_window_closed && e -> close();
 	}
 	return(every_window_closed);
+}
+
+QString QETApp::diagramTextsFont() {
+	return(diagram_texts_font);
 }
 
 /**

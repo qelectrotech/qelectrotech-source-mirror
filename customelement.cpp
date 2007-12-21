@@ -18,6 +18,7 @@
 #include "customelement.h"
 #include "elementtextitem.h"
 #include "diagram.h"
+#include "qetapp.h"
 #include <iostream>
 /**
 	Constructeur de la classe ElementPerso. Permet d'instancier un element
@@ -389,7 +390,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.setFont(QFont(QString("Sans Serif"), size));
+	qp.setFont(QFont(QString(QETApp::diagramTextsFont()), size));
 	qp.drawText(QPointF(pos_x, pos_y), e.attribute("text"));
 	qp.restore();
 	return(true);
@@ -417,7 +418,7 @@ bool CustomElement::parseInput(QDomElement &e) {
 	) return(false);
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
-	eti -> setFont(QFont("Sans Serif", size));
+	eti -> setFont(QFont(QETApp::diagramTextsFont(), size));
 	eti -> setPos(pos_x, pos_y);
 	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
 	return(true);
