@@ -97,6 +97,7 @@ void DiagramView::deleteSelection() {
 	DiagramContent removed_content = scene -> selectedContent();
 	scene -> clearSelection();
 	scene -> undoStack().push(new DeleteElementsCommand(scene, removed_content));
+	adjustSceneRect();
 }
 
 /**
@@ -149,6 +150,7 @@ void DiagramView::dropEvent(QDropEvent *e) {
 	if (etat) delete el;
 	else {
 		diagram() -> undoStack().push(new AddElementCommand(diagram(), el, mapToScene(e -> pos())));
+		adjustSceneRect();
 	}
 }
 
@@ -246,6 +248,7 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	if (content_pasted.count()) {
 		scene -> clearSelection();
 		scene -> undoStack().push(new PasteDiagramCommand(scene, content_pasted));
+		adjustSceneRect();
 	}
 }
 
@@ -266,6 +269,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 			dti -> setPlainText("_");
 			dti -> previous_text = "_";
 			scene -> undoStack().push(new AddTextCommand(scene, dti, e -> pos()));
+			adjustSceneRect();
 			is_adding_text = false;
 			emit(textAdded(false));
 		}
