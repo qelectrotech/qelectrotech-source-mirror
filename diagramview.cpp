@@ -53,7 +53,7 @@ DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_tex
 	paste_here = new QAction(QIcon(":/ico/paste.png"), tr("Coller ici"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 	
-	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SLOT(slot_selectionChanged()));
+	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SIGNAL(selectionChanged()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
 }
@@ -398,13 +398,6 @@ bool DiagramView::open(QString n_fichier, int *erreur) {
 		if (erreur != NULL) *erreur = 4;
 		return(false);
 	}
-}
-
-/**
-	Slot appele lorsque la selection change.
-*/
-void DiagramView::slot_selectionChanged() {
-	emit(selectionChanged());
 }
 
 /**

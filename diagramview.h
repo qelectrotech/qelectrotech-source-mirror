@@ -113,7 +113,6 @@ class DiagramView : public QGraphicsView {
 	void editDefaultConductorProperties();
 	
 	private slots:
-	void slot_selectionChanged();
 	void adjustGridToZoom();
 };
 #endif

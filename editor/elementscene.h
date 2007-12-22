@@ -121,7 +121,6 @@ class ElementScene : public QGraphicsScene {
 	void slot_addArc();
 	void slot_addTerminal();
 	void slot_addTextField();
-	void slot_checkSelectionChanged();
 	void slot_selectAll();
 	void slot_deselectAll();
 	void slot_invertSelection();
@@ -135,8 +134,6 @@ class ElementScene : public QGraphicsScene {
 	void slot_sendBackward();
 	
 	signals:
-	/// Signal emis lorsque la selection change
-	void selectionChanged();
 	/**
 		Signal emis lorsque la scene exige que l'editeur d'element repasse
 		en mode normal

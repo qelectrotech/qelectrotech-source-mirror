@@ -381,14 +381,17 @@ void QETElementEditor::slot_updateInformations() {
 	// enleve les widgets deja presents
 	QLayoutItem *qli;
 	while ((qli = layout -> takeAt(0)) != 0) {
-		if (qli -> widget()) {
-			layout -> removeWidget(qli -> widget());
-			qli -> widget() -> setParent(0);
+		if (QWidget *w = qli -> widget()) {
+			layout -> removeWidget(w);
+			w -> setParent(0);
+			w -> hide();
 		}
 	}
 	if (selected_parts.size() == 1) {
 		// recupere le premier CustomElementPart et en ajoute le widget d'edition
-		layout -> addWidget(selected_parts.first() -> elementInformations());
+		QWidget *edit_widget = selected_parts.first() -> elementInformations();
+		layout -> addWidget(edit_widget);
+		edit_widget -> show();
 	} else {
 		default_informations -> setText(
 			selected_parts.size() ?
@@ -396,6 +399,7 @@ void QETElementEditor::slot_updateInformations() {
 			tr("Aucune partie s\351lectionn\351e.")
 		);
 		layout -> addWidget(default_informations);
+		default_informations -> show();
 	}
 }
 

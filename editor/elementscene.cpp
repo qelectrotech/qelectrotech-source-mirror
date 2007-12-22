@@ -48,7 +48,6 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 {
 	current_polygon = NULL;
 	undo_stack.setClean();
-	connect(this, SIGNAL(changed(const QList<QRectF> &)), this, SLOT(slot_checkSelectionChanged()));
 }
 
 /// Destructeur
@@ -495,16 +494,6 @@ QUndoStack &ElementScene::undoStack() {
 */
 QGIManager &ElementScene::qgiManager() {
 	return(qgi_manager);
-}
-
-/**
-	Detecte les changements de selection
-*/
-void ElementScene::slot_checkSelectionChanged() {
-	static QList<QGraphicsItem *> cache_selecteditems = QList<QGraphicsItem *>();
-	QList<QGraphicsItem *> selecteditems = selectedItems();
-	if (cache_selecteditems != selecteditems) emit(selectionChanged());
-	cache_selecteditems = selecteditems;
 }
 
 /**
