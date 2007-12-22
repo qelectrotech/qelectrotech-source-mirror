@@ -709,6 +709,7 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 	}
 	parts_list -> blockSignals(false);
 	ce_scene -> blockSignals(false);
+	slot_updateInformations();
 }
 
 /// Lit les parametres de l'editeur d'element
