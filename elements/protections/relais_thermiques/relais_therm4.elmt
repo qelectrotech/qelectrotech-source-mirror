@@ -1,0 +1,30 @@
+<definition width="50" version="0.1" hotspot_x="5" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" >
+    <names>
+        <name lang="en" >Thermal relay</name>
+        <name lang="fr" >Relais thermique</name>
+    </names>
+    <description>
+        <input x="30" y="3" size="9" text="F_" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0" />
+        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="5" x2="5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-5" x2="5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="5" x2="5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-5" x2="10" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="20" x2="10" />
+        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="15" y2="5" x2="15" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="-5" x2="15" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="5" x2="15" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-5" x2="20" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="20" y2="20" x2="20" />
+        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="25" y2="5" x2="25" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="20" y2="-5" x2="25" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="20" y2="5" x2="25" />
+        <terminal x="0" y="-21" orientation="n" />
+        <terminal x="0" y="21" orientation="s" />
+        <terminal x="10" y="-21" orientation="n" />
+        <terminal x="10" y="21" orientation="s" />
+        <terminal x="20" y="-21" orientation="n" />
+        <terminal x="20" y="21" orientation="s" />
+    </description>
+</definition>
