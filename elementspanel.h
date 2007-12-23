@@ -46,9 +46,9 @@ class ElementsPanel : public QTreeWidget {
 	QFileInfo selectedFile() const;
 	void launchElementEditor(const QString &);
 	void launchCategoryEditor(const QString &);
-	void saveCollapsedCategories();
+	void saveExpandedCategories();
 	QTreeWidgetItem *findFile(const QString &) const;
-	QStringList collapsed_directories;
+	QStringList expanded_directories;
 	QString last_selected_item;
 	
 	public slots:
