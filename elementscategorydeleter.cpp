@@ -42,11 +42,15 @@ void ElementsCategoryDeleter::exec() {
 	// verifie l'existence de la categorie
 	if (!cat.exists() || empty_category_path) return;
 	
+	QString cat_name(cat.name().replace("<", "&lt;").replace(">", "&gt;"));
+	
 	// confirmation #1
 	QMessageBox::StandardButton answer_1 = QMessageBox::question(
 		this,
 		tr("Supprimer la cat\351gorie ?"),
-		tr("\312tes-vous s\373r de vouloir supprimer cette cat\351gorie ?\n"
+		tr("\312tes-vous s\373r de vouloir supprimer la cat\351gorie <b>") +
+		cat_name
+		+ tr("</b> ?\n"
 		"Tous les \351l\351ments et les cat\351gories contenus dans cette "
 		"cat\351gorie seront supprim\351s"),
 		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel
@@ -58,7 +62,9 @@ void ElementsCategoryDeleter::exec() {
 		this,
 		tr("Supprimer la cat\351gorie ?"),
 		tr("\312tes-vous vraiment s\373r de vouloir supprimer cette "
-		"cat\351gorie ?\nLes changements seront d\351finitifs."),
+		"cat\351gorie (<b>") +
+		cat_name
+		+ tr("</b>) ?\nLes changements seront d\351finitifs."),
 		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel
 	);
 	if (answer_2 != QMessageBox::Yes) return;

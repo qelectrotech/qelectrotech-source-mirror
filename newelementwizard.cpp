@@ -23,6 +23,7 @@
 #include "hotspoteditor.h"
 #include "element.h"
 #include "qetelementeditor.h"
+#include "qet.h"
 
 /**
 	Constructeur
@@ -192,6 +193,16 @@ bool NewElementWizard::validStep2() {
 	}
 	
 	if (!file_name.endsWith(".elmt")) file_name += ".elmt";
+	
+	// le nom de fichier contient peut etre des caracteres interdits
+	if (QET::containsForbiddenCharacters(file_name)) {
+		QMessageBox::critical(
+			this,
+			tr("Erreur"),
+			tr("Merci de ne pas utiliser les caract\350res suivants : \\ / : * ? \" < > |")
+		);
+		return(false);
+	}
 	
 	// le fichier existe peut etre deja
 	if (QFileInfo(dir_path + "/" + file_name).exists()) {

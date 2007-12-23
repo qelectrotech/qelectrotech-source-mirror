@@ -18,6 +18,7 @@
 #include "elementscategoryeditor.h"
 #include "elementscategory.h"
 #include "nameslistwidget.h"
+#include "qet.h"
 
 /**
 	Constructeur fournissant un dialogue d'edition de categorie.
@@ -100,7 +101,8 @@ void ElementsCategoryEditor::acceptCreation() {
 	}
 	
 	// cree un nom de dossier a partir du 1er nom de la categorie
-	QString dirname = names[names.langs().first()].toLower().replace(" ", "_");
+	QString dirname = names[names.langs().first()].toLower().replace(" ",  "_");
+	foreach(QChar c, QET::forbiddenCharacters()) dirname = dirname.replace(c, "_");
 	category -> setPath(category -> path() + "/" + dirname);
 	category -> write();
 	

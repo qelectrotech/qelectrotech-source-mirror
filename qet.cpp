@@ -217,3 +217,24 @@ QString QET::license() {
 	}
 	return(txt_license);
 };
+
+
+/**
+	@return la liste des caracteres interdits dans les noms de fichiers sous
+	Windows
+*/
+QList<QChar> QET::forbiddenCharacters() {
+	return(QList<QChar>() << '\\' << '/' << ':' << '*' << '?' << '"' << '<' << '>' << '|');
+}
+
+/**
+	@param string une chaine de caracteres
+	@return true si string contient un caractere interdit dans les noms de
+	fichiers sous Windows
+*/
+bool QET::containsForbiddenCharacters(const QString &string) {
+	foreach(QChar c, QET::forbiddenCharacters()) {
+		if (string.contains(c)) return(true);
+	}
+	return(false);
+}
