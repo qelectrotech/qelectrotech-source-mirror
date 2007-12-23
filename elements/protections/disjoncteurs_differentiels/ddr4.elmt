@@ -14,11 +14,11 @@
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="20" x2="20" />
         <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="15" y2="10" x2="20" />
         <input x="25" y="-3" size="9" text="Q_" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="12" y2="-10" x2="8" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="12" y2="-10" x2="8" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="8" y2="-10" x2="12" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="22" y2="-10" x2="18" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="22" y2="-10" x2="18" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="18" y2="-10" x2="22" />
         <ellipse width="30" x="-5" y="13" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-8" y2="0" x2="17" />
