@@ -9,6 +9,6 @@
         <input x="2.75" y="3" size="9" text="_" />
         <terminal x="0" y="-21" orientation="n" />
         <terminal x="0" y="21" orientation="s" />
-        <circle x="-1.750000000000001" y="-11.75000000000002" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5" />
+        <circle x="-1.75" y="-11.75" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5" />
     </description>
 </definition>

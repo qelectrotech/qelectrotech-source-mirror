@@ -6,7 +6,7 @@
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="5" x2="5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="5" y2="5" x2="5" />
         <input x="10" y="3" size="9" text="F_" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="-5" x2="5" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="5" x2="5" />
