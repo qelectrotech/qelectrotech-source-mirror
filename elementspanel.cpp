@@ -344,3 +344,29 @@ QTreeWidgetItem *ElementsPanel::findFile(const QString &file) const {
 	}
 	return(0);
 }
+
+/**
+	N'affiche que les elements contenant une chaine donnee
+	@param m Chaine a filtrer
+*/
+void ElementsPanel::filter(const QString &m) {
+	QList<QTreeWidgetItem *> items = findItems("*", Qt::MatchRecursive | Qt::MatchWildcard);
+	if (m.isEmpty()) {
+		foreach(QTreeWidgetItem *item, items) item -> setHidden(false);
+	} else {
+		foreach(QTreeWidgetItem *item, items) {
+			QString file = item -> data(0, 42).toString();
+			bool item_matches = item -> text(0).contains(m, Qt::CaseInsensitive);
+			item -> setHidden(!item_matches);
+			if (item_matches) {
+				// remonte l'arborescence pour afficher les categories contenant l'element
+				QTreeWidgetItem *parent_qtwi = item -> parent();
+				while(parent_qtwi && (parent_qtwi -> isHidden() || !parent_qtwi -> isExpanded())) {
+					parent_qtwi -> setHidden(false);
+					parent_qtwi -> setExpanded(true);
+					parent_qtwi = parent_qtwi -> parent();
+				}
+			}
+		}
+	}
+}

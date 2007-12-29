@@ -35,6 +35,13 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	edit_element    = new QAction(QIcon(":/ico/edit.png"),            tr("\311diter l'\351l\351ment"), this);
 	delete_element  = new QAction(QIcon(":/ico/delete.png"),          tr("Supprimer l'\351l\351ment"), this);
 	
+	// initialise le champ de texte pour filtrer avec une disposition horizontale
+	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);
+	filter_textfield = new QLineEdit(this);
+	QHBoxLayout *hlayout = new QHBoxLayout();
+	hlayout -> addWidget(filter_label);
+	hlayout -> addWidget(filter_textfield);
+	
 	context_menu = new QMenu(this);
 	
 	connect(reload,          SIGNAL(triggered()), elements_panel, SLOT(reload()));
@@ -44,6 +51,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(new_element,     SIGNAL(triggered()), this,           SLOT(newElement()));
 	connect(edit_element,    SIGNAL(triggered()), elements_panel, SLOT(editElement()));
 	connect(delete_element,  SIGNAL(triggered()), elements_panel, SLOT(deleteElement()));
+	
+	connect(filter_textfield, SIGNAL(textEdited(const QString &)), elements_panel, SLOT(filter(const QString &)));
 	
 	connect(elements_panel, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(handleContextMenu(const QPoint &)));
@@ -66,6 +75,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	vlayout -> setMargin(0);
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(toolbar);
+	vlayout -> addLayout(hlayout);
 	vlayout -> addWidget(elements_panel);
 	vlayout -> setStretchFactor(elements_panel, 75000);
 	setLayout(vlayout);

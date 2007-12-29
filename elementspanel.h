@@ -61,5 +61,6 @@ class ElementsPanel : public QTreeWidget {
 	void editElement();
 	void deleteCategory();
 	void deleteElement();
+	void filter(const QString &);
 };
 #endif

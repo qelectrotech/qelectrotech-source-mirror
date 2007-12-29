@@ -43,6 +43,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *new_element,  *edit_element,  *delete_element;
 	QMenu *context_menu;
+	QLineEdit *filter_textfield;
 	
 	// methodes
 	public:
