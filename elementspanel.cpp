@@ -46,6 +46,13 @@ ElementsPanel::ElementsPanel(QWidget *parent) : QTreeWidget(parent) {
 	// charge les collections
 	reload();
 	
+	// la premiere fois, etend le premier niveau des collections
+	QList<QTreeWidgetItem *> items = findItems("*", Qt::MatchWildcard);
+	if (items.count() == 2) {
+		items[0] -> setExpanded(true);
+		items[1] -> setExpanded(true);
+	}
+	
 	// force du noir sur une alternance de blanc (comme le schema) et de gris
 	// clair, avec du blanc sur bleu pas trop fonce pour la selection
 	QPalette qp = palette();
