@@ -558,22 +558,22 @@ Changes will be permanent.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../elementspanel.cpp" line="179"/>
+        <location filename="../elementspanel.cpp" line="185"/>
         <source>Ceci est un &#xe9;l&#xe9;ment que vous pouvez ins&#xe9;rer dans votre sch&#xe9;ma par cliquer-d&#xe9;placer</source>
         <translation>This is an element you can drag&apos;n drop onto your diagram</translation>
     </message>
     <message>
-        <location filename="../elementspanel.cpp" line="180"/>
+        <location filename="../elementspanel.cpp" line="186"/>
         <source>Cliquer-d&#xe9;posez cet &#xe9;l&#xe9;ment sur le sch&#xe9;ma pour ins&#xe9;rer un &#xe9;l&#xe9;ment </source>
         <translation>Drag&apos;n drop this element to the diagram to insert a </translation>
     </message>
     <message>
-        <location filename="../elementspanel.cpp" line="207"/>
+        <location filename="../elementspanel.cpp" line="213"/>
         <source>Collection QET</source>
         <translation>QET Collection</translation>
     </message>
     <message>
-        <location filename="../elementspanel.cpp" line="210"/>
+        <location filename="../elementspanel.cpp" line="216"/>
         <source>Collection utilisateur</source>
         <translation>User Collection</translation>
     </message>
@@ -616,14 +616,19 @@ Changes will be permanent.</translation>
         <translation>Delete element</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="94"/>
+        <location filename="../elementspanelwidget.cpp" line="104"/>
         <source>Gestionnaire de cat&#xe9;gories</source>
         <translation>Categories manager</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="97"/>
+        <location filename="../elementspanelwidget.cpp" line="107"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les cat&#xe9;gories.</source>
         <translation>Use this manager to add, delete or modify categories.</translation>
+    </message>
+    <message>
+        <location filename="../elementspanelwidget.cpp" line="39"/>
+        <source>Filtrer : </source>
+        <translation>Filter: </translation>
     </message>
 </context>
 <context>
@@ -1687,11 +1692,6 @@ Available options:
         <translation>Open a file</translation>
     </message>
     <message>
-        <location filename="../qetdiagrameditor.cpp" line="57"/>
-        <source>Panel d&apos;appareils</source>
-        <translation>Elements Panel</translation>
-    </message>
-    <message>
         <location filename="../qetdiagrameditor.cpp" line="211"/>
         <source>Pas de zoom</source>
         <translation>Reset zoom</translation>
@@ -1930,6 +1930,11 @@ Available options:
         <location filename="../qetdiagrameditor.cpp" line="440"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Display or hide the undo list</translation>
+    </message>
+    <message>
+        <location filename="../qetdiagrameditor.cpp" line="57"/>
+        <source>Panel d&apos;&#xe9;l&#xe9;ments</source>
+        <translation>Elements Panel</translation>
     </message>
 </context>
 <context>

@@ -53,8 +53,8 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	// barre de statut de la fenetre
 	statusBar() -> showMessage(tr("QElectroTech"));
 	
-	// ajout du panel d'Appareils en tant que QDockWidget
-	qdw_pa = new QDockWidget(tr("Panel d'appareils"), this);
+	// ajout du panel d'Elements en tant que QDockWidget
+	qdw_pa = new QDockWidget(tr("Panel d'\351l\351ments"), this);
 	qdw_pa -> setObjectName("elements panel");
 	qdw_pa -> setAllowedAreas(Qt::AllDockWidgetAreas);
 	qdw_pa -> setFeatures(QDockWidget::AllDockWidgetFeatures);
