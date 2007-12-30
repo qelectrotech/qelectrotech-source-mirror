@@ -1,7 +1,7 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="en" >Simple contact (NC)</name>
-        <name lang="fr" >Fin de cource NF</name>
+        <name lang="en" >Limit (NC)</name>
+        <name lang="fr" >Fin de course (NF)</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5.25" x1="1.25" y2="-5.25" x2="3.25" />
