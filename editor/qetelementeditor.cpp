@@ -96,7 +96,7 @@ void QETElementEditor::setupActions() {
 	new_element       -> setShortcut(QKeySequence::New);
 	open              -> setShortcut(QKeySequence::Open);
 	save              -> setShortcut(QKeySequence::Save);
-	reload            -> setShortcut(QKeySequence::Refresh);
+	reload            -> setShortcut(Qt::Key_F5);
 	quit              -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
