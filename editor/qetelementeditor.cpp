@@ -184,6 +184,34 @@ void QETElementEditor::setupActions() {
 	parts_toolbar -> addAction(xml_preview);
 	*/
 	
+	main_toolbar = new QToolBar(tr("Outils"), this);
+	main_toolbar -> setObjectName("main_toolbar");
+	element_toolbar = new QToolBar(tr("\311l\351ment"), this);
+	element_toolbar -> setObjectName("element_toolbar");
+	depth_toolbar = new QToolBar(tr("Profondeur"), this);
+	depth_toolbar -> setObjectName("depth_toolbar");
+	
+	main_toolbar -> addAction(new_element);
+	main_toolbar -> addAction(open);
+	main_toolbar -> addAction(save);
+	main_toolbar -> addAction(save_as);
+	main_toolbar -> addAction(reload);
+	main_toolbar -> addSeparator();
+	main_toolbar -> addAction(undo);
+	main_toolbar -> addAction(redo);
+	main_toolbar -> addSeparator();
+	main_toolbar -> addAction(edit_delete);
+	element_toolbar -> addAction(edit_size_hs);
+	element_toolbar -> addAction(edit_names);
+	element_toolbar -> addAction(edit_ori);
+	depth_toolbar -> addAction(edit_forward);
+	depth_toolbar -> addAction(edit_raise);
+	depth_toolbar -> addAction(edit_lower);
+	depth_toolbar -> addAction(edit_backward);
+	
+	addToolBar(Qt::TopToolBarArea, main_toolbar);
+	addToolBar(Qt::TopToolBarArea, element_toolbar);
+	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);
 	
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()));
@@ -470,6 +498,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	
 	// memorise le fichier
 	setFileName(filepath);
+	slot_updateMenus();
 }
 
 
