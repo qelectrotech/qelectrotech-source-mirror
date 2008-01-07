@@ -251,3 +251,13 @@ int PartArc::startAngle() const {
 bool PartArc::isUseless() const {
 	return(rect().isNull() || !angle());
 }
+
+/**
+	@return le rectangle delimitant cette partie.
+*/
+QRectF PartArc::boundingRect() const {
+	qreal adjust = 1.5;
+	QRectF r(QGraphicsEllipseItem::boundingRect().normalized());
+	r.adjust(-adjust, -adjust, adjust, adjust);
+	return(r);
+}

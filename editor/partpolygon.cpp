@@ -163,3 +163,13 @@ bool PartPolygon::isUseless() const {
 	
 	return(true);
 }
+
+/**
+	@return le rectangle delimitant cette partie.
+*/
+QRectF PartPolygon::boundingRect() const {
+	qreal adjust = 1.5;
+	QRectF r(QGraphicsPolygonItem::boundingRect());
+	r.adjust(-adjust, -adjust, adjust, adjust);
+	return(r);
+}

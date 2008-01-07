@@ -50,6 +50,7 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;
+	virtual QRectF boundingRect() const;
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;

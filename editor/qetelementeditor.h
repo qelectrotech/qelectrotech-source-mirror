@@ -59,10 +59,11 @@ class QETElementEditor : public QMainWindow {
 	/// actions du menu edition
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *undo, *redo;
+	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
 	/// barres d'outils
-	QToolBar *parts_toolbar, *main_toolbar, *depth_toolbar, *element_toolbar;
+	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// actions de la barre d'outils
 	QActionGroup *parts;
 	QAction *move, *add_line, *add_circle, *add_ellipse, *add_polygon, *add_text;

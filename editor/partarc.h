@@ -52,6 +52,7 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;
+	virtual QRectF boundingRect() const;
 	virtual void setAngle(int);
 	virtual void setStartAngle(int);
 	virtual int angle() const;

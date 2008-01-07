@@ -69,6 +69,10 @@ void QETElementEditor::setupActions() {
 	deselectall   = new QAction(                                 tr("D\351s\351lectionner tout"),   this);
 	inv_select    = new QAction(                                 tr("Inverser la s\351lection"),    this);
 	edit_delete   = new QAction(QIcon(":/ico/delete.png"),       tr("&Supprimer"),                  this);
+	zoom_in       = new QAction(QIcon(":/ico/viewmag+.png"),     tr("Zoom avant"),                  this);
+	zoom_out      = new QAction(QIcon(":/ico/viewmag-.png"),     tr("Zoom arri\350re"),             this);
+	zoom_fit      = new QAction(QIcon(":/ico/viewmagfit.png"),   tr("Zoom adapt\351"),              this);
+	zoom_reset    = new QAction(QIcon(":/ico/viewmag.png"),      tr("Pas de zoom"),                 this);
 	edit_size_hs  = new QAction(QIcon(":/ico/hotspot.png"),      tr("\311diter la taille et le point de saisie"), this);
 	edit_names    = new QAction(QIcon(":/ico/names.png"),        tr("\311diter les noms"),          this);
 	edit_ori      = new QAction(QIcon(":/ico/orientations.png"), tr("\311diter les orientations"),  this);
@@ -102,6 +106,12 @@ void QETElementEditor::setupActions() {
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	inv_select        -> setShortcut(QKeySequence(tr("Ctrl+I")));
 	edit_delete       -> setShortcut(QKeySequence(tr("Suppr")));
+	
+	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
+	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
+	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
+	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
+	
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	edit_size_hs      -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
@@ -120,6 +130,10 @@ void QETElementEditor::setupActions() {
 	connect(selectall,     SIGNAL(triggered()), ce_scene, SLOT(slot_selectAll()));
 	connect(deselectall,   SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
 	connect(inv_select,    SIGNAL(triggered()), ce_scene, SLOT(slot_invertSelection()));
+	connect(zoom_in,       SIGNAL(triggered()), ce_view,  SLOT(zoomIn()));
+	connect(zoom_out,      SIGNAL(triggered()), ce_view,  SLOT(zoomOut()));
+	connect(zoom_fit,      SIGNAL(triggered()), ce_view,  SLOT(zoomFit()));
+	connect(zoom_reset,    SIGNAL(triggered()), ce_view,  SLOT(zoomReset()));
 	connect(edit_delete,   SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
 	connect(edit_size_hs,  SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
 	connect(edit_names,    SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
@@ -186,6 +200,8 @@ void QETElementEditor::setupActions() {
 	
 	main_toolbar = new QToolBar(tr("Outils"), this);
 	main_toolbar -> setObjectName("main_toolbar");
+	view_toolbar = new QToolBar(tr("Affichage"), this);
+	view_toolbar -> setObjectName("display");
 	element_toolbar = new QToolBar(tr("\311l\351ment"), this);
 	element_toolbar -> setObjectName("element_toolbar");
 	depth_toolbar = new QToolBar(tr("Profondeur"), this);
@@ -201,6 +217,10 @@ void QETElementEditor::setupActions() {
 	main_toolbar -> addAction(redo);
 	main_toolbar -> addSeparator();
 	main_toolbar -> addAction(edit_delete);
+	view_toolbar -> addAction(zoom_in);
+	view_toolbar -> addAction(zoom_out);
+	view_toolbar -> addAction(zoom_fit);
+	view_toolbar -> addAction(zoom_reset);
 	element_toolbar -> addAction(edit_size_hs);
 	element_toolbar -> addAction(edit_names);
 	element_toolbar -> addAction(edit_ori);
@@ -210,6 +230,7 @@ void QETElementEditor::setupActions() {
 	depth_toolbar -> addAction(edit_backward);
 	
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
+	addToolBar(Qt::TopToolBarArea, view_toolbar);
 	addToolBar(Qt::TopToolBarArea, element_toolbar);
 	addToolBar(Qt::TopToolBarArea, depth_toolbar);
 	addToolBar(Qt::LeftToolBarArea, parts_toolbar);

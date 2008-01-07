@@ -39,6 +39,15 @@ class ElementView : public QGraphicsView {
 	void setScene(ElementScene *);
 	protected:
 	bool event(QEvent *);
+	void wheelEvent(QWheelEvent *);
+	
+	// slots
+	public slots:
+	void zoomIn();
+	void zoomOut();
+	void zoomFit();
+	void zoomReset();
+	void adjustSceneRect();
 	
 	//attributs
 	private:

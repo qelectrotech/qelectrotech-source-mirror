@@ -61,6 +61,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	virtual QString name() const { return(QObject::tr("polygone")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
+	virtual QRectF boundingRect() const;
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	void setClosed(bool c);
 	bool isClosed() const;

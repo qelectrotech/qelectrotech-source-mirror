@@ -27,10 +27,8 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 {
 	setInteractive(true);
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-	//setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
-	//setSceneRect(QRectF(0.0, 0.0, 50.0, 200.0));
-	scale(4.0, 4.0);
+	zoomReset();
 }
 
 /// Destructeur
@@ -63,4 +61,68 @@ bool ElementView::event(QEvent *e) {
 		return(true);
 	}
 	return(QGraphicsView::event(e));
+}
+
+
+/**
+	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
+*/
+void ElementView::zoomIn() {
+	scale(4.0/3.0, 4.0/3.0);
+}
+
+/**
+	Retrecit le schema (-25% = inverse des +33 % de zoomPlus())
+*/
+void ElementView::zoomOut() {
+	scale(0.75, 0.75);
+}
+
+/**
+	Agrandit ou rectrecit le schema de facon a ce que tous les elements du
+	schema soient visibles a l'ecran. S'il n'y a aucun element sur le schema,
+	le zoom est reinitialise
+*/
+void ElementView::zoomFit() {
+	adjustSceneRect();
+	fitInView(sceneRect(), Qt::KeepAspectRatio);
+}
+
+/**
+	Reinitialise le zoom
+*/
+void ElementView::zoomReset() {
+	resetMatrix();
+	scale(4.0, 4.0);
+}
+
+/**
+	Ajuste le sceneRect (zone du schema visualisee par l'ElementView) afin que
+	celui inclut a la fois les parties dans et en dehors du cadre et le cadre
+	lui-meme.
+*/
+void ElementView::adjustSceneRect() {
+	QRectF old_scene_rect = scene_ -> sceneRect();
+	QRectF new_scene_rect = scene_ -> sceneContent();
+	setSceneRect(new_scene_rect);
+	
+	// met a jour la scene
+	scene_ -> update(old_scene_rect.united(new_scene_rect));
+}
+
+/**
+	Gere les actions liees a la rollette de la souris
+	@param e QWheelEvent decrivant l'evenement rollette
+*/
+void ElementView::wheelEvent(QWheelEvent *e) {
+	// si la touche Ctrl est enfoncee, on zoome / dezoome
+	if (e -> modifiers() & Qt::ControlModifier) {
+		if (e -> delta() > 0) {
+			zoomIn();
+		} else {
+			zoomOut();
+		}
+	} else {
+		QAbstractScrollArea::wheelEvent(e);
+	}
 }
