@@ -173,7 +173,6 @@ TARGET = qelectrotech
 
 # Description de l'installation
 target.path     = $$join(INSTALL_PREFIX,,,$${QET_BINARY_PATH})
-target.files    = $${TARGET}
 
 elements.path   = $$join(INSTALL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
 elements.files  = elements/*
