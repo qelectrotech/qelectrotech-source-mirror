@@ -1,0 +1,19 @@
+[en]
+Requirements :
+libQt4 (see packages libqt4*)
+cupsys-bsd for printing
+
+Howto compile :
+$ qmake (qmake-qt4 for Debian-based systems)
+$ make
+# make install
+
+[fr]
+Pré-requis :
+libQt4 (paquets libqt4*)
+cupsys-bsd pour l'impression
+
+Comment compiler :
+$ qmake (qmake-qt4 pour les systèmes basés sur Debian)
+$ make
+# make install
