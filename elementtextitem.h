@@ -38,6 +38,7 @@ class ElementTextItem : public DiagramTextItem {
 	
 	private:
 	bool follow_parent_rotations;
+	QPointF original_position;
 	
 	// methodes
 	public:
@@ -51,6 +52,8 @@ class ElementTextItem : public DiagramTextItem {
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
 	QPointF pos() const;
+	void setOriginalPos(const QPointF &);
+	QPointF originalPos() const;
 };
 
 /**

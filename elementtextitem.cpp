@@ -98,8 +98,23 @@ void ElementTextItem::fromXml(const QDomElement &e) {
 */
 QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
-	result.setAttribute("x", pos().x());
-	result.setAttribute("y", pos().y());
+	result.setAttribute("x", originalPos().x());
+	result.setAttribute("y", originalPos().y());
 	result.setAttribute("text", toPlainText());
 	return(result);
+}
+
+/**
+	@param p Position originale / de reference pour ce champ
+	Cette position est utilisee lors de l'export en XML
+*/
+void ElementTextItem::setOriginalPos(const QPointF &p) {
+	original_position = p;
+}
+
+/**
+	@return la position originale / de reference pour ce champ
+*/
+QPointF ElementTextItem::originalPos() const {
+	return(original_position);
 }
