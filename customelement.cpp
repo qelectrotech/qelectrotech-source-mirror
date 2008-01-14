@@ -122,7 +122,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	QPen t;
 	t.setColor(Qt::black);
 	t.setWidthF(1.0);
-	t.setJoinStyle(Qt::MiterJoin);
+	t.setJoinStyle(Qt::BevelJoin);
 	qp.setPen(t);
 	
 	// extrait les noms de la definition XML
@@ -514,7 +514,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	QBrush brush = qp.brush();
 	
 	// attributs par defaut
-	pen.setJoinStyle(Qt::MiterJoin);
+	pen.setJoinStyle(Qt::BevelJoin);
 	pen.setCapStyle(Qt::SquareCap);
 	pen.setColor(Qt::black);
 	pen.setStyle(Qt::SolidLine);
