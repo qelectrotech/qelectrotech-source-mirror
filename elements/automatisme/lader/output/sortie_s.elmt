@@ -1,7 +1,7 @@
 <definition width="50" version="0.1" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="en" >Output (Set)</name>
-        <name lang="fr" >Sorite (Set)</name>
+        <name lang="en" >Output (set)</name>
+        <name lang="fr" >Sortie (set)</name>
     </names>
     <description>
         <arc width="4" x="6" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="80" angle="-160" />

@@ -1,7 +1,7 @@
 <definition width="20" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="en" >No Named</name>
-        <name lang="fr" >Eclateur</name>
+        <name lang="en" >Spark-gap</name>
+        <name lang="fr" >Éclateur</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="0" y2="20" x2="0" />

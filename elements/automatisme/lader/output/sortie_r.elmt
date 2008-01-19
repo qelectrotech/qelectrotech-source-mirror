@@ -1,7 +1,7 @@
 <definition width="50" version="0.1" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="en" >Output (Reset)</name>
-        <name lang="fr" >Sorite (Reset)</name>
+        <name lang="en" >Output (reset)</name>
+        <name lang="fr" >Sortie (reset)</name>
     </names>
     <description>
         <text x="-4.25" y="5.25" size="9" text="R" />

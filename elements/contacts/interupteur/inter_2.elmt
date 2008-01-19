@@ -1,6 +1,7 @@
 <definition width="50" version="0.1" hotspot_x="10" hotspot_y="35" height="60" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Interupteur 2 position</name>
+        <name lang="en" >Switch 2 positions</name>
+        <name lang="fr" >Interrupteur 2 positions</name>
     </names>
     <description>
         <input x="22" y="-7" size="9" text="_" />

@@ -1,6 +1,6 @@
 <definition width="50" version="0.1" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="en" >Input (Negative logic)</name>
+        <name lang="en" >Input (negative logic)</name>
         <name lang="fr" >Entrée (NF)</name>
     </names>
     <description>

@@ -1,6 +1,7 @@
 <definition width="50" version="0.1" hotspot_x="10" hotspot_y="35" height="60" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Interupteur 3 position dont neutre</name>
+        <name lang="en" >Switch 3 positions including neutral</name>
+        <name lang="fr" >Interrupteur 3 positions dont neutre</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="10" y2="4" x2="8" y3="4" x3="12" />
