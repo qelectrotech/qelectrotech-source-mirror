@@ -50,6 +50,7 @@ class ElementsPanelWidget : public QWidget {
 	inline ElementsPanel &elementsPanel() const;
 	
 	public slots:
+	void reloadAndFilter();
 	void newElement();
 	void newCategory();
 	void updateButtons();

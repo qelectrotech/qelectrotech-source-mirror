@@ -44,7 +44,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	
 	context_menu = new QMenu(this);
 	
-	connect(reload,          SIGNAL(triggered()), elements_panel, SLOT(reload()));
+	connect(reload,          SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
 	connect(new_category,    SIGNAL(triggered()), this,           SLOT(newCategory()));
 	connect(edit_category,   SIGNAL(triggered()), elements_panel, SLOT(editCategory()));
 	connect(delete_category, SIGNAL(triggered()), elements_panel, SLOT(deleteCategory()));
@@ -86,6 +86,18 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 */
 ElementsPanelWidget::~ElementsPanelWidget() {
 }
+
+/**
+	Recharge le panel d'elements
+*/
+void ElementsPanelWidget::reloadAndFilter() {
+	// recharge tous les elements
+	elements_panel -> reload();
+	
+	// reapplique le filtre
+	elements_panel -> filter(filter_textfield -> text());
+}
+
 
 /**
 	Appelle l'assistant de creation de nouvel element
