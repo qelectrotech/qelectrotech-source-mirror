@@ -4,11 +4,7 @@
         <name lang="fr" >Lampe clignotante</name>
     </names>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="12" y2="20" x2="14" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="12" y2="20" x2="12" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="7" y2="15" x2="12" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="7" y2="15" x2="7" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="5" y2="20" x2="7" />
+        <polygon x4="12" y5="20" x5="12" y6="20" x6="14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="5" y2="20" x2="7" y3="15" x3="7" y4="15" />
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03" />

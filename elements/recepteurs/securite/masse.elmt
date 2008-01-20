@@ -4,11 +4,11 @@
         <name lang="fr" >Masse</name>
     </names>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="8" y2="3" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-1" y2="0" x2="2" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-7" y2="0" x2="-4" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="2" y2="0" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-4" y2="0" x2="-1" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5187711715698242" x1="7.5" y2="3.018771171569824" x2="5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-1" y2="0.5" x2="1.5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-7" y2="0.5" x2="-4.5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="2" y2="0.5" x2="4.5" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-4" y2="0.5" x2="-1.5" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="8" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0" />
         <terminal x="0" y="-11" orientation="n" />

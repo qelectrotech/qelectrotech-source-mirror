@@ -4,10 +4,9 @@
         <name lang="fr" >Bouton poussoir (NF)</name>
     </names>
     <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="6" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="5" y2="10" x2="0" />
         <input x="5.75" y="3" size="9" text="_" />
         <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10" />
         <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-10" y2="0" x2="3" />
