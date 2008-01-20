@@ -283,7 +283,7 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				}
 		}
 	} else if (e -> button() & Qt::RightButton) {
-		if (behavior == Polygon) {
+		if (behavior == Polygon && current_polygon != NULL) {
 			behavior = Normal;
 			undo_stack.push(new AddPartCommand(tr("polygone"), this, current_polygon));
 			current_polygon = NULL;
