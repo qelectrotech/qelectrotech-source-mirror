@@ -1,5 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" >
     <names>
+        <name lang="en" >Thyristor</name>
         <name lang="fr" >Thyristor</name>
     </names>
     <description>
