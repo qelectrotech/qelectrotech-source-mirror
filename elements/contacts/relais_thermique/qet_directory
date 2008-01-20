@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Relais Thermique</name>
+        <name lang="fr">Relais thermiques</name>
+        <name lang="en">Thermal relays</name>
     </names>
 </qet-directory>
