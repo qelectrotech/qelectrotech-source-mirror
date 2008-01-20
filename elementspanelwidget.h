@@ -38,11 +38,12 @@ class ElementsPanelWidget : public QWidget {
 	// attributs
 	private:
 	ElementsPanel *elements_panel;
-	QToolBar *toolbar;
+	QToolBar *toolbar, *filter_toolbar;
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *new_element,  *edit_element,  *delete_element;
 	QMenu *context_menu;
+	QAction *erase_textfield;
 	QLineEdit *filter_textfield;
 	
 	// methodes

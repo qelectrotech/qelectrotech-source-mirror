@@ -616,19 +616,24 @@ Changes will be permanent.</translation>
         <translation>Delete element</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="104"/>
+        <location filename="../elementspanelwidget.cpp" line="120"/>
         <source>Gestionnaire de cat&#xe9;gories</source>
         <translation>Categories manager</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="107"/>
+        <location filename="../elementspanelwidget.cpp" line="123"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les cat&#xe9;gories.</source>
         <translation>Use this manager to add, delete or modify categories.</translation>
     </message>
     <message>
-        <location filename="../elementspanelwidget.cpp" line="39"/>
+        <location filename="../elementspanelwidget.cpp" line="40"/>
         <source>Filtrer : </source>
         <translation>Filter: </translation>
+    </message>
+    <message>
+        <location filename="../elementspanelwidget.cpp" line="37"/>
+        <source>Effacer le filtre</source>
+        <translation>Erase filter</translation>
     </message>
 </context>
 <context>

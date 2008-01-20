@@ -251,4 +251,3 @@ QRectF PartLine::boundingRect() const {
 bool PartLine::isUseless() const {
 	return(sceneP1() == sceneP2());
 }
-

@@ -34,13 +34,15 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	new_element     = new QAction(QIcon(":/ico/new.png"),             tr("Nouvel \351l\351ment"),      this);
 	edit_element    = new QAction(QIcon(":/ico/edit.png"),            tr("\311diter l'\351l\351ment"), this);
 	delete_element  = new QAction(QIcon(":/ico/delete.png"),          tr("Supprimer l'\351l\351ment"), this);
+	erase_textfield = new QAction(QIcon(":/ico/erase.png"),           tr("Effacer le filtre"),         this);
 	
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);
 	filter_textfield = new QLineEdit(this);
-	QHBoxLayout *hlayout = new QHBoxLayout();
-	hlayout -> addWidget(filter_label);
-	hlayout -> addWidget(filter_textfield);
+	filter_toolbar = new QToolBar("filter");
+	filter_toolbar -> addAction(erase_textfield);
+	filter_toolbar -> addWidget(filter_label);
+	filter_toolbar -> addWidget(filter_textfield);
 	
 	context_menu = new QMenu(this);
 	
@@ -52,7 +54,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(edit_element,    SIGNAL(triggered()), elements_panel, SLOT(editElement()));
 	connect(delete_element,  SIGNAL(triggered()), elements_panel, SLOT(deleteElement()));
 	
-	connect(filter_textfield, SIGNAL(textEdited(const QString &)), elements_panel, SLOT(filter(const QString &)));
+	connect(erase_textfield,  SIGNAL(triggered()),                 filter_textfield, SLOT(clear()));
+	connect(erase_textfield,  SIGNAL(triggered()),                 filter_textfield, SLOT(setFocus()));
+	connect(filter_textfield, SIGNAL(textEdited(const QString &)), elements_panel,   SLOT(filter(const QString &)));
 	
 	connect(elements_panel, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(handleContextMenu(const QPoint &)));
@@ -75,7 +79,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	vlayout -> setMargin(0);
 	vlayout -> setSpacing(0);
 	vlayout -> addWidget(toolbar);
-	vlayout -> addLayout(hlayout);
+	vlayout -> addWidget(filter_toolbar);
 	vlayout -> addWidget(elements_panel);
 	vlayout -> setStretchFactor(elements_panel, 75000);
 	setLayout(vlayout);
