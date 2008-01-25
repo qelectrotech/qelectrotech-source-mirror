@@ -1,0 +1,16 @@
+<definition width="50" version="0.1" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
+    <names>
+        <name lang="fr" >Source de courant (Vieux)</name>
+    </names>
+    <description>
+        <circle x="-9.999999999999996" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />
+        <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-8" x1="-3" y2="-12" x2="0" y3="-8" x3="3" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="12" x2="0" />
+        <circle x="-10" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="15" x2="0" />
+        <input x="12.75" y="3" size="9" text="_" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-15" x2="0" />
+        <terminal x="0" y="-21" orientation="n" />
+        <terminal x="0" y="21" orientation="s" />
+    </description>
+</definition>
