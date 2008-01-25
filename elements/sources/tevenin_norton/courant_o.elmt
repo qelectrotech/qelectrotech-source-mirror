@@ -1,6 +1,7 @@
 <definition width="50" version="0.1" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="fr" >Source de courant (Vieux)</name>
+        <name lang="en" >Current source (old)</name>
+        <name lang="fr" >Source de courant (vieux)</name>
     </names>
     <description>
         <circle x="-9.999999999999996" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />

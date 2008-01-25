@@ -1,6 +1,7 @@
 <definition width="50" version="0.1" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="fr" >Source de tention (Vieux)</name>
+        <name lang="en" >Voltage source (old)</name>
+        <name lang="fr" >Source de tension (vieux)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-3" x1="-3" y2="-7" x2="0" y3="-3" x3="3" />

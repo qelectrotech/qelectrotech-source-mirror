@@ -1,6 +1,7 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dnnn" >
     <names>
-        <name lang="fr" >Source Tripolaire + Neutre</name>
+        <name lang="en" >Three-pole source + neutral</name>
+        <name lang="fr" >Source tripolaire + neutre</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="8" />
