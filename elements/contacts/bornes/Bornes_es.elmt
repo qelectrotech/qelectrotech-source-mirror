@@ -1,6 +1,7 @@
 <definition width="10" version="0.1" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Double Bornes</name>
+        <name lang="en" >Dual terminal</name>
+        <name lang="fr" >Double borne</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4" />

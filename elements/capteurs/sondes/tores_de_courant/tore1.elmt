@@ -1,19 +1,17 @@
-<definition width="50" version="0.1" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy" >
+<definition width="40" version="0.1" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Tore 2 pôles</name>
+        <name lang="en" >1-pole toroidal core</name>
+        <name lang="fr" >Tore 1 pôle</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5" y2="-10" x2="5" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="14" y2="-10" x2="5" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="14" y2="0" x2="10" />
-        <ellipse width="30" x="-20" y="-2.5" antialias="true" height="5" style="line-style:dashed;line-weight:thin;filling:white;color:black" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-10" y2="10" x2="-10" />
+        <ellipse width="20" x="-10" y="-2.5" antialias="true" height="5" style="line-style:dashed;line-weight:thin;filling:white;color:black" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="0" y2="10" x2="0" />
         <terminal x="0" y="-16" orientation="n" />
         <terminal x="0" y="11" orientation="s" />
         <terminal x="15" y="0" orientation="e" />
         <terminal x="15" y="-10" orientation="e" />
-        <terminal x="-10" y="-16" orientation="n" />
-        <terminal x="-10" y="11" orientation="s" />
     </description>
 </definition>
