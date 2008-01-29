@@ -69,5 +69,6 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	
 	private:
 	QPointF margin() const;
+	QString previous_text;
 };
 #endif

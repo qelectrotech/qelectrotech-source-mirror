@@ -17,6 +17,7 @@
 */
 #include "parttextfield.h"
 #include "textfieldeditor.h"
+#include "editorcommands.h"
 #include "qetapp.h"
 
 /**
@@ -144,6 +145,18 @@ QPointF PartTextField::margin() const {
 */
 void PartTextField::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
+	if (previous_text != toPlainText()) {
+		undoStack().push(
+			new ChangePartCommand(
+				TextFieldEditor::tr("texte") + " " + name(),
+				this,
+				"text",
+				previous_text,
+				toPlainText()
+			)
+		);
+		previous_text = toPlainText();
+	}
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 }
 
@@ -154,6 +167,7 @@ void PartTextField::focusOutEvent(QFocusEvent *e) {
 void PartTextField::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
 	setTextInteractionFlags(Qt::TextEditorInteraction);
+	previous_text = toPlainText();
 	QGraphicsTextItem::mouseDoubleClickEvent(e);
 	setFocus(Qt::MouseFocusReason);
 }
