@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutQET</name>
-    <message>
-        <location filename="../aboutqet.cpp" line="86"/>
-        <source>&#xa9; 2006-2007 Les d&#xe9;veloppeurs de QElectroTech</source>
-        <translation>© 2006-2007 QElectroTech developers</translation>
-    </message>
     <message>
         <location filename="../aboutqet.cpp" line="36"/>
         <source>&amp;Accord de licence</source>
@@ -47,6 +41,11 @@
         <location filename="../aboutqet.cpp" line="84"/>
         <source>QElectroTech, une application de r&#xe9;alisation de sch&#xe9;mas &#xe9;lectriques.</source>
         <translation>QElectroTech, an application to design electric diagrams.</translation>
+    </message>
+    <message>
+        <location filename="../aboutqet.cpp" line="86"/>
+        <source>&#xa9; 2006-2008 Les d&#xe9;veloppeurs de QElectroTech</source>
+        <translation type="unfinished">© 2006-2008 QElectroTech developers</translation>
     </message>
 </context>
 <context>
@@ -1965,7 +1964,7 @@ Available options:
         <translation>&amp;Save</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="648"/>
+        <location filename="../editor/qetelementeditor.cpp" line="649"/>
         <source>Enregistrer sous</source>
         <translation>Save as</translation>
     </message>
@@ -2080,142 +2079,142 @@ Available options:
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="373"/>
+        <location filename="../editor/qetelementeditor.cpp" line="374"/>
         <source>Parties</source>
         <translation>Parts</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="248"/>
+        <location filename="../editor/qetelementeditor.cpp" line="249"/>
         <source>Fichier</source>
         <translation>File</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="249"/>
+        <location filename="../editor/qetelementeditor.cpp" line="250"/>
         <source>&#xc9;dition</source>
         <translation>Edit</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="250"/>
+        <location filename="../editor/qetelementeditor.cpp" line="251"/>
         <source>Affichage</source>
         <translation>Display</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="251"/>
+        <location filename="../editor/qetelementeditor.cpp" line="252"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="252"/>
+        <location filename="../editor/qetelementeditor.cpp" line="253"/>
         <source>Aide</source>
         <translation>Help</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="323"/>
+        <location filename="../editor/qetelementeditor.cpp" line="324"/>
         <source>[Modifi&#xe9;]</source>
         <translation>[Changed]</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="324"/>
+        <location filename="../editor/qetelementeditor.cpp" line="325"/>
         <source> [lecture seule]</source>
         <translation> [Read only]</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="344"/>
+        <location filename="../editor/qetelementeditor.cpp" line="345"/>
         <source>Informations</source>
         <translation>Informations</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="355"/>
+        <location filename="../editor/qetelementeditor.cpp" line="356"/>
         <source>Annulations</source>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="385"/>
+        <location filename="../editor/qetelementeditor.cpp" line="386"/>
         <source>&#xc9;diteur d&apos;&#xe9;l&#xe9;ments</source>
         <translation>Elements Editor</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="447"/>
+        <location filename="../editor/qetelementeditor.cpp" line="448"/>
         <source> parties s&#xe9;lectionn&#xe9;es.</source>
         <translation> selected parts.</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="449"/>
+        <location filename="../editor/qetelementeditor.cpp" line="450"/>
         <source>Aucune partie s&#xe9;lectionn&#xe9;e.</source>
         <translation>No part selected.</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="479"/>
+        <location filename="../editor/qetelementeditor.cpp" line="480"/>
         <source>Le fichier </source>
         <translation>The file </translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="479"/>
+        <location filename="../editor/qetelementeditor.cpp" line="480"/>
         <source> n&apos;existe pas.</source>
         <translation> does not exist.</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="487"/>
+        <location filename="../editor/qetelementeditor.cpp" line="488"/>
         <source>Impossible d&apos;ouvrir le fichier </source>
         <translation>Unable to open file </translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="496"/>
+        <location filename="../editor/qetelementeditor.cpp" line="497"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <translation>This file is not a valid XML document</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="534"/>
+        <location filename="../editor/qetelementeditor.cpp" line="535"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="514"/>
+        <location filename="../editor/qetelementeditor.cpp" line="515"/>
         <source>&#xc9;dition en lecture seule</source>
         <translation>Read only edition</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="516"/>
+        <location filename="../editor/qetelementeditor.cpp" line="517"/>
         <source>Vous n&apos;avez pas les privil&#xe8;ges n&#xe9;cessaires pour modifier cet &#xe9;lement. Il sera donc ouvert en lecture seule.</source>
         <translation>You are not allowed to modify this element. Thus it will be edited read-only.</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="534"/>
+        <location filename="../editor/qetelementeditor.cpp" line="535"/>
         <source>Impossible d&apos;ecrire dans ce fichier</source>
         <translation>Can&apos;t write to the file</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="591"/>
+        <location filename="../editor/qetelementeditor.cpp" line="592"/>
         <source>Ouvrir un fichier</source>
         <translation>Open a file</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="594"/>
+        <location filename="../editor/qetelementeditor.cpp" line="595"/>
         <source>&#xc9;l&#xe9;ments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech elements (*.elmt);;XML files (*.xml);;All files (*)</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="651"/>
+        <location filename="../editor/qetelementeditor.cpp" line="652"/>
         <source>&#xc9;l&#xe9;ments QElectroTech (*.elmt)</source>
         <translation>QElectroTech elements (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="678"/>
+        <location filename="../editor/qetelementeditor.cpp" line="679"/>
         <source>Enregistrer l&apos;&#xe9;l&#xe9;ment en cours ?</source>
         <translation>Save current element ?</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="679"/>
+        <location filename="../editor/qetelementeditor.cpp" line="680"/>
         <source>Voulez-vous enregistrer l&apos;&#xe9;l&#xe9;ment </source>
         <translation>Do you wish to save the element </translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="679"/>
+        <location filename="../editor/qetelementeditor.cpp" line="680"/>
         <source> ?</source>
         <translation> ?</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="290"/>
+        <location filename="../editor/qetelementeditor.cpp" line="291"/>
         <source>Afficher</source>
         <translation>Display</translation>
     </message>
@@ -2280,7 +2279,7 @@ Available options:
         <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="362"/>
+        <location filename="../editor/qetelementeditor.cpp" line="363"/>
         <source>Aucune modification</source>
         <translation>No modification</translation>
     </message>
@@ -2290,12 +2289,12 @@ Available options:
         <translation>Reload</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="613"/>
+        <location filename="../editor/qetelementeditor.cpp" line="614"/>
         <source>Recharger l&apos;&#xe9;l&#xe9;ment</source>
         <translation>Reload element</translation>
     </message>
     <message>
-        <location filename="../editor/qetelementeditor.cpp" line="614"/>
+        <location filename="../editor/qetelementeditor.cpp" line="615"/>
         <source>Vous avez efffectu&#xe9; des modifications sur cet &#xe9;l&#xe9;ment. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;&#xe9;l&#xe9;ment ?</source>
         <translation>This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element ?</translation>
     </message>
@@ -2398,7 +2397,7 @@ Available options:
         <translation>terminal</translation>
     </message>
     <message>
-        <location filename="../editor/parttext.cpp" line="35"/>
+        <location filename="../editor/parttext.cpp" line="36"/>
         <source>T</source>
         <translation>T</translation>
     </message>
@@ -2408,7 +2407,7 @@ Available options:
         <translation>text</translation>
     </message>
     <message>
-        <location filename="../editor/parttextfield.cpp" line="35"/>
+        <location filename="../editor/parttextfield.cpp" line="36"/>
         <source>_</source>
         <translation>_</translation>
     </message>

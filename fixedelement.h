@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2008 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify

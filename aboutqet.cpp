@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2008 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -82,7 +82,7 @@ QWidget *AboutQET::ongletAPropos() const {
 	QLabel *apropos = new QLabel(
 		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
 		"<br><br>" +
-		tr("\251 2006-2007 Les d\351veloppeurs de QElectroTech") +
+		tr("\251 2006-2008 Les d\351veloppeurs de QElectroTech") +
 		"<br><br>"
 		"<a href=\"http://qelectrotech.tuxfamily.org/\">"
 		"http://qelectrotech.tuxfamily.org/</a>"
