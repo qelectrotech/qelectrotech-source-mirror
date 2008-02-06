@@ -181,7 +181,9 @@ lang.path       = $$join(INSTALL_PREFIX,,,$${QET_LANG_PATH})
 lang.files      = $$replace(TRANSLATIONS, '.ts', '.qm')
 
 copyright.path  = $$join(INSTALL_PREFIX,,,$${QET_LICENSE_PATH})
-copyright.files = LICENSE
+copyright.files = LICENSE \
+                  CREDIT \
+                  README
 
 # L'installation comprend la copie du binaire, des elements, des fichiers de langue et du fichier LICENSE
 INSTALLS += target elements lang copyright
