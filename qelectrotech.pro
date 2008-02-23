@@ -11,6 +11,8 @@
 	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
 	QET_LANG_PATH              = 'share/qelectrotech/lang/'
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
+	QET_DESKTOP_PATH           = 'share/applications/'
+	QET_ICONS_PATH             = 'share/icons/'
 } else {
 	# Chemins Windows
 	COMPIL_PREFIX              = './'
@@ -185,8 +187,18 @@ copyright.files = LICENSE \
                   CREDIT \
                   README
 
+desktop.path   = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
+desktop.files  = misc/qelectrotech.desktop
+
+icons.path     = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
+icons.files    = ico/qet.png
+
 # L'installation comprend la copie du binaire, des elements, des fichiers de langue et du fichier LICENSE
 INSTALLS += target elements lang copyright
+# Sous Unix, on installe egalement l'icone et un fichier .desktop
+unix {
+	INSTALLS += desktop icons
+}
 
 # Options de compilation
 # Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution

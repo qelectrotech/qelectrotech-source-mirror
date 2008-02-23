@@ -13,17 +13,17 @@
 <!ELEMENT name (#PCDATA)>
 <!ATTLIST name lang CDATA #REQUIRED>
 
-<!ELEMENT description (borne+|ligne*|cercle*|polygone*)+>
+<!ELEMENT description (terminal+|line*|circle*|polygon*)+>
 
-<!ELEMENT borne    EMPTY>
-<!ATTLIST borne
+<!ELEMENT terminal    EMPTY>
+<!ATTLIST terminal
 	x           CDATA     #REQUIRED
 	y           CDATA     #REQUIRED
 	orientation (n|s|e|o) "n"
 >
 
-<!ELEMENT ligne    EMPTY>
-<!ATTLIST ligne
+<!ELEMENT line    EMPTY>
+<!ATTLIST line
 	x1         CDATA       #REQUIRED
 	y1         CDATA       #REQUIRED
 	x2         CDATA       #REQUIRED
@@ -32,8 +32,8 @@
 	style      CDATA       ""
 >
 
-<!ELEMENT cercle   EMPTY>
-<!ATTLIST cercle
+<!ELEMENT circle   EMPTY>
+<!ATTLIST circle
 	x         CDATA        #REQUIRED
 	y         CDATA        #REQUIRED
 	rayon     CDATA        #REQUIRED
@@ -41,8 +41,8 @@
 	style     CDATA        ""
 >
 
-<!ELEMENT polygone EMPTY>
-<!ATTLIST polygone
+<!ELEMENT polygon EMPTY>
+<!ATTLIST polygon
 	x1          CDATA        #IMPLIED
 	y1          CDATA        #IMPLIED
 	x2          CDATA        #IMPLIED

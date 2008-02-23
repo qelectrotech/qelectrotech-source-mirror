@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=QElectroTech
+Exec=qelectrotech
+Icon=qet
+Terminal=false
+Type=Application
+Categories=Qt;VectorGraphics;Science;Electricity;Engineering;
+Comment=An electric diagrams editor.
+Comment[fr]=Un éditeur de schémas électriques
+GenericName=Electric diagrams editor
+GenericName[fr]=Un éditeur de schémas électriques
