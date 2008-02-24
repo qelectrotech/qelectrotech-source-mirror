@@ -50,6 +50,7 @@ HEADERS += aboutqet.h \
            diagram.h \
            diagramcommands.h \
            diagramcontent.h \
+           diagramprintdialog.h \
            diagramview.h \
            diagramtextitem.h \
            element.h \
@@ -114,6 +115,7 @@ SOURCES += aboutqet.cpp \
            diagram.cpp \
            diagramcommands.cpp \
            diagramcontent.cpp \
+           diagramprintdialog.cpp \
            diagramtextitem.cpp \
            diagramview.cpp \
            element.cpp \

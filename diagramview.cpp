@@ -19,6 +19,7 @@
 #include "diagram.h"
 #include "customelement.h"
 #include "exportdialog.h"
+#include "diagramprintdialog.h"
 #include "conductor.h"
 #include "diagramcommands.h"
 #include "conductorpropertieswidget.h"
@@ -530,31 +531,20 @@ void DiagramView::dialogExport() {
 	Imprime le schema.
 */
 void DiagramView::dialogPrint() {
-	// initialise l'acces a l'imprimante
-	QPrinter qprin;
-#ifndef Q_OS_WIN32
-	qprin.setOutputFormat(QPrinter::PdfFormat);
-#endif
-	qprin.setOrientation(QPrinter::Landscape);
-	qprin.setPageSize(QPrinter::A4);
-	QPrintDialog qpd(&qprin, this);
 	
-	if (qpd.exec() == QDialog::Accepted) {
-		QPainter qp(&qprin);
-		// impression physique (!= fichier PDF)
-		if (qprin.outputFileName().isEmpty()) {
-			// lorsqu'on imprime en paysage sur imprimante reelle, il faut pivoter soi-meme le rendu
-			if (qprin.orientation() == QPrinter::Landscape) {
-				qp.rotate(90.0);
-				qp.translate(0.0, -qprin.pageRect().height());
-			}
-		}
-		scene -> setDisplayGrid(false);
-		scene -> setDrawTerminals(false);
-		scene -> render(&qp, QRectF(), scene -> border(), Qt::KeepAspectRatio);
-		scene -> setDrawTerminals(true);
-		scene -> setDisplayGrid(true);
+	// determine un nom possible pour le pdf
+	QString pdf_file_name;
+	if (!file_name.isEmpty()) {
+		pdf_file_name = file_name;
+		pdf_file_name.replace(QRegExp("\\.qet$", Qt::CaseInsensitive), "");
+	} else {
+		pdf_file_name = QDir::homePath() + tr("schema");
 	}
+	pdf_file_name += ".pdf";
+	
+	DiagramPrintDialog print_dialog(scene, this);
+	print_dialog.setPDFName(pdf_file_name);
+	print_dialog.exec();
 }
 
 /**

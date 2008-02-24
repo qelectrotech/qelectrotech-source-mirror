@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutQET</name>
     <message>
@@ -45,7 +46,7 @@
     <message>
         <location filename="../aboutqet.cpp" line="86"/>
         <source>&#xa9; 2006-2008 Les d&#xe9;veloppeurs de QElectroTech</source>
-        <translation type="unfinished">© 2006-2008 QElectroTech developers</translation>
+        <translation>© 2006-2008 QElectroTech developers</translation>
     </message>
 </context>
 <context>
@@ -219,101 +220,139 @@
     </message>
 </context>
 <context>
+    <name>DiagramPrintDialog</name>
+    <message>
+        <location filename="../diagramprintdialog.cpp" line="126"/>
+        <source>Options d&apos;impression</source>
+        <translation>Print options</translation>
+    </message>
+    <message>
+        <location filename="../diagramprintdialog.cpp" line="128"/>
+        <source>Utiliser toute la feuille</source>
+        <translation>Use full page</translation>
+    </message>
+    <message>
+        <location filename="../diagramprintdialog.cpp" line="129"/>
+        <source>Adapter le sch&#xe9;ma &#xe0; la page</source>
+        <translation>Fit diagram to page</translation>
+    </message>
+    <message>
+        <location filename="../diagramprintdialog.cpp" line="130"/>
+        <source>Plage de </source>
+        <translation>Range from </translation>
+    </message>
+    <message>
+        <location filename="../diagramprintdialog.cpp" line="132"/>
+        <source> &#xe0; </source>
+        <translation> to </translation>
+    </message>
+    <message>
+        <location filename="../diagramprintdialog.cpp" line="171"/>
+        <source>Nombre total de pages : </source>
+        <translation>Total pages count: </translation>
+    </message>
+</context>
+<context>
     <name>DiagramView</name>
     <message>
-        <location filename="../diagramview.cpp" line="417"/>
+        <location filename="../diagramview.cpp" line="418"/>
         <source> ?</source>
         <translation> ?</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="416"/>
+        <location filename="../diagramview.cpp" line="417"/>
         <source>Enregistrer le sch&#xe9;ma en cours ?</source>
         <translation>Save the current diagram ?</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="456"/>
+        <location filename="../diagramview.cpp" line="457"/>
         <source>Enregistrer sous</source>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="502"/>
+        <location filename="../diagramview.cpp" line="503"/>
         <source>Erreur</source>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="502"/>
+        <location filename="../diagramview.cpp" line="503"/>
         <source>Impossible d&apos;ecrire dans ce fichier</source>
         <translation>Can&apos;t write to the file</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="459"/>
+        <location filename="../diagramview.cpp" line="460"/>
         <source>Sch&#xe9;ma QElectroTech (*.qet)</source>
         <translation>QElectroTech Diagram (*.qet)</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="417"/>
+        <location filename="../diagramview.cpp" line="418"/>
         <source>Voulez-vous enregistrer le sch&#xe9;ma </source>
         <translation>Do you wish to save the diagram </translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="717"/>
+        <location filename="../diagramview.cpp" line="707"/>
         <source>nouveau sch&#xe9;ma</source>
         <translation>new diagram</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="777"/>
+        <location filename="../diagramview.cpp" line="767"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s d&apos;un conducteur</source>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="575"/>
+        <location filename="../diagramview.cpp" line="565"/>
         <source>Propri&#xe9;t&#xe9;s du sch&#xe9;ma</source>
         <translation>Diagram properties</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="577"/>
+        <location filename="../diagramview.cpp" line="567"/>
         <source>Dimensions du sch&#xe9;ma</source>
         <translation>Diagram size</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="580"/>
+        <location filename="../diagramview.cpp" line="570"/>
         <source>Colonnes :</source>
         <translation>Columns:</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="590"/>
+        <location filename="../diagramview.cpp" line="580"/>
         <source>&#xd7;</source>
         <translation>×</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="591"/>
+        <location filename="../diagramview.cpp" line="581"/>
         <source>px</source>
         <translation>px</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="593"/>
+        <location filename="../diagramview.cpp" line="583"/>
         <source>Hauteur :</source>
         <translation>Height:</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="836"/>
+        <location filename="../diagramview.cpp" line="826"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s par d&#xe9;faut des conducteurs</source>
         <translation>Edit conductors default properties</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="53"/>
+        <location filename="../diagramview.cpp" line="54"/>
         <source>Coller ici</source>
         <translation>Paste Here</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="343"/>
+        <location filename="../diagramview.cpp" line="344"/>
         <source>Avertissement</source>
         <translation>Warning</translation>
     </message>
     <message>
-        <location filename="../diagramview.cpp" line="347"/>
+        <location filename="../diagramview.cpp" line="348"/>
         <source>Ce document semble avoir &#xe9;t&#xe9; enregistr&#xe9; avec une version ult&#xe9;rieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document &#xe9;choue.</source>
         <translation>This document seems to have been saved by a more recent version of QElectroTech. The opening of the document may fail totally or partially.</translation>
+    </message>
+    <message>
+        <location filename="../diagramview.cpp" line="541"/>
+        <source>schema</source>
+        <translation>diagram</translation>
     </message>
 </context>
 <context>
