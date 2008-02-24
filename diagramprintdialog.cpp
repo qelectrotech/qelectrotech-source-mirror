@@ -63,7 +63,7 @@ void DiagramPrintDialog::exec() {
 	// affichage du dialogue d'impression standard
 	QPrintDialog print_dialog(printer);
 	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile);
-#ifndef Q_OS_WIN3
+#ifndef Q_OS_WIN32
 	if (!pdf_name.isEmpty()) printer -> setOutputFileName(pdf_name);
 #endif
 	if (print_dialog.exec() == QDialog::Rejected) return;
