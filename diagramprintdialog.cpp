@@ -63,7 +63,9 @@ void DiagramPrintDialog::exec() {
 	// affichage du dialogue d'impression standard
 	QPrintDialog print_dialog(printer);
 	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile);
+#ifndef Q_OS_WIN3
 	if (!pdf_name.isEmpty()) printer -> setOutputFileName(pdf_name);
+#endif
 	if (print_dialog.exec() == QDialog::Rejected) return;
 	
 	/*
@@ -100,7 +102,7 @@ int DiagramPrintDialog::horizontalPagesCount(bool fullpage) const {
 	QRect printable_area = fullpage ? printer -> paperRect() : printer -> pageRect();
 	QRect diagram_rect = diagram -> border().toRect();
 	
-	int h_pages_count = ceil(qreal(diagram_rect.width()) / qreal(printable_area.width()));
+	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
 	return(h_pages_count);
 }
 
@@ -114,7 +116,7 @@ int DiagramPrintDialog::verticalPagesCount(bool fullpage) const {
 	QRect printable_area = fullpage ? printer -> paperRect() : printer -> pageRect();
 	QRect diagram_rect = diagram -> border().toRect();
 	
-	int v_pages_count = ceil(qreal(diagram_rect.height()) / qreal(printable_area.height()));
+	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
 	return(v_pages_count);
 }
 
