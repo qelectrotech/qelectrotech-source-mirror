@@ -41,6 +41,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	terminal2(p2),
 	destroyed(false),
 	segments(NULL),
+	moving_point(false),
+	moving_segment(false),
 	previous_z_value(zValue()),
 	modified_path(false),
 	has_to_save_profile(false)

@@ -114,6 +114,7 @@ class Element : public QGraphicsItem {
 	
 	protected:
 	void drawAxes(QPainter *, const QStyleOptionGraphicsItem *);
+	void mousePressEvent(QGraphicsSceneMouseEvent *);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	

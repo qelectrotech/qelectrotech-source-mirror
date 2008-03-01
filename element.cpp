@@ -259,10 +259,20 @@ void Element::setPos(qreal x, qreal y) {
 }
 
 /**
+	Gere l'enfoncement d'un bouton de la souris
+*/
+void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	if (!isSelected() && e -> modifiers() & Qt::ControlModifier) {
+		setSelected(true);
+	}
+	QGraphicsItem::mousePressEvent(e);
+}
+
+/**
 	Gere les mouvements de souris lies a l'element
 */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (e -> buttons() & Qt::LeftButton) {
+	if (isSelected() && e -> buttons() & Qt::LeftButton) {
 		QPointF oldPos = pos();
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
 		if (Diagram *diagram_ptr = diagram()) {
