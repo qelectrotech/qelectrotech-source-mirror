@@ -6,7 +6,7 @@
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="10" y2="4" x2="8" y3="4" x3="12" />
         <input x="22" y="-7" size="9" text="_" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="10" y2="1" x2="10" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="10" y2="1" x2="10" />
         <ellipse width="3" x="18.5" y="-1.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <ellipse width="3" x="8.5" y="-16.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <ellipse width="3" x="-1.5" y="-1.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" />
