@@ -8,7 +8,7 @@
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-12.5" x2="0" />
         <input x="2.75" y="3" size="9" text="_" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12.5" x1="2" y2="-12.5" x2="-2" />
-        <circle x="-1.750000000000001" y="-11.75000000000002" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5" />
+        <circle x="-1.75" y="-11.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5" />
         <terminal x="0" y="-21" orientation="n" />
         <terminal x="0" y="21" orientation="s" />
     </description>

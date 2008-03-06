@@ -5,7 +5,7 @@
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="3" y2="-5" x2="5" y3="-3" x3="0" />
-        <circle x="-8.999999999999996" y="-8.999999999999996" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18" />
+        <circle x="-9" y="-9" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="-4" x2="4" />
         <text x="-31.5" y="4.75" size="9" text="CPI" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.5" x1="0" y2="20" x2="0" />
