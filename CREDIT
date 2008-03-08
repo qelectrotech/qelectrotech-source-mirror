@@ -3,9 +3,12 @@ Thanks to Trolltech for their Qt library ( http://trolltech.com/ ), licensed
 under GNU/GPL.
 Thanks to Everaldo Coelho for the Crystal SVG icons theme (
 http://www.everaldo.com/crystal/ ) licensed under LGPL, and to the KDE
-project (http://www.kde.org/ ).
+project ( http://www.kde.org/ ).
 Thanks to Loic for his mathematics-related explanations.
-Thanks to Nicolas for the Mac OS X Packaging.
+Thanks to Nicolas for the Mac OS X experimentations.
+Thanks to Remi Collet for the Fedora packaging.
+Thanks to TuxFamily ( http://tuxfamily.org ) for hosting the project.
+Thanks to `Nishiki' for his elements and his support.
 
 [fr]
 Merci à Trolltech pour la bibliothèque Qt ( http://trolltech.com/ ), sous
@@ -14,4 +17,7 @@ Merci à Everaldo Coelho pour le thème d'icônes Crystal SVG (
 http://www.everaldo.com/crystal/ ) sous licence LGPL, ainsi qu'au projet KDE (
 http://www.kde.org/ ).
 Merci à Loic pour ses explications d'ordre mathématique.
-Merci à Nicolas pour le packaging pour Mac OS X.
+Merci à Nicolas pour les expérimentations Mac OS X.
+Merci à Remi Collet pour les paquets Fedora.
+Merci à TuxFamily ( http://tuxfamily.org ) pour l'hébergement du projet.
+Merci à `Nishiki' pour ses éléments et son soutien.
