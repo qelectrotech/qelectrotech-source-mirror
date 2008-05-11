@@ -72,47 +72,45 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
 	
 	// systray de l'application
-	if (QSystemTrayIcon::isSystemTrayAvailable()) {
-		// initialisation des menus de l'icone dans le systray
-		menu_systray = new QMenu(tr("QElectroTech"));
-		
-		quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
-		reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
-		restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
-		reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
-		restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
-		reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
-		restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
-		new_diagram       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
-		new_element       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
-		
-		quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
-		reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
-		restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
-		
-		connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
-		connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
-		connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
-		connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
-		connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
-		connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
-		connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
-		connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
-		connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
-		
-		// connexion pour le signalmapper
-		connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
-		
-		// initialisation de l'icone du systray
-		qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
-		qsti -> setToolTip(tr("QElectroTech"));
-		connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
-		qsti -> setContextMenu(menu_systray);
-		qsti -> show();
-		
-		setQuitOnLastWindowClosed(false);
-		connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
-	}
+	// initialisation des menus de l'icone dans le systray
+	menu_systray = new QMenu(tr("QElectroTech"));
+	
+	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
+	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
+	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
+	reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
+	restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
+	reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
+	restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
+	new_diagram       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
+	new_element       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
+	
+	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
+	reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
+	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
+	
+	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
+	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
+	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
+	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
+	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
+	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
+	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
+	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
+	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+	
+	// connexion pour le signalmapper
+	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
+	
+	// initialisation de l'icone du systray
+	qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
+	qsti -> setToolTip(tr("QElectroTech"));
+	connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	qsti -> setContextMenu(menu_systray);
+	qsti -> show();
+	
+	setQuitOnLastWindowClosed(false);
+	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	
 	// Lorsque le style Plastique est active, on le remplace par une version amelioree
 	if (qobject_cast<QPlastiqueStyle *>(style())) {
