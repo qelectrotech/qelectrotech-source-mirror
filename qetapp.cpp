@@ -18,6 +18,7 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
+#include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x

@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QtDebug>
+#include <limits>
 #include "conductor.h"
 #include "conductorsegment.h"
 #include "conductorsegmentprofile.h"
