@@ -86,7 +86,7 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 				QObject::tr("Avertissement : l'\351l\351ment ") + nom_fichier
 				+ QObject::tr(" a \351t\351 enregistr\351 avec une version"
 				" ult\351rieure de QElectroTech.")
-			);
+			) << std::endl;
 		}
 	}
 	

@@ -538,7 +538,7 @@ void DiagramView::dialogPrint() {
 		pdf_file_name = file_name;
 		pdf_file_name.replace(QRegExp("\\.qet$", Qt::CaseInsensitive), "");
 	} else {
-		pdf_file_name = QDir::homePath() + tr("schema");
+		pdf_file_name = QDir::toNativeSeparators(QDir::homePath() + "/" + tr("schema"));
 	}
 	pdf_file_name += ".pdf";
 	
