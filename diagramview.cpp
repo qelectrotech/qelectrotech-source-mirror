@@ -269,7 +269,7 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 			DiagramTextItem *dti = new DiagramTextItem();
 			dti -> setPlainText("_");
 			dti -> previous_text = "_";
-			scene -> undoStack().push(new AddTextCommand(scene, dti, e -> pos()));
+			scene -> undoStack().push(new AddTextCommand(scene, dti, mapToScene(e -> pos())));
 			adjustSceneRect();
 			is_adding_text = false;
 			emit(textAdded(false));
