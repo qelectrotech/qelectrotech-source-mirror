@@ -96,6 +96,8 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	// dessine le cadre
 	if (display_border) qp -> drawRect(border);
 	
+	qp -> setFont(QFont(QETApp::diagramTextsFont(), qp -> font().pointSize()));
+	
 	// dessine la numerotation des colonnes
 	if (display_columns) {
 		qp -> setBrush(Qt::white);
