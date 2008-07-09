@@ -24,7 +24,9 @@ class Diagram;
 /**
 	Cette classe abstraite represente un element electrique.
 */
-class Element : public QGraphicsItem {
+class Element : public QObject, public QGraphicsItem {
+	
+	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:

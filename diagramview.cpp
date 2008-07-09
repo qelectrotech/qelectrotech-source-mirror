@@ -259,20 +259,17 @@ void DiagramView::pasteHere() {
 }
 
 /**
-	gere les clics et plus particulierement le clic du milieu (= coller pour X11)
+	Gere les clics et plus particulierement :
+	 *  le clic du milieu (= coller pour X11)
+	 *  le clic pour ajouter un champ de texte independant
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (e -> buttons() == Qt::MidButton) {
 		paste(mapToScene(e -> pos()), QClipboard::Selection);
 	} else {
 		if (is_adding_text && e -> buttons() == Qt::LeftButton) {
-			DiagramTextItem *dti = new DiagramTextItem();
-			dti -> setPlainText("_");
-			dti -> previous_text = "_";
-			scene -> undoStack().push(new AddTextCommand(scene, dti, mapToScene(e -> pos())));
-			adjustSceneRect();
+			addDiagramTextAtPos(mapToScene(e -> pos()));
 			is_adding_text = false;
-			emit(textAdded(false));
 		}
 		QGraphicsView::mousePressEvent(e);
 	}
@@ -857,6 +854,28 @@ bool DiagramView::event(QEvent *e) {
 */
 void DiagramView::addText() {
 	is_adding_text = true;
+}
+
+/**
+	Cree un nouveau champ de texte et le place a la position pos
+	en gerant l'annulation ; enfin, le signal textAdded est emis.
+	@param pos Position du champ de texte ajoute
+	@return le champ de texte ajoute
+*/
+DiagramTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos) {
+	// cree un nouveau champ de texte
+	DiagramTextItem *dti = new DiagramTextItem();
+	dti -> setPlainText("_");
+	dti -> previous_text = "_";
+
+	// le place a la position pos en gerant l'annulation
+	scene -> undoStack().push(new AddTextCommand(scene, dti, pos));
+	adjustSceneRect();
+
+	// emet le signal textAdded
+	emit(textAdded(false));
+
+	return(dti);
 }
 
 /**

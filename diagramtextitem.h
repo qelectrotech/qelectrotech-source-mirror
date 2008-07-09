@@ -59,7 +59,9 @@ class DiagramTextItem : public QGraphicsTextItem {
 	signals:
 	/// signal emis lorsque le champ de texte perd le focus
 	void lostFocus();
-	
+	/// signal emis lorsque le champ de texte a ete modifie
+	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
+
 	// slots
 	public slots:
 	void setNonFocusable();

@@ -126,6 +126,9 @@ class Diagram : public QGraphicsScene {
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
 	
+	public slots:
+	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
+	
 	private slots:
 	void slot_checkSelectionEmptinessChange();
 	

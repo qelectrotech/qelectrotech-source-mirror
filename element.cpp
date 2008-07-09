@@ -27,6 +27,7 @@
 	Constructeur pour un element sans scene ni parent
 */
 Element::Element(QGraphicsItem *parent, Diagram *scene) :
+	QObject(),
 	QGraphicsItem(parent, scene),
 	internal_connections(false)
 {
@@ -155,7 +156,7 @@ bool Element::setOrientation(QET::Orientation o) {
 	rotate(rotation_value);
 	ori.setCurrent(o);
 	update();
-	foreach(QGraphicsItem *qgi, children()) {
+	foreach(QGraphicsItem *qgi, childItems()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConductor();
 		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
 			// applique une rotation contraire si besoin
@@ -354,7 +355,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	
 	QHash<int, Terminal *> priv_id_adr;
 	int terminals_non_trouvees = 0;
-	foreach(QGraphicsItem *qgi, children()) {
+	foreach(QGraphicsItem *qgi, childItems()) {
 		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
 			bool terminal_trouvee = false;
 			foreach(QDomElement qde, liste_terminals) {
@@ -386,7 +387,7 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 	
 	// importe les valeurs des champs de texte
 	QList<QDomElement> inputs = QET::findInDomElement(e, "inputs", "input");
-	foreach(QGraphicsItem *qgi, children()) {
+	foreach(QGraphicsItem *qgi, childItems()) {
 		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
 			foreach(QDomElement input, inputs) eti -> fromXml(input);
 		}
@@ -438,7 +439,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	// enregistrement des bornes de l'appareil
 	QDomElement terminals = document.createElement("terminals");
 	// pour chaque enfant de l'element
-	foreach(QGraphicsItem *child, children()) {
+	foreach(QGraphicsItem *child, childItems()) {
 		// si cet enfant est une borne
 		if (Terminal *t = qgraphicsitem_cast<Terminal *>(child)) {
 			// alors on enregistre la borne
@@ -453,7 +454,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement("inputs");
 	// pour chaque enfant de l'element
-	foreach(QGraphicsItem *child, children()) {
+	foreach(QGraphicsItem *child, childItems()) {
 		// si cet enfant est un champ de texte
 		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(child)) {
 			// alors on enregistre le champ de texte

@@ -19,6 +19,7 @@
 #define DIAGRAMVIEW_H
 #include <QtGui>
 class Diagram;
+class DiagramTextItem;
 class QETDiagramEditor;
 class Conductor;
 /**
@@ -65,6 +66,7 @@ class DiagramView : public QGraphicsView {
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
 	void addText();
+	DiagramTextItem *addDiagramTextAtPos(const QPointF &);
 	
 	protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *);

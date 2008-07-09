@@ -81,11 +81,23 @@ AddTextCommand::~AddTextCommand() {
 
 /// Annule l'ajout
 void AddTextCommand::undo() {
+	QObject::disconnect(
+		textitem,
+		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+		diagram,
+		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+	);
 	diagram -> removeItem(textitem);
 }
 
 /// Refait l'ajour
 void AddTextCommand::redo() {
+	QObject::connect(
+		textitem,
+		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+		diagram,
+		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+	);
 	diagram -> addItem(textitem);
 	textitem -> setPos(position);
 }

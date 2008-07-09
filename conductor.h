@@ -29,7 +29,9 @@ typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 /**
 	Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
 */
-class Conductor : public QGraphicsPathItem {
+class Conductor : public QObject, public QGraphicsPathItem {
+	
+	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:
@@ -81,6 +83,9 @@ class Conductor : public QGraphicsPathItem {
 	ConductorProfilesGroup profiles() const;
 	void readProperties();
 	
+	public slots:
+	void displayedTextChanged();
+
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);

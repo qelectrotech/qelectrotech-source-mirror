@@ -37,6 +37,7 @@ QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
 	@param scene  QGraphicsScene a laquelle appartient le conducteur
 */
 Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) :
+	QObject(),
 	QGraphicsPathItem(parent, scene),
 	terminal1(p1),
 	terminal2(p2),
@@ -86,6 +87,12 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	text_item -> previous_text = properties_.text;
 	calculateTextItemPosition();
 	text_item -> setParentItem(this);
+	connect(
+		text_item,
+		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+		this,
+		SLOT(displayedTextChanged())
+	);
 }
 
 /**
@@ -1081,6 +1088,25 @@ ConductorProperties Conductor::properties() const {
 void Conductor::readProperties() {
 	setText(properties_.text);
 	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
+}
+
+/**
+	Met a jour les proprietes du conducteur apres modification du champ de texte affiche
+*/
+void Conductor::displayedTextChanged() {
+	// verifie que le texte a reellement change
+	if (text_item -> toPlainText() == properties_.text) return;
+	
+	// initialise l'objet UndoCommand correspondant
+	if (Diagram *my_diagram = diagram()) {
+		ConductorProperties new_properties(properties_);
+		new_properties.text = text_item -> toPlainText();
+		
+		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(this);
+		ccpc -> setOldSettings(properties_);
+		ccpc -> setNewSettings(new_properties);
+		my_diagram -> undoStack().push(ccpc);
+	}
 }
 
 /**

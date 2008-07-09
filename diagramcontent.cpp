@@ -121,10 +121,13 @@ QString DiagramContent::sentence(int filter) const {
 */
 QDebug &operator<<(QDebug d, DiagramContent &c) {
 	d << "DiagramContent {" << "\n";
+	/*
+	FIXME Le double-heritage QObject / QGraphicsItem a casse cet operateur
 	d << "  elements :" << c.elements << "\n";
 	d << "  conductorsToUpdate :" << c.conductorsToUpdate.keys() << "\n";
 	d << "  conductorsToMove :" << c.conductorsToMove << "\n";
 	d << "  otherConductors :" << c.otherConductors << "\n";
 	d << "}";
+	*/
 	return(d.space());
 }

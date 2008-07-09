@@ -63,12 +63,10 @@ Diagram *DiagramTextItem::diagram() const {
 */
 void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
-	// si le texte a ete modifie
+	// signale la modification du texte si besoin
 	if (toPlainText() != previous_text) {
-		if (Diagram *dia = diagram()) {
-			dia -> undoStack().push(new ChangeDiagramTextCommand(this, previous_text, toPlainText()));
-			previous_text = toPlainText();
-		}
+		emit(diagramTextChanged(this, previous_text, toPlainText()));
+		previous_text = toPlainText();
 	}
 	
 	// deselectionne le texte

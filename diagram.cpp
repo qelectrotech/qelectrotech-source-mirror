@@ -462,6 +462,17 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 }
 
 /**
+	Gere le fait qu'un texte du schema ait ete modifie
+	@param text_item Texte modifie
+	@param old_text Ancien texte
+	@param new_text Nouveau texte
+*/
+void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_text, const QString &new_text) {
+	if (!text_item) return;
+	undo_stack.push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
+}
+
+/**
 	Verifie si la selection est passe d'un etat ou elle est vide a un etat ou
 	elle ne l'est pas, et inversement. Si c'est le cas, le signal
 	EmptinessChanged() est emis.
