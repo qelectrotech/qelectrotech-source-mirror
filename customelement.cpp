@@ -418,7 +418,6 @@ bool CustomElement::parseInput(QDomElement &e) {
 	) return(false);
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
-	eti -> setFont(QFont(QETApp::diagramTextsFont(), size));
 	eti -> setPos(pos_x, pos_y);
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
 	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
