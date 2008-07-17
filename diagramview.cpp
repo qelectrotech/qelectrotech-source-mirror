@@ -30,6 +30,7 @@
 	@param parent Le QWidegt parent de cette vue de schema
 */
 DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
+	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
 	setCacheMode(QGraphicsView::CacheBackground);
 	setOptimizationFlags(QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
@@ -422,10 +423,8 @@ void DiagramView::closeEvent(QCloseEvent *event) {
 			default:                  retour = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
 		}
 	}
-	if (retour) {
-		event -> accept();
-		delete this;
-	} else event -> ignore();
+	if (retour) event -> accept();
+	else event -> ignore();
 	
 }
 

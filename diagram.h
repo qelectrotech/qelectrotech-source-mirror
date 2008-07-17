@@ -75,8 +75,8 @@ class Diagram : public QGraphicsScene {
 	QSet<Conductor *> conductors_to_move;
 	QHash<Conductor *, Terminal *> conductors_to_update;
 	QSet<DiagramTextItem *> texts_to_move;
-	QGIManager qgi_manager;
-	QUndoStack undo_stack;
+	QGIManager *qgi_manager;
+	QUndoStack *undo_stack;
 	bool draw_terminals;
 	
 	// methodes
@@ -253,12 +253,12 @@ inline const QSet<DiagramTextItem *> &Diagram::textsToMove() {
 
 /// @return la pile d'annulations de ce schema
 inline QUndoStack &Diagram::undoStack() {
-	return(undo_stack);
+	return(*undo_stack);
 }
 
 /// @return le egstionnaire de QGraphicsItem de ce schema
 inline QGIManager &Diagram::qgiManager() {
-	return(qgi_manager);
+	return(*qgi_manager);
 }
 
 /// @return true si les bornes sont affichees, false sinon

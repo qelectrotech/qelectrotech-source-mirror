@@ -37,9 +37,10 @@ Diagram::Diagram(QObject *parent) :
 	draw_grid(true),
 	use_border(true),
 	moved_elements_fetched(false),
-	qgi_manager(this),
 	draw_terminals(true)
 {
+	undo_stack = new QUndoStack();
+	qgi_manager = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
 	conductor_setter = new QGraphicsLineItem(0, 0);
 	conductor_setter -> setZValue(1000000);
@@ -59,8 +60,23 @@ Diagram::Diagram(QObject *parent) :
 	Destructeur
 */
 Diagram::~Diagram() {
-	if (conductor_setter -> scene()) removeItem(conductor_setter);
-	delete conductor_setter;
+	// suppression de la liste des annulations - l'undo stack fait appel au qgimanager pour supprimer certains elements
+	delete undo_stack;
+	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
+	delete qgi_manager;
+	
+	// recense les items supprimables
+	QList<QGraphicsItem *> deletable_items;
+	foreach(QGraphicsItem *qgi, items()) {
+		if (qgi -> parentItem()) continue;
+		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
+		deletable_items << qgi;
+	}
+
+	// suppression des items supprimables
+	foreach(QGraphicsItem *qgi_d, deletable_items) {
+		delete qgi_d;
+	}
 }
 
 /**
@@ -469,7 +485,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 */
 void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_text, const QString &new_text) {
 	if (!text_item) return;
-	undo_stack.push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
+	undo_stack -> push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
 }
 
 /**
