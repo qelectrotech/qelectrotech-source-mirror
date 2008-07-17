@@ -76,6 +76,7 @@ HEADERS += aboutqet.h \
            qet.h \
            qetapp.h \
            qetdiagrameditor.h \
+           qetsingleapplication.h \
            qgimanager.h \
            terminal.h \
            editor/arceditor.h \
@@ -142,6 +143,7 @@ SOURCES += aboutqet.cpp \
            qet.cpp \
            qetapp.cpp \
            qetdiagrameditor.cpp \
+           qetsingleapplication.cpp \
            qgimanager.cpp \
            terminal.cpp \
            editor/arceditor.cpp \
@@ -171,7 +173,7 @@ SOURCES += aboutqet.cpp \
 RESOURCES += qelectrotech.qrc
 TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
 RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc
-QT += xml svg
+QT += xml svg network
 CONFIG += debug_and_release warn_on
 TARGET = qelectrotech
 

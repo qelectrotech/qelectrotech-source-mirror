@@ -63,6 +63,7 @@ class QETDiagramEditor : public QMainWindow {
 	bool save();
 	bool newDiagram();
 	bool openDiagram();
+	bool openAndAddDiagram(const QString &);
 	bool closeDiagram();
 	void slot_editInfos();
 	void slot_cut();

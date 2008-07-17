@@ -17,7 +17,7 @@
 */
 #ifndef QET_APP_H
 #define QET_APP_H
-#include <QApplication>
+#include "qetsingleapplication.h"
 #include <QTranslator>
 #include <QtGui>
 class QETDiagramEditor;
@@ -26,7 +26,7 @@ class QETElementEditor;
 	Cette classe represente l'application QElectroTech.
 	
 */
-class QETApp : public QApplication {
+class QETApp : public QETSingleApplication {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
@@ -43,6 +43,7 @@ class QETApp : public QApplication {
 	static void printVersion();
 	static void printLicense();
 	
+	static QString userName();
 	static QString commonElementsDir();
 	static QString customElementsDir();
 	static QString configDir();
@@ -66,7 +67,9 @@ class QETApp : public QApplication {
 	static QString diagramTextsFont();
 	
 	protected:
+#ifdef Q_OS_DARWIN
 	bool event(QEvent *);
+#endif
 	
 	// attributs
 	private:
@@ -109,6 +112,8 @@ class QETApp : public QApplication {
 	void invertMainWindowVisibility(QWidget *);
 	void quitQET();
 	void checkRemainingWindows();
+	void messageReceived(const QString &);
+	void openFiles(const QStringList &);
 	
 	// methodes privees
 	private slots:

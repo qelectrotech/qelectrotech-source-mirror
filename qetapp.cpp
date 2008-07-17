@@ -32,13 +32,37 @@ QString QETApp::diagram_texts_font = QString();
 	@param argc Nombre d'arguments passes a l'application
 	@param argv Arguments passes a l'application
 */
-QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
+QETApp::QETApp(int &argc, char **argv) :
+	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName()))
+{
 	// selectionne le langage du systeme
 	QString system_language = QLocale::system().name().left(2);
 	setLanguage(system_language);
 	
-	// parse les arguments
-	foreach(QString argument, arguments()) {
+	// booleen indiquant si l'application va se terminer immediatement apres un court traitement
+	bool must_exit = false;
+	
+	// parse les arguments en 
+	QStringList files;   // liste des fichiers
+	QStringList options; // liste des options
+	
+	// recupere les arguments
+	QStringList arguments_list(arguments());
+	arguments_list.pop_front(); // ignore le premier (= chemin de l'executable)
+	
+	// separe les fichiers des options
+	foreach(QString argument, arguments_list) {
+		QFileInfo argument_info(argument);
+		if (argument_info.exists()) {
+			// on exprime les chemins des fichiers en absolu
+			files << argument_info.canonicalFilePath();
+		} else {
+			options << argument;
+		}
+	}
+	
+	// parse les options
+	foreach(QString argument, options) {
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 		QString ced_arg("--common-elements-dir=");
 		if (argument.startsWith(ced_arg)) {
@@ -53,7 +77,7 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 			overrideConfigDir(cd_value);
 		}
 #endif
-		bool must_exit = false;
+		
 		if (argument == QString("--help")) {
 			printHelp();
 			must_exit = true;
@@ -64,10 +88,22 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 			printLicense();
 			must_exit = true;
 		}
-		if (must_exit) {
-			std::exit(EXIT_SUCCESS);
-		}
 	}
+	
+	if (!must_exit && isRunning()) {
+		QStringList abs_arg_list(options);
+		abs_arg_list << files;
+		
+		// envoie les arguments a l'instance deja existante
+		must_exit = sendMessage("launched-with-args: " + abs_arg_list.join(" "));
+	}
+	
+	if (must_exit) {
+		std::exit(EXIT_SUCCESS);
+	}
+	
+	// prise en compte des messages des autres instances
+	connect(this, SIGNAL(messageAvailable(QString)), this, SLOT(messageReceived(const QString&)));
 	
 	// nettoyage avant de quitter l'application
 	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
@@ -125,10 +161,6 @@ QETApp::QETApp(int &argc, char **argv) : QApplication(argc, argv) {
 	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
 	
 	// Creation et affichage d'un editeur de schema
-	QStringList files;
-	foreach(QString argument, arguments()) {
-		if (QFileInfo(argument).exists()) files << argument;
-	}
 	new QETDiagramEditor(files);
 	buildSystemTrayMenu();
 }
@@ -225,6 +257,17 @@ void QETApp::newDiagramEditor() {
 /// lance un nouvel editeur d'element
 void QETApp::newElementEditor() {
 	new QETElementEditor();
+}
+
+/**
+	@return le nom de l'utilisateur courant
+*/
+QString QETApp::userName() {
+#ifndef Q_OS_WIN32
+	return(QString(getenv("USER")));
+#else
+	return(QString(getenv("USERNAME")));
+#endif
 }
 
 /**
@@ -472,6 +515,58 @@ void QETApp::checkRemainingWindows() {
 }
 
 /**
+	Gere les messages recus
+	@param message Message recu
+*/
+void QETApp::messageReceived(const QString &message) {
+	if (message.startsWith("launched-with-args: ")) {
+		QString my_message(message.mid(20));
+		QStringList files_list = my_message.split(' ');
+		openFiles(files_list);
+	}
+}
+
+/**
+	Ouvre une liste de fichiers.
+	Les fichiers sont ouverts dans le premier editeur de schemas visible venu.
+	Sinon, le premier editeur de schemas existant venu devient visible et est
+	utilise. S'il n'y a aucun editeur de schemas ouvert, un nouveau est cree et
+	utilise.
+	@param files_list Liste des fichiers a ouvrir
+*/
+void QETApp::openFiles(const QStringList &files_list) {
+	if (files_list.isEmpty()) return;
+	
+	// liste des editeurs de schema ouverts
+	QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
+	
+	// s'il y a des editeur de schemas ouvert, on cherche ceux qui sont visibles
+	if (diagrams_editors.count()) {
+		QList<QETDiagramEditor *> visible_diagrams_editors;
+		foreach(QETDiagramEditor *de, diagrams_editors) {
+			if (de -> isVisible()) visible_diagrams_editors << de;
+		}
+		
+		// on choisit soit le premier visible soit le premier tout court
+		QETDiagramEditor *de_open;
+		if (visible_diagrams_editors.count()) {
+			de_open = visible_diagrams_editors.first();
+		} else {
+			de_open = diagrams_editors.first();
+			de_open -> setVisible(true);
+		}
+		
+		// ouvre les fichiers dans l'editeur ainsi choisi
+		foreach(QString file, files_list) {
+			de_open -> openAndAddDiagram(file);
+		}
+	} else {
+		// cree un nouvel editeur qui ouvrira les fichiers
+		new QETDiagramEditor(files_list);
+	}
+}
+
+/**
 	@param window fenetre dont il faut trouver les barres d'outils et dock flottants
 	@return les barres d'outils et dock flottants de la fenetre
 */
@@ -553,8 +648,9 @@ void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const Q
 	every_editor_reduced = every_element_reduced && every_diagram_reduced;
 }
 
+#ifdef Q_OS_DARWIN
 /**
-	Gere les evenement
+	Gere les evenements, en particulier l'evenement FileOpen sous MacOs.
 	@param e Evenement a gerer
 */
 bool QETApp::event(QEvent *e) {
@@ -562,30 +658,13 @@ bool QETApp::event(QEvent *e) {
 	if (e -> type() == QEvent::FileOpen) {
 		// nom du fichier a ouvrir
 		QString filename = static_cast<QFileOpenEvent *>(e) -> file();
-		// liste des editeurs de schema ouverts
-		QList<QETDiagramEditor *> diagrams_editors = diagramEditors();
-		if (diagrams_editors.count()) {
-			// s'il y a des editeur de schemas ouvert, on cherche ceux qui sont visibles
-			QList<QETDiagramEditor *> visible_diagrams_editors;
-			foreach(QETDiagramEditor *de, diagrams_editors) {
-				if (de -> isVisible()) visible_diagrams_editors << de;
-			}
-			// on choisit soit le premier visible soit le premier tout court
-			QETDiagramEditor *de_open;
-			if (visible_diagrams_editors.count()) {
-				de_open = visible_diagrams_editors.first();
-			} else {
-				de_open = diagrams_editors.first();
-				de_open -> setVisible(true);
-			}
-		} else {
-			new QETDiagramEditor(QStringList() << filename);
-		}
+		openFiles(QStringList() << filename);
 		return(true);
 	} else {
 		return(QApplication::event(e));
 	}
 }
+#endif
 
 /**
 	Affiche l'aide et l'usage sur la sortie standard

@@ -569,6 +569,16 @@ bool QETDiagramEditor::openDiagram() {
 		open_dialog_dir.absolutePath(),
 		tr("Sch\351mas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
+	
+	return(openAndAddDiagram(nom_fichier));
+}
+
+/**
+	Cette methode ouvre un fichier.
+	@param nom_fichier Chemin du fichier a ouvrir
+	@return true si l'ouverture a reussi, false sinon
+*/
+bool QETDiagramEditor::openAndAddDiagram(const QString &nom_fichier) {
 	if (nom_fichier.isEmpty()) return(false);
 	
 	open_dialog_dir = QDir(nom_fichier);
