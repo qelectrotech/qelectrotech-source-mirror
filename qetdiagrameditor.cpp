@@ -597,6 +597,7 @@ bool QETDiagramEditor::openAndAddDiagram(const QString &nom_fichier) {
 	int code_erreur;
 	if (sv -> open(nom_fichier, &code_erreur)) {
 		addDiagramView(sv);
+		activateWindow();
 		return(true);
 	} else {
 		QString message_erreur;
@@ -606,6 +607,7 @@ bool QETDiagramEditor::openAndAddDiagram(const QString &nom_fichier) {
 			case 3: message_erreur = tr("Ce fichier n'est pas un document XML valide."); break;
 			case 4: message_erreur = tr("Une erreur s'est produite lors de l'ouverture du fichier."); break;
 		}
+		activateWindow();
 		QMessageBox::warning(this, tr("Erreur"), message_erreur);
 		delete sv;
 		return(false);
