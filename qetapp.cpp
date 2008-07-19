@@ -33,72 +33,24 @@ QString QETApp::diagram_texts_font = QString();
 	@param argv Arguments passes a l'application
 */
 QETApp::QETApp(int &argc, char **argv) :
-	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName()))
+	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName())),
+	non_interactive_execution_(false)
 {
-	// selectionne le langage du systeme
-	QString system_language = QLocale::system().name().left(2);
-	setLanguage(system_language);
+	parseArguments();
+	initLanguage();
+	initStyle();
+	initSystemTray();
+	initConfiguration();
 	
-	// booleen indiquant si l'application va se terminer immediatement apres un court traitement
-	bool must_exit = false;
-	
-	// parse les arguments en 
-	QStringList files;   // liste des fichiers
-	QStringList options; // liste des options
-	
-	// recupere les arguments
-	QStringList arguments_list(arguments());
-	arguments_list.pop_front(); // ignore le premier (= chemin de l'executable)
-	
-	// separe les fichiers des options
-	foreach(QString argument, arguments_list) {
-		QFileInfo argument_info(argument);
-		if (argument_info.exists()) {
-			// on exprime les chemins des fichiers en absolu
-			files << argument_info.canonicalFilePath();
-		} else {
-			options << argument;
-		}
-	}
-	
-	// parse les options
-	foreach(QString argument, options) {
-#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-		QString ced_arg("--common-elements-dir=");
-		if (argument.startsWith(ced_arg)) {
-			QString ced_value = argument.right(argument.length() - ced_arg.length());
-			overrideCommonElementsDir(ced_value);
-		}
-#endif
-#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
-		QString cd_arg("--config-dir=");
-		if (argument.startsWith(cd_arg)) {
-			QString cd_value = argument.right(argument.length() - cd_arg.length());
-			overrideConfigDir(cd_value);
-		}
-#endif
-		
-		if (argument == QString("--help")) {
-			printHelp();
-			must_exit = true;
-		} else if (argument == QString("--version") || argument == QString("-v")) {
-			printVersion();
-			must_exit = true;
-		} else if (argument == QString("--license")) {
-			printLicense();
-			must_exit = true;
-		}
-	}
-	
-	if (!must_exit && isRunning()) {
-		QStringList abs_arg_list(options);
-		abs_arg_list << files;
+	if (!non_interactive_execution_ && isRunning()) {
+		QStringList abs_arg_list(arguments_options_);
+		abs_arg_list << arguments_files_;
 		
 		// envoie les arguments a l'instance deja existante
-		must_exit = sendMessage("launched-with-args: " + abs_arg_list.join(" "));
+		non_interactive_execution_ = sendMessage("launched-with-args: " + abs_arg_list.join(" "));
 	}
 	
-	if (must_exit) {
+	if (non_interactive_execution_) {
 		std::exit(EXIT_SUCCESS);
 	}
 	
@@ -108,60 +60,14 @@ QETApp::QETApp(int &argc, char **argv) :
 	// nettoyage avant de quitter l'application
 	connect(this, SIGNAL(aboutToQuit()), this, SLOT(cleanup()));
 	
-	// systray de l'application
-	// initialisation des menus de l'icone dans le systray
-	menu_systray = new QMenu(tr("QElectroTech"));
-	
-	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
-	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
-	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
-	reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
-	restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
-	reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
-	restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
-	new_diagram       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
-	new_element       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
-	
-	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
-	reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
-	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
-	
-	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
-	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
-	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
-	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
-	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
-	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
-	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
-	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
-	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
-	
 	// connexion pour le signalmapper
 	connect(&signal_map, SIGNAL(mapped(QWidget *)), this, SLOT(invertMainWindowVisibility(QWidget *)));
-	
-	// initialisation de l'icone du systray
-	qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
-	qsti -> setToolTip(tr("QElectroTech"));
-	connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
-	qsti -> setContextMenu(menu_systray);
-	qsti -> show();
 	
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	
-	// Lorsque le style Plastique est active, on le remplace par une version amelioree
-	if (qobject_cast<QPlastiqueStyle *>(style())) {
-		setStyle(new QETStyle());
-	}
-	
-	// lit le fichier de configuration
-	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
-	
-	// police a utiliser pour le rendu de texte
-	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
-	
 	// Creation et affichage d'un editeur de schema
-	new QETDiagramEditor(files);
+	new QETDiagramEditor(arguments_files_);
 	buildSystemTrayMenu();
 }
 
@@ -424,7 +330,7 @@ QString QETApp::diagramTextsFont() {
 	Nettoie certaines choses avant que l'application ne quitte
 */
 void QETApp::cleanup() {
-	if (QSystemTrayIcon::isSystemTrayAvailable()) qsti -> hide();
+	qsti -> hide();
 }
 
 /// @return les editeurs de schemas ouverts
@@ -579,6 +485,147 @@ QList<QWidget *> QETApp::floatingToolbarsAndDocksForMainWindow(QMainWindow *wind
 		}
 	}
 	return(widgets);
+}
+
+/**
+	Parse les arguments suivants :
+	  * --common-elements-dir=
+	  * --config-dir
+	  * --help
+	  * --version
+	  * -v
+	  * --license
+	Les autres arguments sont normalement des chemins de fichiers.
+	S'ils existent, ils sont juste memorises dans l'attribut arguments_files_.
+	Sinon, ils sont memorises dans l'attribut arguments_options_.
+*/
+void QETApp::parseArguments() {
+	// recupere les arguments
+	QList<QString> arguments_list(arguments());
+	
+	// enleve le premier argument : il s'agit du fichier binaire
+	arguments_list.takeFirst();
+	
+	// separe les fichiers des options
+	foreach(QString argument, arguments_list) {
+		QFileInfo argument_info(argument);
+		if (argument_info.exists()) {
+			// on exprime les chemins des fichiers en absolu
+			arguments_files_ << argument_info.canonicalFilePath();
+		} else {
+			arguments_options_ << argument;
+		}
+	}
+	
+	// parcourt les options
+	foreach(QString argument, arguments_options_) {
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+		QString ced_arg("--common-elements-dir=");
+		if (argument.startsWith(ced_arg)) {
+			QString ced_value = argument.right(argument.length() - ced_arg.length());
+			overrideCommonElementsDir(ced_value);
+			continue;
+		}
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+		QString cd_arg("--config-dir=");
+		if (argument.startsWith(cd_arg)) {
+			QString cd_value = argument.right(argument.length() - cd_arg.length());
+			overrideConfigDir(cd_value);
+			continue;
+		}
+#endif
+		
+		if (argument == QString("--help")) {
+			printHelp();
+			non_interactive_execution_ = true;
+		} else if (argument == QString("--version") || argument == QString("-v")) {
+			printVersion();
+			non_interactive_execution_ = true;
+		} else if (argument == QString("--license")) {
+			printLicense();
+			non_interactive_execution_ = true;
+		}
+	}
+}
+
+/**
+	Determine et applique le langage a utiliser pour l'application
+*/
+void QETApp::initLanguage() {
+	// selectionne le langage du systeme
+	QString system_language = QLocale::system().name().left(2);
+	setLanguage(system_language);
+}
+
+/**
+	Met en place tout ce qui concerne le style graphique de l'application
+*/
+void QETApp::initStyle() {
+	// lorsque le style Plastique est active, on le remplace par une version amelioree
+	if (qobject_cast<QPlastiqueStyle *>(style())) {
+		setStyle(new QETStyle());
+	}
+}
+
+/**
+	Lit et prend en compte la configuration de l'application.
+	Cette methode creera, si necessaire :
+	  * le dossier de configuration
+	  * le dossier de la collection perso
+*/
+void QETApp::initConfiguration() {
+	// cree les dossiers de configuration si necessaire
+	QDir config_dir(QETApp::configDir());
+	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
+	
+	QDir custom_elements_dir(QETApp::customElementsDir());
+	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(QETApp::customElementsDir());
+	
+	// lit le fichier de configuration
+	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
+	
+	// police a utiliser pour le rendu de texte
+	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
+}
+
+/**
+	Construit l'icone dans le systray et son menu
+*/
+void QETApp::initSystemTray() {
+	// initialisation des menus de l'icone dans le systray
+	menu_systray = new QMenu(tr("QElectroTech"));
+	
+	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
+	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
+	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
+	reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
+	restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
+	reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
+	restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
+	new_diagram       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
+	new_element       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
+	
+	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
+	reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
+	restore_appli -> setToolTip(tr("Restaurer QElectroTech"));
+	
+	connect(quitter_qet,      SIGNAL(triggered()), this, SLOT(quitQET()));
+	connect(reduce_appli,     SIGNAL(triggered()), this, SLOT(reduceEveryEditor()));
+	connect(restore_appli,    SIGNAL(triggered()), this, SLOT(restoreEveryEditor()));
+	connect(reduce_diagrams,  SIGNAL(triggered()), this, SLOT(reduceDiagramEditors()));
+	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
+	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
+	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
+	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
+	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
+	
+	// initialisation de l'icone du systray
+	qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
+	qsti -> setToolTip(tr("QElectroTech"));
+	connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
+	qsti -> setContextMenu(menu_systray);
+	qsti -> show();
 }
 
 /// construit le menu de l'icone dans le systray

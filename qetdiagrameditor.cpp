@@ -30,14 +30,6 @@
 	@param parent le widget parent de la fenetre principale
  */
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : QMainWindow(parent), open_dialog_dir(QDir::homePath()) {
-	
-	// cree les dossiers de configuration si necessaire
-	QDir config_dir(QETApp::configDir());
-	if (!config_dir.exists()) config_dir.mkpath(QETApp::configDir());
-	
-	QDir custom_elements_dir(QETApp::customElementsDir());
-	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(QETApp::customElementsDir());
-	
 	// mise en place de l'interface MDI au centre de l'application
 	setCentralWidget(&workspace);
 	
