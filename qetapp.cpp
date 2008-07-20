@@ -38,8 +38,6 @@ QETApp::QETApp(int &argc, char **argv) :
 {
 	parseArguments();
 	initLanguage();
-	initStyle();
-	initSystemTray();
 	initConfiguration();
 	
 	if (!non_interactive_execution_ && isRunning()) {
@@ -53,6 +51,9 @@ QETApp::QETApp(int &argc, char **argv) :
 	if (non_interactive_execution_) {
 		std::exit(EXIT_SUCCESS);
 	}
+	
+	initStyle();
+	initSystemTray();
 	
 	// prise en compte des messages des autres instances
 	connect(this, SIGNAL(messageAvailable(QString)), this, SLOT(messageReceived(const QString&)));
