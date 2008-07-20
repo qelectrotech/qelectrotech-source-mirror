@@ -1,0 +1,5 @@
+Windows Registry Editor Version 5.00
+
+[-HKEY_CLASSES_ROOT\Applications\qelectrotech.exe\shell\open\command]
+[-HKEY_CLASSES_ROOT\.qet]
+[-HKEY_CLASSES_ROOT\qet_diagram_file]
