@@ -38,6 +38,7 @@ class QETApp : public QETSingleApplication {
 	
 	// methodes
 	public:
+	static QETApp *instance();
 	void setLanguage(const QString &);
 	static void printHelp();
 	static void printVersion();
@@ -51,6 +52,9 @@ class QETApp : public QETSingleApplication {
 	static QString languagesPath();
 	static QString realPath(const QString &);
 	static QString symbolicPath(const QString &);
+	static QETDiagramEditor *diagramEditorForFile(const QString &);
+	QList<QETDiagramEditor *> diagramEditors() const;
+	QList<QETElementEditor *> elementEditors() const;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	public:
 	static void overrideCommonElementsDir(const QString &);
@@ -123,8 +127,6 @@ class QETApp : public QETSingleApplication {
 	void cleanup();
 	
 	private:
-	QList<QETDiagramEditor *> diagramEditors() const;
-	QList<QETElementEditor *> elementEditors() const;
 	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
 	void parseArguments();
 	void initLanguage();

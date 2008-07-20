@@ -43,6 +43,9 @@ class QETDiagramEditor : public QMainWindow {
 	public:
 	void closeEvent(QCloseEvent *);
 	void addDiagramView(DiagramView *);
+	QList<DiagramView *> diagramViews() const;
+	QList<QString> editedFiles() const;
+	DiagramView *viewForFile(const QString &) const;
 	static InsetProperties defaultInsetProperties();
 	
 	protected:

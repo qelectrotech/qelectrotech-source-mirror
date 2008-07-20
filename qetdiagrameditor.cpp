@@ -574,13 +574,18 @@ bool QETDiagramEditor::openAndAddDiagram(const QString &nom_fichier) {
 	if (nom_fichier.isEmpty()) return(false);
 	
 	open_dialog_dir = QDir(nom_fichier);
-	// verifie que le fichier n'est pas deja ouvert
-	QString chemin_fichier = QFileInfo(nom_fichier).canonicalFilePath();
-	foreach (QWidget *fenetre, workspace.windowList()) {
-		DiagramView *fenetre_en_cours = qobject_cast<DiagramView *>(fenetre);
-		if (QFileInfo(fenetre_en_cours -> file_name).canonicalFilePath() == chemin_fichier) {
-			workspace.setActiveWindow(fenetre);
+	// verifie que le fichier n'est pas deja ouvert dans un editeur
+	if (QETDiagramEditor *diagram_editor = QETApp::diagramEditorForFile(nom_fichier)) {
+		if (diagram_editor == this) {
+			if (DiagramView *diagram_view = viewForFile(nom_fichier)) {
+				workspace.setActiveWindow(diagram_view);
+				show();
+				activateWindow();
+			}
 			return(false);
+		} else {
+			// demande a l'autre editeur d'afficher le fichier
+			return(diagram_editor -> openAndAddDiagram(nom_fichier));
 		}
 	}
 	
@@ -838,6 +843,52 @@ void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 	// affiche la fenetre
 	if (maximise) p -> showMaximized();
 	else p -> show();
+}
+
+/**
+	@return la liste des schemas edites par cet editeur de schemas
+*/
+QList<DiagramView *> QETDiagramEditor::diagramViews() const {
+	QList<DiagramView *> diagram_views_list;
+	foreach (QWidget *window, workspace.windowList()) {
+		if (DiagramView *diagram_view = qobject_cast<DiagramView *>(window)) {
+			diagram_views_list << diagram_view;
+		}
+	}
+	return(diagram_views_list);
+}
+
+/**
+	@return la liste des fichiers edites par cet editeur de schemas
+*/
+QList<QString> QETDiagramEditor::editedFiles() const {
+	QList<QString> edited_files_list;
+	foreach (DiagramView *diagram_view, diagramViews()) {
+		QString diagram_file(diagram_view -> file_name);
+		if (!diagram_file.isEmpty()) {
+			edited_files_list << QFileInfo(diagram_file).canonicalFilePath();
+		}
+	}
+	return(edited_files_list);
+}
+
+/**
+	@param filepath Un chemin de fichier
+	Note : si filepath est une chaine vide, cette methode retourne 0.
+	@return le DiagramView editant le fichier filepath, ou 0 si ce fichier n'est
+	pas edite par cet editeur de schemas.
+*/
+DiagramView *QETDiagramEditor::viewForFile(const QString &filepath) const {
+	if (filepath.isEmpty()) return(0);
+	
+	QString searched_can_file_path = QFileInfo(filepath).canonicalFilePath();
+	foreach (DiagramView *diagram_view, diagramViews()) {
+		QString diagram_can_file_path = QFileInfo(diagram_view -> file_name).canonicalFilePath();
+		if (diagram_can_file_path == searched_can_file_path) {
+			return(diagram_view);
+		}
+	}
+	return(0);
 }
 
 /**

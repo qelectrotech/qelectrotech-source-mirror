@@ -77,6 +77,13 @@ QETApp::~QETApp() {
 }
 
 /**
+	@return l'instance de la QETApp
+*/
+QETApp *QETApp::instance() {
+	return(static_cast<QETApp *>(qApp));
+}
+
+/**
 	Change le langage utilise par l'application.
 	@param desired_language langage voulu
 */
@@ -264,6 +271,25 @@ QString QETApp::symbolicPath(const QString &real_path) {
 		chemin = "custom://" + real_path.right(real_path.length() - customd.length());
 	} else chemin = QString();
 	return(chemin);
+}
+
+/**
+	@param filepath Un chemin de fichier
+	Note : si filepath est une chaine vide, cette methode retourne 0.
+	@return le QETDiagramEditor editant le fichier filepath, ou 0 si ce fichier
+	n'est pas edite par l'application.
+*/
+QETDiagramEditor *QETApp::diagramEditorForFile(const QString &filepath) {
+	if (filepath.isEmpty()) return(0);
+	
+	QETApp *qet_app(QETApp::instance());
+	foreach (QETDiagramEditor *diagram_editor, qet_app -> diagramEditors()) {
+		if (diagram_editor -> viewForFile(filepath)) {
+			return(diagram_editor);
+		}
+	}
+	
+	return(0);
 }
 
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
@@ -795,5 +821,5 @@ QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QS
 
 /// @return une reference vers les parametres de QElectroTEch
 QSettings &QETApp::settings() {
-	return(*(static_cast<QETApp *>(qApp) -> qet_settings));
+	return(*(instance() -> qet_settings));
 }
