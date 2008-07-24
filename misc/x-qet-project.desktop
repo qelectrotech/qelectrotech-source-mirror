@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/x-qet-project
+Icon=qet
+DefaultApp=qelectrotech
+Patterns=*.qet;
+Comment=QElectroTech project file
+Comment[fr]=Fichier projet QElectroTech

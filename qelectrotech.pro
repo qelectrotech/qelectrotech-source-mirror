@@ -11,6 +11,8 @@
 	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
 	QET_LANG_PATH              = 'share/qelectrotech/lang/'
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
+	QET_MIME_XML_PATH          = '../share/mime/applications/'
+	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/applications/'
 	QET_DESKTOP_PATH           = 'share/applications/'
 	QET_ICONS_PATH             = 'share/icons/'
 } else {
@@ -191,6 +193,12 @@ copyright.files = LICENSE \
                   CREDIT \
                   README
 
+mime_xml.path      = $$join(INSTALL_PREFIX,,,$${QET_MIME_XML_PATH})
+mime_xml.files     = misc/x-qet-*.xml
+
+mime_desktop.path  = $$join(INSTALL_PREFIX,,,$${QET_MIME_DESKTOP_PATH})
+mime_desktop.files = misc/x-qet-*.desktop
+
 desktop.path   = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
 desktop.files  = misc/qelectrotech.desktop
 
@@ -201,7 +209,7 @@ icons.files    = ico/qet.png
 INSTALLS += target elements lang copyright
 # Sous Unix, on installe egalement l'icone et un fichier .desktop
 unix {
-	INSTALLS += desktop icons
+	INSTALLS += desktop mime_xml mime_desktop icons
 }
 
 # Options de compilation

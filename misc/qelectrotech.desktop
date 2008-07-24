@@ -4,6 +4,7 @@ Exec=qelectrotech
 Icon=qet
 Terminal=false
 Type=Application
+MimeType=application/x-qet-project;application/x-qet-element;
 Categories=Office;Qt;VectorGraphics;Science;Electricity;Engineering;
 Comment=An electric diagrams editor.
 Comment[fr]=Un éditeur de schémas électriques
