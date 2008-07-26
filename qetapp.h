@@ -20,6 +20,7 @@
 #include "qetsingleapplication.h"
 #include <QTranslator>
 #include <QtGui>
+#include "qetarguments.h"
 class QETDiagramEditor;
 class QETElementEditor;
 /**
@@ -99,8 +100,7 @@ class QETApp : public QETSingleApplication {
 	bool every_element_visible;
 	QSignalMapper signal_map;
 	QSettings *qet_settings;
-	QList<QString> arguments_files_;    ///< Chemins de fichiers detectes parmi les arguments
-	QList<QString> arguments_options_;  ///< Options detectees parmi les arguments
+	QETArguments qet_arguments_;        ///< Analyseur d'arguments
 	bool non_interactive_execution_;    ///< booleen indiquant si l'application va se terminer immediatement apres un court traitement
 	static QString diagram_texts_font;
 	
@@ -120,7 +120,9 @@ class QETApp : public QETSingleApplication {
 	void quitQET();
 	void checkRemainingWindows();
 	void messageReceived(const QString &);
-	void openFiles(const QStringList &);
+	void openFiles(const QETArguments &);
+	void openProjectFiles(const QStringList &);
+	void openElementFiles(const QStringList &);
 	
 	// methodes privees
 	private slots:

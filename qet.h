@@ -44,5 +44,9 @@ namespace QET {
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();
 	bool containsForbiddenCharacters(const QString &);
+	QString escapeSpaces(const QString &);
+	QString unescapeSpaces(const QString &);
+	QString joinWithSpaces(const QStringList &);
+	QStringList splitWithSpaces(const QString &);
 }
 #endif

@@ -41,11 +41,11 @@ QETApp::QETApp(int &argc, char **argv) :
 	initConfiguration();
 	
 	if (!non_interactive_execution_ && isRunning()) {
-		QStringList abs_arg_list(arguments_options_);
-		abs_arg_list << arguments_files_;
-		
 		// envoie les arguments a l'instance deja existante
-		non_interactive_execution_ = sendMessage("launched-with-args: " + abs_arg_list.join(" "));
+		non_interactive_execution_ = sendMessage(
+			"launched-with-args: " +
+			QET::joinWithSpaces(QStringList(qet_arguments_.arguments()))
+		);
 	}
 	
 	if (non_interactive_execution_) {
@@ -67,8 +67,12 @@ QETApp::QETApp(int &argc, char **argv) :
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	
-	// Creation et affichage d'un editeur de schema
-	new QETDiagramEditor(arguments_files_);
+	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
+	if (qet_arguments_.files().isEmpty()) {
+		new QETDiagramEditor();
+	} else {
+		openFiles(qet_arguments_);
+	}
 	buildSystemTrayMenu();
 }
 
@@ -454,9 +458,20 @@ void QETApp::checkRemainingWindows() {
 void QETApp::messageReceived(const QString &message) {
 	if (message.startsWith("launched-with-args: ")) {
 		QString my_message(message.mid(20));
-		QStringList files_list = my_message.split(' ');
-		openFiles(files_list);
+		// les arguments sont separes par des espaces non echappes
+		QStringList args_list = QET::splitWithSpaces(my_message);
+		openFiles(QETArguments(args_list));
 	}
+}
+
+/**
+	Ouvre les fichiers passes en arguments
+	@param args Objet contenant des arguments ; les fichiers 
+	@see openProjectFiles openElementFiles
+*/
+void QETApp::openFiles(const QETArguments &args) {
+	openProjectFiles(args.projectFiles());
+	openElementFiles(args.elementFiles());
 }
 
 /**
@@ -465,9 +480,9 @@ void QETApp::messageReceived(const QString &message) {
 	Sinon, le premier editeur de schemas existant venu devient visible et est
 	utilise. S'il n'y a aucun editeur de schemas ouvert, un nouveau est cree et
 	utilise.
-	@param files_list Liste des fichiers a ouvrir
+	@param files Fichiers a ouvrir
 */
-void QETApp::openFiles(const QStringList &files_list) {
+void QETApp::openProjectFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
 	
 	// liste des editeurs de schema ouverts
@@ -496,6 +511,21 @@ void QETApp::openFiles(const QStringList &files_list) {
 	} else {
 		// cree un nouvel editeur qui ouvrira les fichiers
 		new QETDiagramEditor(files_list);
+	}
+}
+
+/**
+	Ouvre les fichiers elements passes en parametre. Si un element est deja
+	ouvert, la fentre qui l'edite est activee.
+	@param files Fichiers a ouvrir
+*/
+void QETApp::openElementFiles(const QStringList &files_list) {
+	if (files_list.isEmpty()) return;
+	
+	// creation et affichage d'un ou plusieurs editeurs d'element
+	foreach(QString element_file, files_list) {
+		QETElementEditor *element_editor = new QETElementEditor();
+		element_editor -> fromFile(element_file);
 	}
 }
 
@@ -533,46 +563,31 @@ void QETApp::parseArguments() {
 	// enleve le premier argument : il s'agit du fichier binaire
 	arguments_list.takeFirst();
 	
-	// separe les fichiers des options
-	foreach(QString argument, arguments_list) {
-		QFileInfo argument_info(argument);
-		if (argument_info.exists()) {
-			// on exprime les chemins des fichiers en absolu
-			arguments_files_ << argument_info.canonicalFilePath();
-		} else {
-			arguments_options_ << argument;
-		}
-	}
+	// analyse les arguments
+	qet_arguments_ = QETArguments(arguments_list);
 	
-	// parcourt les options
-	foreach(QString argument, arguments_options_) {
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
-		QString ced_arg("--common-elements-dir=");
-		if (argument.startsWith(ced_arg)) {
-			QString ced_value = argument.right(argument.length() - ced_arg.length());
-			overrideCommonElementsDir(ced_value);
-			continue;
-		}
+	if (qet_arguments_.commonElementsDirSpecified()) {
+		overrideCommonElementsDir(qet_arguments_.commonElementsDir());
+	}
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
-		QString cd_arg("--config-dir=");
-		if (argument.startsWith(cd_arg)) {
-			QString cd_value = argument.right(argument.length() - cd_arg.length());
-			overrideConfigDir(cd_value);
-			continue;
-		}
+	if (qet_arguments_.configDirSpecified()) {
+		overrideConfigDir(qet_arguments_.configDir());
+	}
 #endif
-		
-		if (argument == QString("--help")) {
-			printHelp();
-			non_interactive_execution_ = true;
-		} else if (argument == QString("--version") || argument == QString("-v")) {
-			printVersion();
-			non_interactive_execution_ = true;
-		} else if (argument == QString("--license")) {
-			printLicense();
-			non_interactive_execution_ = true;
-		}
+	
+	if (qet_arguments_.printLicenseRequested()) {
+		printLicense();
+		non_interactive_execution_ = true;
+	}
+	if (qet_arguments_.printHelpRequested()) {
+		printHelp();
+		non_interactive_execution_ = true;
+	}
+	if (qet_arguments_.printVersionRequested()) {
+		printVersion();
+		non_interactive_execution_ = true;
 	}
 }
 

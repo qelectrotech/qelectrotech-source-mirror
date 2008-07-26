@@ -238,3 +238,55 @@ bool QET::containsForbiddenCharacters(const QString &string) {
 	}
 	return(false);
 }
+
+/**
+	@param string une chaine de caracteres
+	@return la meme chaine de caracteres, mais avec les espaces et backslashes
+	echappes
+*/
+QString QET::escapeSpaces(const QString &string) {
+	return(QString(string).replace('\\', "\\\\").replace(' ', "\\ "));
+}
+
+/**
+	@param string une chaine de caracteres
+	@return la meme chaine de caracteres, mais avec les espaces et backslashes
+	non echappes
+*/
+QString QET::unescapeSpaces(const QString &string) {
+	return(QString(string).replace("\\\\", "\\").replace("\\ ", " "));
+}
+
+/**
+	Assemble une liste de chaines en une seule. Un espace separe chaque chaine.
+	Les espaces et backslashes des chaines sont echappes.
+	@param string_list une liste de chaine
+	@return l'assemblage des chaines
+*/
+QString QET::joinWithSpaces(const QStringList &string_list) {
+	QString returned_string;
+	
+	for (int i = 0 ; i < string_list.count() ; ++ i) {
+		returned_string += QET::escapeSpaces(string_list.at(i));
+		if (i != string_list.count() - 1) returned_string += " ";
+	}
+	
+	return(returned_string);
+}
+
+/**
+	@param string Une chaine de caracteres contenant des sous-chaines a
+	extraire separees par des espaces non echappes. Les espaces des sous-chaines
+	sont echappes.
+	@return La liste des sous-chaines, sans echappement.
+*/
+QStringList QET::splitWithSpaces(const QString &string) {
+	// les chaines sont separees par des espaces non echappes = avec un nombre nul ou pair de backslashes devant
+	QStringList escaped_strings = string.split(QRegExp("[^\\]?(?:\\\\)* "), QString::SkipEmptyParts);
+	
+	QStringList returned_list;
+	foreach(QString escaped_string, escaped_strings) {
+		returned_list << QET::unescapeSpaces(escaped_string);
+	}
+	return(returned_list);
+}

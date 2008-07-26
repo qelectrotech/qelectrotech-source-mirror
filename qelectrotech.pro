@@ -77,6 +77,7 @@ HEADERS += aboutqet.h \
            orientationsetwidget.h \
            qet.h \
            qetapp.h \
+           qetarguments.h \
            qetdiagrameditor.h \
            qetsingleapplication.h \
            qgimanager.h \
@@ -144,6 +145,7 @@ SOURCES += aboutqet.cpp \
            orientationsetwidget.cpp \
            qet.cpp \
            qetapp.cpp \
+           qetarguments.cpp \
            qetdiagrameditor.cpp \
            qetsingleapplication.cpp \
            qgimanager.cpp \
