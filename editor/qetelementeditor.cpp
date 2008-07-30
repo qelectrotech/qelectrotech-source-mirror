@@ -22,6 +22,7 @@
 #include "customelementpart.h"
 #include "newelementwizard.h"
 #include "elementitemeditor.h"
+#include "recentfiles.h"
 
 /**
 	Constructeur
@@ -260,6 +261,8 @@ void QETElementEditor::setupMenus() {
 	
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
+	file_menu    -> addMenu(QETApp::elementsRecentFiles() -> menu());
+	connect(QETApp::elementsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	file_menu    -> addAction(save);
 	file_menu    -> addAction(save_as);
 	file_menu    -> addSeparator();
@@ -520,6 +523,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	
 	// memorise le fichier
 	setFileName(filepath);
+	QETApp::elementsRecentFiles() -> fileWasOpened(filepath);
 	slot_updateMenus();
 }
 
@@ -583,7 +587,7 @@ void QETElementEditor::slot_new() {
 }
 
 /**
-	Ouvre un fichier
+	Demande un fichier a l'utilisateur et ouvre ce fichier
 */
 void QETElementEditor::slot_open() {
 	// demande un nom de fichier a ouvrir a l'utilisateur
@@ -593,9 +597,30 @@ void QETElementEditor::slot_open() {
 		_filename.isEmpty() ? QETApp::customElementsDir() : QDir(_filename).absolutePath(),
 		tr("\311l\351ments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)")
 	);
-	if (user_filename.isEmpty()) return;
+	openElement(user_filename);
+}
+
+/**
+	Slot utilise pour ouvrir un fichier recent.
+	Transfere filepath au slot openElement seulement si cet editeur est actif
+	@param filepath Fichier a ouvrir
+	@see openElement
+*/
+void QETElementEditor::openRecentFile(const QString &filepath) {
+	if (qApp -> activeWindow() != this) return;
+	openElement(filepath);
+}
+
+/**
+	Ouvre un fichier element dans un nouvel editeur
+	Cette methode ne controle pas si le fichier est deja ouvert
+	@param filepath Fichier a ouvrir
+	@see fromFile
+*/
+void QETElementEditor::openElement(const QString &filepath) {
+	if (filepath.isEmpty()) return;
 	QETElementEditor *cee = new QETElementEditor();
-	cee -> fromFile(user_filename);
+	cee -> fromFile(filepath);
 	cee -> show();
 }
 

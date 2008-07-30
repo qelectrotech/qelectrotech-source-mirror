@@ -18,6 +18,7 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
+#include "recentfiles.h"
 #include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
@@ -26,6 +27,8 @@
 QString QETApp::common_elements_dir = QString();
 QString QETApp::config_dir = QString();
 QString QETApp::diagram_texts_font = QString();
+RecentFiles *QETApp::projects_recent_files_ = 0;
+RecentFiles *QETApp::elements_recent_files_ = 0;
 
 /**
 	Constructeur
@@ -78,6 +81,10 @@ QETApp::QETApp(int &argc, char **argv) :
 
 /// Destructeur
 QETApp::~QETApp() {
+	elements_recent_files_ -> save();
+	projects_recent_files_ -> save();
+	delete elements_recent_files_;
+	delete projects_recent_files_;
 	delete qsti;
 }
 
@@ -389,6 +396,20 @@ QList<QETElementEditor *> QETApp::elementEditors() const {
 }
 
 /**
+	@return La liste des fichiers recents pour les projets
+*/
+RecentFiles *QETApp::projectsRecentFiles() {
+	return(projects_recent_files_);
+}
+
+/**
+	@return La liste des fichiers recents pour les elements
+*/
+RecentFiles *QETApp::elementsRecentFiles() {
+	return(elements_recent_files_);
+}
+
+/**
 	Affiche ou cache une fenetre (editeurs de schemas / editeurs d'elements)
 	@param window fenetre a afficher / cacher
 	@param visible true pour affiche la fenetre, false sinon
@@ -629,6 +650,10 @@ void QETApp::initConfiguration() {
 	
 	// police a utiliser pour le rendu de texte
 	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
+	
+	// fichiers recents
+	projects_recent_files_ = new RecentFiles("projects");
+	elements_recent_files_ = new RecentFiles("elements");
 }
 
 /**

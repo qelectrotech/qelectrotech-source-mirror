@@ -81,6 +81,7 @@ HEADERS += aboutqet.h \
            qetdiagrameditor.h \
            qetsingleapplication.h \
            qgimanager.h \
+           recentfiles.h \
            terminal.h \
            editor/arceditor.h \
            editor/circleeditor.h \
@@ -149,6 +150,7 @@ SOURCES += aboutqet.cpp \
            qetdiagrameditor.cpp \
            qetsingleapplication.cpp \
            qgimanager.cpp \
+           recentfiles.cpp \
            terminal.cpp \
            editor/arceditor.cpp \
            editor/circleeditor.cpp \

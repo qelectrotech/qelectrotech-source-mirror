@@ -23,7 +23,7 @@
 #include "aboutqet.h"
 #include "conductorpropertieswidget.h"
 #include "configdialog.h"
-
+#include "recentfiles.h"
 /**
 	constructeur
 	@param files Liste de fichiers a ouvrir
@@ -384,6 +384,8 @@ void QETDiagramEditor::menus() {
 	// menu Fichier
 	menu_fichier -> addAction(new_file);
 	menu_fichier -> addAction(open_file);
+	menu_fichier -> addMenu(QETApp::projectsRecentFiles() -> menu());
+	connect(QETApp::projectsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	menu_fichier -> addAction(save_file);
 	menu_fichier -> addAction(save_file_sous);
 	menu_fichier -> addAction(close_file);
@@ -550,6 +552,18 @@ bool QETDiagramEditor::newDiagram() {
 }
 
 /**
+	Slot utilise pour ouvrir un fichier recent.
+	Transfere filepath au slot openAndAddDiagram seulement si cet editeur est
+	actif
+	@param filepath Fichier a ouvrir
+	@see openAndAddDiagram
+*/
+bool QETDiagramEditor::openRecentFile(const QString &filepath) {
+	if (qApp -> activeWindow() != this) return(false);
+	return(openAndAddDiagram(filepath));
+}
+
+/**
 	Cette fonction demande un nom de fichier a ouvrir a l'utilisateur
 	@return true si l'ouverture a reussi, false sinon
 */
@@ -595,6 +609,7 @@ bool QETDiagramEditor::openAndAddDiagram(const QString &nom_fichier) {
 	if (sv -> open(nom_fichier, &code_erreur)) {
 		addDiagramView(sv);
 		activateWindow();
+		QETApp::projectsRecentFiles() -> fileWasOpened(nom_fichier);
 		return(true);
 	} else {
 		QString message_erreur;

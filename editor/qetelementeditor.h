@@ -106,6 +106,8 @@ class QETElementEditor : public QMainWindow {
 	public slots:
 	void slot_new();
 	void slot_open();
+	void openRecentFile(const QString &);
+	void openElement(const QString &);
 	void slot_reload();
 	bool slot_save();
 	bool slot_saveAs();

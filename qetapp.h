@@ -23,6 +23,7 @@
 #include "qetarguments.h"
 class QETDiagramEditor;
 class QETElementEditor;
+class RecentFiles;
 /**
 	Cette classe represente l'application QElectroTech.
 	
@@ -56,6 +57,8 @@ class QETApp : public QETSingleApplication {
 	static QETDiagramEditor *diagramEditorForFile(const QString &);
 	QList<QETDiagramEditor *> diagramEditors() const;
 	QList<QETElementEditor *> elementEditors() const;
+	static RecentFiles *projectsRecentFiles();
+	static RecentFiles *elementsRecentFiles();
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	public:
 	static void overrideCommonElementsDir(const QString &);
@@ -103,7 +106,9 @@ class QETApp : public QETSingleApplication {
 	QETArguments qet_arguments_;        ///< Analyseur d'arguments
 	bool non_interactive_execution_;    ///< booleen indiquant si l'application va se terminer immediatement apres un court traitement
 	static QString diagram_texts_font;
-	
+	static RecentFiles *projects_recent_files_;
+	static RecentFiles *elements_recent_files_;
+
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);
 	void reduceEveryEditor();

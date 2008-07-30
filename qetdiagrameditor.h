@@ -21,6 +21,7 @@
 #include "insetproperties.h"
 class DiagramView;
 class ElementsPanelWidget;
+class RecentFiles;
 /**
 	Cette classe represente la fenetre principale de QElectroTech et,
 	ipso facto, la plus grande partie de l'interface graphique de QElectroTech.
@@ -66,6 +67,7 @@ class QETDiagramEditor : public QMainWindow {
 	bool save();
 	bool newDiagram();
 	bool openDiagram();
+	bool openRecentFile(const QString &);
 	bool openAndAddDiagram(const QString &);
 	bool closeDiagram();
 	void slot_editInfos();
