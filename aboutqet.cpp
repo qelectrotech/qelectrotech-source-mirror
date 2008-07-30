@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include <QtGui>
 #include "aboutqet.h"
 #include "qet.h"
 

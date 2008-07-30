@@ -145,7 +145,7 @@ bool Terminal::addConductor(Conductor *f) {
 	if (!f) return(false);
 	
 	// une seule des deux bornes du conducteur doit etre this
-	Q_ASSERT_X((f -> terminal1 == this ^ f -> terminal2 == this), "Terminal::addConductor", "Le conductor devrait etre relie exactement une fois a la terminal en cours");
+	Q_ASSERT_X(((f -> terminal1 == this) ^ (f -> terminal2 == this)), "Terminal::addConductor", "Le conductor devrait etre relie exactement une fois a la terminal en cours");
 	
 	// determine l'autre borne a laquelle cette borne va etre relie grace au conducteur
 	Terminal *autre_terminal = (f -> terminal1 == this) ? f -> terminal2 : f -> terminal1;

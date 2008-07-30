@@ -16,7 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "configpages.h"
+#include "conductorpropertieswidget.h"
+#include "insetpropertieswidget.h"
 #include "qetapp.h"
+#include "qetdiagrameditor.h"
 
 /**
 	Constructeur

@@ -20,8 +20,8 @@
 #include "insetproperties.h"
 #include <QObject>
 #include <QRectF>
-#include <QPainter>
 #include <QDate>
+class QPainter;
 /**
 	Cette classe represente l'ensemble bordure + cartouche qui encadre le
 	schema electrique.

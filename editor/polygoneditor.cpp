@@ -97,7 +97,7 @@ void PolygonEditor::updatePolygonClosedState() {
 */
 void PolygonEditor::updateForm() {
 	activeConnections(false);
-	while(points_list.takeTopLevelItem(0));
+	while(points_list.takeTopLevelItem(0)) {}
 	foreach(QPointF point, part -> polygon()) {
 		point = part -> mapToScene(point);
 		QStringList qsl;

@@ -119,7 +119,7 @@ QString DiagramContent::sentence(int filter) const {
 	@param d Object QDebug a utiliser pour l'affichage des informations de debug
 	@param c Contenu de schema a debugger
 */
-QDebug &operator<<(QDebug d, DiagramContent &c) {
+QDebug &operator<<(QDebug d, DiagramContent &) {
 	d << "DiagramContent {" << "\n";
 	/*
 	FIXME Le double-heritage QObject / QGraphicsItem a casse cet operateur
@@ -127,7 +127,7 @@ QDebug &operator<<(QDebug d, DiagramContent &c) {
 	d << "  conductorsToUpdate :" << c.conductorsToUpdate.keys() << "\n";
 	d << "  conductorsToMove :" << c.conductorsToMove << "\n";
 	d << "  otherConductors :" << c.otherConductors << "\n";
-	d << "}";
 	*/
+	d << "}";
 	return(d.space());
 }

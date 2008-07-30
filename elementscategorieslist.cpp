@@ -46,7 +46,7 @@ ElementsCategoriesList::~ElementsCategoriesList() {
 */
 void ElementsCategoriesList::reload() {
 	// vide l'arbre
-	while (takeTopLevelItem(0));
+	while (takeTopLevelItem(0)) {};
 	
 	// chargement des elements de la collection commune si droits d'ecriture
 	QFileInfo common_collection_info(QETApp::commonElementsDir());

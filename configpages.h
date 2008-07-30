@@ -18,8 +18,8 @@
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
 #include <QtGui>
-#include "conductorpropertieswidget.h"
-#include "insetpropertieswidget.h"
+class ConductorPropertiesWidget;
+class InsetPropertiesWidget;
 
 /**
 	Cette classe abstraite contient les methodes que toutes les pages de

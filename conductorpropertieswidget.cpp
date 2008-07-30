@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "conductorpropertieswidget.h"
+#include <QtGui>
 #include "conductor.h"
 
 /**

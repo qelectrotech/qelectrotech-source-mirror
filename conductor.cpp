@@ -20,6 +20,7 @@
 #include "conductor.h"
 #include "conductorsegment.h"
 #include "conductorsegmentprofile.h"
+#include "diagramtextitem.h"
 #include "element.h"
 #include "diagram.h"
 #include "diagramcommands.h"

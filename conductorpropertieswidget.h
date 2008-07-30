@@ -17,8 +17,9 @@
 */
 #ifndef CONDUCTOR_PROPERTIES_WIDGET_H
 #define CONDUCTOR_PROPERTIES_WIDGET_H
-#include "conductor.h"
-#include <QtGui>
+#include "conductorproperties.h"
+#include <QWidget>
+
 /**
 	Ce widget permet a l utilisateur d'editer les proprietes d'un conducteur.
 	Par proprietes, on entend non pas le trajet effectue par le conducteur mais

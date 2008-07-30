@@ -21,8 +21,8 @@
 #include "terminal.h"
 #include "conductorprofile.h"
 #include "conductorproperties.h"
-#include "diagramtextitem.h"
 class ConductorSegment;
+class DiagramTextItem;
 class Element;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
