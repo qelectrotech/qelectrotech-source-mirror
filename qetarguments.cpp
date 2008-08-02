@@ -36,6 +36,12 @@ QETArguments::QETArguments(const QETArguments &qet_arguments) :
 	element_files_(qet_arguments.element_files_),
 	options_(qet_arguments.options_),
 	unknown_options_(qet_arguments.unknown_options_),
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	common_elements_dir_(qet_arguments.common_elements_dir_),
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+	config_dir_(qet_arguments.config_dir_),
+#endif
 	print_help_(qet_arguments.print_help_),
 	print_license_(qet_arguments.print_license_),
 	print_version_(qet_arguments.print_version_)
@@ -51,6 +57,12 @@ QETArguments &QETArguments::operator=(const QETArguments &qet_arguments) {
 	element_files_   = qet_arguments.element_files_;
 	options_         = qet_arguments.options_;
 	unknown_options_ = qet_arguments.unknown_options_;
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
+	common_elements_dir_ = qet_arguments.common_elements_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
+	config_dir_ = qet_arguments.config_dir_;
+#endif
 	print_help_      = qet_arguments.print_help_;
 	print_license_   = qet_arguments.print_license_;
 	print_version_   = qet_arguments.print_version_;
