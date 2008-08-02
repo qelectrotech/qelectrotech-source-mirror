@@ -37,6 +37,7 @@ RecentFiles *QETApp::elements_recent_files_ = 0;
 */
 QETApp::QETApp(int &argc, char **argv) :
 	QETSingleApplication(argc, argv, QString("qelectrotech-" + QETApp::userName())),
+	splash_screen_(0),
 	non_interactive_execution_(false)
 {
 	parseArguments();
@@ -55,6 +56,7 @@ QETApp::QETApp(int &argc, char **argv) :
 		std::exit(EXIT_SUCCESS);
 	}
 	
+	initSplashScreen();
 	initStyle();
 	initSystemTray();
 	
@@ -72,11 +74,14 @@ QETApp::QETApp(int &argc, char **argv) :
 	
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
+		setSplashScreenStep(tr("Chargement... \311diteur de sch\351mas"));
 		new QETDiagramEditor();
 	} else {
+		setSplashScreenStep(tr("Chargement... Ouverture des fichiers"));
 		openFiles(qet_arguments_);
 	}
 	buildSystemTrayMenu();
+	splash_screen_ -> hide();
 }
 
 /// Destructeur
@@ -613,6 +618,30 @@ void QETApp::parseArguments() {
 }
 
 /**
+	Initialise le splash screen si et seulement si l'execution est interactive.
+	Autrement, l'attribut splash_screen_ vaut 0.
+*/
+void QETApp::initSplashScreen() {
+	if (non_interactive_execution_) return;
+	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"));
+	splash_screen_ -> show();
+	setSplashScreenStep(tr("Chargement..."));
+}
+
+/**
+	Change le texte du splash screen et prend en compte les evenements.
+	Si l'application s'execute de facon non interactive, cette methode ne fait
+	rien.
+*/
+void QETApp::setSplashScreenStep(const QString &message) {
+	if (!splash_screen_) return;
+	if (!message.isEmpty()) {
+		splash_screen_ -> showMessage(message, Qt::AlignBottom | Qt::AlignLeft);
+	}
+	processEvents();
+}
+
+/**
 	Determine et applique le langage a utiliser pour l'application
 */
 void QETApp::initLanguage() {
@@ -660,6 +689,7 @@ void QETApp::initConfiguration() {
 	Construit l'icone dans le systray et son menu
 */
 void QETApp::initSystemTray() {
+	setSplashScreenStep(tr("Chargement... icône du systray"));
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech"));
 	

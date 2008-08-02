@@ -84,6 +84,7 @@ class QETApp : public QETSingleApplication {
 	QTranslator qtTranslator;
 	QTranslator qetTranslator;
 	QSystemTrayIcon *qsti;
+	QSplashScreen *splash_screen_;
 	QMenu *menu_systray;
 	QAction *quitter_qet;
 	QAction *reduce_appli;
@@ -136,6 +137,8 @@ class QETApp : public QETSingleApplication {
 	private:
 	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
 	void parseArguments();
+	void initSplashScreen();
+	void setSplashScreenStep(const QString & = QString());
 	void initLanguage();
 	void initStyle();
 	void initConfiguration();
