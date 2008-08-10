@@ -20,6 +20,7 @@
 #include "insetpropertieswidget.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
+#include "borderinset.h"
 
 /**
 	Constructeur
@@ -31,9 +32,10 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	QSettings &settings = QETApp::settings();
 	
 	// recupere les dimensions du schema
-	int columns_count_value  = settings.value("diagrameditor/defaultcols",       15).toInt();
+	int columns_count_value  = settings.value("diagrameditor/defaultcols", 15).toInt();
 	int columns_width_value  = qRound(settings.value("diagrameditor/defaultcolsize",  50.0).toDouble());
-	int columns_height_value = qRound(settings.value("diagrameditor/defaultheight",  500.0).toDouble());
+	int rows_count_value     = settings.value("diagrameditor/defaultrows",  6).toDouble();
+	int rows_height_value    = qRound(settings.value("diagrameditor/defaultrowsize",  80.0).toDouble());
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	
@@ -54,28 +56,35 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	QLabel *ds1 = new QLabel(tr("Colonnes :"));
 	
 	columns_count = new QSpinBox(diagram_size_box);
-	columns_count -> setMinimum(3); /// @todo methode statique pour recuperer ca
+	columns_count -> setMinimum(BorderInset::minNbColumns());
 	columns_count -> setValue(columns_count_value);
 	
 	columns_width = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(1);
+	columns_width -> setMinimum(BorderInset::minColumnsWidth());
 	columns_width -> setSingleStep(10);
 	columns_width -> setValue(columns_width_value);
 	columns_width -> setPrefix(tr("\327"));
 	columns_width -> setSuffix(tr("px"));
 	
-	QLabel *ds2 = new QLabel(tr("Hauteur :"));
+	QLabel *ds2 = new QLabel(tr("Lignes :"));
 	
-	columns_height = new QSpinBox(diagram_size_box);
-	columns_height -> setRange(80, 10000); /// @todo methode statique pour recuperer ca
-	columns_height -> setSingleStep(80);
-	columns_height -> setValue(columns_height_value);
+	rows_count = new QSpinBox(diagram_size_box);
+	rows_count -> setMinimum(BorderInset::minNbRows());
+	rows_count -> setValue(rows_count_value);
+	
+	rows_height  = new QSpinBox(diagram_size_box);
+	rows_height -> setMinimum(BorderInset::minRowsHeight());
+	rows_height -> setSingleStep(10);
+	rows_height -> setValue(rows_height_value);
+	rows_height -> setPrefix(tr("\327"));
+	rows_height -> setSuffix(tr("px"));
 	
 	diagram_size_box_layout -> addWidget(ds1,            0, 0);
 	diagram_size_box_layout -> addWidget(columns_count,  0, 1);
 	diagram_size_box_layout -> addWidget(columns_width,  0, 2);
 	diagram_size_box_layout -> addWidget(ds2,            1, 0);
-	diagram_size_box_layout -> addWidget(columns_height, 1, 1);
+	diagram_size_box_layout -> addWidget(rows_count,     1, 1);
+	diagram_size_box_layout -> addWidget(rows_height,    1, 2);
 	
 	ipw = new InsetPropertiesWidget(QETDiagramEditor::defaultInsetProperties(), true, this);
 	
@@ -107,7 +116,8 @@ void NewDiagramPage::applyConf() {
 	// dimensions des nouveaux schemas
 	settings.setValue("diagrameditor/defaultcols",    columns_count -> value());
 	settings.setValue("diagrameditor/defaultcolsize", columns_width -> value());
-	settings.setValue("diagrameditor/defaultheight",  columns_height -> value());
+	settings.setValue("diagrameditor/defaultrows",    rows_count    -> value());
+	settings.setValue("diagrameditor/defaultrowsize", rows_height   -> value());
 	
 	// proprietes du cartouche
 	InsetProperties inset = ipw-> insetProperties();

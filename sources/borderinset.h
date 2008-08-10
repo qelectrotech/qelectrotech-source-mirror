@@ -39,29 +39,51 @@ class BorderInset : public QObject {
 	
 	// methodes
 	public:
+	static int   minNbColumns();
+	static qreal minColumnsWidth();
+	static int   minNbRows();
+	static qreal minRowsHeight();
+	
 	void draw(QPainter *, qreal = 0.0, qreal = 0.0);
 	
 	// methodes d'acces en lecture aux dimensions
+	// colonnes
 	/// @return le nombre de colonnes du schema
-	int     nbColumn()            const { return(nb_columns);                    }
-	/// @return la taille des colonnes en pixels
-	qreal   columnsWidth()        const { return(columns_width);                 }
+	int   nbColumns()           const { return(nb_columns);                    }
+	/// @return la largeur des colonnes en pixels
+	qreal columnsWidth()        const { return(columns_width);                 }
+	/// @return la taille de l'ensemble des colonnes, en-tete des lignes non inclus
+	qreal columnsTotalWidth()   const { return(nb_columns * columns_width);    }
 	/// @return la hauteur, en pixels, des en-tetes des colonnes
-	qreal   columnsHeaderHeight() const { return(columns_header_height);         }
-	/// @return la hauteur des colonnes, en-tetes inclus
-	qreal   columnsHeight()       const { return(columns_height);                }
-	/// @return la largeur de la bordure
-	qreal   borderWidth()         const { return(nb_columns * columns_width);    }
-	/// @return la hauteur de la bordure
-	qreal   borderHeight()        const { return(columns_height + inset_height); }
+	qreal columnsHeaderHeight() const { return(columns_header_height);         }
+	
+	// lignes
+	/// @return le nombre de lignes du schema
+	int   nbRows()              const { return(nb_rows);                       }
+	/// @return la hauteur des lignes en pixels
+	qreal rowsHeight()          const { return(rows_height);                   }
+	/// @return la taille de l'ensemble des lignes, en-tete des colonnes non inclus
+	qreal rowsTotalHeight()     const { return(nb_rows * rows_height);         }
+	/// @return la largeur, en pixels, des en-tetes des lignes
+	qreal rowsHeaderWidth()     const { return(rows_header_width);             }
+	
+	// cadre sans le cartouche = schema
+	/// @return la largeur du schema, c'est-a-dire du cadre sans le cartouche
+	qreal diagramWidth()        const { return(columnsTotalWidth() + rowsHeaderWidth());    }
+	/// @return la hauteurdu schema, c'est-a-dire du cadre sans le cartouche
+	qreal diagramHeight()       const { return(rowsTotalHeight() + columnsHeaderHeight());  }
+	
+	// cartouche
 	/// @return la largeur du cartouche
-	qreal   insetWidth()          const { return(inset_width);                   }
+	qreal   insetWidth()          const { return(inset_width);                 }
 	/// @return la hauteur du cartouche
-	qreal   insetHeight()         const { return(inset_height);                  }
-	/// @return la hauteur minimale acceptee des colonnes
-	qreal   minColumnsHeight()    const { return(min_columns_height);            }
-	/// @return le nombre minimum accepte de colonnes
-	int     minNbColumns()        const { return(min_nb_columns);                }
+	qreal   insetHeight()         const { return(inset_height);                }
+	
+	// cadre avec le cartouche
+	/// @return la hauteur de la bordure
+	qreal   borderWidth()        const { return(diagramWidth());                  }
+	/// @return la hauteur de la bordure
+	qreal   borderHeight()       const { return(diagramHeight() + insetHeight()); }
 	
 	// methodes d'acces en lecture aux informations du cartouche
 	/// @return le champ "Auteur" du cartouche
@@ -80,16 +102,23 @@ class BorderInset : public QObject {
 	bool    insetIsDisplayed()    const { return(display_inset);         }
 	/// @return true si les entetes des colonnes sont affiches, false sinon
 	bool    columnsAreDisplayed() const { return(display_columns);       }
+	/// @return true si les entetes des lignes sont affiches, false sinon
+	bool    rowsAreDisplayed()    const { return(display_rows);          }
 	/// @return true si la bordure est affichee, false sinon
 	bool    borderIsDisplayed()   const { return(display_border);        }
 	
 	// methodes d'acces en ecriture aux dimensions
 	void addColumn             ();
+	void addRow                ();
 	void removeColumn          ();
+	void removeRow             ();
 	void setNbColumns          (int);
+	void setNbRows             (int);
 	void setColumnsWidth       (const qreal &);
+	void setRowsHeight         (const qreal &);
 	void setColumnsHeaderHeight(const qreal &);
-	void setColumnsHeight      (const qreal &);
+	void setRowsHeaderWidth    (const qreal &);
+	void setDiagramHeight      (const qreal &);
 	void setInsetWidth         (const qreal &);
 	void setInsetHeight        (const qreal &);
 	void adjustInsetToColumns  ();
@@ -131,11 +160,14 @@ class BorderInset : public QObject {
 	void displayInset          (bool di)                 { display_inset   = di;       }
 	/// @param dc true pour afficher les entetes des colonnes, false sinon
 	void displayColumns        (bool dc)                 { display_columns = dc;       }
+	/// @param dr true pour afficher les entetes des lignes, false sinon
+	void displayRows           (bool dr)                 { display_rows    = dr;       }
 	/// @param db true pour afficher la bordure du schema, false sinon
 	void displayBorder         (bool db)                 { display_border  = db;       }
 	
 	private:
 	void updateRectangles();
+	QString incrementLetters(const QString &);
 	
 	// signaux
 	signals:
@@ -155,18 +187,23 @@ class BorderInset : public QObject {
 	QString bi_folio;
 	QString bi_filename;
 	
-	// dimensions du cadre et du cartouche
+	// dimensions du cadre (lignes et colonnes)
+	// colonnes : nombres et dimensions
 	int    nb_columns;
-	int    min_nb_columns;
 	qreal  columns_width;
 	qreal  columns_header_height;
-	qreal  columns_height;
-	qreal  min_columns_height;
+	
+	// lignes : nombres et dimensions
+	int    nb_rows;
+	qreal  rows_height;
+	qreal  rows_header_width;
+	
+	// dimensions du cartouche
 	qreal  inset_width;
 	qreal  inset_height;
 	
 	// rectangles utilises pour le dessin
-	QRectF  border;
+	QRectF  diagram;
 	QRectF  inset;
 	QRectF  inset_author;
 	QRectF  inset_date;
@@ -177,6 +214,7 @@ class BorderInset : public QObject {
 	// booleens pour les options de dessin
 	bool display_inset;
 	bool display_columns;
+	bool display_rows;
 	bool display_border;
 };
 #endif

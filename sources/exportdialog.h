@@ -48,6 +48,7 @@ class ExportDialog : public QDialog {
 	QCheckBox *draw_border;
 	QCheckBox *draw_inset;
 	QCheckBox *draw_columns;
+	QCheckBox *draw_rows;
 	QCheckBox *draw_terminals;
 	QRadioButton *export_elements;
 	QRadioButton *export_border;

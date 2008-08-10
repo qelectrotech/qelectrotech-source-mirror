@@ -65,7 +65,8 @@ class NewDiagramPage : public ConfigPage {
 	public:
 	QSpinBox *columns_count;        ///< Widget d'edition du nombre par defaut de colonnes
 	QSpinBox *columns_width;        ///< Widget d'edition de la largeur par defaut des colonnes
-	QSpinBox *columns_height;       ///< Widget d'edition de la hauteur par defaut des colonnes
+	QSpinBox *rows_count;           ///< Widget d'edition du nombre par defaut de lignes
+	QSpinBox *rows_height;          ///< Widget d'edition de la hauteur par defaut des lignes
 	InsetPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
 	ConductorPropertiesWidget *cpw; ///< Widget d'edition des proprietes par defaut des conducteurs
 };

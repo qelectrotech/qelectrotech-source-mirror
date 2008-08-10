@@ -44,8 +44,11 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	sb_hotspot_y -> setSingleStep(10);
 	
 	diagram_scene = new Diagram();
-	diagram_scene -> border_and_inset.setNbColumns(4);
-	diagram_scene -> border_and_inset.setColumnsHeight(140);
+	diagram_scene -> border_and_inset.setColumnsWidth(50.0);
+	diagram_scene -> border_and_inset.setNbColumns(3);
+	diagram_scene -> border_and_inset.setRowsHeight(60.0);
+	diagram_scene -> border_and_inset.setNbRows(2);
+	diagram_scene -> border_and_inset.displayRows(false);
 	diagram_scene -> border_and_inset.displayInset(false);
 	
 	diagram_view = new QGraphicsView(diagram_scene);

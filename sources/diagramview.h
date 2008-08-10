@@ -59,8 +59,8 @@ class DiagramView : public QGraphicsView {
 	void dialogPrint();
 	void addColumn();
 	void removeColumn();
-	void expand();
-	void shrink();
+	void addRow();
+	void removeRow();
 	/// @return Le schema visualise par ce DiagramView
 	Diagram *diagram() { return(scene); }
 	QETDiagramEditor *diagramEditor() const;

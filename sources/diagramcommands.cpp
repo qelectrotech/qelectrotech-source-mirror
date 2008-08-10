@@ -540,9 +540,11 @@ ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("modifier les dimensions du sch\351ma"), parent),
 	diagram(dia),
 	columnsCountDifference(0),
-	columnsHeightDifference(0.0),
+	rowsCountDifference(0),
 	columnsWidthDifference(0.0),
-	headersHeightDifference(0.0)
+	rowsHeightDifference(0.0),
+	headersHeightDifference(0.0),
+	headersWidthDifference(0.0)
 {
 }
 
@@ -561,16 +563,22 @@ void ChangeBorderCommand::applyChanges(int coeff) {
 	// reference vers l'objet border_and_inset du schema
 	BorderInset &border = diagram -> border_and_inset;
 	if (columnsCountDifference) {
-		border.setNbColumns(border.nbColumn() + (columnsCountDifference * coeff));
+		border.setNbColumns(border.nbColumns() + (columnsCountDifference * coeff));
 	}
-	if (columnsHeightDifference) {
-		border.setColumnsHeight(border.columnsHeight() + (columnsHeightDifference * coeff));
+	if (rowsCountDifference) {
+		border.setNbRows(border.nbRows() + (rowsCountDifference * coeff));
 	}
 	if (columnsWidthDifference) {
 		border.setColumnsWidth(border.columnsWidth() + (columnsWidthDifference * coeff));
 	}
+	if (rowsHeightDifference) {
+		border.setRowsHeight(border.rowsHeight() + (rowsHeightDifference * coeff));
+	}
 	if (headersHeightDifference) {
 		border.setColumnsHeaderHeight(border.columnsHeaderHeight() + (headersHeightDifference * coeff));
+	}
+	if (headersWidthDifference) {
+		border.setRowsHeaderWidth(border.rowsHeaderWidth() + (headersWidthDifference * coeff));
 	}
 	border.adjustInsetToColumns();
 }

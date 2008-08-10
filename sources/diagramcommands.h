@@ -353,12 +353,16 @@ class ChangeBorderCommand : public QUndoCommand {
 	public:
 	/// nombre de colonnes ajoutees / enlevees
 	int columnsCountDifference;
-	/// delta pour la hauteur des colonnes
-	qreal columnsHeightDifference;
+	/// nombre de lignes ajoutees / enlevees
+	int rowsCountDifference;
 	/// delta pour la largeur des colonnes
 	qreal columnsWidthDifference;
+	/// delta pour la hauteur des lignes
+	qreal rowsHeightDifference;
 	/// delta pour la hauteur des entetes des colonnes
 	qreal headersHeightDifference;
+	/// delta pour la largeur des entetes des lignes
+	qreal headersWidthDifference;
 };
 
 /**

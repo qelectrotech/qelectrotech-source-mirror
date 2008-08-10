@@ -92,8 +92,8 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_updateWindowsMenu();
 	void slot_addColumn();
 	void slot_removeColumn();
-	void slot_expand();
-	void slot_shrink();
+	void slot_addRow();
+	void slot_removeRow();
 	void slot_editConductor();
 	void slot_resetConductors();
 	void slot_editDefaultConductors();
@@ -133,8 +133,8 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *add_text;           ///< Passe en mode "Ajout de texte"
 	QAction *add_column;         ///< Ajoute une colonne au schema
 	QAction *remove_column;      ///< Enleve une colonne du schema
-	QAction *expand_diagram;     ///< Augmente la hauteur du schema
-	QAction *shrink_diagram;     ///< Reduit la hauteur du schema
+	QAction *add_row;            ///< Augmente la hauteur du schema
+	QAction *remove_row;         ///< Reduit la hauteur du schema
 	QAction *zoom_in;            ///< Zoome avant
 	QAction *zoom_out;           ///< Zoome arriere
 	QAction *zoom_fit;           ///< Ajuste le zoom de facon a voir l'integralite des elements

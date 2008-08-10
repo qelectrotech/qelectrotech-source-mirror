@@ -247,9 +247,12 @@ QDomDocument Diagram::toXml(bool diagram) {
 		if (!border_and_inset.title().isNull())     racine.setAttribute("title",    border_and_inset.title());
 		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
 		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
-		racine.setAttribute("cols",    border_and_inset.nbColumn());
+		racine.setAttribute("cols",    border_and_inset.nbColumns());
 		racine.setAttribute("colsize", border_and_inset.columnsWidth());
-		racine.setAttribute("height",  border_and_inset.columnsHeight());
+		racine.setAttribute("rows",    border_and_inset.nbRows());
+		racine.setAttribute("rowsize", border_and_inset.rowsHeight());
+		// attribut datant de la version 0.1 - laisse pour retrocompatibilite
+		racine.setAttribute("height",  border_and_inset.diagramHeight());
 		
 		// type de conducteur par defaut
 		QDomElement default_conductor = document.createElement("defaultconductor");
@@ -353,9 +356,20 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		double col_size = root.attribute("colsize").toDouble(&ok);
 		if (ok) border_and_inset.setColumnsWidth(col_size);
 		
-		// hauteur du schema
-		double height = root.attribute("height").toDouble(&ok);
-		if (ok) border_and_inset.setColumnsHeight(height);
+		// retrocompatibilite : les schemas enregistres avec la 0.1 ont un attribut "height"
+		if (root.hasAttribute("rows") && root.hasAttribute("rowsize")) {
+			// nombre de lignes
+			int nb_rows = root.attribute("rows").toInt(&ok);
+			if (ok) border_and_inset.setNbRows(nb_rows);
+			
+			// taille des lignes
+			double row_size = root.attribute("rowsize").toDouble(&ok);
+			if (ok) border_and_inset.setRowsHeight(row_size);
+		} else {
+			// hauteur du schema
+			double height = root.attribute("height").toDouble(&ok);
+			if (ok) border_and_inset.setDiagramHeight(height);
+		}
 		
 		border_and_inset.adjustInsetToColumns();
 		

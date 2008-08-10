@@ -70,6 +70,7 @@ ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
 	connect(draw_border,       SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_inset,        SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_columns,      SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
+	connect(draw_rows,         SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(draw_terminals,    SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(width,             SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
 	connect(height,            SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
@@ -157,6 +158,11 @@ QGroupBox *ExportDialog::setupOptionsGroupBox() {
 	draw_columns = new QCheckBox(tr("Dessiner les colonnes"), groupbox_options);
 	optionshlayout -> addWidget(draw_columns, 2, 1);
 	draw_columns -> setChecked(diagram -> border_and_inset.columnsAreDisplayed());
+	
+	// dessiner les lignes
+	draw_rows = new QCheckBox(tr("Dessiner les lignes"), groupbox_options);
+	optionshlayout -> addWidget(draw_rows, 3, 1);
+	draw_rows -> setChecked(diagram -> border_and_inset.rowsAreDisplayed());
 	
 	// dessiner les bornes
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
@@ -305,6 +311,7 @@ QImage ExportDialog::generateImage() {
 void ExportDialog::saveReloadDiagramParameters(bool save) {
 	static bool state_drawBorder;
 	static bool state_drawColumns;
+	static bool state_drawRows;
 	static bool state_drawInset;
 	static bool state_drawGrid;
 	static bool state_drawTerm;
@@ -314,6 +321,7 @@ void ExportDialog::saveReloadDiagramParameters(bool save) {
 		// memorise les parametres relatifs au schema
 		state_drawBorder  = diagram -> border_and_inset.borderIsDisplayed();
 		state_drawColumns = diagram -> border_and_inset.columnsAreDisplayed();
+		state_drawRows    = diagram -> border_and_inset.rowsAreDisplayed();
 		state_drawInset   = diagram -> border_and_inset.insetIsDisplayed();
 		state_drawGrid    = diagram -> displayGrid();
 		state_drawTerm    = diagram -> drawTerminals();
@@ -324,11 +332,13 @@ void ExportDialog::saveReloadDiagramParameters(bool save) {
 		diagram -> setDisplayGrid(draw_grid -> isChecked());
 		diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
 		diagram -> border_and_inset.displayColumns(draw_columns -> isChecked());
+		diagram -> border_and_inset.displayRows(draw_rows -> isChecked());
 		diagram -> border_and_inset.displayInset(draw_inset -> isChecked());
 	} else {
 		// restaure les parametres relatifs au schema
 		diagram -> border_and_inset.displayBorder(state_drawBorder);
 		diagram -> border_and_inset.displayColumns(state_drawColumns);
+		diagram -> border_and_inset.displayRows(state_drawRows);
 		diagram -> border_and_inset.displayInset(state_drawInset);
 		diagram -> setDisplayGrid(state_drawGrid);
 		diagram -> setDrawTerminals(state_drawTerm);

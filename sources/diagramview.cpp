@@ -27,7 +27,7 @@
 
 /**
 	Constructeur
-	@param parent Le QWidegt parent de cette vue de schema
+	@param parent Le QWidget parent de cette vue de schema
 */
 DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
 	setAttribute(Qt::WA_DeleteOnClose, true);
@@ -67,7 +67,7 @@ DiagramView::~DiagramView() {
 }
 
 /**
-	appelle la methode select sur tous les elements de la liste d'elements
+	Appelle la methode select sur tous les elements de la liste d'elements
 */
 void DiagramView::selectAll() {
 	if (scene -> items().isEmpty()) return;
@@ -117,7 +117,7 @@ void DiagramView::rotateSelection() {
 }
 
 /**
-	accepte ou refuse le drag'n drop en fonction du type de donnees entrant
+	Accepte ou refuse le drag'n drop en fonction du type de donnees entrant
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
@@ -126,14 +126,14 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 }
 
 /**
-	gere les dragleaveevent
+	Gere les dragleaveevent
 	@param e le QDragEnterEvent correspondant au drag'n drop sortant
 */
 void DiagramView::dragLeaveEvent(QDragLeaveEvent *) {
 }
 
 /**
-	accepte ou refuse le drag'n drop en fonction du type de donnees entrant
+	Accepte ou refuse le drag'n drop en fonction du type de donnees entrant
 	@param e le QDragMoveEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
@@ -142,7 +142,7 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 /**
-	gere les depots (drop) acceptes sur le Diagram
+	Gere les depots (drop) acceptes sur le Diagram
 	@param e le QDropEvent correspondant au drag'n drop effectue
 */
 void DiagramView::dropEvent(QDropEvent *e) {
@@ -210,7 +210,7 @@ void DiagramView::zoomReset() {
 }
 
 /**
-	copie les elements selectionnes du schema dans le presse-papier puis les supprime
+	Copie les elements selectionnes du schema dans le presse-papier puis les supprime
 */
 void DiagramView::cut() {
 	copy();
@@ -220,7 +220,7 @@ void DiagramView::cut() {
 }
 
 /**
-	copie les elements selectionnes du schema dans le presse-papier
+	Copie les elements selectionnes du schema dans le presse-papier
 */
 void DiagramView::copy() {
 	QClipboard *presse_papier = QApplication::clipboard();
@@ -551,9 +551,10 @@ void DiagramView::dialogEditInfos() {
 	InsetProperties inset = scene -> border_and_inset.exportInset();
 	
 	// recupere les dimensions du schema
-	int columns_count_value  = scene -> border_and_inset.nbColumn();
+	int columns_count_value  = scene -> border_and_inset.nbColumns();
 	int columns_width_value  = qRound(scene -> border_and_inset.columnsWidth());
-	int columns_height_value = qRound(scene -> border_and_inset.columnsHeight());
+	int rows_count_value     = scene -> border_and_inset.nbRows();
+	int rows_height_value    = qRound(scene -> border_and_inset.rowsHeight());
 	
 	// construit le dialogue
 	QDialog popup;
@@ -566,28 +567,35 @@ void DiagramView::dialogEditInfos() {
 	QLabel *ds1 = new QLabel(tr("Colonnes :"));
 	
 	QSpinBox *columns_count  = new QSpinBox(diagram_size_box);
-	columns_count -> setMinimum(scene -> border_and_inset.minNbColumns());
+	columns_count -> setMinimum(BorderInset::minNbColumns());
 	columns_count -> setValue(columns_count_value);
 	
 	QSpinBox *columns_width  = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(1);
+	columns_width -> setMinimum(BorderInset::minColumnsWidth());
 	columns_width -> setSingleStep(10);
 	columns_width -> setValue(columns_width_value);
 	columns_width -> setPrefix(tr("\327"));
 	columns_width -> setSuffix(tr("px"));
 	
-	QLabel *ds2 = new QLabel(tr("Hauteur :"));
+	QLabel *ds2 = new QLabel(tr("Lignes :"));
 	
-	QSpinBox *columns_height = new QSpinBox(diagram_size_box);
-	columns_height -> setRange(qRound(scene -> border_and_inset.minColumnsHeight()), 10000);
-	columns_height -> setSingleStep(80);
-	columns_height -> setValue(columns_height_value);
+	QSpinBox *rows_count = new QSpinBox(diagram_size_box);
+	rows_count -> setMinimum(BorderInset::minNbRows());
+	rows_count -> setValue(rows_count_value);
+	
+	QSpinBox *rows_height  = new QSpinBox(diagram_size_box);
+	rows_height -> setMinimum(BorderInset::minRowsHeight());
+	rows_height -> setSingleStep(10);
+	rows_height -> setValue(rows_height_value);
+	rows_height -> setPrefix(tr("\327"));
+	rows_height -> setSuffix(tr("px"));
 	
 	diagram_size_box_layout.addWidget(ds1,            0, 0);
 	diagram_size_box_layout.addWidget(columns_count,  0, 1);
 	diagram_size_box_layout.addWidget(columns_width,  0, 2);
 	diagram_size_box_layout.addWidget(ds2,            1, 0);
-	diagram_size_box_layout.addWidget(columns_height, 1, 1);
+	diagram_size_box_layout.addWidget(rows_count,     1, 1);
+	diagram_size_box_layout.addWidget(rows_height,    1, 2);
 	diagram_size_box_layout.setColumnStretch(0, 1);
 	diagram_size_box_layout.setColumnStretch(1, 1);
 	diagram_size_box_layout.setColumnStretch(2, 1);
@@ -619,12 +627,14 @@ void DiagramView::dialogEditInfos() {
 		if (
 			columns_count_value  != columns_count  -> value() ||\
 			columns_width_value  != columns_width  -> value() ||\
-			columns_height_value != columns_height -> value()
+			rows_count_value     != rows_count     -> value() ||\
+			rows_height_value    != rows_height    -> value()
 		) {
 			ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
 			cbc -> columnsCountDifference  = columns_count  -> value() - columns_count_value;
 			cbc -> columnsWidthDifference  = columns_width  -> value() - columns_width_value;
-			cbc -> columnsHeightDifference = columns_height -> value() - columns_height_value;
+			cbc -> rowsCountDifference     = rows_count     -> value() - rows_count_value;
+			cbc -> rowsHeightDifference    = rows_height    -> value() - rows_height_value;
 			scene -> undoStack().push(cbc);
 		}
 	}
@@ -658,18 +668,18 @@ void DiagramView::removeColumn() {
 /**
 	Agrandit le schema en hauteur
 */
-void DiagramView::expand() {
+void DiagramView::addRow() {
 	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsHeightDifference = 80.0;
+	cbc -> rowsCountDifference = 1;
 	scene -> undoStack().push(cbc);
 }
 
 /**
 	Retrecit le schema en hauteur
 */
-void DiagramView::shrink() {
+void DiagramView::removeRow() {
 	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsHeightDifference = -80.0;
+	cbc -> rowsCountDifference = -1;
 	scene -> undoStack().push(cbc);
 }
 
@@ -897,8 +907,8 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addAction(qde -> infos_diagram);
 			context_menu -> addAction(qde -> add_column);
 			context_menu -> addAction(qde -> remove_column);
-			context_menu -> addAction(qde -> expand_diagram);
-			context_menu -> addAction(qde -> shrink_diagram);
+			context_menu -> addAction(qde -> add_row);
+			context_menu -> addAction(qde -> remove_row);
 		} else {
 			context_menu -> addAction(qde -> cut);
 			context_menu -> addAction(qde -> copy);
@@ -936,7 +946,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	// recupere le rectangle corespondant au cartouche
 	QRectF inset_rect(
 		Diagram::margin,
-		Diagram::margin + bi.columnsHeight(),
+		Diagram::margin + bi.diagramHeight(),
 		bi.insetWidth(),
 		bi.insetHeight()
 	);
@@ -949,6 +959,14 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		bi.columnsHeaderHeight()
 	);
 	
+	// recupere le rectangle correspondant aux en-tetes des lignes
+	QRectF rows_rect(
+		Diagram::margin,
+		Diagram::margin,
+		bi.rowsHeaderWidth(),
+		bi.diagramHeight()
+	);
+	
 	// coordonnees du clic par rapport au schema
 	QPointF click_pos = viewportTransform().inverted().map(e -> pos());
 	
@@ -959,7 +977,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		} else {
 			QGraphicsView::mouseDoubleClickEvent(e);
 		}
-	} else if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos)) {
+	} else if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
 		// edite les proprietes du schema
 		dialogEditInfos();
 	} else {

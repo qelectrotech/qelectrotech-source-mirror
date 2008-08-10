@@ -6,6 +6,7 @@
 	<file>ico/qelectrotech.png</file>
 	<file>ico/allowed.png</file>
 	<file>ico/add_col.png</file>
+	<file>ico/add_row.png</file>
 	<file>ico/arc.png</file>
 	<file>ico/bring_forward.png</file>
 	<file>ico/button_cancel.png</file>
@@ -57,6 +58,7 @@
 	<file>ico/redo.png</file>
 	<file>ico/reload.png</file>
 	<file>ico/remove_col.png</file>
+	<file>ico/remove_row.png</file>
 	<file>ico/restaurer.png</file>
 	<file>ico/saveas.png</file>
 	<file>ico/save.png</file>

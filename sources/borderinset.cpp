@@ -18,23 +18,30 @@
 #include <QPainter>
 #include "borderinset.h"
 #include "qetapp.h"
+#include "math.h"
 
 /**
-	Constructeur simple : construit une bordure de 15 colonnes de 50x500 avec
-	un cartouche de 400x50.
+	Constructeur simple : construit une bordure en recuperant les dimensions
+	dans la configuration de l'application.
 	@param parent QObject parent de ce BorderInset
 */
 BorderInset::BorderInset(QObject *parent) : QObject(parent) {
-	nb_columns            = qMax(3, QETApp::settings().value("diagrameditor/defaultcols", 15).toInt());
-	min_nb_columns        = 3;
-	columns_width         = QETApp::settings().value("diagrameditor/defaultcolsize", 50.0).toDouble();
-	columns_height        = QETApp::settings().value("diagrameditor/defaultheight", 500.0).toDouble();
-	min_columns_height    = 80.0;
-	inset_width           = nb_columns * columns_width;
-	inset_height          = 50.0;
+	// initialise les dimensions des colonnes (ainsi que la largeur du cartouche)
 	columns_header_height = 20.0;
+	setNbColumns   (QETApp::settings().value("diagrameditor/defaultcols", 15).toInt());
+	setColumnsWidth(QETApp::settings().value("diagrameditor/defaultcolsize", 50.0).toDouble());
+	
+	// initialise les dimensions des lignes
+	rows_header_width     = 20.0;
+	setNbRows(QETApp::settings().value("diagrameditor/defaultrows", 6).toInt());
+	setRowsHeight(QETApp::settings().value("diagrameditor/defaultrowsize", 80.0).toDouble());
+	
+	// hauteur du cartouche
+	inset_height          = 50.0;
+	
 	display_inset         = true;
 	display_columns       = true;
+	display_rows          = true;
 	display_border        = true;
 	updateRectangles();
 	
@@ -55,17 +62,45 @@ BorderInset::~BorderInset() {
 }
 
 /**
+	@return Le nombre minimum de colonnes qu'un schema doit comporter
+*/
+int BorderInset::minNbColumns() {
+	return(3);
+}
+
+/**
+	@return la largeur minimale d'une colonne de schema
+*/
+qreal BorderInset::minColumnsWidth() {
+	return(5.0);
+}
+
+/**
+	@return Le nombre minimum de lignes qu'un schema doit comporter
+*/
+int BorderInset::minNbRows() {
+	return(2);
+}
+
+/**
+	@return la hauteur minimale d'une ligne de schema
+*/
+qreal BorderInset::minRowsHeight() {
+	return(5.0);
+}
+
+/**
 	Methode recalculant les rectangles composant le cadre et le cartouche en
 	fonction des attributs de taille
 */
 void BorderInset::updateRectangles() {
 	// rectangle delimitant le schema
-	QRectF previous_border = border;
-	border = QRectF(0, 0, nb_columns * columns_width, columns_height);
-	if (border != previous_border) emit(borderChanged(previous_border, border));
+	QRectF previous_diagram = diagram;
+	diagram = QRectF(0, 0, diagramWidth(), diagramHeight());
+	if (diagram != previous_diagram) emit(borderChanged(previous_diagram, diagram));
 	
 	// rectangles relatifs au cartouche
-	inset        = QRectF(border.bottomLeft().x(), border.bottomLeft().y(), inset_width, inset_height);
+	inset        = QRectF(diagram.bottomLeft().x(), diagram.bottomLeft().y(), inset_width, inset_height);
 	inset_author = QRectF(inset.topLeft(), QSizeF(2.0 * inset_width / 9.0, 0.5 * inset_height));
 	inset_date   = QRectF(inset_author.bottomLeft(), inset_author.size());
 	inset_title  = QRectF(inset_author.topRight(), QSizeF(5.0 * inset_width / 9.0, inset_height));
@@ -81,7 +116,7 @@ void BorderInset::updateRectangles() {
 */
 void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	// translate tous les rectangles
-	border      .translate(x, y);
+	diagram     .translate(x, y);
 	inset       .translate(x, y);
 	inset_author.translate(x, y);
 	inset_date  .translate(x, y);
@@ -95,22 +130,49 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	qp -> setBrush(Qt::NoBrush);
 	
 	// dessine le cadre
-	if (display_border) qp -> drawRect(border);
+	if (display_border) qp -> drawRect(diagram);
 	
 	qp -> setFont(QFont(QETApp::diagramTextsFont(), qp -> font().pointSize()));
 	
+	// dessine la case vide qui apparait des qu'il y a un entete
+	if (display_columns || display_rows) {
+		qp -> setBrush(Qt::white);
+		QRectF first_rectangle(
+			diagram.topLeft().x(),
+			diagram.topLeft().y(),
+			rows_header_width,
+			columns_header_height
+		);
+		qp -> drawRect(first_rectangle);
+	}
+	
 	// dessine la numerotation des colonnes
 	if (display_columns) {
-		qp -> setBrush(Qt::white);
 		for (int i = 1 ; i <= nb_columns ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
-				border.topLeft().x() + ((i - 1) * columns_width),
-				border.topLeft().y(),
+				diagram.topLeft().x() + (rows_header_width + ((i - 1) * columns_width)),
+				diagram.topLeft().y(),
 				columns_width,
 				columns_header_height
 			);
 			qp -> drawRect(numbered_rectangle);
 			qp -> drawText(numbered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(i));
+		}
+	}
+	
+	// dessine la numerotation des lignes
+	if (display_rows) {
+		QString row_string("A");
+		for (int i = 1 ; i <= nb_rows ; ++ i) {
+			QRectF lettered_rectangle = QRectF(
+				diagram.topLeft().x(),
+				diagram.topLeft().y() + (columns_header_height + ((i - 1) * rows_height)),
+				rows_header_width,
+				rows_height
+			);
+			qp -> drawRect(lettered_rectangle);
+			qp -> drawText(lettered_rectangle, Qt::AlignVCenter | Qt::AlignCenter, row_string);
+			row_string = incrementLetters(row_string);
 		}
 	}
 	
@@ -138,7 +200,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	qp -> restore();
 	
 	// annule la translation des rectangles
-	border      .translate(-x, -y);
+	diagram     .translate(-x, -y);
 	inset       .translate(-x, -y);
 	inset_author.translate(-x, -y);
 	inset_date  .translate(-x, -y);
@@ -151,47 +213,62 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	Ajoute une colonne.
 */
 void BorderInset::addColumn() {
-	++ nb_columns;
-	setInsetWidth(nb_columns * columns_width);
-	updateRectangles();
+	setNbColumns(nbColumns() + 1);
 }
 
 /**
-	Enleve une colonne. Il doit rester au moins 3 colonnes.
+	Enleve une colonne sans passer sous le minimum requis.
+	@see minNbColumns()
 */
 void BorderInset::removeColumn() {
-	if (nb_columns == min_nb_columns) return;
-	-- nb_columns;
-	setInsetWidth(nb_columns * columns_width);
-	updateRectangles();
+	setNbColumns(nbColumns() - 1);
+}
+
+/**
+	Ajoute une ligne.
+*/
+void BorderInset::addRow() {
+	setNbRows(nbRows() + 1);
+}
+
+/**
+	Enleve une ligne sans passer sous le minimum requis.
+	@see minNbRows()
+*/
+void BorderInset::removeRow() {
+	setNbRows(nbRows() - 1);
 }
 
 /**
 	Permet de changer le nombre de colonnes.
-	Si ce nombre de colonnes est inferieur au minimum requis, cette fonction ne
-	fait rien
+	Si ce nombre de colonnes est inferieur au minimum requis, c'est ce minimum
+	qui est utilise.
 	@param nb_c nouveau nombre de colonnes
 	@see minNbColumns()
 */
 void BorderInset::setNbColumns(int nb_c) {
-	if (nb_c < min_nb_columns) return;
-	nb_columns = nb_c;
-	setInsetWidth(nb_columns * columns_width);
-	updateRectangles();
+	if (nb_c == nbColumns()) return;
+	nb_columns = qMax(minNbColumns(), nb_c);
+	setInsetWidth(diagramWidth());
 }
 
 /**
-	Change la largeur des colonnes ; celle-ci doit rester comprise entre 10 et
-	200px.
+	Change la largeur des colonnes.
+	Si la largeur indiquee est inferieure au minimum requis, c'est ce minimum
+	qui est utilise.
+	@param new_cw nouvelle largeur des colonnes
+	@see minColumnsWidth()
 */
 void BorderInset::setColumnsWidth(const qreal &new_cw) {
-	columns_width = qBound(10.0, new_cw, 200.0);
-	updateRectangles();
+	if (new_cw == columnsWidth()) return;
+	columns_width = qMax(minColumnsWidth(), new_cw);
+	setInsetWidth(diagramWidth());
 }
 
 /**
 	Change la hauteur des en-tetes contenant les numeros de colonnes. Celle-ci
 	doit rester comprise entre 5 et 50 px.
+	@param new_chh nouvelle hauteur des en-tetes de colonnes
 */
 void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
 	columns_header_height = qBound(5.0, new_chh, 50.0);
@@ -199,29 +276,66 @@ void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
 }
 
 /**
-	Change la hauteur des colonnes (et donc du cadre). Cette hauteur doit
-	rester superieure a la hauteur des en-tetes de colonnes + 20px.
+	Permet de changer le nombre de lignes.
+	Si ce nombre de lignes est inferieur au minimum requis, cette fonction ne
+	fait rien
+	@param nb_r nouveau nombre de lignes
+	@see minNbRows()
 */
-void BorderInset::setColumnsHeight(const qreal &new_ch) {
-	columns_height = qMax(columns_header_height + min_columns_height, new_ch);
+void BorderInset::setNbRows(int nb_r) {
+	if (nb_r == nbRows()) return;
+	nb_rows = qMax(minNbRows(), nb_r);
+	setInsetWidth(diagramWidth());
 	updateRectangles();
 }
 
 /**
-	Change la largeur du cartouche. Cette largeur doit rester comprise entre
-	100px et la largeur du cartouche
+	Change la hauteur des lignes.
+	Si la hauteur indiquee est inferieure au minimum requis, c'est ce minimum
+	qui est utilise.
+	@param rh nouvelle hauteur des lignes
+	@see minRowsHeight()
+*/
+void BorderInset::setRowsHeight(const qreal &new_rh) {
+	if (new_rh == rowsHeight()) return;
+	rows_height = qMax(minRowsHeight(), new_rh);
+	updateRectangles();
+}
+
+/**
+	Change la largeur des en-tetes contenant les numeros de lignes. Celle-ci
+	doit rester comprise entre 5 et 50 px.
+	@param new_rhw nouvelle largeur des en-tetes des lignes
+*/
+void BorderInset::setRowsHeaderWidth(const qreal &new_rhw) {
+	rows_header_width = qBound(5.0, new_rhw, 50.0);
+	updateRectangles();
+}
+
+/**
+	Cette methode essaye de se rapprocher le plus possible de la hauteur donnee
+	en parametre en modifiant le nombre de lignes en cours.
+*/
+void BorderInset::setDiagramHeight(const qreal &height) {
+	// taille des lignes a utiliser = rows_height
+	setNbColumns(ceil(height / rows_height));
+}
+
+/**
+	Change la largeur du cartouche. Cette largeur sera restreinte a celle du
+	schema.
 */
 void BorderInset::setInsetWidth(const qreal &new_iw) {
-	inset_width = qMax(100.0, qMin(nb_columns * columns_width, new_iw));
+	inset_width = qMin(diagramWidth(), new_iw);
 	updateRectangles();
 }
 
 /**
-	Change la hauteur du cartouche. Cette largeur doit rester comprise entre
-	20px et la hauteur du cartouche.
+	Change la hauteur du cartouche. Cette hauteur doit rester comprise entre
+	20px et la hauteur du schema.
 */
 void BorderInset::setInsetHeight(const qreal &new_ih) {
-	inset_height = qMax(20.0, qMin(columns_height, new_ih));
+	inset_height = qMax(20.0, qMin(diagramHeight(), new_ih));
 	updateRectangles();
 }
 
@@ -230,5 +344,22 @@ void BorderInset::setInsetHeight(const qreal &new_ih) {
 	que le schema
 */
 void BorderInset::adjustInsetToColumns() {
-	setInsetWidth(nbColumn() * columnsWidth());
+	setInsetWidth(diagramWidth());
+}
+
+QString BorderInset::incrementLetters(const QString &string) {
+	if (string.isEmpty()) {
+		return("A");
+	} else {
+		// separe les digits precedents du dernier digit
+		QString first_digits(string.left(string.count() - 1));
+		QChar last_digit(string.at(string.count() - 1));
+		if (last_digit != 'Z') {
+			// incremente le dernier digit
+			last_digit = last_digit.toAscii() + 1;
+			return(first_digits + QString(last_digit));
+		} else {
+			return(incrementLetters(first_digits) + "A");
+		}
+	}
 }

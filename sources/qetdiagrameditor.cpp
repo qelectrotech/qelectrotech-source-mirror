@@ -194,8 +194,8 @@ void QETDiagramEditor::actions() {
 	add_text          = new QAction(QIcon(":/ico/textfield.png"),  tr("Ajouter un champ de texte"),            this);
 	add_column        = new QAction(QIcon(":/ico/add_col.png"),    tr("Ajouter une colonne"),                  this);
 	remove_column     = new QAction(QIcon(":/ico/remove_col.png"), tr("Enlever une colonne"),                  this);
-	expand_diagram    = new QAction(                               tr("Agrandir le sch\351ma"),                this);
-	shrink_diagram    = new QAction(                               tr("R\351tr\351cir le sch\351ma"),          this);
+	add_row           = new QAction(QIcon(":/ico/add_row.png"),    tr("Ajouter une ligne"),                    this);
+	remove_row        = new QAction(QIcon(":/ico/remove_row.png"), tr("Enlever une ligne"),                    this);
 	
 	zoom_in           = new QAction(QIcon(":/ico/viewmag+.png"),   tr("Zoom avant"),                           this);
 	zoom_out          = new QAction(QIcon(":/ico/viewmag-.png"),   tr("Zoom arri\350re"),                      this);
@@ -281,8 +281,8 @@ void QETDiagramEditor::actions() {
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche"));
 	add_column        -> setStatusTip(tr("Ajoute une colonne au sch\351ma"));
 	remove_column     -> setStatusTip(tr("Enl\350ve une colonne au sch\351ma"));
-	expand_diagram    -> setStatusTip(tr("Agrandit le sch\351ma en hauteur"));
-	shrink_diagram    -> setStatusTip(tr("R\351tr\351cit le sch\351ma en hauteur"));
+	add_row           -> setStatusTip(tr("Agrandit le sch\351ma en hauteur"));
+	remove_row        -> setStatusTip(tr("R\351tr\351cit le sch\351ma en hauteur"));
 	
 	zoom_in           -> setStatusTip(tr("Agrandit le sch\351ma"));
 	zoom_out          -> setStatusTip(tr("R\351tr\351cit le sch\351ma"));
@@ -356,8 +356,8 @@ void QETDiagramEditor::actions() {
 	connect(add_text,         SIGNAL(triggered()), this,       SLOT(slot_addText())             );
 	connect(add_column,       SIGNAL(triggered()), this,       SLOT(slot_addColumn())           );
 	connect(remove_column,    SIGNAL(triggered()), this,       SLOT(slot_removeColumn())        );
-	connect(expand_diagram,   SIGNAL(triggered()), this,       SLOT(slot_expand())              );
-	connect(shrink_diagram,   SIGNAL(triggered()), this,       SLOT(slot_shrink())              );
+	connect(add_row,          SIGNAL(triggered()), this,       SLOT(slot_addRow())              );
+	connect(remove_row,       SIGNAL(triggered()), this,       SLOT(slot_removeRow())           );
 }
 
 /**
@@ -419,8 +419,8 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(infos_diagram);
 	menu_edition -> addAction(add_column);
 	menu_edition -> addAction(remove_column);
-	menu_edition -> addAction(expand_diagram);
-	menu_edition -> addAction(shrink_diagram);
+	menu_edition -> addAction(add_row);
+	menu_edition -> addAction(remove_row);
 	
 	// menu Configurer > Afficher
 	QMenu *display_toolbars = createPopupMenu();
@@ -767,8 +767,8 @@ void QETDiagramEditor::slot_updateActions() {
 	add_text         -> setEnabled(opened_document);
 	add_column       -> setEnabled(opened_document);
 	remove_column    -> setEnabled(opened_document);
-	expand_diagram   -> setEnabled(opened_document);
-	shrink_diagram   -> setEnabled(opened_document);
+	add_row   -> setEnabled(opened_document);
+	remove_row   -> setEnabled(opened_document);
 	
 	// affiche les actions correspondant au diagram view en cours
 	if (sv) undo_group.setActiveStack(&(sv -> diagram() -> undoStack()));
@@ -957,45 +957,45 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 	Edite les informations du schema en cours
 */
 void QETDiagramEditor::slot_editInfos() {
-	DiagramView *sv = currentDiagram();
-	if (!sv) return;
-	sv -> dialogEditInfos();
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> dialogEditInfos();
+	}
 }
 
 /**
 	Ajoute une colonne au schema en cours
 */
 void QETDiagramEditor::slot_addColumn() {
-	DiagramView *sv = currentDiagram();
-	if (!sv) return;
-	sv -> addColumn();
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addColumn();
+	}
 }
 
 /**
 	Enleve une colonne au schema en cours
 */
 void QETDiagramEditor::slot_removeColumn() {
-	DiagramView *sv = currentDiagram();
-	if (!sv) return;
-	sv -> removeColumn();
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> removeColumn();
+	}
 }
 
 /**
 	Allonge le schema en cours en hauteur
 */
-void QETDiagramEditor::slot_expand() {
-	DiagramView *sv = currentDiagram();
-	if (!sv) return;
-	sv -> expand();
+void QETDiagramEditor::slot_addRow() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> addRow();
+	}
 }
 
 /**
 	Retrecit le schema en cours en hauteur
 */
-void QETDiagramEditor::slot_shrink() {
-	DiagramView *sv = currentDiagram();
-	if (!sv) return;
-	sv -> shrink();
+void QETDiagramEditor::slot_removeRow() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> removeRow();
+	}
 }
 
 /**
