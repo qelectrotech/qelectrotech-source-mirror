@@ -52,9 +52,9 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	diagram_scene -> border_and_inset.displayInset(false);
 	
 	diagram_view = new QGraphicsView(diagram_scene);
-	diagram_view -> setMaximumSize(
-		static_cast<int>((5 * diagram_scene -> border_and_inset.columnsWidth()) + (3 * Diagram::margin)),
-		300
+	diagram_view -> setMinimumSize(
+		qRound(diagram_scene -> border_and_inset.diagramWidth()  + (3 * Diagram::margin)),
+		qRound(diagram_scene -> border_and_inset.diagramHeight() + (3 * Diagram::margin))
 	);
 	diagram_view -> setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	diagram_view -> setResizeAnchor(QGraphicsView::AnchorUnderMouse);
@@ -82,15 +82,16 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	grid_layout -> addWidget(sb_hotspot_x,                     4, 1);
 	grid_layout -> addWidget(new QLabel(tr("Ordonn\351e :")),  5, 0);
 	grid_layout -> addWidget(sb_hotspot_y,                     5, 1);
+	grid_layout -> setRowStretch(6, 500);
 	grid_layout -> setSpacing(3);
 	
 	QHBoxLayout *hlayout = new QHBoxLayout();
-	hlayout -> addLayout(grid_layout);
-	hlayout -> addWidget(diagram_view);
+	hlayout -> addLayout(grid_layout,    1);
+	hlayout -> addWidget(diagram_view, 500);
 	
 	vlayout = new QVBoxLayout(this);
 	vlayout -> setSpacing(0);
-	vlayout -> addLayout(hlayout);
+	vlayout -> addLayout(hlayout, 1);
 	
 	updateScene();
 	updateHotspotLimits();

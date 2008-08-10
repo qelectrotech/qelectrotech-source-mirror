@@ -538,7 +538,6 @@ void ElementScene::slot_editSizeHotSpot() {
 	// cree un dialogue
 	QDialog dialog_sh;
 	dialog_sh.setModal(true);
-	dialog_sh.setMinimumSize(400, 230);
 	dialog_sh.setWindowTitle(tr("\311diter la taille et le point de saisie"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_sh);
 	
