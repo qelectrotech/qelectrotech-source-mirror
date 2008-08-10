@@ -571,7 +571,7 @@ void DiagramView::dialogEditInfos() {
 	columns_count -> setValue(columns_count_value);
 	
 	QSpinBox *columns_width  = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(BorderInset::minColumnsWidth());
+	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
 	columns_width -> setSingleStep(10);
 	columns_width -> setValue(columns_width_value);
 	columns_width -> setPrefix(tr("\327"));
@@ -584,7 +584,7 @@ void DiagramView::dialogEditInfos() {
 	rows_count -> setValue(rows_count_value);
 	
 	QSpinBox *rows_height  = new QSpinBox(diagram_size_box);
-	rows_height -> setMinimum(BorderInset::minRowsHeight());
+	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
 	rows_height -> setSingleStep(10);
 	rows_height -> setValue(rows_height_value);
 	rows_height -> setPrefix(tr("\327"));

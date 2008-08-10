@@ -34,7 +34,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	// recupere les dimensions du schema
 	int columns_count_value  = settings.value("diagrameditor/defaultcols", 15).toInt();
 	int columns_width_value  = qRound(settings.value("diagrameditor/defaultcolsize",  50.0).toDouble());
-	int rows_count_value     = settings.value("diagrameditor/defaultrows",  6).toDouble();
+	int rows_count_value     = settings.value("diagrameditor/defaultrows",  6).toInt();
 	int rows_height_value    = qRound(settings.value("diagrameditor/defaultrowsize",  80.0).toDouble());
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
@@ -60,7 +60,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	columns_count -> setValue(columns_count_value);
 	
 	columns_width = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(BorderInset::minColumnsWidth());
+	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
 	columns_width -> setSingleStep(10);
 	columns_width -> setValue(columns_width_value);
 	columns_width -> setPrefix(tr("\327"));
@@ -73,7 +73,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	rows_count -> setValue(rows_count_value);
 	
 	rows_height  = new QSpinBox(diagram_size_box);
-	rows_height -> setMinimum(BorderInset::minRowsHeight());
+	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
 	rows_height -> setSingleStep(10);
 	rows_height -> setValue(rows_height_value);
 	rows_height -> setPrefix(tr("\327"));
