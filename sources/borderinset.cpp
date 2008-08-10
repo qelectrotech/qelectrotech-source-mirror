@@ -318,7 +318,7 @@ void BorderInset::setRowsHeaderWidth(const qreal &new_rhw) {
 */
 void BorderInset::setDiagramHeight(const qreal &height) {
 	// taille des lignes a utiliser = rows_height
-	setNbColumns(ceil(height / rows_height));
+	setNbRows(ceil(height / rows_height));
 }
 
 /**
