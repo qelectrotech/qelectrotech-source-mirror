@@ -40,6 +40,8 @@ INCLUDEPATH += sources sources/editor
 # Fichiers sources
 HEADERS += sources/aboutqet.h \
            sources/borderinset.h \
+           sources/borderproperties.h \
+           sources/borderpropertieswidget.h \
            sources/conductor.h \
            sources/conductorprofile.h \
            sources/conductorproperties.h \
@@ -109,6 +111,8 @@ HEADERS += sources/aboutqet.h \
            sources/editor/textfieldeditor.h
 SOURCES += sources/aboutqet.cpp \
            sources/borderinset.cpp \
+           sources/borderproperties.cpp \
+           sources/borderpropertieswidget.cpp \
            sources/conductor.cpp \
            sources/conductorprofile.cpp \
            sources/conductorproperties.cpp \

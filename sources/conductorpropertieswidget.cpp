@@ -47,6 +47,7 @@ void ConductorPropertiesWidget::buildInterface() {
 	setMinimumSize(380, 280);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
+	main_layout -> setContentsMargins(0, 0, 0, 0);
 	
 	QGroupBox *groupbox = new QGroupBox(tr("Type de conducteur"));
 	main_layout -> addWidget(groupbox);

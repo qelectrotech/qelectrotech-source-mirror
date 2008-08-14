@@ -18,6 +18,7 @@
 #include <QPainter>
 #include "borderinset.h"
 #include "qetapp.h"
+#include "qetdiagrameditor.h"
 #include "math.h"
 
 /**
@@ -26,22 +27,13 @@
 	@param parent QObject parent de ce BorderInset
 */
 BorderInset::BorderInset(QObject *parent) : QObject(parent) {
-	// initialise les dimensions des colonnes (ainsi que la largeur du cartouche)
-	columns_header_height = 20.0;
-	setNbColumns   (QETApp::settings().value("diagrameditor/defaultcols", 15).toInt());
-	setColumnsWidth(QETApp::settings().value("diagrameditor/defaultcolsize", 50.0).toDouble());
-	
-	// initialise les dimensions des lignes
-	rows_header_width     = 20.0;
-	setNbRows(QETApp::settings().value("diagrameditor/defaultrows", 6).toInt());
-	setRowsHeight(QETApp::settings().value("diagrameditor/defaultrowsize", 80.0).toDouble());
+	// dimensions par defaut du schema
+	importBorder(QETDiagramEditor::defaultBorderProperties());
 	
 	// hauteur du cartouche
 	inset_height          = 50.0;
 	
 	display_inset         = true;
-	display_columns       = true;
-	display_rows          = true;
 	display_border        = true;
 	updateRectangles();
 	
@@ -87,6 +79,60 @@ int BorderInset::minNbRows() {
 */
 qreal BorderInset::minRowsHeight() {
 	return(5.0);
+}
+
+/**
+	@return les proprietes du cartouches
+*/
+InsetProperties BorderInset::exportInset() {
+	InsetProperties ip;
+	ip.author = bi_author;
+	ip.date = bi_date;
+	ip.title = bi_title;
+	ip.folio = bi_folio;
+	ip.filename = bi_filename;
+	return(ip);
+}
+
+/**
+	@param ip les nouvelles proprietes du cartouche
+*/
+void BorderInset::importInset(const InsetProperties &ip) {
+	bi_author = ip.author;
+	bi_date = ip.date;
+	bi_title = ip.title;
+	bi_folio = ip.folio;
+	bi_filename = ip.filename;
+}
+
+/**
+	@return les proprietes de la bordure
+*/
+BorderProperties BorderInset::exportBorder() {
+	BorderProperties bp;
+	bp.columns_count = nbColumns();
+	bp.columns_width = columnsWidth();
+	bp.columns_header_height = columnsHeaderHeight();
+	bp.display_columns = columnsAreDisplayed();
+	bp.rows_count = nbRows();
+	bp.rows_height = rowsHeight();
+	bp.rows_header_width = rowsHeaderWidth();
+	bp.display_rows = rowsAreDisplayed();
+	return(bp);
+}
+
+/**
+	@param ip les nouvelles proprietes de la bordure
+*/
+void BorderInset::importBorder(const BorderProperties &bp) {
+	setColumnsHeaderHeight(bp.columns_header_height);
+	setNbColumns(bp.columns_count);
+	setColumnsWidth(bp.columns_width);
+	displayColumns(bp.display_columns);
+	setRowsHeaderWidth(bp.rows_header_width);
+	setNbRows(bp.rows_count);
+	setRowsHeight(bp.rows_height);
+	displayRows(bp.display_rows);
 }
 
 /**

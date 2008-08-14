@@ -18,6 +18,7 @@
 #ifndef BORDERINSET_H
 #define BORDERINSET_H
 #include "insetproperties.h"
+#include "borderproperties.h"
 #include <QObject>
 #include <QRectF>
 #include <QDate>
@@ -135,25 +136,10 @@ class BorderInset : public QObject {
 	/// @param filename le nouveau contenu du champ "Fichier"
 	void setFileName           (const QString &filename) { bi_filename     = filename; }
 	
-	/// @return les proprietes du cartouches
-	InsetProperties exportInset() {
-		InsetProperties ip;
-		ip.author = bi_author;
-		ip.date = bi_date;
-		ip.title = bi_title;
-		ip.folio = bi_folio;
-		ip.filename = bi_filename;
-		return(ip);
-	}
-	
-	/// @param ip les nouvelles proprietes du cartouche
-	void importInset(const InsetProperties &ip) {
-		bi_author = ip.author;
-		bi_date = ip.date;
-		bi_title = ip.title;
-		bi_folio = ip.folio;
-		bi_filename = ip.filename;
-	}
+	InsetProperties exportInset();
+	void importInset(const InsetProperties &);
+	BorderProperties exportBorder();
+	void importBorder(const BorderProperties &);
 	
 	// methodes d'acces en ecriture aux options
 	/// @param di true pour afficher le cartouche, false sinon

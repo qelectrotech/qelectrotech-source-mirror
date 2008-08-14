@@ -18,6 +18,7 @@
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
+#include "borderproperties.h"
 #include "insetproperties.h"
 class DiagramView;
 class ElementsPanelWidget;
@@ -48,6 +49,7 @@ class QETDiagramEditor : public QMainWindow {
 	QList<QString> editedFiles() const;
 	DiagramView *viewForFile(const QString &) const;
 	static InsetProperties defaultInsetProperties();
+	static BorderProperties defaultBorderProperties();
 	
 	protected:
 	void actions();

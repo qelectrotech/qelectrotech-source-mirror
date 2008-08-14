@@ -1,0 +1,54 @@
+/*
+	Copyright 2006-2008 Xavier Guerrin
+	This file is part of QElectroTech.
+	
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+	
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+	
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
+#ifndef BORDER_PROPERTIES_WIDGET_H
+#define BORDER_PROPERTIES_WIDGET_H
+#include <QWidget>
+#include "borderproperties.h"
+class QSpinBox;
+/**
+	Cette classe represente un widget permettant d'editer les dimensions et les
+	options d'affichage d'un schema, cartouche non inclus.
+	@see InsetPropertiesWidget
+*/
+class BorderPropertiesWidget : public QWidget {
+	Q_OBJECT
+	
+	// constructeurs, destructeur
+	public:
+	BorderPropertiesWidget(const BorderProperties &, QWidget * = 0);
+	virtual ~BorderPropertiesWidget();
+	private:
+	BorderPropertiesWidget(const BorderPropertiesWidget &);
+	
+	// methodes
+	public:
+	const BorderProperties &borderProperties();
+	
+	private:
+	void setEditedBorder(const BorderProperties &);
+	void build();
+	
+	// attributs
+	private:
+	BorderProperties border_;       ///< Proprietes editees
+	QSpinBox *columns_count;        ///< Widget d'edition du nombre de colonnes
+	QSpinBox *columns_width;        ///< Widget d'edition de la largeur des colonnes
+	QSpinBox *rows_count;           ///< Widget d'edition du nombre de lignes
+	QSpinBox *rows_height;          ///< Widget d'edition de la hauteur des lignes
+};
+#endif

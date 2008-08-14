@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "configpages.h"
+#include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "insetpropertieswidget.h"
 #include "qetapp.h"
@@ -31,11 +32,17 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	// acces a la configuration de QElectroTech
 	QSettings &settings = QETApp::settings();
 	
-	// recupere les dimensions du schema
-	int columns_count_value  = settings.value("diagrameditor/defaultcols", 15).toInt();
-	int columns_width_value  = qRound(settings.value("diagrameditor/defaultcolsize",  50.0).toDouble());
-	int rows_count_value     = settings.value("diagrameditor/defaultrows",  6).toInt();
-	int rows_height_value    = qRound(settings.value("diagrameditor/defaultrowsize",  80.0).toDouble());
+	// dimensions par defaut d'un schema
+	bpw = new BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
+	
+	// proprietes par defaut d'un cartouche
+	ipw = new InsetPropertiesWidget(QETDiagramEditor::defaultInsetProperties(), true);
+	
+	// proprietes par defaut des conducteurs
+	ConductorProperties cp;
+	cp.fromSettings(settings, "diagrameditor/defaultconductor");
+	cpw = new ConductorPropertiesWidget(cp);
+	cpw -> setContentsMargins(0, 0, 0, 0);
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	
@@ -49,52 +56,9 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	QHBoxLayout *hlayout1 = new QHBoxLayout();
 	QVBoxLayout *vlayout2 = new QVBoxLayout();
 	
-	QGroupBox *diagram_size_box = new QGroupBox(tr("Dimensions du sch\351ma"));
-	diagram_size_box -> setMinimumWidth(300);
-	QGridLayout *diagram_size_box_layout = new QGridLayout(diagram_size_box);
-	
-	QLabel *ds1 = new QLabel(tr("Colonnes :"));
-	
-	columns_count = new QSpinBox(diagram_size_box);
-	columns_count -> setMinimum(BorderInset::minNbColumns());
-	columns_count -> setValue(columns_count_value);
-	
-	columns_width = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
-	columns_width -> setSingleStep(10);
-	columns_width -> setValue(columns_width_value);
-	columns_width -> setPrefix(tr("\327"));
-	columns_width -> setSuffix(tr("px"));
-	
-	QLabel *ds2 = new QLabel(tr("Lignes :"));
-	
-	rows_count = new QSpinBox(diagram_size_box);
-	rows_count -> setMinimum(BorderInset::minNbRows());
-	rows_count -> setValue(rows_count_value);
-	
-	rows_height  = new QSpinBox(diagram_size_box);
-	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
-	rows_height -> setSingleStep(10);
-	rows_height -> setValue(rows_height_value);
-	rows_height -> setPrefix(tr("\327"));
-	rows_height -> setSuffix(tr("px"));
-	
-	diagram_size_box_layout -> addWidget(ds1,            0, 0);
-	diagram_size_box_layout -> addWidget(columns_count,  0, 1);
-	diagram_size_box_layout -> addWidget(columns_width,  0, 2);
-	diagram_size_box_layout -> addWidget(ds2,            1, 0);
-	diagram_size_box_layout -> addWidget(rows_count,     1, 1);
-	diagram_size_box_layout -> addWidget(rows_height,    1, 2);
-	
-	ipw = new InsetPropertiesWidget(QETDiagramEditor::defaultInsetProperties(), true, this);
-	
-	// proprietes par defaut des conducteurs
-	ConductorProperties cp;
-	cp.fromSettings(settings, "diagrameditor/defaultconductor");
-	cpw = new ConductorPropertiesWidget(cp);
-	
-	vlayout2 -> addWidget(diagram_size_box);
+	vlayout2 -> addWidget(bpw);
 	vlayout2 -> addWidget(ipw);
+	vlayout2 -> setSpacing(5);
 	hlayout1 -> addLayout(vlayout2);
 	hlayout1 -> addWidget(cpw);
 	vlayout1 -> addLayout(hlayout1);
@@ -114,10 +78,11 @@ void NewDiagramPage::applyConf() {
 	QSettings &settings = QETApp::settings();
 	
 	// dimensions des nouveaux schemas
-	settings.setValue("diagrameditor/defaultcols",    columns_count -> value());
-	settings.setValue("diagrameditor/defaultcolsize", columns_width -> value());
-	settings.setValue("diagrameditor/defaultrows",    rows_count    -> value());
-	settings.setValue("diagrameditor/defaultrowsize", rows_height   -> value());
+	BorderProperties border = bpw -> borderProperties();
+	settings.setValue("diagrameditor/defaultcols",    border.columns_count);
+	settings.setValue("diagrameditor/defaultcolsize", border.columns_width);
+	settings.setValue("diagrameditor/defaultrows",    border.rows_count);
+	settings.setValue("diagrameditor/defaultrowsize", border.rows_height);
 	
 	// proprietes du cartouche
 	InsetProperties inset = ipw-> insetProperties();

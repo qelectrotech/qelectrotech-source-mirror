@@ -24,6 +24,7 @@
 #include "conductorpropertieswidget.h"
 #include "configdialog.h"
 #include "recentfiles.h"
+
 /**
 	constructeur
 	@param files Liste de fichiers a ouvrir
@@ -1087,6 +1088,27 @@ InsetProperties QETDiagramEditor::defaultInsetProperties() {
 		def.date = QDate::fromString(settings_date, "yyyyMMdd");
 		def.useDate = InsetProperties::UseDateValue;
 	}
+	
+	return(def);
+}
+
+/**
+	@return Les dimensions par defaut d'un schema
+*/
+BorderProperties QETDiagramEditor::defaultBorderProperties() {
+	// accede a la configuration de l'application
+	QSettings &settings = QETApp::settings();
+	
+	BorderProperties def;
+	def.columns_count         = settings.value("diagrameditor/defaultcols", 15).toInt();
+	def.columns_width         = qRound(settings.value("diagrameditor/defaultcolsize",  50.0).toDouble());
+	def.columns_header_height = 20.0;
+	def.display_columns       = true;
+	
+	def.rows_count            = settings.value("diagrameditor/defaultrows",  6).toInt();
+	def.rows_height           = qRound(settings.value("diagrameditor/defaultrowsize",  80.0).toDouble());
+	def.rows_header_width     = 20.0;
+	def.display_rows          = true;
 	
 	return(def);
 }

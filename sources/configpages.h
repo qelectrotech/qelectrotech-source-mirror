@@ -18,6 +18,7 @@
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
 #include <QtGui>
+class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class InsetPropertiesWidget;
 
@@ -63,10 +64,7 @@ class NewDiagramPage : public ConfigPage {
 	
 	// attributs
 	public:
-	QSpinBox *columns_count;        ///< Widget d'edition du nombre par defaut de colonnes
-	QSpinBox *columns_width;        ///< Widget d'edition de la largeur par defaut des colonnes
-	QSpinBox *rows_count;           ///< Widget d'edition du nombre par defaut de lignes
-	QSpinBox *rows_height;          ///< Widget d'edition de la hauteur par defaut des lignes
+	BorderPropertiesWidget *bpw;    ///< Widget d'edition des dimensions du schema
 	InsetPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
 	ConductorPropertiesWidget *cpw; ///< Widget d'edition des proprietes par defaut des conducteurs
 };

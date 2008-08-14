@@ -24,6 +24,7 @@
 #include "diagramcommands.h"
 #include "conductorpropertieswidget.h"
 #include "insetpropertieswidget.h"
+#include "borderpropertieswidget.h"
 
 /**
 	Constructeur
@@ -547,61 +548,17 @@ void DiagramView::dialogPrint() {
 	Edite les informations du schema.
 */
 void DiagramView::dialogEditInfos() {
-	// recupere le cartouche du schema
-	InsetProperties inset = scene -> border_and_inset.exportInset();
-	
-	// recupere les dimensions du schema
-	int columns_count_value  = scene -> border_and_inset.nbColumns();
-	int columns_width_value  = qRound(scene -> border_and_inset.columnsWidth());
-	int rows_count_value     = scene -> border_and_inset.nbRows();
-	int rows_height_value    = qRound(scene -> border_and_inset.rowsHeight());
+	// recupere le cartouche et les dimensions du schema
+	InsetProperties  inset  = scene -> border_and_inset.exportInset();
+	BorderProperties border = scene -> border_and_inset.exportBorder();
 	
 	// construit le dialogue
 	QDialog popup;
 	popup.setMinimumWidth(400);
 	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma"));
 	
-	QGroupBox *diagram_size_box = new QGroupBox(tr("Dimensions du sch\351ma"), &popup);
-	QGridLayout diagram_size_box_layout(diagram_size_box);
-	
-	QLabel *ds1 = new QLabel(tr("Colonnes :"));
-	
-	QSpinBox *columns_count  = new QSpinBox(diagram_size_box);
-	columns_count -> setMinimum(BorderInset::minNbColumns());
-	columns_count -> setValue(columns_count_value);
-	
-	QSpinBox *columns_width  = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
-	columns_width -> setSingleStep(10);
-	columns_width -> setValue(columns_width_value);
-	columns_width -> setPrefix(tr("\327"));
-	columns_width -> setSuffix(tr("px"));
-	
-	QLabel *ds2 = new QLabel(tr("Lignes :"));
-	
-	QSpinBox *rows_count = new QSpinBox(diagram_size_box);
-	rows_count -> setMinimum(BorderInset::minNbRows());
-	rows_count -> setValue(rows_count_value);
-	
-	QSpinBox *rows_height  = new QSpinBox(diagram_size_box);
-	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
-	rows_height -> setSingleStep(10);
-	rows_height -> setValue(rows_height_value);
-	rows_height -> setPrefix(tr("\327"));
-	rows_height -> setSuffix(tr("px"));
-	
-	diagram_size_box_layout.addWidget(ds1,            0, 0);
-	diagram_size_box_layout.addWidget(columns_count,  0, 1);
-	diagram_size_box_layout.addWidget(columns_width,  0, 2);
-	diagram_size_box_layout.addWidget(ds2,            1, 0);
-	diagram_size_box_layout.addWidget(rows_count,     1, 1);
-	diagram_size_box_layout.addWidget(rows_height,    1, 2);
-	diagram_size_box_layout.setColumnStretch(0, 1);
-	diagram_size_box_layout.setColumnStretch(1, 1);
-	diagram_size_box_layout.setColumnStretch(2, 1);
-	diagram_size_box_layout.setColumnStretch(3, 500);
-	
-	InsetPropertiesWidget *inset_infos = new InsetPropertiesWidget(inset, false, &popup);
+	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, &popup);
+	InsetPropertiesWidget  *inset_infos  = new InsetPropertiesWidget(inset, false, &popup);
 	
 	// boutons
 	QDialogButtonBox boutons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -610,31 +567,26 @@ void DiagramView::dialogEditInfos() {
 	
 	// ajout dans une disposition verticale
 	QVBoxLayout layout_v(&popup);
-	layout_v.addWidget(diagram_size_box);
+	layout_v.addWidget(border_infos);
 	layout_v.addWidget(inset_infos);
 	layout_v.addStretch();
 	layout_v.addWidget(&boutons);
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted) {
-		InsetProperties new_inset = inset_infos -> insetProperties();
-		
+		InsetProperties new_inset   = inset_infos  -> insetProperties();
+		BorderProperties new_border = border_infos -> borderProperties();
 		// s'il y a des modifications au cartouche
 		if (new_inset != inset) {
 			scene -> undoStack().push(new ChangeInsetCommand(scene, inset, new_inset));
 		}
 		
 		// s'il y a des modifications aux dimensions du schema
-		if (
-			columns_count_value  != columns_count  -> value() ||\
-			columns_width_value  != columns_width  -> value() ||\
-			rows_count_value     != rows_count     -> value() ||\
-			rows_height_value    != rows_height    -> value()
-		) {
+		if (new_border != border) {
 			ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-			cbc -> columnsCountDifference  = columns_count  -> value() - columns_count_value;
-			cbc -> columnsWidthDifference  = columns_width  -> value() - columns_width_value;
-			cbc -> rowsCountDifference     = rows_count     -> value() - rows_count_value;
-			cbc -> rowsHeightDifference    = rows_height    -> value() - rows_height_value;
+			cbc -> columnsCountDifference  = new_border.columns_count - border.columns_count;
+			cbc -> columnsWidthDifference  = new_border.columns_width - border.columns_width;
+			cbc -> rowsCountDifference     = new_border.rows_count    - border.rows_count;
+			cbc -> rowsHeightDifference    = new_border.rows_height   - border.rows_height;
 			scene -> undoStack().push(cbc);
 		}
 	}
