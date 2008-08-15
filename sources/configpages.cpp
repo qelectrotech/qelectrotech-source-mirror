@@ -79,10 +79,12 @@ void NewDiagramPage::applyConf() {
 	
 	// dimensions des nouveaux schemas
 	BorderProperties border = bpw -> borderProperties();
-	settings.setValue("diagrameditor/defaultcols",    border.columns_count);
-	settings.setValue("diagrameditor/defaultcolsize", border.columns_width);
-	settings.setValue("diagrameditor/defaultrows",    border.rows_count);
-	settings.setValue("diagrameditor/defaultrowsize", border.rows_height);
+	settings.setValue("diagrameditor/defaultcols",        border.columns_count);
+	settings.setValue("diagrameditor/defaultcolsize",     border.columns_width);
+	settings.setValue("diagrameditor/defaultdisplaycols", border.display_columns);
+	settings.setValue("diagrameditor/defaultrows",        border.rows_count);
+	settings.setValue("diagrameditor/defaultrowsize",     border.rows_height);
+	settings.setValue("diagrameditor/defaultdisplayrows", border.display_rows);
 	
 	// proprietes du cartouche
 	InsetProperties inset = ipw-> insetProperties();

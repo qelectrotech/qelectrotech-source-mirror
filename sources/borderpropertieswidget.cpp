@@ -43,10 +43,12 @@ BorderPropertiesWidget::~BorderPropertiesWidget() {
 	@return the border properties edited and modified by
 */
 const BorderProperties &BorderPropertiesWidget::borderProperties() {
-	border_.columns_count = columns_count -> value();
-	border_.columns_width = columns_width -> value();
-	border_.rows_count    = rows_count    -> value();
-	border_.rows_height   = rows_height   -> value();
+	border_.columns_count   = columns_count   -> value();
+	border_.columns_width   = columns_width   -> value();
+	border_.display_columns = display_columns -> isChecked();
+	border_.rows_count      = rows_count      -> value();
+	border_.rows_height     = rows_height     -> value();
+	border_.display_rows    = display_rows    -> isChecked();
 	return(border_);
 }
 
@@ -56,10 +58,12 @@ const BorderProperties &BorderPropertiesWidget::borderProperties() {
 */
 void BorderPropertiesWidget::setEditedBorder(const BorderProperties &bp) {
 	border_ = bp;
-	columns_count -> setValue(border_.columns_count);
-	columns_width -> setValue(border_.columns_width);
-	rows_count    -> setValue(border_.rows_count);
-	rows_height   -> setValue(border_.rows_height);
+	columns_count   -> setValue(border_.columns_count);
+	columns_width   -> setValue(border_.columns_width);
+	display_columns -> setChecked(border_.display_columns);
+	rows_count      -> setValue(border_.rows_count);
+	rows_height     -> setValue(border_.rows_height);
+	display_rows    -> setChecked(border_.display_rows);
 }
 
 /**
@@ -84,6 +88,8 @@ void BorderPropertiesWidget::build() {
 	columns_width -> setPrefix(tr("\327"));
 	columns_width -> setSuffix(tr("px"));
 	
+	display_columns = new QCheckBox(tr("Afficher les en-têtes"), diagram_size_box);
+	
 	// lignes : nombre et largeur
 	QLabel *ds2 = new QLabel(tr("Lignes :"));
 	
@@ -96,13 +102,17 @@ void BorderPropertiesWidget::build() {
 	rows_height -> setPrefix(tr("\327"));
 	rows_height -> setSuffix(tr("px"));
 	
+	display_rows = new QCheckBox(tr("Afficher les en-têtes"), diagram_size_box);
+	
 	// layout
 	diagram_size_box_layout -> addWidget(ds1,            0, 0);
 	diagram_size_box_layout -> addWidget(columns_count,  0, 1);
 	diagram_size_box_layout -> addWidget(columns_width,  0, 2);
+	diagram_size_box_layout -> addWidget(display_columns,0, 3);
 	diagram_size_box_layout -> addWidget(ds2,            1, 0);
 	diagram_size_box_layout -> addWidget(rows_count,     1, 1);
 	diagram_size_box_layout -> addWidget(rows_height,    1, 2);
+	diagram_size_box_layout -> addWidget(display_rows,   1, 3);
 	
 	widget_layout -> addWidget(diagram_size_box);
 	setLayout(widget_layout);

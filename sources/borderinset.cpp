@@ -30,21 +30,15 @@ BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	// dimensions par defaut du schema
 	importBorder(QETDiagramEditor::defaultBorderProperties());
 	
+	// contenu par defaut du cartouche
+	importInset(QETDiagramEditor::defaultInsetProperties());
+	
 	// hauteur du cartouche
 	inset_height          = 50.0;
 	
 	display_inset         = true;
 	display_border        = true;
 	updateRectangles();
-	
-	bi_author   = QETApp::settings().value("diagrameditor/defaultauthor").toString();
-	bi_title    = QETApp::settings().value("diagrameditor/defaulttitle").toString();
-	bi_folio    = QETApp::settings().value("diagrameditor/defaultfolio").toString();
-	bi_filename = QETApp::settings().value("diagrameditor/defaultfilename").toString();
-	QString settings_date = QETApp::settings().value("diagrameditor/defaultdate").toString();
-	if (settings_date == "now") bi_date = QDate::currentDate();
-	else if (settings_date.isEmpty() || settings_date == "null") bi_date = QDate();
-	else bi_date = QDate::fromString(settings_date, "yyyyMMdd");
 }
 
 /**
@@ -133,6 +127,42 @@ void BorderInset::importBorder(const BorderProperties &bp) {
 	setNbRows(bp.rows_count);
 	setRowsHeight(bp.rows_height);
 	displayRows(bp.display_rows);
+}
+
+/**
+	@param di true pour afficher le cartouche, false sinon
+*/
+void BorderInset::displayInset(bool di) {
+	bool change = (di != display_inset);
+	display_inset = di;
+	if (change) emit(displayChanged());
+}
+
+/**
+	@param dc true pour afficher les entetes des colonnes, false sinon
+*/
+void BorderInset::displayColumns(bool dc) {
+	bool change = (dc != display_columns);
+	display_columns = dc;
+	if (change) emit(displayChanged());
+}
+
+/**
+	@param dr true pour afficher les entetes des lignes, false sinon
+*/
+void BorderInset::displayRows(bool dr) {
+	bool change = (dr != display_rows);
+	display_rows = dr;
+	if (change) emit(displayChanged());
+}
+
+/**
+	@param db true pour afficher la bordure du schema, false sinon
+*/
+void BorderInset::displayBorder(bool db) {
+	bool change = (db != display_border);
+	display_border  = db;
+	if (change) emit(displayChanged());
 }
 
 /**

@@ -19,6 +19,7 @@
 #define BORDER_PROPERTIES_WIDGET_H
 #include <QWidget>
 #include "borderproperties.h"
+class QCheckBox;
 class QSpinBox;
 /**
 	Cette classe represente un widget permettant d'editer les dimensions et les
@@ -48,7 +49,9 @@ class BorderPropertiesWidget : public QWidget {
 	BorderProperties border_;       ///< Proprietes editees
 	QSpinBox *columns_count;        ///< Widget d'edition du nombre de colonnes
 	QSpinBox *columns_width;        ///< Widget d'edition de la largeur des colonnes
+	QCheckBox *display_columns;     ///< Case a cocher pour afficher ou non les entetes des colonnes
 	QSpinBox *rows_count;           ///< Widget d'edition du nombre de lignes
 	QSpinBox *rows_height;          ///< Widget d'edition de la hauteur des lignes
+	QCheckBox *display_rows;        ///< Case a cocher pour afficher ou non les entetes des lignes
 };
 #endif

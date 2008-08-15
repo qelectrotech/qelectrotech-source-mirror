@@ -58,6 +58,7 @@ DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_tex
 	
 	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SIGNAL(selectionChanged()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
+	connect(&(scene -> border_and_inset), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
 }
 
@@ -582,12 +583,7 @@ void DiagramView::dialogEditInfos() {
 		
 		// s'il y a des modifications aux dimensions du schema
 		if (new_border != border) {
-			ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-			cbc -> columnsCountDifference  = new_border.columns_count - border.columns_count;
-			cbc -> columnsWidthDifference  = new_border.columns_width - border.columns_width;
-			cbc -> rowsCountDifference     = new_border.rows_count    - border.rows_count;
-			cbc -> rowsHeightDifference    = new_border.rows_height   - border.rows_height;
-			scene -> undoStack().push(cbc);
+			scene -> undoStack().push(new ChangeBorderCommand(scene, border, new_border));
 		}
 	}
 }
@@ -603,36 +599,40 @@ bool DiagramView::hasSelectedItems() {
 	Ajoute une colonne au schema.
 */
 void DiagramView::addColumn() {
-	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsCountDifference = 1;
-	scene -> undoStack().push(cbc);
+	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	new_bp.columns_count += 1;
+	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
 
 /**
 	Enleve une colonne au schema.
 */
 void DiagramView::removeColumn() {
-	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> columnsCountDifference = -1;
-	scene -> undoStack().push(cbc);
+	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	new_bp.columns_count -= 1;
+	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
 
 /**
 	Agrandit le schema en hauteur
 */
 void DiagramView::addRow() {
-	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> rowsCountDifference = 1;
-	scene -> undoStack().push(cbc);
+	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	new_bp.rows_count += 1;
+	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
 
 /**
 	Retrecit le schema en hauteur
 */
 void DiagramView::removeRow() {
-	ChangeBorderCommand *cbc = new ChangeBorderCommand(scene);
-	cbc -> rowsCountDifference = -1;
-	scene -> undoStack().push(cbc);
+	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	new_bp.rows_count -= 1;
+	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
 
 /**

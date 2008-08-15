@@ -22,7 +22,9 @@
 #include "diagramcontent.h"
 #include "diagramtextitem.h"
 #include "conductor.h"
+#include "borderproperties.h"
 #include "conductorproperties.h"
+#include "insetproperties.h"
 #include <QtGui>
 /**
 	Cette classe represente l'action d'ajouter un element au schema
@@ -325,16 +327,12 @@ class ChangeInsetCommand : public QUndoCommand {
 };
 
 /**
-	Cette classe represente l'action de modifier :
-	-le nombre de colonnes d'un schema
-	-la hauteur des colonnes
-	-la largeur des colonnes
-	-la hauteur des en-tetes des colonnes
+	Cette classe represente l'action de modifier les dimensions d'un schema
 */
 class ChangeBorderCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ChangeBorderCommand(Diagram *, QUndoCommand * = 0);
+	ChangeBorderCommand(Diagram *, const BorderProperties &, const BorderProperties &, QUndoCommand * = 0);
 	virtual ~ChangeBorderCommand();
 	private:
 	ChangeBorderCommand(const ChangeBorderCommand &);
@@ -343,26 +341,16 @@ class ChangeBorderCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
-	private:
-	virtual void applyChanges(int = 1);
 	
 	// attributs
 	private:
 	/// schema modifie
 	Diagram *diagram;
 	public:
-	/// nombre de colonnes ajoutees / enlevees
-	int columnsCountDifference;
-	/// nombre de lignes ajoutees / enlevees
-	int rowsCountDifference;
-	/// delta pour la largeur des colonnes
-	qreal columnsWidthDifference;
-	/// delta pour la hauteur des lignes
-	qreal rowsHeightDifference;
-	/// delta pour la hauteur des entetes des colonnes
-	qreal headersHeightDifference;
-	/// delta pour la largeur des entetes des lignes
-	qreal headersWidthDifference;
+	/// anciennes dimensions du schema
+	BorderProperties old_properties;
+	/// nouvelles dimensions du schema
+	BorderProperties new_properties;
 };
 
 /**

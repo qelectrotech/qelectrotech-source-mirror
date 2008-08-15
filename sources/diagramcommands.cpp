@@ -536,15 +536,11 @@ void ChangeInsetCommand::redo() {
 	@param dia Schema modifie
 	@param parent QUndoCommand parent
 */
-ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, QUndoCommand *parent) :
+ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, const BorderProperties &old_bp, const BorderProperties &new_bp, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("modifier les dimensions du sch\351ma"), parent),
 	diagram(dia),
-	columnsCountDifference(0),
-	rowsCountDifference(0),
-	columnsWidthDifference(0.0),
-	rowsHeightDifference(0.0),
-	headersHeightDifference(0.0),
-	headersWidthDifference(0.0)
+	old_properties(old_bp),
+	new_properties(new_bp)
 {
 }
 
@@ -552,45 +548,14 @@ ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, QUndoCommand *parent) :
 ChangeBorderCommand::~ChangeBorderCommand() {
 }
 
-/**
-	Applique les changements au schema
-	@param coeff comme les changements s'expriment sous forme de nombres dont
-	il suffit d'inverser le signe pour les annuler, ces valeurs sont ici
-	multipliees par le coefficient passe en parametre avant d'etre appliquees.
-	Pour resumer : 1 pour refaire, -1 pour annuler.
-*/
-void ChangeBorderCommand::applyChanges(int coeff) {
-	// reference vers l'objet border_and_inset du schema
-	BorderInset &border = diagram -> border_and_inset;
-	if (columnsCountDifference) {
-		border.setNbColumns(border.nbColumns() + (columnsCountDifference * coeff));
-	}
-	if (rowsCountDifference) {
-		border.setNbRows(border.nbRows() + (rowsCountDifference * coeff));
-	}
-	if (columnsWidthDifference) {
-		border.setColumnsWidth(border.columnsWidth() + (columnsWidthDifference * coeff));
-	}
-	if (rowsHeightDifference) {
-		border.setRowsHeight(border.rowsHeight() + (rowsHeightDifference * coeff));
-	}
-	if (headersHeightDifference) {
-		border.setColumnsHeaderHeight(border.columnsHeaderHeight() + (headersHeightDifference * coeff));
-	}
-	if (headersWidthDifference) {
-		border.setRowsHeaderWidth(border.rowsHeaderWidth() + (headersWidthDifference * coeff));
-	}
-	border.adjustInsetToColumns();
-}
-
 /// Annule les changements apportes au schema
 void ChangeBorderCommand::undo() {
-	applyChanges(-1);
+	diagram -> border_and_inset.importBorder(old_properties);
 }
 
 /// Refait les changements apportes au schema
 void ChangeBorderCommand::redo() {
-	applyChanges(1);
+	diagram -> border_and_inset.importBorder(new_properties);
 }
 
 /**

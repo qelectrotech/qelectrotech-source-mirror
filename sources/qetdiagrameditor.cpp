@@ -1103,12 +1103,12 @@ BorderProperties QETDiagramEditor::defaultBorderProperties() {
 	def.columns_count         = settings.value("diagrameditor/defaultcols", 15).toInt();
 	def.columns_width         = qRound(settings.value("diagrameditor/defaultcolsize",  50.0).toDouble());
 	def.columns_header_height = 20.0;
-	def.display_columns       = true;
+	def.display_columns       = settings.value("diagrameditor/defaultdisplaycols", true).toBool();
 	
 	def.rows_count            = settings.value("diagrameditor/defaultrows",  6).toInt();
 	def.rows_height           = qRound(settings.value("diagrameditor/defaultrowsize",  80.0).toDouble());
 	def.rows_header_width     = 20.0;
-	def.display_rows          = true;
+	def.display_rows          = settings.value("diagrameditor/defaultdisplayrows", true).toBool();
 	
 	return(def);
 }

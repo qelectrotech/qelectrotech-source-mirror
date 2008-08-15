@@ -253,6 +253,8 @@ QDomDocument Diagram::toXml(bool diagram) {
 		racine.setAttribute("rowsize", border_and_inset.rowsHeight());
 		// attribut datant de la version 0.1 - laisse pour retrocompatibilite
 		racine.setAttribute("height",  border_and_inset.diagramHeight());
+		racine.setAttribute("displaycols", border_and_inset.columnsAreDisplayed() ? "true" : "false");
+		racine.setAttribute("displayrows", border_and_inset.rowsAreDisplayed()    ? "true" : "false");
 		
 		// type de conducteur par defaut
 		QDomElement default_conductor = document.createElement("defaultconductor");
@@ -370,6 +372,10 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 			double height = root.attribute("height").toDouble(&ok);
 			if (ok) border_and_inset.setDiagramHeight(height);
 		}
+		
+		// affichage des lignes et colonnes
+		border_and_inset.displayColumns(root.attribute("displaycols") != "false");
+		border_and_inset.displayRows(root.attribute("displayrows") != "false");
 		
 		border_and_inset.adjustInsetToColumns();
 		

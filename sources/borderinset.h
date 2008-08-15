@@ -142,14 +142,10 @@ class BorderInset : public QObject {
 	void importBorder(const BorderProperties &);
 	
 	// methodes d'acces en ecriture aux options
-	/// @param di true pour afficher le cartouche, false sinon
-	void displayInset          (bool di)                 { display_inset   = di;       }
-	/// @param dc true pour afficher les entetes des colonnes, false sinon
-	void displayColumns        (bool dc)                 { display_columns = dc;       }
-	/// @param dr true pour afficher les entetes des lignes, false sinon
-	void displayRows           (bool dr)                 { display_rows    = dr;       }
-	/// @param db true pour afficher la bordure du schema, false sinon
-	void displayBorder         (bool db)                 { display_border  = db;       }
+	void displayInset(bool);
+	void displayColumns(bool);
+	void displayRows(bool);
+	void displayBorder(bool);
 	
 	private:
 	void updateRectangles();
@@ -163,6 +159,10 @@ class BorderInset : public QObject {
 		@param new_border Nouvelle bordure
 	*/
 	void borderChanged(QRectF old_border, QRectF new_border);
+	/**
+		Signal emise lorsque des options d'affichage change
+	*/
+	void displayChanged();
 	
 	// attributs
 	private:
