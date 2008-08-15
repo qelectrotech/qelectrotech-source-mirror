@@ -11,8 +11,8 @@
 	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
 	QET_LANG_PATH              = 'share/qelectrotech/lang/'
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
-	QET_MIME_XML_PATH          = '../share/mime/applications/'
-	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/applications/'
+	QET_MIME_XML_PATH          = '../share/mime/application/'
+	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
 	QET_DESKTOP_PATH           = 'share/applications/'
 	QET_ICONS_PATH             = 'share/icons/'
 } else {
