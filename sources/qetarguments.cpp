@@ -231,7 +231,7 @@ void QETArguments::handleOptionArgument(const QString &option) {
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString cd_arg("--config-dir=");
 	if (option.startsWith(cd_arg)) {
-		QString config_dir_ = option.mid(ced_arg.length());
+		config_dir_ = option.mid(cd_arg.length());
 		return;
 	}
 	
