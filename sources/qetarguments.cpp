@@ -59,6 +59,7 @@ QETArguments::QETArguments(const QETArguments &qet_arguments) :
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_(qet_arguments.config_dir_),
 #endif
+	lang_dir_(qet_arguments.lang_dir_),
 	print_help_(qet_arguments.print_help_),
 	print_license_(qet_arguments.print_license_),
 	print_version_(qet_arguments.print_version_)
@@ -80,6 +81,7 @@ QETArguments &QETArguments::operator=(const QETArguments &qet_arguments) {
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_ = qet_arguments.config_dir_;
 #endif
+	lang_dir_        = qet_arguments.lang_dir_;
 	print_help_      = qet_arguments.print_help_;
 	print_license_   = qet_arguments.print_license_;
 	print_version_   = qet_arguments.print_version_;
@@ -199,7 +201,8 @@ void QETArguments::handleFileArgument(const QString &file) {
 	Gere les arguments correspondant potentiellement a une option.
 	Les options reconnues sont : 
 	  * --common-elements-dir=
-	  * --config-dir
+	  * --config-dir=
+	  * --lang-dir=
 	  * --help
 	  * --version
 	  * -v
@@ -236,6 +239,12 @@ void QETArguments::handleOptionArgument(const QString &option) {
 	}
 	
 #endif
+	
+	QString ld_arg("--lang-dir=");
+	if (option.startsWith(ld_arg)) {
+		lang_dir_ = option.mid(ld_arg.length());
+		return;
+	}
 	
 	// a ce stade, l'option est inconnue
 	unknown_options_ << option;
@@ -275,6 +284,21 @@ QString QETArguments::configDir() const {
 	return(config_dir_);
 }
 #endif
+
+/**
+	@return true si l'utilisateur a specifie un dossier pour les fichiers de langue
+*/
+bool QETArguments::langDirSpecified() const {
+	return(!lang_dir_.isEmpty());
+}
+
+/**
+	@return le dossier de langue specifie par l'utilisateur.
+	Si l'utilisateur n'en a pas specifie, une chaine vide est retournee.
+*/
+QString QETArguments::langDir() const {
+	return(lang_dir_);
+}
 
 /**
 	@return true si les arguments comportent une demande d'affichage de l'aide,

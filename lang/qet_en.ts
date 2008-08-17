@@ -255,32 +255,32 @@
 <context>
     <name>DiagramPrintDialog</name>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="128"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="146"/>
         <source>Options d&apos;impression</source>
         <translation>Print options</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="130"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="148"/>
         <source>Utiliser toute la feuille</source>
         <translation>Use full page</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="131"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="149"/>
         <source>Adapter le sch&#xe9;ma &#xe0; la page</source>
         <translation>Fit diagram to page</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="132"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="150"/>
         <source>Plage de </source>
         <translation>Range from </translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="134"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="152"/>
         <source> &#xe0; </source>
         <translation> to </translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="173"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="191"/>
         <source>Nombre total de pages : </source>
         <translation>Total pages count: </translation>
     </message>
@@ -323,17 +323,17 @@
         <translation>Do you wish to save the diagram </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="665"/>
+        <location filename="../sources/diagramview.cpp" line="669"/>
         <source>nouveau sch&#xe9;ma</source>
         <translation>new diagram</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="725"/>
+        <location filename="../sources/diagramview.cpp" line="729"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s d&apos;un conducteur</source>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="559"/>
+        <location filename="../sources/diagramview.cpp" line="563"/>
         <source>Propri&#xe9;t&#xe9;s du sch&#xe9;ma</source>
         <translation>Diagram properties</translation>
     </message>
@@ -363,7 +363,7 @@
         <translation type="obsolete">Height:</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="784"/>
+        <location filename="../sources/diagramview.cpp" line="788"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s par d&#xe9;faut des conducteurs</source>
         <translation>Edit conductors default properties</translation>
     </message>
@@ -383,7 +383,7 @@
         <translation>This document seems to have been saved by a more recent version of QElectroTech. The opening of the document may fail totally or partially.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="539"/>
+        <location filename="../sources/diagramview.cpp" line="542"/>
         <source>schema</source>
         <translation>diagram</translation>
     </message>
@@ -1265,87 +1265,87 @@ Changes will be permanent.</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="722"/>
+        <location filename="../sources/qetapp.cpp" line="743"/>
         <source>QElectroTech</source>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="696"/>
+        <location filename="../sources/qetapp.cpp" line="717"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Quit</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="697"/>
+        <location filename="../sources/qetapp.cpp" line="718"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Hide</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="698"/>
+        <location filename="../sources/qetapp.cpp" line="719"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Show</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="699"/>
+        <location filename="../sources/qetapp.cpp" line="720"/>
         <source>&amp;Masquer tous les &#xe9;diteurs de sch&#xe9;ma</source>
         <translation>&amp;Hide diagram editors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="700"/>
+        <location filename="../sources/qetapp.cpp" line="721"/>
         <source>&amp;Restaurer tous les &#xe9;diteurs de sch&#xe9;ma</source>
         <translation>&amp;Show diagram editors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="701"/>
+        <location filename="../sources/qetapp.cpp" line="722"/>
         <source>&amp;Masquer tous les &#xe9;diteurs d&apos;&#xe9;l&#xe9;ment</source>
         <translation>&amp;Hide element editors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="702"/>
+        <location filename="../sources/qetapp.cpp" line="723"/>
         <source>&amp;Restaurer tous les &#xe9;diteurs d&apos;&#xe9;l&#xe9;ment</source>
         <translation>&amp;Show element editors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="703"/>
+        <location filename="../sources/qetapp.cpp" line="724"/>
         <source>&amp;Nouvel &#xe9;diteur de sch&#xe9;ma</source>
         <translation>&amp;New diagram editor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="704"/>
+        <location filename="../sources/qetapp.cpp" line="725"/>
         <source>&amp;Nouvel &#xe9;diteur d&apos;&#xe9;l&#xe9;ment</source>
         <translation>&amp;New element editor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="706"/>
+        <location filename="../sources/qetapp.cpp" line="727"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Closes QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="707"/>
+        <location filename="../sources/qetapp.cpp" line="728"/>
         <source>R&#xe9;duire QElectroTech dans le systray</source>
         <translation>Reduces QElectroTech into the systray</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="708"/>
+        <location filename="../sources/qetapp.cpp" line="729"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restore QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="741"/>
+        <location filename="../sources/qetapp.cpp" line="762"/>
         <source>&#xc9;diteurs de sch&#xe9;mas</source>
         <translation>Diagram editors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="757"/>
+        <location filename="../sources/qetapp.cpp" line="778"/>
         <source>&#xc9;diteurs d&apos;&#xe9;l&#xe9;ment</source>
         <translation>Element editors</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="818"/>
+        <location filename="../sources/qetapp.cpp" line="839"/>
         <source>Usage : </source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="824"/>
+        <location filename="../sources/qetapp.cpp" line="845"/>
         <source>QElectroTech, une application de r&#xe9;alisation de sch&#xe9;mas &#xe9;lectriques.
 
 Options disponibles : 
@@ -1362,7 +1362,7 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="819"/>
+        <location filename="../sources/qetapp.cpp" line="840"/>
         <source> [options] [fichier]...
 
 </source>
@@ -1371,38 +1371,45 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="827"/>
+        <location filename="../sources/qetapp.cpp" line="848"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="830"/>
+        <location filename="../sources/qetapp.cpp" line="851"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define configuration directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="77"/>
+        <location filename="../sources/qetapp.cpp" line="78"/>
         <source>Chargement... &#xc9;diteur de sch&#xe9;mas</source>
         <translation>Loading... Diagrams editor</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="80"/>
+        <location filename="../sources/qetapp.cpp" line="81"/>
         <source>Chargement... Ouverture des fichiers</source>
         <translation>Loading... Opening files</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="628"/>
+        <location filename="../sources/qetapp.cpp" line="649"/>
         <source>Chargement...</source>
         <translation>Loading...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="692"/>
+        <location filename="../sources/qetapp.cpp" line="713"/>
         <source>Chargement... ic&#xf4;ne du systray</source>
         <translation>Loading... Systray icon</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="852"/>
+        <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
+</source>
+        <translation>  --lang-dir=DIR                Define the language files directory
+</translation>
     </message>
 </context>
 <context>

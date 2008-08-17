@@ -72,6 +72,8 @@ class QETApp : public QETSingleApplication {
 	static QString config_dir; ///< Dossier contenant la configuration et la collection d'elements de l'utilisateur
 #endif
 	public:
+	static void overrideLangDir(const QString &);
+	static QString lang_dir; ///< Dossier contenant les fichiers de langue
 	static QString diagramTextsFont();
 	
 	protected:

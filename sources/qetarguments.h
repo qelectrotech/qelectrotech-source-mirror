@@ -50,6 +50,8 @@ class QETArguments : public QObject {
 	virtual bool configDirSpecified() const;
 	virtual QString configDir() const;
 #endif
+	virtual bool langDirSpecified() const;
+	virtual QString langDir() const;
 	virtual bool printHelpRequested() const;
 	virtual bool printLicenseRequested() const;
 	virtual bool printVersionRequested() const;
@@ -74,6 +76,7 @@ class QETArguments : public QObject {
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString config_dir_;
 #endif
+	QString lang_dir_;
 	bool print_help_;
 	bool print_license_;
 	bool print_version_;

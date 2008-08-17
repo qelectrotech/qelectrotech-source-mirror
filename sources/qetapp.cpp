@@ -26,6 +26,7 @@
 
 QString QETApp::common_elements_dir = QString();
 QString QETApp::config_dir = QString();
+QString QETApp::lang_dir = QString();
 QString QETApp::diagram_texts_font = QString();
 RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
@@ -338,14 +339,30 @@ void QETApp::overrideConfigDir(const QString &new_cd) {
 #endif
 
 /**
+	Redefinit le chemin du dossier contenant les fichiers de langue
+	@param new_ld Nouveau chemin du dossier contenant les fichiers de langue
+*/
+void QETApp::overrideLangDir(const QString &new_ld) {
+	QFileInfo new_ld_info(new_ld);
+	if (new_ld_info.isDir()) {
+		lang_dir = new_ld_info.absoluteFilePath();
+		if (!lang_dir.endsWith("/")) lang_dir += "/";
+	}
+}
+
+/**
 	@return Le chemin du dossier contenant les fichiers de langue
 */
 QString QETApp::languagesPath() {
+	if (!lang_dir.isEmpty()) {
+		return(lang_dir);
+	} else {
 #ifndef QET_LANG_PATH
 	return(QDir::current().path() + "/lang/");
 #else
 	return(QUOTE(QET_LANG_PATH));
 #endif
+	}
 }
 
 /**
@@ -603,6 +620,10 @@ void QETApp::parseArguments() {
 	}
 #endif
 	
+	if (qet_arguments_.langDirSpecified()) {
+		overrideLangDir(qet_arguments_.langDir());
+	}
+	
 	if (qet_arguments_.printLicenseRequested()) {
 		printLicense();
 		non_interactive_execution_ = true;
@@ -827,6 +848,7 @@ void QETApp::printHelp() {
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 		+ tr("  --config-dir=DIR              Definir le dossier de configuration\n")
 #endif
+		+ tr("  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue\n")
 	);
 	std::cout << qPrintable(help) << std::endl;
 }
