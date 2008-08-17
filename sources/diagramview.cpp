@@ -530,17 +530,21 @@ void DiagramView::dialogExport() {
 */
 void DiagramView::dialogPrint() {
 	
-	// determine un nom possible pour le pdf
+	// determine un nom possible pour le document et le pdf
+	QString doc_name;
 	QString pdf_file_name;
 	if (!file_name.isEmpty()) {
+		doc_name = QFileInfo(file_name).fileName();
 		pdf_file_name = file_name;
 		pdf_file_name.replace(QRegExp("\\.qet$", Qt::CaseInsensitive), "");
 	} else {
+		doc_name = tr("schema");
 		pdf_file_name = QDir::toNativeSeparators(QDir::homePath() + "/" + tr("schema"));
 	}
 	pdf_file_name += ".pdf";
 	
 	DiagramPrintDialog print_dialog(scene, this);
+	print_dialog.setDocName(doc_name);
 	print_dialog.setPDFName(pdf_file_name);
 	print_dialog.exec();
 }

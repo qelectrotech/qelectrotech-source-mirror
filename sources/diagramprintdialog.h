@@ -38,6 +38,8 @@ class DiagramPrintDialog : public QWidget {
 	public:
 	void setPDFName(const QString &);
 	QString PDFName() const;
+	void setDocName(const QString &);
+	QString docName() const;
 	int pagesCount(bool = false) const;
 	int horizontalPagesCount(bool = false) const;
 	int verticalPagesCount(bool = false) const;
@@ -57,6 +59,7 @@ class DiagramPrintDialog : public QWidget {
 	private:
 	Diagram *diagram;
 	QPrinter *printer;
+	QString doc_name;
 	QString pdf_name;
 	QDialog *dialog;
 	QLabel *options_label;

@@ -31,6 +31,9 @@ DiagramPrintDialog::DiagramPrintDialog(Diagram *dia, QWidget *parent) :
 {
 	// initialise l'imprimante
 	printer = new QPrinter();
+	
+	// orientation paysage par defaut
+	printer -> setOrientation(QPrinter::Landscape);
 }
 
 /**
@@ -56,15 +59,30 @@ QString DiagramPrintDialog::PDFName() const {
 }
 
 /**
+	Definit le nom du document
+*/
+void DiagramPrintDialog::setDocName(const QString &name) {
+	doc_name = name;
+}
+
+/**
+	@return le nom du document
+*/
+QString DiagramPrintDialog::docName() const {
+	return(doc_name);
+}
+
+/**
 	Execute le dialogue d'impression
 */
 void DiagramPrintDialog::exec() {
 	
 	// affichage du dialogue d'impression standard
 	QPrintDialog print_dialog(printer);
-	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile);
+	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile | QAbstractPrintDialog::PrintShowPageSize);
 #ifndef Q_OS_WIN32
 	if (!pdf_name.isEmpty()) printer -> setOutputFileName(pdf_name);
+	if (!doc_name.isEmpty()) printer -> setDocName(doc_name);
 #endif
 	if (print_dialog.exec() == QDialog::Rejected) return;
 	
@@ -227,11 +245,7 @@ void DiagramPrintDialog::print() {
 	
 	// impression physique (!= fichier PDF)
 	if (printer -> outputFileName().isEmpty()) {
-		// lorsqu'on imprime en paysage sur imprimante reelle, il faut pivoter soi-meme le rendu
-		if (printer -> orientation() == QPrinter::Landscape) {
-			qp.rotate(90.0);
-			qp.translate(0.0, -printer -> pageRect().height());
-		}
+		// utiliser cette condition pour agir differemment en cas d'impression physique
 	}
 	
 	diagram -> setDisplayGrid(false);
