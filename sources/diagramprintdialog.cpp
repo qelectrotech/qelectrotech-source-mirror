@@ -147,6 +147,7 @@ void DiagramPrintDialog::buildDialog() {
 	options_label = new QLabel();
 	use_full_page = new QCheckBox(tr("Utiliser toute la feuille"));
 	fit_diagram_to_page = new QCheckBox(tr("Adapter le sch\351ma \340 la page"));
+	fit_diagram_to_page -> setChecked(true);
 	range_from_label = new QLabel(tr("Plage de "));
 	start_page = new QSpinBox();
 	to_label = new QLabel(tr(" \340 "));
