@@ -1060,7 +1060,7 @@ void QETDiagramEditor::writeSettings() {
 	@see ConfigDialog
 */
 void QETDiagramEditor::configureQET() {
-	ConfigDialog cd;
+	ConfigDialog cd(this);
 	cd.exec();
 }
 

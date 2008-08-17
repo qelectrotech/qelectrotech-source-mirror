@@ -107,7 +107,7 @@ void ElementsPanelWidget::reloadAndFilter() {
 	Appelle l'assistant de creation de nouvel element
 */
 void ElementsPanelWidget::newElement() {
-	NewElementWizard new_element_wizard;
+	NewElementWizard new_element_wizard(this);
 	new_element_wizard.exec();
 }
 
@@ -115,7 +115,7 @@ void ElementsPanelWidget::newElement() {
 	Lance le gestionnaire de categories
 */
 void ElementsPanelWidget::newCategory() {
-	QDialog new_category_dialog;
+	QDialog new_category_dialog(this);
 	new_category_dialog.setMinimumSize(480, 280);
 	new_category_dialog.setWindowTitle(tr("Gestionnaire de cat\351gories"));
 	

@@ -582,7 +582,7 @@ bool QETElementEditor::isReadOnly() const {
 	Lance l'assistant de creation d'un nouvel element.
 */
 void QETElementEditor::slot_new() {
-	NewElementWizard new_element_wizard;
+	NewElementWizard new_element_wizard(this);
 	new_element_wizard.exec();
 }
 

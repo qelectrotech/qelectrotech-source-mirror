@@ -340,7 +340,7 @@ bool DiagramView::open(QString n_fichier, int *erreur) {
 			qreal diagram_version = root.attribute("version").toDouble(&conv_ok);
 			if (conv_ok && QET::version.toDouble() < diagram_version) {
 				QMessageBox::warning(
-					0,
+					this,
 					tr("Avertissement"),
 					tr("Ce document semble avoir \351t\351 enregistr\351 avec une "
 					"version ult\351rieure de QElectroTech. Il est possible que "
@@ -521,7 +521,7 @@ bool DiagramView::saveDiagramToFile(QString &n_fichier) {
 	Exporte le schema.
 */
 void DiagramView::dialogExport() {
-	ExportDialog ed(scene, this);
+	ExportDialog ed(scene, diagramEditor());
 	ed.exec();
 }
 
@@ -558,7 +558,7 @@ void DiagramView::dialogEditInfos() {
 	BorderProperties border = scene -> border_and_inset.exportBorder();
 	
 	// construit le dialogue
-	QDialog popup;
+	QDialog popup(diagramEditor());
 	popup.setMinimumWidth(400);
 	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma"));
 	
@@ -725,7 +725,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(old_properties);
 	
 	// l'insere dans un dialogue
-	QDialog conductor_dialog;
+	QDialog conductor_dialog(diagramEditor());
 	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
@@ -784,7 +784,7 @@ void DiagramView::editDefaultConductorProperties() {
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(scene -> defaultConductorProperties);
 	
 	// l'insere dans un dialogue
-	QDialog conductor_dialog;
+	QDialog conductor_dialog(diagramEditor());
 	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s par d\351faut des conducteurs"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);

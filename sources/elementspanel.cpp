@@ -317,7 +317,7 @@ void ElementsPanel::launchElementEditor(const QString &filename) {
 	@param filename Chemin du dossier representant la categorie
 */
 void ElementsPanel::launchCategoryEditor(const QString &filename) {
-	ElementsCategoryEditor ece(filename, true);
+	ElementsCategoryEditor ece(filename, true, this);
 	if (ece.exec() == QDialog::Accepted) reload();
 }
 

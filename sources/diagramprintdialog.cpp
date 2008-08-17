@@ -78,7 +78,7 @@ QString DiagramPrintDialog::docName() const {
 void DiagramPrintDialog::exec() {
 	
 	// affichage du dialogue d'impression standard
-	QPrintDialog print_dialog(printer);
+	QPrintDialog print_dialog(printer, parentWidget());
 	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile | QAbstractPrintDialog::PrintShowPageSize);
 #ifndef Q_OS_WIN32
 	if (!pdf_name.isEmpty()) printer -> setOutputFileName(pdf_name);
@@ -142,7 +142,7 @@ int DiagramPrintDialog::verticalPagesCount(bool fullpage) const {
 	Construit un dialogue non standard pour demander les pages a imprimer a l'utilisateur
 */
 void DiagramPrintDialog::buildDialog() {
-	dialog = new QDialog();
+	dialog = new QDialog(parentWidget());
 	dialog -> setWindowTitle(tr("Options d'impression"));
 	options_label = new QLabel();
 	use_full_page = new QCheckBox(tr("Utiliser toute la feuille"));
