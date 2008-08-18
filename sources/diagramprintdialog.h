@@ -66,7 +66,9 @@ class DiagramPrintDialog : public QWidget {
 	QLabel *range_from_label;
 	QLabel *to_label;
 	QCheckBox *use_full_page;
+	QLabel *use_full_page_label_;
 	QCheckBox *fit_diagram_to_page;
+	QLabel *fit_diagram_to_page_label_;
 	QSpinBox *start_page;
 	QSpinBox *end_page;
 	QDialogButtonBox *buttons;

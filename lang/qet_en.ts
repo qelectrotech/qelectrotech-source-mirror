@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="en">
-<defaultcodec></defaultcodec>
 <context>
     <name>AboutQET</name>
     <message>
@@ -255,34 +254,44 @@
 <context>
     <name>DiagramPrintDialog</name>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="146"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="147"/>
         <source>Options d&apos;impression</source>
         <translation>Print options</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="148"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="149"/>
         <source>Utiliser toute la feuille</source>
         <translation>Use full page</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="149"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="157"/>
         <source>Adapter le sch&#xe9;ma &#xe0; la page</source>
         <translation>Fit diagram to page</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="150"/>
-        <source>Plage de </source>
-        <translation>Range from </translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="152"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="168"/>
         <source> &#xe0; </source>
         <translation> to </translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="191"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="210"/>
         <source>Nombre total de pages : </source>
         <translation>Total pages count: </translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramprintdialog.cpp" line="154"/>
+        <source>Si cette option est coch&#xe9;e, les marges de la feuille seront ignor&#xe9;es et toute sa surface sera utilis&#xe9;e pour l&apos;impression. Cela peut ne pas &#xea;tre support&#xe9; par votre imprimante.</source>
+        <translation>If this option is checked, the paper margins are ignored and its whole surface is used for the printing. This may not be supported by your printer.</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramprintdialog.cpp" line="162"/>
+        <source>Si cette option est coch&#xe9;e, le sch&#xe9;ma sera agrandi ou r&#xe9;tr&#xe9;ci de fa&#xe7;on &#xe0; remplir toute la surface imprimable d&apos;une et une seule page.</source>
+        <translation>If this option is checked, the diagram will be shrinked or expanded to fit the printable surface of a single page.</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramprintdialog.cpp" line="166"/>
+        <source>Pages &#xe0; imprimer : plage de </source>
+        <translation>Pages to print: from</translation>
     </message>
 </context>
 <context>
@@ -338,31 +347,6 @@
         <translation>Diagram properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="564"/>
-        <source>Dimensions du sch&#xe9;ma</source>
-        <translation type="obsolete">Diagram size</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="567"/>
-        <source>Colonnes :</source>
-        <translation type="obsolete">Columns:</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="590"/>
-        <source>&#xd7;</source>
-        <translation type="obsolete">×</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="591"/>
-        <source>px</source>
-        <translation type="obsolete">px</translation>
-    </message>
-    <message>
-        <location filename="../diagramview.cpp" line="583"/>
-        <source>Hauteur :</source>
-        <translation type="obsolete">Height:</translation>
-    </message>
-    <message>
         <location filename="../sources/diagramview.cpp" line="788"/>
         <source>&#xc9;diter les propri&#xe9;t&#xe9;s par d&#xe9;faut des conducteurs</source>
         <translation>Edit conductors default properties</translation>
@@ -386,11 +370,6 @@
         <location filename="../sources/diagramview.cpp" line="542"/>
         <source>schema</source>
         <translation>diagram</translation>
-    </message>
-    <message>
-        <location filename="../sources/diagramview.cpp" line="580"/>
-        <source>Lignes :</source>
-        <translation type="obsolete">Rows:</translation>
     </message>
 </context>
 <context>
@@ -1057,36 +1036,6 @@ Changes will be permanent.</translation>
         <source>Nouveau sch&#xe9;ma</source>
         <translation>New Diagram</translation>
     </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="52"/>
-        <source>Dimensions du sch&#xe9;ma</source>
-        <translation type="obsolete">Diagram size</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="56"/>
-        <source>Colonnes :</source>
-        <translation type="obsolete">Columns:</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="79"/>
-        <source>&#xd7;</source>
-        <translation type="obsolete">×</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="80"/>
-        <source>px</source>
-        <translation type="obsolete">px</translation>
-    </message>
-    <message>
-        <location filename="../configpages.cpp" line="64"/>
-        <source>Hauteur :</source>
-        <translation type="obsolete">Height:</translation>
-    </message>
-    <message>
-        <location filename="../sources/configpages.cpp" line="69"/>
-        <source>Lignes :</source>
-        <translation type="obsolete">Rows:</translation>
-    </message>
 </context>
 <context>
     <name>NewElementWizard</name>
@@ -1468,11 +1417,6 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="429"/>
         <source>Afficher</source>
         <translation>Display</translation>
-    </message>
-    <message>
-        <location filename="../qetdiagrameditor.cpp" line="205"/>
-        <source>Agrandir le sch&#xe9;ma</source>
-        <translation type="obsolete">Expand the diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
@@ -1868,11 +1812,6 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
         <source>Restaure le zoom par d&#xe9;faut</source>
         <translation>Restores default zoom level</translation>
-    </message>
-    <message>
-        <location filename="../qetdiagrameditor.cpp" line="206"/>
-        <source>R&#xe9;tr&#xe9;cir le sch&#xe9;ma</source>
-        <translation type="obsolete">Shrink the diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>

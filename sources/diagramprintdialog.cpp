@@ -143,12 +143,27 @@ int DiagramPrintDialog::verticalPagesCount(bool fullpage) const {
 */
 void DiagramPrintDialog::buildDialog() {
 	dialog = new QDialog(parentWidget());
+	dialog -> setMinimumWidth(460);
 	dialog -> setWindowTitle(tr("Options d'impression"));
 	options_label = new QLabel();
 	use_full_page = new QCheckBox(tr("Utiliser toute la feuille"));
+	use_full_page_label_ = new QLabel(tr(
+		"Si cette option est coch\351e, les marges de la feuille seront "
+		"ignor\351es et toute sa surface sera utilis\351e pour l'impression. "
+		"Cela peut ne pas \352tre support\351 par votre imprimante."
+	));
+	use_full_page_label_ -> setWordWrap(true);
+	use_full_page_label_ -> setContentsMargins(20, 0, 0, 0);
 	fit_diagram_to_page = new QCheckBox(tr("Adapter le sch\351ma \340 la page"));
+	fit_diagram_to_page_label_ = new QLabel(tr(
+		"Si cette option est coch\351e, le sch\351ma sera agrandi ou "
+		"r\351tr\351ci de fa\347on \340 remplir toute la surface imprimable "
+		"d'une et une seule page."
+	));
+	fit_diagram_to_page_label_ -> setWordWrap(true);
+	fit_diagram_to_page_label_ -> setContentsMargins(20, 0, 0, 0);
 	fit_diagram_to_page -> setChecked(true);
-	range_from_label = new QLabel(tr("Plage de "));
+	range_from_label = new QLabel(tr("Pages \340 imprimer : plage de "));
 	start_page = new QSpinBox();
 	to_label = new QLabel(tr(" \340 "));
 	end_page = new QSpinBox();
@@ -159,11 +174,14 @@ void DiagramPrintDialog::buildDialog() {
 	pages_layout -> addWidget(start_page);
 	pages_layout -> addWidget(to_label);
 	pages_layout -> addWidget(end_page);
+	pages_layout -> addStretch();
 	
 	QVBoxLayout *dialog_layout = new QVBoxLayout(dialog);
 	dialog_layout -> addWidget(options_label);
 	dialog_layout -> addWidget(use_full_page);
+	dialog_layout -> addWidget(use_full_page_label_);
 	dialog_layout -> addWidget(fit_diagram_to_page);
+	dialog_layout -> addWidget(fit_diagram_to_page_label_);
 	dialog_layout -> addLayout(pages_layout);
 	dialog_layout -> addStretch();
 	dialog_layout -> addWidget(buttons);
