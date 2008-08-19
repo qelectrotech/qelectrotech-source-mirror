@@ -852,9 +852,10 @@ void QETDiagramEditor::addDiagramView(DiagramView *dv) {
 	
 	// ajoute la fenetre
 	QWidget *p = workspace.addWindow(dv);
-	connect(dv -> diagram(), SIGNAL(selectionChanged()), this, SLOT(slot_updateComplexActions()));
-	connect(dv, SIGNAL(modeChanged()),      this, SLOT(slot_updateModeActions()));
-	connect(dv, SIGNAL(textAdded(bool)), add_text, SLOT(setChecked(bool)));
+	connect(dv -> diagram(), SIGNAL(selectionChanged()),   this,     SLOT(slot_updateComplexActions()));
+	connect(dv,              SIGNAL(modeChanged()),        this,     SLOT(slot_updateModeActions()));
+	connect(dv,              SIGNAL(textAdded(bool)),      add_text, SLOT(setChecked(bool)));
+	connect(dv,              SIGNAL(destroyed(QObject *)), this,     SLOT(slot_updateWindowsMenu()));
 	
 	// affiche la fenetre
 	if (maximise) p -> showMaximized();
