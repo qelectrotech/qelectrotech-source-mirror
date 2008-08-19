@@ -77,13 +77,16 @@ QString DiagramPrintDialog::docName() const {
 */
 void DiagramPrintDialog::exec() {
 	
-	// affichage du dialogue d'impression standard
-	QPrintDialog print_dialog(printer, parentWidget());
-	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile | QAbstractPrintDialog::PrintShowPageSize);
 #ifndef Q_OS_WIN32
 	if (!pdf_name.isEmpty()) printer -> setOutputFileName(pdf_name);
 	if (!doc_name.isEmpty()) printer -> setDocName(doc_name);
 #endif
+	
+	// affichage du dialogue d'impression standard
+	QPrintDialog print_dialog(printer, parentWidget());
+	print_dialog.setWindowTitle(tr("Options d'impression"));
+	print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintToFile | QAbstractPrintDialog::PrintShowPageSize);
+	
 	if (print_dialog.exec() == QDialog::Rejected) return;
 	
 	/*

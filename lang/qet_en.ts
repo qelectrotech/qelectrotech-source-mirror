@@ -254,42 +254,42 @@
 <context>
     <name>DiagramPrintDialog</name>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="147"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="150"/>
         <source>Options d&apos;impression</source>
         <translation>Print options</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="149"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="152"/>
         <source>Utiliser toute la feuille</source>
         <translation>Use full page</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="157"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="160"/>
         <source>Adapter le sch&#xe9;ma &#xe0; la page</source>
         <translation>Fit diagram to page</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="168"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="171"/>
         <source> &#xe0; </source>
         <translation> to </translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="210"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="213"/>
         <source>Nombre total de pages : </source>
         <translation>Total pages count: </translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="154"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="157"/>
         <source>Si cette option est coch&#xe9;e, les marges de la feuille seront ignor&#xe9;es et toute sa surface sera utilis&#xe9;e pour l&apos;impression. Cela peut ne pas &#xea;tre support&#xe9; par votre imprimante.</source>
         <translation>If this option is checked, the paper margins are ignored and its whole surface is used for the printing. This may not be supported by your printer.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="162"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="165"/>
         <source>Si cette option est coch&#xe9;e, le sch&#xe9;ma sera agrandi ou r&#xe9;tr&#xe9;ci de fa&#xe7;on &#xe0; remplir toute la surface imprimable d&apos;une et une seule page.</source>
         <translation>If this option is checked, the diagram will be shrinked or expanded to fit the printable surface of a single page.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="166"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="169"/>
         <source>Pages &#xe0; imprimer : plage de </source>
         <translation>Pages to print: from</translation>
     </message>
@@ -1364,7 +1364,7 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="949"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="950"/>
         <source>Active la fen&#xea;tre </source>
         <translation>Activates the window </translation>
     </message>
