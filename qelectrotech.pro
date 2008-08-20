@@ -15,6 +15,7 @@
 	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
 	QET_DESKTOP_PATH           = 'share/applications/'
 	QET_ICONS_PATH             = 'share/icons/'
+	QET_MAN_PATH               = 'man/'
 } else {
 	# Chemins Windows
 	COMPIL_PREFIX              = './'
@@ -188,18 +189,16 @@ CONFIG += debug_and_release warn_on
 TARGET = qelectrotech
 
 # Description de l'installation
-target.path     = $$join(INSTALL_PREFIX,,,$${QET_BINARY_PATH})
+target.path        = $$join(INSTALL_PREFIX,,,$${QET_BINARY_PATH})
 
-elements.path   = $$join(INSTALL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
-elements.files  = elements/*
+elements.path      = $$join(INSTALL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
+elements.files     = elements/*
 
-lang.path       = $$join(INSTALL_PREFIX,,,$${QET_LANG_PATH})
-lang.files      = $$replace(TRANSLATIONS, '.ts', '.qm')
+lang.path          = $$join(INSTALL_PREFIX,,,$${QET_LANG_PATH})
+lang.files         = $$replace(TRANSLATIONS, '.ts', '.qm')
 
-copyright.path  = $$join(INSTALL_PREFIX,,,$${QET_LICENSE_PATH})
-copyright.files = LICENSE \
-                  CREDIT \
-                  README
+copyright.path     = $$join(INSTALL_PREFIX,,,$${QET_LICENSE_PATH})
+copyright.files    = LICENSE CREDIT README
 
 mime_xml.path      = $$join(INSTALL_PREFIX,,,$${QET_MIME_XML_PATH})
 mime_xml.files     = misc/x-qet-*.xml
@@ -207,17 +206,21 @@ mime_xml.files     = misc/x-qet-*.xml
 mime_desktop.path  = $$join(INSTALL_PREFIX,,,$${QET_MIME_DESKTOP_PATH})
 mime_desktop.files = misc/x-qet-*.desktop
 
-desktop.path   = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
-desktop.files  = misc/qelectrotech.desktop
+desktop.path       = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
+desktop.files      = misc/qelectrotech.desktop
 
-icons.path     = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
-icons.files    = ico/qet.png
+icons.path         = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
+icons.files        = ico/qet.png
+
+man.path           = $$join(INSTALL_PREFIX,,,$${QET_MAN_PATH})
+man.files          = man/files/*
+man.extra          = sh man/compress_man_pages.sh
 
 # L'installation comprend la copie du binaire, des elements, des fichiers de langue et du fichier LICENSE
 INSTALLS += target elements lang copyright
-# Sous Unix, on installe egalement l'icone et un fichier .desktop
+# Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
 unix {
-	INSTALLS += desktop mime_xml mime_desktop icons
+	INSTALLS += desktop mime_xml mime_desktop icons man
 }
 
 # Options de compilation
