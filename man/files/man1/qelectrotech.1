@@ -15,11 +15,11 @@ qelectrotech \- Electric diagrams editor
 QElectroTech is an electric diagrams editor. Diagrams (*.qet) and electric elements (*.elmt) are stored using the XML format.
 The elements that can be used in diagrams may come from the common collection or from the user's custom collection.
 Typically, the common collection is readable by all users but it can't be edited by them.
-Each user owns its custom collection he can moidy as he wants.
+Each user owns its custom collection he can modify as he wants.
 .SH OPTIONS
 .TP
 \fB\-\-common\-elements\-dir\fR=\fIDIR\fR
-Uses DIR as the common collection root directory. Note : this option is enabled only if the QET_ALLOW_OVERRIDE_CED_OPTION direvtice has been specified at compilation time.
+Uses DIR as the common collection root directory. Note : this option is enabled only if the QET_ALLOW_OVERRIDE_CED_OPTION directive has been specified at compilation time.
 .TP
 \fB\-\-config\-dir\-elements\fR=\fIDIR\fR
 Uses DIR as the current user's configuration directory. This directory hosts a file named qelectrotech.conf, which contains the application configuration, and a subdirectory named elements, which contains the user's elements collection.  Note : this option is enabled only if the QET_ALLOW_OVERRIDE_CD_OPTION directive has been specified at compilation time.
@@ -31,7 +31,7 @@ Looks for the application translation files in the directory DIR.
 Displays a short description of the available options.
 .TP
 \fB\-v\fR, \fB\-\-version\fR
-Displays the application version (e.g.: 0.1)
+Displays the application version (e.g.: 0.1).
 .TP
 \fB\-\-license\fR
 Displays the application license (GNU/GPL).
@@ -39,14 +39,14 @@ Note that if one of the three last options is specified in the command line, the
 If an instance of the application launched by the user is still running, this instance will consider the command line, and notably the files to open.
 However, options that redefine directories (common collection, configuration and translation files) will not be considered.
 If a filename ends with .elmt, QElectroTech will try to open it into an element editor.
-Otherwise, it will consider them as diagrams.
+Otherwise, it will consider it as diagrams.
 .SH AUTHORS
 Benoît Ansieau <benoit.ansieau@gmail.com>
 .br
 Xavier Guerrin <xavier.guerrin@gmail.com>
 
 .SH REPORTING BUGS
-If you enncounter a behavior in the application that looks unusual to you, browse our FAQ <http://qelectrotech.tuxfamily.org/wiki/doku.php?id=doc:faq> and our BugTracker <http://qelectrotech.tuxfamily.org/bugtracker/> to check if the problem is already known. In the negative, please submit a bugreport via the BugTracker. 
+If you encounter a behavior in the application that looks unusual to you, browse our FAQ <http://qelectrotech.tuxfamily.org/wiki/doku.php?id=doc:faq> and our BugTracker <http://qelectrotech.tuxfamily.org/bugtracker/> to check if the problem is already known. In the negative, please submit a bugreport via the BugTracker. 
 
 .SH COPYRIGHT
 Copyright © QElectroTech developers.
