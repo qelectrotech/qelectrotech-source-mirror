@@ -421,8 +421,8 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	element.setAttribute("type", type_elmt);
 	
 	// position, selection et orientation
-	element.setAttribute("x", pos().x());
-	element.setAttribute("y", pos().y());
+	element.setAttribute("x", QString("%1").arg(pos().x()));
+	element.setAttribute("y", QString("%1").arg(pos().y()));
 	element.setAttribute("orientation", QString("%1").arg(ori.current()));
 	
 	/* recupere le premier id a utiliser pour les bornes de cet element */

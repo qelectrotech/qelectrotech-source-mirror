@@ -428,8 +428,8 @@ QList<Conductor *> Terminal::conductors() const {
 */
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
-	qdo.setAttribute("x", amarrage_elmt.x());
-	qdo.setAttribute("y", amarrage_elmt.y());
+	qdo.setAttribute("x", QString("%1").arg(amarrage_elmt.x()));
+	qdo.setAttribute("y",  QString("%1").arg(amarrage_elmt.y()));
 	qdo.setAttribute("orientation", sens);
 	return(qdo);
 }

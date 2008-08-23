@@ -98,8 +98,8 @@ void ElementTextItem::fromXml(const QDomElement &e) {
 */
 QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
-	result.setAttribute("x", originalPos().x());
-	result.setAttribute("y", originalPos().y());
+	result.setAttribute("x", QString("%1").arg(originalPos().x()));
+	result.setAttribute("y", QString("%1").arg(originalPos().y()));
 	result.setAttribute("text", toPlainText());
 	return(result);
 }

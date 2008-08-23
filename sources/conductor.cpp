@@ -931,7 +931,7 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 		foreach(ConductorSegment *segment, segmentsList()) {
 			current_segment = d.createElement("segment");
 			current_segment.setAttribute("orientation", segment -> isHorizontal() ? "horizontal" : "vertical");
-			current_segment.setAttribute("length", segment -> length());
+			current_segment.setAttribute("length", QString("%1").arg(segment -> length()));
 			e.appendChild(current_segment);
 		}
 	}

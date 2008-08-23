@@ -248,11 +248,11 @@ QDomDocument Diagram::toXml(bool diagram) {
 		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
 		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
 		racine.setAttribute("cols",    border_and_inset.nbColumns());
-		racine.setAttribute("colsize", border_and_inset.columnsWidth());
+		racine.setAttribute("colsize", QString("%1").arg(border_and_inset.columnsWidth()));
 		racine.setAttribute("rows",    border_and_inset.nbRows());
-		racine.setAttribute("rowsize", border_and_inset.rowsHeight());
+		racine.setAttribute("rowsize", QString("%1").arg(border_and_inset.rowsHeight()));
 		// attribut datant de la version 0.1 - laisse pour retrocompatibilite
-		racine.setAttribute("height",  border_and_inset.diagramHeight());
+		racine.setAttribute("height",  QString("%1").arg(border_and_inset.diagramHeight()));
 		racine.setAttribute("displaycols", border_and_inset.columnsAreDisplayed() ? "true" : "false");
 		racine.setAttribute("displayrows", border_and_inset.rowsAreDisplayed()    ? "true" : "false");
 		

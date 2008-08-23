@@ -99,8 +99,8 @@ void DiagramTextItem::fromXml(const QDomElement &e) {
 */
 QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
-	result.setAttribute("x", pos().x());
-	result.setAttribute("y", pos().y());
+	result.setAttribute("x", QString("%1").arg(pos().x()));
+	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toPlainText());
 	return(result);
 }

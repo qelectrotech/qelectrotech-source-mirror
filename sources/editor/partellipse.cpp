@@ -68,10 +68,10 @@ void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWi
 const QDomElement PartEllipse::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("ellipse");
 	QPointF top_left(sceneTopLeft());
-	xml_element.setAttribute("x", top_left.x());
-	xml_element.setAttribute("y", top_left.y());
-	xml_element.setAttribute("width",  rect().width());
-	xml_element.setAttribute("height", rect().height());
+	xml_element.setAttribute("x", QString("%1").arg(top_left.x()));
+	xml_element.setAttribute("y", QString("%1").arg(top_left.y()));
+	xml_element.setAttribute("width",  QString("%1").arg(rect().width()));
+	xml_element.setAttribute("height", QString("%1").arg(rect().height()));
 	stylesToXml(xml_element);
 	return(xml_element);
 }

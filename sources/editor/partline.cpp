@@ -66,10 +66,10 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 	QPointF p2(sceneP2());
 	
 	QDomElement xml_element = xml_document.createElement("line");
-	xml_element.setAttribute("x1", p1.x());
-	xml_element.setAttribute("y1", p1.y());
-	xml_element.setAttribute("x2", p2.x());
-	xml_element.setAttribute("y2", p2.y());
+	xml_element.setAttribute("x1", QString("%1").arg(p1.x()));
+	xml_element.setAttribute("y1", QString("%1").arg(p1.y()));
+	xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
+	xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
 	stylesToXml(xml_element);
 	return(xml_element);
 }
