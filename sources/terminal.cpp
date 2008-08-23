@@ -186,7 +186,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	
 #ifdef Q_WS_X11
 	// corrige un bug de rendu ne se produisant que lors du rendu sur QGraphicsScene sous X11 au zoom par defaut
-	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", true).toBool();
+	static bool must_correct_rendering_bug = QETApp::settings().value("correct-rendering", false).toBool();
 	if (must_correct_rendering_bug) {
 		Diagram *dia = diagram();
 		if (dia && options -> levelOfDetail == 1.0 && widget) {
