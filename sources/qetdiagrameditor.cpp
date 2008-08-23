@@ -534,8 +534,15 @@ bool QETDiagramEditor::save() {
 	@return true si l'enregistrement a reussi, false sinon
 */
 bool QETDiagramEditor::saveAsDialog() {
-	if (!currentDiagram()) return(false);
-	return(currentDiagram() -> saveAs());
+	if (DiagramView *current_diagram_view = currentDiagram()) {
+		bool save_file = current_diagram_view -> saveAs();
+		if (save_file) {
+			QETApp::projectsRecentFiles() -> fileWasOpened(current_diagram_view -> file_name);
+		}
+		return(save_file);
+	} else {
+		return(false);
+	}
 }
 
 /**

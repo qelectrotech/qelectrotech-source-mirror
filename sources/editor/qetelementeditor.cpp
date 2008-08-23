@@ -684,6 +684,7 @@ bool QETElementEditor::slot_saveAs() {
 	// si l'enregistrement reussit, le nom du fichier est conserve
 	if (result_save) {
 		setFileName(fn);
+		QETApp::elementsRecentFiles() -> fileWasOpened(fn);
 		ce_scene -> undoStack().setClean();
 	}
 	// retourne un booleen representatif de la reussite de l'enregistrement
