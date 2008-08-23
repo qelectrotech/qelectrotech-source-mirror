@@ -80,33 +80,28 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) : 
 	setMinimumSize(QSize(500, 350));
 	setWindowState(Qt::WindowMaximized);
 	
-	// si des chemins de fichiers valides sont passes en arguments
-	QList<DiagramView *> diagram_views;
-	if (files.size()) {
-		// alors on ouvre ces fichiers
-		foreach(QString file, files) {
-			DiagramView *sv = new DiagramView(this);
-			if (sv -> open(file)) diagram_views << sv;
-			else delete sv;
-		}
-	}
-	
-	// si aucun schema n'a ete ouvert jusqu'a maintenant, on ouvre un nouveau schema
-	if (!diagram_views.size()) diagram_views << new DiagramView(this);
-	
 	// connexions signaux / slots pour une interface sensee
 	connect(&workspace,                SIGNAL(windowActivated(QWidget *)), this, SLOT(slot_updateWindowsMenu()));
 	connect(&workspace,                SIGNAL(windowActivated(QWidget *)), this, SLOT(slot_updateActions()));
 	connect(QApplication::clipboard(), SIGNAL(dataChanged()),              this, SLOT(slot_updatePasteAction()));
-	
-	// ajout de tous les DiagramView necessaires
-	foreach (DiagramView *sv, diagram_views) addDiagramView(sv);
 	
 	// lecture des parametres
 	readSettings();
 	
 	// affichage
 	show();
+	
+	// si des chemins de fichiers valides sont passes en arguments
+	int opened_files = 0;
+	if (files.size()) {
+		// alors on ouvre ces fichiers
+		foreach(QString file, files) {
+			if (openAndAddDiagram(file)) ++ opened_files;
+		}
+	}
+	
+	// si aucun schema n'a ete ouvert jusqu'a maintenant, on ouvre un nouveau schema
+	if (!opened_files) newDiagram();
 }
 
 /**
