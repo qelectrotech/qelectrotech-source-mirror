@@ -7,8 +7,11 @@ project ( http://www.kde.org/ ).
 Thanks to Loic for his mathematics-related explanations.
 Thanks to Nicolas for the Mac OS X experimentations.
 Thanks to Remi Collet for the Fedora packaging.
+Thanks to Piotr SQLek Skólski for the Debian packaging.
+Thanks to `trem' for the Mandriva packaging.
 Thanks to TuxFamily ( http://tuxfamily.org ) for hosting the project.
 Thanks to `Nishiki' for his elements and his support.
+Thanks to qtcentre.org for their SingleApplication class.
 
 [fr]
 Merci à Trolltech pour la bibliothèque Qt ( http://trolltech.com/ ), sous
@@ -19,5 +22,8 @@ http://www.kde.org/ ).
 Merci à Loic pour ses explications d'ordre mathématique.
 Merci à Nicolas pour les expérimentations Mac OS X.
 Merci à Remi Collet pour les paquets Fedora.
+Merci à Piotr SQLek Skólski pour les paquets Debian.
+Merci à `trem' pour les paquets Mandriva.
 Merci à TuxFamily ( http://tuxfamily.org ) pour l'hébergement du projet.
 Merci à `Nishiki' pour ses éléments et son soutien.
+Merci à qtcentre.org pour leur classe SingleApplication.

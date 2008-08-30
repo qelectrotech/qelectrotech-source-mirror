@@ -3,7 +3,7 @@
 APP=qelectrotech.1
 MAN_DIR=$(dirname $0)/files
 
-find ${MAN_DIR} -type f -name "${APP}" -exec gzip {} \;
+find ${MAN_DIR} -type f -name "${APP}" -exec gzip --best {} \;
 
 # correct files permissions
 find ${MAN_DIR} -type d -exec chmod a+rx {} \;

@@ -6,6 +6,7 @@ cupsys-bsd for printing
 Howto compile :
 $ qmake (qmake-qt4 for Debian-based systems)
 $ make
+# umask 0022
 # make install
 
 [fr]
@@ -16,4 +17,5 @@ cupsys-bsd pour l'impression
 Comment compiler :
 $ qmake (qmake-qt4 pour les systèmes basés sur Debian)
 $ make
+# umask 0022
 # make install
