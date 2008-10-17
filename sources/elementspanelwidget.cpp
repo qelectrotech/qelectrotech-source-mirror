@@ -174,5 +174,5 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	}
 	
 	// affiche le menu
-	context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos)));
+	context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos + QPoint(2, 2))));
 }
