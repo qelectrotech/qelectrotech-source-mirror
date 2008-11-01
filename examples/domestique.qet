@@ -1,5 +1,5 @@
 <project version="0.1" >
-    <diagram title="Exemple d'instalation domestique" displayrows="true" cols="15" folio="" displaycols="true" height="340" colsize="50" rows="4" author="Benoît A" filename="Exemples QET" rowsize="80" >
+    <diagram title="Exemple d'installation domestique" displayrows="true" cols="15" folio="" displaycols="true" height="340" colsize="50" rows="4" author="Benoît A" filename="Exemples QET" rowsize="80" >
         <defaultconductor neutral="true" phase="1" ground="true" type="single" />
         <elements>
             <element x="150" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >

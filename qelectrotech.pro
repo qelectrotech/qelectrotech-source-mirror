@@ -14,6 +14,7 @@
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
 	QET_MIME_XML_PATH          = '../share/mime/application/'
 	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
+	QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
 	QET_DESKTOP_PATH           = 'share/applications/'
 	QET_ICONS_PATH             = 'share/icons/'
 	QET_MAN_PATH               = 'man/'
@@ -210,6 +211,9 @@ mime_xml.files     = misc/x-qet-*.xml
 mime_desktop.path  = $$join(INSTALL_PREFIX,,,$${QET_MIME_DESKTOP_PATH})
 mime_desktop.files = misc/x-qet-*.desktop
 
+mime_package.path  = $$join(INSTALL_PREFIX,,,$${QET_MIME_PACKAGE_PATH})
+mime_package.files = misc/qelectrotech.xml
+
 desktop.path       = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
 desktop.files      = misc/qelectrotech.desktop
 
@@ -224,7 +228,7 @@ man.extra          = sh man/compress_man_pages.sh
 INSTALLS += target elements lang copyright
 # Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
 unix {
-	INSTALLS += desktop mime_xml mime_desktop icons man examples
+	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples
 }
 
 # Options de compilation
