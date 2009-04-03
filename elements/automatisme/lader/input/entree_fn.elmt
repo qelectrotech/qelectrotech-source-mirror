@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Input (down front)</name>
         <name lang="fr" >Entrée (front descendant)</name>
+        <name lang="es" >Entrada (front descendant)</name>
     </names>
     <description>
         <text x="-4.25" y="5.25" size="9" text="N" />

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,7 +27,7 @@
 */
 ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget *parent) : QWidget(parent) {
 	// initialise la liste des categories
-	elementscategorieslist = new ElementsCategoriesList(this);
+	elementscategorieslist = new ElementsCategoriesList(false, QET::All, this);
 	
 	// actions
 	action_reload = new QAction(QIcon(":/ico/reload.png"),          tr("Recharger les cat\351gories"), this);
@@ -65,24 +65,31 @@ ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget *parent) : QWidget(pa
 	Destructeur
 */
 ElementsCategoriesWidget::~ElementsCategoriesWidget() {
-	
 }
 
 /**
 	Lance un editeur de categorie en mode "creation de categorie"
 */
 void ElementsCategoriesWidget::newCategory() {
-	QString s_c_path = elementscategorieslist -> selectedCategoryPath();
+	// recupere le chemin virtuel de la categorie selectionnee
+	ElementsLocation s_c_path = elementscategorieslist -> selectedLocation();
 	if (s_c_path.isNull()) return;
-	(new ElementsCategoryEditor(s_c_path, false, this)) -> exec();
-	elementscategorieslist -> reload();
+	
+	// lance un editeur de categorie
+	ElementsCategoryEditor *editor = new ElementsCategoryEditor(s_c_path, false, this);
+	int result = editor -> exec();
+	
+	// recharge la collection si besoin
+	if (result == QDialog::Accepted) {
+		elementscategorieslist -> reload();
+	}
 }
 
 /**
 	Lance un editeur de categorie en mode "edition de categorie"
 */
 void ElementsCategoriesWidget::editCategory() {
-	QString s_c_path = elementscategorieslist -> selectedCategoryPath();
+	ElementsLocation s_c_path = elementscategorieslist -> selectedLocation();
 	if (s_c_path.isNull()) return;
 	(new ElementsCategoryEditor(s_c_path, true, this)) -> exec();
 	elementscategorieslist -> reload();
@@ -93,7 +100,8 @@ void ElementsCategoriesWidget::editCategory() {
 */
 void ElementsCategoriesWidget::removeCategory() {
 	// recupere le chemin de la categorie
-	QString s_c_path = elementscategorieslist -> selectedCategoryPath();
+	ElementsLocation s_c_path = elementscategorieslist -> selectedLocation();
+	if (s_c_path.isNull()) return;
 	
 	// supprime la categorie
 	ElementsCategoryDeleter cat_deleter(s_c_path, this);

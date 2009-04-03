@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,26 +27,26 @@
 StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, QWidget *parent) : ElementItemEditor(editor, parent), part(p) {
 	// couleur
 	color = new QButtonGroup(this);
-	color -> addButton(black_color = new QRadioButton(tr("Noir")),  CustomElementGraphicPart::BlackColor);
-	color -> addButton(white_color = new QRadioButton(tr("Blanc")), CustomElementGraphicPart::WhiteColor);
+	color -> addButton(black_color = new QRadioButton(tr("Noir", "element part color")),  CustomElementGraphicPart::BlackColor);
+	color -> addButton(white_color = new QRadioButton(tr("Blanc", "element part color")), CustomElementGraphicPart::WhiteColor);
 	
 	// style
 	style = new QButtonGroup(this);
-	style -> addButton(normal_style = new QRadioButton(tr("Normal")),       CustomElementGraphicPart::NormalStyle);
-	style -> addButton(dashed_style = new QRadioButton(tr("Pointill\351")), CustomElementGraphicPart::DashedStyle);
+	style -> addButton(normal_style = new QRadioButton(tr("Normal", "element part line style")),       CustomElementGraphicPart::NormalStyle);
+	style -> addButton(dashed_style = new QRadioButton(tr("Pointill\351", "element part line style")), CustomElementGraphicPart::DashedStyle);
 	style -> button(part -> lineStyle()) -> setChecked(true);
 	
 	// epaisseur
 	weight = new QButtonGroup(this);
-	weight -> addButton(none_weight   = new QRadioButton(tr("Nulle")),   CustomElementGraphicPart::NoneWeight);
-	weight -> addButton(thin_weight   = new QRadioButton(tr("Fine")),    CustomElementGraphicPart::ThinWeight);
-	weight -> addButton(normal_weight = new QRadioButton(tr("Normale")), CustomElementGraphicPart::NormalWeight);
+	weight -> addButton(none_weight   = new QRadioButton(tr("Nulle", "element part weight")),   CustomElementGraphicPart::NoneWeight);
+	weight -> addButton(thin_weight   = new QRadioButton(tr("Fine", "element part weight")),    CustomElementGraphicPart::ThinWeight);
+	weight -> addButton(normal_weight = new QRadioButton(tr("Normale", "element part weight")), CustomElementGraphicPart::NormalWeight);
 	
 	// remplissage
 	filling = new QButtonGroup(this);
-	filling -> addButton(no_filling    = new QRadioButton(tr("Aucun")), CustomElementGraphicPart::NoneFilling );
-	filling -> addButton(black_filling = new QRadioButton(tr("Noir")),  CustomElementGraphicPart::BlackFilling);
-	filling -> addButton(white_filling = new QRadioButton(tr("Blanc")), CustomElementGraphicPart::WhiteFilling);
+	filling -> addButton(no_filling    = new QRadioButton(tr("Aucun", "element part filling")), CustomElementGraphicPart::NoneFilling );
+	filling -> addButton(black_filling = new QRadioButton(tr("Noir", "element part filling")),  CustomElementGraphicPart::BlackFilling);
+	filling -> addButton(white_filling = new QRadioButton(tr("Blanc", "element part filling")), CustomElementGraphicPart::WhiteFilling);
 	
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));

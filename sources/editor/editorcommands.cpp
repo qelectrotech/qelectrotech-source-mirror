@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ DeletePartsCommand::DeletePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("suppression"), parent),
+	QUndoCommand(QObject::tr("suppression", "undo caption"), parent),
 	deleted_parts(parts),
 	editor_scene(scene)
 {
@@ -59,6 +59,94 @@ void DeletePartsCommand::redo() {
 	}
 }
 
+/*** CutPartsCommand ***/
+/**
+	Constructeur
+	@param scene ElementScene concernee
+	@param parts Liste des parties collees
+	@param parent QUndoCommand parent
+*/
+PastePartsCommand::PastePartsCommand(
+	ElementView *view,
+	const ElementContent &c,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	content_(c),
+	editor_view_(view),
+	editor_scene_(view -> scene()),
+	uses_offset(false),
+	first_redo(true)
+{
+	setText(QObject::tr("coller"));
+	editor_scene_ -> qgiManager().manage(content_);
+}
+
+/// Destructeur
+PastePartsCommand::~PastePartsCommand() {
+	editor_scene_ -> qgiManager().release(content_);
+}
+
+/// annule le coller
+void PastePartsCommand::undo() {
+	// enleve les parties
+	foreach(QGraphicsItem *part, content_) editor_scene_ -> removeItem(part);
+	if (uses_offset) {
+		editor_view_ -> offset_paste_count_    = old_offset_paste_count_;
+		editor_view_ -> start_top_left_corner_ = old_start_top_left_corner_;
+	}
+	editor_view_ -> adjustSceneRect();
+}
+
+/// refait le coller
+void PastePartsCommand::redo() {
+	if (first_redo) first_redo = false;
+	else {
+		// pose les parties
+		foreach(QGraphicsItem *part, content_) editor_scene_ -> addItem(part);
+		if (uses_offset) {
+			editor_view_ -> offset_paste_count_    = new_offset_paste_count_;
+			editor_view_ -> start_top_left_corner_ = new_start_top_left_corner_;
+		}
+	}
+	foreach(QGraphicsItem *part, content_) part -> setSelected(true);
+	editor_view_ -> adjustSceneRect();
+}
+
+/**
+	Indique a cet objet d'annulation que le c/c a annuler ou refaire etait un
+	c/c avec decalage ; il faut plus d'informations pour annuler ce type de
+	collage.
+*/
+void PastePartsCommand::setOffset(int old_offset_pc, const QPointF &old_start_tlc, int new_offset_pc, const QPointF &new_start_tlc) {
+	old_offset_paste_count_    = old_offset_pc;
+	old_start_top_left_corner_ = old_start_tlc;
+	new_offset_paste_count_    = new_offset_pc;
+	new_start_top_left_corner_ = new_start_tlc;
+	uses_offset = true;
+}
+
+/*** CutPartsCommand ***/
+/**
+	Constructeur
+	@param scene ElementScene concernee
+	@param parts Liste des parties coupees
+	@param parent QUndoCommand parent
+*/
+CutPartsCommand::CutPartsCommand(
+	ElementScene *scene,
+	const QList<QGraphicsItem *> parts,
+	QUndoCommand *parent
+) :
+	DeletePartsCommand(scene, parts, parent)
+{
+	setText(QString(QObject::tr("couper des parties", "undo caption")));
+}
+
+/// Destructeur
+CutPartsCommand::~CutPartsCommand() {
+}
+
 /*** MovePartsCommand ***/
 /**
 	Constructeur
@@ -73,7 +161,7 @@ MovePartsCommand::MovePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("d\351placement"), parent),
+	QUndoCommand(QObject::tr("d\351placement", "undo caption"), parent),
 	movement(m),
 	first_redo(true)
 {
@@ -114,7 +202,7 @@ AddPartCommand::AddPartCommand(
 	QGraphicsItem *p,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("ajout ") + name, parent),
+	QUndoCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), parent),
 	part(p),
 	editor_scene(scene),
 	first_redo(true)
@@ -161,7 +249,7 @@ ChangePartCommand::ChangePartCommand(
 	const QVariant &new_v,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification ") + name, parent),
+	QUndoCommand(QString(QObject::tr("modification %1", "undo caption")).arg(name), parent),
 	cep(part),
 	property(prop),
 	old_value(old_v),
@@ -196,7 +284,7 @@ ChangePolygonPointsCommand::ChangePolygonPointsCommand(
 	const QVector<QPointF> &n_points,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification points polygone"), parent),
+	QUndoCommand(QObject::tr("modification points polygone", "undo caption"), parent),
 	polygon(p),
 	old_points(o_points),
 	new_points(n_points)
@@ -236,7 +324,7 @@ ChangeHotspotCommand::ChangeHotspotCommand(
 	const QPoint &o,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification dimensions/hotspot"), parent),
+	QUndoCommand(QObject::tr("modification dimensions/hotspot", "undo caption"), parent),
 	element(element_scene),
 	size_before(size_1),
 	size_after(size_2),
@@ -297,7 +385,7 @@ ChangeNamesCommand::ChangeNamesCommand(
 	const NamesList &after,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification noms"), parent),
+	QUndoCommand(QObject::tr("modification noms", "undo caption"), parent),
 	names_before(before),
 	names_after(after),
 	element(element_scene)
@@ -331,7 +419,7 @@ ChangeOrientationsCommand::ChangeOrientationsCommand(
 	const OrientationSet &after,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification orientations"), parent),
+	QUndoCommand(QObject::tr("modification orientations", "undo caption"), parent),
 	ori_before(before),
 	ori_after(after),
 	element(element_scene)
@@ -375,16 +463,16 @@ ChangeZValueCommand::ChangeZValueCommand(
 	
 	// choisit le nom en fonction du traitement
 	if (option == BringForward) {
-		setText(QObject::tr("amener au premier plan"));
+		setText(QObject::tr("amener au premier plan", "undo caption"));
 		applyBringForward(items_list);
 	} else if (option == Raise) {
-		setText(QObject::tr("rapprocher"));
+		setText(QObject::tr("rapprocher", "undo caption"));
 		applyRaise(items_list);
 	} else if (option == Lower) {
-		setText(QObject::tr("\351loigner"));
+		setText(QObject::tr("\351loigner", "undo caption"));
 		applyLower(items_list);
 	} else if (option == SendBackward) {
-		setText(QObject::tr("envoyer au fond"));
+		setText(QObject::tr("envoyer au fond", "undo caption"));
 		applySendBackward(items_list);
 	}
 }
@@ -483,7 +571,7 @@ void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_
 	@param parent QUndoCommand parent
 */
 AllowInternalConnectionsCommand::AllowInternalConnectionsCommand(ElementScene *elmt, bool allow, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modification connexions internes"), parent),
+	QUndoCommand(QObject::tr("modification connexions internes", "undo caption"), parent),
 	element(elmt),
 	ic(allow)
 {

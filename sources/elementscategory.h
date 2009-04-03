@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,39 +17,72 @@
 */
 #ifndef ELEMENTS_CATEGORY_H
 #define ELEMENTS_CATEGORY_H
-#include <QtCore>
+#include "elementscollectionitem.h"
 #include "nameslist.h"
+#include "elementslocation.h"
+class ElementDefinition;
+class ElementsCollection;
+class MoveElementsHandler;
+class MoveElementsDescription;
 /**
-	Cette classe represente une categorie d'elements.
-	Une categorie d'elements est en fait un dossier avec un fichier
-	qet_directory contenant ses caracteristiques (pour le moment : ses noms).
+	Cette classe abstraite represente une categorie d'elements.
 */
-class ElementsCategory : public QDir {
+class ElementsCategory : public ElementsCollectionItem {
+	Q_OBJECT
+	
 	// constructeurs, destructeur
 	public:
-	ElementsCategory(const QString & = QString());
+	ElementsCategory(ElementsCategory * = 0, ElementsCollection * = 0);
 	virtual ~ElementsCategory();
 	
 	private:
 	ElementsCategory(const ElementsCategory &);
 	
-	// attributs
-	private:
-	NamesList category_names;
-	
-	// methodes
+	// Implementations de methodes virtuelles pures des classes parentes
 	public:
-	QString name() const;
-	NamesList categoryNames() const;
-	void clearNames();
-	void addName(const QString &, const QString &);
-	bool write() const;
-	bool remove() const;
-	bool isWritable() const;
-	//bool move(const QString &new_parent);
+	virtual QETProject *project();
+	virtual void setProject(QETProject *);
+	virtual QString protocol();
+	virtual void setProtocol(const QString &);
+	virtual ElementsCategory *parentCategory();
+	virtual QList<ElementsCategory *> parentCategories();
+	virtual bool hasParentCategory();
+	virtual ElementsCollection *parentCollection();
+	virtual bool hasParentCollection();
+	virtual bool isChildOf(ElementsCollectionItem *);
+	virtual QString fullVirtualPath();
+	virtual ElementsLocation location();
+	virtual bool isRootCategory() const;
+	virtual bool isCollection() const;
+	virtual bool isCategory() const;
+	virtual bool isElement() const;
+	virtual ElementsCollection *toCollection();
+	virtual ElementsCategory *toCategory();
+	virtual ElementsCategory *toPureCategory();
+	virtual ElementDefinition *toElement();
+	virtual ElementsCollectionItem *copy(ElementsCategory *, MoveElementsHandler *, bool = true);
+	virtual ElementsCollectionItem *move(ElementsCategory *, MoveElementsHandler *);
+	virtual void deleteUnusedElements(MoveElementsHandler *handler);
+	virtual void deleteEmptyCategories(MoveElementsHandler *handler);
+	virtual bool isEmpty();
 	
-	private:
-	bool rmdir(const QString &) const;
-	void loadNames();
+	// Methodes propres a la classe ElementsCategory
+	public:
+	virtual QString name() const;
+	virtual NamesList categoryNames() const;
+	virtual void clearNames();
+	virtual void addName(const QString &, const QString &);
+	virtual void setNames(const NamesList &);
+	void copy(MoveElementsDescription *);
+	void move(MoveElementsDescription *);
+	
+	// attributs
+	protected:
+	/// Collection parente
+	ElementsCollection *parent_collection_;
+	/// Categorie parente
+	ElementsCategory   *parent_category_;
+	/// Liste des noms de la categorie
+	NamesList           category_names;
 };
 #endif

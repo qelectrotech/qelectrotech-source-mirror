@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -53,7 +53,7 @@ class Element : public QObject, public QGraphicsItem {
 	private:
 	QSize   dimensions;
 	QPoint  hotspot_coord;
-	QPixmap apercu;
+	QPixmap preview;
 	
 	// methodes
 	public:
@@ -69,11 +69,11 @@ class Element : public QObject, public QGraphicsItem {
 	/// @return la liste des conducteurs relies a cet element
 	virtual QList<Conductor *> conductors() const = 0;
 	/// @return le nombre de bornes actuel de cet element
-	virtual int nbTerminals() const = 0;
+	virtual int terminalsCount() const = 0;
 	/// @return le nombre de bornes minimum de cet element
-	virtual int nbTerminalsMin() const = 0;
+	virtual int minTerminalsCount() const = 0;
 	/// @return le nombre de bornes maximum de cet element
-	virtual int nbTerminalsMax() const = 0;
+	virtual int maxTerminalsCount() const = 0;
 	/**
 		Dessine l'element
 	*/
@@ -81,7 +81,7 @@ class Element : public QObject, public QGraphicsItem {
 	/// @return L'ID du type de l'element
 	virtual QString typeId() const = 0;
 	/// @return Le nom de l'element
-	virtual QString nom() const = 0;
+	virtual QString name() const = 0;
 	Diagram *diagram() const;
 	
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);

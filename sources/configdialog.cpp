@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,12 +24,12 @@
 */
 ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	
-	setWindowTitle(tr("Configurer QElectroTech"));
+	setWindowTitle(tr("Configurer QElectroTech", "window title"));
 	
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
-	pages_list -> setIconSize(QSize(48, 48));
+	pages_list -> setIconSize(QSize(110, 110));
 	pages_list -> setMovement(QListView::Static);
 	pages_list -> setMinimumWidth(135);
 	pages_list -> setMaximumWidth(135);
@@ -37,6 +37,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	
 	// pages
 	pages_widget = new QStackedWidget();
+	addPage(new GeneralConfigurationPage());
 	addPage(new NewDiagramPage());
 	buildPagesList();
 	

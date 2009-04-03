@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -60,7 +60,7 @@ void Terminal::initialise(QPointF pf, QET::Orientation o) {
 	setAcceptsHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
 	hovered = false;
-	setToolTip(QObject::tr("Borne"));
+	setToolTip(QObject::tr("Borne", "tooltip"));
 }
 
 /**

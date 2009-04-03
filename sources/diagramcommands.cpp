@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -33,7 +33,7 @@ AddElementCommand::AddElementCommand(
 	const QPointF &p,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("ajouter 1 ") + elmt -> nom(), parent),
+	QUndoCommand(QString(QObject::tr("ajouter 1 %1", "undo caption - %1 is an element name")).arg(elmt -> name()), parent),
 	element(elmt),
 	diagram(d),
 	position(p)
@@ -66,7 +66,7 @@ void AddElementCommand::redo() {
 	@param parent QUndoCommand parent
 */
 AddTextCommand::AddTextCommand(Diagram *dia, DiagramTextItem *text, const QPointF &pos, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("Ajouter un champ de texte"), parent),
+	QUndoCommand(QObject::tr("Ajouter un champ de texte", "undo caption"), parent),
 	textitem(text),
 	diagram(dia),
 	position(pos)
@@ -113,7 +113,7 @@ AddConductorCommand::AddConductorCommand(
 	Conductor *c,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("ajouter un conducteur"), parent),
+	QUndoCommand(QObject::tr("ajouter un conducteur", "undo caption"), parent),
 	conductor(c),
 	diagram(d)
 {
@@ -153,7 +153,14 @@ DeleteElementsCommand::DeleteElementsCommand(
 	removed_content(content),
 	diagram(dia)
 {
-	setText(QObject::tr("supprimer ") + removed_content.sentence(DiagramContent::All));
+	setText(
+		QString(
+			QObject::tr(
+				"supprimer %1",
+				"undo caption - %1 is a sentence listing the removed content"
+			)
+		).arg(removed_content.sentence(DiagramContent::All))
+	);
 	diagram -> qgiManager().manage(removed_content.items(DiagramContent::All));
 }
 
@@ -220,7 +227,14 @@ PasteDiagramCommand::PasteDiagramCommand(
 	first_redo(true)
 {
 	
-	setText(QObject::tr("coller ") + content.sentence(filter));
+	setText(
+		QString(
+			QObject::tr(
+				"coller %1",
+				"undo caption - %1 is a sentence listing the content to paste"
+			).arg(content.sentence(filter))
+		)
+	);
 	diagram -> qgiManager().manage(content.items(filter));
 }
 
@@ -280,7 +294,14 @@ CutDiagramCommand::CutDiagramCommand(
 ) : 
 	DeleteElementsCommand(dia, content, parent)
 {
-	setText(QObject::tr("couper ") + content.sentence(DiagramContent::All));
+	setText(
+		QString(
+			QObject::tr(
+				"couper %1",
+				"undo caption - %1 is a sentence listing the content to cut"
+			).arg(content.sentence(DiagramContent::All))
+		)
+	);
 }
 
 /// Destructeur
@@ -306,7 +327,21 @@ MoveElementsCommand::MoveElementsCommand(
 	movement(m),
 	first_redo(true)
 {
-	setText(QObject::tr("d\351placer ") + content_to_move.sentence(DiagramContent::Elements|DiagramContent::TextFields|DiagramContent::ConductorsToUpdate|DiagramContent::ConductorsToMove));
+	QString moved_content_sentence = content_to_move.sentence(
+		DiagramContent::Elements |
+		DiagramContent::TextFields |
+		DiagramContent::ConductorsToUpdate |
+		DiagramContent::ConductorsToMove
+	);
+	
+	setText(
+		QString(
+			QObject::tr(
+				"d\351placer %1",
+				"undo caption - %1 is a sentence listing the moved content"
+			).arg(moved_content_sentence)
+		)
+	);
 }
 
 /// Destructeur
@@ -367,7 +402,7 @@ ChangeDiagramTextCommand::ChangeDiagramTextCommand(
 	const QString &after,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modifier le texte"), parent),
+	QUndoCommand(QObject::tr("modifier le texte", "undo caption"), parent),
 	text_item(dti),
 	text_before(before),
 	text_after(after),
@@ -400,9 +435,17 @@ void ChangeDiagramTextCommand::redo() {
 	@param parent QUndoCommand parent
 */
 RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("pivoter ") + QET::ElementsAndConductorsSentence(elements.count(), 0), parent),
+	QUndoCommand(parent),
 	elements_to_rotate(elements)
 {
+	setText(
+		QString(
+			QObject::tr(
+				"pivoter %1",
+				"undo caption - %1 is a sentence listing the rotated content"
+			)
+		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0))
+	);
 }
 
 /// Destructeur
@@ -439,7 +482,7 @@ ChangeConductorCommand::ChangeConductorCommand(
 	Qt::Corner path_t,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modifier un conducteur"), parent),
+	QUndoCommand(QObject::tr("modifier un conducteur", "undo caption"), parent),
 	conductor(c),
 	old_profile(old_p),
 	new_profile(new_p),
@@ -472,9 +515,15 @@ ResetConductorCommand::ResetConductorCommand(
 	const QHash<Conductor *, ConductorProfilesGroup> &cp,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("R\351initialiser ") + QET::ElementsAndConductorsSentence(0, cp.count()), parent),
+	QUndoCommand(parent),
 	conductors_profiles(cp)
 {
+	setText(
+		QObject::tr(
+			"R\351initialiser %1",
+			"undo caption - %1 is a sentence listing the reset content"
+		).arg(QET::ElementsAndConductorsSentence(0, cp.count()))
+	);
 }
 
 /// Destructeur
@@ -508,7 +557,7 @@ ChangeInsetCommand::ChangeInsetCommand(
 	const InsetProperties &new_ip,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modifier le cartouche"), parent),
+	QUndoCommand(QObject::tr("modifier le cartouche", "undo caption"), parent),
 	diagram(d),
 	old_inset(old_ip),
 	new_inset(new_ip)
@@ -537,7 +586,7 @@ void ChangeInsetCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, const BorderProperties &old_bp, const BorderProperties &new_bp, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modifier les dimensions du sch\351ma"), parent),
+	QUndoCommand(QObject::tr("modifier les dimensions du sch\351ma", "undo caption"), parent),
 	diagram(dia),
 	old_properties(old_bp),
 	new_properties(new_bp)
@@ -564,7 +613,7 @@ void ChangeBorderCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeConductorPropertiesCommand::ChangeConductorPropertiesCommand(Conductor *c, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur"), parent),
+	QUndoCommand(QObject::tr("modifier les propri\351t\351s d'un conducteur", "undo caption"), parent),
 	conductor(c),
 	old_settings_set(false),
 	new_settings_set(false)

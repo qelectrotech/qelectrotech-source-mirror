@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,29 +17,31 @@
 */
 #ifndef ELEMENTS_CATEGORY_DELETER_H
 #define ELEMENTS_CATEGORY_DELETER_H
-#include "elementscategory.h"
+#include "fileelementscategory.h"
+#include "elementslocation.h"
 #include <QtGui>
 /**
-	Cette ckasse represente une couche d'abstraction pour supprimer
+	Cette classe represente une couche d'abstraction pour supprimer
 	une categorie d'elements et les elements qu'elle contient.
-	Elle demande notamment confirmation a l'utilisateur par deux fois.
+	Si la categorie racine d'une collection est fournie, elle sera
+	videe apres un avertissement.
+	Cette classe demande toujours confirmation a l'utilisateur par deux fois.
 */
 class ElementsCategoryDeleter : public QWidget {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
-	ElementsCategoryDeleter(const QString &, QWidget * = 0);
+	ElementsCategoryDeleter(const ElementsLocation &, QWidget * = 0);
 	virtual ~ElementsCategoryDeleter();
 	private:
 	ElementsCategoryDeleter(const ElementsCategory &);
 	
 	// methodes
 	public slots:
-	void exec();
+	bool exec();
 	
 	// attributs
 	private:
-	ElementsCategory cat;
-	bool empty_category_path;
+	ElementsCollectionItem *category;
 };
 #endif

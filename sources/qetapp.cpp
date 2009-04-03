@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,9 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
+#include "elementscollectionitem.h"
+#include "fileelementscollection.h"
+#include "qetproject.h"
 #include "recentfiles.h"
 #include <cstdlib>
 #include <iostream>
@@ -28,6 +31,11 @@ QString QETApp::common_elements_dir = QString();
 QString QETApp::config_dir = QString();
 QString QETApp::lang_dir = QString();
 QString QETApp::diagram_texts_font = QString();
+int QETApp::diagram_texts_size = 9;
+FileElementsCollection *QETApp::common_collection = 0;
+FileElementsCollection *QETApp::custom_collection = 0;
+QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
+uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
 
@@ -75,10 +83,10 @@ QETApp::QETApp(int &argc, char **argv) :
 	
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
-		setSplashScreenStep(tr("Chargement... \311diteur de sch\351mas"));
+		setSplashScreenStep(tr("Chargement... \311diteur de sch\351mas", "splash screen caption"));
 		new QETDiagramEditor();
 	} else {
-		setSplashScreenStep(tr("Chargement... Ouverture des fichiers"));
+		setSplashScreenStep(tr("Chargement... Ouverture des fichiers", "splash screen caption"));
 		openFiles(qet_arguments_);
 	}
 	buildSystemTrayMenu();
@@ -92,6 +100,8 @@ QETApp::~QETApp() {
 	delete elements_recent_files_;
 	delete projects_recent_files_;
 	delete qsti;
+	delete custom_collection;
+	delete common_collection;
 }
 
 /**
@@ -112,14 +122,15 @@ void QETApp::setLanguage(const QString &desired_language) {
 	qtTranslator.load("qt_" + desired_language, languages_path);
 	installTranslator(&qtTranslator);
 	
-	// determine la langue a utiliser pour l'application
-	if (desired_language != "fr") {
-		// utilisation de la version anglaise par defaut
-		if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
+	// charge les traductions pour l'application QET
+	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
+		// en cas d'echec, on retombe sur les chaines natives pour le francais
+		if (desired_language != "fr") {
+			// utilisation de la version anglaise par defaut
 			qetTranslator.load("qet_en", languages_path);
 		}
-		installTranslator(&qetTranslator);
 	}
+	installTranslator(&qetTranslator);
 }
 
 /**
@@ -188,6 +199,50 @@ void QETApp::newDiagramEditor() {
 /// lance un nouvel editeur d'element
 void QETApp::newElementEditor() {
 	new QETElementEditor();
+}
+
+/**
+	@return la collection commune
+*/
+ElementsCollection *QETApp::commonElementsCollection() {
+	if (!common_collection) {
+		common_collection = new FileElementsCollection(QETApp::commonElementsDir());
+		common_collection -> setProtocol("common");
+	}
+	return(common_collection);
+}
+
+/**
+	@return la collection utilisateur
+*/
+ElementsCollection *QETApp::customElementsCollection() {
+	if (!custom_collection) {
+		custom_collection = new FileElementsCollection(QETApp::customElementsDir());
+		custom_collection -> setProtocol("custom");
+	}
+	return(custom_collection);
+}
+
+/**
+	@return la liste des collections disponibles
+	Cela inclut typiquement la collection commune, la collection perso
+	ainsi que les collections embarquees dans les projets.
+*/
+QList<ElementsCollection *> QETApp::availableCollections() {
+	QList<ElementsCollection *> coll_list;
+	
+	// collection commune
+	coll_list << commonElementsCollection();
+	
+	// collection perso
+	coll_list << customElementsCollection();
+	
+	// collections embarquees
+	foreach(QETProject *opened_project, registered_projects_.values()) {
+		coll_list << opened_project -> embeddedCollection();
+	}
+	
+	return(coll_list);
 }
 
 /**
@@ -372,6 +427,9 @@ QString QETApp::languagesPath() {
 bool QETApp::closeEveryEditor() {
 	// s'assure que toutes les fenetres soient visibles avant de quitter
 	restoreEveryEditor();
+	foreach(QETProject *project, registered_projects_) {
+		project -> close();
+	}
 	bool every_window_closed = true;
 	foreach(QETDiagramEditor *e, diagramEditors()) {
 		every_window_closed = every_window_closed && e -> close();
@@ -382,8 +440,58 @@ bool QETApp::closeEveryEditor() {
 	return(every_window_closed);
 }
 
+/**
+	@return la police a utiliser pour rendre les textes sur les schemas
+*/
 QString QETApp::diagramTextsFont() {
 	return(diagram_texts_font);
+}
+
+/**
+	@return la taille de police par defaut a utiliser pour rendre les textes
+	sur les schemas
+*/
+int QETApp::diagramTextsSize() {
+	return(diagram_texts_size);
+}
+
+/**
+	@return les editeurs de schemas
+*/
+QList<QETDiagramEditor *> QETApp::diagramEditors() {
+	return(static_cast<QETApp *>(qApp) -> detectDiagramEditors());
+}
+
+/**
+	@return les editeurs d'elements
+*/
+QList<QETElementEditor *> QETApp::elementEditors() {
+	return(static_cast<QETApp *>(qApp) -> detectElementEditors());
+}
+
+/**
+	@param project un projet
+	@return les editeurs d'elements editant un element appartenant au projet
+	project
+*/
+QList<QETElementEditor *> QETApp::elementEditors(QETProject *project) {
+	QList<QETElementEditor *> editors;
+	if (!project) return(editors);
+	
+	// pour chaque editeur d'element...
+	foreach(QETElementEditor *elmt_editor, elementEditors()) {
+		// on recupere l'emplacement de l'element qu'il edite
+		ElementsLocation elmt_editor_loc(elmt_editor -> location());
+		
+		// il se peut que l'editeur edite un element non enregistre ou un fichier
+		if (elmt_editor_loc.isNull()) continue;
+		
+		if (elmt_editor_loc.project() == project) {
+			editors << elmt_editor;
+		}
+	}
+	
+	return(editors);
 }
 
 /**
@@ -394,7 +502,7 @@ void QETApp::cleanup() {
 }
 
 /// @return les editeurs de schemas ouverts
-QList<QETDiagramEditor *> QETApp::diagramEditors() const {
+QList<QETDiagramEditor *> QETApp::detectDiagramEditors() const {
 	QList<QETDiagramEditor *> diagram_editors;
 	foreach(QWidget *qw, topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
@@ -406,7 +514,7 @@ QList<QETDiagramEditor *> QETApp::diagramEditors() const {
 }
 
 /// @return les editeurs d'elements ouverts
-QList<QETElementEditor *> QETApp::elementEditors() const {
+QList<QETElementEditor *> QETApp::detectElementEditors() const {
 	QList<QETElementEditor *> element_editors;
 	foreach(QWidget *qw, topLevelWidgets()) {
 		if (!qw -> isWindow()) continue;
@@ -549,7 +657,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 		
 		// ouvre les fichiers dans l'editeur ainsi choisi
 		foreach(QString file, files_list) {
-			de_open -> openAndAddDiagram(file);
+			de_open -> openAndAddProject(file);
 		}
 	} else {
 		// cree un nouvel editeur qui ouvrira les fichiers
@@ -646,7 +754,7 @@ void QETApp::initSplashScreen() {
 	if (non_interactive_execution_) return;
 	splash_screen_ = new QSplashScreen(QPixmap(":/ico/splash.png"));
 	splash_screen_ -> show();
-	setSplashScreenStep(tr("Chargement..."));
+	setSplashScreenStep(tr("Chargement...", "splash screen caption"));
 }
 
 /**
@@ -700,6 +808,7 @@ void QETApp::initConfiguration() {
 	
 	// police a utiliser pour le rendu de texte
 	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
+	diagram_texts_size = qet_settings -> value("diagramsize", 9).toInt();
 	
 	// fichiers recents
 	projects_recent_files_ = new RecentFiles("projects");
@@ -710,9 +819,9 @@ void QETApp::initConfiguration() {
 	Construit l'icone dans le systray et son menu
 */
 void QETApp::initSystemTray() {
-	setSplashScreenStep(tr("Chargement... icône du systray"));
+	setSplashScreenStep(tr("Chargement... icône du systray", "splash screen caption"));
 	// initialisation des menus de l'icone dans le systray
-	menu_systray = new QMenu(tr("QElectroTech"));
+	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 	
 	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
 	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
@@ -740,7 +849,7 @@ void QETApp::initSystemTray() {
 	
 	// initialisation de l'icone du systray
 	qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
-	qsti -> setToolTip(tr("QElectroTech"));
+	qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
 	connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
 	qsti -> setContextMenu(menu_systray);
 	qsti -> show();
@@ -857,7 +966,7 @@ void QETApp::printHelp() {
 	Affiche la version sur la sortie standard
 */
 void QETApp::printVersion() {
-	std::cout << qPrintable(QET::version) << std::endl;
+	std::cout << qPrintable(QET::displayedVersion) << std::endl;
 }
 
 /**
@@ -915,4 +1024,125 @@ QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QS
 /// @return une reference vers les parametres de QElectroTEch
 QSettings &QETApp::settings() {
 	return(*(instance() -> qet_settings));
+}
+
+/**
+	@param location adresse virtuelle d'un item (collection, categorie, element, ...)
+	@param prefer_collections true pour renvoyer la collection lorsque le
+	chemin correspond aussi bien a une collection qu'a sa categorie racine
+	@return l'item correspondant a l'adresse virtuelle path, ou 0 si celui-ci n'a pas ete trouve
+*/
+ElementsCollectionItem *QETApp::collectionItem(const ElementsLocation &location, bool prefer_collections) {
+	if (QETProject *target_project = location.project()) {
+		return(target_project -> embeddedCollection() -> item(location.path(), prefer_collections));
+	} else {
+		QString path(location.path());
+		if (path.startsWith("common://")) {
+			return(common_collection -> item(path, prefer_collections));
+		} else if (path.startsWith("custom://")) {
+			return(custom_collection -> item(path, prefer_collections));
+		}
+	}
+	return(0);
+}
+
+/**
+	@param location adresse virtuelle de la categorie a creer
+	@return la categorie creee, ou 0 en cas d'echec
+*/
+ElementsCategory *QETApp::createCategory(const ElementsLocation &location) {
+	if (QETProject *target_project = location.project()) {
+		return(target_project -> embeddedCollection() -> createCategory(location.path()));
+	} else {
+		QString path(location.path());
+		if (path.startsWith("common://")) {
+			return(common_collection -> createCategory(path));
+		} else if (path.startsWith("custom://")) {
+			return(custom_collection -> createCategory(path));
+		}
+	}
+	return(0);
+}
+
+/**
+	@param location adresse virtuelle de l'element a creer
+	@return l'element cree, ou 0 en cas d'echec
+*/
+ElementDefinition *QETApp::createElement(const ElementsLocation &location) {
+	if (QETProject *target_project = location.project()) {
+		return(target_project -> embeddedCollection() -> createElement(location.path()));
+	} else {
+		QString path(location.path());
+		if (path.startsWith("common://")) {
+			return(common_collection -> createElement(path));
+		} else if (path.startsWith("custom://")) {
+			return(custom_collection -> createElement(path));
+		}
+	}
+	return(0);
+}
+
+/**
+	@return la liste des projets avec leurs ids associes
+*/
+QMap<uint, QETProject *> QETApp::registeredProjects() {
+	return(registered_projects_);
+}
+
+/**
+	@param project Projet a enregistrer aupres de l'application
+	@return true si le projet a pu etre enregistre, false sinon
+	L'echec de l'enregistrement d'un projet signifie generalement qu'il est deja enregistre.
+*/
+bool QETApp::registerProject(QETProject *project) {
+	// le projet doit sembler valide
+	if (!project) return(false);
+	
+	// si le projet est deja enregistre, renvoie false
+	if (projectId(project) != -1) return(false);
+	
+	// enregistre le projet
+	registered_projects_.insert(next_project_id ++, project);
+	return(true);
+}
+
+/**
+	Annule l'enregistrement du projet project
+	@param project Projet dont il faut annuler l'enregistrement
+	@return true si l'annulation a reussi, false sinon
+	L'echec de cette methode signifie generalement que le projet n'etait pas enregistre.
+*/
+bool QETApp::unregisterProject(QETProject *project) {
+	int project_id = projectId(project);
+	
+	// si le projet n'est pas enregistre, renvoie false
+	if (project_id == -1) return(false);
+	
+	// annule l'enregistrement du projet
+	return(registered_projects_.remove(project_id) == 1);
+}
+
+/**
+	@param id Id du projet voulu
+	@return le projet correspond a l'id passe en parametre
+*/
+QETProject *QETApp::project(const uint &id) {
+	if (registered_projects_.contains(id)) {
+		return(registered_projects_[id]);
+	} else {
+		return(0);
+	}
+}
+
+/**
+	@param project Projet dont on souhaite recuperer l'id
+	@return l'id du projet en parametre si celui-ci est enregistre, -1 sinon
+*/
+int QETApp::projectId(const QETProject *project) {
+	foreach(int id, registered_projects_.keys()) {
+		if (registered_projects_[id] == project) {
+			return(id);
+		}
+	}
+	return(-1);
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -86,7 +86,7 @@ void TextFieldEditor::updateTextFieldX() { addChangePartCommand(tr("abscisse"), 
 /// Met a jour l'ordonnee de la position du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldY() { addChangePartCommand(tr("ordonn\351e"),     part, "y",      qle_y -> text().toDouble()); updateForm(); }
 /// Met a jour le texte du champ de texte et cree un objet d'annulation
-void TextFieldEditor::updateTextFieldT() { addChangePartCommand(tr("texte"),           part, "text",   qle_text -> text());         }
+void TextFieldEditor::updateTextFieldT() { addChangePartCommand(tr("contenu"),         part, "text",   qle_text -> text());         }
 /// Met a jour la taille du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldS() { addChangePartCommand(tr("taille"),          part, "size",   font_size -> value());       }
 /// Met a jour la taille du champ de texte et cree un objet d'annulation

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #ifndef BORDER_PROPERTIES_H
 #define BORDER_PROPERTIES_H
 #include <QtCore>
+#include <QtXml>
 /**
 	Cette classe est un conteneur pour les dimensions et proprietes d'affichage
 	d'un schema : affichage, nombre et dimensions des colonnes et lignes, ...
@@ -30,6 +31,11 @@ class BorderProperties {
 	
 	bool operator==(const BorderProperties &);
 	bool operator!=(const BorderProperties &);
+	
+	void toXml(QDomElement &) const;
+	void fromXml(QDomElement &);
+	void toSettings(QSettings &, const QString & = QString()) const;
+	void fromSettings(QSettings &, const QString & = QString());
 	
 	// attributs
 	int columns_count;            ///< Nombre de colonnes

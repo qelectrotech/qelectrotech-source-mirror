@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,13 +15,14 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef ELEMENTPERSO_H
-#define ELEMENTPERSO_H
+#ifndef CUSTOM_ELEMENT_H
+#define CUSTOM_ELEMENT_H
 #include "fixedelement.h"
 #include <QtGui>
 #include "nameslist.h"
-class CustomElementPart;
-
+#include "elementslocation.h"
+class ElementTextItem;
+class Terminal;
 /**
 	Cette classe represente un element electrique. Elle est utilisable
 	comme un element fixe. La difference est que l'element perso lit
@@ -29,65 +30,69 @@ class CustomElementPart;
 	en parametre.
 */
 class CustomElement : public FixedElement {
+	
+	Q_OBJECT
+	
 	// constructeurs, destructeur
 	public:
-	CustomElement(QString &, QGraphicsItem * = 0, Diagram * = 0, int * = NULL);
+	CustomElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
+	CustomElement(const QDomElement &,      QGraphicsItem * = 0, Diagram * = 0, int * = 0);
 	virtual ~CustomElement();
-	
-	friend class CustomElementPart;
 	
 	private:
 	CustomElement(const CustomElement &);
 	
 	// attributs
-	private:
-	int elmt_etat; // contient le code d'erreur si l'instanciation a echoue ou 0 si l'instanciation s'est bien passe
+	protected:
+	int elmt_state; // contient le code d'erreur si l'instanciation a echoue ou 0 si l'instanciation s'est bien passe
 	NamesList names;
-	QString nomfichier;
-	QPicture dessin;
+	ElementsLocation location_;
+	QPicture drawing;
 	QList<Terminal *> list_terminals;
 	
 	// methodes
 	public:
 	virtual QList<Terminal *> terminals() const;
 	virtual QList<Conductor *> conductors() const;
-	virtual int nbTerminals() const;
+	virtual int terminalsCount() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;
-	QString fichier() const;
+	ElementsLocation location() const;
 	bool isNull() const;
-	int etat() const;
-	QString nom() const;
+	int state() const;
+	QString name() const;
 	
-	private:
-	bool parseElement(QDomElement &, QPainter &);
-	bool parseLine(QDomElement &, QPainter &);
-	bool parseEllipse(QDomElement &, QPainter &);
-	bool parseCircle(QDomElement &, QPainter &);
-	bool parseArc(QDomElement &, QPainter &);
-	bool parsePolygon(QDomElement &, QPainter &);
-	bool parseText(QDomElement &, QPainter &);
-	bool parseInput(QDomElement &);
-	bool parseTerminal(QDomElement &);
-	void setQPainterAntiAliasing(QPainter &, bool);
-	bool validOrientationAttribute(QDomElement &);
-	void setPainterStyle(QDomElement &, QPainter &);
+	protected:
+	virtual bool buildFromXml(const QDomElement &, int * = 0);
+	virtual bool parseElement(QDomElement &, QPainter &);
+	virtual bool parseLine(QDomElement &, QPainter &);
+	virtual bool parseRect(QDomElement &, QPainter &);
+	virtual bool parseEllipse(QDomElement &, QPainter &);
+	virtual bool parseCircle(QDomElement &, QPainter &);
+	virtual bool parseArc(QDomElement &, QPainter &);
+	virtual bool parsePolygon(QDomElement &, QPainter &);
+	virtual bool parseText(QDomElement &, QPainter &);
+	virtual ElementTextItem *parseInput(QDomElement &);
+	virtual Terminal *parseTerminal(QDomElement &);
+	virtual void setQPainterAntiAliasing(QPainter &, bool);
+	virtual bool validOrientationAttribute(const QDomElement &);
+	virtual void setPainterStyle(QDomElement &, QPainter &);
 };
 
 /**
 	@return L'ID du type de l'element ; pour un CustomElement, cela revient au
 	nom du fichier
-	@see fichier()
+	@see location()
 */
 inline QString CustomElement::typeId() const {
-	return(nomfichier);
+	return(location_.path());
 }
 
 /**
 	@return L'adresse du fichier contenant la description XML de cet element
 */
-inline QString CustomElement::fichier() const {
-	return(nomfichier);
+inline ElementsLocation CustomElement::location() const {
+	return(location_);
 }
 
 /**
@@ -95,7 +100,7 @@ inline QString CustomElement::fichier() const {
 	description XML a echoue
 */
 inline bool CustomElement::isNull() const {
-	return(elmt_etat != 0);
+	return(elmt_state);
 }
 
 /**
@@ -110,15 +115,15 @@ inline bool CustomElement::isNull() const {
 		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
-inline int CustomElement::etat() const {
-	return(elmt_etat);
+inline int CustomElement::state() const {
+	return(elmt_state);
 }
 
 /**
 	@return Le nom de l'element
 */
-inline QString CustomElement::nom() const {
-	return(names.name(QFileInfo(nomfichier).baseName()));
+inline QString CustomElement::name() const {
+	return(names.name(location_.baseName()));
 }
 
 #endif

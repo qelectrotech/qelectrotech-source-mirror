@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,8 +17,8 @@
 */
 #ifndef INSET_PROPERTIES_H
 #define INSET_PROPERTIES_H
-#include <QDate>
-#include <QString>
+#include <QtCore>
+#include <QtXml>
 /**
 	Cette classe est un conteneur pour les proprietes d'un cartouche de schema
 	: titre, auteur, date, nom de fichier et folio
@@ -35,6 +35,12 @@ class InsetProperties {
 	
 	bool operator==(const InsetProperties &);
 	bool operator!=(const InsetProperties &);
+	
+	void toXml(QDomElement &) const;
+	void fromXml(QDomElement &);
+	void toSettings(QSettings &, const QString & = QString()) const;
+	void fromSettings(QSettings &, const QString & = QString());
+	
 	QDate finalDate() const ;
 	
 	// attributs
@@ -44,5 +50,9 @@ class InsetProperties {
 	QString filename;         ///< Nom de fichier affiche par le cartouche
 	QString folio;            ///< Folio affiche par le cartouche
 	DateManagement useDate;   ///< Indique s'il faut utiliser ou non l'attribut date
+	
+	private:
+	QString exportDate() const;
+	void setDateFromString(const QString &);
 };
 #endif

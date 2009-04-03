@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,6 +25,8 @@
 */
 class ElementView : public QGraphicsView {
 	Q_OBJECT
+	friend class PastePartsCommand;
+	
 	// constructeurs, destructeur
 	public:
 	ElementView(ElementScene *, QWidget * = 0);
@@ -37,9 +39,16 @@ class ElementView : public QGraphicsView {
 	public:
 	ElementScene *scene() const;
 	void setScene(ElementScene *);
+	QRectF viewedSceneRect() const;
+	
 	protected:
 	bool event(QEvent *);
+	void mousePressEvent(QMouseEvent *);
 	void wheelEvent(QWheelEvent *);
+	virtual void drawBackground(QPainter *, const QRectF &);
+	
+	private:
+	QRectF applyMovement(const QRectF &, const QET::OrientedMovement &, const QPointF &);
 	
 	// slots
 	public slots:
@@ -48,9 +57,23 @@ class ElementView : public QGraphicsView {
 	void zoomFit();
 	void zoomReset();
 	void adjustSceneRect();
+	void cut();
+	void copy();
+	void paste();
+	void pasteInArea();
+	
+	private slots:
+	void getPasteArea(const QRectF &);
+	ElementContent pasteAreaDefined(const QRectF &);
+	ElementContent paste(const QPointF &);
+	ElementContent paste(const QDomDocument &, const QPointF &);
+	ElementContent pasteWithOffset(const QDomDocument &);
 	
 	//attributs
 	private:
 	ElementScene *scene_;
+	QString to_paste_in_area_;
+	int offset_paste_count_;
+	QPointF start_top_left_corner_;
 };
 #endif

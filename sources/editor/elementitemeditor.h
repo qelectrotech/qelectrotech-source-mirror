@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@ class QETElementEditor;
 class ElementScene;
 class CustomElementPart;
 /**
-	Cette classe est la classe de base pour les editeurs de aprties dans
+	Cette classe est la classe de base pour les editeurs de parties dans
 	l'editeur d'element. Elle fournit des methodes pour acceder facilement
 	a l'editeur, a la pile d'annulation, a la scene d'edition ou encore pour
 	ajouter facilement une annulation de type ChangePartCommand.

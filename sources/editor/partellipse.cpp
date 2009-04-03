@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -129,6 +129,7 @@ void PartEllipse::setProperty(const QString &property, const QVariant &value) {
 		current_rect.setHeight(new_height);
 		setRect(current_rect);
 	}
+	update();
 }
 
 /**

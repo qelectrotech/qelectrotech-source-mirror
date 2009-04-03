@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,7 +19,9 @@
 #define EDITOR_COMMANDS_H
 #include "customelementpart.h"
 #include "partpolygon.h"
+#include "elementview.h"
 #include "elementscene.h"
+#include "elementcontent.h"
 #include "qgimanager.h"
 #include <QtGui>
 /**
@@ -45,6 +47,52 @@ class DeletePartsCommand : public QUndoCommand {
 	QList<QGraphicsItem *> deleted_parts;
 	/// scene sur laquelle se produisent les actions
 	ElementScene *editor_scene;
+};
+
+/**
+	Cette classe represente l'action de coller quelque chose dans un element
+*/
+class PastePartsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = 0);
+	virtual ~PastePartsCommand();
+	private:
+	PastePartsCommand(const PastePartsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void setOffset(int, const QPointF &, int, const QPointF &);
+	
+	// attributs
+	private:
+	/// contenu  ajoute
+	ElementContent content_;
+	/// schema sur lequel on colle les elements et conducteurs
+	ElementView *editor_view_;
+	ElementScene *editor_scene_;
+	/// Informations pour annuler un c/c avec decalage
+	int old_offset_paste_count_;
+	QPointF old_start_top_left_corner_;
+	int new_offset_paste_count_;
+	QPointF new_start_top_left_corner_;
+	bool uses_offset;
+	/// booleen pour empecher le premier appel a redo
+	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de supprimer des parties d'un element
+*/
+class CutPartsCommand : public DeletePartsCommand {
+	// constructeurs, destructeur
+	public:
+	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
+	virtual ~CutPartsCommand();
+	private:
+	CutPartsCommand(const CutPartsCommand &);
 };
 
 /**

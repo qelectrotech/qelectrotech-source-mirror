@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,13 +24,71 @@
 	classes de l'application
 */
 namespace QET {
-	/// version de QElectroTech
-	const QString version = "0.11";
+	/// version de QElectroTech (utilisee pour estampiller les projets et elements)
+	const QString version = "0.2";
+	/// version affichee de QElectroTech
+	const QString displayedVersion = version;
 	QString license();
 	/// Orientation (utilise pour les bornes mais aussi pour les elements)
 	enum Orientation {North, East, South, West};
+	
+	/// Mouvements orientes
+	enum OrientedMovement {
+		ToNorth,
+		ToNorthEast,
+		ToEast,
+		ToSouthEast,
+		ToSouth,
+		ToSouthWest,
+		ToWest,
+		ToNorthWest
+	};
+	
 	/// Types de segment de conducteurs
-	enum ConductorSegmentType { Horizontal = 1, Vertical = 2, Both = 3 };
+	enum ConductorSegmentType {
+		Horizontal = 1, ///< Segment horizontal
+		Vertical = 2,   ///< Segment vertical
+		Both = 3        ///< Segment en biais / invalide
+	};
+	
+	/**
+		Cet enum represente les differents embouts possibles pour les
+		extremites d'une ligne.
+	*/
+	enum EndType {
+		None,      ///< Ligne normale
+		Simple,    ///< Triangle sans base
+		Triangle,  ///< Triangle
+		Circle,    ///< Cercle
+		Diamond    ///< Losange
+	};
+	
+	/**
+		Cet enum represente les differents items manipulables dans une
+		collection d'elements.
+	*/
+	enum ItemType {
+		Element    = 1, ///< Element
+		Category   = 2, ///< Categorie
+		Collection = 4, ///< Collection
+		All        = 7  ///< Tous
+	};
+	
+	
+	/**
+		Cet enum represente les differentes facons de gerer un probleme lors de
+		la recopie ou du deplacement d'un element ou d'une categorie.
+		@see MoveElementsHandler
+	*/
+	enum Action {
+		Retry,   ///< il faut reessayer l'operation
+		Ignore,  ///< il faut passer a la suite
+		Erase,   ///< il faut ecraser le contenu cible
+		Abort,   ///< il faut arreter : ignorer l'item en cours et ne pas continuer
+		Managed, ///< le cas a ete gere par l'objet delegue : ne pas le traiter et passer a la suite
+		Rename   ///< il faut renommer la cible
+	};
+	
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);
 	QET::Orientation orientationFromString(const QString &);
@@ -43,10 +101,15 @@ namespace QET {
 	QString ElementsAndConductorsSentence(int, int, int = 0);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();
+	QString forbiddenCharactersString(bool = false);
 	bool containsForbiddenCharacters(const QString &);
+	QString stringToFileName(const QString &);
 	QString escapeSpaces(const QString &);
 	QString unescapeSpaces(const QString &);
 	QString joinWithSpaces(const QStringList &);
 	QStringList splitWithSpaces(const QString &);
+	QString endTypeToString(const QET::EndType &);
+	QET::EndType endTypeFromString(const QString &);
+	QString pointerString(void *);
 }
 #endif

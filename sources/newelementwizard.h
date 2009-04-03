@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,9 +19,11 @@
 #define NEW_ELEMENT_WIZARD_H
 #include <QtGui>
 class ElementsCategoriesWidget;
+class ElementsCategory;
 class NamesListWidget;
 class OrientationSetWidget;
 class HotspotEditor;
+class QFileNameEdit;
 /**
 	Cette classe represente un dialogue qui permet a l'utilisateur de specifier
 	les premiers parametres de l'element qu'il va construire.
@@ -44,16 +46,22 @@ class NewElementWizard : public QWizard {
 	private:
 	NewElementWizard(const NewElementWizard &);
 	
+	// methodes
+	public:
+	ElementsCategory *selectedCategory() const;
+	bool preselectCategory(ElementsCategory *);
+	
 	// attributs
 	private:
 	enum WizardState { Category, Filename, Names, Dimensions, Orientations };
-	ElementsCategoriesWidget* categories_list;
-	QLineEdit *qle_filename;
+	ElementsCategoriesWidget *categories_list;
+	QFileNameEdit *qle_filename;
 	NamesListWidget *element_names;
 	OrientationSetWidget *orientation_set;
 	HotspotEditor *hotspot_editor;
 	WizardState current_state;
 	QString chosen_file;
+	ElementsCategory *chosen_category;
 	
 	// methodes
 	private:

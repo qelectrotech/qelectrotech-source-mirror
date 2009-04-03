@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,6 +23,8 @@
 */
 class FixedElement : public Element {
 	
+	Q_OBJECT
+	
 	// constructeurs, destructeur
 	public:
 	FixedElement(QGraphicsItem * = 0, Diagram * = 0);
@@ -30,11 +32,11 @@ class FixedElement : public Element {
 	
 	// methodes
 	public:
-	int nbTerminalsMin() const;
-	int nbTerminalsMax() const;
-	virtual int nbTerminals() const = 0;
+	int minTerminalsCount() const;
+	int maxTerminalsCount() const;
+	virtual int terminalsCount() const = 0;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
 	virtual QString typeId() const = 0;
-	virtual QString  nom() const = 0;
+	virtual QString name() const = 0;
 };
 #endif

@@ -5,7 +5,7 @@ QET_EXE="../qelectrotech"
 QET_ELEMENTS_DIR="../elements/"
 QET_CONFIG_DIR=""
 QET_LANG_DIR="../lang/"
-REDEFINE_LANG=""
+# REDEFINE_LANG="es"
 
 # checks for the qelectrotech binary executable file
 if [ ! -x "${QET_EXE}" ]; then

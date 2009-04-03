@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QtGui>
+#include "qettabwidget.h"
 #include "aboutqet.h"
 #include "qet.h"
 
@@ -25,16 +26,16 @@
 */
 AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
-	setWindowTitle(tr("\300 propos de QElectrotech"));
+	setWindowTitle(tr("\300 propos de QElectrotech", "window title"));
 	setMinimumWidth(680);
 	setMinimumHeight(350);
 	setModal(true);
 	
 	// Trois onglets
-	QTabWidget *onglets = new QTabWidget(this);
-	onglets -> addTab(ongletAPropos(), tr("\300 &propos"));
-	onglets -> addTab(ongletAuteurs(), tr("A&uteurs"));
-	onglets -> addTab(ongletLicence(), tr("&Accord de licence"));
+	QETTabWidget *onglets = new QETTabWidget(this);
+	onglets -> addTab(ongletAPropos(), tr("\300 &propos","tab title"));
+	onglets -> addTab(ongletAuteurs(), tr("A&uteurs", "tab title"));
+	onglets -> addTab(ongletLicence(), tr("&Accord de licence", "tab title"));
 	
 	// Un bouton pour fermer la boite de dialogue
 	QDialogButtonBox *boutons = new QDialogButtonBox(QDialogButtonBox::Close);
@@ -64,7 +65,7 @@ QWidget *AboutQET::titre() const {
 	QLabel *icone = new QLabel();
 	icone -> setPixmap(QIcon(":/ico/qelectrotech.png").pixmap(48, 48));
 	// label "QElectroTech"
-	QLabel *titre = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::version + "</span>");
+	QLabel *titre = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
 	titre -> setTextFormat(Qt::RichText);
 	// le tout dans une grille
 	QGridLayout *dispo_horiz = new QGridLayout();
@@ -83,10 +84,10 @@ QWidget *AboutQET::ongletAPropos() const {
 	QLabel *apropos = new QLabel(
 		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
 		"<br><br>" +
-		tr("\251 2006-2008 Les d\351veloppeurs de QElectroTech") +
+		tr("\251 2006-2009 Les d\351veloppeurs de QElectroTech") +
 		"<br><br>"
-		"<a href=\"http://qelectrotech.tuxfamily.org/\">"
-		"http://qelectrotech.tuxfamily.org/</a>"
+		"<a href=\"http://qelectrotech.org/\">"
+		"http://qelectrotech.org/</a>"
 	);
 	apropos -> setAlignment(Qt::AlignCenter);
 	apropos -> setOpenExternalLinks(true);

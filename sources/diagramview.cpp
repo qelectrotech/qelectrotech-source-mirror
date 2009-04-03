@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,48 +18,53 @@
 #include "diagramview.h"
 #include "diagram.h"
 #include "customelement.h"
-#include "exportdialog.h"
-#include "diagramprintdialog.h"
 #include "conductor.h"
 #include "diagramcommands.h"
 #include "conductorpropertieswidget.h"
 #include "insetpropertieswidget.h"
+#include "qetapp.h"
+#include "qetproject.h"
 #include "borderpropertieswidget.h"
+#include "integrationmoveelementshandler.h"
+#include "qetdiagrameditor.h"
 
 /**
 	Constructeur
 	@param parent Le QWidget parent de cette vue de schema
 */
-DiagramView::DiagramView(QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
+DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
 	setCacheMode(QGraphicsView::CacheBackground);
-	setOptimizationFlags(QGraphicsView::DontSavePainterState|QGraphicsView::DontAdjustForAntialiasing);
 	
 	// active l'antialiasing
 	setRenderHint(QPainter::Antialiasing, true);
 	setRenderHint(QPainter::TextAntialiasing, true);
 	setRenderHint(QPainter::SmoothPixmapTransform, true);
 	
-	setScene(scene = new Diagram(this));
+	scene = diagram ? diagram : new Diagram(this);
+	setScene(scene);
 	scene -> undoStack().setClean();
-	setDragMode(RubberBandDrag);
-	setAcceptDrops(true);
 	setWindowIcon(QIcon(":/ico/qet-16.png"));
 	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	setAlignment(Qt::AlignLeft | Qt::AlignTop);
+	setSelectionMode();
 	adjustSceneRect();
 	updateWindowTitle();
 	
 	context_menu = new QMenu(this);
-	paste_here = new QAction(QIcon(":/ico/paste.png"), tr("Coller ici"), this);
+	paste_here = new QAction(QIcon(":/ico/paste.png"), tr("Coller ici", "context menu action"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 	
 	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SIGNAL(selectionChanged()));
+	connect(scene, SIGNAL(readOnlyChanged(bool)), this, SLOT(applyReadOnly()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_inset), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
+	connect(&(scene -> border_and_inset), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
+	
+	connect(this, SIGNAL(aboutToAddElement()), this, SLOT(addDroppedElement()), Qt::QueuedConnection);
 }
 
 /**
@@ -98,6 +103,7 @@ void DiagramView::selectInvert() {
 	Supprime les composants selectionnes
 */
 void DiagramView::deleteSelection() {
+	if (scene -> isReadOnly()) return;
 	DiagramContent removed_content = scene -> selectedContent();
 	scene -> clearSelection();
 	scene -> undoStack().push(new DeleteElementsCommand(scene, removed_content));
@@ -108,6 +114,7 @@ void DiagramView::deleteSelection() {
 	Pivote les composants selectionnes
 */
 void DiagramView::rotateSelection() {
+	if (scene -> isReadOnly()) return;
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
@@ -123,8 +130,11 @@ void DiagramView::rotateSelection() {
 	@param e le QDragEnterEvent correspondant au drag'n drop tente
 */
 void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
-	if (e -> mimeData() -> hasFormat("text/plain")) e -> acceptProposedAction();
-	else e-> ignore();
+	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
+		e -> acceptProposedAction();
+	} else {
+		e -> ignore();
+	}
 }
 
 /**
@@ -144,18 +154,23 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 /**
-	Gere les depots (drop) acceptes sur le Diagram
+	Gere les depots (drop) acceptes sur le schema. Cette methode emet le signal
+	aboutToAddElement si l'element depose est accessible.
 	@param e le QDropEvent correspondant au drag'n drop effectue
 */
 void DiagramView::dropEvent(QDropEvent *e) {
-	QString fichier = e -> mimeData() -> text();
-	int etat;
-	Element *el = new CustomElement(fichier, 0, 0, &etat);
-	if (etat) delete el;
-	else {
-		diagram() -> undoStack().push(new AddElementCommand(diagram(), el, mapToScene(e -> pos())));
-		adjustSceneRect();
-	}
+	// recupere l'emplacement de l'element depuis le drag'n drop
+	QString elmt_path = e -> mimeData() -> text();
+	ElementsLocation location(ElementsLocation::locationFromString(elmt_path));
+	
+	// verifie qu'il existe un element correspondant a cet emplacement
+	ElementsCollectionItem *dropped_item = QETApp::collectionItem(location);
+	if (!dropped_item) return;
+	
+	next_location_ = location;
+	next_position_ = e-> pos();
+	
+	emit(aboutToAddElement());
 }
 
 /**
@@ -163,6 +178,7 @@ void DiagramView::dropEvent(QDropEvent *e) {
 */
 void DiagramView::setVisualisationMode() {
 	setDragMode(ScrollHandDrag);
+	applyReadOnly();
 	setInteractive(false);
 	emit(modeChanged());
 }
@@ -173,6 +189,7 @@ void DiagramView::setVisualisationMode() {
 void DiagramView::setSelectionMode() {
 	setDragMode(RubberBandDrag);
 	setInteractive(true);
+	applyReadOnly();
 	emit(modeChanged());
 }
 
@@ -238,6 +255,8 @@ void DiagramView::copy() {
 	@param clipboard_mode Type de presse-papier a prendre en compte
 */
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
+	if (scene -> isReadOnly()) return;
+	
 	QString texte_presse_papier = QApplication::clipboard() -> text(clipboard_mode);
 	if ((texte_presse_papier).isEmpty()) return;
 	
@@ -270,205 +289,12 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (e -> buttons() == Qt::MidButton) {
 		paste(mapToScene(e -> pos()), QClipboard::Selection);
 	} else {
-		if (is_adding_text && e -> buttons() == Qt::LeftButton) {
+		if (!scene -> isReadOnly() && is_adding_text && e -> buttons() == Qt::LeftButton) {
 			addDiagramTextAtPos(mapToScene(e -> pos()));
 			is_adding_text = false;
 		}
 		QGraphicsView::mousePressEvent(e);
 	}
-}
-
-/**
-	Ouvre un fichier *.qet dans cette DiagramView
-	@param n_fichier Nom du fichier a ouvrir
-	@param erreur Si le pointeur est specifie, cet entier est mis a 0 en cas de reussite de l'ouverture, 1 si le fichier n'existe pas, 2 si le fichier n'est pas lisible, 3 si le fichier n'est pas un element XML, 4 si l'ouverture du fichier a echoue pour une autre raison (c'est pas ca qui manque ^^)
-	@return true si l'ouverture a reussi, false sinon
-*/
-bool DiagramView::open(QString n_fichier, int *erreur) {
-	// verifie l'existence du fichier
-	if (!QFileInfo(n_fichier).exists()) {
-		if (erreur != NULL) *erreur = 1;
-		return(false);
-	}
-	
-	// ouvre le fichier
-	QFile fichier(n_fichier);
-	if (!fichier.open(QIODevice::ReadOnly)) {
-		if (erreur != NULL) *erreur = 2;
-		return(false);
-	}
-	
-	// lit son contenu dans un QDomDocument
-	QDomDocument document;
-	if (!document.setContent(&fichier)) {
-		if (erreur != NULL) *erreur = 3;
-		fichier.close();
-		return(false);
-	}
-	fichier.close();
-	
-	/**
-		La notion de projet (ensemble de documents [schemas, nomenclatures,
-		...] et d'elements) n'est pas encore geree.
-		Toutefois, pour gerer au mieux la transition de la 0.1 a la 0.2,
-		les schemas enregistres (element XML "diagram") sont integres dans un
-		pseudo projet (element XML "project").
-		S'il y a plusieurs schemas dans un projet, tous les schemas seront
-		ouverts comme etant des fichiers separes
-	*/
-	// repere les schemas dans le fichier
-	QDomElement root = document.documentElement();
-	// cas 1 : l'element racine est un "diagram" : un seul schema, pas de probleme
-	if (root.tagName() == "diagram") {
-		// construit le schema a partir du QDomDocument
-		QDomDocument &doc = document;
-		if (scene -> fromXml(doc)) {
-			if (erreur != NULL) *erreur = 0;
-			file_name = n_fichier;
-			scene -> undoStack().setClean();
-			updateWindowTitle();
-			return(true);
-		} else {
-			if (erreur != NULL) *erreur = 4;
-			return(false);
-		}
-	// cas 2 : l'element racine est un "project"
-	} else if (root.tagName() == "project") {
-		// verifie basiquement que la version actuelle est capable de lire ce fichier
-		if (root.hasAttribute("version")) {
-			bool conv_ok;
-			qreal diagram_version = root.attribute("version").toDouble(&conv_ok);
-			if (conv_ok && QET::version.toDouble() < diagram_version) {
-				QMessageBox::warning(
-					this,
-					tr("Avertissement"),
-					tr("Ce document semble avoir \351t\351 enregistr\351 avec une "
-					"version ult\351rieure de QElectroTech. Il est possible que "
-					"l'ouverture de tout ou partie de ce document \351choue.")
-				);
-			}
-		}
-		
-		// compte le nombre de schemas dans le projet
-		QList<QDomElement> diagrams;
-		
-		QDomNodeList diagram_nodes = root.elementsByTagName("diagram");
-		for (uint i = 0 ; i < diagram_nodes.length() ; ++ i) {
-			if (diagram_nodes.at(i).isElement()) {
-				diagrams << diagram_nodes.at(i).toElement();
-			}
-		}
-		
-		// il n'y aucun schema la-dedans
-		if (!diagrams.count()) {
-			if (erreur != NULL) *erreur = 4;
-			return(false);
-		} else {
-			
-			bool keep_doc_name = diagrams.count() == 1;
-			bool current_dv_loaded = false;
-			for (int i = 0 ; i < diagrams.count() ; ++ i) {
-				// cree un QDomDocument representant le schema
-				QDomDocument diagram_doc;
-				diagram_doc.appendChild(diagram_doc.importNode(diagrams[i], true));
-				
-				// charge le premier schema valide et cree de nouveau DiagramView pour les suivants
-				if (!current_dv_loaded) {
-					if (scene -> fromXml(diagram_doc)) {
-						if (keep_doc_name) file_name = n_fichier;
-						scene -> undoStack().setClean();
-						updateWindowTitle();
-						current_dv_loaded = true;
-					}
-				} else {
-					DiagramView *new_dv = new DiagramView(parentWidget());
-					if (new_dv -> scene -> fromXml(diagram_doc)) {
-						if (keep_doc_name) new_dv -> file_name = n_fichier;
-						new_dv -> scene -> undoStack().setClean();
-						new_dv -> updateWindowTitle();
-						diagramEditor() -> addDiagramView(new_dv);
-					} else {
-						delete(new_dv);
-					}
-				}
-			}
-			return(true);
-		}
-		
-	} else {
-		if (erreur != NULL) *erreur = 4;
-		return(false);
-	}
-}
-
-/**
-	Gere la fermeture du schema.
-	@param event Le QCloseEvent decrivant l'evenement
-*/
-void DiagramView::closeEvent(QCloseEvent *event) {
-	bool retour;
-	// si le schema est modifie
-	if (!isWindowModified()) {
-		retour = true;
-	} else {
-		// demande d'abord a l'utilisateur s'il veut enregistrer le schema en cours
-		QMessageBox::StandardButton reponse = QMessageBox::question(
-			this,
-			tr("Enregistrer le sch\351ma en cours ?"),
-			tr("Voulez-vous enregistrer le sch\351ma ") + windowTitle() + tr(" ?"),
-			QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
-			QMessageBox::Cancel
-		);
-		switch(reponse) {
-			case QMessageBox::Cancel: retour = false;         break; // l'utilisateur annule : echec de la fermeture
-			case QMessageBox::Yes:    retour = save(); break; // l'utilisateur dit oui : la reussite depend de l'enregistrement
-			default:                  retour = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
-		}
-	}
-	if (retour) event -> accept();
-	else event -> ignore();
-	
-}
-
-/**
-	Methode enregistrant le schema dans le dernier nom de fichier connu.
-	Si aucun nom de fichier n'est connu, cette methode appelle la methode saveAs
-	@return true si l'enregistrement a reussi, false sinon
-*/
-bool DiagramView::save() {
-	if (file_name.isEmpty()) return(saveAs());
-	else return(saveDiagramToFile(file_name));
-}
-
-/**
-	Cette methode demande un nom de fichier a l'utilisateur pour enregistrer le schema
-	Si aucun nom n'est entre, elle renvoie faux.
-	Si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee.
-	Si l'enregistrement reussit, le nom du fichier est conserve et la fonction renvoie true.
-	Sinon, faux est renvoye.
-	@return true si l'enregistrement a reussi, false sinon
-*/
-bool DiagramView::saveAs() {
-	// demande un nom de fichier a l'utilisateur pour enregistrer le schema
-	QString n_fichier = QFileDialog::getSaveFileName(
-		this,
-		tr("Enregistrer sous"),
-		(file_name.isEmpty() ? QDir::homePath() : QDir(file_name)).absolutePath(),
-		tr("Sch\351ma QElectroTech (*.qet)")
-	);
-	// si aucun nom n'est entre, renvoie faux.
-	if (n_fichier.isEmpty()) return(false);
-	// si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee
-	if (!n_fichier.endsWith(".qet", Qt::CaseInsensitive)) n_fichier += ".qet";
-	// tente d'enregistrer le fichier
-	bool resultat_enregistrement = saveDiagramToFile(n_fichier);
-	// si l'enregistrement reussit, le nom du fichier est conserve
-	if (resultat_enregistrement) {
-		file_name = n_fichier;
-		updateWindowTitle();
-	}
-	// retourne un booleen representatif de la reussite de l'enregistrement
-	return(resultat_enregistrement);
 }
 
 /**
@@ -489,70 +315,28 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 }
 
 /**
-	Methode privee gerant l'enregistrement du fichier XML. S'il n'est pas possible
-	d'ecrire dans le fichier, cette fonction affiche un message d'erreur et renvoie false.
-	Autrement, elle renvoie true.
-	@param n_fichier Nom du fichier dans lequel l'arbre XML doit etre ecrit
-	@return true si l'enregistrement a reussi, false sinon
+	@return le titre de cette vue ; cela correspond au titre du schema
+	visualise precede de la mention "Schema". Si le titre du schema est vide,
+	la mention "Schema sans titre" est utilisee
+	@see Diagram::title()
 */
-bool DiagramView::saveDiagramToFile(QString &n_fichier) {
-	QFile fichier(n_fichier);
-	if (!fichier.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		QMessageBox::warning(this, tr("Erreur"), tr("Impossible d'ecrire dans ce fichier"));
-		return(false);
-	}
-	QTextStream out(&fichier);
-	out.setCodec("UTF-8");
-	
-	// l'export XML du schema est encapsule dans un pseudo-projet
-	QDomDocument final_document;
-	QDomElement project_root = final_document.createElement("project");
-	project_root.setAttribute("version", QET::version);
-	project_root.appendChild(final_document.importNode(scene -> toXml().documentElement(), true));
-	final_document.appendChild(project_root);
-	
-	out << final_document.toString(4);
-	fichier.close();
-	scene -> undoStack().setClean();
-	return(true);
-}
-
-/**
-	Exporte le schema.
-*/
-void DiagramView::dialogExport() {
-	ExportDialog ed(scene, diagramEditor());
-	ed.exec();
-}
-
-/**
-	Imprime le schema.
-*/
-void DiagramView::dialogPrint() {
-	
-	// determine un nom possible pour le document et le pdf
-	QString doc_name;
-	QString pdf_file_name;
-	if (!file_name.isEmpty()) {
-		doc_name = QFileInfo(file_name).fileName();
-		pdf_file_name = file_name;
-		pdf_file_name.replace(QRegExp("\\.qet$", Qt::CaseInsensitive), "");
+QString DiagramView::title() const {
+	QString view_title;
+	QString diagram_title(scene -> title());
+	if (diagram_title.isEmpty()) {
+		view_title = tr("Sch\351ma sans titre");
 	} else {
-		doc_name = tr("schema");
-		pdf_file_name = QDir::toNativeSeparators(QDir::homePath() + "/" + tr("schema"));
+		view_title = QString(tr("Sch\351ma %1", "%1 is a diagram title")).arg(diagram_title);
 	}
-	pdf_file_name += ".pdf";
-	
-	DiagramPrintDialog print_dialog(scene, this);
-	print_dialog.setDocName(doc_name);
-	print_dialog.setPDFName(pdf_file_name);
-	print_dialog.exec();
+	return(view_title);
 }
 
 /**
 	Edite les informations du schema.
 */
-void DiagramView::dialogEditInfos() {
+void DiagramView::editDiagramProperties() {
+	if (scene -> isReadOnly()) return;
+	
 	// recupere le cartouche et les dimensions du schema
 	InsetProperties  inset  = scene -> border_and_inset.exportInset();
 	BorderProperties border = scene -> border_and_inset.exportBorder();
@@ -560,7 +344,7 @@ void DiagramView::dialogEditInfos() {
 	// construit le dialogue
 	QDialog popup(diagramEditor());
 	popup.setMinimumWidth(400);
-	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma"));
+	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma", "window title"));
 	
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, &popup);
 	InsetPropertiesWidget  *inset_infos  = new InsetPropertiesWidget(inset, false, &popup);
@@ -603,6 +387,7 @@ bool DiagramView::hasSelectedItems() {
 	Ajoute une colonne au schema.
 */
 void DiagramView::addColumn() {
+	if (scene -> isReadOnly()) return;
 	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
 	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
 	new_bp.columns_count += 1;
@@ -613,6 +398,7 @@ void DiagramView::addColumn() {
 	Enleve une colonne au schema.
 */
 void DiagramView::removeColumn() {
+	if (scene -> isReadOnly()) return;
 	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
 	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
 	new_bp.columns_count -= 1;
@@ -623,6 +409,7 @@ void DiagramView::removeColumn() {
 	Agrandit le schema en hauteur
 */
 void DiagramView::addRow() {
+	if (scene -> isReadOnly()) return;
 	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
 	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
 	new_bp.rows_count += 1;
@@ -633,6 +420,7 @@ void DiagramView::addRow() {
 	Retrecit le schema en hauteur
 */
 void DiagramView::removeRow() {
+	if (scene -> isReadOnly()) return;
 	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
 	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
 	new_bp.rows_count -= 1;
@@ -665,12 +453,19 @@ void DiagramView::adjustSceneRect() {
 	Met a jour le titre du widget
 */
 void DiagramView::updateWindowTitle() {
-	QString window_title;
-	if (file_name.isNull()) window_title += tr("nouveau sch\351ma");
-	else window_title += file_name;
-	window_title += "[*]";
-	setWindowTitle(window_title);
-	setWindowModified(!(scene -> undoStack().isClean()));
+	QString view_title(title());
+	
+	// verifie si le document a ete modifie
+	bool modified_diagram = !(scene -> undoStack().isClean());
+	
+	// specifie le titre du widget
+	setWindowTitle(view_title + " [*]");
+	setWindowModified(modified_diagram);
+	
+	// emet le signal titleChanged en ajoutant manuellement [*] si le schema a ete modifie
+	QString emitted_title = view_title;
+	if (modified_diagram) emitted_title += " [*]";
+	emit(titleChanged(this, emitted_title));
 }
 
 /**
@@ -700,6 +495,63 @@ QRectF DiagramView::viewedSceneRect() const {
 }
 
 /**
+	Cette methode permet de determiner s'il faut ou non integrer au projet un
+	element dont on connait l'emplacement.
+	L'element droppe est integre a la collection du projet :
+	  * s'il appartient a un autre projet, quelque soit la specification de
+	  l'utilisateur a ce propos ;
+	  * s'il appartient a la collection commune ou a la collection
+	  personnelle ET que l'utilisateur a autorise l'integration automatique
+	  des elements dans les projets.
+	@param location Emplacement de l'element
+	@return true si l'element doit etre integre, false sinon
+	
+*/
+bool DiagramView::mustIntegrateElement(const ElementsLocation &location) const {
+	// l'utilisateur a-t-il autorise l'integration automatique des elements dans les projets ?
+	bool auto_integration_enabled = QETApp::settings().value("diagrameditor/integrate-elements", true).toBool();
+	
+	// l'element appartient-il a un projet et si oui, est-ce un autre projet ?
+	bool elmt_from_project = location.project();
+	bool elmt_from_another_project = elmt_from_project && location.project() != scene -> project();
+	
+	// faut-il integrer l'element ?
+	bool must_integrate_element = (elmt_from_another_project || (auto_integration_enabled && !elmt_from_project));
+	
+	return(must_integrate_element);
+}
+
+/**
+	@param location Emplacement de l'element a ajouter sur le schema
+	@param pos Position (dans les coordonnees de la vue) a laquelle l'element sera ajoute
+*/
+bool DiagramView::addElementAtPos(const ElementsLocation &location, const QPoint &pos) {
+	// construit une instance de l'element correspondant a l'emplacement
+	int etat;
+	Element *el = new CustomElement(location, 0, 0, &etat);
+	if (etat) {
+		delete el;
+		return(false);
+	}
+	
+	// pose de l'element sur le schema
+	diagram() -> undoStack().push(new AddElementCommand(diagram(), el, mapToScene(pos)));
+	return(true);
+}
+
+/**
+	Fait en sorte que le schema ne soit editable que s'il n'est pas en lecture
+	seule
+*/
+void DiagramView::applyReadOnly() {
+	if (!scene) return;
+	
+	bool is_writable = !scene -> isReadOnly();
+	setInteractive(is_writable);
+	setAcceptDrops(is_writable);
+}
+
+/**
 	Affiche un dialogue permettant d'editer le conducteur selectionne.
 	Ne fait rien s'il y a 0 ou plusieurs conducteurs selectionnes.
 */
@@ -718,6 +570,7 @@ void DiagramView::editConductor() {
 	@param edited_conductor Conducteur a editer
 */
 void DiagramView::editConductor(Conductor *edited_conductor) {
+	if (scene -> isReadOnly()) return;
 	if (!edited_conductor) return;
 	
 	// initialise l'editeur de proprietes pour le conducteur
@@ -726,7 +579,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	
 	// l'insere dans un dialogue
 	QDialog conductor_dialog(diagramEditor());
-	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur"));
+	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
 	dialog_layout -> addStretch();
@@ -754,6 +607,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	Reinitialise le profil des conducteurs selectionnes
 */
 void DiagramView::resetConductors() {
+	if (scene -> isReadOnly()) return;
 	// recupere les conducteurs selectionnes
 	QSet<Conductor *> selected_conductors = scene -> selectedConductors();
 	
@@ -780,12 +634,13 @@ void DiagramView::resetConductors() {
 	futurs nouveaux conducteurs
 */
 void DiagramView::editDefaultConductorProperties() {
+	if (scene -> isReadOnly()) return;
 	// initialise l'editeur de proprietes pour le conducteur
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(scene -> defaultConductorProperties);
 	
 	// l'insere dans un dialogue
 	QDialog conductor_dialog(diagramEditor());
-	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s par d\351faut des conducteurs"));
+	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s par d\351faut des conducteurs", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);
 	QDialogButtonBox *dbb = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -818,6 +673,7 @@ bool DiagramView::event(QEvent *e) {
 	nouveau champ de texte.
 */
 void DiagramView::addText() {
+	if (scene -> isReadOnly()) return;
 	is_adding_text = true;
 }
 
@@ -935,8 +791,36 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		}
 	} else if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
 		// edite les proprietes du schema
-		dialogEditInfos();
+		editDiagramProperties();
 	} else {
 		QGraphicsView::mouseDoubleClickEvent(e);
 	}
+}
+
+/**
+	Cette methode ajoute l'element deisgne par l'emplacement location a la
+	position pos. Si necessaire, elle demande l'integration de l'element au
+	projet.
+	@param location emplacement d'un element a ajouter sur le schema
+	@param pos position voulue de l'element sur le schema
+	@see mustIntegrateElement
+*/
+void DiagramView::addDroppedElement() {
+	ElementsLocation location = next_location_;
+	QPoint pos = next_position_;
+	
+	if (!mustIntegrateElement(location)) {
+		addElementAtPos(location, pos);
+	} else {
+		QString error_msg;
+		IntegrationMoveElementsHandler *integ_handler = new IntegrationMoveElementsHandler(this);
+		QString integ_path = scene -> project() -> integrateElement(location.toString(), integ_handler, error_msg);
+		delete integ_handler;
+		if (integ_path.isEmpty()) {
+			qDebug() << error_msg;
+			return;
+		}
+		addElementAtPos(ElementsLocation::locationFromString(integ_path), pos);
+	}
+	adjustSceneRect();
 }

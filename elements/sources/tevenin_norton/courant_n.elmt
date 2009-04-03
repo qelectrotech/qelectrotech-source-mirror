@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Current source (new)</name>
         <name lang="fr" >Source de courant (nouveau)</name>
+        <name lang="es" >Fuente de corriente (nuevo)</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="-10" />

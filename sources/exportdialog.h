@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,6 +19,7 @@
 #define EXPORTDIALOG_H
 #include <QtGui>
 #include "diagram.h"
+#include "qetproject.h"
 class QSvgGenerator;
 /**
 	Cette classe represente le dialogue permettant d'exporter un schema
@@ -29,59 +30,82 @@ class ExportDialog : public QDialog {
 	
 	// constructeurs, destructeur
 	public:
-	ExportDialog(Diagram *, QWidget * = 0);
+	ExportDialog(QETProject *, QWidget * = 0);
 	virtual ~ExportDialog();
 	
 	private:
 	ExportDialog(const ExportDialog &);
 	
+	// methodes
+	public:
+	int diagramsToExportCount() const;
+	
+	// classes privees
+	private:
+	class ExportDiagramLine {
+		public:
+		ExportDiagramLine(Diagram *);
+		virtual ~ExportDiagramLine();
+		QBoxLayout *sizeLayout();
+		Diagram *diagram;
+		QCheckBox *must_export;
+		QLabel *title_label;
+		QLineEdit *file_name;
+		QSpinBox *width;
+		QLabel *x_label;
+		QSpinBox *height;
+		QPushButton *keep_ratio;
+		QPushButton *reset_size;
+		QPushButton *preview;
+	};
+	
 	// attributs
 	private:
+	QHash<int, ExportDialog::ExportDiagramLine *> diagram_lines_;
 	// elements graphiques
-	QLineEdit *filename;
+	QGridLayout *diagrams_list_layout_;
+	QLineEdit *dirpath;
 	QPushButton *button_browse;
 	QComboBox *format;
-	QSpinBox *width;
-	QSpinBox *height;
-	QCheckBox *keep_aspect_ratio;
 	QCheckBox *draw_grid;
 	QCheckBox *draw_border;
 	QCheckBox *draw_inset;
-	QCheckBox *draw_columns;
-	QCheckBox *draw_rows;
 	QCheckBox *draw_terminals;
 	QRadioButton *export_elements;
 	QRadioButton *export_border;
 	QDialogButtonBox *buttons;
-	QGraphicsScene *preview_scene;
-	QGraphicsView *preview_view;
-	
-	// booleens pour ne pas avoir de boucle lors de l'edition des dimensions de l'image
-	bool dontchangewidth;
-	bool dontchangeheight;
+	// mappers
+	QSignalMapper *preview_mapper_;
+	QSignalMapper *width_mapper_;
+	QSignalMapper *height_mapper_;
+	QSignalMapper *ratio_mapper_;
+	QSignalMapper *reset_mapper_;
 	
 	// elements relatifs au traitement effectue par le dialogue
-	Diagram *diagram;
-	QSize diagram_size;
-	qreal diagram_ratio;
-	QVector<QRgb> ColorTab;
+	QETProject *project_;
 	
 	// methodes
 	private:
+	QWidget *initDiagramsListPart();
 	QWidget *leftPart();
-	QWidget *rightPart();
-	QGroupBox *setupDimensionsGroupBox();
 	QGroupBox *setupOptionsGroupBox();
-	void saveReloadDiagramParameters(bool = true);
-	void generateSvg(QFile &file);
-	QImage generateImage();
+	void saveReloadDiagramParameters(Diagram *, bool = true);
+	void generateSvg(Diagram *, int, int, bool, QFile &);
+	QImage generateImage(Diagram *, int, int, bool);
+	void exportDiagram(ExportDiagramLine *);
+	qreal diagramRatio(Diagram *);
+	QSize diagramSize(Diagram *);
 	
 	public slots:
-	void slot_correctWidth();
-	void slot_correctHeight();
-	void slot_chooseAFile();
-	void slot_check();
+	void slot_correctWidth(int);
+	void slot_correctHeight(int);
+	void slot_keepRatioChanged(int);
+	void slot_resetSize(int);
+	void slot_chooseADirectory();
+	void slot_export();
 	void slot_changeUseBorder();
-	void slot_refreshPreview();
+	void slot_checkDiagramsCount();
+	void slot_changeFilesExtension(bool = false);
+	void slot_previewDiagram(int);
 };
 #endif

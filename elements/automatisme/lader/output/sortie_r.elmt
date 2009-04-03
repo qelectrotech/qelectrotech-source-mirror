@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Output (reset)</name>
         <name lang="fr" >Sortie (reset)</name>
+        <name lang="es" >Salida (reset)</name>
     </names>
     <description>
         <text x="-4.25" y="5.25" size="9" text="R" />

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,6 +21,7 @@
 #include "customelement.h"
 #include "diagram.h"
 #include "exportdialog.h"
+#include "ghostelement.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 
@@ -37,7 +38,9 @@ Diagram::Diagram(QObject *parent) :
 	draw_grid(true),
 	use_border(true),
 	moved_elements_fetched(false),
-	draw_terminals(true)
+	draw_terminals(true),
+	project_(0),
+	read_only_(false)
 {
 	undo_stack = new QUndoStack();
 	qgi_manager = new QGIManager(this);
@@ -51,9 +54,6 @@ Diagram::Diagram(QObject *parent) :
 	conductor_setter -> setPen(t);
 	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	connect(this, SIGNAL(selectionChanged()), this, SLOT(slot_checkSelectionEmptinessChange()));
-	
-	// lit les caracteristiques des conducteurs par defaut dans la configuration
-	defaultConductorProperties.fromSettings(QETApp::settings(), "diagrameditor/defaultconductor");
 }
 
 /**
@@ -77,6 +77,7 @@ Diagram::~Diagram() {
 	foreach(QGraphicsItem *qgi_d, deletable_items) {
 		delete qgi_d;
 	}
+	// qDebug() << "Suppression du schema" << ((void*)this);
 }
 
 /**
@@ -125,15 +126,17 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyPressEvent(QKeyEvent *e) {
-	QPointF movement;
-	switch(e -> key()) {
-		case Qt::Key_Left:  movement = QPointF(-xGrid, 0.0); break;
-		case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
-		case Qt::Key_Up:    movement = QPointF(0.0, -yGrid); break;
-		case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
-	}
-	if (!movement.isNull() && !focusItem()) {
-		moveElements(movement);
+	if (!isReadOnly()) {
+		QPointF movement;
+		switch(e -> key()) {
+			case Qt::Key_Left:  movement = QPointF(-xGrid, 0.0); break;
+			case Qt::Key_Right: movement = QPointF(+xGrid, 0.0); break;
+			case Qt::Key_Up:    movement = QPointF(0.0, -yGrid); break;
+			case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
+		}
+		if (!movement.isNull() && !focusItem()) {
+			moveElements(movement);
+		}
 	}
 	QGraphicsScene::keyPressEvent(e);
 }
@@ -143,16 +146,18 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyReleaseEvent(QKeyEvent *e) {
-	// detecte le relachement d'une touche de direction ( = deplacement d'elements)
-	if (
-		(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||\
-		 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
-		!current_movement.isNull()  && !e -> isAutoRepeat()
-	) {
-		// cree un objet d'annulation pour le mouvement qui vient de se finir
-		undoStack().push(new MoveElementsCommand(this, selectedContent(), current_movement));
-		invalidateMovedElements();
-		current_movement = QPointF();
+	if (!isReadOnly()) {
+		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
+		if (
+			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||\
+			 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
+			!current_movement.isNull()  && !e -> isAutoRepeat()
+		) {
+			// cree un objet d'annulation pour le mouvement qui vient de se finir
+			undoStack().push(new MoveElementsCommand(this, selectedContent(), current_movement));
+			invalidateMovedElements();
+			current_movement = QPointF();
+		}
 	}
 	QGraphicsScene::keyReleaseEvent(e);
 }
@@ -228,6 +233,14 @@ QSize Diagram::imageSize() const {
 }
 
 /**
+	@return true si le schema est considere comme vide, false sinon.
+	Un schema vide ne contient ni element, ni conducteur, ni champ de texte
+*/
+bool Diagram::isEmpty() const {
+	return(!items().count());
+}
+
+/**
 	Exporte tout ou partie du schema 
 	@param diagram Booleen (a vrai par defaut) indiquant si le XML genere doit
 	representer tout le schema ou seulement les elements selectionnes
@@ -258,7 +271,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 		
 		// type de conducteur par defaut
 		QDomElement default_conductor = document.createElement("defaultconductor");
-		defaultConductorProperties.toXml(document, default_conductor);
+		defaultConductorProperties.toXml(default_conductor);
 		racine.appendChild(default_conductor);
 	}
 	document.appendChild(racine);
@@ -324,20 +337,38 @@ QDomDocument Diagram::toXml(bool diagram) {
 }
 
 /**
-	Importe le diagram decrit dans un document XML. Si une position est
+	Importe le schema decrit dans un document XML. Si une position est
 	precisee, les elements importes sont positionnes de maniere a ce que le
 	coin superieur gauche du plus petit rectangle pouvant les entourant tous
 	(le bounding rect) soit a cette position.
 	@param document Le document XML a analyser
-	@param position La position du diagram importe
+	@param position La position du schema importe
 	@param consider_informations Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param content_ptr si ce pointeur vers un DiagramContentn'est pas NULL, il
+	@param content_ptr si ce pointeur vers un DiagramContent n'est pas NULL, il
 	sera rempli avec le contenu ajoute au schema par le fromXml
 	@return true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	QDomElement root = document.documentElement();
+	return(fromXml(root, position, consider_informations, content_ptr));
+}
+
+/**
+	Importe le schema decrit dans un element XML. Si une position est
+	precisee, les elements importes sont positionnes de maniere a ce que le
+	coin superieur gauche du plus petit rectangle pouvant les entourant tous
+	(le bounding rect) soit a cette position.
+	@param document Le document XML a analyser
+	@param position La position du schema importe
+	@param consider_informations Si vrai, les informations complementaires
+	(auteur, titre, ...) seront prises en compte
+	@param content_ptr si ce pointeur vers un DiagramContent n'est pas NULL, il
+	sera rempli avec le contenu ajoute au schema par le fromXml
+	@return true si l'import a reussi, false sinon
+*/
+bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
+	QDomElement root = document;
 	// le premier element doit etre un schema
 	if (root.tagName() != "diagram") return(false);
 	
@@ -390,7 +421,10 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
-	if (root.firstChild().isNull()) return(true);
+	if (root.firstChild().isNull()) {
+		write(document);
+		return(true);
+	}
 	
 	// chargement de tous les elements du fichier XML
 	QList<Element *> added_elements;
@@ -400,13 +434,17 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		
 		// cree un element dont le type correspond a l'id type
 		QString type_id = e.attribute("type");
-		QString chemin_fichier = QETApp::realPath(type_id);
-		CustomElement *nvel_elmt = new CustomElement(chemin_fichier);
+		ElementsLocation element_location = ElementsLocation(type_id);
+		if (type_id.startsWith("embed://")) element_location.setProject(project_);
+		
+		CustomElement *nvel_elmt = new CustomElement(element_location);
 		if (nvel_elmt -> isNull()) {
-			QString debug_message = QString("Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(chemin_fichier).arg(nvel_elmt -> etat());
+			QString debug_message = QString("Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(nvel_elmt -> state());
+			qDebug() << debug_message;
 			delete nvel_elmt;
-			qDebug(debug_message.toLatin1().data());
-			continue;
+			
+			qDebug() << "Utilisation d'un GhostElement en lieu et place de cet element.";
+			nvel_elmt = new GhostElement(element_location);
 		}
 		
 		// charge les caracteristiques de l'element
@@ -484,7 +522,7 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 					added_conductors << c;
 				}
 			}
-		} else qDebug() << "Le chargement du conductor" << id_p1 << id_p2 << "a echoue";
+		} else qDebug() << "Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 	}
 	
 	// remplissage des listes facultatives
@@ -494,7 +532,50 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 		content_ptr -> textFields       = added_texts;
 	}
 	
+	write(document);
 	return(true);
+}
+
+/**
+	Enregistre le schema XML dans son document XML interne et emet le signal
+	written().
+*/
+void Diagram::write() {
+	qDebug() << qPrintable(QString("Diagram::write() : saving changes from diagram \"%1\" [%2]").arg(title()).arg(QET::pointerString(this)));
+	write(toXml().documentElement());
+	undoStack().setClean();
+}
+
+/**
+	Enregistre un element XML dans son document XML interne et emet le signal
+	written().
+	@param element xml a enregistrer
+*/
+void Diagram::write(const QDomElement &element) {
+	xml_document.clear();
+	xml_document.appendChild(xml_document.importNode(element, true));
+	emit(written());
+}
+
+/**
+	@return true si la fonction write a deja ete appele (pour etre plus exact :
+	si le document XML utilise en interne n'est pas vide), false sinon
+*/
+bool Diagram::wasWritten() const {
+	return(!xml_document.isNull());
+}
+
+/**
+	@return le schema en XML tel qu'il doit etre enregistre dans le fichier projet
+	@param xml_doc document XML a utiliser pour creer l'element
+*/
+QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
+	// si le schema n'a pas ete enregistre explicitement, on n'ecrit rien
+	if (!wasWritten()) return(QDomElement());
+	
+	QDomElement diagram_elmt = xml_document.documentElement();
+	QDomNode new_node = xml_doc.importNode(diagram_elmt, true);
+	return(new_node.toElement());
 }
 
 /**
@@ -534,6 +615,26 @@ QRectF Diagram::border() const {
 			border_and_inset.borderHeight()
 		)
 	);
+}
+
+/**
+	@return le titre du cartouche
+*/
+QString Diagram::title() const {
+	return(border_and_inset.title());
+}
+
+/**
+	@return la liste des elements de ce schema
+*/
+QList<CustomElement *> Diagram::customElements() const {
+	QList<CustomElement *> elements_list;
+	foreach(QGraphicsItem *qgi, items()) {
+		if (CustomElement *elmt = qgraphicsitem_cast<CustomElement *>(qgi)) {
+			elements_list << elmt;
+		}
+	}
+	return(elements_list);
 }
 
 /// oublie la liste des elements et conducteurs en mouvement
@@ -618,6 +719,20 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 }
 
 /**
+	Permet de savoir si un element est utilise sur un schema
+	@param location Emplacement d'un element
+	@return true si l'element location est utilise sur ce schema, false sinon
+*/
+bool Diagram::usesElement(const ElementsLocation &location) {
+	foreach(CustomElement *element, customElements()) {
+		if (element -> location() == location) {
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
 	Definit s'il faut afficher ou non les bornes
 	@param dt true pour afficher les bornes, false sinon
 */
@@ -647,6 +762,38 @@ bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
 	bool may_be_diagram = clipboard_text.startsWith("<diagram") && clipboard_text.endsWith("</diagram>");
 	return(may_be_diagram);
+}
+
+/**
+	@return le projet auquel ce schema appartient ou 0 s'il s'agit d'un schema
+	independant.
+*/
+QETProject *Diagram::project() const {
+	return(project_);
+}
+
+/**
+	@param project le nouveau projet auquel ce schema appartient ou 0 s'il
+	s'agit d'un schema independant. Indiquer 0 pour rendre ce schema independant.
+*/
+void Diagram::setProject(QETProject *project) {
+	project_ = project;
+}
+/**
+	@return true si le schema est en lecture seule
+*/
+bool Diagram::isReadOnly() const {
+	return(read_only_);
+}
+
+/**
+	@param read_only true pour passer le schema en lecture seule, false sinon
+*/
+void Diagram::setReadOnly(bool read_only) {
+	if (read_only_ != read_only) {
+		read_only_ = read_only;
+		emit(readOnlyChanged(read_only_));
+	}
 }
 
 /**

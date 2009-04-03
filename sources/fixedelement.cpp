@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,13 +31,13 @@ FixedElement::~FixedElement() {
 /**
 	@return Le nombre minimal de bornes que l'element peut avoir
 */
-int FixedElement::nbTerminalsMin() const {
-	return(nbTerminals());
+int FixedElement::minTerminalsCount() const {
+	return(terminalsCount());
 }
 
 /**
 	@return Le nombre maximal de bornes que l'element peut avoir
 */
-int FixedElement::nbTerminalsMax() const {
-	return(nbTerminals());
+int FixedElement::maxTerminalsCount() const {
+	return(terminalsCount());
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -130,9 +130,15 @@ class BorderInset : public QObject {
 	/// @param date le nouveau contenu du champ "Date"
 	void setDate               (const QDate   &date)     { bi_date         = date;     }
 	/// @param title le nouveau contenu du champ "Titre"
-	void setTitle              (const QString &title)    { bi_title        = title;    }
+	void setTitle              (const QString &title) {
+		if (bi_title != title) {
+			bi_title = title;
+			emit(diagramTitleChanged(title));
+		}
+	}
 	/// @param folio le nouveau contenu du champ "Folio"
 	void setFolio              (const QString &folio)    { bi_folio        = folio;    }
+	void setFolioData(int, int);
 	/// @param filename le nouveau contenu du champ "Fichier"
 	void setFileName           (const QString &filename) { bi_filename     = filename; }
 	
@@ -164,6 +170,17 @@ class BorderInset : public QObject {
 	*/
 	void displayChanged();
 	
+	/**
+		Signal emis lorsque le titre du schema change
+	*/
+	void diagramTitleChanged(const QString &);
+	
+	/**
+		Signal emis lorsque le cartouche requiert une mise a jour des donnees
+		utilisees pour generer le folio.
+	*/
+	void needFolioData();
+	
 	// attributs
 	private:
 	// informations du cartouche
@@ -171,6 +188,9 @@ class BorderInset : public QObject {
 	QDate   bi_date;
 	QString bi_title;
 	QString bi_folio;
+	QString bi_final_folio;
+	int folio_index_;
+	int folio_total_;
 	QString bi_filename;
 	
 	// dimensions du cadre (lignes et colonnes)

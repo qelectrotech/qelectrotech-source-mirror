@@ -5,7 +5,7 @@
     </names>
     <description>
         <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="15" x2="-12" y3="15" x3="12" y4="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0" />
+        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0" />
         <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.5" x1="-12" y2="4.5" x2="12" />
         <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="-12" y2="3" x2="12" />
         <line antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.5" x1="-12" y2="1.5" x2="12" />

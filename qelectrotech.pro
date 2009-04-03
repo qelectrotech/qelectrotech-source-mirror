@@ -3,7 +3,7 @@
 ######################################################################
 
 # Chemins utilises pour la compilation et l'installation de QET
-!win32 {
+unix {
 	# Chemins UNIX
 	COMPIL_PREFIX              = '/usr/local/'
 	INSTALL_PREFIX             = '/usr/local/'
@@ -18,7 +18,8 @@
 	QET_DESKTOP_PATH           = 'share/applications/'
 	QET_ICONS_PATH             = 'share/icons/'
 	QET_MAN_PATH               = 'man/'
-} else {
+}
+win32 {
 	# Chemins Windows
 	COMPIL_PREFIX              = './'
 	INSTALL_PREFIX             = './'
@@ -26,6 +27,21 @@
 	QET_COMMON_COLLECTION_PATH = 'elements/'
 	QET_LANG_PATH              = 'lang/'
 	QET_LICENSE_PATH           = './'
+}
+macx {
+	# Chemins MacOS X
+	COMPIL_PREFIX              = '/usr/local/'
+	INSTALL_PREFIX             = '/usr/local/'
+	QET_BINARY_PATH            = 'bin/'
+	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
+	QET_LANG_PATH              = 'share/qelectrotech/lang/'
+	QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
+	QET_LICENSE_PATH           = 'doc/qelectrotech/'
+	QET_MIME_XML_PATH          = '../share/mime/application/'
+	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
+	QET_DESKTOP_PATH           = 'share/applications/'
+	QET_ICONS_PATH             = 'share/icons/'
+	QET_MAN_PATH               = 'man/'
 }
 
 # Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
@@ -42,6 +58,7 @@ INCLUDEPATH += sources sources/editor
 
 # Fichiers sources
 HEADERS += sources/aboutqet.h \
+           sources/basicmoveelementshandler.h \
            sources/borderinset.h \
            sources/borderproperties.h \
            sources/borderpropertieswidget.h \
@@ -58,41 +75,66 @@ HEADERS += sources/aboutqet.h \
            sources/diagramcommands.h \
            sources/diagramcontent.h \
            sources/diagramprintdialog.h \
-           sources/diagramview.h \
+           sources/diagramschooser.h \
            sources/diagramtextitem.h \
+           sources/diagramview.h \
            sources/element.h \
+           sources/elementdefinition.h \
            sources/elementdeleter.h \
+           sources/elementdialog.h \
            sources/elementscategorieslist.h \
            sources/elementscategorieswidget.h \
            sources/elementscategory.h \
            sources/elementscategorydeleter.h \
            sources/elementscategoryeditor.h \
+           sources/elementscollection.h \
+           sources/elementscollectionitem.h \
+           sources/elementslocation.h \
            sources/elementspanel.h \
            sources/elementspanelwidget.h \
            sources/elementtextitem.h \
            sources/exportdialog.h \
+           sources/fileelementscategory.h \
+           sources/fileelementscollection.h \
+           sources/fileelementdefinition.h \
            sources/fixedelement.h \
+           sources/ghostelement.h \
            sources/hotspoteditor.h \
            sources/insetproperties.h \
            sources/insetpropertieswidget.h \
+           sources/integrationmoveelementshandler.h \
+           sources/interactivemoveelementshandler.h \
+           sources/moveelementsdescription.h \
+           sources/moveelementshandler.h \
            sources/nameslist.h \
            sources/nameslistwidget.h \
            sources/newelementwizard.h \
            sources/orientationset.h \
            sources/orientationsetwidget.h \
+           sources/projectview.h \
            sources/qet.h \
            sources/qetapp.h \
            sources/qetarguments.h \
            sources/qetdiagrameditor.h \
+           sources/qetproject.h \
+           sources/qetprintpreviewdialog.h \
+           sources/qetregexpvalidator.h \
+           sources/qettabbar.h \
+           sources/qettabwidget.h \
            sources/qetsingleapplication.h \
+           sources/qfilenameedit.h \
            sources/qgimanager.h \
            sources/recentfiles.h \
            sources/terminal.h \
+           sources/xmlelementdefinition.h \
+           sources/xmlelementscategory.h \
+           sources/xmlelementscollection.h \
            sources/editor/arceditor.h \
            sources/editor/circleeditor.h \
            sources/editor/customelementgraphicpart.h \
            sources/editor/customelementpart.h \
            sources/editor/editorcommands.h \
+           sources/editor/elementcontent.h \
            sources/editor/elementitemeditor.h \
            sources/editor/elementscene.h \
            sources/editor/elementview.h \
@@ -103,16 +145,19 @@ HEADERS += sources/aboutqet.h \
            sources/editor/partellipse.h \
            sources/editor/partline.h \
            sources/editor/partpolygon.h \
+           sources/editor/partrectangle.h \
            sources/editor/partterminal.h \
            sources/editor/parttext.h \
            sources/editor/parttextfield.h \
            sources/editor/polygoneditor.h \
            sources/editor/qetelementeditor.h \
+           sources/editor/rectangleeditor.h \
            sources/editor/styleeditor.h \
            sources/editor/terminaleditor.h \
            sources/editor/texteditor.h \
            sources/editor/textfieldeditor.h
 SOURCES += sources/aboutqet.cpp \
+           sources/basicmoveelementshandler.cpp \
            sources/borderinset.cpp \
            sources/borderproperties.cpp \
            sources/borderpropertieswidget.cpp \
@@ -128,37 +173,59 @@ SOURCES += sources/aboutqet.cpp \
            sources/diagramcommands.cpp \
            sources/diagramcontent.cpp \
            sources/diagramprintdialog.cpp \
+           sources/diagramschooser.cpp \
            sources/diagramtextitem.cpp \
            sources/diagramview.cpp \
            sources/element.cpp \
+           sources/elementdefinition.cpp \
            sources/elementdeleter.cpp \
+           sources/elementdialog.cpp \
            sources/elementscategorieslist.cpp \
            sources/elementscategorieswidget.cpp \
            sources/elementscategory.cpp \
            sources/elementscategorydeleter.cpp \
            sources/elementscategoryeditor.cpp \
+           sources/elementscollection.cpp \
+           sources/elementslocation.cpp \
            sources/elementspanel.cpp \
            sources/elementspanelwidget.cpp \
            sources/elementtextitem.cpp \
            sources/exportdialog.cpp \
            sources/fixedelement.cpp \
+           sources/fileelementscategory.cpp \
+           sources/fileelementscollection.cpp \
+           sources/fileelementdefinition.cpp \
+           sources/ghostelement.cpp \
            sources/hotspoteditor.cpp \
            sources/insetproperties.cpp \
            sources/insetpropertieswidget.cpp \
+           sources/integrationmoveelementshandler.cpp \
+           sources/interactivemoveelementshandler.cpp \
            sources/main.cpp \
+           sources/moveelementsdescription.cpp \
            sources/nameslist.cpp \
            sources/nameslistwidget.cpp \
            sources/newelementwizard.cpp \
            sources/orientationset.cpp \
            sources/orientationsetwidget.cpp \
+           sources/projectview.cpp \
            sources/qet.cpp \
            sources/qetapp.cpp \
            sources/qetarguments.cpp \
            sources/qetdiagrameditor.cpp \
+           sources/qetproject.cpp \
+           sources/qetprintpreviewdialog.cpp \
+           sources/qetregexpvalidator.cpp \
+           sources/qettabbar.cpp \
+           sources/qettabwidget.cpp \
            sources/qetsingleapplication.cpp \
+           sources/qfilenameedit.cpp \
            sources/qgimanager.cpp \
            sources/recentfiles.cpp \
            sources/terminal.cpp \
+           sources/xmlelementdefinition.cpp \
+           sources/xmlelementscategory.cpp \
+           sources/xmlelementscollection.cpp \
            sources/editor/arceditor.cpp \
            sources/editor/circleeditor.cpp \
            sources/editor/customelementgraphicpart.cpp \
@@ -174,17 +241,20 @@ SOURCES += sources/aboutqet.cpp \
            sources/editor/partellipse.cpp \
            sources/editor/partline.cpp \
            sources/editor/partpolygon.cpp \
+           sources/editor/partrectangle.cpp \
            sources/editor/partterminal.cpp \
            sources/editor/parttext.cpp \
            sources/editor/parttextfield.cpp \
            sources/editor/polygoneditor.cpp \
            sources/editor/qetelementeditor.cpp \
+           sources/editor/rectangleeditor.cpp \
            sources/editor/styleeditor.cpp \
            sources/editor/terminaleditor.cpp \
            sources/editor/texteditor.cpp \
            sources/editor/textfieldeditor.cpp
 RESOURCES += qelectrotech.qrc
-TRANSLATIONS += lang/qet_en.ts lang/qt_fr.ts
+TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts
+TRANSLATIONS +=                lang/qt_es.ts  lang/qt_fr.ts
 RC_FILE = ico/windows_icon/application_icon/qelectrotech.rc
 QT += xml svg network
 CONFIG += debug_and_release warn_on

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -59,10 +59,10 @@ const BorderProperties &BorderPropertiesWidget::borderProperties() {
 void BorderPropertiesWidget::setEditedBorder(const BorderProperties &bp) {
 	border_ = bp;
 	columns_count   -> setValue(border_.columns_count);
-	columns_width   -> setValue(border_.columns_width);
+	columns_width   -> setValue(qRound(border_.columns_width));
 	display_columns -> setChecked(border_.display_columns);
 	rows_count      -> setValue(border_.rows_count);
-	rows_height     -> setValue(border_.rows_height);
+	rows_height     -> setValue(qRound(border_.rows_height));
 	display_rows    -> setChecked(border_.display_rows);
 }
 
@@ -85,10 +85,10 @@ void BorderPropertiesWidget::build() {
 	columns_width = new QSpinBox(diagram_size_box);
 	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
 	columns_width -> setSingleStep(10);
-	columns_width -> setPrefix(tr("\327"));
-	columns_width -> setSuffix(tr("px"));
+	columns_width -> setPrefix(tr("\327", "multiplication symbol"));
+	columns_width -> setSuffix(tr("px",   "unit for cols width"));
 	
-	display_columns = new QCheckBox(tr("Afficher les en-têtes"), diagram_size_box);
+	display_columns = new QCheckBox(tr("Afficher les en-t\352tes"), diagram_size_box);
 	
 	// lignes : nombre et largeur
 	QLabel *ds2 = new QLabel(tr("Lignes :"));
@@ -99,10 +99,10 @@ void BorderPropertiesWidget::build() {
 	rows_height  = new QSpinBox(diagram_size_box);
 	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
 	rows_height -> setSingleStep(10);
-	rows_height -> setPrefix(tr("\327"));
-	rows_height -> setSuffix(tr("px"));
+	rows_height -> setPrefix(tr("\327", "multiplication symbol"));
+	rows_height -> setSuffix(tr("px",   "unit for rows height"));
 	
-	display_rows = new QCheckBox(tr("Afficher les en-têtes"), diagram_size_box);
+	display_rows = new QCheckBox(tr("Afficher les en-t\352tes"), diagram_size_box);
 	
 	// layout
 	diagram_size_box_layout -> addWidget(ds1,            0, 0);

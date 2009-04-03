@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,60 +21,40 @@
 
 /**
 	Constructeur
-	@param dia Le schema a exporter
+	@param project Le projet a exporter
 	@param parent Le Widget parent de ce dialogue
 */
-ExportDialog::ExportDialog(Diagram *dia, QWidget *parent) : QDialog(parent) {
-	if (!dia) return;
+ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(parent) {
+	if (!project) return;
 	
 	// recupere le schema a exporter, sa taille et ses proportions
-	diagram = dia;
-	diagram_size = diagram -> imageSize();
-	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
-	dontchangewidth = dontchangeheight = false;
+	project_ = project;
 	
 	// la taille minimale du dialogue est fixee
-	setMinimumSize(800, 360);
+	setMinimumSize(800, 390);
 	resize(minimumSize());
-	setWindowTitle(tr("Exporter"));
+	setWindowTitle(tr("Exporter les sch\351mas du projet", "window title"));
 	
 	// le dialogue comporte deux boutons
 	buttons = new QDialogButtonBox(this);
 	buttons -> setOrientation(Qt::Horizontal);
-	buttons -> setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::NoButton|QDialogButtonBox::Save);
+	buttons -> setStandardButtons(QDialogButtonBox::Cancel|QDialogButtonBox::Save);
+	QPushButton *export_button = buttons -> button(QDialogButtonBox::Save);
+	export_button -> setText(tr("Exporter"));
 	
 	// disposition des elements
-	QGridLayout *layout = new QGridLayout(this);
-	setContentsMargins(0, 0, 5, 5);
-	layout -> setMargin(0);
-	layout -> setSpacing(0);
-	layout -> setColumnMinimumWidth(0, 390);
-	layout -> setColumnMinimumWidth(1, 400);
-	layout -> addWidget(leftPart(),  0, 0);
-	layout -> addWidget(rightPart(), 0, 1);
-	layout -> addWidget(buttons,     1, 1);
-	layout -> setColumnStretch(0, 1);
-	layout -> setColumnStretch(1, 500);
-	
-	setTabOrder(keep_aspect_ratio, buttons);
+	QVBoxLayout *layout = new QVBoxLayout(this);
+	layout -> addWidget(new QLabel(tr("Choisissez les sch\351mas que vous d\351sirez exporter ainsi que leurs dimensions :")));
+	layout -> addWidget(initDiagramsListPart(), 1);
+	layout -> addWidget(leftPart());
+	layout -> addWidget(buttons);
+	slot_changeFilesExtension(true);
 	
 	// connexions signaux/slots
-	connect(button_browse,     SIGNAL(released()),         this, SLOT(slot_chooseAFile()));
-	connect(width,             SIGNAL(valueChanged(int)),  this, SLOT(slot_correctHeight()));
-	connect(keep_aspect_ratio, SIGNAL(stateChanged(int)),  this, SLOT(slot_correctHeight()));
-	connect(height,            SIGNAL(valueChanged(int)),  this, SLOT(slot_correctWidth()));
-	connect(buttons,           SIGNAL(accepted()),         this, SLOT(slot_check()));
+	connect(button_browse,     SIGNAL(released()),               this, SLOT(slot_chooseADirectory()));
+	connect(format,            SIGNAL(currentIndexChanged(int)), this, SLOT(slot_changeFilesExtension()));
+	connect(buttons,           SIGNAL(accepted()),         this, SLOT(slot_export()));
 	connect(buttons,           SIGNAL(rejected()),         this, SLOT(reject()));
-	
-	connect(draw_grid,         SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(draw_border,       SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(draw_inset,        SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(draw_columns,      SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(draw_rows,         SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(draw_terminals,    SIGNAL(stateChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(width,             SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(height,            SIGNAL(valueChanged(int) ), this, SLOT(slot_refreshPreview()));
-	connect(export_border,     SIGNAL(toggled     (bool)), this, SLOT(slot_changeUseBorder()));
 }
 
 /**
@@ -84,41 +64,14 @@ ExportDialog::~ExportDialog() {
 }
 
 /**
-	Met en place la partie du dialogue dans lequel l'utilisateur entre les
-	dimensions souhaitees de l'image.
-	@return La QGroupBox permettant de regler les dimensions de l'image
+	@return lenombre de schemas coches (donc a exporter)
 */
-QGroupBox *ExportDialog::setupDimensionsGroupBox() {
-	QGroupBox *groupbox_dimensions = new QGroupBox(tr("Dimensions"), this);
-	QGridLayout *gridLayout = new QGridLayout(groupbox_dimensions);
-	
-	// hauteur
-	gridLayout -> addWidget(new QLabel(tr("Hauteur :"), groupbox_dimensions), 2, 0, 1, 1);
-	
-	width = new QSpinBox(groupbox_dimensions);
-	width -> setRange(1, 10000);
-	width -> setValue(diagram_size.width());
-	gridLayout -> addWidget(width, 0, 1, 1, 1);
-	
-	gridLayout -> addWidget(new QLabel(tr("px"), groupbox_dimensions), 0, 2, 1, 1);
-	
-	// largeur
-	gridLayout -> addWidget(new QLabel(tr("Largeur :"), groupbox_dimensions), 0, 0, 1, 1);
-	
-	height = new QSpinBox(groupbox_dimensions);
-	height -> setRange(1, 10000);
-	height -> setValue(diagram_size.height());
-	gridLayout -> addWidget(height, 2, 1, 1, 1);
-	
-	gridLayout -> addWidget(new QLabel(tr("px"), groupbox_dimensions), 2, 2, 1, 1);
-	
-	// conserver les proportions
-	keep_aspect_ratio = new QCheckBox(tr("Conserver les proportions"), groupbox_dimensions);
-	keep_aspect_ratio -> setChecked(true);
-	
-	gridLayout -> addWidget(keep_aspect_ratio, 1, 3, 1, 1);
-	
-	return(groupbox_dimensions);
+int ExportDialog::diagramsToExportCount() const {
+	int checked_diagrams_count = 0;
+	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
+		if (diagram_line -> must_export -> isChecked()) ++ checked_diagrams_count;
+	}
+	return(checked_diagrams_count);
 }
 
 /**
@@ -138,37 +91,89 @@ QGroupBox *ExportDialog::setupOptionsGroupBox() {
 	export_elements = new QRadioButton(tr("Exporter les \351l\351ments"), groupbox_options);
 	optionshlayout -> addWidget(export_elements, 0, 1);
 	exported_content_choices -> addButton(export_elements);
-	(diagram -> useBorder() ? export_border : export_elements) -> setChecked(true);
+	export_border -> setChecked(true);
+	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SLOT(slot_changeUseBorder()));
 	
 	// dessiner la grille
 	draw_grid = new QCheckBox(tr("Dessiner la grille"), groupbox_options);
-	optionshlayout -> addWidget(draw_grid, 1, 0);
+	optionshlayout -> addWidget(draw_grid, 1, 1);
 	
 	// dessiner le cadre
 	draw_border = new QCheckBox(tr("Dessiner le cadre"), groupbox_options);
-	optionshlayout -> addWidget(draw_border, 1, 1);
-	draw_border -> setChecked(diagram -> border_and_inset.borderIsDisplayed());
+	optionshlayout -> addWidget(draw_border, 1, 0);
+	draw_border -> setChecked(true);
 	
 	// dessiner le cartouche
 	draw_inset = new QCheckBox(tr("Dessiner le cartouche"), groupbox_options);
 	optionshlayout -> addWidget(draw_inset, 2, 0);
-	draw_inset -> setChecked(diagram -> border_and_inset.insetIsDisplayed());
-	
-	// dessiner les colonnes
-	draw_columns = new QCheckBox(tr("Dessiner les colonnes"), groupbox_options);
-	optionshlayout -> addWidget(draw_columns, 2, 1);
-	draw_columns -> setChecked(diagram -> border_and_inset.columnsAreDisplayed());
-	
-	// dessiner les lignes
-	draw_rows = new QCheckBox(tr("Dessiner les lignes"), groupbox_options);
-	optionshlayout -> addWidget(draw_rows, 3, 1);
-	draw_rows -> setChecked(diagram -> border_and_inset.rowsAreDisplayed());
+	draw_inset -> setChecked(true);
 	
 	// dessiner les bornes
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
-	optionshlayout -> addWidget(draw_terminals, 3, 0);
+	optionshlayout -> addWidget(draw_terminals, 2, 1);
 	
 	return(groupbox_options);
+}
+
+/**
+	Met en place la liste des schemas
+	@return Le widget representant la liste des schemas
+*/
+QWidget *ExportDialog::initDiagramsListPart() {
+	preview_mapper_ = new QSignalMapper(this);
+	width_mapper_   = new QSignalMapper(this);
+	height_mapper_  = new QSignalMapper(this);
+	ratio_mapper_   = new QSignalMapper(this);
+	reset_mapper_   = new QSignalMapper(this);
+	
+	connect(preview_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
+	connect(width_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
+	connect(height_mapper_,  SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
+	connect(ratio_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
+	connect(reset_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
+	
+	diagrams_list_layout_ = new QGridLayout();
+	
+	int line_count = 0;
+	diagrams_list_layout_ -> addWidget(new QLabel(tr("Sch\351ma")),        line_count, 1, Qt::AlignHCenter | Qt::AlignVCenter);
+	diagrams_list_layout_ -> addWidget(new QLabel(tr("Nom de fichier")),   line_count, 2, Qt::AlignHCenter | Qt::AlignVCenter);
+	diagrams_list_layout_ -> addWidget(new QLabel(tr("Dimensions")),       line_count, 3, Qt::AlignHCenter | Qt::AlignVCenter);
+	
+	// remplit la liste
+	foreach (Diagram *diagram, project_ -> diagrams()) {
+		++ line_count;
+		ExportDiagramLine *diagram_line = new ExportDiagramLine(diagram);
+		diagram_lines_.insert(line_count, diagram_line);
+		diagrams_list_layout_ -> addWidget(diagram_line -> must_export,    line_count, 0);
+		diagrams_list_layout_ -> addWidget(diagram_line -> title_label,    line_count, 1);
+		diagrams_list_layout_ -> addWidget(diagram_line -> file_name,      line_count, 2);
+		diagrams_list_layout_ -> addLayout(diagram_line -> sizeLayout(),   line_count, 3);
+		
+		// si on decoche tous les schemas, on desactive le bouton "Exporter"
+		connect(diagram_line -> must_export, SIGNAL(toggled(bool)), this, SLOT(slot_checkDiagramsCount()));
+		
+		// mappings et signaux pour la gestion des dimensions du schema
+		width_mapper_  -> setMapping(diagram_line -> width,      line_count);
+		height_mapper_ -> setMapping(diagram_line -> height,     line_count);
+		ratio_mapper_  -> setMapping(diagram_line -> keep_ratio, line_count);
+		reset_mapper_  -> setMapping(diagram_line -> reset_size, line_count);
+		connect(diagram_line -> width,      SIGNAL(valueChanged(int)), width_mapper_,  SLOT(map()));
+		connect(diagram_line -> height,     SIGNAL(valueChanged(int)), height_mapper_, SLOT(map()));
+		connect(diagram_line -> keep_ratio, SIGNAL(toggled(bool)),     ratio_mapper_,  SLOT(map()));
+		connect(diagram_line -> reset_size, SIGNAL(clicked(bool)),     reset_mapper_,  SLOT(map()));
+		
+		// mappings et signaux pour l'apercu du schema
+		preview_mapper_ -> setMapping(diagram_line -> preview, line_count);
+		connect(diagram_line -> preview, SIGNAL(clicked(bool)), preview_mapper_, SLOT(map()));
+	}
+	
+	QWidget *widget_diagrams_list = new QWidget();
+	widget_diagrams_list -> setLayout(diagrams_list_layout_);
+	
+	QScrollArea *scroll_diagrams_list = new QScrollArea();
+	scroll_diagrams_list -> setWidget(widget_diagrams_list);
+	
+	return(scroll_diagrams_list);
 }
 
 /**
@@ -181,15 +186,19 @@ QWidget *ExportDialog::leftPart() {
 	// la partie gauche du dialogue est un empilement vertical d'elements
 	QVBoxLayout *vboxLayout = new QVBoxLayout(retour);
 	
-	/* le dialogue comprend une ligne permettant d'indiquer un chemin de fichier (hboxLayout) */
+	/* le dialogue comprend une ligne permettant d'indiquer un chemin de dossier (hboxLayout) */
 	QHBoxLayout *hboxLayout = new QHBoxLayout();
-	hboxLayout -> addWidget(new QLabel(tr("Nom de fichier :"), this));
-	hboxLayout -> addWidget(filename = new QLineEdit(this));
-	filename -> setText(QDir::toNativeSeparators(QDir::homePath()));
+	QLabel *dirpath_label = new QLabel(tr("Dossier cible :"), this);
+	dirpath = new QLineEdit(this);
+	dirpath -> setText(QDir::toNativeSeparators(QDir::homePath()));
 	QCompleter *completer = new QCompleter(this);
 	completer -> setModel(new QDirModel(completer));
-	filename -> setCompleter(completer);
-	hboxLayout -> addWidget(button_browse = new QPushButton(tr("Parcourir"), this));
+	dirpath -> setCompleter(completer);
+	button_browse = new QPushButton(tr("Parcourir"), this);
+	hboxLayout -> addWidget(dirpath_label);
+	hboxLayout -> addWidget(dirpath);
+	hboxLayout -> addWidget(button_browse);
+	hboxLayout -> addStretch();
 	
 	vboxLayout -> addLayout(hboxLayout);
 	
@@ -201,117 +210,192 @@ QWidget *ExportDialog::leftPart() {
 	format -> addItem(tr("JPEG (*.jpg)"),   "JPG");
 	format -> addItem(tr("Bitmap (*.bmp)"), "BMP");
 	format -> addItem(tr("SVG (*.svg)"),    "SVG");
+	hboxLayout1 -> addStretch();
 	
 	vboxLayout -> addLayout(hboxLayout1);
-	
-	/* un cadre permettant de specifier les dimensions de l'image finale */
-	vboxLayout -> addWidget(setupDimensionsGroupBox());
 	
 	/* un cadre permettant de specifier les options de l'image finale */
 	vboxLayout -> addWidget(setupOptionsGroupBox());
 	vboxLayout -> addStretch();
 	
 	// ordre des input selectionnes avec la touche tab
-	setTabOrder(filename, button_browse);
+	
+	setTabOrder(dirpath, button_browse);
 	setTabOrder(button_browse, format);
-	setTabOrder(format, width);
-	setTabOrder(width, height);
-	setTabOrder(height, keep_aspect_ratio);
-	
+	setTabOrder(format, export_border);
+	setTabOrder(export_border, draw_border);
+	setTabOrder(draw_border, draw_grid);
+	setTabOrder(draw_grid, draw_inset);
+	setTabOrder(draw_inset, draw_terminals);
 	return(retour);
 }
 
 /**
-	Met en place la partie droite du dialogue
-	@return Le widget representant la moitie droite du dialogue
+	@param diagram Un schema
+	@return le rapport largeur / hauteur du schema
 */
-QWidget *ExportDialog::rightPart() {
-	QWidget *retour = new QWidget();
-	QHBoxLayout *hboxlayout0 = new QHBoxLayout(retour);
-	
-	
-	// la partie droite contient une GroupBox intitulee "Apercu"
-	QGroupBox *groupbox_preview = new QGroupBox(tr("Aper\347u"), this);
-	groupbox_preview -> setMinimumWidth(390);
-	QHBoxLayout *hboxlayout1 = new QHBoxLayout(groupbox_preview);
-	hboxlayout1 -> setMargin(0);
-	
-	// cette GroupBox contient l'apercu
-	preview_scene = new QGraphicsScene();
-	preview_view = new QGraphicsView(preview_scene, groupbox_preview);
-	hboxlayout1 -> addWidget(preview_view);
-	
-	// genere le premier apercu
-	slot_refreshPreview();
-	
-	hboxlayout0 -> addWidget(groupbox_preview);
-	return(retour);
+qreal ExportDialog::diagramRatio(Diagram *diagram) {
+	QSize diagram_size = diagramSize(diagram);
+	qreal diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
+	return(diagram_ratio);
 }
 
 /**
-	Slot corrigeant la largeur (typiquement lors d'un changement de la hauteur)
+	@param diagram Un schema
+	@return les dimensions du schema, en tenant compte du type d'export : cadre
+	ou elements
 */
-void ExportDialog::slot_correctWidth() {
-	if (!keep_aspect_ratio -> isChecked() || dontchangewidth) return;
-	dontchangeheight = true;
-	width -> setValue(qRound(height -> value() * diagram_ratio));
-	dontchangeheight = false;
+QSize ExportDialog::diagramSize(Diagram *diagram) {
+	// sauvegarde le parametre useBorder du schema
+	bool state_useBorder = diagram -> useBorder();
+	
+	// applique le useBorder adequat et calcule le ratio
+	diagram -> setUseBorder(export_border -> isChecked());
+	QSize diagram_size = diagram -> imageSize();
+	
+	// restaure le parametre useBorder du schema
+	diagram -> setUseBorder(state_useBorder);
+	
+	return(diagram_size);
 }
 
 /**
-	Slot corrigeant la hauteur (typiquement lors d'un changement de la largeur)
+	Cette methode ajuste la largeur d'un des schemas a exporter en fonction de
+	sa hauteur si et seulement si l'option "Conserver les proportions" est
+	activee pour ce schema.
+	@param diagram_id numero du schema concerne
 */
-void ExportDialog::slot_correctHeight() {
-	if (!keep_aspect_ratio -> isChecked() || dontchangeheight) return;
-	dontchangewidth = true;
-	height -> setValue(qRound(width -> value() / diagram_ratio));
-	dontchangewidth = false;
+void ExportDialog::slot_correctWidth(int diagram_id) {
+	// recupere l'ExportDiagramLine concernee
+	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
+	if (!current_diagram) return;
+	
+	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
+	if (!(current_diagram -> keep_ratio -> isChecked())) return;
+	
+	// recupere les proportions du schema
+	qreal diagram_ratio = diagramRatio(current_diagram -> diagram);
+	
+	// ajuste la largeur
+	current_diagram -> width -> blockSignals(true);
+	current_diagram -> width -> setValue(qRound(current_diagram -> height -> value() * diagram_ratio));
+	current_diagram -> width -> blockSignals(false);
 }
 
 /**
-	Slot demandant a l'utilisateur de choisir un fichier
+	Cette methode ajuste la hauteur d'un des schemas a exporter en fonction de
+	sa largeur si et seulement si l'option "Conserver les proportions" est
+	activee pour ce schema.
+	@param diagram_id numero du schema concerne
 */
-void ExportDialog::slot_chooseAFile() {
-	QString user_file = QFileDialog::getSaveFileName(
+void ExportDialog::slot_correctHeight(int diagram_id) {
+	// recupere l'ExportDiagramLine concernee
+	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
+	if (!current_diagram) return;
+	
+	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
+	if (!(current_diagram -> keep_ratio -> isChecked())) return;
+	
+	// recupere les proportions du schema
+	qreal diagram_ratio = diagramRatio(current_diagram -> diagram);
+	
+	// ajuste la hauteur
+	current_diagram -> height -> blockSignals(true);
+	current_diagram -> height -> setValue(qRound(current_diagram -> width -> value() / diagram_ratio));
+	current_diagram -> height -> blockSignals(false);
+}
+
+/**
+	Prend en compte le fait qu'il faut desormais conserver ou non les
+	proportions d'un des schemas
+	@param diagram_id numero du schema concerne
+*/
+void ExportDialog::slot_keepRatioChanged(int diagram_id) {
+	// recupere l'ExportDiagramLine concernee
+	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
+	if (!current_diagram) return;
+	
+	// gere l'icone du bouton "Conserver les proportions"
+	if (current_diagram -> keep_ratio -> isChecked()) {
+		current_diagram -> keep_ratio -> setIcon(QIcon(":/ico/lock.png"));
+	} else {
+		current_diagram -> keep_ratio -> setIcon(QIcon(":/ico/unlock.png"));
+	}
+	
+	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
+	if (!(current_diagram -> keep_ratio -> isChecked())) return;
+	
+	// au contraire, si elle est activee, ajuste la hauteur en fonction de la largeur
+	slot_correctHeight(diagram_id);
+}
+
+/**
+	Reinitialise les dimensions d'un des schemas
+	@param diagram_id numero du schema concerne
+*/
+void ExportDialog::slot_resetSize(int diagram_id) {
+	// recupere l'ExportDiagramLine concernee
+	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
+	if (!current_diagram) return;
+	
+	// recupere la taille du schema
+	QSize diagram_size = diagramSize(current_diagram -> diagram);
+	
+	// reinitialise les champs largeur et hauteur
+	current_diagram -> width  -> blockSignals(true);
+	current_diagram -> height -> blockSignals(true);
+	current_diagram -> width  -> setValue(diagram_size.width());
+	current_diagram -> height -> setValue(diagram_size.height());
+	current_diagram -> width  -> blockSignals(false);
+	current_diagram -> height -> blockSignals(false);
+}
+
+/**
+	Slot demandant a l'utilisateur de choisir un dossier
+*/
+void ExportDialog::slot_chooseADirectory() {
+	QString user_dir = QFileDialog::getExistingDirectory(
 		this,
-		tr("Exporter vers le fichier"),
-		QDir::homePath(),
-		tr("Images (*.png *.bmp *.jpg *.svg)")
+		tr("Exporter dans le dossier", "dialog title"),
+		QDir::homePath()
 	);
-	if (!user_file.isEmpty()) {
-		filename -> setText(user_file);
+	if (!user_dir.isEmpty()) {
+		dirpath -> setText(user_dir);
 	}
 }
 
 /**
 	Genere l'image a exporter
+	@param diagram Schema a exporter en SVG
+	@param width  Largeur de l'export
+	@param height Hauteur de l'export
+	@param keep_aspect_ratio True pour conserver le ratio, false sinon
 	@return l'image a exporter
 */
-QImage ExportDialog::generateImage() {
-	saveReloadDiagramParameters(true);
+QImage ExportDialog::generateImage(Diagram *diagram, int width, int height, bool keep_aspect_ratio) {
+	saveReloadDiagramParameters(diagram, true);
 	
-	QImage image(width -> value(), height -> value(), QImage::Format_RGB32);
+	QImage image(width, height, QImage::Format_RGB32);
 	diagram -> toPaintDevice(
 		image,
-		width -> value(),
-		height -> value(),
-		keep_aspect_ratio -> isChecked() ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
+		width,
+		height,
+		keep_aspect_ratio ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
 	);
 	
-	saveReloadDiagramParameters(false);
+	saveReloadDiagramParameters(diagram, false);
 	
 	return(image);
 }
 
 /**
 	Sauve ou restaure les parametres du schema
+	@param diagram Schema dont on sauve ou restaure les parametres
 	@param save true pour memoriser les parametres du schema et appliquer ceux
 	definis par le formulaire, false pour restaurer les parametres
 */
-void ExportDialog::saveReloadDiagramParameters(bool save) {
+void ExportDialog::saveReloadDiagramParameters(Diagram *diagram, bool save) {
 	static bool state_drawBorder;
-	static bool state_drawColumns;
-	static bool state_drawRows;
 	static bool state_drawInset;
 	static bool state_drawGrid;
 	static bool state_drawTerm;
@@ -320,8 +404,6 @@ void ExportDialog::saveReloadDiagramParameters(bool save) {
 	if (save) {
 		// memorise les parametres relatifs au schema
 		state_drawBorder  = diagram -> border_and_inset.borderIsDisplayed();
-		state_drawColumns = diagram -> border_and_inset.columnsAreDisplayed();
-		state_drawRows    = diagram -> border_and_inset.rowsAreDisplayed();
 		state_drawInset   = diagram -> border_and_inset.insetIsDisplayed();
 		state_drawGrid    = diagram -> displayGrid();
 		state_drawTerm    = diagram -> drawTerminals();
@@ -331,14 +413,10 @@ void ExportDialog::saveReloadDiagramParameters(bool save) {
 		diagram -> setDrawTerminals(draw_terminals -> isChecked());
 		diagram -> setDisplayGrid(draw_grid -> isChecked());
 		diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
-		diagram -> border_and_inset.displayColumns(draw_columns -> isChecked());
-		diagram -> border_and_inset.displayRows(draw_rows -> isChecked());
 		diagram -> border_and_inset.displayInset(draw_inset -> isChecked());
 	} else {
 		// restaure les parametres relatifs au schema
 		diagram -> border_and_inset.displayBorder(state_drawBorder);
-		diagram -> border_and_inset.displayColumns(state_drawColumns);
-		diagram -> border_and_inset.displayRows(state_drawRows);
 		diagram -> border_and_inset.displayInset(state_drawInset);
 		diagram -> setDisplayGrid(state_drawGrid);
 		diagram -> setDrawTerminals(state_drawTerm);
@@ -348,54 +426,104 @@ void ExportDialog::saveReloadDiagramParameters(bool save) {
 
 /**
 	Exporte le schema en SVG
+	@param diagram Schema a exporter en SVG
+	@param width  Largeur de l'export SVG
+	@param height Hauteur de l'export SVG
+	@param keep_aspect_ratio True pour conserver le ratio, false sinon
 	@param file Fichier dans lequel sera enregistre le code SVG
 */
-void ExportDialog::generateSvg(QFile &file) {
-	saveReloadDiagramParameters(true);
+void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QFile &file) {
+	saveReloadDiagramParameters(diagram, true);
 	
 	// genere une QPicture a partir du schema
 	QPicture picture;
 	diagram -> toPaintDevice(
 		picture,
-		width -> value(),
-		height -> value(),
-		keep_aspect_ratio -> isChecked() ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
+		width,
+		height,
+		keep_aspect_ratio ? Qt::KeepAspectRatio : Qt::IgnoreAspectRatio
 	);
 	
 	// "joue" la QPicture sur un QSvgGenerator
 	QSvgGenerator svg_engine;
-	svg_engine.setSize(QSize(width -> value(), height -> value()));
+	svg_engine.setSize(QSize(width, height));
 	svg_engine.setOutputDevice(&file);
 	QPainter svg_painter(&svg_engine);
 	picture.play(&svg_painter);
 	
-	saveReloadDiagramParameters(false);
+	saveReloadDiagramParameters(diagram, false);
 }
 
 /**
-	Slot effectuant les verifications necessaires apres la validation du
-	dialogue.
+	Slot effectuant les exports apres la validation du dialogue.
 */
-void ExportDialog::slot_check() {
-	QString diagram_path = filename -> text();
+void ExportDialog::slot_export() {
+	// recupere la liste des schemas a exporter
+	QList<ExportDiagramLine *> diagrams_to_export;
+	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
+		if (diagram_line -> must_export -> isChecked()) {
+			diagrams_to_export << diagram_line;
+		}
+	}
 	
-	// verifie que le fichier a ete specifie
-	if (diagram_path.isEmpty()) {
-		QMessageBox::information(
+	// verification #1 : chaque schema coche doit avoir un nom de fichier distinct
+	QSet<QString> filenames;
+	foreach(ExportDiagramLine *diagram_line, diagrams_to_export) {
+		QString diagram_file = diagram_line -> file_name -> text();
+		if (!diagram_file.isEmpty()) {
+			filenames << diagram_file;
+		}
+	}
+	if (filenames.count() != diagrams_to_export.count()) {
+		QMessageBox::warning(
 			this,
-			tr("Fichier non sp\351cifi\351"),
-			tr("Vous devez sp\351cifier le chemin du fichier dans lequel sera enregistr\351e l'image."),
+			tr("Noms des fichiers cibles", "message box title"),
+			tr(
+				"Vous devez entrer un nom de fichier distinct pour chaque "
+				"sch\351ma \340 exporter.",
+				"message box content"
+			)
+		);
+		return;
+	}
+	
+	// verification #2 : un chemin vers un dossier doit avoir ete specifie
+	QDir target_dir_path(dirpath -> text());
+	if (dirpath -> text().isEmpty() || !target_dir_path.exists()) {
+		QMessageBox::warning(
+			this,
+			tr("Dossier non sp\351cifi\351", "message box title"),
+			tr("Vous devez sp\351cifier le chemin du dossier dans lequel seront enregistr\351s les fichiers images.", "message box content"),
 			QMessageBox::Ok
 		);
 		return;
 	}
 	
+	// exporte chaque schema a exporter
+	foreach(ExportDiagramLine *diagram_line, diagrams_to_export) {
+		exportDiagram(diagram_line);
+	}
+	
+	// fermeture du dialogue
+	accept();
+}
+
+/**
+	Exporte un schema
+	@param diagram_line La ligne decrivant le schema a exporter et la maniere
+	de l'exporter
+*/
+void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 	// recupere le format a utiliser (acronyme et extension)
 	QString format_acronym = format -> itemData(format -> currentIndex()).toString();
 	QString format_extension = "." + format_acronym.toLower();
 	
-	// corrige l'extension du fichier
-	if (!diagram_path.endsWith(format_extension, Qt::CaseInsensitive)) diagram_path += format_extension;
+	// determine le nom de fichier a utiliser
+	QString diagram_path = diagram_line -> file_name -> text();
+	
+	// determine le chemin du fichier du fichier
+	QDir target_dir_path(dirpath -> text());
+	diagram_path = target_dir_path.absoluteFilePath(diagram_path);
 	
 	// recupere des informations sur le fichier specifie
 	QFileInfo file_infos(diagram_path);
@@ -404,56 +532,136 @@ void ExportDialog::slot_check() {
 	if (file_infos.exists() && !file_infos.isWritable()) {
 		QMessageBox::critical(
 			this,
-			tr("Impossible d'\351crire dans ce fichier"),
-			tr("Il semblerait que vous n'ayez pas les permissions n\351cessaires pour \351crire dans ce fichier.."),
+			tr("Impossible d'\351crire dans ce fichier", "message box title"),
+			QString(
+				tr(
+					"Il semblerait que vous n'ayez pas les permissions "
+					"n\351cessaires pour \351crire dans le fichier %1.",
+					"message box content"
+				)
+			).arg(diagram_path),
 			QMessageBox::Ok
 		);
 		return;
 	}
 	
 	// ouvre le fichier
-	QFile fichier(diagram_path);
+	QFile target_file(diagram_path);
 	
 	// enregistre l'image dans le fichier
 	if (format_acronym == "SVG") {
-		generateSvg(fichier);
+		generateSvg(
+			diagram_line -> diagram,
+			diagram_line -> width  -> value(),
+			diagram_line -> height -> value(),
+			diagram_line -> keep_ratio -> isChecked(),
+			target_file
+		);
 	} else {
-		QImage image = generateImage();
-		image.save(&fichier, format_acronym.toUtf8().data());
+		QImage image = generateImage(
+			diagram_line -> diagram,
+			diagram_line -> width  -> value(),
+			diagram_line -> height -> value(),
+			diagram_line -> keep_ratio -> isChecked()
+		);
+		image.save(&target_file, format_acronym.toUtf8().data());
 	}
-	fichier.close();
-	
-	// fermeture du dialogue
-	accept();
+	target_file.close();
 }
 
 /**
 	Slot appele lorsque l'utilisateur change la zone du schema qui doit etre
-	exportee. Il faut alors calculer le nouveau ratio et corriger les
-	dimensions.
+	exportee. Il faut alors ajuster les dimensons des schemas.
 */
 void ExportDialog::slot_changeUseBorder() {
-	// calcule le nouveau ratio
-	bool state_useBorder   = diagram -> useBorder();
-	diagram -> setUseBorder(export_border -> isChecked());
-	diagram_size = diagram -> imageSize();
-	diagram_ratio = (qreal)diagram_size.width() / (qreal)diagram_size.height();
-	diagram -> setUseBorder(state_useBorder);
-	
-	// corrige les dimensions
-	if (keep_aspect_ratio -> isChecked()) slot_correctHeight();
-	
-	// rafraichit l'apercu
-	slot_refreshPreview();
+	// parcourt les schemas a exporter
+	foreach(int diagram_id, diagram_lines_.keys()) {
+		ExportDiagramLine *diagram_line = diagram_lines_[diagram_id];
+		
+		// corrige les dimensions des schemas dont il faut preserver le ratio
+		if (diagram_line -> keep_ratio -> isChecked()) {
+			slot_correctHeight(diagram_id);
+		}
+	}
 }
 
 /**
-	Rafraichit l'apercu de l'export
+	Ce slot active ou desactive le bouton "Exporter" en fonction du nombre de
+	schemas coches.
 */
-void ExportDialog::slot_refreshPreview() {
+void ExportDialog::slot_checkDiagramsCount() {
+	QPushButton *export_button = buttons -> button(QDialogButtonBox::Save);
+	export_button -> setEnabled(diagramsToExportCount());
+}
+
+/**
+	Modifie les extensions des fichiers en fonction du format selectionne
+	@param force_extension true pour ajouter l'extension si elle n'est pas
+	presente, false pour se contenter de la modifier si elle est incorrecte.
+*/
+void ExportDialog::slot_changeFilesExtension(bool force_extension) {
+	// recupere le format a utiliser (acronyme et extension)
+	QString format_acronym = format -> itemData(format -> currentIndex()).toString();
+	QString format_extension = "." + format_acronym.toLower();
+	
+	// parcourt les schemas a exporter
+	foreach(ExportDiagramLine *diagram_line, diagram_lines_.values()) {
+		QString diagram_filename = diagram_line -> file_name -> text();
+		
+		// cas 1 : l'extension est presente et correcte : on ne fait rien
+		if (diagram_filename.endsWith(format_extension, Qt::CaseInsensitive)) {
+			continue;
+		}
+		
+		QFileInfo diagram_filename_info(diagram_filename);
+		// cas 2 : l'extension est absente
+		if (diagram_filename_info.suffix().isEmpty()) {
+			if (force_extension) {
+				diagram_filename = diagram_filename_info.completeBaseName() + format_extension;
+			}
+		} else {
+			// cas 3 : l'extension est presente mais erronee
+			diagram_filename = diagram_filename_info.completeBaseName() + format_extension;
+		}
+		
+		diagram_line -> file_name -> setText(diagram_filename);
+	}
+}
+
+/**
+	Cette methode fait apparaitre un dialogue permettant de redimensionner et
+	previsualiser un des schemas a exporter
+	@param diagram_id numero du schema a previsualiser
+*/
+void ExportDialog::slot_previewDiagram(int diagram_id) {
+	// recupere l'ExportDiagramLine concernee
+	ExportDialog::ExportDiagramLine *current_diagram = diagram_lines_[diagram_id];
+	if (!current_diagram) return;
+	
+	// initialise un dialogue
+	QDialog preview_dialog;
+	preview_dialog.setWindowTitle(tr("Aper\347u"));
+	preview_dialog.setWindowState(preview_dialog.windowState() | Qt::WindowMaximized);
+	
+	QGraphicsScene *preview_scene = new QGraphicsScene();
+	preview_scene -> setBackgroundBrush(Qt::lightGray);
+	QGraphicsView *preview_view = new QGraphicsView(preview_scene);
+	preview_view -> setDragMode(QGraphicsView::ScrollHandDrag);
+	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok);
+	connect(buttons, SIGNAL(accepted()), &preview_dialog, SLOT(accept()));
+	
+	QVBoxLayout *vboxlayout1 = new QVBoxLayout();
+	vboxlayout1 -> addWidget(preview_view);
+	vboxlayout1 -> addWidget(buttons);
+	preview_dialog.setLayout(vboxlayout1);
 	
 	// genere le nouvel apercu
-	QImage preview_image = generateImage();
+	QImage preview_image = generateImage(
+		current_diagram -> diagram,
+		current_diagram -> width  -> value(),
+		current_diagram -> height -> value(),
+		current_diagram -> keep_ratio -> isChecked()
+	);
 	
 	// nettoie l'apercu
 	foreach (QGraphicsItem *qgi, preview_scene -> items()) {
@@ -465,4 +673,79 @@ void ExportDialog::slot_refreshPreview() {
 	QGraphicsPixmapItem *qgpi = new QGraphicsPixmapItem(QPixmap::fromImage(preview_image));
 	preview_scene -> addItem(qgpi);
 	preview_scene -> setSceneRect(QRectF(0.0, 0.0, preview_image.width(), preview_image.height()));
+	
+	// montre l'apercu
+	preview_dialog.exec();
+}
+
+/**
+	Constructeur
+	@param dia Schema concerne
+*/
+ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia) {
+	diagram = dia;
+	must_export = new QCheckBox();
+	must_export -> setChecked(true);
+	
+	// titre et nom de fichier du schema
+	QString diagram_title = diagram -> title();
+	if (diagram_title.isEmpty()) diagram_title = QObject::tr("Sch\351ma sans titre");
+	QString diagram_filename = diagram -> title();
+	if (diagram_filename.isEmpty()) diagram_filename = QObject::tr("schema");
+	diagram_filename = QET::stringToFileName(diagram_filename);
+	
+	title_label = new QLabel(diagram_title);
+	
+	file_name = new QLineEdit();
+	file_name -> setText(diagram_filename);
+	file_name -> setMinimumWidth(180);
+	
+	QSize diagram_size = diagram -> imageSize();
+	
+	width = new QSpinBox();
+	width -> setRange(1, 10000);
+	width -> setSuffix(tr("px"));
+	width -> setValue(diagram_size.width());
+	
+	height = new QSpinBox();
+	height -> setRange(1, 10000);
+	height -> setSuffix(tr("px"));
+	height -> setValue(diagram_size.height());
+	
+	x_label = new QLabel("\327");
+	
+	keep_ratio = new QPushButton();
+	keep_ratio -> setCheckable(true);
+	keep_ratio -> setChecked(true);
+	keep_ratio -> setIcon(QIcon(":/ico/lock.png"));
+	keep_ratio -> setToolTip(QObject::tr("Conserver les proportions"));
+	
+	reset_size = new QPushButton();
+	reset_size -> setIcon(QIcon(":/ico/start.png"));
+	reset_size -> setToolTip(QObject::tr("R\351initialiser les dimensions"));
+	
+	preview = new QPushButton();
+	preview -> setIcon(QIcon(":/ico/viewmag.png"));
+	preview -> setToolTip(QObject::tr("Aper\347u"));
+}
+
+/**
+	Destructeur
+*/
+ExportDialog::ExportDiagramLine::~ExportDiagramLine() {
+}
+
+/**
+	@return un layout contenant les widgets necessaires a la gestion de la
+	taille d'un schema avant son export.
+*/
+QBoxLayout *ExportDialog::ExportDiagramLine::sizeLayout() {
+	QHBoxLayout *layout = new QHBoxLayout();
+	layout -> addWidget(width);
+	layout -> addWidget(x_label);
+	layout -> addWidget(height);
+	layout -> addWidget(keep_ratio);
+	layout -> addWidget(reset_size);
+	layout -> addWidget(preview);
+	return(layout);
 }

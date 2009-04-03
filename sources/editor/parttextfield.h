@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 		@return le type de QGraphicsItem
 	*/
 	virtual int type() const { return Type; }
-	virtual QString name() const { return(QObject::tr("champ de texte")); }
+	virtual QString name() const { return(QObject::tr("champ de texte", "element part name")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
 	QWidget *elementInformations();

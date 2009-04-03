@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -62,7 +62,7 @@ void RecentFiles::clear() {
 }
 
 /**
-	Sauvegarde les fichiers récents dans la configuration
+	Sauvegarde les fichiers recents dans la configuration
 */
 void RecentFiles::save() {
 	saveFilesToSettings();

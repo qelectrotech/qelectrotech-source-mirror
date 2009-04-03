@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -37,6 +37,8 @@ class LineEditor : public ElementItemEditor {
 	private:
 	PartLine *part;
 	QLineEdit *x1, *y1, *x2, *y2;
+	QComboBox *end1_type, *end2_type;
+	QLineEdit *end1_length, *end2_length;
 	
 	// methodes
 	public slots:
@@ -45,6 +47,10 @@ class LineEditor : public ElementItemEditor {
 	void updateLineY1();
 	void updateLineX2();
 	void updateLineY2();
+	void updateLineEndType1();
+	void updateLineEndLength1();
+	void updateLineEndType2();
+	void updateLineEndLength2();
 	void updateForm();
 	
 	private:

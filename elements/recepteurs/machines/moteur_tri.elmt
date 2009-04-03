@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Three-phase engine</name>
         <name lang="fr" >Moteur triphasé</name>
+        <name lang="es" >Motor trifásico</name>
     </names>
     <description>
         <text x="-10.25" y="18" size="18" text="M" />

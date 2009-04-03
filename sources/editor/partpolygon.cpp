@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -114,6 +114,7 @@ void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWi
 void PartPolygon::setProperty(const QString &property, const QVariant &value) {
 	CustomElementGraphicPart::setProperty(property, value);
 	if (property == "closed") closed = value.toBool();
+	update();
 }
 
 /**

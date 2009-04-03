@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,7 +19,6 @@
 #define CONDUCTOR_PROPERTIES_WIDGET_H
 #include "conductorproperties.h"
 #include <QWidget>
-
 /**
 	Ce widget permet a l utilisateur d'editer les proprietes d'un conducteur.
 	Par proprietes, on entend non pas le trajet effectue par le conducteur mais

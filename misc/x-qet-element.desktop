@@ -6,3 +6,4 @@ DefaultApp=qelectrotech
 Patterns=*.elmt;
 Comment=QElectroTech element file
 Comment[fr]=Fichier élément QElectroTech
+Comment[es]=Archivo elemento QElectroTech

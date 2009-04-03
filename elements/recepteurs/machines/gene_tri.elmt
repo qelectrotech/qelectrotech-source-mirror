@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Three-phase generator</name>
         <name lang="fr" >Génératrice triphasée</name>
+        <name lang="es" >Generador trifasico</name>
     </names>
     <description>
         <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />

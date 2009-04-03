@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,26 @@
 #include "elementspanelwidget.h"
 #include "newelementwizard.h"
 #include "elementscategorieswidget.h"
+#include "elementscollectionitem.h"
+#include "qetelementeditor.h"
+#include "elementdeleter.h"
+#include "elementscategoryeditor.h"
+#include "elementscategorydeleter.h"
+#include "qetapp.h"
+#include "interactivemoveelementshandler.h"
+#include "qetproject.h"
+#include "diagram.h"
+
+/*
+	Lorsque le flag ENABLE_PANEL_WIDGET_DND_CHECKS est defini, le panel
+	effectue des verifications lors des drag'n drop d'elements et categories.
+	Par exemple, il verifie qu'une categorie cible est accessible en ecriture
+	avant d'y autoriser le drop d'un element.
+	Supprimer ce flag permet de tester le comportement des fonctions de gestion
+	des items (copy, move, etc.).
+*/
+#define ENABLE_PANEL_WIDGET_DND_CHECKS
+
 /**
 	Constructeur
 	@param parent Le QWidget parent de ce widget
@@ -27,14 +47,23 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	elements_panel = new ElementsPanel(this);
 	
 	// initialise les actions
-	reload          = new QAction(QIcon(":/ico/reload.png"),          tr("Recharger les collections"), this);
-	new_category    = new QAction(QIcon(":/ico/category_new.png"),    tr("Nouvelle cat\351gorie"),     this);
-	edit_category   = new QAction(QIcon(":/ico/category_edit.png"),   tr("\311diter la cat\351gorie"), this);
-	delete_category = new QAction(QIcon(":/ico/category_delete.png"), tr("Supprimer la cat\351gorie"), this);
-	new_element     = new QAction(QIcon(":/ico/new.png"),             tr("Nouvel \351l\351ment"),      this);
-	edit_element    = new QAction(QIcon(":/ico/edit.png"),            tr("\311diter l'\351l\351ment"), this);
-	delete_element  = new QAction(QIcon(":/ico/delete.png"),          tr("Supprimer l'\351l\351ment"), this);
-	erase_textfield = new QAction(QIcon(":/ico/erase.png"),           tr("Effacer le filtre"),         this);
+	reload            = new QAction(QIcon(":/ico/reload.png"),          tr("Recharger les collections"),           this);
+	new_category      = new QAction(QIcon(":/ico/category_new.png"),    tr("Nouvelle cat\351gorie"),               this);
+	edit_category     = new QAction(QIcon(":/ico/category_edit.png"),   tr("\311diter la cat\351gorie"),           this);
+	delete_category   = new QAction(QIcon(":/ico/category_delete.png"), tr("Supprimer la cat\351gorie"),           this);
+	delete_collection = new QAction(QIcon(":/ico/category_delete.png"), tr("Vider la collection"),                 this);
+	new_element       = new QAction(QIcon(":/ico/new.png"),             tr("Nouvel \351l\351ment"),                this);
+	edit_element      = new QAction(QIcon(":/ico/edit.png"),            tr("\311diter l'\351l\351ment"),           this);
+	delete_element    = new QAction(QIcon(":/ico/delete.png"),          tr("Supprimer l'\351l\351ment"),           this);
+	prj_close         = new QAction(QIcon(":/ico/fileclose.png"),       tr("Fermer ce projet"),                    this);
+	prj_edit_prop     = new QAction(QIcon(":/ico/info.png"),            tr("Propri\351t\351s du projet"),          this);
+	prj_prop_diagram  = new QAction(QIcon(":/ico/info.png"),            tr("Propri\351t\351s du sch\351ma"),       this);
+	prj_add_diagram   = new QAction(QIcon(":/ico/diagram_add.png"),     tr("Ajouter un sch\351ma"),                this);
+	prj_del_diagram   = new QAction(QIcon(":/ico/diagram_del.png"),     tr("Supprimer ce sch\351ma"),              this);
+	move_elements_    = new QAction(QIcon(":/ico/item_move.png"),       tr("D\351placer dans cette cat\351gorie"), this);
+	copy_elements_    = new QAction(QIcon(":/ico/item_copy.png"),       tr("Copier dans cette cat\351gorie"),      this);
+	cancel_elements_  = new QAction(QIcon(":/ico/item_cancel.png"),     tr("Annuler"),                             this);
+	erase_textfield   = new QAction(QIcon(":/ico/erase.png"),           tr("Effacer le filtre"),                   this);
 	
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);
@@ -44,22 +73,44 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	filter_toolbar -> addWidget(filter_label);
 	filter_toolbar -> addWidget(filter_textfield);
 	
+	// ajoute une petite marge a la droite du champ pour filtrer lorsque le style CleanLooks est utilise
+	if (qobject_cast<QCleanlooksStyle *>(QApplication::style())) {
+		int l, t, r, b;
+		filter_toolbar -> getContentsMargins(&l, &t, &r, &b);
+		filter_toolbar -> setContentsMargins (l, t, r + 4, b);
+	}
+	
 	context_menu = new QMenu(this);
 	
-	connect(reload,          SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
-	connect(new_category,    SIGNAL(triggered()), this,           SLOT(newCategory()));
-	connect(edit_category,   SIGNAL(triggered()), elements_panel, SLOT(editCategory()));
-	connect(delete_category, SIGNAL(triggered()), elements_panel, SLOT(deleteCategory()));
-	connect(new_element,     SIGNAL(triggered()), this,           SLOT(newElement()));
-	connect(edit_element,    SIGNAL(triggered()), elements_panel, SLOT(editElement()));
-	connect(delete_element,  SIGNAL(triggered()), elements_panel, SLOT(deleteElement()));
+	connect(reload,            SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
+	connect(new_category,      SIGNAL(triggered()), this,           SLOT(newCategory()));
+	connect(edit_category,     SIGNAL(triggered()), this,           SLOT(editCategory()));
+	connect(delete_category,   SIGNAL(triggered()), this,           SLOT(deleteCategory()));
+	connect(delete_collection, SIGNAL(triggered()), this,           SLOT(deleteCategory()));
+	connect(new_element,       SIGNAL(triggered()), this,           SLOT(newElement()));
+	connect(edit_element,      SIGNAL(triggered()), this,           SLOT(editElement()));
+	connect(delete_element,    SIGNAL(triggered()), this,           SLOT(deleteElement()));
+	connect(prj_close,         SIGNAL(triggered()), this,           SLOT(closeProject()));
+	connect(prj_edit_prop,     SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
+	connect(prj_prop_diagram,  SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
+	connect(prj_add_diagram,   SIGNAL(triggered()), this,           SLOT(newDiagram()));
+	connect(prj_del_diagram,   SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
+	connect(move_elements_,    SIGNAL(triggered()), this,           SLOT(moveElements()));
+	connect(copy_elements_,    SIGNAL(triggered()), this,           SLOT(copyElements()));
 	
-	connect(erase_textfield,  SIGNAL(triggered()),                 filter_textfield, SLOT(clear()));
-	connect(erase_textfield,  SIGNAL(triggered()),                 filter_textfield, SLOT(setFocus()));
+	connect(erase_textfield,  SIGNAL(triggered()),                 this,             SLOT(clearFilterTextField()));
 	connect(filter_textfield, SIGNAL(textEdited(const QString &)), elements_panel,   SLOT(filter(const QString &)));
 	
 	connect(elements_panel, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
-	connect(elements_panel, SIGNAL(customContextMenuRequested(const QPoint &)), this, SLOT(handleContextMenu(const QPoint &)));
+	connect(elements_panel, SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
+	connect(elements_panel, SIGNAL(requestForCollectionItem(ElementsCollectionItem *)),       this, SLOT(handleCollectionRequest(ElementsCollectionItem *)));
+	connect(
+		elements_panel,
+		SIGNAL(requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint)),
+		this,
+		SLOT(handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint &)),
+		Qt::QueuedConnection
+	);
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);
@@ -92,6 +143,16 @@ ElementsPanelWidget::~ElementsPanelWidget() {
 }
 
 /**
+	Vide le champ de texte permettant a l'utilisateur de filtrer, donne le
+	focus a ce champ et annule le filtrage.
+*/
+void ElementsPanelWidget::clearFilterTextField() {
+	filter_textfield -> clear();
+	filter_textfield -> setFocus();
+	elements_panel -> filter(QString());
+}
+
+/**
 	Recharge le panel d'elements
 */
 void ElementsPanelWidget::reloadAndFilter() {
@@ -102,22 +163,121 @@ void ElementsPanelWidget::reloadAndFilter() {
 	elements_panel -> filter(filter_textfield -> text());
 }
 
+/**
+	Emet le signal requestForProjectClosing avec le projet selectionne
+*/
+void ElementsPanelWidget::closeProject() {
+	if (QETProject *selected_project = elements_panel -> selectedProject()) {
+		emit(requestForProjectClosing(selected_project));
+	}
+}
+
+/**
+	Emet le signal requestForProjectPropertiesEdition avec le projet selectionne
+*/
+void ElementsPanelWidget::editProjectProperties() {
+	if (QETProject *selected_project = elements_panel -> selectedProject()) {
+		emit(requestForProjectPropertiesEdition(selected_project));
+	}
+}
+
+/**
+	Emet le signal requestForDiagramPropertiesEdition avec le schema selectionne
+*/
+void ElementsPanelWidget::editDiagramProperties() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramPropertiesEdition(selected_diagram));
+	}
+}
+
+/**
+	Emet le signal requestForNewDiagram avec le projet selectionne
+*/
+void ElementsPanelWidget::newDiagram() {
+	if (QETProject *selected_project = elements_panel -> selectedProject()) {
+		emit(requestForNewDiagram(selected_project));
+	}
+}
+
+/**
+	Emet le signal requestForDiagramDeletion avec le schema selectionne
+*/
+void ElementsPanelWidget::deleteDiagram() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramDeletion(selected_diagram));
+	}
+}
 
 /**
 	Appelle l'assistant de creation de nouvel element
 */
 void ElementsPanelWidget::newElement() {
+	ElementsCategory *selected_category = writableSelectedCategory();
+	
 	NewElementWizard new_element_wizard(this);
+	if (selected_category) {
+		new_element_wizard.preselectCategory(selected_category);
+	}
 	new_element_wizard.exec();
 }
 
 /**
-	Lance le gestionnaire de categories
+	Si une categorie accessible en ecriture est selectionnee, cette methode
+	affiche directement un formulaire de creation de categorie en utilisant la
+	selection comme categorie parente.
+	Sinon, elle affiche un gestionnaire de categories, permettant ainsi a
+	l'utilisateur de choisir une categorie parente.
 */
 void ElementsPanelWidget::newCategory() {
+	ElementsCategory *selected_category = writableSelectedCategory();
+	
+	if (selected_category) {
+		ElementsCategoryEditor new_category_dialog(selected_category -> location(), false, this);
+		if (new_category_dialog.exec() == QDialog::Accepted) {
+			elements_panel -> reload();
+		}
+	} else {
+		launchCategoriesManager();
+		elements_panel -> reload();
+	}
+}
+
+/**
+	Met a jour les boutons afin d'assurer la coherence de l'interface
+*/
+void ElementsPanelWidget::updateButtons() {
+	bool collection_selected = elements_panel -> selectedItemIsACollection();
+	bool category_selected = collection_selected || elements_panel -> selectedItemIsACategory();
+	bool element_selected = elements_panel -> selectedItemIsAnElement();
+	
+	if (collection_selected || category_selected || element_selected) {
+		bool element_writable = elements_panel -> selectedItemIsWritable();
+		delete_collection -> setEnabled(collection_selected && element_writable);
+		new_category      -> setEnabled(category_selected && element_writable);
+		edit_category     -> setEnabled(category_selected && !collection_selected);
+		delete_category   -> setEnabled(category_selected && element_writable);
+		new_element       -> setEnabled(category_selected && element_writable);
+		edit_element      -> setEnabled(element_selected);
+		delete_element    -> setEnabled(element_selected && element_writable);
+	} else if (elements_panel -> selectedItemIsAProject()) {
+		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
+		prj_add_diagram -> setEnabled(is_writable);
+	} else if (elements_panel -> selectedItemIsADiagram()) {
+		bool is_writable = !(elements_panel -> selectedDiagram() -> project() -> isReadOnly());
+		prj_del_diagram -> setEnabled(is_writable);
+	}
+	
+}
+
+/**
+	Lance le gestionnaire de categories. Il s'agit d'un petit dialogue listant
+	les categories accessibles en ecriture et permettant de les editer, de les
+	supprimer et d'en creer de nouvelles.
+*/
+int ElementsPanelWidget::launchCategoriesManager() {
 	QDialog new_category_dialog(this);
 	new_category_dialog.setMinimumSize(480, 280);
-	new_category_dialog.setWindowTitle(tr("Gestionnaire de cat\351gories"));
+	new_category_dialog.setWindowTitle(tr("Gestionnaire de cat\351gories", "window title"));
 	
 	QVBoxLayout *layout = new QVBoxLayout(&new_category_dialog);
 	QLabel *explication = new QLabel(tr("Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les cat\351gories."));
@@ -131,20 +291,7 @@ void ElementsPanelWidget::newCategory() {
 	connect(buttons, SIGNAL(rejected()), &new_category_dialog, SLOT(accept()));
 	layout -> addWidget(buttons);
 	
-	new_category_dialog.exec();
-	elements_panel -> reload();
-}
-
-/**
-	Met a jour les boutons afin d'assurer la coherence de l'interface
-*/
-void ElementsPanelWidget::updateButtons() {
-	bool category_selected = elements_panel -> selectedItemIsACategory();
-	bool element_selected = elements_panel -> selectedItemIsAnElement();
-	edit_category   -> setEnabled(category_selected);
-	delete_category -> setEnabled(category_selected);
-	edit_element    -> setEnabled(element_selected);
-	delete_element  -> setEnabled(element_selected);
+	return(new_category_dialog.exec());
 }
 
 /**
@@ -153,26 +300,218 @@ void ElementsPanelWidget::updateButtons() {
 */
 void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	// recupere l'item concerne par l'evenement ainsi que son chemin
-	QTreeWidgetItem *item =  elements_panel -> itemAt(pos);
+	QTreeWidgetItem *item = elements_panel -> itemAt(pos);
 	if (!item) return;
 	
-	// recupere le fichier associe a l'item
-	QString item_file = item -> data(0, 42).toString();
-	QFileInfo item_file_infos(item_file);
-	if (item_file.isNull() || !item_file_infos.exists()) return;
-	
-	// remplit le menu differemment selon qu'il s'agit d'un element ou d'une categorie
 	context_menu -> clear();
-	if (item_file_infos.isDir()) {
-		context_menu -> addAction(new_category);
-		context_menu -> addAction(edit_category);
-		context_menu -> addAction(delete_category);
-		context_menu -> addAction(new_element);
+	
+	if (elements_panel -> itemHasLocation(item)) {
+		// recupere l'emplacement associe a l'item
+		ElementsCollectionItem *selected_item = elements_panel -> collectionItemForItem(item);
+		
+		if (selected_item) {
+			if (selected_item -> isCategory()) {
+				context_menu -> addAction(new_category);
+				context_menu -> addAction(edit_category);
+				context_menu -> addAction(delete_category);
+				context_menu -> addAction(new_element);
+			} else if (selected_item -> isElement()) {
+				context_menu -> addAction(edit_element);
+				context_menu -> addAction(delete_element);
+			} else if (selected_item -> isCollection()) {
+				// categorie racine / collection
+				context_menu -> addAction(delete_collection);
+				context_menu -> addAction(new_category);
+				context_menu -> addAction(new_element);
+			}
+		}
 	} else {
-		context_menu -> addAction(edit_element);
-		context_menu -> addAction(delete_element);
+		if (elements_panel -> itemIsAProject(item)) {
+			context_menu -> addAction(prj_edit_prop);
+			context_menu -> addAction(prj_add_diagram);
+			context_menu -> addAction(prj_close);
+		} else if (elements_panel -> itemIsADiagram(item)) {
+			context_menu -> addAction(prj_prop_diagram);
+			context_menu -> addAction(prj_del_diagram);
+		}
 	}
 	
 	// affiche le menu
+	if (!context_menu -> isEmpty()) {
+		context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos + QPoint(2, 2))));
+	}
+}
+
+/**
+	Gere les demandes d'edition de categories ou d'elements
+	@param item Item de la collection a editer
+*/
+void ElementsPanelWidget::handleCollectionRequest(ElementsCollectionItem *item) {
+	if (!item) return;
+	if (item -> isElement()) {
+		// il s'agit d'un element
+		launchElementEditor(item -> location());
+	} else if (item -> isCategory()) {
+		// il s'agit d'une categorie
+		launchCategoryEditor(item -> location());
+	}
+}
+
+/**
+	Gere le drop d'un collectionItem sur un autre.
+	Elle memorise dans les attributs de cette classe l'item source et l'item
+	destination du drag'n drop.
+	Un menu est ensuite affiche pour demander a l'utilisateur ce qu'il
+	souhaite faire (deplacer, copier ou annuler).
+	@param src Item source
+	@param dst Item cible
+	@param pos Position ou le menu contextuel a ete demande
+*/
+void ElementsPanelWidget::handleMoveElementsRequest(ElementsCollectionItem *src, ElementsCollectionItem *dst, const QPoint &pos) {
+	if (!src || !dst || !dst -> isCategory()) return;
+	
+	// memorise les items source et cible du drag'n drop
+	dnd_item_src_ = src;
+	dnd_item_dst_ = dst;
+	
+#ifdef ENABLE_PANEL_WIDGET_DND_CHECKS
+	// active ou desactive les actions selon la source et la cible
+	copy_elements_ -> setEnabled(src -> isReadable() && dst -> isWritable());
+	move_elements_ -> setEnabled(!src -> isRootCategory() && src -> isWritable() && dst -> isWritable());
+#endif
+	
+	// affiche un menu contextuel pour que l'utilisateur indique s'il souhaite
+	// effectuer un deplacement ou une copie
+	context_menu -> clear();
+	context_menu -> addAction(copy_elements_);
+	context_menu -> addAction(move_elements_);
+	context_menu -> addSeparator();
+	context_menu -> addAction(cancel_elements_);
+	
 	context_menu -> popup(mapToGlobal(elements_panel -> mapTo(this, pos + QPoint(2, 2))));
+}
+
+/**
+	Cette classe memorise l'item source et l'item destination du dernier drag'n
+	drop. Cette methode effectue le deplacement de l'item source memorise dans
+	l'item destination memorise.
+	@see handleMoveElementsRequest
+*/
+void ElementsPanelWidget::moveElements() {
+	moveElements(dnd_item_src_, dnd_item_dst_);
+}
+
+/**
+	Deplace l'item src dans l'item dst
+*/
+void ElementsPanelWidget::moveElements(ElementsCollectionItem *src, ElementsCollectionItem *dst) {
+	InteractiveMoveElementsHandler *interactive_handler = new InteractiveMoveElementsHandler();
+	src -> move(dst -> toCategory(), interactive_handler);
+	delete interactive_handler;
+}
+
+/**
+	Cette classe memorise l'item source et l'item destination du dernier drag'n
+	drop. Cette methode effectue la copie de l'item source memorise dans l'item
+	destination memorise.
+	@see handleMoveElementsRequest
+*/
+void ElementsPanelWidget::copyElements() {
+	copyElements(dnd_item_src_, dnd_item_dst_);
+}
+
+/**
+	Copie l'item src dans l'item dst
+*/
+void ElementsPanelWidget::copyElements(ElementsCollectionItem *src, ElementsCollectionItem *dst) {
+	InteractiveMoveElementsHandler *interactive_handler = new InteractiveMoveElementsHandler();
+	src -> copy(dst -> toCategory(), interactive_handler, true);
+	delete interactive_handler;
+}
+
+/**
+	Edite la categorie selectionnee
+*/
+void ElementsPanelWidget::editCategory() {
+	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
+		if (selected_item -> isCategory()) {
+			launchCategoryEditor(selected_item -> location());
+		}
+	}
+}
+
+/**
+	Edite l'element selectionne
+*/
+void ElementsPanelWidget::editElement() {
+	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
+		if (selected_item -> isElement()) {
+			launchElementEditor(selected_item -> location());
+		}
+	}
+}
+
+/**
+	Supprime la categorie selectionnee
+*/
+void ElementsPanelWidget::deleteCategory() {
+	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
+		if (selected_item -> isCategory() || selected_item -> isCollection()) {
+			ElementsCategoryDeleter cat_deleter(selected_item -> location(), this);
+			if (cat_deleter.exec()) elements_panel -> reload();
+		}
+	}
+}
+
+/**
+	Supprime l'element selectionne
+*/
+void ElementsPanelWidget::deleteElement() {
+	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
+		if (selected_item -> isElement()) {
+			ElementDeleter elmt_deleter(selected_item -> location(), this);
+			if (elmt_deleter.exec()) elements_panel -> reload();
+		}
+	}
+}
+
+/**
+	Lance l'editeur d'element pour l'element filename
+	@param location Emplacement de l'element a editer
+*/
+void ElementsPanelWidget::launchElementEditor(const ElementsLocation &location) {
+	QETElementEditor *editor = new QETElementEditor();
+	editor -> fromLocation(location);
+	editor -> show();
+}
+
+/**
+	Lance l'editeur de categorie pour la categorie path
+	@param path Emplacement de la categorie a editer
+*/
+void ElementsPanelWidget::launchCategoryEditor(const ElementsLocation &location) {
+	ElementsCategoryEditor ece(location, true);
+	if (ece.exec() == QDialog::Accepted) {
+		elements_panel -> reload();
+	}
+}
+
+/**
+	@return la categorie selectionnee s'il y en a une et que celle-ci est
+	accessible en ecriture ; sinon retourne 0
+	@see ElementsPanel::categoryForItem(QTreeWidgetItem *)
+*/
+ElementsCategory *ElementsPanelWidget::writableSelectedCategory() {
+	// recupere l'element selectionne
+	QTreeWidgetItem *selected_qtwi = elements_panel -> currentItem();
+	if (!selected_qtwi) return(0);
+	
+	// l'element selectionne doit pouvoir correspondre a une categorie
+	ElementsCategory *selected_category = elements_panel -> categoryForItem(selected_qtwi);
+	if (!selected_category) return(0);
+	
+	// la categorie doit etre accessible en ecriture
+	if (!selected_category -> isWritable()) return(0);
+	
+	return(selected_category);
 }

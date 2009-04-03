@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Generator</name>
         <name lang="fr" >Génératrice</name>
+        <name lang="es" >Generador</name>
     </names>
     <description>
         <input x="18" y="0" size="9" rotate="true" text="G_" />

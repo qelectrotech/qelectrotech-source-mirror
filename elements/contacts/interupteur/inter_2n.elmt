@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Switch 3 positions including neutral</name>
         <name lang="fr" >Interrupteur 3 positions dont neutre</name>
+        <name lang="es" >Interruptor 3 posiciones incluso neutro</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="10" y2="4" x2="8" y3="4" x3="12" />

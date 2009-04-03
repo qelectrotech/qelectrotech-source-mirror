@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,11 @@
 #ifndef ELEMENTS_CATEGORIES_LIST_H
 #define ELEMENTS_CATEGORIES_LIST_H
 #include <QtGui>
+#include "qet.h"
+#include "elementslocation.h"
+class ElementsCollection;
+class ElementsCategory;
+class ElementDefinition;
 /**
 	Cette classe fournit une liste graphique des categories d'elements de
 	l'utilisateur.
@@ -27,7 +32,7 @@ class ElementsCategoriesList : public QTreeWidget {
 	
 	// Constructeurs, destructeur
 	public:
-	ElementsCategoriesList(QWidget * = 0);
+	ElementsCategoriesList(bool = false, uint = QET::All, QWidget * = 0);
 	virtual ~ElementsCategoriesList();
 	
 	private:
@@ -35,14 +40,30 @@ class ElementsCategoriesList : public QTreeWidget {
 	
 	// methodes
 	public:
-	QString selectedCategoryPath();
-	QString selectedCategoryName();
+	QString selectedCategoryName() const;
+	ElementsLocation selectedLocation() const;
+	bool selectLocation(const ElementsLocation &);
 	
 	private:
-	void addDir(QTreeWidgetItem *, QString, QString = QString());
+	QTreeWidgetItem *addCollection(QTreeWidgetItem *, ElementsCollection *, const QString & = QString(), const QIcon & = QIcon());
+	QTreeWidgetItem *addCategory  (QTreeWidgetItem *, ElementsCategory   *, const QString & = QString(), const QIcon & = QIcon());
+	QTreeWidgetItem *addElement   (QTreeWidgetItem *, ElementDefinition  *, const QString & = QString(), const QIcon & = QIcon());
 	QString categoryName(QDir &);
 	
 	public slots:
 	void reload();
+	
+	private slots:
+	void selectionChanged(QTreeWidgetItem *, QTreeWidgetItem *);
+	
+	signals:
+	void locationChanged(const ElementsLocation &);
+	
+	// attributs
+	private:
+	bool display_elements_;
+	int selectables_;
+	bool first_load;
+	QHash<QTreeWidgetItem *, ElementsLocation> locations_;
 };
 #endif

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -48,7 +48,7 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 		@return le type de QGraphicsItem
 	*/
 	virtual int type() const { return Type; }
-	virtual QString name() const { return(QObject::tr("borne")); }
+	virtual QString name() const { return(QObject::tr("borne", "element part name")); }
 	virtual void fromXml(const QDomElement &);
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual QWidget *elementInformations();

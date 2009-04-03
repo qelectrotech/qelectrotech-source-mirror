@@ -6,3 +6,4 @@ DefaultApp=qelectrotech
 Patterns=*.qet;
 Comment=QElectroTech project file
 Comment[fr]=Fichier projet QElectroTech
+Comment[es]=Archivo proyecto QElectroTech

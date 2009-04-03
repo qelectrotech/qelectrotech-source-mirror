@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #ifndef DIAGRAMVIEW_H
 #define DIAGRAMVIEW_H
 #include <QtGui>
+#include "elementslocation.h"
 class Diagram;
 class DiagramTextItem;
 class QETDiagramEditor;
@@ -30,33 +31,26 @@ class DiagramView : public QGraphicsView {
 	
 	// constructeurs, destructeur
 	public:
-	DiagramView(QWidget * = 0);
+	DiagramView(Diagram * = 0, QWidget * = 0);
 	virtual ~DiagramView();
 	
 	private:
 	DiagramView(const DiagramView &);
 	
 	// attributs
-	public:
-	/// Nom de fichier du schema edite
-	QString file_name;
-	
 	private:
 	Diagram *scene;
 	QMenu *context_menu;
 	QAction *paste_here;
 	QPoint paste_here_pos;
 	bool is_adding_text;
+	ElementsLocation next_location_;
+	QPoint next_position_;
 	
 	// methodes
 	public:
-	bool open(QString, int * = NULL);
-	void closeEvent(QCloseEvent *);
-	bool save();
-	bool saveAs();
-	void dialogExport();
-	void dialogEditInfos();
-	void dialogPrint();
+	QString title() const;
+	void editDiagramProperties();
 	void addColumn();
 	void removeColumn();
 	void addRow();
@@ -75,13 +69,14 @@ class DiagramView : public QGraphicsView {
 	virtual bool event(QEvent *);
 	
 	private:
-	bool saveDiagramToFile(QString &);
 	void mousePressEvent(QMouseEvent *);
 	void dragEnterEvent(QDragEnterEvent *);
 	void dragLeaveEvent(QDragLeaveEvent *);
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
 	QRectF viewedSceneRect() const;
+	bool mustIntegrateElement(const ElementsLocation &) const;
+	bool addElementAtPos(const ElementsLocation &, const QPoint &);
 	
 	signals:
 	/// Signal emis lorsque la selection change
@@ -90,6 +85,10 @@ class DiagramView : public QGraphicsView {
 	void modeChanged();
 	/// Signal emis lorsqu'un texte a ete pose
 	void textAdded(bool);
+	/// Signal emis lorsque le titre du schema change
+	void titleChanged(DiagramView *, const QString &);
+	/// Signal emis avant l'integration d'un element
+	void aboutToAddElement();
 	
 	public slots:
 	void selectNothing();
@@ -115,6 +114,8 @@ class DiagramView : public QGraphicsView {
 	void editDefaultConductorProperties();
 	
 	private slots:
+	void addDroppedElement();
 	void adjustGridToZoom();
+	void applyReadOnly();
 };
 #endif

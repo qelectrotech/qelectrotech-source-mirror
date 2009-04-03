@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -63,8 +63,8 @@ bool NamesListWidget::checkOneName() {
 	if (!hash_names.count()) {
 		QMessageBox::critical(
 			this,
-			tr("Il doit y avoir au moins un nom."),
-			tr("Vous devez entrer au moins un nom.")
+			tr("Il doit y avoir au moins un nom.", "message box title"),
+			tr("Vous devez entrer au moins un nom.", "message box content")
 		);
 		return(false);
 	}
@@ -141,6 +141,7 @@ void NamesListWidget::setReadOnly(bool ro) {
 		if (!read_only) flags |= Qt::ItemIsEditable;
 		tree_names -> topLevelItem(i) -> setFlags(flags);
 	}
+	button_add_line -> setEnabled(!read_only);
 }
 
 /// @return true si la liste de noms est en lecture seule, false sinon

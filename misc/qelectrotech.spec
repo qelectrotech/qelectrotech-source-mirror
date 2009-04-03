@@ -8,7 +8,7 @@ Release:     0.1.svn%{svnrel}%{?dist}
 
 Group:      Applications/Productivity
 License:    GPLv2
-Url:        http://qelectrotech.tuxfamily.org/
+Url:        http://qelectrotech.org/
 # svn co svn://svn.tuxfamily.org/svnroot/qet/qet/trunk qelectrotech
 # tar cvjf /home/rpmbuild/SOURCES/qelectrotech-svn.tar.bz2 --exclude .svn qelectrotech
 Source0:    qelectrotech-svn.tar.bz2

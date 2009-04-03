@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -74,6 +74,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 	
 	/// Destructeur
 	virtual ~CustomElementGraphicPart() {
+		if (style_editor -> parentWidget()) return; // l'editeur de style sera supprime par son parent
 		delete style_editor;
 	};
 	

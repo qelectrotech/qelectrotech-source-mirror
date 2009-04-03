@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,10 +28,6 @@
 	@param parent QWidget parent
 */
 NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
-	
-	// acces a la configuration de QElectroTech
-	QSettings &settings = QETApp::settings();
-	
 	// dimensions par defaut d'un schema
 	bpw = new BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
 	
@@ -39,14 +35,12 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	ipw = new InsetPropertiesWidget(QETDiagramEditor::defaultInsetProperties(), true);
 	
 	// proprietes par defaut des conducteurs
-	ConductorProperties cp;
-	cp.fromSettings(settings, "diagrameditor/defaultconductor");
-	cpw = new ConductorPropertiesWidget(cp);
+	cpw = new ConductorPropertiesWidget(QETDiagramEditor::defaultConductorProperties());
 	cpw -> setContentsMargins(0, 0, 0, 0);
 	
 	QVBoxLayout *vlayout1 = new QVBoxLayout();
 	
-	QLabel *title = new QLabel(tr("Nouveau sch\351ma"));
+	QLabel *title = new QLabel(this -> title());
 	vlayout1 -> addWidget(title);
 	
 	QFrame *horiz_line = new QFrame();
@@ -78,28 +72,10 @@ void NewDiagramPage::applyConf() {
 	QSettings &settings = QETApp::settings();
 	
 	// dimensions des nouveaux schemas
-	BorderProperties border = bpw -> borderProperties();
-	settings.setValue("diagrameditor/defaultcols",        border.columns_count);
-	settings.setValue("diagrameditor/defaultcolsize",     border.columns_width);
-	settings.setValue("diagrameditor/defaultdisplaycols", border.display_columns);
-	settings.setValue("diagrameditor/defaultrows",        border.rows_count);
-	settings.setValue("diagrameditor/defaultrowsize",     border.rows_height);
-	settings.setValue("diagrameditor/defaultdisplayrows", border.display_rows);
+	bpw -> borderProperties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes du cartouche
-	InsetProperties inset = ipw-> insetProperties();
-	settings.setValue("diagrameditor/defaulttitle",    inset.title);
-	settings.setValue("diagrameditor/defaultauthor",   inset.author);
-	settings.setValue("diagrameditor/defaultfilename", inset.filename);
-	settings.setValue("diagrameditor/defaultfolio",    inset.folio);
-	QString date_setting_value;
-	if (inset.useDate == InsetProperties::UseDateValue) {
-		if (inset.date.isNull()) date_setting_value = "null";
-		else date_setting_value = inset.date.toString("yyyyMMdd");
-	} else {
-		date_setting_value = "now";
-	}
-	settings.setValue("diagrameditor/defaultdate", date_setting_value);
+	ipw-> insetProperties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes par defaut des conducteurs
 	cpw -> conductorProperties().toSettings(settings, "diagrameditor/defaultconductor");
@@ -107,10 +83,90 @@ void NewDiagramPage::applyConf() {
 
 /// @return l'icone de cette page
 QIcon NewDiagramPage::icon() const {
-	return(QIcon(":/ico/conf_new_diagram.png"));
+	return(QIcon(":/ico/conf_new_diagram_110.png"));
 }
 
 /// @return le titre de cette page
 QString NewDiagramPage::title() const {
-	return(tr("Nouveau sch\351ma"));
+	return(tr("Nouveau sch\351ma", "configuration page title"));
+}
+
+
+/**
+	Constructeur
+	@param parent QWidget parent
+*/
+GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage(parent) {
+	
+	// acces a la configuration de QElectroTech
+	QSettings &settings = QETApp::settings();
+	bool tabbed = settings.value("diagrameditor/viewmode", "windowed") == "tabbed";
+	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
+	
+	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
+	windowed_mode_ = new QRadioButton(tr("Utiliser des fen\352tres"), projects_view_mode_);
+	tabbed_mode_ = new QRadioButton(tr("Utiliser des onglets"), projects_view_mode_);
+	warning_view_mode_ = new QLabel(tr("Ces param\350tres s'appliqueront d\350s la prochaine ouverture d'un \351diteur de sch\351mas."));
+	
+	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
+	integrate_elements_ = new QCheckBox(tr("Int\351grer automatiquement les \351l\351ments dans les projets (recommand\351)"), elements_management_);
+	
+	if (tabbed) {
+		tabbed_mode_ -> setChecked(true);
+	} else {
+		windowed_mode_ -> setChecked(true);
+	}
+	
+	integrate_elements_ -> setChecked(integrate_elements);
+	
+	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout();
+	projects_view_mode_layout -> addWidget(windowed_mode_);
+	projects_view_mode_layout -> addWidget(tabbed_mode_);
+	projects_view_mode_layout -> addWidget(warning_view_mode_);
+	projects_view_mode_ -> setLayout(projects_view_mode_layout);
+	
+	QVBoxLayout *elements_management_layout = new QVBoxLayout();
+	elements_management_layout -> addWidget(integrate_elements_);
+	elements_management_ -> setLayout(elements_management_layout);
+	
+	QVBoxLayout *vlayout1 = new QVBoxLayout();
+	
+	QLabel *title_label_ = new QLabel(title());
+	vlayout1 -> addWidget(title_label_);
+	
+	QFrame *horiz_line_ = new QFrame();
+	horiz_line_ -> setFrameShape(QFrame::HLine);
+	vlayout1 -> addWidget(horiz_line_);
+	
+	vlayout1 -> addWidget(projects_view_mode_);
+	vlayout1 -> addWidget(elements_management_);
+	vlayout1 -> addStretch();
+	
+	setLayout(vlayout1);
+}
+
+/// Destructeur
+GeneralConfigurationPage::~GeneralConfigurationPage() {
+}
+
+/**
+	Applique la configuration de cette page
+*/
+void GeneralConfigurationPage::applyConf() {
+	QSettings &settings = QETApp::settings();
+	
+	QString view_mode = tabbed_mode_ -> isChecked() ? "tabbed" : "windowed";
+	settings.setValue("diagrameditor/viewmode", view_mode) ;
+	
+	settings.setValue("diagrameditor/integrate-elements", integrate_elements_ -> isChecked());
+}
+
+/// @return l'icone de cette page
+QIcon GeneralConfigurationPage::icon() const {
+	return(QIcon(":/ico/settings.png"));
+}
+
+/// @return le titre de cette page
+QString GeneralConfigurationPage::title() const {
+	return(tr("G\351n\351ral", "configuration page title"));
 }

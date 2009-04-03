@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -69,8 +69,8 @@ void PolygonEditor::updatePolygonPoints() {
 	if (points.count() < 2) {
 		QMessageBox::warning(
 			this,
-			tr("Erreur"),
-			tr("Le polygone doit comporter au moins deux points.")
+			tr("Erreur", "message box title"),
+			tr("Le polygone doit comporter au moins deux points.", "message box content")
 		);
 		return;
 	}

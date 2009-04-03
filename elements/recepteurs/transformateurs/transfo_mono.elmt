@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Single phase transducer</name>
         <name lang="fr" >Transformateur monophasé</name>
+        <name lang="es" >Transformador monofásica</name>
     </names>
     <description>
         <input x="20" y="17" size="5" text="___V" />

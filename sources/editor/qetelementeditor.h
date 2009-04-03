@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,10 @@
 #ifndef CUSTOM_ELEMENT_EDITOR_H
 #define CUSTOM_ELEMENT_EDITOR_H
 #include <QtGui>
+#include "qet.h"
 #include "elementscene.h"
 #include "orientationset.h"
+#include "elementslocation.h"
 class ElementView;
 /**
 	Cette classe represente un editeur d'element. Elle permet a l'utilisateur
@@ -48,6 +50,12 @@ class QETElementEditor : public QMainWindow {
 	ElementScene *ce_scene;
 	/// container pour les widgets d'edition des parties
 	QDockWidget *tools_dock;
+	/// Pile de widgets pour tools_dock
+	QStackedWidget *tools_dock_stack_;
+	/// label affiche lors de la selection de plusieurs elements
+	QLabel *default_informations;
+	/// ScrollArea pour le DockWidget affichant des infos sur la partie selectionnee
+	QScrollArea *tools_dock_scroll_area_;
 	/// container pour la liste des annulations
 	QDockWidget *undo_dock;
 	/// Container pour la liste des parties
@@ -55,9 +63,10 @@ class QETElementEditor : public QMainWindow {
 	/// Liste des parties
 	QListWidget *parts_list;
 	/// actions du menu fichier
-	QAction *new_element, *open, *save, *save_as, *reload, *quit;
+	QAction *new_element, *open, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
 	/// actions du menu edition
 	QAction *selectall, *deselectall, *inv_select;
+	QAction *cut, *copy, *paste, *paste_in_area;
 	QAction *undo, *redo;
 	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
@@ -66,14 +75,16 @@ class QETElementEditor : public QMainWindow {
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// actions de la barre d'outils
 	QActionGroup *parts;
-	QAction *move, *add_line, *add_circle, *add_ellipse, *add_polygon, *add_text;
+	QAction *move, *add_line, *add_circle, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
 	QAction *add_arc, *add_terminal, *add_textfield;
-	/// label affiche lors de la selection de plusieurs elements
-	QLabel *default_informations;
 	/// titre minimal
 	QString min_title;
-	/// Nom de fichier
-	QString _filename;
+	/// Nom de fichier de l'element edite
+	QString filename_;
+	/// Emplacement de l'element edite
+	ElementsLocation location_;
+	/// booleen indiquant si l'element en cours d'edition provient d'un fichier ou d'un emplacement
+	bool opened_from_file;
 	
 	// methodes
 	public:
@@ -84,15 +95,21 @@ class QETElementEditor : public QMainWindow {
 	void setNames(const NamesList &);
 	void setOrientations(const OrientationSet &orientation_set);
 	OrientationSet orientations() const;
+	void setLocation(const ElementsLocation &);
+	ElementsLocation location() const;
 	void setFileName(const QString &);
 	QString fileName() const;
 	void setReadOnly(bool);
 	bool isReadOnly() const;
 	void fromFile(const QString &);
+	void fromLocation(const ElementsLocation &);
 	bool toFile(const QString &);
+	bool toLocation(const ElementsLocation &);
 	ElementScene *elementScene() const;
 	void readSettings();
 	void writeSettings();
+	static QPointF pasteOffset();
+	static QET::OrientedMovement pasteMovement();
 	
 	protected:
 	void closeEvent(QCloseEvent *);
@@ -106,11 +123,13 @@ class QETElementEditor : public QMainWindow {
 	public slots:
 	void slot_new();
 	void slot_open();
+	void slot_openFile();
 	void openRecentFile(const QString &);
 	void openElement(const QString &);
 	void slot_reload();
 	bool slot_save();
 	bool slot_saveAs();
+	bool slot_saveAsFile();
 	void slot_setRubberBandToView();
 	void slot_setNoDragToView();
 	void slot_setNormalMode();
@@ -121,6 +140,7 @@ class QETElementEditor : public QMainWindow {
 	void slot_updatePartsList();
 	void slot_updateSelectionFromPartsList();
 	void xmlPreview();
+	bool checkElementSize();
 };
 
 /**
@@ -179,18 +199,35 @@ inline OrientationSet QETElementEditor::orientations() const {
 }
 
 /**
-	@param fn Le nouveau nom de fichier de l'element edite
+	@param el Le nouvel emplacement de l'element edite
 */
-inline void QETElementEditor::setFileName(const QString &fn) {
-	_filename = fn;
+inline void QETElementEditor::setLocation(const ElementsLocation &el) {
+	location_ = el;
+	opened_from_file = false;
 	slot_updateTitle();
 }
 
 /**
-	@return le nomde fichier de l'element edite
+	@return l'emplacement de l'element edite
+*/
+inline ElementsLocation QETElementEditor::location() const {
+	return(location_);
+}
+
+/**
+	@param fn Le nouveau nom de fichier de l'element edite
+*/
+inline void QETElementEditor::setFileName(const QString &fn) {
+	filename_ = fn;
+	opened_from_file = true;
+	slot_updateTitle();
+}
+
+/**
+	@return le nom de fichier de l'element edite
 */
 inline QString QETElementEditor::fileName() const {
-	return(_filename);
+	return(filename_);
 }
 
 /**

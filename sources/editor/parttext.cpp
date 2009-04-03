@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -33,14 +33,14 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 {
 	setDefaultTextColor(Qt::black);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
-	setPlainText(QObject::tr("T"));
+	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
 	infos = new TextEditor(elementEditor(), this);
 	infos -> setElementTypeName(name());
 }
 
-
 /// Destructeur
 PartText::~PartText() {
+	if (infos -> parentWidget()) return; // le widget sera supprime par son parent
 	delete infos;
 }
 
@@ -130,7 +130,7 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 	if (previous_text != toPlainText()) {
 		undoStack().push(
 			new ChangePartCommand(
-				TextEditor::tr("texte") + " " + name(),
+				TextEditor::tr("contenu") + " " + name(),
 				this,
 				"text",
 				previous_text,
@@ -139,6 +139,13 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 		);
 		previous_text = toPlainText();
 	}
+	
+	// deselectionne le texte
+	QTextCursor qtc = textCursor();
+	qtc.clearSelection();
+	setTextCursor(qtc);
+	
+	setTextInteractionFlags(Qt::NoTextInteraction);
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 }
 
@@ -176,6 +183,7 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "text") {
 		setPlainText(value.toString());
 	}
+	update();
 }
 
 /**

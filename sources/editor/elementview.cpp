@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "elementview.h"
+#include "qetelementeditor.h"
+#include "editorcommands.h"
 /**
 	Constructeur
 	@param scene ElementScene visualisee par cette ElementView
@@ -23,12 +25,14 @@
 */
 ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	QGraphicsView(scene, parent),
-	scene_(scene)
+	scene_(scene),
+	offset_paste_count_(0)
 {
 	setInteractive(true);
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	zoomReset();
+	connect(scene_, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
 }
 
 /// Destructeur
@@ -38,6 +42,24 @@ ElementView::~ElementView() {
 /// @return l'ElementScene visualisee par cette ElementView
 ElementScene *ElementView::scene() const {
 	return(scene_);
+}
+
+/**
+	@return le rectangle de l'element visualise par cet ElementView
+*/
+QRectF ElementView::viewedSceneRect() const {
+	// recupere la taille du widget viewport
+	QSize viewport_size = viewport() -> size();
+	
+	// recupere la transformation viewport -> scene
+	QTransform view_to_scene   = viewportTransform().inverted();
+	
+	// mappe le coin superieur gauche et le coin inferieur droit de la viewport sur la scene
+	QPointF scene_left_top     = view_to_scene.map(QPointF(0.0, 0.0));
+	QPointF scene_right_bottom = view_to_scene.map(QPointF(viewport_size.width(), viewport_size.height()));
+	
+	// en deduit le rectangle visualise par la scene
+	return(QRectF(scene_left_top, scene_right_bottom));
 }
 
 /**
@@ -111,6 +133,196 @@ void ElementView::adjustSceneRect() {
 }
 
 /**
+	Gere le fait de couper la selection = l'exporter en XML dans le
+	presse-papier puis la supprimer.
+*/
+void ElementView::cut() {
+	// delegue cette action a la scene
+	scene_ -> cut();
+}
+
+/**
+	Gere le fait de copier la selection = l'exporter en XML dans le
+	presse-papier.
+*/
+void ElementView::copy() {
+	// delegue cette action a la scene
+	scene_ -> copy();
+	offset_paste_count_ = 0;
+}
+
+/**
+	Gere le fait de coller le contenu du presse-papier = l'importer dans
+	l'element. Cette methode examine le contenu du presse-papier. Si celui-ci
+	semble avoir ete copie depuis cet element, il est colle a cote de sa zone
+	d'origine ; s'il est recolle, il sera colle un cran a cote de la zone deja
+	recollee, etc.
+	Sinon, cette methode demande a l'utilisateur de definir la zone ou le
+	collage devra s'effectuer.
+	@see pasteAreaDefined(const QRectF &)
+*/
+void ElementView::paste() {
+	QString clipboard_text = QApplication::clipboard() -> text();
+	if (clipboard_text.isEmpty()) return;
+	
+	QDomDocument document_xml;
+	if (!document_xml.setContent(clipboard_text)) return;
+	
+	if (scene_ -> wasCopiedFromThisElement(clipboard_text)) {
+		// copier/coller avec decalage
+		pasteWithOffset(document_xml);
+	} else {
+		// copier/coller par choix de la zone de collage
+		QRectF pasted_content_bounding_rect = scene_ -> boundingRectFromXml(document_xml);
+		if (pasted_content_bounding_rect.isEmpty()) return;
+		
+		to_paste_in_area_ = clipboard_text;
+		getPasteArea(pasted_content_bounding_rect);
+	}
+}
+
+/**
+	Colle le contenu du presse-papier en demandant systematiquement a
+	l'utilisateur de choisir une zone de collage
+*/
+void ElementView::pasteInArea() {
+	QString clipboard_text = QApplication::clipboard() -> text();
+	if (clipboard_text.isEmpty()) return;
+	
+	QDomDocument document_xml;
+	if (!document_xml.setContent(clipboard_text)) return;
+	
+	QRectF pasted_content_bounding_rect = scene_ -> boundingRectFromXml(document_xml);
+	if (pasted_content_bounding_rect.isEmpty()) return;
+	
+	// copier/coller par choix de la zone de collage
+	to_paste_in_area_ = clipboard_text;
+	getPasteArea(pasted_content_bounding_rect);
+}
+
+/**
+	Gere le fait de coller le contenu du presse-papier = l'importer dans
+	l'element. Cette methode examine le contenu du presse-papier. Si celui-ci
+	est exploitable, elle le colle a la position passee en parametre.
+	@see pasteAreaDefined(const QRectF &)
+	@param position Point de collage
+*/
+ElementContent ElementView::paste(const QPointF &position) {
+	QString clipboard_text = QApplication::clipboard() -> text();
+	if (clipboard_text.isEmpty()) return(ElementContent());
+	
+	QDomDocument document_xml;
+	if (!document_xml.setContent(clipboard_text)) return(ElementContent());
+	
+	// objet pour recuperer le contenu ajoute au schema par le coller
+	return(paste(document_xml, position));
+}
+
+/**
+	@param to_paste Rectangle englobant les parties a coller
+*/
+void ElementView::getPasteArea(const QRectF &to_paste) {
+	// on copie le rectangle fourni - on s'interesse a ses dimensions, pas a sa position
+	QRectF used_rect(to_paste);
+	
+	// on lui attribue pour centre l'origine du repere
+	if (underMouse()) {
+		used_rect.moveCenter(mapToScene(mapFromGlobal(QCursor::pos())));
+	} else {
+		used_rect.moveCenter(QPointF(0.0, 0.0));
+	}
+	scene_ -> getPasteArea(used_rect);
+}
+
+/**
+	Slot appele lorsque la scene annonce avoir defini une zone de collage
+	@param target_rect Rectangle cible pour le collage
+*/
+ElementContent ElementView::pasteAreaDefined(const QRectF &target_rect) {
+	if (to_paste_in_area_.isEmpty()) return(ElementContent());
+	
+	QDomDocument xml_document;
+	if (!xml_document.setContent(to_paste_in_area_)) {
+		to_paste_in_area_.clear();
+		return(ElementContent());
+	} else {
+		return(paste(xml_document, target_rect.topLeft()));
+	}
+}
+
+/**
+	Colle le document XML xml_document a la position pos
+	@param xml_document Document XML a coller
+	@param pos Coin superieur gauche du rectangle cible
+*/
+ElementContent ElementView::paste(const QDomDocument &xml_document, const QPointF &pos) {
+	// objet pour recuperer le contenu ajoute au schema par le coller
+	ElementContent content_pasted;
+	scene_ -> fromXml(xml_document, pos, false, &content_pasted);
+	
+	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
+	if (content_pasted.count()) {
+		scene_ -> clearSelection();
+		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
+		scene_ -> undoStack().push(undo_object);
+	}
+	return(content_pasted);
+}
+
+/**
+	Colle le document XML xml_document a la position pos
+	@param xml_document Document XML a coller
+*/
+ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
+	// objet pour recuperer le contenu ajoute au schema par le coller
+	ElementContent content_pasted;
+	
+	// rectangle source
+	QRectF pasted_content_bounding_rect = scene_ -> boundingRectFromXml(xml_document);
+	if (pasted_content_bounding_rect.isEmpty()) return(content_pasted);
+	
+	// copier/coller avec decalage
+	++ offset_paste_count_;
+	if (offset_paste_count_ == 1) {
+		start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
+	} else {
+		pasted_content_bounding_rect.moveTopLeft(start_top_left_corner_);
+	}
+	
+	// on applique le decalage qui convient
+	QRectF final_pasted_content_bounding_rect = applyMovement(
+		pasted_content_bounding_rect,
+		QETElementEditor::pasteMovement(),
+		QETElementEditor::pasteOffset()
+	);
+	
+	QPointF old_start_top_left_corner_ = start_top_left_corner_;
+	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
+	scene_ -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
+	
+	// si quelque chose a effectivement ete ajoute au schema, on cree un objet d'annulation
+	if (content_pasted.count()) {
+		scene_ -> clearSelection();
+		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
+		undo_object -> setOffset(offset_paste_count_ - 1, old_start_top_left_corner_, offset_paste_count_, start_top_left_corner_);
+		scene_ -> undoStack().push(undo_object);
+	}
+	return(content_pasted);
+}
+
+/**
+	Gere les clics sur la vue - permet de coller lorsaue l'on enfonce le bouton
+	du milieu de la souris.
+	@param e QMouseEvent decrivant l'evenement souris
+*/
+void ElementView::mousePressEvent(QMouseEvent *e) {
+	if (e -> buttons() & Qt::MidButton) {
+		paste(mapToScene(e -> pos()));
+	}
+	QGraphicsView::mousePressEvent(e);
+}
+
+/**
 	Gere les actions liees a la rollette de la souris
 	@param e QWheelEvent decrivant l'evenement rollette
 */
@@ -125,4 +337,108 @@ void ElementView::wheelEvent(QWheelEvent *e) {
 	} else {
 		QAbstractScrollArea::wheelEvent(e);
 	}
+}
+
+/**
+	Dessine l'arriere-plan de l'editeur, cad la grille.
+	@param p Le QPainter a utiliser pour dessiner
+	@param r Le rectangle de la zone a dessiner
+*/
+void ElementView::drawBackground(QPainter *p, const QRectF &r) {
+	p -> save();
+	
+	// desactive tout antialiasing, sauf pour le texte
+	p -> setRenderHint(QPainter::Antialiasing, false);
+	p -> setRenderHint(QPainter::TextAntialiasing, true);
+	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
+	
+	// dessine un fond blanc
+	p -> setPen(Qt::NoPen);
+	p -> setBrush(Qt::white);
+	p -> drawRect(r);
+	
+	// encadre la zone dessinable de l'element
+	QRectF drawable_area(-scene_ -> hotspot().x(), -scene_ -> hotspot().y(), scene_ -> width(), scene_ -> height());
+	p -> setPen(Qt::black);
+	p -> setBrush(Qt::NoBrush);
+	p -> drawRect(drawable_area);
+	
+	// determine le zoom en cours
+	qreal zoom_factor = matrix().m11();
+	
+	// choisit la granularite de la grille en fonction du zoom en cours
+	int drawn_x_grid = scene_ -> xGrid();
+	int drawn_y_grid = scene_ -> yGrid();
+	bool draw_grid = true;
+	bool draw_cross = false;
+	if (zoom_factor < (4.0/3.0)) {
+		// pas de grille du tout
+		draw_grid = false;
+	} else if (zoom_factor < 4.0) {
+		// grille a 10 px
+		drawn_x_grid *= 10;
+		drawn_y_grid *= 10;
+	} else if (zoom_factor < 6.0) {
+		// grille a 2 px (avec croix)
+		drawn_x_grid *= 2;
+		drawn_y_grid *= 2;
+		draw_cross = true;
+	} else {
+		// grille a 1 px (avec croix)
+		draw_cross = true;
+	}
+	
+	if (draw_grid) {
+		// dessine les points de la grille
+		p -> setPen(Qt::black);
+		p -> setBrush(Qt::NoBrush);
+		qreal limite_x = r.x() + r.width();
+		qreal limite_y = r.y() + r.height();
+		
+		int g_x = (int)ceil(r.x());
+		while (g_x % drawn_x_grid) ++ g_x;
+		int g_y = (int)ceil(r.y());
+		while (g_y % drawn_y_grid) ++ g_y;
+		
+		for (int gx = g_x ; gx < limite_x ; gx += drawn_x_grid) {
+			for (int gy = g_y ; gy < limite_y ; gy += drawn_y_grid) {
+				if (draw_cross) {
+					if (!(gx % 10) && !(gy % 10)) {
+						p -> drawLine(QLineF(gx - 0.25, gy, gx + 0.25, gy));
+						p -> drawLine(QLineF(gx, gy - 0.25, gx, gy + 0.25));
+					} else {
+						p -> drawPoint(gx, gy);
+					}
+				} else {
+					p -> drawPoint(gx, gy);
+				}
+			}
+		}
+	}
+	p -> restore();
+}
+
+/**
+	Applique le decalage offset dans le sens movement au rectangle start
+	@param start rectangle a decaler
+	@param movement Orientation du decalage a appliquer
+	@param offset Decalage a appliquer
+*/
+QRectF ElementView::applyMovement(const QRectF &start, const QET::OrientedMovement &movement, const QPointF &offset) {
+	// calcule le decalage a appliquer a partir de l'offset indique et du mouvement
+	QPointF final_offset;
+	if (movement == QET::ToNorthEast || movement == QET::ToEast || movement == QET::ToSouthEast) {
+		final_offset.rx() =  start.width() + offset.x();
+	} else if (movement == QET::ToNorthWest || movement == QET::ToWest || movement == QET::ToSouthWest) {
+		final_offset.rx() = -start.width() - offset.x();
+	}
+	
+	if (movement == QET::ToNorthWest || movement == QET::ToNorth || movement == QET::ToNorthEast) {
+		final_offset.ry() = -start.height() - offset.y();
+	} else if (movement == QET::ToSouthWest || movement == QET::ToSouth || movement == QET::ToSouthEast) {
+		final_offset.ry() =  start.height() + offset.y();
+	}
+	
+	// applique le decalage ainsi calcule
+	return(start.translated(final_offset));
 }

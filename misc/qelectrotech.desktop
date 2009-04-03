@@ -1,4 +1,6 @@
 [Desktop Entry]
+Version=1.0
+Encoding=UTF-8
 Name=QElectroTech
 Exec=qelectrotech
 Icon=qet
@@ -8,5 +10,8 @@ MimeType=application/x-qet-project;application/x-qet-element;
 Categories=Office;Qt;VectorGraphics;Science;Electricity;Engineering;
 Comment=An electric diagrams editor.
 Comment[fr]=Un éditeur de schémas électriques
+Comment[fr_FR]=Un éditeur de schémas électriques
+Comment[es]=Un editor de esquemas eléctricos
 GenericName=Electric diagrams editor
 GenericName[fr]=Un éditeur de schémas électriques
+GenericName[fr_FR]=Un éditeur de schémas électriques

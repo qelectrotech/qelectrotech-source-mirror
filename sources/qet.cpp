@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qet.h"
+#include <limits>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -143,27 +144,57 @@ bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, double *r
 
 /**
 	Permet de composer rapidement la proposition "x elements et y conducteurs"
+	ou encore "x elements, y conducteurs et z champs de texte".
 	@param elements_count nombre d'elements
 	@param conductors_count nombre de conducteurs
 	@param texts_count nombre de champs de texte
-	@return la proposition decrivant le nombre d'elements et de conducteurs
+	@return la proposition decrivant le nombre d'elements, de conducteurs et de
+	textes
 */
 QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_count, int texts_count) {
 	QString text;
 	if (elements_count) {
-		text += QString::number(elements_count) + " ";
-		text += elements_count > 1 ? QObject::tr("\351l\351ments") : QObject::tr("\351l\351ment");
-		if (conductors_count && texts_count) text += QObject::tr(", ");
-		else if (conductors_count || texts_count) text += QObject::tr(" et ");
+		text += QObject::tr(
+			"%n \351l\351ment(s)",
+			"part of a sentence listing the content of a diagram",
+			elements_count
+		);
+		if (conductors_count && texts_count) {
+			text += QObject::tr(
+				", ",
+				"separator between elements and conductors in a sentence "
+				"listing the content of a diagram"
+			);
+		} else if (conductors_count || texts_count) {
+			text += QObject::tr(
+				" et ",
+				"separator between elements and conductors (or texts) in a "
+				"sentence listing the content of a diagram"
+			);
+		}
 	}
+	
 	if (conductors_count) {
-		text += QString::number(conductors_count) + " ";
-		text += conductors_count > 1 ? QObject::tr("conducteurs") : QObject::tr("conducteur");
-		if (texts_count) text += QObject::tr(" et ");
+		text += QObject::tr(
+			"%n conducteur(s)",
+			"part of a sentence listing the content of a diagram",
+			conductors_count
+		);
+		if (texts_count) {
+			text += QObject::tr(
+				" et ",
+				"separator between conductors and texts in a sentence listing "
+				"the content of a diagram"
+			);
+		}
 	}
+	
 	if (texts_count) {
-		text += QString::number(texts_count) + " ";
-		text += texts_count > 1 ? QObject::tr("champs de texte") : QObject::tr("champ de texte");
+		text += QObject::tr(
+			"%n champ(s) de texte",
+			"part of a sentence listing the content of a diagram",
+			texts_count
+		);
 	}
 	return(text);
 }
@@ -228,6 +259,26 @@ QList<QChar> QET::forbiddenCharacters() {
 }
 
 /**
+	@return une chaine listant les caracteres interdits dans les noms de fichiers sous
+	Windows
+	@param escape true pour remplacer les caracteres < et > par leurs entites HTML
+*/
+QString QET::forbiddenCharactersString(bool escape) {
+	QString result;
+	foreach(QChar c, QET::forbiddenCharacters()) {
+		if (escape) {
+			if (c == '<')      result += "&lt;";
+			else if (c == '>') result += "&gt;";
+			else               result += QString(c);
+		} else {
+			result += QString(c);
+		}
+		result += " ";
+	}
+	return(result);
+}
+
+/**
 	@param string une chaine de caracteres
 	@return true si string contient un caractere interdit dans les noms de
 	fichiers sous Windows
@@ -237,6 +288,29 @@ bool QET::containsForbiddenCharacters(const QString &string) {
 		if (string.contains(c)) return(true);
 	}
 	return(false);
+}
+
+/**
+	Cette fonction transforme une chaine de caracteres (typiquement : un nom de
+	schema, de projet, d'element) en un nom de fichier potable.
+	Par nom de fichier potable, on entend un nom :
+	  * ne comprenant pas de caracteres interdits sous Windows
+	  * ne comprenant pas d'espace
+	@param name Chaine de caractere a transformer en nom de fichier potable
+	@todo virer les caracteres accentues ?
+*/
+QString QET::stringToFileName(const QString &name) {
+	QString file_name(name.toLower());
+	
+	// remplace les caracteres interdits par des tirets
+	foreach(QChar c, QET::forbiddenCharacters()) {
+		file_name.replace(c, '-');
+	}
+	
+	// remplace les espaces par des underscores
+	file_name.replace(' ', '_');
+	
+	return(file_name);
 }
 
 /**
@@ -289,4 +363,55 @@ QStringList QET::splitWithSpaces(const QString &string) {
 		returned_list << QET::unescapeSpaces(escaped_string);
 	}
 	return(returned_list);
+}
+
+/**
+	@param end_type un type d'extremite
+	@return une chaine representant le type d'extremite
+*/
+QString QET::endTypeToString(const QET::EndType &end_type) {
+	switch(end_type) {
+		case QET::Simple:   return("simple");
+		case QET::Triangle: return("triangle");
+		case QET::Circle:   return("circle");
+		case QET::Diamond:  return("diamond");
+		case QET::None:
+		default:
+			return("none");
+	}
+}
+
+/**
+	@param string une chaine representant un type d'extremite
+	@return le type d'extremite correspondant ; si la chaine est invalide,
+	QET::None est retourne.
+*/
+QET::EndType QET::endTypeFromString(const QString &string) {
+	if (string == "simple")        return(QET::Simple);
+	else if (string == "triangle") return(QET::Triangle);
+	else if (string == "circle")   return(QET::Circle);
+	else if (string == "diamond")  return(QET::Diamond);
+	else return(QET::None);
+}
+
+/**
+	@param ptr pointeur quelconque
+	@return une representation hexadecimale de l'adresse du pointeur
+*/
+QString QET::pointerString(void *ptr) {
+	static int hexa_digits = -1;
+	
+	if (hexa_digits == -1) {
+		// determine le nombre de bits dans un unsigned long int
+		hexa_digits = std::numeric_limits<unsigned long int>::digits / 4;
+	}
+	
+	return(
+		QString("0x%1").arg(
+			reinterpret_cast<unsigned long int>(ptr),
+			hexa_digits,
+			16,
+			QChar('0')
+		)
+	);
 }

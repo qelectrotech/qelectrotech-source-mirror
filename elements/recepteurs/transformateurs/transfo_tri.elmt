@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Three-phase transducer</name>
         <name lang="fr" >Transformateur triphasé</name>
+        <name lang="es" >Transformador trifásico</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="0" y2="13" x2="-20" />

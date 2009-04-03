@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,72 +19,103 @@
 #include "elementtextitem.h"
 #include "diagram.h"
 #include "qetapp.h"
+#include "partline.h"
+#include "elementdefinition.h"
 #include <iostream>
+
 /**
-	Constructeur de la classe ElementPerso. Permet d'instancier un element
-	utilisable comme un element fixe a la difference que l'element perso lit
-	sa description (noms, dessin, comportement) dans un fichier XML a fournir
-	en parametre.
-	@param nom_fichier Le chemin du fichier XML decrivant l'element
+	Constructeur de la classe CustomElement. Permet d'instancier un element
+	utilisable comme un element fixe a la difference que l'element perso est
+	construit a partir d'une description au format XML. Celle-ci est recuperee
+	a l'emplacement indique.
+	@param location Emplacement de la definition d'element a utiliser
 	@param qgi Le QGraphicsItem parent de cet element
 	@param s Le Schema affichant cet element
-	@param etat Un pointeur facultatif vers un entier. La valeur de cet entier
+	@param state Un pointeur facultatif vers un entier. La valeur de cet entier
 	sera changee de maniere a refleter le deroulement de l'instanciation :
 		- 0 : L'instanciation a reussi
-		- 1 : Le fichier n'existe pas
-		- 2 : Le fichier n'a pu etre ouvert
-		- 3 : Le fichier n'est pas un document XML
-		- 4 : Le document XML n'a pas une "definition" comme racine
+		- 1 : l'emplacement n'a pas permis d'acceder a une definition d'element
+		- 2 : la definition n'etait pas lisible
+		- 3 : la definition n'etait pas valide / exploitable / utilisable
+		- 4 : Le document XML n'est pas un element "definition"
 		- 5 : Les attributs de la definition ne sont pas presents et / ou valides
 		- 6 : La definition est vide
 		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
 		- 8 : Aucune partie du dessin n'a pu etre chargee
 */
-CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *s, int *etat) : FixedElement(qgi, s) {
-	nomfichier = nom_fichier;
-	// pessimisme inside : par defaut, ca foire
-	elmt_etat = -1;
-	
-	// le fichier doit exister
-	QFileInfo infos_file(nomfichier);
-	if (!infos_file.exists() || !infos_file.isFile()) {
-		if (etat != NULL) *etat = 1;
-		elmt_etat = 1;
+CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
+	FixedElement(qgi, s),
+	elmt_state(-1),
+	location_(location)
+{
+	// recupere la definition de l'element
+	ElementsCollectionItem *element_item = QETApp::collectionItem(location);
+	ElementDefinition *element_definition;
+	if (
+		!element_item ||\
+		!element_item -> isElement() ||\
+		!(element_definition = qobject_cast<ElementDefinition *>(element_item))
+	) {
+		if (state) *state = 1;
+		elmt_state = 1;
 		return;
 	}
 	
-	// le fichier doit etre lisible
-	QFile fichier(nomfichier);
-	if (!fichier.open(QIODevice::ReadOnly)) {
-		if (etat != NULL) *etat = 2;
-		elmt_etat = 2;
+	if (!element_definition -> isReadable()) {
+		if (state) *state = 2;
+		elmt_state = 2;
 		return;
 	}
 	
-	// le fichier doit etre un document XML
-	QDomDocument document_xml;
-	if (!document_xml.setContent(&fichier)) {
-		if (etat != NULL) *etat = 3;
-		elmt_etat = 3;
+	if (element_definition -> isNull()) {
+		if (state) *state = 3;
+		elmt_state = 3;
 		return;
 	}
 	
-	// la racine est supposee etre une definition d'element 
-	QDomElement racine = document_xml.documentElement();
-	if (racine.tagName() != "definition" || racine.attribute("type") != "element") {
-		if (etat != NULL) *etat = 4;
-		elmt_etat = 4;
-		return;
+	buildFromXml(element_definition -> xml(), &elmt_state);
+	if (state) *state = elmt_state;
+	if (elmt_state) return;
+	
+	if (state) *state = 0;
+	elmt_state = 0;
+}
+
+CustomElement::CustomElement(const QDomElement &xml_def_elmt, QGraphicsItem *qgi, Diagram *s, int *state) : FixedElement(qgi, s) {
+	int elmt_state = -1;
+	buildFromXml(xml_def_elmt, &elmt_state);
+	if (state) *state = elmt_state;
+}
+
+/**
+	Construit l'element personnalise a partir d'un element XML representant sa
+	definition.
+	@param xml_def_elmt
+	@param state Un pointeur facultatif vers un entier. La valeur de cet entier
+	sera changee de maniere a refleter le deroulement de l'instanciation :
+		- 0 : La construction s'est bien passee
+		- 4 : Le document XML n'est pas un element "definition"
+		- 5 : Les attributs de la definition ne sont pas presents et / ou valides
+		- 6 : La definition est vide
+		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
+		- 8 : Aucune partie du dessin n'a pu etre chargee
+	@return true si le chargement a reussi, false sinon
+*/
+bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
+	
+	if (xml_def_elmt.tagName() != "definition" || xml_def_elmt.attribute("type") != "element") {
+		if (state) *state = 4;
+		return(false);
 	}
 	
 	// verifie basiquement que la version actuelle est capable de lire ce fichier
-	if (racine.hasAttribute("version")) {
+	if (xml_def_elmt.hasAttribute("version")) {
 		bool conv_ok;
-		qreal element_version = racine.attribute("version").toDouble(&conv_ok);
+		qreal element_version = xml_def_elmt.attribute("version").toDouble(&conv_ok);
 		if (conv_ok && QET::version.toDouble() < element_version) {
 			std::cerr << qPrintable(
-				QObject::tr("Avertissement : l'\351l\351ment ") + nom_fichier
-				+ QObject::tr(" a \351t\351 enregistr\351 avec une version"
+				QObject::tr("Avertissement : l'\351l\351ment "
+				" a \351t\351 enregistr\351 avec une version"
 				" ult\351rieure de QElectroTech.")
 			) << std::endl;
 		}
@@ -93,32 +124,30 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	// ces attributs doivent etre presents et valides
 	int w, h, hot_x, hot_y;
 	if (
-		!QET::attributeIsAnInteger(racine, QString("width"), &w) ||\
-		!QET::attributeIsAnInteger(racine, QString("height"), &h) ||\
-		!QET::attributeIsAnInteger(racine, QString("hotspot_x"), &hot_x) ||\
-		!QET::attributeIsAnInteger(racine, QString("hotspot_y"), &hot_y) ||\
-		!validOrientationAttribute(racine)
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("width"), &w) ||\
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("height"), &h) ||\
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("hotspot_x"), &hot_x) ||\
+		!QET::attributeIsAnInteger(xml_def_elmt, QString("hotspot_y"), &hot_y) ||\
+		!validOrientationAttribute(xml_def_elmt)
 	) {
-		if (etat != NULL) *etat = 5;
-		elmt_etat = 5;
-		return;
+		if (state) *state = 5;
+		return(false);
 	}
 	
 	// on peut d'ores et deja specifier la taille et le hotspot
 	setSize(w, h);
 	setHotspot(QPoint(hot_x, hot_y));
-	setInternalConnections(racine.attribute("ic") == "true");
+	setInternalConnections(xml_def_elmt.attribute("ic") == "true");
 	
 	// la definition est supposee avoir des enfants
-	if (racine.firstChild().isNull()) {
-		if (etat != NULL) *etat = 6;
-		elmt_etat = 6;
-		return;
+	if (xml_def_elmt.firstChild().isNull()) {
+		if (state) *state = 6;
+		return(false);
 	}
 	
 	// initialisation du QPainter (pour dessiner l'element)
 	QPainter qp;
-	qp.begin(&dessin);
+	qp.begin(&drawing);
 	QPen t;
 	t.setColor(Qt::black);
 	t.setWidthF(1.0);
@@ -126,12 +155,12 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	qp.setPen(t);
 	
 	// extrait les noms de la definition XML
-	names.fromXml(racine);
-	setToolTip(nom());
+	names.fromXml(xml_def_elmt);
+	setToolTip(name());
 	
 	// parcours des enfants de la definition : parties du dessin
-	int nb_elements_parses = 0;
-	for (QDomNode node = racine.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+	int parsed_elements_count = 0;
+	for (QDomNode node = xml_def_elmt.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		QDomElement elmts = node.toElement();
 		if (elmts.isNull()) continue;
 		if (elmts.tagName() == "description") {
@@ -140,11 +169,10 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
 				QDomElement qde = n.toElement();
 				if (qde.isNull()) continue;
-				if (parseElement(qde, qp)) ++ nb_elements_parses;
+				if (parseElement(qde, qp)) ++ parsed_elements_count;
 				else {
-					if (etat != NULL) *etat = 7;
-					elmt_etat = 7;
-					return;
+					if (state) *state = 7;
+					return(false);
 				}
 			}
 		}
@@ -154,17 +182,13 @@ CustomElement::CustomElement(QString &nom_fichier, QGraphicsItem *qgi, Diagram *
 	qp.end();
 	
 	// il doit y avoir au moins un element charge
-	if (!nb_elements_parses) {
-		if (etat != NULL) *etat = 8;
-		elmt_etat = 8;
-		return;
+	if (!parsed_elements_count) {
+		if (state) *state = 8;
+		return(false);
+	} else {
+		if (state) *state = 0;
+		return(true);
 	}
-	
-	// fermeture du fichier
-	fichier.close();
-	
-	if (etat != NULL) *etat = 0;
-	elmt_etat = 0;
 }
 
 /**
@@ -188,7 +212,7 @@ QList<Conductor *> CustomElement::conductors() const {
 /**
 	@return Le nombre de bornes que l'element possede
 */
-int CustomElement::nbTerminals() const {
+int CustomElement::terminalsCount() const {
 	return(list_terminals.size());
 }
 
@@ -198,7 +222,7 @@ int CustomElement::nbTerminals() const {
 	@param options Les options graphiques
 */
 void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
-	dessin.play(qp);
+	drawing.play(qp);
 }
 
 /**
@@ -217,6 +241,7 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
 bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {
 	if (e.tagName() == "terminal") return(parseTerminal(e));
 	else if (e.tagName() == "line") return(parseLine(e, qp));
+	else if (e.tagName() == "rect") return(parseRect(e, qp));
 	else if (e.tagName() == "ellipse") return(parseEllipse(e, qp));
 	else if (e.tagName() == "circle") return(parseCircle(e, qp));
 	else if (e.tagName() == "arc") return(parseArc(e, qp));
@@ -244,9 +269,125 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	if (!QET::attributeIsAReal(e, QString("y1"), &y1)) return(false);
 	if (!QET::attributeIsAReal(e, QString("x2"), &x2)) return(false);
 	if (!QET::attributeIsAReal(e, QString("y2"), &y2)) return(false);
+	
+	QET::EndType first_end = QET::endTypeFromString(e.attribute("end1"));
+	QET::EndType second_end = QET::endTypeFromString(e.attribute("end2"));
+	qreal length1, length2;
+	if (!QET::attributeIsAReal(e, QString("length1"), &length1)) length1 = 1.5;
+	if (!QET::attributeIsAReal(e, QString("length2"), &length2)) length2 = 1.5;
+	
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.drawLine(QLineF(x1, y1, x2, y2));
+	QPen t = qp.pen();
+	t.setJoinStyle(Qt::MiterJoin);
+	qp.setPen(t);
+	
+	//qp.drawLine(QLineF(x1, y1, x2, y2));
+	QLineF line(x1, y1, x2, y2);
+	QPointF point1(line.p1());
+	QPointF point2(line.p2());
+	
+	qreal line_length(line.length());
+	qreal pen_width = qp.pen().widthF();
+	
+	// determine s'il faut dessiner les extremites
+	bool draw_1st_end, draw_2nd_end;
+	qreal reduced_line_length = line_length - (length1 * PartLine::requiredLengthForEndType(first_end));
+	draw_1st_end = first_end && reduced_line_length >= 0;
+	if (draw_1st_end) {
+		reduced_line_length -= (length2 * PartLine::requiredLengthForEndType(second_end));
+	} else {
+		reduced_line_length = line_length - (length2 * PartLine::requiredLengthForEndType(second_end));
+	}
+	draw_2nd_end = second_end && reduced_line_length >= 0;
+	
+	// dessine la premiere extremite
+	QPointF start_point, stop_point;
+	if (draw_1st_end) {
+		QList<QPointF> four_points1(PartLine::fourEndPoints(point1, point2, length1));
+		if (first_end == QET::Circle) {
+			qp.drawEllipse(QRectF(four_points1[0] - QPointF(length1, length1), QSizeF(length1 * 2.0, length1 * 2.0)));
+			start_point = four_points1[1];
+		} else if (first_end == QET::Diamond) {
+			qp.drawPolygon(QPolygonF() << four_points1[1] << four_points1[2] << point1 << four_points1[3]);
+			start_point = four_points1[1];
+		} else if (first_end == QET::Simple) {
+			qp.drawPolyline(QPolygonF() << four_points1[3] << point1 << four_points1[2]);
+			start_point = point1;
+			
+		} else if (first_end == QET::Triangle) {
+			qp.drawPolygon(QPolygonF() << four_points1[0] << four_points1[2] << point1 << four_points1[3]);
+			start_point = four_points1[0];
+		}
+		
+		// ajuste le depart selon l'epaisseur du trait
+		if (pen_width && (first_end == QET::Simple || first_end == QET::Circle)) {
+			start_point = QLineF(start_point, point2).pointAt(pen_width / 2.0 / line_length);
+		}
+	} else {
+		start_point = point1;
+	}
+	
+	// dessine la seconde extremite
+	if (draw_2nd_end) {
+		QList<QPointF> four_points2(PartLine::fourEndPoints(point2, point1, length2));
+		if (second_end == QET::Circle) {
+			qp.drawEllipse(QRectF(four_points2[0] - QPointF(length2, length2), QSizeF(length2 * 2.0, length2 * 2.0)));
+			stop_point = four_points2[1];
+		} else if (second_end == QET::Diamond) {
+			qp.drawPolygon(QPolygonF() << four_points2[2] << point2 << four_points2[3] << four_points2[1]);
+			stop_point = four_points2[1];
+		} else if (second_end == QET::Simple) {
+			qp.drawPolyline(QPolygonF() << four_points2[3] << point2 << four_points2[2]);
+			stop_point = point2;
+		} else if (second_end == QET::Triangle) {
+			qp.drawPolygon(QPolygonF() << four_points2[0] << four_points2[2] << point2 << four_points2[3] << four_points2[0]);
+			stop_point = four_points2[0];
+		}
+		
+		// ajuste l'arrivee selon l'epaisseur du trait
+		if (pen_width && (second_end == QET::Simple || second_end == QET::Circle)) {
+			stop_point = QLineF(point1, stop_point).pointAt((line_length - (pen_width / 2.0)) / line_length);
+		}
+	} else {
+		stop_point = point2;
+	}
+	
+	qp.drawLine(start_point, stop_point);
+	
+	qp.restore();
+	return(true);
+}
+
+/**
+	Analyse un element XML suppose representer un rectangle. Si l'analyse
+	reussit, le rectangle est ajoute au dessin.
+	Le rectangle est defini par les attributs suivants :
+		- x : abscisse du coin superieur gauche du rectangle
+		- y : ordonnee du coin superieur gauche du rectangle
+		- width : largeur du rectangle
+		- height : hauteur du rectangle
+		
+	@param e L'element XML a analyser
+	@param qp Le QPainter a utiliser pour dessiner l'element perso
+	@return true si l'analyse reussit, false sinon
+*/
+bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
+	// verifie la presence des attributs obligatoires
+	double rect_x, rect_y, rect_w, rect_h;
+	if (!QET::attributeIsAReal(e, QString("x"),       &rect_x))  return(false);
+	if (!QET::attributeIsAReal(e, QString("y"),       &rect_y))  return(false);
+	if (!QET::attributeIsAReal(e, QString("width"),   &rect_w))  return(false);
+	if (!QET::attributeIsAReal(e, QString("height"),  &rect_h))  return(false);
+	qp.save();
+	setPainterStyle(e, qp);
+	
+	// force le type de jointures pour les rectangles
+	QPen p = qp.pen();
+	p.setJoinStyle(Qt::MiterJoin);
+	qp.setPen(p);
+	
+	qp.drawRect(QRectF(rect_x, rect_y, rect_w, rect_h));
 	qp.restore();
 	return(true);
 }
@@ -262,7 +403,6 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
-	@todo utiliser des attributs plus coherents : x et y = centre, rayon = vrai rayon 
 */
 bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
@@ -289,7 +429,6 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
 	@return true si l'analyse reussit, false sinon
-	@todo utiliser des attributs plus coherents : x et y = centre
 */
 bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
@@ -405,23 +544,23 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 		- une taille
 		- le fait de subir les rotations de l'element ou non
 	@param e L'element XML a analyser
-	@param s Le schema sur lequel l'element perso sera affiche
-	@return true si l'analyse reussit, false sinon
+	@return Un pointeur vers l'objet ElementTextItem ainsi cree si l'analyse reussit, 0 sinon
 */
-bool CustomElement::parseInput(QDomElement &e) {
+ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	qreal pos_x, pos_y;
 	int size;
 	if (
 		!QET::attributeIsAReal(e, "x", &pos_x) ||\
 		!QET::attributeIsAReal(e, "y", &pos_y) ||\
 		!QET::attributeIsAnInteger(e, "size", &size)
-	) return(false);
+	) return(0);
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
+	eti -> setFont(QFont(QETApp::diagramTextsFont(), size));
 	eti -> setPos(pos_x, pos_y);
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
 	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
-	return(true);
+	return(eti);
 }
 
 /**
@@ -432,23 +571,23 @@ bool CustomElement::parseInput(QDomElement &e) {
 		- orientation  : orientation de la borne = Nord (n), Sud (s), Est (e) ou Ouest (w)
 		
 	@param e L'element XML a analyser
-	@param s Le schema sur lequel l'element perso sera affiche
-	@return true si l'analyse reussit, false sinon
+	@return Un pointeur vers l'objet Terminal ainsi cree, 0 sinon
 */
-bool CustomElement::parseTerminal(QDomElement &e) {
+Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	// verifie la presence et la validite des attributs obligatoires
 	double terminalx, terminaly;
 	QET::Orientation terminalo;
-	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(false);
-	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(false);
-	if (!e.hasAttribute("orientation")) return(false);
+	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(0);
+	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(0);
+	if (!e.hasAttribute("orientation")) return(0);
 	if (e.attribute("orientation") == "n") terminalo = QET::North;
 	else if (e.attribute("orientation") == "s") terminalo = QET::South;
 	else if (e.attribute("orientation") == "e") terminalo = QET::East;
 	else if (e.attribute("orientation") == "w") terminalo = QET::West;
-	else return(false);
-	list_terminals << new Terminal(terminalx, terminaly, terminalo, this, qobject_cast<Diagram *>(scene()));
-	return(true);
+	else return(0);
+	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this, qobject_cast<Diagram *>(scene()));
+	list_terminals << new_terminal;
+	return(new_terminal);
 }
 
 /**
@@ -481,7 +620,7 @@ void CustomElement::setQPainterAntiAliasing(QPainter &qp, bool aa) {
 	@param e Element XML
 	@return true si l'attribut "orientation" est valide, false sinon
 */
-bool CustomElement::validOrientationAttribute(QDomElement &e) {
+bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 	return(ori.fromString(e.attribute("orientation")));
 }
 

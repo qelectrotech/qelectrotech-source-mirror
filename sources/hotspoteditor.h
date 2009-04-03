@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -36,6 +36,7 @@ class HotspotEditor : public QWidget {
 	
 	// attributs
 	private:
+	QLabel *informations_label_;
 	QSpinBox *sb_width;
 	QSpinBox *sb_height;
 	QSpinBox *sb_hotspot_x;

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,7 +19,6 @@
 #define ELEMENTS_PANEL_WIDGET_H
 #include <QtGui>
 #include "elementspanel.h"
-
 /**
 	Cette classe est un widget qui contient le panel d'elements surplombe d'une
 	barre d'outils avec differentes actions pour gerer les elements.
@@ -41,21 +40,54 @@ class ElementsPanelWidget : public QWidget {
 	QToolBar *toolbar, *filter_toolbar;
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
+	QAction *delete_collection;
 	QAction *new_element,  *edit_element,  *delete_element;
+	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram;
+	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
 	QAction *erase_textfield;
 	QLineEdit *filter_textfield;
+	ElementsCollectionItem *dnd_item_src_, *dnd_item_dst_;
 	
 	// methodes
 	public:
 	inline ElementsPanel &elementsPanel() const;
 	
+	signals:
+	void requestForNewDiagram(QETProject *);
+	void requestForProjectClosing(QETProject *);
+	void requestForProjectPropertiesEdition(QETProject *);
+	void requestForDiagramPropertiesEdition(Diagram *);
+	void requestForDiagramDeletion(Diagram *);
+	
 	public slots:
+	void clearFilterTextField();
 	void reloadAndFilter();
-	void newElement();
+	void closeProject();
+	void editProjectProperties();
+	void editDiagramProperties();
+	void newDiagram();
+	void deleteDiagram();
 	void newCategory();
+	void newElement();
+	void editCategory();
+	void editElement();
+	void deleteCategory();
+	void deleteElement();
 	void updateButtons();
+	int  launchCategoriesManager();
 	void handleContextMenu(const QPoint &);
+	void handleCollectionRequest(ElementsCollectionItem *);
+	void handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint & = QPoint());
+	void moveElements();
+	void moveElements(ElementsCollectionItem *, ElementsCollectionItem *);
+	void copyElements();
+	void copyElements(ElementsCollectionItem *, ElementsCollectionItem *);
+	
+	private:
+	void launchElementEditor(const ElementsLocation &);
+	void launchCategoryEditor(const ElementsLocation &);
+	ElementsCategory *writableSelectedCategory();
 };
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,10 @@
 #ifndef ELEMENTS_CATEGORY_EDITOR_H
 #define ELEMENTS_CATEGORY_EDITOR_H
 #include <QtGui>
+#include "elementslocation.h"
 class ElementsCategory;
 class NamesListWidget;
+class QFileNameEdit;
 /**
 	Cette classe permet d'editer une categorie existante ou de creer une
 	categorie.
@@ -29,7 +31,7 @@ class ElementsCategoryEditor : public QDialog {
 	
 	// constructeurs, destructeur
 	public:
-	ElementsCategoryEditor(const QString &, bool = true, QWidget * = 0);
+	ElementsCategoryEditor(const ElementsLocation &, bool = true, QWidget * = 0);
 	virtual ~ElementsCategoryEditor();
 	
 	private:
@@ -40,6 +42,8 @@ class ElementsCategoryEditor : public QDialog {
 	ElementsCategory *category;
 	QDialogButtonBox *buttons;
 	NamesListWidget *names_list;
+	QLabel *internal_name_label_;
+	QFileNameEdit *internal_name_;
 	bool mode_edit;
 	
 	// methodes

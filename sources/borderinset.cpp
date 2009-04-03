@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,6 @@
 #include <QPainter>
 #include "borderinset.h"
 #include "qetapp.h"
-#include "qetdiagrameditor.h"
 #include "math.h"
 
 /**
@@ -28,16 +27,17 @@
 */
 BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	// dimensions par defaut du schema
-	importBorder(QETDiagramEditor::defaultBorderProperties());
+	importBorder(BorderProperties());
 	
 	// contenu par defaut du cartouche
-	importInset(QETDiagramEditor::defaultInsetProperties());
+	importInset(InsetProperties());
 	
 	// hauteur du cartouche
 	inset_height          = 50.0;
 	
 	display_inset         = true;
 	display_border        = true;
+	setFolioData(1, 1);
 	updateRectangles();
 }
 
@@ -94,9 +94,10 @@ InsetProperties BorderInset::exportInset() {
 void BorderInset::importInset(const InsetProperties &ip) {
 	bi_author = ip.author;
 	bi_date = ip.date;
-	bi_title = ip.title;
+	setTitle(ip.title);
 	bi_folio = ip.folio;
 	bi_filename = ip.filename;
+	emit(needFolioData());
 }
 
 /**
@@ -158,6 +159,8 @@ void BorderInset::displayRows(bool dr) {
 
 /**
 	@param db true pour afficher la bordure du schema, false sinon
+	Note : si l'affichage de la bordure est ainsi desactivee, les lignes et
+	colonnes ne seront pas dessinees.
 */
 void BorderInset::displayBorder(bool db) {
 	bool change = (db != display_border);
@@ -208,10 +211,10 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	// dessine le cadre
 	if (display_border) qp -> drawRect(diagram);
 	
-	qp -> setFont(QFont(QETApp::diagramTextsFont(), qp -> font().pointSize()));
+	qp -> setFont(QFont(QETApp::diagramTextsFont(), QETApp::diagramTextsSize()));
 	
 	// dessine la case vide qui apparait des qu'il y a un entete
-	if (display_columns || display_rows) {
+	if (display_border && (display_columns || display_rows)) {
 		qp -> setBrush(Qt::white);
 		QRectF first_rectangle(
 			diagram.topLeft().x(),
@@ -223,7 +226,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	}
 	
 	// dessine la numerotation des colonnes
-	if (display_columns) {
+	if (display_border && display_columns) {
 		for (int i = 1 ; i <= nb_columns ; ++ i) {
 			QRectF numbered_rectangle = QRectF(
 				diagram.topLeft().x() + (rows_header_width + ((i - 1) * columns_width)),
@@ -237,7 +240,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	}
 	
 	// dessine la numerotation des lignes
-	if (display_rows) {
+	if (display_border && display_rows) {
 		QString row_string("A");
 		for (int i = 1 ; i <= nb_rows ; ++ i) {
 			QRectF lettered_rectangle = QRectF(
@@ -258,19 +261,19 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 		qp -> drawRect(inset);
 		
 		qp -> drawRect(inset_author);
-		qp -> drawText(inset_author, Qt::AlignVCenter | Qt::AlignLeft,   tr(" Auteur : ") + bi_author);
+		qp -> drawText(inset_author, Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Auteur : %1", "inset content")).arg(bi_author));
 		
 		qp -> drawRect(inset_date);
-		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Date : ") + bi_date.toString("dd/MM/yyyy"));
+		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Date : %1", "inset content")).arg(bi_date.toString("dd/MM/yyyy")));
 		
 		qp -> drawRect(inset_title);
-		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, tr("Titre du document : ") + bi_title);
+		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, QString(tr("Titre du document : %1", "inset content")).arg(bi_title));
 		
 		qp -> drawRect(inset_file);
-		qp -> drawText(inset_file,   Qt::AlignVCenter | Qt::AlignLeft,   tr(" Fichier : ") + bi_filename);
+		qp -> drawText(inset_file,   Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Fichier : %1", "inset content")).arg(bi_filename));
 		
 		qp -> drawRect(inset_folio);
-		qp -> drawText(inset_folio,  Qt::AlignVCenter | Qt::AlignLeft,   tr(" Folio : ") + bi_folio);
+		qp -> drawText(inset_folio,  Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Folio : %1", "inset content")).arg(bi_final_folio));
 	}
 	
 	qp -> restore();
@@ -438,4 +441,21 @@ QString BorderInset::incrementLetters(const QString &string) {
 			return(incrementLetters(first_digits) + "A");
 		}
 	}
+}
+
+/**
+	@param index numero du schema (de 1 a total)
+	@param total nombre total de schemas dans le projet
+*/
+void BorderInset::setFolioData(int index, int total) {
+	if (index < 1 || total < 1 || index > total) return;
+	
+	// memorise les informations
+	folio_index_ = index;
+	folio_total_ = total;
+	
+	// regenere le contenu du champ folio
+	bi_final_folio = bi_folio;
+	bi_final_folio.replace("%id",    QString::number(folio_index_));
+	bi_final_folio.replace("%total", QString::number(folio_total_));
 }

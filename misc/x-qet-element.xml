@@ -2,4 +2,5 @@
 <mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="application/x-qet-element">
 	<comment>QElectroTech element file</comment>
 	<comment xml:lang="fr">Fichier élément QElectroTech</comment>
+	<comment xml:lang="es">Archivo elemento QElectroTech</comment>
 </mime-type>

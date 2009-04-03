@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,15 +19,17 @@
 #define SCHEMA_H
 #include <QtGui>
 #include <QtXml>
-#include "qetdiagrameditor.h"
 #include "borderinset.h"
 #include "qgimanager.h"
 #include "conductorproperties.h"
 class Element;
+class CustomElement;
 class Terminal;
 class Conductor;
 class DiagramTextItem;
 class DiagramContent;
+class QETProject;
+class ElementsLocation;
 /**
 	Cette classe represente un schema electrique.
 	Elle gere les differents elements et conducteurs qui le composent
@@ -78,6 +80,9 @@ class Diagram : public QGraphicsScene {
 	QGIManager *qgi_manager;
 	QUndoStack *undo_stack;
 	bool draw_terminals;
+	QDomDocument xml_document;
+	QETProject *project_;
+	bool read_only_;
 	
 	// methodes
 	protected:
@@ -88,6 +93,14 @@ class Diagram : public QGraphicsScene {
 	public:
 	static bool clipboardMayContainDiagram();
 	
+	// fonctions relatives au projet parent
+	QETProject *project() const;
+	void setProject(QETProject *);
+	
+	// fonctions relatives a la lecture seule
+	bool isReadOnly() const;
+	void setReadOnly(bool);
+	
 	// fonctions relatives a la pose de conducteurs
 	void setConductor(bool);
 	void setConductorStart (QPointF);
@@ -96,6 +109,11 @@ class Diagram : public QGraphicsScene {
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
 	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = NULL);
+	bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = NULL);
+	void write();
+	void write(const QDomElement &);
+	bool wasWritten() const;
+	QDomElement writeXml(QDomDocument &) const;
 	
 	// fonctions relatives aux options graphiques
 	void setDisplayGrid(bool);
@@ -109,9 +127,13 @@ class Diagram : public QGraphicsScene {
 	void setDrawTerminals(bool);
 	
 	QRectF border() const;
+	QString title() const;
 	bool toPaintDevice(QPaintDevice &, int = -1, int = -1, Qt::AspectRatioMode = Qt::KeepAspectRatio);
 	QSize imageSize() const;
 	
+	bool isEmpty() const;
+	
+	QList<CustomElement *> customElements() const;
 	void invalidateMovedElements();
 	void fetchMovedElements();
 	const QSet<Element *> &elementsToMove();
@@ -122,6 +144,7 @@ class Diagram : public QGraphicsScene {
 	DiagramContent content() const;
 	DiagramContent selectedContent();
 	void moveElements(const QPointF &, QGraphicsItem * = NULL);
+	bool usesElement(const ElementsLocation &);
 	
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
@@ -139,6 +162,8 @@ class Diagram : public QGraphicsScene {
 		vice-versa.
 	*/
 	void selectionEmptinessChanged();
+	void written();
+	void readOnlyChanged(bool);
 };
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -138,8 +138,8 @@ void Element::deselect() {
 	@return La pixmap de l'element
 */
 QPixmap Element::pixmap() {
-	if (apercu.isNull()) updatePixmap(); // on genere la pixmap si ce n'est deja fait
-	return(apercu);
+	if (preview.isNull()) updatePixmap(); // on genere la pixmap si ce n'est deja fait
+	return(preview);
 }
 
 /**
@@ -220,10 +220,10 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *)
 */
 void Element::updatePixmap() {
 	// Pixmap transparente faisant la taille de base de l'element
-	apercu = QPixmap(dimensions);
-	apercu.fill(QColor(255, 255, 255, 0));
+	preview = QPixmap(dimensions);
+	preview.fill(QColor(255, 255, 255, 0));
 	// QPainter sur la pixmap, avec antialiasing
-	QPainter p(&apercu);
+	QPainter p(&preview);
 	p.setRenderHint(QPainter::Antialiasing, true);
 	p.setRenderHint(QPainter::SmoothPixmapTransform, true);
 	// Translation de l'origine du repere de la pixmap
@@ -416,9 +416,7 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	QDomElement element = document.createElement("element");
 	
 	// type
-	QString chemin_elmt = typeId();
-	QString type_elmt = QETApp::symbolicPath(chemin_elmt);
-	element.setAttribute("type", type_elmt);
+	element.setAttribute("type", typeId());
 	
 	// position, selection et orientation
 	element.setAttribute("x", QString("%1").arg(pos().x()));

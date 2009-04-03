@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,6 +22,8 @@
 #include "customelementpart.h"
 #include "newelementwizard.h"
 #include "elementitemeditor.h"
+#include "elementdefinition.h"
+#include "elementdialog.h"
 #include "recentfiles.h"
 
 /**
@@ -31,8 +33,8 @@
 QETElementEditor::QETElementEditor(QWidget *parent) :
 	QMainWindow(parent),
 	read_only(false),
-	min_title(tr("QElectroTech - \311diteur d'\351l\351ment")),
-	_filename(QString())
+	min_title(tr("QElectroTech - \311diteur d'\351l\351ment", "window title")),
+	opened_from_file(false)
 {
 	setWindowTitle(min_title);
 	setWindowIcon(QIcon(":/ico/qet.png"));
@@ -47,6 +49,7 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	
 	// lecture des parametres
 	readSettings();
+	slot_updateMenus();
 	
 	// affichage
 	show();
@@ -62,12 +65,18 @@ QETElementEditor::~QETElementEditor() {
 void QETElementEditor::setupActions() {
 	new_element   = new QAction(QIcon(":/ico/new.png"),          tr("&Nouveau"),                    this);
 	open          = new QAction(QIcon(":/ico/open.png"),         tr("&Ouvrir"),                     this);
+	open_file     = new QAction(QIcon(":/ico/open.png"),         tr("&Ouvrir depuis un fichier"),   this);
 	save          = new QAction(QIcon(":/ico/save.png"),         tr("&Enregistrer"),                this);
 	save_as       = new QAction(QIcon(":/ico/saveas.png"),       tr("Enregistrer sous"),            this);
+	save_as_file  = new QAction(QIcon(":/ico/saveas.png"),       tr("Enregistrer dans un fichier"), this);
 	reload        = new QAction(QIcon(":/ico/reload.png"),       tr("Recharger"),                   this);
 	quit          = new QAction(QIcon(":/ico/exit.png"),         tr("&Quitter"),                    this);
 	selectall     = new QAction(                                 tr("Tout s\351lectionner"),        this);
 	deselectall   = new QAction(                                 tr("D\351s\351lectionner tout"),   this);
+	cut           = new QAction(QIcon(":/ico/cut.png"),          tr("Co&uper"),                     this);
+	copy          = new QAction(QIcon(":/ico/copy.png"),         tr("Cop&ier"),                     this);
+	paste         = new QAction(QIcon(":/ico/paste.png"),        tr("C&oller"),                     this);
+	paste_in_area = new QAction(QIcon(":/ico/paste.png"),        tr("C&oller dans la zone..."),     this);
 	inv_select    = new QAction(                                 tr("Inverser la s\351lection"),    this);
 	edit_delete   = new QAction(QIcon(":/ico/delete.png"),       tr("&Supprimer"),                  this);
 	zoom_in       = new QAction(QIcon(":/ico/viewmag+.png"),     tr("Zoom avant"),                  this);
@@ -83,6 +92,7 @@ void QETElementEditor::setupActions() {
 	edit_forward  = new QAction(QIcon(":/ico/bring_forward.png"),tr("Amener au premier plan"),      this);
 	move          = new QAction(QIcon(":/ico/select.png"),       tr("D\351placer un objet"),        this);
 	add_line      = new QAction(QIcon(":/ico/line.png"),         tr("Ajouter une ligne"),           this);
+	add_rectangle = new QAction(QIcon(":/ico/rectangle.png"),    tr("Ajouter un rectangle"),        this);
 	add_ellipse   = new QAction(QIcon(":/ico/ellipse.png"),      tr("Ajouter une ellipse"),         this);
 	add_circle    = new QAction(QIcon(":/ico/circle.png"),       tr("Ajouter un cercle"),           this);
 	add_polygon   = new QAction(QIcon(":/ico/polygon.png"),      tr("Ajouter un polygone"),         this);
@@ -90,6 +100,17 @@ void QETElementEditor::setupActions() {
 	add_arc       = new QAction(QIcon(":/ico/arc.png"),          tr("Ajouter un arc de cercle"),    this);
 	add_terminal  = new QAction(QIcon(":/ico/terminal.png"),     tr("Ajouter une borne"),           this);
 	add_textfield = new QAction(QIcon(":/ico/textfield.png"),    tr("Ajouter un champ de texte"),   this);
+	
+	QString add_status_tip = tr("Maintenez la touche Shift enfonc\351e pour effectuer plusieurs ajouts d'affil\351e");
+	add_line      -> setStatusTip(add_status_tip);
+	add_rectangle -> setStatusTip(add_status_tip);
+	add_ellipse   -> setStatusTip(add_status_tip);
+	add_circle    -> setStatusTip(add_status_tip);
+	add_text      -> setStatusTip(add_status_tip);
+	add_arc       -> setStatusTip(add_status_tip);
+	add_terminal  -> setStatusTip(add_status_tip);
+	add_textfield -> setStatusTip(add_status_tip);
+	add_polygon -> setStatusTip(tr("Utilisez le bouton droit de la souris pour poser le dernier point du polygone"));
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
@@ -100,12 +121,18 @@ void QETElementEditor::setupActions() {
 	
 	new_element       -> setShortcut(QKeySequence::New);
 	open              -> setShortcut(QKeySequence::Open);
+	open_file         -> setShortcut(tr("Ctrl+Shift+O"));
 	save              -> setShortcut(QKeySequence::Save);
+	save_as_file      -> setShortcut(tr("Ctrl+Shift+S"));
 	reload            -> setShortcut(Qt::Key_F5);
 	quit              -> setShortcut(QKeySequence(tr("Ctrl+Q")));
 	selectall         -> setShortcut(QKeySequence::SelectAll);
 	deselectall       -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	inv_select        -> setShortcut(QKeySequence(tr("Ctrl+I")));
+	cut               -> setShortcut(QKeySequence::Cut);
+	copy              -> setShortcut(QKeySequence::Copy);
+	paste             -> setShortcut(QKeySequence::Paste);
+	paste_in_area     -> setShortcut(tr("Ctrl+Shift+V"));
 	edit_delete       -> setShortcut(QKeySequence(tr("Suppr")));
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
@@ -124,13 +151,19 @@ void QETElementEditor::setupActions() {
 	
 	connect(new_element,   SIGNAL(triggered()), this,     SLOT(slot_new()));
 	connect(open,          SIGNAL(triggered()), this,     SLOT(slot_open()));
+	connect(open_file,     SIGNAL(triggered()), this,     SLOT(slot_openFile()));
 	connect(save,          SIGNAL(triggered()), this,     SLOT(slot_save()));
 	connect(save_as,       SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
+	connect(save_as_file,  SIGNAL(triggered()), this,     SLOT(slot_saveAsFile()));
 	connect(reload,        SIGNAL(triggered()), this,     SLOT(slot_reload()));
 	connect(quit,          SIGNAL(triggered()), this,     SLOT(close()));
 	connect(selectall,     SIGNAL(triggered()), ce_scene, SLOT(slot_selectAll()));
 	connect(deselectall,   SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
 	connect(inv_select,    SIGNAL(triggered()), ce_scene, SLOT(slot_invertSelection()));
+	connect(cut,           SIGNAL(triggered()), ce_view,  SLOT(cut()));
+	connect(copy,          SIGNAL(triggered()), ce_view,  SLOT(copy()));
+	connect(paste,         SIGNAL(triggered()), ce_view,  SLOT(paste()));
+	connect(paste_in_area, SIGNAL(triggered()), ce_view,  SLOT(pasteInArea()));
 	connect(zoom_in,       SIGNAL(triggered()), ce_view,  SLOT(zoomIn()));
 	connect(zoom_out,      SIGNAL(triggered()), ce_view,  SLOT(zoomOut()));
 	connect(zoom_fit,      SIGNAL(triggered()), ce_view,  SLOT(zoomFit()));
@@ -145,6 +178,7 @@ void QETElementEditor::setupActions() {
 	connect(edit_backward, SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
 	connect(move,          SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
 	connect(add_line,      SIGNAL(triggered()), ce_scene, SLOT(slot_addLine()));
+	connect(add_rectangle, SIGNAL(triggered()), ce_scene, SLOT(slot_addRectangle()));
 	connect(add_ellipse,   SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
 	connect(add_circle,    SIGNAL(triggered()), ce_scene, SLOT(slot_addCircle()));
 	connect(add_polygon,   SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
@@ -155,6 +189,7 @@ void QETElementEditor::setupActions() {
 	
 	connect(move,          SIGNAL(triggered()), this, SLOT(slot_setRubberBandToView()));
 	connect(add_line,      SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
+	connect(add_rectangle, SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
 	connect(add_ellipse,   SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
 	connect(add_circle,    SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
 	connect(add_polygon,   SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
@@ -167,6 +202,7 @@ void QETElementEditor::setupActions() {
 	
 	move          -> setCheckable(true);
 	add_line      -> setCheckable(true);
+	add_rectangle -> setCheckable(true);
 	add_ellipse   -> setCheckable(true);
 	add_circle    -> setCheckable(true);
 	add_polygon   -> setCheckable(true);
@@ -178,16 +214,17 @@ void QETElementEditor::setupActions() {
 	parts = new QActionGroup(this);
 	parts -> addAction(move);
 	parts -> addAction(add_line);
+	parts -> addAction(add_rectangle);
 	parts -> addAction(add_ellipse);
 	parts -> addAction(add_circle);
 	parts -> addAction(add_polygon);
-	parts -> addAction(add_text);
 	parts -> addAction(add_arc);
+	parts -> addAction(add_text);
 	parts -> addAction(add_textfield);
 	parts -> addAction(add_terminal);
 	parts -> setExclusive(true);
 	
-	parts_toolbar = new QToolBar(tr("Parties"), this);
+	parts_toolbar = new QToolBar(tr("Parties", "toolbar title"), this);
 	parts_toolbar -> setObjectName("parts");
 	foreach (QAction *action, parts -> actions()) parts_toolbar -> addAction(action);
 	move -> setChecked(true);
@@ -199,13 +236,13 @@ void QETElementEditor::setupActions() {
 	parts_toolbar -> addAction(xml_preview);
 	*/
 	
-	main_toolbar = new QToolBar(tr("Outils"), this);
+	main_toolbar = new QToolBar(tr("Outils", "toolbar title"), this);
 	main_toolbar -> setObjectName("main_toolbar");
-	view_toolbar = new QToolBar(tr("Affichage"), this);
+	view_toolbar = new QToolBar(tr("Affichage", "toolbar title"), this);
 	view_toolbar -> setObjectName("display");
-	element_toolbar = new QToolBar(tr("\311l\351ment"), this);
+	element_toolbar = new QToolBar(tr("\311l\351ment", "toolbar title"), this);
 	element_toolbar -> setObjectName("element_toolbar");
-	depth_toolbar = new QToolBar(tr("Profondeur"), this);
+	depth_toolbar = new QToolBar(tr("Profondeur", "toolbar title"), this);
 	depth_toolbar -> setObjectName("depth_toolbar");
 	
 	main_toolbar -> addAction(new_element);
@@ -238,6 +275,7 @@ void QETElementEditor::setupActions() {
 	
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateInformations()));
 	connect(ce_scene, SIGNAL(selectionChanged()), this, SLOT(slot_updateMenus()));
+	connect(QApplication::clipboard(),  SIGNAL(dataChanged()),      this, SLOT(slot_updateMenus()));
 	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateMenus()));
 	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateTitle()));
 	connect(&(ce_scene -> undoStack()), SIGNAL(indexChanged(int)),  this, SLOT(slot_updatePartsList()));
@@ -261,10 +299,12 @@ void QETElementEditor::setupMenus() {
 	
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
+	file_menu    -> addAction(open_file);
 	file_menu    -> addMenu(QETApp::elementsRecentFiles() -> menu());
 	connect(QETApp::elementsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	file_menu    -> addAction(save);
 	file_menu    -> addAction(save_as);
+	file_menu    -> addAction(save_as_file);
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(reload);
 	file_menu    -> addSeparator();
@@ -276,6 +316,11 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(selectall);
 	edit_menu -> addAction(deselectall);
 	edit_menu -> addAction(inv_select);
+	edit_menu -> addSeparator();
+	edit_menu -> addAction(cut);
+	edit_menu -> addAction(copy);
+	edit_menu -> addAction(paste);
+	edit_menu -> addAction(paste_in_area);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_delete);
 	edit_menu -> addSeparator();
@@ -309,6 +354,13 @@ void QETElementEditor::setupMenus() {
 */
 void QETElementEditor::slot_updateMenus() {
 	bool selected_items = !ce_scene -> selectedItems().isEmpty();
+	bool clipboard_elmt = ElementScene::clipboardMayContainElement();
+	
+	deselectall   -> setEnabled(selected_items);
+	cut           -> setEnabled(selected_items);
+	copy          -> setEnabled(selected_items);
+	paste         -> setEnabled(clipboard_elmt);
+	paste_in_area -> setEnabled(clipboard_elmt);
 	edit_delete   -> setEnabled(selected_items);
 	edit_forward  -> setEnabled(selected_items);
 	edit_raise    -> setEnabled(selected_items);
@@ -323,10 +375,10 @@ void QETElementEditor::slot_updateMenus() {
 void QETElementEditor::slot_updateTitle() {
 	QString title = min_title;
 	title += " - " + ce_scene -> names().name() + " ";
-	if (_filename != QString()) {
-		if (!ce_scene -> undoStack().isClean()) title += tr("[Modifi\351]");
-		if (isReadOnly()) title += tr(" [lecture seule]");
+	if (!filename_.isEmpty() || !location_.isNull()) {
+		if (!ce_scene -> undoStack().isClean()) title += tr("[Modifi\351]", "window title tag");
 	}
+	if (isReadOnly()) title += tr(" [lecture seule]", "window title tag");
 	setWindowTitle(title);
 }
 
@@ -344,19 +396,25 @@ void QETElementEditor::setupInterface() {
 	// widget par defaut dans le QDockWidget
 	default_informations = new QLabel();
 	
+	// ScrollArea pour accueillir un widget d'edition (change a la volee)
+	tools_dock_scroll_area_ = new QScrollArea();
+	
+	// Pile de widgets pour accueillir les deux widgets precedents
+	tools_dock_stack_ = new QStackedWidget();
+	tools_dock_stack_ -> insertWidget(0, default_informations);
+	tools_dock_stack_ -> insertWidget(1, tools_dock_scroll_area_);
+	
 	// panel sur le cote pour editer les parties
-	tools_dock = new QDockWidget(tr("Informations"), this);
+	tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
 	tools_dock -> setObjectName("informations");
 	tools_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	tools_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
-	tools_dock -> setMinimumWidth(290);
+	tools_dock -> setMinimumWidth(380);
 	addDockWidget(Qt::RightDockWidgetArea, tools_dock);
-	QWidget *info_widget = new QWidget();
-	info_widget -> setLayout(new QVBoxLayout(info_widget));
-	tools_dock -> setWidget(info_widget);
+	tools_dock -> setWidget(tools_dock_stack_);
 	
 	// panel sur le cote pour les annulations
-	undo_dock = new QDockWidget(tr("Annulations"), this);
+	undo_dock = new QDockWidget(tr("Annulations", "dock title"), this);
 	undo_dock -> setObjectName("undo");
 	undo_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	undo_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
@@ -374,7 +432,7 @@ void QETElementEditor::setupInterface() {
 	connect(ce_scene,   SIGNAL(partsZValueChanged()),   this, SLOT(slot_createPartsList()));
 	connect(ce_scene,   SIGNAL(selectionChanged()),     this, SLOT(slot_updatePartsList()));
 	connect(parts_list, SIGNAL(itemSelectionChanged()), this, SLOT(slot_updateSelectionFromPartsList()));
-	parts_dock = new QDockWidget(tr("Parties"), this);
+	parts_dock = new QDockWidget(tr("Parties", "dock title"), this);
 	parts_dock -> setObjectName("parts_list");
 	parts_dock -> setAllowedAreas(Qt::LeftDockWidgetArea | Qt::RightDockWidgetArea);
 	parts_dock -> setFeatures(QDockWidget::AllDockWidgetFeatures);
@@ -386,7 +444,7 @@ void QETElementEditor::setupInterface() {
 	slot_createPartsList();
 	
 	// barre d'etat
-	statusBar() -> showMessage(tr("\311diteur d'\351l\351ments"));
+	statusBar() -> showMessage(tr("\311diteur d'\351l\351ments", "status bar message"));
 }
 
 /**
@@ -428,31 +486,26 @@ void QETElementEditor::slot_updateInformations() {
 		}
 	}
 	
-	// recupere le layout
-	QLayout *layout = tools_dock -> widget() -> layout();
-	
-	// enleve les widgets deja presents
-	QLayoutItem *qli;
-	while ((qli = layout -> takeAt(0)) != 0) {
-		if (QWidget *w = qli -> widget()) {
-			layout -> removeWidget(w);
-			w -> setParent(0);
-			w -> hide();
-		}
+	if (QWidget *previous_widget = tools_dock_scroll_area_ -> takeWidget()) {
+		previous_widget -> setParent(0);
+		previous_widget -> hide();
 	}
+	
 	if (selected_parts.size() == 1) {
 		// recupere le premier CustomElementPart et en ajoute le widget d'edition
 		QWidget *edit_widget = selected_parts.first() -> elementInformations();
-		layout -> addWidget(edit_widget);
-		edit_widget -> show();
+		tools_dock_scroll_area_ -> setWidget(edit_widget);
+		tools_dock_stack_ -> setCurrentIndex(1);
 	} else {
 		default_informations -> setText(
-			selected_parts.size() ?
-			QString("%1").arg(selected_parts.size()) + tr(" parties s\351lectionn\351es.") :
-			tr("Aucune partie s\351lectionn\351e.")
+			tr(
+				"%n partie(s) s\351lectionn\351e(s).",
+				"",
+				selected_parts.size()
+			)
 		);
-		layout -> addWidget(default_informations);
-		default_informations -> show();
+		default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
+		tools_dock_stack_ -> setCurrentIndex(0);
 	}
 }
 
@@ -469,6 +522,33 @@ void QETElementEditor::xmlPreview() {
 }
 
 /**
+	Verifie si l'ensemble des parties graphiques consituant l'element en cours
+	d'edition est bien contenu dans le rectangle representant les limites de
+	l'element. Si ce n'est pas le cas, l'utilisateur en est informe.
+	@return true si la situation est ok, false sinon
+*/
+bool QETElementEditor::checkElementSize() {
+	if (ce_scene -> borderContainsEveryParts()) {
+		return(true);
+	} else {
+		QMessageBox::warning(
+			this,
+			tr("Dimensions de l'\351l\351ment", "messagebox title"),
+			tr(
+				"Attention : certaines parties graphiques (textes, cercles, "
+				"lignes...) semblent d\351border du cadre de l'\351l\351ment. Cela"
+				" risque de g\351n\351rer des bugs graphiques lors de leur "
+				"manipulation sur un sch\351ma. Vous pouvez corriger cela soit "
+				"en d\351pla\347ant ces parties, soit en vous rendant dans "
+				"\311dition > \311diter la taille et le point de saisie."
+				, "messagebox content"
+			)
+		);
+		return(false);
+	}
+}
+
+/**
 	Charge un fichier
 	@param filepath Chemin du fichier a charger
 */
@@ -480,7 +560,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	QFileInfo infos_file(filepath);
 	if (!infos_file.exists() || !infos_file.isFile()) {
 		state = false;
-		error_message = tr("Le fichier ") + filepath + tr(" n'existe pas.");
+		error_message = QString(tr("Le fichier %1 n'existe pas.", "message box content")).arg(filepath);
 	}
 	
 	// le fichier doit etre lisible
@@ -488,7 +568,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	if (state) {
 		if (!file.open(QIODevice::ReadOnly)) {
 			state = false;
-			error_message = tr("Impossible d'ouvrir le fichier ") + filepath + ".";
+			error_message = QString(tr("Impossible d'ouvrir le fichier %1.", "message box content")).arg(filepath);
 		}
 	}
 	
@@ -497,13 +577,13 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	if (state) {
 		if (!document_xml.setContent(&file)) {
 			state = false;
-			error_message = tr("Ce fichier n'est pas un document XML valide");
+			error_message = tr("Ce fichier n'est pas un document XML valide", "message box content");
 		}
 		file.close();
 	}
 	
 	if (!state) {
-		QMessageBox::critical(this, tr("Erreur"), error_message);
+		QMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
 		return;
 	}
 	
@@ -515,8 +595,8 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	if (!infos_file.isWritable()) {
 		QMessageBox::warning(
 			this,
-			tr("\311dition en lecture seule"),
-			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.")
+			tr("\311dition en lecture seule", "message box title"),
+			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
 		);
 		setReadOnly(true);
 	}
@@ -527,7 +607,6 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	slot_updateMenus();
 }
 
-
 /**
 	Enregistre l'element vers un fichier
 	@param fn Chemin du fichier a enregistrer
@@ -536,13 +615,52 @@ void QETElementEditor::fromFile(const QString &filepath) {
 bool QETElementEditor::toFile(const QString &fn) {
 	QFile file(fn);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		QMessageBox::warning(this, tr("Erreur"), tr("Impossible d'ecrire dans ce fichier"));
+		QMessageBox::warning(this, tr("Erreur", "message box title"), tr("Impossible d'\351crire dans ce fichier", "message box content"));
 		return(false);
 	}
 	QTextStream out(&file);
 	out.setCodec("UTF-8");
 	out << ce_scene -> toXml().toString(4);
 	file.close();
+	return(true);
+}
+
+/**
+	Enregistre l'element vers un emplacement
+	@param location Emplacement de l'element a enregistrer
+	@return true en cas de reussite, false sinon
+*/
+bool QETElementEditor::toLocation(const ElementsLocation &location) {
+	ElementsCollectionItem *item = QETApp::collectionItem(location);
+	ElementDefinition *element;
+	if (item) {
+		// l'element existe deja
+		element = qobject_cast<ElementDefinition *>(item);
+	} else {
+		// l'element n'existe pas encore, on demande sa creation
+		element = QETApp::createElement(location);
+	}
+	
+	if (!element) {
+		QMessageBox::critical(
+			this,
+			tr("Erreur", "message box title"),
+			tr("Impossible d'atteindre l'\351l\351ment", "message box content")
+		);
+		return(false);
+	}
+	
+	// enregistre l'element
+	element -> setXml(ce_scene -> toXml().documentElement());
+	if (!element -> write()) {
+		QMessageBox::critical(
+			this,
+			tr("Erreur", "message box title"),
+			tr("Impossible d'enregistrer l'\351l\351ment", "message box content")
+		);
+		return(false);
+	}
+	
 	return(true);
 }
 
@@ -559,6 +677,9 @@ void QETElementEditor::setReadOnly(bool ro) {
 	ce_view -> setInteractive(!ro);
 	
 	// active / desactive l'edition de la taille, du hotspot, des noms et des orientations
+	cut          -> setEnabled(!ro);
+	copy         -> setEnabled(!ro);
+	paste        -> setEnabled(!ro);
 	selectall    -> setEnabled(!ro);
 	deselectall  -> setEnabled(!ro);
 	inv_select   -> setEnabled(!ro);
@@ -587,15 +708,33 @@ void QETElementEditor::slot_new() {
 }
 
 /**
-	Demande un fichier a l'utilisateur et ouvre ce fichier
+	Ouvre un element
 */
 void QETElementEditor::slot_open() {
+	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
+	ElementsLocation location = ElementDialog::getOpenElementLocation();
+	if (location.isNull()) return;
+	QETElementEditor *cee = new QETElementEditor();
+	cee -> fromLocation(location);
+	cee -> show();
+}
+
+/**
+	Ouvre un fichier
+	Demande un fichier a l'utilisateur et ouvre ce fichier
+*/
+void QETElementEditor::slot_openFile() {
 	// demande un nom de fichier a ouvrir a l'utilisateur
 	QString user_filename = QFileDialog::getOpenFileName(
 		this,
-		tr("Ouvrir un fichier"),
-		_filename.isEmpty() ? QETApp::customElementsDir() : QDir(_filename).absolutePath(),
-		tr("\311l\351ments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)")
+		tr("Ouvrir un fichier", "dialog title"),
+		filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath(),
+		tr(
+			"\311l\351ments QElectroTech (*.elmt);;"
+			"Fichiers XML (*.xml);;"
+			"Tous les fichiers (*)",
+			"filetypes allowed when opening an element file"
+		)
 	);
 	openElement(user_filename);
 }
@@ -628,16 +767,13 @@ void QETElementEditor::openElement(const QString &filepath) {
 	Recharge l'element edite
 */
 void QETElementEditor::slot_reload() {
-	// impossible de recharger un element non enregistre
-	if (_filename.isEmpty()) return;
-	
 	// s'il ya des modifications, on demande a l'utilisateur s'il est certain
 	// de vouloir recharger
 	if (!ce_scene -> undoStack().isClean()) {
 		QMessageBox::StandardButton answer = QMessageBox::question(
 			this,
-			tr("Recharger l'\351l\351ment"),
-			tr("Vous avez efffectu\351 des modifications sur cet \351l\351ment. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'\351l\351ment ?"),
+			tr("Recharger l'\351l\351ment", "dialog title"),
+			tr("Vous avez efffectu\351 des modifications sur cet \351l\351ment. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'\351l\351ment ?", "dialog content"),
 			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 			QMessageBox::Cancel
 		);
@@ -645,8 +781,19 @@ void QETElementEditor::slot_reload() {
 	}
 	
 	// recharge l'element
-	ce_scene -> reset();
-	fromFile(_filename);
+	if (opened_from_file) {
+		// l'element a ete ouvert a partir d'un chemin de fichier
+		ce_scene -> reset();
+		fromFile(filename_);
+	} else {
+		// l'element a ete ouvert a partir d'un emplacement (ElementsLocation)
+		// il peut s'agir aussi bien d'un fichier que d'un element XML
+		if (ElementsCollectionItem *item = QETApp::collectionItem(location_)) {
+			item -> reload();
+			ce_scene -> reset();
+			fromLocation(location_);
+		}
+	}
 }
 
 /**
@@ -656,24 +803,57 @@ void QETElementEditor::slot_reload() {
 	@see slot_saveAs()
 */
 bool QETElementEditor::slot_save() {
+	// verification avant d'enregistrer le fichier
+	checkElementSize();
+	
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
-	if (_filename.isEmpty()) return(slot_saveAs());
-	// sinon on enregistre dans le nom de fichier connu
-	bool result_save = toFile(_filename);
-	if (result_save) ce_scene -> undoStack().setClean();
+	if (opened_from_file) {
+		if (filename_.isEmpty()) return(slot_saveAsFile());
+		// sinon on enregistre dans le nom de fichier connu
+		bool result_save = toFile(filename_);
+		if (result_save) ce_scene -> undoStack().setClean();
+		return(result_save);
+	} else {
+		if (location_.isNull()) return(slot_saveAs());
+		// sinon on enregistre a l'emplacement connu
+		bool result_save = toLocation(location_);
+		if (result_save) ce_scene -> undoStack().setClean();
+		return(result_save);
+	}
+}
+
+/**
+	Demande une localisation a l'utilisateur et enregistre l'element
+*/
+bool QETElementEditor::slot_saveAs() {
+	// demande une localisation a l'utilisateur
+	ElementsLocation location = ElementDialog::getSaveElementLocation();
+	if (location.isNull()) return(false);
+	
+	// tente l'enregistrement
+	bool result_save = toLocation(location);
+	if (result_save) {
+		setLocation(location);
+		ce_scene -> undoStack().setClean();
+	}
+	
+	// retourne un booleen representatif de la reussite de l'enregistrement
 	return(result_save);
 }
 
 /**
 	Demande un nom de fichier a l'utilisateur et enregistre l'element
 */
-bool QETElementEditor::slot_saveAs() {
+bool QETElementEditor::slot_saveAsFile() {
 	// demande un nom de fichier a l'utilisateur pour enregistrer l'element
 	QString fn = QFileDialog::getSaveFileName(
 		this,
-		tr("Enregistrer sous"),
-		_filename.isEmpty() ? QETApp::customElementsDir() : QDir(_filename).absolutePath(),
-		tr("\311l\351ments QElectroTech (*.elmt)")
+		tr("Enregistrer sous", "dialog title"),
+		filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath(),
+		tr(
+			"\311l\351ments QElectroTech (*.elmt)",
+			"filetypes allowed when saving an element file"
+		)
 	);
 	// si aucun nom n'est entre, renvoie faux.
 	if (fn.isEmpty()) return(false);
@@ -702,9 +882,14 @@ bool QETElementEditor::canClose() {
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QMessageBox::question(
 		this,
-		tr("Enregistrer l'\351l\351ment en cours ?"),
-		tr("Voulez-vous enregistrer l'\351l\351ment ") + ce_scene -> names().name() + tr(" ?"),
-		QMessageBox::Yes|QMessageBox::No|QMessageBox::Cancel,
+		tr("Enregistrer l'\351l\351ment en cours ?", "dialog title"),
+		QString(
+			tr(
+				"Voulez-vous enregistrer l'\351l\351ment %1 ?",
+				"dialog content - %1 is an element name"
+			)
+		).arg(ce_scene -> names().name()),
+		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
 		QMessageBox::Cancel
 	);
 	bool result;
@@ -787,6 +972,7 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 	parts_list -> blockSignals(false);
 	ce_scene -> blockSignals(false);
 	slot_updateInformations();
+	slot_updateMenus();
 }
 
 /// Lit les parametres de l'editeur d'element
@@ -807,4 +993,71 @@ void QETElementEditor::writeSettings() {
 	QSettings &settings = QETApp::settings();
 	settings.setValue("elementeditor/geometry", saveGeometry());
 	settings.setValue("elementeditor/state", saveState());
+}
+
+/**
+	@return les decalages horizontaux et verticaux (sous la forme d'un point) a
+	utiliser lors d'un copier/coller avec decalage.
+*/
+QPointF QETElementEditor::pasteOffset() {
+	QPointF paste_offset(5.0, 0.0);
+	return(paste_offset);
+}
+
+/**
+	@return Le type de mouvement a effectuer lors d'un copier/coller avec
+	decalage.
+*/
+QET::OrientedMovement QETElementEditor::pasteMovement() {
+	return(QET::ToEast);
+}
+
+/**
+	@param location Emplacement de l'element a editer
+*/
+void QETElementEditor::fromLocation(const ElementsLocation &location) {
+	
+	// l'element doit exister
+	ElementsCollectionItem *item = QETApp::collectionItem(location);
+	ElementDefinition *element = 0;
+	if (!item) {
+		QMessageBox::critical(
+			this,
+			tr("\311l\351ment inexistant.", "message box title"),
+			tr("L'\351l\351ment n'existe pas.", "message box content")
+		);
+		return;
+	}
+	
+	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
+		QMessageBox::critical(
+			this,
+			tr("\311l\351ment inexistant.", "message box title"),
+			tr("Le chemin virtuel choisi ne correspond pas \340 un \351l\351ment.", "message box content")
+		);
+		return;
+	}
+	
+	// le fichier doit etre un document XML
+	QDomDocument document_xml;
+	QDomNode node = document_xml.importNode(element -> xml(), true);
+	document_xml.appendChild(node);
+	
+	// chargement de l'element
+	ce_scene -> fromXml(document_xml);
+	slot_createPartsList();
+	
+	// gestion de la lecture seule
+	if (!element -> isWritable()) {
+		QMessageBox::warning(
+			this,
+			tr("\311dition en lecture seule", "message box title"),
+			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
+		);
+		setReadOnly(true);
+	}
+	
+	// memorise le fichier
+	setLocation(location);
+	slot_updateMenus();
 }

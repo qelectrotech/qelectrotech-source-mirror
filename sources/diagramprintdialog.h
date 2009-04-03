@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -14,11 +14,11 @@
 	
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
-	
 */
 #ifndef DIAGRAM_PRINT_DIALOG_H
 #define DIAGRAM_PRINT_DIALOG_H
 #include <QtGui>
+#include "qetproject.h"
 #include "diagram.h"
 /**
 	Cette classe represente le dialogue de configuration de l'impression d'un
@@ -29,48 +29,55 @@ class DiagramPrintDialog : public QWidget {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	DiagramPrintDialog(Diagram *, QWidget * = 0);
+	DiagramPrintDialog(QETProject *, QWidget * = 0);
 	virtual ~DiagramPrintDialog();
 	private:
 	DiagramPrintDialog(const DiagramPrintDialog &);
 	
 	// methodes
 	public:
-	void setPDFName(const QString &);
-	QString PDFName() const;
+	void setFileName(const QString &);
+	QString fileName() const;
 	void setDocName(const QString &);
 	QString docName() const;
-	int pagesCount(bool = false) const;
-	int horizontalPagesCount(bool = false) const;
-	int verticalPagesCount(bool = false) const;
+	int pagesCount(Diagram *, bool = false) const;
+	int horizontalPagesCount(Diagram *, bool = false) const;
+	int verticalPagesCount(Diagram *, bool = false) const;
 	void exec();
 	
 	private:
+	void buildPrintTypeDialog();
 	void buildDialog();
-	void print();
 	
 	private slots:
-	void updateDialog();
-	void checkStartPage();
-	void checkEndPage();
-	void setPagesRangeVisible(bool);
+	void print(const QList<Diagram *> &, bool, QPrinter *);
+	void printDiagram(Diagram *, bool, QPainter *, QPrinter * = 0);
+	void updatePrintTypeDialog();
+	void acceptPrintTypeDialog();
+	void browseFilePrintTypeDialog();
 	
 	// attributs
 	private:
-	Diagram *diagram;
-	QPrinter *printer;
-	QString doc_name;
-	QString pdf_name;
-	QDialog *dialog;
-	QLabel *options_label;
-	QLabel *range_from_label;
-	QLabel *to_label;
-	QCheckBox *use_full_page;
-	QLabel *use_full_page_label_;
-	QCheckBox *fit_diagram_to_page;
-	QLabel *fit_diagram_to_page_label_;
-	QSpinBox *start_page;
-	QSpinBox *end_page;
-	QDialogButtonBox *buttons;
+	QETProject *project_;
+	QPrinter *printer_;
+	QString doc_name_;
+	QString file_name_;
+	
+	/// Attributs relatifs au 1er dialogue
+	QDialog *dialog_;
+	QLabel *printtype_label_;
+	QGridLayout *glayout0_;
+	QVBoxLayout *vlayout0_;
+	QHBoxLayout *hlayout0_;
+	QLabel *printer_icon_;
+	QLabel *pdf_icon_;
+	QLabel *ps_icon_;
+	QButtonGroup *printtype_choice_;
+	QRadioButton *printer_choice_;
+	QRadioButton *pdf_choice_;
+	QRadioButton *ps_choice_;
+	QLineEdit *filepath_field_;
+	QPushButton *browse_button_;
+	QDialogButtonBox *buttons_;
 };
 #endif

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,7 +21,6 @@
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class InsetPropertiesWidget;
-
 /**
 	Cette classe abstraite contient les methodes que toutes les pages de
 	configuration doivent implementer.
@@ -67,5 +66,35 @@ class NewDiagramPage : public ConfigPage {
 	BorderPropertiesWidget *bpw;    ///< Widget d'edition des dimensions du schema
 	InsetPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
 	ConductorPropertiesWidget *cpw; ///< Widget d'edition des proprietes par defaut des conducteurs
+};
+
+/**
+	Cette classe represente la page de configuration generale.
+*/
+class GeneralConfigurationPage : public ConfigPage {
+	Q_OBJECT
+	// constructeurs, destructeur
+	public:
+	GeneralConfigurationPage(QWidget * = 0);
+	virtual ~GeneralConfigurationPage();
+	private:
+	GeneralConfigurationPage(const GeneralConfigurationPage &);
+	
+	// methodes
+	public:
+	void applyConf();
+	QString title() const;
+	QIcon icon() const;
+	
+	// attributs
+	public:
+	QLabel *title_label_;
+	QFrame *horiz_line_;
+	QGroupBox *projects_view_mode_;
+	QRadioButton *windowed_mode_;
+	QRadioButton *tabbed_mode_;
+	QLabel *warning_view_mode_;
+	QGroupBox *elements_management_;
+	QCheckBox *integrate_elements_;
 };
 #endif

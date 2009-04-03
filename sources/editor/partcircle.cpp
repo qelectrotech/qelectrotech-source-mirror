@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -125,6 +125,7 @@ void PartCircle::setProperty(const QString &property, const QVariant &value) {
 		current_rect.setSize(QSizeF(new_diameter, new_diameter));
 		setRect(current_rect);
 	}
+	update();
 }
 
 /**

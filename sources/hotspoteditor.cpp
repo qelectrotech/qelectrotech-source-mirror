@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,6 +25,13 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	QWidget(parent),
 	parts_rect_enabled(false)
 {
+	informations_label_ = new QLabel(
+		tr(
+			"L'\351l\351ment doit \352tre assez grand pour contenir tout sa "
+			"repr\351sentation graphique."
+		)
+	);
+	
 	sb_width = new QSpinBox();
 	sb_width -> setMinimum(1);
 	sb_width -> setValue(3);
@@ -91,6 +98,7 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	
 	vlayout = new QVBoxLayout(this);
 	vlayout -> setSpacing(0);
+	vlayout -> addWidget(informations_label_);
 	vlayout -> addLayout(hlayout, 1);
 	
 	updateScene();

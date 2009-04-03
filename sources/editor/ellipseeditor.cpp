@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -63,9 +63,9 @@ EllipseEditor::~EllipseEditor() {
 */
 void EllipseEditor::updateEllipse() {
 	part -> setProperty("x", x -> text().toDouble());
-	part -> setProperty("y", x -> text().toDouble());
-	part -> setProperty("diameter_h", x -> text().toDouble());
-	part -> setProperty("diameter_v", x -> text().toDouble());
+	part -> setProperty("y", y -> text().toDouble());
+	part -> setProperty("diameter_h", h -> text().toDouble());
+	part -> setProperty("diameter_v", v -> text().toDouble());
 }
 
 /// Met a jour l'abscisse du centre de l'ellipse et cree un objet d'annulation

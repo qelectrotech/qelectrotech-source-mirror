@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -81,7 +81,7 @@ void TextEditor::updateTextX() { addChangePartCommand(tr("abscisse"),    part, "
 /// Met a jour l'ordonnee de la position du texte et cree un objet d'annulation
 void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "y",    qle_y -> text().toDouble()); updateForm(); }
 /// Met a jour le texte et cree un objet d'annulation
-void TextEditor::updateTextT() { addChangePartCommand(tr("texte"),       part, "text", qle_text -> text());         }
+void TextEditor::updateTextT() { addChangePartCommand(tr("contenu"),     part, "text", qle_text -> text());         }
 /// Met a jour la taille du texte et cree un objet d'annulation
 void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "size", font_size -> value());       }
 

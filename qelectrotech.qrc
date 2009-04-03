@@ -1,12 +1,13 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
-	<file>LICENSE</file>
-	<file>ico/qet.png</file>
-	<file>ico/qet-16.png</file>
-	<file>ico/qelectrotech.png</file>
-	<file>ico/allowed.png</file>
+	<file>ico/1leftarrow.png</file>
+	<file>ico/1rightarrow.png</file>
+	<file>ico/2leftarrow.png</file>
+	<file>ico/2rightarrow.png</file>
 	<file>ico/add_col.png</file>
 	<file>ico/add_row.png</file>
+	<file>ico/allowed.png</file>
+	<file>ico/all_pages.png</file>
 	<file>ico/arc.png</file>
 	<file>ico/bring_forward.png</file>
 	<file>ico/button_cancel.png</file>
@@ -15,32 +16,47 @@
 	<file>ico/category_edit.png</file>
 	<file>ico/category_new.png</file>
 	<file>ico/circle.png</file>
-	<file>ico/conductor.png</file>
 	<file>ico/conductor2.png</file>
 	<file>ico/conductor3.png</file>
-	<file>ico/conf_new_diagram.png</file>
+	<file>ico/conductor.png</file>
 	<file>ico/configure.png</file>
+	<file>ico/conf_new_diagram_110.png</file>
+	<file>ico/confprint.png</file>
 	<file>ico/copy.png</file>
 	<file>ico/cut.png</file>
 	<file>ico/delete.png</file>
+	<file>ico/diagram_add.png</file>
+	<file>ico/diagram_del.png</file>
+	<file>ico/diagram.png</file>
 	<file>ico/east.png</file>
 	<file>ico/edit.png</file>
 	<file>ico/ellipse.png</file>
+	<file>ico/endline-circle.png</file>
+	<file>ico/endline-diamond.png</file>
+	<file>ico/endline-none.png</file>
+	<file>ico/endline-simple.png</file>
+	<file>ico/endline-triangle.png</file>
 	<file>ico/entrer_fs.png</file>
 	<file>ico/erase.png</file>
 	<file>ico/exit.png</file>
 	<file>ico/export.png</file>
 	<file>ico/fileclose.png</file>
-	<file>ico/folder.png</file>
 	<file>ico/folder_home.png</file>
+	<file>ico/folder.png</file>
 	<file>ico/forbidden.png</file>
 	<file>ico/ground.png</file>
 	<file>ico/hotspot.png</file>
 	<file>ico/import.png</file>
 	<file>ico/info.png</file>
+	<file>ico/item_cancel.png</file>
+	<file>ico/item_copy.png</file>
+	<file>ico/item_move.png</file>
+	<file>ico/landscape.png</file>
 	<file>ico/line.png</file>
+	<file>ico/lock.png</file>
 	<file>ico/lower.png</file>
 	<file>ico/masquer.png</file>
+	<file>ico/mdiarea_bg.png</file>
 	<file>ico/move.png</file>
 	<file>ico/names.png</file>
 	<file>ico/neutral.png</file>
@@ -52,31 +68,49 @@
 	<file>ico/phase.png</file>
 	<file>ico/pivoter.png</file>
 	<file>ico/polygon.png</file>
+	<file>ico/portrait.png</file>
 	<file>ico/print.png</file>
+	<file>ico/printtype_pdf.png</file>
+	<file>ico/printtype_printer.png</file>
+	<file>ico/printtype_ps.png</file>
+	<file>ico/project.png</file>
+	<file>ico/qelectrotech.png</file>
+	<file>ico/qet-16.png</file>
+	<file>ico/qet.png</file>
 	<file>ico/qt.png</file>
 	<file>ico/raise.png</file>
+	<file>ico/rectangle.png</file>
 	<file>ico/redo.png</file>
 	<file>ico/reload.png</file>
 	<file>ico/remove_col.png</file>
 	<file>ico/remove_row.png</file>
 	<file>ico/restaurer.png</file>
+	<file>ico/save_all.png</file>
 	<file>ico/saveas.png</file>
 	<file>ico/save.png</file>
 	<file>ico/select.png</file>
 	<file>ico/send_backward.png</file>
+	<file>ico/settings.png</file>
+	<file>ico/single_page.png</file>
 	<file>ico/sortir_fs.png</file>
 	<file>ico/south.png</file>
 	<file>ico/splash.png</file>
+	<file>ico/start.png</file>
 	<file>ico/terminal.png</file>
-	<file>ico/text.png</file>
 	<file>ico/textfield.png</file>
+	<file>ico/text.png</file>
 	<file>ico/toolbars.png</file>
+	<file>ico/two_pages.png</file>
 	<file>ico/undo.png</file>
+	<file>ico/unlock.png</file>
+	<file>ico/view_fit_width.png</file>
+	<file>ico/view_fit_window.png</file>
 	<file>ico/viewmagfit.png</file>
 	<file>ico/viewmag-.png</file>
 	<file>ico/viewmag.png</file>
 	<file>ico/viewmag+.png</file>
 	<file>ico/west.png</file>
 	<file>ico/window_new.png</file>
+	<file>LICENSE</file>
 </qresource>
 </RCC>

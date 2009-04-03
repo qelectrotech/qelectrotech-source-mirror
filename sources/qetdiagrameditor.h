@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,7 +19,11 @@
 #define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
 #include "borderproperties.h"
+#include "conductorproperties.h"
 #include "insetproperties.h"
+class QETProject;
+class ProjectView;
+class Diagram;
 class DiagramView;
 class ElementsPanelWidget;
 class RecentFiles;
@@ -44,18 +48,30 @@ class QETDiagramEditor : public QMainWindow {
 	// methodes
 	public:
 	void closeEvent(QCloseEvent *);
-	void addDiagramView(DiagramView *);
-	QList<DiagramView *> diagramViews() const;
+	QList<ProjectView *> openedProjects() const;
+	void addProjectView(ProjectView *);
+	bool openAndAddProject(const QString &, bool interactive = true);
+	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
-	DiagramView *viewForFile(const QString &) const;
+	ProjectView *viewForFile(const QString &) const;
 	static InsetProperties defaultInsetProperties();
 	static BorderProperties defaultBorderProperties();
+	static ConductorProperties defaultConductorProperties();
 	
 	protected:
 	void actions();
+	virtual bool event(QEvent *);
 	
 	private:
+	bool addProject(QETProject *);
+	ProjectView *currentProject() const;
 	DiagramView *currentDiagram() const;
+	ProjectView *findProject(DiagramView *) const;
+	ProjectView *findProject(Diagram *) const;
+	ProjectView *findProject(QETProject *) const;
+	ProjectView *findProject(const QString &) const;
+	QMdiSubWindow *subWindowForWidget(QWidget *) const;
+	
 	void menus();
 	void toolbar();
 	
@@ -67,12 +83,13 @@ class QETDiagramEditor : public QMainWindow {
 	void exportDialog();
 	bool saveAsDialog();
 	bool save();
-	bool newDiagram();
-	bool openDiagram();
+	bool saveAll();
+	bool newProject();
+	bool openProject();
 	bool openRecentFile(const QString &);
-	bool openAndAddDiagram(const QString &);
-	bool closeDiagram();
-	void slot_editInfos();
+	bool closeProject(ProjectView *);
+	bool closeProject(QETProject *);
+	bool closeCurrentProject();
 	void slot_cut();
 	void slot_copy();
 	void slot_paste();
@@ -88,6 +105,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_setSelectionMode();
 	void slot_setVisualisationMode();
 	void slot_updateActions();
+	void slot_updateFullScreenAction();
 	void slot_updateModeActions();
 	void slot_updateComplexActions();
 	void slot_updatePasteAction();
@@ -100,13 +118,39 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_resetConductors();
 	void slot_editDefaultConductors();
 	void slot_addText();
+	void setWindowedMode();
+	void setTabbedMode();
 	void readSettings();
 	void writeSettings();
+	void activateDiagram(Diagram *);
+	void activateProject(QETProject *);
+	void activateProject(ProjectView *);
+	void activateWidget(QWidget *);
+	void diagramOrderChanged(ProjectView *, int, int);
+	void projectWasClosed(ProjectView *);
+	void editCurrentProjectProperties();
+	void editProjectProperties(ProjectView *);
+	void editProjectProperties(QETProject *);
+	void editCurrentDiagramProperties();
+	void editDiagramProperties(DiagramView *);
+	void editDiagramProperties(Diagram *);
+	void addDiagramToProject();
+	void addDiagramToProject(QETProject *);
+	void removeDiagram(Diagram *);
+	void removeDiagramFromProject();
+	void cleanCurrentProject();
+	void diagramWasAdded(DiagramView *);
+	void diagramIsAboutToBeRemoved(DiagramView *);
+	void diagramWasRemoved(DiagramView *);
+	void diagramTitleChanged(DiagramView *);
 	
 	// attributs
 	public:
 	// Actions faisables au travers de menus dans l'application QElectroTech
 	QActionGroup *grp_visu_sel;  ///< Groupe d'actions pour les modes (edition et visualisation)
+	QActionGroup *grp_view_mode; ///< Groupe d'actions pour l'affichage des projets (onglets ou fenetres)
+	QAction *tabbed_view_mode;   ///< Passe les projets en mode onglets
+	QAction *windowed_view_mode; ///< Passe les projets en mode fenetre
 	QAction *mode_selection;     ///< Passe en mode edition
 	QAction *mode_visualise;     ///< Passe en mode visualisation
 	QAction *new_file;           ///< Cree un nouveau schema
@@ -114,6 +158,7 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *close_file;         ///< Ferme le fichier
 	QAction *save_file;          ///< Enregistre le fichier
 	QAction *save_file_sous;     ///< Enregistrer le fichier sous un nom donne
+	QAction *save_all;           ///< Enregistre tous les schemas
 	QAction *import_diagram;     ///< Importe un schema existant (non implemente)
 	QAction *export_diagram;     ///< Exporte le schema sous forme d'image
 	QAction *print;              ///< Imprime le schema
@@ -137,6 +182,10 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *remove_column;      ///< Enleve une colonne du schema
 	QAction *add_row;            ///< Augmente la hauteur du schema
 	QAction *remove_row;         ///< Reduit la hauteur du schema
+	QAction *prj_edit_prop;      ///< Edite les proprietes du projet
+	QAction *prj_add_diagram;    ///< Ajoute un schema au projet
+	QAction *prj_del_diagram;    ///< Supprime un schema du projet
+	QAction *prj_clean;          ///< Nettoie un projet
 	QAction *zoom_in;            ///< Zoome avant
 	QAction *zoom_out;           ///< Zoome arriere
 	QAction *zoom_fit;           ///< Ajuste le zoom de facon a voir l'integralite des elements
@@ -144,16 +193,14 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *about_qet;          ///< Lance le dialogue "A propos de QElectroTech"
 	QAction *about_qt;           ///< Lance le dialogue "A propos de Qt"
 	QAction *configure;          ///< Lance le dialogue de configuration de QElectroTech
-	QAction *fullscreen_on;      ///< Passe en mode plein ecran
-	QAction *fullscreen_off;     ///< Sort du mode plein ecran
+	QAction *fullscreen;         ///< Passe en mode plein ecran ou en sort
 	QAction *tile_window;        ///< Affiche les fenetre MDI en mosaique
 	QAction *cascade_window;     ///< Affiche les fenetres MDI en cascade
-	QAction *arrange_window;     ///< Reorganise les fenetres MDI
 	QAction *prev_window;        ///< Affiche la fenetre MDI precedente
 	QAction *next_window;        ///< Affiche la fenetre MDI suivante
 	
 	private:
-	QWorkspace workspace;
+	QMdiArea workspace;
 	QSignalMapper windowMapper;
 	/// Dossier a utiliser pour Fichier > ouvrir
 	QDir open_dialog_dir;
@@ -168,5 +215,6 @@ class QETDiagramEditor : public QMainWindow {
 	QToolBar *view_bar;
 	QToolBar *diagram_bar;
 	QUndoGroup undo_group;
+	bool can_update_actions;
 };
 #endif

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,9 +20,16 @@
 #include "qetsingleapplication.h"
 #include <QTranslator>
 #include <QtGui>
+#include "elementslocation.h"
 #include "qetarguments.h"
 class QETDiagramEditor;
 class QETElementEditor;
+class ElementsCollection;
+class ElementsCollectionItem;
+class FileElementsCollection;
+class ElementsCategory;
+class ElementDefinition;
+class QETProject;
 class RecentFiles;
 /**
 	Cette classe represente l'application QElectroTech.
@@ -46,17 +53,26 @@ class QETApp : public QETSingleApplication {
 	static void printVersion();
 	static void printLicense();
 	
+	static ElementsCollectionItem *collectionItem(const ElementsLocation &, bool = true);
+	static ElementsCategory *createCategory(const ElementsLocation &);
+	static ElementDefinition *createElement(const ElementsLocation &);
+	static ElementsCollection *commonElementsCollection();
+	static ElementsCollection *customElementsCollection();
+	static QList<ElementsCollection *> availableCollections();
+	
 	static QString userName();
 	static QString commonElementsDir();
 	static QString customElementsDir();
+	static bool registerProject(QETProject *);
+	static bool unregisterProject(QETProject *);
+	static QMap<uint, QETProject *> registeredProjects();
+	static QETProject *project(const uint &);
+	static int projectId(const QETProject *);
 	static QString configDir();
 	static QSettings &settings();
 	static QString languagesPath();
 	static QString realPath(const QString &);
 	static QString symbolicPath(const QString &);
-	static QETDiagramEditor *diagramEditorForFile(const QString &);
-	QList<QETDiagramEditor *> diagramEditors() const;
-	QList<QETElementEditor *> elementEditors() const;
 	static RecentFiles *projectsRecentFiles();
 	static RecentFiles *elementsRecentFiles();
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
@@ -75,6 +91,11 @@ class QETApp : public QETSingleApplication {
 	static void overrideLangDir(const QString &);
 	static QString lang_dir; ///< Dossier contenant les fichiers de langue
 	static QString diagramTextsFont();
+	static int diagramTextsSize();
+	static QETDiagramEditor *diagramEditorForFile(const QString &);
+	static QList<QETDiagramEditor *> diagramEditors();
+	static QList<QETElementEditor *> elementEditors();
+	static QList<QETElementEditor *> elementEditors(QETProject *);
 	
 	protected:
 #ifdef Q_OS_DARWIN
@@ -108,7 +129,13 @@ class QETApp : public QETSingleApplication {
 	QSettings *qet_settings;
 	QETArguments qet_arguments_;        ///< Analyseur d'arguments
 	bool non_interactive_execution_;    ///< booleen indiquant si l'application va se terminer immediatement apres un court traitement
+	
 	static QString diagram_texts_font;
+	static int diagram_texts_size;
+	static FileElementsCollection *common_collection;
+	static FileElementsCollection *custom_collection;
+	static QMap<uint, QETProject *> registered_projects_;
+	static uint next_project_id;
 	static RecentFiles *projects_recent_files_;
 	static RecentFiles *elements_recent_files_;
 
@@ -137,6 +164,8 @@ class QETApp : public QETSingleApplication {
 	void cleanup();
 	
 	private:
+	QList<QETDiagramEditor *> detectDiagramEditors() const;
+	QList<QETElementEditor *> detectElementEditors() const;
 	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
 	void parseArguments();
 	void initSplashScreen();

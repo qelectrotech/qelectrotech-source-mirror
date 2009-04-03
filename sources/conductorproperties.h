@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ class SingleLineProperties {
 	void setPhasesCount(int);
 	unsigned short int phasesCount();
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
-	void toXml(QDomDocument &, QDomElement &) const;
+	void toXml(QDomElement &) const;
 	void fromXml(QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
@@ -87,7 +87,7 @@ class ConductorProperties {
 	SingleLineProperties singleLineProperties;
 	
 	// methodes
-	void toXml(QDomDocument &, QDomElement &) const;
+	void toXml(QDomElement &) const;
 	void fromXml(QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());

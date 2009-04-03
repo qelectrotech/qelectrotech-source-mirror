@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -159,6 +159,7 @@ void PartArc::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "angle") {
 		setAngle(value.toInt());
 	}
+	update();
 }
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2007 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -46,7 +46,7 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
-	virtual QString name() const { return(QObject::tr("ellipse")); }
+	virtual QString name() const { return(QObject::tr("ellipse", "element part name")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;

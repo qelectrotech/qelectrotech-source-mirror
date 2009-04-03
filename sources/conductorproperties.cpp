@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -159,19 +159,18 @@ void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentT
 }
 
 /**
-	exporte les parametres du conducteur unifilaire sous formes d'attributs XML
+	Exporte les parametres du conducteur unifilaire sous formes d'attributs XML
 	ajoutes a l'element e.
-	@param d Document XML ; utilise pour ajouter (potentiellement) des elements XML
 	@param e Element XML auquel seront ajoutes des attributs
 */
-void SingleLineProperties::toXml(QDomDocument &, QDomElement &e) const {
+void SingleLineProperties::toXml(QDomElement &e) const {
 	e.setAttribute("ground",  hasGround  ? "true" : "false");
 	e.setAttribute("neutral", hasNeutral ? "true" : "false");
 	e.setAttribute("phase",   phases);
 }
 
 /**
-	importe les parametres du conducteur unifilaire a partir des attributs XML
+	Importe les parametres du conducteur unifilaire a partir des attributs XML
 	de l'element e
 	@param e Element XML dont les attributs seront lus
 */
@@ -182,22 +181,21 @@ void SingleLineProperties::fromXml(QDomElement &e) {
 }
 
 /**
-	exporte les parametres du conducteur sous formes d'attributs XML
+	Exporte les parametres du conducteur sous formes d'attributs XML
 	ajoutes a l'element e.
-	@param d Document XML ; utilise pour ajouter (potentiellement) des elements XML
 	@param e Element XML auquel seront ajoutes des attributs
 */
-void ConductorProperties::toXml(QDomDocument &d, QDomElement &e) const {
+void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("type", typeToString(type));
 	if (type == Single) {
-		singleLineProperties.toXml(d, e);
+		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
 		e.setAttribute("num", text);
 	}
 }
 
 /**
-	importe les parametres du conducteur unifilaire a partir des attributs XML
+	Importe les parametres du conducteur unifilaire a partir des attributs XML
 	de l'element e
 	@param e Element XML dont les attributs seront lus
 */
@@ -217,7 +215,7 @@ void ConductorProperties::fromXml(QDomElement &e) {
 
 /**
 	@param settings Parametres a ecrire
-	@param prefix prefix a ajouter devant les noms des parametres
+	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const {
 	settings.setValue(prefix + "type", typeToString(type));
@@ -227,7 +225,7 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 
 /**
 	@param settings Parametres a lire
-	@param prefix prefix a ajouter devant les noms des parametres
+	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix) {
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();

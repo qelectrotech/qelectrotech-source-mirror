@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "newelementwizard.h"
+#include "elementscategory.h"
 #include "elementscategorieswidget.h"
 #include "elementscategorieslist.h"
 #include "nameslistwidget.h"
@@ -24,15 +25,21 @@
 #include "element.h"
 #include "qetelementeditor.h"
 #include "qet.h"
+#include "qetapp.h"
+#include "elementscollectionitem.h"
+#include "qfilenameedit.h"
 
 /**
 	Constructeur
 	@param parent QWidget parent de ce dialogue
 	@param f flags pour le dialogue
 */
-NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) : QWizard(parent, f) {
+NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
+	QWizard(parent, f),
+	chosen_category(0)
+{
 	setPixmap(LogoPixmap, QPixmap(":/ico/qelectrotech.png").scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
-	setWindowTitle(tr("Cr\351er un nouvel \351l\351ment : Assistant"));
+	setWindowTitle(tr("Cr\351er un nouvel \351l\351ment : Assistant", "window title"));
 	setButtonText(QWizard::NextButton, tr("&Suivant >"));
 	addPage(buildStep1());
 	addPage(buildStep2());
@@ -49,13 +56,41 @@ NewElementWizard::~NewElementWizard() {
 }
 
 /**
+	@return la categorie parente selectionnee, ou 0 si celle-ci n'a pas encore
+	ete choisie.
+*/
+ElementsCategory *NewElementWizard::selectedCategory() const {
+	return(chosen_category);
+}
+
+/**
+	@param category Categorie d'elements dans laquelle le nouvel element sera
+	place
+	@return true si ce choix est possible et a ete pris en compte, false sinon
+*/
+bool NewElementWizard::preselectCategory(ElementsCategory *category) {
+	// verifie si la categorie est utilisable
+	if (!category || !category -> exists() || !category -> isWritable()) {
+		return(false);
+	}
+	
+	// selectionne la categorie ainsi demandee dans la liste
+	if (categories_list -> elementsCategoriesList().selectLocation(category -> location())) {
+		chosen_category = category;
+		return(true);
+	}
+	
+	return(false);
+}
+
+/**
 	Met en place l'etape 1 : Categorie
 */
 QWizardPage *NewElementWizard::buildStep1() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Category);
-	page -> setTitle(tr("\311tape 1/5 : Cat\351gorie parente"));
-	page -> setSubTitle(tr("S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment."));
+	page -> setTitle(tr("\311tape 1/5 : Cat\351gorie parente", "wizard page title"));
+	page -> setSubTitle(tr("S\351lectionnez une cat\351gorie dans laquelle enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	categories_list = new ElementsCategoriesWidget();
@@ -71,11 +106,11 @@ QWizardPage *NewElementWizard::buildStep1() {
 QWizardPage *NewElementWizard::buildStep2() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Filename);
-	page -> setTitle(tr("\311tape 2/5 : Nom du fichier"));
-	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment."));
+	page -> setTitle(tr("\311tape 2/5 : Nom du fichier", "wizard page title"));
+	page -> setSubTitle(tr("Indiquez le nom du fichier dans lequel enregistrer le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
-	qle_filename = new QLineEdit(tr("nouvel_element"));
+	qle_filename = new QFileNameEdit(tr("nouvel_element"));
 	qle_filename -> selectAll();
 	QLabel *explication2 = new QLabel(tr("Vous n'\352tes pas oblig\351 de pr\351ciser l'extension *.elmt. Elle sera ajout\351e automatiquement."));
 	explication2 -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
@@ -94,13 +129,13 @@ QWizardPage *NewElementWizard::buildStep2() {
 QWizardPage *NewElementWizard::buildStep3() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Names);
-	page -> setTitle(tr("\311tape 3/5 : Noms de l'\351l\351ment"));
-	page -> setSubTitle(tr("Indiquez le ou les noms de l'\351l\351ment."));
+	page -> setTitle(tr("\311tape 3/5 : Noms de l'\351l\351ment", "wizard page title"));
+	page -> setSubTitle(tr("Indiquez le ou les noms de l'\351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	element_names = new NamesListWidget();
 	NamesList hash_name;
-	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment"));
+	hash_name.addName(QLocale::system().name().left(2), tr("Nom du nouvel \351l\351ment", "default name when creating a new element"));
 	element_names -> setNames(hash_name);
 	layout -> addWidget(element_names);
 	
@@ -114,8 +149,8 @@ QWizardPage *NewElementWizard::buildStep3() {
 QWizardPage *NewElementWizard::buildStep4() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Dimensions);
-	page -> setTitle(tr("\311tape 4/5 : Dimensions et point de saisie"));
-	page -> setSubTitle(tr("Saisissez les dimensions du nouvel \351l\351ment ainsi que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris) en consid\351rant que l'\351l\351ment est dans son orientation par d\351faut."));
+	page -> setTitle(tr("\311tape 4/5 : Dimensions et point de saisie", "wizard page title"));
+	page -> setSubTitle(tr("Saisissez les dimensions du nouvel \351l\351ment ainsi que la position du hotspot (point de saisie de l'\351l\351ment \340 la souris) en consid\351rant que l'\351l\351ment est dans son orientation par d\351faut.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	hotspot_editor = new HotspotEditor();
@@ -132,8 +167,8 @@ QWizardPage *NewElementWizard::buildStep4() {
 QWizardPage *NewElementWizard::buildStep5() {
 	QWizardPage *page = new QWizardPage();
 	page -> setProperty("WizardState", Orientations);
-	page -> setTitle(tr("\311tape 5/5 : Orientations"));
-	page -> setSubTitle(tr("Indiquez les orientations possibles pour le nouvel \351l\351ment."));
+	page -> setTitle(tr("\311tape 5/5 : Orientations", "wizard page title"));
+	page -> setSubTitle(tr("Indiquez les orientations possibles pour le nouvel \351l\351ment.", "wizard page subtitle"));
 	QVBoxLayout *layout = new QVBoxLayout();
 	
 	orientation_set = new OrientationSetWidget();
@@ -163,12 +198,20 @@ bool NewElementWizard::validateCurrentPage() {
 */
 bool NewElementWizard::validStep1() {
 	// il doit y avoir une categorie selectionnee
-	bool step1_ok = categories_list -> elementsCategoriesList().selectedCategoryPath() != QString();
+	bool step1_ok = false;
+	ElementsLocation selected_location = categories_list -> elementsCategoriesList().selectedLocation();
+	if (ElementsCollectionItem *collection_item = QETApp::collectionItem(selected_location, false)) {
+		if (collection_item -> isCategory()) {
+			chosen_category = qobject_cast<ElementsCategory *>(collection_item);
+			step1_ok = chosen_category;
+		}
+	}
+	
 	if (!step1_ok) {
 		QMessageBox::critical(
 			this,
-			tr("Erreur"),
-			tr("Vous devez s\351lectionner une cat\351gorie.")
+			tr("Erreur", "message box title"),
+			tr("Vous devez s\351lectionner une cat\351gorie.", "message box content")
 		);
 	}
 	return(step1_ok);
@@ -179,15 +222,16 @@ bool NewElementWizard::validStep1() {
 	@return true si l'etape est validee, false sinon
 */
 bool NewElementWizard::validStep2() {
-	QString dir_path = categories_list -> elementsCategoriesList().selectedCategoryPath();
+	// il doit y avoir une categorie selectionnee
+	if (!chosen_category) return(false);
 	QString file_name = qle_filename -> text();
 	
 	// un nom doit avoir ete entre
 	if (file_name.isEmpty()) {
 		QMessageBox::critical(
 			this,
-			tr("Erreur"),
-			tr("Vous devez entrer un nom de fichier")
+			tr("Erreur", "message box title"),
+			tr("Vous devez entrer un nom de fichier", "message box content")
 		);
 		return(false);
 	}
@@ -198,14 +242,14 @@ bool NewElementWizard::validStep2() {
 	if (QET::containsForbiddenCharacters(file_name)) {
 		QMessageBox::critical(
 			this,
-			tr("Erreur"),
-			tr("Merci de ne pas utiliser les caract\350res suivants : \\ / : * ? \" < > |")
+			tr("Erreur", "message box title"),
+			tr("Merci de ne pas utiliser les caract\350res suivants : \\ / : * ? \" < > |", "message box content")
 		);
 		return(false);
 	}
 	
 	// le fichier existe peut etre deja
-	if (QFileInfo(dir_path + "/" + file_name).exists()) {
+	if (chosen_category -> element(file_name)) {
 		QMessageBox::StandardButton answer = QMessageBox::question(
 			this,
 			"\311craser le fichier ?",
@@ -216,7 +260,7 @@ bool NewElementWizard::validStep2() {
 		return(answer == QMessageBox::Yes);
 	}
 	
-	chosen_file = dir_path + "/" + file_name;
+	chosen_file = file_name;
 	return(true);
 }
 
@@ -229,6 +273,9 @@ void NewElementWizard::createNewElement() {
 	edit_new_element -> setHotspot(hotspot_editor -> hotspot());
 	edit_new_element -> setNames(element_names -> names());
 	edit_new_element -> setOrientations(orientation_set -> orientationSet());
-	edit_new_element -> setFileName(chosen_file);
+	
+	ElementsLocation new_element_location = chosen_category -> location();
+	new_element_location.addToPath(chosen_file);
+	edit_new_element -> setLocation(new_element_location);
 	edit_new_element -> show();
 }

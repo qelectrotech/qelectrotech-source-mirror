@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2008 Xavier Guerrin
+	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,7 +29,7 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	QVBoxLayout *this_layout = new QVBoxLayout(this);
 	this_layout -> setContentsMargins(0, 0, 0, 0);
 	QGroupBox *inset_infos = new QGroupBox(tr("Informations du cartouche"), this);
-	inset_infos -> setMinimumSize(300, 260);
+	inset_infos -> setMinimumSize(300, 370);
 	this_layout -> addWidget(inset_infos);
 	
 	inset_title = new QLineEdit(this);
@@ -58,6 +58,15 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	
 	inset_filename = new QLineEdit(this);
 	inset_folio = new QLineEdit(this);
+	QLabel *folio_tip = new QLabel(
+		tr(
+			"Les variables suivantes sont utilisables dans le champ Folio :\n"
+			"  - %id : num\351ro du sch\351ma courant dans le projet\n"
+			"  - %total : nombre total de sch\351mas dans le projet"
+		)
+	);
+	folio_tip -> setWordWrap(true);
+	
 	QGridLayout *layout_champs = new QGridLayout(inset_infos);
 	
 	layout_champs -> addWidget(new QLabel(tr("Titre : ")),   0, 0);
@@ -70,6 +79,7 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	layout_champs -> addWidget(inset_filename,               4, 1);
 	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   5, 0);
 	layout_champs -> addWidget(inset_folio,                  5, 1);
+	layout_champs -> addWidget(folio_tip,                    6, 1);
 	
 	inset_current_date -> setVisible(display_current_date = current);
 	setInsetProperties(inset);
