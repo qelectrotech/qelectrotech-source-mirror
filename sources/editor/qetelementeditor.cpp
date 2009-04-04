@@ -57,6 +57,12 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 
 /// Destructeur
 QETElementEditor::~QETElementEditor() {
+	/*
+		retire le widget d'edition de partie affiche par le dock
+		cela evite qu'il ne soit supprime avant que la partie a laquelle il est
+		rattache ne le supprime une fois de trop
+	*/
+	clearToolsDock();
 }
 
 /**
@@ -486,10 +492,7 @@ void QETElementEditor::slot_updateInformations() {
 		}
 	}
 	
-	if (QWidget *previous_widget = tools_dock_scroll_area_ -> takeWidget()) {
-		previous_widget -> setParent(0);
-		previous_widget -> hide();
-	}
+	clearToolsDock();
 	
 	if (selected_parts.size() == 1) {
 		// recupere le premier CustomElementPart et en ajoute le widget d'edition
@@ -899,6 +902,20 @@ bool QETElementEditor::canClose() {
 		default:                  result = true;                 // l'utilisateur dit non ou ferme le dialogue: c'est reussi
 	}
 	return(result);
+}
+
+/**
+	Enleve et cache le widget affiche par le dock permettant d'editer les
+	parties.
+	@return le widget enleve, ou 0 s'il n'y avait pas de widget a enlever
+*/
+QWidget *QETElementEditor::clearToolsDock() {
+	if (QWidget *previous_widget = tools_dock_scroll_area_ -> takeWidget()) {
+		previous_widget -> setParent(0);
+		previous_widget -> hide();
+		return(previous_widget);
+	}
+	return(0);
 }
 
 /**

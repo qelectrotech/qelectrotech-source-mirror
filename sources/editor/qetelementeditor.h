@@ -119,6 +119,7 @@ class QETElementEditor : public QMainWindow {
 	void setupMenus();
 	void setupInterface();
 	bool canClose();
+	QWidget *clearToolsDock();
 	
 	public slots:
 	void slot_new();
