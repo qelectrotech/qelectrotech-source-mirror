@@ -463,6 +463,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	foreach (QDomElement f, QET::findInDomElement(root, "inputs", "input")) {
 		DiagramTextItem *dti = new DiagramTextItem(0, this);
 		dti -> fromXml(f);
+		QObject::connect(
+			dti,
+			SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+			this,
+			SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+		);
 		added_texts << dti;
 	}
 	
