@@ -20,6 +20,7 @@
 #include "conductor.h"
 #include "customelement.h"
 #include "diagram.h"
+#include "elementtextitem.h"
 #include "exportdialog.h"
 #include "ghostelement.h"
 #include "diagramcommands.h"
@@ -450,7 +451,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		// charge les caracteristiques de l'element
 		if (nvel_elmt -> fromXml(e, table_adr_id)) {
 			// ajout de l'element au schema et a la liste des elements ajoutes
-			addItem(nvel_elmt);
+			addElement(nvel_elmt);
 			added_elements << nvel_elmt;
 		} else {
 			delete nvel_elmt;
@@ -463,12 +464,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	foreach (QDomElement f, QET::findInDomElement(root, "inputs", "input")) {
 		DiagramTextItem *dti = new DiagramTextItem(0, this);
 		dti -> fromXml(f);
-		QObject::connect(
-			dti,
-			SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-			this,
-			SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-		);
+		addDiagramTextItem(dti);
 		added_texts << dti;
 	}
 	
@@ -582,6 +578,121 @@ QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
 	QDomElement diagram_elmt = xml_document.documentElement();
 	QDomNode new_node = xml_doc.importNode(diagram_elmt, true);
 	return(new_node.toElement());
+}
+
+/**
+	Ajoute un element sur le schema
+	@param element Element a ajouter
+*/
+void Diagram::addElement(Element *element) {
+	if (!element || isReadOnly()) return;
+	
+	// ajoute l'element au schema
+	if (element -> scene() != this) {
+		addItem(element);
+	}
+	
+	// surveille les modifications de ses champs de texte
+	foreach(ElementTextItem *eti, element -> texts()) {
+		connect(
+			eti,
+			SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+			this,
+			SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+		);
+	}
+}
+
+/**
+	Ajoute un conducteur sur le schema
+	@param conductor Conducteur a ajouter
+*/
+void Diagram::addConductor(Conductor *conductor) {
+	if (!conductor || isReadOnly()) return;
+	
+	// ajoute le conducteur au schema
+	if (conductor -> scene() != this) {
+		addItem(conductor);
+		conductor -> terminal1 -> addConductor(conductor);
+		conductor -> terminal2 -> addConductor(conductor);
+	}
+}
+
+/**
+	Aoute un champ de texte independant sur le schema
+	@param dti Champ de texte a ajouter
+*/
+void Diagram::addDiagramTextItem(DiagramTextItem *dti) {
+	if (!dti || isReadOnly()) return;
+	
+	// ajoute le champ de texte au schema
+	if (dti -> scene() != this) {
+		addItem(dti);
+	}
+	
+	// surveille les modifications apportees au champ de texte
+	connect(
+		dti,
+		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+		this,
+		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+	);
+}
+
+
+/**
+	Enleve un element du schema
+	@param element Element a enlever
+*/
+void Diagram::removeElement(Element *element) {
+	if (!element || isReadOnly()) return;
+	
+	// enleve l'element au schema
+	removeItem(element);
+	
+	// arrete la surveillance des modifications de ses champs de texte
+	foreach(ElementTextItem *eti, element -> texts()) {
+		disconnect(
+			eti,
+			SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+			this,
+			SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+		);
+	}
+}
+
+/**
+	Enleve un conducteur du schema
+	@param conductor Conducteur a enlever
+*/
+void Diagram::removeConductor(Conductor *conductor) {
+	if (!conductor || isReadOnly()) return;
+	
+	// detache le conducteur sans le detruire
+	conductor -> terminal1 -> removeConductor(conductor);
+	conductor -> terminal2 -> removeConductor(conductor);
+	
+	// enleve le conducteur du schema
+	removeItem(conductor);
+}
+
+/**
+	Enleve un champ de texte independant du schema
+	@param dti Champ de texte a enlever
+*/
+void Diagram::removeDiagramTextItem(DiagramTextItem *dti) {
+	if (!dti || isReadOnly()) return;
+	
+	// enleve le champ de texte au schema
+	removeItem(dti);
+	
+	// arrete la surveillance des modifications apportees au champ de texte
+	disconnect(
+		dti,
+		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
+		this,
+		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
+	);
 }
 
 /**

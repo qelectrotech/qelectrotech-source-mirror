@@ -115,6 +115,15 @@ class Diagram : public QGraphicsScene {
 	bool wasWritten() const;
 	QDomElement writeXml(QDomDocument &) const;
 	
+	// fonctions relative a l'ajout et a l'enlevement d'elements graphiques sur le schema
+	void addElement(Element *);
+	void addConductor(Conductor *);
+	void addDiagramTextItem(DiagramTextItem *);
+	
+	void removeElement(Element *);
+	void removeConductor(Conductor *);
+	void removeDiagramTextItem(DiagramTextItem *);
+	
 	// fonctions relatives aux options graphiques
 	void setDisplayGrid(bool);
 	bool displayGrid();

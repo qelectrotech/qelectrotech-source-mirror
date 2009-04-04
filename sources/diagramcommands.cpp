@@ -48,12 +48,12 @@ AddElementCommand::~AddElementCommand() {
 
 /// Annule l'ajout
 void AddElementCommand::undo() {
-	diagram -> removeItem(element);
+	diagram -> removeElement(element);
 }
 
 /// Refait l'ajout
 void AddElementCommand::redo() {
-	diagram -> addItem(element);
+	diagram -> addElement(element);
 	element -> setPos(position);
 	element -> setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 }
@@ -81,24 +81,12 @@ AddTextCommand::~AddTextCommand() {
 
 /// Annule l'ajout
 void AddTextCommand::undo() {
-	QObject::disconnect(
-		textitem,
-		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-		diagram,
-		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-	);
-	diagram -> removeItem(textitem);
+	diagram -> removeDiagramTextItem(textitem);
 }
 
 /// Refait l'ajour
 void AddTextCommand::redo() {
-	QObject::connect(
-		textitem,
-		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
-		diagram,
-		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
-	);
-	diagram -> addItem(textitem);
+	diagram -> addDiagramTextItem(textitem);
 	textitem -> setPos(position);
 }
 
@@ -127,15 +115,12 @@ AddConductorCommand::~AddConductorCommand() {
 
 /// Annule l'ajout
 void AddConductorCommand::undo() {
-	// detache le conducteur sans le detruire
-	conductor -> terminal1 -> removeConductor(conductor);
-	conductor -> terminal2 -> removeConductor(conductor);
-	diagram -> removeItem(conductor);
+	diagram -> removeConductor(conductor);
 }
 
 /// Refait l'ajout
 void AddConductorCommand::redo() {
-	diagram -> addItem(conductor);
+	diagram -> addConductor(conductor);
 }
 
 /**
@@ -173,19 +158,17 @@ DeleteElementsCommand::~DeleteElementsCommand() {
 void DeleteElementsCommand::undo() {
 	// remet les elements
 	foreach(Element *e, removed_content.elements) {
-		diagram -> addItem(e);
+		diagram -> addElement(e);
 	}
 	
 	// remet les conducteurs
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
-		diagram -> addItem(c);
-		c -> terminal1 -> addConductor(c);
-		c -> terminal2 -> addConductor(c);
+		diagram -> addConductor(c);
 	}
 	
 	// remet les textes
 	foreach(DiagramTextItem *t, removed_content.textFields) {
-		diagram -> addItem(t);
+		diagram -> addDiagramTextItem(t);
 	}
 }
 
@@ -193,19 +176,17 @@ void DeleteElementsCommand::undo() {
 void DeleteElementsCommand::redo() {
 	// enleve les conducteurs
 	foreach(Conductor *c, removed_content.conductors(DiagramContent::AnyConductor)) {
-		c -> terminal1 -> removeConductor(c);
-		c -> terminal2 -> removeConductor(c);
-		diagram -> removeItem(c);
+		diagram -> removeConductor(c);
 	}
 	
 	// enleve les elements
 	foreach(Element *e, removed_content.elements) {
-		diagram -> removeItem(e);
+		diagram -> removeElement(e);
 	}
 	
 	// enleve les textes
 	foreach(DiagramTextItem *t, removed_content.textFields) {
-		diagram -> removeItem(t);
+		diagram -> removeDiagramTextItem(t);
 	}
 }
 
@@ -246,17 +227,13 @@ PasteDiagramCommand::~PasteDiagramCommand() {
 /// annule le coller
 void PasteDiagramCommand::undo() {
 	// enleve les conducteurs
-	foreach(Conductor *c, content.conductorsToMove) {
-		c -> terminal1 -> removeConductor(c);
-		c -> terminal2 -> removeConductor(c);
-		diagram -> removeItem(c);
-	}
+	foreach(Conductor *c, content.conductorsToMove) diagram -> removeConductor(c);
 	
 	// enleve les elements
-	foreach(Element *e, content.elements) diagram -> removeItem(e);
+	foreach(Element *e, content.elements) diagram -> removeElement(e);
 	
 	// enleve les textes
-	foreach(DiagramTextItem *t, content.textFields) diagram -> removeItem(t);
+	foreach(DiagramTextItem *t, content.textFields) diagram -> removeDiagramTextItem(t);
 }
 
 /// refait le coller
@@ -264,17 +241,13 @@ void PasteDiagramCommand::redo() {
 	if (first_redo) first_redo = false;
 	else {
 		// pose les elements
-		foreach(Element *e, content.elements)  diagram -> addItem(e);
+		foreach(Element *e, content.elements)  diagram -> addElement(e);
 		
 		// pose les conducteurs
-		foreach(Conductor *c, content.conductorsToMove) {
-			diagram -> addItem(c);
-			c -> terminal1 -> addConductor(c);
-			c -> terminal2 -> addConductor(c);
-		}
+		foreach(Conductor *c, content.conductorsToMove) diagram -> addConductor(c);
 		
 		// pose les textes
-		foreach(DiagramTextItem *t, content.textFields) diagram -> addItem(t);
+		foreach(DiagramTextItem *t, content.textFields) diagram -> addDiagramTextItem(t);
 	}
 	foreach(Element *e, content.elements) e -> setSelected(true);
 	foreach(Conductor *c, content.conductorsToMove) c -> setSelected(true);

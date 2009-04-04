@@ -209,6 +209,11 @@ QList<Conductor *> CustomElement::conductors() const {
 	return(conductors);
 }
 
+/// @return la liste des textes de cet element
+QList<ElementTextItem *> CustomElement::texts() const {
+	return(list_texts_);
+}
+
 /**
 	@return Le nombre de bornes que l'element possede
 */
@@ -560,6 +565,9 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	eti -> setPos(pos_x, pos_y);
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
 	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
+	
+	list_texts_ << eti;
+	
 	return(eti);
 }
 

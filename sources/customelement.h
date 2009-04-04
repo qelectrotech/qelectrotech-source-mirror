@@ -49,11 +49,13 @@ class CustomElement : public FixedElement {
 	ElementsLocation location_;
 	QPicture drawing;
 	QList<Terminal *> list_terminals;
+	QList<ElementTextItem *> list_texts_;
 	
 	// methodes
 	public:
 	virtual QList<Terminal *> terminals() const;
 	virtual QList<Conductor *> conductors() const;
+	virtual QList<ElementTextItem *> texts() const;
 	virtual int terminalsCount() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *);
 	QString typeId() const;

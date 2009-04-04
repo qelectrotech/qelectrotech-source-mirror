@@ -437,29 +437,21 @@ QDomElement Element::toXml(QDomDocument &document, QHash<Terminal *, int> &table
 	}
 	
 	// enregistrement des bornes de l'appareil
-	QDomElement terminals = document.createElement("terminals");
+	QDomElement xml_terminals = document.createElement("terminals");
 	// pour chaque enfant de l'element
-	foreach(QGraphicsItem *child, childItems()) {
-		// si cet enfant est une borne
-		if (Terminal *t = qgraphicsitem_cast<Terminal *>(child)) {
-			// alors on enregistre la borne
-			QDomElement terminal = t -> toXml(document);
-			terminal.setAttribute("id", id_terminal);
-			table_adr_id.insert(t, id_terminal ++);
-			terminals.appendChild(terminal);
-		}
+	foreach(Terminal *t, terminals()) {
+		// alors on enregistre la borne
+		QDomElement terminal = t -> toXml(document);
+		terminal.setAttribute("id", id_terminal);
+		table_adr_id.insert(t, id_terminal ++);
+		xml_terminals.appendChild(terminal);
 	}
-	element.appendChild(terminals);
+	element.appendChild(xml_terminals);
 	
 	// enregistrement des champ de texte de l'appareil
 	QDomElement inputs = document.createElement("inputs");
-	// pour chaque enfant de l'element
-	foreach(QGraphicsItem *child, childItems()) {
-		// si cet enfant est un champ de texte
-		if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(child)) {
-			// alors on enregistre le champ de texte
-			inputs.appendChild(eti -> toXml(document));
-		}
+	foreach(ElementTextItem *eti, texts()) {
+		inputs.appendChild(eti -> toXml(document));
 	}
 	element.appendChild(inputs);
 	

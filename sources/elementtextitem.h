@@ -26,6 +26,7 @@ class Diagram;
 	malgre les rotations de son element parent.
 */
 class ElementTextItem : public DiagramTextItem {
+	Q_OBJECT
 	// constructeurs, destructeur
 	public:
 	ElementTextItem(QGraphicsItem * = 0, QGraphicsScene * = 0);

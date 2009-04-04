@@ -21,6 +21,7 @@
 #include "terminal.h"
 #include "orientationset.h"
 class Diagram;
+class ElementTextItem;
 /**
 	Cette classe abstraite represente un element electrique.
 */
@@ -68,6 +69,8 @@ class Element : public QObject, public QGraphicsItem {
 	virtual QList<Terminal *> terminals() const = 0;
 	/// @return la liste des conducteurs relies a cet element
 	virtual QList<Conductor *> conductors() const = 0;
+	/// @return la liste des champs de textes de cet element
+	virtual QList<ElementTextItem *> texts() const = 0;
 	/// @return le nombre de bornes actuel de cet element
 	virtual int terminalsCount() const = 0;
 	/// @return le nombre de bornes minimum de cet element
