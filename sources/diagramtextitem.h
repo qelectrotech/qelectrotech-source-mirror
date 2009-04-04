@@ -52,6 +52,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	

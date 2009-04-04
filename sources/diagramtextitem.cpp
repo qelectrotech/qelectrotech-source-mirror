@@ -132,6 +132,16 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
+	Gere le clic sur le champ de texte
+*/
+void DiagramTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	if (e -> modifiers() & Qt::ControlModifier) {
+		setSelected(!isSelected());
+	}
+	QGraphicsTextItem::mousePressEvent(e);
+}
+
+/**
 	Gere les mouvements de souris lies au champ de texte
 */
 void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
@@ -165,7 +175,9 @@ void DiagramTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		}
 		diagram_ptr -> invalidateMovedElements();
 	}
-	QGraphicsTextItem::mouseReleaseEvent(e);
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsTextItem::mouseReleaseEvent(e);
+	}
 }
 
 /**

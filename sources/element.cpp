@@ -263,8 +263,8 @@ void Element::setPos(qreal x, qreal y) {
 	Gere l'enfoncement d'un bouton de la souris
 */
 void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if (!isSelected() && e -> modifiers() & Qt::ControlModifier) {
-		setSelected(true);
+	if (e -> modifiers() & Qt::ControlModifier) {
+		setSelected(!isSelected());
 	}
 	QGraphicsItem::mousePressEvent(e);
 }
@@ -302,7 +302,9 @@ void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		}
 		diagram_ptr -> invalidateMovedElements();
 	}
-	QGraphicsItem::mouseReleaseEvent(e);
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsItem::mouseReleaseEvent(e);
+	}
 }
 
 /**

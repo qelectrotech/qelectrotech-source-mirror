@@ -588,6 +588,9 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 		}
 	}
 	QGraphicsPathItem::mousePressEvent(e);
+	if (e -> modifiers() & Qt::ControlModifier) {
+		setSelected(!isSelected());
+	}
 }
 
 /**
@@ -654,7 +657,9 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		has_to_save_profile = false;
 	}
 	setZValue(previous_z_value);
-	QGraphicsPathItem::mouseReleaseEvent(e);
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsPathItem::mouseReleaseEvent(e);
+	}
 	calculateTextItemPosition();
 }
 
