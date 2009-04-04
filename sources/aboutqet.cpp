@@ -32,22 +32,22 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	setModal(true);
 	
 	// Trois onglets
-	QETTabWidget *onglets = new QETTabWidget(this);
-	onglets -> addTab(ongletAPropos(), tr("\300 &propos","tab title"));
-	onglets -> addTab(ongletAuteurs(), tr("A&uteurs", "tab title"));
-	onglets -> addTab(ongletLicence(), tr("&Accord de licence", "tab title"));
+	QETTabWidget *tabs = new QETTabWidget(this);
+	tabs -> addTab(aboutTab(),   tr("\300 &propos",       "tab title"));
+	tabs -> addTab(authorsTab(), tr("A&uteurs",           "tab title"));
+	tabs -> addTab(licenseTab(), tr("&Accord de licence", "tab title"));
 	
 	// Un bouton pour fermer la boite de dialogue
-	QDialogButtonBox *boutons = new QDialogButtonBox(QDialogButtonBox::Close);
-	connect(boutons, SIGNAL(accepted()), this, SLOT(accept()));
-	connect(boutons, SIGNAL(rejected()), this, SLOT(accept()));
+	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
+	connect(buttons, SIGNAL(accepted()), this, SLOT(accept()));
+	connect(buttons, SIGNAL(rejected()), this, SLOT(accept()));
 	
 	// Le tout dans une disposition verticale
-	QVBoxLayout *disposition = new QVBoxLayout();
-	disposition -> addWidget(titre());
-	disposition -> addWidget(onglets);
-	disposition -> addWidget(boutons);
-	setLayout(disposition);
+	QVBoxLayout *vlayout = new QVBoxLayout();
+	vlayout -> addWidget(title());
+	vlayout -> addWidget(tabs);
+	vlayout -> addWidget(buttons);
+	setLayout(vlayout);
 }
 
 /**
@@ -59,29 +59,29 @@ AboutQET::~AboutQET() {
 /**
 	@return Le titre QElectroTech avec son icone
 */
-QWidget *AboutQET::titre() const {
-	QWidget *icone_et_titre = new QWidget();
+QWidget *AboutQET::title() const {
+	QWidget *icon_and_title = new QWidget();
 	// icone
-	QLabel *icone = new QLabel();
-	icone -> setPixmap(QIcon(":/ico/qelectrotech.png").pixmap(48, 48));
+	QLabel *icon = new QLabel();
+	icon -> setPixmap(QIcon(":/ico/qelectrotech.png").pixmap(48, 48));
 	// label "QElectroTech"
-	QLabel *titre = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
-	titre -> setTextFormat(Qt::RichText);
+	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
+	title -> setTextFormat(Qt::RichText);
 	// le tout dans une grille
-	QGridLayout *dispo_horiz = new QGridLayout();
-	dispo_horiz -> addWidget(icone, 0, 0);
-	dispo_horiz -> addWidget(titre, 0, 1);
-	dispo_horiz -> setColumnStretch(0, 1);
-	dispo_horiz -> setColumnStretch(1, 100);
-	icone_et_titre -> setLayout(dispo_horiz);
-	return(icone_et_titre);
+	QGridLayout *grid_layout = new QGridLayout();
+	grid_layout -> addWidget(icon, 0, 0);
+	grid_layout -> addWidget(title, 0, 1);
+	grid_layout -> setColumnStretch(0, 1);
+	grid_layout -> setColumnStretch(1, 100);
+	icon_and_title -> setLayout(grid_layout);
+	return(icon_and_title);
 }
 
 /**
-	@return Le widget contenu par l'onglet « A propos »
+	@return Le widget contenu par l'onglet "A propos"
 */
-QWidget *AboutQET::ongletAPropos() const {
-	QLabel *apropos = new QLabel(
+QWidget *AboutQET::aboutTab() const {
+	QLabel *about = new QLabel(
 		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
 		"<br><br>" +
 		tr("\251 2006-2009 Les d\351veloppeurs de QElectroTech") +
@@ -89,52 +89,60 @@ QWidget *AboutQET::ongletAPropos() const {
 		"<a href=\"http://qelectrotech.org/\">"
 		"http://qelectrotech.org/</a>"
 	);
-	apropos -> setAlignment(Qt::AlignCenter);
-	apropos -> setOpenExternalLinks(true);
-	apropos -> setTextFormat(Qt::RichText);
-	return(apropos);
+	about -> setAlignment(Qt::AlignCenter);
+	about -> setOpenExternalLinks(true);
+	about -> setTextFormat(Qt::RichText);
+	return(about);
 }
 
 /**
-	@return Le widget contenu par l'onglet « Auteurs »
+	@return Le widget contenu par l'onglet "Auteurs"
 */
-QWidget *AboutQET::ongletAuteurs() const {
-	QLabel *auteurs = new QLabel(
-		"<span style=\"text-decoration: underline;\">" +
-		tr("Id\351e originale") +
-		"</span> : Beno\356t Ansieau "
-		"&lt;<a href=\"mailto:benoit.ansieau@gmail.com\">"
-		"benoit.ansieau@gmail.com</a>&gt;"
-		"<br><br>"
-		"<span style=\"text-decoration: underline;\">" +
-		tr("Programmation") +
-		"</span> : Xavier Guerrin "
-		"&lt;<a href=\"mailto:xavier.guerrin@gmail.com\">"
-		"xavier.guerrin@gmail.com</a>&gt;"
-	);
-	auteurs -> setAlignment(Qt::AlignCenter);
-	auteurs -> setOpenExternalLinks(true);
-	auteurs -> setTextFormat(Qt::RichText);
-	return(auteurs);
+QWidget *AboutQET::authorsTab() const {
+	QLabel *authors = new QLabel();
+	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
+	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("Programmation"));
+	addAuthor(authors, "Youssef Oualmakran", "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
+	authors -> setAlignment(Qt::AlignCenter);
+	authors -> setOpenExternalLinks(true);
+	authors -> setTextFormat(Qt::RichText);
+	return(authors);
 }
 
 /**
-	@return Le widget contenu par l'onglet « Accord de Licence »
+	@return Le widget contenu par l'onglet "Accord de Licence"
 */
-QWidget *AboutQET::ongletLicence() const {
-	QWidget *licence = new QWidget();
+QWidget *AboutQET::licenseTab() const {
+	QWidget *license = new QWidget();
 	// label
-	QLabel *titre_licence = new QLabel(tr("Ce programme est sous licence GNU/GPL."));
+	QLabel *title_license = new QLabel(tr("Ce programme est sous licence GNU/GPL."));
 	
 	// texte de la GNU/GPL dans une zone de texte scrollable non editable
-	QTextEdit *texte_licence = new QTextEdit();
-	texte_licence -> setPlainText(QET::license());
-	texte_licence -> setReadOnly(true);
+	QTextEdit *text_license = new QTextEdit();
+	text_license -> setPlainText(QET::license());
+	text_license -> setReadOnly(true);
 	
 	// le tout dans une disposition verticale
-	QVBoxLayout *dispo_licence = new QVBoxLayout();
-	dispo_licence -> addWidget(titre_licence);
-	dispo_licence -> addWidget(texte_licence);
-	licence -> setLayout(dispo_licence);
-	return(licence);
+	QVBoxLayout *license_layout = new QVBoxLayout();
+	license_layout -> addWidget(title_license);
+	license_layout -> addWidget(text_license);
+	license -> setLayout(license_layout);
+	return(license);
+}
+
+/**
+	Ajoute une personne a la liste des auteurs
+	@param label QLabel auquel sera ajoute la personne
+	@param name  Nom de la personne
+	@param email Adresse e-mail de la personne
+	@param work  Fonction / travail effectue par la personne
+*/
+void AboutQET::addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work) const {
+	QString new_text = label -> text();
+	
+	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;<br><br>";
+	
+	// ajoute la fonction de la personne
+	new_text += author_template.arg(work).arg(name).arg(email);
+	label -> setText(new_text);
 }

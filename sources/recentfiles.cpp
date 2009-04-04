@@ -103,12 +103,15 @@ void RecentFiles::extractFilesFromSettings() {
 	Insere un fichier dans la liste des fichiers recents
 */
 void RecentFiles::insertFile(const QString &filepath) {
+	// s'assure que le chemin soit exprime avec des separateurs conformes au systeme
+	QString filepath_ns = QDir::toNativeSeparators(filepath);
+	
 	// evite d'inserer un chemin de fichier vide ou en double
-	if (filepath.isEmpty()) return;
-	list_.removeAll(filepath);
+	if (filepath_ns.isEmpty()) return;
+	list_.removeAll(filepath_ns);
 	
 	// insere le chemin de fichier
-	list_.push_front(filepath);
+	list_.push_front(filepath_ns);
 	
 	// s'assure que l'on ne retient pas plus de fichiers que necessaire
 	while (list_.count() > size_) list_.removeLast();

@@ -18,6 +18,7 @@
 #ifndef ABOUTQET_H
 #define ABOUTQET_H
 #include <QDialog>
+class QLabel;
 /**
 	Cette classe represente la boite de dialogue
 	« A propos de QElectroTech »
@@ -35,9 +36,10 @@ class AboutQET : public QDialog {
 	
 	// methodes
 	private:
-	QWidget *titre() const;
-	QWidget *ongletAPropos() const;
-	QWidget *ongletAuteurs() const;
-	QWidget *ongletLicence() const;
+	QWidget *title() const;
+	QWidget *aboutTab() const;
+	QWidget *authorsTab() const;
+	QWidget *licenseTab() const;
+	void addAuthor(QLabel *, const QString &, const QString &, const QString &) const;
 };
 #endif
