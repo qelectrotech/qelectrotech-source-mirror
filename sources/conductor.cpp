@@ -461,6 +461,13 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		qp -> setPen(tmp);
 	}
 	
+	// utilisation d'un trait "cosmetique" en-dessous d'un certain zoom
+	if (options && options -> levelOfDetail < 1.0) {
+		QPen tmp = qp -> pen();
+		tmp.setCosmetic(true);
+		qp -> setPen(tmp);
+	}
+	
 	// dessin du conducteur
 	qp -> drawPath(path());
 	if (properties_.type == ConductorProperties::Single) {

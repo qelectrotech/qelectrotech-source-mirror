@@ -896,6 +896,7 @@ QETProject *Diagram::project() const {
 void Diagram::setProject(QETProject *project) {
 	project_ = project;
 }
+
 /**
 	@return true si le schema est en lecture seule
 */

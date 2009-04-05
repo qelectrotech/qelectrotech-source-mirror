@@ -48,8 +48,10 @@ class CustomElement : public FixedElement {
 	NamesList names;
 	ElementsLocation location_;
 	QPicture drawing;
+	QPicture low_zoom_drawing;
 	QList<Terminal *> list_terminals;
 	QList<ElementTextItem *> list_texts_;
+	bool forbid_antialiasing;
 	
 	// methodes
 	public:

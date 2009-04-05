@@ -182,6 +182,9 @@ void Terminal::removeConductor(Conductor *f) {
 	@param widget Le widget sur lequel on dessine
 */
 void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+	// en dessous d'un certain zoom, les bornes ne sont plus dessinees
+	if (options && options -> levelOfDetail < 0.5) return;
+	
 	p -> save();
 	
 #ifdef Q_WS_X11
@@ -218,6 +221,10 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	
 	QPen t;
 	t.setWidthF(1.0);
+	
+	if (options && options -> levelOfDetail < 1.0) {
+		t.setCosmetic(true);
+	}
 	
 	// dessin de la borne en rouge
 	t.setColor(Qt::red);

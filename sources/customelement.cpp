@@ -46,7 +46,8 @@
 CustomElement::CustomElement(const ElementsLocation &location, QGraphicsItem *qgi, Diagram *s, int *state) :
 	FixedElement(qgi, s),
 	elmt_state(-1),
-	location_(location)
+	location_(location),
+	forbid_antialiasing(false)
 {
 	// recupere la definition de l'element
 	ElementsCollectionItem *element_item = QETApp::collectionItem(location);
@@ -148,11 +149,13 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	// initialisation du QPainter (pour dessiner l'element)
 	QPainter qp;
 	qp.begin(&drawing);
-	QPen t;
-	t.setColor(Qt::black);
-	t.setWidthF(1.0);
-	t.setJoinStyle(Qt::BevelJoin);
-	qp.setPen(t);
+	
+	QPainter low_zoom_qp;
+	low_zoom_qp.begin(&low_zoom_drawing);
+	QPen tmp;
+	tmp.setWidthF(1.0); // ligne vaudou pour prise en compte du setCosmetic - ne pas enlever
+	tmp.setCosmetic(true);
+	low_zoom_qp.setPen(tmp);
 	
 	// extrait les noms de la definition XML
 	names.fromXml(xml_def_elmt);
@@ -169,8 +172,15 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 			for (QDomNode n = node.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
 				QDomElement qde = n.toElement();
 				if (qde.isNull()) continue;
-				if (parseElement(qde, qp)) ++ parsed_elements_count;
-				else {
+				if (parseElement(qde, qp)) {
+					++ parsed_elements_count;
+					QString current_tag = qde.tagName();
+					if (current_tag != "terminal" && current_tag != "input") {
+						forbid_antialiasing = true;
+						parseElement(qde, low_zoom_qp);
+						forbid_antialiasing = false;
+					}
+				} else {
 					if (state) *state = 7;
 					return(false);
 				}
@@ -180,6 +190,7 @@ bool CustomElement::buildFromXml(const QDomElement &xml_def_elmt, int *state) {
 	
 	// fin du dessin
 	qp.end();
+	low_zoom_qp.end();
 	
 	// il doit y avoir au moins un element charge
 	if (!parsed_elements_count) {
@@ -226,8 +237,12 @@ int CustomElement::terminalsCount() const {
 	@param qp Le QPainter a utiliser pour dessiner l'element
 	@param options Les options graphiques
 */
-void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *) {
-	drawing.play(qp);
+void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options) {
+	if (options && options -> levelOfDetail < 1.0) {
+		low_zoom_drawing.play(qp);
+	} else {
+		drawing.play(qp);
+	}
 }
 
 /**
@@ -287,7 +302,6 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	t.setJoinStyle(Qt::MiterJoin);
 	qp.setPen(t);
 	
-	//qp.drawLine(QLineF(x1, y1, x2, y2));
 	QLineF line(x1, y1, x2, y2);
 	QPointF point1(line.p1());
 	QPointF point2(line.p2());
@@ -604,6 +618,7 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	@param aa Booleen a true pour activer l'antialiasing, a false pour le desactiver
 */
 void CustomElement::setQPainterAntiAliasing(QPainter &qp, bool aa) {
+	if (forbid_antialiasing) aa = false;
 	qp.setRenderHint(QPainter::Antialiasing,          aa);
 	qp.setRenderHint(QPainter::TextAntialiasing,      aa);
 	qp.setRenderHint(QPainter::SmoothPixmapTransform, aa);

@@ -59,7 +59,7 @@ bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr)
 	setInternalConnections(true);
 	
 	// on peut desormais confectionner le rendu de l'element
-	generateDrawing();
+	generateDrawings();
 	
 	// position, selection et orientation
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
@@ -125,30 +125,44 @@ bool GhostElement::terminalsFromXml(QDomElement &e, QHash<int, Terminal *> &tabl
 }
 
 /**
-	Genere le rendu de l'element fantome : il s'agit d'un rectangle
+	Genere les rendus de l'element fantome : il s'agit d'un rectangle
 	representant grosso modo l'espace que devait prendre l'element initial.
 	En son centre est dessine un point d'interrogation. Une petite croix indique
 	le point de saisie de l'element.
 */
-void GhostElement::generateDrawing() {
+void GhostElement::generateDrawings() {
+	// style de dessin
+	QPen t(QBrush(Qt::black), 1.0);
+	
+	// rendu normal
 	QPainter qp;
 	qp.begin(&drawing);
-	
-	// style de dessin
-	QPen t;
-	t.setColor(Qt::black);
-	t.setWidthF(1.0);
-	t.setJoinStyle(Qt::BevelJoin);
 	qp.setPen(t);
+	qp.setRenderHint(QPainter::Antialiasing, false);
+	generateDrawing(&qp);
+	qp.end();
 	
+	// rendu low_zoom
+	QPainter low_zoom_qp;
+	low_zoom_qp.begin(&low_zoom_drawing);
+	t.setCosmetic(true);
+	low_zoom_qp.setRenderHint(QPainter::Antialiasing, false);
+	low_zoom_qp.setPen(t);
+	generateDrawing(&low_zoom_qp);
+	low_zoom_qp.end();
+}
+
+/**
+	Genere un rendu de l'element fantome
+	@see generateDrawings
+*/
+void GhostElement::generateDrawing(QPainter *painter) {
 	// une petite croix indique le point de saisie de l'element
-	qp.drawLine(QLineF(-1.0, 0.0, 1.0, 0.0));
-	qp.drawLine(QLineF(0.0, -1.0, 0.0, 1.0));
+	painter -> drawLine(QLineF(-1.0, 0.0, 1.0, 0.0));
+	painter -> drawLine(QLineF(0.0, -1.0, 0.0, 1.0));
 	
 	// rectangle avec un point d'interrogation au centre
 	QRectF drawn_rect = boundingRect().adjusted(4.0, 4.0, -4.0, -4.0);
-	qp.drawRect(drawn_rect);
-	qp.drawText(drawn_rect, Qt::AlignHCenter | Qt::AlignVCenter, "?");
-	
-	qp.end();
+	painter -> drawRect(drawn_rect);
+	painter -> drawText(drawn_rect, Qt::AlignHCenter | Qt::AlignVCenter, "?");
 }

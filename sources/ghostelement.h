@@ -49,6 +49,7 @@ class GhostElement : public CustomElement {
 	protected:
 	QRectF minimalBoundingRect() const;
 	bool terminalsFromXml(QDomElement &, QHash<int, Terminal *> &);
-	void generateDrawing();
+	void generateDrawings();
+	void generateDrawing(QPainter *);
 };
 #endif
