@@ -1465,7 +1465,7 @@ void QETDiagramEditor::readSettings() {
 	if (state.isValid()) restoreState(state.toByteArray());
 	
 	// gestion des projets (onglets ou fenetres)
-	bool tabbed = settings.value("diagrameditor/viewmode", "windowed") == "tabbed";
+	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	if (tabbed) {
 		setTabbedMode();
 	} else {

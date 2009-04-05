@@ -100,7 +100,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	
 	// acces a la configuration de QElectroTech
 	QSettings &settings = QETApp::settings();
-	bool tabbed = settings.value("diagrameditor/viewmode", "windowed") == "tabbed";
+	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
 	
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
