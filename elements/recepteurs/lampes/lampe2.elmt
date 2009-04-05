@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Light</name>
         <name lang="fr" >Lampe</name>
+        <name lang="es" >Lámpara</name>
     </names>
     <description>
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />
