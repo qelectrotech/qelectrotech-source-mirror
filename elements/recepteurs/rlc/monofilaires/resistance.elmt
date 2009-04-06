@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Resistor</name>
         <name lang="fr" >Résistance</name>
+        <name lang="es" >Resistencia</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0" />

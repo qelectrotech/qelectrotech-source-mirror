@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Inductor</name>
         <name lang="fr" >Inductance</name>
+        <name lang="es" >Inductor</name>
     </names>
     <description>
         <arc width="7" x="-3.5" y="-10" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180" />

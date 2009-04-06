@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Capacitor</name>
         <name lang="fr" >Capacité</name>
+        <name lang="es" >Condensator</name>
     </names>
     <description>
         <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="2" x1="-5" y2="2" x2="5" />
