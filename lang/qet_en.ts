@@ -1363,8 +1363,8 @@ Changes will be definitive.</translation>
   - %id : num&#xe9;ro du sch&#xe9;ma courant dans le projet
   - %total : nombre total de sch&#xe9;mas dans le projet</source>
         <translation>The following variables can be used imn the Folio field:
-  - %id : the current diagram&apos;s number in the project
-  - %total : total number of diagrams in the project</translation>
+  - %id: the current diagram&apos;s number in the project
+  - %total: total number of diagrams in the project</translation>
     </message>
 </context>
 <context>
@@ -1749,7 +1749,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/newelementwizard.cpp" line="247"/>
         <source>Merci de ne pas utiliser les caract&#xe8;res suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content</comment>
-        <translation>Please avoid the following characters : \ / : * ? &lt; &gt; |</translation>
+        <translation>Please avoid the following characters: \ / : * ? &lt; &gt; |</translation>
     </message>
 </context>
 <context>
@@ -3648,7 +3648,7 @@ Available options:
     <message>
         <location filename="../sources/customelement.cpp" line="121"/>
         <source>Avertissement : l&apos;&#xe9;l&#xe9;ment  a &#xe9;t&#xe9; enregistr&#xe9; avec une version ult&#xe9;rieure de QElectroTech.</source>
-        <translation>Warning : the element has been saved with a more recent version of QElectroTech.</translation>
+        <translation>Warning: the element has been saved with a more recent version of QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="36"/>
@@ -3714,7 +3714,7 @@ Available options:
         <location filename="../sources/diagramcommands.cpp" line="498"/>
         <source>R&#xe9;initialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation></translation>
+        <translation>Reset %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="533"/>
