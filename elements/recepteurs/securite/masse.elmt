@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Chassis</name>
         <name lang="fr" >Masse</name>
+        <name lang="es" >Masa</name>    
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5" x1="7.5" y2="3" x2="5" />
