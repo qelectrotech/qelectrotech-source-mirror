@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Dishwasher</name>
         <name lang="fr" >Lave-vaisselle</name>
+        <name lang="es" >Lavavajillas</name>
     </names>
     <description>
         <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="24" x2="-12" y3="24" x3="12" y4="0" />

@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Disconnecting switch</name>
         <name lang="fr" >Sectionneur</name>
+        <name lang="es" >Seccionador</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-15" y2="10" x2="-10" y3="20" x3="-10" />
