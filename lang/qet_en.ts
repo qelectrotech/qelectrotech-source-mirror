@@ -2257,19 +2257,9 @@ Available options:
         <translation>&amp;Export</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
-        <source>Fen&#xea;tre pr&#xe9;c&#xe9;dente</source>
-        <translation>Previous Window</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="441"/>
         <source>Fe&amp;n&#xea;tres</source>
         <translation>Wi&amp;ndows</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
-        <source>Fen&#xea;tre suivante</source>
-        <translation>Next Window</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
@@ -2833,18 +2823,6 @@ Available options:
         <translation>Arranges windows in a cascade pattern</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
-        <source>Active la fen&#xea;tre suivante</source>
-        <comment>status bar tip</comment>
-        <translation>Activates the next window</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
-        <source>Active la fen&#xea;tre pr&#xe9;c&#xe9;dente</source>
-        <comment>status bar tip</comment>
-        <translation>Activates the previous window</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
@@ -2857,11 +2835,6 @@ Available options:
         <translation>Displays informations about Qt library</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
-        <source>Active la fen&#xea;tre %1</source>
-        <translation>Activates the window %1</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>&amp;Enregistrer tous les sch&#xe9;mas</source>
         <translation>Sav&amp;e all diagrams</translation>
@@ -2871,6 +2844,33 @@ Available options:
         <source>Enregistre tous les sch&#xe9;mas du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Saves all the diagrams of the current project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
+        <source>Projet suivant</source>
+        <translation>Next project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
+        <source>Projet pr&#xe9;c&#xe9;dent</source>
+        <translation>Previous project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
+        <source>Active le projet suivant</source>
+        <comment>status bar tip</comment>
+        <translation>Activates the next project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
+        <source>Active le projet pr&#xe9;c&#xe9;dent</source>
+        <comment>status bar tip</comment>
+        <translation>Activates the previous project</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
+        <source>Active le projet &#xab;&#xa0;%1&#xa0;&#xbb;</source>
+        <translation>Activates the project &quot;%1&quot;</translation>
     </message>
 </context>
 <context>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="es">
+<defaultcodec></defaultcodec>
 <context>
     <name>AboutQET</name>
     <message>
@@ -54,7 +55,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="105"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al español</translation>
     </message>
 </context>
 <context>
@@ -1137,7 +1138,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/exportdialog.cpp" line="36"/>
         <source>Exporter les sch&#xe9;mas du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportar los esquemas del proyecto</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="43"/>
@@ -1157,7 +1158,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="139"/>
         <source>Nom de fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Nombre de archivo</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="191"/>
@@ -1253,7 +1254,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/ghostelement.cpp" line="21"/>
         <source>&lt;u&gt;&#xc9;l&#xe9;ment manquant&#xa0;:&lt;/u&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;u&gt;Elemento faltando:&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -2342,16 +2343,6 @@ Opciones disponibles:
         <translation>&amp;Cascada</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
-        <source>Fen&#xea;tre suivante</source>
-        <translation>Ventana siguiente</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
-        <source>Fen&#xea;tre pr&#xe9;c&#xe9;dente</source>
-        <translation>Ventana anterior</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="251"/>
         <source>&#xc0; &amp;propos de QElectroTech</source>
         <translation>&amp;Acerca de QElectroTech</translation>
@@ -2833,18 +2824,6 @@ Opciones disponibles:
         <translation>Poner las ventanas en cascada</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
-        <source>Active la fen&#xea;tre suivante</source>
-        <comment>status bar tip</comment>
-        <translation>Activar la ventana siguiente</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
-        <source>Active la fen&#xea;tre pr&#xe9;c&#xe9;dente</source>
-        <comment>status bar tip</comment>
-        <translation>Activar la ventana previa</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="340"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
@@ -2857,20 +2836,42 @@ Opciones disponibles:
         <translation>Mostrar las informaciones sobre la biblioteca Qt</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
-        <source>Active la fen&#xea;tre %1</source>
-        <translation>Activa la ventana %1</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>&amp;Enregistrer tous les sch&#xe9;mas</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Guardar todos los esquemas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
         <source>Enregistre tous les sch&#xe9;mas du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Guarda todos los esquemas del proyecto corriente</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="248"/>
+        <source>Projet suivant</source>
+        <translation>Proyecto siguiente</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="249"/>
+        <source>Projet pr&#xe9;c&#xe9;dent</source>
+        <translation>Proyecto previo</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="337"/>
+        <source>Active le projet suivant</source>
+        <comment>status bar tip</comment>
+        <translation>Activar el proyecto siguiente</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="338"/>
+        <source>Active le projet pr&#xe9;c&#xe9;dent</source>
+        <comment>status bar tip</comment>
+        <translation>Activar el proyecto previo</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1325"/>
+        <source>Active le projet &#xab;&#xa0;%1&#xa0;&#xbb;</source>
+        <translation>Activar el proyecto « %1 »</translation>
     </message>
 </context>
 <context>
@@ -3958,7 +3959,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/exportdialog.cpp" line="725"/>
         <source>R&#xe9;initialiser les dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Reinicializar los tamaños</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="729"/>

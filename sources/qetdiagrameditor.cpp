@@ -245,8 +245,8 @@ void QETDiagramEditor::actions() {
 	
 	tile_window        = new QAction(                               tr("&Mosa\357que"),                         this);
 	cascade_window     = new QAction(                               tr("&Cascade"),                             this);
-	next_window        = new QAction(                               tr("Fen\352tre suivante"),                  this);
-	prev_window        = new QAction(                               tr("Fen\352tre pr\351c\351dente"),          this);
+	next_window        = new QAction(                               tr("Projet suivant"),                  this);
+	prev_window        = new QAction(                               tr("Projet pr\351c\351dent"),          this);
 	
 	about_qet         = new QAction(QIcon(":/ico/qet.png"),        tr("\300 &propos de QElectroTech"),         this);
 	about_qt          = new QAction(QIcon(":/ico/qt.png"),         tr("\300 propos de &Qt"),                   this);
@@ -334,8 +334,8 @@ void QETDiagramEditor::actions() {
 	
 	tile_window       -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que", "status bar tip"));
 	cascade_window    -> setStatusTip(tr("Dispose les fen\352tres en cascade", "status bar tip"));
-	next_window       -> setStatusTip(tr("Active la fen\352tre suivante", "status bar tip"));
-	prev_window       -> setStatusTip(tr("Active la fen\352tre pr\351c\351dente", "status bar tip"));
+	next_window       -> setStatusTip(tr("Active le projet suivant", "status bar tip"));
+	prev_window       -> setStatusTip(tr("Active le projet pr\351c\351dent", "status bar tip"));
 	
 	about_qet         -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
 	about_qt          -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt", "status bar tip"));
@@ -1322,7 +1322,7 @@ void QETDiagramEditor::slot_updateWindowsMenu() {
 		QString pv_title = project_view -> windowTitle();
 		QAction *action  = windows_menu -> addAction(pv_title);
 		windows_actions -> addAction(action);
-		action -> setStatusTip(QString(tr("Active la fen\352tre %1")).arg(pv_title));
+		action -> setStatusTip(QString(tr("Active le projet \253\240%1\240\273")).arg(pv_title));
 		action -> setCheckable(true);
 		action -> setChecked(project_view == currentProject());
 		connect(action, SIGNAL(triggered()), &windowMapper, SLOT(map()));
