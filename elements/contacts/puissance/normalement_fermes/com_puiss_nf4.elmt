@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Contact power contactor (NC)</name>
         <name lang="fr" >Contact puissance contacteur (NF)</name>
+        <name lang="es" >Interruptor de potencia contactor (NC)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="25" y2="10" x2="20" y3="20" x3="20" />

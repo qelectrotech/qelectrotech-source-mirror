@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Dual terminal</name>
         <name lang="fr" >Double borne</name>
+        <name lang="es" >Borne doble</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4" />
