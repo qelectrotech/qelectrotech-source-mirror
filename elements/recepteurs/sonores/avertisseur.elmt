@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Horn</name>
         <name lang="fr" >Avertisseur</name>
+        <name lang="es" >Bocina</name>
     </names>
     <description>
         <polygon x4="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="10" y2="0" x2="40" y3="-20" x3="30" y4="-15" />

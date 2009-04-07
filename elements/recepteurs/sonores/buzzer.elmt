@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Buzzer</name>
         <name lang="fr" >Buzzer</name>
+        <name lang="es" >Zumbador</name>
     </names>
     <description>
         <input x="35" y="3" size="9" text="_" />

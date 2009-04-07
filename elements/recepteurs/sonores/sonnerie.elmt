@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Bell</name>
         <name lang="fr" >Sonnerie</name>
+        <name lang="es" >Timbre</name>
     </names>
     <description>
         <input x="35" y="3" size="9" text="_" />
