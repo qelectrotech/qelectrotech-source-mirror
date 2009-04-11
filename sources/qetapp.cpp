@@ -819,7 +819,7 @@ void QETApp::initConfiguration() {
 	Construit l'icone dans le systray et son menu
 */
 void QETApp::initSystemTray() {
-	setSplashScreenStep(tr("Chargement... icône du systray", "splash screen caption"));
+	setSplashScreenStep(tr("Chargement... ic\364ne du systray", "splash screen caption"));
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 	

@@ -21,7 +21,7 @@
 class QLabel;
 /**
 	Cette classe represente la boite de dialogue
-	« A propos de QElectroTech »
+	"A propos de QElectroTech".
 */
 class AboutQET : public QDialog {
 	Q_OBJECT

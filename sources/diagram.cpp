@@ -285,7 +285,7 @@ QDomDocument Diagram::toXml(bool diagram) {
 	QList<Conductor *> list_conductors;
 	QList<DiagramTextItem *> list_texts;
 	
-	// Determine les elements a « XMLiser »
+	// Determine les elements a "XMLiser"
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
 			if (diagram) list_elements << elmt;

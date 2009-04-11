@@ -361,40 +361,40 @@ void Conductor::priv_calculeConductor(const QPointF &p1, QET::Orientation o1, co
 	if (depart.y() < arrivee.y()) {
 		// trajet descendant
 		if ((ori_depart == QET::North && (ori_arrivee == QET::South || ori_arrivee == QET::West)) || (ori_depart == QET::East && ori_arrivee == QET::West)) {
-			// cas « 3 »
+			// cas "3"
 			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
 			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
 		} else if ((ori_depart == QET::South && (ori_arrivee == QET::North || ori_arrivee == QET::East)) || (ori_depart == QET::West && ori_arrivee == QET::East)) {
-			// cas « 4 »
+			// cas "4"
 			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
 			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
 		} else if ((ori_depart == QET::North || ori_depart == QET::East) && (ori_arrivee == QET::North || ori_arrivee == QET::East)) {
-			points << QPointF(arrivee.x(), depart.y()); // cas « 2 »
+			points << QPointF(arrivee.x(), depart.y()); // cas "2"
 		} else {
-			points << QPointF(depart.x(), arrivee.y()); // cas « 1 »
+			points << QPointF(depart.x(), arrivee.y()); // cas "1"
 		}
 	} else {
 		// trajet montant
 		if ((ori_depart == QET::West && (ori_arrivee == QET::East || ori_arrivee == QET::South)) || (ori_depart == QET::North && ori_arrivee == QET::South)) {
-			// cas « 3 »
+			// cas "3"
 			int ligne_inter_y = qRound(depart.y() + arrivee.y()) / 2;
 			while (ligne_inter_y % Diagram::yGrid) -- ligne_inter_y;
 			points << QPointF(depart.x(), ligne_inter_y);
 			points << QPointF(arrivee.x(), ligne_inter_y);
 		} else if ((ori_depart == QET::East && (ori_arrivee == QET::West || ori_arrivee == QET::North)) || (ori_depart == QET::South && ori_arrivee == QET::North)) {
-			// cas « 4 »
+			// cas "4"
 			int ligne_inter_x = qRound(depart.x() + arrivee.x()) / 2;
 			while (ligne_inter_x % Diagram::xGrid) -- ligne_inter_x;
 			points << QPointF(ligne_inter_x, depart.y());
 			points << QPointF(ligne_inter_x, arrivee.y());
 		} else if ((ori_depart == QET::West || ori_depart == QET::North) && (ori_arrivee == QET::West || ori_arrivee == QET::North)) {
-			points << QPointF(depart.x(), arrivee.y()); // cas « 2 »
+			points << QPointF(depart.x(), arrivee.y()); // cas "2"
 		} else {
-			points << QPointF(arrivee.x(), depart.y()); // cas « 1 »
+			points << QPointF(arrivee.x(), depart.y()); // cas "1"
 		}
 	}
 	

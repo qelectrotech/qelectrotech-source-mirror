@@ -174,7 +174,7 @@ void QETDiagramEditor::toggleFullScreen() {
 }
 
 /**
-	Dialogue « A propos de QElectroTech »
+	Dialogue "A propos de QElectroTech"
 	Le dialogue en question est cree lors du premier appel de cette fonction.
 	En consequence, sa premiere apparition n'est pas immediate. Par la suite,
 	le dialogue n'a pas a etre recree et il apparait instantanement. Il est

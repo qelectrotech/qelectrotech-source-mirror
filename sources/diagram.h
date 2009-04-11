@@ -176,7 +176,7 @@ class Diagram : public QGraphicsScene {
 };
 
 /**
-	Permet d'ajouter ou enlever le « poseur de conducteur », c'est-a-dire la
+	Permet d'ajouter ou enlever le "poseur de conducteur", c'est-a-dire la
 	droite en pointilles qui apparait lorsqu'on pose un conducteur entre deux
 	bornes.
 	@param pf true pour ajouter le poseur de conducteur, false pour l'enlever

@@ -25,7 +25,7 @@ class Conductor;
 class Diagram;
 class Element;
 /**
-	Classe modelisant la « borne » d'un appareil, c'est-a-dire un
+	Classe modelisant la "borne" d'un appareil, c'est-a-dire un
 	branchement possible pour un Conducteur.
 */
 class Terminal : public QGraphicsItem {
