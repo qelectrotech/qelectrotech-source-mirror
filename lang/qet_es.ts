@@ -1149,8 +1149,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="47"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translatorcomment>Elige los esquemas con sus tamaños que desea exportar:</translatorcomment>
-        <translation type="unfinished"></translation>
+        <translation>Elige los esquemas con sus tamaños que desea exportar:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="138"/>
@@ -1165,7 +1164,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="191"/>
         <source>Dossier cible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Carpeta de destino:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="359"/>
@@ -1177,19 +1176,19 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/exportdialog.cpp" line="480"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nombres de los archivos de destino</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="486"/>
         <source>Vous devez entrer un nom de fichier distinct pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tiene que dar un nombre de archivo distinto para cada esquema que quiera exportar.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="495"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Se necesita una carpeta</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="496"/>
@@ -1201,7 +1200,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/exportdialog.cpp" line="542"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Parece que no tiene los permisos necesarios para escribir en el archivo %1.</translation>
     </message>
 </context>
 <context>
@@ -3442,12 +3441,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="129"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar ancho de la página</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="130"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajustar ancho y alto de la página</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="131"/>
@@ -3512,7 +3511,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="160"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Diseño (no existe para imprimir en PDF o PS bajo Windows)</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="188"/>
