@@ -90,8 +90,7 @@ class QETApp : public QETSingleApplication {
 	public:
 	static void overrideLangDir(const QString &);
 	static QString lang_dir; ///< Dossier contenant les fichiers de langue
-	static QString diagramTextsFont();
-	static int diagramTextsSize();
+	static QFont diagramTextsFont(int = -1);
 	static QETDiagramEditor *diagramEditorForFile(const QString &);
 	static QList<QETDiagramEditor *> diagramEditors();
 	static QList<QETElementEditor *> elementEditors();
@@ -130,8 +129,6 @@ class QETApp : public QETSingleApplication {
 	QETArguments qet_arguments_;        ///< Analyseur d'arguments
 	bool non_interactive_execution_;    ///< booleen indiquant si l'application va se terminer immediatement apres un court traitement
 	
-	static QString diagram_texts_font;
-	static int diagram_texts_size;
 	static FileElementsCollection *common_collection;
 	static FileElementsCollection *custom_collection;
 	static QMap<uint, QETProject *> registered_projects_;

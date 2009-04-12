@@ -30,8 +30,6 @@
 QString QETApp::common_elements_dir = QString();
 QString QETApp::config_dir = QString();
 QString QETApp::lang_dir = QString();
-QString QETApp::diagram_texts_font = QString();
-int QETApp::diagram_texts_size = 9;
 FileElementsCollection *QETApp::common_collection = 0;
 FileElementsCollection *QETApp::custom_collection = 0;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
@@ -441,18 +439,29 @@ bool QETApp::closeEveryEditor() {
 }
 
 /**
+	@param size taille voulue - si aucune taille n'est specifiee, la valeur
+	specifiee dans la configuration (diagramsize) est utilisee. La valeur par
+	defaut est 9.
 	@return la police a utiliser pour rendre les textes sur les schemas
+	La famille "Sans Serif" est utilisee par defaut mais peut etre surchargee
+	dans la configuration (diagramfont).
 */
-QString QETApp::diagramTextsFont() {
+QFont QETApp::diagramTextsFont(int size) {
+	// acces a la configuration de l'application
+	QSettings &qet_settings = QETApp::settings();
+	
+	// police a utiliser pour le rendu de texte
+	QString diagram_texts_family = qet_settings.value("diagramfont", "Sans Serif").toString();
+	int     diagram_texts_size   = qet_settings.value("diagramsize", 9).toInt();
+	
+	if (size != -1) {
+		diagram_texts_size = size;
+	}
+	QFont diagram_texts_font = QFont(diagram_texts_family, diagram_texts_size);
+	if (diagram_texts_size <= 4) {
+		diagram_texts_font.setWeight(QFont::Light);
+	}
 	return(diagram_texts_font);
-}
-
-/**
-	@return la taille de police par defaut a utiliser pour rendre les textes
-	sur les schemas
-*/
-int QETApp::diagramTextsSize() {
-	return(diagram_texts_size);
 }
 
 /**
@@ -805,10 +814,6 @@ void QETApp::initConfiguration() {
 	
 	// lit le fichier de configuration
 	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
-	
-	// police a utiliser pour le rendu de texte
-	diagram_texts_font = qet_settings -> value("diagramfont", "Sans Serif").toString();
-	diagram_texts_size = qet_settings -> value("diagramsize", 9).toInt();
 	
 	// fichiers recents
 	projects_recent_files_ = new RecentFiles("projects");

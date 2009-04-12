@@ -53,7 +53,7 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 	int font_size = xml_element.attribute("size").toInt(&ok);
 	if (!ok || font_size < 1) font_size = 20;
 	
-	setFont(QFont(QString(QETApp::diagramTextsFont()), font_size));
+	setFont(QETApp::diagramTextsFont(font_size));
 	setPlainText(xml_element.attribute("text"));
 	setPos(
 		xml_element.attribute("x").toDouble(),
@@ -199,7 +199,7 @@ void PartTextField::setProperty(const QString &property, const QVariant &value) 
 		setPos(pos().x(), value.toDouble());
 	} else if (property == "size") {
 		if (!value.canConvert(QVariant::Int)) return;
-		setFont(QFont(font().family(), value.toInt()));
+		setFont(QETApp::diagramTextsFont(value.toInt()));
 	} else if (property == "text") {
 		setPlainText(value.toString());
 	} else if (property == "rotate") {

@@ -28,7 +28,7 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 	QGraphicsTextItem(parent, scene)
 {
 	setDefaultTextColor(Qt::black);
-	setFont(QFont(QETApp::diagramTextsFont(), QETApp::diagramTextsSize()));
+	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
@@ -44,7 +44,7 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, QGr
 	previous_text(text)
 {
 	setDefaultTextColor(Qt::black);
-	setFont(QFont(QETApp::diagramTextsFont(), QETApp::diagramTextsSize()));
+	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }

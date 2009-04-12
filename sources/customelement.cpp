@@ -548,7 +548,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.setFont(QFont(QString(QETApp::diagramTextsFont()), size));
+	qp.setFont(QETApp::diagramTextsFont(size));
 	qp.drawText(QPointF(pos_x, pos_y), e.attribute("text"));
 	qp.restore();
 	return(true);
@@ -575,7 +575,7 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	) return(0);
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
-	eti -> setFont(QFont(QETApp::diagramTextsFont(), size));
+	eti -> setFont(QETApp::diagramTextsFont(size));
 	eti -> setPos(pos_x, pos_y);
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
 	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);

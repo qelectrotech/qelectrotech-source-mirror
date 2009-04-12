@@ -211,7 +211,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	// dessine le cadre
 	if (display_border) qp -> drawRect(diagram);
 	
-	qp -> setFont(QFont(QETApp::diagramTextsFont(), QETApp::diagramTextsSize()));
+	qp -> setFont(QETApp::diagramTextsFont());
 	
 	// dessine la case vide qui apparait des qu'il y a un entete
 	if (display_border && (display_columns || display_rows)) {
