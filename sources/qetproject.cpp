@@ -324,12 +324,6 @@ QDomDocument QETProject::toXml() {
 	Ferme le projet
 */
 bool QETProject::close() {
-	
-	/// @todo demander son avis a l'utilisateur
-	/*foreach(Diagram *diagram, diagrams_) {
-		QTextStream err(stderr);
-		err << diagram -> writtenXml().toString(4);
-	}*/
 	return(true);
 }
 

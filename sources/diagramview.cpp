@@ -275,7 +275,9 @@ void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
 	}
 }
 
-/// Colle le contenu du presse-papier sur le schema a la position de la souris
+/**
+	Colle le contenu du presse-papier sur le schema a la position de la souris
+*/
 void DiagramView::pasteHere() {
 	paste(mapToScene(paste_here_pos));
 }
@@ -527,9 +529,9 @@ bool DiagramView::mustIntegrateElement(const ElementsLocation &location) const {
 */
 bool DiagramView::addElementAtPos(const ElementsLocation &location, const QPoint &pos) {
 	// construit une instance de l'element correspondant a l'emplacement
-	int etat;
-	Element *el = new CustomElement(location, 0, 0, &etat);
-	if (etat) {
+	int state;
+	Element *el = new CustomElement(location, 0, 0, &state);
+	if (state) {
 		delete el;
 		return(false);
 	}
@@ -738,7 +740,9 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 	e -> accept();
 }
 
-/// @return l'editeur de schemas parent ou 0
+/**
+	@return l'editeur de schemas parent ou 0
+*/
 QETDiagramEditor *DiagramView::diagramEditor() const {
 	// remonte la hierarchie des widgets
 	QWidget *w = const_cast<DiagramView *>(this);
@@ -817,7 +821,7 @@ void DiagramView::addDroppedElement() {
 		QString integ_path = scene -> project() -> integrateElement(location.toString(), integ_handler, error_msg);
 		delete integ_handler;
 		if (integ_path.isEmpty()) {
-			qDebug() << error_msg;
+			qDebug() << "DiagramView::addDroppedElement : Impossible d'ajouter l'element. Motif : " << qPrintable(error_msg);
 			return;
 		}
 		addElementAtPos(ElementsLocation::locationFromString(integ_path), pos);

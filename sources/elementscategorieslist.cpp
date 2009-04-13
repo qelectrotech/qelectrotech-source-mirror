@@ -138,10 +138,10 @@ QTreeWidgetItem *ElementsCategoriesList::addCategory(QTreeWidgetItem *qtwi_paren
 	@return Le QTreeWidgetItem insere
 */
 QTreeWidgetItem *ElementsCategoriesList::addElement(QTreeWidgetItem *qtwi_parent, ElementDefinition *element, const QString &elmt_name, const QIcon &icon) {
-	int etat;
-	CustomElement custom_elmt(element -> xml(), 0, 0, &etat);
-	if (etat) {
-		qDebug() << "Le chargement du composant" << element -> location().toString() << "a echoue avec le code d'erreur" << etat;
+	int state;
+	CustomElement custom_elmt(element -> xml(), 0, 0, &state);
+	if (state) {
+		qDebug() << "ElementsCategoriesList::addElement() : Le chargement du composant" << qPrintable(element -> location().toString()) << "a echoue avec le code d'erreur" << state;
 		return(0);
 	}
 	QString final_name(elmt_name.isEmpty() ? custom_elmt.name() : elmt_name);

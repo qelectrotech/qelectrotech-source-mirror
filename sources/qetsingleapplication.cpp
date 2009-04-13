@@ -41,8 +41,7 @@ QETSingleApplication::QETSingleApplication(int &argc, char **argv, const QString
 		
 		// initialisation du segment de memoire partage
 		if (!shared_memory_.create(1)) {
-			qDebug() << "Impossible de cr\351er l'instance unique.";
-			qDebug() << "Used key is:" << unique_key_;
+			qDebug() << "QETSingleApplication::QETSingleApplication() : Impossible de cr\351er l'instance unique" << qPrintable(unique_key_);
 			return;
 		}
 		
@@ -68,8 +67,7 @@ QETSingleApplication::~QETSingleApplication() {
 void QETSingleApplication::receiveMessage() {
 	QLocalSocket *local_socket = local_server_ -> nextPendingConnection();
 	if (!local_socket -> waitForReadyRead(timeout_)) {
-		qDebug() << local_socket -> errorString().toLatin1();
-		qDebug() << "Used key is:" << unique_key_;
+		qDebug() << "QETSingleApplication::receiveMessage() :" << qPrintable(local_socket -> errorString()) << "(" << qPrintable(unique_key_) << ")";
 		return;
 	}
 	QByteArray byteArray = local_socket -> readAll();
@@ -101,16 +99,14 @@ bool QETSingleApplication::sendMessage(const QString &message) {
 	QLocalSocket local_socket(this);
 	local_socket.connectToServer(unique_key_, QIODevice::WriteOnly);
 	if (!local_socket.waitForConnected(timeout_)) {
-		qDebug() << local_socket.errorString().toLatin1();
-		qDebug() << "Used key is:" << unique_key_;
+		qDebug() << "QETSingleApplication::sendMessage() :" << qPrintable(local_socket.errorString()) << "(" << qPrintable(unique_key_) << ")";
 		return(false);
 	}
 	
 	// envoi du message, avec gestion du timeout
 	local_socket.write(message.toUtf8());
 	if (!local_socket.waitForBytesWritten(timeout_)) {
-		qDebug() << local_socket.errorString().toLatin1();
-		qDebug() << "Used key is:" << unique_key_;
+		qDebug() << "QETSingleApplication::sendMessage() :" << qPrintable(local_socket.errorString()) << "(" << qPrintable(unique_key_) << ")";
 		return(false);
 	}
 	

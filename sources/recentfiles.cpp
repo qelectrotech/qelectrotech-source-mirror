@@ -18,6 +18,13 @@
 #include "recentfiles.h"
 #include "qetapp.h"
 
+/**
+	Constructeur
+	@param identifier prefixe a utiliser pour recuperer les fichiers recents
+	dans la configuration de l'application
+	@param size Nombre de fichiers recents a retenir
+	@param parent QObject parent
+*/
 RecentFiles::RecentFiles(const QString &identifier, int size, QObject *parent) :
 	QObject(parent),
 	identifier_(identifier.isEmpty() ? "unnamed" : identifier),
@@ -85,7 +92,7 @@ void RecentFiles::fileWasOpened(const QString &filepath) {
 }
 
 /**
-	lit la liste des fichiers recents dans la configuration
+	Lit la liste des fichiers recents dans la configuration
 */
 void RecentFiles::extractFilesFromSettings() {
 	// oublie la liste des fichiers recents
@@ -118,7 +125,7 @@ void RecentFiles::insertFile(const QString &filepath) {
 }
 
 /**
-	ecrit la liste des fichiers recents dans la configuration
+	Ecrit la liste des fichiers recents dans la configuration
 */
 void RecentFiles::saveFilesToSettings() {
 	for (int i = 0 ; i < size_ && i < list_.count() ; ++ i) {

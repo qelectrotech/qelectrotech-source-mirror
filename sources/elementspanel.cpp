@@ -594,10 +594,10 @@ QTreeWidgetItem *ElementsPanel::addElement(QTreeWidgetItem *qtwi_parent, Element
 	
 	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
 	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
-	int etat;
-	CustomElement custom_elmt(element -> location(), 0, 0, &etat);
-	if (etat) {
-		qDebug() << "Le chargement du composant" << element -> location().toString() << "a echoue avec le code d'erreur" << etat;
+	int state;
+	CustomElement custom_elmt(element -> location(), 0, 0, &state);
+	if (state) {
+		qDebug() << "ElementsCategoriesList::addElement() : Le chargement du composant" << qPrintable(element -> location().toString()) << "a echoue avec le code d'erreur" << state;
 		return(0);
 	}
 	QString final_name(elmt_name.isEmpty() ? custom_elmt.name() : elmt_name);
@@ -664,7 +664,6 @@ void ElementsPanel::reload(bool reload_collections) {
 		if (qtwi) setCurrentItem(qtwi);
 	}
 }
-
 
 /**
 	Gere le double-clic sur un element.

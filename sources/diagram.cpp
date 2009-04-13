@@ -78,7 +78,6 @@ Diagram::~Diagram() {
 	foreach(QGraphicsItem *qgi_d, deletable_items) {
 		delete qgi_d;
 	}
-	// qDebug() << "Suppression du schema" << ((void*)this);
 }
 
 /**
@@ -440,11 +439,11 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		
 		CustomElement *nvel_elmt = new CustomElement(element_location);
 		if (nvel_elmt -> isNull()) {
-			QString debug_message = QString("Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(nvel_elmt -> state());
-			qDebug() << debug_message;
+			QString debug_message = QString("Diagram::fromXml() : Le chargement de la description de l'element %1 a echoue avec le code d'erreur %2").arg(element_location.path()).arg(nvel_elmt -> state());
+			qDebug() << qPrintable(debug_message);
 			delete nvel_elmt;
 			
-			qDebug() << "Utilisation d'un GhostElement en lieu et place de cet element.";
+			qDebug() << "Diagram::fromXml() : Utilisation d'un GhostElement en lieu et place de cet element.";
 			nvel_elmt = new GhostElement(element_location);
 		}
 		
@@ -455,7 +454,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 			added_elements << nvel_elmt;
 		} else {
 			delete nvel_elmt;
-			qDebug("Le chargement des parametres d'un element a echoue");
+			qDebug() << "Diagram::fromXml() : Le chargement des parametres d'un element a echoue";
 		}
 	}
 	
@@ -524,7 +523,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 					added_conductors << c;
 				}
 			}
-		} else qDebug() << "Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
+		} else qDebug() << "Diagram::fromXml() : Le chargement du conducteur" << id_p1 << id_p2 << "a echoue";
 	}
 	
 	// remplissage des listes facultatives
@@ -638,7 +637,6 @@ void Diagram::addDiagramTextItem(DiagramTextItem *dti) {
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
 	);
 }
-
 
 /**
 	Enleve un element du schema
@@ -754,7 +752,9 @@ QList<CustomElement *> Diagram::customElements() const {
 	return(elements_list);
 }
 
-/// oublie la liste des elements et conducteurs en mouvement
+/**
+	Oublie la liste des elements et conducteurs en mouvement
+*/
 void Diagram::invalidateMovedElements() {
 	if (!moved_elements_fetched) return;
 	moved_elements_fetched = false;
@@ -764,7 +764,9 @@ void Diagram::invalidateMovedElements() {
 	texts_to_move.clear();
 }
 
-/// reconstruit la liste des elements et conducteurs en mouvement
+/**
+	Reconstruit la liste des elements et conducteurs en mouvement
+*/
 void Diagram::fetchMovedElements() {
 	// recupere les elements deplaces
 	foreach (QGraphicsItem *item, selectedItems()) {
