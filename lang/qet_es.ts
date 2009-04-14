@@ -1194,7 +1194,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/exportdialog.cpp" line="496"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tiene que dar un camino a la carpeta en que se va grabar los archivos de imágines.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="542"/>
@@ -3366,7 +3366,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="110"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
-        <translation type="unfinished"></translation>
+        <translation>Mantiene la tecla Shift apretada para poder agregar varias cosas una despues de la otra</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="119"/>
