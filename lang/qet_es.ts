@@ -3383,7 +3383,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="549"/>
         <source>Attention : certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>messagebox content</comment>
-        <translation type="unfinished"></translation>
+        <translation>¡Advertencia! Algunas partes gráficas (textos, círculos, lineas, ...) parecen no caber en el cuadro del elemento. Eso podría crear fallos gráficos cuando se las maneja en el esquema. Puede corregir este problema de dos maneras: moviendo estas partes o usando Editar&gt;Editar el tamaño o hotspot.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="82"/>
