@@ -1202,7 +1202,6 @@ QList<QPointF> Conductor::junctions() const {
 			// parcoure les segments a la recherche d'un point commun
 			for (int j = 0 ; j < c_segments.count() ; ++ j) {
 				ConductorSegment *segment = c_segments[j];
-				QRectF rect(segment -> firstPoint(), segment -> secondPoint());
 				// un point commun a ete trouve sur ce segment
 				if (isContained(conductor_point, segment -> firstPoint(), segment -> secondPoint())) {
 					is_junction = true;
