@@ -1135,6 +1135,33 @@ QSet<Conductor *> Conductor::relatedConductors() const {
 }
 
 /**
+	@param a reel
+	@param b reel
+	@param c reel
+	@return true si a est entre b et c ou est egal a l'un des deux
+*/
+bool isBetween(qreal a, qreal b, qreal c) {
+	if (b <= c) {
+		return(a >= b && a <= c);
+	} else {
+		return(a <= b && a >= c);
+	}
+}
+
+/**
+	@param a point
+	@param b point
+	@param c point
+	@return true si le point a est contenu dans le rectangle delimite par les points b et c
+*/
+bool isContained(const QPointF &a, const QPointF &b, const QPointF &c) {
+	return(
+		isBetween(a.x(), b.x(), c.x()) &&
+		isBetween(a.y(), b.y(), c.y())
+	);
+}
+
+/**
 	@return la liste des positions des jonctions avec d'autres conducteurs
 */
 QList<QPointF> Conductor::junctions() const {
@@ -1177,7 +1204,7 @@ QList<QPointF> Conductor::junctions() const {
 				ConductorSegment *segment = c_segments[j];
 				QRectF rect(segment -> firstPoint(), segment -> secondPoint());
 				// un point commun a ete trouve sur ce segment
-				if (rect.contains(conductor_point)) {
+				if (isContained(conductor_point, segment -> firstPoint(), segment -> secondPoint())) {
 					is_junction = true;
 					// ce point commun ne doit pas etre une bifurcation identique a celle-ci
 					QList<ConductorBend> other_conductor_bends = c -> bends();
