@@ -159,6 +159,7 @@ class ElementScene : public QGraphicsScene {
 	void slot_addArc();
 	void slot_addTerminal();
 	void slot_addTextField();
+	void slot_select(const ElementContent &);
 	void slot_selectAll();
 	void slot_deselectAll();
 	void slot_invertSelection();

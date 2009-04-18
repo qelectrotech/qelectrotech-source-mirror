@@ -109,7 +109,7 @@ void PastePartsCommand::redo() {
 			editor_view_ -> start_top_left_corner_ = new_start_top_left_corner_;
 		}
 	}
-	foreach(QGraphicsItem *part, content_) part -> setSelected(true);
+	editor_scene_ -> slot_select(content_);
 	editor_view_ -> adjustSceneRect();
 }
 

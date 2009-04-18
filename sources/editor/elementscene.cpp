@@ -682,13 +682,21 @@ void ElementScene::paste() {
 }
 
 /**
+	Selectionne une liste de parties
+	@param content liste des parties a selectionner
+*/
+void ElementScene::slot_select(const ElementContent &content) {
+	blockSignals(true);
+	foreach(QGraphicsItem *qgi, content) qgi -> setSelected(true);
+	blockSignals(false);
+	emit(selectionChanged());
+}
+
+/**
 	Selectionne tout
 */
 void ElementScene::slot_selectAll() {
-	blockSignals(true);
-	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
-	blockSignals(false);
-	emit(selectionChanged());
+	slot_select(items());
 }
 
 /**
