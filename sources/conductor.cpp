@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QtDebug>
-#include <limits>
 #include "conductor.h"
 #include "conductorsegment.h"
 #include "conductorsegmentprofile.h"
@@ -894,13 +893,15 @@ bool Conductor::fromXml(QDomElement &e) {
 	QPointF t2 = terminal2 -> amarrageConductor();
 	qreal expected_width  = t2.x() - t1.x();
 	qreal expected_height = t2.y() - t1.y();
-	qreal precision = std::numeric_limits<qreal>::epsilon();
+	
+	// on considere que le trajet est incoherent a partir d'une unite de difference avec l'espacement entre les bornes
 	if (
-		expected_width > width + precision ||\
-		expected_width < width - precision ||\
-		expected_height > height + precision ||\
-		expected_height < height - precision
-	) return(false);
+		qAbs(expected_width  - width)  > 1.0 ||
+		qAbs(expected_height - height) > 1.0
+	) {
+		qDebug() << "Conductor::fromXml : les segments du conducteur ne semblent pas coherents - utilisation d'un trajet automatique";
+		return(false);
+	}
 	
 	/* on recree les segments a partir des donnes XML */
 	// cree la liste de points
