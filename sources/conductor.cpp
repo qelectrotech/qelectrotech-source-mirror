@@ -479,8 +479,8 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
 	
-	// decalage ideal pour le rendu centre d'un carre / cercle de 5.0 px de cote / diametre
-	qreal pretty_offset = (options -> levelOfDetail == 1 ? 2.0 : 2.5);
+	// decalage ideal pour le rendu centre d'un carre / cercle de 2.0 px de cote / diametre
+	qreal pretty_offset = (options -> levelOfDetail == 1 ? 1.0 : 1.0);
 	
 	// dessin des points d'accroche du conducteur si celui-ci est selectionne
 	if (isSelected()) {
@@ -495,8 +495,8 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 					QRectF(
 						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset,
 						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset,
-						5.0,
-						5.0
+						2.0,
+						2.0
 					),
 					square_brush
 				);
@@ -513,7 +513,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {
-			qp -> drawEllipse(QRectF(point.x() - pretty_offset, point.y() - pretty_offset, 5.0, 5.0));
+			qp -> drawEllipse(QRectF(point.x() - pretty_offset, point.y() - pretty_offset, 2.0, 2.0));
 		}
 	}
 	qp -> restore();
