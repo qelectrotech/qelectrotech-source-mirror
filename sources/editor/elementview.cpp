@@ -33,6 +33,7 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);
 	zoomReset();
 	connect(scene_, SIGNAL(pasteAreaDefined(const QRectF &)), this, SLOT(pasteAreaDefined(const QRectF &)));
+	connect(scene_, SIGNAL(partsAdded()), this, SLOT(adjustSceneRect()));
 }
 
 /// Destructeur
@@ -90,6 +91,7 @@ bool ElementView::event(QEvent *e) {
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
 void ElementView::zoomIn() {
+	adjustSceneRect();
 	scale(4.0/3.0, 4.0/3.0);
 }
 
@@ -97,6 +99,7 @@ void ElementView::zoomIn() {
 	Retrecit le schema (-25% = inverse des +33 % de zoomPlus())
 */
 void ElementView::zoomOut() {
+	adjustSceneRect();
 	scale(0.75, 0.75);
 }
 
@@ -114,6 +117,7 @@ void ElementView::zoomFit() {
 	Reinitialise le zoom
 */
 void ElementView::zoomReset() {
+	adjustSceneRect();
 	resetMatrix();
 	scale(4.0, 4.0);
 }

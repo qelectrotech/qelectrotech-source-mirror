@@ -596,7 +596,8 @@ QRectF ElementScene::borderRect() const {
 	"bounding rect" de l'element
 */
 QRectF ElementScene::sceneContent() const {
-	return(itemsBoundingRect().unite(borderRect()));
+	qreal adjustment = 5.0;
+	return(itemsBoundingRect().unite(borderRect()).adjusted(-adjustment, -adjustment, adjustment, adjustment));
 }
 
 /**
@@ -684,7 +685,10 @@ void ElementScene::paste() {
 	Selectionne tout
 */
 void ElementScene::slot_selectAll() {
+	blockSignals(true);
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
+	blockSignals(false);
+	emit(selectionChanged());
 }
 
 /**
@@ -698,7 +702,10 @@ void ElementScene::slot_deselectAll() {
 	Inverse la selection
 */
 void ElementScene::slot_invertSelection() {
+	blockSignals(true);
 	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(!qgi -> isSelected());
+	blockSignals(false);
+	emit(selectionChanged());
 }
 
 /**
