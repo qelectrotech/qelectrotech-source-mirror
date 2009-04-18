@@ -48,11 +48,14 @@ PartArc::~PartArc() {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
+void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
 	applyStylesToQPainter(*painter);
 	// enleve systematiquement la couleur de fond
 	painter -> setBrush(Qt::NoBrush);
 	QPen t = painter -> pen();
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+	painter -> setPen(t);
+	
 	if (isSelected()) {
 		// dessine l'ellipse en noir
 		painter -> drawEllipse(rect());
@@ -61,6 +64,7 @@ void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget
 		t.setColor(Qt::red);
 		painter -> setPen(t);
 	}
+	
 	painter -> drawArc(rect(), start_angle * 16, _angle * 16);
 	if (isSelected()) {
 		// dessine la croix au centre de l'ellipse

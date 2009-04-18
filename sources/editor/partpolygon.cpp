@@ -94,13 +94,12 @@ const QDomElement PartPolygon::toXml(QDomDocument &xml_document) const {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
+void PartPolygon::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
-	if (isSelected()) {
-		t.setColor(Qt::red);
-		painter -> setPen(t);
-	}
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
+	if (isSelected()) t.setColor(Qt::red);
+	painter -> setPen(t);
 	if (closed) painter -> drawPolygon(polygon());
 	else painter -> drawPolyline(polygon());
 }

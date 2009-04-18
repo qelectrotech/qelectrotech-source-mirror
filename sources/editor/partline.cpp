@@ -65,12 +65,13 @@ uint PartLine::requiredLengthForEndType(const QET::EndType &end_type) {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem */*q*/, QWidget */*w*/) {
+void PartLine::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget */*w*/) {
 	// inutile de dessiner une ligne nulle
 	if (line().p1() == line().p2()) return;
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	t.setJoinStyle(Qt::MiterJoin);
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 	if (isSelected()) {
 		t.setColor(Qt::red);
 	}

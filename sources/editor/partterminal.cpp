@@ -90,7 +90,7 @@ QWidget *PartTerminal::elementInformations() {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget *) {
+void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *) {
 	p -> save();
 	
 	// annulation des renderhints
@@ -100,6 +100,7 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *, QWidget 
 	
 	QPen t;
 	t.setWidthF(1.0);
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 	
 	// dessin de la borne en rouge
 	t.setColor(isSelected() ? Terminal::couleur_neutre : Qt::red);

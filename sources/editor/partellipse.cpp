@@ -43,13 +43,14 @@ PartEllipse::~PartEllipse() {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *) {
+void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
+	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 	if (isSelected()) {
 		t.setColor(Qt::red);
-		painter -> setPen(t);
 	}
+	painter -> setPen(t);
 	painter -> drawEllipse(rect());
 	if (isSelected()) {
 		painter -> setRenderHint(QPainter::Antialiasing, false);
