@@ -57,7 +57,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	paste_here = new QAction(QIcon(":/ico/paste.png"), tr("Coller ici", "context menu action"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 	
-	connect(scene, SIGNAL(selectionEmptinessChanged()), this, SIGNAL(selectionChanged()));
+	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
 	connect(scene, SIGNAL(readOnlyChanged(bool)), this, SLOT(applyReadOnly()));
 	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
 	connect(&(scene -> border_and_inset), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
@@ -74,29 +74,24 @@ DiagramView::~DiagramView() {
 }
 
 /**
-	Appelle la methode select sur tous les elements de la liste d'elements
+	Selectionne tous les objets du schema
 */
 void DiagramView::selectAll() {
-	if (scene -> items().isEmpty()) return;
-	QPainterPath path;
-	path.addRect(scene -> itemsBoundingRect());
-	scene -> setSelectionArea(path);
+	scene -> selectAll();
 }
 
 /**
-	appelle la methode deselect sur tous les elements de la liste d'elements
+	Deslectionne tous les objets selectionnes
 */
 void DiagramView::selectNothing() {
-	if (scene -> items().isEmpty()) return;
-	scene -> clearSelection();
+	scene -> deselectAll();
 }
 
 /**
-	Inverse l'etat de selection de tous les elements de la liste d'elements
- */
+	Inverse l'etat de selection de tous les objets du schema
+*/
 void DiagramView::selectInvert() {
-	if (scene -> items().isEmpty()) return;
-	foreach (QGraphicsItem *item, scene -> items()) item -> setSelected(!item -> isSelected());
+	scene -> invertSelection();
 }
 
 /**

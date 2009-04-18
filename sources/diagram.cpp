@@ -54,7 +54,6 @@ Diagram::Diagram(QObject *parent) :
 	t.setStyle(Qt::DashLine);
 	conductor_setter -> setPen(t);
 	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
-	connect(this, SIGNAL(selectionChanged()), this, SLOT(slot_checkSelectionEmptinessChange()));
 }
 
 /**
@@ -533,7 +532,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		content_ptr -> textFields       = added_texts;
 	}
 	
-	write(document);
+	write();
 	return(true);
 }
 
@@ -705,17 +704,36 @@ void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_
 }
 
 /**
-	Verifie si la selection est passe d'un etat ou elle est vide a un etat ou
-	elle ne l'est pas, et inversement. Si c'est le cas, le signal
-	EmptinessChanged() est emis.
+	Selectionne tous les objets du schema
 */
-void Diagram::slot_checkSelectionEmptinessChange() {
-	static bool selection_was_empty = true;
-	bool selection_is_empty = selectedItems().isEmpty();
-	if (selection_was_empty != selection_is_empty) {
-		emit(selectionEmptinessChanged());
-		selection_was_empty = selection_is_empty;
-	}
+void Diagram::selectAll() {
+	if (items().isEmpty()) return;
+	
+	blockSignals(true);
+	foreach(QGraphicsItem *qgi, items()) qgi -> setSelected(true);
+	blockSignals(false);
+	emit(selectionChanged());
+}
+
+/**
+	Deslectionne tous les objets selectionnes
+*/
+void Diagram::deselectAll() {
+	if (items().isEmpty()) return;
+	
+	clearSelection();
+}
+
+/**
+	Inverse l'etat de selection de tous les objets du schema
+*/
+void Diagram::invertSelection() {
+	if (items().isEmpty()) return;
+	
+	blockSignals(true);
+	foreach (QGraphicsItem *item, items()) item -> setSelected(!item -> isSelected());
+	blockSignals(false);
+	emit(selectionChanged());
 }
 
 /**

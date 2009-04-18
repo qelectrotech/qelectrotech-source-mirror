@@ -1628,7 +1628,7 @@ void QETDiagramEditor::removeDiagramFromProject() {
 void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	// quand on change qqc a l'interieur d'un schema, on met a jour les menus
 	undo_group.addStack(&(dv -> diagram() -> undoStack()));
-	connect(dv -> diagram(), SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
+	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
 	connect(dv, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(diagramTitleChanged(DiagramView *)));

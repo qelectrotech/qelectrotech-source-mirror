@@ -161,16 +161,12 @@ class Diagram : public QGraphicsScene {
 	public slots:
 	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
 	
-	private slots:
-	void slot_checkSelectionEmptinessChange();
+	// fonctions relative a la selection sur le schema
+	void selectAll();
+	void deselectAll();
+	void invertSelection();
 	
 	signals:
-	/**
-		Ce signal est emis lorsque la selection passe de l'etat rempli (par un
-		nombre quelconque d'elements et conducteurs) a l'etat vide et
-		vice-versa.
-	*/
-	void selectionEmptinessChanged();
 	void written();
 	void readOnlyChanged(bool);
 };

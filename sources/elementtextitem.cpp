@@ -86,7 +86,7 @@ QPointF ElementTextItem::pos() const {
 */
 void ElementTextItem::fromXml(const QDomElement &e) {
 	QPointF _pos = pos();
-	if (e.attribute("x").toDouble() == _pos.x() && e.attribute("y").toDouble() == _pos.y()) {
+	if (qFuzzyCompare(e.attribute("x").toDouble(), _pos.x()) && qFuzzyCompare(e.attribute("y").toDouble(), _pos.y())) {
 		setPlainText(e.attribute("text"));
 		previous_text = e.attribute("text");
 	}
