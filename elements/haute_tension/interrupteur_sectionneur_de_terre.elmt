@@ -1,6 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Interruteur-sectioneur de terre</name>
+        <name lang="fr" >Interrupteur-sectionneur de terre</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="14" x2="1" />
