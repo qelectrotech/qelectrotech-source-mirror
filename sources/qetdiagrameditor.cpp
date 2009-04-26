@@ -1121,6 +1121,8 @@ void QETDiagramEditor::slot_updateActions() {
 	if (dv) {
 		if (can_update_actions) {
 			undo_group.setActiveStack(&(dv -> diagram() -> undoStack()));
+			undo -> setEnabled(undo_group.canUndo());
+			redo -> setEnabled(undo_group.canRedo());
 		}
 	} else {
 		undo -> setEnabled(false);
