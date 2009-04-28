@@ -317,9 +317,9 @@ void ExportDialog::slot_keepRatioChanged(int diagram_id) {
 	
 	// gere l'icone du bouton "Conserver les proportions"
 	if (current_diagram -> keep_ratio -> isChecked()) {
-		current_diagram -> keep_ratio -> setIcon(QIcon(":/ico/lock.png"));
+		current_diagram -> keep_ratio -> setIcon(QIcon(":/ico/object-locked.png"));
 	} else {
-		current_diagram -> keep_ratio -> setIcon(QIcon(":/ico/unlock.png"));
+		current_diagram -> keep_ratio -> setIcon(QIcon(":/ico/object-unlocked.png"));
 	}
 	
 	// ne fait rien si l'option "Conserver les proportions" n'est pas activee
@@ -717,7 +717,7 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia) {
 	keep_ratio = new QPushButton();
 	keep_ratio -> setCheckable(true);
 	keep_ratio -> setChecked(true);
-	keep_ratio -> setIcon(QIcon(":/ico/lock.png"));
+	keep_ratio -> setIcon(QIcon(":/ico/object-locked.png"));
 	keep_ratio -> setToolTip(QObject::tr("Conserver les proportions"));
 	
 	reset_size = new QPushButton();
@@ -725,7 +725,7 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia) {
 	reset_size -> setToolTip(QObject::tr("R\351initialiser les dimensions"));
 	
 	preview = new QPushButton();
-	preview -> setIcon(QIcon(":/ico/viewmag.png"));
+	preview -> setIcon(QIcon(":/ico/zoom-original.png"));
 	preview -> setToolTip(QObject::tr("Aper\347u"));
 }
 

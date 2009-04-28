@@ -54,7 +54,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	updateWindowTitle();
 	
 	context_menu = new QMenu(this);
-	paste_here = new QAction(QIcon(":/ico/paste.png"), tr("Coller ici", "context menu action"), this);
+	paste_here = new QAction(QIcon(":/ico/edit-paste.png"), tr("Coller ici", "context menu action"), this);
 	connect(paste_here, SIGNAL(triggered()), this, SLOT(pasteHere()));
 	
 	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));

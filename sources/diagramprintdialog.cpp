@@ -170,9 +170,9 @@ void DiagramPrintDialog::buildPrintTypeDialog() {
 	buttons_          = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	dialog_ -> setWindowTitle(tr("Choix du type d'impression"));
-	printer_icon_ -> setPixmap(QPixmap(":/ico/printtype_printer.png"));
-	pdf_icon_     -> setPixmap(QPixmap(":/ico/printtype_pdf.png"));
-	ps_icon_      -> setPixmap(QPixmap(":/ico/printtype_ps.png"));
+	printer_icon_ -> setPixmap(QPixmap(":/ico/printer.png"));
+	pdf_icon_     -> setPixmap(QPixmap(":/ico/application-pdf.png"));
+	ps_icon_      -> setPixmap(QPixmap(":/ico/image-x-eps.png"));
 	printtype_choice_ -> addButton(printer_choice_);
 	printtype_choice_ -> addButton(pdf_choice_);
 	printtype_choice_ -> addButton(ps_choice_);

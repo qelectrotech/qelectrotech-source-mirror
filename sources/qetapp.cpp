@@ -828,15 +828,15 @@ void QETApp::initSystemTray() {
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 	
-	quitter_qet       = new QAction(QIcon(":/ico/exit.png"),       tr("&Quitter"),                                        this);
+	quitter_qet       = new QAction(QIcon(":/ico/application-exit.png"),       tr("&Quitter"),                                        this);
 	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
 	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
 	reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
 	restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
 	reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
 	restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
-	new_diagram       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
-	new_element       = new QAction(QIcon(":/ico/window_new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
+	new_diagram       = new QAction(QIcon(":/ico/window-new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
+	new_element       = new QAction(QIcon(":/ico/window-new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
 	
 	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
@@ -1002,22 +1002,22 @@ int QETStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidge
 QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QStyleOption *option, const QWidget* widget) const {
 	switch(standardIcon) {
 		case QStyle::SP_DialogSaveButton:
-			return(QIcon(":/ico/save.png"));
+			return(QIcon(":/ico/document-save.png"));
 		case QStyle::SP_DialogOpenButton:
-			return(QIcon(":/ico/open.png"));
+			return(QIcon(":/ico/document-open.png"));
 		case QStyle::SP_DialogCancelButton:
-			return(QIcon(":/ico/button_cancel.png"));
+			return(QIcon(":/ico/dialog-cancel.png"));
 		case QStyle::SP_DialogOkButton:
 		case QStyle::SP_DialogApplyButton:
-			return(QIcon(":/ico/button_ok.png"));
+			return(QIcon(":/ico/dialog-ok.png"));
 		case QStyle::SP_DialogCloseButton:
-			return(QIcon(":/ico/fileclose.png"));
+			return(QIcon(":/ico/document-close.png"));
 		case QStyle::SP_DialogYesButton:
-			return(QIcon(":/ico/allowed.png"));
+			return(QIcon(":/ico/user-online.png"));
 		case QStyle::SP_DialogNoButton:
-			return(QIcon(":/ico/forbidden.png"));
+			return(QIcon(":/ico/user-busy.png"));
 		case QStyle::SP_DialogResetButton:
-			return(QIcon(":/ico/undo.png"));
+			return(QIcon(":/ico/edit-undo.png"));
 		case QStyle::SP_DialogHelpButton:
 		case QStyle::SP_DialogDiscardButton:
 			return(QIcon());

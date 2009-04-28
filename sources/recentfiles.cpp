@@ -141,7 +141,7 @@ void RecentFiles::buildMenu() {
 	// reinitialise le menu
 	if (!menu_) {
 		menu_ = new QMenu(tr("&R\351cemment ouvert(s)"));
-		menu_ -> setIcon(QIcon(":/ico/open.png"));
+		menu_ -> setIcon(QIcon(":/ico/document-open-recent.png"));
 	} else {
 		menu_ -> clear();
 	}

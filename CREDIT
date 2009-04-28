@@ -1,28 +1,30 @@
 [en]
-Thanks to Trolltech for their Qt library ( http://trolltech.com/ ), licensed
-under GNU/GPL.
+Thanks to Qt Software for their Qt library ( http://www.qtsoftware.com/ ),
+licensed under GNU/GPL.
 Thanks to Everaldo Coelho for the Crystal SVG icons theme (
-http://www.everaldo.com/crystal/ ) licensed under LGPL, and to the KDE
-project ( http://www.kde.org/ ).
+http://www.everaldo.com/crystal/ ) licensed under LGPL, to Nuno Pinheiro for the
+Oxygen icons theme ( http://www.oxygen-icons.org/ ) licensed under LGPL, and to
+the KDE project ( http://www.kde.org/ ).
 Thanks to Loic for his mathematics-related explanations.
 Thanks to Nicolas for the Mac OS X experimentations.
 Thanks to Remi Collet for the Fedora packaging.
-Thanks to Piotr SQLek Skólski for the Debian packaging.
+Thanks to Laurent Trinques for the Debian packaging.
 Thanks to `trem' for the Mandriva packaging.
 Thanks to TuxFamily ( http://tuxfamily.org ) for hosting the project.
 Thanks to `Nishiki' for his elements and his support.
 Thanks to qtcentre.org for their SingleApplication class.
 
 [fr]
-Merci à Trolltech pour la bibliothèque Qt ( http://trolltech.com/ ), sous
+Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous
 licence GNU/GPL.
 Merci à Everaldo Coelho pour le thème d'icônes Crystal SVG (
-http://www.everaldo.com/crystal/ ) sous licence LGPL, ainsi qu'au projet KDE (
+http://www.everaldo.com/crystal/ ) sous licence LGPL, à Nuno Pinheiro pour le
+thème d'icônes Oxygen ( http://www.oxygen-icons.org/ ) ainsi qu'au projet KDE (
 http://www.kde.org/ ).
 Merci à Loic pour ses explications d'ordre mathématique.
 Merci à Nicolas pour les expérimentations Mac OS X.
 Merci à Remi Collet pour les paquets Fedora.
-Merci à Piotr SQLek Skólski pour les paquets Debian.
+Merci à Laurent Trinques pour les paquets Debian.
 Merci à `trem' pour les paquets Mandriva.
 Merci à TuxFamily ( http://tuxfamily.org ) pour l'hébergement du projet.
 Merci à `Nishiki' pour ses éléments et son soutien.

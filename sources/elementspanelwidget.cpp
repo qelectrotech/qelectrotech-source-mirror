@@ -47,23 +47,23 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	elements_panel = new ElementsPanel(this);
 	
 	// initialise les actions
-	reload            = new QAction(QIcon(":/ico/reload.png"),          tr("Recharger les collections"),           this);
-	new_category      = new QAction(QIcon(":/ico/category_new.png"),    tr("Nouvelle cat\351gorie"),               this);
-	edit_category     = new QAction(QIcon(":/ico/category_edit.png"),   tr("\311diter la cat\351gorie"),           this);
-	delete_category   = new QAction(QIcon(":/ico/category_delete.png"), tr("Supprimer la cat\351gorie"),           this);
-	delete_collection = new QAction(QIcon(":/ico/category_delete.png"), tr("Vider la collection"),                 this);
-	new_element       = new QAction(QIcon(":/ico/new.png"),             tr("Nouvel \351l\351ment"),                this);
-	edit_element      = new QAction(QIcon(":/ico/edit.png"),            tr("\311diter l'\351l\351ment"),           this);
-	delete_element    = new QAction(QIcon(":/ico/delete.png"),          tr("Supprimer l'\351l\351ment"),           this);
-	prj_close         = new QAction(QIcon(":/ico/fileclose.png"),       tr("Fermer ce projet"),                    this);
-	prj_edit_prop     = new QAction(QIcon(":/ico/info.png"),            tr("Propri\351t\351s du projet"),          this);
-	prj_prop_diagram  = new QAction(QIcon(":/ico/info.png"),            tr("Propri\351t\351s du sch\351ma"),       this);
-	prj_add_diagram   = new QAction(QIcon(":/ico/diagram_add.png"),     tr("Ajouter un sch\351ma"),                this);
-	prj_del_diagram   = new QAction(QIcon(":/ico/diagram_del.png"),     tr("Supprimer ce sch\351ma"),              this);
-	move_elements_    = new QAction(QIcon(":/ico/item_move.png"),       tr("D\351placer dans cette cat\351gorie"), this);
-	copy_elements_    = new QAction(QIcon(":/ico/item_copy.png"),       tr("Copier dans cette cat\351gorie"),      this);
-	cancel_elements_  = new QAction(QIcon(":/ico/item_cancel.png"),     tr("Annuler"),                             this);
-	erase_textfield   = new QAction(QIcon(":/ico/erase.png"),           tr("Effacer le filtre"),                   this);
+	reload            = new QAction(QIcon(":/ico/view-refresh.png"),               tr("Recharger les collections"),           this);
+	new_category      = new QAction(QIcon(":/ico/folder-new.png"),                 tr("Nouvelle cat\351gorie"),               this);
+	edit_category     = new QAction(QIcon(":/ico/folder-edit.png"),                tr("\311diter la cat\351gorie"),           this);
+	delete_category   = new QAction(QIcon(":/ico/folder-delete.png"),              tr("Supprimer la cat\351gorie"),           this);
+	delete_collection = new QAction(QIcon(":/ico/folder-delete.png"),              tr("Vider la collection"),                 this);
+	new_element       = new QAction(QIcon(":/ico/document-new.png"),               tr("Nouvel \351l\351ment"),                this);
+	edit_element      = new QAction(QIcon(":/ico/document-edit.png"),              tr("\311diter l'\351l\351ment"),           this);
+	delete_element    = new QAction(QIcon(":/ico/document-delete.png"),            tr("Supprimer l'\351l\351ment"),           this);
+	prj_close         = new QAction(QIcon(":/ico/document-close.png"),             tr("Fermer ce projet"),                    this);
+	prj_edit_prop     = new QAction(QIcon(":/ico/dialog-information.png"),         tr("Propri\351t\351s du projet"),          this);
+	prj_prop_diagram  = new QAction(QIcon(":/ico/dialog-information.png"),         tr("Propri\351t\351s du sch\351ma"),       this);
+	prj_add_diagram   = new QAction(QIcon(":/ico/diagram_add.png"),                tr("Ajouter un sch\351ma"),                this);
+	prj_del_diagram   = new QAction(QIcon(":/ico/diagram_del.png"),                tr("Supprimer ce sch\351ma"),              this);
+	move_elements_    = new QAction(QIcon(":/ico/item_move.png"),                  tr("D\351placer dans cette cat\351gorie"), this);
+	copy_elements_    = new QAction(QIcon(":/ico/item_copy.png"),                  tr("Copier dans cette cat\351gorie"),      this);
+	cancel_elements_  = new QAction(QIcon(":/ico/item_cancel.png"),                tr("Annuler"),                             this);
+	erase_textfield   = new QAction(QIcon(":/ico/edit-clear-locationbar-ltr.png"), tr("Effacer le filtre"),                   this);
 	
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);

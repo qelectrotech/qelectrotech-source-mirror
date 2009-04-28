@@ -73,7 +73,7 @@ void ElementsCategoriesList::reload() {
 	
 	// chargement des elements de la collection utilisateur
 	if (!first_load) QETApp::customElementsCollection() -> reload();
-	addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/folder_home.png"));
+	addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/go-home.png"));
 	
 	if (first_load) first_load = false;
 }

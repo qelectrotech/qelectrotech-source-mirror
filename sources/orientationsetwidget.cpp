@@ -26,8 +26,8 @@ OrientationSetWidget::OrientationSetWidget(QWidget *parent) : QWidget(parent) {
 	default_radios = new QButtonGroup(this);
 	
 	#define MK_COMBO_BOX(a) a##_orientation = new QComboBox();\
-	a##_orientation -> addItem(QIcon(":/ico/allowed.png"), tr("Possible"), "y");\
-	a##_orientation -> addItem(QIcon(":/ico/forbidden.png"),tr("Impossible"), "n");\
+	a##_orientation -> addItem(QIcon(":/ico/user-online.png"), tr("Possible"), "y");\
+	a##_orientation -> addItem(QIcon(":/ico/user-busy.png"),tr("Impossible"), "n");\
 	connect(a##_orientation, SIGNAL(activated(int)), this, SLOT(updateOrientationSet()));\
 	a##_default = new QRadioButton();
 	
