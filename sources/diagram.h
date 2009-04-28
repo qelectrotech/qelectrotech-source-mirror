@@ -108,8 +108,9 @@ class Diagram : public QGraphicsScene {
 	
 	// fonctions relatives a l'import / export XML
 	QDomDocument toXml(bool = true);
-	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = NULL);
-	bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = NULL);
+	bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
+	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
+	bool fromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
 	void write();
 	void write(const QDomElement &);
 	bool wasWritten() const;
@@ -152,7 +153,7 @@ class Diagram : public QGraphicsScene {
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();
-	void moveElements(const QPointF &, QGraphicsItem * = NULL);
+	void moveElements(const QPointF &, QGraphicsItem * = 0);
 	bool usesElement(const ElementsLocation &);
 	
 	QUndoStack &undoStack();

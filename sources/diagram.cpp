@@ -344,13 +344,41 @@ QDomDocument Diagram::toXml(bool diagram) {
 	@param position La position du schema importe
 	@param consider_informations Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param content_ptr si ce pointeur vers un DiagramContent n'est pas NULL, il
-	sera rempli avec le contenu ajoute au schema par le fromXml
+	@param content_ptr si ce pointeur vers un DiagramContent est different de 0,
+	il sera rempli avec le contenu ajoute au schema par le fromXml
 	@return true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
 	QDomElement root = document.documentElement();
 	return(fromXml(root, position, consider_informations, content_ptr));
+}
+
+/**
+	Importe le schema decrit dans un element XML. Cette methode delegue son travail a Diagram::fromXml
+	Si l'import reussit, cette methode initialise egalement le document XML
+	interne permettant de bien gerer l'enregistrement de ce schema dans le
+	projet auquel il appartient.
+	@see Diagram::fromXml
+	@param document Le document XML a analyser
+	@param position La position du schema importe
+	@param consider_informations Si vrai, les informations complementaires
+	(auteur, titre, ...) seront prises en compte
+	@param content_ptr si ce pointeur vers un DiagramContent est different de 0,
+	il sera rempli avec le contenu ajoute au schema par le fromXml
+	@return true si l'import a reussi, false sinon
+	
+*/
+bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
+	// import le contenu et les proprietes du schema depuis l'element XML fourni en parametre
+	bool from_xml = fromXml(document, position, consider_informations, content_ptr);
+	
+	// initialise le document XML interne a partir de l'element XML fourni en parametre
+	if (from_xml) {
+		xml_document.clear();
+		xml_document.appendChild(xml_document.importNode(document, true));
+		// a ce stade, le document XML interne contient le code XML qui a ete importe, et non pas une version re-exporte par la methode toXml()
+	}
+	return(from_xml);
 }
 
 /**
@@ -362,8 +390,8 @@ bool Diagram::fromXml(QDomDocument &document, QPointF position, bool consider_in
 	@param position La position du schema importe
 	@param consider_informations Si vrai, les informations complementaires
 	(auteur, titre, ...) seront prises en compte
-	@param content_ptr si ce pointeur vers un DiagramContent n'est pas NULL, il
-	sera rempli avec le contenu ajoute au schema par le fromXml
+	@param content_ptr si ce pointeur vers un DiagramContent est different de 0,
+	il sera rempli avec le contenu ajoute au schema par le fromXml
 	@return true si l'import a reussi, false sinon
 */
 bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_informations, DiagramContent *content_ptr) {
@@ -526,13 +554,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	}
 	
 	// remplissage des listes facultatives
-	if (content_ptr != NULL) {
+	if (content_ptr) {
 		content_ptr -> elements         = added_elements;
 		content_ptr -> conductorsToMove = added_conductors;
 		content_ptr -> textFields       = added_texts;
 	}
 	
-	write();
 	return(true);
 }
 
@@ -833,7 +860,7 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	
 	// deplace les elements selectionnes
 	foreach(Element *element, elementsToMove()) {
-		if (dontmove != NULL && element == dontmove) continue;
+		if (dontmove && element == dontmove) continue;
 		element -> setPos(element -> pos() + diff);
 	}
 	
@@ -850,7 +877,7 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	
 	// deplace les champs de texte
 	foreach(DiagramTextItem *dti, textsToMove()) {
-		if (dontmove != NULL && dti == dontmove) continue;
+		if (dontmove && dti == dontmove) continue;
 		dti -> setPos(dti -> pos() + diff);
 	}
 }

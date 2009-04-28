@@ -729,7 +729,7 @@ void QETProject::readDiagramsXml() {
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
 			Diagram *diagram = new Diagram();
 			diagram -> setProject(this);
-			bool diagram_loading = diagram -> fromXml(diagram_xml_element);
+			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
 			if (diagram_loading) {
 				// recupere l'attribut order du schema
 				int diagram_order = -1;
