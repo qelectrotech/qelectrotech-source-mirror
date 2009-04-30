@@ -1,0 +1,79 @@
+====== Changelog 0.11 -> 0.2 ======
+
+===== Notion de fichier projet =====
+Un fichier .qet peut désormais contenir zéro, un ou plusieurs schémas électriques. Les éléments composant ces schémas sont embarqués dans le fichier projet au moment où ils sont posés sur un schéma. Le panel d'éléments affiche donc désormais :
+  * les projets ouverts, avec, sous chaque projet :
+    * les schémas de ce projet,
+    * la collection embarquée du projet (catégories et éléments utilisés dans les schémas)
+  * la collection commune fournie par QET,
+  * et la collection personnelle de l'utilisateur.
+
+===== Éditeur de schémas =====
+  * Il est désormais possible de déplacer et copier les catégories et éléments par simple glisser-déposer (drag'n drop) dans le panel d'éléments.
+  * La collection embarquée est manipulable au même titre que la collection utilisateur. Les éléments inutilisés dans le projet apparaissent sur fond rouge et un dialogue permet de les purger rapidement.
+  * Chaque projet embarque également (au niveau de ses propriétés) les paramétrages par défaut pour les nouveaux schémas, cartouches et conducteurs.
+  * Il est possible de changer l'ordre des schémas dans le projet en déplaçant les onglets qui les représente. Dans le champ "Folio" des cartouches, on peut se référer à la position du schéma courant ou au nombre total de schémas dans le projet en écrivant respectivement %id et %total.
+  * Lors du chargement d'un fichier .qet, si des éléments ne sont pas trouvés, ils sont remplacés par un élément "fantôme", ce qui évite de perdre certaines informations lors de l'enregistrement du fichier.
+  * Le rendu avec un zoom réduit a été amélioré.
+  * Enfin, le logiciel gère l'ouverture en lecture seule d'un fichier projet.
+
+==== Impression et export ====
+
+À partir de la version 0.2, QElectroTech :
+  * propose d'utiliser une imprimante réelle ou bien de générer un document PDF ou PostScript, et ce sous Windows comme sous X11.
+  * génère un aperçu avant l'impression d'un projet. Cet aperçu permet de choisir les options d'impression mais également les schémas à imprimer ou non.
+
+À noter toutefois une limitation pour les impressions PDF/PS sous Windows : le dialogue de mise en page, permettant de spécifier le format du papier ainsi que ses marges, n'est pas disponible.
+
+Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a également été refait dans l'optique d'un export simultané de tous les schémas du projet.
+
+===== Éditeur d'éléments =====
+
+  * Lorsque l'on dessine une ligne dans l'éditeur d'éléments, il est possible de choisir un embout différent pour chaque extrémité, comme par exemple une flèche, un cercle, un carré ou, tout simplement, un bout de ligne normal.
+  * La forme "Rectangle" a été ajoutée.
+  * On peut enregistrer un élément en désignant un fichier (= comportement en 0.11) ou bien en choisissant un élément cible dans une liste reprenant l'arborescence du panel d'éléments.
+  * Si l'on maintient la touche Shift lorsque l'on ajoute une partie (droite, cercle, texte, ...), l'outil en cours est conservé après le dessin. Sinon l'éditeur repasse sur l'outil de sélection.
+  * La grille a été améliorée : sa densité varie en fonction du zoom ; les points correspondant à ceux de la grille de l'éditeur de schémas sont mis en valeur.
+  * L'accrochage à la grille (aka "snap to grid", également connu sous le nom de grille magnétique ou encore grille aimantée) a été ajouté. Le dessin s'y accroche désormais avec une précision de 1px. On peut travailler en coordonnées libres en maintenant la touche Ctrl enfoncée durant le dessin.
+  * Le copier-coller a été implémenté : il est possible de coller :
+     * avec le bouton du milieu de la souris
+     * en choisissant une "zone de collage" sur l'élément (Ctrl+Shift+V) : cf screenshot à gauche
+     * directement (Ctrl+V) : les parties collées sont placées à côté des parties copiées ; si on recolle les parties, elles sont collées encore un cran à côté, et ce de manière incrémentale. Ainsi le screenshot à droite montre ce que l'on obtient en collant une sélection 8 fois d'affilée.
+
+====== Changelog 0.1 -> 0.11 ======
+
+===== Fonctionnalités et interface =====
+
+  * L'application est désormais capable d'ouvrir un fichier élément passe en paramètre
+  * L'application se lance désormais une seule fois par utilisateur
+  * Lors de l'ouverture d'un fichier en dehors de l'application alors que QET est déjà démarré celui-ci essaye de s'afficher ou d'attirer l'attention de l'utilisateur.
+  * L'application vérifie que ce fichier n'est pas déjà ouvert dans tous les éditeurs de schémas / éléments.
+  * Ajout de fichiers permettant d'automatiser les associations de fichiers sous Windows (.bat et .reg) et X11 (.desktop et .xml)
+  * Ajout de menus "Récemment ouverts" pour accéder aux fichiers récents dans les éditeurs de schémas et éléments.
+  * Ajout d'un splash screen
+  * La hauteur du schéma est désormais gérée via un système de lignes, dont le nombre et la hauteur sont ajustables.
+  * Il est également possible d'afficher ou non les en-têtes des lignes et/ou des colonnes.
+  * Ajout d'une option --lang-dir
+  * Ajout d'une description dans le dialogue des options d'impression
+  * Ajout de pages de manuel Unix (`man') en anglais et en français
+
+===== Corrections de bugs =====
+
+  * Bug #12 : QET provoquait une erreur de segmentation dès son démarrage dans un environnement sans systray
+  * Bug #14 : il manquait un / dans le chemin proposé lors de l'impression vers un PDF
+  * Bug #15 : Mauvais positionnement des champs de texte sur le schéma
+  * Bug #16 : Mauvaise gestion des modifications du texte d'un conducteur
+  * La classe DiagramView écrivait sur la sortie d'erreur sans fin de ligne
+  * L'option --config-dir était mal prise en compte
+  * Après fermeture d'un schema, le menu Fenêtres n'était pas correctement mis à jour
+  * Les textes des éléments, des conducteurs, du cartouche ainsi que les textes indépendants utilisent désormais tous la même police.
+  * Remise à niveau de l'impression suite au passage à Qt 4.4
+
+===== Code et détails techniques =====
+
+  * Corrections pour que QET compile avec gcc-4.3
+  * Les classes Conductor et Element héritent désormais de QObject (dépendance sur Qt 4.4)
+  * Affinage du constructeur de la classe QETApp
+  * Moins d'avertissements à la compilation (testé avec gcc 4.3)
+  * Moins d'inclusions non pertinentes
+  * Nettoyage du trunk : déplacement des sources dans un sous-répertoire
