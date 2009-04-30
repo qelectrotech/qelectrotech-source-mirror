@@ -273,7 +273,7 @@ examples.path      = $$join(INSTALL_PREFIX,,,$${QET_EXAMPLES_PATH})
 examples.files     = examples/*
 
 copyright.path     = $$join(INSTALL_PREFIX,,,$${QET_LICENSE_PATH})
-copyright.files    = LICENSE CREDIT README
+copyright.files    = LICENSE CREDIT README ChangeLog
 
 mime_xml.path      = $$join(INSTALL_PREFIX,,,$${QET_MIME_XML_PATH})
 mime_xml.files     = misc/x-qet-*.xml
