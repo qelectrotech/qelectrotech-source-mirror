@@ -1,6 +1,7 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="80" height="160" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >ET</name>
+        <name lang="en" >AND</name>
     </names>
     <description>
         <input x="-46" y="10" size="8" rotate="true" text="_" />
