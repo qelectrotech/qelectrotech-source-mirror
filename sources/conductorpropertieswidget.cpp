@@ -18,6 +18,7 @@
 #include "conductorpropertieswidget.h"
 #include <QtGui>
 #include "conductor.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -68,7 +69,7 @@ void ConductorPropertiesWidget::buildInterface() {
 	
 	QHBoxLayout *singleline_layout3 = new QHBoxLayout();
 	phase_checkbox = new QCheckBox(tr("phase"));
-	phase_checkbox -> setIcon(QIcon(":/ico/phase.png"));
+	phase_checkbox -> setIcon(QET::Icons::Phase);
 	phase_slider = new QSlider(Qt::Horizontal);
 	phase_slider -> setRange(1, 3);
 	phase_spinbox = new QSpinBox();
@@ -79,9 +80,9 @@ void ConductorPropertiesWidget::buildInterface() {
 	
 	QVBoxLayout *singleline_layout2 = new QVBoxLayout();
 	ground_checkbox = new QCheckBox(tr("terre"));
-	ground_checkbox -> setIcon(QIcon(":/ico/ground.png"));
+	ground_checkbox -> setIcon(QET::Icons::Ground);
 	neutral_checkbox = new QCheckBox(tr("neutre"));
-	neutral_checkbox -> setIcon(QIcon(":/ico/neutral.png"));
+	neutral_checkbox -> setIcon(QET::Icons::Neutral);
 	singleline_layout2 -> addWidget(ground_checkbox);
 	singleline_layout2 -> addWidget(neutral_checkbox);
 	singleline_layout2 -> addLayout(singleline_layout3);

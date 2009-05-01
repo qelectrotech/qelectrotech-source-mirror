@@ -19,6 +19,7 @@
 #include "qetprintpreviewdialog.h"
 #include <math.h>
 #include "diagramschooser.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -170,9 +171,9 @@ void DiagramPrintDialog::buildPrintTypeDialog() {
 	buttons_          = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	dialog_ -> setWindowTitle(tr("Choix du type d'impression"));
-	printer_icon_ -> setPixmap(QPixmap(":/ico/printer.png"));
-	pdf_icon_     -> setPixmap(QPixmap(":/ico/application-pdf.png"));
-	ps_icon_      -> setPixmap(QPixmap(":/ico/image-x-eps.png"));
+	printer_icon_ -> setPixmap(QET::Icons::Printer.pixmap(32, 32));
+	pdf_icon_     -> setPixmap(QET::Icons::PDF.pixmap(32, 32));
+	ps_icon_      -> setPixmap(QET::Icons::EPS.pixmap(32, 32));
 	printtype_choice_ -> addButton(printer_choice_);
 	printtype_choice_ -> addButton(pdf_choice_);
 	printtype_choice_ -> addButton(ps_choice_);

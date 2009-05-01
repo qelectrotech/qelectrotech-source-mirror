@@ -19,6 +19,7 @@
 #include "qettabwidget.h"
 #include "aboutqet.h"
 #include "qet.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -63,7 +64,7 @@ QWidget *AboutQET::title() const {
 	QWidget *icon_and_title = new QWidget();
 	// icone
 	QLabel *icon = new QLabel();
-	icon -> setPixmap(QIcon(":/ico/qelectrotech.png").pixmap(48, 48));
+	icon -> setPixmap(QET::Icons::QETIcon.pixmap(48, 48));
 	// label "QElectroTech"
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
 	title -> setTextFormat(Qt::RichText);

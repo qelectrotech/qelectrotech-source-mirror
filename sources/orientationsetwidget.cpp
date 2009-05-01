@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "orientationsetwidget.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -26,8 +27,8 @@ OrientationSetWidget::OrientationSetWidget(QWidget *parent) : QWidget(parent) {
 	default_radios = new QButtonGroup(this);
 	
 	#define MK_COMBO_BOX(a) a##_orientation = new QComboBox();\
-	a##_orientation -> addItem(QIcon(":/ico/user-online.png"), tr("Possible"), "y");\
-	a##_orientation -> addItem(QIcon(":/ico/user-busy.png"),tr("Impossible"), "n");\
+	a##_orientation -> addItem(QET::Icons::Allowed, tr("Possible"), "y");\
+	a##_orientation -> addItem(QET::Icons::Forbidden,tr("Impossible"), "n");\
 	connect(a##_orientation, SIGNAL(activated(int)), this, SLOT(updateOrientationSet()));\
 	a##_default = new QRadioButton();
 	
@@ -47,13 +48,13 @@ OrientationSetWidget::OrientationSetWidget(QWidget *parent) : QWidget(parent) {
 	
 	// petites icones symbolisant les orientations
 	QLabel *north_pixmap = new QLabel(tr("Nord :"));
-	north_pixmap -> setPixmap(QPixmap(":/ico/north.png"));
+	north_pixmap -> setPixmap(QET::Icons::North.pixmap(16, 16));
 	QLabel *east_pixmap = new QLabel(tr("Est :"));
-	east_pixmap -> setPixmap(QPixmap(":/ico/east.png"));
+	east_pixmap -> setPixmap(QET::Icons::East.pixmap(16, 16));
 	QLabel *south_pixmap = new QLabel(tr("Sud :"));
-	south_pixmap -> setPixmap(QPixmap(":/ico/south.png"));
+	south_pixmap -> setPixmap(QET::Icons::South.pixmap(16, 16));
 	QLabel *west_pixmap = new QLabel(tr("Ouest :"));
-	west_pixmap -> setPixmap(QPixmap(":/ico/west.png"));
+	west_pixmap -> setPixmap(QET::Icons::West.pixmap(16, 16));
 	
 	QGridLayout *qgl = new QGridLayout(this);
 	qgl -> addWidget(new QLabel(tr("Par d\351faut")),   0, 3);

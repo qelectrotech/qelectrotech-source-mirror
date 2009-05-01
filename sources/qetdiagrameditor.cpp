@@ -26,6 +26,7 @@
 #include "qetproject.h"
 #include "projectview.h"
 #include "recentfiles.h"
+#include "qeticons.h"
 
 /**
 	constructeur
@@ -57,7 +58,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	setWindowTitle(tr("QElectroTech", "window title"));
 	
 	// icone de la fenetre
-	setWindowIcon(QIcon(":/ico/qet.png"));
+	setWindowIcon(QET::Icons::QETLogo);
 	
 	// barre de statut de la fenetre
 	statusBar() -> showMessage(tr("QElectroTech", "status bar message"));
@@ -190,66 +191,66 @@ void QETDiagramEditor::aboutQET() {
 */
 void QETDiagramEditor::actions() {
 	// icones et labels
-	new_file          = new QAction(QIcon(":/ico/document-new.png"),        tr("&Nouveau"),                             this);
-	open_file         = new QAction(QIcon(":/ico/document-open.png"),       tr("&Ouvrir"),                              this);
-	close_file        = new QAction(QIcon(":/ico/document-close.png"),      tr("&Fermer"),                              this);
-	save_file         = new QAction(QIcon(":/ico/document-save.png"),       tr("&Enregistrer"),                         this);
-	save_file_sous    = new QAction(QIcon(":/ico/document-save-as.png"),    tr("Enregistrer sous"),                     this);
-	save_all          = new QAction(QIcon(":/ico/document-save-all.png"),   tr("&Enregistrer tous les sch\351mas"),     this);
-	import_diagram    = new QAction(QIcon(":/ico/document-import.png"),              tr("&Importer"),                            this);
-	export_diagram    = new QAction(QIcon(":/ico/document-export.png"),     tr("E&xporter"),                            this);
-	print             = new QAction(QIcon(":/ico/document-print.png"),      tr("Imprimer"),                             this);
-	quit_editor       = new QAction(QIcon(":/ico/application-exit.png"),    tr("&Quitter"),                             this);
+	new_file          = new QAction(QET::Icons::DocumentNew,           tr("&Nouveau"),                             this);
+	open_file         = new QAction(QET::Icons::DocumentOpen,          tr("&Ouvrir"),                              this);
+	close_file        = new QAction(QET::Icons::DocumentClose,         tr("&Fermer"),                              this);
+	save_file         = new QAction(QET::Icons::DocumentSave,          tr("&Enregistrer"),                         this);
+	save_file_sous    = new QAction(QET::Icons::DocumentSaveAs,        tr("Enregistrer sous"),                     this);
+	save_all          = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer tous les sch\351mas"),     this);
+	import_diagram    = new QAction(QET::Icons::DocumentImport,        tr("&Importer"),                            this);
+	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
+	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
+	quit_editor       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                             this);
 	
 	undo = undo_group.createUndoAction(this, tr("Annuler"));
-	undo -> setIcon(QIcon(":/ico/edit-undo.png"));
+	undo -> setIcon(QET::Icons::EditUndo);
 	redo = undo_group.createRedoAction(this, tr("Refaire"));
-	redo -> setIcon(QIcon(":/ico/edit-redo.png"));
-	cut               = new QAction(QIcon(":/ico/edit-cut.png"),               tr("Co&uper"),                              this);
-	copy              = new QAction(QIcon(":/ico/edit-copy.png"),              tr("Cop&ier"),                              this);
-	paste             = new QAction(QIcon(":/ico/edit-paste.png"),             tr("C&oller"),                              this);
-	select_all        = new QAction(QIcon(":/ico/edit-select-all.png"),        tr("Tout s\351lectionner"),                 this);
-	select_nothing    = new QAction(                                           tr("D\351s\351lectionner tout"),            this);
-	select_invert     = new QAction(                                           tr("Inverser la s\351lection"),             this);
-	delete_selection  = new QAction(QIcon(":/ico/edit-delete.png"),            tr("Supprimer"),                            this);
-	rotate_selection  = new QAction(QIcon(":/ico/object-rotate-right.png"),    tr("Pivoter"),                              this);
-	conductor_prop    = new QAction(QIcon(":/ico/conductor.png"),              tr("Propri\351t\351s du conducteur"),       this);
-	conductor_reset   = new QAction(QIcon(":/ico/conductor2.png"),             tr("R\351initialiser les conducteurs"),     this);
-	conductor_default = new QAction(QIcon(":/ico/conductor3.png"),             tr("Conducteurs par d\351faut"),            this);
-	infos_diagram     = new QAction(QIcon(":/ico/dialog-information.png"),     tr("Propri\351t\351s du sch\351ma"),        this);
-	add_text          = new QAction(QIcon(":/ico/textfield.png"),              tr("Ajouter un champ de texte"),            this);
-	add_column        = new QAction(QIcon(":/ico/add_col.png"),                tr("Ajouter une colonne"),                  this);
-	remove_column     = new QAction(QIcon(":/ico/remove_col.png"),             tr("Enlever une colonne"),                  this);
-	add_row           = new QAction(QIcon(":/ico/add_row.png"),                tr("Ajouter une ligne"),                    this);
-	remove_row        = new QAction(QIcon(":/ico/remove_row.png"),             tr("Enlever une ligne"),                    this);
+	redo -> setIcon(QET::Icons::EditRedo);
+	cut               = new QAction(QET::Icons::EditCut,               tr("Co&uper"),                              this);
+	copy              = new QAction(QET::Icons::EditCopy,              tr("Cop&ier"),                              this);
+	paste             = new QAction(QET::Icons::EditPaste,             tr("C&oller"),                              this);
+	select_all        = new QAction(QET::Icons::EditSelectAll,         tr("Tout s\351lectionner"),                 this);
+	select_nothing    = new QAction(                                   tr("D\351s\351lectionner tout"),            this);
+	select_invert     = new QAction(                                   tr("Inverser la s\351lection"),             this);
+	delete_selection  = new QAction(QET::Icons::EditDelete,            tr("Supprimer"),                            this);
+	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
+	conductor_prop    = new QAction(QET::Icons::Conductor,             tr("Propri\351t\351s du conducteur"),       this);
+	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
+	conductor_default = new QAction(QET::Icons::DefaultConductor,      tr("Conducteurs par d\351faut"),            this);
+	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
+	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
+	add_column        = new QAction(QET::Icons::AddColumn,             tr("Ajouter une colonne"),                  this);
+	remove_column     = new QAction(QET::Icons::RemoveColumn,          tr("Enlever une colonne"),                  this);
+	add_row           = new QAction(QET::Icons::AddRow,                tr("Ajouter une ligne"),                    this);
+	remove_row        = new QAction(QET::Icons::RemoveRow,             tr("Enlever une ligne"),                    this);
 	
-	prj_edit_prop     = new QAction(QIcon(":/ico/dialog-information.png"),     tr("Propri\351t\351s du projet"),           this);
-	prj_add_diagram   = new QAction(QIcon(":/ico/diagram_add.png"),            tr("Ajouter un sch\351ma"),                 this);
-	prj_del_diagram   = new QAction(QIcon(":/ico/diagram_del.png"),            tr("Supprimer le sch\351ma"),               this);
-	prj_clean         = new QAction(QIcon(":/ico/edit-clear.png"),             tr("Nettoyer le projet"),                   this);
+	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
+	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
+	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
+	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
 	
-	zoom_in           = new QAction(QIcon(":/ico/zoom-in.png"),                tr("Zoom avant"),                           this);
-	zoom_out          = new QAction(QIcon(":/ico/zoom-out.png"),               tr("Zoom arri\350re"),                      this);
-	zoom_fit          = new QAction(QIcon(":/ico/zoom-fit-best.png"),          tr("Zoom adapt\351"),                       this);
-	zoom_reset        = new QAction(QIcon(":/ico/zoom-original.png"),          tr("Pas de zoom"),                          this);
+	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
+	zoom_out          = new QAction(QET::Icons::ZoomOut,               tr("Zoom arri\350re"),                      this);
+	zoom_fit          = new QAction(QET::Icons::ZoomFitBest,           tr("Zoom adapt\351"),                       this);
+	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,          tr("Pas de zoom"),                          this);
 	
-	tabbed_view_mode  = new QAction(                                           tr("en utilisant des onglets"),             this);
-	windowed_view_mode= new QAction(                                           tr("en utilisant des fen\352tres"),         this);
+	tabbed_view_mode  = new QAction(                                   tr("en utilisant des onglets"),             this);
+	windowed_view_mode= new QAction(                                   tr("en utilisant des fen\352tres"),         this);
 	
-	mode_selection    = new QAction(QIcon(":/ico/select.png"),                 tr("Mode Selection"),                       this);
-	mode_visualise    = new QAction(QIcon(":/ico/move.png"),                   tr("Mode Visualisation"),                   this);
+	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
+	mode_visualise    = new QAction(QET::Icons::ViewMove,              tr("Mode Visualisation"),                   this);
 	
 	fullscreen        = new QAction(this);
 	slot_updateFullScreenAction();
-	configure         = new QAction(QIcon(":/ico/configure.png"),              tr("&Configurer QElectroTech"),             this);
+	configure         = new QAction(QET::Icons::Configure,             tr("&Configurer QElectroTech"),             this);
 	
-	tile_window        = new QAction(                                          tr("&Mosa\357que"),                         this);
-	cascade_window     = new QAction(                                          tr("&Cascade"),                             this);
-	next_window        = new QAction(                                          tr("Projet suivant"),                  this);
-	prev_window        = new QAction(                                          tr("Projet pr\351c\351dent"),          this);
+	tile_window        = new QAction(                                  tr("&Mosa\357que"),                         this);
+	cascade_window     = new QAction(                                  tr("&Cascade"),                             this);
+	next_window        = new QAction(                                  tr("Projet suivant"),                       this);
+	prev_window        = new QAction(                                  tr("Projet pr\351c\351dent"),               this);
 	
-	about_qet         = new QAction(QIcon(":/ico/qet.png"),                    tr("\300 &propos de QElectroTech"),         this);
-	about_qt          = new QAction(QIcon(":/ico/qt.png"),                     tr("\300 propos de &Qt"),                   this);
+	about_qet         = new QAction(QET::Icons::QETLogo,               tr("\300 &propos de QElectroTech"),         this);
+	about_qt          = new QAction(QET::Icons::QtLogo,                tr("\300 propos de &Qt"),                   this);
 	
 	// raccourcis clavier
 	new_file          -> setShortcut(QKeySequence::New);
@@ -503,7 +504,7 @@ void QETDiagramEditor::menus() {
 	QMenu *display_toolbars = createPopupMenu();
 	display_toolbars -> setTearOffEnabled(true);
 	display_toolbars -> setTitle(tr("Afficher"));
-	display_toolbars -> setIcon(QIcon(":/ico/configure-toolbars.png"));
+	display_toolbars -> setIcon(QET::Icons::ConfigureToolbars);
 	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
 	diagram_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Sch\351ma"));
@@ -1162,11 +1163,11 @@ void QETDiagramEditor::slot_updateComplexActions() {
 void QETDiagramEditor::slot_updateFullScreenAction() {
 	if (windowState() & Qt::WindowFullScreen) {
 		fullscreen -> setText(tr("Sortir du &mode plein \351cran"));
-		fullscreen -> setIcon(QIcon(":/ico/view-restore.png"));
+		fullscreen -> setIcon(QET::Icons::FullScreenExit);
 		fullscreen -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351", "status bar tip"));
 	} else {
 		fullscreen -> setText(tr("Passer en &mode plein \351cran"));
-		fullscreen -> setIcon(QIcon(":/ico/view-fullscreen.png"));
+		fullscreen -> setIcon(QET::Icons::FullScreenEnter);
 		fullscreen -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran", "status bar tip"));
 	}
 }

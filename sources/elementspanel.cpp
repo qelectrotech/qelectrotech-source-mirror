@@ -23,6 +23,7 @@
 #include "customelement.h"
 #include "fileelementscollection.h"
 #include "fileelementdefinition.h"
+#include "qeticons.h"
 
 /*
 	Lorsque le flag ENABLE_PANEL_DND_CHECKS est defini, le panel d'elements
@@ -424,7 +425,7 @@ void ElementsPanel::startDrag(Qt::DropActions) {
 	
 	if (selected_item -> isCategory() || selected_item -> isCollection()) {
 		mimeData -> setData("application/x-qet-category-uri", location_string.toAscii());
-		drag -> setPixmap(QPixmap(":/ico/folder.png"));
+		drag -> setPixmap(QET::Icons::Folder.pixmap(22, 22));
 	} else if (selected_item -> isElement()) {
 		mimeData -> setData("application/x-qet-element-uri", location_string.toAscii());
 		
@@ -518,7 +519,7 @@ QTreeWidgetItem *ElementsPanel::addDiagram(QTreeWidgetItem *qtwi_parent, Diagram
 		qtwi_diagram = new QTreeWidgetItem(qtwi_parent);
 	}
 	qtwi_diagram -> setText(0, final_name);
-	qtwi_diagram -> setIcon(0, QIcon(":/ico/diagram.png"));
+	qtwi_diagram -> setIcon(0, QET::Icons::Diagram);
 	diagrams_.insert(qtwi_diagram, diagram);
 	
 	return(qtwi_diagram);
@@ -556,7 +557,7 @@ QTreeWidgetItem *ElementsPanel::addCategory(QTreeWidgetItem *qtwi_parent, Elemen
 	
 	// recupere le nom de la categorie
 	QString final_name(cat_name.isEmpty() ? category -> name() : cat_name);
-	QIcon final_icon(icon.isNull() ? QIcon(":/ico/folder.png") : icon);
+	QIcon final_icon(icon.isNull() ? QET::Icons::Folder : icon);
 	
 	// creation du QTreeWidgetItem representant le dossier
 	QTreeWidgetItem *qtwi_category = new QTreeWidgetItem(qtwi_parent, QStringList(final_name));
@@ -648,10 +649,10 @@ void ElementsPanel::reload(bool reload_collections) {
 	custom_collection_item_ = 0;
 	
 	// chargement des elements de la collection QET
-	common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/qet-16.png"));
+	common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet-16.png"));
 	
 	// chargement des elements de la collection utilisateur
-	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/go-home.png"));
+	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QET::Icons::Home);
 	
 	// chargement des projets
 	foreach(QETProject *project, projects_to_display_.values()) {
@@ -920,11 +921,10 @@ void ElementsPanel::updateProjectItemInformations(QETProject *project) {
 			"tooltip for a file-less project in the element panel"
 		);
 	}
-	QIcon final_icon(":/ico/project.png");
 	
 	qtwi_project -> setText(0, final_name);
 	qtwi_project -> setToolTip(0, final_tooltip);
-	qtwi_project -> setIcon(0, final_icon);
+	qtwi_project -> setIcon(0, QET::Icons::Project);
 }
 
 /**

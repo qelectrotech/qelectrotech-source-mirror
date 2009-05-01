@@ -18,6 +18,7 @@
 #include "lineeditor.h"
 #include "partline.h"
 #include "qet.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -40,17 +41,17 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	y2 -> setValidator(new QDoubleValidator(y2));
 	
 	end1_type = new QComboBox();
-	end1_type -> addItem(QIcon(":/ico/endline-none.png"),     tr("Normale",                "type of the 1st end of a line"), QET::None    );
-	end1_type -> addItem(QIcon(":/ico/endline-simple.png"),   tr("Fl\350che simple",       "type of the 1st end of a line"), QET::Simple  );
-	end1_type -> addItem(QIcon(":/ico/endline-triangle.png"), tr("Fl\350che triangulaire", "type of the 1st end of a line"), QET::Triangle);
-	end1_type -> addItem(QIcon(":/ico/endline-circle.png"),   tr("Cercle",                 "type of the 1st end of a line"), QET::Circle  );
-	end1_type -> addItem(QIcon(":/ico/endline-diamond.png"),  tr("Carr\351",               "type of the 1st end of a line"), QET::Diamond );
+	end1_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 1st end of a line"), QET::None    );
+	end1_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 1st end of a line"), QET::Simple  );
+	end1_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 1st end of a line"), QET::Triangle);
+	end1_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 1st end of a line"), QET::Circle  );
+	end1_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 1st end of a line"), QET::Diamond );
 	end2_type = new QComboBox();
-	end2_type -> addItem(QIcon(":/ico/endline-none.png"),     tr("Normale",                "type of the 2nd end of a line"), QET::None    );
-	end2_type -> addItem(QIcon(":/ico/endline-simple.png"),   tr("Fl\350che simple",       "type of the 2nd end of a line"), QET::Simple  );
-	end2_type -> addItem(QIcon(":/ico/endline-triangle.png"), tr("Fl\350che triangulaire", "type of the 2nd end of a line"), QET::Triangle);
-	end2_type -> addItem(QIcon(":/ico/endline-circle.png"),   tr("Cercle",                 "type of the 2nd end of a line"), QET::Circle  );
-	end2_type -> addItem(QIcon(":/ico/endline-diamond.png"),  tr("Carr\351",               "type of the 2nd end of a line"), QET::Diamond );
+	end2_type -> addItem(QET::Icons::EndLineNone,     tr("Normale",                "type of the 2nd end of a line"), QET::None    );
+	end2_type -> addItem(QET::Icons::EndLineSimple,   tr("Fl\350che simple",       "type of the 2nd end of a line"), QET::Simple  );
+	end2_type -> addItem(QET::Icons::EndLineTriangle, tr("Fl\350che triangulaire", "type of the 2nd end of a line"), QET::Triangle);
+	end2_type -> addItem(QET::Icons::EndLineCircle,   tr("Cercle",                 "type of the 2nd end of a line"), QET::Circle  );
+	end2_type -> addItem(QET::Icons::EndLineDiamond,  tr("Carr\351",               "type of the 2nd end of a line"), QET::Diamond );
 	
 	end1_length = new QLineEdit();
 	end2_length = new QLineEdit();

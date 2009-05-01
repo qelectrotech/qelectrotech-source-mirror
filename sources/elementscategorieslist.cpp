@@ -21,6 +21,7 @@
 #include "elementscollection.h"
 #include "elementscategory.h"
 #include "elementdefinition.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -68,12 +69,12 @@ void ElementsCategoriesList::reload() {
 	// chargement des elements de la collection commune si droits d'ecriture
 	if (QETApp::commonElementsCollection() -> isWritable()) {
 		if (!first_load) QETApp::commonElementsCollection() -> reload();
-		addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"), QIcon(":/ico/qet-16.png"));
+		addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"), QET::Icons::QETLogo);
 	}
 	
 	// chargement des elements de la collection utilisateur
 	if (!first_load) QETApp::customElementsCollection() -> reload();
-	addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/go-home.png"));
+	addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QET::Icons::Home);
 	
 	if (first_load) first_load = false;
 }
@@ -108,7 +109,7 @@ QTreeWidgetItem *ElementsCategoriesList::addCollection(QTreeWidgetItem *qtwi_par
 QTreeWidgetItem *ElementsCategoriesList::addCategory(QTreeWidgetItem *qtwi_parent, ElementsCategory *category, const QString &cat_name, const QIcon &icon) {
 	// recupere le nom de la categorie
 	QString final_name(cat_name.isEmpty() ? category -> name() : cat_name);
-	QIcon final_icon(icon.isNull() ? QIcon(":/ico/folder.png") : icon);
+	QIcon final_icon(icon.isNull() ? QET::Icons::Folder : icon);
 	
 	// creation du QTreeWidgetItem representant le dossier
 	QTreeWidgetItem *qtwi_category = new QTreeWidgetItem(qtwi_parent, QStringList(final_name));

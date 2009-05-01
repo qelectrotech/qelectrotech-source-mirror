@@ -28,6 +28,7 @@
 #include "borderpropertieswidget.h"
 #include "insetpropertieswidget.h"
 #include "conductorpropertieswidget.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -39,7 +40,7 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	project_(0)
 {
 	setObjectName("ProjectView");
-	setWindowIcon(QIcon(":/ico/project.png"));
+	setWindowIcon(QET::Icons::Project);
 	
 	// construit le widget "fallback"
 	fallback_widget_ = new QWidget();
@@ -294,7 +295,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	if (diagram_ids_.values().contains(diagram)) return;
 	
 	// ajoute un nouvel onglet pour le nouveau schema
-	tabs_ -> addTab(diagram, QIcon(":/ico/diagram.png"), diagram -> title());
+	tabs_ -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
 	diagrams_ << diagram;
 	rebuildDiagramsMap();
 	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));

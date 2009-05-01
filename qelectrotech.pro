@@ -116,6 +116,7 @@ HEADERS += sources/aboutqet.h \
            sources/qetapp.h \
            sources/qetarguments.h \
            sources/qetdiagrameditor.h \
+           sources/qeticons.h \
            sources/qetproject.h \
            sources/qetprintpreviewdialog.h \
            sources/qetregexpvalidator.h \
@@ -213,6 +214,7 @@ SOURCES += sources/aboutqet.cpp \
            sources/qetapp.cpp \
            sources/qetarguments.cpp \
            sources/qetdiagrameditor.cpp \
+           sources/qeticons.cpp \
            sources/qetproject.cpp \
            sources/qetprintpreviewdialog.cpp \
            sources/qetregexpvalidator.cpp \

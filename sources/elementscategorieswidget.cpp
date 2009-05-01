@@ -20,6 +20,7 @@
 #include "elementscategoryeditor.h"
 #include "elementscategorydeleter.h"
 #include "elementscategory.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -30,10 +31,10 @@ ElementsCategoriesWidget::ElementsCategoriesWidget(QWidget *parent) : QWidget(pa
 	elementscategorieslist = new ElementsCategoriesList(false, QET::All, this);
 	
 	// actions
-	action_reload = new QAction(QIcon(":/ico/view-refresh.png"),    tr("Recharger les cat\351gories"), this);
-	action_new    = new QAction(QIcon(":/ico/folder-new.png"),    tr("Nouvelle cat\351gorie"),       this);
-	action_open   = new QAction(QIcon(":/ico/folder-edit.png"),   tr("\311diter la cat\351gorie"),   this);
-	action_delete = new QAction(QIcon(":/ico/folder-delete.png"), tr("Supprimer la cat\351gorie"),   this);
+	action_reload = new QAction(QET::Icons::ViewRefresh,    tr("Recharger les cat\351gories"), this);
+	action_new    = new QAction(QET::Icons::FolderNew,    tr("Nouvelle cat\351gorie"),       this);
+	action_open   = new QAction(QET::Icons::FolderEdit,   tr("\311diter la cat\351gorie"),   this);
+	action_delete = new QAction(QET::Icons::FolderDelete, tr("Supprimer la cat\351gorie"),   this);
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);

@@ -25,6 +25,7 @@
 #include "elementdefinition.h"
 #include "elementdialog.h"
 #include "recentfiles.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -37,7 +38,7 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 	opened_from_file(false)
 {
 	setWindowTitle(min_title);
-	setWindowIcon(QIcon(":/ico/qet.png"));
+	setWindowIcon(QET::Icons::QETLogo);
 	
 	setupInterface();
 	setupActions();
@@ -69,43 +70,43 @@ QETElementEditor::~QETElementEditor() {
 	Met en place les actions
 */
 void QETElementEditor::setupActions() {
-	new_element   = new QAction(QIcon(":/ico/document-new.png"),          tr("&Nouveau"),                    this);
-	open          = new QAction(QIcon(":/ico/document-open.png"),         tr("&Ouvrir"),                     this);
-	open_file     = new QAction(QIcon(":/ico/document-open.png"),         tr("&Ouvrir depuis un fichier"),   this);
-	save          = new QAction(QIcon(":/ico/document-save.png"),         tr("&Enregistrer"),                this);
-	save_as       = new QAction(QIcon(":/ico/document-save-as.png"),      tr("Enregistrer sous"),            this);
-	save_as_file  = new QAction(QIcon(":/ico/document-save-as.png"),      tr("Enregistrer dans un fichier"), this);
-	reload        = new QAction(QIcon(":/ico/view-refresh.png"),          tr("Recharger"),                   this);
-	quit          = new QAction(QIcon(":/ico/application-exit.png"),      tr("&Quitter"),                    this);
-	selectall     = new QAction(QIcon(":/ico/edit-select-all.png"),       tr("Tout s\351lectionner"),        this);
-	deselectall   = new QAction(                                          tr("D\351s\351lectionner tout"),   this);
-	cut           = new QAction(QIcon(":/ico/edit-cut.png"),              tr("Co&uper"),                     this);
-	copy          = new QAction(QIcon(":/ico/edit-copy.png"),             tr("Cop&ier"),                     this);
-	paste         = new QAction(QIcon(":/ico/edit-paste.png"),            tr("C&oller"),                     this);
-	paste_in_area = new QAction(QIcon(":/ico/edit-paste.png"),            tr("C&oller dans la zone..."),     this);
-	inv_select    = new QAction(                                          tr("Inverser la s\351lection"),    this);
-	edit_delete   = new QAction(QIcon(":/ico/edit-delete.png"),           tr("&Supprimer"),                  this);
-	zoom_in       = new QAction(QIcon(":/ico/zoom-in.png"),               tr("Zoom avant"),                  this);
-	zoom_out      = new QAction(QIcon(":/ico/zoom-out.png"),              tr("Zoom arri\350re"),             this);
-	zoom_fit      = new QAction(QIcon(":/ico/zoom-fit-best.png"),         tr("Zoom adapt\351"),              this);
-	zoom_reset    = new QAction(QIcon(":/ico/zoom-original.png"),         tr("Pas de zoom"),                 this);
-	edit_size_hs  = new QAction(QIcon(":/ico/hotspot.png"),               tr("\311diter la taille et le point de saisie"), this);
-	edit_names    = new QAction(QIcon(":/ico/names.png"),                 tr("\311diter les noms"),          this);
-	edit_ori      = new QAction(QIcon(":/ico/orientations.png"),          tr("\311diter les orientations"),  this);
-	edit_raise    = new QAction(QIcon(":/ico/raise.png"),                 tr("Rapprocher"),                  this);
-	edit_lower    = new QAction(QIcon(":/ico/lower.png"),                 tr("\311loigner"),                 this);
-	edit_backward = new QAction(QIcon(":/ico/send_backward.png"),         tr("Envoyer au fond"),             this);
-	edit_forward  = new QAction(QIcon(":/ico/bring_forward.png"),         tr("Amener au premier plan"),      this);
-	move          = new QAction(QIcon(":/ico/select.png"),                tr("D\351placer un objet"),        this);
-	add_line      = new QAction(QIcon(":/ico/line.png"),                  tr("Ajouter une ligne"),           this);
-	add_rectangle = new QAction(QIcon(":/ico/rectangle.png"),             tr("Ajouter un rectangle"),        this);
-	add_ellipse   = new QAction(QIcon(":/ico/ellipse.png"),               tr("Ajouter une ellipse"),         this);
-	add_circle    = new QAction(QIcon(":/ico/circle.png"),                tr("Ajouter un cercle"),           this);
-	add_polygon   = new QAction(QIcon(":/ico/polygon.png"),               tr("Ajouter un polygone"),         this);
-	add_text      = new QAction(QIcon(":/ico/text.png"),                  tr("Ajouter du texte"),            this);
-	add_arc       = new QAction(QIcon(":/ico/arc.png"),                   tr("Ajouter un arc de cercle"),    this);
-	add_terminal  = new QAction(QIcon(":/ico/terminal.png"),              tr("Ajouter une borne"),           this);
-	add_textfield = new QAction(QIcon(":/ico/textfield.png"),             tr("Ajouter un champ de texte"),   this);
+	new_element   = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
+	open          = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
+	open_file     = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
+	save          = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
+	save_as       = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
+	save_as_file  = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
+	reload        = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
+	quit          = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
+	selectall     = new QAction(QET::Icons::EditSelectAll,        tr("Tout s\351lectionner"),                      this);
+	deselectall   = new QAction(                                  tr("D\351s\351lectionner tout"),                 this);
+	cut           = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
+	copy          = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
+	paste         = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
+	paste_in_area = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
+	inv_select    = new QAction(                                  tr("Inverser la s\351lection"),                  this);
+	edit_delete   = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
+	zoom_in       = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
+	zoom_out      = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
+	zoom_fit      = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
+	zoom_reset    = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
+	edit_size_hs  = new QAction(QET::Icons::HotSpot,              tr("\311diter la taille et le point de saisie"), this);
+	edit_names    = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
+	edit_ori      = new QAction(QET::Icons::Orientations,         tr("\311diter les orientations"),                this);
+	edit_raise    = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
+	edit_lower    = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
+	edit_backward = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
+	edit_forward  = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
+	move          = new QAction(QET::Icons::PartSelect,           tr("D\351placer un objet"),                      this);
+	add_line      = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
+	add_rectangle = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
+	add_ellipse   = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
+	add_circle    = new QAction(QET::Icons::PartCircle,           tr("Ajouter un cercle"),                         this);
+	add_polygon   = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
+	add_text      = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
+	add_arc       = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
+	add_terminal  = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
+	add_textfield = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
 	
 	QString add_status_tip = tr("Maintenez la touche Shift enfonc\351e pour effectuer plusieurs ajouts d'affil\351e");
 	add_line      -> setStatusTip(add_status_tip);
@@ -120,8 +121,8 @@ void QETElementEditor::setupActions() {
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
-	undo -> setIcon(QIcon(":/ico/edit-undo.png"));
-	redo -> setIcon(QIcon(":/ico/edit-redo.png"));
+	undo -> setIcon(QET::Icons::EditUndo);
+	redo -> setIcon(QET::Icons::EditRedo);
 	undo -> setShortcuts(QKeySequence::Undo);
 	redo -> setShortcuts(QKeySequence::Redo);
 	
@@ -237,7 +238,7 @@ void QETElementEditor::setupActions() {
 	parts_toolbar -> setAllowedAreas(Qt::AllToolBarAreas);
 	
 	/*
-	QAction *xml_preview = new QAction(QIcon(":/ico/dialog-information.png"), tr("XML"), this);
+	QAction *xml_preview = new QAction(QET::Icons::DialogInformation, tr("XML"), this);
 	connect(xml_preview, SIGNAL(triggered()), this, SLOT(xmlPreview()));
 	parts_toolbar -> addAction(xml_preview);
 	*/

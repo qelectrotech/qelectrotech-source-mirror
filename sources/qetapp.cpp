@@ -22,6 +22,7 @@
 #include "fileelementscollection.h"
 #include "qetproject.h"
 #include "recentfiles.h"
+#include "qeticons.h"
 #include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
@@ -49,6 +50,7 @@ QETApp::QETApp(int &argc, char **argv) :
 {
 	parseArguments();
 	initLanguage();
+	initStyle();
 	initConfiguration();
 	
 	if (!non_interactive_execution_ && isRunning()) {
@@ -64,7 +66,6 @@ QETApp::QETApp(int &argc, char **argv) :
 	}
 	
 	initSplashScreen();
-	initStyle();
 	initSystemTray();
 	
 	// prise en compte des messages des autres instances
@@ -792,6 +793,9 @@ void QETApp::initLanguage() {
 	Met en place tout ce qui concerne le style graphique de l'application
 */
 void QETApp::initStyle() {
+	// initialise les icones
+	QET::Icons::initIcons();
+	
 	// lorsque le style Plastique est active, on le remplace par une version amelioree
 	if (qobject_cast<QPlastiqueStyle *>(style())) {
 		setStyle(new QETStyle());
@@ -828,15 +832,15 @@ void QETApp::initSystemTray() {
 	// initialisation des menus de l'icone dans le systray
 	menu_systray = new QMenu(tr("QElectroTech", "systray menu title"));
 	
-	quitter_qet       = new QAction(QIcon(":/ico/application-exit.png"),       tr("&Quitter"),                                        this);
-	reduce_appli      = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer"),                                        this);
-	restore_appli     = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer"),                                      this);
-	reduce_diagrams   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
-	restore_diagrams  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
-	reduce_elements   = new QAction(QIcon(":/ico/masquer.png"),    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
-	restore_elements  = new QAction(QIcon(":/ico/restaurer.png"),  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
-	new_diagram       = new QAction(QIcon(":/ico/window-new.png"), tr("&Nouvel \351diteur de sch\351ma"),                 this);
-	new_element       = new QAction(QIcon(":/ico/window-new.png"), tr("&Nouvel \351diteur d'\351l\351ment"),              this);
+	quitter_qet       = new QAction(QET::Icons::ApplicationExit,       tr("&Quitter"),                                        this);
+	reduce_appli      = new QAction(QET::Icons::Hide,    tr("&Masquer"),                                        this);
+	restore_appli     = new QAction(QET::Icons::Restore,  tr("&Restaurer"),                                      this);
+	reduce_diagrams   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les \351diteurs de sch\351ma"),      this);
+	restore_diagrams  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
+	reduce_elements   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
+	restore_elements  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
+	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur de sch\351ma"),                 this);
+	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur d'\351l\351ment"),              this);
 	
 	quitter_qet   -> setStatusTip(tr("Ferme l'application QElectroTech"));
 	reduce_appli  -> setToolTip(tr("R\351duire QElectroTech dans le systray"));
@@ -853,7 +857,7 @@ void QETApp::initSystemTray() {
 	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
 	
 	// initialisation de l'icone du systray
-	qsti = new QSystemTrayIcon(QIcon(":/ico/qet.png"), this);
+	qsti = new QSystemTrayIcon(QET::Icons::QETLogo, this);
 	qsti -> setToolTip(tr("QElectroTech", "systray icon tooltip"));
 	connect(qsti, SIGNAL(activated(QSystemTrayIcon::ActivationReason)), this, SLOT(systray(QSystemTrayIcon::ActivationReason)));
 	qsti -> setContextMenu(menu_systray);
@@ -1002,22 +1006,22 @@ int QETStyle::styleHint(StyleHint hint, const QStyleOption *option, const QWidge
 QIcon QETStyle::standardIconImplementation(StandardPixmap standardIcon, const QStyleOption *option, const QWidget* widget) const {
 	switch(standardIcon) {
 		case QStyle::SP_DialogSaveButton:
-			return(QIcon(":/ico/document-save.png"));
+			return(QET::Icons::DocumentSave);
 		case QStyle::SP_DialogOpenButton:
-			return(QIcon(":/ico/document-open.png"));
+			return(QET::Icons::DocumentOpen);
 		case QStyle::SP_DialogCancelButton:
-			return(QIcon(":/ico/dialog-cancel.png"));
+			return(QET::Icons::DialogCancel);
 		case QStyle::SP_DialogOkButton:
 		case QStyle::SP_DialogApplyButton:
-			return(QIcon(":/ico/dialog-ok.png"));
+			return(QET::Icons::DialogOk);
 		case QStyle::SP_DialogCloseButton:
-			return(QIcon(":/ico/document-close.png"));
+			return(QET::Icons::DocumentClose);
 		case QStyle::SP_DialogYesButton:
-			return(QIcon(":/ico/user-online.png"));
+			return(QET::Icons::Allowed);
 		case QStyle::SP_DialogNoButton:
-			return(QIcon(":/ico/user-busy.png"));
+			return(QET::Icons::Forbidden);
 		case QStyle::SP_DialogResetButton:
-			return(QIcon(":/ico/edit-undo.png"));
+			return(QET::Icons::EditUndo);
 		case QStyle::SP_DialogHelpButton:
 		case QStyle::SP_DialogDiscardButton:
 			return(QIcon());

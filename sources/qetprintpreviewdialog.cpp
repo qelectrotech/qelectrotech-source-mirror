@@ -1,5 +1,6 @@
 #include "qetprintpreviewdialog.h"
 #include "diagramschooser.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -124,23 +125,23 @@ void QETPrintPreviewDialog::build() {
 	preview_ = new QPrintPreviewWidget(printer_);
 	diagrams_label_       = new QLabel(tr("Sch\351mas \340 imprimer\240:"));
 	diagrams_list_        = new DiagramsChooser(project_);
-	toggle_diagrams_list_ = new QAction(QIcon(":/ico/diagram.png"),              tr("Cacher la liste des sch\351mas"),            this);
-	toggle_print_options_ = new QAction(QIcon(":/ico/configure.png"),            tr("Cacher les options d'impression"),           this);
-	adjust_width_         = new QAction(QIcon(":/ico/view_fit_width.png"),       tr("Ajuster la largeur"),                        this);
-	adjust_page_          = new QAction(QIcon(":/ico/view_fit_window.png"),      tr("Ajuster la page"),                           this);
-	zoom_out_             = new QAction(QIcon(":/ico/zoom-out.png"),             tr("Zoom arri\350re"),                           this);
+	toggle_diagrams_list_ = new QAction(QET::Icons::Diagram,              tr("Cacher la liste des sch\351mas"),            this);
+	toggle_print_options_ = new QAction(QET::Icons::Configure,            tr("Cacher les options d'impression"),           this);
+	adjust_width_         = new QAction(QET::Icons::ViewFitWidth,         tr("Ajuster la largeur"),                        this);
+	adjust_page_          = new QAction(QET::Icons::ViewFitWindow,        tr("Ajuster la page"),                           this);
+	zoom_out_             = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
 	zoom_box_             = new QComboBox(this);
-	zoom_in_              = new QAction(QIcon(":/ico/zoom-in.png"),              tr("Zoom avant"),                                this);
-	landscape_            = new QAction(QIcon(":/ico/landscape.png"),            tr("Paysage"),                                   this);
-	portrait_             = new QAction(QIcon(":/ico/portrait.png"),             tr("Portrait"),                                  this);
-	first_page_           = new QAction(QIcon(":/ico/arrow-left-double.png"),    tr("Premi\350re page"),                             this);
-	previous_page_        = new QAction(QIcon(":/ico/arrow-left.png"),           tr("Page pr\351c\351dente"),                           this);
-	next_page_            = new QAction(QIcon(":/ico/arrow-right.png"),          tr("Page suivante"),                             this);
-	last_page_            = new QAction(QIcon(":/ico/arrow-right-double.png"),   tr("Derni\350re page"),                             this);
-	single_page_view_     = new QAction(QIcon(":/ico/single_page.png"),          tr("Afficher une seule page"),                   this);
-	facing_pages_view_    = new QAction(QIcon(":/ico/two_pages.png"),            tr("Afficher deux pages"),                       this);
-	all_pages_view_       = new QAction(QIcon(":/ico/all_pages.png"),            tr("Afficher un aper\347u de toutes les pages"), this);
-	page_setup_           = new QAction(QIcon(":/ico/document-print-frame.png"), tr("Mise en page"),                              this);
+	zoom_in_              = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
+	landscape_            = new QAction(QET::Icons::PrintLandscape,       tr("Paysage"),                                   this);
+	portrait_             = new QAction(QET::Icons::PrintPortrait,        tr("Portrait"),                                  this);
+	first_page_           = new QAction(QET::Icons::ArrowLeftDouble,      tr("Premi\350re page"),                          this);
+	previous_page_        = new QAction(QET::Icons::ArrowLeft,            tr("Page pr\351c\351dente"),                     this);
+	next_page_            = new QAction(QET::Icons::ArrowRight,           tr("Page suivante"),                             this);
+	last_page_            = new QAction(QET::Icons::ArrowRightDouble,     tr("Derni\350re page"),                          this);
+	single_page_view_     = new QAction(QET::Icons::SinglePage,           tr("Afficher une seule page"),                   this);
+	facing_pages_view_    = new QAction(QET::Icons::PrintTwoPages,        tr("Afficher deux pages"),                       this);
+	all_pages_view_       = new QAction(QET::Icons::PrintAllPages,        tr("Afficher un aper\347u de toutes les pages"), this);
+	page_setup_           = new QAction(QET::Icons::DocumentPrintFrame,   tr("Mise en page"),                              this);
 	
 	toggle_diagrams_list_ -> setCheckable(true);
 	toggle_diagrams_list_ -> setChecked(true);
@@ -205,7 +206,7 @@ void QETPrintPreviewDialog::build() {
 	fit_diagram_to_page_ -> setChecked(true);
 	
 	buttons_ = new QDialogButtonBox();
-	buttons_ -> addButton(new QPushButton(QIcon(":/ico/document-print.png"), tr("Imprimer")), QDialogButtonBox::AcceptRole);
+	buttons_ -> addButton(new QPushButton(QET::Icons::DocumentPrint, tr("Imprimer")), QDialogButtonBox::AcceptRole);
 	buttons_ -> addButton(QDialogButtonBox::Cancel);
 	
 	connect(toggle_diagrams_list_, SIGNAL(toggled(bool)), this,     SLOT(setDiagramsListVisible(bool)));

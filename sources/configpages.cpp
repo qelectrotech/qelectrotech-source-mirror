@@ -22,6 +22,7 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "borderinset.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -83,7 +84,7 @@ void NewDiagramPage::applyConf() {
 
 /// @return l'icone de cette page
 QIcon NewDiagramPage::icon() const {
-	return(QIcon(":/ico/conf_new_diagram_110.png"));
+	return(QET::Icons::NewDiagram);
 }
 
 /// @return le titre de cette page
@@ -163,7 +164,7 @@ void GeneralConfigurationPage::applyConf() {
 
 /// @return l'icone de cette page
 QIcon GeneralConfigurationPage::icon() const {
-	return(QIcon(":/ico/settings.png"));
+	return(QET::Icons::Settings);
 }
 
 /// @return le titre de cette page

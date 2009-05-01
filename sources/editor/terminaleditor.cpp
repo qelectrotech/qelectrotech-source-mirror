@@ -17,6 +17,7 @@
 */
 #include "terminaleditor.h"
 #include "partterminal.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -34,10 +35,10 @@ TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWi
 	qle_y -> setValidator(new QDoubleValidator(qle_y));
 	
 	orientation = new QComboBox();
-	orientation -> addItem(QIcon(":/ico/north.png"), tr("Nord"),  QET::North);
-	orientation -> addItem(QIcon(":/ico/east.png"),  tr("Est"),   QET::East);
-	orientation -> addItem(QIcon(":/ico/south.png"), tr("Sud"),   QET::South);
-	orientation -> addItem(QIcon(":/ico/west.png"),  tr("Ouest"), QET::West);
+	orientation -> addItem(QET::Icons::North, tr("Nord"),  QET::North);
+	orientation -> addItem(QET::Icons::East,  tr("Est"),   QET::East);
+	orientation -> addItem(QET::Icons::South, tr("Sud"),   QET::South);
+	orientation -> addItem(QET::Icons::West,  tr("Ouest"), QET::West);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout();
 	main_layout -> addWidget(new QLabel(tr("Position : ")));
