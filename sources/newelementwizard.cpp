@@ -38,7 +38,7 @@ NewElementWizard::NewElementWizard(QWidget *parent, Qt::WindowFlags f) :
 	QWizard(parent, f),
 	chosen_category(0)
 {
-	setPixmap(LogoPixmap, QPixmap(":/ico/qelectrotech.png").scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
+	setPixmap(LogoPixmap, QPixmap(":/ico/256x256/qelectrotech.png").scaled(64, 64, Qt::KeepAspectRatio, Qt::SmoothTransformation));
 	setWindowTitle(tr("Cr\351er un nouvel \351l\351ment : Assistant", "window title"));
 	setButtonText(QWizard::NextButton, tr("&Suivant >"));
 	addPage(buildStep1());

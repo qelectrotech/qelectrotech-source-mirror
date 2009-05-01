@@ -321,8 +321,8 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 				context_menu -> addAction(delete_element);
 			} else if (selected_item -> isCollection()) {
 				// categorie racine / collection
-				context_menu -> addAction(delete_collection);
 				context_menu -> addAction(new_category);
+				context_menu -> addAction(delete_collection);
 				context_menu -> addAction(new_element);
 			}
 		}

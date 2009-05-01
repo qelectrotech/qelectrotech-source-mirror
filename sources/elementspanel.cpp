@@ -649,10 +649,10 @@ void ElementsPanel::reload(bool reload_collections) {
 	custom_collection_item_ = 0;
 	
 	// chargement des elements de la collection QET
-	common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet-16.png"));
+	common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet.png"));
 	
 	// chargement des elements de la collection utilisateur
-	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QET::Icons::Home);
+	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/16x16/go-home.png"));
 	
 	// chargement des projets
 	foreach(QETProject *project, projects_to_display_.values()) {
