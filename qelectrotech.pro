@@ -290,7 +290,7 @@ desktop.path       = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
 desktop.files      = misc/qelectrotech.desktop
 
 icons.path         = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
-icons.files        = ico/qet.png
+icons.files        = ico/256x256/qet.png
 
 man.path           = $$join(INSTALL_PREFIX,,,$${QET_MAN_PATH})
 man.files          = man/files/*
