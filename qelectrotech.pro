@@ -40,7 +40,7 @@ macx {
 	QET_MIME_XML_PATH          = '../share/mime/application/'
 	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
 	QET_DESKTOP_PATH           = 'share/applications/'
-	QET_ICONS_PATH             = 'share/icons/'
+	QET_ICONS_PATH             = 'share/icons/hicolor/'
 	QET_MAN_PATH               = 'man/'
 }
 
@@ -290,7 +290,13 @@ desktop.path       = $$join(INSTALL_PREFIX,,,$${QET_DESKTOP_PATH})
 desktop.files      = misc/qelectrotech.desktop
 
 icons.path         = $$join(INSTALL_PREFIX,,,$${QET_ICONS_PATH})
-icons.files        = ico/256x256/qet.png
+icons.files        = ico/oxygen-icons/16x16   \
+                     ico/oxygen-icons/22x22   \
+                     ico/oxygen-icons/32x32   \
+                     ico/oxygen-icons/48x48   \
+                     ico/oxygen-icons/64x64   \
+                     ico/oxygen-icons/128x128 \
+                     ico/oxygen-icons/256x256
 
 man.path           = $$join(INSTALL_PREFIX,,,$${QET_MAN_PATH})
 man.files          = man/files/*
