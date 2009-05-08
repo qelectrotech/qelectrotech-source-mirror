@@ -16,7 +16,7 @@ unix {
 	QET_MIME_DESKTOP_PATH      = '../share/mimelnk/application/'
 	QET_MIME_PACKAGE_PATH      = '../share/mime/packages/'
 	QET_DESKTOP_PATH           = 'share/applications/'
-	QET_ICONS_PATH             = 'share/icons/'
+	QET_ICONS_PATH             = 'share/icons/hicolor/'
 	QET_MAN_PATH               = 'man/'
 }
 win32 {
