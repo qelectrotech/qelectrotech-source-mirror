@@ -47,8 +47,6 @@ namespace QET {
 		QIcon DialogInformation;
 		QIcon DialogOk;
 		QIcon DocumentClose;
-		QIcon DocumentDelete;
-		QIcon DocumentEdit;
 		QIcon DocumentExport;
 		QIcon DocumentImport;
 		QIcon DocumentNew;
@@ -69,6 +67,9 @@ namespace QET {
 		QIcon EditRedo;
 		QIcon EditSelectAll;
 		QIcon EditUndo;
+		QIcon ElementDelete;
+		QIcon ElementEdit;
+		QIcon ElementNew;
 		QIcon EndLineCircle;
 		QIcon EndLineDiamond;
 		QIcon EndLineNone;
@@ -176,9 +177,6 @@ void QET::Icons::initIcons() {
 	DialogOk            .addFile(":/ico/22x22/dialog-ok.png");
 	DocumentClose       .addFile(":/ico/16x16/document-close.png");
 	DocumentClose       .addFile(":/ico/22x22/document-close.png");
-	DocumentDelete      .addFile(":/ico/22x22/document-delete.png");
-	DocumentEdit        .addFile(":/ico/16x16/document-edit.png");
-	DocumentEdit        .addFile(":/ico/22x22/document-edit.png");
 	DocumentExport      .addFile(":/ico/16x16/document-export.png");
 	DocumentExport      .addFile(":/ico/22x22/document-export.png");
 	DocumentImport      .addFile(":/ico/16x16/document-import.png");
@@ -218,6 +216,9 @@ void QET::Icons::initIcons() {
 	EditSelectAll       .addFile(":/ico/22x22/edit-select-all.png");
 	EditUndo            .addFile(":/ico/16x16/edit-undo.png");
 	EditUndo            .addFile(":/ico/22x22/edit-undo.png");
+	ElementDelete       .addFile(":/ico/22x22/element-delete.png");
+	ElementEdit         .addFile(":/ico/22x22/element-edit.png");
+	ElementNew          .addFile(":/ico/22x22/element-new.png");
 	EndLineCircle       .addFile(":/ico/16x16/endline-circle.png");
 	EndLineDiamond      .addFile(":/ico/16x16/endline-diamond.png");
 	EndLineNone         .addFile(":/ico/16x16/endline-none.png");

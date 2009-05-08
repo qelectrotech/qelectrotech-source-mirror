@@ -51,8 +51,6 @@ namespace QET {
 		extern QIcon DialogInformation;
 		extern QIcon DialogOk;
 		extern QIcon DocumentClose;
-		extern QIcon DocumentDelete;
-		extern QIcon DocumentEdit;
 		extern QIcon DocumentExport;
 		extern QIcon DocumentImport;
 		extern QIcon DocumentNew;
@@ -73,6 +71,9 @@ namespace QET {
 		extern QIcon EditRedo;
 		extern QIcon EditSelectAll;
 		extern QIcon EditUndo;
+		extern QIcon ElementDelete;
+		extern QIcon ElementEdit;
+		extern QIcon ElementNew;
 		extern QIcon EndLineCircle;
 		extern QIcon EndLineDiamond;
 		extern QIcon EndLineNone;

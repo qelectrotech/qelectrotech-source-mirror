@@ -14,7 +14,6 @@
 	<file>ico/16x16/dialog-cancel.png</file>
 	<file>ico/16x16/dialog-ok.png</file>
 	<file>ico/16x16/document-close.png</file>
-	<file>ico/16x16/document-edit.png</file>
 	<file>ico/16x16/document-export.png</file>
 	<file>ico/16x16/document-import.png</file>
 	<file>ico/16x16/document-new.png</file>
@@ -88,8 +87,6 @@
 	<file>ico/22x22/dialog-information.png</file>
 	<file>ico/22x22/dialog-ok.png</file>
 	<file>ico/22x22/document-close.png</file>
-	<file>ico/22x22/document-delete.png</file>
-	<file>ico/22x22/document-edit.png</file>
 	<file>ico/22x22/document-export.png</file>
 	<file>ico/22x22/document-import.png</file>
 	<file>ico/22x22/document-new.png</file>
@@ -109,6 +106,9 @@
 	<file>ico/22x22/edit-redo.png</file>
 	<file>ico/22x22/edit-select-all.png</file>
 	<file>ico/22x22/edit-undo.png</file>
+	<file>ico/22x22/element-delete.png</file>
+	<file>ico/22x22/element-edit.png</file>
+	<file>ico/22x22/element-new.png</file>
 	<file>ico/22x22/ellipse.png</file>
 	<file>ico/22x22/folder-delete.png</file>
 	<file>ico/22x22/folder-edit.png</file>

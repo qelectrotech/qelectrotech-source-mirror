@@ -53,9 +53,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	edit_category     = new QAction(QET::Icons::FolderEdit,                tr("\311diter la cat\351gorie"),           this);
 	delete_category   = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la cat\351gorie"),           this);
 	delete_collection = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
-	new_element       = new QAction(QET::Icons::DocumentNew,               tr("Nouvel \351l\351ment"),                this);
-	edit_element      = new QAction(QET::Icons::DocumentEdit,              tr("\311diter l'\351l\351ment"),           this);
-	delete_element    = new QAction(QET::Icons::DocumentDelete,            tr("Supprimer l'\351l\351ment"),           this);
+	new_element       = new QAction(QET::Icons::ElementNew,                tr("Nouvel \351l\351ment"),                this);
+	edit_element      = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
+	delete_element    = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
 	prj_close         = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du projet"),          this);
 	prj_prop_diagram  = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du sch\351ma"),       this);
