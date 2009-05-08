@@ -6,8 +6,8 @@ set current_dir=%~dp0
 cd /d %current_dir%
 
 set expected_qet_exe=%current_dir%Lancer QET.bat
-set expected_project_ico=%current_dir%ico\qet-diagram.ico
-set expected_element_ico=%current_dir%ico\qet-element.ico
+set expected_project_ico=%current_dir%ico\application-x-qet-project.ico
+set expected_element_ico=%current_dir%ico\application-x-qet-element.ico
 
 rem verifie la presence du fichier qelectrotech.exe
 if not exist "%expected_qet_exe%" (
