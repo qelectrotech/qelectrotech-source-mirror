@@ -286,12 +286,12 @@
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="160"/>
         <source>Quel type d&apos;impression d&#xe9;sirez-vous effectuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Какой вид печати вам необходим?</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="172"/>
         <source>Choix du type d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Выбор типа печати</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="253"/>
@@ -303,7 +303,7 @@
         <location filename="../sources/diagramprintdialog.cpp" line="255"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS &#xe0; cr&#xe9;er.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вы должны ввести путь к файлу PDF/PS, чтобы его создать.</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="273"/>
@@ -857,7 +857,7 @@ Les changements seront d&#xe9;finitifs.</source>
     <message>
         <location filename="../sources/elementscollection.cpp" line="118"/>
         <source>Il n&apos;est pas possible de d&#xe9;placer une collection.</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно переместить коллекцию.</translation>
     </message>
 </context>
 <context>
@@ -896,7 +896,7 @@ Les changements seront d&#xe9;finitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="922"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished"></translation>
+        <translation>Нет файлов</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="937"/>
@@ -1077,129 +1077,129 @@ Les changements seront d&#xe9;finitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="88"/>
         <source>Exporter le cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Экспортировать рамку</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="91"/>
         <source>Exporter les &#xe9;l&#xe9;ments</source>
-        <translation type="unfinished"></translation>
+        <translation>Экспортировать только элементы</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="98"/>
         <source>Dessiner la grille</source>
-        <translation type="unfinished"></translation>
+        <translation>Рисовать сетку</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="102"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Рисовать рамку</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="107"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Рисовать основную надпись</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="112"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Рисовать выводы</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="138"/>
         <source>Sch&#xe9;ma</source>
-        <translation type="unfinished"></translation>
+        <translation>Схема</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="139"/>
         <source>Nom de fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Имя файла</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="140"/>
         <source>Dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Размеры</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="191"/>
         <source>Dossier cible :</source>
-        <translation type="unfinished"></translation>
+        <translation>Целевой каталог :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="197"/>
         <source>Parcourir</source>
-        <translation type="unfinished"></translation>
+        <translation>Обзор</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="207"/>
         <source>Format :</source>
-        <translation type="unfinished"></translation>
+        <translation>Формат :</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="209"/>
         <source>PNG (*.png)</source>
-        <translation type="unfinished"></translation>
+        <translation>PNG (*.png)</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="210"/>
         <source>JPEG (*.jpg)</source>
-        <translation type="unfinished"></translation>
+        <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="211"/>
         <source>Bitmap (*.bmp)</source>
-        <translation type="unfinished"></translation>
+        <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="212"/>
         <source>SVG (*.svg)</source>
-        <translation type="unfinished"></translation>
+        <translation>SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="359"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Экспорт в каталог</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="480"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Имена целевых файлов</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="486"/>
         <source>Vous devez entrer un nom de fichier distinct pour chaque sch&#xe9;ma &#xe0; exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вы должны ввести индивидуальное имя файла для каждой схемы, которую хотите экспортировать.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="495"/>
         <source>Dossier non sp&#xe9;cifi&#xe9;</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Каталог отсутствует</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="496"/>
         <source>Vous devez sp&#xe9;cifier le chemin du dossier dans lequel seront enregistr&#xe9;s les fichiers images.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Вы должны указать путь к каталогу, в котором буду сохранены изображения.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="535"/>
         <source>Impossible d&apos;&#xe9;crire dans ce fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно записать в этот файл</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="542"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions n&#xe9;cessaires pour &#xe9;crire dans le fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Возможно, что у вас нет необходимых разрешений (прав) для записи в файл %1.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="643"/>
         <source>Aper&#xe7;u</source>
-        <translation type="unfinished"></translation>
+        <translation>Предпросмотр</translation>
     </message>
 </context>
 <context>
@@ -1262,7 +1262,7 @@ Les changements seront d&#xe9;finitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="33"/>
         <source>L&apos;&#xe9;l&#xe9;ment doit &#xea;tre assez grand pour contenir tout sa repr&#xe9;sentation graphique.</source>
-        <translation type="unfinished"></translation>
+        <translation>Элемент должен быть достаточно большим, чтобы содержать все свое графическое представление.</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="42"/>
@@ -1372,37 +1372,37 @@ Les changements seront d&#xe9;finitifs.</source>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="103"/>
         <source>Int&#xe9;gration d&apos;un &#xe9;l&#xe9;ment</source>
-        <translation type="unfinished"></translation>
+        <translation>Добавление элемента</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="114"/>
         <source>L&apos;&#xe9;l&#xe9;ment a d&#xe9;j&#xe0; &#xe9;t&#xe9; int&#xe9;gr&#xe9; dans le projet. Toutefois, la version que vous tentez de poser semble diff&#xe9;rente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Элемент уже был добавлен в проект. Однако версия, которую вы патаетесь добавить отличается. Что вы хотите сделать?</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="123"/>
         <source>Utiliser l&apos;&#xe9;l&#xe9;ment d&#xe9;j&#xe0; int&#xe9;gr&#xe9;</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Использовать уже добавленный элемент</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="132"/>
         <source>Int&#xe9;grer l&apos;&#xe9;l&#xe9;ment d&#xe9;pos&#xe9;</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Добавить перетаскиваемый элемент</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="142"/>
         <source>&#xc9;craser l&apos;&#xe9;l&#xe9;ment d&#xe9;j&#xe0; int&#xe9;gr&#xe9;</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Удалить уже добавленный элемент</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="152"/>
         <source>Faire cohabiter les deux &#xe9;l&#xe9;ments</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Использовать совместно два элемента</translation>
     </message>
 </context>
 <context>
