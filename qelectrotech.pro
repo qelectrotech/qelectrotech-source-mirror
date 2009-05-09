@@ -255,7 +255,7 @@ SOURCES += sources/aboutqet.cpp \
            sources/editor/texteditor.cpp \
            sources/editor/textfieldeditor.cpp
 RESOURCES += qelectrotech.qrc
-TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts
+TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts
 TRANSLATIONS +=                lang/qt_es.ts  lang/qt_fr.ts
 RC_FILE = ico/windows_icon/qelectrotech.rc
 QT += xml svg network

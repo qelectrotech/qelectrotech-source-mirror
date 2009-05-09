@@ -163,9 +163,9 @@ void DiagramPrintDialog::buildPrintTypeDialog() {
 	pdf_icon_         = new QLabel();
 	ps_icon_          = new QLabel();
 	printtype_choice_ = new QButtonGroup();
-	printer_choice_   = new QRadioButton("Impression sur une imprimante physique");
-	pdf_choice_       = new QRadioButton("Impression vers un fichier au format PDF");
-	ps_choice_        = new QRadioButton("Impression vers un fichier au format PostScript (PS)");
+	printer_choice_   = new QRadioButton(tr("Impression sur une imprimante physique",               "Print type choice"));
+	pdf_choice_       = new QRadioButton(tr("Impression vers un fichier au format PDF",             "Print type choice"));
+	ps_choice_        = new QRadioButton(tr("Impression vers un fichier au format PostScript (PS)", "Print type choice"));
 	filepath_field_   = new QLineEdit();
 	browse_button_    = new QPushButton("...");
 	buttons_          = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
