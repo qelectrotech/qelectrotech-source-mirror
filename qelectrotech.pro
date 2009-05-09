@@ -30,11 +30,11 @@ win32 {
 }
 macx {
 	# Chemins MacOS X
-	COMPIL_PREFIX              = ''
+	COMPIL_PREFIX              = './'
 	INSTALL_PREFIX             = '/usr/local/'
 	QET_BINARY_PATH            = 'bin/'
-	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
-	QET_LANG_PATH              = 'share/qelectrotech/lang/'
+	QET_COMMON_COLLECTION_PATH = '../Resources/elements/'
+	QET_LANG_PATH              = '../Resources/lang/'
 	QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
 	QET_MIME_XML_PATH          = '../share/mime/application/'
