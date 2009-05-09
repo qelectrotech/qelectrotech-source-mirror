@@ -793,7 +793,8 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>FIFME: Пропущено или Прервано?</translatorcomment>
+        <translation>Требуемая категория не существует. Пропущено.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="55"/>
@@ -823,7 +824,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>У вас нет прав для редактирования этой категории. Она будет открыта в режиме &quot;только для чтения&quot;.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="98"/>
@@ -857,7 +858,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Внутреннее имя, которое вы выбрали уже используется другой категорией. Пожалуйста, выберите другое имя.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="154"/>
@@ -2706,13 +2707,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="331"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет выбирать элементы</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="332"/>
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Позволяет просматривать схему без её изменения</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="334"/>
@@ -3464,34 +3465,34 @@ Available options:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="32"/>
         <source>QElectroTech : Aperçu avant impression</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech : предпросмотр печати</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="143"/>
         <source>Schémas à imprimer :</source>
-        <translation type="unfinished"></translation>
+        <translation>Схема для печати :</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="145"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="318"/>
         <source>Cacher la liste des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрыть список схем</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="146"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="333"/>
         <source>Cacher les options d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Скрыть параметры печати</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="147"/>
         <source>Ajuster la largeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Подогнать по ширине</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="148"/>
         <source>Ajuster la page</source>
-        <translation type="unfinished"></translation>
+        <translation>Подогнать по странице</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="149"/>
@@ -3506,57 +3507,57 @@ Available options:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="152"/>
         <source>Paysage</source>
-        <translation type="unfinished"></translation>
+        <translation>Альбомная</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="153"/>
         <source>Portrait</source>
-        <translation type="unfinished"></translation>
+        <translation>Книжная</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="154"/>
         <source>Première page</source>
-        <translation type="unfinished"></translation>
+        <translation>Первая страница</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="155"/>
         <source>Page précédente</source>
-        <translation type="unfinished"></translation>
+        <translation>Предыдущая страница</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="156"/>
         <source>Page suivante</source>
-        <translation type="unfinished"></translation>
+        <translation>Следующая страница</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="157"/>
         <source>Dernière page</source>
-        <translation type="unfinished"></translation>
+        <translation>Последняя страница</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="158"/>
         <source>Afficher une seule page</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать одну страницу</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="159"/>
         <source>Afficher deux pages</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать в две страницы</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="160"/>
         <source>Afficher un aperçu de toutes les pages</source>
-        <translation type="unfinished"></translation>
+        <translation>Показывать все страницы</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="161"/>
         <source>Mise en page</source>
-        <translation type="unfinished"></translation>
+        <translation>Макет страницы</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="178"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
-        <translation type="unfinished"></translation>
+        <translation>Макет страницы (недоступно под Windows для печати PDF/PS)</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="206"/>
@@ -3566,22 +3567,22 @@ Available options:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="207"/>
         <source>Utiliser toute la feuille</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать весь лист</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="208"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation type="unfinished"></translation>
+        <translation>Если этот вариант выбран, поля бумаги будут игнорированы и вся его площадь будет использована для печати. Это может не поддерживаться принтером.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="215"/>
         <source>Adapter le schéma à la page</source>
-        <translation type="unfinished"></translation>
+        <translation>Подогнать схему к листу</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="216"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation type="unfinished"></translation>
+        <translation>Если этот вариант выбран, схема будет увеличена или уменьшена, чтобы заполнить всю доступную область печати одной страницей.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="226"/>
@@ -3591,12 +3592,12 @@ Available options:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="320"/>
         <source>Afficher la liste des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Отобразить список схем</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="335"/>
         <source>Afficher les options d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Отобразить параметры печати</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="362"/>
@@ -3633,34 +3634,34 @@ Available options:
     <message>
         <location filename="../sources/qetproject.cpp" line="488"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно создать категорию для интеграции элементов</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="499"/>
         <source>Impossible d&apos;accéder à l&apos;élément a intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно  получить доступ к элементам для интеграции</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="516"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка при копировании категории %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="686"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Предупреждение</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="687"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Этот документ, возможно, был сохранён более поздней версии QElectroTech. Возможно, что открытие всего документа или его части будет невозможно.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="969"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Произошла ошибка при копировании элемента %1</translation>
     </message>
 </context>
 <context>
@@ -3732,7 +3733,7 @@ Available options:
         <location filename="../sources/diagramcommands.cpp" line="378"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменён текст</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="416"/>
@@ -3756,25 +3757,25 @@ Available options:
         <location filename="../sources/diagramcommands.cpp" line="533"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменена основная надпись</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="562"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменён размер схемы</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="589"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменено свойство проводника</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="32"/>
         <source>suppression</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>удалено</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="81"/>
@@ -3809,7 +3810,7 @@ Available options:
         <location filename="../sources/editor/editorcommands.cpp" line="287"/>
         <source>modification points polygone</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменены точки полигона</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="327"/>
@@ -3821,19 +3822,19 @@ Available options:
         <location filename="../sources/editor/editorcommands.cpp" line="388"/>
         <source>modification noms</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменены имена</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="422"/>
         <source>modification orientations</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменены ориентации</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="466"/>
         <source>amener au premier plan</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>помещено вперед</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="469"/>
@@ -3857,7 +3858,7 @@ Available options:
         <location filename="../sources/editor/editorcommands.cpp" line="574"/>
         <source>modification connexions internes</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменены внутренние соединения</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="51"/>
@@ -3917,7 +3918,7 @@ Available options:
         <location filename="../sources/editor/parttextfield.cpp" line="36"/>
         <source>_</source>
         <comment>default text when adding a textfield in the element editor</comment>
-        <translation type="unfinished"></translation>
+        <translation>Т</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.h" line="51"/>
@@ -3938,12 +3939,12 @@ Available options:
     <message>
         <location filename="../sources/exportdialog.cpp" line="722"/>
         <source>Conserver les proportions</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранять пропорции</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="726"/>
         <source>Réinitialiser les dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Востановить размер</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="730"/>
@@ -4001,12 +4002,12 @@ Available options:
     <message>
         <location filename="../sources/qet.cpp" line="235"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно найти текстовый файл, содержащий лицензию GNU/GPL - однако, вы знаете ее наизусть, не так ли?</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="239"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Текстовый файл, содержащий лицензию GNU/GPL существует, но не может быть открыт - однако, вы знаете ее наизусть, не так ли?</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
