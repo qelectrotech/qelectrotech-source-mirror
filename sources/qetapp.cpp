@@ -267,7 +267,7 @@ QString QETApp::commonElementsDir() {
 #ifdef QET_COMMON_COLLECTION_PATH
 	return(QUOTE(QET_COMMON_COLLECTION_PATH));
 #else
-	return(QDir::current().path() + "/elements/");
+	return(QCoreApplication::applicationDirPath() + "/elements/");
 #endif
 }
 
@@ -412,7 +412,7 @@ QString QETApp::languagesPath() {
 		return(lang_dir);
 	} else {
 #ifndef QET_LANG_PATH
-	return(QDir::current().path() + "/lang/");
+	return(QCoreApplication::applicationDirPath() + "/lang/");
 #else
 	return(QUOTE(QET_LANG_PATH));
 #endif

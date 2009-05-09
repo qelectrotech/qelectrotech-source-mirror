@@ -309,9 +309,11 @@ unix {
 	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples
 }
 
-# Options de compilation
-# Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
-DEFINES += QET_LANG_PATH=$$join(COMPIL_PREFIX,,,$${QET_LANG_PATH})
-
-# Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
-DEFINES += QET_COMMON_COLLECTION_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
+# Options de compilation propres a Unix
+unix {
+	# Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
+	DEFINES += QET_LANG_PATH=$$join(COMPIL_PREFIX,,,$${QET_LANG_PATH})
+	
+	# Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
+	DEFINES += QET_COMMON_COLLECTION_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
+}
