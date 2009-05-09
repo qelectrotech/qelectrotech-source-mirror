@@ -648,7 +648,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="997"/>
         <source>Les dimensions ou le point de saisie ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Размеры или опорная точка не правильны.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1012"/>
@@ -1308,7 +1308,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="70"/>
         <source>Déplacer l&apos;élément avec le hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Переместить элемент вслед за опорной точкой</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="82"/>
@@ -1328,7 +1328,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="87"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Опорная точка&lt;/span&gt;</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="88"/>
@@ -1740,13 +1740,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="152"/>
         <source>Étape 4/5 : Dimensions et point de saisie</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Шаг 4 из 5: Размер и опорная точка</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="153"/>
         <source>Saisissez les dimensions du nouvel élément ainsi que la position du hotspot (point de saisie de l&apos;élément à la souris) en considérant que l&apos;élément est dans son orientation par défaut.</source>
         <comment>wizard page subtitle</comment>
-        <translation type="unfinished"></translation>
+        <translation>Введите размер нового элемента и его опорную точку (т.е. точку перемещения элементов мышью) считая, что элемент сориентирован по умолчанию.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="170"/>
@@ -3023,7 +3023,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="93"/>
         <source>Éditer la taille et le point de saisie</source>
-        <translation type="unfinished">Редактировать размер и горячие точки</translation>
+        <translation>Редактировать размер и опорную точку</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="94"/>
@@ -3326,7 +3326,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="541"/>
         <source>Attention : certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>messagebox content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Внимание: некоторые графические примитивы (тексты, окружности, линии, и т.п.) могут, выходить за границы элемента. Это может создавать графические ошибки, когда элемент перемещается на схеме. Вы можете исправить это  перемещая эти примитивы, либо используя &quot;Правка &gt; Редактировать размер и опорную точку&quot;.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="567"/>
@@ -3357,14 +3357,14 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1072"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Версия только для чтения</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="603"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1073"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>У вас нет прав для редактирования этого элемента. Он будет открыт в режиме &quot;только для чтения&quot;.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="622"/>
@@ -3384,7 +3384,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно  получить доступ к элементу</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="663"/>
@@ -3414,7 +3414,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="780"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Этот элемент был изменён со времени последнего сохранения. Если вы перезагрузите его все изменения будут потеряны. Вы действительно хотите перезагрузить элемент?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="855"/>
@@ -3445,19 +3445,19 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1053"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Несуществующий элемент.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Элемент не существует.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1054"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Выбранный виртуальный путь не соответствует элементу.</translation>
     </message>
 </context>
 <context>
@@ -3751,7 +3751,7 @@ Available options:
         <location filename="../sources/diagramcommands.cpp" line="495"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Востановленно: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="533"/>
@@ -3816,7 +3816,7 @@ Available options:
         <location filename="../sources/editor/editorcommands.cpp" line="327"/>
         <source>modification dimensions/hotspot</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>изменён размер/опорная точка</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="388"/>
