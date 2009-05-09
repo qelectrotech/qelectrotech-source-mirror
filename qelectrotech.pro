@@ -30,7 +30,7 @@ win32 {
 }
 macx {
 	# Chemins MacOS X
-	COMPIL_PREFIX              = '/usr/local/'
+	COMPIL_PREFIX              = ''
 	INSTALL_PREFIX             = '/usr/local/'
 	QET_BINARY_PATH            = 'bin/'
 	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
@@ -309,11 +309,18 @@ unix {
 	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples
 }
 
-# Options de compilation propres a Unix
+# Options de compilation communes a Unix et MacOS X
 unix {
 	# Chemin des fichiers de traduction ; par defaut : lang/ dans le repertoire d'execution
 	DEFINES += QET_LANG_PATH=$$join(COMPIL_PREFIX,,,$${QET_LANG_PATH})
 	
 	# Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
 	DEFINES += QET_COMMON_COLLECTION_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
+}
+
+# Options de compilation specifiques a MacOS X
+macx {
+	# les chemins definis precedemment sont relatifs au dossier contenant le binaire executable
+	DEFINES += QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
+	DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
 }

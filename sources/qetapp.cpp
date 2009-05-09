@@ -264,10 +264,17 @@ QString QETApp::commonElementsDir() {
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	if (common_elements_dir != QString()) return(common_elements_dir);
 #endif
-#ifdef QET_COMMON_COLLECTION_PATH
-	return(QUOTE(QET_COMMON_COLLECTION_PATH));
-#else
+#ifndef QET_COMMON_COLLECTION_PATH
+	// en l'absence d'option de compilation, on utilise le dossier elements, situe a cote du binaire executable
 	return(QCoreApplication::applicationDirPath() + "/elements/");
+#else
+	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+		// l'option de compilation represente un chemin absolu ou relatif classique
+		return(QUOTE(QET_COMMON_COLLECTION_PATH));
+	#else
+		// l'option de compilation represente un chemin relatif au dossier contenant le binaire executable
+		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_COLLECTION_PATH)));
+	#endif
 #endif
 }
 
@@ -412,9 +419,16 @@ QString QETApp::languagesPath() {
 		return(lang_dir);
 	} else {
 #ifndef QET_LANG_PATH
+	// en l'absence d'option de compilation, on utilise le dossier lang, situe a cote du binaire executable
 	return(QCoreApplication::applicationDirPath() + "/lang/");
 #else
-	return(QUOTE(QET_LANG_PATH));
+	#ifndef QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
+		// l'option de compilation represente un chemin absolu ou relatif classique
+		return(QUOTE(QET_LANG_PATH));
+	#else
+		// l'option de compilation represente un chemin relatif au dossier contenant le binaire executable
+		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_LANG_PATH)));
+	#endif
 #endif
 	}
 }
