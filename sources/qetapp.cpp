@@ -273,7 +273,7 @@ QString QETApp::commonElementsDir() {
 		return(QUOTE(QET_COMMON_COLLECTION_PATH));
 	#else
 		// l'option de compilation represente un chemin relatif au dossier contenant le binaire executable
-		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_COLLECTION_PATH)));
+		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_COLLECTION_PATH));
 	#endif
 #endif
 }
@@ -427,7 +427,7 @@ QString QETApp::languagesPath() {
 		return(QUOTE(QET_LANG_PATH));
 	#else
 		// l'option de compilation represente un chemin relatif au dossier contenant le binaire executable
-		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_LANG_PATH)));
+		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_LANG_PATH));
 	#endif
 #endif
 	}
