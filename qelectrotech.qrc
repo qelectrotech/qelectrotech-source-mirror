@@ -1,5 +1,6 @@
 <!DOCTYPE RCC><RCC version="1.0">
 <qresource>
+	<file>ico/128x128/diagram.png</file>
 	<file>ico/128x128/settings.png</file>
 	<file>ico/16x16/add_col.png</file>
 	<file>ico/16x16/add_row.png</file>
@@ -152,9 +153,6 @@
 	<file>ico/32x32/image-x-eps.png</file>
 	<file>ico/32x32/printer.png</file>
 	<file>ico/32x32/qt.png</file>
-	<file>ico/conf_new_diagram_110.png</file>
-	<file>ico/conf_new_diagram_128.png</file>
-	<file>ico/conf_new_diagram_48.png</file>
 	<file>ico/diagram.png</file>
 	<file>ico/mdiarea_bg.png</file>
 	<file>ico/splash.png</file>

@@ -244,9 +244,7 @@ void QET::Icons::initIcons() {
 	MoveFile            .addFile(":/ico/16x16/item_move.png");
 	Names               .addFile(":/ico/22x22/names.png");
 	Neutral             .addFile(":/ico/16x16/neutral.png");
-	NewDiagram          .addFile(":/ico/conf_new_diagram_48.png");
-	NewDiagram          .addFile(":/ico/conf_new_diagram_110.png");
-	NewDiagram          .addFile(":/ico/conf_new_diagram_128.png");
+	NewDiagram          .addFile(":/ico/128x128/diagram.png");
 	North               .addFile(":/ico/16x16/north.png");
 	ObjectLocked        .addFile(":/ico/22x22/object-locked.png");
 	ObjectRotateRight   .addFile(":/ico/16x16/object-rotate-right.png");
