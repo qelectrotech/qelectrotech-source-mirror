@@ -155,6 +155,13 @@
 	<file>ico/32x32/qt.png</file>
 	<file>ico/diagram.png</file>
 	<file>ico/mdiarea_bg.png</file>
+	<file>ico/oxygen-icons/128x128/apps/qelectrotech.png</file>
+	<file>ico/oxygen-icons/16x16/apps/qelectrotech.png</file>
+	<file>ico/oxygen-icons/22x22/apps/qelectrotech.png</file>
+	<file>ico/oxygen-icons/256x256/apps/qelectrotech.png</file>
+	<file>ico/oxygen-icons/32x32/apps/qelectrotech.png</file>
+	<file>ico/oxygen-icons/48x48/apps/qelectrotech.png</file>
+	<file>ico/oxygen-icons/64x64/apps/qelectrotech.png</file>
 	<file>ico/splash.png</file>
 	<file>LICENSE</file>
 </qresource>

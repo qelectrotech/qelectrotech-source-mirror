@@ -122,7 +122,7 @@ namespace QET {
 		extern QIcon Project;
 		extern QIcon QETIcon;
 		extern QIcon QETLogo;
-		extern QIcon QETLogo;
+		extern QIcon QETOxygenLogo;
 		extern QIcon QtLogo;
 		extern QIcon Raise;
 		extern QIcon RemoveColumn;

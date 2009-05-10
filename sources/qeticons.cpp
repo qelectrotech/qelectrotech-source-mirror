@@ -16,10 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qeticons.h"
-#include <QDebug>
-#include <QIcon>
-#include <QLabel>
-#include <QVariant>
 
 // on redeclare ici les icones 
 namespace QET {
@@ -116,6 +112,7 @@ namespace QET {
 		QIcon Project;
 		QIcon QETIcon;
 		QIcon QETLogo;
+		QIcon QETOxygenLogo;
 		QIcon QtLogo;
 		QIcon Raise;
 		QIcon RemoveColumn;
@@ -271,6 +268,13 @@ void QET::Icons::initIcons() {
 	QETIcon             .addFile(":/ico/256x256/qelectrotech.png");
 	QETLogo             .addFile(":/ico/16x16/qet.png");
 	QETLogo             .addFile(":/ico/256x256/qet.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/128x128/apps/qelectrotech.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/16x16/apps/qelectrotech.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/22x22/apps/qelectrotech.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/256x256/apps/qelectrotech.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/32x32/apps/qelectrotech.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/48x48/apps/qelectrotech.png");
+	QETOxygenLogo       .addFile(":/ico/oxygen-icons/64x64/apps/qelectrotech.png");
 	QtLogo              .addFile(":/ico/32x32/qt.png");
 	Raise               .addFile(":/ico/22x22/raise.png");
 	RemoveColumn        .addFile(":/ico/16x16/remove_col.png");

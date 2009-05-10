@@ -23,37 +23,74 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="39"/>
+        <source>&amp;Traducteurs</source>
+        <comment>tab title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="40"/>
+        <source>&amp;Contributeurs</source>
+        <comment>tab title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="41"/>
         <source>&amp;Accord de licence</source>
         <comment>tab title</comment>
         <translation>&amp;Лицензия</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="86"/>
+        <location filename="../sources/aboutqet.cpp" line="88"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <translation>QElectroTech - приложение для разработки электрических схем.</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="88"/>
+        <location filename="../sources/aboutqet.cpp" line="90"/>
         <source>© 2006-2009 Les développeurs de QElectroTech</source>
         <translation>© 2006-2009 разработчики QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="104"/>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Idée originale</source>
         <translation>Оригинальная концепция</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="105"/>
+        <location filename="../sources/aboutqet.cpp" line="107"/>
         <source>Programmation</source>
         <translation>Програмирование</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <location filename="../sources/aboutqet.cpp" line="120"/>
         <source>Traduction en espagnol</source>
         <translation>Перевод на испанский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="119"/>
+        <location filename="../sources/aboutqet.cpp" line="121"/>
+        <source>Traduction en russe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <source>Paquets Fedora</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <source>Paquets Mandriva</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <source>Paquets Debian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <source>Icônes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Эта программа лицензирована на условиях GNU/GPL.</translation>
     </message>
@@ -818,7 +855,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="76"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Версия только для чтения</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
@@ -2008,106 +2045,106 @@ Les changements seront définitifs.</source>
         <translation>Загрузка... Открытие файлов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="767"/>
+        <location filename="../sources/qetapp.cpp" line="781"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="831"/>
+        <location filename="../sources/qetapp.cpp" line="845"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...Значёк в трее</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="833"/>
+        <location filename="../sources/qetapp.cpp" line="847"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="835"/>
+        <location filename="../sources/qetapp.cpp" line="849"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="836"/>
+        <location filename="../sources/qetapp.cpp" line="850"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Скрыть</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="837"/>
+        <location filename="../sources/qetapp.cpp" line="851"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Показать</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="838"/>
+        <location filename="../sources/qetapp.cpp" line="852"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Скрыть редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="839"/>
+        <location filename="../sources/qetapp.cpp" line="853"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Показать редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="840"/>
+        <location filename="../sources/qetapp.cpp" line="854"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Скрыть редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="841"/>
+        <location filename="../sources/qetapp.cpp" line="855"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Показать редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="842"/>
+        <location filename="../sources/qetapp.cpp" line="856"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Новый редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="843"/>
+        <location filename="../sources/qetapp.cpp" line="857"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Новый редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="845"/>
+        <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Закрыть QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="846"/>
+        <location filename="../sources/qetapp.cpp" line="860"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Свернуть QElectroTech в трэй</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="847"/>
+        <location filename="../sources/qetapp.cpp" line="861"/>
         <source>Restaurer QElectroTech</source>
         <translation>востановить QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="861"/>
+        <location filename="../sources/qetapp.cpp" line="875"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="880"/>
+        <location filename="../sources/qetapp.cpp" line="894"/>
         <source>Éditeurs de schémas</source>
         <translation>Редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="896"/>
+        <location filename="../sources/qetapp.cpp" line="910"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="957"/>
+        <location filename="../sources/qetapp.cpp" line="971"/>
         <source>Usage : </source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="957"/>
+        <location filename="../sources/qetapp.cpp" line="971"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2116,7 +2153,7 @@ Les changements seront définitifs.</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="958"/>
+        <location filename="../sources/qetapp.cpp" line="972"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2133,21 +2170,21 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="964"/>
+        <location filename="../sources/qetapp.cpp" line="978"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="967"/>
+        <location filename="../sources/qetapp.cpp" line="981"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define configuration directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="969"/>
+        <location filename="../sources/qetapp.cpp" line="983"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define the language files directory</translation>
@@ -3659,7 +3696,7 @@ Available options:
         <translation>Этот документ, возможно, был сохранён более поздней версии QElectroTech. Возможно, что открытие всего документа или его части будет невозможно.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="969"/>
+        <location filename="../sources/qetproject.cpp" line="972"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Произошла ошибка при копировании элемента %1</translation>
     </message>

@@ -34,9 +34,11 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	
 	// Trois onglets
 	QETTabWidget *tabs = new QETTabWidget(this);
-	tabs -> addTab(aboutTab(),   tr("\300 &propos",       "tab title"));
-	tabs -> addTab(authorsTab(), tr("A&uteurs",           "tab title"));
-	tabs -> addTab(licenseTab(), tr("&Accord de licence", "tab title"));
+	tabs -> addTab(aboutTab(),        tr("\300 &propos",       "tab title"));
+	tabs -> addTab(authorsTab(),      tr("A&uteurs",           "tab title"));
+	tabs -> addTab(translatorsTab(),  tr("&Traducteurs",       "tab title"));
+	tabs -> addTab(contributorsTab(), tr("&Contributeurs",     "tab title"));
+	tabs -> addTab(licenseTab(),      tr("&Accord de licence", "tab title"));
 	
 	// Un bouton pour fermer la boite de dialogue
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
@@ -64,7 +66,7 @@ QWidget *AboutQET::title() const {
 	QWidget *icon_and_title = new QWidget();
 	// icone
 	QLabel *icon = new QLabel();
-	icon -> setPixmap(QET::Icons::QETIcon.pixmap(48, 48));
+	icon -> setPixmap(QET::Icons::QETOxygenLogo.pixmap(48, 48));
 	// label "QElectroTech"
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
 	title -> setTextFormat(Qt::RichText);
@@ -103,11 +105,46 @@ QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
 	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
 	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("Programmation"));
-	addAuthor(authors, "Youssef Oualmakran", "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
 	authors -> setAlignment(Qt::AlignCenter);
 	authors -> setOpenExternalLinks(true);
 	authors -> setTextFormat(Qt::RichText);
 	return(authors);
+}
+
+/**
+	@return Le widget contenu par l'onglet "Traducteurs"
+*/
+QWidget *AboutQET::translatorsTab() const {
+	QLabel *translators = new QLabel();
+	
+	addAuthor(translators, "Youssef Oualmakran",  "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
+	addAuthor(translators, "Yuriy Litkevich",     "lit-uriy@yandex.ru",          tr("Traduction en russe"));
+	/*
+	addAuthor(translators, "José Carlos Martins", "lit-uriy@yandex.ru",          tr("Traduction en portugais"));
+	addAuthor(translators, "Luca Pedrazzi",       "pedro@iworks.it",             tr("Traduction en italien"));
+	*/
+	
+	translators -> setAlignment(Qt::AlignCenter);
+	translators -> setOpenExternalLinks(true);
+	translators -> setTextFormat(Qt::RichText);
+	return(translators);
+}
+
+/**
+	@return Le widget contenu par l'onglet "Contributeurs"
+*/
+QWidget *AboutQET::contributorsTab() const {
+	QLabel *contributors = new QLabel();
+	
+	addAuthor(contributors, "Remi Collet",         "fedora@famillecollet.com",    tr("Paquets Fedora"));
+	addAuthor(contributors, "Trem",                "trem@mandriva.org",           tr("Paquets Mandriva"));
+	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
+	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
+	
+	contributors -> setAlignment(Qt::AlignCenter);
+	contributors -> setOpenExternalLinks(true);
+	contributors -> setTextFormat(Qt::RichText);
+	return(contributors);
 }
 
 /**
