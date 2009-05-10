@@ -117,11 +117,11 @@ QWidget *AboutQET::authorsTab() const {
 QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
-	addAuthor(translators, "Youssef Oualmakran",  "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
-	addAuthor(translators, "Yuriy Litkevich",     "lit-uriy@yandex.ru",          tr("Traduction en russe"));
+	addAuthor(translators, "Youssef Oualmakran",     "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
+	addAuthor(translators, "Yuriy Litkevich",        "lit-uriy@yandex.ru",          tr("Traduction en russe"));
 	/*
-	addAuthor(translators, "José Carlos Martins", "lit-uriy@yandex.ru",          tr("Traduction en portugais"));
-	addAuthor(translators, "Luca Pedrazzi",       "pedro@iworks.it",             tr("Traduction en italien"));
+	addAuthor(translators, "Jos\351 Carlos Martins", "jccm.tec@gmail.com",          tr("Traduction en portugais"));
+	addAuthor(translators, "Luca Pedrazzi",          "pedro@iworks.it",             tr("Traduction en italien"));
 	*/
 	
 	translators -> setAlignment(Qt::AlignCenter);
