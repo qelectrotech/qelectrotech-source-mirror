@@ -25,13 +25,13 @@
         <location filename="../sources/aboutqet.cpp" line="39"/>
         <source>&amp;Traducteurs</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Переводчики</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="40"/>
         <source>&amp;Contributeurs</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Участники</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="41"/>
@@ -67,27 +67,27 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на русский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Paquets Fedora</source>
-        <translation type="unfinished"></translation>
+        <translation>Пакет для Fedora</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Mandriva</source>
-        <translation type="unfinished"></translation>
+        <translation>Пакет для Mandriva</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished"></translation>
+        <translation>Пакет для Debian</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Icônes</source>
-        <translation type="unfinished"></translation>
+        <translation>Значки</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="156"/>
@@ -487,7 +487,7 @@
         <location filename="../sources/elementdialog.cpp" line="61"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Выберите элемент, в котором вы хотите сохранить ваше определение.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="63"/>
@@ -855,7 +855,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="76"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Версия только для чтения</translation>
+        <translation>Версия только для чтения</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
@@ -1498,25 +1498,25 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="151"/>
         <source>La catégorie %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Категория %1 не может быть прочитана.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="161"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Элемент %1 не может быть прочитан.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="171"/>
         <source>La catégorie %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Категория %1 не может быть записана.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="181"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Элемент %1 не может быть записан.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="241"/>
@@ -2907,7 +2907,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
-        <translation type="unfinished"></translation>
+        <translation>Возможно, проект, который вы пытаетесь открыть, не доступен для записи. Он будет открыт в режиме &quot;только для чтения&quot;.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="808"/>
@@ -2919,7 +2919,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="810"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
-        <translation>Файл %1 не является проектом QElectroTech. он не может быть открыт.</translation>
+        <translation>Файл %1 не является проектом QElectroTech. Он не может быть открыт.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1165"/>
@@ -3145,8 +3145,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="111"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
-        <translatorcomment>Что же всё таки добавляется?</translatorcomment>
-        <translation type="unfinished">Нажмите и держите клавишу Shift, чтобы добавить несколько частей в строку</translation>
+        <translation>Нажмите и держите клавишу Shift, чтобы добавлять несколько элементов подряд</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="120"/>
