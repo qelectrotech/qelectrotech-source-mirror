@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Convertisseurs</name>
+        <name lang="ru" >Преобразователи</name>
         <name lang="en" >Converters</name>
+        <name lang="fr" >Convertisseurs</name>
         <name lang="es" >Convertidores</name>
     </names>
 </qet-directory>
