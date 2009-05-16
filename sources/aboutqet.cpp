@@ -118,9 +118,9 @@ QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
 	addAuthor(translators, "Youssef Oualmakran",     "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
-	addAuthor(translators, "Yuriy Litkevich",        "lit-uriy@yandex.ru",          tr("Traduction en russe"));
+	addAuthor(translators, "Yuriy Litkevich",        "yuriy@qelectrotech.org",      tr("Traduction en russe"));
 	/*
-	addAuthor(translators, "Jos\351 Carlos Martins", "jccm.tec@gmail.com",          tr("Traduction en portugais"));
+	addAuthor(translators, "Jos\351 Carlos Martins", "jose@qelectrotech.org",       tr("Traduction en portugais"));
 	addAuthor(translators, "Luca Pedrazzi",          "pedro@iworks.it",             tr("Traduction en italien"));
 	*/
 	
