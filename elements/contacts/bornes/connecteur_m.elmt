@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
+	    <name lang="ru" >Штырь (нов.)</name>
         <name lang="fr" >Connecteur mâle</name>
         <name lang="en" >Male connector</name>
     </names>

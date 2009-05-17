@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr">Bornes</name>
-        <name lang="en">Terminals</name>
+        <name lang="ru" >Контакты</name>
+        <name lang="en" >Terminals</name>
+        <name lang="fr" >Bornes</name>
     </names>
 </qet-directory>
