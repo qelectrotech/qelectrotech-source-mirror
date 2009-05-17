@@ -40,12 +40,12 @@
         <translation>&amp;Лицензия</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="88"/>
+        <location filename="../sources/aboutqet.cpp" line="89"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <translation>QElectroTech - приложение для разработки электрических схем.</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="90"/>
+        <location filename="../sources/aboutqet.cpp" line="91"/>
         <source>© 2006-2009 Les développeurs de QElectroTech</source>
         <translation>© 2006-2009 разработчики QElectroTech</translation>
     </message>
@@ -204,7 +204,6 @@
         <translation>Колонки :</translation>
     </message>
     <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="88"/>
         <location filename="../sources/borderpropertieswidget.cpp" line="102"/>
         <source>×</source>
         <comment>multiplication symbol</comment>
@@ -217,7 +216,6 @@
         <translation>пикс</translation>
     </message>
     <message>
-        <location filename="../sources/borderpropertieswidget.cpp" line="91"/>
         <location filename="../sources/borderpropertieswidget.cpp" line="105"/>
         <source>Afficher les en-têtes</source>
         <translation>Отображать заголовки</translation>
@@ -357,7 +355,7 @@
         <translation>Файл отсутствует</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="255"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="256"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести путь к файлу PDF/PS, чтобы его создать.</translation>
@@ -378,39 +376,118 @@
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="58"/>
+        <location filename="../sources/diagramview.cpp" line="59"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Вставить здесь</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="325"/>
+        <location filename="../sources/diagramview.cpp" line="326"/>
         <source>Schéma sans titre</source>
         <translation>Безымянная схема</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="327"/>
+        <location filename="../sources/diagramview.cpp" line="328"/>
         <source>Schéma %1</source>
         <comment>%1 is a diagram title</comment>
         <translation>Схема %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="345"/>
+        <location filename="../sources/diagramview.cpp" line="346"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Свойства схемы</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="580"/>
+        <location filename="../sources/diagramview.cpp" line="660"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Редактирование своств проводника</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="641"/>
+        <location filename="../sources/diagramview.cpp" line="721"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Редактирование умалчиваемых своств проводника</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="585"/>
+        <source>Propriétés de la sélection</source>
+        <translation>Свойства выделения</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="591"/>
+        <source>La sélection contient %1.</source>
+        <comment>%1 is a sentence listing the selected objects</comment>
+        <translation>Выделение содержит %1.</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="608"/>
+        <source>Élément manquant</source>
+        <translation>Отсутствует элемент</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="610"/>
+        <source>Élément</source>
+        <translation>Элементы</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="615"/>
+        <source>Nom : %1
+</source>
+        <translation>Имя : %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="616"/>
+        <source>Dimensions : %1×%2
+</source>
+        <translation>Размеры : %1×%2
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="617"/>
+        <source>Bornes : %1
+</source>
+        <translation>Выводы : %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
+        <source>Connexions internes : %1
+</source>
+        <translation>Внутренние соединения : %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
+        <source>Autorisées</source>
+        <translation>Разрешены</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
+        <source>Interdites</source>
+        <translation>Запрещены</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="619"/>
+        <source>Champs de texte : %1
+</source>
+        <translation>Текстовое поле : %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="622"/>
+        <source>Emplacement : %1
+</source>
+        <translation>Рассположение : %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="627"/>
+        <source>Propriétés de l&apos;élément sélectionné</source>
+        <translatorcomment>или объекта?</translatorcomment>
+        <translation>Свойства выбранного элемента</translation>
     </message>
 </context>
 <context>
@@ -457,7 +534,7 @@
         <translation>Удаление элемента</translation>
     </message>
     <message>
-        <location filename="../sources/elementdeleter.cpp" line="70"/>
+        <location filename="../sources/elementdeleter.cpp" line="71"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
         <translation>Удаление элемента не удалось.</translation>
@@ -496,7 +573,6 @@
         <translation>Открыть категорию</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="64"/>
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
@@ -514,28 +590,25 @@
         <translation>Имя :</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="233"/>
         <location filename="../sources/elementdialog.cpp" line="271"/>
         <source>Pas de sélection</source>
         <comment>message box title</comment>
         <translation>Нет выделения</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="234"/>
+        <location filename="../sources/elementdialog.cpp" line="235"/>
         <source>Vous devez sélectionner un élément.</source>
         <comment>message box content</comment>
         <translation>Вы должны выделить элемент.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="244"/>
         <location filename="../sources/elementdialog.cpp" line="282"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
         <translation>Несуществующее выделение</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="245"/>
-        <location filename="../sources/elementdialog.cpp" line="283"/>
+        <location filename="../sources/elementdialog.cpp" line="284"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Выделение не существует.</translation>
@@ -547,13 +620,13 @@
         <translation>Некорректное выделение</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="255"/>
+        <location filename="../sources/elementdialog.cpp" line="256"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
         <translation>Выделение не является элементом.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="272"/>
+        <location filename="../sources/elementdialog.cpp" line="273"/>
         <source>Vous devez sélectionner une catégorie ou un élément.</source>
         <comment>message box content</comment>
         <translation>Вы должны выбрать категорию или элемент.</translation>
@@ -565,7 +638,7 @@
         <translation>Требуется имя</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="296"/>
+        <location filename="../sources/elementdialog.cpp" line="297"/>
         <source>Vous devez entrer un nom pour l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Вы должны задать имя элемента</translation>
@@ -577,7 +650,7 @@
         <translation>Неверное имя</translation>
     </message>
     <message>
-        <location filename="../sources/elementdialog.cpp" line="307"/>
+        <location filename="../sources/elementdialog.cpp" line="311"/>
         <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
         <translation>Вы не можете использовать один из следующих символов в имени элемента: %1</translation>
     </message>
@@ -675,7 +748,6 @@
         <translation>Вы можете ввести имя элемента на разных языках.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="983"/>
         <location filename="../sources/editor/elementscene.cpp" line="1037"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
@@ -783,14 +855,13 @@
         <translation>Вы уверены, что хотите очистить эту коллекцию?</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="75"/>
         <location filename="../sources/elementscategorydeleter.cpp" line="89"/>
         <source>Supprimer la catégorie ?</source>
         <comment>message box title</comment>
         <translation>Удалить категорию?</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="76"/>
+        <location filename="../sources/elementscategorydeleter.cpp" line="81"/>
         <source>Êtes-vous sûr de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
@@ -798,7 +869,7 @@ Tous les éléments et les catégories contenus dans cette catégorie seront sup
 Все элементы и категории в этой категории, будут удалены.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
+        <location filename="../sources/elementscategorydeleter.cpp" line="94"/>
         <source>Êtes-vous vraiment sûr de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
@@ -812,7 +883,7 @@ Les changements seront définitifs.</source>
         <translation>Удаление категории</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
+        <location filename="../sources/elementscategorydeleter.cpp" line="105"/>
         <source>La suppression de la catégorie a échoué.</source>
         <comment>message box content</comment>
         <translation>Удаление категории неудалось.</translation>
@@ -827,10 +898,9 @@ Les changements seront définitifs.</source>
         <translation>Несуществующая категория</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translatorcomment>FIFME: Пропущено или Прервано?</translatorcomment>
         <translation>Требуемая категория не существует. Пропущено.</translation>
     </message>
     <message>
@@ -858,7 +928,7 @@ Les changements seront définitifs.</source>
         <translation>Версия только для чтения</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
         <translation>У вас нет прав для редактирования этой категории. Она будет открыта в режиме &quot;только для чтения&quot;.</translation>
@@ -880,7 +950,7 @@ Les changements seront définitifs.</source>
         <translation>Отсутствует внутреннее имя</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="129"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="130"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
         <translation>Вы должны указать внутреннее имя.</translation>
@@ -892,26 +962,25 @@ Les changements seront définitifs.</source>
         <translation>Внутреннее имя уже используется</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="145"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
         <translation>Внутреннее имя, которое вы выбрали уже используется другой категорией. Пожалуйста, выберите другое имя.</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="154"/>
         <location filename="../sources/elementscategoryeditor.cpp" line="170"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="156"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
         <translation>Невозможно создать категорию</translation>
     </message>
     <message>
-        <location filename="../sources/elementscategoryeditor.cpp" line="171"/>
+        <location filename="../sources/elementscategoryeditor.cpp" line="172"/>
         <source>Impossible d&apos;enregistrer la catégorie</source>
         <comment>message box content</comment>
         <translation>Невозможно сохранить категорию</translation>
@@ -958,7 +1027,7 @@ Les changements seront définitifs.</source>
         <translation>Коллекция пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="919"/>
+        <location filename="../sources/elementspanel.cpp" line="922"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>Нет файлов</translation>
@@ -1232,7 +1301,7 @@ Les changements seront définitifs.</source>
         <translation>Имена целевых файлов</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="482"/>
+        <location filename="../sources/exportdialog.cpp" line="487"/>
         <source>Vous devez entrer un nom de fichier distinct pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести индивидуальное имя файла для каждой схемы, которую хотите экспортировать.</translation>
@@ -1256,7 +1325,7 @@ Les changements seront définitifs.</source>
         <translation>Невозможно записать в этот файл</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="538"/>
+        <location filename="../sources/exportdialog.cpp" line="543"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Возможно, что у вас нет необходимых разрешений (прав) для записи в файл %1.</translation>
@@ -1270,7 +1339,6 @@ Les changements seront définitifs.</source>
 <context>
     <name>ExportDialog::ExportDiagramLine</name>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="708"/>
         <location filename="../sources/exportdialog.cpp" line="713"/>
         <source>px</source>
         <translation>px</translation>
@@ -1318,7 +1386,7 @@ Les changements seront définitifs.</source>
 <context>
     <name>GhostElement</name>
     <message>
-        <location filename="../sources/ghostelement.cpp" line="37"/>
+        <location filename="../sources/ghostelement.cpp" line="38"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
         <translation>&lt;u&gt;Отсутствует элемент :&lt;/u&gt; %1</translation>
     </message>
@@ -1326,18 +1394,16 @@ Les changements seront définitifs.</source>
 <context>
     <name>HotspotEditor</name>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="29"/>
+        <location filename="../sources/hotspoteditor.cpp" line="33"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
         <translation>Элемент должен быть достаточно большим, чтобы содержать все свое графическое представление.</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="38"/>
         <location filename="../sources/hotspoteditor.cpp" line="42"/>
         <source> ×10 px</source>
         <translation> ×10 px</translation>
     </message>
     <message>
-        <location filename="../sources/hotspoteditor.cpp" line="46"/>
         <location filename="../sources/hotspoteditor.cpp" line="50"/>
         <source> px</source>
         <translation> px</translation>
@@ -1401,7 +1467,7 @@ Les changements seront définitifs.</source>
         <translation>Фиксированная дата : </translation>
     </message>
     <message>
-        <location filename="../sources/insetpropertieswidget.cpp" line="62"/>
+        <location filename="../sources/insetpropertieswidget.cpp" line="67"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
@@ -1443,31 +1509,31 @@ Les changements seront définitifs.</source>
         <translation>Добавление элемента</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="124"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="131"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
         <translation>Элемент уже был добавлен в проект. Однако версия, которую вы патаетесь добавить отличается. Что вы хотите сделать?</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="136"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="140"/>
         <source>Utiliser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
         <translation>Использовать уже добавленный элемент</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="145"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="149"/>
         <source>Intégrer l&apos;élément déposé</source>
         <comment>dialog content</comment>
         <translation>Добавить перетаскиваемый элемент</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="155"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="159"/>
         <source>Écraser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
         <translation>Удалить уже добавленный элемент</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="165"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="169"/>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
         <translation>Использовать совместно два элемента</translation>
@@ -1476,20 +1542,19 @@ Les changements seront définitifs.</source>
 <context>
     <name>InteractiveMoveElementsHandler</name>
     <message>
-        <location filename="../sources/interactivemoveelementshandler.cpp" line="65"/>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="113"/>
         <source>Copie de %1 vers %2</source>
         <comment>dialog title</comment>
         <translation>Копировать из %1 в %2</translation>
     </message>
     <message>
-        <location filename="../sources/interactivemoveelementshandler.cpp" line="69"/>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="74"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
         <translation>Категория « %1 » (%2) уже существует. Что вы хотите сделать?</translation>
     </message>
     <message>
-        <location filename="../sources/interactivemoveelementshandler.cpp" line="117"/>
+        <location filename="../sources/interactivemoveelementshandler.cpp" line="122"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
         <translation>Элемент « %1 » уже существует. Что вы хотите сделать?</translation>
@@ -1549,7 +1614,6 @@ Les changements seront définitifs.</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../sources/interactivemoveelementshandler.cpp" line="361"/>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="383"/>
         <source>Erreur</source>
         <comment>message box title</comment>
@@ -1693,7 +1757,7 @@ Les changements seront définitifs.</source>
         <translation>Здесь должно быть хотябы одно имя.</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="67"/>
+        <location filename="../sources/nameslistwidget.cpp" line="68"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести хотябы одно имя.</translation>
@@ -1798,27 +1862,25 @@ Les changements seront définitifs.</source>
         <translation>Укажите возможную ориентацию для нового элемента.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="213"/>
-        <location filename="../sources/newelementwizard.cpp" line="233"/>
         <location filename="../sources/newelementwizard.cpp" line="245"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="214"/>
+        <location filename="../sources/newelementwizard.cpp" line="215"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
         <translation>Вы должны выбрать категорию.</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="234"/>
+        <location filename="../sources/newelementwizard.cpp" line="235"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести имя файла</translation>
     </message>
     <message>
-        <location filename="../sources/newelementwizard.cpp" line="246"/>
+        <location filename="../sources/newelementwizard.cpp" line="247"/>
         <source>Merci de ne pas utiliser les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content</comment>
         <translation>Пожалуйста не используйте символы : \ / : * ? &quot; &lt; &gt; |</translation>
@@ -1837,25 +1899,21 @@ Les changements seront définitifs.</source>
         <translation>Запрещено</translation>
     </message>
     <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="50"/>
         <location filename="../sources/orientationsetwidget.cpp" line="62"/>
         <source>Nord :</source>
         <translation>Север :</translation>
     </message>
     <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="52"/>
         <location filename="../sources/orientationsetwidget.cpp" line="66"/>
         <source>Est :</source>
         <translation>Восток :</translation>
     </message>
     <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="54"/>
         <location filename="../sources/orientationsetwidget.cpp" line="70"/>
         <source>Sud :</source>
         <translation>Юг :</translation>
     </message>
     <message>
-        <location filename="../sources/orientationsetwidget.cpp" line="56"/>
         <location filename="../sources/orientationsetwidget.cpp" line="74"/>
         <source>Ouest :</source>
         <translation>Запад :</translation>
@@ -1895,7 +1953,7 @@ Les changements seront définitifs.</source>
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/polygoneditor.cpp" line="73"/>
+        <location filename="../sources/editor/polygoneditor.cpp" line="74"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
         <translation>Полигон долен содержать минимум две точки.</translation>
@@ -1990,7 +2048,7 @@ Les changements seront définitifs.</source>
         <translation>Проект только для чтения</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="596"/>
+        <location filename="../sources/projectview.cpp" line="597"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Этот проект только для чтения. Он не может быть очищен.</translation>
@@ -2018,7 +2076,7 @@ Les changements seront définitifs.</source>
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="652"/>
+        <location filename="../sources/projectview.cpp" line="653"/>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
         <translation>Схема QElectroTech (*.qet)</translation>
@@ -2144,7 +2202,7 @@ Les changements seront définitifs.</source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="971"/>
+        <location filename="../sources/qetapp.cpp" line="972"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2153,7 +2211,7 @@ Les changements seront définitifs.</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="972"/>
+        <location filename="../sources/qetapp.cpp" line="977"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2170,21 +2228,21 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="978"/>
+        <location filename="../sources/qetapp.cpp" line="980"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="981"/>
+        <location filename="../sources/qetapp.cpp" line="983"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define configuration directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="983"/>
+        <location filename="../sources/qetapp.cpp" line="984"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define the language files directory</translation>
@@ -2324,7 +2382,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Propriétés du conducteur</source>
-        <translation>Свойства проводника</translation>
+        <translation type="obsolete">Свойства проводника</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
@@ -2660,7 +2718,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
         <source>Édite les propriétés du conducteur sélectionné</source>
         <comment>status bar tip</comment>
-        <translation>Редактировать свойства выделенного проводника</translation>
+        <translation type="obsolete">Редактировать свойства выделенного проводника</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
@@ -2885,7 +2943,7 @@ Available options:
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="698"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>Схемы QElectroTech (*.qet);;XML-файлы (*.xml);;Все файлы (*)</translation>
     </message>
@@ -2895,7 +2953,7 @@ Available options:
         <translation>Невозможно открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="781"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Возможно, что файл, который вы пытаетесь открыть, не читаем. Невозможно открыть файл. Пожалуйста, проверьте файл.</translation>
     </message>
@@ -2905,7 +2963,7 @@ Available options:
         <translation>Открытие проекта в режиме &quot;только чтение&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="795"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Возможно, проект, который вы пытаетесь открыть, не доступен для записи. Он будет открыт в режиме &quot;только для чтения&quot;.</translation>
     </message>
@@ -2916,7 +2974,7 @@ Available options:
         <translation>Невозможно открыть проект</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="810"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="815"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Файл %1 не является проектом QElectroTech. Он не может быть открыт.</translation>
@@ -2947,6 +3005,17 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="1328"/>
         <source>Active le projet « %1 »</source>
         <translation>Активировать проект « %1 »</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
+        <source>Propriétés de la sélection</source>
+        <translation>Свойства выделения</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
+        <source>Édite les propriétés des objets sélectionné</source>
+        <comment>status bar tip</comment>
+        <translation>Редактирование свойств выделенных объектов</translation>
     </message>
 </context>
 <context>
@@ -3344,7 +3413,7 @@ Available options:
         <translation>Редактор элементов</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="505"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n выделенная часть.</numerusform>
@@ -3359,7 +3428,7 @@ Available options:
         <translation>Размер элемента</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="541"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="550"/>
         <source>Attention : certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>messagebox content</comment>
         <translation>Внимание: некоторые графические примитивы (тексты, окружности, линии, и т.п.) могут, выходить за границы элемента. Это может создавать графические ошибки, когда элемент перемещается на схеме. Вы можете исправить это  перемещая эти примитивы, либо используя &quot;Правка &gt; Редактировать размер и опорную точку&quot;.</translation>
@@ -3389,22 +3458,18 @@ Available options:
         <translation>Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="602"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1072"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Версия только для чтения</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="603"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1073"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1074"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>У вас нет прав для редактирования этого элемента. Он будет открыт в режиме &quot;только для чтения&quot;.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="622"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="662"/>
         <source>Erreur</source>
         <comment>message box title</comment>
@@ -3417,13 +3482,13 @@ Available options:
         <translation>Невозможно записать в этот файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="652"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="653"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Невозможно  получить доступ к элементу</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="663"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="664"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Невозможно сохранить элемент</translation>
@@ -3435,7 +3500,7 @@ Available options:
         <translation>Открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Элементы QElectroTech (*.elmt);;XML-файлы (*.xml);;Все файлы (*)</translation>
@@ -3459,7 +3524,7 @@ Available options:
         <translation>Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="857"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="861"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Элементы QElectroTech (*.elmt)</translation>
@@ -3471,26 +3536,25 @@ Available options:
         <translation>Сохранить текущий элемент?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="891"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="895"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Вы хотите сохранить элемент %1 ?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1044"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1053"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Несуществующий элемент.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1045"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1046"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Элемент не существует.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1054"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1055"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Выбранный виртуальный путь не соответствует элементу.</translation>
@@ -3509,13 +3573,11 @@ Available options:
         <translation>Схема для печати :</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="145"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="318"/>
         <source>Cacher la liste des schémas</source>
         <translation>Скрыть список схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="146"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="333"/>
         <source>Cacher les options d&apos;impression</source>
         <translation>Скрыть параметры печати</translation>
@@ -3606,7 +3668,7 @@ Available options:
         <translation>Использовать весь лист</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="208"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="212"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
         <translation>Если этот вариант выбран, поля бумаги будут игнорированы и вся его площадь будет использована для печати. Это может не поддерживаться принтером.</translation>
     </message>
@@ -3616,7 +3678,7 @@ Available options:
         <translation>Подогнать схему к листу</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="216"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="220"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
         <translation>Если этот вариант выбран, схема будет увеличена или уменьшена, чтобы заполнить всю доступную область печати одной страницей.</translation>
     </message>
@@ -3644,25 +3706,25 @@ Available options:
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="186"/>
+        <location filename="../sources/qetproject.cpp" line="190"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
         <translation>Проект « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="193"/>
+        <location filename="../sources/qetproject.cpp" line="197"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Проект %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="200"/>
+        <location filename="../sources/qetproject.cpp" line="204"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Безымянный проект</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="209"/>
+        <location filename="../sources/qetproject.cpp" line="213"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [только чтение]</translation>
@@ -3689,7 +3751,7 @@ Available options:
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="687"/>
+        <location filename="../sources/qetproject.cpp" line="694"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
         <comment>message box content</comment>
         <translation>Этот документ, возможно, был сохранён более поздней версии QElectroTech. Возможно, что открытие всего документа или его части будет невозможно.</translation>
@@ -3703,7 +3765,7 @@ Available options:
 <context>
     <name>QFileNameEdit</name>
     <message>
-        <location filename="../sources/qfilenameedit.cpp" line="72"/>
+        <location filename="../sources/qfilenameedit.cpp" line="79"/>
         <source>Les caractères autorisés sont : 
  - les chiffres [0-9]
  - les minuscules [a-z]
@@ -3719,7 +3781,7 @@ Available options:
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../sources/customelement.cpp" line="118"/>
+        <location filename="../sources/customelement.cpp" line="121"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
         <translation>Предупреждение: элементы были сохранены более поздней версии QElectroTech.</translation>
     </message>
@@ -3742,25 +3804,25 @@ Available options:
         <translation>Добавлен проводник</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="143"/>
+        <location filename="../sources/diagramcommands.cpp" line="147"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>удалёно: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="213"/>
+        <location filename="../sources/diagramcommands.cpp" line="216"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
         <translation>вставлено: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="272"/>
+        <location filename="../sources/diagramcommands.cpp" line="275"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>вырезано: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="312"/>
+        <location filename="../sources/diagramcommands.cpp" line="315"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>перемещено: %1</translation>
@@ -3772,7 +3834,7 @@ Available options:
         <translation>изменён текст</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="416"/>
+        <location filename="../sources/diagramcommands.cpp" line="420"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>повёрнуто: %1</translation>
@@ -3784,7 +3846,7 @@ Available options:
         <translation>изменён проводник</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="495"/>
+        <location filename="../sources/diagramcommands.cpp" line="498"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Востановленно: %1</translation>
@@ -3988,7 +4050,7 @@ Available options:
         <translation>Предпросмотр</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="157"/>
+        <location filename="../sources/qet.cpp" line="160"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -3998,19 +4060,19 @@ Available options:
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="163"/>
+        <location filename="../sources/qet.cpp" line="167"/>
         <source>, </source>
         <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
         <translation>, </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="169"/>
+        <location filename="../sources/qet.cpp" line="173"/>
         <source> et </source>
         <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
         <translation> и </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="178"/>
+        <location filename="../sources/qet.cpp" line="181"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -4020,13 +4082,13 @@ Available options:
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="184"/>
+        <location filename="../sources/qet.cpp" line="188"/>
         <source> et </source>
         <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
         <translation> и </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="193"/>
+        <location filename="../sources/qet.cpp" line="196"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -4257,7 +4319,6 @@ Available options:
 <context>
     <name>TextEditor</name>
     <message>
-        <location filename="../sources/editor/parttext.cpp" line="133"/>
         <location filename="../sources/editor/texteditor.cpp" line="84"/>
         <source>contenu</source>
         <translation>содержимое</translation>
@@ -4306,7 +4367,6 @@ Available options:
 <context>
     <name>TextFieldEditor</name>
     <message>
-        <location filename="../sources/editor/parttextfield.cpp" line="152"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="89"/>
         <source>contenu</source>
         <translation>содержимое</translation>
