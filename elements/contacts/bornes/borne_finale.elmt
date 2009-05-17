@@ -1,6 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy" >
     <names>
-	    <name lang="ru" >Клемник</name>
+	    <name lang="ru" >Клеммник</name>
         <name lang="en" >Terminal block</name>
         <name lang="fr" >Borne finale</name>
         <name lang="es" >Punto de unión</name>
