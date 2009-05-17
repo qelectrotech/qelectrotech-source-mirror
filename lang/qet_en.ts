@@ -378,36 +378,108 @@
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="325"/>
+        <location filename="../sources/diagramview.cpp" line="326"/>
         <source>Schéma sans titre</source>
         <translation>Untitled diagram</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="58"/>
+        <location filename="../sources/diagramview.cpp" line="59"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Paste Here</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="327"/>
+        <location filename="../sources/diagramview.cpp" line="328"/>
         <source>Schéma %1</source>
         <comment>%1 is a diagram title</comment>
         <translation>Diagram %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="345"/>
+        <location filename="../sources/diagramview.cpp" line="346"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Diagram properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="580"/>
+        <location filename="../sources/diagramview.cpp" line="585"/>
+        <source>Propriétés de la sélection</source>
+        <translation>Selection properties</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="587"/>
+        <source>La sélection contient %1.</source>
+        <comment>%1 is a sentence listing the selected objects</comment>
+        <translation>The selection contains %1.</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="608"/>
+        <source>Élément manquant</source>
+        <translation>Missing element</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="610"/>
+        <source>Élément</source>
+        <translation>Element</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="615"/>
+        <source>Nom : %1
+</source>
+        <translation>Name: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="616"/>
+        <source>Dimensions : %1×%2
+</source>
+        <translation>Size: %1×%2</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="617"/>
+        <source>Bornes : %1
+</source>
+        <translation>Terminals: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
+        <source>Connexions internes : %1
+</source>
+        <translation>Internal connections: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
+        <source>Autorisées</source>
+        <translation>Allowed</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
+        <source>Interdites</source>
+        <translation>Forbidden</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="619"/>
+        <source>Champs de texte : %1
+</source>
+        <translation>Text fields: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="622"/>
+        <source>Emplacement : %1
+</source>
+        <translation>Location: %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="627"/>
+        <source>Propriétés de l&apos;élément sélectionné</source>
+        <translation>Selected element properties</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="660"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="641"/>
+        <location filename="../sources/diagramview.cpp" line="721"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Edit conductors default properties</translation>
@@ -2462,11 +2534,6 @@ Available options:
         <translation>Redo</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
-        <source>Propriétés du conducteur</source>
-        <translation>Conductor properties</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Reset conductors</translation>
@@ -2572,6 +2639,12 @@ Available options:
         <translation>Ctrl+T</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
+        <source>Édite les propriétés des objets sélectionné</source>
+        <comment>status bar tip</comment>
+        <translation>Edit the selected objects properties</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="438"/>
         <source>&amp;Projet</source>
         <translation>&amp;Project</translation>
@@ -2656,6 +2729,11 @@ Available options:
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Undo</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
+        <source>Propriétés de la sélection</source>
+        <translation>Selection properties</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
@@ -2770,12 +2848,6 @@ Available options:
         <source>Pivote les éléments sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Rotates selected elements</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
-        <source>Édite les propriétés du conducteur sélectionné</source>
-        <comment>status bar tip</comment>
-        <translation>Edit the selected conductor properties</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
