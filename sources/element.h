@@ -90,6 +90,7 @@ class Element : public QObject, public QGraphicsItem {
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	QSize setSize(int, int);
+	QSize size() const;
 	QPixmap  pixmap();
 	
 	// methodes relatives au point de saisie

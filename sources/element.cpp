@@ -96,6 +96,13 @@ QSize Element::setSize(int wid, int hei) {
 }
 
 /**
+	@return la taille de l'element sur le schema
+*/
+QSize Element::size() const {
+	return(dimensions);
+}
+
+/**
 	Definit le hotspot de l'element par rapport au coin superieur gauche de son rectangle delimitant.
 	Necessite que la taille ait deja ete definie
 	@param hs Coordonnees du hotspot

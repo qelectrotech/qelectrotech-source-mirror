@@ -46,7 +46,8 @@ class DiagramContent {
 		ConductorsToUpdate = 8,
 		OtherConductors = 16,
 		AnyConductor = 28,
-		All = 31
+		All = 31,
+		SelectedOnly = 32
 	};
 	
 	/// Elements de texte du schema

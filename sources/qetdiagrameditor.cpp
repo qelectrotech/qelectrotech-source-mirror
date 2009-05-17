@@ -214,7 +214,7 @@ void QETDiagramEditor::actions() {
 	select_invert     = new QAction(                                   tr("Inverser la s\351lection"),             this);
 	delete_selection  = new QAction(QET::Icons::EditDelete,            tr("Supprimer"),                            this);
 	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
-	conductor_prop    = new QAction(QET::Icons::Conductor,             tr("Propri\351t\351s du conducteur"),       this);
+	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	conductor_default = new QAction(QET::Icons::DefaultConductor,      tr("Conducteurs par d\351faut"),            this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
@@ -272,7 +272,7 @@ void QETDiagramEditor::actions() {
 	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
 	delete_selection  -> setShortcut(QKeySequence(tr("Suppr")));
 	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
-	conductor_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
+	selection_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
 	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
 	conductor_default -> setShortcut(QKeySequence(tr("Ctrl+D")));
@@ -311,7 +311,7 @@ void QETDiagramEditor::actions() {
 	select_invert     -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s", "status bar tip"));
 	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma", "status bar tip"));
 	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s", "status bar tip"));
-	conductor_prop    -> setStatusTip(tr("\311dite les propri\351t\351s du conducteur s\351lectionn\351", "status bar tip"));
+	selection_prop    -> setStatusTip(tr("\311dite les propri\351t\351s des objets s\351lectionn\351", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	conductor_default -> setStatusTip(tr("Sp\351cifie les propri\351t\351s par d\351faut des conducteurs", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche", "status bar tip"));
@@ -397,7 +397,7 @@ void QETDiagramEditor::actions() {
 	connect(cascade_window,     SIGNAL(triggered()), &workspace, SLOT(cascadeSubWindows())         );
 	connect(next_window,        SIGNAL(triggered()), &workspace, SLOT(activateNextSubWindow())     );
 	connect(prev_window,        SIGNAL(triggered()), &workspace, SLOT(activatePreviousSubWindow()) );
-	connect(conductor_prop,     SIGNAL(triggered()), this,       SLOT(slot_editConductor())        );
+	connect(selection_prop,     SIGNAL(triggered()), this,       SLOT(editSelectionProperties())   );
 	connect(conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(conductor_default,  SIGNAL(triggered()), this,       SLOT(slot_editDefaultConductors()));
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
@@ -483,8 +483,8 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(delete_selection);
 	menu_edition -> addAction(rotate_selection);
+	menu_edition -> addAction(selection_prop);
 	menu_edition -> addSeparator();
-	menu_edition -> addAction(conductor_prop);
 	menu_edition -> addAction(conductor_reset);
 	menu_edition -> addAction(conductor_default);
 	menu_edition -> addSeparator();
@@ -569,6 +569,7 @@ void QETDiagramEditor::toolbar() {
 	main_bar -> addSeparator();
 	main_bar -> addAction(delete_selection);
 	main_bar -> addAction(rotate_selection);
+	main_bar -> addAction(selection_prop);
 	
 	// Modes selection / visualisation et zoom
 	view_bar -> addAction(mode_selection);
@@ -582,7 +583,6 @@ void QETDiagramEditor::toolbar() {
 	diagram_bar -> addAction(infos_diagram);
 	diagram_bar -> addAction(add_text);
 	diagram_bar -> addAction(conductor_default);
-	diagram_bar -> addAction(conductor_prop);
 	diagram_bar -> addAction(conductor_reset);
 	
 	// ajout de la barre d'outils a la fenetre principale
@@ -1146,7 +1146,6 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	
 	// nombre de conducteurs selectionnes
 	int selected_conductors_count = dv ? dv -> diagram() -> selectedConductors().count() : 0;
-	conductor_prop   -> setEnabled(editable_diagram && selected_conductors_count == 1);
 	conductor_reset  -> setEnabled(editable_diagram && selected_conductors_count);
 	
 	// actions ayant aussi besoin d'elements selectionnes
@@ -1155,6 +1154,7 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	copy             -> setEnabled(selected_elements);
 	delete_selection -> setEnabled(editable_diagram && selected_elements);
 	rotate_selection -> setEnabled(editable_diagram && selected_elements);
+	selection_prop   -> setEnabled(editable_diagram && selected_elements);
 }
 
 /**
@@ -1398,6 +1398,15 @@ void QETDiagramEditor::slot_addRow() {
 void QETDiagramEditor::slot_removeRow() {
 	if (DiagramView *dv = currentDiagram()) {
 		dv -> removeRow();
+	}
+}
+
+/**
+	Edite les proprietes des objets selectionnes
+*/
+void QETDiagramEditor::editSelectionProperties() {
+	if (DiagramView *dv = currentDiagram()) {
+		dv -> editSelectionProperties();
 	}
 }
 

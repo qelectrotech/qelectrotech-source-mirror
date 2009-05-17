@@ -114,6 +114,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_removeColumn();
 	void slot_addRow();
 	void slot_removeRow();
+	void editSelectionProperties();
 	void slot_editConductor();
 	void slot_resetConductors();
 	void slot_editDefaultConductors();
@@ -173,7 +174,7 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *select_invert;      ///< Inverse la selection
 	QAction *delete_selection;   ///< Supprime la selection
 	QAction *rotate_selection;   ///< Pivote les elements selectionnes
-	QAction *conductor_prop;     ///< Lance le dialogue d'edition du conducteur selectionne
+	QAction *selection_prop;     ///< Lance le dialogue de description ou d'edition de la selection
 	QAction *conductor_reset;    ///< Reinitialise les conducteurs selectionnes
 	QAction *conductor_default;  ///< Lance le dialogue d'edition des conducteurs par defaut
 	QAction *infos_diagram;      ///< Lance le dialogue d'edition des proprietes du schema

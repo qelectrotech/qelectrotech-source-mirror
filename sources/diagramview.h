@@ -19,10 +19,11 @@
 #define DIAGRAMVIEW_H
 #include <QtGui>
 #include "elementslocation.h"
+class Conductor;
 class Diagram;
 class DiagramTextItem;
+class Element;
 class QETDiagramEditor;
-class Conductor;
 /**
 	Classe representant graphiquement un schema electrique
 */
@@ -108,6 +109,8 @@ class DiagramView : public QGraphicsView {
 	void pasteHere();
 	void adjustSceneRect();
 	void updateWindowTitle();
+	void editSelectionProperties();
+	void editElement(Element *);
 	void editConductor();
 	void editConductor(Conductor *);
 	void resetConductors();

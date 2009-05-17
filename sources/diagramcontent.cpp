@@ -54,6 +54,11 @@ QList<Conductor *> DiagramContent::conductors(int filter) const {
 	if (filter & ConductorsToMove)   result += conductorsToMove;
 	if (filter & ConductorsToUpdate) result += conductorsToUpdate.keys();
 	if (filter & OtherConductors)    result += otherConductors;
+	if (filter & SelectedOnly) {
+		foreach(Conductor *conductor, result) {
+			if (!conductor -> isSelected()) result.removeOne(conductor);
+		}
+	}
 	return(result);
 }
 
@@ -77,6 +82,11 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 	foreach(QGraphicsItem *qgi, conductors(filter)) items_list << qgi;
 	if (filter & Elements)   foreach(QGraphicsItem *qgi, elements)   items_list << qgi;
 	if (filter & TextFields) foreach(QGraphicsItem *qgi, textFields)  items_list << qgi;
+	if (filter & SelectedOnly) {
+		foreach(QGraphicsItem *qgi, items_list) {
+			if (!qgi -> isSelected()) items_list.removeOne(qgi);
+		}
+	}
 	return(items_list);
 }
 
@@ -86,11 +96,19 @@ QList<QGraphicsItem *> DiagramContent::items(int filter) const {
 */
 int DiagramContent::count(int filter) const {
 	int count = 0;
-	if (filter & Elements)           count += elements.count();
-	if (filter & TextFields)         count += textFields.count();
-	if (filter & ConductorsToMove)   count += conductorsToMove.count();
-	if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
-	if (filter & OtherConductors)    count += otherConductors.count();
+	if (filter & SelectedOnly) {
+		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
+		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
+		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
+		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate.keys()) { if (conductor -> isSelected()) ++ count; }
+		if (filter & OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
+	} else {
+		if (filter & Elements)           count += elements.count();
+		if (filter & TextFields)         count += textFields.count();
+		if (filter & ConductorsToMove)   count += conductorsToMove.count();
+		if (filter & ConductorsToUpdate) count += conductorsToUpdate.count();
+		if (filter & OtherConductors)    count += otherConductors.count();
+	}
 	return(count);
 }
 
