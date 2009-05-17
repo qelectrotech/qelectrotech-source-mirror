@@ -1,6 +1,7 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Connecteur Mâle</name>
+        <name lang="fr" >Connecteur mâle</name>
+        <name lang="en" >Male connector</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-1" y2="9" x2="-1" />

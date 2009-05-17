@@ -1,6 +1,7 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >Connecteur</name>
+        <name lang="en" >Connector</name>
     </names>
     <description>
         <input x="4" y="-5.5" size="8" rotate="true" text="_" />
