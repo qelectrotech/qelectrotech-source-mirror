@@ -332,19 +332,19 @@ Iconos</translation>
         <location filename="../sources/diagramprintdialog.cpp" line="166"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impresión a una impresora física</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="167"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impresión a un archivo PDF</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="168"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impresión a un archivo PostScript (PS)</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="173"/>
