@@ -299,6 +299,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	diagrams_ << diagram;
 	rebuildDiagramsMap();
 	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
+	connect(diagram, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
 	
 	// signale l'ajout du schema
 	emit(diagramAdded(diagram));

@@ -43,6 +43,7 @@ class DiagramView : public QGraphicsView {
 	Diagram *scene;
 	QMenu *context_menu;
 	QAction *paste_here;
+	QAction *find_element_;
 	QPoint paste_here_pos;
 	bool is_adding_text;
 	ElementsLocation next_location_;
@@ -90,6 +91,8 @@ class DiagramView : public QGraphicsView {
 	void titleChanged(DiagramView *, const QString &);
 	/// Signal emis avant l'integration d'un element
 	void aboutToAddElement();
+	/// Signal emis lorsque l'utilisateur souhaite retrouver un element du schema dans les collections
+	void findElementRequired(const ElementsLocation &);
 	
 	public slots:
 	void selectNothing();

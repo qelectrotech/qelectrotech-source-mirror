@@ -21,6 +21,7 @@
 class QETProject;
 class DiagramView;
 class Diagram;
+class ElementsLocation;
 class QETTabWidget;
 /**
 	Cette classe affiche les schemas d'un projet dans des onglets.
@@ -70,6 +71,7 @@ class ProjectView : public QWidget {
 	void diagramActivated(DiagramView *);
 	void diagramOrderChanged(ProjectView *, int, int);
 	void projectClosed(ProjectView *);
+	void findElementRequired(const ElementsLocation &);
 	
 	private:
 	void loadDiagrams();

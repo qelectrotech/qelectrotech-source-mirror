@@ -661,7 +661,7 @@ void ElementsPanel::reload(bool reload_collections) {
 	
 	// reselectionne le dernier element selectionne
 	if (!last_selected_item.isNull()) {
-		QTreeWidgetItem *qtwi = findPath(last_selected_item);
+		QTreeWidgetItem *qtwi = findLocation(last_selected_item);
 		if (qtwi) setCurrentItem(qtwi);
 	}
 }
@@ -706,15 +706,20 @@ void ElementsPanel::saveExpandedCategories() {
 }
 
 /**
-	@param path chemin virtuel a retrouver dans l'arborescence
-	@return le QTreeWidgetItem correspondant au chemin path ou 0 si celui-ci n'est pas trouve
+	@param location emplacement a retrouver dans l'arborescence
+	@return le QTreeWidgetItem correspondant a l'emplacaement location ou 0 si celui-ci n'est pas trouve
 */
-QTreeWidgetItem *ElementsPanel::findPath(const QString &path) const {
-	QList<QTreeWidgetItem *> items = findItems("*", Qt::MatchRecursive|Qt::MatchWildcard);
-	foreach(QTreeWidgetItem *item, items) {
-		if (locations_[item].toString() == path) return(item);
-	}
-	return(0);
+QTreeWidgetItem *ElementsPanel::findLocation(const ElementsLocation &location) const {
+	if (location.isNull()) return(0);
+	return(locations_.key(location, 0));
+}
+
+/**
+	@param location emplacement a retrouver dans l'arborescence
+	@return le QTreeWidgetItem correspondant a l'emplacaement location ou 0 si celui-ci n'est pas trouve
+*/
+QTreeWidgetItem *ElementsPanel::findLocation(const QString &location) const {
+	return(findLocation(ElementsLocation(location)));
 }
 
 /**
@@ -794,23 +799,7 @@ void ElementsPanel::filter(const QString &m) {
 			item -> setHidden(!item_matches);
 		}
 		
-		// remonte l'arborescence pour lister les categories contenant les elements filtres
-		QSet<QTreeWidgetItem *> parent_items;
-		foreach(QTreeWidgetItem *item, matching_items) {
-			for (QTreeWidgetItem *parent_qtwi = item -> parent() ; parent_qtwi ; parent_qtwi = parent_qtwi -> parent()) {
-				parent_items << parent_qtwi;
-			}
-		}
-		
-		// etend les parents
-		foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
-			if (!parent_qtwi -> isExpanded()) parent_qtwi -> setExpanded(true);
-		}
-		
-		// affiche les parents
-		foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
-			if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
-		}
+		ensureHierarchyIsVisible(matching_items);
 	}
 }
 
@@ -904,6 +893,23 @@ void ElementsPanel::diagramOrderChanged(QETProject *project, int from, int to) {
 }
 
 /**
+	Affiche un element etant donne son emplacement
+	@param location Emplacement de l'element a afficher
+*/
+bool ElementsPanel::scrollToElement(const ElementsLocation &location) {
+	// recherche l'element dans le panel
+	QTreeWidgetItem *item = findLocation(location);
+	if (!item) return(false);
+	
+	// s'assure que l'item ne soit pas filtre
+	item -> setHidden(false);
+	setCurrentItem(item);
+	ensureHierarchyIsVisible(QList<QTreeWidgetItem *>() << item);
+	scrollToItem(item);
+	return(true);
+}
+
+/**
 	Met a jour le nom, l'info-bulle et l'icone de l'item representant un projet.
 	@param project le projet dont il faut mettre a jour l'affichage
 */
@@ -934,4 +940,28 @@ void ElementsPanel::updateProjectItemInformations(QETProject *project) {
 */
 QString ElementsPanel::diagramTitleToDisplay(Diagram *diagram) const {
 	return(diagram -> title().isEmpty() ? tr("Sch\351ma sans titre") : diagram -> title());
+}
+
+/**
+	@param une liste de QTreeWidgetItem pour lesquels il faut s'assurer que eux
+	et leurs parents sont visibles
+*/
+void ElementsPanel::ensureHierarchyIsVisible(QList<QTreeWidgetItem *> items) {
+	// remonte l'arborescence pour lister les categories contenant les elements filtres
+	QSet<QTreeWidgetItem *> parent_items;
+	foreach(QTreeWidgetItem *item, items) {
+		for (QTreeWidgetItem *parent_qtwi = item -> parent() ; parent_qtwi ; parent_qtwi = parent_qtwi -> parent()) {
+			parent_items << parent_qtwi;
+		}
+	}
+	
+	// etend les parents
+	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
+		if (!parent_qtwi -> isExpanded()) parent_qtwi -> setExpanded(true);
+	}
+	
+	// affiche les parents
+	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
+		if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
+	}
 }

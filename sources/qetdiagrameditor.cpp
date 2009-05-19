@@ -1252,6 +1252,9 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	// gere les changements de l'ordre des schemas dans le projet
 	connect(project_view, SIGNAL(diagramOrderChanged(ProjectView *, int, int)), this, SLOT(diagramOrderChanged(ProjectView *, int, int)));
 	
+	// gere les demandes consistant a retrouver un element dans le panel
+	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SLOT(findElementInPanel(const ElementsLocation &)));
+	
 	// affiche la fenetre
 	if (maximise) project_view -> showMaximized();
 	else project_view -> show();
@@ -1672,6 +1675,46 @@ void QETDiagramEditor::diagramTitleChanged(DiagramView *dv) {
 		if (QETProject *project = diagram -> project()) {
 			pa -> elementsPanel().diagramTitleChanged(project, diagram);
 		}
+	}
+}
+
+/**
+	@param location Emplacement de l'element a retrouver dans le panel
+	d'elements.
+*/
+void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
+	bool element_found = pa -> elementsPanel().scrollToElement(location);
+	if (!element_found) {
+		// l'element n'a pas ete trouve
+		
+		ElementsCollectionItem *element = QETApp::collectionItem(location);
+		if (element) {
+			// mais il semble exister tout de meme
+			
+			// peut-etre vient-il d'un projet ouvert dans un autre editeur ?
+			if (location.project() && !findProject(location.project())) {
+				statusBar() -> showMessage(
+					tr("Impossible de retrouver cet \351l\351ment dans le panel car il semble \351dit\351 dans une autre fen\352tre"),
+					10000
+				);
+			} else {
+				// il devrait etre affiche : on tente de recharger le panel
+				statusBar() -> showMessage(
+					tr("Impossible de retrouver cet \351l\351ment dans le panel... rechargement du panel..."),
+					10000
+				);
+				pa -> reloadAndFilter();
+				statusBar() -> clearMessage();
+				element_found = pa -> elementsPanel().scrollToElement(location);
+			}
+		}
+	}
+	
+	if (!element_found) {
+		statusBar() -> showMessage(
+			tr("Impossible de retrouver cet \351l\351ment dans le panel"),
+			10000
+		);
 	}
 }
 

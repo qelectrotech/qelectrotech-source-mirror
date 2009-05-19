@@ -468,18 +468,23 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="627"/>
+        <location filename="../sources/diagramview.cpp" line="626"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="660"/>
+        <location filename="../sources/diagramview.cpp" line="627"/>
+        <source>Retrouver dans le panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="673"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Editar as propriedades do condutor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="721"/>
+        <location filename="../sources/diagramview.cpp" line="734"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Editar as propriedades padrão do condutor</translation>
@@ -1024,7 +1029,7 @@ As alterações serão definitivas.</translation>
         <translation>Colecção do projecto</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="936"/>
+        <location filename="../sources/elementspanel.cpp" line="942"/>
         <source>Schéma sans titre</source>
         <translation>Esquema sem título</translation>
     </message>
@@ -1034,7 +1039,7 @@ As alterações serão definitivas.</translation>
         <translation>%1 [não utilizado no projecto]</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="919"/>
+        <location filename="../sources/elementspanel.cpp" line="925"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>Sem ficheiro</translation>
@@ -1985,17 +1990,17 @@ As alterações serão definitivas.</translation>
         <translation>Este projecto não contém nenhum esquema</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="401"/>
+        <location filename="../sources/projectview.cpp" line="402"/>
         <source>Titre du projet :</source>
         <translation>Título do projecto:</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="602"/>
+        <location filename="../sources/projectview.cpp" line="603"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Apagar os elementos não usados neste projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="603"/>
+        <location filename="../sources/projectview.cpp" line="604"/>
         <source>Supprimer les catégories vides</source>
         <translation>Apagar as categorias vazias</translation>
     </message>
@@ -2024,55 +2029,55 @@ As alterações serão definitivas.</translation>
         <translation>Este esquema foi adicionado mas não foi modificado ou gravado. Deseja manter o esquema?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="325"/>
+        <location filename="../sources/projectview.cpp" line="326"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
         <translation>Apagar o esquema?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="326"/>
+        <location filename="../sources/projectview.cpp" line="327"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Tem a certeza que deseja apagar este esquema do projecto?  A acção é irreversível.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="398"/>
+        <location filename="../sources/projectview.cpp" line="399"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
         <translation>Propriedades do projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="595"/>
+        <location filename="../sources/projectview.cpp" line="596"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Projecto em modo de leitura</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="596"/>
+        <location filename="../sources/projectview.cpp" line="597"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Este projecto está em modo de leitura. Não pode ser limpo.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="610"/>
+        <location filename="../sources/projectview.cpp" line="611"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Limpar o projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="650"/>
+        <location filename="../sources/projectview.cpp" line="651"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Gravar como</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="652"/>
+        <location filename="../sources/projectview.cpp" line="653"/>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
         <translation>Esquema QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="689"/>
+        <location filename="../sources/projectview.cpp" line="690"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projecto</translation>
@@ -2090,13 +2095,13 @@ As alterações serão definitivas.</translation>
         <translation>Deseja gravar o projecto?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="498"/>
+        <location filename="../sources/projectview.cpp" line="499"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="405"/>
+        <location filename="../sources/projectview.cpp" line="406"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <translation>Propriedades usadas quando um novo esquema é adicionado ao projecto:</translation>
     </message>
@@ -2946,6 +2951,21 @@ Opções disponiveis:
         <translation type="unfinished">Displays QElectroTech in full screen mode</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1697"/>
+        <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
+        <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1715"/>
+        <source>Impossible de retrouver cet élément dans le panel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1167"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
@@ -3015,7 +3035,7 @@ Opções disponiveis:
         <translation type="unfinished">Activates the previous project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1331"/>
         <source>Active le projet « %1 »</source>
         <translation type="unfinished">Activates the project &quot;%1&quot;</translation>
     </message>

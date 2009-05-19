@@ -622,11 +622,24 @@ void DiagramView::editElement(Element *element) {
 		description_string += QString(tr("Emplacement\240: %1\n")).arg(custom_element -> location().toString());
 	}
 	
-	QMessageBox::information(
-		this,
-		tr("Propri\351t\351s de l'\351l\351ment s\351lectionn\351"),
-		description_string
-	);
+	// titre et boutons du dialogue
+	QString description_title = tr("Propri\351t\351s de l'\351l\351ment s\351lectionn\351");
+	QPushButton *find_in_panel = new QPushButton(tr("Retrouver dans le panel"));
+	
+	// dialogue en lui-meme
+	QMessageBox edit_element_dialog;
+	edit_element_dialog.setIcon(QMessageBox::Information);
+	edit_element_dialog.setWindowTitle(description_title);
+	edit_element_dialog.setText(description_title);
+	edit_element_dialog.setInformativeText(description_string);
+	edit_element_dialog.addButton(find_in_panel, QMessageBox::ApplyRole);
+	edit_element_dialog.addButton(QMessageBox::Ok);
+	edit_element_dialog.setDefaultButton(QMessageBox::Ok);
+	edit_element_dialog.exec();
+	
+	if (edit_element_dialog.clickedButton() == find_in_panel) {
+		emit(findElementRequired(custom_element -> location()));
+	}
 }
 
 /**

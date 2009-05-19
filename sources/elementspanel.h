@@ -92,6 +92,7 @@ class ElementsPanel : public QTreeWidget {
 	void diagramWasRemoved(QETProject *, Diagram *);
 	void diagramTitleChanged(QETProject *, Diagram *);
 	void diagramOrderChanged(QETProject *, int, int);
+	bool scrollToElement(const ElementsLocation &);
 	
 	protected:
 	void dragEnterEvent(QDragEnterEvent *);
@@ -106,10 +107,12 @@ class ElementsPanel : public QTreeWidget {
 	QTreeWidgetItem *addCategory  (QTreeWidgetItem *, ElementsCategory   *, const QString & = QString(), const QIcon & = QIcon());
 	QTreeWidgetItem *addElement   (QTreeWidgetItem *, ElementDefinition  *, const QString & = QString());
 	void saveExpandedCategories();
-	QTreeWidgetItem *findPath(const QString &) const;
+	QTreeWidgetItem *findLocation(const ElementsLocation &) const;
+	QTreeWidgetItem *findLocation(const QString &) const;
 	void deleteItem(QTreeWidgetItem *);
 	void updateProjectItemInformations(QETProject *);
 	QString diagramTitleToDisplay(Diagram *) const;
+	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
 	
 	// attributs
 	private:

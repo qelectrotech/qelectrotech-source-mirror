@@ -26,6 +26,7 @@ class ProjectView;
 class Diagram;
 class DiagramView;
 class ElementsPanelWidget;
+class ElementsLocation;
 class RecentFiles;
 /**
 	Cette classe represente la fenetre principale de QElectroTech et,
@@ -144,6 +145,7 @@ class QETDiagramEditor : public QMainWindow {
 	void diagramIsAboutToBeRemoved(DiagramView *);
 	void diagramWasRemoved(DiagramView *);
 	void diagramTitleChanged(DiagramView *);
+	void findElementInPanel(const ElementsLocation &);
 	
 	// attributs
 	public:

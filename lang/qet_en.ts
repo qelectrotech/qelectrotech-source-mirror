@@ -468,18 +468,23 @@
         <translation>Location: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="627"/>
+        <location filename="../sources/diagramview.cpp" line="626"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Selected element properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="660"/>
+        <location filename="../sources/diagramview.cpp" line="627"/>
+        <source>Retrouver dans le panel</source>
+        <translation>Find in the panel</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="673"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="721"/>
+        <location filename="../sources/diagramview.cpp" line="734"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Edit conductors default properties</translation>
@@ -1024,7 +1029,7 @@ Changes will be definitive.</translation>
         <translation>Project collection</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="936"/>
+        <location filename="../sources/elementspanel.cpp" line="942"/>
         <source>Schéma sans titre</source>
         <translation>Untitled diagram</translation>
     </message>
@@ -1034,7 +1039,7 @@ Changes will be definitive.</translation>
         <translation>%1 [unused in the project]</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="919"/>
+        <location filename="../sources/elementspanel.cpp" line="925"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>No file</translation>
@@ -1985,17 +1990,17 @@ Changes will be definitive.</translation>
         <translation>This project does not contain any diagram</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="401"/>
+        <location filename="../sources/projectview.cpp" line="402"/>
         <source>Titre du projet :</source>
         <translation>Project title:</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="602"/>
+        <location filename="../sources/projectview.cpp" line="603"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Delete unused elements in  the project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="603"/>
+        <location filename="../sources/projectview.cpp" line="604"/>
         <source>Supprimer les catégories vides</source>
         <translation>Delete empty categories</translation>
     </message>
@@ -2024,55 +2029,55 @@ Changes will be definitive.</translation>
         <translation>This diagram has been added but it hasn&apos;t been modified nor saved. Do you wish to keep it?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="325"/>
+        <location filename="../sources/projectview.cpp" line="326"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
         <translation>Delete the diagram?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="326"/>
+        <location filename="../sources/projectview.cpp" line="327"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Do you really want to delete this diagram from the project? This change is irreversible.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="398"/>
+        <location filename="../sources/projectview.cpp" line="399"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
         <translation>Project properties</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="595"/>
+        <location filename="../sources/projectview.cpp" line="596"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Read-only project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="596"/>
+        <location filename="../sources/projectview.cpp" line="597"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>This project is read-only. Thus it can not be cleaned.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="610"/>
+        <location filename="../sources/projectview.cpp" line="611"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Clean project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="650"/>
+        <location filename="../sources/projectview.cpp" line="651"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="652"/>
+        <location filename="../sources/projectview.cpp" line="653"/>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
         <translation>QElectroTech Diagram (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="689"/>
+        <location filename="../sources/projectview.cpp" line="690"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Project</translation>
@@ -2090,13 +2095,13 @@ Changes will be definitive.</translation>
         <translation>Do you wish to save the project?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="498"/>
+        <location filename="../sources/projectview.cpp" line="499"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>project</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="405"/>
+        <location filename="../sources/projectview.cpp" line="406"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <translation>Properties used when adding a new diagram to the project:</translation>
     </message>
@@ -2946,6 +2951,21 @@ Available options:
         <translation>Displays QElectroTech in full screen mode</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1697"/>
+        <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
+        <translation>Unable to find this element in the panel because it seems to be edited from another window</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
+        <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
+        <translation>Unable to find this element in the panel... reloading the panel...</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1715"/>
+        <source>Impossible de retrouver cet élément dans le panel</source>
+        <translation>Unable to find this element in the panel</translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1167"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
@@ -3015,7 +3035,7 @@ Available options:
         <translation>Activates the previous project</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1328"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1331"/>
         <source>Active le projet « %1 »</source>
         <translation>Activates the project &quot;%1&quot;</translation>
     </message>
