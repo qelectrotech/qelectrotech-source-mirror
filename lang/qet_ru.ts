@@ -403,7 +403,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="627"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Поиск в панели</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="673"/>
@@ -2737,17 +2737,17 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1697"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно найти этот элемент в панеле, потому что он был изменён из другого окна</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно найти этот элемент в панеле,... перезагрузка панели...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1715"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Невозможно найти этот элемент в панели</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
