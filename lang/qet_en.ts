@@ -161,31 +161,31 @@
 <context>
     <name>BorderInset</name>
     <message>
-        <location filename="../sources/borderinset.cpp" line="264"/>
+        <location filename="../sources/borderinset.cpp" line="265"/>
         <source> Auteur : %1</source>
         <comment>inset content</comment>
         <translation> Author: %1</translation>
     </message>
     <message>
-        <location filename="../sources/borderinset.cpp" line="267"/>
+        <location filename="../sources/borderinset.cpp" line="268"/>
         <source> Date : %1</source>
         <comment>inset content</comment>
         <translation>Date: %1</translation>
     </message>
     <message>
-        <location filename="../sources/borderinset.cpp" line="270"/>
+        <location filename="../sources/borderinset.cpp" line="271"/>
         <source>Titre du document : %1</source>
         <comment>inset content</comment>
         <translation>Document title: %1</translation>
     </message>
     <message>
-        <location filename="../sources/borderinset.cpp" line="273"/>
+        <location filename="../sources/borderinset.cpp" line="274"/>
         <source> Fichier : %1</source>
         <comment>inset content</comment>
         <translation>File: %1</translation>
     </message>
     <message>
-        <location filename="../sources/borderinset.cpp" line="276"/>
+        <location filename="../sources/borderinset.cpp" line="277"/>
         <source> Folio : %1</source>
         <comment>inset content</comment>
         <translation>Folio: %1</translation>
@@ -378,113 +378,120 @@
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="326"/>
+        <location filename="../sources/diagramview.cpp" line="327"/>
         <source>Schéma sans titre</source>
         <translation>Untitled diagram</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="59"/>
+        <location filename="../sources/diagramview.cpp" line="60"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Paste Here</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="328"/>
+        <location filename="../sources/diagramview.cpp" line="329"/>
         <source>Schéma %1</source>
         <comment>%1 is a diagram title</comment>
         <translation>Diagram %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="346"/>
+        <location filename="../sources/diagramview.cpp" line="347"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Diagram properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="585"/>
+        <location filename="../sources/diagramview.cpp" line="586"/>
         <source>Propriétés de la sélection</source>
         <translation>Selection properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="587"/>
+        <location filename="../sources/diagramview.cpp" line="588"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>The selection contains %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="608"/>
+        <location filename="../sources/diagramview.cpp" line="609"/>
         <source>Élément manquant</source>
         <translation>Missing element</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="610"/>
+        <location filename="../sources/diagramview.cpp" line="611"/>
         <source>Élément</source>
         <translation>Element</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="615"/>
+        <location filename="../sources/diagramview.cpp" line="616"/>
         <source>Nom : %1
 </source>
         <translation>Name: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="616"/>
+        <location filename="../sources/diagramview.cpp" line="617"/>
+        <source>Position : %1
+</source>
+        <translation>Position: %1
+</translation>
+    </message>
+    <message>
+        <location filename="../sources/diagramview.cpp" line="618"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Size: %1×%2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="617"/>
+        <location filename="../sources/diagramview.cpp" line="619"/>
         <source>Bornes : %1
 </source>
         <translation>Terminals: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="618"/>
+        <location filename="../sources/diagramview.cpp" line="620"/>
         <source>Connexions internes : %1
 </source>
         <translation>Internal connections: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="618"/>
+        <location filename="../sources/diagramview.cpp" line="620"/>
         <source>Autorisées</source>
         <translation>Allowed</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="618"/>
+        <location filename="../sources/diagramview.cpp" line="620"/>
         <source>Interdites</source>
         <translation>Forbidden</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="619"/>
+        <location filename="../sources/diagramview.cpp" line="621"/>
         <source>Champs de texte : %1
 </source>
         <translation>Text fields: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="622"/>
+        <location filename="../sources/diagramview.cpp" line="624"/>
         <source>Emplacement : %1
 </source>
         <translation>Location: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="626"/>
+        <location filename="../sources/diagramview.cpp" line="628"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Selected element properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="627"/>
+        <location filename="../sources/diagramview.cpp" line="629"/>
         <source>Retrouver dans le panel</source>
         <translation>Find in the panel</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="673"/>
+        <location filename="../sources/diagramview.cpp" line="675"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Edit conductor properties</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="734"/>
+        <location filename="../sources/diagramview.cpp" line="736"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Edit conductors default properties</translation>
