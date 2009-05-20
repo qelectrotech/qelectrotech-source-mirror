@@ -403,7 +403,8 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="629"/>
         <source>Retrouver dans le panel</source>
-        <translation>Поиск в панели</translation>
+        <translatorcomment>Название кнопки.</translatorcomment>
+        <translation>Найти в панели</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="675"/>
