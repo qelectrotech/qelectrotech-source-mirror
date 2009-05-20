@@ -25,6 +25,7 @@
 #include "ghostelement.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
+#include "diagramposition.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -894,6 +895,24 @@ bool Diagram::usesElement(const ElementsLocation &location) {
 		}
 	}
 	return(false);
+}
+
+/**
+	@param pos Position cartesienne (ex : 10.3, 45.2) a transformer en position
+	dans la grille (ex : B2)
+	@return la position dans la grille correspondant a pos
+*/
+DiagramPosition Diagram::convertPosition(const QPointF &pos) {
+	// decale la position pour prendre en compte les marges en haut a gauche du schema
+	QPointF final_pos = pos - QPointF(margin, margin);
+	
+	// delegue le calcul au BorderInset
+	DiagramPosition diagram_position = border_and_inset.convertPosition(final_pos);
+	
+	// embarque la position cartesienne
+	diagram_position.setPosition(pos);
+	
+	return(diagram_position);
 }
 
 /**

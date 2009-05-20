@@ -17,6 +17,7 @@
 */
 #include <QPainter>
 #include "borderinset.h"
+#include "diagramposition.h"
 #include "qetapp.h"
 #include "math.h"
 
@@ -424,6 +425,36 @@ void BorderInset::setInsetHeight(const qreal &new_ih) {
 */
 void BorderInset::adjustInsetToColumns() {
 	setInsetWidth(diagramWidth());
+}
+
+/**
+	@param pos Position cartesienne (ex : 10.3, 45.2) a transformer en position
+	dans la grille (ex : B2)
+	@return la position dans la grille correspondant a pos
+*/
+DiagramPosition BorderInset::convertPosition(const QPointF &pos) {
+	// recupere le rectangle quadrille par les en-tetes
+	QRectF grid_rect(
+		rowsHeaderWidth(),
+		columnsHeaderHeight(),
+		diagramWidth(),
+		diagramHeight()
+	);
+	
+	if (!grid_rect.contains(pos)) {
+		return(DiagramPosition("", 0));
+	}
+	
+	QPointF relative_pos = pos - grid_rect.topLeft();
+	int row_number    = ceil(relative_pos.x() / columnsWidth());
+	int column_number = ceil(relative_pos.y() / rowsHeight());
+	
+	QString letter = "A";
+	for (int i = 1 ; i < column_number ; ++ i) {
+		letter = incrementLetters(letter);
+	}
+	
+	return(DiagramPosition(letter, row_number));
 }
 
 QString BorderInset::incrementLetters(const QString &string) {

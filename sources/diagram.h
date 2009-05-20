@@ -28,6 +28,7 @@ class Terminal;
 class Conductor;
 class DiagramTextItem;
 class DiagramContent;
+class DiagramPosition;
 class QETProject;
 class ElementsLocation;
 /**
@@ -132,6 +133,7 @@ class Diagram : public QGraphicsScene {
 	bool useBorder();
 	void setBorderOptions(BorderOptions);
 	BorderOptions borderOptions();
+	DiagramPosition convertPosition(const QPointF &);
 	
 	bool drawTerminals() const;
 	void setDrawTerminals(bool);

@@ -74,6 +74,7 @@ HEADERS += sources/aboutqet.h \
            sources/diagram.h \
            sources/diagramcommands.h \
            sources/diagramcontent.h \
+           sources/diagramposition.h \
            sources/diagramprintdialog.h \
            sources/diagramschooser.h \
            sources/diagramtextitem.h \
@@ -173,6 +174,7 @@ SOURCES += sources/aboutqet.cpp \
            sources/diagram.cpp \
            sources/diagramcommands.cpp \
            sources/diagramcontent.cpp \
+           sources/diagramposition.cpp \
            sources/diagramprintdialog.cpp \
            sources/diagramschooser.cpp \
            sources/diagramtextitem.cpp \

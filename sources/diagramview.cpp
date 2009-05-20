@@ -21,6 +21,7 @@
 #include "ghostelement.h"
 #include "conductor.h"
 #include "diagramcommands.h"
+#include "diagramposition.h"
 #include "conductorpropertieswidget.h"
 #include "insetpropertieswidget.h"
 #include "qetapp.h"
@@ -613,6 +614,7 @@ void DiagramView::editElement(Element *element) {
 	
 	// nom,  nombre de bornes, dimensions
 	description_string += QString(tr("Nom\240: %1\n")).arg(element -> name());
+	description_string += QString(tr("Position\240: %1\n")).arg(scene -> convertPosition(element -> scenePos()).toString());
 	description_string += QString(tr("Dimensions\240: %1\327%2\n")).arg(element -> size().width()).arg(element -> size().height());
 	description_string += QString(tr("Bornes\240: %1\n")).arg(element -> terminals().count());
 	description_string += QString(tr("Connexions internes\240: %1\n")).arg(element -> internalConnections() ? tr("Autoris\351es") : tr("Interdites"));

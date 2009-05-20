@@ -23,6 +23,7 @@
 #include <QRectF>
 #include <QDate>
 class QPainter;
+class DiagramPosition;
 /**
 	Cette classe represente l'ensemble bordure + cartouche qui encadre le
 	schema electrique.
@@ -123,6 +124,8 @@ class BorderInset : public QObject {
 	void setInsetWidth         (const qreal &);
 	void setInsetHeight        (const qreal &);
 	void adjustInsetToColumns  ();
+	
+	DiagramPosition convertPosition(const QPointF &);
 	
 	// methodes d'acces en ecriture aux informations du cartouche
 	/// @param author le nouveau contenu du champ "Auteur"
