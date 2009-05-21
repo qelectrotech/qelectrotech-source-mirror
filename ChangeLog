@@ -1,4 +1,8 @@
 ====== Changelog 0.11 -> 0.2 ======
+À partir de la version 0.2, QElectroTech est disponible en français, anglais, mais aussi :
+  * en espagnol, grâce aux traductions de Youssef ;
+  * en russe, grâce aux traductions de Yuriy.
+L'application utilise désormais le thème d'icônes Oxygen, réalisé par Nuno Pinheiro pour le projet KDE.
 
 ===== Notion de fichier projet =====
 Un fichier .qet peut désormais contenir zéro, un ou plusieurs schémas électriques. Les éléments composant ces schémas sont embarqués dans le fichier projet au moment où ils sont posés sur un schéma. Le panel d'éléments affiche donc désormais :
