@@ -1,7 +1,8 @@
 ====== Changelog 0.11 -> 0.2 ======
 À partir de la version 0.2, QElectroTech est disponible en français, anglais, mais aussi :
   * en espagnol, grâce aux traductions de Youssef ;
-  * en russe, grâce aux traductions de Yuriy.
+  * en russe, grâce aux traductions de Yuriy ;
+  * en portugais, grâce aux traductions de José.
 L'application utilise désormais le thème d'icônes Oxygen, réalisé par Nuno Pinheiro pour le projet KDE.
 
 ===== Notion de fichier projet =====
