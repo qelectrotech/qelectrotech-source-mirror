@@ -488,7 +488,7 @@ Iconos</translation>
     <message>
         <location filename="sources/diagramview.cpp" line="629"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Econtrar en el panel</translation>
     </message>
     <message>
         <location filename="sources/diagramview.cpp" line="675"/>
@@ -2716,17 +2716,17 @@ Opciones disponibles:
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="1697"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposible de encontrar este elemento en el panel porque parece que fue editado en otra ventana</translation>
     </message>
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="1703"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposible de encontrar este elemento en el panel ... se está recargando el panel ...</translation>
     </message>
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="1715"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposible de encontrar este elemento en el panel</translation>
     </message>
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="230"/>
