@@ -1,17 +1,15 @@
 [en]
-QElectroTech is a Qt4 application to design electric diagrams. It uses XML  
-files for elements and diagrams, and includes both a diagram editor and an 
-element editor.
+QElectroTech is a Qt4 application to design electric diagrams.
+It uses XML files for elements and diagrams, and includes both a diagram editor and an element editor.
 
 [fr]
 QElectroTech est une application Qt4 pour réaliser des schémas électriques.
-QET utilise le format XML pour ses éléments et ses schémas et inclut un
-éditeur de schémas ainsi qu'un éditeur d'élément.
+QET utilise le format XML pour ses éléments et ses schémas et inclut un éditeur de schémas ainsi qu'un éditeur d'élément.
 
 [ru]
 QElectroTech - приложение написанное на Qt4 и предназначенное для разработки электрических схем.
-Оно использует XML-файлы для элементов и схем, и включает, как редактор схем, так и редактор 
-элементов.
+Оно использует XML-файлы для элементов и схем, и включает, как редактор схем, так и редактор элементов.
 
 [pt]
-QElectroTech é uma aplicação baseada em Qt4 para desenhar esquemas eléctricos. QET utiliza ficheiros XML para os elementos e para os esquemas e inclui um editor de esquemas e um editor de elementos.
+QElectroTech é uma aplicação baseada em Qt4 para desenhar esquemas eléctricos.
+QET utiliza ficheiros XML para os elementos e para os esquemas e inclui um editor de esquemas e um editor de elementos.
