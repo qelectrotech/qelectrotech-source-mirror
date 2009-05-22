@@ -12,3 +12,6 @@ QET utilise le format XML pour ses éléments et ses schémas et inclut un
 QElectroTech - приложение написанное на Qt4 и предназначенное для разработки электрических схем.
 Оно использует XML-файлы для элементов и схем, и включает, как редактор схем, так и редактор 
 элементов.
+
+[pt]
+QElectroTech é uma aplicação baseada em Qt4 para desenhar esquemas eléctricos. QET utiliza ficheiros XML para os elementos e para os esquemas e inclui um editor de esquemas e um editor de elementos.
