@@ -72,7 +72,7 @@
     <message>
         <location filename="sources/aboutqet.cpp" line="122"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на португальский</translation>
     </message>
     <message>
         <location filename="sources/aboutqet.cpp" line="139"/>
