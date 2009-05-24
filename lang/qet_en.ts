@@ -1367,37 +1367,47 @@ Changes will be definitive.</translation>
 <context>
     <name>GeneralConfigurationPage</name>
     <message>
-        <location filename="sources/configpages.cpp" line="107"/>
+        <location filename="sources/configpages.cpp" line="108"/>
+        <source>Apparence</source>
+        <translation>Appearance</translation>
+    </message>
+    <message>
+        <location filename="sources/configpages.cpp" line="109"/>
+        <source>Utiliser les couleurs du système</source>
+        <translation>Use system colors</translation>
+    </message>
+    <message>
+        <location filename="sources/configpages.cpp" line="111"/>
         <source>Projets</source>
         <translation>Projects</translation>
     </message>
     <message>
-        <location filename="sources/configpages.cpp" line="108"/>
+        <location filename="sources/configpages.cpp" line="112"/>
         <source>Utiliser des fenêtres</source>
         <translation>Use windows</translation>
     </message>
     <message>
-        <location filename="sources/configpages.cpp" line="109"/>
+        <location filename="sources/configpages.cpp" line="113"/>
         <source>Utiliser des onglets</source>
         <translation>Use tabs</translation>
     </message>
     <message>
-        <location filename="sources/configpages.cpp" line="110"/>
+        <location filename="sources/configpages.cpp" line="114"/>
         <source>Ces paramètres s&apos;appliqueront dès la prochaine ouverture d&apos;un éditeur de schémas.</source>
         <translation>These settings will be applied at the next opening of a diagram editor.</translation>
     </message>
     <message>
-        <location filename="sources/configpages.cpp" line="112"/>
+        <location filename="sources/configpages.cpp" line="116"/>
         <source>Gestion des éléments</source>
         <translation>Elements management</translation>
     </message>
     <message>
-        <location filename="sources/configpages.cpp" line="113"/>
+        <location filename="sources/configpages.cpp" line="117"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
         <translation>Integrate automatically the elements into the projects (recommended)</translation>
     </message>
     <message>
-        <location filename="sources/configpages.cpp" line="172"/>
+        <location filename="sources/configpages.cpp" line="190"/>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>General</translation>
@@ -2121,82 +2131,82 @@ Changes will be definitive.</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="sources/qetapp.cpp" line="849"/>
+        <location filename="sources/qetapp.cpp" line="875"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Quit</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="850"/>
+        <location filename="sources/qetapp.cpp" line="876"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Hide</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="851"/>
+        <location filename="sources/qetapp.cpp" line="877"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Show</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="852"/>
+        <location filename="sources/qetapp.cpp" line="878"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Hide diagram editors</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="853"/>
+        <location filename="sources/qetapp.cpp" line="879"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Show diagram editors</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="854"/>
+        <location filename="sources/qetapp.cpp" line="880"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Hide element editors</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="855"/>
+        <location filename="sources/qetapp.cpp" line="881"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Show element editors</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="856"/>
+        <location filename="sources/qetapp.cpp" line="882"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;New diagram editor</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="857"/>
+        <location filename="sources/qetapp.cpp" line="883"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;New element editor</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="859"/>
+        <location filename="sources/qetapp.cpp" line="885"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Closes QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="860"/>
+        <location filename="sources/qetapp.cpp" line="886"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Reduces QElectroTech into the systray</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="861"/>
+        <location filename="sources/qetapp.cpp" line="887"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restore QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="894"/>
+        <location filename="sources/qetapp.cpp" line="920"/>
         <source>Éditeurs de schémas</source>
         <translation>Diagram editors</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="910"/>
+        <location filename="sources/qetapp.cpp" line="936"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Element editors</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="971"/>
+        <location filename="sources/qetapp.cpp" line="997"/>
         <source>Usage : </source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="972"/>
+        <location filename="sources/qetapp.cpp" line="998"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2213,7 +2223,7 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="971"/>
+        <location filename="sources/qetapp.cpp" line="997"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2222,57 +2232,57 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="978"/>
+        <location filename="sources/qetapp.cpp" line="1004"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
 </translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="981"/>
+        <location filename="sources/qetapp.cpp" line="1007"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define configuration directory
 </translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="983"/>
+        <location filename="sources/qetapp.cpp" line="1009"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define the language files directory</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="85"/>
+        <location filename="sources/qetapp.cpp" line="86"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
         <translation>Loading... Diagrams editor</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="88"/>
+        <location filename="sources/qetapp.cpp" line="89"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Loading... Opening files</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="781"/>
+        <location filename="sources/qetapp.cpp" line="804"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Loading...</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="845"/>
+        <location filename="sources/qetapp.cpp" line="871"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Loading... Systray icon</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="847"/>
+        <location filename="sources/qetapp.cpp" line="873"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetapp.cpp" line="875"/>
+        <location filename="sources/qetapp.cpp" line="901"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -2281,773 +2291,773 @@ Available options:
 <context>
     <name>QETDiagramEditor</name>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="439"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="433"/>
         <source>Afficha&amp;ge</source>
         <translation>Displ&amp;ay</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="511"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="505"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
         <translation>Displays or not the elements panel</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="506"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="500"/>
         <source>Afficher</source>
         <translation>Display</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="443"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="437"/>
         <source>&amp;Aide</source>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="222"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="216"/>
         <source>Ajouter une colonne</source>
         <translation>Add a column</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="252"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="246"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation>A&amp;bout QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="253"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="247"/>
         <source>À propos de &amp;Qt</source>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="248"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="242"/>
         <source>&amp;Cascade</source>
         <translation>&amp;Cascade</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="211"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="205"/>
         <source>C&amp;oller</source>
         <translation>&amp;Paste</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="441"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="435"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Settings</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="245"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="239"/>
         <source>&amp;Configurer QElectroTech</source>
         <translation>&amp;Configure QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="210"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="204"/>
         <source>Cop&amp;ier</source>
         <translation>&amp;Copy</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="209"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="203"/>
         <source>Co&amp;uper</source>
         <translation>Cu&amp;t</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="285"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="279"/>
         <source>Ctrl+0</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="284"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="278"/>
         <source>Ctrl+9</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="272"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="266"/>
         <source>Ctrl+I</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="263"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="257"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="274"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="268"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="271"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="265"/>
         <source>Ctrl+Shift+A</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="287"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="281"/>
         <source>Ctrl+Shift+F</source>
         <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="260"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="254"/>
         <source>Ctrl+Shift+I</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="261"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="255"/>
         <source>Ctrl+Shift+X</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="213"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="207"/>
         <source>Désélectionner tout</source>
         <translation>Select none</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="437"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="431"/>
         <source>&amp;Édition</source>
         <translation>&amp;Edit</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="223"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="217"/>
         <source>Enlever une colonne</source>
         <translation>Remove a column</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="197"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="191"/>
         <source>&amp;Enregistrer</source>
         <translation>&amp;Save</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="198"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="192"/>
         <source>Enregistrer sous</source>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="201"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="195"/>
         <source>E&amp;xporter</source>
         <translation>&amp;Export</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="442"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="436"/>
         <source>Fe&amp;nêtres</source>
         <translation>Wi&amp;ndows</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="196"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="190"/>
         <source>&amp;Fermer</source>
         <translation>&amp;Close</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="436"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="430"/>
         <source>&amp;Fichier</source>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="200"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="194"/>
         <source>&amp;Importer</source>
         <translation>&amp;Import</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="202"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="196"/>
         <source>Imprimer</source>
         <translation>Print</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="214"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="208"/>
         <source>Inverser la sélection</source>
         <translation>Invert selection</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="240"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="234"/>
         <source>Mode Selection</source>
         <translation>Selection Mode</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="241"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="235"/>
         <source>Mode Visualisation</source>
         <translation>View Mode</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="247"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="241"/>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Tile</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="194"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="188"/>
         <source>&amp;Nouveau</source>
         <translation>&amp;New</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="546"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="540"/>
         <source>Outils</source>
         <translation>Tools</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="195"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="189"/>
         <source>&amp;Ouvrir</source>
         <translation>&amp;Open</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="695"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="689"/>
         <source>Ouvrir un fichier</source>
         <translation>Open a file</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="235"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="229"/>
         <source>Pas de zoom</source>
         <translation>Reset zoom</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1169"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1163"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>F&amp;ullScreen Mode</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="216"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="210"/>
         <source>Pivoter</source>
         <translation>Rotate</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="203"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="197"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Quit</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="697"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="691"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <translation>QElectroTech Diagrams (*.qet);;XML Files (*.xml);;All files (*)</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1165"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1159"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Exit f&amp;ullScreen mode</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="215"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="209"/>
         <source>Supprimer</source>
         <translation>Delete</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="212"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="206"/>
         <source>Tout sélectionner</source>
         <translation>Select All</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="234"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="228"/>
         <source>Zoom adapté</source>
         <translation>Fit in view</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="233"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="227"/>
         <source>Zoom arrière</source>
         <translation>Zoom Out</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="232"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="226"/>
         <source>Zoom avant</source>
         <translation>Zoom In</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="205"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="199"/>
         <source>Annuler</source>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="207"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="201"/>
         <source>Refaire</source>
         <translation>Redo</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="218"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="212"/>
         <source>Réinitialiser les conducteurs</source>
         <translation>Reset conductors</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="273"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="267"/>
         <source>Suppr</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="275"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="269"/>
         <source>Ctrl+J</source>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="276"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="270"/>
         <source>Ctrl+K</source>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="220"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="214"/>
         <source>Propriétés du schéma</source>
         <translation>Diagram Properties</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="277"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="271"/>
         <source>Ctrl+L</source>
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="508"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="502"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
         <translation>Display or hide the main toolbar</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="509"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="503"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
         <translation>Display or hide the Display toolbar</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="510"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="504"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
         <translation>Display or hide the Diagram toolbar</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="549"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="543"/>
         <source>Affichage</source>
         <translation>Display</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="552"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="546"/>
         <source>Schéma</source>
         <translation>Diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="219"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="213"/>
         <source>Conducteurs par défaut</source>
         <translation>Default conductors</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="278"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="272"/>
         <source>Ctrl+D</source>
         <translation>Ctrl+D</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="221"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="215"/>
         <source>Ajouter un champ de texte</source>
         <translation>Add a textfield</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="89"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="83"/>
         <source>Aucune modification</source>
         <translation>No modification</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="512"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="506"/>
         <source>Affiche ou non la liste des modifications</source>
         <translation>Display or hide the undo list</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="224"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="218"/>
         <source>Ajouter une ligne</source>
         <translation>Add a row</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="225"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="219"/>
         <source>Enlever une ligne</source>
         <translation>Remove a row</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="228"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="222"/>
         <source>Ajouter un schéma</source>
         <translation>Add a diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="229"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="223"/>
         <source>Supprimer le schéma</source>
         <translation>Delete the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="280"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="274"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="314"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="308"/>
         <source>Édite les propriétés des objets sélectionné</source>
         <comment>status bar tip</comment>
         <translation>Edit the selected objects properties</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="438"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="432"/>
         <source>&amp;Projet</source>
         <translation>&amp;Project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="780"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="774"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <translation>Unable to open file</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="781"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="775"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>The file you try to open does not seem readable and can not be opened. Please check the file permissions.</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="794"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="788"/>
         <source>Ouverture du projet en lecture seule</source>
         <translation>Opening the file read-only</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="795"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="789"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>The project you try to open does not seem writable. It will be opened read-only.</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="237"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="231"/>
         <source>en utilisant des onglets</source>
         <translation>using tabs</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="238"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="232"/>
         <source>en utilisant des fenêtres</source>
         <translation>using windows</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="515"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="509"/>
         <source>Afficher les projets</source>
         <translation>Display projects</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="227"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="221"/>
         <source>Propriétés du projet</source>
         <translation>Project properties</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="230"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="224"/>
         <source>Nettoyer le projet</source>
         <translation>Clean project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="808"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="802"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Unable to open project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="810"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="804"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>The file %1 does not appear to be a QElectroTech project file. Thus it cannot be opened.</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="58"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="52"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="64"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="58"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="67"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="61"/>
         <source>Panel d&apos;éléments</source>
         <comment>dock title</comment>
         <translation>Elements Panel</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="82"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="76"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="217"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="211"/>
         <source>Propriétés de la sélection</source>
         <translation>Selection properties</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="293"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="287"/>
         <source>Crée un nouveau schéma</source>
         <comment>status bar tip</comment>
         <translation>Opens a new diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="294"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="288"/>
         <source>Ouvre un schéma existant</source>
         <comment>status bar tip</comment>
         <translation>Open an existing diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="295"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="289"/>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Closes the current diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="296"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="290"/>
         <source>Enregistre le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Saves the current diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="297"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="291"/>
         <source>Enregistre le schéma courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
         <translation>Saves the current diagram as another filename</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="299"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="293"/>
         <source>Importe un schéma dans le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Imports a diagram into the current diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="300"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="294"/>
         <source>Exporte le schéma courant dans un autre format</source>
         <comment>status bar tip</comment>
         <translation>Exports the current diagram to another format</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="301"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="295"/>
         <source>Imprime le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Prints the current diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="302"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="296"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Closes QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="304"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="298"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
         <translation>Undoes the previous action</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="305"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="299"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
         <translation>Restores the undone action</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="306"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="300"/>
         <source>Transfère les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Puts selected elements into the clipboard</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="307"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="301"/>
         <source>Copie les éléments sélectionnés dans le presse-papier</source>
         <comment>status bar tip</comment>
         <translation>Copies selected elements</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="308"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="302"/>
         <source>Place les éléments du presse-papier sur le schéma</source>
         <comment>status bar tip</comment>
         <translation>Pastes elements from the clipboard into the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="309"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="303"/>
         <source>Sélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
         <translation>Selects all elements on the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="310"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="304"/>
         <source>Désélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
         <translation>Deselect all elements on the plan</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="311"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="305"/>
         <source>Désélectionne les éléments sélectionnés et sélectionne les éléments non sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Deselects selected elements and select non-selected elements</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="312"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="306"/>
         <source>Enlève les éléments sélectionnés du schéma</source>
         <comment>status bar tip</comment>
         <translation>Removes selected elements from the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="313"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="307"/>
         <source>Pivote les éléments sélectionnés</source>
         <comment>status bar tip</comment>
         <translation>Rotates selected elements</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="315"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="309"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Reset the conductors path ignoring the user changes</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="316"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="310"/>
         <source>Spécifie les propriétés par défaut des conducteurs</source>
         <comment>status bar tip</comment>
         <translation>Specify the conductors default properties</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="317"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="311"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
         <translation>Edit informations displayed by the inset</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="318"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="312"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
         <translation>Add a column to the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="319"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="313"/>
         <source>Enlève une colonne au schéma</source>
         <comment>status bar tip</comment>
         <translation>Remove a column from the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="320"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="314"/>
         <source>Agrandit le schéma en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Expand the diagram&apos;s height</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="321"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="315"/>
         <source>Rétrécit le schéma en hauteur</source>
         <comment>status bar tip</comment>
         <translation>Shrink the diagram&apos;s height</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="323"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="317"/>
         <source>Agrandit le schéma</source>
         <comment>status bar tip</comment>
         <translation>Expand the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="324"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="318"/>
         <source>Rétrécit le schéma</source>
         <comment>status bar tip</comment>
         <translation>Shrinks the diagram</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="325"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="319"/>
         <source>Adapte la taille du schéma afin qu&apos;il soit entièrement visible</source>
         <comment>status bar tip</comment>
         <translation>Changes the size of the plan so that it fits in the view</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="326"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="320"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
         <translation>Restores default zoom level</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="328"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="322"/>
         <source>Présente les différents projets ouverts dans des sous-fenêtres</source>
         <comment>status bar tip</comment>
         <translation>Shows the various opened projects in windows</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="329"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="323"/>
         <source>Présente les différents projets ouverts des onglets</source>
         <comment>status bar tip</comment>
         <translation>Shows the various opened projects in tabs</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="331"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="325"/>
         <source>Permet de sélectionner les éléments</source>
         <comment>status bar tip</comment>
         <translation>Allows to select elements</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="332"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="326"/>
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
         <translation>Allows to view the diagram without modifying it</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1171"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1165"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Displays QElectroTech in full screen mode</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1697"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1691"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Unable to find this element in the panel because it seems to be edited from another window</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1703"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1697"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Unable to find this element in the panel... reloading the panel...</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1715"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1709"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Unable to find this element in the panel</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1167"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1161"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Displays QElectroTech in windowed mode</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="334"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="328"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Allows to specify various parameters for QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="336"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="330"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Arranges windows in a tile pattern</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="337"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="331"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
         <translation>Arranges windows in a cascade pattern</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="341"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="335"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Displays informations about QElectroTech</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="342"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="336"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation>Displays informations about Qt library</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="199"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="193"/>
         <source>&amp;Enregistrer tous les schémas</source>
         <translation>Sav&amp;e all diagrams</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="298"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="292"/>
         <source>Enregistre tous les schémas du projet courant</source>
         <comment>status bar tip</comment>
         <translation>Saves all the diagrams of the current project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="249"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="243"/>
         <source>Projet suivant</source>
         <translation>Next project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="250"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="244"/>
         <source>Projet précédent</source>
         <translation>Previous project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="338"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="332"/>
         <source>Active le projet suivant</source>
         <comment>status bar tip</comment>
         <translation>Activates the next project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="339"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="333"/>
         <source>Active le projet précédent</source>
         <comment>status bar tip</comment>
         <translation>Activates the previous project</translation>
     </message>
     <message>
-        <location filename="sources/qetdiagrameditor.cpp" line="1331"/>
+        <location filename="sources/qetdiagrameditor.cpp" line="1325"/>
         <source>Active le projet « %1 »</source>
         <translation>Activates the project &quot;%1&quot;</translation>
     </message>
