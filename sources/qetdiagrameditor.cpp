@@ -40,16 +40,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 {
 	// mise en place de l'interface MDI au centre de l'application
 	setCentralWidget(&workspace);
+	
+	// nomme l'objet afin qu'il soit reperable par les feuilles de style
 	workspace.setBackground(QBrush(Qt::NoBrush));
 	workspace.setObjectName("mdiarea");
-	workspace.setStyleSheet(
-		"QAbstractScrollArea#mdiarea {"
-		"	background-color:white;"
-		"	background-image: url(':/ico/mdiarea_bg.png');"
-		"	background-repeat: no-repeat;"
-		"	background-position: center middle;"
-		"}"
-	);
 	
 	// mise en place du signalmapper
 	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));

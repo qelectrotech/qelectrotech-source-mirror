@@ -128,6 +128,7 @@ class QETApp : public QETSingleApplication {
 	QSettings *qet_settings;
 	QETArguments qet_arguments_;        ///< Analyseur d'arguments
 	bool non_interactive_execution_;    ///< booleen indiquant si l'application va se terminer immediatement apres un court traitement
+	QPalette initial_palette_;          ///< Palette des couleurs systeme
 	
 	static FileElementsCollection *common_collection;
 	static FileElementsCollection *custom_collection;
@@ -135,7 +136,7 @@ class QETApp : public QETSingleApplication {
 	static uint next_project_id;
 	static RecentFiles *projects_recent_files_;
 	static RecentFiles *elements_recent_files_;
-
+	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);
 	void reduceEveryEditor();
@@ -149,6 +150,7 @@ class QETApp : public QETSingleApplication {
 	bool closeEveryEditor();
 	void setMainWindowVisible(QMainWindow *, bool);
 	void invertMainWindowVisibility(QWidget *);
+	void useSystemPalette(bool);
 	void quitQET();
 	void checkRemainingWindows();
 	void messageReceived(const QString &);

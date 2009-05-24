@@ -90,6 +90,8 @@ class GeneralConfigurationPage : public ConfigPage {
 	public:
 	QLabel *title_label_;
 	QFrame *horiz_line_;
+	QGroupBox *appearance_;
+	QCheckBox *use_system_colors_;
 	QGroupBox *projects_view_mode_;
 	QRadioButton *windowed_mode_;
 	QRadioButton *tabbed_mode_;

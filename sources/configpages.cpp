@@ -101,8 +101,12 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	
 	// acces a la configuration de QElectroTech
 	QSettings &settings = QETApp::settings();
+	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
+	
+	appearance_ = new QGroupBox(tr("Apparence"), this);
+	use_system_colors_ = new QCheckBox(tr("Utiliser les couleurs du syst\350me"), appearance_);
 	
 	projects_view_mode_ = new QGroupBox(tr("Projets"), this);
 	windowed_mode_ = new QRadioButton(tr("Utiliser des fen\352tres"), projects_view_mode_);
@@ -112,6 +116,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
 	integrate_elements_ = new QCheckBox(tr("Int\351grer automatiquement les \351l\351ments dans les projets (recommand\351)"), elements_management_);
 	
+	use_system_colors_ -> setChecked(use_system_colors);
+	
 	if (tabbed) {
 		tabbed_mode_ -> setChecked(true);
 	} else {
@@ -119,6 +125,10 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	}
 	
 	integrate_elements_ -> setChecked(integrate_elements);
+	
+	QVBoxLayout *appearance_layout = new QVBoxLayout();
+	appearance_layout -> addWidget(use_system_colors_);
+	appearance_ -> setLayout(appearance_layout);
 	
 	QVBoxLayout *projects_view_mode_layout = new QVBoxLayout();
 	projects_view_mode_layout -> addWidget(windowed_mode_);
@@ -139,6 +149,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	horiz_line_ -> setFrameShape(QFrame::HLine);
 	vlayout1 -> addWidget(horiz_line_);
 	
+	vlayout1 -> addWidget(appearance_);
 	vlayout1 -> addWidget(projects_view_mode_);
 	vlayout1 -> addWidget(elements_management_);
 	vlayout1 -> addStretch();
@@ -155,6 +166,13 @@ GeneralConfigurationPage::~GeneralConfigurationPage() {
 */
 void GeneralConfigurationPage::applyConf() {
 	QSettings &settings = QETApp::settings();
+	
+	bool was_using_system_colors = settings.value("usesystemcolors", "true").toBool();
+	bool must_use_system_colors  = use_system_colors_ -> isChecked();
+	settings.setValue("usesystemcolors", must_use_system_colors);
+	if (was_using_system_colors != must_use_system_colors) {
+		QETApp::instance() -> useSystemPalette(must_use_system_colors);
+	}
 	
 	QString view_mode = tabbed_mode_ -> isChecked() ? "tabbed" : "windowed";
 	settings.setValue("diagrameditor/viewmode", view_mode) ;

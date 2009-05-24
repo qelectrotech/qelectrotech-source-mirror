@@ -50,8 +50,9 @@ QETApp::QETApp(int &argc, char **argv) :
 {
 	parseArguments();
 	initLanguage();
-	initStyle();
+	QET::Icons::initIcons();
 	initConfiguration();
+	initStyle();
 	
 	if (!non_interactive_execution_ && isRunning()) {
 		// envoie les arguments a l'instance deja existante
@@ -597,6 +598,28 @@ void QETApp::invertMainWindowVisibility(QWidget *window) {
 }
 
 /**
+	Change la palette de l'application
+	@param use true pour utiliser les couleurs du systeme, false pour utiliser celles du theme en cours
+*/
+void QETApp::useSystemPalette(bool use) {
+	if (use) {
+		setPalette(initial_palette_);
+	} else {
+		setPalette(style() -> standardPalette());
+	}
+	
+	// reapplique les feuilles de style
+	setStyleSheet(
+		"QAbstractScrollArea#mdiarea {"
+		"	background-color:white;"
+		"	background-image: url(':/ico/mdiarea_bg.png');"
+		"	background-repeat: no-repeat;"
+		"	background-position: center middle;"
+		"}"
+	);
+}
+
+/**
 	Demande la fermeture de toutes les fenetres ; si l'utilisateur les accepte,
 	l'application quitte
 */
@@ -807,13 +830,15 @@ void QETApp::initLanguage() {
 	Met en place tout ce qui concerne le style graphique de l'application
 */
 void QETApp::initStyle() {
-	// initialise les icones
-	QET::Icons::initIcons();
+	initial_palette_ = palette();
 	
 	// lorsque le style Plastique est active, on le remplace par une version amelioree
 	if (qobject_cast<QPlastiqueStyle *>(style())) {
 		setStyle(new QETStyle());
 	}
+	
+	// applique ou non les couleurs de l'environnement
+	useSystemPalette(settings().value("usesystemcolors", true).toBool());
 }
 
 /**
@@ -834,6 +859,7 @@ void QETApp::initConfiguration() {
 	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
 	
 	// fichiers recents
+	// note : les icones doivent etre initialisees avant ces instructions (qui creent des menus en interne)
 	projects_recent_files_ = new RecentFiles("projects");
 	elements_recent_files_ = new RecentFiles("elements");
 }
