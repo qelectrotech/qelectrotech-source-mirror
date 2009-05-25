@@ -1377,12 +1377,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="sources/configpages.cpp" line="108"/>
         <source>Apparence</source>
-        <translation type="unfinished"></translation>
+        <translation>Внешний вид</translation>
     </message>
     <message>
         <location filename="sources/configpages.cpp" line="109"/>
         <source>Utiliser les couleurs du système</source>
-        <translation type="unfinished"></translation>
+        <translation>Использовать системные цвета</translation>
     </message>
     <message>
         <location filename="sources/configpages.cpp" line="111"/>
