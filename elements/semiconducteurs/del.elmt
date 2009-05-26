@@ -1,5 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="ru" >Светодиод</name>
         <name lang="en" >LED</name>
         <name lang="fr" >DEL</name>
         <name lang="es" >LED</name>
