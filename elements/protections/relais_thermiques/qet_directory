@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru" >Тепловые реле</name>
         <name lang="en" >Thermal relays</name>
         <name lang="fr" >Relais thermiques</name>
         <name lang="es" >Relés térmicos</name>

@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr">Ladder</name>
-        <name lang="en">Ladder</name>
-        <name lang="es">Ladder</name>
+        <name lang="ru" >Контактно-релейная схема</name>
+        <name lang="en" >Ladder</name>
+        <name lang="fr" >Ladder</name>
+        <name lang="es" >Ladder</name>
     </names>
 </qet-directory>

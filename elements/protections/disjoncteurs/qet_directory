@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru" >Выключатели</name>
         <name lang="en" >Circuit-breakers</name>
         <name lang="fr" >Disjoncteurs</name>
         <name lang="es" >Interruptores magnetotérmicos</name>

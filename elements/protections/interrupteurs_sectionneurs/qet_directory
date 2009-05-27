@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
+        <name lang="ru" >Выключатели-разъеденители</name>
+        <name lang="en" >Disconnecting switches</name>
         <name lang="fr" >Interrupteurs sectionneurs</name>
-		<name lang="en" >Disconnecting switches</name>
-		<name lang="es" >Interruptores seccionadores</name>
+        <name lang="es" >Interruptores seccionadores</name>
     </names>
 </qet-directory>
