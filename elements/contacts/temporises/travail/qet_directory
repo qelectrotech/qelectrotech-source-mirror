@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru" >при срабатывании</name>
         <name lang="en" >Switch-on delay</name>
         <name lang="fr" >Travail</name>
         <name lang="es" >Temporizadores a la conexión</name>
