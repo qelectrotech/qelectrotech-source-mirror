@@ -3427,7 +3427,7 @@ Available options:
         <location filename="sources/editor/qetelementeditor.cpp" line="386"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
-        <translation>[Изменино]</translation>
+        <translation>[Изменено]</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="388"/>
