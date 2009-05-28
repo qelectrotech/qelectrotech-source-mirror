@@ -1,5 +1,6 @@
 <definition width="40" version="0.2" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn" >
     <names>
+        <name lang="ru" >Ватметр (вертикальный)</name>
         <name lang="en" >Vertical wattmeter</name>
         <name lang="fr" >Wattmètre vertical</name>
         <name lang="es" >Vatímetro vertical</name>

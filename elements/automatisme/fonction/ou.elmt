@@ -1,5 +1,6 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
+        <name lang="ru" >ИЛИ</name>
         <name lang="en" >OR</name>
         <name lang="fr" >OU</name>
     </names>

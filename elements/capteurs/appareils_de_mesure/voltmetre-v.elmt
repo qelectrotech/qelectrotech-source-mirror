@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn" >
     <names>
+        <name lang="ru" >Вольтметр (вертикальный)</name>
         <name lang="en" >Vertical voltmeter</name>
         <name lang="fr" >Voltmètre vertical</name>
         <name lang="es" >Voltímetro vertical</name>

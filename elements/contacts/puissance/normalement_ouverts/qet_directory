@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="ru" >Нормально разомкнутые</name>
         <name lang="en" >Normally open</name>
         <name lang="fr" >Normalement ouverts</name>
         <name lang="es" >Normalemente abiertos</name>

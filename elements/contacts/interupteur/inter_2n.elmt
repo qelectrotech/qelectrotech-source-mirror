@@ -1,5 +1,6 @@
-<definition width="50" version="0.1" hotspot_x="10" hotspot_y="35" height="60" type="element" orientation="dyyy" >
+<definition width="50" version="0.2" hotspot_x="10" hotspot_y="35" height="60" type="element" orientation="dyyy" >
     <names>
+        <name lang="ru" >Переключатель 3-х позиционный со средним положением</name>
         <name lang="en" >Switch 3 positions including neutral</name>
         <name lang="fr" >Interrupteur 3 positions dont neutre</name>
         <name lang="es" >Interruptor 3 posiciones incluso neutro</name>
@@ -7,13 +8,13 @@
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="10" y2="4" x2="8" y3="4" x3="12" />
         <input x="22" y="-7" size="9" text="_" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="10" y2="1" x2="10" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="10" y2="1" x2="10" />
         <ellipse width="3" x="18.5" y="-1.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <ellipse width="3" x="8.5" y="-16.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <ellipse width="3" x="-1.5" y="-1.5" antialias="true" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="10" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="20" y2="10" x2="20" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-30" x2="10" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="10" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="20" y2="10" x2="20" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="10" y2="-30" x2="10" />
         <terminal x="0" y="10" orientation="s" />
         <terminal x="20" y="10" orientation="s" />
         <terminal x="10" y="-30" orientation="n" />

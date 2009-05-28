@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="40" type="element" ic="true" orientation="dnnn" >
     <names>
+        <name lang="ru" >Ватметр (горизонтальный)</name>
         <name lang="en" >Horizontal wattmeter</name>
         <name lang="fr" >Wattmètre horizontal</name>
         <name lang="es" >Vatímetro horizontal</name>
