@@ -1,5 +1,6 @@
-<definition width="40" version="0.1" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" >
+<definition width="40" version="0.2" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="ru" >Тепловое реле</name>
         <name lang="en" >Thermal relay</name>
         <name lang="fr" >Relais thermique</name>
         <name lang="es" >Relé térmico</name>

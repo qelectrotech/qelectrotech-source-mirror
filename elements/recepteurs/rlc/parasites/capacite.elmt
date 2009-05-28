@@ -1,14 +1,15 @@
-<definition width="20" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
+<definition width="20" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="ru" >Конденсатор</name>
         <name lang="en" >Capacitor</name>
         <name lang="fr" >Capacité</name>
         <name lang="es" >Condensator</name>
     </names>
     <description>
-        <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="2" x1="-5" y2="2" x2="5" />
-        <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-2" x1="-5" y2="-2" x2="5" />
-        <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="2" x1="0" y2="20" x2="0" />
-        <line antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-20" x1="0" y2="-2" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="2" x1="-5" y2="2" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-2" x1="-5" y2="-2" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="2" x1="0" y2="20" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-20" x1="0" y2="-2" x2="0" />
         <terminal x="0" y="-21" orientation="n" />
         <terminal x="0" y="21" orientation="s" />
     </description>

@@ -1,19 +1,20 @@
-<definition width="70" version="0.1" hotspot_x="25" hotspot_y="25" height="70" type="element" orientation="dyyy" >
+<definition width="70" version="0.2" hotspot_x="25" hotspot_y="25" height="70" type="element" orientation="dyyy" >
     <names>
+        <name lang="ru" >Шестифазный эл. мотор</name>
         <name lang="en" >Six-phase engine</name>
         <name lang="fr" >Moteur triphasé (double enroulement)</name>
-         <name lang="es" >Motor de seis fases</name>
+        <name lang="es" >Motor de seis fases</name>
     </names>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="-10" y2="40" x2="-10" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="10" y2="40" x2="10" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="-10" y2="40" x2="-10" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="10" y2="40" x2="10" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0" />
         <text x="-10.25" y="18" size="18" text="M" />
         <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />
         <input x="18" y="15" size="9" text="M_" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-1.5" x2="10" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-1.5" x2="-10" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-1.5" x2="10" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-1.5" x2="-10" />
         <terminal x="-10" y="41" orientation="s" />
         <terminal x="10" y="41" orientation="s" />
         <terminal x="-10" y="-21" orientation="n" />

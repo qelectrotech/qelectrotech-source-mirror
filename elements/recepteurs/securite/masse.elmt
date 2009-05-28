@@ -1,17 +1,18 @@
-<definition width="20" version="0.1" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dnny" >
+<definition width="20" version="0.2" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dnny" >
     <names>
+        <name lang="ru" >Шасси</name>
         <name lang="en" >Chassis</name>
         <name lang="fr" >Masse</name>
-        <name lang="es" >Masa</name>    
+        <name lang="es" >Masa</name>
     </names>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5" x1="7.5" y2="3" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-1" y2="0.5" x2="1.5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-7" y2="0.5" x2="-4.5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="2" y2="0.5" x2="4.5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-4" y2="0.5" x2="-1.5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="8" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5" x1="7.5" y2="3" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-1" y2="0.5" x2="1.5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-7" y2="0.5" x2="-4.5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="2" y2="0.5" x2="4.5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-4" y2="0.5" x2="-1.5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="8" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0" />
         <terminal x="0" y="-11" orientation="n" />
     </description>
 </definition>

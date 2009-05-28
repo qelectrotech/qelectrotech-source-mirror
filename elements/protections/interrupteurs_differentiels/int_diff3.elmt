@@ -1,5 +1,6 @@
 <definition width="70" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="ru" >УЗО</name>
         <name lang="en" >Differential switch</name>
         <name lang="fr" >Interrupteur différentiel</name>
         <name lang="es" >Interruptor diferencial</name>

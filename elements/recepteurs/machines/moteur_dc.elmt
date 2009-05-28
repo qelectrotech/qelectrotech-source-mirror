@@ -1,20 +1,21 @@
-<definition width="60" version="0.1" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy" >
+<definition width="60" version="0.2" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
+        <name lang="ru" >Эл. мотор постоянного тока</name>
         <name lang="en" >DC motor</name>
         <name lang="fr" >Moteur à courant continu</name>
         <name lang="es" >Motor de corriente continuo</name>
     </names>
     <description>
         <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="5" y2="14.5" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="0" y2="30" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="5" y2="14.5" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="0" y2="30" x2="0" />
         <text x="-8.5" y="7" size="15" text="M" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-18" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-5" y2="18" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="5" y2="-14.5" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5" x1="-5" y2="-18" x2="-5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-5" y2="-18" x2="5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.5" x1="-5" y2="18" x2="-5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-18" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-5" y2="18" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="5" y2="-14.5" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14.5" x1="-5" y2="-18" x2="-5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-5" y2="-18" x2="5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14.5" x1="-5" y2="18" x2="-5" />
         <input x="20" y="5" size="9" text="M_" />
         <terminal x="0" y="-30" orientation="n" />
         <terminal x="0" y="30" orientation="s" />
