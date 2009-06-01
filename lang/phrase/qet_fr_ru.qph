@@ -1,0 +1,119 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr" language="ru_RU">
+<phrase>
+    <source>Avertissements</source>
+    <target>Предупреждение</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Ошибка</target>
+</phrase>
+<phrase>
+    <source>Absence de borne</source>
+    <target>Отсутствует вывод</target>
+</phrase>
+<phrase>
+    <source>Enregistrer sous</source>
+    <target>Сохранить как</target>
+</phrase>
+<phrase>
+    <source>&amp;Nouveau</source>
+    <target>&amp;Новый</target>
+</phrase>
+<phrase>
+    <source>&amp;Ouvrir</source>
+    <target>&amp;Открыть</target>
+</phrase>
+<phrase>
+    <source>&amp;Enregistrer</source>
+    <target>&amp;Сохранить</target>
+</phrase>
+<phrase>
+    <source>&amp;Quitter</source>
+    <target>&amp;Выход</target>
+</phrase>
+<phrase>
+    <source>Tout sélectionner</source>
+    <target>Выделить всё</target>
+</phrase>
+<phrase>
+    <source>Co&amp;uper</source>
+    <target>&amp;Вырезать</target>
+</phrase>
+<phrase>
+    <source>Cop&amp;ier</source>
+    <target>&amp;Копировать</target>
+</phrase>
+<phrase>
+    <source>C&amp;oller</source>
+    <target>Вст&amp;авить</target>
+</phrase>
+<phrase>
+    <source>&amp;Supprimer</source>
+    <target>&amp;Удалить</target>
+</phrase>
+<phrase>
+    <source>Zoom avant</source>
+    <target>Увеличить</target>
+</phrase>
+<phrase>
+    <source>Zoom arrière</source>
+    <target>Уменьшить</target>
+</phrase>
+<phrase>
+    <source>Zoom adapté</source>
+    <target>Подогнать размер</target>
+</phrase>
+<phrase>
+    <source>Pas de zoom</source>
+    <target>Востановит масштаб</target>
+</phrase>
+<phrase>
+    <source>Éditer la taille et le point de saisie</source>
+    <target>Редактировать размер и опорную точку</target>
+</phrase>
+<phrase>
+    <source>Rapprocher</source>
+    <target>Поднять</target>
+</phrase>
+<phrase>
+    <source>Éloigner</source>
+    <target>Опустить</target>
+</phrase>
+<phrase>
+    <source>Ajouter une ligne</source>
+    <target>Добавить линию</target>
+</phrase>
+<phrase>
+    <source>Ajouter un rectangle</source>
+    <target>Добавить прямоугольник</target>
+</phrase>
+<phrase>
+    <source>Ajouter une ellipse</source>
+    <target>Добавить элипс</target>
+</phrase>
+<phrase>
+    <source>Ajouter un cercle</source>
+    <target>Добавить окружность</target>
+</phrase>
+<phrase>
+    <source>Ajouter un polygone</source>
+    <target>Добавить полигон</target>
+</phrase>
+<phrase>
+    <source>Ajouter du texte</source>
+    <target>Добавить текст</target>
+</phrase>
+<phrase>
+    <source>Ajouter un arc de cercle</source>
+    <target>Добавить дугу</target>
+</phrase>
+<phrase>
+    <source>Ajouter une borne</source>
+    <target>Добавить вывод</target>
+</phrase>
+<phrase>
+    <source>Ajouter une ligne</source>
+    <target>Добавить строку</target>
+</phrase>
+</QPH>

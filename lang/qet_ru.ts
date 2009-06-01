@@ -742,7 +742,7 @@
         <location filename="sources/editor/elementscene.cpp" line="753"/>
         <source>Éditer la taille et le point de saisie</source>
         <comment>window title</comment>
-        <translation>Редактировать размер и горячие точки</translation>
+        <translation>Редактировать размер и опорную точку</translation>
     </message>
     <message>
         <location filename="sources/editor/elementscene.cpp" line="793"/>
@@ -3477,47 +3477,47 @@ Available options:
         <location filename="sources/editor/qetelementeditor.cpp" line="540"/>
         <source>Dimensions de l&apos;élément</source>
         <comment>warning title</comment>
-        <translation type="unfinished">Размер элемента</translation>
+        <translation>Размер элемента</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="541"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Некоторые графические примитивы (текты, окружности, линии, ...) могут выходитьза границу элемента.Это может создавать графические ошибки, когда элемент помещается на схему. Вы можете предотвратить это, перемещая примитивы или используя команду Правка &gt; Редактировать размер и опорную точку.</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="556"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Отсутствует вывод</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="557"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Элемент не содержит ни одного вывода. Элемент должен иметь вывод, чтобы он мог быть присоеденён к другим элементам с помощью проводников.</translation>
     </message>
     <message numerus="yes">
         <location filename="sources/editor/qetelementeditor.cpp" line="570"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Проверка этого элемента генерировала %n предупреждение:</numerusform>
+            <numerusform>Проверка этого элемента генерировала %n предупреждения:</numerusform>
+            <numerusform>Проверка этого элемента генерировала %n предупреждений:</numerusform>
         </translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="580"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="588"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Предупреждение</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="606"/>
