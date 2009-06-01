@@ -1,22 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="fr">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="fr">
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="463"/>
-        <source>%n partie(s) s&#xe9;lectionn&#xe9;e(s).</source>
+        <location filename="sources/editor/qetelementeditor.cpp" line="505"/>
+        <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
             <numerusform>%n parties sélectionnées.</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="sources/editor/qetelementeditor.cpp" line="570"/>
+        <source>La vérification de cet élément a généré %n avertissement(s) :</source>
+        <comment>message box content</comment>
+        <translation>
+            <numerusform>La vérification de cet élément a généré %n avertissement :</numerusform>
+            <numerusform>La vérification de cet élément a généré %n avertissements :</numerusform>
         </translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="159"/>
-        <source>%n &#xe9;l&#xe9;ment(s)</source>
+        <location filename="sources/qet.cpp" line="157"/>
+        <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>%n élément</numerusform>
@@ -24,7 +33,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="180"/>
+        <location filename="sources/qet.cpp" line="178"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -33,7 +42,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="195"/>
+        <location filename="sources/qet.cpp" line="193"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>

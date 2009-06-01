@@ -526,30 +526,69 @@ void QETElementEditor::xmlPreview() {
 }
 
 /**
-	Verifie si l'ensemble des parties graphiques consituant l'element en cours
-	d'edition est bien contenu dans le rectangle representant les limites de
-	l'element. Si ce n'est pas le cas, l'utilisateur en est informe.
+	Effectue diverses verifications sur l'element et en informe l'utilisateur.
 	@return true si la situation est ok, false sinon
 */
-bool QETElementEditor::checkElementSize() {
-	if (ce_scene -> borderContainsEveryParts()) {
-		return(true);
-	} else {
-		QMessageBox::warning(
-			this,
-			tr("Dimensions de l'\351l\351ment", "messagebox title"),
+bool QETElementEditor::checkElement() {
+	// liste les avertissements applicables
+	typedef QPair<QString, QString> QETWarning;
+	QList<QETWarning> warnings;
+	
+	/// Avertissement #1 : si les parties semblent deborder du cadre de l'element
+	if (!ce_scene -> borderContainsEveryParts()) {
+		warnings << qMakePair(
+			tr("Dimensions de l'\351l\351ment", "warning title"),
 			tr(
-				"Attention : certaines parties graphiques (textes, cercles, "
-				"lignes...) semblent d\351border du cadre de l'\351l\351ment. Cela"
-				" risque de g\351n\351rer des bugs graphiques lors de leur "
+				"Certaines parties graphiques (textes, cercles, lignes...) "
+				"semblent d\351border du cadre de l'\351l\351ment. Cela "
+				"risque de g\351n\351rer des bugs graphiques lors de leur "
 				"manipulation sur un sch\351ma. Vous pouvez corriger cela soit "
 				"en d\351pla\347ant ces parties, soit en vous rendant dans "
-				"\311dition > \311diter la taille et le point de saisie."
-				, "messagebox content"
+				"\311dition > \311diter la taille et le point de saisie.",
+				"warning description"
 			)
 		);
-		return(false);
 	}
+	
+	/// Avertissement #2 : si l'element ne comporte aucune borne
+	if (!ce_scene -> containsTerminals()) {
+		warnings << qMakePair(
+			tr("Absence de borne", "warning title"),
+			tr(
+				"L'\351l\351ment ne comporte aucune borne. Un \351l\351ment "
+				"doit comporter des bornes afin de pouvoir \351tre reli\351 "
+				"\340 d'autres \351l\351ments par l'interm\351diaire de "
+				"conducteurs.",
+				"warning description"
+			)
+		);
+	}
+	
+	if (!warnings.count()) return(true);
+	
+	// affiche les avertissements
+	QString warning_message = tr(
+		"La v\351rification de cet \351l\351ment a g\351n\351r\351 %n avertissement(s)\240:",
+		"message box content",
+		warnings.count()
+	);
+	
+	warning_message += "<ol>";
+	foreach(QETWarning warning, warnings) {
+		warning_message += "<li>";
+		warning_message += QString(
+			tr("<b>%1</b>\240: %2", "warning title: warning description")
+		).arg(warning.first).arg(warning.second);
+		warning_message += "</li>";
+	}
+	warning_message += "</ol>";
+	
+	QMessageBox warnings_message_box(this);
+	warnings_message_box.setTextFormat(Qt::RichText);
+	warnings_message_box.setWindowTitle(tr("Avertissements", "messagebox title"));
+	warnings_message_box.setText(warning_message);
+	warnings_message_box.exec();
+	return(false);
 }
 
 /**
@@ -808,7 +847,7 @@ void QETElementEditor::slot_reload() {
 */
 bool QETElementEditor::slot_save() {
 	// verification avant d'enregistrer le fichier
-	checkElementSize();
+	checkElement();
 	
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (opened_from_file) {

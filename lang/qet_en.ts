@@ -726,53 +726,53 @@
         <translation>polygon</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="784"/>
+        <location filename="sources/editor/elementscene.cpp" line="797"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
         <translation>Default orientation is the orientation which the drawing of the element takes place with.</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="830"/>
+        <location filename="sources/editor/elementscene.cpp" line="843"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>You may enter the element name in several languages.</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="795"/>
+        <location filename="sources/editor/elementscene.cpp" line="808"/>
         <source>Autoriser les connexions internes</source>
         <translation>Allow internal connections</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="983"/>
-        <location filename="sources/editor/elementscene.cpp" line="1037"/>
+        <location filename="sources/editor/elementscene.cpp" line="996"/>
+        <location filename="sources/editor/elementscene.cpp" line="1050"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>This XML document is not an element definition.</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="997"/>
+        <location filename="sources/editor/elementscene.cpp" line="1010"/>
         <source>Les dimensions ou le point de saisie ne sont pas valides.</source>
         <comment>error message</comment>
         <translation>The size or the hotspot are not valid.</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="1012"/>
+        <location filename="sources/editor/elementscene.cpp" line="1025"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
         <translation>Orientations are not valid.</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="740"/>
+        <location filename="sources/editor/elementscene.cpp" line="753"/>
         <source>Éditer la taille et le point de saisie</source>
         <comment>window title</comment>
         <translation>Edit size and hotspot</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="780"/>
+        <location filename="sources/editor/elementscene.cpp" line="793"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
         <translation>Edit orientations</translation>
     </message>
     <message>
-        <location filename="sources/editor/elementscene.cpp" line="826"/>
+        <location filename="sources/editor/elementscene.cpp" line="839"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Edit names</translation>
@@ -3224,6 +3224,21 @@ Available options:
         <source>Afficher</source>
         <translation>Display</translation>
     </message>
+    <message numerus="yes">
+        <location filename="sources/editor/qetelementeditor.cpp" line="570"/>
+        <source>La vérification de cet élément a généré %n avertissement(s) :</source>
+        <comment>message box content</comment>
+        <translation>
+            <numerusform>Checking this element generated a warning:</numerusform>
+            <numerusform>Checking this element generated %n warnings:</numerusform>
+        </translation>
+    </message>
+    <message>
+        <location filename="sources/editor/qetelementeditor.cpp" line="580"/>
+        <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
+        <comment>warning title: warning description</comment>
+        <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
+    </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="143"/>
         <source>Suppr</source>
@@ -3425,132 +3440,162 @@ Available options:
         </translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="567"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="540"/>
+        <source>Dimensions de l&apos;élément</source>
+        <comment>warning title</comment>
+        <translation>Element size</translation>
+    </message>
+    <message>
+        <location filename="sources/editor/qetelementeditor.cpp" line="541"/>
+        <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
+        <comment>warning description</comment>
+        <translation>Some graphical parts (texts, circles, lines, ...) seem to be out of the element border. This may generate graphical bugs when the element is moved on a diagram. You can fix this by moving those parts or using Edit &gt; Edit size and hotspot.</translation>
+    </message>
+    <message>
+        <location filename="sources/editor/qetelementeditor.cpp" line="556"/>
+        <source>Absence de borne</source>
+        <comment>warning title</comment>
+        <translation>Missing terminal</translation>
+    </message>
+    <message>
+        <location filename="sources/editor/qetelementeditor.cpp" line="557"/>
+        <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
+        <comment>warning description</comment>
+        <translation>The element does not contain any terminal. An element must have terminals in order to be connected to other elements by conductors.</translation>
+    </message>
+    <message>
+        <location filename="sources/editor/qetelementeditor.cpp" line="588"/>
+        <source>Avertissements</source>
+        <comment>messagebox title</comment>
+        <translation>Warnings</translation>
+    </message>
+    <message>
+        <location filename="sources/editor/qetelementeditor.cpp" line="606"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>The file %1 does not exist.</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="575"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="614"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Unable to open the file %1.</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="584"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="623"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>This file is not a valid XML document</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="590"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="629"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="602"/>
-        <location filename="sources/editor/qetelementeditor.cpp" line="1072"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="641"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="1111"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Read only edition</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="603"/>
-        <location filename="sources/editor/qetelementeditor.cpp" line="1073"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="642"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="1112"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>You are not allowed to modify this element. Thus it will be edited read-only.</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="622"/>
-        <location filename="sources/editor/qetelementeditor.cpp" line="651"/>
-        <location filename="sources/editor/qetelementeditor.cpp" line="662"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="661"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="690"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="701"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Error</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="622"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="661"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Unable to write to this file</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="652"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="691"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Unable to reach the element</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="663"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Unable to save the element</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="734"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="773"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Open a file</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="736"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="775"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>QElectroTech elements (*.elmt);;XML files (*.xml);;All files (*)</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="779"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="818"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Reload element</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="780"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="819"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>This element has been modified since last save. If you reload it, these changes will be lost. Do you really want to reload this element?</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="855"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="894"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Save as</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="857"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="896"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>QElectroTech elements (*.elmt)</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="889"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="928"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Save current element?</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="891"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="930"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Do you wish to save the element %1?</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="1044"/>
-        <location filename="sources/editor/qetelementeditor.cpp" line="1053"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="1083"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="1092"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Non-existent element.</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="1045"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="1084"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>The element does not exist.</translation>
     </message>
     <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="1054"/>
+        <location filename="sources/editor/qetelementeditor.cpp" line="1093"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>The chosen virtual path does not match an element.</translation>
@@ -3564,18 +3609,6 @@ Available options:
         <location filename="sources/editor/qetelementeditor.cpp" line="120"/>
         <source>Utilisez le bouton droit de la souris pour poser le dernier point du polygone</source>
         <translation>Use the right mouse button to set the polygon&apos;s last point</translation>
-    </message>
-    <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="540"/>
-        <source>Dimensions de l&apos;élément</source>
-        <comment>messagebox title</comment>
-        <translation>Element size</translation>
-    </message>
-    <message>
-        <location filename="sources/editor/qetelementeditor.cpp" line="541"/>
-        <source>Attention : certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
-        <comment>messagebox content</comment>
-        <translation>Warning: some graphical parts (texts, circles, lines, ...) seem to be out of the element border. This may generate graphical bugs when the element is moved on a diagram. You can fix this by moving those parts or using Edit &gt; Edit size and hotspot.</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="83"/>

@@ -122,6 +122,7 @@ class ElementScene : public QGraphicsScene {
 	QRectF borderRect() const;
 	QRectF sceneContent() const;
 	bool borderContainsEveryParts() const;
+	bool containsTerminals() const;
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
 	static bool clipboardMayContainElement();

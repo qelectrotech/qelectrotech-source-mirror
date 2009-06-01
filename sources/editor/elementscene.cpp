@@ -610,6 +610,19 @@ bool ElementScene::borderContainsEveryParts() const {
 }
 
 /**
+	@return true si l'element comporte au moins une borne, false s'il n'en a
+	aucune.
+*/
+bool ElementScene::containsTerminals() const {
+	foreach(QGraphicsItem *qgi,items()) {
+		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
 	@return la pile d'annulations de cet editeur d'element
 */
 QUndoStack &ElementScene::undoStack() {

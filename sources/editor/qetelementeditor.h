@@ -141,7 +141,7 @@ class QETElementEditor : public QMainWindow {
 	void slot_updatePartsList();
 	void slot_updateSelectionFromPartsList();
 	void xmlPreview();
-	bool checkElementSize();
+	bool checkElement();
 };
 
 /**
