@@ -500,7 +500,7 @@
         <location filename="sources/diagramview.cpp" line="624"/>
         <source>Emplacement : %1
 </source>
-        <translation>Рассположение : %1
+        <translation>Расположение : %1
 </translation>
     </message>
     <message>
@@ -3045,7 +3045,7 @@ Available options:
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="1163"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation>Полно&amp;экранны режим</translation>
+        <translation>Полно&amp;экранный режим</translation>
     </message>
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="1165"/>
