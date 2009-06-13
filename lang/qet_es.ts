@@ -3320,9 +3320,9 @@ Opciones disponibles:
         <location filename="sources/editor/qetelementeditor.cpp" line="570"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>La verificación de este elemento ha generado una advertencia:</numerusform>
+            <numerusform>La verificación de este elemento ha generado %n advertencias:</numerusform>
         </translation>
     </message>
     <message>
@@ -3463,7 +3463,7 @@ Opciones disponibles:
         <location filename="sources/editor/qetelementeditor.cpp" line="557"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>El elemento no tiene ninguna conección. Un elemente debe tener conecciones para que conductores puedan conectarlos con otros elementos.</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="588"/>
