@@ -1375,12 +1375,12 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="sources/configpages.cpp" line="108"/>
         <source>Apparence</source>
-        <translation type="unfinished"></translation>
+        <translation>Aparência</translation>
     </message>
     <message>
         <location filename="sources/configpages.cpp" line="109"/>
         <source>Utiliser les couleurs du système</source>
-        <translation type="unfinished"></translation>
+        <translation>Usar cores de sistema</translation>
     </message>
     <message>
         <location filename="sources/configpages.cpp" line="111"/>
@@ -3234,16 +3234,16 @@ Opções disponiveis:
         <location filename="sources/editor/qetelementeditor.cpp" line="570"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>A verificação deste elemento originou um aviso:</numerusform>
+            <numerusform>A verificação deste elemento originou %n avisos:</numerusform>
         </translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="580"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="143"/>
@@ -3449,31 +3449,31 @@ Opções disponiveis:
         <location filename="sources/editor/qetelementeditor.cpp" line="540"/>
         <source>Dimensions de l&apos;élément</source>
         <comment>warning title</comment>
-        <translation type="unfinished">Dimensões do elemento</translation>
+        <translation>Dimensões do elemento</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="541"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>Alguns componentes gráficos (texto, circulos, linhas, ...) aparentam estar fora da borda do elemento. Isto pode gerar erros gráficos quando o elemento fôr movido no esquema. Pode resolver a situação movendo essas partes ou usando Editar &gt; Editar tamanho e ponto âncora.</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="556"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Borne em falta</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="557"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished"></translation>
+        <translation>O elemento não tem nenhum borne. Um elemento tem de ter bornes de modo a poder ser conectado com outro elemento através de condutores.</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="588"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Avisos</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="606"/>
