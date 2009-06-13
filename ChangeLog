@@ -44,6 +44,7 @@ Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a égaleme
      * avec le bouton du milieu de la souris
      * en choisissant une "zone de collage" sur l'élément (Ctrl+Shift+V) : cf screenshot à gauche
      * directement (Ctrl+V) : les parties collées sont placées à côté des parties copiées ; si on recolle les parties, elles sont collées encore un cran à côté, et ce de manière incrémentale. Ainsi le screenshot à droite montre ce que l'on obtient en collant une sélection 8 fois d'affilée.
+  * Des contrôles sont désormais effectués à l'enregistrement : présence de bornes, respect du cadre, etc.
 
 ====== Changelog 0.1 -> 0.11 ======
 
