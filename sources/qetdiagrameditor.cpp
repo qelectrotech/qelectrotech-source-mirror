@@ -1147,7 +1147,7 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	cut              -> setEnabled(editable_diagram && selected_elements);
 	copy             -> setEnabled(selected_elements);
 	delete_selection -> setEnabled(editable_diagram && selected_elements);
-	rotate_selection -> setEnabled(editable_diagram && selected_elements);
+	rotate_selection -> setEnabled(editable_diagram && selected_elements && dv -> diagram() -> canRotateSelection());
 	selection_prop   -> setEnabled(editable_diagram && selected_elements);
 }
 

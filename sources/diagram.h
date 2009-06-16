@@ -155,6 +155,7 @@ class Diagram : public QGraphicsScene {
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();
+	bool canRotateSelection() const;
 	void moveElements(const QPointF &, QGraphicsItem * = 0);
 	bool usesElement(const ElementsLocation &);
 	

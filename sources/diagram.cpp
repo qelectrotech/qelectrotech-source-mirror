@@ -1024,3 +1024,20 @@ DiagramContent Diagram::selectedContent() {
 	invalidateMovedElements();
 	return(dc);
 }
+
+/**
+	@return true s'il est possible de tourner les elements selectionnes.
+	Concretement, cette methode retourne true s'il y a des elements selectionnes
+	et qu'au moins l'un d'entre eux peut etre pivote.
+*/
+bool Diagram::canRotateSelection() const {
+	foreach(QGraphicsItem * qgi, selectedItems()) {
+		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
+			// l'element est-il pivotable ?
+			if (e -> orientation().current() != e -> orientation().next()) {
+				return(true);
+			}
+		}
+	}
+	return(false);
+}
