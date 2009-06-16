@@ -3483,7 +3483,7 @@ Available options:
         <location filename="sources/editor/qetelementeditor.cpp" line="541"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation>Некоторые графические примитивы (текты, окружности, линии, ...) могут выходитьза границу элемента.Это может создавать графические ошибки, когда элемент помещается на схему. Вы можете предотвратить это, перемещая примитивы или используя команду Правка &gt; Редактировать размер и опорную точку.</translation>
+        <translation>Некоторые графические примитивы (текты, окружности, линии, ...) могут выходить за границу элемента. Это может создавать графические ошибки, когда элемент помещается на схему. Вы можете предотвратить это, перемещая примитивы или используя команду &quot;Правка&quot; &gt; &quot;Редактировать размер и опорную точку&quot;.</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="556"/>
@@ -4276,7 +4276,7 @@ Available options:
         <location filename="sources/editor/styleeditor.cpp" line="35"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Нормальный</translation>
+        <translation>Обычный</translation>
     </message>
     <message>
         <location filename="sources/editor/styleeditor.cpp" line="36"/>
