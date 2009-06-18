@@ -1,5 +1,8 @@
 #!/bin/bash
 
+current_dir=$(dirname "$0")
+cd "$current_dir"
+
 # configuration
 QET_EXE="../qelectrotech"
 QET_ELEMENTS_DIR="../elements/"
@@ -34,3 +37,5 @@ fi
 
 # launching
 ${QET_EXE} ${OPTIONS} $*
+
+cd -
