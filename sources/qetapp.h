@@ -22,6 +22,7 @@
 #include <QtGui>
 #include "elementslocation.h"
 #include "qetarguments.h"
+class AboutQET;
 class QETDiagramEditor;
 class QETElementEditor;
 class ElementsCollection;
@@ -136,6 +137,7 @@ class QETApp : public QETSingleApplication {
 	static uint next_project_id;
 	static RecentFiles *projects_recent_files_;
 	static RecentFiles *elements_recent_files_;
+	static AboutQET *about_dialog_;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);
@@ -157,6 +159,8 @@ class QETApp : public QETSingleApplication {
 	void openFiles(const QETArguments &);
 	void openProjectFiles(const QStringList &);
 	void openElementFiles(const QStringList &);
+	void configureQET();
+	void aboutQET();
 	
 	// methodes privees
 	private slots:

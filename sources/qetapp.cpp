@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetapp.h"
+#include "aboutqet.h"
+#include "configdialog.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
 #include "elementscollectionitem.h"
@@ -37,6 +39,7 @@ QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>
 uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
+AboutQET *QETApp::about_dialog_ = 0;
 
 /**
 	Constructeur
@@ -99,6 +102,9 @@ QETApp::~QETApp() {
 	projects_recent_files_ -> save();
 	delete elements_recent_files_;
 	delete projects_recent_files_;
+	if (about_dialog_) {
+		delete about_dialog_;
+	}
 	delete qsti;
 	delete custom_collection;
 	delete common_collection;
@@ -725,6 +731,61 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 		QETElementEditor *element_editor = new QETElementEditor();
 		element_editor -> fromFile(element_file);
 	}
+}
+
+/**
+	Permet a l'utilisateur de configurer QET en lancant un dialogue approprie.
+	@see ConfigDialog
+*/
+void QETApp::configureQET() {
+	// determine le widget parent a utiliser pour le dialogue
+#ifdef Q_WS_MAC
+	QWidget *parent_widget = 0;
+#else
+	QWidget *parent_widget = activeWindow();
+#endif
+
+	// cree le dialogue
+	ConfigDialog cd;
+	
+	// associe le dialogue a un eventuel widget parent
+	if (parent_widget) {
+		cd.setParent(parent_widget, cd.windowFlags());
+	}
+	
+	// affiche le dialogue puis evite de le lier a un quelconque widget parent
+	cd.exec();
+	cd.setParent(0, cd.windowFlags());
+}
+
+/**
+	Dialogue "A propos de QElectroTech"
+	Le dialogue en question est cree lors du premier appel de cette fonction.
+	En consequence, sa premiere apparition n'est pas immediate. Par la suite,
+	le dialogue n'a pas a etre recree et il apparait instantanement. Il est
+	detruit en meme temps que l'application.
+*/
+void QETApp::aboutQET() {
+	// determine le widget parent a utiliser pour le dialogue
+#ifdef Q_WS_MAC
+	QWidget *parent_widget = 0;
+#else
+	QWidget *parent_widget = activeWindow();
+#endif
+	
+	// cree le dialogue si cela n'a pas deja ete fait
+	if (!about_dialog_) {
+		about_dialog_ = new AboutQET();
+	}
+	
+	// associe le dialogue a un eventuel widget parent
+	if (parent_widget) {
+		about_dialog_ -> setParent(parent_widget, about_dialog_ -> windowFlags());
+	}
+	
+	// affiche le dialogue puis evite de le lier a un quelconque widget parent
+	about_dialog_ -> exec();
+	about_dialog_ -> setParent(0, about_dialog_ -> windowFlags());
 }
 
 /**

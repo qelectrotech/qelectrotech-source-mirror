@@ -20,9 +20,7 @@
 #include "diagramview.h"
 #include "diagram.h"
 #include "elementspanelwidget.h"
-#include "aboutqet.h"
 #include "conductorpropertieswidget.h"
-#include "configdialog.h"
 #include "qetproject.h"
 #include "projectview.h"
 #include "recentfiles.h"
@@ -166,18 +164,6 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 */
 void QETDiagramEditor::toggleFullScreen() {
 	setWindowState(windowState() ^ Qt::WindowFullScreen);
-}
-
-/**
-	Dialogue "A propos de QElectroTech"
-	Le dialogue en question est cree lors du premier appel de cette fonction.
-	En consequence, sa premiere apparition n'est pas immediate. Par la suite,
-	le dialogue n'a pas a etre recree et il apparait instantanement. Il est
-	detruit en meme temps que son parent (ici, le QETDiagramEditor).
-*/
-void QETDiagramEditor::aboutQET() {
-	static AboutQET *apqet = new AboutQET(this);
-	apqet -> exec();
 }
 
 /**
@@ -353,6 +339,8 @@ void QETDiagramEditor::actions() {
 	grp_view_mode -> addAction(tabbed_view_mode);
 	grp_view_mode -> setExclusive(true);
 	
+	QETApp *qet_app = QETApp::instance();
+	
 	// connexion a des slots
 	connect(quit_editor,        SIGNAL(triggered()), this,       SLOT(close())                     );
 	connect(select_all,         SIGNAL(triggered()), this,       SLOT(slot_selectAll())            );
@@ -361,13 +349,13 @@ void QETDiagramEditor::actions() {
 	connect(delete_selection,   SIGNAL(triggered()), this,       SLOT(slot_delete())               );
 	connect(rotate_selection,   SIGNAL(triggered()), this,       SLOT(slot_rotate())               );
 	connect(fullscreen,         SIGNAL(triggered()), this,       SLOT(toggleFullScreen())          );
-	connect(configure,          SIGNAL(triggered()), this,       SLOT(configureQET())              );
+	connect(configure,          SIGNAL(triggered()), qet_app,    SLOT(configureQET())              );
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
 	connect(tabbed_view_mode,   SIGNAL(triggered()), this,       SLOT(setTabbedMode())             );
 	connect(mode_selection,     SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())     );
 	connect(mode_visualise,     SIGNAL(triggered()), this,       SLOT(slot_setVisualisationMode()) );
-	connect(about_qet,          SIGNAL(triggered()), this,       SLOT(aboutQET())                  );
-	connect(about_qt,           SIGNAL(triggered()), qApp,       SLOT(aboutQt())                   );
+	connect(about_qet,          SIGNAL(triggered()), qet_app,    SLOT(aboutQET())                  );
+	connect(about_qt,           SIGNAL(triggered()), qet_app,    SLOT(aboutQt())                   );
 	connect(prj_edit_prop,      SIGNAL(triggered()), this,       SLOT(editCurrentProjectProperties()));
 	connect(prj_add_diagram,    SIGNAL(triggered()), this,       SLOT(addDiagramToProject())       );
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
@@ -1710,15 +1698,6 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 			10000
 		);
 	}
-}
-
-/**
-	Permet a l'utilisateur de configurer QET en lancant un dialogue approprie.
-	@see ConfigDialog
-*/
-void QETDiagramEditor::configureQET() {
-	ConfigDialog cd(this);
-	cd.exec();
 }
 
 /**

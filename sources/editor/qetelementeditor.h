@@ -43,7 +43,7 @@ class QETElementEditor : public QMainWindow {
 	/// booleen indiquant si l'editeur est en mode "lecture seule" ou non
 	bool read_only;
 	/// menus
-	QMenu *file_menu, *edit_menu, *display_menu, *tools_menu, *help_menu;
+	QMenu *file_menu, *edit_menu, *display_menu, *tools_menu, *config_menu, *help_menu;
 	/// vue sur la scene d'edition
 	ElementView *ce_view;
 	/// scene d'edition
@@ -68,9 +68,16 @@ class QETElementEditor : public QMainWindow {
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *cut, *copy, *paste, *paste_in_area;
 	QAction *undo, *redo;
-	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
+	/// actions du menu affichage
+	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
+	/// actions du menu configurer
+	QAction *fullscreen;         ///< Passe en mode plein ecran ou en sort
+	QAction *configure;          ///< Lance le dialogue de configuration de QElectroTech
+	/// actions du menu aide
+	QAction *about_qet;          ///< Lance le dialogue "A propos de QElectroTech"
+	QAction *about_qt;           ///< Lance le dialogue "A propos de Qt"
 	/// barres d'outils
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// actions de la barre d'outils
@@ -113,6 +120,7 @@ class QETElementEditor : public QMainWindow {
 	
 	protected:
 	void closeEvent(QCloseEvent *);
+	virtual bool event(QEvent *);
 	
 	private:
 	void setupActions();
@@ -136,10 +144,12 @@ class QETElementEditor : public QMainWindow {
 	void slot_setNormalMode();
 	void slot_updateInformations();
 	void slot_updateMenus();
+	void slot_updateFullScreenAction();
 	void slot_updateTitle();
 	void slot_createPartsList();
 	void slot_updatePartsList();
 	void slot_updateSelectionFromPartsList();
+	void toggleFullScreen();
 	void xmlPreview();
 	bool checkElement();
 };

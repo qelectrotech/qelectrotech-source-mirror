@@ -38,4 +38,4 @@ fi
 # launching
 ${QET_EXE} ${OPTIONS} $*
 
-cd -
+cd - > /dev/null 2>&1
