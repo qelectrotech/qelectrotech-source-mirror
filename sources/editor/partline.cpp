@@ -450,17 +450,20 @@ void PartLine::debugPaint(QPainter *painter) {
 QRectF PartLine::boundingRect() const {
 	QRectF r(QGraphicsLineItem::boundingRect());
 	
-	// cas special : le cercle sort largement du bounding rect originel
-	if (first_end == QET::Circle) {
+	// le rectangle ainsi obtenu ne doit pas avoir une dimension nulle
+	r.adjust(0.0, 0.0, 0.1, 0.1);
+	
+	// cas special : les embouts sortent largement du bounding rect originel
+	if (first_end != QET::None) {
 		r = r.united(firstEndCircleRect());
 	}
 	
-	if (second_end == QET::Circle) {
+	if (second_end != QET::None) {
 		r = r.united(secondEndCircleRect());
 	}
 	
-	// la taille du bounding rect est ajustee de 0.2px
-	qreal adjust = 0.6;
+	// la taille du bounding rect est ajustee avec une certaine marge
+	qreal adjust = 1.2;
 	r.adjust(-adjust, -adjust, adjust, adjust);
 	return(r);
 }
