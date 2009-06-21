@@ -3,6 +3,7 @@
         <name lang="ru" >Установка/Сброс</name>
         <name lang="en" >SET/RESET</name>
         <name lang="fr" >SET/RESET</name>
+        <name lang="es" >SET/RESET</name>
     </names>
     <description>
         <input x="-46" y="-10" size="8" rotate="true" text="R" />

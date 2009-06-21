@@ -3,6 +3,7 @@
         <name lang="ru" >ИЛИ, трёхвходовый</name>
         <name lang="en" >OR 3 inputs</name>
         <name lang="fr" >OU 3 entrées</name>
+        <name lang="es" >O 3 entradas</name>
     </names>
     <description>
         <input x="-46" y="-10" size="8" rotate="true" text="_" />

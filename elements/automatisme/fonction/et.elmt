@@ -3,6 +3,7 @@
         <name lang="ru" >И</name>
         <name lang="en" >AND</name>
         <name lang="fr" >ET</name>
+        <name lang="es" >Y</name>
     </names>
     <description>
         <input x="-46" y="10" size="8" rotate="true" text="_" />

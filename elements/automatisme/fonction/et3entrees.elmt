@@ -3,6 +3,7 @@
         <name lang="ru" >И, трёхвходовый</name>
         <name lang="en" >AND 3 inputs</name>
         <name lang="fr" >ET 3 entrées</name>
+        <name lang="es" >Y 3 entradas</name>
     </names>
     <description>
         <input x="-46" y="-10" size="8" rotate="true" text="_" />
