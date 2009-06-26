@@ -32,6 +32,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	follow_parent_rotations(true)
 {
 	setDefaultTextColor(Qt::black);
+	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(QObject::tr("_", "default text when adding a textfield in the element editor"));
 	infos = new TextFieldEditor(elementEditor(), this);

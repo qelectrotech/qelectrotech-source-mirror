@@ -32,6 +32,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	CustomElementPart(editor)
 {
 	setDefaultTextColor(Qt::black);
+	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
 	infos = new TextEditor(elementEditor(), this);
