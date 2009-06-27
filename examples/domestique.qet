@@ -1,5 +1,10 @@
-<project version="0.1" >
-    <diagram title="Exemple d'installation domestique" displayrows="true" cols="15" folio="" displaycols="true" height="340" colsize="50" rows="4" author="Benoît A" filename="Exemples QET" rowsize="80" >
+<project title="" version="0.2" >
+    <newdiagrams>
+        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80" />
+        <inset title="" folio="" author="" filename="" date="null" />
+        <conductors num="_" type="multi" />
+    </newdiagrams>
+    <diagram title="Exemple d'installation domestique" displayrows="true" cols="15" folio="" displaycols="true" height="340" colsize="50" order="1" rows="4" author="Benoît A" filename="Exemples QET" rowsize="80" >
         <defaultconductor neutral="true" phase="1" ground="true" type="single" />
         <elements>
             <element x="150" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
@@ -337,4 +342,5 @@
             <conductor neutral="true" phase="1" terminal1="54" ground="true" terminal2="30" type="single" />
         </conductors>
     </diagram>
+    <collection/>
 </project>

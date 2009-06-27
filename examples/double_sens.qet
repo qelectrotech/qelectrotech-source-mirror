@@ -1,5 +1,10 @@
-<project version="0.1" >
-    <diagram title="Exemple Moteur double sens" displayrows="true" cols="15" folio="" displaycols="true" height="500" colsize="50" rows="6" author="Benoît A" filename="Exemples QET" rowsize="80" >
+<project title="" version="0.2" >
+    <newdiagrams>
+        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80" />
+        <inset title="" folio="" author="" filename="" date="null" />
+        <conductors num="_" type="multi" />
+    </newdiagrams>
+    <diagram title="Exemple Moteur double sens" displayrows="true" cols="15" folio="" displaycols="true" height="500" colsize="50" order="1" rows="6" author="Benoît A" filename="Exemples QET" rowsize="80" >
         <defaultconductor type="simple" />
         <elements>
             <element x="50" y="70" type="common://sources/multifilaire/src_3pn.elmt" orientation="0" >
@@ -380,4 +385,5 @@
             </conductor>
         </conductors>
     </diagram>
+    <collection/>
 </project>
