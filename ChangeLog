@@ -42,9 +42,10 @@ Le dialogue "Exporter" (pour générer un fichier image d'un schéma) a égaleme
   * L'accrochage à la grille (aka "snap to grid", également connu sous le nom de grille magnétique ou encore grille aimantée) a été ajouté. Le dessin s'y accroche désormais avec une précision de 1px. On peut travailler en coordonnées libres en maintenant la touche Ctrl enfoncée durant le dessin.
   * Le copier-coller a été implémenté : il est possible de coller :
      * avec le bouton du milieu de la souris
-     * en choisissant une "zone de collage" sur l'élément (Ctrl+Shift+V) : cf screenshot à gauche
-     * directement (Ctrl+V) : les parties collées sont placées à côté des parties copiées ; si on recolle les parties, elles sont collées encore un cran à côté, et ce de manière incrémentale. Ainsi le screenshot à droite montre ce que l'on obtient en collant une sélection 8 fois d'affilée.
+     * en choisissant une "zone de collage" sur l'élément (Ctrl+Shift+V)
+     * directement (Ctrl+V) : les parties collées sont placées à côté des parties copiées ; si on recolle les parties, elles sont collées encore un cran à côté, et ce de manière incrémentale.
   * Des contrôles sont désormais effectués à l'enregistrement : présence de bornes, respect du cadre, etc.
+  * Uniformisation des menus par rapport à l'éditeur de schémas
 
 ====== Changelog 0.1 -> 0.11 ======
 
