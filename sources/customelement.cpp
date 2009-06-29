@@ -608,6 +608,7 @@ Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	else if (e.attribute("orientation") == "w") terminalo = QET::West;
 	else return(0);
 	Terminal *new_terminal = new Terminal(terminalx, terminaly, terminalo, this, qobject_cast<Diagram *>(scene()));
+	new_terminal -> setZValue(420); // valeur arbitraire pour maintenir les bornes au-dessus des champs de texte
 	list_terminals << new_terminal;
 	return(new_terminal);
 }
