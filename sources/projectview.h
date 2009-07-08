@@ -71,7 +71,9 @@ class ProjectView : public QWidget {
 	void diagramActivated(DiagramView *);
 	void diagramOrderChanged(ProjectView *, int, int);
 	void projectClosed(ProjectView *);
+	// Pour relayer les signaux
 	void findElementRequired(const ElementsLocation &);
+	void editElementRequired(const ElementsLocation &);
 	
 	private:
 	void loadDiagrams();

@@ -627,6 +627,7 @@ void DiagramView::editElement(Element *element) {
 	// titre et boutons du dialogue
 	QString description_title = tr("Propri\351t\351s de l'\351l\351ment s\351lectionn\351");
 	QPushButton *find_in_panel = new QPushButton(tr("Retrouver dans le panel"));
+	QPushButton *edit_element = new QPushButton(tr("Editer l'\351l\351ment"));
 	
 	// dialogue en lui-meme
 	QMessageBox edit_element_dialog;
@@ -635,12 +636,20 @@ void DiagramView::editElement(Element *element) {
 	edit_element_dialog.setText(description_title);
 	edit_element_dialog.setInformativeText(description_string);
 	edit_element_dialog.addButton(find_in_panel, QMessageBox::ApplyRole);
+	edit_element_dialog.addButton(edit_element, QMessageBox::ApplyRole);
 	edit_element_dialog.addButton(QMessageBox::Ok);
 	edit_element_dialog.setDefaultButton(QMessageBox::Ok);
 	edit_element_dialog.exec();
 	
+	// Permet de trouver l'element dans la collection
 	if (edit_element_dialog.clickedButton() == find_in_panel) {
 		emit(findElementRequired(custom_element -> location()));
+	}
+	
+	// Trouve l'element dans la collection et l'edite
+	if (edit_element_dialog.clickedButton() == edit_element) {
+		emit(findElementRequired(custom_element -> location()));
+		emit(editElementRequired(custom_element -> location()));
 	}
 }
 

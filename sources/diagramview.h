@@ -93,6 +93,8 @@ class DiagramView : public QGraphicsView {
 	void aboutToAddElement();
 	/// Signal emis lorsque l'utilisateur souhaite retrouver un element du schema dans les collections
 	void findElementRequired(const ElementsLocation &);
+	/// Signal emis lorsque l'utilisateur souhaite editer un element du schema
+	void editElementRequired(const ElementsLocation &);
 	
 	public slots:
 	void selectNothing();

@@ -25,6 +25,7 @@
 #include "projectview.h"
 #include "recentfiles.h"
 #include "qeticons.h"
+#include "qetelementeditor.h"
 
 /**
 	constructeur
@@ -1236,7 +1237,10 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	
 	// gere les demandes consistant a retrouver un element dans le panel
 	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SLOT(findElementInPanel(const ElementsLocation &)));
-	
+
+	// gere les demandes pour l'edition d'un element
+	connect(project_view, SIGNAL(editElementRequired(const ElementsLocation &)), this, SLOT(editElementInEditor(const ElementsLocation &)));
+		
 	// affiche la fenetre
 	if (maximise) project_view -> showMaximized();
 	else project_view -> show();
@@ -1699,6 +1703,18 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 		);
 	}
 }
+
+
+/**
+	Lance l'editeur d'element pour l'element filename
+	@param location Emplacement de l'element a editer
+*/
+void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
+	QETElementEditor *editor = new QETElementEditor();
+	editor -> fromLocation(location);
+	editor -> show();
+}
+
 
 /**
 	@return Les proprietes par defaut pour le cartouche d'un schema

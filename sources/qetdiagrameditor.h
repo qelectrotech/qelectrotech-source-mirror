@@ -144,6 +144,7 @@ class QETDiagramEditor : public QMainWindow {
 	void diagramWasRemoved(DiagramView *);
 	void diagramTitleChanged(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
+	void editElementInEditor(const ElementsLocation &);
 	
 	// attributs
 	public:
