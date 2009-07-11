@@ -639,6 +639,7 @@ void DiagramView::editElement(Element *element) {
 	edit_element_dialog.addButton(edit_element, QMessageBox::ApplyRole);
 	edit_element_dialog.addButton(QMessageBox::Ok);
 	edit_element_dialog.setDefaultButton(QMessageBox::Ok);
+	edit_element_dialog.setEscapeButton(QMessageBox::Ok);
 	edit_element_dialog.exec();
 	
 	// Permet de trouver l'element dans la collection
