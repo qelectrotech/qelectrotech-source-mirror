@@ -34,7 +34,7 @@
  */
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QMainWindow(parent),
-	open_dialog_dir(QDir::homePath()),
+	open_dialog_dir(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
 	can_update_actions(true)
 {
 	// mise en place de l'interface MDI au centre de l'application

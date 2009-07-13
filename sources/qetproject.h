@@ -73,6 +73,7 @@ class QETProject : public QObject {
 	ElementsCollection *embeddedCollection() const;
 	QString filePath();
 	void setFilePath(const QString &);
+	QString currentDir() const;
 	QString pathNameTitle() const;
 	QString title() const;
 	void setTitle(const QString &);

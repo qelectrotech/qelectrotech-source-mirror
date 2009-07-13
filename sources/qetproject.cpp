@@ -170,6 +170,21 @@ void QETProject::setFilePath(const QString &filepath) {
 }
 
 /**
+	@return le dossier contenant le fichier projet si celui-ci a ete
+	enregistre ; dans le cas contraire, cette methode retourne l'emplacement
+	du bureau de l'utilisateur.
+*/
+QString QETProject::currentDir() const {
+	QString current_directory;
+	if (file_path_.isEmpty()) {
+		current_directory = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
+	} else {
+		current_directory = QFileInfo(file_path_).absoluteDir().absolutePath();
+	}
+	return(current_directory);
+}
+
+/**
 	
 	@return une chaine de caractere du type "Projet titre du projet".
 	Si le projet n'a pas de titre, le nom du fichier est utilise.

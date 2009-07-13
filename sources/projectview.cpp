@@ -650,7 +650,7 @@ bool ProjectView::saveAs() {
 	QString filepath = QFileDialog::getSaveFileName(
 		this,
 		tr("Enregistrer sous", "dialog title"),
-		(project_ -> filePath().isEmpty() ? QDir::homePath() : QDir(project_ -> filePath())).absolutePath(),
+		project_ -> currentDir(),
 		tr("Sch\351ma QElectroTech (*.qet)", "filetypes allowed when saving a diagram file")
 	);
 	

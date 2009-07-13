@@ -191,7 +191,7 @@ QWidget *ExportDialog::leftPart() {
 	QHBoxLayout *hboxLayout = new QHBoxLayout();
 	QLabel *dirpath_label = new QLabel(tr("Dossier cible :"), this);
 	dirpath = new QLineEdit(this);
-	dirpath -> setText(QDir::toNativeSeparators(QDir::homePath()));
+	dirpath -> setText(QDir::toNativeSeparators(project_ -> currentDir()));
 	QCompleter *completer = new QCompleter(this);
 	completer -> setModel(new QDirModel(completer));
 	dirpath -> setCompleter(completer);
@@ -358,7 +358,7 @@ void ExportDialog::slot_chooseADirectory() {
 	QString user_dir = QFileDialog::getExistingDirectory(
 		this,
 		tr("Exporter dans le dossier", "dialog title"),
-		QDir::homePath()
+		dirpath -> text()
 	);
 	if (!user_dir.isEmpty()) {
 		dirpath -> setText(user_dir);
