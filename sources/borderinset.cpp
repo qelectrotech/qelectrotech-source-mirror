@@ -446,8 +446,8 @@ DiagramPosition BorderInset::convertPosition(const QPointF &pos) {
 	}
 	
 	QPointF relative_pos = pos - grid_rect.topLeft();
-	int row_number    = ceil(relative_pos.x() / columnsWidth());
-	int column_number = ceil(relative_pos.y() / rowsHeight());
+	int row_number    = int(ceil(relative_pos.x() / columnsWidth()));
+	int column_number = int(ceil(relative_pos.y() / rowsHeight()));
 	
 	QString letter = "A";
 	for (int i = 1 ; i < column_number ; ++ i) {
