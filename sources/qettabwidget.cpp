@@ -47,15 +47,23 @@ QETTabWidget::~QETTabWidget() {
 /**
 	@param movable true pour que les onglets soient deplacables, false sinon
 */
-void QETTabWidget::setTabsMovable(bool movable) {
+void QETTabWidget::setMovable(bool movable) {
+#if QT_VERSION < 0x040500
 	tab_bar_ -> setTabsMovable(movable);
+#else
+	QTabWidget::setMovable(movable);
+#endif
 }
 
 /**
 	@return true si les onglets sont deplacables, false sinon
 */
-bool QETTabWidget::tabsMovable() {
+bool QETTabWidget::isMovable() const {
+#if QT_VERSION < 0x040500
 	return(tab_bar_ -> tabsMovable());
+#else
+	return(QTabWidget::isMovable());
+#endif
 }
 
 /**

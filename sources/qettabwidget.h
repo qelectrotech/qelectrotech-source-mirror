@@ -38,8 +38,8 @@ class QETTabWidget : public QTabWidget {
 	
 	// methodes
 	public:
-	void setTabsMovable(bool);
-	bool tabsMovable();
+	void setMovable(bool);
+	bool isMovable() const;
 	
 	protected:
 	void wheelEvent(QWheelEvent *);

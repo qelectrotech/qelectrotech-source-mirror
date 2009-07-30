@@ -25,6 +25,7 @@
 QETTabBar::QETTabBar(QWidget *parent) :
 	QTabBar(parent),
 	no_more_tabs_(true),
+	movable_tabs_(false),
 	moved_tab_(-1)
 {
 }
@@ -68,15 +69,23 @@ void QETTabBar::activatePreviousTab() {
 /**
 	@param movable true pour que les onglets soient deplacables, false sinon
 */
-void QETTabBar::setTabsMovable(bool movable) {
+void QETTabBar::setMovable(bool movable) {
+#if QT_VERSION < 0x040500
 	movable_tabs_ = movable;
+#else
+	QTabBar::setMovable(movable);
+#endif
 }
 
 /**
 	@return true si les onglets sont deplacables, false sinon
 */
-bool QETTabBar::tabsMovable() const {
+bool QETTabBar::isMovable() const {
+#if QT_VERSION < 0x040500
 	return(movable_tabs_);
+#else
+	return(QTabBar::isMovable());
+#endif
 }
 
 /**

@@ -50,7 +50,7 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	fallback_widget_layout_ -> addWidget(label_widget);
 	
 	tabs_ = new QETTabWidget();
-	tabs_ -> setTabsMovable(true);
+	tabs_ -> setMovable(true);
 	connect(tabs_, SIGNAL(currentChanged(int)),   this, SLOT(tabChanged(int)));
 	connect(tabs_, SIGNAL(tabDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
 	connect(tabs_, SIGNAL(firstTabInserted()),    this, SLOT(firstTabInserted()));

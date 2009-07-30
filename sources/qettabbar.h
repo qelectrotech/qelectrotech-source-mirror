@@ -1,5 +1,4 @@
-/*
-	Copyright 2006-2009 Xavier Guerrin
+/*	Copyright 2006-2009 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -41,8 +40,8 @@ class QETTabBar : public QTabBar {
 	public:
 	void activateNextTab();
 	void activatePreviousTab();
-	void setTabsMovable(bool);
-	bool tabsMovable() const;
+	void setMovable(bool);
+	bool isMovable() const;
 	bool isVertical() const;
 	bool isHorizontal() const;
 	
@@ -58,7 +57,9 @@ class QETTabBar : public QTabBar {
 	signals:
 	void lastTabRemoved();
 	void firstTabInserted();
+#if QT_VERSION < 0x040500
 	void tabMoved(int, int);
+#endif
 	void tabDoubleClicked(int);
 	
 	private:
