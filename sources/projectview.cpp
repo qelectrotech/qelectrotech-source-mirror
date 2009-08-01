@@ -58,7 +58,11 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	connect(tabs_, SIGNAL(tabMoved(int, int)),    this, SLOT(tabMoved(int, int)));
 	
 	layout_ = new QVBoxLayout(this);
-	layout_ -> setMargin(0);
+#ifdef Q_WS_MAC
+	layout_ -> setContentsMargins(0, 8, 0, 0);
+#else
+	layout_ -> setContentsMargins(0, 0, 0, 0);
+#endif
 	layout_ -> setSpacing(0);
 	layout_ -> addWidget(fallback_widget_);
 	layout_ -> addWidget(tabs_);
