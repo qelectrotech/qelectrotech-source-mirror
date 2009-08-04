@@ -3,7 +3,7 @@
         <name lang="ru" >Гнездо (стар.)</name>
         <name lang="en" >Output terminal</name>
         <name lang="fr" >Borne sortie</name>
-        <name lang="es" >Punto de salida</name>
+        <name lang="es" >Terminal de salida</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4" />

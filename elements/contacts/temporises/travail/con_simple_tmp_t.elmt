@@ -3,7 +3,7 @@
         <name lang="ru" >Контакт с задержкой при срабатывании (НР)</name>
         <name lang="en" >Simple contact (switch-on delay timer)</name>
         <name lang="fr" >Contact simple (tempo travail)</name>
-        <name lang="es" >Contacto simple (temporizador a la conexión)</name>
+        <name lang="es" >Contactor simple (tiempo retardado de encendido)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0" />

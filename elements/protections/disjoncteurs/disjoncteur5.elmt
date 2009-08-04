@@ -3,7 +3,7 @@
         <name lang="ru" >Выключатель</name>
         <name lang="en" >Circuit-breaker</name>
         <name lang="fr" >Disjoncteur</name>
-        <name lang="es" >Interruptor magnetotérmico</name>
+        <name lang="es" >Disyuntor</name>
     </names>
     <description>
         <input x="32.75" y="3" size="9" text="_" />
