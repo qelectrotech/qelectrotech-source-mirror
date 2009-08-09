@@ -344,6 +344,10 @@ void DiagramView::editDiagramProperties() {
 	
 	// construit le dialogue
 	QDialog popup(diagramEditor());
+#ifdef Q_WS_MAC
+	popup.setWindowFlags(Qt::Sheet);
+#endif
+	
 	popup.setMinimumWidth(400);
 	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma", "window title"));
 	
@@ -744,6 +748,10 @@ void DiagramView::editDefaultConductorProperties() {
 	
 	// l'insere dans un dialogue
 	QDialog conductor_dialog(diagramEditor());
+#ifdef Q_WS_MAC
+	conductor_dialog.setWindowFlags(Qt::Sheet);
+#endif
+	
 	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s par d\351faut des conducteurs", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);

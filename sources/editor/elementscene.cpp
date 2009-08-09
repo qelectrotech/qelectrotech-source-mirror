@@ -750,6 +750,9 @@ void ElementScene::slot_editSizeHotSpot() {
 	// cree un dialogue
 	QDialog dialog_sh(element_editor);
 	dialog_sh.setModal(true);
+#ifdef Q_WS_MAC
+	dialog_sh.setWindowFlags(Qt::Sheet);
+#endif
 	dialog_sh.setWindowTitle(tr("\311diter la taille et le point de saisie", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_sh);
 	
@@ -789,6 +792,9 @@ void ElementScene::slot_editOrientations() {
 	// cree un dialogue
 	QDialog dialog_ori(element_editor);
 	dialog_ori.setModal(true);
+#ifdef Q_WS_MAC
+	dialog_ori.setWindowFlags(Qt::Sheet);
+#endif
 	dialog_ori.setMinimumSize(400, 260);
 	dialog_ori.setWindowTitle(tr("\311diter les orientations", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_ori);
@@ -834,6 +840,9 @@ void ElementScene::slot_editNames() {
 	
 	// cree un dialogue
 	QDialog dialog(element_editor);
+#ifdef Q_WS_MAC
+	dialog.setWindowFlags(Qt::Sheet);
+#endif
 	dialog.setModal(true);
 	dialog.setMinimumSize(400, 330);
 	dialog.setWindowTitle(tr("\311diter les noms", "window title"));

@@ -739,17 +739,16 @@ void QETApp::openElementFiles(const QStringList &files_list) {
 */
 void QETApp::configureQET() {
 	// determine le widget parent a utiliser pour le dialogue
-#ifdef Q_WS_MAC
-	QWidget *parent_widget = 0;
-#else
 	QWidget *parent_widget = activeWindow();
-#endif
-
+	
 	// cree le dialogue
 	ConfigDialog cd;
 	
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
+#ifdef Q_WS_MAC
+		cd.setWindowFlags(Qt::Sheet);
+#endif
 		cd.setParent(parent_widget, cd.windowFlags());
 	}
 	
@@ -767,11 +766,7 @@ void QETApp::configureQET() {
 */
 void QETApp::aboutQET() {
 	// determine le widget parent a utiliser pour le dialogue
-#ifdef Q_WS_MAC
-	QWidget *parent_widget = 0;
-#else
 	QWidget *parent_widget = activeWindow();
-#endif
 	
 	// cree le dialogue si cela n'a pas deja ete fait
 	if (!about_dialog_) {
@@ -780,6 +775,9 @@ void QETApp::aboutQET() {
 	
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
+#ifdef Q_WS_MAC
+		about_dialog_ -> setWindowFlags(Qt::Sheet);
+#endif
 		about_dialog_ -> setParent(parent_widget, about_dialog_ -> windowFlags());
 	}
 	

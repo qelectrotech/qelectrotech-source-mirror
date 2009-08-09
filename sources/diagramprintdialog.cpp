@@ -93,6 +93,9 @@ void DiagramPrintDialog::exec() {
 	if (printer_choice_ -> isChecked()) {
 		// affichage du dialogue d'impression standard pour parametrer l'imprimante
 		QPrintDialog print_dialog(printer_, parentWidget());
+#ifdef Q_WS_MAC
+		print_dialog -> setWindowFlags(Qt::Sheet);
+#endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
 		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
 		if (print_dialog.exec() == QDialog::Rejected) return;
@@ -159,6 +162,10 @@ int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, bool fullpage) cons
 void DiagramPrintDialog::buildPrintTypeDialog() {
 	// initialisation des widgets
 	dialog_           = new QDialog(parentWidget());
+#ifdef Q_WS_MAC
+	dialog_ -> setWindowFlags(Qt::Sheet);
+#endif
+	
 	printtype_label_  = new QLabel(tr("Quel type d'impression d\351sirez-vous effectuer ?"));
 	printer_icon_     = new QLabel();
 	pdf_icon_         = new QLabel();

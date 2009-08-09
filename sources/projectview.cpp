@@ -400,6 +400,10 @@ void ProjectView::editProjectProperties() {
 	
 	// dialogue d'edition des proprietes du projet
 	QDialog properties_dialog(parentWidget());
+#ifdef Q_WS_MAC
+	properties_dialog.setWindowFlags(Qt::Sheet);
+#endif
+	
 	properties_dialog.setMinimumWidth(786);
 	properties_dialog.setMinimumHeight(585);
 	properties_dialog.setWindowTitle(tr("Propri\351t\351s du projet", "window title"));
@@ -506,12 +510,7 @@ void ProjectView::printProject() {
 	}
 	
 	// recupere le dossier contenant le fichier courant
-	QString dir_path = project_ -> filePath();
-	if (dir_path.isEmpty()) {
-		dir_path = QDir::homePath();
-	} else {
-		dir_path = QFileInfo(dir_path).absolutePath();
-	}
+	QString dir_path = project_ -> currentDir();
 	
 	// determine un chemin pour le pdf / ps
 	QString file_name = QDir::toNativeSeparators(dir_path + "/" + doc_name);
@@ -529,6 +528,9 @@ void ProjectView::exportProject() {
 	if (!project_) return;
 	
 	ExportDialog ed(project_, parentWidget());
+#ifdef Q_WS_MAC
+	ed.setWindowsFlag(Qt::Sheet);
+#endif
 	ed.exec();
 }
 
@@ -613,7 +615,11 @@ int ProjectView::cleanProject() {
 	clean_elements   -> setChecked(true);
 	clean_categories -> setChecked(true);
 	
-	QDialog clean_dialog;
+	QDialog clean_dialog(parentWidget());
+#ifdef Q_WS_MAC
+	clean_dialog.setWindowFlags(Qt::Sheet);
+#endif
+	
 	clean_dialog.setWindowTitle(tr("Nettoyer le projet", "window title"));
 	QVBoxLayout *clean_dialog_layout = new QVBoxLayout();
 	clean_dialog_layout -> addWidget(clean_elements);
