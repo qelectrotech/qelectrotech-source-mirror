@@ -21,6 +21,7 @@
 #include "borderproperties.h"
 #include "conductorproperties.h"
 #include "insetproperties.h"
+#include "exportproperties.h"
 class QETProject;
 class ProjectView;
 class Diagram;
@@ -55,9 +56,10 @@ class QETDiagramEditor : public QMainWindow {
 	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
 	ProjectView *viewForFile(const QString &) const;
-	static InsetProperties defaultInsetProperties();
-	static BorderProperties defaultBorderProperties();
+	static InsetProperties     defaultInsetProperties();
+	static BorderProperties    defaultBorderProperties();
 	static ConductorProperties defaultConductorProperties();
+	static ExportProperties    defaultExportProperties();
 	
 	protected:
 	void actions();

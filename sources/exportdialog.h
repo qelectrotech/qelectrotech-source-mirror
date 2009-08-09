@@ -21,6 +21,7 @@
 #include "diagram.h"
 #include "qetproject.h"
 class QSvgGenerator;
+class ExportPropertiesWidget;
 /**
 	Cette classe represente le dialogue permettant d'exporter un schema
 	sous forme d'image selon les desirs de l'utilisateur
@@ -64,15 +65,7 @@ class ExportDialog : public QDialog {
 	QHash<int, ExportDialog::ExportDiagramLine *> diagram_lines_;
 	// elements graphiques
 	QGridLayout *diagrams_list_layout_;
-	QLineEdit *dirpath;
-	QPushButton *button_browse;
-	QComboBox *format;
-	QCheckBox *draw_grid;
-	QCheckBox *draw_border;
-	QCheckBox *draw_inset;
-	QCheckBox *draw_terminals;
-	QRadioButton *export_elements;
-	QRadioButton *export_border;
+	ExportPropertiesWidget *epw;
 	QDialogButtonBox *buttons;
 	// mappers
 	QSignalMapper *preview_mapper_;
@@ -87,8 +80,6 @@ class ExportDialog : public QDialog {
 	// methodes
 	private:
 	QWidget *initDiagramsListPart();
-	QWidget *leftPart();
-	QGroupBox *setupOptionsGroupBox();
 	void saveReloadDiagramParameters(Diagram *, bool = true);
 	void generateSvg(Diagram *, int, int, bool, QFile &);
 	QImage generateImage(Diagram *, int, int, bool);
@@ -101,7 +92,6 @@ class ExportDialog : public QDialog {
 	void slot_correctHeight(int);
 	void slot_keepRatioChanged(int);
 	void slot_resetSize(int);
-	void slot_chooseADirectory();
 	void slot_export();
 	void slot_changeUseBorder();
 	void slot_checkDiagramsCount();

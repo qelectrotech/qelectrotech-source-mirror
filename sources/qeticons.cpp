@@ -176,6 +176,7 @@ void QET::Icons::initIcons() {
 	DocumentClose       .addFile(":/ico/22x22/document-close.png");
 	DocumentExport      .addFile(":/ico/16x16/document-export.png");
 	DocumentExport      .addFile(":/ico/22x22/document-export.png");
+	DocumentExport      .addFile(":/ico/128x128/document-export.png");
 	DocumentImport      .addFile(":/ico/16x16/document-import.png");
 	DocumentImport      .addFile(":/ico/22x22/document-import.png");
 	DocumentNew         .addFile(":/ico/16x16/document-new.png");

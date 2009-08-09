@@ -2,6 +2,7 @@
 <qresource>
 	<file>ico/128x128/diagram.png</file>
 	<file>ico/128x128/settings.png</file>
+	<file>ico/128x128/document-export.png</file>
 	<file>ico/16x16/add_col.png</file>
 	<file>ico/16x16/add_row.png</file>
 	<file>ico/16x16/application-exit.png</file>

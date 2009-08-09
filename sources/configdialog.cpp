@@ -39,6 +39,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	pages_widget = new QStackedWidget();
 	addPage(new GeneralConfigurationPage());
 	addPage(new NewDiagramPage());
+	addPage(new ExportConfigPage());
 	buildPagesList();
 	
 	// boutons

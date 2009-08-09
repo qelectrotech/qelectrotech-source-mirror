@@ -23,6 +23,7 @@
 #include "qetdiagrameditor.h"
 #include "borderinset.h"
 #include "qeticons.h"
+#include "exportpropertieswidget.h"
 
 /**
 	Constructeur
@@ -189,3 +190,50 @@ QIcon GeneralConfigurationPage::icon() const {
 QString GeneralConfigurationPage::title() const {
 	return(tr("G\351n\351ral", "configuration page title"));
 }
+
+
+/**
+	Constructeur
+	@param parent QWidget parent
+*/
+ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
+	// epw contient les options d'export
+	epw = new ExportPropertiesWidget(QETDiagramEditor::defaultExportProperties());
+	
+	// layout vertical contenant le titre, une ligne horizontale et epw
+	QVBoxLayout *vlayout1 = new QVBoxLayout();
+	
+	QLabel *title = new QLabel(this -> title());
+	vlayout1 -> addWidget(title);
+	
+	QFrame *horiz_line = new QFrame();
+	horiz_line -> setFrameShape(QFrame::HLine);
+	vlayout1 -> addWidget(horiz_line);
+	vlayout1 -> addWidget(epw);
+
+	// activation du layout
+	setLayout(vlayout1);
+}
+
+/// Destructeur
+ExportConfigPage::~ExportConfigPage() {
+}
+
+/**
+	Applique la configuration de cette page
+*/
+void ExportConfigPage::applyConf() {
+	QSettings &settings = QETApp::settings();
+	epw -> exportProperties().toSettings(settings, "export/default");
+}
+
+/// @return l'icone de cette page
+QIcon ExportConfigPage::icon() const {
+	return(QET::Icons::DocumentExport);
+}
+
+/// @return le titre de cette page
+QString ExportConfigPage::title() const {
+	return(tr("Export", "configuration page title"));
+}
+

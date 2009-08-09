@@ -395,6 +395,25 @@ QET::EndType QET::endTypeFromString(const QString &string) {
 }
 
 /**
+	@param diagram_area un type de zone de schema
+	@return une chaine representant le type de zone de schema
+*/
+QString QET::diagramAreaToString(const QET::DiagramArea &diagram_area) {
+	if (diagram_area == ElementsArea) return("elements");
+	else return("border");
+}
+
+/**
+	@param string une chaine representant un type de zone de schema
+	@return le type de zone de schema correspondant ; si la chaine est invalide,
+	QET::ElementsArea est retourne.
+*/
+QET::DiagramArea QET::diagramAreaFromString(const QString &string) {
+	if (!string.compare("border", Qt::CaseInsensitive)) return(QET::BorderArea);
+	else return(QET::ElementsArea);
+}
+
+/**
 	@param ptr pointeur quelconque
 	@return une representation hexadecimale de l'adresse du pointeur
 */

@@ -21,6 +21,7 @@
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class InsetPropertiesWidget;
+class ExportPropertiesWidget;
 /**
 	Cette classe abstraite contient les methodes que toutes les pages de
 	configuration doivent implementer.
@@ -98,5 +99,28 @@ class GeneralConfigurationPage : public ConfigPage {
 	QLabel *warning_view_mode_;
 	QGroupBox *elements_management_;
 	QCheckBox *integrate_elements_;
+};
+
+/**
+	Cette classe represente la page de configuration du dialogue d'exportation
+*/
+class ExportConfigPage : public ConfigPage {
+	Q_OBJECT
+	// constructeurs, destructeur
+	public:
+	ExportConfigPage(QWidget * = 0);
+	virtual ~ExportConfigPage();
+	private:
+	ExportConfigPage(const ExportConfigPage &);
+	
+	// methodes
+	public:
+	void applyConf();
+	QString title() const;
+	QIcon icon() const;
+	
+	// attributs
+	public:
+	ExportPropertiesWidget *epw;
 };
 #endif

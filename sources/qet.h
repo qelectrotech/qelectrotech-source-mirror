@@ -89,6 +89,14 @@ namespace QET {
 		Rename   ///< il faut renommer la cible
 	};
 	
+	/**
+		Cet enum represente la zone d'un schema a exporter / imprimer
+	*/
+	enum DiagramArea {
+		BorderArea,      ///< Exporte le schema avec son cadre et son cartouche
+		ElementsArea     ///< Exporte le contenu du schema sans le cadre et le cartouche
+	};
+	
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);
 	QET::Orientation orientationFromString(const QString &);
@@ -110,6 +118,8 @@ namespace QET {
 	QStringList splitWithSpaces(const QString &);
 	QString endTypeToString(const QET::EndType &);
 	QET::EndType endTypeFromString(const QString &);
+	QString diagramAreaToString(const QET::DiagramArea &);
+	QET::DiagramArea diagramAreaFromString(const QString &);
 	QString pointerString(void *);
 }
 #endif

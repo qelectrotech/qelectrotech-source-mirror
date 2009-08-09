@@ -19,6 +19,8 @@
 #include <QSvgGenerator>
 #include <QtXml>
 #include "qeticons.h"
+#include "exportpropertieswidget.h"
+#include "qetdiagrameditor.h"
 
 /**
 	Constructeur
@@ -28,13 +30,24 @@
 ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(parent) {
 	if (!project) return;
 	
-	// recupere le schema a exporter, sa taille et ses proportions
+	// recupere le projet a exporter
 	project_ = project;
+	
+	// recupere les parametres d'export definis dans la configuration de l'application
+	ExportProperties default_export_properties = QETDiagramEditor::defaultExportProperties();
+	
+	// on utilise le repertoire du projet a exporter si possible
+	if (!project_ -> filePath().isEmpty()) {
+		default_export_properties.destination_directory = project_ -> currentDir();
+	}
 	
 	// la taille minimale du dialogue est fixee
 	setMinimumSize(800, 390);
 	resize(minimumSize());
 	setWindowTitle(tr("Exporter les sch\351mas du projet", "window title"));
+
+	// options d'export, dans le widget epw
+	epw = new ExportPropertiesWidget(default_export_properties);
 	
 	// le dialogue comporte deux boutons
 	buttons = new QDialogButtonBox(this);
@@ -47,15 +60,17 @@ ExportDialog::ExportDialog(QETProject *project, QWidget *parent) : QDialog(paren
 	QVBoxLayout *layout = new QVBoxLayout(this);
 	layout -> addWidget(new QLabel(tr("Choisissez les sch\351mas que vous d\351sirez exporter ainsi que leurs dimensions :")));
 	layout -> addWidget(initDiagramsListPart(), 1);
-	layout -> addWidget(leftPart());
+	layout -> addWidget(epw);
 	layout -> addWidget(buttons);
-	slot_changeFilesExtension(true);
 	
 	// connexions signaux/slots
-	connect(button_browse,     SIGNAL(released()),               this, SLOT(slot_chooseADirectory()));
-	connect(format,            SIGNAL(currentIndexChanged(int)), this, SLOT(slot_changeFilesExtension()));
-	connect(buttons,           SIGNAL(accepted()),         this, SLOT(slot_export()));
-	connect(buttons,           SIGNAL(rejected()),         this, SLOT(reject()));
+	connect(epw,     SIGNAL(formatChanged()),       this, SLOT(slot_changeFilesExtension()));
+	connect(epw,     SIGNAL(exportedAreaChanged()), this, SLOT(slot_changeUseBorder()));
+	connect(buttons, SIGNAL(accepted()),            this, SLOT(slot_export()));
+	connect(buttons, SIGNAL(rejected()),            this, SLOT(reject()));
+	
+	// ajustement des extensions des fichiers
+	slot_changeFilesExtension(true);
 }
 
 /**
@@ -65,7 +80,7 @@ ExportDialog::~ExportDialog() {
 }
 
 /**
-	@return lenombre de schemas coches (donc a exporter)
+	@return le nombre de schemas coches (donc a exporter)
 */
 int ExportDialog::diagramsToExportCount() const {
 	int checked_diagrams_count = 0;
@@ -73,47 +88,6 @@ int ExportDialog::diagramsToExportCount() const {
 		if (diagram_line -> must_export -> isChecked()) ++ checked_diagrams_count;
 	}
 	return(checked_diagrams_count);
-}
-
-/**
-	Met en place la partie du dialogue dans lequel l'utilisateur entre les
-	options souhaitees de l'image.
-	@return La QGroupBox permettant de regler les options de l'image
-*/
-QGroupBox *ExportDialog::setupOptionsGroupBox() {
-	QGroupBox *groupbox_options = new QGroupBox(tr("Options"), this);
-	QGridLayout *optionshlayout = new QGridLayout(groupbox_options);
-	
-	// Choix de la zone du schema a exporter
-	QButtonGroup *exported_content_choices = new QButtonGroup(groupbox_options);
-	export_border = new QRadioButton(tr("Exporter le cadre"), groupbox_options);
-	optionshlayout -> addWidget(export_border, 0, 0);
-	exported_content_choices -> addButton(export_border);
-	export_elements = new QRadioButton(tr("Exporter les \351l\351ments"), groupbox_options);
-	optionshlayout -> addWidget(export_elements, 0, 1);
-	exported_content_choices -> addButton(export_elements);
-	export_border -> setChecked(true);
-	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SLOT(slot_changeUseBorder()));
-	
-	// dessiner la grille
-	draw_grid = new QCheckBox(tr("Dessiner la grille"), groupbox_options);
-	optionshlayout -> addWidget(draw_grid, 1, 1);
-	
-	// dessiner le cadre
-	draw_border = new QCheckBox(tr("Dessiner le cadre"), groupbox_options);
-	optionshlayout -> addWidget(draw_border, 1, 0);
-	draw_border -> setChecked(true);
-	
-	// dessiner le cartouche
-	draw_inset = new QCheckBox(tr("Dessiner le cartouche"), groupbox_options);
-	optionshlayout -> addWidget(draw_inset, 2, 0);
-	draw_inset -> setChecked(true);
-	
-	// dessiner les bornes
-	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
-	optionshlayout -> addWidget(draw_terminals, 2, 1);
-	
-	return(groupbox_options);
 }
 
 /**
@@ -178,60 +152,6 @@ QWidget *ExportDialog::initDiagramsListPart() {
 }
 
 /**
-	Met en place la partie gauche du dialogue
-	@return Le widget representant la moitie gauche du dialogue
-*/
-QWidget *ExportDialog::leftPart() {
-	QWidget *retour = new QWidget();
-	
-	// la partie gauche du dialogue est un empilement vertical d'elements
-	QVBoxLayout *vboxLayout = new QVBoxLayout(retour);
-	
-	/* le dialogue comprend une ligne permettant d'indiquer un chemin de dossier (hboxLayout) */
-	QHBoxLayout *hboxLayout = new QHBoxLayout();
-	QLabel *dirpath_label = new QLabel(tr("Dossier cible :"), this);
-	dirpath = new QLineEdit(this);
-	dirpath -> setText(QDir::toNativeSeparators(project_ -> currentDir()));
-	QCompleter *completer = new QCompleter(this);
-	completer -> setModel(new QDirModel(completer));
-	dirpath -> setCompleter(completer);
-	button_browse = new QPushButton(tr("Parcourir"), this);
-	hboxLayout -> addWidget(dirpath_label);
-	hboxLayout -> addWidget(dirpath);
-	hboxLayout -> addWidget(button_browse);
-	hboxLayout -> addStretch();
-	
-	vboxLayout -> addLayout(hboxLayout);
-	
-	/* une ligne permettant de choisir le format (hboxLayout1) */
-	QHBoxLayout *hboxLayout1 = new QHBoxLayout();
-	hboxLayout1 -> addWidget(new QLabel(tr("Format :"), this));
-	hboxLayout1 -> addWidget(format = new QComboBox(this));
-	format -> addItem(tr("PNG (*.png)"),    "PNG");
-	format -> addItem(tr("JPEG (*.jpg)"),   "JPG");
-	format -> addItem(tr("Bitmap (*.bmp)"), "BMP");
-	format -> addItem(tr("SVG (*.svg)"),    "SVG");
-	hboxLayout1 -> addStretch();
-	
-	vboxLayout -> addLayout(hboxLayout1);
-	
-	/* un cadre permettant de specifier les options de l'image finale */
-	vboxLayout -> addWidget(setupOptionsGroupBox());
-	vboxLayout -> addStretch();
-	
-	// ordre des input selectionnes avec la touche tab
-	
-	setTabOrder(dirpath, button_browse);
-	setTabOrder(button_browse, format);
-	setTabOrder(format, export_border);
-	setTabOrder(export_border, draw_border);
-	setTabOrder(draw_border, draw_grid);
-	setTabOrder(draw_grid, draw_inset);
-	setTabOrder(draw_inset, draw_terminals);
-	return(retour);
-}
-
-/**
 	@param diagram Un schema
 	@return le rapport largeur / hauteur du schema
 */
@@ -251,7 +171,7 @@ QSize ExportDialog::diagramSize(Diagram *diagram) {
 	bool state_useBorder = diagram -> useBorder();
 	
 	// applique le useBorder adequat et calcule le ratio
-	diagram -> setUseBorder(export_border -> isChecked());
+	diagram -> setUseBorder(epw -> exportProperties().exported_area == QET::BorderArea);
 	QSize diagram_size = diagram -> imageSize();
 	
 	// restaure le parametre useBorder du schema
@@ -352,20 +272,6 @@ void ExportDialog::slot_resetSize(int diagram_id) {
 }
 
 /**
-	Slot demandant a l'utilisateur de choisir un dossier
-*/
-void ExportDialog::slot_chooseADirectory() {
-	QString user_dir = QFileDialog::getExistingDirectory(
-		this,
-		tr("Exporter dans le dossier", "dialog title"),
-		dirpath -> text()
-	);
-	if (!user_dir.isEmpty()) {
-		dirpath -> setText(user_dir);
-	}
-}
-
-/**
 	Genere l'image a exporter
 	@param diagram Schema a exporter en SVG
 	@param width  Largeur de l'export
@@ -410,11 +316,13 @@ void ExportDialog::saveReloadDiagramParameters(Diagram *diagram, bool save) {
 		state_drawTerm    = diagram -> drawTerminals();
 		state_useBorder   = diagram -> useBorder();
 		
-		diagram -> setUseBorder(export_border -> isChecked());
-		diagram -> setDrawTerminals(draw_terminals -> isChecked());
-		diagram -> setDisplayGrid(draw_grid -> isChecked());
-		diagram -> border_and_inset.displayBorder(draw_border -> isChecked());
-		diagram -> border_and_inset.displayInset(draw_inset -> isChecked());
+		ExportProperties export_properties = epw -> exportProperties();
+		
+		diagram -> setUseBorder                  (export_properties.exported_area == QET::BorderArea);
+		diagram -> setDrawTerminals              (export_properties.draw_terminals);
+		diagram -> setDisplayGrid                (export_properties.draw_grid);
+		diagram -> border_and_inset.displayBorder(export_properties.draw_border);
+		diagram -> border_and_inset.displayInset (export_properties.draw_inset);
 	} else {
 		// restaure les parametres relatifs au schema
 		diagram -> border_and_inset.displayBorder(state_drawBorder);
@@ -480,7 +388,7 @@ void ExportDialog::slot_export() {
 			this,
 			tr("Noms des fichiers cibles", "message box title"),
 			tr(
-				"Vous devez entrer un nom de fichier distinct pour chaque "
+				"Vous devez entrer un nom de fichier non vide et unique pour chaque "
 				"sch\351ma \340 exporter.",
 				"message box content"
 			)
@@ -489,8 +397,9 @@ void ExportDialog::slot_export() {
 	}
 	
 	// verification #2 : un chemin vers un dossier doit avoir ete specifie
-	QDir target_dir_path(dirpath -> text());
-	if (dirpath -> text().isEmpty() || !target_dir_path.exists()) {
+	
+	QDir target_dir_path(epw -> exportProperties().destination_directory);
+	if (!target_dir_path.exists()) {
 		QMessageBox::warning(
 			this,
 			tr("Dossier non sp\351cifi\351", "message box title"),
@@ -515,15 +424,17 @@ void ExportDialog::slot_export() {
 	de l'exporter
 */
 void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
+	ExportProperties export_properties(epw -> exportProperties());
+	
 	// recupere le format a utiliser (acronyme et extension)
-	QString format_acronym = format -> itemData(format -> currentIndex()).toString();
+	QString format_acronym = export_properties.format;
 	QString format_extension = "." + format_acronym.toLower();
 	
 	// determine le nom de fichier a utiliser
 	QString diagram_path = diagram_line -> file_name -> text();
 	
 	// determine le chemin du fichier du fichier
-	QDir target_dir_path(dirpath -> text());
+	QDir target_dir_path(export_properties.destination_directory);
 	diagram_path = target_dir_path.absoluteFilePath(diagram_path);
 	
 	// recupere des informations sur le fichier specifie
@@ -572,7 +483,7 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 
 /**
 	Slot appele lorsque l'utilisateur change la zone du schema qui doit etre
-	exportee. Il faut alors ajuster les dimensons des schemas.
+	exportee. Il faut alors ajuster les dimensions des schemas.
 */
 void ExportDialog::slot_changeUseBorder() {
 	// parcourt les schemas a exporter
@@ -587,8 +498,10 @@ void ExportDialog::slot_changeUseBorder() {
 }
 
 /**
-	Ce slot active ou desactive le bouton "Exporter" en fonction du nombre de
-	schemas coches.
+	Ce slot est appele quand un schema a ete coche ou decoche.
+	Il active ou desactive le bouton "Exporter" en fonction du nombre de
+	schemas coches, et il garde au plus un schema coche si on exporte vers
+	le presse-papier.
 */
 void ExportDialog::slot_checkDiagramsCount() {
 	QPushButton *export_button = buttons -> button(QDialogButtonBox::Save);
@@ -602,7 +515,7 @@ void ExportDialog::slot_checkDiagramsCount() {
 */
 void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 	// recupere le format a utiliser (acronyme et extension)
-	QString format_acronym = format -> itemData(format -> currentIndex()).toString();
+	QString format_acronym = epw -> exportProperties().format;
 	QString format_extension = "." + format_acronym.toLower();
 	
 	// parcourt les schemas a exporter
