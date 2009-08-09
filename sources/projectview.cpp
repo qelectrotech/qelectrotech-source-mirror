@@ -529,7 +529,7 @@ void ProjectView::exportProject() {
 	
 	ExportDialog ed(project_, parentWidget());
 #ifdef Q_WS_MAC
-	ed.setWindowsFlag(Qt::Sheet);
+	ed.setWindowFlags(Qt::Sheet);
 #endif
 	ed.exec();
 }

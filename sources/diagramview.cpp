@@ -635,7 +635,10 @@ void DiagramView::editElement(Element *element) {
 	QPushButton *edit_element = new QPushButton(tr("Editer l'\351l\351ment"));
 	
 	// dialogue en lui-meme
-	QMessageBox edit_element_dialog;
+	QMessageBox edit_element_dialog(diagramEditor());
+#ifdef Q_WS_MAC
+	edit_element_dialog.setWindowFlags(Qt::Sheet);
+#endif
 	edit_element_dialog.setIcon(QMessageBox::Information);
 	edit_element_dialog.setWindowTitle(description_title);
 	edit_element_dialog.setText(description_title);
@@ -687,6 +690,9 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	
 	// l'insere dans un dialogue
 	QDialog conductor_dialog(diagramEditor());
+#ifdef Q_WS_MAC
+	conductor_dialog.setWindowFlags(Qt::Sheet);
+#endif
 	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s d'un conducteur", "window title"));
 	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
 	dialog_layout -> addWidget(cpw);

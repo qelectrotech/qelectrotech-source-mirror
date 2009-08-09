@@ -39,6 +39,9 @@ ElementDialog::ElementDialog(uint mode, QObject *parent) :
 {
 	dialog_  = new QDialog();
 	dialog_ -> setWindowModality(Qt::WindowModal);
+#ifdef Q_WS_MAC
+	dialog_ -> setWindowFlags(Qt::Sheet);
+#endif
 	buttons_ = new QDialogButtonBox();
 	
 	// types selectionnables dans la liste

@@ -94,7 +94,7 @@ void DiagramPrintDialog::exec() {
 		// affichage du dialogue d'impression standard pour parametrer l'imprimante
 		QPrintDialog print_dialog(printer_, parentWidget());
 #ifdef Q_WS_MAC
-		print_dialog -> setWindowFlags(Qt::Sheet);
+		print_dialog.setWindowFlags(Qt::Sheet);
 #endif
 		print_dialog.setWindowTitle(tr("Options d'impression", "window title"));
 		print_dialog.setEnabledOptions(QAbstractPrintDialog::PrintShowPageSize);
