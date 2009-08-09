@@ -22,6 +22,7 @@
 #include "qet.h"
 #include "qetapp.h"
 #include "qfilenameedit.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur fournissant un dialogue d'edition de categorie.
@@ -41,7 +42,7 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &category_
 	if (category_item) category_item = category_item -> toCategory();
 	
 	if (!category_item || !category_item -> isCategory()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("Cat\351gorie inexistante", "message box title"),
 			tr("La cat\351gorie demand\351e n'existe pas. Abandon.", "message box content")
@@ -71,7 +72,7 @@ ElementsCategoryEditor::ElementsCategoryEditor(const ElementsLocation &category_
 	
 	// gestion de la lecture seule
 	if (!category -> isWritable()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("\311dition en lecture seule", "message box title"),
 			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cette cat\351gorie. Elle sera donc ouverte en lecture seule.", "message box content")
@@ -123,7 +124,7 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// exige un nom de dossier de la part de l'utilisateur
 	if (!internal_name_ -> isValid()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Nom interne manquant", "message box title"),
 			tr("Vous devez sp\351cifier un nom interne.", "message box content")
@@ -134,7 +135,7 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// verifie que le nom interne n'est pas deja pris
 	if (category -> category(dirname)) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Nom interne d\351j\340 utilis\351", "message box title"),
 			tr(
@@ -149,7 +150,7 @@ void ElementsCategoryEditor::acceptCreation() {
 	// cree la nouvelle categorie
 	ElementsCategory *new_category = category -> createCategory(dirname);
 	if (!new_category) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Impossible de cr\351er la cat\351gorie", "message box content")
@@ -165,7 +166,7 @@ void ElementsCategoryEditor::acceptCreation() {
 	
 	// ecriture de la 
 	if (!new_category -> write()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Impossible d'enregistrer la cat\351gorie", "message box content")

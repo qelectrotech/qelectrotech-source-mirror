@@ -17,6 +17,7 @@
 */
 #include "elementscategorydeleter.h"
 #include "qetapp.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -53,7 +54,7 @@ bool ElementsCategoryDeleter::exec() {
 	
 	// gere le cas ou la suppression d'une collection est demandee
 	if (category -> isCollection()) {
-		QMessageBox::StandardButton answer_0 = QMessageBox::question(
+		QMessageBox::StandardButton answer_0 = QET::MessageBox::question(
 			this,
 			tr("Vider la collection ?", "message box title"),
 			tr("\312tes-vous s\373r de vouloir vider cette collection ?", "message box content"),
@@ -70,7 +71,7 @@ bool ElementsCategoryDeleter::exec() {
 	
 	// avertissement pour la suppression d'une collection
 	// confirmation #1
-	QMessageBox::StandardButton answer_1 = QMessageBox::question(
+	QMessageBox::StandardButton answer_1 = QET::MessageBox::question(
 		this,
 		tr("Supprimer la cat\351gorie ?", "message box title"),
 		tr(
@@ -84,7 +85,7 @@ bool ElementsCategoryDeleter::exec() {
 	if (answer_1 != QMessageBox::Yes) return(false);
 	
 	// confirmation #2
-	QMessageBox::StandardButton answer_2 = QMessageBox::question(
+	QMessageBox::StandardButton answer_2 = QET::MessageBox::question(
 		this,
 		tr("Supprimer la cat\351gorie ?", "message box title"),
 		tr(
@@ -98,7 +99,7 @@ bool ElementsCategoryDeleter::exec() {
 	
 	// supprime la categorie
 	if (!category -> remove()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("Suppression de la cat\351gorie", "message box title"),
 			tr("La suppression de la cat\351gorie a \351chou\351.", "message box content")

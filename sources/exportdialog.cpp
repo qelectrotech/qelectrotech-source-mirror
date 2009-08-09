@@ -19,6 +19,7 @@
 #include <QSvgGenerator>
 #include <QtXml>
 #include "qeticons.h"
+#include "qetmessagebox.h"
 #include "exportpropertieswidget.h"
 #include "qetdiagrameditor.h"
 
@@ -390,7 +391,7 @@ void ExportDialog::slot_export() {
 		}
 	}
 	if (filenames.count() != diagrams_to_export.count()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("Noms des fichiers cibles", "message box title"),
 			tr(
@@ -406,7 +407,7 @@ void ExportDialog::slot_export() {
 	
 	QDir target_dir_path(epw -> exportProperties().destination_directory);
 	if (!target_dir_path.exists()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("Dossier non sp\351cifi\351", "message box title"),
 			tr("Vous devez sp\351cifier le chemin du dossier dans lequel seront enregistr\351s les fichiers images.", "message box content"),
@@ -448,7 +449,7 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 	
 	// verifie qu'il est possible d'ecrire dans le fichier en question
 	if (file_infos.exists() && !file_infos.isWritable()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Impossible d'\351crire dans ce fichier", "message box title"),
 			QString(

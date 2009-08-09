@@ -24,6 +24,7 @@
 #include "qetdiagrameditor.h"
 #include "integrationmoveelementshandler.h"
 #include "basicmoveelementshandler.h"
+#include "qetmessagebox.h"
 
 QString QETProject::integration_category_name = "import";
 
@@ -696,7 +697,7 @@ void QETProject::readProjectXml() {
 			bool conv_ok;
 			qreal diagram_version = root_elmt.attribute("version").toDouble(&conv_ok);
 			if (conv_ok && QET::version.toDouble() < diagram_version) {
-				QMessageBox::warning(
+				QET::MessageBox::warning(
 					0,
 					tr("Avertissement", "message box title"),
 					tr(

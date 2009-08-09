@@ -20,6 +20,7 @@
 #include <math.h>
 #include "diagramschooser.h"
 #include "qeticons.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -249,7 +250,7 @@ void DiagramPrintDialog::acceptPrintTypeDialog() {
 	if (file_print) {
 		// un fichier doit avoir ete entre
 		if (filepath_field_ -> text().isEmpty()) {
-			QMessageBox::information(
+			QET::MessageBox::information(
 				parentWidget(),
 				tr("Fichier manquant", "message box title"),
 				tr("Vous devez indiquer le chemin du fichier PDF/PS \340 cr\351er.", "message box content")

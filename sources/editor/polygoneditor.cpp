@@ -19,6 +19,7 @@
 #include "partpolygon.h"
 #include "elementscene.h"
 #include "editorcommands.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -67,7 +68,7 @@ void PolygonEditor::updatePolygon() {
 void PolygonEditor::updatePolygonPoints() {
 	QVector<QPointF> points = getPointsFromTree();
 	if (points.count() < 2) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Le polygone doit comporter au moins deux points.", "message box content")

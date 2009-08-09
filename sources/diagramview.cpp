@@ -30,6 +30,7 @@
 #include "integrationmoveelementshandler.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -581,7 +582,7 @@ void DiagramView::editSelectionProperties() {
 	}
 	
 	// sinon on affiche un simple listing des elements selectionnes
-	QMessageBox::information(
+	QET::MessageBox::information(
 		this,
 		tr("Propri\351t\351s de la s\351lection"),
 		QString(

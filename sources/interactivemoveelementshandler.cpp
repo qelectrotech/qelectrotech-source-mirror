@@ -20,6 +20,7 @@
 #include "elementscategory.h"
 #include "elementdefinition.h"
 #include "qfilenameedit.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -356,7 +357,7 @@ QWidget *InteractiveMoveElementsHandler::conflictDialogMainWidget() const {
 	@return L'action choisie par l'utilisateur
 */
 QET::Action InteractiveMoveElementsHandler::retryErrorMessage(const QString &message) const {
-	int todo = QMessageBox::critical(
+	int todo = QET::MessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
 		message,
@@ -378,7 +379,7 @@ QET::Action InteractiveMoveElementsHandler::retryErrorMessage(const QString &mes
 	@param message Message d'erreur a afficher
 */
 void InteractiveMoveElementsHandler::simpleErrorMessage(const QString &message) const {
-	QMessageBox::critical(
+	QET::MessageBox::critical(
 		parent_widget_,
 		tr("Erreur", "message box title"),
 		message,

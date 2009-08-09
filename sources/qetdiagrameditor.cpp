@@ -26,6 +26,7 @@
 #include "recentfiles.h"
 #include "qeticons.h"
 #include "qetelementeditor.h"
+#include "qetmessagebox.h"
 
 /**
 	constructeur
@@ -758,7 +759,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 	// verifie que le fichier est accessible en lecture
 	if (!filepath_info.isReadable()) {
 		if (interactive) {
-			QMessageBox::critical(
+			QET::MessageBox::critical(
 				this,
 				tr("Impossible d'ouvrir le fichier"),
 				tr("Il semblerait que le fichier que vous essayez d'ouvrir ne "
@@ -772,7 +773,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 	// gere le fait que le fichier puisse etre en lecture seule
 	if (!filepath_info.isWritable()) {
 		if (interactive) {
-			QMessageBox::warning(
+			QET::MessageBox::warning(
 				this,
 				tr("Ouverture du projet en lecture seule"),
 				tr("Il semblerait que le projet que vous essayez d'ouvrir ne "
@@ -786,7 +787,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok) {
 		if (interactive) {
-			QMessageBox::warning(
+			QET::MessageBox::warning(
 				this,
 				tr("\311chec de l'ouverture du projet", "message box title"),
 				QString(

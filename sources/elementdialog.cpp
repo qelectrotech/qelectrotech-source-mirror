@@ -21,6 +21,7 @@
 #include "elementscategorieslist.h"
 #include "elementscollectionitem.h"
 #include "qfilenameedit.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur par defaut.
@@ -228,7 +229,7 @@ void ElementDialog::checkDialog() {
 		// on verifie d'abord que l'utilisateur a choisi quelque chose
 		ElementsLocation location = list_ -> selectedLocation();
 		if (location.isNull()) {
-			QMessageBox::critical(
+			QET::MessageBox::critical(
 				dialog_,
 				tr("Pas de s\351lection", "message box title"),
 				tr("Vous devez s\351lectionner un \351l\351ment.", "message box content")
@@ -239,7 +240,7 @@ void ElementDialog::checkDialog() {
 		// on verifie donc que la selection existe
 		ElementsCollectionItem *item = QETApp::collectionItem(location);
 		if (!item) {
-			QMessageBox::critical(
+			QET::MessageBox::critical(
 				dialog_,
 				tr("S\351lection inexistante", "message box title"),
 				tr("La s\351lection n'existe pas.", "message box content")
@@ -249,7 +250,7 @@ void ElementDialog::checkDialog() {
 		
 		// puis on verifie qu'il s'agit bien d'un element
 		if (!item -> isElement()) {
-			QMessageBox::critical(
+			QET::MessageBox::critical(
 				dialog_,
 				tr("S\351lection incorrecte", "message box title"),
 				tr("La s\351lection n'est pas un \351l\351ment.", "message box content")
@@ -266,7 +267,7 @@ void ElementDialog::checkDialog() {
 		*/
 		ElementsLocation location = list_ -> selectedLocation();
 		if (location.isNull()) {
-			QMessageBox::critical(
+			QET::MessageBox::critical(
 				dialog_,
 				tr("Pas de s\351lection", "message box title"),
 				tr("Vous devez s\351lectionner une cat\351gorie ou un \351l\351ment.", "message box content")
@@ -277,7 +278,7 @@ void ElementDialog::checkDialog() {
 		// on verifie donc que la selection existe
 		ElementsCollectionItem *item = QETApp::collectionItem(location);
 		if (!item) {
-			QMessageBox::critical(
+			QET::MessageBox::critical(
 				dialog_,
 				tr("S\351lection inexistante", "message box title"),
 				tr("La s\351lection n'existe pas.", "message box content")
@@ -290,7 +291,7 @@ void ElementDialog::checkDialog() {
 			QString element_name(textfield_ -> text());
 			// si on a une categorie (ou une collection), il nous faut un nom d'element
 			if (element_name.isEmpty()) {
-				QMessageBox::critical(
+				QET::MessageBox::critical(
 					dialog_,
 					tr("Nom manquant", "message box title"),
 					tr("Vous devez entrer un nom pour l'\351l\351ment", "message box content")
@@ -300,7 +301,7 @@ void ElementDialog::checkDialog() {
 			
 			// ce nom d'element doit etre valide
 			if (QET::containsForbiddenCharacters(element_name)) {
-				QMessageBox::critical(
+				QET::MessageBox::critical(
 					dialog_,
 					tr("Nom invalide", "message box title"),
 					QString(
@@ -328,7 +329,7 @@ void ElementDialog::checkDialog() {
 		
 		// si l'element existe, on demande confirmation pour son ecrasement
 		if (element_already_exists) {
-			QMessageBox::StandardButton answer = QMessageBox::question(
+			QMessageBox::StandardButton answer = QET::MessageBox::question(
 				dialog_,
 				tr("\311craser l'\351l\351ment ?", "message box title"),
 				tr("L'\351l\351ment existe d\351j\340. Voulez-vous l'\351craser ?", "message box content"),

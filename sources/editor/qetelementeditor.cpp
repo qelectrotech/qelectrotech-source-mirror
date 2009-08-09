@@ -26,6 +26,7 @@
 #include "elementdialog.h"
 #include "recentfiles.h"
 #include "qeticons.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -563,7 +564,7 @@ void QETElementEditor::slot_updateInformations() {
 	une boite de dialogue.
 */
 void QETElementEditor::xmlPreview() {
-	QMessageBox::information(
+	QET::MessageBox::information(
 		this,
 		"Export XML",
 		ce_scene -> toXml().toString(4)
@@ -629,6 +630,8 @@ bool QETElementEditor::checkElement() {
 	warning_message += "</ol>";
 	
 	QMessageBox warnings_message_box(this);
+	warnings_message_box.setWindowModality(Qt::WindowModal);
+	warnings_message_box.setWindowFlags(warnings_message_box.windowFlags() | Qt::Sheet);
 	warnings_message_box.setTextFormat(Qt::RichText);
 	warnings_message_box.setWindowTitle(tr("Avertissements", "messagebox title"));
 	warnings_message_box.setText(warning_message);
@@ -671,7 +674,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	}
 	
 	if (!state) {
-		QMessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
+		QET::MessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
 		return;
 	}
 	
@@ -681,7 +684,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	
 	// gestion de la lecture seule
 	if (!infos_file.isWritable()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("\311dition en lecture seule", "message box title"),
 			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
@@ -703,7 +706,7 @@ void QETElementEditor::fromFile(const QString &filepath) {
 bool QETElementEditor::toFile(const QString &fn) {
 	QFile file(fn);
 	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		QMessageBox::warning(this, tr("Erreur", "message box title"), tr("Impossible d'\351crire dans ce fichier", "message box content"));
+		QET::MessageBox::warning(this, tr("Erreur", "message box title"), tr("Impossible d'\351crire dans ce fichier", "message box content"));
 		return(false);
 	}
 	QTextStream out(&file);
@@ -730,7 +733,7 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 	}
 	
 	if (!element) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Impossible d'atteindre l'\351l\351ment", "message box content")
@@ -741,7 +744,7 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 	// enregistre l'element
 	element -> setXml(ce_scene -> toXml().documentElement());
 	if (!element -> write()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Impossible d'enregistrer l'\351l\351ment", "message box content")
@@ -858,7 +861,7 @@ void QETElementEditor::slot_reload() {
 	// s'il ya des modifications, on demande a l'utilisateur s'il est certain
 	// de vouloir recharger
 	if (!ce_scene -> undoStack().isClean()) {
-		QMessageBox::StandardButton answer = QMessageBox::question(
+		QMessageBox::StandardButton answer = QET::MessageBox::question(
 			this,
 			tr("Recharger l'\351l\351ment", "dialog title"),
 			tr("Vous avez efffectu\351 des modifications sur cet \351l\351ment. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l'\351l\351ment ?", "dialog content"),
@@ -968,7 +971,7 @@ bool QETElementEditor::slot_saveAsFile() {
 bool QETElementEditor::canClose() {
 	if (ce_scene -> undoStack().isClean()) return(true);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
-	QMessageBox::StandardButton answer = QMessageBox::question(
+	QMessageBox::StandardButton answer = QET::MessageBox::question(
 		this,
 		tr("Enregistrer l'\351l\351ment en cours ?", "dialog title"),
 		QString(
@@ -1143,7 +1146,7 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	ElementsCollectionItem *item = QETApp::collectionItem(location);
 	ElementDefinition *element = 0;
 	if (!item) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("\311l\351ment inexistant.", "message box title"),
 			tr("L'\351l\351ment n'existe pas.", "message box content")
@@ -1152,7 +1155,7 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	}
 	
 	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("\311l\351ment inexistant.", "message box title"),
 			tr("Le chemin virtuel choisi ne correspond pas \340 un \351l\351ment.", "message box content")
@@ -1171,7 +1174,7 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	
 	// gestion de la lecture seule
 	if (!element -> isWritable()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("\311dition en lecture seule", "message box title"),
 			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")

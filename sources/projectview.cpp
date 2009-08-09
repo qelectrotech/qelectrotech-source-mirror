@@ -29,6 +29,7 @@
 #include "insetpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "qeticons.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -186,7 +187,7 @@ bool ProjectView::tryClosing() {
 	// on regarde s'il reste du contenu dans le projet
 	if (project_ -> projectWasModified() && project_ -> filePath().isEmpty()) {
 		// si oui, on propose a l'utilisateur d'enregistrer le projet
-		QMessageBox::StandardButton answer = QMessageBox::question(
+		QMessageBox::StandardButton answer = QET::MessageBox::question(
 			this,
 			tr("Enregistrer le projet en cours ?", "message box title"),
 			QString(tr("Voulez-vous enregistrer le projet ?", "message box content")),
@@ -238,7 +239,7 @@ bool ProjectView::tryClosingDiagrams() {
 		if (!diagram_view -> diagram() -> undoStack().isClean()) {
 			// ce schema a ete modifie - on demande a l'utilisateur s'il veut l'enregistrer
 			showDiagram(diagram_view -> diagram());
-			QMessageBox::StandardButton answer = QMessageBox::question(
+			QMessageBox::StandardButton answer = QET::MessageBox::question(
 				this,
 				tr("Enregistrer le sch\351ma en cours ?", "message box title"),
 				QString(tr("Voulez-vous enregistrer le sch\351ma %1 ?", "message box content - %1 is a diagram title")).arg(diagram_view -> windowTitle()),
@@ -255,7 +256,7 @@ bool ProjectView::tryClosingDiagrams() {
 		} else if (!diagram_view -> diagram() -> wasWritten()) {
 			// ce schema a ete ajoute mais pas modifie - on demande a l'utilisateur s'il veut le conserver
 			showDiagram(diagram_view -> diagram());
-			QMessageBox::StandardButton answer = QMessageBox::question(
+			QMessageBox::StandardButton answer = QET::MessageBox::question(
 				this,
 				tr("Enregistrer le nouveau sch\351ma ?", "message box title"),
 				tr("Ce sch\351ma a \351t\351 ajout\351 mais n'a \351t\351 ni modifi\351 ni enregistr\351. Voulez-vous le conserver ?", "message box content"),
@@ -326,7 +327,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 		diagram_view -> diagram() -> wasWritten() ||\
 		!diagram_view -> diagram() -> undoStack().isClean()
 	) {
-		int answer = QMessageBox::question(
+		int answer = QET::MessageBox::question(
 			this,
 			tr("Supprimer le sch\351ma ?", "message box title"),
 			tr("\312tes-vous s\373r de vouloir supprimer ce sch\351ma du projet ? Ce changement est irr\351versible.", "message box content"),
@@ -596,7 +597,7 @@ int ProjectView::cleanProject() {
 	
 	// s'assure que le schema n'est pas en lecture seule
 	if (project_ -> isReadOnly()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Projet en lecture seule", "message box title"),
 			tr("Ce projet est en lecture seule. Il n'est donc pas possible de le nettoyer.", "message box content")

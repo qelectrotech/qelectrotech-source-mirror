@@ -28,6 +28,7 @@
 #include "qetapp.h"
 #include "elementscollectionitem.h"
 #include "qfilenameedit.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -208,7 +209,7 @@ bool NewElementWizard::validStep1() {
 	}
 	
 	if (!step1_ok) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Vous devez s\351lectionner une cat\351gorie.", "message box content")
@@ -228,7 +229,7 @@ bool NewElementWizard::validStep2() {
 	
 	// un nom doit avoir ete entre
 	if (file_name.isEmpty()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Vous devez entrer un nom de fichier", "message box content")
@@ -240,7 +241,7 @@ bool NewElementWizard::validStep2() {
 	
 	// le nom de fichier contient peut etre des caracteres interdits
 	if (QET::containsForbiddenCharacters(file_name)) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Erreur", "message box title"),
 			tr("Merci de ne pas utiliser les caract\350res suivants : \\ / : * ? \" < > |", "message box content")
@@ -250,7 +251,7 @@ bool NewElementWizard::validStep2() {
 	
 	// le fichier existe peut etre deja
 	if (chosen_category -> element(file_name)) {
-		QMessageBox::StandardButton answer = QMessageBox::question(
+		QMessageBox::StandardButton answer = QET::MessageBox::question(
 			this,
 			"\311craser le fichier ?",
 			"Le fichier existe d\351j\340. Souhaitez-vous l'\351craser ?",

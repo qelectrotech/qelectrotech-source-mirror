@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "nameslistwidget.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -61,7 +62,7 @@ void NamesListWidget::addLine() {
 bool NamesListWidget::checkOneName() {
 	updateHash();
 	if (!hash_names.count()) {
-		QMessageBox::critical(
+		QET::MessageBox::critical(
 			this,
 			tr("Il doit y avoir au moins un nom.", "message box title"),
 			tr("Vous devez entrer au moins un nom.", "message box content")

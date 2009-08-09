@@ -17,6 +17,7 @@
 */
 #include "elementdeleter.h"
 #include "qetapp.h"
+#include "qetmessagebox.h"
 
 /**
 	Constructeur
@@ -50,7 +51,7 @@ bool ElementDeleter::exec() {
 	if (!element || !element -> isElement()) return(false);
 	
 	// confirmation #1
-	QMessageBox::StandardButton answer_1 = QMessageBox::question(
+	QMessageBox::StandardButton answer_1 = QET::MessageBox::question(
 		this,
 		tr("Supprimer l'\351l\351ment ?", "message box title"),
 		tr("\312tes-vous s\373r de vouloir supprimer cet \351l\351ment ?\n", "message box content"),
@@ -64,7 +65,7 @@ bool ElementDeleter::exec() {
 	
 	// supprime l'element
 	if (!element -> remove()) {
-		QMessageBox::warning(
+		QET::MessageBox::warning(
 			this,
 			tr("Suppression de l'\351l\351ment", "message box title"),
 			tr("La suppression de l'\351l\351ment a \351chou\351.", "message box content")
