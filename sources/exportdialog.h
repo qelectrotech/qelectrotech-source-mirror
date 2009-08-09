@@ -58,6 +58,7 @@ class ExportDialog : public QDialog {
 		QPushButton *keep_ratio;
 		QPushButton *reset_size;
 		QPushButton *preview;
+		QPushButton *clipboard;
 	};
 	
 	// attributs
@@ -73,6 +74,7 @@ class ExportDialog : public QDialog {
 	QSignalMapper *height_mapper_;
 	QSignalMapper *ratio_mapper_;
 	QSignalMapper *reset_mapper_;
+	QSignalMapper *clipboard_mapper_;
 	
 	// elements relatifs au traitement effectue par le dialogue
 	QETProject *project_;
@@ -81,7 +83,7 @@ class ExportDialog : public QDialog {
 	private:
 	QWidget *initDiagramsListPart();
 	void saveReloadDiagramParameters(Diagram *, bool = true);
-	void generateSvg(Diagram *, int, int, bool, QFile &);
+	void generateSvg(Diagram *, int, int, bool, QIODevice &);
 	QImage generateImage(Diagram *, int, int, bool);
 	void exportDiagram(ExportDiagramLine *);
 	qreal diagramRatio(Diagram *);
@@ -97,5 +99,6 @@ class ExportDialog : public QDialog {
 	void slot_checkDiagramsCount();
 	void slot_changeFilesExtension(bool = false);
 	void slot_previewDiagram(int);
+	void slot_exportToClipBoard(int);
 };
 #endif

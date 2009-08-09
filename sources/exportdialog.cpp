@@ -95,17 +95,19 @@ int ExportDialog::diagramsToExportCount() const {
 	@return Le widget representant la liste des schemas
 */
 QWidget *ExportDialog::initDiagramsListPart() {
-	preview_mapper_ = new QSignalMapper(this);
-	width_mapper_   = new QSignalMapper(this);
-	height_mapper_  = new QSignalMapper(this);
-	ratio_mapper_   = new QSignalMapper(this);
-	reset_mapper_   = new QSignalMapper(this);
+	preview_mapper_   = new QSignalMapper(this);
+	width_mapper_     = new QSignalMapper(this);
+	height_mapper_    = new QSignalMapper(this);
+	ratio_mapper_     = new QSignalMapper(this);
+	reset_mapper_     = new QSignalMapper(this);
+	clipboard_mapper_ = new QSignalMapper(this);
 	
-	connect(preview_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
-	connect(width_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
-	connect(height_mapper_,  SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
-	connect(ratio_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
-	connect(reset_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
+	connect(preview_mapper_,   SIGNAL(mapped(int)), this, SLOT(slot_previewDiagram(int)));
+	connect(width_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_correctHeight(int)));
+	connect(height_mapper_,    SIGNAL(mapped(int)), this, SLOT(slot_correctWidth(int)));
+	connect(ratio_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_keepRatioChanged(int)));
+	connect(reset_mapper_,     SIGNAL(mapped(int)), this, SLOT(slot_resetSize(int)));
+	connect(clipboard_mapper_, SIGNAL(mapped(int)), this, SLOT(slot_exportToClipBoard(int)));
 	
 	diagrams_list_layout_ = new QGridLayout();
 	
@@ -140,6 +142,10 @@ QWidget *ExportDialog::initDiagramsListPart() {
 		// mappings et signaux pour l'apercu du schema
 		preview_mapper_ -> setMapping(diagram_line -> preview, line_count);
 		connect(diagram_line -> preview, SIGNAL(clicked(bool)), preview_mapper_, SLOT(map()));
+		
+		// mappings et signaux pour l'export du schema vers le presse-papier
+		clipboard_mapper_ -> setMapping(diagram_line -> clipboard, line_count);
+		connect(diagram_line -> clipboard, SIGNAL(clicked(bool)), clipboard_mapper_, SLOT(map()));
 	}
 	
 	QWidget *widget_diagrams_list = new QWidget();
@@ -339,9 +345,9 @@ void ExportDialog::saveReloadDiagramParameters(Diagram *diagram, bool save) {
 	@param width  Largeur de l'export SVG
 	@param height Hauteur de l'export SVG
 	@param keep_aspect_ratio True pour conserver le ratio, false sinon
-	@param file Fichier dans lequel sera enregistre le code SVG
+	@param io_device Peripherique de sortie pour le code SVG (souvent : un fichier)
 */
-void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QFile &file) {
+void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool keep_aspect_ratio, QIODevice &io_device) {
 	saveReloadDiagramParameters(diagram, true);
 	
 	// genere une QPicture a partir du schema
@@ -356,7 +362,7 @@ void ExportDialog::generateSvg(Diagram *diagram, int width, int height, bool kee
 	// "joue" la QPicture sur un QSvgGenerator
 	QSvgGenerator svg_engine;
 	svg_engine.setSize(QSize(width, height));
-	svg_engine.setOutputDevice(&file);
+	svg_engine.setOutputDevice(&io_device);
 	QPainter svg_painter(&svg_engine);
 	picture.play(&svg_painter);
 	
@@ -433,7 +439,7 @@ void ExportDialog::exportDiagram(ExportDiagramLine *diagram_line) {
 	// determine le nom de fichier a utiliser
 	QString diagram_path = diagram_line -> file_name -> text();
 	
-	// determine le chemin du fichier du fichier
+	// determine le chemin du fichier
 	QDir target_dir_path(export_properties.destination_directory);
 	diagram_path = target_dir_path.absoluteFilePath(diagram_path);
 	
@@ -543,8 +549,8 @@ void ExportDialog::slot_changeFilesExtension(bool force_extension) {
 }
 
 /**
-	Cette methode fait apparaitre un dialogue permettant de redimensionner et
-	previsualiser un des schemas a exporter
+	Cette methode fait apparaitre un dialogue permettant de previsualiser un
+	des schemas a exporter
 	@param diagram_id numero du schema a previsualiser
 */
 void ExportDialog::slot_previewDiagram(int diagram_id) {
@@ -590,6 +596,45 @@ void ExportDialog::slot_previewDiagram(int diagram_id) {
 	
 	// montre l'apercu
 	preview_dialog.exec();
+}
+
+/**
+	Cette methode exporte un schema vers le presse-papier
+	@param diagram_id numero du schema a previsualiser
+*/
+void ExportDialog::slot_exportToClipBoard(int diagram_id) {
+	// recupere l'ExportDiagramLine concernee
+	ExportDialog::ExportDiagramLine *diagram_line = diagram_lines_[diagram_id];
+	if (!diagram_line) return;
+	
+	// recupere le format a utiliser (acronyme et extension)
+	QString format_acronym = epw -> exportProperties().format;
+	
+	QClipboard *clipboard = QApplication::clipboard();
+	
+	// enregistre l'image dans le fichier
+	if (format_acronym == "SVG") {
+		QByteArray ba;
+		QBuffer buffer(&ba);
+		buffer.open(QIODevice::WriteOnly);
+		generateSvg(
+			diagram_line -> diagram,
+			diagram_line -> width  -> value(),
+			diagram_line -> height -> value(),
+			diagram_line -> keep_ratio -> isChecked(),
+			buffer
+		);
+		buffer.close();
+		clipboard -> setText(ba);
+	} else {
+		QImage image = generateImage(
+			diagram_line -> diagram,
+			diagram_line -> width  -> value(),
+			diagram_line -> height -> value(),
+			diagram_line -> keep_ratio -> isChecked()
+		);
+		clipboard -> setImage(image);
+	}
 }
 
 /**
@@ -641,6 +686,10 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia) {
 	preview = new QPushButton();
 	preview -> setIcon(QET::Icons::ZoomOriginal);
 	preview -> setToolTip(QObject::tr("Aper\347u"));
+	
+	clipboard = new QPushButton();
+	clipboard -> setIcon(QET::Icons::CopyFile);
+	clipboard -> setToolTip(QObject::tr("Exporter vers le presse-papier"));
 }
 
 /**
@@ -661,5 +710,6 @@ QBoxLayout *ExportDialog::ExportDiagramLine::sizeLayout() {
 	layout -> addWidget(keep_ratio);
 	layout -> addWidget(reset_size);
 	layout -> addWidget(preview);
+	layout -> addWidget(clipboard);
 	return(layout);
 }
