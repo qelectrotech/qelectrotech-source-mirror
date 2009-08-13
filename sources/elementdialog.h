@@ -42,7 +42,7 @@ class ElementDialog : public QObject {
 	
 	// constructeurs, destructeur
 	public:
-	ElementDialog(uint = ElementDialog::OpenElement, QObject * = 0);
+	ElementDialog(uint = ElementDialog::OpenElement, QWidget * = 0, QObject * = 0);
 	virtual ~ElementDialog();
 	private:
 	ElementDialog(const ElementDialog &);
@@ -51,13 +51,13 @@ class ElementDialog : public QObject {
 	public:
 	int exec();
 	ElementsLocation location() const;
-	static ElementsLocation getExistingCategoryLocation();
-	static ElementsLocation getNewCategoryLocation();
-	static ElementsLocation getOpenElementLocation();
-	static ElementsLocation getSaveElementLocation();
+	static ElementsLocation getExistingCategoryLocation(QWidget * = 0);
+	static ElementsLocation getNewCategoryLocation(QWidget * = 0);
+	static ElementsLocation getOpenElementLocation(QWidget * = 0);
+	static ElementsLocation getSaveElementLocation(QWidget * = 0);
 	
 	private:
-	static ElementsLocation execConfiguredDialog(int);
+	static ElementsLocation execConfiguredDialog(int, QWidget * = 0);
 	
 	private slots:
 	void locationChanged(const ElementsLocation &);

@@ -803,7 +803,7 @@ void QETElementEditor::slot_new() {
 */
 void QETElementEditor::slot_open() {
 	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
-	ElementsLocation location = ElementDialog::getOpenElementLocation();
+	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
 	if (location.isNull()) return;
 	QETElementEditor *cee = new QETElementEditor();
 	cee -> fromLocation(location);
@@ -918,7 +918,7 @@ bool QETElementEditor::slot_save() {
 */
 bool QETElementEditor::slot_saveAs() {
 	// demande une localisation a l'utilisateur
-	ElementsLocation location = ElementDialog::getSaveElementLocation();
+	ElementsLocation location = ElementDialog::getSaveElementLocation(this);
 	if (location.isNull()) return(false);
 	
 	// tente l'enregistrement

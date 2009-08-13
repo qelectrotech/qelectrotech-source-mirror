@@ -28,16 +28,18 @@
 	Construit un dialogue permettant d'ouvrir un element
 	@param mode Mode du dialogue
 	@see ElementDialog::Mode
+	@param parentWidget QWidget parent
 	@param parent QObject parent
+	
 */
-ElementDialog::ElementDialog(uint mode, QObject *parent) :
+ElementDialog::ElementDialog(uint mode, QWidget *parentWidget, QObject *parent) :
 	QObject(parent),
 	mode_(mode),
 	buttons_(0),
 	list_(0),
 	textfield_(0)
 {
-	dialog_  = new QDialog();
+	dialog_  = new QDialog(parentWidget);
 	dialog_ -> setWindowModality(Qt::WindowModal);
 #ifdef Q_WS_MAC
 	dialog_ -> setWindowFlags(Qt::Sheet);
@@ -95,48 +97,54 @@ ElementDialog::ElementDialog(uint mode, QObject *parent) :
 	Destructeur
 */
 ElementDialog::~ElementDialog() {
+	dialog_ -> setParent(0);
 	delete dialog_;
 }
 
 /**
 	Affiche un dialogue permettant a l'utilisateur de selectionner une categorie existant deja
+	@param parentWidget QWidget parent
 	@return le chemin virtuel de cette categorie
 */
-ElementsLocation ElementDialog::getExistingCategoryLocation() {
-	return(ElementDialog::execConfiguredDialog(ElementDialog::OpenCategory));
+ElementsLocation ElementDialog::getExistingCategoryLocation(QWidget *parentWidget) {
+	return(ElementDialog::execConfiguredDialog(ElementDialog::OpenCategory, parentWidget));
 }
 
 /**
 	Affiche un dialogue permettant a l'utilisateur de selectionner une nouvelle categorie
+	@param parentWidget QWidget parent
 	@return le chemin virtuel de cette categorie
 */
-ElementsLocation ElementDialog::getNewCategoryLocation() {
-	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveCategory));
+ElementsLocation ElementDialog::getNewCategoryLocation(QWidget *parentWidget) {
+	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveCategory, parentWidget));
 }
 
 /**
 	Affiche un dialogue permettant a l'utilisateur de selectionner un element a ouvrir
+	@param parentWidget QWidget parent
 	@return le chemin virtuel de cet element
 */
-ElementsLocation ElementDialog::getOpenElementLocation() {
-	return(ElementDialog::execConfiguredDialog(ElementDialog::OpenElement));
+ElementsLocation ElementDialog::getOpenElementLocation(QWidget *parentWidget) {
+	return(ElementDialog::execConfiguredDialog(ElementDialog::OpenElement, parentWidget));
 }
 
 /**
 	Affiche un dialogue permettant a l'utilisateur de selectionner un element (existant ou non)
 	qu'il souhaite enregistrer
+	@param parentWidget QWidget parent
 	@return le chemin virtuel de cet element
 */
-ElementsLocation ElementDialog::getSaveElementLocation() {
-	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveElement));
+ElementsLocation ElementDialog::getSaveElementLocation(QWidget *parentWidget) {
+	return(ElementDialog::execConfiguredDialog(ElementDialog::SaveElement, parentWidget));
 }
 
 /**
 	Lance un dialogue selon la configuration mode
 	@param mode Mode du dialogue
+	@param parentWidget QWidget parent
 */
-ElementsLocation ElementDialog::execConfiguredDialog(int mode) {
-	ElementDialog element_dialog(mode);
+ElementsLocation ElementDialog::execConfiguredDialog(int mode, QWidget *parentWidget) {
+	ElementDialog element_dialog(mode, parentWidget);
 	element_dialog.exec();
 	return(element_dialog.location());
 }
