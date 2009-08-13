@@ -49,7 +49,7 @@ QETTabWidget::~QETTabWidget() {
 */
 void QETTabWidget::setMovable(bool movable) {
 #if QT_VERSION < 0x040500
-	tab_bar_ -> setTabsMovable(movable);
+	tab_bar_ -> setMovable(movable);
 #else
 	QTabWidget::setMovable(movable);
 #endif
@@ -60,7 +60,7 @@ void QETTabWidget::setMovable(bool movable) {
 */
 bool QETTabWidget::isMovable() const {
 #if QT_VERSION < 0x040500
-	return(tab_bar_ -> tabsMovable());
+	return(tab_bar_ -> isMovable());
 #else
 	return(QTabWidget::isMovable());
 #endif
