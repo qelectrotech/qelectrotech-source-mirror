@@ -252,7 +252,12 @@ void QETDiagramEditor::actions() {
 	select_all        -> setShortcut(QKeySequence::SelectAll);
 	select_nothing    -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
+#ifndef Q_WS_MAC
 	delete_selection  -> setShortcut(QKeySequence(tr("Suppr")));
+#else
+	delete_selection  -> setShortcut(QKeySequence(tr("Backspace")));
+#endif
+	
 	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	selection_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));

@@ -149,7 +149,11 @@ void QETElementEditor::setupActions() {
 	copy              -> setShortcut(QKeySequence::Copy);
 	paste             -> setShortcut(QKeySequence::Paste);
 	paste_in_area     -> setShortcut(tr("Ctrl+Shift+V"));
+#ifndef Q_WS_MAC
 	edit_delete       -> setShortcut(QKeySequence(tr("Suppr")));
+#else
+	edit_delete       -> setShortcut(QKeySequence(tr("Backspace")));
+#endif
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
