@@ -632,7 +632,7 @@ void DiagramView::editElement(Element *element) {
 	// titre et boutons du dialogue
 	QString description_title = tr("Propri\351t\351s de l'\351l\351ment s\351lectionn\351");
 	QPushButton *find_in_panel = new QPushButton(tr("Retrouver dans le panel"));
-	QPushButton *edit_element = new QPushButton(tr("Editer l'\351l\351ment"));
+	QPushButton *edit_element = new QPushButton(tr("\311diter l'\351l\351ment"));
 	
 	// dialogue en lui-meme
 	QMessageBox edit_element_dialog(diagramEditor());
