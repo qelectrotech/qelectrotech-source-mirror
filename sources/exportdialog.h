@@ -45,7 +45,7 @@ class ExportDialog : public QDialog {
 	private:
 	class ExportDiagramLine {
 		public:
-		ExportDiagramLine(Diagram *);
+		ExportDiagramLine(Diagram *, QSize);
 		virtual ~ExportDiagramLine();
 		QBoxLayout *sizeLayout();
 		Diagram *diagram;
