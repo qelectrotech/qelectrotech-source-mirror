@@ -120,7 +120,7 @@ QWidget *ExportDialog::initDiagramsListPart() {
 	// remplit la liste
 	foreach (Diagram *diagram, project_ -> diagrams()) {
 		++ line_count;
-		ExportDiagramLine *diagram_line = new ExportDiagramLine(diagram);
+		ExportDiagramLine *diagram_line = new ExportDiagramLine(diagram, diagramSize(diagram));
 		diagram_lines_.insert(line_count, diagram_line);
 		diagrams_list_layout_ -> addWidget(diagram_line -> must_export,    line_count, 0);
 		diagrams_list_layout_ -> addWidget(diagram_line -> title_label,    line_count, 1);
@@ -640,9 +640,10 @@ void ExportDialog::slot_exportToClipBoard(int diagram_id) {
 
 /**
 	Constructeur
-	@param dia Schema concerne
+	@param dia Schema concerne, 
+	@param diagram_size taille du schema tenant compte des parametres d'export
 */
-ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia) {
+ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia, QSize diagram_size) {
 	diagram = dia;
 	must_export = new QCheckBox();
 	must_export -> setChecked(true);
@@ -659,8 +660,6 @@ ExportDialog::ExportDiagramLine::ExportDiagramLine(Diagram *dia) {
 	file_name = new QLineEdit();
 	file_name -> setText(diagram_filename);
 	file_name -> setMinimumWidth(180);
-	
-	QSize diagram_size = diagram -> imageSize();
 	
 	width = new QSpinBox();
 	width -> setRange(1, 10000);
