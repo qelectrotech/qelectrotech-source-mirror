@@ -240,3 +240,44 @@ QRectF PartText::boundingRect() const {
 bool PartText::isUseless() const {
 	return(toPlainText().isEmpty());
 }
+
+/**
+	Dessine le texte statique.
+	@param painter QPainter a utiliser pour effectuer le rendu
+	@param qsogi   Pptions de dessin
+	@param widget  Widget sur lequel on dessine (facultatif)
+*/
+void PartText::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, QWidget *widget) {
+	QGraphicsTextItem::paint(painter, qsogi, widget);
+	
+#ifdef QET_DEBUG_EDITOR_TEXTS
+	painter -> setPen(Qt::blue);
+	painter -> drawRect(boundingRect());
+	
+	painter -> setPen(Qt::red);
+	drawPoint(painter, QPointF(0, 0));
+	
+	painter -> setPen(Qt::green);
+	drawPoint(painter, mapFromScene(pos()));
+#endif
+}
+
+#ifdef QET_DEBUG_EDITOR_TEXTS
+/**
+	Dessine deux petites fleches pour mettre un point en valeur
+	@param painter QPainter a utiliser pour effectuer le rendu
+	@param point   Point a dessiner
+*/
+void PartText::drawPoint(QPainter *painter, const QPointF &point) {
+	qreal px = point.x();
+	qreal py = point.y();
+	qreal size_1 = 5.0;
+	qreal size_2 = 1.0;
+	painter -> drawLine(px, py, px + size_1, py);
+	painter -> drawLine(px + size_1 - size_2, py - size_2, px + size_1, py);
+	painter -> drawLine(px + size_1 - size_2, py + size_2, px + size_1, py);
+	painter -> drawLine(px, py, px, py + size_1);
+	painter -> drawLine(px, py + size_1, px - size_2, py + size_1 - size_2);
+	painter -> drawLine(px, py + size_1, px + size_2, py + size_1 - size_2);
+}
+#endif

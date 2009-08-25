@@ -54,6 +54,7 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
+	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
@@ -63,6 +64,9 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	
 	private:
 	QPointF margin() const;
+#ifdef QET_DEBUG_EDITOR_TEXTS
+	void drawPoint(QPainter *, const QPointF &);
+#endif
 	QString previous_text;
 };
 #endif
