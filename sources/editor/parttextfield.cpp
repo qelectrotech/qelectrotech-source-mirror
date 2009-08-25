@@ -71,8 +71,8 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 */
 const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("input");
-	xml_element.setAttribute("x", QString("%1").arg((scenePos() + margin()).x()));
-	xml_element.setAttribute("y", QString("%1").arg((scenePos() + margin()).y()));
+	xml_element.setAttribute("x", QString("%1").arg(pos().x()));
+	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
 	if (follow_parent_rotations) xml_element.setAttribute("rotate", "true");
@@ -87,8 +87,8 @@ QWidget *PartTextField::elementInformations() {
 }
 
 /**
-	Retourne la position du texte, l'origine etant le point en bas a gauche du
-	texte (et pas du cadre)
+	Retourne la position du texte, l'origine etant le milieu du bord gauche du
+	champ
 	@return la position du texte
 */
 QPointF PartTextField::pos() const {
@@ -132,13 +132,7 @@ void PartTextField::setFollowParentRotations(bool fpr) {
 	@return Les coordonnees du point situe en bas a gauche du texte.
 */
 QPointF PartTextField::margin() const {
-	QFont used_font = font();
-	QFontMetrics qfm(used_font);
-	QPointF margin(
-		(boundingRect().width () - qfm.width(toPlainText())) / 2.0,
-		((boundingRect().height() - used_font.pointSizeF()) / 3.0) + used_font.pointSizeF()
-	);
-	return(margin);
+	return(QPointF(0.0, boundingRect().height() / 2.0));
 }
 
 /**
@@ -253,7 +247,7 @@ QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &va
 */
 QRectF PartTextField::boundingRect() const {
 	QRectF r = QGraphicsTextItem::boundingRect();
-	r.adjust(0.0, -2.0, 0.0, 0.0);
+	r.adjust(0.0, -1.1, 0.0, 0.0);
 	return(r);
 }
 

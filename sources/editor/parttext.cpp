@@ -31,6 +31,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor)
 {
+	document() -> setDocumentMargin(1.0);
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -69,8 +70,8 @@ void PartText::fromXml(const QDomElement &xml_element) {
 */
 const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("text");
-	xml_element.setAttribute("x", QString("%1").arg((scenePos() + margin()).x()));
-	xml_element.setAttribute("y", QString("%1").arg((scenePos() + margin()).y()));
+	xml_element.setAttribute("x", QString("%1").arg(pos().x()));
+	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
 	return(xml_element);
@@ -84,8 +85,8 @@ QWidget *PartText::elementInformations() {
 }
 
 /**
-	Retourne la position du texte, l'origine etant le point en bas a gauche du
-	texte (et pas du cadre)
+	Retourne la position du texte, l'origine etant le point a gauche du texte,
+	sur la baseline de la premiere ligne
 	@return la position du texte
 */
 QPointF PartText::pos() const {
@@ -116,8 +117,10 @@ QPointF PartText::margin() const {
 	QFont used_font = font();
 	QFontMetrics qfm(used_font);
 	QPointF margin(
-		(boundingRect().width () - qfm.width(toPlainText())) / 2.0,
-		((boundingRect().height() - used_font.pointSizeF()) / 3.0) + used_font.pointSizeF()
+		// marge autour du texte
+		document() -> documentMargin(),
+		// marge au-dessus du texte + distance entre le plafond du texte et la baseline
+		document() -> documentMargin() + qfm.ascent()
 	);
 	return(margin);
 }
@@ -228,7 +231,7 @@ QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) 
 */
 QRectF PartText::boundingRect() const {
 	QRectF r = QGraphicsTextItem::boundingRect();
-	r.adjust(0.0, -2.0, 0.0, 0.0);
+	r.adjust(0.0, -1.1, 0.0, 0.0);
 	return(r);
 }
 
