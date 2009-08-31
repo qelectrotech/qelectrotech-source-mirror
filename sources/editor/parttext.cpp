@@ -31,7 +31,9 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor)
 {
+#if QT_VERSION >= 0x040500
 	document() -> setDocumentMargin(1.0);
+#endif
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
@@ -116,11 +118,20 @@ void PartText::setPos(qreal x, qreal y) {
 QPointF PartText::margin() const {
 	QFont used_font = font();
 	QFontMetrics qfm(used_font);
+	
+	// marge du texte
+#if QT_VERSION >= 0x040500
+	qreal document_margin = document() -> documentMargin();
+#else
+	// il semblerait qu'avant Qt 4.5, ceci vaille non pas 4.0 mais 2.0
+	qreal document_margin = 2.0;
+#endif
+	
 	QPointF margin(
 		// marge autour du texte
-		document() -> documentMargin(),
+		document_margin,
 		// marge au-dessus du texte + distance entre le plafond du texte et la baseline
-		document() -> documentMargin() + qfm.ascent()
+		document_margin + qfm.ascent()
 	);
 	return(margin);
 }
