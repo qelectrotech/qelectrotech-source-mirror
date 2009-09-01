@@ -556,6 +556,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
 	// generer le rendu graphique du texte
 	QTextDocument text_document;
+	text_document.setDefaultFont(used_font);
 	text_document.setPlainText(e.attribute("text"));
 	
 	/*
