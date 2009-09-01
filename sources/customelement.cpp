@@ -559,10 +559,10 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	text_document.setPlainText(e.attribute("text"));
 	
 	/*
-		deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
+		Deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
 		bon endroit ; note : on soustrait l'ascent() de la police pour
 		determiner le coin superieur gauche du texte alors que la position
-		indiquee correspond a la baseline QPointF
+		indiquee correspond a la baseline.
 	*/
 	QPointF qpainter_offset(pos_x, pos_y - qfm.ascent());
 	
