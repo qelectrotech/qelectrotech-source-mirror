@@ -548,8 +548,35 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.setFont(QETApp::diagramTextsFont(size));
-	qp.drawText(QPointF(pos_x, pos_y), e.attribute("text"));
+	
+	// determine la police a utiliser et en recupere les metriques associees
+	QFont used_font = QETApp::diagramTextsFont(size);
+	QFontMetrics qfm(used_font);
+	
+	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
+	// generer le rendu graphique du texte
+	QTextDocument text_document;
+	text_document.setPlainText(e.attribute("text"));
+	
+	/*
+		deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
+		bon endroit ; note : on soustrait l'ascent() de la police pour
+		determiner le coin superieur gauche du texte alors que la position
+		indiquee correspond a la baseline QPointF
+	*/
+	QPointF qpainter_offset(pos_x, pos_y - qfm.ascent());
+	
+	// ajuste le decalage selon la marge du document texte
+#if QT_VERSION >= 0x040500
+	text_document.setDocumentMargin(0.0);
+#else
+	// il semblerait qu'avant Qt 4.5, le documentMargin vaille 2.0 (et pas 4.0)
+	qpainter_offset.ry() -= 2.0;
+#endif
+	
+	qp.translate(qpainter_offset);
+	text_document.drawContents(&qp);
+	
 	qp.restore();
 	return(true);
 }
