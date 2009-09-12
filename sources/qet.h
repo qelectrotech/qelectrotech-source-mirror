@@ -105,7 +105,7 @@ namespace QET {
 	bool estHorizontale(QET::Orientation);
 	bool estVerticale(QET::Orientation);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
-	bool attributeIsAReal(const QDomElement &, QString , double * = NULL);
+	bool attributeIsAReal(const QDomElement &, QString , qreal * = NULL);
 	QString ElementsAndConductorsSentence(int, int, int = 0);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();

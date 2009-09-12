@@ -351,7 +351,7 @@ void BorderInset::setColumnsWidth(const qreal &new_cw) {
 	@param new_chh nouvelle hauteur des en-tetes de colonnes
 */
 void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
-	columns_header_height = qBound(5.0, new_chh, 50.0);
+	columns_header_height = qBound(qreal(5.0), new_chh, qreal(50.0));
 	updateRectangles();
 }
 
@@ -388,7 +388,7 @@ void BorderInset::setRowsHeight(const qreal &new_rh) {
 	@param new_rhw nouvelle largeur des en-tetes des lignes
 */
 void BorderInset::setRowsHeaderWidth(const qreal &new_rhw) {
-	rows_header_width = qBound(5.0, new_rhw, 50.0);
+	rows_header_width = qBound(qreal(5.0), new_rhw, qreal(50.0));
 	updateRectangles();
 }
 
@@ -415,7 +415,7 @@ void BorderInset::setInsetWidth(const qreal &new_iw) {
 	20px et la hauteur du schema.
 */
 void BorderInset::setInsetHeight(const qreal &new_ih) {
-	inset_height = qMax(20.0, qMin(diagramHeight(), new_ih));
+	inset_height = qMax(qreal(20.0), qMin(diagramHeight(), new_ih));
 	updateRectangles();
 }
 

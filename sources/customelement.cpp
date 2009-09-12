@@ -284,7 +284,7 @@ bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {
 */
 bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 	// verifie la presence et la validite des attributs obligatoires
-	double x1, y1, x2, y2;
+	qreal x1, y1, x2, y2;
 	if (!QET::attributeIsAReal(e, QString("x1"), &x1)) return(false);
 	if (!QET::attributeIsAReal(e, QString("y1"), &y1)) return(false);
 	if (!QET::attributeIsAReal(e, QString("x2"), &x2)) return(false);
@@ -393,7 +393,7 @@ bool CustomElement::parseLine(QDomElement &e, QPainter &qp) {
 */
 bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
-	double rect_x, rect_y, rect_w, rect_h;
+	qreal rect_x, rect_y, rect_w, rect_h;
 	if (!QET::attributeIsAReal(e, QString("x"),       &rect_x))  return(false);
 	if (!QET::attributeIsAReal(e, QString("y"),       &rect_y))  return(false);
 	if (!QET::attributeIsAReal(e, QString("width"),   &rect_w))  return(false);
@@ -425,7 +425,7 @@ bool CustomElement::parseRect(QDomElement &e, QPainter &qp) {
 */
 bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
-	double cercle_x, cercle_y, cercle_r;
+	qreal cercle_x, cercle_y, cercle_r;
 	if (!QET::attributeIsAReal(e, QString("x"),        &cercle_x)) return(false);
 	if (!QET::attributeIsAReal(e, QString("y"),        &cercle_y)) return(false);
 	if (!QET::attributeIsAReal(e, QString("diameter"), &cercle_r)) return(false);
@@ -451,7 +451,7 @@ bool CustomElement::parseCircle(QDomElement &e, QPainter &qp) {
 */
 bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
-	double ellipse_x, ellipse_y, ellipse_l, ellipse_h;
+	qreal ellipse_x, ellipse_y, ellipse_l, ellipse_h;
 	if (!QET::attributeIsAReal(e, QString("x"),       &ellipse_x))  return(false);
 	if (!QET::attributeIsAReal(e, QString("y"),       &ellipse_y))  return(false);
 	if (!QET::attributeIsAReal(e, QString("width"), &ellipse_l))  return(false);
@@ -479,7 +479,7 @@ bool CustomElement::parseEllipse(QDomElement &e, QPainter &qp) {
 */
 bool CustomElement::parseArc(QDomElement &e, QPainter &qp) {
 	// verifie la presence des attributs obligatoires
-	double arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
+	qreal arc_x, arc_y, arc_l, arc_h, arc_s, arc_a;
 	if (!QET::attributeIsAReal(e, QString("x"),       &arc_x))  return(false);
 	if (!QET::attributeIsAReal(e, QString("y"),       &arc_y))  return(false);
 	if (!QET::attributeIsAReal(e, QString("width"),   &arc_l))  return(false);
@@ -597,7 +597,7 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 */
 Terminal *CustomElement::parseTerminal(QDomElement &e) {
 	// verifie la presence et la validite des attributs obligatoires
-	double terminalx, terminaly;
+	qreal terminalx, terminaly;
 	QET::Orientation terminalo;
 	if (!QET::attributeIsAReal(e, QString("x"), &terminalx)) return(0);
 	if (!QET::attributeIsAReal(e, QString("y"), &terminaly)) return(0);

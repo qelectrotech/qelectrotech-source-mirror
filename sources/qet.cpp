@@ -131,7 +131,7 @@ bool QET::attributeIsAnInteger(const QDomElement &e, QString nom_attribut, int *
 	@param reel Pointeur facultatif vers un double
 	@return true si l'attribut est bien un reel, false sinon
 */
-bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, double *reel) {
+bool QET::attributeIsAReal(const QDomElement &e, QString nom_attribut, qreal *reel) {
 	// verifie la presence de l'attribut
 	if (!e.hasAttribute(nom_attribut)) return(false);
 	// verifie la validite de l'attribut
