@@ -40,6 +40,7 @@ class DiagramPrintDialog : public QWidget {
 	QString fileName() const;
 	void setDocName(const QString &);
 	QString docName() const;
+	QRect diagramRect(Diagram *) const;
 	int pagesCount(Diagram *, bool = false) const;
 	int horizontalPagesCount(Diagram *, bool = false) const;
 	int verticalPagesCount(Diagram *, bool = false) const;
