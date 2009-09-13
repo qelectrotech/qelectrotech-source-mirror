@@ -77,6 +77,19 @@ QString DiagramPrintDialog::docName() const {
 }
 
 /**
+	@param diagram Un schema
+	@return le rectangle a imprimer pour ce schema
+*/
+QRect DiagramPrintDialog::diagramRect(Diagram *diagram) const {
+	if (!diagram) return(QRect());
+	
+	// ajuste la bordure du schema d'un pixel (epaisseur du trait)
+	QRect diagram_rect = diagram -> border().adjusted(0.0, 0.0, 1.0, 1.0).toAlignedRect();
+	
+	return(diagram_rect);
+}
+
+/**
 	Execute le dialogue d'impression
 */
 void DiagramPrintDialog::exec() {
@@ -135,7 +148,7 @@ int DiagramPrintDialog::pagesCount(Diagram *diagram, bool fullpage) const {
 int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, bool fullpage) const {
 	// note : pageRect et Paper Rect tiennent compte de l'orientation du papier
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
-	QRect diagram_rect = diagram -> border().toRect();
+	QRect diagram_rect = diagramRect(diagram);
 	
 	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
 	return(h_pages_count);
@@ -149,7 +162,7 @@ int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, bool fullpage) co
 int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, bool fullpage) const {
 	// note : pageRect et Paper Rect tiennent compte de l'orientation du papier
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
-	QRect diagram_rect = diagram -> border().toRect();
+	QRect diagram_rect = diagramRect(diagram);
 	
 	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
 	return(v_pages_count);
@@ -349,10 +362,10 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 	
 	if (fit_page) {
 		// impression adaptee sur une seule page
-		diagram -> render(qp, QRectF(), diagram -> border(), Qt::KeepAspectRatio);
+		diagram -> render(qp, QRectF(), diagramRect(diagram), Qt::KeepAspectRatio);
 	} else {
 		// impression sur une ou plusieurs pages
-		QRect diagram_rect = diagram -> border().adjusted(0.0, 0.0, 1.0, 1.0).toAlignedRect();
+		QRect diagram_rect = diagramRect(diagram);
 		QRect printed_area = full_page ? printer -> paperRect() : printer -> pageRect();
 		//qDebug() << "impression sur une ou plusieurs pages";
 		//qDebug() << "  schema :" << diagram_rect;
