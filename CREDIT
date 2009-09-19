@@ -11,6 +11,7 @@ Thanks to `trem' for the Mandriva packaging.
 Thanks to TuxFamily ( http://tuxfamily.org/ ) for hosting the project.
 Thanks to `Nishiki' for his elements and his support.
 Thanks to qtcentre.org for their SingleApplication class.
+Thanks to Alfredo Carreto for his Spanish translations and fixing Spanish translations(http://electronicosmx.comxa.com)
 
 [fr]
 Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
@@ -53,3 +54,21 @@ Agradecimentos a "trem" pela criação dos pacotes para Mandriva.
 Agradecimentos a TuxFamily ( http://tuxfamily.org/ ) por albergarem este projecto.
 Agradecimentos a "Nishiki" pela criação de elementos e o seu suporte.
 Agradecimentos a qtcentre.org pela classe SingleApplication.
+
+[es]
+Agradecimientos à QT Software por  su biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada bajo GNU/GPL.
+Agradecimientos a Everaldo Coelho por el tema de icónos Crystal SVG ( http://www.everaldo.com/crystal/ ), licenciado bajo LGPL.
+Agradecimientos a Nuno Pinheiro por el tema de icónos Oxygen y especialmente por los icónos dedicados al programa QElectroTech ( http://www.oxygen-icons.org/ ), lincenciado bajo LGPL.
+Agradecimientos al proyecto KDE ( http://www.kde.org/ ).
+Agradecimientos a Loic por sus explicaciones relacionadas con problemas matemáticos.
+Agradecimientos a Nicolas por el trabajo conMac OS X.
+Agradecimientos a Remi Collet por  criación de paquetes para Fedora.
+Agradecimientos a Laurent Trinques por la creación de paquetes para Debian.
+Agradecimientos a "trem" por  creación de paquetes para Mandriva.
+Agradecimientos a TuxFamily ( http://tuxfamily.org/ ) por el alojamiento de este proyecto.
+Agradecimientos a "Nishiki" por  creación de elementos e de su suporte.
+Agradecimientos a qtcentre.org por classe SingleApplication.
+Agradecimientos a Alfredo Carreto por sus traducciones en español y correcciones de traducción en español (http://electronicosmx.comxa.com)
+
+
+
