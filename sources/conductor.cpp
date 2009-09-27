@@ -451,26 +451,27 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
+	// determine la couleur du conducteur
+	QColor final_conductor_color = isSelected() ? Qt::red : properties_.color;
+	
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
-	qp -> setPen(conductor_pen);
-	if (isSelected()) {
-		QPen tmp = qp -> pen();
-		tmp.setColor(Qt::red);
-		qp -> setPen(tmp);
-	}
+	QPen final_conductor_pen = conductor_pen;
+	
+	// modification du QPen generique pour lui affecter la couleur adequate
+	final_conductor_pen.setColor(final_conductor_color);
 	
 	// utilisation d'un trait "cosmetique" en-dessous d'un certain zoom
 	if (options && options -> levelOfDetail < 1.0) {
-		QPen tmp = qp -> pen();
-		tmp.setCosmetic(true);
-		qp -> setPen(tmp);
+		final_conductor_pen.setCosmetic(true);
 	}
+	
+	qp -> setPen(final_conductor_pen);
 	
 	// dessin du conducteur
 	qp -> drawPath(path());
 	if (properties_.type == ConductorProperties::Single) {
-		if (isSelected()) qp -> setBrush(Qt::red);
+		qp -> setBrush(final_conductor_color);
 		properties_.singleLineProperties.draw(
 			qp,
 			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
@@ -509,7 +510,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	QList<QPointF> junctions_list = junctions();
 	if (!junctions_list.isEmpty()) {
 		QBrush junction_brush(Qt::SolidPattern);
-		junction_brush.setColor(isSelected() ? Qt::red : Qt::black);
+		junction_brush.setColor(final_conductor_color);
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {
@@ -1100,6 +1101,7 @@ ConductorProperties Conductor::properties() const {
 	Relit les proprietes et les applique
 */
 void Conductor::readProperties() {
+	// la couleur n'est vraiment applicable que lors du rendu du conducteur
 	setText(properties_.text);
 	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
 }

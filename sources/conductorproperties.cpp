@@ -181,12 +181,30 @@ void SingleLineProperties::fromXml(QDomElement &e) {
 }
 
 /**
+	Constructeur : par defaut, les proprietes font un conducteur
+	multifilaire noir dont le texte est "_"
+*/
+ConductorProperties::ConductorProperties() :
+	type(Multi),
+	color(Qt::black),
+	text("_")
+{
+}
+
+/**
+	Destructeur
+*/
+ConductorProperties::~ConductorProperties() {
+}
+
+/**
 	Exporte les parametres du conducteur sous formes d'attributs XML
 	ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
 void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("type", typeToString(type));
+	e.setAttribute("color", color.name());
 	if (type == Single) {
 		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
@@ -200,6 +218,14 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	@param e Element XML dont les attributs seront lus
 */
 void ConductorProperties::fromXml(QDomElement &e) {
+	// recupere la couleur du conducteur
+	QColor xml_color= QColor(e.attribute("color"));
+	if (xml_color.isValid()) {
+		color = xml_color;
+	} else {
+		color = QColor(Qt::black);
+	}
+	
 	if (e.attribute("type") == typeToString(Single)) {
 		// recupere les parametres specifiques a un conducteur unifilaire
 		singleLineProperties.fromXml(e);
@@ -218,6 +244,7 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const {
+	settings.setValue(prefix + "color", color.name());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
 	singleLineProperties.toSettings(settings, prefix);
@@ -228,6 +255,14 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix) {
+	// recupere la couleur dans les parametres
+	QColor settings_color = QColor(settings.value(prefix + "color").toString());
+	if (settings_color.isValid()) {
+		color = settings_color;
+	} else {
+		color = QColor(Qt::black);
+	}
+	
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	if (setting_type == typeToString(Single)) {
 		type = Single;
@@ -259,6 +294,7 @@ QString ConductorProperties::typeToString(ConductorType t) {
 int ConductorProperties::operator==(const ConductorProperties &other) {
 	return(
 		other.type == type &&\
+		other.color == color &&\
 		other.text == text &&\
 		other.singleLineProperties == singleLineProperties
 	);
@@ -271,6 +307,7 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 int ConductorProperties::operator!=(const ConductorProperties &other) {
 	return(
 		other.type != type ||\
+		other.color != color ||\
 		other.text != text ||\
 		other.singleLineProperties != singleLineProperties
 	);
