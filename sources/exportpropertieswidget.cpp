@@ -46,13 +46,14 @@ ExportPropertiesWidget::~ExportPropertiesWidget() {
 ExportProperties ExportPropertiesWidget::exportProperties() const {
 	ExportProperties export_properties;
 	
-	export_properties.destination_directory = QDir(dirpath -> text());
-	export_properties.format                = format -> itemData(format -> currentIndex()).toString();
-	export_properties.draw_grid             = draw_grid      -> isChecked();
-	export_properties.draw_border           = draw_border    -> isChecked();
-	export_properties.draw_inset            = draw_inset     -> isChecked();
-	export_properties.draw_terminals        = draw_terminals -> isChecked();
-	export_properties.exported_area         = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
+	export_properties.destination_directory   = QDir(dirpath -> text());
+	export_properties.format                  = format -> itemData(format -> currentIndex()).toString();
+	export_properties.draw_grid               = draw_grid      -> isChecked();
+	export_properties.draw_border             = draw_border    -> isChecked();
+	export_properties.draw_inset              = draw_inset     -> isChecked();
+	export_properties.draw_terminals          = draw_terminals -> isChecked();
+	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
+	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
 	
 	return(export_properties);
 }
@@ -67,10 +68,11 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	if (index == -1) index = 0;
 	format -> setCurrentIndex(index);
 	
-	draw_grid           -> setChecked(export_properties.draw_grid);
-	draw_border         -> setChecked(export_properties.draw_border);
-	draw_inset          -> setChecked(export_properties.draw_inset);
-	draw_terminals      -> setChecked(export_properties.draw_terminals);
+	draw_grid               -> setChecked(export_properties.draw_grid);
+	draw_border             -> setChecked(export_properties.draw_border);
+	draw_inset              -> setChecked(export_properties.draw_inset);
+	draw_terminals          -> setChecked(export_properties.draw_terminals);
+	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	
 	if (export_properties.exported_area == QET::BorderArea) {
 		export_border -> setChecked(true);
@@ -156,7 +158,11 @@ void ExportPropertiesWidget::build() {
 	// dessiner les bornes
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
 	optionshlayout -> addWidget(draw_terminals, 2, 1);
-
+	
+	// conserver les couleurs des conducteurs
+	draw_colored_conductors = new QCheckBox(tr("Conserver les couleurs des conducteurs"), groupbox_options);
+	optionshlayout -> addWidget(draw_colored_conductors, 3, 0);
+	
 	vboxLayout -> addWidget(groupbox_options);
 	vboxLayout -> addStretch();
 	
@@ -170,7 +176,8 @@ void ExportPropertiesWidget::build() {
 	setTabOrder(draw_border, draw_grid);
 	setTabOrder(draw_grid, draw_inset);
 	setTabOrder(draw_inset, draw_terminals);
-
+	setTabOrder(draw_terminals, draw_colored_conductors);
+	
 	// connexion du bouton permettant le choix du repertoire
 	connect(button_browse, SIGNAL(released()), this, SLOT(slot_chooseADirectory()));
 	

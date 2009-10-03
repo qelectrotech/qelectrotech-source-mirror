@@ -33,6 +33,7 @@ ExportProperties::ExportProperties() :
 	draw_border(true),
 	draw_inset(true),
 	draw_terminals(false),
+	draw_colored_conductors(true),
 	exported_area(QET::BorderArea)
 {
 }
@@ -49,13 +50,14 @@ ExportProperties::~ExportProperties() {
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ExportProperties::toSettings(QSettings &settings, const QString &prefix) const {
-	settings.setValue(prefix + "path",          QDir::toNativeSeparators(destination_directory.absolutePath()));
-	settings.setValue(prefix + "format",        format);
-	settings.setValue(prefix + "drawgrid",      draw_grid);
-	settings.setValue(prefix + "drawborder",    draw_border);
-	settings.setValue(prefix + "drawinset",     draw_inset);
-	settings.setValue(prefix + "drawterminals", draw_terminals);
-	settings.setValue(prefix + "area",          QET::diagramAreaToString(exported_area));
+	settings.setValue(prefix + "path",                  QDir::toNativeSeparators(destination_directory.absolutePath()));
+	settings.setValue(prefix + "format",                format);
+	settings.setValue(prefix + "drawgrid",              draw_grid);
+	settings.setValue(prefix + "drawborder",            draw_border);
+	settings.setValue(prefix + "drawinset",             draw_inset);
+	settings.setValue(prefix + "drawterminals",         draw_terminals);
+	settings.setValue(prefix + "drawcoloredconductors", draw_colored_conductors);
+	settings.setValue(prefix + "area",                  QET::diagramAreaToString(exported_area));
 }
 
 /**
@@ -70,10 +72,11 @@ void ExportProperties::fromSettings(QSettings &settings, const QString &prefix) 
 	
 	format = settings.value(prefix + "format").toString();
 	
-	draw_grid      = settings.value(prefix + "drawgrid",      false).toBool();
-	draw_border    = settings.value(prefix + "drawborder",    true ).toBool();
-	draw_inset     = settings.value(prefix + "drawinset",     true ).toBool();
-	draw_terminals = settings.value(prefix + "drawterminals", false).toBool();
+	draw_grid               = settings.value(prefix + "drawgrid",              false).toBool();
+	draw_border             = settings.value(prefix + "drawborder",            true ).toBool();
+	draw_inset              = settings.value(prefix + "drawinset",             true ).toBool();
+	draw_terminals          = settings.value(prefix + "drawterminals",         false).toBool();
+	draw_colored_conductors = settings.value(prefix + "drawcoloredconductors", true ).toBool();
 	
 	exported_area  = QET::diagramAreaFromString(settings.value(prefix + "area", "border").toString());
 }

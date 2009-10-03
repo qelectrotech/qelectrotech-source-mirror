@@ -313,6 +313,7 @@ void ExportDialog::saveReloadDiagramParameters(Diagram *diagram, bool save) {
 	static bool state_drawInset;
 	static bool state_drawGrid;
 	static bool state_drawTerm;
+	static bool state_drawColCond;
 	static bool state_useBorder;
 	
 	if (save) {
@@ -321,12 +322,14 @@ void ExportDialog::saveReloadDiagramParameters(Diagram *diagram, bool save) {
 		state_drawInset   = diagram -> border_and_inset.insetIsDisplayed();
 		state_drawGrid    = diagram -> displayGrid();
 		state_drawTerm    = diagram -> drawTerminals();
+		state_drawColCond = diagram -> drawColoredConductors();
 		state_useBorder   = diagram -> useBorder();
 		
 		ExportProperties export_properties = epw -> exportProperties();
 		
 		diagram -> setUseBorder                  (export_properties.exported_area == QET::BorderArea);
 		diagram -> setDrawTerminals              (export_properties.draw_terminals);
+		diagram -> setDrawColoredConductors      (export_properties.draw_colored_conductors);
 		diagram -> setDisplayGrid                (export_properties.draw_grid);
 		diagram -> border_and_inset.displayBorder(export_properties.draw_border);
 		diagram -> border_and_inset.displayInset (export_properties.draw_inset);
@@ -336,6 +339,7 @@ void ExportDialog::saveReloadDiagramParameters(Diagram *diagram, bool save) {
 		diagram -> border_and_inset.displayInset(state_drawInset);
 		diagram -> setDisplayGrid(state_drawGrid);
 		diagram -> setDrawTerminals(state_drawTerm);
+		diagram -> setDrawColoredConductors(state_drawColCond);
 		diagram -> setUseBorder(state_useBorder);
 	}
 }

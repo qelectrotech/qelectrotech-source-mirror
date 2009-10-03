@@ -41,6 +41,7 @@ Diagram::Diagram(QObject *parent) :
 	use_border(true),
 	moved_elements_fetched(false),
 	draw_terminals(true),
+	draw_colored_conductors_(true),
 	project_(0),
 	read_only_(false)
 {
@@ -925,6 +926,15 @@ void Diagram::setDrawTerminals(bool dt) {
 			t -> setVisible(dt);
 		}
 	}
+}
+
+/**
+	Definit s'il faut respecter ou non les couleurs des conducteurs.
+	Si non, les conducteurs sont tous dessines en noir.
+	@param dcc true pour respecter les couleurs, false sinon
+*/
+void Diagram::setDrawColoredConductors(bool dcc) {
+	draw_colored_conductors_ = dcc;
 }
 
 /**

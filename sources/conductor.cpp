@@ -452,7 +452,16 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
 	// determine la couleur du conducteur
-	QColor final_conductor_color = isSelected() ? Qt::red : properties_.color;
+	QColor final_conductor_color(properties_.color);
+	if (isSelected()) {
+		final_conductor_color = Qt::red;
+	} else {
+		if (Diagram *parent_diagram = diagram()) {
+			if (!parent_diagram -> drawColoredConductors()) {
+				final_conductor_color = Qt::black;
+			}
+		}
+	}
 	
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
