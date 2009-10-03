@@ -210,6 +210,7 @@ ExportConfigPage::ExportConfigPage(QWidget *parent) : ConfigPage(parent) {
 	horiz_line -> setFrameShape(QFrame::HLine);
 	vlayout1 -> addWidget(horiz_line);
 	vlayout1 -> addWidget(epw);
+	vlayout1 -> addStretch();
 
 	// activation du layout
 	setLayout(vlayout1);
