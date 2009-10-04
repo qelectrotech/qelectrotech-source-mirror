@@ -123,4 +123,27 @@ class ExportConfigPage : public ConfigPage {
 	public:
 	ExportPropertiesWidget *epw;
 };
+
+/**
+	Cette classe represente la page de configuration du dialogue d'impression
+*/
+class PrintConfigPage : public ConfigPage {
+	Q_OBJECT
+	// constructeurs, destructeur
+	public:
+	PrintConfigPage(QWidget * = 0);
+	virtual ~PrintConfigPage();
+	private:
+	PrintConfigPage(const PrintConfigPage &);
+	
+	// methodes
+	public:
+	void applyConf();
+	QString title() const;
+	QIcon icon() const;
+	
+	// attributs
+	public:
+	ExportPropertiesWidget *epw;
+};
 #endif

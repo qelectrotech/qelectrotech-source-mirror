@@ -191,7 +191,6 @@ QString GeneralConfigurationPage::title() const {
 	return(tr("G\351n\351ral", "configuration page title"));
 }
 
-
 /**
 	Constructeur
 	@param parent QWidget parent
@@ -238,3 +237,56 @@ QString ExportConfigPage::title() const {
 	return(tr("Export", "configuration page title"));
 }
 
+/**
+	Constructeur
+	@param parent QWidget parent
+*/
+PrintConfigPage::PrintConfigPage(QWidget *parent) : ConfigPage(parent) {
+	// epw contient les options d'export
+	epw = new ExportPropertiesWidget(QETDiagramEditor::defaultPrintProperties());
+	epw -> setPrintingMode(true);
+	
+	// layout vertical contenant le titre, une ligne horizontale et epw
+	QVBoxLayout *vlayout1 = new QVBoxLayout();
+	
+	QLabel *title = new QLabel(this -> title());
+	vlayout1 -> addWidget(title);
+	
+	QFrame *horiz_line = new QFrame();
+	horiz_line -> setFrameShape(QFrame::HLine);
+	vlayout1 -> addWidget(horiz_line);
+	vlayout1 -> addWidget(epw);
+	vlayout1 -> addStretch();
+
+	// activation du layout
+	setLayout(vlayout1);
+}
+
+/// Destructeur
+PrintConfigPage::~PrintConfigPage() {
+}
+
+/**
+	Applique la configuration de cette page
+*/
+void PrintConfigPage::applyConf() {
+	QString prefix = "print/default";
+	
+	QSettings &settings = QETApp::settings();
+	epw -> exportProperties().toSettings(settings, prefix);
+	
+	// annule l'enregistrement de certaines proprietes non pertinentes
+	settings.remove(prefix + "path");
+	settings.remove(prefix + "format");
+	settings.remove(prefix + "area");
+}
+
+/// @return l'icone de cette page
+QIcon PrintConfigPage::icon() const {
+	return(QET::Icons::Printer);
+}
+
+/// @return le titre de cette page
+QString PrintConfigPage::title() const {
+	return(tr("Impression", "configuration page title"));
+}

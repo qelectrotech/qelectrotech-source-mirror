@@ -1777,3 +1777,17 @@ ExportProperties QETDiagramEditor::defaultExportProperties() {
 	
 	return(def);
 }
+
+/**
+	@return Les parametres d'impression par defaut pour un schema
+*/
+ExportProperties QETDiagramEditor::defaultPrintProperties() {
+	// accede a la configuration de l'application
+	QSettings &settings = QETApp::settings();
+	
+	ExportProperties def;
+	// lit les caracteristiques des conducteurs par defaut dans la configuration
+	def.fromSettings(settings, "print/default");
+	
+	return(def);
+}

@@ -19,6 +19,7 @@
 #include "diagramschooser.h"
 #include "exportproperties.h"
 #include "exportpropertieswidget.h"
+#include "qetdiagrameditor.h"
 #include "qeticons.h"
 
 /**
@@ -231,7 +232,10 @@ void QETPrintPreviewDialog::build() {
 	fit_diagram_to_page_label_ -> setContentsMargins(20, 0, 0, 0);
 	fit_diagram_to_page_ -> setChecked(true);
 	
-	render_properties_ = new ExportPropertiesWidget();
+	// recupere les parametres d'export definis dans la configuration de l'application
+	ExportProperties default_print_properties = QETDiagramEditor::defaultPrintProperties();
+	
+	render_properties_ = new ExportPropertiesWidget(default_print_properties);
 	render_properties_ -> setPrintingMode(true);
 	
 	buttons_ = new QDialogButtonBox();

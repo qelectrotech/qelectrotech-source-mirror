@@ -262,6 +262,7 @@ void QET::Icons::initIcons() {
 	Phase               .addFile(":/ico/16x16/phase.png");
 	PrintAllPages       .addFile(":/ico/22x22/all_pages.png");
 	Printer             .addFile(":/ico/32x32/printer.png");
+	Printer             .addFile(":/ico/128x128/printer.png");
 	PrintLandscape      .addFile(":/ico/22x22/landscape.png");
 	PrintPortrait       .addFile(":/ico/22x22/portrait.png");
 	PrintTwoPages       .addFile(":/ico/22x22/two_pages.png");

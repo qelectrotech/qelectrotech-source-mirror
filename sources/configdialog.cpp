@@ -31,8 +31,8 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	pages_list -> setViewMode(QListView::IconMode);
 	pages_list -> setIconSize(QSize(110, 110));
 	pages_list -> setMovement(QListView::Static);
-	pages_list -> setMinimumWidth(135);
-	pages_list -> setMaximumWidth(135);
+	pages_list -> setMinimumWidth(150);
+	pages_list -> setMaximumWidth(150);
 	pages_list -> setSpacing(4);
 	
 	// pages
@@ -40,6 +40,7 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	addPage(new GeneralConfigurationPage());
 	addPage(new NewDiagramPage());
 	addPage(new ExportConfigPage());
+	addPage(new PrintConfigPage());
 	buildPagesList();
 	
 	// boutons
