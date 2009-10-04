@@ -17,6 +17,8 @@
 */
 #include "qetprintpreviewdialog.h"
 #include "diagramschooser.h"
+#include "exportproperties.h"
+#include "exportpropertieswidget.h"
 #include "qeticons.h"
 
 /**
@@ -57,6 +59,13 @@ DiagramsChooser *QETPrintPreviewDialog::diagramsChooser() {
 */
 bool QETPrintPreviewDialog::fitDiagramsToPages() const {
 	return(fit_diagram_to_page_ -> isChecked());
+}
+
+/**
+	@return les options de rendu definies par l'utilisateur
+*/
+ExportProperties QETPrintPreviewDialog::exportProperties() const {
+	return(render_properties_ -> exportProperties());
 }
 
 /**
@@ -222,6 +231,9 @@ void QETPrintPreviewDialog::build() {
 	fit_diagram_to_page_label_ -> setContentsMargins(20, 0, 0, 0);
 	fit_diagram_to_page_ -> setChecked(true);
 	
+	render_properties_ = new ExportPropertiesWidget();
+	render_properties_ -> setPrintingMode(true);
+	
 	buttons_ = new QDialogButtonBox();
 	buttons_ -> addButton(new QPushButton(QET::Icons::DocumentPrint, tr("Imprimer")), QDialogButtonBox::AcceptRole);
 	buttons_ -> addButton(QDialogButtonBox::Cancel);
@@ -245,6 +257,8 @@ void QETPrintPreviewDialog::build() {
 	
 	connect(use_full_page_,        SIGNAL(toggled(bool)), this, SLOT(useFullPage(bool)));
 	connect(fit_diagram_to_page_,  SIGNAL(toggled(bool)), this, SLOT(fitDiagramToPage(bool)));
+	
+	connect(render_properties_,    SIGNAL(optionChanged()), preview_, SLOT(updatePreview()));
 	
 	connect(preview_,  SIGNAL(previewChanged()),         this, SLOT(updateZoomList()));
 	connect(zoom_box_, SIGNAL(currentIndexChanged(int)), this, SLOT(updatePreviewZoom()));
@@ -271,6 +285,7 @@ void QETPrintPreviewDialog::build() {
 	
 	vlayout0_ -> addWidget(toolbar_);
 	vlayout0_ -> addLayout(hlayout0_);
+	vlayout0_ -> addWidget(render_properties_);
 	vlayout0_ -> addWidget(print_options_box_);
 	vlayout0_ -> addWidget(buttons_);
 	
@@ -289,6 +304,7 @@ void QETPrintPreviewDialog::requestPaint(QPrinter *printer) {
 		paintRequested(
 			diagrams_list_ -> selectedDiagrams(),
 			fit_diagram_to_page_ -> isChecked(),
+			render_properties_ -> exportProperties(),
 			printer
 		)
 	);
@@ -328,6 +344,7 @@ void QETPrintPreviewDialog::setDiagramsListVisible(bool display) {
 */
 void QETPrintPreviewDialog::setPrintOptionsVisible(bool display) {
 	print_options_box_ -> setVisible(display);
+	render_properties_ -> setVisible(display);
 	
 	if (display) {
 		toggle_print_options_ -> setText(tr("Cacher les options d'impression"));

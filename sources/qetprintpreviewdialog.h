@@ -18,8 +18,10 @@
 #ifndef QET_PRINT_PREVIEW_DIALOG
 #define QET_PRINT_PREVIEW_DIALOG
 #include <QtGui>
+#include "exportproperties.h"
 class Diagram;
 class DiagramsChooser;
+class ExportPropertiesWidget;
 class QETProject;
 /**
 	Cette classe represente un dialogue permettant d'affiner les options
@@ -40,10 +42,11 @@ class QETPrintPreviewDialog : public QDialog {
 	public:
 	DiagramsChooser *diagramsChooser();
 	bool fitDiagramsToPages() const;
+	ExportProperties exportProperties() const;
 	
 	// signaux
 	signals:
-	void paintRequested(const QList<Diagram *> &, bool, QPrinter *);
+	void paintRequested(const QList<Diagram *> &, bool, const ExportProperties, QPrinter *);
 	
 	public slots:
 	void firstPage();
@@ -91,6 +94,7 @@ class QETPrintPreviewDialog : public QDialog {
 	QLabel *use_full_page_label_;
 	QCheckBox *fit_diagram_to_page_;
 	QLabel *fit_diagram_to_page_label_;
+	ExportPropertiesWidget *render_properties_;
 	
 	// methodes
 	private:
