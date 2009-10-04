@@ -899,6 +899,34 @@ bool Diagram::usesElement(const ElementsLocation &location) {
 }
 
 /**
+	Cette methode permet d'appliquer de nouvelles options de rendu tout en
+	accedant aux proprietes de rendu en cours.
+	@param new_properties Nouvelles options de rendu a appliquer
+	@return les options de rendu avant l'application de new_properties
+*/
+ExportProperties Diagram::applyProperties(const ExportProperties &new_properties) {
+	// exporte les options de rendu en cours
+	ExportProperties old_properties;
+	old_properties.draw_grid               = displayGrid();
+	old_properties.draw_border             = border_and_inset.borderIsDisplayed();
+	old_properties.draw_inset              = border_and_inset.insetIsDisplayed();
+	old_properties.draw_terminals          = drawTerminals();
+	old_properties.draw_colored_conductors = drawColoredConductors();
+	old_properties.exported_area           = useBorder() ? QET::BorderArea : QET::ElementsArea;
+	
+	// applique les nouvelles options de rendu
+	setUseBorder                  (new_properties.exported_area == QET::BorderArea);
+	setDrawTerminals              (new_properties.draw_terminals);
+	setDrawColoredConductors      (new_properties.draw_colored_conductors);
+	setDisplayGrid                (new_properties.draw_grid);
+	border_and_inset.displayBorder(new_properties.draw_border);
+	border_and_inset.displayInset (new_properties.draw_inset);
+	
+	// retourne les anciennes options de rendu
+	return(old_properties);
+}
+
+/**
 	@param pos Position cartesienne (ex : 10.3, 45.2) a transformer en position
 	dans la grille (ex : B2)
 	@return la position dans la grille correspondant a pos

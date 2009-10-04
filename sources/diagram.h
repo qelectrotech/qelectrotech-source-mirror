@@ -22,6 +22,7 @@
 #include "borderinset.h"
 #include "qgimanager.h"
 #include "conductorproperties.h"
+#include "exportproperties.h"
 class Element;
 class CustomElement;
 class Terminal;
@@ -128,6 +129,7 @@ class Diagram : public QGraphicsScene {
 	void removeDiagramTextItem(DiagramTextItem *);
 	
 	// fonctions relatives aux options graphiques
+	ExportProperties applyProperties(const ExportProperties &);
 	void setDisplayGrid(bool);
 	bool displayGrid();
 	void setUseBorder(bool);
