@@ -309,6 +309,16 @@
         <source>neutre</source>
         <translation>нейтраль</translation>
     </message>
+    <message>
+        <location filename="sources/conductorpropertieswidget.cpp" line="96"/>
+        <source>Apparence du conducteur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sources/conductorpropertieswidget.cpp" line="103"/>
+        <source>Couleur :</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ConfigDialog</name>
@@ -322,59 +332,59 @@
 <context>
     <name>DiagramPrintDialog</name>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="99"/>
+        <location filename="sources/diagramprintdialog.cpp" line="113"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
         <translation>Настройка печати</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="169"/>
+        <location filename="sources/diagramprintdialog.cpp" line="193"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
         <translation>Какой вид печати вам необходим?</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="174"/>
+        <location filename="sources/diagramprintdialog.cpp" line="198"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
         <translation>Печатать на физический принтер</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="175"/>
+        <location filename="sources/diagramprintdialog.cpp" line="199"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
         <translation>Печатать в PDF-файл</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="176"/>
+        <location filename="sources/diagramprintdialog.cpp" line="200"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
         <translation>Печатать в PostScript-файл (PS)</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="181"/>
+        <location filename="sources/diagramprintdialog.cpp" line="205"/>
         <source>Choix du type d&apos;impression</source>
         <translation>Выбор типа печати</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="262"/>
+        <location filename="sources/diagramprintdialog.cpp" line="286"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
         <translation>Файл отсутствует</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="263"/>
+        <location filename="sources/diagramprintdialog.cpp" line="287"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести путь к файлу PDF/PS, чтобы создать его.</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="282"/>
+        <location filename="sources/diagramprintdialog.cpp" line="306"/>
         <source>Fichiers PDF (*.pdf)</source>
         <comment>file filter</comment>
         <translation>PDF-файлы (*.pdf)</translation>
     </message>
     <message>
-        <location filename="sources/diagramprintdialog.cpp" line="286"/>
+        <location filename="sources/diagramprintdialog.cpp" line="310"/>
         <source>Fichiers PostScript (*.ps)</source>
         <comment>file filter</comment>
         <translation>PostScript-файлы (*.ps)</translation>
@@ -1258,42 +1268,42 @@ Les changements seront définitifs.</source>
         <translation>Размеры</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="396"/>
+        <location filename="sources/exportdialog.cpp" line="376"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
         <translation>Имена целевых файлов</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="412"/>
+        <location filename="sources/exportdialog.cpp" line="392"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
         <translation>Каталог отсутствует</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="413"/>
+        <location filename="sources/exportdialog.cpp" line="393"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
         <translation>Вы должны указать путь к каталогу, в котором буду сохранены изображения.</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="454"/>
+        <location filename="sources/exportdialog.cpp" line="434"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
         <translation>Невозможно записать в этот файл</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="456"/>
+        <location filename="sources/exportdialog.cpp" line="436"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Возможно, что у вас нет необходимых разрешений (прав) для записи в файл %1.</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="564"/>
+        <location filename="sources/exportdialog.cpp" line="544"/>
         <source>Aperçu</source>
         <translation>Предпросмотр</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="397"/>
+        <location filename="sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести уникальное  не пустое имя файла для каждой схемы, которую хотите экспортировать.</translation>
@@ -1302,8 +1312,8 @@ Les changements seront définitifs.</source>
 <context>
     <name>ExportDialog::ExportDiagramLine</name>
     <message>
-        <location filename="sources/exportdialog.cpp" line="667"/>
-        <location filename="sources/exportdialog.cpp" line="672"/>
+        <location filename="sources/exportdialog.cpp" line="646"/>
+        <location filename="sources/exportdialog.cpp" line="651"/>
         <source>px</source>
         <translation>px</translation>
     </message>
@@ -1311,78 +1321,84 @@ Les changements seront définitifs.</source>
 <context>
     <name>ExportPropertiesWidget</name>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="88"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="106"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
         <translation>Экспорт в каталог</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="105"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="124"/>
         <source>Dossier cible :</source>
         <translation>Целевой каталог :</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="110"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="129"/>
         <source>Parcourir</source>
         <translation>Обзор</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="120"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="139"/>
         <source>Format :</source>
         <translation>Формат:</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="122"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="142"/>
         <source>PNG (*.png)</source>
         <translation>PNG (*.png)</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="123"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="143"/>
         <source>JPEG (*.jpg)</source>
         <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="124"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="144"/>
         <source>Bitmap (*.bmp)</source>
         <translation>Bitmap (*.bmp)</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="125"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="145"/>
         <source>SVG (*.svg)</source>
         <translation>SVG (*.svg)</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="132"/>
-        <source>Options</source>
-        <translation>Параметры</translation>
+        <location filename="sources/exportpropertieswidget.cpp" line="151"/>
+        <source>Options de rendu</source>
+        <comment>groupbox title</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="137"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="180"/>
+        <source>Conserver les couleurs des conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="sources/exportpropertieswidget.cpp" line="156"/>
         <source>Exporter le cadre</source>
         <translation>Экспортировать рамку</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="140"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter les éléments</source>
         <translation>Экспортировать только элементы</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="145"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="164"/>
         <source>Dessiner la grille</source>
         <translation>Рисовать сетку</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="149"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="168"/>
         <source>Dessiner le cadre</source>
         <translation>Рисовать рамку</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="153"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
         <translation>Рисовать основную надпись</translation>
     </message>
     <message>
-        <location filename="sources/exportpropertieswidget.cpp" line="157"/>
+        <location filename="sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
         <translation>Рисовать выводы</translation>
     </message>
@@ -2025,6 +2041,15 @@ Les changements seront définitifs.</source>
         <location filename="sources/editor/polygoneditor.cpp" line="87"/>
         <source>fermeture du polygone</source>
         <translation>Замыкание полигона</translation>
+    </message>
+</context>
+<context>
+    <name>PrintConfigPage</name>
+    <message>
+        <location filename="sources/configpages.cpp" line="291"/>
+        <source>Impression</source>
+        <comment>configuration page title</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3744,144 +3769,144 @@ Available options:
 <context>
     <name>QETPrintPreviewDialog</name>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="32"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="35"/>
         <source>QElectroTech : Aperçu avant impression</source>
         <translation>QElectroTech : предпросмотр печати</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="143"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="153"/>
         <source>Schémas à imprimer :</source>
         <translation>Схема для печати :</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="145"/>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="318"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="155"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="338"/>
         <source>Cacher la liste des schémas</source>
         <translation>Скрыть список схем</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="146"/>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="333"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="156"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="354"/>
         <source>Cacher les options d&apos;impression</source>
         <translation>Скрыть параметры печати</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="147"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="157"/>
         <source>Ajuster la largeur</source>
         <translation>Подогнать по ширине</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="148"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="158"/>
         <source>Ajuster la page</source>
         <translation>Подогнать по странице</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="149"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="159"/>
         <source>Zoom arrière</source>
         <translation>Уменьшить</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="151"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="161"/>
         <source>Zoom avant</source>
         <translation>Увеличить</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="152"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="162"/>
         <source>Paysage</source>
         <translation>Альбомная</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="153"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="163"/>
         <source>Portrait</source>
         <translation>Книжная</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="154"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="164"/>
         <source>Première page</source>
         <translation>Первая страница</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="155"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="165"/>
         <source>Page précédente</source>
         <translation>Предыдущая страница</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="156"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="166"/>
         <source>Page suivante</source>
         <translation>Следующая страница</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="157"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="167"/>
         <source>Dernière page</source>
         <translation>Последняя страница</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="158"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="168"/>
         <source>Afficher une seule page</source>
         <translation>Показывать одну страницу</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="159"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="169"/>
         <source>Afficher deux pages</source>
         <translation>Показывать в две страницы</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="160"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="170"/>
         <source>Afficher un aperçu de toutes les pages</source>
         <translation>Показывать все страницы</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="161"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="171"/>
         <source>Mise en page</source>
         <translation>Макет страницы</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="178"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="188"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
         <translation>Макет страницы (недоступно под Windows для печати PDF/PS)</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="206"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="216"/>
         <source>Options d&apos;impression</source>
         <translation>Настройка печати</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="207"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="217"/>
         <source>Utiliser toute la feuille</source>
         <translation>Использовать весь лист</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="208"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="218"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
         <translation>Если этот вариант выбран, поля бумаги будут игнорированы и вся его площадь будет использована для печати. Это может не поддерживаться принтером.</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="215"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="225"/>
         <source>Adapter le schéma à la page</source>
         <translation>Подогнать схему к листу</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="216"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="226"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
         <translation>Если этот вариант выбран, схема будет увеличена или уменьшена, чтобы заполнить всю доступную область печати одной страницей.</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="226"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="242"/>
         <source>Imprimer</source>
         <translation>Печать</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="320"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="340"/>
         <source>Afficher la liste des schémas</source>
         <translation>Отобразить список схем</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="335"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="356"/>
         <source>Afficher les options d&apos;impression</source>
         <translation>Отобразить параметры печати</translation>
     </message>
     <message>
-        <location filename="sources/qetprintpreviewdialog.cpp" line="362"/>
+        <location filename="sources/qetprintpreviewdialog.cpp" line="383"/>
         <source>%1 %</source>
         <translation>%1 %</translation>
     </message>
@@ -4208,27 +4233,27 @@ Available options:
         <translation>текстовое поле</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="652"/>
+        <location filename="sources/exportdialog.cpp" line="633"/>
         <source>Schéma sans titre</source>
         <translation>Безымянная схема</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="654"/>
+        <location filename="sources/exportdialog.cpp" line="635"/>
         <source>schema</source>
         <translation>схема</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="681"/>
+        <location filename="sources/exportdialog.cpp" line="660"/>
         <source>Conserver les proportions</source>
         <translation>Сохранять пропорции</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="685"/>
+        <location filename="sources/exportdialog.cpp" line="664"/>
         <source>Réinitialiser les dimensions</source>
         <translation>Востановить размер</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="689"/>
+        <location filename="sources/exportdialog.cpp" line="668"/>
         <source>Aperçu</source>
         <translation>Предпросмотр</translation>
     </message>
@@ -4297,7 +4322,7 @@ Available options:
         <translation>Вывод</translation>
     </message>
     <message>
-        <location filename="sources/exportdialog.cpp" line="693"/>
+        <location filename="sources/exportdialog.cpp" line="672"/>
         <source>Exporter vers le presse-papier</source>
         <translation>Копировать в буфер обмена</translation>
     </message>
@@ -4556,7 +4581,7 @@ Available options:
 <context>
     <name>TextFieldEditor</name>
     <message>
-        <location filename="sources/editor/parttextfield.cpp" line="160"/>
+        <location filename="sources/editor/parttextfield.cpp" line="153"/>
         <location filename="sources/editor/textfieldeditor.cpp" line="89"/>
         <source>contenu</source>
         <translation>содержимое</translation>
