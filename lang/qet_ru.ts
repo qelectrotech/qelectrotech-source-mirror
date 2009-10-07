@@ -312,12 +312,12 @@
     <message>
         <location filename="sources/conductorpropertieswidget.cpp" line="96"/>
         <source>Apparence du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Стиль проводника</translation>
     </message>
     <message>
         <location filename="sources/conductorpropertieswidget.cpp" line="103"/>
         <source>Couleur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Цвет : </translation>
     </message>
 </context>
 <context>
@@ -1365,12 +1365,12 @@ Les changements seront définitifs.</source>
         <location filename="sources/exportpropertieswidget.cpp" line="151"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Параметры отрисовки</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="180"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Сохранять цвет проводника</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="156"/>
@@ -2049,7 +2049,7 @@ Les changements seront définitifs.</source>
         <location filename="sources/configpages.cpp" line="291"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Печать</translation>
     </message>
 </context>
 <context>
