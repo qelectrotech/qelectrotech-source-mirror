@@ -204,7 +204,11 @@ ConductorProperties::~ConductorProperties() {
 */
 void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("type", typeToString(type));
-	e.setAttribute("color", color.name());
+	
+	if (color != QColor(Qt::black)) {
+		e.setAttribute("color", color.name());
+	}
+	
 	if (type == Single) {
 		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
