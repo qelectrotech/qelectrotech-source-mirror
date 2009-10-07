@@ -576,7 +576,14 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 #endif
 	
 	qp.translate(qpainter_offset);
-	text_document.drawContents(&qp);
+	
+	/*
+		effectue le rendu du QTextDocument en forcant la palette utilisee
+		afin de rendre le texte en noir systematiquement
+	*/
+	QAbstractTextDocumentLayout::PaintContext ctx;
+	ctx.palette.setColor(QPalette::Text, QColor(Qt::black));
+	text_document.documentLayout() -> draw(&qp, ctx);
 	
 	qp.restore();
 	return(true);
