@@ -4,6 +4,7 @@
         <name lang="en" >Switch</name>
         <name lang="fr" >Interrupteur</name>
         <name lang="es" >Interruptor</name>
+        <name lang="cs" >Spínač</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0" />

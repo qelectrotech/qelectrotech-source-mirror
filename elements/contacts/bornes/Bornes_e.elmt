@@ -4,6 +4,7 @@
         <name lang="en" >Input terminal</name>
         <name lang="fr" >Borne entrée</name>
         <name lang="es" >Terminal de entrada</name>
+        <name lang="cs" >Vstupní svorka</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-4" y2="1" x2="0" y3="-5" x3="4" />

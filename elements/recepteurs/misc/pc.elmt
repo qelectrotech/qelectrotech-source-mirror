@@ -4,6 +4,7 @@
         <name lang="en" >Outlet</name>
         <name lang="fr" >Prise</name>
         <name lang="es" >Enchufe</name>
+        <name lang="cs" >Zásuvka</name>
     </names>
     <description>
         <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26" />

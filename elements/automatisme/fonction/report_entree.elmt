@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Input Report</name>
         <name lang="fr" >Report Entrée</name>
+        <name lang="cs" >Hlášení vstupu</name>
     </names>
     <description>
         <input x="-10" y="15" size="9" rotate="true" text="_" />

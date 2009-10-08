@@ -4,6 +4,7 @@
         <name lang="en" >LED</name>
         <name lang="fr" >DEL</name>
         <name lang="es" >LED</name>
+        <name lang="cs" >Svítící dioda (Světelná emisní dioda - LED)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="2" x1="-7" y2="1" x2="-9" y3="0" x3="-7" />

@@ -4,6 +4,7 @@
         <name lang="en" >NOR</name>
         <name lang="fr" >NON-OU (NOR)</name>
         <name lang="es" >NO-O (NOR)</name>
+        <name lang="cs" >Ne-NEBO (NOR)</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="26" />

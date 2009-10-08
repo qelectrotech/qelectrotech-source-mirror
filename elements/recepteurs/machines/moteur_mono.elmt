@@ -4,6 +4,7 @@
         <name lang="en" >One-phase engine</name>
         <name lang="fr" >Moteur monophasé</name>
         <name lang="es" >Motor monofásico</name>
+        <name lang="cs" >Jednofázový motor</name>
     </names>
     <description>
         <text x="-5" y="19" size="18" text="M" />

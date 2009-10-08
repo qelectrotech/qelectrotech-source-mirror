@@ -4,6 +4,7 @@
         <name lang="en" >Horizontal wattmeter</name>
         <name lang="fr" >Wattmètre horizontal</name>
         <name lang="es" >Vatímetro horizontal</name>
+        <name lang="cs" >Vodorovný wattmetr</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7.5" x1="7.5" y2="15" x2="10" y3="20" x3="10" />

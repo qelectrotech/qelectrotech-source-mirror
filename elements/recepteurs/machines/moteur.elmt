@@ -4,6 +4,7 @@
         <name lang="en" >Engine</name>
         <name lang="fr" >Moteur</name>
         <name lang="es" >Motor</name>
+        <name lang="cs" >Motor</name>
     </names>
     <description>
         <input x="18" y="0" size="9" rotate="true" text="M_" />

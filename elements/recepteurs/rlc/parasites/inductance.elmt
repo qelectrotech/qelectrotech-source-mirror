@@ -4,6 +4,7 @@
         <name lang="en" >Inductor</name>
         <name lang="fr" >Inductance</name>
         <name lang="es" >Inductor</name>
+        <name lang="cs" >Indukční cívka</name>
     </names>
     <description>
         <arc width="7" x="-3.5" y="-10" antialias="true" height="5" style="line-style:dashed;line-weight:thin;filling:none;color:black" start="90" angle="-180" />

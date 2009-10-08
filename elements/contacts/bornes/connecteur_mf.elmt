@@ -3,6 +3,7 @@
         <name lang="ru" >Соединение (нов.)</name>
         <name lang="fr" >Connecteur</name>
         <name lang="en" >Connector</name>
+        <name lang="cs" >Spojka</name>
     </names>
     <description>
         <input x="4" y="-5.5" size="8" rotate="true" text="_" />
