@@ -893,6 +893,7 @@ NamesList QETProject::namesListForIntegrationCategory() {
 	names.addName("en", "Imported elements");
 	names.addName("es", "Elementos importados");
 	names.addName("ru", QString(russian_data, 24));
+	names.addName("cs", "Zaveden\351 prvky");
 	
 	return(names);
 }
