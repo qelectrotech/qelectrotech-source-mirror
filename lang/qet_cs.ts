@@ -307,12 +307,12 @@
     <message>
         <location filename="sources/conductorpropertieswidget.cpp" line="96"/>
         <source>Apparence du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzhled vodiče</translation>
     </message>
     <message>
         <location filename="sources/conductorpropertieswidget.cpp" line="103"/>
         <source>Couleur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva: </translation>
     </message>
     <message>
         <location filename="sources/conductorpropertieswidget.cpp" line="59"/>
@@ -502,7 +502,7 @@
     <message>
         <location filename="sources/diagramview.cpp" line="635"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Upravit prvek</translation>
+        <translation>Upravit prvek</translation>
     </message>
     <message>
         <location filename="sources/diagramview.cpp" line="696"/>
@@ -1225,7 +1225,7 @@ Provedené změny budou konečné.</translation>
         <location filename="sources/configpages.cpp" line="237"/>
         <source>Export</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést</translation>
     </message>
 </context>
 <context>
@@ -1276,7 +1276,7 @@ Provedené změny budou konečné.</translation>
         <location filename="sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Musíte zadat název souboru, který bude jedinečný pro každý nákres, který bude vyveden.</translation>
     </message>
     <message>
         <location filename="sources/exportdialog.cpp" line="376"/>
@@ -1318,83 +1318,83 @@ Provedené změny budou konečné.</translation>
         <location filename="sources/exportpropertieswidget.cpp" line="106"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Vyvést do adresáře</translation>
+        <translation>Vyvést do adresáře</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="124"/>
         <source>Dossier cible :</source>
-        <translation type="unfinished">Cílový adresář:</translation>
+        <translation>Cílový adresář:</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="129"/>
         <source>Parcourir</source>
-        <translation type="unfinished">Procházet</translation>
+        <translation>Procházet</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="139"/>
         <source>Format :</source>
-        <translation type="unfinished">Formát:</translation>
+        <translation>Formát:</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="142"/>
         <source>PNG (*.png)</source>
-        <translation type="unfinished">PNG (*.png)</translation>
+        <translation>PNG (*.png)</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="143"/>
         <source>JPEG (*.jpg)</source>
-        <translation type="unfinished">JPEG (*.jpg)</translation>
+        <translation>JPEG (*.jpg)</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="144"/>
         <source>Bitmap (*.bmp)</source>
-        <translation type="unfinished">Bitmapa (*.bmp)</translation>
+        <translation>Bitmapa (*.bmp)</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="145"/>
         <source>SVG (*.svg)</source>
-        <translation type="unfinished">SVG (*.svg)</translation>
+        <translation>SVG (*.svg)</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="151"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Volby znázornění</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="156"/>
         <source>Exporter le cadre</source>
-        <translation type="unfinished">Vyvést okraj</translation>
+        <translation>Vyvést okraj</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter les éléments</source>
-        <translation type="unfinished">Vyvést prvky</translation>
+        <translation>Vyvést prvky</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="164"/>
         <source>Dessiner la grille</source>
-        <translation type="unfinished">Nakreslit mřížku</translation>
+        <translation>Nakreslit mřížku</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="168"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished">Nakreslit okraj</translation>
+        <translation>Nakreslit okraj</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished">Nakreslit vložený rámeček</translation>
+        <translation>Nakreslit vložený rámeček</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished">Nakreslit zakončení</translation>
+        <translation>Nakreslit zakončení</translation>
     </message>
     <message>
         <location filename="sources/exportpropertieswidget.cpp" line="180"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Zachovat barvy vodičů</translation>
     </message>
 </context>
 <context>
@@ -2043,7 +2043,7 @@ Provedené změny budou konečné.</translation>
         <location filename="sources/configpages.cpp" line="291"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tisk</translation>
     </message>
 </context>
 <context>
@@ -2808,7 +2808,7 @@ Dostupné volby:
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="258"/>
         <source>Backspace</source>
-        <translation type="unfinished"></translation>
+        <translation>Backspace</translation>
     </message>
     <message>
         <location filename="sources/qetdiagrameditor.cpp" line="280"/>
@@ -3450,7 +3450,7 @@ Dostupné volby:
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="155"/>
         <source>Backspace</source>
-        <translation type="unfinished"></translation>
+        <translation>Backspace</translation>
     </message>
     <message>
         <location filename="sources/editor/qetelementeditor.cpp" line="163"/>
@@ -3987,7 +3987,7 @@ Dostupné volby:
     <message>
         <location filename="sources/exportdialog.cpp" line="672"/>
         <source>Exporter vers le presse-papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést do schránky</translation>
     </message>
     <message>
         <location filename="sources/qet.cpp" line="235"/>
