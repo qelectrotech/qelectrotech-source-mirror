@@ -67,7 +67,7 @@ RESOURCES += qelectrotech.qrc
 RC_FILE = ico/windows_icon/qelectrotech.rc
 
 # Fichiers de traduction qui seront installes
-TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts
+TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts lang/qet_cs.ts
 TRANSLATIONS +=                lang/qt_es.ts  lang/qt_fr.ts  lang/qt_ru.ts  lang/qt_pt.ts
 
 # Modules Qt utilises par l'application
