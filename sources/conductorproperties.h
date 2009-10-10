@@ -75,6 +75,8 @@ class ConductorProperties {
 	QColor color;
 	/// texte affiche si le conducteur est multifilaire
 	QString text;
+	/// style du conducteur (Qt::SolidLine ou Qt::DashLine)
+	Qt::PenStyle style;
 	
 	/// proprietes si le conducteur est unifilaire
 	SingleLineProperties singleLineProperties;
@@ -89,5 +91,9 @@ class ConductorProperties {
 	// operateurs
 	int operator==(const ConductorProperties &);
 	int operator!=(const ConductorProperties &);
+	
+	private:
+	void readStyle(const QString &);
+	QString writeStyle() const;
 };
 #endif

@@ -467,8 +467,10 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	qp -> setBrush(conductor_brush);
 	QPen final_conductor_pen = conductor_pen;
 	
-	// modification du QPen generique pour lui affecter la couleur adequate
+	// modification du QPen generique pour lui affecter la couleur et le style adequats
 	final_conductor_pen.setColor(final_conductor_color);
+	final_conductor_pen.setStyle(properties_.style);
+	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // meilleur rendu des pointilles
 	
 	// utilisation d'un trait "cosmetique" en-dessous d'un certain zoom
 	if (options && options -> levelOfDetail < 1.0) {
@@ -518,8 +520,9 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	// dessine les eventuelles jonctions
 	QList<QPointF> junctions_list = junctions();
 	if (!junctions_list.isEmpty()) {
-		QBrush junction_brush(Qt::SolidPattern);
-		junction_brush.setColor(final_conductor_color);
+		final_conductor_pen.setStyle(Qt::SolidLine);
+		QBrush junction_brush(final_conductor_color, Qt::SolidPattern);
+		qp -> setPen(final_conductor_pen);
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {

@@ -102,10 +102,13 @@ void ConductorPropertiesWidget::buildInterface() {
 	QHBoxLayout *color_layout = new QHBoxLayout();
 	QLabel *text1 = new QLabel(tr("Couleur :"));
 	color_button = new QPushButton("");
+	dashed_checkbox = new QCheckBox(tr("Trait en pointill\351s"));
 	
 	color_layout -> addWidget(text1);
 	color_layout -> addWidget(color_button);
+	
 	setColorButton(properties_.color);
+	dashed_checkbox -> setChecked(properties_.style == Qt::DashLine);
 	
 	groupbox_layout -> addWidget(simple);
 	groupbox_layout -> addWidget(multiline);
@@ -114,6 +117,7 @@ void ConductorPropertiesWidget::buildInterface() {
 	groupbox_layout -> addLayout(singleline_layout1);
 	
 	groupbox2_layout -> addLayout(color_layout);
+	groupbox2_layout -> addWidget(dashed_checkbox);
 	
 	radio_buttons = new QButtonGroup(this);
 	radio_buttons -> addButton(simple,     ConductorProperties::Simple);
@@ -134,6 +138,7 @@ void ConductorPropertiesWidget::buildConnections() {
 	connect(phase_slider,      SIGNAL(valueChanged(int)),            this,          SLOT(updateConfig()));
 	connect(radio_buttons,     SIGNAL(buttonClicked(int)),           this,          SLOT(updateConfig()));
 	connect(text_field,        SIGNAL(textChanged(const QString &)), this,          SLOT(updateConfig()));
+	connect(dashed_checkbox,   SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
 	connect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor()));
 }
 
@@ -176,7 +181,8 @@ void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(phase_slider,      SIGNAL(valueChanged(int)),            this,          SLOT(updateConfig()));
 	disconnect(radio_buttons,     SIGNAL(buttonClicked(int)),           this,          SLOT(updateConfig()));
 	disconnect(text_field,        SIGNAL(textChanged(const QString &)), this,          SLOT(updateConfig()));
-	disconnect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor())); 
+	disconnect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor()));
+	disconnect(dashed_checkbox,   SIGNAL(toggled(bool)),                this,          SLOT(updateConfig()));
 }
 
 /// Destructeur
@@ -187,6 +193,7 @@ ConductorPropertiesWidget::~ConductorPropertiesWidget() {
 void ConductorPropertiesWidget::updateConfig() {
 	properties_.type = static_cast<ConductorProperties::ConductorType>(radio_buttons -> checkedId());
 	properties_.color = colorButton();
+	properties_.style = dashed_checkbox -> isChecked() ? Qt::DashLine : Qt::SolidLine;
 	properties_.text = text_field -> text();
 	properties_.singleLineProperties.hasGround = ground_checkbox -> isChecked();
 	properties_.singleLineProperties.hasNeutral = neutral_checkbox -> isChecked();
@@ -201,6 +208,7 @@ void ConductorPropertiesWidget::updateDisplay() {
 	
 	setConductorType(properties_.type);
 	setColorButton(properties_.color);
+	dashed_checkbox -> setChecked(properties_.style == Qt::DashLine);
 	text_field -> setText(properties_.text);
 	ground_checkbox -> setChecked(properties_.singleLineProperties.hasGround);
 	neutral_checkbox -> setChecked(properties_.singleLineProperties.hasNeutral);
