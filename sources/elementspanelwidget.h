@@ -41,7 +41,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *delete_collection;
-	QAction *new_element,  *edit_element,  *delete_element;
+	QAction *new_element, *import_element,  *edit_element,  *delete_element;
 	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
@@ -70,6 +70,7 @@ class ElementsPanelWidget : public QWidget {
 	void deleteDiagram();
 	void newCategory();
 	void newElement();
+	void importElement();
 	void editCategory();
 	void editElement();
 	void deleteCategory();
