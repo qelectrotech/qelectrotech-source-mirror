@@ -229,13 +229,23 @@ void ElementsPanelWidget::newElement() {
 	Import d'element en passant par l'editeur
 */
 void ElementsPanelWidget::importElement() {
-	QString fileName = QFileDialog::getOpenFileName(this, tr("Importer un element"), "", tr("Fichiers element (*.elmt)"));
+	QString fileName = QFileDialog::getOpenFileName(
+		this,
+		tr("Importer un \351l\351ment"),
+		"",
+		tr(
+			"\311l\351ments QElectroTech (*.elmt);;"
+			"Fichiers XML (*.xml);;"
+			"Tous les fichiers (*)",
+			"filetypes allowed when opening an element file"
+		)
+	);
+	
 	// Ouverture de l'element dans l'editeur pour pouvoir ensuite l'enregistrer dans la categorie voulue
-	if(!fileName.isEmpty())
-	{
+	if (!fileName.isEmpty()) {
 		QETElementEditor *editor = new QETElementEditor();
-        editor -> fromFile( fileName );
-        editor -> show();
+		editor -> fromFile(fileName);
+		editor -> show();
 	}
 }
 
