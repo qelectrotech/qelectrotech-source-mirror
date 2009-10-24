@@ -392,7 +392,7 @@ bool QETProject::isReadOnly() const {
 }
 
 /**
-	@param bool read_only true pour passer le projet (schemas et collection)
+	@param read_only true pour passer le projet (schemas et collection)
 	en mode Read Only, false sinon.
 */
 void QETProject::setReadOnly(bool read_only) {
@@ -468,7 +468,7 @@ ElementsCategory *QETProject::integrationCategory() const {
 	integrateElement(const QString &, MoveElementsHandler *, QString &)
 	en lui passant un MoveElementsHandler approprie.
 	@param elmt_location Emplacement de l'element a integrer
-	@param error_message Reference vers une chaine de caractere qui contiendra
+	@param error_msg Reference vers une chaine de caractere qui contiendra
 	eventuellement un message d'erreur
 	@return L'emplacement de l'element apres integration, ou une chaine vide si
 	l'integration a echoue.
@@ -713,7 +713,7 @@ void QETProject::readProjectXml() {
 		
 		setTitle(root_elmt.attribute("title"));
 	} else if (root_elmt.tagName() == "diagram") {
-		/// @todo gerer l'ouverture de fichiers <diagram />
+		/// @todo gerer l'ouverture de fichiers dont la racine est un element \<diagram\>
 	} else {
 		state_ = ProjectParsingFailed;
 	}

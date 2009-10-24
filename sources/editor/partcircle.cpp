@@ -43,7 +43,8 @@ PartCircle::~PartCircle() {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartCircle::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
+void PartCircle::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+	Q_UNUSED(widget);
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);

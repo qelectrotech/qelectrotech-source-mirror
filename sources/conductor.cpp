@@ -186,13 +186,15 @@ void Conductor::segmentsToPath() {
 }
 
 /**
-	Gere les updates 
+	Gere les updates
 	@param p1 Coordonnees du point d'amarrage de la borne 1
 	@param o1 Orientation de la borne 1
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conductor::priv_modifieConductor(const QPointF &p1, QET::Orientation, const QPointF &p2, QET::Orientation) {
+void Conductor::priv_modifieConductor(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
+	Q_UNUSED(o1);
+	Q_UNUSED(o2);
 	
 	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
 	
@@ -447,7 +449,8 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, QET::Orientation term
 	@param options Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
-void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget */*qw*/) {
+void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw) {
+	Q_UNUSED(qw);
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
@@ -764,6 +767,7 @@ QPainterPath Conductor::shape() const {
 	@param tobound valeur a borner
 	@param bound1 borne 1
 	@param bound2 borne 2
+	@param space marge interne ajoutee
 	@return La valeur bornee
 */
 qreal Conductor::conductor_bound(qreal tobound, qreal bound1, qreal bound2, qreal space) {

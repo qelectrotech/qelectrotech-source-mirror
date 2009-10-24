@@ -427,9 +427,10 @@ void ElementScene::drawBackground(QPainter *p, const QRectF &r) {
 /**
 	Dessine l'arriere-plan de l'editeur, cad l'indicateur de hotspot.
 	@param p Le QPainter a utiliser pour dessiner
-	@param r Le rectangle de la zone a dessiner
+	@param rect Le rectangle de la zone a dessiner
 */
-void ElementScene::drawForeground(QPainter *p, const QRectF &) {
+void ElementScene::drawForeground(QPainter *p, const QRectF &rect) {
+	Q_UNUSED(rect);
 	p -> save();
 	
 	// desactive tout antialiasing, sauf pour le texte
@@ -448,7 +449,7 @@ void ElementScene::drawForeground(QPainter *p, const QRectF &) {
 	A partir d'un evenement souris, cette methode regarde si la touche shift est
 	enfoncee ou non. Si oui, elle laisse le comportement en cours (cercle,
 	texte, polygone, ...). Si non, elle repasse en mode normal / selection.
-	@param e objet decrivant l'evenement souris
+	@param event objet decrivant l'evenement souris
 */
 void ElementScene::endCurrentBehavior(const QGraphicsSceneMouseEvent *event) {
 	if (!(event -> modifiers() & Qt::ShiftModifier)) {
@@ -473,8 +474,8 @@ int ElementScene::yGrid() const {
 }
 
 /**
-	@param x_grid Taille horizontale de la grille
-	@param y_grid Taille verticale de la grille
+	@param x_g Taille horizontale de la grille
+	@param y_g Taille verticale de la grille
 */
 void ElementScene::setGrid(int x_g, int y_g) {
 	x_grid = x_g ? x_g : 1;
@@ -483,7 +484,7 @@ void ElementScene::setGrid(int x_g, int y_g) {
 
 /**
 	Exporte l'element en XML
-	@param diagram Booleen (a vrai par defaut) indiquant si le XML genere doit
+	@param all_parts Booleen (a vrai par defaut) indiquant si le XML genere doit
 	representer tout l'element ou seulement les elements selectionnes
 	@return un document XML decrivant l'element
 */
@@ -1102,7 +1103,8 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 	different de 0, un message d'erreur sera stocke dedans si necessaire
 	@return Le contenu ajoute
 */
-ElementContent ElementScene::addContent(const ElementContent &content, QString */*error_message*/) {
+ElementContent ElementScene::addContent(const ElementContent &content, QString *error_message) {
+	Q_UNUSED(error_message);
 	foreach(QGraphicsItem *part, content) {
 		addItem(part);
 	}
@@ -1117,7 +1119,8 @@ ElementContent ElementScene::addContent(const ElementContent &content, QString *
 	different de 0, un message d'erreur sera stocke dedans si necessaire
 	@return Le contenu ajoute
 */
-ElementContent ElementScene::addContentAtPos(const ElementContent &content, const QPointF &pos, QString */*error_message*/) {
+ElementContent ElementScene::addContentAtPos(const ElementContent &content, const QPointF &pos, QString *error_message) {
+	Q_UNUSED(error_message);
 	// calcule le boundingRect du contenu a ajouter
 	QRectF bounding_rect = elementContentBoundingRect(content);
 	

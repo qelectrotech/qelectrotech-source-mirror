@@ -22,6 +22,7 @@
 /**
 	Constructeur
 	@param uri Chemin du fichier contenant la definition de l'element
+	@param category Categorie parente
 	@param collection collection parente
 */
 FileElementDefinition::FileElementDefinition(const QString &uri, FileElementsCategory *category, FileElementsCollection *collection) :

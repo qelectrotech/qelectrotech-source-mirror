@@ -1654,7 +1654,8 @@ void QETDiagramEditor::diagramIsAboutToBeRemoved(DiagramView *dv) {
 	Gere le retrait d'un schema dans un projet apres que le retrait soit effectif
 	@param dv DiagramView concerne
 */
-void QETDiagramEditor::diagramWasRemoved(DiagramView *) {
+void QETDiagramEditor::diagramWasRemoved(DiagramView *dv) {
+	Q_UNUSED(dv);
 	can_update_actions = true;
 }
 

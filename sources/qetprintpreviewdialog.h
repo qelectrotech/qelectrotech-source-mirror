@@ -25,8 +25,7 @@ class ExportPropertiesWidget;
 class QETProject;
 /**
 	Cette classe represente un dialogue permettant d'affiner les options
-	d'impression d'un schema a l'aide d'un apercu de ce qu'elle donnerait sur
-	papier.
+	d'impression d'un projet a l'aide d'un apercu du resultat sur papier.
 */
 class QETPrintPreviewDialog : public QDialog {
 	Q_OBJECT

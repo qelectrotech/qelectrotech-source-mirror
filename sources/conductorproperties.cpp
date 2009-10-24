@@ -140,7 +140,8 @@ void SingleLineProperties::drawGround(QPainter *painter, QET::ConductorSegmentTy
 	@param center centre du cercle
 	@param size diametre du cercle
 */
-void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentType, QPointF center, qreal size) {
+void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentType direction, QPointF center, qreal size) {
+	Q_UNUSED(direction);
 	painter -> save();
 	
 	// prepare le QPainter

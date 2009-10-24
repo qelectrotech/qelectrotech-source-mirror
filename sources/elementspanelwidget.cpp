@@ -515,7 +515,7 @@ void ElementsPanelWidget::launchElementEditor(const ElementsLocation &location) 
 
 /**
 	Lance l'editeur de categorie pour la categorie path
-	@param path Emplacement de la categorie a editer
+	@param location Emplacement de la categorie a editer
 */
 void ElementsPanelWidget::launchCategoryEditor(const ElementsLocation &location) {
 	ElementsCategoryEditor ece(location, true);

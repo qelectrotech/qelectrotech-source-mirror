@@ -53,7 +53,7 @@ class DiagramPrintDialog : public QWidget {
 	void saveReloadDiagramParameters(Diagram *, const ExportProperties, bool);
 	
 	private slots:
-	void print(const QList<Diagram *> &, bool, const ExportProperties, QPrinter *);
+	void print(const QList<Diagram *> &, bool, const ExportProperties);
 	void printDiagram(Diagram *, bool, const ExportProperties, QPainter *, QPrinter * = 0);
 	void updatePrintTypeDialog();
 	void acceptPrintTypeDialog();

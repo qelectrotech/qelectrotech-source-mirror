@@ -406,7 +406,8 @@ void ElementsPanel::dropEvent(QDropEvent *e) {
 	Gere le debut des drag'n drop
 	@param supportedActions Les actions supportees
 */
-void ElementsPanel::startDrag(Qt::DropActions) {
+void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
+	Q_UNUSED(supportedActions);
 	// recupere l'emplacement selectionne
 	ElementsLocation location = selectedLocation();
 	if (location.isNull()) return;
@@ -488,7 +489,6 @@ QTreeWidgetItem *ElementsPanel::addProject(QTreeWidgetItem *qtwi_parent, QETProj
 	Methode permettant d'ajouter un schema au panel d'elements.
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere le schema
 	@param diagram Schema a inserer dans le panel d'elements
-	@param diagram_name Nom a utiliser pour le projet
 	@return Le QTreeWidgetItem insere le plus haut
 */
 QTreeWidgetItem *ElementsPanel::addDiagram(QTreeWidgetItem *qtwi_parent, Diagram *diagram) {
@@ -546,7 +546,7 @@ QTreeWidgetItem *ElementsPanel::addCollection(QTreeWidgetItem *qtwi_parent, Elem
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere la categorie
 	@param category Categorie d'elements a inserer - si category vaut 0, cette
 	methode retourne 0.
-	@param name Parametre facultatif permettant de forcer le nom affiche
+	@param cat_name Parametre facultatif permettant de forcer le nom affiche
 	S'il n'est pas precise, la methode utilise le nom declare par la categorie.
 	@param icon Icone a utiliser pour l'affichage de la categorie
 	Si elle n'est pas precisee, une icone par defaut est utilisee
@@ -585,8 +585,8 @@ QTreeWidgetItem *ElementsPanel::addCategory(QTreeWidgetItem *qtwi_parent, Elemen
 	Methode privee permettant d'ajouter un element au panel d'elements
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
 	@param element Element a inserer
-	@param name Parametre facultatif permettant de forcer le nom affiche
-	S'il n'est pas precise, la methode utilise le nom declare par la categorie.
+	@param elmt_name Parametre facultatif permettant de forcer le nom affiche
+	S'il n'est pas precise, la methode utilise le nom declare par l'element.
 	Une icone sera generee a partir de l'element.
 	@return Le QTreeWidgetItem insere
 */
@@ -943,8 +943,8 @@ QString ElementsPanel::diagramTitleToDisplay(Diagram *diagram) const {
 }
 
 /**
-	@param une liste de QTreeWidgetItem pour lesquels il faut s'assurer que eux
-	et leurs parents sont visibles
+	@param items une liste de QTreeWidgetItem pour lesquels il faut s'assurer
+	que eux et leurs parents sont visibles
 */
 void ElementsPanel::ensureHierarchyIsVisible(QList<QTreeWidgetItem *> items) {
 	// remonte l'arborescence pour lister les categories contenant les elements filtres

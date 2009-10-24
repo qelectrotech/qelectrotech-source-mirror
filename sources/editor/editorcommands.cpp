@@ -62,8 +62,8 @@ void DeletePartsCommand::redo() {
 /*** CutPartsCommand ***/
 /**
 	Constructeur
-	@param scene ElementScene concernee
-	@param parts Liste des parties collees
+	@param view ElementView concernee
+	@param c Liste des parties collees
 	@param parent QUndoCommand parent
 */
 PastePartsCommand::PastePartsCommand(

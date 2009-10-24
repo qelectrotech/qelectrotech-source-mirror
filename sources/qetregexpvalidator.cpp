@@ -19,7 +19,7 @@
 
 /**
 	Constructeur
-	@param object QObject parent
+	@param parent QObject parent
 */
 QETRegExpValidator::QETRegExpValidator(QObject *parent) : QRegExpValidator(parent) {
 }
@@ -27,7 +27,7 @@ QETRegExpValidator::QETRegExpValidator(QObject *parent) : QRegExpValidator(paren
 /**
 	Constructeur
 	@param regexp Expression reguliere a valider
-	@param object QObject parent
+	@param parent QObject parent
 */
 QETRegExpValidator::QETRegExpValidator(const QRegExp &regexp, QObject *parent) : QRegExpValidator(regexp, parent) {
 }

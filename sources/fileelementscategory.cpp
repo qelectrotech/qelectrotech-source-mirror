@@ -198,7 +198,7 @@ QList<ElementDefinition *> FileElementsCategory::elements() {
 
 /**
 	@return l'element correspondant au chemin virtuel elmt_path, ou 0 en cas d'echec
-	@param cat_path Chemin virtuel de l'element voulu
+	@param elmt_path Chemin virtuel de l'element voulu
 */
 ElementDefinition *FileElementsCategory::element(const QString &elmt_path) {
 	// recupere les differentes parties du chemin

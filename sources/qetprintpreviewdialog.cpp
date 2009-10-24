@@ -24,8 +24,10 @@
 
 /**
 	Constructeur
+	@param project Projet a imprimer
 	@param printer Imprimante a utiliser pour
 	@param widget  Widget parent
+	@param f       Flags passes au constructeur de QDialog puis QWidget
 */
 QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *printer, QWidget *widget, Qt::WindowFlags f) :
 	QDialog(widget, f),
@@ -124,7 +126,8 @@ void QETPrintPreviewDialog::useFullPage(bool full_page) {
 	Fait tenir ou non chaque schema sur une page
 	@param fit_diagram true pour adapter chaque schema sur une page, false sinon
 */
-void QETPrintPreviewDialog::fitDiagramToPage(bool /*fit_diagram*/) {
+void QETPrintPreviewDialog::fitDiagramToPage(bool fit_diagram) {
+	Q_UNUSED(fit_diagram);
 	preview_ -> updatePreview();
 	updateZoomList();
 }

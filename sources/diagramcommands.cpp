@@ -556,6 +556,8 @@ void ChangeInsetCommand::redo() {
 /**
 	Constructeur
 	@param dia Schema modifie
+	@param old_bp Anciennes proprietes du cadre du schema
+	@param new_bp Nouvelles proprietes du cadre du schema
 	@param parent QUndoCommand parent
 */
 ChangeBorderCommand::ChangeBorderCommand(Diagram *dia, const BorderProperties &old_bp, const BorderProperties &new_bp, QUndoCommand *parent) :

@@ -255,7 +255,6 @@ void CustomElement::paint(QPainter *qp, const QStyleOptionGraphicsItem *options)
 	formes peuvent avoir un attribut style. @see setPainterStyle
 	@param e L'element XML a analyser
 	@param qp Le QPainter a utiliser pour dessiner l'element perso
-	@param s Le schema sur lequel sera affiche l'element perso
 	@return true si l'analyse reussit, false sinon
 */
 bool CustomElement::parseElement(QDomElement &e, QPainter &qp) {

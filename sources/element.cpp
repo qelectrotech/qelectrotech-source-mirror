@@ -188,7 +188,8 @@ bool Element::setOrientation(QET::Orientation o) {
 	@param painter Le QPainter a utiliser pour dessiner les axes
 	@param options Les options de style a prendre en compte
 */
-void Element::drawAxes(QPainter *painter, const QStyleOptionGraphicsItem *) {
+void Element::drawAxes(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+	Q_UNUSED(options);
 	painter -> setPen(Qt::blue);
 	painter -> drawLine(0, 0, 10, 0);
 	painter -> drawLine(7,-3, 10, 0);
@@ -203,10 +204,11 @@ void Element::drawAxes(QPainter *painter, const QStyleOptionGraphicsItem *) {
 
 /**
 	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
-	@param qp Le QPainter a utiliser pour dessiner les bornes.
+	@param painter Le QPainter a utiliser pour dessiner les bornes.
 	@param options Les options de style a prendre en compte
  */
-void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *) {
+void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+	Q_UNUSED(options);
 	painter -> save();
 	// Annulation des renderhints
 	painter -> setRenderHint(QPainter::Antialiasing,          false);

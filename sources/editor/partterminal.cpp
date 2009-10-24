@@ -86,11 +86,12 @@ QWidget *PartTerminal::elementInformations() {
 
 /**
 	Dessine la borne
-	@param painter QPainter a utiliser pour rendre le dessin
+	@param p QPainter a utiliser pour rendre le dessin
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *) {
+void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+	Q_UNUSED(widget);
 	p -> save();
 	
 	// annulation des renderhints

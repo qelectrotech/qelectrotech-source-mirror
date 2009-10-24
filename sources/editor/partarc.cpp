@@ -48,7 +48,8 @@ PartArc::~PartArc() {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
+void PartArc::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+	Q_UNUSED(widget);
 	applyStylesToQPainter(*painter);
 	// enleve systematiquement la couleur de fond
 	painter -> setBrush(Qt::NoBrush);
