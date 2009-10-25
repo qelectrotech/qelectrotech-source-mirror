@@ -71,6 +71,7 @@ namespace QET {
 		extern QIcon EditRedo;
 		extern QIcon EditSelectAll;
 		extern QIcon EditUndo;
+		extern QIcon Element;
 		extern QIcon ElementDelete;
 		extern QIcon ElementEdit;
 		extern QIcon ElementNew;
@@ -140,6 +141,7 @@ namespace QET {
 		extern QIcon ViewRefresh;
 		extern QIcon West;
 		extern QIcon WindowNew;
+		extern QIcon XmlTextFile;
 		extern QIcon ZoomFitBest;
 		extern QIcon ZoomIn;
 		extern QIcon ZoomOriginal;

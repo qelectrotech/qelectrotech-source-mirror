@@ -342,59 +342,59 @@
 <context>
     <name>DiagramPrintDialog</name>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="113"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="112"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
         <translation>Volby pro tisk</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="193"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="194"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
         <translation>Který druh tisku si přejete?</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="198"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="199"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
         <translation>Tisk na fyzické tiskárně</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="199"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="200"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
         <translation>Tisk do souboru PDF</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="200"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="201"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
         <translation>Tisk do souboru PostScript (PS)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="205"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="206"/>
         <source>Choix du type d&apos;impression</source>
         <translation>Výběr druhu tisku</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="286"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="287"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
         <translation>Chybějící soubor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="287"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="288"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
         <translation>Musíte zadat cestu pro vytvoření souboru PDF/PS.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="306"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="307"/>
         <source>Fichiers PDF (*.pdf)</source>
         <comment>file filter</comment>
         <translation>Soubory PDF (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="310"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="311"/>
         <source>Fichiers PostScript (*.ps)</source>
         <comment>file filter</comment>
         <translation>Soubory PostScript (*.ps)</translation>
@@ -403,125 +403,125 @@
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="328"/>
+        <location filename="../sources/diagramview.cpp" line="330"/>
         <source>Schéma sans titre</source>
         <translation>Nákres bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="61"/>
+        <location filename="../sources/diagramview.cpp" line="62"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Vložit zde</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="330"/>
+        <location filename="../sources/diagramview.cpp" line="332"/>
         <source>Schéma %1</source>
         <comment>%1 is a diagram title</comment>
         <translation>Nákres %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="352"/>
+        <location filename="../sources/diagramview.cpp" line="354"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Vlastnosti nákresu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="591"/>
+        <location filename="../sources/diagramview.cpp" line="593"/>
         <source>Propriétés de la sélection</source>
         <translation>Vlastnosti výběru</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="593"/>
+        <location filename="../sources/diagramview.cpp" line="595"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Výběr obsahuje %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="614"/>
+        <location filename="../sources/diagramview.cpp" line="616"/>
         <source>Élément manquant</source>
         <translation>Chybějící prvek</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="616"/>
+        <location filename="../sources/diagramview.cpp" line="618"/>
         <source>Élément</source>
         <translation>Prvek</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="621"/>
+        <location filename="../sources/diagramview.cpp" line="623"/>
         <source>Nom : %1
 </source>
         <translation>Název: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="622"/>
+        <location filename="../sources/diagramview.cpp" line="624"/>
         <source>Position : %1
 </source>
         <translation>Poloha: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="623"/>
+        <location filename="../sources/diagramview.cpp" line="625"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Velikost: %1×%2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="624"/>
+        <location filename="../sources/diagramview.cpp" line="626"/>
         <source>Bornes : %1
 </source>
         <translation>Zakončení: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="625"/>
+        <location filename="../sources/diagramview.cpp" line="627"/>
         <source>Connexions internes : %1
 </source>
         <translation>Vnitřní spojení: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="625"/>
+        <location filename="../sources/diagramview.cpp" line="627"/>
         <source>Autorisées</source>
         <translation>Povoleno</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="625"/>
+        <location filename="../sources/diagramview.cpp" line="627"/>
         <source>Interdites</source>
         <translation>Zakázáno</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="626"/>
+        <location filename="../sources/diagramview.cpp" line="628"/>
         <source>Champs de texte : %1
 </source>
         <translation>Textová pole: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="629"/>
+        <location filename="../sources/diagramview.cpp" line="631"/>
         <source>Emplacement : %1
 </source>
         <translation>Umístění: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="633"/>
+        <location filename="../sources/diagramview.cpp" line="635"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Vlastnosti vybraného prvku</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="634"/>
+        <location filename="../sources/diagramview.cpp" line="636"/>
         <source>Retrouver dans le panel</source>
         <translation>Najít v panelu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="635"/>
+        <location filename="../sources/diagramview.cpp" line="637"/>
         <source>Éditer l&apos;élément</source>
         <translation>Upravit prvek</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="696"/>
+        <location filename="../sources/diagramview.cpp" line="699"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="761"/>
+        <location filename="../sources/diagramview.cpp" line="764"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Upravit výchozí vlastnosti vodiče</translation>
@@ -538,12 +538,12 @@
 <context>
     <name>ElementDefinition</name>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="369"/>
+        <location filename="../sources/elementdefinition.cpp" line="370"/>
         <source>L&apos;élément cible n&apos;a pu être créé.</source>
         <translation>Cílový prvek se nepodařilo vytvořit.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="451"/>
+        <location filename="../sources/elementdefinition.cpp" line="452"/>
         <source>La suppression de cet élément a échoué.</source>
         <translation>Prvek se nepodařilo smazat.</translation>
     </message>
@@ -751,53 +751,53 @@
         <translation>mnohoúhelník</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="803"/>
+        <location filename="../sources/editor/elementscene.cpp" line="804"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
         <translation>Výchozí natočení je natočením, ve kterém se uskuteční vytvoření prvku.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="852"/>
+        <location filename="../sources/editor/elementscene.cpp" line="853"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
         <translation>Název prvku můžete zadat v několika jazycích.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="814"/>
+        <location filename="../sources/editor/elementscene.cpp" line="815"/>
         <source>Autoriser les connexions internes</source>
         <translation>Povolit vnitřní spojení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1005"/>
-        <location filename="../sources/editor/elementscene.cpp" line="1059"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1006"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1060"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
         <translation>Tento XML dokument není vymezením prvku.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1019"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1020"/>
         <source>Les dimensions ou le point de saisie ne sont pas valides.</source>
         <comment>error message</comment>
         <translation>Velikost nebo horká půda nejsou platné.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="1034"/>
+        <location filename="../sources/editor/elementscene.cpp" line="1035"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
         <translation>Natočení nejsou platná.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="756"/>
+        <location filename="../sources/editor/elementscene.cpp" line="757"/>
         <source>Éditer la taille et le point de saisie</source>
         <comment>window title</comment>
         <translation>Upravit velikost nebo horkou půdu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="799"/>
+        <location filename="../sources/editor/elementscene.cpp" line="800"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
         <translation>Upravit natočení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/elementscene.cpp" line="848"/>
+        <location filename="../sources/editor/elementscene.cpp" line="849"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
         <translation>Upravit názvy</translation>
@@ -1061,7 +1061,7 @@ Provedené změny budou konečné.</translation>
         <translation>Uživatelova sbírka</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="482"/>
+        <location filename="../sources/elementspanel.cpp" line="483"/>
         <source>Collection projet</source>
         <translation>Sbírka k projektu</translation>
     </message>
@@ -1111,26 +1111,31 @@ Provedené změny budou konečné.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
+        <source>Importer un élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
         <source>Éditer l&apos;élément</source>
         <translation>Upravit prvek</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Smazat prvek</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="284"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="301"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Použijte tohoto správce pro přidání, smazání nebo úpravu skupin.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Filtrer : </source>
         <translation>Filtr: </translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Effacer le filtre</source>
         <translation>Vymazat filtr</translation>
     </message>
@@ -1140,48 +1145,48 @@ Provedené změny budou konečné.</translation>
         <translation>Vyprázdnit sbírku</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Fermer ce projet</source>
         <translation>Zavřít tento projekt</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ajouter un schéma</source>
         <translation>Přidat nákres</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Supprimer ce schéma</source>
         <translation>Smazat tento nákres</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
         <source>Propriétés du projet</source>
         <translation>Vlastnosti projektu</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Déplacer dans cette catégorie</source>
         <translation>Přesunout do této skupiny</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Copier dans cette catégorie</source>
         <translation>Kopírovat do této skupiny</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Annuler</source>
         <translation>Zpět</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="281"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="298"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
         <translation>Správce skupin</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Propriétés du schéma</source>
         <translation>Vlastnosti nákresu</translation>
     </message>
@@ -1579,37 +1584,37 @@ Provedené změny budou konečné.</translation>
 <context>
     <name>IntegrationMoveElementsHandler</name>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="124"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="125"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
         <translation>Prvek již byl začleněn do projektu. Nicméně se zdá, že verze, kterou hodláte upustit, je jiná. Co si přejete, aby se udělalo?</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="136"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
         <source>Utiliser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
         <translation>Použít již začleněný prvek</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="145"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="146"/>
         <source>Intégrer l&apos;élément déposé</source>
         <comment>dialog content</comment>
         <translation>Začlenit upuštěný prvek</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="155"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="156"/>
         <source>Écraser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
         <translation>Vymazat již začleněný prvek</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="165"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="166"/>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
         <translation>Nechat oba dva prvky žít vedle sebe</translation>
     </message>
     <message>
-        <location filename="../sources/integrationmoveelementshandler.cpp" line="120"/>
+        <location filename="../sources/integrationmoveelementshandler.cpp" line="121"/>
         <source>Intégration d&apos;un élément</source>
         <translation>Začlenění prvku</translation>
     </message>
@@ -2183,82 +2188,82 @@ Provedené změny budou konečné.</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="934"/>
+        <location filename="../sources/qetapp.cpp" line="938"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Ukončit</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="935"/>
+        <location filename="../sources/qetapp.cpp" line="939"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Skrýt</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="936"/>
+        <location filename="../sources/qetapp.cpp" line="940"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Ukázat</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="937"/>
+        <location filename="../sources/qetapp.cpp" line="941"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Skrýt všechny editory nákresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="938"/>
+        <location filename="../sources/qetapp.cpp" line="942"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Ukázat všechny editory nákresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="939"/>
+        <location filename="../sources/qetapp.cpp" line="943"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Skrýt všechny editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="940"/>
+        <location filename="../sources/qetapp.cpp" line="944"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Ukázat všechny editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="941"/>
+        <location filename="../sources/qetapp.cpp" line="945"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Nový editor nákresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="942"/>
+        <location filename="../sources/qetapp.cpp" line="946"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Nový editor prvku</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="944"/>
+        <location filename="../sources/qetapp.cpp" line="948"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Uzavřít QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="945"/>
+        <location filename="../sources/qetapp.cpp" line="949"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Zmenší QElectroTech do systémové oblasti panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="946"/>
+        <location filename="../sources/qetapp.cpp" line="950"/>
         <source>Restaurer QElectroTech</source>
         <translation>Ukázat QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="979"/>
+        <location filename="../sources/qetapp.cpp" line="983"/>
         <source>Éditeurs de schémas</source>
         <translation>Editory nákresu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="995"/>
+        <location filename="../sources/qetapp.cpp" line="999"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editory prvků</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1056"/>
+        <location filename="../sources/qetapp.cpp" line="1060"/>
         <source>Usage : </source>
         <translation>Použití: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1057"/>
+        <location filename="../sources/qetapp.cpp" line="1061"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2275,7 +2280,7 @@ Dostupné volby:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1056"/>
+        <location filename="../sources/qetapp.cpp" line="1060"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2284,58 +2289,58 @@ Dostupné volby:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1063"/>
+        <location filename="../sources/qetapp.cpp" line="1067"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Stanovit adresář pro sbírku s prvky
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1066"/>
+        <location filename="../sources/qetapp.cpp" line="1070"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Stanovit adresář s nastavením
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1068"/>
+        <location filename="../sources/qetapp.cpp" line="1072"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Stanovit adresář s jazykovými soubory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="89"/>
+        <location filename="../sources/qetapp.cpp" line="93"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se... Editor nákresů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="92"/>
+        <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se... Otevření souborů</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="863"/>
+        <location filename="../sources/qetapp.cpp" line="867"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="930"/>
+        <location filename="../sources/qetapp.cpp" line="934"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Nahrává se... Ikona v systémové oblasti panelu</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="932"/>
+        <location filename="../sources/qetapp.cpp" line="936"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="960"/>
+        <location filename="../sources/qetapp.cpp" line="964"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -3031,17 +3036,17 @@ Dostupné volby:
         <translation>Zobrazí QElectroTech v režimu na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1689"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1690"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Tento prvek nelze najít v panelu, protože je, jak se zdá, upravován v jiném okně</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1695"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1696"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Tento prvek nelze najít v panelu... panel se znovu nahrává...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1707"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1708"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Tento prvek nelze najít v panelu</translation>
     </message>
@@ -3158,132 +3163,132 @@ Dostupné volby:
         <translation>Zrušit výběr</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="88"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="90"/>
         <source>Inverser la sélection</source>
         <translation>Obrátit výběr</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="89"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="91"/>
         <source>&amp;Supprimer</source>
         <translation>&amp;Smazat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="94"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="96"/>
         <source>Éditer la taille et le point de saisie</source>
         <translation>Upravit velikost a horkou půdu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="95"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="97"/>
         <source>Éditer les noms</source>
         <translation>Upravit názvy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="96"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="98"/>
         <source>Éditer les orientations</source>
         <translation>Upravit natočení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="101"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="103"/>
         <source>Déplacer un objet</source>
         <translation>Přesunout předmět</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="102"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="104"/>
         <source>Ajouter une ligne</source>
         <translation>Přidat čáru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="104"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="106"/>
         <source>Ajouter une ellipse</source>
         <translation>Přidat elipsu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="105"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="107"/>
         <source>Ajouter un cercle</source>
         <translation>Přidat kruh</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="106"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="108"/>
         <source>Ajouter un polygone</source>
         <translation>Přidat mnohoúhelník</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="107"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="109"/>
         <source>Ajouter du texte</source>
         <translation>Přidat text</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="108"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="110"/>
         <source>Ajouter un arc de cercle</source>
         <translation>Přidat oblouk kruhu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="109"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="111"/>
         <source>Ajouter une borne</source>
         <translation>Přidat zakončení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="110"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="112"/>
         <source>Ajouter un champ de texte</source>
         <translation>Přidat textové pole</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="131"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="133"/>
         <source>Annuler</source>
         <translation>Zpět</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="132"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="134"/>
         <source>Refaire</source>
         <translation>Znovu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="144"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
         <source>Ctrl+Shift+A</source>
         <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
         <source>Ctrl+I</source>
         <translation>Ctrl+I</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="317"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="321"/>
         <source>Fichier</source>
         <translation>Soubor</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="318"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="322"/>
         <source>Édition</source>
         <translation>Úpravy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="319"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="323"/>
         <source>Affichage</source>
         <translation>Zobrazení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="320"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="324"/>
         <source>Outils</source>
         <translation>Nástroje</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="322"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="326"/>
         <source>Aide</source>
         <translation>Nápověda</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="375"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="385"/>
         <source>Afficher</source>
         <translation>Zobrazit</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="620"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="630"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -3293,73 +3298,73 @@ Dostupné volby:
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="630"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="640"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
         <source>Suppr</source>
         <translation>Del</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="165"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="167"/>
         <source>Ctrl+E</source>
         <translation>Ctrl+E</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="166"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="168"/>
         <source>Ctrl+R</source>
         <translation>Ctrl+R</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="167"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="169"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="97"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="99"/>
         <source>Rapprocher</source>
         <translation>Zvýšit</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="98"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="100"/>
         <source>Éloigner</source>
         <translation>Snížit</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="99"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="101"/>
         <source>Envoyer au fond</source>
         <translation>Přesunout dozadu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="100"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="102"/>
         <source>Amener au premier plan</source>
         <translation>Přesunout dopředu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="169"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
         <source>Ctrl+Shift+Up</source>
         <translation>Ctrl+Shift+Up</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="170"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="172"/>
         <source>Ctrl+Shift+Down</source>
         <translation>Ctrl+Shift+Down</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="173"/>
         <source>Ctrl+Shift+End</source>
         <translation>Ctrl+Shift+End</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="172"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="174"/>
         <source>Ctrl+Shift+Home</source>
         <translation>Ctrl+Shift+Home</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="481"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="491"/>
         <source>Aucune modification</source>
         <translation>Žádná úprava</translation>
     </message>
@@ -3369,32 +3374,32 @@ Dostupné volby:
         <translation>Nahrát znovu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="90"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="92"/>
         <source>Zoom avant</source>
         <translation>Přiblížit</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="91"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="93"/>
         <source>Zoom arrière</source>
         <translation>Oddálit</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="92"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="94"/>
         <source>Zoom adapté</source>
         <translation>Přizpůsobit přiblížení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="93"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="95"/>
         <source>Pas de zoom</source>
         <translation>Bez přiblížení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
         <source>Ctrl+9</source>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="163"/>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
     </message>
@@ -3409,12 +3414,12 @@ Dostupné volby:
         <translation>Uložit do souboru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="140"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
         <source>Ctrl+Shift+O</source>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="144"/>
         <source>Ctrl+Shift+S</source>
         <translation>Ctrl+Shift+S</translation>
     </message>
@@ -3425,143 +3430,158 @@ Dostupné volby:
         <translation>QElectroTech - Editor prvků</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="113"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="88"/>
+        <source>un fichier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="89"/>
+        <source>un élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="115"/>
         <source>&amp;Configurer QElectroTech</source>
         <translation>&amp;Nastavit QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="114"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="116"/>
         <source>À &amp;propos de QElectroTech</source>
         <translation>&amp;O QElectroTechu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="115"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="117"/>
         <source>À propos de &amp;Qt</source>
         <translation>O &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="127"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="129"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Umožní pro QElectroTech stanovit různé parametry</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="128"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="130"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Zobrazí informace o QElectroTechu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="129"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="131"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation>Zobrazí informace o knihovně Qt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Backspace</source>
         <translation>Backspace</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="163"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="165"/>
         <source>Ctrl+Shift+F</source>
         <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="256"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="260"/>
         <source>Parties</source>
         <comment>toolbar title</comment>
         <translation>Části</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="268"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="272"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation>Nástroje</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="270"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="274"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Zobrazení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="272"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="276"/>
         <source>Élément</source>
         <comment>toolbar title</comment>
         <translation>Prvek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="274"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="278"/>
         <source>Profondeur</source>
         <comment>toolbar title</comment>
         <translation>Hloubka</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="321"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="325"/>
         <source>&amp;Configuration</source>
         <translation>&amp;Nastavení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="419"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="348"/>
+        <source>Coller depuis...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="429"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Ukončit režim &amp;na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="421"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="431"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Zobrazí QElectroTech v okenním režimu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="423"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="433"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>&amp;Režim na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="425"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="435"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Zobrazí QElectroTech v režimu na celou obrazovku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="436"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="446"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[Změněno]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="438"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="448"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation> [Pouze pro čtení]</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="465"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="475"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation>Informace</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="474"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="484"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Zpět</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="492"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="502"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation>Části</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="504"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="514"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation>Editor prvků</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="555"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="565"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n vybraná část.</numerusform>
@@ -3570,173 +3590,180 @@ Dostupné volby:
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="590"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="600"/>
         <source>Dimensions de l&apos;élément</source>
         <comment>warning title</comment>
         <translation>Velikost prvku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="591"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="601"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
         <translation>Některé obrazové části (texty, kruhy, čáry, ...) se zdají být mimo okna. Takto mohou vznikat chyby v zobrazení, když je prvek přesunut na nákres. Spravit to můžete tím, že tyto části přesunete, nebo tím, že použijete Úpravy &gt; Upravit velikost a horkou půdu.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="606"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="616"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation>Chybí zakončení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="607"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="617"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation>Prvek neobsahuje žádné zakončení. Prvek musí mít zakončení, aby mohl být spojen s dalšími prvky prostřednictvím vodičů.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="640"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
         <translation>Varování</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="658"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="668"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Soubor %1 neexistuje.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="666"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="676"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1260"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Soubor nelze otevřít %1.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="675"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="685"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1264"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation>Tento soubor není platným dokumentem XML</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="681"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="691"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1270"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1183"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="703"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1235"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation>Vydání pouze pro čtení</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="694"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1184"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="704"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1236"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation>Nemáte potřebná oprávnění, abyste mohl upravit tento prvek. Bude tedy otevřen pouze pro čtení.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="713"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="742"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="723"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="752"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="763"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Chyba</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="713"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="723"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>Do tohoto souboru nelze zapisovat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="743"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="753"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Prvku nelze dosáhnout</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="754"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="764"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation>Prvek nelze uložit</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="825"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1184"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>Otevřít soubor</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="827"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1186"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation>Prvky QElectroTech (*.elmt);;Soubory XML (*.xml);;Všechny soubory (*)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="870"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="875"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation>Nahrát znovu prvek</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="871"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="876"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation>Tento prvek byl od posledního uložení změněn. Pokud jej znovu nahrajete, tyto změny budou ztraceny. Opravdu chcete tento prvek nahrát znovu?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="946"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="951"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Uložit jako</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="948"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="953"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation>Prvky QElectroTech (*.elmt)</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="980"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="985"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation>Uložit nynější prvek?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="982"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="987"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation>Chcete uložit prvek %1?</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1155"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1164"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1207"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1216"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1290"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1299"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation>Neexistující prvek.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1156"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1208"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1291"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation>Prvek neexistuje.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1165"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1217"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1300"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Vybraná virtuální cesta neodpovídá prvku.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="117"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="119"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
         <translation>Podržte klávesu Shift pro přidání několika částí do řádku</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="126"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="128"/>
         <source>Utilisez le bouton droit de la souris pour poser le dernier point du polygone</source>
         <translation>Použijte pravé tlačítko myši pro nastavení posledního bodu mnohoúhelníku</translation>
     </message>
@@ -3761,12 +3788,12 @@ Dostupné volby:
         <translation>&amp;Vložit do oblasti...</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
         <source>Ctrl+Shift+V</source>
         <translation>Ctrl+Shift+V</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="103"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="105"/>
         <source>Ajouter un rectangle</source>
         <translation>Přidat obdélník</translation>
     </message>
@@ -3774,144 +3801,144 @@ Dostupné volby:
 <context>
     <name>QETPrintPreviewDialog</name>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="35"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="37"/>
         <source>QElectroTech : Aperçu avant impression</source>
         <translation>QElectroTech: Náhled tisku</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="153"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="156"/>
         <source>Schémas à imprimer :</source>
         <translation>Nákresy pro tisk:</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="155"/>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="338"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="158"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="341"/>
         <source>Cacher la liste des schémas</source>
         <translation>Skrýt seznam s nákresy</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="156"/>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="354"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="159"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="357"/>
         <source>Cacher les options d&apos;impression</source>
         <translation>Skrýt volby pro tisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="157"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="160"/>
         <source>Ajuster la largeur</source>
         <translation>Přizpůsobit šířku</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="158"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="161"/>
         <source>Ajuster la page</source>
         <translation>Přizpůsobit stranu</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="159"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="162"/>
         <source>Zoom arrière</source>
         <translation>Oddálit</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="161"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="164"/>
         <source>Zoom avant</source>
         <translation>Přiblížit</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="162"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="165"/>
         <source>Paysage</source>
         <translation>Na šířku</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="163"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="166"/>
         <source>Portrait</source>
         <translation>Na výšku</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="164"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="167"/>
         <source>Première page</source>
         <translation>První strana</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="165"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="168"/>
         <source>Page précédente</source>
         <translation>Předchozí strana</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="166"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="169"/>
         <source>Page suivante</source>
         <translation>Další strana</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="167"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="170"/>
         <source>Dernière page</source>
         <translation>Poslední strana</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="168"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="171"/>
         <source>Afficher une seule page</source>
         <translation>Zobrazit jednu stranu</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="169"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Afficher deux pages</source>
         <translation>Zobrazit dvě strany</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="170"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <source>Afficher un aperçu de toutes les pages</source>
         <translation>Zobrazit náhled na všechny strany</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="171"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
         <source>Mise en page</source>
         <translation>Rozvržení strany</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="188"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="191"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
         <translation>Rozvržení strany (není dostupné pod Windows pro tisk PDF/PS)</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="216"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="219"/>
         <source>Options d&apos;impression</source>
         <translation>Volby pro tisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="217"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="220"/>
         <source>Utiliser toute la feuille</source>
         <translation>Použít celou stranu</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="218"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="221"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
         <translation>Je-li zaškrtnuta tato volba, nebude brán zřetel na okraje papíru a celý jeho povrch se využije při tisku. Tuto možnost vaše tiskárna nemusí podporovat.</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="225"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="228"/>
         <source>Adapter le schéma à la page</source>
         <translation>Přizpůsobit nákres straně</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="226"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="229"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
         <translation>Je-li zaškrtnuta tato volba, nákres bude zmenšen, anebo zvětšen, aby se vešel na tisknutelný povrch jedné strany.</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="242"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="245"/>
         <source>Imprimer</source>
         <translation>Tisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="340"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="343"/>
         <source>Afficher la liste des schémas</source>
         <translation>Zobrazit seznam s nákresy</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="356"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="359"/>
         <source>Afficher les options d&apos;impression</source>
         <translation>Zobrazit volby pro tisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="383"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="386"/>
         <source>%1 %</source>
         <translation>%1%</translation>
     </message>
@@ -4087,13 +4114,13 @@ Dostupné volby:
         <translation>upravit vložený rámeček</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="562"/>
+        <location filename="../sources/diagramcommands.cpp" line="564"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>upravit velikost nákresu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="589"/>
+        <location filename="../sources/diagramcommands.cpp" line="591"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>upravit vlastnosti vodiče</translation>

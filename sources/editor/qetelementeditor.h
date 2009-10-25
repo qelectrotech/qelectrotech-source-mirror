@@ -43,7 +43,7 @@ class QETElementEditor : public QMainWindow {
 	/// booleen indiquant si l'editeur est en mode "lecture seule" ou non
 	bool read_only;
 	/// menus
-	QMenu *file_menu, *edit_menu, *display_menu, *tools_menu, *config_menu, *help_menu;
+	QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu, *config_menu, *help_menu;
 	/// vue sur la scene d'edition
 	ElementView *ce_view;
 	/// scene d'edition
@@ -66,7 +66,7 @@ class QETElementEditor : public QMainWindow {
 	QAction *new_element, *open, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
 	/// actions du menu edition
 	QAction *selectall, *deselectall, *inv_select;
-	QAction *cut, *copy, *paste, *paste_in_area;
+	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
 	QAction *undo, *redo;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
@@ -117,6 +117,7 @@ class QETElementEditor : public QMainWindow {
 	void writeSettings();
 	static QPointF pasteOffset();
 	static QET::OrientedMovement pasteMovement();
+	static QString getOpenElementFileName(QWidget * = 0, const QString & = QString());
 	
 	protected:
 	void closeEvent(QCloseEvent *);
@@ -128,6 +129,7 @@ class QETElementEditor : public QMainWindow {
 	void setupInterface();
 	bool canClose();
 	QWidget *clearToolsDock();
+	void copyAndPasteXml(const QDomDocument &);
 	
 	public slots:
 	void slot_new();
@@ -152,6 +154,8 @@ class QETElementEditor : public QMainWindow {
 	void toggleFullScreen();
 	void xmlPreview();
 	bool checkElement();
+	void pasteFromFile();
+	void pasteFromElement();
 };
 
 /**

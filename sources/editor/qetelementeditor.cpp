@@ -71,48 +71,50 @@ QETElementEditor::~QETElementEditor() {
 	Met en place les actions
 */
 void QETElementEditor::setupActions() {
-	new_element   = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
-	open          = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
-	open_file     = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
-	save          = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
-	save_as       = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
-	save_as_file  = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
-	reload        = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
-	quit          = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
-	selectall     = new QAction(QET::Icons::EditSelectAll,        tr("Tout s\351lectionner"),                      this);
-	deselectall   = new QAction(                                  tr("D\351s\351lectionner tout"),                 this);
-	cut           = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
-	copy          = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
-	paste         = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
-	paste_in_area = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
-	inv_select    = new QAction(                                  tr("Inverser la s\351lection"),                  this);
-	edit_delete   = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
-	zoom_in       = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
-	zoom_out      = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
-	zoom_fit      = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
-	zoom_reset    = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
-	edit_size_hs  = new QAction(QET::Icons::HotSpot,              tr("\311diter la taille et le point de saisie"), this);
-	edit_names    = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
-	edit_ori      = new QAction(QET::Icons::Orientations,         tr("\311diter les orientations"),                this);
-	edit_raise    = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
-	edit_lower    = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
-	edit_backward = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
-	edit_forward  = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
-	move          = new QAction(QET::Icons::PartSelect,           tr("D\351placer un objet"),                      this);
-	add_line      = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
-	add_rectangle = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
-	add_ellipse   = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
-	add_circle    = new QAction(QET::Icons::PartCircle,           tr("Ajouter un cercle"),                         this);
-	add_polygon   = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
-	add_text      = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
-	add_arc       = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
-	add_terminal  = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
-	add_textfield = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
-	fullscreen    = new QAction(this);
+	new_element     = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau"),                                  this);
+	open            = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir"),                                   this);
+	open_file       = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir depuis un fichier"),                 this);
+	save            = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"),                              this);
+	save_as         = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous"),                          this);
+	save_as_file    = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer dans un fichier"),               this);
+	reload          = new QAction(QET::Icons::ViewRefresh,          tr("Recharger"),                                 this);
+	quit            = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),                                  this);
+	selectall       = new QAction(QET::Icons::EditSelectAll,        tr("Tout s\351lectionner"),                      this);
+	deselectall     = new QAction(                                  tr("D\351s\351lectionner tout"),                 this);
+	cut             = new QAction(QET::Icons::EditCut,              tr("Co&uper"),                                   this);
+	copy            = new QAction(QET::Icons::EditCopy,             tr("Cop&ier"),                                   this);
+	paste           = new QAction(QET::Icons::EditPaste,            tr("C&oller"),                                   this);
+	paste_in_area   = new QAction(QET::Icons::EditPaste,            tr("C&oller dans la zone..."),                   this);
+	paste_from_file = new QAction(QET::Icons::XmlTextFile,          tr("un fichier"),                                this);
+	paste_from_elmt = new QAction(QET::Icons::Element,              tr("un \351l\351ment"),                          this);
+	inv_select      = new QAction(                                  tr("Inverser la s\351lection"),                  this);
+	edit_delete     = new QAction(QET::Icons::EditDelete,           tr("&Supprimer"),                                this);
+	zoom_in         = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant"),                                this);
+	zoom_out        = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re"),                           this);
+	zoom_fit        = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351"),                            this);
+	zoom_reset      = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom"),                               this);
+	edit_size_hs    = new QAction(QET::Icons::HotSpot,              tr("\311diter la taille et le point de saisie"), this);
+	edit_names      = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
+	edit_ori        = new QAction(QET::Icons::Orientations,         tr("\311diter les orientations"),                this);
+	edit_raise      = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
+	edit_lower      = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
+	edit_backward   = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
+	edit_forward    = new QAction(QET::Icons::BringForward,         tr("Amener au premier plan"),                    this);
+	move            = new QAction(QET::Icons::PartSelect,           tr("D\351placer un objet"),                      this);
+	add_line        = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
+	add_rectangle   = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
+	add_ellipse     = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
+	add_circle      = new QAction(QET::Icons::PartCircle,           tr("Ajouter un cercle"),                         this);
+	add_polygon     = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
+	add_text        = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
+	add_arc         = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
+	add_terminal    = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
+	add_textfield   = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
+	fullscreen      = new QAction(this);
 	slot_updateFullScreenAction();
-	configure     = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech"),                  this);
-	about_qet     = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech"),              this);
-	about_qt      = new QAction(QET::Icons::QtLogo,               tr("\300 propos de &Qt"),                        this);
+	configure       = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech"),                  this);
+	about_qet       = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech"),              this);
+	about_qt        = new QAction(QET::Icons::QtLogo,               tr("\300 propos de &Qt"),                        this);
 	
 	QString add_status_tip = tr("Maintenez la touche Shift enfonc\351e pour effectuer plusieurs ajouts d'affil\351e");
 	add_line      -> setStatusTip(add_status_tip);
@@ -173,61 +175,63 @@ void QETElementEditor::setupActions() {
 	
 	QETApp *qet_app = QETApp::instance();
 	
-	connect(new_element,   SIGNAL(triggered()), this,     SLOT(slot_new()));
-	connect(open,          SIGNAL(triggered()), this,     SLOT(slot_open()));
-	connect(open_file,     SIGNAL(triggered()), this,     SLOT(slot_openFile()));
-	connect(save,          SIGNAL(triggered()), this,     SLOT(slot_save()));
-	connect(save_as,       SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
-	connect(save_as_file,  SIGNAL(triggered()), this,     SLOT(slot_saveAsFile()));
-	connect(reload,        SIGNAL(triggered()), this,     SLOT(slot_reload()));
-	connect(quit,          SIGNAL(triggered()), this,     SLOT(close()));
-	connect(selectall,     SIGNAL(triggered()), ce_scene, SLOT(slot_selectAll()));
-	connect(deselectall,   SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
-	connect(inv_select,    SIGNAL(triggered()), ce_scene, SLOT(slot_invertSelection()));
-	connect(cut,           SIGNAL(triggered()), ce_view,  SLOT(cut()));
-	connect(copy,          SIGNAL(triggered()), ce_view,  SLOT(copy()));
-	connect(paste,         SIGNAL(triggered()), ce_view,  SLOT(paste()));
-	connect(paste_in_area, SIGNAL(triggered()), ce_view,  SLOT(pasteInArea()));
-	connect(zoom_in,       SIGNAL(triggered()), ce_view,  SLOT(zoomIn()));
-	connect(zoom_out,      SIGNAL(triggered()), ce_view,  SLOT(zoomOut()));
-	connect(zoom_fit,      SIGNAL(triggered()), ce_view,  SLOT(zoomFit()));
-	connect(zoom_reset,    SIGNAL(triggered()), ce_view,  SLOT(zoomReset()));
-	connect(edit_delete,   SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
-	connect(edit_size_hs,  SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
-	connect(edit_names,    SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
-	connect(fullscreen,    SIGNAL(triggered()), this,     SLOT(toggleFullScreen()));
-	connect(configure,     SIGNAL(triggered()), qet_app,  SLOT(configureQET()));
-	connect(edit_ori,      SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
-	connect(edit_forward,  SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
-	connect(edit_raise,    SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
-	connect(edit_lower,    SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
-	connect(edit_backward, SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
-	connect(move,          SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
-	connect(add_line,      SIGNAL(triggered()), ce_scene, SLOT(slot_addLine()));
-	connect(add_rectangle, SIGNAL(triggered()), ce_scene, SLOT(slot_addRectangle()));
-	connect(add_ellipse,   SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
-	connect(add_circle,    SIGNAL(triggered()), ce_scene, SLOT(slot_addCircle()));
-	connect(add_polygon,   SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
-	connect(add_text,      SIGNAL(triggered()), ce_scene, SLOT(slot_addText()));
-	connect(add_arc,       SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
-	connect(add_terminal,  SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
-	connect(add_textfield, SIGNAL(triggered()), ce_scene, SLOT(slot_addTextField()));
+	connect(new_element,     SIGNAL(triggered()), this,     SLOT(slot_new()));
+	connect(open,            SIGNAL(triggered()), this,     SLOT(slot_open()));
+	connect(open_file,       SIGNAL(triggered()), this,     SLOT(slot_openFile()));
+	connect(save,            SIGNAL(triggered()), this,     SLOT(slot_save()));
+	connect(save_as,         SIGNAL(triggered()), this,     SLOT(slot_saveAs()));
+	connect(save_as_file,    SIGNAL(triggered()), this,     SLOT(slot_saveAsFile()));
+	connect(reload,          SIGNAL(triggered()), this,     SLOT(slot_reload()));
+	connect(quit,            SIGNAL(triggered()), this,     SLOT(close()));
+	connect(selectall,       SIGNAL(triggered()), ce_scene, SLOT(slot_selectAll()));
+	connect(deselectall,     SIGNAL(triggered()), ce_scene, SLOT(slot_deselectAll()));
+	connect(inv_select,      SIGNAL(triggered()), ce_scene, SLOT(slot_invertSelection()));
+	connect(cut,             SIGNAL(triggered()), ce_view,  SLOT(cut()));
+	connect(copy,            SIGNAL(triggered()), ce_view,  SLOT(copy()));
+	connect(paste,           SIGNAL(triggered()), ce_view,  SLOT(paste()));
+	connect(paste_in_area,   SIGNAL(triggered()), ce_view,  SLOT(pasteInArea()));
+	connect(paste_from_file, SIGNAL(triggered()), this,     SLOT(pasteFromFile()));
+	connect(paste_from_elmt, SIGNAL(triggered()), this,     SLOT(pasteFromElement()));
+	connect(zoom_in,         SIGNAL(triggered()), ce_view,  SLOT(zoomIn()));
+	connect(zoom_out,        SIGNAL(triggered()), ce_view,  SLOT(zoomOut()));
+	connect(zoom_fit,        SIGNAL(triggered()), ce_view,  SLOT(zoomFit()));
+	connect(zoom_reset,      SIGNAL(triggered()), ce_view,  SLOT(zoomReset()));
+	connect(edit_delete,     SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
+	connect(edit_size_hs,    SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
+	connect(edit_names,      SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
+	connect(fullscreen,      SIGNAL(triggered()), this,     SLOT(toggleFullScreen()));
+	connect(configure,       SIGNAL(triggered()), qet_app,  SLOT(configureQET()));
+	connect(edit_ori,        SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
+	connect(edit_forward,    SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
+	connect(edit_raise,      SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
+	connect(edit_lower,      SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
+	connect(edit_backward,   SIGNAL(triggered()), ce_scene, SLOT(slot_sendBackward()));
+	connect(move,            SIGNAL(triggered()), ce_scene, SLOT(slot_move()));
+	connect(add_line,        SIGNAL(triggered()), ce_scene, SLOT(slot_addLine()));
+	connect(add_rectangle,   SIGNAL(triggered()), ce_scene, SLOT(slot_addRectangle()));
+	connect(add_ellipse,     SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
+	connect(add_circle,      SIGNAL(triggered()), ce_scene, SLOT(slot_addCircle()));
+	connect(add_polygon,     SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
+	connect(add_text,        SIGNAL(triggered()), ce_scene, SLOT(slot_addText()));
+	connect(add_arc,         SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
+	connect(add_terminal,    SIGNAL(triggered()), ce_scene, SLOT(slot_addTerminal()));
+	connect(add_textfield,   SIGNAL(triggered()), ce_scene, SLOT(slot_addTextField()));
 	
-	connect(move,          SIGNAL(triggered()), this, SLOT(slot_setRubberBandToView()));
-	connect(add_line,      SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_rectangle, SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_ellipse,   SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_circle,    SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_polygon,   SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_text,      SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_arc,       SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_terminal,  SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
-	connect(add_textfield, SIGNAL(triggered()), this, SLOT(slot_setNoDragToView()));
+	connect(move,            SIGNAL(triggered()), this,     SLOT(slot_setRubberBandToView()));
+	connect(add_line,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_rectangle,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_ellipse,     SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_circle,      SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_polygon,     SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_text,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_arc,         SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_terminal,    SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
+	connect(add_textfield,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	
-	connect(about_qet,     SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
-	connect(about_qt,      SIGNAL(triggered()), qet_app, SLOT(aboutQt()));
+	connect(about_qet,       SIGNAL(triggered()), qet_app,  SLOT(aboutQET()));
+	connect(about_qt,        SIGNAL(triggered()), qet_app,  SLOT(aboutQt()));
 	
-	connect(ce_scene,      SIGNAL(needNormalMode()), this, SLOT(slot_setNormalMode()));
+	connect(ce_scene,        SIGNAL(needNormalMode()), this, SLOT(slot_setNormalMode()));
 	
 	move          -> setCheckable(true);
 	add_line      -> setCheckable(true);
@@ -341,6 +345,11 @@ void QETElementEditor::setupMenus() {
 	file_menu    -> addSeparator();
 	file_menu    -> addAction(quit);
 	
+	paste_from_menu = new QMenu(tr("Coller depuis..."));
+	paste_from_menu -> setIcon(QET::Icons::EditPaste);
+	paste_from_menu -> addAction(paste_from_file);
+	paste_from_menu -> addAction(paste_from_elmt);
+	
 	edit_menu -> addAction(undo);
 	edit_menu -> addAction(redo);
 	edit_menu -> addSeparator();
@@ -352,6 +361,7 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(copy);
 	edit_menu -> addAction(paste);
 	edit_menu -> addAction(paste_in_area);
+	edit_menu -> addMenu(paste_from_menu);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_delete);
 	edit_menu -> addSeparator();
@@ -819,18 +829,13 @@ void QETElementEditor::slot_open() {
 	Demande un fichier a l'utilisateur et ouvre ce fichier
 */
 void QETElementEditor::slot_openFile() {
+	// repertoire a afficher initialement dans le dialogue
+	QString open_dir = filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath();
+	
 	// demande un nom de fichier a ouvrir a l'utilisateur
-	QString user_filename = QFileDialog::getOpenFileName(
-		this,
-		tr("Ouvrir un fichier", "dialog title"),
-		filename_.isEmpty() ? QETApp::customElementsDir() : QDir(filename_).absolutePath(),
-		tr(
-			"\311l\351ments QElectroTech (*.elmt);;"
-			"Fichiers XML (*.xml);;"
-			"Tous les fichiers (*)",
-			"filetypes allowed when opening an element file"
-		)
-	);
+	QString user_filename = QETElementEditor::getOpenElementFileName(this, open_dir);
+	
+	// ouvre l'element
 	openElement(user_filename);
 }
 
@@ -1011,6 +1016,28 @@ QWidget *QETElementEditor::clearToolsDock() {
 }
 
 /**
+	Exporte le document XML xml_document vers le presse-papier puis declenche
+	son collage dans l'editeur courant, avec selection de la zone de collage
+	@param xml_document Document XML a copier/coller
+	@see ElementView::pasteInArea
+*/
+void QETElementEditor::copyAndPasteXml(const QDomDocument &xml_document) {
+	// accede au presse-papier
+	QClipboard *clipboard = QApplication::clipboard();
+	
+	// genere la description XML de la selection
+	QString clipboard_content = xml_document.toString(4);
+	
+	// met la description XML dans le presse-papier
+	if (clipboard -> supportsSelection()) {
+		clipboard -> setText(clipboard_content, QClipboard::Selection);
+	}
+	clipboard -> setText(clipboard_content);
+	
+	ce_view -> pasteInArea();
+}
+
+/**
 	Permet de quitter l'editeur lors de la fermeture de la fenetre principale
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
@@ -1142,6 +1169,31 @@ QET::OrientedMovement QETElementEditor::pasteMovement() {
 }
 
 /**
+	Demande a l'utilisateur d'ouvrir un fichier sense etre un element.
+	@param parent QWidget parent du dialogue d'ouverture de fichier
+	@param initial_dir Repertoire a afficher initialement - si une chaine vide
+	est fournie, QETApp::customElementsDir() sera utilise.
+	@return Le chemin du fichier choisi ou une chaine vide si l'utilisateur a
+	clique sur le bouton "Annuler".
+	@see QETApp::customElementsDir()
+*/
+QString QETElementEditor::getOpenElementFileName(QWidget *parent, const QString &initial_dir) {
+	// demande un nom de fichier a ouvrir a l'utilisateur
+	QString user_filename = QFileDialog::getOpenFileName(
+		parent,
+		tr("Ouvrir un fichier", "dialog title"),
+		initial_dir.isEmpty() ? QETApp::customElementsDir() : initial_dir,
+		tr(
+			"\311l\351ments QElectroTech (*.elmt);;"
+			"Fichiers XML (*.xml);;"
+			"Tous les fichiers (*)",
+			"filetypes allowed when opening an element file"
+		)
+	);
+	return(user_filename);
+}
+
+/**
 	@param location Emplacement de l'element a editer
 */
 void QETElementEditor::fromLocation(const ElementsLocation &location) {
@@ -1189,4 +1241,71 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 	// memorise le fichier
 	setLocation(location);
 	slot_updateMenus();
+}
+
+/**
+	Demande un fichier a l'utilisateur, l'ouvre en tant que fichier element,
+	met son contenu dans le presse-papiers, et appelle ElementView::PasteInArea
+*/
+void QETElementEditor::pasteFromFile() {
+	// demande le chemin du fichier a ouvrir a l'utilisateur
+	QString element_file_path = getOpenElementFileName(this);
+	if (element_file_path.isEmpty()) return;
+	
+	QString error_message;
+	QDomDocument xml_document;
+	QFile element_file(element_file_path);
+	// le fichier doit etre lisible
+	if (!element_file.open(QIODevice::ReadOnly)) {
+		error_message = QString(tr("Impossible d'ouvrir le fichier %1.", "message box content")).arg(element_file_path);
+	} else {
+		// le fichier doit etre un document XML
+		if (!xml_document.setContent(&element_file)) {
+			error_message = tr("Ce fichier n'est pas un document XML valide", "message box content");
+		}
+		element_file.close();
+	}
+	
+	if (!error_message.isEmpty()) {
+		QET::MessageBox::critical(this, tr("Erreur", "toolbar title"), error_message);
+	}
+	copyAndPasteXml(xml_document);
+}
+
+/**
+	Denande un element a l'utilisateur, met son contenu dans le presse-papiers,
+	et appelle ElementView::PasteInArea
+*/
+void QETElementEditor::pasteFromElement() {
+	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
+	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
+	if (location.isNull()) return;
+	
+	// verifie l'existence de l'element choisi
+	ElementsCollectionItem *item = QETApp::collectionItem(location);
+	ElementDefinition *element = 0;
+	if (!item) {
+		QET::MessageBox::critical(
+			this,
+			tr("\311l\351ment inexistant.", "message box title"),
+			tr("L'\351l\351ment n'existe pas.", "message box content")
+		);
+		return;
+	}
+	
+	if (!item -> isElement() || !(element = qobject_cast<ElementDefinition *>(item)) || element -> isNull()) {
+		QET::MessageBox::critical(
+			this,
+			tr("\311l\351ment inexistant.", "message box title"),
+			tr("Le chemin virtuel choisi ne correspond pas \340 un \351l\351ment.", "message box content")
+		);
+		return;
+	}
+	
+	// creation d'un document XML a partir de la description XML de l'element
+	QDomDocument document_xml;
+	QDomNode node = document_xml.importNode(element -> xml(), true);
+	document_xml.appendChild(node);
+	
+	copyAndPasteXml(document_xml);
 }
