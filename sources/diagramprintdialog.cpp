@@ -126,7 +126,7 @@ void DiagramPrintDialog::exec() {
 		&preview_dialog,
 		SIGNAL(paintRequested(const QList<Diagram *> &, bool, const ExportProperties, QPrinter *)),
 		this,
-		SLOT(print(const QList<Diagram *> &, bool, const ExportProperties, QPrinter *))
+		SLOT(print(const QList<Diagram *> &, bool, const ExportProperties))
 	);
 	DiagramsChooser *dc = preview_dialog.diagramsChooser();
 	dc -> setSelectedAllDiagrams();
