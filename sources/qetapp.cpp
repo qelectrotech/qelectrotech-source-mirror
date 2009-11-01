@@ -924,7 +924,9 @@ void QETApp::initConfiguration() {
 	// fichiers recents
 	// note : les icones doivent etre initialisees avant ces instructions (qui creent des menus en interne)
 	projects_recent_files_ = new RecentFiles("projects");
+	projects_recent_files_ -> setIconForFiles(QET::Icons::ProjectFile);
 	elements_recent_files_ = new RecentFiles("elements");
+	elements_recent_files_ -> setIconForFiles(QET::Icons::Element);
 }
 
 /**

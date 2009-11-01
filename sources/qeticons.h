@@ -121,6 +121,7 @@ namespace QET {
 		extern QIcon PrintPortrait;
 		extern QIcon PrintTwoPages;
 		extern QIcon Project;
+		extern QIcon ProjectFile;
 		extern QIcon QETIcon;
 		extern QIcon QETLogo;
 		extern QIcon QETOxygenLogo;

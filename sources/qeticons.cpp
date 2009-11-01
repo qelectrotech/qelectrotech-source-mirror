@@ -111,6 +111,7 @@ namespace QET {
 		QIcon PrintPortrait;
 		QIcon PrintTwoPages;
 		QIcon Project;
+		QIcon ProjectFile;
 		QIcon QETIcon;
 		QIcon QETLogo;
 		QIcon QETOxygenLogo;
@@ -272,6 +273,9 @@ void QET::Icons::initIcons() {
 	PrintPortrait       .addFile(":/ico/22x22/portrait.png");
 	PrintTwoPages       .addFile(":/ico/22x22/two_pages.png");
 	Project             .addFile(":/ico/16x16/project.png");
+	ProjectFile         .addFile(":/ico/oxygen-icons/16x16/mimetypes/application-x-qet-project.png");
+	ProjectFile         .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png");
+	ProjectFile         .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png");
 	QETIcon             .addFile(":/ico/256x256/qelectrotech.png");
 	QETLogo             .addFile(":/ico/16x16/qet.png");
 	QETLogo             .addFile(":/ico/256x256/qet.png");

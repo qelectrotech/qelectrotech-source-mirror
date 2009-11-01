@@ -18,6 +18,7 @@
 #ifndef RECENT_FILES_H
 #define RECENT_FILES_H
 #include <QtCore>
+#include <QIcon>
 class QMenu;
 /**
 	Cette classe permet de gerer des fichiers recents.
@@ -36,6 +37,8 @@ class RecentFiles : public QObject {
 	public:
 	int size() const;
 	QMenu *menu() const;
+	QIcon iconForFiles() const;
+	void setIconForFiles(const QIcon &);
 	
 	public slots:
 	void clear();
@@ -61,5 +64,6 @@ class RecentFiles : public QObject {
 	QList<QString> list_;
 	QMenu *menu_;
 	QSignalMapper *mapper_;
+	QIcon files_icon_;
 };
 #endif
