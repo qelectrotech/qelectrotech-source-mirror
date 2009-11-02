@@ -57,7 +57,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="107"/>
         <source>Programmation</source>
-        <translation>Програмирование</translation>
+        <translation>Программирование</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="120"/>
@@ -2281,7 +2281,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="950"/>
         <source>Restaurer QElectroTech</source>
-        <translation>востановить QElectroTech</translation>
+        <translation>Восстановить QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="964"/>
@@ -2485,7 +2485,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Réinitialiser les conducteurs</source>
-        <translation>Востановить проводник</translation>
+        <translation>Восстановить проводник</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
@@ -2560,7 +2560,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Pas de zoom</source>
-        <translation>Востановит масштаб</translation>
+        <translation>Восстановить масштаб</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
@@ -2762,7 +2762,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
-        <translation>Востановить отменённое действие</translation>
+        <translation>Восстановить отменённое действие</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
@@ -2891,7 +2891,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Restaure le zoom par défaut</source>
         <comment>status bar tip</comment>
-        <translation>Востановит исходный размер листа</translation>
+        <translation>Восстановить исходный размер листа</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
@@ -3211,12 +3211,12 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="88"/>
         <source>un fichier</source>
-        <translation>файл</translation>
+        <translation>файла</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="89"/>
         <source>un élément</source>
-        <translation>элемент</translation>
+        <translation>элемента</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="90"/>
@@ -3246,7 +3246,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="95"/>
         <source>Pas de zoom</source>
-        <translation>Востановит масштаб</translation>
+        <translation>Восстановить масштаб</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="96"/>
@@ -4287,7 +4287,7 @@ Available options:
     <message>
         <location filename="../sources/exportdialog.cpp" line="664"/>
         <source>Réinitialiser les dimensions</source>
-        <translation>Востановить размер</translation>
+        <translation>Восстановить размер</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="668"/>
