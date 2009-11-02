@@ -327,7 +327,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="105"/>
         <source>Trait en pointillés</source>
-        <translation type="unfinished"></translation>
+        <translation>Пунктирная линия</translation>
     </message>
 </context>
 <context>
@@ -1123,7 +1123,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Importer un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Импорт элемента</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
@@ -3211,12 +3211,12 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="88"/>
         <source>un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>файл</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="89"/>
         <source>un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>элемент</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="90"/>
@@ -3534,7 +3534,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="348"/>
         <source>Coller depuis...</source>
-        <translation type="unfinished"></translation>
+        <translation>Вставить из...</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="385"/>
