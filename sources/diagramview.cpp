@@ -40,7 +40,6 @@
 DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
-	setCacheMode(QGraphicsView::CacheBackground);
 	
 	// active l'antialiasing
 	setRenderHint(QPainter::Antialiasing, true);
