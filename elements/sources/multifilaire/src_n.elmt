@@ -4,6 +4,7 @@
         <name lang="en" >Neutral source</name>
         <name lang="fr" >Source neutre</name>
         <name lang="es" >Fuente neutro</name>
+        <name lang="cs" >Nulový zdroj</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10" />

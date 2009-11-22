@@ -135,9 +135,10 @@ QString DiagramContent::sentence(int filter) const {
 /**
 	Permet de debugger un contenu de schema
 	@param d Object QDebug a utiliser pour l'affichage des informations de debug
-	@param c Contenu de schema a debugger
+	@param content Contenu de schema a debugger
 */
-QDebug &operator<<(QDebug d, DiagramContent &) {
+QDebug &operator<<(QDebug d, DiagramContent &content) {
+	Q_UNUSED(content);
 	d << "DiagramContent {" << "\n";
 	/*
 	FIXME Le double-heritage QObject / QGraphicsItem a casse cet operateur

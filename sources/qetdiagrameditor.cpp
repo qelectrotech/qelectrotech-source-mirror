@@ -1654,7 +1654,8 @@ void QETDiagramEditor::diagramIsAboutToBeRemoved(DiagramView *dv) {
 	Gere le retrait d'un schema dans un projet apres que le retrait soit effectif
 	@param dv DiagramView concerne
 */
-void QETDiagramEditor::diagramWasRemoved(DiagramView *) {
+void QETDiagramEditor::diagramWasRemoved(DiagramView *dv) {
+	Q_UNUSED(dv);
 	can_update_actions = true;
 }
 
@@ -1774,6 +1775,20 @@ ExportProperties QETDiagramEditor::defaultExportProperties() {
 	ExportProperties def;
 	// lit les caracteristiques des conducteurs par defaut dans la configuration
 	def.fromSettings(settings, "export/default");
+	
+	return(def);
+}
+
+/**
+	@return Les parametres d'impression par defaut pour un schema
+*/
+ExportProperties QETDiagramEditor::defaultPrintProperties() {
+	// accede a la configuration de l'application
+	QSettings &settings = QETApp::settings();
+	
+	ExportProperties def;
+	// lit les caracteristiques des conducteurs par defaut dans la configuration
+	def.fromSettings(settings, "print/default");
 	
 	return(def);
 }

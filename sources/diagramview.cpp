@@ -34,12 +34,12 @@
 
 /**
 	Constructeur
+	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
 DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
-	setCacheMode(QGraphicsView::CacheBackground);
 	
 	// active l'antialiasing
 	setRenderHint(QPainter::Antialiasing, true);
@@ -140,7 +140,8 @@ void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	Gere les dragleaveevent
 	@param e le QDragEnterEvent correspondant au drag'n drop sortant
 */
-void DiagramView::dragLeaveEvent(QDragLeaveEvent *) {
+void DiagramView::dragLeaveEvent(QDragLeaveEvent *e) {
+	Q_UNUSED(e);
 }
 
 /**
@@ -633,6 +634,7 @@ void DiagramView::editElement(Element *element) {
 	QString description_title = tr("Propri\351t\351s de l'\351l\351ment s\351lectionn\351");
 	QPushButton *find_in_panel = new QPushButton(tr("Retrouver dans le panel"));
 	QPushButton *edit_element = new QPushButton(tr("\311diter l'\351l\351ment"));
+	edit_element->setIcon(QET::Icons::ElementEdit);
 	
 	// dialogue en lui-meme
 	QMessageBox edit_element_dialog(diagramEditor());
@@ -923,8 +925,6 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 	Cette methode ajoute l'element deisgne par l'emplacement location a la
 	position pos. Si necessaire, elle demande l'integration de l'element au
 	projet.
-	@param location emplacement d'un element a ajouter sur le schema
-	@param pos position voulue de l'element sur le schema
 	@see mustIntegrateElement
 */
 void DiagramView::addDroppedElement() {

@@ -231,7 +231,8 @@ bool ElementDefinition::equals(ElementDefinition &other) {
 	@param deep_copy Argument ignore - une copie "recursive" n'a pas de sens pour un element
 	@return La copie de l'element ou 0 si le processus a echoue
 */
-ElementsCollectionItem *ElementDefinition::copy(ElementsCategory *target_category, MoveElementsHandler *handler, bool) {
+ElementsCollectionItem *ElementDefinition::copy(ElementsCategory *target_category, MoveElementsHandler *handler, bool deep_copy) {
+	Q_UNUSED(deep_copy);
 	if (!target_category) return(0);
 	
 	// echec si le path name de cet element est vide

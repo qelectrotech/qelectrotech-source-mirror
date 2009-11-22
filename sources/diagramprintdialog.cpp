@@ -19,13 +19,13 @@
 #include "qetprintpreviewdialog.h"
 #include <math.h>
 #include "diagramschooser.h"
+#include "exportproperties.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
 
 /**
 	Constructeur
-	@param dia     Schema a imprimer
-	@param printer Imprimante a utiliser
+	@param project Schema a imprimer
 	@param parent  Widget parent du dialogue
 */
 DiagramPrintDialog::DiagramPrintDialog(QETProject *project, QWidget *parent) :
@@ -122,17 +122,27 @@ void DiagramPrintDialog::exec() {
 	
 	// Apercu avant impression
 	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget());
-	connect(&preview_dialog, SIGNAL(paintRequested(const QList<Diagram *> &, bool, QPrinter *)), this, SLOT(print(const QList<Diagram *> &, bool, QPrinter *)));
+	connect(
+		&preview_dialog,
+		SIGNAL(paintRequested(const QList<Diagram *> &, bool, const ExportProperties, QPrinter *)),
+		this,
+		SLOT(print(const QList<Diagram *> &, bool, const ExportProperties))
+	);
 	DiagramsChooser *dc = preview_dialog.diagramsChooser();
 	dc -> setSelectedAllDiagrams();
 	if (preview_dialog.exec() == QDialog::Rejected) return;
 	
 	// effectue l'impression en elle-meme
-	print(dc -> selectedDiagrams(), preview_dialog.fitDiagramsToPages(), printer_);
+	print(
+		dc -> selectedDiagrams(),
+		preview_dialog.fitDiagramsToPages(),
+		preview_dialog.exportProperties()
+	);
 }
 
 /**
-	@param fullPage true pour utiliser toute la feuille dans le calcul
+	@param diagram Schema a imprimer
+	@param fullpage true pour utiliser toute la feuille dans le calcul
 	@return Le nombre de pages necessaires pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
@@ -141,7 +151,8 @@ int DiagramPrintDialog::pagesCount(Diagram *diagram, bool fullpage) const {
 }
 
 /**
-	@param fullPage true pour utiliser toute la feuille dans le calcul
+	@param diagram Schema a imprimer
+	@param fullpage true pour utiliser toute la feuille dans le calcul
 	@return La largeur du "poster" en nombre de pages pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
@@ -155,7 +166,8 @@ int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, bool fullpage) co
 }
 
 /**
-	@param fullPage true pour utiliser toute la feuille dans le calcul
+	@param diagram Schema a imprimer
+	@param fullpage true pour utiliser toute la feuille dans le calcul
 	@return La largeur du "poster" en nombre de pages pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
@@ -317,9 +329,9 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 	@param diagrams Schemas a imprimer
 	@param fit_page Booleen indiquant s'il faut adapter les schemas aux pages
 	ou non
-	@param printer L'imprimante a utiliser
+	@param options Options de rendu
 */
-void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, QPrinter */*printer*/) {
+void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, const ExportProperties options) {
 	//qDebug() << "Demande d'impression de " << diagrams.count() << "schemas.";
 	
 	// QPainter utiliser pour effectuer le rendu
@@ -333,7 +345,7 @@ void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, 
 	
 	// imprime les schemas
 	for (int i = 0 ; i < diagrams.count() ; ++ i) {
-		printDiagram(diagrams[i], fit_page, &qp, printer_);
+		printDiagram(diagrams[i], fit_page, options, &qp, printer_);
 		if (i != diagrams.count() - 1) {
 			printer_ -> newPage();
 		}
@@ -344,10 +356,11 @@ void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, 
 	Imprime un schema
 	@param diagram Schema a imprimer
 	@param fit_page True pour  adapter les schemas aux pages, false sinon
+	@param options Options de rendu a appliquer pour l'impression
 	@param qp QPainter a utiliser (deja initialise sur printer)
 	@param printer Imprimante a utiliser
 */
-void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, QPainter *qp, QPrinter *printer) {
+void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const ExportProperties options, QPainter *qp, QPrinter *printer) {
 	//qDebug() << printer -> paperSize() << printer -> paperRect() << diagram -> title();
 	// l'imprimante utilise-t-elle toute la feuille ?
 	bool full_page = printer -> fullPage ();
@@ -357,8 +370,7 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 		// utiliser cette condition pour agir differemment en cas d'impression physique
 	}
 	
-	diagram -> setDisplayGrid(false);
-	diagram -> setDrawTerminals(false);
+	saveReloadDiagramParameters(diagram, options, true);
 	
 	if (fit_page) {
 		// impression adaptee sur une seule page
@@ -426,6 +438,24 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, QPainter 
 			}
 		}
 	}
-	diagram -> setDrawTerminals(true);
-	diagram -> setDisplayGrid(true);
+	saveReloadDiagramParameters(diagram, options, false);
+}
+
+/**
+	Sauve ou restaure les parametres du schema
+	@param diagram Schema dont on sauve ou restaure les parametres
+	@param options Parametres a appliquer
+	@param save true pour memoriser les parametres du schema et appliquer ceux
+	definis dans options, false pour restaurer les parametres
+*/
+void DiagramPrintDialog::saveReloadDiagramParameters(Diagram *diagram, const ExportProperties options, bool save) {
+	static ExportProperties state_exportProperties;
+	
+	if (save) {
+		// memorise les parametres relatifs au schema tout en appliquant les nouveaux
+		state_exportProperties = diagram -> applyProperties(options);
+	} else {
+		// restaure les parametres relatifs au schema
+		diagram -> applyProperties(state_exportProperties);
+	}
 }

@@ -30,8 +30,12 @@
 #define QUOTE(x) STRINGIFY(x)
 #define STRINGIFY(x) #x
 
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 QString QETApp::config_dir = QString();
+#endif
 QString QETApp::lang_dir = QString();
 FileElementsCollection *QETApp::common_collection = 0;
 FileElementsCollection *QETApp::custom_collection = 0;
@@ -684,7 +688,7 @@ void QETApp::openFiles(const QETArguments &args) {
 	Sinon, le premier editeur de schemas existant venu devient visible et est
 	utilise. S'il n'y a aucun editeur de schemas ouvert, un nouveau est cree et
 	utilise.
-	@param files Fichiers a ouvrir
+	@param files_list Fichiers a ouvrir
 */
 void QETApp::openProjectFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
@@ -721,7 +725,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 /**
 	Ouvre les fichiers elements passes en parametre. Si un element est deja
 	ouvert, la fentre qui l'edite est activee.
-	@param files Fichiers a ouvrir
+	@param files_list Fichiers a ouvrir
 */
 void QETApp::openElementFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
@@ -920,7 +924,9 @@ void QETApp::initConfiguration() {
 	// fichiers recents
 	// note : les icones doivent etre initialisees avant ces instructions (qui creent des menus en interne)
 	projects_recent_files_ = new RecentFiles("projects");
+	projects_recent_files_ -> setIconForFiles(QET::Icons::ProjectFile);
 	elements_recent_files_ = new RecentFiles("elements");
+	elements_recent_files_ -> setIconForFiles(QET::Icons::Element);
 }
 
 /**

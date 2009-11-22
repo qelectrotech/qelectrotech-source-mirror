@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "qetproject.h"
 #include "diagram.h"
+#include "exportproperties.h"
 /**
 	Cette classe represente le dialogue de configuration de l'impression d'un
 	schema electrique.
@@ -49,10 +50,11 @@ class DiagramPrintDialog : public QWidget {
 	private:
 	void buildPrintTypeDialog();
 	void buildDialog();
+	void saveReloadDiagramParameters(Diagram *, const ExportProperties, bool);
 	
 	private slots:
-	void print(const QList<Diagram *> &, bool, QPrinter *);
-	void printDiagram(Diagram *, bool, QPainter *, QPrinter * = 0);
+	void print(const QList<Diagram *> &, bool, const ExportProperties);
+	void printDiagram(Diagram *, bool, const ExportProperties, QPainter *, QPrinter * = 0);
 	void updatePrintTypeDialog();
 	void acceptPrintTypeDialog();
 	void browseFilePrintTypeDialog();

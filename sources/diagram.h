@@ -22,6 +22,7 @@
 #include "borderinset.h"
 #include "qgimanager.h"
 #include "conductorproperties.h"
+#include "exportproperties.h"
 class Element;
 class CustomElement;
 class Terminal;
@@ -81,6 +82,7 @@ class Diagram : public QGraphicsScene {
 	QGIManager *qgi_manager;
 	QUndoStack *undo_stack;
 	bool draw_terminals;
+	bool draw_colored_conductors_;
 	QDomDocument xml_document;
 	QETProject *project_;
 	bool read_only_;
@@ -127,6 +129,7 @@ class Diagram : public QGraphicsScene {
 	void removeDiagramTextItem(DiagramTextItem *);
 	
 	// fonctions relatives aux options graphiques
+	ExportProperties applyProperties(const ExportProperties &);
 	void setDisplayGrid(bool);
 	bool displayGrid();
 	void setUseBorder(bool);
@@ -137,6 +140,8 @@ class Diagram : public QGraphicsScene {
 	
 	bool drawTerminals() const;
 	void setDrawTerminals(bool);
+	bool drawColoredConductors() const;
+	void setDrawColoredConductors(bool);
 	
 	QRectF border() const;
 	QString title() const;
@@ -298,6 +303,11 @@ inline QGIManager &Diagram::qgiManager() {
 /// @return true si les bornes sont affichees, false sinon
 inline bool Diagram::drawTerminals() const {
 	return(draw_terminals);
+}
+
+/// @return true si les couleurs des conducteurs sont respectees, false sinon
+inline bool Diagram::drawColoredConductors() const {
+	return(draw_colored_conductors_);
 }
 
 #endif

@@ -460,7 +460,7 @@ ElementsCollectionItem *ElementsCategory::move(ElementsCategory *target_category
 /**
 	Methode privee effectuant le deplacement de cette categorie a partir d'une
 	description du mouvement
-	@param mvt_dsc Description du mouvement
+	@param mvt_desc Description du mouvement
 */
 void ElementsCategory::move(MoveElementsDescription *mvt_desc) {
 	// quelques pointeurs pour simplifier l'ecriture de la methode

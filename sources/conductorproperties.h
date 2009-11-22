@@ -57,16 +57,8 @@ class SingleLineProperties {
 class ConductorProperties {
 	// constructeurs, destructeur
 	public:
-	/**
-		Constructeur : par defaut, les proprietes font un conducteur
-		multifilaire dont le texte est "_"
-	*/
-	ConductorProperties() : type(Multi), text("_") {
-	}
-	
-	/// Destructeur
-	virtual ~ConductorProperties() {
-	}
+	ConductorProperties();
+	virtual ~ConductorProperties();
 	
 	/**
 		Represente le type d'un conducteur :
@@ -79,9 +71,12 @@ class ConductorProperties {
 	// attributs
 	/// type du conducteur
 	ConductorType type;
-	
+	/// couleur du conducteur
+	QColor color;
 	/// texte affiche si le conducteur est multifilaire
 	QString text;
+	/// style du conducteur (Qt::SolidLine ou Qt::DashLine)
+	Qt::PenStyle style;
 	
 	/// proprietes si le conducteur est unifilaire
 	SingleLineProperties singleLineProperties;
@@ -96,5 +91,9 @@ class ConductorProperties {
 	// operateurs
 	int operator==(const ConductorProperties &);
 	int operator!=(const ConductorProperties &);
+	
+	private:
+	void readStyle(const QString &);
+	QString writeStyle() const;
 };
 #endif

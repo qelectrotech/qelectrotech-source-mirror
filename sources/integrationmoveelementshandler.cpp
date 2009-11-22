@@ -94,7 +94,8 @@ QString IntegrationMoveElementsHandler::newNameForElement(const ElementDefinitio
 	@param dst Element cible
 	@return la reponse de l'utilisateur
 */
-QET::Action IntegrationMoveElementsHandler::askUser(ElementDefinition */*src*/, ElementDefinition *dst) {
+QET::Action IntegrationMoveElementsHandler::askUser(ElementDefinition *src, ElementDefinition *dst) {
+	Q_UNUSED(src);
 	initDialog();
 	int result = integ_dialog_ -> exec();
 	if (result == QDialog::Accepted) {

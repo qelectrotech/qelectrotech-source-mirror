@@ -140,7 +140,8 @@ void SingleLineProperties::drawGround(QPainter *painter, QET::ConductorSegmentTy
 	@param center centre du cercle
 	@param size diametre du cercle
 */
-void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentType, QPointF center, qreal size) {
+void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentType direction, QPointF center, qreal size) {
+	Q_UNUSED(direction);
 	painter -> save();
 	
 	// prepare le QPainter
@@ -181,16 +182,44 @@ void SingleLineProperties::fromXml(QDomElement &e) {
 }
 
 /**
+	Constructeur : par defaut, les proprietes font un conducteur
+	multifilaire noir dont le texte est "_"
+*/
+ConductorProperties::ConductorProperties() :
+	type(Multi),
+	color(Qt::black),
+	text("_"),
+	style(Qt::SolidLine)
+{
+}
+
+/**
+	Destructeur
+*/
+ConductorProperties::~ConductorProperties() {
+}
+
+/**
 	Exporte les parametres du conducteur sous formes d'attributs XML
 	ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
 void ConductorProperties::toXml(QDomElement &e) const {
 	e.setAttribute("type", typeToString(type));
+	
+	if (color != QColor(Qt::black)) {
+		e.setAttribute("color", color.name());
+	}
+	
 	if (type == Single) {
 		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
 		e.setAttribute("num", text);
+	}
+	
+	QString conductor_style = writeStyle();
+	if (!conductor_style.isEmpty()) {
+		e.setAttribute("style", conductor_style);
 	}
 }
 
@@ -200,6 +229,17 @@ void ConductorProperties::toXml(QDomElement &e) const {
 	@param e Element XML dont les attributs seront lus
 */
 void ConductorProperties::fromXml(QDomElement &e) {
+	// recupere la couleur du conducteur
+	QColor xml_color= QColor(e.attribute("color"));
+	if (xml_color.isValid()) {
+		color = xml_color;
+	} else {
+		color = QColor(Qt::black);
+	}
+	
+	// lit le style du conducteur
+	readStyle(e.attribute("style"));
+	
 	if (e.attribute("type") == typeToString(Single)) {
 		// recupere les parametres specifiques a un conducteur unifilaire
 		singleLineProperties.fromXml(e);
@@ -218,6 +258,8 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ConductorProperties::toSettings(QSettings &settings, const QString &prefix) const {
+	settings.setValue(prefix + "color", color.name());
+	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
 	singleLineProperties.toSettings(settings, prefix);
@@ -228,6 +270,14 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
 void ConductorProperties::fromSettings(QSettings &settings, const QString &prefix) {
+	// recupere la couleur dans les parametres
+	QColor settings_color = QColor(settings.value(prefix + "color").toString());
+	if (settings_color.isValid()) {
+		color = settings_color;
+	} else {
+		color = QColor(Qt::black);
+	}
+	
 	QString setting_type = settings.value(prefix + "type", typeToString(Multi)).toString();
 	if (setting_type == typeToString(Single)) {
 		type = Single;
@@ -238,6 +288,9 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	}
 	singleLineProperties.fromSettings(settings, prefix);
 	text = settings.value(prefix + "text", "_").toString();
+	
+	// lit le style du conducteur
+	readStyle(settings.value(prefix + "style").toString());
 }
 
 /**
@@ -259,6 +312,8 @@ QString ConductorProperties::typeToString(ConductorType t) {
 int ConductorProperties::operator==(const ConductorProperties &other) {
 	return(
 		other.type == type &&\
+		other.color == color &&\
+		other.color == style &&\
 		other.text == text &&\
 		other.singleLineProperties == singleLineProperties
 	);
@@ -271,9 +326,48 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 int ConductorProperties::operator!=(const ConductorProperties &other) {
 	return(
 		other.type != type ||\
+		other.color != color ||\
+		other.color != style ||\
 		other.text != text ||\
 		other.singleLineProperties != singleLineProperties
 	);
+}
+
+/**
+	Applique les styles passes en parametre dans cet objet
+	@param style_string Chaine decrivant le style du conducteur
+*/
+void ConductorProperties::readStyle(const QString &style_string) {
+	style = Qt::SolidLine; // style par defaut
+	
+	if (style_string.isEmpty()) return;
+	
+	// recupere la liste des couples style / valeur
+	QStringList styles = style_string.split(";", QString::SkipEmptyParts);
+	
+	QRegExp rx("^\\s*([a-z-]+)\\s*:\\s*([a-z-]+)\\s*$");
+	foreach (QString style_str, styles) {
+		if (rx.exactMatch(style_str)) {
+			QString style_name = rx.cap(1);
+			QString style_value = rx.cap(2);
+			if (style_name == "line-style") {
+				if (style_value == "dashed") style = Qt::DashLine;
+				else if (style_value == "normal") style = Qt::SolidLine;
+			}
+		}
+	}
+}
+
+/**
+	Exporte le style du conducteur sous forme d'une chaine de caracteres
+	@return une chaine de caracteres decrivant le style du conducteur
+*/
+QString ConductorProperties::writeStyle() const {
+	if (style == Qt::DashLine) {
+		return("line-style: dashed;");
+	} else {
+		return(QString());
+	}
 }
 
 /**

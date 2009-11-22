@@ -4,6 +4,7 @@
         <name lang="en" >Thermal relay</name>
         <name lang="fr" >Relais thermique</name>
         <name lang="es" >Relé térmico</name>
+        <name lang="cs" >Tepelné relé</name>
     </names>
     <description>
         <input x="30" y="3" size="9" text="F_" />

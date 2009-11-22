@@ -212,7 +212,7 @@ QList<ElementDefinition *> XmlElementsCategory::elements() {
 
 /**
 	@return l'element correspondant au chemin virtuel elmt_path, ou 0 en cas d'echec
-	@param cat_path Chemin virtuel de l'element voulu
+	@param elmt_path Chemin virtuel de l'element voulu
 */
 ElementDefinition *XmlElementsCategory::element(const QString &elmt_path) {
 	// recupere les differentes parties du chemin
@@ -418,7 +418,7 @@ void XmlElementsCategory::componentWritten() {
 
 /**
 	Gere le fait qu'une sous-categorie ou un element ait ete supprime
-	@param item Element ou categorie supprime
+	@param path Chemin de l'element ou de la categorie supprime(e)
 */
 void XmlElementsCategory::componentRemoved(const QString &path) {
 	if (elements_.contains(path)) {

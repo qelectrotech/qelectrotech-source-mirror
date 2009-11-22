@@ -4,6 +4,7 @@
         <name lang="en" >Output (set)</name>
         <name lang="fr" >Sortie (set)</name>
         <name lang="es" >Salida (set)</name>
+        <name lang="cs" >Výstup (nastavit)</name>
     </names>
     <description>
         <arc width="4" x="6" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="80" angle="-160" />

@@ -60,6 +60,7 @@ class QETDiagramEditor : public QMainWindow {
 	static BorderProperties    defaultBorderProperties();
 	static ConductorProperties defaultConductorProperties();
 	static ExportProperties    defaultExportProperties();
+	static ExportProperties    defaultPrintProperties();
 	
 	protected:
 	void actions();

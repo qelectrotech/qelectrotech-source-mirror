@@ -43,11 +43,14 @@ class ConductorPropertiesWidget : public QWidget {
 	
 	private:
 	void setConductorType(ConductorProperties::ConductorType);
+	void setColorButton(const QColor &);
+	QColor colorButton() const;
 	
 	public slots:
 	void updatePreview();
 	void updateConfig();
 	void updateDisplay();
+	void chooseColor();
 	
 	// attributs prives
 	private:
@@ -62,6 +65,8 @@ class ConductorPropertiesWidget : public QWidget {
 	QCheckBox *ground_checkbox;
 	QCheckBox *neutral_checkbox;
 	QLabel *preview;
+	QPushButton *color_button;
+	QCheckBox *dashed_checkbox;
 	
 	ConductorProperties properties_;
 	

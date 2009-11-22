@@ -125,7 +125,7 @@ DiagramView *ProjectView::currentDiagram() const {
 
 /**
 	Gere la fermeture du schema.
-	@param event Le QCloseEvent decrivant l'evenement
+	@param qce Le QCloseEvent decrivant l'evenement
 */
 void ProjectView::closeEvent(QCloseEvent *qce) {
 	// si la vue n'est pas liee a un projet, on ferme directement
@@ -361,7 +361,7 @@ void ProjectView::removeDiagram(DiagramView *diagram_view) {
 
 /**
 	Enleve un schema du ProjectView
-	@param diagram_view Schema a enlever
+	@param diagram Schema a enlever
 */
 void ProjectView::removeDiagram(Diagram *diagram) {
 	if (!diagram) return;

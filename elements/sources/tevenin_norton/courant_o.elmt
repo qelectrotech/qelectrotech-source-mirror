@@ -4,6 +4,7 @@
         <name lang="en" >Current source (old)</name>
         <name lang="fr" >Source de courant (vieux)</name>
         <name lang="es" >Fuente de corriente (antiguo)</name>
+        <name lang="cs" >Zdroj proudu (starý)</name>
     </names>
     <description>
         <circle x="-10" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />

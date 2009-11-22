@@ -54,6 +54,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	delete_category   = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la cat\351gorie"),           this);
 	delete_collection = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
 	new_element       = new QAction(QET::Icons::ElementNew,                tr("Nouvel \351l\351ment"),                this);
+	import_element    = new QAction(QET::Icons::DocumentImport,            tr("Importer un \351l\351ment"),           this);
 	edit_element      = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
 	delete_element    = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
 	prj_close         = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
@@ -89,6 +90,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(delete_category,   SIGNAL(triggered()), this,           SLOT(deleteCategory()));
 	connect(delete_collection, SIGNAL(triggered()), this,           SLOT(deleteCategory()));
 	connect(new_element,       SIGNAL(triggered()), this,           SLOT(newElement()));
+	connect(import_element,    SIGNAL(triggered()), this,           SLOT(importElement()));
 	connect(edit_element,      SIGNAL(triggered()), this,           SLOT(editElement()));
 	connect(delete_element,    SIGNAL(triggered()), this,           SLOT(deleteElement()));
 	connect(prj_close,         SIGNAL(triggered()), this,           SLOT(closeProject()));
@@ -123,6 +125,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	toolbar -> addAction(delete_category);
 	toolbar -> addSeparator();
 	toolbar -> addAction(new_element);
+	toolbar -> addAction(import_element);
 	toolbar -> addAction(edit_element);
 	toolbar -> addAction(delete_element);
 	
@@ -220,6 +223,20 @@ void ElementsPanelWidget::newElement() {
 		new_element_wizard.preselectCategory(selected_category);
 	}
 	new_element_wizard.exec();
+}
+
+/**
+	Import d'element en passant par l'editeur
+*/
+void ElementsPanelWidget::importElement() {
+	QString fileName = QETElementEditor::getOpenElementFileName(this);
+	
+	// Ouverture de l'element dans l'editeur pour pouvoir ensuite l'enregistrer dans la categorie voulue
+	if (!fileName.isEmpty()) {
+		QETElementEditor *editor = new QETElementEditor();
+		editor -> fromFile(fileName);
+		editor -> show();
+	}
 }
 
 /**
@@ -488,7 +505,7 @@ void ElementsPanelWidget::launchElementEditor(const ElementsLocation &location) 
 
 /**
 	Lance l'editeur de categorie pour la categorie path
-	@param path Emplacement de la categorie a editer
+	@param location Emplacement de la categorie a editer
 */
 void ElementsPanelWidget::launchCategoryEditor(const ElementsLocation &location) {
 	ElementsCategoryEditor ece(location, true);

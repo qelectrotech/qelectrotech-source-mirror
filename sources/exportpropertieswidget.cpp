@@ -46,13 +46,14 @@ ExportPropertiesWidget::~ExportPropertiesWidget() {
 ExportProperties ExportPropertiesWidget::exportProperties() const {
 	ExportProperties export_properties;
 	
-	export_properties.destination_directory = QDir(dirpath -> text());
-	export_properties.format                = format -> itemData(format -> currentIndex()).toString();
-	export_properties.draw_grid             = draw_grid      -> isChecked();
-	export_properties.draw_border           = draw_border    -> isChecked();
-	export_properties.draw_inset            = draw_inset     -> isChecked();
-	export_properties.draw_terminals        = draw_terminals -> isChecked();
-	export_properties.exported_area         = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
+	export_properties.destination_directory   = QDir(dirpath -> text());
+	export_properties.format                  = format -> itemData(format -> currentIndex()).toString();
+	export_properties.draw_grid               = draw_grid      -> isChecked();
+	export_properties.draw_border             = draw_border    -> isChecked();
+	export_properties.draw_inset              = draw_inset     -> isChecked();
+	export_properties.draw_terminals          = draw_terminals -> isChecked();
+	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
+	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
 	
 	return(export_properties);
 }
@@ -67,16 +68,33 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	if (index == -1) index = 0;
 	format -> setCurrentIndex(index);
 	
-	draw_grid           -> setChecked(export_properties.draw_grid);
-	draw_border         -> setChecked(export_properties.draw_border);
-	draw_inset          -> setChecked(export_properties.draw_inset);
-	draw_terminals      -> setChecked(export_properties.draw_terminals);
+	draw_grid               -> setChecked(export_properties.draw_grid);
+	draw_border             -> setChecked(export_properties.draw_border);
+	draw_inset              -> setChecked(export_properties.draw_inset);
+	draw_terminals          -> setChecked(export_properties.draw_terminals);
+	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	
 	if (export_properties.exported_area == QET::BorderArea) {
 		export_border -> setChecked(true);
 	} else {
 		export_elements -> setChecked(true);
 	}
+}
+
+/**
+	Passe le widget en mode Impression ou en mode Export. Le mode Impression
+	n'affiche pas autant d'options que le mode Export.
+	@param mode true pour utiliser le widget en mode impression, false pour
+	l'utiliser en mode export
+*/
+void ExportPropertiesWidget::setPrintingMode(bool mode) {
+	dirpath_label   -> setVisible(!mode);
+	dirpath         -> setVisible(!mode);
+	button_browse   -> setVisible(!mode);
+	format_label    -> setVisible(!mode);
+	format          -> setVisible(!mode);
+	export_border   -> setVisible(!mode);
+	export_elements -> setVisible(!mode);
 }
 
 /**
@@ -99,10 +117,11 @@ void ExportPropertiesWidget::slot_chooseADirectory() {
 void ExportPropertiesWidget::build() {
 	// le dialogue est un empilement vertical d'elements
 	QVBoxLayout *vboxLayout = new QVBoxLayout();
+	vboxLayout -> setContentsMargins(0, 0, 0, 0);
 	
 	/* le dialogue comprend une ligne permettant d'indiquer un chemin de dossier (hboxLayout) */
 	QHBoxLayout *hboxLayout = new QHBoxLayout();
-	QLabel *dirpath_label = new QLabel(tr("Dossier cible :"), this);
+	dirpath_label = new QLabel(tr("Dossier cible :"), this);
 	dirpath = new QLineEdit(this);
 	QCompleter *completer = new QCompleter(this);
 	completer -> setModel(new QDirModel(completer));
@@ -117,7 +136,8 @@ void ExportPropertiesWidget::build() {
 	
 	/* une ligne permettant de choisir le format (hboxLayout1) */
 	QHBoxLayout *hboxLayout1 = new QHBoxLayout();
-	hboxLayout1 -> addWidget(new QLabel(tr("Format :"), this));
+	format_label = new QLabel(tr("Format :"), this);
+	hboxLayout1 -> addWidget(format_label);
 	hboxLayout1 -> addWidget(format = new QComboBox(this));
 	format -> addItem(tr("PNG (*.png)"),    "PNG");
 	format -> addItem(tr("JPEG (*.jpg)"),   "JPG");
@@ -126,10 +146,9 @@ void ExportPropertiesWidget::build() {
 	hboxLayout1 -> addStretch();
 	
 	vboxLayout -> addLayout(hboxLayout1);
-
 	
 	/* un cadre permettant de specifier les options de l'image finale */
-	QGroupBox *groupbox_options = new QGroupBox(tr("Options"));
+	QGroupBox *groupbox_options = new QGroupBox(tr("Options de rendu", "groupbox title"));
 	QGridLayout *optionshlayout = new QGridLayout(groupbox_options);
 	
 	// Choix de la zone du schema a exporter
@@ -156,9 +175,12 @@ void ExportPropertiesWidget::build() {
 	// dessiner les bornes
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
 	optionshlayout -> addWidget(draw_terminals, 2, 1);
-
+	
+	// conserver les couleurs des conducteurs
+	draw_colored_conductors = new QCheckBox(tr("Conserver les couleurs des conducteurs"), groupbox_options);
+	optionshlayout -> addWidget(draw_colored_conductors, 3, 0);
+	
 	vboxLayout -> addWidget(groupbox_options);
-	vboxLayout -> addStretch();
 	
 	setLayout(vboxLayout);
 
@@ -170,11 +192,17 @@ void ExportPropertiesWidget::build() {
 	setTabOrder(draw_border, draw_grid);
 	setTabOrder(draw_grid, draw_inset);
 	setTabOrder(draw_inset, draw_terminals);
-
+	setTabOrder(draw_terminals, draw_colored_conductors);
+	
 	// connexion du bouton permettant le choix du repertoire
 	connect(button_browse, SIGNAL(released()), this, SLOT(slot_chooseADirectory()));
 	
 	// emission de signaux lors du changement de format et lors du changement de zone exportee
 	connect(format,                   SIGNAL(currentIndexChanged(int)),         this, SIGNAL(formatChanged()));
 	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(exportedAreaChanged()));
+	connect(draw_grid,                SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_border,              SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_inset,               SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_terminals,           SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_colored_conductors,  SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 }

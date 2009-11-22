@@ -4,6 +4,7 @@
         <name lang="en" >Electric convector</name>
         <name lang="fr" >Radiateur électrique</name>
         <name lang="es" >Radiador eléctrico</name>
+        <name lang="cs" >Elektrický přímotop</name>
     </names>
     <description>
         <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="15" x2="-12" y3="15" x3="12" y4="0" />

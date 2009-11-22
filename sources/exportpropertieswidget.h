@@ -38,6 +38,7 @@ class ExportPropertiesWidget : public QWidget {
 	public:
 	void setExportProperties(const ExportProperties &);
 	ExportProperties exportProperties() const;
+	void setPrintingMode(bool);
 	
 	public slots:
 	void slot_chooseADirectory();
@@ -45,6 +46,7 @@ class ExportPropertiesWidget : public QWidget {
 	signals:
 	void formatChanged();
 	void exportedAreaChanged();
+	void optionChanged();
 	
 	// methodes privees
 	private:
@@ -52,13 +54,16 @@ class ExportPropertiesWidget : public QWidget {
 	
 	// attributs
 	private:
+	QLabel *dirpath_label;
 	QLineEdit *dirpath;
 	QPushButton *button_browse;
+	QLabel *format_label;
 	QComboBox *format;
 	QCheckBox *draw_grid;
 	QCheckBox *draw_border;
 	QCheckBox *draw_inset;
 	QCheckBox *draw_terminals;
+	QCheckBox *draw_colored_conductors;
 	QRadioButton *export_border;
 	QRadioButton *export_elements;
 	QButtonGroup *exported_content_choices;

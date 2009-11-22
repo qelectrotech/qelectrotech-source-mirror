@@ -4,6 +4,7 @@
         <name lang="en" >Single line transducer</name>
         <name lang="fr" >Transformateur unifilaire</name>
         <name lang="es" >Transformador unifilar</name>
+        <name lang="cs" >Jednodrátový převodník</name>
     </names>
     <description>
         <input x="20" y="17" size="5" text="___V" />

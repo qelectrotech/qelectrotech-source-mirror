@@ -100,7 +100,7 @@ QTreeWidgetItem *ElementsCategoriesList::addCollection(QTreeWidgetItem *qtwi_par
 	Methode privee permettant d'ajouter une categorie
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere la categorie
 	@param category Categorie d'elements a inserer
-	@param name Parametre facultatif permettant de forcer le nom affiche
+	@param cat_name Parametre facultatif permettant de forcer le nom affiche
 	S'il n'est pas precise, la methode utilise le nom declare par la categorie.
 	@param icon Icone a utiliser pour l'affichage de la categorie
 	Si elle n'est pas precisee, une icone par defaut est utilisee
@@ -133,9 +133,9 @@ QTreeWidgetItem *ElementsCategoriesList::addCategory(QTreeWidgetItem *qtwi_paren
 	Methode privee permettant d'ajouter un element
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
 	@param element Element a inserer
-	@param name Parametre facultatif permettant de forcer le nom affiche
+	@param elmt_name Parametre facultatif permettant de forcer le nom affiche
 	S'il n'est pas precise, la methode utilise le nom declare par la categorie.
-	Une icone sera generee a partir de l'element.
+	@param icon Icone a utiliser pour l'affichage de l'element
 	@return Le QTreeWidgetItem insere
 */
 QTreeWidgetItem *ElementsCategoriesList::addElement(QTreeWidgetItem *qtwi_parent, ElementDefinition *element, const QString &elmt_name, const QIcon &icon) {
@@ -197,7 +197,8 @@ bool ElementsCategoriesList::selectLocation(const ElementsLocation &location) {
 	@param current  QTreeWidgetItem selectionne
 	@param previous QTreeWidgetItem precedemment selectionne
 */
-void ElementsCategoriesList::selectionChanged(QTreeWidgetItem *current, QTreeWidgetItem */*previous*/) {
+void ElementsCategoriesList::selectionChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous) {
+	Q_UNUSED(previous);
 	ElementsLocation emited_location;
 	if (current) {
 		emited_location = locations_[current];

@@ -51,7 +51,7 @@ class ElementDefinition : public ElementsCollectionItem {
 		@param xml_element Nouvelle definition XML de l'element
 		@return true si l'operation s'est bien passee, false sinon
 	*/
-	virtual bool setXml(const QDomElement &) = 0;
+	virtual bool setXml(const QDomElement &xml_element) = 0;
 	
 	/**
 		@return true si la definition n'est pas disponible

@@ -4,6 +4,7 @@
         <name lang="en" >Terminal block</name>
         <name lang="fr" >Borne continuité</name>
         <name lang="es" >Punto de combinación</name>
+        <name lang="cs" >Spojovací svorka</name>
     </names>
     <description>
         <input x="5" y="8" size="7" text="_" />

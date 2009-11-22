@@ -4,6 +4,7 @@
         <name lang="fr" >Connecteur femelle</name>
         <name lang="en" >Female connector</name>
         <name lang="es" >Connector hembra</name>
+        <name lang="cs" >Ženská spojka</name>
     </names>
     <description>
         <input x="4" y="-7.5" size="8" rotate="true" text="_" />

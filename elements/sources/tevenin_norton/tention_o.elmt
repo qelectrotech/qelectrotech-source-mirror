@@ -4,6 +4,7 @@
         <name lang="en" >Voltage source (old)</name>
         <name lang="fr" >Source de tension (vieux)</name>
         <name lang="es" >Fuente de tensión (antiguo)</name>
+        <name lang="cs" >Zdroj napětí (starý)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-3" x1="-3" y2="-7" x2="0" y3="-3" x3="3" />

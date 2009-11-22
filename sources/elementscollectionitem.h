@@ -149,7 +149,7 @@ class ElementsCollectionItem : public QObject {
 		@param other_item Autre item
 		@return true si other_item est parent (direct ou indirect) de other_item, false sinon
 	*/
-	virtual bool isChildOf(ElementsCollectionItem *) = 0;
+	virtual bool isChildOf(ElementsCollectionItem *other_item) = 0;
 	/**
 		@return le nom de cet item dans l'arborescence
 	*/

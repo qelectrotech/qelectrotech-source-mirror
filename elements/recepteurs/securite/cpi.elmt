@@ -4,6 +4,7 @@
         <name lang="en" >PIC</name>
         <name lang="fr" >CPI</name>
         <name lang="es" >Aparato de vigilencia de aislamiento</name>
+        <name lang="cs" >Kontrola izolace</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="0" x1="3" y2="-5" x2="5" y3="-3" x3="0" />

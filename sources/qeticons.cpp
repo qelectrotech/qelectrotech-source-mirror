@@ -17,7 +17,7 @@
 */
 #include "qeticons.h"
 
-// on redeclare ici les icones 
+// on redeclare ici les icones
 namespace QET {
 	namespace Icons {
 		QIcon AddColumn;
@@ -63,6 +63,7 @@ namespace QET {
 		QIcon EditRedo;
 		QIcon EditSelectAll;
 		QIcon EditUndo;
+		QIcon Element;
 		QIcon ElementDelete;
 		QIcon ElementEdit;
 		QIcon ElementNew;
@@ -110,6 +111,7 @@ namespace QET {
 		QIcon PrintPortrait;
 		QIcon PrintTwoPages;
 		QIcon Project;
+		QIcon ProjectFile;
 		QIcon QETIcon;
 		QIcon QETLogo;
 		QIcon QETOxygenLogo;
@@ -130,6 +132,7 @@ namespace QET {
 		QIcon ViewRefresh;
 		QIcon West;
 		QIcon WindowNew;
+		QIcon XmlTextFile;
 		QIcon ZoomFitBest;
 		QIcon ZoomIn;
 		QIcon ZoomOriginal;
@@ -214,6 +217,9 @@ void QET::Icons::initIcons() {
 	EditSelectAll       .addFile(":/ico/22x22/edit-select-all.png");
 	EditUndo            .addFile(":/ico/16x16/edit-undo.png");
 	EditUndo            .addFile(":/ico/22x22/edit-undo.png");
+	Element             .addFile(":/ico/oxygen-icons/16x16/mimetypes/application-x-qet-element.png");
+	Element             .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-element.png");
+	Element             .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-element.png");
 	ElementDelete       .addFile(":/ico/22x22/element-delete.png");
 	ElementEdit         .addFile(":/ico/22x22/element-edit.png");
 	ElementNew          .addFile(":/ico/22x22/element-new.png");
@@ -262,10 +268,14 @@ void QET::Icons::initIcons() {
 	Phase               .addFile(":/ico/16x16/phase.png");
 	PrintAllPages       .addFile(":/ico/22x22/all_pages.png");
 	Printer             .addFile(":/ico/32x32/printer.png");
+	Printer             .addFile(":/ico/128x128/printer.png");
 	PrintLandscape      .addFile(":/ico/22x22/landscape.png");
 	PrintPortrait       .addFile(":/ico/22x22/portrait.png");
 	PrintTwoPages       .addFile(":/ico/22x22/two_pages.png");
 	Project             .addFile(":/ico/16x16/project.png");
+	ProjectFile         .addFile(":/ico/oxygen-icons/16x16/mimetypes/application-x-qet-project.png");
+	ProjectFile         .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png");
+	ProjectFile         .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png");
 	QETIcon             .addFile(":/ico/256x256/qelectrotech.png");
 	QETLogo             .addFile(":/ico/16x16/qet.png");
 	QETLogo             .addFile(":/ico/256x256/qet.png");
@@ -295,6 +305,9 @@ void QET::Icons::initIcons() {
 	West                .addFile(":/ico/16x16/west.png");
 	WindowNew           .addFile(":/ico/16x16/window-new.png");
 	WindowNew           .addFile(":/ico/22x22/window-new.png");
+	XmlTextFile         .addFile(":/ico/16x16/text-xml.png");
+	XmlTextFile         .addFile(":/ico/22x22/text-xml.png");
+	XmlTextFile         .addFile(":/ico/32x32/text-xml.png");
 	ZoomFitBest         .addFile(":/ico/16x16/zoom-fit-best.png");
 	ZoomFitBest         .addFile(":/ico/22x22/zoom-fit-best.png");
 	ZoomIn              .addFile(":/ico/16x16/zoom-in.png");

@@ -62,6 +62,24 @@ QMenu *RecentFiles::menu() const {
 }
 
 /**
+	@return l'icone affichee a cote de chaque fichier, ou une QIcon nulle si
+	aucune icone n'est utilisee.
+*/
+QIcon RecentFiles::iconForFiles() const {
+	return(files_icon_);
+}
+
+/**
+	Definit l'icone a afficher a cote de chaque fichier. Si une QIcon nulle
+	est fournie, aucune icone n'est utilisee.
+	@param icon Icone a afficher a cote de chaque fichier
+*/
+void RecentFiles::setIconForFiles(const QIcon &icon) {
+	files_icon_ = icon;
+	buildMenu();
+}
+
+/**
 	Oublie les fichiers recents
 */
 void RecentFiles::clear() {
@@ -151,6 +169,9 @@ void RecentFiles::buildMenu() {
 	foreach (QString filepath, list_) {
 		// creee une nouvelle action pour le fichier
 		QAction *action = new QAction(filepath, 0);
+		if (!files_icon_.isNull()) {
+			action -> setIcon(files_icon_);
+		}
 		menu_ -> addAction(action);
 		
 		// lie l'action et le mapper

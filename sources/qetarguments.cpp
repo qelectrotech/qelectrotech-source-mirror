@@ -156,14 +156,18 @@ void QETArguments::clear() {
 	element_files_.clear();
 	options_.clear();
 	unknown_options_.clear();
+#ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_.clear();
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_.clear();
+#endif
 }
 
 /**
 	Analyse des arguments et les retient dans cet objet.
 	Si cet objet contenait deja des arguments, ceux-ci sont oublies.
-	@param args Arguments a analyser
+	@param arguments Arguments a analyser
 */
 void QETArguments::parseArguments(const QList<QString> &arguments) {
 	// oublie les eventuels arguments precedents

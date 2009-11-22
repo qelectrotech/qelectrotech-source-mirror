@@ -4,6 +4,7 @@
         <name lang="en" >Siren</name>
         <name lang="fr" >Sirène</name>
         <name lang="es" >Sirena</name>
+        <name lang="cs" >Siréna</name>
     </names>
     <description>
         <input x="35" y="3" size="9" text="_" />

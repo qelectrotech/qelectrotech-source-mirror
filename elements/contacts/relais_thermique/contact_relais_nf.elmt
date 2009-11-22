@@ -4,6 +4,7 @@
         <name lang="en" >Contact relais thermique (NC)</name>
         <name lang="fr" >Contact relais thermique (NF)</name>
         <name lang="es" >Contacto relé térmico (NC)</name>
+        <name lang="cs" >Tepelné spojovací relé (NC)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0" />

@@ -186,13 +186,15 @@ void Conductor::segmentsToPath() {
 }
 
 /**
-	Gere les updates 
+	Gere les updates
 	@param p1 Coordonnees du point d'amarrage de la borne 1
 	@param o1 Orientation de la borne 1
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conductor::priv_modifieConductor(const QPointF &p1, QET::Orientation, const QPointF &p2, QET::Orientation) {
+void Conductor::priv_modifieConductor(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
+	Q_UNUSED(o1);
+	Q_UNUSED(o2);
 	
 	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
 	
@@ -447,30 +449,43 @@ QPointF Conductor::extendTerminal(const QPointF &terminal, QET::Orientation term
 	@param options Les options de style pour le conducteur
 	@param qw Le QWidget sur lequel on dessine 
 */
-void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget */*qw*/) {
+void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWidget *qw) {
+	Q_UNUSED(qw);
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
+	// determine la couleur du conducteur
+	QColor final_conductor_color(properties_.color);
+	if (isSelected()) {
+		final_conductor_color = Qt::red;
+	} else {
+		if (Diagram *parent_diagram = diagram()) {
+			if (!parent_diagram -> drawColoredConductors()) {
+				final_conductor_color = Qt::black;
+			}
+		}
+	}
+	
 	// affectation du QPen et de la QBrush modifies au QPainter
 	qp -> setBrush(conductor_brush);
-	qp -> setPen(conductor_pen);
-	if (isSelected()) {
-		QPen tmp = qp -> pen();
-		tmp.setColor(Qt::red);
-		qp -> setPen(tmp);
-	}
+	QPen final_conductor_pen = conductor_pen;
+	
+	// modification du QPen generique pour lui affecter la couleur et le style adequats
+	final_conductor_pen.setColor(final_conductor_color);
+	final_conductor_pen.setStyle(properties_.style);
+	final_conductor_pen.setJoinStyle(Qt::SvgMiterJoin); // meilleur rendu des pointilles
 	
 	// utilisation d'un trait "cosmetique" en-dessous d'un certain zoom
 	if (options && options -> levelOfDetail < 1.0) {
-		QPen tmp = qp -> pen();
-		tmp.setCosmetic(true);
-		qp -> setPen(tmp);
+		final_conductor_pen.setCosmetic(true);
 	}
+	
+	qp -> setPen(final_conductor_pen);
 	
 	// dessin du conducteur
 	qp -> drawPath(path());
 	if (properties_.type == ConductorProperties::Single) {
-		if (isSelected()) qp -> setBrush(Qt::red);
+		qp -> setBrush(final_conductor_color);
 		properties_.singleLineProperties.draw(
 			qp,
 			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
@@ -508,8 +523,9 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	// dessine les eventuelles jonctions
 	QList<QPointF> junctions_list = junctions();
 	if (!junctions_list.isEmpty()) {
-		QBrush junction_brush(Qt::SolidPattern);
-		junction_brush.setColor(isSelected() ? Qt::red : Qt::black);
+		final_conductor_pen.setStyle(Qt::SolidLine);
+		QBrush junction_brush(final_conductor_color, Qt::SolidPattern);
+		qp -> setPen(final_conductor_pen);
 		qp -> setBrush(junction_brush);
 		qp -> setRenderHint(QPainter::Antialiasing, true);
 		foreach(QPointF point, junctions_list) {
@@ -751,6 +767,7 @@ QPainterPath Conductor::shape() const {
 	@param tobound valeur a borner
 	@param bound1 borne 1
 	@param bound2 borne 2
+	@param space marge interne ajoutee
 	@return La valeur bornee
 */
 qreal Conductor::conductor_bound(qreal tobound, qreal bound1, qreal bound2, qreal space) {
@@ -1100,6 +1117,7 @@ ConductorProperties Conductor::properties() const {
 	Relit les proprietes et les applique
 */
 void Conductor::readProperties() {
+	// la couleur n'est vraiment applicable que lors du rendu du conducteur
 	setText(properties_.text);
 	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
 }

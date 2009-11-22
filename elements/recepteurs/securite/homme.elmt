@@ -4,6 +4,7 @@
         <name lang="en" >Human</name>
         <name lang="fr" >Humain</name>
         <name lang="es" >Ser humano</name>
+        <name lang="cs" >Člověk</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="7" x2="5" y3="20" x3="10" />

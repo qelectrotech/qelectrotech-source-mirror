@@ -43,7 +43,8 @@ PartEllipse::~PartEllipse() {
 	@param options Options pour affiner le rendu
 	@param widget Widget sur lequel le rendu est effectue
 */
-void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *) {
+void PartEllipse::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, QWidget *widget) {
+	Q_UNUSED(widget);
 	applyStylesToQPainter(*painter);
 	QPen t = painter -> pen();
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);

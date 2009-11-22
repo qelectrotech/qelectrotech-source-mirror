@@ -120,6 +120,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Youssef Oualmakran",     "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
 	addAuthor(translators, "Yuriy Litkevich",        "yuriy@qelectrotech.org",      tr("Traduction en russe"));
 	addAuthor(translators, "Jos\351 Carlos Martins", "jose@qelectrotech.org",       tr("Traduction en portugais"));
+	addAuthor(translators, "Pavel Fric",             "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
 	/*
 	addAuthor(translators, "Luca Pedrazzi",          "pedro@iworks.it",             tr("Traduction en italien"));
 	*/

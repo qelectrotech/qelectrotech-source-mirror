@@ -251,8 +251,6 @@ bool QETTabBar::mustMoveTab(int src_tab, int dst_tab, const QPoint &pos) const {
 	Deplace un onglet.
 	@param src_tab Index de l'onglet de depart
 	@param dst_tab Index de l'onglet de destination
-	@param pos Position de la souris dans le cadre du deplacement de l'onglet
-	@return 
 */
 void QETTabBar::moveTab(int src_tab, int dst_tab) {
 	// sauvegarde les caracteristiques de l'onglet deplace

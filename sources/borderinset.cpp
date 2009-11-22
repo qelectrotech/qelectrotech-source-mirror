@@ -118,7 +118,7 @@ BorderProperties BorderInset::exportBorder() {
 }
 
 /**
-	@param ip les nouvelles proprietes de la bordure
+	@param bp les nouvelles proprietes de la bordure
 */
 void BorderInset::importBorder(const BorderProperties &bp) {
 	setColumnsHeaderHeight(bp.columns_header_height);
@@ -373,7 +373,7 @@ void BorderInset::setNbRows(int nb_r) {
 	Change la hauteur des lignes.
 	Si la hauteur indiquee est inferieure au minimum requis, c'est ce minimum
 	qui est utilise.
-	@param rh nouvelle hauteur des lignes
+	@param new_rh nouvelle hauteur des lignes
 	@see minRowsHeight()
 */
 void BorderInset::setRowsHeight(const qreal &new_rh) {
