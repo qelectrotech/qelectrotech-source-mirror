@@ -68,7 +68,12 @@ class ElementScene : public QGraphicsScene {
 	QGIManager qgi_manager;
 	/// Pile des actions annulables
 	QUndoStack undo_stack;
-	/// Position du premier item selectionne (utilise pour annuler les deplacements)
+	/**
+		fsi_pos (first selected item pos) : Position du premier item
+		selectionne : utilise pour annuler les deplacements a la souris ;
+		egalement utilise pour gerer les deplacements avec les fleches du
+		clavier.
+	*/
 	QPointF fsi_pos;
 	QPointF moving_press_pos;
 	bool moving_parts_;
@@ -135,6 +140,8 @@ class ElementScene : public QGraphicsScene {
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void keyPressEvent(QKeyEvent *);
+	virtual void keyReleaseEvent(QKeyEvent *);
 	virtual void drawBackground(QPainter *, const QRectF &);
 	virtual void drawForeground(QPainter *, const QRectF &);
 	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);

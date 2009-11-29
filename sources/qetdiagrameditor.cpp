@@ -258,7 +258,7 @@ void QETDiagramEditor::actions() {
 	delete_selection  -> setShortcut(QKeySequence(tr("Backspace")));
 #endif
 	
-	rotate_selection  -> setShortcut(QKeySequence(tr("Ctrl+R")));
+	rotate_selection  -> setShortcut(QKeySequence(tr("Space")));
 	selection_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
 	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
