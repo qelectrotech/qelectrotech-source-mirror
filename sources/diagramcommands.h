@@ -232,7 +232,7 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 class RotateElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand * = 0);
+	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &, QUndoCommand * = 0);
 	virtual ~RotateElementsCommand();
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
@@ -246,6 +246,8 @@ class RotateElementsCommand : public QUndoCommand {
 	private:
 	/// elements pivotes associes a leur ancienne orientation
 	QHash<Element *, QET::Orientation> elements_to_rotate;
+	/// textes a pivoter
+	QList<DiagramTextItem *> texts_to_rotate;
 };
 
 /**

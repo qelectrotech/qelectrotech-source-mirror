@@ -1070,7 +1070,9 @@ DiagramContent Diagram::selectedContent() {
 */
 bool Diagram::canRotateSelection() const {
 	foreach(QGraphicsItem * qgi, selectedItems()) {
-		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
+		if (/*DiagramTextItem *dti = */qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
+			return(true);
+		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			// l'element est-il pivotable ?
 			if (e -> orientation().current() != e -> orientation().next()) {
 				return(true);

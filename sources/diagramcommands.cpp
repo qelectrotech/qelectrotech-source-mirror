@@ -407,9 +407,10 @@ void ChangeDiagramTextCommand::redo() {
 	@param elements Elements a pivoter associes a leur orientation d'origine
 	@param parent QUndoCommand parent
 */
-RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand *parent) :
+RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, QUndoCommand *parent) :
 	QUndoCommand(parent),
-	elements_to_rotate(elements)
+	elements_to_rotate(elements),
+	texts_to_rotate(texts)
 {
 	setText(
 		QString(
@@ -417,7 +418,7 @@ RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orienta
 				"pivoter %1",
 				"undo caption - %1 is a sentence listing the rotated content"
 			)
-		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0))
+		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0, texts.count()))
 	);
 }
 
@@ -430,6 +431,9 @@ void RotateElementsCommand::undo() {
 	foreach(Element *e, elements_to_rotate.keys()) {
 		e -> setOrientation(elements_to_rotate[e]);
 	}
+	foreach(DiagramTextItem *dti, texts_to_rotate) {
+		dti -> rotateBy(90.0);
+	}
 }
 
 /// refait le pivotement
@@ -437,6 +441,9 @@ void RotateElementsCommand::redo() {
 	foreach(Element *e, elements_to_rotate.keys()) {
 		e -> setOrientation(e -> orientation().next());
 		e -> update();
+	}
+	foreach(DiagramTextItem *dti, texts_to_rotate) {
+		dti -> rotateBy(-90.0);
 	}
 }
 

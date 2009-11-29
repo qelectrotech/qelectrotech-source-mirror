@@ -23,6 +23,7 @@
 #include "diagramcommands.h"
 #include "diagramposition.h"
 #include "conductorpropertieswidget.h"
+#include "elementtextitem.h"
 #include "insetpropertieswidget.h"
 #include "qetapp.h"
 #include "qetproject.h"
@@ -114,14 +115,22 @@ void DiagramView::deleteSelection() {
 */
 void DiagramView::rotateSelection() {
 	if (scene -> isReadOnly()) return;
+	
+	// recupere les elements et les champs de texte a pivoter
 	QHash<Element *, QET::Orientation> elements_to_rotate;
+	QList<DiagramTextItem *> texts_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_rotate.insert(e, e -> orientation().current());
-		}
+		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
+			texts_to_rotate << dti;
+		} /*else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+		}*/
 	}
-	if (elements_to_rotate.isEmpty()) return;
-	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate));
+	
+	// effectue les rotations s'il y a quelque chose a pivoter
+	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty()) return;
+	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate));
 }
 
 /**

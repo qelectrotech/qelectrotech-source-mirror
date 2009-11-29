@@ -25,7 +25,8 @@
 	@param scene La scene a laquelle appartient le champ de texte
 */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsTextItem(parent, scene)
+	QGraphicsTextItem(parent, scene),
+	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
@@ -41,7 +42,8 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 */
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) :
 	QGraphicsTextItem(text, parent, scene),
-	previous_text(text)
+	previous_text(text),
+	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
@@ -56,6 +58,42 @@ DiagramTextItem::~DiagramTextItem() {
 /// @return le Diagram auquel ce texte appartient, ou 0 si ce texte est independant
 Diagram *DiagramTextItem::diagram() const {
 	return(qobject_cast<Diagram *>(scene()));
+}
+
+/**
+	@return l'angle de rotation actuel de ce texte
+*/
+qreal DiagramTextItem::rotationAngle() const {
+	return(rotation_angle_);
+}
+
+/**
+	Permet de tourner le texte a un angle donne. La rotation s'effectue par
+	rapport au point (0, 0) du texte.
+	@param rotation Nouvel angle de rotation de ce texte
+*/
+void DiagramTextItem::setRotationAngle(const qreal &rotation) {
+	// ramene l'angle demande entre -360.0 et +360.0 degres
+	qreal applied_rotation = rotation;
+	while (applied_rotation < -360.0) applied_rotation += 360.0;
+	while (applied_rotation >  360.0) applied_rotation -= 360.0;
+	
+	rotate(applied_rotation - rotation_angle_);
+	rotation_angle_ = applied_rotation;
+}
+
+/**
+	Ajoute 
+	@param added_rotation Angle a ajouter a la rotation actuelle
+*/
+void DiagramTextItem::rotateBy(const qreal &added_rotation) {
+	// ramene l'angle demande entre -360.0 et +360.0 degres
+	qreal applied_added_rotation = added_rotation;
+	while (applied_added_rotation < 360.0) applied_added_rotation += 360.0;
+	while (applied_added_rotation > 360.0) applied_added_rotation -= 360.0;
+	
+	rotation_angle_ += applied_added_rotation;
+	rotate(applied_added_rotation);
 }
 
 /**
@@ -91,6 +129,7 @@ void DiagramTextItem::fromXml(const QDomElement &e) {
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setPlainText(e.attribute("text"));
 	previous_text = e.attribute("text");
+	setRotationAngle(e.attribute("rotation").toDouble());
 }
 
 /**
@@ -102,6 +141,9 @@ QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toPlainText());
+	if (rotation_angle_) {
+		result.setAttribute("rotation", QString("%1").arg(rotation_angle_));
+	}
 	return(result);
 }
 

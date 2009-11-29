@@ -48,6 +48,9 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual QDomElement toXml(QDomDocument &) const;
 	virtual void setPos(const QPointF &);
 	virtual void setPos(qreal, qreal);
+	qreal rotationAngle() const;
+	void setRotationAngle(const qreal &);
+	void rotateBy(const qreal &);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
@@ -66,5 +69,10 @@ class DiagramTextItem : public QGraphicsTextItem {
 	// slots
 	public slots:
 	void setNonFocusable();
+	
+	// attributs prives
+	private:
+	/// angle de rotation du champ de texte
+	qreal rotation_angle_;
 };
 #endif

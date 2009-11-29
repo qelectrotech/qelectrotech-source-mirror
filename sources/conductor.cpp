@@ -874,6 +874,7 @@ bool Conductor::fromXml(QDomElement &e) {
 	// recupere la "configuration" du conducteur
 	properties_.fromXml(e);
 	readProperties();
+	text_item -> setRotationAngle(e.attribute("rotation").toDouble());
 	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
 	// les segments non valides sont ignores
@@ -968,6 +969,9 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 	
 	// exporte la "configuration" du conducteur
 	properties_.toXml(e);
+	if (text_item -> rotationAngle()) {
+		e.setAttribute("rotation", QString("%1").arg(text_item -> rotationAngle()));
+	}
 	return(e);
 }
 
