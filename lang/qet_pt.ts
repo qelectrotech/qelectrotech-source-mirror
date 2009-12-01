@@ -312,17 +312,17 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="96"/>
         <source>Apparence du conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Aparência do condutor</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
         <source>Couleur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Côr:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="105"/>
         <source>Trait en pointillés</source>
-        <translation type="unfinished"></translation>
+        <translation>Traço tracejado</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="59"/>
@@ -1118,7 +1118,7 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Importer un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar um elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
@@ -1246,7 +1246,7 @@ As alterações serão definitivas.</translation>
         <location filename="../sources/configpages.cpp" line="237"/>
         <source>Export</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportar</translation>
     </message>
 </context>
 <context>
@@ -1297,7 +1297,7 @@ As alterações serão definitivas.</translation>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tem de especificar um nome de ficheiro não vazio e único por cada diagrama a exportar.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
@@ -1380,12 +1380,12 @@ As alterações serão definitivas.</translation>
         <location filename="../sources/exportpropertieswidget.cpp" line="151"/>
         <source>Options de rendu</source>
         <comment>groupbox title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Opções de renderização</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Manter as cores dos condutores</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="156"/>
@@ -2064,7 +2064,7 @@ As alterações serão definitivas.</translation>
         <location filename="../sources/configpages.cpp" line="291"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impressão</translation>
     </message>
 </context>
 <context>
@@ -2206,7 +2206,7 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="940"/>
         <source>&amp;Restaurer</source>
-        <translation>&amp;Mostrar</translation>
+        <translation>&amp;Ver</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="941"/>
@@ -3436,12 +3436,12 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="88"/>
         <source>un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>um ficheiro</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="89"/>
         <source>un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>um elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="115"/>
@@ -3524,7 +3524,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="348"/>
         <source>Coller depuis...</source>
-        <translation type="unfinished"></translation>
+        <translation>Colar a partir de...</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="429"/>
@@ -4027,7 +4027,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/exportdialog.cpp" line="672"/>
         <source>Exporter vers le presse-papier</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar para a àrea de transferência</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="235"/>
