@@ -4,5 +4,6 @@
         <name lang="en" >Circuit-breakers</name>
         <name lang="fr" >Disjoncteurs</name>
         <name lang="es" >Disyuntores</name>
+        <name lang="cs" >Jističe</name>
     </names>
 </qet-directory>

@@ -4,5 +4,6 @@
         <name lang="en" >Lights</name>
         <name lang="fr" >Lampes</name>
         <name lang="es" >Lámparas</name>
+        <name lang="cs" >Světla</name>
     </names>
 </qet-directory>

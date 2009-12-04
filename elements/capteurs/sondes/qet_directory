@@ -4,5 +4,6 @@
         <name lang="en" >Sensors</name>
         <name lang="fr" >Sondes</name>
         <name lang="es" >Sondeos</name>
+        <name lang="cs" >Snímače</name>
     </names>
 </qet-directory>

@@ -4,5 +4,6 @@
         <name lang="en" >Switch-off delay</name>
         <name lang="fr" >Repos</name>
         <name lang="es" >Comutadores de tiempo retardado de apago</name>
+        <name lang="cs" >Opožděné vypnutí</name>
     </names>
 </qet-directory>

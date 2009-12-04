@@ -4,5 +4,6 @@
         <name lang="en" >Disconnecting switches</name>
         <name lang="fr" >Interrupteurs sectionneurs</name>
         <name lang="es" >Interruptores seccionadores</name>
+        <name lang="cs" >Odpojovače</name>
     </names>
 </qet-directory>

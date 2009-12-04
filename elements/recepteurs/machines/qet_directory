@@ -4,5 +4,6 @@
         <name lang="en" >Machines</name>
         <name lang="fr" >Machines</name>
         <name lang="es" >Máquinas</name>
+        <name lang="cs" >Stroje</name>
     </names>
 </qet-directory>

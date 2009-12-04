@@ -4,5 +4,6 @@
         <name lang="en" >Terminals</name>
         <name lang="fr" >Bornes</name>
         <name lang="es" >Terminales</name>
+        <name lang="cs" >Svorky</name>
     </names>
 </qet-directory>

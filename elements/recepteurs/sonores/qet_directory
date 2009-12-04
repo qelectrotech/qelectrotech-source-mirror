@@ -4,5 +4,6 @@
         <name lang="en" >Sounding</name>
         <name lang="fr" >Sonores</name>
         <name lang="es" >Sonido</name>
+        <name lang="cs" >Zvuky</name>
     </names>
 </qet-directory>

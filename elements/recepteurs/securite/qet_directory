@@ -4,5 +4,6 @@
         <name lang="en" >Security</name>
         <name lang="fr" >Sécurité</name>
         <name lang="es" >Seguridad</name>
+        <name lang="cs" >Bezpečnost</name>
     </names>
 </qet-directory>

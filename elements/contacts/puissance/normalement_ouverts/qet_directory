@@ -4,5 +4,6 @@
         <name lang="en" >Normally open</name>
         <name lang="fr" >Normalement ouverts</name>
         <name lang="es" >Normalemente abiertos</name>
+        <name lang="cs" >Obvykle otevřené</name>
     </names>
 </qet-directory>
