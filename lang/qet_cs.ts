@@ -2823,7 +2823,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Mezerník</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
