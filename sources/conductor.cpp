@@ -93,6 +93,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 		this,
 		SLOT(displayedTextChanged())
 	);
+	// taille du carre de saisie du segment
+	RectMoveSeg_Scale = 1.0;
 }
 
 /**
@@ -503,15 +505,15 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		QPointF previous_point;
 		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
 			QPointF point = points.at(i);
-			
+				
 			// dessine le carre de saisie du segment
 			if (i > 1) {
 				qp -> fillRect(
 					QRectF(
-						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset,
-						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset,
-						2.0,
-						2.0
+						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset * RectMoveSeg_Scale,
+						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset * RectMoveSeg_Scale,
+						2.0 * RectMoveSeg_Scale,
+						2.0 * RectMoveSeg_Scale
 					),
 					square_brush
 				);
@@ -601,11 +603,12 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			} else if (hasClickedOn(press_point, segment -> middle())) {
 				moving_point = false;
 				moving_segment = true;
+				RectMoveSeg_Scale = 2.0;
 				previous_z_value = zValue();
 				setZValue(5000.0);
 				moved_segment = segment;
 				break;
-			}
+			}else RectMoveSeg_Scale = 1.0;
 			segment = segment -> nextSegment();
 		}
 	}
@@ -620,17 +623,19 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	@param e L'evenement decrivant le deplacement de souris.
 */
 void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+	// position pointee par la souris
+	qreal mouse_x = e -> pos().x();
+	qreal mouse_y = e -> pos().y();
+	
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
-		// position pointee par la souris
-		qreal mouse_x = e -> pos().x();
-		qreal mouse_y = e -> pos().y();
 		
 		bool snap_conductors_to_grid = e -> modifiers() ^ Qt::ShiftModifier;
 		if (snap_conductors_to_grid) {
 			mouse_x = qRound(mouse_x / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
 			mouse_y = qRound(mouse_y / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
 		}
+		
 		if (moving_point) {
 			// la modification par points revient bientot
 			/*

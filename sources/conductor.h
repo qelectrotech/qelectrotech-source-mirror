@@ -93,6 +93,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
 	
 	private:
+	/// taille du carre de saisie du segment
+	int RectMoveSeg_Scale;
 	/// caracteristiques du conducteur
 	ConductorProperties properties_;
 	/// booleen indiquant si le fil est encore valide
