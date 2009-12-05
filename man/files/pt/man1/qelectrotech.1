@@ -1,0 +1,59 @@
+.TH QELECTROTECH 1 "Agosto de 2008" QElectroTech "Manual do Utilizador"
+.SH NAME
+qelectrotech \- Editor de Esquemas Eléctricos
+.SH SYNOPSIS
+.B qelectrotech
+.B [\-\-common\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-config\-dir\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-lang\-dir\fR=\fIDIR\fB]
+.B [\-\-help]
+.B [\-v\fR|\fB\-\-version]
+.B [\-\-license]
+.B [\fIFILE\fB]...
+
+. SH DESCRIÇÃO
+QElectroTech é um editor de esquemas elétricos. Esquemas (*. qet) e elementos elétricos (*. elmt) são armazenados usando o formato XML.
+Os elementos que podem ser usados em esquemas podem ser provenientes da colecção comum ou da coleção personalizada do utilizador.
+Normalmente, a colecção comum pode ser lida por todos os utilizadores, mas não pode ser editada.
+Cada utilizador possui a sua coleção personalizada que pode alterar ao seu gosto.
+.SH OPTIONS
+.TP
+\fB\-\-common\-elements\-dir\fR=\fIDIR\fR
+Utiliza DIR como directoria de raiz da colecção comum. Nota: esta opção só é habilitada se a directiva QET_ALLOW_OVERRIDE_CED_OPTION tiver sido usada aquando a compilação do programa.
+.TP
+\fB\-\-config\-dir\fR=\fIDIR\fR
+Utiliza DIR como a directoria de configuração do utilizador actual. Esta directoria tem um ficheiro de nome qelectrotech.conf, contendo a configuração da aplicação, e uma subdirectoria chamada elements, que contém a colecção de elementos do actual utilizador. Nota: esta opção só é habilitada se a directiva QET_ALLOW_OVERRIDE_CD_OPTION tiver sido usada aquando a compilação do programa.
+.TP
+\fB\-\-lang\-dir\fR=\fIDIR\fR
+Procura os ficheiros de tradução da aplicação na directoria DIR.
+.TP
+\fB\-\-help\fR
+Mostra uma curta descrição das opções disponiveis.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Mostra a versão da aplicação (Ex.: 0.1)
+.TP
+\fB\-\-license\fR
+Mostra a licença da aplicação (GNU/GPL)
+Note que se uma das três últimas opções é especificada na linha de comando, o programa pára depois de ter apresentado as informações adequadas.
+Se uma instância do aplicativo lançado pelo utilizador ainda está em execução, essa instância irá considerar a linha de comando, e, nomeadamente, os arquivos a serem abertos.
+No entanto, as opções que redefinem os diretórios (colecção comum, configuração e arquivos de tradução) não serão consideradas.
+Se um nome de arquivo termina com .Elmt, QElectroTech vai tentar abri-lo com um editor de elemento.
+Caso contrário, ele vai considerar como esquemas.
+.SH AUTHORS
+Benoit Ansieau <benoit.ansieau@gmail.com>
+.br
+Xavier Guerrin <xavier.guerrin@gmail.com>
+
+
+. SH REPORTAR ERROS
+Se você encontrar um comportamento no aplicativo que pareça estranho para si, veja a FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> e o nosso BugTracker <http://qelectrotech.org/ bugtracker /> para verificar se o problema já é conhecido. Em caso negativo, por favor, envie um relatório do erro através do BugTracker.
+.SH COPYRIGHT
+Copyright (c) QElectroTech developers.
+.br
+Licença : GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+.br
+Este programa é um software LIVRE. Você pode modificar e redistribuir. ELE É FORNECIDO COMO ESTÀ E SEM QUALQUER TIPO DE GARANTIA.
+
+SH VER TAMBÉM
+Página oficial do projecto : <http://qelectrotech.org/>
