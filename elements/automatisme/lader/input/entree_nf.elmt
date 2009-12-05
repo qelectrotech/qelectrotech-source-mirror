@@ -5,6 +5,7 @@
         <name lang="fr" >Entrée (NF)</name>
         <name lang="es" >Entrada (lógica negativa)</name>
         <name lang="cs" >Vstup (záporná logika)</name>
+        <name lang="pt" >Entrada (lógica negativa)</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-7" y2="-5" x2="7" />

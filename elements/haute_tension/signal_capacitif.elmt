@@ -3,6 +3,7 @@
         <name lang="fr" >Indicateur présence tension capacitif</name>
         <name lang="en" >Capacitive voltage attendance indicator</name>
         <name lang="cs" >Kapacitní ukazatel přítomnosti napětí</name>
+        <name lang="pt" >Indicador de presença de tensão capacitiva</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="10" x2="10" />

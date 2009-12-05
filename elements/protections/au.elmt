@@ -5,6 +5,7 @@
         <name lang="fr" >Arrêt d'urgence (NF)</name>
         <name lang="es" >Parada de emergencia (NC)</name>
         <name lang="cs" >Nouzové zastavení</name>
+        <name lang="pt" >Paragem de emergência (NC)</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0" />

@@ -5,6 +5,7 @@
         <name lang="fr" >Diode</name>
         <name lang="es" >Diodo</name>
         <name lang="cs" >Dioda</name>
+        <name lang="pt" >Díodo</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="5" x2="5" />

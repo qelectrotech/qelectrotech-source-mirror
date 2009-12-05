@@ -5,6 +5,7 @@
         <name lang="fr" >Moteur triphasé</name>
         <name lang="es" >Motor trifásico</name>
         <name lang="cs" >Trojfázový motor</name>
+        <name lang="pt" >Motor trifásico</name>
     </names>
     <description>
         <text x="-10.25" y="18" size="18" text="M" />

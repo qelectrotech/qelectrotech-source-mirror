@@ -5,6 +5,7 @@
         <name lang="fr" >Génératrice triphasée</name>
         <name lang="es" >Generador trifasico</name>
         <name lang="cs" >Třífázový generátor</name>
+        <name lang="pt" >Gerador trifásico</name>
     </names>
     <description>
         <circle x="-15" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />

@@ -5,6 +5,7 @@
         <name lang="fr" >Borne sortie</name>
         <name lang="es" >Terminal de salida</name>
         <name lang="cs" >Výstupní svorka</name>
+        <name lang="pt" >Terminal de saída</name>
     </names>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4" />

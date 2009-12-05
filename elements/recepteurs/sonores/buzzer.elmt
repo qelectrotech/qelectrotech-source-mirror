@@ -5,6 +5,7 @@
         <name lang="fr" >Buzzer</name>
         <name lang="es" >Zumbador</name>
         <name lang="cs" >Bzučák</name>
+        <name lang="pt" >Bezouro</name>
     </names>
     <description>
         <input x="35" y="3" size="9" text="_" />

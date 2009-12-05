@@ -5,6 +5,7 @@
         <name lang="fr" >Entrée</name>
         <name lang="es" >Entrada</name>
         <name lang="cs" >Vstup</name>
+        <name lang="pt" >Entrada</name>
     </names>
     <description>
         <input x="-18" y="-10" size="9" rotate="true" text="_" />

@@ -5,6 +5,7 @@
         <name lang="fr" >Moteur triphasé (double enroulement)</name>
         <name lang="es" >Motor de seis fases</name>
         <name lang="cs" >Šestifázový motor</name>
+        <name lang="pt" >Motor de seis fases (duplo enrolamento)</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="-10" y2="40" x2="-10" />

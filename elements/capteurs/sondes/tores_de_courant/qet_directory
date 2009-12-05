@@ -3,6 +3,7 @@
         <name lang="en" >Current toroidal core</name>
         <name lang="fr" >Tores de courant</name>
         <name lang="es" >Núcleos toroidales de corriente</name>
+        <name lang="pt" >Núcleos toroidais de corrente</name>
         <name lang="cs" >Prstencové jádro střídavého proudu</name>
     </names>
 </qet-directory>

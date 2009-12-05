@@ -5,6 +5,7 @@
         <name lang="fr" >Disjoncteur</name>
         <name lang="es" >Disyuntor</name>
         <name lang="cs" >Jistič</name>
+        <name lang="pt" >Disjuntor</name>
     </names>
     <description>
         <input x="22.75" y="3" size="9" text="_" />

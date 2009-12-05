@@ -2356,7 +2356,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="428"/>
         <source>Afficha&amp;ge</source>
-        <translation>Mostr&amp;a</translation>
+        <translation>Ve&amp;r</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
@@ -2521,7 +2521,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>Mode Selection</source>
-        <translation>Modo de selecçao</translation>
+        <translation>Modo de selecção</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="223"/>
@@ -2561,7 +2561,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1158"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation>Passar para &amp;modo de écran completo</translation>
+        <translation>Passar para &amp;modo de ecrã completo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
@@ -2581,7 +2581,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1154"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation>Sair do &amp;modo de écran completo</translation>
+        <translation>Sair do &amp;modo de ecrã completo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
@@ -2828,7 +2828,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="261"/>
         <source>Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Espaço</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
@@ -3038,7 +3038,7 @@ Opções disponiveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="1160"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation>Mostra o QElectroTech em modo de écran completo</translation>
+        <translation>Mostra o QElectroTech em modo de ecrã completo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1690"/>

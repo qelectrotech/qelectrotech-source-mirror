@@ -5,6 +5,7 @@
         <name lang="fr" >Moteur à courant continu</name>
         <name lang="es" >Motor de corriente continuo</name>
         <name lang="cs" >Motor na stejnosměrný proud</name>
+        <name lang="pt" >Motor de corrente contínua</name>
     </names>
     <description>
         <circle x="-15" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />

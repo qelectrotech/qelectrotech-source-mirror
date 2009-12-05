@@ -4,6 +4,7 @@
         <name lang="fr" >Tore 4 pôles</name>
         <name lang="es" >Núcleo toroide 4 polos</name>
         <name lang="cs" >Prstencové jádro se čtyřmi póly</name>
+        <name lang="pt" >Núcleo toroidal de 4 polos</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="5" y2="-10" x2="5" />
