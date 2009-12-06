@@ -112,11 +112,9 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	cursor.clearSelection();
 	setTextCursor(cursor);
 	
-	if (flags() & QGraphicsItem::ItemIsMovable) {
-		// hack a la con pour etre re-entrant
-		setTextInteractionFlags(Qt::NoTextInteraction);
-		QTimer::singleShot(0, this, SIGNAL(lostFocus()));
-	}
+	// hack a la con pour etre re-entrant
+	setTextInteractionFlags(Qt::NoTextInteraction);
+	QTimer::singleShot(0, this, SIGNAL(lostFocus()));
 }
 
 /**
@@ -152,22 +150,12 @@ QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
 	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
 */
 void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	if (flags() & QGraphicsItem::ItemIsMovable && !(textInteractionFlags() & Qt::TextEditable)) {
+	if (!(textInteractionFlags() & Qt::TextEditable)) {
 		// rend le champ de texte editable
 		setTextInteractionFlags(Qt::TextEditorInteraction);
 		
-		// simule un clic simple, ce qui edite le champ de texte
-		QGraphicsSceneMouseEvent *mouseEvent = new QGraphicsSceneMouseEvent(QEvent::GraphicsSceneMousePress);
-		mouseEvent -> setAccepted(true);
-		mouseEvent -> setPos(event -> pos());
-		mouseEvent -> setScenePos(event -> scenePos());
-		mouseEvent -> setScreenPos(event -> screenPos());
-		mouseEvent -> setButtonDownPos(Qt::LeftButton, event -> buttonDownPos(Qt::LeftButton));
-		mouseEvent -> setButtonDownScreenPos(Qt::LeftButton, event -> buttonDownScreenPos(Qt::LeftButton));
-		mouseEvent -> setButtonDownScenePos(Qt::LeftButton, event -> buttonDownScenePos(Qt::LeftButton));
-		mouseEvent -> setWidget(event -> widget());
-		QGraphicsTextItem::mousePressEvent(mouseEvent);
-		delete mouseEvent;
+		// edite le champ de texte
+		setFocus(Qt::MouseFocusReason);
 	} else {
 		QGraphicsTextItem::mouseDoubleClickEvent(event);
 	}

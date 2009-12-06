@@ -21,6 +21,8 @@
 #include "diagram.h"
 /**
 	Cette classe represente un champ de texte editable sur le schema.
+	Par defaut, les DiagramTextItem sont Selectable et Movable.
+	@see QGraphicsItem::GraphicsItemFlags
 */
 class DiagramTextItem : public QGraphicsTextItem {
 	Q_OBJECT

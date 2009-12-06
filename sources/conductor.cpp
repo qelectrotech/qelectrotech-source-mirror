@@ -81,8 +81,9 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	
 	// ajout du champ de texte editable
 	text_item = new DiagramTextItem();
+	// par defaut, les DiagramTextItem sont Selectable et Movable
+	// on desactive Movable pour les textes des conducteurs
 	text_item -> setFlag(QGraphicsItem::ItemIsMovable, false);
-	text_item -> setTextInteractionFlags(Qt::TextEditorInteraction);
 	text_item -> setPlainText(properties_.text);
 	text_item -> previous_text = properties_.text;
 	calculateTextItemPosition();
