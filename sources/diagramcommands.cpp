@@ -84,7 +84,7 @@ void AddTextCommand::undo() {
 	diagram -> removeDiagramTextItem(textitem);
 }
 
-/// Refait l'ajour
+/// Refait l'ajout
 void AddTextCommand::redo() {
 	diagram -> addDiagramTextItem(textitem);
 	textitem -> setPos(position);
