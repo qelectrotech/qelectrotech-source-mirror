@@ -595,15 +595,11 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			if (hasClickedOn(press_point, segment -> secondPoint())) {
 				moving_point = true;
 				moving_segment = false;
-				previous_z_value = zValue();
-				setZValue(5000.0);
 				moved_segment = segment;
 				break;
 			} else if (hasClickedOn(press_point, segment -> middle())) {
 				moving_point = false;
 				moving_segment = true;
-				previous_z_value = zValue();
-				setZValue(5000.0);
 				moved_segment = segment;
 				break;
 			}
@@ -680,7 +676,6 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		saveProfile();
 		has_to_save_profile = false;
 	}
-	setZValue(previous_z_value);
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsPathItem::mouseReleaseEvent(e);
 	}
@@ -735,6 +730,27 @@ void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 	}
 	*/
 	QGraphicsPathItem::hoverMoveEvent(e);
+}
+
+/**
+	Gere les changements relatifs au conducteur
+	Reimplemente ici pour :
+	  * positionner le conducteur en avant-plan lorsqu'il est selectionne
+	@param change 
+	@param value  
+*/
+QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value) {
+	if (change == QGraphicsItem::ItemSelectedChange) {
+		if (value.toBool()) {
+			// le conducteur vient de se faire selectionner
+			previous_z_value = zValue();
+			setZValue(qAbs(previous_z_value) + 10000);
+		} else {
+			// le conducteur vient de se faire deselectionner
+			setZValue(previous_z_value);
+		}
+	}
+	return(QGraphicsPathItem::itemChange(change, value));
 }
 
 /**

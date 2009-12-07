@@ -93,6 +93,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
 	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
 	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
 	private:
 	/// caracteristiques du conducteur
