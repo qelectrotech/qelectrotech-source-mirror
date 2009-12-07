@@ -47,7 +47,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	moving_segment(false),
 	previous_z_value(zValue()),
 	modified_path(false),
-	has_to_save_profile(false)
+	has_to_save_profile(false),
+	segments_squares_scale_(1.0)
 {
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -93,8 +94,6 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 		this,
 		SLOT(displayedTextChanged())
 	);
-	// taille du carre de saisie du segment
-	RectMoveSeg_Scale = 1.0;
 }
 
 /**
@@ -510,10 +509,10 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 			if (i > 1) {
 				qp -> fillRect(
 					QRectF(
-						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset * RectMoveSeg_Scale,
-						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset * RectMoveSeg_Scale,
-						2.0 * RectMoveSeg_Scale,
-						2.0 * RectMoveSeg_Scale
+						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset * segments_squares_scale_,
+						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset * segments_squares_scale_,
+						2.0 * segments_squares_scale_,
+						2.0 * segments_squares_scale_
 					),
 					square_brush
 				);
@@ -603,12 +602,11 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			} else if (hasClickedOn(press_point, segment -> middle())) {
 				moving_point = false;
 				moving_segment = true;
-				RectMoveSeg_Scale = 2.0;
 				previous_z_value = zValue();
 				setZValue(5000.0);
 				moved_segment = segment;
 				break;
-			}else RectMoveSeg_Scale = 1.0;
+			}
 			segment = segment -> nextSegment();
 		}
 	}
@@ -623,12 +621,11 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	@param e L'evenement decrivant le deplacement de souris.
 */
 void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	// position pointee par la souris
-	qreal mouse_x = e -> pos().x();
-	qreal mouse_y = e -> pos().y();
-	
 	// clic gauche
 	if (e -> buttons() & Qt::LeftButton) {
+		// position pointee par la souris
+		qreal mouse_x = e -> pos().x();
+		qreal mouse_y = e -> pos().y();
 		
 		bool snap_conductors_to_grid = e -> modifiers() ^ Qt::ShiftModifier;
 		if (snap_conductors_to_grid) {
@@ -688,6 +685,30 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		QGraphicsPathItem::mouseReleaseEvent(e);
 	}
 	calculateTextItemPosition();
+}
+
+/**
+	Gere l'entree de la souris dans la zone du conducteur
+	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
+*/
+void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	segments_squares_scale_ = 2.0;
+	if (isSelected()) {
+		update();
+	}
+}
+
+/**
+	Gere la sortie de la souris de la zone du conducteur
+	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
+*/
+void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	segments_squares_scale_ = 1.0;
+	if (isSelected()) {
+		update();
+	}
 }
 
 /**
