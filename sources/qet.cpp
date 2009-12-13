@@ -434,3 +434,15 @@ QString QET::pointerString(void *ptr) {
 		)
 	);
 }
+
+/**
+	@param angle Un angle quelconque
+	@return l'angle passe en parametre, mais ramene entre -360.0 + 360.0 degres
+*/
+qreal QET::correctAngle(const qreal &angle) {
+	// ramene l'angle demande entre -360.0 et +360.0 degres
+	qreal corrected_angle = angle;
+	while (corrected_angle < 360.0) corrected_angle += 360.0;
+	while (corrected_angle > 360.0) corrected_angle -= 360.0;
+	return(corrected_angle);
+}

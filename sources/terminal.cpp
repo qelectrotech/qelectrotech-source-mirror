@@ -199,9 +199,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 				// orientations actuelle et par defaut de l'element
 				QET::Orientation ori_cur = elt -> orientation().current();
 				QET::Orientation ori_def = elt -> orientation().defaultOrientation();
-				applied_rotation = 90.0 * (ori_cur - ori_def);
-				while (applied_rotation < 360.0) applied_rotation += 360.0;
-				while (applied_rotation > 360.0) applied_rotation -= 360.0;
+				applied_rotation = QET::correctAngle(90.0 * (ori_cur - ori_def));
 			}
 			if (applied_rotation == 90.0) p -> translate(1.0, -1.0);
 			else if (applied_rotation == 180.0) p -> translate(-1.0, -1.0);

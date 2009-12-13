@@ -121,5 +121,6 @@ namespace QET {
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	QString pointerString(void *);
+	qreal correctAngle(const qreal &);
 }
 #endif
