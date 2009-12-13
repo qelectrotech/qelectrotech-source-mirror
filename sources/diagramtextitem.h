@@ -60,6 +60,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void applyRotation(const qreal &);
 	
 	// signaux
 	signals:

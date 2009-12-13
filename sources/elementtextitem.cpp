@@ -26,11 +26,15 @@
 */
 ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 	DiagramTextItem(parent, scene),
-	follow_parent_rotations(false)
+	follow_parent_rotations(false),
+	original_rotation_angle_(0.0)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// on desactive Movable pour les textes des elements
 	setFlag(QGraphicsItem::ItemIsMovable, false);
+	
+	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
+	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
 }
 
 /**
@@ -41,11 +45,15 @@ ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 */
 ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) :
 	DiagramTextItem(text, parent, scene),
-	follow_parent_rotations(false)
+	follow_parent_rotations(false),
+	original_rotation_angle_(0.0)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// on desactive Movable pour les textes des elements
 	setFlag(QGraphicsItem::ItemIsMovable, false);
+	
+	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
+	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
 }
 
 /// Destructeur
@@ -59,7 +67,7 @@ ElementTextItem::~ElementTextItem() {
 void ElementTextItem::setPos(const QPointF &pos) {
 	QPointF actual_pos = pos;
 	actual_pos -= QPointF(0.0, boundingRect().height() / 2.0);
-	DiagramTextItem::setPos(actual_pos);
+	QGraphicsTextItem::setPos(actual_pos);
 }
 
 /**
@@ -88,9 +96,16 @@ QPointF ElementTextItem::pos() const {
 */
 void ElementTextItem::fromXml(const QDomElement &e) {
 	QPointF _pos = pos();
-	if (qFuzzyCompare(qreal(e.attribute("x").toDouble()), _pos.x()) && qFuzzyCompare(qreal(e.attribute("y").toDouble()), _pos.y())) {
+	if (
+		qFuzzyCompare(qreal(e.attribute("x").toDouble()), _pos.x()) &&
+		qFuzzyCompare(qreal(e.attribute("y").toDouble()), _pos.y())
+	) {
 		setPlainText(e.attribute("text"));
 		previous_text = e.attribute("text");
+		qreal xml_rotation_angle;
+		if (QET::attributeIsAReal(e, "userrotation", &xml_rotation_angle)) {
+			setRotationAngle(xml_rotation_angle);
+		}
 	}
 }
 
@@ -103,6 +118,9 @@ QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	result.setAttribute("x", QString("%1").arg(originalPos().x()));
 	result.setAttribute("y", QString("%1").arg(originalPos().y()));
 	result.setAttribute("text", toPlainText());
+	if (rotationAngle() != originalRotationAngle()) {
+		result.setAttribute("userrotation", QString("%1").arg(rotationAngle()));
+	}
 	return(result);
 }
 
@@ -119,4 +137,49 @@ void ElementTextItem::setOriginalPos(const QPointF &p) {
 */
 QPointF ElementTextItem::originalPos() const {
 	return(original_position);
+}
+
+/**
+	Definit l'angle de rotation original de ce champ de texte
+	@param rotation_angle un angle de rotation
+*/
+void ElementTextItem::setOriginalRotationAngle(const qreal &rotation_angle) {
+	original_rotation_angle_ = QET::correctAngle(rotation_angle);
+}
+
+/**
+	@return l'angle de rotation original de ce champ de texte
+*/
+qreal ElementTextItem::originalRotationAngle() const {
+	return(original_rotation_angle_);
+}
+
+/**
+	Cette methode s'assure que la position de l'ElementTextItem est coherente
+	en repositionnant son origine (c-a-d le milieu du bord gauche du champ de
+	texte) a la position originale. Cela est notamment utile lorsque le champ
+	de texte est agrandi ou retreci verticalement (ajout ou retrait de lignes).
+	@param new_bloc_count Nombre de blocs dans l'ElementTextItem
+	@see originalPos()
+*/
+void ElementTextItem::adjustItemPosition(int new_block_count) {
+	Q_UNUSED(new_block_count);
+	setPos(originalPos());
+}
+
+/**
+	Effetue la rotation du texte en elle-meme
+	Pour les ElementTextItem, la rotation s'effectue autour du milieu du bord
+	gauche du champ de texte.
+	@param angle Angle de la rotation a effectuer
+*/
+void ElementTextItem::applyRotation(const qreal &angle) {
+	qreal origin_offset = boundingRect().height() / 2.0;
+	
+	QTransform rotation;
+	rotation.translate(0.0,  origin_offset);
+	rotation.rotate(angle);
+	rotation.translate(0.0, -origin_offset);
+	
+	QGraphicsTextItem::setTransform(rotation, true);
 }

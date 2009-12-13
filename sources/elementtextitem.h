@@ -40,6 +40,7 @@ class ElementTextItem : public DiagramTextItem {
 	private:
 	bool follow_parent_rotations;
 	QPointF original_position;
+	qreal original_rotation_angle_;
 	
 	// methodes
 	public:
@@ -55,6 +56,14 @@ class ElementTextItem : public DiagramTextItem {
 	QPointF pos() const;
 	void setOriginalPos(const QPointF &);
 	QPointF originalPos() const;
+	void setOriginalRotationAngle(const qreal &);
+	qreal originalRotationAngle() const;
+	
+	public slots:
+	void adjustItemPosition(int);
+	
+	protected:
+	virtual void applyRotation(const qreal &);
 };
 
 /**

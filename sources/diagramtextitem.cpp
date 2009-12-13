@@ -17,6 +17,7 @@
 */
 #include "diagramtextitem.h"
 #include "diagramcommands.h"
+#include "qet.h"
 #include "qetapp.h"
 
 /**
@@ -68,32 +69,27 @@ qreal DiagramTextItem::rotationAngle() const {
 }
 
 /**
-	Permet de tourner le texte a un angle donne. La rotation s'effectue par
-	rapport au point (0, 0) du texte.
+	Permet de tourner le texte a un angle donne de maniere absolue.
+	Un angle de 0 degres correspond a un texte horizontal non retourne.
 	@param rotation Nouvel angle de rotation de ce texte
+	@see applyRotation
 */
 void DiagramTextItem::setRotationAngle(const qreal &rotation) {
-	// ramene l'angle demande entre -360.0 et +360.0 degres
-	qreal applied_rotation = rotation;
-	while (applied_rotation < -360.0) applied_rotation += 360.0;
-	while (applied_rotation >  360.0) applied_rotation -= 360.0;
-	
-	rotate(applied_rotation - rotation_angle_);
+	qreal applied_rotation = QET::correctAngle(rotation);
+	applyRotation(applied_rotation - rotation_angle_);
 	rotation_angle_ = applied_rotation;
 }
 
 /**
-	Ajoute 
+	Permet de tourner le texte de maniere relative.
+	L'angle added_rotation est ajoute a l'orientation actuelle du texte.
 	@param added_rotation Angle a ajouter a la rotation actuelle
+	@see applyRotation
 */
 void DiagramTextItem::rotateBy(const qreal &added_rotation) {
-	// ramene l'angle demande entre -360.0 et +360.0 degres
-	qreal applied_added_rotation = added_rotation;
-	while (applied_added_rotation < 360.0) applied_added_rotation += 360.0;
-	while (applied_added_rotation > 360.0) applied_added_rotation -= 360.0;
-	
-	rotation_angle_ += applied_added_rotation;
-	rotate(applied_added_rotation);
+	qreal applied_added_rotation = QET::correctAngle(added_rotation);
+	rotation_angle_ = QET::correctAngle(rotation_angle_ + applied_added_rotation);
+	applyRotation(applied_added_rotation);
 }
 
 /**
@@ -208,6 +204,17 @@ void DiagramTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsTextItem::mouseReleaseEvent(e);
 	}
+}
+
+/**
+	Effetue la rotation du texte en elle-meme
+	Pour les DiagramTextItem, la rotation s'effectue autour du point (0, 0).
+	Cette methode peut toutefois etre redefinie dans des classes 
+	@param angle Angle de la rotation a effectuer
+*/
+void DiagramTextItem::applyRotation(const qreal &angle) {
+	// un simple appel a QGraphicsTextItem::rotate suffit
+	QGraphicsTextItem::rotate(angle);
 }
 
 /**

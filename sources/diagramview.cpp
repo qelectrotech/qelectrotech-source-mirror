@@ -124,8 +124,12 @@ void DiagramView::rotateSelection() {
 			elements_to_rotate.insert(e, e -> orientation().current());
 		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
 			texts_to_rotate << dti;
-		} /*else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
-		}*/
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			// on ne pivote un texte d'element que si son parent n'est pas selectionne
+			if (eti -> parentItem() && !eti -> parentItem() -> isSelected()) {
+				texts_to_rotate << eti;
+			}
+		}
 	}
 	
 	// effectue les rotations s'il y a quelque chose a pivoter

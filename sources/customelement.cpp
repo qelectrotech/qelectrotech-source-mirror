@@ -611,9 +611,19 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QETApp::diagramTextsFont(size));
-	eti -> setPos(pos_x, pos_y);
+	
+	// position du champ de texte
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
-	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
+	eti -> setPos(pos_x, pos_y);
+	
+	// rotation du champ de texte
+	qreal original_rotation_angle = 0.0;
+	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
+	eti -> setOriginalRotationAngle(original_rotation_angle);
+	eti -> setRotationAngle(original_rotation_angle);
+	
+	// comportement du champ lorsque son element parent est pivote
+	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
 	
 	list_texts_ << eti;
 	
