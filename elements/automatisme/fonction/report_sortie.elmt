@@ -3,6 +3,7 @@
         <name lang="en" >Output Report</name>
         <name lang="fr" >Report Sortie</name>
         <name lang="cs" >Hlášení výstupu</name>
+        <name lang="pt" >Relatório saída</name>
     </names>
     <description>
         <input x="-10" y="15" size="9" rotate="true" text="_" />

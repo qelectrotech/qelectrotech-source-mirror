@@ -4,5 +4,7 @@
         <name lang="en" >Semiconductors</name>
         <name lang="fr" >Semi-conducteurs</name>
         <name lang="es" >Semiconductores</name>
+        <name lang="cs" >Polovodiče</name>
+        <name lang="pt" >Semi-conductores</name>
     </names>
 </qet-directory>

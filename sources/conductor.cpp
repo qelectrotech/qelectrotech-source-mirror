@@ -47,7 +47,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	moving_segment(false),
 	previous_z_value(zValue()),
 	modified_path(false),
-	has_to_save_profile(false)
+	has_to_save_profile(false),
+	segments_squares_scale_(1.0)
 {
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -504,15 +505,15 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		QPointF previous_point;
 		for (int i = 1 ; i < (points.size() -1) ; ++ i) {
 			QPointF point = points.at(i);
-			
+				
 			// dessine le carre de saisie du segment
 			if (i > 1) {
 				qp -> fillRect(
 					QRectF(
-						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset,
-						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset,
-						2.0,
-						2.0
+						((previous_point.x() + point.x()) / 2.0 ) - pretty_offset * segments_squares_scale_,
+						((previous_point.y() + point.y()) / 2.0 ) - pretty_offset * segments_squares_scale_,
+						2.0 * segments_squares_scale_,
+						2.0 * segments_squares_scale_
 					),
 					square_brush
 				);
@@ -595,15 +596,11 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			if (hasClickedOn(press_point, segment -> secondPoint())) {
 				moving_point = true;
 				moving_segment = false;
-				previous_z_value = zValue();
-				setZValue(5000.0);
 				moved_segment = segment;
 				break;
 			} else if (hasClickedOn(press_point, segment -> middle())) {
 				moving_point = false;
 				moving_segment = true;
-				previous_z_value = zValue();
-				setZValue(5000.0);
 				moved_segment = segment;
 				break;
 			}
@@ -632,6 +629,7 @@ void Conductor::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 			mouse_x = qRound(mouse_x / (Diagram::xGrid * 1.0)) * Diagram::xGrid;
 			mouse_y = qRound(mouse_y / (Diagram::yGrid * 1.0)) * Diagram::yGrid;
 		}
+		
 		if (moving_point) {
 			// la modification par points revient bientot
 			/*
@@ -679,11 +677,34 @@ void Conductor::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		saveProfile();
 		has_to_save_profile = false;
 	}
-	setZValue(previous_z_value);
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsPathItem::mouseReleaseEvent(e);
 	}
 	calculateTextItemPosition();
+}
+
+/**
+	Gere l'entree de la souris dans la zone du conducteur
+	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
+*/
+void Conductor::hoverEnterEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	segments_squares_scale_ = 2.0;
+	if (isSelected()) {
+		update();
+	}
+}
+
+/**
+	Gere la sortie de la souris de la zone du conducteur
+	@param e Le QGraphicsSceneHoverEvent decrivant l'evenement
+*/
+void Conductor::hoverLeaveEvent(QGraphicsSceneHoverEvent *e) {
+	Q_UNUSED(e);
+	segments_squares_scale_ = 1.0;
+	if (isSelected()) {
+		update();
+	}
 }
 
 /**
@@ -710,6 +731,27 @@ void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 	}
 	*/
 	QGraphicsPathItem::hoverMoveEvent(e);
+}
+
+/**
+	Gere les changements relatifs au conducteur
+	Reimplemente ici pour :
+	  * positionner le conducteur en avant-plan lorsqu'il est selectionne
+	@param change 
+	@param value  
+*/
+QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value) {
+	if (change == QGraphicsItem::ItemSelectedChange) {
+		if (value.toBool()) {
+			// le conducteur vient de se faire selectionner
+			previous_z_value = zValue();
+			setZValue(qAbs(previous_z_value) + 10000);
+		} else {
+			// le conducteur vient de se faire deselectionner
+			setZValue(previous_z_value);
+		}
+	}
+	return(QGraphicsPathItem::itemChange(change, value));
 }
 
 /**

@@ -4,5 +4,7 @@
         <name lang="en" >High voltage</name>
         <name lang="fr" >Haute tension</name>
         <name lang="es" >Alta tensión</name>
+        <name lang="pt" >Alta tensão</name>
+        <name lang="cs" >Vysoké napětí</name>
     </names>
 </qet-directory>

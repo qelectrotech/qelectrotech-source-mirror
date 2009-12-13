@@ -5,6 +5,7 @@
         <name lang="fr" >Interrupteur 2 positions</name>
         <name lang="es" >Interruptor 2 posiciones</name>
         <name lang="cs" >Dvoupolohový spínač</name>
+        <name lang="pt" >Interruptor 2 posições</name>
     </names>
     <description>
         <input x="22" y="-7" size="9" text="_" />

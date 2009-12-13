@@ -5,6 +5,7 @@
         <name lang="fr" >Source phase</name>
         <name lang="es" >Fuente fase</name>
         <name lang="cs" >Fázový zdroj</name>
+        <name lang="pt" >Fonte de fase</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10" />

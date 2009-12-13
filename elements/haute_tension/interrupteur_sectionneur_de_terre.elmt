@@ -3,6 +3,7 @@
         <name lang="fr" >Interrupteur-sectionneur de terre</name>
         <name lang="en" >Ground switch disconnector</name>
         <name lang="cs" >Rozpojovač přepínání země</name>
+        <name lang="pt" >Interruptor-seccionador de terra</name>
     </names>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="14" x2="1" />

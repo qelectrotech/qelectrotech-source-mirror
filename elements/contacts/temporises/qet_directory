@@ -4,5 +4,7 @@
         <name lang="en" >Switch Delay</name>
         <name lang="fr" >Temporisés</name>
         <name lang="es" >Comutadores de retardo</name>
+        <name lang="pt" >Temporizados</name>
+        <name lang="cs" >Opožděné sepnutí</name>
     </names>
 </qet-directory>

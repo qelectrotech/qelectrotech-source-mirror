@@ -5,6 +5,7 @@
         <name lang="fr" >Relais thermique</name>
         <name lang="es" >Relé térmico</name>
         <name lang="cs" >Tepelné relé</name>
+        <name lang="pt" >Relé térmico</name>
     </names>
     <description>
         <polygon x4="5" y5="5" x5="0" y6="20" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-5" x2="0" y3="-5" x3="5" y4="5" />

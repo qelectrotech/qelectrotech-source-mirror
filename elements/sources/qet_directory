@@ -4,5 +4,7 @@
         <name lang="en" >Sources</name>
         <name lang="fr" >Sources</name>
         <name lang="es" >Fuentes</name>
+        <name lang="cs" >Zdroje</name>
+        <name lang="pt" >Fontes</name>
     </names>
 </qet-directory>

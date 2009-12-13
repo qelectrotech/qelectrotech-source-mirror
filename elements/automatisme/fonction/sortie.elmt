@@ -4,6 +4,7 @@
         <name lang="en" >Output</name>
         <name lang="fr" >Sortie</name>
         <name lang="cs" >Výstup</name>
+        <name lang="pt" >Saída</name>
     </names>
     <description>
         <input x="-46" y="-10" size="8" rotate="true" text="_" />

@@ -5,6 +5,7 @@
         <name lang="fr" >Terre</name>
         <name lang="es" >Tierra</name>
         <name lang="cs" >Země</name>
+        <name lang="pt" >Terra</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-3" y2="4" x2="3" />

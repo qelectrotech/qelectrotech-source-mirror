@@ -90,7 +90,10 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void hoverEnterEvent(QGraphicsSceneHoverEvent *);
+	virtual void hoverLeaveEvent(QGraphicsSceneHoverEvent *);
 	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
 	private:
 	/// caracteristiques du conducteur
@@ -119,6 +122,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static QBrush conductor_brush;
 	static QBrush square_brush;
 	static bool pen_and_brush_initialized;
+	/// facteur de taille du carre de saisie du segment
+	int segments_squares_scale_;
 	
 	private:
 	void segmentsToPath();

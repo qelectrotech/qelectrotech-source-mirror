@@ -5,6 +5,7 @@
         <name lang="fr" >Voltmètre vertical</name>
         <name lang="es" >Voltímetro vertical</name>
         <name lang="cs" >Svislý voltmetr</name>
+        <name lang="pt" >Voltímetro vertical</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="21" x2="0" />

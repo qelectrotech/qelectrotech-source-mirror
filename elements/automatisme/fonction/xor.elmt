@@ -5,6 +5,7 @@
         <name lang="fr" >OU exclusif (XOR)</name>
         <name lang="es" >O exclusiva (XOR)</name>
         <name lang="cs" >NEBO výhradní (XOR)</name>
+        <name lang="pt" >OU exclusivo (XOR)</name>
     </names>
     <description>
         <input x="-46" y="10" size="8" rotate="true" text="_" />

@@ -5,6 +5,7 @@
         <name lang="fr" >OU 3 entrées</name>
         <name lang="es" >O 3 entradas</name>
         <name lang="cs" >NEBO 3 vstupy</name>
+        <name lang="pt" >OU 3 entradas</name>
     </names>
     <description>
         <input x="-46" y="-10" size="8" rotate="true" text="_" />

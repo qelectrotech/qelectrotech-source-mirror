@@ -5,6 +5,7 @@
         <name lang="fr" >Source de tension (nouveau)</name>
         <name lang="es" >Fuente de tensión (nuevo)</name>
         <name lang="cs" >Zdroj napětí (nový)</name>
+        <name lang="pt" >Fonte de tensão (novo)</name>
     </names>
     <description>
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />

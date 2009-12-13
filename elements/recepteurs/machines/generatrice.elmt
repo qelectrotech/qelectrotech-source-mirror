@@ -5,6 +5,7 @@
         <name lang="fr" >Génératrice</name>
         <name lang="es" >Generador</name>
         <name lang="cs" >Generátor</name>
+        <name lang="pt" >Gerador</name>
     </names>
     <description>
         <input x="18" y="0" size="9" rotate="true" text="G_" />

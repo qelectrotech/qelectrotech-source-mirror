@@ -5,6 +5,7 @@
         <name lang="fr" >SET/RESET</name>
         <name lang="es" >SET/RESET</name>
         <name lang="cs" >NASTAVIT/NASTAVIT ZNOVU</name>
+        <name lang="pt" >SET/RESET</name>
     </names>
     <description>
         <input x="-46" y="-10" size="8" rotate="true" text="R" />

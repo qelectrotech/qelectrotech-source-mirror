@@ -5,6 +5,7 @@
         <name lang="fr" >OU</name>
         <name lang="es" >O</name>
         <name lang="cs" >NEBO</name>
+        <name lang="pt" >OU</name>
     </names>
     <description>
         <input x="-46" y="10" size="8" rotate="true" text="_" />

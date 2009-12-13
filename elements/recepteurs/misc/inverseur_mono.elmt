@@ -4,6 +4,7 @@
         <name lang="fr" >Inverseur de sens des phases unifilaire</name>
         <name lang="es" >Inversor de fase monohilo</name>
         <name lang="cs" >Přepínač směru fáze jednoduchého spojení</name>
+        <name lang="pt" >Inversor de sentido de fase monofilar</name>
     </names>
     <description>
         <polygon x4="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="-5" x2="-5" y3="5" x3="5" y4="10" />

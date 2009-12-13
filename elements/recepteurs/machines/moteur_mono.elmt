@@ -5,6 +5,7 @@
         <name lang="fr" >Moteur monophasé</name>
         <name lang="es" >Motor monofásico</name>
         <name lang="cs" >Jednofázový motor</name>
+        <name lang="pt" >Motor monofásico</name>
     </names>
     <description>
         <text x="-5" y="19" size="18" text="M" />

@@ -4,5 +4,7 @@
         <name lang="en" >Receivers</name>
         <name lang="fr" >Récepteurs</name>
         <name lang="es" >Receptores</name>
+        <name lang="cs" >Přijímače</name>
+        <name lang="pt" >Receptores</name>
     </names>
 </qet-directory>

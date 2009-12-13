@@ -5,6 +5,7 @@
         <name lang="fr" >Entrée (front montant)</name>
         <name lang="es" >Entrada (ascendente)</name>
         <name lang="cs" >Vstup (stoupající)</name>
+        <name lang="pt" >Entrada (ascendente)</name>
     </names>
     <description>
         <text x="-3.5" y="5.25" size="9" text="P" />

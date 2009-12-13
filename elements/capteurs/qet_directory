@@ -4,5 +4,7 @@
         <name lang="en" >Transducers</name>
         <name lang="fr" >Capteurs</name>
         <name lang="es" >Sensores</name>
+        <name lang="pt" >Sensores</name>
+        <name lang="cs" >Snímače</name>
     </names>
 </qet-directory>

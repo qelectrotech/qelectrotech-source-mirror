@@ -4,5 +4,7 @@
         <name lang="en" >Inputs</name>
         <name lang="fr" >Entrées</name>
         <name lang="es" >Entradas</name>
+        <name lang="pt" >Entradas</name>
+        <name lang="cs" >Vstupy</name>
     </names>
 </qet-directory>
