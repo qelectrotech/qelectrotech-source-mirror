@@ -39,6 +39,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	// attributs
 	TextFieldEditor *infos;
 	bool follow_parent_rotations;
+	qreal rotation_angle_;
 	
 	// methodes
 	public:
@@ -55,6 +56,8 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	QPointF pos() const;
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
+	qreal rotationAngle() const;
+	void setRotationAngle(const qreal &);
 	bool followParentRotations();
 	void setFollowParentRotations(bool);
 	virtual void setProperty(const QString &, const QVariant &);

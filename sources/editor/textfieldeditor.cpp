@@ -32,8 +32,12 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	qle_text  = new QLineEdit();
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
-	rotate    = new QCheckBox(tr("Maintenir horizontal malgr\351\n les rotations de l'\351l\351ment"));
+	rotate    = new QCheckBox(tr("Ne pas subir les rotations de l'\351l\351ment parent"));
 	rotate -> setChecked(true);
+	rotation_angle_ = new QDoubleSpinBox();
+	rotation_angle_ -> setRange(-360.0, 360.0);
+	rotation_angle_ -> setSingleStep(-90.0);
+	rotation_angle_ -> setSuffix("\260");
 	
 	qle_x -> setValidator(new QDoubleValidator(qle_x));
 	qle_y -> setValidator(new QDoubleValidator(qle_y));
@@ -57,6 +61,11 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	t -> addWidget(new QLabel(tr("Texte par d\351faut : ")));
 	t -> addWidget(qle_text);
 	main_layout -> addLayout(t);
+	
+	QHBoxLayout *rotation_angle_layout = new QHBoxLayout();
+	rotation_angle_layout -> addWidget(new QLabel(tr("Angle de rotation par d\351faut : ")));
+	rotation_angle_layout -> addWidget(rotation_angle_);
+	main_layout -> addLayout(rotation_angle_layout);
 	
 	QHBoxLayout *r = new QHBoxLayout();
 	r -> addWidget(rotate);
@@ -91,6 +100,8 @@ void TextFieldEditor::updateTextFieldT() { addChangePartCommand(tr("contenu"),  
 void TextFieldEditor::updateTextFieldS() { addChangePartCommand(tr("taille"),          part, "size",   font_size -> value());       }
 /// Met a jour la taille du champ de texte et cree un objet d'annulation
 void TextFieldEditor::updateTextFieldR() { addChangePartCommand(tr("propri\351t\351"), part, "rotate", !rotate -> isChecked());     }
+/// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
+void TextFieldEditor::updateTextFieldRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation angle", rotation_angle_ -> value()); }
 
 /**
 	Met a jour le formulaire d'edition
@@ -102,6 +113,7 @@ void TextFieldEditor::updateForm() {
 	qle_text  -> setText(part -> property("text").toString());
 	font_size -> setValue(part -> property("size").toInt());
 	rotate  -> setChecked(!part -> property("rotate").toBool());
+	rotation_angle_ -> setValue(part -> property("rotation angle").toInt());
 	activeConnections(true);
 }
 
@@ -116,11 +128,13 @@ void TextFieldEditor::activeConnections(bool active) {
 		connect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextFieldT()));
 		connect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextFieldS()));
 		connect(rotate,    SIGNAL(stateChanged(int)), this, SLOT(updateTextFieldR()));
+		connect(rotation_angle_, SIGNAL(editingFinished()), this, SLOT(updateTextFieldRotationAngle()));
 	} else {
 		disconnect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextFieldX()));
 		disconnect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextFieldY()));
 		disconnect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextFieldT()));
 		disconnect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextFieldS()));
 		disconnect(rotate,    SIGNAL(stateChanged(int)), this, SLOT(updateTextFieldR()));
+		disconnect(rotation_angle_, SIGNAL(editingFinished()), this, SLOT(updateTextFieldRotationAngle()));
 	}
 }

@@ -29,7 +29,8 @@
 PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) :
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor),
-	follow_parent_rotations(true)
+	follow_parent_rotations(true),
+	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
@@ -56,6 +57,12 @@ void PartTextField::fromXml(const QDomElement &xml_element) {
 	
 	setFont(QETApp::diagramTextsFont(font_size));
 	setPlainText(xml_element.attribute("text"));
+	
+	qreal default_rotation_angle = 0.0;
+	if (QET::attributeIsAReal(xml_element, "rotation", &default_rotation_angle)) {
+		setRotationAngle(default_rotation_angle);
+	}
+	
 	setPos(
 		xml_element.attribute("x").toDouble(),
 		xml_element.attribute("y").toDouble()
@@ -75,7 +82,14 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
-	if (follow_parent_rotations) xml_element.setAttribute("rotate", "true");
+	// angle de rotation du champ de texte
+	if (rotationAngle()) {
+		xml_element.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+	}
+	// suivi (ou non) des rotations de l'element parent par le champ de texte
+	if (follow_parent_rotations) {
+		xml_element.setAttribute("rotate", "true");
+	}
 	return(xml_element);
 }
 
@@ -110,6 +124,31 @@ void PartTextField::setPos(const QPointF &left_corner_pos) {
 */
 void PartTextField::setPos(qreal x, qreal y) {
 	QGraphicsTextItem::setPos(QPointF(x, y) - margin());
+}
+
+/**
+	@return l'angle de rotation de ce champ de texte
+*/
+qreal PartTextField::rotationAngle() const {
+	return(rotation_angle_);
+}
+
+/**
+	@param angle Le nouvel angle de rotation de ce champ de texte
+*/
+void PartTextField::setRotationAngle(const qreal &angle) {
+	rotation_angle_ = QET::correctAngle(angle);
+	
+	// annule toute rotation precedente
+	resetTransform();
+	
+	QPointF pos_margin = margin();
+	QTransform rotation;
+	rotation.translate(pos_margin.x(), pos_margin.y());
+	rotation.rotate(rotation_angle_);
+	rotation.translate(-pos_margin.x(), -pos_margin.y());
+	
+	QGraphicsTextItem::setTransform(rotation, true);
 }
 
 /**
@@ -197,6 +236,8 @@ void PartTextField::setProperty(const QString &property, const QVariant &value) 
 		setFont(QETApp::diagramTextsFont(value.toInt()));
 	} else if (property == "text") {
 		setPlainText(value.toString());
+	} else if (property == "rotation angle") {
+		setRotationAngle(value.toDouble());
 	} else if (property == "rotate") {
 		follow_parent_rotations = value.toBool();
 	}
@@ -222,6 +263,8 @@ QVariant PartTextField::property(const QString &property) {
 		return(font().pointSize());
 	} else if (property == "text") {
 		return(toPlainText());
+	} else if (property == "rotation angle") {
+		return(rotation_angle_);
 	} else if (property == "rotate") {
 		return(follow_parent_rotations);
 	}

@@ -41,6 +41,7 @@ class TextFieldEditor : public ElementItemEditor {
 	QLineEdit *qle_x, *qle_y, *qle_text;
 	QSpinBox *font_size;
 	QCheckBox *rotate;
+	QDoubleSpinBox *rotation_angle_;
 	
 	// methodes
 	public slots:
@@ -50,6 +51,7 @@ class TextFieldEditor : public ElementItemEditor {
 	void updateTextFieldT();
 	void updateTextFieldS();
 	void updateTextFieldR();
+	void updateTextFieldRotationAngle();
 	void updateForm();
 	
 	private:
