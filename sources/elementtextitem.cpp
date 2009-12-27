@@ -66,7 +66,7 @@ ElementTextItem::~ElementTextItem() {
 */
 void ElementTextItem::setPos(const QPointF &pos) {
 	QPointF actual_pos = pos;
-	actual_pos -= QPointF(0.0, boundingRect().height() / 2.0);
+	actual_pos -= QPointF(0.0, boundingRect().bottom() / 2.0);
 	QGraphicsTextItem::setPos(actual_pos);
 }
 
@@ -84,7 +84,7 @@ void ElementTextItem::setPos(qreal x, qreal y) {
 */
 QPointF ElementTextItem::pos() const {
 	QPointF actual_pos = DiagramTextItem::pos();
-	actual_pos += QPointF(0.0, boundingRect().height() / 2.0);
+	actual_pos += QPointF(0.0, boundingRect().bottom() / 2.0);
 	return(actual_pos);
 }
 
@@ -174,7 +174,7 @@ void ElementTextItem::adjustItemPosition(int new_block_count) {
 	@param angle Angle de la rotation a effectuer
 */
 void ElementTextItem::applyRotation(const qreal &angle) {
-	qreal origin_offset = boundingRect().height() / 2.0;
+	qreal origin_offset = boundingRect().bottom() / 2.0;
 	
 	QTransform rotation;
 	rotation.translate(0.0,  origin_offset);

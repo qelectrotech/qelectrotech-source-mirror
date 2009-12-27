@@ -111,10 +111,10 @@ QPointF PartTextField::pos() const {
 
 /**
 	Specifie la position du champ de texte
-	@param left_corner_pos Nouvelle position
+	@param new_pos Nouvelle position
 */
-void PartTextField::setPos(const QPointF &left_corner_pos) {
-	QGraphicsTextItem::setPos(left_corner_pos - margin());
+void PartTextField::setPos(const QPointF &new_pos) {
+	QGraphicsTextItem::setPos(new_pos - margin());
 }
 
 /**
@@ -168,10 +168,11 @@ void PartTextField::setFollowParentRotations(bool fpr) {
 }
 
 /**
-	@return Les coordonnees du point situe en bas a gauche du texte.
+	@return le decalage entre l'origine du QGraphicsItem et l'origine du champ de
+	texte.
 */
 QPointF PartTextField::margin() const {
-	return(QPointF(0.0, boundingRect().height() / 2.0));
+	return(QPointF(0.0, boundingRect().bottom() / 2.0));
 }
 
 /**
@@ -256,9 +257,9 @@ void PartTextField::setProperty(const QString &property, const QVariant &value) 
 */
 QVariant PartTextField::property(const QString &property) {
 	if (property == "x") {
-		return((scenePos() + margin()).x());
+		return(pos().x());
 	} else if (property == "y") {
-		return((scenePos() + margin()).y());
+		return(pos().y());
 	} else if (property == "size") {
 		return(font().pointSize());
 	} else if (property == "text") {
@@ -320,7 +321,7 @@ void PartTextField::paint(QPainter *painter, const QStyleOptionGraphicsItem *qso
 	painter -> setPen(Qt::red);
 	drawPoint(painter, QPointF(0, 0));
 	
-	painter -> setPen(Qt::green);
+	painter -> setPen(QColor("#800000"));
 	drawPoint(painter, mapFromScene(pos()));
 #endif
 }
