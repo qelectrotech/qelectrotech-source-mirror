@@ -513,7 +513,7 @@ void ProjectView::printProject() {
 	QString dir_path = project_ -> currentDir();
 	
 	// determine un chemin pour le pdf / ps
-	QString file_name = QDir::toNativeSeparators(dir_path + "/" + doc_name);
+	QString file_name = QDir::toNativeSeparators(QDir::cleanPath(dir_path + "/" + doc_name));
 	
 	DiagramPrintDialog print_dialog(project_, this);
 	print_dialog.setDocName(doc_name);
