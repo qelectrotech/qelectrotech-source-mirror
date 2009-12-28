@@ -253,7 +253,7 @@ void QETDiagramEditor::actions() {
 	select_nothing    -> setShortcut(QKeySequence(tr("Ctrl+Shift+A")));
 	select_invert     -> setShortcut(QKeySequence(tr("Ctrl+I")));
 #ifndef Q_WS_MAC
-	delete_selection  -> setShortcut(QKeySequence(tr("Suppr")));
+	delete_selection  -> setShortcut(QKeySequence(Qt::Key_Delete));
 #else
 	delete_selection  -> setShortcut(QKeySequence(tr("Backspace")));
 #endif
