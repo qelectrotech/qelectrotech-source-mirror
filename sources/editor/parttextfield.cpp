@@ -290,7 +290,7 @@ QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &va
 		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
 		known_position_ = pos();
 		infos -> updateForm();
-	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
+	} else if (change == QGraphicsItem::ItemSelectedHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
 		if (value.toBool() == true) {
 			infos -> updateForm();
 		}
