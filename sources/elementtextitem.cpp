@@ -65,9 +65,16 @@ ElementTextItem::~ElementTextItem() {
 	@param pos La nouvelle position du champ de texte
 */
 void ElementTextItem::setPos(const QPointF &pos) {
+	// annule toute transformation (rotation notamment)
+	resetTransform();
+	
+	// effectue le positionnement en lui-meme
 	QPointF actual_pos = pos;
 	actual_pos -= QPointF(0.0, boundingRect().bottom() / 2.0);
 	QGraphicsTextItem::setPos(actual_pos);
+	
+	// applique a nouveau la rotation du champ de texte
+	applyRotation(rotationAngle());
 }
 
 /**
@@ -159,7 +166,7 @@ qreal ElementTextItem::originalRotationAngle() const {
 	en repositionnant son origine (c-a-d le milieu du bord gauche du champ de
 	texte) a la position originale. Cela est notamment utile lorsque le champ
 	de texte est agrandi ou retreci verticalement (ajout ou retrait de lignes).
-	@param new_bloc_count Nombre de blocs dans l'ElementTextItem
+	@param new_block_count Nombre de blocs dans l'ElementTextItem
 	@see originalPos()
 */
 void ElementTextItem::adjustItemPosition(int new_block_count) {
