@@ -285,12 +285,12 @@ QVariant PartTextField::property(const QString &property) {
 	@param value Valeur numerique relative au changement
 */
 QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionHasChanged) {
+	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
 		// memorise la nouvelle position "officielle" du champ de texte
 		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
 		known_position_ = pos();
 		infos -> updateForm();
-	} else if (change == QGraphicsItem::ItemSelectedHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
+	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
 		if (value.toBool() == true) {
 			infos -> updateForm();
 		}
