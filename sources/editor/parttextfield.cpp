@@ -285,16 +285,14 @@ QVariant PartTextField::property(const QString &property) {
 	@param value Valeur numerique relative au changement
 */
 QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionHasChanged) {
-			// memorise la nouvelle position "officielle" du champ de texte
-			// cette information servira a le recentrer en cas d'ajout / retrait de lignes
-			known_position_ = pos();
+	if (change == QGraphicsItem::ItemPositionHasChanged) {
+		// memorise la nouvelle position "officielle" du champ de texte
+		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
+		known_position_ = pos();
+		infos -> updateForm();
+	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
+		if (value.toBool() == true) {
 			infos -> updateForm();
-		} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
-			if (value.toBool() == true) {
-				infos -> updateForm();
-			}
 		}
 	}
 	return(QGraphicsTextItem::itemChange(change, value));
