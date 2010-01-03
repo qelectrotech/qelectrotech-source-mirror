@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartTextField;
+class QTextOrientationWidget;
 /**
 	Cette classe represente un editeur de champ de texte
 	Elle permet d'editer a travers une interface graphique les
@@ -42,6 +43,7 @@ class TextFieldEditor : public ElementItemEditor {
 	QSpinBox *font_size;
 	QCheckBox *rotate;
 	QDoubleSpinBox *rotation_angle_;
+	QTextOrientationWidget *rotation_widget_;
 	
 	// methodes
 	public slots:
