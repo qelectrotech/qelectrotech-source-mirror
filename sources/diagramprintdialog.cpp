@@ -320,6 +320,7 @@ void DiagramPrintDialog::browseFilePrintTypeDialog() {
 	
 	if (!filepath.isEmpty()) {
 		if (!filepath.endsWith(extension)) filepath += extension;
+		filepath = QDir::toNativeSeparators(QDir::cleanPath(filepath));
 		filepath_field_ -> setText(filepath);
 	}
 }
@@ -355,7 +356,7 @@ void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, 
 /**
 	Imprime un schema
 	@param diagram Schema a imprimer
-	@param fit_page True pour  adapter les schemas aux pages, false sinon
+	@param fit_page True pour adapter les schemas aux pages, false sinon
 	@param options Options de rendu a appliquer pour l'impression
 	@param qp QPainter a utiliser (deja initialise sur printer)
 	@param printer Imprimante a utiliser
@@ -371,6 +372,10 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 	}
 	
 	saveReloadDiagramParameters(diagram, options, true);
+	
+	// deselectionne tous les elements
+	QList<QGraphicsItem *> selected_elmts = diagram -> selectedItems();
+	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
 	
 	if (fit_page) {
 		// impression adaptee sur une seule page
@@ -415,10 +420,7 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 		QVector<QRect> pages_to_print;
 		for (int i = 0 ; i < v_pages_count ; ++ i) {
 			for (int j = 0 ; j < h_pages_count ; ++ j) {
-				//int page_number = (i * h_pages_count) + j + 1;
-				//if (page_number >= first_page && page_number <= last_page) {
-					pages_to_print << pages_grid.at(i).at(j);
-				//}
+				pages_to_print << pages_grid.at(i).at(j);
 			}
 		}
 		//qDebug() << "  " << pages_to_print.count() << " pages a imprimer :";
@@ -438,6 +440,10 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 			}
 		}
 	}
+	
+	// restaure les elements selectionnes
+	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(true);
+	
 	saveReloadDiagramParameters(diagram, options, false);
 }
 

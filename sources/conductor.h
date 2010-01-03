@@ -123,7 +123,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static QBrush square_brush;
 	static bool pen_and_brush_initialized;
 	/// facteur de taille du carre de saisie du segment
-	int segments_squares_scale_;
+	qreal segments_squares_scale_;
 	
 	private:
 	void segmentsToPath();
