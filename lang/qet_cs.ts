@@ -25,8 +25,8 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="90"/>
-        <source>© 2006-2009 Les développeurs de QElectroTech</source>
-        <translation>© 2006-2009 Vývojáři QElectroTechu</translation>
+        <source>© 2006-2010 Les développeurs de QElectroTech</source>
+        <translation>© 2006-2010 Vývojáři QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="30"/>
