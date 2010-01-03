@@ -403,20 +403,40 @@ void QETElementEditor::setupMenus() {
 	Met a jour les menus
 */
 void QETElementEditor::slot_updateMenus() {
-	bool selected_items = !ce_scene -> selectedItems().isEmpty();
-	bool clipboard_elmt = ElementScene::clipboardMayContainElement();
+	bool selected_items = !read_only && !ce_scene -> selectedItems().isEmpty();
+	bool clipboard_elmt = !read_only && ElementScene::clipboardMayContainElement();
 	
-	deselectall   -> setEnabled(selected_items);
-	cut           -> setEnabled(selected_items);
-	copy          -> setEnabled(selected_items);
-	paste         -> setEnabled(clipboard_elmt);
-	paste_in_area -> setEnabled(clipboard_elmt);
-	edit_delete   -> setEnabled(selected_items);
-	edit_forward  -> setEnabled(selected_items);
-	edit_raise    -> setEnabled(selected_items);
-	edit_lower    -> setEnabled(selected_items);
-	edit_backward -> setEnabled(selected_items);
-	save -> setEnabled(!ce_scene -> undoStack().isClean());
+	// actions dependant seulement de l'etat "lecture seule" de l'editeur
+	foreach (QAction *action, parts -> actions()) {
+		action -> setEnabled(!read_only);
+	}
+	selectall       -> setEnabled(!read_only);
+	inv_select      -> setEnabled(!read_only);
+	paste_from_file -> setEnabled(!read_only);
+	paste_from_elmt -> setEnabled(!read_only);
+	edit_size_hs    -> setEnabled(!read_only);
+	edit_names      -> setEnabled(!read_only);
+	edit_ori        -> setEnabled(!read_only);
+	parts_list      -> setEnabled(!read_only);
+	
+	// actions dependant de la presence de parties selectionnees
+	deselectall     -> setEnabled(selected_items);
+	cut             -> setEnabled(selected_items);
+	copy            -> setEnabled(selected_items);
+	edit_delete     -> setEnabled(selected_items);
+	edit_forward    -> setEnabled(selected_items);
+	edit_raise      -> setEnabled(selected_items);
+	edit_lower      -> setEnabled(selected_items);
+	edit_backward   -> setEnabled(selected_items);
+	
+	// actions dependant du contenu du presse-papiers
+	paste           -> setEnabled(clipboard_elmt);
+	paste_in_area   -> setEnabled(clipboard_elmt);
+	
+	// actions dependant de l'etat de la pile d'annulation
+	save            -> setEnabled(!read_only && !ce_scene -> undoStack().isClean());
+	undo            -> setEnabled(!read_only && ce_scene -> undoStack().canUndo());
+	redo            -> setEnabled(!read_only && ce_scene -> undoStack().canRedo());
 	
 	slot_updateFullScreenAction();
 }
@@ -704,6 +724,8 @@ void QETElementEditor::fromFile(const QString &filepath) {
 			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
 		);
 		setReadOnly(true);
+	} else {
+		setReadOnly(false);
 	}
 	
 	// memorise le fichier
@@ -775,26 +797,11 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 */
 void QETElementEditor::setReadOnly(bool ro) {
 	read_only = ro;
-	// active / desactive les actions
-	foreach (QAction *action, parts -> actions()) action -> setEnabled(!ro);
 	
 	// active / desactive les interactions avec la scene
 	ce_view -> setInteractive(!ro);
 	
-	// active / desactive l'edition de la taille, du hotspot, des noms et des orientations
-	cut          -> setEnabled(!ro);
-	copy         -> setEnabled(!ro);
-	paste        -> setEnabled(!ro);
-	selectall    -> setEnabled(!ro);
-	deselectall  -> setEnabled(!ro);
-	inv_select   -> setEnabled(!ro);
-	undo         -> setEnabled(!ro);
-	redo         -> setEnabled(!ro);
-	edit_delete  -> setEnabled(!ro);
-	edit_size_hs -> setEnabled(!ro);
-	edit_names   -> setEnabled(!ro);
-	edit_ori     -> setEnabled(!ro);
-	parts_list   -> setEnabled(!ro);
+	slot_updateMenus();
 }
 
 /**
@@ -1236,6 +1243,8 @@ void QETElementEditor::fromLocation(const ElementsLocation &location) {
 			tr("Vous n'avez pas les privil\350ges n\351cessaires pour modifier cet \351lement. Il sera donc ouvert en lecture seule.", "message box content")
 		);
 		setReadOnly(true);
+	} else {
+		setReadOnly(false);
 	}
 	
 	// memorise le fichier
