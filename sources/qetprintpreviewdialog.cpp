@@ -41,7 +41,7 @@ QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *prin
 	connect(diagrams_list_, SIGNAL(selectionChanged()),         preview_, SLOT(updatePreview()));
 	connect(diagrams_list_, SIGNAL(selectionChanged()),         this,     SLOT(checkDiagramsCount()));
 	
-	setWindowState(Qt::WindowMaximized);
+	setWindowState(windowState() |  Qt::WindowMaximized);
 }
 
 /**

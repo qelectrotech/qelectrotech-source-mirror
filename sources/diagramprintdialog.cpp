@@ -121,7 +121,12 @@ void DiagramPrintDialog::exec() {
 	}
 	
 	// Apercu avant impression
+#if defined Q_WS_X11
+	// suite a quelques soucis avec xfwm, on se contente d'une fenetre sous X11
+	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget(), Qt::Window);
+#else
 	QETPrintPreviewDialog preview_dialog(project_, printer_, parentWidget());
+#endif
 	connect(
 		&preview_dialog,
 		SIGNAL(paintRequested(const QList<Diagram *> &, bool, const ExportProperties, QPrinter *)),
