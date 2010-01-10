@@ -57,6 +57,8 @@ class QETPrintPreviewDialog : public QDialog {
 	void fitDiagramToPage(bool);
 	void zoomIn();
 	void zoomOut();
+	void selectAllDiagrams();
+	void selectNoDiagram();
 	
 	// attributs
 	private:
@@ -70,6 +72,8 @@ class QETPrintPreviewDialog : public QDialog {
 	QPrintPreviewWidget *preview_;
 	QLabel *diagrams_label_;
 	DiagramsChooser *diagrams_list_;
+	QPushButton *diagrams_select_all_;
+	QPushButton *diagrams_select_none_;
 	QAction *toggle_diagrams_list_;
 	QAction *toggle_print_options_;
 	QAction *adjust_width_;
