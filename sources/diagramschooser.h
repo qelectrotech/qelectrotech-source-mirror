@@ -24,7 +24,7 @@ class Diagram;
 	Cette classe represente un widget permettant de choisir 0 a n schemas parmi
 	ceux d'un projet.
 */
-class DiagramsChooser : public QFrame {
+class DiagramsChooser : public QScrollArea {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
@@ -55,6 +55,7 @@ class DiagramsChooser : public QFrame {
 	// attributs
 	private:
 	QETProject *project_;
+	QWidget *widget0_;
 	QVBoxLayout *vlayout0_;
 	QHash<Diagram *, QCheckBox *> diagrams_;
 };
