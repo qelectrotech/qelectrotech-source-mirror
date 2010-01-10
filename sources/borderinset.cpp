@@ -268,7 +268,7 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Date : %1", "inset content")).arg(bi_date.toString("dd/MM/yyyy")));
 		
 		qp -> drawRect(inset_title);
-		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, QString(tr("Titre du document : %1", "inset content")).arg(bi_title));
+		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(bi_title));
 		
 		qp -> drawRect(inset_file);
 		qp -> drawText(inset_file,   Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Fichier : %1", "inset content")).arg(bi_filename));

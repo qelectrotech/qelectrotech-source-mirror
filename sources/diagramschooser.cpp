@@ -25,15 +25,23 @@
 	@param parent QWidget parent de ce widget
 */
 DiagramsChooser::DiagramsChooser(QETProject *project, QWidget *parent) :
-	QFrame(parent),
+	QScrollArea(parent),
 	project_(project),
+	widget0_(0),
 	vlayout0_(0)
 {
 	setFrameShadow(QFrame::Sunken);
 	setFrameShape(QFrame::StyledPanel);
 	setLineWidth(3);
 	setMidLineWidth(3);
+	
+	setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+	setVerticalScrollBarPolicy(Qt::ScrollBarAsNeeded);
+	setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding));
+	
 	updateList();
+	
+	setWidget(widget0_);
 }
 
 /**
@@ -163,7 +171,6 @@ void DiagramsChooser::updateList() {
 		diagrams_.insert(diagram, checkbox);
 		vlayout0_ -> addWidget(checkbox, 0, Qt::AlignLeft | Qt::AlignTop);
 	}
-	vlayout0_ -> addStretch();
 }
 
 /**
@@ -172,5 +179,9 @@ void DiagramsChooser::updateList() {
 void DiagramsChooser::buildLayout() {
 	if (vlayout0_) return;
 	vlayout0_ = new QVBoxLayout();
-	setLayout(vlayout0_);
+	widget0_  = new QWidget();
+	widget0_ -> setLayout(vlayout0_);
+	widget0_ -> setMinimumSize(170, 0);
+	widget0_ -> setMaximumSize(470, 10000);
+	widget0_ -> setSizePolicy(QSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum));
 }

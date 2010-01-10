@@ -111,11 +111,13 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		int g_y = (int)ceil(r.y());
 		while (g_y % yGrid) ++ g_y;
 		
+		QPolygon points;
 		for (int gx = g_x ; gx < limite_x ; gx += xGrid) {
 			for (int gy = g_y ; gy < limite_y ; gy += yGrid) {
-				p -> drawPoint(gx, gy);
+				points << QPoint(gx, gy);
 			}
 		}
+		p -> drawPoints(points);
 	}
 	
 	if (use_border) border_and_inset.draw(p, margin, margin);

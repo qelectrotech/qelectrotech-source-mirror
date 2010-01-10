@@ -41,7 +41,7 @@ QETPrintPreviewDialog::QETPrintPreviewDialog(QETProject *project, QPrinter *prin
 	connect(diagrams_list_, SIGNAL(selectionChanged()),         preview_, SLOT(updatePreview()));
 	connect(diagrams_list_, SIGNAL(selectionChanged()),         this,     SLOT(checkDiagramsCount()));
 	
-	setWindowState(Qt::WindowMaximized);
+	setWindowState(windowState() |  Qt::WindowMaximized);
 }
 
 /**
@@ -149,12 +149,28 @@ void QETPrintPreviewDialog::zoomOut() {
 }
 
 /**
+	Selectionne tous les schemas
+*/
+void QETPrintPreviewDialog::selectAllDiagrams() {
+	diagrams_list_ -> setSelectedAllDiagrams(true);
+}
+
+/**
+	Deselectionne tous les schemas
+*/
+void QETPrintPreviewDialog::selectNoDiagram() {
+	diagrams_list_ -> setSelectedAllDiagrams(false);
+}
+
+/**
 	Met en place le dialogue
 */
 void QETPrintPreviewDialog::build() {
 	preview_ = new QPrintPreviewWidget(printer_);
 	diagrams_label_       = new QLabel(tr("Sch\351mas \340 imprimer\240:"));
 	diagrams_list_        = new DiagramsChooser(project_);
+	diagrams_select_all_  = new QPushButton(tr("Tout cocher"));
+	diagrams_select_none_ = new QPushButton(tr("Tout d\351cocher"));
 	toggle_diagrams_list_ = new QAction(QET::Icons::Diagram,              tr("Cacher la liste des sch\351mas"),            this);
 	toggle_print_options_ = new QAction(QET::Icons::Configure,            tr("Cacher les options d'impression"),           this);
 	adjust_width_         = new QAction(QET::Icons::ViewFitWidth,         tr("Ajuster la largeur"),                        this);
@@ -245,6 +261,8 @@ void QETPrintPreviewDialog::build() {
 	buttons_ -> addButton(new QPushButton(QET::Icons::DocumentPrint, tr("Imprimer")), QDialogButtonBox::AcceptRole);
 	buttons_ -> addButton(QDialogButtonBox::Cancel);
 	
+	connect(diagrams_select_all_,  SIGNAL(released()),    this,     SLOT(selectAllDiagrams()));
+	connect(diagrams_select_none_, SIGNAL(released()),    this,     SLOT(selectNoDiagram()));
 	connect(toggle_diagrams_list_, SIGNAL(toggled(bool)), this,     SLOT(setDiagramsListVisible(bool)));
 	connect(toggle_print_options_, SIGNAL(toggled(bool)), this,     SLOT(setPrintOptionsVisible(bool)));
 	connect(adjust_width_,         SIGNAL(triggered()),   preview_, SLOT(fitToWidth()));
@@ -286,6 +304,8 @@ void QETPrintPreviewDialog::build() {
 	
 	vlayout2_ -> addWidget(diagrams_label_);
 	vlayout2_ -> addWidget(diagrams_list_);
+	vlayout2_ -> addWidget(diagrams_select_all_);
+	vlayout2_ -> addWidget(diagrams_select_none_);
 	
 	hlayout0_ -> addLayout(vlayout2_);
 	hlayout0_ -> addWidget(preview_);
