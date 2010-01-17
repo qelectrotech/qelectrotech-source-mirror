@@ -63,6 +63,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 		xml_element.attribute("x").toDouble(),
 		xml_element.attribute("y").toDouble()
 	);
+	known_position_ = pos();
 }
 
 /**
@@ -195,6 +196,7 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "size") {
 		if (!value.canConvert(QVariant::Int)) return;
 		setFont(QETApp::diagramTextsFont(value.toInt()));
+		adjustItemPosition(0);
 	} else if (property == "text") {
 		setPlainText(value.toString());
 	}
@@ -229,8 +231,13 @@ QVariant PartText::property(const QString &property) {
 	@param value Valeur numerique relative au changement
 */
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
+	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
+		// memorise la nouvelle position "officielle" du champ de texte
+		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
+		known_position_ = pos();
+		infos -> updateForm();
+	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
+		if (value.toBool() == true) {
 			infos -> updateForm();
 		}
 	}
@@ -274,6 +281,18 @@ void PartText::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, Q
 	painter -> setPen(Qt::green);
 	drawPoint(painter, mapFromScene(pos()));
 #endif
+}
+
+/**
+	Cette methode s'assure que la position du champ de texte est coherente
+	en repositionnant son origine (c-a-d le milieu du bord gauche du champ de
+	texte) a la position originale. Cela est notamment utile lorsque le champ
+	de texte est agrandi ou retreci verticalement (ajout ou retrait de lignes).
+	@param new_block_count Nombre de blocs dans le PartText
+*/
+void PartText::adjustItemPosition(int new_block_count) {
+	Q_UNUSED(new_block_count);
+	setPos(known_position_);
 }
 
 #ifdef QET_DEBUG_EDITOR_TEXTS

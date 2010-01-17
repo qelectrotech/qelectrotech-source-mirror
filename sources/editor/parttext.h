@@ -56,6 +56,9 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	virtual bool isUseless() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
 	
+	public slots:
+	void adjustItemPosition(int);
+	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
@@ -68,5 +71,6 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	void drawPoint(QPainter *, const QPointF &);
 #endif
 	QString previous_text;
+	QPointF known_position_;
 };
 #endif

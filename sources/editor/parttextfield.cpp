@@ -242,6 +242,7 @@ void PartTextField::setProperty(const QString &property, const QVariant &value) 
 	} else if (property == "size") {
 		if (!value.canConvert(QVariant::Int)) return;
 		setFont(QETApp::diagramTextsFont(value.toInt()));
+		adjustItemPosition(0);
 	} else if (property == "text") {
 		setPlainText(value.toString());
 	} else if (property == "rotation angle") {
@@ -343,7 +344,7 @@ void PartTextField::paint(QPainter *painter, const QStyleOptionGraphicsItem *qso
 	en repositionnant son origine (c-a-d le milieu du bord gauche du champ de
 	texte) a la position originale. Cela est notamment utile lorsque le champ
 	de texte est agrandi ou retreci verticalement (ajout ou retrait de lignes).
-	@param new_bloc_count Nombre de blocs dans l'ElementTextItem
+	@param new_block_count Nombre de blocs dans le PartTextField
 */
 void PartTextField::adjustItemPosition(int new_block_count) {
 	Q_UNUSED(new_block_count);
