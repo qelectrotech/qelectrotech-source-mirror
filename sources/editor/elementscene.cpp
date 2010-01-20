@@ -391,7 +391,6 @@ void ElementScene::keyPressEvent(QKeyEvent *e) {
 			case Qt::Key_Down:  movement = QPointF(0.0, +movement_length); break;
 		}
 		if (!movement.isNull() && !focusItem()) {
-			qDebug() << "keyPressEvent: let's move by " << movement;
 			if (!moving_parts_) {
 				moving_parts_ = true;
 				fsi_pos = movement;
