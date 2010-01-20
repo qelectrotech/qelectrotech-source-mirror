@@ -31,6 +31,9 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	closed(false)
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new PolygonEditor(elementEditor(), this);
 	informations -> setElementTypeName(name());
