@@ -34,6 +34,9 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
 	infos = new TextEditor(elementEditor(), this);
 	infos -> setElementTypeName(name());
@@ -147,7 +150,7 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 	setTextCursor(qtc);
 	
 	setTextInteractionFlags(Qt::NoTextInteraction);
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setFlag(QGraphicsItem::ItemIsFocusable, false);
 }
 
 /**
@@ -155,7 +158,7 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 	@param e Le QGraphicsSceneMouseEvent qui decrit le double-clic
 */
 void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable | QGraphicsItem::ItemIsFocusable);
+	setFlag(QGraphicsItem::ItemIsFocusable, true);
 	setTextInteractionFlags(Qt::TextEditorInteraction);
 	previous_text = toPlainText();
 	QGraphicsTextItem::mouseDoubleClickEvent(e);

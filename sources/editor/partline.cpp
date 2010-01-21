@@ -34,6 +34,9 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsSce
 	second_length(1.5)
 {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new LineEditor(elementEditor(), this);
 	informations -> setElementTypeName(name());

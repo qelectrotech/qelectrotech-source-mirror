@@ -26,6 +26,9 @@
 */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsRectItem(parent, scene), CustomElementGraphicPart(editor) {
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	setAcceptedMouseButtons(Qt::LeftButton);
 	informations = new RectangleEditor(elementEditor(), this);
 	informations -> setElementTypeName(name());
