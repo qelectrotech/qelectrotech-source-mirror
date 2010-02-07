@@ -1143,6 +1143,7 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 	_names.fromXml(root);
 	
 	// extrait les informations complementaires
+	setInformations(QString());
 	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		QDomElement elmt = node.toElement();
 		if (elmt.isNull()) continue;
