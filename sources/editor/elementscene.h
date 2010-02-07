@@ -64,6 +64,8 @@ class ElementScene : public QGraphicsScene {
 	OrientationSet ori;
 	/// booleen indiquant si les bornes de l'element peuvent etre reliees a des bornes de ce meme element
 	bool internal_connections;
+	/// Chaine contenant les informations complementaires de l'element
+	QString informations_;
 	/// Gestionnaire de QGraphicsItem
 	QGIManager qgi_manager;
 	/// Pile des actions annulables
@@ -114,6 +116,8 @@ class ElementScene : public QGraphicsScene {
 	void setOrientations(const OrientationSet &);
 	bool internalConnections();
 	void setInternalConnections(bool);
+	QString informations() const;
+	void setInformations(const QString &);
 	virtual int xGrid() const;
 	virtual int yGrid() const;
 	virtual void setGrid(int, int);
@@ -175,6 +179,7 @@ class ElementScene : public QGraphicsScene {
 	void slot_editSizeHotSpot();
 	void slot_editNames();
 	void slot_editOrientations();
+	void slot_editAuthorInformations();
 	void slot_bringForward();
 	void slot_raise();
 	void slot_lower();
@@ -282,6 +287,20 @@ inline bool ElementScene::internalConnections() {
 */
 inline void ElementScene::setInternalConnections(bool ic) {
 	internal_connections = ic;
+}
+
+/**
+	@return les informations complementaires de cet element
+*/
+inline QString ElementScene::informations() const {
+	return(informations_);
+}
+
+/**
+	@param infos les nouvelles informations complementaires de cet element
+*/
+inline void ElementScene::setInformations(const QString &infos) {
+	informations_ = infos;
 }
 
 #endif

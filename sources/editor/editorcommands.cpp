@@ -590,3 +590,32 @@ void AllowInternalConnectionsCommand::undo() {
 void AllowInternalConnectionsCommand::redo() {
 	element -> setInternalConnections(ic);
 }
+
+/**
+	Constructeur
+	@param elmt ElementScene concernee
+	@param old_infos Informations complementaires precedentes
+	@param old_infos Nouvelles informations complementaires
+	@param parent QUndoCommand parent
+*/
+ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const QString &old_infos, const QString &new_infos, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("modification informations complementaires", "undo caption"), parent),
+	element(elmt),
+	old_informations_(old_infos),
+	new_informations_(new_infos)
+{
+}
+
+/// Destructeur
+ChangeInformationsCommand::~ChangeInformationsCommand() {
+}
+
+/// Annule le changement d'autorisation pour les connexions internes
+void ChangeInformationsCommand::undo() {
+	element -> setInformations(old_informations_);
+}
+
+/// Refait le changement d'autorisation pour les connexions internes
+void ChangeInformationsCommand::redo() {
+	element -> setInformations(new_informations_);
+}

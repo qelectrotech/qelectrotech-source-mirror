@@ -68,7 +68,7 @@ class QETElementEditor : public QMainWindow {
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
 	QAction *undo, *redo;
-	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori;
+	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori, *edit_author;
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
 	/// actions du menu affichage
 	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
