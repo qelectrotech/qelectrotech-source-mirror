@@ -1154,6 +1154,9 @@ void QETElementEditor::readSettings() {
 	// etat de la fenetre (barres d'outils, docks...)
 	QVariant state = settings.value("elementeditor/state");
 	if (state.isValid()) restoreState(state.toByteArray());
+	
+	// informations complementaires de l'element : valeur par defaut
+	ce_scene -> setInformations(settings.value("elementeditor/default-informations", "").toString());
 }
 
 /// Enregistre les parametres de l'editeur d'element
