@@ -17,7 +17,7 @@
 */
 #include "textfieldeditor.h"
 #include "parttextfield.h"
-#include "qtextorientationwidget.h"
+#include "qtextorientationspinboxwidget.h"
 #include "qetapp.h"
 /**
 	Constructeur
@@ -35,22 +35,9 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	font_size -> setRange(0, 144);
 	rotate    = new QCheckBox(tr("Ne pas subir les rotations de l'\351l\351ment parent"));
 	rotate -> setChecked(true);
-	rotation_angle_ = new QDoubleSpinBox();
-	rotation_angle_ -> setRange(-360.0, 360.0);
-	rotation_angle_ -> setSuffix("\260");
-	rotation_widget_ = new QTextOrientationWidget();
-	rotation_widget_ -> setFont(QETApp::diagramTextsFont());
-	rotation_widget_ -> setUsableTexts(QList<QString>()
-		<< tr("Q",            "Single-letter example text - translate length, not meaning")
-		<< tr("QET",          "Small example text - translate length, not meaning")
-		<< tr("Schema",       "Normal example text - translate length, not meaning")
-		<< tr("Electrique",   "Normal example text - translate length, not meaning")
-		<< tr("QElectroTech", "Long example text - translate length, not meaning")
-	);
-	rotation_widget_ -> setMinimumSize(90.0, 90.0);
-	connect(rotation_angle_,  SIGNAL(valueChanged(double)),       rotation_widget_, SLOT(setOrientation(double)));
-	connect(rotation_widget_, SIGNAL(orientationChanged(double)), rotation_angle_,  SLOT(setValue(double)));
-	connect(rotation_widget_, SIGNAL(orientationChanged(double)), rotation_angle_,  SIGNAL(editingFinished()));
+	QLabel *rotation_angle_label = new QLabel(tr("Angle de rotation par d\351faut : "));
+	rotation_angle_label -> setWordWrap(true);
+	rotation_angle_ = QETApp::createTextOrientationSpinBoxWidget();
 	
 	qle_x -> setValidator(new QDoubleValidator(qle_x));
 	qle_y -> setValidator(new QDoubleValidator(qle_y));
@@ -76,8 +63,7 @@ TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfi
 	main_layout -> addLayout(t);
 	
 	QHBoxLayout *rotation_angle_layout = new QHBoxLayout();
-	rotation_angle_layout -> addWidget(new QLabel(tr("Angle de rotation par d\351faut : ")));
-	rotation_angle_layout -> addWidget(rotation_widget_);
+	rotation_angle_layout -> addWidget(rotation_angle_label);
 	rotation_angle_layout -> addWidget(rotation_angle_);
 	main_layout -> addLayout(rotation_angle_layout);
 	
@@ -128,7 +114,6 @@ void TextFieldEditor::updateForm() {
 	font_size -> setValue(part -> property("size").toInt());
 	rotate  -> setChecked(!part -> property("rotate").toBool());
 	rotation_angle_ -> setValue(part -> property("rotation angle").toDouble());
-	rotation_widget_ -> setOrientation(part -> property("rotation angle").toDouble());
 	activeConnections(true);
 }
 

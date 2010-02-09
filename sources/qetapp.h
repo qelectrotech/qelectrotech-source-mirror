@@ -31,6 +31,7 @@ class FileElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 class QETProject;
+class QTextOrientationSpinBoxWidget;
 class RecentFiles;
 /**
 	Cette classe represente l'application QElectroTech.
@@ -96,6 +97,7 @@ class QETApp : public QETSingleApplication {
 	static QList<QETDiagramEditor *> diagramEditors();
 	static QList<QETElementEditor *> elementEditors();
 	static QList<QETElementEditor *> elementEditors(QETProject *);
+	static QTextOrientationSpinBoxWidget *createTextOrientationSpinBoxWidget();
 	
 	protected:
 #ifdef Q_OS_DARWIN

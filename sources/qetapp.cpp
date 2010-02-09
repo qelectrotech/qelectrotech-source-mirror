@@ -23,6 +23,7 @@
 #include "elementscollectionitem.h"
 #include "fileelementscollection.h"
 #include "qetproject.h"
+#include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
 #include "qeticons.h"
 #include <cstdlib>
@@ -504,6 +505,28 @@ QList<QETElementEditor *> QETApp::elementEditors() {
 	return(static_cast<QETApp *>(qApp) -> detectElementEditors());
 }
 
+/**
+	Instancie un QTextOrientationSpinBoxWidget et configure :
+	  * sa police de caracteres
+	  * ses chaines de caracteres
+	A noter que la suppression du widget ainsi alloue est a la charge de
+	l'appelant.
+	@return un QTextOrientationSpinBoxWidget adapte pour une utilisation
+	"directe" dans QET.
+	@see QTextOrientationSpinBoxWidget
+*/
+QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
+	QTextOrientationSpinBoxWidget *widget = new QTextOrientationSpinBoxWidget();
+	widget -> orientationWidget() -> setFont(QETApp::diagramTextsFont());
+	widget -> orientationWidget() -> setUsableTexts(QList<QString>()
+		<< QETApp::tr("Q",            "Single-letter example text - translate length, not meaning")
+		<< QETApp::tr("QET",          "Small example text - translate length, not meaning")
+		<< QETApp::tr("Schema",       "Normal example text - translate length, not meaning")
+		<< QETApp::tr("Electrique",   "Normal example text - translate length, not meaning")
+		<< QETApp::tr("QElectroTech", "Long example text - translate length, not meaning")
+	);
+	return(widget);
+}
 /**
 	@param project un projet
 	@return les editeurs d'elements editant un element appartenant au projet
