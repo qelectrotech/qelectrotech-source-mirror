@@ -196,6 +196,7 @@ void QETDiagramEditor::actions() {
 	select_invert     = new QAction(                                   tr("Inverser la s\351lection"),             this);
 	delete_selection  = new QAction(QET::Icons::EditDelete,            tr("Supprimer"),                            this);
 	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
+	rotate_texts      = new QAction(QET::Icons::ObjectRotateRight,     tr("Orienter les textes"),                  this);
 	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	conductor_default = new QAction(QET::Icons::DefaultConductor,      tr("Conducteurs par d\351faut"),            this);
@@ -259,6 +260,7 @@ void QETDiagramEditor::actions() {
 #endif
 	
 	rotate_selection  -> setShortcut(QKeySequence(tr("Space")));
+	rotate_texts      -> setShortcut(QKeySequence(tr("Ctrl+Space")));
 	selection_prop    -> setShortcut(QKeySequence(tr("Ctrl+J")));
 	conductor_reset   -> setShortcut(QKeySequence(tr("Ctrl+K")));
 	infos_diagram     -> setShortcut(QKeySequence(tr("Ctrl+L")));
@@ -297,7 +299,8 @@ void QETDiagramEditor::actions() {
 	select_nothing    -> setStatusTip(tr("D\351s\351lectionne tous les \351l\351ments du sch\351ma", "status bar tip"));
 	select_invert     -> setStatusTip(tr("D\351s\351lectionne les \351l\351ments s\351lectionn\351s et s\351lectionne les \351l\351ments non s\351lectionn\351s", "status bar tip"));
 	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma", "status bar tip"));
-	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments s\351lectionn\351s", "status bar tip"));
+	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments et textes s\351lectionn\351s", "status bar tip"));
+	rotate_texts      -> setStatusTip(tr("Pivote les textes s\351lectionn\351s \320 un angle pr\351cis", "status bar tip"));
 	selection_prop    -> setStatusTip(tr("\311dite les propri\351t\351s des objets s\351lectionn\351", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	conductor_default -> setStatusTip(tr("Sp\351cifie les propri\351t\351s par d\351faut des conducteurs", "status bar tip"));
@@ -355,6 +358,7 @@ void QETDiagramEditor::actions() {
 	connect(select_invert,      SIGNAL(triggered()), this,       SLOT(slot_selectInvert())         );
 	connect(delete_selection,   SIGNAL(triggered()), this,       SLOT(slot_delete())               );
 	connect(rotate_selection,   SIGNAL(triggered()), this,       SLOT(slot_rotate())               );
+	connect(rotate_texts,       SIGNAL(triggered()), this,       SLOT(slot_rotateTexts())          );
 	connect(fullscreen,         SIGNAL(triggered()), this,       SLOT(toggleFullScreen())          );
 	connect(configure,          SIGNAL(triggered()), qet_app,    SLOT(configureQET())              );
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
@@ -472,6 +476,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(delete_selection);
 	menu_edition -> addAction(rotate_selection);
+	menu_edition -> addAction(rotate_texts);
 	menu_edition -> addAction(selection_prop);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(conductor_reset);
@@ -1056,6 +1061,13 @@ void QETDiagramEditor::slot_rotate() {
 }
 
 /**
+	Effectue l'action "Orienter les textes selectionnes" sur le schema en cours
+*/
+void QETDiagramEditor::slot_rotateTexts() {
+	if (currentDiagram()) currentDiagram() -> rotateTexts();
+}
+
+/**
 	Effectue l'action "mode selection" sur le schema en cours
 */
 void QETDiagramEditor::slot_setSelectionMode() {
@@ -1137,13 +1149,17 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	int selected_conductors_count = dv ? dv -> diagram() -> selectedConductors().count() : 0;
 	conductor_reset  -> setEnabled(editable_diagram && selected_conductors_count);
 	
-	// actions ayant aussi besoin d'elements selectionnes
-	bool selected_elements = dv ? (dv -> hasSelectedItems()) : false;
-	cut              -> setEnabled(editable_diagram && selected_elements);
-	copy             -> setEnabled(selected_elements);
-	delete_selection -> setEnabled(editable_diagram && selected_elements);
-	rotate_selection -> setEnabled(editable_diagram && selected_elements && dv -> diagram() -> canRotateSelection());
-	selection_prop   -> setEnabled(editable_diagram && selected_elements);
+	// actions ayant aussi besoin d'items (elements, conducteurs, textes, ...) selectionnes
+	bool selected_items = dv ? (dv -> hasSelectedItems()) : false;
+	cut              -> setEnabled(editable_diagram && selected_items);
+	copy             -> setEnabled(selected_items);
+	delete_selection -> setEnabled(editable_diagram && selected_items);
+	rotate_selection -> setEnabled(editable_diagram && selected_items && dv -> diagram() -> canRotateSelection());
+	selection_prop   -> setEnabled(editable_diagram && selected_items);
+	
+	// actions ayant besoin de textes selectionnes
+	bool selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
+	rotate_texts -> setEnabled(editable_diagram && selected_texts); 
 }
 
 /**

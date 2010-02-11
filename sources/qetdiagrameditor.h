@@ -104,6 +104,7 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_selectInvert();
 	void slot_delete();
 	void slot_rotate();
+	void slot_rotateTexts();
 	void slot_setSelectionMode();
 	void slot_setVisualisationMode();
 	void slot_updateActions();
@@ -177,7 +178,8 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *select_nothing;     ///< Deselectionne tout
 	QAction *select_invert;      ///< Inverse la selection
 	QAction *delete_selection;   ///< Supprime la selection
-	QAction *rotate_selection;   ///< Pivote les elements selectionnes
+	QAction *rotate_selection;   ///< Pivote les elements et textes selectionnes de 90 degres
+	QAction *rotate_texts;       ///< Pivote les textes selectionnes selon un angle parametrable
 	QAction *selection_prop;     ///< Lance le dialogue de description ou d'edition de la selection
 	QAction *conductor_reset;    ///< Reinitialise les conducteurs selectionnes
 	QAction *conductor_default;  ///< Lance le dialogue d'edition des conducteurs par defaut

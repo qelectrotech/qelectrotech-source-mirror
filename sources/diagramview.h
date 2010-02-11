@@ -102,6 +102,7 @@ class DiagramView : public QGraphicsView {
 	void selectInvert();
 	void deleteSelection();
 	void rotateSelection();
+	void rotateTexts();
 	void setVisualisationMode();
 	void setSelectionMode();
 	void zoomIn();

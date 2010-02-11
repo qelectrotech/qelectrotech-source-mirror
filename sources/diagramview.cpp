@@ -32,6 +32,7 @@
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "qtextorientationspinboxwidget.h"
 
 /**
 	Constructeur
@@ -135,6 +136,58 @@ void DiagramView::rotateSelection() {
 	// effectue les rotations s'il y a quelque chose a pivoter
 	if (elements_to_rotate.isEmpty() && texts_to_rotate.isEmpty()) return;
 	scene -> undoStack().push(new RotateElementsCommand(elements_to_rotate, texts_to_rotate));
+}
+
+void DiagramView::rotateTexts() {
+	if (scene -> isReadOnly()) return;
+	
+	// recupere les champs de texte a orienter
+	QList<DiagramTextItem *> texts_to_rotate;
+	foreach (QGraphicsItem *item, scene -> selectedItems()) {
+		if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
+			texts_to_rotate << dti;
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			// ici, on pivote un texte d'element meme si son parent est selectionne
+			texts_to_rotate << eti;
+		}
+	}
+	
+	// effectue les rotations s'il y a quelque chose a pivoter
+	if (texts_to_rotate.isEmpty()) return;
+	
+	// demande un angle a l'utilisateur
+	QDialog ori_text_dialog(diagramEditor());
+	ori_text_dialog.setSizeGripEnabled(false);
+#ifdef Q_WS_MAC
+	ori_text_dialog.setWindowFlags(Qt::Sheet);
+#endif
+	ori_text_dialog.setWindowTitle(tr("Orienter les textes s\351lectionn\351s", "window title"));
+// 	ori_text_dialog.setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+	
+	
+	QTextOrientationSpinBoxWidget *ori_widget = QETApp::createTextOrientationSpinBoxWidget();
+	ori_widget -> setParent(&ori_text_dialog);
+	if (texts_to_rotate.count() == 1) {
+		ori_widget -> setOrientation(texts_to_rotate.at(0) -> rotationAngle());
+	}
+	ori_widget -> spinBox() -> selectAll();
+	
+	// boutons
+	QDialogButtonBox buttons(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	connect(&buttons, SIGNAL(accepted()), &ori_text_dialog, SLOT(accept()));
+	connect(&buttons, SIGNAL(rejected()), &ori_text_dialog, SLOT(reject()));
+	
+	// ajout dans une disposition verticale
+	QVBoxLayout layout_v(&ori_text_dialog);
+	layout_v.setSizeConstraint(QLayout::SetFixedSize);
+	layout_v.addWidget(ori_widget);
+	layout_v.addStretch();
+	layout_v.addWidget(&buttons);
+	
+	// si le dialogue est accepte
+	if (ori_text_dialog.exec() == QDialog::Accepted) {
+		scene -> undoStack().push(new RotateTextsCommand(texts_to_rotate, ori_widget -> orientation()));
+	}
 }
 
 /**

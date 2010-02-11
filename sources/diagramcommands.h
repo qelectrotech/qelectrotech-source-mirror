@@ -227,7 +227,7 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 };
 
 /**
-	Cette classe represente l'action de pivoter plusieurs elements
+	Cette classe represente l'action de pivoter plusieurs elements ou champs de textes avec un meme angle
 */
 class RotateElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
@@ -241,6 +241,8 @@ class RotateElementsCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
+	qreal appliedRotationAngle() const;
+	void setAppliedRotationAngle(const qreal &);
 	
 	// attributs
 	private:
@@ -248,6 +250,36 @@ class RotateElementsCommand : public QUndoCommand {
 	QHash<Element *, QET::Orientation> elements_to_rotate;
 	/// textes a pivoter
 	QList<DiagramTextItem *> texts_to_rotate;
+	/// angle de rotation a appliquer aux textes (valeur utilisee dans le redo
+	qreal applied_rotation_angle_;
+};
+
+/**
+	Cette classe represente l'action d'orienter plusieurs textes a un meme angle de rotation bien precis
+*/
+class RotateTextsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	RotateTextsCommand(const QHash<DiagramTextItem *, double> &, double, QUndoCommand * = 0);
+	RotateTextsCommand(const QList<DiagramTextItem *> &,         double, QUndoCommand * = 0);
+	virtual ~RotateTextsCommand();
+	private:
+	RotateTextsCommand(const RotateTextsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	private:
+	void defineCommandName();
+	
+	// attributs
+	private:
+	/// textes pivotes associes a leur ancienne orientation
+	QHash<DiagramTextItem *, double> texts_to_rotate;
+	/// angle de rotation a appliquer aux textes
+	double applied_rotation_angle_;
 };
 
 /**

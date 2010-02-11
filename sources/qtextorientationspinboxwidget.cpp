@@ -103,6 +103,7 @@ void QTextOrientationSpinBoxWidget::build() {
 	QHBoxLayout *main_layout = new QHBoxLayout();
 	main_layout -> addWidget(orientation_widget_);
 	main_layout -> addWidget(spin_box_);
+	main_layout -> addStretch();
 	setLayout(main_layout);
 }
 

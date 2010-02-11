@@ -410,7 +410,8 @@ void ChangeDiagramTextCommand::redo() {
 RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, QUndoCommand *parent) :
 	QUndoCommand(parent),
 	elements_to_rotate(elements),
-	texts_to_rotate(texts)
+	texts_to_rotate(texts),
+	applied_rotation_angle_(-90.0)
 {
 	setText(
 		QString(
@@ -432,7 +433,7 @@ void RotateElementsCommand::undo() {
 		e -> setOrientation(elements_to_rotate[e]);
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
-		dti -> rotateBy(90.0);
+		dti -> rotateBy(-applied_rotation_angle_);
 	}
 }
 
@@ -443,8 +444,91 @@ void RotateElementsCommand::redo() {
 		e -> update();
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
-		dti -> rotateBy(-90.0);
+		dti -> rotateBy(applied_rotation_angle_);
 	}
+}
+
+/**
+	@return l'angle de rotation applique aux textes
+*/
+qreal RotateElementsCommand::appliedRotationAngle() const {
+	return(applied_rotation_angle_);
+}
+
+/**
+	@param angle l'angle de rotation a appliquer aux textes
+*/
+void RotateElementsCommand::setAppliedRotationAngle(const qreal &angle) {
+	applied_rotation_angle_ = QET::correctAngle(angle);
+}
+
+/**
+	Constructeur
+	@param previous_state Hash associant les textes impactes par l'action et leur angle de rotation avant l'action
+	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
+	@param parent QUndoCommand parent
+*/
+RotateTextsCommand::RotateTextsCommand(const QHash<DiagramTextItem *, double> &previous_state, double applied_rotation, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	texts_to_rotate(previous_state),
+	applied_rotation_angle_(applied_rotation)
+{
+	defineCommandName();
+}
+
+/**
+	Constructeur
+	@param texts Liste des textes impactes par l'action. L'objet retiendra leur angle de rotation au moment de sa construction.
+	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
+	@param parent QUndoCommand parent
+*/
+RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, double applied_rotation, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	applied_rotation_angle_(applied_rotation)
+{
+	foreach(DiagramTextItem *text, texts) {
+		texts_to_rotate.insert(text, text -> rotationAngle());
+	}
+	defineCommandName();
+}
+
+/**
+	Destructeur
+*/
+RotateTextsCommand::~RotateTextsCommand() {
+}
+
+/**
+	Annule la rotation des textes
+*/
+void RotateTextsCommand::undo() {
+	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
+		text -> setRotationAngle(texts_to_rotate[text]);
+	}
+}
+
+/**
+	Applique l'angle de rotation aux textes
+*/
+void RotateTextsCommand::redo() {
+	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
+		text -> setRotationAngle(applied_rotation_angle_);
+	}
+}
+
+/**
+	Definit le nom de la commande d'annulation
+*/
+void RotateTextsCommand::defineCommandName() {
+	setText(
+		QString(
+			QObject::tr(
+				"orienter %1 \340 %2\260",
+				"undo caption - %1 looks like '42 texts', %2 is a rotation angle"
+			)
+		).arg(QET::ElementsAndConductorsSentence(0, 0, texts_to_rotate.count()))
+		.arg(applied_rotation_angle_)
+	);
 }
 
 /**

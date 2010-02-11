@@ -157,6 +157,7 @@ class Diagram : public QGraphicsScene {
 	const QSet<Conductor *> &conductorsToMove();
 	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
 	const QSet<DiagramTextItem *> &textsToMove();
+	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();

@@ -980,6 +980,22 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 	return(conductors_set);
 }
 
+/**
+	@return la liste de tous les textes selectionnes : les textes independants,
+	mais aussi ceux rattaches a des conducteurs ou des elements
+*/
+QSet<DiagramTextItem *> Diagram::selectedTexts() const {
+	QSet<DiagramTextItem *> selected_texts;
+	foreach(QGraphicsItem *item, selectedItems()) {
+		if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
+			selected_texts << dti;
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			selected_texts << eti;
+		}
+	}
+	return(selected_texts);
+}
+
 /// @return true si le presse-papier semble contenir un schema
 bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
