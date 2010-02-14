@@ -174,9 +174,9 @@ const QDomElement PartLine::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("x2", QString("%1").arg(p2.x()));
 	xml_element.setAttribute("y2", QString("%1").arg(p2.y()));
 	xml_element.setAttribute("end1", QET::endTypeToString(first_end));
-	xml_element.setAttribute("length1", first_length);
+	xml_element.setAttribute("length1", QString("%1").arg(first_length));
 	xml_element.setAttribute("end2", QET::endTypeToString(second_end));
-	xml_element.setAttribute("length2", second_length);
+	xml_element.setAttribute("length2", QString("%1").arg(second_length));
 	
 	stylesToXml(xml_element);
 	return(xml_element);

@@ -7,6 +7,8 @@
         <name lang="cs" >Bzučák</name>
         <name lang="pt" >Bezouro</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="35" y="3" size="9" text="_" />
         <arc width="20" x="20" y="-10" antialias="true" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180" />

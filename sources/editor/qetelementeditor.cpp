@@ -96,6 +96,7 @@ void QETElementEditor::setupActions() {
 	edit_size_hs    = new QAction(QET::Icons::HotSpot,              tr("\311diter la taille et le point de saisie"), this);
 	edit_names      = new QAction(QET::Icons::Names,                tr("\311diter les noms"),                        this);
 	edit_ori        = new QAction(QET::Icons::Orientations,         tr("\311diter les orientations"),                this);
+	edit_author     = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations sur l'auteur"),   this);
 	edit_raise      = new QAction(QET::Icons::Raise,                tr("Rapprocher"),                                this);
 	edit_lower      = new QAction(QET::Icons::Lower,                tr("\311loigner"),                               this);
 	edit_backward   = new QAction(QET::Icons::SendBackward,         tr("Envoyer au fond"),                           this);
@@ -167,6 +168,7 @@ void QETElementEditor::setupActions() {
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	edit_size_hs      -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
+	edit_author       -> setShortcut(tr("Ctrl+Y"));
 	
 	edit_raise        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Up")));
 	edit_lower        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
@@ -202,6 +204,7 @@ void QETElementEditor::setupActions() {
 	connect(fullscreen,      SIGNAL(triggered()), this,     SLOT(toggleFullScreen()));
 	connect(configure,       SIGNAL(triggered()), qet_app,  SLOT(configureQET()));
 	connect(edit_ori,        SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
+	connect(edit_author,     SIGNAL(triggered()), ce_scene, SLOT(slot_editAuthorInformations()));
 	connect(edit_forward,    SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
 	connect(edit_raise,      SIGNAL(triggered()), ce_scene, SLOT(slot_raise()));
 	connect(edit_lower,      SIGNAL(triggered()), ce_scene, SLOT(slot_lower()));
@@ -368,6 +371,7 @@ void QETElementEditor::setupMenus() {
 	edit_menu -> addAction(edit_names);
 	edit_menu -> addAction(edit_size_hs);
 	edit_menu -> addAction(edit_ori);
+	edit_menu -> addAction(edit_author);
 	edit_menu -> addSeparator();
 	edit_menu -> addAction(edit_forward);
 	edit_menu -> addAction(edit_raise);
@@ -417,6 +421,7 @@ void QETElementEditor::slot_updateMenus() {
 	edit_size_hs    -> setEnabled(!read_only);
 	edit_names      -> setEnabled(!read_only);
 	edit_ori        -> setEnabled(!read_only);
+	edit_author     -> setEnabled(!read_only);
 	parts_list      -> setEnabled(!read_only);
 	
 	// actions dependant de la presence de parties selectionnees
@@ -1149,6 +1154,9 @@ void QETElementEditor::readSettings() {
 	// etat de la fenetre (barres d'outils, docks...)
 	QVariant state = settings.value("elementeditor/state");
 	if (state.isValid()) restoreState(state.toByteArray());
+	
+	// informations complementaires de l'element : valeur par defaut
+	ce_scene -> setInformations(settings.value("elementeditor/default-informations", "").toString());
 }
 
 /// Enregistre les parametres de l'editeur d'element

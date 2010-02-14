@@ -7,6 +7,8 @@
         <name lang="cs" >Výstup (nastavit znovu)</name>
         <name lang="pt" >Saída (reset)</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-4.25" y="5.25" size="9" text="R" />
         <arc width="4" x="6" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="80" angle="-160" />

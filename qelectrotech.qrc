@@ -55,6 +55,7 @@
 	<file>ico/16x16/object-rotate-right.png</file>
 	<file>ico/16x16/orientations.png</file>
 	<file>ico/16x16/phase.png</file>
+	<file>ico/16x16/preferences-desktop-user.png</file>
 	<file>ico/16x16/project.png</file>
 	<file>ico/16x16/qet.png</file>
 	<file>ico/16x16/remove_col.png</file>
@@ -129,6 +130,7 @@
 	<file>ico/22x22/object-unlocked.png</file>
 	<file>ico/22x22/polygon.png</file>
 	<file>ico/22x22/portrait.png</file>
+	<file>ico/22x22/preferences-desktop-user.png</file>
 	<file>ico/22x22/raise.png</file>
 	<file>ico/22x22/rectangle.png</file>
 	<file>ico/22x22/restaurer.png</file>

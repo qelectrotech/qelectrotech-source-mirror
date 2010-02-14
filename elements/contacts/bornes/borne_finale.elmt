@@ -7,6 +7,8 @@
         <name lang="cs" >Koncová svorka</name>
         <name lang="pt" >Terminal de fim</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="5" y="8" size="7" text="_" />
         <input x="5" y="-5" size="10" text="_" />

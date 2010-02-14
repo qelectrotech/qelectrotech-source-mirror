@@ -356,4 +356,31 @@ class AllowInternalConnectionsCommand : public QUndoCommand {
 	/// autorisation des connexions internes apres modification
 	bool ic;
 };
+
+/**
+	Cette classe represente l'action de changer les informations
+	complementaires d'un element.
+*/
+class ChangeInformationsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	ChangeInformationsCommand(ElementScene *, const QString &, const QString &, QUndoCommand * = 0);
+	virtual ~ChangeInformationsCommand();
+	private:
+	ChangeInformationsCommand(const ChangeInformationsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributs
+	private:
+	/// Element edite auquel il faut appliquer les modifications
+	ElementScene *element;
+	/// Informations avant modification
+	QString old_informations_;
+	/// Informations apres modification
+	QString new_informations_;
+};
 #endif

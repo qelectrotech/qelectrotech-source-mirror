@@ -99,6 +99,8 @@ class GeneralConfigurationPage : public ConfigPage {
 	QLabel *warning_view_mode_;
 	QGroupBox *elements_management_;
 	QCheckBox *integrate_elements_;
+	QLabel    *default_element_infos_label_;
+	QTextEdit *default_element_infos_textfield_;
 };
 
 /**

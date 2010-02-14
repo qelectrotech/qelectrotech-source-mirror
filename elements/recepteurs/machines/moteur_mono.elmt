@@ -7,6 +7,8 @@
         <name lang="cs" >Jednofázový motor</name>
         <name lang="pt" >Motor monofásico</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-5" y="19" size="18" text="M" />
         <circle x="-9.25" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />

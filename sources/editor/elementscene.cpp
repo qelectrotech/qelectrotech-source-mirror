@@ -558,6 +558,11 @@ const QDomDocument ElementScene::toXml(bool all_parts) const {
 	// noms de l'element
 	root.appendChild(_names.toXml(xml_document));
 	
+	// informations complementaires de l'element
+	QDomElement informations_element = xml_document.createElement("informations");
+	root.appendChild(informations_element);
+	informations_element.appendChild(xml_document.createTextNode(informations()));
+	
 	QDomElement description = xml_document.createElement("description");
 	// description de l'element
 	foreach(QGraphicsItem *qgi, zItems(true)) {
@@ -887,6 +892,50 @@ void ElementScene::slot_editOrientations() {
 }
 
 /**
+	Lance un dialogue pour editer les informations complementaires de cet
+	element. Concretement, ce champ libre est destine a accueillir des informations
+	sur l'auteur de l'element, sa licence, etc.
+*/
+void ElementScene::slot_editAuthorInformations() {
+	
+	// cree un dialogue
+	QDialog dialog_author(element_editor);
+	dialog_author.setModal(true);
+#ifdef Q_WS_MAC
+	dialog_author.setWindowFlags(Qt::Sheet);
+#endif
+	dialog_author.setMinimumSize(400, 260);
+	dialog_author.setWindowTitle(tr("\311diter les informations sur l'auteur", "window title"));
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
+	
+	// ajoute un champ explicatif au dialogue
+	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l'\351l\351ment, sa licence, ou tout autre renseignement que vous jugerez utile."));
+	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	information_label -> setWordWrap(true);
+	dialog_layout -> addWidget(information_label);
+	
+	// ajoute un QTextEdit au dialogue
+	QTextEdit *text_field = new QTextEdit();
+	text_field -> setAcceptRichText(false);
+	text_field -> setPlainText(informations());
+	dialog_layout -> addWidget(text_field);
+	
+	// ajoute deux boutons au dialogue
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout -> addWidget(dialog_buttons);
+	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_author, SLOT(accept()));
+	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_author, SLOT(reject()));
+	
+	// lance le dialogue
+	if (dialog_author.exec() == QDialog::Accepted) {
+		QString new_infos = text_field -> toPlainText();
+		if (new_infos != informations()) {
+			undoStack().push(new ChangeInformationsCommand(this, informations(), new_infos));
+		}
+	}
+}
+
+/**
 	Lance un dialogue pour editer les noms de cet element
 */
 void ElementScene::slot_editNames() {
@@ -1043,7 +1092,7 @@ QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) {
 
 /**
 	Applique les informations (dimensions, hostpot, orientations, connexions
-	internes et noms) contenu dans un document XML.
+	internes, noms et informations complementaires) contenu dans un document XML.
 	@param xml_document Document XML a analyser
 	@param error_message pointeur vers une QString ; si error_message est
 	different de 0, un message d'erreur sera stocke dedans si necessaire
@@ -1091,6 +1140,17 @@ bool ElementScene::applyInformations(const QDomDocument &xml_document, QString *
 	
 	// extrait les noms de la definition XML
 	_names.fromXml(root);
+	
+	// extrait les informations complementaires
+	setInformations(QString());
+	for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+		QDomElement elmt = node.toElement();
+		if (elmt.isNull()) continue;
+		if (elmt.tagName() == "informations") {
+			setInformations(elmt.text());
+			break;
+		}
+	}
 	
 	return(true);
 }

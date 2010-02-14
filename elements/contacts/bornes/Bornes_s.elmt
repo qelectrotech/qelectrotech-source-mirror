@@ -7,6 +7,8 @@
         <name lang="cs" >Výstupní svorka</name>
         <name lang="pt" >Terminal de saída</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-1" x1="-4" y2="5" x2="0" y3="-1" x3="4" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5.5" x1="0" y2="20" x2="0" />

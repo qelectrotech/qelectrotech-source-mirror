@@ -7,6 +7,8 @@
         <name lang="cs" >Zásuvka</name>
         <name lang="pt" >Tomada</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26" />
         <circle x="-9" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6" />
