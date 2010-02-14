@@ -17,7 +17,7 @@ La collection d'éléments fournie avec QElectroTech est fournie telle quelle et
 sans la moindre garantie qu'elle convienne à votre utilisation ou qu'elle
 fonctionne.
 L'utilisation, la modification et l'intégration des éléments dans des schémas
-électriques est autorisée sans conditions, quelque soit la licence finale des
+électriques est autorisée sans condition, quelle que soit la licence finale des
 schémas.
 Si vous redistribuez tout ou partie de la collection QElectroTech, avec ou sans
 modification, en dehors d'un schéma électrique, vous devrez respecter les
@@ -28,13 +28,14 @@ courrier postal à Creative Commons, 171 Second Street, Suite 300, San Francisco
 California 94105, USA.
 
 [ru]
-Коллекция элементов, поставляемая вместе с QElectroTech, поставляется "как есть" и
-без каких-либо гарантий пригодности для той или иной цели или работы.
+Коллекция элементов, поставляемая вместе с QElectroTech, поставляется "как есть"
+и без каких-либо гарантий пригодности для той или иной цели или работы.
 Использование, изменение и интеграция элементов в электрическую 
 схему разрешается без каких-либо условий, безотносительно конечной лицензии на 
 схему.
-Если Вы распространяете всю или часть коллекции QElectroTech, с или без изменений,
-отдельно от электрической схемы, Вы должны соблюдать условия лицензии CC-BY:
+Если Вы распространяете всю или часть коллекции QElectroTech, с или без
+изменений, отдельно от электрической схемы, Вы должны соблюдать условия лицензии
+CC-BY:
 Эта работа лицензирована на условиях Creative Commons Attribution 3.0 License.
 Чтобы увидеть копию этой лицензии, посетите
 http://creativecommons.org/licenses/by/3.0/ или отправте письмо в Creative
@@ -42,12 +43,18 @@ Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
 (данный перевод, на русский язык, является вольным и выполнен не юристом!)
 
 [pt]
-A colecção de elementos fornecida com o programa QElectroTech é fornecida como é e sem nenhuma garantia da aptidão para o seu uso e sem garantia de que funciona.
-É permitido, sem condição alguma, qualquer que seja a licença final, usar, editar e incluir estes elementos em esquemas eléctricos.
-Se você redistribuir uma parte ou toda a colecção de elementos do programa QElectroTech, tendo editado ou não os elementos, sem ser num esquema eléctrico, tem de respeitar as condições da licença CC-BY:
-Este trabalho está licenciado de acordo com os termos da licença Creative Commons Attribution 3.0 License.
-Para ver uma cópia da licença visite http://creativecommons.org/licenses/by/3.0/ ou envie uma carta para o endereço Creative
-Commons, 171 Second Street, Suite 300, San Francisco, California, 94105, USA.
+A colecção de elementos fornecida com o programa QElectroTech é fornecida como é
+e sem nenhuma garantia da aptidão para o seu uso e sem garantia de que funciona.
+É permitido, sem condição alguma, qualquer que seja a licença final, usar,
+editar e incluir estes elementos em esquemas eléctricos.
+Se você redistribuir uma parte ou toda a colecção de elementos do programa
+QElectroTech, tendo editado ou não os elementos, sem ser num esquema eléctrico,
+tem de respeitar as condições da licença CC-BY:
+Este trabalho está licenciado de acordo com os termos da licença Creative
+Commons Attribution 3.0 License.
+Para ver uma cópia da licença visite http://creativecommons.org/licenses/by/3.0/
+ou envie uma carta para o endereço Creative Commons, 171 Second Street, Suite
+300, San Francisco, California, 94105, USA.
  
 [es]
 La colección de elementos QElectrotech es distruibida tal cual y sin ninguna
