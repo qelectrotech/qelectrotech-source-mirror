@@ -7,6 +7,8 @@
         <name lang="cs" >Zdroj napětí (nový)</name>
         <name lang="pt" >Fonte de tensão (novo)</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />
         <input x="12.75" y="3" size="9" text="_" />

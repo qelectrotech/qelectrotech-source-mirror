@@ -7,6 +7,8 @@
         <name lang="cs" >Jednodrátový převodník</name>
         <name lang="pt" >Transformador unifilar</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="20" y="17" size="5" text="___V" />
         <circle x="-5" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />

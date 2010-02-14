@@ -7,6 +7,8 @@
         <name lang="cs" >Svítící světlo</name>
         <name lang="pt" >Luz intermitente</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="12" y5="20" x5="12" y6="20" x6="14" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="5" y2="20" x2="7" y3="15" x3="7" y4="15" />
         <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20" />

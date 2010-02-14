@@ -5,6 +5,8 @@
         <name lang="cs" >Rozpojovač přepínání země</name>
         <name lang="pt" >Interruptor-seccionador de terra</name>
     </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="14" x2="1" />
         <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-2.5" y2="12" x2="2.5" />
