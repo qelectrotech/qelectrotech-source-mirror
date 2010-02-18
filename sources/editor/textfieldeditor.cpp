@@ -24,9 +24,10 @@
 	@param textfield Le champ de texte a editer
 	@param parent QWidget parent
 */
-TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfield, QWidget *parent) : ElementItemEditor(editor, parent) {
-	part = textfield;
-	
+TextFieldEditor::TextFieldEditor(QETElementEditor *editor, PartTextField *textfield, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(textfield)
+{
 	qle_x     = new QLineEdit();
 	qle_y     = new QLineEdit();
 	qle_text  = new QLineEdit();
@@ -72,9 +73,39 @@ TextFieldEditor::~TextFieldEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de texte dynamique acceptera d'editer la primitive new_part s'il
+	s'agit d'un objet de la classe PartTextField.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool TextFieldEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		return(true);
+	}
+	if (PartTextField *part_textfield = dynamic_cast<PartTextField *>(new_part)) {
+		part = part_textfield;
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *TextFieldEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour le champ de texte a partir des donnees du formulaire
 */
 void TextFieldEditor::updateTextField() {
+	if (!part) return;
 	part -> setProperty("size", font_size -> value());
 	part -> setPlainText(qle_text -> text());
 	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
@@ -96,6 +127,7 @@ void TextFieldEditor::updateTextFieldR() { addChangePartCommand(tr("propri\351t\
 	Met a jour le formulaire d'edition
 */
 void TextFieldEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	qle_x     -> setText(part -> property("x").toString());
 	qle_y     -> setText(part -> property("y").toString());

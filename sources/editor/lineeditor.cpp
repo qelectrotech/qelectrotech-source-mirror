@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "lineeditor.h"
+#include "styleeditor.h"
 #include "partline.h"
 #include "qet.h"
 #include "qeticons.h"
@@ -26,9 +27,11 @@
 	@param line La ligne a editer
 	@param parent le Widget parent
 */
-LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent) : ElementItemEditor(editor, parent) {
-	
-	part = line;
+LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(line)
+{
+	style_ = new StyleEditor(editor);
 	
 	x1 = new QLineEdit();
 	y1 = new QLineEdit();
@@ -78,6 +81,7 @@ LineEditor::LineEditor(QETElementEditor *editor, PartLine *line, QWidget *parent
 	grid2 -> addWidget(end2_length,             1, 2);
 	
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
+	v_layout -> addWidget(style_);
 	v_layout -> addLayout(grid);
 	v_layout -> addLayout(grid2);
 	updateForm();
@@ -88,9 +92,41 @@ LineEditor::~LineEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de ligne acceptera d'editer la primitive new_part s'il s'agit d'un
+	objet de la classe PartLine.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool LineEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		style_ -> setPart(0);
+		return(true);
+	}
+	if (PartLine *part_line = dynamic_cast<PartLine *>(new_part)) {
+		part = part_line;
+		style_ -> setPart(part);
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *LineEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour la ligne a partir des donnees du formulaire
 */
 void LineEditor::updateLine() {
+	if (!part) return;
 	part -> setFirstEndType(static_cast<QET::EndType>(end1_type -> currentIndex()));
 	part -> setFirstEndLength(end1_length -> text().toDouble());
 	part -> setSecondEndType(static_cast<QET::EndType>(end2_type -> currentIndex()));
@@ -130,6 +166,7 @@ void LineEditor::updateLineEndLength2() { addChangePartCommand(tr("longueur fin 
 	Met a jour le formulaire d'edition
 */
 void LineEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	QPointF p1(part -> sceneP1());
 	QPointF p2(part -> sceneP2());

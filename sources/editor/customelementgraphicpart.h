@@ -69,13 +69,10 @@ class CustomElementGraphicPart : public CustomElementPart {
 		_color(BlackColor),
 		_antialiased(false)
 	{
-		style_editor = new StyleEditor(elementEditor(), this);
 	};
 	
 	/// Destructeur
 	virtual ~CustomElementGraphicPart() {
-		if (style_editor -> parentWidget()) return; // l'editeur de style sera supprime par son parent
-		delete style_editor;
 	};
 	
 	// attributs
@@ -85,10 +82,6 @@ class CustomElementGraphicPart : public CustomElementPart {
 	Filling _filling ;
 	Color _color;
 	bool _antialiased;
-	
-	protected:
-	/// Widget d'edition des styles de cette partie graphique
-	StyleEditor *style_editor;
 	
 	//methodes
 	public:
@@ -104,7 +97,6 @@ class CustomElementGraphicPart : public CustomElementPart {
 	Color color() const;
 	bool antialiased() const;
 	
-	QWidget *elementInformations();
 	void setProperty(const QString &, const QVariant &);
 	QVariant property(const QString &);
 	

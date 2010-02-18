@@ -25,9 +25,10 @@
 	@param term La borne a editer
 	@param parent QWidget parent de ce widget
 */
-TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWidget *parent) : ElementItemEditor(editor, parent) {
-	part = term;
-	
+TerminalEditor::TerminalEditor(QETElementEditor *editor, PartTerminal *term, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(term)
+{
 	qle_x = new QLineEdit();
 	qle_y = new QLineEdit();
 	
@@ -66,9 +67,39 @@ TerminalEditor::~TerminalEditor() {
 };
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de borne acceptera d'editer la primitive new_part s'il s'agit d'un
+	objet de la classe PartTerminal.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool TerminalEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		return(true);
+	}
+	if (PartTerminal *part_terminal = dynamic_cast<PartTerminal *>(new_part)) {
+		part = part_terminal;
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *TerminalEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour la borne a partir des donnees du formulaire
 */
 void TerminalEditor::updateTerminal() {
+	if (!part) return;
 	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
 	part -> setOrientation(
 		static_cast<QET::Orientation>(
@@ -90,6 +121,7 @@ void TerminalEditor::updateTerminalO() { addChangePartCommand(tr("orientation"),
 	Met a jour le formulaire d'edition
 */
 void TerminalEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	qle_x -> setText(part -> property("x").toString());
 	qle_y -> setText(part -> property("y").toString());

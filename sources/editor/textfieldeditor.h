@@ -30,7 +30,7 @@ class TextFieldEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	TextFieldEditor(QETElementEditor *, PartTextField *, QWidget * = 0);
+	TextFieldEditor(QETElementEditor *, PartTextField * = 0, QWidget * = 0);
 	virtual ~TextFieldEditor();
 	private:
 	TextFieldEditor(const TextFieldEditor &);
@@ -43,6 +43,10 @@ class TextFieldEditor : public ElementItemEditor {
 	QCheckBox *rotate;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateTextField();
 	void updateTextFieldX();

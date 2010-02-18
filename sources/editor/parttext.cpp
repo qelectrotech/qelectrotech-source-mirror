@@ -38,14 +38,10 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
-	infos = new TextEditor(elementEditor(), this);
-	infos -> setElementTypeName(name());
 }
 
 /// Destructeur
 PartText::~PartText() {
-	if (infos -> parentWidget()) return; // le widget sera supprime par son parent
-	delete infos;
 }
 
 /**
@@ -77,13 +73,6 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
 	return(xml_element);
-}
-
-/**
-	@return Le widget permettant d'editer ce texte statique
-*/
-QWidget *PartText::elementInformations() {
-	return(infos);
 }
 
 /**
@@ -220,7 +209,7 @@ QVariant PartText::property(const QString &property) {
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			infos -> updateForm();
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsTextItem::itemChange(change, value));

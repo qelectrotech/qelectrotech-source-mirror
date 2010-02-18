@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "circleeditor.h"
+#include "styleeditor.h"
 #include "partcircle.h"
 
 /**
@@ -24,9 +25,11 @@
 	@param circle Le cercle a editer
 	@param parent le Widget parent
 */
-CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget *parent) : ElementItemEditor(editor, parent) {
-	
-	part = circle;
+CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(circle)
+{
+	style_ = new StyleEditor(editor);
 	
 	x = new QLineEdit();
 	y = new QLineEdit();
@@ -36,7 +39,9 @@ CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget
 	y -> setValidator(new QDoubleValidator(y));
 	r -> setValidator(new QDoubleValidator(r));
 	
-	QGridLayout *grid = new QGridLayout(this);
+	QVBoxLayout *v_layout = new QVBoxLayout(this);
+	
+	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Centre : ")),       0, 0);
 	grid -> addWidget(new QLabel("x"),                   1, 0);
 	grid -> addWidget(x,                                 1, 1);
@@ -44,6 +49,9 @@ CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget
 	grid -> addWidget(y,                                 1, 3);
 	grid -> addWidget(new QLabel(tr("Diam\350tre : ")),  2, 0);
 	grid -> addWidget(r,                                 2, 1);
+	
+	v_layout -> addWidget(style_);
+	v_layout -> addLayout(grid);
 	
 	activeConnections(true);
 	updateForm();
@@ -54,9 +62,41 @@ CircleEditor::~CircleEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de cercle acceptera d'editer la primitive new_part s'il s'agit
+	d'un objet de la classe PartCircle.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool CircleEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		style_ -> setPart(0);
+		return(true);
+	}
+	if (PartCircle *part_circle = dynamic_cast<PartCircle *>(new_part)) {
+		part = part_circle;
+		style_ -> setPart(part);
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *CircleEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	met a jour le cercle a partir des donnees du formulaire
 */
 void CircleEditor::updateCircle() {
+	if (!part) return;
 	part -> setProperty("x", x -> text().toDouble());
 	part -> setProperty("y", y -> text().toDouble());
 	part -> setProperty("diameter", r -> text().toDouble());
@@ -75,6 +115,7 @@ void CircleEditor::updateCircleD() { addChangePartCommand(tr("diam\350tre"), par
 	Met a jour le formulaire d'edition
 */
 void CircleEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
 	y -> setText(part -> property("y").toString());

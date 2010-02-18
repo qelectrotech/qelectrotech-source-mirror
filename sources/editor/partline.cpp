@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partline.h"
-#include "lineeditor.h"
 #include <cmath>
 
 /**
@@ -38,10 +37,6 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsSce
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new LineEditor(elementEditor(), this);
-	informations -> setElementTypeName(name());
-	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(name());
 }
 
 /// Destructeur
@@ -287,8 +282,8 @@ QVariant PartLine::property(const QString &property) {
 */
 QVariant PartLine::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			informations -> updateForm();
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsLineItem::itemChange(change, value));

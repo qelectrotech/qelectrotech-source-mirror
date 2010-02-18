@@ -19,7 +19,6 @@
 #define PART_RECTANGLE_H
 #include <QtGui>
 #include "customelementgraphicpart.h"
-class RectangleEditor;
 /**
 	Cette classe represente un rectangle pouvant etre utilise pour composer le
 	dessin d'un element dans l'editeur d'element.
@@ -33,10 +32,6 @@ class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart 
 	private:
 	PartRectangle(const PartRectangle &);
 	
-	// attributs
-	private:
-	RectangleEditor *informations;
-	
 	// methodes
 	public:
 	enum { Type = UserType + 1109 };
@@ -47,6 +42,7 @@ class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart 
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual QString name() const { return(QObject::tr("rectangle", "element part name")); }
+	virtual QString xmlName() const { return(QString("rect")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;

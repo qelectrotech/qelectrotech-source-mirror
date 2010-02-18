@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartCircle;
+class StyleEditor;
 /**
 	Cette classe represente un editeur de cercle.
 	Elle permet d'editer a travers une interface graphique les
@@ -29,7 +30,7 @@ class CircleEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	CircleEditor(QETElementEditor *, PartCircle *, QWidget * = 0);
+	CircleEditor(QETElementEditor *, PartCircle * = 0, QWidget * = 0);
 	virtual ~CircleEditor();
 	private:
 	CircleEditor(const CircleEditor &);
@@ -37,9 +38,14 @@ class CircleEditor : public ElementItemEditor {
 	// attributs
 	private:
 	PartCircle *part;
+	StyleEditor *style_;
 	QLineEdit *x, *y, *r;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateCircle();
 	void updateCircleX();

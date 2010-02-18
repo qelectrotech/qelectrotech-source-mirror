@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ellipseeditor.h"
+#include "styleeditor.h"
 #include "partellipse.h"
 
 /**
@@ -24,9 +25,11 @@
 	@param ellipse L'ellipse a editer
 	@param parent le Widget parent
 */
-EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWidget *parent) : ElementItemEditor(editor, parent) {
-	
-	part = ellipse;
+EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(ellipse)
+{
+	style_ = new StyleEditor(editor);
 	
 	x = new QLineEdit();
 	y = new QLineEdit();
@@ -38,7 +41,9 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	h -> setValidator(new QDoubleValidator(h));
 	v -> setValidator(new QDoubleValidator(v));
 	
-	QGridLayout *grid = new QGridLayout(this);
+	QVBoxLayout *v_layout = new QVBoxLayout(this);
+	
+	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Centre : ")),       0, 0);
 	grid -> addWidget(new QLabel("x"),                   1, 0);
 	grid -> addWidget(x,                                 1, 1);
@@ -50,6 +55,9 @@ EllipseEditor::EllipseEditor(QETElementEditor *editor, PartEllipse *ellipse, QWi
 	grid -> addWidget(new QLabel(tr("vertical :")),      4, 0);
 	grid -> addWidget(v,                                 4, 1);
 	
+	v_layout -> addWidget(style_);
+	v_layout -> addLayout(grid);
+	
 	activeConnections(true);
 	updateForm();
 }
@@ -59,9 +67,41 @@ EllipseEditor::~EllipseEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur d'ellipse acceptera d'editer la primitive new_part s'il s'agit
+	d'un objet de la classe PartEllipse.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool EllipseEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		style_ -> setPart(0);
+		return(true);
+	}
+	if (PartEllipse *part_ellipse = dynamic_cast<PartEllipse *>(new_part)) {
+		part = part_ellipse;
+		style_ -> setPart(part);
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *EllipseEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour l'ellipse a partir des donnees du formulaire
 */
 void EllipseEditor::updateEllipse() {
+	if (!part) return;
 	part -> setProperty("x", x -> text().toDouble());
 	part -> setProperty("y", y -> text().toDouble());
 	part -> setProperty("diameter_h", h -> text().toDouble());
@@ -81,6 +121,7 @@ void EllipseEditor::updateEllipseV() { addChangePartCommand(tr("diam\350tre vert
 	Met a jour le formulaire d'edition
 */
 void EllipseEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
 	y -> setText(part -> property("y").toString());

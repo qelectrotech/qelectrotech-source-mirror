@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partrectangle.h"
-#include "rectangleeditor.h"
 
 /**
 	Constructeur
@@ -30,10 +29,6 @@ PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent, QG
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new RectangleEditor(elementEditor(), this);
-	informations -> setElementTypeName(name());
-	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(name());
 }
 
 /// Destructeur
@@ -177,8 +172,8 @@ QVariant PartRectangle::property(const QString &property) {
 */
 QVariant PartRectangle::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			informations -> updateForm();
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsRectItem::itemChange(change, value));

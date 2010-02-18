@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "arceditor.h"
+#include "styleeditor.h"
 #include "partarc.h"
 
 /**
@@ -24,10 +25,11 @@
 	@param arc L'arc a editer
 	@param parent le Widget parent
 */
-ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : ElementItemEditor(editor, parent) {
-	
-	part = arc;
-	
+ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(arc)
+{
+	style_ = new StyleEditor(editor);
 	x = new QLineEdit();
 	y = new QLineEdit();
 	h = new QLineEdit();
@@ -42,7 +44,9 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : 
 	h -> setValidator(new QDoubleValidator(h));
 	v -> setValidator(new QDoubleValidator(v));
 	
-	QGridLayout *grid = new QGridLayout(this);
+	QVBoxLayout *v_layout = new QVBoxLayout(this);
+	
+	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Centre : ")),            0, 0);
 	grid -> addWidget(new QLabel("x"),                        1, 0);
 	grid -> addWidget(x,                                      1, 1);
@@ -57,6 +61,10 @@ ArcEditor::ArcEditor(QETElementEditor *editor, PartArc *arc, QWidget *parent) : 
 	grid -> addWidget(start_angle,                            5, 1);
 	grid -> addWidget(new QLabel(tr("Angle :")),              6, 0);
 	grid -> addWidget(angle,                                  6, 1);
+	
+	v_layout -> addWidget(style_);
+	v_layout -> addLayout(grid);
+	
 	updateForm();
 	
 	activeConnections(true);
@@ -67,15 +75,47 @@ ArcEditor::~ArcEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur d'arc acceptera d'editer la primitive new_part s'il s'agit d'un
+	objet de la classe PartArc.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool ArcEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		style_ -> setPart(0);
+		return(true);
+	}
+	if (PartArc *part_arc = dynamic_cast<PartArc *>(new_part)) {
+		part = part_arc;
+		style_ -> setPart(part);
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *ArcEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour l'arc a partir a partir des donnees du formulaire
 */
 void ArcEditor::updateArc() {
-	part -> setProperty("x",          x -> text().toDouble());
-	part -> setProperty("y",          y -> text().toDouble());
-	part -> setProperty("diameter_h", h -> text().toDouble());
-	part -> setProperty("diameter_v", v -> text().toDouble());
-	part -> setStartAngle(-start_angle -> value() + 90);
-	part -> setAngle(-angle -> value());
+	if (!part) return;
+	part -> setProperty("x",           x -> text().toDouble());
+	part -> setProperty("y",           y -> text().toDouble());
+	part -> setProperty("diameter_h",  h -> text().toDouble());
+	part -> setProperty("diameter_v",  v -> text().toDouble());
+	part -> setProperty("start_angle", -start_angle -> value() + 90);
+	part -> setProperty("angle",       -angle -> value());
 }
 
 /// Met a jour l'abscisse du centre de l'arc et cree un objet d'annulation
@@ -95,6 +135,7 @@ void ArcEditor::updateArcA() { addChangePartCommand(tr("angle"),                
 	Met a jour le formulaire d'edition
 */
 void ArcEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
 	y -> setText(part -> property("y").toString());

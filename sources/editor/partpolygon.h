@@ -19,7 +19,6 @@
 #define PART_POLYGON_H
 #include <QtGui>
 #include "customelementgraphicpart.h"
-class PolygonEditor;
 /**
 	Cette classe represente un polygone pouvant etre utilise pour composer le
 	dessin d'un element dans l'editeur d'element.
@@ -36,20 +35,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	// attributs
 	private:
 	bool closed;
-	PolygonEditor *informations;
 	
-	/**
-		constructeur
-		paint()
-		widget bidon pour l'edition
-		methode pour poser le polygone :
-			-mousePressEvent = pose un nouveau point
-			-mouseMoveEvent = deplace ce point
-			-mouveReleaseEvent = finalise ce point
-		utiliser QPolygonF ; memoriser le point en cours (tout comme le
-		partploygon en cours) et ne l'ajouter au qpolygonf que lors du
-		mouseReleaseEvent
-	*/
 	// methodes
 	public:
 	enum { Type = UserType + 1105 };
@@ -59,6 +45,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("polygone", "element part name")); }
+	virtual QString xmlName() const { return(QString("polygon")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
 	virtual QRectF boundingRect() const;

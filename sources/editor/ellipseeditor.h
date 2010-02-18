@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartEllipse;
+class StyleEditor;
 /**
 	Cette classe represente le widget d'edition d'une ellipse dans l'editeur
 	d'element.
@@ -28,17 +29,22 @@ class EllipseEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur
 	public:
-	EllipseEditor(QETElementEditor *, PartEllipse *, QWidget * = 0);
-	~EllipseEditor();
+	EllipseEditor(QETElementEditor *, PartEllipse * = 0, QWidget * = 0);
+	virtual ~EllipseEditor();
 	private:
 	EllipseEditor(const EllipseEditor &);
 	
 	// attributs
 	private:
 	PartEllipse *part;
+	StyleEditor *style_;
 	QLineEdit *x, *y, *h, *v;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateEllipse();
 	void updateEllipseX();

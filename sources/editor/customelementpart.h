@@ -59,8 +59,6 @@ class CustomElementPart {
 		Enregistre la partie dans un document XML
 	*/
 	virtual const QDomElement toXml(QDomDocument &) const = 0;
-	/// @return un widget suppose decrire et/ou permettre de modifier la partie
-	virtual QWidget *elementInformations() = 0;
 	/**
 		Permet de modifier une des proprietes de la partie
 	*/
@@ -77,11 +75,18 @@ class CustomElementPart {
 	virtual bool isUseless() const = 0;
 	/// @return un pointeur vers l'editeur d'element parent
 	virtual QETElementEditor *elementEditor() const;
+	/**
+		Appelle le slot updateCurrentPartEditor de l'editeur
+		@see QETElementEditor::updateCurrentPartEditor()
+	*/
+	virtual void updateCurrentPartEditor() const;
 	/// @return un pointeur vers la scene d'edition parente
 	virtual ElementScene *elementScene() const;
 	/// @return la pile d'annulations a utiliser
 	virtual QUndoStack &undoStack() const;
 	/// @return le nom de la partie
 	virtual QString name() const = 0;
+	/// @return le nom qui sera utilise pour nommer l'element XML lors de l'export
+	virtual QString xmlName() const = 0;
 };
 #endif

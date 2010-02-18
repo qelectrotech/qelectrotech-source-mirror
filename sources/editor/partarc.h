@@ -19,7 +19,6 @@
 #define PART_ARC_H
 #include <QtGui>
 #include "customelementgraphicpart.h"
-class ArcEditor;
 /**
 	Cette classe represente un arc pouvant etre utilise pour composer le
 	dessin d'un element dans l'editeur d'element.
@@ -35,7 +34,6 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	
 	// attributs
 	private:
-	ArcEditor *informations;
 	int _angle;
 	int start_angle;
 	
@@ -49,6 +47,7 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual QString name() const { return(QObject::tr("arc", "element part name")); }
+	virtual QString xmlName() const { return(QString("arc")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;

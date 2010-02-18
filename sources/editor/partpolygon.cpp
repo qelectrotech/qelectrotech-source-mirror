@@ -17,7 +17,6 @@
 */
 #include "partpolygon.h"
 #include "qet.h"
-#include "polygoneditor.h"
 
 /**
 	Constructeur
@@ -35,10 +34,6 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new PolygonEditor(elementEditor(), this);
-	informations -> setElementTypeName(name());
-	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(name());
 }
 
 /// Destructeur
@@ -142,8 +137,8 @@ QVariant PartPolygon::property(const QString &property) {
 */
 QVariant PartPolygon::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			informations -> updateForm();
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsPolygonItem::itemChange(change, value));

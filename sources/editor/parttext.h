@@ -33,9 +33,6 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	private:
 	PartText(const PartText &);
 	
-	// attributs
-	TextEditor *infos;
-	
 	// methodes
 	public:
 	enum { Type = UserType + 1107 };
@@ -45,9 +42,9 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("texte", "element part name")); }
+	virtual QString xmlName() const { return(QString("text")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
-	QWidget *elementInformations();
 	QPointF pos() const;
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);

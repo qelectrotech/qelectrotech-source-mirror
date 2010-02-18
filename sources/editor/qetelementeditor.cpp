@@ -28,6 +28,17 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 
+// editeurs de primitives
+#include "arceditor.h"
+#include "circleeditor.h"
+#include "ellipseeditor.h"
+#include "lineeditor.h"
+#include "polygoneditor.h"
+#include "rectangleeditor.h"
+#include "terminaleditor.h"
+#include "texteditor.h"
+#include "textfieldeditor.h"
+
 /**
 	Constructeur
 	@param parent QWidget parent
@@ -60,11 +71,14 @@ QETElementEditor::QETElementEditor(QWidget *parent) :
 /// Destructeur
 QETElementEditor::~QETElementEditor() {
 	/*
-		retire le widget d'edition de partie affiche par le dock
-		cela evite qu'il ne soit supprime avant que la partie a laquelle il est
-		rattache ne le supprime une fois de trop
+		retire le widget d'edition de primitives affiche par le dock
+		cela evite qu'il ne soit supprime par son widget parent
 	*/
 	clearToolsDock();
+	
+	// supprime les editeurs de primitives
+	qDeleteAll(editors_.begin(), editors_.end());
+	editors_.clear();
 }
 
 /**
@@ -314,7 +328,14 @@ void QETElementEditor::setupActions() {
 	connect(QApplication::clipboard(),  SIGNAL(dataChanged()),      this, SLOT(slot_updateMenus()));
 	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateMenus()));
 	connect(&(ce_scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(slot_updateTitle()));
+	
+	// Annuler ou refaire une action met a jour la liste des primitives ; cela sert notamment pour les
+	// ajouts et suppressions de primitives ainsi que pour les actions entrainant un change
 	connect(&(ce_scene -> undoStack()), SIGNAL(indexChanged(int)),  this, SLOT(slot_updatePartsList()));
+	
+	// Annuler ou refaire une action met a jour les informations affichees sur les primitives selectionnees,
+	// celles-ci etant potentiellement impactees
+	connect(&(ce_scene -> undoStack()), SIGNAL(indexChanged(int)),  this, SLOT(slot_updateInformations()));
 }
 
 /**
@@ -496,6 +517,17 @@ void QETElementEditor::setupInterface() {
 	tools_dock_stack_ -> insertWidget(0, default_informations);
 	tools_dock_stack_ -> insertWidget(1, tools_dock_scroll_area_);
 	
+	// widgets d'editions pour les parties
+	editors_["arc"]       = new ArcEditor(this);
+	editors_["circle"]    = new CircleEditor(this);
+	editors_["ellipse"]   = new EllipseEditor(this);
+	editors_["line"]      = new LineEditor(this);
+	editors_["polygon"]   = new PolygonEditor(this);
+	editors_["rect"]      = new RectangleEditor(this);
+	editors_["terminal"]  = new TerminalEditor(this);
+	editors_["text"]      = new TextEditor(this);
+	editors_["input"]     = new TextFieldEditor(this);
+	
 	// panel sur le cote pour editer les parties
 	tools_dock = new QDockWidget(tr("Informations", "dock title"), this);
 	tools_dock -> setObjectName("informations");
@@ -564,33 +596,37 @@ void QETElementEditor::slot_setNormalMode() {
 }
 
 /**
-	Met a jour la zone d'information et d'edition.
-	Si plusieurs parties sont selectionnees, seul leur nombre est affiche.
-	Sinon, le widget d'edition de la partie est insere.
-	@see CustomElementPart::elementInformations()
+	Met a jour la zone d'information et d'edition des primitives.
+	Si plusieurs primitives sont selectionnees, seule leur quantite est
+	affichee. Sinon, un widget d'edition approprie est mis en place.
 */
 void QETElementEditor::slot_updateInformations() {
 	QList<QGraphicsItem *> selected_qgis = ce_scene -> selectedItems();
-	QList<CustomElementPart *> selected_parts;
-	foreach(QGraphicsItem *qgi, selected_qgis) {
-		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
-			selected_parts.append(cep);
-		}
-	}
 	
 	clearToolsDock();
 	
-	if (selected_parts.size() == 1) {
-		// recupere le premier CustomElementPart et en ajoute le widget d'edition
-		QWidget *edit_widget = selected_parts.first() -> elementInformations();
-		tools_dock_scroll_area_ -> setWidget(edit_widget);
-		tools_dock_stack_ -> setCurrentIndex(1);
+	// s'il n'y a qu'une seule primitive selectionnee
+	if (selected_qgis.size() == 1) {
+		QGraphicsItem *qgi = selected_qgis.first();
+		if (CustomElementPart *selection = dynamic_cast<CustomElementPart *>(qgi)) {
+			// on en ajoute le widget d'edition
+			QString selection_xml_name = selection -> xmlName();
+			ElementItemEditor *selection_editor = editors_[selection_xml_name];
+			if (selection_editor) {
+				if (selection_editor -> setPart(selection)) {
+					tools_dock_scroll_area_ -> setWidget(selection_editor);
+					tools_dock_stack_ -> setCurrentIndex(1);
+				} else {
+					qDebug() << "Editor refused part.";
+				}
+			}
+		}
 	} else {
 		default_informations -> setText(
 			tr(
 				"%n partie(s) s\351lectionn\351e(s).",
 				"",
-				selected_parts.size()
+				selected_qgis.size()
 			)
 		);
 		default_informations -> setAlignment(Qt::AlignHCenter | Qt::AlignTop);
@@ -1325,4 +1361,18 @@ void QETElementEditor::pasteFromElement() {
 	document_xml.appendChild(node);
 	
 	copyAndPasteXml(document_xml);
+}
+
+/**
+	Met a jour l'editeur de primitive actuellement visible.
+	Si aucun editeur de primitive n'est visible, ce slot ne fait rien.
+*/
+void QETElementEditor::updateCurrentPartEditor() {
+	// si aucun widget d'edition n'est affiche, on ne fait rien
+	if (!tools_dock_stack_ -> currentIndex()) return;
+	
+	// s'il y a un widget d'edition affiche, on le met a jour
+	if (ElementItemEditor *current_editor = dynamic_cast<ElementItemEditor *>(tools_dock_scroll_area_ -> widget())) {
+		current_editor -> updateForm();
+	}
 }

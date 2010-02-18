@@ -24,7 +24,10 @@
 	@param p La partie a editer
 	@param parent le Widget parent
 */
-StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, QWidget *parent) : ElementItemEditor(editor, parent), part(p) {
+StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(p)
+{
 	// couleur
 	color = new QButtonGroup(this);
 	color -> addButton(black_color = new QRadioButton(tr("Noir", "element part color")),  CustomElementGraphicPart::BlackColor);
@@ -34,7 +37,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	style = new QButtonGroup(this);
 	style -> addButton(normal_style = new QRadioButton(tr("Normal", "element part line style")),       CustomElementGraphicPart::NormalStyle);
 	style -> addButton(dashed_style = new QRadioButton(tr("Pointill\351", "element part line style")), CustomElementGraphicPart::DashedStyle);
-	style -> button(part -> lineStyle()) -> setChecked(true);
+	normal_style -> setChecked(true);
 	
 	// epaisseur
 	weight = new QButtonGroup(this);
@@ -102,6 +105,7 @@ StyleEditor::~StyleEditor() {
 	Met a jour le style de la partie a partir des donnees du formulaire
 */
 void StyleEditor::updatePart() {
+	if (!part) return;
 	// applique l'antialiasing
 	part -> setAntialiased(antialiasing -> isChecked());
 	
@@ -133,6 +137,7 @@ void StyleEditor::updatePartFilling()        { addChangePartCommand("style rempl
 	Met a jour le formulaire d'edition
 */
 void StyleEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	// lit l'antialiasing
 	antialiasing -> setChecked(part -> antialiased());
@@ -152,11 +157,32 @@ void StyleEditor::updateForm() {
 }
 
 /**
-	Ajoute un widget en bas de l'editeur de style
-	@param w Widget a inserer
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de ligne acceptera d'editer la primitive new_part s'il s'agit d'un
+	objet de la classe CustomElementGraphicPart.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
 */
-void StyleEditor::appendWidget(QWidget *w) {
-	main_layout -> insertWidget(7, w);
+bool StyleEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		return(true);
+	}
+	if (CustomElementGraphicPart *part_graphic = dynamic_cast<CustomElementGraphicPart *>(new_part)) {
+		part = part_graphic;
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *StyleEditor::currentPart() const {
+	return(part);
 }
 
 /**

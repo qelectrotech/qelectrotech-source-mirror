@@ -44,6 +44,10 @@ class ElementItemEditor : public QWidget {
 	virtual void addChangePartCommand(const QString &, CustomElementPart *, const QString &, const QVariant &);
 	virtual QString elementTypeName() const;
 	virtual void setElementTypeName(const QString &);
+	virtual void detach();
+	virtual bool setPart(CustomElementPart *) = 0;
+	virtual CustomElementPart *currentPart() const = 0;
+	virtual void updateForm() = 0;
 	
 	// attributs
 	private:

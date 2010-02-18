@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partarc.h"
-#include "arceditor.h"
 
 /**
 	Constructeur
@@ -35,10 +34,6 @@ PartArc::PartArc(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new ArcEditor(elementEditor(), this);
-	informations -> setElementTypeName(name());
-	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(name());
 }
 
 /// Destructeur
@@ -209,8 +204,8 @@ QVariant PartArc::property(const QString &property) {
 */
 QVariant PartArc::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			informations -> updateForm();
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsEllipseItem::itemChange(change, value));

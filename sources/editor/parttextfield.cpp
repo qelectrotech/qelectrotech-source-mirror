@@ -38,14 +38,10 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setPlainText(QObject::tr("_", "default text when adding a textfield in the element editor"));
-	infos = new TextFieldEditor(elementEditor(), this);
-	infos -> setElementTypeName(name());
 }
 
 /// Destructeur
 PartTextField::~PartTextField() {
-	if (infos -> parentWidget()) return; // le widget sera supprime par son parent
-	delete infos;
 }
 
 /**
@@ -80,13 +76,6 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("size", font().pointSize());
 	if (follow_parent_rotations) xml_element.setAttribute("rotate", "true");
 	return(xml_element);
-}
-
-/**
-	@return Le widget permettant d'editer ce champ de texte
-*/
-QWidget *PartTextField::elementInformations() {
-	return(infos);
 }
 
 /**
@@ -245,7 +234,7 @@ QVariant PartTextField::property(const QString &property) {
 QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
 		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			infos -> updateForm();
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsTextItem::itemChange(change, value));

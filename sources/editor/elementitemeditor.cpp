@@ -47,15 +47,23 @@ QUndoStack &ElementItemEditor::undoStack() const {
 
 /**
 	Ajoute une ChangePartCommand a l'UndoStack. L'ancienne valeur sera
-	automatiquement recuperee.
+	automatiquement recuperee. A noter que cette methode ne fait rien si
+	l'ancienne valeur et la nouvelle sont egales ou encore si part vaut 0
 	@param desc   nom de la propriete modifiee
 	@param part   partie modifiee
 	@param prop   propriete modifiee
 	@param new_v  nouvelle valeur
 */
 void ElementItemEditor::addChangePartCommand(const QString &desc, CustomElementPart *part, const QString &prop, const QVariant &new_v) {
+	// ne fait rien si part vaut 0
+	if (!part) return;
+	
+	// recupere l'ancienne valeur
 	QVariant old_v = part -> property(prop);
+	
+	// ne fait rien si l'ancienne valeur et la nouvelle sont egales 
 	if (old_v == new_v) return;
+	
 	undoStack().push(
 		new ChangePartCommand(
 			desc + " " + element_type_name,
@@ -75,4 +83,13 @@ QString ElementItemEditor::elementTypeName() const {
 /// @param name Nom du type d'element edite
 void ElementItemEditor::setElementTypeName(const QString &name) {
 	element_type_name = name;
+}
+
+/**
+	Detache l'editeur de la primitive qu'il edite.
+	Equivaut a setPart(0)
+	@see setPart
+*/
+void ElementItemEditor::detach() {
+	setPart(0);
 }
