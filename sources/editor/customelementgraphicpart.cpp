@@ -83,9 +83,6 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 	
 	// recupere l'antialiasing
 	_antialiased = qde.attribute("antialias") == "true";
-	
-	// met a jour l'editeur de style
-	style_editor -> updateForm();
 }
 
 /**
@@ -143,13 +140,6 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 }
 
 /**
-	@return Le widget permettant d'editer les styles
-*/
-QWidget *CustomElementGraphicPart::elementInformations() {
-	return(style_editor);
-}
-
-/**
 	Specifie la valeur d'une propriete de style donnee.
 	@param property propriete a modifier. Valeurs acceptees :
 		* line-style : type de trait (@see LineStyle)
@@ -176,9 +166,6 @@ void CustomElementGraphicPart::setProperty(const QString &property, const QVaria
 	} else if (property == "antialias") {
 		setAntialiased(value.toBool());
 		change_made = true;
-	}
-	if (change_made) {
-		style_editor -> updateForm();
 	}
 }
 

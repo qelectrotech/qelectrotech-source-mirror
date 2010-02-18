@@ -24,9 +24,10 @@
 	@param text Champ de texte a editer
 	@param parent QWidget parent de ce widget
 */
-TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent) : ElementItemEditor(editor, parent) {
-	part = text;
-	
+TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(text)
+{
 	qle_x     = new QLineEdit();
 	qle_y     = new QLineEdit();
 	qle_text  = new QLineEdit();
@@ -68,9 +69,39 @@ TextEditor::~TextEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de texte statique acceptera d'editer la primitive new_part s'il
+	s'agit d'un objet de la classe PartText.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool TextEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		return(true);
+	}
+	if (PartText *part_text = dynamic_cast<PartText *>(new_part)) {
+		part = part_text;
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *TextEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour le champ de texte a partir des donnees du formulaire
 */
 void TextEditor::updateText() {
+	if (!part) return;
 	part -> setProperty("size", font_size -> value());
 	part -> setPlainText(qle_text -> text());
 	part -> setPos(qle_x -> text().toDouble(), qle_y -> text().toDouble());
@@ -89,6 +120,7 @@ void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "
 	Met a jour le formulaire a partir du champ de texte
 */
 void TextEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	qle_x     -> setText(part -> property("x").toString());
 	qle_y     -> setText(part -> property("y").toString());

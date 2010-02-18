@@ -31,7 +31,7 @@ class TextFieldEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	TextFieldEditor(QETElementEditor *, PartTextField *, QWidget * = 0);
+	TextFieldEditor(QETElementEditor *, PartTextField * = 0, QWidget * = 0);
 	virtual ~TextFieldEditor();
 	private:
 	TextFieldEditor(const TextFieldEditor &);
@@ -45,6 +45,10 @@ class TextFieldEditor : public ElementItemEditor {
 	QTextOrientationSpinBoxWidget *rotation_angle_;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateTextField();
 	void updateTextFieldX();

@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartRectangle;
+class StyleEditor;
 /**
 	Cette classe represente le widget d'edition d'un rectangle dans l'editeur
 	d'element.
@@ -28,17 +29,22 @@ class RectangleEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur
 	public:
-	RectangleEditor(QETElementEditor *, PartRectangle *, QWidget * = 0);
-	~RectangleEditor();
+	RectangleEditor(QETElementEditor *, PartRectangle * = 0, QWidget * = 0);
+	virtual ~RectangleEditor();
 	private:
 	RectangleEditor(const RectangleEditor &);
 	
 	// attributs
 	private:
 	PartRectangle *part;
+	StyleEditor *style_;
 	QLineEdit *x, *y, *w, *h;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateRectangle();
 	void updateRectangleX();

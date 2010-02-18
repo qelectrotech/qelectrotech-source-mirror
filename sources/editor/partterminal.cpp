@@ -17,7 +17,6 @@
 */
 #include "partterminal.h"
 #include "terminal.h"
-#include "terminaleditor.h"
 
 /**
 	Constructeur
@@ -30,8 +29,6 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGra
 	QGraphicsItem(parent, scene),
 	_orientation(QET::North)
 {
-	informations = new TerminalEditor(elementEditor(), this);
-	informations -> setElementTypeName(name());
 	updateSecondPoint();
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
@@ -42,9 +39,7 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGra
 
 /// Destructeur
 PartTerminal::~PartTerminal() {
-	if (informations -> parentWidget()) return; // le widget sera supprime par son parent
-	delete informations;
-};
+}
 
 /**
 	Importe les proprietes d'une borne depuis un element XML
@@ -78,13 +73,6 @@ const QDomElement PartTerminal::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("orientation", orientationToString(_orientation));
 	
 	return(xml_element);
-}
-
-/**
-	@return Le widget permettant d'editer cette borne
-*/
-QWidget *PartTerminal::elementInformations() {
-	return(informations);
 }
 
 /**
@@ -152,7 +140,6 @@ void PartTerminal::setOrientation(QET::Orientation ori) {
 	prepareGeometryChange();
 	_orientation = ori;
 	updateSecondPoint();
-	informations -> updateForm();
 }
 
 /**
@@ -202,8 +189,8 @@ QVariant PartTerminal::property(const QString &property) {
 */
 QVariant PartTerminal::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			informations -> updateForm();
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsItem::itemChange(change, value));

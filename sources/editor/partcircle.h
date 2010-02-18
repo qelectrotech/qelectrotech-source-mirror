@@ -19,7 +19,6 @@
 #define PART_CIRCLE_H
 #include <QtGui>
 #include "customelementgraphicpart.h"
-class CircleEditor;
 /**
 	Cette classe represente un cercle pouvant etre utilise pour composer le
 	dessin d'un element dans l'editeur d'element.
@@ -33,10 +32,6 @@ class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart 
 	private:
 	PartCircle(const PartCircle &);
 	
-	// attributs
-	private:
-	CircleEditor *informations;
-	
 	// methodes
 	public:
 	enum { Type = UserType + 1102 };
@@ -47,6 +42,7 @@ class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart 
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual QString name() const { return(QObject::tr("cercle", "element part name")); }
+	virtual QString xmlName() const { return(QString("circle")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneTopLeft() const;

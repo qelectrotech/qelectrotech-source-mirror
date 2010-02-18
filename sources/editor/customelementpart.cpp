@@ -24,6 +24,16 @@ QETElementEditor *CustomElementPart::elementEditor() const {
 	return(element_editor);
 }
 
+/**
+	Appelle le slot updateCurrentPartEditor de l'editeur
+	@see QETElementEditor::updateCurrentPartEditor()
+*/
+void CustomElementPart::updateCurrentPartEditor() const {
+	if (element_editor) {
+		element_editor -> updateCurrentPartEditor();
+	}
+}
+
 /// @return l'ElementScene contenant les parties editees par cet editeur
 ElementScene *CustomElementPart::elementScene() const {
 	return(element_editor -> elementScene());

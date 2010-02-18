@@ -41,14 +41,10 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
-	infos = new TextEditor(elementEditor(), this);
-	infos -> setElementTypeName(name());
 }
 
 /// Destructeur
 PartText::~PartText() {
-	if (infos -> parentWidget()) return; // le widget sera supprime par son parent
-	delete infos;
 }
 
 /**
@@ -81,13 +77,6 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
 	return(xml_element);
-}
-
-/**
-	@return Le widget permettant d'editer ce texte statique
-*/
-QWidget *PartText::elementInformations() {
-	return(infos);
 }
 
 /**
@@ -238,10 +227,10 @@ QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) 
 		// memorise la nouvelle position "officielle" du champ de texte
 		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
 		known_position_ = pos();
-		infos -> updateForm();
+		updateCurrentPartEditor();
 	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
 		if (value.toBool() == true) {
-			infos -> updateForm();
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsTextItem::itemChange(change, value));

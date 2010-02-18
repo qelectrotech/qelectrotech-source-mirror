@@ -16,7 +16,6 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "partellipse.h"
-#include "ellipseeditor.h"
 
 /**
 	Constructeur
@@ -30,10 +29,6 @@ PartEllipse::PartEllipse(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setAcceptedMouseButtons(Qt::LeftButton);
-	informations = new EllipseEditor(elementEditor(), this);
-	informations -> setElementTypeName(name());
-	style_editor -> appendWidget(informations);
-	style_editor -> setElementTypeName(name());
 }
 
 /// Destructeur
@@ -170,8 +165,8 @@ QVariant PartEllipse::property(const QString &property) {
 */
 QVariant PartEllipse::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
-			informations -> updateForm();
+		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemPositionHasChanged) {
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsEllipseItem::itemChange(change, value));

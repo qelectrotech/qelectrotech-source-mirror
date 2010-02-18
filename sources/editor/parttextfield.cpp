@@ -39,8 +39,6 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setPlainText(QObject::tr("_", "default text when adding a textfield in the element editor"));
-	infos = new TextFieldEditor(elementEditor(), this);
-	infos -> setElementTypeName(name());
 	
 	// ajuste la position du champ de texte lorsqu'on lui ajoute/retire des lignes
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
@@ -48,8 +46,6 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 
 /// Destructeur
 PartTextField::~PartTextField() {
-	if (infos -> parentWidget()) return; // le widget sera supprime par son parent
-	delete infos;
 }
 
 /**
@@ -98,13 +94,6 @@ const QDomElement PartTextField::toXml(QDomDocument &xml_document) const {
 		xml_element.setAttribute("rotate", "true");
 	}
 	return(xml_element);
-}
-
-/**
-	@return Le widget permettant d'editer ce champ de texte
-*/
-QWidget *PartTextField::elementInformations() {
-	return(infos);
 }
 
 /**
@@ -293,10 +282,10 @@ QVariant PartTextField::itemChange(GraphicsItemChange change, const QVariant &va
 		// memorise la nouvelle position "officielle" du champ de texte
 		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
 		known_position_ = pos();
-		infos -> updateForm();
+		updateCurrentPartEditor();
 	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
 		if (value.toBool() == true) {
-			infos -> updateForm();
+			updateCurrentPartEditor();
 		}
 	}
 	return(QGraphicsTextItem::itemChange(change, value));

@@ -22,6 +22,7 @@
 #include "elementscene.h"
 #include "orientationset.h"
 #include "elementslocation.h"
+class ElementItemEditor;
 class ElementView;
 /**
 	Cette classe represente un editeur d'element. Elle permet a l'utilisateur
@@ -54,6 +55,8 @@ class QETElementEditor : public QMainWindow {
 	QStackedWidget *tools_dock_stack_;
 	/// label affiche lors de la selection de plusieurs elements
 	QLabel *default_informations;
+	/// Hash permettant d'acceder aux widgets d'editions disponibles
+	QHash<QString, ElementItemEditor *> editors_;
 	/// ScrollArea pour le DockWidget affichant des infos sur la partie selectionnee
 	QScrollArea *tools_dock_scroll_area_;
 	/// container pour la liste des annulations
@@ -156,6 +159,7 @@ class QETElementEditor : public QMainWindow {
 	bool checkElement();
 	void pasteFromFile();
 	void pasteFromElement();
+	void updateCurrentPartEditor();
 };
 
 /**

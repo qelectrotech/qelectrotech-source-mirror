@@ -29,7 +29,7 @@ class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	TerminalEditor(QETElementEditor *, PartTerminal *, QWidget * = 0);
+	TerminalEditor(QETElementEditor *, PartTerminal * = 0, QWidget * = 0);
 	virtual ~TerminalEditor();
 	private:
 	TerminalEditor(const TerminalEditor &);
@@ -41,6 +41,10 @@ class TerminalEditor : public ElementItemEditor {
 	QComboBox *orientation;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateTerminal();
 	void updateTerminalX();

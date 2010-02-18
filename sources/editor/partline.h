@@ -20,7 +20,6 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 #include "qet.h"
-class LineEditor;
 /**
 	Cette classe represente une ligne pouvant etre utilisee pour composer le
 	dessin d'un element dans l'editeur d'element.
@@ -43,7 +42,6 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	
 	// attributs
 	private:
-	LineEditor *informations;
 	QET::EndType first_end;
 	qreal first_length;
 	QET::EndType second_end;
@@ -60,6 +58,7 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);
 	virtual QString name() const { return(QObject::tr("ligne", "element part name")); }
+	virtual QString xmlName() const { return(QString("line")); }
 	virtual const QDomElement toXml(QDomDocument &) const;
 	virtual void fromXml(const QDomElement &);
 	virtual QPointF sceneP1() const;

@@ -29,7 +29,7 @@ class TextEditor : public ElementItemEditor {
 	Q_OBJECT
 	// Constructeurs, destructeur
 	public:
-	TextEditor(QETElementEditor *, PartText *, QWidget * = 0);
+	TextEditor(QETElementEditor *, PartText * = 0, QWidget * = 0);
 	virtual ~TextEditor();
 	private:
 	TextEditor(const TextEditor &);
@@ -41,6 +41,10 @@ class TextEditor : public ElementItemEditor {
 	QSpinBox *font_size;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateText();
 	void updateTextX();

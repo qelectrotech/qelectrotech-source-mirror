@@ -20,8 +20,6 @@
 #include "customelementpart.h"
 #include "qet.h"
 #include <QtGui>
-class TerminalEditor;
-class QETElementEditor;
 /**
 	Cette classe represente une borne pouvant etre utilisee pour composer le
 	dessin d'un element dans l'editeur d'element.
@@ -38,7 +36,6 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	private:
 	QET::Orientation _orientation;
 	QPointF second_point;
-	TerminalEditor *informations;
 	
 	// methodes
 	public:
@@ -49,9 +46,9 @@ class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("borne", "element part name")); }
+	virtual QString xmlName() const { return(QString("terminal")); }
 	virtual void fromXml(const QDomElement &);
 	virtual const QDomElement toXml(QDomDocument &) const;
-	virtual QWidget *elementInformations();
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual QRectF boundingRect() const;
 	QET::Orientation orientation() const;

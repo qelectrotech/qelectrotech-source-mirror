@@ -24,9 +24,11 @@
 	@param rect Le rectangle a editer
 	@param parent le Widget parent
 */
-RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, QWidget *parent) : ElementItemEditor(editor, parent) {
-	
-	part = rect;
+RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, QWidget *parent) :
+	ElementItemEditor(editor, parent),
+	part(rect)
+{
+	style_ = new StyleEditor(editor);
 	
 	x = new QLineEdit();
 	y = new QLineEdit();
@@ -38,7 +40,9 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 	w -> setValidator(new QDoubleValidator(w));
 	h -> setValidator(new QDoubleValidator(h));
 	
-	QGridLayout *grid = new QGridLayout(this);
+	QVBoxLayout *v_layout = new QVBoxLayout(this);
+	
+	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Coin sup\351rieur gauche\240: ")), 0, 0);
 	grid -> addWidget(new QLabel("x"),                                  1, 0);
 	grid -> addWidget(x,                                                1, 1);
@@ -50,6 +54,9 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 	grid -> addWidget(new QLabel(tr("Hauteur\240:")),                   4, 0);
 	grid -> addWidget(h,                                                4, 1);
 	
+	v_layout -> addWidget(style_);
+	v_layout -> addLayout(grid);
+	
 	activeConnections(true);
 	updateForm();
 }
@@ -59,9 +66,41 @@ RectangleEditor::~RectangleEditor() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de rectangle acceptera d'editer la primitive new_part s'il s'agit
+	d'un objet de la classe PartRectangle.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool RectangleEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		style_ -> setPart(0);
+		return(true);
+	}
+	if (PartRectangle *part_rectangle = dynamic_cast<PartRectangle *>(new_part)) {
+		part = part_rectangle;
+		style_ -> setPart(part);
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *RectangleEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	Met a jour le rectangle a partir des donnees du formulaire
 */
 void RectangleEditor::updateRectangle() {
+	if (!part) return;
 	part -> setProperty("x",      x -> text().toDouble());
 	part -> setProperty("y",      y -> text().toDouble());
 	part -> setProperty("width",  w -> text().toDouble());
@@ -81,6 +120,7 @@ void RectangleEditor::updateRectangleH() { addChangePartCommand(tr("hauteur"),  
 	Met a jour le formulaire d'edition
 */
 void RectangleEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	x -> setText(part -> property("x").toString());
 	y -> setText(part -> property("y").toString());

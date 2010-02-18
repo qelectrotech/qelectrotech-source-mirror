@@ -30,7 +30,7 @@ class StyleEditor : public ElementItemEditor {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
-	StyleEditor(QETElementEditor *, CustomElementGraphicPart *, QWidget * = 0);
+	StyleEditor(QETElementEditor *, CustomElementGraphicPart * = 0, QWidget * = 0);
 	virtual ~StyleEditor();
 	
 	private:
@@ -46,9 +46,10 @@ class StyleEditor : public ElementItemEditor {
 	QRadioButton *black_filling, *white_filling;
 	QCheckBox *antialiasing;
 	
-	//methodes
+	// methodes
 	public:
-	void appendWidget(QWidget *w);
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
 	
 	public slots:
 	void updatePart();

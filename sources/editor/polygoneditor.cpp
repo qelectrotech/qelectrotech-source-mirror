@@ -29,10 +29,12 @@
 */
 PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *parent) :
 	ElementItemEditor(editor, parent),
+	part(p),
 	points_list(this),
 	close_polygon(tr("Polygone ferm\351"), this)
 {
-	part = p;
+	style_ = new StyleEditor(editor);
+	
 	// prepare la liste de points
 	points_list.setColumnCount(2);
 	QStringList headers;
@@ -43,6 +45,7 @@ PolygonEditor::PolygonEditor(QETElementEditor *editor, PartPolygon *p, QWidget *
 	
 	// layout
 	QVBoxLayout *layout = new QVBoxLayout(this);
+	layout -> addWidget(style_);
 	layout -> addWidget(new QLabel(tr("Points du polygone :")));
 	layout -> addWidget(&points_list);
 	layout -> addWidget(&close_polygon);
@@ -66,6 +69,7 @@ void PolygonEditor::updatePolygon() {
 	Met a jour les points du polygone et cree un objet d'annulation
 */
 void PolygonEditor::updatePolygonPoints() {
+	if (!part) return;
 	QVector<QPointF> points = getPointsFromTree();
 	if (points.count() < 2) {
 		QET::MessageBox::warning(
@@ -82,6 +86,7 @@ void PolygonEditor::updatePolygonPoints() {
 	Met a jour l'etat ferme ou non du polygone
 */
 void PolygonEditor::updatePolygonClosedState() {
+	if (!part) return;
 	undoStack().push(
 		new ChangePartCommand(
 			tr("fermeture du polygone"),
@@ -97,6 +102,7 @@ void PolygonEditor::updatePolygonClosedState() {
 	Met a jour le formulaire d'edition
 */
 void PolygonEditor::updateForm() {
+	if (!part) return;
 	activeConnections(false);
 	while(points_list.takeTopLevelItem(0)) {}
 	foreach(QPointF point, part -> polygon()) {
@@ -112,10 +118,42 @@ void PolygonEditor::updateForm() {
 }
 
 /**
+	Permet de specifier a cet editeur quelle primitive il doit editer. A noter
+	qu'un editeur peut accepter ou refuser d'editer une primitive.
+	L'editeur de polygone acceptera d'editer la primitive new_part s'il s'agit
+	d'un objet de la classe PartPolygon.
+	@param new_part Nouvelle primitive a editer
+	@return true si l'editeur a accepter d'editer la primitive, false sinon
+*/
+bool PolygonEditor::setPart(CustomElementPart *new_part) {
+	if (!new_part) {
+		part = 0;
+		style_ -> setPart(0);
+		return(true);
+	}
+	if (PartPolygon *part_polygon = dynamic_cast<PartPolygon *>(new_part)) {
+		part = part_polygon;
+		style_ -> setPart(part);
+		updateForm();
+		return(true);
+	} else {
+		return(false);
+	}
+}
+
+/**
+	@return la primitive actuellement editee, ou 0 si ce widget n'en edite pas
+*/
+CustomElementPart *PolygonEditor::currentPart() const {
+	return(part);
+}
+
+/**
 	@return Un vecteur contenant les points composant le polygone a partir du
 	formulaire d'edition
 */
 QVector<QPointF> PolygonEditor::getPointsFromTree() {
+	if (!part) return(QVector<QPointF>());
 	QVector<QPointF> points;
 	for(int i = 0 ; i < points_list.topLevelItemCount() ; ++ i) {
 		QTreeWidgetItem *qtwi = points_list.topLevelItem(i);

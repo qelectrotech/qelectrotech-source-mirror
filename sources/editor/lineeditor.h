@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartLine;
+class StyleEditor;
 /**
 	Cette classe represente le widget d'edition d'une ligne dans l'editeur
 	d'element.
@@ -28,19 +29,24 @@ class LineEditor : public ElementItemEditor {
 	Q_OBJECT
 	//constructeurs, destructeur
 	public:
-	LineEditor(QETElementEditor *, PartLine *, QWidget * = 0);
-	~LineEditor();
+	LineEditor(QETElementEditor *, PartLine * = 0, QWidget * = 0);
+	virtual ~LineEditor();
 	private:
 	LineEditor(const LineEditor &);
 	
 	// attributs
 	private:
 	PartLine *part;
+	StyleEditor *style_;
 	QLineEdit *x1, *y1, *x2, *y2;
 	QComboBox *end1_type, *end2_type;
 	QLineEdit *end1_length, *end2_length;
 	
 	// methodes
+	public:
+	virtual bool setPart(CustomElementPart *);
+	virtual CustomElementPart *currentPart() const;
+	
 	public slots:
 	void updateLine();
 	void updateLineX1();
