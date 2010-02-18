@@ -43,7 +43,7 @@ CircleEditor::CircleEditor(QETElementEditor *editor, PartCircle *circle, QWidget
 	
 	QGridLayout *grid = new QGridLayout();
 	grid -> addWidget(new QLabel(tr("Centre : ")),       0, 0);
-	grid -> addWidget(new QLabel("x"),                   1, 0);
+	grid -> addWidget(new QLabel("x"),                   1, 0, Qt::AlignRight);
 	grid -> addWidget(x,                                 1, 1);
 	grid -> addWidget(new QLabel("y"),                   1, 2);
 	grid -> addWidget(y,                                 1, 3);

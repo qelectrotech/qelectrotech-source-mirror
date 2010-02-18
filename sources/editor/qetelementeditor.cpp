@@ -511,6 +511,8 @@ void QETElementEditor::setupInterface() {
 	
 	// ScrollArea pour accueillir un widget d'edition (change a la volee)
 	tools_dock_scroll_area_ = new QScrollArea();
+	tools_dock_scroll_area_ -> setFrameStyle(QFrame::NoFrame);
+	tools_dock_scroll_area_ -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 	
 	// Pile de widgets pour accueillir les deux widgets precedents
 	tools_dock_stack_ = new QStackedWidget();
