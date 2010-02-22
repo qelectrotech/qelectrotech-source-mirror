@@ -45,6 +45,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	qgi_manager(this),
 	element_editor(editor)
 {
+	setItemIndexMethod(NoIndex);
 	current_polygon = NULL;
 	setGrid(1, 1);
 	initPasteArea();
@@ -391,7 +392,6 @@ void ElementScene::keyPressEvent(QKeyEvent *e) {
 			case Qt::Key_Down:  movement = QPointF(0.0, +movement_length); break;
 		}
 		if (!movement.isNull() && !focusItem()) {
-			qDebug() << "keyPressEvent: let's move by " << movement;
 			if (!moving_parts_) {
 				moving_parts_ = true;
 				fsi_pos = movement;
@@ -759,6 +759,7 @@ void ElementScene::paste() {
 */
 void ElementScene::slot_select(const ElementContent &content) {
 	blockSignals(true);
+	clearSelection();
 	foreach(QGraphicsItem *qgi, content) qgi -> setSelected(true);
 	blockSignals(false);
 	emit(selectionChanged());
@@ -775,7 +776,7 @@ void ElementScene::slot_selectAll() {
 	Deselectionne tout
 */
 void ElementScene::slot_deselectAll() {
-	clearSelection();
+	slot_select(ElementContent());
 }
 
 /**
