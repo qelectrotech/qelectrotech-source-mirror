@@ -759,12 +759,12 @@
         <location filename="../sources/editor/elementscene.cpp" line="910"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar informações sobre o autor</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="914"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pode utilizar este campo em branco para indicar os autores do elemento, a licença do mesmo, ou qualquer outra informação que considere útil.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="956"/>
@@ -1468,7 +1468,7 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cada elemento contém, num campo aberto, informação sobre os seus autores, a sua licença ou demais informação que considerem útil. Pode definir o valor padrão deste campo para os itens que criar:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -3446,7 +3446,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="120"/>
         <source>Éditer les informations sur l&apos;auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar as informações sobre o autor</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="137"/>
@@ -3494,7 +3494,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="192"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="284"/>
@@ -3702,7 +3702,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1147"/>
         <source>Trop de primitives, liste non générée.</source>
-        <translation type="unfinished"></translation>
+        <translation>Demasiados objectos, lista não gerada.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1253"/>
@@ -3831,12 +3831,12 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Tout cocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccionar todos</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <source>Tout décocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarcar todos</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4235,7 +4235,7 @@ Opções disponiveis:
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificar informações complementares</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="49"/>
