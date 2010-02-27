@@ -44,7 +44,9 @@
 	<file>ico/16x16/endline-triangle.png</file>
 	<file>ico/16x16/folder-new.png</file>
 	<file>ico/16x16/folder.png</file>
+	<file>ico/16x16/go-down.png</file>
 	<file>ico/16x16/go-home.png</file>
+	<file>ico/16x16/go-up.png</file>
 	<file>ico/16x16/ground.png</file>
 	<file>ico/16x16/item_cancel.png</file>
 	<file>ico/16x16/item_copy.png</file>
@@ -118,7 +120,9 @@
 	<file>ico/22x22/folder-delete.png</file>
 	<file>ico/22x22/folder-edit.png</file>
 	<file>ico/22x22/folder-new.png</file>
+	<file>ico/22x22/go-down.png</file>
 	<file>ico/22x22/go-home.png</file>
+	<file>ico/22x22/go-up.png</file>
 	<file>ico/22x22/hotspot.png</file>
 	<file>ico/22x22/landscape.png</file>
 	<file>ico/22x22/line.png</file>

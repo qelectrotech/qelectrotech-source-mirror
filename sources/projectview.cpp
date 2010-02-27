@@ -491,6 +491,48 @@ void ProjectView::editDiagramProperties(Diagram *diagram) {
 }
 
 /**
+	Deplace le schema diagram_view vers le haut / la gauche
+*/
+void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+	
+	int diagram_view_position = diagram_ids_.key(diagram_view);
+	if (!diagram_view_position) {
+		// le schema est le premier du projet
+		return;
+	}
+	tabs_ -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 1);
+}
+
+/**
+	Deplace le schema diagram vers le haut / la gauche
+*/
+void ProjectView::moveDiagramUp(Diagram *diagram) {
+	moveDiagramUp(findDiagram(diagram));
+}
+
+/**
+	Deplace le schema diagram_view vers le bas / la droite
+*/
+void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+	
+	int diagram_view_position = diagram_ids_.key(diagram_view);
+	if (diagram_view_position + 1 == diagram_ids_.count()) {
+		// le schema est le dernier du projet
+		return;
+	}
+	tabs_ -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 1);
+}
+
+/**
+	Deplace le schema diagram vers le bas / la droite
+*/
+void ProjectView::moveDiagramDown(Diagram *diagram) {
+	moveDiagramDown(findDiagram(diagram));
+}
+
+/**
 	Ce slot demarre un dialogue permettant a l'utilisateur de parametrer et de
 	lancer l'impression de toute ou partie du projet.
 */

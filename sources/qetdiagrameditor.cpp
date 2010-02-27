@@ -67,11 +67,13 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	connect(&(pa -> elementsPanel()), SIGNAL(requestForDiagram(Diagram *)),    this, SLOT(activateDiagram(Diagram *)));
 	connect(&(pa -> elementsPanel()), SIGNAL(requestForProject(QETProject *)), this, SLOT(activateProject(QETProject *)));
 	
-	connect(pa, SIGNAL(requestForProjectClosing(QETProject *)), this, SLOT(closeProject(QETProject *)));
+	connect(pa, SIGNAL(requestForProjectClosing(QETProject *)),           this, SLOT(closeProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition(QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition(Diagram *)),    this, SLOT(editDiagramProperties(Diagram *)));
-	connect(pa, SIGNAL(requestForNewDiagram(QETProject *)),     this, SLOT(addDiagramToProject(QETProject *)));
-	connect(pa, SIGNAL(requestForDiagramDeletion(Diagram *)),   this, SLOT(removeDiagram(Diagram *)));
+	connect(pa, SIGNAL(requestForNewDiagram(QETProject *)),               this, SLOT(addDiagramToProject(QETProject *)));
+	connect(pa, SIGNAL(requestForDiagramDeletion(Diagram *)),             this, SLOT(removeDiagram(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramMoveUp(Diagram *)),               this, SLOT(moveDiagramUp(Diagram *)));
+	connect(pa, SIGNAL(requestForDiagramMoveDown(Diagram *)),             this, SLOT(moveDiagramDown(Diagram *)));
 	
 	qdw_undo = new QDockWidget(tr("Annulations", "dock title"));
 	qdw_undo -> setObjectName("diagram_undo");
@@ -1602,6 +1604,44 @@ void QETDiagramEditor::removeDiagram(Diagram *diagram) {
 			
 			// supprime le schema
 			project_view -> removeDiagram(diagram);
+		}
+	}
+}
+
+/**
+	Change l'ordre des schemas d'un projet, en decalant le schema vers le haut /
+	la gauche
+	@param diagram Schema a decaler vers le haut / la gauche
+*/
+void QETDiagramEditor::moveDiagramUp(Diagram *diagram) {
+	if (!diagram) return;
+	
+	// recupere le projet contenant le schema
+	if (QETProject *diagram_project = diagram -> project()) {
+		if (diagram_project -> isReadOnly()) return;
+		
+		// recupere la vue sur ce projet
+		if (ProjectView *project_view = findProject(diagram_project)) {
+			project_view -> moveDiagramUp(diagram);
+		}
+	}
+}
+
+/**
+	Change l'ordre des schemas d'un projet, en decalant le schema vers le bas /
+	la droite
+	@param diagram Schema a decaler vers le bas / la droite
+*/
+void QETDiagramEditor::moveDiagramDown(Diagram *diagram) {
+	if (!diagram) return;
+	
+	// recupere le projet contenant le schema
+	if (QETProject *diagram_project = diagram -> project()) {
+		if (diagram_project -> isReadOnly()) return;
+		
+		// recupere la vue sur ce projet
+		if (ProjectView *project_view = findProject(diagram_project)) {
+			project_view -> moveDiagramDown(diagram);
 		}
 	}
 }

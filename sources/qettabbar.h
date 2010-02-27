@@ -45,6 +45,7 @@ class QETTabBar : public QTabBar {
 	bool isMovable() const;
 	bool isVertical() const;
 	bool isHorizontal() const;
+	void moveTab(int, int);
 	
 	protected:
 	virtual void tabInserted(int);
@@ -65,7 +66,6 @@ class QETTabBar : public QTabBar {
 	
 	private:
 	bool mustMoveTab(int, int, const QPoint &) const;
-	void moveTab(int, int);
 	int tabForPressedPosition(const QPoint &);
 	int tabForMovedPosition(const QPoint &);
 	bool posMatchesTabRect(const QRect &, const QPoint &) const;

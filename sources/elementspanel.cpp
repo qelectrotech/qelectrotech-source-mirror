@@ -913,8 +913,12 @@ void ElementsPanel::diagramOrderChanged(QETProject *project, int from, int to) {
 	if (!moved_qtwi_diagram) return;
 	
 	// enleve le QTWI et le reinsere au bon endroit
+	bool was_selected = moved_qtwi_diagram -> isSelected();
 	qtwi_project -> removeChild(moved_qtwi_diagram);
 	qtwi_project -> insertChild(to, moved_qtwi_diagram);
+	if (was_selected) {
+		setCurrentItem(moved_qtwi_diagram);
+	}
 }
 
 /**
