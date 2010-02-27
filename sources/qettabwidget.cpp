@@ -66,8 +66,8 @@ bool QETTabWidget::isMovable() const {
 #endif
 }
 
-QTabBar *QETTabWidget::tabBar() const {
-	return(QTabWidget::tabBar());
+QETTabBar *QETTabWidget::tabBar() const {
+	return(tab_bar_);
 }
 
 /**

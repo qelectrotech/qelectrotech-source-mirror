@@ -30,6 +30,7 @@
 #include "conductorpropertieswidget.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "qettabbar.h"
 
 /**
 	Constructeur

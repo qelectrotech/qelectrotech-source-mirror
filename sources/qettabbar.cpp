@@ -253,6 +253,7 @@ bool QETTabBar::mustMoveTab(int src_tab, int dst_tab, const QPoint &pos) const {
 	@param dst_tab Index de l'onglet de destination
 */
 void QETTabBar::moveTab(int src_tab, int dst_tab) {
+#if QT_VERSION < 0x040500
 	// sauvegarde les caracteristiques de l'onglet deplace
 	QIcon    old_tab_icon      = tabIcon(src_tab);
 	QVariant old_tab_data      = tabData(src_tab);
@@ -283,6 +284,9 @@ void QETTabBar::moveTab(int src_tab, int dst_tab) {
 	
 	// signale le deplacement de l'onglet
 	emit(tabMoved(src_tab, dst_tab));
+#else
+	QTabBar::moveTab(src_tab, dst_tab);
+#endif
 }
 
 /**
