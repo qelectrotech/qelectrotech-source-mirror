@@ -399,6 +399,8 @@ void ProjectView::showDiagram(Diagram *diagram) {
 void ProjectView::editProjectProperties() {
 	if (!project_) return;
 	
+	bool project_is_read_only = project_ -> isReadOnly();
+	
 	// dialogue d'edition des proprietes du projet
 	QDialog properties_dialog(parentWidget());
 #ifdef Q_WS_MAC
@@ -412,22 +414,26 @@ void ProjectView::editProjectProperties() {
 	// titre du projet
 	QLabel *title_label = new QLabel(tr("Titre du projet :"));
 	QLineEdit *title_field = new QLineEdit(project_ -> title());
+	title_field -> setReadOnly(project_is_read_only);
 	
 	// proprietes des nouveaux schemas
 	QLabel *new_diagrams_prop = new QLabel(tr("Propri\351t\351s \340 utiliser lors de l'ajout d'un nouveau sch\351ma au projet :"));
 	
 	// dimensions par defaut d'un schema
 	BorderPropertiesWidget *bpw = new BorderPropertiesWidget(project_ -> defaultBorderProperties());
+	bpw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut d'un cartouche
 	InsetPropertiesWidget *ipw = new InsetPropertiesWidget(project_ -> defaultInsetProperties(), true);
+	ipw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut des conducteurs
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(project_ -> defaultConductorProperties());
 	cpw -> setContentsMargins(0, 0, 0, 0);
+	cpw -> setReadOnly(project_is_read_only);
 	
 	// boutons pour valider le dialogue
-	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *buttons = new QDialogButtonBox(project_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	connect(buttons, SIGNAL(accepted()), &properties_dialog, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), &properties_dialog, SLOT(reject()));
@@ -460,7 +466,7 @@ void ProjectView::editProjectProperties() {
 	vert_layout -> addWidget(buttons);
 	
 	// si le dialogue est accepte
-	if (properties_dialog.exec() == QDialog::Accepted && !project_ -> isReadOnly()) {
+	if (properties_dialog.exec() == QDialog::Accepted && !project_is_read_only) {
 		project_ -> setTitle(title_field -> text());
 		project_ -> setDefaultBorderProperties(bpw -> borderProperties());
 		project_ -> setDefaultInsetProperties(ipw -> insetProperties());

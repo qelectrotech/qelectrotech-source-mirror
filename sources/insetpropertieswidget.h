@@ -37,6 +37,8 @@ class InsetPropertiesWidget : public QWidget {
 	InsetProperties insetProperties() const;
 	void setInsetProperties(const InsetProperties &);
 	bool displayCurrentDate() const;
+	bool isReadOnly() const;
+	void setReadOnly(bool);
 	
 	// attributs
 	private:

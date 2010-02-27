@@ -153,3 +153,24 @@ void InsetPropertiesWidget::setInsetProperties(const InsetProperties &inset) {
 bool InsetPropertiesWidget::displayCurrentDate() const {
 	return(display_current_date);
 }
+
+/**
+	@return true si ce widget est en lecture seule, false sinon
+*/
+bool InsetPropertiesWidget::isReadOnly() const {
+	return(inset_title -> isReadOnly());
+}
+
+/**
+	@param ro true pour passer ce widget en lecture seule, false sinon
+*/
+void InsetPropertiesWidget::setReadOnly(bool ro) {
+	inset_title        -> setReadOnly(ro);
+	inset_author       -> setReadOnly(ro);
+	inset_date         -> setReadOnly(ro);
+	inset_filename     -> setReadOnly(ro);
+	inset_folio        -> setReadOnly(ro);
+	inset_no_date      -> setDisabled(ro);
+	inset_current_date -> setDisabled(ro);
+	inset_fixed_date   -> setDisabled(ro);
+}

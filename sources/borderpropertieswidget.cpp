@@ -40,7 +40,7 @@ BorderPropertiesWidget::~BorderPropertiesWidget() {
 }
 
 /**
-	@return the border properties edited and modified by
+	@return Les proprietes editees par ce widget
 */
 const BorderProperties &BorderPropertiesWidget::borderProperties() {
 	border_.columns_count   = columns_count   -> value();
@@ -50,6 +50,25 @@ const BorderProperties &BorderPropertiesWidget::borderProperties() {
 	border_.rows_height     = rows_height     -> value();
 	border_.display_rows    = display_rows    -> isChecked();
 	return(border_);
+}
+
+/**
+	@return true si ce widget est en lecture seule, false sinon
+*/
+bool BorderPropertiesWidget::isReadOnly() const {
+	return(columns_count -> isReadOnly());
+}
+
+/**
+	@param ro true pour passer ce widget en lecture seule, false sinon
+*/
+void BorderPropertiesWidget::setReadOnly(bool ro) {
+	columns_count   -> setReadOnly(ro);
+	columns_width   -> setReadOnly(ro);
+	display_columns -> setDisabled(ro);
+	rows_count      -> setReadOnly(ro);
+	rows_height     -> setReadOnly(ro);
+	display_rows    -> setDisabled(ro);
 }
 
 /**

@@ -572,9 +572,9 @@ void QETDiagramEditor::toolbar() {
 	view_bar -> addAction(zoom_reset);
 	
 	diagram_bar -> addAction(infos_diagram);
-	diagram_bar -> addAction(add_text);
 	diagram_bar -> addAction(conductor_default);
 	diagram_bar -> addAction(conductor_reset);
+	diagram_bar -> addAction(add_text);
 	
 	// ajout de la barre d'outils a la fenetre principale
 	addToolBar(Qt::TopToolBarArea, main_bar);
@@ -1084,10 +1084,10 @@ void QETDiagramEditor::slot_updateActions() {
 	
 	// actions ayant juste besoin d'un document ouvert
 	close_file        -> setEnabled(opened_project);
-	save_file         -> setEnabled(opened_project && editable_project);
+	save_file         -> setEnabled(editable_project);
 	save_file_sous    -> setEnabled(opened_project);
-	save_all          -> setEnabled(opened_diagram && editable_diagram);
-	prj_edit_prop     -> setEnabled(editable_project);
+	save_all          -> setEnabled(editable_diagram);
+	prj_edit_prop     -> setEnabled(opened_project);
 	prj_add_diagram   -> setEnabled(editable_project);
 	prj_del_diagram   -> setEnabled(editable_project);
 	prj_clean         -> setEnabled(editable_project);
@@ -1101,8 +1101,8 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_out          -> setEnabled(opened_diagram);
 	zoom_fit          -> setEnabled(opened_diagram);
 	zoom_reset        -> setEnabled(opened_diagram);
-	conductor_default -> setEnabled(editable_diagram);
-	infos_diagram     -> setEnabled(editable_diagram);
+	conductor_default -> setEnabled(opened_diagram);
+	infos_diagram     -> setEnabled(opened_diagram);
 	add_text          -> setEnabled(editable_diagram);
 	add_column        -> setEnabled(editable_diagram);
 	remove_column     -> setEnabled(editable_diagram);
