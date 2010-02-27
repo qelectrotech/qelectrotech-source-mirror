@@ -103,8 +103,8 @@ void ProjectView::setProject(QETProject *project) {
 	if (!project_) {
 		project_ = project;
 		connect(project_, SIGNAL(projectTitleChanged(QETProject *, const QString &)), this, SLOT(updateWindowTitle()));
-		connect(project_, SIGNAL(readOnlyChanged    (QETProject *, bool)),            this, SLOT(updateWindowTitle()));
-		updateWindowTitle();
+		connect(project_, SIGNAL(readOnlyChanged    (QETProject *, bool)),            this, SLOT(adjustReadOnlyState()));
+		adjustReadOnlyState();
 		loadDiagrams();
 	}
 }
@@ -745,6 +745,18 @@ void ProjectView::updateWindowTitle() {
 		title = tr("Projet", "window title for a project-less ProjectView");
 	}
 	setWindowTitle(title);
+}
+
+/**
+	Effectue les actions necessaires lorsque le projet visualise entre ou sort
+	du mode lecture seule.
+*/
+void ProjectView::adjustReadOnlyState() {
+	// on empeche l'utilisateur de deplacer les onglets
+	tabs_ -> setMovable(!(project_ -> isReadOnly()));
+	
+	// on met a jour le titre du widget, qui reflete l'etat de lecture seule
+	updateWindowTitle();
 }
 
 /**

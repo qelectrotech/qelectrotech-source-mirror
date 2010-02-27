@@ -93,6 +93,7 @@ class ProjectView : public QWidget {
 	void firstTabInserted();
 	void lastTabRemoved();
 	void setDisplayFallbackWidget(bool);
+	void adjustReadOnlyState();
 	
 	// attributs
 	private:
