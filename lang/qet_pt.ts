@@ -1138,12 +1138,12 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Subir o esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Abaisser ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Descer o esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="330"/>
