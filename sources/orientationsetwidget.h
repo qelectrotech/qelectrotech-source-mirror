@@ -49,6 +49,8 @@ class OrientationSetWidget : public QWidget {
 	public:
 	OrientationSet orientationSet() const;
 	void setOrientationSet(const OrientationSet &);
+	bool isReadOnly() const;
+	void setReadOnly(bool);
 	
 	private:
 	void updateForm();

@@ -446,10 +446,6 @@ void QETElementEditor::slot_updateMenus() {
 	inv_select      -> setEnabled(!read_only);
 	paste_from_file -> setEnabled(!read_only);
 	paste_from_elmt -> setEnabled(!read_only);
-	edit_size_hs    -> setEnabled(!read_only);
-	edit_names      -> setEnabled(!read_only);
-	edit_ori        -> setEnabled(!read_only);
-	edit_author     -> setEnabled(!read_only);
 	parts_list      -> setEnabled(!read_only);
 	
 	// actions dependant de la presence de parties selectionnees

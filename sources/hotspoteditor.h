@@ -70,6 +70,8 @@ class HotspotEditor : public QWidget {
 	bool partsRectEnabled();
 	bool mustTranslateParts() const;
 	QPoint offsetParts() const;
+	bool isReadOnly() const;
+	void setReadOnly(bool);
 	
 	public slots:
 	void updateScene();
