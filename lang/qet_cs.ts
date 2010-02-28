@@ -753,12 +753,12 @@
         <location filename="../sources/editor/elementscene.cpp" line="910"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravit údaje o autorovi</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="914"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto pole můžete použít volně, abyste zmínil autory prvku, jeho licenci, nebo jakékoli další sdělení, které byste považoval za užitečné.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="956"/>
@@ -1132,12 +1132,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Vynést tento nákres nahoru</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Abaisser ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Spustit tento nákres dolů</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="330"/>
@@ -1472,7 +1472,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished"></translation>
+        <translation>Každý prvek obsahuje údaje o svých autorech, své licenci nebo jakékoli další sdělení, které byste považoval za užitečné ve volném poli. Zde můžete zadat výchozí hodnotu tohoto pole pro prvky, které vytvoříte:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -3452,7 +3452,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="120"/>
         <source>Éditer les informations sur l&apos;auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit údaje o autorovi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="137"/>
@@ -3500,7 +3500,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="192"/>
         <source>Ctrl+Y</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="284"/>
@@ -3709,7 +3709,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1147"/>
         <source>Trop de primitives, liste non générée.</source>
-        <translation type="unfinished"></translation>
+        <translation>Příliš jednoduché. Seznam nebyl vytvořen.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1253"/>
@@ -3838,12 +3838,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Tout cocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Zatrhnout vše</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <source>Tout décocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Zrušit zatrhnutí u všeho</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4242,7 +4242,7 @@ Dostupné volby:
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Úprava doplňkových údajů</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="49"/>
