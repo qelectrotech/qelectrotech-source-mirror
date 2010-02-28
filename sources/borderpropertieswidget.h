@@ -39,6 +39,8 @@ class BorderPropertiesWidget : public QWidget {
 	// methodes
 	public:
 	const BorderProperties &borderProperties();
+	bool isReadOnly() const;
+	void setReadOnly(bool);
 	
 	private:
 	void setEditedBorder(const BorderProperties &);

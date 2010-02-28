@@ -45,6 +45,7 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	qgi_manager(this),
 	element_editor(editor)
 {
+	setItemIndexMethod(NoIndex);
 	current_polygon = NULL;
 	setGrid(1, 1);
 	initPasteArea();
@@ -758,6 +759,7 @@ void ElementScene::paste() {
 */
 void ElementScene::slot_select(const ElementContent &content) {
 	blockSignals(true);
+	clearSelection();
 	foreach(QGraphicsItem *qgi, content) qgi -> setSelected(true);
 	blockSignals(false);
 	emit(selectionChanged());
@@ -774,7 +776,7 @@ void ElementScene::slot_selectAll() {
 	Deselectionne tout
 */
 void ElementScene::slot_deselectAll() {
-	clearSelection();
+	slot_select(ElementContent());
 }
 
 /**
@@ -805,6 +807,8 @@ void ElementScene::slot_delete() {
 	(hotspot) de l'element.
 */
 void ElementScene::slot_editSizeHotSpot() {
+	bool is_read_only = element_editor && element_editor -> isReadOnly();
+	
 	// cree un dialogue
 	QDialog dialog_sh(element_editor);
 	dialog_sh.setModal(true);
@@ -822,23 +826,25 @@ void ElementScene::slot_editSizeHotSpot() {
 	hotspot_editor -> setOldHotspot(hotspot());
 	hotspot_editor -> setPartsRect(itemsBoundingRect());
 	hotspot_editor -> setPartsRectEnabled(true);
+	hotspot_editor -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(hotspot_editor);
 	
 	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
 	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_sh, SLOT(accept()));
 	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_sh, SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog_sh.exec() != QDialog::Accepted) return;
-	QSize new_size(hotspot_editor -> elementSize());
-	QSize old_size(width(), height());
-	QPoint new_hotspot(hotspot_editor -> hotspot());
-	QPoint old_hotspot(_hotspot);
-	
-	if (new_size != old_size || new_hotspot != old_hotspot) {
-		undo_stack.push(new ChangeHotspotCommand(this, old_size, new_size, old_hotspot, new_hotspot, hotspot_editor -> offsetParts()));
+	if (dialog_sh.exec() == QDialog::Accepted && is_read_only) {
+		QSize new_size(hotspot_editor -> elementSize());
+		QSize old_size(width(), height());
+		QPoint new_hotspot(hotspot_editor -> hotspot());
+		QPoint old_hotspot(_hotspot);
+		
+		if (new_size != old_size || new_hotspot != old_hotspot) {
+			undo_stack.push(new ChangeHotspotCommand(this, old_size, new_size, old_hotspot, new_hotspot, hotspot_editor -> offsetParts()));
+		}
 	}
 }
 
@@ -846,6 +852,7 @@ void ElementScene::slot_editSizeHotSpot() {
 	Lance un dialogue pour editer les noms de cete element
 */
 void ElementScene::slot_editOrientations() {
+	bool is_read_only = element_editor && element_editor -> isReadOnly();
 	
 	// cree un dialogue
 	QDialog dialog_ori(element_editor);
@@ -866,21 +873,23 @@ void ElementScene::slot_editOrientations() {
 	// ajoute un OrientationSetWidget au dialogue
 	OrientationSetWidget *ori_widget = new OrientationSetWidget();
 	ori_widget -> setOrientationSet(ori);
+	ori_widget -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(ori_widget);
 	
 	// ajoute une case a cocher pour les connexions internes
 	QCheckBox *ic_checkbox = new QCheckBox(tr("Autoriser les connexions internes"));
 	ic_checkbox -> setChecked(internal_connections);
+	ic_checkbox -> setDisabled(is_read_only);
 	dialog_layout -> addWidget(ic_checkbox);
 	dialog_layout -> addStretch();
 	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
 	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_ori, SLOT(accept()));
 	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_ori, SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog_ori.exec() == QDialog::Accepted) {
+	if (dialog_ori.exec() == QDialog::Accepted && !is_read_only) {
 		OrientationSet new_ori = ori_widget -> orientationSet();
 		if (new_ori != ori) {
 			undoStack().push(new ChangeOrientationsCommand(this, ori, new_ori));
@@ -897,6 +906,7 @@ void ElementScene::slot_editOrientations() {
 	sur l'auteur de l'element, sa licence, etc.
 */
 void ElementScene::slot_editAuthorInformations() {
+	bool is_read_only = element_editor && element_editor -> isReadOnly();
 	
 	// cree un dialogue
 	QDialog dialog_author(element_editor);
@@ -918,16 +928,17 @@ void ElementScene::slot_editAuthorInformations() {
 	QTextEdit *text_field = new QTextEdit();
 	text_field -> setAcceptRichText(false);
 	text_field -> setPlainText(informations());
+	text_field -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(text_field);
 	
 	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
 	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_author, SLOT(accept()));
 	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_author, SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog_author.exec() == QDialog::Accepted) {
+	if (dialog_author.exec() == QDialog::Accepted && !is_read_only) {
 		QString new_infos = text_field -> toPlainText();
 		if (new_infos != informations()) {
 			undoStack().push(new ChangeInformationsCommand(this, informations(), new_infos));
@@ -939,6 +950,7 @@ void ElementScene::slot_editAuthorInformations() {
 	Lance un dialogue pour editer les noms de cet element
 */
 void ElementScene::slot_editNames() {
+	bool is_read_only = element_editor && element_editor -> isReadOnly();
 	
 	// cree un dialogue
 	QDialog dialog(element_editor);
@@ -959,17 +971,18 @@ void ElementScene::slot_editNames() {
 	// ajoute un NamesListWidget au dialogue
 	NamesListWidget *names_widget = new NamesListWidget();
 	names_widget -> setNames(_names);
+	names_widget -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(names_widget);
 	
 	// ajoute deux boutons au dialogue
-	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	dialog_layout -> addWidget(dialog_buttons);
 	connect(dialog_buttons, SIGNAL(accepted()),     names_widget, SLOT(check()));
 	connect(names_widget,   SIGNAL(inputChecked()), &dialog,      SLOT(accept()));
 	connect(dialog_buttons, SIGNAL(rejected()),     &dialog,      SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog.exec() == QDialog::Accepted) {
+	if (dialog.exec() == QDialog::Accepted && !is_read_only) {
 		NamesList new_names(names_widget -> names());
 		if (new_names != _names) undoStack().push(new ChangeNamesCommand(this, _names, new_names));
 	}

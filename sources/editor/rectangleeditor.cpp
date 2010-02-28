@@ -43,12 +43,12 @@ RectangleEditor::RectangleEditor(QETElementEditor *editor, PartRectangle *rect, 
 	QVBoxLayout *v_layout = new QVBoxLayout(this);
 	
 	QGridLayout *grid = new QGridLayout();
-	grid -> addWidget(new QLabel(tr("Coin sup\351rieur gauche\240: ")), 0, 0);
-	grid -> addWidget(new QLabel("x"),                                  1, 0);
+	grid -> addWidget(new QLabel(tr("Coin sup\351rieur gauche\240: ")), 0, 0, 1, 4);
+	grid -> addWidget(new QLabel("x"),                                  1, 0, Qt::AlignRight);
 	grid -> addWidget(x,                                                1, 1);
 	grid -> addWidget(new QLabel("y"),                                  1, 2);
 	grid -> addWidget(y,                                                1, 3);
-	grid -> addWidget(new QLabel(tr("Dimensions\240: ")),               2, 0);
+	grid -> addWidget(new QLabel(tr("Dimensions\240: ")),               2, 0, 1, 4);
 	grid -> addWidget(new QLabel(tr("Largeur\240:")),                   3, 0);
 	grid -> addWidget(w,                                                3, 1);
 	grid -> addWidget(new QLabel(tr("Hauteur\240:")),                   4, 0);

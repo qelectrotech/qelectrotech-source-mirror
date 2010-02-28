@@ -35,6 +35,18 @@
 */
 #define ENABLE_PANEL_DND_CHECKS
 
+/*
+	Largeur maximale, en pixels, de la pixmap accrochee au pointeur de la
+	souris
+*/
+#define QET_MAX_DND_PIXMAP_WIDTH 500
+
+/*
+	Hauteur maximale, en pixels, de la pixmap accrochee au pointeur de la
+	souris
+*/
+#define QET_MAX_DND_PIXMAP_HEIGHT 375
+
 /**
 	Constructeur
 	@param parent Le QWidget parent du panel d'appareils
@@ -439,8 +451,21 @@ void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
 		}
 		
 		// accrochage d'une pixmap representant l'appareil au pointeur
-		drag -> setPixmap(temp_elmt -> pixmap());
-		drag -> setHotSpot(temp_elmt -> hotspot());
+		QPixmap elmt_pixmap(temp_elmt -> pixmap());
+		QPoint elmt_hotspot(temp_elmt -> hotspot());
+		
+		// ajuste la pixmap si celle-ci est trop grande
+		QPoint elmt_pixmap_size(elmt_pixmap.width(), elmt_pixmap.height());
+		if (elmt_pixmap.width() > QET_MAX_DND_PIXMAP_WIDTH || elmt_pixmap.height() > QET_MAX_DND_PIXMAP_HEIGHT) {
+			elmt_pixmap = elmt_pixmap.scaled(QET_MAX_DND_PIXMAP_WIDTH, QET_MAX_DND_PIXMAP_HEIGHT, Qt::KeepAspectRatio);
+			elmt_hotspot = QPoint(
+				elmt_hotspot.x() * elmt_pixmap.width() / elmt_pixmap_size.x(),
+				elmt_hotspot.y() * elmt_pixmap.height() / elmt_pixmap_size.y()
+			);
+		}
+		
+		drag -> setPixmap(elmt_pixmap);
+		drag -> setHotSpot(elmt_hotspot);
 		
 		// suppression de l'appareil temporaire
 		delete temp_elmt;
@@ -888,8 +913,12 @@ void ElementsPanel::diagramOrderChanged(QETProject *project, int from, int to) {
 	if (!moved_qtwi_diagram) return;
 	
 	// enleve le QTWI et le reinsere au bon endroit
+	bool was_selected = moved_qtwi_diagram -> isSelected();
 	qtwi_project -> removeChild(moved_qtwi_diagram);
 	qtwi_project -> insertChild(to, moved_qtwi_diagram);
+	if (was_selected) {
+		setCurrentItem(moved_qtwi_diagram);
+	}
 }
 
 /**

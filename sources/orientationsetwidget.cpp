@@ -99,6 +99,27 @@ void OrientationSetWidget::setOrientationSet(const OrientationSet &os) {
 }
 
 /**
+	@return true si ce widget est en lecture seule, false sinon
+*/
+bool OrientationSetWidget::isReadOnly() const {
+	return(!north_orientation -> isEnabled());
+}
+
+/**
+	@param ro true pour passer ce widget en lecture seule, false sinon
+*/
+void OrientationSetWidget::setReadOnly(bool ro) {
+	north_orientation -> setDisabled(ro);
+	east_orientation  -> setDisabled(ro);
+	south_orientation -> setDisabled(ro);
+	west_orientation  -> setDisabled(ro);
+	north_default     -> setDisabled(ro);
+	east_default      -> setDisabled(ro);
+	south_default     -> setDisabled(ro);
+	west_default      -> setDisabled(ro);
+}
+
+/**
 	Slot gerant le changement d'orientation par defaut.
 	L'orientation concernee affiche alors "Possible" et ce statut devient
 	impossible a modifier.

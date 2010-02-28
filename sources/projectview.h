@@ -54,6 +54,10 @@ class ProjectView : public QWidget {
 	void editCurrentDiagramProperties();
 	void editDiagramProperties(DiagramView *);
 	void editDiagramProperties(Diagram *);
+	void moveDiagramUp(DiagramView *);
+	void moveDiagramUp(Diagram *);
+	void moveDiagramDown(DiagramView *);
+	void moveDiagramDown(Diagram *);
 	void printProject();
 	void exportProject();
 	bool save();
@@ -89,6 +93,7 @@ class ProjectView : public QWidget {
 	void firstTabInserted();
 	void lastTabRemoved();
 	void setDisplayFallbackWidget(bool);
+	void adjustReadOnlyState();
 	
 	// attributs
 	private:

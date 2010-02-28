@@ -142,6 +142,8 @@ class QETDiagramEditor : public QMainWindow {
 	void addDiagramToProject(QETProject *);
 	void removeDiagram(Diagram *);
 	void removeDiagramFromProject();
+	void moveDiagramUp(Diagram *);
+	void moveDiagramDown(Diagram *);
 	void cleanCurrentProject();
 	void diagramWasAdded(DiagramView *);
 	void diagramIsAboutToBeRemoved(DiagramView *);

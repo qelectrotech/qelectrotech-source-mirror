@@ -30,6 +30,7 @@
 #include "conductorpropertieswidget.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
+#include "qettabbar.h"
 
 /**
 	Constructeur
@@ -102,8 +103,8 @@ void ProjectView::setProject(QETProject *project) {
 	if (!project_) {
 		project_ = project;
 		connect(project_, SIGNAL(projectTitleChanged(QETProject *, const QString &)), this, SLOT(updateWindowTitle()));
-		connect(project_, SIGNAL(readOnlyChanged    (QETProject *, bool)),            this, SLOT(updateWindowTitle()));
-		updateWindowTitle();
+		connect(project_, SIGNAL(readOnlyChanged    (QETProject *, bool)),            this, SLOT(adjustReadOnlyState()));
+		adjustReadOnlyState();
 		loadDiagrams();
 	}
 }
@@ -398,6 +399,8 @@ void ProjectView::showDiagram(Diagram *diagram) {
 void ProjectView::editProjectProperties() {
 	if (!project_) return;
 	
+	bool project_is_read_only = project_ -> isReadOnly();
+	
 	// dialogue d'edition des proprietes du projet
 	QDialog properties_dialog(parentWidget());
 #ifdef Q_WS_MAC
@@ -411,22 +414,26 @@ void ProjectView::editProjectProperties() {
 	// titre du projet
 	QLabel *title_label = new QLabel(tr("Titre du projet :"));
 	QLineEdit *title_field = new QLineEdit(project_ -> title());
+	title_field -> setReadOnly(project_is_read_only);
 	
 	// proprietes des nouveaux schemas
 	QLabel *new_diagrams_prop = new QLabel(tr("Propri\351t\351s \340 utiliser lors de l'ajout d'un nouveau sch\351ma au projet :"));
 	
 	// dimensions par defaut d'un schema
 	BorderPropertiesWidget *bpw = new BorderPropertiesWidget(project_ -> defaultBorderProperties());
+	bpw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut d'un cartouche
 	InsetPropertiesWidget *ipw = new InsetPropertiesWidget(project_ -> defaultInsetProperties(), true);
+	ipw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut des conducteurs
 	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(project_ -> defaultConductorProperties());
 	cpw -> setContentsMargins(0, 0, 0, 0);
+	cpw -> setReadOnly(project_is_read_only);
 	
 	// boutons pour valider le dialogue
-	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	QDialogButtonBox *buttons = new QDialogButtonBox(project_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	connect(buttons, SIGNAL(accepted()), &properties_dialog, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), &properties_dialog, SLOT(reject()));
@@ -459,7 +466,7 @@ void ProjectView::editProjectProperties() {
 	vert_layout -> addWidget(buttons);
 	
 	// si le dialogue est accepte
-	if (properties_dialog.exec() == QDialog::Accepted && !project_ -> isReadOnly()) {
+	if (properties_dialog.exec() == QDialog::Accepted && !project_is_read_only) {
 		project_ -> setTitle(title_field -> text());
 		project_ -> setDefaultBorderProperties(bpw -> borderProperties());
 		project_ -> setDefaultInsetProperties(ipw -> insetProperties());
@@ -488,6 +495,48 @@ void ProjectView::editDiagramProperties(DiagramView *diagram_view) {
 */
 void ProjectView::editDiagramProperties(Diagram *diagram) {
 	editDiagramProperties(findDiagram(diagram));
+}
+
+/**
+	Deplace le schema diagram_view vers le haut / la gauche
+*/
+void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+	
+	int diagram_view_position = diagram_ids_.key(diagram_view);
+	if (!diagram_view_position) {
+		// le schema est le premier du projet
+		return;
+	}
+	tabs_ -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 1);
+}
+
+/**
+	Deplace le schema diagram vers le haut / la gauche
+*/
+void ProjectView::moveDiagramUp(Diagram *diagram) {
+	moveDiagramUp(findDiagram(diagram));
+}
+
+/**
+	Deplace le schema diagram_view vers le bas / la droite
+*/
+void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
+	if (!diagram_view) return;
+	
+	int diagram_view_position = diagram_ids_.key(diagram_view);
+	if (diagram_view_position + 1 == diagram_ids_.count()) {
+		// le schema est le dernier du projet
+		return;
+	}
+	tabs_ -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 1);
+}
+
+/**
+	Deplace le schema diagram vers le bas / la droite
+*/
+void ProjectView::moveDiagramDown(Diagram *diagram) {
+	moveDiagramDown(findDiagram(diagram));
 }
 
 /**
@@ -702,6 +751,18 @@ void ProjectView::updateWindowTitle() {
 		title = tr("Projet", "window title for a project-less ProjectView");
 	}
 	setWindowTitle(title);
+}
+
+/**
+	Effectue les actions necessaires lorsque le projet visualise entre ou sort
+	du mode lecture seule.
+*/
+void ProjectView::adjustReadOnlyState() {
+	// on empeche l'utilisateur de deplacer les onglets
+	tabs_ -> setMovable(!(project_ -> isReadOnly()));
+	
+	// on met a jour le titre du widget, qui reflete l'etat de lecture seule
+	updateWindowTitle();
 }
 
 /**

@@ -47,16 +47,20 @@ DeletePartsCommand::~DeletePartsCommand() {
 
 /// Restaure les parties supprimees
 void DeletePartsCommand::undo() {
+	editor_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		editor_scene -> addItem(qgi);
 	}
+	editor_scene -> blockSignals(false);
 }
 
 /// Supprime les parties
 void DeletePartsCommand::redo() {
+	editor_scene -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
 		editor_scene -> removeItem(qgi);
 	}
+	editor_scene -> blockSignals(false);
 }
 
 /*** CutPartsCommand ***/
@@ -90,7 +94,11 @@ PastePartsCommand::~PastePartsCommand() {
 /// annule le coller
 void PastePartsCommand::undo() {
 	// enleve les parties
-	foreach(QGraphicsItem *part, content_) editor_scene_ -> removeItem(part);
+	editor_scene_ -> blockSignals(true);
+	foreach(QGraphicsItem *part, content_) {
+		editor_scene_ -> removeItem(part);
+	}
+	editor_scene_ -> blockSignals(false);
 	if (uses_offset) {
 		editor_view_ -> offset_paste_count_    = old_offset_paste_count_;
 		editor_view_ -> start_top_left_corner_ = old_start_top_left_corner_;
@@ -103,7 +111,11 @@ void PastePartsCommand::redo() {
 	if (first_redo) first_redo = false;
 	else {
 		// pose les parties
-		foreach(QGraphicsItem *part, content_) editor_scene_ -> addItem(part);
+		editor_scene_ -> blockSignals(true);
+		foreach(QGraphicsItem *part, content_) {
+			editor_scene_ -> addItem(part);
+		}
+		editor_scene_ -> blockSignals(false);
 		if (uses_offset) {
 			editor_view_ -> offset_paste_count_    = new_offset_paste_count_;
 			editor_view_ -> start_top_left_corner_ = new_start_top_left_corner_;

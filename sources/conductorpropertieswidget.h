@@ -40,6 +40,8 @@ class ConductorPropertiesWidget : public QWidget {
 	public:
 	void setConductorProperties(const ConductorProperties &);
 	ConductorProperties conductorProperties() const;
+	bool isReadOnly() const;
+	void setReadOnly(bool);
 	
 	private:
 	void setConductorType(ConductorProperties::ConductorType);

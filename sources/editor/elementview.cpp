@@ -28,6 +28,7 @@ ElementView::ElementView(ElementScene *scene, QWidget *parent) :
 	scene_(scene),
 	offset_paste_count_(0)
 {
+	setViewportUpdateMode(QGraphicsView::BoundingRectViewportUpdate);
 	setInteractive(true);
 	setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
 	setResizeAnchor(QGraphicsView::AnchorUnderMouse);

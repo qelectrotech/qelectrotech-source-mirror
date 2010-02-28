@@ -66,6 +66,10 @@ bool QETTabWidget::isMovable() const {
 #endif
 }
 
+QETTabBar *QETTabWidget::tabBar() const {
+	return(tab_bar_);
+}
+
 /**
 	Gere les evenements rollette sur cette barre d'onglets
 	@param event Evenement rollette

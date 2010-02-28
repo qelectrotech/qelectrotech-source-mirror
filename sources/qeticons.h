@@ -88,6 +88,8 @@ namespace QET {
 		extern QIcon Forbidden;
 		extern QIcon FullScreenEnter;
 		extern QIcon FullScreenExit;
+		extern QIcon GoDown;
+		extern QIcon GoUp;
 		extern QIcon Ground;
 		extern QIcon Hide;
 		extern QIcon Home;

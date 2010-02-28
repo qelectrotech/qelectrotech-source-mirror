@@ -268,3 +268,26 @@ void ConductorPropertiesWidget::setConductorProperties(const ConductorProperties
 ConductorProperties ConductorPropertiesWidget::conductorProperties() const {
 	return(properties_);
 }
+
+/**
+	@return true si ce widget est en lecture seule, false sinon
+*/
+bool ConductorPropertiesWidget::isReadOnly() const {
+	return(text_field -> isReadOnly());
+}
+
+/**
+	@param ro true pour passer ce widget en lecture seule, false sinon
+*/
+void ConductorPropertiesWidget::setReadOnly(bool ro) {
+	simple    -> setDisabled(ro);
+	multiline -> setDisabled(ro);
+	singleline -> setDisabled(ro);
+	text_field -> setReadOnly(ro);
+	phase_checkbox -> setDisabled(ro);
+	phase_spinbox -> setReadOnly(ro);
+	ground_checkbox -> setDisabled(ro);
+	neutral_checkbox -> setDisabled(ro);
+	color_button -> setDisabled(ro);
+	dashed_checkbox -> setDisabled(ro);
+}

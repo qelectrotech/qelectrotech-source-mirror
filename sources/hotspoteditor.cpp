@@ -34,10 +34,12 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	
 	sb_width = new QSpinBox();
 	sb_width -> setMinimum(1);
+	sb_width -> setMaximum(1000);
 	sb_width -> setValue(3);
 	sb_width -> setSuffix(tr(" \32710 px"));
 	sb_height = new QSpinBox();
 	sb_height -> setMinimum(1);
+	sb_height -> setMaximum(1000);
 	sb_height -> setValue(7);
 	sb_height -> setSuffix(tr(" \32710 px"));
 	
@@ -221,6 +223,24 @@ QPoint HotspotEditor::offsetParts() const {
 	// l'elements
 	if (!mustTranslateParts()) return(QPoint(0,0));
 	else return(old_hotspot - hotspot());
+}
+
+/**
+	@return true si ce widget est en lecture seule, false sinon
+*/
+bool HotspotEditor::isReadOnly() const {
+	return(sb_width -> isReadOnly());
+}
+
+/**
+	@param ro true pour passer ce widget en lecture seule, false sinon
+*/
+void HotspotEditor::setReadOnly(bool ro) {
+	sb_width     -> setReadOnly(ro);
+	sb_height    -> setReadOnly(ro);
+	sb_hotspot_x -> setReadOnly(ro);
+	sb_hotspot_y -> setReadOnly(ro);
+	hotspot_sync -> setDisabled(ro);
 }
 
 /**

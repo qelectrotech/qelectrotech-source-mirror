@@ -42,7 +42,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *delete_collection;
 	QAction *new_element, *import_element,  *edit_element,  *delete_element;
-	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram;
+	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_down;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
 	QAction *erase_textfield;
@@ -59,6 +59,8 @@ class ElementsPanelWidget : public QWidget {
 	void requestForProjectPropertiesEdition(QETProject *);
 	void requestForDiagramPropertiesEdition(Diagram *);
 	void requestForDiagramDeletion(Diagram *);
+	void requestForDiagramMoveUp(Diagram *);
+	void requestForDiagramMoveDown(Diagram *);
 	
 	public slots:
 	void clearFilterTextField();
@@ -68,6 +70,8 @@ class ElementsPanelWidget : public QWidget {
 	void editDiagramProperties();
 	void newDiagram();
 	void deleteDiagram();
+	void moveDiagramUp();
+	void moveDiagramDown();
 	void newCategory();
 	void newElement();
 	void importElement();

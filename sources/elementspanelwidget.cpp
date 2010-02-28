@@ -48,24 +48,26 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	elements_panel = new ElementsPanel(this);
 	
 	// initialise les actions
-	reload            = new QAction(QET::Icons::ViewRefresh,               tr("Recharger les collections"),           this);
-	new_category      = new QAction(QET::Icons::FolderNew,                 tr("Nouvelle cat\351gorie"),               this);
-	edit_category     = new QAction(QET::Icons::FolderEdit,                tr("\311diter la cat\351gorie"),           this);
-	delete_category   = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la cat\351gorie"),           this);
-	delete_collection = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
-	new_element       = new QAction(QET::Icons::ElementNew,                tr("Nouvel \351l\351ment"),                this);
-	import_element    = new QAction(QET::Icons::DocumentImport,            tr("Importer un \351l\351ment"),           this);
-	edit_element      = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
-	delete_element    = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
-	prj_close         = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
-	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du projet"),          this);
-	prj_prop_diagram  = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du sch\351ma"),       this);
-	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,                tr("Ajouter un sch\351ma"),                this);
-	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce sch\351ma"),              this);
-	move_elements_    = new QAction(QET::Icons::MoveFile,                  tr("D\351placer dans cette cat\351gorie"), this);
-	copy_elements_    = new QAction(QET::Icons::CopyFile,                  tr("Copier dans cette cat\351gorie"),      this);
-	cancel_elements_  = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
-	erase_textfield   = new QAction(QET::Icons::EditClearLocationBar,      tr("Effacer le filtre"),                   this);
+	reload                = new QAction(QET::Icons::ViewRefresh,               tr("Recharger les collections"),           this);
+	new_category          = new QAction(QET::Icons::FolderNew,                 tr("Nouvelle cat\351gorie"),               this);
+	edit_category         = new QAction(QET::Icons::FolderEdit,                tr("\311diter la cat\351gorie"),           this);
+	delete_category       = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la cat\351gorie"),           this);
+	delete_collection     = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
+	new_element           = new QAction(QET::Icons::ElementNew,                tr("Nouvel \351l\351ment"),                this);
+	import_element        = new QAction(QET::Icons::DocumentImport,            tr("Importer un \351l\351ment"),           this);
+	edit_element          = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
+	delete_element        = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
+	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
+	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du projet"),          this);
+	prj_prop_diagram      = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du sch\351ma"),       this);
+	prj_add_diagram       = new QAction(QET::Icons::DiagramAdd,                tr("Ajouter un sch\351ma"),                this);
+	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce sch\351ma"),              this);
+	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce sch\351ma"),               this);
+	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce sch\351ma"),               this);
+	move_elements_        = new QAction(QET::Icons::MoveFile,                  tr("D\351placer dans cette cat\351gorie"), this);
+	copy_elements_        = new QAction(QET::Icons::CopyFile,                  tr("Copier dans cette cat\351gorie"),      this);
+	cancel_elements_      = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
+	erase_textfield       = new QAction(QET::Icons::EditClearLocationBar,      tr("Effacer le filtre"),                   this);
 	
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);
@@ -84,29 +86,31 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	
 	context_menu = new QMenu(this);
 	
-	connect(reload,            SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
-	connect(new_category,      SIGNAL(triggered()), this,           SLOT(newCategory()));
-	connect(edit_category,     SIGNAL(triggered()), this,           SLOT(editCategory()));
-	connect(delete_category,   SIGNAL(triggered()), this,           SLOT(deleteCategory()));
-	connect(delete_collection, SIGNAL(triggered()), this,           SLOT(deleteCategory()));
-	connect(new_element,       SIGNAL(triggered()), this,           SLOT(newElement()));
-	connect(import_element,    SIGNAL(triggered()), this,           SLOT(importElement()));
-	connect(edit_element,      SIGNAL(triggered()), this,           SLOT(editElement()));
-	connect(delete_element,    SIGNAL(triggered()), this,           SLOT(deleteElement()));
-	connect(prj_close,         SIGNAL(triggered()), this,           SLOT(closeProject()));
-	connect(prj_edit_prop,     SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
-	connect(prj_prop_diagram,  SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
-	connect(prj_add_diagram,   SIGNAL(triggered()), this,           SLOT(newDiagram()));
-	connect(prj_del_diagram,   SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
-	connect(move_elements_,    SIGNAL(triggered()), this,           SLOT(moveElements()));
-	connect(copy_elements_,    SIGNAL(triggered()), this,           SLOT(copyElements()));
+	connect(reload,                SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
+	connect(new_category,          SIGNAL(triggered()), this,           SLOT(newCategory()));
+	connect(edit_category,         SIGNAL(triggered()), this,           SLOT(editCategory()));
+	connect(delete_category,       SIGNAL(triggered()), this,           SLOT(deleteCategory()));
+	connect(delete_collection,     SIGNAL(triggered()), this,           SLOT(deleteCategory()));
+	connect(new_element,           SIGNAL(triggered()), this,           SLOT(newElement()));
+	connect(import_element,        SIGNAL(triggered()), this,           SLOT(importElement()));
+	connect(edit_element,          SIGNAL(triggered()), this,           SLOT(editElement()));
+	connect(delete_element,        SIGNAL(triggered()), this,           SLOT(deleteElement()));
+	connect(prj_close,             SIGNAL(triggered()), this,           SLOT(closeProject()));
+	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
+	connect(prj_prop_diagram,      SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
+	connect(prj_add_diagram,       SIGNAL(triggered()), this,           SLOT(newDiagram()));
+	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
+	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
+	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
+	connect(move_elements_,        SIGNAL(triggered()), this,           SLOT(moveElements()));
+	connect(copy_elements_,        SIGNAL(triggered()), this,           SLOT(copyElements()));
 	
-	connect(erase_textfield,  SIGNAL(triggered()),                 this,             SLOT(clearFilterTextField()));
-	connect(filter_textfield, SIGNAL(textEdited(const QString &)), elements_panel,   SLOT(filter(const QString &)));
+	connect(erase_textfield,       SIGNAL(triggered()),                 this,             SLOT(clearFilterTextField()));
+	connect(filter_textfield,      SIGNAL(textEdited(const QString &)), elements_panel,   SLOT(filter(const QString &)));
 	
-	connect(elements_panel, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
-	connect(elements_panel, SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
-	connect(elements_panel, SIGNAL(requestForCollectionItem(ElementsCollectionItem *)),       this, SLOT(handleCollectionRequest(ElementsCollectionItem *)));
+	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
+	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
+	connect(elements_panel,        SIGNAL(requestForCollectionItem(ElementsCollectionItem *)),       this, SLOT(handleCollectionRequest(ElementsCollectionItem *)));
 	connect(
 		elements_panel,
 		SIGNAL(requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint)),
@@ -213,6 +217,24 @@ void ElementsPanelWidget::deleteDiagram() {
 }
 
 /**
+	Emet le signal requestForDiagramMoveUp avec le schema selectionne
+*/
+void ElementsPanelWidget::moveDiagramUp() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveUp(selected_diagram));
+	}
+}
+
+/**
+	Emet le signal requestForDiagramMoveDown avec le schema selectionne
+*/
+void ElementsPanelWidget::moveDiagramDown() {
+	if (Diagram *selected_diagram = elements_panel -> selectedDiagram()) {
+		emit(requestForDiagramMoveDown(selected_diagram));
+	}
+}
+
+/**
 	Appelle l'assistant de creation de nouvel element
 */
 void ElementsPanelWidget::newElement() {
@@ -281,10 +303,17 @@ void ElementsPanelWidget::updateButtons() {
 		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
 		prj_add_diagram -> setEnabled(is_writable);
 	} else if (elements_panel -> selectedItemIsADiagram()) {
-		bool is_writable = !(elements_panel -> selectedDiagram() -> project() -> isReadOnly());
-		prj_del_diagram -> setEnabled(is_writable);
+		Diagram    *selected_diagram         = elements_panel -> selectedDiagram();
+		QETProject *selected_diagram_project = selected_diagram -> project();
+		
+		bool is_writable           = !(selected_diagram_project -> isReadOnly());
+		int project_diagrams_count = selected_diagram_project -> diagrams().count();
+		int diagram_position       = selected_diagram_project -> diagrams().indexOf(selected_diagram);
+		
+		prj_del_diagram       -> setEnabled(is_writable);
+		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
+		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
 	}
-	
 }
 
 /**
@@ -321,6 +350,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	QTreeWidgetItem *item = elements_panel -> itemAt(pos);
 	if (!item) return;
 	
+	updateButtons();
 	context_menu -> clear();
 	
 	if (elements_panel -> itemHasLocation(item)) {
@@ -351,6 +381,8 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 		} else if (elements_panel -> itemIsADiagram(item)) {
 			context_menu -> addAction(prj_prop_diagram);
 			context_menu -> addAction(prj_del_diagram);
+			context_menu -> addAction(prj_move_diagram_up);
+			context_menu -> addAction(prj_move_diagram_down);
 		}
 	}
 	

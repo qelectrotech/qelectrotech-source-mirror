@@ -1,5 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="ru" >Эл. плита</name>
         <name lang="en" >Solid plate</name>
         <name lang="fr" >Plaque de cuisson</name>
         <name lang="es" >Placa de cocina</name>

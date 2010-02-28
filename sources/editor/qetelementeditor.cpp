@@ -39,6 +39,13 @@
 #include "texteditor.h"
 #include "textfieldeditor.h"
 
+/*
+	Nombre maximum de primitives affichees par la "liste des parties"
+	Au-dela, un petit message est affiche, indiquant que ce nombre a ete depasse
+	et que la liste ne sera donc pas mise a jour.
+*/
+#define QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST 200
+
 /**
 	Constructeur
 	@param parent QWidget parent
@@ -439,10 +446,6 @@ void QETElementEditor::slot_updateMenus() {
 	inv_select      -> setEnabled(!read_only);
 	paste_from_file -> setEnabled(!read_only);
 	paste_from_elmt -> setEnabled(!read_only);
-	edit_size_hs    -> setEnabled(!read_only);
-	edit_names      -> setEnabled(!read_only);
-	edit_ori        -> setEnabled(!read_only);
-	edit_author     -> setEnabled(!read_only);
 	parts_list      -> setEnabled(!read_only);
 	
 	// actions dependant de la presence de parties selectionnees
@@ -511,6 +514,8 @@ void QETElementEditor::setupInterface() {
 	
 	// ScrollArea pour accueillir un widget d'edition (change a la volee)
 	tools_dock_scroll_area_ = new QScrollArea();
+	tools_dock_scroll_area_ -> setFrameStyle(QFrame::NoFrame);
+	tools_dock_scroll_area_ -> setAlignment(Qt::AlignHCenter|Qt::AlignTop);
 	
 	// Pile de widgets pour accueillir les deux widgets precedents
 	tools_dock_stack_ = new QStackedWidget();
@@ -1117,17 +1122,25 @@ void QETElementEditor::slot_createPartsList() {
 	parts_list -> blockSignals(true);
 	parts_list -> clear();
 	QList<QGraphicsItem *> qgis = ce_scene -> zItems(true);
-	for (int j = qgis.count() - 1 ; j >= 0 ; -- j) {
-		QGraphicsItem *qgi = qgis[j];
-		if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
-			QString part_desc = cep -> name();
-			QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
-			QVariant v;
-			v.setValue<QGraphicsItem *>(qgi);
-			qlwi -> setData(42, v);
-			parts_list -> addItem(qlwi);
-			qlwi -> setSelected(qgi -> isSelected());
+	
+	// on ne construit plus la liste a partir de 200 primitives
+	// c'est ingerable : la maj de la liste prend trop de temps et le resultat
+	// est inexploitable
+	if (qgis.count() <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
+		for (int j = qgis.count() - 1 ; j >= 0 ; -- j) {
+			QGraphicsItem *qgi = qgis[j];
+			if (CustomElementPart *cep = dynamic_cast<CustomElementPart *>(qgi)) {
+				QString part_desc = cep -> name();
+				QListWidgetItem *qlwi = new QListWidgetItem(part_desc);
+				QVariant v;
+				v.setValue<QGraphicsItem *>(qgi);
+				qlwi -> setData(42, v);
+				parts_list -> addItem(qlwi);
+				qlwi -> setSelected(qgi -> isSelected());
+			}
 		}
+	} else {
+		parts_list -> addItem(new QListWidgetItem(tr("Trop de primitives, liste non g\351n\351r\351e.")));
 	}
 	parts_list -> blockSignals(false);
 }
@@ -1136,9 +1149,10 @@ void QETElementEditor::slot_createPartsList() {
 	Met a jour la selection dans la liste des parties
 */
 void QETElementEditor::slot_updatePartsList() {
-	if (parts_list -> count() != ce_scene -> items().count()) {
+	int items_count = ce_scene -> items().count();
+	if (parts_list -> count() != items_count) {
 		slot_createPartsList();
-	} else {
+	} else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
 		parts_list -> blockSignals(true);
 		int i = 0;
 		QList<QGraphicsItem *> items = ce_scene -> zItems(true);

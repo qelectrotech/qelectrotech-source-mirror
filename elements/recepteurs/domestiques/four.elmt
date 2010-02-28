@@ -1,6 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="ru" >Эл. плита</name>
+        <name lang="ru" >Духовой шкаф</name>
         <name lang="en" >Electric oven</name>
         <name lang="fr" >Four électrique</name>
         <name lang="es" >Horno eléctrico</name>

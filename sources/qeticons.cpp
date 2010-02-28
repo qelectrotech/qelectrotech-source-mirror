@@ -80,6 +80,8 @@ namespace QET {
 		QIcon Forbidden;
 		QIcon FullScreenEnter;
 		QIcon FullScreenExit;
+		QIcon GoDown;
+		QIcon GoUp;
 		QIcon Ground;
 		QIcon Hide;
 		QIcon Home;
@@ -240,6 +242,10 @@ void QET::Icons::initIcons() {
 	FullScreenEnter     .addFile(":/ico/22x22/view-fullscreen.png");
 	FullScreenExit      .addFile(":/ico/16x16/view-restore.png");
 	FullScreenExit      .addFile(":/ico/22x22/view-restore.png");
+	GoDown              .addFile(":/ico/16x16/go-down.png");
+	GoDown              .addFile(":/ico/22x22/go-down.png");
+	GoUp                .addFile(":/ico/16x16/go-up.png");
+	GoUp                .addFile(":/ico/22x22/go-up.png");
 	Ground              .addFile(":/ico/16x16/ground.png");
 	Hide                .addFile(":/ico/16x16/masquer.png");
 	Home                .addFile(":/ico/16x16/go-home.png");
