@@ -159,6 +159,7 @@ class QETApp : public QETSingleApplication {
 	void openFiles(const QETArguments &);
 	void openProjectFiles(const QStringList &);
 	void openElementFiles(const QStringList &);
+	void openElementLocations(const QList<ElementsLocation> &);
 	void configureQET();
 	void aboutQET();
 	

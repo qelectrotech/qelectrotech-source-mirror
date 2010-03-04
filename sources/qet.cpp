@@ -434,3 +434,25 @@ QString QET::pointerString(void *ptr) {
 		)
 	);
 }
+
+/**
+	@param first  Un premier chemin vers un fichier
+	@param second Un second chemin vers un fichier
+	@return true si les deux chemins existent existent et sont identiques
+	lorsqu'ils sont exprimes sous forme canonique
+*/
+bool QET::compareCanonicalFilePaths(const QString &first, const QString &second) {
+	QString first_canonical_path = QFileInfo(first).canonicalFilePath();
+	if (first_canonical_path.isEmpty()) return(false);
+
+	QString second_canonical_path = QFileInfo(second).canonicalFilePath();
+	if (second_canonical_path.isEmpty()) return(false);
+	
+#ifdef Q_WS_WIN
+	// sous Windows, on ramene les chemins en minuscules
+	first_canonical_path  = first_canonical_path.toLower();
+	second_canonical_path = second_canonical_path.toLower();
+#endif
+	
+	return(first_canonical_path == second_canonical_path);
+}

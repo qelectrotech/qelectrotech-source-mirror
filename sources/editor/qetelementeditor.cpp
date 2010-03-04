@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetelementeditor.h"
+#include "qet.h"
 #include "qetapp.h"
 #include "elementscene.h"
 #include "elementview.h"
@@ -838,6 +839,46 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 }
 
 /**
+	@param location Emplacement d'un element
+	@return true si cet editeur est en train d'editer l'element dont
+	l'emplacement est location, false sinon
+*/
+bool QETElementEditor::isEditing(const ElementsLocation &provided_location) {
+	if (opened_from_file) {
+		return(
+			QET::compareCanonicalFilePaths(
+				filename_,
+				QETApp::realPath(provided_location.toString())
+			)
+		);
+	} else {
+		return(provided_location == location_);
+	}
+}
+
+/**
+	@param provided_filepath Chemin d'un element sur un filesystem
+	@return true si cet editeur est en train d'editer l'element dont
+	le chemin est filepath, false sinon
+*/
+bool QETElementEditor::isEditing(const QString &provided_filepath) {
+	// determine le chemin canonique de l'element actuelle edite, si applicable
+	QString current_filepath;
+	if (opened_from_file) {
+		current_filepath = filename_;
+	} else {
+		current_filepath = QETApp::realPath(location_.toString());
+	}
+	
+	return(
+		QET::compareCanonicalFilePaths(
+			current_filepath,
+			provided_filepath
+		)
+	);
+}
+
+/**
 	specifie si l'editeur d'element doit etre en mode lecture seule
 	@param ro true pour activer le mode lecture seule, false pour le desactiver
 */
@@ -872,9 +913,7 @@ void QETElementEditor::slot_open() {
 	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
 	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
 	if (location.isNull()) return;
-	QETElementEditor *cee = new QETElementEditor();
-	cee -> fromLocation(location);
-	cee -> show();
+	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
 }
 
 /**
@@ -908,12 +947,11 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
 	Cette methode ne controle pas si le fichier est deja ouvert
 	@param filepath Fichier a ouvrir
 	@see fromFile
+	@see QETApp::openElementFiles
 */
 void QETElementEditor::openElement(const QString &filepath) {
 	if (filepath.isEmpty()) return;
-	QETElementEditor *cee = new QETElementEditor();
-	cee -> fromFile(filepath);
-	cee -> show();
+	QETApp::instance() -> openElementFiles(QStringList() << filepath);
 }
 
 /**

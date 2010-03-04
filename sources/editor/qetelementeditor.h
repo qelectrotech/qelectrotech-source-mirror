@@ -115,6 +115,8 @@ class QETElementEditor : public QMainWindow {
 	void fromLocation(const ElementsLocation &);
 	bool toFile(const QString &);
 	bool toLocation(const ElementsLocation &);
+	bool isEditing(const ElementsLocation &);
+	bool isEditing(const QString &);
 	ElementScene *elementScene() const;
 	void readSettings();
 	void writeSettings();

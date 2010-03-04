@@ -1757,11 +1757,8 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 	@param location Emplacement de l'element a editer
 */
 void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
-	QETElementEditor *editor = new QETElementEditor();
-	editor -> fromLocation(location);
-	editor -> show();
+	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
 }
-
 
 /**
 	@return Les proprietes par defaut pour le cartouche d'un schema
