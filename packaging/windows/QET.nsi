@@ -88,7 +88,7 @@
 Section ""
 	SetOutPath "$INSTDIR"  
 	; copy every files in the "files" directory, except the ready-to-use .bat file
-	File /nonfatal /r /x "files\Lancer QET.bat" "files\*"
+	File /nonfatal /r /x "files\Lancer QET.bat" /x ".svn" "files\*"
 	; add the use-APPDATA .bat file
 	File "Lancer QET.bat"
 	;Store installation folder
