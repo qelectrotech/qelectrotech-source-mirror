@@ -25,9 +25,9 @@
 */
 namespace QET {
 	/// version de QElectroTech (utilisee pour estampiller les projets et elements)
-	const QString version = "0.2";
+	const QString version = "0.21";
 	/// version affichee de QElectroTech
-	const QString displayedVersion = "0.2";
+	const QString displayedVersion = "0.21";
 	QString license();
 	/// Orientation (utilise pour les bornes mais aussi pour les elements)
 	enum Orientation {North, East, South, West};
