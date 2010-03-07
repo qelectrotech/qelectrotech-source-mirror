@@ -379,10 +379,10 @@ void QETElementEditor::setupActions() {
 	Met en place les menus.
 */
 void QETElementEditor::setupMenus() {
-	file_menu    = new QMenu(tr("Fichier"),        this);
-	edit_menu    = new QMenu(tr("\311dition"),     this);
-	display_menu = new QMenu(tr("Affichage"),      this);
-	tools_menu   = new QMenu(tr("Outils"),         this);
+	file_menu    = new QMenu(tr("&Fichier"),       this);
+	edit_menu    = new QMenu(tr("&\311dition"),    this);
+	display_menu = new QMenu(tr("Afficha&ge"),     this);
+	tools_menu   = new QMenu(tr("O&utils"),        this);
 	config_menu  = new QMenu(tr("&Configuration"), this);
 	help_menu    = new QMenu(tr("Aide"),           this);
 	
