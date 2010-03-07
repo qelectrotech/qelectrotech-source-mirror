@@ -836,7 +836,7 @@ void ElementScene::slot_editSizeHotSpot() {
 	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_sh, SLOT(reject()));
 	
 	// lance le dialogue
-	if (dialog_sh.exec() == QDialog::Accepted && is_read_only) {
+	if (dialog_sh.exec() == QDialog::Accepted && !is_read_only) {
 		QSize new_size(hotspot_editor -> elementSize());
 		QSize old_size(width(), height());
 		QPoint new_hotspot(hotspot_editor -> hotspot());
