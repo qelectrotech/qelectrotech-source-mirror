@@ -90,6 +90,35 @@ QETElementEditor::~QETElementEditor() {
 }
 
 /**
+	@param el Le nouvel emplacement de l'element edite
+*/
+void QETElementEditor::setLocation(const ElementsLocation &el) {
+	location_ = el;
+	opened_from_file = false;
+	// modifie le mode lecture seule si besoin
+	ElementsCollectionItem *item = QETApp::collectionItem(location_);
+	bool must_be_read_only = item && !item -> isWritable();
+	if (isReadOnly() != must_be_read_only) {
+		setReadOnly(must_be_read_only);
+	}
+	slot_updateTitle();
+}
+
+/**
+	@param fn Le nouveau nom de fichier de l'element edite
+*/
+void QETElementEditor::setFileName(const QString &fn) {
+	filename_ = fn;
+	opened_from_file = true;
+	// modifie le mode lecture seule si besoin
+	bool must_be_read_only = !QFileInfo(filename_).isWritable();
+	if (isReadOnly() != must_be_read_only) {
+		setReadOnly(must_be_read_only);
+	}
+	slot_updateTitle();
+}
+
+/**
 	Met en place les actions
 */
 void QETElementEditor::setupActions() {
