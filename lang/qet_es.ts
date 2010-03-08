@@ -759,12 +759,12 @@ Iconos</translation>
         <location filename="../sources/editor/elementscene.cpp" line="910"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation type="unfinished">Editar las informaciónes sobre el autor</translation>
+        <translation>Editar la información sobre el autor</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="914"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished">Puede utilizar este campo libro para indicar los autores del elemento, su licencia, o cualquier otra información que considere útil.</translation>
+        <translation>Usted puede utilizar este campo en blanco para indicar los autores de los elementos, su licencia, o cualquier otra información que considere útil.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="956"/>
@@ -1158,12 +1158,12 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce schéma</source>
-        <translation type="unfinished">Elevar este esquema</translation>
+        <translation>Subir este esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Abaisser ce schéma</source>
-        <translation type="unfinished">Bajar este esquema</translation>
+        <translation>Bajar este esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
@@ -1473,7 +1473,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation type="unfinished">Cada elemento embarca informaciónes sobre sus autores, su licencia, o cualquier otra información que considere útil en un campo libro. Puede indicar aqui el valor predeterminado de este campo par los elementos que creerá:</translation>
+        <translation>Cada elemento da información sobre sus autores, su licencia, o cualquier otra información que considere útil en un campo abierto. Puede establecer el valor por defecto de este campo para los elementos que usted cree:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -3251,7 +3251,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="120"/>
         <source>Éditer les informations sur l&apos;auteur</source>
-        <translation type="unfinished">Editar las informaciónes sobre el autor</translation>
+        <translation>Editar la información sobre el autor</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="121"/>
@@ -3708,7 +3708,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1147"/>
         <source>Trop de primitives, liste non générée.</source>
-        <translation type="unfinished">Demasiado primitivos, lista non generada.</translation>
+        <translation>Demasiado primitivas, lista no generada.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1253"/>
@@ -3837,12 +3837,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
         <source>Tout cocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Marcar todos</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="173"/>
         <source>Tout décocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Desmarcar todos</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
@@ -4241,7 +4241,7 @@ Opciones disponibles:
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">edición de informaciónes complementarias</translation>
+        <translation>Modificación de información complementaria</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="49"/>
