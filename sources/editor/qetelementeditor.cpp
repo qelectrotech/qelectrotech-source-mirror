@@ -868,7 +868,7 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 }
 
 /**
-	@param location Emplacement d'un element
+	@param provided_location Emplacement d'un element
 	@return true si cet editeur est en train d'editer l'element dont
 	l'emplacement est location, false sinon
 */
