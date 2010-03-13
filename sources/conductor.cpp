@@ -42,6 +42,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	terminal1(p1),
 	terminal2(p2),
 	destroyed(false),
+	text_item(0),
 	segments(NULL),
 	moving_point(false),
 	moving_segment(false),
@@ -749,6 +750,9 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 			// le conducteur vient de se faire deselectionner
 			setZValue(previous_z_value);
 		}
+	} else if (change == QGraphicsItem::ItemSceneHasChanged || change == QGraphicsItem::ItemVisibleHasChanged) {
+		// permet de positionner correctement le texte du conducteur lors de son ajout a un schema
+		calculateTextItemPosition();
 	}
 	return(QGraphicsPathItem::itemChange(change, value));
 }
@@ -1070,6 +1074,7 @@ ConductorSegment *Conductor::middleSegment() {
 */
 void Conductor::calculateTextItemPosition() {
 	if (properties_.type != ConductorProperties::Multi) return;
+	if (!text_item) return;
 	text_item -> setPos(middleSegment() -> middle());
 }
 
