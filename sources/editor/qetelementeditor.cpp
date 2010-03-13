@@ -384,7 +384,7 @@ void QETElementEditor::setupMenus() {
 	display_menu = new QMenu(tr("Afficha&ge"),     this);
 	tools_menu   = new QMenu(tr("O&utils"),        this);
 	config_menu  = new QMenu(tr("&Configuration"), this);
-	help_menu    = new QMenu(tr("Aide"),           this);
+	help_menu    = new QMenu(tr("&Aide"),          this);
 	
 	file_menu    -> setTearOffEnabled(true);
 	edit_menu    -> setTearOffEnabled(true);
