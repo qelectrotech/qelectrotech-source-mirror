@@ -6,6 +6,7 @@
         <name lang="es" >Interruptor 3 posiciones incluso neutro</name>
         <name lang="cs" >Třípolohový spínač včetně nulové</name>
         <name lang="pt" >Interruptor 3 posições com neutro</name>
+        <name lang="pl" >Przełącznik trójpozycyjny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

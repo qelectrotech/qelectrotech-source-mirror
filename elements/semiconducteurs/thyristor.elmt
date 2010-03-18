@@ -6,6 +6,7 @@
         <name lang="es" >Tiristor</name>
         <name lang="cs" >Thyristor</name>
         <name lang="pt" >Tiristor</name>
+        <name lang="pl" >Tyrystor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

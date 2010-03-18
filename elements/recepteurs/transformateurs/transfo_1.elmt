@@ -6,6 +6,7 @@
         <name lang="es" >Transformador unifilar</name>
         <name lang="cs" >Jednodrátový převodník</name>
         <name lang="pt" >Transformador unifilar</name>
+        <name lang="pl" >Transformator (schemat jednokreskowy)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

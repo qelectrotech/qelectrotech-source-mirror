@@ -5,6 +5,7 @@
         <name lang="fr" >Sortie</name>
         <name lang="cs" >Výstup</name>
         <name lang="pt" >Saída</name>
+        <name lang="pl" >Wyjście</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="es" >Voltímetro vertical</name>
         <name lang="cs" >Svislý voltmetr</name>
         <name lang="pt" >Voltímetro vertical</name>
+        <name lang="pl" >Woltomierz (pionowo)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

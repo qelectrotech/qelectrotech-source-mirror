@@ -6,5 +6,6 @@
         <name lang="es" >Comutadores de retardo</name>
         <name lang="pt" >Temporizados</name>
         <name lang="cs" >Opožděné sepnutí</name>
+        <name lang="pl" >Styki z opóźnieniem czasowym</name>
     </names>
 </qet-directory>

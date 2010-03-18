@@ -6,6 +6,7 @@
         <name lang="es" >Entrada (lógica negativa)</name>
         <name lang="cs" >Vstup (záporná logika)</name>
         <name lang="pt" >Entrada (lógica negativa)</name>
+        <name lang="pl" >Wejscie (negacja logiczna)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

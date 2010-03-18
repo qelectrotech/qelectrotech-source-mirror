@@ -6,6 +6,7 @@
         <name lang="es" >Radiador eléctrico</name>
         <name lang="cs" >Elektrický přímotop</name>
         <name lang="pt" >Irradiador eléctrico</name>
+        <name lang="pl" >Grzejnik konwekcyjny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

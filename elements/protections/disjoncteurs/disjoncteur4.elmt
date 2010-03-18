@@ -6,6 +6,7 @@
         <name lang="es" >Disyuntor</name>
         <name lang="cs" >Jistič</name>
         <name lang="pt" >Disjuntor</name>
+        <name lang="pl" >Wyłącznik</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

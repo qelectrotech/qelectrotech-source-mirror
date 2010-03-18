@@ -6,6 +6,7 @@
         <name lang="es" >Timbre</name>
         <name lang="cs" >Zvonek</name>
         <name lang="pt" >Campaínha</name>
+        <name lang="pl" >Dzwonek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

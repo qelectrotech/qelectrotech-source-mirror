@@ -6,5 +6,6 @@
         <name lang="es" >Electrodoméstico</name>
         <name lang="cs" >Domácí</name>
         <name lang="pt" >Electrodomésticos</name>
+        <name lang="pl" >Urządzenia użytku domowego</name>
     </names>
 </qet-directory>

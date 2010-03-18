@@ -6,6 +6,7 @@
         <name lang="es" >Motor monofásico</name>
         <name lang="cs" >Jednofázový motor</name>
         <name lang="pt" >Motor monofásico</name>
+        <name lang="pl" >Silnik jednofazowy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

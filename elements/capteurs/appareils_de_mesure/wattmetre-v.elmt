@@ -6,6 +6,7 @@
         <name lang="es" >Vatímetro vertical</name>
         <name lang="cs" >Svislý wattmetr</name>
         <name lang="pt" >Wattímetro vertical</name>
+        <name lang="pl" >Watomierz (pionowo)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

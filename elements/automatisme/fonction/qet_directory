@@ -6,5 +6,6 @@
         <name lang="es" >Puertas lógicas</name>
         <name lang="pt" >Portas lógicas</name>
         <name lang="cs" >Logické funkce</name>
+        <name lang="pl" >Bloki funkcyjne (FBD)</name>
     </names>
 </qet-directory>

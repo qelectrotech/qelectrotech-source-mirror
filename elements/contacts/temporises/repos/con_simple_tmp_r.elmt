@@ -6,6 +6,7 @@
         <name lang="es" >Contactor simple (tiempo retardado de encendido)</name>
         <name lang="cs" >Jednoduché spojení (časový spínač pro zpoždění vypnutí)</name>
         <name lang="pt" >Contacto simples (tempo de ligado retardado)</name>
+        <name lang="pl" >Styk (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

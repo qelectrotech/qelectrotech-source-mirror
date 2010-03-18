@@ -6,5 +6,6 @@
         <name lang="es" >Sonido</name>
         <name lang="cs" >Zvuky</name>
         <name lang="pt" >Sinalizadores sonoros</name>
+        <name lang="pl" >Sygnalizatory dźwiękowe</name>
     </names>
 </qet-directory>

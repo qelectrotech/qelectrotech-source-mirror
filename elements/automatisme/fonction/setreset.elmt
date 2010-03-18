@@ -6,6 +6,7 @@
         <name lang="es" >SET/RESET</name>
         <name lang="cs" >NASTAVIT/NASTAVIT ZNOVU</name>
         <name lang="pt" >SET/RESET</name>
+        <name lang="pl" >Przerzutnik SR</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="es" >Horno eléctrico</name>
         <name lang="cs" >Elektrická kamna</name>
         <name lang="pt" >Forno eléctrico</name>
+        <name lang="pl" >Piekarnik elektryczny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
