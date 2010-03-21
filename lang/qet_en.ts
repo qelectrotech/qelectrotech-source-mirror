@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="157"/>
+        <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>This program is under the GNU/GPL license.</translation>
     </message>
@@ -85,22 +85,27 @@
         <translation>Czech translation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="124"/>
+        <source>Traduction en polonais</source>
+        <translation>Polish translation</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Paquets Fedora</source>
         <translation>Fedora packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Paquets Mandriva</source>
         <translation>Mandriva packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Debian</source>
         <translation>Debian packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Icônes</source>
         <translation>Icons</translation>
     </message>
@@ -1309,6 +1314,12 @@ Changes will be definitive.</translation>
         <translation>You must enter a non-empty, unique filename for each diagram to export.</translation>
     </message>
     <message>
+        <location filename="../sources/exportdialog.cpp" line="646"/>
+        <location filename="../sources/exportdialog.cpp" line="651"/>
+        <source>px</source>
+        <translation>px</translation>
+    </message>
+    <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
@@ -1331,15 +1342,6 @@ Changes will be definitive.</translation>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>It appears you do not have the required permissions to write the file %1.</translation>
-    </message>
-</context>
-<context>
-    <name>ExportDialog::ExportDiagramLine</name>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="646"/>
-        <location filename="../sources/exportdialog.cpp" line="651"/>
-        <source>px</source>
-        <translation>pxpx</translation>
     </message>
 </context>
 <context>

@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="157"/>
+        <location filename="../sources/aboutqet.cpp" line="155"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Tento program je pod licencí GNU/GPL.</translation>
     </message>
@@ -85,22 +85,27 @@
         <translation>Překlad do češtiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="124"/>
+        <source>Traduction en polonais</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Paquets Fedora</source>
         <translation>Balíčky pro Fedoru</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Paquets Mandriva</source>
         <translation>Balíčky pro Mandrivu</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Debian</source>
         <translation>Balíčky pro Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -1309,6 +1314,12 @@ Provedené změny budou konečné.</translation>
         <translation>Musíte zadat název souboru, který bude jedinečný pro každý nákres, který bude vyveden.</translation>
     </message>
     <message>
+        <location filename="../sources/exportdialog.cpp" line="646"/>
+        <location filename="../sources/exportdialog.cpp" line="651"/>
+        <source>px</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
@@ -1331,15 +1342,6 @@ Provedené změny budou konečné.</translation>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
         <translation>Zdá se, že nemáte nutná oprávnění pro zápis souboru %1.</translation>
-    </message>
-</context>
-<context>
-    <name>ExportDialog::ExportDiagramLine</name>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="646"/>
-        <location filename="../sources/exportdialog.cpp" line="651"/>
-        <source>px</source>
-        <translation>px</translation>
     </message>
 </context>
 <context>
