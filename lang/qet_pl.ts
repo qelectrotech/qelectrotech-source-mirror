@@ -87,7 +87,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="124"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na polski</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
@@ -1317,7 +1317,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/exportdialog.cpp" line="646"/>
         <location filename="../sources/exportdialog.cpp" line="651"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
@@ -3512,22 +3512,22 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="382"/>
         <source>&amp;Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Plik</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="383"/>
         <source>&amp;Édition</source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="384"/>
         <source>Afficha&amp;ge</source>
-        <translation type="unfinished"></translation>
+        <translation>Widok</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="385"/>
         <source>O&amp;utils</source>
-        <translation type="unfinished"></translation>
+        <translation>Na&amp;rzędzia</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="386"/>
@@ -3537,7 +3537,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="387"/>
         <source>&amp;Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pomoc</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="409"/>
