@@ -5,6 +5,7 @@
         <name lang="en" >Connector</name>
         <name lang="cs" >Spojka</name>
         <name lang="pt" >Conector</name>
+        <name lang="pl" >Złącze wtykowe</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

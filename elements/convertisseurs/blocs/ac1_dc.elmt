@@ -6,6 +6,7 @@
         <name lang="es" >Alterna monofásica > Continua</name>
         <name lang="cs" >Jednofázový střídavý </name>
         <name lang="pt" >Alterna monofásica > Continua</name>
+        <name lang="pl" >Jednofazowy (AC/DC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

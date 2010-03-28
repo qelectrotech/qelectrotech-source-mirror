@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetelementeditor.h"
+#include "qet.h"
 #include "qetapp.h"
 #include "elementscene.h"
 #include "elementview.h"
@@ -86,6 +87,35 @@ QETElementEditor::~QETElementEditor() {
 	// supprime les editeurs de primitives
 	qDeleteAll(editors_.begin(), editors_.end());
 	editors_.clear();
+}
+
+/**
+	@param el Le nouvel emplacement de l'element edite
+*/
+void QETElementEditor::setLocation(const ElementsLocation &el) {
+	location_ = el;
+	opened_from_file = false;
+	// modifie le mode lecture seule si besoin
+	ElementsCollectionItem *item = QETApp::collectionItem(location_);
+	bool must_be_read_only = item && !item -> isWritable();
+	if (isReadOnly() != must_be_read_only) {
+		setReadOnly(must_be_read_only);
+	}
+	slot_updateTitle();
+}
+
+/**
+	@param fn Le nouveau nom de fichier de l'element edite
+*/
+void QETElementEditor::setFileName(const QString &fn) {
+	filename_ = fn;
+	opened_from_file = true;
+	// modifie le mode lecture seule si besoin
+	bool must_be_read_only = !QFileInfo(filename_).isWritable();
+	if (isReadOnly() != must_be_read_only) {
+		setReadOnly(must_be_read_only);
+	}
+	slot_updateTitle();
 }
 
 /**
@@ -349,12 +379,12 @@ void QETElementEditor::setupActions() {
 	Met en place les menus.
 */
 void QETElementEditor::setupMenus() {
-	file_menu    = new QMenu(tr("Fichier"),        this);
-	edit_menu    = new QMenu(tr("\311dition"),     this);
-	display_menu = new QMenu(tr("Affichage"),      this);
-	tools_menu   = new QMenu(tr("Outils"),         this);
+	file_menu    = new QMenu(tr("&Fichier"),       this);
+	edit_menu    = new QMenu(tr("&\311dition"),    this);
+	display_menu = new QMenu(tr("Afficha&ge"),     this);
+	tools_menu   = new QMenu(tr("O&utils"),        this);
 	config_menu  = new QMenu(tr("&Configuration"), this);
-	help_menu    = new QMenu(tr("Aide"),           this);
+	help_menu    = new QMenu(tr("&Aide"),          this);
 	
 	file_menu    -> setTearOffEnabled(true);
 	edit_menu    -> setTearOffEnabled(true);
@@ -838,6 +868,46 @@ bool QETElementEditor::toLocation(const ElementsLocation &location) {
 }
 
 /**
+	@param provided_location Emplacement d'un element
+	@return true si cet editeur est en train d'editer l'element dont
+	l'emplacement est location, false sinon
+*/
+bool QETElementEditor::isEditing(const ElementsLocation &provided_location) {
+	if (opened_from_file) {
+		return(
+			QET::compareCanonicalFilePaths(
+				filename_,
+				QETApp::realPath(provided_location.toString())
+			)
+		);
+	} else {
+		return(provided_location == location_);
+	}
+}
+
+/**
+	@param provided_filepath Chemin d'un element sur un filesystem
+	@return true si cet editeur est en train d'editer l'element dont
+	le chemin est filepath, false sinon
+*/
+bool QETElementEditor::isEditing(const QString &provided_filepath) {
+	// determine le chemin canonique de l'element actuelle edite, si applicable
+	QString current_filepath;
+	if (opened_from_file) {
+		current_filepath = filename_;
+	} else {
+		current_filepath = QETApp::realPath(location_.toString());
+	}
+	
+	return(
+		QET::compareCanonicalFilePaths(
+			current_filepath,
+			provided_filepath
+		)
+	);
+}
+
+/**
 	specifie si l'editeur d'element doit etre en mode lecture seule
 	@param ro true pour activer le mode lecture seule, false pour le desactiver
 */
@@ -872,9 +942,7 @@ void QETElementEditor::slot_open() {
 	// demande le chemin virtuel de l'element a ouvrir a l'utilisateur
 	ElementsLocation location = ElementDialog::getOpenElementLocation(this);
 	if (location.isNull()) return;
-	QETElementEditor *cee = new QETElementEditor();
-	cee -> fromLocation(location);
-	cee -> show();
+	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
 }
 
 /**
@@ -908,12 +976,11 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
 	Cette methode ne controle pas si le fichier est deja ouvert
 	@param filepath Fichier a ouvrir
 	@see fromFile
+	@see QETApp::openElementFiles
 */
 void QETElementEditor::openElement(const QString &filepath) {
 	if (filepath.isEmpty()) return;
-	QETElementEditor *cee = new QETElementEditor();
-	cee -> fromFile(filepath);
-	cee -> show();
+	QETApp::instance() -> openElementFiles(QStringList() << filepath);
 }
 
 /**

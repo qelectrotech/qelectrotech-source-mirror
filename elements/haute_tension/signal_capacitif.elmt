@@ -4,6 +4,7 @@
         <name lang="en" >Capacitive voltage attendance indicator</name>
         <name lang="cs" >Kapacitní ukazatel přítomnosti napětí</name>
         <name lang="pt" >Indicador de presença de tensão capacitiva</name>
+        <name lang="pl" >Pojemnościowy wskaźnik napięcia</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

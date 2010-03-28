@@ -6,6 +6,7 @@
         <name lang="es" >Bocina</name>
         <name lang="cs" >Houkačka</name>
         <name lang="pt" >Buzina</name>
+        <name lang="pl" >Buczek</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

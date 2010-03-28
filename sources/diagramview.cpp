@@ -851,7 +851,12 @@ void DiagramView::editDefaultConductorProperties() {
 bool DiagramView::event(QEvent *e) {
 	// fait en sorte que les raccourcis clavier arrivent prioritairement sur la
 	// vue plutot que de remonter vers les QMenu / QAction
-	if (e -> type() == QEvent::ShortcutOverride && scene -> focusItem()) {
+	if (
+		e -> type() == QEvent::ShortcutOverride &&
+		scene -> hasFocus() &&
+		scene -> focusItem() &&
+		scene -> focusItem() -> isSelected()
+	) {
 		e -> accept();
 		return(true);
 	}

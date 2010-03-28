@@ -33,7 +33,7 @@ $ make
 
 [pt]
 Dependências:
-libqt4 (ver pacotes libqt4*)
+libQt4 (ver pacotes libqt4*)
 cupsys-bsd para impressão
 
 Como compilar:
@@ -44,7 +44,7 @@ $ make
 
 [es]
 Dependencias:
-libqt4 (paquetes libqt4*)
+libQt4 (paquetes libqt4*)
 cupsys-bsd para imprimir
 
 Cómo compilar:
@@ -60,6 +60,17 @@ cupsys-bsd kvůli tisku
 
 Jak program sestavit :
 $ qmake (qmake-qt4 u systémů založených na Debianu)
+$ make
+# umask 0022
+# make install
+
+[pl]
+Zależności:
+libQt4 (pakiety libqt4 *)
+cupsys-bsd do druku
+
+Sposób kompilacji:
+$ qmake (qmake-qt4 dla systemów opartych na Debianie)
 $ make
 # umask 0022
 # make install

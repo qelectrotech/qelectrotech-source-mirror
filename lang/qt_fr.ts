@@ -50,7 +50,7 @@
     </message>
     <message>
         <source>remote media URL:</source>
-        <translation type="obsolete">URL distante :</translation>
+        <translation type="obsolete">URL distante :</translation>
     </message>
     <message>
         <source>run tests</source>
@@ -58,7 +58,7 @@
     </message>
     <message>
         <source>testing: %p%</source>
-        <translation type="obsolete">test de : %P%</translation>
+        <translation type="obsolete">test de : %P%</translation>
     </message>
 </context>
 <context>
@@ -197,7 +197,7 @@ have libgstreamer-plugins-base installed.</source>
     </message>
     <message>
         <source>Unknown media format: %1</source>
-        <translation type="obsolete">Format inconnu : %1</translation>
+        <translation type="obsolete">Format inconnu : %1</translation>
     </message>
     <message>
         <source>Unable to flush media pipeline</source>
@@ -332,13 +332,13 @@ have libgstreamer-plugins-base installed.</source>
     <message>
         <location line="+8"/>
         <source>Read: %1</source>
-        <translation>Lecture : %1</translation>
+        <translation>Lecture : %1</translation>
     </message>
     <message>
         <location line="+6"/>
         <location line="+30"/>
         <source>Write: %1</source>
-        <translation>Écriture : %1</translation>
+        <translation>Écriture : %1</translation>
     </message>
     <message>
         <location line="-22"/>
@@ -388,19 +388,19 @@ have libgstreamer-plugins-base installed.</source>
     <message>
         <location line="-1991"/>
         <source>Look &amp;in:</source>
-        <translation>Chercher &amp;dans :</translation>
+        <translation>Chercher &amp;dans :</translation>
     </message>
     <message>
         <location line="+1"/>
         <location line="+1981"/>
         <location line="+16"/>
         <source>File &amp;name:</source>
-        <translation>&amp;Nom de fichier :</translation>
+        <translation>&amp;Nom de fichier :</translation>
     </message>
     <message>
         <location line="-1996"/>
         <source>File &amp;type:</source>
-        <translation>&amp;Type de fichier :</translation>
+        <translation>&amp;Type de fichier :</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -581,7 +581,7 @@ have libgstreamer-plugins-base installed.</source>
     <message>
         <location line="+1"/>
         <source>&lt;qt&gt;Are you sure you wish to delete %1 &quot;%2&quot;?&lt;/qt&gt;</source>
-        <translation>&lt;qt&gt;Voulez-vous vraiment supprimer %1 &quot;%2&quot;?&lt;/qt&gt;</translation>
+        <translation>&lt;qt&gt;Voulez-vous vraiment supprimer %1 &quot;%2&quot; ?&lt;/qt&gt;</translation>
     </message>
     <message>
         <location line="+2"/>
@@ -622,7 +622,7 @@ have libgstreamer-plugins-base installed.</source>
     <message>
         <location line="-2"/>
         <source>Directory:</source>
-        <translation>Dossier :</translation>
+        <translation>Dossier :</translation>
     </message>
     <message>
         <location line="+40"/>
@@ -774,7 +774,7 @@ en
     <message>
         <location line="+1"/>
         <source>&amp;Redo</source>
-        <translation>A&amp;nnuler Annuler</translation>
+        <translation>&amp;Rétablir</translation>
     </message>
     <message>
         <location line="+5"/>
@@ -1038,7 +1038,7 @@ en
     <message>
         <location line="+2"/>
         <source>Incompatible Qt Library Error</source>
-        <translation>Erreur : bibliothèque Qt incompatible</translation>
+        <translation>Erreur : bibliothèque Qt incompatible</translation>
     </message>
     <message>
         <location filename="../src/gui/accessible/qaccessibleobject.cpp" line="+376"/>
@@ -1071,7 +1071,7 @@ en
     <message>
         <location/>
         <source>COM &amp;Object:</source>
-        <translation>&amp;Objet COM :</translation>
+        <translation>&amp;Objet COM :</translation>
     </message>
 </context>
 <context>
@@ -1097,37 +1097,37 @@ en
     <message>
         <location filename="../src/gui/dialogs/qcolordialog.cpp" line="+1253"/>
         <source>Hu&amp;e:</source>
-        <translation>&amp;Teinte :</translation>
+        <translation>&amp;Teinte :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&amp;Sat:</source>
-        <translation>&amp;Saturation :</translation>
+        <translation>&amp;Saturation :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&amp;Val:</source>
-        <translation>&amp;Valeur :</translation>
+        <translation>&amp;Valeur :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&amp;Red:</source>
-        <translation>&amp;Rouge :</translation>
+        <translation>&amp;Rouge :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>&amp;Green:</source>
-        <translation>&amp;Vert :</translation>
+        <translation>&amp;Vert :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>Bl&amp;ue:</source>
-        <translation>Ble&amp;u :</translation>
+        <translation>Ble&amp;u :</translation>
     </message>
     <message>
         <location line="+1"/>
         <source>A&amp;lpha channel:</source>
-        <translation>Canal a&amp;lpha :</translation>
+        <translation>Canal a&amp;lpha :</translation>
     </message>
     <message>
         <location line="+101"/>
@@ -1339,7 +1339,7 @@ en
     <message>
         <location filename="../src/gui/dialogs/qdialog.cpp" line="+597"/>
         <source>What&apos;s This?</source>
-        <translation>Qu&apos;est-ce que c&apos;est ?</translation>
+        <translation>Qu&apos;est-ce que c&apos;est ?</translation>
     </message>
     <message>
         <location line="-115"/>
@@ -1669,7 +1669,7 @@ en
         <location line="+1054"/>
         <source>%1 already exists.
 Do you want to replace it?</source>
-        <translation>Le fichier %1 existe déjà. Voulez-vous l&apos;écraser ?</translation>
+        <translation>Le fichier %1 existe déjà. Voulez-vous l&apos;écraser ?</translation>
     </message>
     <message>
         <location line="+20"/>
@@ -1683,7 +1683,7 @@ Veuillez vérifier que le nom du fichier est correct.</translation>
     <message>
         <location filename="../src/gui/itemviews/qdirmodel.cpp" line="+402"/>
         <source>My Computer</source>
-        <translation>Mon ordinateur</translation>
+        <translation>Poste de travail</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.ui"/>
@@ -1695,13 +1695,13 @@ Veuillez vérifier que le nom du fichier est correct.</translation>
         <location/>
         <location filename="../src/gui/dialogs/qfiledialog_wince.ui"/>
         <source>Files of type:</source>
-        <translation>Fichiers de type :</translation>
+        <translation>Fichiers de type :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="-1496"/>
         <location line="+648"/>
         <source>Directory:</source>
-        <translation>Dossier :</translation>
+        <translation>Dossier :</translation>
     </message>
     <message>
         <source>
@@ -1726,12 +1726,12 @@ Veuillez vérifier que le nom du dossier est correct.</translation>
         <source>&apos;%1&apos; is write protected.
 Do you want to delete it anyway?</source>
         <translation>&apos;%1&apos; est protégé en écriture.
-Voulez-vous quand même le supprimer?</translation>
+Voulez-vous quand même le supprimer ?</translation>
     </message>
     <message>
         <location line="+5"/>
         <source>Are sure you want to delete &apos;%1&apos;?</source>
-        <translation>Etes-vous sûr de vouloir supprimer &apos;%1&apos;?</translation>
+        <translation>Etes-vous sûr de vouloir supprimer &apos;%1&apos; ?</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -1805,7 +1805,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/gui/dialogs/qfiledialog.cpp" line="-687"/>
         <location line="+652"/>
         <source>File &amp;name:</source>
-        <translation>&amp;Nom de fichier :</translation>
+        <translation>&amp;Nom de fichier :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qfiledialog.ui"/>
@@ -2243,7 +2243,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Listing directory failed:
 %1</source>
-        <translation>Échec du listage du dossier :
+        <translation>Échec du listage du dossier :
 %1</translation>
     </message>
     <message>
@@ -2251,7 +2251,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Changing directory failed:
 %1</source>
-        <translation>Échec du changement de dossier :
+        <translation>Échec du changement de dossier :
 %1</translation>
     </message>
     <message>
@@ -2259,7 +2259,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Downloading file failed:
 %1</source>
-        <translation>Échec du téléchargement du fichier :
+        <translation>Échec du téléchargement du fichier :
 %1</translation>
     </message>
     <message>
@@ -2267,7 +2267,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Uploading file failed:
 %1</source>
-        <translation>Échec du télédéchargement :
+        <translation>Échec du télédéchargement :
 %1</translation>
     </message>
     <message>
@@ -2275,7 +2275,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Removing file failed:
 %1</source>
-        <translation>Échec de la suppression d&apos;un fichier :
+        <translation>Échec de la suppression d&apos;un fichier :
 %1</translation>
     </message>
     <message>
@@ -2283,7 +2283,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Creating directory failed:
 %1</source>
-        <translation>Échec de la création d&apos;un dossier :
+        <translation>Échec de la création d&apos;un dossier :
 %1</translation>
     </message>
     <message>
@@ -2291,7 +2291,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/qt3support/network/q3ftp.cpp" line="+3"/>
         <source>Removing directory failed:
 %1</source>
-        <translation>Échec de la suppression d&apos;un dossier :
+        <translation>Échec de la suppression d&apos;un dossier :
 %1</translation>
     </message>
     <message>
@@ -2718,7 +2718,7 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location filename="../src/gui/dialogs/qinputdialog.cpp" line="+223"/>
         <source>Enter a value:</source>
-        <translation>Entrer une valeur :</translation>
+        <translation>Entrer une valeur :</translation>
     </message>
 </context>
 <context>
@@ -2738,7 +2738,7 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location filename="../src/corelib/plugin/qlibrary.cpp" line="+378"/>
         <source>Could not mmap &apos;%1&apos;: %2</source>
-        <translation>Impossible d&apos;établir la projection en mémoire de &apos;%1&apos; : %2</translation>
+        <translation>Impossible d&apos;établir la projection en mémoire de &apos;%1&apos; : %2</translation>
     </message>
     <message>
         <location line="+22"/>
@@ -2748,7 +2748,7 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location line="+6"/>
         <source>Could not unmap &apos;%1&apos;: %2</source>
-        <translation>Impossible de supprimer la projection en mémoire de &apos;%1&apos; : %2</translation>
+        <translation>Impossible de supprimer la projection en mémoire de &apos;%1&apos; : %2</translation>
     </message>
     <message>
         <location line="+302"/>
@@ -2785,19 +2785,19 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/corelib/plugin/qlibrary_unix.cpp" line="+209"/>
         <location filename="../src/corelib/plugin/qlibrary_win.cpp" line="+99"/>
         <source>Cannot load library %1: %2</source>
-        <translation>Impossible de charger la bibliothèque %1 : %2</translation>
+        <translation>Impossible de charger la bibliothèque %1 : %2</translation>
     </message>
     <message>
         <location line="+16"/>
         <location filename="../src/corelib/plugin/qlibrary_win.cpp" line="+26"/>
         <source>Cannot unload library %1: %2</source>
-        <translation>Impossible de décharger la bibliothèque %1 : %2</translation>
+        <translation>Impossible de décharger la bibliothèque %1 : %2</translation>
     </message>
     <message>
         <location line="+31"/>
         <location filename="../src/corelib/plugin/qlibrary_win.cpp" line="+15"/>
         <source>Cannot resolve symbol &quot;%1&quot; in %2: %3</source>
-        <translation>Impossible de résoudre le symbole &quot;%1&quot; dans %2 : %3</translation>
+        <translation>Impossible de résoudre le symbole &quot;%1&quot; dans %2 : %3</translation>
     </message>
 </context>
 <context>
@@ -2815,7 +2815,7 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location line="+4"/>
         <source>&amp;Redo</source>
-        <translation>A&amp;nnuler Annuler</translation>
+        <translation>&amp;Rétablir</translation>
     </message>
     <message>
         <location line="+7"/>
@@ -2925,7 +2925,7 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location line="+4"/>
         <source>%1: Unknown error</source>
-        <translation>%1 : erreur inconnue</translation>
+        <translation>%1 : erreur inconnue</translation>
     </message>
     <message>
         <location filename="../src/network/socket/qlocalsocket_unix.cpp" line="+4"/>
@@ -3221,8 +3221,8 @@ Voulez-vous quand même le supprimer?</translation>
         <translation type="obsolete">&lt;p&gt;Ce programme utilise la version %1 de Qt.&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.&lt;/p&gt;&lt;p&gt;Qt is a Trolltech product. See &lt;a href=&quot;http://qtsoftware.com/qt/&quot;&gt;qtsoftware.com/qt/&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;h3&gt;A propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est un toolkit C++ pour le développement d&apos;applications multi-platformes.&lt;/p&gt;&lt;p&gt;Qt fournit la portabilité du code source pour MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux et toutes les variantes commerciales majeures d&apos;Unix. Qt est aussi disponible pour les systèmes embarqués sous le nom Qtopia Core.&lt;/p&gt;&lt;p&gt;Qt est un produit de Trolltech. &lt;a href=&quot;http://qtsoftware.com/qt/&quot;&gt;qtsoftware.com/qt/&lt;/a&gt; for more information.&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qtopia Core.&lt;/p&gt;&lt;p&gt;Qt is a Trolltech product. See &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com/&lt;/a&gt; for more information.&lt;/p&gt;</source>
+        <translation type="obsolete">&lt;h3&gt;A propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est un toolkit C++ pour le développement d&apos;applications multi-platformes.&lt;/p&gt;&lt;p&gt;Qt fournit la portabilité du code source pour MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux et toutes les variantes commerciales majeures d&apos;Unix. Qt est aussi disponible pour les systèmes embarqués sous le nom Qtopia Core.&lt;/p&gt;&lt;p&gt;Qt est un produit de Trolltech. &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com&lt;/a&gt; for more information.&lt;/p&gt;</translation>
     </message>
     <message>
         <location line="-1097"/>
@@ -3236,20 +3236,20 @@ Voulez-vous quand même le supprimer?</translation>
     </message>
     <message>
         <location line="+1570"/>
-        <source>&lt;h3&gt;About Qt&lt;/h3&gt;&lt;p&gt;This program uses Qt version %1.&lt;/p&gt;&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qt for Embedded Linux and Qt for Windows CE.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 2.1 or GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 2.1 is appropriate for the development of Qt applications (proprietary or open source) provided you can comply with the terms and conditions of the GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU General Public License version 3.0 is appropriate for the development of Qt applications where you wish to use such applications in combination with software subject to the terms of the GNU GPL version 3.0 or where you are otherwise willing to comply with the terms of the GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://www.qtsoftware.com/products/licensing&quot;&gt;www.qtsoftware.com/products/licensing&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) 2009 Nokia Corporation and/or its subsidiary(-ies).&lt;/p&gt;&lt;p&gt;Qt is a Nokia product. See &lt;a href=&quot;http://www.qtsoftware.com/qt/&quot;&gt;www.qtsoftware.com/qt&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation type="unfinished">&lt;h3&gt;À propos de Qt&lt;/h3&gt;&lt;p&gt;Ce programme utilise la version %1 de Qt.&lt;/p&gt;&lt;p&gt;Qt est un toolkit C++ pour le développement d&apos;applications multiplateformes.&lt;/p&gt;&lt;p&gt;Pour un même code source, Qt fournit une portabilité sur MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, et toutes les grandes variantes commerciales d&apos;Unix. Qt est également disponible pour les périphériques embarqués avec Qt pour Linux Embarqué et Qt pour Windows CE.&lt;/p&gt;&lt;p&gt;Qt est disponible au choix sous trois licences différentes, conçues pour convenir aux besoins de nos utilisateurs divers.&lt;/p&gt;Qt sous notre accord de licence commercial est approprié pour le développement de logiciels propriétaires/commerciaux dont vous ne voulez pas partager le code source avec des tiers ou ne pouvez pas vous accomoder des termes des licences GNU LGPL version 2.1 ou GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Qt sous la licence GNU LGPL version 2.1 est approprié pour le développement d&apos;applications Qt (propriétaires ou open source) pour le peu que vous puissez respecter les termes et conditions de la licence GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Qt sous la licence GNU General Public License version 3.0 est approprié pour le développement d&apos;applications Qt que vous souhaitez combiner avec des logiciels sujets aux termes de la licence GNU GPL version 3.0 ou alors pour lesquelles vous avez l&apos;intention de vous conformer aux termes de la licence GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Voir &lt;a href=&quot;http://www.qtsoftware.com/products/licensing&quot;&gt;www.qtsoftware.com/products/licensing&lt;/a&gt; pour une vue globale des licences de Qt.&lt;/p&gt;&lt;p&gt;Copyright (C) 2009 Nokia Corporation et/ou ses filiales.&lt;/p&gt;&lt;p&gt;Qt est un produit Nokia. Voir &lt;a href=&quot;http://www.qtsoftware.com/qt/&quot;&gt;www.qtsoftware.com/qt&lt;/a&gt; pour plus d&apos;informations.&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;About Qt&lt;/h3&gt;&lt;p&gt;This program uses Qt version %1.&lt;/p&gt;&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qt for Embedded Linux and Qt for Windows CE.&lt;/p&gt;&lt;p&gt;Qt is available under three different licensing options designed to accommodate the needs of our various users.&lt;/p&gt;Qt licensed under our commercial license agreement is appropriate for development of proprietary/commercial software where you do not want to share any source code with third parties or otherwise cannot comply with the terms of the GNU LGPL version 2.1 or GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU LGPL version 2.1 is appropriate for the development of Qt applications (proprietary or open source) provided you can comply with the terms and conditions of the GNU LGPL version 2.1.&lt;/p&gt;&lt;p&gt;Qt licensed under the GNU General Public License version 3.0 is appropriate for the development of Qt applications where you wish to use such applications in combination with software subject to the terms of the GNU GPL version 3.0 or where you are otherwise willing to comply with the terms of the GNU GPL version 3.0.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://qt.nokia.com/products/licensing&quot;&gt;qt.nokia.com/products/licensing&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;&lt;p&gt;Copyright (C) 2010 Nokia Corporation and/or its subsidiary(-ies).&lt;/p&gt;&lt;p&gt;Qt is a Nokia product. See &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com&lt;/a&gt; for more information.&lt;/p&gt;</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qt for Embedded Linux and Qt for Windows CE.&lt;/p&gt;&lt;p&gt;Qt is a Nokia product. See &lt;a href=&quot;http://qtsoftware.com/qt/&quot;&gt;qtsoftware.com/qt/&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;h3&gt;A propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est un framework de développement d&apos;applications multi-plateforme.&lt;/p&gt;&lt;p&gt;Qt fournit la portabilité du code source surMS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, et toutes les variantes majeures d&apos;Unix. Qt est aussi disponible pour l&apos;embarqué avec Qt for Embedded Linux and Qt for Windows CE.&lt;/p&gt;&lt;p&gt;Qt est un produit de Nokia. Allez à &lt;a href=&quot;http://qtsoftware.com/qt/&quot;&gt;qtsoftware.com/qt/&lt;/a&gt; pour plus d&apos;informations.&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qt for Embedded Linux and Qt for Windows CE.&lt;/p&gt;&lt;p&gt;Qt is a Nokia product. See &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com&lt;/a&gt; for more information.&lt;/p&gt;</source>
+        <translation type="obsolete">&lt;h3&gt;A propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est un framework de développement d&apos;applications multi-plateforme.&lt;/p&gt;&lt;p&gt;Qt fournit la portabilité du code source surMS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, et toutes les variantes majeures d&apos;Unix. Qt est aussi disponible pour l&apos;embarqué avec Qt for Embedded Linux and Qt for Windows CE.&lt;/p&gt;&lt;p&gt;Qt est un produit de Nokia. Allez à &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com&lt;/a&gt; pour plus d&apos;informations.&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>&lt;p&gt;This program uses Qt Open Source Edition version %1.&lt;/p&gt;&lt;p&gt;Qt Open Source Edition is intended for the development of Open Source applications. You need a commercial Qt license for development of proprietary (closed source) applications.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://qtsoftware.com/company/model/&quot;&gt;qtsoftware.com/company/model/&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;p&gt;Ce programme utilise Qt Open Source Edition version %1.&lt;/p&gt;&lt;p&gt;Qt Open Source Edition est prévu pour le développement d&apos;applications Open Source. Vous devez avoir un license commerciale de Qt pour développer des applications propiétaires (Closed Source).&lt;/p&gt;&lt;p&gt;Vous pouvez aller sur &lt;a href=&quot;http://qtsoftware.com/company/model/&quot;&gt;qtsoftware.com/company/model/&lt;/a&gt; pour plus d&apos;informations sur les licenses Qt.&lt;/p&gt;</translation>
+        <source>&lt;p&gt;This program uses Qt Open Source Edition version %1.&lt;/p&gt;&lt;p&gt;Qt Open Source Edition is intended for the development of Open Source applications. You need a commercial Qt license for development of proprietary (closed source) applications.&lt;/p&gt;&lt;p&gt;Please see &lt;a href=&quot;http://qt.nokia.com/company/model/&quot;&gt;qt.nokia.com/company/model/&lt;/a&gt; for an overview of Qt licensing.&lt;/p&gt;</source>
+        <translation type="obsolete">&lt;p&gt;Ce programme utilise Qt Open Source Edition version %1.&lt;/p&gt;&lt;p&gt;Qt Open Source Edition est prévu pour le développement d&apos;applications Open Source. Vous devez avoir un license commerciale de Qt pour développer des applications propiétaires (Closed Source).&lt;/p&gt;&lt;p&gt;Vous pouvez aller sur &lt;a href=&quot;http://qt.nokia.com/company/model/&quot;&gt;qt.nokia.com/company/model/&lt;/a&gt; pour plus d&apos;informations sur les licenses Qt.&lt;/p&gt;</translation>
     </message>
     <message>
-        <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qt Embedded.&lt;/p&gt;&lt;p&gt;Qt is a Trolltech product. See &lt;a href=&quot;http://qtsoftware.com/qt/&quot;&gt;qtsoftware.com/qt/&lt;/a&gt; for more information.&lt;/p&gt;</source>
-        <translation type="obsolete">&lt;h3&gt;A propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est un toolkit C++ pour le développement d&apos;application multi-plateforme.&lt;/p&gt;&lt;p&gt;Qt fournit la portabilité de votre source pour MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, toutes les variantes majeures d&apos;Unix. Qt est aussi disponible pour les périphériques embarqués avec Qt Embedded.&lt;/p&gt;&lt;p&gt;Qt est un produit de Trolltech. Voir &lt;a href=&quot;http://qtsoftware.com/qt/&quot;&gt;qtsoftware.com/qt/&lt;/a&gt; pour plus d&apos;informations.&lt;/p&gt;</translation>
+        <source>&lt;h3&gt;About Qt&lt;/h3&gt;%1&lt;p&gt;Qt is a C++ toolkit for cross-platform application development.&lt;/p&gt;&lt;p&gt;Qt provides single-source portability across MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, and all major commercial Unix variants. Qt is also available for embedded devices as Qt Embedded.&lt;/p&gt;&lt;p&gt;Qt is a Trolltech product. See &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com&lt;/a&gt; for more information.&lt;/p&gt;</source>
+        <translation type="obsolete">&lt;h3&gt;A propos de Qt&lt;/h3&gt;%1&lt;p&gt;Qt est un toolkit C++ pour le développement d&apos;application multi-plateforme.&lt;/p&gt;&lt;p&gt;Qt fournit la portabilité de votre source pour MS&amp;nbsp;Windows, Mac&amp;nbsp;OS&amp;nbsp;X, Linux, toutes les variantes majeures d&apos;Unix. Qt est aussi disponible pour les périphériques embarqués avec Qt Embedded.&lt;/p&gt;&lt;p&gt;Qt est un produit de Trolltech. Voir &lt;a href=&quot;http://qt.nokia.com/&quot;&gt;qt.nokia.com&lt;/a&gt; pour plus d&apos;informations.&lt;/p&gt;</translation>
     </message>
 </context>
 <context>
@@ -3424,22 +3424,22 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location line="+42"/>
         <source>Error opening %1: %2</source>
-        <translation>Erreur lors de l&apos;ouverture de %1 : %2</translation>
+        <translation>Erreur lors de l&apos;ouverture de %1 : %2</translation>
     </message>
     <message>
         <location line="+56"/>
         <source>Write error writing to %1: %2</source>
-        <translation>Erreur d&apos;écriture de %1 : %2</translation>
+        <translation>Erreur d&apos;écriture de %1 : %2</translation>
     </message>
     <message>
         <location line="+33"/>
         <source>Cannot open %1: Path is a directory</source>
-        <translation>Impossible d&apos;ouvrir %1 : le chemin est un dossier</translation>
+        <translation>Impossible d&apos;ouvrir %1 : le chemin est un dossier</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>Read error reading from %1: %2</source>
-        <translation>Erreur de lecture de %1 : %2</translation>
+        <translation>Erreur de lecture de %1 : %2</translation>
     </message>
 </context>
 <context>
@@ -3452,22 +3452,22 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location line="+14"/>
         <source>Cannot open %1: is a directory</source>
-        <translation>Impossible d&apos;ouvrir %1 : le chemin est un dossier</translation>
+        <translation>Impossible d&apos;ouvrir %1 : le chemin est un dossier</translation>
     </message>
     <message>
         <location line="+130"/>
         <source>Logging in to %1 failed: authentication required</source>
-        <translation>Connexion à %1 a échoué : authentification requise</translation>
+        <translation>Connexion à %1 a échoué : authentification requise</translation>
     </message>
     <message>
         <location line="+39"/>
         <source>Error while downloading %1: %2</source>
-        <translation>Erreur lors du téléchargement de %1 : %2</translation>
+        <translation>Erreur lors du téléchargement de %1 : %2</translation>
     </message>
     <message>
         <location line="+2"/>
         <source>Error while uploading %1: %2</source>
-        <translation>Erreur lors de l&apos;envoi de %1 : %2</translation>
+        <translation>Erreur lors de l&apos;envoi de %1 : %2</translation>
     </message>
 </context>
 <context>
@@ -3673,22 +3673,22 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location line="+53"/>
         <source>Invalid URI: %1</source>
-        <translation>URI invalide : %1</translation>
+        <translation>URI invalide : %1</translation>
     </message>
     <message>
         <location filename="../src/network/access/qnetworkaccessdebugpipebackend.cpp" line="+175"/>
         <source>Write error writing to %1: %2</source>
-        <translation>Erreur d&apos;écriture sur %1 : %2</translation>
+        <translation>Erreur d&apos;écriture sur %1 : %2</translation>
     </message>
     <message>
         <location line="+57"/>
         <source>Read error reading from %1: %2</source>
-        <translation>Erreur de lecture sur %1 : %2</translation>
+        <translation>Erreur de lecture sur %1 : %2</translation>
     </message>
     <message>
         <location line="+31"/>
         <source>Socket error on %1: %2</source>
-        <translation>Erreur de socket sur %1 : %2</translation>
+        <translation>Erreur de socket sur %1 : %2</translation>
     </message>
     <message>
         <location line="+15"/>
@@ -3801,22 +3801,22 @@ Voulez-vous quand même le supprimer?</translation>
     <message>
         <location/>
         <source>Page size:</source>
-        <translation>Dimensions :</translation>
+        <translation>Dimensions :</translation>
     </message>
     <message>
         <location/>
         <source>Width:</source>
-        <translation>Largeur :</translation>
+        <translation>Largeur :</translation>
     </message>
     <message>
         <location/>
         <source>Height:</source>
-        <translation>Hauteur :</translation>
+        <translation>Hauteur :</translation>
     </message>
     <message>
         <location/>
         <source>Paper source:</source>
-        <translation>Source du papier :</translation>
+        <translation>Source du papier :</translation>
     </message>
     <message>
         <location/>
@@ -3924,7 +3924,7 @@ Voulez-vous quand même le supprimer?</translation>
     </message>
     <message>
         <source>Number of copies:</source>
-        <translation type="obsolete">Nombre de copies :</translation>
+        <translation type="obsolete">Nombre de copies :</translation>
     </message>
     <message>
         <source>Paper format</source>
@@ -4067,7 +4067,7 @@ Voulez-vous quand même le supprimer?</translation>
         <location filename="../src/gui/painting/qprinterinfo_unix.cpp" line="-647"/>
         <location line="+225"/>
         <source>Aliases: %1</source>
-        <translation>Alias : %1</translation>
+        <translation>Alias : %1</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="-25"/>
@@ -4101,15 +4101,15 @@ Voulez-vous quand même le supprimer?</translation>
     </message>
     <message>
         <source>Page size:</source>
-        <translation type="obsolete">Dimensions :</translation>
+        <translation type="obsolete">Dimensions :</translation>
     </message>
     <message>
         <source>Orientation:</source>
-        <translation type="obsolete">Orientation :</translation>
+        <translation type="obsolete">Orientation :</translation>
     </message>
     <message>
         <source>Paper source:</source>
-        <translation type="obsolete">Source du papier :</translation>
+        <translation type="obsolete">Source du papier :</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qabstractprintdialog.cpp" line="+110"/>
@@ -4137,7 +4137,7 @@ Voulez-vous quand même le supprimer?</translation>
     </message>
     <message>
         <source>Size:</source>
-        <translation type="obsolete">Taille :</translation>
+        <translation type="obsolete">Taille :</translation>
     </message>
     <message>
         <source>Properties</source>
@@ -4145,7 +4145,7 @@ Voulez-vous quand même le supprimer?</translation>
     </message>
     <message>
         <source>Printer info:</source>
-        <translation type="obsolete">Informations sur l&apos;imprimante :</translation>
+        <translation type="obsolete">Informations sur l&apos;imprimante :</translation>
     </message>
     <message>
         <source>Browse</source>
@@ -4195,7 +4195,7 @@ Veuillez choisir un nom de fichier différent.</translation>
         <source>%1 already exists.
 Do you want to overwrite it?</source>
         <translation>%1 existe.
-Voulez-vous l&apos;écraser?</translation>
+Voulez-vous l&apos;écraser ?</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_qws.cpp" line="-228"/>
@@ -4205,7 +4205,7 @@ Voulez-vous l&apos;écraser?</translation>
     <message>
         <location line="+1"/>
         <source>&lt;qt&gt;Do you want to overwrite it?&lt;/qt&gt;</source>
-        <translation>&lt;qt&gt;voulez-vous l&apos;écraser?&lt;/qt&gt;</translation>
+        <translation>&lt;qt&gt;voulez-vous l&apos;écraser ?&lt;/qt&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/dialogs/qprintdialog_unix.cpp" line="-8"/>
@@ -4666,7 +4666,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location/>
         <source>&amp;Name:</source>
-        <translation>&amp;Nom :</translation>
+        <translation>&amp;Nom :</translation>
     </message>
     <message>
         <location/>
@@ -4676,7 +4676,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location/>
         <source>Location:</source>
-        <translation>Emplacement :</translation>
+        <translation>Emplacement :</translation>
     </message>
     <message>
         <location/>
@@ -4716,7 +4716,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+235"/>
         <source>Resource error (fork failure): %1</source>
-        <translation>Erreur de ressouce (fork) : %1</translation>
+        <translation>Erreur de ressouce (fork) : %1</translation>
     </message>
     <message>
         <location line="+259"/>
@@ -4754,7 +4754,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+912"/>
         <source>No program defined</source>
-        <translation>Pas de programme défini</translation>
+        <translation>Aucun programme défini</translation>
     </message>
     <message>
         <location filename="../src/corelib/io/qprocess_win.cpp" line="-341"/>
@@ -5027,99 +5027,99 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location filename="../src/corelib/kernel/qsharedmemory.cpp" line="+207"/>
         <source>%1: unable to set key on lock</source>
-        <translation>%1 : impossible d&apos;affecter la clé au verrou</translation>
+        <translation>%1 : impossible d&apos;affecter la clé au verrou</translation>
     </message>
     <message>
         <location line="+81"/>
         <source>%1: create size is less then 0</source>
-        <translation>%1 : taille de création est inférieur à 0</translation>
+        <translation>%1 : taille de création est inférieur à 0</translation>
     </message>
     <message>
         <location line="+168"/>
         <location filename="../src/corelib/kernel/qsharedmemory_p.h" line="+148"/>
         <source>%1: unable to lock</source>
-        <translation>%1 : impossible de vérrouiller</translation>
+        <translation>%1 : impossible de vérrouiller</translation>
     </message>
     <message>
         <location line="+22"/>
         <source>%1: unable to unlock</source>
-        <translation>%1 : impossible de déverrouiller</translation>
+        <translation>%1 : impossible de déverrouiller</translation>
     </message>
     <message>
         <location filename="../src/corelib/kernel/qsharedmemory_unix.cpp" line="+78"/>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="+87"/>
         <source>%1: permission denied</source>
-        <translation>%1 : permission refusée</translation>
+        <translation>%1 : permission refusée</translation>
     </message>
     <message>
         <location line="+4"/>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="-22"/>
         <source>%1: already exists</source>
-        <translation>%1 : existe déjà</translation>
+        <translation>%1 : existe déjà</translation>
     </message>
     <message>
         <location line="+4"/>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="+9"/>
         <source>%1: doesn&apos;t exists</source>
-        <translation>%1 : n&apos;existe pas</translation>
+        <translation>%1 : n&apos;existe pas</translation>
     </message>
     <message>
         <location line="+6"/>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="+9"/>
         <source>%1: out of resources</source>
-        <translation>%1 : plus de ressources disponibles</translation>
+        <translation>%1 : plus de ressources disponibles</translation>
     </message>
     <message>
         <location line="+4"/>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="+7"/>
         <source>%1: unknown error %2</source>
-        <translation>%1 : erreur inconnue %2</translation>
+        <translation>%1 : erreur inconnue %2</translation>
     </message>
     <message>
         <location line="+21"/>
         <source>%1: key is empty</source>
-        <translation>%1 : clé vide</translation>
+        <translation>%1 : clé vide</translation>
     </message>
     <message>
         <location line="+8"/>
         <source>%1: unix key file doesn&apos;t exists</source>
-        <translation>%1 : le fichier de clé unix n&apos;existe pas</translation>
+        <translation>%1 : le fichier de clé unix n&apos;existe pas</translation>
     </message>
     <message>
         <location line="+7"/>
         <source>%1: ftok failed</source>
-        <translation>%1 : ftok a échoué</translation>
+        <translation>%1 : ftok a échoué</translation>
     </message>
     <message>
         <location line="+51"/>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="+15"/>
         <source>%1: unable to make key</source>
-        <translation>%1 : impossible de créer la clé</translation>
+        <translation>%1 : impossible de créer la clé</translation>
     </message>
     <message>
         <location line="+20"/>
         <source>%1: system-imposed size restrictions</source>
-        <translation>%1 : le système impose des restrictions sur la taille</translation>
+        <translation>%1 : le système impose des restrictions sur la taille</translation>
     </message>
     <message>
         <location line="+53"/>
         <source>%1: not attached</source>
-        <translation>%1 : non attaché</translation>
+        <translation>%1 : non attaché</translation>
     </message>
     <message>
         <location filename="../src/corelib/kernel/qsharedmemory_win.cpp" line="-27"/>
         <source>%1: invalid size</source>
-        <translation>%1 : taille invalide</translation>
+        <translation>%1 : taille invalide</translation>
     </message>
     <message>
         <location line="+68"/>
         <source>%1: key error</source>
-        <translation>%1 : erreur de clé</translation>
+        <translation>%1 : erreur de clé</translation>
     </message>
     <message>
         <location line="+38"/>
         <source>%1: size query failed</source>
-        <translation>%1 : la requête de taille a échoué</translation>
+        <translation>%1 : la requête de taille a échoué</translation>
     </message>
 </context>
 <context>
@@ -5648,7 +5648,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+1"/>
         <source>Proxy authentication failed: %1</source>
-        <translation>L&apos;authentification proxy a échoué : %1</translation>
+        <translation>L&apos;authentification proxy a échoué : %1</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -5683,7 +5683,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+5"/>
         <source>Unknown SOCKSv5 proxy error code 0x%1</source>
-        <translation>Erreur proxy SOCKSv5 inconnue : 0x%1</translation>
+        <translation>Erreur proxy SOCKSv5 inconnue : 0x%1</translation>
     </message>
     <message>
         <source>Socks5 timeout error connecting to socks server</source>
@@ -5718,7 +5718,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+1"/>
         <source>Delete this record?</source>
-        <translation>Supprimer cet enregistrement ?</translation>
+        <translation>Supprimer cet enregistrement ?</translation>
     </message>
     <message>
         <location line="+1"/>
@@ -5747,7 +5747,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+4"/>
         <source>Save edits?</source>
-        <translation>Enregistrer les modifications ?</translation>
+        <translation>Enregistrer les modifications ?</translation>
     </message>
     <message>
         <location line="+3"/>
@@ -5762,7 +5762,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+1"/>
         <source>Cancel your edits?</source>
-        <translation>Annuler vos modifications ?</translation>
+        <translation>Annuler vos modifications ?</translation>
     </message>
 </context>
 <context>
@@ -5770,17 +5770,17 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location filename="../src/network/ssl/qsslsocket_openssl.cpp" line="+569"/>
         <source>Unable to write data: %1</source>
-        <translation>Impossible d&apos;écrire les données : %1</translation>
+        <translation>Impossible d&apos;écrire les données : %1</translation>
     </message>
     <message>
         <location line="+119"/>
         <source>Error while reading: %1</source>
-        <translation>Erreur lors de la lecture : %1</translation>
+        <translation>Erreur lors de la lecture : %1</translation>
     </message>
     <message>
         <location line="+96"/>
         <source>Error during SSL handshake: %1</source>
-        <translation>Erreur lors de la poignée de main SSL : %1</translation>
+        <translation>Erreur lors de la poignée de main SSL : %1</translation>
     </message>
     <message>
         <location line="-524"/>
@@ -5800,7 +5800,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+15"/>
         <source>Error creating SSL session: %1</source>
-        <translation>Erreur lors de la création de la session SSL : %1</translation>
+        <translation>Erreur lors de la création de la session SSL : %1</translation>
     </message>
     <message>
         <location line="-61"/>
@@ -5844,12 +5844,12 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+4"/>
         <source>%1: already exists</source>
-        <translation>%1 : existe déjà</translation>
+        <translation>%1 : existe déjà</translation>
     </message>
     <message>
         <location line="+4"/>
         <source>%1: does not exist</source>
-        <translation>%1 : n&apos;existe pas</translation>
+        <translation>%1 : n&apos;existe pas</translation>
     </message>
     <message>
         <location line="+9"/>
@@ -6396,7 +6396,7 @@ Veuillez choisir un nom de fichier différent.</translation>
         <location filename="../src/3rdparty/webkit/WebCore/platform/qt/Localizations.cpp" line="-291"/>
         <source>This is a searchable index. Enter search keywords: </source>
         <comment>text that appears at the start of nearly-obsolete web pages in the form of a &apos;searchable index&apos;</comment>
-        <translation>Ceci est un index. Veuillez saisir les mots-clé :</translation>
+        <translation>Ceci est un index. Veuillez saisir les mots-clé :</translation>
     </message>
     <message>
         <location filename="../src/3rdparty/webkit/WebCore/platform/qt/ScrollbarQt.cpp" line="+58"/>
@@ -6638,7 +6638,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location filename="../src/gui/kernel/qwhatsthis.cpp" line="+522"/>
         <source>What&apos;s This?</source>
-        <translation>Qu&apos;est-ce que c&apos;est ?</translation>
+        <translation>Qu&apos;est-ce que c&apos;est ?</translation>
     </message>
 </context>
 <context>
@@ -7152,7 +7152,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+115"/>
         <source>Overflow: Date can&apos;t be represented.</source>
-        <translation>Overflow : la date ne peut pas être représentée.</translation>
+        <translation>Overflow : la date ne peut pas être représentée.</translation>
     </message>
     <message>
         <location filename="../src/xmlpatterns/data/qabstractduration.cpp" line="+99"/>
@@ -7304,7 +7304,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+8"/>
         <source>Failure when casting from %1 to %2: %3</source>
-        <translation>Echec en castant de %1 ver %2 : %3</translation>
+        <translation>Echec en castant de %1 ver %2 : %3</translation>
     </message>
     <message>
         <location filename="../src/xmlpatterns/expr/qcommentconstructor.cpp" line="+67"/>
@@ -7481,7 +7481,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+30"/>
         <source>%1 is an invalid flag for regular expressions. Valid flags are:</source>
-        <translation>%1 est un flag invalide pour des expressions régulières. Les flags valides sont :</translation>
+        <translation>%1 est un flag invalide pour des expressions régulières. Les flags valides sont :</translation>
     </message>
     <message>
         <location filename="../src/xmlpatterns/functions/qqnamefns.cpp" line="+17"/>
@@ -7804,7 +7804,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+15"/>
         <source>Two namespace declaration attributes have the same name: %1.</source>
-        <translation>Deux attributs de déclarations de namespace ont le même nom : %1.</translation>
+        <translation>Deux attributs de déclarations de namespace ont le même nom : %1.</translation>
     </message>
     <message>
         <location line="+89"/>
@@ -7943,7 +7943,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location filename="../src/xmlpatterns/expr/qcomputednamespaceconstructor.cpp" line="+69"/>
         <source>In a namespace constructor, the value for a namespace cannot be an empty string.</source>
-        <translation>Dans le constructeur d&apos;un espace de nom, la valeur de l&apos;espace de nom ne peut être une chaîne vide.</translation>
+        <translation>Dans un constructeur d&apos;espace de noms, la valeur pour un espace de noms ne peut pas être une chaîne vide.</translation>
     </message>
     <message>
         <location line="+11"/>
@@ -8008,7 +8008,7 @@ Veuillez choisir un nom de fichier différent.</translation>
     <message>
         <location line="+108"/>
         <source>Unknown XSL-T attribute %1.</source>
-        <translation>Attribut XSL-T inconnu : %1.</translation>
+        <translation>Attribut XSL-T inconnu : %1.</translation>
     </message>
     <message>
         <location line="+23"/>

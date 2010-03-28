@@ -6,6 +6,7 @@
         <name lang="es" >Contactor simple (NC)</name>
         <name lang="cs" >Jednoduché spojení (NC)</name>
         <name lang="pt" >Contacto simples (NC)</name>
+        <name lang="pl" >Styk (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

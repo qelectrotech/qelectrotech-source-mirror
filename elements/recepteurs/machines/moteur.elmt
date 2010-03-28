@@ -6,6 +6,7 @@
         <name lang="es" >Motor</name>
         <name lang="cs" >Motor</name>
         <name lang="pt" >Motor</name>
+        <name lang="pl" >Silnik</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

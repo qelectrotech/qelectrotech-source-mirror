@@ -21,3 +21,7 @@ Utiliza archivos XML para los elementos y esquemas, e incluye un editor de esque
 [cs]
 QElectroTech je aplikací Qt4 určenou pro návrh nákresů elektrických obvodů.
 Pro prvky a nákresy používá soubory XML, a zahrnuje v sobě jak editor nákresů, tak editor prvků.
+
+[pl]
+QElectroTech to aplikacja napisana w Qt4, przeznaczona do tworzenia schematów elektrycznych.
+Wykorzystuje XML do zapisywania plików elementów i projektów. Posiada edytor schematów i elementów.

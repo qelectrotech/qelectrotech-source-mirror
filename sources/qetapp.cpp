@@ -753,10 +753,68 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 void QETApp::openElementFiles(const QStringList &files_list) {
 	if (files_list.isEmpty()) return;
 	
-	// creation et affichage d'un ou plusieurs editeurs d'element
-	foreach(QString element_file, files_list) {
-		QETElementEditor *element_editor = new QETElementEditor();
-		element_editor -> fromFile(element_file);
+	// evite autant que possible les doublons dans la liste fournie
+	QSet<QString> files_set;
+	foreach(QString file, files_list) {
+		QString canonical_filepath = QFileInfo(file).canonicalFilePath();
+		if (!canonical_filepath.isEmpty()) files_set << canonical_filepath;
+	}
+	// a ce stade, tous les fichiers dans le Set existent et sont a priori differents
+	if (files_set.isEmpty()) return;
+	
+	// liste des editeurs d'element ouverts
+	QList<QETElementEditor *> element_editors = elementEditors();
+	
+	// on traite les fichiers a la queue leu leu...
+	foreach(QString element_file, files_set) {
+		bool already_opened_in_existing_element_editor = false;
+		foreach(QETElementEditor *element_editor, element_editors) {
+			if (element_editor -> isEditing(element_file)) {
+				// ce fichier est deja ouvert dans un editeur
+				already_opened_in_existing_element_editor = true;
+				element_editor -> setVisible(true);
+				element_editor -> raise();
+				element_editor -> activateWindow();
+				break;
+			}
+		}
+		if (!already_opened_in_existing_element_editor) {
+			// ce fichier n'est ouvert dans aucun editeur
+			QETElementEditor *element_editor = new QETElementEditor();
+			element_editor -> fromFile(element_file);
+		}
+	}
+}
+
+/**
+	Ouvre les elements dont l'emplacement est passe en parametre. Si un element
+	est deja ouvert, la fentre qui l'edite est activee.
+	@param locations_list Emplacements a ouvrir
+*/
+void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list) {
+	if (locations_list.isEmpty()) return;
+	
+	// liste des editeurs d'element ouverts
+	QList<QETElementEditor *> element_editors = elementEditors();
+	
+	// on traite les emplacements  a la queue leu leu...
+	foreach(ElementsLocation element_location, locations_list) {
+		bool already_opened_in_existing_element_editor = false;
+		foreach(QETElementEditor *element_editor, element_editors) {
+			if (element_editor -> isEditing(element_location)) {
+				// cet emplacement est deja ouvert dans un editeur
+				already_opened_in_existing_element_editor = true;
+				element_editor -> setVisible(true);
+				element_editor -> raise();
+				element_editor -> activateWindow();
+				break;
+			}
+		}
+		if (!already_opened_in_existing_element_editor) {
+			// cet emplacement n'est ouvert dans aucun editeur
+			QETElementEditor *element_editor = new QETElementEditor();
+			element_editor -> fromLocation(element_location);
+		}
 	}
 }
 

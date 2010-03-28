@@ -482,8 +482,8 @@ bool Terminal::valideXml(QDomElement &terminal) {
 */
 bool Terminal::fromXml(QDomElement &terminal) {
 	return (
-		terminal.attribute("x").toDouble() == amarrage_elmt.x() &&\
-		terminal.attribute("y").toDouble() == amarrage_elmt.y() &&\
+		qFuzzyCompare(terminal.attribute("x").toDouble(), amarrage_elmt.x()) &&
+		qFuzzyCompare(terminal.attribute("y").toDouble(), amarrage_elmt.y()) &&
 		terminal.attribute("orientation").toInt() == sens
 	);
 }

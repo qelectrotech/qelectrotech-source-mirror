@@ -6,6 +6,7 @@
         <name lang="es" >Motor de corriente continuo</name>
         <name lang="cs" >Motor na stejnosměrný proud</name>
         <name lang="pt" >Motor de corrente contínua</name>
+        <name lang="pl" >Silnik prądu stałego</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

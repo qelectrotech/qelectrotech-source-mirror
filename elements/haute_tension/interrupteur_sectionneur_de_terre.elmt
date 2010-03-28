@@ -4,6 +4,7 @@
         <name lang="en" >Ground switch disconnector</name>
         <name lang="cs" >Rozpojovač přepínání země</name>
         <name lang="pt" >Interruptor-seccionador de terra</name>
+        <name lang="pl" >Uziemiacz</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

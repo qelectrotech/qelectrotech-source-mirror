@@ -4,6 +4,7 @@
         <name lang="fr" >Report Sortie</name>
         <name lang="cs" >Hlášení výstupu</name>
         <name lang="pt" >Relatório saída</name>
+        <name lang="pl" >Output Report</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

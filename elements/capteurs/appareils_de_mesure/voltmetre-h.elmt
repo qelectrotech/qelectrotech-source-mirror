@@ -6,6 +6,7 @@
         <name lang="es" >Voltímetro horizontal</name>
         <name lang="cs" >Vodorovný voltmetr</name>
         <name lang="pt" >Voltímetro horizontal</name>
+        <name lang="pl" >Woltomierz (poziomo)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

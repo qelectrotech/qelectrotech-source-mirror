@@ -117,13 +117,11 @@ QWidget *AboutQET::authorsTab() const {
 QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
-	addAuthor(translators, "Youssef Oualmakran",     "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
-	addAuthor(translators, "Yuriy Litkevich",        "yuriy@qelectrotech.org",      tr("Traduction en russe"));
-	addAuthor(translators, "Jos\351 Carlos Martins", "jose@qelectrotech.org",       tr("Traduction en portugais"));
-	addAuthor(translators, "Pavel Fric",             "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
-	/*
-	addAuthor(translators, "Luca Pedrazzi",          "pedro@iworks.it",             tr("Traduction en italien"));
-	*/
+	addAuthor(translators, "Youssef Oualmakran",         "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
+	addAuthor(translators, "Yuriy Litkevich",            "yuriy@qelectrotech.org",      tr("Traduction en russe"));
+	addAuthor(translators, "Jos\351 Carlos Martins",     "jose@qelectrotech.org",       tr("Traduction en portugais"));
+	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
+	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@interia.pl",       tr("Traduction en polonais"));
 	
 	translators -> setAlignment(Qt::AlignCenter);
 	translators -> setOpenExternalLinks(true);

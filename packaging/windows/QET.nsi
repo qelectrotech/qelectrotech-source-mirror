@@ -11,10 +11,10 @@
 ;--------------------------------
 ;General
 	; General Product Description Definitions
-	!define SOFT_NAME "QElectroTech"
-	!define SOFT_VERSION "svn"
+	!define SOFT_NAME     "QElectroTech"
+	!define SOFT_VERSION  "svn"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
-	!define SOFT_BUILD "1cf"
+	!define SOFT_BUILD    "1"
 	
 	SetCompressor /final /solid lzma
 	CRCCheck force
@@ -31,7 +31,8 @@
 	InstallDirRegKey HKCU "Software\${SOFT_NAME}" ""
 
 	;Request application privileges for Windows Vista
-	RequestExecutionLevel user
+	; we request for admin because we write stuff into the registry
+	RequestExecutionLevel admin
 
 ;--------------------------------
 ;Interface Settings
@@ -60,63 +61,17 @@
 
 ;--------------------------------
 ;Languages
-
+	;Since NSIS 2.26, the language selection dialog of Modern UI hides languages unsupported by the user's selected codepage by default.
+	;To revert to the old behavior and display all languages, no matter what the user will see when they're selected, use MUI_LANGDLL_ALLLANGUAGES.
+	!define MUI_LANGDLL_ALLLANGUAGES
+	
+	; For consistency, we limit the installer to languages supported by QElectroTech itself
 	!insertmacro MUI_LANGUAGE "English" ;first language is the default language
 	!insertmacro MUI_LANGUAGE "French"
-	!insertmacro MUI_LANGUAGE "German"
 	!insertmacro MUI_LANGUAGE "Spanish"
-	!insertmacro MUI_LANGUAGE "SpanishInternational"
-	!insertmacro MUI_LANGUAGE "SimpChinese"
-	!insertmacro MUI_LANGUAGE "TradChinese"
-	!insertmacro MUI_LANGUAGE "Japanese"
-	!insertmacro MUI_LANGUAGE "Korean"
-	!insertmacro MUI_LANGUAGE "Italian"
-	!insertmacro MUI_LANGUAGE "Dutch"
-	!insertmacro MUI_LANGUAGE "Danish"
-	!insertmacro MUI_LANGUAGE "Swedish"
-	!insertmacro MUI_LANGUAGE "Norwegian"
-	!insertmacro MUI_LANGUAGE "NorwegianNynorsk"
-	!insertmacro MUI_LANGUAGE "Finnish"
-	!insertmacro MUI_LANGUAGE "Greek"
 	!insertmacro MUI_LANGUAGE "Russian"
 	!insertmacro MUI_LANGUAGE "Portuguese"
-	!insertmacro MUI_LANGUAGE "PortugueseBR"
-	!insertmacro MUI_LANGUAGE "Polish"
-	!insertmacro MUI_LANGUAGE "Ukrainian"
 	!insertmacro MUI_LANGUAGE "Czech"
-	!insertmacro MUI_LANGUAGE "Slovak"
-	!insertmacro MUI_LANGUAGE "Croatian"
-	!insertmacro MUI_LANGUAGE "Bulgarian"
-	!insertmacro MUI_LANGUAGE "Hungarian"
-	!insertmacro MUI_LANGUAGE "Thai"
-	!insertmacro MUI_LANGUAGE "Romanian"
-	!insertmacro MUI_LANGUAGE "Latvian"
-	!insertmacro MUI_LANGUAGE "Macedonian"
-	!insertmacro MUI_LANGUAGE "Estonian"
-	!insertmacro MUI_LANGUAGE "Turkish"
-	!insertmacro MUI_LANGUAGE "Lithuanian"
-	!insertmacro MUI_LANGUAGE "Slovenian"
-	!insertmacro MUI_LANGUAGE "Serbian"
-	!insertmacro MUI_LANGUAGE "SerbianLatin"
-	!insertmacro MUI_LANGUAGE "Arabic"
-	!insertmacro MUI_LANGUAGE "Farsi"
-	!insertmacro MUI_LANGUAGE "Hebrew"
-	!insertmacro MUI_LANGUAGE "Indonesian"
-	!insertmacro MUI_LANGUAGE "Mongolian"
-	!insertmacro MUI_LANGUAGE "Luxembourgish"
-	!insertmacro MUI_LANGUAGE "Albanian"
-	!insertmacro MUI_LANGUAGE "Breton"
-	!insertmacro MUI_LANGUAGE "Belarusian"
-	!insertmacro MUI_LANGUAGE "Icelandic"
-	!insertmacro MUI_LANGUAGE "Malay"
-	!insertmacro MUI_LANGUAGE "Bosnian"
-	!insertmacro MUI_LANGUAGE "Kurdish"
-	!insertmacro MUI_LANGUAGE "Irish"
-	!insertmacro MUI_LANGUAGE "Uzbek"
-	!insertmacro MUI_LANGUAGE "Galician"
-	!insertmacro MUI_LANGUAGE "Afrikaans"
-	!insertmacro MUI_LANGUAGE "Catalan"
-	!insertmacro MUI_LANGUAGE "Esperanto"
 
 ;--------------------------------
 ;Reserve Files
@@ -131,22 +86,50 @@
 ;Installer Sections
 
 Section ""
-
 	SetOutPath "$INSTDIR"  
-	;ADD YOUR OWN FILES HERE...
-	File /nonfatal /r "files\*"
+	; copy every files in the "files" directory, except the ready-to-use .bat file
+	File /nonfatal /r /x "files\Lancer QET.bat" /x ".svn" "files\*"
+	; add the use-APPDATA .bat file
+	File "Lancer QET.bat"
 	;Store installation folder
 	WriteRegStr HKCU "Software\${SOFT_NAME}" "" $INSTDIR
 	; write uninstall strings
-	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}" "DisplayName" "${SOFT_NAME} (remove only)"
+	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}" "DisplayName"     "${SOFT_NAME} (remove only)"
 	WriteRegStr HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}" "UninstallString" '"$INSTDIR\Uninstall.exe"'
-	; use defaults for parameters, icon, etc.
-	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}"
-	CreateShortCut "$SMPROGRAMS\${SOFT_NAME}\QET.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
-	CreateShortCut "$DESKTOP\QET.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 	;Create uninstaller
 	WriteUninstaller "$INSTDIR\Uninstall.exe"
-  
+	
+	; get the final path for the icons and the launch script
+	Var /GLOBAL final_qet_exe
+	Var /GLOBAL final_project_ico
+	Var /GLOBAL final_element_ico
+	StrCpy $final_qet_exe     "$INSTDIR\Lancer QET.bat"
+	StrCpy $final_project_ico "$INSTDIR\ico\application-x-qet-project.ico"
+	StrCpy $final_element_ico "$INSTDIR\ico\application-x-qet-element.ico"
+	
+	; write file associations registry keys
+	WriteRegStr   HKEY_CLASSES_ROOT "Applications\qelectrotech.exe\shell\open\command" ""             "$\"$final_qet_exe$\" $\"%1$\""
+	WriteRegStr   HKEY_CLASSES_ROOT ".qet"                                             ""             "qet_diagram_file"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file"                                 ""             "Schéma QET"
+	WriteRegDWORD HKEY_CLASSES_ROOT "qet_diagram_file"                                 "EditFlags"    0x00000000
+	WriteRegDWORD HKEY_CLASSES_ROOT "qet_diagram_file"                                 "BrowserFlags" 0x00000008
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\DefaultIcon"                     ""             "$final_project_ico"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_diagram_file\shell\open\command"              ""             "$\"$final_qet_exe$\" $\"%1$\""
+	WriteRegStr   HKEY_CLASSES_ROOT ".elmt"                                            ""             "qet_element_file"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file"                                 ""             "Élément QET"
+	WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                 "EditFlags"    0x00000000
+	WriteRegDWORD HKEY_CLASSES_ROOT "qet_element_file"                                 "BrowserFlags" 0x00000008
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\DefaultIcon"                     ""             "$final_element_ico"
+	WriteRegStr   HKEY_CLASSES_ROOT "qet_element_file\shell\open\command"              ""             "$\"$final_qet_exe$\" $\"%1$\""
+	
+	; shortcuts in the start menu
+	CreateDirectory "$SMPROGRAMS\${SOFT_NAME}"
+	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\QElectroTech.lnk"           "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
+	CreateShortCut  "$SMPROGRAMS\${SOFT_NAME}\Uninstall QElectroTech.lnk" "$INSTDIR\Uninstall.exe"
+	; TODO : add the QuickStart Guide (or any other documentation) when available
+	
+	; shortcut on the desktop
+	CreateShortCut "$DESKTOP\QElectroTech.lnk" "$INSTDIR\Lancer QET.bat" 0 "$INSTDIR\ico\qelectrotech.ico"
 SectionEnd
 
 ;--------------------------------
@@ -172,24 +155,29 @@ FunctionEnd
 ;Uninstaller Section
 
 Section "Uninstall"
-
-	;remove start menu shortcuts
-	Delete "$SMPROGRAMS\${SOFT_NAME}\QET.lnk"
-	Delete "$DESKTOP\QET.lnk"
-	RMDir "$SMPROGRAMS\${SOFT_NAME}"
-
-	;ADD YOUR OWN FILES HERE...
+	; remove start menu shortcuts
+	RMDir /r "$SMPROGRAMS\${SOFT_NAME}"
+	; remove shortcut on the desktop
+	Delete "$DESKTOP\QElectroTech.lnk"
+	
+	; remove the application files
 	Delete "$INSTDIR\*.*"
 	RMDir /r "$INSTDIR"
-
-	;remove installation registary keys
+	
+	;remove installation registry keys
 	DeleteRegKey HKLM "Software\Microsoft\Windows\CurrentVersion\Uninstall\${SOFT_NAME}"
 	DeleteRegKey /ifempty HKCU "Software\${SOFT_NAME}"
-
+	
+	; remove file associations registry keys
+	DeleteRegKey HKEY_CLASSES_ROOT "Applications\qelectrotech.exe"
+	DeleteRegKey HKEY_CLASSES_ROOT ".qet"
+	DeleteRegKey HKEY_CLASSES_ROOT "qet_diagram_file"
+	DeleteRegKey HKEY_CLASSES_ROOT ".elmt"
+	DeleteRegKey HKEY_CLASSES_ROOT "qet_element_file"
+	
 	IfFileExists "$INSTDIR" 0 NoErrorMsg
 	MessageBox MB_OK "Note: $INSTDIR could not be removed!" IDOK 0 ; skipped if file doesn't exist
 	NoErrorMsg:
-  
 SectionEnd
 
 ;--------------------------------

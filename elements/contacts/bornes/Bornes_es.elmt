@@ -6,6 +6,7 @@
         <name lang="es" >Terminal doble</name>
         <name lang="cs" >Dvojitá svorka</name>
         <name lang="pt" >Terminal duplo</name>
+        <name lang="pl" >Złącze wtykowe</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="es" >Fuente de corriente (antiguo)</name>
         <name lang="cs" >Zdroj proudu (starý)</name>
         <name lang="pt" >Fonte de corrente (antigo)</name>
+        <name lang="pl" >Źródło prądu (stary)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="es" >Transformador monofásica</name>
         <name lang="cs" >Jednofázový převodník energie</name>
         <name lang="pt" >Transformador monofásico</name>
+        <name lang="pl" >Transformator jednofazowy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

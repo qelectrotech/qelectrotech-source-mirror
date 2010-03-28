@@ -6,6 +6,7 @@
         <name lang="es" >Fuente neutro</name>
         <name lang="cs" >Nulový zdroj</name>
         <name lang="pt" >Fonte de neutro</name>
+        <name lang="pl" >Przewód neutralny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -6,6 +6,7 @@
         <name lang="es" >NO-O exclusiva (XNOR)</name>
         <name lang="cs" > NE-NEBO výhradní (XNOR)</name>
         <name lang="pt" >NÃO-OU exclusivo (XNOR)</name>
+        <name lang="pl" >XNOR</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

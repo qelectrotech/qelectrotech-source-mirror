@@ -54,6 +54,7 @@ QDomElement FileElementDefinition::xml() {
 bool FileElementDefinition::setXml(const QDomElement &xml_element) {
 	xml_element_.clear();
 	xml_element_.appendChild(xml_element_.importNode(xml_element, true));
+	is_null = false;
 	return(true);
 }
 

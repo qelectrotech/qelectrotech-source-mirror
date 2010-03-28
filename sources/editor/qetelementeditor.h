@@ -115,6 +115,8 @@ class QETElementEditor : public QMainWindow {
 	void fromLocation(const ElementsLocation &);
 	bool toFile(const QString &);
 	bool toLocation(const ElementsLocation &);
+	bool isEditing(const ElementsLocation &);
+	bool isEditing(const QString &);
 	ElementScene *elementScene() const;
 	void readSettings();
 	void writeSettings();
@@ -218,28 +220,10 @@ inline OrientationSet QETElementEditor::orientations() const {
 }
 
 /**
-	@param el Le nouvel emplacement de l'element edite
-*/
-inline void QETElementEditor::setLocation(const ElementsLocation &el) {
-	location_ = el;
-	opened_from_file = false;
-	slot_updateTitle();
-}
-
-/**
 	@return l'emplacement de l'element edite
 */
 inline ElementsLocation QETElementEditor::location() const {
 	return(location_);
-}
-
-/**
-	@param fn Le nouveau nom de fichier de l'element edite
-*/
-inline void QETElementEditor::setFileName(const QString &fn) {
-	filename_ = fn;
-	opened_from_file = true;
-	slot_updateTitle();
 }
 
 /**

@@ -255,9 +255,7 @@ void ElementsPanelWidget::importElement() {
 	
 	// Ouverture de l'element dans l'editeur pour pouvoir ensuite l'enregistrer dans la categorie voulue
 	if (!fileName.isEmpty()) {
-		QETElementEditor *editor = new QETElementEditor();
-		editor -> fromFile(fileName);
-		editor -> show();
+		QETApp::instance() -> openElementFiles(QStringList() << fileName);
 	}
 }
 
@@ -530,9 +528,7 @@ void ElementsPanelWidget::deleteElement() {
 	@param location Emplacement de l'element a editer
 */
 void ElementsPanelWidget::launchElementEditor(const ElementsLocation &location) {
-	QETElementEditor *editor = new QETElementEditor();
-	editor -> fromLocation(location);
-	editor -> show();
+	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
 }
 
 /**

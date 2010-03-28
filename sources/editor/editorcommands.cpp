@@ -607,7 +607,7 @@ void AllowInternalConnectionsCommand::redo() {
 	Constructeur
 	@param elmt ElementScene concernee
 	@param old_infos Informations complementaires precedentes
-	@param old_infos Nouvelles informations complementaires
+	@param new_infos Nouvelles informations complementaires
 	@param parent QUndoCommand parent
 */
 ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const QString &old_infos, const QString &new_infos, QUndoCommand *parent) :
