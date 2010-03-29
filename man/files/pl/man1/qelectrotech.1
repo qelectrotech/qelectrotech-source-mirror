@@ -1,0 +1,59 @@
+.TH QELECTROTECH 1 "Sierpień 2008" QElectroTech "Podręcznik użytkownika"
+.SH NAME
+qelectrotech \- Edytor schematów elektrycznych
+.SH SYNOPSIS
+.B qelectrotech
+.B [\-\-common\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-config\-dir\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-lang\-dir\fR=\fIDIR\fB]
+.B [\-\-help]
+.B [\-v\fR|\fB\-\-version]
+.B [\-\-license]
+.B [\fIFILE\fB]...
+
+.SH DESCRIPTION
+QElectroTech to edytor schematów elektrycznych. Schematy (*. qet) i elementy (*. elmt) są przechowywane w formacie XML.
+Elementy, wykorzystane w programie, mogą pochodzić z kolekcji wspólnej lub kolekcji użytkownika.
+Zazwyczaj kolekcje wspólne mogą być odczytane przez wszystkich użytkowników, ale nie można ich edytować.
+Każdy użytkownik posiada swoją kolekcję elementów, którą może zmienić według własnych upodobań.
+.SH OPTIONS
+.TP
+\fB\-\-common\-elements\-dir\fR=\fIDIR\fR
+Używa DIR jako katalogu głównego kolekcji wspólnych. Uwaga: opcja ta jest aktywna tylko w przypadku gdy dyrektywa QET_ALLOW_OVERRIDE_CED_OPTION zostanie określona w czasie kompilacji.
+.TP
+\fB\-\-config\-dir\fR=\fIDIR\fR
+Używa DIR jako katalogu konfiguracji aktualnego użytkownika. Ten katalog zawiera plik z konfiguracją aplikacji o nazwie qelectrotech.conf i podkatalogu o nazwie elements, który zawiera kolekcję elementów aktualnego użytkownika. Uwaga: opcja ta jest aktywna tylko w przypadku gdy dyrektywa QET_ALLOW_OVERRIDE_CD_OPTION zostanie określona w czasie kompilacji.
+.TP
+\fB\-\-lang\-dir\fR=\fIDIR\fR
+Wyszukuje w katalogu DIR pliki z tłumaczeniami aplikacji.
+.TP
+\fB\-\-help\fR
+Wyświetla krótki opis dostępnych opcji.
+.TP
+\fB\-v\fR, \fB\-\-version\fR
+Wyświetla wersję aplikacji (np.: 0.1)
+.TP
+\fB\-\-license\fR
+Wyświetla licencję aplikacji (GNU / GPL)
+Należy pamiętać, że jeżeli jedno z trzech powyższych poleceń zostanie uruchomione w linii poleceń, zatrzyma program, i zostanie wyświetlona odpowiednia informacja.
+Jeżeli przypadkiem aplikacja uruchomiona przez użytkownika nadal działa, ten przypadek będzie rozważony w linii poleceń, a w szczególności otwarte pliki.
+Jednak operacje, które zmieniają definicję katalogów (wspólne kolekcje, pliki konfiguracyjne i tłumaczenie) nie będą wykonane.
+Jeżeli nazwa pliku ma rozszerzenie .emt, QElectroTech będzie próbował go otworzyć za pomocą edytora elementu.
+W przeciwnym razie, uzna go za schemat.
+.SH AUTHORS
+Benoit Ansieau <benoit.ansieau@gmail.com>
+.br
+Xavier Guerrin <xavier.guerrin@gmail.com>
+
+.SH REPORTING BUGS
+Jeżeli zauważysz, że oprogramowanie działa wadliwie, sprawdź najczęściej zadawane pytania na naszej stronie <http://qelectrotech.org/wiki/doku.php?id=doc:faq> <http://qelectrotech.org/ Bugtracker />, aby stwierdzić, czy problem jest już znany. Jeżeli nie, proszę wysłać raport o błędach przez BugTracker.
+
+.SH COPYRIGHT
+Copyright (c) QElectroTech developers.
+.br
+License : GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+.br
+QElectroTech jest wolnym oprogramowaniem. Możesz go modyfikować i rozpowszechniać. Program jest w wersji takiej jaki jest, bez JAKICHKOLWIEK GWARANCJI.
+
+.SH SEE ALSO
+Oficjalna strona : <http://qelectrotech.org/>
