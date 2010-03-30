@@ -1,0 +1,8 @@
+<definition width="50" version="0.2" hotspot_x="1" hotspot_y="1" height="140" type="element" orientation="dnyn" >
+    <names>
+        <name lang="fr" >etiquette 1</name>
+    </names>
+    <description>
+        <input x="14.05" y="138" size="8" rotation="270" rotate="true" text="_________" />
+    </description>
+</definition>
