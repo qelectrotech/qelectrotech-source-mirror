@@ -1,7 +1,6 @@
 <definition width="360" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true" orientation="dyyy" >
     <names>
         <name lang="en" >XPS-AFL</name>
-        <name lang="fr" >XPS-AFL</name>
         <name lang="pl" >XPS-AFL</name>
     </names>
     <informations></informations>
@@ -61,11 +60,11 @@
         <rect width="25" x="-15" y="0" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="56" x1="130" y2="51" x2="130" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="230" y2="-10" x2="230" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="15" x1="140" y2="15" x2="267" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="15" x1="140" y2="15" x2="267" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="-59" y2="70" x2="280" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-60" y2="-10" x2="280" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="40" y2="-11" x2="40" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="45" x1="140" y2="45" x2="267" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="45" x1="140" y2="45" x2="267" />
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="35" x1="190" y2="25" x2="190" y3="5" x3="185" />
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="35" x1="230" y2="25" x2="230" y3="5" x3="225" />
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="70" x1="190" y2="55" x2="190" y3="35" x3="185" />

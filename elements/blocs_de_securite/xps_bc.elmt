@@ -1,11 +1,11 @@
 <definition width="410" version="0.22" hotspot_x="90" hotspot_y="70" height="170" type="element" ic="true" orientation="dyyy" >
     <names>
         <name lang="en" >XPS-BC</name>
-        <name lang="fr" >XPS-BC</name>
         <name lang="pl" >XPS-BC</name>
     </names>
     <informations></informations>
     <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="210" y2="90" x2="210" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-56" y2="50" x2="50" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37" x1="-40" y2="32" x2="-40" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="37" x1="-63" y2="37" x2="-40" />
@@ -80,11 +80,10 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-50" y2="12" x2="-46" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-35" y2="12" x2="-31" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-33" y2="14" x2="-33" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="1" x1="198" y2="1" x2="237" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="1" x1="198" y2="1" x2="237" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="140" y2="-40" x2="140" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="190" y2="-40" x2="190" />
         <polygon x4="-30" y5="32" x5="-40" y6="22" x6="-50" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="22" x1="-50" y2="22" x2="-50" y3="12" x3="-40" y4="22" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="91" x1="210" y2="71" x2="210" />
         <arc width="5" x="-72.25" y="27" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" start="90" angle="-180" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="90" x1="190" y2="70" x2="190" />
         <arc width="5" x="-65.25" y="22" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" start="-90" angle="-180" />
@@ -98,7 +97,7 @@
         <text x="141" y="-20.3333" size="4" text="K1" />
         <text x="274" y="83.3333" size="7" text="32" />
         <arc width="5" x="-65.25" y="27" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" start="-90" angle="-180" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="30" x1="198" y2="30" x2="282.5" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="30" x1="198" y2="30" x2="282.5" />
         <text x="63" y="83.3333" size="7" text="T21" />
         <text x="-4" y="35.3333" size="7" text="T" />
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="30" x1="-15" y2="30" x2="-10" y3="14" x3="10" />
@@ -108,7 +107,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="150" y2="-30" x2="150" />
         <rect width="390" x="-80" y="-60" antialias="false" height="150" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <text x="105" y="-47.6667" size="7" text="Y1" />
-        <text x="196" y="83.3333" size="7" text="14" />
+        <text x="195" y="83.3333" size="7" text="14" />
         <text x="144" y="-47.6667" size="7" text="Y2" />
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="240" y2="10" x2="240" y3="-10" x3="235" />
         <text x="275" y="-47.6667" size="7" text="31" />

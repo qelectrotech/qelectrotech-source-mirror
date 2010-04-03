@@ -1,7 +1,6 @@
 <definition width="630" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true" orientation="dyyy" >
     <names>
         <name lang="en" >XPS-ASF</name>
-        <name lang="fr" >XPS-ASF</name>
         <name lang="pl" >XPS-ASF</name>
     </names>
     <informations></informations>
@@ -114,7 +113,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="10" y2="30" x2="14" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="28" x1="29" y2="32" x2="29" />
         <rect width="220" x="70" y="0" antialias="false" height="41" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="14" x1="353" y2="14" x2="427" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="14" x1="353" y2="14" x2="427" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="160" y2="-10" x2="160" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="120" y2="-10" x2="120" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="-50" y2="-10" x2="-50" />
@@ -132,7 +131,7 @@
         <text x="340" y="45.3333" size="4" text="K2" />
         <text x="340" y="15.3333" size="4" text="K1" />
         <arc width="5" x="-45.25" y="55" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black" start="-90" angle="-180" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="44" x1="353" y2="44" x2="427" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="44" x1="353" y2="44" x2="427" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="430" y2="-10" x2="430" />
         <text x="36" y="83.3333" size="7" text="S33/41" />
         <text x="-23" y="33.3333" size="7" text="T" />
