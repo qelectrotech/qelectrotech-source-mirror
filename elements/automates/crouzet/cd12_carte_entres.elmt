@@ -1,7 +1,8 @@
-<definition width="400" version="0.2" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
+<definition width="400" version="0.22" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >CD12 Carte entrées</name>
+        <name lang="fr" >CD12 carte entrées</name>
     </names>
+    <informations></informations>
     <description>
         <text x="125" y="32" size="8" text="CROUZET CD12 Carte entrées" />
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="130" y2="0" x2="130" />

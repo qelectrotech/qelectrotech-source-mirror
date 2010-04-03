@@ -1,7 +1,8 @@
-<definition width="300" version="0.2" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
+<definition width="300" version="0.22" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >CD12 Carte sorties</name>
+        <name lang="fr" >CD12 carte sorties</name>
     </names>
+    <informations></informations>
     <description>
         <rect width="298" x="1" y="1" antialias="false" height="38" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <text x="47" y="24.5" size="8" text="O1" />

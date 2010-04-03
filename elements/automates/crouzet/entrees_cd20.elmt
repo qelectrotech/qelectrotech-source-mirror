@@ -1,7 +1,8 @@
-<definition width="800" version="0.2" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
+<definition width="800" version="0.22" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >CD20 Zoom Carte sortie</name>
+        <name lang="fr" >CD20 zoom carte sorties</name>
     </names>
+    <informations></informations>
     <description>
         <text x="346" y="24.6667" size="8" text="O 4" />
         <text x="46" y="24.6667" size="8" text="O 1" />
