@@ -1,6 +1,6 @@
 <definition width="320" version="0.2" hotspot_x="70" hotspot_y="40" height="140" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >xps-al</name>
+        <name lang="fr" >XPS-AL</name>
     </names>
     <description>
         <rect width="15" x="73.5" y="55.5" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black" />

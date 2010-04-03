@@ -1,6 +1,7 @@
 <definition width="60" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" >
     <names>
         <name lang="en" >Two-hand 2 (XPS-BC)</name>
+        <name lang="fr" >Deux mains 2 (XPS-BC)</name>
         <name lang="pl" >Start dwuręczny 2 (XPS-BC)</name>
     </names>
     <informations>Author: The QElectroTech team

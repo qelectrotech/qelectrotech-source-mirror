@@ -1,6 +1,7 @@
 <definition width="50" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
         <name lang="en" >Diac</name>
+        <name lang="fr" >Diac</name>
         <name lang="pl" >Diak</name>
     </names>
     <informations>Author: The QElectroTech team

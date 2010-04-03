@@ -1,6 +1,7 @@
 <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
         <name lang="en" >Unipolar transistor MOSFET</name>
+        <name lang="fr" >Transistor unipolaire MOSFET</name>
         <name lang="pl" >Tranzystor unipolarny MOSFET</name>
     </names>
     <informations>Author: The QElectroTech team

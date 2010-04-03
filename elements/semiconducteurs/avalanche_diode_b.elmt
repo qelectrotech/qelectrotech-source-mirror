@@ -1,6 +1,7 @@
 <definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="60" type="element" orientation="dnny" >
     <names>
         <name lang="en" >Avalanche diode bidirectional</name>
+        <name lang="fr" >Diode à avalanche bidirectionnelle</name>
         <name lang="pl" >Dioda lawinowa dwukierunkowa</name>
     </names>
     <informations>Author: The QElectroTech team
