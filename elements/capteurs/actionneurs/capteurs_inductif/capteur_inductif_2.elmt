@@ -1,6 +1,6 @@
 <definition width="60" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
-        <name lang="fr" >Capteur capacitif 2 fils</name>
+        <name lang="fr" >Capteur inductif 2 fils</name>
     </names>
     <informations></informations>
     <description>
