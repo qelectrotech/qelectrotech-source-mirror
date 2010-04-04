@@ -12,48 +12,48 @@ qelectrotech \- Electric diagrams editor
 .B [\fIFILE\fB]...
 
 .SH DESCRIPTION
-QElectroTech je editor electrických nákresů. Nákresy (*.qet) a electrické prvky (*.elmt) jsou ukládány ve formátu XML.
-Prvky použité v nákresu mohou pocházet ze společné sbírky nebo z vlastní uživatelovy sbírky.
-Příznačné je, že společnou sbírku mohou číst všichni uživatelé, ale upravovat ji nemohou.
-Každý uživatel vlastní svou vlastní sbírku, kterou může upravovat dle libosti.
+QElectroTech is an electric diagrams editor. Diagrams (*.qet) and electric elements (*.elmt) are stored using the XML format.
+The elements that can be used in diagrams may come from the common collection or from the user's custom collection.
+Typically, the common collection is readable by all users but it can't be edited by them.
+Each user owns its custom collection he can modify as he wants.
 .SH OPTIONS
 .TP
 \fB\-\-common\-elements\-dir\fR=\fIDIR\fR
-Používá DIR jako kořenového adresáře pro společnou sbírku. Poznámka: tato volba je povolena jen v případě, že byl v době sestavování programu zadán pokyn QET_ALLOW_OVERRIDE_CED_OPTION.
+Uses DIR as the common collection root directory. Note : this option is enabled only if the QET_ALLOW_OVERRIDE_CED_OPTION directive has been specified at compilation time.
 .TP
 \fB\-\-config\-dir\fR=\fIDIR\fR
-Používá DIR jako adresáře pro nastavení současného uživatele. Tento adresář hostí soubor nazvaný qelectrotech.conf, který obsahuje nastavení programu, and a podadresář nazvaný elements, který obsahuje sbírku uživatelových prvků.  Poznámka: tato volba je povolena jen v případě, že byl v době sestavování programu zadán pokyn QET_ALLOW_OVERRIDE_CD_OPTION.
+Uses DIR as the current user's configuration directory. This directory hosts a file named qelectrotech.conf, which contains the application configuration, and a subdirectory named elements, which contains the user's elements collection.  Note : this option is enabled only if the QET_ALLOW_OVERRIDE_CD_OPTION directive has been specified at compilation time.
 .TP
 \fB\-\-lang\-dir\fR=\fIDIR\fR
-Hledá překladové soubory k programu v adresářovém DIR.
+Looks for the application translation files in the directory DIR.
 .TP
 \fB\-\-help\fR
-Zobrazí krátký popis dostupných voleb.
+Displays a short description of the available options.
 .TP
 \fB\-v\fR, \fB\-\-version\fR
-Zobrazí číslo verze programu (např.: 0.1).
+Displays the application version (e.g.: 0.1).
 .TP
 \fB\-\-license\fR
-Zobrazí licenci k programu (GNU/GPL).
-Uvědomte si, že pokud je v příkazovém řádku zadána jedna z posledních tří voleb, program se po zobrazení odpovídajících údajů zastaví.
-Běží-li ještě nějaký proces programu, který byl spuštěn uživatelem, tento proces bude brát ohled na příkazový řádek, a zejména na soubory k otevření.
-Avšak na volby, které nově vymezují adresáře (společná sbírka, soubory s nastavením a překladové souboru), brán ohled nebude.
-Pokud končí název souboru příponou .elmt, QElectroTech se jej pokusí otevřít v editoru prvků.
-Jinak jej bude považovat za nákres.
+Displays the application license (GNU/GPL).
+Note that if one of the three last options is specified in the command line, the programs stops after having displayed the adequate information.
+If an instance of the application launched by the user is still running, this instance will consider the command line, and notably the files to open.
+However, options that redefine directories (common collection, configuration and translation files) will not be considered.
+If a filename ends with .elmt, QElectroTech will try to open it into an element editor.
+Otherwise, it will consider it as diagrams.
 .SH AUTHORS
 Benoit Ansieau <benoit.ansieau@gmail.com>
 .br
 Xavier Guerrin <xavier.guerrin@gmail.com>
 
 .SH REPORTING BUGS
-Pokud se v programu setkáte s chováním, které vám bude připadat neobvyklé, projděte se našimi často kladenými dotazy (FAQ) <http://qelectrotech.org/wiki/doku.php?id=doc:faq> a naším systémem pro sledování chyb <http://qelectrotech.org/bugtracker/>, abyste si ověřil, zda se už o těch potížích něco neví. Neví-li se, předložte, prosím, hlášení o chybě přes náš systém sledování chyb (BugTracker).
+If you encounter a behavior in the application that looks unusual to you, browse our FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> and our BugTracker <http://qelectrotech.org/bugtracker/> to check if the problem is already known. In the negative, please submit a bugreport via the BugTracker. 
 
 .SH COPYRIGHT
-Copyright (c) Vývojáři QElectroTechu.
+Copyright (c) QElectroTech developers.
 .br
-Povolení: GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
+License : GNU/GPL v2+ : <http://www.gnu.org/licenses/old\-licenses/gpl\-2.0.html>
 .br
-Tento program je svobodný. Můžete jej upravovat a šířit jej. Je poskytován tak, jak je, a BEZ JAKÉKOLI ZÁRUKY.
+This program is a free software. You can modify and redistribute it. It is provided as is and WITHOUT ANY WARRANTY.
 
 .SH SEE ALSO
-Veřejné stránky : <http://qelectrotech.org/>
+Official website : <http://qelectrotech.org/>
