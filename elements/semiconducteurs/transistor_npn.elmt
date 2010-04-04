@@ -1,6 +1,7 @@
 <definition width="40" version="0.22" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >Transistor NPN</name>
+        <name lang="fr" >NPN transistor</name>
     </names>
     <informations></informations>
     <description>

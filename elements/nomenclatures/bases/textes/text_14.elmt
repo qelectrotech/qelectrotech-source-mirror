@@ -1,6 +1,7 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >Zone texte T14</name>
+        <name lang="en" >T14 text area</name>
     </names>
     <description>
         <input x="-6" y="7.33333" size="14" rotate="true" text="_" />
