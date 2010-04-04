@@ -1,8 +1,8 @@
 <definition width="70" version="0.22" hotspot_x="15" hotspot_y="45" height="80" type="element" orientation="dyyy" >
     <names>
         <name lang="en" >Graetz bridge</name>
+        <name lang="fr"	>Pont de Graetz</name>
         <name lang="pl" >Mostek Graetz`a</name>
-	<name lang="fr"	>Pont de Graetz</name
     </names>
     <informations></informations>
     <description>
