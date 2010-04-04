@@ -87,7 +87,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="124"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do polštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
@@ -1317,7 +1317,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/exportdialog.cpp" line="646"/>
         <location filename="../sources/exportdialog.cpp" line="651"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>

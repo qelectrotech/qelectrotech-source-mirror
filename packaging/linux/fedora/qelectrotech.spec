@@ -78,6 +78,7 @@ Summary(es): Collección de elementos para QElectroTech
 Summary(fr): Collection d'élements pour QElectroTech
 Summary(pt): Colecção de elementos para QElectroTech
 Summary(ru): Коллекция элементов для QElectroTech
+Summary(cs): Sbírka prvků pro QElectroTech
 Group:       Applications/Productivity
 License:     CC-BY
 %if 0%{?fedora} >= 11
@@ -101,6 +102,8 @@ Colecção de elementos para QElectroTech.
 %description -l ru symbols
 Коллекция элементов для QElectroTech.
 
+%description -l cs symbols
+Sbírka prvků pro QElectroTech.
 
 %prep
 %if 0%{?svn}
