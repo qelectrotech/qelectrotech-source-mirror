@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Zone texte T10</name>
         <name lang="en" >T10 text area</name>
+        <name lang="pl" >Obszar tekstowy T10</name>
     </names>
     <description>
         <input x="-3" y="3.66667" size="10" rotate="true" text="_" />

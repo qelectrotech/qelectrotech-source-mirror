@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Zone texte T16</name>
         <name lang="en" >T16 text area</name>
+        <name lang="pl" >Obszar tekstowy T16</name>
     </names>
     <description>
         <input x="-6" y="7.33333" size="16" rotate="true" text="_" />

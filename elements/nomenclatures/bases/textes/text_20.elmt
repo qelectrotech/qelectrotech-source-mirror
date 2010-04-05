@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Zone texte T20</name>
         <name lang="en" >T20 text area</name>
+        <name lang="pl" >Obszar tekstowy T20</name>
     </names>
     <description>
         <input x="-7" y="9.66667" size="20" rotate="true" text="_" />

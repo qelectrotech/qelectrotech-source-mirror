@@ -4,6 +4,7 @@
         <name lang="en" >Coil</name>
         <name lang="fr" >Bobine</name>
         <name lang="es" >Bobina</name>
+        <name lang="pl" >Cewka</name>
     </names>
     <description>
         <input x="4" y="20" size="6" rotate="true" text="_" />

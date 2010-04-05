@@ -1,6 +1,7 @@
 <definition width="70" version="0.22" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >Pressostat NC</name>
+        <name lang="pl" >Presostat (NC)</name>
     </names>
     <informations></informations>
     <description>

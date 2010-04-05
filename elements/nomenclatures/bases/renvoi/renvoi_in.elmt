@@ -3,6 +3,7 @@
         <name lang="en" >Output terminal</name>
         <name lang="fr" >Renvoi schéma in</name>
         <name lang="es" >Punto de salida</name>
+        <name lang="pl" >Odsyłacz (input)</name>
     </names>
     <description>
         <input x="5" y="13" size="6" text="()" />

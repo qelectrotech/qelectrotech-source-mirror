@@ -6,6 +6,7 @@
 		<comment xml:lang="fr">Fichier projet QElectroTech</comment>
 		<comment xml:lang="ru">Файл проекта QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QEletroTech</comment>
+		<comment xml:lang="pl">Plik projektu QElectrotech</comment>
 		<glob pattern="*.qet" />
 	</mime-type>
 	<mime-type type="application/x-qet-element">
@@ -14,6 +15,7 @@
 		<comment xml:lang="fr">Fichier élément QElectroTech</comment>
 		<comment xml:lang="ru">Файл элемента QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
+		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
 		<glob pattern="*.elmt" />
 	</mime-type>
 </mime-info>

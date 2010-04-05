@@ -3,6 +3,7 @@
         <name lang="en" >Thermal relay</name>
         <name lang="fr" >Relais thermique</name>
         <name lang="es" >Relé térmico</name>
+        <name lang="pl" >Przekaźnik termiczny</name>
     </names>
     <description>
         <input x="36" y="6.33333" size="4" rotate="true" text="Plage _A/_A" />

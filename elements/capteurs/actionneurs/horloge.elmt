@@ -1,6 +1,7 @@
 <definition width="70" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="fr">Contact horloge</name>
+        <name lang="pl">Zegar sterujący</name>
     </names>
     <informations></informations>
     <description>

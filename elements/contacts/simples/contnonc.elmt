@@ -4,6 +4,7 @@
         <name lang="en" >Simple contact</name>
         <name lang="fr" >Contact NO - NC</name>
         <name lang="es" >Contacto simple</name>
+        <name lang="pl" >Styk (NC/NO)</name>
     </names>
     <description>
         <input x="4" y="20" size="6" text="_" />

@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Zone texte T14</name>
         <name lang="en" >T14 text area</name>
+        <name lang="pl" >Obszar tekstowy T14</name>
     </names>
     <description>
         <input x="-6" y="7.33333" size="14" rotate="true" text="_" />
