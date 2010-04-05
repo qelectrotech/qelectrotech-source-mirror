@@ -82,7 +82,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="124"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на польский</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
@@ -1338,16 +1338,19 @@ Les changements seront définitifs.</source>
         <translation>Предпросмотр</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="646"/>
-        <location filename="../sources/exportdialog.cpp" line="651"/>
-        <source>px</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести уникальное  не пустое имя файла для каждой схемы, которую хотите экспортировать.</translation>
+    </message>
+</context>
+<context>
+    <name>ExportDialog::ExportDiagramLine</name>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="646"/>
+        <location filename="../sources/exportdialog.cpp" line="651"/>
+        <source>px</source>
+        <translation>пикс</translation>
     </message>
 </context>
 <context>
@@ -4039,7 +4042,7 @@ Available options:
         <translation>Этот документ, возможно, был сохранён более поздней версии QElectroTech. Возможно, что открытие всего документа или его части будет невозможно.</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="989"/>
+        <location filename="../sources/qetproject.cpp" line="990"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Произошла ошибка при копировании элемента %1</translation>
     </message>
