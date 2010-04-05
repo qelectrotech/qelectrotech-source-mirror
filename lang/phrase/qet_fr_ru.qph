@@ -66,7 +66,7 @@
 </phrase>
 <phrase>
     <source>Pas de zoom</source>
-    <target>Востановит масштаб</target>
+    <target>Восстановить масштаб</target>
 </phrase>
 <phrase>
     <source>Éditer la taille et le point de saisie</source>
@@ -115,5 +115,21 @@
 <phrase>
     <source>Ajouter une ligne</source>
     <target>Добавить строку</target>
+</phrase>
+<phrase>
+    <source>Traduction en polonais</source>
+    <target>Перевод на польский</target>
+</phrase>
+<phrase>
+    <source>px</source>
+    <target>пикс</target>
+</phrase>
+<phrase>
+    <source>angle de rotation</source>
+    <target>угол поворота</target>
+</phrase>
+<phrase>
+    <source>Angle de rotation par défaut : </source>
+    <target>Угол поворота по умолчанию:</target>
 </phrase>
 </QPH>
