@@ -21,7 +21,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="88"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
-        <translation>QElectroTech, aplikace pro navrhování elektrických nákresů.</translation>
+        <translation>QElectroTech, aplikace pro vytváření elektrotechnických výkresů.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="90"/>
@@ -205,7 +205,7 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="95"/>
         <source>Dimensions du schéma</source>
-        <translation>Velikost nákresu</translation>
+        <translation>Velikost výkresu</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="99"/>
@@ -404,7 +404,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="329"/>
         <source>Schéma sans titre</source>
-        <translation>Nákres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="61"/>
@@ -416,13 +416,13 @@
         <location filename="../sources/diagramview.cpp" line="331"/>
         <source>Schéma %1</source>
         <comment>%1 is a diagram title</comment>
-        <translation>Nákres %1</translation>
+        <translation>Výkres %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="353"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation>Vlastnosti nákresu</translation>
+        <translation>Vlastnosti výkresu</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="594"/>
@@ -531,7 +531,7 @@
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Schéma sans titre</source>
-        <translation>Nákres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
 </context>
 <context>
@@ -786,7 +786,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="1134"/>
         <source>Les dimensions ou le point de saisie ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation>Velikost nebo horká půda nejsou platné.</translation>
+        <translation>Velikost nebo bod zajištění nejsou platné.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1149"/>
@@ -798,7 +798,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
         <source>Éditer la taille et le point de saisie</source>
         <comment>window title</comment>
-        <translation>Upravit velikost nebo horkou půdu</translation>
+        <translation>Upravit velikost nebo bod zajištění</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="864"/>
@@ -1053,12 +1053,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="621"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation>Toto je prvek, který můžete vložit do svého nákresu tím, že jej přetáhnete a upustíte</translation>
+        <translation>Toto je prvek, který můžete vložit do svého výkresu tím, že jej přetáhnete a upustíte</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="622"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
-        <translation>Táhněte a upusťte tento prvek nad nákresem, abyste vložil prvek  </translation>
+        <translation>Táhněte a upusťte tento prvek nad výkresem, abyste vložil prvek  </translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="677"/>
@@ -1078,7 +1078,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="971"/>
         <source>Schéma sans titre</source>
-        <translation>Nákres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="645"/>
@@ -1137,12 +1137,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Remonter ce schéma</source>
-        <translation>Vynést tento nákres nahoru</translation>
+        <translation>Posunout tento výkres nahoru</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Abaisser ce schéma</source>
-        <translation>Spustit tento nákres dolů</translation>
+        <translation>Posunout tento výkres dolů</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="328"/>
@@ -1172,12 +1172,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ajouter un schéma</source>
-        <translation>Přidat nákres</translation>
+        <translation>Přidat výkres</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Supprimer ce schéma</source>
-        <translation>Smazat tento nákres</translation>
+        <translation>Smazat tento výkres</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="61"/>
@@ -1208,7 +1208,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Propriétés du schéma</source>
-        <translation>Vlastnosti nákresu</translation>
+        <translation>Vlastnosti výkresu</translation>
     </message>
 </context>
 <context>
@@ -1285,7 +1285,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/exportdialog.cpp" line="48"/>
         <source>Exporter les schémas du projet</source>
         <comment>window title</comment>
-        <translation>Vyvést nákresy k projektu</translation>
+        <translation>Vyvést výkresy projektu</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="58"/>
@@ -1295,12 +1295,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/exportdialog.cpp" line="62"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Vyberte nákresy, které chcete vyvést, a zvolte jejich velikost:</translation>
+        <translation>Vyberte výkresy, které chcete vyvést, a zvolte jejich velikost:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="116"/>
         <source>Schéma</source>
-        <translation>Nákres</translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="117"/>
@@ -1311,7 +1311,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation>Musíte zadat název souboru, který bude jedinečný pro každý nákres, který bude vyveden.</translation>
+        <translation>Musíte zadat název souboru, který bude jedinečný pro každý výkres, který bude vyveden.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="646"/>
@@ -1459,7 +1459,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="116"/>
         <source>Ces paramètres s&apos;appliqueront dès la prochaine ouverture d&apos;un éditeur de schémas.</source>
-        <translation>Tato nastavení budou použita při příštím otevření editoru nákresů.</translation>
+        <translation>Tato nastavení budou použita při příštím otevření editoru výkresů.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="118"/>
@@ -1599,8 +1599,8 @@ Provedené změny budou konečné.</translation>
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
         <translation>Následující proměnné se dají použít v poli pro dvojlist:
-  - %id: průběžné číslo nákresu v projektu
-  - %total: celkový počet nákresů v projektu</translation>
+  - %id: průběžné číslo výkresu v projektu
+  - %total: celkový počet výkresů v projektu</translation>
     </message>
 </context>
 <context>
@@ -1873,7 +1873,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/configpages.cpp" line="93"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation>Nový nákres</translation>
+        <translation>Nový výkres</translation>
     </message>
 </context>
 <context>
@@ -1945,13 +1945,13 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/newelementwizard.cpp" line="157"/>
         <source>Étape 4/5 : Dimensions et point de saisie</source>
         <comment>wizard page title</comment>
-        <translation>Krok 4 z 5: Velikost a horká půda</translation>
+        <translation>Krok 4 z 5: Velikost a bod zajištění</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="158"/>
         <source>Saisissez les dimensions du nouvel élément ainsi que la position du hotspot (point de saisie de l&apos;élément à la souris) en considérant que l&apos;élément est dans son orientation par défaut.</source>
         <comment>wizard page subtitle</comment>
-        <translation>Zadejte novou velikost nového prvku a polohu jeho horké půdy, za předpokladu, že prvek je ve výchozím natočení.</translation>
+        <translation>Zadejte novou velikost nového prvku a polohu jeho bodu zajištění, za předpokladu, že prvek je ve výchozím natočení.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="175"/>
@@ -2088,7 +2088,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="50"/>
         <source>Ce projet ne contient aucun schéma</source>
-        <translation>Tento projekt neobsahuje žádný nákres</translation>
+        <translation>Tento projekt neobsahuje žádný výkres</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="415"/>
@@ -2109,37 +2109,37 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/projectview.cpp" line="245"/>
         <source>Enregistrer le schéma en cours ?</source>
         <comment>message box title</comment>
-        <translation>Uložit nynější nákres?</translation>
+        <translation>Uložit nynější výkres?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="246"/>
         <source>Voulez-vous enregistrer le schéma %1 ?</source>
         <comment>message box content - %1 is a diagram title</comment>
-        <translation>Chcete uložit nákres %1?</translation>
+        <translation>Chcete uložit výkres %1?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="262"/>
         <source>Enregistrer le nouveau schéma ?</source>
         <comment>message box title</comment>
-        <translation>Uložit nový nákres?</translation>
+        <translation>Uložit nový výkres?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="263"/>
         <source>Ce schéma a été ajouté mais n&apos;a été ni modifié ni enregistré. Voulez-vous le conserver ?</source>
         <comment>message box content</comment>
-        <translation>Tento nákres byl přidán, ale nebyl změněn ani uložen. Chcete jej zachovat?</translation>
+        <translation>Tento výkres byl přidán, ale nebyl změněn ani uložen. Chcete jej zachovat?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="333"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
-        <translation>Smazat nákres?</translation>
+        <translation>Smazat tento výkres?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="334"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Opravdu chcete tento nákres vymazat z projektu? Jde o nevratnou změnu.</translation>
+        <translation>Opravdu chcete tento výkres vymazat z projektu? Jde o nevratnou změnu.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="412"/>
@@ -2175,7 +2175,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/projectview.cpp" line="714"/>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
-        <translation>Nákres QElectroTech (*.qet)</translation>
+        <translation>Výkres programu QElectroTech (*.qet)</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="751"/>
@@ -2204,7 +2204,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="420"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
-        <translation>Vlastnosti používané při přidání nového nákresu do projektu:</translation>
+        <translation>Vlastnosti používané při přidání nového výkresu do projektu:</translation>
     </message>
 </context>
 <context>
@@ -2227,12 +2227,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1001"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
-        <translation>&amp;Skrýt všechny editory nákresů</translation>
+        <translation>&amp;Skrýt všechny editory výkresů</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1002"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
-        <translation>&amp;Ukázat všechny editory nákresů</translation>
+        <translation>&amp;Ukázat všechny editory výkresů</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1003"/>
@@ -2247,7 +2247,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1005"/>
         <source>&amp;Nouvel éditeur de schéma</source>
-        <translation>&amp;Nový editor nákresu</translation>
+        <translation>&amp;Nový editor výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1006"/>
@@ -2272,7 +2272,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1043"/>
         <source>Éditeurs de schémas</source>
-        <translation>Editory nákresu</translation>
+        <translation>Editory výkresů</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1059"/>
@@ -2335,7 +2335,7 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="93"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
-        <translation>Nahrává se... Editor nákresů</translation>
+        <translation>Nahrává se... Editor výkresů</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="96"/>
@@ -2593,7 +2593,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="688"/>
         <source>Schémas QElectroTech (*.qet);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
-        <translation>Nákresy QElectroTech (*.qet);;Soubory XML (*.xml);;Všechny soubory (*)</translation>
+        <translation>Výkresy programu QElectroTech (*.qet);;Soubory XML (*.xml);;Všechny soubory (*)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1156"/>
@@ -2653,7 +2653,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
         <source>Propriétés du schéma</source>
-        <translation>Vlastnosti nákresu</translation>
+        <translation>Vlastnosti výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="266"/>
@@ -2673,7 +2673,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
-        <translation>Zobrazit/skrýt pruh s nástroji pro nákres</translation>
+        <translation>Zobrazit/Skrýt pruh s nástroji pro výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
@@ -2683,7 +2683,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
         <source>Schéma</source>
-        <translation>Nákres</translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
@@ -2723,12 +2723,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Ajouter un schéma</source>
-        <translation>Přidat nákres</translation>
+        <translation>Přidat výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Supprimer le schéma</source>
-        <translation>Smazat nákres</translation>
+        <translation>Smazat výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
@@ -2846,49 +2846,49 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Crée un nouveau schéma</source>
         <comment>status bar tip</comment>
-        <translation>Vytvoří nový nákres</translation>
+        <translation>Vytvoří nový výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
         <source>Ouvre un schéma existant</source>
         <comment>status bar tip</comment>
-        <translation>Otevře existující nákres</translation>
+        <translation>Otevře stávající výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>Zavře nynější nákres</translation>
+        <translation>Zavře nynější výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="285"/>
         <source>Enregistre le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>Uloží nynější nákres</translation>
+        <translation>Uloží nynější výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="286"/>
         <source>Enregistre le schéma courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation>Uloží nynější nákres pod jiným souborovým názvem</translation>
+        <translation>Uloží nynější výkres pod jiným souborovým názvem</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
         <source>Importe un schéma dans le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>Zavede nákres do nynějšího nákresu</translation>
+        <translation>Zavede výkres do nynějšího výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Exporte le schéma courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation>Vyvede nynější nákres do jiného formátu</translation>
+        <translation>Vyvede nynější výkres do jiného formátu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Imprime le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>Vytiskne nynější nákres</translation>
+        <translation>Vytiskne nynější výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
@@ -2924,19 +2924,19 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="297"/>
         <source>Place les éléments du presse-papier sur le schéma</source>
         <comment>status bar tip</comment>
-        <translation>Vloží prvky ze schránky do nákresu</translation>
+        <translation>Vloží prvky ze schránky do výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Sélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
-        <translation>Vybere všechny prvky v nákresu</translation>
+        <translation>Vybere všechny prvky ve výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="299"/>
         <source>Désélectionne tous les éléments du schéma</source>
         <comment>status bar tip</comment>
-        <translation>Zruší výběr všech prvků v nákresu</translation>
+        <translation>Zruší výběr všech prvků ve výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
@@ -2948,7 +2948,7 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="301"/>
         <source>Enlève les éléments sélectionnés du schéma</source>
         <comment>status bar tip</comment>
-        <translation>Odstraní vybrané prvky z nákresu</translation>
+        <translation>Odstraní vybrané prvky z výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
@@ -2978,43 +2978,43 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Přidat sloupec do nákresu</translation>
+        <translation>Přidat sloupec do výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Enlève une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Odstranit sloupec z nákresu</translation>
+        <translation>Odstranit sloupec z výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Agrandit le schéma en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Zvětší výšku nákresu</translation>
+        <translation>Zvětší výšku výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
         <source>Rétrécit le schéma en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Zmenší výšku nákresu</translation>
+        <translation>Zmenší výšku výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Agrandit le schéma</source>
         <comment>status bar tip</comment>
-        <translation>Zvětší nákres</translation>
+        <translation>Zvětší výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Rétrécit le schéma</source>
         <comment>status bar tip</comment>
-        <translation>Zmenší nákres</translation>
+        <translation>Zmenší výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
         <source>Adapte la taille du schéma afin qu&apos;il soit entièrement visible</source>
         <comment>status bar tip</comment>
-        <translation>Přizpůsobí velikost nákresu, takže bude zcela viditelný</translation>
+        <translation>Přizpůsobí velikost výkresu, takže bude zcela viditelný</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
@@ -3044,7 +3044,7 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="321"/>
         <source>Permet de visualiser le schéma sans pouvoir le modifier</source>
         <comment>status bar tip</comment>
-        <translation>Dovolí zobrazení nákresu bez možnosti jej upravit</translation>
+        <translation>Dovolí zobrazení výkresu bez možnosti jej upravit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1162"/>
@@ -3106,13 +3106,13 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="183"/>
         <source>&amp;Enregistrer tous les schémas</source>
-        <translation>&amp;Uložit všechny nákresy</translation>
+        <translation>&amp;Uložit všechny výkresy</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="287"/>
         <source>Enregistre tous les schémas du projet courant</source>
         <comment>status bar tip</comment>
-        <translation>Uloží všechny nákresy nynějšího projektu</translation>
+        <translation>Uloží všechny výkresy nynějšího projektu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="233"/>
@@ -3192,7 +3192,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
         <source>Éditer la taille et le point de saisie</source>
-        <translation>Upravit velikost a horkou půdu</translation>
+        <translation>Upravit velikost a bod zajištění</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
@@ -3621,7 +3621,7 @@ Dostupné volby:
         <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation>Některé obrazové části (texty, kruhy, čáry, ...) se zdají být mimo okna. Takto mohou vznikat chyby v zobrazení, když je prvek přesunut na nákres. Spravit to můžete tím, že tyto části přesunete, nebo tím, že použijete Úpravy &gt; Upravit velikost a horkou půdu.</translation>
+        <translation>Některé obrazové části (texty, kruhy, čáry, ...) se zdají být mimo okna. Takto mohou vznikat chyby v zobrazení, když je prvek přesunut na výkres. Spravit to můžete tím, že tyto části přesunete, nebo tím, že použijete Úpravy &gt; Upravit velikost a bod zajištění.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="712"/>
@@ -3835,7 +3835,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="170"/>
         <source>Schémas à imprimer :</source>
-        <translation>Nákresy pro tisk:</translation>
+        <translation>Výkresy pro tisk:</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
@@ -3851,7 +3851,7 @@ Dostupné volby:
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="361"/>
         <source>Cacher la liste des schémas</source>
-        <translation>Skrýt seznam s nákresy</translation>
+        <translation>Skrýt seznam s výkresy</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="175"/>
@@ -3952,12 +3952,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="244"/>
         <source>Adapter le schéma à la page</source>
-        <translation>Přizpůsobit nákres straně</translation>
+        <translation>Přizpůsobit výkres straně</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="245"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation>Je-li zaškrtnuta tato volba, nákres bude zmenšen, anebo zvětšen, aby se vešel na tisknutelný povrch jedné strany.</translation>
+        <translation>Je-li zaškrtnuta tato volba, výkres bude zmenšen, anebo zvětšen, aby se vešel na tisknutelný povrch jedné strany.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="261"/>
@@ -3967,7 +3967,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="363"/>
         <source>Afficher la liste des schémas</source>
-        <translation>Zobrazit seznam s nákresy</translation>
+        <translation>Zobrazit seznam s výkresy</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="379"/>
@@ -4154,7 +4154,7 @@ Dostupné volby:
         <location filename="../sources/diagramcommands.cpp" line="564"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation>upravit velikost nákresu</translation>
+        <translation>upravit velikost výkresu</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="591"/>
@@ -4380,12 +4380,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/exportdialog.cpp" line="633"/>
         <source>Schéma sans titre</source>
-        <translation>Nákres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="635"/>
         <source>schema</source>
-        <translation>nákres</translation>
+        <translation>výkres</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="660"/>
