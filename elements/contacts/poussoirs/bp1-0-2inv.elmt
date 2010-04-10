@@ -5,6 +5,7 @@
         <name lang="fr" >Interrupteur rotatif 1-0-2 inv</name>
         <name lang="es" >Interruptor 3 posiciones incluso neutro</name>
         <name lang="pl" >Przełącznik trójpozycyjny (1-0-2)</name>
+        <name lang="cs" >Třípolohový přepínač včetně neutrální (1-0-2)</name>
     </names>
     <description>
         <input x="-23" y="-30" size="6" rotate="true" text="_" />

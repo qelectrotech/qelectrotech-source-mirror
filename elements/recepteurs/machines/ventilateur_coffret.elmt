@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Ventilateur coffret</name>
         <name lang="pl" >Wentylator</name>
+        <name lang="cs" >Ventilátor</name>
     </names>
     <description>
         <circle x="9.34315" y="24.3431" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="11.3137" />

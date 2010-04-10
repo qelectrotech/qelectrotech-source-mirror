@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Diode à avalanche unidirectionelle</name>
         <name lang="pl" >Dioda lawinowa jednokierunkowa</name>
+        <name lang="cs" >Lavinová jednosměrná dioda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

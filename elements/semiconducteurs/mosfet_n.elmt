@@ -3,6 +3,7 @@
         <name lang="en" >Unipolar transistor MOSFET</name>
         <name lang="fr" >Transistor unipolaire MOSFET</name>
         <name lang="pl" >Tranzystor unipolarny MOSFET</name>
+        <name lang="cs" >Jednopólový tranzistor MOSFET</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

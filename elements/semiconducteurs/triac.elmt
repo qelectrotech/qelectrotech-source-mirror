@@ -3,6 +3,7 @@
         <name lang="en" >Triac</name>
         <name lang="fr" >Triac</name>
         <name lang="pl" >Triak</name>
+        <name lang="cs" >Triac</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

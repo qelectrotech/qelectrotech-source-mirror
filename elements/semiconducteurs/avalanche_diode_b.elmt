@@ -3,6 +3,7 @@
         <name lang="en" >Avalanche diode bidirectional</name>
         <name lang="fr" >Diode à avalanche bidirectionnelle</name>
         <name lang="pl" >Dioda lawinowa dwukierunkowa</name>
+        <name lang="cs" >Lavinová dvojsměrná dioda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

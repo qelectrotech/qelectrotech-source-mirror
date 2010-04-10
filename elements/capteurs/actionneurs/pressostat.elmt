@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Pressostat</name>
         <name lang="pl" >Presostat (NO)</name>
+        <name lang="cs" >Presostat (NO)</name>
     </names>
     <description>
         <input x="11" y="-11.5" size="8" rotate="true" text="S_" />

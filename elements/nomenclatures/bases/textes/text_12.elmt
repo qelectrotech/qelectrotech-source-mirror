@@ -3,6 +3,7 @@
         <name lang="fr" >Zone texte T12</name>
         <name lang="en" >T12 text area</name>
         <name lang="pl" >Obszar tekstowy T12</name>
+        <name lang="cs" >Textové pole T12</name>
     </names>
     <description>
         <input x="-3" y="5.66667" size="12" rotate="true" text="_" />

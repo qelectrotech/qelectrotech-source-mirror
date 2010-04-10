@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >PC 2P+T</name>
         <name lang="pl" >Gniazdo wtyczkowe</name>
+        <name lang="cs" >Zásuvka PC 2P+T</name>
     </names>
     <description>
         <text x="5" y="34.3333" size="4" text="PC 230V 16A" />

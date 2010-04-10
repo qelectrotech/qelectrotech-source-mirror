@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Débitmètre à impulsions</name>
         <name lang="pl" >Przepływomierz impulsowy</name>
+        <name lang="cs" >Impulsový průtokoměr</name>
     </names>
     <description>
         <text x="2" y="-12.6667" size="4" text="13" />

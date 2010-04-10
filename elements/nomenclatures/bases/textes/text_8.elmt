@@ -3,6 +3,7 @@
         <name lang="fr" >Zone texte T08</name>
         <name lang="en" >T08 text area</name>
         <name lang="pl" >Obszar tekstowy T08</name>
+        <name lang="cs" >Textové pole T08</name>
     </names>
     <description>
         <input x="-3" y="1.66667" size="8" rotate="true" text="_" />

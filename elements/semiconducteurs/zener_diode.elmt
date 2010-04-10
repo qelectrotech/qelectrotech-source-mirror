@@ -3,6 +3,7 @@
         <name lang="en" >Zener diode</name>
         <name lang="fr" >Diode Zener</name>
         <name lang="pl" >Dioda Zenera</name>
+        <name lang="cs" >Zenerova dioda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
