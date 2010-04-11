@@ -164,8 +164,9 @@ bool Element::setOrientation(QET::Orientation o) {
 	ori.setCurrent(o);
 	update();
 	foreach(QGraphicsItem *qgi, childItems()) {
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConductor();
-		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
+			p -> updateConductor();
+		} /* else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
 			// applique une rotation contraire si besoin
 			if (!eti -> followParentRotations())  {
 				QMatrix new_matrix = eti -> matrix();
@@ -177,6 +178,7 @@ bool Element::setOrientation(QET::Orientation o) {
 				eti -> setMatrix(new_matrix);
 			}
 		}
+		*/
 	}
 	return(true);
 }
