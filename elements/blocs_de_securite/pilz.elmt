@@ -1,5 +1,6 @@
 <definition width="420" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" orientation="dyyy" >
     <names>
+	<name lang="en" >Safety module PILZ</name>
         <name lang="fr" >Relais autocontrolé PILZ</name>
         <name lang="pl" >Przekaźnik bezpieczeństwa PILZ</name>
         <name lang="cs" >Automaticky řízené relé PILZ</name>

@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+	<name lang="en" >Safety modules</name>
         <name lang="fr" >Blocs de securité</name>
         <name lang="pl" >Moduły bezpieczeństwa</name>
         <name lang="cs" >Jistící bloky</name>
