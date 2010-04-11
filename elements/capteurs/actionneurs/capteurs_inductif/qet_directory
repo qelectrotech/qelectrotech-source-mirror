@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+	<name lang="en" >Inductive sensor</name>
         <name lang="fr" >Capteurs_inductif</name>
         <name lang="pl" >Czujniki indukcyjne</name>
         <name lang="cs" >Induktivní snímače</name>

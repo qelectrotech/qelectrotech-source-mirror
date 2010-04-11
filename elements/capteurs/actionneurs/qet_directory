@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+	<name lang="en" >Actuators</name>
         <name lang="fr" >Actionneurs</name>
         <name lang="pl" >Elementy wykonawcze</name>
         <name lang="cs" >Prováděcí prvky</name>
