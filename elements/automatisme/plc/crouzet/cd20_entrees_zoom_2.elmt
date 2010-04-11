@@ -1,7 +1,7 @@
 <definition width="560" version="0.22" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
-	<name lang="en" >CD20 zoom output board</name>
-        <name lang="fr" >CD20 carte sorties</name>
+	<name lang="en" >CD20 zoom input board</name>
+        <name lang="fr" >CD20 carte entrees</name>
         <name lang="pl" >Karta wejść CD20</name>
         <name lang="cs" >Karta CD20 vstupy</name>
     </names>
