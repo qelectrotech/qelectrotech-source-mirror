@@ -1,5 +1,6 @@
 <definition width="650" version="0.2" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dnnn" >
     <names>
+	<name lang="en" >Table Title Nomenclature</name>
         <name lang="fr" >Titre tableau nomenclature</name>
         <name lang="pl" >Tabela - tytuły</name>
     </names>

@@ -1,7 +1,7 @@
 <definition width="40" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
         <name lang="ru" >Контакт теплового реле (НР)</name>
-        <name lang="en" >Contact relais thermique (NO)</name>
+        <name lang="en" >Contact thermal relay (NO)</name>
         <name lang="fr" >Contact relais thermique (NO)</name>
         <name lang="es" >Contacto relé térmico (NA)</name>
         <name lang="cs" >Tepelné spojovací relé (NO)</name>
