@@ -19,7 +19,7 @@
 #include "conductor.h"
 #include "conductorsegment.h"
 #include "conductorsegmentprofile.h"
-#include "diagramtextitem.h"
+#include "conductortextitem.h"
 #include "element.h"
 #include "diagram.h"
 #include "diagramcommands.h"
@@ -31,16 +31,16 @@ QBrush Conductor::conductor_brush = QBrush();
 QBrush Conductor::square_brush = QBrush(Qt::darkGreen);
 /**
 	Constructeur
-	@param p1     Premiere Borne a laquelle le conducteur est lie
-	@param p2     Seconde Borne a laquelle le conducteur est lie
-	@param parent Element parent du conducteur (0 par defaut)
-	@param scene  QGraphicsScene a laquelle appartient le conducteur
+	@param p1              Premiere Borne a laquelle le conducteur est lie
+	@param p2              Seconde Borne a laquelle le conducteur est lie
+	@param parent_diagram  QGraphicsScene a laquelle appartient le conducteur
 */
-Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene *scene) :
+Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	QObject(),
-	QGraphicsPathItem(parent, scene),
+	QGraphicsPathItem(0, parent_diagram),
 	terminal1(p1),
 	terminal2(p2),
+	parent_diagram_(parent_diagram),
 	destroyed(false),
 	text_item(0),
 	segments(NULL),
@@ -82,14 +82,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Element *parent, QGraphicsScene
 	setAcceptsHoverEvents(true);
 	
 	// ajout du champ de texte editable
-	text_item = new DiagramTextItem();
-	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// on desactive Movable pour les textes des conducteurs
-	text_item -> setFlag(QGraphicsItem::ItemIsMovable, false);
-	text_item -> setPlainText(properties_.text);
-	text_item -> previous_text = properties_.text;
+	text_item = new ConductorTextItem(properties_.text, this);
 	calculateTextItemPosition();
-	text_item -> setParentItem(this);
 	connect(
 		text_item,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
@@ -549,7 +543,7 @@ void Conductor::destroy() {
 
 /// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant
 Diagram *Conductor::diagram() const {
-	return(qobject_cast<Diagram *>(scene()));
+	return(parent_diagram_);
 }
 
 /**
@@ -751,7 +745,14 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 			// le conducteur vient de se faire deselectionner
 			setZValue(previous_z_value);
 		}
-	} else if (change == QGraphicsItem::ItemSceneHasChanged || change == QGraphicsItem::ItemVisibleHasChanged) {
+	} else if (change == QGraphicsItem::ItemSceneHasChanged) {
+		// prend en compte le changement de schema
+		QGraphicsScene *qgscene = value.value<QGraphicsScene *>();
+		parent_diagram_ = static_cast<Diagram *>(qgscene);
+		
+		// permet de positionner correctement le texte du conducteur lors de son ajout a un schema
+		calculateTextItemPosition();
+	} else if (change == QGraphicsItem::ItemVisibleHasChanged) {
 		// permet de positionner correctement le texte du conducteur lors de son ajout a un schema
 		calculateTextItemPosition();
 	}
@@ -1092,6 +1093,7 @@ void Conductor::saveProfile(bool undo) {
 	ConductorProfile old_profile(conductor_profiles[current_path_type]);
 	conductor_profiles[current_path_type].fromConductor(this);
 	Diagram *dia = diagram();
+	qDebug () << Q_FUNC_INFO << dia;
 	if (undo && dia) {
 		dia -> undoStack().push(new ChangeConductorCommand(this, old_profile, conductor_profiles[current_path_type], current_path_type));
 	}

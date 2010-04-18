@@ -15,23 +15,24 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef SCHEMA_H
-#define SCHEMA_H
+#ifndef DIAGRAM_H
+#define DIAGRAM_H
 #include <QtGui>
 #include <QtXml>
 #include "borderinset.h"
-#include "qgimanager.h"
 #include "conductorproperties.h"
 #include "exportproperties.h"
-class Element;
-class CustomElement;
-class Terminal;
+#include "qgimanager.h"
 class Conductor;
-class DiagramTextItem;
+class CustomElement;
 class DiagramContent;
 class DiagramPosition;
-class QETProject;
+class DiagramTextItem;
+class Element;
 class ElementsLocation;
+class IndependentTextItem;
+class QETProject;
+class Terminal;
 /**
 	Cette classe represente un schema electrique.
 	Elle gere les differents elements et conducteurs qui le composent
@@ -78,7 +79,7 @@ class Diagram : public QGraphicsScene {
 	QSet<Element *> elements_to_move;
 	QSet<Conductor *> conductors_to_move;
 	QHash<Conductor *, Terminal *> conductors_to_update;
-	QSet<DiagramTextItem *> texts_to_move;
+	QSet<IndependentTextItem *> texts_to_move;
 	QGIManager *qgi_manager;
 	QUndoStack *undo_stack;
 	bool draw_terminals;
@@ -122,11 +123,11 @@ class Diagram : public QGraphicsScene {
 	// fonctions relative a l'ajout et a l'enlevement d'elements graphiques sur le schema
 	void addElement(Element *);
 	void addConductor(Conductor *);
-	void addDiagramTextItem(DiagramTextItem *);
+	void addIndependentTextItem(IndependentTextItem *);
 	
 	void removeElement(Element *);
 	void removeConductor(Conductor *);
-	void removeDiagramTextItem(DiagramTextItem *);
+	void removeIndependentTextItem(IndependentTextItem *);
 	
 	// fonctions relatives aux options graphiques
 	ExportProperties applyProperties(const ExportProperties &);
@@ -156,7 +157,7 @@ class Diagram : public QGraphicsScene {
 	const QSet<Element *> &elementsToMove();
 	const QSet<Conductor *> &conductorsToMove();
 	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
-	const QSet<DiagramTextItem *> &textsToMove();
+	const QSet<IndependentTextItem *> &independentTextsToMove();
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
@@ -286,7 +287,7 @@ inline const QHash<Conductor *, Terminal *> &Diagram::conductorsToUpdate() {
 }
 
 /// @return la liste des textes a deplacer
-inline const QSet<DiagramTextItem *> &Diagram::textsToMove() {
+inline const QSet<IndependentTextItem *> &Diagram::independentTextsToMove() {
 	if (!moved_elements_fetched) fetchMovedElements();
 	return(texts_to_move);
 }

@@ -17,15 +17,18 @@
 */
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
-#include "qet.h"
-#include "diagram.h"
-#include "diagramcontent.h"
-#include "diagramtextitem.h"
-#include "conductor.h"
-#include "borderproperties.h"
-#include "conductorproperties.h"
-#include "insetproperties.h"
 #include <QtGui>
+#include "borderproperties.h"
+#include "conductor.h"
+#include "conductorproperties.h"
+#include "diagramcontent.h"
+#include "insetproperties.h"
+#include "qet.h"
+class Diagram;
+class DiagramTextItem;
+class Element;
+class IndependentTextItem;
+
 /**
 	Cette classe represente l'action d'ajouter un element au schema
 */
@@ -58,7 +61,7 @@ class AddElementCommand : public QUndoCommand {
 class AddTextCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	AddTextCommand(Diagram *, DiagramTextItem *, const QPointF &, QUndoCommand * = 0);
+	AddTextCommand(Diagram *, IndependentTextItem *, const QPointF &, QUndoCommand * = 0);
 	virtual ~AddTextCommand();
 	private:
 	AddTextCommand(const AddTextCommand &);
@@ -71,7 +74,7 @@ class AddTextCommand : public QUndoCommand {
 	// attributs
 	private:
 	/// texte ajoute
-	DiagramTextItem *textitem;
+	IndependentTextItem *textitem;
 	/// schema sur lequel on ajoute le texte
 	Diagram *diagram;
 	/// position du texte sur le schema
@@ -103,8 +106,8 @@ class AddConductorCommand : public QUndoCommand {
 };
 
 /**
-	Cette classe represente l'action de supprimer des elements et / ou
-	conducteurs d'un schema
+	Cette classe represente l'action de supprimer des elements, conducteurs
+	et / ou textes independants d'un schema
 */
 class DeleteElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur

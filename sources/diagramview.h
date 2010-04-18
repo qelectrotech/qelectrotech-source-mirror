@@ -21,8 +21,8 @@
 #include "elementslocation.h"
 class Conductor;
 class Diagram;
-class DiagramTextItem;
 class Element;
+class IndependentTextItem;
 class QETDiagramEditor;
 /**
 	Classe representant graphiquement un schema electrique
@@ -62,7 +62,7 @@ class DiagramView : public QGraphicsView {
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
 	void addText();
-	DiagramTextItem *addDiagramTextAtPos(const QPointF &);
+	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
 	
 	protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *);

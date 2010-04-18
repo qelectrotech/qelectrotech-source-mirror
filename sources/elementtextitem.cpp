@@ -18,14 +18,16 @@
 #include "elementtextitem.h"
 #include "diagram.h"
 #include "diagramcommands.h"
+#include "element.h"
 
 /**
 	Constructeur
-	@param parent Le QGraphicsItem parent du champ de texte
-	@param scene La scene a laquelle appartient le champ de texte
+	@param parent_element Le QGraphicsItem parent du champ de texte
+	@param parent_diagram Le schema auquel appartient le champ de texte
 */
-ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
-	DiagramTextItem(parent, scene),
+ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagram) :
+	DiagramTextItem(parent_element, parent_diagram),
+	parent_element_(parent_element),
 	follow_parent_rotations(false),
 	original_rotation_angle_(0.0)
 {
@@ -39,12 +41,13 @@ ElementTextItem::ElementTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 
 /**
 	Constructeur
-	@param parent Le QGraphicsItem parent du champ de texte
-	@param scene La scene a laquelle appartient le champ de texte
+	@param parent_element L'element parent du champ de texte
+	@param parent_diagram Le schema auquel appartient le champ de texte
 	@param text Le texte affiche par le champ de texte
 */
-ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) :
-	DiagramTextItem(text, parent, scene),
+ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, Diagram *parent_diagram) :
+	DiagramTextItem(text, parent_element, parent_diagram),
+	parent_element_(parent_element),
 	follow_parent_rotations(false),
 	original_rotation_angle_(0.0)
 {
@@ -58,6 +61,13 @@ ElementTextItem::ElementTextItem(const QString &text, QGraphicsItem *parent, QGr
 
 /// Destructeur
 ElementTextItem::~ElementTextItem() {
+}
+
+/**
+	@return L'element parent de ce champ de texte, ou 0 si celui-ci n'en a pas.
+*/
+Element *ElementTextItem::parentElement() const {
+	return(parent_element_);
 }
 
 /**

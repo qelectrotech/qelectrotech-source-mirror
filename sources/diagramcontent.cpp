@@ -18,7 +18,7 @@
 #include "diagramcontent.h"
 #include <QGraphicsItem>
 #include "element.h"
-#include "diagramtextitem.h"
+#include "independenttextitem.h"
 #include "conductor.h"
 
 /**

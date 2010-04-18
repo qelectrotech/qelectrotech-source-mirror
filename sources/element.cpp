@@ -282,6 +282,7 @@ void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 
 /**
 	Gere les mouvements de souris lies a l'element
+	@param e Objet decrivant l'evenement souris
 */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (isSelected() && e -> buttons() & Qt::LeftButton) {

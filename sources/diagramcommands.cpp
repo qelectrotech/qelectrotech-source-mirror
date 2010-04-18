@@ -19,7 +19,11 @@
 #include "element.h"
 #include "conductor.h"
 #include "diagram.h"
+#include "independenttextitem.h"
 #include "qgimanager.h"
+#include "diagram.h"
+#include "diagramtextitem.h"
+
 /**
 	Constructeur
 	@param d Schema auquel on ajoute un element
@@ -65,7 +69,7 @@ void AddElementCommand::redo() {
 	@param pos Position a laquelle le texte est ajoute
 	@param parent QUndoCommand parent
 */
-AddTextCommand::AddTextCommand(Diagram *dia, DiagramTextItem *text, const QPointF &pos, QUndoCommand *parent) :
+AddTextCommand::AddTextCommand(Diagram *dia, IndependentTextItem *text, const QPointF &pos, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("Ajouter un champ de texte", "undo caption"), parent),
 	textitem(text),
 	diagram(dia),
@@ -81,12 +85,12 @@ AddTextCommand::~AddTextCommand() {
 
 /// Annule l'ajout
 void AddTextCommand::undo() {
-	diagram -> removeDiagramTextItem(textitem);
+	diagram -> removeIndependentTextItem(textitem);
 }
 
 /// Refait l'ajout
 void AddTextCommand::redo() {
-	diagram -> addDiagramTextItem(textitem);
+	diagram -> addIndependentTextItem(textitem);
 	textitem -> setPos(position);
 }
 
@@ -167,8 +171,8 @@ void DeleteElementsCommand::undo() {
 	}
 	
 	// remet les textes
-	foreach(DiagramTextItem *t, removed_content.textFields) {
-		diagram -> addDiagramTextItem(t);
+	foreach(IndependentTextItem *t, removed_content.textFields) {
+		diagram -> addIndependentTextItem(t);
 	}
 }
 
@@ -185,8 +189,8 @@ void DeleteElementsCommand::redo() {
 	}
 	
 	// enleve les textes
-	foreach(DiagramTextItem *t, removed_content.textFields) {
-		diagram -> removeDiagramTextItem(t);
+	foreach(IndependentTextItem *t, removed_content.textFields) {
+		diagram -> removeIndependentTextItem(t);
 	}
 }
 
@@ -233,7 +237,7 @@ void PasteDiagramCommand::undo() {
 	foreach(Element *e, content.elements) diagram -> removeElement(e);
 	
 	// enleve les textes
-	foreach(DiagramTextItem *t, content.textFields) diagram -> removeDiagramTextItem(t);
+	foreach(IndependentTextItem *t, content.textFields) diagram -> removeIndependentTextItem(t);
 }
 
 /// refait le coller
@@ -247,11 +251,11 @@ void PasteDiagramCommand::redo() {
 		foreach(Conductor *c, content.conductorsToMove) diagram -> addConductor(c);
 		
 		// pose les textes
-		foreach(DiagramTextItem *t, content.textFields) diagram -> addDiagramTextItem(t);
+		foreach(IndependentTextItem *t, content.textFields) diagram -> addIndependentTextItem(t);
 	}
 	foreach(Element *e, content.elements) e -> setSelected(true);
 	foreach(Conductor *c, content.conductorsToMove) c -> setSelected(true);
-	foreach(DiagramTextItem *t, content.textFields) t -> setSelected(true);
+	foreach(IndependentTextItem *t, content.textFields) t -> setSelected(true);
 }
 
 /**

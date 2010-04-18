@@ -35,7 +35,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	
 	// constructeurs, destructeur
 	public:
-	Conductor(Terminal *, Terminal *, Element * = 0, QGraphicsScene * = 0);
+	Conductor(Terminal *, Terminal *, Diagram * = 0);
 	virtual ~Conductor();
 	
 	private:
@@ -96,6 +96,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
 	private:
+	/// Schema auquel ce conducteur est rattache
+	Diagram *parent_diagram_;
 	/// caracteristiques du conducteur
 	ConductorProperties properties_;
 	/// booleen indiquant si le fil est encore valide

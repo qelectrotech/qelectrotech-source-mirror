@@ -21,7 +21,7 @@
 class Conductor;
 class Element;
 class Terminal;
-class DiagramTextItem;
+class IndependentTextItem;
 /**
 	Cette classe est un conteneur pour passer facilement le contenu d'un schema
 	a une fonction. Il permet d'acceder rapidement aux differents types de
@@ -52,8 +52,8 @@ class DiagramContent {
 	
 	/// Elements de texte du schema
 	QList<Element *> elements;
-	/// Champs de texte du schema
-	QList<DiagramTextItem *> textFields;
+	/// Champs de texte independants du schema
+	QList<IndependentTextItem *> textFields;
 	/// Conducteurs a mettre a jour du schema
 	QHash<Conductor *, Terminal *> conductorsToUpdate;
 	/// Conducteurs a deplacer du schema

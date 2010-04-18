@@ -23,7 +23,9 @@
 #include "diagramcommands.h"
 #include "diagramposition.h"
 #include "conductorpropertieswidget.h"
+#include "conductortextitem.h"
 #include "elementtextitem.h"
+#include "independenttextitem.h"
 #include "insetpropertieswidget.h"
 #include "qetapp.h"
 #include "qetproject.h"
@@ -123,8 +125,10 @@ void DiagramView::rotateSelection() {
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_rotate.insert(e, e -> orientation().current());
-		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
-			texts_to_rotate << dti;
+		} else if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			texts_to_rotate << cti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			texts_to_rotate << iti;
 		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
 			// on ne pivote un texte d'element que si son parent n'est pas selectionne
 			if (eti -> parentItem() && !eti -> parentItem() -> isSelected()) {
@@ -144,8 +148,10 @@ void DiagramView::rotateTexts() {
 	// recupere les champs de texte a orienter
 	QList<DiagramTextItem *> texts_to_rotate;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
-		if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
-			texts_to_rotate << dti;
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			texts_to_rotate << cti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			texts_to_rotate << iti;
 		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
 			// ici, on pivote un texte d'element meme si son parent est selectionne
 			texts_to_rotate << eti;
@@ -878,20 +884,18 @@ void DiagramView::addText() {
 	@param pos Position du champ de texte ajoute
 	@return le champ de texte ajoute
 */
-DiagramTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos) {
+IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos) {
 	// cree un nouveau champ de texte
-	DiagramTextItem *dti = new DiagramTextItem();
-	dti -> setPlainText("_");
-	dti -> previous_text = "_";
-
+	IndependentTextItem *iti = new IndependentTextItem("_");
+	
 	// le place a la position pos en gerant l'annulation
-	scene -> undoStack().push(new AddTextCommand(scene, dti, pos));
+	scene -> undoStack().push(new AddTextCommand(scene, iti, pos));
 	adjustSceneRect();
-
+	
 	// emet le signal textAdded
 	emit(textAdded(false));
-
-	return(dti);
+	
+	return(iti);
 }
 
 /**

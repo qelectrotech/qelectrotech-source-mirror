@@ -16,16 +16,18 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <math.h>
-#include "qetapp.h"
 #include "conductor.h"
+#include "conductortextitem.h"
 #include "customelement.h"
 #include "diagram.h"
-#include "elementtextitem.h"
-#include "exportdialog.h"
-#include "ghostelement.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramposition.h"
+#include "elementtextitem.h"
+#include "exportdialog.h"
+#include "ghostelement.h"
+#include "independenttextitem.h"
+#include "qetapp.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -295,13 +297,13 @@ QDomDocument Diagram::toXml(bool diagram) {
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
 			if (diagram) list_conductors << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
-			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas relie
-			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) list_conductors << f;
-		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
-			if (!dti -> parentItem()) {
-				if (diagram) list_texts << dti;
-				else if (dti -> isSelected()) list_texts << dti;
+			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas selectionne
+			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) {
+				list_conductors << f;
 			}
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			if (diagram) list_texts << iti;
+			else if (iti -> isSelected()) list_texts << iti;
 		}
 	}
 	
@@ -460,11 +462,11 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	// chargement de tous les elements du fichier XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
-	foreach (QDomElement e, QET::findInDomElement(root, "elements", "element")) {
-		if (!Element::valideXml(e)) continue;
+	foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element")) {
+		if (!Element::valideXml(element_xml)) continue;
 		
 		// cree un element dont le type correspond a l'id type
-		QString type_id = e.attribute("type");
+		QString type_id = element_xml.attribute("type");
 		ElementsLocation element_location = ElementsLocation(type_id);
 		if (type_id.startsWith("embed://")) element_location.setProject(project_);
 		
@@ -479,7 +481,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		// charge les caracteristiques de l'element
-		if (nvel_elmt -> fromXml(e, table_adr_id)) {
+		if (nvel_elmt -> fromXml(element_xml, table_adr_id)) {
 			// ajout de l'element au schema et a la liste des elements ajoutes
 			addElement(nvel_elmt);
 			added_elements << nvel_elmt;
@@ -490,12 +492,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	}
 	
 	// chargement de tous les textes du fichiers XML
-	QList<DiagramTextItem *> added_texts;
-	foreach (QDomElement f, QET::findInDomElement(root, "inputs", "input")) {
-		DiagramTextItem *dti = new DiagramTextItem(0, this);
-		dti -> fromXml(f);
-		addDiagramTextItem(dti);
-		added_texts << dti;
+	QList<IndependentTextItem *> added_texts;
+	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
+		IndependentTextItem *iti = new IndependentTextItem(this);
+		iti -> fromXml(text_xml);
+		addIndependentTextItem(iti);
+		added_texts << iti;
 	}
 	
 	// gere la translation des nouveaux elements et texte si celle-ci est demandee
@@ -549,7 +551,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 					}
 				}
 				if (can_add_conductor) {
-					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), this);
 					c -> fromXml(f);
 					added_conductors << c;
 				}
@@ -649,19 +651,19 @@ void Diagram::addConductor(Conductor *conductor) {
 
 /**
 	Aoute un champ de texte independant sur le schema
-	@param dti Champ de texte a ajouter
+	@param iti Champ de texte a ajouter
 */
-void Diagram::addDiagramTextItem(DiagramTextItem *dti) {
-	if (!dti || isReadOnly()) return;
+void Diagram::addIndependentTextItem(IndependentTextItem *iti) {
+	if (!iti || isReadOnly()) return;
 	
 	// ajoute le champ de texte au schema
-	if (dti -> scene() != this) {
-		addItem(dti);
+	if (iti -> scene() != this) {
+		addItem(iti);
 	}
 	
 	// surveille les modifications apportees au champ de texte
 	connect(
-		dti,
+		iti,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
@@ -706,17 +708,17 @@ void Diagram::removeConductor(Conductor *conductor) {
 
 /**
 	Enleve un champ de texte independant du schema
-	@param dti Champ de texte a enlever
+	@param iti Champ de texte a enlever
 */
-void Diagram::removeDiagramTextItem(DiagramTextItem *dti) {
-	if (!dti || isReadOnly()) return;
+void Diagram::removeIndependentTextItem(IndependentTextItem *iti) {
+	if (!iti || isReadOnly()) return;
 	
 	// enleve le champ de texte au schema
-	removeItem(dti);
+	removeItem(iti);
 	
 	// arrete la surveillance des modifications apportees au champ de texte
 	disconnect(
-		dti,
+		iti,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
@@ -821,8 +823,8 @@ void Diagram::fetchMovedElements() {
 	foreach (QGraphicsItem *item, selectedItems()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
 			elements_to_move << elmt;
-		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(item)) {
-			if (!t -> parentItem()) texts_to_move << t;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			texts_to_move << iti;
 		}
 	}
 	
@@ -859,7 +861,6 @@ void Diagram::fetchMovedElements() {
 void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
 	if (diff.isNull()) return;
-	
 	current_movement += diff;
 	
 	// deplace les elements selectionnes
@@ -880,7 +881,7 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	}
 	
 	// deplace les champs de texte
-	foreach(DiagramTextItem *dti, textsToMove()) {
+	foreach(DiagramTextItem *dti, independentTextsToMove()) {
 		if (dontmove && dti == dontmove) continue;
 		dti -> setPos(dti -> pos() + diff);
 	}
@@ -987,10 +988,12 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 QSet<DiagramTextItem *> Diagram::selectedTexts() const {
 	QSet<DiagramTextItem *> selected_texts;
 	foreach(QGraphicsItem *item, selectedItems()) {
-		if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(item)) {
-			selected_texts << dti;
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			selected_texts << cti;
 		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
 			selected_texts << eti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			selected_texts << iti;
 		}
 	}
 	return(selected_texts);
@@ -1045,8 +1048,8 @@ DiagramContent Diagram::content() const {
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			dc.elements << e;
-		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
-			dc.textFields << dti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			dc.textFields << iti;
 		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			dc.conductorsToMove << c;
 		}
@@ -1061,7 +1064,7 @@ DiagramContent Diagram::selectedContent() {
 	invalidateMovedElements();
 	DiagramContent dc;
 	dc.elements           = elementsToMove().toList();
-	dc.textFields         = textsToMove().toList();
+	dc.textFields         = independentTextsToMove().toList();
 	dc.conductorsToMove   = conductorsToMove().toList();
 	dc.conductorsToUpdate = conductorsToUpdate();
 	
@@ -1088,9 +1091,11 @@ DiagramContent Diagram::selectedContent() {
 */
 bool Diagram::canRotateSelection() const {
 	foreach(QGraphicsItem * qgi, selectedItems()) {
-		if (/*DiagramTextItem *dti = */qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
+		if (qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
 			return(true);
 		} else if (qgraphicsitem_cast<ElementTextItem *>(qgi)) {
+			return(true);
+		} else if (qgraphicsitem_cast<ConductorTextItem *>(qgi)) {
 			return(true);
 		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			// l'element est-il pivotable ?

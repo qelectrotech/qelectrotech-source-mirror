@@ -23,10 +23,12 @@
 /**
 	Constructeur
 	@param parent Le QGraphicsItem parent du champ de texte
-	@param scene La scene a laquelle appartient le champ de texte
+	@param parent_diagram Le schema auquel appartient le champ de texte
 */
-DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsTextItem(parent, scene),
+DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram) :
+	QGraphicsTextItem(parent, parent_diagram),
+	previous_text(),
+	parent_diagram_(parent_diagram),
 	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
@@ -37,13 +39,14 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
 
 /**
 	Constructeur
-	@param parent Le QGraphicsItem parent du champ de texte
-	@param scene La scene a laquelle appartient le champ de texte
 	@param text Le texte affiche par le champ de texte
+	@param parent Le QGraphicsItem parent du champ de texte
+	@param parent_diagram Le schema auquel appartient le champ de texte
 */
-DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsTextItem(text, parent, scene),
+DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Diagram *parent_diagram) :
+	QGraphicsTextItem(text, parent, parent_diagram),
 	previous_text(text),
+	parent_diagram_(parent_diagram),
 	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
@@ -56,9 +59,12 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, QGr
 DiagramTextItem::~DiagramTextItem() {
 }
 
-/// @return le Diagram auquel ce texte appartient, ou 0 si ce texte est independant
+/**
+	@return le Diagram auquel ce texte appartient, ou 0 si ce texte n'est
+	rattache a aucun schema
+*/
 Diagram *DiagramTextItem::diagram() const {
-	return(qobject_cast<Diagram *>(scene()));
+	return(parent_diagram_);
 }
 
 /**
@@ -93,7 +99,18 @@ void DiagramTextItem::rotateBy(const qreal &added_rotation) {
 }
 
 /**
-	gere la perte de focus du champ de texte
+	Gere les changements dont ce champ de texte est informe
+*/
+QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value) {
+	if (change == QGraphicsItem::ItemSceneHasChanged) {
+		QGraphicsScene *qgscene = value.value<QGraphicsScene *>();
+		parent_diagram_ = static_cast<Diagram *>(qgscene);
+	}
+	return(QGraphicsTextItem::itemChange(change, value));
+}
+
+/**
+	Gere la perte de focus du champ de texte
 */
 void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
@@ -111,34 +128,6 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	// hack a la con pour etre re-entrant
 	setTextInteractionFlags(Qt::NoTextInteraction);
 	QTimer::singleShot(0, this, SIGNAL(lostFocus()));
-}
-
-/**
-	Permet de lire le texte a mettre dans le champ a partir d'un element XML.
-	Cette methode se base sur la position du champ pour assigner ou non la
-	valeur a ce champ.
-	@param e L'element XML representant le champ de texte
-*/
-void DiagramTextItem::fromXml(const QDomElement &e) {
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-	setPlainText(e.attribute("text"));
-	previous_text = e.attribute("text");
-	setRotationAngle(e.attribute("rotation").toDouble());
-}
-
-/**
-	@param document Le document XML a utiliser
-	@return L'element XML representant ce champ de texte
-*/
-QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
-	QDomElement result = document.createElement("input");
-	result.setAttribute("x", QString("%1").arg(pos().x()));
-	result.setAttribute("y", QString("%1").arg(pos().y()));
-	result.setAttribute("text", toPlainText());
-	if (rotation_angle_) {
-		result.setAttribute("rotation", QString("%1").arg(rotation_angle_));
-	}
-	return(result);
 }
 
 /**
@@ -242,6 +231,13 @@ void DiagramTextItem::setPos(const QPointF &p) {
 */
 void DiagramTextItem::setPos(qreal x, qreal y) {
 	setPos(QPointF(x, y));
+}
+
+/**
+	@return la position du champ de texte
+*/
+QPointF DiagramTextItem::pos() const {
+	return(QGraphicsTextItem::pos());
 }
 
 /// Rend le champ de texte non focusable

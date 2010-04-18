@@ -28,8 +28,8 @@ class DiagramTextItem : public QGraphicsTextItem {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
-	DiagramTextItem(QGraphicsItem * = 0, QGraphicsScene * = 0);
-	DiagramTextItem(const QString &, QGraphicsItem * = 0, QGraphicsScene * = 0);
+	DiagramTextItem(QGraphicsItem * = 0, Diagram * = 0);
+	DiagramTextItem(const QString &, QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~DiagramTextItem();
 	
 	// attributs
@@ -46,15 +46,17 @@ class DiagramTextItem : public QGraphicsTextItem {
 	*/
 	virtual int type() const { return Type; }
 	Diagram *diagram() const;
-	virtual void fromXml(const QDomElement &);
-	virtual QDomElement toXml(QDomDocument &) const;
+	virtual void fromXml(const QDomElement &) = 0;
+	virtual QDomElement toXml(QDomDocument &) const = 0;
 	virtual void setPos(const QPointF &);
 	virtual void setPos(qreal, qreal);
+	virtual QPointF pos() const;
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
 	
 	protected:
+	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -75,6 +77,8 @@ class DiagramTextItem : public QGraphicsTextItem {
 	
 	// attributs prives
 	private:
+	/// Schema auquel ce texte est rattache
+	Diagram *parent_diagram_;
 	/// angle de rotation du champ de texte
 	qreal rotation_angle_;
 };
