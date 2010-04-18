@@ -259,7 +259,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	QDomElement racine = document.createElement("diagram");
 	
 	// proprietes du schema
-	if (diagram) {
+	if (whole_content) {
 		if (!border_and_inset.author().isNull())    racine.setAttribute("author",   border_and_inset.author());
 		if (!border_and_inset.date().isNull())      racine.setAttribute("date",     border_and_inset.date().toString("yyyyMMdd"));
 		if (!border_and_inset.title().isNull())     racine.setAttribute("title",    border_and_inset.title());
@@ -292,17 +292,17 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// Determine les elements a "XMLiser"
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-			if (diagram) list_elements << elmt;
+			if (whole_content) list_elements << elmt;
 			else if (elmt -> isSelected()) list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
-			if (diagram) list_conductors << f;
+			if (whole_content) list_conductors << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
 			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas selectionne
 			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) {
 				list_conductors << f;
 			}
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
-			if (diagram) list_texts << iti;
+			if (whole_content) list_texts << iti;
 			else if (iti -> isSelected()) list_texts << iti;
 		}
 	}
