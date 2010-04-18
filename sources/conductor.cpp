@@ -77,7 +77,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	conductor_profiles.insert(Qt::BottomRightCorner, ConductorProfile());
 
 	// calcul du rendu du conducteur
-	priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+	priv_calculeConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 	setAcceptsHoverEvents(true);
 	
@@ -113,13 +113,13 @@ void Conductor::update(const QRectF &rect) {
 	// appelle la bonne fonction pour calculer l'aspect du conducteur
 	if (nbSegments() && !conductor_profiles[currentPathType()].isNull()) {
 		priv_modifieConductor(
-			terminal1 -> amarrageConductor(), terminal1 -> orientation(),
-			terminal2 -> amarrageConductor(), terminal2 -> orientation()
+			terminal1 -> dockConductor(), terminal1 -> orientation(),
+			terminal2 -> dockConductor(), terminal2 -> orientation()
 		);
 	} else {
 		priv_calculeConductor(
-			terminal1 -> amarrageConductor(), terminal1 -> orientation(),
-			terminal2 -> amarrageConductor(), terminal2 -> orientation()
+			terminal1 -> dockConductor(), terminal1 -> orientation(),
+			terminal2 -> dockConductor(), terminal2 -> orientation()
 		);
 	}
 	
@@ -139,13 +139,13 @@ void Conductor::updateWithNewPos(const QRectF &rect, const Terminal *b, const QP
 	QPointF p1, p2;
 	if (b == terminal1) {
 		p1 = newpos;
-		p2 = terminal2 -> amarrageConductor();
+		p2 = terminal2 -> dockConductor();
 	} else if (b == terminal2) {
-		p1 = terminal1 -> amarrageConductor();
+		p1 = terminal1 -> dockConductor();
 		p2 = newpos;
 	} else {
-		p1 = terminal1 -> amarrageConductor();
-		p2 = terminal2 -> amarrageConductor();
+		p1 = terminal1 -> dockConductor();
+		p2 = terminal2 -> dockConductor();
 	}
 	if (nbSegments() && !conductor_profiles[currentPathType()].isNull())
 		priv_modifieConductor(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
@@ -955,8 +955,8 @@ bool Conductor::fromXml(QDomElement &e) {
 	qreal width = 0.0, height = 0.0;
 	foreach (qreal t, segments_x) width  += t;
 	foreach (qreal t, segments_y) height += t;
-	QPointF t1 = terminal1 -> amarrageConductor();
-	QPointF t2 = terminal2 -> amarrageConductor();
+	QPointF t1 = terminal1 -> dockConductor();
+	QPointF t2 = terminal2 -> dockConductor();
 	qreal expected_width  = t2.x() - t1.x();
 	qreal expected_height = t2.y() - t1.y();
 	
@@ -1126,10 +1126,10 @@ void Conductor::setProfile(const ConductorProfile &cp, Qt::Corner path_type) {
 	// si le type de trajet correspond a l'actuel
 	if (currentPathType() == path_type) {
 		if (conductor_profiles[path_type].isNull()) {
-			priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+			priv_calculeConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = false;
 		} else {
-			priv_modifieConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+			priv_modifieConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = true;
 		}
 		if (type() == ConductorProperties::Multi) {
@@ -1383,7 +1383,7 @@ Qt::Corner Conductor::movementType(const QPointF &start, const QPointF &end) {
 
 /// @return le type de trajet actuel de ce conducteur
 Qt::Corner Conductor::currentPathType() const {
-	return(movementType(terminal1 -> amarrageConductor(), terminal2 -> amarrageConductor()));
+	return(movementType(terminal1 -> dockConductor(), terminal2 -> dockConductor()));
 }
 
 /// @return les profils de ce conducteur
@@ -1397,10 +1397,10 @@ ConductorProfilesGroup Conductor::profiles() const {
 void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	conductor_profiles = cpg;
 	if (conductor_profiles[currentPathType()].isNull()) {
-		priv_calculeConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+		priv_calculeConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = false;
 	} else {
-		priv_modifieConductor(terminal1 -> amarrageConductor(), terminal1 -> orientation(), terminal2 -> amarrageConductor(), terminal2 -> orientation());
+		priv_modifieConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = true;
 	}
 	if (type() == ConductorProperties::Multi) {

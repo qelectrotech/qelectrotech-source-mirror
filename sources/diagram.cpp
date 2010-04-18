@@ -839,7 +839,7 @@ void Diagram::fetchMovedElements() {
 					other_terminal = conductor -> terminal1;
 				}
 				// si les deux elements du conducteur sont deplaces
-				if (elements_to_move.contains(static_cast<Element *>(other_terminal -> parentItem()))) {
+				if (elements_to_move.contains(other_terminal -> parentElement())) {
 					conductors_to_move << conductor;
 				} else {
 					conductors_to_update.insert(conductor, terminal);
@@ -877,7 +877,7 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	// recalcule les autres conducteurs
 	const QHash<Conductor *, Terminal *> &conductors_modify = conductorsToUpdate();
 	foreach(Conductor *conductor, conductors_modify.keys()) {
-		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> amarrageConductor());
+		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> dockConductor());
 	}
 	
 	// deplace les champs de texte

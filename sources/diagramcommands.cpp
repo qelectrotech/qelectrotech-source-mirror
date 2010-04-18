@@ -356,7 +356,7 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 		conductor -> updateWithNewPos(
 			QRectF(),
 			content_to_move.conductorsToUpdate[conductor],
-			content_to_move.conductorsToUpdate[conductor] -> amarrageConductor()
+			content_to_move.conductorsToUpdate[conductor] -> dockConductor()
 		);
 	}
 	
