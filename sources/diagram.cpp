@@ -247,11 +247,11 @@ bool Diagram::isEmpty() const {
 
 /**
 	Exporte tout ou partie du schema 
-	@param diagram Booleen (a vrai par defaut) indiquant si le XML genere doit
-	representer tout le schema ou seulement les elements selectionnes
+	@param whole_content Booleen (a vrai par defaut) indiquant si le XML genere doit
+	representer l'integralite du schema ou seulement le contenu selectionne
 	@return Un Document XML (QDomDocument)
 */
-QDomDocument Diagram::toXml(bool diagram) {
+QDomDocument Diagram::toXml(bool whole_content) {
 	// document
 	QDomDocument document;
 	
