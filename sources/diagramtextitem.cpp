@@ -27,8 +27,8 @@
 */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(parent, parent_diagram),
-	previous_text(),
 	parent_diagram_(parent_diagram),
+	previous_text_(),
 	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
@@ -45,8 +45,8 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 */
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(text, parent, parent_diagram),
-	previous_text(text),
 	parent_diagram_(parent_diagram),
+	previous_text_(text),
 	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
@@ -110,14 +110,26 @@ QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &
 }
 
 /**
+	Gere la prise de focus du champ de texte
+*/
+void DiagramTextItem::focusInEvent(QFocusEvent *e) {
+	QGraphicsTextItem::focusInEvent(e);
+	
+	// memorise le texte avant que l'utilisateur n'y touche
+	previous_text_ = toPlainText();
+	// cela permettra de determiner si l'utilisateur a modifie le texte a la fin de l'edition
+}
+
+/**
 	Gere la perte de focus du champ de texte
 */
 void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
+	
 	// signale la modification du texte si besoin
-	if (toPlainText() != previous_text) {
-		emit(diagramTextChanged(this, previous_text, toPlainText()));
-		previous_text = toPlainText();
+	if (toPlainText() != previous_text_) {
+		emit(diagramTextChanged(this, previous_text_, toPlainText()));
+		previous_text_ = toPlainText();
 	}
 	
 	// deselectionne le texte

@@ -50,7 +50,6 @@ IndependentTextItem::~IndependentTextItem() {
 void IndependentTextItem::fromXml(const QDomElement &e) {
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setPlainText(e.attribute("text"));
-	previous_text = e.attribute("text");
 	setRotationAngle(e.attribute("rotation").toDouble());
 }
 

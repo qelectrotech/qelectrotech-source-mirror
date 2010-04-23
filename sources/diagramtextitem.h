@@ -35,8 +35,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1004 };
-	/// Texte precedent
-	QString previous_text;
 	
 	// methodes
 	public:
@@ -57,6 +55,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	
 	protected:
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
+	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -79,6 +78,8 @@ class DiagramTextItem : public QGraphicsTextItem {
 	private:
 	/// Schema auquel ce texte est rattache
 	Diagram *parent_diagram_;
+	/// Texte precedent
+	QString previous_text_;
 	/// angle de rotation du champ de texte
 	qreal rotation_angle_;
 };

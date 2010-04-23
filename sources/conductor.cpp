@@ -1093,7 +1093,6 @@ void Conductor::saveProfile(bool undo) {
 	ConductorProfile old_profile(conductor_profiles[current_path_type]);
 	conductor_profiles[current_path_type].fromConductor(this);
 	Diagram *dia = diagram();
-	qDebug () << Q_FUNC_INFO << dia;
 	if (undo && dia) {
 		dia -> undoStack().push(new ChangeConductorCommand(this, old_profile, conductor_profiles[current_path_type], current_path_type));
 	}
@@ -1153,7 +1152,6 @@ QString Conductor::text() const {
 */
 void Conductor::setText(const QString &t) {
 	text_item -> setPlainText(t);
-	text_item -> previous_text = t;
 }
 
 /// @param p les proprietes de ce conducteur

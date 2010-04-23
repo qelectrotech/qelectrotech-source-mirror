@@ -118,7 +118,6 @@ void ElementTextItem::fromXml(const QDomElement &e) {
 		qFuzzyCompare(qreal(e.attribute("y").toDouble()), _pos.y())
 	) {
 		setPlainText(e.attribute("text"));
-		previous_text = e.attribute("text");
 		qreal xml_rotation_angle;
 		if (QET::attributeIsAReal(e, "userrotation", &xml_rotation_angle)) {
 			setRotationAngle(xml_rotation_angle);
