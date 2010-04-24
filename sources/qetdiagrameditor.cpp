@@ -1152,16 +1152,17 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	conductor_reset  -> setEnabled(editable_diagram && selected_conductors_count);
 	
 	// actions ayant aussi besoin d'items (elements, conducteurs, textes, ...) selectionnes
-	bool selected_items = dv ? (dv -> hasSelectedItems()) : false;
-	cut              -> setEnabled(editable_diagram && selected_items);
-	copy             -> setEnabled(selected_items);
-	delete_selection -> setEnabled(editable_diagram && selected_items);
-	rotate_selection -> setEnabled(editable_diagram && selected_items && dv -> diagram() -> canRotateSelection());
-	selection_prop   -> setEnabled(editable_diagram && selected_items);
+	bool copiable_items  = dv ? (dv -> hasCopiableItems()) : false;
+	bool deletable_items = dv ? (dv -> hasDeletableItems()) : false;
+	cut              -> setEnabled(editable_diagram && copiable_items);
+	copy             -> setEnabled(copiable_items);
+	delete_selection -> setEnabled(editable_diagram && deletable_items);
+	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
+	selection_prop   -> setEnabled(deletable_items);
 	
 	// actions ayant besoin de textes selectionnes
 	bool selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
-	rotate_texts -> setEnabled(editable_diagram && selected_texts); 
+	rotate_texts -> setEnabled(editable_diagram && selected_texts);
 }
 
 /**

@@ -61,6 +61,8 @@ class DiagramView : public QGraphicsView {
 	Diagram *diagram() { return(scene); }
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
+	bool hasCopiableItems();
+	bool hasDeletableItems();
 	void addText();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
 	

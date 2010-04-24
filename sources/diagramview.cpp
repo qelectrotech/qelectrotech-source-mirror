@@ -457,10 +457,43 @@ void DiagramView::editDiagramProperties() {
 }
 
 /**
-	@return true s'il y a des elements selectionnes sur le schema, false sinon
+	@return true s'il y a des items selectionnes sur le schema, false sinon
 */
 bool DiagramView::hasSelectedItems() {
 	return(scene -> selectedItems().size() > 0);
+}
+
+/**
+	@return true s'il y a des items selectionnes sur le schema et que ceux-ci
+	peuvent etre copies dans le presse-papier, false sinon
+*/
+bool DiagramView::hasCopiableItems() {
+	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+		if (
+			qgraphicsitem_cast<Element *>(qgi) ||
+			qgraphicsitem_cast<IndependentTextItem *>(qgi)
+		) {
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
+	@return true s'il y a des items selectionnes sur le schema et que ceux-ci
+	peuvent etre supprimes, false sinon
+*/
+bool DiagramView::hasDeletableItems() {
+	foreach(QGraphicsItem *qgi, scene -> selectedItems()) {
+		if (
+			qgraphicsitem_cast<Element *>(qgi) ||
+			qgraphicsitem_cast<Conductor *>(qgi) ||
+			qgraphicsitem_cast<IndependentTextItem *>(qgi)
+		) {
+			return(true);
+		}
+	}
+	return(false);
 }
 
 /**
