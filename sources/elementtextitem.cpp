@@ -32,8 +32,7 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	original_rotation_angle_(0.0)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// on desactive Movable pour les textes des elements
-	setFlag(QGraphicsItem::ItemIsMovable, false);
+	// cela nous convient, on ne touche pas a ces flags
 	
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
@@ -52,8 +51,7 @@ ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, D
 	original_rotation_angle_(0.0)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// on desactive Movable pour les textes des elements
-	setFlag(QGraphicsItem::ItemIsMovable, false);
+	// cela nous convient, on ne touche pas a ces flags
 	
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
@@ -118,6 +116,15 @@ void ElementTextItem::fromXml(const QDomElement &e) {
 		qFuzzyCompare(qreal(e.attribute("y").toDouble()), _pos.y())
 	) {
 		setPlainText(e.attribute("text"));
+		
+		qreal user_pos_x, user_pos_y;
+		if (
+			QET::attributeIsAReal(e, "userx", &user_pos_x) &&
+			QET::attributeIsAReal(e, "usery", &user_pos_y)
+		) {
+			setPos(user_pos_x, user_pos_y);
+		}
+		
 		qreal xml_rotation_angle;
 		if (QET::attributeIsAReal(e, "userrotation", &xml_rotation_angle)) {
 			setRotationAngle(xml_rotation_angle);
@@ -131,12 +138,21 @@ void ElementTextItem::fromXml(const QDomElement &e) {
 */
 QDomElement ElementTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
+	
 	result.setAttribute("x", QString("%1").arg(originalPos().x()));
 	result.setAttribute("y", QString("%1").arg(originalPos().y()));
+	
+	if (pos() != originalPos()) {
+		result.setAttribute("userx", QString("%1").arg(pos().x()));
+		result.setAttribute("usery", QString("%1").arg(pos().y()));
+	}
+	
 	result.setAttribute("text", toPlainText());
+	
 	if (rotationAngle() != originalRotationAngle()) {
 		result.setAttribute("userrotation", QString("%1").arg(rotationAngle()));
 	}
+	
 	return(result);
 }
 
@@ -180,7 +196,7 @@ qreal ElementTextItem::originalRotationAngle() const {
 */
 void ElementTextItem::adjustItemPosition(int new_block_count) {
 	Q_UNUSED(new_block_count);
-	setPos(originalPos());
+	setPos(known_position_);
 }
 
 /**
@@ -198,4 +214,81 @@ void ElementTextItem::applyRotation(const qreal &angle) {
 	rotation.translate(0.0, -origin_offset);
 	
 	QGraphicsTextItem::setTransform(rotation, true);
+}
+
+/**
+	Gere les mouvements de souris lies au champ de texte
+*/
+void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+	if (textInteractionFlags() & Qt::TextEditable) {
+		DiagramTextItem::mouseMoveEvent(e);
+	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
+		QPointF old_pos = pos();
+		/*
+			Utiliser e -> pos() directement aurait pour effet de positionner
+			l'origine du champ de texte a la position indiquee par le curseur,
+			ce qui n'est pas l'effet recherche
+			Au lieu de cela, on applique a la position actuelle le vecteur
+			definissant le mouvement effectue depuis la derniere position
+			cliquee avec le bouton gauche
+		*/
+		QPointF movement = e -> pos() - e -> buttonDownPos(Qt::LeftButton);
+		
+		/*
+			Les methodes pos() et setPos() travaillent toujours avec les
+			coordonnees de l'item parent (ou de la scene s'il n'y a pas d'item
+			parent). On n'oublie donc pas de mapper le mouvement fraichement
+			calcule sur l'item parent avant de l'appliquer.
+		*/
+		QPointF parent_movement = mapMovementToParent(movement);
+		setPos(pos() + parent_movement);
+		
+		/*
+			Comme setPos() n'est pas oblige d'appliquer exactement la valeur
+			qu'on lui fournit, on calcule le mouvement reellement applique.
+		*/
+		QPointF effective_movement = pos() - old_pos;
+		QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
+		
+		if (Diagram *diagram_ptr = diagram()) {
+			diagram_ptr -> moveElementsTexts(scene_effective_movement, this);
+		}
+	} else e -> ignore();
+}
+
+/**
+	Gere le relachement de souris
+	Cette methode cree un objet d'annulation pour le deplacement
+*/
+void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+	if (Diagram *diagram_ptr = diagram()) {
+		if ((flags() & QGraphicsItem::ItemIsMovable) && (!diagram_ptr -> current_movement.isNull())) {
+			diagram_ptr -> undoStack().push(
+				new MoveElementsTextsCommand(
+					diagram_ptr,
+					diagram_ptr -> elementTextsToMove(),
+					diagram_ptr -> current_movement
+				)
+			);
+			diagram_ptr -> current_movement = QPointF();
+		}
+		diagram_ptr -> invalidateMovedElements();
+	}
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsTextItem::mouseReleaseEvent(e);
+	}
+}
+
+/**
+	Gere les changements intervenant sur ce champ de texte
+	@param change Type de changement
+	@param value Valeur numerique relative au changement
+*/
+QVariant ElementTextItem::itemChange(GraphicsItemChange change, const QVariant &value) {
+	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
+		// memorise la nouvelle position "officielle" du champ de texte
+		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
+		known_position_ = pos();
+	}
+	return(DiagramTextItem::itemChange(change, value));
 }

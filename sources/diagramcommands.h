@@ -27,6 +27,7 @@
 class Diagram;
 class DiagramTextItem;
 class Element;
+class ElementTextItem;
 class IndependentTextItem;
 
 /**
@@ -195,6 +196,36 @@ class MoveElementsCommand : public QUndoCommand {
 	Diagram *diagram;
 	/// contenu a deplacer
 	DiagramContent content_to_move;
+	/// mouvement effectue
+	QPointF movement;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de deplacer des champs de texte rattaches
+	a des elements sur un schema
+*/
+class MoveElementsTextsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	MoveElementsTextsCommand(Diagram *, const QSet<ElementTextItem *> &, const QPointF &m, QUndoCommand * = 0);
+	virtual ~MoveElementsTextsCommand();
+	private:
+	MoveElementsTextsCommand(const MoveElementsTextsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void move(const QPointF &);
+	
+	// attributs
+	private:
+	/// schema sur lequel on deplace les elements
+	Diagram *diagram;
+	/// liste des champs de texte a deplacer
+	QSet<ElementTextItem *> texts_to_move;
 	/// mouvement effectue
 	QPointF movement;
 	/// booleen pour ne pas executer le premier redo()

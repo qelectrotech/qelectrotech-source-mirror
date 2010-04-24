@@ -813,6 +813,7 @@ void Diagram::invalidateMovedElements() {
 	conductors_to_move.clear();
 	conductors_to_update.clear();
 	texts_to_move.clear();
+	elements_texts_to_move.clear();
 }
 
 /**
@@ -825,6 +826,8 @@ void Diagram::fetchMovedElements() {
 			elements_to_move << elmt;
 		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
 			texts_to_move << iti;
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			elements_texts_to_move << eti;
 		}
 	}
 	
@@ -847,13 +850,14 @@ void Diagram::fetchMovedElements() {
 			}
 		}
 	}
+	
 	moved_elements_fetched = true;
 }
 
 /**
-	Deplace les elements, conducteurs et textes selectionnes en gerant au
-	mieux les conducteurs (seuls les conducteurs dont un seul des elements
-	est deplace sont recalcules, les autres sont deplaces).
+	Deplace les elements, conducteurs et textes independants selectionnes en
+	gerant au mieux les conducteurs (seuls les conducteurs dont un seul des
+	elements est deplace sont recalcules, les autres sont deplaces).
 	@param diff Translation a effectuer
 	@param dontmove QGraphicsItem (optionnel) a ne pas deplacer ; note : ce
 	parametre ne concerne que les elements et les champs de texte.
@@ -885,6 +889,26 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 		if (dontmove && dti == dontmove) continue;
 		dti -> setPos(dti -> pos() + diff);
 	}
+}
+
+/**
+	Deplace les champs de textes selectionnes ET rattaches a un element
+	@param diff Translation a effectuer, exprimee dans les coordonnees de la
+	scene
+	@param dontmove ElementTextItem (optionnel) a ne pas deplacer
+*/
+void Diagram::moveElementsTexts(const QPointF &diff, ElementTextItem *dontmove) {
+	// inutile de deplacer les autres textes s'il n'y a pas eu de mouvement concret
+	if (diff.isNull()) return;
+	current_movement += diff;
+	
+	// deplace les champs de texte rattaches a un element
+	foreach(ElementTextItem *eti, elementTextsToMove()) {
+		if (dontmove && eti == dontmove) continue;
+		QPointF applied_movement = eti -> mapMovementToParent(eti-> mapMovementFromScene(diff));
+		eti -> setPos(eti -> pos() + applied_movement);
+	}
+	
 }
 
 /**

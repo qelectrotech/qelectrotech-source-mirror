@@ -52,6 +52,10 @@ class DiagramTextItem : public QGraphicsTextItem {
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
+	QPointF mapMovementToScene(const QPointF &) const;
+	QPointF mapMovementFromScene(const QPointF &) const;
+	QPointF mapMovementToParent(const QPointF &) const;
+	QPointF mapMovementFromParent(const QPointF &) const;
 	
 	protected:
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);

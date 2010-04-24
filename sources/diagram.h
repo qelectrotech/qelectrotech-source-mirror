@@ -30,6 +30,7 @@ class DiagramPosition;
 class DiagramTextItem;
 class Element;
 class ElementsLocation;
+class ElementTextItem;
 class IndependentTextItem;
 class QETProject;
 class Terminal;
@@ -80,6 +81,7 @@ class Diagram : public QGraphicsScene {
 	QSet<Conductor *> conductors_to_move;
 	QHash<Conductor *, Terminal *> conductors_to_update;
 	QSet<IndependentTextItem *> texts_to_move;
+	QSet<ElementTextItem *> elements_texts_to_move;
 	QGIManager *qgi_manager;
 	QUndoStack *undo_stack;
 	bool draw_terminals;
@@ -158,12 +160,14 @@ class Diagram : public QGraphicsScene {
 	const QSet<Conductor *> &conductorsToMove();
 	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
 	const QSet<IndependentTextItem *> &independentTextsToMove();
+	const QSet<ElementTextItem *> &elementTextsToMove();
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();
 	bool canRotateSelection() const;
 	void moveElements(const QPointF &, QGraphicsItem * = 0);
+	void moveElementsTexts(const QPointF &, ElementTextItem * = 0);
 	bool usesElement(const ElementsLocation &);
 	
 	QUndoStack &undoStack();
@@ -290,6 +294,12 @@ inline const QHash<Conductor *, Terminal *> &Diagram::conductorsToUpdate() {
 inline const QSet<IndependentTextItem *> &Diagram::independentTextsToMove() {
 	if (!moved_elements_fetched) fetchMovedElements();
 	return(texts_to_move);
+}
+
+/// @return la liste des textes rattaches a un element qui sont a deplacer
+inline const QSet<ElementTextItem *> &Diagram::elementTextsToMove() {
+	if (!moved_elements_fetched) fetchMovedElements();
+	return(elements_texts_to_move);
 }
 
 /// @return la pile d'annulations de ce schema
