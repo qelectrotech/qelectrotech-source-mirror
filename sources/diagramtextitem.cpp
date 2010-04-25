@@ -33,7 +33,10 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
-	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable|QGraphicsItem::ItemSendsGeometryChanges);
+	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
@@ -51,7 +54,10 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Dia
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
-	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable|QGraphicsItem::ItemSendsGeometryChanges);
+	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
