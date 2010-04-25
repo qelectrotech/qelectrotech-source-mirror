@@ -1,0 +1,15 @@
+<definition width="650" version="0.2" hotspot_x="0" hotspot_y="0" height="10" type="element" orientation="dnnn" >
+    <names>
+	<name lang="en" >Line tableau nomenclature</name>
+        <name lang="fr" >Ligne de tableau de nomenclature</name>
+        <name lang="pl" >Tabela - linie</name>
+    </names>
+    <description>
+        <input x="107" y="7" size="6" rotate="true" text="" />
+        <input x="407" y="7" size="6" rotate="true" text="" />
+        <input x="7" y="7" size="6" rotate="true" text="" />
+        <rect width="650" x="0" y="0" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" />
+        <rect width="100" x="0" y="0" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" />
+        <rect width="400" x="0" y="0" antialias="false" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" />
+    </description>
+</definition>
