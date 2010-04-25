@@ -87,6 +87,8 @@ class Element : public QObject, public QGraphicsItem {
 	virtual QString name() const = 0;
 	Diagram *diagram() const;
 	
+	virtual bool isHighlighted() const;
+	virtual void setHighlighted(bool);
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	QSize setSize(int, int);
@@ -126,7 +128,9 @@ class Element : public QObject, public QGraphicsItem {
 	
 	private:
 	bool internal_connections;
+	bool must_highlight_;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
+	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
 };
 

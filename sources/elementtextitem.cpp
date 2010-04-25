@@ -29,7 +29,8 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	DiagramTextItem(parent_element, parent_diagram),
 	parent_element_(parent_element),
 	follow_parent_rotations(false),
-	original_rotation_angle_(0.0)
+	original_rotation_angle_(0.0),
+	first_move_(true)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// cela nous convient, on ne touche pas a ces flags
@@ -48,7 +49,8 @@ ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, D
 	DiagramTextItem(text, parent_element, parent_diagram),
 	parent_element_(parent_element),
 	follow_parent_rotations(false),
-	original_rotation_angle_(0.0)
+	original_rotation_angle_(0.0),
+	first_move_(true)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// cela nous convient, on ne touche pas a ces flags
@@ -243,14 +245,24 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		QPointF parent_movement = mapMovementToParent(movement);
 		setPos(pos() + parent_movement);
 		
-		/*
-			Comme setPos() n'est pas oblige d'appliquer exactement la valeur
-			qu'on lui fournit, on calcule le mouvement reellement applique.
-		*/
-		QPointF effective_movement = pos() - old_pos;
-		QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
-		
 		if (Diagram *diagram_ptr = diagram()) {
+			int moved_texts_count = diagram_ptr -> elementTextsToMove().count();
+			// s'il n'y a qu'un seul texte deplace, on met en valeur l'element parent
+			if (moved_texts_count == 1 && parent_element_ && first_move_) {
+				parent_element_ -> setHighlighted(true);
+				parent_element_ -> update();
+				first_move_ = false;
+			}
+			
+			/*
+				Comme setPos() n'est pas oblige d'appliquer exactement la
+				valeur qu'on lui fournit, on calcule le mouvement reellement
+				applique.
+			*/
+			QPointF effective_movement = pos() - old_pos;
+			QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
+			
+			// on applique le mouvement subi aux autres textes a deplacer
 			diagram_ptr -> moveElementsTexts(scene_effective_movement, this);
 		}
 	} else e -> ignore();
@@ -262,6 +274,17 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 */
 void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (Diagram *diagram_ptr = diagram()) {
+		int moved_texts_count = diagram_ptr -> elementTextsToMove().count();
+		
+		// s'il n'y a qu'un seul texte deplace, on arrete de mettre en valeur l'element parent
+		if (moved_texts_count == 1) {
+			first_move_ = true;
+			if (parent_element_) {
+				parent_element_ -> setHighlighted(false);
+			}
+		}
+		
+		// on cree un objet d'annulation correspondant au deplacement qui s'acheve
 		if ((flags() & QGraphicsItem::ItemIsMovable) && (!diagram_ptr -> current_movement.isNull())) {
 			diagram_ptr -> undoStack().push(
 				new MoveElementsTextsCommand(

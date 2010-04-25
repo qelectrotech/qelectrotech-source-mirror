@@ -47,6 +47,7 @@ class ElementTextItem : public DiagramTextItem {
 	QPointF original_position;
 	QPointF known_position_;
 	qreal original_rotation_angle_;
+	bool first_move_;
 	
 	// methodes
 	public:

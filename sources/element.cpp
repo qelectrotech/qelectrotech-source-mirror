@@ -29,7 +29,8 @@
 Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	QObject(),
 	QGraphicsItem(parent, scene),
-	internal_connections(false)
+	internal_connections(false),
+	must_highlight_(false)
 {
 	setZValue(10);
 }
@@ -38,6 +39,21 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	Destructeur
 */
 Element::~Element() {
+}
+
+/**
+	@return true si l'element est mis en evidence
+*/
+bool Element::isHighlighted() const {
+	return(must_highlight_);
+}
+
+/**
+	@param hl true pour mettre l'element en evidence, false sinon
+*/
+void Element::setHighlighted(bool hl) {
+	must_highlight_ = hl;
+	update();
 }
 
 /**
@@ -64,6 +80,8 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		}
 	}
 #endif
+	if (must_highlight_) drawHighlight(painter, options);
+	
 	// Dessin de l'element lui-meme
 	paint(painter, options);
 	
@@ -221,6 +239,32 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	t.setColor(Qt::gray);
 	t.setStyle(Qt::DashDotLine);
 	painter -> setPen(t);
+	// Le dessin se fait a partir du rectangle delimitant
+	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> restore();
+}
+
+/**
+	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
+	@param painter Le QPainter a utiliser pour dessiner les bornes.
+	@param options Les options de style a prendre en compte
+ */
+void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+	Q_UNUSED(options);
+	painter -> save();
+	
+	qreal gradient_radius = qMin(boundingRect().width(), boundingRect().height()) / 2.0;
+	QRadialGradient gradient(
+		boundingRect().center(),
+		gradient_radius,
+		boundingRect().center()
+	);
+	gradient.setColorAt(0.0, QColor::fromRgb(69, 137, 255, 255));
+	gradient.setColorAt(1.0, QColor::fromRgb(69, 137, 255, 0));
+	QBrush brush(gradient);
+	
+	painter -> setPen(Qt::NoPen);
+	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
 	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 	painter -> restore();
