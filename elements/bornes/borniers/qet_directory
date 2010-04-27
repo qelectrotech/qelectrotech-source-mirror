@@ -1,0 +1,11 @@
+<qet-directory>
+    <names>
+        <name lang="ru" >соеденителей</name>
+        <name lang="en" >Terminals</name>
+        <name lang="fr" >Bornes</name>
+        <name lang="es" >Terminales</name>
+        <name lang="pt" >Terminais</name>
+        <name lang="cs" >Svorky</name>
+        <name lang="pl" >Złącza i zaciski</name>
+    </names>
+</qet-directory>
