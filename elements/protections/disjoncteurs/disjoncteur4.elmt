@@ -3,6 +3,7 @@
         <name lang="en">Circuit-breaker</name>
         <name lang="fr">Disjoncteur triphasé</name>
         <name lang="es">Interruptor magnetotérmico</name>
+        <name lang="pl">Wyłącznik</name
     </names>
     <informations></informations>
     <description>
