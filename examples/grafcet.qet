@@ -1,0 +1,872 @@
+<project title="" version="0.22">
+    <newdiagrams>
+        <border displayrows="true" cols="15" displaycols="true" colsize="50" rows="6" rowsize="80"/>
+        <inset title="" folio="%id/%total" author="" filename="" date="null"/>
+        <conductors num="_" type="multi"/>
+    </newdiagrams>
+    <diagram title="General" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="1" rows="6" author="" filename="" rowsize="80">
+        <defaultconductor num="_" type="multi"/>
+        <elements>
+            <element x="220" y="370" type="embed://import/grafcet/etape.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" id="0" orientation="0"/>
+                    <terminal x="0" y="21" id="1" orientation="2"/>
+                    <terminal x="36" y="-10" id="2" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 06"/>
+                </inputs>
+            </element>
+            <element x="220" y="230" type="embed://import/grafcet2/transition.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" id="3" orientation="2"/>
+                    <terminal x="0" y="-1" id="4" orientation="0"/>
+                    <terminal x="-8" y="0" id="5" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 02"/>
+                </inputs>
+            </element>
+            <element x="220" y="280" type="embed://import/grafcet2/macro/etape.elmt" orientation="0">
+                <terminals>
+                    <terminal x="-8" y="39.6667" id="6" orientation="3"/>
+                    <terminal x="0" y="40.6667" id="7" orientation="2"/>
+                    <terminal x="0" y="-21" id="8" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="13.6667" text=""/>
+                    <input x="-20" y="-0.333333" text="M 03"/>
+                </inputs>
+            </element>
+            <element x="280" y="360" type="embed://import/grafcet/actions/action.elmt" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" id="9" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="2" text="motor off"/>
+                </inputs>
+            </element>
+            <element x="220" y="110" type="embed://import/grafcet2/transition.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" id="10" orientation="2"/>
+                    <terminal x="0" y="-1" id="11" orientation="0"/>
+                    <terminal x="-8" y="0" id="12" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 00"/>
+                </inputs>
+            </element>
+            <element x="440" y="170" type="embed://import/grafcet2/etape.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" id="13" orientation="0"/>
+                    <terminal x="0" y="21" id="14" orientation="2"/>
+                    <terminal x="36" y="-10" id="15" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 02"/>
+                </inputs>
+            </element>
+            <element x="490" y="150" type="embed://import/grafcet/actions/action.elmt" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" id="16" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="2" text="lubrification on"/>
+                </inputs>
+            </element>
+            <element x="220" y="170" type="embed://import/grafcet2/etape.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" id="17" orientation="0"/>
+                    <terminal x="0" y="21" id="18" orientation="2"/>
+                    <terminal x="36" y="-10" id="19" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 01"/>
+                </inputs>
+            </element>
+            <element x="220" y="420" type="embed://import/grafcet/saut.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-1" id="20" orientation="0"/>
+                    <terminal x="-8" y="0" id="21" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-15" y="45" text="E 00"/>
+                    <input x="15" y="2" text="T 03"/>
+                </inputs>
+            </element>
+            <element x="260" y="160" type="embed://import/grafcet/actions/action.elmt" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" id="22" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="2" text="motor on"/>
+                </inputs>
+            </element>
+            <element x="220" y="130" type="embed://import/grafcet2/et.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" id="23" orientation="0"/>
+                    <terminal x="4" y="-2" id="24" orientation="1"/>
+                    <terminal x="4" y="2" id="25" orientation="1"/>
+                    <terminal x="0" y="-1" id="26" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="220" y="60" type="embed://import/grafcet2/etape_initiale.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="21" id="27" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 00"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="_" terminal1="10" terminal2="26" type="multi"/>
+            <conductor num="_" terminal1="7" terminal2="0" type="multi"/>
+            <conductor num="_" terminal1="3" terminal2="8" type="multi"/>
+            <conductor num="_" terminal1="18" terminal2="4" type="multi"/>
+            <conductor num="_" terminal1="14" terminal2="4" type="multi"/>
+            <conductor num="_" terminal1="9" terminal2="2" type="multi"/>
+            <conductor num="_" terminal1="27" terminal2="11" type="multi"/>
+            <conductor num="_" terminal1="1" terminal2="20" type="multi"/>
+            <conductor num="_" terminal1="24" terminal2="13" type="multi"/>
+            <conductor num="_" terminal1="26" terminal2="17" type="multi"/>
+            <conductor num="_" terminal1="25" terminal2="13" type="multi"/>
+            <conductor num="_" terminal1="15" terminal2="16" type="multi"/>
+        </conductors>
+    </diagram>
+    <diagram title="Macro 3" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="2" rows="6" author="" filename="" rowsize="80">
+        <defaultconductor num="_" type="multi"/>
+        <elements>
+            <element x="460" y="160" type="embed://import/grafcet2/etape.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" id="0" orientation="0"/>
+                    <terminal x="0" y="21" id="1" orientation="2"/>
+                    <terminal x="36" y="-10" id="2" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 04"/>
+                </inputs>
+            </element>
+            <element x="460" y="390" type="embed://import/grafcet2/transition.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" id="3" orientation="2"/>
+                    <terminal x="0" y="-1" id="4" orientation="0"/>
+                    <terminal x="-8" y="0" id="5" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 31"/>
+                </inputs>
+            </element>
+            <element x="170" y="260" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="6" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="520" y="160" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" id="7" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                </inputs>
+            </element>
+            <element x="170" y="180" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="8" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="460" y="70" type="embed://import/grafcet2/macro/etape_entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="41" id="9" orientation="2"/>
+                    <terminal x="-8" y="40" id="10" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 03"/>
+                </inputs>
+            </element>
+            <element x="520" y="150" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" id="11" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                </inputs>
+            </element>
+            <element x="460" y="220" type="embed://import/grafcet2/transition.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="1" id="12" orientation="2"/>
+                    <terminal x="0" y="-1" id="13" orientation="0"/>
+                    <terminal x="-8" y="0" id="14" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="15" y="2" text="T 30"/>
+                </inputs>
+            </element>
+            <element x="520" y="300" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" id="15" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                </inputs>
+            </element>
+            <element x="520" y="170" type="embed://import/grafcet/actions/continue.elmt" orientation="0">
+                <terminals>
+                    <terminal x="7" y="0" id="16" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="2" text="action"/>
+                </inputs>
+            </element>
+            <element x="330" y="220" type="embed://import/automatisme/fonction/et.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="17" orientation="1"/>
+                    <terminal x="-36" y="-20" id="18" orientation="3"/>
+                    <terminal x="-36" y="20" id="19" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="10" text="_"/>
+                    <input x="-46" y="-30" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="170" y="430" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="20" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="460" y="460" type="embed://import/grafcet2/macro/etape_sortie.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" id="21" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="S 03"/>
+                </inputs>
+            </element>
+            <element x="340" y="390" type="embed://import/automatisme/fonction/ou.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="22" orientation="1"/>
+                    <terminal x="-36" y="-20" id="23" orientation="3"/>
+                    <terminal x="-36" y="20" id="24" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="10" text="_"/>
+                    <input x="-46" y="-30" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="170" y="350" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="25" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="460" y="310" type="embed://import/grafcet2/etape.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-21" id="26" orientation="0"/>
+                    <terminal x="0" y="21" id="27" orientation="2"/>
+                    <terminal x="36" y="-10" id="28" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-30" y="14" text=""/>
+                    <input x="-20" y="0" text="E 05"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="_" terminal1="12" terminal2="26" type="multi"/>
+            <conductor num="_" terminal1="16" terminal2="2" type="multi"/>
+            <conductor num="_" terminal1="17" terminal2="14" type="multi"/>
+            <conductor num="_" terminal1="2" terminal2="11" type="multi"/>
+            <conductor num="_" terminal1="1" terminal2="13" type="multi"/>
+            <conductor num="_" terminal1="9" terminal2="0" type="multi"/>
+            <conductor num="_" terminal1="28" terminal2="15" type="multi"/>
+            <conductor num="_" terminal1="4" terminal2="27" type="multi"/>
+            <conductor num="_" terminal1="2" terminal2="7" type="multi"/>
+            <conductor num="_" terminal1="3" terminal2="21" type="multi"/>
+            <conductor num="_" terminal1="6" terminal2="19" type="multi"/>
+            <conductor num="_" terminal1="8" terminal2="18" type="multi"/>
+            <conductor num="_" terminal1="20" terminal2="24" type="multi"/>
+            <conductor num="_" terminal1="22" terminal2="5" type="multi"/>
+            <conductor num="_" terminal1="25" terminal2="23" type="multi"/>
+        </conductors>
+    </diagram>
+    <diagram title="Conditions" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="3" rows="6" author="" filename="" rowsize="80">
+        <defaultconductor num="_" type="multi"/>
+        <elements>
+            <element x="420" y="160" type="embed://import/automatisme/fonction/et.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="0" orientation="1"/>
+                    <terminal x="-36" y="-20" id="1" orientation="3"/>
+                    <terminal x="-36" y="20" id="2" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="10" text="_"/>
+                    <input x="-46" y="-30" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="560" y="160" type="embed://import/automatisme/fonction/sortie.elmt" orientation="0">
+                <terminals>
+                    <terminal x="-36" y="0" id="3" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="-10" text="_"/>
+                    <input x="-25" y="50" text="T01"/>
+                </inputs>
+            </element>
+            <element x="310" y="220" type="embed://import/automatisme/fonction/non.elmt" orientation="0">
+                <terminals>
+                    <terminal x="-36" y="0" id="4" orientation="3"/>
+                    <terminal x="36" y="0" id="5" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-46" y="-10" text="_"/>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="_"/>
+                </inputs>
+            </element>
+            <element x="190" y="220" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="6" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="Arrêt urgence"/>
+                </inputs>
+            </element>
+            <element x="190" y="100" type="embed://import/automatisme/fonction/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="36" y="0" id="7" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="25" y="-10" text="_"/>
+                    <input x="-25" y="50" text="Bouton start"/>
+                </inputs>
+            </element>
+            <element x="290" y="370" type="embed://import/automatisme/lader/input/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="20" y="0" id="8" orientation="1"/>
+                    <terminal x="-20" y="0" id="9" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-18" y="-10" text="Bouton stop"/>
+                </inputs>
+            </element>
+            <element x="200" y="400" type="embed://import/sources/multifilaire/src_p.elmt" orientation="0">
+                <terminals>
+                    <terminal x="6" y="0" id="10" orientation="1"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="290" y="430" type="embed://import/automatisme/lader/input/entree.elmt" orientation="0">
+                <terminals>
+                    <terminal x="20" y="0" id="11" orientation="1"/>
+                    <terminal x="-20" y="0" id="12" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-18" y="-10" text="Arrêt urgence"/>
+                </inputs>
+            </element>
+            <element x="450" y="400" type="embed://import/automatisme/lader/output/sortie.elmt" orientation="0">
+                <terminals>
+                    <terminal x="-20" y="0" id="13" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="-18" y="-10" text="T03_"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="_" terminal1="10" terminal2="9" type="multi">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="11" orientation="horizontal"/>
+                <segment length="-30" orientation="vertical"/>
+                <segment length="27" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="_" terminal1="0" terminal2="3" type="multi"/>
+            <conductor num="_" terminal1="5" terminal2="2" type="multi"/>
+            <conductor num="_" terminal1="6" terminal2="4" type="multi"/>
+            <conductor num="_" terminal1="7" terminal2="1" type="multi"/>
+            <conductor num="_" terminal1="9" terminal2="12" type="multi">
+                <segment length="-9" orientation="horizontal"/>
+                <segment length="-27" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="27" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="_" terminal1="11" terminal2="13" type="multi">
+                <segment length="0" orientation="horizontal"/>
+                <segment length="56" orientation="horizontal"/>
+                <segment length="-30" orientation="vertical"/>
+                <segment length="56" orientation="horizontal"/>
+                <segment length="0" orientation="horizontal"/>
+            </conductor>
+            <conductor num="_" terminal1="8" terminal2="13" type="multi"/>
+        </conductors>
+        <inputs>
+            <input x="540" y="290" text="Condition T02 si&#xa; - moteur en marche&#xa; - lubrification en marche&#xa;"/>
+        </inputs>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="en">Imported elements</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="es">Elementos importados</name>
+            </names>
+            <category name="sources">
+                <names>
+                    <name lang="ru">Источники</name>
+                    <name lang="en">Sources</name>
+                    <name lang="fr">Sources</name>
+                    <name lang="es">Fuentes</name>
+                </names>
+                <category name="multifilaire">
+                    <names>
+                        <name lang="ru">Многолинейные</name>
+                        <name lang="en">Multiline</name>
+                        <name lang="fr">Multifilaire</name>
+                        <name lang="es">Multihilo</name>
+                    </names>
+                    <element name="src_p.elmt">
+                        <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+                            <names>
+                                <name lang="ru">Фаза</name>
+                                <name lang="en">Phase source</name>
+                                <name lang="fr">Source phase</name>
+                                <name lang="es">Fuente fase</name>
+                            </names>
+                            <description>
+                                <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+                                <text x="-12" y="3" size="5" text="L"/>
+                                <terminal x="10" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="src_n.elmt">
+                        <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+                            <names>
+                                <name lang="ru">Нейтраль</name>
+                                <name lang="en">Neutral source</name>
+                                <name lang="fr">Source neutre</name>
+                                <name lang="es">Fuente neutro</name>
+                            </names>
+                            <description>
+                                <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+                                <text x="-12" y="3" size="5" text="N"/>
+                                <terminal x="10" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <category name="automatisme">
+                <names>
+                    <name lang="ru">Автоматика</name>
+                    <name lang="en">Automatism</name>
+                    <name lang="fr">Automatisme</name>
+                    <name lang="es">Automatismo</name>
+                </names>
+                <category name="lader">
+                    <names>
+                        <name lang="ru">Контактно-релейная схема</name>
+                        <name lang="en">Ladder</name>
+                        <name lang="fr">Ladder</name>
+                        <name lang="es">Ladder</name>
+                    </names>
+                    <category name="output">
+                        <names>
+                            <name lang="ru">Выходы</name>
+                            <name lang="en">Outputs</name>
+                            <name lang="fr">Sorties</name>
+                            <name lang="es">Salidas</name>
+                        </names>
+                        <element name="sortie.elmt">
+                            <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="ru">Выход</name>
+                                    <name lang="en">Output</name>
+                                    <name lang="fr">Sortie</name>
+                                    <name lang="es">Salida</name>
+                                </names>
+                                <description>
+                                    <arc width="4" x="6" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="80" angle="-160"/>
+                                    <input x="-18" y="-10" size="9" rotate="true" text="_"/>
+                                    <arc width="4" x="-10" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-100" angle="-160"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+                                    <terminal x="-24" y="0" orientation="w"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                    <category name="input">
+                        <names>
+                            <name lang="ru">Входы</name>
+                            <name lang="en">Inputs</name>
+                            <name lang="fr">Entrées</name>
+                            <name lang="es">Entradas</name>
+                        </names>
+                        <element name="entree.elmt">
+                            <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="ru">Вход</name>
+                                    <name lang="en">Input</name>
+                                    <name lang="fr">Entrée</name>
+                                    <name lang="es">Entrada</name>
+                                </names>
+                                <description>
+                                    <input x="-18" y="-10" size="9" rotate="true" text="_"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="10" y2="-5" x2="10"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-10" y2="5" x2="-10"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="24"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-24" y2="0" x2="-10"/>
+                                    <terminal x="24" y="0" orientation="e"/>
+                                    <terminal x="-24" y="0" orientation="w"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+                <category name="fonction">
+                    <names>
+                        <name lang="ru">Логические устройства</name>
+                        <name lang="en">Logic gates</name>
+                        <name lang="fr">Fonctions logiques</name>
+                        <name lang="es">Puertas lógicas</name>
+                    </names>
+                    <element name="non.elmt">
+                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                            <names>
+                                <name lang="ru">НЕ</name>
+                                <name lang="en">NOT</name>
+                                <name lang="fr">NON</name>
+                                <name lang="es">NO</name>
+                            </names>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="26"/>
+                                <circle x="20.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+                                <input x="-46" y="-10" size="8" rotate="true" text="_"/>
+                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-39" y2="0" x2="-20"/>
+                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
+                                <text x="-5" y="5" size="12" text="1"/>
+                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="-40" y="0" orientation="w"/>
+                                <terminal x="40" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="ou.elmt">
+                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                            <names>
+                                <name lang="ru">ИЛИ</name>
+                                <name lang="en">OR</name>
+                                <name lang="fr">OU</name>
+                                <name lang="es">O</name>
+                            </names>
+                            <description>
+                                <input x="-46" y="10" size="8" rotate="true" text="_"/>
+                                <input x="-46" y="-30" size="8" rotate="true" text="_"/>
+                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="21"/>
+                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
+                                <text x="-11.5" y="5" size="12" text="≥1"/>
+                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="40" y="0" orientation="e"/>
+                                <terminal x="-40" y="-20" orientation="w"/>
+                                <terminal x="-40" y="20" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="entree.elmt">
+                        <definition width="80" version="0.2" hotspot_x="30" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                            <names>
+                                <name lang="ru">Вход</name>
+                                <name lang="en">Input</name>
+                                <name lang="fr">Entrée</name>
+                                <name lang="es">Entrada</name>
+                            </names>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="20"/>
+                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
+                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
+                                <text x="-2" y="5" size="12" text="I"/>
+                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="40" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="et.elmt">
+                        <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                            <names>
+                                <name lang="ru">И</name>
+                                <name lang="en">AND</name>
+                                <name lang="fr">ET</name>
+                                <name lang="es">Y</name>
+                            </names>
+                            <description>
+                                <input x="-46" y="10" size="8" rotate="true" text="_"/>
+                                <input x="-46" y="-30" size="8" rotate="true" text="_"/>
+                                <input x="25" y="-10" size="8" rotate="true" text="_"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-40" y2="-20" x2="-21"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="-40" y2="20" x2="-21"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="40" y2="0" x2="21"/>
+                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
+                                <text x="-6" y="5" size="12" text="&amp;"/>
+                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="40" y="0" orientation="e"/>
+                                <terminal x="-40" y="-20" orientation="w"/>
+                                <terminal x="-40" y="20" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="sortie.elmt">
+                        <definition width="80" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy">
+                            <names>
+                                <name lang="ru">Выход</name>
+                                <name lang="en">Output</name>
+                                <name lang="fr">Sortie</name>
+                            </names>
+                            <description>
+                                <input x="-46" y="-10" size="8" rotate="true" text="_"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-39" y2="0" x2="-20"/>
+                                <input x="-25" y="50" size="9" rotate="true" text="_"/>
+                                <text x="-6.5" y="5" size="12" text="Q"/>
+                                <rect width="40" x="-20" y="-35" antialias="false" height="70" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="-40" y="0" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <category name="grafcet2">
+                <names>
+                    <name lang="fr">Grafcet</name>
+                </names>
+                <category name="macro">
+                    <names>
+                        <name lang="en">Macro steps</name>
+                        <name lang="fr">Macro étape</name>
+                    </names>
+                    <element name="etape_entree.elmt">
+                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="en">Imput step</name>
+                                <name lang="fr">Etape d'entrée</name>
+                            </names>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="39" x2="0"/>
+                                <text x="19" y="42" size="8" text="1"/>
+                                <input x="-30" y="14" size="6" rotate="true" text=""/>
+                                <rect width="26" x="-13" y="38" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+                                <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
+                                <rect width="70" x="-34" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+                                <terminal x="0" y="45" orientation="s"/>
+                                <terminal x="-12" y="40" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="etape_sortie.elmt">
+                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="en">Output step</name>
+                                <name lang="fr">Etape sortie</name>
+                            </names>
+                            <description>
+                                <input x="-30" y="14" size="6" rotate="true" text=""/>
+                                <input x="-20" y="0" size="10" rotate="true" text="S 00"/>
+                                <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+                                <terminal x="0" y="-25" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="etape.elmt">
+                        <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="en">Macro step</name>
+                                <name lang="fr">Macro étape</name>
+                            </names>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="-35" y2="17" x2="35"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-35" y2="-18" x2="35"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19.6667" x1="0" y2="38.6667" x2="0"/>
+                                <text x="18" y="42" size="8" text="1"/>
+                                <input x="-30" y="13.6667" size="6" rotate="true" text=""/>
+                                <rect width="26" x="-13" y="37.6667" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+                                <input x="-20" y="-0.333333" size="10" rotate="true" text="M 00"/>
+                                <rect width="70" x="-35" y="-20.3333" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="-12" y="39.6667" orientation="w"/>
+                                <terminal x="0" y="44.6667" orientation="s"/>
+                                <terminal x="0" y="-25" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <element name="transition.elmt">
+                    <definition width="60" version="0.2" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="en">transition</name>
+                            <name lang="fr">transition</name>
+                        </names>
+                        <description>
+                            <input x="15" y="2" size="8" rotate="true" text="T 00"/>
+                            <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+                            <terminal x="0" y="5" orientation="s"/>
+                            <terminal x="0" y="-5" orientation="n"/>
+                            <terminal x="-12" y="0" orientation="w"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="etape_initiale.elmt">
+                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="en">Initial step</name>
+                            <name lang="fr">Etape initiale</name>
+                        </names>
+                        <description>
+                            <rect width="66" x="-33" y="-18" antialias="false" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                            <input x="-30" y="14" size="6" rotate="true" text=""/>
+                            <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
+                            <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                            <terminal x="0" y="25" orientation="s"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="etape.elmt">
+                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="en">Step</name>
+                            <name lang="fr">Etape</name>
+                        </names>
+                        <description>
+                            <input x="-30" y="14" size="6" rotate="true" text=""/>
+                            <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
+                            <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                            <terminal x="0" y="-25" orientation="n"/>
+                            <terminal x="0" y="25" orientation="s"/>
+                            <terminal x="40" y="-10" orientation="e"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="et.elmt">
+                    <definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="en">And</name>
+                            <name lang="fr">Et</name>
+                        </names>
+                        <description>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="2" x2="7"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="0" y2="-2" x2="7"/>
+                            <terminal x="0" y="-3" orientation="n"/>
+                            <terminal x="8" y="-2" orientation="e"/>
+                            <terminal x="8" y="2" orientation="e"/>
+                            <terminal x="0" y="3" orientation="s"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+            <category name="grafcet">
+                <names>
+                    <name lang="fr">Grafcet</name>
+                </names>
+                <category name="actions">
+                    <names>
+                        <name lang="en">Actions</name>
+                        <name lang="fr">Actions</name>
+                    </names>
+                    <element name="continue.elmt">
+                        <definition width="140" version="0.2" hotspot_x="0" hotspot_y="15" height="30" type="element" orientation="dnyn">
+                            <names>
+                                <name lang="fr">continue</name>
+                            </names>
+                            <description>
+                                <input x="25" y="2" size="8" rotate="true" text="action"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="20" y2="4" x2="20"/>
+                                <text x="8" y="3" size="8" text="="/>
+                                <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="3" y="0" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="action.elmt">
+                        <definition width="140" version="0.2" hotspot_x="0" hotspot_y="15" height="30" type="element" ic="true" orientation="dnyn">
+                            <names>
+                                <name lang="fr">action</name>
+                            </names>
+                            <description>
+                                <input x="8" y="2" size="8" text="action"/>
+                                <rect width="125" x="7" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="2" y="0" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <element name="saut.elmt">
+                    <definition width="70" version="0.2" hotspot_x="25" hotspot_y="25" height="100" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="en">jump</name>
+                            <name lang="fr">saut</name>
+                        </names>
+                        <description>
+                            <circle x="-20" y="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="19" x2="0"/>
+                            <input x="-15" y="45" size="10" rotate="true" text="E 00"/>
+                            <input x="15" y="2" size="8" rotate="true" text="T 00"/>
+                            <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+                            <terminal x="0" y="-5" orientation="n"/>
+                            <terminal x="-12" y="0" orientation="w"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="etape.elmt">
+                    <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="en">Step</name>
+                            <name lang="fr">Etape</name>
+                        </names>
+                        <description>
+                            <input x="-30" y="14" size="6" rotate="true" text=""/>
+                            <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
+                            <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                            <terminal x="0" y="-25" orientation="n"/>
+                            <terminal x="0" y="25" orientation="s"/>
+                            <terminal x="40" y="-10" orientation="e"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+        </category>
+    </collection>
+</project>
