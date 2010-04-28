@@ -1,6 +1,9 @@
 <definition width="440" version="0.22" hotspot_x="20" hotspot_y="35" height="170" type="element" orientation="dnnn" >
     <names>
-        <name lang="pl" >6ES5 431-8MA12</name>
+	<name lang="en" >6ES5 431-8MA12</name>
+	<name lang="fr" >6ES5 431-8MA12</name>
+	<name lang="pl" >6ES5 431-8MA12</name>
+	<name lang="cs" >6ES5 431-8MA12</name>
     </names>
     <informations></informations>
     <description>
