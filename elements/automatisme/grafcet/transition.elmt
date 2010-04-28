@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >transition</name>
         <name lang="fr" >transition</name>
+        <name lang="pl" >Tranzycja</name>
     </names>
     <description>
         <input x="15" y="2" size="8" rotate="true" text="T 00" />

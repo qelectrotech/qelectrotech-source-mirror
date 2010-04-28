@@ -1,6 +1,7 @@
 <definition width="110" version="0.2" hotspot_x="55" hotspot_y="155" height="220" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >bornier</name>
+        <name lang="pl" >Listwa zaciskowa</name>
     </names>
     <description>
         <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-130" x1="-19" y2="-130" x2="-21" />

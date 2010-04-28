@@ -2,6 +2,7 @@
     <names>
         <name lang="en" >Output step</name>
         <name lang="fr" >Etape sortie</name>
+        <name lang="pl" >Krok wyjściowy</name>
     </names>
     <description>
         <input x="-30" y="14" size="6" rotate="true" text="" />

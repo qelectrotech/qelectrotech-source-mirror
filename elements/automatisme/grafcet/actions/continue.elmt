@@ -1,6 +1,7 @@
 <definition width="140" version="0.2" hotspot_x="0" hotspot_y="15" height="30" type="element" orientation="dnyn" >
     <names>
         <name lang="fr" >continue</name>
+        <name lang="pl" >Działanie</name>
     </names>
     <description>
         <input x="25" y="2" size="8" rotate="true" text="action" />
