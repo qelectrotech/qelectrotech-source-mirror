@@ -732,8 +732,8 @@ void Conductor::hoverMoveEvent(QGraphicsSceneHoverEvent *e) {
 	Gere les changements relatifs au conducteur
 	Reimplemente ici pour :
 	  * positionner le conducteur en avant-plan lorsqu'il est selectionne
-	@param change 
-	@param value  
+	@param change Type de changement
+	@param value  Valeur relative au changement
 */
 QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemSelectedChange) {

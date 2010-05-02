@@ -182,6 +182,8 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 
 /**
 	Gere les changements dont ce champ de texte est informe
+	@param change Type de changement
+	@param value  Valeur relative au changement
 */
 QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemSceneHasChanged) {
@@ -193,6 +195,7 @@ QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &
 
 /**
 	Gere la prise de focus du champ de texte
+	@param e Objet decrivant la prise de focus
 */
 void DiagramTextItem::focusInEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusInEvent(e);
@@ -204,6 +207,7 @@ void DiagramTextItem::focusInEvent(QFocusEvent *e) {
 
 /**
 	Gere la perte de focus du champ de texte
+	@param e Objet decrivant la perte de focus
 */
 void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);

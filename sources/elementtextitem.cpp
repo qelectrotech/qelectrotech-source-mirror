@@ -220,6 +220,7 @@ void ElementTextItem::applyRotation(const qreal &angle) {
 
 /**
 	Gere les mouvements de souris lies au champ de texte
+	@param e Objet decrivant l'evenement souris
 */
 void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (textInteractionFlags() & Qt::TextEditable) {
@@ -271,6 +272,7 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 /**
 	Gere le relachement de souris
 	Cette methode cree un objet d'annulation pour le deplacement
+	@param e Objet decrivant l'evenement souris
 */
 void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (Diagram *diagram_ptr = diagram()) {

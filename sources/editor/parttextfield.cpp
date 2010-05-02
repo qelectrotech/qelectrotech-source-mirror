@@ -316,8 +316,8 @@ bool PartTextField::isUseless() const {
 	@param qsogi   Pptions de dessin
 	@param widget  Widget sur lequel on dessine (facultatif)
 */
-void PartTextField::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, QWidget *qw) {
-	QGraphicsTextItem::paint(painter, qsogi, qw);
+void PartTextField::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, QWidget *widget) {
+	QGraphicsTextItem::paint(painter, qsogi, widget);
 	
 #ifdef QET_DEBUG_EDITOR_TEXTS
 	painter -> setPen(Qt::blue);

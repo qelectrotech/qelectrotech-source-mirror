@@ -467,6 +467,7 @@ void ChangeDiagramTextCommand::redo() {
 /**
 	Constructeur
 	@param elements Elements a pivoter associes a leur orientation d'origine
+	@param texts Textes a pivoter
 	@param parent QUndoCommand parent
 */
 RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, QUndoCommand *parent) :
