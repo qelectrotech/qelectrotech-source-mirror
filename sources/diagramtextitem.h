@@ -58,7 +58,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	QPointF mapMovementFromParent(const QPointF &) const;
 	
 	protected:
-	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
@@ -80,8 +79,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	
 	// attributs prives
 	private:
-	/// Schema auquel ce texte est rattache
-	Diagram *parent_diagram_;
 	/// Texte precedent
 	QString previous_text_;
 	/// angle de rotation du champ de texte

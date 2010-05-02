@@ -96,8 +96,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
 	private:
-	/// Schema auquel ce conducteur est rattache
-	Diagram *parent_diagram_;
 	/// caracteristiques du conducteur
 	ConductorProperties properties_;
 	/// booleen indiquant si le fil est encore valide

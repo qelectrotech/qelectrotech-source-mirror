@@ -40,7 +40,6 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	QGraphicsPathItem(0, parent_diagram),
 	terminal1(p1),
 	terminal2(p2),
-	parent_diagram_(parent_diagram),
 	destroyed(false),
 	text_item(0),
 	segments(NULL),
@@ -543,7 +542,7 @@ void Conductor::destroy() {
 
 /// @return le Diagram auquel ce conducteur appartient, ou 0 si ce conducteur est independant
 Diagram *Conductor::diagram() const {
-	return(parent_diagram_);
+	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**
@@ -746,10 +745,6 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 			setZValue(previous_z_value);
 		}
 	} else if (change == QGraphicsItem::ItemSceneHasChanged) {
-		// prend en compte le changement de schema
-		QGraphicsScene *qgscene = value.value<QGraphicsScene *>();
-		parent_diagram_ = static_cast<Diagram *>(qgscene);
-		
 		// permet de positionner correctement le texte du conducteur lors de son ajout a un schema
 		calculateTextItemPosition();
 	} else if (change == QGraphicsItem::ItemVisibleHasChanged) {

@@ -27,7 +27,6 @@
 */
 DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(parent, parent_diagram),
-	parent_diagram_(parent_diagram),
 	previous_text_(),
 	rotation_angle_(0.0)
 {
@@ -48,7 +47,6 @@ DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram)
 */
 DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Diagram *parent_diagram) :
 	QGraphicsTextItem(text, parent, parent_diagram),
-	parent_diagram_(parent_diagram),
 	previous_text_(text),
 	rotation_angle_(0.0)
 {
@@ -70,7 +68,7 @@ DiagramTextItem::~DiagramTextItem() {
 	rattache a aucun schema
 */
 Diagram *DiagramTextItem::diagram() const {
-	return(parent_diagram_);
+	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**
@@ -178,19 +176,6 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 	
 	// on calcule le vecteur represente par ces deux points
 	return(local_movement_point - local_origin);
-}
-
-/**
-	Gere les changements dont ce champ de texte est informe
-	@param change Type de changement
-	@param value  Valeur relative au changement
-*/
-QVariant DiagramTextItem::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemSceneHasChanged) {
-		QGraphicsScene *qgscene = value.value<QGraphicsScene *>();
-		parent_diagram_ = static_cast<Diagram *>(qgscene);
-	}
-	return(QGraphicsTextItem::itemChange(change, value));
 }
 
 /**
