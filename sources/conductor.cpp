@@ -134,18 +134,10 @@ void Conductor::update(const QRectF &rect) {
 	@param b Borne
 	@param newpos position de la borne b
 */
-void Conductor::updateWithNewPos(const QRectF &rect, const Terminal *b, const QPointF &newpos) {
+void Conductor::updateWithNewPos(const QRectF &rect) {
 	QPointF p1, p2;
-	if (b == terminal1) {
-		p1 = newpos;
-		p2 = terminal2 -> dockConductor();
-	} else if (b == terminal2) {
-		p1 = terminal1 -> dockConductor();
-		p2 = newpos;
-	} else {
-		p1 = terminal1 -> dockConductor();
-		p2 = terminal2 -> dockConductor();
-	}
+	p1 = terminal1 -> dockConductor();
+	p2 = terminal2 -> dockConductor();
 	if (nbSegments() && !conductor_profiles[currentPathType()].isNull())
 		priv_modifieConductor(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else

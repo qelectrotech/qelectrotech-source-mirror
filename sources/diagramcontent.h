@@ -20,7 +20,6 @@
 #include <QtGui>
 class Conductor;
 class Element;
-class Terminal;
 class IndependentTextItem;
 /**
 	Cette classe est un conteneur pour passer facilement le contenu d'un schema
@@ -55,7 +54,7 @@ class DiagramContent {
 	/// Champs de texte independants du schema
 	QList<IndependentTextItem *> textFields;
 	/// Conducteurs a mettre a jour du schema
-	QHash<Conductor *, Terminal *> conductorsToUpdate;
+	QList<Conductor *> conductorsToUpdate;
 	/// Conducteurs a deplacer du schema
 	QList<Conductor *> conductorsToMove;
 	/// Conducteurs isoles (ni a deplacer, ni a mettre a jour)

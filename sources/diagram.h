@@ -79,7 +79,7 @@ class Diagram : public QGraphicsScene {
 	bool moved_elements_fetched;
 	QSet<Element *> elements_to_move;
 	QSet<Conductor *> conductors_to_move;
-	QHash<Conductor *, Terminal *> conductors_to_update;
+	QSet<Conductor *> conductors_to_update;
 	QSet<IndependentTextItem *> texts_to_move;
 	QSet<ElementTextItem *> elements_texts_to_move;
 	QGIManager *qgi_manager;
@@ -158,7 +158,7 @@ class Diagram : public QGraphicsScene {
 	void fetchMovedElements();
 	const QSet<Element *> &elementsToMove();
 	const QSet<Conductor *> &conductorsToMove();
-	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
+	const QSet<Conductor *> &conductorsToUpdate();
 	const QSet<IndependentTextItem *> &independentTextsToMove();
 	const QSet<ElementTextItem *> &elementTextsToMove();
 	QSet<DiagramTextItem *> selectedTexts() const;
@@ -285,7 +285,7 @@ inline const QSet<Conductor *> &Diagram::conductorsToMove() {
 }
 
 /// @return la liste des conducteurs a modifier (typiquement les conducteurs dont seul un element est deplace)
-inline const QHash<Conductor *, Terminal *> &Diagram::conductorsToUpdate() {
+inline const QSet<Conductor *> &Diagram::conductorsToUpdate() {
 	if (!moved_elements_fetched) fetchMovedElements();
 	return(conductors_to_update);
 }

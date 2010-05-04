@@ -61,7 +61,7 @@ class Terminal : public QGraphicsItem {
 	QList<Conductor *> conductors() const;
 	QET::Orientation orientation() const;
 	QPointF dockConductor() const;
-	void updateConductor(QPointF = QPointF());
+	void updateConductor();
 	bool isLinkedTo(Terminal *);
 	bool canBeLinkedTo(Terminal *);
 	

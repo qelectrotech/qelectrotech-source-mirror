@@ -845,7 +845,7 @@ void Diagram::fetchMovedElements() {
 				if (elements_to_move.contains(other_terminal -> parentElement())) {
 					conductors_to_move << conductor;
 				} else {
-					conductors_to_update.insert(conductor, terminal);
+					conductors_to_update << conductor;
 				}
 			}
 		}
@@ -879,9 +879,8 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	}
 	
 	// recalcule les autres conducteurs
-	const QHash<Conductor *, Terminal *> &conductors_modify = conductorsToUpdate();
-	foreach(Conductor *conductor, conductors_modify.keys()) {
-		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> dockConductor());
+	foreach(Conductor *conductor, conductorsToUpdate()) {
+		conductor -> updateWithNewPos(QRectF());
 	}
 	
 	// deplace les champs de texte
@@ -1090,7 +1089,7 @@ DiagramContent Diagram::selectedContent() {
 	dc.elements           = elementsToMove().toList();
 	dc.textFields         = independentTextsToMove().toList();
 	dc.conductorsToMove   = conductorsToMove().toList();
-	dc.conductorsToUpdate = conductorsToUpdate();
+	dc.conductorsToUpdate = conductorsToUpdate().toList();
 	
 	// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
 	foreach(QGraphicsItem *qgi, items()) {

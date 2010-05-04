@@ -52,7 +52,7 @@ DiagramContent::~DiagramContent() {
 QList<Conductor *> DiagramContent::conductors(int filter) const {
 	QList<Conductor *> result;
 	if (filter & ConductorsToMove)   result += conductorsToMove;
-	if (filter & ConductorsToUpdate) result += conductorsToUpdate.keys();
+	if (filter & ConductorsToUpdate) result += conductorsToUpdate;
 	if (filter & OtherConductors)    result += otherConductors;
 	if (filter & SelectedOnly) {
 		foreach(Conductor *conductor, result) {
@@ -100,7 +100,7 @@ int DiagramContent::count(int filter) const {
 		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
 		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
 		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
-		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate.keys()) { if (conductor -> isSelected()) ++ count; }
+		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
 		if (filter & OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
 	} else {
 		if (filter & Elements)           count += elements.count();
@@ -143,7 +143,7 @@ QDebug &operator<<(QDebug d, DiagramContent &content) {
 	/*
 	FIXME Le double-heritage QObject / QGraphicsItem a casse cet operateur
 	d << "  elements :" << c.elements << "\n";
-	d << "  conductorsToUpdate :" << c.conductorsToUpdate.keys() << "\n";
+	d << "  conductorsToUpdate :" << c.conductorsToUpdate << "\n";
 	d << "  conductorsToMove :" << c.conductorsToMove << "\n";
 	d << "  otherConductors :" << c.otherConductors << "\n";
 	*/

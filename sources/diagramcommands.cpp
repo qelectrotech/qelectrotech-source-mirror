@@ -353,12 +353,8 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	}
 	
 	// recalcule les autres conducteurs
-	foreach(Conductor *conductor, content_to_move.conductorsToUpdate.keys()) {
-		conductor -> updateWithNewPos(
-			QRectF(),
-			content_to_move.conductorsToUpdate[conductor],
-			content_to_move.conductorsToUpdate[conductor] -> dockConductor()
-		);
+	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
+		conductor -> updateWithNewPos(QRectF());
 	}
 	
 	// deplace les textes
