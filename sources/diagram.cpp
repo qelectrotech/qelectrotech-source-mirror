@@ -880,7 +880,7 @@ void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
 	
 	// recalcule les autres conducteurs
 	foreach(Conductor *conductor, conductorsToUpdate()) {
-		conductor -> updateWithNewPos(QRectF());
+		conductor -> updatePath();
 	}
 	
 	// deplace les champs de texte

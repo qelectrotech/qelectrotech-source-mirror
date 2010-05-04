@@ -61,8 +61,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	/// @return true si ce conducteur est detruit
 	bool isDestroyed() const { return(destroyed); }
 	Diagram *diagram() const;
-	void updateWithNewPos(const QRectF &);
-	void update(const QRectF & = QRectF());
+	void updatePath(const QRectF & = QRectF());
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;

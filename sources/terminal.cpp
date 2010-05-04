@@ -379,7 +379,7 @@ void Terminal::updateConductor() {
 	if (!scene() || !parentItem()) return;
 	foreach (Conductor *conductor, conductors_) {
 		if (conductor -> isDestroyed()) continue;
-		conductor -> update(QRectF());
+		conductor -> updatePath();
 	}
 }
 

@@ -105,36 +105,13 @@ Conductor::~Conductor() {
 }
 
 /**
-	Met a jour la representation graphique du conducteur.
+	Met a jour la representation graphique du conducteur en recalculant son
+	trace. Cette fonction est typiquement appelee lorsqu'une seule des bornes du
+	conducteur a change de position.
 	@param rect Rectangle a mettre a jour
+	@see QGraphicsPathItem::update()
 */
-void Conductor::update(const QRectF &rect) {
-	// appelle la bonne fonction pour calculer l'aspect du conducteur
-	if (nbSegments() && !conductor_profiles[currentPathType()].isNull()) {
-		priv_modifieConductor(
-			terminal1 -> dockConductor(), terminal1 -> orientation(),
-			terminal2 -> dockConductor(), terminal2 -> orientation()
-		);
-	} else {
-		priv_calculeConductor(
-			terminal1 -> dockConductor(), terminal1 -> orientation(),
-			terminal2 -> dockConductor(), terminal2 -> orientation()
-		);
-	}
-	
-	calculateTextItemPosition();
-	QGraphicsPathItem::update(rect);
-}
-
-/**
-	Met a jour la representation graphique du conducteur en considerant que la
-	borne b a pour position pos. Cette fonction est appelee lorsqu'une seule
-	des bornes du conducteur a change de position.
-	@param rect Rectangle a mettre a jour
-	@param b Borne
-	@param newpos position de la borne b
-*/
-void Conductor::updateWithNewPos(const QRectF &rect) {
+void Conductor::updatePath(const QRectF &rect) {
 	QPointF p1, p2;
 	p1 = terminal1 -> dockConductor();
 	p2 = terminal2 -> dockConductor();
