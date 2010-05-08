@@ -129,6 +129,7 @@ class Element : public QObject, public QGraphicsItem {
 	private:
 	bool internal_connections;
 	bool must_highlight_;
+	bool first_move_;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
 	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();

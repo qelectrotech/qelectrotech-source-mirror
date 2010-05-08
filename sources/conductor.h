@@ -22,7 +22,7 @@
 #include "conductorprofile.h"
 #include "conductorproperties.h"
 class ConductorSegment;
-class DiagramTextItem;
+class ConductorTextItem;
 class Element;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
@@ -61,10 +61,15 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	/// @return true si ce conducteur est detruit
 	bool isDestroyed() const { return(destroyed); }
 	Diagram *diagram() const;
+	ConductorTextItem *textItem() const;
 	void updatePath(const QRectF & = QRectF());
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;
+	virtual qreal nearDistance() const;
+	virtual QPainterPath nearShape() const;
+	virtual QPainterPath variableShape(const qreal &) const;
+	virtual bool isNearConductor(const QPointF &);
 	qreal length();
 	ConductorSegment *middleSegment();
 	bool containsPoint(const QPointF &) const;
@@ -81,10 +86,11 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void setProfiles(const ConductorProfilesGroup &);
 	ConductorProfilesGroup profiles() const;
 	void readProperties();
+	void adjustTextItemPosition();
 	
 	public slots:
 	void displayedTextChanged();
-
+	
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
@@ -100,7 +106,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	/// booleen indiquant si le fil est encore valide
 	bool destroyed;
 	/// champ de texte editable pour les conducteurs non unifilaires
-	DiagramTextItem *text_item;
+	ConductorTextItem *text_item;
 	/// segments composant le conducteur
 	ConductorSegment *segments;
 	/// attributs lies aux manipulations a la souris
@@ -110,6 +116,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	int moved_point;
 	qreal previous_z_value;
 	ConductorSegment *moved_segment;
+	QPointF before_mov_text_pos_;
 	/// booleen indiquant si le conducteur a ete modifie manuellement par l'utilisateur
 	bool modified_path;
 	/// booleen indiquant s'il faut sauver le profil courant au plus tot
@@ -146,5 +153,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
 	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
+	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
 };
 #endif

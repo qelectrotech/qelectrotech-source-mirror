@@ -50,15 +50,15 @@ class DiagramContent {
 	};
 	
 	/// Elements de texte du schema
-	QList<Element *> elements;
+	QSet<Element *> elements;
 	/// Champs de texte independants du schema
-	QList<IndependentTextItem *> textFields;
+	QSet<IndependentTextItem *> textFields;
 	/// Conducteurs a mettre a jour du schema
-	QList<Conductor *> conductorsToUpdate;
+	QSet<Conductor *> conductorsToUpdate;
 	/// Conducteurs a deplacer du schema
-	QList<Conductor *> conductorsToMove;
+	QSet<Conductor *> conductorsToMove;
 	/// Conducteurs isoles (ni a deplacer, ni a mettre a jour)
-	QList<Conductor *> otherConductors;
+	QSet<Conductor *> otherConductors;
 	
 	QList<Conductor *> conductors(int = AnyConductor) const;
 	QList<QGraphicsItem *> items(int = All) const;

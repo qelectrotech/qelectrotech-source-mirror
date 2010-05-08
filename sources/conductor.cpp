@@ -419,6 +419,13 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
+	/*
+	qp -> save();
+	qp -> setPen(Qt::blue);
+	qp -> drawPath(variableShape(60.0).simplified());
+	qp -> restore();
+	*/
+	
 	// determine la couleur du conducteur
 	QColor final_conductor_color(properties_.color);
 	if (isSelected()) {
@@ -515,6 +522,13 @@ Diagram *Conductor::diagram() const {
 }
 
 /**
+	@return le champ de texte associe a ce conducteur
+*/
+ConductorTextItem *Conductor::textItem() const {
+	return(text_item);
+}
+
+/**
 	Methode de validation d'element XML
 	@param e Un element XML sense represente un Conducteur
 	@return true si l'element XML represente bien un Conducteur ; false sinon
@@ -568,6 +582,10 @@ void Conductor::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 				break;
 			}
 			segment = segment -> nextSegment();
+		}
+		if (moving_segment || moving_point) {
+			// en cas de debut de modification de conducteur, on memorise la position du champ de texte
+			before_mov_text_pos_ = text_item -> pos();
 		}
 	}
 	QGraphicsPathItem::mousePressEvent(e);
@@ -733,9 +751,39 @@ QRectF Conductor::boundingRect() const {
 }
 
 /**
-	@return La forme / zone "cliquable" du conducteur
+	@return La forme / zone "cliquable" du conducteur (epaisseur : 5.0px).
+	@see variableShape()
 */
 QPainterPath Conductor::shape() const {
+	return(variableShape(5.0));
+}
+
+/**
+	@return la distance en dessous de laquelle on considere qu'un point est a
+	proximite du trajet du conducteur. La valeur est actuellement fixee a
+	60.0px.
+*/
+qreal Conductor::nearDistance() const {
+	return(60.0);
+}
+
+/**
+	@return la zone dans laquelle dont on considere que tous les points sont a
+	proximite du trajet du conducteur.
+	@see nearDistance()
+	@see variableShape()
+*/
+QPainterPath Conductor::nearShape() const {
+	return(variableShape(nearDistance()));
+}
+
+/**
+	@return la forme du conducteur
+	@param thickness la moitie de l'epaisseur voulue pour cette forme
+*/
+QPainterPath Conductor::variableShape(const qreal &thickness) const {
+	qreal my_thickness = qAbs(thickness);
+	
 	QList<QPointF> points = segmentsToPoints();
 	QPainterPath area;
 	QPointF previous_point;
@@ -764,13 +812,22 @@ QPainterPath Conductor::shape() const {
 			qreal p2_x = point2 -> x();
 			qreal p2_y = point2 -> y();
 			area.setFillRule(Qt::OddEvenFill);
-			area.addRect(p1_x - 5.0, p1_y - 5.0, 10.0 + p2_x - p1_x, 10.0 + p2_y - p1_y);
+			area.addRect(p1_x - my_thickness, p1_y - my_thickness, my_thickness * 2.0 + p2_x - p1_x, my_thickness * 2.0  + p2_y - p1_y);
 		}
 		previous_point = point;
 		area.setFillRule(Qt::WindingFill);
-		area.addRect(point.x() - 5.0, point.y() - 5.0, 10.0, 10.0);
+		area.addRect(point.x() - my_thickness, point.y() - my_thickness, my_thickness * 2.0, my_thickness * 2.0 );
 	}
 	return(area);
+}
+
+/**
+	@param point un point, exprime dans les coordonnees du conducteur
+	@return true si le point est a proximite du conducteur, c-a-d a moins de
+	60px du conducteur.
+*/
+bool Conductor::isNearConductor(const QPointF &point) {
+	return(variableShape(60.1).contains(point));
 }
 
 /**
@@ -886,6 +943,14 @@ bool Conductor::fromXml(QDomElement &e) {
 	// recupere la "configuration" du conducteur
 	properties_.fromXml(e);
 	readProperties();
+	qreal user_pos_x, user_pos_y;
+	if (
+		QET::attributeIsAReal(e, "userx", &user_pos_x) &&
+		QET::attributeIsAReal(e, "usery", &user_pos_y)
+	) {
+		text_item -> forceMovedByUser(true);
+		text_item -> setPos(user_pos_x, user_pos_y);
+	}
 	text_item -> setRotationAngle(e.attribute("rotation").toDouble());
 	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
@@ -984,6 +1049,10 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 	if (text_item -> rotationAngle()) {
 		e.setAttribute("rotation", QString("%1").arg(text_item -> rotationAngle()));
 	}
+	if (text_item -> wasMovedByUser()) {
+		e.setAttribute("userx", QString("%1").arg(text_item -> pos().x()));
+		e.setAttribute("usery", QString("%1").arg(text_item -> pos().y()));
+	}
 	return(e);
 }
 
@@ -1043,9 +1112,20 @@ ConductorSegment *Conductor::middleSegment() {
 	@see middleSegment()
 */
 void Conductor::calculateTextItemPosition() {
-	if (properties_.type != ConductorProperties::Multi) return;
 	if (!text_item) return;
-	text_item -> setPos(middleSegment() -> middle());
+	
+	if (text_item -> wasMovedByUser()) {
+		// le champ de texte a ete deplace par l'utilisateur :
+		// on verifie qu'il est encore a proximite du conducteur
+		QPointF text_item_pos = text_item -> pos();
+		QPainterPath near_shape = nearShape();
+		if (!near_shape.contains(text_item_pos)) {
+			text_item -> setPos(movePointIntoPolygon(text_item_pos, near_shape));
+		}
+	} else {
+		// positionnement automatique basique
+		text_item -> setPos(middleSegment() -> middle());
+	}
 }
 
 /**
@@ -1058,7 +1138,14 @@ void Conductor::saveProfile(bool undo) {
 	conductor_profiles[current_path_type].fromConductor(this);
 	Diagram *dia = diagram();
 	if (undo && dia) {
-		dia -> undoStack().push(new ChangeConductorCommand(this, old_profile, conductor_profiles[current_path_type], current_path_type));
+		ChangeConductorCommand *undo_object = new ChangeConductorCommand(
+			this,
+			old_profile,
+			conductor_profiles[current_path_type],
+			current_path_type
+		);
+		undo_object -> setConductorTextItemMove(before_mov_text_pos_, text_item -> pos());
+		dia -> undoStack().push(undo_object);
 	}
 }
 
@@ -1136,6 +1223,15 @@ void Conductor::readProperties() {
 	// la couleur n'est vraiment applicable que lors du rendu du conducteur
 	setText(properties_.text);
 	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
+}
+
+/**
+	S'assure que le texte du conducteur est a une position raisonnable
+	Cette methode ne fait rien si ce conducteur n'affiche pas son champ de
+	texte.
+*/
+void Conductor::adjustTextItemPosition() {
+	calculateTextItemPosition();
 }
 
 /**
@@ -1376,5 +1472,57 @@ void Conductor::deleteSegments() {
 		while (segments -> hasNextSegment()) delete segments -> nextSegment();
 		delete segments;
 		segments = NULL;
+	}
+}
+
+/**
+	@param point Un point situe a l'exterieur du polygone
+	@param polygon Le polygone dans lequel on veut rapatrier le point
+	@return la position du point, une fois ramene dans le polygone, ou plus
+	exactement sur le bord du polygone
+*/
+QPointF Conductor::movePointIntoPolygon(const QPointF &point, const QPainterPath &polygon) {
+	// decompose le polygone en lignes et points
+	QList<QPolygonF> polygons = polygon.simplified().toSubpathPolygons();
+	QList<QLineF> lines;
+	QList<QPointF> points;
+	foreach(QPolygonF polygon, polygons) {
+		if (polygon.count() <= 1) continue;
+		
+		// on recense les lignes et les points
+		for (int i = 1 ; i < polygon.count() ; ++ i) {
+			lines << QLineF(polygon.at(i - 1), polygon.at(i));
+			points << polygon.at(i -1);
+		}
+	}
+	
+	// on fait des projetes orthogonaux du point sur les differents segments du
+	// polygone, en les triant par longueur croissante
+	QMap<qreal, QPointF> intersections;
+	foreach (QLineF line, lines) {
+		QPointF intersection_point;
+		if (QET::orthogonalProjection(point, line, &intersection_point)) {
+			intersections.insert(QLineF(intersection_point, point).length(), intersection_point);
+		}
+	}
+	if (intersections.count()) {
+		// on determine la plus courte longueur pour un projete orthogonal
+		QPointF the_point = intersections[intersections.keys().first()];
+		return(the_point);
+	} else {
+			// determine le coin du polygone le plus proche du point exterieur
+			qreal minimum_length = -1;
+			int point_index = -1;
+			for (int i = 0 ; i < points.count() ; ++ i) {
+				qreal length = qAbs(QLineF(points.at(i), point).length());
+				if (minimum_length < 0 || length < minimum_length) {
+					minimum_length = length;
+					point_index    = i;
+				}
+			}
+			// on connait desormais le coin le plus proche du texte
+		
+		// aucun projete orthogonal n'a donne quoi que ce soit, on met le texte sur un des coins du polygone
+		return(points.at(point_index));
 	}
 }

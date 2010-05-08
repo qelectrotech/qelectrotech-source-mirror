@@ -219,6 +219,18 @@ void ElementTextItem::applyRotation(const qreal &angle) {
 }
 
 /**
+	Gere le clic sur le champ de texte
+	@param e Objet decrivant l'evenement souris
+*/
+void ElementTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	first_move_ = true;
+	if (e -> modifiers() & Qt::ControlModifier) {
+		setSelected(!isSelected());
+	}
+	DiagramTextItem::mousePressEvent(e);
+}
+
+/**
 	Gere les mouvements de souris lies au champ de texte
 	@param e Objet decrivant l'evenement souris
 */
@@ -246,13 +258,17 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		QPointF parent_movement = mapMovementToParent(movement);
 		setPos(pos() + parent_movement);
 		
-		if (Diagram *diagram_ptr = diagram()) {
-			int moved_texts_count = diagram_ptr -> elementTextsToMove().count();
-			// s'il n'y a qu'un seul texte deplace, on met en valeur l'element parent
-			if (moved_texts_count == 1 && parent_element_ && first_move_) {
-				parent_element_ -> setHighlighted(true);
-				parent_element_ -> update();
-				first_move_ = false;
+		Diagram *diagram_ptr = diagram();
+		if (diagram_ptr) {
+			if (first_move_) {
+				// on signale le debut d'un deplacement d'ElementTextItems au schema parent
+				int moved_texts_count = diagram_ptr -> beginMoveElementTexts(this);
+				
+				// s'il n'y a qu'un seul texte deplace, on met en valeur l'element parent
+				if (moved_texts_count == 1 && parent_element_) {
+					parent_element_ -> setHighlighted(true);
+					parent_element_ -> update();
+				}
 			}
 			
 			/*
@@ -264,9 +280,13 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 			QPointF scene_effective_movement = mapMovementToScene(mapMovementFromParent(effective_movement));
 			
 			// on applique le mouvement subi aux autres textes a deplacer
-			diagram_ptr -> moveElementsTexts(scene_effective_movement, this);
+			diagram_ptr -> continueMoveElementTexts(scene_effective_movement);
 		}
 	} else e -> ignore();
+	
+	if (first_move_) {
+		first_move_ = false;
+	}
 }
 
 /**
@@ -276,28 +296,14 @@ void ElementTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 */
 void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (Diagram *diagram_ptr = diagram()) {
-		int moved_texts_count = diagram_ptr -> elementTextsToMove().count();
-		
-		// s'il n'y a qu'un seul texte deplace, on arrete de mettre en valeur l'element parent
-		if (moved_texts_count == 1) {
-			first_move_ = true;
-			if (parent_element_) {
+		// on arrete de mettre en valeur l'element parent
+		if (parent_element_) {
+			if (parent_element_ -> isHighlighted()) {
 				parent_element_ -> setHighlighted(false);
 			}
 		}
 		
-		// on cree un objet d'annulation correspondant au deplacement qui s'acheve
-		if ((flags() & QGraphicsItem::ItemIsMovable) && (!diagram_ptr -> current_movement.isNull())) {
-			diagram_ptr -> undoStack().push(
-				new MoveElementsTextsCommand(
-					diagram_ptr,
-					diagram_ptr -> elementTextsToMove(),
-					diagram_ptr -> current_movement
-				)
-			);
-			diagram_ptr -> current_movement = QPointF();
-		}
-		diagram_ptr -> invalidateMovedElements();
+		diagram_ptr -> endMoveElementTexts();
 	}
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsTextItem::mouseReleaseEvent(e);

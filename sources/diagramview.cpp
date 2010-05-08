@@ -686,7 +686,7 @@ void DiagramView::editSelectionProperties() {
 		
 		// cas d'un element selectionne
 		if (selection.elements.count() == 1) {
-			editElement(selection.elements.at(0));
+			editElement(selection.elements.toList().at(0));
 			return;
 		}
 		

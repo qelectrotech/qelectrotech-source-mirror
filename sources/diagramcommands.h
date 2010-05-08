@@ -189,6 +189,7 @@ class MoveElementsCommand : public QUndoCommand {
 	virtual void undo();
 	virtual void redo();
 	virtual void move(const QPointF &);
+	virtual void addConductorTextItemMovement(ConductorTextItem *, const QPointF &, const QPointF &);
 	
 	// attributs
 	private:
@@ -198,6 +199,16 @@ class MoveElementsCommand : public QUndoCommand {
 	DiagramContent content_to_move;
 	/// mouvement effectue
 	QPointF movement;
+	/**
+		Deplacer des elements ou champs de texte entraine des conducteurs.
+		Soit ces conducteurs sont betement deplaces, soit leur trajet est
+		recalcule.
+		Si leur trajet est recalcule, les champs de texte dont la position a ete
+		personnalisee par l'utilisateur
+		Liste des champs de texte de conducteurs dont la position a ete modifiee
+		par des mises
+	*/
+	QHash<ConductorTextItem *, QPair<QPointF, QPointF> > moved_conductor_texts_;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
@@ -228,6 +239,37 @@ class MoveElementsTextsCommand : public QUndoCommand {
 	QSet<ElementTextItem *> texts_to_move;
 	/// mouvement effectue
 	QPointF movement;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de deplacer des champs de texte rattaches
+	a des conducteurs sur un schema
+*/
+class MoveConductorsTextsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	MoveConductorsTextsCommand(Diagram *, QUndoCommand * = 0);
+	virtual ~MoveConductorsTextsCommand();
+	private:
+	MoveConductorsTextsCommand(const MoveConductorsTextsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void addTextMovement(ConductorTextItem *, const QPointF &, const QPointF &, bool = false);
+	
+	private:
+	void regenerateTextLabel();
+	
+	// attributs
+	private:
+	/// schema sur lequel on deplace les elements
+	Diagram *diagram;
+	/// liste des champs de texte a deplacer
+	QHash<ConductorTextItem *, QPair<QPointF, bool> > texts_to_move_;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
@@ -331,6 +373,7 @@ class ChangeConductorCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
+	virtual void setConductorTextItemMove(const QPointF &, const QPointF &);
 	
 	// attributs
 	private:
@@ -342,6 +385,10 @@ class ChangeConductorCommand : public QUndoCommand {
 	ConductorProfile new_profile;
 	/// Type de trajet
 	Qt::Corner path_type;
+	/// Position du champ de texte avant le changement
+	QPointF text_pos_before_mov_;
+	/// Position du champ de texte apres le changement
+	QPointF text_pos_after_mov_;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };

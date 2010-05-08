@@ -50,16 +50,16 @@ DiagramContent::~DiagramContent() {
 	@return tous les conducteurs
 */
 QList<Conductor *> DiagramContent::conductors(int filter) const {
-	QList<Conductor *> result;
+	QSet<Conductor *> result;
 	if (filter & ConductorsToMove)   result += conductorsToMove;
 	if (filter & ConductorsToUpdate) result += conductorsToUpdate;
 	if (filter & OtherConductors)    result += otherConductors;
 	if (filter & SelectedOnly) {
 		foreach(Conductor *conductor, result) {
-			if (!conductor -> isSelected()) result.removeOne(conductor);
+			if (!conductor -> isSelected()) result.remove(conductor);
 		}
 	}
-	return(result);
+	return(result.toList());
 }
 
 /**

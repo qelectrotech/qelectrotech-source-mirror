@@ -17,6 +17,7 @@
 */
 #include "conductortextitem.h"
 #include "conductor.h"
+#include "diagramcommands.h"
 
 /**
 	Constructeur
@@ -25,11 +26,11 @@
 */
 ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *parent_diagram) :
 	DiagramTextItem(parent_conductor, parent_diagram),
-	parent_conductor_(parent_conductor)
+	parent_conductor_(parent_conductor),
+	moved_by_user_(false)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// on desactive Movable pour les textes des conducteurs
-	setFlag(QGraphicsItem::ItemIsMovable, false);
+	// cela nous convient, on ne touche pas a ces flags
 }
 
 /**
@@ -40,11 +41,11 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *paren
 */
 ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_conductor, Diagram *parent_diagram) :
 	DiagramTextItem(text, parent_conductor, parent_diagram),
-	parent_conductor_(parent_conductor)
+	parent_conductor_(parent_conductor),
+	moved_by_user_(false)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
-	// on desactive Movable pour les textes des conducteurs
-	setFlag(QGraphicsItem::ItemIsMovable, false);
+	// cela nous convient, on ne touche pas a ces flags
 }
 
 /**
@@ -68,8 +69,16 @@ Conductor *ConductorTextItem::parentConductor() const {
 	@param e L'element XML representant le champ de texte
 */
 void ConductorTextItem::fromXml(const QDomElement &e) {
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setPlainText(e.attribute("text"));
+	
+	qreal user_pos_x, user_pos_y;
+	if (
+		QET::attributeIsAReal(e, "userx", &user_pos_x) &&
+		QET::attributeIsAReal(e, "usery", &user_pos_y)
+	) {
+		setPos(user_pos_x, user_pos_y);
+	}
+	
 	setRotationAngle(e.attribute("rotation").toDouble());
 }
 
@@ -79,11 +88,95 @@ void ConductorTextItem::fromXml(const QDomElement &e) {
 */
 QDomElement ConductorTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
-	result.setAttribute("x", QString("%1").arg(pos().x()));
-	result.setAttribute("y", QString("%1").arg(pos().y()));
+	result.setAttribute("userx", QString("%1").arg(pos().x()));
+	result.setAttribute("usery", QString("%1").arg(pos().y()));
 	result.setAttribute("text", toPlainText());
 	if (rotationAngle()) {
 		result.setAttribute("rotation", QString("%1").arg(rotationAngle()));
 	}
 	return(result);
+}
+
+/**
+	@return true si ce champ de texte a ete explictement deplace par
+	l'utilisateur, false sinon
+*/
+bool ConductorTextItem::wasMovedByUser() const {
+	return(moved_by_user_);
+}
+
+/**
+	@param moved_by_user true pour que la position du texte soit consideree
+	comme ayant ete definie par l'utilisateur (et donc soit sauvegardee), false
+	pour remettre le texte a sa position originelle
+*/
+void ConductorTextItem::forceMovedByUser(bool moved_by_user) {
+	if (moved_by_user == moved_by_user_) return;
+	
+	moved_by_user_ = moved_by_user;
+	if (!moved_by_user && parent_conductor_) {
+		parent_conductor_ -> adjustTextItemPosition();
+	}
+	
+}
+
+/**
+	Gere les clics de souris lies au champ de texte
+	@param e Objet decrivant l'evenement souris
+*/
+void ConductorTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
+		before_mov_pos_ = pos();
+	}
+	DiagramTextItem::mousePressEvent(e);
+}
+
+/**
+	Gere les mouvements de souris lies au champ de texte
+	@param e Objet decrivant l'evenement souris
+*/
+void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
+	if (textInteractionFlags() & Qt::TextEditable) {
+		QGraphicsTextItem::mouseMoveEvent(e);
+	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
+		QPointF old_pos = pos();
+		QPointF intended_pos = mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton));
+		
+		// si ce texte est attache a un conducteur, alors ses mouvements seront
+		// limites a une certaine distance du trace de ce conducteur
+		if (parent_conductor_) {
+			if (parent_conductor_ -> isNearConductor(intended_pos)) {
+				setPos(intended_pos);
+			}
+		}
+		
+	} else e -> ignore();
+}
+
+/**
+	Gere le relachement de souris
+	Cette methode cree un objet d'annulation pour le deplacement
+	@param e Objet decrivant l'evenement souris
+*/
+void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
+	if (flags() & QGraphicsItem::ItemIsMovable) {
+		if (Diagram *diagram_ptr = diagram()) {
+			// on cree un objet d'annulation correspondant au deplacement qui s'acheve
+			QPointF applied_movement = pos() - before_mov_pos_;
+			
+			if (!applied_movement.isNull()) {
+				// on cree un objet d'annulation seulement pour ce champ de texte
+				MoveConductorsTextsCommand *undo_object = new MoveConductorsTextsCommand(diagram_ptr);
+				undo_object -> addTextMovement(this, before_mov_pos_, pos(), moved_by_user_);
+				
+				// on active le flag indiquant que ce champ de texte a ete explicitement repositionne par l'utilisateur
+				moved_by_user_ = true;
+				
+				diagram_ptr -> undoStack().push(undo_object);
+			}
+		}
+	}
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		QGraphicsTextItem::mouseReleaseEvent(e);
+	}
 }

@@ -104,6 +104,8 @@ namespace QET {
 	bool surLeMemeAxe(QET::Orientation, QET::Orientation);
 	bool estHorizontale(QET::Orientation);
 	bool estVerticale(QET::Orientation);
+	bool lineContainsPoint(const QLineF &, const QPointF &);
+	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = 0);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
 	bool attributeIsAReal(const QDomElement &, QString , qreal * = NULL);
 	QString ElementsAndConductorsSentence(int, int, int = 0);

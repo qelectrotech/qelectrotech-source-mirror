@@ -18,6 +18,7 @@
 #include "diagramcommands.h"
 #include "element.h"
 #include "conductor.h"
+#include "conductortextitem.h"
 #include "diagram.h"
 #include "elementtextitem.h"
 #include "independenttextitem.h"
@@ -357,10 +358,35 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 		conductor -> updatePath();
 	}
 	
+	// repositionne les textes des conducteurs mis a jour
+	foreach(ConductorTextItem *text_item, moved_conductor_texts_.keys()) {
+		// determine s'il s'agit d'un undo ou d'un redo
+		qreal coef = actual_movement.x() / movement.x();
+		// -1 : undo, 1 : redo
+		QPointF desired_pos = coef > 0 ? moved_conductor_texts_[text_item].second : moved_conductor_texts_[text_item].first;
+		text_item -> setPos(desired_pos);
+	}
+	
 	// deplace les textes
 	foreach(DiagramTextItem *text, content_to_move.textFields) {
 		text -> setPos(text -> pos() + actual_movement);
 	}
+}
+
+/**
+	Ajoute un champ de texte de conducteur a deplacer
+	@param text_item Champ de texte a deplacer
+	@param old_pos Position du champ de texte avant le deplacement
+	@param new_pos Position du champ de texte apres le deplacement
+*/
+void MoveElementsCommand::addConductorTextItemMovement(ConductorTextItem *text_item, const QPointF &old_pos, const QPointF &new_pos) {
+	if (moved_conductor_texts_.contains(text_item)) return;
+	if (!text_item -> wasMovedByUser()) return;
+	if (new_pos == old_pos) return;
+	moved_conductor_texts_.insert(
+		text_item,
+		qMakePair(old_pos, new_pos)
+	);
 }
 
 /**
@@ -419,6 +445,89 @@ void MoveElementsTextsCommand::move(const QPointF &actual_movement) {
 		QPointF applied_movement = text -> mapMovementToParent(text -> mapMovementFromScene(actual_movement));
 		text -> setPos(text -> pos() + applied_movement);
 	}
+}
+
+/**
+	Constructeur
+	@param diagram Schema sur lequel on deplace des champs de texte
+	@param texts Textes deplaces : chaque ConductorTextItem est associe a un
+	couple de position : avant et apres le deplacement
+	@param m translation subie par les elements
+	@param parent QUndoCommand parent
+*/
+MoveConductorsTextsCommand::MoveConductorsTextsCommand(
+	Diagram *diagram,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	diagram(diagram),
+	first_redo(true)
+{
+}
+
+/// Destructeur
+MoveConductorsTextsCommand::~MoveConductorsTextsCommand() {
+}
+
+/// annule le deplacement
+void MoveConductorsTextsCommand::undo() {
+	foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
+		QPointF movement = texts_to_move_[cti].first;
+		bool was_already_moved = texts_to_move_[cti].second;
+		
+		cti -> forceMovedByUser(was_already_moved);
+		if (was_already_moved) {
+			cti -> setPos(cti -> pos() - movement);
+		}
+	}
+}
+
+/// refait le deplacement
+void MoveConductorsTextsCommand::redo() {
+	if (first_redo) {
+		first_redo = false;
+	} else {
+		foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
+			QPointF movement = texts_to_move_[cti].first;
+			
+			cti -> forceMovedByUser(true);
+			cti -> setPos(cti -> pos() + movement);
+		}
+	}
+}
+
+/**
+	Ajout un mouvement de champ de texte a cet objet
+	@param text_item Champ de texte deplace ; si celui-ci est deja connu de l'objet d'annulation, il sera ignore
+	@param old_pos Position du champ de texte avant le mouvement
+	@param new_pos Position du champ de texte apres le mouvement
+	@param alread_moved true si le champ de texte etait deja a une position personnalisee par l'utilisateur, false sinon
+*/
+void MoveConductorsTextsCommand::addTextMovement(ConductorTextItem *text_item, const QPointF &old_pos, const QPointF &new_pos, bool already_moved) {
+	// si le champ de texte est deja connu de l'objet d'annulation, il sera ignore
+	if (texts_to_move_.contains(text_item)) return;
+	
+	// on memorise le champ de texte, en l'associant au mouvement effectue et a son etat avant le deplacement
+	texts_to_move_.insert(text_item, qMakePair(new_pos - old_pos, already_moved));
+	
+	// met a jour la description de l'objet d'annulation
+	regenerateTextLabel();
+}
+
+/**
+	Genere la description de l'objet d'annulation
+*/
+void MoveConductorsTextsCommand::regenerateTextLabel() {
+	QString moved_content_sentence = QET::ElementsAndConductorsSentence(0, 0, texts_to_move_.count());
+	
+	setText(
+		QString(
+			QObject::tr(
+				"d\351placer %1",
+				"undo caption - %1 is a sentence listing the moved content"
+			).arg(moved_content_sentence)
+		)
+	);
 }
 
 /**
@@ -621,12 +730,28 @@ ChangeConductorCommand::~ChangeConductorCommand() {
 /// Annule la modification du conducteur
 void ChangeConductorCommand::undo() {
 	conductor -> setProfile(old_profile, path_type);
+	conductor -> textItem() -> setPos(text_pos_before_mov_);
 }
 
 /// Refait la modification du conducteur
 void ChangeConductorCommand::redo() {
-	if (first_redo) first_redo = false;
-	else conductor -> setProfile(new_profile, path_type);
+	if (first_redo) {
+		first_redo = false;
+	} else {
+		conductor -> setProfile(new_profile, path_type);
+		conductor -> textItem() -> setPos(text_pos_after_mov_);
+	}
+}
+
+/**
+	Integre dans cet objet d'annulation le repositionnement du champ de texte
+	du conducteur
+	@param pos_before Position du texte avant la modification du conducteur
+	@param pos_after  Position du texte apres la modification du conducteur
+*/
+void ChangeConductorCommand::setConductorTextItemMove(const QPointF &pos_before, const QPointF &pos_after) {
+	text_pos_before_mov_ = pos_before;
+	text_pos_after_mov_  = pos_after;
 }
 
 /**

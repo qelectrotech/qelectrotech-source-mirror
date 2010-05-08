@@ -47,9 +47,18 @@ class ConductorTextItem : public DiagramTextItem {
 	// methodes
 	public:
 	virtual int type() const { return Type; }
+	virtual bool wasMovedByUser() const;
+	virtual void forceMovedByUser(bool);
+	
+	protected:
+	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
+	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
+	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
 	// attributs
 	private:
 	Conductor *parent_conductor_;
+	bool moved_by_user_;
+	QPointF before_mov_pos_;
 };
 #endif

@@ -24,6 +24,8 @@
 #include "diagramcontent.h"
 #include "diagramposition.h"
 #include "elementtextitem.h"
+#include "elementsmover.h"
+#include "elementtextsmover.h"
 #include "exportdialog.h"
 #include "ghostelement.h"
 #include "independenttextitem.h"
@@ -41,7 +43,6 @@ Diagram::Diagram(QObject *parent) :
 	QGraphicsScene(parent),
 	draw_grid(true),
 	use_border(true),
-	moved_elements_fetched(false),
 	draw_terminals(true),
 	draw_colored_conductors_(true),
 	project_(0),
@@ -58,6 +59,10 @@ Diagram::Diagram(QObject *parent) :
 	t.setStyle(Qt::DashLine);
 	conductor_setter -> setPen(t);
 	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
+	
+	// initialise les objets gerant les deplacements
+	elements_mover_ = new ElementsMover();           // deplacements d'elements/conducteurs/textes
+	element_texts_mover_ = new ElementTextsMover();  // deplacements d'ElementTextItem
 }
 
 /**
@@ -68,6 +73,10 @@ Diagram::~Diagram() {
 	delete undo_stack;
 	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
 	delete qgi_manager;
+	
+	// suppression des objets gerant les deplacements
+	delete elements_mover_;
+	delete element_texts_mover_;
 	
 	// recense les items supprimables
 	QList<QGraphicsItem *> deletable_items;
@@ -140,7 +149,8 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 			case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
 		}
 		if (!movement.isNull() && !focusItem()) {
-			moveElements(movement);
+			beginMoveElements();
+			continueMoveElements(movement);
 		}
 	}
 	QGraphicsScene::keyPressEvent(e);
@@ -154,14 +164,11 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 	if (!isReadOnly()) {
 		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
 		if (
-			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||\
-			 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
-			!current_movement.isNull()  && !e -> isAutoRepeat()
+			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||
+			 e -> key() == Qt::Key_Up   || e -> key() == Qt::Key_Down)  &&
+			!e -> isAutoRepeat()
 		) {
-			// cree un objet d'annulation pour le mouvement qui vient de se finir
-			undoStack().push(new MoveElementsCommand(this, selectedContent(), current_movement));
-			invalidateMovedElements();
-			current_movement = QPointF();
+			endMoveElements();
 		}
 	}
 	QGraphicsScene::keyReleaseEvent(e);
@@ -561,9 +568,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// remplissage des listes facultatives
 	if (content_ptr) {
-		content_ptr -> elements         = added_elements;
-		content_ptr -> conductorsToMove = added_conductors;
-		content_ptr -> textFields       = added_texts;
+		content_ptr -> elements         = added_elements.toSet();
+		content_ptr -> conductorsToMove = added_conductors.toSet();
+		content_ptr -> textFields       = added_texts.toSet();
 	}
 	
 	return(true);
@@ -804,110 +811,59 @@ QList<CustomElement *> Diagram::customElements() const {
 }
 
 /**
-	Oublie la liste des elements et conducteurs en mouvement
+	Initialise un deplacement d'elements, conducteurs et champs de texte sur le
+	schema.
+	@param driver_item Item deplace par la souris et ne necessitant donc pas
+	d'etre deplace lors des appels a continueMovement.
+	@see ElementsMover
 */
-void Diagram::invalidateMovedElements() {
-	if (!moved_elements_fetched) return;
-	moved_elements_fetched = false;
-	elements_to_move.clear();
-	conductors_to_move.clear();
-	conductors_to_update.clear();
-	texts_to_move.clear();
-	elements_texts_to_move.clear();
+int Diagram::beginMoveElements(QGraphicsItem *driver_item) {
+	return(elements_mover_ -> beginMovement(this, driver_item));
 }
 
 /**
-	Reconstruit la liste des elements et conducteurs en mouvement
+	Prend en compte un mouvement composant un deplacement d'elements,
+	conducteurs et champs de texte
+	@param movement mouvement a ajouter au deplacement en cours
+	@see ElementsMover
 */
-void Diagram::fetchMovedElements() {
-	// recupere les elements deplaces
-	foreach (QGraphicsItem *item, selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
-			elements_to_move << elmt;
-		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
-			texts_to_move << iti;
-		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
-			elements_texts_to_move << eti;
-		}
-	}
-	
-	// pour chaque element deplace, determine les conducteurs qui seront modifies
-	foreach(Element *elmt, elements_to_move) {
-		foreach(Terminal *terminal, elmt -> terminals()) {
-			foreach(Conductor *conductor, terminal -> conductors()) {
-				Terminal *other_terminal;
-				if (conductor -> terminal1 == terminal) {
-					other_terminal = conductor -> terminal2;
-				} else {
-					other_terminal = conductor -> terminal1;
-				}
-				// si les deux elements du conducteur sont deplaces
-				if (elements_to_move.contains(other_terminal -> parentElement())) {
-					conductors_to_move << conductor;
-				} else {
-					conductors_to_update << conductor;
-				}
-			}
-		}
-	}
-	
-	moved_elements_fetched = true;
+void Diagram::continueMoveElements(const QPointF &movement) {
+	elements_mover_ -> continueMovement(movement);
 }
 
 /**
-	Deplace les elements, conducteurs et textes independants selectionnes en
-	gerant au mieux les conducteurs (seuls les conducteurs dont un seul des
-	elements est deplace sont recalcules, les autres sont deplaces).
-	@param diff Translation a effectuer
-	@param dontmove QGraphicsItem (optionnel) a ne pas deplacer ; note : ce
-	parametre ne concerne que les elements et les champs de texte.
+	Finalise un deplacement d'elements, conducteurs et champs de texte
+	@see ElementsMover
 */
-void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
-	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
-	if (diff.isNull()) return;
-	current_movement += diff;
-	
-	// deplace les elements selectionnes
-	foreach(Element *element, elementsToMove()) {
-		if (dontmove && element == dontmove) continue;
-		element -> setPos(element -> pos() + diff);
-	}
-	
-	// deplace certains conducteurs
-	foreach(Conductor *conductor, conductorsToMove()) {
-		conductor -> setPos(conductor -> pos() + diff);
-	}
-	
-	// recalcule les autres conducteurs
-	foreach(Conductor *conductor, conductorsToUpdate()) {
-		conductor -> updatePath();
-	}
-	
-	// deplace les champs de texte
-	foreach(DiagramTextItem *dti, independentTextsToMove()) {
-		if (dontmove && dti == dontmove) continue;
-		dti -> setPos(dti -> pos() + diff);
-	}
+void Diagram::endMoveElements() {
+	elements_mover_ -> endMovement();
 }
 
 /**
-	Deplace les champs de textes selectionnes ET rattaches a un element
-	@param diff Translation a effectuer, exprimee dans les coordonnees de la
-	scene
-	@param dontmove ElementTextItem (optionnel) a ne pas deplacer
+	Initialise un deplacement d'ElementTextItems
+	@param driver_item Item deplace par la souris et ne necessitant donc pas
+	d'etre deplace lors des appels a continueMovement.
+	@see ElementTextsMover
 */
-void Diagram::moveElementsTexts(const QPointF &diff, ElementTextItem *dontmove) {
-	// inutile de deplacer les autres textes s'il n'y a pas eu de mouvement concret
-	if (diff.isNull()) return;
-	current_movement += diff;
-	
-	// deplace les champs de texte rattaches a un element
-	foreach(ElementTextItem *eti, elementTextsToMove()) {
-		if (dontmove && eti == dontmove) continue;
-		QPointF applied_movement = eti -> mapMovementToParent(eti-> mapMovementFromScene(diff));
-		eti -> setPos(eti -> pos() + applied_movement);
-	}
-	
+int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
+	return(element_texts_mover_ -> beginMovement(this, driver_item));
+}
+
+/**
+	Prend en compte un mouvement composant un deplacement d'ElementTextItems
+	@param movement mouvement a ajouter au deplacement en cours
+	@see ElementTextsMover
+*/
+void Diagram::continueMoveElementTexts(const QPointF &movement) {
+	element_texts_mover_ -> continueMovement(movement);
+}
+
+/**
+	Finalise un deplacement d'ElementTextItems
+	@see ElementTextsMover
+*/
+void Diagram::endMoveElementTexts() {
+	element_texts_mover_ -> endMovement();
 }
 
 /**
@@ -1084,18 +1040,17 @@ DiagramContent Diagram::content() const {
 	@return le contenu selectionne du schema.
 */
 DiagramContent Diagram::selectedContent() {
-	invalidateMovedElements();
 	DiagramContent dc;
-	dc.elements           = elementsToMove().toList();
-	dc.textFields         = independentTextsToMove().toList();
-	dc.conductorsToMove   = conductorsToMove().toList();
-	dc.conductorsToUpdate = conductorsToUpdate().toList();
 	
-	// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
-	foreach(QGraphicsItem *qgi, items()) {
-		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+	// recupere les elements deplaces
+	foreach (QGraphicsItem *item, selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			dc.elements << elmt;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			dc.textFields << iti;
+		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item)) {
+			// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
 			if (
-				c -> isSelected() &&\
 				!c -> terminal1 -> parentItem() -> isSelected() &&\
 				!c -> terminal2 -> parentItem() -> isSelected()
 			) {
@@ -1103,7 +1058,27 @@ DiagramContent Diagram::selectedContent() {
 			}
 		}
 	}
-	invalidateMovedElements();
+	
+	// pour chaque element deplace, determine les conducteurs qui seront modifies
+	foreach(Element *elmt, dc.elements) {
+		foreach(Terminal *terminal, elmt -> terminals()) {
+			foreach(Conductor *conductor, terminal -> conductors()) {
+				Terminal *other_terminal;
+				if (conductor -> terminal1 == terminal) {
+					other_terminal = conductor -> terminal2;
+				} else {
+					other_terminal = conductor -> terminal1;
+				}
+				// si les deux elements du conducteur sont deplaces
+				if (dc.elements.contains(other_terminal -> parentElement())) {
+					dc.conductorsToMove << conductor;
+				} else {
+					dc.conductorsToUpdate << conductor;
+				}
+			}
+		}
+	}
+	
 	return(dc);
 }
 

@@ -198,6 +198,9 @@ void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *o
 void DiagramTextItem::focusInEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusInEvent(e);
 	
+	// empeche le deplacement du texte pendant son edition
+	setFlag(QGraphicsItem::ItemIsMovable, false);
+	
 	// memorise le texte avant que l'utilisateur n'y touche
 	previous_text_ = toPlainText();
 	// cela permettra de determiner si l'utilisateur a modifie le texte a la fin de l'edition
@@ -223,6 +226,9 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	
 	// hack a la con pour etre re-entrant
 	setTextInteractionFlags(Qt::NoTextInteraction);
+	
+	// autorise de nouveau le deplacement du texte
+	setFlag(QGraphicsItem::ItemIsMovable, true);
 	QTimer::singleShot(0, this, SIGNAL(lostFocus()));
 }
 
@@ -239,55 +245,6 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 		setFocus(Qt::MouseFocusReason);
 	} else {
 		QGraphicsTextItem::mouseDoubleClickEvent(event);
-	}
-}
-
-/**
-	Gere le clic sur le champ de texte
-*/
-void DiagramTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if (e -> modifiers() & Qt::ControlModifier) {
-		setSelected(!isSelected());
-	}
-	QGraphicsTextItem::mousePressEvent(e);
-}
-
-/**
-	Gere les mouvements de souris lies au champ de texte
-*/
-void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (textInteractionFlags() & Qt::TextEditable) {
-		QGraphicsTextItem::mouseMoveEvent(e);
-	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
-		QPointF oldPos = pos();
-		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		if (Diagram *diagram_ptr = diagram()) {
-			diagram_ptr -> moveElements(pos() - oldPos, this);
-		}
-	} else e -> ignore();
-}
-
-/**
-	Gere le relachement de souris
-	Cette methode a ete reimplementee pour tenir a jour la liste des elements
-	et conducteurs a deplacer au niveau du schema.
-*/
-void DiagramTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (Diagram *diagram_ptr = diagram()) {
-		if ((flags() & QGraphicsItem::ItemIsMovable) && (!diagram_ptr -> current_movement.isNull())) {
-			diagram_ptr -> undoStack().push(
-				new MoveElementsCommand(
-					diagram_ptr,
-					diagram_ptr -> selectedContent(),
-					diagram_ptr -> current_movement
-				)
-			);
-			diagram_ptr -> current_movement = QPointF();
-		}
-		diagram_ptr -> invalidateMovedElements();
-	}
-	if (!(e -> modifiers() & Qt::ControlModifier)) {
-		QGraphicsTextItem::mouseReleaseEvent(e);
 	}
 }
 

@@ -30,7 +30,9 @@ class DiagramPosition;
 class DiagramTextItem;
 class Element;
 class ElementsLocation;
+class ElementsMover;
 class ElementTextItem;
+class ElementTextsMover;
 class IndependentTextItem;
 class QETProject;
 class Terminal;
@@ -63,8 +65,6 @@ class Diagram : public QGraphicsScene {
 	ConductorProperties defaultConductorProperties;
 	/// Dimensions et cartouches du schema
 	BorderInset border_and_inset;
-	/// Mouvement en cours lors d'un deplacement d'elements et conducteurs
-	QPointF current_movement;
 	/// taille de la grille en abscisse
 	static const int xGrid;
 	/// taille de la grille en ordonnee
@@ -74,14 +74,10 @@ class Diagram : public QGraphicsScene {
 	
 	private:
 	QGraphicsLineItem *conductor_setter;
+	ElementsMover *elements_mover_;
+	ElementTextsMover *element_texts_mover_;
 	bool draw_grid;
 	bool use_border;
-	bool moved_elements_fetched;
-	QSet<Element *> elements_to_move;
-	QSet<Conductor *> conductors_to_move;
-	QSet<Conductor *> conductors_to_update;
-	QSet<IndependentTextItem *> texts_to_move;
-	QSet<ElementTextItem *> elements_texts_to_move;
 	QGIManager *qgi_manager;
 	QUndoStack *undo_stack;
 	bool draw_terminals;
@@ -154,20 +150,17 @@ class Diagram : public QGraphicsScene {
 	bool isEmpty() const;
 	
 	QList<CustomElement *> customElements() const;
-	void invalidateMovedElements();
-	void fetchMovedElements();
-	const QSet<Element *> &elementsToMove();
-	const QSet<Conductor *> &conductorsToMove();
-	const QSet<Conductor *> &conductorsToUpdate();
-	const QSet<IndependentTextItem *> &independentTextsToMove();
-	const QSet<ElementTextItem *> &elementTextsToMove();
 	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();
 	bool canRotateSelection() const;
-	void moveElements(const QPointF &, QGraphicsItem * = 0);
-	void moveElementsTexts(const QPointF &, ElementTextItem * = 0);
+	int  beginMoveElements(QGraphicsItem * = 0);
+	void continueMoveElements(const QPointF &);
+	void endMoveElements();
+	int  beginMoveElementTexts(QGraphicsItem * = 0);
+	void continueMoveElementTexts(const QPointF &);
+	void endMoveElementTexts();
 	bool usesElement(const ElementsLocation &);
 	
 	QUndoStack &undoStack();
@@ -270,36 +263,6 @@ inline Diagram::BorderOptions Diagram::borderOptions() {
 	if (border_and_inset.insetIsDisplayed()) retour = (BorderOptions)(retour|Inset);
 	if (border_and_inset.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
 	return(retour);
-}
-
-/// @return la liste des elements a deplacer
-inline const QSet<Element *> &Diagram::elementsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(elements_to_move);
-}
-
-/// @return la liste des conducteurs a deplacer
-inline const QSet<Conductor *> &Diagram::conductorsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(conductors_to_move);
-}
-
-/// @return la liste des conducteurs a modifier (typiquement les conducteurs dont seul un element est deplace)
-inline const QSet<Conductor *> &Diagram::conductorsToUpdate() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(conductors_to_update);
-}
-
-/// @return la liste des textes a deplacer
-inline const QSet<IndependentTextItem *> &Diagram::independentTextsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(texts_to_move);
-}
-
-/// @return la liste des textes rattaches a un element qui sont a deplacer
-inline const QSet<ElementTextItem *> &Diagram::elementTextsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(elements_texts_to_move);
 }
 
 /// @return la pile d'annulations de ce schema

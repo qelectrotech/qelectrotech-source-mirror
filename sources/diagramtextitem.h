@@ -62,9 +62,6 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	virtual void applyRotation(const qreal &);
 	
 	// signaux

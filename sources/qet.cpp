@@ -105,6 +105,53 @@ QET::Orientation QET::previousOrientation(QET::Orientation o) {
 }
 
 /**
+	@param line Un segment de droite
+	@param point Un point
+	@return true si le point appartient au segment de droite, false sinon
+*/
+bool QET::lineContainsPoint(const QLineF &line, const QPointF &point) {
+	QLineF point_line(line.p1(), point);
+	if (point_line.unitVector() != line.unitVector()) return(false);
+	return(point_line.length() <= line.length());
+}
+
+/**
+	@param point Un point donne
+	@param line Un segment de droite donnee
+	@param intersection si ce pointeur est different de 0, le QPointF ainsi
+	designe contiendra les coordonnees du projete orthogonal, meme si celui-ci
+	n'appartient pas au segment de droite
+	@return true si le projete orthogonal du point sur la droite appartient au
+	segment de droite.
+*/
+bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF *intersection) {
+	// recupere le vecteur normal de `line'
+	QLineF line_normal_vector(line.normalVector());
+	QPointF normal_vector(line_normal_vector.dx(), line_normal_vector.dy());
+	
+	// cree une droite perpendiculaire a `line' passant par `point'
+	QLineF perpendicular_line(point, point + normal_vector);
+	
+	// determine le point d'intersection des deux droites = le projete orthogonal
+	QPointF intersection_point;
+	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point);
+	
+	// ne devrait pas arriver (mais bon...)
+	if (it == QLineF::NoIntersection) return(false);
+	
+	// fournit le point d'intersection a l'appelant si necessaire
+	if (intersection) {
+		*intersection = intersection_point;
+	}
+	
+	// determine si le point d'intersection appartient au segment de droite
+	if (QET::lineContainsPoint(line, intersection_point)) {
+		return(true);
+	}
+	return(false);
+}
+
+/**
 	Permet de savoir si l'attribut nom_attribut d'un element XML e est bien un
 	entier. Si oui, sa valeur est copiee dans entier.
 	@param e Element XML

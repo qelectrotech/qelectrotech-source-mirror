@@ -30,7 +30,8 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	QObject(),
 	QGraphicsItem(parent, scene),
 	internal_connections(false),
-	must_highlight_(false)
+	must_highlight_(false),
+	first_move_(true)
 {
 	setZValue(10);
 }
@@ -315,9 +316,11 @@ void Element::setPos(qreal x, qreal y) {
 }
 
 /**
-	Gere l'enfoncement d'un bouton de la souris
+	Gere le clic sur l'element
+	@param e Objet decrivant l'evenement souris
 */
 void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	first_move_ = true;
 	if (e -> modifiers() & Qt::ControlModifier) {
 		setSelected(!isSelected());
 	}
@@ -330,12 +333,33 @@ void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (isSelected() && e -> buttons() & Qt::LeftButton) {
-		QPointF oldPos = pos();
+		// l'element est en train d'etre deplace
+		Diagram *diagram_ptr = diagram();
+		if (diagram_ptr) {
+			if (first_move_) {
+				// il s'agit du premier mouvement du deplacement, on le signale
+				// au schema parent
+				diagram_ptr -> beginMoveElements(this);
+			}
+		}
+		
+		// on applique le mouvement impose par la souris
+		QPointF old_pos = pos();
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		if (Diagram *diagram_ptr = diagram()) {
-			diagram_ptr -> moveElements(pos() - oldPos, this);
+		
+		// on calcule le mouvement reellement applique par setPos()
+		QPointF effective_movement = pos() - old_pos;
+		
+		if (diagram_ptr) {
+			// on signale le mouvement ainsi applique au schema parent, qui
+			// l'appliquera aux autres items selectionnes selon son bon vouloir
+			diagram_ptr -> continueMoveElements(effective_movement);
 		}
 	} else e -> ignore();
+	
+	if (first_move_) {
+		first_move_ = false;
+	}
 }
 
 /**
@@ -344,20 +368,10 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	et conducteurs a deplacer au niveau du schema.
 */
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	Diagram *diagram_ptr = diagram();
-	if (diagram_ptr) {
-		if (!diagram_ptr -> current_movement.isNull()) {
-			diagram_ptr -> undoStack().push(
-				new MoveElementsCommand(
-					diagram_ptr,
-					diagram_ptr -> selectedContent(),
-					diagram_ptr -> current_movement
-				)
-			);
-			diagram_ptr -> current_movement = QPointF();
-		}
-		diagram_ptr -> invalidateMovedElements();
+	if (Diagram *diagram_ptr = diagram()) {
+		diagram_ptr -> endMoveElements();
 	}
+	
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsItem::mouseReleaseEvent(e);
 	}
