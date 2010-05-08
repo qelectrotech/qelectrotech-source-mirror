@@ -58,6 +58,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	QPointF mapMovementFromParent(const QPointF &) const;
 	
 	protected:
+	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);

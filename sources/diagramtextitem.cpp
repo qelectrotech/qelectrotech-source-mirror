@@ -179,6 +179,19 @@ QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
 }
 
 /**
+	Dessine le champ de texte.
+	Cette methode delegue simplement le travail a QGraphicsTextItem::paint apres
+	avoir desactive l'antialiasing.
+	@param painter Le QPainter a utiliser pour dessiner le champ de texte
+	@param option Les options de style pour le champ de texte
+	@param widget Le QWidget sur lequel on dessine 
+*/
+void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+	painter -> setRenderHint(QPainter::Antialiasing, false);
+	QGraphicsTextItem::paint(painter, option, widget);
+}
+
+/**
 	Gere la prise de focus du champ de texte
 	@param e Objet decrivant la prise de focus
 */
