@@ -32,7 +32,8 @@ class CustomElementGraphicPart : public CustomElementPart {
 	/// Qualifie le style de ligne utilise pour dessiner la partie
 	enum LineStyle {
 		NormalStyle, ///< Ligne pleine
-		DashedStyle  ///< Ligne pointillee
+		DashedStyle, ///< Ligne pointillee (tirets)
+		DottedStyle  ///< Ligne pointillee (points)
 	};
 	
 	/// Qualifie l'epaisseur de ligne utilisee pour dessiner la partie

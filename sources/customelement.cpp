@@ -698,7 +698,8 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 	l'element XML e au QPainter qp
 	Les styles possibles sont :
 		- line-style : style du trait
-			- dashed : trait en pointilles
+			- dashed : trait en pointilles (tirets)
+			- dotted : trait en pointilles (points)
 			- normal : trait plein [par defaut]
 		- line-weight : epaiseur du trait
 			- thin : trait fin
@@ -739,6 +740,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			QString style_value = rx.cap(2);
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
+				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "thin") pen.setWidth(0);
