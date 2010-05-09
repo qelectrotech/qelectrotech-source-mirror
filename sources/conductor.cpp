@@ -48,7 +48,8 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	previous_z_value(zValue()),
 	modified_path(false),
 	has_to_save_profile(false),
-	segments_squares_scale_(1.0)
+	segments_squares_scale_(1.0),
+	must_highlight_(Conductor::None)
 {
 	// ajout du conducteur a la liste de conducteurs de chacune des deux bornes
 	bool ajout_p1 = terminal1 -> addConductor(this);
@@ -419,16 +420,13 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	qp -> save();
 	qp -> setRenderHint(QPainter::Antialiasing, false);
 	
-	/*
-	qp -> save();
-	qp -> setPen(Qt::blue);
-	qp -> drawPath(variableShape(60.0).simplified());
-	qp -> restore();
-	*/
-	
 	// determine la couleur du conducteur
 	QColor final_conductor_color(properties_.color);
-	if (isSelected()) {
+	if (must_highlight_ == Normal) {
+		final_conductor_color = QColor::fromRgb(69, 137, 255, 255);
+	} else if (must_highlight_ == Alert) {
+		final_conductor_color =QColor::fromRgb(255, 69, 0, 255);
+	} else if (isSelected()) {
 		final_conductor_color = Qt::red;
 	} else {
 		if (Diagram *parent_diagram = diagram()) {
@@ -1232,6 +1230,21 @@ void Conductor::readProperties() {
 */
 void Conductor::adjustTextItemPosition() {
 	calculateTextItemPosition();
+}
+
+/**
+	@return true si le conducteur est mis en evidence
+*/
+Conductor::Highlight Conductor::highlight() const {
+	return(must_highlight_);
+}
+
+/**
+	@param hl true pour mettre le conducteur en evidence, false sinon
+*/
+void Conductor::setHighlighted(Conductor::Highlight hl) {
+	must_highlight_ = hl;
+	update();
 }
 
 /**

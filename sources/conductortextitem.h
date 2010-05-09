@@ -60,5 +60,6 @@ class ConductorTextItem : public DiagramTextItem {
 	Conductor *parent_conductor_;
 	bool moved_by_user_;
 	QPointF before_mov_pos_;
+	bool first_move_;
 };
 #endif

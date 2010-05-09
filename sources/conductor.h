@@ -44,6 +44,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1001 };
+	enum Highlight { None, Normal, Alert };
 	
 	/// premiere borne a laquelle le fil est rattache
 	Terminal *terminal1;
@@ -87,6 +88,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	ConductorProfilesGroup profiles() const;
 	void readProperties();
 	void adjustTextItemPosition();
+	virtual Highlight highlight() const;
+	virtual void setHighlighted(Highlight);
 	
 	public slots:
 	void displayedTextChanged();
@@ -130,6 +133,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static bool pen_and_brush_initialized;
 	/// facteur de taille du carre de saisie du segment
 	qreal segments_squares_scale_;
+	/// Definit la facon dont le conducteur doit etre mis en evidence
+	Highlight must_highlight_;
 	
 	private:
 	void segmentsToPath();

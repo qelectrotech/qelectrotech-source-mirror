@@ -27,7 +27,8 @@
 ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *parent_diagram) :
 	DiagramTextItem(parent_conductor, parent_diagram),
 	parent_conductor_(parent_conductor),
-	moved_by_user_(false)
+	moved_by_user_(false),
+	first_move_(true)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// cela nous convient, on ne touche pas a ces flags
@@ -42,7 +43,8 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *paren
 ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_conductor, Diagram *parent_diagram) :
 	DiagramTextItem(text, parent_conductor, parent_diagram),
 	parent_conductor_(parent_conductor),
-	moved_by_user_(false)
+	moved_by_user_(false),
+	first_move_(true)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// cela nous convient, on ne touche pas a ces flags
@@ -128,6 +130,7 @@ void ConductorTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 	if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
 		before_mov_pos_ = pos();
 	}
+	first_move_ = true;
 	DiagramTextItem::mousePressEvent(e);
 }
 
@@ -147,10 +150,17 @@ void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		if (parent_conductor_) {
 			if (parent_conductor_ -> isNearConductor(intended_pos)) {
 				setPos(intended_pos);
+				parent_conductor_ -> setHighlighted(Conductor::Normal);
+			} else {
+				parent_conductor_ -> setHighlighted(Conductor::Alert);
 			}
 		}
 		
 	} else e -> ignore();
+	
+	if (first_move_) {
+		first_move_ = false;
+	}
 }
 
 /**
@@ -173,6 +183,10 @@ void ConductorTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				moved_by_user_ = true;
 				
 				diagram_ptr -> undoStack().push(undo_object);
+			}
+			
+			if (parent_conductor_) {
+				parent_conductor_ -> setHighlighted(Conductor::None);
 			}
 		}
 	}
