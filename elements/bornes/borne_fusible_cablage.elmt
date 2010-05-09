@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Borne fusible cablage</name>
         <name lang="pl" >Bezpiecznik topikowy</name>
+        <name lang="cs" >Tavná pojistka elektrického propojení</name>
     </names>
     <description>
         <input x="10" y="24.6667" size="9" rotate="true" text="F_" />

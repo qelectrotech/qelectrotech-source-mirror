@@ -3,6 +3,7 @@
 	<name lang="en" >Line tableau nomenclature</name>
         <name lang="fr" >Ligne de tableau de nomenclature</name>
         <name lang="pl" >Tabela - linie</name>
+        <name lang="cs" >Nomenklatura čára tabulky</name>
     </names>
     <description>
         <input x="107" y="7" size="6" rotate="true" text="" />

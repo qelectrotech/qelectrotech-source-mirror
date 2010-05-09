@@ -3,6 +3,7 @@
         <name lang="en" >jump</name>
         <name lang="fr" >saut</name>
         <name lang="pl" >Skok</name>
+        <name lang="cs" >Skok</name>
     </names>
     <description>
         <circle x="-20" y="20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40" />

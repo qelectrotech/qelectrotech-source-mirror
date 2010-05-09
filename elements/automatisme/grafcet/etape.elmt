@@ -3,6 +3,7 @@
         <name lang="en" >Step</name>
         <name lang="fr" >Etape</name>
         <name lang="pl" >Krok</name>
+        <name lang="cs" >Krok</name>
     </names>
     <description>
         <input x="-30" y="14" size="6" rotate="true" text="" />

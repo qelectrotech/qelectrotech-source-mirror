@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Borne de bornier</name>
         <name lang="pl" >Zacisk</name>
+        <name lang="cs" >Svorka svorkoviště</name>
     </names>
     <description>
         <input x="-14" y="-42" size="6" rotate="true" text="(0000)" />

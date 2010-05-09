@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >continue</name>
         <name lang="pl" >Działanie</name>
+        <name lang="cs" >Čin</name>
     </names>
     <description>
         <input x="25" y="2" size="8" rotate="true" text="action" />
