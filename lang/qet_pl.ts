@@ -326,7 +326,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="59"/>
         <source>Simple</source>
-        <translation>Łatwy</translation>
+        <translation>Prosty</translation>
     </message>
 </context>
 <context>
@@ -763,7 +763,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="922"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Możesz wykorzystać puste pole na informacje o autorze, licencji, i inne przydatne informacje.</translation>
+        <translation>Możesz wykorzystać puste pole na informacje o autorze, licencji i inne przydatne informacje.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="966"/>
@@ -3285,7 +3285,7 @@ Dostupné volby:
         <comment>message box content</comment>
         <translation>
             <numerusform>Sprawdzenie tego elementu wygenerowało ostrzeżenie:</numerusform>
-            <numerusform>Sprawdzenie tego elementu wygenerowało %n ostrzeżeń:</numerusform>
+            <numerusform>Sprawdzenie tego elementu wygenerowało %n ostrzeżenia:</numerusform>
             <numerusform>Sprawdzenie tego elementu wygenerowało %n ostrzeżeń:</numerusform>
         </translation>
     </message>
@@ -4012,7 +4012,7 @@ Dostupné volby:
         <location filename="../sources/qetproject.cpp" line="703"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
         <comment>message box content</comment>
-        <translation>Ten dokument wydaje się być zapisywany w nowszej wersji QElectroTech. Dokument może otworzyć się częściowo lub w całkowicie.</translation>
+        <translation>Ten dokument wydaje się być zapisany w nowszej wersji QElectroTech. Dokument może otworzyć się częściowo lub w całkowicie.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="202"/>
@@ -4066,12 +4066,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qet.cpp" line="235"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>Nie można znaleźć pliku z licencją GNU / GPL - ale znasz ją sercem, prawda?</translation>
+        <translation>Nie można znaleźć pliku z licencją GNU / GPL - na pewno znasz ją sercem, prawda?</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="239"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>Plik tekstowy zawierający licencję GNU / GPL istnieje, ale nie można go otworzyć - ale znasz ją sercem, prawda?</translation>
+        <translation>Plik tekstowy zawierający licencję GNU / GPL istnieje, ale nie można go otworzyć - na pewno znasz ją sercem, prawda?</translation>
     </message>
     <message>
         <location filename="../sources/customelement.cpp" line="118"/>
