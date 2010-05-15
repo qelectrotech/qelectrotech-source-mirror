@@ -2295,7 +2295,7 @@ Options disponibles :
 </source>
         <translation>QElectroTech, aplikacja do projektowania schematów elektrycznych.
 
-Dostupné volby: 
+Dostępne opcje: 
   --help                        Pokaż pomoc
   -v, --version              Pokaż wersję
   --license                    Pokaż licencję
@@ -2553,7 +2553,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="178"/>
         <source>&amp;Nouveau</source>
-        <translation>&amp;Nový</translation>
+        <translation>&amp;Nowy</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
@@ -4313,7 +4313,7 @@ Dostupné volby:
         <translation>
             <numerusform>element</numerusform>
             <numerusform>%n elementy</numerusform>
-            <numerusform>%n elementy</numerusform>
+            <numerusform>%n elementów</numerusform>
         </translation>
     </message>
     <message>
@@ -4326,7 +4326,7 @@ Dostupné volby:
         <location filename="../sources/qet.cpp" line="169"/>
         <source> et </source>
         <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation> a </translation>
+        <translation> i </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="178"/>
@@ -4335,14 +4335,14 @@ Dostupné volby:
         <translation>
             <numerusform>przewód</numerusform>
             <numerusform>%n przewody</numerusform>
-            <numerusform>%n przewody</numerusform>
+            <numerusform>%n przewodów</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="184"/>
         <source> et </source>
         <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation> a </translation>
+        <translation> i </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="193"/>
@@ -4351,7 +4351,7 @@ Dostupné volby:
         <translation>
             <numerusform>pole tekstowe</numerusform>
             <numerusform>%n pola tekstowe</numerusform>
-            <numerusform>%n pola tekstowe</numerusform>
+            <numerusform>%n pól tekstowych</numerusform>
         </translation>
     </message>
     <message>
