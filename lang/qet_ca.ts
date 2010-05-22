@@ -125,7 +125,7 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation>horizontal:</translation>
+        <translation>horitzontal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
@@ -710,22 +710,22 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="304"/>
         <source>ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>línia</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="311"/>
         <source>rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>rectangle</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="318"/>
         <source>ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>el·lipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="325"/>
         <source>arc</source>
-        <translation type="unfinished"></translation>
+        <translation>arc</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="332"/>
@@ -745,12 +745,12 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="353"/>
         <source>champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>camp de text</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="371"/>
         <source>polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>polígon</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
@@ -789,7 +789,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="962"/>
         <source>Éditer les noms</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificar els noms</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="966"/>
@@ -867,7 +867,7 @@
     <message>
         <location filename="../sources/elementscategory.cpp" line="472"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished"></translation>
+        <translation>No és pot moure una col·lecció.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="478"/>
@@ -882,12 +882,12 @@
     <message>
         <location filename="../sources/elementscategory.cpp" line="583"/>
         <source>Impossible de supprimer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de suprimir el element</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="604"/>
         <source>Impossible de supprimer la catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de suprimir la categoria</translation>
     </message>
 </context>
 <context>
@@ -896,7 +896,7 @@
         <location filename="../sources/elementscategorydeleter.cpp" line="59"/>
         <source>Vider la collection ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Buidar la col·lecció?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="60"/>
@@ -909,7 +909,7 @@
         <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
         <source>Supprimer la catégorie ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Suprimir la categoria?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
@@ -929,13 +929,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
         <source>Suppression de la catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Supressió de la categoria</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="105"/>
         <source>La suppression de la catégorie a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No s&apos;han pot suprimir la categoria.</translation>
     </message>
 </context>
 <context>
@@ -962,7 +962,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="64"/>
         <source>Créer une nouvelle catégorie</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Crear una nova categoria</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="69"/>
@@ -974,7 +974,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edició amb nomès permiso de lectura</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
@@ -1027,13 +1027,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="156"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de crear la categoria</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="172"/>
         <source>Impossible d&apos;enregistrer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de desar la categoria</translation>
     </message>
 </context>
 <context>
@@ -1041,7 +1041,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementscollection.cpp" line="118"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot moure una col·lecció</translation>
     </message>
 </context>
 <context>
@@ -1064,7 +1064,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="645"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation type="unfinished"></translation>
+        <translation>%1 [no usat al projecte]</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="677"/>
@@ -1222,7 +1222,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="53"/>
         <source>horizontal :</source>
-        <translation>horizontal:</translation>
+        <translation>horitzontal:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
@@ -1504,7 +1504,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
         <location filename="../sources/hotspoteditor.cpp" line="52"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation> px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="72"/>
@@ -1534,12 +1534,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="90"/>
         <source>Abscisse :</source>
-        <translation type="unfinished"></translation>
+        <translation>Abscissa:</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="92"/>
         <source>Ordonnée :</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordenada:</translation>
     </message>
 </context>
 <context>
@@ -1579,7 +1579,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/insetpropertieswidget.cpp" line="74"/>
         <source>Auteur : </source>
-        <translation type="unfinished"></translation>
+        <translation>Autor:</translation>
     </message>
     <message>
         <location filename="../sources/insetpropertieswidget.cpp" line="76"/>
@@ -1836,7 +1836,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="32"/>
         <source>Langue</source>
-        <translation type="unfinished"></translation>
+        <translation>Llengüa</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="32"/>
@@ -1852,13 +1852,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/nameslistwidget.cpp" line="67"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cal haver-hi un nom com a mínim.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="68"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ha de donar un nom com a mínim.</translation>
     </message>
 </context>
 <context>
@@ -2357,13 +2357,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="52"/>
         <source>QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="58"/>
         <source>QElectroTech</source>
         <comment>status bar message</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="61"/>
@@ -2390,12 +2390,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="179"/>
         <source>&amp;Ouvrir</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrir</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="180"/>
         <source>&amp;Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="181"/>
@@ -4054,7 +4054,7 @@ Options disponibles :
         <location filename="../sources/diagramcommands.cpp" line="104"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>afegir un conductor</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="143"/>
@@ -4078,7 +4078,7 @@ Options disponibles :
         <location filename="../sources/diagramcommands.cpp" line="312"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation type="unfinished"></translation>
+        <translation>moure %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="378"/>
@@ -4471,7 +4471,7 @@ Options disponibles :
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cap</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="51"/>
@@ -4680,7 +4680,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="124"/>
         <source>propriété</source>
-        <translation type="unfinished"></translation>
+        <translation>propietat</translation>
     </message>
 </context>
 </TS>
