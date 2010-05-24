@@ -1474,7 +1474,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Każdy element zawiera w wolnym polu informacje o jego autorach,licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
+        <translation>Każdy element zawiera w wolnym polu informacje o jego autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -1543,7 +1543,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
-        <translation>Element ten musi być wystarczająco duży, aby był czytelny w prezentacji graficznej.</translation>
+        <translation type="unfinished">Element musi być wystarczająco duży, aby był czytelny w prezentacji graficznej.</translation>
     </message>
 </context>
 <context>
@@ -1858,7 +1858,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="67"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation>Nie musi byś nazwy.</translation>
+        <translation type="unfinished">Nie musi być nazwy.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="68"/>
@@ -3977,7 +3977,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="406"/>
         <source>%1 %</source>
-        <translation>%1%</translation>
+        <translation type="unfinished">%1 %</translation>
     </message>
 </context>
 <context>
