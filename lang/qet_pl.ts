@@ -326,7 +326,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="59"/>
         <source>Simple</source>
-        <translation>Łatwy</translation>
+        <translation type="unfinished">Prosty</translation>
     </message>
 </context>
 <context>
@@ -763,7 +763,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="922"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Możesz wykorzystać puste pole na informacje o autorze, licencji, i inne przydatne informacje.</translation>
+        <translation type="unfinished">Możesz wykorzystać puste pole na informacje o autorze, licencji i inne przydatne informacje.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="966"/>
@@ -1474,7 +1474,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Każdy element zawiera w wolnym polu informacje o jego autorach,licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
+        <translation type="unfinished">Każdy element zawiera w wolnym polu informacje o jego autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -1543,7 +1543,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
-        <translation>Element ten musi być wystarczająco duży, aby był czytelny w prezentacji graficznej.</translation>
+        <translation type="unfinished">Element musi być wystarczająco duży, aby był czytelny w prezentacji graficznej.</translation>
     </message>
 </context>
 <context>
@@ -1858,7 +1858,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="67"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation>Nie musi byś nazwy.</translation>
+        <translation type="unfinished">Nie musi być nazwy.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="68"/>
@@ -2293,9 +2293,9 @@ Options disponibles :
   -v, --version                 Afficher la version
   --license                     Afficher la licence
 </source>
-        <translation>QElectroTech, aplikacja do projektowania schematów elektrycznych.
+        <translation type="unfinished">QElectroTech, aplikacja do projektowania schematów elektrycznych.
 
-Dostupné volby: 
+Dostępne opcje: 
   --help                        Pokaż pomoc
   -v, --version              Pokaż wersję
   --license                    Pokaż licencję
@@ -2553,7 +2553,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="178"/>
         <source>&amp;Nouveau</source>
-        <translation>&amp;Nový</translation>
+        <translation type="unfinished">&amp;Nowy</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="537"/>
@@ -3285,7 +3285,7 @@ Dostupné volby:
         <comment>message box content</comment>
         <translation>
             <numerusform>Sprawdzenie tego elementu wygenerowało ostrzeżenie:</numerusform>
-            <numerusform>Sprawdzenie tego elementu wygenerowało %n ostrzeżeń:</numerusform>
+            <numerusform>Sprawdzenie tego elementu wygenerowało %n ostrzeżenia:</numerusform>
             <numerusform>Sprawdzenie tego elementu wygenerowało %n ostrzeżeń:</numerusform>
         </translation>
     </message>
@@ -3605,9 +3605,9 @@ Dostupné volby:
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="661"/>
         <source>%n partie(s) sélectionnée(s).</source>
-        <translation>
+        <translation type="unfinished">
             <numerusform>wybranej części.</numerusform>
-            <numerusform>%n wybranych części.</numerusform>
+            <numerusform>%n wybrane części.</numerusform>
             <numerusform>%n wybranych części.</numerusform>
         </translation>
     </message>
@@ -3977,7 +3977,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="406"/>
         <source>%1 %</source>
-        <translation>%1%</translation>
+        <translation type="unfinished">%1 %</translation>
     </message>
 </context>
 <context>
@@ -4012,7 +4012,7 @@ Dostupné volby:
         <location filename="../sources/qetproject.cpp" line="703"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
         <comment>message box content</comment>
-        <translation>Ten dokument wydaje się być zapisywany w nowszej wersji QElectroTech. Dokument może otworzyć się częściowo lub w całkowicie.</translation>
+        <translation type="unfinished">Ten dokument wydaje się być zapisany w nowszej wersji QElectroTech. Dokument może otworzyć się częściowo lub w całkowicie.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="202"/>
@@ -4066,12 +4066,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qet.cpp" line="235"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>Nie można znaleźć pliku z licencją GNU / GPL - ale znasz ją sercem, prawda?</translation>
+        <translation type="unfinished">Nie można znaleźć pliku z licencją GNU / GPL - na pewno znasz ją sercem, prawda?</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="239"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation>Plik tekstowy zawierający licencję GNU / GPL istnieje, ale nie można go otworzyć - ale znasz ją sercem, prawda?</translation>
+        <translation type="unfinished">Plik tekstowy zawierający licencję GNU / GPL istnieje, ale nie można go otworzyć - na pewno znasz ją sercem, prawda?</translation>
     </message>
     <message>
         <location filename="../sources/customelement.cpp" line="118"/>
@@ -4310,10 +4310,10 @@ Dostupné volby:
         <location filename="../sources/qet.cpp" line="157"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
+        <translation type="unfinished">
             <numerusform>element</numerusform>
             <numerusform>%n elementy</numerusform>
-            <numerusform>%n elementy</numerusform>
+            <numerusform>%n elementów</numerusform>
         </translation>
     </message>
     <message>
@@ -4326,7 +4326,7 @@ Dostupné volby:
         <location filename="../sources/qet.cpp" line="169"/>
         <source> et </source>
         <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
-        <translation> a </translation>
+        <translation type="unfinished"> i </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="178"/>
@@ -4335,23 +4335,23 @@ Dostupné volby:
         <translation>
             <numerusform>przewód</numerusform>
             <numerusform>%n przewody</numerusform>
-            <numerusform>%n przewody</numerusform>
+            <numerusform>%n przewodów</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="184"/>
         <source> et </source>
         <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
-        <translation> a </translation>
+        <translation type="unfinished"> i </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/qet.cpp" line="193"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
-        <translation>
+        <translation type="unfinished">
             <numerusform>pole tekstowe</numerusform>
             <numerusform>%n pola tekstowe</numerusform>
-            <numerusform>%n pola tekstowe</numerusform>
+            <numerusform>%n pól tekstowych</numerusform>
         </translation>
     </message>
     <message>
