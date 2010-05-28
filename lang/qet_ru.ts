@@ -85,27 +85,32 @@
         <translation>Перевод на польский</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="125"/>
+        <source>Traduction en allemand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Paquets Fedora</source>
         <translation>Пакет для Fedora</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Mandriva</source>
         <translation>Пакет для Mandriva</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Paquets Debian</source>
         <translation>Пакет для Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Icônes</source>
         <translation>Значки</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Эта программа лицензирована на условиях GNU/GPL.</translation>
     </message>
@@ -1338,19 +1343,16 @@ Les changements seront définitifs.</source>
         <translation>Предпросмотр</translation>
     </message>
     <message>
+        <location filename="../sources/exportdialog.cpp" line="646"/>
+        <location filename="../sources/exportdialog.cpp" line="651"/>
+        <source>px</source>
+        <translation type="unfinished">пикс</translation>
+    </message>
+    <message>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести уникальное  не пустое имя файла для каждой схемы, которую хотите экспортировать.</translation>
-    </message>
-</context>
-<context>
-    <name>ExportDialog::ExportDiagramLine</name>
-    <message>
-        <location filename="../sources/exportdialog.cpp" line="646"/>
-        <location filename="../sources/exportdialog.cpp" line="651"/>
-        <source>px</source>
-        <translation>пикс</translation>
     </message>
 </context>
 <context>

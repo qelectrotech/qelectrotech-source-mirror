@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Este programa está licenciado nos termos da licença GNU/GPL.</translation>
     </message>
@@ -90,22 +90,27 @@
         <translation>Tradução em Polonês</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="125"/>
+        <source>Traduction en allemand</source>
+        <translation>Tradução em Alemão</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Paquets Fedora</source>
         <translation>Pacotes Fedora</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Mandriva</source>
         <translation>Pacotes Mandriva</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Paquets Debian</source>
         <translation>Pacotes Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Icônes</source>
         <translation>Ícones</translation>
     </message>
@@ -4001,7 +4006,7 @@ Opções disponiveis:
         <translation>Ocurreu um erro durante a cópia da categoria %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="989"/>
+        <location filename="../sources/qetproject.cpp" line="990"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Ocurreu um erro durante a cópia do elemento %1</translation>
     </message>

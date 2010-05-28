@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="156"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Ten program jest na licencji GNU/GPL.</translation>
     </message>
@@ -90,22 +90,27 @@
         <translation>Tłumaczenie na polski</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="125"/>
+        <source>Traduction en allemand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Paquets Fedora</source>
         <translation>Pakiety dla Fedory</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Mandriva</source>
         <translation>Pakiety dla Mandrivy</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Paquets Debian</source>
         <translation>Pakiety dla Debiana</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -3998,7 +4003,7 @@ Dostępne opcje:
         <translation>Wystąpił błąd podczas kopiowania z kategorii %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="989"/>
+        <location filename="../sources/qetproject.cpp" line="990"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Wystąpił błąd podczas kopiowania elementu %1</translation>
     </message>
