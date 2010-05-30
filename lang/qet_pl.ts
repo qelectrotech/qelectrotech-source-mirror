@@ -92,7 +92,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na niemiecki</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
@@ -1548,7 +1548,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
-        <translation type="unfinished">Element musi być wystarczająco duży, aby był czytelny w prezentacji graficznej.</translation>
+        <translation>Element musi być wystarczająco duży, aby był czytelny w prezentacji graficznej.</translation>
     </message>
 </context>
 <context>
@@ -1863,7 +1863,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="67"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Nie musi być nazwy.</translation>
+        <translation>Nie musi być nazwy.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="68"/>
@@ -3982,7 +3982,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="406"/>
         <source>%1 %</source>
-        <translation type="unfinished">%1 %</translation>
+        <translation>%1 %</translation>
     </message>
 </context>
 <context>
