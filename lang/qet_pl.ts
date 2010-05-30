@@ -4017,7 +4017,7 @@ Dostępne opcje:
         <location filename="../sources/qetproject.cpp" line="703"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
         <comment>message box content</comment>
-        <translation>Ten dokument wydaje się być zapisany w nowszej wersji QElectroTech. Dokument może otworzyć się częściowo lub w całkowicie.</translation>
+        <translation>Ten dokument wydaje się być zapisany w nowszej wersji QElectroTech. Dokument może otworzyć się częściowo lub całkowicie.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="202"/>
