@@ -87,7 +87,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Перевод на немецкий</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
@@ -407,138 +407,138 @@
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="63"/>
+        <location filename="../sources/diagramview.cpp" line="65"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
         <translation>Вставить здесь</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="395"/>
+        <location filename="../sources/diagramview.cpp" line="401"/>
         <source>Schéma sans titre</source>
         <translation>Безымянная схема</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="397"/>
+        <location filename="../sources/diagramview.cpp" line="403"/>
         <source>Schéma %1</source>
         <comment>%1 is a diagram title</comment>
         <translation>Схема %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="419"/>
+        <location filename="../sources/diagramview.cpp" line="425"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Свойства схемы</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="703"/>
+        <location filename="../sources/diagramview.cpp" line="742"/>
         <source>Retrouver dans le panel</source>
         <translation>Найти в панели</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="766"/>
+        <location filename="../sources/diagramview.cpp" line="805"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Редактирование своств проводника</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="833"/>
+        <location filename="../sources/diagramview.cpp" line="872"/>
         <source>Éditer les propriétés par défaut des conducteurs</source>
         <comment>window title</comment>
         <translation>Редактирование умалчиваемых своств проводника</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="660"/>
+        <location filename="../sources/diagramview.cpp" line="699"/>
         <source>Propriétés de la sélection</source>
         <translation>Свойства выделения</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="164"/>
+        <location filename="../sources/diagramview.cpp" line="170"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
         <translation>Вырвнять выделенный текст</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="662"/>
+        <location filename="../sources/diagramview.cpp" line="701"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Выделение содержит %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="683"/>
+        <location filename="../sources/diagramview.cpp" line="722"/>
         <source>Élément manquant</source>
         <translation>Отсутствует элемент</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="685"/>
+        <location filename="../sources/diagramview.cpp" line="724"/>
         <source>Élément</source>
         <translation>Элементы</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="690"/>
+        <location filename="../sources/diagramview.cpp" line="729"/>
         <source>Nom : %1
 </source>
         <translation>Имя : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="691"/>
+        <location filename="../sources/diagramview.cpp" line="730"/>
         <source>Position : %1
 </source>
         <translation>Положение : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="692"/>
+        <location filename="../sources/diagramview.cpp" line="731"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Размеры : %1×%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="693"/>
+        <location filename="../sources/diagramview.cpp" line="732"/>
         <source>Bornes : %1
 </source>
         <translation>Выводы : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="694"/>
+        <location filename="../sources/diagramview.cpp" line="733"/>
         <source>Connexions internes : %1
 </source>
         <translation>Внутренние соединения : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="694"/>
+        <location filename="../sources/diagramview.cpp" line="733"/>
         <source>Autorisées</source>
         <translation>Разрешены</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="694"/>
+        <location filename="../sources/diagramview.cpp" line="733"/>
         <source>Interdites</source>
         <translation>Запрещены</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="695"/>
+        <location filename="../sources/diagramview.cpp" line="734"/>
         <source>Champs de texte : %1
 </source>
         <translation>Текстовое поле : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="698"/>
+        <location filename="../sources/diagramview.cpp" line="737"/>
         <source>Emplacement : %1
 </source>
         <translation>Рассположение : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="702"/>
+        <location filename="../sources/diagramview.cpp" line="741"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Свойства выбранного элемента</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="704"/>
+        <location filename="../sources/diagramview.cpp" line="743"/>
         <source>Éditer l&apos;élément</source>
         <translation>Редактировать элемент</translation>
     </message>
@@ -1349,16 +1349,19 @@ Les changements seront définitifs.</source>
         <translation>Предпросмотр</translation>
     </message>
     <message>
-        <location filename="../sources/exportdialog.cpp" line="646"/>
-        <location filename="../sources/exportdialog.cpp" line="651"/>
-        <source>px</source>
-        <translation type="unfinished">пикс</translation>
-    </message>
-    <message>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
         <translation>Вы должны ввести уникальное  не пустое имя файла для каждой схемы, которую хотите экспортировать.</translation>
+    </message>
+</context>
+<context>
+    <name>ExportDialog::ExportDiagramLine</name>
+    <message>
+        <location filename="../sources/exportdialog.cpp" line="646"/>
+        <location filename="../sources/exportdialog.cpp" line="651"/>
+        <source>px</source>
+        <translation>пикс</translation>
     </message>
 </context>
 <context>
@@ -2875,17 +2878,17 @@ Available options:
         <translation>Удалить выделенные элемены из схемы</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1746"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1747"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Невозможно найти этот элемент в панеле, потому что он был изменён из другого окна</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1752"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1753"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Невозможно найти этот элемент в панеле,... перезагрузка панели...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1764"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1765"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Невозможно найти этот элемент в панели</translation>
     </message>
@@ -3161,29 +3164,29 @@ Available options:
         <translation>Файл %1 не является проектом QElectroTech. Он не может быть открыт.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1172"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1173"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Выйти из полно&amp;экранного режима</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1174"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1175"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Отобразить QElectroTech в оконном (обычном) режиме</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1176"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1177"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>Полно&amp;экранный режим</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1178"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1179"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Отобразить QElectroTech в полноэкранном режиме</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1341"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1342"/>
         <source>Active le projet « %1 »</source>
         <translation>Активировать проект « %1 »</translation>
     </message>
@@ -4125,91 +4128,93 @@ Available options:
         <translation>Предупреждение: элементы были сохранены более поздней версии QElectroTech.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="36"/>
+        <location filename="../sources/diagramcommands.cpp" line="42"/>
         <source>ajouter 1 %1</source>
         <comment>undo caption - %1 is an element name</comment>
         <translation>добавлено: 1 %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="69"/>
+        <location filename="../sources/diagramcommands.cpp" line="75"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
         <translation>Добавленно текстовое поле</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="104"/>
+        <location filename="../sources/diagramcommands.cpp" line="110"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
         <translation>Добавлен проводник</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="143"/>
+        <location filename="../sources/diagramcommands.cpp" line="149"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
         <translation>удалёно: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="213"/>
+        <location filename="../sources/diagramcommands.cpp" line="219"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
         <translation>вставлено: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="272"/>
+        <location filename="../sources/diagramcommands.cpp" line="278"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
         <translation>вырезано: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="312"/>
+        <location filename="../sources/diagramcommands.cpp" line="318"/>
+        <location filename="../sources/diagramcommands.cpp" line="415"/>
+        <location filename="../sources/diagramcommands.cpp" line="525"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
         <translation>перемещено: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="378"/>
+        <location filename="../sources/diagramcommands.cpp" line="546"/>
         <source>modifier le texte</source>
         <comment>undo caption</comment>
         <translation>изменён текст</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="418"/>
+        <location filename="../sources/diagramcommands.cpp" line="586"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
         <translation>повёрнуто: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="525"/>
+        <location filename="../sources/diagramcommands.cpp" line="693"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>Поворот %1 на %2°</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="549"/>
+        <location filename="../sources/diagramcommands.cpp" line="717"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>изменён проводник</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="586"/>
+        <location filename="../sources/diagramcommands.cpp" line="770"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Востановленно: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="624"/>
+        <location filename="../sources/diagramcommands.cpp" line="808"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>изменена основная надпись</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="655"/>
+        <location filename="../sources/diagramcommands.cpp" line="839"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>изменён размер схемы</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="682"/>
+        <location filename="../sources/diagramcommands.cpp" line="866"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>изменено свойство проводника</translation>
@@ -4401,7 +4406,7 @@ Available options:
         <translation>Предпросмотр</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="157"/>
+        <location filename="../sources/qet.cpp" line="204"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -4411,19 +4416,19 @@ Available options:
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="163"/>
+        <location filename="../sources/qet.cpp" line="210"/>
         <source>, </source>
         <comment>separator between elements and conductors in a sentence listing the content of a diagram</comment>
         <translation>, </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="169"/>
+        <location filename="../sources/qet.cpp" line="216"/>
         <source> et </source>
         <comment>separator between elements and conductors (or texts) in a sentence listing the content of a diagram</comment>
         <translation> и </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="178"/>
+        <location filename="../sources/qet.cpp" line="225"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -4433,13 +4438,13 @@ Available options:
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="184"/>
+        <location filename="../sources/qet.cpp" line="231"/>
         <source> et </source>
         <comment>separator between conductors and texts in a sentence listing the content of a diagram</comment>
         <translation> и </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="193"/>
+        <location filename="../sources/qet.cpp" line="240"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -4449,12 +4454,12 @@ Available options:
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="235"/>
+        <location filename="../sources/qet.cpp" line="282"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Невозможно найти текстовый файл, содержащий лицензию GNU/GPL - однако, вы знаете ее наизусть, не так ли?</translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="239"/>
+        <location filename="../sources/qet.cpp" line="286"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
         <translation>Текстовый файл, содержащий лицензию GNU/GPL существует, но не может быть открыт - однако, вы знаете ее наизусть, не так ли?</translation>
     </message>
@@ -4558,73 +4563,79 @@ Available options:
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
+        <source>Tiret</source>
+        <comment>element part line style</comment>
+        <translation>Штрих</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Пунктирный</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Тонкий</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="46"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="47"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Нормальный</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Нет</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Чёрный</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Белый</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Antialiasing</source>
         <translation>Сглаживание</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="62"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Trait :</source>
         <translation>Линия :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="65"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Couleur : </source>
         <translation>Цвет : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="72"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Style : </source>
         <translation>Стиль : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="79"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Épaisseur : </source>
         <translation>Вес : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="86"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Remplissage :</source>
         <translation>Заливка :</translation>
     </message>
