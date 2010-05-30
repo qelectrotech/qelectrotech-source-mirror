@@ -3,6 +3,8 @@
 	<name lang="en" >Table Title Nomenclature</name>
         <name lang="fr" >Titre tableau nomenclature</name>
         <name lang="pl" >Tabela - tytuły</name>
+        <name lang="cs" >Nomenklatura název tabulky</name>
+
     </names>
     <description>
         <text x="250" y="-10" size="15" text="NOMENCLATURE" />

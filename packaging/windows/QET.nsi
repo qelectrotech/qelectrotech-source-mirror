@@ -72,6 +72,7 @@
 	!insertmacro MUI_LANGUAGE "Russian"
 	!insertmacro MUI_LANGUAGE "Portuguese"
 	!insertmacro MUI_LANGUAGE "Czech"
+	!insertmacro MUI_LANGUAGE "Polish"
 
 ;--------------------------------
 ;Reserve Files

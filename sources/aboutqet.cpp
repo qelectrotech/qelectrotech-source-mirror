@@ -122,6 +122,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Jos\351 Carlos Martins",     "jose@qelectrotech.org",       tr("Traduction en portugais"));
 	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
 	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@interia.pl",       tr("Traduction en polonais"));
+	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
 	
 	translators -> setAlignment(Qt::AlignCenter);
 	translators -> setOpenExternalLinks(true);
