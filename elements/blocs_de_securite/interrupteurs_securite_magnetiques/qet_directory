@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-	<name lang="en" >Contact safety interlock magnetic</name>
+        <name lang="ru" >Контакты защитной магнитной блокировки</name>
+        <name lang="en" >Contact safety interlock magnetic</name>
         <name lang="fr" >Interrupteurs de sécurité magnétiques</name>
         <name lang="pl" >Kodowane łączniki magnetyczne</name>
         <name lang="cs" >Bezpečnostní magnetické blokování kontaktů</name>
