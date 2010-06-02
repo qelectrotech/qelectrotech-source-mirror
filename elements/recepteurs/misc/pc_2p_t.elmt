@@ -1,5 +1,6 @@
 <definition width="40" version="0.2" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
+	<name lang="en" >PC 2P+T</name>
         <name lang="fr" >PC 2P+T</name>
         <name lang="pl" >Gniazdo wtyczkowe</name>
         <name lang="cs" >Zásuvka PC 2P+T</name>

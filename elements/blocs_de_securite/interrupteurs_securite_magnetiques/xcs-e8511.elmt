@@ -1,5 +1,7 @@
 <definition width="270" version="0.22" hotspot_x="70" hotspot_y="40" height="100" type="element" ic="true" orientation="dyyy" >
     <names>
+	<name lang="en" >XPS-E8511</name>
+	<name lang="fr" >XPS-E8511</name>
         <name lang="pl" >XPS-E8511</name>
     </names>
     <informations>TELEMECANIQUE</informations>
