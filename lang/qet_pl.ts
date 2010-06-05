@@ -1073,7 +1073,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="680"/>
         <source>Collection utilisateur</source>
-        <translation>Nazwa kolekcji</translation>
+        <translation>Kolekcja użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="508"/>
