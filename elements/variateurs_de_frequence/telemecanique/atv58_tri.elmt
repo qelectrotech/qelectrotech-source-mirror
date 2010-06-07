@@ -51,7 +51,7 @@
         <input x="219" y="63" size="7" rotation="270" rotate="true" text="AI1"/>
         <input x="199" y="66" size="7" rotation="270" rotate="true" text="+10"/>
         <input x="131" y="67" size="7" rotation="270" rotate="true" text="PA"/>
-        <input x="112" y="5" size="7" rotation="270" rotate="true" text="RA1"/>
+        <input x="112" y="5" size="7" rotation="270" rotate="true" text="R1A"/>
         <input x="30" y="64" size="7" rotation="270" rotate="true" text="U"/>
         <input x="311" y="13" size="7" rotation="270" rotate="true" text="+24"/>
         <input x="230" y="5" size="7" rotation="270" rotate="true" text="LI1"/>
