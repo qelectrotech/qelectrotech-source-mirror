@@ -48,7 +48,7 @@
         <input x="19.5" y="-1" size="4" rotation="270" rotate="true" text="LB1"/>
         <text x="393" y="10" size="4" text="INPUT"/>
         <input x="410.5" y="1" size="4" rotation="270" rotate="true" text="06"/>
-        <input x="139.5" y="0" size="4" rotation="270" rotate="true" text="A14"/>
+        <input x="139.5" y="0" size="4" rotation="270" rotate="true" text="A1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="272" y2="68" x2="287"/>
         <circle x="57.7639" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="17.7639" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
