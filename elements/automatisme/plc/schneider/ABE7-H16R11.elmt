@@ -23,24 +23,24 @@
         <text x="17" y="-21" size="5" text="2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="10" y2="-19" x2="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="50" y2="-19" x2="50"/>
-        <polygon x4="380" y5="-28" x5="380" y6="-28" x6="380" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="360" y2="-20" x2="360" y3="-20" x3="380" y4="-29"/>
-        <polygon x4="430" y5="-28" x5="430" y6="-28" x6="430" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="410" y2="-20" x2="410" y3="-20" x3="430" y4="-29"/>
+        <polygon x4="380" y5="-29" x5="380" y6="-29" x6="380" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="360" y2="-20" x2="360" y3="-20" x3="380" y4="-29"/>
+        <polygon x4="430" y5="-29" x5="430" y6="-29" x6="430" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="410" y2="-20" x2="410" y3="-20" x3="430" y4="-29"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="38" x1="30" y2="49" x2="30"/>
-        <polygon x4="480" y5="-28" x5="480" y6="-28" x6="480" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="460" y2="-20" x2="460" y3="-20" x3="480" y4="-29"/>
+        <polygon x4="480" y5="-29" x5="480" y6="-29" x6="480" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="460" y2="-20" x2="460" y3="-20" x3="480" y4="-29"/>
         <text x="57" y="46.85" size="5" text="-"/>
-        <polygon x4="530" y5="-28" x5="530" y6="-28" x6="530" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="510" y2="-20" x2="510" y3="-20" x3="530" y4="-29"/>
+        <polygon x4="530" y5="-29" x5="530" y6="-29" x6="530" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="510" y2="-20" x2="510" y3="-20" x3="530" y4="-29"/>
         <text x="37" y="46.85" size="5" text="-"/>
-        <polygon x4="630" y5="-28" x5="630" y6="-28" x6="630" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="610" y2="-20" x2="610" y3="-20" x3="630" y4="-29"/>
+        <polygon x4="630" y5="-29" x5="630" y6="-29" x6="630" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="610" y2="-20" x2="610" y3="-20" x3="630" y4="-29"/>
         <text x="17" y="46.85" size="5" text="+"/>
-        <polygon x4="580" y5="-28" x5="580" y6="-28" x6="580" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="560" y2="-20" x2="560" y3="-20" x3="580" y4="-29"/>
+        <polygon x4="580" y5="-29" x5="580" y6="-29" x6="580" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="560" y2="-20" x2="560" y3="-20" x3="580" y4="-29"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="38" x1="10" y2="49.15" x2="10"/>
-        <polygon x4="680" y5="-28" x5="680" y6="-28" x6="680" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="660" y2="-20" x2="660" y3="-20" x3="680" y4="-29"/>
+        <polygon x4="680" y5="-29" x5="680" y6="-29" x6="680" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="660" y2="-20" x2="660" y3="-20" x3="680" y4="-29"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="38" x1="50" y2="49" x2="50"/>
-        <polygon x4="330" y5="-28" x5="330" y6="-28" x6="330" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="310" y2="-20" x2="310" y3="-20" x3="330" y4="-29"/>
-        <polygon x4="280" y5="-28" x5="280" y6="-28" x6="280" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="260" y2="-20" x2="260" y3="-20" x3="280" y4="-29"/>
-        <polygon x4="230" y5="-28" x5="230" y6="-28" x6="230" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="210" y2="-20" x2="210" y3="-20" x3="230" y4="-29"/>
-        <polygon x4="180" y5="-28" x5="180" y6="-28" x6="180" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="160" y2="-20" x2="160" y3="-20" x3="180" y4="-29"/>
-        <polygon x4="130" y5="-28" x5="130" y6="-28" x6="130" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="110" y2="-20" x2="110" y3="-20" x3="130" y4="-29"/>
+        <polygon x4="330" y5="-29" x5="330" y6="-29" x6="330" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="310" y2="-20" x2="310" y3="-20" x3="330" y4="-29"/>
+        <polygon x4="280" y5="-29" x5="280" y6="-29" x6="280" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="260" y2="-20" x2="260" y3="-20" x3="280" y4="-29"/>
+        <polygon x4="230" y5="-29" x5="230" y6="-29" x6="230" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="210" y2="-20" x2="210" y3="-20" x3="230" y4="-29"/>
+        <polygon x4="180" y5="-29" x5="180" y6="-29" x6="180" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="160" y2="-20" x2="160" y3="-20" x3="180" y4="-29"/>
+        <polygon x4="130" y5="-29" x5="130" y6="-29" x6="130" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="110" y2="-20" x2="110" y3="-20" x3="130" y4="-29"/>
         <text x="114" y="-21" size="5" text="100"/>
         <text x="514" y="-21" size="5" text="108"/>
         <text x="313" y="-21" size="5" text="104"/>
@@ -52,15 +52,15 @@
         <text x="614" y="-21" size="5" text="110"/>
         <text x="363" y="-21" size="5" text="105"/>
         <text x="563" y="-21" size="5" text="109"/>
-        <polygon x4="730" y5="-28" x5="730" y6="-28" x6="730" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="710" y2="-20" x2="710" y3="-20" x3="730" y4="-29"/>
+        <polygon x4="730" y5="-29" x5="730" y6="-29" x6="730" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="710" y2="-20" x2="710" y3="-20" x3="730" y4="-29"/>
         <text x="463" y="-21" size="5" text="107"/>
         <text x="814" y="-21" size="5" text="114"/>
         <text x="664" y="-21" size="5" text="111"/>
         <text x="764" y="-21" size="5" text="113"/>
-        <polygon x4="830" y5="-28" x5="830" y6="-28" x6="830" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="810" y2="-20" x2="810" y3="-20" x3="830" y4="-29"/>
-        <polygon x4="780" y5="-28" x5="780" y6="-28" x6="780" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="760" y2="-20" x2="760" y3="-20" x3="780" y4="-29"/>
+        <polygon x4="830" y5="-29" x5="830" y6="-29" x6="830" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="810" y2="-20" x2="810" y3="-20" x3="830" y4="-29"/>
+        <polygon x4="780" y5="-29" x5="780" y6="-29" x6="780" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="760" y2="-20" x2="760" y3="-20" x3="780" y4="-29"/>
         <text x="864" y="-21" size="5" text="115"/>
-        <polygon x4="880" y5="-28" x5="880" y6="-28" x6="880" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="860" y2="-20" x2="860" y3="-20" x3="880" y4="-29"/>
+        <polygon x4="880" y5="-29" x5="880" y6="-29" x6="880" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-29" x1="860" y2="-20" x2="860" y3="-20" x3="880" y4="-29"/>
         <input x="406" y="28.5" size="9" rotate="true" text="ABE7-H16R11"/>
         <terminal x="120" y="-29" orientation="n"/>
         <terminal x="170" y="-29" orientation="n"/>
