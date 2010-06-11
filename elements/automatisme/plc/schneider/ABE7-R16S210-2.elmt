@@ -6,8 +6,8 @@
     </names>
     <informations>SIEMENS S7-300 (digital inputs)</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-35" x1="-1" y2="55" x2="77"/>
         <polygon x4="77" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-35" x1="-1" y2="-35" x2="879" y3="54" x3="879" y4="54"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="-35" x1="-1" y2="55" x2="77"/>
         <input x="112.5" y="45" size="5" rotation="270" rotate="true" text="208"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="160" y2="10" x2="170" y3="51" x3="170"/>
         <polygon x4="159" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="120" y2="10" x2="120" y3="10" x3="140" y4="15"/>
@@ -21,7 +21,7 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="480" y2="10" x2="490" y3="51" x3="490"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="400" y2="10" x2="410" y3="51" x3="410"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="320" y2="10" x2="330" y3="51" x3="330"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="241" y2="10" x2="251" y3="51" x3="251"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="240" y2="10" x2="250" y3="51" x3="250"/>
         <polygon x4="479" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="440" y2="10" x2="440" y3="10" x3="460" y4="15"/>
         <polygon x4="399" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="360" y2="10" x2="360" y3="10" x3="380" y4="15"/>
         <polygon x4="319" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="280" y2="10" x2="280" y3="10" x3="300" y4="15"/>
@@ -37,7 +37,7 @@
         <input x="592.5" y="45" size="5" rotation="270" rotate="true" text="214"/>
         <circle x="405.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="325.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
-        <circle x="246.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
+        <circle x="245.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <input x="513.5" y="45" size="5" rotation="270" rotate="true" text="213"/>
         <input x="483.5" y="45" size="5" rotation="270" rotate="true" text="112"/>
         <circle x="485.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
@@ -46,10 +46,10 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="561" y2="10" x2="571" y3="51" x3="571"/>
         <polygon x4="719" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="680" y2="10" x2="680" y3="10" x3="700" y4="15"/>
         <polygon x4="639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="600" y2="10" x2="600" y3="10" x3="620" y4="15"/>
-        <polygon x4="560" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="521" y2="10" x2="521" y3="10" x3="541" y4="15"/>
+        <polygon x4="559" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="52" x1="520" y2="10" x2="520" y3="10" x3="540" y4="15"/>
         <circle x="675.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="595.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
-        <circle x="516.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
+        <circle x="515.528" y="44.5279" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <input x="723.5" y="45" size="5" rotation="270" rotate="true" text="115"/>
         <input x="643.5" y="45" size="5" rotation="270" rotate="true" text="114"/>
         <input x="564.5" y="45" size="5" rotation="270" rotate="true" text="113"/>
@@ -60,14 +60,14 @@
         <terminal x="120" y="54" orientation="s"/>
         <terminal x="170" y="54" orientation="s"/>
         <terminal x="201" y="54" orientation="s"/>
-        <terminal x="251" y="54" orientation="s"/>
+        <terminal x="250" y="54" orientation="s"/>
         <terminal x="280" y="54" orientation="s"/>
         <terminal x="330" y="54" orientation="s"/>
         <terminal x="360" y="54" orientation="s"/>
         <terminal x="410" y="54" orientation="s"/>
         <terminal x="440" y="54" orientation="s"/>
         <terminal x="490" y="54" orientation="s"/>
-        <terminal x="521" y="54" orientation="s"/>
+        <terminal x="520" y="54" orientation="s"/>
         <terminal x="571" y="54" orientation="s"/>
         <terminal x="600" y="54" orientation="s"/>
         <terminal x="650" y="54" orientation="s"/>
