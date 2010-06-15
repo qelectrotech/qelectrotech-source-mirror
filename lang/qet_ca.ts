@@ -378,7 +378,7 @@
         <location filename="../sources/diagramprintdialog.cpp" line="292"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Falta fitxer</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="293"/>
@@ -422,23 +422,23 @@
         <location filename="../sources/diagramview.cpp" line="353"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Propietat del esquema</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="594"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietat de la selecció</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="596"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
-        <translation type="unfinished"></translation>
+        <translation>A la selecció hi ha %1.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="617"/>
         <source>Élément manquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Falta element</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="619"/>
@@ -1498,7 +1498,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
         <location filename="../sources/hotspoteditor.cpp" line="44"/>
         <source> ×10 px</source>
-        <translation type="unfinished"></translation>
+        <translation> ×10 px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
@@ -1574,7 +1574,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/insetpropertieswidget.cpp" line="72"/>
         <source>Titre : </source>
-        <translation type="unfinished"></translation>
+        <translation>Tïtol:</translation>
     </message>
     <message>
         <location filename="../sources/insetpropertieswidget.cpp" line="74"/>
@@ -1642,13 +1642,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="114"/>
         <source>Copie de %1 vers %2</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Copia des de %1 a %2</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>La categoria « %1 » (%2) ja existeix. Qué vull fer?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
@@ -1715,7 +1715,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="384"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Error</translation>
     </message>
 </context>
 <context>
@@ -4521,57 +4521,57 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="39"/>
         <source>Nord</source>
-        <translation type="unfinished"></translation>
+        <translation>Nord</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="40"/>
         <source>Est</source>
-        <translation type="unfinished"></translation>
+        <translation>Est</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="41"/>
         <source>Sud</source>
-        <translation type="unfinished"></translation>
+        <translation>Sud</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="42"/>
         <source>Ouest</source>
-        <translation type="unfinished"></translation>
+        <translation>Oest</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
         <source>Position : </source>
-        <translation type="unfinished"></translation>
+        <translation>Posició:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>x : </source>
-        <translation type="unfinished"></translation>
+        <translation>x:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
         <source>y : </source>
-        <translation type="unfinished"></translation>
+        <translation>y:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>Orientation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Orientació:</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
         <source>abscisse</source>
-        <translation type="unfinished"></translation>
+        <translation>abscissa</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>ordonnée</source>
-        <translation type="unfinished"></translation>
+        <translation>ordenada</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>orientation</source>
-        <translation type="unfinished"></translation>
+        <translation>orientació:</translation>
     </message>
 </context>
 <context>
@@ -4585,7 +4585,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="41"/>
         <source>Position : </source>
-        <translation>Posició</translation>
+        <translation>Posició:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
@@ -4635,7 +4635,7 @@ Options disponibles :
         <location filename="../sources/editor/textfieldeditor.cpp" line="36"/>
         <source>Maintenir horizontal malgré
  les rotations de l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="43"/>
@@ -4660,7 +4660,8 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="58"/>
         <source>Texte par défaut : </source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Text per defecte:</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="116"/>
