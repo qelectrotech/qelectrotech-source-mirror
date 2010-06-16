@@ -131,7 +131,7 @@ void QETApp::setLanguage(const QString &desired_language) {
 	// charge les eventuelles traductions pour la lib Qt
 	qtTranslator.load("qt_" + desired_language, languages_path);
 	installTranslator(&qtTranslator);
-	
+	qDebug() << desired_language << languages_path;
 	// charge les traductions pour l'application QET
 	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
 		// en cas d'echec, on retombe sur les chaines natives pour le francais

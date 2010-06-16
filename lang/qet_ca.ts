@@ -85,27 +85,37 @@
         <translation>Traducció al polonès</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="125"/>
+        <source>Traduction en allemand</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="126"/>
+        <source>Traduction en roumain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Paquets Fedora</source>
         <translation>Paquets Fedora</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Paquets Mandriva</source>
         <translation>Paquets Mandriva</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Paquets Debian</source>
         <translation>Paquets Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Icônes</source>
         <translation>Icones</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="157"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Aquest programa està subjecte a la llicència GNU/GPL.</translation>
     </message>
@@ -1148,12 +1158,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Propietat del esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Afegir un esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
@@ -1724,7 +1734,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="47"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Normal</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
@@ -1965,7 +1975,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="250"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Error</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="219"/>
@@ -2180,7 +2190,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="672"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Netejar el projecte</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="712"/>
@@ -2385,7 +2395,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="178"/>
         <source>&amp;Nouveau</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nou</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="179"/>
@@ -2400,7 +2410,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="181"/>
         <source>&amp;Enregistrer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
@@ -2430,7 +2440,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="187"/>
         <source>&amp;Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sortir</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="189"/>
@@ -2485,7 +2495,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Propietat de la selecció</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -2500,7 +2510,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Propietat del esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="205"/>
@@ -2755,7 +2765,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Tancar el programari  QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
@@ -3038,7 +3048,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="543"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="686"/>
@@ -3171,7 +3181,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="132"/>
         <source>&amp;Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sortir</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="133"/>
@@ -3251,7 +3261,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
         <source>Éditer les noms</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modificar els noms</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
@@ -3498,7 +3508,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="330"/>
         <source>Élément</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Element</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="332"/>
@@ -3614,6 +3624,8 @@ Options disponibles :
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -3645,6 +3657,8 @@ Options disponibles :
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -3685,14 +3699,14 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1404"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Error</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="799"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1367"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Edició amb nomès permiso de lectura</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="800"/>
@@ -3707,7 +3721,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="861"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Error</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="821"/>
@@ -3916,7 +3930,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="235"/>
         <source>Options d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Opcions per imprimir</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="236"/>
@@ -4221,7 +4235,7 @@ Options disponibles :
         <location filename="../sources/editor/partarc.h" line="49"/>
         <source>arc</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">arc</translation>
     </message>
     <message>
         <location filename="../sources/editor/partcircle.h" line="44"/>
@@ -4233,25 +4247,25 @@ Options disponibles :
         <location filename="../sources/editor/partellipse.h" line="44"/>
         <source>ellipse</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">el·lipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/partline.h" line="60"/>
         <source>ligne</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">línia</translation>
     </message>
     <message>
         <location filename="../sources/editor/partpolygon.h" line="47"/>
         <source>polygone</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">polígon</translation>
     </message>
     <message>
         <location filename="../sources/editor/partrectangle.h" line="44"/>
         <source>rectangle</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">rectangle</translation>
     </message>
     <message>
         <location filename="../sources/editor/partterminal.h" line="48"/>
@@ -4281,7 +4295,7 @@ Options disponibles :
         <location filename="../sources/editor/parttextfield.h" line="50"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">camp de text</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="633"/>
@@ -4319,6 +4333,8 @@ Options disponibles :
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4339,6 +4355,8 @@ Options disponibles :
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4352,6 +4370,8 @@ Options disponibles :
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -4465,7 +4485,7 @@ Options disponibles :
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Normale</source>
         <comment>element part weight</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Normal</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
