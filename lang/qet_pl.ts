@@ -97,7 +97,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na rumuński</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="140"/>
