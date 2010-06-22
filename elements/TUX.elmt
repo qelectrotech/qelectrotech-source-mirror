@@ -1,0 +1,32 @@
+<definition width="300" version="0.2" hotspot_x="0" hotspot_y="0" height="50" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="de">tux</name>
+        <name lang="en">tux</name>
+        <name lang="fr">tux</name>
+    </names>
+    <description>
+        <rect width="69.5" x="0" y="24" antialias="false" height="22" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="69.5" x="118" y="24" antialias="false" height="22" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="69.5" x="118" y="2" antialias="false" height="22" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="69.5" x="0" y="2" antialias="false" height="22" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <input x="121" y="15.3333" size="9" rotate="true" text="PROJ."/>
+        <input x="121.5" y="37.3333" size="9" rotate="true" text="TUX"/>
+        <input x="3" y="14.3333" size="9" rotate="true" text="REV."/>
+        <input x="3" y="36.3333" size="9" rotate="true" text="0"/>
+        <polygon x4="106" y5="20" x5="106" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="21" x1="106" y2="29" x2="108" y3="29" x3="116" y4="20"/>
+        <polygon x4="81" y5="20" x5="81" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="20" x1="81" y2="29" x2="71" y3="29" x3="79" y4="20"/>
+        <ellipse width="30" x="78.5" y="6.5" antialias="true" height="37" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <ellipse width="25" x="81.5" y="24.5" antialias="true" height="18" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <ellipse width="13" x="83" y="9" antialias="true" height="16" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <ellipse width="12" x="80" y="39" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <ellipse width="11" x="72" y="38" antialias="true" height="0" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="12" x="94" y="39" antialias="true" height="6" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <ellipse width="13" x="94" y="14" antialias="true" height="11" style="line-style:normal;line-weight:thin;filling:white;color:black"/>
+        <ellipse width="3" x="95" y="17" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="2" x="93" y="15" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:white;color:black"/>
+        <ellipse width="6" x="83" y="41" antialias="true" height="4" style="line-style:normal;line-weight:thin;filling:white;color:white"/>
+        <ellipse width="6" x="98.5" y="40.5" antialias="true" height="4" style="line-style:normal;line-weight:thin;filling:white;color:white"/>
+        <polygon x4="97" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="26" x1="91" y2="30" x2="94" y3="26" x3="97" y4="26"/>
+        <arc width="6" x="91" y="24" antialias="true" height="4" style="line-style:normal;line-weight:thin;filling:none;color:black" start="180" angle="-180"/>
+    </description>
+</definition>
