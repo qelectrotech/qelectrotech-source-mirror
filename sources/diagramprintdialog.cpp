@@ -382,6 +382,20 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 	QList<QGraphicsItem *> selected_elmts = diagram -> selectedItems();
 	foreach (QGraphicsItem *qgi, selected_elmts) qgi -> setSelected(false);
 	
+	// enleve le flag focusable de tous les elements concernes pour eviter toute reprise de focus par un champ de texte editable
+	QList<QGraphicsItem *> focusable_items;
+	foreach (QGraphicsItem *qgi, diagram -> items()) {
+		if (qgi -> flags() & QGraphicsItem::ItemIsFocusable) {
+			focusable_items << qgi;
+			qgi -> setFlag(QGraphicsItem::ItemIsFocusable, false);
+		}
+	}
+	
+	// evite toute autre forme d'interaction
+	foreach (QGraphicsView *view, diagram -> views()) {
+		view -> setInteractive(false);
+	}
+	
 	if (fit_page) {
 		// impression adaptee sur une seule page
 		diagram -> render(qp, QRectF(), diagramRect(diagram), Qt::KeepAspectRatio);
@@ -444,6 +458,16 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 				printer -> newPage();
 			}
 		}
+	}
+	
+	// remet en place les interactions
+	foreach (QGraphicsView *view, diagram -> views()) {
+		view -> setInteractive(true);
+	}
+	
+	// restaure les flags focusable
+	foreach (QGraphicsItem *qgi, focusable_items) {
+		qgi -> setFlag(QGraphicsItem::ItemIsFocusable, true);
 	}
 	
 	// restaure les elements selectionnes
