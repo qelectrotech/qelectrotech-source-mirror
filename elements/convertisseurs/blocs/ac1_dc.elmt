@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Wehselstrom > Gleichstrom</name>
         <name lang="ru" >Однофазный перем. ток > Пост. ток</name>
         <name lang="en" >One-phase alternating > Direct</name>
         <name lang="fr" >Alternatif monophasé > Continu</name>

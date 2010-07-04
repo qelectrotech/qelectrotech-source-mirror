@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Motor</name>
         <name lang="ru" >Эл. мотор</name>
         <name lang="en" >Engine</name>
         <name lang="fr" >Moteur</name>

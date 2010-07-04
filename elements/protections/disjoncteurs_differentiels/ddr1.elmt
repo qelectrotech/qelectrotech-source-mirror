@@ -1,5 +1,6 @@
 <definition width="50" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Differenz Lastschalter</name>
         <name lang="ru" >Дифавтомат</name>
         <name lang="en" >Differential circuit-breaker</name>
         <name lang="fr" >Disjoncteur différentiel</name>

@@ -1,5 +1,6 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Erde</name>
         <name lang="ru" >Земля</name>
         <name lang="en" >Ground</name>
         <name lang="fr" >Terre</name>

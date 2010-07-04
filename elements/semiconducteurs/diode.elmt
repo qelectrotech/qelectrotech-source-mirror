@@ -1,5 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Diode</name>
         <name lang="ru" >Диод</name>
         <name lang="en" >Diode</name>
         <name lang="fr" >Diode</name>

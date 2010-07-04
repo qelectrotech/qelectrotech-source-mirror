@@ -1,5 +1,6 @@
 <definition width="60" version="0.2" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >ICC</name>
         <name lang="ru" >Контроль изоляции</name>
         <name lang="en" >PIC</name>
         <name lang="fr" >CPI</name>

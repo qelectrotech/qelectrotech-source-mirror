@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Kontakt Einfach (NC)</name>
         <name lang="ru" >Проктой контакт (НЗ)</name>
         <name lang="en" >Simple contact (NC)</name>
         <name lang="fr" >Contact simple (NF)</name>

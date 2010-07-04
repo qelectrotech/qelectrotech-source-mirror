@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Druck-Taster (NC)</name>
         <name lang="ru" >Кнопка (НЗ)</name>
         <name lang="en" >Push-button (NC)</name>
         <name lang="fr" >Bouton poussoir (NF)</name>

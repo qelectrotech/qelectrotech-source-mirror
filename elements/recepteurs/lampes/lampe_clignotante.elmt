@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Blinklicht</name>
         <name lang="ru" >Проблесковый маяк</name>
         <name lang="en" >Flashing light</name>
         <name lang="fr" >Lampe clignotante</name>

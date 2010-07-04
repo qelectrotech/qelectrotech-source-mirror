@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="10" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny" >
     <names>
+        <name lang="de" >Trafo Wechselstrom</name>
         <name lang="ru" >Однофазный трансформатор</name>
         <name lang="en" >Single phase transducer</name>
         <name lang="fr" >Transformateur monophasé</name>

@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Grenzschalter (NC)</name>
         <name lang="ru" >Концевой контакт (НЗ)</name>
         <name lang="en" >Limit (NC)</name>
         <name lang="fr" >Fin de course (NF)</name>

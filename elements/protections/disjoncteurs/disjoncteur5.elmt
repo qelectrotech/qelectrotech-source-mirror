@@ -1,5 +1,6 @@
 <definition width="90" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="de" >Lastschalter</name>
         <name lang="en">Circuit-breaker</name>
         <name lang="fr">Disjoncteur Tetra</name>
         <name lang="es">Interruptor magnetotérmico</name>

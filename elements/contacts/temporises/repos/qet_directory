@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de" >Abschaltverzögert</name>
         <name lang="ru" >при возврате</name>
         <name lang="en" >Switch-off delay</name>
         <name lang="fr" >Repos</name>

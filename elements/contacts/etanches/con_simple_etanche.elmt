@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Kontakt einfach (wasserdicht)</name>
         <name lang="ru" >Герметичный контакт (НР)</name>
         <name lang="en" >Simple contact (tight)</name>
         <name lang="fr" >Contact simple (étanche)</name>

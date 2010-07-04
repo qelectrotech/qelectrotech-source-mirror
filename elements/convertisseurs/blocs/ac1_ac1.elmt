@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Wechselstrom > Wechselstrom</name>
         <name lang="ru" >Однофазный перем. ток > Однофазный перем. ток</name>
         <name lang="en" >One-phase alternating > One-phase alternating</name>
         <name lang="fr" >Alternatif monophasé > Alternatif monophasé</name>

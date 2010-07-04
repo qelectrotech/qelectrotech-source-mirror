@@ -1,5 +1,6 @@
 <definition width="40" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Kontakt Einfach (NC / einschaltverzögert)</name>
         <name lang="ru" >Контакт с задержкой при срабатывании (НЗ)</name>
         <name lang="en" >Simple contact (NC / switch-on delay timer)</name>
         <name lang="fr" >Contact simple (NF / tempo travail)</name>

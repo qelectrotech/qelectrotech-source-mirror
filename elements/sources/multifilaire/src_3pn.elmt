@@ -1,5 +1,6 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Dreiphasig + Neutral</name>
         <name lang="ru" >Трёхполюсный + нейтраль</name>
         <name lang="en" >Three-pole source + neutral</name>
         <name lang="fr" >Source tripolaire + neutre</name>
