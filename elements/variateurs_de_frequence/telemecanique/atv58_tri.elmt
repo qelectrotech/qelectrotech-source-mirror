@@ -6,8 +6,8 @@
     </names>
     <informations></informations>
     <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="252" y2="68" x2="327"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="332" y2="68" x2="410"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="251" y2="68" x2="327"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="152" y2="68" x2="197"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="72" y2="68" x2="127"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="223" y2="68" x2="247"/>
@@ -39,7 +39,7 @@
         <input x="330.1" y="63" size="7" rotation="270" rotate="true" text="AI2"/>
         <input x="173" y="5" size="7" rotation="270" rotate="true" text="R1B"/>
         <circle x="147.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="246.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="247.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="327.864" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="177.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="180" y2="10" x2="180"/>
@@ -80,7 +80,7 @@
         <circle x="307.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="287.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="267.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="248.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="247.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="227.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="147.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="117.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
@@ -109,7 +109,7 @@
         <terminal x="10" y="70" orientation="s"/>
         <terminal x="70" y="70" orientation="s"/>
         <terminal x="270" y="-20" orientation="n"/>
-        <terminal x="251" y="-20" orientation="n"/>
+        <terminal x="250" y="-20" orientation="n"/>
         <terminal x="120" y="-20" orientation="n"/>
         <terminal x="230" y="-20" orientation="n"/>
         <terminal x="150" y="-20" orientation="n"/>
@@ -118,8 +118,8 @@
         <terminal x="200" y="70" orientation="s"/>
         <terminal x="220" y="70" orientation="s"/>
         <terminal x="180" y="-20" orientation="n"/>
-        <terminal x="330.1" y="70" orientation="s"/>
-        <terminal x="249" y="70" orientation="s"/>
+        <terminal x="330" y="70" orientation="s"/>
+        <terminal x="250" y="70" orientation="s"/>
         <terminal x="150" y="70" orientation="s"/>
         <terminal x="360" y="-20" orientation="n"/>
         <terminal x="390" y="-20" orientation="n"/>

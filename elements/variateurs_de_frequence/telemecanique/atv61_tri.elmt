@@ -101,7 +101,7 @@
         <circle x="307.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="287.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="267.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="248.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="247.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="227.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="127.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="97.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
@@ -130,7 +130,7 @@
         <terminal x="10" y="70" orientation="s"/>
         <terminal x="70" y="70" orientation="s"/>
         <terminal x="270" y="-20" orientation="n"/>
-        <terminal x="251" y="-20" orientation="n"/>
+        <terminal x="250" y="-20" orientation="n"/>
         <terminal x="100" y="-20" orientation="n"/>
         <terminal x="230" y="-20" orientation="n"/>
         <terminal x="130" y="-20" orientation="n"/>
@@ -146,7 +146,7 @@
         <terminal x="150" y="70" orientation="s"/>
         <terminal x="180" y="-20" orientation="n"/>
         <terminal x="210" y="-20" orientation="n"/>
-        <terminal x="111" y="70" orientation="s"/>
+        <terminal x="110" y="70" orientation="s"/>
         <terminal x="360" y="70" orientation="s"/>
         <terminal x="390" y="-20" orientation="n"/>
         <terminal x="330" y="-20" orientation="n"/>

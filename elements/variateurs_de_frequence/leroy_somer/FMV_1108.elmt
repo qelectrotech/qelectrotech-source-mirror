@@ -6,8 +6,8 @@
     </names>
     <informations></informations>
     <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="262" y2="-18" x2="317"/>
         <polygon x4="223" y5="68" x5="223" antialias="false" style="line-style:dashed;line-weight:normal;filling:none;color:black" closed="false" y1="-18" x1="343" y2="-18" x2="370" y3="68" x3="370" y4="68"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="263" y2="-18" x2="319"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="142" y2="-18" x2="177"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="52" y2="-18" x2="97"/>
         <input x="180.5" y="0" size="4" rotation="270" rotate="true" text="0V"/>
@@ -36,7 +36,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="113" y2="68" x2="127"/>
         <input x="111.5" y="68" size="4" rotation="270" rotate="true" text="+ R"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="12" y2="-18" x2="27"/>
-        <circle x="108.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="107.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <input x="129.5" y="67" size="4" rotation="270" rotate="true" text="- R"/>
         <circle x="127.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="204" y2="-18" x2="217"/>
@@ -62,11 +62,11 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="102" y2="-18" x2="117"/>
         <circle x="257.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="237.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="198.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="197.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="217.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="203" y2="68" x2="217"/>
         <input x="199.5" y="66" size="4" rotation="270" rotate="true" text="A4"/>
-        <circle x="198.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="197.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="177.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="137.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <input x="219.5" y="66" size="4" rotation="270" rotate="true" text="A5"/>
@@ -82,8 +82,8 @@
         <circle x="67.7639" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="47.7639" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="27.7639" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="338.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="318.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="337.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="317.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="117.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="97.764" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="47.7639" y="-20.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
@@ -94,21 +94,21 @@
         <terminal x="50" y="70" orientation="s"/>
         <terminal x="50" y="-20" orientation="n"/>
         <terminal x="70" y="70" orientation="s"/>
-        <terminal x="341" y="-20" orientation="n"/>
+        <terminal x="340" y="-20" orientation="n"/>
         <terminal x="100" y="-20" orientation="n"/>
-        <terminal x="321" y="-20" orientation="n"/>
+        <terminal x="320" y="-20" orientation="n"/>
         <terminal x="120" y="-20" orientation="n"/>
         <terminal x="220" y="70" orientation="s"/>
         <terminal x="140" y="-20" orientation="n"/>
         <terminal x="180" y="-20" orientation="n"/>
-        <terminal x="201" y="70" orientation="s"/>
-        <terminal x="201" y="-20" orientation="n"/>
+        <terminal x="200" y="70" orientation="s"/>
+        <terminal x="200" y="-20" orientation="n"/>
         <terminal x="220" y="-20" orientation="n"/>
         <terminal x="240" y="-20" orientation="n"/>
         <terminal x="260" y="-20" orientation="n"/>
         <terminal x="10" y="-20" orientation="n"/>
         <terminal x="10" y="70" orientation="s"/>
         <terminal x="130" y="70" orientation="s"/>
-        <terminal x="111" y="70" orientation="s"/>
+        <terminal x="110" y="70" orientation="s"/>
     </description>
 </definition>
