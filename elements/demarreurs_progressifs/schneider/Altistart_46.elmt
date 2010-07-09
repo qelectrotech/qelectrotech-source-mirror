@@ -34,7 +34,7 @@
         <input x="179.5" y="3" size="4" rotation="270" rotate="true" text="500V"/>
         <input x="160.5" y="3" size="4" rotation="270" rotate="true" text="C"/>
         <circle x="97.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <circle x="78.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="77.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="177.764" y="65.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-18" x1="162" y2="-18" x2="177"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="68" x1="202" y2="68" x2="216"/>
@@ -82,7 +82,7 @@
         <terminal x="210" y="-20" orientation="n"/>
         <terminal x="200" y="70" orientation="s"/>
         <terminal x="180" y="70" orientation="s"/>
-        <terminal x="81" y="70" orientation="s"/>
+        <terminal x="80" y="70" orientation="s"/>
         <terminal x="100" y="70" orientation="s"/>
         <terminal x="80" y="-20" orientation="n"/>
         <terminal x="100" y="-20" orientation="n"/>
