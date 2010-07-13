@@ -54,6 +54,9 @@ class ConductorPropertiesWidget : public QWidget {
 	void updateDisplay();
 	void chooseColor();
 	
+	protected:
+	void focusInEvent(QFocusEvent *);
+	
 	// attributs prives
 	private:
 	QButtonGroup *radio_buttons;

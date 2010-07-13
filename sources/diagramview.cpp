@@ -705,6 +705,7 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	dialog_layout -> addWidget(dbb);
 	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));
 	connect(dbb, SIGNAL(rejected()), &conductor_dialog, SLOT(reject()));
+	cpw -> setFocus(Qt::ActiveWindowFocusReason);
 	
 	// execute le dialogue et met a jour le conducteur
 	if (conductor_dialog.exec() == QDialog::Accepted) {
