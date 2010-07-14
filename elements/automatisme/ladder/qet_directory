@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de" >Kontakt Plan (KOP)</name>
         <name lang="ru" >Контактно-релейная схема</name>
         <name lang="en" >Ladder</name>
         <name lang="fr" >Ladder</name>

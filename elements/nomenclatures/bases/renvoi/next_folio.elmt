@@ -1,5 +1,6 @@
 <definition width="40" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Nächste Seite</name>
         <name lang="en" >Next folio</name>
         <name lang="fr" >Folio suivant</name>
         <name lang="pl" >Następna strona</name>

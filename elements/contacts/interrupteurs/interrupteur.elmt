@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Schalter</name>
         <name lang="ru" >Переключатель</name>
         <name lang="en" >Switch</name>
         <name lang="fr" >Interrupteur</name>

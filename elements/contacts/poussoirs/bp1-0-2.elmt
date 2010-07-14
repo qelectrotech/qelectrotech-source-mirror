@@ -1,11 +1,12 @@
 <definition width="60" version="0.2" hotspot_x="30" hotspot_y="35" height="60" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Schalter 3-Positionen mit Neutral</name>
         <name lang="ru" >Переключатель 3-х позиционный со средним положением</name>
         <name lang="en" >Switch 3 positions including neutral</name>
         <name lang="fr" >Interrupteur rotatif 1-0-2</name>
         <name lang="es" >Interruptor 3 posiciones incluso neutro</name>
         <name lang="pl" >Przełącznik trójpozycyjny (1-0-2)</name>
-	<name lang="cs" >Třípolohový přepínač včetně neutrální (1-0-2)</name>
+        <name lang="cs" >Třípolohový přepínač včetně neutrální (1-0-2)</name>
     </names>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-15" x1="-16" y2="-11" x2="-16" />

@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Direkt (DC/DC)</name>
         <name lang="ru" >Пост. ток > Пост. ток</name>
         <name lang="en" >Direct > Direct</name>
         <name lang="fr" >Continu > Continu</name>

@@ -1,5 +1,6 @@
 <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Ausgangs Schritt</name>
         <name lang="en" >Output step</name>
         <name lang="fr" >Etape sortie</name>
         <name lang="pl" >Krok (output)</name>

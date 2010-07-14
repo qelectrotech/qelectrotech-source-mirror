@@ -1,5 +1,6 @@
 <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Initialisierungs Schritt</name>
         <name lang="en" >Initial step</name>
         <name lang="fr" >Etape initiale</name>
         <name lang="pl" >Krok początkowy</name>

@@ -1,6 +1,7 @@
 <definition width="650" version="0.2" hotspot_x="0" hotspot_y="0" height="10" type="element" orientation="dnnn" >
     <names>
-	<name lang="en" >Line tableau nomenclature</name>
+        <name lang="de" >Linienfeld Nomemklatur</name>
+        <name lang="en" >Line tableau nomenclature</name>
         <name lang="fr" >Ligne de tableau de nomenclature</name>
         <name lang="pl" >Tabela - linie</name>
         <name lang="cs" >Nomenklatura čára tabulky</name>

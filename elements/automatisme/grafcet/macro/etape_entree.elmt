@@ -1,5 +1,6 @@
 <definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="90" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Eingangs Schritt</name>
         <name lang="en" >Imput step</name>
         <name lang="fr" >Etape d'entree</name>
         <name lang="pl" >Krok (input)</name>

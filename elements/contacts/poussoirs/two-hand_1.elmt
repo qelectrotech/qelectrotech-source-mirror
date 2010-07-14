@@ -1,5 +1,6 @@
 <definition width="50" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" >
     <names>
+        <name lang="de" >Zwei-Hand 1 (XPS-BC)</name>
         <name lang="en" >Two-hand 1 (XPS-BC)</name>
         <name lang="fr" >Deux mains 1 (XPS-BC)</name>
         <name lang="pl" >Sterowanie dwuręczne 1</name>

@@ -1,5 +1,6 @@
 <definition width="90" version="0.2" hotspot_x="60" hotspot_y="45" height="80" type="element" ic="true" orientation="dnyn" >
     <names>
+        <name lang="de" >Wechselkontakt (NO/NC)</name>
         <name lang="ru" >Проктой контакт (НР)</name>
         <name lang="en" >Simple contact</name>
         <name lang="fr" >Contact NO - NC</name>

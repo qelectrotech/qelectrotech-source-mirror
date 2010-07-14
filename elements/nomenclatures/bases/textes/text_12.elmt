@@ -1,5 +1,6 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >T12 Textfeld</name>
         <name lang="fr" >Zone texte T12</name>
         <name lang="en" >T12 text area</name>
         <name lang="pl" >Obszar tekstowy T12</name>

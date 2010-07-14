@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Ausgang</name>
         <name lang="ru" >Выход</name>
         <name lang="en" >Output</name>
         <name lang="fr" >Sortie</name>

@@ -1,5 +1,6 @@
 <definition width="10" version="0.1" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Doppelklemme</name>
         <name lang="ru" >Соединение (стар.)</name>
         <name lang="en" >Dual terminal</name>
         <name lang="fr" >Double borne</name>

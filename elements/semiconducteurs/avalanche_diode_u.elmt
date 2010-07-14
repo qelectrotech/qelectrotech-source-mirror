@@ -1,5 +1,6 @@
 <definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Avalanchediode</name>
         <name lang="fr" >Diode à avalanche unidirectionelle</name>
         <name lang="pl" >Dioda lawinowa jednokierunkowa</name>
         <name lang="cs" >Lavinová jednosměrná dioda</name>

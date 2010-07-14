@@ -1,5 +1,6 @@
 <definition width="70" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="de" >Spule</name>
         <name lang="en">Coil</name>
         <name lang="fr">Bobine</name>
         <name lang="es">Bobina</name>

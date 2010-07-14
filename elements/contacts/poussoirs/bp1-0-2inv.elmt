@@ -1,5 +1,6 @@
 <definition width="70" version="0.2" hotspot_x="40" hotspot_y="45" height="70" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Schalter 3-Positionen (1-0-2)</name>
         <name lang="ru" >Переключатель 3-х позиционный со средним положением</name>
         <name lang="en" >Switch 3 positions including neutral</name>
         <name lang="fr" >Interrupteur rotatif 1-0-2 inv</name>

@@ -1,5 +1,6 @@
 <definition width="10" version="0.2" hotspot_x="5" hotspot_y="5" height="30" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >Ausgangsklemme</name>
         <name lang="en" >Output terminal</name>
         <name lang="fr" >Renvoi schéma in</name>
         <name lang="es" >Punto de salida</name>

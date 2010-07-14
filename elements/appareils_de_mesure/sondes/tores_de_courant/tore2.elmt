@@ -1,5 +1,6 @@
 <definition width="50" version="0.1" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >2-Pol Stromwandler</name>
         <name lang="en" >2-poles toroidal core</name>
         <name lang="fr" >Tore 2 pôles</name>
         <name lang="es" >Núcleo toroide 2 polos</name>
