@@ -190,25 +190,25 @@ Iconos</translation>
         <location filename="../sources/borderinset.cpp" line="265"/>
         <source> Auteur : %1</source>
         <comment>inset content</comment>
-        <translation>Autor: %1</translation>
+        <translation> Autor: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="268"/>
         <source> Date : %1</source>
         <comment>inset content</comment>
-        <translation>Fecha: %1</translation>
+        <translation> Fecha: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="274"/>
         <source> Fichier : %1</source>
         <comment>inset content</comment>
-        <translation>Archivo: %1</translation>
+        <translation> Archivo: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="277"/>
         <source> Folio : %1</source>
         <comment>inset content</comment>
-        <translation>Folio: %1</translation>
+        <translation> Folio: %1</translation>
     </message>
 </context>
 <context>

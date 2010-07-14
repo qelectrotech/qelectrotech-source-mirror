@@ -189,25 +189,25 @@
         <location filename="../sources/borderinset.cpp" line="265"/>
         <source> Auteur : %1</source>
         <comment>inset content</comment>
-        <translation>Autor: %1</translation>
+        <translation> Autor: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="268"/>
         <source> Date : %1</source>
         <comment>inset content</comment>
-        <translation>Data: %1</translation>
+        <translation> Data: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="274"/>
         <source> Fichier : %1</source>
         <comment>inset content</comment>
-        <translation>Fisier: %1</translation>
+        <translation> Fisier: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="277"/>
         <source> Folio : %1</source>
         <comment>inset content</comment>
-        <translation>Pagina: %1</translation>
+        <translation> Pagina: %1</translation>
     </message>
 </context>
 <context>

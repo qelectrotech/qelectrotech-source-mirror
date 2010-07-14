@@ -195,19 +195,19 @@
         <location filename="../sources/borderinset.cpp" line="268"/>
         <source> Date : %1</source>
         <comment>inset content</comment>
-        <translation>Datum: %1</translation>
+        <translation> Datum: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="274"/>
         <source> Fichier : %1</source>
         <comment>inset content</comment>
-        <translation>Soubor: %1</translation>
+        <translation> Soubor: %1</translation>
     </message>
     <message>
         <location filename="../sources/borderinset.cpp" line="277"/>
         <source> Folio : %1</source>
         <comment>inset content</comment>
-        <translation>Dvojlist: %1</translation>
+        <translation> Dvojlist: %1</translation>
     </message>
 </context>
 <context>
