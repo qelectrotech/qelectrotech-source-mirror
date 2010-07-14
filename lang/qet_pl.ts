@@ -459,7 +459,8 @@
         <location filename="../sources/diagramview.cpp" line="624"/>
         <source>Nom : %1
 </source>
-        <translation>Nazwa: %1</translation>
+        <translation>Nazwa: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="625"/>
@@ -472,19 +473,22 @@
         <location filename="../sources/diagramview.cpp" line="626"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Wielkość: %1×%2</translation>
+        <translation>Wielkość: %1×%2
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="627"/>
         <source>Bornes : %1
 </source>
-        <translation>Złącze: %1</translation>
+        <translation>Złącze: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="628"/>
         <source>Connexions internes : %1
 </source>
-        <translation>Połączenia wewnętrzne: %1</translation>
+        <translation>Połączenia wewnętrzne: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="628"/>
@@ -500,13 +504,15 @@
         <location filename="../sources/diagramview.cpp" line="629"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Pole tekstowe: %1</translation>
+        <translation>Pole tekstowe: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="632"/>
         <source>Emplacement : %1
 </source>
-        <translation>Położenie: %1</translation>
+        <translation>Położenie: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="636"/>

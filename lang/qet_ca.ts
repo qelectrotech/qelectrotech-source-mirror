@@ -459,13 +459,15 @@
         <location filename="../sources/diagramview.cpp" line="624"/>
         <source>Nom : %1
 </source>
-        <translation>Nom:</translation>
+        <translation>Nom: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="625"/>
         <source>Position : %1
 </source>
-        <translation>Posició:</translation>
+        <translation>Posició: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="626"/>
@@ -3624,8 +3626,6 @@ Options disponibles :
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -3657,8 +3657,6 @@ Options disponibles :
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -4333,8 +4331,6 @@ Options disponibles :
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4355,8 +4351,6 @@ Options disponibles :
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4370,8 +4364,6 @@ Options disponibles :
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>

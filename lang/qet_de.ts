@@ -376,27 +376,32 @@
     <message>
         <source>Nom : %1
 </source>
-        <translation>Name : %1</translation>
+        <translation>Name : %1
+</translation>
     </message>
     <message>
         <source>Position : %1
 </source>
-        <translation>Position : %1</translation>
+        <translation>Position : %1
+</translation>
     </message>
     <message>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Dimensionen : %1×%2</translation>
+        <translation>Dimensionen : %1×%2
+</translation>
     </message>
     <message>
         <source>Bornes : %1
 </source>
-        <translation>Anschlüsse : %1</translation>
+        <translation>Anschlüsse : %1
+</translation>
     </message>
     <message>
         <source>Connexions internes : %1
 </source>
-        <translation>Interne Verbindungen : %1</translation>
+        <translation>Interne Verbindungen : %1
+</translation>
     </message>
     <message>
         <source>Autorisées</source>
@@ -409,12 +414,14 @@
     <message>
         <source>Champs de texte : %1
 </source>
-        <translation>Textfelder : %1</translation>
+        <translation>Textfelder : %1
+</translation>
     </message>
     <message>
         <source>Emplacement : %1
 </source>
-        <translation>Ort : %1</translation>
+        <translation>Ort : %1
+</translation>
     </message>
     <message>
         <source>Propriétés de l&apos;élément sélectionné</source>
