@@ -488,7 +488,18 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		// charge les caracteristiques de l'element
-		if (nvel_elmt -> fromXml(element_xml, table_adr_id)) {
+		// Retrocompatibilite : avant la version 0.3, il faut gerer a l'ouverture du schema
+		// la compensation de la rotation de l'element pour ses champs de texte ayant l'option
+		// "FollowParentRotation" desactivee
+		// A partir de la 0.3, les champs de texte des elements comportent des attributs userx,
+		// usery et userrotation qui specifient explicitement leur position et orientation
+		bool handle_inputs_rotation = false;
+		if (project_) {
+			qreal project_qet_version = project_ -> declaredQElectroTechVersion();
+			handle_inputs_rotation = (project_qet_version != -1 && project_qet_version < 0.3 && project_ -> state() == QETProject::ProjectParsingRunning);
+		}
+		
+		if (nvel_elmt -> fromXml(element_xml, table_adr_id, handle_inputs_rotation)) {
 			// ajout de l'element au schema et a la liste des elements ajoutes
 			addElement(nvel_elmt);
 			added_elements << nvel_elmt;

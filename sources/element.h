@@ -113,7 +113,7 @@ class Element : public QObject, public QGraphicsItem {
 	
 	// methodes relatives aux fichiers XML
 	static bool valideXml(QDomElement &);
-	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &);
+	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
 	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	
 	// methodes d'acces aux possibilites d'orientation

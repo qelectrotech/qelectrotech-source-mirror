@@ -60,10 +60,11 @@ class QETProject : public QObject {
 		Represente l'etat du projet
 	*/
 	enum ProjectState {
-		Ok                   = 0, /// Le projet n'est pas en erreur
-		FileOpenFailed       = 1, /// l'ouverture d'un fichier a echoue
-		XmlParsingFailed     = 2, /// l'analyse XML a echoue
-		ProjectParsingFailed = 3  /// la lecture en tant que projet a echoue
+		Ok                    = 0, /// Le projet n'est pas en erreur
+		FileOpenFailed        = 1, /// l'ouverture d'un fichier a echoue
+		XmlParsingFailed      = 2, /// l'analyse XML a echoue
+		ProjectParsingRunning = 3, /// la lecture du projet est en cours
+		ProjectParsingFailed  = 4  /// la lecture en tant que projet a echoue
 	};
 	
 	// methodes
@@ -76,6 +77,7 @@ class QETProject : public QObject {
 	QString currentDir() const;
 	QString pathNameTitle() const;
 	QString title() const;
+	qreal declaredQElectroTechVersion();
 	void setTitle(const QString &);
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
@@ -142,6 +144,8 @@ class QETProject : public QObject {
 	XmlElementsCollection *collection_;
 	/// Titre du projet
 	QString project_title_;
+	/// Version de QElectroTech declaree dans le document XML lors de son ouverture
+	qreal project_qet_version_;
 	/// booleen indiquant si le projet est en ReadOnly ou non
 	bool read_only_;
 	/// Chemin du fichier pour lequel ce projet est considere comme etant en lecture seule

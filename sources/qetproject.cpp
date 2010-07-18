@@ -36,6 +36,7 @@ QString QETProject::integration_category_name = "import";
 */
 QETProject::QETProject(int diagrams, QObject *parent) :
 	QObject(parent),
+	project_qet_version_(-1),
 	read_only_(false)
 {
 	// 0 a n schema(s) vide(s)
@@ -61,6 +62,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject(parent),
+	project_qet_version_(-1),
 	read_only_(false)
 {
 	// ouvre le fichier
@@ -94,6 +96,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 */
 QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	QObject(parent),
+	project_qet_version_(-1),
 	read_only_(false)
 {
 	// copie le contenu XML
@@ -237,6 +240,15 @@ QString QETProject::pathNameTitle() const {
 */
 QString QETProject::title() const {
 	return(project_title_);
+}
+
+/**
+	@return la version de QElectroTech declaree dans le fichier projet lorsque
+	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
+	depuis un fichier, cette methode retourne -1.
+*/
+qreal QETProject::declaredQElectroTechVersion() {
+	return(project_qet_version_);
 }
 
 /**
@@ -689,14 +701,15 @@ ElementsCategory *QETProject::rootCategory() const {
 */
 void QETProject::readProjectXml() {
 	QDomElement root_elmt = document_root_.documentElement();
+	state_ = ProjectParsingRunning;
 	
 	// la racine du document XML est sensee etre un element "project"
 	if (root_elmt.tagName() == "project") {
 		// mode d'ouverture normal
 		if (root_elmt.hasAttribute("version")) {
 			bool conv_ok;
-			qreal diagram_version = root_elmt.attribute("version").toDouble(&conv_ok);
-			if (conv_ok && QET::version.toDouble() < diagram_version) {
+			project_qet_version_ = root_elmt.attribute("version").toDouble(&conv_ok);
+			if (conv_ok && QET::version.toDouble() < project_qet_version_) {
 				QET::MessageBox::warning(
 					0,
 					tr("Avertissement", "message box title"),
