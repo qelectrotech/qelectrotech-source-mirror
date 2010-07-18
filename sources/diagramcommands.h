@@ -319,6 +319,8 @@ class RotateElementsCommand : public QUndoCommand {
 	virtual void redo();
 	qreal appliedRotationAngle() const;
 	void setAppliedRotationAngle(const qreal &);
+	private:
+	void rotateElement(Element *, QET::Orientation);
 	
 	// attributs
 	private:

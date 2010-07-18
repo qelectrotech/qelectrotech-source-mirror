@@ -598,7 +598,7 @@ RotateElementsCommand::~RotateElementsCommand() {
 /// defait le pivotement
 void RotateElementsCommand::undo() {
 	foreach(Element *e, elements_to_rotate.keys()) {
-		e -> setOrientation(elements_to_rotate[e]);
+		rotateElement(e, elements_to_rotate[e]);
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
 		dti -> rotateBy(-applied_rotation_angle_);
@@ -608,8 +608,7 @@ void RotateElementsCommand::undo() {
 /// refait le pivotement
 void RotateElementsCommand::redo() {
 	foreach(Element *e, elements_to_rotate.keys()) {
-		e -> setOrientation(e -> orientation().next());
-		e -> update();
+		rotateElement(e, e -> orientation().next());
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
 		dti -> rotateBy(applied_rotation_angle_);
@@ -628,6 +627,36 @@ qreal RotateElementsCommand::appliedRotationAngle() const {
 */
 void RotateElementsCommand::setAppliedRotationAngle(const qreal &angle) {
 	applied_rotation_angle_ = QET::correctAngle(angle);
+}
+
+/**
+	Passe un element a une orientation donnee, en prenant soin de gerer ses textes enfants
+	@param element Element a orienter soigneusement
+	@param orientation Nouvelle orientation de l'element
+*/
+void RotateElementsCommand::rotateElement(Element *element, QET::Orientation orientation) {
+	qreal rotation_value = 90.0 * (orientation - element -> orientation().current());
+	element -> setOrientation(orientation);
+	element -> update();
+	if (rotation_value) {
+		// repositionne les textes de l'element qui ne comportent pas l'option "FollowParentRotations"
+		foreach(ElementTextItem *eti, element -> texts()) {
+			if (!eti -> followParentRotations())  {
+				// on souhaite pivoter le champ de texte par rapport a son centre
+				QPointF eti_center = eti -> boundingRect().center();
+				// pour ce faire, on repere la position de son centre par rapport a son parent
+				QPointF parent_eti_center_before = eti -> mapToParent(eti_center);
+				// on applique ensuite une simple rotation contraire, qui sera donc appliquee sur le milieu du cote gauche du champ de texte
+				eti -> rotateBy(-rotation_value);
+				// on regarde ensuite la nouvelle position du centre du champ de texte par rapport a son parent
+				QPointF parent_eti_center_after = eti -> mapToParent(eti_center);
+				// on determine la translation a appliquer
+				QPointF eti_translation = parent_eti_center_before - parent_eti_center_after;
+				// on applique cette translation
+				eti -> setPos(eti -> pos() + eti_translation);
+			}
+		}
+	}
 }
 
 /**

@@ -249,14 +249,14 @@ void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
 }
 
 /**
-	Effetue la rotation du texte en elle-meme
+	Effectue la rotation du texte en elle-meme
 	Pour les DiagramTextItem, la rotation s'effectue autour du point (0, 0).
-	Cette methode peut toutefois etre redefinie dans des classes 
+	Cette methode peut toutefois etre redefinie dans des classes filles
 	@param angle Angle de la rotation a effectuer
 */
 void DiagramTextItem::applyRotation(const qreal &angle) {
-	// un simple appel a QGraphicsTextItem::rotate suffit
-	QGraphicsTextItem::rotate(angle);
+	// un simple appel a QGraphicsTextItem::setRotation suffit
+	QGraphicsTextItem::setRotation(QGraphicsTextItem::rotation() + angle);
 }
 
 /**

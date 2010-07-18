@@ -35,6 +35,7 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// cela nous convient, on ne touche pas a ces flags
 	
+	adjustItemPosition(1);
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
 }
@@ -55,6 +56,7 @@ ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, D
 	// par defaut, les DiagramTextItem sont Selectable et Movable
 	// cela nous convient, on ne touche pas a ces flags
 	
+	adjustItemPosition(1);
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
 }
@@ -75,16 +77,7 @@ Element *ElementTextItem::parentElement() const {
 	@param pos La nouvelle position du champ de texte
 */
 void ElementTextItem::setPos(const QPointF &pos) {
-	// annule toute transformation (rotation notamment)
-	resetTransform();
-	
-	// effectue le positionnement en lui-meme
-	QPointF actual_pos = pos;
-	actual_pos -= QPointF(0.0, boundingRect().bottom() / 2.0);
-	QGraphicsTextItem::setPos(actual_pos);
-	
-	// applique a nouveau la rotation du champ de texte
-	applyRotation(rotationAngle());
+	QGraphicsTextItem::setPos(pos);
 }
 
 /**
@@ -100,9 +93,7 @@ void ElementTextItem::setPos(qreal x, qreal y) {
 	@return La position (bidouillee) du champ de texte
 */
 QPointF ElementTextItem::pos() const {
-	QPointF actual_pos = DiagramTextItem::pos();
-	actual_pos += QPointF(0.0, boundingRect().bottom() / 2.0);
-	return(actual_pos);
+	return(QGraphicsTextItem::pos());
 }
 
 /**
@@ -198,7 +189,12 @@ qreal ElementTextItem::originalRotationAngle() const {
 */
 void ElementTextItem::adjustItemPosition(int new_block_count) {
 	Q_UNUSED(new_block_count);
-	setPos(known_position_);
+	qreal origin_offset = boundingRect().bottom() / 2.0;
+	
+	QTransform base_translation;
+	base_translation.translate(0.0, -origin_offset);
+	setTransform(base_translation, false);
+	setTransformOriginPoint(0.0, origin_offset);
 }
 
 /**
@@ -208,14 +204,7 @@ void ElementTextItem::adjustItemPosition(int new_block_count) {
 	@param angle Angle de la rotation a effectuer
 */
 void ElementTextItem::applyRotation(const qreal &angle) {
-	qreal origin_offset = boundingRect().bottom() / 2.0;
-	
-	QTransform rotation;
-	rotation.translate(0.0,  origin_offset);
-	rotation.rotate(angle);
-	rotation.translate(0.0, -origin_offset);
-	
-	QGraphicsTextItem::setTransform(rotation, true);
+	QGraphicsTextItem::setRotation(QGraphicsTextItem::rotation() + angle);
 }
 
 /**
@@ -308,18 +297,4 @@ void ElementTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsTextItem::mouseReleaseEvent(e);
 	}
-}
-
-/**
-	Gere les changements intervenant sur ce champ de texte
-	@param change Type de changement
-	@param value Valeur numerique relative au changement
-*/
-QVariant ElementTextItem::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
-		// memorise la nouvelle position "officielle" du champ de texte
-		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
-		known_position_ = pos();
-	}
-	return(DiagramTextItem::itemChange(change, value));
 }

@@ -45,7 +45,6 @@ class ElementTextItem : public DiagramTextItem {
 	Element *parent_element_;
 	bool follow_parent_rotations;
 	QPointF original_position;
-	QPointF known_position_;
 	qreal original_rotation_angle_;
 	bool first_move_;
 	
@@ -75,7 +74,6 @@ class ElementTextItem : public DiagramTextItem {
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 };
 
 /**
