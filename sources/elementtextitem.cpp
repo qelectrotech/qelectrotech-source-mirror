@@ -38,6 +38,7 @@ ElementTextItem::ElementTextItem(Element *parent_element, Diagram *parent_diagra
 	adjustItemPosition(1);
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
+	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
 }
 
 /**
@@ -59,6 +60,7 @@ ElementTextItem::ElementTextItem(const QString &text, Element *parent_element, D
 	adjustItemPosition(1);
 	// ajuste la position du QGraphicsItem lorsque le QTextDocument change
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
+	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
 }
 
 /// Destructeur

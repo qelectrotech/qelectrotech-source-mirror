@@ -67,7 +67,7 @@ class ElementTextItem : public DiagramTextItem {
 	qreal originalRotationAngle() const;
 	
 	public slots:
-	void adjustItemPosition(int);
+	void adjustItemPosition(int = 0);
 	
 	protected:
 	virtual void applyRotation(const qreal &);
