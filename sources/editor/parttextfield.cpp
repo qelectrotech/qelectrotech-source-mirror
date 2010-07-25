@@ -357,7 +357,7 @@ void PartTextField::drawPoint(QPainter *painter, const QPointF &point) {
 	painter -> drawLine(QLineF(px, py, px + size_1, py));
 	painter -> drawLine(QLineF(px + size_1 - size_2, py - size_2, px + size_1, py));
 	painter -> drawLine(QLineF(px + size_1 - size_2, py + size_2, px + size_1, py));
-	painter -> drawLine(QLineF(px, py, px, py + size_1);)
+	painter -> drawLine(QLineF(px, py, px, py + size_1));
 	painter -> drawLine(QLineF(px, py + size_1, px - size_2, py + size_1 - size_2));
 	painter -> drawLine(QLineF(px, py + size_1, px + size_2, py + size_1 - size_2));
 }
