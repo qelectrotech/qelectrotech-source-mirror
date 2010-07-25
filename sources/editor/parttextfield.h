@@ -40,7 +40,6 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	
 	// attributs
 	bool follow_parent_rotations;
-	qreal rotation_angle_;
 	
 	// methodes
 	public:
@@ -54,9 +53,6 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual QString xmlName() const { return(QString("input")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
-	QPointF pos() const;
-	void setPos(const QPointF &);
-	void setPos(qreal, qreal);
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	bool followParentRotations();
@@ -67,7 +63,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
 	
 	public slots:
-	void adjustItemPosition(int);
+	void adjustItemPosition(int = 0);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
@@ -81,6 +77,5 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	void drawPoint(QPainter *, const QPointF &);
 #endif
 	QString previous_text;
-	QPointF known_position_;
 };
 #endif
