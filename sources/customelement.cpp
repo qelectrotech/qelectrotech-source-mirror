@@ -558,6 +558,10 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	text_document.setDefaultFont(used_font);
 	text_document.setPlainText(e.attribute("text"));
 	
+	// Se positionne aux coordonnees indiquees dans la description du texte	
+	qp.setTransform(QTransform(), false);
+	qp.translate(pos_x, pos_y);
+	
 	// Pivote le systeme de coordonnees du QPainter pour effectuer le rendu
 	// dans le bon sens
 	qreal default_rotation_angle = 0.0;
@@ -571,7 +575,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 		determiner le coin superieur gauche du texte alors que la position
 		indiquee correspond a la baseline.
 	*/
-	QPointF qpainter_offset(pos_x, pos_y - qfm.ascent());
+	QPointF qpainter_offset(0.0, -qfm.ascent());
 	
 	// ajuste le decalage selon la marge du document texte
 #if QT_VERSION >= 0x040500
