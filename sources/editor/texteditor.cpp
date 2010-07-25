@@ -17,6 +17,8 @@
 */
 #include "texteditor.h"
 #include "parttext.h"
+#include "qetapp.h"
+#include "qtextorientationspinboxwidget.h"
 
 /**
 	Constructeur
@@ -33,6 +35,9 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	qle_text  = new QLineEdit();
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
+	QLabel *rotation_angle_label = new QLabel(tr("Angle de rotation : "));
+	rotation_angle_label -> setWordWrap(true);
+	rotation_angle_ = QETApp::createTextOrientationSpinBoxWidget();
 	
 	qle_x -> setValidator(new QDoubleValidator(qle_x));
 	qle_y -> setValidator(new QDoubleValidator(qle_y));
@@ -55,7 +60,13 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	QHBoxLayout *t = new QHBoxLayout();
 	t -> addWidget(new QLabel(tr("Texte : ")));
 	t -> addWidget(qle_text);
+	
+	QHBoxLayout *rotation_angle_layout = new QHBoxLayout();
+	rotation_angle_layout -> addWidget(rotation_angle_label);
+	rotation_angle_layout -> addWidget(rotation_angle_);
+	
 	main_layout -> addLayout(t);
+	main_layout -> addLayout(rotation_angle_layout);
 	main_layout -> addStretch();
 	setLayout(main_layout);
 	
@@ -115,6 +126,8 @@ void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "
 void TextEditor::updateTextT() { addChangePartCommand(tr("contenu"),     part, "text", qle_text -> text());         }
 /// Met a jour la taille du texte et cree un objet d'annulation
 void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "size", font_size -> value());       }
+/// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
+void TextEditor::updateTextRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation angle", rotation_angle_ -> value()); }
 
 /**
 	Met a jour le formulaire a partir du champ de texte
@@ -126,6 +139,7 @@ void TextEditor::updateForm() {
 	qle_y     -> setText(part -> property("y").toString());
 	qle_text  -> setText(part -> property("text").toString());
 	font_size -> setValue(part -> property("size").toInt());
+	rotation_angle_ -> setValue(part -> property("rotation angle").toDouble());
 	activeConnections(true);
 }
 
@@ -135,10 +149,12 @@ void TextEditor::activeConnections(bool active) {
 		connect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextY()));
 		connect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextT()));
 		connect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextS()));
+		connect(rotation_angle_, SIGNAL(editingFinished()), this, SLOT(updateTextRotationAngle()));
 	} else {
 		disconnect(qle_x,     SIGNAL(editingFinished()), this, SLOT(updateTextX()));
 		disconnect(qle_y,     SIGNAL(editingFinished()), this, SLOT(updateTextY()));
 		disconnect(qle_text,  SIGNAL(editingFinished()), this, SLOT(updateTextT()));
 		disconnect(font_size, SIGNAL(editingFinished()), this, SLOT(updateTextS()));
+		disconnect(rotation_angle_, SIGNAL(editingFinished()), this, SLOT(updateTextRotationAngle()));
 	}
 }

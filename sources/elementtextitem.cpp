@@ -184,9 +184,9 @@ qreal ElementTextItem::originalRotationAngle() const {
 /**
 	Cette methode s'assure que la position de l'ElementTextItem est coherente
 	en ajustant :
-      * la transformation de base qui permet de considerer que l'origine
+		* la transformation de base qui permet de considerer que l'origine
 	correspond au milieu du bord gauche du champ de texte
-      * l'origine utilisee lors des appels a setRotation et setScale
+		* l'origine utilisee lors des appels a setRotation et setScale
 	@param new_block_count Nombre de blocs dans l'ElementTextItem
 */
 void ElementTextItem::adjustItemPosition(int new_block_count) {

@@ -558,6 +558,13 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	text_document.setDefaultFont(used_font);
 	text_document.setPlainText(e.attribute("text"));
 	
+	// Pivote le systeme de coordonnees du QPainter pour effectuer le rendu
+	// dans le bon sens
+	qreal default_rotation_angle = 0.0;
+	if (QET::attributeIsAReal(e, "rotation", &default_rotation_angle)) {
+		qp.rotate(default_rotation_angle);
+	}
+	
 	/*
 		Deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
 		bon endroit ; note : on soustrait l'ascent() de la police pour

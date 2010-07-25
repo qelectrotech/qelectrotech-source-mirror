@@ -41,6 +41,11 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
+	
+	adjustItemPosition(1);
+	// ajuste la position du champ de texte lorsqu'on lui ajoute/retire des lignes ou lorsqu'on change sa taille de police
+	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
+	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
 }
 
 /// Destructeur
@@ -58,11 +63,16 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	
 	setFont(QETApp::diagramTextsFont(font_size));
 	setPlainText(xml_element.attribute("text"));
+	
+	qreal default_rotation_angle = 0.0;
+	if (QET::attributeIsAReal(xml_element, "rotation", &default_rotation_angle)) {
+		setRotationAngle(default_rotation_angle);
+	}
+	
 	setPos(
 		xml_element.attribute("x").toDouble(),
 		xml_element.attribute("y").toDouble()
 	);
-	known_position_ = pos();
 }
 
 /**
@@ -76,33 +86,25 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
+	// angle de rotation du champ de texte
+	if (rotationAngle()) {
+		xml_element.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+	}
 	return(xml_element);
 }
 
 /**
-	Retourne la position du texte, l'origine etant le point a gauche du texte,
-	sur la baseline de la premiere ligne
-	@return la position du texte
+	@return l'angle de rotation de ce champ de texte
 */
-QPointF PartText::pos() const {
-	return(QGraphicsTextItem::pos() + margin());
+qreal PartText::rotationAngle() const {
+	return(rotation());
 }
 
 /**
-	Specifie la position du texte statique
-	@param left_corner_pos Nouvelle position
+	@param angle Le nouvel angle de rotation de ce champ de texte
 */
-void PartText::setPos(const QPointF &left_corner_pos) {
-	QGraphicsTextItem::setPos(left_corner_pos - margin());
-}
-
-/**
-	Specifie la position du texte statique
-	@param x abscisse de la nouvelle position
-	@param y ordonnee de la nouvelle position
-*/
-void PartText::setPos(qreal x, qreal y) {
-	QGraphicsTextItem::setPos(QPointF(x, y) - margin());
+void PartText::setRotationAngle(const qreal &angle) {
+	setRotation(QET::correctAngle(angle));
 }
 
 /**
@@ -176,6 +178,7 @@ void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 		* y : ordonnee de la position
 		* size : taille du texte
 		* text : texte
+		* "rotation angle" : amgle de rotation
 	@param value Valeur a attribuer a la propriete
 */
 void PartText::setProperty(const QString &property, const QVariant &value) {
@@ -188,9 +191,10 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "size") {
 		if (!value.canConvert(QVariant::Int)) return;
 		setFont(QETApp::diagramTextsFont(value.toInt()));
-		adjustItemPosition(0);
 	} else if (property == "text") {
 		setPlainText(value.toString());
+	} else if (property == "rotation angle") {
+		setRotationAngle(value.toDouble());
 	}
 	update();
 }
@@ -202,17 +206,20 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 		* y : ordonnee de la position
 		* size : taille du texte
 		* text : texte
+		* "rotation angle" : amgle de rotation
 	@return La valeur de la propriete property
 */
 QVariant PartText::property(const QString &property) {
 	if (property == "x") {
-		return((scenePos() + margin()).x());
+		return(pos().x());
 	} else if (property == "y") {
-		return((scenePos() + margin()).y());
+		return(pos().y());
 	} else if (property == "size") {
 		return(font().pointSize());
 	} else if (property == "text") {
 		return(toPlainText());
+	} else if (property == "rotation angle") {
+		return(rotation());
 	}
 	return(QVariant());
 }
@@ -224,9 +231,6 @@ QVariant PartText::property(const QString &property) {
 */
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
 	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
-		// memorise la nouvelle position "officielle" du champ de texte
-		// cette information servira a le recentrer en cas d'ajout / retrait de lignes
-		known_position_ = pos();
 		updateCurrentPartEditor();
 	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
 		if (value.toBool() == true) {
@@ -284,7 +288,12 @@ void PartText::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, Q
 */
 void PartText::adjustItemPosition(int new_block_count) {
 	Q_UNUSED(new_block_count);
-	setPos(known_position_);
+	QPointF origin_offset = margin();
+	
+	QTransform base_translation;
+	base_translation.translate(-origin_offset.x(), -origin_offset.y());
+	setTransform(base_translation, false);
+	setTransformOriginPoint(origin_offset);
 }
 
 #ifdef QET_DEBUG_EDITOR_TEXTS

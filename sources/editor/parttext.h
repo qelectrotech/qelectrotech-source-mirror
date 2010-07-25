@@ -25,6 +25,8 @@ class TextEditor;
 	dessin d'un element dans l'editeur d'element.
 */
 class PartText : public QGraphicsTextItem, public CustomElementPart {
+	Q_OBJECT
+	
 	// constructeurs, destructeur
 	public:
 	PartText(QETElementEditor *, QGraphicsItem * = 0, ElementScene * = 0);
@@ -45,16 +47,15 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	virtual QString xmlName() const { return(QString("text")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
-	QPointF pos() const;
-	void setPos(const QPointF &);
-	void setPos(qreal, qreal);
+	qreal rotationAngle() const;
+	void setRotationAngle(const qreal &);
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
 	
 	public slots:
-	void adjustItemPosition(int);
+	void adjustItemPosition(int = 0);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
@@ -68,6 +69,5 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	void drawPoint(QPainter *, const QPointF &);
 #endif
 	QString previous_text;
-	QPointF known_position_;
 };
 #endif
