@@ -2388,7 +2388,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
         <source>Afficher</source>
-        <translation>Wyświetl</translation>
+        <translation>Widok</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="434"/>
