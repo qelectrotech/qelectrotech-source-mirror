@@ -1188,7 +1188,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ajouter un schéma</source>
-        <translation>Dodaj schemat</translation>
+        <translation>Wstaw schemat</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
@@ -1649,7 +1649,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="166"/>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
-        <translation>Dodaj drugi element jako współistniejący</translation>
+        <translation>Wstaw drugi element jako współistniejący</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="121"/>
@@ -1868,7 +1868,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="35"/>
         <source>Ajouter une ligne</source>
-        <translation>Dodaj wiersz</translation>
+        <translation>Wstaw wiersz</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="67"/>
@@ -2409,7 +2409,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="206"/>
         <source>Ajouter une colonne</source>
-        <translation>Dodaj kolumnę</translation>
+        <translation>Wstaw kolumnę</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
@@ -2554,7 +2554,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="224"/>
         <source>Mode Selection</source>
-        <translation>Wybór trybu</translation>
+        <translation>Tryb edycji</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
@@ -2629,7 +2629,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
         <source>Zoom adapté</source>
-        <translation>Dopasuj powiększenie</translation>
+        <translation>Dostosuj powiększenie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
@@ -2654,7 +2654,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Réinitialiser les conducteurs</source>
-        <translation>Usuń przewody</translation>
+        <translation>Przywrócenie tras przewodów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
@@ -2704,7 +2704,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
         <source>Conducteurs par défaut</source>
-        <translation>Domyślne przewody</translation>
+        <translation>Właściwości przewodów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="267"/>
@@ -2729,7 +2729,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Ajouter une ligne</source>
-        <translation>Dodaj wiersz</translation>
+        <translation>Wstaw wiersz</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
@@ -2739,7 +2739,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Ajouter un schéma</source>
-        <translation>Dodaj schemat</translation>
+        <translation>Wstaw schemat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
@@ -2755,7 +2755,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Édite les propriétés des objets sélectionné</source>
         <comment>status bar tip</comment>
-        <translation>Edytuj właściwości dla zaznaczonego obiektu</translation>
+        <translation>Edytuje właściwości zaznaczonego obiektu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="429"/>
@@ -2976,25 +2976,25 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
-        <translation>Zmiana tras przewodów, niezależnie od zmian wprowadzonych przez użytkownika</translation>
+        <translation>Przywrócenie tras przewodów, niezależnie od zmian wprowadzonych przez użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Spécifie les propriétés par défaut des conducteurs</source>
         <comment>status bar tip</comment>
-        <translation>Określa właściwości domyślne przewodów</translation>
+        <translation>Edytuje domyślne właściwości przewodów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>Edycja informacji wyświetlanych w ramce rysunkowej</translation>
+        <translation>Edytuje informacje wyświetlane w ramce rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Dodaje kolumnę do schematu</translation>
+        <translation>Wstawia kolumnę do schematu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
@@ -3006,7 +3006,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
         <source>Agrandit le schéma en hauteur</source>
         <comment>status bar tip</comment>
-        <translation>Dodaje wiersz do schematu</translation>
+        <translation>Wstawia wiersz do schematu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="310"/>
@@ -3099,13 +3099,13 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
-        <translation>Prezentacja wszystkich otwartych okien, w postaci mozaiki</translation>
+        <translation>Prezentuje wszystkie otwarte okna, w postaci mozaiki</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
-        <translation>Prezentacja wszystkich otwartych okien, w postaci kaskady</translation>
+        <translation>Prezentuje wszystkie otwarte okna, w postaci kaskady</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
@@ -3208,7 +3208,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
         <source>Éditer la taille et le point de saisie</source>
-        <translation>Edycja rozmiaru i aktywnego obszaru</translation>
+        <translation>Edytuj rozmiar i aktywny obszar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
@@ -3228,42 +3228,42 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Ajouter une ligne</source>
-        <translation>Dodaj linię</translation>
+        <translation>Wstaw linię</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Ajouter une ellipse</source>
-        <translation>Dodaj elipsę</translation>
+        <translation>Wstaw elipsę</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
         <source>Ajouter un cercle</source>
-        <translation>Dodaj okrąg</translation>
+        <translation>Wstaw okrąg</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
         <source>Ajouter un polygone</source>
-        <translation>Dodaj wielokąt</translation>
+        <translation>Wstaw wielokąt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
         <source>Ajouter du texte</source>
-        <translation>Dodaj tekst</translation>
+        <translation>Wstaw tekst</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
         <source>Ajouter un arc de cercle</source>
-        <translation>Dodaj łuk</translation>
+        <translation>Wstaw łuk</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="163"/>
         <source>Ajouter une borne</source>
-        <translation>Dodaj punkt pochwycenia</translation>
+        <translation>Wstaw punkt pochwycenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="164"/>
         <source>Ajouter un champ de texte</source>
-        <translation>Dodaj pole tekstowe</translation>
+        <translation>Wstaw pole tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="185"/>
@@ -3803,7 +3803,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
-        <translation>Przytrzymaj klawisz Shift, aby dodać kilka elementów</translation>
+        <translation>Przytrzymaj klawisz Shift, aby wstawić kilka elementów</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="180"/>
@@ -3838,7 +3838,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Ajouter un rectangle</source>
-        <translation>Dodaj prostokąt</translation>
+        <translation>Wstaw prostokąt</translation>
     </message>
 </context>
 <context>
@@ -3878,12 +3878,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="176"/>
         <source>Ajuster la largeur</source>
-        <translation>Dopasuj do szerokości</translation>
+        <translation>Dostosuj do szerokości</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="177"/>
         <source>Ajuster la page</source>
-        <translation>Dopasuj do strony</translation>
+        <translation>Dostosuj do strony</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="178"/>
@@ -3968,7 +3968,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="244"/>
         <source>Adapter le schéma à la page</source>
-        <translation>Dopasuj schemat do strony</translation>
+        <translation>Dostosuj schemat do strony</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="245"/>
@@ -4158,7 +4158,7 @@ Dostępne opcje:
         <location filename="../sources/diagramcommands.cpp" line="495"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation>Reset %1</translation>
+        <translation>Przywróć %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="533"/>
