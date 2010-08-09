@@ -2548,7 +2548,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="225"/>
         <source>Mode Visualisation</source>
-        <translation>Tryb widoku</translation>
+        <translation>Tryb podglądu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
@@ -3088,13 +3088,13 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
-        <translation>Prezentuje wszystkie otwarte okna, w postaci mozaiki</translation>
+        <translation>Prezentuje okna w postaci mozaiki</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="326"/>
         <source>Dispose les fenêtres en cascade</source>
         <comment>status bar tip</comment>
-        <translation>Prezentuje wszystkie otwarte okna, w postaci kaskady</translation>
+        <translation>Prezentuje okna w postaci kaskady</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="330"/>
