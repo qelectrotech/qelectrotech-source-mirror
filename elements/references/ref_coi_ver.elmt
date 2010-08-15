@@ -1,0 +1,12 @@
+<definition width="20" version="0.22" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Reference coil (vertical)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-24" x1="-7.03337" y2="-26" x2="-7.03337"/>
+        <rect width="6" x="-10.0334" y="-24" antialias="false" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-7.03337" y2="-18" x2="-7.03337"/>
+        <input x="-14.0334" y="-13.5" size="5" rotate="true" text="/"/>
+    </description>
+</definition>
