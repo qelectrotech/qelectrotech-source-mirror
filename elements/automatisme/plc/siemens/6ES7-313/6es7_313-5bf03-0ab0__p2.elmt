@@ -4,17 +4,26 @@
         <name lang="fr">6ES7 313-5BF03-0AB0 (part 2/8)</name>
         <name lang="pl">6ES7 313-5BF03-0AB0 (part 2/8)</name>
     </names>
-    <informations>SIEMENS S7-300 (digital inputs)</informations>
+    <informations></informations>
     <description>
-        <input x="79" y="-6" size="7" rotate="true" text="AI0"/>
-        <input x="719" y="-6" size="7" rotate="true" text="AI2"/>
-        <input x="639" y="-6" size="7" rotate="true" text="AI2"/>
-        <input x="559" y="-6" size="7" rotate="true" text="AI2"/>
-        <input x="479" y="-6" size="7" rotate="true" text="AI1"/>
-        <input x="399" y="-6" size="7" rotate="true" text="AI1"/>
-        <input x="319" y="-6" size="7" rotate="true" text="AI1"/>
-        <input x="238" y="-6" size="7" rotate="true" text="AI0"/>
-        <input x="159" y="-6" size="7" rotate="true" text="AI0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="90" y2="10" x2="156"/>
+        <input x="156" y="10" size="7" rotate="true" text="CH0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="570" y2="10" x2="636"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="330" y2="10" x2="396"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="184" y2="10" x2="250"/>
+        <input x="66" y="-6" size="7" rotate="true" text="PIW100U"/>
+        <input x="636" y="10" size="7" rotate="true" text="CH2"/>
+        <input x="396" y="10" size="7" rotate="true" text="CH1"/>
+        <input x="706" y="-6" size="7" rotate="true" text="PIW104-"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="664" y2="10" x2="730"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="424" y2="10" x2="490"/>
+        <input x="626" y="-6" size="7" rotate="true" text="PIW104I"/>
+        <input x="546" y="-6" size="7" rotate="true" text="PIW104U"/>
+        <input x="466" y="-6" size="7" rotate="true" text="PIW102-"/>
+        <input x="386" y="-6" size="7" rotate="true" text="PIW102I"/>
+        <input x="306" y="-6" size="7" rotate="true" text="PIW102U"/>
+        <input x="226" y="-6" size="7" text="PIW100-"/>
+        <input x="147" y="-6" size="7" rotate="true" text="PIW100I"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="60" x2="-10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="750" y2="60" x2="750"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="733" y2="-28" x2="750"/>

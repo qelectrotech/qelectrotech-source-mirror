@@ -4,23 +4,18 @@
         <name lang="fr">6ES7 313-5BF03-0AB0 (part 3/8)</name>
         <name lang="pl">6ES7 313-5BF03-0AB0 (part 3/8)</name>
     </names>
-    <informations>SIEMENS S7-300 (digital inputs)</informations>
+    <informations></informations>
     <description>
         <input x="712" y="37" size="7" rotate="true" text="MANA"/>
-        <input x="416" y="45.5" size="9" rotate="true" text="V"/>
-        <input x="282" y="-14.5" size="9" rotate="true" text="R"/>
-        <input x="496" y="45.5" size="9" rotate="true" text="A"/>
-        <input x="656" y="45.5" size="9" rotate="true" text="A"/>
-        <input x="576" y="45.5" size="9" rotate="true" text="V"/>
-        <input x="637" y="37" size="7" rotate="true" text="AO1"/>
-        <input x="557" y="37" size="7" rotate="true" text="AO1"/>
-        <input x="477" y="37" size="7" rotate="true" text="AO0"/>
-        <input x="397" y="37" size="7" rotate="true" text="AO0"/>
-        <input x="319" y="-6" size="7" rotate="true" text="AI4"/>
-        <input x="239" y="-6" size="7" rotate="true" text="AI4"/>
-        <input x="159" y="-6" size="7" rotate="true" text="AI3"/>
-        <input x="79" y="-6" size="7" rotate="true" text="AI3"/>
-        <input x="-1" y="-6" size="7" rotate="true" text="AI3"/>
+        <input x="626" y="37" size="7" rotate="true" text="PQW102A"/>
+        <input x="546" y="37" size="7" rotate="true" text="PQW102V"/>
+        <input x="466" y="37" size="7" rotate="true" text="PQW100A"/>
+        <input x="386" y="37" size="7" rotate="true" text="PQW100V"/>
+        <input x="307" y="-6" size="7" rotate="true" text="PIW108"/>
+        <input x="226" y="-6" size="7" rotate="true" text="PIW108"/>
+        <input x="146" y="-6" size="7" rotate="true" text="PIW106-"/>
+        <input x="66" y="-6" size="7" rotate="true" text="PIW106I"/>
+        <input x="-13" y="-6" size="7" rotate="true" text="PIW106U"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="750" y2="58" x2="750"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="58" x1="733" y2="58" x2="750"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="58" x1="-10" y2="58" x2="407"/>
@@ -55,7 +50,7 @@
         <circle x="167.764" y="-30.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="87.7639" y="-30.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <circle x="7.7639" y="-30.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
-        <input x="0" y="14.5" size="9" rotate="true" text="SIEMENS   6ES7 313-5BF03-0AB0    DI 24 x DC24V  DO 16 x DC24V/0,5A   AI5/AO2 x 12BIT   part 3 of 8"/>
+        <input x="0" y="16.5" size="9" rotate="true" text="SIEMENS   6ES7 313-5BF03   DI 24 x DC24V  DO 16 x DC24V/0,5A   AI5/AO2 x 12BIT   part 3 of 8"/>
         <terminal x="90" y="-31" orientation="n"/>
         <terminal x="170" y="-31" orientation="n"/>
         <terminal x="250" y="-31" orientation="n"/>
