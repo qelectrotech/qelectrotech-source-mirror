@@ -6,17 +6,8 @@
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="90" y2="10" x2="156"/>
-        <input x="156" y="10" size="7" rotate="true" text="CH0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="570" y2="10" x2="636"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="330" y2="10" x2="396"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="184" y2="10" x2="250"/>
         <input x="66" y="-6" size="7" rotate="true" text="PIW100U"/>
-        <input x="636" y="10" size="7" rotate="true" text="CH2"/>
-        <input x="396" y="10" size="7" rotate="true" text="CH1"/>
         <input x="706" y="-6" size="7" rotate="true" text="PIW104-"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="664" y2="10" x2="730"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="424" y2="10" x2="490"/>
         <input x="626" y="-6" size="7" rotate="true" text="PIW104I"/>
         <input x="546" y="-6" size="7" rotate="true" text="PIW104U"/>
         <input x="466" y="-6" size="7" rotate="true" text="PIW102-"/>
