@@ -100,6 +100,7 @@ void BorderPropertiesWidget::build() {
 	
 	columns_count = new QSpinBox(diagram_size_box);
 	columns_count -> setMinimum(BorderInset::minNbColumns());
+	columns_count -> setMaximum(10000); // valeur arbitraire
 	
 	columns_width = new QSpinBox(diagram_size_box);
 	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
@@ -114,6 +115,7 @@ void BorderPropertiesWidget::build() {
 	
 	rows_count = new QSpinBox(diagram_size_box);
 	rows_count -> setMinimum(BorderInset::minNbRows());
+	rows_count -> setMaximum(10000); // valeur arbitraire
 	
 	rows_height  = new QSpinBox(diagram_size_box);
 	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
