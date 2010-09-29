@@ -6,6 +6,10 @@
     </names>
     <informations></informations>
     <description>
+        <input x="339" y="-17" size="7" rotate="true" text="-"/>
+        <input x="258" y="-17" size="7" rotate="true" text="+"/>
+        <input x="179" y="-17" size="7" rotate="true" text="-"/>
+        <input x="98" y="-17" size="7" rotate="true" text="+"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="413" y2="-28" x2="487"/>
         <circle x="487.764" y="-30.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <input x="482" y="-7" size="7" rotate="true" text="M"/>
@@ -16,16 +20,16 @@
         <input x="402" y="-18.95" size="5" rotate="true" text="11"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="510" y2="60" x2="510"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="493" y2="-28" x2="510"/>
-        <input x="308" y="-7" size="7" rotate="true" text="PIW290-"/>
-        <input x="148" y="-7" size="7" rotate="true" text="PIW288-"/>
+        <input x="309" y="-6" size="7" rotate="true" text="PIW290"/>
+        <input x="149" y="-6" size="7" rotate="true" text="PIW288"/>
         <input x="1" y="-7" size="7" rotate="true" text="L+"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="333" y2="-28" x2="407"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="173" y2="-28" x2="247"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="-10" y2="-28" x2="7"/>
         <input x="324" y="-19.5" size="5" rotate="true" text="5"/>
         <input x="164" y="-19.5" size="5" rotate="true" text="3"/>
-        <input x="67" y="-7" size="7" rotate="true" text="PIW288+"/>
-        <input x="227" y="-7" size="7" rotate="true" text="PIW290+"/>
+        <input x="69" y="-6" size="7" rotate="true" text="PIW288"/>
+        <input x="229" y="-6" size="7" rotate="true" text="PIW290"/>
         <circle x="167.764" y="-30.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-28" x1="13" y2="-28" x2="87"/>
         <circle x="327.764" y="-30.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
