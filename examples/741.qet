@@ -1,0 +1,964 @@
+<project title="Oprerational amplifier uA741" version="0.3">
+    <newdiagrams>
+        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
+        <inset title="Oprerational amplifier uA741" folio="%id/%total" author="pawel32640" filename="741.qet" date="20100921"/>
+        <conductors num="" type="multi"/>
+    </newdiagrams>
+    <diagram title="Oprerational amplifier uA741" displayrows="true" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="1" rows="8" author="pawel32640" filename="741.qet" date="20100921" rowsize="80">
+        <defaultconductor num="" type="multi"/>
+        <elements>
+            <element x="390" y="260" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="5"/>
+                </inputs>
+            </element>
+            <element x="370" y="300" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" text="Inverting&#xa;   input"/>
+                </inputs>
+            </element>
+            <element x="400" y="530" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="2"/>
+                </inputs>
+            </element>
+            <element x="390" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" text="Offset&#xa;  null"/>
+                </inputs>
+            </element>
+            <element x="140" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" text="Offset&#xa;  null"/>
+                </inputs>
+            </element>
+            <element x="150" y="530" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="1"/>
+                </inputs>
+            </element>
+            <element x="130" y="300" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" text="Non-inverting&#xa;       input"/>
+                </inputs>
+            </element>
+            <element x="150" y="260" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="3"/>
+                </inputs>
+            </element>
+            <element x="690" y="580" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="0" orientation="0"/>
+                    <terminal x="0" y="17" id="1" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="750" y="320" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="2" orientation="0"/>
+                    <terminal x="10" y="16" id="3" orientation="2"/>
+                    <terminal x="-6" y="0" id="4" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="9.3781" usery="0.0569853" text="Q18"/>
+                </inputs>
+            </element>
+            <element x="820" y="240" type="embed://import/elektronika/n_2-20100920180108.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="5" orientation="0"/>
+                    <terminal x="0" y="16" id="6" orientation="2"/>
+                    <terminal x="16" y="0" id="7" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-30.5242" usery="0.207368" text="Q15"/>
+                </inputs>
+            </element>
+            <element x="860" y="190" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="8" orientation="0"/>
+                    <terminal x="10" y="16" id="9" orientation="2"/>
+                    <terminal x="-6" y="0" id="10" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="10.3659" usery="0.386248" text="Q14"/>
+                </inputs>
+            </element>
+            <element x="920" y="340" type="embed://import/zlacza_i_zaciski/zacisk.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-1" id="11" orientation="2"/>
+                    <terminal x="0" y="1" id="12" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="3" y="0.333333" text=""/>
+                </inputs>
+            </element>
+            <element x="860" y="440" type="embed://import/elektronika/tranzystory/bipolarny_pnp.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="13" orientation="0"/>
+                    <terminal x="10" y="16" id="14" orientation="2"/>
+                    <terminal x="-6" y="0" id="15" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="14" y="3.66667" userx="9.71958" usery="1.03256" text="Q20"/>
+                </inputs>
+            </element>
+            <element x="870" y="280" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="16" orientation="0"/>
+                    <terminal x="0" y="17" id="17" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="870" y="380" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="18" orientation="0"/>
+                    <terminal x="0" y="17" id="19" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="690" y="280" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="20" orientation="0"/>
+                    <terminal x="0" y="17" id="21" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="690" y="350" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="22" orientation="0"/>
+                    <terminal x="0" y="17" id="23" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="920" y="610" type="embed://import/zlacza_i_zaciski/zacisk.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-1" id="24" orientation="2"/>
+                    <terminal x="0" y="1" id="25" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="3" y="0.333333" text=""/>
+                </inputs>
+            </element>
+            <element x="330" y="360" type="embed://import/elektronika/tranzystory/bipolarny_pnp.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="26" orientation="0"/>
+                    <terminal x="10" y="16" id="27" orientation="2"/>
+                    <terminal x="-6" y="0" id="28" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="14" y="3.66667" userx="10.0488" usery="1.03256" text="Q4"/>
+                </inputs>
+            </element>
+            <element x="210" y="360" type="embed://import/elektronika/p_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="29" orientation="0"/>
+                    <terminal x="0" y="16" id="30" orientation="2"/>
+                    <terminal x="16" y="0" id="31" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-23.9389" usery="0.536631" text="Q3"/>
+                </inputs>
+            </element>
+            <element x="390" y="280" type="embed://import/zlacza_i_zaciski/zacisk.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-1" id="32" orientation="2"/>
+                    <terminal x="0" y="1" id="33" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="3" y="0.333333" text=""/>
+                </inputs>
+            </element>
+            <element x="150" y="280" type="embed://import/bornes/terminal.elmt" orientation="1">
+                <terminals>
+                    <terminal x="0" y="-1" id="34" orientation="2"/>
+                    <terminal x="0" y="1" id="35" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="8" y="0.666667" text=""/>
+                </inputs>
+            </element>
+            <element x="200" y="280" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="36" orientation="0"/>
+                    <terminal x="10" y="16" id="37" orientation="2"/>
+                    <terminal x="-6" y="0" id="38" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="9.3781" usery="-0.272278" text="Q1"/>
+                </inputs>
+            </element>
+            <element x="340" y="280" type="embed://import/elektronika/n_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="39" orientation="0"/>
+                    <terminal x="0" y="16" id="40" orientation="2"/>
+                    <terminal x="16" y="0" id="41" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-23.9878" usery="1.19516" text="Q2"/>
+                </inputs>
+            </element>
+            <element x="300" y="150" type="embed://import/elektronika/p_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="42" orientation="0"/>
+                    <terminal x="0" y="16" id="43" orientation="2"/>
+                    <terminal x="16" y="0" id="44" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-24.9267" usery="-0.121895" text="Q8"/>
+                </inputs>
+            </element>
+            <element x="420" y="150" type="embed://import/elektronika/tranzystory/bipolarny_pnp.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="45" orientation="0"/>
+                    <terminal x="10" y="16" id="46" orientation="2"/>
+                    <terminal x="-6" y="0" id="47" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="14" y="3.66667" userx="10.0488" usery="1.03256" text="Q9"/>
+                </inputs>
+            </element>
+            <element x="750" y="150" type="embed://import/elektronika/tranzystory/bipolarny_pnp.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="48" orientation="0"/>
+                    <terminal x="10" y="16" id="49" orientation="2"/>
+                    <terminal x="-6" y="0" id="50" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="14" y="3.66667" userx="10.0488" usery="1.03256" text="Q13"/>
+                </inputs>
+            </element>
+            <element x="530" y="150" type="embed://import/elektronika/p_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="51" orientation="0"/>
+                    <terminal x="0" y="16" id="52" orientation="2"/>
+                    <terminal x="16" y="0" id="53" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-31.512" usery="0.536631" text="Q12"/>
+                </inputs>
+            </element>
+            <element x="920" y="100" type="embed://import/zlacza_i_zaciski/zacisk.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-1" id="54" orientation="2"/>
+                    <terminal x="0" y="1" id="55" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="3" y="0.333333" text=""/>
+                </inputs>
+            </element>
+            <element x="330" y="490" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="56" orientation="0"/>
+                    <terminal x="10" y="16" id="57" orientation="2"/>
+                    <terminal x="-6" y="0" id="58" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="10.0366" usery="0.386248" text="Q6"/>
+                </inputs>
+            </element>
+            <element x="210" y="490" type="embed://import/elektronika/n_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="59" orientation="0"/>
+                    <terminal x="0" y="16" id="60" orientation="2"/>
+                    <terminal x="16" y="0" id="61" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-23.9389" usery="0.536631" text="Q5"/>
+                </inputs>
+            </element>
+            <element x="240" y="430" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="62" orientation="0"/>
+                    <terminal x="10" y="16" id="63" orientation="2"/>
+                    <terminal x="-6" y="0" id="64" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="10.6952" usery="-0.272278" text="Q7"/>
+                </inputs>
+            </element>
+            <element x="150" y="550" type="embed://import/zlacza_i_zaciski/zacisk.elmt" orientation="1">
+                <terminals>
+                    <terminal x="0" y="-1" id="65" orientation="2"/>
+                    <terminal x="0" y="1" id="66" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="3" y="0.333333" text=""/>
+                </inputs>
+            </element>
+            <element x="210" y="580" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="67" orientation="0"/>
+                    <terminal x="0" y="17" id="68" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="270" y="580" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="69" orientation="0"/>
+                    <terminal x="0" y="17" id="70" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="340" y="580" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="71" orientation="0"/>
+                    <terminal x="0" y="17" id="72" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="430" y="580" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="73" orientation="0"/>
+                    <terminal x="0" y="17" id="74" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="760" y="580" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="75" orientation="0"/>
+                    <terminal x="0" y="17" id="76" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="400" y="550" type="embed://import/zlacza_i_zaciski/zacisk.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-1" id="77" orientation="2"/>
+                    <terminal x="0" y="1" id="78" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="3" y="0.333333" text=""/>
+                </inputs>
+            </element>
+            <element x="430" y="490" type="embed://import/elektronika/n_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="79" orientation="0"/>
+                    <terminal x="0" y="16" id="80" orientation="2"/>
+                    <terminal x="16" y="0" id="81" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-31.134" usery="-0.121895" text="Q10"/>
+                </inputs>
+            </element>
+            <element x="520" y="490" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="82" orientation="0"/>
+                    <terminal x="10" y="16" id="83" orientation="2"/>
+                    <terminal x="-6" y="0" id="84" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="10.0366" usery="0.0569853" text="Q11"/>
+                </inputs>
+            </element>
+            <element x="530" y="280" type="embed://import/semiconducteurs/rlc/normaux/resistance.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="85" orientation="0"/>
+                    <terminal x="0" y="17" id="86" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="620" y="550" type="embed://import/elektronika/n_2.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="87" orientation="0"/>
+                    <terminal x="0" y="16" id="88" orientation="2"/>
+                    <terminal x="16" y="0" id="89" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-19" y="3.5" userx="-30.5242" usery="0.536631" text="Q22"/>
+                </inputs>
+            </element>
+            <element x="620" y="320" type="embed://import/semiconducteurs/rlc/normaux/capacite.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="90" orientation="0"/>
+                    <terminal x="0" y="17" id="91" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="680" y="440" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="92" orientation="0"/>
+                    <terminal x="10" y="16" id="93" orientation="2"/>
+                    <terminal x="-6" y="0" id="94" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="10.0366" usery="0.386248" text="Q16"/>
+                </inputs>
+            </element>
+            <element x="750" y="490" type="embed://import/elektronika/tranzystory/biopolarny_npn.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="95" orientation="0"/>
+                    <terminal x="10" y="16" id="96" orientation="2"/>
+                    <terminal x="-6" y="0" id="97" orientation="3"/>
+                </terminals>
+                <inputs>
+                    <input x="13" y="4.66667" userx="9.70737" usery="0.386248" text="Q17"/>
+                </inputs>
+            </element>
+            <element x="920" y="320" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="6"/>
+                </inputs>
+            </element>
+            <element x="910" y="350" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" text="Output"/>
+                </inputs>
+            </element>
+            <element x="920" y="590" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="4"/>
+                </inputs>
+            </element>
+            <element x="910" y="620" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="0.243862" usery="4.68295" text="V-"/>
+                </inputs>
+            </element>
+            <element x="920" y="80" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-8" y="5" text="7"/>
+                </inputs>
+            </element>
+            <element x="910" y="110" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-0.332358" usery="4.68295" text="V+"/>
+                </inputs>
+            </element>
+            <element x="220" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R1&#xa;1k"/>
+                </inputs>
+            </element>
+            <element x="280" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R3&#xa;50k"/>
+                </inputs>
+            </element>
+            <element x="350" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R2&#xa;1k"/>
+                </inputs>
+            </element>
+            <element x="440" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R4&#xa;5k"/>
+                </inputs>
+            </element>
+            <element x="700" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R12&#xa;50k"/>
+                </inputs>
+            </element>
+            <element x="770" y="570" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R11&#xa;50"/>
+                </inputs>
+            </element>
+            <element x="540" y="270" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R5&#xa;39k"/>
+                </inputs>
+            </element>
+            <element x="700" y="270" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R7&#xa;4,5k"/>
+                </inputs>
+            </element>
+            <element x="700" y="340" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R8&#xa;7,5k"/>
+                </inputs>
+            </element>
+            <element x="880" y="270" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R9&#xa;25"/>
+                </inputs>
+            </element>
+            <element x="880" y="370" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="R10&#xa;50"/>
+                </inputs>
+            </element>
+            <element x="630" y="310" type="embed://import/oznaczenia/tekst_08.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-7" y="6" userx="-7" usery="10.6098" text="30p"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="" terminal1="92" terminal2="95" type="multi">
+                <segment length="-14" orientation="vertical"/>
+                <segment length="-16" orientation="vertical"/>
+                <segment length="70" orientation="horizontal"/>
+                <segment length="76" orientation="vertical"/>
+                <segment length="4" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="14" terminal2="25" type="multi"/>
+            <conductor num="" terminal1="88" terminal2="1" type="multi"/>
+            <conductor num="" terminal1="43" terminal2="36" type="multi">
+                <segment length="9" orientation="vertical"/>
+                <segment length="31" orientation="vertical"/>
+                <segment length="0" orientation="horizontal"/>
+                <segment length="41" orientation="vertical"/>
+                <segment length="-90" orientation="horizontal"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="8" terminal2="55" type="multi"/>
+            <conductor num="" terminal1="0" terminal2="93" type="multi"/>
+            <conductor num="" terminal1="5" terminal2="10" type="multi"/>
+            <conductor num="" terminal1="1" terminal2="83" type="multi"/>
+            <conductor num="" terminal1="10" terminal2="49" type="multi"/>
+            <conductor num="" terminal1="1" terminal2="76" type="multi"/>
+            <conductor num="" terminal1="20" terminal2="49" type="multi">
+                <segment length="-19" orientation="vertical"/>
+                <segment length="0" orientation="horizontal"/>
+                <segment length="70" orientation="horizontal"/>
+                <segment length="-51" orientation="vertical"/>
+                <segment length="-19" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="90" terminal2="20" type="multi">
+                <segment length="-11.5" orientation="vertical"/>
+                <segment length="-47.5" orientation="vertical"/>
+                <segment length="70" orientation="horizontal"/>
+                <segment length="12.5" orientation="vertical"/>
+                <segment length="6.5" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="15" terminal2="95" type="multi"/>
+            <conductor num="" terminal1="2" terminal2="49" type="multi"/>
+            <conductor num="" terminal1="48" terminal2="55" type="multi"/>
+            <conductor num="" terminal1="3" terminal2="95" type="multi"/>
+            <conductor num="" terminal1="4" terminal2="22" type="multi"/>
+            <conductor num="" terminal1="22" terminal2="21" type="multi"/>
+            <conductor num="" terminal1="92" terminal2="23" type="multi"/>
+            <conductor num="" terminal1="6" terminal2="17" type="multi">
+                <segment length="6.5" orientation="vertical"/>
+                <segment length="53.5" orientation="vertical"/>
+                <segment length="50" orientation="horizontal"/>
+                <segment length="-7.5" orientation="vertical"/>
+                <segment length="-11.5" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="7" terminal2="9" type="multi"/>
+            <conductor num="" terminal1="9" terminal2="16" type="multi"/>
+            <conductor num="" terminal1="12" terminal2="17" type="multi">
+                <segment length="-9" orientation="horizontal"/>
+                <segment length="0" orientation="horizontal"/>
+                <segment length="-38" orientation="horizontal"/>
+                <segment length="-26.6667" orientation="vertical"/>
+                <segment length="-12.3333" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="17" terminal2="18" type="multi"/>
+            <conductor num="" terminal1="19" terminal2="13" type="multi"/>
+            <conductor num="" terminal1="25" terminal2="76" type="multi">
+                <segment length="-9" orientation="horizontal"/>
+                <segment length="-148" orientation="horizontal"/>
+                <segment length="-9" orientation="vertical"/>
+                <segment length="0" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="89" terminal2="96" type="multi"/>
+            <conductor num="" terminal1="31" terminal2="28" type="multi"/>
+            <conductor num="" terminal1="37" terminal2="29" type="multi"/>
+            <conductor num="" terminal1="40" terminal2="26" type="multi"/>
+            <conductor num="" terminal1="33" terminal2="41" type="multi"/>
+            <conductor num="" terminal1="35" terminal2="38" type="multi"/>
+            <conductor num="" terminal1="36" terminal2="39" type="multi"/>
+            <conductor num="" terminal1="44" terminal2="47" type="multi"/>
+            <conductor num="" terminal1="39" terminal2="44" type="multi">
+                <segment length="-19" orientation="vertical"/>
+                <segment length="0" orientation="horizontal"/>
+                <segment length="-91" orientation="vertical"/>
+                <segment length="-11" orientation="horizontal"/>
+                <segment length="-9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="42" terminal2="45" type="multi">
+                <segment length="-9" orientation="vertical"/>
+                <segment length="-21" orientation="vertical"/>
+                <segment length="130" orientation="horizontal"/>
+                <segment length="21" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="45" terminal2="51" type="multi">
+                <segment length="-9" orientation="vertical"/>
+                <segment length="-21" orientation="vertical"/>
+                <segment length="100" orientation="horizontal"/>
+                <segment length="21" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="51" terminal2="48" type="multi">
+                <segment length="-9" orientation="vertical"/>
+                <segment length="-21" orientation="vertical"/>
+                <segment length="230" orientation="horizontal"/>
+                <segment length="21" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="62" terminal2="42" type="multi">
+                <segment length="-9" orientation="vertical"/>
+                <segment length="-301" orientation="vertical"/>
+                <segment length="50" orientation="horizontal"/>
+                <segment length="21" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="59" terminal2="30" type="multi"/>
+            <conductor num="" terminal1="64" terminal2="30" type="multi"/>
+            <conductor num="" terminal1="61" terminal2="58" type="multi"/>
+            <conductor num="" terminal1="63" terminal2="61" type="multi"/>
+            <conductor num="" terminal1="66" terminal2="60" type="multi"/>
+            <conductor num="" terminal1="67" terminal2="60" type="multi"/>
+            <conductor num="" terminal1="69" terminal2="58" type="multi"/>
+            <conductor num="" terminal1="57" terminal2="71" type="multi"/>
+            <conductor num="" terminal1="57" terminal2="78" type="multi"/>
+            <conductor num="" terminal1="68" terminal2="70" type="multi"/>
+            <conductor num="" terminal1="70" terminal2="72" type="multi"/>
+            <conductor num="" terminal1="73" terminal2="80" type="multi"/>
+            <conductor num="" terminal1="72" terminal2="74" type="multi"/>
+            <conductor num="" terminal1="74" terminal2="83" type="multi">
+                <segment length="4" orientation="vertical"/>
+                <segment length="5" orientation="vertical"/>
+                <segment length="100" orientation="horizontal"/>
+                <segment length="-86" orientation="vertical"/>
+                <segment length="-14" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="79" terminal2="46" type="multi"/>
+            <conductor num="" terminal1="79" terminal2="28" type="multi">
+                <segment length="-9" orientation="vertical"/>
+                <segment length="-31" orientation="vertical"/>
+                <segment length="-129" orientation="horizontal"/>
+                <segment length="-70" orientation="vertical"/>
+                <segment length="19" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="56" terminal2="27" type="multi"/>
+            <conductor num="" terminal1="81" terminal2="84" type="multi"/>
+            <conductor num="" terminal1="82" terminal2="86" type="multi"/>
+            <conductor num="" terminal1="85" terminal2="52" type="multi"/>
+            <conductor num="" terminal1="53" terminal2="50" type="multi"/>
+            <conductor num="" terminal1="52" terminal2="50" type="multi">
+                <segment length="9" orientation="vertical"/>
+                <segment length="40" orientation="horizontal"/>
+                <segment length="-29" orientation="vertical"/>
+                <segment length="131" orientation="horizontal"/>
+                <segment length="38.9996" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="81" terminal2="82" type="multi">
+                <segment length="0" orientation="horizontal"/>
+                <segment length="40.5" orientation="horizontal"/>
+                <segment length="-29" orientation="vertical"/>
+                <segment length="39.5" orientation="horizontal"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="87" terminal2="91" type="multi"/>
+            <conductor num="" terminal1="27" terminal2="91" type="multi"/>
+            <conductor num="" terminal1="94" terminal2="87" type="multi"/>
+            <conductor num="" terminal1="97" terminal2="93" type="multi"/>
+            <conductor num="" terminal1="96" terminal2="75" type="multi"/>
+        </conductors>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="en">Imported elements</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="cs">Zavedené prvky</name>
+            </names>
+            <category name="zlacza_i_zaciski">
+                <names>
+                    <name lang="pl"> Złącza i zaciski</name>
+                </names>
+                <element name="zacisk.elmt">
+                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                        <names>
+                            <name lang="pl">Zacisk</name>
+                        </names>
+                        <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <input x="3" y="0.333333" size="7" text="_"/>
+                            <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+                            <terminal x="0" y="3" orientation="s"/>
+                            <terminal x="0" y="-3" orientation="n"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+            <category name="oznaczenia">
+                <names>
+                    <name lang="pl">Oznaczenia</name>
+                </names>
+                <element name="tekst_08.elmt">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="pl">Tekst 08</name>
+                        </names>
+                        <informations/>
+                        <description>
+                            <input x="-7" y="6" size="8" rotate="true" text="_"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="tekst_10.elmt">
+                    <definition width="20" version="0.22" hotspot_x="10" hotspot_y="10" height="30" type="element" orientation="dyyy">
+                        <names>
+                            <name lang="pl">Tekst 10</name>
+                        </names>
+                        <informations/>
+                        <description>
+                            <input x="-8" y="5" size="10" rotate="true" text="_"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+            <category name="bornes">
+                <names>
+                    <name lang="ru">соеденителей</name>
+                    <name lang="pt">Terminais</name>
+                    <name lang="en">Terminals</name>
+                    <name lang="fr">Bornes</name>
+                    <name lang="pl">Złącza i zaciski</name>
+                    <name lang="es">Terminales</name>
+                    <name lang="cs">Svorky</name>
+                </names>
+                <element name="terminal.elmt">
+                    <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                        <names>
+                            <name lang="ru">Клеммник</name>
+                            <name lang="pt">Terminal de fim</name>
+                            <name lang="en">Terminal block</name>
+                            <name lang="fr">Borne finale</name>
+                            <name lang="es">Punto de unión</name>
+                            <name lang="cs">Koncová svorka</name>
+                            <name lang="pl">Zacisk</name>
+                        </names>
+                        <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <input x="8" y="0.666667" size="9" text="_"/>
+                            <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+                            <terminal x="0" y="3" orientation="s"/>
+                            <terminal x="0" y="-3" orientation="n"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+            <category name="semiconducteurs">
+                <names>
+                    <name lang="ru">Полупроводники</name>
+                    <name lang="pt">Semi-conductores</name>
+                    <name lang="en">Semiconductors</name>
+                    <name lang="fr">Semi-conducteurs</name>
+                    <name lang="pl">Półprzewodniki</name>
+                    <name lang="es">Semiconductores</name>
+                    <name lang="cs">Polovodiče</name>
+                </names>
+                <category name="rlc">
+                    <names>
+                        <name lang="ru">RLC</name>
+                        <name lang="pt">RLC</name>
+                        <name lang="en">RLC</name>
+                        <name lang="fr">RLC</name>
+                        <name lang="pl">RLC</name>
+                        <name lang="es">RLC</name>
+                        <name lang="cs">RLC</name>
+                    </names>
+                    <category name="normaux">
+                        <names>
+                            <name lang="ru">Нормальные</name>
+                            <name lang="pt">Normais</name>
+                            <name lang="en">Normal</name>
+                            <name lang="fr">Normaux</name>
+                            <name lang="pl">Schemat wielokreskowy</name>
+                            <name lang="es">Normales</name>
+                            <name lang="cs">Obyčejné</name>
+                        </names>
+                        <element name="resistance.elmt">
+                            <definition width="20" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                                <names>
+                                    <name lang="ru">Резистор</name>
+                                    <name lang="en">Resistor</name>
+                                    <name lang="fr">Résistance</name>
+                                    <name lang="es">Resistencia</name>
+                                    <name lang="cs">Odporník</name>
+                                    <name lang="pt">Resistência</name>
+                                    <name lang="pl">Rezystor</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="-10" x2="4"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-4" y2="10" x2="4"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="4" y2="-10" x2="-4"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-4" y2="10" x2="-4"/>
+                                    <terminal x="0" y="-21" orientation="n"/>
+                                    <terminal x="0" y="21" orientation="s"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="capacite.elmt">
+                            <definition width="20" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                                <names>
+                                    <name lang="ru">Конденсатор</name>
+                                    <name lang="en">Capacitor</name>
+                                    <name lang="fr">Capacité</name>
+                                    <name lang="es">Condensador</name>
+                                    <name lang="cs">Kondenzátor</name>
+                                    <name lang="pt">Condensador</name>
+                                    <name lang="pl">Kondensator</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-5" y2="2" x2="5"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="-5" y2="-2" x2="5"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="0" y2="20" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-2" x2="0"/>
+                                    <terminal x="0" y="-21" orientation="n"/>
+                                    <terminal x="0" y="21" orientation="s"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+            </category>
+            <category name="elektronika">
+                <names>
+                    <name lang="pl">Elektronika</name>
+                </names>
+                <category name="tranzystory">
+                    <names>
+                        <name lang="pl">Tranzystory</name>
+                    </names>
+                    <element name="biopolarny_npn.elmt">
+                        <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                            <names>
+                                <name lang="en">Bipolar transistor npn</name>
+                                <name lang="pl">Tranzystor biopolarny npn</name>
+                            </names>
+                            <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <polygon x4="10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="13" x1="10" y2="8" x2="8" y3="11" x3="5" y4="13"/>
+                                <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="0" y2="13" x2="10" y3="20" x3="10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="-10"/>
+                                <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="0" y2="-13" x2="10" y3="-20" x3="10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="5" x2="0"/>
+                                <input x="13" y="4.66667" size="9" text="_"/>
+                                <terminal x="10" y="-20" orientation="n"/>
+                                <terminal x="10" y="20" orientation="s"/>
+                                <terminal x="-10" y="0" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="bipolarny_pnp.elmt">
+                        <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                            <names>
+                                <name lang="en">Bipolar transistor pnp</name>
+                                <name lang="pl">Tranzystor biopolarny pnp</name>
+                            </names>
+                            <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <polygon x4="1" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-3" x1="1" y2="-8" x2="3" y3="-5" x3="6" y4="-3"/>
+                                <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="3" x1="1" y2="12" x2="10" y3="20" x3="10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="0" x2="-10"/>
+                                <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-3" x1="1" y2="-12" x2="10" y3="-20" x3="10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="1" y2="5" x2="1"/>
+                                <input x="14" y="3.66667" size="9" text="_"/>
+                                <terminal x="10" y="-20" orientation="n"/>
+                                <terminal x="10" y="20" orientation="s"/>
+                                <terminal x="-10" y="0" orientation="w"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <element name="n_2-20100920180108.elmt">
+                    <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                        <names>
+                            <name lang="pl">Tranzystor biopolarny npn_2</name>
+                        </names>
+                        <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-12" x2="0" y3="-2" x3="10"/>
+                            <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="12" x2="0" y3="2" x3="10"/>
+                            <polygon x4="0" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="12" x1="0" y2="7" x2="2" y3="10" x3="5" y4="12"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="10"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="5" x2="10"/>
+                            <input x="-19" y="3.5" size="9" text="_"/>
+                            <terminal x="0" y="-20" orientation="n"/>
+                            <terminal x="0" y="20" orientation="s"/>
+                            <terminal x="20" y="0" orientation="e"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="n_2.elmt">
+                    <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                        <names>
+                            <name lang="pl">Tranzystor biopolarny npn_2</name>
+                        </names>
+                        <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-12" x2="0" y3="-2" x3="10"/>
+                            <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="12" x2="0" y3="2" x3="10"/>
+                            <polygon x4="0" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="12" x1="0" y2="7" x2="2" y3="10" x3="5" y4="12"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="20" y2="0" x2="10"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="5" x2="10"/>
+                            <input x="-19" y="3.5" size="9" text="_"/>
+                            <terminal x="0" y="-20" orientation="n"/>
+                            <terminal x="0" y="20" orientation="s"/>
+                            <terminal x="20" y="0" orientation="e"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="p_2.elmt">
+                    <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                        <names>
+                            <name lang="pl">Tranzystor biopolarny pnp_2</name>
+                        </names>
+                        <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="0" y2="12" x2="0" y3="2" x3="10"/>
+                            <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="0" y2="-12" x2="0" y3="-2" x3="10"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>
+                            <polygon x4="10" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-2" x1="10" y2="-7" x2="8" y3="-4" x3="5" y4="-2"/>
+                            <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="10" y2="5" x2="10"/>
+                            <input x="-19" y="3.5" size="9" text="_"/>
+                            <terminal x="0" y="-20" orientation="n"/>
+                            <terminal x="0" y="20" orientation="s"/>
+                            <terminal x="20" y="0" orientation="e"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+        </category>
+    </collection>
+</project>
