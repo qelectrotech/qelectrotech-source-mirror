@@ -345,7 +345,7 @@
         <location filename="../sources/configdialog.cpp" line="27"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation>Ustawienia QElectroTech</translation>
+        <translation>Opcje QElectroTech</translation>
     </message>
 </context>
 <context>
@@ -354,7 +354,7 @@
         <location filename="../sources/diagramprintdialog.cpp" line="112"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation>Ustawienia drukarki</translation>
+        <translation>Opcje drukarki</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="199"/>
@@ -1213,7 +1213,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Annuler</source>
-        <translation>Cofnij</translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="325"/>
@@ -1475,7 +1475,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="116"/>
         <source>Ces paramètres s&apos;appliqueront dès la prochaine ouverture d&apos;un éditeur de schémas.</source>
-        <translation>Ustawienia zostaną wprowadzone, po następnym uruchomieniu edytora schematów.</translation>
+        <translation>Opcje zostaną wprowadzone, po następnym uruchomieniu edytora schematów.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="118"/>
@@ -1485,12 +1485,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="119"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
-        <translation>Automatyczne włączenie elementów projektu (zalecane)</translation>
+        <translation>Dołącz automatycznie elementy do projektów (zalecane)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Każdy element zawiera w wolnym polu informacje o jego autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
+        <translation>Każdy element posiada wolne pole na informacje o jego autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -1615,7 +1615,7 @@ Zmiany zostaną zapisane.</translation>
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
         <translation>Następujące zmienne są wykorzystywane w polu strony:
-  - %id: aktualny sposób numeracji schematów w projekcie
+  - %id: numer schematu w projekcie
   - %total: łączna liczba schematów w projekcie</translation>
     </message>
 </context>
@@ -1687,7 +1687,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="247"/>
         <source>Annuler</source>
-        <translation>Cofnij</translation>
+        <translation>Anuluj</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="66"/>
@@ -2337,7 +2337,7 @@ Dostępne opcje:
         <location filename="../sources/qetapp.cpp" line="1130"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation>  --config-dir=DIR              Określ ustawienia katalogu
+        <translation>  --config-dir=DIR              Określ konfigurację katalogu
 </translation>
     </message>
     <message>
@@ -2439,7 +2439,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Konfiguracja QElectroTech</translation>
+        <translation>&amp;Opcje QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
@@ -3093,7 +3093,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Konfiguracja QElectroTech</translation>
+        <translation>Konfiguruje różne opcje QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="325"/>
@@ -3450,7 +3450,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="167"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Konfiguracja QElectroTech</translation>
+        <translation>&amp;Opcje QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="168"/>
@@ -3548,7 +3548,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="386"/>
         <source>&amp;Configuration</source>
-        <translation>&amp;Ustawienia</translation>
+        <translation>&amp;Konfiguracja</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="387"/>
