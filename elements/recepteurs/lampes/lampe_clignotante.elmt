@@ -6,7 +6,7 @@
         <name lang="es" >Luz intermitente</name>
         <name lang="cs" >Svítící světlo</name>
         <name lang="pt" >Luz intermitente</name>
-        <name lang="pl" >Sygnalizator świetlny</name>
+        <name lang="pl" >Lampka kontrolna pulsująca</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
