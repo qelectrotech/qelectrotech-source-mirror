@@ -340,7 +340,7 @@
         <location filename="../sources/configdialog.cpp" line="27"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation>Opcje QElectroTech</translation>
+        <translation>Konfiguracja QElectroTech</translation>
     </message>
 </context>
 <context>
@@ -1464,7 +1464,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="116"/>
         <source>Ces paramètres s&apos;appliqueront dès la prochaine ouverture d&apos;un éditeur de schémas.</source>
-        <translation>Opcje zostaną wprowadzone, po następnym uruchomieniu edytora schematów.</translation>
+        <translation>Ustawienia zostaną wprowadzone, po następnym uruchomieniu edytora schematów.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="118"/>
@@ -2085,7 +2085,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/configpages.cpp" line="305"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
-        <translation>Drukuj</translation>
+        <translation>Drukowanie</translation>
     </message>
 </context>
 <context>
@@ -2423,12 +2423,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="432"/>
         <source>&amp;Configuration</source>
-        <translation>&amp;Konfiguracja</translation>
+        <translation>&amp;Ustawienia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Opcje QElectroTech</translation>
+        <translation>&amp;Konfiguracja QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
@@ -3439,7 +3439,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="167"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Opcje QElectroTech</translation>
+        <translation>&amp;Konfiguracja QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="168"/>
@@ -3537,7 +3537,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="386"/>
         <source>&amp;Configuration</source>
-        <translation>&amp;Konfiguracja</translation>
+        <translation>&amp;Ustawienia</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="387"/>
@@ -3626,7 +3626,7 @@ Dostępne opcje:
         <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation>Niektóre części graficzne (teksty, okręgi, linie, ...) wydają się być na granicy elementu. To może generować błędy graficzne, gdy element zostanie przeniesiona do schematu. Można to naprawić poprzez przeniesienie części lub wybranie z menu Edycja&gt; Edytuj rozmiar i aktywny obszar.</translation>
+        <translation>Niektóre części graficzne (teksty, okręgi, linie, ...) wydają się być na granicy elementu. To może generować błędy graficzne, gdy element zostanie przeniesiony do schematu. Można to naprawić poprzez przeniesienie części lub wybranie z menu Edycja&gt; Edytuj rozmiar i aktywny obszar.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="712"/>
