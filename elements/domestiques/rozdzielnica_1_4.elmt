@@ -1,7 +1,7 @@
-<definition width="40" version="0.22" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
     <names>
         <name lang="en">Assembly</name>
-        <name lang="fr">ensemble</name>
+        <name lang="fr">Coffret de répartition avec 4 canalisations</name>
         <name lang="pl">Rozdzielnica (4 obwody)</name>
     </names>
     <informations></informations>
