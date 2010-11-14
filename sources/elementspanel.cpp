@@ -67,6 +67,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	setDragEnabled(true);
 	setAcceptDrops(true);
 	setDropIndicatorShown(true);
+	setAutoExpandDelay(1000);
 	
 	// taille des elements
 	setIconSize(QSize(50, 50));
@@ -336,6 +337,8 @@ void ElementsPanel::dragMoveEvent(QDragMoveEvent *e) {
 	} else if (e -> pos().y() > height() - limit) {
 		scroll_bar -> setValue(scroll_bar -> value() + 1);
 	}
+	
+	QTreeWidget::dragMoveEvent(e);
 	
 	// recupere la categorie cible pour le deplacement / la copie
 	ElementsCategory *target_category = categoryForPos(e -> pos());
