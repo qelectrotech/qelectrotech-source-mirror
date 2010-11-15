@@ -399,10 +399,9 @@ void ElementsPanelWidget::handleCollectionRequest(ElementsCollectionItem *item) 
 	if (item -> isElement()) {
 		// il s'agit d'un element
 		launchElementEditor(item -> location());
-	} else if (item -> isCategory()) {
-		// il s'agit d'une categorie
-		launchCategoryEditor(item -> location());
 	}
+	// we could edit it categories, but instead people prefer the double-clic to
+	// expand/collapse them
 }
 
 /**

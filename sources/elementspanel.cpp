@@ -60,7 +60,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setColumnCount(1);
-	setExpandsOnDoubleClick(false);
+	setExpandsOnDoubleClick(true);
 	header() -> hide();
 	
 	// drag'n drop autorise
