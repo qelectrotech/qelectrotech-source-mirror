@@ -22,6 +22,7 @@
 #include "qetelementeditor.h"
 #include "elementscollectionitem.h"
 #include "fileelementscollection.h"
+#include "insettemplate.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
@@ -45,6 +46,7 @@ uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
 AboutQET *QETApp::about_dialog_ = 0;
+InsetTemplate *QETApp::default_inset_template_ = 0;
 
 /**
 	Constructeur
@@ -527,6 +529,21 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
 	);
 	return(widget);
 }
+
+/**
+	@return the default inset template for diagrams
+*/
+InsetTemplate *QETApp::defaultInsetTemplate() {
+	if (!QETApp::default_inset_template_) {
+		InsetTemplate *inset_template = new InsetTemplate(QETApp::instance());
+		if (inset_template -> loadFromXmlFile(":/insets/default.inset")) {
+			QETApp::default_inset_template_ = inset_template;
+		}
+	}
+	return(default_inset_template_);
+}
+
+
 /**
 	@param project un projet
 	@return les editeurs d'elements editant un element appartenant au projet

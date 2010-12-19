@@ -24,6 +24,8 @@
 #include <QDate>
 class QPainter;
 class DiagramPosition;
+class InsetTemplate;
+class InsetTemplateRenderer;
 /**
 	Cette classe represente l'ensemble bordure + cartouche qui encadre le
 	schema electrique.
@@ -78,8 +80,7 @@ class BorderInset : public QObject {
 	// cartouche
 	/// @return la largeur du cartouche
 	qreal   insetWidth()          const { return(inset_width);                 }
-	/// @return la hauteur du cartouche
-	qreal   insetHeight()         const { return(inset_height);                }
+	qreal   insetHeight()         const;
 	
 	// cadre avec le cartouche
 	/// @return la hauteur de la bordure
@@ -122,7 +123,6 @@ class BorderInset : public QObject {
 	void setRowsHeaderWidth    (const qreal &);
 	void setDiagramHeight      (const qreal &);
 	void setInsetWidth         (const qreal &);
-	void setInsetHeight        (const qreal &);
 	void adjustInsetToColumns  ();
 	
 	DiagramPosition convertPosition(const QPointF &);
@@ -150,6 +150,9 @@ class BorderInset : public QObject {
 	BorderProperties exportBorder();
 	void importBorder(const BorderProperties &);
 	
+	const InsetTemplate *insetTemplate();
+	void setInsetTemplate(const InsetTemplate *);
+	
 	// methodes d'acces en ecriture aux options
 	void displayInset(bool);
 	void displayColumns(bool);
@@ -158,6 +161,7 @@ class BorderInset : public QObject {
 	
 	private:
 	void updateRectangles();
+	void updateDiagramContextForInset();
 	QString incrementLetters(const QString &);
 	
 	// signaux
@@ -214,16 +218,12 @@ class BorderInset : public QObject {
 	// rectangles utilises pour le dessin
 	QRectF  diagram;
 	QRectF  inset;
-	QRectF  inset_author;
-	QRectF  inset_date;
-	QRectF  inset_title;
-	QRectF  inset_file;
-	QRectF  inset_folio;
 	
 	// booleens pour les options de dessin
 	bool display_inset;
 	bool display_columns;
 	bool display_rows;
 	bool display_border;
+	InsetTemplateRenderer *inset_template_renderer;
 };
 #endif

@@ -16,6 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QPainter>
+#include "insettemplate.h"
+#include "insettemplaterenderer.h"
+#include "diagramcontext.h"
 #include "borderinset.h"
 #include "diagramposition.h"
 #include "qetapp.h"
@@ -26,15 +29,18 @@
 	dans la configuration de l'application.
 	@param parent QObject parent de ce BorderInset
 */
-BorderInset::BorderInset(QObject *parent) : QObject(parent) {
+BorderInset::BorderInset(QObject *parent) :
+	QObject(parent)
+{
+	// at first, the internal inset template renderer uses the default inset template
+	inset_template_renderer = new InsetTemplateRenderer(this);
+	inset_template_renderer -> setInsetTemplate(QETApp::defaultInsetTemplate());
+	
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
 	
 	// contenu par defaut du cartouche
 	importInset(InsetProperties());
-	
-	// hauteur du cartouche
-	inset_height          = 50.0;
 	
 	display_inset         = true;
 	display_border        = true;
@@ -46,6 +52,13 @@ BorderInset::BorderInset(QObject *parent) : QObject(parent) {
 	Destructeur - ne fait rien
 */
 BorderInset::~BorderInset() {
+}
+
+/**
+	@return la hauteur du cartouche
+*/
+qreal BorderInset::insetHeight() const {
+	return(inset_template_renderer -> height());
 }
 
 /**
@@ -98,6 +111,7 @@ void BorderInset::importInset(const InsetProperties &ip) {
 	setTitle(ip.title);
 	bi_folio = ip.folio;
 	bi_filename = ip.filename;
+	updateDiagramContextForInset();
 	emit(needFolioData());
 }
 
@@ -129,6 +143,22 @@ void BorderInset::importBorder(const BorderProperties &bp) {
 	setNbRows(bp.rows_count);
 	setRowsHeight(bp.rows_height);
 	displayRows(bp.display_rows);
+}
+
+/**
+	@return the inset template used to render the inset
+	@see InsetTemplateRenderer::insetTemplate()
+*/
+const InsetTemplate *BorderInset::insetTemplate() {
+	return(inset_template_renderer -> insetTemplate());
+}
+
+/**
+	@param inset_template The new inset template to use to render the inset
+	@see InsetTemplateRenderer::setInsetTemplate()
+*/
+void BorderInset::setInsetTemplate(const InsetTemplate *inset_template) {
+	inset_template_renderer -> setInsetTemplate(inset_template);
 }
 
 /**
@@ -180,12 +210,7 @@ void BorderInset::updateRectangles() {
 	if (diagram != previous_diagram) emit(borderChanged(previous_diagram, diagram));
 	
 	// rectangles relatifs au cartouche
-	inset        = QRectF(diagram.bottomLeft().x(), diagram.bottomLeft().y(), inset_width, inset_height);
-	inset_author = QRectF(inset.topLeft(), QSizeF(2.0 * inset_width / 9.0, 0.5 * inset_height));
-	inset_date   = QRectF(inset_author.bottomLeft(), inset_author.size());
-	inset_title  = QRectF(inset_author.topRight(), QSizeF(5.0 * inset_width / 9.0, inset_height));
-	inset_file   = QRectF(inset_title.topRight(), inset_author.size());
-	inset_folio  = QRectF(inset_file.bottomLeft(), inset_author.size());
+	inset = QRectF(diagram.bottomLeft().x(), diagram.bottomLeft().y(), insetWidth(), insetHeight());
 }
 
 /**
@@ -198,11 +223,6 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	// translate tous les rectangles
 	diagram     .translate(x, y);
 	inset       .translate(x, y);
-	inset_author.translate(x, y);
-	inset_date  .translate(x, y);
-	inset_title .translate(x, y);
-	inset_file  .translate(x, y);
-	inset_folio .translate(x, y);
 	
 	// prepare le QPainter
 	qp -> save();
@@ -256,25 +276,11 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 		}
 	}
 	
-	// dessine le cartouche
+	// render the inset, using the InsetTemplate object
 	if (display_inset) {
-		qp -> setBrush(Qt::white);
-		qp -> drawRect(inset);
-		
-		qp -> drawRect(inset_author);
-		qp -> drawText(inset_author, Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Auteur : %1", "inset content")).arg(bi_author));
-		
-		qp -> drawRect(inset_date);
-		qp -> drawText(inset_date,   Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Date : %1", "inset content")).arg(bi_date.toString("dd/MM/yyyy")));
-		
-		qp -> drawRect(inset_title);
-		qp -> drawText(inset_title,  Qt::AlignVCenter | Qt::AlignCenter, QString("%1").arg(bi_title));
-		
-		qp -> drawRect(inset_file);
-		qp -> drawText(inset_file,   Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Fichier : %1", "inset content")).arg(bi_filename));
-		
-		qp -> drawRect(inset_folio);
-		qp -> drawText(inset_folio,  Qt::AlignVCenter | Qt::AlignLeft,   QString(tr(" Folio : %1", "inset content")).arg(bi_final_folio));
+		qp -> translate(inset.topLeft());
+		inset_template_renderer -> render(qp, inset.width());
+		qp -> translate(-inset.topLeft());
 	}
 	
 	qp -> restore();
@@ -282,11 +288,6 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 	// annule la translation des rectangles
 	diagram     .translate(-x, -y);
 	inset       .translate(-x, -y);
-	inset_author.translate(-x, -y);
-	inset_date  .translate(-x, -y);
-	inset_title .translate(-x, -y);
-	inset_file  .translate(-x, -y);
-	inset_folio .translate(-x, -y);
 }
 
 /**
@@ -410,14 +411,6 @@ void BorderInset::setInsetWidth(const qreal &new_iw) {
 	updateRectangles();
 }
 
-/**
-	Change la hauteur du cartouche. Cette hauteur doit rester comprise entre
-	20px et la hauteur du schema.
-*/
-void BorderInset::setInsetHeight(const qreal &new_ih) {
-	inset_height = qMax(qreal(20.0), qMin(diagramHeight(), new_ih));
-	updateRectangles();
-}
 
 /**
 	Ajuste la largeur du cartouche de facon a ce que celui-ci soit aussi large
@@ -457,6 +450,23 @@ DiagramPosition BorderInset::convertPosition(const QPointF &pos) {
 	return(DiagramPosition(letter, row_number));
 }
 
+/**
+	Update the informations given to the inset template by regenerating a
+	DiagramContext object.
+*/
+void BorderInset::updateDiagramContextForInset() {
+	DiagramContext context;
+	context.addValue("author",      bi_author);
+	context.addValue("date",        bi_date.toString("dd/MM/yyyy"));
+	context.addValue("title",       bi_title);
+	context.addValue("filename",    bi_filename);
+	context.addValue("folio",       bi_final_folio);
+	context.addValue("folio-id",    folio_index_);
+	context.addValue("folio-total", folio_total_);
+	
+	inset_template_renderer -> setContext(context);
+}
+
 QString BorderInset::incrementLetters(const QString &string) {
 	if (string.isEmpty()) {
 		return("A");
@@ -489,4 +499,6 @@ void BorderInset::setFolioData(int index, int total) {
 	bi_final_folio = bi_folio;
 	bi_final_folio.replace("%id",    QString::number(folio_index_));
 	bi_final_folio.replace("%total", QString::number(folio_total_));
+	
+	updateDiagramContextForInset();
 }
