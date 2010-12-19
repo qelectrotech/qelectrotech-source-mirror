@@ -85,6 +85,7 @@ class Diagram : public QGraphicsScene {
 	QDomDocument xml_document;
 	QETProject *project_;
 	bool read_only_;
+	QString inset_template_name_;
 	
 	// methodes
 	protected:

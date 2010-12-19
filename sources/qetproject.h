@@ -29,6 +29,7 @@ class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 class ElementsLocation;
+class InsetTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
 /**
@@ -79,6 +80,9 @@ class QETProject : public QObject {
 	QString title() const;
 	qreal declaredQElectroTechVersion();
 	void setTitle(const QString &);
+	QList<QString> embeddedInsetTemplates() const;
+	const InsetTemplate *getTemplateByName(const QString &template_name);
+	QDomElement getTemplateXmlDescriptionByName(const QString &);
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
 	InsetProperties defaultInsetProperties() const;
@@ -124,6 +128,7 @@ class QETProject : public QObject {
 	void readProjectXml();
 	void readDiagramsXml();
 	void readElementsCollectionXml();
+	void readEmbeddedTemplatesXml();
 	void readDefaultPropertiesXml();
 	void writeDefaultPropertiesXml(QDomElement &);
 	void addDiagram(Diagram *);
@@ -158,5 +163,9 @@ class QETProject : public QObject {
 	ConductorProperties default_conductor_properties_;
 	/// Proprietes par defaut du cartouche pour les nouveaux schemas dans ce projet
 	InsetProperties default_inset_properties_;
+	/// XML descriptions of embedded inset templates
+	QHash<QString, QDomElement> inset_templates_xml_;
+	/// Already parsed embedded inset templates
+	QHash<QString, InsetTemplate *> inset_templates_;
 };
 #endif

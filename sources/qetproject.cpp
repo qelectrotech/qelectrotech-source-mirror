@@ -25,6 +25,7 @@
 #include "integrationmoveelementshandler.h"
 #include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
+#include "insettemplate.h"
 
 QString QETProject::integration_category_name = "import";
 
@@ -267,6 +268,51 @@ void QETProject::setTitle(const QString &title) {
 }
 
 /**
+	@return the list of the inset templates embedded within this project 
+*/
+QList<QString> QETProject::embeddedInsetTemplates() const {
+	return(inset_templates_xml_.keys());
+}
+
+/**
+	@param template_name Name of the requested template
+	@return the requested template, or 0 if there is no vltaid template of this
+	name within the project
+*/
+const InsetTemplate *QETProject::getTemplateByName(const QString &template_name) {
+	// Do we have already loaded this template?
+	if (inset_templates_.contains(template_name)) {
+		return(inset_templates_[template_name]);
+	}
+	
+	// No? Do we even know of it?
+	if (!inset_templates_xml_.contains(template_name)) {
+		return(0);
+	}
+	
+	// Ok, we have its XML description, we have to generate an InsetTemplate object
+	InsetTemplate *inset_template = new InsetTemplate(this);
+	if (inset_template -> loadFromXmlElement(inset_templates_xml_[template_name])) {
+		inset_templates_.insert(template_name, inset_template);
+		return(inset_template);
+	} else {
+		return(0);
+	}
+}
+
+/**
+	@param template_name Name of the requested template
+	@return the XML description of the requested template, or a null QDomElement
+	if the project does not have such an inset template
+*/
+QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_name) {
+	if (inset_templates_xml_.contains(template_name)) {
+		return(inset_templates_xml_[template_name]);
+	}
+	return(QDomElement());
+}
+
+/**
 	@return les dimensions par defaut utilisees lors de la creation d'un
 	nouveau schema dans ce projet.
 */
@@ -326,6 +372,16 @@ QDomDocument QETProject::toXml() {
 	project_root.setAttribute("version", QET::version);
 	project_root.setAttribute("title", project_title_);
 	xml_doc.appendChild(project_root);
+	
+	// inset templates, if any
+	if (inset_templates_xml_.count()) {
+		qDebug() << qPrintable(QString("QETProject::toXml() : exporting %1 inset templates").arg(inset_templates_xml_.count()));
+		QDomElement insettemplates_elmt = xml_doc.createElement("insettemplates");
+		foreach (QDomElement e, inset_templates_xml_) {
+			insettemplates_elmt.appendChild(e);
+		}
+		project_root.appendChild(insettemplates_elmt);
+	}
 	
 	// proprietes pour les nouveaux schemas
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -734,6 +790,9 @@ void QETProject::readProjectXml() {
 	// charge les proprietes par defaut pour les nouveaux schemas
 	readDefaultPropertiesXml();
 	
+	// load the embedded inset templates
+	readEmbeddedTemplatesXml();
+	
 	// charge la collection embarquee
 	readElementsCollectionXml();
 	
@@ -773,6 +832,24 @@ void QETProject::readDiagramsXml() {
 	// ajoute les schemas dans l'ordre indique par les attributs order
 	foreach(Diagram *diagram, loaded_diagrams.values()) {
 		addDiagram(diagram);
+	}
+}
+
+/**
+	Loads the embedded template from the XML description of the project
+*/
+void QETProject::readEmbeddedTemplatesXml() {
+	foreach (QDomElement e, QET::findInDomElement(document_root_.documentElement(), "insettemplates", "insettemplate")) {
+		// each inset template must have a name
+		if (!e.hasAttribute("name")) continue;
+		QString inset_template_name = e.attribute("name");
+		
+		// if several templates have the same name, we keep the first one encountered
+		if (inset_templates_xml_.contains(inset_template_name)) continue;
+		
+		// we simply store the XML element describing the inset template,
+		// without any further analysis for the moment
+		inset_templates_xml_.insert(inset_template_name, e);
 	}
 }
 

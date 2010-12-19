@@ -85,7 +85,7 @@ Diagram::~Diagram() {
 		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
 		deletable_items << qgi;
 	}
-
+	
 	// suppression des items supprimables
 	foreach(QGraphicsItem *qgi_d, deletable_items) {
 		delete qgi_d;
@@ -280,6 +280,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		racine.setAttribute("height",  QString("%1").arg(border_and_inset.diagramHeight()));
 		racine.setAttribute("displaycols", border_and_inset.columnsAreDisplayed() ? "true" : "false");
 		racine.setAttribute("displayrows", border_and_inset.rowsAreDisplayed()    ? "true" : "false");
+		if (!inset_template_name_.isEmpty()) {
+			racine.setAttribute("insettemplate", inset_template_name_);
+		}
 		
 		// type de conducteur par defaut
 		QDomElement default_conductor = document.createElement("defaultconductor");
@@ -419,6 +422,14 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		border_and_inset.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
 		border_and_inset.setFileName(root.attribute("filename"));
 		border_and_inset.setFolio(root.attribute("folio"));
+		if (root.hasAttribute("insettemplate") && project_) {
+			QString inset_template_name = root.attribute("insettemplate");
+			const InsetTemplate *inset_template = project_ -> getTemplateByName(inset_template_name);
+			if (inset_template) {
+				inset_template_name_ = inset_template_name;
+				border_and_inset.setInsetTemplate(inset_template);
+			}
+		}
 		
 		bool ok;
 		// nombre de colonnes
