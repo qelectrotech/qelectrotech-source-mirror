@@ -515,3 +515,16 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 	
 	return(first_canonical_path == second_canonical_path);
 }
+
+/**
+	@param icl an InsetColumnLength object
+	@see InsetColumnLength
+	@return a string describing the type of this InsetColumnLength object
+*/
+QString QET::insetColumnLengthToString(const InsetColumnLength  &icl) {
+	QString type_str;
+	if (icl== Absolute) type_str = "absolute";
+	else if (icl == RelativeToTotalLength) type_str = "relative to total";
+	else if (icl == RelativeToRemainingLength) type_str = "relative to remaining";
+	return(type_str);
+}

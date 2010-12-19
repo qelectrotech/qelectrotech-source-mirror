@@ -97,6 +97,13 @@ namespace QET {
 		ElementsArea     ///< Exporte le contenu du schema sans le cadre et le cartouche
 	};
 	
+	/// enum used to specify the type of a length
+	enum InsetColumnLength {
+		Absolute,                   ///< the length is absolute and should be applied as is
+		RelativeToTotalLength,      ///< the length is just a fraction of the total available length
+		RelativeToRemainingLength   ///< the length is just a fraction of the length that is still available when other types of lengths have been removed
+	};
+	
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);
 	QET::Orientation orientationFromString(const QString &);
@@ -125,5 +132,6 @@ namespace QET {
 	QString pointerString(void *);
 	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
+	QString insetColumnLengthToString(const InsetColumnLength  &);
 }
 #endif
