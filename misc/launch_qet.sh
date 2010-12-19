@@ -1,13 +1,12 @@
 #!/bin/bash
 
 current_dir=$(dirname "$0")
-cd "$current_dir"
 
 # configuration
-QET_EXE="../qelectrotech"
-QET_ELEMENTS_DIR="../elements/"
+QET_EXE=$(readlink -f "${current_dir}/../qelectrotech")
+QET_ELEMENTS_DIR=$(readlink -f "${current_dir}/../elements/")
 QET_CONFIG_DIR=""
-QET_LANG_DIR="../lang/"
+QET_LANG_DIR=$(readlink -f "${current_dir}/../lang/")
 # REDEFINE_LANG="es"
 
 # checks for the qelectrotech binary executable file
@@ -37,5 +36,3 @@ fi
 
 # launching
 ${QET_EXE} ${OPTIONS} $*
-
-cd - > /dev/null 2>&1
