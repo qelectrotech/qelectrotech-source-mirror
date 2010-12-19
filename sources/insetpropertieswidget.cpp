@@ -29,7 +29,7 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	QVBoxLayout *this_layout = new QVBoxLayout(this);
 	this_layout -> setContentsMargins(0, 0, 0, 0);
 	QGroupBox *inset_infos = new QGroupBox(tr("Informations du cartouche"), this);
-	inset_infos -> setMinimumSize(300, 370);
+	inset_infos -> setMinimumSize(300, 330);
 	this_layout -> addWidget(inset_infos);
 	
 	inset_title = new QLineEdit(this);
@@ -73,13 +73,14 @@ InsetPropertiesWidget::InsetPropertiesWidget(const InsetProperties &inset, bool 
 	layout_champs -> addWidget(inset_title,                  0, 1);
 	layout_champs -> addWidget(new QLabel(tr("Auteur : ")),  1, 0);
 	layout_champs -> addWidget(inset_author,                 1, 1);
-	layout_champs -> addWidget(new QLabel(tr("Date : ")),    2, 0);
-	layout_champs -> addLayout(layout_date,                  3, 1);
-	layout_champs -> addWidget(new QLabel(tr("Fichier : ")), 4, 0);
-	layout_champs -> addWidget(inset_filename,               4, 1);
-	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   5, 0);
-	layout_champs -> addWidget(inset_folio,                  5, 1);
-	layout_champs -> addWidget(folio_tip,                    6, 1);
+	layout_champs -> addWidget(new QLabel(tr("Date : ")),    2, 0, Qt::AlignTop);
+	layout_champs -> addLayout(layout_date,                  2, 1);
+	layout_champs -> addWidget(new QLabel(tr("Fichier : ")), 3, 0);
+	layout_champs -> addWidget(inset_filename,               3, 1);
+	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   4, 0);
+	layout_champs -> addWidget(inset_folio,                  4, 1);
+	layout_champs -> addWidget(folio_tip,                    5, 1, Qt::AlignTop);
+	layout_champs -> setRowStretch(5, 500);
 	
 	inset_current_date -> setVisible(display_current_date = current);
 	setInsetProperties(inset);
