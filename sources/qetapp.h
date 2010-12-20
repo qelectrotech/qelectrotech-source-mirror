@@ -30,7 +30,7 @@ class ElementsCollectionItem;
 class FileElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
-class InsetTemplate;
+class TitleBlockTemplate;
 class QETProject;
 class QTextOrientationSpinBoxWidget;
 class RecentFiles;
@@ -99,7 +99,7 @@ class QETApp : public QETSingleApplication {
 	static QList<QETElementEditor *> elementEditors();
 	static QList<QETElementEditor *> elementEditors(QETProject *);
 	static QTextOrientationSpinBoxWidget *createTextOrientationSpinBoxWidget();
-	static InsetTemplate *defaultInsetTemplate();
+	static TitleBlockTemplate *defaultTitleBlockTemplate();
 	
 	protected:
 #ifdef Q_OS_DARWIN
@@ -142,7 +142,7 @@ class QETApp : public QETSingleApplication {
 	static RecentFiles *projects_recent_files_;
 	static RecentFiles *elements_recent_files_;
 	static AboutQET *about_dialog_;
-	static InsetTemplate *default_inset_template_;
+	static TitleBlockTemplate *default_titleblock_template_;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);

@@ -26,7 +26,7 @@
 #include "qetelementeditor.h"
 #include "interactivemoveelementshandler.h"
 #include "borderpropertieswidget.h"
-#include "insetpropertieswidget.h"
+#include "titleblockpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
@@ -424,7 +424,7 @@ void ProjectView::editProjectProperties() {
 	bpw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut d'un cartouche
-	InsetPropertiesWidget *ipw = new InsetPropertiesWidget(project_ -> defaultInsetProperties(), true);
+	TitleBlockPropertiesWidget *ipw = new TitleBlockPropertiesWidget(project_ -> defaultTitleBlockProperties(), true);
 	ipw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut des conducteurs
@@ -469,7 +469,7 @@ void ProjectView::editProjectProperties() {
 	if (properties_dialog.exec() == QDialog::Accepted && !project_is_read_only) {
 		project_ -> setTitle(title_field -> text());
 		project_ -> setDefaultBorderProperties(bpw -> borderProperties());
-		project_ -> setDefaultInsetProperties(ipw -> insetProperties());
+		project_ -> setDefaultTitleBlockProperties(ipw -> titleBlockProperties());
 		project_ -> setDefaultConductorProperties(cpw -> conductorProperties());
 	}
 }

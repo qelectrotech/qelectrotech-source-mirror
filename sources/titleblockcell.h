@@ -15,22 +15,22 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef INSET_CELL_H
-#define INSET_CELL_H
+#ifndef TITLEBLOCK_CELL_H
+#define TITLEBLOCK_CELL_H
 /**
-	This class is a container for the various parameters of an inset cell
-	@see InsetColumnLength 
+	This class is a container for the various parameters of an titleblock cell
+	@see TitleBlockColumnLength 
 */
-class InsetCell {
+class TitleBlockCell {
 	public:
-	InsetCell();
+	TitleBlockCell();
 	QString toString() const;
 	bool is_null;
 	int num_row;
 	int num_col;
 	int row_span;
 	int col_span;
-	InsetCell *spanner_cell;
+	TitleBlockCell *spanner_cell;
 	QString value_name;
 	QString value;
 	QString label;

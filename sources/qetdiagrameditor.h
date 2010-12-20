@@ -20,7 +20,7 @@
 #include <QtGui>
 #include "borderproperties.h"
 #include "conductorproperties.h"
-#include "insetproperties.h"
+#include "titleblockproperties.h"
 #include "exportproperties.h"
 class QETProject;
 class ProjectView;
@@ -56,7 +56,7 @@ class QETDiagramEditor : public QMainWindow {
 	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
 	ProjectView *viewForFile(const QString &) const;
-	static InsetProperties     defaultInsetProperties();
+	static TitleBlockProperties     defaultTitleBlockProperties();
 	static BorderProperties    defaultBorderProperties();
 	static ConductorProperties defaultConductorProperties();
 	static ExportProperties    defaultExportProperties();

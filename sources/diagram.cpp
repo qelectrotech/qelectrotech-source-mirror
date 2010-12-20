@@ -131,7 +131,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p -> drawPoints(points);
 	}
 	
-	if (use_border) border_and_inset.draw(p, margin, margin);
+	if (use_border) border_and_titleblock.draw(p, margin, margin);
 	p -> restore();
 }
 
@@ -190,8 +190,8 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 		source_area = QRectF(
 			0.0,
 			0.0,
-			border_and_inset.borderWidth () + 2.0 * margin,
-			border_and_inset.borderHeight() + 2.0 * margin
+			border_and_titleblock.borderWidth () + 2.0 * margin,
+			border_and_titleblock.borderHeight() + 2.0 * margin
 		);
 	}
 	
@@ -233,8 +233,8 @@ QSize Diagram::imageSize() const {
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
 	} else {
-		image_width  = border_and_inset.borderWidth();
-		image_height = border_and_inset.borderHeight();
+		image_width  = border_and_titleblock.borderWidth();
+		image_height = border_and_titleblock.borderHeight();
 	}
 	
 	image_width  += 2.0 * margin;
@@ -267,21 +267,21 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	
 	// proprietes du schema
 	if (whole_content) {
-		if (!border_and_inset.author().isNull())    racine.setAttribute("author",   border_and_inset.author());
-		if (!border_and_inset.date().isNull())      racine.setAttribute("date",     border_and_inset.date().toString("yyyyMMdd"));
-		if (!border_and_inset.title().isNull())     racine.setAttribute("title",    border_and_inset.title());
-		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
-		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
-		racine.setAttribute("cols",    border_and_inset.nbColumns());
-		racine.setAttribute("colsize", QString("%1").arg(border_and_inset.columnsWidth()));
-		racine.setAttribute("rows",    border_and_inset.nbRows());
-		racine.setAttribute("rowsize", QString("%1").arg(border_and_inset.rowsHeight()));
+		if (!border_and_titleblock.author().isNull())    racine.setAttribute("author",   border_and_titleblock.author());
+		if (!border_and_titleblock.date().isNull())      racine.setAttribute("date",     border_and_titleblock.date().toString("yyyyMMdd"));
+		if (!border_and_titleblock.title().isNull())     racine.setAttribute("title",    border_and_titleblock.title());
+		if (!border_and_titleblock.fileName().isNull())  racine.setAttribute("filename", border_and_titleblock.fileName());
+		if (!border_and_titleblock.folio().isNull())     racine.setAttribute("folio",    border_and_titleblock.folio());
+		racine.setAttribute("cols",    border_and_titleblock.nbColumns());
+		racine.setAttribute("colsize", QString("%1").arg(border_and_titleblock.columnsWidth()));
+		racine.setAttribute("rows",    border_and_titleblock.nbRows());
+		racine.setAttribute("rowsize", QString("%1").arg(border_and_titleblock.rowsHeight()));
 		// attribut datant de la version 0.1 - laisse pour retrocompatibilite
-		racine.setAttribute("height",  QString("%1").arg(border_and_inset.diagramHeight()));
-		racine.setAttribute("displaycols", border_and_inset.columnsAreDisplayed() ? "true" : "false");
-		racine.setAttribute("displayrows", border_and_inset.rowsAreDisplayed()    ? "true" : "false");
-		if (!inset_template_name_.isEmpty()) {
-			racine.setAttribute("insettemplate", inset_template_name_);
+		racine.setAttribute("height",  QString("%1").arg(border_and_titleblock.diagramHeight()));
+		racine.setAttribute("displaycols", border_and_titleblock.columnsAreDisplayed() ? "true" : "false");
+		racine.setAttribute("displayrows", border_and_titleblock.rowsAreDisplayed()    ? "true" : "false");
+		if (!titleblock_template_name_.isEmpty()) {
+			racine.setAttribute("titleblocktemplate", titleblock_template_name_);
 		}
 		
 		// type de conducteur par defaut
@@ -417,49 +417,49 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
-		border_and_inset.setAuthor(root.attribute("author"));
-		border_and_inset.setTitle(root.attribute("title"));
-		border_and_inset.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
-		border_and_inset.setFileName(root.attribute("filename"));
-		border_and_inset.setFolio(root.attribute("folio"));
-		if (root.hasAttribute("insettemplate") && project_) {
-			QString inset_template_name = root.attribute("insettemplate");
-			const InsetTemplate *inset_template = project_ -> getTemplateByName(inset_template_name);
-			if (inset_template) {
-				inset_template_name_ = inset_template_name;
-				border_and_inset.setInsetTemplate(inset_template);
+		border_and_titleblock.setAuthor(root.attribute("author"));
+		border_and_titleblock.setTitle(root.attribute("title"));
+		border_and_titleblock.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
+		border_and_titleblock.setFileName(root.attribute("filename"));
+		border_and_titleblock.setFolio(root.attribute("folio"));
+		if (root.hasAttribute("titleblocktemplate") && project_) {
+			QString titleblock_template_name = root.attribute("titleblocktemplate");
+			const TitleBlockTemplate *titleblock_template = project_ -> getTemplateByName(titleblock_template_name);
+			if (titleblock_template) {
+				titleblock_template_name_ = titleblock_template_name;
+				border_and_titleblock.setTitleBlockTemplate(titleblock_template);
 			}
 		}
 		
 		bool ok;
 		// nombre de colonnes
 		int nb_cols = root.attribute("cols").toInt(&ok);
-		if (ok) border_and_inset.setNbColumns(nb_cols);
+		if (ok) border_and_titleblock.setNbColumns(nb_cols);
 		
 		// taille des colonnes
 		double col_size = root.attribute("colsize").toDouble(&ok);
-		if (ok) border_and_inset.setColumnsWidth(col_size);
+		if (ok) border_and_titleblock.setColumnsWidth(col_size);
 		
 		// retrocompatibilite : les schemas enregistres avec la 0.1 ont un attribut "height"
 		if (root.hasAttribute("rows") && root.hasAttribute("rowsize")) {
 			// nombre de lignes
 			int nb_rows = root.attribute("rows").toInt(&ok);
-			if (ok) border_and_inset.setNbRows(nb_rows);
+			if (ok) border_and_titleblock.setNbRows(nb_rows);
 			
 			// taille des lignes
 			double row_size = root.attribute("rowsize").toDouble(&ok);
-			if (ok) border_and_inset.setRowsHeight(row_size);
+			if (ok) border_and_titleblock.setRowsHeight(row_size);
 		} else {
 			// hauteur du schema
 			double height = root.attribute("height").toDouble(&ok);
-			if (ok) border_and_inset.setDiagramHeight(height);
+			if (ok) border_and_titleblock.setDiagramHeight(height);
 		}
 		
 		// affichage des lignes et colonnes
-		border_and_inset.displayColumns(root.attribute("displaycols") != "false");
-		border_and_inset.displayRows(root.attribute("displayrows") != "false");
+		border_and_titleblock.displayColumns(root.attribute("displaycols") != "false");
+		border_and_titleblock.displayRows(root.attribute("displayrows") != "false");
 		
-		border_and_inset.adjustInsetToColumns();
+		border_and_titleblock.adjustTitleBlockToColumns();
 		
 		// repere le permier element "defaultconductor"
 		for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
@@ -806,8 +806,8 @@ QRectF Diagram::border() const {
 		QRectF(
 			margin,
 			margin,
-			border_and_inset.borderWidth(),
-			border_and_inset.borderHeight()
+			border_and_titleblock.borderWidth(),
+			border_and_titleblock.borderHeight()
 		)
 	);
 }
@@ -816,7 +816,7 @@ QRectF Diagram::border() const {
 	@return le titre du cartouche
 */
 QString Diagram::title() const {
-	return(border_and_inset.title());
+	return(border_and_titleblock.title());
 }
 
 /**
@@ -912,8 +912,8 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	// exporte les options de rendu en cours
 	ExportProperties old_properties;
 	old_properties.draw_grid               = displayGrid();
-	old_properties.draw_border             = border_and_inset.borderIsDisplayed();
-	old_properties.draw_inset              = border_and_inset.insetIsDisplayed();
+	old_properties.draw_border             = border_and_titleblock.borderIsDisplayed();
+	old_properties.draw_titleblock              = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area           = useBorder() ? QET::BorderArea : QET::ElementsArea;
@@ -923,8 +923,8 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	setDrawTerminals              (new_properties.draw_terminals);
 	setDrawColoredConductors      (new_properties.draw_colored_conductors);
 	setDisplayGrid                (new_properties.draw_grid);
-	border_and_inset.displayBorder(new_properties.draw_border);
-	border_and_inset.displayInset (new_properties.draw_inset);
+	border_and_titleblock.displayBorder(new_properties.draw_border);
+	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
 	
 	// retourne les anciennes options de rendu
 	return(old_properties);
@@ -939,8 +939,8 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 	// decale la position pour prendre en compte les marges en haut a gauche du schema
 	QPointF final_pos = pos - QPointF(margin, margin);
 	
-	// delegue le calcul au BorderInset
-	DiagramPosition diagram_position = border_and_inset.convertPosition(final_pos);
+	// delegue le calcul au BorderTitleBlock
+	DiagramPosition diagram_position = border_and_titleblock.convertPosition(final_pos);
 	
 	// embarque la position cartesienne
 	diagram_position.setPosition(pos);

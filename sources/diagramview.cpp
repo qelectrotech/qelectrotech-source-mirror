@@ -26,7 +26,7 @@
 #include "conductortextitem.h"
 #include "elementtextitem.h"
 #include "independenttextitem.h"
-#include "insetpropertieswidget.h"
+#include "titleblockpropertieswidget.h"
 #include "qetapp.h"
 #include "qetproject.h"
 #include "borderpropertieswidget.h"
@@ -67,9 +67,9 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	
 	connect(scene, SIGNAL(selectionChanged()), this, SIGNAL(selectionChanged()));
 	connect(scene, SIGNAL(readOnlyChanged(bool)), this, SLOT(applyReadOnly()));
-	connect(&(scene -> border_and_inset), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
-	connect(&(scene -> border_and_inset), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
-	connect(&(scene -> border_and_inset), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
+	connect(&(scene -> border_and_titleblock), SIGNAL(borderChanged(QRectF, QRectF)), this, SLOT(adjustSceneRect()));
+	connect(&(scene -> border_and_titleblock), SIGNAL(displayChanged()),              this, SLOT(adjustSceneRect()));
+	connect(&(scene -> border_and_titleblock), SIGNAL(diagramTitleChanged(const QString &)), this, SLOT(updateWindowTitle()));
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
 	
 	connect(this, SIGNAL(aboutToAddElement()), this, SLOT(addDroppedElement()), Qt::QueuedConnection);
@@ -412,8 +412,8 @@ void DiagramView::editDiagramProperties() {
 	bool diagram_is_read_only = scene -> isReadOnly();
 	
 	// recupere le cartouche et les dimensions du schema
-	InsetProperties  inset  = scene -> border_and_inset.exportInset();
-	BorderProperties border = scene -> border_and_inset.exportBorder();
+	TitleBlockProperties  titleblock  = scene -> border_and_titleblock.exportTitleBlock();
+	BorderProperties border = scene -> border_and_titleblock.exportBorder();
 	
 	// construit le dialogue
 	QDialog popup(diagramEditor());
@@ -426,8 +426,8 @@ void DiagramView::editDiagramProperties() {
 	
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, &popup);
 	border_infos -> setReadOnly(diagram_is_read_only);
-	InsetPropertiesWidget  *inset_infos  = new InsetPropertiesWidget(inset, false, &popup);
-	inset_infos -> setReadOnly(diagram_is_read_only);
+	TitleBlockPropertiesWidget  *titleblock_infos  = new TitleBlockPropertiesWidget(titleblock, false, &popup);
+	titleblock_infos -> setReadOnly(diagram_is_read_only);
 	
 	// boutons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
@@ -437,16 +437,16 @@ void DiagramView::editDiagramProperties() {
 	// ajout dans une disposition verticale
 	QVBoxLayout layout_v(&popup);
 	layout_v.addWidget(border_infos);
-	layout_v.addWidget(inset_infos);
+	layout_v.addWidget(titleblock_infos);
 	layout_v.addStretch();
 	layout_v.addWidget(&boutons);
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
-		InsetProperties new_inset   = inset_infos  -> insetProperties();
+		TitleBlockProperties new_titleblock   = titleblock_infos  -> titleBlockProperties();
 		BorderProperties new_border = border_infos -> borderProperties();
 		// s'il y a des modifications au cartouche
-		if (new_inset != inset) {
-			scene -> undoStack().push(new ChangeInsetCommand(scene, inset, new_inset));
+		if (new_titleblock != titleblock) {
+			scene -> undoStack().push(new ChangeTitleBlockCommand(scene, titleblock, new_titleblock));
 		}
 		
 		// s'il y a des modifications aux dimensions du schema
@@ -501,8 +501,8 @@ bool DiagramView::hasDeletableItems() {
 */
 void DiagramView::addColumn() {
 	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
-	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
 	new_bp.columns_count += 1;
 	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
@@ -512,8 +512,8 @@ void DiagramView::addColumn() {
 */
 void DiagramView::removeColumn() {
 	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
-	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
 	new_bp.columns_count -= 1;
 	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
@@ -523,8 +523,8 @@ void DiagramView::removeColumn() {
 */
 void DiagramView::addRow() {
 	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
-	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
 	new_bp.rows_count += 1;
 	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
@@ -534,8 +534,8 @@ void DiagramView::addRow() {
 */
 void DiagramView::removeRow() {
 	if (scene -> isReadOnly()) return;
-	BorderProperties old_bp = scene -> border_and_inset.exportBorder();
-	BorderProperties new_bp = scene -> border_and_inset.exportBorder();
+	BorderProperties old_bp = scene -> border_and_titleblock.exportBorder();
+	BorderProperties new_bp = scene -> border_and_titleblock.exportBorder();
 	new_bp.rows_count -= 1;
 	scene -> undoStack().push(new ChangeBorderCommand(scene, old_bp, new_bp));
 }
@@ -987,14 +987,14 @@ QETDiagramEditor *DiagramView::diagramEditor() const {
 	Gere les double-clics sur le schema
 */
 void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
-	BorderInset &bi = scene -> border_and_inset;
+	BorderTitleBlock &bi = scene -> border_and_titleblock;
 	
 	// recupere le rectangle corespondant au cartouche
-	QRectF inset_rect(
+	QRectF titleblock_rect(
 		Diagram::margin,
 		Diagram::margin + bi.diagramHeight(),
-		bi.insetWidth(),
-		bi.insetHeight()
+		bi.titleBlockWidth(),
+		bi.titleBlockHeight()
 	);
 	
 	// recupere le rectangle correspondant aux en-tetes des colonnes
@@ -1025,7 +1025,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 		} else {
 			QGraphicsView::mouseDoubleClickEvent(e);
 		}
-	} else if (inset_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
+	} else if (titleblock_rect.contains(click_pos) || columns_rect.contains(click_pos) || rows_rect.contains(click_pos)) {
 		// edite les proprietes du schema
 		editDiagramProperties();
 	} else {

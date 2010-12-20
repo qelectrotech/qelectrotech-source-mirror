@@ -23,13 +23,13 @@
 #include "elementslocation.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
-#include "insetproperties.h"
+#include "titleblockproperties.h"
 class Diagram;
 class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 class ElementsLocation;
-class InsetTemplate;
+class TitleBlockTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
 /**
@@ -80,13 +80,13 @@ class QETProject : public QObject {
 	QString title() const;
 	qreal declaredQElectroTechVersion();
 	void setTitle(const QString &);
-	QList<QString> embeddedInsetTemplates() const;
-	const InsetTemplate *getTemplateByName(const QString &template_name);
+	QList<QString> embeddedTitleBlockTemplates() const;
+	const TitleBlockTemplate *getTemplateByName(const QString &template_name);
 	QDomElement getTemplateXmlDescriptionByName(const QString &);
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
-	InsetProperties defaultInsetProperties() const;
-	void setDefaultInsetProperties(const InsetProperties &);
+	TitleBlockProperties defaultTitleBlockProperties() const;
+	void setDefaultTitleBlockProperties(const TitleBlockProperties &);
 	ConductorProperties defaultConductorProperties() const;
 	void setDefaultConductorProperties(const ConductorProperties &);
 	QDomDocument toXml();
@@ -162,10 +162,10 @@ class QETProject : public QObject {
 	/// Proprietes par defaut des conducteurs pour les nouveaux schemas dans ce projet
 	ConductorProperties default_conductor_properties_;
 	/// Proprietes par defaut du cartouche pour les nouveaux schemas dans ce projet
-	InsetProperties default_inset_properties_;
-	/// XML descriptions of embedded inset templates
-	QHash<QString, QDomElement> inset_templates_xml_;
-	/// Already parsed embedded inset templates
-	QHash<QString, InsetTemplate *> inset_templates_;
+	TitleBlockProperties default_titleblock_properties_;
+	/// XML descriptions of embedded titleblock templates
+	QHash<QString, QDomElement> titleblock_templates_xml_;
+	/// Already parsed embedded titleblock templates
+	QHash<QString, TitleBlockTemplate *> titleblock_templates_;
 };
 #endif

@@ -22,7 +22,7 @@
 #include "conductor.h"
 #include "conductorproperties.h"
 #include "diagramcontent.h"
-#include "insetproperties.h"
+#include "titleblockproperties.h"
 #include "qet.h"
 class Diagram;
 class DiagramTextItem;
@@ -419,13 +419,13 @@ class ResetConductorCommand : public QUndoCommand {
 /**
 	Cette classe represente l'action de modifier les informations du cartouche d'un schema
 */
-class ChangeInsetCommand : public QUndoCommand {
+class ChangeTitleBlockCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ChangeInsetCommand(Diagram *, const InsetProperties &, const InsetProperties &, QUndoCommand * = 0);
-	virtual ~ChangeInsetCommand();
+	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = 0);
+	virtual ~ChangeTitleBlockCommand();
 	private:
-	ChangeInsetCommand(const ChangeInsetCommand &);
+	ChangeTitleBlockCommand(const ChangeTitleBlockCommand &);
 	
 	// methodes
 	public:
@@ -437,9 +437,9 @@ class ChangeInsetCommand : public QUndoCommand {
 	/// schema modifie
 	Diagram *diagram;
 	/// proprietes avant changement
-	InsetProperties old_inset;
+	TitleBlockProperties old_titleblock;
 	/// proprietes apres changement
-	InsetProperties new_inset;
+	TitleBlockProperties new_titleblock;
 };
 
 /**

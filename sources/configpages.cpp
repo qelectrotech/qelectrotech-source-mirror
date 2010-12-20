@@ -18,10 +18,10 @@
 #include "configpages.h"
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
-#include "insetpropertieswidget.h"
+#include "titleblockpropertieswidget.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
-#include "borderinset.h"
+#include "bordertitleblock.h"
 #include "qeticons.h"
 #include "exportpropertieswidget.h"
 
@@ -34,7 +34,7 @@ NewDiagramPage::NewDiagramPage(QWidget *parent) : ConfigPage(parent) {
 	bpw = new BorderPropertiesWidget(QETDiagramEditor::defaultBorderProperties());
 	
 	// proprietes par defaut d'un cartouche
-	ipw = new InsetPropertiesWidget(QETDiagramEditor::defaultInsetProperties(), true);
+	ipw = new TitleBlockPropertiesWidget(QETDiagramEditor::defaultTitleBlockProperties(), true);
 	
 	// proprietes par defaut des conducteurs
 	cpw = new ConductorPropertiesWidget(QETDiagramEditor::defaultConductorProperties());
@@ -77,7 +77,7 @@ void NewDiagramPage::applyConf() {
 	bpw -> borderProperties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes du cartouche
-	ipw-> insetProperties().toSettings(settings, "diagrameditor/default");
+	ipw-> titleBlockProperties().toSettings(settings, "diagrameditor/default");
 	
 	// proprietes par defaut des conducteurs
 	cpw -> conductorProperties().toSettings(settings, "diagrameditor/defaultconductor");

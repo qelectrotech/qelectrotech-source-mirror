@@ -20,7 +20,7 @@
 #include <QtGui>
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
-class InsetPropertiesWidget;
+class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
 /**
 	Cette classe abstraite contient les methodes que toutes les pages de
@@ -65,7 +65,7 @@ class NewDiagramPage : public ConfigPage {
 	// attributs
 	public:
 	BorderPropertiesWidget *bpw;    ///< Widget d'edition des dimensions du schema
-	InsetPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
+	TitleBlockPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
 	ConductorPropertiesWidget *cpw; ///< Widget d'edition des proprietes par defaut des conducteurs
 };
 

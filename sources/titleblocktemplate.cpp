@@ -15,7 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "insettemplate.h"
+#include "titleblocktemplate.h"
 #include "qet.h"
 #include "qetapp.h"
 
@@ -23,7 +23,7 @@
 	Constructor
 	@param parent parent QObject
 */
-InsetTemplate::InsetTemplate(QObject *parent) :
+TitleBlockTemplate::TitleBlockTemplate(QObject *parent) :
 	QObject(parent)
 {
 }
@@ -31,7 +31,7 @@ InsetTemplate::InsetTemplate(QObject *parent) :
 /**
 	Destructor
 */
-InsetTemplate::~InsetTemplate() {
+TitleBlockTemplate::~TitleBlockTemplate() {
 	loadLogos(QDomElement(), true);
 }
 
@@ -39,7 +39,7 @@ InsetTemplate::~InsetTemplate() {
 	@param filepath A file path to read the template from.
 	@return true if the reading succeeds, false otherwise.
 */
-bool InsetTemplate::loadFromXmlFile(const QString &filepath) {
+bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 	// opens the file
 	QFile template_file(filepath);
 	if (!template_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
@@ -51,7 +51,7 @@ bool InsetTemplate::loadFromXmlFile(const QString &filepath) {
 	if (!xml_parsing) {
 		return(false);
 	}
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << filepath << "opened";
 #endif
 	return(loadFromXmlElement(xml_description_.documentElement()));
@@ -61,9 +61,9 @@ bool InsetTemplate::loadFromXmlFile(const QString &filepath) {
 	@param xml_element An XML document to read the template from.
 	@return true if the reading succeeds, false otherwise.
 */
-bool InsetTemplate::loadFromXmlElement(const QDomElement &xml_element) {
-	// we expect the XML element to be an <insettemplate>
-	if (xml_element.tagName() != "insettemplate") {
+bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
+	// we expect the XML element to be an <titleblocktemplate>
+	if (xml_element.tagName() != "titleblocktemplate") {
 		return(false);
 	}
 	
@@ -73,13 +73,13 @@ bool InsetTemplate::loadFromXmlElement(const QDomElement &xml_element) {
 }
 
 /**
-	Imports the logos from a given XML inset template.
-	@param xml_element An XML element representing an inset template.
+	Imports the logos from a given XML titleblock template.
+	@param xml_element An XML element representing an titleblock template.
 	@param reset true to delete all previously known logos before, false
 	otherwise.
 	@return true if the reading succeeds, false otherwise.
 */
-bool InsetTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
+bool TitleBlockTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
 	if (reset) {
 		qDeleteAll(vector_logos_.begin(), vector_logos_.end());
 		vector_logos_.clear();
@@ -103,11 +103,11 @@ bool InsetTemplate::loadLogos(const QDomElement &xml_element, bool reset) {
 
 /**
 	Imports the logo from a given XML logo description.
-	@param xml_element An XML element representing a logo within an inset
+	@param xml_element An XML element representing a logo within an titleblock
 	template.
 	@return true if the reading succeeds, false otherwise.
 */
-bool InsetTemplate::loadLogo(const QDomElement &xml_element) {
+bool TitleBlockTemplate::loadLogo(const QDomElement &xml_element) {
 	// we require a name
 	if (!xml_element.hasAttribute("name")) {
 		return(false);
@@ -161,11 +161,11 @@ bool InsetTemplate::loadLogo(const QDomElement &xml_element) {
 }
 
 /**
-	Imports the grid from a given XML inset template.
-	@param xml_element An XML element representing an inset template.
+	Imports the grid from a given XML titleblock template.
+	@param xml_element An XML element representing an titleblock template.
 	@return true if the reading succeeds, false otherwise.
 */
-bool InsetTemplate::loadGrid(const QDomElement &xml_element) {
+bool TitleBlockTemplate::loadGrid(const QDomElement &xml_element) {
 	// we parse the first available "grid" XML element
 	QDomElement grid_element;
 	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
@@ -187,9 +187,9 @@ bool InsetTemplate::loadGrid(const QDomElement &xml_element) {
 
 /**
 	Parses the rows heights
-	@param rows_string A string describing the rows heights of the inset
+	@param rows_string A string describing the rows heights of the titleblock
 */
-void InsetTemplate::parseRows(const QString &rows_string) {
+void TitleBlockTemplate::parseRows(const QString &rows_string) {
 	rows_heights_.clear();
 	// parse the rows attribute: we expect a serie of absolute heights
 	QRegExp row_size_format("^([0-9]+)(?:px)?$", Qt::CaseInsensitive);
@@ -202,16 +202,16 @@ void InsetTemplate::parseRows(const QString &rows_string) {
 			if (conv_ok) rows_heights_ << row_size;
 		}
 	}
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << "Rows heights:" << rows_heights_;
 #endif
 }
 
 /**
 	Parses the columns widths
-	@param cols_string A string describing the columns widths of the inset
+	@param cols_string A string describing the columns widths of the titleblock
 */
-void InsetTemplate::parseColumns(const QString &cols_string) {
+void TitleBlockTemplate::parseColumns(const QString &cols_string) {
 	columns_width_.clear();
 	// parse the cols attribute: we expect a serie of absolute or relative widths
 	QRegExp abs_col_size_format("^([0-9]+)(?:px)?$", Qt::CaseInsensitive);
@@ -222,16 +222,16 @@ void InsetTemplate::parseColumns(const QString &cols_string) {
 	foreach (QString cols_description, cols_descriptions) {
 		if (abs_col_size_format.exactMatch(cols_description)) {
 			int col_size = abs_col_size_format.capturedTexts().at(1).toInt(&conv_ok);
-			if (conv_ok) columns_width_ << InsetColDimension(col_size, QET::Absolute);
+			if (conv_ok) columns_width_ << TitleBlockColDimension(col_size, QET::Absolute);
 		} else if (rel_col_size_format.exactMatch(cols_description)) {
 			int col_size = rel_col_size_format.capturedTexts().at(2).toInt(&conv_ok);
-			QET::InsetColumnLength col_type = rel_col_size_format.capturedTexts().at(1) == "t" ? QET::RelativeToTotalLength : QET::RelativeToRemainingLength;
-			if (conv_ok) columns_width_ << InsetColDimension(col_size, col_type );
+			QET::TitleBlockColumnLength col_type = rel_col_size_format.capturedTexts().at(1) == "t" ? QET::RelativeToTotalLength : QET::RelativeToRemainingLength;
+			if (conv_ok) columns_width_ << TitleBlockColDimension(col_size, col_type );
 		}
 	}
-#ifdef INSET_TEMPLATE_DEBUG
-	foreach (InsetColDimension icd, columns_width_) {
-		qDebug() << Q_FUNC_INFO << QString("%1 [%2]").arg(icd.value).arg(QET::insetColumnLengthToString(icd.type));
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
+	foreach (TitleBlockColDimension icd, columns_width_) {
+		qDebug() << Q_FUNC_INFO << QString("%1 [%2]").arg(icd.value).arg(QET::titleBlockColumnLengthToString(icd.type));
 	}
 #endif
 }
@@ -241,7 +241,7 @@ void InsetTemplate::parseColumns(const QString &cols_string) {
 	and stored in this object.
 	@param xml_element XML element to analyze
 */
-bool InsetTemplate::loadCells(const QDomElement &xml_element) {
+bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 	initCells();
 	// we are interested by the "logo" and "field" elements
 	QDomElement grid_element;
@@ -249,7 +249,7 @@ bool InsetTemplate::loadCells(const QDomElement &xml_element) {
 		if (!n.isElement()) continue;
 		QDomElement cell_element = n.toElement();
 		if (cell_element.tagName() == "field" || cell_element.tagName() == "logo") {
-			InsetCell *loaded_cell;
+			TitleBlockCell *loaded_cell;
 			if (!checkCell(cell_element, &loaded_cell)) continue;
 			
 			if (cell_element.tagName() == "logo") {
@@ -290,16 +290,16 @@ bool InsetTemplate::loadCells(const QDomElement &xml_element) {
 }
 
 /**
-	@param xml_element XML element representing a cell, i.e. either an inset
-	logo or an inset field.
-	@param inset_cell_ptr Pointer to an InsetCell object pointer - if non-zero and if
-	this method returns true, will be filled with the created InsetCell
+	@param xml_element XML element representing a cell, i.e. either an titleblock
+	logo or an titleblock field.
+	@param titleblock_cell_ptr Pointer to an TitleBlockCell object pointer - if non-zero and if
+	this method returns true, will be filled with the created TitleBlockCell
 	@return TRUE if the cell appears to be ok, FALSE otherwise
 */
-bool InsetTemplate::checkCell(const QDomElement &xml_element, InsetCell **inset_cell_ptr) {
+bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCell **titleblock_cell_ptr) {
 	int col_count = columns_width_.count(), row_count = rows_heights_.count();
 	
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << "begin" << row_count << col_count;
 #endif
 	
@@ -318,10 +318,10 @@ bool InsetTemplate::checkCell(const QDomElement &xml_element, InsetCell **inset_
 	}
 	
 	// check whether the target cell can be used or not
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << "cell access" << col_num << row_num;
 #endif
-	InsetCell *cell_ptr = &(cells_[col_num][row_num]);
+	TitleBlockCell *cell_ptr = &(cells_[col_num][row_num]);
 	if (!cell_ptr -> is_null || cell_ptr -> spanner_cell) {
 		return(false);
 	}
@@ -342,10 +342,10 @@ bool InsetTemplate::checkCell(const QDomElement &xml_element, InsetCell **inset_
 		for (int i = col_num ; i <= col_num + col_span ; ++ i) {
 			for (int j = row_num ; j <= row_num + row_span ; ++ j) {
 				if (i == col_num && j == row_num) continue;
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 				qDebug() << Q_FUNC_INFO << "span check" << i << j;
 #endif
-				InsetCell *current_cell = &(cells_[i][j]);
+				TitleBlockCell *current_cell = &(cells_[i][j]);
 				if (!current_cell -> is_null || current_cell -> spanner_cell) {
 					return(false);
 				}
@@ -354,7 +354,7 @@ bool InsetTemplate::checkCell(const QDomElement &xml_element, InsetCell **inset_
 	}
 	
 	// at this point, the cell is ok - we fill the adequate cells in the matrix
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << "cell writing";
 #endif
 	cell_ptr -> num_row = row_num;
@@ -362,16 +362,16 @@ bool InsetTemplate::checkCell(const QDomElement &xml_element, InsetCell **inset_
 	if (has_row_span) cell_ptr -> row_span = row_span;
 	if (has_col_span) cell_ptr -> col_span = col_span;
 	cell_ptr -> is_null = false;
-	if (inset_cell_ptr) *inset_cell_ptr = cell_ptr;
+	if (titleblock_cell_ptr) *titleblock_cell_ptr = cell_ptr;
 	
 	if (has_row_span || has_col_span) {
 		for (int i = col_num ; i <= col_num + col_span ; ++ i) {
 			for (int j = row_num ; j <= row_num + row_span ; ++ j) {
 				if (i == col_num && j == row_num) continue;
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 				qDebug() << Q_FUNC_INFO << "span cells writing" << i << j;
 #endif
-				InsetCell *current_cell = &(cells_[i][j]);
+				TitleBlockCell *current_cell = &(cells_[i][j]);
 				current_cell -> num_row = j;
 				current_cell -> num_col = i;
 				current_cell -> is_null = false;
@@ -388,7 +388,7 @@ bool InsetTemplate::checkCell(const QDomElement &xml_element, InsetCell **inset_
 	Note that this method does nothing if one of the internal lists
 	columns_width_ and rows_heights_ is empty.
 */
-void InsetTemplate::initCells() {
+void TitleBlockTemplate::initCells() {
 	if (columns_width_.count() < 1 || rows_heights_.count() < 1) return;
 	
 	cells_.resize(columns_width_.count());
@@ -397,20 +397,20 @@ void InsetTemplate::initCells() {
 		cells_[i].resize(row_count);
 		// ensure every cell is a null cell
 		for (int j = 0 ; j < row_count ; ++ j) {
-			cells_[i][j] = InsetCell();
+			cells_[i][j] = TitleBlockCell();
 		}
 	}
 	
-#ifdef INSET_TEMPLATE_DEBUG
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
 	qDebug() << Q_FUNC_INFO << toString();
 #endif
 }
 
 /**
-	@return A string representing the inset template
-	@see InsetCell::toString()
+	@return A string representing the titleblock template
+	@see TitleBlockCell::toString()
 */
-QString InsetTemplate::toString() const {
+QString TitleBlockTemplate::toString() const {
 	QString str = "\n";
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
@@ -422,10 +422,10 @@ QString InsetTemplate::toString() const {
 }
 
 /**
-	@param total_width The total width of the inset to render
+	@param total_width The total width of the titleblock to render
 	@return the list of the columns widths for this rendering
 */
-QList<int> InsetTemplate::columnsWidth(int total_width) const {
+QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 	if (total_width < 0) return(QList<int>());
 	
 	// we first iter to determine the absolute and total-width-related widths
@@ -433,7 +433,7 @@ QList<int> InsetTemplate::columnsWidth(int total_width) const {
 	int abs_widths_sum = 0;
 	
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-		InsetColDimension icd = columns_width_.at(i);
+		TitleBlockColDimension icd = columns_width_.at(i);
 		if (icd.type == QET::Absolute) {
 			abs_widths_sum += icd.value;
 			final_widths[i] = icd.value;
@@ -449,7 +449,7 @@ QList<int> InsetTemplate::columnsWidth(int total_width) const {
 	
 	// we do a second iteration to build the final widths list
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-		InsetColDimension icd = columns_width_.at(i);
+		TitleBlockColDimension icd = columns_width_.at(i);
 		if (icd.type == QET::RelativeToRemainingLength) {
 			final_widths[i] = int(remaining_width * icd.value / 100);
 		}
@@ -457,7 +457,7 @@ QList<int> InsetTemplate::columnsWidth(int total_width) const {
 	return(final_widths.toList());
 }
 
-int InsetTemplate::height() const {
+int TitleBlockTemplate::height() const {
 	int height = 0;
 	foreach(int row_height, rows_heights_) {
 		height += row_height;
@@ -466,22 +466,22 @@ int InsetTemplate::height() const {
 }
 
 /**
-	Render the inset.
-	@param painter Painter to use to render the inset
-	@param diagram_context Diagram context to use to generate the inset strings
-	@param inset_width Width of the inset to render
+	Render the titleblock.
+	@param painter Painter to use to render the titleblock
+	@param diagram_context Diagram context to use to generate the titleblock strings
+	@param titleblock_width Width of the titleblock to render
 */
-void InsetTemplate::render(QPainter &painter, const DiagramContext &diagram_context, int inset_width) const {
-	QList<int> widths = columnsWidth(inset_width);
-	int inset_height = height();
+void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram_context, int titleblock_width) const {
+	QList<int> widths = columnsWidth(titleblock_width);
+	int titleblock_height = height();
 	
 	// prepare the QPainter
 	painter.setPen(Qt::black);
 	painter.setBrush(Qt::white);
 	painter.setFont(QETApp::diagramTextsFont());
 	
-	// draw the inset border
-	painter.drawRect(QRect(0, 0, inset_width, inset_height));
+	// draw the titleblock border
+	painter.drawRect(QRect(0, 0, titleblock_width, titleblock_height));
 	
 	// run through each inidividual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
@@ -524,7 +524,7 @@ void InsetTemplate::render(QPainter &painter, const DiagramContext &diagram_cont
 	@param diagram_context Diagram context to use to generate the final text for the given cell
 	@return the final text that has to be drawn in the given cell
 */
-QString InsetTemplate::finalTextForCell(const InsetCell &cell, const DiagramContext &diagram_context) const {
+QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const DiagramContext &diagram_context) const {
 	QString cell_text = cell.value;
 	
 	foreach (QString key, diagram_context.keys()) {
@@ -532,7 +532,7 @@ QString InsetTemplate::finalTextForCell(const InsetCell &cell, const DiagramCont
 		cell_text.replace("%" + key,        diagram_context[key].toString());
 	}
 	if (cell.display_label && !cell.label.isEmpty()) {
-		cell_text = QString(tr(" %1 : %2", "inset content - please let the blank space at the beginning")).arg(cell.label).arg(cell_text);
+		cell_text = QString(tr(" %1 : %2", "titleblock content - please let the blank space at the beginning")).arg(cell.label).arg(cell_text);
 	} else {
 		cell_text = QString(tr(" %1")).arg(cell_text);
 	}
@@ -544,7 +544,7 @@ QString InsetTemplate::finalTextForCell(const InsetCell &cell, const DiagramCont
 	@param start start border number
 	@param end end border number
 */
-int InsetTemplate::lengthRange(int start, int end, const QList<int> &lengths_list) const {
+int TitleBlockTemplate::lengthRange(int start, int end, const QList<int> &lengths_list) const {
 	if (start > end || start >= lengths_list.count() || end > lengths_list.count()) {
 		qDebug() << Q_FUNC_INFO << "wont use" << start << "and" << end;
 		return(0);
@@ -562,7 +562,7 @@ int InsetTemplate::lengthRange(int start, int end, const QList<int> &lengths_lis
 /**
 	Constructor
 */
-InsetCell::InsetCell() {
+TitleBlockCell::TitleBlockCell() {
 	num_row = num_col = -1;
 	row_span = col_span = 0;
 	display_label = is_null = true;
@@ -570,11 +570,11 @@ InsetCell::InsetCell() {
 }
 
 /**
-	@return A string representing the inset cell
+	@return A string representing the titleblock cell
 */
-QString InsetCell::toString() const {
-	if (is_null) return("InsetCell{null}");
+QString TitleBlockCell::toString() const {
+	if (is_null) return("TitleBlockCell{null}");
 	QString span_desc = (row_span > 0 || col_span > 0) ? QString("+%3,%4").arg(row_span).arg(col_span) : QET::pointerString(spanner_cell);
-	QString base_desc = QString("InsetCell{ [%1, %2] %3 }").arg(num_row).arg(num_col).arg(span_desc);
+	QString base_desc = QString("TitleBlockCell{ [%1, %2] %3 }").arg(num_row).arg(num_col).arg(span_desc);
 	return(base_desc);
 }

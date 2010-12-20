@@ -22,7 +22,7 @@
 #include "qetelementeditor.h"
 #include "elementscollectionitem.h"
 #include "fileelementscollection.h"
-#include "insettemplate.h"
+#include "titleblocktemplate.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
@@ -46,7 +46,7 @@ uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
 AboutQET *QETApp::about_dialog_ = 0;
-InsetTemplate *QETApp::default_inset_template_ = 0;
+TitleBlockTemplate *QETApp::default_titleblock_template_ = 0;
 
 /**
 	Constructeur
@@ -531,16 +531,16 @@ QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
 }
 
 /**
-	@return the default inset template for diagrams
+	@return the default titleblock template for diagrams
 */
-InsetTemplate *QETApp::defaultInsetTemplate() {
-	if (!QETApp::default_inset_template_) {
-		InsetTemplate *inset_template = new InsetTemplate(QETApp::instance());
-		if (inset_template -> loadFromXmlFile(":/insets/default.inset")) {
-			QETApp::default_inset_template_ = inset_template;
+TitleBlockTemplate *QETApp::defaultTitleBlockTemplate() {
+	if (!QETApp::default_titleblock_template_) {
+		TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(QETApp::instance());
+		if (titleblock_template -> loadFromXmlFile(":/titleblocks/default.titleblock")) {
+			QETApp::default_titleblock_template_ = titleblock_template;
 		}
 	}
-	return(default_inset_template_);
+	return(default_titleblock_template_);
 }
 
 

@@ -15,43 +15,43 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef INSET_TEMPLATE_H
-#define INSET_TEMPLATE_H
+#ifndef TITLEBLOCK_TEMPLATE_H
+#define TITLEBLOCK_TEMPLATE_H
 #include <QtXml>
 #include <QtSvg>
 #include "diagramcontext.h"
-#include "insetcell.h"
+#include "titleblockcell.h"
 #include "qet.h"
 
 /**
 	This struct is a simple container associating a length with its type.
-	@see InsetColumnLength 
+	@see TitleBlockColumnLength 
 */
-struct InsetColDimension {
-	InsetColDimension(int v, QET::InsetColumnLength t = QET::Absolute) {
+struct TitleBlockColDimension {
+	TitleBlockColDimension(int v, QET::TitleBlockColumnLength t = QET::Absolute) {
 		value = v;
 		type = t;
 	}
-	QET::InsetColumnLength type;
+	QET::TitleBlockColumnLength type;
 	int value;
 };
 
 /**
-	This class represents an inset templ)ate for an electric diagram.
+	This class represents an titleblock templ)ate for an electric diagram.
 	It can read from an XML document the layout of the table that graphically
-	represents the inset, and can produce a graphical rendering of it from a
+	represents the titleblock, and can produce a graphical rendering of it from a
 	diagram context (object embedding the informations of the diagram we want to
-	represent the inset.
+	represent the titleblock.
 */
-class InsetTemplate : public QObject {
+class TitleBlockTemplate : public QObject {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:
-	InsetTemplate(QObject * = 0);
-	virtual ~InsetTemplate();
+	TitleBlockTemplate(QObject * = 0);
+	virtual ~TitleBlockTemplate();
 	private:
-	InsetTemplate(const InsetTemplate &);
+	TitleBlockTemplate(const TitleBlockTemplate &);
 	
 	// methodes
 	public:
@@ -74,11 +74,11 @@ class InsetTemplate : public QObject {
 	private:
 	void parseRows(const QString &);
 	void parseColumns(const QString &);
-	bool checkCell(const QDomElement &, InsetCell ** = 0);
+	bool checkCell(const QDomElement &, TitleBlockCell ** = 0);
 	void flushCells();
 	void initCells();
 	int lengthRange(int, int, const QList<int> &) const;
-	QString finalTextForCell(const InsetCell &, const DiagramContext &) const;
+	QString finalTextForCell(const TitleBlockCell &, const DiagramContext &) const;
 	
 	// attributs
 	private:
@@ -86,7 +86,7 @@ class InsetTemplate : public QObject {
 	QHash<QString, QSvgRenderer *> vector_logos_;
 	QHash<QString, QPixmap *>      bitmap_logos_;
 	QList<int> rows_heights_;
-	QList<InsetColDimension> columns_width_;
-	QVector< QVector<InsetCell> > cells_;
+	QList<TitleBlockColDimension> columns_width_;
+	QVector< QVector<TitleBlockCell> > cells_;
 };
 #endif

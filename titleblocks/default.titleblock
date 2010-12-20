@@ -1,4 +1,4 @@
-<insettemplate name="default">
+<titleblocktemplate name="default">
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
   <grid rows="25px;25px" cols="t22%;r100%;t22%">
@@ -8,4 +8,4 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <field row="0" col="2" name="file"    label="Fichier" displaylabel="true"  align="left"   rowspan="0" value="%filename" />
     <field row="1" col="2" name="folio"   label="Folio"   displaylabel="true"  align="left"   rowspan="0" value="%{folio-id}/%{folio-total}" />
   </grid>
-</insettemplate>
+</titleblocktemplate>

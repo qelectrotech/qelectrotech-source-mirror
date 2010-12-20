@@ -180,7 +180,7 @@
 	<file>ico/oxygen-icons/48x48/apps/qelectrotech.png</file>
 	<file>ico/oxygen-icons/64x64/apps/qelectrotech.png</file>
 	<file>ico/splash.png</file>
-	<file>insets/default.inset</file>
+	<file>titleblocks/default.titleblock</file>
 	<file>LICENSE</file>
 </qresource>
 </RCC>

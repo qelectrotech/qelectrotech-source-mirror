@@ -15,19 +15,19 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef INSET_TEMPLATE_RENDERER_H
-#define INSET_TEMPLATE_RENDERER_H
+#ifndef TITLEBLOCK_TEMPLATE_RENDERER_H
+#define TITLEBLOCK_TEMPLATE_RENDERER_H
 #include <QPicture>
 #include "diagramcontext.h"
-class InsetTemplate;
-class InsetTemplateRenderer : public QObject {
+class TitleBlockTemplate;
+class TitleBlockTemplateRenderer : public QObject {
 	Q_OBJECT
 	
 	public:
-	InsetTemplateRenderer(QObject * = 0);
-	virtual ~InsetTemplateRenderer();
-	const InsetTemplate *insetTemplate() const;
-	void setInsetTemplate(const InsetTemplate *);
+	TitleBlockTemplateRenderer(QObject * = 0);
+	virtual ~TitleBlockTemplateRenderer();
+	const TitleBlockTemplate *titleBlockTemplate() const;
+	void setTitleBlockTemplate(const TitleBlockTemplate *);
 	void setContext(const DiagramContext &context);
 	int height() const;
 	void render(QPainter *, int);
@@ -37,9 +37,9 @@ class InsetTemplateRenderer : public QObject {
 	void invalidateRenderedTemplate();
 	
 	private:
-	const InsetTemplate *inset_template_;
+	const TitleBlockTemplate *titleblock_template_;
 	QPicture rendered_template_;
 	DiagramContext context_;
-	int last_known_inset_width_;
+	int last_known_titleblock_width_;
 };
 #endif

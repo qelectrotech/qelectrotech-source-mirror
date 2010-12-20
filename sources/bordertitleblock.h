@@ -15,31 +15,31 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BORDERINSET_H
-#define BORDERINSET_H
-#include "insetproperties.h"
+#ifndef BORDERTITLEBLOCK_H
+#define BORDERTITLEBLOCK_H
+#include "titleblockproperties.h"
 #include "borderproperties.h"
 #include <QObject>
 #include <QRectF>
 #include <QDate>
 class QPainter;
 class DiagramPosition;
-class InsetTemplate;
-class InsetTemplateRenderer;
+class TitleBlockTemplate;
+class TitleBlockTemplateRenderer;
 /**
 	Cette classe represente l'ensemble bordure + cartouche qui encadre le
 	schema electrique.
 */
-class BorderInset : public QObject {
+class BorderTitleBlock : public QObject {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
 	public:
-	BorderInset(QObject * = 0);
-	virtual ~BorderInset();
+	BorderTitleBlock(QObject * = 0);
+	virtual ~BorderTitleBlock();
 	
 	private:
-	BorderInset(const BorderInset &);
+	BorderTitleBlock(const BorderTitleBlock &);
 	
 	// methodes
 	public:
@@ -79,14 +79,14 @@ class BorderInset : public QObject {
 	
 	// cartouche
 	/// @return la largeur du cartouche
-	qreal   insetWidth()          const { return(inset_width);                 }
-	qreal   insetHeight()         const;
+	qreal   titleBlockWidth()          const { return(titleblock_width);                 }
+	qreal   titleBlockHeight()         const;
 	
 	// cadre avec le cartouche
 	/// @return la hauteur de la bordure
 	qreal   borderWidth()        const { return(diagramWidth());                  }
 	/// @return la hauteur de la bordure
-	qreal   borderHeight()       const { return(diagramHeight() + insetHeight()); }
+	qreal   borderHeight()       const { return(diagramHeight() + titleBlockHeight()); }
 	
 	// methodes d'acces en lecture aux informations du cartouche
 	/// @return le champ "Auteur" du cartouche
@@ -102,7 +102,7 @@ class BorderInset : public QObject {
 	
 	// methodes d'acces en lecture aux options
 	/// @return true si le cartouche est affiche, false sinon
-	bool    insetIsDisplayed()    const { return(display_inset);         }
+	bool    titleBlockIsDisplayed()    const { return(display_titleblock);         }
 	/// @return true si les entetes des colonnes sont affiches, false sinon
 	bool    columnsAreDisplayed() const { return(display_columns);       }
 	/// @return true si les entetes des lignes sont affiches, false sinon
@@ -122,8 +122,8 @@ class BorderInset : public QObject {
 	void setColumnsHeaderHeight(const qreal &);
 	void setRowsHeaderWidth    (const qreal &);
 	void setDiagramHeight      (const qreal &);
-	void setInsetWidth         (const qreal &);
-	void adjustInsetToColumns  ();
+	void setTitleBlockWidth         (const qreal &);
+	void adjustTitleBlockToColumns  ();
 	
 	DiagramPosition convertPosition(const QPointF &);
 	
@@ -145,23 +145,23 @@ class BorderInset : public QObject {
 	/// @param filename le nouveau contenu du champ "Fichier"
 	void setFileName           (const QString &filename) { bi_filename     = filename; }
 	
-	InsetProperties exportInset();
-	void importInset(const InsetProperties &);
+	TitleBlockProperties exportTitleBlock();
+	void importTitleBlock(const TitleBlockProperties &);
 	BorderProperties exportBorder();
 	void importBorder(const BorderProperties &);
 	
-	const InsetTemplate *insetTemplate();
-	void setInsetTemplate(const InsetTemplate *);
+	const TitleBlockTemplate *titleBlockTemplate();
+	void setTitleBlockTemplate(const TitleBlockTemplate *);
 	
 	// methodes d'acces en ecriture aux options
-	void displayInset(bool);
+	void displayTitleBlock(bool);
 	void displayColumns(bool);
 	void displayRows(bool);
 	void displayBorder(bool);
 	
 	private:
 	void updateRectangles();
-	void updateDiagramContextForInset();
+	void updateDiagramContextForTitleBlock();
 	QString incrementLetters(const QString &);
 	
 	// signaux
@@ -212,18 +212,18 @@ class BorderInset : public QObject {
 	qreal  rows_header_width;
 	
 	// dimensions du cartouche
-	qreal  inset_width;
-	qreal  inset_height;
+	qreal  titleblock_width;
+	qreal  titleblock_height;
 	
 	// rectangles utilises pour le dessin
 	QRectF  diagram;
-	QRectF  inset;
+	QRectF  titleblock;
 	
 	// booleens pour les options de dessin
-	bool display_inset;
+	bool display_titleblock;
 	bool display_columns;
 	bool display_rows;
 	bool display_border;
-	InsetTemplateRenderer *inset_template_renderer;
+	TitleBlockTemplateRenderer *titleblock_template_renderer;
 };
 #endif

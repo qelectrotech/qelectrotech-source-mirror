@@ -15,41 +15,41 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef INSET_PROPERTIES_WIDGET_H
-#define INSET_PROPERTIES_WIDGET_H
+#ifndef TITLEBLOCK_PROPERTIES_WIDGET_H
+#define TITLEBLOCK_PROPERTIES_WIDGET_H
 #include <QtGui>
-#include "insetproperties.h"
+#include "titleblockproperties.h"
 /**
-	Ce widget permet d'editer un objet InsetProperties, c'est-a-dire les
+	Ce widget permet d'editer un objet TitleBlockProperties, c'est-a-dire les
 	valeurs affichees par le cartouche d'un schema.
 */
-class InsetPropertiesWidget : public QWidget {
+class TitleBlockPropertiesWidget : public QWidget {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
-	InsetPropertiesWidget(const InsetProperties &inset = InsetProperties(), bool = false, QWidget * = 0);
-	virtual ~InsetPropertiesWidget();
+	TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool = false, QWidget * = 0);
+	virtual ~TitleBlockPropertiesWidget();
 	private:
-	InsetPropertiesWidget(const InsetPropertiesWidget &);
+	TitleBlockPropertiesWidget(const TitleBlockPropertiesWidget &);
 	
 	// methodes
 	public:
-	InsetProperties insetProperties() const;
-	void setInsetProperties(const InsetProperties &);
+	TitleBlockProperties titleBlockProperties() const;
+	void setTitleBlockProperties(const TitleBlockProperties &);
 	bool displayCurrentDate() const;
 	bool isReadOnly() const;
 	void setReadOnly(bool);
 	
 	// attributs
 	private:
-	QLineEdit    *inset_title;
-	QLineEdit    *inset_author;
-	QDateEdit    *inset_date;
-	QLineEdit    *inset_filename;
-	QLineEdit    *inset_folio;
-	QRadioButton *inset_no_date;
-	QRadioButton *inset_current_date;
-	QRadioButton *inset_fixed_date;
+	QLineEdit    *titleblock_title;
+	QLineEdit    *titleblock_author;
+	QDateEdit    *titleblock_date;
+	QLineEdit    *titleblock_filename;
+	QLineEdit    *titleblock_folio;
+	QRadioButton *titleblock_no_date;
+	QRadioButton *titleblock_current_date;
+	QRadioButton *titleblock_fixed_date;
 	bool display_current_date;
 };
 #endif

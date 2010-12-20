@@ -22,7 +22,7 @@
 #include <QVariant>
 /**
 	This class represents a diagram context, i.e. the data (a list of key/value
-	pairs) of a diagram at a given time. It is notably used by inset templates
+	pairs) of a diagram at a given time. It is notably used by titleblock templates
 	to fetch the informations they need to do their rendering.
 */
 class DiagramContext {

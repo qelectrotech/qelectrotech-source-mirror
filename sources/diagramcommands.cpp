@@ -828,32 +828,32 @@ void ResetConductorCommand::redo() {
 	@param new_ip Nouvelles proprietes du cartouche
 	@param parent QUndoCommand parent
 */
-ChangeInsetCommand::ChangeInsetCommand(
+ChangeTitleBlockCommand::ChangeTitleBlockCommand(
 	Diagram *d,
-	const InsetProperties &old_ip,
-	const InsetProperties &new_ip,
+	const TitleBlockProperties &old_ip,
+	const TitleBlockProperties &new_ip,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(QObject::tr("modifier le cartouche", "undo caption"), parent),
 	diagram(d),
-	old_inset(old_ip),
-	new_inset(new_ip)
+	old_titleblock(old_ip),
+	new_titleblock(new_ip)
 {
 }
 
 /// Destructeur
-ChangeInsetCommand::~ChangeInsetCommand() {
+ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {
 }
 
 /// Annule la modification de cartouche
-void ChangeInsetCommand::undo() {
-	diagram -> border_and_inset.importInset(old_inset);
+void ChangeTitleBlockCommand::undo() {
+	diagram -> border_and_titleblock.importTitleBlock(old_titleblock);
 	diagram -> invalidate(diagram -> border());
 }
 
 /// Refait la modification de cartouche
-void ChangeInsetCommand::redo() {
-	diagram -> border_and_inset.importInset(new_inset);
+void ChangeTitleBlockCommand::redo() {
+	diagram -> border_and_titleblock.importTitleBlock(new_titleblock);
 	diagram -> invalidate(diagram -> border());
 }
 
@@ -878,12 +878,12 @@ ChangeBorderCommand::~ChangeBorderCommand() {
 
 /// Annule les changements apportes au schema
 void ChangeBorderCommand::undo() {
-	diagram -> border_and_inset.importBorder(old_properties);
+	diagram -> border_and_titleblock.importBorder(old_properties);
 }
 
 /// Refait les changements apportes au schema
 void ChangeBorderCommand::redo() {
-	diagram -> border_and_inset.importBorder(new_properties);
+	diagram -> border_and_titleblock.importBorder(new_properties);
 }
 
 /**

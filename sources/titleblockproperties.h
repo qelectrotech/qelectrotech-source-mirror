@@ -15,26 +15,26 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef INSET_PROPERTIES_H
-#define INSET_PROPERTIES_H
+#ifndef TITLEBLOCK_PROPERTIES_H
+#define TITLEBLOCK_PROPERTIES_H
 #include <QtCore>
 #include <QtXml>
 /**
 	Cette classe est un conteneur pour les proprietes d'un cartouche de schema
 	: titre, auteur, date, nom de fichier et folio
 */
-class InsetProperties {
+class TitleBlockProperties {
 	public:
-	InsetProperties();
-	virtual ~InsetProperties();
+	TitleBlockProperties();
+	virtual ~TitleBlockProperties();
 	/// Specifie comment gerer la date
 	enum DateManagement {
 		UseDateValue, ///< utilise l'attribut date
 		CurrentDate   ///< utilise la date courante
 	};
 	
-	bool operator==(const InsetProperties &);
-	bool operator!=(const InsetProperties &);
+	bool operator==(const TitleBlockProperties &);
+	bool operator!=(const TitleBlockProperties &);
 	
 	void toXml(QDomElement &) const;
 	void fromXml(QDomElement &);

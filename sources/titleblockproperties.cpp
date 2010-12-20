@@ -15,13 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "insetproperties.h"
+#include "titleblockproperties.h"
 
 /**
-	Constructeur. Initialise un objet InsetProperties avec tous les champs
+	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
 	vides (date vide + useDate a UseDateValue).
 */
-InsetProperties::InsetProperties() :
+TitleBlockProperties::TitleBlockProperties() :
 	date(),
 	useDate(UseDateValue)
 {
@@ -30,14 +30,14 @@ InsetProperties::InsetProperties() :
 /**
 	Destructeur
 */
-InsetProperties::~InsetProperties() {
+TitleBlockProperties::~TitleBlockProperties() {
 }
 
 /**
-	@param ip autre conteneur InsetProperties
+	@param ip autre conteneur TitleBlockProperties
 	@return true si ip et ce conteneur sont identiques, false sinon
 */
-bool InsetProperties::operator==(const InsetProperties &ip) {
+bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 	return(
 		ip.title == title &&\
 		ip.author == author &&\
@@ -48,10 +48,10 @@ bool InsetProperties::operator==(const InsetProperties &ip) {
 }
 
 /**
-	@param ip autre conteneur InsetProperties
+	@param ip autre conteneur TitleBlockProperties
 	@return false si ip et ce conteneur sont identiques, true sinon
 */
-bool InsetProperties::operator!=(const InsetProperties &ip) {
+bool TitleBlockProperties::operator!=(const TitleBlockProperties &ip) {
 	return(!(*this == ip));
 }
 
@@ -60,7 +60,7 @@ bool InsetProperties::operator!=(const InsetProperties &ip) {
 	Exporte le cartouche sous formes d'attributs XML ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
 */
-void InsetProperties::toXml(QDomElement &e) const {
+void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("author",   author);
 	e.setAttribute("title",    title);
 	e.setAttribute("filename", filename);
@@ -72,7 +72,7 @@ void InsetProperties::toXml(QDomElement &e) const {
 	Importe le cartouche a partir des attributs XML de l'element e
 	@param e Element XML dont les attributs seront lus
 */
-void InsetProperties::fromXml(QDomElement &e) {
+void TitleBlockProperties::fromXml(QDomElement &e) {
 	if (e.hasAttribute("author"))      author   = e.attribute("author");
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
@@ -85,7 +85,7 @@ void InsetProperties::fromXml(QDomElement &e) {
 	@param settings Parametres a ecrire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void InsetProperties::toSettings(QSettings &settings, const QString &prefix) const {
+void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix) const {
 	settings.setValue(prefix + "title",    title);
 	settings.setValue(prefix + "author",   author);
 	settings.setValue(prefix + "filename", filename);
@@ -98,7 +98,7 @@ void InsetProperties::toSettings(QSettings &settings, const QString &prefix) con
 	@param settings Parametres a lire
 	@param prefix prefixe a ajouter devant les noms des parametres
 */
-void InsetProperties::fromSettings(QSettings &settings, const QString &prefix) {
+void TitleBlockProperties::fromSettings(QSettings &settings, const QString &prefix) {
 	title    = settings.value(prefix + "title").toString();
 	author   = settings.value(prefix + "author").toString();
 	filename = settings.value(prefix + "filename").toString();
@@ -109,7 +109,7 @@ void InsetProperties::fromSettings(QSettings &settings, const QString &prefix) {
 /**
 	@return La date a utiliser
 */
-QDate InsetProperties::finalDate() const {
+QDate TitleBlockProperties::finalDate() const {
 	if (useDate == UseDateValue) {
 		return(date);
 	} else {
@@ -124,7 +124,7 @@ QDate InsetProperties::finalDate() const {
 	  * now pour afficher la date courante (a la creation du schema)
 	  * une date au format yyyyMMdd pour utiliser une date fixe
 */
-QString InsetProperties::exportDate() const {
+QString TitleBlockProperties::exportDate() const {
 	QString date_setting_value;
 	if (useDate == UseDateValue) {
 		if (date.isNull()) date_setting_value = "null";
@@ -140,7 +140,7 @@ QString InsetProperties::exportDate() const {
 	@param date_string Chaine de caracteres a analyser
 	@see exportDate
 */
-void InsetProperties::setDateFromString(const QString &date_string) {
+void TitleBlockProperties::setDateFromString(const QString &date_string) {
 	if (date_string == "now") {
 		date = QDate::currentDate();
 		useDate = CurrentDate;

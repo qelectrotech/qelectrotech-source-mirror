@@ -19,7 +19,7 @@
 #define DIAGRAM_H
 #include <QtGui>
 #include <QtXml>
-#include "borderinset.h"
+#include "bordertitleblock.h"
 #include "conductorproperties.h"
 #include "exportproperties.h"
 #include "qgimanager.h"
@@ -57,14 +57,14 @@ class Diagram : public QGraphicsScene {
 	/**
 		Represente les options possibles pour l'affichage du schema :
 		 * EmptyBorder : N'afficher que la bordure
-		 * Inset : Afficher le cartouche
+		 * TitleBlock : Afficher le cartouche
 		 * Columns : Afficher les colonnes
 	*/
-	enum BorderOptions { EmptyBorder, Inset, Columns };
+	enum BorderOptions { EmptyBorder, TitleBlock, Columns };
 	/// Proprietes par defaut des nouveaux conducteurs
 	ConductorProperties defaultConductorProperties;
 	/// Dimensions et cartouches du schema
-	BorderInset border_and_inset;
+	BorderTitleBlock border_and_titleblock;
 	/// taille de la grille en abscisse
 	static const int xGrid;
 	/// taille de la grille en ordonnee
@@ -85,7 +85,7 @@ class Diagram : public QGraphicsScene {
 	QDomDocument xml_document;
 	QETProject *project_;
 	bool read_only_;
-	QString inset_template_name_;
+	QString titleblock_template_name_;
 	
 	// methodes
 	protected:
@@ -249,9 +249,9 @@ inline bool Diagram::useBorder() {
 	@see BorderOptions
 */
 inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
-	border_and_inset.displayBorder(!(bo & EmptyBorder));
-	border_and_inset.displayColumns(bo & Columns);
-	border_and_inset.displayInset(bo & Inset);
+	border_and_titleblock.displayBorder(!(bo & EmptyBorder));
+	border_and_titleblock.displayColumns(bo & Columns);
+	border_and_titleblock.displayTitleBlock(bo & TitleBlock);
 }
 
 /**
@@ -261,8 +261,8 @@ inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
 */
 inline Diagram::BorderOptions Diagram::borderOptions() {
 	BorderOptions retour = EmptyBorder;
-	if (border_and_inset.insetIsDisplayed()) retour = (BorderOptions)(retour|Inset);
-	if (border_and_inset.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
+	if (border_and_titleblock.titleBlockIsDisplayed()) retour = (BorderOptions)(retour|TitleBlock);
+	if (border_and_titleblock.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
 	return(retour);
 }
 

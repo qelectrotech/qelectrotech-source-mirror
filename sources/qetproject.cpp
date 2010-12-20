@@ -25,7 +25,7 @@
 #include "integrationmoveelementshandler.h"
 #include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
-#include "insettemplate.h"
+#include "titleblocktemplate.h"
 
 QString QETProject::integration_category_name = "import";
 
@@ -268,10 +268,10 @@ void QETProject::setTitle(const QString &title) {
 }
 
 /**
-	@return the list of the inset templates embedded within this project 
+	@return the list of the titleblock templates embedded within this project 
 */
-QList<QString> QETProject::embeddedInsetTemplates() const {
-	return(inset_templates_xml_.keys());
+QList<QString> QETProject::embeddedTitleBlockTemplates() const {
+	return(titleblock_templates_xml_.keys());
 }
 
 /**
@@ -279,22 +279,22 @@ QList<QString> QETProject::embeddedInsetTemplates() const {
 	@return the requested template, or 0 if there is no vltaid template of this
 	name within the project
 */
-const InsetTemplate *QETProject::getTemplateByName(const QString &template_name) {
+const TitleBlockTemplate *QETProject::getTemplateByName(const QString &template_name) {
 	// Do we have already loaded this template?
-	if (inset_templates_.contains(template_name)) {
-		return(inset_templates_[template_name]);
+	if (titleblock_templates_.contains(template_name)) {
+		return(titleblock_templates_[template_name]);
 	}
 	
 	// No? Do we even know of it?
-	if (!inset_templates_xml_.contains(template_name)) {
+	if (!titleblock_templates_xml_.contains(template_name)) {
 		return(0);
 	}
 	
-	// Ok, we have its XML description, we have to generate an InsetTemplate object
-	InsetTemplate *inset_template = new InsetTemplate(this);
-	if (inset_template -> loadFromXmlElement(inset_templates_xml_[template_name])) {
-		inset_templates_.insert(template_name, inset_template);
-		return(inset_template);
+	// Ok, we have its XML description, we have to generate an TitleBlockTemplate object
+	TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(this);
+	if (titleblock_template -> loadFromXmlElement(titleblock_templates_xml_[template_name])) {
+		titleblock_templates_.insert(template_name, titleblock_template);
+		return(titleblock_template);
 	} else {
 		return(0);
 	}
@@ -303,11 +303,11 @@ const InsetTemplate *QETProject::getTemplateByName(const QString &template_name)
 /**
 	@param template_name Name of the requested template
 	@return the XML description of the requested template, or a null QDomElement
-	if the project does not have such an inset template
+	if the project does not have such an titleblock template
 */
 QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_name) {
-	if (inset_templates_xml_.contains(template_name)) {
-		return(inset_templates_xml_[template_name]);
+	if (titleblock_templates_xml_.contains(template_name)) {
+		return(titleblock_templates_xml_[template_name]);
 	}
 	return(QDomElement());
 }
@@ -333,17 +333,17 @@ void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 	@return le cartouche par defaut utilise lors de la creation d'un
 	nouveau schema dans ce projet.
 */
-InsetProperties QETProject::defaultInsetProperties() const {
-	return(default_inset_properties_);
+TitleBlockProperties QETProject::defaultTitleBlockProperties() const {
+	return(default_titleblock_properties_);
 }
 
 /**
 	Permet de specifier le cartouche par defaut utilise lors de la creation
 	d'un nouveau schema dans ce projet.
-	@param inset Cartouche d'un schema
+	@param titleblock Cartouche d'un schema
 */
-void QETProject::setDefaultInsetProperties(const InsetProperties &inset) {
-	default_inset_properties_ = inset;
+void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titleblock) {
+	default_titleblock_properties_ = titleblock;
 }
 
 /**
@@ -373,14 +373,14 @@ QDomDocument QETProject::toXml() {
 	project_root.setAttribute("title", project_title_);
 	xml_doc.appendChild(project_root);
 	
-	// inset templates, if any
-	if (inset_templates_xml_.count()) {
-		qDebug() << qPrintable(QString("QETProject::toXml() : exporting %1 inset templates").arg(inset_templates_xml_.count()));
-		QDomElement insettemplates_elmt = xml_doc.createElement("insettemplates");
-		foreach (QDomElement e, inset_templates_xml_) {
-			insettemplates_elmt.appendChild(e);
+	// titleblock templates, if any
+	if (titleblock_templates_xml_.count()) {
+		qDebug() << qPrintable(QString("QETProject::toXml() : exporting %1 titleblock templates").arg(titleblock_templates_xml_.count()));
+		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
+		foreach (QDomElement e, titleblock_templates_xml_) {
+			titleblocktemplates_elmt.appendChild(e);
 		}
-		project_root.appendChild(insettemplates_elmt);
+		project_root.appendChild(titleblocktemplates_elmt);
 	}
 	
 	// proprietes pour les nouveaux schemas
@@ -696,8 +696,8 @@ Diagram *QETProject::addNewDiagram() {
 	Diagram *diagram = new Diagram();
 	
 	// lui transmet les parametres par defaut
-	diagram -> border_and_inset.importBorder(defaultBorderProperties());
-	diagram -> border_and_inset.importInset(defaultInsetProperties());
+	diagram -> border_and_titleblock.importBorder(defaultBorderProperties());
+	diagram -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram -> defaultConductorProperties = defaultConductorProperties();
 	
 	addDiagram(diagram);
@@ -790,7 +790,7 @@ void QETProject::readProjectXml() {
 	// charge les proprietes par defaut pour les nouveaux schemas
 	readDefaultPropertiesXml();
 	
-	// load the embedded inset templates
+	// load the embedded titleblock templates
 	readEmbeddedTemplatesXml();
 	
 	// charge la collection embarquee
@@ -839,17 +839,17 @@ void QETProject::readDiagramsXml() {
 	Loads the embedded template from the XML description of the project
 */
 void QETProject::readEmbeddedTemplatesXml() {
-	foreach (QDomElement e, QET::findInDomElement(document_root_.documentElement(), "insettemplates", "insettemplate")) {
-		// each inset template must have a name
+	foreach (QDomElement e, QET::findInDomElement(document_root_.documentElement(), "titleblocktemplates", "titleblocktemplate")) {
+		// each titleblock template must have a name
 		if (!e.hasAttribute("name")) continue;
-		QString inset_template_name = e.attribute("name");
+		QString titleblock_template_name = e.attribute("name");
 		
 		// if several templates have the same name, we keep the first one encountered
-		if (inset_templates_xml_.contains(inset_template_name)) continue;
+		if (titleblock_templates_xml_.contains(titleblock_template_name)) continue;
 		
-		// we simply store the XML element describing the inset template,
+		// we simply store the XML element describing the titleblock template,
 		// without any further analysis for the moment
-		inset_templates_xml_.insert(inset_template_name, e);
+		titleblock_templates_xml_.insert(titleblock_template_name, e);
 	}
 }
 
@@ -893,11 +893,11 @@ void QETProject::readDefaultPropertiesXml() {
 	
 	// par defaut, les valeurs sont celles de la configuration QElectroTech
 	default_border_properties_    = QETDiagramEditor::defaultBorderProperties();
-	default_inset_properties_     = QETDiagramEditor::defaultInsetProperties();
+	default_titleblock_properties_     = QETDiagramEditor::defaultTitleBlockProperties();
 	default_conductor_properties_ = QETDiagramEditor::defaultConductorProperties();
 	
 	// lecture des valeurs indiquees dans le projet
-	QDomElement border_elmt, inset_elmt, conductors_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt;
 	
 	// recherche des elements XML concernant les dimensions, le cartouche et les conducteurs
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling()) {
@@ -906,7 +906,7 @@ void QETProject::readDefaultPropertiesXml() {
 		if (child_elmt.tagName() == "border") {
 			border_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "inset") {
-			inset_elmt = child_elmt;
+			titleblock_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "conductors") {
 			conductors_elmt = child_elmt;
 		}
@@ -914,7 +914,7 @@ void QETProject::readDefaultPropertiesXml() {
 	
 	// dimensions, cartouche, et conducteurs
 	if (!border_elmt.isNull())     default_border_properties_.fromXml(border_elmt);
-	if (!inset_elmt.isNull())      default_inset_properties_.fromXml(inset_elmt);
+	if (!titleblock_elmt.isNull())      default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
 }
 
@@ -935,9 +935,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	xml_element.appendChild(border_elmt);
 	
 	// exporte le contenu du cartouche
-	QDomElement inset_elmt = xml_document.createElement("inset");
-	default_inset_properties_.toXml(inset_elmt);
-	xml_element.appendChild(inset_elmt);
+	QDomElement titleblock_elmt = xml_document.createElement("inset");
+	default_titleblock_properties_.toXml(titleblock_elmt);
+	xml_element.appendChild(titleblock_elmt);
 	
 	// exporte le type de conducteur par defaut
 	QDomElement conductor_elmt = xml_document.createElement("conductors");
@@ -958,7 +958,7 @@ void QETProject::addDiagram(Diagram *diagram) {
 	// si le schema est ecrit, alors il faut reecrire le fichier projet
 	connect(diagram, SIGNAL(written()), this, SLOT(componentWritten()));
 	connect(
-		&(diagram -> border_and_inset),
+		&(diagram -> border_and_titleblock),
 		SIGNAL(needFolioData()),
 		this,
 		SLOT(updateDiagramsFolioData())
@@ -1059,7 +1059,7 @@ bool QETProject::projectWasModified() {
 void QETProject::updateDiagramsFolioData() {
 	int total_folio = diagrams_.count();
 	for (int i = 0 ; i < total_folio ; ++ i) {
-		diagrams_[i] -> border_and_inset.setFolioData(i + 1, total_folio);
+		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio);
 	}
 }
 

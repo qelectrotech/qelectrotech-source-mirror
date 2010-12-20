@@ -660,7 +660,7 @@ bool QETDiagramEditor::newProject() {
 	// transmet les proprietes par defaut des nouveaux schemas
 	new_project -> setDefaultBorderProperties(defaultBorderProperties());
 	new_project -> setDefaultConductorProperties(defaultConductorProperties());
-	new_project -> setDefaultInsetProperties(defaultInsetProperties());
+	new_project -> setDefaultTitleBlockProperties(defaultTitleBlockProperties());
 	
 	// ajoute un schema au projet
 	new_project -> addNewDiagram();
@@ -1780,11 +1780,11 @@ void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
 /**
 	@return Les proprietes par defaut pour le cartouche d'un schema
 */
-InsetProperties QETDiagramEditor::defaultInsetProperties() {
+TitleBlockProperties QETDiagramEditor::defaultTitleBlockProperties() {
 	// accede a la configuration de l'application
 	QSettings &settings = QETApp::settings();
 	
-	InsetProperties def;
+	TitleBlockProperties def;
 	// lit le cartouche par defaut dans la configuration
 	def.fromSettings(settings, "diagrameditor/default");
 	

@@ -24,7 +24,7 @@ class QSpinBox;
 /**
 	Cette classe represente un widget permettant d'editer les dimensions et les
 	options d'affichage d'un schema, cartouche non inclus.
-	@see InsetPropertiesWidget
+	@see TitleBlockPropertiesWidget
 */
 class BorderPropertiesWidget : public QWidget {
 	Q_OBJECT

@@ -16,10 +16,10 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <QPainter>
-#include "insettemplate.h"
-#include "insettemplaterenderer.h"
+#include "titleblocktemplate.h"
+#include "titleblocktemplaterenderer.h"
 #include "diagramcontext.h"
-#include "borderinset.h"
+#include "bordertitleblock.h"
 #include "diagramposition.h"
 #include "qetapp.h"
 #include "math.h"
@@ -27,22 +27,22 @@
 /**
 	Constructeur simple : construit une bordure en recuperant les dimensions
 	dans la configuration de l'application.
-	@param parent QObject parent de ce BorderInset
+	@param parent QObject parent de ce BorderTitleBlock
 */
-BorderInset::BorderInset(QObject *parent) :
+BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	QObject(parent)
 {
-	// at first, the internal inset template renderer uses the default inset template
-	inset_template_renderer = new InsetTemplateRenderer(this);
-	inset_template_renderer -> setInsetTemplate(QETApp::defaultInsetTemplate());
+	// at first, the internal titleblock template renderer uses the default titleblock template
+	titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
+	titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 	
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
 	
 	// contenu par defaut du cartouche
-	importInset(InsetProperties());
+	importTitleBlock(TitleBlockProperties());
 	
-	display_inset         = true;
+	display_titleblock         = true;
 	display_border        = true;
 	setFolioData(1, 1);
 	updateRectangles();
@@ -51,49 +51,49 @@ BorderInset::BorderInset(QObject *parent) :
 /**
 	Destructeur - ne fait rien
 */
-BorderInset::~BorderInset() {
+BorderTitleBlock::~BorderTitleBlock() {
 }
 
 /**
 	@return la hauteur du cartouche
 */
-qreal BorderInset::insetHeight() const {
-	return(inset_template_renderer -> height());
+qreal BorderTitleBlock::titleBlockHeight() const {
+	return(titleblock_template_renderer -> height());
 }
 
 /**
 	@return Le nombre minimum de colonnes qu'un schema doit comporter
 */
-int BorderInset::minNbColumns() {
+int BorderTitleBlock::minNbColumns() {
 	return(3);
 }
 
 /**
 	@return la largeur minimale d'une colonne de schema
 */
-qreal BorderInset::minColumnsWidth() {
+qreal BorderTitleBlock::minColumnsWidth() {
 	return(5.0);
 }
 
 /**
 	@return Le nombre minimum de lignes qu'un schema doit comporter
 */
-int BorderInset::minNbRows() {
+int BorderTitleBlock::minNbRows() {
 	return(2);
 }
 
 /**
 	@return la hauteur minimale d'une ligne de schema
 */
-qreal BorderInset::minRowsHeight() {
+qreal BorderTitleBlock::minRowsHeight() {
 	return(5.0);
 }
 
 /**
 	@return les proprietes du cartouches
 */
-InsetProperties BorderInset::exportInset() {
-	InsetProperties ip;
+TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
+	TitleBlockProperties ip;
 	ip.author = bi_author;
 	ip.date = bi_date;
 	ip.title = bi_title;
@@ -105,20 +105,20 @@ InsetProperties BorderInset::exportInset() {
 /**
 	@param ip les nouvelles proprietes du cartouche
 */
-void BorderInset::importInset(const InsetProperties &ip) {
+void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	bi_author = ip.author;
 	bi_date = ip.date;
 	setTitle(ip.title);
 	bi_folio = ip.folio;
 	bi_filename = ip.filename;
-	updateDiagramContextForInset();
+	updateDiagramContextForTitleBlock();
 	emit(needFolioData());
 }
 
 /**
 	@return les proprietes de la bordure
 */
-BorderProperties BorderInset::exportBorder() {
+BorderProperties BorderTitleBlock::exportBorder() {
 	BorderProperties bp;
 	bp.columns_count = nbColumns();
 	bp.columns_width = columnsWidth();
@@ -134,7 +134,7 @@ BorderProperties BorderInset::exportBorder() {
 /**
 	@param bp les nouvelles proprietes de la bordure
 */
-void BorderInset::importBorder(const BorderProperties &bp) {
+void BorderTitleBlock::importBorder(const BorderProperties &bp) {
 	setColumnsHeaderHeight(bp.columns_header_height);
 	setNbColumns(bp.columns_count);
 	setColumnsWidth(bp.columns_width);
@@ -146,34 +146,34 @@ void BorderInset::importBorder(const BorderProperties &bp) {
 }
 
 /**
-	@return the inset template used to render the inset
-	@see InsetTemplateRenderer::insetTemplate()
+	@return the titleblock template used to render the titleblock
+	@see TitleBlockTemplateRenderer::titleBlockTemplate()
 */
-const InsetTemplate *BorderInset::insetTemplate() {
-	return(inset_template_renderer -> insetTemplate());
+const TitleBlockTemplate *BorderTitleBlock::titleBlockTemplate() {
+	return(titleblock_template_renderer -> titleBlockTemplate());
 }
 
 /**
-	@param inset_template The new inset template to use to render the inset
-	@see InsetTemplateRenderer::setInsetTemplate()
+	@param titleblock_template The new titleblock template to use to render the titleblock
+	@see TitleBlockTemplateRenderer::setTitleBlockTemplate()
 */
-void BorderInset::setInsetTemplate(const InsetTemplate *inset_template) {
-	inset_template_renderer -> setInsetTemplate(inset_template);
+void BorderTitleBlock::setTitleBlockTemplate(const TitleBlockTemplate *titleblock_template) {
+	titleblock_template_renderer -> setTitleBlockTemplate(titleblock_template);
 }
 
 /**
 	@param di true pour afficher le cartouche, false sinon
 */
-void BorderInset::displayInset(bool di) {
-	bool change = (di != display_inset);
-	display_inset = di;
+void BorderTitleBlock::displayTitleBlock(bool di) {
+	bool change = (di != display_titleblock);
+	display_titleblock = di;
 	if (change) emit(displayChanged());
 }
 
 /**
 	@param dc true pour afficher les entetes des colonnes, false sinon
 */
-void BorderInset::displayColumns(bool dc) {
+void BorderTitleBlock::displayColumns(bool dc) {
 	bool change = (dc != display_columns);
 	display_columns = dc;
 	if (change) emit(displayChanged());
@@ -182,7 +182,7 @@ void BorderInset::displayColumns(bool dc) {
 /**
 	@param dr true pour afficher les entetes des lignes, false sinon
 */
-void BorderInset::displayRows(bool dr) {
+void BorderTitleBlock::displayRows(bool dr) {
 	bool change = (dr != display_rows);
 	display_rows = dr;
 	if (change) emit(displayChanged());
@@ -193,7 +193,7 @@ void BorderInset::displayRows(bool dr) {
 	Note : si l'affichage de la bordure est ainsi desactivee, les lignes et
 	colonnes ne seront pas dessinees.
 */
-void BorderInset::displayBorder(bool db) {
+void BorderTitleBlock::displayBorder(bool db) {
 	bool change = (db != display_border);
 	display_border  = db;
 	if (change) emit(displayChanged());
@@ -203,14 +203,14 @@ void BorderInset::displayBorder(bool db) {
 	Methode recalculant les rectangles composant le cadre et le cartouche en
 	fonction des attributs de taille
 */
-void BorderInset::updateRectangles() {
+void BorderTitleBlock::updateRectangles() {
 	// rectangle delimitant le schema
 	QRectF previous_diagram = diagram;
 	diagram = QRectF(0, 0, diagramWidth(), diagramHeight());
 	if (diagram != previous_diagram) emit(borderChanged(previous_diagram, diagram));
 	
 	// rectangles relatifs au cartouche
-	inset = QRectF(diagram.bottomLeft().x(), diagram.bottomLeft().y(), insetWidth(), insetHeight());
+	titleblock = QRectF(diagram.bottomLeft().x(), diagram.bottomLeft().y(), titleBlockWidth(), titleBlockHeight());
 }
 
 /**
@@ -219,10 +219,10 @@ void BorderInset::updateRectangles() {
 	@param x  Abscisse du cadre
 	@param y  Ordonnee du cadre
 */
-void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
+void BorderTitleBlock::draw(QPainter *qp, qreal x, qreal y) {
 	// translate tous les rectangles
 	diagram     .translate(x, y);
-	inset       .translate(x, y);
+	titleblock       .translate(x, y);
 	
 	// prepare le QPainter
 	qp -> save();
@@ -276,24 +276,24 @@ void BorderInset::draw(QPainter *qp, qreal x, qreal y) {
 		}
 	}
 	
-	// render the inset, using the InsetTemplate object
-	if (display_inset) {
-		qp -> translate(inset.topLeft());
-		inset_template_renderer -> render(qp, inset.width());
-		qp -> translate(-inset.topLeft());
+	// render the titleblock, using the TitleBlockTemplate object
+	if (display_titleblock) {
+		qp -> translate(titleblock.topLeft());
+		titleblock_template_renderer -> render(qp, titleblock.width());
+		qp -> translate(-titleblock.topLeft());
 	}
 	
 	qp -> restore();
 	
 	// annule la translation des rectangles
 	diagram     .translate(-x, -y);
-	inset       .translate(-x, -y);
+	titleblock       .translate(-x, -y);
 }
 
 /**
 	Ajoute une colonne.
 */
-void BorderInset::addColumn() {
+void BorderTitleBlock::addColumn() {
 	setNbColumns(nbColumns() + 1);
 }
 
@@ -301,14 +301,14 @@ void BorderInset::addColumn() {
 	Enleve une colonne sans passer sous le minimum requis.
 	@see minNbColumns()
 */
-void BorderInset::removeColumn() {
+void BorderTitleBlock::removeColumn() {
 	setNbColumns(nbColumns() - 1);
 }
 
 /**
 	Ajoute une ligne.
 */
-void BorderInset::addRow() {
+void BorderTitleBlock::addRow() {
 	setNbRows(nbRows() + 1);
 }
 
@@ -316,7 +316,7 @@ void BorderInset::addRow() {
 	Enleve une ligne sans passer sous le minimum requis.
 	@see minNbRows()
 */
-void BorderInset::removeRow() {
+void BorderTitleBlock::removeRow() {
 	setNbRows(nbRows() - 1);
 }
 
@@ -327,10 +327,10 @@ void BorderInset::removeRow() {
 	@param nb_c nouveau nombre de colonnes
 	@see minNbColumns()
 */
-void BorderInset::setNbColumns(int nb_c) {
+void BorderTitleBlock::setNbColumns(int nb_c) {
 	if (nb_c == nbColumns()) return;
 	nb_columns = qMax(minNbColumns(), nb_c);
-	setInsetWidth(diagramWidth());
+	setTitleBlockWidth(diagramWidth());
 }
 
 /**
@@ -340,10 +340,10 @@ void BorderInset::setNbColumns(int nb_c) {
 	@param new_cw nouvelle largeur des colonnes
 	@see minColumnsWidth()
 */
-void BorderInset::setColumnsWidth(const qreal &new_cw) {
+void BorderTitleBlock::setColumnsWidth(const qreal &new_cw) {
 	if (new_cw == columnsWidth()) return;
 	columns_width = qMax(minColumnsWidth(), new_cw);
-	setInsetWidth(diagramWidth());
+	setTitleBlockWidth(diagramWidth());
 }
 
 /**
@@ -351,7 +351,7 @@ void BorderInset::setColumnsWidth(const qreal &new_cw) {
 	doit rester comprise entre 5 et 50 px.
 	@param new_chh nouvelle hauteur des en-tetes de colonnes
 */
-void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
+void BorderTitleBlock::setColumnsHeaderHeight(const qreal &new_chh) {
 	columns_header_height = qBound(qreal(5.0), new_chh, qreal(50.0));
 	updateRectangles();
 }
@@ -363,10 +363,10 @@ void BorderInset::setColumnsHeaderHeight(const qreal &new_chh) {
 	@param nb_r nouveau nombre de lignes
 	@see minNbRows()
 */
-void BorderInset::setNbRows(int nb_r) {
+void BorderTitleBlock::setNbRows(int nb_r) {
 	if (nb_r == nbRows()) return;
 	nb_rows = qMax(minNbRows(), nb_r);
-	setInsetWidth(diagramWidth());
+	setTitleBlockWidth(diagramWidth());
 	updateRectangles();
 }
 
@@ -377,7 +377,7 @@ void BorderInset::setNbRows(int nb_r) {
 	@param new_rh nouvelle hauteur des lignes
 	@see minRowsHeight()
 */
-void BorderInset::setRowsHeight(const qreal &new_rh) {
+void BorderTitleBlock::setRowsHeight(const qreal &new_rh) {
 	if (new_rh == rowsHeight()) return;
 	rows_height = qMax(minRowsHeight(), new_rh);
 	updateRectangles();
@@ -388,7 +388,7 @@ void BorderInset::setRowsHeight(const qreal &new_rh) {
 	doit rester comprise entre 5 et 50 px.
 	@param new_rhw nouvelle largeur des en-tetes des lignes
 */
-void BorderInset::setRowsHeaderWidth(const qreal &new_rhw) {
+void BorderTitleBlock::setRowsHeaderWidth(const qreal &new_rhw) {
 	rows_header_width = qBound(qreal(5.0), new_rhw, qreal(50.0));
 	updateRectangles();
 }
@@ -397,7 +397,7 @@ void BorderInset::setRowsHeaderWidth(const qreal &new_rhw) {
 	Cette methode essaye de se rapprocher le plus possible de la hauteur donnee
 	en parametre en modifiant le nombre de lignes en cours.
 */
-void BorderInset::setDiagramHeight(const qreal &height) {
+void BorderTitleBlock::setDiagramHeight(const qreal &height) {
 	// taille des lignes a utiliser = rows_height
 	setNbRows(qRound(ceil(height / rows_height)));
 }
@@ -406,8 +406,8 @@ void BorderInset::setDiagramHeight(const qreal &height) {
 	Change la largeur du cartouche. Cette largeur sera restreinte a celle du
 	schema.
 */
-void BorderInset::setInsetWidth(const qreal &new_iw) {
-	inset_width = qMin(diagramWidth(), new_iw);
+void BorderTitleBlock::setTitleBlockWidth(const qreal &new_iw) {
+	titleblock_width = qMin(diagramWidth(), new_iw);
 	updateRectangles();
 }
 
@@ -416,8 +416,8 @@ void BorderInset::setInsetWidth(const qreal &new_iw) {
 	Ajuste la largeur du cartouche de facon a ce que celui-ci soit aussi large
 	que le schema
 */
-void BorderInset::adjustInsetToColumns() {
-	setInsetWidth(diagramWidth());
+void BorderTitleBlock::adjustTitleBlockToColumns() {
+	setTitleBlockWidth(diagramWidth());
 }
 
 /**
@@ -425,7 +425,7 @@ void BorderInset::adjustInsetToColumns() {
 	dans la grille (ex : B2)
 	@return la position dans la grille correspondant a pos
 */
-DiagramPosition BorderInset::convertPosition(const QPointF &pos) {
+DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos) {
 	// recupere le rectangle quadrille par les en-tetes
 	QRectF grid_rect(
 		rowsHeaderWidth(),
@@ -451,10 +451,10 @@ DiagramPosition BorderInset::convertPosition(const QPointF &pos) {
 }
 
 /**
-	Update the informations given to the inset template by regenerating a
+	Update the informations given to the titleblock template by regenerating a
 	DiagramContext object.
 */
-void BorderInset::updateDiagramContextForInset() {
+void BorderTitleBlock::updateDiagramContextForTitleBlock() {
 	DiagramContext context;
 	context.addValue("author",      bi_author);
 	context.addValue("date",        bi_date.toString("dd/MM/yyyy"));
@@ -464,10 +464,10 @@ void BorderInset::updateDiagramContextForInset() {
 	context.addValue("folio-id",    folio_index_);
 	context.addValue("folio-total", folio_total_);
 	
-	inset_template_renderer -> setContext(context);
+	titleblock_template_renderer -> setContext(context);
 }
 
-QString BorderInset::incrementLetters(const QString &string) {
+QString BorderTitleBlock::incrementLetters(const QString &string) {
 	if (string.isEmpty()) {
 		return("A");
 	} else {
@@ -488,7 +488,7 @@ QString BorderInset::incrementLetters(const QString &string) {
 	@param index numero du schema (de 1 a total)
 	@param total nombre total de schemas dans le projet
 */
-void BorderInset::setFolioData(int index, int total) {
+void BorderTitleBlock::setFolioData(int index, int total) {
 	if (index < 1 || total < 1 || index > total) return;
 	
 	// memorise les informations
@@ -500,5 +500,5 @@ void BorderInset::setFolioData(int index, int total) {
 	bi_final_folio.replace("%id",    QString::number(folio_index_));
 	bi_final_folio.replace("%total", QString::number(folio_total_));
 	
-	updateDiagramContextForInset();
+	updateDiagramContextForTitleBlock();
 }
