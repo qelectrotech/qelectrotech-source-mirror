@@ -128,6 +128,7 @@ namespace QET {
 		QIcon South;
 		QIcon Start;
 		QIcon Terminal;
+		QIcon TitleBlock;
 		QIcon UserInformations;
 		QIcon ViewFitWidth;
 		QIcon ViewFitWindow;
@@ -304,6 +305,7 @@ void QET::Icons::initIcons() {
 	South               .addFile(":/ico/16x16/south.png");
 	Start               .addFile(":/ico/22x22/start.png");
 	Terminal            .addFile(":/ico/22x22/terminal.png");
+	TitleBlock          .addFile(":/ico/titleblock.png");
 	UserInformations    .addFile(":/ico/16x16/preferences-desktop-user.png");
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");
 	ViewFitWidth        .addFile(":/ico/22x22/view_fit_width.png");

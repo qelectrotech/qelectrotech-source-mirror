@@ -31,10 +31,10 @@ class TitleBlockTemplateRenderer : public QObject {
 	void setContext(const DiagramContext &context);
 	int height() const;
 	void render(QPainter *, int);
+	void invalidateRenderedTemplate();
 	
 	private:
 	void renderToQPicture(int);
-	void invalidateRenderedTemplate();
 	
 	private:
 	const TitleBlockTemplate *titleblock_template_;

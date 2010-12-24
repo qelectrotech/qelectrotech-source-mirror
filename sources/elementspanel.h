@@ -51,6 +51,8 @@ class ElementsPanel : public QTreeWidget {
 	bool itemIsADiagram(QTreeWidgetItem *) const;
 	bool itemHasLocation(QTreeWidgetItem *) const;
 	bool itemIsWritable(QTreeWidgetItem *) const;
+	bool itemIsATitleBlockTemplatesDirectory(QTreeWidgetItem *) const;
+	bool itemIsATitleBlockTemplate(QTreeWidgetItem *) const;
 	
 	// methodes pour obtenir ce que represente un item donne
 	ElementsCollectionItem *collectionItemForItem(QTreeWidgetItem *) const;
@@ -59,6 +61,9 @@ class ElementsPanel : public QTreeWidget {
 	ElementsLocation locationForItem(QTreeWidgetItem *) const;
 	ElementsCategory *categoryForItem(QTreeWidgetItem *);
 	ElementsCategory *categoryForPos(const QPoint &);
+	QETProject *projectForTitleBlockTemplatesDirectory(QTreeWidgetItem *);
+	QETProject *projectForTitleBlockTemplate(QTreeWidgetItem *);
+	QString nameOfTitleBlockTemplate(QTreeWidgetItem *);
 	
 	// methodes pour determiner ce que represente l'item selectionne
 	bool selectedItemIsACollection() const;
@@ -68,6 +73,8 @@ class ElementsPanel : public QTreeWidget {
 	bool selectedItemIsADiagram() const;
 	bool selectedItemHasLocation() const;
 	bool selectedItemIsWritable() const;
+	bool selectedItemIsATitleBlockTemplatesDirectory() const;
+	bool selectedItemIsATitleBlockTemplate() const;
 	
 	// methodes pour obtenir ce que represente l'item selectionne
 	ElementsCollectionItem *selectedItem() const;
@@ -88,6 +95,7 @@ class ElementsPanel : public QTreeWidget {
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);
 	void projectInformationsChanged(QETProject *);
+	void projectTemplatesChanged(QETProject *);
 	void diagramWasAdded(QETProject *, Diagram *);
 	void diagramWasRemoved(QETProject *, Diagram *);
 	void diagramTitleChanged(QETProject *, Diagram *);
@@ -111,6 +119,7 @@ class ElementsPanel : public QTreeWidget {
 	QTreeWidgetItem *findLocation(const QString &) const;
 	void deleteItem(QTreeWidgetItem *);
 	void updateProjectItemInformations(QETProject *);
+	void updateProjectTemplates(QETProject *);
 	QString diagramTitleToDisplay(Diagram *) const;
 	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
 	
@@ -122,6 +131,7 @@ class ElementsPanel : public QTreeWidget {
 	QSet<QETProject *> projects_to_display_;
 	QHash<QTreeWidgetItem *, QETProject *> projects_;
 	QHash<QTreeWidgetItem *, Diagram *> diagrams_;
+	QHash<QTreeWidgetItem *, QETProject *> title_blocks_directories_;
 	QTreeWidgetItem *common_collection_item_;
 	QTreeWidgetItem *custom_collection_item_;
 };

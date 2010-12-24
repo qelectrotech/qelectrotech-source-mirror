@@ -162,6 +162,35 @@ void BorderTitleBlock::setTitleBlockTemplate(const TitleBlockTemplate *titlebloc
 }
 
 /**
+	This slot may be used to inform this class that the given title block
+	template has changed. The title block-dedicated rendering cache will thus be
+	flushed.
+	@param template_name Name of the title block template that has changed
+*/
+void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
+	Q_UNUSED(template_name); // this class does not store the name of its template
+	titleblock_template_renderer -> invalidateRenderedTemplate();
+}
+
+/**
+	This slot has to be used to inform this class that the given title block
+	template is about to be removed and is no longer accessible. This class
+	will either use the provided optional TitleBlockTemplate or the default
+	title block provided by QETApp::defaultTitleBlockTemplate()
+	@param template_name Name of the title block template that has changed
+	@param new_template (Optional) title block template to use instead
+*/
+void BorderTitleBlock::titleBlockTemplateRemoved(const QString &removed_template_name, const TitleBlockTemplate *new_template) {
+	Q_UNUSED(removed_template_name); // this class does not store the name of its template
+	
+	if (new_template) {
+		setTitleBlockTemplate(new_template);
+	} else {
+		setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
+	}
+}
+
+/**
 	@param di true pour afficher le cartouche, false sinon
 */
 void BorderTitleBlock::displayTitleBlock(bool di) {

@@ -165,6 +165,7 @@ class QETApp : public QETSingleApplication {
 	void openProjectFiles(const QStringList &);
 	void openElementFiles(const QStringList &);
 	void openElementLocations(const QList<ElementsLocation> &);
+	void openTitleBlockTemplate(QETProject *, const QString & = QString());
 	void configureQET();
 	void aboutQET();
 	

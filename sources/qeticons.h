@@ -138,6 +138,7 @@ namespace QET {
 		extern QIcon South;
 		extern QIcon Start;
 		extern QIcon Terminal;
+		extern QIcon TitleBlock;
 		extern QIcon UserInformations;
 		extern QIcon ViewFitWidth;
 		extern QIcon ViewFitWindow;

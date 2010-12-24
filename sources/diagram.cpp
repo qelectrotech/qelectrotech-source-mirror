@@ -766,6 +766,36 @@ void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_
 }
 
 /**
+	This slot may be used to inform the diagram object that the given title
+	block template has changed. The diagram will thus flush its title
+	block-dedicated rendering cache.
+	@param template_name Name of the title block template that has changed
+*/
+void Diagram::titleBlockTemplateChanged(const QString &template_name) {
+	if (titleblock_template_name_ == template_name) {
+		border_and_titleblock.titleBlockTemplateChanged(template_name);
+	}
+	update();
+}
+
+/**
+	This slot has to be be used to inform this class that the given title block
+	template is about to be removed and is no longer accessible. This class
+	will either use the provided  optional TitleBlockTemplate or the default
+	title block provided by QETApp::defaultTitleBlockTemplate()
+	@param template_name Name of the title block template that has changed
+	@param new_template (Optional) Name of the title block template to use instead
+*/
+void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QString &new_template) {
+	if (titleblock_template_name_ == template_name) {
+		const TitleBlockTemplate *final_template = project_ -> getTemplateByName(new_template);
+		titleblock_template_name_ = final_template ? new_template : QString();
+		border_and_titleblock.titleBlockTemplateRemoved(template_name, final_template);
+		update();
+	}
+}
+
+/**
 	Selectionne tous les objets du schema
 */
 void Diagram::selectAll() {

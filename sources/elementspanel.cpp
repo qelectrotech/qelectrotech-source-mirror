@@ -171,6 +171,24 @@ bool ElementsPanel::itemIsWritable(QTreeWidgetItem *qtwi) const {
 }
 
 /**
+	@param qtwi A QTreeWidgetItem 
+	@return true if the given QTreeWidgetItem represents a block templates directory
+*/
+bool ElementsPanel::itemIsATitleBlockTemplatesDirectory(QTreeWidgetItem *qtwi) const {
+	return(title_blocks_directories_.contains(qtwi));
+}
+
+/**
+	@param qtwi A QTreeWidgetItem 
+	@return true if the given QTreeWidgetItem represents a block template
+*/
+bool ElementsPanel::itemIsATitleBlockTemplate(QTreeWidgetItem *qtwi) const {
+	// does this QTreeWidgetItem have a parent?
+	if (!qtwi -> parent()) return(false);
+	return(itemIsATitleBlockTemplatesDirectory(qtwi -> parent()));
+}
+
+/**
 	@param qtwi Un QTreeWidgetItem
 	@return L'ElementsCollectionItem represente par qtwi, ou 0 si qtwi ne
 	represente pas un ElementsCollectionItem
@@ -277,6 +295,23 @@ bool ElementsPanel::selectedItemIsWritable() const {
 		return(selected_item -> isWritable());
 	}
 	return(false);
+}
+
+/**
+	@return true if the currently selected item represents a title block
+	templates directory
+*/
+bool ElementsPanel::selectedItemIsATitleBlockTemplatesDirectory() const {
+	return(itemIsATitleBlockTemplatesDirectory(currentItem()));
+}
+
+/**
+	@return true if the currently selected item represents a title block
+	template
+*/
+bool ElementsPanel::selectedItemIsATitleBlockTemplate() const {
+	if (!currentItem()) return(false);
+	return(itemIsATitleBlockTemplate(currentItem()));
 }
 
 /**
@@ -507,6 +542,13 @@ QTreeWidgetItem *ElementsPanel::addProject(QTreeWidgetItem *qtwi_parent, QETProj
 		addDiagram(qtwi_project, diagram);
 	}
 	
+	// add the title blocks templates embedded within the project
+	updateProjectTemplates(project);
+	connect(
+		project, SIGNAL(projectTemplatesChanged(QETProject *)),
+		this,    SLOT  (projectTemplatesChanged(QETProject *))
+	);
+	
 	// ajoute la collection du projet
 	addCollection(qtwi_project, project -> embeddedCollection(), tr("Collection projet"));
 	
@@ -673,6 +715,7 @@ void ElementsPanel::reload(bool reload_collections) {
 	locations_.clear();
 	projects_.clear();
 	diagrams_.clear();
+	title_blocks_directories_.clear();
 	common_collection_item_ = 0;
 	custom_collection_item_ = 0;
 	
@@ -769,6 +812,8 @@ void ElementsPanel::deleteItem(QTreeWidgetItem *removed_item) {
 		diagrams_.remove(removed_item);
 	} else if (projects_.contains(removed_item)) {
 		projects_.remove(removed_item);
+	} else if (title_blocks_directories_.contains(removed_item)) {
+		title_blocks_directories_.remove(removed_item);
 	}
 	delete removed_item;
 }
@@ -787,6 +832,41 @@ ElementsCategory *ElementsPanel::categoryForPos(const QPoint &pos) {
 	}
 	
 	return(categoryForItem(pos_qtwi));
+}
+
+/**
+	@param qtwi A QTreeWidgetItem, supposed to represent a templates directory
+	@return the project that embeds the given templates directory, if
+	applicable, 0 otherwise
+*/
+QETProject *ElementsPanel::projectForTitleBlockTemplatesDirectory(QTreeWidgetItem *qtwi) {
+	if (title_blocks_directories_.contains(qtwi)) {
+		return(title_blocks_directories_[qtwi]);
+	}
+	return(0);
+}
+
+/**
+	@param qtwi A QTreeWidgetItem, supposed to represent a title block template
+	@return the project that embeds the given template, if applicable, 0
+	otherwise
+*/
+QETProject *ElementsPanel::projectForTitleBlockTemplate(QTreeWidgetItem *qtwi) {
+	if (qtwi->parent()) {
+		return(projectForTitleBlockTemplatesDirectory(qtwi->parent()));
+	}
+	return(0);
+}
+
+/**
+	@param qtwi A QTreeWidgetItem, supposed to represent a title block template
+	@return the name of the given template, if applicable, 0 otherwise
+*/
+QString ElementsPanel::nameOfTitleBlockTemplate(QTreeWidgetItem *qtwi) {
+	if (itemIsATitleBlockTemplate(qtwi)) {
+		return(qtwi -> data(0, 42).toString());
+	}
+	return(QString());
 }
 
 /**
@@ -858,6 +938,14 @@ void ElementsPanel::projectWasClosed(QETProject *project) {
 */
 void ElementsPanel::projectInformationsChanged(QETProject *project) {
 	updateProjectItemInformations(project);
+}
+
+/**
+	Handles the fact that the title block templates of a project changed.
+	@param project the modified project
+*/
+void ElementsPanel::projectTemplatesChanged(QETProject *project) {
+	updateProjectTemplates(project);
 }
 
 /**
@@ -963,6 +1051,39 @@ void ElementsPanel::updateProjectItemInformations(QETProject *project) {
 	qtwi_project -> setText(0, final_name);
 	qtwi_project -> setToolTip(0, final_tooltip);
 	qtwi_project -> setIcon(0, QET::Icons::Project);
+}
+
+/**
+	(Re)generates the templates list of a given project.
+	@param project the project we want to update the templates
+*/
+void ElementsPanel::updateProjectTemplates(QETProject *project) {
+	// determine the QTWI for the templates directory of the given project
+	QTreeWidgetItem *qtwi_project = projects_.key(project);
+	if (!qtwi_project) return;
+	
+	// determine the templates directory for the given project, if any
+	QTreeWidgetItem *titleblock_templates_qtwi = title_blocks_directories_.key(project);
+	if (!titleblock_templates_qtwi) {
+		// the poor thing does not exist... let's create it.
+		titleblock_templates_qtwi = new QTreeWidgetItem(qtwi_project, QStringList() << tr("Mod\350les de cartouche"));
+		titleblock_templates_qtwi -> setIcon(0, QET::Icons::Folder);
+		titleblock_templates_qtwi -> setExpanded(true);
+		title_blocks_directories_.insert(titleblock_templates_qtwi, project);
+	} else {
+		// oh, what a shiny templates directory... let's clear it.
+		foreach(QTreeWidgetItem *titleblock_template_qtwi, titleblock_templates_qtwi -> takeChildren()) {
+			deleteItem(titleblock_template_qtwi);
+		}
+	}
+	
+	// we can now populate the templates directory
+	foreach (QString titleblock_name, project -> embeddedTitleBlockTemplates()) {
+		QString final_name = QString(tr("Mod\350le \"%1\"")).arg(titleblock_name);
+		QTreeWidgetItem *titleblock_template_qtwi = new QTreeWidgetItem(titleblock_templates_qtwi, QStringList() << final_name);
+		titleblock_template_qtwi -> setIcon(0, QET::Icons::TitleBlock);
+		titleblock_template_qtwi -> setData(0, 42, titleblock_name); // we store the original title block template name here, since the displayed one could be modified
+	}
 }
 
 /**

@@ -169,6 +169,8 @@ class Diagram : public QGraphicsScene {
 	
 	public slots:
 	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
+	void titleBlockTemplateChanged(const QString &);
+	void titleBlockTemplateRemoved(const QString &, const QString & = QString());
 	
 	// fonctions relative a la selection sur le schema
 	void selectAll();

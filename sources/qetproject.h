@@ -83,6 +83,8 @@ class QETProject : public QObject {
 	QList<QString> embeddedTitleBlockTemplates() const;
 	const TitleBlockTemplate *getTemplateByName(const QString &template_name);
 	QDomElement getTemplateXmlDescriptionByName(const QString &);
+	bool setTemplateXmlDescription(const QString &, const QDomElement &);
+	void removeTemplateByName(const QString &);
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
 	TitleBlockProperties defaultTitleBlockProperties() const;
@@ -119,6 +121,7 @@ class QETProject : public QObject {
 	void diagramAdded(QETProject *, Diagram *);
 	void diagramRemoved(QETProject *, Diagram *);
 	void readOnlyChanged(QETProject *, bool);
+	void projectTemplatesChanged(QETProject *);
 	
 	private slots:
 	void updateDiagramsFolioData();

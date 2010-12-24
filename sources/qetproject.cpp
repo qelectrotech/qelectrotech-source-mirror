@@ -313,6 +313,70 @@ QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_
 }
 
 /**
+	This methods allows adding or modifying a template embedded within the
+	project. This method emits the signal projectTemplatesChanged() if
+	necessary.
+	@param template_name Name / Identifier of the template - will be used to
+	determine whether the given description will be added or will replace an
+	existing one.
+	@param xml_elmt An \<titleblocktemplate\> XML element describing the
+	template. Its "name" attribute must equal to template_name.
+	@return false if a problem occured, true otherwise
+*/
+bool QETProject::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_elmt) {
+	// checks basic stuff
+	if (xml_elmt.tagName() != "titleblocktemplate" || xml_elmt.attribute("name") != template_name) {
+		return(false);
+	}
+	
+	// we import the provided XML element in the project document
+	QDomElement import = document_root_.importNode(xml_elmt, true).toElement();
+	
+	// we either replace the previous description
+	if (titleblock_templates_xml_.contains(template_name)) {
+		QDomElement old_description = titleblock_templates_xml_[template_name];
+		if (!old_description.parentNode().isNull()) {
+			old_description.parentNode().replaceChild(import, old_description);
+			titleblock_templates_xml_[template_name] = import;
+		}
+	} else {
+		// or simply insert the new one
+		titleblock_templates_xml_.insert(template_name, import);
+	}
+	
+	if (titleblock_templates_.contains(template_name)) {
+		titleblock_templates_[template_name] -> loadFromXmlElement(titleblock_templates_xml_[template_name]);
+		foreach (Diagram *diagram, diagrams_) {
+			diagram -> titleBlockTemplateChanged(template_name);
+		}
+	}
+	emit(projectTemplatesChanged(this));
+	
+	return(true);
+}
+
+/**
+	This methods allows removing a template embedded within the project. This
+	method emits the signal projectTemplatesChanged() if necessary.
+	@param template_name Name of the template to be removed
+*/
+void QETProject::removeTemplateByName(const QString &template_name) {
+	if (titleblock_templates_.contains(template_name)) {
+		// warn diagrams that the given template is about to be removed
+		foreach (Diagram *diagram, diagrams_) {
+			diagram -> titleBlockTemplateRemoved(template_name); /// TODO specify the default template of the project as a fallback
+		}
+	}
+	
+	// remove the template itself
+	titleblock_templates_xml_.remove(template_name);
+	titleblock_templates_.remove(template_name);
+	
+	// warn the rest of the world that the list of templates embedded within this project has changed
+	emit(projectTemplatesChanged(this));
+}
+
+/**
 	@return les dimensions par defaut utilisees lors de la creation d'un
 	nouveau schema dans ce projet.
 */

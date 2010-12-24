@@ -23,6 +23,7 @@
 #include "elementscollectionitem.h"
 #include "fileelementscollection.h"
 #include "titleblocktemplate.h"
+#include "templateeditor.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
@@ -832,6 +833,23 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 			QETElementEditor *element_editor = new QETElementEditor();
 			element_editor -> fromLocation(element_location);
 		}
+	}
+}
+
+/**
+	Launch a new title block template editor to edit the given template
+	@param project Parent project of the template to edit
+	@param template_name Name of the template to edit within its parent project
+	If no template name is supplied, the method assumes the editor has to be
+	launched for a template creation.
+*/
+void QETApp::openTitleBlockTemplate(QETProject *project, const QString &template_name) {
+	TemplateEditor *editor = new TemplateEditor();
+	bool can_edit = editor -> edit(project, template_name);
+	if (can_edit) {
+		editor -> showNormal();
+	} else {
+		QMessageBox::warning(0, tr("Erreur"), tr("Impossible d'\351diter le template demand\351"));
 	}
 }
 

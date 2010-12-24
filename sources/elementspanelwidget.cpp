@@ -64,6 +64,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce sch\351ma"),              this);
 	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce sch\351ma"),               this);
 	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce sch\351ma"),               this);
+	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Importer un nouveau mod\350le"),       this);
+	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("\311diter ce mod\350le"),              this);
+	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce mod\350le"),              this);
 	move_elements_        = new QAction(QET::Icons::MoveFile,                  tr("D\351placer dans cette cat\351gorie"), this);
 	copy_elements_        = new QAction(QET::Icons::CopyFile,                  tr("Copier dans cette cat\351gorie"),      this);
 	cancel_elements_      = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
@@ -102,6 +105,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(prj_del_diagram,       SIGNAL(triggered()), this,           SLOT(deleteDiagram()));
 	connect(prj_move_diagram_up,   SIGNAL(triggered()), this,           SLOT(moveDiagramUp()));
 	connect(prj_move_diagram_down, SIGNAL(triggered()), this,           SLOT(moveDiagramDown()));
+	connect(tbt_add,               SIGNAL(triggered()), this,           SLOT(addTitleBlockTemplate()));
+	connect(tbt_edit,              SIGNAL(triggered()), this,           SLOT(editTitleBlockTemplate()));
+	connect(tbt_remove,            SIGNAL(triggered()), this,           SLOT(removeTitleBlockTemplate()));
 	connect(move_elements_,        SIGNAL(triggered()), this,           SLOT(moveElements()));
 	connect(copy_elements_,        SIGNAL(triggered()), this,           SLOT(copyElements()));
 	
@@ -235,6 +241,49 @@ void ElementsPanelWidget::moveDiagramDown() {
 }
 
 /**
+	Opens a template editor to create a new title block template.
+*/
+void ElementsPanelWidget::addTitleBlockTemplate() {
+	QTreeWidgetItem *current_item = elements_panel -> currentItem();
+	if (!current_item) return;
+	
+	QETProject *parent_project = 0;
+	if (elements_panel -> itemIsATitleBlockTemplate(current_item)) {
+		parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
+	} else if (elements_panel -> itemIsATitleBlockTemplatesDirectory(current_item)) {
+		parent_project = elements_panel -> projectForTitleBlockTemplatesDirectory(current_item);
+	}
+	
+	if (parent_project) {
+		QETApp::instance() -> openTitleBlockTemplate(parent_project);
+	}
+}
+
+/**
+	Opens an editor to edit the currently selected title block template, if any.
+*/
+void ElementsPanelWidget::editTitleBlockTemplate() {
+	QTreeWidgetItem *current_item = elements_panel -> currentItem();
+	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
+		QETProject *parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
+		QString template_name = elements_panel -> nameOfTitleBlockTemplate(current_item);
+		QETApp::instance() -> openTitleBlockTemplate(parent_project, template_name);
+	}
+}
+
+/**
+	Delete the currently selected title block template, if any.
+*/
+void ElementsPanelWidget::removeTitleBlockTemplate() {
+	QTreeWidgetItem *current_item = elements_panel -> currentItem();
+	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
+		QETProject *parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
+		QString template_name = elements_panel -> nameOfTitleBlockTemplate(current_item);
+		parent_project -> removeTemplateByName(template_name);
+	}
+}
+
+/**
 	Appelle l'assistant de creation de nouvel element
 */
 void ElementsPanelWidget::newElement() {
@@ -311,6 +360,14 @@ void ElementsPanelWidget::updateButtons() {
 		prj_del_diagram       -> setEnabled(is_writable);
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
+	} else if (elements_panel -> selectedItemIsATitleBlockTemplatesDirectory()) {
+		bool is_writable = !(elements_panel -> projectForTitleBlockTemplatesDirectory(elements_panel -> currentItem()) -> isReadOnly());
+		tbt_add -> setEnabled(is_writable);
+	} else if (elements_panel -> selectedItemIsATitleBlockTemplate()) {
+		bool is_writable = !(elements_panel -> projectForTitleBlockTemplate(elements_panel -> currentItem()) -> isReadOnly());
+		tbt_add -> setEnabled(is_writable);
+		tbt_edit -> setEnabled(is_writable);
+		tbt_remove -> setEnabled(is_writable);
 	}
 }
 
@@ -381,6 +438,12 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			context_menu -> addAction(prj_del_diagram);
 			context_menu -> addAction(prj_move_diagram_up);
 			context_menu -> addAction(prj_move_diagram_down);
+		} else if (elements_panel -> itemIsATitleBlockTemplatesDirectory(item)) {
+			context_menu -> addAction(tbt_add);
+		} else if (elements_panel -> itemIsATitleBlockTemplate(item)) {
+			context_menu -> addAction(tbt_add);
+			context_menu -> addAction(tbt_edit);
+			context_menu -> addAction(tbt_remove);
 		}
 	}
 	

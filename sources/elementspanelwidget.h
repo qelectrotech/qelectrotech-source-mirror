@@ -43,6 +43,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *delete_collection;
 	QAction *new_element, *import_element,  *edit_element,  *delete_element;
 	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_down;
+	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
 	QAction *erase_textfield;
@@ -72,6 +73,9 @@ class ElementsPanelWidget : public QWidget {
 	void deleteDiagram();
 	void moveDiagramUp();
 	void moveDiagramDown();
+	void addTitleBlockTemplate();
+	void editTitleBlockTemplate();
+	void removeTitleBlockTemplate();
 	void newCategory();
 	void newElement();
 	void importElement();

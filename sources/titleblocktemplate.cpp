@@ -486,7 +486,7 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 	// run through each inidividual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
-			if (cells_[i][j].spanner_cell) continue;
+			if (cells_[i][j].spanner_cell || cells_[i][j].is_null) continue;
 			
 			// calculate the border rect of the current cell
 			int x = lengthRange(0, cells_[i][j].num_col, widths); 

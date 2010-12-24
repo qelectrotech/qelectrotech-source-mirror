@@ -153,6 +153,10 @@ class BorderTitleBlock : public QObject {
 	const TitleBlockTemplate *titleBlockTemplate();
 	void setTitleBlockTemplate(const TitleBlockTemplate *);
 	
+	public slots:
+	void titleBlockTemplateChanged(const QString &);
+	void titleBlockTemplateRemoved(const QString &, const TitleBlockTemplate * = 0);
+	
 	// methodes d'acces en ecriture aux options
 	void displayTitleBlock(bool);
 	void displayColumns(bool);
