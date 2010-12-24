@@ -50,6 +50,7 @@ class TitleBlockProperties {
 	QString filename;         ///< Nom de fichier affiche par le cartouche
 	QString folio;            ///< Folio affiche par le cartouche
 	DateManagement useDate;   ///< Indique s'il faut utiliser ou non l'attribut date
+	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	
 	private:
 	QString exportDate() const;

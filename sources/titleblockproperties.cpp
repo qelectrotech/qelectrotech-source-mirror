@@ -43,7 +43,8 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.author == author &&\
 		ip.date == date &&\
 		ip.filename == filename &&\
-		ip.folio == folio
+		ip.folio == folio &&\
+		ip.template_name == template_name
 	);
 }
 
@@ -66,6 +67,9 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	e.setAttribute("filename", filename);
 	e.setAttribute("folio",    folio);
 	e.setAttribute("date",     exportDate());
+	if (!template_name.isEmpty()) {
+		e.setAttribute("titleblocktemplate", template_name);
+	}
 }
 
 /**
@@ -78,6 +82,7 @@ void TitleBlockProperties::fromXml(QDomElement &e) {
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
+	if (e.hasAttribute("titleblocktemplate")) template_name = e.attribute("titleblocktemplate");
 }
 
 /**

@@ -39,6 +39,8 @@ class TitleBlockPropertiesWidget : public QWidget {
 	bool displayCurrentDate() const;
 	bool isReadOnly() const;
 	void setReadOnly(bool);
+	void setTitleBlockTemplatesList(const QList<QString> &);
+	void setTitleBlockTemplatesVisible(bool);
 	
 	// attributs
 	private:
@@ -51,5 +53,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QRadioButton *titleblock_current_date;
 	QRadioButton *titleblock_fixed_date;
 	bool display_current_date;
+	QLabel       *titleblock_template_label;
+	QComboBox    *titleblock_template_name;
 };
 #endif

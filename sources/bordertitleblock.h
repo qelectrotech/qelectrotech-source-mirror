@@ -152,6 +152,7 @@ class BorderTitleBlock : public QObject {
 	
 	const TitleBlockTemplate *titleBlockTemplate();
 	void setTitleBlockTemplate(const TitleBlockTemplate *);
+	QString titleBlockTemplateName() const;
 	
 	public slots:
 	void titleBlockTemplateChanged(const QString &);
@@ -191,6 +192,13 @@ class BorderTitleBlock : public QObject {
 		utilisees pour generer le folio.
 	*/
 	void needFolioData();
+	
+	/**
+		Signal emitted when this object needs to set a specific title block
+		template. This object cannot handle the job since it does not know of
+		its parent project.
+	*/
+	void needTitleBlockTemplate(const QString &);
 	
 	// attributs
 	private:

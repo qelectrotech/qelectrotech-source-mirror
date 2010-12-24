@@ -99,6 +99,7 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	ip.title = bi_title;
 	ip.folio = bi_folio;
 	ip.filename = bi_filename;
+	ip.template_name = titleBlockTemplateName();
 	return(ip);
 }
 
@@ -113,6 +114,7 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	bi_filename = ip.filename;
 	updateDiagramContextForTitleBlock();
 	emit(needFolioData());
+	emit(needTitleBlockTemplate(ip.template_name));
 }
 
 /**
@@ -162,13 +164,21 @@ void BorderTitleBlock::setTitleBlockTemplate(const TitleBlockTemplate *titlebloc
 }
 
 /**
+	@return The name of the template used to render the titleblock.
+*/
+QString BorderTitleBlock::titleBlockTemplateName() const {
+	QString tbt_name = titleblock_template_renderer -> titleBlockTemplate() -> name();
+	return((tbt_name == "default") ? "" : tbt_name);
+}
+
+/**
 	This slot may be used to inform this class that the given title block
 	template has changed. The title block-dedicated rendering cache will thus be
 	flushed.
 	@param template_name Name of the title block template that has changed
 */
 void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
-	Q_UNUSED(template_name); // this class does not store the name of its template
+	if (titleBlockTemplateName() != template_name) return;
 	titleblock_template_renderer -> invalidateRenderedTemplate();
 }
 
@@ -181,7 +191,7 @@ void BorderTitleBlock::titleBlockTemplateChanged(const QString &template_name) {
 	@param new_template (Optional) title block template to use instead
 */
 void BorderTitleBlock::titleBlockTemplateRemoved(const QString &removed_template_name, const TitleBlockTemplate *new_template) {
-	Q_UNUSED(removed_template_name); // this class does not store the name of its template
+	if (titleBlockTemplateName() != removed_template_name) return;
 	
 	if (new_template) {
 		setTitleBlockTemplate(new_template);

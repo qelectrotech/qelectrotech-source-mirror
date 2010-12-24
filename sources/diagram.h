@@ -85,7 +85,6 @@ class Diagram : public QGraphicsScene {
 	QDomDocument xml_document;
 	QETProject *project_;
 	bool read_only_;
-	QString titleblock_template_name_;
 	
 	// methodes
 	protected:
@@ -171,6 +170,7 @@ class Diagram : public QGraphicsScene {
 	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
 	void titleBlockTemplateChanged(const QString &);
 	void titleBlockTemplateRemoved(const QString &, const QString & = QString());
+	void setTitleBlockTemplate(const QString &);
 	
 	// fonctions relative a la selection sur le schema
 	void selectAll();

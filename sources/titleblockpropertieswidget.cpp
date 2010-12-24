@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "titleblockpropertieswidget.h"
+#include "qeticons.h"
 #include "qetapp.h"
 
 /**
@@ -31,6 +32,9 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 	QGroupBox *titleblock_infos = new QGroupBox(tr("Informations du cartouche"), this);
 	titleblock_infos -> setMinimumSize(300, 330);
 	this_layout -> addWidget(titleblock_infos);
+	
+	titleblock_template_label = new QLabel(tr("Mod\350le :"));
+	titleblock_template_name = new QComboBox();
 	
 	titleblock_title = new QLineEdit(this);
 	titleblock_author = new QLineEdit(this);
@@ -68,23 +72,28 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 	folio_tip -> setWordWrap(true);
 	
 	QGridLayout *layout_champs = new QGridLayout(titleblock_infos);
-	
-	layout_champs -> addWidget(new QLabel(tr("Titre : ")),   0, 0);
-	layout_champs -> addWidget(titleblock_title,                  0, 1);
-	layout_champs -> addWidget(new QLabel(tr("Auteur : ")),  1, 0);
-	layout_champs -> addWidget(titleblock_author,                 1, 1);
-	layout_champs -> addWidget(new QLabel(tr("Date : ")),    2, 0, Qt::AlignTop);
-	layout_champs -> addLayout(layout_date,                  2, 1);
-	layout_champs -> addWidget(new QLabel(tr("Fichier : ")), 3, 0);
-	layout_champs -> addWidget(titleblock_filename,               3, 1);
-	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   4, 0);
-	layout_champs -> addWidget(titleblock_folio,                  4, 1);
-	layout_champs -> addWidget(folio_tip,                    5, 1, Qt::AlignTop);
+	layout_champs -> addWidget(titleblock_template_label,    0, 0);
+	layout_champs -> addWidget(titleblock_template_name,     0, 1);
+	layout_champs -> addWidget(new QLabel(tr("Titre : ")),   1, 0);
+	layout_champs -> addWidget(titleblock_title,             1, 1);
+	layout_champs -> addWidget(new QLabel(tr("Auteur : ")),  2, 0);
+	layout_champs -> addWidget(titleblock_author,            2, 1);
+	layout_champs -> addWidget(new QLabel(tr("Date : ")),    3, 0, Qt::AlignTop);
+	layout_champs -> addLayout(layout_date,                  3, 1);
+	layout_champs -> addWidget(new QLabel(tr("Fichier : ")), 4, 0);
+	layout_champs -> addWidget(titleblock_filename,          4, 1);
+	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   5, 0);
+	layout_champs -> addWidget(titleblock_folio,             5, 1);
+	layout_champs -> addWidget(folio_tip,                    6, 1, Qt::AlignTop);
 	layout_champs -> setRowStretch(5, 500);
 	
 	titleblock_current_date -> setVisible(display_current_date = current);
 	setTitleBlockProperties(titleblock);
 	setLayout(this_layout);
+	
+	// by default, we do not display the template combo box
+	titleblock_template_label -> setVisible(false);
+	titleblock_template_name  -> setVisible(false);
 }
 
 /// Destructeur
@@ -110,6 +119,12 @@ TitleBlockProperties TitleBlockPropertiesWidget::titleBlockProperties() const {
 		prop.useDate = TitleBlockProperties::CurrentDate;
 		prop.date = QDate::currentDate();
 	}
+	
+	int index = titleblock_template_name -> currentIndex();
+	if (index != -1) {
+		prop.template_name = titleblock_template_name -> itemData(index).toString();
+	}
+	
 	return(prop);
 }
 
@@ -146,6 +161,13 @@ void TitleBlockPropertiesWidget::setTitleBlockProperties(const TitleBlockPropert
 			}
 		}
 	}
+	
+	if (!titleblock.template_name.isEmpty()) {
+		int matching_index = titleblock_template_name -> findData(titleblock.template_name);
+		if (matching_index != -1) {
+			titleblock_template_name -> setCurrentIndex(matching_index);
+		}
+	}
 }
 
 /**
@@ -174,4 +196,27 @@ void TitleBlockPropertiesWidget::setReadOnly(bool ro) {
 	titleblock_no_date      -> setDisabled(ro);
 	titleblock_current_date -> setDisabled(ro);
 	titleblock_fixed_date   -> setDisabled(ro);
+	titleblock_template_label -> setDisabled(ro);
+	titleblock_template_name  -> setDisabled(ro);
+}
+
+/**
+	@param templates List of template names the dedicated combo box should
+	display.
+*/
+void TitleBlockPropertiesWidget::setTitleBlockTemplatesList(const QList<QString> &templates) {
+	titleblock_template_name -> clear();
+	titleblock_template_name -> addItem(QET::Icons::TitleBlock, tr("Mod\350le par d\351faut"), QString());
+	foreach (QString template_name, templates) {
+		titleblock_template_name -> addItem(QET::Icons::TitleBlock, template_name, template_name);
+	}
+}
+
+/**
+	@param visible true to display the title block templates list, false to
+	hide it.
+*/
+void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(bool visible) {
+	titleblock_template_name  -> setVisible(visible);
+	titleblock_template_label -> setVisible(visible);
 }

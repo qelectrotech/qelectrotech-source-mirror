@@ -63,6 +63,11 @@ Diagram::Diagram(QObject *parent) :
 	// initialise les objets gerant les deplacements
 	elements_mover_ = new ElementsMover();           // deplacements d'elements/conducteurs/textes
 	element_texts_mover_ = new ElementTextsMover();  // deplacements d'ElementTextItem
+	
+	connect(
+		&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)),
+		this, SLOT(setTitleBlockTemplate(const QString &))
+	);
 }
 
 /**
@@ -272,6 +277,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		if (!border_and_titleblock.title().isNull())     racine.setAttribute("title",    border_and_titleblock.title());
 		if (!border_and_titleblock.fileName().isNull())  racine.setAttribute("filename", border_and_titleblock.fileName());
 		if (!border_and_titleblock.folio().isNull())     racine.setAttribute("folio",    border_and_titleblock.folio());
+		
 		racine.setAttribute("cols",    border_and_titleblock.nbColumns());
 		racine.setAttribute("colsize", QString("%1").arg(border_and_titleblock.columnsWidth()));
 		racine.setAttribute("rows",    border_and_titleblock.nbRows());
@@ -280,8 +286,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		racine.setAttribute("height",  QString("%1").arg(border_and_titleblock.diagramHeight()));
 		racine.setAttribute("displaycols", border_and_titleblock.columnsAreDisplayed() ? "true" : "false");
 		racine.setAttribute("displayrows", border_and_titleblock.rowsAreDisplayed()    ? "true" : "false");
-		if (!titleblock_template_name_.isEmpty()) {
-			racine.setAttribute("titleblocktemplate", titleblock_template_name_);
+		QString current_template_name = border_and_titleblock.titleBlockTemplateName();
+		if (!current_template_name.isEmpty()) {
+			racine.setAttribute("titleblocktemplate", current_template_name);
 		}
 		
 		// type de conducteur par defaut
@@ -422,14 +429,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		border_and_titleblock.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
 		border_and_titleblock.setFileName(root.attribute("filename"));
 		border_and_titleblock.setFolio(root.attribute("folio"));
-		if (root.hasAttribute("titleblocktemplate") && project_) {
-			QString titleblock_template_name = root.attribute("titleblocktemplate");
-			const TitleBlockTemplate *titleblock_template = project_ -> getTemplateByName(titleblock_template_name);
-			if (titleblock_template) {
-				titleblock_template_name_ = titleblock_template_name;
-				border_and_titleblock.setTitleBlockTemplate(titleblock_template);
-			}
-		}
+		setTitleBlockTemplate(root.attribute("titleblocktemplate", ""));
 		
 		bool ok;
 		// nombre de colonnes
@@ -772,9 +772,9 @@ void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_
 	@param template_name Name of the title block template that has changed
 */
 void Diagram::titleBlockTemplateChanged(const QString &template_name) {
-	if (titleblock_template_name_ == template_name) {
-		border_and_titleblock.titleBlockTemplateChanged(template_name);
-	}
+	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;
+	
+	border_and_titleblock.titleBlockTemplateChanged(template_name);
 	update();
 }
 
@@ -787,12 +787,23 @@ void Diagram::titleBlockTemplateChanged(const QString &template_name) {
 	@param new_template (Optional) Name of the title block template to use instead
 */
 void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QString &new_template) {
-	if (titleblock_template_name_ == template_name) {
-		const TitleBlockTemplate *final_template = project_ -> getTemplateByName(new_template);
-		titleblock_template_name_ = final_template ? new_template : QString();
-		border_and_titleblock.titleBlockTemplateRemoved(template_name, final_template);
-		update();
-	}
+	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;
+	
+	const TitleBlockTemplate *final_template = project_ -> getTemplateByName(new_template);
+	border_and_titleblock.titleBlockTemplateRemoved(template_name, final_template);
+	update();
+}
+
+/**
+	Set the template to use to render the title block of this diagram.
+	@param template_name Name of the title block template.
+*/
+void Diagram::setTitleBlockTemplate(const QString &template_name) {
+	if (!project_) return;
+	
+	QString current_name = border_and_titleblock.titleBlockTemplateName();
+	const TitleBlockTemplate *titleblock_template = project_ -> getTemplateByName(template_name);
+	border_and_titleblock.titleBlockTemplateRemoved(current_name, titleblock_template);
 }
 
 /**

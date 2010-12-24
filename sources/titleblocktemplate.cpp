@@ -66,6 +66,10 @@ bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
 	if (xml_element.tagName() != "titleblocktemplate") {
 		return(false);
 	}
+	if (!xml_element.hasAttribute("name")) {
+		return(false);
+	}
+	name_ = xml_element.attribute("name");
 	
 	loadLogos(xml_element, true);
 	loadGrid(xml_element);
@@ -419,6 +423,13 @@ QString TitleBlockTemplate::toString() const {
 		str += "\n";
 	}
 	return(str);
+}
+
+/**
+	@return the name of this template
+*/
+QString TitleBlockTemplate::name() const {
+	return(name_);
 }
 
 /**

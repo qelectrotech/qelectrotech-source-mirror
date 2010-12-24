@@ -57,8 +57,7 @@ class TitleBlockTemplate : public QObject {
 	public:
 	bool loadFromXmlFile(const QString &);
 	bool loadFromXmlElement(const QDomElement &);
-	void setContext(const DiagramContext &);
-	
+	QString name() const;
 	QList<int> columnsWidth(int) const;
 	int height() const;
 	
@@ -83,6 +82,7 @@ class TitleBlockTemplate : public QObject {
 	// attributs
 	private:
 	QDomDocument xml_description_;
+	QString name_;
 	QHash<QString, QSvgRenderer *> vector_logos_;
 	QHash<QString, QPixmap *>      bitmap_logos_;
 	QList<int> rows_heights_;
