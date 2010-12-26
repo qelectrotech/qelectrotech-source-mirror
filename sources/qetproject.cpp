@@ -337,12 +337,9 @@ bool QETProject::setTemplateXmlDescription(const QString &template_name, const Q
 		QDomElement old_description = titleblock_templates_xml_[template_name];
 		if (!old_description.parentNode().isNull()) {
 			old_description.parentNode().replaceChild(import, old_description);
-			titleblock_templates_xml_[template_name] = import;
 		}
-	} else {
-		// or simply insert the new one
-		titleblock_templates_xml_.insert(template_name, import);
 	}
+	titleblock_templates_xml_.insert(template_name, import);
 	
 	if (titleblock_templates_.contains(template_name)) {
 		titleblock_templates_[template_name] -> loadFromXmlElement(titleblock_templates_xml_[template_name]);
