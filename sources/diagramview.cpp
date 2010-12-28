@@ -414,6 +414,7 @@ void DiagramView::editDiagramProperties() {
 	// recupere le cartouche et les dimensions du schema
 	TitleBlockProperties  titleblock  = scene -> border_and_titleblock.exportTitleBlock();
 	BorderProperties border = scene -> border_and_titleblock.exportBorder();
+	ConductorProperties conductors = scene -> defaultConductorProperties;
 	
 	// construit le dialogue
 	QDialog popup(diagramEditor());
@@ -421,7 +422,8 @@ void DiagramView::editDiagramProperties() {
 	popup.setWindowFlags(Qt::Sheet);
 #endif
 	
-	popup.setMinimumWidth(400);
+	popup.setMinimumWidth(786);
+	popup.setMinimumHeight(500);
 	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma", "window title"));
 	
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, &popup);
@@ -437,21 +439,35 @@ void DiagramView::editDiagramProperties() {
 	}
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
 	
+	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(conductors);
+	cpw -> setReadOnly(diagram_is_read_only);
+	
 	// boutons
 	QDialogButtonBox boutons(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	connect(&boutons, SIGNAL(accepted()), &popup, SLOT(accept()));
 	connect(&boutons, SIGNAL(rejected()), &popup, SLOT(reject()));
 	
+	// usual layout for these three widgets
+	QHBoxLayout *hlayout1 = new QHBoxLayout();
+	QVBoxLayout *vlayout2 = new QVBoxLayout();
+	
+	vlayout2 -> addWidget(border_infos);
+	vlayout2 -> addWidget(titleblock_infos);
+	vlayout2 -> setSpacing(5);
+	hlayout1 -> addLayout(vlayout2);
+	hlayout1 -> addWidget(cpw);
+	hlayout1 -> setAlignment(cpw, Qt::AlignTop);
+	
 	// ajout dans une disposition verticale
 	QVBoxLayout layout_v(&popup);
-	layout_v.addWidget(border_infos);
-	layout_v.addWidget(titleblock_infos);
+	layout_v.addLayout(hlayout1);
 	layout_v.addStretch();
 	layout_v.addWidget(&boutons);
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
 		TitleBlockProperties new_titleblock   = titleblock_infos  -> titleBlockProperties();
 		BorderProperties new_border = border_infos -> borderProperties();
+		ConductorProperties new_conductors = cpw -> conductorProperties();
 		// s'il y a des modifications au cartouche
 		if (new_titleblock != titleblock) {
 			scene -> undoStack().push(new ChangeTitleBlockCommand(scene, titleblock, new_titleblock));
@@ -460,6 +476,12 @@ void DiagramView::editDiagramProperties() {
 		// s'il y a des modifications aux dimensions du schema
 		if (new_border != border) {
 			scene -> undoStack().push(new ChangeBorderCommand(scene, border, new_border));
+		}
+		
+		// if modifcations have been made to the conductors properties
+		if (new_conductors != conductors) {
+			/// TODO implement an undo command to allow the user to undo/redo this action
+			scene -> defaultConductorProperties = new_conductors;
 		}
 	}
 }
@@ -858,37 +880,6 @@ void DiagramView::resetConductors() {
 	
 	if (conductors_and_profiles.isEmpty()) return;
 	scene -> undoStack().push(new ResetConductorCommand(conductors_and_profiles));
-}
-
-/**
-	Lance un dialogue permettant de modifier les proprietes par defaut des
-	futurs nouveaux conducteurs
-*/
-void DiagramView::editDefaultConductorProperties() {
-	bool diagram_is_read_only = scene -> isReadOnly();
-	
-	// initialise l'editeur de proprietes pour le conducteur
-	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(scene -> defaultConductorProperties);
-	cpw -> setReadOnly(diagram_is_read_only);
-	
-	// l'insere dans un dialogue
-	QDialog conductor_dialog(diagramEditor());
-#ifdef Q_WS_MAC
-	conductor_dialog.setWindowFlags(Qt::Sheet);
-#endif
-	
-	conductor_dialog.setWindowTitle(tr("\311diter les propri\351t\351s par d\351faut des conducteurs", "window title"));
-	QVBoxLayout *dialog_layout = new QVBoxLayout(&conductor_dialog);
-	dialog_layout -> addWidget(cpw);
-	QDialogButtonBox *dbb = new QDialogButtonBox(diagram_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	dialog_layout -> addWidget(dbb);
-	connect(dbb, SIGNAL(accepted()), &conductor_dialog, SLOT(accept()));
-	connect(dbb, SIGNAL(rejected()), &conductor_dialog, SLOT(reject()));
-	
-	// execute le dialogue et met a jour le conducteur
-	if (conductor_dialog.exec() == QDialog::Accepted && !diagram_is_read_only) {
-		scene -> defaultConductorProperties = cpw -> conductorProperties();
-	}
 }
 
 /**

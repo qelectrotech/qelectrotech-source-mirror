@@ -122,7 +122,6 @@ class DiagramView : public QGraphicsView {
 	void editConductor();
 	void editConductor(Conductor *);
 	void resetConductors();
-	void editDefaultConductorProperties();
 	
 	private slots:
 	void addDroppedElement();

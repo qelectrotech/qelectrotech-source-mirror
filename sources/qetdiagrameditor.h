@@ -120,7 +120,6 @@ class QETDiagramEditor : public QMainWindow {
 	void editSelectionProperties();
 	void slot_editConductor();
 	void slot_resetConductors();
-	void slot_editDefaultConductors();
 	void slot_addText();
 	void setWindowedMode();
 	void setTabbedMode();
