@@ -46,7 +46,11 @@ bool TemplateEditor::edit(QETProject *project, const QString &template_name) {
 		xml_doc.appendChild(xml_doc.importNode(xml_tb_template, true));
 		template_name_edit_ -> setText(template_name);
 		template_name_edit_ -> setReadOnly(true);
-		template_xml_edit_ -> setPlainText(xml_doc.toString(4));
+		
+		QString xml_str = xml_doc.toString(4);
+		xml_str.replace(QRegExp("^<titleblocktemplate[^>]*>"), "");
+		xml_str.replace(QRegExp("</titleblocktemplate>"), "");
+		template_xml_edit_ -> setPlainText("    " + xml_str.trimmed());
 		
 		// stores the parent project and template name, in order to write/save the template later
 		template_name_ = template_name;
@@ -91,7 +95,7 @@ void TemplateEditor::save() {
 	}
 	
 	QDomDocument xml_doc;
-	bool parsing = xml_doc.setContent(template_xml_edit_ -> toPlainText());
+	bool parsing = xml_doc.setContent(getXmlString());
 	if (!parsing) {
 		QMessageBox::critical(
 			this,
@@ -122,6 +126,9 @@ void TemplateEditor::quit() {
 void TemplateEditor::build() {
 	parent_project_label_ = new QLabel();
 	updateProjectLabel();
+	static_xml_1_ = new QLabel("<titleblocktemplate name=\"");
+	static_xml_2_ = new QLabel("\">");
+	static_xml_3_ = new QLabel("</titleblocktemplate>");
 	template_name_edit_ = new QLineEdit();
 	template_xml_edit_ = new QTextEdit();
 	template_xml_edit_ -> setAcceptRichText(false);
@@ -141,10 +148,16 @@ void TemplateEditor::build() {
 	h_layout0 -> addWidget(save_button_);
 	h_layout0 -> addWidget(quit_button_);
 	
+	QHBoxLayout *h_layout1 = new QHBoxLayout();
+	h_layout1 -> addWidget(static_xml_1_);
+	h_layout1 -> addWidget(template_name_edit_);
+	h_layout1 -> addWidget(static_xml_2_);
+	
 	QVBoxLayout *v_layout0 = new QVBoxLayout();
 	v_layout0 -> addWidget(parent_project_label_);
-	v_layout0 -> addWidget(template_name_edit_);
+	v_layout0 -> addLayout(h_layout1);
 	v_layout0 -> addWidget(template_xml_edit_);
+	v_layout0 -> addWidget(static_xml_3_);
 	v_layout0 -> addLayout(h_layout0);
 	
 	setLayout(v_layout0);
@@ -167,4 +180,13 @@ void TemplateEditor::updateProjectLabel() {
 	parent_project_label_ -> setText(
 		QString(tr("Projet parent : %1")).arg(parent_project_title)
 	);
+}
+
+/**
+	@return the XML description provided by the user, as a string.
+*/
+QString TemplateEditor::getXmlString() const {
+	QString xml_str = QString("<titleblocktemplate name=\"%1\">%2</titleblocktemplate>");
+	xml_str = xml_str.arg(Qt::escape(template_name_edit_ -> text())).arg(template_xml_edit_ -> toPlainText());
+	return(xml_str);
 }

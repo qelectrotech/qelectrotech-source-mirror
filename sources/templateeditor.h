@@ -45,10 +45,14 @@ class TemplateEditor : public QWidget {
 	private:
 	void build();
 	void updateProjectLabel();
+	QString getXmlString() const;
 	
 	// attributes
 	private:
 	QLabel *parent_project_label_;
+	QLabel *static_xml_1_;
+	QLabel *static_xml_2_;
+	QLabel *static_xml_3_;
 	QLineEdit *template_name_edit_;
 	QTextEdit *template_xml_edit_;
 	QPushButton *validate_button_;
