@@ -121,6 +121,79 @@ void TemplateEditor::quit() {
 }
 
 /**
+	Allows the user to easily integrate a logo in to the currently edited title block
+	template.
+*/
+void TemplateEditor::integrateLogo() {
+	// we need a filepath
+	QString filepath = QFileDialog::getOpenFileName(
+		this,
+		tr("S\351lectionnez un fichier image"),
+		QString(),
+		tr("Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)")
+	);
+	if (filepath.isNull()) return;
+	
+	// that filepath needs to point to a valid, readable file
+	QFileInfo filepath_info(filepath);
+	if (!filepath_info.exists() || !filepath_info.isReadable()) {
+		QMessageBox::critical(this, tr("Erreur"), tr("Impossible d'ouvrir le fichier sp\351cifi\351"));
+		return;
+	}
+	QString filename = filepath_info.fileName();
+	
+	/// TODO identify whether the given file is a bitmap or vector graphics and integrate it accordingly
+	// now, we need the XML document of the currently edited template
+	QDomDocument xml_template;
+	if (!xml_template.setContent(getXmlString())) {
+		QMessageBox::critical(this, tr("Erreur"), tr("Le code XML du mod\350le ne semble pas \320tre valide."));
+		return;
+	}
+	
+	// we need a <logos> section
+	QDomElement logos_section = xml_template.documentElement().firstChildElement("logos");
+	QDomElement logo_xml_elmt;
+	if (logos_section.isNull()) {
+		logos_section = xml_template.createElement("logos");
+		xml_template.documentElement().appendChild(logos_section);
+	} else {
+		// is there a logo of the same name already?
+		QString tag = "logo";
+		for (QDomElement e = logos_section.firstChildElement(tag) ; !e.isNull() ; e = e.nextSiblingElement(tag)) {
+			if (e.attribute("name") == filename) {
+				logo_xml_elmt = e;
+				break;
+			}
+		}
+	}
+	
+	// we read the provided logo
+	QFile logo_file(filepath);
+	logo_file.open(QIODevice::ReadOnly);
+	QString base64_string = QString(logo_file.readAll().toBase64());
+	
+	// we insert it into our XML document
+	QDomText t = xml_template.createTextNode(base64_string);
+	
+	if (!logo_xml_elmt.isNull()) {
+		logo_xml_elmt.setAttribute("storage", "base64");
+		QDomNodeList children = logo_xml_elmt.childNodes();
+		for (int i = 0 ; i < children .count() ; ++ i) logo_xml_elmt.removeChild(children.at(i));
+		logo_xml_elmt.appendChild(t);
+	} else {
+		QDomElement new_logo = xml_template.createElement("logo");
+		new_logo.appendChild(t);
+		new_logo.setAttribute("storage", "base64");
+		new_logo.setAttribute("type", filepath_info.suffix());
+		new_logo.setAttribute("name", filename);
+		logos_section.appendChild(new_logo);
+	}
+	
+	// we put back the XML description in the text area
+	setXmlString(xml_template);
+}
+
+/**
 	Builds the user interface.
 */
 void TemplateEditor::build() {
@@ -135,15 +208,18 @@ void TemplateEditor::build() {
 	template_xml_edit_ -> setFontFamily("monospace");
 	template_xml_edit_ -> setWordWrapMode(QTextOption::NoWrap);
 	
+	integrate_logo_ = new QPushButton(tr("Int\351grer un logo"));
 	validate_button_ = new QPushButton(tr("V\351rifier le mod\350le"));
 	save_button_ = new QPushButton(tr("Enregistrer et appliquer"));
 	quit_button_ = new QPushButton(tr("Quitter"));
 	
+	connect(integrate_logo_,  SIGNAL(released()), this, SLOT(integrateLogo()));
 	connect(validate_button_, SIGNAL(released()), this, SLOT(validate()));
 	connect(save_button_,     SIGNAL(released()), this, SLOT(save()));
 	connect(quit_button_,     SIGNAL(released()), this, SLOT(quit()));
 	
 	QHBoxLayout *h_layout0 = new QHBoxLayout();
+	h_layout0 -> addWidget(integrate_logo_);
 	h_layout0 -> addWidget(validate_button_);
 	h_layout0 -> addWidget(save_button_);
 	h_layout0 -> addWidget(quit_button_);
@@ -189,4 +265,15 @@ QString TemplateEditor::getXmlString() const {
 	QString xml_str = QString("<titleblocktemplate name=\"%1\">%2</titleblocktemplate>");
 	xml_str = xml_str.arg(Qt::escape(template_name_edit_ -> text())).arg(template_xml_edit_ -> toPlainText());
 	return(xml_str);
+}
+
+/**
+	Displays the given title block template XML code
+	@param xml_doc The XML description of a title block template
+*/
+void TemplateEditor::setXmlString(const QDomDocument &xml_doc) {
+	QString xml_str = xml_doc.toString(4);
+	xml_str.replace(QRegExp("^<titleblocktemplate[^>]*>"), "");
+	xml_str.replace(QRegExp("</titleblocktemplate>"), "");
+	template_xml_edit_ -> setPlainText("    " + xml_str.trimmed());
 }

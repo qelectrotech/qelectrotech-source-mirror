@@ -18,6 +18,7 @@
 #ifndef TEMPLATE_EDITOR_H
 #define TEMPLATE_EDITOR_H
 #include <QtGui>
+#include <QtXml>
 class QETProject;
 /**
 	This class allows the user to edit a title block template.
@@ -41,11 +42,13 @@ class TemplateEditor : public QWidget {
 	void validate();
 	void save();
 	void quit();
+	void integrateLogo();
 	
 	private:
 	void build();
 	void updateProjectLabel();
 	QString getXmlString() const;
+	void setXmlString(const QDomDocument &);
 	
 	// attributes
 	private:
@@ -55,6 +58,7 @@ class TemplateEditor : public QWidget {
 	QLabel *static_xml_3_;
 	QLineEdit *template_name_edit_;
 	QTextEdit *template_xml_edit_;
+	QPushButton *integrate_logo_;
 	QPushButton *validate_button_;
 	QPushButton *save_button_;
 	QPushButton *quit_button_;
