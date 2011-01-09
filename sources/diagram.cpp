@@ -272,24 +272,8 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	
 	// proprietes du schema
 	if (whole_content) {
-		if (!border_and_titleblock.author().isNull())    racine.setAttribute("author",   border_and_titleblock.author());
-		if (!border_and_titleblock.date().isNull())      racine.setAttribute("date",     border_and_titleblock.date().toString("yyyyMMdd"));
-		if (!border_and_titleblock.title().isNull())     racine.setAttribute("title",    border_and_titleblock.title());
-		if (!border_and_titleblock.fileName().isNull())  racine.setAttribute("filename", border_and_titleblock.fileName());
-		if (!border_and_titleblock.folio().isNull())     racine.setAttribute("folio",    border_and_titleblock.folio());
-		
-		racine.setAttribute("cols",    border_and_titleblock.nbColumns());
-		racine.setAttribute("colsize", QString("%1").arg(border_and_titleblock.columnsWidth()));
-		racine.setAttribute("rows",    border_and_titleblock.nbRows());
-		racine.setAttribute("rowsize", QString("%1").arg(border_and_titleblock.rowsHeight()));
-		// attribut datant de la version 0.1 - laisse pour retrocompatibilite
-		racine.setAttribute("height",  QString("%1").arg(border_and_titleblock.diagramHeight()));
-		racine.setAttribute("displaycols", border_and_titleblock.columnsAreDisplayed() ? "true" : "false");
-		racine.setAttribute("displayrows", border_and_titleblock.rowsAreDisplayed()    ? "true" : "false");
-		QString current_template_name = border_and_titleblock.titleBlockTemplateName();
-		if (!current_template_name.isEmpty()) {
-			racine.setAttribute("titleblocktemplate", current_template_name);
-		}
+		border_and_titleblock.titleBlockToXml(racine);
+		border_and_titleblock.borderToXml(racine);
 		
 		// type de conducteur par defaut
 		QDomElement default_conductor = document.createElement("defaultconductor");
@@ -424,51 +408,14 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
-		border_and_titleblock.setAuthor(root.attribute("author"));
-		border_and_titleblock.setTitle(root.attribute("title"));
-		border_and_titleblock.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
-		border_and_titleblock.setFileName(root.attribute("filename"));
-		border_and_titleblock.setFolio(root.attribute("folio"));
-		setTitleBlockTemplate(root.attribute("titleblocktemplate", ""));
-		
-		bool ok;
-		// nombre de colonnes
-		int nb_cols = root.attribute("cols").toInt(&ok);
-		if (ok) border_and_titleblock.setNbColumns(nb_cols);
-		
-		// taille des colonnes
-		double col_size = root.attribute("colsize").toDouble(&ok);
-		if (ok) border_and_titleblock.setColumnsWidth(col_size);
-		
-		// retrocompatibilite : les schemas enregistres avec la 0.1 ont un attribut "height"
-		if (root.hasAttribute("rows") && root.hasAttribute("rowsize")) {
-			// nombre de lignes
-			int nb_rows = root.attribute("rows").toInt(&ok);
-			if (ok) border_and_titleblock.setNbRows(nb_rows);
-			
-			// taille des lignes
-			double row_size = root.attribute("rowsize").toDouble(&ok);
-			if (ok) border_and_titleblock.setRowsHeight(row_size);
-		} else {
-			// hauteur du schema
-			double height = root.attribute("height").toDouble(&ok);
-			if (ok) border_and_titleblock.setDiagramHeight(height);
-		}
-		
-		// affichage des lignes et colonnes
-		border_and_titleblock.displayColumns(root.attribute("displaycols") != "false");
-		border_and_titleblock.displayRows(root.attribute("displayrows") != "false");
-		
-		border_and_titleblock.adjustTitleBlockToColumns();
+		border_and_titleblock.titleBlockFromXml(root);
+		border_and_titleblock.borderFromXml(root);
 		
 		// repere le permier element "defaultconductor"
-		for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-			QDomElement elmts = node.toElement();
-			if(elmts.isNull() || elmts.tagName() != "defaultconductor") continue;
-			defaultConductorProperties.fromXml(elmts);
-			break;
+		QDomElement default_conductor_elmt = root.firstChildElement("defaultconductor");
+		if (!default_conductor_elmt.isNull()) {
+			defaultConductorProperties.fromXml(default_conductor_elmt);
 		}
-		
 	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
@@ -954,7 +901,7 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	ExportProperties old_properties;
 	old_properties.draw_grid               = displayGrid();
 	old_properties.draw_border             = border_and_titleblock.borderIsDisplayed();
-	old_properties.draw_titleblock              = border_and_titleblock.titleBlockIsDisplayed();
+	old_properties.draw_titleblock         = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area           = useBorder() ? QET::BorderArea : QET::ElementsArea;

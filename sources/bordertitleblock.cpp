@@ -90,6 +90,89 @@ qreal BorderTitleBlock::minRowsHeight() {
 }
 
 /**
+	Exports the title block current values to XML.
+	@param xml_elmt the XML element attributes will be added to
+*/
+void BorderTitleBlock::titleBlockToXml(QDomElement &xml_elmt) {
+	if (!author().isNull())    xml_elmt.setAttribute("author",   author());
+	if (!date().isNull())      xml_elmt.setAttribute("date",     date().toString("yyyyMMdd"));
+	if (!title().isNull())     xml_elmt.setAttribute("title",    title());
+	if (!fileName().isNull())  xml_elmt.setAttribute("filename", fileName());
+	if (!folio().isNull())     xml_elmt.setAttribute("folio",    folio());
+	
+	QString current_template_name = titleBlockTemplateName();
+	if (!current_template_name.isEmpty()) {
+		xml_elmt.setAttribute("titleblocktemplate", current_template_name);
+	}
+}
+
+/**
+	Reads the title block values from XML.
+	@param xml_elmt the XML element values will be read from
+*/
+void BorderTitleBlock::titleBlockFromXml(const QDomElement &xml_elmt) {
+	setAuthor(xml_elmt.attribute("author"));
+	setTitle(xml_elmt.attribute("title"));
+	setDate(QDate::fromString(xml_elmt.attribute("date"), "yyyyMMdd"));
+	setFileName(xml_elmt.attribute("filename"));
+	setFolio(xml_elmt.attribute("folio"));
+	needTitleBlockTemplate(xml_elmt.attribute("titleblocktemplate", ""));
+}
+
+/**
+	Exports the border current settings to XML.
+	@param xml_elmt the XML element attributes will be added to
+*/
+void BorderTitleBlock::borderToXml(QDomElement &xml_elmt) {
+	xml_elmt.setAttribute("cols",        nbColumns());
+	xml_elmt.setAttribute("colsize",     QString("%1").arg(columnsWidth()));
+	xml_elmt.setAttribute("displaycols", columnsAreDisplayed() ? "true" : "false");
+	
+	xml_elmt.setAttribute("rows",        nbRows());
+	xml_elmt.setAttribute("rowsize",     QString("%1").arg(rowsHeight()));
+	xml_elmt.setAttribute("displayrows", rowsAreDisplayed() ? "true" : "false");
+	
+	// attribut datant de la version 0.1 - laisse pour retrocompatibilite
+	xml_elmt.setAttribute("height", QString("%1").arg(diagramHeight()));
+}
+
+/**
+	Reads the border settings from XML.
+	@param xml_elmt the XML element values will be read from
+*/
+void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
+	bool ok;
+	// columns count
+	int cols_count = xml_elmt.attribute("cols").toInt(&ok);
+	if (ok) setNbColumns(cols_count);
+	
+	// columns width
+	double cols_width = xml_elmt.attribute("colsize").toDouble(&ok);
+	if (ok) setColumnsWidth(cols_width);
+	
+	// backward compatibility: diagrams saved with 0.1 version have a "height" attribute
+	if (xml_elmt.hasAttribute("rows") && xml_elmt.hasAttribute("rowsize")) {
+		// rows counts
+		int rows_count = xml_elmt.attribute("rows").toInt(&ok);
+		if (ok) setNbRows(rows_count);
+		
+		// taille des lignes
+		double rows_size = xml_elmt.attribute("rowsize").toDouble(&ok);
+		if (ok) setRowsHeight(rows_size);
+	} else {
+		// hauteur du schema
+		double height = xml_elmt.attribute("height").toDouble(&ok);
+		if (ok) setDiagramHeight(height);
+	}
+	
+	// rows and columns display
+	displayColumns(xml_elmt.attribute("displaycols") != "false");
+	displayRows(xml_elmt.attribute("displayrows") != "false");
+	
+	adjustTitleBlockToColumns();
+}
+
+/**
 	@return les proprietes du cartouches
 */
 TitleBlockProperties BorderTitleBlock::exportTitleBlock() {

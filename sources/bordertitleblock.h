@@ -145,6 +145,11 @@ class BorderTitleBlock : public QObject {
 	/// @param filename le nouveau contenu du champ "Fichier"
 	void setFileName           (const QString &filename) { bi_filename     = filename; }
 	
+	void titleBlockToXml(QDomElement &);
+	void titleBlockFromXml(const QDomElement &);
+	void borderToXml(QDomElement &);
+	void borderFromXml(const QDomElement &);
+	
 	TitleBlockProperties exportTitleBlock();
 	void importTitleBlock(const TitleBlockProperties &);
 	BorderProperties exportBorder();
