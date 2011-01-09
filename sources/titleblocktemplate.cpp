@@ -273,6 +273,12 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 				if (cell_element.hasAttribute("displaylabel") && cell_element.attribute("displaylabel").compare("false", Qt::CaseInsensitive) == 0) {
 					loaded_cell -> display_label = false;
 				}
+				int fontsize;
+				if (QET::attributeIsAnInteger(cell_element, "fontsize", &fontsize)) {
+					loaded_cell -> font_size = fontsize;
+				} else {
+					loaded_cell -> font_size = -1;
+				}
 				
 				// horiwontal and vertical alignments
 				loaded_cell -> alignment = 0;
@@ -489,7 +495,6 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 	// prepare the QPainter
 	painter.setPen(Qt::black);
 	painter.setBrush(Qt::white);
-	painter.setFont(QETApp::diagramTextsFont());
 	
 	// draw the titleblock border
 	painter.drawRect(QRect(0, 0, titleblock_width, titleblock_height));
@@ -520,6 +525,7 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 					painter.drawPixmap(cell_rect, *(bitmap_logos_[cells_[i][j].logo_reference]));
 				}
 			} else {
+				painter.setFont(cells_[i][j].font_size == -1 ? QETApp::diagramTextsFont() : QETApp::diagramTextsFont(cells_[i][j].font_size));
 				painter.drawText(cell_rect, cells_[i][j].alignment, finalTextForCell(cells_[i][j], diagram_context));
 			}
 			

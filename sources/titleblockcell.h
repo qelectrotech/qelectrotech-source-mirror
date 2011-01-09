@@ -36,6 +36,7 @@ class TitleBlockCell {
 	QString label;
 	bool display_label;
 	int alignment;
+	int font_size;
 	QString logo_reference;
 };
 #endif
