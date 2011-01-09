@@ -32,6 +32,9 @@ class DiagramContext {
 	const QVariant operator[](const QString &) const;
 	bool addValue(const QString &, const QVariant &);
 	
+	bool operator==(const DiagramContext &) const;
+	bool operator!=(const DiagramContext &) const;
+	
 	private:
 	bool keyIsAcceptable(const QString &) const;
 	/// Diagram context data (key/value pairs)

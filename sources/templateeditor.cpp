@@ -100,7 +100,7 @@ void TemplateEditor::save() {
 		QMessageBox::critical(
 			this,
 			tr("Code XML non valide"),
-			tr("Le code XML du mod\350le ne semble pas \320tre valide. Impossible d'enregistrer le mod\350le.")
+			tr("Le code XML du mod\350le ne semble pas \352tre valide. Impossible d'enregistrer le mod\350le.")
 		);
 		return;
 	}

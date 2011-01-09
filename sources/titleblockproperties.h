@@ -19,6 +19,7 @@
 #define TITLEBLOCK_PROPERTIES_H
 #include <QtCore>
 #include <QtXml>
+#include "diagramcontext.h"
 /**
 	Cette classe est un conteneur pour les proprietes d'un cartouche de schema
 	: titre, auteur, date, nom de fichier et folio
@@ -37,7 +38,7 @@ class TitleBlockProperties {
 	bool operator!=(const TitleBlockProperties &);
 	
 	void toXml(QDomElement &) const;
-	void fromXml(QDomElement &);
+	void fromXml(const QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 	
@@ -51,6 +52,7 @@ class TitleBlockProperties {
 	QString folio;            ///< Folio affiche par le cartouche
 	DateManagement useDate;   ///< Indique s'il faut utiliser ou non l'attribut date
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
+	DiagramContext context;   ///< Container for the additional, user-defined fields
 	
 	private:
 	QString exportDate() const;

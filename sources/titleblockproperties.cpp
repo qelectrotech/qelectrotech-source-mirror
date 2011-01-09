@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "titleblockproperties.h"
+#include "qet.h"
 
 /**
 	Constructeur. Initialise un objet TitleBlockProperties avec tous les champs
@@ -44,7 +45,8 @@ bool TitleBlockProperties::operator==(const TitleBlockProperties &ip) {
 		ip.date == date &&\
 		ip.filename == filename &&\
 		ip.folio == folio &&\
-		ip.template_name == template_name
+		ip.template_name == template_name &&\
+		ip.context == context
 	);
 }
 
@@ -70,19 +72,40 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	if (!template_name.isEmpty()) {
 		e.setAttribute("titleblocktemplate", template_name);
 	}
+	
+	if (context.keys().count()) {
+		QDomElement properties = e.ownerDocument().createElement("properties");
+		foreach (QString key, context.keys()) {
+			QDomElement property = e.ownerDocument().createElement("property");
+			property.setAttribute("name", key);
+			QDomText value = e.ownerDocument().createTextNode(context[key].toString());
+			property.appendChild(value);
+			properties.appendChild(property);
+		}
+		e.appendChild(properties);
+	}
 }
 
 /**
 	Importe le cartouche a partir des attributs XML de l'element e
 	@param e Element XML dont les attributs seront lus
 */
-void TitleBlockProperties::fromXml(QDomElement &e) {
+void TitleBlockProperties::fromXml(const QDomElement &e) {
+	// reads the historical fields
 	if (e.hasAttribute("author"))      author   = e.attribute("author");
 	if (e.hasAttribute("title"))       title    = e.attribute("title");
 	if (e.hasAttribute("filename"))    filename = e.attribute("filename");
 	if (e.hasAttribute("folio"))       folio    = e.attribute("folio");
 	if (e.hasAttribute("date"))        setDateFromString(e.attribute("date"));
+	
+	// reads the template used to render the title block
 	if (e.hasAttribute("titleblocktemplate")) template_name = e.attribute("titleblocktemplate");
+	
+	// reads the additional fields used to fill the title block
+	foreach (QDomElement property, QET::findInDomElement(e, "properties", "property")) {
+		if (!property.hasAttribute("name")) continue;
+		context.addValue(property.attribute("name"), QVariant(property.text()));
+	}
 }
 
 /**
@@ -96,6 +119,15 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "folio",    folio);
 	settings.setValue(prefix + "date",     exportDate());
+	
+	settings.beginWriteArray(prefix + "properties");
+	int i = 0;
+	foreach (QString key, context.keys()) {
+		settings.setArrayIndex(i);
+		settings.setValue("name", key);
+		settings.setValue("value", context[key].toString());
+	}
+	settings.endArray();
 }
 
 /**
@@ -109,6 +141,15 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	filename = settings.value(prefix + "filename").toString();
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
+	
+	int size = settings.beginReadArray(prefix + "properties");
+	for (int i = 0 ; i < size; ++ i) {
+		settings.setArrayIndex(i);
+		QString key = settings.value("name").toString();
+		if (key.isEmpty()) continue;
+		context.addValue(key, settings.value("value").toString());
+	}
+	settings.endArray();
 }
 
 /**

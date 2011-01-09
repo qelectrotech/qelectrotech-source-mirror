@@ -42,18 +42,33 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void setTitleBlockTemplatesList(const QList<QString> &);
 	void setTitleBlockTemplatesVisible(bool);
 	
+	// slots:
+	private slots:
+	void checkTableRows();
+	
+	// private methods
+	private:
+	void initWidgets(const TitleBlockProperties &);
+	void initLayouts();
+	int nameLessRowsCount() const;
+	
 	// attributs
 	private:
+	QStackedLayout *stack_layout;
+	QLabel       *titleblock_template_label;
+	QComboBox    *titleblock_template_name;
 	QLineEdit    *titleblock_title;
 	QLineEdit    *titleblock_author;
 	QDateEdit    *titleblock_date;
 	QLineEdit    *titleblock_filename;
 	QLineEdit    *titleblock_folio;
+	QLabel       *folio_tip;
 	QRadioButton *titleblock_no_date;
 	QRadioButton *titleblock_current_date;
 	QRadioButton *titleblock_fixed_date;
 	bool display_current_date;
-	QLabel       *titleblock_template_label;
-	QComboBox    *titleblock_template_name;
+	QLabel       *additional_fields_label;
+	QTableWidget *additional_fields_table;
+	QTabBar      *tabbar;
 };
 #endif

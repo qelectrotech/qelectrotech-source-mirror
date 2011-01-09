@@ -17,6 +17,7 @@
 */
 #ifndef BORDERTITLEBLOCK_H
 #define BORDERTITLEBLOCK_H
+#include "diagramcontext.h"
 #include "titleblockproperties.h"
 #include "borderproperties.h"
 #include <QObject>
@@ -216,6 +217,7 @@ class BorderTitleBlock : public QObject {
 	int folio_index_;
 	int folio_total_;
 	QString bi_filename;
+	DiagramContext additional_fields_;
 	
 	// dimensions du cadre (lignes et colonnes)
 	// colonnes : nombres et dimensions

@@ -18,7 +18,6 @@
 #include <QPainter>
 #include "titleblocktemplate.h"
 #include "titleblocktemplaterenderer.h"
-#include "diagramcontext.h"
 #include "bordertitleblock.h"
 #include "diagramposition.h"
 #include "qetapp.h"
@@ -94,16 +93,7 @@ qreal BorderTitleBlock::minRowsHeight() {
 	@param xml_elmt the XML element attributes will be added to
 */
 void BorderTitleBlock::titleBlockToXml(QDomElement &xml_elmt) {
-	if (!author().isNull())    xml_elmt.setAttribute("author",   author());
-	if (!date().isNull())      xml_elmt.setAttribute("date",     date().toString("yyyyMMdd"));
-	if (!title().isNull())     xml_elmt.setAttribute("title",    title());
-	if (!fileName().isNull())  xml_elmt.setAttribute("filename", fileName());
-	if (!folio().isNull())     xml_elmt.setAttribute("folio",    folio());
-	
-	QString current_template_name = titleBlockTemplateName();
-	if (!current_template_name.isEmpty()) {
-		xml_elmt.setAttribute("titleblocktemplate", current_template_name);
-	}
+	exportTitleBlock().toXml(xml_elmt);
 }
 
 /**
@@ -111,12 +101,9 @@ void BorderTitleBlock::titleBlockToXml(QDomElement &xml_elmt) {
 	@param xml_elmt the XML element values will be read from
 */
 void BorderTitleBlock::titleBlockFromXml(const QDomElement &xml_elmt) {
-	setAuthor(xml_elmt.attribute("author"));
-	setTitle(xml_elmt.attribute("title"));
-	setDate(QDate::fromString(xml_elmt.attribute("date"), "yyyyMMdd"));
-	setFileName(xml_elmt.attribute("filename"));
-	setFolio(xml_elmt.attribute("folio"));
-	needTitleBlockTemplate(xml_elmt.attribute("titleblocktemplate", ""));
+	TitleBlockProperties tbp;
+	tbp.fromXml(xml_elmt);
+	importTitleBlock(tbp);
 }
 
 /**
@@ -177,12 +164,15 @@ void BorderTitleBlock::borderFromXml(const QDomElement &xml_elmt) {
 */
 TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	TitleBlockProperties ip;
-	ip.author = bi_author;
-	ip.date = bi_date;
-	ip.title = bi_title;
-	ip.folio = bi_folio;
-	ip.filename = bi_filename;
+	
+	ip.author = author();
+	ip.date = date();
+	ip.title = title();
+	ip.filename = fileName();
+	ip.folio = folio();
 	ip.template_name = titleBlockTemplateName();
+	ip.context = additional_fields_;
+	
 	return(ip);
 }
 
@@ -190,13 +180,15 @@ TitleBlockProperties BorderTitleBlock::exportTitleBlock() {
 	@param ip les nouvelles proprietes du cartouche
 */
 void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
-	bi_author = ip.author;
-	bi_date = ip.date;
+	setAuthor(ip.author);
+	setDate(ip.date);
 	setTitle(ip.title);
-	bi_folio = ip.folio;
-	bi_filename = ip.filename;
-	updateDiagramContextForTitleBlock();
+	setFileName(ip.filename);
+	setFolio(ip.folio);
+	additional_fields_ = ip.context;
+	
 	emit(needFolioData());
+	updateDiagramContextForTitleBlock();
 	emit(needTitleBlockTemplate(ip.template_name));
 }
 
@@ -577,7 +569,10 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos) {
 	DiagramContext object.
 */
 void BorderTitleBlock::updateDiagramContextForTitleBlock() {
-	DiagramContext context;
+	// our final DiagramContext object is the "additional fields" one
+	DiagramContext context = additional_fields_;
+	
+	// ... overridden by the historical and/or dynamically generated fields
 	context.addValue("author",      bi_author);
 	context.addValue("date",        bi_date.toString("dd/MM/yyyy"));
 	context.addValue("title",       bi_title);

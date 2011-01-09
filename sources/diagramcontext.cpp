@@ -55,6 +55,14 @@ bool DiagramContext::addValue(const QString &key, const QVariant &value) {
 	return(false);
 }
 
+bool DiagramContext::operator==(const DiagramContext &dc) const {
+	return(content_ == dc.content_);
+}
+
+bool DiagramContext::operator!=(const DiagramContext &dc) const {
+	return(!(*this == dc));
+}
+
 /**
 	@param key a key string
 	@return true if that key is acceptable, false otherwise

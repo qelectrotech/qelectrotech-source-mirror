@@ -25,71 +25,16 @@
 	@param current true pour afficher l'option "Date courante"
 	@param parent QWidget parent
 */
-TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current, QWidget *parent) : QWidget(parent), display_current_date(false) {
-	
-	QVBoxLayout *this_layout = new QVBoxLayout(this);
-	this_layout -> setContentsMargins(0, 0, 0, 0);
-	QGroupBox *titleblock_infos = new QGroupBox(tr("Informations du cartouche"), this);
-	titleblock_infos -> setMinimumSize(300, 330);
-	this_layout -> addWidget(titleblock_infos);
-	
-	titleblock_template_label = new QLabel(tr("Mod\350le :"));
-	titleblock_template_name = new QComboBox();
-	
-	titleblock_title = new QLineEdit(this);
-	titleblock_author = new QLineEdit(this);
-	
-	QButtonGroup *date_policy_group = new QButtonGroup(this);
-	titleblock_no_date = new QRadioButton(tr("Pas de date"), this);
-	titleblock_current_date = new QRadioButton(tr("Date courante"), this);
-	titleblock_fixed_date = new QRadioButton(tr("Date fixe : "), this);
-	date_policy_group -> addButton(titleblock_no_date);
-	date_policy_group -> addButton(titleblock_current_date);
-	date_policy_group -> addButton(titleblock_fixed_date);
-	titleblock_date = new QDateEdit(QDate::currentDate(), this);
-	titleblock_date -> setEnabled(titleblock_fixed_date -> isChecked());
-	titleblock_current_date -> setVisible(display_current_date);
-	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
-	titleblock_date -> setCalendarPopup(true);
-	
-	QGridLayout *layout_date = new QGridLayout();
-	layout_date -> addWidget(titleblock_no_date,      0, 0);
-	layout_date -> addWidget(titleblock_current_date, 1, 0);
-	layout_date -> addWidget(titleblock_fixed_date,   2, 0);
-	layout_date -> addWidget(titleblock_date,         2, 1);
-	layout_date -> setColumnStretch(0, 1);
-	layout_date -> setColumnStretch(1, 500);
-	
-	titleblock_filename = new QLineEdit(this);
-	titleblock_folio = new QLineEdit(this);
-	QLabel *folio_tip = new QLabel(
-		tr(
-			"Les variables suivantes sont utilisables dans le champ Folio :\n"
-			"  - %id : num\351ro du sch\351ma courant dans le projet\n"
-			"  - %total : nombre total de sch\351mas dans le projet"
-		)
-	);
-	folio_tip -> setWordWrap(true);
-	
-	QGridLayout *layout_champs = new QGridLayout(titleblock_infos);
-	layout_champs -> addWidget(titleblock_template_label,    0, 0);
-	layout_champs -> addWidget(titleblock_template_name,     0, 1);
-	layout_champs -> addWidget(new QLabel(tr("Titre : ")),   1, 0);
-	layout_champs -> addWidget(titleblock_title,             1, 1);
-	layout_champs -> addWidget(new QLabel(tr("Auteur : ")),  2, 0);
-	layout_champs -> addWidget(titleblock_author,            2, 1);
-	layout_champs -> addWidget(new QLabel(tr("Date : ")),    3, 0, Qt::AlignTop);
-	layout_champs -> addLayout(layout_date,                  3, 1);
-	layout_champs -> addWidget(new QLabel(tr("Fichier : ")), 4, 0);
-	layout_champs -> addWidget(titleblock_filename,          4, 1);
-	layout_champs -> addWidget(new QLabel(tr("Folio : ")),   5, 0);
-	layout_champs -> addWidget(titleblock_folio,             5, 1);
-	layout_champs -> addWidget(folio_tip,                    6, 1, Qt::AlignTop);
-	layout_champs -> setRowStretch(5, 500);
+TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current, QWidget *parent) :
+	QWidget(parent),
+	display_current_date(false)
+{
+	initWidgets(titleblock);
+	initLayouts();
+	connect(tabbar, SIGNAL(currentChanged(int)), stack_layout, SLOT(setCurrentIndex(int)));
 	
 	titleblock_current_date -> setVisible(display_current_date = current);
 	setTitleBlockProperties(titleblock);
-	setLayout(this_layout);
 	
 	// by default, we do not display the template combo box
 	titleblock_template_label -> setVisible(false);
@@ -123,6 +68,18 @@ TitleBlockProperties TitleBlockPropertiesWidget::titleBlockProperties() const {
 	int index = titleblock_template_name -> currentIndex();
 	if (index != -1) {
 		prop.template_name = titleblock_template_name -> itemData(index).toString();
+	}
+	
+	for (int i = 0 ; i < additional_fields_table -> rowCount() ; ++ i) {
+		QTableWidgetItem *qtwi_name  = additional_fields_table -> item(i, 0);
+		QTableWidgetItem *qtwi_value = additional_fields_table -> item(i, 1);
+		if (!qtwi_name || !qtwi_value) continue;
+		
+		QString key = qtwi_name -> text();
+		if (key.isEmpty()) continue;
+		
+		QString value = qtwi_value -> text();
+		prop.context.addValue(key, value);
 	}
 	
 	return(prop);
@@ -196,8 +153,8 @@ void TitleBlockPropertiesWidget::setReadOnly(bool ro) {
 	titleblock_no_date      -> setDisabled(ro);
 	titleblock_current_date -> setDisabled(ro);
 	titleblock_fixed_date   -> setDisabled(ro);
-	titleblock_template_label -> setDisabled(ro);
-	titleblock_template_name  -> setDisabled(ro);
+	titleblock_template_name -> setDisabled(ro);
+	additional_fields_table  -> setDisabled(ro);
 }
 
 /**
@@ -219,4 +176,160 @@ void TitleBlockPropertiesWidget::setTitleBlockTemplatesList(const QList<QString>
 void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(bool visible) {
 	titleblock_template_name  -> setVisible(visible);
 	titleblock_template_label -> setVisible(visible);
+}
+
+/**
+	Adds a row in the additional fields table if needed.
+*/
+void TitleBlockPropertiesWidget::checkTableRows() {
+	if (!nameLessRowsCount()) {
+		int new_idx = additional_fields_table -> rowCount();
+		additional_fields_table -> setRowCount(new_idx + 1);
+		additional_fields_table -> setItem(new_idx, 0, new QTableWidgetItem(""));
+		additional_fields_table -> setItem(new_idx, 1, new QTableWidgetItem(""));
+	}
+}
+
+/**
+	Builds the various child widgets for this widget
+*/
+void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titleblock) {
+	titleblock_template_label = new QLabel(tr("Mod\350le :"), this);
+	titleblock_template_name = new QComboBox(this);
+	
+	titleblock_title    = new QLineEdit(this);
+	titleblock_author   = new QLineEdit(this);
+	titleblock_filename = new QLineEdit(this);
+	
+	titleblock_folio = new QLineEdit(this);
+	folio_tip = new QLabel(
+		tr(
+			"Les variables suivantes sont utilisables dans le champ Folio :\n"
+			"  - %id : num\351ro du sch\351ma courant dans le projet\n"
+			"  - %total : nombre total de sch\351mas dans le projet"
+		)
+	);
+	folio_tip -> setWordWrap(true);
+	
+	QButtonGroup *date_policy_group = new QButtonGroup(this);
+	titleblock_no_date = new QRadioButton(tr("Pas de date"), this);
+	titleblock_current_date = new QRadioButton(tr("Date courante"), this);
+	titleblock_fixed_date = new QRadioButton(tr("Date fixe : "), this);
+	date_policy_group -> addButton(titleblock_no_date);
+	date_policy_group -> addButton(titleblock_current_date);
+	date_policy_group -> addButton(titleblock_fixed_date);
+	titleblock_date = new QDateEdit(QDate::currentDate(), this);
+	titleblock_date -> setEnabled(titleblock_fixed_date -> isChecked());
+	titleblock_current_date -> setVisible(display_current_date);
+	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
+	titleblock_date -> setCalendarPopup(true);
+	
+	additional_fields_label = new QLabel(
+		tr(
+			"Vous pouvez définir ici vos propres associations noms/valeurs pour"
+			" que le cartouche en tienne compte. Exemple : associer le nom "
+			"\"volta\" et la valeur \"1745\" remplacera %volta par 1745 dans le "
+			"cartouche."
+		)
+	);
+	additional_fields_label -> setWordWrap(true);
+	additional_fields_label -> setAlignment(Qt::AlignJustify);
+	int num_rows = titleblock.context.keys().count() + 1;
+	additional_fields_table = new QTableWidget(num_rows, 2);
+	additional_fields_table -> setHorizontalHeaderLabels(QStringList() << tr("Nom") << tr("Valeur"));
+	additional_fields_table -> horizontalHeader() -> setStretchLastSection(true);
+	
+	int i = 0;
+	foreach (QString key, titleblock.context.keys()) {
+		additional_fields_table -> setItem(i, 0, new QTableWidgetItem(key));
+		additional_fields_table -> setItem(i, 1, new QTableWidgetItem(titleblock.context[key].toString()));
+		++ i;
+	}
+	
+	connect(additional_fields_table, SIGNAL(itemChanged(QTableWidgetItem *)), this, SLOT(checkTableRows()));
+	
+	tabbar = new QTabBar(this);
+	tabbar -> addTab(tr("Principales"));
+	tabbar -> addTab(tr("Personnalisées"));
+	tabbar -> setShape(QTabBar::RoundedSouth);
+}
+
+/**
+	Builds the various layouts for this widget
+*/
+void TitleBlockPropertiesWidget::initLayouts() {
+	// layouts for tab #0
+	QGridLayout *layout_date = new QGridLayout();
+	layout_date -> addWidget(titleblock_no_date,      0, 0);
+	layout_date -> addWidget(titleblock_current_date, 1, 0);
+	layout_date -> addWidget(titleblock_fixed_date,   2, 0);
+	layout_date -> addWidget(titleblock_date,         2, 1);
+	layout_date -> setColumnStretch(0, 1);
+	layout_date -> setColumnStretch(1, 500);
+	
+	QWidget *widget_main_fields = new QWidget(this);
+	QGridLayout *layout_main_fields = new QGridLayout(widget_main_fields);
+	layout_main_fields -> addWidget(new QLabel(tr("Titre : ")),   0, 0);
+	layout_main_fields -> addWidget(titleblock_title,             0, 1);
+	layout_main_fields -> addWidget(new QLabel(tr("Auteur : ")),  1, 0);
+	layout_main_fields -> addWidget(titleblock_author,            1, 1);
+	layout_main_fields -> addWidget(new QLabel(tr("Date : ")),    2, 0, Qt::AlignTop);
+	layout_main_fields -> addLayout(layout_date,                  2, 1);
+	layout_main_fields -> addWidget(new QLabel(tr("Fichier : ")), 3, 0);
+	layout_main_fields -> addWidget(titleblock_filename,          3, 1);
+	layout_main_fields -> addWidget(new QLabel(tr("Folio : ")),   4, 0);
+	layout_main_fields -> addWidget(titleblock_folio,             4, 1);
+	layout_main_fields -> addWidget(folio_tip,                    5, 1, Qt::AlignTop);
+	layout_main_fields -> setContentsMargins(0, 0, 0, 0);
+	layout_main_fields -> setRowStretch(5, 500);
+	
+	// layouts for tab #1
+	QWidget *widget_user_fields = new QWidget(this);
+	QVBoxLayout *layout_user_fields = new QVBoxLayout(widget_user_fields);
+	layout_user_fields -> addWidget(additional_fields_label);
+	layout_user_fields -> addWidget(additional_fields_table);
+	layout_user_fields -> setContentsMargins(0, 0, 0, 0);
+	
+	// stacked layout
+	stack_layout = new QStackedLayout();
+	stack_layout -> addWidget(widget_main_fields);
+	stack_layout -> addWidget(widget_user_fields);
+	stack_layout -> setContentsMargins(0, 0, 0, 0);
+	stack_layout -> setCurrentIndex(0);
+	
+	// template layout
+	QHBoxLayout *template_layout = new QHBoxLayout();
+	template_layout -> addWidget(titleblock_template_label);
+	template_layout -> addWidget(titleblock_template_name);
+	template_layout -> setStretch(0, 1);
+	template_layout -> setStretch(1, 500);
+	
+	// groupbox layout
+	QVBoxLayout *groupbox_layout = new QVBoxLayout();
+	groupbox_layout -> addLayout(template_layout);
+	groupbox_layout -> addLayout(stack_layout);
+	groupbox_layout -> addWidget(tabbar);
+	
+	// groupbox
+	QGroupBox *titleblock_infos = new QGroupBox(tr("Informations du cartouche"), this);
+	titleblock_infos -> setLayout(groupbox_layout);
+	titleblock_infos -> setMinimumSize(300, 330);
+	
+	// widget layout
+	QVBoxLayout *this_layout = new QVBoxLayout();
+	this_layout -> setContentsMargins(0, 0, 0, 0);
+	this_layout -> addWidget(titleblock_infos);
+	setLayout(this_layout);
+}
+
+/**
+	@return The count of name-less rows in the additional fields table.
+*/
+int TitleBlockPropertiesWidget::nameLessRowsCount() const {
+	int name_less_rows_count = 0;
+	for (int i = 0 ; i < additional_fields_table -> rowCount() ; ++ i) {
+		QTableWidgetItem *qtwi_name  = additional_fields_table -> item(i, 0);
+		if (qtwi_name && qtwi_name -> text().isEmpty()) ++ name_less_rows_count;
+	}
+	return(name_less_rows_count);
 }
