@@ -7,7 +7,7 @@
         <name lang="es" >Interruptor</name>
         <name lang="cs" >Spínač</name>
         <name lang="pt" >Interruptor</name>
-        <name lang="pl" >Przełącznik</name>
+        <name lang="pl" >Łącznik</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

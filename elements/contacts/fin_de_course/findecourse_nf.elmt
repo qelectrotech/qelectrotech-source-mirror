@@ -7,7 +7,7 @@
         <name lang="es" >Final de carrera (NC)</name>
         <name lang="cs" >Konec vodivého spojení (NC)</name>
         <name lang="pt" >Fim de curso (NC)</name>
-        <name lang="pl" >Styk (NC)</name>
+        <name lang="pl" >Łącznik krańcowy rozwierny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
