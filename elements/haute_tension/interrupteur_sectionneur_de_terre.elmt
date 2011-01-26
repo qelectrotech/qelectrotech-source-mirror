@@ -1,21 +1,21 @@
-<definition width="30" version="0.1" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy" >
+<definition width="30" version="0.22" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="fr" >Interrupteur-sectionneur de terre</name>
-        <name lang="en" >Ground switch disconnector</name>
-        <name lang="cs" >Rozpojovač přepínání země</name>
-        <name lang="pt" >Interruptor-seccionador de terra</name>
-        <name lang="pl" >Uziemiacz</name>
+        <name lang="pt">Interruptor-seccionador de terra</name>
+        <name lang="en">Ground switch disconnector</name>
+        <name lang="fr">Interrupteur-sectionneur de terre</name>
+        <name lang="pl">Uziemnik</name>
+        <name lang="cs">Rozpojovač přepínání země</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="14" x2="1" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-2.5" y2="12" x2="2.5" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="10" x2="-4" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.5" x1="-4" y2="0" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-2" y2="-10" x2="2" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="0" />
-        <terminal x="0" y="-20" orientation="n" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-1" y2="14" x2="1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-2.5" y2="12" x2="2.5"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="4" y2="10" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8.5" x1="-4" y2="0" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-2" y2="-10" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="10" x2="0"/>
+        <terminal x="0" y="-20" orientation="n"/>
     </description>
 </definition>

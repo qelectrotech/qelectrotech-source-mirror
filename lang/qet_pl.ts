@@ -1421,7 +1421,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation>Rysuj tabelkę rysunkową</translation>
+        <translation>Rysuj tabliczkę rysunkową</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
@@ -1556,7 +1556,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/insetpropertieswidget.cpp" line="31"/>
         <source>Informations du cartouche</source>
-        <translation>Właściwości tabelki rysunkowej</translation>
+        <translation>Właściwości tabliczki rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/insetpropertieswidget.cpp" line="39"/>
@@ -4153,7 +4153,7 @@ Dostępne opcje:
         <location filename="../sources/diagramcommands.cpp" line="533"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>zmiana tabelki rysunkowej</translation>
+        <translation>zmiana tabliczki rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="564"/>
