@@ -476,19 +476,20 @@ bool QETApp::closeEveryEditor() {
 	La famille "Sans Serif" est utilisee par defaut mais peut etre surchargee
 	dans la configuration (diagramfont).
 */
-QFont QETApp::diagramTextsFont(int size) {
+QFont QETApp::diagramTextsFont(qreal size) {
 	// acces a la configuration de l'application
 	QSettings &qet_settings = QETApp::settings();
 	
 	// police a utiliser pour le rendu de texte
 	QString diagram_texts_family = qet_settings.value("diagramfont", "Sans Serif").toString();
-	int     diagram_texts_size   = qet_settings.value("diagramsize", 9).toInt();
+	qreal diagram_texts_size     = qet_settings.value("diagramsize", 9.0).toDouble();
 	
-	if (size != -1) {
+	if (size != -1.0) {
 		diagram_texts_size = size;
 	}
-	QFont diagram_texts_font = QFont(diagram_texts_family, diagram_texts_size);
-	if (diagram_texts_size <= 4) {
+	QFont diagram_texts_font = QFont(diagram_texts_family);
+	diagram_texts_font.setPointSizeF(diagram_texts_size);
+	if (diagram_texts_size <= 4.0) {
 		diagram_texts_font.setWeight(QFont::Light);
 	}
 	return(diagram_texts_font);

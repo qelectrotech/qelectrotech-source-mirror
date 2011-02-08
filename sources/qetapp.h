@@ -93,7 +93,7 @@ class QETApp : public QETSingleApplication {
 	public:
 	static void overrideLangDir(const QString &);
 	static QString lang_dir; ///< Dossier contenant les fichiers de langue
-	static QFont diagramTextsFont(int = -1);
+	static QFont diagramTextsFont(qreal = -1.0);
 	static QETDiagramEditor *diagramEditorForFile(const QString &);
 	static QList<QETDiagramEditor *> diagramEditors();
 	static QList<QETElementEditor *> elementEditors();

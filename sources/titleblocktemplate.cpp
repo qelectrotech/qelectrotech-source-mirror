@@ -292,6 +292,9 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 				if (halignment == "bottom") loaded_cell -> alignment |= Qt::AlignBottom;
 				else if (halignment == "top") loaded_cell -> alignment |= Qt::AlignTop;
 				else loaded_cell -> alignment |= Qt::AlignVCenter;
+				
+				// horizontal text adjustment
+				loaded_cell -> hadjust = cell_element.attribute("hadjust", "true") == "true";
 			}
 		}
 	}
@@ -525,8 +528,8 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 					painter.drawPixmap(cell_rect, *(bitmap_logos_[cells_[i][j].logo_reference]));
 				}
 			} else {
-				painter.setFont(cells_[i][j].font_size == -1 ? QETApp::diagramTextsFont() : QETApp::diagramTextsFont(cells_[i][j].font_size));
-				painter.drawText(cell_rect, cells_[i][j].alignment, finalTextForCell(cells_[i][j], diagram_context));
+				QString final_text = finalTextForCell(cells_[i][j], diagram_context);
+				renderTextCell(painter, final_text, cells_[i][j], cell_rect);
 			}
 			
 			// draw again the border rect of the current cell, without the brush this time
@@ -554,6 +557,47 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 		cell_text = QString(tr(" %1")).arg(cell_text);
 	}
 	return(cell_text);
+}
+
+/**
+	This method uses a \a painter to render the \a text of a \a cell
+	into the \a cell_rect rectangle.
+	The alignment, font_size and other cell parameters are taken into account
+	when rendering.
+	@param painter QPainter used to render the text
+	@param text Text to render
+	@param cell Cell the rendered text is rattached to
+	@param cell_rect Rectangle delimiting the cell area
+*/
+void TitleBlockTemplate::renderTextCell(QPainter &painter, const QString &text, const TitleBlockCell &cell, const QRectF &cell_rect) const {
+	QFont text_font = cell.font_size == -1 ? QETApp::diagramTextsFont() : QETApp::diagramTextsFont(cell.font_size);
+	painter.setFont(text_font);
+	
+	if (cell.hadjust) {
+		QFontMetricsF font_metrics(text_font);
+		QRectF font_rect = font_metrics.boundingRect(QRect(-10000, -10000, 10000, 10000), cell.alignment, text);
+		
+		if (font_rect.width() > cell_rect.width()) {
+			qreal ratio = qreal(cell_rect.width()) / qreal(font_rect.width());
+			painter.save();
+			
+			painter.translate(cell_rect.topLeft());
+			qreal vertical_adjustment = cell_rect.height() * (1 - ratio) / 2.0;
+			painter.translate(0.0, vertical_adjustment);
+			painter.scale(ratio, ratio);
+			
+			QRectF new_world_cell_rect(cell_rect);
+			new_world_cell_rect.moveTo(0, 0.0);
+			new_world_cell_rect.setWidth(new_world_cell_rect.width() / ratio);
+			painter.drawText(new_world_cell_rect, cell.alignment, text);
+			
+			painter.restore();
+			return;
+		}
+	}
+	
+	// Still here? Let's draw the text normally
+	painter.drawText(cell_rect, cell.alignment, text);
 }
 
 /**
