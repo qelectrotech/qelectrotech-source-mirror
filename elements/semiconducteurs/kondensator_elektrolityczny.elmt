@@ -1,5 +1,6 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="fr">Condensateur</name>
         <name lang="pl">Kondensator elektrolityczny</name>
     </names>
     <informations>EN 60617: 04-02-05</informations>

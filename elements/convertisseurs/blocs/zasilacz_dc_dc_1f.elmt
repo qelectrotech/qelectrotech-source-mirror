@@ -1,5 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="de">Gleichstrom-Umrichter
+</name>
+        <name lang="fr">Convertisseur DC/DC
+</name>
         <name lang="pl">Zasilacz DC/DC</name>
     </names>
     <informations>EN 60617: 06-14-02</informations>
