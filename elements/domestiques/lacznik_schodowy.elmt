@@ -1,14 +1,12 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="15" height="50" type="element" orientation="dyyy">
     <names>
-        <name lang="en">???</name>
-        <name lang="fr">Interrupteur unipolaire va-et-vient</name>
         <name lang="pl">Łącznik schodowy</name>
     </names>
-    <informations></informations>
+    <informations>EN 60617: 11-14-06</informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="2" y2="-10" x2="10" y3="-8" x3="12"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="2" x1="-2" y2="10" x2="-10" y3="8" x3="-12"/>
-        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <terminal x="0" y="-3" orientation="n"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="20" x1="-2" y2="30" x2="-9" y3="28" x3="-12"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="2" y2="-1" x2="9" y3="1" x3="12"/>
+        <circle x="-5" y="10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <terminal x="0" y="10" orientation="n"/>
     </description>
 </definition>

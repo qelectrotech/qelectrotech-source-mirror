@@ -1,14 +1,12 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="15" height="20" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
-        <name lang="en">???</name>
-        <name lang="fr">???</name>
         <name lang="pl">Łącznik szeregowy</name>
     </names>
     <informations></informations>
     <description>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="-2" y2="-10" x2="-10" y3="-12" x3="-8"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-2" x1="2" y2="-10" x2="10" y3="-8" x3="12"/>
-        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <terminal x="0" y="-3" orientation="n"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="-2" y2="-11" x2="-9" y3="-13" x3="-6"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="2" y2="-11" x2="9" y3="-9" x3="12"/>
+        <circle x="-5" y="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
+        <terminal x="0" y="0" orientation="n"/>
     </description>
 </definition>

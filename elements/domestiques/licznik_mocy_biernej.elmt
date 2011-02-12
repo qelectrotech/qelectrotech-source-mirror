@@ -1,0 +1,14 @@
+<definition width="50" version="0.22" hotspot_x="15" hotspot_y="5" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="pl">Licznik warogodzin</name>
+    </names>
+    <informations>EN 60617: 08-04-15
+</informations>
+    <description>
+        <rect width="32" x="-6" y="0" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="-6" y2="15" x2="26"/>
+        <text x="-1" y="35" size="10" text="varh"/>
+        <terminal x="0" y="50" orientation="s"/>
+        <terminal x="20" y="50" orientation="s"/>
+    </description>
+</definition>
