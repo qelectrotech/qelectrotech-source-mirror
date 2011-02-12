@@ -1,5 +1,10 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Fernmeldesteckdose, allgemein
+</name>
+        <name lang="fr">Socle de prise pour terminal de
+télécommunication
+</name>
         <name lang="pl">Gniazdo teletechniczne</name>
     </names>
     <informations>EN 60617: 11-13-09</informations>

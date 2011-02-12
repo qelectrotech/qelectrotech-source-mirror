@@ -1,5 +1,9 @@
-<definition width="40" version="0.22" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Ventilator
+</name>
+        <name lang="fr">Ventilateur
+</name>
         <name lang="pl">Wentylator</name>
     </names>
     <informations>EN 60617: 11-16-02</informations>

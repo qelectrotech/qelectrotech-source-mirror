@@ -1,5 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="30" height="40" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Punktleuchte
+</name>
+        <name lang="fr">Projecteur d'illumination
+</name>
         <name lang="pl">Projektor o świetle rozproszonym</name>
     </names>
     <informations>EN 60617: 11-15-09</informations>

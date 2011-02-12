@@ -1,5 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Schrittmotor
+</name>
+        <name lang="fr">Moteur pas à pas
+</name>
         <name lang="pl">Silnik krokowy</name>
     </names>
     <informations>EN 60617: 06-04-03</informations>

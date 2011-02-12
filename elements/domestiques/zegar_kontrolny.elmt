@@ -1,5 +1,10 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Zeiterfassungsgerät
+</name>
+        <name lang="fr">Horloge de pointage,
+Enregistreur horaire
+</name>
         <name lang="pl">Zegar kontrolny</name>
     </names>
     <informations>EN 60617: 11-16-03</informations>

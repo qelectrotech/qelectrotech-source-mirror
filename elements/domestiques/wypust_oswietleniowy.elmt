@@ -1,5 +1,9 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="de">Leuchtenauslaß
+</name>
+        <name lang="fr">Point d'attente d'appareil d'éclairage
+</name>
         <name lang="pl">Wypust oświetleniowy</name>
     </names>
     <informations>EN 60617: 11-15-01</informations>

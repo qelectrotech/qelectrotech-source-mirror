@@ -1,5 +1,7 @@
-<definition width="70" version="0.22" hotspot_x="5" hotspot_y="20" height="20" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="5" hotspot_y="20" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Leuchte für Leuchtstofflampe</name>
+        <name lang="fr">Lampe à fluorescence</name>
         <name lang="pl">Świetlówka</name>
     </names>
     <informations>EN 60617: 11-15-04</informations>

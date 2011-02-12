@@ -1,5 +1,10 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="de">Sicherheitsleuchte mit eingebauter
+Stromversorgung
+</name>
+        <name lang="fr">Bloc autonome d'éclairage de sécurité
+</name>
         <name lang="pl">Oświetlenie ewakuacyjne autonomiczne</name>
     </names>
     <informations>EN 60617: 11-15-12</informations>

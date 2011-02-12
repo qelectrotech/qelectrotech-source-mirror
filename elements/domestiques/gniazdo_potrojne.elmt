@@ -1,5 +1,9 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Mehrfachsteckdose
+</name>
+        <name lang="fr">Socle pour plusieurs prises de courant
+</name>
         <name lang="pl">Gniazdo potrójne</name>
     </names>
     <informations>EN 60617: 11-13-02</informations>
