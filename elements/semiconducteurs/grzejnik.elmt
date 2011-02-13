@@ -1,5 +1,9 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Heizelement
+</name>
+        <name lang="fr">Elément chauffant
+</name>
         <name lang="pl">Grzejnik</name>
     </names>
     <informations>EN 60617 : 04-01-12</informations>

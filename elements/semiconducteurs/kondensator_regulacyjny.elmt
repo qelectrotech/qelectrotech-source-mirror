@@ -1,5 +1,9 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="de">Kondensator
+veränderbarer</name>
+        <name lang="fr">Condensateur réglable
+</name>
         <name lang="pl">Kondensator regulacyjny</name>
     </names>
     <informations>EN 60617: 04-02-07</informations>

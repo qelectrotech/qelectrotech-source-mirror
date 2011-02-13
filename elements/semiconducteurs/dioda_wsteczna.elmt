@@ -1,5 +1,9 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
+        <name lang="de">Unitunnel-Diode
+</name>
+        <name lang="fr">Diode unitunnel
+</name>
         <name lang="pl">Dioda wsteczna</name>
     </names>
     <informations>EN 60617: 05-03-08</informations>

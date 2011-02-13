@@ -1,5 +1,9 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
+        <name lang="de">Photodiode
+</name>
+        <name lang="fr">Photodiode
+</name>
         <name lang="pl">Fotodioda</name>
     </names>
     <informations>EN 60617: 05-06-02</informations>

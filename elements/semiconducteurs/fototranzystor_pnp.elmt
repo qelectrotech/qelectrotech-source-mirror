@@ -1,5 +1,11 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="de">Phototransistor PNP
+</name>
+        <name lang="en">Phototransistor PNP
+</name>
+        <name lang="fr">Phototransistor, type PNP
+</name>
         <name lang="pl">Fotortanzystor PNP</name>
     </names>
     <informations>EN 60617: 05-06-04</informations>

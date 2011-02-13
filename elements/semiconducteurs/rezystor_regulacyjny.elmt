@@ -1,5 +1,9 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="de">Widerstand, veränderbar
+</name>
+        <name lang="fr">Résistance réglable
+</name>
         <name lang="pl">Rezystor regulacyjny</name>
     </names>
     <informations>EN 60617: 04-01-03</informations>
