@@ -2,6 +2,8 @@
     <names>
         <name lang="de">Schalter, zweipolig
 </name>
+        <name lang="fr">Interrupteur, bipolaire
+</name>
         <name lang="pl">Łącznik dwubiegunowy</name>
     </names>
     <informations>EN 60617: 11-14-04</informations>

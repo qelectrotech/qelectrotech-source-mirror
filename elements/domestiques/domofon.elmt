@@ -1,7 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="en">interphon</name>
-        <name lang="fr">intercom</name>
+        <name lang="en">intercom</name>
+        <name lang="fr">interphone</name>
         <name lang="pl">Domofon</name>
     </names>
     <informations>EN 60617: 11-16-05</informations>

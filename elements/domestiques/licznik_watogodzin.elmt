@@ -1,8 +1,14 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="5" height="60" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="5" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="de">Wattstundenzähler,
+Elektrizitätszähler
+</name>
+        <name lang="fr">Compteur d'énergie active
+Wattheuremètre
+</name>
         <name lang="pl">Licznik watogodzin</name>
     </names>
-    <informations>EN 60617: 08-04-03
+    <informations>EN 60617: 08-04-03&#xd;
 </informations>
     <description>
         <rect width="32" x="-6" y="0" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
