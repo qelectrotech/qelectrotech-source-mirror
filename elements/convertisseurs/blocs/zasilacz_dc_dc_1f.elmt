@@ -2,6 +2,10 @@
     <names>
         <name lang="de">Gleichstrom-Umrichter
 </name>
+        <name lang="en">DC/DC converter
+</name>
+        <name lang="it">Convertitore da corrente continua a corrente continua
+</name>
         <name lang="fr">Convertisseur DC/DC
 </name>
         <name lang="pl">Zasilacz DC/DC</name>

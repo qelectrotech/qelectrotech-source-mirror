@@ -1,8 +1,10 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ru">Проблесковый маяк</name>
         <name lang="pt">Luz intermitente</name>
         <name lang="en">Flashing light</name>
+        <name lang="it">Lampada di segnalazione lampeg- giante
+</name>
         <name lang="fr">Lampe clignotante</name>
         <name lang="pl">Lampa sygnalizacyjna o świetle migowym</name>
         <name lang="es">Luz intermitente</name>

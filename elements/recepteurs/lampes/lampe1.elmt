@@ -1,8 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ru">Лампа</name>
         <name lang="pt">Lâmpada</name>
         <name lang="en">Light</name>
+        <name lang="it">Lampada</name>
         <name lang="fr">Lampe</name>
         <name lang="pl">Lampa (schemat jednokreskowy)</name>
         <name lang="es">Lámpara</name>

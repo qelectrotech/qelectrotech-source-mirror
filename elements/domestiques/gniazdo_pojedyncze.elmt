@@ -1,6 +1,11 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="de">Steckdose</name>
+        <name lang="en">Socket outlet (power), general
+symbol
+</name>
+        <name lang="it">Presa, segno graﬁco generale
+</name>
         <name lang="fr">Socle de prise de courant</name>
         <name lang="pl">Gniazdo pojedyncze</name>
     </names>
