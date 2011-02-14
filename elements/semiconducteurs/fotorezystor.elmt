@@ -2,6 +2,8 @@
     <names>
         <name lang="de">Photowiderstand
 </name>
+        <name lang="en">Light dependent resistor
+</name>
         <name lang="fr">Photorésistance
 </name>
         <name lang="pl">Fotorezystor</name>
