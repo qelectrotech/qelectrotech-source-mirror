@@ -28,6 +28,7 @@ class ElementTextItem;
 class Element : public QObject, public QGraphicsItem {
 	
 	Q_OBJECT
+	Q_INTERFACES(QGraphicsItem)
 	
 	// constructeurs, destructeur
 	public:
