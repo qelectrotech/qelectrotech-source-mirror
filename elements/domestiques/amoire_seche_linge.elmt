@@ -1,0 +1,17 @@
+<definition width="30" version="0.22" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+    <names>
+        <name lang="fr">Armoire sèche-linge</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <arc width="4" x="-7.49829" y="2.58496" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.55957" x1="4.97632" y2="6.55957" x2="-5.02368"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2.55957" x1="-5.02368" y2="6.55957" x2="4.97632"/>
+        <circle x="-2.5" y="13.5" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" diameter="5"/>
+        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+        <arc width="4" x="3.56104" y="2.58496" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <terminal x="0" y="-13" orientation="n"/>
+    </description>
+</definition>
