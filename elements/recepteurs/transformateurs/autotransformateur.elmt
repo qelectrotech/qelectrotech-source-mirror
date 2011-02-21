@@ -1,5 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="de">Spartransformator
+</name>
         <name lang="en">Auto-transformer
 </name>
         <name lang="it">Autotrasformatore

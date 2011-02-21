@@ -1,5 +1,8 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="de">Wicklung
+Transformator mit veränderbarer Kopplung
+</name>
         <name lang="it">Trasformatore monofase con ac- coppiamento regolabile
 </name>
         <name lang="fr">Transformateur à couplage réglable</name>

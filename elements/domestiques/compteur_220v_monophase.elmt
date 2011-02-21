@@ -1,0 +1,13 @@
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Compteur 220V monophase</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="20" x="-10" y="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="20" x="-10" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-15" y="-25" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-29" orientation="n"/>
+        <terminal x="0" y="18" orientation="s"/>
+    </description>
+</definition>
