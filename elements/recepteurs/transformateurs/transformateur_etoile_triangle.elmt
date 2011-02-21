@@ -1,5 +1,10 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="en"> Three-phase transformer, connec-
+tion star-delta
+</name>
+        <name lang="it">Trasformatore trifase, collegamen-to stella-triangolo
+</name>
         <name lang="fr">Transformateur étoile triangle</name>
     </names>
     <informations>Author: The QElectroTech team

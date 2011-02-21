@@ -1,5 +1,10 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="en">Auto-transformer,
+connection star
+three-phase</name>
+        <name lang="it">Autotrasformatore trifase, collega- mento stella
+</name>
         <name lang="fr">Autotransformateur couplage étoile</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,5 +1,9 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="en">Auto-transformer
+</name>
+        <name lang="it">Autotrasformatore
+</name>
         <name lang="fr">Autotransformateur</name>
     </names>
     <informations>Author: The QElectroTech team

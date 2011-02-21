@@ -1,5 +1,13 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="en">Three-phase transformer with four
+tappings (taps), connection: star-star
+</name>
+        <name lang="it">Trasformatore trifase con quattro
+prese (oltre la presa principale) su
+un avvolgimento, collegamento
+stella-stella
+</name>
         <name lang="fr">Transformateur étoile-étoile</name>
     </names>
     <informations>Author: The QElectroTech team

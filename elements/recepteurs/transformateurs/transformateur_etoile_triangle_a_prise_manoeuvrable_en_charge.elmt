@@ -1,5 +1,11 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="en"> Three-phase transformer with
+ on-load tap changer, connection
+ star-delta
+</name>
+        <name lang="it">Trasformatore trifase a prese mul- tiple, con commutatore manovra- bile sotto carico, collegamento stella triangolo
+</name>
         <name lang="fr">Transformateur étoile triangle à prise manoeuvrable en charge</name>
     </names>
     <informations>Author: The QElectroTech team
