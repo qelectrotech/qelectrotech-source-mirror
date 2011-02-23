@@ -1,5 +1,11 @@
-<definition width="20" version="0.22" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
+        <name lang="en"> Reverse blocking diode thyristor
+</name>
+        <name lang="it">Tiristore diodo bloccato nel senso inverso di conduzione
+</name>
+        <name lang="fr">Diode, thyristor, bloqué en inverse
+</name>
         <name lang="pl">Tyrystor diodowy blokujący wstecznie</name>
     </names>
     <informations>EN 60617: 05-04-01</informations>

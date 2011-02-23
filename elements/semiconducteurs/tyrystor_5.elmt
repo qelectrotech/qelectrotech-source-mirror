@@ -1,5 +1,16 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="de">rückwärts sperrende Thyristortriode, N-Gate
+(Anode gesteuert)
+</name>
+        <name lang="en"> Reverse blocking triode thyristor,
+ N-gate
+</name>
+        <name lang="it">Tiristore triodo bloccato nel senso inverso di conduzione, porta N (controllato sull’anodo)
+</name>
+        <name lang="fr">Thyristor triode bloqué en inverse, gâchette N
+(commandé côté anode)
+</name>
         <name lang="pl">Tyrystor triodowy blokujący wstecznie z bramką N</name>
     </names>
     <informations>EN 60617: 05-04-05</informations>

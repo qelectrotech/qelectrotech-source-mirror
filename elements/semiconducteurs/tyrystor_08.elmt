@@ -1,5 +1,16 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="de">Abschalt-Thyristortriode, N-Gate (Anode
+gesteuert)
+</name>
+        <name lang="en"> Turn-off triode thyristor, N-gate
+(anode-side controlled)
+</name>
+        <name lang="it">Tiristore triodo bloccabile, porta N (controllato sull’anodo)
+</name>
+        <name lang="fr">Thyristor triode blocable par la gâchette N
+(commandé côté anode)
+</name>
         <name lang="pl">Tyrystor triodowy odłączający z bramką N</name>
     </names>
     <informations>EN 60617: 05-04-08</informations>

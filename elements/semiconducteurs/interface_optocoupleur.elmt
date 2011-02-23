@@ -1,5 +1,10 @@
-<definition width="70" version="0.22" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="en">Optocoupler
+</name>
+        <name lang="it">Accoppiatore ottico
+Fotoaccoppiatore
+</name>
         <name lang="fr">Interface optocoupleur</name>
     </names>
     <informations>Author: The QElectroTech team

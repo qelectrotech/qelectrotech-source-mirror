@@ -2,6 +2,12 @@
     <names>
         <name lang="de">Kapazitätsdiode
 </name>
+        <name lang="en">Variable capacitance diode
+Varactor
+</name>
+        <name lang="it">Diodo a capacità variabile
+Varactor
+</name>
         <name lang="fr">Diode à capacité variable
 Varactor
 </name>
