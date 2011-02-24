@@ -11,7 +11,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Idée originale</source>
-        <translation>Oryginalny pomysł</translation>
+        <translation>Pomysłodawca</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="107"/>
@@ -135,12 +135,12 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation>poziomo:</translation>
+        <translation>pozioma:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>vertical :</source>
-        <translation>pionowo:</translation>
+        <translation>pionowa:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="60"/>
@@ -165,12 +165,12 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="126"/>
         <source>diamètre horizontal</source>
-        <translation>średnica poziomo</translation>
+        <translation>średnica pozioma</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="128"/>
         <source>diamètre vertical</source>
-        <translation>średnica pionowo</translation>
+        <translation>średnica pionowa</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="130"/>
@@ -1242,12 +1242,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="53"/>
         <source>horizontal :</source>
-        <translation>poziomy :</translation>
+        <translation>pozioma :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>vertical :</source>
-        <translation>pionowy :</translation>
+        <translation>pionowa :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
@@ -1262,12 +1262,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
         <source>diamètre horizontal</source>
-        <translation>średnica poziomo</translation>
+        <translation>średnica pozioma</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
         <source>diamètre vertical</source>
-        <translation>średnica pionowo</translation>
+        <translation>średnica pionowa</translation>
     </message>
 </context>
 <context>
