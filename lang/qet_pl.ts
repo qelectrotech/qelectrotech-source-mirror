@@ -150,32 +150,32 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="122"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="124"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="126"/>
         <source>diamètre horizontal</source>
-        <translation>średnica pozioma</translation>
+        <translation>średnicy poziomej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="128"/>
         <source>diamètre vertical</source>
-        <translation>średnica pionowa</translation>
+        <translation>średnicy pionowej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="130"/>
         <source>angle de départ</source>
-        <translation>początek kąta</translation>
+        <translation>początku kąta</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="132"/>
         <source>angle</source>
-        <translation>kąt</translation>
+        <translation>kąta</translation>
     </message>
 </context>
 <context>
@@ -236,17 +236,17 @@
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="106"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="109"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="112"/>
         <source>diamètre</source>
-        <translation>średnica</translation>
+        <translation>średnicy</translation>
     </message>
 </context>
 <context>
@@ -327,7 +327,7 @@
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="199"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
-        <translation>Wybierz typ wydruku</translation>
+        <translation>Jaki typ wydruku chcesz wybrać ?</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="204"/>
@@ -382,7 +382,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="401"/>
         <source>Schéma sans titre</source>
-        <translation>Schemat bez nazwy</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="65"/>
@@ -394,7 +394,7 @@
         <location filename="../sources/diagramview.cpp" line="170"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Orientacja zaznaczonych tekstów</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="403"/>
@@ -509,7 +509,7 @@
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Schéma sans titre</source>
-        <translation>Schemat bez nazwy</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
 </context>
 <context>
@@ -596,7 +596,7 @@
         <location filename="../sources/elementdialog.cpp" line="73"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
-        <translation>Wybierz kategorię</translation>
+        <translation>Wybierz kategorię.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
@@ -690,42 +690,42 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="304"/>
         <source>ligne</source>
-        <translation>linia</translation>
+        <translation>linii</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="318"/>
         <source>ellipse</source>
-        <translation>elipsa</translation>
+        <translation>elipsy</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="325"/>
         <source>arc</source>
-        <translation>łuk</translation>
+        <translation>łuku</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="332"/>
         <source>cercle</source>
-        <translation>okrąg</translation>
+        <translation>okręgu</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="339"/>
         <source>borne</source>
-        <translation>punkt pochwycenia</translation>
+        <translation>punktu pochwycenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="346"/>
         <source>texte</source>
-        <translation>tekst</translation>
+        <translation>tekstu</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="353"/>
         <source>champ de texte</source>
-        <translation>pole tekstowe</translation>
+        <translation>pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="371"/>
         <source>polygone</source>
-        <translation>wielokąt</translation>
+        <translation>wielokąta</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="868"/>
@@ -793,7 +793,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="311"/>
         <source>rectangle</source>
-        <translation>prostokąt</translation>
+        <translation>prostokąta</translation>
     </message>
 </context>
 <context>
@@ -862,12 +862,12 @@
     <message>
         <location filename="../sources/elementscategory.cpp" line="583"/>
         <source>Impossible de supprimer l&apos;élément</source>
-        <translation>Nie można usunąć elementu.</translation>
+        <translation>Nie można usunąć elementu</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="604"/>
         <source>Impossible de supprimer la catégorie</source>
-        <translation>Nie można usunąć kategorii.</translation>
+        <translation>Nie można usunąć kategorii</translation>
     </message>
 </context>
 <context>
@@ -1031,7 +1031,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="666"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation>Ten element można skopiować, przez przeciągnięcie do schematu.</translation>
+        <translation>Ten element można skopiować, przez przeciągnięcie do schematu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="667"/>
@@ -1056,17 +1056,17 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1069"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon tabliczki rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1082"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1095"/>
         <source>Schéma sans titre</source>
-        <translation>Schemat bez nazwy</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="690"/>
@@ -1135,17 +1135,17 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Importuj nowy szablon</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj szablon</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Usuń szablon</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="385"/>
@@ -1239,22 +1239,22 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="114"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
         <source>diamètre horizontal</source>
-        <translation>średnica pozioma</translation>
+        <translation>średnicy poziomej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
         <source>diamètre vertical</source>
-        <translation>średnica pionowa</translation>
+        <translation>średnicy pionowej</translation>
     </message>
 </context>
 <context>
@@ -1338,7 +1338,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/exportdialog.cpp" line="393"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
-        <translation>Musisz podać ścieżkę do katalogu, w którym są zapisywane pliki obrazów</translation>
+        <translation>Musisz podać ścieżkę do katalogu, w którym są zapisywane pliki obrazów.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="436"/>
@@ -1675,64 +1675,64 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="149"/>
         <source>abscisse point 1</source>
-        <translation>odcięta punkt 1</translation>
+        <translation>odciętej punktu 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="151"/>
         <source>ordonnée point 1</source>
-        <translation>rzędna punkt 1</translation>
+        <translation>rzędnej punktu 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="153"/>
         <source>abscisse point 2</source>
-        <translation>odcięta punkt 2</translation>
+        <translation>odciętej punktu 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="155"/>
         <source>ordonnée point 2</source>
-        <translation>rzędna punkt 2</translation>
+        <translation>rzędnej punktu 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 1</source>
-        <translation>Koniec 1</translation>
+        <translation>Zakończenie 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="79"/>
         <source>Fin 2</source>
-        <translation>Koniec 2</translation>
+        <translation>Zakończenie 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="157"/>
         <source>type fin 1</source>
-        <translation>koniec 1 typ</translation>
+        <translation>typu zakończenia 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="159"/>
         <source>longueur fin 1</source>
-        <translation>koniec 1 długość</translation>
+        <translation>długości zakończenia 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="161"/>
         <source>type fin 2</source>
-        <translation>koniec 2 typ</translation>
+        <translation>typu zakończenia 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
         <source>longueur fin 2</source>
-        <translation>koniec 2 długość</translation>
+        <translation>długości zakończenia 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="47"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Zwykły</translation>
+        <translation>Normalne</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Zwykła strzałka</translation>
+        <translation>Normalna strzałka</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="49"/>
@@ -1756,13 +1756,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="53"/>
         <source>Normale</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Zwykły</translation>
+        <translation>Normalne</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="54"/>
         <source>Flèche simple</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Zwykła strzałka</translation>
+        <translation>Normalna strzałka</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="55"/>
@@ -2039,7 +2039,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="415"/>
         <source>Titre du projet :</source>
-        <translation>Nazwa projektu:</translation>
+        <translation>Tytuł projektu:</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="660"/>
@@ -2293,41 +2293,41 @@ Dostępne opcje:
         <location filename="../sources/qetapp.cpp" line="526"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="527"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="528"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schemat</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="529"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elektryczny</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="530"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="853"/>
         <source>Erreur</source>
-        <translation type="unfinished">Błąd</translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="853"/>
         <source>Impossible d&apos;éditer le template demandé</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można edytować szblonu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="984"/>
@@ -2715,13 +2715,13 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Obraca zaznaczone elementy i teksty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés Ð un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Obraca zaznaczone teksty o wybrany kąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -2742,7 +2742,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="771"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
-        <translation>Wydaje się, że plik, który próbujesz otworzyć, nie jest do odczytu. Dlatego też nie można go otworzyć. Sprawdź uprawnienia do plików</translation>
+        <translation>Wydaje się, że plik, który próbujesz otworzyć, nie jest do odczytu. Dlatego też nie można go otworzyć. Sprawdź uprawnienia do plików.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
@@ -2818,7 +2818,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Orienter les textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientacja tekstów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -2838,7 +2838,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Space</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -2958,7 +2958,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>Edytuje informacje wyświetlane w ramce rysunkowej</translation>
+        <translation>Edytuje informacje wyświetlane w tabliczce rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
@@ -3503,12 +3503,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="383"/>
         <source>&amp;Édition</source>
-        <translation>Edycja</translation>
+        <translation>&amp;Edycja</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="384"/>
         <source>Afficha&amp;ge</source>
-        <translation>Widok</translation>
+        <translation>&amp;Widok</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="385"/>
@@ -3666,7 +3666,7 @@ Dostępne opcje:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1368"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>Nie masz uprawnień do modyfikacji tego elementu. Będzie on otwarty w trybie tylko do odczytu</translation>
+        <translation>Nie masz uprawnień do modyfikacji tego elementu. Będzie on otwarty w trybie tylko do odczytu.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="821"/>
@@ -4124,7 +4124,7 @@ Dostępne opcje:
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished"></translation>
+        <translation>orientacji %1 na %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
@@ -4374,7 +4374,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/exportdialog.cpp" line="633"/>
         <source>Schéma sans titre</source>
-        <translation>Schemat bez nazwy</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="635"/>
@@ -4403,13 +4403,13 @@ Dostępne opcje:
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wz.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wzór</translation>
     </message>
 </context>
 <context>
@@ -4445,22 +4445,22 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
         <source>largeur</source>
-        <translation>szerokość</translation>
+        <translation>szerokości</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="117"/>
         <source>hauteur</source>
-        <translation>wysokość</translation>
+        <translation>wysokości</translation>
     </message>
 </context>
 <context>
@@ -4517,13 +4517,13 @@ Dostępne opcje:
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kreskowana</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
-        <translation>Przerywana</translation>
+        <translation>Kropkowana</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
@@ -4564,27 +4564,27 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>style antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation>stylu atyaliasing</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>style couleur</source>
-        <translation type="unfinished"></translation>
+        <translation>stylu kolor</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>stylu linii</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style epaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>stylu grubość</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation>stylu wypełnienie</translation>
     </message>
 </context>
 <context>
@@ -4592,98 +4592,99 @@ Dostępne opcje:
     <message>
         <location filename="../sources/templateeditor.cpp" line="38"/>
         <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
+        <translation>Nowy szablon</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="71"/>
         <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Jeszcze nie zaimplementowany</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="72"/>
         <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Sorry, jeszcze nie zaimplementowany</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="88"/>
         <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon o tej nazwie już istnieje</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="89"/>
         <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon o tej nazwie już istnieje w projekcie - wybierz inną nazwę.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="102"/>
         <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
+        <translation>Kod XML jest niepoprawny</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="103"/>
         <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kod XML szablonu wydaje się być niepoprawny. Nie można zapisać szablonu.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="131"/>
         <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
+        <translation>Wybierz plik obrazu</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="133"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Grafika wektorowa (*.svg);;Grafika rastrowa (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Wszystkie pliki (*)</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Erreur</source>
-        <translation type="unfinished">Błąd</translation>
+        <translation>Błąd</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można otworzyć pliku</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas Ðtre valide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kod XML szablonu wydaje się być niepoprawny.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
         <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw logo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="212"/>
         <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Sprawdź szablon</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="213"/>
         <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Zapisz i zastosuj</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="214"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Zakończ</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="241"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech - Edytor szblonów tabliczki rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="253"/>
         <source>Non défini</source>
-        <translation type="unfinished"></translation>
+        <translation>Nieokreślony</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="257"/>
         <source>Projet parent : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt powiązany: %1</translation>
     </message>
 </context>
 <context>
@@ -4731,17 +4732,17 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>orientation</source>
-        <translation>orientacja</translation>
+        <translation>orientacji</translation>
     </message>
 </context>
 <context>
@@ -4749,7 +4750,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Kąt obrotu: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
@@ -4779,28 +4780,28 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="122"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="124"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="128"/>
         <source>taille</source>
-        <translation>rozmiar</translation>
+        <translation>rozmiaru</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="130"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>kąta obrotu</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="143"/>
         <location filename="../sources/editor/texteditor.cpp" line="126"/>
         <source>contenu</source>
-        <translation>zawartość</translation>
+        <translation>zawartości</translation>
     </message>
 </context>
 <context>
@@ -4808,12 +4809,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można obracać elementu powiązanego</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślny kąt obrotu: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
@@ -4843,33 +4844,33 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="127"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="131"/>
         <source>taille</source>
-        <translation>rozmiar</translation>
+        <translation>rozmiaru</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="133"/>
         <source>propriété</source>
-        <translation>właściwość</translation>
+        <translation>właściwości</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>kąta obrotu</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="146"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="129"/>
         <source>contenu</source>
-        <translation>zawartość</translation>
+        <translation>zawartości</translation>
     </message>
 </context>
 <context>
@@ -4877,91 +4878,91 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="166"/>
         <source>Modèle par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Domyślny szablon</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="197"/>
         <source>Modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Szablon:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="206"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished">Następujące zmienne są wykorzystywane w polu strony:
+        <translation>Następujące zmienne są wykorzystywane w polu strony:
   - %id: numer schematu w projekcie
   - %total: łączna liczba schematów w projekcie</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="215"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Brak daty</translation>
+        <translation>Brak daty</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="216"/>
         <source>Date courante</source>
-        <translation type="unfinished">Aktualna data</translation>
+        <translation>Aktualna data</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="217"/>
         <source>Date fixe : </source>
-        <translation type="unfinished">Ustalona data: </translation>
+        <translation>Ustalona data: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Tutaj możesz zdefiniować własne powiązanie nazwy i wartości szablonu. Przykład: powiązanie nazwy &quot;volta&quot; i wartości &quot;1745&quot;, w tabliczce rysunkowej volta spowoduje zastąpienie znaku % przez cyfrę 1745.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Nom</source>
-        <translation type="unfinished">Nazwa</translation>
+        <translation>Nazwa</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Wartość</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="252"/>
         <source>Principales</source>
-        <translation type="unfinished"></translation>
+        <translation>Główne</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
         <source>Personnalisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizacja</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
         <source>Titre : </source>
-        <translation type="unfinished">Nazwa: </translation>
+        <translation>Tytuł: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
         <source>Auteur : </source>
-        <translation type="unfinished">Autor: </translation>
+        <translation>Autor: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="276"/>
         <source>Date : </source>
-        <translation type="unfinished">Data: </translation>
+        <translation>Data: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Fichier : </source>
-        <translation type="unfinished">Plik: </translation>
+        <translation>Plik: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="280"/>
         <source>Folio : </source>
-        <translation type="unfinished">Strona: </translation>
+        <translation>Strona: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation type="unfinished">Właściwości tabliczki rysunkowej</translation>
+        <translation>Właściwości tabliczki rysunkowej</translation>
     </message>
 </context>
 <context>
@@ -4970,12 +4971,12 @@ Dostępne opcje:
         <location filename="../sources/titleblocktemplate.cpp" line="555"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation type="unfinished"></translation>
+        <translation> %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="557"/>
         <source> %1</source>
-        <translation type="unfinished"></translation>
+        <translation> %1</translation>
     </message>
 </context>
 </TS>
