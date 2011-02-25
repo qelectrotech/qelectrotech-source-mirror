@@ -125,15 +125,15 @@ void StyleEditor::updatePart() {
 }
 
 /// Met a jour l'antialiasing et cree un objet d'annulation
-void StyleEditor::updatePartAntialiasing()   { addChangePartCommand("style antialiasing", part, "antialias",   antialiasing -> isChecked()); }
+void StyleEditor::updatePartAntialiasing()   { addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked()); }
 /// Met a jour la couleur du trait et cree un objet d'annulation
-void StyleEditor::updatePartColor()          { addChangePartCommand("style couleur",      part, "color",       color -> checkedId());        }
+void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       color -> checkedId());        }
 /// Met a jour le style du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineStyle()      { addChangePartCommand("style ligne",        part, "line-style",  style -> checkedId());        }
+void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  style -> checkedId());        }
 /// Met a jour l'epaisseur du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineWeight()     { addChangePartCommand("style epaisseur",    part, "line-weight", weight -> checkedId());       }
+void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", weight -> checkedId());       }
 /// Met a jour la couleur de fond et cree un objet d'annulation
-void StyleEditor::updatePartFilling()        { addChangePartCommand("style remplissage",  part, "filling",     filling -> checkedId());      }
+void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling -> checkedId());      }
 
 /**
 	Met a jour le formulaire d'edition
