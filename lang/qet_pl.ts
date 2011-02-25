@@ -155,32 +155,32 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="122"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="124"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="126"/>
         <source>diamètre horizontal</source>
-        <translation>średnica pozioma</translation>
+        <translation>średnicy poziomej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="128"/>
         <source>diamètre vertical</source>
-        <translation>średnica pionowa</translation>
+        <translation>średnicy pionowej</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="130"/>
         <source>angle de départ</source>
-        <translation>początek kąta</translation>
+        <translation>początku kąta</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="132"/>
         <source>angle</source>
-        <translation>kąt</translation>
+        <translation>kąta</translation>
     </message>
 </context>
 <context>
@@ -268,17 +268,17 @@
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="106"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="109"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="112"/>
         <source>diamètre</source>
-        <translation>średnica</translation>
+        <translation>średnicy</translation>
     </message>
 </context>
 <context>
@@ -728,42 +728,42 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="304"/>
         <source>ligne</source>
-        <translation>linia</translation>
+        <translation>linii</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="318"/>
         <source>ellipse</source>
-        <translation>elipsa</translation>
+        <translation>elipsy</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="325"/>
         <source>arc</source>
-        <translation>łuk</translation>
+        <translation>łuku</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="332"/>
         <source>cercle</source>
-        <translation>okrąg</translation>
+        <translation>okręgu</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="339"/>
         <source>borne</source>
-        <translation>punkt pochwycenia</translation>
+        <translation>punktu pochwycenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="346"/>
         <source>texte</source>
-        <translation>tekst</translation>
+        <translation>tekstu</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="353"/>
         <source>champ de texte</source>
-        <translation>pole tekstowe</translation>
+        <translation>pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="371"/>
         <source>polygone</source>
-        <translation>wielokąt</translation>
+        <translation>wielokąta</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="868"/>
@@ -831,7 +831,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="311"/>
         <source>rectangle</source>
-        <translation>prostokąt</translation>
+        <translation>prostokąta</translation>
     </message>
 </context>
 <context>
@@ -1252,22 +1252,22 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="114"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
         <source>diamètre horizontal</source>
-        <translation>średnica pozioma</translation>
+        <translation>średnicy poziomej</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
         <source>diamètre vertical</source>
-        <translation>średnica pionowa</translation>
+        <translation>średnicy pionowej</translation>
     </message>
 </context>
 <context>
@@ -1745,64 +1745,64 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="149"/>
         <source>abscisse point 1</source>
-        <translation>odcięta punkt 1</translation>
+        <translation>odciętej punktu 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="151"/>
         <source>ordonnée point 1</source>
-        <translation>rzędna punkt 1</translation>
+        <translation>rzędnej punktu 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="153"/>
         <source>abscisse point 2</source>
-        <translation>odcięta punkt 2</translation>
+        <translation>odciętej punktu 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="155"/>
         <source>ordonnée point 2</source>
-        <translation>rzędna punkt 2</translation>
+        <translation>rzędnej punktu 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 1</source>
-        <translation>Koniec 1</translation>
+        <translation>Zakończenie 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="79"/>
         <source>Fin 2</source>
-        <translation>Koniec 2</translation>
+        <translation>Zakończenie 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="157"/>
         <source>type fin 1</source>
-        <translation>koniec 1 typ</translation>
+        <translation>typu zakończenia 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="159"/>
         <source>longueur fin 1</source>
-        <translation>koniec 1 długość</translation>
+        <translation>długości zakończenia 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="161"/>
         <source>type fin 2</source>
-        <translation>koniec 2 typ</translation>
+        <translation>typu zakończenia 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
         <source>longueur fin 2</source>
-        <translation>koniec 2 długość</translation>
+        <translation>długości zakończena 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="47"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Zwykły</translation>
+        <translation>Normalne</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Zwykła strzałka</translation>
+        <translation>Normalna strzałka</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="49"/>
@@ -1826,13 +1826,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="53"/>
         <source>Normale</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Zwykły</translation>
+        <translation>Normalne</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="54"/>
         <source>Flèche simple</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Zwykła strzałka</translation>
+        <translation>Normalna strzałka</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="55"/>
@@ -4452,22 +4452,22 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
         <source>largeur</source>
-        <translation>szerokość</translation>
+        <translation>szerokości</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="117"/>
         <source>hauteur</source>
-        <translation>wysokość</translation>
+        <translation>wysokości</translation>
     </message>
 </context>
 <context>
@@ -4608,17 +4608,17 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
         <source>orientation</source>
-        <translation>orientacja</translation>
+        <translation>orientacji</translation>
     </message>
 </context>
 <context>
@@ -4651,23 +4651,23 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="111"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="113"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="117"/>
         <source>taille</source>
-        <translation>rozmiar</translation>
+        <translation>rozmiaru</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="126"/>
         <location filename="../sources/editor/texteditor.cpp" line="115"/>
         <source>contenu</source>
-        <translation>zawartość</translation>
+        <translation>zawartości</translation>
     </message>
 </context>
 <context>
@@ -4707,28 +4707,28 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="116"/>
         <source>abscisse</source>
-        <translation>odcięta</translation>
+        <translation>odciętej</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="118"/>
         <source>ordonnée</source>
-        <translation>rzędna</translation>
+        <translation>rzędnej</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="122"/>
         <source>taille</source>
-        <translation>rozmiar</translation>
+        <translation>rozmiaru</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="124"/>
         <source>propriété</source>
-        <translation>właściwość</translation>
+        <translation>właściwości</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="145"/>
         <location filename="../sources/editor/textfieldeditor.cpp" line="120"/>
         <source>contenu</source>
-        <translation>zawartość</translation>
+        <translation>zawartości</translation>
     </message>
 </context>
 </TS>
