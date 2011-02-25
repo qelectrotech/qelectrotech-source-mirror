@@ -146,29 +146,6 @@
     </message>
 </context>
 <context>
-    <name>BorderInset</name>
-    <message>
-        <source> Auteur : %1</source>
-        <comment>inset content</comment>
-        <translation> Author : %1</translation>
-    </message>
-    <message>
-        <source> Date : %1</source>
-        <comment>inset content</comment>
-        <translation> Datum : %1</translation>
-    </message>
-    <message>
-        <source> Fichier : %1</source>
-        <comment>inset content</comment>
-        <translation> Datei : %1</translation>
-    </message>
-    <message>
-        <source> Folio : %1</source>
-        <comment>inset content</comment>
-        <translation> Blatt : %1</translation>
-    </message>
-</context>
-<context>
     <name>BorderPropertiesWidget</name>
     <message>
         <source>Dimensions du schéma</source>
@@ -430,9 +407,9 @@
         <translation>Leitereigenschaften bearbeiten</translation>
     </message>
     <message>
-        <source>Éditer les propriétés par défaut des conducteurs</source>
+        <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation>Standard-Leitereigenschaften bearbeiten</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -899,6 +876,14 @@ Die Änderungen sind endgültig.</translation>
         <source>Schéma sans titre</source>
         <translation>Schema unbenannt</translation>
     </message>
+    <message>
+        <source>Modèles de cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modèle &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ElementsPanelWidget</name>
@@ -994,6 +979,18 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Sie können die Verwaltung verwenden um Kategorien hinzuzufügen, löschen oder zu bearbeiten.</translation>
+    </message>
+    <message>
+        <source>Importer un nouveau modèle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Éditer ce modèle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supprimer ce modèle</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1266,53 +1263,6 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Ordonnée :</source>
         <translation>Ordinate :</translation>
-    </message>
-</context>
-<context>
-    <name>InsetPropertiesWidget</name>
-    <message>
-        <source>Informations du cartouche</source>
-        <translation>Informationen über die Kartusche</translation>
-    </message>
-    <message>
-        <source>Pas de date</source>
-        <translation>Kein Datum</translation>
-    </message>
-    <message>
-        <source>Date courante</source>
-        <translation>Aktuelles Datum</translation>
-    </message>
-    <message>
-        <source>Date fixe : </source>
-        <translation>Datum festgelegt : </translation>
-    </message>
-    <message>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-  - %id : numéro du schéma courant dans le projet
-  - %total : nombre total de schémas dans le projet</source>
-        <translation>Die folgenden Variablen sind in dem Feld Seite eingesetzt:
-  -% ID-Nummer aus dem aktuellen Schema in dem Projekt
-  -% Gesamt: Gesamtanzahl der Schema in dem Projekt</translation>
-    </message>
-    <message>
-        <source>Titre : </source>
-        <translation>Titel : </translation>
-    </message>
-    <message>
-        <source>Auteur : </source>
-        <translation>Author : </translation>
-    </message>
-    <message>
-        <source>Date : </source>
-        <translation>Datum : </translation>
-    </message>
-    <message>
-        <source>Fichier : </source>
-        <translation>Datei : </translation>
-    </message>
-    <message>
-        <source>Folio : </source>
-        <translation>Seite : </translation>
     </message>
 </context>
 <context>
@@ -1941,6 +1891,39 @@ Options disponibles :
 </source>
         <translation>  --lang-dir=DIR                Definieren Sie den Ordner mit den Sprachdateien</translation>
     </message>
+    <message>
+        <source>Q</source>
+        <comment>Single-letter example text - translate length, not meaning</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QET</source>
+        <comment>Small example text - translate length, not meaning</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schema</source>
+        <comment>Normal example text - translate length, not meaning</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Electrique</source>
+        <comment>Normal example text - translate length, not meaning</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QElectroTech</source>
+        <comment>Long example text - translate length, not meaning</comment>
+        <translation type="unfinished">QElectroTech</translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;éditer le template demandé</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
@@ -2055,10 +2038,6 @@ Options disponibles :
     <message>
         <source>Réinitialiser les conducteurs</source>
         <translation>Leiter reinitialisien</translation>
-    </message>
-    <message>
-        <source>Conducteurs par défaut</source>
-        <translation>Standard-Leiter</translation>
     </message>
     <message>
         <source>Propriétés du schéma</source>
@@ -2201,10 +2180,6 @@ Options disponibles :
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
-    </message>
-    <message>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
@@ -2316,11 +2291,6 @@ Options disponibles :
         <translation>Entfernt ausgewählte Elemente aus dem Schema</translation>
     </message>
     <message>
-        <source>Pivote les éléments sélectionnés</source>
-        <comment>status bar tip</comment>
-        <translation>Dreht die ausgewählten Elemente</translation>
-    </message>
-    <message>
         <source>Édite les propriétés des objets sélectionné</source>
         <comment>status bar tip</comment>
         <translation>Bearbeiten der Eigenschaften der ausgewählten Objekte</translation>
@@ -2329,11 +2299,6 @@ Options disponibles :
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Berechnet die Wege der Leiter, unabhängig von Veränderungen</translation>
-    </message>
-    <message>
-        <source>Spécifie les propriétés par défaut des conducteurs</source>
-        <comment>status bar tip</comment>
-        <translation>Festlegen der Standard-Eigenschaften der Leiter</translation>
     </message>
     <message>
         <source>Édite les informations affichées par le cartouche</source>
@@ -2571,6 +2536,24 @@ Options disponibles :
     <message>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Unmöglich das Element im Panel zu finden</translation>
+    </message>
+    <message>
+        <source>Orienter les textes</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Space</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pivote les éléments et textes sélectionnés</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pivote les textes sélectionnés Ð un angle précis</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3598,6 +3581,24 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <comment>tooltip</comment>
         <translation>Anschluss</translation>
     </message>
+    <message>
+        <source>orienter %1 à %2°</source>
+        <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>QTextOrientationWidget</name>
+    <message>
+        <source>Ex.</source>
+        <comment>Short example string</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exemple</source>
+        <comment>Longer example string</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>RecentFiles</name>
@@ -3717,6 +3718,110 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <source>Remplissage :</source>
         <translation>Füllung :</translation>
     </message>
+    <message>
+        <source>Tiret</source>
+        <comment>element part line style</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>style antialiasing</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>style couleur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>style ligne</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>style epaisseur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>style remplissage</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TemplateEditor</name>
+    <message>
+        <source>Nouveau-modele</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Not implemented yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sorry, Not implemented yet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Un modèle de ce nom existe déjà</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Code XML non valide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sélectionnez un fichier image</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier spécifié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Le code XML du modèle ne semble pas Ðtre valide.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Intégrer un logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vérifier le modèle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrer et appliquer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Quitter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QElectroTech - Éditeur de modèle de cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Non défini</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Projet parent : %1</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TerminalEditor</name>
@@ -3803,17 +3908,20 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <source>taille</source>
         <translation>Grösse</translation>
     </message>
+    <message>
+        <source>Angle de rotation : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>angle de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TextFieldEditor</name>
     <message>
         <source>contenu</source>
         <translation>Inhalt</translation>
-    </message>
-    <message>
-        <source>Maintenir horizontal malgré
- les rotations de l&apos;élément</source>
-        <translation>Horizontale halten trotz Drehung des Elements</translation>
     </message>
     <message>
         <source>Position : </source>
@@ -3850,6 +3958,105 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
     <message>
         <source>propriété</source>
         <translation>Kopiert die ausgewählten Elemente in die Zwischenablage</translation>
+    </message>
+    <message>
+        <source>Ne pas subir les rotations de l&apos;élément parent</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Angle de rotation par défaut : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>angle de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockPropertiesWidget</name>
+    <message>
+        <source>Modèle par défaut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modèle :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Les variables suivantes sont utilisables dans le champ Folio :
+  - %id : numéro du schéma courant dans le projet
+  - %total : nombre total de schémas dans le projet</source>
+        <translation type="unfinished">Die folgenden Variablen sind in dem Feld Seite eingesetzt:
+  -% ID-Nummer aus dem aktuellen Schema in dem Projekt
+  -% Gesamt: Gesamtanzahl der Schema in dem Projekt</translation>
+    </message>
+    <message>
+        <source>Pas de date</source>
+        <translation type="unfinished">Kein Datum</translation>
+    </message>
+    <message>
+        <source>Date courante</source>
+        <translation type="unfinished">Aktuelles Datum</translation>
+    </message>
+    <message>
+        <source>Date fixe : </source>
+        <translation type="unfinished">Datum festgelegt : </translation>
+    </message>
+    <message>
+        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom</source>
+        <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+        <source>Valeur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Principales</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Personnalisées</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Titre : </source>
+        <translation type="unfinished">Titel : </translation>
+    </message>
+    <message>
+        <source>Auteur : </source>
+        <translation type="unfinished">Author : </translation>
+    </message>
+    <message>
+        <source>Date : </source>
+        <translation type="unfinished">Datum : </translation>
+    </message>
+    <message>
+        <source>Fichier : </source>
+        <translation type="unfinished">Datei : </translation>
+    </message>
+    <message>
+        <source>Folio : </source>
+        <translation type="unfinished">Seite : </translation>
+    </message>
+    <message>
+        <source>Informations du cartouche</source>
+        <translation type="unfinished">Informationen über die Kartusche</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplate</name>
+    <message>
+        <source> %1 : %2</source>
+        <comment>titleblock content - please let the blank space at the beginning</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> %1</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
