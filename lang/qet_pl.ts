@@ -274,12 +274,12 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
         <source>phase</source>
-        <translation>faza</translation>
+        <translation>liniowy</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="82"/>
         <source>terre</source>
-        <translation>uziemienie</translation>
+        <translation>ochronny</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="84"/>
@@ -495,7 +495,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="773"/>
         <source>Éditer l&apos;élément</source>
-        <translation>Edycja właściwości elementu</translation>
+        <translation>Edycja elementu</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="835"/>
@@ -4809,7 +4809,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation>Nie można obracać elementu powiązanego</translation>
+        <translation>Nie obracaj z elementem powiązanym</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
@@ -4912,7 +4912,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation>Tutaj możesz zdefiniować własne powiązanie nazwy i wartości szablonu. Przykład: powiązanie nazwy &quot;volta&quot; i wartości &quot;1745&quot;, w tabliczce rysunkowej volta spowoduje zastąpienie znaku % przez cyfrę 1745.</translation>
+        <translation>Tutaj możesz zdefiniować własne skojarzenia nazwy/wartości pól danych. Przykład: skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot;, spowoduje zastąpienie zastąpienie znaku % przez cyfrę 1745 w polu volta.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -4927,7 +4927,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="252"/>
         <source>Principales</source>
-        <translation>Główne</translation>
+        <translation>Podstawowe</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
@@ -4962,7 +4962,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation>Właściwości tabliczki rysunkowej</translation>
+        <translation>Informacje w polach danych tabliczki rysunkowej</translation>
     </message>
 </context>
 <context>
