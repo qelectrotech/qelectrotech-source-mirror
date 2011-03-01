@@ -1,5 +1,6 @@
 <definition width="40" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Sicherung</name>
         <name lang="ru" >Предохранитель</name>
         <name lang="en" >Fuse</name>
         <name lang="fr" >Fusible</name>

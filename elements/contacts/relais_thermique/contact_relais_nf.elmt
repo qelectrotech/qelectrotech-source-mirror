@@ -7,6 +7,7 @@
         <name lang="pl">Zestyk rozwierny</name>
         <name lang="es">Contacto relé térmico (NC)</name>
         <name lang="cs">Tepelné spojovací relé (NC)</name>
+        <name lang="de" >Relais Kontakt (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

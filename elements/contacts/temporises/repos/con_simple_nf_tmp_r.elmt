@@ -7,6 +7,7 @@
         <name lang="pl">Zestyk rozwierny</name>
         <name lang="es">Contactor simple (NC / tiempo retardado de apago)</name>
         <name lang="cs">Jednoduché spojení (NC / časový spínač pro zpoždění vypnutí)</name>
+        <name lang="de" >Kontakt Einfach (NC / abschaltverzögert)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

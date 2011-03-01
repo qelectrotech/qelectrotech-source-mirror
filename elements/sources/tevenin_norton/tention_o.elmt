@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Spannungsquelle (alt)</name>
         <name lang="ru" >Источник напряжения (старый)</name>
         <name lang="en" >Voltage source (old)</name>
         <name lang="fr" >Source de tension (vieux)</name>

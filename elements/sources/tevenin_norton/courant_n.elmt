@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Stromquelle (neu)</name>
         <name lang="ru" >Источник тока (новый)</name>
         <name lang="en" >Current source (new)</name>
         <name lang="fr" >Source de courant (nouveau)</name>

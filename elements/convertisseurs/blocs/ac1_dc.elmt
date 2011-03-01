@@ -7,6 +7,7 @@
         <name lang="pl">Prostownik</name>
         <name lang="es">Alterna monofásica > Continua</name>
         <name lang="cs">Jednofázový střídavý </name>
+        <name lang="de" >Wehselstrom > Gleichstrom</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

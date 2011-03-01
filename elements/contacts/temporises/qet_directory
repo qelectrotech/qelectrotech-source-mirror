@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de" >Schalter Verzögerung</name>
         <name lang="ru" >с задержкой</name>
         <name lang="en" >Switch Delay</name>
         <name lang="fr" >Temporisés</name>

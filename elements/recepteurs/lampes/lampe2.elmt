@@ -8,6 +8,7 @@
         <name lang="pl">Lampa</name>
         <name lang="es">Lámpara</name>
         <name lang="cs">Světlo</name>
+        <name lang="de" >Leuchte</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
