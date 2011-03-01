@@ -45,6 +45,7 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &
 /// construit l'interface du widget
 void ConductorPropertiesWidget::buildInterface() {
 	
+	setFocusPolicy(Qt::StrongFocus);	
 	setMinimumSize(380, 350);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
@@ -290,4 +291,18 @@ void ConductorPropertiesWidget::setReadOnly(bool ro) {
 	neutral_checkbox -> setDisabled(ro);
 	color_button -> setDisabled(ro);
 	dashed_checkbox -> setDisabled(ro);
+}
+
+/**
+	Gere le focus de ce widget
+*/
+void ConductorPropertiesWidget::focusInEvent(QFocusEvent *event) {
+	if (properties_.type == ConductorProperties::Multi) {
+		text_field -> setFocus(Qt::ActiveWindowFocusReason);
+		text_field -> selectAll();
+	} else if (properties_.type == ConductorProperties::Single) {
+		phase_spinbox -> setFocus(Qt::ActiveWindowFocusReason);
+		phase_spinbox -> selectAll();
+	}
+	QWidget::focusInEvent(event);
 }
