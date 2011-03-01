@@ -92,7 +92,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do němčiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>

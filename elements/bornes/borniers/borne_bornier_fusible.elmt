@@ -2,6 +2,7 @@
     <names>
         <name lang="fr" >Borne de bornier FUSIBLE</name>
         <name lang="pl" >Zacisk bezpiecznikowy</name>
+        <name lang="cs" >Svorka tavného svorkoviště</name>
     </names>
     <description>
         <rect width="6" x="-3" y="-5" antialias="false" height="25" style="line-style:normal;line-weight:normal;filling:none;color:black" />
