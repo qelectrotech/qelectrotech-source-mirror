@@ -1,5 +1,6 @@
 <definition width="40" version="0.2" hotspot_x="20" hotspot_y="15" height="40" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Eingang Report</name>
         <name lang="en" >Input Report</name>
         <name lang="fr" >Report Entrée</name>
         <name lang="cs" >Hlášení vstupu</name>

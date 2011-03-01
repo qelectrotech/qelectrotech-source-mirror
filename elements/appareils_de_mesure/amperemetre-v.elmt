@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Amperemeter vertikal</name>
         <name lang="ru" >Амперметр (вертикальный)</name>
         <name lang="en" >Vertical ammeter</name>
         <name lang="fr" >Ampèremètre vertical</name>

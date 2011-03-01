@@ -1,5 +1,6 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Klemme Sicherung</name>
         <name lang="fr" >Borne de bornier FUSIBLE</name>
         <name lang="pl" >Zacisk bezpiecznikowy</name>
         <name lang="cs" >Svorka tavného svorkoviště</name>

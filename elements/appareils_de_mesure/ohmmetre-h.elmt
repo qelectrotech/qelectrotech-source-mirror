@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Ohmmeter horizontal</name>
         <name lang="ru" >Омметр (горизонтальный)</name>
         <name lang="en" >Horizontal ohmmeter</name>
         <name lang="fr" >Ohmmètre horizontal</name>

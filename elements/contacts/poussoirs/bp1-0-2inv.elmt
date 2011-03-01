@@ -6,6 +6,7 @@
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej</name>
         <name lang="es">Interruptor 3 posiciones incluso neutro</name>
         <name lang="cs">Třípolohový přepínač včetně neutrální (1-0-2)</name>
+        <name lang="de" >Schalter 3-Positionen (1-0-2)</name>
     </names>
     <informations></informations>
     <description>

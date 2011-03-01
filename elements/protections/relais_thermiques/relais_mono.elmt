@@ -1,5 +1,6 @@
 <definition width="50" version="0.2" hotspot_x="5" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" >
     <names>
+        <name lang="de" >Thermorelais</name>
         <name lang="en" >Thermal relay</name>
         <name lang="fr" >Relais thermique mono</name>
         <name lang="es" >Relé térmico</name>

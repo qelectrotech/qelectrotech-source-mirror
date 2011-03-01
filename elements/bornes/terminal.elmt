@@ -1,5 +1,6 @@
 <definition width="30" version="0.22" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy" >
     <names>
+        <name lang="de" >Endklemme</name>
         <name lang="ru" >Клеммник</name>
         <name lang="pt" >Terminal de fim</name>
         <name lang="en" >Terminal block</name>

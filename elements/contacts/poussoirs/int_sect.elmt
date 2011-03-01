@@ -1,5 +1,6 @@
 <definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="de" >Trennschalter</name>
         <name lang="ru">Выключатель-разъеденитель</name>
         <name lang="pt">Interruptor seccionador</name>
         <name lang="en">Switch disconnector</name>

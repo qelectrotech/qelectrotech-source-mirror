@@ -1,5 +1,6 @@
 <definition width="50" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
+        <name lang="de" >Bipolar Transistor IGBT</name>
         <name lang="en" >Bipolar transistor IGBT</name>
         <name lang="fr" >Transistor bipolaire à grille isolée IGBT</name>
         <name lang="pl" >Tranzystor biopolarny IGBT</name>

@@ -1,5 +1,6 @@
 <definition width="40" version="0.1" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy" >
     <names>
+        <name lang="de" >1-Pol Stromwandler</name>
         <name lang="en" >1-pole toroidal core</name>
         <name lang="fr" >Tore 1 pôle</name>
         <name lang="es" >Núcleo toroide 1 polo</name>

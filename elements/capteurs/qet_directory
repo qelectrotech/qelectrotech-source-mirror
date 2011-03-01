@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de" >Sensoren</name>
         <name lang="de" >Messumformer</name>
         <name lang="ru" >Датчики</name>
         <name lang="en" >Transducers</name>

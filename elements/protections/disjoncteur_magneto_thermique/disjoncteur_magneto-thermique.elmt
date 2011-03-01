@@ -1,9 +1,10 @@
 <definition width="130" version="0.22" hotspot_x="85" hotspot_y="55" height="110" type="element" orientation="dyyy" >
     <names>
         <name lang="pl" >Wyłącznik silnikowy</name>
-	    <name lang="en">Magneto-thermal circuit breaker GV</name>
+        <name lang="en">Magneto-thermal circuit breaker GV</name>
         <name lang="fr">Disjoncteur Magnéto-thermique GV</name>
         <name lang="cs">Magnetotepelný jistič GV</name>
+        <name lang="de" >Motorschutzschalter</name>
     </names>
     <informations></informations>
     <description>

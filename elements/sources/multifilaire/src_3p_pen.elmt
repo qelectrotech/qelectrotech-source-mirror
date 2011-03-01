@@ -1,5 +1,6 @@
 <definition width="40" version="0.2" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dnnn" >
     <names>
+        <name lang="de" >Drehstrom + PEN</name>
         <name lang="ru" >Трёхполюсный + PEN</name>
         <name lang="en" >Three-pole source + PEN</name>
         <name lang="fr" >Source tripolaire + PEN</name>

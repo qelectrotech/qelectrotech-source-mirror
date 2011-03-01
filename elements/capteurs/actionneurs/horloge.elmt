@@ -1,9 +1,10 @@
 <definition width="70" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
-	<name lang="en">Contact clock</name>
+        <name lang="de">Zeitblock</name>
+        <name lang="en">Contact clock</name>
         <name lang="fr">Contact horloge</name>
         <name lang="pl">Zegar sterujący</name>
-	<name lang="cs">Hodinový kontakt</name>
+        <name lang="cs">Hodinový kontakt</name>
     </names>
     <informations></informations>
     <description>

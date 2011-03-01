@@ -1,6 +1,7 @@
 <definition width="90" version="0.22" hotspot_x="20" hotspot_y="10" height="70" type="element" orientation="dyyy">
     <names>
-	<name lang="en">Level sensor</name>
+        <name lang="de">Niveausensor</name>
+        <name lang="en">Level sensor</name>
         <name lang="fr">Sonde de niveau</name>
         <name lang="pl">Czujnik poziomu</name>
         <name lang="cs">Hladinová sonda</name>

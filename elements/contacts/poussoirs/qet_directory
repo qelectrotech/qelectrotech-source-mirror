@@ -1,5 +1,6 @@
 <qet-directory>
     <names>
+        <name lang="de" >Druckknopf</name>
         <name lang="de" >Druckschalter</name>
         <name lang="ru" >кнопок</name>
         <name lang="en" >Push-buttons</name>
