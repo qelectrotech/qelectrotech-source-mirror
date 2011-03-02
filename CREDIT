@@ -11,6 +11,7 @@ Thanks to TuxFamily ( http://tuxfamily.org/ ) for hosting the project.
 Thanks to `Nishiki' for his elements and his support.
 Thanks to qtcentre.org for their SingleApplication class.
 Thanks to Alfredo Carreto for his Spanish translations and fixing Spanish translations ( http://electronicosmx.comxa.com )
+Thanks to 'Dr.Slump' for his Italian translations
 
 [fr]
 Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
@@ -25,6 +26,7 @@ Merci à TuxFamily ( http://tuxfamily.org/ ) pour l'hébergement du projet.
 Merci à `Nishiki' pour ses éléments et son soutien.
 Merci à qtcentre.org pour leur classe SingleApplication.
 Merci à Alfredo Carreto pour ses traductions et corrections en espagnol ( http://electronicosmx.comxa.com )
+Merci à 'Dr.Slump' pour ses traductions en italien
 
 [ru]
 Спасибо Qt Software за их библиотеку Qt ( http://www.qtsoftware.com/ ), лицензированную на условиях GNU/GPL.
@@ -39,6 +41,7 @@ Merci à Alfredo Carreto pour ses traductions et corrections en espagnol ( http:
 Спасибо `Nishiki' за элементы и поддержку.
 Спасибо qtcentre.org за их класс SingleApplication.
 Спасибо Alfredo Carreto за исправления и перевод на испанский ( http://electronicosmx.comxa.com )
+Спасибо 'Dr.Slump' за исправления и перевод
 
 [pt]
 Agradecimentos a Qt Software pela sua biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada de acordo com a GNU/GPL.
@@ -53,6 +56,7 @@ Agradecimentos a TuxFamily ( http://tuxfamily.org/ ) por albergarem este project
 Agradecimentos a "Nishiki" pela criação de elementos e o seu suporte.
 Agradecimentos a qtcentre.org pela classe SingleApplication.
 Agradecimentos a Alfredo Carreto pela tradução para Espanhol e pela correcção de traduções em Espanhol ( http://electronicosmx.comxa.com ).
+Agradecimentos a 'Dr.Slump'pela tradução para italiano
 
 [es]
 Agradecimientos a Qt Software por su biblioteca Qt ( http://www.qtsoftware.com/ ), licenciada bajo GNU/GPL.
@@ -67,6 +71,7 @@ Agradecimientos a TuxFamily ( http://tuxfamily.org/ ) por el alojamiento de este
 Agradecimientos a "Nishiki" por creación de elementos e de su suporte.
 Agradecimientos a qtcentre.org por classe SingleApplication.
 Agradecimientos a Alfredo Carreto por sus traducciones en español y correcciones de traducción en español ( http://electronicosmx.comxa.com)
+Agradecimientos a 'Dr.Slump' por sus traducciones en italiano
 
 [cs]
 Díky Qt Software za jejich knihovnu Qt ( http://www.qtsoftware.com/ ), pod licencí GNU/GPL.
@@ -81,6 +86,7 @@ Díky TuxFamily ( http://tuxfamily.org/ ) za poskytování hostingu pro projekt.
 Díky `Nishiki' za jeho prvky a jeho podporu.
 Díky qtcentre.org za jejich třídu SingleApplication.
 Poděkování Alfredovi Carretovi za jeho španělský překlad a opravy španělského překladu ( http://electronicosmx.comxa.com )
+Dìky 'Dr.Slump' za jeho italianský překlad 
 
 [pl]
 Podziękowania dla Qt Software, za biblioteki Qt (http://www.qtsoftware.com/) na licencji GNU / GPL.
@@ -95,3 +101,18 @@ Podziękowania dla TuxFamily (http://tuxfamily.org/), za organizację projektu.
 Podziękowanie dla "Nishiki", zajego elementy i poparcie.
 Podziękowania dla qtcentre.org, za klasę SingleApplication.
 Podziękowania dla Alfredo Carreto, za jego tłumaczenie na język hiszpański i korektę ( http://electronicosmx.comxa.com)
+
+[it]
+Grazie a Qt Software per le loro librerie Qt( http://www.qtsoftware.com/ ), licenzate sotto GNU/GPL.
+Grazie a Everaldo Coelho per il tema icone Crystal SVG ( http://www.everaldo.com/crystal/ ) licenzato sotto LGPL.
+Grazie a Nuno Pinheiro per il tema icone Oxygen ( http://www.oxygen-icons.org/ ) licenzatosotto LGPL ma anche perle icone dedicate a QElectroTech.
+Grazie al progetto KDE ( http://www.kde.org/ ).
+Grazie a Loic per le sue spiegazioni matematiche.
+Grazie a Remi Collet per i pacchetti per Fedora.
+Grazie a Laurent Trinques per i pacchetti per Debian.
+Grazie a `trem' per i pacchetti per Mandriva.
+Grazie a TuxFamily ( http://tuxfamily.org/ ) per l'ospitalità al progetto.
+Grazie a `Nishiki' per i suoi elementi ed il supporto.
+Grazie a qtcentre.org per la loro classe SingleApplication.
+Grazie a Alfredo Carreto per le traduzioni e le correzioni in spagnolo ( http://electronicosmx.comxa.com )
+Grazie al'Dr.Slump' per la traduzione in italiano.

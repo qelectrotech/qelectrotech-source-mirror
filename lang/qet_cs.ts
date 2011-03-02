@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="156"/>
+        <location filename="../sources/aboutqet.cpp" line="158"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Tento program je pod licencí GNU/GPL.</translation>
     </message>
@@ -95,22 +95,32 @@
         <translation>Překlad do němčiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="126"/>
+        <source>Traduction en roumain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="127"/>
+        <source>Traduction en italien</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Paquets Fedora</source>
         <translation>Balíčky pro Fedoru</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Paquets Mandriva</source>
         <translation>Balíčky pro Mandrivu</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Paquets Debian</source>
         <translation>Balíčky pro Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -252,57 +262,57 @@
 <context>
     <name>ConductorPropertiesWidget</name>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="53"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="54"/>
         <source>Type de conducteur</source>
         <translation>Typ vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="60"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
         <source>Multifilaire</source>
         <translation>Několik vedení</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="63"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="64"/>
         <source>Texte :</source>
         <translation>Text:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="68"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
         <source>Unifilaire</source>
         <translation>Jednoduché vedení</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="72"/>
         <source>phase</source>
         <translation>fáze</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="82"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="83"/>
         <source>terre</source>
         <translation>uzemnění</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="84"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>neutre</source>
         <translation>nulový</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="96"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="97"/>
         <source>Apparence du conducteur</source>
         <translation>Vzhled vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="104"/>
         <source>Couleur :</source>
         <translation>Barva: </translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="105"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="106"/>
         <source>Trait en pointillés</source>
         <translation>Čárkovaná čára</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="59"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="60"/>
         <source>Simple</source>
         <translation>Jednoduchý</translation>
     </message>
@@ -3990,7 +4000,7 @@ Dostupné volby:
         <translation>Během kopírování skupiny se vyskytla chyba %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1141"/>
+        <location filename="../sources/qetproject.cpp" line="1142"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Během kopírování prvku se vyskytla chyba %1</translation>
     </message>

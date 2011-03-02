@@ -93,6 +93,14 @@
         <source>Traduction en allemand</source>
         <translation>Deutsche Übersetzung</translation>
     </message>
+    <message>
+        <source>Traduction en roumain</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traduction en italien</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArcEditor</name>
