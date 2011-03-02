@@ -7,6 +7,7 @@
         <name lang="cs" >Prstencové jádro se čtyřmi póly</name>
         <name lang="pt" >Núcleo toroidal de 4 polos</name>
         <name lang="pl" >Przekładnik prądowy czteroprzewodowy</name>
+        <name lang="it">Toroide a 4 poli"</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

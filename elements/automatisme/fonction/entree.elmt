@@ -8,6 +8,7 @@
         <name lang="cs" >Vstup</name>
         <name lang="pt" >Entrada</name>
         <name lang="pl" >Wejście</name>
+        <name lang="it">Inghresso</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

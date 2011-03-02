@@ -8,6 +8,7 @@
         <name lang="cs" >Jednopólový zdroj + nulový</name>
         <name lang="pt" >Fonte unipolar + neutro</name>
         <name lang="pl" >Zasilanie jednofazowe</name>
+        <name lang="it">Sorgente unipolare + neutro</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

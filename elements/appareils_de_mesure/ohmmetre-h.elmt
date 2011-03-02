@@ -8,6 +8,7 @@
         <name lang="cs" >Vodorovný ohmmetr</name>
         <name lang="pt" >Ohmímetro horizontal</name>
         <name lang="pl" >Omomierz (poziomo)</name>
+        <name lang="it">Ohmmetro orizzontale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

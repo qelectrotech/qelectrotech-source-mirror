@@ -8,6 +8,7 @@
         <name lang="cs" >NEBO 3 vstupy</name>
         <name lang="pt" >OU 3 entradas</name>
         <name lang="pl" >OR (3 wejścia)</name>
+        <name lang="it">OR 3 ingressi</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@
         <name lang="es">Aparato de vigilencia de aislamiento</name>
         <name lang="cs">Kontrola izolace</name>
         <name lang="de" >ICC</name>
+        <name lang="it">Controllo isolamento</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

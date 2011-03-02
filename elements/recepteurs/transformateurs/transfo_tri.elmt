@@ -8,6 +8,7 @@
         <name lang="cs" >Třífázový převodník energie</name>
         <name lang="pt" >Transformador trifásico</name>
         <name lang="pl" >Transformator trójfazowy</name>
+        <name lang="it">Trasformatore trifase</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

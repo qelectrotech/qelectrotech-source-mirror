@@ -8,6 +8,7 @@
         <name lang="cs" >Země</name>
         <name lang="pt" >Terra</name>
         <name lang="pl" >Uziemienie</name>
+        <name lang="it">Terra</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

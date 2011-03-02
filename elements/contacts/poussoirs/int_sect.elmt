@@ -8,6 +8,7 @@
         <name lang="pl">Rozłącznik</name>
         <name lang="es">Interruptor seccionador</name>
         <name lang="cs">Odpojovač přepnutí</name>
+        <name lang="it">Interruttore sezionatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

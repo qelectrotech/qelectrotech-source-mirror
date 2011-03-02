@@ -8,6 +8,7 @@
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="es">Parada de emergencia (NC)</name>
         <name lang="cs">Nouzové zastavení</name>
+        <name lang="it">Stop di emergenza</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

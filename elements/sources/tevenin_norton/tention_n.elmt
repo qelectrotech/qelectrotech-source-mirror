@@ -8,6 +8,7 @@
         <name lang="cs" >Zdroj napětí (nový)</name>
         <name lang="pt" >Fonte de tensão (novo)</name>
         <name lang="pl" >Źródło napięcia (nowy)</name>
+        <name lang="it">Generatore di tensione (nuovo)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

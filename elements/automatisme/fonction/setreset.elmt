@@ -8,6 +8,7 @@
         <name lang="cs" >NASTAVIT/NASTAVIT ZNOVU</name>
         <name lang="pt" >SET/RESET</name>
         <name lang="pl" >Przerzutnik RS</name>
+        <name lang="it">SET/RESET</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

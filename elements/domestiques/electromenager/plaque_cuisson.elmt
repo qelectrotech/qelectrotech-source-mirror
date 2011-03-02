@@ -8,6 +8,7 @@
         <name lang="cs" >Deska na vaření</name>
         <name lang="pt" >Placa de fogão</name>
         <name lang="pl" >Kuchenka elektryczna</name>
+        <name lang="it">Fornelli</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

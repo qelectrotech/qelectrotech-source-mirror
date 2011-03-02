@@ -108,7 +108,11 @@
     </titleblocktemplates>
     <newdiagrams>
         <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
-        <inset title="Convoyeur Bouteilles &amp; Packs" folio="%id/%total" author="DP" filename="" date="now"/>
+        <inset title="Convoyeur Bouteilles &amp; Packs" folio="%id/%total" author="DP" filename="" date="now">
+            <properties>
+                <property name="coin">plop</property>
+            </properties>
+        </inset>
         <conductors type="simple"/>
     </newdiagrams>
     <diagram title="Variateur Convoyeur Blles 1" displayrows="true" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="1" rows="8" author="COIN" filename="" titleblocktemplate="Test" date="20091227" rowsize="80">

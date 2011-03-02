@@ -8,6 +8,7 @@
         <name lang="cs" >Odporník</name>
         <name lang="pt" >Resistência</name>
         <name lang="pl" >Rezystor</name>
+        <name lang="it">Resistenza</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

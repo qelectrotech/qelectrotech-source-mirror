@@ -8,6 +8,7 @@
         <name lang="cs" >Odpojovač</name>
         <name lang="pt" >Seccionador</name>
         <name lang="pl" >Odłącznik</name>
+        <name lang="it">Sezionatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

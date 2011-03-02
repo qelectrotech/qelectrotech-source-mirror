@@ -8,6 +8,7 @@
         <name lang="cs" >Člověk</name>
         <name lang="pt" >Ser humano</name>
         <name lang="pl" >Człowiek</name>
+        <name lang="it">Uomo</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

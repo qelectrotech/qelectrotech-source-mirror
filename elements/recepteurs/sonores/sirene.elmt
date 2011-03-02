@@ -8,6 +8,7 @@
         <name lang="cs" >Siréna</name>
         <name lang="pt" >Sirene</name>
         <name lang="pl" >Syrena</name>
+        <name lang="it">Sirena</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

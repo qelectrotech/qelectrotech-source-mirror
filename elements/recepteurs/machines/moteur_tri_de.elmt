@@ -8,6 +8,7 @@
         <name lang="cs" >Šestifázový motor</name>
         <name lang="pt" >Motor de seis fases (duplo enrolamento)</name>
         <name lang="pl" >Silnik trójfazowy (6 przewodów)</name>
+        <name lang="it">Motore trifase doppio avvolgimento</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

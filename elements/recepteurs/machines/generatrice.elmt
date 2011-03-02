@@ -8,6 +8,7 @@
         <name lang="cs" >Generátor</name>
         <name lang="pt" >Gerador</name>
         <name lang="pl" >Generator</name>
+        <name lang="it">Generatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

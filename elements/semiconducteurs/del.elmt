@@ -8,6 +8,7 @@
         <name lang="cs" >Svítící dioda (Světelná emisní dioda - LED)</name>
         <name lang="pt" >LED</name>
         <name lang="pl" >Dioda elektroluminescencyjna (LED)</name>
+        <name lang="it">LED</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

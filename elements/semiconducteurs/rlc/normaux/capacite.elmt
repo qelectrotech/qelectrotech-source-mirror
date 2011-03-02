@@ -8,6 +8,7 @@
         <name lang="cs" >Kondenzátor</name>
         <name lang="pt" >Condensador</name>
         <name lang="pl" >Kondensator</name>
+        <name lang="it">Condensatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -8,6 +8,7 @@
         <name lang="cs" >Vodorovný wattmetr</name>
         <name lang="pt" >Wattímetro horizontal</name>
         <name lang="pl" >Watomierz (poziomo)</name>
+        <name lang="it">Wattmetro orizzontale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
