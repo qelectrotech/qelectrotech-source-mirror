@@ -38,8 +38,8 @@
         <translation>QElectroTech ist eine Anwendung zur Umsetzung von Schaltplänen.</translation>
     </message>
     <message>
-        <source>© 2006-2010 Les développeurs de QElectroTech</source>
-        <translation>© 2006-2010 Die Entwickler von QElectroTech</translation>
+        <source>© 2006-2011 Les développeurs de QElectroTech</source>
+        <translation>© 2006-2011 Die Entwickler von QElectroTech</translation>
     </message>
     <message>
         <source>Idée originale</source>
