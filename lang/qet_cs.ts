@@ -433,7 +433,8 @@
         <location filename="../sources/diagramview.cpp" line="759"/>
         <source>Nom : %1
 </source>
-        <translation>Název: %1</translation>
+        <translation>Název: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="760"/>
@@ -446,19 +447,22 @@
         <location filename="../sources/diagramview.cpp" line="761"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Velikost: %1×%2</translation>
+        <translation>Velikost: %1×%2
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="762"/>
         <source>Bornes : %1
 </source>
-        <translation>Zakončení: %1</translation>
+        <translation>Zakončení: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
         <source>Connexions internes : %1
 </source>
-        <translation>Vnitřní spojení: %1</translation>
+        <translation>Vnitřní spojení: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
@@ -474,13 +478,15 @@
         <location filename="../sources/diagramview.cpp" line="764"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Textová pole: %1</translation>
+        <translation>Textová pole: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="767"/>
         <source>Emplacement : %1
 </source>
-        <translation>Umístění: %1</translation>
+        <translation>Umístění: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="771"/>

@@ -459,31 +459,36 @@
         <location filename="../sources/diagramview.cpp" line="624"/>
         <source>Nom : %1
 </source>
-        <translation>Nume: %1</translation>
+        <translation>Nume: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="625"/>
         <source>Position : %1
 </source>
-        <translation>Pozitie: %1</translation>
+        <translation>Pozitie: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="626"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Dimensiuni: %1x%2</translation>
+        <translation>Dimensiuni: %1x%2
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="627"/>
         <source>Bornes : %1
 </source>
-        <translation>Borne:%1</translation>
+        <translation>Borne:%1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="628"/>
         <source>Connexions internes : %1
 </source>
-        <translation>Conexiuni interne: %1</translation>
+        <translation>Conexiuni interne: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="628"/>
@@ -499,13 +504,15 @@
         <location filename="../sources/diagramview.cpp" line="629"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Câmpuri de text: %1</translation>
+        <translation>Câmpuri de text: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="632"/>
         <source>Emplacement : %1
 </source>
-        <translation>Amplasare: %1</translation>
+        <translation>Amplasare: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="636"/>

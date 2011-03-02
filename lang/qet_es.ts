@@ -434,7 +434,8 @@ Iconos</translation>
         <location filename="../sources/diagramview.cpp" line="759"/>
         <source>Nom : %1
 </source>
-        <translation>Nombre: %1</translation>
+        <translation>Nombre: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="760"/>
@@ -447,19 +448,22 @@ Iconos</translation>
         <location filename="../sources/diagramview.cpp" line="761"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Tamaños: %1×%2</translation>
+        <translation>Tamaños: %1×%2
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="762"/>
         <source>Bornes : %1
 </source>
-        <translation>Conectores: %1</translation>
+        <translation>Conectores: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
         <source>Connexions internes : %1
 </source>
-        <translation>Conecciones internas: %1</translation>
+        <translation>Conecciones internas: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
@@ -475,13 +479,15 @@ Iconos</translation>
         <location filename="../sources/diagramview.cpp" line="764"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Campos de texto: %1</translation>
+        <translation>Campos de texto: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="767"/>
         <source>Emplacement : %1
 </source>
-        <translation>Emplazamiento: %1</translation>
+        <translation>Emplazamiento: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="771"/>
