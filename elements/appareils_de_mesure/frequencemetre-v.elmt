@@ -4,6 +4,8 @@
  v</name>
         <name lang="fr">Fréquencemètre vertical</name>
     </names>
+        <name lang="pl">Częstotliwościomierz (pionowo)</name>
+    </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

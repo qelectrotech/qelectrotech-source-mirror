@@ -1,6 +1,7 @@
 <definition width="30" version="0.22" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Barre d'interconnection TN</name>
+        <name lang="pl">Oddzielacz</name>
     </names>
     <informations></informations>
     <description>

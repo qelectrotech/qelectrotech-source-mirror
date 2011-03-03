@@ -1,6 +1,7 @@
 <definition width="250" version="0.2" hotspot_x="125" hotspot_y="50" height="150" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Zelio Logic SR2 B121BD</name>
+        <name lang="pl">Zelio Logic SR2 B121BD</name>
     </names>
     <description>
         <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100" x1="-125" y2="-50" x2="-125"/>

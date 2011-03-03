@@ -1,6 +1,7 @@
 <definition width="70" version="0.22" hotspot_x="40" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="en">Key switch 3 position</name>
+        <name lang="pl">Zestyk przełączjący napędzany kluczykiem</name>
     </names>
     <informations></informations>
     <description>

@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Time-switch 2 output</name>
         <name lang="fr">Horloge 2 sorties</name>
+        <name lang="pl">Przekaźnik czasowy wielozestykowy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,6 +1,7 @@
 <definition width="60" version="0.22" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="fr">Commutateur a 2 positions à clé</name>
+        <name lang="pl">Łącznik obrotowy uruchamiany kluczykiem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

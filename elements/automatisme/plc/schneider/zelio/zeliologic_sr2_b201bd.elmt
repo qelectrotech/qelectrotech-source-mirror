@@ -1,6 +1,7 @@
 <definition width="500" version="0.2" hotspot_x="125" hotspot_y="50" height="150" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Zelio Logic SR2 B201BD</name>
+        <name lang="pl">Zelio Logic SR2 B201BD</name>
     </names>
     <description>
         <text x="323" y="27" size="6" text="RS232"/>

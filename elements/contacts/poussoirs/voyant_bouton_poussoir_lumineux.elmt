@@ -1,8 +1,9 @@
 <definition width="60" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="fr">Voyant à bouton poussoir lumineux</name>
+        <name lang="pl">Łącznik przyciskowy podświetlony</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <text x="25.5" y="1.33333" size="9" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="20"/>

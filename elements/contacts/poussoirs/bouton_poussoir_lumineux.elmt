@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Illuminated Push-button</name>
         <name lang="fr">Bouton poussoir lumineux</name>
+        <name lang="pl">Łącznik przyciskowy podświetlony</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
