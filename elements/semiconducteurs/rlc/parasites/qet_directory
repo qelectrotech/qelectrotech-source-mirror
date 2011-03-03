@@ -8,5 +8,6 @@
         <name lang="cs" >Poruchy</name>
         <name lang="pt" >Parasitas</name>
         <name lang="pl" >Elementy pasożytnicze</name>
+        <name lang="it">Parassite</name>
     </names>
 </qet-directory>

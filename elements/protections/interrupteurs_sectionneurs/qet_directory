@@ -8,5 +8,6 @@
         <name lang="cs" >Odpojovače</name>
         <name lang="pt" >Interruptores seccionadores</name>
         <name lang="pl" >Rozłączniki</name>
+        <name lang="it">Interruttori sezionatori</name>
     </names>
 </qet-directory>

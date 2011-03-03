@@ -8,5 +8,6 @@
         <name lang="pt" >Relés térmicos</name>
         <name lang="cs" >Tepelné relé</name>
         <name lang="pl" >Zestyki przekaźników temicznych</name>
+        <name lang="it">Relè termico</name>
     </names>
 </qet-directory>

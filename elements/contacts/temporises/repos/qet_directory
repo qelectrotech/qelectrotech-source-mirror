@@ -8,5 +8,6 @@
         <name lang="pt" >Interruptores de tempo desligado retardado</name>
         <name lang="cs" >Opožděné vypnutí</name>
         <name lang="pl" >Zestyki zwierające z opóźnieniem przy powrocie</name>
+        <name lang="it">Interruttore temporizzato in chiusura</name>
     </names>
 </qet-directory>

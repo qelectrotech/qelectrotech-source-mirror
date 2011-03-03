@@ -8,5 +8,6 @@
         <name lang="pt" >Temporizados</name>
         <name lang="cs" >Opožděné sepnutí</name>
         <name lang="pl" >Zestyki zwierające z opóźnieniem</name>
+        <name lang="it">Timer</name>
     </names>
 </qet-directory>

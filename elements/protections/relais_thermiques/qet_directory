@@ -9,5 +9,6 @@
         <name lang="cs" >Tepelná relé</name>
         <name lang="pt" >Relés térmicos</name>
         <name lang="pl" >Przekaźniki termiczne</name>
+        <name lang="it">Relè termici</name>
     </names>
 </qet-directory>

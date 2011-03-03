@@ -9,5 +9,6 @@
         <name lang="cs" >Zdroje</name>
         <name lang="pt" >Fontes</name>
         <name lang="pl" >Źródła zasilania</name>
+        <name lang="it">Sorgenti</name>
     </names>
 </qet-directory>

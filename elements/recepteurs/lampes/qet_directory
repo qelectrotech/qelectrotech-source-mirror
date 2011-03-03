@@ -8,5 +8,6 @@
         <name lang="cs" >Světla</name>
         <name lang="pt" >Lâmpadas</name>
         <name lang="pl" >Oświetlenie</name>
+        <name lang="it">Luci</name>
     </names>
 </qet-directory>

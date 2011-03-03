@@ -9,5 +9,6 @@
         <name lang="pt" >Sensores</name>
         <name lang="cs" >Snímače</name>
         <name lang="pl" >Przetworniki</name>
+        <name lang="it">Sensori</name>
     </names>
 </qet-directory>
