@@ -1,6 +1,7 @@
-<definition width="60" version="0.22" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
     <names>
         <name lang="fr">Embase DIN 5 broches 360 degrés avec borne centrale</name>
+        <name lang="pl">Złącze DIN, pięciostykowe</name>
     </names>
     <informations></informations>
     <description>

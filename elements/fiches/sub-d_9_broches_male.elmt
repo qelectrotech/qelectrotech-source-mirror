@@ -1,6 +1,7 @@
-<definition width="60" version="0.22" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="fr">SUB-D 9 broches (male)</name>
+        <name lang="pl">Wtyk D-Sub, dziewięciostykowy</name>
     </names>
     <informations></informations>
     <description>

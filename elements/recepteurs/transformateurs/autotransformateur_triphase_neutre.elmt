@@ -1,7 +1,8 @@
-<definition width="90" version="0.22" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="en">Three-phase autotransducer + neutral</name>
         <name lang="fr">Autotransformateur triphasé + neutre</name>
+        <name lang="pl">Autotransformatort rójfazowy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -12,9 +13,9 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <text x="-33" y="34.3333" size="4" text="N"/>
         <circle x="-15" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <text x="-16" y="-31.6667" size="4" text="A1"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="16" x1="11" y2="30" x2="17" y3="35" x3="17"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="16" x1="11" y2="30" x2="17" y3="35" x3="17"/>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="16" x1="-11" y2="30" x2="-17" y3="35" x3="-17"/>
-        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-11" y2="-30" x2="-17" y3="-35" x3="-17"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="-11" y2="-30" x2="-17" y3="-35" x3="-17"/>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-20" x1="11" y2="-30" x2="17" y3="-35" x3="17"/>
         <text x="1" y="34.3333" size="4" text="B2"/>
         <text x="-16" y="34.3333" size="4" text="A2"/>

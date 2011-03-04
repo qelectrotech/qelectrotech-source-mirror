@@ -1,6 +1,7 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="fr">Voyant avec transfo</name>
+        <name lang="pl">Wskaźnik optyczny transformatorowy</name>
     </names>
     <informations></informations>
     <description>

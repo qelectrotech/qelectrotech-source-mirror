@@ -1,6 +1,7 @@
-<definition width="60" version="0.22" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="fr">SUB-D 9 broches (femelle)</name>
+        <name lang="pl">Gniazdo D-Sub, dziewięciostykowe</name>
     </names>
     <informations></informations>
     <description>

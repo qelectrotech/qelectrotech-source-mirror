@@ -1,6 +1,7 @@
-<definition width="70" version="0.22" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Appareil de chauffage</name>
+        <name lang="pl">Grzejnik elektryczny</name>
     </names>
     <informations></informations>
     <description>

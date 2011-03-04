@@ -1,6 +1,7 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnny">
     <names>
         <name lang="fr">Pile 2 éléments</name>
+        <name lang="pl">Bateria ogniw elektrochemicznych</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

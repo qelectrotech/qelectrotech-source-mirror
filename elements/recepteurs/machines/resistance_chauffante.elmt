@@ -1,6 +1,7 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="20" height="40" type="element" orientation="ynnd">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" orientation="ynnd">
     <names>
         <name lang="fr">Résistance chauffante</name>
+        <name lang="pl">Grzejnik rezystancyjny</name>
     </names>
     <informations></informations>
     <description>

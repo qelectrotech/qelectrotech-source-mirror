@@ -6,6 +6,7 @@ Rückfallverzögerung
         <name lang="ru">Обмотка</name>
         <name lang="en">Coil</name>
         <name lang="fr">Bobine tempo repos</name>
+        <name lang="pl">Cewka przekaźnika działająca z opóźnieniem przy odwzbudzeniu</name>
         <name lang="es">Bobina</name>
     </names>
     <informations></informations>
