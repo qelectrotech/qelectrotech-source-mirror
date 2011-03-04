@@ -1,13 +1,13 @@
 <definition width="40" version="0.2" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn" >
     <names>
-        <name lang="de" >Wattmeter vertikal</name>
-        <name lang="ru" >Ватметр (вертикальный)</name>
-        <name lang="en" >Vertical wattmeter</name>
-        <name lang="fr" >Wattmètre vertical</name>
-        <name lang="es" >Vatímetro vertical</name>
-        <name lang="cs" >Svislý wattmetr</name>
-        <name lang="pt" >Wattímetro vertical</name>
-        <name lang="pl" >Watomierz (pionowo)</name>
+        <name lang="de">Wattmeter vertikal</name>
+        <name lang="ru">Ватметр (вертикальный)</name>
+        <name lang="en">Vertical wattmeter</name>
+        <name lang="fr">Wattmètre vertical</name>
+        <name lang="es">Vatímetro vertical</name>
+        <name lang="cs">Svislý wattmetr</name>
+        <name lang="pt">Wattímetro vertical</name>
+        <name lang="pl">Watomierz (pionowo)</name>
         <name lang="it">Wattmetro verticale</name>
     </names>
     <informations>Author: The QElectroTech team

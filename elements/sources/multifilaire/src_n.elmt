@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Neutralleiter</name>
-        <name lang="ru" >Нейтраль</name>
-        <name lang="en" >Neutral source</name>
-        <name lang="fr" >Source neutre</name>
-        <name lang="es" >Fuente neutro</name>
-        <name lang="cs" >Nulový zdroj</name>
-        <name lang="pt" >Fonte de neutro</name>
-        <name lang="pl" >Przewód neutralny</name>
+        <name lang="de">Neutralleiter</name>
+        <name lang="ru">Нейтраль</name>
+        <name lang="en">Neutral source</name>
+        <name lang="fr">Source neutre</name>
+        <name lang="es">Fuente neutro</name>
+        <name lang="cs">Nulový zdroj</name>
+        <name lang="pt">Fonte de neutro</name>
+        <name lang="pl">Przewód neutralny</name>
         <name lang="it">Sorgente neutro</name>
     </names>
     <informations>Author: The QElectroTech team

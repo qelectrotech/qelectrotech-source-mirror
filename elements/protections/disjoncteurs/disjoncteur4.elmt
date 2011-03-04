@@ -1,11 +1,11 @@
 <definition width="80" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
-        <name lang="de" >Lastschalter</name>
+        <name lang="de">Lastschalter</name>
         <name lang="en">Circuit-breaker</name>
         <name lang="fr">Disjoncteur triphasé</name>
         <name lang="es">Interruptor magnetotérmico</name>
         <name lang="pl">Wyłącznik</name>
-        <name lang="cs" >Třífázový jistič</name>
+        <name lang="cs">Třífázový jistič</name>
         <name lang="it">Disgiuntore</name>
     </names>
     <informations></informations>

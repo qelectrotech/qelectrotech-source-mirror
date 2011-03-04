@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Wechselstrom L + N</name>
-        <name lang="ru" >Однополюсный + нейтраль</name>
-        <name lang="en" >Single-pole source + neutral</name>
-        <name lang="fr" >Source unipolaire + neutre</name>
-        <name lang="es" >Fuente unipolo + neutro</name>
-        <name lang="cs" >Jednopólový zdroj + nulový</name>
-        <name lang="pt" >Fonte unipolar + neutro</name>
-        <name lang="pl" >Zasilanie jednofazowe</name>
+        <name lang="de">Wechselstrom L + N</name>
+        <name lang="ru">Однополюсный + нейтраль</name>
+        <name lang="en">Single-pole source + neutral</name>
+        <name lang="fr">Source unipolaire + neutre</name>
+        <name lang="es">Fuente unipolo + neutro</name>
+        <name lang="cs">Jednopólový zdroj + nulový</name>
+        <name lang="pt">Fonte unipolar + neutro</name>
+        <name lang="pl">Zasilanie jednofazowe</name>
         <name lang="it">Sorgente unipolare + neutro</name>
     </names>
     <informations>Author: The QElectroTech team

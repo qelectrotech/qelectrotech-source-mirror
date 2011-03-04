@@ -1,10 +1,10 @@
 <definition width="120" version="0.2" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="en" >Bloc 3 PC 2P+T 230v 16A</name>
-        <name lang="de" >Block 3 PC 2P+T 230V 16A</name>
-        <name lang="fr" >Bloc 3 PC 2P+T 230v 16A</name>
-        <name lang="pl" >Potrójne gniazdo wtyczkowe (modułowe)</name>
-        <name lang="cs" >Blok 3 PC 2P+T 230v 16A</name>
+        <name lang="en">Bloc 3 PC 2P+T 230v 16A</name>
+        <name lang="de">Block 3 PC 2P+T 230V 16A</name>
+        <name lang="fr">Bloc 3 PC 2P+T 230v 16A</name>
+        <name lang="pl">Potrójne gniazdo wtyczkowe (modułowe)</name>
+        <name lang="cs">Blok 3 PC 2P+T 230v 16A</name>
     </names>
     <description>
         <circle x="69.25" y="3.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1.5" />

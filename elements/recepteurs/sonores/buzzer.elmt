@@ -1,13 +1,13 @@
 <definition width="60" version="0.2" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >Summer</name>
-        <name lang="ru" >Зуммер</name>
-        <name lang="en" >Buzzer</name>
-        <name lang="fr" >Buzzer</name>
-        <name lang="es" >Zumbador</name>
-        <name lang="cs" >Bzučák</name>
-        <name lang="pt" >Bezouro</name>
-        <name lang="pl" >Brzęczyk</name>
+        <name lang="de">Summer</name>
+        <name lang="ru">Зуммер</name>
+        <name lang="en">Buzzer</name>
+        <name lang="fr">Buzzer</name>
+        <name lang="es">Zumbador</name>
+        <name lang="cs">Bzučák</name>
+        <name lang="pt">Bezouro</name>
+        <name lang="pl">Brzęczyk</name>
         <name lang="it">Cicalino</name>
     </names>
     <informations>Author: The QElectroTech team

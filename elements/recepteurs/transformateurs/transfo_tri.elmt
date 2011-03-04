@@ -1,13 +1,13 @@
 <definition width="70" version="0.2" hotspot_x="25" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny" >
     <names>
-        <name lang="de" >Trafo Drehstrom</name>
-        <name lang="ru" >Трёхфазный трансформатор</name>
-        <name lang="en" >Three-phase transducer</name>
-        <name lang="fr" >Transformateur triphasé</name>
-        <name lang="es" >Transformador trifásico</name>
-        <name lang="cs" >Třífázový převodník energie</name>
-        <name lang="pt" >Transformador trifásico</name>
-        <name lang="pl" >Transformator trójfazowy</name>
+        <name lang="de">Trafo Drehstrom</name>
+        <name lang="ru">Трёхфазный трансформатор</name>
+        <name lang="en">Three-phase transducer</name>
+        <name lang="fr">Transformateur triphasé</name>
+        <name lang="es">Transformador trifásico</name>
+        <name lang="cs">Třífázový převodník energie</name>
+        <name lang="pt">Transformador trifásico</name>
+        <name lang="pl">Transformator trójfazowy</name>
         <name lang="it">Trasformatore trifase</name>
     </names>
     <informations>Author: The QElectroTech team

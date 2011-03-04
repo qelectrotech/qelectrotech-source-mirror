@@ -1,13 +1,13 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Masse</name>
-        <name lang="ru" >Шасси</name>
-        <name lang="en" >Chassis</name>
-        <name lang="fr" >Masse</name>
-        <name lang="es" >Masa</name>
-        <name lang="cs" >Kostra</name>
-        <name lang="pt" >Massa</name>
-        <name lang="pl" >Masa</name>
+        <name lang="de">Masse</name>
+        <name lang="ru">Шасси</name>
+        <name lang="en">Chassis</name>
+        <name lang="fr">Masse</name>
+        <name lang="es">Masa</name>
+        <name lang="cs">Kostra</name>
+        <name lang="pt">Massa</name>
+        <name lang="pl">Masa</name>
         <name lang="it">Massa</name>
     </names>
     <informations>Author: The QElectroTech team

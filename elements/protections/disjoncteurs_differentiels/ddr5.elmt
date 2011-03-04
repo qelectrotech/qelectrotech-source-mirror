@@ -1,13 +1,13 @@
 <definition width="80" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Differenz Lastschalter</name>
-        <name lang="ru" >Дифавтомат</name>
-        <name lang="en" >Differential circuit-breaker</name>
-        <name lang="fr" >Disjoncteur différentiel</name>
-        <name lang="es" >Dispositivo diferenciale residual</name>
-        <name lang="cs" >Rozdílový jistič</name>
-        <name lang="pt" >Disjunctor diferencial</name>
-        <name lang="pl" >Wyłącznik różnicowoprądowy</name>
+        <name lang="de">Differenz Lastschalter</name>
+        <name lang="ru">Дифавтомат</name>
+        <name lang="en">Differential circuit-breaker</name>
+        <name lang="fr">Disjoncteur différentiel</name>
+        <name lang="es">Dispositivo diferenciale residual</name>
+        <name lang="cs">Rozdílový jistič</name>
+        <name lang="pt">Disjunctor diferencial</name>
+        <name lang="pl">Wyłącznik różnicowoprądowy</name>
         <name lang="it">Disgiuntore differenziale</name>
     </names>
     <informations>Author: The QElectroTech team

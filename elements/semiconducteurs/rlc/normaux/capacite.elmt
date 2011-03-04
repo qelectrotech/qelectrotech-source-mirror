@@ -1,13 +1,13 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Kondensator</name>
-        <name lang="ru" >Конденсатор</name>
-        <name lang="en" >Capacitor</name>
-        <name lang="fr" >Capacité</name>
-        <name lang="es" >Condensador</name>
-        <name lang="cs" >Kondenzátor</name>
-        <name lang="pt" >Condensador</name>
-        <name lang="pl" >Kondensator</name>
+        <name lang="de">Kondensator</name>
+        <name lang="ru">Конденсатор</name>
+        <name lang="en">Capacitor</name>
+        <name lang="fr">Capacité</name>
+        <name lang="es">Condensador</name>
+        <name lang="cs">Kondenzátor</name>
+        <name lang="pt">Condensador</name>
+        <name lang="pl">Kondensator</name>
         <name lang="it">Condensatore</name>
     </names>
     <informations>Author: The QElectroTech team

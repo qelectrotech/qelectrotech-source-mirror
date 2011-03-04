@@ -1,13 +1,13 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de" >UND 3 Eingänge</name>
-        <name lang="ru" >И, трёхвходовый</name>
-        <name lang="en" >AND 3 inputs</name>
-        <name lang="fr" >ET 3 entrées</name>
-        <name lang="es" >Y 3 entradas</name>
-        <name lang="cs" >A 3 vstupy</name>
-        <name lang="pt" >E 3 entradas</name>
-        <name lang="pl" >AND (3 wejścia)</name>
+        <name lang="de">UND 3 Eingänge</name>
+        <name lang="ru">И, трёхвходовый</name>
+        <name lang="en">AND 3 inputs</name>
+        <name lang="fr">ET 3 entrées</name>
+        <name lang="es">Y 3 entradas</name>
+        <name lang="cs">A 3 vstupy</name>
+        <name lang="pt">E 3 entradas</name>
+        <name lang="pl">AND (3 wejścia)</name>
         <name lang="it">AND 3 ingressi</name>
     </names>
     <informations>Author: The QElectroTech team

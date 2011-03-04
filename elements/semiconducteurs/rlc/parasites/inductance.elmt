@@ -1,13 +1,13 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Spule</name>
-        <name lang="ru" >Индуктивность</name>
-        <name lang="en" >Inductor</name>
-        <name lang="fr" >Inductance</name>
-        <name lang="es" >Inductor</name>
-        <name lang="cs" >Indukční cívka</name>
-        <name lang="pt" >Inductância</name>
-        <name lang="pl" >Cewka</name>
+        <name lang="de">Spule</name>
+        <name lang="ru">Индуктивность</name>
+        <name lang="en">Inductor</name>
+        <name lang="fr">Inductance</name>
+        <name lang="es">Inductor</name>
+        <name lang="cs">Indukční cívka</name>
+        <name lang="pt">Inductância</name>
+        <name lang="pl">Cewka</name>
         <name lang="it">Induttanza</name>
     </names>
     <informations>Author: The QElectroTech team

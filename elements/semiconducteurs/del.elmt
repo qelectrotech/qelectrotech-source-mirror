@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >LED</name>
-        <name lang="ru" >Светодиод</name>
-        <name lang="en" >LED</name>
-        <name lang="fr" >DEL</name>
-        <name lang="es" >LED</name>
-        <name lang="cs" >Svítící dioda (Světelná emisní dioda - LED)</name>
-        <name lang="pt" >LED</name>
-        <name lang="pl" >Dioda elektroluminescencyjna (LED)</name>
+        <name lang="de">LED</name>
+        <name lang="ru">Светодиод</name>
+        <name lang="en">LED</name>
+        <name lang="fr">DEL</name>
+        <name lang="es">LED</name>
+        <name lang="cs">Svítící dioda (Světelná emisní dioda - LED)</name>
+        <name lang="pt">LED</name>
+        <name lang="pl">Dioda elektroluminescencyjna (LED)</name>
         <name lang="it">LED</name>
     </names>
     <informations>Author: The QElectroTech team

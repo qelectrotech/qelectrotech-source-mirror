@@ -1,10 +1,10 @@
 <definition width="300" version="0.22" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >CD12 Ausgangskarte</name>
-        <name lang="en" >CD12 output board</name>
-        <name lang="fr" >CD12 carte sorties</name>
-        <name lang="pl" >Karta wyjść CD12</name>
-        <name lang="cs" >Karta CD12 výstupy</name>
+        <name lang="de">CD12 Ausgangskarte</name>
+        <name lang="en">CD12 output board</name>
+        <name lang="fr">CD12 carte sorties</name>
+        <name lang="pl">Karta wyjść CD12</name>
+        <name lang="cs">Karta CD12 výstupy</name>
     </names>
     <informations></informations>
     <description>

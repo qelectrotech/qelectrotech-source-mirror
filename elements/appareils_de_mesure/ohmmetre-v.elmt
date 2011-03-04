@@ -1,13 +1,13 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Ohmmeter vertikal</name>
-        <name lang="ru" >Омметр (вертикальный)</name>
-        <name lang="en" >Vertical ohmmeter</name>
-        <name lang="fr" >Ohmmètre vertical</name>
-        <name lang="es" >Óhmetro vertical</name>
-        <name lang="cs" >Svislý ohmmetr</name>
-        <name lang="pt" >Ohmímetro vertical</name>
-        <name lang="pl" >Omomierz (pionowo)</name>
+        <name lang="de">Ohmmeter vertikal</name>
+        <name lang="ru">Омметр (вертикальный)</name>
+        <name lang="en">Vertical ohmmeter</name>
+        <name lang="fr">Ohmmètre vertical</name>
+        <name lang="es">Óhmetro vertical</name>
+        <name lang="cs">Svislý ohmmetr</name>
+        <name lang="pt">Ohmímetro vertical</name>
+        <name lang="pl">Omomierz (pionowo)</name>
         <name lang="it">Ohmmetro verticale</name>
     </names>
     <informations>Author: The QElectroTech team

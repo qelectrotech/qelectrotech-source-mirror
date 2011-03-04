@@ -1,13 +1,13 @@
 <definition width="50" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Stromquelle (neu)</name>
-        <name lang="ru" >Источник тока (новый)</name>
-        <name lang="en" >Current source (new)</name>
-        <name lang="fr" >Source de courant (nouveau)</name>
-        <name lang="es" >Fuente de corriente (nuevo)</name>
-        <name lang="cs" >Zdroj proudu (nový)</name>
-        <name lang="pt" >Fonte de corrente (novo)</name>
-        <name lang="pl" >Źródło prądu (nowy)</name>
+        <name lang="de">Stromquelle (neu)</name>
+        <name lang="ru">Источник тока (новый)</name>
+        <name lang="en">Current source (new)</name>
+        <name lang="fr">Source de courant (nouveau)</name>
+        <name lang="es">Fuente de corriente (nuevo)</name>
+        <name lang="cs">Zdroj proudu (nový)</name>
+        <name lang="pt">Fonte de corrente (novo)</name>
+        <name lang="pl">Źródło prądu (nowy)</name>
         <name lang="it">Generatore di corrente (nuovo)</name>
     </names>
     <informations>Author: The QElectroTech team

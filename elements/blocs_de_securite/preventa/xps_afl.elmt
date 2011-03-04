@@ -1,9 +1,9 @@
 <definition width="360" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="en" >XPS-AFL</name>
-        <name lang="fr" >XPS-AFL</name>
-        <name lang="pl" >XPS-AFL</name>
-        <name lang="cs" >XPS-AFL</name>
+        <name lang="en">XPS-AFL</name>
+        <name lang="fr">XPS-AFL</name>
+        <name lang="pl">XPS-AFL</name>
+        <name lang="cs">XPS-AFL</name>
     </names>
     <informations></informations>
     <description>

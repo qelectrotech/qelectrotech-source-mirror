@@ -1,13 +1,13 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Ausgang (setzen)</name>
-        <name lang="ru" >Выход (установка)</name>
-        <name lang="en" >Output (set)</name>
-        <name lang="fr" >Sortie (set)</name>
-        <name lang="es" >Salida (set)</name>
-        <name lang="cs" >Výstup (nastavit)</name>
-        <name lang="pt" >Saída (set)</name>
-        <name lang="pl" >Wyjście (ustawienie bitu)</name>
+        <name lang="de">Ausgang (setzen)</name>
+        <name lang="ru">Выход (установка)</name>
+        <name lang="en">Output (set)</name>
+        <name lang="fr">Sortie (set)</name>
+        <name lang="es">Salida (set)</name>
+        <name lang="cs">Výstup (nastavit)</name>
+        <name lang="pt">Saída (set)</name>
+        <name lang="pl">Wyjście (ustawienie bitu)</name>
         <name lang="it">Uscita (set)</name>
     </names>
     <informations>Author: The QElectroTech team

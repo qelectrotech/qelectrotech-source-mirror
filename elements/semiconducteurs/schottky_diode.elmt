@@ -1,10 +1,10 @@
 <definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Schottky Diode</name>
-        <name lang="en" >Schottky diode</name>
-        <name lang="fr" >Diode Schottky</name>
-        <name lang="pl" >Dioda Schottky`ego</name>
-        <name lang="cs" >Schottkyova dioda</name>
+        <name lang="de">Schottky Diode</name>
+        <name lang="en">Schottky diode</name>
+        <name lang="fr">Diode Schottky</name>
+        <name lang="pl">Dioda Schottky`ego</name>
+        <name lang="cs">Schottkyova dioda</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

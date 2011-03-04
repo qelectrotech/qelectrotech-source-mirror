@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny" >
     <names>
-        <name lang="de" >Thyristor</name>
-        <name lang="ru" >Тиристор</name>
-        <name lang="en" >Thyristor</name>
-        <name lang="fr" >Thyristor</name>
-        <name lang="es" >Tiristor</name>
-        <name lang="cs" >Thyristor</name>
-        <name lang="pt" >Tiristor</name>
-        <name lang="pl" >Tyrystor</name>
+        <name lang="de">Thyristor</name>
+        <name lang="ru">Тиристор</name>
+        <name lang="en">Thyristor</name>
+        <name lang="fr">Thyristor</name>
+        <name lang="es">Tiristor</name>
+        <name lang="cs">Thyristor</name>
+        <name lang="pt">Tiristor</name>
+        <name lang="pl">Tyrystor</name>
         <name lang="it">Tiristore</name>
     </names>
     <informations>Author: The QElectroTech team

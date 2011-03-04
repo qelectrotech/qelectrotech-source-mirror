@@ -1,13 +1,13 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Steckdose</name>
-        <name lang="ru" >Розетка</name>
-        <name lang="en" >Outlet</name>
-        <name lang="fr" >Prise</name>
-        <name lang="es" >Enchufe</name>
-        <name lang="cs" >Zásuvka</name>
-        <name lang="pt" >Tomada</name>
-        <name lang="pl" >Gniazdo wtyczkowe</name>
+        <name lang="de">Steckdose</name>
+        <name lang="ru">Розетка</name>
+        <name lang="en">Outlet</name>
+        <name lang="fr">Prise</name>
+        <name lang="es">Enchufe</name>
+        <name lang="cs">Zásuvka</name>
+        <name lang="pt">Tomada</name>
+        <name lang="pl">Gniazdo wtyczkowe</name>
         <name lang="it">Presa</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Phase</name>
-        <name lang="ru" >Фаза</name>
-        <name lang="en" >Phase source</name>
-        <name lang="fr" >Source phase</name>
-        <name lang="es" >Fuente fase</name>
-        <name lang="cs" >Fázový zdroj</name>
-        <name lang="pt" >Fonte de fase</name>
-        <name lang="pl" >Przewód fazowy</name>
+        <name lang="de">Phase</name>
+        <name lang="ru">Фаза</name>
+        <name lang="en">Phase source</name>
+        <name lang="fr">Source phase</name>
+        <name lang="es">Fuente fase</name>
+        <name lang="cs">Fázový zdroj</name>
+        <name lang="pt">Fonte de fase</name>
+        <name lang="pl">Przewód fazowy</name>
         <name lang="it">Sorgente fase</name>
     </names>
     <informations>Author: The QElectroTech team

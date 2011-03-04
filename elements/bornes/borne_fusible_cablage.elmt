@@ -1,9 +1,9 @@
 <definition width="30" version="0.2" hotspot_x="10" hotspot_y="20" height="100" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de" >Klemme mit Sicherung</name>
-        <name lang="fr" >Borne fusible cablage</name>
-        <name lang="pl" >Bezpiecznik topikowy</name>
-        <name lang="cs" >Tavná pojistka elektrického propojení</name>
+        <name lang="de">Klemme mit Sicherung</name>
+        <name lang="fr">Borne fusible cablage</name>
+        <name lang="pl">Bezpiecznik topikowy</name>
+        <name lang="cs">Tavná pojistka elektrického propojení</name>
     </names>
     <description>
         <input x="10" y="24.6667" size="9" rotate="true" text="F_" />

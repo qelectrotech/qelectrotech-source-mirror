@@ -1,12 +1,12 @@
 <definition width="60" version="0.2" hotspot_x="20" hotspot_y="45" height="80" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Spule</name>
-        <name lang="ru" >Обмотка</name>
-        <name lang="en" >Coil</name>
-        <name lang="fr" >Bobine</name>
-        <name lang="es" >Bobina</name>
-        <name lang="pl" >Cewka</name>
-        <name lang="cs" >Cívka</name>
+        <name lang="de">Spule</name>
+        <name lang="ru">Обмотка</name>
+        <name lang="en">Coil</name>
+        <name lang="fr">Bobine</name>
+        <name lang="es">Bobina</name>
+        <name lang="pl">Cewka</name>
+        <name lang="cs">Cívka</name>
     </names>
     <description>
         <input x="4" y="20" size="6" rotate="true" text="_" />

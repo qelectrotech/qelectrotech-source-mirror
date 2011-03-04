@@ -1,8 +1,8 @@
 <definition width="810" version="0.22" hotspot_x="15" hotspot_y="35" height="100" type="element" orientation="dnnn" >
     <names>
-        <name lang="en" >211-0AA23-0XB0 (part 1/2)</name>
-	<name lang="fr" >211-0AA23-0XB0 (part 1/2)</name>
-	<name lang="pl" >211-0AA23-0XB0 (part 1/2)</name>
+        <name lang="en">211-0AA23-0XB0 (part 1/2)</name>
+	<name lang="fr">211-0AA23-0XB0 (part 1/2)</name>
+	<name lang="pl">211-0AA23-0XB0 (part 1/2)</name>
     </names>
     <informations>SIEMENS S7-300 (inputs)</informations>
     <description>

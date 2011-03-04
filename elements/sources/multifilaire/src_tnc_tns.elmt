@@ -1,12 +1,12 @@
 <definition width="70" version="0.2" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Netz TNC > TNS</name>
-        <name lang="ru" >Распределительный пункт TN-C >TN-S</name>
-        <name lang="en" >Distribution point TN-C >TN-S</name>
-        <name lang="fr" >Point de distribution TN-C >TN-S</name>
-        <name lang="es" >Punto de distribución TN-C > TN-S</name>
-        <name lang="cs" >Bod rozdělení TN-C > TN-S</name>
-        <name lang="pl" >Zasilanie TN-C-S</name>
+        <name lang="de">Netz TNC > TNS</name>
+        <name lang="ru">Распределительный пункт TN-C >TN-S</name>
+        <name lang="en">Distribution point TN-C >TN-S</name>
+        <name lang="fr">Point de distribution TN-C >TN-S</name>
+        <name lang="es">Punto de distribución TN-C > TN-S</name>
+        <name lang="cs">Bod rozdělení TN-C > TN-S</name>
+        <name lang="pl">Zasilanie TN-C-S</name>
     </names>
     <description>
         <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="42" y2="-20" x2="46" />

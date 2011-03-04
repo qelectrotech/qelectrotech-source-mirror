@@ -1,13 +1,13 @@
 <definition width="70" version="0.2" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >Drehstrom Generator</name>
-        <name lang="ru" >Трёхфазный генератор</name>
-        <name lang="en" >Three-phase generator</name>
-        <name lang="fr" >Génératrice triphasée</name>
-        <name lang="es" >Generador trifasico</name>
-        <name lang="cs" >Třífázový generátor</name>
-        <name lang="pt" >Gerador trifásico</name>
-        <name lang="pl" >Generator trójfazowy</name>
+        <name lang="de">Drehstrom Generator</name>
+        <name lang="ru">Трёхфазный генератор</name>
+        <name lang="en">Three-phase generator</name>
+        <name lang="fr">Génératrice triphasée</name>
+        <name lang="es">Generador trifasico</name>
+        <name lang="cs">Třífázový generátor</name>
+        <name lang="pt">Gerador trifásico</name>
+        <name lang="pl">Generator trójfazowy</name>
         <name lang="it">Generatore trifase</name>
     </names>
     <informations>Author: The QElectroTech team

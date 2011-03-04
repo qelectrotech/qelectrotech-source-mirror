@@ -1,13 +1,13 @@
 <definition width="70" version="0.2" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >Hupe</name>
-        <name lang="ru" >Горн</name>
-        <name lang="en" >Horn</name>
-        <name lang="fr" >Avertisseur</name>
-        <name lang="es" >Bocina</name>
-        <name lang="cs" >Houkačka</name>
-        <name lang="pt" >Buzina</name>
-        <name lang="pl" >Buczek</name>
+        <name lang="de">Hupe</name>
+        <name lang="ru">Горн</name>
+        <name lang="en">Horn</name>
+        <name lang="fr">Avertisseur</name>
+        <name lang="es">Bocina</name>
+        <name lang="cs">Houkačka</name>
+        <name lang="pt">Buzina</name>
+        <name lang="pl">Buczek</name>
         <name lang="it">Tromba</name>
     </names>
     <informations>Author: The QElectroTech team

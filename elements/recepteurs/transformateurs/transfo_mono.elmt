@@ -1,13 +1,13 @@
 <definition width="50" version="0.2" hotspot_x="10" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny" >
     <names>
-        <name lang="de" >Trafo Wechselstrom</name>
-        <name lang="ru" >Однофазный трансформатор</name>
-        <name lang="en" >Single phase transducer</name>
-        <name lang="fr" >Transformateur monophasé</name>
-        <name lang="es" >Transformador monofásica</name>
-        <name lang="cs" >Jednofázový převodník energie</name>
-        <name lang="pt" >Transformador monofásico</name>
-        <name lang="pl" >Transformator jednofazowy</name>
+        <name lang="de">Trafo Wechselstrom</name>
+        <name lang="ru">Однофазный трансформатор</name>
+        <name lang="en">Single phase transducer</name>
+        <name lang="fr">Transformateur monophasé</name>
+        <name lang="es">Transformador monofásica</name>
+        <name lang="cs">Jednofázový převodník energie</name>
+        <name lang="pt">Transformador monofásico</name>
+        <name lang="pl">Transformator jednofazowy</name>
         <name lang="it">Trasformatore monofase</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,13 +1,13 @@
 <definition width="60" version="0.2" hotspot_x="20" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >Gleichstrom Motor</name>
-        <name lang="ru" >Эл. мотор постоянного тока</name>
-        <name lang="en" >DC motor</name>
-        <name lang="fr" >Moteur à courant continu</name>
-        <name lang="es" >Motor de corriente continuo</name>
-        <name lang="cs" >Motor na stejnosměrný proud</name>
-        <name lang="pt" >Motor de corrente contínua</name>
-        <name lang="pl" >Silnik prądu stałego</name>
+        <name lang="de">Gleichstrom Motor</name>
+        <name lang="ru">Эл. мотор постоянного тока</name>
+        <name lang="en">DC motor</name>
+        <name lang="fr">Moteur à courant continu</name>
+        <name lang="es">Motor de corriente continuo</name>
+        <name lang="cs">Motor na stejnosměrný proud</name>
+        <name lang="pt">Motor de corrente contínua</name>
+        <name lang="pl">Silnik prądu stałego</name>
         <name lang="it">Motore a corrente continua</name>
     </names>
     <informations>Author: The QElectroTech team

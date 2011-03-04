@@ -7,7 +7,7 @@
         <name lang="pl">Zestyk zwierny</name>
         <name lang="es">Contactor simple (tiempo retardado de encendido)</name>
         <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění zapnutí)</name>
-        <name lang="de" >Kontakt Einfach (einschaltverzögert)</name>
+        <name lang="de">Kontakt Einfach (einschaltverzögert)</name>
         <name lang="it">Contatto semplice (ritardato all'apertura)</name>
     </names>
     <informations>Author: The QElectroTech team

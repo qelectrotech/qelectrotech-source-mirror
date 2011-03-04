@@ -1,13 +1,13 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Eingang (fallende Flanke)</name>
-        <name lang="ru" >Вход (задний фронт)</name>
-        <name lang="en" >Input (down front)</name>
-        <name lang="fr" >Entrée (front descendant)</name>
-        <name lang="es" >Entrada (descendente)</name>
-        <name lang="cs" >Vstup (klesající)</name>
-        <name lang="pt" >Entrada (descendente)</name>
-        <name lang="pl" >Wejście (zbocze opadające)</name>
+        <name lang="de">Eingang (fallende Flanke)</name>
+        <name lang="ru">Вход (задний фронт)</name>
+        <name lang="en">Input (down front)</name>
+        <name lang="fr">Entrée (front descendant)</name>
+        <name lang="es">Entrada (descendente)</name>
+        <name lang="cs">Vstup (klesající)</name>
+        <name lang="pt">Entrada (descendente)</name>
+        <name lang="pl">Wejście (zbocze opadające)</name>
         <name lang="it">Ingresso (fronte discendente)</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,7 +1,7 @@
 <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="en" >Bipolar transistor npn</name>
-        <name lang="pl" >Tranzystor biopolarny npn</name>
+        <name lang="en">Bipolar transistor npn</name>
+        <name lang="pl">Tranzystor biopolarny npn</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

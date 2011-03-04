@@ -1,13 +1,13 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="40" type="element" ic="true" orientation="dnnn" >
     <names>
-        <name lang="de" >Wattmeter horizontal</name>
-        <name lang="ru" >Ватметр (горизонтальный)</name>
-        <name lang="en" >Horizontal wattmeter</name>
-        <name lang="fr" >Wattmètre horizontal</name>
-        <name lang="es" >Vatímetro horizontal</name>
-        <name lang="cs" >Vodorovný wattmetr</name>
-        <name lang="pt" >Wattímetro horizontal</name>
-        <name lang="pl" >Watomierz (poziomo)</name>
+        <name lang="de">Wattmeter horizontal</name>
+        <name lang="ru">Ватметр (горизонтальный)</name>
+        <name lang="en">Horizontal wattmeter</name>
+        <name lang="fr">Wattmètre horizontal</name>
+        <name lang="es">Vatímetro horizontal</name>
+        <name lang="cs">Vodorovný wattmetr</name>
+        <name lang="pt">Wattímetro horizontal</name>
+        <name lang="pl">Watomierz (poziomo)</name>
         <name lang="it">Wattmetro orizzontale</name>
     </names>
     <informations>Author: The QElectroTech team

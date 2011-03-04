@@ -1,13 +1,13 @@
 <definition width="40" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Sicherung</name>
-        <name lang="ru" >Предохранитель</name>
-        <name lang="en" >Fuse</name>
-        <name lang="fr" >Fusible</name>
-        <name lang="es" >Fusible</name>
-        <name lang="cs" >Pojistka</name>
-        <name lang="pt" >Fusível</name>
-        <name lang="pl" >Bezpiecznik topikowy</name>
+        <name lang="de">Sicherung</name>
+        <name lang="ru">Предохранитель</name>
+        <name lang="en">Fuse</name>
+        <name lang="fr">Fusible</name>
+        <name lang="es">Fusible</name>
+        <name lang="cs">Pojistka</name>
+        <name lang="pt">Fusível</name>
+        <name lang="pl">Bezpiecznik topikowy</name>
         <name lang="it">Fusibile</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,10 +1,10 @@
 <definition width="60" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
-        <name lang="en" >Inductive sensor 2 terminals</name>
-        <name lang="de" >Induktiver Sensor 2-Leiter</name>
-        <name lang="fr" >Capteur inductif 2 fils</name>
-        <name lang="pl" >Czujnik indukcyjny dwuprzewodowy</name>
-        <name lang="cs" >Induktivní snímač se dvěma dráty</name>
+        <name lang="en">Inductive sensor 2 terminals</name>
+        <name lang="de">Induktiver Sensor 2-Leiter</name>
+        <name lang="fr">Capteur inductif 2 fils</name>
+        <name lang="pl">Czujnik indukcyjny dwuprzewodowy</name>
+        <name lang="cs">Induktivní snímač se dvěma dráty</name>
     </names>
     <informations></informations>
     <description>

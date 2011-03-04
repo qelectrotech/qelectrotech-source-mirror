@@ -1,8 +1,8 @@
 <definition width="990" version="0.2" hotspot_x="5" hotspot_y="5" height="280" type="element" orientation="dnnn" >
     <names>
-	<name lang="en" >6es7-332-5hf00-0ab0_b</name>
-        <name lang="fr" >6es7-332-5hf00-0ab0_b</name>
-        <name lang="pl" >6es7-332-5hf00-0ab0_b</name>
+	<name lang="en">6es7-332-5hf00-0ab0_b</name>
+        <name lang="fr">6es7-332-5hf00-0ab0_b</name>
+        <name lang="pl">6es7-332-5hf00-0ab0_b</name>
     </names>
     <description>
         <rect width="980" x="3" y="4" antialias="false" height="220" style="line-style:normal;line-weight:normal;filling:none;color:black" />

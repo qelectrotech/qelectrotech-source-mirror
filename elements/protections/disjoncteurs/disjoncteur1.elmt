@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Lastschalter</name>
-        <name lang="ru" >Выключатель</name>
-        <name lang="en" >Circuit-breaker</name>
-        <name lang="fr" >Disjoncteur</name>
-        <name lang="es" >Disyuntor</name>
-        <name lang="cs" >Jistič</name>
-        <name lang="pt" >Disjuntor</name>
-        <name lang="pl" >Wyłącznik</name>
+        <name lang="de">Lastschalter</name>
+        <name lang="ru">Выключатель</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="fr">Disjoncteur</name>
+        <name lang="es">Disyuntor</name>
+        <name lang="cs">Jistič</name>
+        <name lang="pt">Disjuntor</name>
+        <name lang="pl">Wyłącznik</name>
         <name lang="it">Disgiuntore</name>
     </names>
     <informations>Author: The QElectroTech team

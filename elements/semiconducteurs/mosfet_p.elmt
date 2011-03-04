@@ -1,10 +1,10 @@
 <definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Unipolar Transistor MOSFET</name>
-        <name lang="en" >Unipolar transistor MOSFET</name>
-        <name lang="fr" >Transistor unipolaire MOSFET</name>
-        <name lang="pl" >Tranzystor unipolarny MOSFET</name>
-        <name lang="cs" >Jednopólový tranzistor MOSFET</name>
+        <name lang="de">Unipolar Transistor MOSFET</name>
+        <name lang="en">Unipolar transistor MOSFET</name>
+        <name lang="fr">Transistor unipolaire MOSFET</name>
+        <name lang="pl">Tranzystor unipolarny MOSFET</name>
+        <name lang="cs">Jednopólový tranzistor MOSFET</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

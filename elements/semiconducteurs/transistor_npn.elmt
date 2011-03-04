@@ -1,10 +1,10 @@
 <definition width="40" version="0.22" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >NPN Transistor</name>
-        <name lang="en" >NPN transistor</name>
-        <name lang="fr" >Transistor NPN</name>
-        <name lang="pl" >Tranzystor NPN</name>
-        <name lang="cs" >Tranzistor NPN</name>
+        <name lang="de">NPN Transistor</name>
+        <name lang="en">NPN transistor</name>
+        <name lang="fr">Transistor NPN</name>
+        <name lang="pl">Tranzystor NPN</name>
+        <name lang="cs">Tranzistor NPN</name>
     </names>
     <informations></informations>
     <description>

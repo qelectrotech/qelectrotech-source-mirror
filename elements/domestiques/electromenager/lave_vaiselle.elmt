@@ -1,13 +1,13 @@
 <definition width="30" version="0.2" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de" >Geschirrspühler</name>
-        <name lang="ru" >Посудомоечная машина</name>
-        <name lang="en" >Dishwasher</name>
-        <name lang="fr" >Lave-vaisselle</name>
-        <name lang="es" >Lavavajillas</name>
-        <name lang="cs" >Myčka na nádobí</name>
-        <name lang="pt" >Máquina de lavar louça</name>
-        <name lang="pl" >Zmywarka</name>
+        <name lang="de">Geschirrspühler</name>
+        <name lang="ru">Посудомоечная машина</name>
+        <name lang="en">Dishwasher</name>
+        <name lang="fr">Lave-vaisselle</name>
+        <name lang="es">Lavavajillas</name>
+        <name lang="cs">Myčka na nádobí</name>
+        <name lang="pt">Máquina de lavar louça</name>
+        <name lang="pl">Zmywarka</name>
         <name lang="it">Lavastoviglie</name>
     </names>
     <informations>Author: The QElectroTech team

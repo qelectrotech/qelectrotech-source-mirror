@@ -1,6 +1,6 @@
 <definition width="770" version="0.22" hotspot_x="15" hotspot_y="35" height="100" type="element" orientation="dnnn" >
     <names>
-        <name lang="pl" >6ES7 331-7FK02-0AB0 (part 1/2)</name>
+        <name lang="pl">6ES7 331-7FK02-0AB0 (part 1/2)</name>
     </names>
     <informations>SIEMENS S7-300 (digital inputs)</informations>
     <description>

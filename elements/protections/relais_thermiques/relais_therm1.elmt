@@ -1,13 +1,13 @@
 <definition width="40" version="0.2" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Thermisches Relais</name>
-        <name lang="ru" >Тепловое реле</name>
-        <name lang="en" >Thermal relay</name>
-        <name lang="fr" >Relais thermique</name>
-        <name lang="es" >Relé térmico</name>
-        <name lang="cs" >Tepelné relé</name>
-        <name lang="pt" >Relé térmico</name>
-        <name lang="pl" >Przekaźnik termiczny</name>
+        <name lang="de">Thermisches Relais</name>
+        <name lang="ru">Тепловое реле</name>
+        <name lang="en">Thermal relay</name>
+        <name lang="fr">Relais thermique</name>
+        <name lang="es">Relé térmico</name>
+        <name lang="cs">Tepelné relé</name>
+        <name lang="pt">Relé térmico</name>
+        <name lang="pl">Przekaźnik termiczny</name>
         <name lang="it">Relè termico</name>
     </names>
     <informations>Author: The QElectroTech team

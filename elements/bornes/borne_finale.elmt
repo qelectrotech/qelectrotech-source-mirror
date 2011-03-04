@@ -1,13 +1,13 @@
 <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de" >Endklemme</name>
-        <name lang="ru" >Клеммник</name>
-        <name lang="en" >Terminal block</name>
-        <name lang="fr" >Borne finale</name>
-        <name lang="es" >Punto de unión</name>
-        <name lang="cs" >Koncová svorka</name>
-        <name lang="pt" >Terminal de fim</name>
-        <name lang="pl" >Zacisk</name>
+        <name lang="de">Endklemme</name>
+        <name lang="ru">Клеммник</name>
+        <name lang="en">Terminal block</name>
+        <name lang="fr">Borne finale</name>
+        <name lang="es">Punto de unión</name>
+        <name lang="cs">Koncová svorka</name>
+        <name lang="pt">Terminal de fim</name>
+        <name lang="pl">Zacisk</name>
         <name lang="it">Terminale di fine</name>
     </names>
     <informations>Author: The QElectroTech team

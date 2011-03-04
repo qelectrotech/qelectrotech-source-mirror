@@ -1,10 +1,10 @@
 <definition width="50" version="0.2" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Presostat (NO)</name>
-        <name lang="en" >Presostat (NO)</name>
-        <name lang="fr" >Pressostat (NO)</name>
-        <name lang="pl" >Presostat (NO)</name>
-        <name lang="cs" >Presostat (NO)</name>
+        <name lang="de">Presostat (NO)</name>
+        <name lang="en">Presostat (NO)</name>
+        <name lang="fr">Pressostat (NO)</name>
+        <name lang="pl">Presostat (NO)</name>
+        <name lang="cs">Presostat (NO)</name>
     </names>
     <description>
         <input x="11" y="-11.5" size="8" rotate="true" text="S_" />

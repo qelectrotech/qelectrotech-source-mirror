@@ -1,13 +1,13 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de" >SETZEN/RÜCKSETZEN</name>
-        <name lang="ru" >Установка/Сброс</name>
-        <name lang="en" >SET/RESET</name>
-        <name lang="fr" >SET/RESET</name>
-        <name lang="es" >SET/RESET</name>
-        <name lang="cs" >NASTAVIT/NASTAVIT ZNOVU</name>
-        <name lang="pt" >SET/RESET</name>
-        <name lang="pl" >Przerzutnik RS</name>
+        <name lang="de">SETZEN/RÜCKSETZEN</name>
+        <name lang="ru">Установка/Сброс</name>
+        <name lang="en">SET/RESET</name>
+        <name lang="fr">SET/RESET</name>
+        <name lang="es">SET/RESET</name>
+        <name lang="cs">NASTAVIT/NASTAVIT ZNOVU</name>
+        <name lang="pt">SET/RESET</name>
+        <name lang="pl">Przerzutnik RS</name>
         <name lang="it">SET/RESET</name>
     </names>
     <informations>Author: The QElectroTech team

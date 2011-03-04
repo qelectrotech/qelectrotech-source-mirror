@@ -1,10 +1,10 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Shockley Diode</name>
-        <name lang="en" >Shockley diode</name>
-        <name lang="fr" >Diode Shockley</name>
-        <name lang="pl" >Dynistor</name>
-        <name lang="cs" >Shockleyova dioda (Dynistor)</name>
+        <name lang="de">Shockley Diode</name>
+        <name lang="en">Shockley diode</name>
+        <name lang="fr">Diode Shockley</name>
+        <name lang="pl">Dynistor</name>
+        <name lang="cs">Shockleyova dioda (Dynistor)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

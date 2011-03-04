@@ -1,9 +1,9 @@
 <definition width="360" version="0.22" hotspot_x="70" hotspot_y="40" height="140" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="en" >XPS-AC</name>
-        <name lang="fr" >XPS-AC</name>
-        <name lang="pl" >XPS-AC</name>
-        <name lang="cs" >XPS-AC</name>
+        <name lang="en">XPS-AC</name>
+        <name lang="fr">XPS-AC</name>
+        <name lang="pl">XPS-AC</name>
+        <name lang="cs">XPS-AC</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,13 @@
 <definition width="50" version="0.2" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Spannungsquelle (alt)</name>
-        <name lang="ru" >Источник напряжения (старый)</name>
-        <name lang="en" >Voltage source (old)</name>
-        <name lang="fr" >Source de tension (vieux)</name>
-        <name lang="es" >Fuente de tensión (antiguo)</name>
-        <name lang="cs" >Zdroj napětí (starý)</name>
-        <name lang="pt" >Fonte de tensão (antigo)</name>
-        <name lang="pl" >Źródło napięcia (stary)</name>
+        <name lang="de">Spannungsquelle (alt)</name>
+        <name lang="ru">Источник напряжения (старый)</name>
+        <name lang="en">Voltage source (old)</name>
+        <name lang="fr">Source de tension (vieux)</name>
+        <name lang="es">Fuente de tensión (antiguo)</name>
+        <name lang="cs">Zdroj napětí (starý)</name>
+        <name lang="pt">Fonte de tensão (antigo)</name>
+        <name lang="pl">Źródło napięcia (stary)</name>
         <name lang="it">Generatore di tensione (vecchio)</name>
     </names>
     <informations>Author: The QElectroTech team

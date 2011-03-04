@@ -1,13 +1,13 @@
 <definition width="60" version="0.2" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >Sirene</name>
-        <name lang="ru" >Сирена</name>
-        <name lang="en" >Siren</name>
-        <name lang="fr" >Sirène</name>
-        <name lang="es" >Sirena</name>
-        <name lang="cs" >Siréna</name>
-        <name lang="pt" >Sirene</name>
-        <name lang="pl" >Syrena</name>
+        <name lang="de">Sirene</name>
+        <name lang="ru">Сирена</name>
+        <name lang="en">Siren</name>
+        <name lang="fr">Sirène</name>
+        <name lang="es">Sirena</name>
+        <name lang="cs">Siréna</name>
+        <name lang="pt">Sirene</name>
+        <name lang="pl">Syrena</name>
         <name lang="it">Sirena</name>
     </names>
     <informations>Author: The QElectroTech team

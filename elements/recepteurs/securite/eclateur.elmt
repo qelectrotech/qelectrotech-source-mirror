@@ -1,13 +1,13 @@
 <definition width="20" version="0.2" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Funken</name>
-        <name lang="ru" >Разрядник</name>
-        <name lang="en" >Spark-gap</name>
-        <name lang="fr" >Éclateur</name>
-        <name lang="es" >Descargador de chispa</name>
-        <name lang="cs" >Jiskřiště</name>
-        <name lang="pt" >Descarregador de faísca</name>
-        <name lang="pl" >Iskiernik</name>
+        <name lang="de">Funken</name>
+        <name lang="ru">Разрядник</name>
+        <name lang="en">Spark-gap</name>
+        <name lang="fr">Éclateur</name>
+        <name lang="es">Descargador de chispa</name>
+        <name lang="cs">Jiskřiště</name>
+        <name lang="pt">Descarregador de faísca</name>
+        <name lang="pl">Iskiernik</name>
         <name lang="it">Scaricatore</name>
     </names>
     <informations>Author: The QElectroTech team

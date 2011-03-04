@@ -1,10 +1,10 @@
 <definition width="50" version="0.22" hotspot_x="35" hotspot_y="35" height="60" type="element" orientation="dyyy" >
     <names>
-        <name lang="de" >Induktiver Sensor 4-Leiter</name>
-        <name lang="en" >Inductive sensor 4 terminals</name>
-        <name lang="fr" >Capteur inductif 4 bornes</name>
-        <name lang="pl" >Czujnik indukcyjny czteroprzewodowy</name>
-        <name lang="cs" >Induktivní snímač se čtyřmi svorkami</name>
+        <name lang="de">Induktiver Sensor 4-Leiter</name>
+        <name lang="en">Inductive sensor 4 terminals</name>
+        <name lang="fr">Capteur inductif 4 bornes</name>
+        <name lang="pl">Czujnik indukcyjny czteroprzewodowy</name>
+        <name lang="cs">Induktivní snímač se čtyřmi svorkami</name>
     </names>
     <informations></informations>
     <description>

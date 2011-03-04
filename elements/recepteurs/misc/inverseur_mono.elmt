@@ -1,12 +1,12 @@
 <definition width="20" version="0.1" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dnny" >
     <names>
-        <name lang="de" >Phaseninverter Einfach</name>
-        <name lang="en" >Single line phases direction inverter</name>
-        <name lang="fr" >Inverseur de sens des phases unifilaire</name>
-        <name lang="es" >Inversor de fase monohilo</name>
-        <name lang="cs" >Přepínač směru fáze jednoduchého spojení</name>
-        <name lang="pt" >Inversor de sentido de fase monofilar</name>
-        <name lang="pl" >Inwerter jednofazowy</name>
+        <name lang="de">Phaseninverter Einfach</name>
+        <name lang="en">Single line phases direction inverter</name>
+        <name lang="fr">Inverseur de sens des phases unifilaire</name>
+        <name lang="es">Inversor de fase monohilo</name>
+        <name lang="cs">Přepínač směru fáze jednoduchého spojení</name>
+        <name lang="pt">Inversor de sentido de fase monofilar</name>
+        <name lang="pl">Inwerter jednofazowy</name>
         <name lang="it">Invertitore di fase monofilare</name>
     </names>
     <informations>Author: The QElectroTech team
