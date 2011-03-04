@@ -1,9 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="de" >Aktoren</name>
-        <name lang="en" >Actuators</name>
-        <name lang="fr" >Actionneurs</name>
-        <name lang="pl" >Elementy wykonawcze</name>
-        <name lang="cs" >Prováděcí prvky</name>
+        <name lang="de">Aktoren</name>
+        <name lang="en">Actuators</name>
+        <name lang="fr">Actionneurs</name>
+        <name lang="pl">Elementy wykonawcze</name>
+        <name lang="cs">Prováděcí prvky</name>
         </names>
 </qet-directory>

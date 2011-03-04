@@ -1,13 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="de" >Sensoren</name>
-        <name lang="ru" >Датчики</name>
-        <name lang="en" >Sensors</name>
-        <name lang="fr" >Sondes</name>
-        <name lang="es" >Sondeos</name>
-        <name lang="pt" >Sondas</name>
-        <name lang="cs" >Snímače</name>
-        <name lang="pl" >Czujniki</name>
+        <name lang="de">Sensoren</name>
+        <name lang="ru">Датчики</name>
+        <name lang="en">Sensors</name>
+        <name lang="fr">Sondes</name>
+        <name lang="es">Sondeos</name>
+        <name lang="pt">Sondas</name>
+        <name lang="cs">Snímače</name>
+        <name lang="pl">Czujniki</name>
         <name lang="it">Sensori</name>
     </names>
 </qet-directory>

@@ -1,8 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="de" >Referenz</name>
-        <name lang="fr" >Renvois</name>
-        <name lang="pl" >Odsyłacze</name>
-        <name lang="cs" >Výstupy</name>
+        <name lang="de">Referenz</name>
+        <name lang="fr">Renvois</name>
+        <name lang="pl">Odsyłacze</name>
+        <name lang="cs">Výstupy</name>
     </names>
 </qet-directory>

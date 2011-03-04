@@ -1,7 +1,7 @@
 <qet-directory>
     <names>
-	<name lang="en" >Optical sensor</name>
-        <name lang="fr" >Capteurs_optique</name>
-        <name lang="pl" >Czujnik optyczny</name>
+	<name lang="en">Optical sensor</name>
+        <name lang="fr">Capteurs_optique</name>
+        <name lang="pl">Czujnik optyczny</name>
         </names>
 </qet-directory>
