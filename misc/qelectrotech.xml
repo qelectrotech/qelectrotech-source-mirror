@@ -4,6 +4,7 @@
 		<sub-class-of type="text/xml"/>
 		<comment>QElectroTech project file</comment>
 		<comment xml:lang="fr">Fichier projet QElectroTech</comment>
+		<comment xml:lang="es">Fichero proyecto QElectroTech</comment>
 		<comment xml:lang="ru">Файл проекта QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
 		<comment xml:lang="pl">Plik projektu QElectrotech</comment>
@@ -15,6 +16,7 @@
 		<comment>QElectroTech element file</comment>
 		<comment xml:lang="fr">Fichier élément QElectroTech</comment>
 		<comment xml:lang="ru">Файл элемента QElectroTech</comment>
+		<comment xml:lang="es">Fichero elemento QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
 		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
