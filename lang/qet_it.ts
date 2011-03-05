@@ -62,7 +62,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="90"/>
         <source>© 2006-2011 Les développeurs de QElectroTech</source>
-        <translation type="unfinished">© 2006-2010 Gli sviluppatori di QElectroTech {2006-2011 ?}</translation>
+        <translation>© 2006-2011 Gli sviluppatori di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="120"/>
@@ -87,17 +87,17 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="124"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduzione in polacco</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduzione in alemanno</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Traduzione in rumeno</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
@@ -404,7 +404,7 @@
         <location filename="../sources/diagramview.cpp" line="170"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Orientare i testi selezionati</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="403"/>
@@ -1066,12 +1066,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1069"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1082"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Modello &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1095"/>
@@ -1145,17 +1145,17 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Importare un nuovo modello</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Editare questo modello</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancellare questo modello</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="385"/>
@@ -1330,7 +1330,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/exportdialog.cpp" line="646"/>
         <location filename="../sources/exportdialog.cpp" line="651"/>
         <source>px</source>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
@@ -2302,41 +2302,41 @@ Opzioni disponibili:
         <location filename="../sources/qetapp.cpp" line="526"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="527"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="528"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schema</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="529"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elettrico</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="530"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="853"/>
         <source>Erreur</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="853"/>
         <source>Impossible d&apos;éditer le template demandé</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile editare il modello richiesto</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="984"/>
@@ -2724,13 +2724,13 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ruota gli elementi ed i testi selezionati</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés Ð un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ruota i testi selezionati di un angolo preciso</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -2827,7 +2827,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Orienter les textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientare i testi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -2847,7 +2847,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Spazio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -4131,7 +4131,7 @@ Opzioni disponibili:
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished"></translation>
+        <translation>orientare %1 a %2°</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
@@ -4407,13 +4407,13 @@ Opzioni disponibili:
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Es.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esempio</translation>
     </message>
 </context>
 <context>
@@ -4521,7 +4521,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Trattino</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
@@ -4533,7 +4533,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
-        <translation>Nessuna</translation>
+        <translation>Nessuno</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="46"/>
@@ -4568,27 +4568,27 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>style antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation>stile antialiasing</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>style couleur</source>
-        <translation type="unfinished"></translation>
+        <translation>stile colore</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>stile liea</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style epaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>stile spessore</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation>stile riempimento</translation>
     </message>
 </context>
 <context>
@@ -4596,93 +4596,93 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/templateeditor.cpp" line="38"/>
         <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nuovo modello</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="71"/>
         <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Non ancora implementato</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="72"/>
         <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Spiacente, non ancora implementato</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="88"/>
         <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un modello con questo nome esiste già</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="89"/>
         <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Un modello con questo nome esiste già nel progetto - scegliere un altro nome.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="102"/>
         <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Codice XML non valido</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="103"/>
         <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Il codice XML del modello non sembra essere valido. Impossibile registrare il modello.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="131"/>
         <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Selezionare un file immagine</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="133"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Immagini vettoriali (*.svg);;Immagini bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tutti i file (*)</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Erreur</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Impossibile aprire il file specificato</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas Ðtre valide.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Il codice XML del modello non sembra essere valido.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
         <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Integrare un logo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="212"/>
         <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Verificare il modello</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="213"/>
         <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Salvare ed applicare</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="214"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Uscire</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="241"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">QElectrotech - Editor di modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="253"/>
         <source>Non défini</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Non definito</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="257"/>

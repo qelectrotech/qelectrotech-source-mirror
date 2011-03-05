@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">Relais statique</name>
         <name lang="pl">PrzekaÅºnik statyczny</name>
+	<name lang="it">Relè statico</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,6 +1,7 @@
 <definition width="50" version="0.22" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="fr">Potentiomètre</name>
+	<name lang="it">Potenziometro</name>
     </names>
     <informations></informations>
     <description>

@@ -7,6 +7,7 @@
         <name lang="es">Fuente tripolar + PEN</name>
         <name lang="cs">3 fáze + PEN</name>
         <name lang="pl">Zasilanie trójfazowe + PEN</name>
+	<name lang="it">Sorgente tripolare + PEN</name>
     </names>
     <description>
         <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="6" y2="1" x2="16" />

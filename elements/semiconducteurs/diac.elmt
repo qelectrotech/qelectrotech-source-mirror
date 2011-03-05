@@ -5,6 +5,7 @@
         <name lang="fr">Diac</name>
         <name lang="pl">Diak</name>
         <name lang="cs">Diac</name>
+	<name lang="it">Diac</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
