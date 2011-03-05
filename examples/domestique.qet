@@ -1,345 +1,345 @@
-<project title="" version="0.2" >
+<project title="" version="0.3">
     <newdiagrams>
-        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80" />
-        <inset title="" folio="" author="" filename="" date="null" />
-        <conductors num="_" type="multi" />
+        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
+        <inset title="" folio="" author="" filename="" date="null"/>
+        <conductors num="_" type="multi"/>
     </newdiagrams>
-    <diagram title="Exemple d'installation domestique" displayrows="true" cols="15" folio="" displaycols="true" height="340" colsize="50" order="1" rows="4" author="Benoît A" filename="Exemples QET" rowsize="80" >
-        <defaultconductor neutral="true" phase="1" ground="true" type="single" />
+    <diagram title="Exemple d'installation domestique" displayrows="true" cols="15" folio="" displaycols="true" height="340" colsize="50" order="1" rows="4" author="Benoît A" filename="Exemples QET" rowsize="80">
+        <defaultconductor neutral="true" phase="1" ground="true" type="single"/>
         <elements>
-            <element x="150" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="150" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="0" orientation="0" />
-                    <terminal x="0" y="17" id="1" orientation="2" />
+                    <terminal x="0" y="-17" id="0" orientation="0"/>
+                    <terminal x="0" y="17" id="1" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="PC" />
+                    <input x="2.75" y="3" text="PC"/>
                 </inputs>
             </element>
-            <element x="650" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0" >
+            <element x="650" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="2" orientation="0" />
+                    <terminal x="0" y="-17" id="2" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="350" y="300" type="common://recepteurs/domestiques/convecteur.elmt" orientation="0" >
+            <element x="350" y="300" type="common://recepteurs/domestiques/convecteur.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-8" id="3" orientation="0" />
+                    <terminal x="0" y="-8" id="3" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="250" y="300" type="common://recepteurs/domestiques/convecteur.elmt" orientation="0" >
+            <element x="250" y="300" type="common://recepteurs/domestiques/convecteur.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-8" id="4" orientation="0" />
+                    <terminal x="0" y="-8" id="4" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="200" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0" >
+            <element x="200" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="5" orientation="0" />
+                    <terminal x="0" y="-17" id="5" orientation="0"/>
                 </terminals>
                 <inputs>
-                    <input x="15" y="3" text="" />
+                    <input x="15" y="3" text=""/>
                 </inputs>
             </element>
-            <element x="50" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="50" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="6" orientation="0" />
-                    <terminal x="0" y="17" id="7" orientation="2" />
+                    <terminal x="0" y="-17" id="6" orientation="0"/>
+                    <terminal x="0" y="17" id="7" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="PC" />
+                    <input x="2.75" y="3" text="PC"/>
                 </inputs>
             </element>
-            <element x="450" y="300" type="common://recepteurs/domestiques/lave_vaiselle.elmt" orientation="0" >
+            <element x="450" y="300" type="common://recepteurs/domestiques/lave_vaiselle.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-8" id="8" orientation="0" />
+                    <terminal x="0" y="-8" id="8" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="150" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0" >
+            <element x="150" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="9" orientation="0" />
+                    <terminal x="0" y="-17" id="9" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="100" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="100" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="10" orientation="0" />
-                    <terminal x="0" y="17" id="11" orientation="2" />
+                    <terminal x="0" y="-17" id="10" orientation="0"/>
+                    <terminal x="0" y="17" id="11" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Lum" />
+                    <input x="2.75" y="3" text="Lum"/>
                 </inputs>
             </element>
-            <element x="50" y="60" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0" >
+            <element x="50" y="60" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="12" orientation="0" />
-                    <terminal x="0" y="17" id="13" orientation="2" />
+                    <terminal x="0" y="-17" id="12" orientation="0"/>
+                    <terminal x="0" y="17" id="13" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="5" y="-3" text="Distributeur" />
-                    <input x="9" y="14" text="500mA" />
+                    <input x="5" y="-3" text="Distributeur"/>
+                    <input x="9" y="14" text="500mA"/>
                 </inputs>
             </element>
-            <element x="50" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0" >
+            <element x="50" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="14" orientation="0" />
-                    <terminal x="0" y="17" id="15" orientation="2" />
+                    <terminal x="0" y="-17" id="14" orientation="0"/>
+                    <terminal x="0" y="17" id="15" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="5" y="-3" text="Salon" />
-                    <input x="9" y="14" text="30mA" />
+                    <input x="5" y="-3" text="Salon"/>
+                    <input x="9" y="14" text="30mA"/>
                 </inputs>
             </element>
-            <element x="150" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0" >
+            <element x="150" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="16" orientation="0" />
-                    <terminal x="0" y="17" id="17" orientation="2" />
+                    <terminal x="0" y="-17" id="16" orientation="0"/>
+                    <terminal x="0" y="17" id="17" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="5" y="-3" text="SDB" />
-                    <input x="9" y="14" text="30mA" />
+                    <input x="5" y="-3" text="SDB"/>
+                    <input x="9" y="14" text="30mA"/>
                 </inputs>
             </element>
-            <element x="650" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0" >
+            <element x="650" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="18" orientation="0" />
-                    <terminal x="0" y="17" id="19" orientation="2" />
+                    <terminal x="0" y="-17" id="18" orientation="0"/>
+                    <terminal x="0" y="17" id="19" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="5" y="-3" text="Chambre" />
-                    <input x="9" y="14" text="30mA" />
+                    <input x="5" y="-3" text="Chambre"/>
+                    <input x="9" y="14" text="30mA"/>
                 </inputs>
             </element>
-            <element x="300" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0" >
+            <element x="300" y="140" type="common://protections/disjoncteurs_differentiels/ddr1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="20" orientation="0" />
-                    <terminal x="0" y="17" id="21" orientation="2" />
+                    <terminal x="0" y="-17" id="20" orientation="0"/>
+                    <terminal x="0" y="17" id="21" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="5" y="-3" text="Cuisine" />
-                    <input x="9" y="14" text="30mA" />
+                    <input x="5" y="-3" text="Cuisine"/>
+                    <input x="9" y="14" text="30mA"/>
                 </inputs>
             </element>
-            <element x="750" y="150" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="750" y="150" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="22" orientation="0" />
-                    <terminal x="0" y="17" id="23" orientation="2" />
+                    <terminal x="0" y="-17" id="22" orientation="0"/>
+                    <terminal x="0" y="17" id="23" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Ent" />
+                    <input x="2.75" y="3" text="Ent"/>
                 </inputs>
             </element>
-            <element x="400" y="300" type="common://recepteurs/domestiques/lave_linge.elmt" orientation="0" >
+            <element x="400" y="300" type="common://recepteurs/domestiques/lave_linge.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-8" id="24" orientation="0" />
+                    <terminal x="0" y="-8" id="24" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="600" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0" >
+            <element x="600" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="25" orientation="0" />
+                    <terminal x="0" y="-17" id="25" orientation="0"/>
                 </terminals>
                 <inputs>
-                    <input x="15" y="3" text="" />
+                    <input x="15" y="3" text=""/>
                 </inputs>
             </element>
-            <element x="750" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0" >
+            <element x="750" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="26" orientation="0" />
+                    <terminal x="0" y="-17" id="26" orientation="0"/>
                 </terminals>
                 <inputs>
-                    <input x="15" y="3" text="" />
+                    <input x="15" y="3" text=""/>
                 </inputs>
             </element>
-            <element x="100" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0" >
+            <element x="100" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="27" orientation="0" />
+                    <terminal x="0" y="-17" id="27" orientation="0"/>
                 </terminals>
                 <inputs>
-                    <input x="15" y="3" text="" />
+                    <input x="15" y="3" text=""/>
                 </inputs>
             </element>
-            <element x="500" y="300" type="common://recepteurs/domestiques/four.elmt" orientation="0" >
+            <element x="500" y="300" type="common://recepteurs/domestiques/four.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-8" id="28" orientation="0" />
+                    <terminal x="0" y="-8" id="28" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="550" y="300" type="common://recepteurs/domestiques/plaque_cuisson.elmt" orientation="0" >
+            <element x="550" y="300" type="common://recepteurs/domestiques/plaque_cuisson.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-8" id="29" orientation="0" />
+                    <terminal x="0" y="-8" id="29" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="700" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0" >
+            <element x="700" y="310" type="common://recepteurs/lampes/lampe1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="30" orientation="0" />
+                    <terminal x="0" y="-17" id="30" orientation="0"/>
                 </terminals>
                 <inputs>
-                    <input x="15" y="3" text="" />
+                    <input x="15" y="3" text=""/>
                 </inputs>
             </element>
-            <element x="300" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0" >
+            <element x="300" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="31" orientation="0" />
+                    <terminal x="0" y="-17" id="31" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="50" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0" >
+            <element x="50" y="310" type="common://recepteurs/misc/pc.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="32" orientation="0" />
+                    <terminal x="0" y="-17" id="32" orientation="0"/>
                 </terminals>
                 <inputs/>
             </element>
-            <element x="200" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="200" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="33" orientation="0" />
-                    <terminal x="0" y="17" id="34" orientation="2" />
+                    <terminal x="0" y="-17" id="33" orientation="0"/>
+                    <terminal x="0" y="17" id="34" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Lum" />
+                    <input x="2.75" y="3" text="Lum"/>
                 </inputs>
             </element>
-            <element x="250" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="250" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="35" orientation="0" />
-                    <terminal x="0" y="17" id="36" orientation="2" />
+                    <terminal x="0" y="-17" id="35" orientation="0"/>
+                    <terminal x="0" y="17" id="36" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Rad" />
+                    <input x="2.75" y="3" text="Rad"/>
                 </inputs>
             </element>
-            <element x="300" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="300" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="37" orientation="0" />
-                    <terminal x="0" y="17" id="38" orientation="2" />
+                    <terminal x="0" y="-17" id="37" orientation="0"/>
+                    <terminal x="0" y="17" id="38" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="PC" />
+                    <input x="2.75" y="3" text="PC"/>
                 </inputs>
             </element>
-            <element x="350" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="350" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="39" orientation="0" />
-                    <terminal x="0" y="17" id="40" orientation="2" />
+                    <terminal x="0" y="-17" id="39" orientation="0"/>
+                    <terminal x="0" y="17" id="40" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Rad" />
+                    <input x="2.75" y="3" text="Rad"/>
                 </inputs>
             </element>
-            <element x="400" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="400" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="41" orientation="0" />
-                    <terminal x="0" y="17" id="42" orientation="2" />
+                    <terminal x="0" y="-17" id="41" orientation="0"/>
+                    <terminal x="0" y="17" id="42" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Linge" />
+                    <input x="2.75" y="3" text="Linge"/>
                 </inputs>
             </element>
-            <element x="450" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="450" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="43" orientation="0" />
-                    <terminal x="0" y="17" id="44" orientation="2" />
+                    <terminal x="0" y="-17" id="43" orientation="0"/>
+                    <terminal x="0" y="17" id="44" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Ves." />
+                    <input x="2.75" y="3" text="Ves."/>
                 </inputs>
             </element>
-            <element x="500" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="500" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="45" orientation="0" />
-                    <terminal x="0" y="17" id="46" orientation="2" />
+                    <terminal x="0" y="-17" id="45" orientation="0"/>
+                    <terminal x="0" y="17" id="46" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Four" />
+                    <input x="2.75" y="3" text="Four"/>
                 </inputs>
             </element>
-            <element x="550" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="550" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="47" orientation="0" />
-                    <terminal x="0" y="17" id="48" orientation="2" />
+                    <terminal x="0" y="-17" id="47" orientation="0"/>
+                    <terminal x="0" y="17" id="48" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Cuis." />
+                    <input x="2.75" y="3" text="Cuis."/>
                 </inputs>
             </element>
-            <element x="600" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="600" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="49" orientation="0" />
-                    <terminal x="0" y="17" id="50" orientation="2" />
+                    <terminal x="0" y="-17" id="49" orientation="0"/>
+                    <terminal x="0" y="17" id="50" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Lum" />
+                    <input x="2.75" y="3" text="Lum"/>
                 </inputs>
             </element>
-            <element x="650" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="650" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="51" orientation="0" />
-                    <terminal x="0" y="17" id="52" orientation="2" />
+                    <terminal x="0" y="-17" id="51" orientation="0"/>
+                    <terminal x="0" y="17" id="52" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="PC" />
+                    <input x="2.75" y="3" text="PC"/>
                 </inputs>
             </element>
-            <element x="700" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0" >
+            <element x="700" y="220" type="common://protections/disjoncteurs/disjoncteur1.elmt" orientation="0">
                 <terminals>
-                    <terminal x="0" y="-17" id="53" orientation="0" />
-                    <terminal x="0" y="17" id="54" orientation="2" />
+                    <terminal x="0" y="-17" id="53" orientation="0"/>
+                    <terminal x="0" y="17" id="54" orientation="2"/>
                 </terminals>
                 <inputs>
-                    <input x="2.75" y="3" text="Lum" />
+                    <input x="2.75" y="3" text="Lum"/>
                 </inputs>
             </element>
         </elements>
         <conductors>
-            <conductor neutral="true" phase="1" terminal1="11" ground="true" terminal2="27" type="single" />
-            <conductor neutral="true" phase="1" terminal1="7" ground="true" terminal2="32" type="single" />
-            <conductor neutral="true" phase="1" terminal1="6" ground="true" terminal2="10" type="single" />
-            <conductor neutral="true" phase="1" terminal1="23" ground="true" terminal2="26" type="single" />
-            <conductor neutral="true" phase="1" terminal1="15" ground="true" terminal2="6" type="single" />
-            <conductor neutral="true" phase="1" terminal1="13" ground="true" terminal2="14" type="single" />
-            <conductor neutral="true" phase="1" terminal1="16" ground="true" terminal2="20" type="single" />
-            <conductor neutral="true" phase="1" terminal1="13" ground="true" terminal2="16" type="single" >
-                <segment length="6.5" orientation="vertical" />
-                <segment length="22.5" orientation="vertical" />
-                <segment length="100" orientation="horizontal" />
-                <segment length="2.5" orientation="vertical" />
-                <segment length="6.5" orientation="vertical" />
+            <conductor neutral="true" phase="1" terminal1="11" ground="true" terminal2="27" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="7" ground="true" terminal2="32" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="6" ground="true" terminal2="10" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="23" ground="true" terminal2="26" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="15" ground="true" terminal2="6" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="13" ground="true" terminal2="14" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="16" ground="true" terminal2="20" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="13" ground="true" terminal2="16" type="single">
+                <segment length="6.5" orientation="vertical"/>
+                <segment length="22.5" orientation="vertical"/>
+                <segment length="100" orientation="horizontal"/>
+                <segment length="2.5" orientation="vertical"/>
+                <segment length="6.5" orientation="vertical"/>
             </conductor>
-            <conductor neutral="true" phase="1" terminal1="20" ground="true" terminal2="18" type="single" />
-            <conductor neutral="true" phase="1" terminal1="18" ground="true" terminal2="22" type="single" >
-                <segment length="-6.5" orientation="vertical" />
-                <segment length="-2.5" orientation="vertical" />
-                <segment length="100" orientation="horizontal" />
-                <segment length="7.5" orientation="vertical" />
-                <segment length="11.5" orientation="vertical" />
+            <conductor neutral="true" phase="1" terminal1="20" ground="true" terminal2="18" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="18" ground="true" terminal2="22" type="single">
+                <segment length="-6.5" orientation="vertical"/>
+                <segment length="-2.5" orientation="vertical"/>
+                <segment length="100" orientation="horizontal"/>
+                <segment length="7.5" orientation="vertical"/>
+                <segment length="11.5" orientation="vertical"/>
             </conductor>
-            <conductor neutral="true" phase="1" terminal1="17" ground="true" terminal2="0" type="single" />
-            <conductor neutral="true" phase="1" terminal1="1" ground="true" terminal2="9" type="single" />
-            <conductor neutral="true" phase="1" terminal1="0" ground="true" terminal2="33" type="single" />
-            <conductor neutral="true" phase="1" terminal1="34" ground="true" terminal2="5" type="single" />
-            <conductor neutral="true" phase="1" terminal1="33" ground="true" terminal2="35" type="single" />
-            <conductor neutral="true" phase="1" terminal1="4" ground="true" terminal2="36" type="single" />
-            <conductor neutral="true" phase="1" terminal1="21" ground="true" terminal2="37" type="single" />
-            <conductor neutral="true" phase="1" terminal1="37" ground="true" terminal2="39" type="single" />
-            <conductor neutral="true" phase="1" terminal1="39" ground="true" terminal2="41" type="single" />
-            <conductor neutral="true" phase="1" terminal1="41" ground="true" terminal2="43" type="single" />
-            <conductor neutral="true" phase="1" terminal1="43" ground="true" terminal2="45" type="single" />
-            <conductor neutral="true" phase="1" terminal1="45" ground="true" terminal2="47" type="single" />
-            <conductor neutral="true" phase="1" terminal1="47" ground="true" terminal2="49" type="single" />
-            <conductor neutral="true" phase="1" terminal1="19" ground="true" terminal2="51" type="single" />
-            <conductor neutral="true" phase="1" terminal1="51" ground="true" terminal2="53" type="single" />
-            <conductor neutral="true" phase="1" terminal1="38" ground="true" terminal2="31" type="single" />
-            <conductor neutral="true" phase="1" terminal1="3" ground="true" terminal2="40" type="single" />
-            <conductor neutral="true" phase="1" terminal1="24" ground="true" terminal2="42" type="single" />
-            <conductor neutral="true" phase="1" terminal1="8" ground="true" terminal2="44" type="single" />
-            <conductor neutral="true" phase="1" terminal1="28" ground="true" terminal2="46" type="single" />
-            <conductor neutral="true" phase="1" terminal1="29" ground="true" terminal2="48" type="single" />
-            <conductor neutral="true" phase="1" terminal1="50" ground="true" terminal2="25" type="single" />
-            <conductor neutral="true" phase="1" terminal1="52" ground="true" terminal2="2" type="single" />
-            <conductor neutral="true" phase="1" terminal1="54" ground="true" terminal2="30" type="single" />
+            <conductor neutral="true" phase="1" terminal1="17" ground="true" terminal2="0" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="1" ground="true" terminal2="9" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="0" ground="true" terminal2="33" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="34" ground="true" terminal2="5" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="33" ground="true" terminal2="35" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="4" ground="true" terminal2="36" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="21" ground="true" terminal2="37" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="37" ground="true" terminal2="39" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="39" ground="true" terminal2="41" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="41" ground="true" terminal2="43" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="43" ground="true" terminal2="45" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="45" ground="true" terminal2="47" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="47" ground="true" terminal2="49" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="19" ground="true" terminal2="51" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="51" ground="true" terminal2="53" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="38" ground="true" terminal2="31" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="3" ground="true" terminal2="40" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="24" ground="true" terminal2="42" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="8" ground="true" terminal2="44" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="28" ground="true" terminal2="46" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="29" ground="true" terminal2="48" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="50" ground="true" terminal2="25" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="52" ground="true" terminal2="2" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="54" ground="true" terminal2="30" type="single"/>
         </conductors>
     </diagram>
     <collection/>
