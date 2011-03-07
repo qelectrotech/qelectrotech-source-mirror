@@ -6,6 +6,7 @@ Stern/Stern/Dreieckschaltung
         <name lang="it">Trasformatore trifase a tre avvolgi- menti, collegamento stella-stel- la-triangolo
 </name>
         <name lang="fr">Transformateur 2 secondaires étoile-étoile-triangle</name>
+        <name lang="pl">Transformator trójuzwojeniowy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

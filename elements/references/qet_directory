@@ -1,7 +1,5 @@
 <qet-directory>
     <names>
-        <name lang="en">References</name>
-        <name lang="fr">References</name>
-	<name lang="it"Riferimenti</name>
-        </names>
+        <name lang="pl">Odsyłacze</name>
+    </names>
 </qet-directory>

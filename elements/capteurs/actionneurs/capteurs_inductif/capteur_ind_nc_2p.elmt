@@ -1,6 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="pl">Czujnik indukcyjny (NC)</name>
+        <name lang="pl">Czujnik indukcyjny trójprzewodowy (NC)</name>
     </names>
     <informations></informations>
     <description>

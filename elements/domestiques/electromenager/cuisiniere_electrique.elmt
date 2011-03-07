@@ -1,6 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
-        <name lang="fr">Cuisinière électrique</name>
+        <name lang="fr">Kuchenka elektryczna</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,6 +1,7 @@
-<definition width="60" version="0.22" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="fr">Gyrophare</name>
+        <name lang="pl">Sygnalizator świetlny napędzany silnikiem</name>
     </names>
     <informations></informations>
     <description>
