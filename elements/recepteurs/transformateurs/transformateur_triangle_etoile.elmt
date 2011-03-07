@@ -1,6 +1,7 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="fr">Transformateur triangle étoile</name>
+        <name lang="pl">Rtansformator Dy</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

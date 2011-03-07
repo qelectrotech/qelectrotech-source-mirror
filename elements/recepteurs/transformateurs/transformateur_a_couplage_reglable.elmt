@@ -6,6 +6,7 @@ Transformator mit veränderbarer Kopplung
         <name lang="it">Trasformatore monofase con ac- coppiamento regolabile
 </name>
         <name lang="fr">Transformateur à couplage réglable</name>
+        <name lang="pl">Transformator z regulowanym sprzężeniem</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,9 +2,9 @@
     <names>
         <name lang="en">Three-phase autotransducer</name>
         <name lang="fr">Autotransformateur triphasé</name>
-        <name lang="pl">Autotransformatort rójfazowy</name>
+        <name lang="pl">Autotransformatort trójfazowy</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="20" y="17.6667" size="5" text="___V"/>

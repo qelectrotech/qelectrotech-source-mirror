@@ -10,6 +10,7 @@ Stufenschalter, Stern/Dreieckschaltung
         <name lang="it">Trasformatore trifase a prese mul- tiple, con commutatore manovra- bile sotto carico, collegamento stella triangolo
 </name>
         <name lang="fr">Transformateur étoile triangle à prise manoeuvrable en charge</name>
+        <name lang="pl">Transformator Yd z przełączanymi zaczepami</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

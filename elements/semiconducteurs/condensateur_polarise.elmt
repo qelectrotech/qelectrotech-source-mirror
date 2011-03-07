@@ -1,7 +1,8 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="it">Condensatore elettrolitico</name>
         <name lang="fr">Condensateur polarisé</name>
-	<name lang="it">Condensatore elettrolitico</name>
+        <name lang="pl">Kondensator elektrolityczny</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

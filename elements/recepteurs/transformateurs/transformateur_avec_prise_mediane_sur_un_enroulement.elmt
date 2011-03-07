@@ -6,6 +6,7 @@ Wicklung
         <name lang="it">Trasformatore monofase con presa centrale su un avvolgimento
 </name>
         <name lang="fr">Transformateur avec prise médiane sur un enroulement</name>
+        <name lang="pl">Transformator z przewodem środkowym</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

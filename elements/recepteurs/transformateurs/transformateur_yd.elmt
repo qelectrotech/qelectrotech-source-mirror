@@ -9,6 +9,7 @@ tion star-delta
         <name lang="it">Trasformatore trifase, collegamen- to stella-triangolo
 </name>
         <name lang="fr">Transformateur Y D</name>
+        <name lang="pl">Transformator Yd</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
