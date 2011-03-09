@@ -1,7 +1,7 @@
-<definition width="70" version="0.22" hotspot_x="40" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="40" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
         <name lang="fr">Cellule photo-électrique - Emetteur</name>
-        <name lang="pl">Czujnik optoelektroniczny - nadajnik</name>
+        <name lang="pl">Komórka fotoelektryczna - nadajnik</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
