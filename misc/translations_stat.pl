@@ -130,6 +130,7 @@ sub get_pattern_count_in_file {
 
 sub analyze_element_file {
 	return if (($File::Find::name =~ m/\.svn/) || (! -f $_));
+	return if ($_ !~ m/(^qet_directory|\.elmt)$/);
 	
 	# One more element, count it
 	our $elements_count;
@@ -139,7 +140,7 @@ sub analyze_element_file {
 	my $file = $_;
 	our %languages;
 	for my $lang_key (our @ordered_languages) {
-		if (get_pattern_count_in_file('file' => $file, 'pattern' => sprintf('<name lang="%s">', $lang_key, 'limit' => 1)) == 1) {
+		if (get_pattern_count_in_file('file' => $file, 'pattern' => sprintf('<name\s+lang="%s"\s*>', $lang_key, 'limit' => 1)) == 1) {
 			++ $languages{$lang_key}{'translated_elements_count'};
 		}
 	}
