@@ -1,0 +1,11 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
+    <names>
+        <name lang="fr">Cle absente pene entree manoeuvre libre</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="4" x="19" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <rect width="40" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-7.07107" y="-7.07107" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
+    </description>
+</definition>
