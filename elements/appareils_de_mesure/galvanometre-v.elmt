@@ -1,9 +1,7 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
     <names>
-        <name lang="de">Galvanometer
-</name>
+        <name lang="de">Galvanometer</name>
         <name lang="fr">Galvanomètre vertical</name>
-    </names>
         <name lang="pl">Galwanometr (pionowo)</name>
     </names>
     <informations>Author: The QElectroTech team

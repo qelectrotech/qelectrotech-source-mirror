@@ -1,9 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
-        <name lang="de">Frequenzmeßgerät, anzeigend
-</name>
+        <name lang="de">Frequenzmeßgerät, anzeigend</name>
         <name lang="fr">Fréquencemètre h</name>
-    </names>
         <name lang="pl">Częstotliwościomierz (poziomo)</name>
     </names>
     <informations>Author: The QElectroTech team
