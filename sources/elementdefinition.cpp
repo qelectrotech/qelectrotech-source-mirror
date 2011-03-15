@@ -176,6 +176,20 @@ ElementDefinition *ElementDefinition::createElement(const QString &) {
 }
 
 /**
+	@return always true - an element contains nothing but itself
+*/
+bool ElementDefinition::isEmpty() {
+	return(false);
+}
+
+/**
+	@return always 1
+*/
+int ElementDefinition::count() {
+	return(1);
+}
+
+/**
 	@return toujours 0 - un element n'est pas une collection
 */
 ElementsCollection *ElementDefinition::toCollection() {

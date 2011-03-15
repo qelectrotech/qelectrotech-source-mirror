@@ -73,6 +73,7 @@ class ElementsCollection : public ElementsCollectionItem {
 	virtual ElementDefinition *element(const QString &);
 	virtual ElementDefinition *createElement(const QString &);
 	virtual bool isEmpty();
+	virtual int count();
 	
 	// Methodes propres a la classe ElementsCollection
 	public:

@@ -65,6 +65,7 @@ class ElementsCategory : public ElementsCollectionItem {
 	virtual void deleteUnusedElements(MoveElementsHandler *handler);
 	virtual void deleteEmptyCategories(MoveElementsHandler *handler);
 	virtual bool isEmpty();
+	virtual int count();
 	
 	// Methodes propres a la classe ElementsCategory
 	public:

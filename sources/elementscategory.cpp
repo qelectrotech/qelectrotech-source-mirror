@@ -616,6 +616,17 @@ bool ElementsCategory::isEmpty() {
 }
 
 /**
+	@return the count of categories and elements within this collection
+*/
+int ElementsCategory::count() {
+	int items_count = elements().count();
+	foreach(ElementsCategory *category, categories()) {
+		items_count += category -> count();
+	}
+	return(items_count);
+}
+
+/**
 	Methode permettant d'obtenir le nom affichable de cette categorie.
 	@return Le nom affichable de la categorie
 */

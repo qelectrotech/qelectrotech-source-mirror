@@ -379,6 +379,15 @@ bool ElementsCollection::isEmpty() {
 }
 
 /**
+	@return the count of categories and elements within this collection
+*/
+int ElementsCollection::count() {
+	ElementsCategory *root_category = rootCategory();
+	if (!root_category) return(0);
+	return(root_category -> count());
+}
+
+/**
 	@param item_path chemin d'un item sous la forme d'une adresse
 	virtuelle comme common://cat1/cat2/cat3
 	@param prefer_collections true pour renvoyer la collection lorsque le
@@ -404,3 +413,4 @@ ElementsCollectionItem *ElementsCollection::item(const QString &item_path, bool 
 	
 	return(result);
 }
+

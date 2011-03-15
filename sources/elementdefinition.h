@@ -102,6 +102,8 @@ class ElementDefinition : public ElementsCollectionItem {
 	virtual QList<ElementDefinition *> elements();
 	virtual ElementDefinition *element(const QString &);
 	virtual ElementDefinition *createElement(const QString &);
+	virtual bool isEmpty();
+	virtual int count();
 	virtual ElementsCollectionItem *copy(ElementsCategory *, MoveElementsHandler *, bool = true);
 	virtual ElementsCollectionItem *move(ElementsCategory *, MoveElementsHandler *);
 	
