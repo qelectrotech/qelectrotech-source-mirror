@@ -82,15 +82,21 @@ class ElementsPanel : public QTreeWidget {
 	Diagram *selectedDiagram() const;
 	ElementsLocation selectedLocation() const;
 	
+	void reloadCollections();
+	int elementsCollectionItemsCount();
+	
 	signals:
 	void requestForProject(QETProject *);
 	void requestForDiagram(Diagram *);
 	void requestForCollectionItem(ElementsCollectionItem *);
 	void requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint);
+	void readingAboutToBegin();
+	void readingFinished();
+	void loadingProgressed(int, int);
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
-	void reload(bool = true);
+	void reload(bool = false);
 	void filter(const QString &);
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);
@@ -107,6 +113,7 @@ class ElementsPanel : public QTreeWidget {
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
 	void startDrag(Qt::DropActions);
+	bool event(QEvent *);
 	
 	private:
 	QTreeWidgetItem *addProject   (QTreeWidgetItem *, QETProject         *);
@@ -134,5 +141,7 @@ class ElementsPanel : public QTreeWidget {
 	QHash<QTreeWidgetItem *, QETProject *> title_blocks_directories_;
 	QTreeWidgetItem *common_collection_item_;
 	QTreeWidgetItem *custom_collection_item_;
+	int loading_progress_;
+	bool first_activation_;
 };
 #endif

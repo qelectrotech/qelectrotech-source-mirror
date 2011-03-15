@@ -740,9 +740,11 @@ bool QETDiagramEditor::closeCurrentProject() {
 	Ouvre un projet depuis un fichier et l'ajoute a cet editeur
 	@param filepath Chemin du projet a ouvrir
 	@param interactive true pour afficher des messages a l'utilisateur, false sinon
+	@param update_panel Whether the elements panel should be warned this
+	project has been added. Defaults to true.
 	@return true si l'ouverture a reussi, false sinon
 */
-bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interactive) {
+bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interactive, bool update_panel) {
 	if (filepath.isEmpty()) return(false);
 	
 	QFileInfo filepath_info(filepath);
@@ -812,14 +814,18 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 	// on l'ajoute a la liste des fichiers recents
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
 	// ... et on l'ajoute dans l'application
-	return(addProject(project));
+	// Note: we require the panel not to be updated when the project is added
+	// because it will update itself as soon as it becomes visible
+	return(addProject(project), update_panel);
 }
 
 /**
 	Ajoute un projet
 	@param project projet a ajouter
+	@param update_panel Whether the elements panel should be warned this
+	project has been added. Defaults to true.
 */
-bool QETDiagramEditor::addProject(QETProject *project) {
+bool QETDiagramEditor::addProject(QETProject *project, bool update_panel) {
 	// enregistre le projet
 	QETApp::registerProject(project);
 	
@@ -828,7 +834,9 @@ bool QETDiagramEditor::addProject(QETProject *project) {
 	addProjectView(project_view);
 	
 	// met a jour le panel d'elements
-	pa -> elementsPanel().projectWasOpened(project);
+	if (update_panel) {
+		pa -> elementsPanel().projectWasOpened(project);
+	}
 	
 	return(true);
 }

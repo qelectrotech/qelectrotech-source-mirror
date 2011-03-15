@@ -49,6 +49,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *erase_textfield;
 	QLineEdit *filter_textfield;
 	ElementsCollectionItem *dnd_item_src_, *dnd_item_dst_;
+	QProgressBar *progress_bar_;
 	
 	// methodes
 	public:
@@ -92,6 +93,9 @@ class ElementsPanelWidget : public QWidget {
 	void moveElements(ElementsCollectionItem *, ElementsCollectionItem *);
 	void copyElements();
 	void copyElements(ElementsCollectionItem *, ElementsCollectionItem *);
+	void collectionsRead();
+	void collectionsReadFinished();
+	void updateProgressBar(int, int);
 	
 	private:
 	void launchElementEditor(const ElementsLocation &);

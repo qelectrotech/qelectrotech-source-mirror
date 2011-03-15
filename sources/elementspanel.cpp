@@ -25,6 +25,37 @@
 #include "fileelementdefinition.h"
 #include "qeticons.h"
 
+/**
+	This class implements a thread reloading the following elements
+	collections:
+	  * the common collection
+	  * the custom collection
+	  * the embedded collection of each project listed in the projects_
+	attribute.
+*/
+class ReloadCollectionThread : public QThread {
+	public:
+	void run();
+	/// list of projects whose embedded collection should be reloaded.
+	QList<QETProject *> projects_;
+};
+
+/**
+	Reloads collections.
+*/
+void ReloadCollectionThread::run() {
+	QETApp::commonElementsCollection() -> reload();
+	QETApp::customElementsCollection() -> reload();
+	
+	// reloads collection of every project displayed in this panel
+	foreach(QETProject *project, projects_) {
+		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
+			project_collection -> reload();
+		}
+	}
+	exit();
+}
+
 /*
 	Lorsque le flag ENABLE_PANEL_DND_CHECKS est defini, le panel d'elements
 	effectue des verifications lors des drag'n drop d'elements et categories.
@@ -54,7 +85,8 @@
 ElementsPanel::ElementsPanel(QWidget *parent) :
 	QTreeWidget(parent),
 	common_collection_item_(0),
-	custom_collection_item_(0)
+	custom_collection_item_(0),
+	first_activation_(true)
 {
 	
 	// selection unique
@@ -71,13 +103,6 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	
 	// taille des elements
 	setIconSize(QSize(50, 50));
-	
-	// charge les collections
-	reload();
-	
-	// la premiere fois, etend le premier niveau des collections
-	if (common_collection_item_) common_collection_item_ -> setExpanded(true);
-	if (custom_collection_item_) custom_collection_item_ -> setExpanded(true);
 	
 	// force du noir sur une alternance de blanc (comme le schema) et de gris
 	// clair, avec du blanc sur bleu pas trop fonce pour la selection
@@ -515,6 +540,17 @@ void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
 }
 
 /**
+	@param event Object describing the received event 
+*/
+bool ElementsPanel::event(QEvent *event) {
+	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
+		reload(false);
+		first_activation_ = false;
+	}
+	return(QTreeWidget::event(event));
+}
+
+/**
 	Methode permettant d'ajouter un projet au panel d'elements.
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere le projet
 	@param project Projet a inserer dans le panel d'elements
@@ -638,6 +674,7 @@ QTreeWidgetItem *ElementsPanel::addCategory(QTreeWidgetItem *qtwi_parent, Elemen
 	t.setColorAt(1, QColor("#ffffff"));
 	qtwi_category -> setBackground(0, QBrush(t));
 	locations_.insert(qtwi_category, category -> location());
+	emit(loadingProgressed(++ loading_progress_, -1));
 	
 	// reduit le dossier si besoin
 	qtwi_category -> setExpanded(expanded_directories.contains(category -> location().toString()));
@@ -646,7 +683,10 @@ QTreeWidgetItem *ElementsPanel::addCategory(QTreeWidgetItem *qtwi_parent, Elemen
 	foreach(ElementsCategory *sub_cat, category -> categories()) addCategory(qtwi_category, sub_cat);
 	
 	// ajout des elements
-	foreach(ElementDefinition *elmt, category -> elements()) addElement(qtwi_category, elmt);
+	foreach(ElementDefinition *elmt, category -> elements()) {
+		addElement(qtwi_category, elmt);
+		emit(loadingProgressed(++ loading_progress_, -1));
+	}
 	
 	return(qtwi_category);
 }
@@ -696,18 +736,50 @@ QTreeWidgetItem *ElementsPanel::addElement(QTreeWidgetItem *qtwi_parent, Element
 }
 
 /**
+	Reloads the following collections:
+	  * common collection
+	  * custom collection
+	  * collection of every project displayed in this panel
+*/
+void ElementsPanel::reloadCollections() {
+	ReloadCollectionThread thread;
+	thread.projects_ = projects_to_display_.values();
+	thread.start();
+	while(!thread.wait(100)) {
+		QApplication::processEvents();
+	}
+}
+
+/**
+	@return the count of categories and elements within the following collections:
+	  * common collection
+	  * custom collection
+	  * collection of every project displayed in this panel
+*/
+int ElementsPanel::elementsCollectionItemsCount() {
+	int items_count = 0;
+	items_count += QETApp::commonElementsCollection() -> count();
+	items_count += QETApp::customElementsCollection() -> count();
+	foreach(QETProject *project, projects_to_display_.values()) {
+		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
+			items_count += project_collection -> count();
+		}
+	}
+	return(items_count);
+}
+
+/**
 	Recharge l'arbre des elements
 	@param reload_collections true pour relire les collections depuis leurs sources (fichiers, projets...)
 */
 void ElementsPanel::reload(bool reload_collections) {
-	
 	// sauvegarde la liste des repertoires reduits
 	saveExpandedCategories();
 	
 	if (reload_collections) {
-		foreach(ElementsCollection *collection, QETApp::availableCollections()) {
-			collection -> reload();
-		}
+		emit(readingAboutToBegin());
+		reloadCollections();
+		emit(readingFinished());
 	}
 	
 	// vide l'arbre et le hash
@@ -719,11 +791,21 @@ void ElementsPanel::reload(bool reload_collections) {
 	common_collection_item_ = 0;
 	custom_collection_item_ = 0;
 	
+	// estimates the number of categories and elements to load
+	int items_count = elementsCollectionItemsCount();
+	emit(loadingProgressed(loading_progress_ = 0, items_count));
+	
 	// chargement des elements de la collection QET
 	common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet.png"));
 	
 	// chargement des elements de la collection utilisateur
 	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/16x16/go-home.png"));
+	
+	// the first time, expand the first level of collections
+	if (first_activation_) {
+		common_collection_item_ -> setExpanded(true);
+		custom_collection_item_ -> setExpanded(true);
+	}
 	
 	// chargement des projets
 	foreach(QETProject *project, projects_to_display_.values()) {
@@ -1118,3 +1200,4 @@ void ElementsPanel::ensureHierarchyIsVisible(QList<QTreeWidgetItem *> items) {
 		if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
 	}
 }
+

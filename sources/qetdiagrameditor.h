@@ -52,7 +52,7 @@ class QETDiagramEditor : public QMainWindow {
 	void closeEvent(QCloseEvent *);
 	QList<ProjectView *> openedProjects() const;
 	void addProjectView(ProjectView *);
-	bool openAndAddProject(const QString &, bool interactive = true);
+	bool openAndAddProject(const QString &, bool = true, bool = true);
 	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
 	ProjectView *viewForFile(const QString &) const;
@@ -67,7 +67,7 @@ class QETDiagramEditor : public QMainWindow {
 	virtual bool event(QEvent *);
 	
 	private:
-	bool addProject(QETProject *);
+	bool addProject(QETProject *, bool = true);
 	ProjectView *currentProject() const;
 	DiagramView *currentDiagram() const;
 	ProjectView *findProject(DiagramView *) const;

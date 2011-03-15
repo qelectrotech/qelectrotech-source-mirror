@@ -92,6 +92,12 @@ QETApp::QETApp(int &argc, char **argv) :
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	
+	// loads known collections into memory (this does not include items rendering made in elements panels)
+	setSplashScreenStep(tr("Chargement... Lecture des collections d'\351l\351ments", "splash screen caption"));
+	foreach(ElementsCollection *collection, availableCollections()) {
+		collection -> reload();
+	}
+	
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
 		setSplashScreenStep(tr("Chargement... \311diteur de sch\351mas", "splash screen caption"));

@@ -44,6 +44,10 @@
 	@param parent Le QWidget parent de ce widget
 */
 ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
+	// initialize the progress bar (hidden by default)
+	progress_bar_ = new QProgressBar(this);
+	progress_bar_ -> setVisible(false);
+	progress_bar_ -> setTextVisible(true);
 	// initalise le panel d'elements
 	elements_panel = new ElementsPanel(this);
 	
@@ -124,6 +128,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 		SLOT(handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint &)),
 		Qt::QueuedConnection
 	);
+	connect(elements_panel, SIGNAL(loadingProgressed(int, int)),  this, SLOT(updateProgressBar(int, int)));
+	connect(elements_panel, SIGNAL(readingAboutToBegin()),        this, SLOT(collectionsRead()));
+	connect(elements_panel, SIGNAL(readingFinished()),            this, SLOT(collectionsReadFinished()));
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);
@@ -146,6 +153,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	vlayout -> addWidget(toolbar);
 	vlayout -> addWidget(filter_toolbar);
 	vlayout -> addWidget(elements_panel);
+	vlayout -> addWidget(progress_bar_);
 	vlayout -> setStretchFactor(elements_panel, 75000);
 	setLayout(vlayout);
 }
@@ -171,7 +179,7 @@ void ElementsPanelWidget::clearFilterTextField() {
 */
 void ElementsPanelWidget::reloadAndFilter() {
 	// recharge tous les elements
-	elements_panel -> reload();
+	elements_panel -> reload(true);
 	
 	// reapplique le filtre
 	elements_panel -> filter(filter_textfield -> text());
@@ -528,6 +536,44 @@ void ElementsPanelWidget::moveElements(ElementsCollectionItem *src, ElementsColl
 */
 void ElementsPanelWidget::copyElements() {
 	copyElements(dnd_item_src_, dnd_item_dst_);
+}
+
+/**
+	Reflects the fact that collections are being read (i.e from filesystem) in
+	the progress bar.
+*/
+void ElementsPanelWidget::collectionsRead() {
+	progress_bar_ -> setMinimum(0);
+	progress_bar_ -> setMaximum(1);
+	progress_bar_ -> setValue(0);
+	progress_bar_ -> setFormat(tr("Lecture...", "Reading of elements/categories files"));
+	progress_bar_ -> setVisible(true);
+}
+
+/**
+	Reflects the fact that collections being read (i.e from filesystem) in the
+	progress bar.
+*/
+void ElementsPanelWidget::collectionsReadFinished() {
+	progress_bar_ -> setFormat(tr("Chargement : %p%", "Visual rendering of elements/categories files - %p is the progress percentage"));
+}
+
+/**
+	Updates the progress bar
+	@param current value that should be displayed
+	@param maximum maximum expected value; -1 means "use the previously known one"
+*/
+void ElementsPanelWidget::updateProgressBar(int current, int maximum) {
+	int provided_maximum = maximum == -1 ? progress_bar_ -> maximum() : maximum;
+	if (provided_maximum != progress_bar_ -> maximum()) {
+		progress_bar_ -> setMaximum(maximum);
+	}
+	if (!current) {
+		progress_bar_ -> setVisible(true);
+	} else if (current == provided_maximum) {
+		QTimer::singleShot(500, progress_bar_, SLOT(hide()));
+	}
+	progress_bar_ -> setValue(current);
 }
 
 /**
