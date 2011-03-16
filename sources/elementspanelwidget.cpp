@@ -551,11 +551,11 @@ void ElementsPanelWidget::collectionsRead() {
 }
 
 /**
-	Reflects the fact that collections being read (i.e from filesystem) in the
-	progress bar.
+	Reflects the fact that collections have been read (i.e from filesystem) in
+	the progress bar.
 */
 void ElementsPanelWidget::collectionsReadFinished() {
-	progress_bar_ -> setFormat(tr("Chargement : %p%", "Visual rendering of elements/categories files - %p is the progress percentage"));
+	// we do not hide the progress bar because it will be used by updateProgressBar
 }
 
 /**
@@ -569,6 +569,7 @@ void ElementsPanelWidget::updateProgressBar(int current, int maximum) {
 		progress_bar_ -> setMaximum(maximum);
 	}
 	if (!current) {
+		progress_bar_ -> setFormat(tr("Chargement : %p%", "Visual rendering of elements/categories files - %p is the progress percentage"));
 		progress_bar_ -> setVisible(true);
 	} else if (current == provided_maximum) {
 		QTimer::singleShot(500, progress_bar_, SLOT(hide()));
