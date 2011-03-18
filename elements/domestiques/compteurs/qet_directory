@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-         <name lang="fr">Compteurs</name>
-	 <name lang="en">Meters</name>
+        <name lang="en">Meters</name>
+        <name lang="fr">Compteurs</name>
+        <name lang="pl">Liczniki</name>
     </names>
 </qet-directory>
