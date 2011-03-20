@@ -143,5 +143,6 @@ class ElementsPanel : public QTreeWidget {
 	QTreeWidgetItem *custom_collection_item_;
 	int loading_progress_;
 	bool first_activation_;
+	bool first_reload_;
 };
 #endif

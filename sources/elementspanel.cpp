@@ -86,7 +86,8 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	QTreeWidget(parent),
 	common_collection_item_(0),
 	custom_collection_item_(0),
-	first_activation_(true)
+	first_activation_(true),
+	first_reload_(true)
 {
 	
 	// selection unique
@@ -544,7 +545,7 @@ void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
 */
 bool ElementsPanel::event(QEvent *event) {
 	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
-		reload(false);
+		QTimer::singleShot(250, this, SLOT(reload()));
 		first_activation_ = false;
 	}
 	return(QTreeWidget::event(event));
@@ -802,7 +803,8 @@ void ElementsPanel::reload(bool reload_collections) {
 	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/16x16/go-home.png"));
 	
 	// the first time, expand the first level of collections
-	if (first_activation_) {
+	if (first_reload_) {
+		first_reload_ = true;
 		common_collection_item_ -> setExpanded(true);
 		custom_collection_item_ -> setExpanded(true);
 	}
