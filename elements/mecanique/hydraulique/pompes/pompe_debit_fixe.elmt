@@ -1,0 +1,16 @@
+<definition width="70" version="0.2" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy" >
+    <names>
+        <name lang="fr" >Pompe debit fixe</name>
+    </names>
+    <description>
+        <input x="24" y="-13.6667" size="8" rotate="true" text="_" />
+        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40" />
+        <polygon x4="4.163336342344337e-016" y5="-19.458984375" x5="4.163336342344337e-016" y6="-19.458984375" x6="4.163336342344337e-016" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-19.93359375" x1="0.2373046875000004" y2="-15.009521484375" x2="-2.25439453125" y3="-15.009521484375" x3="2.254394531250001" y4="-19.57763671875" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="24.5" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.4" x1="0" y2="-24.5" x2="0" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20.5" y2="0" x2="-24.5" />
+        <terminal x="0" y="-24.4" orientation="n" />
+        <terminal x="0" y="24.4" orientation="s" />
+        <terminal x="-24.4" y="0" orientation="w" />
+    </description>
+</definition>

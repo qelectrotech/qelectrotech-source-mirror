@@ -1,0 +1,22 @@
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Symbolisation Servovalve 4-2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="21.2393" y="18.6111" size="6" text="t"/>
+        <text x="4" y="18" size="6" text="p"/>
+        <text x="21" y="-13" size="6" text="b"/>
+        <text x="4" y="-13" size="6" text="a"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-15" y2="12" x2="25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="-15" y2="-12" x2="25"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="20" y2="19" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="10" y2="19" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="20" y2="-19" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="10" y2="-19" x2="10"/>
+        <terminal x="10" y="19" orientation="s"/>
+        <terminal x="20" y="19" orientation="s"/>
+        <terminal x="20" y="-19" orientation="n"/>
+        <terminal x="10" y="-19" orientation="n"/>
+    </description>
+</definition>

@@ -1,0 +1,16 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="10" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Check valve</name>
+        <name lang="fr">Clapet simple</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.0444946" x1="-9.38837" y2="0.0444946" x2="-14.5052"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-0.0791016" x1="9.47736" y2="-9.33398" x2="0.222473"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9.55646" y2="9.25488" x2="0.301575"/>
+        <circle x="-9.3526" y="-7.43933" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.8787"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="9.74432" y2="0" x2="14.4608"/>
+        <terminal x="-14.4608" y="0" orientation="w"/>
+        <terminal x="14.5052" y="0" orientation="e"/>
+    </description>
+</definition>

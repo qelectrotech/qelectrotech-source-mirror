@@ -1,0 +1,28 @@
+<definition width="100" version="0.2" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy" >
+    <names>
+        <name lang="en" >Quick exhaust valves</name>
+        <name lang="fr" >Vannes d'échappement rapide</name>
+    </names>
+    <description>
+        <input x="68" y="21" size="9" rotate="true" text="_" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-24" x1="36" y2="1" x2="36" />
+        <circle x="19.1716" y="-2.82843" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.65685" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="36" y2="0" x2="35" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="35" y2="0" x2="36" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="60" y2="12" x2="12" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="12" y2="-12" x2="60" />
+        <line length1="1,5" length2="1,5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="18" y2="6" x2="24" />
+        <line length1="1,5" length2="1,5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="24" y2="0" x2="18" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="12" y2="-12" x2="12" />
+        <line length1="1,5" length2="1,5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="48" y2="0" x2="54" />
+        <line length1="1,5" length2="1,5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="54" y2="-6" x2="48" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="60" y2="12" x2="60" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="72" y2="-3" x2="72" />
+        <line length1="1,5" length2="1,5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="72" y2="0" x2="78" />
+        <line length1="1,5" length2="1,5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="78" y2="-3" x2="72" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="72" y2="0" x2="25" />
+        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="18" y2="0" x2="0" />
+        <terminal x="0" y="0" orientation="w" />
+        <terminal x="36" y="-24" orientation="n" />
+    </description>
+</definition>

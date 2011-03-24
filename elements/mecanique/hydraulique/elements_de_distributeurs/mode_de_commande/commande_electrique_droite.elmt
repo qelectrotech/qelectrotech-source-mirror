@@ -1,0 +1,10 @@
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Commande electrique droite</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="0" y5="-5" x5="15" y6="-5" x6="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="15" y2="5" x2="15" y3="5" x3="0" y4="-5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4.5" x1="3" y2="4.5" x2="12"/>
+    </description>
+</definition>
