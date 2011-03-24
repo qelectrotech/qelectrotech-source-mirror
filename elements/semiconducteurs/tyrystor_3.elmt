@@ -1,5 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
+        <name lang="en">rückwärts sperrende Thyristortriode, N-Gate
+</name>
+        <name lang="fr">Thyristor triode bloqué en inverse, gâchette N
+</name>
         <name lang="pl">Tyrystor triodowy dwukierunkowy. Triak</name>
     </names>
     <informations>EN 60617: 05-04-11</informations>

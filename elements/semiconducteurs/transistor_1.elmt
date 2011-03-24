@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="fr">Transistor bipolaire PNP</name>
         <name lang="pl">Tranzystor biopolarny PNP</name>
     </names>
     <informations>EN 60617: 05-05-01</informations>

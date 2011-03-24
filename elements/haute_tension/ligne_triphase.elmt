@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Ligne triphase</name>
         <name lang="pl">Trzy przewody - forma 1</name>
     </names>
     <informations>EN 60617: 03-01-02</informations>
