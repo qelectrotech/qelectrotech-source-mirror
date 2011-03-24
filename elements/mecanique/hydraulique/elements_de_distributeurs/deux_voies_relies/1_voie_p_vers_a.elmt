@@ -1,14 +1,16 @@
-<definition width="40" version="0.2" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy" >
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="fr" >2 orifices passants</name>
+        <name lang="en">2 ports open</name>
+        <name lang="fr">2 orifices passants</name>
     </names>
+    <informations></informations>
     <description>
-        <text x="2.09216" y="16.2545" size="8" text="p" />
-        <text x="2.38912" y="-12.5239" size="8" text="a" />
-        <polygon x4="10" y5="-10.31640625" x5="10" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.31640625" x1="10" y2="-5.31640625" x2="12.5" y3="-5.31640625" x3="7.5" y4="-10.31640625" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="10" y2="-19" x2="10" />
-        <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10" />
-        <terminal x="10" y="19" orientation="s" />
-        <terminal x="10" y="-19" orientation="n" />
+        <text x="2" y="18" size="8" text="p"/>
+        <text x="2.38912" y="-12.5239" size="8" text="a"/>
+        <polygon x4="10" y5="-10.3164" x5="10" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.3164" x1="10" y2="-5.31641" x2="12.5" y3="-5.31641" x3="7.5" y4="-10.3164"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="10" y2="-19" x2="10"/>
+        <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10"/>
+        <terminal x="10" y="19" orientation="s"/>
+        <terminal x="10" y="-19" orientation="n"/>
     </description>
 </definition>

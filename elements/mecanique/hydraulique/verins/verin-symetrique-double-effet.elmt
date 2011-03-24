@@ -1,5 +1,6 @@
 <definition width="320" version="0.3" hotspot_x="85" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Double acting cylinders -double ended piston rod</name>
         <name lang="fr">Vérin symétrique double effet</name>
     </names>
     <informations></informations>

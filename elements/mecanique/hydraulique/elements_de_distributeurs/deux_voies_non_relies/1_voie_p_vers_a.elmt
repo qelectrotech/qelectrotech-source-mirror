@@ -1,10 +1,12 @@
-<definition width="40" version="0.11" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dyyy" >
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="fr" >2 orifices passant</name>
+        <name lang="en">2 ports open directional</name>
+        <name lang="fr">2 orifices passant</name>
     </names>
+    <informations></informations>
     <description>
-        <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10" />
-        <polygon x4="10.08547008547009" y5="-9.974525908119659" x5="10.08547008547009" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-9.974525908119659" x1="10.08547008547009" y2="-4.974525908119658" x2="12.58547008547009" y3="-4.974525908119658" x3="7.585470085470085" y4="-9.974525908119659" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="-10" x2="10" />
+        <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10"/>
+        <polygon x4="10.0855" y5="-9.97453" x5="10.0855" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-9.97453" x1="10.0855" y2="-4.97453" x2="12.5855" y3="-4.97453" x3="7.58547" y4="-9.97453"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="10" y2="-10" x2="10"/>
     </description>
 </definition>

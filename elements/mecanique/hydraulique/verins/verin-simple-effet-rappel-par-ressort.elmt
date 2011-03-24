@@ -1,5 +1,6 @@
 <definition width="100" version="0.3" hotspot_x="45" hotspot_y="20" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Single acting cylinder - returned by spring</name>
         <name lang="fr">Vérin simple effet - retour par ressort</name>
     </names>
     <informations></informations>

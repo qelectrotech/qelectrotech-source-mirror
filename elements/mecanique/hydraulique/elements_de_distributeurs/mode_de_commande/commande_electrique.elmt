@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Electrical command left</name>
         <name lang="fr">Commande electrique gauche</name>
     </names>
     <informations></informations>
