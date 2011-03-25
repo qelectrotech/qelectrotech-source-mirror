@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">3 holes A->T</name>
         <name lang="fr">3 orifices A->T</name>
     </names>
     <informations></informations>

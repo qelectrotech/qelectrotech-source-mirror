@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">2 ports cross connected</name>
         <name lang="fr">2 voies croisées connectées</name>
     </names>
     <informations></informations>
