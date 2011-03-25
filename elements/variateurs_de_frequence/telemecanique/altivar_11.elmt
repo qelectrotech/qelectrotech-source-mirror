@@ -1,7 +1,9 @@
-<definition width="290" version="0.22" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
+<definition width="290" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
-        <name lang="pl">Altivar 11</name>
+        <name lang="en">Altivar 11</name>
         <name lang="it">Altivar 11</name>
+        <name lang="fr">Altivar 11</name>
+        <name lang="pl">Altivar 11</name>
     </names>
     <informations></informations>
     <description>
