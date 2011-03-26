@@ -146,7 +146,7 @@ void TemplateEditor::integrateLogo() {
 	// now, we need the XML document of the currently edited template
 	QDomDocument xml_template;
 	if (!xml_template.setContent(getXmlString())) {
-		QMessageBox::critical(this, tr("Erreur"), tr("Le code XML du mod\350le ne semble pas \320tre valide."));
+		QMessageBox::critical(this, tr("Erreur"), tr("Le code XML du mod\350le ne semble pas \352tre valide."));
 		return;
 	}
 	
