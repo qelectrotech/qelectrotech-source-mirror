@@ -1007,6 +1007,16 @@ Die Änderungen sind endgültig.</translation>
         <source>Supprimer ce modèle</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Lecture...</source>
+        <comment>Reading of elements/categories files</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chargement : %p%</source>
+        <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EllipseEditor</name>
@@ -1939,6 +1949,11 @@ Options disponibles :
         <source>Impossible d&apos;éditer le template demandé</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Chargement... Lecture des collections d&apos;éléments</source>
+        <comment>splash screen caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
@@ -2566,7 +2581,7 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Pivote les textes sélectionnés Ð un angle précis</source>
+        <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -3806,10 +3821,6 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Le code XML du modèle ne semble pas Ðtre valide.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Intégrer un logo</source>
         <translation type="unfinished"></translation>
     </message>
@@ -3835,6 +3846,10 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
     </message>
     <message>
         <source>Projet parent : %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Le code XML du modèle ne semble pas être valide.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

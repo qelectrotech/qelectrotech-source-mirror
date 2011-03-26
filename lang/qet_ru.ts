@@ -531,12 +531,12 @@
 <context>
     <name>ElementDefinition</name>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="370"/>
+        <location filename="../sources/elementdefinition.cpp" line="384"/>
         <source>L&apos;élément cible n&apos;a pu être créé.</source>
         <translation>Целевой элемент не может быть создан.</translation>
     </message>
     <message>
-        <location filename="../sources/elementdefinition.cpp" line="452"/>
+        <location filename="../sources/elementdefinition.cpp" line="466"/>
         <source>La suppression de cet élément a échoué.</source>
         <translation>Удаление этого элемента не удалось.</translation>
     </message>
@@ -1045,53 +1045,53 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="553"/>
+        <location filename="../sources/elementspanel.cpp" line="590"/>
         <source>Collection projet</source>
         <translation>Коллекция проекта</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="666"/>
+        <location filename="../sources/elementspanel.cpp" line="707"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
         <translation>Этот элемент вы можете перетащить на вашу схему</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="667"/>
+        <location filename="../sources/elementspanel.cpp" line="708"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
         <translation>Перетащите элемент на схему, чтобы вставить</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="690"/>
+        <location filename="../sources/elementspanel.cpp" line="731"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [не используется в проекте]</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="723"/>
+        <location filename="../sources/elementspanel.cpp" line="800"/>
         <source>Collection QET</source>
         <translation>Коллекция QET</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="726"/>
+        <location filename="../sources/elementspanel.cpp" line="803"/>
         <source>Collection utilisateur</source>
         <translation>Коллекция пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1045"/>
+        <location filename="../sources/elementspanel.cpp" line="1129"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>Нет файлов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1069"/>
+        <location filename="../sources/elementspanel.cpp" line="1153"/>
         <source>Modèles de cartouche</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1082"/>
+        <location filename="../sources/elementspanel.cpp" line="1166"/>
         <source>Modèle &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1095"/>
+        <location filename="../sources/elementspanel.cpp" line="1179"/>
         <source>Schéma sans titre</source>
         <translation>Безымянная схема</translation>
     </message>
@@ -1099,135 +1099,147 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanelWidget</name>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="51"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="55"/>
         <source>Recharger les collections</source>
         <translation>Перезагрузить коллекцию</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="52"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Nouvelle catégorie</source>
         <translation>Новая категория</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="53"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Éditer la catégorie</source>
         <translation>Редактировать категорию</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="54"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
         <source>Supprimer la catégorie</source>
         <translation>Удалить категорию</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="55"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
         <source>Vider la collection</source>
         <translation>Очистить коллекцию</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="56"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Nouvel élément</source>
         <translation>Новый элемент</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="57"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
         <source>Importer un élément</source>
         <translation>Импорт элемента</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Éditer l&apos;élément</source>
         <translation>Редактировать элемент</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Удалить элемент</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Fermer ce projet</source>
         <translation>Закрыть этот проект</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Propriétés du projet</source>
         <translation>Свойства проекта</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Propriétés du schéma</source>
         <translation>Свойства схемы</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Ajouter un schéma</source>
         <translation>Добавить схему</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Supprimer ce schéma</source>
         <translation>Удалить эту схему</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Remonter ce schéma</source>
         <translation>Переместить выше</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Abaisser ce schéma</source>
         <translation>Переместить ниже</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Importer un nouveau modèle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Éditer ce modèle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Supprimer ce modèle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Déplacer dans cette catégorie</source>
         <translation>Переместить в эту категорию</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Copier dans cette catégorie</source>
         <translation>Копировать в эту категорию</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Annuler</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Effacer le filtre</source>
         <translation>Очистить фильтр</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="76"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Filtrer : </source>
         <translation>Фильтр : </translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="382"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="390"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
         <translation>Менеджер категорий</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="385"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="393"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Используйте этот менеджер, чтобы добавить, удалить или изменить категории.</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="549"/>
+        <source>Lecture...</source>
+        <comment>Reading of elements/categories files</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="572"/>
+        <source>Chargement : %p%</source>
+        <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2172,158 +2184,164 @@ Les changements seront définitifs.</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="97"/>
+        <location filename="../sources/qetapp.cpp" line="96"/>
+        <source>Chargement... Lecture des collections d&apos;éléments</source>
+        <comment>splash screen caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="103"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка... Редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="100"/>
+        <location filename="../sources/qetapp.cpp" line="106"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка... Открытие файлов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="526"/>
+        <location filename="../sources/qetapp.cpp" line="532"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="527"/>
+        <location filename="../sources/qetapp.cpp" line="533"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="528"/>
+        <location filename="../sources/qetapp.cpp" line="534"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Схема</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="529"/>
+        <location filename="../sources/qetapp.cpp" line="535"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Электрическая</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="530"/>
+        <location filename="../sources/qetapp.cpp" line="536"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="853"/>
+        <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Erreur</source>
         <translation type="unfinished">Ошибка</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="853"/>
+        <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Impossible d&apos;éditer le template demandé</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="984"/>
+        <location filename="../sources/qetapp.cpp" line="990"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1053"/>
+        <location filename="../sources/qetapp.cpp" line="1059"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...Значёк в трее</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1055"/>
+        <location filename="../sources/qetapp.cpp" line="1061"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1057"/>
+        <location filename="../sources/qetapp.cpp" line="1063"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1058"/>
+        <location filename="../sources/qetapp.cpp" line="1064"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Скрыть</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1059"/>
+        <location filename="../sources/qetapp.cpp" line="1065"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Показать</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1060"/>
+        <location filename="../sources/qetapp.cpp" line="1066"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Скрыть редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1061"/>
+        <location filename="../sources/qetapp.cpp" line="1067"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Показать редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1062"/>
+        <location filename="../sources/qetapp.cpp" line="1068"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Скрыть редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1063"/>
+        <location filename="../sources/qetapp.cpp" line="1069"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Показать редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1064"/>
+        <location filename="../sources/qetapp.cpp" line="1070"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Новый редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1065"/>
+        <location filename="../sources/qetapp.cpp" line="1071"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Новый редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1067"/>
+        <location filename="../sources/qetapp.cpp" line="1073"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Закрыть QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1068"/>
+        <location filename="../sources/qetapp.cpp" line="1074"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Свернуть QElectroTech в трэй</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1069"/>
+        <location filename="../sources/qetapp.cpp" line="1075"/>
         <source>Restaurer QElectroTech</source>
         <translation>Восстановить QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1083"/>
+        <location filename="../sources/qetapp.cpp" line="1089"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1102"/>
+        <location filename="../sources/qetapp.cpp" line="1108"/>
         <source>Éditeurs de schémas</source>
         <translation>Редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1118"/>
+        <location filename="../sources/qetapp.cpp" line="1124"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1179"/>
+        <location filename="../sources/qetapp.cpp" line="1185"/>
         <source>Usage : </source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1179"/>
+        <location filename="../sources/qetapp.cpp" line="1185"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2332,7 +2350,7 @@ Les changements seront définitifs.</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1180"/>
+        <location filename="../sources/qetapp.cpp" line="1186"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2349,21 +2367,21 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1186"/>
+        <location filename="../sources/qetapp.cpp" line="1192"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1189"/>
+        <location filename="../sources/qetapp.cpp" line="1195"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define configuration directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1191"/>
+        <location filename="../sources/qetapp.cpp" line="1197"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define the language files directory</translation>
@@ -2820,17 +2838,17 @@ Available options:
         <translation>Удалить выделенные элемены из схемы</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1731"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1739"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Невозможно найти этот элемент в панеле, потому что он был изменён из другого окна</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1737"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1745"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Невозможно найти этот элемент в панеле,... перезагрузка панели...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1749"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1757"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Невозможно найти этот элемент в панели</translation>
     </message>
@@ -2848,9 +2866,9 @@ Available options:
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
-        <source>Pivote les textes sélectionnés Ð un angle précis</source>
+        <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation>Поворачивает выделенный текст на конкретный угол</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
@@ -3068,61 +3086,61 @@ Available options:
         <translation>Схемы QElectroTech (*.qet);;XML-файлы (*.xml);;Все файлы (*)</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="772"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <translation>Невозможно открыть файл</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="771"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="773"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Возможно, что файл, который вы пытаетесь открыть, не читаем. Невозможно открыть файл. Пожалуйста, проверьте файл.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="784"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="786"/>
         <source>Ouverture du projet en lecture seule</source>
         <translation>Открытие проекта в режиме &quot;только чтение&quot;</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="785"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="787"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
         <translation>Возможно, проект, который вы пытаетесь открыть, не доступен для записи. Он будет открыт в режиме &quot;только для чтения&quot;.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="798"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
         <source>Échec de l&apos;ouverture du projet</source>
         <comment>message box title</comment>
         <translation>Невозможно открыть проект</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="800"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="802"/>
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Файл %1 не является проектом QElectroTech. Он не может быть открыт.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1166"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1174"/>
         <source>Sortir du &amp;mode plein écran</source>
         <translation>Выйти из полно&amp;экранного режима</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1168"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1176"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
         <translation>Отобразить QElectroTech в оконном (обычном) режиме</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1170"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1178"/>
         <source>Passer en &amp;mode plein écran</source>
         <translation>Полно&amp;экранный режим</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1172"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1180"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
         <translation>Отобразить QElectroTech в полноэкранном режиме</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1335"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1343"/>
         <source>Active le projet « %1 »</source>
         <translation>Активировать проект « %1 »</translation>
     </message>
@@ -4661,7 +4679,7 @@ Available options:
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
-        <source>Le code XML du modèle ne semble pas Ðtre valide.</source>
+        <source>Le code XML du modèle ne semble pas être valide.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
