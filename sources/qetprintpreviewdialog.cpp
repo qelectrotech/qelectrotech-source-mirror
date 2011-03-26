@@ -356,6 +356,8 @@ void QETPrintPreviewDialog::checkDiagramsCount() {
 void QETPrintPreviewDialog::setDiagramsListVisible(bool display) {
 	diagrams_label_ -> setVisible(display);
 	diagrams_list_  -> setVisible(display);
+	diagrams_select_all_ -> setVisible(display);
+	diagrams_select_none_ -> setVisible(display);
 	
 	if (display) {
 		toggle_diagrams_list_ -> setText(tr("Cacher la liste des sch\351mas"));
