@@ -1,9 +1,10 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Fan heater hairdryer</name>
         <name lang="fr">Radiateur soufflant sèche cheveux</name>
         <name lang="pl">Suszarka do włosów</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="4" x="-7.49829" y="12.585" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>

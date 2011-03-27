@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Series motor three-phase</name>
         <name lang="fr">Moteur série, triphasé
 </name>
     </names>
