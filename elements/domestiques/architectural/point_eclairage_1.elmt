@@ -5,6 +5,7 @@ Sicherheitsleuchte,
 Notleuchte mit getrenntem Stromkreis,
 Rettungszeichenleuchte
 </name>
+        <name lang="en">Emmergency Lighting luminaire on special circuit</name>
         <name lang="fr">Appareil d'éclairage de sécurité sur circuit
 spécial
 </name>

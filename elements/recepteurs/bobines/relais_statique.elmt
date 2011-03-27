@@ -1,10 +1,11 @@
 <definition width="90" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="en">Static relay</name>
+        <name lang="it">Relï¿½ statico</name>
         <name lang="fr">Relais statique</name>
         <name lang="pl">PrzekaÅºnik statyczny</name>
-	<name lang="it">Relè statico</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="70" x="-26" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>

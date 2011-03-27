@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
         <name lang="de">Frequenzmeßgerät, anzeigend</name>
+        <name lang="en">Frequency meter h</name>
         <name lang="fr">Frequency h</name>
         <name lang="pl">Częstotliwościomierz (poziomo)</name>
     </names>

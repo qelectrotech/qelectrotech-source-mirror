@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Drive</name>
         <name lang="fr">Variateur</name>
     </names>
     <informations>Author: The QElectroTech team

@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
-        <name lang="de">Galvanometer</name>
+        <name lang="de">Galvanometer h</name>
+        <name lang="en">Galvanometer h</name>
         <name lang="fr">Galvanomètre horizontal</name>
         <name lang="pl">Galwanomert (poziomo)</name>
     </names>

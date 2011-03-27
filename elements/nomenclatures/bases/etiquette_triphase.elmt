@@ -1,6 +1,7 @@
 <definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Courant alternatif
+        <name lang="en">Label three phase</name>
+        <name lang="fr">Courant alternatif&#xd;
 etiquette</name>
         <name lang="pl">Oznaczenie - prąd przemienny trójfazowy</name>
     </names>

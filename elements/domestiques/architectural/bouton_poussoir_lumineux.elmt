@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Taster
-Taster mit Leuchte
+        <name lang="de">Taster&#xd;
+Taster mit Leuchte&#xd;
 </name>
-        <name lang="fr">Bouton-poussoir lumineux
+        <name lang="en">Push-button with indicator lamp</name>
+        <name lang="fr">Bouton-poussoir lumineux&#xd;
 </name>
         <name lang="pl">Przycisk podświetlony</name>
     </names>

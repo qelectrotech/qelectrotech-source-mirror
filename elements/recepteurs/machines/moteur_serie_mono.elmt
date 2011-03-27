@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Series motor single phase</name>
         <name lang="fr">Moteur série, monophasé</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
@@ -10,7 +11,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <text x="-11" y="17" size="9" text="1 ~"/>
         <arc width="7" x="16.5" y="-29" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <text x="-4" y="21" size="8" text="M"/>
+        <text x="-4" y="7" size="8" text="M"/>
         <arc width="7" x="16.5" y="-19" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="7" x="16.5" y="-14" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <input x="18" y="15" size="9" text="M_"/>
