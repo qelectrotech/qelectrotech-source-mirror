@@ -3866,13 +3866,13 @@ Opções disponiveis:
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="361"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="363"/>
         <source>Cacher la liste des schémas</source>
         <translation>Esconder a lista de esquemas</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="175"/>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="377"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="379"/>
         <source>Cacher les options d&apos;impression</source>
         <translation>Esconder as opções de impressão</translation>
     </message>
@@ -3982,17 +3982,17 @@ Opções disponiveis:
         <translation>Imprimir</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="363"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="365"/>
         <source>Afficher la liste des schémas</source>
         <translation>Mostra a lista de esquemas </translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="379"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="381"/>
         <source>Afficher les options d&apos;impression</source>
         <translation>Mostra as opções de impressão</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="406"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="408"/>
         <source>%1 %</source>
         <translation>%1%</translation>
     </message>

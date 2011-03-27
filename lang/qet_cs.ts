@@ -3869,13 +3869,13 @@ Dostupné volby:
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="174"/>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="361"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="363"/>
         <source>Cacher la liste des schémas</source>
         <translation>Skrýt seznam s výkresy</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="175"/>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="377"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="379"/>
         <source>Cacher les options d&apos;impression</source>
         <translation>Skrýt volby pro tisk</translation>
     </message>
@@ -3985,17 +3985,17 @@ Dostupné volby:
         <translation>Tisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="363"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="365"/>
         <source>Afficher la liste des schémas</source>
         <translation>Zobrazit seznam s výkresy</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="379"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="381"/>
         <source>Afficher les options d&apos;impression</source>
         <translation>Zobrazit volby pro tisk</translation>
     </message>
     <message>
-        <location filename="../sources/qetprintpreviewdialog.cpp" line="406"/>
+        <location filename="../sources/qetprintpreviewdialog.cpp" line="408"/>
         <source>%1 %</source>
         <translation>%1%</translation>
     </message>
