@@ -780,13 +780,13 @@
         <location filename="../sources/editor/elementscene.cpp" line="1134"/>
         <source>Les dimensions ou le point de saisie ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation>Rozmiar i aktywny obszar nie są ważne.</translation>
+        <translation>Rozmiar i aktywny obszar nie są poprawne.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1149"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation>Orientacja nie jest ważna.</translation>
+        <translation>Orientacja nie jest poprawna.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
@@ -1172,13 +1172,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="549"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wczytywanie...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="572"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ładowanie : %p%</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
@@ -2315,7 +2315,7 @@ Dostępne opcje:
         <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ładowanie... Wczytywanie kolekcji elementów</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="106"/>
@@ -2755,7 +2755,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Obrót zaznaczonego tekstu o dowolny kąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -4682,7 +4682,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Kod XML tego szablonu nie wydaje się być poprawny.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
