@@ -1,5 +1,6 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
     <names>
+        <name lang="en">5-pin DIN socket 270 degrees</name>
         <name lang="fr">Embase DIN 5 broches 270 degrés</name>
         <name lang="pl">Złącze DIN, pięciostykowe</name>
     </names>

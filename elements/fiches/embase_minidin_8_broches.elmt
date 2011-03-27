@@ -1,5 +1,6 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="40" height="80" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Base 8 pin mini-DIN</name>
         <name lang="fr">Embase mini-DIN 8 broches</name>
         <name lang="pl">Złącze Mini-DIN, ośmiostykowe</name>
     </names>

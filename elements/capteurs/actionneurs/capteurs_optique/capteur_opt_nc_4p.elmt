@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Optic sensor (NC)</name>
         <name lang="fr">capteur optique  (NC)</name>
         <name lang="pl">Czujnik optyczny czteroprzewodowy (NC)</name>
     </names>

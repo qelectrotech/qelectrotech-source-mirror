@@ -1,5 +1,6 @@
-<definition width="80" version="0.22" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="en">Emergency stop key release</name>
         <name lang="fr">Arrêt d'urgence - Déverrouillage à clé</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
     </names>

@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">AC/DC tri converter</name>
         <name lang="fr">Convertisseur tri AC/DC</name>
         <name lang="pl">Prostownik</name>
     </names>

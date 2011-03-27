@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Three phase converter single phase</name>
         <name lang="fr">Convertisseur tri mono</name>
         <name lang="pl">Przekształtnik prądu przemiennego</name>
     </names>
