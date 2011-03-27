@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Key prisoner unit closed</name>
         <name lang="fr">Appareil fermé Clef prisonnière</name>
         <name lang="pl">Urządzenie zamknięte,  klucz niedostępny</name>
     </names>

@@ -2,5 +2,6 @@
     <names>
         <name lang="fr">Fiches</name>
         <name lang="pl">Złącza</name>
+	<name lang="en">Pins</name>  
     </names>
 </qet-directory>
