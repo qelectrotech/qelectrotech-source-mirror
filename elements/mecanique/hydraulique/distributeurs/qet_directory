@@ -1,7 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Distributeurs</name>
-	<name lang="en" >Control valves</name>
-	<name lang="pl" >Zawory sterujące</name>
+        <name lang="en">Control valves</name>
+        <name lang="fr">Distributeurs</name>
+        <name lang="pl">Zawory rozdzielające</name>
     </names>
 </qet-directory>
