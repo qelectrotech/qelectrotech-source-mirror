@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Separateur avec purge automatique</name>
         <name lang="pl">Zawór spustowy oddzielacza, ze spustem automatycznym</name>
     </names>
     <informations></informations>

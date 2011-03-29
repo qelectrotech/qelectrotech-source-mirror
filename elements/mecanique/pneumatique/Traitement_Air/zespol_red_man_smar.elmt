@@ -1,5 +1,6 @@
-<definition width="210" version="0.22" hotspot_x="25" hotspot_y="65" height="100" type="element" orientation="dyyy">
+<definition width="210" version="0.3" hotspot_x="25" hotspot_y="65" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Filtre, régulateur, manomètre, graisseur</name>
         <name lang="pl">Zespół elementów przygotowujących płyn (filtr, reduktor, manometr, smarownica)</name>
     </names>
     <informations></informations>

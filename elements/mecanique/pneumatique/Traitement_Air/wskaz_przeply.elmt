@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Indicateur de niveau de liquide</name>
         <name lang="pl">Wskaźnik poziomu cieczy</name>
     </names>
     <informations></informations>
