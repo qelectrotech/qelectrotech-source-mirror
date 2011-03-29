@@ -1,5 +1,6 @@
-<definition width="90" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Cylindre (moteur) telescopique pneumatique simple effet</name>
         <name lang="pl">Cylinder (siłownik) teleskowpowy pneumatyczny jednostronnego działania</name>
     </names>
     <informations></informations>

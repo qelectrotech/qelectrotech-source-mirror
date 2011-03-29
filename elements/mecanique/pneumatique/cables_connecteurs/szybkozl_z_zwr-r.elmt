@@ -1,8 +1,9 @@
-<definition width="90" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Vannes à ouverture rapide avec rétroaction mécanique</name>
         <name lang="pl">Szybkozłączka z mechanicznie otwieranymi zaworami zwrotnymi - rozłączona</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <rect width="20" x="40" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="5" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>

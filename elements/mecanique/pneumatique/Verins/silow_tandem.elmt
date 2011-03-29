@@ -1,5 +1,6 @@
-<definition width="130" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Actionneur pneumatique "tandem" à double effet avec tige de piston unique</name>
         <name lang="pl">Siłownik pneumatyczny "tandem" dwustronnego działania z jednostronnym tłoczyskiem i bezstykową sygnalizacją położenia tłoka</name>
     </names>
     <informations></informations>

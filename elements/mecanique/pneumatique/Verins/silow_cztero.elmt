@@ -1,5 +1,6 @@
-<definition width="140" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Actionneur pneumatique </name>
         <name lang="pl">Siłownik pneumatyczny czteropołożeniowy i bezstykową sygnalizacją położenia tłoka</name>
     </names>
     <informations></informations>

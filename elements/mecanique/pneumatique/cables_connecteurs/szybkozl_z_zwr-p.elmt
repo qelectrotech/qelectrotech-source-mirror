@@ -1,8 +1,9 @@
-<definition width="60" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Raccord rapide avec un clapet anti-retour</name>
         <name lang="pl">Szybkozłączka z mechanicznie otwieranymi zaworami zwrotnymi - połączona</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <circle x="22" y="-4" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8"/>
         <rect width="34" x="-2" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

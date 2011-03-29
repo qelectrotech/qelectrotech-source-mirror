@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Double effet actionneur avec frein à deux réglages</name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z hamowaniem dwustronnym nastawialnym, z bezstykową sygnalizacją położenia tłoka</name>
     </names>
     <informations></informations>

@@ -1,5 +1,6 @@
-<definition width="90" version="0.22" hotspot_x="35" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="35" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Double effet actionneur avec tige creuse </name>
         <name lang="pl">Siłownik pneumatyczny dwustronnego działania z dwustronnym wydrążonym tłoczyskiem i tłokiem</name>
     </names>
     <informations></informations>
