@@ -1,8 +1,10 @@
-<definition width="60" version="0.22" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Compresseur
+</name>
         <name lang="pl">Sprężarka</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
         <polygon x4="6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="6" y2="-12" x2="14" y3="-20" x3="10" y4="-12"/>

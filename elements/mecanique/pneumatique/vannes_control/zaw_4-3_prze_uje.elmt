@@ -1,5 +1,6 @@
-<definition width="130" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Vanne 4 / 3 de contrôle, fermée à la mi-position</name>
         <name lang="pl">Zawór sterujący 4/3, zamknięty w położeniu środkowym, z przekryciem ujemnym, z nieskończoną liczbą połączeń pośrednich</name>
     </names>
     <informations></informations>

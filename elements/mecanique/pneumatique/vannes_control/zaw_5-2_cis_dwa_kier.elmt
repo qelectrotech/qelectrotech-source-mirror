@@ -1,5 +1,6 @@
-<definition width="120" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Electrovanne 5 / 2, entraînée par la pression dans les deux directions</name>
         <name lang="pl">Zawór sterujący 5/2, sterowany za pomocą ciśnienia w obu kierunkach</name>
     </names>
     <informations></informations>

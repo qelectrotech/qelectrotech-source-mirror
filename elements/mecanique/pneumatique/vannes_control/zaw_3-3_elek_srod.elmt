@@ -1,5 +1,6 @@
-<definition width="150" version="0.22" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="150" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="fr">Distributeur 3 / 3 de contrôle, commande électromagnétique</name>
         <name lang="pl">Zawór sterujący 3/3, sterowany elektromagnetycznie, ustalany sprężynami w położeniu środkowym</name>
     </names>
     <informations></informations>
