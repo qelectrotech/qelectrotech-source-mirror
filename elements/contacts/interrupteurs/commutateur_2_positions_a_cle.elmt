@@ -1,9 +1,10 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="en">2 position key switch</name>
         <name lang="fr">Commutateur a 2 positions à clé</name>
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-12" y="-6.66667" size="4" text="1"/>

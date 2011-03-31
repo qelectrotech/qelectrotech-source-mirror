@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="en">Transformer D Yn</name>
         <name lang="fr">Transformateur D Yn</name>
         <name lang="pl">Transformator Dyn</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="0" y="11.6667" size="5" text="n"/>
