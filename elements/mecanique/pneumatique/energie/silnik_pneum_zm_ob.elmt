@@ -1,5 +1,8 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Motor in one direction only
+rotation
+Variable</name>
         <name lang="fr">Moteur à un seul sens de
 rotation
 variable</name>

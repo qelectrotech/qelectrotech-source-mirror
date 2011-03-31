@@ -1,6 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Torque meter</name>
+        <name lang="en">Torque meter</name>
+        <name lang="fr">Torque metre</name>
         <name lang="pl">Miernik momentu obrotowego</name>
     </names>
     <informations></informations>

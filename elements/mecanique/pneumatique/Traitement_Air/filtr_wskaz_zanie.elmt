@@ -1,6 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Indicateur de la contamination du filtre</name>
+        <name lang="en">Filter contamination indicator</name>
+        <name lang="fr">Filtre avec indicateur de contamination</name>
         <name lang="pl">Filtr ze wskaźnikiem zanieczyszczeń</name>
     </names>
     <informations></informations>
