@@ -1,5 +1,6 @@
 <definition width="100" version="0.3" hotspot_x="15" hotspot_y="30" height="80" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Rodless cylinders double-acting with adjustable cushioning at both ends of stroke (linear drive tire)</name>
         <name lang="fr">
 Vérin sans tige double effet avec amortissement réglable aux deux fins de course (entraînement linéaire pneumatique)</name>
         <name lang="pl">Siłownik pneumatyczny beztłoczyskowy ze sprzężeniem mechanicznym i hamowaniem dwustronnym nastawialnym</name>

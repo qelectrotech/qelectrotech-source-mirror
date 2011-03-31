@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Flexible Connection</name>
         <name lang="fr">Connection souple</name>
         <name lang="pl">Przewód giętki</name>
     </names>

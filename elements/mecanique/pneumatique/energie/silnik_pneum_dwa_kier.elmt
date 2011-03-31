@@ -1,5 +1,7 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Motor with two directions of
+rotation</name>
         <name lang="fr">Moteur à deux sens de
 rotation
 </name>

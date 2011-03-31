@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Element electric cable</name>
         <name lang="fr">Element câble électrique</name>
         <name lang="pl">Element elektryczny lub przewód elektryczny</name>
     </names>

@@ -1,5 +1,6 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Solenoid valve 2 / 2, with lever, spring compulsory</name>
         <name lang="fr">Electrovanne 2 / 2, à levier, ressort de rappel obligatoire</name>
         <name lang="pl">Zawór sterujący 2/2, sterowany dźwignią, powrót wymuszony sprężyną</name>
     </names>

@@ -1,5 +1,6 @@
 <definition width="120" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Pneumatic actuator</name>
         <name lang="fr">Actionneur pneumatique</name>
         <name lang="pl">Siłownik cięgnowy pneumatyczny z hamowaniem dwustronnym o stałej wartości</name>
     </names>

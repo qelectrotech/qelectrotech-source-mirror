@@ -1,5 +1,6 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Quick Connect</name>
         <name lang="fr">Raccord rapide</name>
         <name lang="pl">Szybkozłączka bez mechanicznie otwieranych zaworów zwrotnych - rozłączona</name>
     </names>

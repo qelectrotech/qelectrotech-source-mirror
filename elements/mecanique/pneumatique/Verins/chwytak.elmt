@@ -1,5 +1,6 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Pneumatic clamp</name>
         <name lang="fr">Pince pneumatique</name>
         <name lang="pl">Chwytak pneumatyczny</name>
     </names>
