@@ -2,8 +2,9 @@
     <names>
         <name lang="en">3/2-shut-off valve manuel operated</name>
         <name lang="fr">Vannes d'arrêt 3/2 manuel</name>
+        <name lang="pl">Zawór wyłączający 3/2 </name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <input x="23" y="8" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-36" x1="-30" y2="-36" x2="18"/>
