@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-	<name lang="en">Board telefast</name>
-	<name lang="fr">Platine telefast</name>
+        <name lang="en">Board telefast</name>
+        <name lang="fr">Platine telefast</name>
+        <name lang="pl">Bazy Telefast</name>
     </names>
 </qet-directory>
