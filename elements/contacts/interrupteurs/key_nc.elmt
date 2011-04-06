@@ -3,7 +3,7 @@
         <name lang="en">Key switch (NC)</name>
         <name lang="fr">Verrouillage cle (NC)</name>
         <name lang="pl">Zestyk zwierny napędzany kluczykiem</name>
-        <name lang="cs">Hlavní vypínač (NC)</name>
+        <name lang="cs">Klíčový spínač (NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

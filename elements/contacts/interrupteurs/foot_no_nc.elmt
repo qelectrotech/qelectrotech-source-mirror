@@ -3,6 +3,7 @@
         <name lang="en">Foot Switch (NO / NC)</name>
         <name lang="fr">Interrupteur a pedale (NO/NC)</name>
         <name lang="pl">Łącznik wielozestykowy napędzany nogą</name>
+        <name lang="cs">Pedálový spínač (NO/NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
         <name lang="en">Key swich (NO/NO)</name>
         <name lang="fr">Verrouillage cle (NO/NO)</name>
         <name lang="pl">Łącznik wielozestykowy napędzany kluczykiem</name>
+        <name lang="cs">Klíčový spínač (NO/NO)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

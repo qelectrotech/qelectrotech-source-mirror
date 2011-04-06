@@ -3,6 +3,7 @@
         <name lang="en">2 position key switch</name>
         <name lang="fr">Commutateur a 2 positions à clé</name>
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>
+        <name lang="cs">Klíčový spínač - 2 polohy</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

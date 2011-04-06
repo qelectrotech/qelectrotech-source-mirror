@@ -3,6 +3,7 @@
         <name lang="en">Key switch (NC/NC)</name>
         <name lang="fr">Verrouillage cle (NC/NC)</name>
         <name lang="pl">Łącznik wielozestykowy napędzany kluczykiem</name>
+        <name lang="cs">Klíčový spínač (NC/NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
