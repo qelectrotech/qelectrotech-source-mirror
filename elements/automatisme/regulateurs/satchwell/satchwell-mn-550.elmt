@@ -35,10 +35,10 @@ Bonne utilisation !</informations>
         <text x="373" y="229" size="6" rotation="270" text="AO3"/>
         <text x="323" y="229" size="6" rotation="270" text="AO2"/>
         <text x="33" y="229" size="6" rotation="270" text="24 V AC"/>
-        <rect width="10" x="655" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="655" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="415" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="385" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="675" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="675" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="335" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="285" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="435" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

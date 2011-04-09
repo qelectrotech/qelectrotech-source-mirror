@@ -42,7 +42,7 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="99" x1="375" y2="94" x2="375"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="100" x1="364" y2="100" x2="375"/>
         <text x="362" y="73" size="6" text="ESC"/>
-        <rect width="110" x="140" y="50" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="110" x="140" y="50" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="158" y="78" size="6" text="Satchwell MN 50 LCD"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="61" x1="313" y2="53" x2="307"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="61" x1="301" y2="53" x2="307"/>
