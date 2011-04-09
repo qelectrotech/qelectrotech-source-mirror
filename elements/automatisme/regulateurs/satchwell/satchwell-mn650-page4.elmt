@@ -19,15 +19,15 @@ Bonne utilisation !</informations>
         <text x="53" y="230" size="6" rotation="270" text="LAN A-"/>
         <text x="103" y="230" size="6" rotation="270" text="LAN A+"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="180" x1="1" y2="180" x2="740"/>
-        <rect width="10" x="165" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="165" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="693" y="230" size="6" rotation="270" text="S-LINK"/>
-        <rect width="10" x="145" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="145" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="351" y="229" size="6" rotation="270" text="AO1 COM"/>
-        <rect width="10" x="65" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="115" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="65" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="115" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="673" y="230" size="6" rotation="270" text="S-LINK"/>
-        <rect width="10" x="45" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="95" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="45" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="95" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="332" y="229" size="6" rotation="270" text="AO1"/>
         <rect width="0" x="170" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="223" y="229" size="6" rotation="270" text="LAN B REF"/>
@@ -51,21 +51,21 @@ Bonne utilisation !</informations>
         <text x="482" y="229" size="6" rotation="270" text="AO4"/>
         <text x="432" y="229" size="6" rotation="270" text="AO3"/>
         <text x="382" y="229" size="6" rotation="270" text="AO2"/>
-        <rect width="10" x="615" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="474" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="444" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="635" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="394" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="344" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="685" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="494" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="665" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="424" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="374" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="324" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="215" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="195" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="740" x="0" y="0" antialias="true" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="615" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="474" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="444" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="635" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="394" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="344" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="685" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="494" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="665" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="424" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="374" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="324" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="215" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="195" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="740" x="0" y="0" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="0" x="620" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="0" x="479" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="0" x="449" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

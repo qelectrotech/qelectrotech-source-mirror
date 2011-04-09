@@ -11,6 +11,14 @@ Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X
 &#xd;
 Bonne utilisation !</informations>
     <description>
+        <text x="436" y="243" size="6" text="29"/>
+        <text x="386" y="243" size="6" text="28"/>
+        <text x="336" y="243" size="6" text="27"/>
+        <rect width="740" x="0" y="0" antialias="false" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="286" y="243" size="6" text="26"/>
+        <text x="136" y="243" size="6" text="25"/>
+        <text x="117" y="243" size="6" text="2"/>
+        <text x="46" y="243" size="6" text="24"/>
         <text x="283" y="70" size="14" text="SATCHWELL - MN 550"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="180" x1="1" y2="180" x2="740"/>
         <text x="292" y="229" size="6" rotation="270" text="AO1 COM"/>
@@ -28,20 +36,19 @@ Bonne utilisation !</informations>
         <text x="323" y="229" size="6" rotation="270" text="AO2"/>
         <text x="33" y="229" size="6" rotation="270" text="24 V AC"/>
         <rect width="10" x="655" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="415" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="385" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="415" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="385" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="675" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="335" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="285" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="435" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="365" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="315" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="265" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="135" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="115" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="45" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="10" x="25" y="235" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="740" x="0" y="0" antialias="true" height="250" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="335" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="285" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="435" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="365" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="315" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="265" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="135" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="115" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="45" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="10" x="25" y="235" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="0" x="660" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="0" x="420" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="0" x="390" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -58,17 +65,10 @@ Bonne utilisation !</informations>
         <rect width="0" x="30" y="246" antialias="false" height="3" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="657" y="243" size="6" text="7"/>
         <text x="417" y="243" size="6" text="6"/>
-        <text x="386" y="243" size="6" text="28"/>
         <text x="676" y="243" size="6" text="30"/>
-        <text x="336" y="243" size="6" text="27"/>
-        <text x="286" y="243" size="6" text="26"/>
-        <text x="436" y="243" size="6" text="29"/>
         <text x="367" y="243" size="6" text="5"/>
         <text x="317" y="243" size="6" text="4"/>
         <text x="267" y="243" size="6" text="3"/>
-        <text x="136" y="243" size="6" text="25"/>
-        <text x="117" y="243" size="6" text="2"/>
-        <text x="46" y="243" size="6" text="24"/>
         <text x="27" y="243" size="6" text="1"/>
         <terminal x="30" y="250" orientation="s"/>
         <terminal x="50" y="250" orientation="s"/>
