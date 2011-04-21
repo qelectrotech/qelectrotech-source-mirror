@@ -41,13 +41,13 @@ our %languages = (
 	'fr' => {
 		'name'               => 'Français',
 		'french_name'        => 'Français',
-		'translator_name'    => 'Xavier Guerrin',
+		'translator_name'    => 'Laurent Trinques',
 		'translator_mail_ml' => 'xavier@tuxfamily.org'
 	},
 	'en' => {
 		'name'               => 'English',
 		'french_name'        => 'Anglais',
-		'translator_name'    => 'Xavier Guerrin',
+		'translator_name'    => 'Laurent Trinques',
 		'translator_mail_ml' => 'xavier@tuxfamily.org',
 		'qt'                 => 1,
 		'unix_manual'        => 1,
@@ -259,4 +259,4 @@ for my $lang_key (@ordered_languages) {
 # Add date to output
 print "\n";
 my @date = localtime(time());
-printf('Dernière date de mise à jour : %02d/%02d/%04d %02d:%02d'."\n", $date[3], $date[4], 1900 + $date[5], $date[2], $date[1]);
+printf('Dernière date de mise à jour : %02d/%02d/%04d %02d:%02d'."\n", $date[3], $date[4] + 1, 1900 + $date[5], $date[2], $date[1]);
