@@ -42,13 +42,13 @@ our %languages = (
 		'name'               => 'Français',
 		'french_name'        => 'Français',
 		'translator_name'    => 'Laurent Trinques',
-		'translator_mail_ml' => 'xavier@tuxfamily.org'
+		'translator_mail_ml' => 'scorpio@qelectrotech.org'
 	},
 	'en' => {
 		'name'               => 'English',
 		'french_name'        => 'Anglais',
 		'translator_name'    => 'Laurent Trinques',
-		'translator_mail_ml' => 'xavier@tuxfamily.org',
+		'translator_mail_ml' => 'scorpio@qelectrotech.org',
 		'qt'                 => 1,
 		'unix_manual'        => 1,
 		'desktop_progress_summary' => $ok,
