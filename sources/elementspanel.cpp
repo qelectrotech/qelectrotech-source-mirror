@@ -797,17 +797,19 @@ void ElementsPanel::reload(bool reload_collections) {
 	emit(loadingProgressed(loading_progress_ = 0, items_count));
 	
 	// chargement des elements de la collection QET
-	common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet.png"));
+	if (QETApp::commonElementsCollection()->rootCategory()) {
+		common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet.png"));
+		if (first_reload_) common_collection_item_ -> setExpanded(true);
+	}
 	
 	// chargement des elements de la collection utilisateur
-	custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/16x16/go-home.png"));
+	if (QETApp::customElementsCollection()->rootCategory()) {
+		custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/16x16/go-home.png"));
+		if (first_reload_) custom_collection_item_ -> setExpanded(true);
+	}
 	
 	// the first time, expand the first level of collections
-	if (first_reload_) {
-		first_reload_ = true;
-		common_collection_item_ -> setExpanded(true);
-		custom_collection_item_ -> setExpanded(true);
-	}
+	if (first_reload_) first_reload_ = false;
 	
 	// chargement des projets
 	foreach(QETProject *project, projects_to_display_.values()) {
