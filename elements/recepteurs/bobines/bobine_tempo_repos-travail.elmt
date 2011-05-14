@@ -8,6 +8,7 @@ Rückfallverzögerung
         <name lang="fr">Bobine tempo repos-travail</name>
         <name lang="pl">Cewka przekaźnika działającego ze zwłoką przy wzbudzeniu i odwzbudzeniu</name>
         <name lang="es">Bobina</name>
+        <name lang="cs">Cívka relé - klid-práce</name>
     </names>
     <informations></informations>
     <description>

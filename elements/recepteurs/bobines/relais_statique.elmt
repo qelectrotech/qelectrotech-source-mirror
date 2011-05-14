@@ -4,6 +4,7 @@
         <name lang="it">Rel� statico</name>
         <name lang="fr">Relais statique</name>
         <name lang="pl">Przekaźnik statyczny</name>
+        <name lang="cs">Statické relé</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
