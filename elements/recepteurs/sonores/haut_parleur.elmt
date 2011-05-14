@@ -3,6 +3,7 @@
         <name lang="en">Speaker</name>
         <name lang="fr">Haut-parleur</name>
         <name lang="pl">Głośnik</name>
+        <name lang="cs">Tlampač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

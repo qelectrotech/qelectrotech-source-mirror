@@ -3,6 +3,7 @@
         <name lang="en">Resistances heating</name>
         <name lang="fr">Resistances chauffantes</name>
         <name lang="pl">Grzejnik</name>
+        <name lang="cs">Vytápěcí odpory</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
