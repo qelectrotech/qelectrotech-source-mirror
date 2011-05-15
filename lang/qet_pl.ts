@@ -2398,7 +2398,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Wyświetla lub ukrywa panel elementów</translation>
+        <translation>Pokazuje lub ukrywa panel elementów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
@@ -2683,17 +2683,17 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
-        <translation>Pokaż / ukryj główny pasek narzędzi</translation>
+        <translation>Pokazuje lub ukrywa główny pasek narzędzi</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
-        <translation>Pokaż / ukryj pasek narzędzi Widok</translation>
+        <translation>Pokazuje lub ukrywa pasek narzędzi Widok</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
         <source>Affiche ou non la barre d&apos;outils Schéma</source>
-        <translation>Pokaż / ukryj pasek narzędzi Schemat</translation>
+        <translation>Pokazuje lub ukrywa pasek narzędzi Schemat</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="540"/>
