@@ -130,32 +130,32 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="50"/>
         <source>Centre : </source>
-        <translation>Środek:</translation>
+        <translation>Środek :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="55"/>
         <source>Diamètres : </source>
-        <translation>Średnica: </translation>
+        <translation>Średnica : </translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation>pozioma:</translation>
+        <translation>pozioma :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>vertical :</source>
-        <translation>pionowa:</translation>
+        <translation>pionowa :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="60"/>
         <source>Angle de départ :</source>
-        <translation>Początek kąta:</translation>
+        <translation>Początek kąta :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="62"/>
         <source>Angle :</source>
-        <translation>Kąt:</translation>
+        <translation>Kąt :</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="122"/>
@@ -198,7 +198,7 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="99"/>
         <source>Colonnes :</source>
-        <translation>Kolumny:</translation>
+        <translation>Kolumny :</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="111"/>
@@ -209,7 +209,7 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="114"/>
         <source>Lignes :</source>
-        <translation>Wiersze:</translation>
+        <translation>Wiersze :</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="108"/>
@@ -236,12 +236,12 @@
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="45"/>
         <source>Centre : </source>
-        <translation>Środek:</translation>
+        <translation>Środek :</translation>
     </message>
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="50"/>
         <source>Diamètre : </source>
-        <translation>Średnica: </translation>
+        <translation>Średnica : </translation>
     </message>
     <message>
         <location filename="../sources/editor/circleeditor.cpp" line="106"/>
@@ -274,7 +274,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="64"/>
         <source>Texte :</source>
-        <translation>Tekst:</translation>
+        <translation>Tekst :</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
@@ -304,7 +304,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="104"/>
         <source>Couleur :</source>
-        <translation>Kolor: </translation>
+        <translation>Kolor : </translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="106"/>
@@ -343,19 +343,19 @@
         <location filename="../sources/diagramprintdialog.cpp" line="204"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
-        <translation>Drukuj na drukarce fizycznej</translation>
+        <translation>Druk na drukarce fizycznej</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="205"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
-        <translation>Drukuj do pliku PDF</translation>
+        <translation>Druk do pliku PDF</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="206"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
-        <translation>Drukuj do pliku PostScript (PS)</translation>
+        <translation>Druk do pliku PostScript (PS)</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="211"/>
@@ -443,35 +443,35 @@
         <location filename="../sources/diagramview.cpp" line="759"/>
         <source>Nom : %1
 </source>
-        <translation>Nazwa: %1
+        <translation>Nazwa : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="760"/>
         <source>Position : %1
 </source>
-        <translation>Pozycja: %1
+        <translation>Pozycja : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="761"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Wielkość: %1×%2
+        <translation>Wielkość : %1×%2
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="762"/>
         <source>Bornes : %1
 </source>
-        <translation>Złącze: %1
+        <translation>Złącze : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
         <source>Connexions internes : %1
 </source>
-        <translation>Połączenia wewnętrzne: %1
+        <translation>Połączenia wewnętrzne : %1
 </translation>
     </message>
     <message>
@@ -488,14 +488,14 @@
         <location filename="../sources/diagramview.cpp" line="764"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Pole tekstowe: %1
+        <translation>Pole tekstowe : %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="767"/>
         <source>Emplacement : %1
 </source>
-        <translation>Położenie: %1
+        <translation>Położenie : %1
 </translation>
     </message>
     <message>
@@ -575,7 +575,7 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="164"/>
         <source>Nom :</source>
-        <translation>Nazwa:</translation>
+        <translation>Nazwa :</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="63"/>
@@ -686,7 +686,7 @@
     <message>
         <location filename="../sources/elementdialog.cpp" line="319"/>
         <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
-        <translation>Nie można używać następujących znaków w nazwie elementu: %1</translation>
+        <translation>Nie można używać następujących znaków w nazwie elementu : %1</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="345"/>
@@ -946,7 +946,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="99"/>
         <source>Nom interne : </source>
-        <translation>Nazwa wewnętrzna:</translation>
+        <translation>Nazwa wewnętrzna :</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
@@ -1052,7 +1052,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="708"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
-        <translation>Aby wkleić element, kliknij i upuść na schemacie  </translation>
+        <translation>Aby wkleić element, kliknij i upuść na schemacie </translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="800"/>
@@ -1183,7 +1183,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Filtrer : </source>
-        <translation>Filtr: </translation>
+        <translation>Filtr : </translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
@@ -1386,7 +1386,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="124"/>
         <source>Dossier cible :</source>
-        <translation>Katalog docelowy:</translation>
+        <translation>Katalog docelowy :</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
@@ -1396,7 +1396,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="139"/>
         <source>Format :</source>
-        <translation>Format:</translation>
+        <translation>Format :</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="142"/>
@@ -1549,12 +1549,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="85"/>
         <source>Largeur :</source>
-        <translation>Szerokość:</translation>
+        <translation>Szerokość :</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="87"/>
         <source>Hauteur :</source>
-        <translation>Wysokość:</translation>
+        <translation>Wysokość :</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="89"/>
@@ -1564,12 +1564,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="90"/>
         <source>Abscisse :</source>
-        <translation>Odcięta:</translation>
+        <translation>Odcięta :</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="92"/>
         <source>Ordonnée :</source>
-        <translation>Rzędna:</translation>
+        <translation>Rzędna :</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
@@ -1583,13 +1583,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="125"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation>Element został włączony do projektu. Wydaje się jednak, że wersja, którą chcesz dołączyć jest inna. Co chcesz zrobić ?</translation>
+        <translation>Element został już włączony do projektu. Wydaje się jednak, że wersja, którą chcesz dołączyć jest inna. Co chcesz zrobić ?</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
         <source>Utiliser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation>Użyj wykorzystywany już element</translation>
+        <translation>Użyj wykorzystywany element</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="146"/>
@@ -1658,13 +1658,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Kategoria &quot;%1&quot; (%2) już istnieje. Co chcesz zrobić ?</translation>
+        <translation>Kategoria « %1 » (%2) już istnieje. Co chcesz zrobić ?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Element &quot;%1&quot; już istnieje. Co chcesz zrobić ?</translation>
+        <translation>Element « %1 » już istnieje. Co chcesz zrobić ?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="152"/>
@@ -1877,7 +1877,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/5 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation>Krok 1 z 5: Kategoria nadrzędna</translation>
+        <translation>Krok 1 z 5 : Kategoria nadrzędna</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
@@ -1889,7 +1889,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/5 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation>Krok 2 z 5: Nazwa pliku</translation>
+        <translation>Krok 2 z 5 : Nazwa pliku</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
@@ -1901,7 +1901,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
         <source>Étape 3/5 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation>Krok 3 z 5: Nazwa elementu</translation>
+        <translation>Krok 3 z 5 : Nazwa elementu</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="138"/>
@@ -1919,7 +1919,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="157"/>
         <source>Étape 4/5 : Dimensions et point de saisie</source>
         <comment>wizard page title</comment>
-        <translation>Krok 4 z 5: Rozmiar i aktywny obszar</translation>
+        <translation>Krok 4 z 5 : Rozmiar i aktywny obszar</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="158"/>
@@ -1931,7 +1931,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="175"/>
         <source>Étape 5/5 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation>Krok 5 z 5: Orientacja</translation>
+        <translation>Krok 5 z 5 : Orientacja</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="176"/>
@@ -1963,7 +1963,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="251"/>
         <source>Merci de ne pas utiliser les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content</comment>
-        <translation>Należy unikać następujących znaków: \ / : * ? &lt; &gt; |</translation>
+        <translation>Należy unikać następujących znaków : \ / : * ? &lt; &gt; |</translation>
     </message>
 </context>
 <context>
@@ -1982,25 +1982,25 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/orientationsetwidget.cpp" line="50"/>
         <location filename="../sources/orientationsetwidget.cpp" line="62"/>
         <source>Nord :</source>
-        <translation>Północ:</translation>
+        <translation>Północ :</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="52"/>
         <location filename="../sources/orientationsetwidget.cpp" line="66"/>
         <source>Est :</source>
-        <translation>Wschód:</translation>
+        <translation>Wschód :</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="54"/>
         <location filename="../sources/orientationsetwidget.cpp" line="70"/>
         <source>Sud :</source>
-        <translation>Południe:</translation>
+        <translation>Południe :</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="56"/>
         <location filename="../sources/orientationsetwidget.cpp" line="74"/>
         <source>Ouest :</source>
-        <translation>Zachód:</translation>
+        <translation>Zachód :</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="60"/>
@@ -2028,7 +2028,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="49"/>
         <source>Points du polygone :</source>
-        <translation>Punkty wielokąta:</translation>
+        <translation>Punkty wielokąta :</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
@@ -2067,7 +2067,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="415"/>
         <source>Titre du projet :</source>
-        <translation>Tytuł projektu:</translation>
+        <translation>Tytuł projektu :</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="660"/>
@@ -2256,7 +2256,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="1185"/>
         <source>Usage : </source>
-        <translation>Użyć: </translation>
+        <translation>Użyć : </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1186"/>
@@ -2269,7 +2269,7 @@ Options disponibles :
 </source>
         <translation>QElectroTech, aplikacja do tworzenia schematów elektrycznych.
 
-Dostępne opcje: 
+Dostępne opcje : 
   --help                        Pokaż pomoc
   -v, --version              Pokaż wersję
   --license                    Pokaż licencję
@@ -2718,7 +2718,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation>Pokaż / ukryj listę kroków Cofnij</translation>
+        <translation>Pokazuje lub ukrywa listę zmian</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
@@ -2841,7 +2841,7 @@ Dostępne opcje:
         <location filename="../sources/qetdiagrameditor.cpp" line="61"/>
         <source>Panel d&apos;éléments</source>
         <comment>dock title</comment>
-        <translation>Panel Elementy</translation>
+        <translation>Panel elementów</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="78"/>
@@ -3159,7 +3159,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1343"/>
         <source>Active le projet « %1 »</source>
-        <translation>Uaktywnia projekt &quot;%1&quot;</translation>
+        <translation>Uaktywnia projekt « %1 »</translation>
     </message>
 </context>
 <context>
@@ -3313,7 +3313,7 @@ Dostępne opcje:
         <location filename="../sources/editor/qetelementeditor.cpp" line="736"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
-        <translation>&lt;b&gt;%1&lt;/b&gt;: %2</translation>
+        <translation>&lt;b&gt;%1&lt;/b&gt; : %2</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="219"/>
@@ -3850,12 +3850,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="37"/>
         <source>QElectroTech : Aperçu avant impression</source>
-        <translation>QElectroTech: Podgląd wydruku</translation>
+        <translation>QElectroTech : Podgląd wydruku</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="170"/>
         <source>Schémas à imprimer :</source>
-        <translation>Schematy do druku:</translation>
+        <translation>Schematy do druku :</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="172"/>
@@ -4038,7 +4038,7 @@ Dostępne opcje:
         <location filename="../sources/qetproject.cpp" line="206"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
-        <translation>Projekt &quot;%1&quot;</translation>
+        <translation>Projekt « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="213"/>
@@ -4069,7 +4069,7 @@ Dostępne opcje:
  - le tiret [-], l&apos;underscore [_] et le point [.]
 </source>
         <comment>tooltip content when editing a filename</comment>
-        <translation>Dozwolone znaki to:
+        <translation>Dozwolone znaki to :
  - cyfry [0-9]
  - małe litery [a-z]
  - myślnik [-], podkreślenie [_] i kropka [.]
@@ -4096,7 +4096,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/customelement.cpp" line="118"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation>Uwaga: element został zapisany w nowszej wersji QElectroTech.</translation>
+        <translation>Uwaga : element został zapisany w nowszej wersji QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
@@ -4224,7 +4224,7 @@ Dostępne opcje:
         <location filename="../sources/editor/editorcommands.cpp" line="339"/>
         <source>modification dimensions/hotspot</source>
         <comment>undo caption</comment>
-        <translation>zmiana rozmiaru i/lub aktywnego obszaru</translation>
+        <translation>zmiana rozmiaru / aktywnego obszaru</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="400"/>
@@ -4459,22 +4459,22 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="46"/>
         <source>Coin supérieur gauche : </source>
-        <translation>Lewy górny róg:</translation>
+        <translation>Lewy górny róg :</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="51"/>
         <source>Dimensions : </source>
-        <translation>Rozmiar:</translation>
+        <translation>Rozmiar :</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Largeur :</source>
-        <translation>Szerokość:</translation>
+        <translation>Szerokość :</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="54"/>
         <source>Hauteur :</source>
-        <translation>Wysokość:</translation>
+        <translation>Wysokość :</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
@@ -4507,27 +4507,27 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Trait :</source>
-        <translation>Linia:</translation>
+        <translation>Linia :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Couleur : </source>
-        <translation>Kolor: </translation>
+        <translation>Kolor : </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Style : </source>
-        <translation>Styl: </translation>
+        <translation>Styl : </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Épaisseur : </source>
-        <translation>Grubość: </translation>
+        <translation>Grubość : </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="88"/>
         <source>Remplissage :</source>
-        <translation>Wypełnienie:</translation>
+        <translation>Wypełnienie :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="33"/>
@@ -4717,7 +4717,7 @@ Dostępne opcje:
     <message>
         <location filename="../sources/templateeditor.cpp" line="257"/>
         <source>Projet parent : %1</source>
-        <translation>Projekt powiązany: %1</translation>
+        <translation>Projekt powiązany : %1</translation>
     </message>
 </context>
 <context>
@@ -4745,22 +4745,22 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
         <source>Position : </source>
-        <translation>Pozycja:</translation>
+        <translation>Pozycja :</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="48"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation>x : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="50"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation>y : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="55"/>
         <source>Orientation : </source>
-        <translation>Orientacja: </translation>
+        <translation>Orientacja : </translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
@@ -4783,32 +4783,32 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Angle de rotation : </source>
-        <translation>Kąt obrotu: </translation>
+        <translation>Kąt obrotu : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
         <source>Position : </source>
-        <translation>Pozycja:</translation>
+        <translation>Pozycja :</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="49"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation>x : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="51"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation>y : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="56"/>
         <source>Taille : </source>
-        <translation>Rozmiar: </translation>
+        <translation>Rozmiar : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="61"/>
         <source>Texte : </source>
-        <translation>Tekst: </translation>
+        <translation>Tekst : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="122"/>
@@ -4847,32 +4847,32 @@ Dostępne opcje:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation>Domyślny kąt obrotu: </translation>
+        <translation>Domyślny kąt obrotu : </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
         <source>Position : </source>
-        <translation>Pozycja:</translation>
+        <translation>Pozycja :</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="50"/>
         <source>x : </source>
-        <translation>x: </translation>
+        <translation>x : </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="52"/>
         <source>y : </source>
-        <translation>y: </translation>
+        <translation>y : </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="57"/>
         <source>Taille : </source>
-        <translation>Rozmiar: </translation>
+        <translation>Rozmiar : </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="62"/>
         <source>Texte par défaut : </source>
-        <translation>Domyślny tekst: </translation>
+        <translation>Domyślny tekst : </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
@@ -4916,16 +4916,16 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="197"/>
         <source>Modèle :</source>
-        <translation>Szablon:</translation>
+        <translation>Szablon :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="206"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation>Następujące zmienne są wykorzystywane w polu strony:
-  - %id: numer schematu w projekcie
-  - %total: łączna liczba schematów w projekcie</translation>
+        <translation>Następujące zmienne są wykorzystywane w polu strony :
+  - %id : numer schematu w projekcie
+  - %total : łączna liczba schematów w projekcie</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="215"/>
@@ -4940,12 +4940,12 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="217"/>
         <source>Date fixe : </source>
-        <translation>Ustalona data: </translation>
+        <translation>Ustalona data : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation>Tutaj możesz zdefiniować własne skojarzenia nazwy/wartości pól danych. Przykład: skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot;, spowoduje zastąpienie zastąpienie znaku % przez cyfrę 1745 w polu volta.</translation>
+        <translation>Tutaj możesz zdefiniować własne skojarzenia nazwy/wartości pól danych. Przykład : skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot;, spowoduje zastąpienie zastąpienie znaku % przez cyfrę 1745 w polu volta.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -4970,27 +4970,27 @@ Dostępne opcje:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
         <source>Titre : </source>
-        <translation>Tytuł: </translation>
+        <translation>Tytuł : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
         <source>Auteur : </source>
-        <translation>Autor: </translation>
+        <translation>Autor : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="276"/>
         <source>Date : </source>
-        <translation>Data: </translation>
+        <translation>Data : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Fichier : </source>
-        <translation>Plik: </translation>
+        <translation>Plik : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="280"/>
         <source>Folio : </source>
-        <translation>Strona: </translation>
+        <translation>Strona : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
@@ -5004,7 +5004,7 @@ Dostępne opcje:
         <location filename="../sources/titleblocktemplate.cpp" line="555"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation> %1: %2</translation>
+        <translation> %1 : %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="557"/>
