@@ -12,6 +12,7 @@ stella-stella
 </name>
         <name lang="fr">Transformateur étoile-étoile</name>
         <name lang="pl">Transformator Yy</name>
+        <name lang="cs">Třífázový transformátor hvězda-hvězda (Y Y)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

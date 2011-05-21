@@ -3,6 +3,7 @@
         <name lang="en">Three-phase transducer</name>
         <name lang="fr">Transformateur triphasé</name>
         <name lang="pl">Transformator trójfazowy</name>
+        <name lang="cs">Třífázový transformátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

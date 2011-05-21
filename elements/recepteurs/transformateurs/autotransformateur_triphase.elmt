@@ -3,6 +3,7 @@
         <name lang="en">Three-phase autotransducer</name>
         <name lang="fr">Autotransformateur triphasé</name>
         <name lang="pl">Autotransformator trójfazowy</name>
+        <name lang="cs">Třífázový autotransformátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

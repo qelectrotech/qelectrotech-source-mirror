@@ -8,6 +8,7 @@ tion star-delta
 </name>
         <name lang="fr">Transformateur étoile triangle</name>
         <name lang="pl">Transformator Yd</name>
+        <name lang="cs">Třífázový transformátor, spojení do trojúhelníkové hvězdy (Yd)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

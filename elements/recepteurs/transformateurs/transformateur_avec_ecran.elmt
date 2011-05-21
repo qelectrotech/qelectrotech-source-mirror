@@ -8,6 +8,7 @@ und Schirm&#xd;
 </name>
         <name lang="fr">Transformateur avec écran</name>
         <name lang="pl">Transformator ekranowany</name>
+        <name lang="cs">Jednofázový transformátor s obrazovkou</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

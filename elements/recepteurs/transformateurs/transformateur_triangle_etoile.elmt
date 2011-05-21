@@ -3,6 +3,7 @@
         <name lang="en">transformeur delta-star</name>
         <name lang="fr">Transformateur triangle étoile</name>
         <name lang="pl">Transformator Dy</name>
+        <name lang="cs">Transformátor Dy</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

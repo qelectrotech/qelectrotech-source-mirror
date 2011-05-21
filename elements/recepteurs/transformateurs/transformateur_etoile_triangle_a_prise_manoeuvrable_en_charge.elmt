@@ -11,6 +11,7 @@ Stufenschalter, Stern/Dreieckschaltung
 </name>
         <name lang="fr">Transformateur étoile triangle à prise manoeuvrable en charge</name>
         <name lang="pl">Transformator Yd z przełączanymi zaczepami</name>
+        <name lang="cs">Třífázový transformátor s přepínáním pod zatížením, hvězdicovité trojúhelníkové zapojení Yd</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

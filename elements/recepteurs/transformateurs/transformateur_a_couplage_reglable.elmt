@@ -8,6 +8,7 @@ Transformator mit veränderbarer Kopplung&#xd;&#xd;
 </name>
         <name lang="fr">Transformateur à couplage réglable</name>
         <name lang="pl">Transformator regulacyjny</name>
+        <name lang="cs">Transformátor s měnitelným zapojením</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

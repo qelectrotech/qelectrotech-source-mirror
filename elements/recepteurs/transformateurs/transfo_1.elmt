@@ -8,7 +8,7 @@
         <name lang="fr">Transformateur unifilaire</name>
         <name lang="pl">Transformator</name>
         <name lang="es">Transformador unifilar</name>
-        <name lang="cs">Jednodrátový převodník</name>
+        <name lang="cs">Jednoduchý transformátor</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

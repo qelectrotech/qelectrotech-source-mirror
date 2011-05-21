@@ -10,6 +10,7 @@ tion star-delta
 </name>
         <name lang="fr">Transformateur Y D</name>
         <name lang="pl">Transformator Yd</name>
+        <name lang="cs">Třífázový transformátor, hvězdicovité trojúhelníkové zapojení Yd</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

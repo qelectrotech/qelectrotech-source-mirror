@@ -8,6 +8,7 @@ Stern/Stern/Dreieckschaltung&#xd;
 </name>
         <name lang="fr">Transformateur 2 secondaires étoile-étoile-triangle</name>
         <name lang="pl">Transformator trójuzwojeniowy</name>
+        <name lang="cs">Třífázový transformátor, hvězda-hvězda, trojúhelníkové zapojení</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

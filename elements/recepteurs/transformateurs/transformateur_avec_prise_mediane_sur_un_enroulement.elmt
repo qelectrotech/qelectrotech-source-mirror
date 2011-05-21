@@ -8,6 +8,7 @@ Wicklung&#xd;
 </name>
         <name lang="fr">Transformateur avec prise médiane sur un enroulement</name>
         <name lang="pl">Transformator z przewodem środkowym</name>
+        <name lang="cs">Jednofázový transformátor s odbočkou z vinutí uprostřed</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
