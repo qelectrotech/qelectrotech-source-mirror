@@ -67,42 +67,42 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="120"/>
         <source>Traduction en espagnol</source>
-        <translation>Tradução em Espanhol</translation>
+        <translation>Tradução Espanhola</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
         <source>Traduction en russe</source>
-        <translation>Tradução em Russo</translation>
+        <translation>Tradução Russa</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="122"/>
         <source>Traduction en portugais</source>
-        <translation>Tradução em Português</translation>
+        <translation>Tradução Portuguesa</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="123"/>
         <source>Traduction en tchèque</source>
-        <translation>Tradução em Tcheco</translation>
+        <translation>Tradução Checa</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="124"/>
         <source>Traduction en polonais</source>
-        <translation>Tradução em Polonês</translation>
+        <translation>Tradução Polaca</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <source>Traduction en allemand</source>
-        <translation>Tradução em Alemão</translation>
+        <translation>Tradução Alemã</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Tradução Romena</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Tradução Italiana</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="141"/>
@@ -404,7 +404,7 @@
         <location filename="../sources/diagramview.cpp" line="170"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Orientar os textos seleccionados</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="403"/>
@@ -1072,12 +1072,12 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1153"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelos de moldura</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1166"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1179"/>
@@ -1151,17 +1151,17 @@ As alterações serão definitivas.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar um novo modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar o modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Apagar o modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="393"/>
@@ -1172,13 +1172,13 @@ As alterações serão definitivas.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="549"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>A ler...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="572"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>A carregar : %p%</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
@@ -2314,7 +2314,7 @@ Opções disponiveis:
         <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>A carregar... Lendo as colecções de elementos</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="106"/>
@@ -2326,41 +2326,41 @@ Opções disponiveis:
         <location filename="../sources/qetapp.cpp" line="532"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="533"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="534"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="535"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eléctrico</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="536"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Erreur</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Impossible d&apos;éditer le template demandé</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossível editar o modelo requisitado</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="990"/>
@@ -2748,13 +2748,13 @@ Opções disponiveis:
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Roda os elementos e textos seleccionados</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Roda os textos seleccionados com ângulo definido</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -2851,7 +2851,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Orienter les textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientar os textos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -2871,7 +2871,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Espaço</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -4155,7 +4155,7 @@ Opções disponiveis:
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished"></translation>
+        <translation>roda %1 a %2°</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
@@ -4431,13 +4431,13 @@ Opções disponiveis:
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ex.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exemplo</translation>
     </message>
 </context>
 <context>
@@ -4545,7 +4545,7 @@ Opções disponiveis:
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>tracejado</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
@@ -4592,27 +4592,27 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>style antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de antialising</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>style couleur</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de côr</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de linha</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style epaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de espessura</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation>Estilo de preenchimento</translation>
     </message>
 </context>
 <context>
@@ -4620,98 +4620,98 @@ Opções disponiveis:
     <message>
         <location filename="../sources/templateeditor.cpp" line="38"/>
         <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
+        <translation>Novo modelo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="71"/>
         <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ainda não implementado</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="72"/>
         <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Desculpe, não implementado</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="88"/>
         <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Já existe um modelo com o mesmo nome</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="89"/>
         <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Já existe no projecto um modelo com este nome - por favor escolha outro nome.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="102"/>
         <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
+        <translation>Código XML inválido</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="103"/>
         <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
+        <translation>O código XML do modelo não aparenta ser válido. Não é possível guardar o modelo.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="131"/>
         <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione uma imagem</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="133"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Imagens vectoriais (*.svg);;Imagens bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Todos os ficheiros (*)</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Erreur</source>
-        <translation type="unfinished">Erro</translation>
+        <translation>Erro</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Não é possível abrir o ficheiro especificado</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
+        <translation>O código XML do modelo não aparenta ser válido.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
         <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Inserir logotipo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="212"/>
         <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Verificar o modelo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="213"/>
         <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
+        <translation>Gravar e aplicar</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="214"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Sair</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="241"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectrotech - Editor de modelos de moldura</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="253"/>
         <source>Non défini</source>
-        <translation type="unfinished"></translation>
+        <translation>Não definido</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="257"/>
         <source>Projet parent : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Projecto principal : %1</translation>
     </message>
 </context>
 <context>
@@ -4777,7 +4777,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Ângulo de rotação : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
@@ -4822,7 +4822,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="130"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>ângulo de rotação</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="143"/>
@@ -4836,12 +4836,12 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation type="unfinished"></translation>
+        <translation>Não seguir a rotação do elemento principal</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation type="unfinished"></translation>
+        <translation>Ângulo de rotação padrão : </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
@@ -4891,7 +4891,7 @@ Opções disponiveis:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>ângulo de rotação</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="146"/>
@@ -4905,91 +4905,91 @@ Opções disponiveis:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="166"/>
         <source>Modèle par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo padrão</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="197"/>
         <source>Modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="206"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished">As seguintes variáveis podem ser usadas no campo Fólio:
+        <translation>As seguintes variáveis podem ser usadas no campo Folha:
   - %id: o corrente número do esquema no projecto
   - %total: o número total de esquemas do projecto</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="215"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Sem data</translation>
+        <translation>Sem data</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="216"/>
         <source>Date courante</source>
-        <translation type="unfinished">Data actual</translation>
+        <translation>Data actual</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="217"/>
         <source>Date fixe : </source>
-        <translation type="unfinished">Data fixa: </translation>
+        <translation>Data fixa : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aqui pode definir as suas próprias associações nomes/valores de modo a ser usado na moldura. Exemplo: associar o nome &quot;volta&quot; com o valor &quot;1745&quot; irá substituir %volta por 1745 no bloco de título.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Nom</source>
-        <translation type="unfinished">Nome</translation>
+        <translation>Nome</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="252"/>
         <source>Principales</source>
-        <translation type="unfinished"></translation>
+        <translation>Principais</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
         <source>Personnalisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalisados</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
         <source>Titre : </source>
-        <translation type="unfinished">Título: </translation>
+        <translation>Título :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
         <source>Auteur : </source>
-        <translation type="unfinished">Autor: </translation>
+        <translation>Autor :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="276"/>
         <source>Date : </source>
-        <translation type="unfinished">Data: </translation>
+        <translation>Data :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Fichier : </source>
-        <translation type="unfinished">Ficheiro: </translation>
+        <translation>Ficheiro :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="280"/>
         <source>Folio : </source>
-        <translation type="unfinished">Fólio: </translation>
+        <translation>Folha :</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation type="unfinished">Propriedades da moldura</translation>
+        <translation>Propriedades da moldura</translation>
     </message>
 </context>
 <context>
@@ -4998,12 +4998,12 @@ Opções disponiveis:
         <location filename="../sources/titleblocktemplate.cpp" line="555"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation type="unfinished"></translation>
+        <translation> %1 : %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="557"/>
         <source> %1</source>
-        <translation type="unfinished"></translation>
+        <translation> %1</translation>
     </message>
 </context>
 </TS>
