@@ -97,12 +97,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do rumunštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do italštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="141"/>
@@ -309,7 +309,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="106"/>
         <source>Trait en pointillés</source>
-        <translation>Čárkovaná čára</translation>
+        <translation>Tečkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="60"/>
@@ -404,7 +404,7 @@
         <location filename="../sources/diagramview.cpp" line="170"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Natočit vybrané texty</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="403"/>
@@ -1072,12 +1072,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1153"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzory vloženého rámečku</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1166"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzor &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1179"/>
@@ -1151,17 +1151,17 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavést nový vzor</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit tento vzor</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat tento vzor</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="393"/>
@@ -1172,13 +1172,13 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="549"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Čtení...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="572"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nahrávání: %p%</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
@@ -2315,7 +2315,7 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nahrává se... Probíhá čtení sbírek s prvky</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="106"/>
@@ -2327,41 +2327,41 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="532"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="533"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="534"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="535"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elektrický</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="536"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Erreur</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Impossible d&apos;éditer le template demandé</source>
-        <translation type="unfinished"></translation>
+        <translation>Požadovanou předlohu nelze upravit</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="990"/>
@@ -2749,13 +2749,13 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Otáčí vybrané prvky a texty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Otáčí vybrané texty v přesném úhlu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -2852,7 +2852,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Orienter les textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Natočit texty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -2872,7 +2872,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Mezerník</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -4158,7 +4158,7 @@ Dostupné volby:
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished"></translation>
+        <translation>Natočit %1 v úhlu %2°</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
@@ -4437,13 +4437,13 @@ Dostupné volby:
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Př.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Příklad</translation>
     </message>
 </context>
 <context>
@@ -4551,13 +4551,13 @@ Dostupné volby:
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Čárkovaná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
-        <translation>Čárkovaná</translation>
+        <translation>Tečkovaná</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
@@ -4598,27 +4598,27 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>style antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation>styl vyhlazování</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>style couleur</source>
-        <translation type="unfinished"></translation>
+        <translation>styl barvy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>styl čáry</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style epaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>styl váhy</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation>výplně</translation>
     </message>
 </context>
 <context>
@@ -4626,98 +4626,98 @@ Dostupné volby:
     <message>
         <location filename="../sources/templateeditor.cpp" line="38"/>
         <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový vzor</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="71"/>
         <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ještě neprovedeno</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="72"/>
         <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Promiňte. Ještě neprovedeno</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="88"/>
         <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzor s tímto názvem již existuje</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="89"/>
         <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzor s tímto názvem již existuje uvnitř projektu. Zvolte jiný název.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="102"/>
         <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
+        <translation>Kód XML není platný</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="103"/>
         <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že kód XML vzoru není platný. Vzor nelze uložit.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="131"/>
         <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyberte obrázkový soubor</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="133"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vektorové obrázky (*.svg);;Bitmapové obrázky (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Všechny soubory (*)</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Erreur</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Daný soubor nelze otevřít</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že kód XML vzoru není platný.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
         <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Začlenit logo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="212"/>
         <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Ověřit vzor</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="213"/>
         <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit a použít</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="214"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Ukončit</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="241"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech - Editor vzoru vloženého rámečku</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="253"/>
         <source>Non défini</source>
-        <translation type="unfinished"></translation>
+        <translation>Nestanoveno</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="257"/>
         <source>Projet parent : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Rodičovský projekt: %1</translation>
     </message>
 </context>
 <context>
@@ -4783,12 +4783,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Úhel otáčení: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
         <source>Position : </source>
-        <translation>Poloha:</translation>
+        <translation>Poloha: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="49"/>
@@ -4828,7 +4828,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="130"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>úhel otáčení</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="143"/>
@@ -4842,12 +4842,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation type="unfinished"></translation>
+        <translation>Neotáčet rodičovským prvkem</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí úhel otáčení: </translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
@@ -4897,7 +4897,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>úhel otáčení</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="146"/>
@@ -4911,91 +4911,91 @@ Dostupné volby:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="166"/>
         <source>Modèle par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Výchozí vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="197"/>
         <source>Modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Vzor:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="206"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished">Následující proměnné se dají použít v poli pro dvojlist:
+        <translation>Následující proměnné se dají použít v poli list:
   - %id: průběžné číslo výkresu v projektu
   - %total: celkový počet výkresů v projektu</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="215"/>
         <source>Pas de date</source>
-        <translation type="unfinished">Žádné datum</translation>
+        <translation>Žádné datum</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="216"/>
         <source>Date courante</source>
-        <translation type="unfinished">Nynější datum</translation>
+        <translation>Běžné datum</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="217"/>
         <source>Date fixe : </source>
-        <translation type="unfinished">Pevné datum: </translation>
+        <translation>Pevné datum: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zde můžete stanovit svá vlastní spojení název/hodnota, aby se s nimi počítalo ve vloženém rámečku. Příklad: sdružením názvu &quot;volta&quot; a hodnoty &quot;1745&quot; dojde v rámečku k nahrazení %volta 1745.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Nom</source>
-        <translation type="unfinished">Název</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="252"/>
         <source>Principales</source>
-        <translation type="unfinished"></translation>
+        <translation>Hlavní</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
         <source>Personnalisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Osobní</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
         <source>Titre : </source>
-        <translation type="unfinished">Název: </translation>
+        <translation>Název: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
         <source>Auteur : </source>
-        <translation type="unfinished">Autor: </translation>
+        <translation>Autor: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="276"/>
         <source>Date : </source>
-        <translation type="unfinished">Datum: </translation>
+        <translation>Datum: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Fichier : </source>
-        <translation type="unfinished">Soubor: </translation>
+        <translation>Soubor: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="280"/>
         <source>Folio : </source>
-        <translation type="unfinished">Dvojlist: </translation>
+        <translation>List: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation type="unfinished">Vlastnosti vloženého rámečku</translation>
+        <translation>Vlastnosti vloženého rámečku</translation>
     </message>
 </context>
 <context>
@@ -5004,12 +5004,12 @@ Dostupné volby:
         <location filename="../sources/titleblocktemplate.cpp" line="555"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation type="unfinished"></translation>
+        <translation> %1 : %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="557"/>
         <source> %1</source>
-        <translation type="unfinished"></translation>
+        <translation> %1</translation>
     </message>
 </context>
 </TS>
