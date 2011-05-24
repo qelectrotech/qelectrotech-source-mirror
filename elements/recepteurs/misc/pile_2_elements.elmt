@@ -3,6 +3,7 @@
         <name lang="en">Battery 2 elements</name>
         <name lang="fr">Pile 2 éléments</name>
         <name lang="pl">Bateria ogniw elektrochemicznych</name>
+        <name lang="cs">Akumulátor 2 prvky</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
