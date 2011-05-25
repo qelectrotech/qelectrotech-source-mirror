@@ -30,6 +30,7 @@
 #include "hotspoteditor.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
+#include "nameslist.h"
 
 /**
 	Constructeur

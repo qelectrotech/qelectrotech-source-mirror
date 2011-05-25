@@ -53,7 +53,10 @@ class NamesList {
 	QString name(const QString & = QString()) const;
 	
 	// methodes relatives a XML
-	void fromXml(const QDomElement &);
-	QDomElement toXml(QDomDocument &) const;
+	void fromXml(const QDomElement &, const QHash<QString, QString> & = QHash<QString, QString>());
+	QDomElement toXml(QDomDocument &, const QHash<QString, QString> & = QHash<QString, QString>()) const;
+	
+	protected:
+	QHash<QString, QString> getXmlOptions(const QHash<QString, QString> & = QHash<QString, QString>()) const;
 };
 #endif

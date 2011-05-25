@@ -2,10 +2,50 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
   <grid rows="25px;25px" cols="t22%;r100%;t22%">
-    <field row="0" col="0" name="author"  label="Auteur"  displaylabel="true"  align="left"   rowspan="0" value="%author" />
-    <field row="1" col="0" name="date"    label="Date"    displaylabel="true"  align="left"   rowspan="0" value="%date" />
-    <field row="0" col="1" name="title"   label="Titre"   displaylabel="false" align="center" rowspan="1" value="%title" />
-    <field row="0" col="2" name="file"    label="Fichier" displaylabel="true"  align="left"   rowspan="0" value="%filename" />
-    <field row="1" col="2" name="folio"   label="Folio"   displaylabel="true"  align="left"   rowspan="0" value="%{folio-id}/%{folio-total}" />
+    <field row="0" col="0" name="author"  displaylabel="true"  align="left"   rowspan="0">
+        <label>
+          <translation lang="en">Author</translation>
+          <translation lang="fr">Auteur</translation>
+        </label>
+        <value>
+          <translation lang="en">%author</translation>
+        </value>
+    </field>
+    <field row="1" col="0" name="date"    displaylabel="true"  align="left"   rowspan="0">
+        <label>
+          <translation lang="en">Date</translation>
+          <translation lang="fr">Date</translation>
+        </label>
+        <value>
+          <translation lang="en">%date</translation>
+        </value>
+    </field>
+    <field row="0" col="1" name="title"   displaylabel="false" align="center" rowspan="1">
+        <label>
+          <translation lang="en">Title</translation>
+          <translation lang="fr">Titre</translation>
+        </label>
+        <value>
+          <translation lang="en">%title</translation>
+        </value>
+    </field>
+    <field row="0" col="2" name="file"    displaylabel="true"  align="left"   rowspan="0">
+        <label>
+          <translation lang="en">File</translation>
+          <translation lang="fr">Fichier</translation>
+        </label>
+        <value>
+          <translation lang="en">%filename</translation>
+        </value>
+    </field>
+    <field row="1" col="2" name="folio"   displaylabel="true"  align="left"   rowspan="0">
+        <label>
+          <translation lang="en">Folio</translation>
+          <translation lang="fr">Folio</translation>
+        </label>
+        <value>
+          <translation lang="en">%{folio-id}/%{folio-total}</translation>
+        </value>
+    </field>
   </grid>
 </titleblocktemplate>

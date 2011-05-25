@@ -18,6 +18,7 @@
 #include "titleblocktemplate.h"
 #include "qet.h"
 #include "qetapp.h"
+#include "nameslist.h"
 
 /**
 	Constructor
@@ -45,6 +46,9 @@ bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 	if (!template_file.open(QIODevice::ReadOnly | QIODevice::Text)) {
 	    return(false);
 	}
+#ifdef TITLEBLOCK_TEMPLATE_DEBUG
+	qDebug() << Q_FUNC_INFO << filepath << "opened";
+#endif
 	
 	// parses its content as XML
 	bool xml_parsing = xml_description_.setContent(&template_file);
@@ -52,7 +56,7 @@ bool TitleBlockTemplate::loadFromXmlFile(const QString &filepath) {
 		return(false);
 	}
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
-	qDebug() << Q_FUNC_INFO << filepath << "opened";
+	qDebug() << Q_FUNC_INFO << filepath << "opened and parsed";
 #endif
 	return(loadFromXmlElement(xml_description_.documentElement()));
 }
@@ -264,12 +268,24 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 				if (cell_element.hasAttribute("name") && !cell_element.attribute("name").isEmpty()) {
 					loaded_cell -> value_name = cell_element.attribute("name");
 				}
-				if (cell_element.hasAttribute("value") && !cell_element.attribute("value").isEmpty()) {
-					loaded_cell -> value = cell_element.attribute("value");
+				
+				QHash<QString, QString> names_options;
+				names_options["TagName"] = "translation";
+				
+				names_options["ParentTagName"] = "value";
+				NamesList value_nameslist;
+				value_nameslist.fromXml(cell_element, names_options);
+				if (!value_nameslist.name().isEmpty()) {
+					loaded_cell -> value = value_nameslist.name();
 				}
-				if (cell_element.hasAttribute("label") && !cell_element.attribute("label").isEmpty()) {
-					loaded_cell -> label = cell_element.attribute("label");
+				
+				names_options["ParentTagName"] = "label";
+				NamesList label_nameslist;
+				label_nameslist.fromXml(cell_element, names_options);
+				if (!label_nameslist.name().isEmpty()) {
+					loaded_cell -> label = label_nameslist.name();
 				}
+				
 				if (cell_element.hasAttribute("displaylabel") && cell_element.attribute("displaylabel").compare("false", Qt::CaseInsensitive) == 0) {
 					loaded_cell -> display_label = false;
 				}
