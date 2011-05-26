@@ -12,6 +12,7 @@ with
 interrupteur unipolaire
 </name>
         <name lang="pl">Gniazdo pojedyncze z łącznikiem</name>
+        <name lang="cs">Zásuvka, jednopólový spínač, odpojitelná</name>
     </names>
     <informations>EN 60617: 11-13-06</informations>
     <description>
