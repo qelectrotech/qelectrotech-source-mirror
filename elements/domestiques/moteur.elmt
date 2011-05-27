@@ -4,6 +4,7 @@
         <name lang="en">Motor</name>
         <name lang="fr">Moteur</name>
         <name lang="pl">Silnik</name>
+        <name lang="cs">Motor</name>
     </names>
     <informations>EN 60617: 06-04-01</informations>
     <description>

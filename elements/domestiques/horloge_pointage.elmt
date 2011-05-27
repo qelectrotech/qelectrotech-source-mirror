@@ -11,6 +11,7 @@ Time recorder
 Enregistreur horaire
 </name>
         <name lang="pl">Zegar kontrolny</name>
+        <name lang="cs">Docházkové kontrolní hodiny</name>
     </names>
     <informations>EN 60617: 11-16-03</informations>
     <description>

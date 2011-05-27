@@ -3,5 +3,6 @@
         <name lang="en">Meters</name>
         <name lang="fr">Compteurs</name>
         <name lang="pl">Liczniki</name>
+        <name lang="cs">Počítadla</name>
     </names>
 </qet-directory>

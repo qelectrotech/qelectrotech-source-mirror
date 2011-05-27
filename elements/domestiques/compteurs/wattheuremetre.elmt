@@ -8,6 +8,7 @@ Elektrizitätszähler
 Wattheuremètre
 </name>
         <name lang="pl">Licznik watogodzin</name>
+        <name lang="cs">Počítadlo watthodin</name>
     </names>
     <informations>EN 60617: 08-04-03&#xd;
 </informations>

@@ -3,6 +3,7 @@
         <name lang="en">Energy meter</name>
         <name lang="fr">Compteur d’énergie</name>
         <name lang="pl">Licznik energii</name>
+        <name lang="cs">Počítadlo energie</name>
     </names>
     <informations></informations>
     <description>

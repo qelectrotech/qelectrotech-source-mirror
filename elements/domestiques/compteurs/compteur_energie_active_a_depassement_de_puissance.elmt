@@ -8,6 +8,7 @@
 </name>
         <name lang="fr">Compteur à énergie active à dépassement de puissance</name>
         <name lang="pl">Licznik watogodzin szczytowy</name>
+        <name lang="cs">Počítadlo překročení spotřeby watthodin</name>
     </names>
     <informations></informations>
     <description>
