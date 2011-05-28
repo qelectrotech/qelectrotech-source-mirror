@@ -3,6 +3,7 @@
         <name lang="en">One-phase alternating > Direct</name>
         <name lang="fr">Alternatif monophasé > Continu</name>
         <name lang="es">Alterna monofásica > Continua</name>
+        <name lang="cs">Usměrňovač - jednofázový střídavý proud > stejnosměrný proud</name>
     </names>
     <informations></informations>
     <description>

@@ -8,7 +8,7 @@
         <name lang="fr">Continu > Continu</name>
         <name lang="pl">Przekształtnik prądu stałego</name>
         <name lang="es">Continua > Continua</name>
-        <name lang="cs">Přímý </name>
+        <name lang="cs">Stejnosměrný proud > stejnosměrný proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

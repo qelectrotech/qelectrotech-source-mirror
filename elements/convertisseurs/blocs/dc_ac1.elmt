@@ -8,7 +8,7 @@
         <name lang="fr">Continu > Alternatif monophasé</name>
         <name lang="pl">Falownik</name>
         <name lang="es">Continua > Alterna monofásica</name>
-        <name lang="cs">Přímý </name>
+        <name lang="cs">Stejnosměrný proud > střídavý proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

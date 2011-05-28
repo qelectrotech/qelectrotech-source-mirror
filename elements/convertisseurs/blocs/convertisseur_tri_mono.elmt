@@ -3,6 +3,7 @@
         <name lang="en">Three phase converter single phase</name>
         <name lang="fr">Convertisseur tri mono</name>
         <name lang="pl">Przekształtnik prądu przemiennego</name>
+        <name lang="cs">Měnič třífázový/jednofázový proud</name>
     </names>
     <informations></informations>
     <description>
