@@ -3,6 +3,7 @@
         <name lang="en">Key captive bolt entry maneuver blocked</name>
         <name lang="fr">Cle prisioniere pene entree manoeuvre bloquée</name>
         <name lang="pl">Klucz niedostępny, wejście niedozwolone</name>
+        <name lang="cs">Klíč nedostupný, vstup nedovolen</name>
     </names>
     <informations></informations>
     <description>

@@ -3,6 +3,7 @@
         <name lang="en">Lock with key still trapped</name>
         <name lang="fr">Serrure avec cle toujours prisionniere</name>
         <name lang="pl">Zamek,  klucz niedostępny</name>
+        <name lang="cs">Zámek, klíč vždy nedostupný</name>
     </names>
     <informations></informations>
     <description>

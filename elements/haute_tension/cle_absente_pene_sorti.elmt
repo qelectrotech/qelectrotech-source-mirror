@@ -3,6 +3,7 @@
         <name lang="en">Key missing bolt out maneuver blocked</name>
         <name lang="fr">Cle absente pene sorti manoeuvre bloquée</name>
         <name lang="pl">Brak klucza, wyjście niedozwolone</name>
+        <name lang="cs">Klíči chybí zástrčka, výstup nedovolen</name>
     </names>
     <informations></informations>
     <description>
