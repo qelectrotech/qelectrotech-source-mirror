@@ -3,6 +3,7 @@
         <name lang="en">Electric cooker</name>
         <name lang="fr">Cuisiniere electrique</name>
         <name lang="pl">Kuchenka elektryczna</name>
+        <name lang="cs">Elektrický sporák</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

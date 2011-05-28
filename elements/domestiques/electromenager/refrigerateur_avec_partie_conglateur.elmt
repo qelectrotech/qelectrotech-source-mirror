@@ -3,6 +3,7 @@
         <name lang="en">Refrigerator with freezer</name>
         <name lang="fr">Réfrigérateur avec partie congélateur</name>
         <name lang="pl">Chłodziarka z zamrażarką</name>
+        <name lang="cs">Lednička s mrazákem</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

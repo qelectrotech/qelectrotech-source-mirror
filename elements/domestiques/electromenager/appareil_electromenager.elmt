@@ -3,6 +3,7 @@
         <name lang="en">Appliance</name>
         <name lang="fr">Appareil électroménager</name>
         <name lang="pl">Kuchenka elektryczna</name>
+        <name lang="cs">Elektrický spotřebič</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

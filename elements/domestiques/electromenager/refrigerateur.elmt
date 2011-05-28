@@ -3,6 +3,7 @@
         <name lang="en">Refrigerator</name>
         <name lang="fr">Réfrigérateur</name>
         <name lang="pl">Chłodziarka</name>
+        <name lang="cs">Lednička, chladnička</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

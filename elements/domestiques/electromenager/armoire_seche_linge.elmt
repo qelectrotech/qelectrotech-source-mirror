@@ -3,6 +3,7 @@
         <name lang="en">Drying cabinet</name>
         <name lang="fr">Armoire sèche-linge</name>
         <name lang="pl">Suszarka</name>
+        <name lang="cs">Sušička, sušící skříň</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
         <name lang="en">Fan heater hairdryer</name>
         <name lang="fr">Radiateur soufflant sèche cheveux</name>
         <name lang="pl">Suszarka do włosów</name>
+        <name lang="cs">Vysoušeč vlasů, fén na vlasy</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

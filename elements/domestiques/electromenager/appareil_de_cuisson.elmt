@@ -3,6 +3,7 @@
         <name lang="en">Cooking Appliance</name>
         <name lang="fr">Appareil de cuisson</name>
         <name lang="pl">Kuchenka</name>
+        <name lang="cs">Spotřebič na vaření</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

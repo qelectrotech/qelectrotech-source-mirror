@@ -3,6 +3,7 @@
         <name lang="en">Air conditioner</name>
         <name lang="fr">Climatiseur</name>
         <name lang="pl">Klimatyzator</name>
+        <name lang="cs">Klimatizace</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

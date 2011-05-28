@@ -4,6 +4,7 @@
         <name lang="en">Galvanometer h</name>
         <name lang="fr">Galvanomètre horizontal</name>
         <name lang="pl">Galwanomert (poziomo)</name>
+        <name lang="cs">Galvanometr, vodorovný</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

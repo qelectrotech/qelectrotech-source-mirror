@@ -3,6 +3,7 @@
         <name lang="en">Microwave oven</name>
         <name lang="fr">Four à micro-ondes</name>
         <name lang="pl">Kuchenka mikrofalowa</name>
+        <name lang="cs">Mikrovlnná trouba</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

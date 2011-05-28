@@ -3,6 +3,7 @@
         <name lang="en">Water heater</name>
         <name lang="fr">Chauffe-eau</name>
         <name lang="pl">Grzejnik wody</name>
+        <name lang="cs">Ohřívač vody</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
