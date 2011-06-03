@@ -16,12 +16,60 @@
             </logos>
             <grid cols="52px;r12%;r13%;r50%;r25%;25px;25px;25px;25px;" rows="25px;25px">
                 <logo rowspan="1" row="0" col="0" resource="spirale.svg"/>
-                <field rowspan="0" row="0" hadjust="false" col="1" value="%author" name="author" label="Auteur" displaylabel="true" align="left"/>
-                <field rowspan="0" row="1" colspan="1" col="1" value="%date" name="date" label="Date" displaylabel="true" align="left"/>
-                <field row="0" col="2" value="%{coin}" name="tst" label="coin" displaylabel="true" align="left"/>
-                <field rowspan="1" row="0" col="3" value="%title" name="title" label="Titre" displaylabel="false" align="center"/>
-                <field rowspan="0" row="0" col="4" value="%filename" name="file" label="Fichier" displaylabel="true" align="left"/>
-                <field rowspan="0" row="1" col="4" value="%{folio-id}/%{folio-total}" name="folio" label="Folio" displaylabel="true" align="left"/>
+                <field rowspan="0" row="0" hadjust="false" col="1" name="author" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Author</translation>
+                        <translation lang="fr">Auteur</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%author</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="1" colspan="1" col="1" name="date" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Date</translation>
+                        <translation lang="fr">Date</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%date</translation>
+                    </value>
+                </field>
+                <field row="0" col="2" name="tst" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">coin</translation>
+                        <translation lang="fr">coin</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%{coin}</translation>
+                    </value>
+                </field>
+                <field rowspan="1" row="0" col="3" name="title" displaylabel="false" align="center">
+                    <label>
+                        <translation lang="en">Title</translation>
+                        <translation lang="fr">Titre</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%title</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="0" col="4" name="file" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">File</translation>
+                        <translation lang="fr">Ficher</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%filename</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="1" col="4" name="folio" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Folio</translation>
+                        <translation lang="fr">Folio</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%{folio-id}/%{folio-total}</translation>
+                    </value>
+                </field>
                 <logo row="0" col="5" resource="dott.png"/>
                 <logo row="0" col="6" resource="test.svg"/>
                 <logo row="0" col="7" resource="dott.png"/>
@@ -53,12 +101,60 @@
             </logos>
             <grid cols="52px;r12%;r13%;r50%;r25%;25px;25px;25px;25px;" rows="25px;25px">
                 <logo rowspan="1" row="0" col="0" resource="eu.jpg"/>
-                <field rowspan="0" row="0" col="1" value="%author" name="author" label="Auteur" displaylabel="true" align="left"/>
-                <field rowspan="0" row="1" colspan="1" col="1" value="%date" name="date" label="Date" displaylabel="true" align="left"/>
-                <field row="0" col="2" value="%{folio-id}" name="tst" label="coin" displaylabel="true" align="left"/>
-                <field rowspan="1" row="0" col="3" value="%title" name="title" label="Titre" displaylabel="false" align="center"/>
-                <field rowspan="0" row="0" col="4" value="%filename" name="file" label="Fichier" displaylabel="true" align="left"/>
-                <field rowspan="0" row="1" col="4" value="%{folio-id}/%{folio-total}" name="folio" label="Folio" displaylabel="true" align="left"/>
+                <field rowspan="0" row="0" col="1" name="author" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Author</translation>
+                        <translation lang="fr">Auteur</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%author</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="1" colspan="1" col="1" name="date" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Date</translation>
+                        <translation lang="fr">Date</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%date</translation>
+                    </value>
+                </field>
+                <field row="0" col="2" name="tst" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">coin</translation>
+                        <translation lang="fr">coin</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%{folio-id}</translation>
+                    </value>
+                </field>
+                <field rowspan="1" row="0" col="3" name="title" displaylabel="false" align="center">
+                    <label>
+                        <translation lang="en">Title</translation>
+                        <translation lang="fr">Titre</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%title</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="0" col="4" name="file" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">File</translation>
+                        <translation lang="fr">Ficher</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%filename</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="1" col="4" name="folio" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Folio</translation>
+                        <translation lang="fr">Folio</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%{folio-id}/%{folio-total}</translation>
+                    </value>
+                </field>
                 <logo row="0" col="5" resource="dott.png"/>
                 <logo row="0" col="6" resource="test.svg"/>
                 <logo row="0" col="7" resource="dott.png"/>
@@ -89,12 +185,60 @@
             </logos>
             <grid cols="52px;r12%;r13%;r50%;r25%;25px;25px;25px;25px;" rows="25px;25px">
                 <logo rowspan="1" row="0" col="0" resource="spirale.svg"/>
-                <field rowspan="0" row="0" col="1" value="%author" name="author" label="Auteur" displaylabel="true" align="left"/>
-                <field rowspan="0" row="1" colspan="1" col="1" value="%date" name="date" label="Date" displaylabel="true" align="left"/>
-                <field row="0" col="2" value="%{folio-id}" name="tst" label="coin" displaylabel="true" align="left"/>
-                <field rowspan="1" row="0" col="3" value="%title" name="title" label="Titre" displaylabel="false" align="center"/>
-                <field rowspan="0" row="0" col="4" value="%filename" name="file" label="Fichier" displaylabel="true" align="left"/>
-                <field rowspan="0" row="1" col="4" value="%{folio-id}/%{folio-total}" name="folio" label="Folio" displaylabel="true" align="left"/>
+                <field rowspan="0" row="0" col="1" name="author" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Author</translation>
+                        <translation lang="fr">Auteur</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%author</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="1" colspan="1" col="1" name="date" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Date</translation>
+                        <translation lang="fr">Date</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%date</translation>
+                    </value>
+                </field>
+                <field row="0" col="2" name="tst" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">coin</translation>
+                        <translation lang="fr">coin</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%{folio-id}</translation>
+                    </value>
+                </field>
+                <field rowspan="1" row="0" col="3" name="title" displaylabel="false" align="center">
+                    <label>
+                        <translation lang="en">Title</translation>
+                        <translation lang="fr">Titre</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%title</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="0" col="4" name="file" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">File</translation>
+                        <translation lang="fr">Ficher</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%filename</translation>
+                    </value>
+                </field>
+                <field rowspan="0" row="1" col="4" name="folio" displaylabel="true" align="left">
+                    <label>
+                        <translation lang="en">Folio</translation>
+                        <translation lang="fr">Folio</translation>
+                    </label>
+                    <value>
+                        <translation lang="en">%{folio-id}/%{folio-total}</translation>
+                    </value>
+                </field>
                 <logo row="0" col="5" resource="dott.png"/>
                 <logo row="0" col="6" resource="test.svg"/>
                 <logo row="0" col="7" resource="dott.png"/>
