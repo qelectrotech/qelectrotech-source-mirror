@@ -305,8 +305,8 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 				else loaded_cell -> alignment |= Qt::AlignLeft;
 				
 				QString valignment = cell_element.attribute("valign", "center");
-				if (halignment == "bottom") loaded_cell -> alignment |= Qt::AlignBottom;
-				else if (halignment == "top") loaded_cell -> alignment |= Qt::AlignTop;
+				if (valignment == "bottom") loaded_cell -> alignment |= Qt::AlignBottom;
+				else if (valignment == "top") loaded_cell -> alignment |= Qt::AlignTop;
 				else loaded_cell -> alignment |= Qt::AlignVCenter;
 				
 				// horizontal text adjustment
