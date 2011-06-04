@@ -68,6 +68,6 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const {
 	@return true if that key is acceptable, false otherwise
 */
 bool DiagramContext::keyIsAcceptable(const QString &key) const {
-	static QRegExp re("^[a-z-]+$");
+	static QRegExp re("^[a-z0-9-]+$");
 	return(re.exactMatch(key));
 }
