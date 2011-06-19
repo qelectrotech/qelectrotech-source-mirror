@@ -3,6 +3,7 @@
         <name lang="en">Circuit-breaker</name>
         <name lang="fr">Disjoncteur bipolaire 2 poles proteges</name>
         <name lang="pl">Wyłącznik</name>
+	<name lang="cs">Dvojpólový jistič 2 póly chránící</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

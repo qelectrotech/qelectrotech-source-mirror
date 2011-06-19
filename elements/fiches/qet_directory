@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">Fiches</name>
         <name lang="pl">Złącza</name>
-	<name lang="en">Pins</name>  
+	<name lang="en">Pins</name>
+        <name lang="cs">Kolíky</name>  
     </names>
 </qet-directory>
