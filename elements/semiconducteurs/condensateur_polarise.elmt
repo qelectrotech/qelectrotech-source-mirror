@@ -4,6 +4,7 @@
         <name lang="it">Condensatore elettrolitico</name>
         <name lang="fr">Condensateur polarisé</name>
         <name lang="pl">Kondensator elektrolityczny</name>
+        <name lang="cs">Polarizovaný kondenzátor</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

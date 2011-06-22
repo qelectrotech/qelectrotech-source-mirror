@@ -12,6 +12,7 @@ gesteuert)
 (commandé côté cathode)
 </name>
         <name lang="pl">Tyrystor triodowy odłączający z bramką P</name>
+        <name lang="cs">Vypínací triodový tyristor, brána P (řízeno na straně katody)</name>
     </names>
     <informations>EN 60617: 05-04-09</informations>
     <description>

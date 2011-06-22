@@ -10,6 +10,7 @@ type
         <name lang="fr">Thyristor tétrode bloqué en inverse
 </name>
         <name lang="pl">Tyrystor tetrodowy blokujący wstecznie</name>
+        <name lang="cs">Tetrodový tyristor, blokující obráceně</name>
     </names>
     <informations>EN 60617: 05-04-10</informations>
     <description>

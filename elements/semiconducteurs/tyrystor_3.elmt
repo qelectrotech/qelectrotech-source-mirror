@@ -5,6 +5,7 @@
         <name lang="fr">Thyristor triode bloqué en inverse, gâchette N
 </name>
         <name lang="pl">Tyrystor triodowy dwukierunkowy. Triak</name>
+        <name lang="cs">Triodový tyristor blokující obráceně, brána N</name>
     </names>
     <informations>EN 60617: 05-04-11</informations>
     <description>

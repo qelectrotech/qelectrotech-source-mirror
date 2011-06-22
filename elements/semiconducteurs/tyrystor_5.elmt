@@ -12,6 +12,7 @@
 (commandé côté anode)
 </name>
         <name lang="pl">Tyrystor triodowy blokujący wstecznie z bramką N</name>
+        <name lang="cs">Triodový tyristor blokující obráceně, brána N (řízeno na straně anody)</name>
     </names>
     <informations>EN 60617: 05-04-05</informations>
     <description>

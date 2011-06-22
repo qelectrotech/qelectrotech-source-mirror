@@ -5,6 +5,7 @@
         <name lang="it">Tiristore triodo bloccabile</name>
         <name lang="fr">Thyristor triode blocable</name>
         <name lang="pl">Tyrystor triodowy odłączający z bramką niokreśloną</name>
+        <name lang="cs">Vypínací triodový tyristor</name>
     </names>
     <informations>EN 60617: 05-04-07</informations>
     <description>

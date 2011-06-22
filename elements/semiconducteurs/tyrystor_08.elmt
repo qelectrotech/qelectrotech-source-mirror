@@ -12,6 +12,7 @@ gesteuert)
 (commandé côté anode)
 </name>
         <name lang="pl">Tyrystor triodowy odłączający z bramką N</name>
+        <name lang="cs">Vypínací triodový tyristor, brána N (řízeno na straně anody)</name>
     </names>
     <informations>EN 60617: 05-04-08</informations>
     <description>

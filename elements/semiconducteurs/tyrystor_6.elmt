@@ -13,6 +13,7 @@
 (commandé côté cathode)
 </name>
         <name lang="pl">Tyrystor triodowy blokujący wstecznie z bramką P</name>
+        <name lang="cs">Triodový tyristor blokující obráceně, brána P (řízeno na straně katody)</name>
     </names>
     <informations>EN 60617: 05-04-06</informations>
     <description>
