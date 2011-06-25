@@ -3,5 +3,6 @@
         <name lang="fr" >Pompes</name>
 	<name lang="en" >Pumps</name>
 	<name lang="pl" >Pompy</name>
+        <name lang="cs">Čerpadla</name>
     </names>
 </qet-directory>
