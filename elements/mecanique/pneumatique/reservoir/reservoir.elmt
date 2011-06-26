@@ -3,6 +3,7 @@
         <name lang="en">Tank</name>
         <name lang="fr">Reservoir</name>
         <name lang="pl">Zbiornik pneumatyczny</name>
+        <name lang="cs">Nádrž na vzduch</name>
     </names>
     <informations></informations>
     <description>

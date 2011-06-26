@@ -3,6 +3,7 @@
         <name lang="en">Main drive</name>
         <name lang="fr">Entrainement principal </name>
         <name lang="pl">Napęd gówny nieelektryczny</name>
+        <name lang="cs">hlavní pohon</name>
     </names>
     <informations></informations>
     <description>

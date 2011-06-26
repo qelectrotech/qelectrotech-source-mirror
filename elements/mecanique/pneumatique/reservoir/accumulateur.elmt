@@ -3,6 +3,7 @@
         <name lang="en">Tank</name>
         <name lang="fr">Reservoir </name>
         <name lang="pl">Zbiornik pneumatyczny pomocniczy, rezerwowa objętość gazu do uzupełniamia połączonych akumulatorów</name>
+        <name lang="cs">Pomocná nádrž na vzduch</name>
     </names>
     <informations></informations>
     <description>

@@ -3,6 +3,7 @@
         <name lang="en">Two-way flow controller, with a variable output flow rate</name>
         <name lang="fr">Réducteur de debit bidirectionnel reglable</name>
         <name lang="pl">Regulator przepływu dwudrogowy, ze zmiennym wyjściowym natężeniem przepływu</name>
+        <name lang="cs">Dvoucestný ovladač průtoku, s proměnlivou výstupní průtokovou rychlostí</name>
     </names>
     <informations></informations>
     <description>

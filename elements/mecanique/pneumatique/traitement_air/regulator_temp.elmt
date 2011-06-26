@@ -3,6 +3,7 @@
         <name lang="en">Temperature controller</name>
         <name lang="fr">Regulateur de temperature</name>
         <name lang="pl">Regulator temperatury</name>
+        <name lang="cs">Ovladač teploty</name>
     </names>
     <informations></informations>
     <description>

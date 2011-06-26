@@ -7,6 +7,7 @@ variable</name>
 rotation
 variable</name>
         <name lang="pl">Silnik pneumatyczny o dwóch kierunkach przepływu, o zmiennej objętości roboczej</name>
+        <name lang="cs">Motor se dvěma směry otáčení</name>
     </names>
     <informations></informations>
     <description>
