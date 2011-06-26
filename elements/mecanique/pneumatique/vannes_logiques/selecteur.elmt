@@ -3,6 +3,7 @@
         <name lang="en">Selector circuit</name>
         <name lang="fr">Selecteur de circuit</name>
         <name lang="pl">Przełącznik obiegu (zawór logiczny LUB)</name>
+        <name lang="cs">Volič obvodu</name>
     </names>
     <informations></informations>
     <description>

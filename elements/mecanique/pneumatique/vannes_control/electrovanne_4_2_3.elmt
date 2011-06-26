@@ -3,6 +3,7 @@
         <name lang="en">Valve 4 / 3 control, controlled by push button</name>
         <name lang="fr">Vanne 4 / 3 de contrôle, contrôlé par le bouton poussoir</name>
         <name lang="pl">Zawór sterujący 4/3, sterowany przyciskiem, ustalany sprężynami w położeniu środkowym</name>
+        <name lang="cs">Řídící ventil 4/3, řízený tlačítkem</name>
     </names>
     <informations></informations>
     <description>
