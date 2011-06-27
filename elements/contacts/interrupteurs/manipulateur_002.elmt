@@ -3,6 +3,7 @@
         <name lang="en">Manipulator</name>
         <name lang="fr">Manipulateur</name>
         <name lang="pl">Manipulator dwukierunkowy z powrotem samoczynnym</name>
+        <name lang="cs">Manipulátor</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

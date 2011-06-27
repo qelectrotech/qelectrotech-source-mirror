@@ -3,6 +3,7 @@
         <name lang="en">Switch 2 positions</name>
         <name lang="fr">Interrupteur rotatif</name>
         <name lang="pl">Łącznik obrotowy przełączny</name>
+        <name lang="cs">Otočný spínač - 2 polohy</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

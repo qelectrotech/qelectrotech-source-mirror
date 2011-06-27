@@ -3,6 +3,7 @@
         <name lang="en">Switch 3 positions including neutral</name>
         <name lang="fr">Interrupteur rotatif 1-0-2</name>
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej, uruchamiany kluczykiem</name>
+        <name lang="cs">Otočný spínač 1-0-2 - 3 polohy včetně neurální</name>
     </names>
     <informations></informations>
     <description>

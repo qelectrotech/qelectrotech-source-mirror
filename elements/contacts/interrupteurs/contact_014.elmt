@@ -3,6 +3,7 @@
         <name lang="en">Push-button</name>
         <name lang="fr">Bouton poussoir</name>
         <name lang="pl">Łącznik przyciskowy podświetlony  z powrotem samoczynnym</name>
+        <name lang="cs">Tlačítko</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
