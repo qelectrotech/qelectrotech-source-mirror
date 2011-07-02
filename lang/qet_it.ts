@@ -1166,13 +1166,13 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="549"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lettura...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="572"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Caricamento: %p%</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
@@ -2308,7 +2308,7 @@ Opzioni disponibili:
         <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Caricamento... Lettura collezione elementi</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="106"/>
@@ -2973,7 +2973,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ruota il testo selezionato di un angolo preciso</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
@@ -4670,7 +4670,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Il codice XML del modello non sembra essere valido.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
