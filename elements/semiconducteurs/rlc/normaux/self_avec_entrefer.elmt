@@ -4,6 +4,7 @@
         <name lang="it">Autotrasformatore con traferro</name>
         <name lang="fr">Self avec entrefer</name>
         <name lang="pl">Dławik</name>
+        <name lang="cs">Tlumivka (indukčnost se vzduchovou mezerou)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

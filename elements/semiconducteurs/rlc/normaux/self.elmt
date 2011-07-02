@@ -4,6 +4,7 @@
         <name lang="it">Induttanza</name>
         <name lang="fr">Inductance</name>
         <name lang="pl">Dławik</name>
+        <name lang="cs">Tlumivka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

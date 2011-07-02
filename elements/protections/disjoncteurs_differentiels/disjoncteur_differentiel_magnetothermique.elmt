@@ -3,6 +3,7 @@
         <name lang="en">Magneto-thermal differential switch</name>
         <name lang="fr">Disjoncteur différentiel magnéto-thermique</name>
         <name lang="pl">Wyłącznik różnicowoprądowy z członem nadprądowym</name>
+        <name lang="cs">Rozdílový magnetotepelný jistič</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
