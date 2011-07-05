@@ -4,6 +4,7 @@
         <name lang="fr">ATV31HU75N4</name>
         <name lang="pl">ATV31HU75N4</name>
         <name lang="it">ATV31HU75N4</name>
+        <name lang="cs">ATV31HU75N4</name>
     </names>
     <description>
         <input x="365" y="69.55" size="9" rotate="true" text="3.00" />
