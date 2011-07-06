@@ -3,6 +3,7 @@
         <name lang="en">Ground bar</name>
         <name lang="fr">Barette de terre</name>
         <name lang="pl">Złącze gniazdowe dwuprzerwowe</name>
+        <name lang="cs">Zemnící tyč</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

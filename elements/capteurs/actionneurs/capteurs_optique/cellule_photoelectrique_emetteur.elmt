@@ -3,6 +3,7 @@
         <name lang="en">Photo-electric sensor -transmitter</name>
         <name lang="fr">Cellule photo-électrique - Emetteur</name>
         <name lang="pl">Komórka fotoelektryczna - nadajnik</name>
+        <name lang="cs">Fotoelektrické čidlo - vysílač</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

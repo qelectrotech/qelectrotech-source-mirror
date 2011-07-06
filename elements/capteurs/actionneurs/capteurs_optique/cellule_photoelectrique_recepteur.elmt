@@ -3,6 +3,7 @@
         <name lang="en">Photo-electric sensor receptor</name>
         <name lang="fr">Cellule photo-électrique - Récepteur</name>
         <name lang="pl">Komórka fotoelektryczna - odbiornik</name>
+        <name lang="cs">Fotoelektrické čidlo - snímač</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
         <name lang="en">Terminal block</name>
         <name lang="fr">Bornier</name>
         <name lang="pl">Listwa zaciskowa</name>
+        <name lang="cs">Svorkový blok</name>
     </names>
     <informations>EN 60617: 03-02-03</informations>
     <description>
