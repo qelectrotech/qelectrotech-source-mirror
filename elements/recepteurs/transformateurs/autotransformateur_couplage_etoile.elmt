@@ -1,18 +1,18 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
     <names>
-        <name lang="en">Auto-transformer,
-connection star
+        <name lang="en">Auto-transformer,&#xd;
+connection star&#xd;
 three-phase</name>
-        <name lang="it">Autotrasformatore trifase, collega- mento stella
+        <name lang="it">Autotrasformatore trifase, collega- mento stella&#xd;
 </name>
         <name lang="fr">Autotransformateur couplage étoile</name>
         <name lang="pl">Autotransformator trójfazowy skojarzony w gwiazdę</name>
         <name lang="cs">Třífázový autotransformátor, hvězdicovité zapojení</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <arc width="20" x="-10" y="-14.5" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-68"/>
+        <arc width="20" x="-10" y="-14.5" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="158" angle="-68"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="-0.05" y2="2.95" x2="1.95"/>
         <circle x="-10" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4.95" x1="-0.05" y2="2.95" x2="-2.05"/>

@@ -1,13 +1,9 @@
 <definition width="50" version="0.3" hotspot_x="35" hotspot_y="45" height="50" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="de">Gleichrichter
-</name>
-        <name lang="en">Rectiﬁer
-</name>
-        <name lang="it">Raddrizzatore
-</name>
-        <name lang="fr">Redresseur
-</name>
+        <name lang="de">Gleichrichter</name>
+        <name lang="en">Rectiﬁer</name>
+        <name lang="it">Raddrizzatore</name>
+        <name lang="fr">Redresseur</name>
         <name lang="pl">Zasilacz</name>
         <name lang="cs">Usměrňovač proudu</name>
     </names>
