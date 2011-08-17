@@ -126,10 +126,13 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
 	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
 	
-	translators -> setAlignment(Qt::AlignCenter);
-	translators -> setOpenExternalLinks(true);
-	translators -> setTextFormat(Qt::RichText);
-	return(translators);
+        translators -> setOpenExternalLinks(true);
+        translators -> setTextFormat(Qt::RichText);
+
+        QWidget *translators_widget = new QWidget();
+        QHBoxLayout *translators_layout = new QHBoxLayout(translators_widget);
+        translators_layout -> addWidget(translators, 0, Qt::AlignCenter);
+        return(translators_widget);
 }
 
 /**
@@ -143,10 +146,13 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 	
-	contributors -> setAlignment(Qt::AlignCenter);
-	contributors -> setOpenExternalLinks(true);
-	contributors -> setTextFormat(Qt::RichText);
-	return(contributors);
+        contributors -> setOpenExternalLinks(true);
+        contributors -> setTextFormat(Qt::RichText);
+
+        QWidget *contributors_widget = new QWidget();
+        QHBoxLayout *contributors_layout = new QHBoxLayout(contributors_widget);
+        contributors_layout -> addWidget(contributors, 0, Qt::AlignCenter);
+        return(contributors_widget);
 }
 
 /**
