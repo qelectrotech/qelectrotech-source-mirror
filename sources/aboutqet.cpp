@@ -126,13 +126,13 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
 	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
 	
-        translators -> setOpenExternalLinks(true);
-        translators -> setTextFormat(Qt::RichText);
-
-        QWidget *translators_widget = new QWidget();
-        QHBoxLayout *translators_layout = new QHBoxLayout(translators_widget);
-        translators_layout -> addWidget(translators, 0, Qt::AlignCenter);
-        return(translators_widget);
+	translators -> setOpenExternalLinks(true);
+	translators -> setTextFormat(Qt::RichText);
+	
+	QWidget *translators_widget = new QWidget();
+	QHBoxLayout *translators_layout = new QHBoxLayout(translators_widget);
+	translators_layout -> addWidget(translators, 0, Qt::AlignCenter);
+	return(translators_widget);
 }
 
 /**
