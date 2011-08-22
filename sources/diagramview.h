@@ -118,9 +118,11 @@ class DiagramView : public QGraphicsView {
 	void adjustSceneRect();
 	void updateWindowTitle();
 	void editSelectionProperties();
+	void editSelectedConductorColor();
 	void editElement(Element *);
 	void editConductor();
 	void editConductor(Conductor *);
+	void editConductorColor(Conductor *);
 	void resetConductors();
 	
 	private slots:
