@@ -65,7 +65,8 @@ class QETProject : public QObject {
 		FileOpenFailed        = 1, /// l'ouverture d'un fichier a echoue
 		XmlParsingFailed      = 2, /// l'analyse XML a echoue
 		ProjectParsingRunning = 3, /// la lecture du projet est en cours
-		ProjectParsingFailed  = 4  /// la lecture en tant que projet a echoue
+		ProjectParsingFailed  = 4, /// la lecture en tant que projet a echoue
+		FileOpenDiscard       = 5  /// the user cancelled the file opening
 	};
 	
 	// methodes

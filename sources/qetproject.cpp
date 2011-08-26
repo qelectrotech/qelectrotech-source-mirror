@@ -827,17 +827,26 @@ void QETProject::readProjectXml() {
 			bool conv_ok;
 			project_qet_version_ = root_elmt.attribute("version").toDouble(&conv_ok);
 			if (conv_ok && QET::version.toDouble() < project_qet_version_) {
-				QET::MessageBox::warning(
+				
+				int ret = QET::MessageBox::warning(
 					0,
 					tr("Avertissement", "message box title"),
 					tr(
 						"Ce document semble avoir \351t\351 enregistr\351 avec "
 						"une version ult\351rieure de QElectroTech. Il est "
 						"possible que l'ouverture de tout ou partie de ce "
-						"document \351choue.",
+						"document \351choue.\n"
+						"Que d\351sirez vous faire ?",
 						"message box content"
-					)
+					),
+					QMessageBox::Open | QMessageBox::Cancel
 				);
+				
+				if (ret == QMessageBox::Cancel) {
+					state_ = FileOpenDiscard;
+					return;
+				}
+				
 			}
 		}
 		

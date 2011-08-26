@@ -794,7 +794,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 	// cree le projet a partir du fichier
 	QETProject *project = new QETProject(filepath);
 	if (project -> state() != QETProject::Ok) {
-		if (interactive) {
+		if (interactive && project -> state() != QETProject::FileOpenDiscard) {
 			QET::MessageBox::warning(
 				this,
 				tr("\311chec de l'ouverture du projet", "message box title"),
@@ -807,6 +807,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 				).arg(filepath)
 			);
 		}
+		delete project;
 		return(false);
 	}
 	
