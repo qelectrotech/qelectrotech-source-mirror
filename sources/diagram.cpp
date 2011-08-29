@@ -46,7 +46,8 @@ Diagram::Diagram(QObject *parent) :
 	draw_terminals(true),
 	draw_colored_conductors_(true),
 	project_(0),
-	read_only_(false)
+	read_only_(false),
+	diagram_qet_version_(-1)
 {
 	undo_stack = new QUndoStack();
 	qgi_manager = new QGIManager(this);
@@ -270,6 +271,9 @@ QDomDocument Diagram::toXml(bool whole_content) {
 	// racine de l'arbre XML
 	QDomElement racine = document.createElement("diagram");
 	
+	// add the application version number
+	racine.setAttribute("version", QET::version);
+	
 	// proprietes du schema
 	if (whole_content) {
 		border_and_titleblock.titleBlockToXml(racine);
@@ -408,6 +412,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
+		bool conv_ok;
+		qreal version_value = root.attribute("version").toDouble(&conv_ok);
+		if (conv_ok) {
+			diagram_qet_version_ = version_value;
+		}
+		
 		border_and_titleblock.titleBlockFromXml(root);
 		border_and_titleblock.borderFromXml(root);
 		
@@ -423,6 +433,17 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		write(document);
 		return(true);
 	}
+	
+	// Backward compatibility: prior to version 0.3, we need to compensate, at
+	// diagram-opening time, the rotation of the element for each of its
+	// textfields having the "FollowParentRotation" option disabled.
+	// After 0.3, elements textfields get userx, usery and userrotation attributes
+	// that explicitly specify their position and orientation.
+	qreal project_qet_version = declaredQElectroTechVersion(true);
+	bool handle_inputs_rotation = (
+		project_qet_version != -1 && project_qet_version < 0.3 &&
+		project_ -> state() == QETProject::ProjectParsingRunning
+	);
 	
 	// chargement de tous les elements du fichier XML
 	QList<Element *> added_elements;
@@ -446,17 +467,6 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		// charge les caracteristiques de l'element
-		// Retrocompatibilite : avant la version 0.3, il faut gerer a l'ouverture du schema
-		// la compensation de la rotation de l'element pour ses champs de texte ayant l'option
-		// "FollowParentRotation" desactivee
-		// A partir de la 0.3, les champs de texte des elements comportent des attributs userx,
-		// usery et userrotation qui specifient explicitement leur position et orientation
-		bool handle_inputs_rotation = false;
-		if (project_) {
-			qreal project_qet_version = project_ -> declaredQElectroTechVersion();
-			handle_inputs_rotation = (project_qet_version != -1 && project_qet_version < 0.3 && project_ -> state() == QETProject::ProjectParsingRunning);
-		}
-		
 		if (nvel_elmt -> fromXml(element_xml, table_adr_id, handle_inputs_rotation)) {
 			// ajout de l'element au schema et a la liste des elements ajoutes
 			addElement(nvel_elmt);
@@ -1009,6 +1019,22 @@ QETProject *Diagram::project() const {
 */
 void Diagram::setProject(QETProject *project) {
 	project_ = project;
+}
+
+/**
+	@param fallback_to_project When a diagram does not have a declared version,
+	this method will use the one declared by its parent project only if
+	fallback_to_project is true.
+	@return the declared QElectroTech version of this diagram
+*/
+qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const {
+	if (diagram_qet_version_ != -1) {
+		return diagram_qet_version_;
+	}
+	if (fallback_to_project && project_) {
+		return(project_ -> declaredQElectroTechVersion());
+	}
+	return(-1);
 }
 
 /**

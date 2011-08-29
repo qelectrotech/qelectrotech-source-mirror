@@ -85,6 +85,7 @@ class Diagram : public QGraphicsScene {
 	QDomDocument xml_document;
 	QETProject *project_;
 	bool read_only_;
+	qreal diagram_qet_version_;
 	
 	// methodes
 	protected:
@@ -98,6 +99,7 @@ class Diagram : public QGraphicsScene {
 	// fonctions relatives au projet parent
 	QETProject *project() const;
 	void setProject(QETProject *);
+	qreal declaredQElectroTechVersion(bool = true) const;
 	
 	// fonctions relatives a la lecture seule
 	bool isReadOnly() const;
