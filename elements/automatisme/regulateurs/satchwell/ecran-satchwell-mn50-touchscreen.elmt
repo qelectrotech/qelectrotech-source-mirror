@@ -5,11 +5,11 @@
         <name lang="pl">Panel operatorski - Satchwell MN 50 touch</name>
         <name lang="cs">Obrazovka Satchwell MN 50 touch (dotyková)</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;&#xd;&#xd;&#xd;&#xd;
-Langue : Fr&#xd;&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;&#xd;
-Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Auteur : C V C 71&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+Langue : Fr&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 Bonne utilisation !</informations>
     <description>
         <rect width="44" x="1" y="40" antialias="false" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -32,8 +32,8 @@ Bonne utilisation !</informations>
         <text x="19" y="92" size="4" text="LAN B -"/>
         <text x="19" y="82" size="4" text="LAN B +"/>
         <polygon x4="334" y5="130" x5="334" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="130" x1="334" y2="134" x2="334" y3="132" x3="330" y4="130"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="132" x1="350" y2="132" x2="335"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="126" x1="350" y2="132" x2="350"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="132" x1="350" y2="132" x2="335"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="126" x1="350" y2="132" x2="350"/>
         <polygon x4="305" y5="134" x5="306" y6="134" x6="306" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="134" x1="305" y2="134" x2="315" y3="125" x3="310" y4="134"/>
         <polygon x4="193" y5="125" x5="193" y6="135" x6="193" y7="133" x7="193" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="125" x1="193" y2="135" x2="193" y3="130" x3="185" y4="125"/>
         <text x="207" y="128" size="9" text="_&#xa;"/>
