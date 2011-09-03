@@ -23,11 +23,11 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="130" x1="46" y2="130" x2="47"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="130" x1="33" y2="130" x2="34"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="124" x1="40" y2="123" x2="40"/>
-        <circle x="35.5279" y="125.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
+        <circle x="35.5279" y="125.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.9442"/>
         <text x="30" y="94" size="9" text="ARO1"/>
         <rect width="20" x="30" y="120" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="50" x="30" y="100" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="6.39445" y="86.3944" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
+        <circle x="6.3944" y="86.3944" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <rect width="20" x="20" y="40" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="4" x="14" y="10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="90" x="0" y="0" antialias="false" height="170" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
@@ -64,7 +64,7 @@ Bonne utilisation !</informations>
         <text x="47" y="163" size="6" text="+"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="130" x1="63" y2="130" x2="64"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="124" x1="70" y2="123" x2="70"/>
-        <circle x="65.528" y="125.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
+        <circle x="65.528" y="125.528" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.9442"/>
         <rect width="20" x="60" y="120" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <terminal x="40" y="0" orientation="n"/>
         <terminal x="50" y="170" orientation="s"/>

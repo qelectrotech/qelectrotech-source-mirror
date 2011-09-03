@@ -21,7 +21,7 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="170" x1="0" y2="170" x2="120"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="108" x1="85" y2="112" x2="85"/>
         <polygon x4="22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="81" x1="22" y2="81" x2="28" y3="86" x3="25" y4="81"/>
-        <circle x="83.5858" y="104.586" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.82843"/>
+        <circle x="83.5858" y="104.586" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.8284"/>
         <polygon x4="22" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="59" x1="22" y2="59" x2="28" y3="54" x3="25" y4="59"/>
         <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="83" x2="85" x3="87" x4="86" antialias="false" x5="86" x6="89" x7="85" x8="81" x9="84" closed="false" y1="115" y10="111" y2="112" y11="115" y3="115" y4="111" y12="115" y5="109" x10="84" y6="110" x11="83" y7="107" x12="83" y8="110" y9="109"/>
         <circle x="45" y="100" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>

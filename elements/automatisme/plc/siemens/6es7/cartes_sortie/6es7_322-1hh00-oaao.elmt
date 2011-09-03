@@ -196,7 +196,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="420" y2="70" x2="740" />
         <text x="4" y="31.6667" size="9" text="6ES7 322-1HH00-0AA0" />
         <text x="3" y="19.6667" size="9" text="DO16 x REL. AC120V" />
-        <text x="3" y="6.33333" size="14" text="SIEMENS SM322" />
+        <text x="3" y="6.3333" size="14" text="SIEMENS SM322" />
         <terminal x="460" y="130" orientation="s" />
         <terminal x="500" y="130" orientation="s" />
         <terminal x="540" y="130" orientation="s" />

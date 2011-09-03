@@ -10,6 +10,6 @@
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="-8" y2="8" x2="9"/>
         <rect width="4" x="19" y="-8" antialias="false" height="15" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <rect width="40" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="-7.07107" y="-7.07107" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="14.1421"/>
+        <circle x="-7.0710" y="-7.0710" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="14.1421"/>
     </description>
 </definition>

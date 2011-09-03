@@ -9,6 +9,6 @@
     <description>
         <rect width="20" x="-10" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="22" x="18" y="-4" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <circle x="-7.07107" y="-7.07107" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
+        <circle x="-7.0710" y="-7.0710" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="14.1421"/>
     </description>
 </definition>

@@ -9,7 +9,7 @@
         <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="15" y2="7" x2="15"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="13" y2="7" x2="17"/>
-        <polygon x4="5" y5="-10.1378" x5="5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.1378" x1="5" y2="-5.13778" x2="7.5" y3="-5.13778" x3="2.5" y4="-10.1378"/>
+        <polygon x4="5" y5="-10.1378" x5="5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.1378" x1="5" y2="-5.1377" x2="7.5" y3="-5.1377" x3="2.5" y4="-10.1378"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="5" y2="-10" x2="5"/>
     </description>
 </definition>

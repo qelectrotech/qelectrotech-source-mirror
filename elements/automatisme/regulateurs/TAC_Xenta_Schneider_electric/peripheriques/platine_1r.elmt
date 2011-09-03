@@ -18,13 +18,13 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="85" x1="4" y2="85" x2="0"/>
         <rect width="10" x="25" y="80" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="5" y="80" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <circle x="17.7639" y="47.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.47214"/>
+        <circle x="17.7639" y="47.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
         <text x="10" y="63" size="5" text="AUTO"/>
         <text x="26" y="88" size="6" text="A3"/>
         <text x="6" y="88" size="6" text="11"/>
         <text x="28" y="53" size="5" text="0"/>
         <text x="11" y="43" size="5" text="MANU"/>
-        <circle x="16.8377" y="26.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6.32456"/>
+        <circle x="16.8377" y="26.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6.3245"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="30" y2="110" x2="30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="30" y2="0" x2="30"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="10" y2="110" x2="10"/>

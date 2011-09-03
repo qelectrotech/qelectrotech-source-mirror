@@ -68,7 +68,7 @@
         <rect width="820" x="-10" y="-10" antialias="false" height="140" style="line-style:normal;line-weight:normal;filling:none;color:black" />
         <text x="4" y="31.6667" size="9" text="6ES7 332-5HB01-0AB0" />
         <text x="3" y="19.6667" size="9" text="AO 2x12BIT" />
-        <text x="3" y="6.33333" size="14" text="SIEMENS SM332" />
+        <text x="3" y="6.3333" size="14" text="SIEMENS SM332" />
         <terminal x="380" y="130" orientation="s" />
         <terminal x="780" y="130" orientation="s" />
         <terminal x="340" y="130" orientation="s" />

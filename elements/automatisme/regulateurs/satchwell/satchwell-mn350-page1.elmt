@@ -29,7 +29,7 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="87" x1="474" y2="74" x2="480"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="87" x1="474" y2="87" x2="486"/>
         <text x="84" y="38" size="6" text="230 V AC"/>
-        <circle x="477.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.47214"/>
+        <circle x="477.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49" x1="490" y2="35" x2="498"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="490" y2="50" x2="490"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="460" y2="60" x2="489"/>
@@ -38,9 +38,9 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="480" y2="15" x2="480"/>
         <text x="659" y="85" size="5" text="3"/>
         <text x="568" y="85" size="5" text="2"/>
-        <circle x="657.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.47214"/>
-        <circle x="567.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.47214"/>
-        <circle x="497.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.47214"/>
+        <circle x="657.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
+        <circle x="567.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
+        <circle x="497.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="87" x1="667" y2="74" x2="661"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="87" x1="576" y2="74" x2="570"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="49" x1="670" y2="35" x2="678"/>
@@ -61,8 +61,8 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="660" y2="15" x2="660"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="570" y2="15" x2="570"/>
         <text x="223" y="47" size="6" rotation="270" text="24 V AC"/>
-        <circle x="677.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.47214"/>
-        <circle x="587.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.47214"/>
+        <circle x="677.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
+        <circle x="587.764" y="26.7639" antialias="false" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4.4721"/>
         <text x="284" y="189" size="14" text="SATCHWELL - MN 350"/>
         <text x="123" y="25" size="6" rotation="270" text="N"/>
         <text x="83" y="23" size="6" rotation="270" text="L"/>

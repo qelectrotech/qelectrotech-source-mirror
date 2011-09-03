@@ -40,7 +40,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="200" y2="58" x2="200"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="55" x1="100" y2="40" x2="100" y3="20" x3="94"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="100" y2="-9" x2="100"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.33333" x1="95" y2="10.6667" x2="100" y3="20.6667" x3="100"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.3333" x1="95" y2="10.6667" x2="100" y3="20.6667" x3="100"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="160" y2="20" x2="166"/>
         <circle x="157.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="17.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
@@ -81,23 +81,23 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="103" y2="58" x2="117"/>
         <input x="135" y="-11" size="7" rotation="270" rotate="true" text="33"/>
         <input x="95" y="-11" size="7" rotation="270" rotate="true" text="13"/>
-        <circle x="-2.50003" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5000" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="60" y="-5" size="7" rotation="270" rotate="true" text="S22"/>
         <circle x="-42.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <rect width="22" x="62" y="22.6667" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="115" y="59" size="7" rotation="270" rotate="true" text="24"/>
         <circle x="117.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="40" y="-5" size="7" rotation="270" rotate="true" text="S21"/>
-        <circle x="-2.50003" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <rect width="22" x="62" y="-7.33333" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-2.5000" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <rect width="22" x="62" y="-7.3333" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="137.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="97.5001" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="-60" y2="-28" x2="-43"/>
         <circle x="97.5001" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.33333" x1="135" y2="10.6667" x2="140" y3="20.6667" x3="140"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.3333" x1="135" y2="10.6667" x2="140" y3="20.6667" x3="140"/>
         <circle x="57.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="37.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.33333" x1="115" y2="10.6667" x2="120" y3="20.6667" x3="120"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9.3333" x1="115" y2="10.6667" x2="120" y3="20.6667" x3="120"/>
         <input x="-40" y="-10" size="7" rotation="270" rotate="true" text="A1"/>
         <circle x="-42.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="95" y="59" size="7" rotation="270" rotate="true" text="14"/>

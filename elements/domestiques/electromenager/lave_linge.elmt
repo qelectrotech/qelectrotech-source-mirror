@@ -13,17 +13,17 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.7775" x1="-2.31146" y2="8.77746" x2="3.68854"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.7775" x1="-2.3114" y2="8.7774" x2="3.6885"/>
         <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.0445" x1="-3.82202" y2="7.04446" x2="2.17798"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.0445" x1="-3.8220" y2="7.0444" x2="2.1779"/>
         <circle x="-9" y="2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11.733" x1="-4.26696" y2="6.73297" x2="0.733037"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11.733" x1="-4.2669" y2="6.7329" x2="0.7330"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
-        <circle x="-4.47213" y="6.52787" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8.94427"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.99996" x1="-4" y2="6.99997" x2="-0.999995"/>
+        <circle x="-4.4721" y="6.5278" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8.9442"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.9999" x1="-4" y2="6.9999" x2="-0.9999"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15" x1="1" y2="12" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.0445" x1="-0.999995" y2="10.0445" x2="4"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x1="-3" y2="7.99997" x2="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.0445" x1="-0.9999" y2="10.0445" x2="4"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x1="-3" y2="7.9999" x2="3"/>
         <terminal x="0" y="-13" orientation="n"/>
     </description>
 </definition>

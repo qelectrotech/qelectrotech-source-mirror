@@ -38,7 +38,7 @@
         <input x="322" y="-19.5" size="5" rotate="true" text="15"/>
         <input x="242" y="-19.5" size="5" rotate="true" text="14"/>
         <input x="162" y="-19.5" size="5" rotate="true" text="13"/>
-        <circle x="7.49997" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="7.4999" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="82" y="-19.5" size="5" rotate="true" text="12"/>
         <circle x="647.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="567.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

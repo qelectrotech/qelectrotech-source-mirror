@@ -58,7 +58,7 @@
         <input x="2" y="-19.5" size="5" rotate="true" text="11"/>
         <circle x="167.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="87.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="7.49997" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="7.4999" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="0" y="14.5" size="9" rotate="true" text="6ES7 334-0CE01-0AA0   AI 4/AO 2 x 8/8BIT   part 2 of 2"/>
         <terminal x="90" y="-31" orientation="n"/>
         <terminal x="170" y="-31" orientation="n"/>

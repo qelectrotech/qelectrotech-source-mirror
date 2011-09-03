@@ -16,11 +16,11 @@
         <text x="5" y="25.3333" size="7" text="1M" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="560" y2="-20" x2="560" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="630" y2="-20" x2="630" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.00003" x1="150" y2="-20" x2="150" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.0000" x1="150" y2="-20" x2="150" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="420" y2="-20" x2="420" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="290" y2="-20" x2="290" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="350" y2="-20" x2="350" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.00003" x1="220" y2="-20" x2="220" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7.0000" x1="220" y2="-20" x2="220" />
         <input x="280" y="25.3333" size="7" rotate="true" text="I 0.3" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="625" y2="-20" x2="635" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="695" y2="-20" x2="705" />
@@ -38,9 +38,9 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="345" y2="-20" x2="355" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="215" y2="-20" x2="225" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="635" y2="-20" x2="635" />
-        <circle x="766.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
+        <circle x="766.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="15" y2="-20" x2="15" />
-        <circle x="696.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
+        <circle x="696.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="85" y2="-20" x2="85" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="495" y2="-20" x2="495" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="355" y2="-20" x2="355" />
@@ -68,16 +68,16 @@
         <input x="210" y="25.3333" size="7" rotate="true" text="I 0.2" />
         <input x="70" y="25.3333" size="7" rotate="true" text="I 0.0" />
         <input x="140" y="25.3333" size="7" rotate="true" text="I 0.1" />
-        <circle x="626.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="6.83772" y="6.83772" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="346.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="76.8377" y="6.83772" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="146.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="286.838" y="6.83772" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="556.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="216.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="486.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
-        <circle x="416.838" y="6.83775" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.32456" />
+        <circle x="626.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="6.8377" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="346.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="76.8377" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="146.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="286.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="556.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="216.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="486.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
+        <circle x="416.838" y="6.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6.3245" />
         <input x="410" y="25.3333" size="7" rotate="true" text="I 0.4" />
         <input x="345" y="25.3333" size="7" rotate="true" text="2M" />
         <rect width="800" x="-10" y="-30" antialias="false" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black" />

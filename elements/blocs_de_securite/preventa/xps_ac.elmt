@@ -85,7 +85,7 @@
         <text x="262" y="82.3333" size="7" text="Y44" />
         <text x="262" y="-16.6667" size="7" text="Y43" />
         <text x="145" y="-16.6667" size="7" text="13" />
-        <text x="-38" y="6.66667" size="9" text="XPS AC" />
+        <text x="-38" y="6.6666" size="9" text="XPS AC" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="260" y2="-11" x2="260" />
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="120" y2="-11" x2="120" />
         <rect width="25" x="-33" y="15" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" />

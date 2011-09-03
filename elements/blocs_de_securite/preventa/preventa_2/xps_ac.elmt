@@ -42,7 +42,7 @@
         <input x="-39" y="59" size="7" rotation="270" rotate="true" text="A2"/>
         <circle x="-42.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-42.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <text x="-13" y="2.33333" size="5" text="K1"/>
+        <text x="-13" y="2.3333" size="5" text="K1"/>
         <input x="105" y="-4" size="7" rotation="270" rotate="true" text="Y43"/>
         <input x="75" y="-11" size="7" rotation="270" rotate="true" text="33"/>
         <input x="55" y="-11" size="7" rotation="270" rotate="true" text="23"/>
@@ -52,7 +52,7 @@
         <input x="55" y="59" size="7" rotation="270" rotate="true" text="24"/>
         <circle x="37.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="17.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-2.50003" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5000" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-22.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="107.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="77.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

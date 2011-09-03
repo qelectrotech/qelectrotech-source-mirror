@@ -6,7 +6,7 @@
     <informations></informations>
     <description>
         <rect width="42" x="4" y="-16" antialias="false" height="12" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
-        <input x="47" y="-9.33337" size="9" text="XR_"/>
+        <input x="47" y="-9.3333" size="9" text="XR_"/>
         <ellipse width="1" x="39.5" y="-10.5" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <ellipse width="1" x="29.5" y="-10.5" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <ellipse width="1" x="19.5" y="-10.5" antialias="true" height="1" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

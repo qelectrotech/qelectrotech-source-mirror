@@ -98,7 +98,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="70" x1="-20" y2="90" x2="-20" />
         <text x="-55" y="82.3333" size="7" text="A2" />
         <text x="-56" y="-16.6667" size="7" text="A1" />
-        <text x="133" y="7.33333" size="4" text="K1" />
+        <text x="133" y="7.3333" size="4" text="K1" />
         <text x="132" y="37.3333" size="4" text="K2" />
         <terminal x="30" y="-30" orientation="n" />
         <terminal x="-50" y="-30" orientation="n" />

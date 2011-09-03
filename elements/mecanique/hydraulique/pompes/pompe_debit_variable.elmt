@@ -12,7 +12,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.8281" x1="19.8281" y2="-16.3477" x2="17.6133"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20.0391" x1="-20.0391" y2="-19.8281" x2="19.8281"/>
         <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="40"/>
-        <polygon x4="4.16334e-16" y5="-19.459" x5="4.16334e-16" y6="-19.459" x6="4.16334e-16" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-19.9336" x1="0.237305" y2="-15.0095" x2="-2.25439" y3="-15.0095" x3="2.25439" y4="-19.5776"/>
+        <polygon x4="4.16334e-16" y5="-19.459" x5="4.16334e-16" y6="-19.459" x6="4.16334e-16" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-19.9336" x1="0.2373" y2="-15.0095" x2="-2.2543" y3="-15.0095" x3="2.2543" y4="-19.5776"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="24.5" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.4" x1="0" y2="-24.5" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20.5" y2="0" x2="-24.5"/>
