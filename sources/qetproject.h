@@ -73,6 +73,7 @@ class QETProject : public QObject {
 	public:
 	ProjectState state() const;
 	QList<Diagram *> diagrams() const;
+	int folioIndex(const Diagram *) const;
 	ElementsCollection *embeddedCollection() const;
 	QString filePath();
 	void setFilePath(const QString &);

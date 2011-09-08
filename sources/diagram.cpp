@@ -1022,6 +1022,15 @@ void Diagram::setProject(QETProject *project) {
 }
 
 /**
+	@return the folio number of this diagram within its parent project, or -1
+	if it is has no parent project
+*/
+int Diagram::folioIndex() const {
+	if (!project_) return(-1);
+	return(project_ -> folioIndex(this));
+}
+
+/**
 	@param fallback_to_project When a diagram does not have a declared version,
 	this method will use the one declared by its parent project only if
 	fallback_to_project is true.

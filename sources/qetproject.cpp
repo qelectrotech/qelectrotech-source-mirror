@@ -144,6 +144,17 @@ QList<Diagram *> QETProject::diagrams() const {
 }
 
 /**
+	@param diagram Pointer to a Diagram object
+	@return the folio number of the given diagram object within the project,
+	or -1 if it is not part of this project.
+	Note: this returns 0 for the first diagram, not 1
+*/
+int QETProject::folioIndex(const Diagram *diagram) const {
+	// QList::indexOf returns -1 if no item matched.
+	return(diagrams_.indexOf(const_cast<Diagram *>(diagram)));
+}
+
+/**
 	@return la collection embarquee de ce projet
 */
 ElementsCollection *QETProject::embeddedCollection() const {

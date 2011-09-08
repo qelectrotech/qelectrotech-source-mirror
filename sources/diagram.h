@@ -99,6 +99,7 @@ class Diagram : public QGraphicsScene {
 	// fonctions relatives au projet parent
 	QETProject *project() const;
 	void setProject(QETProject *);
+	int folioIndex() const;
 	qreal declaredQElectroTechVersion(bool = true) const;
 	
 	// fonctions relatives a la lecture seule

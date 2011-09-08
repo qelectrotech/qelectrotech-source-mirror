@@ -771,8 +771,12 @@ void DiagramView::editElement(Element *element) {
 	}
 	description_string += "\n";
 	
-	// nom,  nombre de bornes, dimensions
+	// nom, nombre de bornes, dimensions
 	description_string += QString(tr("Nom\240: %1\n")).arg(element -> name());
+	int folio_index = scene -> folioIndex();
+	if (folio_index != -1) {
+		description_string += QString(tr("Folio\240: %1\n")).arg(folio_index + 1);
+	}
 	description_string += QString(tr("Position\240: %1\n")).arg(scene -> convertPosition(element -> scenePos()).toString());
 	description_string += QString(tr("Dimensions\240: %1\327%2\n")).arg(element -> size().width()).arg(element -> size().height());
 	description_string += QString(tr("Bornes\240: %1\n")).arg(element -> terminals().count());
