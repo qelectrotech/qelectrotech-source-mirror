@@ -6,6 +6,7 @@
     </names>
     <informations></informations>
     <description>
+        <input x="20" y="-203" size="9" rotation="270" rotate="true" text="rey200"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-160" x1="70" y2="-163" x2="70"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-163" x1="70" y2="-164" x2="68"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-164" x1="68" y2="-164" x2="65"/>
