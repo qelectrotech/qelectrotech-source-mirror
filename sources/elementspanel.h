@@ -25,6 +25,7 @@ class ElementsCollection;
 class ElementsCollectionItem;
 class ElementsCategory;
 class ElementDefinition;
+class ElementsCollectionCache;
 /**
 	Cette classe represente le panel d'appareils (en tant qu'element
 	graphique) dans lequel l'utilisateur choisit les composants de
@@ -144,5 +145,6 @@ class ElementsPanel : public QTreeWidget {
 	int loading_progress_;
 	bool first_activation_;
 	bool first_reload_;
+	ElementsCollectionCache *cache_;
 };
 #endif

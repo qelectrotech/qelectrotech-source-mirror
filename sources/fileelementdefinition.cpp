@@ -198,3 +198,14 @@ void FileElementDefinition::setFilePath(const QString &path) {
 	}
 	file_path = file_info.canonicalFilePath();
 }
+
+/**
+	@return the time of the last modification (mtime) for this element file
+*/
+QDateTime FileElementDefinition::modificationTime() const {
+	QFileInfo file_info(file_path);
+	if (!file_info.exists() || !file_info.isReadable()) {
+		return QDateTime();
+	}
+	return(file_info.lastModified());
+}

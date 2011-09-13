@@ -48,6 +48,7 @@ class FileElementsCollection : public ElementsCollection {
 	virtual bool isReadable();
 	virtual bool isWritable();
 	virtual bool write();
+	virtual bool isCacheable() const;
 	
 	private:
 	void deleteContent();

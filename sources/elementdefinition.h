@@ -117,6 +117,7 @@ class ElementDefinition : public ElementsCollectionItem {
 	virtual ElementDefinition *toElement();
 	virtual bool equals(ElementDefinition &);
 	virtual bool removeContent();
+	virtual QDateTime modificationTime() const = 0;
 	void copy(MoveElementsDescription *);
 	void move(MoveElementsDescription *);
 	

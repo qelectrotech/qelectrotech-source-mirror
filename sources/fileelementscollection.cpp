@@ -123,3 +123,11 @@ bool FileElementsCollection::isWritable() {
 bool FileElementsCollection::write() {
 	return(true);
 }
+
+/**
+	@return always true, since a file-based elements collection can always be
+	cached.
+*/
+bool FileElementsCollection::isCacheable() const {
+	return(true);
+}

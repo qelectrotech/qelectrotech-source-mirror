@@ -71,7 +71,7 @@ TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang
 TRANSLATIONS +=                lang/qt_es.ts  lang/qt_fr.ts  lang/qt_ru.ts  lang/qt_pt.ts  lang/qt_cs.ts  lang/qt_pl.ts  lang/qt_de.ts                 lang/qt_it.ts
 
 # Modules Qt utilises par l'application
-QT += xml svg network
+QT += xml svg network sql
 
 # Configuration de la compilation
 CONFIG += debug_and_release warn_on

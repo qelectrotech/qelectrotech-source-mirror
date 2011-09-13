@@ -49,6 +49,7 @@ class FileElementDefinition : public ElementDefinition {
 	virtual bool hasFilePath();
 	virtual QString filePath();
 	virtual void setFilePath(const QString &);
+	virtual QDateTime modificationTime() const;
 	
 	// attributs
 	private:

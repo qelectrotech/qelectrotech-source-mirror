@@ -213,6 +213,17 @@ void XmlElementDefinition::setFilePath(const QString &) {
 	// une categorie XML n'a pas de chemin de type fichier
 }
 
+/**
+	@return a null QDateTime object since an XML element does not have a
+	modification time.
+*/
+/**
+	@return the time of the last modification (mtime) for this element file
+*/
+QDateTime XmlElementDefinition::modificationTime() const {
+	return QDateTime();
+}
+
 QDomElement XmlElementDefinition::writeXml(QDomDocument &xml_doc) const {
 	QDomElement element_elmt = xml_element_.documentElement();
 	QDomNode new_node = xml_doc.importNode(element_elmt, true);

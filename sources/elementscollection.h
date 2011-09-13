@@ -74,6 +74,7 @@ class ElementsCollection : public ElementsCollectionItem {
 	virtual ElementDefinition *createElement(const QString &);
 	virtual bool isEmpty();
 	virtual int count();
+	virtual bool isCacheable() const = 0;
 	
 	// Methodes propres a la classe ElementsCollection
 	public:

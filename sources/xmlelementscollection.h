@@ -47,6 +47,7 @@ class XmlElementsCollection : public ElementsCollection {
 	virtual bool isReadable();
 	virtual bool isWritable();
 	virtual bool write();
+	virtual bool isCacheable() const;
 	
 	virtual QDomElement writeXml(QDomDocument &) const;
 	

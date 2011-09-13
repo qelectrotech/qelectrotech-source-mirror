@@ -115,6 +115,14 @@ bool XmlElementsCollection::write() {
 	return(true);
 }
 
+/**
+	@return always false, since an XMl-based elements collection should never
+	be cached.
+*/
+bool XmlElementsCollection::isCacheable() const {
+	return(false);
+}
+
 QDomElement XmlElementsCollection::writeXml(QDomDocument &xml_doc) const {
 	QDomElement collection_elmt = root -> writeXml(xml_doc);
 	collection_elmt.setTagName("collection");

@@ -20,6 +20,7 @@
 #include "qetproject.h"
 #include "diagram.h"
 #include "elementscategory.h"
+#include "elementscollectioncache.h"
 #include "customelement.h"
 #include "fileelementscollection.h"
 #include "fileelementdefinition.h"
@@ -89,7 +90,6 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	first_activation_(true),
 	first_reload_(true)
 {
-	
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setColumnCount(1);
@@ -120,6 +120,10 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	
 	// emet un signal au lieu de gerer son menu contextuel
 	setContextMenuPolicy(Qt::CustomContextMenu);
+	
+	QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+	cache_ = new ElementsCollectionCache(cache_path, this);
+	cache_ -> setLocale(QLocale::system().name().left(2)); // @todo we need a unique function to get the good language
 }
 
 /**
@@ -644,7 +648,9 @@ QTreeWidgetItem *ElementsPanel::addDiagram(QTreeWidgetItem *qtwi_parent, Diagram
 QTreeWidgetItem *ElementsPanel::addCollection(QTreeWidgetItem *qtwi_parent, ElementsCollection *collection, const QString &coll_name, const QIcon &icon) {
 	if (!collection) return(0);
 	
+	cache_ -> beginCollection(collection);
 	QTreeWidgetItem *qtwi_coll = addCategory(qtwi_parent, collection -> rootCategory(), coll_name, icon);
+	cache_ -> endCollection(collection);
 	return(qtwi_coll);
 }
 
@@ -704,21 +710,21 @@ QTreeWidgetItem *ElementsPanel::addCategory(QTreeWidgetItem *qtwi_parent, Elemen
 QTreeWidgetItem *ElementsPanel::addElement(QTreeWidgetItem *qtwi_parent, ElementDefinition *element, const QString &elmt_name) {
 	if (!element) return(0);
 	
-	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
-	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
-	int state;
-	CustomElement custom_elmt(element -> location(), 0, 0, &state);
-	if (state) {
-		qDebug() << "ElementsCategoriesList::addElement() : Le chargement du composant" << qPrintable(element -> location().toString()) << "a echoue avec le code d'erreur" << state;
+	if (!cache_ -> fetchElement(element)) {
 		return(0);
 	}
-	QString final_name(elmt_name.isEmpty() ? custom_elmt.name() : elmt_name);
+	QString custom_element_name   = cache_ -> name();
+	QPixmap custom_element_pixmap = cache_ -> pixmap();
+	
+	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
+	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
+	QString final_name(elmt_name.isEmpty() ? custom_element_name : elmt_name);
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem(qtwi_parent, QStringList(final_name));
-	qtwi -> setStatusTip(0, tool_tip + "\253 " + custom_elmt.name() + " \273");
+	qtwi -> setStatusTip(0, tool_tip + "\253 " + custom_element_name + " \273");
 	qtwi -> setToolTip(0, element -> location().toString());
 	qtwi -> setWhatsThis(0, whats_this);
 	qtwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
-	qtwi -> setIcon(0, QIcon(custom_elmt.pixmap()));
+	qtwi -> setIcon(0, QIcon(custom_element_pixmap));
 	
 	// actions speciales pour les elements appartenant a un projet
 	if (QETProject *element_project = element -> location().project()) {
