@@ -6,8 +6,8 @@
     </names>
     <informations></informations>
     <description>
-        <input x="19" y="-226" size="9" rotation="270" rotate="true" text="asy800"/>
         <rect width="110" x="-1" y="-449" antialias="false" height="452" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <input x="33" y="-427" size="9" rotate="true" text="tsx asy800"/>
         <circle x="61.5279" y="-385.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="61.5279" y="-243.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-253" x1="84" y2="-367" x2="84"/>
