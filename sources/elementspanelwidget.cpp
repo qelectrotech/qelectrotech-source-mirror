@@ -615,7 +615,7 @@ void ElementsPanelWidget::deleteCategory() {
 	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
 		if (selected_item -> isCategory() || selected_item -> isCollection()) {
 			ElementsCategoryDeleter cat_deleter(selected_item -> location(), this);
-			if (cat_deleter.exec()) elements_panel -> reload();
+			if (cat_deleter.exec()) elements_panel -> reload(true);
 		}
 	}
 }
@@ -627,7 +627,7 @@ void ElementsPanelWidget::deleteElement() {
 	if (ElementsCollectionItem *selected_item = elements_panel -> selectedItem()) {
 		if (selected_item -> isElement()) {
 			ElementDeleter elmt_deleter(selected_item -> location(), this);
-			if (elmt_deleter.exec()) elements_panel -> reload();
+			if (elmt_deleter.exec()) elements_panel -> reload(true);
 		}
 	}
 }
