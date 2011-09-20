@@ -57,5 +57,6 @@ class FileElementsCollection : public ElementsCollection {
 	private:
 	QString coll_path;
 	FileElementsCategory *root;
+	QMutex reload_mutex_;       ///< Mutex used to avoid loading a collection twice at the same time
 };
 #endif

@@ -51,6 +51,7 @@ ElementsCategory *FileElementsCollection::rootCategory() {
 	Recharge l'arborescence des categories et elements.
 */
 void FileElementsCollection::reload() {
+	QMutexLocker reload_lock(&reload_mutex_);
 	// oublie l'arborescence precedente
 	deleteContent();
 	
