@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="en">2 ports cross</name>
         <name lang="fr">2 voies croisées</name>
@@ -6,10 +6,10 @@
     </names>
     <informations></informations>
     <description>
-        <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.8791" x1="5.1335" y2="9.7209" x2="14.9336"/>
-        <polygon x4="14.9336" y5="9.9209" x5="14.9336" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="9.9209" x1="14.9336" y2="4.4209" x2="14.9336" y3="6.4209" x3="10.9336" y4="9.9209"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9.8197" x1="5.1929" y2="-9.7802" x2="14.9929"/>
-        <polygon x4="15.0918" y5="-9.8418" x5="15.0918" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-9.8418" x1="15.0918" y2="-4.3418" x2="15.0918" y3="-6.3418" x3="11.0918" y4="-9.8418"/>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <polygon x4="29.85" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="10" x1="29.85" y2="6" x2="24.85" y3="4" x3="27.85" y4="10"/>
+        <polygon x4="29.85" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-20" x1="29.85" y2="-16" x2="24.85" y3="-14" x3="27.85" y4="-20"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="9.85" y2="6" x2="26.85"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="9.85" y2="-17" x2="27.85"/>
     </description>
 </definition>

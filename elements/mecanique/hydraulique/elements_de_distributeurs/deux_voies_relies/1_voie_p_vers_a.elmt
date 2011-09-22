@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="0" hotspot_y="40" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="en">2 ports open</name>
         <name lang="fr">2 orifices passants</name>
@@ -6,12 +6,14 @@
     </names>
     <informations></informations>
     <description>
-        <text x="2" y="18" size="8" text="p"/>
-        <text x="2.3891" y="-12.5239" size="8" text="a"/>
-        <polygon x4="10" y5="-10.3164" x5="10" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10.3164" x1="10" y2="-5.3164" x2="12.5" y3="-5.3164" x3="7.5" y4="-10.3164"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="10" y2="-19" x2="10"/>
-        <polygon x4="0" y5="-10" x5="0" y6="-10" x6="0" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-10" x2="20" y3="10" x3="20" y4="10"/>
-        <terminal x="10" y="19" orientation="s"/>
-        <terminal x="10" y="-19" orientation="n"/>
+        <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="10" x2="20"/>
+        <text x="12" y="18" size="8" text="p"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-21" x2="20"/>
+        <text x="12" y="-24" size="8" text="a"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="-15" x2="20"/>
+        <polygon x4="20.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="20.05" y2="-14.95" x2="18.05" y3="-14.95" x3="22.05" y4="-19.95"/>
+        <terminal x="20" y="-30" orientation="n"/>
+        <terminal x="20" y="20" orientation="s"/>
     </description>
 </definition>
