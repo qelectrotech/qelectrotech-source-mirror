@@ -862,8 +862,6 @@ void QETProject::readProjectXml() {
 		}
 		
 		setTitle(root_elmt.attribute("title"));
-	} else if (root_elmt.tagName() == "diagram") {
-		/// @todo gerer l'ouverture de fichiers dont la racine est un element \<diagram\>
 	} else {
 		state_ = ProjectParsingFailed;
 	}
