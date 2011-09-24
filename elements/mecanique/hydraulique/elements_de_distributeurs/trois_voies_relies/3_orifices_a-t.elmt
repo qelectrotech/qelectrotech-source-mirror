@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="30" height="60" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="en">3 holes A->T</name>
         <name lang="fr">3 orifices A->T</name>
@@ -6,18 +6,18 @@
     </names>
     <informations></informations>
     <description>
-        <polygon x4="5" y5="-10" x5="5" y6="-10" x6="5" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="-10" x2="25" y3="10" x3="25" y4="10"/>
-        <text x="4" y="16" size="6" text="p"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="10" y2="7" x2="10"/>
-        <text x="23" y="17" size="6" text="t"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="20" y2="10" x2="20"/>
-        <text x="4" y="-11" size="6" text="a"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9.8791" x1="10.2127" y2="9.7209" x2="20.0127"/>
-        <polygon x4="20.0918" y5="10.1582" x5="20.0918" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="10.1582" x1="20.0918" y2="4.6582" x2="20.0918" y3="6.6582" x3="16.0918" y4="10.1582"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="10" y2="-19" x2="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="8" y2="7" x2="12"/>
-        <terminal x="20" y="19" orientation="s"/>
-        <terminal x="10" y="19" orientation="s"/>
-        <terminal x="10" y="-19" orientation="n"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="7" x1="-2" y2="7" x2="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="7" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="0" y2="-20" x2="0"/>
+        <polygon x4="19.85" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="9.85" x1="19.85" y2="5.85" x2="14.85" y3="3.85" x3="17.85" y4="9.85"/>
+        <rect width="30" x="-5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20.15" x1="-0.15" y2="5.85" x2="16.85"/>
+        <input x="-10" y="-25.5" size="5" rotate="true" text="a"/>
+        <input x="18" y="14.5" size="5" rotate="true" text="t"/>
+        <input x="-10" y="15.5" size="5" rotate="true" text="p"/>
+        <terminal x="20" y="20" orientation="s"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-30" orientation="n"/>
     </description>
 </definition>

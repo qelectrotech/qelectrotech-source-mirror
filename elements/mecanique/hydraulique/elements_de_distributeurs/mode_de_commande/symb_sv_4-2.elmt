@@ -6,14 +6,14 @@
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="40" y2="-23" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="60" y2="-23" x2="60"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="40" y2="20" x2="40"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="60" y2="20" x2="60"/>
-        <text x="62" y="18.6667" size="6" text="t"/>
-        <text x="32" y="17.6667" size="6" text="p"/>
-        <text x="62" y="-26.3333" size="6" text="b"/>
-        <text x="33" y="-26.3333" size="6" text="a"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="60" y2="20" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="40" y2="10" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="60" y2="-30" x2="60"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="40" y2="-30" x2="40"/>
+        <input x="58" y="17.5" size="5" rotate="true" text="t"/>
+        <input x="30" y="17.5" size="5" rotate="true" text="p"/>
+        <input x="58" y="-27.5" size="5" rotate="true" text="b"/>
+        <input x="30" y="-27.5" size="5" rotate="true" text="a"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="5" y2="12" x2="65"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-22.3333" x1="5" y2="-22.3333" x2="65"/>
         <terminal x="40" y="20" orientation="s"/>
