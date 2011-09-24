@@ -13,7 +13,7 @@
         <circle x="18.85" y="-6.15" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.3"/>
         <rect width="30" x="-5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="-10" y="-25.5" size="5" rotate="true" text="a"/>
-        <input x="18" y="14.5" size="5" rotate="true" text="t"/>
+        <input x="18" y="15.5" size="5" rotate="true" text="t"/>
         <input x="-10" y="15.5" size="5" rotate="true" text="p"/>
         <input x="18" y="-25.5" size="5" rotate="true" text="b"/>
         <terminal x="0" y="20" orientation="s"/>

@@ -6,11 +6,11 @@
     </names>
     <informations></informations>
     <description>
+        <input x="10" y="-25.5" size="5" rotate="true" text="a"/>
         <rect width="30" x="5" y="-20" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="20" y2="10" x2="20"/>
-        <text x="12" y="18" size="8" text="p"/>
+        <input x="10" y="15.5" size="5" rotate="true" text="p"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="20" y2="-21" x2="20"/>
-        <text x="12" y="-24" size="8" text="a"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="20" y2="-15" x2="20"/>
         <polygon x4="20.05" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-19.95" x1="20.05" y2="-14.95" x2="18.05" y3="-14.95" x3="22.05" y4="-19.95"/>
         <terminal x="20" y="-30" orientation="n"/>
