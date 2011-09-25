@@ -3,5 +3,6 @@
         <name lang="fr" >2 voies relies</name>
 	<name lang="en" >2 ports connected</name>
         <name lang="cs">2 cesty spojené</name>
+        <name lang="pl">Dwudrogowe z przyłączami</name>
     </names>
 </qet-directory>
