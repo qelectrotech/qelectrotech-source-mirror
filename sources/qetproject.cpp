@@ -37,6 +37,7 @@ QString QETProject::integration_category_name = "import";
 */
 QETProject::QETProject(int diagrams, QObject *parent) :
 	QObject(parent),
+	collection_(0),
 	project_qet_version_(-1),
 	read_only_(false)
 {
@@ -63,6 +64,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject(parent),
+	collection_(0),
 	project_qet_version_(-1),
 	read_only_(false)
 {
@@ -97,6 +99,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 */
 QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	QObject(parent),
+	collection_(0),
 	project_qet_version_(-1),
 	read_only_(false)
 {
@@ -116,7 +119,9 @@ QETProject::~QETProject() {
 	
 	// supprime la collection
 	// qDebug() << "Suppression de la collection du projet" << ((void *)this);
-	delete collection_;
+	if (collection_) {
+		delete collection_;
+	}
 	// qDebug() << "Collection du projet" << ((void *)this) << "supprimee";
 	
 	// qDebug() << diagrams_;
