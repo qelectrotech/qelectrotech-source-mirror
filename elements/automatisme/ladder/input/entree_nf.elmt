@@ -1,19 +1,15 @@
-﻿<definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
+<definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        
-<name lang="ru" >Вход (отрицательная логика)</name>
-        <name lang="it" >Input (logica negativa)</name>
-        
-<name lang="en" >Input (negative logic)</name>
-  
-<name lang="fr" >Entrée (NF)</name>
-        
-<name lang="es" >Entrada (lógica negativa)</name>
-        <name lang="cs" >Vstup (záporná logika)</name>
-        
-<name lang="pt" >Entrada (lógica negativa)</name>
-    
-</names>
+        <name lang="de">Eingang (negative Logik)</name>
+        <name lang="ru">Вход (отрицательная логика)</name>
+        <name lang="en">Input (negative logic)</name>
+        <name lang="fr">Entrée (NF)</name>
+        <name lang="es">Entrada (lógica negativa)</name>
+        <name lang="cs">Vstup (záporná logika)</name>
+        <name lang="pt">Entrada (lógica negativa)</name>
+        <name lang="pl">Wejscie (negacja logiczna)</name>
+        <name lang="it">Ingresso (logica negativa)</name>
+    </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

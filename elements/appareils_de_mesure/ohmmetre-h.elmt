@@ -1,15 +1,14 @@
-﻿<definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn" >
+<definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn" >
     <names>
-        <name lang="ru" >Омметр (горизонтальный)</name>
-        <name lang="en" >Horizontal ohmmeter</name>
-        <name lang="fr" >Ohmmètre horizontal</name>
-        
-<name lang="es" >Óhmetro horizontal</name>
-        
-<name lang="it" >Ohmetro orizzontale</name>
-  
-<name lang="cs" >Vodorovný ohmmetr</name>
-        <name lang="pt" >Ohmímetro horizontal</name>
+        <name lang="de">Ohmmeter horizontal</name>
+        <name lang="ru">Омметр (горизонтальный)</name>
+        <name lang="en">Horizontal ohmmeter</name>
+        <name lang="fr">Ohmmètre horizontal</name>
+        <name lang="es">Óhmetro horizontal</name>
+        <name lang="cs">Ohmmetr, vodorovný</name>
+        <name lang="pt">Ohmímetro horizontal</name>
+        <name lang="pl">Omomierz (poziomo)</name>
+        <name lang="it">Ohmmetro orizzontale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

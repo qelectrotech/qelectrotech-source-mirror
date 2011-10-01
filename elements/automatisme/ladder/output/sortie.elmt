@@ -1,11 +1,14 @@
 <definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="ru" >Выход</name>
-        <name lang="en" >Output</name>
-        <name lang="fr" >Sortie</name>
-        <name lang="es" >Salida</name>
-        <name lang="cs" >Výstup</name>
-        <name lang="pt" >Saída</name>
+        <name lang="de">Ausgang</name>
+        <name lang="ru">Выход</name>
+        <name lang="en">Output</name>
+        <name lang="fr">Sortie</name>
+        <name lang="es">Salida</name>
+        <name lang="cs">Výstup</name>
+        <name lang="pt">Saída</name>
+        <name lang="pl">Wyjście</name>
+        <name lang="it">Uscita</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

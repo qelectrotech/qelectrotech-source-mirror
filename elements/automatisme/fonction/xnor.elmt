@@ -1,11 +1,14 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="ru" >Инверсное исключающее ИЛИ</name>
-        <name lang="en" >XNOR</name>
-        <name lang="fr" >NON-OU excusif (XNOR)</name>
-        <name lang="es" >NO-O exclusiva (XNOR)</name>
-        <name lang="cs" > NE-NEBO výhradní (XNOR)</name>
-        <name lang="pt" >NÃO-OU exclusivo (XNOR)</name>
+        <name lang="de">exklusives ODER-NICHT (XNOR)</name>
+        <name lang="ru">Инверсное исключающее ИЛИ</name>
+        <name lang="en">XNOR</name>
+        <name lang="fr">NON-OU excusif (XNOR)</name>
+        <name lang="es">NO-O exclusiva (XNOR)</name>
+        <name lang="cs"> NE-NEBO výhradní (XNOR)</name>
+        <name lang="pt">NÃO-OU exclusivo (XNOR)</name>
+        <name lang="pl">XNOR</name>
+        <name lang="it">XNOR</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

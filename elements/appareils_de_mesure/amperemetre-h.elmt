@@ -1,20 +1,15 @@
-﻿<definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn" >
+<definition width="50" version="0.2" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn" >
     <names>
-        
-<name lang="ru" >Амперметр (горизонтальный)</name>
-        <name lang="en" >Horizontal ammeter</name>
-        
-<name lang="it" >Amperometro orizzontale</name>
- 
-<name lang="fr" >Ampèremètre horizontal</name>
-        
-<name lang="es" >Amperímetro horizontal</name>
-        
-<name lang="cs" >Vodorovný ampérmetr</name>
-        
-<name lang="pt" >Amperímetro horizontal</name>
-    
-</names>
+        <name lang="de">Amperemeter horizontal</name>
+        <name lang="ru">Амперметр (горизонтальный)</name>
+        <name lang="en">Horizontal ammeter</name>
+        <name lang="fr">Ampèremètre horizontal</name>
+        <name lang="es">Amperímetro horizontal</name>
+        <name lang="cs">Vodorovný ampérmetr</name>
+        <name lang="pt">Amperímetro horizontal</name>
+        <name lang="pl">Amperomierz (poziomo)</name>
+        <name lang="it">Amperometro orizzontale </name>
+    </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

@@ -1,19 +1,14 @@
-﻿<definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
+<definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        
-<name lang="ru" >Вход</name>
-        
-<name lang="en" >Input</name>
-        
-<name lang="it" >Input</name>
- 
-<name lang="fr" >Entrée</name>
-        
-<name lang="es" >Entrada</name>
-        
-<name lang="cs" >Vstup</name>
-        
-<name lang="pt" >Entrada</name>
+        <name lang="de">Eingang</name>
+        <name lang="ru">Вход</name>
+        <name lang="en">Input</name>
+        <name lang="fr">Entrée</name>
+        <name lang="es">Entrada</name>
+        <name lang="cs">Vstup</name>
+        <name lang="pt">Entrada</name>
+        <name lang="pl">Wejście</name>
+        <name lang="it">Ingresso</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
