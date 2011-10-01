@@ -1,14 +1,11 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de">ODER</name>
-        <name lang="ru">ИЛИ</name>
-        <name lang="en">OR</name>
-        <name lang="fr">OU</name>
-        <name lang="es">O</name>
-        <name lang="cs">NEBO</name>
-        <name lang="pt">OU</name>
-        <name lang="pl">OR</name>
-        <name lang="it">OR</name>
+        <name lang="ru" >ИЛИ</name>
+        <name lang="en" >OR</name>
+        <name lang="fr" >OU</name>
+        <name lang="es" >O</name>
+        <name lang="cs" >NEBO</name>
+        <name lang="pt" >OU</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

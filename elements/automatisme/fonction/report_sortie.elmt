@@ -1,12 +1,9 @@
 <definition width="40" version="0.2" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de">Ausgang Report</name>
-        <name lang="en">Output Report</name>
-        <name lang="fr">Report Sortie</name>
-        <name lang="cs">Hlášení výstupu</name>
-        <name lang="pt">Relatório saída</name>
-        <name lang="pl">Output Report</name>
-        <name lang="it">Report uscita</name>
+        <name lang="en" >Output Report</name>
+        <name lang="fr" >Report Sortie</name>
+        <name lang="cs" >Hlášení výstupu</name>
+        <name lang="pt" >Relatório saída</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

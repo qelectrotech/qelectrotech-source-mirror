@@ -1,14 +1,11 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de">NICHT</name>
-        <name lang="ru">НЕ</name>
-        <name lang="en">NOT</name>
-        <name lang="fr">NON</name>
-        <name lang="es">NO</name>
-        <name lang="cs">Ne</name>
-        <name lang="pt">NÃO</name>
-        <name lang="pl">NOT</name>
-        <name lang="it">NOT</name>
+        <name lang="ru" >НЕ</name>
+        <name lang="en" >NOT</name>
+        <name lang="fr" >NON</name>
+        <name lang="es" >NO</name>
+        <name lang="cs" >Ne</name>
+        <name lang="pt" >NÃO</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

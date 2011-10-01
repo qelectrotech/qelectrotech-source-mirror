@@ -1,14 +1,11 @@
 <definition width="100" version="0.2" hotspot_x="50" hotspot_y="50" height="110" type="element" ic="true" orientation="dyyy" >
     <names>
-        <name lang="de">UND</name>
-        <name lang="ru">И</name>
-        <name lang="en">AND</name>
-        <name lang="fr">ET</name>
-        <name lang="es">Y</name>
-        <name lang="cs">A</name>
-        <name lang="pt">E</name>
-        <name lang="pl">AND</name>
-        <name lang="it">AND</name>
+        <name lang="ru" >И</name>
+        <name lang="en" >AND</name>
+        <name lang="fr" >ET</name>
+        <name lang="es" >Y</name>
+        <name lang="cs" >A</name>
+        <name lang="pt" >E</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

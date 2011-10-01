@@ -1,16 +1,23 @@
-<definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
+﻿<definition width="50" version="0.2" hotspot_x="25" hotspot_y="30" height="40" type="element" orientation="dnnn" >
     <names>
-        <name lang="de">Eingang (steigende Flanke)</name>
-        <name lang="ru">Вход (передний фронт)</name>
-        <name lang="en">Input (up front)</name>
-        <name lang="fr">Entrée (front montant)</name>
-        <name lang="es">Entrada (ascendente)</name>
-        <name lang="cs">Vstup (stoupající)</name>
-        <name lang="pt">Entrada (ascendente)</name>
-        <name lang="pl">Wejście (zbocze narastające)</name>
-        <name lang="it">Ingresso (fronte ascendente)</name>
-    </names>
-    <informations>Author: The QElectroTech team
+        
+<name lang="ru" >Вход (передний фронт)</name>
+        
+<name lang="en" >Input (up front)</name>
+        
+<name lang="it" >Input (fronte di salita)</name>
+      
+<name lang="fr" >Entrée (front montant)</name>
+        
+<name lang="es" >Entrada (ascendente)</name>
+        
+<name lang="cs" >Vstup (stoupající)</name>
+        
+<name lang="pt" >Entrada (ascendente)</name>
+    
+</names>
+    
+<informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-3.5" y="5.25" size="9" text="P" />
