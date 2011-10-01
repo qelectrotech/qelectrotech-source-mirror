@@ -128,6 +128,7 @@ class ElementsPanel : public QTreeWidget {
 	void deleteItem(QTreeWidgetItem *);
 	void updateProjectItemInformations(QETProject *);
 	void updateProjectTemplates(QETProject *);
+	void updateDiagramLabel(QTreeWidgetItem *, int);
 	QString diagramTitleToDisplay(Diagram *) const;
 	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
 	

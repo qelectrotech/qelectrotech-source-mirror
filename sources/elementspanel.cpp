@@ -1059,7 +1059,25 @@ void ElementsPanel::diagramWasRemoved(QETProject *project, Diagram *diagram) {
 	if (projects_.key(project, 0)) {
 		// on verifie que le schema apparait dans le panel
 		if (QTreeWidgetItem *item_to_remove = diagrams_.key(diagram, 0)) {
+			QTreeWidgetItem *parent_qtwi = item_to_remove -> parent();
+			
+			// we keep the index of the deleted item
+			int deleted_index = -1;
+			if (parent_qtwi) {
+				deleted_index = parent_qtwi -> indexOfChild(item_to_remove);
+			}
+			
+			// deletion itself
 			deleteItem(item_to_remove);
+			
+			// we also need to update the labels of following diagrams
+			// because they may display the folio index
+			if (deleted_index != -1) {
+				// -2 avoids the title blocks directory and the common collection
+				for (int i = deleted_index ; i < parent_qtwi -> childCount() - 2; ++i) {
+					updateDiagramLabel(parent_qtwi, i);
+				}
+			}
 		}
 	}
 }
@@ -1096,6 +1114,11 @@ void ElementsPanel::diagramOrderChanged(QETProject *project, int from, int to) {
 	bool was_selected = moved_qtwi_diagram -> isSelected();
 	qtwi_project -> removeChild(moved_qtwi_diagram);
 	qtwi_project -> insertChild(to, moved_qtwi_diagram);
+	
+	// update the QTWI labels because they may display the folio index
+	updateDiagramLabel(qtwi_project, from);
+	updateDiagramLabel(qtwi_project, to);
+	
 	if (was_selected) {
 		setCurrentItem(moved_qtwi_diagram);
 	}
@@ -1176,12 +1199,46 @@ void ElementsPanel::updateProjectTemplates(QETProject *project) {
 }
 
 /**
+	Updates the label of a diagram displayed by the elements panel
+	@param qtwi_project QTreeWidgetItem representing the diagram's parent project
+	@param diagram_index Index of the diagram within the parent project
+*/
+void ElementsPanel::updateDiagramLabel(QTreeWidgetItem *qtwi_project, int diagram_index) {
+	if (!qtwi_project) return;
+	
+	QTreeWidgetItem *qtwi_diagram = qtwi_project -> child(diagram_index);
+	if (!qtwi_diagram) return;
+	
+	Diagram *diagram = diagrams_[qtwi_diagram];
+	if (diagram) {
+		qtwi_diagram -> setText(0, diagramTitleToDisplay(diagram));
+	}
+}
+
+/**
 	@param diagram Schema dont on souhaite affiche le titre
 	@return Un titre affichable, tenant compte du fait que le titre du schema
 	peut etre vide.
 */
 QString ElementsPanel::diagramTitleToDisplay(Diagram *diagram) const {
-	return(diagram -> title().isEmpty() ? tr("Sch\351ma sans titre") : diagram -> title());
+	QString displayed_title = diagram -> title();
+	if (displayed_title.isEmpty()) {
+		displayed_title = tr("Sch\351ma sans titre", "Fallback label when a diagram has no title");
+	}
+	
+	QString displayed_label;
+	int diagram_folio_idx = diagram -> folioIndex();
+	if (diagram_folio_idx != -1) {
+		displayed_label = QString(
+			tr(
+				"%1 - %2",
+				"label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title"
+			)
+		).arg(diagram_folio_idx + 1).arg(displayed_title);
+	} else {
+		displayed_label = displayed_title;
+	}
+	return(displayed_label);
 }
 
 /**
