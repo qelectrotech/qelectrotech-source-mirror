@@ -608,23 +608,19 @@ QTreeWidgetItem *ElementsPanel::addDiagram(QTreeWidgetItem *qtwi_parent, Diagram
 	
 	// repere le dernier element correspondant a un schema, s'il existe
 	QTreeWidgetItem *last_diagram = 0;
-	bool collection_item_exists = false;
 	if (QETProject *project = diagram -> project()) {
-		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
-			if (QTreeWidgetItem *collection_item = locations_.key(project_collection -> location())) {
-				collection_item_exists = true;
-				// repere le dernier schema
-				int common_collection_item_idx = qtwi_parent -> indexOfChild(collection_item);
-				if (common_collection_item_idx != -1) {
-					last_diagram = qtwi_parent -> child(common_collection_item_idx - 1);
-				}
+		if (QTreeWidgetItem *embedded_title_blocks = title_blocks_directories_.key(project)) {
+			// gets the last diagram, supposed to be right before the title blocks directory item
+			int title_blocks_item_idx = qtwi_parent -> indexOfChild(embedded_title_blocks);
+			if (title_blocks_item_idx != -1) {
+				last_diagram = qtwi_parent -> child(title_blocks_item_idx - 1);
 			}
 		}
 	}
 	
 	// creation du QTreeWidgetItem representant le schema
 	QTreeWidgetItem *qtwi_diagram;
-	if (collection_item_exists) {
+	if (last_diagram) {
 		qtwi_diagram = new QTreeWidgetItem(qtwi_parent, last_diagram);
 	} else {
 		qtwi_diagram = new QTreeWidgetItem(qtwi_parent);
