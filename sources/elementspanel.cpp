@@ -307,7 +307,8 @@ bool ElementsPanel::selectedItemIsAProject() const {
 	@return true si un schema est selectionne, false sinon
 */
 bool ElementsPanel::selectedItemIsADiagram() const {
-	return(diagrams_.contains(currentItem()));
+	QTreeWidgetItem *current = currentItem();
+	return(diagrams_.contains(current));
 }
 
 /**
@@ -890,11 +891,6 @@ QTreeWidgetItem *ElementsPanel::findLocation(const QString &location) const {
 void ElementsPanel::deleteItem(QTreeWidgetItem *removed_item) {
 	if (!removed_item) return;
 	
-	// supprime les eventuels enfants de l'item
-	foreach(QTreeWidgetItem *child_item, removed_item -> takeChildren()) {
-		deleteItem(child_item);
-	}
-	
 	if (locations_.contains(removed_item)) {
 		locations_.remove(removed_item);
 	} else if (diagrams_.contains(removed_item)) {
@@ -904,6 +900,12 @@ void ElementsPanel::deleteItem(QTreeWidgetItem *removed_item) {
 	} else if (title_blocks_directories_.contains(removed_item)) {
 		title_blocks_directories_.remove(removed_item);
 	}
+	
+	// supprime les eventuels enfants de l'item
+	foreach(QTreeWidgetItem *child_item, removed_item -> takeChildren()) {
+		deleteItem(child_item);
+	}
+	
 	delete removed_item;
 }
 
