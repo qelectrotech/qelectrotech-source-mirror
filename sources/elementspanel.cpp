@@ -608,21 +608,19 @@ QTreeWidgetItem *ElementsPanel::addDiagram(QTreeWidgetItem *qtwi_parent, Diagram
 	QString final_name = diagramTitleToDisplay(diagram);
 	
 	// repere le dernier element correspondant a un schema, s'il existe
-	QTreeWidgetItem *last_diagram = 0;
+	QTreeWidgetItem *previous_diagram_item = 0;
 	if (QETProject *project = diagram -> project()) {
-		if (QTreeWidgetItem *embedded_title_blocks = title_blocks_directories_.key(project)) {
-			// gets the last diagram, supposed to be right before the title blocks directory item
-			int title_blocks_item_idx = qtwi_parent -> indexOfChild(embedded_title_blocks);
-			if (title_blocks_item_idx != -1) {
-				last_diagram = qtwi_parent -> child(title_blocks_item_idx - 1);
-			}
+		int added_diagram_index = project -> diagrams().indexOf(diagram);
+		if (added_diagram_index > 0) {
+			Diagram *previous_diagram = project -> diagrams().at(added_diagram_index - 1);
+			previous_diagram_item = diagrams_.key(previous_diagram, 0);
 		}
 	}
 	
 	// creation du QTreeWidgetItem representant le schema
 	QTreeWidgetItem *qtwi_diagram;
-	if (last_diagram) {
-		qtwi_diagram = new QTreeWidgetItem(qtwi_parent, last_diagram);
+	if (previous_diagram_item) {
+		qtwi_diagram = new QTreeWidgetItem(qtwi_parent, previous_diagram_item);
 	} else {
 		qtwi_diagram = new QTreeWidgetItem();
 		qtwi_parent -> insertChild(0, qtwi_diagram);
