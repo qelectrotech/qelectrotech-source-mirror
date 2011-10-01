@@ -41,7 +41,7 @@ class ElementsPanelWidget : public QWidget {
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *delete_collection;
-	QAction *new_element, *import_element,  *edit_element,  *delete_element;
+	QAction *new_element, *edit_element, *delete_element, *open_element;
 	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_down;
 	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
@@ -79,12 +79,13 @@ class ElementsPanelWidget : public QWidget {
 	void removeTitleBlockTemplate();
 	void newCategory();
 	void newElement();
-	void importElement();
+	void openElementFromFile();
 	void editCategory();
 	void editElement();
 	void deleteCategory();
 	void deleteElement();
 	void updateButtons();
+	void setElementsActionEnabled(bool);
 	int  launchCategoriesManager();
 	void handleContextMenu(const QPoint &);
 	void handleCollectionRequest(ElementsCollectionItem *);

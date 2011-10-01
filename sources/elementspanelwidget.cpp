@@ -58,9 +58,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	delete_category       = new QAction(QET::Icons::FolderDelete,              tr("Supprimer la cat\351gorie"),           this);
 	delete_collection     = new QAction(QET::Icons::FolderDelete,              tr("Vider la collection"),                 this);
 	new_element           = new QAction(QET::Icons::ElementNew,                tr("Nouvel \351l\351ment"),                this);
-	import_element        = new QAction(QET::Icons::DocumentImport,            tr("Importer un \351l\351ment"),           this);
 	edit_element          = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
 	delete_element        = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
+	open_element          = new QAction(QET::Icons::DocumentImport,            tr("Ouvrir un fichier \351l\351ment"),     this);
 	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
 	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du projet"),          this);
 	prj_prop_diagram      = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du sch\351ma"),       this);
@@ -99,9 +99,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(delete_category,       SIGNAL(triggered()), this,           SLOT(deleteCategory()));
 	connect(delete_collection,     SIGNAL(triggered()), this,           SLOT(deleteCategory()));
 	connect(new_element,           SIGNAL(triggered()), this,           SLOT(newElement()));
-	connect(import_element,        SIGNAL(triggered()), this,           SLOT(importElement()));
 	connect(edit_element,          SIGNAL(triggered()), this,           SLOT(editElement()));
 	connect(delete_element,        SIGNAL(triggered()), this,           SLOT(deleteElement()));
+	connect(open_element,          SIGNAL(triggered()), this,           SLOT(openElementFromFile()));
 	connect(prj_close,             SIGNAL(triggered()), this,           SLOT(closeProject()));
 	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
 	connect(prj_prop_diagram,      SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
@@ -142,9 +142,10 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	toolbar -> addAction(delete_category);
 	toolbar -> addSeparator();
 	toolbar -> addAction(new_element);
-	toolbar -> addAction(import_element);
 	toolbar -> addAction(edit_element);
 	toolbar -> addAction(delete_element);
+	toolbar -> addSeparator();
+	toolbar -> addAction(open_element);
 	
 	// disposition verticale
 	QVBoxLayout *vlayout = new QVBoxLayout(this);
@@ -305,9 +306,9 @@ void ElementsPanelWidget::newElement() {
 }
 
 /**
-	Import d'element en passant par l'editeur
+	Open an element from a file freely chosen by the user.
 */
-void ElementsPanelWidget::importElement() {
+void ElementsPanelWidget::openElementFromFile() {
 	QString fileName = QETElementEditor::getOpenElementFileName(this);
 	
 	// Ouverture de l'element dans l'editeur pour pouvoir ensuite l'enregistrer dans la categorie voulue
@@ -357,6 +358,7 @@ void ElementsPanelWidget::updateButtons() {
 	} else if (elements_panel -> selectedItemIsAProject()) {
 		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
 		prj_add_diagram -> setEnabled(is_writable);
+		setElementsActionEnabled(false);
 	} else if (elements_panel -> selectedItemIsADiagram()) {
 		Diagram    *selected_diagram         = elements_panel -> selectedDiagram();
 		QETProject *selected_diagram_project = selected_diagram -> project();
@@ -368,15 +370,33 @@ void ElementsPanelWidget::updateButtons() {
 		prj_del_diagram       -> setEnabled(is_writable);
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
+		setElementsActionEnabled(false);
 	} else if (elements_panel -> selectedItemIsATitleBlockTemplatesDirectory()) {
 		bool is_writable = !(elements_panel -> projectForTitleBlockTemplatesDirectory(elements_panel -> currentItem()) -> isReadOnly());
 		tbt_add -> setEnabled(is_writable);
+		setElementsActionEnabled(false);
 	} else if (elements_panel -> selectedItemIsATitleBlockTemplate()) {
 		bool is_writable = !(elements_panel -> projectForTitleBlockTemplate(elements_panel -> currentItem()) -> isReadOnly());
 		tbt_add -> setEnabled(is_writable);
 		tbt_edit -> setEnabled(is_writable);
 		tbt_remove -> setEnabled(is_writable);
+		setElementsActionEnabled(false);
 	}
+}
+
+/**
+	Enable or disable elements-related actions (i.e. new/edit/delete
+	categories/elements).
+	@param bool true to enable actions, false to disable them
+*/
+void ElementsPanelWidget::setElementsActionEnabled(bool enable) {
+	delete_collection -> setEnabled(enable);
+	new_category      -> setEnabled(enable);
+	edit_category     -> setEnabled(enable);
+	delete_category   -> setEnabled(enable);
+	new_element       -> setEnabled(enable);
+	edit_element      -> setEnabled(enable);
+	delete_element    -> setEnabled(enable);
 }
 
 /**
