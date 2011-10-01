@@ -623,7 +623,8 @@ QTreeWidgetItem *ElementsPanel::addDiagram(QTreeWidgetItem *qtwi_parent, Diagram
 	if (last_diagram) {
 		qtwi_diagram = new QTreeWidgetItem(qtwi_parent, last_diagram);
 	} else {
-		qtwi_diagram = new QTreeWidgetItem(qtwi_parent);
+		qtwi_diagram = new QTreeWidgetItem();
+		qtwi_parent -> insertChild(0, qtwi_diagram);
 	}
 	qtwi_diagram -> setText(0, final_name);
 	qtwi_diagram -> setIcon(0, QET::Icons::Diagram);
