@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Breaker DM2</name>
         <name lang="fr">Disjoncteur DM2</name>
+        <name lang="pl">Wyłącznik DM2</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

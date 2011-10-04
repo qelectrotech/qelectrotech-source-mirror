@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Switch fuses Qm</name>
         <name lang="fr">Interrupteur fusibles QM</name>
+        <name lang="pl">Rozłącznik z bezpiecznikiem QM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
