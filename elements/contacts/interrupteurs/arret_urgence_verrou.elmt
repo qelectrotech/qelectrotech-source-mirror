@@ -2,6 +2,7 @@
     <names>
         <name lang="en">Emergency stop (LATCH)</name>
         <name lang="fr">Arrêt d'urgence (VERROU)</name>
+        <name lang="pl">Łącznik przyciskowy, odblokowywany kluczykiem (przycisk bezpieczeństwa)</name>
     </names>
     <informations></informations>
     <description>

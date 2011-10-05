@@ -3,6 +3,7 @@
         <name lang="en">Drive</name>
         <name lang="fr">Variateur</name>
         <name lang="cs">Regulátor</name>
+        <name lang="pl">Regulator</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
