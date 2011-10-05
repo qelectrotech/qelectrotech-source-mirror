@@ -2,7 +2,7 @@
     <names>
         <name lang="en">Switch fuses QMB</name>
         <name lang="fr">Interrupteur fusibles QMB</name>
-        <name lang="fr">Rozłącznik z bezpiecznikiem QMB</name>
+        <name lang="pl">Rozłącznik z bezpiecznikiem QMB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
