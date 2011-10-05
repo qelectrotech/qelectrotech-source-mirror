@@ -140,8 +140,11 @@ sub analyze_element_file {
 	my $file = $_;
 	our %languages;
 	for my $lang_key (our @ordered_languages) {
-		if (get_pattern_count_in_file('file' => $file, 'pattern' => sprintf('<name\s+lang="%s"\s*>', $lang_key, 'limit' => 1)) == 1) {
+		my $translations_count = get_pattern_count_in_file('file' => $file, 'pattern' => sprintf('<name\s+lang="%s"\s*>', $lang_key));
+		if ($translations_count == 1) {
 			++ $languages{$lang_key}{'translated_elements_count'};
+		} elsif ($translations_count > 1) {
+			print STDERR "Multiple translation in $File::Find::name\n";
 		}
 	}
 }
