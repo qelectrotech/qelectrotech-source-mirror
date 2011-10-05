@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr">Module_repetiteur</name>
+		<name lang="en">Repeater module</name>
+        <name lang="fr">Module répétiteur</name>
         <name lang="pl">Moduły wzmacniaczy</name>
         <name lang="cs">Moduly relé</name>
     </names>
