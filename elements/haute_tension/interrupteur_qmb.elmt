@@ -1,7 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="120" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Switch fuses QMB</name>
-        <name lang="fr">Interrupteur fusibles QMB</name>
+        <name lang="en">Switch with fuse QMB</name>
+        <name lang="fr">Interrupteur à fusible QMB</name>
         <name lang="pl">Rozłącznik z bezpiecznikiem QMB</name>
     </names>
     <informations>Author: The QElectroTech team
