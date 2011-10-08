@@ -17,7 +17,7 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 	// initialize the cache SQLite database
 	static int cache_instances = 0;
 	QString connection_name = QString("ElementsCollectionCache-%1").arg(cache_instances++);
-	cache_db_ = QSqlDatabase::addDatabase("QSQLITE", connection_name );
+	cache_db_ = QSqlDatabase::addDatabase("QSQLITE", connection_name);
 	cache_db_.setDatabaseName(database_path);
 	if (!cache_db_.open()) {
 		qDebug() << "Unable to open the SQLite database " << database_path << " as " << connection_name << ": " << cache_db_.lastError();
@@ -108,7 +108,11 @@ void ElementsCollectionCache::endCollection(ElementsCollection *collection) {
 	bool use_cache = cache_db_.isOpen() && collection -> isCacheable();
 	if (use_cache) {
 		bool transaction_commited = cache_db_.commit();
-		qDebug() << (transaction_commited ? "transaction commited for " : "transaction not commited for") << collection -> protocol();
+		if (transaction_commited) {
+			qDebug() << "transaction commited for " << collection -> protocol();
+		} else {
+			qDebug() << "transaction not commited for " << collection -> protocol() << ":" << cache_db_.lastError();
+		}
 	}
 }
 
@@ -192,6 +196,7 @@ bool ElementsCollectionCache::fetchNameFromCache(const QString &path, const QDat
 	if (select_name_ -> exec()) {
 		if (select_name_ -> first()) {
 			current_name_ = select_name_ -> value(0).toString();
+			select_name_ -> finish();
 			return(true);
 		}
 	} else {
@@ -217,6 +222,7 @@ bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QD
 			// avoid returning always the same pixmap (i.e. same cacheKey())
 			current_pixmap_.detach();
 			current_pixmap_.loadFromData(ba, qPrintable(pixmap_storage_format_));
+			select_pixmap_ -> finish();
 		}
 		return(true);
 	} else {
