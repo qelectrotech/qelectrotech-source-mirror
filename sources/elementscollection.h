@@ -21,6 +21,7 @@
 #include "elementscollectionitem.h"
 class QETProject;
 class ElementsCategory;
+class ElementsCollectionCache;
 class ElementDefinition;
 class MoveElementsHandler;
 /**
@@ -74,7 +75,6 @@ class ElementsCollection : public ElementsCollectionItem {
 	virtual ElementDefinition *createElement(const QString &);
 	virtual bool isEmpty();
 	virtual int count();
-	virtual bool isCacheable() const = 0;
 	
 	// Methodes propres a la classe ElementsCollection
 	public:
@@ -83,6 +83,9 @@ class ElementsCollection : public ElementsCollectionItem {
 	*/
 	virtual ElementsCategory *rootCategory() = 0;
 	virtual ElementsCollectionItem *item(const QString &, bool = true);
+	virtual bool isCacheable() const = 0;
+	virtual ElementsCollectionCache *cache() const;
+	virtual void setCache(ElementsCollectionCache *);
 	
 	// attributs
 	protected:
@@ -90,5 +93,7 @@ class ElementsCollection : public ElementsCollectionItem {
 	QString protocol_;
 	/// Projet auquel appartient cette collection
 	QETProject *project_;
+	/// Optional cache used to improve performance
+	ElementsCollectionCache *cache_;
 };
 #endif

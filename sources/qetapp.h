@@ -26,6 +26,7 @@ class AboutQET;
 class QETDiagramEditor;
 class QETElementEditor;
 class ElementsCollection;
+class ElementsCollectionCache;
 class ElementsCollectionItem;
 class FileElementsCollection;
 class ElementsCategory;
@@ -137,6 +138,7 @@ class QETApp : public QETSingleApplication {
 	
 	static FileElementsCollection *common_collection;
 	static FileElementsCollection *custom_collection;
+	static ElementsCollectionCache *collections_cache_;
 	static QMap<uint, QETProject *> registered_projects_;
 	static uint next_project_id;
 	static RecentFiles *projects_recent_files_;

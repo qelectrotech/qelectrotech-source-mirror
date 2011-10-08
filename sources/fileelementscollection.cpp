@@ -30,7 +30,6 @@ FileElementsCollection::FileElementsCollection(const QString &path, ElementsColl
 	protocol_ = "unknown";
 	project_ = 0;
 	root = 0;
-	reload();
 }
 
 /**

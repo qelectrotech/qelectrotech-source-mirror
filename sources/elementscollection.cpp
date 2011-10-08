@@ -25,7 +25,8 @@
 	@param parent Item parent
 */
 ElementsCollection::ElementsCollection(ElementsCollectionItem *parent) :
-	ElementsCollectionItem(parent)
+	ElementsCollectionItem(parent),
+	cache_(0)
 {
 }
 
@@ -414,3 +415,16 @@ ElementsCollectionItem *ElementsCollection::item(const QString &item_path, bool 
 	return(result);
 }
 
+/**
+	@return The cache used by this collection, or 0 if this collection does not have any
+*/
+ElementsCollectionCache *ElementsCollection::cache() const {
+	return(cache_);
+}
+
+/**
+	@param cache The cache to be used by this collection
+*/
+void ElementsCollection::setCache(ElementsCollectionCache *cache) {
+	cache_ = cache;
+}

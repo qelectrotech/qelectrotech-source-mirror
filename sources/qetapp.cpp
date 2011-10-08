@@ -21,6 +21,7 @@
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
 #include "elementscollectionitem.h"
+#include "elementscollectioncache.h"
 #include "fileelementscollection.h"
 #include "titleblocktemplate.h"
 #include "templateeditor.h"
@@ -42,6 +43,7 @@ QString QETApp::config_dir = QString();
 QString QETApp::lang_dir = QString();
 FileElementsCollection *QETApp::common_collection = 0;
 FileElementsCollection *QETApp::custom_collection = 0;
+ElementsCollectionCache *QETApp::collections_cache_ = 0;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
 uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::projects_recent_files_ = 0;
@@ -91,6 +93,13 @@ QETApp::QETApp(int &argc, char **argv) :
 	
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
+	
+	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'\351l\351ments", "splash screen caption"));
+	if (!collections_cache_) {
+		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+		collections_cache_ = new ElementsCollectionCache(cache_path, this);
+		collections_cache_ -> setLocale(QLocale::system().name().left(2)); // @todo we need a unique function to get the good language
+	}
 	
 	// loads known collections into memory (this does not include items rendering made in elements panels)
 	setSplashScreenStep(tr("Chargement... Lecture des collections d'\351l\351ments", "splash screen caption"));
@@ -228,6 +237,7 @@ ElementsCollection *QETApp::commonElementsCollection() {
 	if (!common_collection) {
 		common_collection = new FileElementsCollection(QETApp::commonElementsDir());
 		common_collection -> setProtocol("common");
+		common_collection -> setCache(collections_cache_);
 	}
 	return(common_collection);
 }
@@ -239,6 +249,7 @@ ElementsCollection *QETApp::customElementsCollection() {
 	if (!custom_collection) {
 		custom_collection = new FileElementsCollection(QETApp::customElementsDir());
 		custom_collection -> setProtocol("custom");
+		custom_collection -> setCache(collections_cache_);
 	}
 	return(custom_collection);
 }

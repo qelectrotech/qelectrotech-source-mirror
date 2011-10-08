@@ -15,6 +15,7 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "elementscollectioncache.h"
 #include "fileelementdefinition.h"
 #include "fileelementscategory.h"
 #include "fileelementscollection.h"
@@ -43,7 +44,17 @@ FileElementDefinition::~FileElementDefinition() {
 	@return la definition XML de l'element
 */
 QDomElement FileElementDefinition::xml() {
-	return(xml_element_.documentElement());
+	// ouvre le fichier
+	QFile file(file_path);
+	
+	// charge le contenu du fichier en s'attendant a du XML
+	is_null = !xml_element_.setContent(&file);
+	if (is_null) {
+		return(QDomElement());
+	} else {
+		// l'ouverture de la definition a reussi
+		return(xml_element_.documentElement());
+	}
 }
 
 /**
@@ -122,18 +133,21 @@ void FileElementDefinition::reload() {
 	}
 	file_path = file_info.canonicalFilePath();
 	
-	// ouvre le fichier
-	QFile file(file_path);
-	
-	// charge le contenu du fichier en s'attendant a du XML
-	bool read_xml = xml_element_.setContent(&file);
-	if (!read_xml) {
-		is_null = true;
-		return;
+	if (parentCollection()) {
+		ElementsCollectionCache *cache = parentCollection() -> cache();
+		if (cache && cache -> fetchNameFromCache(location().toString(), file_info.lastModified())) {
+			// the element file has not been modified since the last time
+			// we put its name in cache: we do not need to load it.
+			is_null = false;
+			return;
+		}
 	}
 	
-	// l'ouverture de la definition a reussi
-	is_null = false;
+	// we need to ensure this is a valid XML document
+	QFile file(file_path);
+	QDomDocument xml_document;
+	is_null = !xml_document.setContent(&file);
+	xml_document.clear();
 }
 
 /**
