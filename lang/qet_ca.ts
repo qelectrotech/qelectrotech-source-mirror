@@ -87,17 +87,17 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="125"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducció al alemán</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducció al romanès</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducció al italià</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="141"/>
@@ -314,7 +314,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="106"/>
         <source>Trait en pointillés</source>
-        <translation type="unfinished"></translation>
+        <translation>Línia amb puntets</translation>
     </message>
 </context>
 <context>
@@ -399,7 +399,7 @@
         <location filename="../sources/diagramview.cpp" line="170"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Orientar els textos seleccionats</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="401"/>
@@ -416,23 +416,23 @@
         <location filename="../sources/diagramview.cpp" line="427"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Propietats del esquema</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="729"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietat de la selecció</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="731"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
-        <translation type="unfinished"></translation>
+        <translation>La selecció conté %1.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="752"/>
         <source>Élément manquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Falta element</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="754"/>
@@ -457,7 +457,8 @@
         <location filename="../sources/diagramview.cpp" line="761"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions: %1×%2
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="762"/>
@@ -479,13 +480,14 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
         <source>Interdites</source>
-        <translation type="unfinished"></translation>
+        <translation>Prohibides</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="764"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Camps del text: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="767"/>
@@ -496,7 +498,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="771"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats del element seleccionat</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="772"/>
