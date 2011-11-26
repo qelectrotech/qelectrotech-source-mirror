@@ -2181,54 +2181,54 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="96"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Carregant... Lectura de les col·leccion d&apos;elements</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="103"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Carregant... Editor de esquemes</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="106"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Carregant... Obrint els fitxers</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="532"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="533"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="534"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="535"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elèctric</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="536"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="859"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="859"/>
@@ -2239,7 +2239,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="990"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Carregant...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1059"/>
