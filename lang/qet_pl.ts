@@ -421,13 +421,13 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="729"/>
         <source>Propriétés de la sélection</source>
-        <translation>Właściwości elementu</translation>
+        <translation>Właściwości zaznaczenia</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="731"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
-        <translation>Wybór zawiera %1.</translation>
+        <translation>Zaznaczenie zawiera %1.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="752"/>
@@ -464,7 +464,7 @@
         <location filename="../sources/diagramview.cpp" line="762"/>
         <source>Bornes : %1
 </source>
-        <translation>Złącze : %1
+        <translation>Punkt pochwycenia : %1
 </translation>
     </message>
     <message>
@@ -638,26 +638,26 @@
         <location filename="../sources/elementdialog.cpp" line="294"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
-        <translation>Wybór nieistniejącego elementu</translation>
+        <translation>Zaznaczenie nieistniejącego elementu</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="257"/>
         <location filename="../sources/elementdialog.cpp" line="295"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation>Nie wybrano.</translation>
+        <translation>Nie zaznaczono.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="266"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
-        <translation>Wybór nieprawidłowy</translation>
+        <translation>Zaznaczenie nieprawidłowe</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="267"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation>Wybór nie jest elementem.</translation>
+        <translation>Zaznaczenie nie jest elementem.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="284"/>
@@ -1452,7 +1452,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
-        <translation>Rysuj połączenia</translation>
+        <translation>Rysuj punkty pochwycenia</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
@@ -3641,7 +3641,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation>Niektóre części graficzne (teksty, okręgi, linie, ...) wydają się być na granicy elementu. To może generować błędy graficzne, gdy element zostanie przeniesiony do schematu. Można to naprawić poprzez przeniesienie części lub wybranie z menu Edycja&gt; Edytuj rozmiar i aktywny obszar.</translation>
+        <translation>Niektóre części graficzne (teksty, okręgi, linie, ...) wydają się być na granicy elementu. Może to generować błędy graficzne, gdy element zostanie przeniesiony do schematu. Można to naprawić poprzez przeniesienie części lub wybranie z menu Edycja&gt; Edytuj rozmiar i aktywny obszar.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="712"/>
