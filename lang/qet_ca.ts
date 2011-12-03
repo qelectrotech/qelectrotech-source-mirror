@@ -493,7 +493,8 @@
         <location filename="../sources/diagramview.cpp" line="767"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Lloc: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="771"/>
@@ -503,7 +504,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="772"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Encontrar en el panel</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="773"/>
@@ -665,36 +666,36 @@
         <location filename="../sources/elementdialog.cpp" line="307"/>
         <source>Nom manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Falta nom</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="308"/>
         <source>Vous devez entrer un nom pour l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ha d&apos;entrar un nom per a l&apos;element</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="317"/>
         <source>Nom invalide</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nom no vàlid</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="319"/>
         <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>No pot fer servir els caràcters següents en el nom del element: %1</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="345"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vol sobrescriure l&apos;element?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="346"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aquest element ja existeix. VOl sobrescriure-lo?</translation>
     </message>
 </context>
 <context>
