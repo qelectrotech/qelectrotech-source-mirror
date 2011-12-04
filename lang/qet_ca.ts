@@ -470,12 +470,13 @@
         <location filename="../sources/diagramview.cpp" line="763"/>
         <source>Connexions internes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Coneccions internes: %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
         <source>Autorisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Permitides</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="763"/>
@@ -755,28 +756,28 @@
         <location filename="../sources/editor/elementscene.cpp" line="864"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificar les orientacions</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="868"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;orientació per defecte és l&apos;orientació que ha fet servir quan ha dibuixat l&apos;element.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="880"/>
         <source>Autoriser les connexions internes</source>
-        <translation type="unfinished"></translation>
+        <translation>Permitir les coneccions internes</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="918"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Canviar les informacions sobre el autor</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="922"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pot fer servir aquest camp lliure per indicar els autors del element, la llicència, o qualsevol informació que piensa que sigui útil.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="962"/>
@@ -787,14 +788,14 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="966"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pot indicar el nom de l&apos;element en diferentes llengües.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1120"/>
         <location filename="../sources/editor/elementscene.cpp" line="1185"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aquest document XML no és la definició del element.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1134"/>
@@ -806,7 +807,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="1149"/>
         <source>Les orientations ne sont pas valides.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Les orientacions no són vàlides.</translation>
     </message>
 </context>
 <context>
@@ -2063,7 +2064,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="193"/>
         <source>Enregistrer le projet en cours ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Desar el projecte corrent?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="194"/>
@@ -2075,13 +2076,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="245"/>
         <source>Enregistrer le schéma en cours ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Desar el esquema corrent?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="246"/>
         <source>Voulez-vous enregistrer le schéma %1 ?</source>
         <comment>message box content - %1 is a diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vol desar el esquema %1?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="262"/>
@@ -2093,7 +2094,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="263"/>
         <source>Ce schéma a été ajouté mais n&apos;a été ni modifié ni enregistré. Voulez-vous le conserver ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;han afegit aquest esquema però &apos;no l&apos;han canviat ni desat. Vol guardar-lo?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="333"/>
@@ -2111,7 +2112,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="412"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Propietats del projecte</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="415"/>
@@ -2121,7 +2122,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="420"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats per fer servir quan s&apos;afageixen un nou esquema al projecte:</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="558"/>
@@ -2133,23 +2134,23 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="653"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projecte només de lectura</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="654"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aquest projecte és només de lectura. Per tant no és pot netejar-lo.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="660"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar els elements que no es fan servir en el projecte</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="661"/>
         <source>Supprimer les catégories vides</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar las categorias buides</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="672"/>
@@ -2307,12 +2308,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1074"/>
         <source>Réduire QElectroTech dans le systray</source>
-        <translation type="unfinished"></translation>
+        <translation>Minimizar QEletectroTech en el systray</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1075"/>
         <source>Restaurer QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1089"/>
@@ -2333,7 +2334,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1185"/>
         <source>Usage : </source>
-        <translation type="unfinished"></translation>
+        <translation>Ús:</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1185"/>
