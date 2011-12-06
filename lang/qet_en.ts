@@ -450,7 +450,7 @@
         <location filename="../sources/diagramview.cpp" line="778"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Folio: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="780"/>
@@ -528,7 +528,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="893"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose the new color for this conductor</translation>
     </message>
 </context>
 <context>
@@ -1079,13 +1079,13 @@ Changes will be definitive.</translation>
         <location filename="../sources/elementspanel.cpp" line="1226"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Untitled diagram</translation>
+        <translation>Untitled diagram</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1233"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="595"/>
@@ -1154,7 +1154,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Open an element file</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -2332,7 +2332,7 @@ Available options:
         <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Loading... Initializing the elements collection cache</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="105"/>
@@ -4038,7 +4038,7 @@ Available options:
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>This document appears to have been saved wit h a newer version of QElectroTech. All or a part of its opening may fail. What do you wish to do?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1165"/>
@@ -4078,7 +4078,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="660"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to reach the element to be integrated</translation>
     </message>
 </context>
 <context>
