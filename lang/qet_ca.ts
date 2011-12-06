@@ -1236,7 +1236,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanelwidget.cpp" line="572"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Carregant: %p%</translation>
     </message>
 </context>
 <context>
@@ -1340,25 +1340,25 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="392"/>
         <source>Dossier non spécifié</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>No ha indicat una carpeta</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="393"/>
         <source>Vous devez spécifier le chemin du dossier dans lequel seront enregistrés les fichiers images.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ha d&apos;indicar el camí de la carpeta on se desaran els fitxers de les imatges.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot escriure en aquest fitxer</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="436"/>
         <source>Il semblerait que vous n&apos;ayez pas les permissions nécessaires pour écrire dans le fichier %1.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ha d&apos;indicar un nom de fitxer que no sigui buit i que sigui únic per a cada esquema que s&apos;han d&apos;exportar.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="544"/>
@@ -2163,7 +2163,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="712"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anomena i desa</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="714"/>
@@ -2264,32 +2264,33 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1064"/>
         <source>&amp;Masquer</source>
-        <translation type="unfinished"></translation>
+        <translation>Amagar</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1065"/>
         <source>&amp;Restaurer</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Restaurar</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1066"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Amagar tots els editors de esquemes</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1067"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar tots els editors de esquemes</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1068"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Amagar tots els editors d&apos;elements</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1069"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar tots els editors d&apos;elements</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1070"/>
@@ -2342,7 +2343,7 @@ Les changements seront définitifs.</source>
         <source> [options] [fichier]...
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>[opcions] [fitxer]...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1186"/>
@@ -2353,25 +2354,32 @@ Options disponibles :
   -v, --version                 Afficher la version
   --license                     Afficher la licence
 </source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech, un programa per fer esquemes elèctriques.
+
+Opcions: 
+  --help                        Mostrar l&apos;ajuda sobre les opcions
+  -v, --version                 Mostrar la versió
+  --license                     Mostrar la llicència
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1192"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-elements-dir=DIR     Definir la carpeta de la col·lecció d&apos;elements</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1195"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --config-dir=DIR              Definir la carpeta de configuració
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1197"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --lang-dir=DIR                Definir la carpeta amb els fitxers de llengüa</translation>
     </message>
 </context>
 <context>
@@ -2398,7 +2406,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="78"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anulacions</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="85"/>
@@ -2428,12 +2436,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="182"/>
         <source>Enregistrer sous</source>
-        <translation type="unfinished"></translation>
+        <translation>Anomenar i desar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="183"/>
         <source>&amp;Enregistrer tous les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Desar tots els esquemes</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="184"/>
@@ -2443,12 +2451,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="185"/>
         <source>E&amp;xporter</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="186"/>
         <source>Imprimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Imprimir</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="187"/>
@@ -2458,12 +2466,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="189"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Anular</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
         <source>Refaire</source>
-        <translation type="unfinished"></translation>
+        <translation>Tornar a fer</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
@@ -2488,12 +2496,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfer totes les seleccions</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>Inverser la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir la selecció</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="199"/>
@@ -2503,17 +2511,17 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Pivoter</source>
-        <translation type="unfinished"></translation>
+        <translation>Girar</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Orienter les textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientar els textos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats de la selecció</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="203"/>
@@ -2523,7 +2531,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="204"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats del esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="205"/>
@@ -2533,12 +2541,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="206"/>
         <source>Ajouter une colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir una columna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="207"/>
         <source>Enlever une colonne</source>
-        <translation type="unfinished"></translation>
+        <translation>Treure una columna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
@@ -2643,7 +2651,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Quant a &amp;QT</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="244"/>
@@ -2724,13 +2732,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Crée un nouveau schéma</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Crear un nou esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
         <source>Ouvre un schéma existant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Obrir un esquema que ja existeix</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="284"/>
@@ -2766,7 +2774,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
         <source>Exporte le schéma courant dans un autre format</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exporta el esquema corrent a un altra format</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
@@ -2784,13 +2792,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
         <source>Annule l&apos;action précédente</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anula l&apos;acció prèvia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Restaurar l&apos;acció prèvia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="295"/>
