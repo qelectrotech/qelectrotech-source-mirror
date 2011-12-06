@@ -1882,7 +1882,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
         <source>Indiquez le nom du fichier dans lequel enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation type="unfinished"></translation>
+        <translation>Indiqui el nom del fitxer en què vol desar el nou element.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="118"/>
@@ -1892,7 +1892,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="120"/>
         <source>Vous n&apos;êtes pas obligé de préciser l&apos;extension *.elmt. Elle sera ajoutée automatiquement.</source>
-        <translation type="unfinished"></translation>
+        <translation>No cal afegir l&apos;extensió *elmt. El programa l&apos;afegirà automàticament.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
@@ -3162,7 +3162,7 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="57"/>
         <source>QElectroTech - Éditeur d&apos;élément</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech - Editor d&apos;element</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="125"/>
@@ -3540,7 +3540,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="382"/>
         <source>&amp;Fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Fitxer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="383"/>
@@ -3555,27 +3555,27 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="385"/>
         <source>O&amp;utils</source>
-        <translation type="unfinished"></translation>
+        <translation>Eines</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="386"/>
         <source>&amp;Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Configuració</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="387"/>
         <source>&amp;Aide</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajuda</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="409"/>
         <source>Coller depuis...</source>
-        <translation type="unfinished"></translation>
+        <translation>Enganxar des de...</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="447"/>
         <source>Afficher</source>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
@@ -3615,30 +3615,30 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="567"/>
         <source>Informations</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Informacions</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="576"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anulacions</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="583"/>
         <source>Aucune modification</source>
-        <translation type="unfinished">Cap canvi</translation>
+        <translation>Cap canvi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="594"/>
         <source>Parties</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Parts</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="606"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editor d&apos;element</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/editor/qetelementeditor.cpp" line="661"/>
@@ -3651,7 +3651,7 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="696"/>
         <source>Dimensions de l&apos;élément</source>
         <comment>warning title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions del element</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="697"/>
@@ -3716,14 +3716,14 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1404"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="799"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1367"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Edició amb nomès permiso de lectura</translation>
+        <translation>Edició amb nomès permís de lectura</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="800"/>
@@ -3738,13 +3738,13 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="861"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="821"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot escriure en aquest fitxer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="851"/>
@@ -3774,25 +3774,25 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1071"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anomenar i desar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1073"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elements QElectroTech (*.elmt)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1105"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Desar l&apos;element corrent?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1107"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vol desar l&apos;element %1?</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1210"/>
@@ -3803,13 +3803,13 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1316"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Obrir un fitxer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1318"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elements QElectroTech (*.elmt);;Fitxers XML (*.xml);;Tots els fitxers (*)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1339"/>
@@ -3818,14 +3818,14 @@ Opcions:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1433"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>No existeix l&apos;element</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1340"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1425"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;element no existeix.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1349"/>
@@ -4019,7 +4019,7 @@ Opcions:
     <message>
         <location filename="../sources/qetproject.cpp" line="633"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot crear la categoria per integrar elements</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="644"/>
@@ -4079,7 +4079,7 @@ Opcions:
         <location filename="../sources/diagramcommands.cpp" line="75"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Afegir un camp de text</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="110"/>
@@ -4123,19 +4123,19 @@ Opcions:
         <location filename="../sources/diagramcommands.cpp" line="586"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
-        <translation type="unfinished"></translation>
+        <translation>girar %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished"></translation>
+        <translation>orientar %1 cap a %2º</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>canviar un conductor</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="799"/>
@@ -4444,7 +4444,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="51"/>
         <source>Dimensions : </source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
@@ -4558,7 +4558,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="66"/>
         <source>Couleur : </source>
-        <translation type="unfinished"></translation>
+        <translation>Color:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
