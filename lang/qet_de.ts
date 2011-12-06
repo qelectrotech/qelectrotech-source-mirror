@@ -426,6 +426,15 @@
         <comment>window title</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Folio : %1
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choisir la nouvelle couleur de ce conducteur</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiagramsChooser</name>
@@ -888,15 +897,21 @@ Die Änderungen sind endgültig.</translation>
         <translation>Keine Datei</translation>
     </message>
     <message>
-        <source>Schéma sans titre</source>
-        <translation>Schema unbenannt</translation>
-    </message>
-    <message>
         <source>Modèles de cartouche</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Modèle &quot;%1&quot;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schéma sans titre</source>
+        <comment>Fallback label when a diagram has no title</comment>
+        <translation type="unfinished">Schema unbenannt</translation>
+    </message>
+    <message>
+        <source>%1 - %2</source>
+        <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -925,10 +940,6 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Nouvel élément</source>
         <translation>Neues Element</translation>
-    </message>
-    <message>
-        <source>Importer un élément</source>
-        <translation>Importieren eines Elements</translation>
     </message>
     <message>
         <source>Éditer l&apos;élément</source>
@@ -1015,6 +1026,10 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ouvrir un fichier élément</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1951,6 +1966,11 @@ Options disponibles :
     </message>
     <message>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
+        <comment>splash screen caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -3286,10 +3306,6 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <translation></translation>
     </message>
     <message>
-        <source>Impossible d&apos;accéder à l&apos;élément a intégrer</source>
-        <translation>Unmöglich der Zugriff auf das integriete Element</translation>
-    </message>
-    <message>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Ein Problem trat beim Kopieren der Kategorie %1 auf</translation>
     </message>
@@ -3299,13 +3315,18 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <translation>Warnung</translation>
     </message>
     <message>
-        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
-        <comment>message box content</comment>
-        <translation>Dieses Dokument scheint mit einer späteren Version von QElectroTech aufgezeichnet worden zu sein. Es ist möglich, dass die Öffnung des gesamten oder eines Teils dieses Dokument nicht vollständig funktioniert.</translation>
-    </message>
-    <message>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Ein Problem trat beim Kopieren des Elements %1 auf</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

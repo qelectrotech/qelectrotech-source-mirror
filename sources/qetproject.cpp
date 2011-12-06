@@ -657,7 +657,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation::locationFromString(elmt_path));
 	ElementDefinition *integ_elmt = integ_item ? integ_item -> toElement() : 0;
 	if (!integ_item || !integ_elmt) {
-		error_message = tr("Impossible d'acc\351der \340 l'\351l\351ment a int\351grer");
+		error_message = tr("Impossible d'acc\351der \340 l'\351l\351ment \340 int\351grer");
 		return(QString());
 	}
 	
