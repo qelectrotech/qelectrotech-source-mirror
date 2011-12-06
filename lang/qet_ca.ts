@@ -910,14 +910,14 @@
         <source>Êtes-vous sûr de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Està segur de voler eliminar la categoria? S&apos;eliminiran tots els elements i categories que estàn dintre d&apos;aquesta categoria.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
         <source>Êtes-vous vraiment sûr de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Està realment segur de voler eliminar aquesta categoria? Seran canvis definitius.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
@@ -944,7 +944,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>La categoria que ha demanat no existeix. Abandó</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="56"/>
@@ -974,41 +974,41 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="78"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No té els priveligis necessaris per canviar la categoria. Per tan se l&apos;obren de només lectura.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="99"/>
         <source>Nom interne : </source>
-        <translation type="unfinished"></translation>
+        <translation>Nom intern:</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="110"/>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pot indicar un nom per cada llengüa a la categoria.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="129"/>
         <source>Nom interne manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Falta nom intern</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="130"/>
         <source>Vous devez spécifier un nom interne.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ha d&apos;indicar un nom intern.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="140"/>
         <source>Nom interne déjà utilisé</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ja s&apos;han utilitzat aquest nom intern</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>El nom intern que ha triat ja es fa servir per una categoria que existeix. Si us plau tria&apos;n un altra.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
@@ -1084,7 +1084,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1166"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Model &quot;%&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1179"/>
@@ -1097,7 +1097,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="55"/>
         <source>Recharger les collections</source>
-        <translation type="unfinished"></translation>
+        <translation>Tornar a carregar les col·leccions</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
@@ -1147,22 +1147,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Propriétés du projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats del projecte</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Propietats del esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished">Afegir un esquema</translation>
+        <translation>Afegir un esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Supprimer ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar aquest esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -1182,32 +1182,33 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Canviar aquest model</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar aquest model</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Déplacer dans cette catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Moure a aquesta categoria</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Copier dans cette catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar dintre d&apos;aquesta categoria</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Anular</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Effacer le filtre</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar el filtre</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
@@ -1229,7 +1230,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanelwidget.cpp" line="549"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>S&apos;està llegint...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="572"/>
