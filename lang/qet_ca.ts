@@ -2118,7 +2118,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="415"/>
         <source>Titre du projet :</source>
-        <translation>Tïtol del projecte:</translation>
+        <translation>Títol del projecte:</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="420"/>
@@ -3177,7 +3177,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="127"/>
         <source>&amp;Ouvrir depuis un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrir desde un fitxer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="128"/>
@@ -3187,7 +3187,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="129"/>
         <source>Enregistrer sous</source>
-        <translation type="unfinished"></translation>
+        <translation>Anomenar i desar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="130"/>
@@ -3197,62 +3197,62 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="131"/>
         <source>Recharger</source>
-        <translation type="unfinished"></translation>
+        <translation>Tornar a carregar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="132"/>
         <source>&amp;Quitter</source>
-        <translation type="unfinished">Sortir</translation>
+        <translation>Sortir</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="133"/>
         <source>Tout sélectionner</source>
-        <translation type="unfinished">Seleccionar tot</translation>
+        <translation>Seleccionar-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="134"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Desfer totes les seleccions</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="135"/>
         <source>Co&amp;uper</source>
-        <translation type="unfinished">Retallar</translation>
+        <translation>Retallar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="136"/>
         <source>Cop&amp;ier</source>
-        <translation type="unfinished">Cop&amp;iar</translation>
+        <translation>Cop&amp;iar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="137"/>
         <source>C&amp;oller</source>
-        <translation type="unfinished">Enganxar</translation>
+        <translation>Enganxar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="138"/>
         <source>C&amp;oller dans la zone...</source>
-        <translation type="unfinished"></translation>
+        <translation>Enganxar en la zona...</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="139"/>
         <source>un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>un fitxer</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="140"/>
         <source>un élément</source>
-        <translation type="unfinished"></translation>
+        <translation>un element</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="141"/>
         <source>Inverser la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Invertir la selecció</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="142"/>
         <source>&amp;Supprimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="143"/>
@@ -3282,27 +3282,27 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
         <source>Éditer les noms</source>
-        <translation type="unfinished">Modificar els noms</translation>
+        <translation>Canviar els noms</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
         <source>Éditer les orientations</source>
-        <translation type="unfinished"></translation>
+        <translation>Canviar les orientacions</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
         <source>Éditer les informations sur l&apos;auteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Canviar les informacions sobre l&apos;autor</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="151"/>
         <source>Rapprocher</source>
-        <translation type="unfinished"></translation>
+        <translation>Apropar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="152"/>
         <source>Éloigner</source>
-        <translation type="unfinished"></translation>
+        <translation>Alunyar</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="153"/>
@@ -3327,17 +3327,17 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
         <source>Ajouter un rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir un rectangle</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="158"/>
         <source>Ajouter une ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir un el·lipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="159"/>
         <source>Ajouter un cercle</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir un cercle</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="160"/>
@@ -3347,7 +3347,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="161"/>
         <source>Ajouter du texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir text</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="162"/>
@@ -3362,22 +3362,22 @@ Opcions:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="164"/>
         <source>Ajouter un champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Afegir un camp de text</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="167"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Configurar QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="168"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Quant a QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="169"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Quant a Qt</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="171"/>
@@ -3996,25 +3996,25 @@ Opcions:
         <location filename="../sources/qetproject.cpp" line="206"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projecte « %1 »</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="213"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projecte %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="220"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projecte sense títol</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="229"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 [només de lectura]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="633"/>
@@ -4769,7 +4769,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Angle de rotació:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
@@ -4814,7 +4814,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="130"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">angle de rotació</translation>
     </message>
 </context>
 <context>
@@ -4828,12 +4828,12 @@ Opcions:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation type="unfinished"></translation>
+        <translation>No provocar rotacions al element pare</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation type="unfinished"></translation>
+        <translation>Angle de rotació per defecte:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
@@ -4883,7 +4883,7 @@ Opcions:
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>angle de rotació</translation>
     </message>
 </context>
 <context>
@@ -4928,7 +4928,7 @@ Opcions:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Nom</source>
-        <translation type="unfinished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -4938,12 +4938,12 @@ Opcions:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="252"/>
         <source>Principales</source>
-        <translation type="unfinished"></translation>
+        <translation>Principals</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
         <source>Personnalisées</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Personalitzades</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
@@ -4973,7 +4973,7 @@ Opcions:
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Informacions del cartutx</translation>
     </message>
 </context>
 <context>
