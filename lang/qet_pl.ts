@@ -450,7 +450,8 @@
         <location filename="../sources/diagramview.cpp" line="778"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Strona : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="780"/>
@@ -528,7 +529,8 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="893"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Wybierz nowy kolor przewodu</translatorcomment>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1079,13 +1081,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="1226"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Schemat bez tytułu</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1233"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="595"/>
@@ -1154,7 +1156,8 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Otwórz element z pliku</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
@@ -2333,7 +2336,7 @@ Dostępne opcje :
         <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ładowanie... Inicjowanie pamięci podręcznej kolekcji elementów</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="105"/>
@@ -4041,7 +4044,8 @@ Dostępne opcje :
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ten dokument wydaje się być zapisany w nowszej wersji QElectroTech. Dokument może się otworzyć częściowo lub całkowicie.
+Co chcesz zrobić ?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1165"/>
@@ -4081,7 +4085,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="660"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Nie można połączyć elementu</translation>
     </message>
 </context>
 <context>
