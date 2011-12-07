@@ -527,7 +527,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="893"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Triar un nou color per a aquest conductor</translation>
     </message>
 </context>
 <context>
@@ -877,7 +877,7 @@
     <message>
         <location filename="../sources/elementscategory.cpp" line="478"/>
         <source>Le déplacement d&apos;une catégorie dans une de ses sous-catégories n&apos;est pas possible.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot moure una categoria a una de les seves sub-categories.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="556"/>
@@ -1090,7 +1090,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1181"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Models de cartutxos</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1194"/>
@@ -1101,13 +1101,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="1226"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esquema sense títol</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1233"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
 </context>
 <context>
@@ -1155,7 +1155,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrir un fitxer element</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
@@ -1185,17 +1185,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Remonter ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Apujar aquest esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Abaisser ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Abaixar aquest esquema</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar un nou model</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
@@ -1231,7 +1231,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Filtrer : </source>
-        <translation type="unfinished"></translation>
+        <translation>Filtrar:</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="410"/>
@@ -1340,7 +1340,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="118"/>
         <source>Dimensions</source>
-        <translation type="unfinished"></translation>
+        <translation>Dimensions</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
@@ -1411,7 +1411,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="139"/>
         <source>Format :</source>
-        <translation type="unfinished"></translation>
+        <translation>Format:</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="142"/>
@@ -1485,7 +1485,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="111"/>
         <source>Utiliser les couleurs du système</source>
-        <translation type="unfinished"></translation>
+        <translation>Fer servir els colors del sistema</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="113"/>
@@ -1495,12 +1495,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="114"/>
         <source>Utiliser des fenêtres</source>
-        <translation type="unfinished"></translation>
+        <translation>Fer servir finestres</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="115"/>
         <source>Utiliser des onglets</source>
-        <translation type="unfinished"></translation>
+        <translation>Fer servir pestanyes</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="116"/>
@@ -1534,7 +1534,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ghostelement.cpp" line="37"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;u&gt;Falta element :&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -1548,7 +1548,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
         <location filename="../sources/hotspoteditor.cpp" line="44"/>
         <source> ×10 px</source>
-        <translation type="unfinished"></translation>
+        <translation> ×10 px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
@@ -1564,7 +1564,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="84"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Dimensions&lt;/span&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Dimensions&lt;/span&gt;</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="85"/>
@@ -2560,7 +2560,7 @@ Opcions:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="205"/>
         <source>Ajouter un champ de texte</source>
-        <translation type="unfinished">Afegir un camp de text</translation>
+        <translation>Afegir un camp de text</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="206"/>
@@ -2645,7 +2645,7 @@ Opcions:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished">Configurar QElectroTech</translation>
+        <translation>Configurar QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="231"/>
@@ -3669,8 +3669,6 @@ Opcions:
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -3702,8 +3700,6 @@ Opcions:
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -4387,8 +4383,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4409,8 +4403,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4424,8 +4416,6 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
