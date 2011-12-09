@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="de">Kontakt Einfach (abschaltverzögert)</name>
         <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
@@ -6,11 +6,11 @@
         <name lang="en">Simple contact (switch-on delay timer)</name>
         <name lang="it">Contatto semplice (ritardato alla chiusura)</name>
         <name lang="fr">Contact simple (tempo travail)</name>
-        <name lang="pl">Zestyk zwierający z opóźnieniem (zwierny)</name>
+        <name lang="pl">Zestyk zwierny działający z opóźnieniem</name>
         <name lang="es">Contactor simple (tiempo retardado de encendido)</name>
         <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění zapnutí)</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="10" x="-14" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
