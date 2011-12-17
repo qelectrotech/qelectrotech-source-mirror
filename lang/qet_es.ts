@@ -51,12 +51,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="126"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al rumano</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al italiano</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="144"/>
@@ -405,7 +405,7 @@ Iconos</translation>
         <location filename="../sources/diagramview.cpp" line="172"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Orientar los textos seleccionados</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="405"/>
@@ -451,7 +451,7 @@ Iconos</translation>
         <location filename="../sources/diagramview.cpp" line="778"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Folio: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="780"/>
@@ -529,7 +529,7 @@ Iconos</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="893"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Eligir el nuevo color de este conductor</translation>
     </message>
 </context>
 <context>
@@ -1064,12 +1064,12 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1181"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo para el cartucho</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1194"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="715"/>
@@ -1095,13 +1095,13 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/elementspanel.cpp" line="1226"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Esquema sin título</translation>
+        <translation>Esquema sin título</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1233"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="733"/>
@@ -1120,7 +1120,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="55"/>
         <source>Recharger les collections</source>
-        <translation>Recargar las colecciónes</translation>
+        <translation>Recargar las colecciones</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
@@ -1160,7 +1160,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir un archivo de elemento</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
@@ -1195,17 +1195,17 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Importar un nuevo modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Éditer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Editar este modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar este modelo</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
@@ -2352,41 +2352,41 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="543"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Q</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="544"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="545"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="546"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eléctrico</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="547"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
-        <translation type="unfinished">QElectroTech</translation>
+        <translation>QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="870"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="870"/>
         <source>Impossible d&apos;éditer le template demandé</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de editar el modelo que ha pedido</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1001"/>
@@ -4804,7 +4804,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Angle de rotation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Ángulo de rotación:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
@@ -4849,7 +4849,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="130"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>ángulo de rotación</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="143"/>
@@ -4868,7 +4868,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
         <source>Angle de rotation par défaut : </source>
-        <translation type="unfinished"></translation>
+        <translation>Ángulo de rotación por defecto:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="47"/>
@@ -4918,7 +4918,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="135"/>
         <source>angle de rotation</source>
-        <translation type="unfinished"></translation>
+        <translation>ángulo de rotación</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttextfield.cpp" line="146"/>
@@ -4932,12 +4932,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="166"/>
         <source>Modèle par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo por defecto</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="197"/>
         <source>Modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Modelo:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="206"/>
@@ -4971,7 +4971,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Nom</source>
-        <translation type="unfinished">Nombre</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -4991,32 +4991,32 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
         <source>Titre : </source>
-        <translation type="unfinished">Título:</translation>
+        <translation>Título:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
         <source>Auteur : </source>
-        <translation type="unfinished">Autor:</translation>
+        <translation>Autor:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="276"/>
         <source>Date : </source>
-        <translation type="unfinished">Fecha:</translation>
+        <translation>Fecha:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="278"/>
         <source>Fichier : </source>
-        <translation type="unfinished">Archivo:</translation>
+        <translation>Archivo:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="280"/>
         <source>Folio : </source>
-        <translation type="unfinished">Folio:</translation>
+        <translation>Folio:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation type="unfinished">Informaciones sobre el cartucho</translation>
+        <translation>Informaciones sobre el cartucho</translation>
     </message>
 </context>
 <context>
@@ -5025,12 +5025,12 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblocktemplate.cpp" line="571"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> %1 : %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="573"/>
         <source> %1</source>
-        <translation type="unfinished"></translation>
+        <translation> %1</translation>
     </message>
 </context>
 </TS>
