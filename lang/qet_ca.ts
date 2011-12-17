@@ -450,7 +450,7 @@
         <location filename="../sources/diagramview.cpp" line="778"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Foli: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="780"/>
@@ -470,7 +470,7 @@
         <location filename="../sources/diagramview.cpp" line="782"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Connectors: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="783"/>
@@ -740,7 +740,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="340"/>
         <source>borne</source>
-        <translation type="unfinished"></translation>
+        <translation>connector</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="347"/>
@@ -1059,12 +1059,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="715"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquest és un element que pot integrrar al vostre esquema arrossegant-ho i deixant-ho anar.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="716"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
-        <translation type="unfinished"></translation>
+        <translation>Arrossegui i deixi anar el element sobre el esquema per integrar-l&apos;hi</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="733"/>
@@ -1095,7 +1095,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1194"/>
         <source>Modèle &quot;%1&quot;</source>
-        <translation>Model &quot;%&quot;</translation>
+        <translation>Model &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1226"/>
@@ -2670,7 +2670,7 @@ Opcions:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished">Quant a QElectroTech</translation>
+        <translation>Quant a QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="237"/>
@@ -4799,7 +4799,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="46"/>
         <source>Position : </source>
-        <translation>Posició</translation>
+        <translation>Posició:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="49"/>
@@ -4839,7 +4839,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="130"/>
         <source>angle de rotation</source>
-        <translation type="unfinished">angle de rotació</translation>
+        <translation>angle de rotació</translation>
     </message>
 </context>
 <context>
@@ -4883,7 +4883,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="62"/>
         <source>Texte par défaut : </source>
-        <translation>Text per defecte</translation>
+        <translation>Text per defecte:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
@@ -4928,7 +4928,9 @@ Que désirez vous faire ?</source>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Es poden fer servir les variables següents  en el camp Foli:
+  - %id: número del esquema al projecte
+  - %total: nombre total d&apos;esquemes al projecte</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="215"/>
@@ -4943,12 +4945,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="217"/>
         <source>Date fixe : </source>
-        <translation type="unfinished"></translation>
+        <translation>Data fixa:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pot definir aqui els seus propis associacions noms/valors per a que el cartutx en faci cas. Per example: si associa el nom &quot;volta&quot;i la valor &quot;1745&quot;, remplaçara %volta amb 1745  en el cartutx.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -4968,7 +4970,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
         <source>Personnalisées</source>
-        <translation type="unfinished">Personalitzades</translation>
+        <translation>Personalitzades</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
