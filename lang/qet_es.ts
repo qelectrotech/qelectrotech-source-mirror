@@ -1226,13 +1226,13 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="569"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
-        <translation type="unfinished"></translation>
+        <translation>Leyendo...</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="592"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cargando: %p%</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
@@ -2334,13 +2334,13 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cargando... Inicializando la caché de collecciones de elementos</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="105"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cargando... Leyendo collecciones de elementos</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="115"/>
@@ -2719,13 +2719,13 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="302"/>
         <source>Pivote les éléments et textes sélectionnés</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gira los elementos y textos seleccionados</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="303"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Grira los textos seleccionados con un ángulo determinado</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="304"/>
@@ -2907,12 +2907,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="201"/>
         <source>Orienter les textes</source>
-        <translation type="unfinished"></translation>
+        <translation>Orientar los textos</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+Space</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Space</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -4040,7 +4040,7 @@ Opciones disponibles:
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Parece que se han guaradado este documento con una versión antigua de QElectroTech. Puede ser que no se podrían abrir una parte o la totalidad del documento. ¿Que desea hacer?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1165"/>
@@ -4080,7 +4080,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="660"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Impossible de alcanzar el elemento para integrar</translation>
     </message>
 </context>
 <context>
@@ -4182,7 +4182,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation type="unfinished"></translation>
+        <translation>orientar desde % hacia %2º</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
@@ -4458,13 +4458,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qtextorientationwidget.cpp" line="36"/>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ej.</translation>
     </message>
     <message>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ejemplo</translation>
     </message>
 </context>
 <context>
@@ -4572,7 +4572,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Raya</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
@@ -4619,27 +4619,27 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="128"/>
         <source>style antialiasing</source>
-        <translation type="unfinished"></translation>
+        <translation>estilo antialiasing</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="130"/>
         <source>style couleur</source>
-        <translation type="unfinished"></translation>
+        <translation>estilo color</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>estilo línea</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style epaisseur</source>
-        <translation type="unfinished"></translation>
+        <translation>estilo grosor</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style remplissage</source>
-        <translation type="unfinished"></translation>
+        <translation>estilo relleno</translation>
     </message>
 </context>
 <context>
@@ -4863,7 +4863,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation type="unfinished"></translation>
+        <translation>No hacer las rotaciones del elemento padre</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
@@ -4951,7 +4951,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="215"/>
         <source>Pas de date</source>
-        <translation type="unfinished">No fecha</translation>
+        <translation>No hay fecha</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="216"/>
@@ -4986,7 +4986,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
         <source>Personnalisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Personalizadas</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="272"/>
@@ -5025,7 +5025,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblocktemplate.cpp" line="571"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
-        <translation type="unfinished"> %1 : %2</translation>
+        <translation> %1: %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblocktemplate.cpp" line="573"/>
