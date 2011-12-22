@@ -1107,7 +1107,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="733"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1 [nie używana w projekcie]</translation>
+        <translation>%1 [nie używany w projekcie]</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1157"/>
