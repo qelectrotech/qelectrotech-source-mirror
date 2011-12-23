@@ -37,6 +37,9 @@ class NamesList {
 	private:
 	QHash<QString, QString> hash_names;
 	
+	public:
+	static int MetaTypeId;
+	
 	// methodes
 	public:
 	// methodes relatives a la gestion de la liste
@@ -59,4 +62,5 @@ class NamesList {
 	protected:
 	QHash<QString, QString> getXmlOptions(const QHash<QString, QString> & = QHash<QString, QString>()) const;
 };
+Q_DECLARE_METATYPE(NamesList);
 #endif
