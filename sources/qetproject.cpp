@@ -292,7 +292,7 @@ QList<QString> QETProject::embeddedTitleBlockTemplates() const {
 
 /**
 	@param template_name Name of the requested template
-	@return the requested template, or 0 if there is no vltaid template of this
+	@return the requested template, or 0 if there is no valid template of this
 	name within the project
 */
 const TitleBlockTemplate *QETProject::getTemplateByName(const QString &template_name) {
