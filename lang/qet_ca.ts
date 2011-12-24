@@ -867,7 +867,7 @@
     <message>
         <location filename="../sources/elementscategory.cpp" line="283"/>
         <source>La copie d&apos;une catégorie vers elle-même ou vers l&apos;une de ses sous-catégories n&apos;est pas gérée.</source>
-        <translation type="unfinished"></translation>
+        <translation>No es pot copiar una categoria en ella mateixa o en una de les seves sub-categories. </translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="472"/>
@@ -1237,12 +1237,12 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanelwidget.cpp" line="410"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Gestor de categories</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="413"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pot fer servir aquest gestor per afegir, eliminar o canviar les categories.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="569"/>
@@ -1325,7 +1325,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="62"/>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation type="unfinished"></translation>
+        <translation>Trii les esquemes que vol exportar i les seves dimensions:</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="116"/>
@@ -1352,7 +1352,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ha d&apos;entrar un nom de fitxer que no sigui buit i que sigui únic per a cada esquema que vol exportar.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="392"/>
@@ -1381,7 +1381,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="544"/>
         <source>Aperçu</source>
-        <translation type="unfinished"></translation>
+        <translation>Vista</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="646"/>
@@ -1396,7 +1396,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportpropertieswidget.cpp" line="106"/>
         <source>Exporter dans le dossier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportar a les carpetes</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="124"/>
@@ -1406,7 +1406,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
         <source>Parcourir</source>
-        <translation type="unfinished"></translation>
+        <translation>Recorrer</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="139"/>
@@ -1442,12 +1442,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="156"/>
         <source>Exporter le cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar el quadre</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter les éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar els elements</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="164"/>
@@ -1457,22 +1457,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
         <source>Dessiner le cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibuixar el quadre</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibuixar el cartutx</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
-        <translation type="unfinished"></translation>
+        <translation>Dibuixar els connectors</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
         <source>Conserver les couleurs des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar els colors dels conductors</translation>
     </message>
 </context>
 <context>
