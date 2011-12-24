@@ -1534,7 +1534,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ghostelement.cpp" line="37"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished">&lt;u&gt;Falta element :&lt;/u&gt; %1</translation>
+        <translation>&lt;u&gt;Falta element :&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -1542,7 +1542,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;element ha de ser prou gran per qu&apos;hi càpiga tot la seva representació gràfica.</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
@@ -1559,7 +1559,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="72"/>
         <source>Déplacer l&apos;élément avec le hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation>Moure l&apos;element amb el hotspot</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="84"/>
@@ -1579,7 +1579,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="89"/>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="90"/>
@@ -1637,80 +1637,80 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="114"/>
         <source>Copie de %1 vers %2</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Copia des de %1 fins a %2</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>La categoria « %1 » (%2) ja existeix. Què vol fer?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>L&apos;element « %1 » ja existeix. Què vol fer?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="152"/>
         <source>La catégorie %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot accedir en lectura a la categoria %1.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="162"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en lecture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot accedir en lectura a l&apos;element %1.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="172"/>
         <source>La catégorie %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot accedir en escriptura a la categoria %1.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="182"/>
         <source>L&apos;élément %1 n&apos;est pas accessible en écriture.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>No es pot accedir en escriptura a l&apos;element %1.</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
-        <translation type="unfinished"></translation>
+        <translation>Canviar el nom</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="243"/>
         <source>Écraser</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobreescriure</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="244"/>
         <source>Écraser tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Sobreescriure tot</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="245"/>
         <source>Ignorer</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorar</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="246"/>
         <source>Ignorer tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Ignorar tot</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="247"/>
         <source>Annuler</source>
-        <translation type="unfinished">Anular</translation>
+        <translation>Anular</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="362"/>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="384"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
 </context>
 <context>
@@ -1725,13 +1725,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fletxa simple</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="49"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fletxa triangular</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="50"/>
@@ -1755,13 +1755,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="54"/>
         <source>Flèche simple</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fletxa simple</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="55"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fletxa triangular</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="56"/>
@@ -1778,37 +1778,37 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Fi 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="79"/>
         <source>Fin 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Fi 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="149"/>
         <source>abscisse point 1</source>
-        <translation type="unfinished"></translation>
+        <translation>abscissa punt 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="151"/>
         <source>ordonnée point 1</source>
-        <translation type="unfinished"></translation>
+        <translation>ordenada punt 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="153"/>
         <source>abscisse point 2</source>
-        <translation type="unfinished"></translation>
+        <translation>abscissa punt 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="155"/>
         <source>ordonnée point 2</source>
-        <translation type="unfinished"></translation>
+        <translation>ordenada punt 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="157"/>
         <source>type fin 1</source>
-        <translation type="unfinished"></translation>
+        <translation>tipus fi 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="159"/>
@@ -1818,7 +1818,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="161"/>
         <source>type fin 2</source>
-        <translation type="unfinished"></translation>
+        <translation>tipus fi 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
