@@ -115,23 +115,23 @@ QVariant TitleBlockCell::attribute(const QString &attribute) {
 */
 QString TitleBlockCell::attributeName(const QString &attribute) {
 	if (attribute == "type") {
-		return(QObject::tr("type", "cell property human name"));
+		return(QObject::tr("type", "title block cell property human name"));
 	} else if (attribute == "name") {
-		return(QObject::tr("nom", "cell property human name"));
+		return(QObject::tr("nom", "title block cell property human name"));
 	} else if (attribute == "logo") {
-		return(QObject::tr("logo", "cell property human name"));
+		return(QObject::tr("logo", "title block cell property human name"));
 	} else if (attribute == "label") {
-		return(QObject::tr("label", "cell property human name"));
+		return(QObject::tr("label", "title block cell property human name"));
 	} else if (attribute == "displaylabel") {
-		return(QObject::tr("affichage du label", "cell property human name"));
+		return(QObject::tr("affichage du label", "title block cell property human name"));
 	} else if (attribute == "value") {
-		return(QObject::tr("valeur affichée", "cell property human name"));
+		return(QObject::tr("valeur affichée", "title block cell property human name"));
 	} else if (attribute == "alignment") {
-		return(QObject::tr("alignement du texte", "cell property human name"));
+		return(QObject::tr("alignement du texte", "title block cell property human name"));
 	} else if (attribute == "fontsize") {
-		return(QObject::tr("taille du texte", "cell property human name"));
+		return(QObject::tr("taille du texte", "title block cell property human name"));
 	} else if (attribute == "horizontal_adjust") {
-		return(QObject::tr("ajustement horizontal", "cell property human name"));
+		return(QObject::tr("ajustement horizontal", "title block cell property human name"));
 	}
 	return(QString());
 }

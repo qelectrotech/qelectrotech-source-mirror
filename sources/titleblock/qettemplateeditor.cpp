@@ -100,13 +100,13 @@ void QETTitleBlockTemplateEditor::editLogos() {
 void QETTitleBlockTemplateEditor::initActions() {
 	QETApp *qet_app = QETApp::instance();
 	
-	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer"), this);
-	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter"),     this);
-	configure_      = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech"),                  this);
-	about_qet_      = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech"),              this);
-	about_qt_       = new QAction(QET::Icons::QtLogo,               tr("\300 propos de &Qt"),                        this);
-	merge_cells_    = new QAction(tr("&Fusionner les cellules"), this);
-	split_cell_     = new QAction(tr("&S\351parer les cellules"), this);
+	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
+	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
+	configure_      = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech",     "menu entry"), this);
+	about_qet_      = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech", "menu entry"), this);
+	about_qt_       = new QAction(QET::Icons::QtLogo,               tr("\300 propos de &Qt",           "menu entry"), this);
+	merge_cells_    = new QAction(                                  tr("&Fusionner les cellules",      "menu entry"), this);
+	split_cell_     = new QAction(                                  tr("&S\351parer les cellules",     "menu entry"), this);
 	
 	save_             -> setShortcut(QKeySequence::Save);
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
@@ -130,10 +130,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	Initialize the various menus.
 */
 void QETTitleBlockTemplateEditor::initMenus() {
-	file_menu_    = new QMenu(tr("&Fichier"),       this);
-	edit_menu_    = new QMenu(tr("&\311dition"),    this);
-	config_menu_  = new QMenu(tr("&Configuration"), this);
-	help_menu_    = new QMenu(tr("&Aide"),          this);
+	file_menu_    = new QMenu(tr("&Fichier",        "menu title"), this);
+	edit_menu_    = new QMenu(tr("&\311dition",     "menu title"), this);
+	config_menu_  = new QMenu(tr("&Configuration",  "menu title"), this);
+	help_menu_    = new QMenu(tr("&Aide",           "menu title"), this);
 	
 	file_menu_    -> setTearOffEnabled(true);
 	edit_menu_    -> setTearOffEnabled(true);
