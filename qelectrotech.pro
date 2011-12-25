@@ -54,11 +54,11 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 TEMPLATE = app
 DEPENDPATH += .
-INCLUDEPATH += sources sources/editor
+INCLUDEPATH += sources sources/editor sources/titleblock
 
 # Fichiers sources
-HEADERS += sources/*.h   sources/editor/*.h
-SOURCES += sources/*.cpp sources/editor/*.cpp
+HEADERS += sources/*.h   sources/editor/*.h   sources/titleblock/*.h
+SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc

@@ -21,47 +21,71 @@
 #include <QtSvg>
 #include "diagramcontext.h"
 #include "titleblockcell.h"
+#include "dimension.h"
 #include "qet.h"
 
 /**
-	This struct is a simple container associating a length with its type.
-	@see TitleBlockColumnLength 
-*/
-struct TitleBlockColDimension {
-	TitleBlockColDimension(int v, QET::TitleBlockColumnLength t = QET::Absolute) {
-		value = v;
-		type = t;
-	}
-	QET::TitleBlockColumnLength type;
-	int value;
-};
-
-/**
-	This class represents an titleblock templ)ate for an electric diagram.
+	This class represents an title block template for an electric diagram.
 	It can read from an XML document the layout of the table that graphically
-	represents the titleblock, and can produce a graphical rendering of it from a
+	represents the title block, and can produce a graphical rendering of it from a
 	diagram context (object embedding the informations of the diagram we want to
-	represent the titleblock.
+	represent the title block.
 */
 class TitleBlockTemplate : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	TitleBlockTemplate(QObject * = 0);
 	virtual ~TitleBlockTemplate();
 	private:
 	TitleBlockTemplate(const TitleBlockTemplate &);
 	
-	// methodes
+	// methods
 	public:
+	TitleBlockCell *createCell(const TitleBlockCell * = 0);
+	static QFont fontForCell(const TitleBlockCell &);
 	bool loadFromXmlFile(const QString &);
 	bool loadFromXmlElement(const QDomElement &);
+	bool saveToXmlElement(QDomElement &) const;
+	TitleBlockTemplate *clone() const;
 	QString name() const;
+	int rowDimension(int);
+	void setRowDimension(int, const TitleBlockDimension &);
+	TitleBlockDimension columnDimension(int);
+	void setColumnDimension(int, const TitleBlockDimension &);
+	int columnsCount() const;
+	int rowsCount() const;
 	QList<int> columnsWidth(int) const;
+	QList<int> rowsHeights() const;
 	int height() const;
 	
+	bool moveRow(int, int);
+	void addRow(int = -1);
+	bool insertRow(int, const QList<TitleBlockCell *> &, int = -1);
+	QList<TitleBlockCell *> takeRow(int);
+	QList<TitleBlockCell *> createRow();
+	
+	bool moveColumn(int, int);
+	void addColumn(int = -1);
+	bool insertColumn(const TitleBlockDimension &, const QList<TitleBlockCell *> &, int = -1);
+	QList<TitleBlockCell *> takeColumn(int);
+	QList<TitleBlockCell *> createColumn();
+	
+	TitleBlockCell *cell(int, int) const;
+	QSet<TitleBlockCell *> spannedCells(const TitleBlockCell *) const;
+	bool addLogo(const QString &, QByteArray *, const QString & = "svg", const QString & = "xml");
+	bool addLogoFromFile(const QString &, const QString & = QString());
+	bool removeLogo(const QString &);
+	bool renameLogo(const QString &, const QString &);
+	void setLogoStorage(const QString &, const QString &);
+	QList<QString> logos() const;
+	QString logoType(const QString &) const;
+	QSvgRenderer *vectorLogo(const QString &) const;
+	QPixmap bitmapLogo(const QString &) const;
+	
 	void render(QPainter &, const DiagramContext &, int) const;
+	void renderCell(QPainter &, const TitleBlockCell &, const DiagramContext &, const QRect &) const;
 	QString toString() const;
 	
 	protected:
@@ -69,6 +93,13 @@ class TitleBlockTemplate : public QObject {
 	bool loadLogo(const QDomElement &);
 	bool loadGrid(const QDomElement &);
 	bool loadCells(const QDomElement &);
+	void loadCell(const QDomElement &);
+	void saveLogos(QDomElement &) const;
+	void saveLogo(const QString &, QDomElement &) const;
+	void saveGrid(QDomElement &) const;
+	void saveCells(QDomElement &) const;
+	void saveCell(TitleBlockCell *, QDomElement &) const;
+	QList<TitleBlockCell *> createCellsList(int);
 	
 	private:
 	void parseRows(const QString &);
@@ -79,15 +110,26 @@ class TitleBlockTemplate : public QObject {
 	int lengthRange(int, int, const QList<int> &) const;
 	QString finalTextForCell(const TitleBlockCell &, const DiagramContext &) const;
 	void renderTextCell(QPainter &, const QString &, const TitleBlockCell &, const QRectF &) const;
+	void applyCellSpans();
+	void forgetSpanning();
+	bool checkCellSpan(TitleBlockCell *);
+	void applyCellSpan(TitleBlockCell *);
+	void applyRowColNums();
+	void rowColsChanged();
 	
-	// attributs
+	// attributes
 	private:
-	QDomDocument xml_description_;
-	QString name_;
-	QHash<QString, QSvgRenderer *> vector_logos_;
-	QHash<QString, QPixmap *>      bitmap_logos_;
-	QList<int> rows_heights_;
-	QList<TitleBlockColDimension> columns_width_;
-	QVector< QVector<TitleBlockCell> > cells_;
+	QString name_;                                   ///< name identifying the Title Block Template within its parent project
+	
+	QHash<QString, QByteArray >    data_logos_;      ///< Logos raw data
+	QHash<QString, QString>        storage_logos_;   ///< Logos applied storage type (e.g. "xml" or "base64")
+	QHash<QString, QString>        type_logos_;      ///< Logos types (e.g. "png", "jpeg", "svg")
+	QHash<QString, QSvgRenderer *> vector_logos_;    ///< Rendered objects for vector logos
+	QHash<QString, QPixmap>        bitmap_logos_;    ///< Pixmaps for bitmap logos
+	
+	QList<int> rows_heights_;                        ///< rows heights -- simple integers
+	QList<TitleBlockDimension> columns_width_;    ///< columns widths -- @see TitleBlockColDimension
+	QList<TitleBlockCell *> registered_cells_;       ///< Cells objects created rattached to this template, but not mandatorily used
+	QList< QList<TitleBlockCell *> > cells_;         ///< Cells grid
 };
 #endif

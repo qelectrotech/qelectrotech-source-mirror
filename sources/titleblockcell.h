@@ -17,27 +17,51 @@
 */
 #ifndef TITLEBLOCK_CELL_H
 #define TITLEBLOCK_CELL_H
+#include "nameslist.h"
+
 /**
-	This class is a container for the various parameters of an titleblock cell
+	This class is a container for the various parameters of a titleblock cell
 	@see TitleBlockColumnLength 
 */
 class TitleBlockCell {
 	public:
+	enum TemplateCellType {
+		EmptyCell,
+		TextCell,
+		LogoCell
+	};
+	
+	// Constructor, destructor
+	public:
 	TitleBlockCell();
+	virtual ~TitleBlockCell();
+	
+	// methods
+	public:
 	QString toString() const;
-	bool is_null;
-	int num_row;
-	int num_col;
-	int row_span;
-	int col_span;
-	TitleBlockCell *spanner_cell;
-	QString value_name;
-	QString value;
-	QString label;
-	bool display_label;
-	int alignment;
-	int font_size;
-	bool hadjust;
-	QString logo_reference;
+	TemplateCellType type() const;
+	int horizontalAlign() const;
+	int verticalAlign() const;
+	void setAttribute(const QString &, const QVariant &);
+	QVariant attribute(const QString &);
+	static QString attributeName(const QString &);
+	bool spans() const;
+	
+	// attributes
+	public:
+	TemplateCellType cell_type;        ///< Cell type: empty, text, logo?
+	int num_row;                       ///< y coordinate of the cell within its parent title block template grid
+	int num_col;                       ///< x coordinate of the cell within its parent title block template grid
+	int row_span;                      ///< number of extra rows spanned by this cell
+	int col_span;                      ///< number of extra columns spanned by this cell
+	TitleBlockCell *spanner_cell;      ///< Cell spanning this cell, if any
+	QString value_name;                ///< name of the cell; not displayed when the title block template is rendered
+	NamesList value;                   ///< Text displayed by the cell
+	NamesList label;                   ///< Label displayed by the cell
+	bool display_label;                ///< Whether to display the label or not
+	int alignment;                     ///< Where the label+text should be displayed within the visual cell
+	int font_size;                     ///< Font size the text should be rendered with
+	bool hadjust;                      ///< Whether to reduce the font size if the text does not fit in the cell
+	QString logo_reference;            ///< Logo displayed by this cell, it it is a logo cell
 };
 #endif

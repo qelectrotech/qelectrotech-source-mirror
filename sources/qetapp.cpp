@@ -25,6 +25,7 @@
 #include "fileelementscollection.h"
 #include "titleblocktemplate.h"
 #include "templateeditor.h"
+#include "qettemplateeditor.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
@@ -862,13 +863,9 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 	launched for a template creation.
 */
 void QETApp::openTitleBlockTemplate(QETProject *project, const QString &template_name) {
-	TemplateEditor *editor = new TemplateEditor();
-	bool can_edit = editor -> edit(project, template_name);
-	if (can_edit) {
-		editor -> showNormal();
-	} else {
-		QMessageBox::warning(0, tr("Erreur"), tr("Impossible d'\351diter le template demand\351"));
-	}
+	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	qet_template_editor -> edit(project, template_name);
+	qet_template_editor -> showMaximized();
 }
 
 /**
