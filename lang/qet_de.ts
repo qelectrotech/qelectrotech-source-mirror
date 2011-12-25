@@ -1957,14 +1957,6 @@ Options disponibles :
         <translation type="unfinished">QElectroTech</translation>
     </message>
     <message>
-        <source>Erreur</source>
-        <translation type="unfinished">Fehler</translation>
-    </message>
-    <message>
-        <source>Impossible d&apos;éditer le template demandé</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
@@ -3330,6 +3322,119 @@ Que désirez vous faire ?</source>
     </message>
 </context>
 <context>
+    <name>QETTitleBlockTemplateEditor</name>
+    <message>
+        <source>Ctrl+Q</source>
+        <comment>shortcut to quit</comment>
+        <translation type="unfinished">Ctrl+Q</translation>
+    </message>
+    <message>
+        <source>Ctrl+K</source>
+        <comment>shortcut to merge cells</comment>
+        <translation type="unfinished">Ctrl+K</translation>
+    </message>
+    <message>
+        <source>Ctrl+J</source>
+        <comment>shortcut to split merged cell</comment>
+        <translation type="unfinished">Ctrl+J</translation>
+    </message>
+    <message>
+        <source>Permet de régler différents paramètres de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
+    </message>
+    <message>
+        <source>Affiche des informations sur QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zeigt Informationen über QElectroTech</translation>
+    </message>
+    <message>
+        <source>Affiche des informations sur la bibliothèque Qt</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zeigt Informationen über die Qt-Bibliothek</translation>
+    </message>
+    <message>
+        <source>Aucune modification</source>
+        <comment>label displayed in the undo list when empty</comment>
+        <translation type="unfinished">Keine Veränderung</translation>
+    </message>
+    <message>
+        <source>Annulations</source>
+        <comment>dock title</comment>
+        <translation type="unfinished">Abbrüche</translation>
+    </message>
+    <message>
+        <source>Propriétés de la cellule</source>
+        <comment>dock title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QElectroTech - Éditeur de modèle de cartouche</source>
+        <comment>titleblock template editor: base window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 - %2</source>
+        <comment>window title: %1 is the base window title, %2 is a template name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Enregistrer</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Speichern</translation>
+    </message>
+    <message>
+        <source>&amp;Quitter</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Beenden</translation>
+    </message>
+    <message>
+        <source>&amp;Configurer QElectroTech</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Einstellung QElectroTech</translation>
+    </message>
+    <message>
+        <source>À &amp;propos de QElectroTech</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"> &amp;Über QElectroTech</translation>
+    </message>
+    <message>
+        <source>À propos de &amp;Qt</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Über &amp;Qt</translation>
+    </message>
+    <message>
+        <source>&amp;Fusionner les cellules</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Séparer les cellules</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Fichier</source>
+        <comment>menu title</comment>
+        <translation type="unfinished">&amp;Datei</translation>
+    </message>
+    <message>
+        <source>&amp;Édition</source>
+        <comment>menu title</comment>
+        <translation type="unfinished">&amp;Ausgabe</translation>
+    </message>
+    <message>
+        <source>&amp;Configuration</source>
+        <comment>menu title</comment>
+        <translation type="unfinished">&amp;Einstellung</translation>
+    </message>
+    <message>
+        <source>&amp;Aide</source>
+        <comment>menu title</comment>
+        <translation type="unfinished">&amp;Hilfe</translation>
+    </message>
+</context>
+<context>
     <name>QFileNameEdit</name>
     <message>
         <source>Les caractères autorisés sont : 
@@ -3635,6 +3740,106 @@ Que désirez vous faire ?</source>
     <message>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1px</source>
+        <comment>titleblock: absolute width</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1%</source>
+        <comment>titleblock: width relative to total length</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1% du restant</source>
+        <comment>titleblock: width relative to remaining length</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insertion d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Suppression d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insertion d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Suppression d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modification d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modification d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fusion de %1 cellules</source>
+        <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Séparation d&apos;une cellule en %1</source>
+        <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>type</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nom</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>logo</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>label</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>affichage du label</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>valeur affichée</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>alignement du texte</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>taille du texte</source>
+        <comment>title block cell property human name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ajustement horizontal</source>
+        <comment>title block cell property human name</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4024,6 +4229,39 @@ Que désirez vous faire ?</source>
     </message>
 </context>
 <context>
+    <name>TitleBlockDimensionWidget</name>
+    <message>
+        <source>Largeur :</source>
+        <comment>default dialog label</comment>
+        <translation type="unfinished">Breite :</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <comment>spinbox suffix when changing the dimension of a row/column</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>px</source>
+        <comment>spinbox suffix when changing the dimension of a row/column</comment>
+        <translation type="unfinished">px</translation>
+    </message>
+    <message>
+        <source>Absolu</source>
+        <comment>a traditional, absolute measure</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Relatif au total</source>
+        <comment>a percentage of the total width</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Relatif au restant</source>
+        <comment>a percentage of what remains from the total width</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TitleBlockPropertiesWidget</name>
     <message>
         <source>Modèle par défaut</source>
@@ -4107,6 +4345,290 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source> %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateCellWidget</name>
+    <message>
+        <source>Type de cellule :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucun logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Gérer les logos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom :</source>
+        <translation type="unfinished">Name :</translation>
+    </message>
+    <message>
+        <source>Afficher un label :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Editer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texte :</source>
+        <translation type="unfinished">Text :</translation>
+    </message>
+    <message>
+        <source>Alignement :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>horizontal :</source>
+        <translation type="unfinished">Horizontal :</translation>
+    </message>
+    <message>
+        <source>Gauche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Centré</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Droite</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>vertical :</source>
+        <translation type="unfinished">Vertikal :</translation>
+    </message>
+    <message>
+        <source>Haut</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Milieu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Bas</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajuster la taille de police si besoin</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Label de cette cellule :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valeur de cette cellule :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Aucun logo</source>
+        <comment>text displayed in the combo box when a template has no logo</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Édition d&apos;une cellule : %1</source>
+        <comment>label of and undo command when editing a cell</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLogoManager</name>
+    <message>
+        <source>Gestionnaire de logos</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logos embarqués dans ce modèle :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouter un logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supprimer ce logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Propriétés</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom :</source>
+        <translation type="unfinished">Name :</translation>
+    </message>
+    <message>
+        <source>Renommer</source>
+        <translation type="unfinished">Umbenennen</translation>
+    </message>
+    <message>
+        <source>Type :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Logo déjà existant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Remplacer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type : %1</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choisir une image / un logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier spécifié</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Renommer un logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vous devez saisir un nouveau nom.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Le nouveau nom ne peut pas être vide.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Le nom saisi est déjà utilisé par un autre logo.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateView</name>
+    <message>
+        <source>Changer la largeur de la colonne</source>
+        <comment>window title when changing a column with</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Largeur :</source>
+        <comment>text before the spinbox to change a column width</comment>
+        <translation type="unfinished">Breite :</translation>
+    </message>
+    <message>
+        <source>Changer la hauteur de la ligne</source>
+        <comment>window title when changing a row height</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Hauteur :</source>
+        <comment>text before the spinbox to change a row height</comment>
+        <translation type="unfinished">Höhe :</translation>
+    </message>
+    <message>
+        <source>Ajouter une colonne (avant)</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouter une ligne (avant)</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouter une colonne (après)</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouter une ligne (après)</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modifier les dimensions de cette colonne</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modifier les dimensions de cette ligne</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supprimer cette colonne</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supprimer cette ligne</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modifier la largeur de cet aperçu</source>
+        <comment>context menu</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[%1px]</source>
+        <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>[%1px]</source>
+        <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1px</source>
+        <comment>format displayed in rows helper cells</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1px</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Changer la largeur de l&apos;aperçu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Largeur de l&apos;aperçu :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Largeur totale pour cet aperçu : %1px</source>
+        <comment>displayed at the top of the preview when editing a title block template</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
