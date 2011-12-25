@@ -4077,133 +4077,133 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="103"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Save</translation>
+        <translation>&amp;Save</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="104"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Quit</translation>
+        <translation>&amp;Quit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="105"/>
         <source>&amp;Configurer QElectroTech</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Configure QElectroTech</translation>
+        <translation>&amp;Configure QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="106"/>
         <source>À &amp;propos de QElectroTech</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">A&amp;bout QElectroTech</translation>
+        <translation>A&amp;bout QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="107"/>
         <source>À propos de &amp;Qt</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">About &amp;Qt</translation>
+        <translation>About &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="108"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Merge cells</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="109"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Split cells</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
-        <translation type="unfinished">Ctrl+Q</translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
         <source>Ctrl+K</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Allows to specify various parameters for QElectroTech</translation>
+        <translation>Allows to specify various parameters for QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Displays informations about QElectroTech</translation>
+        <translation>Displays informations about QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Displays informations about Qt library</translation>
+        <translation>Displays informations about Qt library</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;File</translation>
+        <translation>&amp;File</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="134"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Edit</translation>
+        <translation>&amp;Edit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
         <source>&amp;Configuration</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Settings</translation>
+        <translation>&amp;Settings</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="136"/>
         <source>&amp;Aide</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Help</translation>
+        <translation>&amp;Help</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="168"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
-        <translation type="unfinished">No modification</translation>
+        <translation>No modification</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Undo</translation>
+        <translation>Undo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="183"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cell properties</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="255"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation type="unfinished">QElectroTech - Title block template editor</translation>
+        <translation>QElectroTech - Title block template editor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="266"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
-        <translation type="unfinished">%1 - %2</translation>
+        <translation>%1 - %2</translation>
     </message>
 </context>
 <context>
@@ -4578,121 +4578,121 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimension.cpp" line="37"/>
         <source>%1px</source>
         <comment>titleblock: absolute width</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="39"/>
         <source>%1%</source>
         <comment>titleblock: width relative to total length</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="41"/>
         <source>%1% du restant</source>
         <comment>titleblock: width relative to remaining length</comment>
-        <translation type="unfinished"></translation>
+        <translation>remaining %1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="400"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Row insertion</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="402"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Row deletion</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="406"/>
         <source>Insertion d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Column insertion</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="408"/>
         <source>Suppression d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Column deletion</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="541"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Row edition</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="543"/>
         <source>Modification d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Column edition</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="606"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation type="unfinished"></translation>
+        <translation>Merge of %1 cells</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="723"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation type="unfinished"></translation>
+        <translation>Split of a cell into%1 ones</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="118"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>type</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>name</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>label</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>affichage du label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>label display</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="128"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>displayed value</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="130"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>text alignment</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>font size</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>horizontal adjustment</translation>
     </message>
 </context>
 <context>
@@ -5176,37 +5176,37 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="93"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished">Width:</translation>
+        <translation>Width:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="102"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation type="unfinished"></translation>
+        <translation>Absolute</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="103"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Relative to total</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="104"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Relative to remaining</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="144"/>
         <source>%</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="146"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -5320,126 +5320,126 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="47"/>
         <source>Type de cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Cell type:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Vide</source>
-        <translation type="unfinished"></translation>
+        <translation>Empty</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="50"/>
         <source>Texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <source>Logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="55"/>
         <source>Aucun logo</source>
-        <translation type="unfinished"></translation>
+        <translation>No logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Gérer les logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Manage logos</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="58"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Afficher un label :</source>
-        <translation type="unfinished"></translation>
+        <translation>Display a label:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="67"/>
         <source>Editer</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="64"/>
         <source>Texte :</source>
-        <translation type="unfinished">Text:</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
         <source>Alignement :</source>
-        <translation type="unfinished"></translation>
+        <translation>Alignment:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>horizontal :</source>
-        <translation type="unfinished">horizontal:</translation>
+        <translation>horizontal:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="71"/>
         <source>Gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Left</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <source>Centré</source>
-        <translation type="unfinished"></translation>
+        <translation>Center</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
         <source>Droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Right</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>vertical :</source>
-        <translation type="unfinished">vertical:</translation>
+        <translation>vertical:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="79"/>
         <source>Haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Top</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Milieu</source>
-        <translation type="unfinished"></translation>
+        <translation>Middle</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Bottom</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="87"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Adjust font size if needed</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="233"/>
         <source>Label de cette cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Label for this cell:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="242"/>
         <source>Valeur de cette cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Value for this cell:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="288"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation type="unfinished"></translation>
+        <translation>No logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="369"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cell edition: %1</translation>
     </message>
 </context>
 <context>
@@ -5447,104 +5447,104 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="59"/>
         <source>Gestionnaire de logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo manager</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="60"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Logos embedded within this template:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="70"/>
         <source>Ajouter un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Add a logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="71"/>
         <source>Supprimer ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Remove this logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="72"/>
         <source>Propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Properties</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="73"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="175"/>
         <source>Renommer</source>
-        <translation type="unfinished">Rename</translation>
+        <translation>Rename</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="76"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="234"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Type:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="168"/>
         <source>Logo déjà existant</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo already existing</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="174"/>
         <source>Remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Replace</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="194"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation type="unfinished"></translation>
+        <translation>A logo named &quot;%1&quot; already exists. Do you wish to replace it or do you prefer specifying another name for the new logo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="230"/>
         <source>Type : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Type: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="247"/>
         <source>Choisir une image / un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose a picture /a logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="249"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished">Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.xpm);;All files (*)</translation>
+        <translation>Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.xpm);;All files (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished">Unable to ippen the specified file</translation>
+        <translation>Unable to ippen the specified file</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="290"/>
         <source>Renommer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Rename a logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="295"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>You have to enter a new name.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation type="unfinished"></translation>
+        <translation>The new name cannot be empty.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="313"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation type="unfinished"></translation>
+        <translation>The name you entered is already used by another logo.</translation>
     </message>
 </context>
 <context>
@@ -5553,118 +5553,118 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templateview.cpp" line="158"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation type="unfinished"></translation>
+        <translation>Change the column width</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="159"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation type="unfinished">Width:</translation>
+        <translation>Width:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="182"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation type="unfinished"></translation>
+        <translation>Change the row height</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="183"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation type="unfinished">Height:</translation>
+        <translation>Height:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="316"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add a column (before)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="317"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add a row (before)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="318"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add a column (after)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="319"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Add a row (after)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="320"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Change this column dimension</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="321"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Change this row dimension</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="322"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Delete this column</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="323"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Delete this row</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="324"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Change this preview width</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="387"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
-        <translation type="unfinished"></translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="396"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
-        <translation type="unfinished"></translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="449"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="509"/>
         <source>%1px</source>
-        <translation type="unfinished"></translation>
+        <translation>%1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="554"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation type="unfinished"></translation>
+        <translation>Change the preview width</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="555"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation type="unfinished"></translation>
+        <translation>Preview width:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="680"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Total width for this preview: %1px</translation>
     </message>
 </context>
 </TS>
