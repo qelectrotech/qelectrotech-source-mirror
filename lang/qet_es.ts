@@ -4647,98 +4647,98 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/templateeditor.cpp" line="38"/>
         <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
+        <translation>Nuevo-modelo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="71"/>
         <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Todavía no implementado.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="72"/>
         <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
+        <translation>Perdón, todavía no implementado</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="88"/>
         <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
+        <translation>Un modelo con este nombre ya existe</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="89"/>
         <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Un model con este nombre ya existe en el proyecto. Por favor, elija un otro nombre.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="102"/>
         <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
+        <translation>Código XML no valido</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="103"/>
         <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
+        <translation>Parece que el código XML del moledo no es valido. Imposible de guardar el modelo.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="131"/>
         <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
+        <translation>Elija un archivo imagen</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="133"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
+        <translation>Imagenes vectoriales  (*.svg);;Imagenes bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Todos los archivos(*)</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="140"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Imposible de abrir el archivo indicado</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="149"/>
         <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Parece que el código XML del modelo no es valido.</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="211"/>
         <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Incluir un logotipo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="212"/>
         <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Comprobar el modelo</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="213"/>
         <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
+        <translation>Guardar y aplicar</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="214"/>
         <source>Quitter</source>
-        <translation type="unfinished"></translation>
+        <translation>Salir</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="241"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech - Editor de modelo de cartucho</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="253"/>
         <source>Non défini</source>
-        <translation type="unfinished"></translation>
+        <translation>No definido</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="257"/>
         <source>Projet parent : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Proyecto pariente: %1</translation>
     </message>
 </context>
 <context>
@@ -4944,7 +4944,7 @@ Que désirez vous faire ?</source>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished">Las variables siguientes pueden ser usadas en el campo Folio:
+        <translation>Las variables siguientes pueden ser usadas en el campo Folio:
   - %id: número del esquema corriente en el proyecto
   - %total: número total de esquemas en el proyecto</translation>
     </message>
@@ -4956,17 +4956,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="216"/>
         <source>Date courante</source>
-        <translation type="unfinished">Fecha actual</translation>
+        <translation>Fecha corriente</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="217"/>
         <source>Date fixe : </source>
-        <translation type="unfinished">Fecha fixada:</translation>
+        <translation>Fecha fija:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquí puede definir sus propias associassiones nombres/valores para que el catucho tenga cuenta de ellas. Por ejemplo: si associa el nombre &quot;volta&quot; con el valor &quot;1745, se cambiarán %volta por 1745 en el cartucho.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -4976,12 +4976,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
         <source>Valeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="252"/>
         <source>Principales</source>
-        <translation type="unfinished"></translation>
+        <translation>Principales</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="253"/>
