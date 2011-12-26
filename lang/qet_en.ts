@@ -1167,11 +1167,6 @@ Changes will be definitive.</translation>
         <translation>Move down</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
-        <source>Importer un nouveau modèle</source>
-        <translation>Import a new template</translation>
-    </message>
-    <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Éditer ce modèle</source>
         <translation>Edit this template</translation>
@@ -1232,6 +1227,11 @@ Changes will be definitive.</translation>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Propriétés du projet</source>
         <translation>Project properties</translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
+        <source>Nouveau modèle</source>
+        <translation>New template</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="74"/>
@@ -4074,136 +4074,148 @@ Que désirez vous faire ?</source>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="103"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="111"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation>&amp;Save</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="104"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
+        <source>Enregistrer sous</source>
+        <comment>menu entry</comment>
+        <translation>Save as</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation>&amp;Quit</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="105"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
         <source>&amp;Configurer QElectroTech</source>
         <comment>menu entry</comment>
         <translation>&amp;Configure QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="106"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="115"/>
         <source>À &amp;propos de QElectroTech</source>
         <comment>menu entry</comment>
         <translation>A&amp;bout QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="107"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
         <source>À propos de &amp;Qt</source>
         <comment>menu entry</comment>
         <translation>About &amp;Qt</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="108"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;Merge cells</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="109"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;Split cells</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="121"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="122"/>
         <source>Ctrl+K</source>
         <comment>shortcut to merge cells</comment>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="123"/>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="125"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Allows to specify various parameters for QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="126"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation>Displays informations about QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="127"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation>Displays informations about Qt library</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="143"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation>&amp;File</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="134"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="144"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation>&amp;Edit</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="145"/>
         <source>&amp;Configuration</source>
         <comment>menu title</comment>
         <translation>&amp;Settings</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="136"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="146"/>
         <source>&amp;Aide</source>
         <comment>menu title</comment>
         <translation>&amp;Help</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="168"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="179"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation>No modification</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="181"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>Undo</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="183"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="194"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation>Cell properties</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="255"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="266"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation>QElectroTech - Title block template editor</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="266"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="277"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation>%1 - %2</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
+        <source>Enregistrer le modèle sous</source>
+        <comment>dialog window title</comment>
+        <translation>Save template as</translation>
     </message>
 </context>
 <context>
@@ -5440,6 +5452,33 @@ Que désirez vous faire ?</source>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
         <translation>Cell edition: %1</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLocationChooser</name>
+    <message>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="91"/>
+        <source>Projet parent</source>
+        <comment>used in save as form</comment>
+        <translation>Parent project</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="92"/>
+        <source>Modèle existant</source>
+        <comment>used in save as form</comment>
+        <translation>Existing template</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="93"/>
+        <source>ou nouveau nom</source>
+        <comment>used in save as form</comment>
+        <translation>or new name</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="109"/>
+        <source>Nouveau modèle (entrez son nom)</source>
+        <comment>combox box entry</comment>
+        <translation>New template (enter its name)</translation>
     </message>
 </context>
 <context>

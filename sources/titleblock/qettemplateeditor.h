@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "qet.h"
 #include "templateview.h"
+#include "templatelocation.h"
 class ModifyTitleBlockCellCommand;
 class TitleBlockTemplateCommand;
 class TitleBlockTemplateCellWidget;
@@ -48,7 +49,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	/// menus TODO
 	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, *display_menu_, *tools_menu_,*/ *config_menu_, *help_menu_;
 	/// actions
-	QAction *save_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
+	QAction *save_, *save_as_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
 	/// Parent project of the currently edited template
 	QETProject *parent_project_;
 	/// Name of the currently edited template
@@ -70,6 +71,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	
 	// methods
 	public:
+	TitleBlockTemplateLocation location() const;
 	
 	protected:
 	
@@ -82,14 +84,17 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void selectedCellsChanged(QList<TitleBlockCell *>);
 	bool edit(QETProject *, const QString &);
 	void editLogos();
+	void save();
+	void saveAs();
+	void quit();
 	
 	private slots:
+	TitleBlockTemplateLocation getTitleBlockTemplateLocationFromUser();
 	void pushCellUndoCommand(ModifyTitleBlockCellCommand *);
 	void pushGridUndoCommand(TitleBlockTemplateCommand *);
 	void pushUndoCommand(QUndoCommand *);
 	void updateEditorTitle();
-	void save();
-	void quit();
+	void saveAs(QETProject *, const QString &);
 };
 
 #endif

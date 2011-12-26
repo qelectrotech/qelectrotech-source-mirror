@@ -68,7 +68,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	prj_del_diagram       = new QAction(QET::Icons::DiagramDelete,             tr("Supprimer ce sch\351ma"),              this);
 	prj_move_diagram_up   = new QAction(QET::Icons::GoUp,                      tr("Remonter ce sch\351ma"),               this);
 	prj_move_diagram_down = new QAction(QET::Icons::GoDown,                    tr("Abaisser ce sch\351ma"),               this);
-	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Importer un nouveau mod\350le"),       this);
+	tbt_add               = new QAction(QET::Icons::TitleBlock,                tr("Nouveau mod\350le"),                   this);
 	tbt_edit              = new QAction(QET::Icons::TitleBlock,                tr("\311diter ce mod\350le"),              this);
 	tbt_remove            = new QAction(QET::Icons::TitleBlock,                tr("Supprimer ce mod\350le"),              this);
 	move_elements_        = new QAction(QET::Icons::MoveFile,                  tr("D\351placer dans cette cat\351gorie"), this);

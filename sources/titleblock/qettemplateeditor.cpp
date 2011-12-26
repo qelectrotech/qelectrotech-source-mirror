@@ -22,6 +22,7 @@
 #include "templatecellwidget.h"
 #include "templatecommands.h"
 #include "templateview.h"
+#include "templatelocationchooser.h"
 #include "templatelogomanager.h"
 #include "templatecellwidget.h"
 
@@ -44,6 +45,13 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	Destructor
 */
 QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor() {
+}
+
+/**
+	@return the location of the currently edited template
+*/
+TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
+	return(TitleBlockTemplateLocation(parent_project_, template_name_));
 }
 
 /**
@@ -101,6 +109,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	QETApp *qet_app = QETApp::instance();
 	
 	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
+	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
 	configure_      = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech",     "menu entry"), this);
 	about_qet_      = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech", "menu entry"), this);
@@ -118,6 +127,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	about_qt_     -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt",              "status bar tip"));
 	
 	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
+	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
 	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
 	connect(configure_,       SIGNAL(triggered()), qet_app,  SLOT(configureQET()));
 	connect(about_qet_,       SIGNAL(triggered()), qet_app,  SLOT(aboutQET()));
@@ -141,6 +151,7 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	help_menu_    -> setTearOffEnabled(true);
 	
 	file_menu_    -> addAction(save_);
+	file_menu_    -> addAction(save_as_);
 	file_menu_    -> addSeparator();
 	file_menu_    -> addAction(quit_);
 	
@@ -273,17 +284,70 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 }
 
 /**
-	Save the currently edited title block template back to its parent project.
+	Save the template as \a name within \a project.
+	@see QETProject::setTemplateXmlDescription()
+	@param project Parent project
+	@param name Template name
 */
-void QETTitleBlockTemplateEditor::save() {
+void QETTitleBlockTemplateEditor::saveAs(QETProject *project, const QString &name) {
+	if (!project || name.isEmpty()) return;
+	
 	QDomDocument doc;
 	QDomElement elmt = doc.createElement("root");
 	tb_template_ -> saveToXmlElement(elmt);
+	elmt.setAttribute("name", name);
 	doc.appendChild(elmt);
 	
+	project -> setTemplateXmlDescription(name, elmt);
+	
+	parent_project_ = project;
+	template_name_ = name;
+}
+
+/**
+	Save the currently edited title block template back to its parent project.
+*/
+void QETTitleBlockTemplateEditor::save() {
 	if (parent_project_ && !template_name_.isEmpty()) {
-		parent_project_ -> setTemplateXmlDescription(template_name_, elmt);
+		saveAs(parent_project_, template_name_);
+	} else {
+		saveAs();
 	}
+}
+
+/**
+	Ask the user where he wishes to save the currently edited template.
+*/
+void QETTitleBlockTemplateEditor::saveAs() {
+	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser();
+	if (location.isValid()) {
+		saveAs(location.project(), location.name());
+	}
+}
+
+/**
+	Ask the user for a title block template location
+	@return The location chosen by the user, or an empty TitleBlockTemplateLocation if the user cancelled the dialog
+*/
+TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser() {
+	TitleBlockTemplateLocationChooser *chooser = new TitleBlockTemplateLocationChooser(location());
+	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	
+	QVBoxLayout *dialog_layout = new QVBoxLayout();
+	dialog_layout -> addWidget(chooser);
+	dialog_layout -> addWidget(buttons);
+	
+	QDialog dialog;
+	dialog.setWindowTitle(tr("Enregistrer le mod\350le sous", "dialog window title"));
+	dialog.setLayout(dialog_layout);
+	
+	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
+	connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
+	
+	if (dialog.exec() == QDialog::Accepted) {
+		return(chooser -> location());
+	}
+	return TitleBlockTemplateLocation();
 }
 
 /**

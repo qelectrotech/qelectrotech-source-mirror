@@ -1007,10 +1007,6 @@ Die Änderungen sind endgültig.</translation>
         <translation>Sie können die Verwaltung verwenden um Kategorien hinzuzufügen, löschen oder zu bearbeiten.</translation>
     </message>
     <message>
-        <source>Importer un nouveau modèle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Éditer ce modèle</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1030,6 +1026,10 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Ouvrir un fichier élément</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nouveau modèle</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3433,6 +3433,16 @@ Que désirez vous faire ?</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Hilfe</translation>
     </message>
+    <message>
+        <source>Enregistrer sous</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Speichern unter</translation>
+    </message>
+    <message>
+        <source>Enregistrer le modèle sous</source>
+        <comment>dialog window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QFileNameEdit</name>
@@ -4446,6 +4456,29 @@ Que désirez vous faire ?</source>
     <message>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLocationChooser</name>
+    <message>
+        <source>Projet parent</source>
+        <comment>used in save as form</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modèle existant</source>
+        <comment>used in save as form</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>ou nouveau nom</source>
+        <comment>used in save as form</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nouveau modèle (entrez son nom)</source>
+        <comment>combox box entry</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
