@@ -128,6 +128,12 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 		SLOT(handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint &)),
 		Qt::QueuedConnection
 	);
+	connect(
+		elements_panel,
+		SIGNAL(requestForTitleBlockTemplate(QETProject *, const QString &)),
+		QETApp::instance(),
+		SLOT(openTitleBlockTemplate(QETProject *, const QString &))
+	);
 	connect(elements_panel, SIGNAL(loadingProgressed(int, int)),  this, SLOT(updateProgressBar(int, int)));
 	connect(elements_panel, SIGNAL(readingAboutToBegin()),        this, SLOT(collectionsRead()));
 	connect(elements_panel, SIGNAL(readingFinished()),            this, SLOT(collectionsReadFinished()));
@@ -377,7 +383,6 @@ void ElementsPanelWidget::updateButtons() {
 		setElementsActionEnabled(false);
 	} else if (elements_panel -> selectedItemIsATitleBlockTemplate()) {
 		bool is_writable = !(elements_panel -> projectForTitleBlockTemplate(elements_panel -> currentItem()) -> isReadOnly());
-		tbt_add -> setEnabled(is_writable);
 		tbt_edit -> setEnabled(is_writable);
 		tbt_remove -> setEnabled(is_writable);
 		setElementsActionEnabled(false);
@@ -469,7 +474,6 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 		} else if (elements_panel -> itemIsATitleBlockTemplatesDirectory(item)) {
 			context_menu -> addAction(tbt_add);
 		} else if (elements_panel -> itemIsATitleBlockTemplate(item)) {
-			context_menu -> addAction(tbt_add);
 			context_menu -> addAction(tbt_edit);
 			context_menu -> addAction(tbt_remove);
 		}

@@ -842,6 +842,10 @@ void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 		emit(requestForDiagram(diagram));
 	} else if (ElementsCollectionItem *item = collectionItemForItem(qtwi)) {
 		emit(requestForCollectionItem(item));
+	} else if (itemIsATitleBlockTemplate(qtwi)) {
+		if (QETProject *project = projectForTitleBlockTemplate(qtwi)) {
+			emit(requestForTitleBlockTemplate(project, nameOfTitleBlockTemplate(qtwi)));
+		}
 	}
 }
 

@@ -91,6 +91,7 @@ class ElementsPanel : public QTreeWidget {
 	void requestForDiagram(Diagram *);
 	void requestForCollectionItem(ElementsCollectionItem *);
 	void requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint);
+	void requestForTitleBlockTemplate(QETProject *, const QString &);
 	void readingAboutToBegin();
 	void readingFinished();
 	void loadingProgressed(int, int);
