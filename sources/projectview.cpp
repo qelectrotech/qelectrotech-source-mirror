@@ -31,6 +31,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qettabbar.h"
+#include "qettemplateeditor.h"
 
 /**
 	Constructeur
@@ -220,6 +221,11 @@ bool ProjectView::tryClosingElementEditors() {
 	QList<QETElementEditor *> editors = QETApp::elementEditors(project_);
 	foreach(QETElementEditor *editor, editors) {
 		if (!editor -> close()) return(false);
+	}
+	
+	QList<QETTitleBlockTemplateEditor *> template_editors = QETApp::titleBlockTemplateEditors(project_);
+	foreach(QETTitleBlockTemplateEditor *template_editor, template_editors) {
+		if (!template_editor -> close()) return(false);
 	}
 	return(true);
 }
