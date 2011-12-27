@@ -36,6 +36,9 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	tb_template_(0),
 	logo_manager_(0)
 {
+	setWindowIcon(QET::Icons::QETLogo);
+	setAttribute(Qt::WA_DeleteOnClose);
+	
 	initWidgets();
 	initActions();
 	initMenus();

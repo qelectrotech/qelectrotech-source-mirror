@@ -33,6 +33,7 @@ class ElementsCategory;
 class ElementDefinition;
 class TitleBlockTemplate;
 class QETProject;
+class QETTitleBlockTemplateEditor;
 class QTextOrientationSpinBoxWidget;
 class RecentFiles;
 /**
@@ -99,6 +100,8 @@ class QETApp : public QETSingleApplication {
 	static QList<QETDiagramEditor *> diagramEditors();
 	static QList<QETElementEditor *> elementEditors();
 	static QList<QETElementEditor *> elementEditors(QETProject *);
+	static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors();
+	static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors(QETProject *);
 	static QTextOrientationSpinBoxWidget *createTextOrientationSpinBoxWidget();
 	static TitleBlockTemplate *defaultTitleBlockTemplate();
 	
@@ -121,6 +124,8 @@ class QETApp : public QETSingleApplication {
 	QAction *restore_diagrams;
 	QAction *reduce_elements;
 	QAction *restore_elements;
+	QAction *reduce_templates;
+	QAction *restore_templates;
 	QAction *new_diagram;
 	QAction *new_element;
 	QHash<QMainWindow *, QByteArray> window_geometries;
@@ -130,6 +135,8 @@ class QETApp : public QETSingleApplication {
 	bool every_diagram_visible;
 	bool every_element_reduced;
 	bool every_element_visible;
+	bool every_template_reduced;
+	bool every_template_visible;
 	QSignalMapper signal_map;
 	QSettings *qet_settings;
 	QETArguments qet_arguments_;        ///< Analyseur d'arguments
@@ -154,6 +161,8 @@ class QETApp : public QETSingleApplication {
 	void restoreDiagramEditors();
 	void reduceElementEditors();
 	void restoreElementEditors();
+	void reduceTitleBlockTemplateEditors();
+	void restoreTitleBlockTemplateEditors();
 	void newDiagramEditor();
 	void newElementEditor();
 	bool closeEveryEditor();
@@ -176,8 +185,8 @@ class QETApp : public QETSingleApplication {
 	void cleanup();
 	
 	private:
-	QList<QETDiagramEditor *> detectDiagramEditors() const;
-	QList<QETElementEditor *> detectElementEditors() const;
+	template <class T> QList<T *> detectWindows() const;
+	template <class T> void setMainWindowsVisible(bool);
 	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
 	void parseArguments();
 	void initSplashScreen();
@@ -187,7 +196,12 @@ class QETApp : public QETSingleApplication {
 	void initConfiguration();
 	void initSystemTray();
 	void buildSystemTrayMenu();
-	void fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements);
+	void fetchWindowStats(
+		const QList<QETDiagramEditor *> &,
+		const QList<QETElementEditor *> &,
+		const QList<QETTitleBlockTemplateEditor *> &
+	);
+	template <class T> void addWindowsListToMenu(QMenu *, const QList<T *> &);
 };
 
 /**

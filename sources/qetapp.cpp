@@ -24,7 +24,6 @@
 #include "elementscollectioncache.h"
 #include "fileelementscollection.h"
 #include "titleblocktemplate.h"
-#include "templateeditor.h"
 #include "qettemplateeditor.h"
 #include "qetproject.h"
 #include "qtextorientationspinboxwidget.h"
@@ -178,7 +177,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 		case QSystemTrayIcon::DoubleClick:
 		case QSystemTrayIcon::Trigger:
 			// reduction ou restauration de l'application
-			fetchWindowStats(diagramEditors(), elementEditors());
+			fetchWindowStats(diagramEditors(), elementEditors(), titleBlockTemplateEditors());
 			if (every_editor_reduced) restoreEveryEditor(); else reduceEveryEditor();
 			break;
 		case QSystemTrayIcon::Unknown:
@@ -191,6 +190,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 void QETApp::reduceEveryEditor() {
 	reduceDiagramEditors();
 	reduceElementEditors();
+	reduceTitleBlockTemplateEditors();
 	every_editor_reduced = true;
 }
 
@@ -198,27 +198,38 @@ void QETApp::reduceEveryEditor() {
 void QETApp::restoreEveryEditor() {
 	restoreDiagramEditors();
 	restoreElementEditors();
+	restoreTitleBlockTemplateEditors();
 	every_editor_reduced = false;
 }
 
 /// Reduit tous les editeurs de schemas dans le systray
 void QETApp::reduceDiagramEditors() {
-	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, false);
+	setMainWindowsVisible<QETDiagramEditor>(false);
 }
 
 /// Restaure tous les editeurs de schemas dans le systray
 void QETApp::restoreDiagramEditors() {
-	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, true);
+	setMainWindowsVisible<QETDiagramEditor>(true);
 }
 
 /// Reduit tous les editeurs d'element dans le systray
 void QETApp::reduceElementEditors() {
-	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, false);
+	setMainWindowsVisible<QETElementEditor>(false);
 }
 
 /// Restaure tous les editeurs d'element dans le systray
 void QETApp::restoreElementEditors() {
-	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, true);
+	setMainWindowsVisible<QETElementEditor>(true);
+}
+
+/// Reduce all known template editors
+void QETApp::reduceTitleBlockTemplateEditors() {
+	setMainWindowsVisible<QETTitleBlockTemplateEditor>(false);
+}
+
+/// Restore all known template editors
+void QETApp::restoreTitleBlockTemplateEditors() {
+	setMainWindowsVisible<QETTitleBlockTemplateEditor>(true);
 }
 
 /// lance un nouvel editeur de schemas
@@ -517,14 +528,43 @@ QFont QETApp::diagramTextsFont(qreal size) {
 	@return les editeurs de schemas
 */
 QList<QETDiagramEditor *> QETApp::diagramEditors() {
-	return(static_cast<QETApp *>(qApp) -> detectDiagramEditors());
+	return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
 }
 
 /**
 	@return les editeurs d'elements
 */
 QList<QETElementEditor *> QETApp::elementEditors() {
-	return(static_cast<QETApp *>(qApp) -> detectElementEditors());
+	return(QETApp::instance() -> detectWindows<QETElementEditor>());
+}
+
+/**
+	@return the title block template editors
+*/
+QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors() {
+	return(QETApp::instance() -> detectWindows<QETTitleBlockTemplateEditor>());
+}
+
+/**
+	@param project Opened project object.
+	@return the list of title block template editors which are currently
+	editing a template embedded within \a project.
+*/
+QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProject *project) {
+	QList<QETTitleBlockTemplateEditor *> editors;
+	if (!project) return(editors);
+	
+	// foreach known template editor
+	foreach (QETTitleBlockTemplateEditor *tbt_editor, titleBlockTemplateEditors()) {
+		// retrieve the location of the currently edited template
+		TitleBlockTemplateLocation tbt_editor_loc(tbt_editor -> location());
+		
+		if (tbt_editor_loc.project() == project) {
+			editors << tbt_editor;
+		}
+	}
+	
+	return(editors);
 }
 
 /**
@@ -596,28 +636,29 @@ void QETApp::cleanup() {
 	qsti -> hide();
 }
 
-/// @return les editeurs de schemas ouverts
-QList<QETDiagramEditor *> QETApp::detectDiagramEditors() const {
-	QList<QETDiagramEditor *> diagram_editors;
-	foreach(QWidget *qw, topLevelWidgets()) {
-		if (!qw -> isWindow()) continue;
-		if (QETDiagramEditor *de = qobject_cast<QETDiagramEditor *>(qw)) {
-			diagram_editors << de;
+/**
+	@param T a class inheriting QMainWindow
+	@return the list of windows of type T
+*/
+template <class T> QList<T *> QETApp::detectWindows() const {
+	QList<T *> windows;
+	foreach(QWidget *widget, topLevelWidgets()) {
+		if (!widget -> isWindow()) continue;
+		if (T *window = qobject_cast<T *>(widget)) {
+			windows << window;
 		}
 	}
-	return(diagram_editors);
+	return(windows);
 }
 
-/// @return les editeurs d'elements ouverts
-QList<QETElementEditor *> QETApp::detectElementEditors() const {
-	QList<QETElementEditor *> element_editors;
-	foreach(QWidget *qw, topLevelWidgets()) {
-		if (!qw -> isWindow()) continue;
-		if (QETElementEditor *ee = qobject_cast<QETElementEditor *>(qw)) {
-			element_editors << ee;
-		}
+/**
+	@param T a class inheriting QMainWindow
+	@param visible whether detected main windows should be visible
+*/
+template <class T> void QETApp::setMainWindowsVisible(bool visible) {
+	foreach(T *e, detectWindows<T>()) {
+		setMainWindowVisible(e, visible);
 	}
-	return(element_editors);
 }
 
 /**
@@ -1075,6 +1116,8 @@ void QETApp::initSystemTray() {
 	restore_diagrams  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
 	reduce_elements   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
 	restore_elements  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
+	reduce_templates  = new QAction(QET::Icons::Hide,      tr("&Masquer tous les \351diteurs de cartouche",   "systray submenu entry"), this);
+	restore_templates = new QAction(QET::Icons::Restore,   tr("&Restaurer tous les \351diteurs de cartouche", "systray submenu entry"), this);
 	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur de sch\351ma"),                 this);
 	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur d'\351l\351ment"),              this);
 	
@@ -1089,6 +1132,8 @@ void QETApp::initSystemTray() {
 	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
 	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
 	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
+	connect(reduce_templates, SIGNAL(triggered()), this, SLOT(reduceTitleBlockTemplateEditors()));
+	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
 	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
 	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
 	
@@ -1100,6 +1145,25 @@ void QETApp::initSystemTray() {
 	qsti -> show();
 }
 
+/**
+	Add a list of \a windows to \a menu.
+	This template function assumes it will be given a QList of pointers to
+	objects inheriting the QMainWindow class.
+	@param T the class inheriting QMainWindow
+	@param menu the menu windows will be added to
+	@param windows A list of top-level windows.
+*/
+template <class T> void QETApp::addWindowsListToMenu(QMenu *menu, const QList<T *> &windows) {
+	menu -> addSeparator();
+	foreach (QMainWindow *window, windows) {
+		QAction *current_menu = menu -> addAction(window -> windowTitle());
+		current_menu -> setCheckable(true);
+		current_menu -> setChecked(window -> isVisible());
+		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		signal_map.setMapping(current_menu, window);
+	}
+}
+
 /// construit le menu de l'icone dans le systray
 void QETApp::buildSystemTrayMenu() {
 	menu_systray -> clear();
@@ -1107,7 +1171,8 @@ void QETApp::buildSystemTrayMenu() {
 	// recupere les editeurs
 	QList<QETDiagramEditor *> diagrams = diagramEditors();
 	QList<QETElementEditor *> elements = elementEditors();
-	fetchWindowStats(diagrams, elements);
+	QList<QETTitleBlockTemplateEditor *> tbtemplates = titleBlockTemplateEditors();
+	fetchWindowStats(diagrams, elements, tbtemplates);
 	
 	// ajoute le bouton reduire / restaurer au menu
 	menu_systray -> addAction(every_editor_reduced ? restore_appli : reduce_appli);
@@ -1119,14 +1184,7 @@ void QETApp::buildSystemTrayMenu() {
 	diagrams_submenu -> addAction(new_diagram);
 	reduce_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_reduced);
 	restore_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_visible);
-	diagrams_submenu -> addSeparator();
-	foreach(QETDiagramEditor *diagram, diagrams) {
-		QAction *current_diagram_menu = diagrams_submenu -> addAction(diagram -> windowTitle());
-		current_diagram_menu -> setCheckable(true);
-		current_diagram_menu -> setChecked(diagram -> isVisible());
-		connect(current_diagram_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
-		signal_map.setMapping(current_diagram_menu, diagram);
-	}
+	addWindowsListToMenu<QETDiagramEditor>(diagrams_submenu, diagrams);
 	
 	// ajoute les editeurs d'elements au menu
 	QMenu *elements_submenu = menu_systray -> addMenu(tr("\311diteurs d'\351l\351ment"));
@@ -1136,13 +1194,15 @@ void QETApp::buildSystemTrayMenu() {
 	reduce_elements -> setEnabled(!elements.isEmpty() && !every_element_reduced);
 	restore_elements -> setEnabled(!elements.isEmpty() && !every_element_visible);
 	elements_submenu -> addSeparator();
-	foreach(QETElementEditor *element, elements) {
-		QAction *current_element_menu = elements_submenu -> addAction(element -> windowTitle());
-		current_element_menu -> setCheckable(true);
-		current_element_menu -> setChecked(element -> isVisible());
-		connect(current_element_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
-		signal_map.setMapping(current_element_menu, element);
-	}
+	addWindowsListToMenu<QETElementEditor>(elements_submenu, elements);
+	
+	// add title block template editors in a submenu
+	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("\311diteurs de cartouche", "systray menu entry"));
+	tbtemplates_submenu -> addAction(reduce_templates);
+	tbtemplates_submenu -> addAction(restore_templates);
+	reduce_templates  -> setEnabled(!tbtemplates.isEmpty() && !every_template_reduced);
+	restore_templates -> setEnabled(!tbtemplates.isEmpty() && !every_template_visible);
+	addWindowsListToMenu<QETTitleBlockTemplateEditor>(tbtemplates_submenu, tbtemplates);
 	
 	// ajoute le bouton quitter au menu
 	menu_systray -> addSeparator();
@@ -1150,7 +1210,11 @@ void QETApp::buildSystemTrayMenu() {
 }
 
 /// Met a jour les booleens concernant l'etat des fenetres
-void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements) {
+void QETApp::fetchWindowStats(
+	const QList<QETDiagramEditor *> &diagrams,
+	const QList<QETElementEditor *> &elements,
+	const QList<QETTitleBlockTemplateEditor *> &tbtemplates
+) {
 	// compte le nombre de schemas visibles
 	int visible_diagrams = 0;
 	foreach(QMainWindow *w, diagrams) if (w -> isVisible()) ++ visible_diagrams;
@@ -1162,6 +1226,14 @@ void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const Q
 	foreach(QMainWindow *w, elements) if (w -> isVisible()) ++ visible_elements;
 	every_element_reduced = !visible_elements;
 	every_element_visible = visible_elements == elements.count();
+	
+	// count visible template editors
+	int visible_templates = 0;
+	foreach(QMainWindow *window, tbtemplates) {
+		if (window -> isVisible()) ++ visible_templates;
+	}
+	every_template_reduced = !visible_templates;
+	every_template_visible = visible_templates == tbtemplates.count();
 	
 	// determine si tous les elements sont reduits
 	every_editor_reduced = every_element_reduced && every_diagram_reduced;
