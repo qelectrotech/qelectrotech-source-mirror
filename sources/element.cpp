@@ -422,7 +422,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool
 				if (p -> fromXml(qde)) {
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;
-					break;
+					// We used to break here, because we did not expect
+					// several terminals to share the same position.
+					// Of course, it finally happened.
 				}
 			}
 			if (!terminal_trouvee) ++ terminals_non_trouvees;
