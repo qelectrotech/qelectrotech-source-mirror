@@ -32,11 +32,5 @@
         <terminal x="30" y="0" orientation="s"/>
         <terminal x="40" y="-20" orientation="n"/>
         <terminal x="40" y="0" orientation="s"/>
-        <terminal x="20" y="0" orientation="s"/>
-        <terminal x="10" y="0" orientation="s"/>
-        <terminal x="10" y="-20" orientation="n"/>
-        <terminal x="20" y="-20" orientation="n"/>
-        <terminal x="30" y="-20" orientation="n"/>
-        <terminal x="40" y="-20" orientation="n"/>
     </description>
 </definition>
