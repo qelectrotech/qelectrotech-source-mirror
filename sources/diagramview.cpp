@@ -470,14 +470,19 @@ void DiagramView::editDiagramProperties() {
 		TitleBlockProperties new_titleblock   = titleblock_infos  -> titleBlockProperties();
 		BorderProperties new_border = border_infos -> borderProperties();
 		ConductorProperties new_conductors = cpw -> conductorProperties();
+		
+		bool adjust_scene = false;
+		
 		// s'il y a des modifications au cartouche
 		if (new_titleblock != titleblock) {
 			scene -> undoStack().push(new ChangeTitleBlockCommand(scene, titleblock, new_titleblock));
+			adjust_scene = true;
 		}
 		
 		// s'il y a des modifications aux dimensions du schema
 		if (new_border != border) {
 			scene -> undoStack().push(new ChangeBorderCommand(scene, border, new_border));
+			adjust_scene = true;
 		}
 		
 		// if modifcations have been made to the conductors properties
@@ -485,6 +490,7 @@ void DiagramView::editDiagramProperties() {
 			/// TODO implement an undo command to allow the user to undo/redo this action
 			scene -> defaultConductorProperties = new_conductors;
 		}
+		if (adjust_scene) adjustSceneRect();
 	}
 }
 
