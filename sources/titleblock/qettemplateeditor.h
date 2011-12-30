@@ -80,6 +80,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void initActions();
 	void initMenus();
 	void initWidgets();
+	void initLogoManager();
 	
 	public slots:
 	void selectedCellsChanged(QList<TitleBlockCell *>);

@@ -35,7 +35,12 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	public:
 	QString currentLogo() const;
 	
+	signals:
+	void logosChanged(const TitleBlockTemplate *);
+	
 	protected:
+	void emitLogosChangedSignal();
+	
 	private:
 	void initWidgets();
 	void fillView();

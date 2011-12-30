@@ -98,10 +98,9 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 void QETTitleBlockTemplateEditor::editLogos() {
 	if (tb_template_) {
 		if (!logo_manager_) {
-			logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_);
+			initLogoManager();
 		}
 		logo_manager_ -> show();
-		template_cell_editor_widget_ -> updateLogosComboBox(tb_template_);
 	}
 }
 
@@ -240,6 +239,16 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 		SIGNAL(gridModificationRequested(TitleBlockTemplateCommand *)),
 		this,
 		SLOT(pushGridUndoCommand(TitleBlockTemplateCommand *))
+	);
+}
+
+void QETTitleBlockTemplateEditor::initLogoManager() {
+	logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_);
+	connect(
+		logo_manager_,
+		SIGNAL(logosChanged(const TitleBlockTemplate *)),
+		template_cell_editor_widget_,
+		SLOT(updateLogosComboBox(const TitleBlockTemplate *))
 	);
 }
 

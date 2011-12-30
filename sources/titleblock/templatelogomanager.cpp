@@ -51,6 +51,13 @@ QString TitleBlockTemplateLogoManager::currentLogo() const {
 }
 
 /**
+	Emit the logosChanged() signal.
+*/
+void TitleBlockTemplateLogoManager::emitLogosChangedSignal() {
+	emit(logosChanged(const_cast<const TitleBlockTemplate *>(managed_template_)));
+}
+
+/**
 	Initialize widgets composing the Logo manager
 */
 void TitleBlockTemplateLogoManager::initWidgets() {
@@ -264,6 +271,7 @@ void TitleBlockTemplateLogoManager::addLogo() {
 	open_dialog_dir_ = QDir(filepath);
 	if (managed_template_ -> addLogoFromFile(filepath, logo_name)) {
 		fillView();
+		emitLogosChangedSignal();
 	}
 }
 
@@ -275,7 +283,8 @@ void TitleBlockTemplateLogoManager::removeLogo() {
 	if (current_logo.isNull()) return;
 	
 	if (managed_template_ -> removeLogo(current_logo)) {
-		fillView();	
+		fillView();
+		emitLogosChangedSignal();
 	}
 }
 
@@ -317,5 +326,6 @@ void TitleBlockTemplateLogoManager::renameLogo() {
 	
 	if (managed_template_ -> renameLogo(current_logo, entered_name)) {
 		fillView();
+		emitLogosChangedSignal();
 	}
 }
