@@ -665,7 +665,7 @@ QString TitleBlockTemplate::name() const {
 */
 int TitleBlockTemplate::rowDimension(int i) {
 	int index = (i == -1) ? rows_heights_.count() - 1 : i;
-	if (index >= 0 || index < rows_heights_.count()) {
+	if (index >= 0 && index < rows_heights_.count()) {
 		return(rows_heights_.at(index));
 	}
 	return(-1);
@@ -689,7 +689,7 @@ void TitleBlockTemplate::setRowDimension(int i, const TitleBlockDimension &dimen
 */
 TitleBlockDimension TitleBlockTemplate::columnDimension(int i) {
 	int index = (i == -1) ? columns_width_.count() - 1 : i;
-	if (index >= 0 || index < columns_width_.count()) {
+	if (index >= 0 && index < columns_width_.count()) {
 		return(columns_width_.at(index));
 	}
 	return(TitleBlockDimension(-1));
@@ -762,6 +762,18 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 */
 QList<int> TitleBlockTemplate::rowsHeights() const {
 	return(rows_heights_);
+}
+
+/**
+	@return the total effective width of this template
+	@param total_width The total width initially planned for the rendering
+*/
+int TitleBlockTemplate::width(int total_width) {
+	int width = 0;
+	foreach (int col_width, columnsWidth(total_width)) {
+		width += col_width;
+	}
+	return(width);
 }
 
 /**

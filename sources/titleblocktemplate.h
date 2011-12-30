@@ -58,6 +58,7 @@ class TitleBlockTemplate : public QObject {
 	int rowsCount() const;
 	QList<int> columnsWidth(int) const;
 	QList<int> rowsHeights() const;
+	int width(int);
 	int height() const;
 	
 	bool moveRow(int, int);

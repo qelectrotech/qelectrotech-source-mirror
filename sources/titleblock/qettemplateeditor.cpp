@@ -114,6 +114,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
 	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
+	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
+	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
+	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351",               "menu entry"), this);
+	zoom_reset_     = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom",                  "menu entry"), this);
 	configure_      = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech",     "menu entry"), this);
 	about_qet_      = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech", "menu entry"), this);
 	about_qt_       = new QAction(QET::Icons::QtLogo,               tr("\300 propos de &Qt",           "menu entry"), this);
@@ -124,6 +128,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
 	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
 	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to split merged cell")));
+	zoom_in_          -> setShortcut(QKeySequence::ZoomIn);
+	zoom_out_         -> setShortcut(QKeySequence::ZoomOut);
+	zoom_fit_         -> setShortcut(QKeySequence(tr("Ctrl+9", "shortcut to enable fit zoom")));
+	zoom_reset_       -> setShortcut(QKeySequence(tr("Ctrl+0", "shortcut to reset zoom")));
 	
 	configure_    -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech", "status bar tip"));
 	about_qet_    -> setStatusTip(tr("Affiche des informations sur QElectroTech",                       "status bar tip"));
@@ -132,6 +140,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
 	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
 	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
+	connect(zoom_in_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomIn()));
+	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
+	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
+	connect(zoom_reset_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomReset()));
 	connect(configure_,       SIGNAL(triggered()), qet_app,  SLOT(configureQET()));
 	connect(about_qet_,       SIGNAL(triggered()), qet_app,  SLOT(aboutQET()));
 	connect(about_qt_,        SIGNAL(triggered()), qet_app,  SLOT(aboutQt()));
@@ -145,12 +157,14 @@ void QETTitleBlockTemplateEditor::initActions() {
 void QETTitleBlockTemplateEditor::initMenus() {
 	file_menu_    = new QMenu(tr("&Fichier",        "menu title"), this);
 	edit_menu_    = new QMenu(tr("&\311dition",     "menu title"), this);
+	display_menu_ = new QMenu(tr("Afficha&ge",      "menu title"), this);
 	config_menu_  = new QMenu(tr("&Configuration",  "menu title"), this);
 	help_menu_    = new QMenu(tr("&Aide",           "menu title"), this);
 	
 	file_menu_    -> setTearOffEnabled(true);
 	edit_menu_    -> setTearOffEnabled(true);
 	config_menu_  -> setTearOffEnabled(true);
+	display_menu_ -> setTearOffEnabled(true);
 	help_menu_    -> setTearOffEnabled(true);
 	
 	file_menu_    -> addAction(save_);
@@ -161,6 +175,11 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
 	
+	display_menu_ -> addAction(zoom_in_);
+	display_menu_ -> addAction(zoom_out_);
+	display_menu_ -> addAction(zoom_fit_);
+	display_menu_ -> addAction(zoom_reset_);
+	
 	config_menu_ -> addAction(configure_);
 	
 	help_menu_ -> addAction(about_qet_);
@@ -168,6 +187,7 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	
 	menuBar() -> addMenu(file_menu_);
 	menuBar() -> addMenu(edit_menu_);
+	menuBar() -> addMenu(display_menu_);
 	menuBar() -> addMenu(config_menu_);
 	menuBar() -> addMenu(help_menu_);
 }

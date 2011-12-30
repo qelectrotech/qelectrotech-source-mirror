@@ -47,9 +47,10 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	/// is the template read-only?
 	bool read_only;
 	/// menus TODO
-	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, *display_menu_, *tools_menu_,*/ *config_menu_, *help_menu_;
+	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_,*/ *config_menu_, *help_menu_;
 	/// actions
 	QAction *save_, *save_as_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
+	QAction *zoom_in_, *zoom_out_, *zoom_fit_, *zoom_reset_;
 	/// Parent project of the currently edited template
 	QETProject *parent_project_;
 	/// Name of the currently edited template

@@ -46,12 +46,17 @@ class TitleBlockTemplateView : public QGraphicsView {
 	virtual QList<TitleBlockCell *> selectedCells() const;
 	virtual TitleBlockTemplateCellsSet selectedCellsSet() const;
 	virtual TitleBlockTemplateCellsSet cells(const QRectF &) const;
+	virtual QSizeF templateSize() const;
+	virtual qreal templateWidth() const;
+	virtual qreal templateHeight() const;
 	
 	public slots:
 	void setTitleBlockTemplate(TitleBlockTemplate *);
 	void selectionChanged();
 	void zoomIn();
 	void zoomOut();
+	void zoomFit();
+	void zoomReset();
 	void addColumnBefore();
 	void addRowBefore();
 	void addColumnAfter();
@@ -82,6 +87,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	virtual void wheelEvent(QWheelEvent *);
 	virtual qreal zoomFactor() const;
 	virtual void fillWithEmptyCells();
+	virtual bool event(QEvent *);
 	
 	signals:
 	void selectedCellsChanged(QList<TitleBlockCell *>);
@@ -118,5 +124,6 @@ class TitleBlockTemplateView : public QGraphicsView {
 	HelperCell *last_context_menu_cell_;
 	int apply_columns_widths_count_;
 	int apply_rows_heights_count_;
+	bool first_activation_;                ///< Boolean used to detect the first display of this widget
 };
 #endif

@@ -27,6 +27,11 @@
 #define ROW_OFFSET 2
 #define COL_OFFSET 1
 #define DEFAULT_PREVIEW_WIDTH 600
+#define DEFAULT_PREVIEW_HELPER_CELL_HEIGHT 15
+#define DEFAULT_COLS_HELPER_CELLS_HEIGHT   15
+#define DEFAULT_ROWS_HELPER_CELLS_WIDTH    50
+
+
 
 /**
 	Constructor
@@ -39,7 +44,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QWidget *parent) :
 	form_(0),
 	preview_width_(DEFAULT_PREVIEW_WIDTH),
 	apply_columns_widths_count_(0),
-	apply_rows_heights_count_(0)
+	apply_rows_heights_count_(0),
+	first_activation_(true)
 {
 	init();
 }
@@ -54,7 +60,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QGraphicsScene *scene, QWidget *p
 	tbgrid_(0),
 	preview_width_(DEFAULT_PREVIEW_WIDTH),
 	apply_columns_widths_count_(0),
-	apply_rows_heights_count_(0)
+	apply_rows_heights_count_(0),
+	first_activation_(true)
 {
 	init();
 }
@@ -71,6 +78,7 @@ TitleBlockTemplateView::~TitleBlockTemplateView() {
 */
 void TitleBlockTemplateView::setTitleBlockTemplate(TitleBlockTemplate *tbtemplate) {
 	loadTemplate(tbtemplate);
+	zoomFit();
 }
 
 /**
@@ -102,6 +110,22 @@ void TitleBlockTemplateView::zoomIn() {
 void TitleBlockTemplateView::zoomOut() {
 	qreal zoom_factor = 1.0/zoomFactor();
 	scale(zoom_factor, zoom_factor);
+}
+
+/**
+	Fit the rendered title block template in this view.
+*/
+void TitleBlockTemplateView::zoomFit() {
+	adjustSceneRect();
+	fitInView(scene() -> sceneRect(), Qt::KeepAspectRatio);
+}
+
+/**
+	Reset the zoom level.
+*/
+void TitleBlockTemplateView::zoomReset() {
+	adjustSceneRect();
+	resetMatrix();
 }
 
 /**
@@ -286,6 +310,39 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::cells(const QRectF &rect) con
 }
 
 /**
+	@return the current size of the rendered title block template
+*/
+QSizeF TitleBlockTemplateView::templateSize() const {
+	return(QSizeF(templateWidth(), templateHeight()));
+}
+
+/**
+	@return the current width of the rendered title block template
+*/
+qreal TitleBlockTemplateView::templateWidth() const {
+	if (!tbtemplate_) return(0);
+	
+	qreal width = DEFAULT_ROWS_HELPER_CELLS_WIDTH;
+	// the rendered width may exceed the initially planned preview width
+	width += qMax<int>(preview_width_, tbtemplate_ -> width(preview_width_));
+	
+	return(width);
+}
+
+/**
+	@return the current height of the rendered title block template
+*/
+qreal TitleBlockTemplateView::templateHeight() const {
+	if (!tbtemplate_) return(0);
+	
+	qreal height = DEFAULT_PREVIEW_HELPER_CELL_HEIGHT;
+	height += DEFAULT_COLS_HELPER_CELLS_HEIGHT;
+	height += tbtemplate_ -> height();
+	
+	return(height);
+}
+
+/**
 	Handles mouse wheel-related actions
 	@param e QWheelEvent describing the wheel event
 */
@@ -333,6 +390,7 @@ void TitleBlockTemplateView::init() {
 	connect(delete_row_,           SIGNAL(triggered()), this, SLOT(deleteRow()));
 	connect(change_preview_width_, SIGNAL(triggered()), this, SLOT(changePreviewWidth()));
 	
+	setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	setBackgroundBrush(QBrush(QColor(248, 255, 160)));
 	
 	connect(scene(), SIGNAL(selectionChanged()), this, SLOT(selectionChanged()));
@@ -345,7 +403,7 @@ void TitleBlockTemplateView::init() {
 */
 void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 	// the first column is dedicated to helper cells showing the rows height
-	tbgrid_ -> setColumnFixedWidth(0, 50);
+	tbgrid_ -> setColumnFixedWidth(0, DEFAULT_ROWS_HELPER_CELLS_WIDTH);
 	tbgrid_ -> setColumnSpacing(0, 0);
 	
 	// we apply the other columns width based on the title block template data
@@ -406,14 +464,11 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 */
 void TitleBlockTemplateView::applyRowsHeights(bool animate) {
 	// the first row is dedicated to a helper cell showing the total width
-	tbgrid_ -> setRowFixedHeight(0, 15);
+	tbgrid_ -> setRowFixedHeight(0, DEFAULT_PREVIEW_HELPER_CELL_HEIGHT);
 	tbgrid_ -> setRowSpacing(0, 0);
 	// the second row is dedicated to helper cells showing the columns width
-	tbgrid_ -> setRowFixedHeight(1, 15);
+	tbgrid_ -> setRowFixedHeight(1, DEFAULT_COLS_HELPER_CELLS_HEIGHT);
 	tbgrid_ -> setRowSpacing(1, 0);
-	// the first column is dedicated to helper cells showing the rows height
-	tbgrid_ -> setColumnFixedWidth(0, 45);
-	tbgrid_ -> setColumnSpacing(0, 0);
 	
 	QList<int> heights = tbtemplate_ -> rowsHeights();
 	for (int i = 0 ; i < heights.count() ; ++ i) {
@@ -579,6 +634,17 @@ void TitleBlockTemplateView::fillWithEmptyCells() {
 			tbgrid_ -> addItem(cell_item, ROW_OFFSET + j, COL_OFFSET + i);
 		}
 	}
+}
+
+/**
+	@param event Object describing the received event 
+*/
+bool TitleBlockTemplateView::event(QEvent *event) {
+	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
+		QTimer::singleShot(250, this, SLOT(zoomFit()));
+		first_activation_ = false;
+	}
+	return(QGraphicsView::event(event));
 }
 
 /**
@@ -763,11 +829,11 @@ void TitleBlockTemplateView::updateLastContextMenuCell(HelperCell *last_context_
 	Adjusts the bounding rect of the scene.
 */
 void TitleBlockTemplateView::adjustSceneRect() {
-	QRectF old_scene_rect = sceneRect();
+	QRectF old_scene_rect = scene() -> sceneRect();
 	
 	// rectangle including everything on the scene
-	QRectF bounding_rect = scene() -> itemsBoundingRect();
-	setSceneRect(bounding_rect);
+	QRectF bounding_rect(QPointF(0, 0), templateSize());
+	scene() -> setSceneRect(bounding_rect);
 	
 	// met a jour la scene
 	scene() -> update(old_scene_rect.united(bounding_rect));
