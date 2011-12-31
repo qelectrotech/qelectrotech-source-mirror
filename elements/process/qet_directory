@@ -3,5 +3,6 @@
         <name lang="fr" >Process</name>
 	<name lang="en" >Process</name>
 	<name lang="pl" >Automatyka procesów</name>
+        <name lang="it" >Processi</name>
     </names>
 </qet-directory>

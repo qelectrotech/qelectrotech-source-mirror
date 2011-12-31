@@ -5,6 +5,7 @@
         <name lang="fr">Fréquencemètre horizontal</name>
         <name lang="pl">Częstotliwościomierz (poziomo)</name>
         <name lang="cs">Měřič kmitočtu, vodorovný</name>
+        <name lang="it">Frequenzimetro orizzontale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

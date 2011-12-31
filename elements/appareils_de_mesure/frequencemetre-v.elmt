@@ -5,6 +5,7 @@
         <name lang="fr">Fréquencemètre vertical</name>
         <name lang="pl">Częstotliwościomierz (pionowo)</name>
         <name lang="cs">Měřič kmitočtu, svislý</name>
+        <name lang="it">Frequenzimetro verticale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
