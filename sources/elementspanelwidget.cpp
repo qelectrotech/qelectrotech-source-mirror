@@ -28,6 +28,7 @@
 #include "qetproject.h"
 #include "diagram.h"
 #include "qeticons.h"
+#include "templatedeleter.h"
 
 /*
 	Lorsque le flag ENABLE_PANEL_WIDGET_DND_CHECKS est defini, le panel
@@ -294,7 +295,9 @@ void ElementsPanelWidget::removeTitleBlockTemplate() {
 	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
 		QETProject *parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
 		QString template_name = elements_panel -> nameOfTitleBlockTemplate(current_item);
-		parent_project -> removeTemplateByName(template_name);
+		TitleBlockTemplateLocation template_location(parent_project, template_name);
+		TitleBlockTemplateDeleter template_deleter(template_location, this);
+		template_deleter.exec();
 	}
 }
 
