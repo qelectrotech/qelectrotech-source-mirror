@@ -5204,19 +5204,19 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="102"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation>Kompletny</translation>
+        <translation>Bezwzględna</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="103"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation>Dotyczy całości</translation>
+        <translation>Względem całości</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="104"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation>Dotyczy reszty</translation>
+        <translation>Względem pozostałych</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="144"/>
@@ -5378,7 +5378,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Afficher un label :</source>
-        <translation>Pokaż etylietę :</translation>
+        <translation>Pokaż etykietę :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
