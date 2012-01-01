@@ -38,10 +38,6 @@
         <translation>QElectroTech ist eine Anwendung zur Umsetzung von Schaltplänen.</translation>
     </message>
     <message>
-        <source>© 2006-2011 Les développeurs de QElectroTech</source>
-        <translation>© 2006-2011 Die Entwickler von QElectroTech</translation>
-    </message>
-    <message>
         <source>Idée originale</source>
         <translation>Grundidee</translation>
     </message>
@@ -100,6 +96,10 @@
     <message>
         <source>Traduction en italien</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>© 2006-2012 Les développeurs de QElectroTech</source>
+        <translation>© 2006-2012 Die Entwickler von QElectroTech</translation>
     </message>
 </context>
 <context>
@@ -1966,6 +1966,21 @@ Options disponibles :
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&amp;Masquer tous les éditeurs de cartouche</source>
+        <comment>systray submenu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Restaurer tous les éditeurs de cartouche</source>
+        <comment>systray submenu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Éditeurs de cartouche</source>
+        <comment>systray menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
@@ -3443,6 +3458,41 @@ Que désirez vous faire ?</source>
         <comment>dialog window title</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Zoom avant</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Zoom in</translation>
+    </message>
+    <message>
+        <source>Zoom arrière</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Zoom out</translation>
+    </message>
+    <message>
+        <source>Zoom adapté</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Zoom angepasst</translation>
+    </message>
+    <message>
+        <source>Pas de zoom</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Kein Zoom</translation>
+    </message>
+    <message>
+        <source>Ctrl+9</source>
+        <comment>shortcut to enable fit zoom</comment>
+        <translation type="unfinished">Ctrl+9</translation>
+    </message>
+    <message>
+        <source>Ctrl+0</source>
+        <comment>shortcut to reset zoom</comment>
+        <translation type="unfinished">Ctrl+0</translation>
+    </message>
+    <message>
+        <source>Afficha&amp;ge</source>
+        <comment>menu title</comment>
+        <translation type="unfinished">Anzei&amp;ge</translation>
+    </message>
 </context>
 <context>
     <name>QFileNameEdit</name>
@@ -4456,6 +4506,20 @@ Que désirez vous faire ?</source>
     <message>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateDeleter</name>
+    <message>
+        <source>Supprimer le modèle de cartouche ?</source>
+        <comment>message box title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
+</source>
+        <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

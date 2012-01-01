@@ -24,11 +24,6 @@
         <translation>QElectroTech, uma aplicação para desenho de esquemas eléctricos.</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="90"/>
-        <source>© 2006-2011 Les développeurs de QElectroTech</source>
-        <translation>© 2006-2011 Os Desenvolvedores de QElectroTech</translation>
-    </message>
-    <message>
         <location filename="../sources/aboutqet.cpp" line="30"/>
         <source>À propos de QElectrotech</source>
         <comment>window title</comment>
@@ -63,6 +58,11 @@
         <source>&amp;Accord de licence</source>
         <comment>tab title</comment>
         <translation>&amp;Acordo de Licença</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="90"/>
+        <source>© 2006-2012 Les développeurs de QElectroTech</source>
+        <translation>© 2006-2012 Os Desenvolvedores de QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="120"/>
@@ -419,114 +419,114 @@
         <translation>Propriedades do esquema</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="731"/>
+        <location filename="../sources/diagramview.cpp" line="737"/>
         <source>Propriétés de la sélection</source>
         <translation>Propriedades da selecção</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="733"/>
+        <location filename="../sources/diagramview.cpp" line="739"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>A selecção contém %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="768"/>
+        <location filename="../sources/diagramview.cpp" line="774"/>
         <source>Élément manquant</source>
         <translation>Elemento em falta</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="770"/>
+        <location filename="../sources/diagramview.cpp" line="776"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="775"/>
+        <location filename="../sources/diagramview.cpp" line="781"/>
         <source>Nom : %1
 </source>
         <translation>Nome : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="778"/>
+        <location filename="../sources/diagramview.cpp" line="784"/>
         <source>Folio : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="780"/>
+        <location filename="../sources/diagramview.cpp" line="786"/>
         <source>Position : %1
 </source>
         <translation>Posição: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="781"/>
+        <location filename="../sources/diagramview.cpp" line="787"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Dimensões : %1x%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="782"/>
+        <location filename="../sources/diagramview.cpp" line="788"/>
         <source>Bornes : %1
 </source>
         <translation>Terminais : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="783"/>
+        <location filename="../sources/diagramview.cpp" line="789"/>
         <source>Connexions internes : %1
 </source>
         <translation>Conexões internas : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="783"/>
+        <location filename="../sources/diagramview.cpp" line="789"/>
         <source>Autorisées</source>
         <translation>Autorizados</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="783"/>
+        <location filename="../sources/diagramview.cpp" line="789"/>
         <source>Interdites</source>
         <translation>Interditos</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="784"/>
+        <location filename="../sources/diagramview.cpp" line="790"/>
         <source>Champs de texte : %1
 </source>
         <translation>Campos de texto : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="787"/>
+        <location filename="../sources/diagramview.cpp" line="793"/>
         <source>Emplacement : %1
 </source>
         <translation>Local : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="791"/>
+        <location filename="../sources/diagramview.cpp" line="797"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Propriedades do elemento seleccionado</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="792"/>
+        <location filename="../sources/diagramview.cpp" line="798"/>
         <source>Retrouver dans le panel</source>
         <translation>Encontrar no painel</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="793"/>
+        <location filename="../sources/diagramview.cpp" line="799"/>
         <source>Éditer l&apos;élément</source>
         <translation>Editar elemento</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="855"/>
+        <location filename="../sources/diagramview.cpp" line="861"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Editar as propriedades do condutor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="893"/>
+        <location filename="../sources/diagramview.cpp" line="899"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation type="unfinished"></translation>
     </message>
@@ -1076,13 +1076,13 @@ As alterações serão definitivas.</translation>
         <translation>Colecção do Utilizador</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1226"/>
+        <location filename="../sources/elementspanel.cpp" line="1230"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
         <translation type="unfinished">Esquema sem título</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1233"/>
+        <location filename="../sources/elementspanel.cpp" line="1237"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
         <translation type="unfinished"></translation>
@@ -1093,12 +1093,12 @@ As alterações serão definitivas.</translation>
         <translation>Colecção do projecto</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1181"/>
+        <location filename="../sources/elementspanel.cpp" line="1185"/>
         <source>Modèles de cartouche</source>
         <translation>Modelos de moldura</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1194"/>
+        <location filename="../sources/elementspanel.cpp" line="1198"/>
         <source>Modèle &quot;%1&quot;</source>
         <translation>Modelo &quot;%1&quot;</translation>
     </message>
@@ -1108,7 +1108,7 @@ As alterações serão definitivas.</translation>
         <translation>%1 [não utilizado no projecto]</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1157"/>
+        <location filename="../sources/elementspanel.cpp" line="1161"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>Sem ficheiro</translation>
@@ -1117,145 +1117,145 @@ As alterações serão definitivas.</translation>
 <context>
     <name>ElementsPanelWidget</name>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
         <source>Nouvel élément</source>
         <translation>Novo elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="55"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Recharger les collections</source>
         <translation>Recarregar colecções</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="56"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Nouvelle catégorie</source>
         <translation>Nova categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="57"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
         <source>Éditer la catégorie</source>
         <translation>Editar categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="58"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
         <source>Supprimer la catégorie</source>
         <translation>Apagar categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="61"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Éditer l&apos;élément</source>
         <translation>Editar elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="62"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
         <source>Supprimer l&apos;élément</source>
         <translation>Apagar elemento</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="63"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Ouvrir un fichier élément</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Remonter ce schéma</source>
         <translation>Subir o esquema</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="70"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Abaisser ce schéma</source>
         <translation>Descer o esquema</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
         <source>Éditer ce modèle</source>
         <translation>Editar o modelo</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="73"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
         <source>Supprimer ce modèle</source>
         <translation>Apagar o modelo</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="413"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="421"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Use este gestor para adicionar, apagar ou modificar categorias.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="569"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="576"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translation>A ler...</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="592"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="599"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation>A carregar : %p%</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="80"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="81"/>
         <source>Filtrer : </source>
         <translation>Filtro: </translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="77"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Effacer le filtre</source>
         <translation>Apagar filtro</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="59"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Vider la collection</source>
         <translation>Esvaziar a colecção</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="64"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Fermer ce projet</source>
         <translation>Fechar este projecto</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Ajouter un schéma</source>
         <translation>Adicionar um esquema</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="68"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Supprimer ce schéma</source>
         <translation>Apagar este esquema</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="65"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Propriétés du projet</source>
         <translation>Propriedades do projecto</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="71"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Nouveau modèle</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="74"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Déplacer dans cette catégorie</source>
         <translation>Mover para esta categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="75"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="76"/>
         <source>Copier dans cette catégorie</source>
         <translation>Copiar para esta categoria</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="76"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Annuler</source>
         <translation>Desfazer</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="410"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="418"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
         <translation>Gestor de categorias</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="66"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Propriétés du schéma</source>
         <translation>Propriedades do esquema</translation>
     </message>
@@ -2078,123 +2078,123 @@ As alterações serão definitivas.</translation>
 <context>
     <name>ProjectView</name>
     <message>
-        <location filename="../sources/projectview.cpp" line="50"/>
+        <location filename="../sources/projectview.cpp" line="51"/>
         <source>Ce projet ne contient aucun schéma</source>
         <translation>Este projecto não contém nenhum esquema</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="415"/>
+        <location filename="../sources/projectview.cpp" line="421"/>
         <source>Titre du projet :</source>
         <translation>Título do projecto:</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="660"/>
+        <location filename="../sources/projectview.cpp" line="666"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
         <translation>Apagar os elementos não usados neste projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="661"/>
+        <location filename="../sources/projectview.cpp" line="667"/>
         <source>Supprimer les catégories vides</source>
         <translation>Apagar as categorias vazias</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="245"/>
+        <location filename="../sources/projectview.cpp" line="251"/>
         <source>Enregistrer le schéma en cours ?</source>
         <comment>message box title</comment>
         <translation>Gravar o esquema actual?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="246"/>
+        <location filename="../sources/projectview.cpp" line="252"/>
         <source>Voulez-vous enregistrer le schéma %1 ?</source>
         <comment>message box content - %1 is a diagram title</comment>
         <translation>Deseja gravar o esquema %1?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="262"/>
+        <location filename="../sources/projectview.cpp" line="268"/>
         <source>Enregistrer le nouveau schéma ?</source>
         <comment>message box title</comment>
         <translation>Gravar o novo esquema?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="263"/>
+        <location filename="../sources/projectview.cpp" line="269"/>
         <source>Ce schéma a été ajouté mais n&apos;a été ni modifié ni enregistré. Voulez-vous le conserver ?</source>
         <comment>message box content</comment>
         <translation>Este esquema foi adicionado mas não foi modificado ou gravado. Deseja manter o esquema?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="333"/>
+        <location filename="../sources/projectview.cpp" line="339"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
         <translation>Apagar o esquema?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="334"/>
+        <location filename="../sources/projectview.cpp" line="340"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
         <translation>Tem a certeza que deseja apagar este esquema do projecto?  A acção é irreversível.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="412"/>
+        <location filename="../sources/projectview.cpp" line="418"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
         <translation>Propriedades do projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="653"/>
+        <location filename="../sources/projectview.cpp" line="659"/>
         <source>Projet en lecture seule</source>
         <comment>message box title</comment>
         <translation>Projecto em modo de leitura</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="654"/>
+        <location filename="../sources/projectview.cpp" line="660"/>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
         <translation>Este projecto está em modo de leitura. Não pode ser limpo.</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="672"/>
+        <location filename="../sources/projectview.cpp" line="678"/>
         <source>Nettoyer le projet</source>
         <comment>window title</comment>
         <translation>Limpar o projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="712"/>
+        <location filename="../sources/projectview.cpp" line="718"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>Gravar como</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="714"/>
+        <location filename="../sources/projectview.cpp" line="720"/>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
         <translation>Esquema QElectroTech (*.qet)</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="751"/>
+        <location filename="../sources/projectview.cpp" line="757"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="193"/>
+        <location filename="../sources/projectview.cpp" line="194"/>
         <source>Enregistrer le projet en cours ?</source>
         <comment>message box title</comment>
         <translation>Gravar o projecto actual?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="194"/>
+        <location filename="../sources/projectview.cpp" line="195"/>
         <source>Voulez-vous enregistrer le projet ?</source>
         <comment>message box content</comment>
         <translation>Deseja gravar o projecto?</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="558"/>
+        <location filename="../sources/projectview.cpp" line="564"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
         <translation>projecto</translation>
     </message>
     <message>
-        <location filename="../sources/projectview.cpp" line="420"/>
+        <location filename="../sources/projectview.cpp" line="426"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <translation>Propriedades usadas quando um novo esquema é adicionado ao projecto:</translation>
     </message>
@@ -2202,82 +2202,100 @@ As alterações serão definitivas.</translation>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1071"/>
+        <location filename="../sources/qetapp.cpp" line="1112"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1072"/>
+        <location filename="../sources/qetapp.cpp" line="1113"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Esconder</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1073"/>
+        <location filename="../sources/qetapp.cpp" line="1114"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Ver</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1074"/>
+        <location filename="../sources/qetapp.cpp" line="1115"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Esconder os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1075"/>
+        <location filename="../sources/qetapp.cpp" line="1116"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Mostrar os editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1076"/>
+        <location filename="../sources/qetapp.cpp" line="1117"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Esconder os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1077"/>
+        <location filename="../sources/qetapp.cpp" line="1118"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Mostrar os editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1078"/>
+        <location filename="../sources/qetapp.cpp" line="1119"/>
+        <source>&amp;Masquer tous les éditeurs de cartouche</source>
+        <comment>systray submenu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1120"/>
+        <source>&amp;Restaurer tous les éditeurs de cartouche</source>
+        <comment>systray submenu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1121"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Novo editor de esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1079"/>
+        <location filename="../sources/qetapp.cpp" line="1122"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Novo editor de elemento</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1081"/>
+        <location filename="../sources/qetapp.cpp" line="1124"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Fechar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1082"/>
+        <location filename="../sources/qetapp.cpp" line="1125"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Minimizar QElectroTech para a bandeja de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1083"/>
+        <location filename="../sources/qetapp.cpp" line="1126"/>
         <source>Restaurer QElectroTech</source>
         <translation>Restaurar QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1116"/>
+        <location filename="../sources/qetapp.cpp" line="1181"/>
         <source>Éditeurs de schémas</source>
         <translation>Editores de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1132"/>
+        <location filename="../sources/qetapp.cpp" line="1190"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Editores de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1193"/>
+        <location filename="../sources/qetapp.cpp" line="1200"/>
+        <source>Éditeurs de cartouche</source>
+        <comment>systray menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1265"/>
         <source>Usage : </source>
         <translation>Utilização: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1194"/>
+        <location filename="../sources/qetapp.cpp" line="1266"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2294,7 +2312,7 @@ Opções disponiveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1193"/>
+        <location filename="../sources/qetapp.cpp" line="1265"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2303,99 +2321,99 @@ Opções disponiveis:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1200"/>
+        <location filename="../sources/qetapp.cpp" line="1272"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define a directoria da colecção de elementos
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1203"/>
+        <location filename="../sources/qetapp.cpp" line="1275"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define a directoria de configuração
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1205"/>
+        <location filename="../sources/qetapp.cpp" line="1277"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define a directoria dos ficheiros de linguagem</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="113"/>
+        <location filename="../sources/qetapp.cpp" line="112"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... Editor de esquemas</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="98"/>
+        <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="106"/>
+        <location filename="../sources/qetapp.cpp" line="105"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... Lendo as colecções de elementos</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="116"/>
+        <location filename="../sources/qetapp.cpp" line="115"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... abertura dos ficheiros</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="544"/>
+        <location filename="../sources/qetapp.cpp" line="584"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="545"/>
+        <location filename="../sources/qetapp.cpp" line="585"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="546"/>
+        <location filename="../sources/qetapp.cpp" line="586"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Esquema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="547"/>
+        <location filename="../sources/qetapp.cpp" line="587"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Eléctrico</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="548"/>
+        <location filename="../sources/qetapp.cpp" line="588"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="998"/>
+        <location filename="../sources/qetapp.cpp" line="1039"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>A carregar...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1067"/>
+        <location filename="../sources/qetapp.cpp" line="1108"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>A carregar... Ícone da bandeja de sistema</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1069"/>
+        <location filename="../sources/qetapp.cpp" line="1110"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1097"/>
+        <location filename="../sources/qetapp.cpp" line="1142"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
@@ -4074,145 +4092,187 @@ Que désirez vous faire ?</source>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="111"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation type="unfinished">&amp;Guardar</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="115"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation type="unfinished">&amp;Sair</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
-        <source>&amp;Configurer QElectroTech</source>
-        <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Configurar QElectroTech</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="115"/>
-        <source>À &amp;propos de QElectroTech</source>
-        <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Sobre QElectroTech</translation>
-    </message>
-    <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
-        <source>À propos de &amp;Qt</source>
+        <source>Zoom avant</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Sobre &amp;Qt</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
-        <source>&amp;Fusionner les cellules</source>
+        <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
+        <source>Zoom adapté</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Ajustar à janela</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
+        <source>Pas de zoom</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Sem zoom</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="120"/>
+        <source>&amp;Configurer QElectroTech</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Configurar QElectroTech</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="121"/>
+        <source>À &amp;propos de QElectroTech</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Sobre QElectroTech</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="122"/>
+        <source>À propos de &amp;Qt</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Sobre &amp;Qt</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="123"/>
+        <source>&amp;Fusionner les cellules</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="124"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="121"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="127"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="122"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="128"/>
         <source>Ctrl+K</source>
         <comment>shortcut to merge cells</comment>
         <translation type="unfinished">Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="123"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="129"/>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
         <translation type="unfinished">Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="125"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="132"/>
+        <source>Ctrl+9</source>
+        <comment>shortcut to enable fit zoom</comment>
+        <translation type="unfinished">Ctrl+9</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
+        <source>Ctrl+0</source>
+        <comment>shortcut to reset zoom</comment>
+        <translation type="unfinished">Ctrl+0</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation type="unfinished">Permite especificar vários parâmetros para QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="126"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="136"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation type="unfinished">Apresenta informações sobre QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="127"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="137"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation type="unfinished">Apresenta informações sobre as bibliotecas Qt</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="143"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="157"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Ficheiro</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="144"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="158"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Editar</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="145"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="159"/>
+        <source>Afficha&amp;ge</source>
+        <comment>menu title</comment>
+        <translation type="unfinished">Ve&amp;r</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="160"/>
         <source>&amp;Configuration</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Configurações</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="146"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="161"/>
         <source>&amp;Aide</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Ajuda</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="179"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="201"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="181"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="203"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation type="unfinished">Desfazer</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="194"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="216"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="266"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="298"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation type="unfinished">QElectrotech - Editor de modelos de moldura</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="277"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="373"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation type="unfinished"></translation>
@@ -5316,13 +5376,13 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplate</name>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1186"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1198"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
         <translation> %1 : %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1188"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1200"/>
         <source> %1</source>
         <translation> %1</translation>
     </message>
@@ -5455,6 +5515,22 @@ Que désirez vous faire ?</source>
     </message>
 </context>
 <context>
+    <name>TitleBlockTemplateDeleter</name>
+    <message>
+        <location filename="../sources/titleblock/templatedeleter.cpp" line="56"/>
+        <source>Supprimer le modèle de cartouche ?</source>
+        <comment>message box title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
+        <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
+</source>
+        <comment>message box content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>TitleBlockTemplateLocationChooser</name>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="91"/>
@@ -5484,104 +5560,104 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateLogoManager</name>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="59"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="66"/>
         <source>Gestionnaire de logos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="60"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="67"/>
         <source>Logos embarqués dans ce modèle :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="70"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="77"/>
         <source>Ajouter un logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="71"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Supprimer ce logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="72"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="79"/>
         <source>Propriétés</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="73"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="80"/>
         <source>Nom :</source>
         <translation type="unfinished">Nome:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="175"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="82"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="182"/>
         <source>Renommer</source>
         <translation type="unfinished">Renomear</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="76"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="234"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="83"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="241"/>
         <source>Type :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="168"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="175"/>
         <source>Logo déjà existant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="174"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="181"/>
         <source>Remplacer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="194"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="201"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="230"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="237"/>
         <source>Type : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="247"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="254"/>
         <source>Choisir une image / un logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="249"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
         <translation type="unfinished">Imagens vectoriais (*.svg);;Imagens bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Todos os ficheiros (*)</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
         <source>Erreur</source>
         <translation type="unfinished">Erro</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
         <translation type="unfinished">Não é possível abrir o ficheiro especificado</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="290"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="299"/>
         <source>Renommer un logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="295"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
         <source>Vous devez saisir un nouveau nom.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="313"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="313"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5589,118 +5665,118 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateView</name>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="158"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="182"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="159"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="183"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
         <translation type="unfinished">Largura:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="182"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="206"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="183"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="207"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
         <translation type="unfinished">Altura:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="316"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="373"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="317"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="374"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="318"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="375"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="319"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="376"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="320"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="377"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="321"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="378"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="322"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="379"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="323"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="380"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="324"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="381"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="387"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="445"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="396"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="454"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="449"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="504"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="509"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="564"/>
         <source>%1px</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="554"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="609"/>
         <source>Changer la largeur de l&apos;aperçu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="555"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="610"/>
         <source>Largeur de l&apos;aperçu :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="680"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="746"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
         <translation type="unfinished"></translation>
