@@ -2240,13 +2240,13 @@ Changes will be definitive.</translation>
         <location filename="../sources/qetapp.cpp" line="1119"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hide title block template editors</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1120"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Show title block template editors</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1121"/>
@@ -2287,7 +2287,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/qetapp.cpp" line="1200"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Title block template editors</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1265"/>
@@ -4113,25 +4113,25 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Zoom In</translation>
+        <translation>Zoom In</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Zoom Out</translation>
+        <translation>Zoom out</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Fit in view</translation>
+        <translation>Fit in view</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Reset zoom</translation>
+        <translation>Reset zoom</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="120"/>
@@ -4185,13 +4185,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="132"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
-        <translation type="unfinished">Ctrl+9</translation>
+        <translation>Ctrl+9</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
-        <translation type="unfinished">Ctrl+0</translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
@@ -4227,7 +4227,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="159"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation type="unfinished">Displ&amp;ay</translation>
+        <translation>Displ&amp;ay</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="160"/>
@@ -5520,14 +5520,14 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="56"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Delete the title block template?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Do you really want to delete this title block template (%1)?</translation>
     </message>
 </context>
 <context>
