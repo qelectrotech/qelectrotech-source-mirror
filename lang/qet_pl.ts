@@ -2243,13 +2243,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/qetapp.cpp" line="1119"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ukryj wszystkie edytory tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1120"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Pokaż wszystkie edytory tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1121"/>
@@ -2290,7 +2290,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/qetapp.cpp" line="1200"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edytory tabliczek rysunkowych</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1265"/>
@@ -4120,25 +4120,25 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Powiększ</translation>
+        <translation>Powiększ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Pomniejsz</translation>
+        <translation>Pomniejsz</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Dostosuj powiększenie</translation>
+        <translation>Dostosuj powiększenie</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Przywróć powiększenie</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="120"/>
@@ -4192,13 +4192,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="132"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
-        <translation type="unfinished">Ctrl+9</translation>
+        <translation>Ctrl+9</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
-        <translation type="unfinished">Ctrl+0</translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
@@ -4234,7 +4234,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="159"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Widok</translation>
+        <translation>&amp;Widok</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="160"/>
@@ -4714,7 +4714,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="606"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation>Połączenie %1 komórek</translation>
+        <translation>Scalenie %1 komórek</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="723"/>
@@ -5530,14 +5530,15 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="56"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Usunąć szablon tabliczki rysunkowej ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Czy na pewno usunąć ten szablon tzbliczki rysunkowej (%1) ?
+</translation>
     </message>
 </context>
 <context>
