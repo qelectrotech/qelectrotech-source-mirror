@@ -450,7 +450,8 @@
         <location filename="../sources/diagramview.cpp" line="784"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Folio : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="786"/>
@@ -528,7 +529,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="899"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat novou barvu pro tento vodič</translation>
     </message>
 </context>
 <context>
@@ -1079,13 +1080,13 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/elementspanel.cpp" line="1230"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Výkres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1237"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="595"/>
@@ -1095,7 +1096,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1185"/>
         <source>Modèles de cartouche</source>
-        <translation>Vzory vloženého rámečku</translation>
+        <translation>Vzory záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="1198"/>
@@ -1154,7 +1155,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít soubor s prvkem</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
@@ -1231,7 +1232,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový vzor</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
@@ -1465,7 +1466,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation>Nakreslit vložený rámeček</translation>
+        <translation>Nakreslit záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
@@ -2240,13 +2241,13 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/qetapp.cpp" line="1119"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Skrýt všechny editory předlohy záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1120"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Ukázat všechny editory záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1121"/>
@@ -2287,7 +2288,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/qetapp.cpp" line="1200"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editory záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1265"/>
@@ -2351,7 +2352,7 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="97"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nahrává se... Inicializuje se vyrovnávací paměť sbírky s prvky</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="105"/>
@@ -3024,7 +3025,7 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>Upraví informace zobrazené ve vloženém rámečku</translation>
+        <translation>Upraví informace zobrazené v záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
@@ -4049,7 +4050,8 @@ Dostupné volby:
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že tento dokument byl uložen s novější verzí QElectroTechu. Je možné, že se nepodaří otevřít dokument celý nebo jeho část.
+Co chcete dělat?</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1165"/>
@@ -4089,7 +4091,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="660"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přistupovat k prvku, který má být začleněn</translation>
     </message>
 </context>
 <context>
@@ -4098,187 +4100,187 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Uložit</translation>
+        <translation>&amp;Uložit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Uložit jako</translation>
+        <translation>Uložit jako</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="115"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Ukončit</translation>
+        <translation>&amp;Ukončit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Přiblížit</translation>
+        <translation>Přiblížit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Oddálit</translation>
+        <translation>Oddálit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Přizpůsobit přiblížení</translation>
+        <translation>Přizpůsobit přiblížení</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Bez přiblížení</translation>
+        <translation>Bez přiblížení</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="120"/>
         <source>&amp;Configurer QElectroTech</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Nastavit QElectroTech</translation>
+        <translation>&amp;Nastavit QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="121"/>
         <source>À &amp;propos de QElectroTech</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;O QElectroTechu</translation>
+        <translation>&amp;O QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="122"/>
         <source>À propos de &amp;Qt</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">O &amp;Qt</translation>
+        <translation>O &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="123"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Sloučit buňky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="124"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Rozdělit buňky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="127"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
-        <translation type="unfinished">Ctrl+Q</translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="128"/>
         <source>Ctrl+K</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="129"/>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="132"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
-        <translation type="unfinished">Ctrl+9</translation>
+        <translation>Ctrl+9</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
-        <translation type="unfinished">Ctrl+0</translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Umožní pro QElectroTech stanovit různé parametry</translation>
+        <translation>Umožní pro QElectroTech stanovit různé parametry</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="136"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Zobrazí informace o QElectroTechu</translation>
+        <translation>Zobrazí informace o QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="137"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Zobrazí informace o knihovně Qt</translation>
+        <translation>Zobrazí informace o knihovně Qt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="157"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Soubor</translation>
+        <translation>&amp;Soubor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="158"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Úpravy</translation>
+        <translation>&amp;Úpravy</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="159"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Zobrazení</translation>
+        <translation>&amp;Zobrazení</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="160"/>
         <source>&amp;Configuration</source>
         <comment>menu title</comment>
-        <translation type="unfinished">N&amp;astavení</translation>
+        <translation>N&amp;astavení</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="161"/>
         <source>&amp;Aide</source>
         <comment>menu title</comment>
-        <translation type="unfinished">&amp;Nápověda</translation>
+        <translation>&amp;Nápověda</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="201"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
-        <translation type="unfinished">Žádná úprava</translation>
+        <translation>Žádná úprava</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="203"/>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation type="unfinished">Zpět</translation>
+        <translation>Zpět</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="216"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti buňky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="298"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
-        <translation type="unfinished">QElectroTech - Editor vzoru vloženého rámečku</translation>
+        <translation>QElectroTech - Editor vzoru záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="373"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uložit vzor jako</translation>
     </message>
 </context>
 <context>
@@ -4398,7 +4400,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="837"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translation>upravit vložený rámeček</translation>
+        <translation>upravit záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="868"/>
@@ -4656,121 +4658,121 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimension.cpp" line="37"/>
         <source>%1px</source>
         <comment>titleblock: absolute width</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="39"/>
         <source>%1%</source>
         <comment>titleblock: width relative to total length</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="41"/>
         <source>%1% du restant</source>
         <comment>titleblock: width relative to remaining length</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1% ze zbytku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="400"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vložení řádku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="402"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Smazání řádku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="406"/>
         <source>Insertion d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vložení sloupce</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="408"/>
         <source>Suppression d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Smazání sloupce</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="541"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravení řádku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="543"/>
         <source>Modification d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravení sloupce</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="606"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sloučení %1 buněk</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="723"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rozdělení buňky do %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="118"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Štítek</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>affichage du label</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazení štítku</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="128"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazená hodnota</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="130"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnání textu</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Velikost textu</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vodorovná úprava</translation>
     </message>
 </context>
 <context>
@@ -5049,7 +5051,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/templateeditor.cpp" line="241"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation>QElectroTech - Editor vzoru vloženého rámečku</translation>
+        <translation>QElectroTech - Editor vzoru záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/templateeditor.cpp" line="253"/>
@@ -5254,37 +5256,37 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="93"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished">Šířka:</translation>
+        <translation>Šířka:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="102"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation type="unfinished"></translation>
+        <translation>Absolutní</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="103"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Poměrná k celku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="104"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Poměrná ke zbytku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="144"/>
         <source>%</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished"></translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="146"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -5326,7 +5328,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="228"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation>Zde můžete stanovit svá vlastní spojení název/hodnota, aby se s nimi počítalo ve vloženém rámečku. Příklad: sdružením názvu &quot;volta&quot; a hodnoty &quot;1745&quot; dojde v rámečku k nahrazení %volta 1745.</translation>
+        <translation>Zde můžete stanovit svá vlastní spojení název/hodnota, aby se s nimi počítalo v záhlaví výkresu. Příklad: sdružením názvu &quot;volta&quot; a hodnoty &quot;1745&quot; dojde v záhlaví výkresu k nahrazení %volta 1745.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="239"/>
@@ -5376,7 +5378,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="314"/>
         <source>Informations du cartouche</source>
-        <translation>Vlastnosti vloženého rámečku</translation>
+        <translation>Vlastnosti záhlaví výkresu</translation>
     </message>
 </context>
 <context>
@@ -5398,126 +5400,126 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="47"/>
         <source>Type de cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ buňky:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Vide</source>
-        <translation type="unfinished"></translation>
+        <translation>Prázdný</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="50"/>
         <source>Texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <source>Logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="55"/>
         <source>Aucun logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Žádné logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Gérer les logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Spravovat loga</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="58"/>
         <source>Nom :</source>
-        <translation type="unfinished">Název:</translation>
+        <translation>Název:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Afficher un label :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zobrazit štítek:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="67"/>
         <source>Editer</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="64"/>
         <source>Texte :</source>
-        <translation type="unfinished">Text:</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
         <source>Alignement :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnání:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>horizontal :</source>
-        <translation type="unfinished">vodorovný:</translation>
+        <translation>Vodorovné:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="71"/>
         <source>Gauche</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlevo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <source>Centré</source>
-        <translation type="unfinished"></translation>
+        <translation>Na střed</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
         <source>Droite</source>
-        <translation type="unfinished"></translation>
+        <translation>Vpravo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>vertical :</source>
-        <translation type="unfinished">svislý:</translation>
+        <translation>svislé:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="79"/>
         <source>Haut</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahoře</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Milieu</source>
-        <translation type="unfinished"></translation>
+        <translation>Uprostřed</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Bas</source>
-        <translation type="unfinished"></translation>
+        <translation>Dole</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="87"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit velikost písma, je-li to potřeba</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="233"/>
         <source>Label de cette cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Štítek pro tuto buňku:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="242"/>
         <source>Valeur de cette cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota pro tuto buňku:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="288"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation type="unfinished"></translation>
+        <translation>Žádné logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="369"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravení buňky: %1</translation>
     </message>
 </context>
 <context>
@@ -5526,14 +5528,15 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="56"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vzor záhlaví výkresu?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete smazat tento vzor záhlaví výkresu (%1?
+</translation>
     </message>
 </context>
 <context>
@@ -5542,25 +5545,25 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="91"/>
         <source>Projet parent</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rodičovský projekt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="92"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Stávající vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="93"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>nebo nový název</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="109"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nový vzor (zadejte jeho název)</translation>
     </message>
 </context>
 <context>
@@ -5568,104 +5571,104 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="66"/>
         <source>Gestionnaire de logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Správce log</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="67"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Loga vložená do tohoto vzoru:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="77"/>
         <source>Ajouter un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Přidat logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Supprimer ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="79"/>
         <source>Propriétés</source>
-        <translation type="unfinished"></translation>
+        <translation>Vlastnosti</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="80"/>
         <source>Nom :</source>
-        <translation type="unfinished">Název:</translation>
+        <translation>Název:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="82"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="182"/>
         <source>Renommer</source>
-        <translation type="unfinished">Přejmenovat</translation>
+        <translation>Přejmenovat</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="83"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="241"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="175"/>
         <source>Logo déjà existant</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo již existuje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="181"/>
         <source>Remplacer</source>
-        <translation type="unfinished"></translation>
+        <translation>Nahradit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="201"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Logo s názvem &quot;%1&quot; už uvnitř tohoto vzoru záhlaví výkresu existuje. Chcete je nahradit nebo dáváte přednost stanovení jiného názvu pro toto nové logo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="237"/>
         <source>Type : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="254"/>
         <source>Choisir une image / un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat obrázek/logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="256"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished">Vektorové obrázky (*.svg);;Bitmapové obrázky (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Všechny soubory (*)</translation>
+        <translation>Vektorové obrázky (*.svg);;Bitmapové obrázky (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Všechny soubory (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
         <source>Erreur</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished">Daný soubor nelze otevřít</translation>
+        <translation>Daný soubor nelze otevřít</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="299"/>
         <source>Renommer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Přejmenovat logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="304"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Musíte zadat nový název.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="313"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Nový název nemůže být prázdný.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="322"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Vámi zadaný název už používá jiné logo.</translation>
     </message>
 </context>
 <context>
@@ -5674,118 +5677,118 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templateview.cpp" line="182"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změnit šířku sloupce</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="183"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation type="unfinished">Šířka:</translation>
+        <translation>Šířka:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="206"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změnit výšku řádku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="207"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation type="unfinished">Výška:</translation>
+        <translation>Výška:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="373"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat sloupec (před)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="374"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat řádek (před)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="375"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat sloupec (po)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="376"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat řádek (po)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="377"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změnit rozměry tohoto sloupce</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="378"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změnit rozměry tohoto řádku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="379"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Smazat tento sloupec</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="380"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Smazat tento řádek</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="381"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změnit šířku tohoto náhledu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="445"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
-        <translation type="unfinished"></translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="454"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
-        <translation type="unfinished"></translation>
+        <translation>[%1px]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="504"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="564"/>
         <source>%1px</source>
-        <translation type="unfinished"></translation>
+        <translation>%1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="609"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation type="unfinished"></translation>
+        <translation>Změnit šířku náhledu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="610"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation type="unfinished"></translation>
+        <translation>Šířka náhledu:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="746"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Celková šířka pro tento náhled: %1px</translation>
     </message>
 </context>
 </TS>
