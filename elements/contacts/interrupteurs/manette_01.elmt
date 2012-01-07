@@ -3,6 +3,7 @@
         <name lang="en">Switch handle and knob positions</name>
         <name lang="fr">Boutons tournant à manette</name>
         <name lang="pl">Pozycja pokrętła łącznika</name>
+        <name lang="cs">Poloha otočného knoflíku spínače</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,8 +1,9 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="en">Emergency stop (LATCH)</name>
+        <name lang="en">Emergency stop (POJISTKA)</name>
         <name lang="fr">Arrêt d'urgence (VERROU)</name>
         <name lang="pl">Łącznik przyciskowy, odblokowywany kluczykiem (przycisk bezpieczeństwa)</name>
+        <name lang="cs">Nouzové zastavení (LATCH)</name>
     </names>
     <informations></informations>
     <description>
