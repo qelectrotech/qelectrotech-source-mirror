@@ -3,6 +3,7 @@
         <name lang="en">Contactor fuses CRM</name>
         <name lang="fr">Contacteur fusibles CRM</name>
         <name lang="pl">Stycznik z bezpiecznikiem CRM</name>
+        <name lang="cs">Stykač s pojistkou CRM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

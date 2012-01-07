@@ -3,6 +3,7 @@
         <name lang="en">Switch QMC</name>
         <name lang="fr">Interrupteur QMC</name>
         <name lang="pl">Rozłącznik QMC</name>
+        <name lang="cs">Přerušovač s pojistkou QMC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,6 +3,7 @@
         <name lang="en">Switch IMB</name>
         <name lang="fr">Interrupteur IMB</name>
         <name lang="pl">Rozłącznik IMB</name>
+        <name lang="cs">Přerušovač IMB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

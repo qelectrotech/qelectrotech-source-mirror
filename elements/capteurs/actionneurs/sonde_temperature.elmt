@@ -3,6 +3,7 @@
         <name lang="en">Temperature Probe</name>
         <name lang="fr">Sonde de Température</name>
         <name lang="pl">Czujnik temperatury</name>
+        <name lang="cs">Teplotní čidlo</name>
     </names>
     <informations></informations>
     <description>
