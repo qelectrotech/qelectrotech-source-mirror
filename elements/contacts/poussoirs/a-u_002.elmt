@@ -4,6 +4,7 @@
         <name lang="fr">Arret d`urgence</name>
         <name lang="pl">Łącznik przyciskowy, odblokowywany kluczykiem (przycisk bezpieczeństwa), </name>
     </names>
+        <name lang="cs">Nouzové zastavení</name>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

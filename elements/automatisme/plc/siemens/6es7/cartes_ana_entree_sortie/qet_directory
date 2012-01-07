@@ -3,5 +3,6 @@
 	<name lang="en">Input_output cards analog</name>
         <name lang="fr">Cartes entree_sortie analogiques</name>
         <name lang="pl">Karty wejść_wyjść analogowych</name>
+	<name lang="cs">Karty analogových vstupů/výstupů</name>
     </names>
 </qet-directory>
