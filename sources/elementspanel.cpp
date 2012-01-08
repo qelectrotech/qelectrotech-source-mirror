@@ -25,6 +25,7 @@
 #include "fileelementscollection.h"
 #include "fileelementdefinition.h"
 #include "qeticons.h"
+#include "templatescollection.h"
 
 /**
 	This class implements a thread reloading the following elements
@@ -204,8 +205,12 @@ bool ElementsPanel::itemIsWritable(QTreeWidgetItem *qtwi) const {
 	@param qtwi A QTreeWidgetItem 
 	@return true if the given QTreeWidgetItem represents a block templates directory
 */
-bool ElementsPanel::itemIsATitleBlockTemplatesDirectory(QTreeWidgetItem *qtwi) const {
-	return(title_blocks_directories_.contains(qtwi));
+bool ElementsPanel::itemIsATitleBlockTemplatesCollection(QTreeWidgetItem *qtwi) const {
+	return(
+		qtwi == custom_tbt_collection_item_ ||
+		qtwi == common_tbt_collection_item_ ||
+		title_blocks_collections_.contains(qtwi)
+	);
 }
 
 /**
@@ -213,9 +218,7 @@ bool ElementsPanel::itemIsATitleBlockTemplatesDirectory(QTreeWidgetItem *qtwi) c
 	@return true if the given QTreeWidgetItem represents a block template
 */
 bool ElementsPanel::itemIsATitleBlockTemplate(QTreeWidgetItem *qtwi) const {
-	// does this QTreeWidgetItem have a parent?
-	if (!qtwi -> parent()) return(false);
-	return(itemIsATitleBlockTemplatesDirectory(qtwi -> parent()));
+	return(title_blocks_.contains(qtwi));
 }
 
 /**
@@ -333,7 +336,7 @@ bool ElementsPanel::selectedItemIsWritable() const {
 	templates directory
 */
 bool ElementsPanel::selectedItemIsATitleBlockTemplatesDirectory() const {
-	return(itemIsATitleBlockTemplatesDirectory(currentItem()));
+	return(itemIsATitleBlockTemplatesCollection(currentItem()));
 }
 
 /**
@@ -563,9 +566,9 @@ bool ElementsPanel::event(QEvent *event) {
 	@return Le QTreeWidgetItem insere le plus haut
 */
 QTreeWidgetItem *ElementsPanel::addProject(QTreeWidgetItem *qtwi_parent, QETProject *project) {
-	// le projet sera insere juste avant la collection commune
+	// the project will be inserted right before the common tb templates collection
 	QTreeWidgetItem *last_project = 0;
-	if (int common_collection_item_idx = indexOfTopLevelItem(common_collection_item_)) {
+	if (int common_collection_item_idx = indexOfTopLevelItem(common_tbt_collection_item_)) {
 		last_project = topLevelItem(common_collection_item_idx - 1);
 	}
 	
@@ -584,14 +587,10 @@ QTreeWidgetItem *ElementsPanel::addProject(QTreeWidgetItem *qtwi_parent, QETProj
 		addDiagram(qtwi_project, diagram);
 	}
 	
-	// add the title blocks templates embedded within the project
-	updateProjectTemplates(project);
-	connect(
-		project, SIGNAL(projectTemplatesChanged(QETProject *)),
-		this,    SLOT  (projectTemplatesChanged(QETProject *))
-	);
+	// add the embedded title block templates collection
+	addTitleBlockTemplatesCollection(qtwi_project, project -> embeddedTitleBlockTemplatesCollection());
 	
-	// ajoute la collection du projet
+	// add the embedded elements collection
 	addCollection(qtwi_project, project -> embeddedCollection(), tr("Collection projet"));
 	
 	return(qtwi_project);
@@ -739,6 +738,64 @@ QTreeWidgetItem *ElementsPanel::addElement(QTreeWidgetItem *qtwi_parent, Element
 }
 
 /**
+	Adds \a collection under \a qtwi_parent with the given \a label and \a icon.
+	@param qtwi_parent Parent QTreeWidgetItem
+	@param collection Title block templates collection to be added to the panel
+	@param label Label for the returned QTreeWidgetItem
+	@param icon  Label for the returned QTreeWidgetItem
+	@return the QTreeWidgetItem representing the collection
+*/
+QTreeWidgetItem *ElementsPanel::addTitleBlockTemplatesCollection(
+	QTreeWidgetItem *qtwi_parent,
+	TitleBlockTemplatesCollection *collection,
+	const QString &label,
+	const QIcon &icon
+) {
+	if (!collection) return(0);
+	
+	// check whether we have an item for the given collection
+	QTreeWidgetItem *qtwi_tbt_collection = title_blocks_collections_.key(collection);
+	if (!qtwi_tbt_collection) {
+		// the collection has not been added yet
+		QString final_label(label.isEmpty() ? tr("Mod\350les de cartouche") : label);
+		QIcon final_icon(icon.isNull() ? QET::Icons::TitleBlock : icon);
+		
+		// create the QTreeWidgetItem representing the collection itself
+		qtwi_tbt_collection = new QTreeWidgetItem(qtwi_parent, QStringList(final_label));
+		qtwi_tbt_collection -> setIcon(0, final_icon);
+		qtwi_tbt_collection -> setToolTip(0, collection -> location().toString());
+		qtwi_tbt_collection -> setExpanded(true);
+		title_blocks_collections_.insert(qtwi_tbt_collection, collection);
+		
+		// ensure the added collection will inform us about its changes
+		connect(
+			collection,
+			SIGNAL(changed(TitleBlockTemplatesCollection*, const QString &)),
+			this,
+			SLOT(titleBlockTemplatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &))
+		);
+	} else {
+		// the collection has already been added
+		// remove the child title block templates
+		foreach(QTreeWidgetItem *qtwi_tbt, qtwi_tbt_collection -> takeChildren()) {
+			deleteItem(qtwi_tbt);
+		}
+	}
+	
+	// add the templates
+	foreach (QString template_name, collection -> templates()) {
+		QString final_name = titleBlockTemplateNameToDisplay(template_name);
+		TitleBlockTemplateLocation template_location = collection -> location(template_name);
+		
+		QTreeWidgetItem *qtwi_tbt = new QTreeWidgetItem(qtwi_tbt_collection, QStringList(final_name));
+		qtwi_tbt -> setToolTip(0, template_location.toString());
+		qtwi_tbt -> setIcon(0, QET::Icons::TitleBlock);
+		title_blocks_.insert(qtwi_tbt, template_location);
+	}
+	return(qtwi_tbt_collection);
+}
+
+/**
 	Reloads the following collections:
 	  * common collection
 	  * custom collection
@@ -790,33 +847,48 @@ void ElementsPanel::reload(bool reload_collections) {
 	locations_.clear();
 	projects_.clear();
 	diagrams_.clear();
-	title_blocks_directories_.clear();
+	title_blocks_collections_.clear();
+	title_blocks_.clear();
 	common_collection_item_ = 0;
 	custom_collection_item_ = 0;
+	
+	QIcon system_icon(":/ico/16x16/qet.png");
+	QIcon user_icon(":/ico/16x16/go-home.png");
+	
 	
 	// estimates the number of categories and elements to load
 	int items_count = elementsCollectionItemsCount();
 	emit(loadingProgressed(loading_progress_ = 0, items_count));
 	
+	// load the common title block templates collection
+	TitleBlockTemplatesCollection *common_tbt_collection = QETApp::commonTitleBlockTemplatesCollection();
+	common_tbt_collection_item_ = addTitleBlockTemplatesCollection(invisibleRootItem(), common_tbt_collection, common_tbt_collection -> title(), system_icon);
+	if (first_reload_) common_tbt_collection_item_ -> setExpanded(true);
+	
 	// chargement des elements de la collection QET
 	if (QETApp::commonElementsCollection()->rootCategory()) {
-		common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"),         QIcon(":/ico/16x16/qet.png"));
+		common_collection_item_ = addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"), system_icon);
 		if (first_reload_) common_collection_item_ -> setExpanded(true);
 	}
 	
+	// load the custom title block templates collection
+	TitleBlockTemplatesCollection *custom_tbt_collection = QETApp::customTitleBlockTemplatesCollection();
+	custom_tbt_collection_item_ = addTitleBlockTemplatesCollection(invisibleRootItem(), custom_tbt_collection, custom_tbt_collection -> title(), user_icon);
+	if (first_reload_) custom_tbt_collection_item_ -> setExpanded(true);
+	
 	// chargement des elements de la collection utilisateur
 	if (QETApp::customElementsCollection()->rootCategory()) {
-		custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QIcon(":/ico/16x16/go-home.png"));
+		custom_collection_item_ = addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), user_icon);
 		if (first_reload_) custom_collection_item_ -> setExpanded(true);
 	}
-	
-	// the first time, expand the first level of collections
-	if (first_reload_) first_reload_ = false;
 	
 	// chargement des projets
 	foreach(QETProject *project, projects_to_display_.values()) {
 		addProject(invisibleRootItem(), project);
 	}
+	
+	// the first time, expand the first level of collections
+	if (first_reload_) first_reload_ = false;
 	
 	// reselectionne le dernier element selectionne
 	if (!last_selected_item.isNull()) {
@@ -843,9 +915,7 @@ void ElementsPanel::slot_doubleClick(QTreeWidgetItem *qtwi, int) {
 	} else if (ElementsCollectionItem *item = collectionItemForItem(qtwi)) {
 		emit(requestForCollectionItem(item));
 	} else if (itemIsATitleBlockTemplate(qtwi)) {
-		if (QETProject *project = projectForTitleBlockTemplate(qtwi)) {
-			emit(requestForTitleBlockTemplate(project, nameOfTitleBlockTemplate(qtwi)));
-		}
+		emit(requestForTitleBlockTemplate(title_blocks_[qtwi]));
 	}
 }
 
@@ -899,8 +969,10 @@ void ElementsPanel::deleteItem(QTreeWidgetItem *removed_item) {
 		diagrams_.remove(removed_item);
 	} else if (projects_.contains(removed_item)) {
 		projects_.remove(removed_item);
-	} else if (title_blocks_directories_.contains(removed_item)) {
-		title_blocks_directories_.remove(removed_item);
+	} else if (title_blocks_collections_.contains(removed_item)) {
+		title_blocks_collections_.remove(removed_item);
+	} else if (title_blocks_.contains(removed_item)) {
+		title_blocks_.remove(removed_item);
 	}
 	
 	// supprime les eventuels enfants de l'item
@@ -928,27 +1000,18 @@ ElementsCategory *ElementsPanel::categoryForPos(const QPoint &pos) {
 }
 
 /**
-	@param qtwi A QTreeWidgetItem, supposed to represent a templates directory
-	@return the project that embeds the given templates directory, if
-	applicable, 0 otherwise
+	@param qtwi A QTreeWidgetItem, supposed to represent either a title block
+	@template or a title block templates collection. return the adequate title
+	@block template location
 */
-QETProject *ElementsPanel::projectForTitleBlockTemplatesDirectory(QTreeWidgetItem *qtwi) {
-	if (title_blocks_directories_.contains(qtwi)) {
-		return(title_blocks_directories_[qtwi]);
+TitleBlockTemplateLocation ElementsPanel::locationForTitleBlockTemplate(QTreeWidgetItem *qtwi) {
+	if (title_blocks_.contains(qtwi)) {
+		// the QTreeWidgetItem is a title block template
+		return(title_blocks_[qtwi]);
+	} else if (title_blocks_collections_.contains(qtwi)) {
+		return(title_blocks_collections_[qtwi] -> location());
 	}
-	return(0);
-}
-
-/**
-	@param qtwi A QTreeWidgetItem, supposed to represent a title block template
-	@return the project that embeds the given template, if applicable, 0
-	otherwise
-*/
-QETProject *ElementsPanel::projectForTitleBlockTemplate(QTreeWidgetItem *qtwi) {
-	if (qtwi->parent()) {
-		return(projectForTitleBlockTemplatesDirectory(qtwi->parent()));
-	}
-	return(0);
+	return(TitleBlockTemplateLocation());
 }
 
 /**
@@ -956,8 +1019,8 @@ QETProject *ElementsPanel::projectForTitleBlockTemplate(QTreeWidgetItem *qtwi) {
 	@return the name of the given template, if applicable, 0 otherwise
 */
 QString ElementsPanel::nameOfTitleBlockTemplate(QTreeWidgetItem *qtwi) {
-	if (itemIsATitleBlockTemplate(qtwi)) {
-		return(qtwi -> data(0, 42).toString());
+	if (title_blocks_.contains(qtwi)) {
+		return(title_blocks_[qtwi].name());
 	}
 	return(QString());
 }
@@ -1034,11 +1097,16 @@ void ElementsPanel::projectInformationsChanged(QETProject *project) {
 }
 
 /**
-	Handles the fact that the title block templates of a project changed.
-	@param project the modified project
+	@param collection Title block templates collection that changed and should be updated
+	@param template_name Name of the changed template (unused)
 */
-void ElementsPanel::projectTemplatesChanged(QETProject *project) {
-	updateProjectTemplates(project);
+void ElementsPanel::titleBlockTemplatesCollectionChanged(TitleBlockTemplatesCollection*collection, const QString &template_name) {
+	Q_UNUSED(template_name)
+	
+	QTreeWidgetItem *qtwi_parent = title_blocks_collections_.key(collection);
+	if (!qtwi_parent) qtwi_parent = invisibleRootItem();
+	
+	addTitleBlockTemplatesCollection(qtwi_parent, collection);
 }
 
 /**
@@ -1156,7 +1224,7 @@ void ElementsPanel::updateProjectItemInformations(QETProject *project) {
 	
 	// determine le nom et l'icone du projet
 	QString final_name(project -> pathNameTitle());
-	QString final_tooltip = project -> filePath();
+	QString final_tooltip = QDir::toNativeSeparators(project -> filePath());
 	if (final_tooltip.isEmpty()) {
 		final_tooltip = tr(
 			"Pas de fichier",
@@ -1173,7 +1241,7 @@ void ElementsPanel::updateProjectItemInformations(QETProject *project) {
 	(Re)generates the templates list of a given project.
 	@param project the project we want to update the templates
 */
-void ElementsPanel::updateProjectTemplates(QETProject *project) {
+/*void ElementsPanel::updateProjectTemplates(QETProject *project) {
 	// determine the QTWI for the templates directory of the given project
 	QTreeWidgetItem *qtwi_project = projects_.key(project);
 	if (!qtwi_project) return;
@@ -1194,13 +1262,18 @@ void ElementsPanel::updateProjectTemplates(QETProject *project) {
 	}
 	
 	// we can now populate the templates directory
-	foreach (QString titleblock_name, project -> embeddedTitleBlockTemplates()) {
-		QString final_name = QString(tr("Mod\350le \"%1\"")).arg(titleblock_name);
-		QTreeWidgetItem *titleblock_template_qtwi = new QTreeWidgetItem(titleblock_templates_qtwi, QStringList() << final_name);
-		titleblock_template_qtwi -> setIcon(0, QET::Icons::TitleBlock);
-		titleblock_template_qtwi -> setData(0, 42, titleblock_name); // we store the original title block template name here, since the displayed one could be modified
+	TitleBlockTemplatesCollection *collection = project -> embeddedTitleBlockTemplatesCollection();
+	if (!collection) {
+		// this stinks...
+		return;
 	}
-}
+	foreach (QString titleblock_name, collection -> templates()) {
+		QString final_name = titleBlockTemplateNameToDisplay(titleblock_name);
+		QTreeWidgetItem *titleblock_template_qtwi = new QTreeWidgetItem(titleblock_templates_qtwi, QStringList(final_name));
+		titleblock_template_qtwi -> setIcon(0, QET::Icons::TitleBlock);
+		titleblocks_.insert(titleblock_template_qtwi, collection -> location(titleblock_name));
+	}
+}*/
 
 /**
 	Updates the label of a diagram displayed by the elements panel
@@ -1243,6 +1316,14 @@ QString ElementsPanel::diagramTitleToDisplay(Diagram *diagram) const {
 		displayed_label = displayed_title;
 	}
 	return(displayed_label);
+}
+
+/**
+	@param template_name Name of a title block template
+	@return a displayable title
+*/
+QString ElementsPanel::titleBlockTemplateNameToDisplay(const QString &template_name) const {
+	return(tr("Mod\350le \"%1\"", "used to display a title block template").arg(template_name));
 }
 
 /**

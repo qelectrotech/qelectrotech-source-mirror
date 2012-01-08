@@ -19,6 +19,8 @@
 #define TITLEBLOCK_SLASH_TEMPLATE_LOCATION_H
 #include <QtCore>
 class QETProject;
+class TitleBlockTemplate;
+class TitleBlockTemplatesCollection;
 
 /**
 	This class represents the location of a title block template.
@@ -26,20 +28,24 @@ class QETProject;
 class TitleBlockTemplateLocation {
 	// constructor, destructor
 	public:
-	TitleBlockTemplateLocation(QETProject * = 0, const QString & = QString());
+	TitleBlockTemplateLocation(const QString & = QString(), TitleBlockTemplatesCollection * = 0);
 	virtual ~TitleBlockTemplateLocation();
 	
 	// methods
 	public:
-	QETProject *project() const;
-	void setProject(QETProject *);
+	TitleBlockTemplatesCollection *parentCollection() const;
+	void setParentCollection(TitleBlockTemplatesCollection *);
 	QString name() const;
 	void setName(const QString &);
 	bool isValid() const;
+	QString toString() const;
+	QETProject *parentProject() const;
+	QString protocol() const;
+	TitleBlockTemplate *getTemplate() const;
 	
 	// attributes
 	private:
-	QETProject *project_; ///< Parent project of the template, if any
-	QString name_;        ///< Name of the template
+	TitleBlockTemplatesCollection *collection_; ///< Collection the template belongs to
+	QString name_;                              ///< Name of the template
 };
 #endif

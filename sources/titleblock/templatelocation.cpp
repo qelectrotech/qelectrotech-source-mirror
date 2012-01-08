@@ -16,14 +16,16 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "templatelocation.h"
+#include "templatescollection.h"
+#include "qetapp.h"
 
 /**
 	Constructor
-	@param project Parent project of the title block template
+	@param collection Parent collection of the title block template
 	@param name Name of the title block template within its parent project or collection
 */
-TitleBlockTemplateLocation::TitleBlockTemplateLocation(QETProject *project, const QString &name) :
-	project_(project),
+TitleBlockTemplateLocation::TitleBlockTemplateLocation(const QString &name, TitleBlockTemplatesCollection *collection) :
+	collection_(collection),
 	name_(name)
 {
 }
@@ -35,18 +37,18 @@ TitleBlockTemplateLocation::~TitleBlockTemplateLocation() {
 }
 
 /**
-	@return the parent project of the template, or 0 if none was defined
+	@return the parent collection of the template, or 0 if none was defined
 */
-QETProject *TitleBlockTemplateLocation::project() const {
-	return(project_);
+TitleBlockTemplatesCollection *TitleBlockTemplateLocation::parentCollection() const {
+	return(collection_);
 }
 
 /**
-	@param project The new parent project of the template, or 0 if none
+	@param project The new parent collection of the template, or 0 if none
 	applies.
 */
-void TitleBlockTemplateLocation::setProject(QETProject *project) {
-	project_ = project;
+void TitleBlockTemplateLocation::setParentCollection(TitleBlockTemplatesCollection *collection) {
+	collection_ = collection;
 }
 
 /**
@@ -67,5 +69,43 @@ void TitleBlockTemplateLocation::setName(const QString &name) {
 	@return true if this location is null, false otherwise
 */
 bool TitleBlockTemplateLocation::isValid() const {
-	return(project_ && !name_.isEmpty());
+	return(!name_.isEmpty());
+}
+
+/**
+	@return A string representation of the location
+*/
+QString TitleBlockTemplateLocation::toString() const {
+	return(protocol() + QString("://") + name_);
+}
+
+/**
+	This is a convenience method equivalent to
+	parentCollection() -> parentProject().
+*/
+QETProject *TitleBlockTemplateLocation::parentProject() const {
+	if (collection_) {
+		return(collection_ -> parentProject());
+	}
+	return(0);
+}
+
+/**
+	This is a convenience method equivalent to
+	parentCollection() -> protocol().
+*/
+QString TitleBlockTemplateLocation::protocol() const {
+	if (collection_) {
+		return(collection_ -> protocol());
+	}
+	return("unknown");
+}
+
+/**
+	This is a convenience method equivalent to
+	parentCollection() -> getTemplate(...).
+*/
+TitleBlockTemplate *TitleBlockTemplateLocation::getTemplate() const {
+	if (!collection_ || name_.isEmpty()) return(0);
+	return(collection_ -> getTemplate(name_));
 }

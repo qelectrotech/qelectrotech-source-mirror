@@ -131,9 +131,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	);
 	connect(
 		elements_panel,
-		SIGNAL(requestForTitleBlockTemplate(QETProject *, const QString &)),
+		SIGNAL(requestForTitleBlockTemplate(const TitleBlockTemplateLocation &)),
 		QETApp::instance(),
-		SLOT(openTitleBlockTemplate(QETProject *, const QString &))
+		SLOT(openTitleBlockTemplate(const TitleBlockTemplateLocation &))
 	);
 	connect(elements_panel, SIGNAL(loadingProgressed(int, int)),  this, SLOT(updateProgressBar(int, int)));
 	connect(elements_panel, SIGNAL(readingAboutToBegin()),        this, SLOT(collectionsRead()));
@@ -263,15 +263,9 @@ void ElementsPanelWidget::addTitleBlockTemplate() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (!current_item) return;
 	
-	QETProject *parent_project = 0;
-	if (elements_panel -> itemIsATitleBlockTemplate(current_item)) {
-		parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
-	} else if (elements_panel -> itemIsATitleBlockTemplatesDirectory(current_item)) {
-		parent_project = elements_panel -> projectForTitleBlockTemplatesDirectory(current_item);
-	}
-	
-	if (parent_project) {
-		QETApp::instance() -> openTitleBlockTemplate(parent_project);
+	if (elements_panel -> itemIsATitleBlockTemplatesCollection(current_item)) {
+		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(current_item);
+		QETApp::instance() -> openTitleBlockTemplate(location);
 	}
 }
 
@@ -281,9 +275,7 @@ void ElementsPanelWidget::addTitleBlockTemplate() {
 void ElementsPanelWidget::editTitleBlockTemplate() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
-		QETProject *parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
-		QString template_name = elements_panel -> nameOfTitleBlockTemplate(current_item);
-		QETApp::instance() -> openTitleBlockTemplate(parent_project, template_name);
+		QETApp::instance() -> openTitleBlockTemplate(elements_panel -> locationForTitleBlockTemplate(current_item));
 	}
 }
 
@@ -293,11 +285,10 @@ void ElementsPanelWidget::editTitleBlockTemplate() {
 void ElementsPanelWidget::removeTitleBlockTemplate() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
-		QETProject *parent_project = elements_panel -> projectForTitleBlockTemplate(current_item);
-		QString template_name = elements_panel -> nameOfTitleBlockTemplate(current_item);
-		TitleBlockTemplateLocation template_location(parent_project, template_name);
-		TitleBlockTemplateDeleter template_deleter(template_location, this);
-		template_deleter.exec();
+		TitleBlockTemplateDeleter(
+			elements_panel -> locationForTitleBlockTemplate(current_item),
+			this
+		).exec();
 	}
 }
 
@@ -380,14 +371,19 @@ void ElementsPanelWidget::updateButtons() {
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
 		setElementsActionEnabled(false);
-	} else if (elements_panel -> selectedItemIsATitleBlockTemplatesDirectory()) {
-		bool is_writable = !(elements_panel -> projectForTitleBlockTemplatesDirectory(elements_panel -> currentItem()) -> isReadOnly());
-		tbt_add -> setEnabled(is_writable);
-		setElementsActionEnabled(false);
-	} else if (elements_panel -> selectedItemIsATitleBlockTemplate()) {
-		bool is_writable = !(elements_panel -> projectForTitleBlockTemplate(elements_panel -> currentItem()) -> isReadOnly());
-		tbt_edit -> setEnabled(is_writable);
-		tbt_remove -> setEnabled(is_writable);
+	} else if (
+		elements_panel -> selectedItemIsATitleBlockTemplatesDirectory() ||
+		elements_panel -> selectedItemIsATitleBlockTemplate()
+	) {
+		QTreeWidgetItem *item = elements_panel -> currentItem();
+		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(item);
+		bool is_writable;
+		if (location.isValid()) {
+			is_writable = !location.parentCollection() -> isReadOnly();
+			tbt_add    -> setEnabled(is_writable);
+			tbt_edit   -> setEnabled(is_writable);
+			tbt_remove -> setEnabled(is_writable);
+		}
 		setElementsActionEnabled(false);
 	}
 }
@@ -474,7 +470,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			context_menu -> addAction(prj_del_diagram);
 			context_menu -> addAction(prj_move_diagram_up);
 			context_menu -> addAction(prj_move_diagram_down);
-		} else if (elements_panel -> itemIsATitleBlockTemplatesDirectory(item)) {
+		} else if (elements_panel -> itemIsATitleBlockTemplatesCollection(item)) {
 			context_menu -> addAction(tbt_add);
 		} else if (elements_panel -> itemIsATitleBlockTemplate(item)) {
 			context_menu -> addAction(tbt_edit);

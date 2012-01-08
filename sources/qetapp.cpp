@@ -29,6 +29,7 @@
 #include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
 #include "qeticons.h"
+#include "templatescollection.h"
 #include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
@@ -37,12 +38,17 @@
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+QString QETApp::common_tbt_dir_ = QString();
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 QString QETApp::config_dir = QString();
 #endif
 QString QETApp::lang_dir = QString();
 FileElementsCollection *QETApp::common_collection = 0;
 FileElementsCollection *QETApp::custom_collection = 0;
+TitleBlockTemplatesFilesCollection *QETApp::common_tbt_collection_;
+TitleBlockTemplatesFilesCollection *QETApp::custom_tbt_collection_;
 ElementsCollectionCache *QETApp::collections_cache_ = 0;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
 uint QETApp::next_project_id = 0;
@@ -131,6 +137,8 @@ QETApp::~QETApp() {
 	delete qsti;
 	delete custom_collection;
 	delete common_collection;
+	if (custom_tbt_collection_) delete custom_tbt_collection_;
+	if (common_tbt_collection_) delete common_tbt_collection_;
 }
 
 /**
@@ -289,6 +297,49 @@ QList<ElementsCollection *> QETApp::availableCollections() {
 }
 
 /**
+	@return the common title block templates collection, i.e. the one provided
+	by QElecrotTech
+*/
+TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection() {
+	if (!common_tbt_collection_) {
+		common_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
+		common_tbt_collection_ -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
+		common_tbt_collection_ -> setProtocol("commontbt");
+	}
+	return(common_tbt_collection_);
+}
+
+/**
+	@return the custom title block templates collection, i.e. the one managed
+	by the end user
+*/
+TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection() {
+	if (!custom_tbt_collection_) {
+		custom_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
+		custom_tbt_collection_ -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
+		custom_tbt_collection_ -> setProtocol("customtbt");
+	}
+	return(custom_tbt_collection_);
+}
+
+/**
+	@return the list of all available title block tempaltes collections,
+	beginning with the common and custom ones, plus the projects-embedded ones.
+*/
+QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections() {
+	QList<TitleBlockTemplatesCollection *> collections_list;
+	
+	collections_list << common_tbt_collection_;
+	collections_list << custom_tbt_collection_;
+	
+	foreach(QETProject *opened_project, registered_projects_) {
+		collections_list << opened_project -> embeddedTitleBlockTemplatesCollection();
+	}
+	
+	return(collections_list);
+}
+
+/**
 	@return le nom de l'utilisateur courant
 */
 QString QETApp::userName() {
@@ -333,6 +384,36 @@ QString QETApp::customElementsDir() {
 }
 
 /**
+	@return the path of the directory containing the common title block
+	templates collection.
+*/
+QString QETApp::commonTitleBlockTemplatesDir() {
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	if (common_tbt_dir_ != QString()) return(common_tbt_dir_);
+#endif
+#ifndef QET_COMMON_TBT_PATH
+	// without any compile-time option, use the "titleblocks" directory next to the executable binary
+	return(QCoreApplication::applicationDirPath() + "/titleblocks/");
+#else
+	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+		// the compile-time option represents a usual path (be it absolute or relative)
+		return(QUOTE(QET_COMMON_TBT_PATH));
+	#else
+		// the compile-time option represents a path relative to the directory that contains the executable binary
+		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_TBT_PATH));
+	#endif
+#endif
+}
+
+/**
+	@return the path of the directory containing the custom title block
+	templates collection.
+*/
+QString QETApp::customTitleBlockTemplatesDir() {
+	return(configDir() + "titleblocks/");
+}
+
+/**
 	Renvoie le dossier de configuration de QET, c-a-d le chemin du dossier dans
 	lequel QET lira les informations de configuration et de personnalisation
 	propres a l'utilisateur courant. Ce dossier est generalement
@@ -371,6 +452,10 @@ QString QETApp::realPath(const QString &sym_path) {
 		directory = commonElementsDir();
 	} else if (sym_path.startsWith("custom://")) {
 		directory = customElementsDir();
+	} else if (sym_path.startsWith("commontbt://")) {
+		directory = commonTitleBlockTemplatesDir();
+	} else if (sym_path.startsWith("customtbt://")) {
+		directory = customTitleBlockTemplatesDir();
 	} else return(QString());
 	return(directory + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
 }
@@ -425,6 +510,20 @@ void QETApp::overrideCommonElementsDir(const QString &new_ced) {
 	if (new_ced_info.isDir()) {
 		common_elements_dir = new_ced_info.absoluteFilePath();
 		if (!common_elements_dir.endsWith("/")) common_elements_dir += "/";
+	}
+}
+#endif
+
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+/**
+	Define the path of the directory containing the common title block
+	tempaltes collection.
+*/
+void QETApp::overrideCommonTitleBlockTemplatesDir(const QString &new_ctbtd) {
+	QFileInfo new_ctbtd_info(new_ctbtd);
+	if (new_ctbtd_info.isDir()) {
+		common_tbt_dir_ = new_ctbtd_info.absoluteFilePath();
+		if (!common_tbt_dir_.endsWith("/")) common_tbt_dir_ += "/";
 	}
 }
 #endif
@@ -556,10 +655,7 @@ QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProjec
 	
 	// foreach known template editor
 	foreach (QETTitleBlockTemplateEditor *tbt_editor, titleBlockTemplateEditors()) {
-		// retrieve the location of the currently edited template
-		TitleBlockTemplateLocation tbt_editor_loc(tbt_editor -> location());
-		
-		if (tbt_editor_loc.project() == project) {
+		if (tbt_editor -> location().parentProject() == project) {
 			editors << tbt_editor;
 		}
 	}
@@ -903,9 +999,9 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 	If no template name is supplied, the method assumes the editor has to be
 	launched for a template creation.
 */
-void QETApp::openTitleBlockTemplate(QETProject *project, const QString &template_name) {
+void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
-	qet_template_editor -> edit(project, template_name);
+	qet_template_editor -> edit(location);
 	qet_template_editor -> showMaximized();
 }
 
@@ -1004,6 +1100,11 @@ void QETApp::parseArguments() {
 		overrideCommonElementsDir(qet_arguments_.commonElementsDir());
 	}
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	if (qet_arguments_.commonTitleBlockTemplatesDirSpecified()) {
+		overrideCommonTitleBlockTemplatesDir(qet_arguments_.commonTitleBlockTemplatesDir());
+	}
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (qet_arguments_.configDirSpecified()) {
 		overrideConfigDir(qet_arguments_.configDir());
@@ -1081,6 +1182,7 @@ void QETApp::initStyle() {
 	Cette methode creera, si necessaire :
 	  * le dossier de configuration
 	  * le dossier de la collection perso
+	  * the directory for custom title blocks
 */
 void QETApp::initConfiguration() {
 	// cree les dossiers de configuration si necessaire
@@ -1089,6 +1191,9 @@ void QETApp::initConfiguration() {
 	
 	QDir custom_elements_dir(QETApp::customElementsDir());
 	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(QETApp::customElementsDir());
+	
+	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
+	if (!custom_tbt_dir.exists()) custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
 	
 	// lit le fichier de configuration
 	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
@@ -1270,6 +1375,9 @@ void QETApp::printHelp() {
 		"  --license                     Afficher la licence\n")
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 		+ tr("  --common-elements-dir=DIR     Definir le dossier de la collection d'elements\n")
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+		+ tr("  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches\n")
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 		+ tr("  --config-dir=DIR              Definir le dossier de configuration\n")

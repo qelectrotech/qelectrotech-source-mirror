@@ -39,7 +39,8 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	QObject(parent),
 	collection_(0),
 	project_qet_version_(-1),
-	read_only_(false)
+	read_only_(false),
+	titleblocks_(this)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -55,6 +56,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	
 	// une categorie dediee aux elements integres automatiquement
 	ensureIntegrationCategoryExists();
+	setupTitleBlockTemplatesCollection();
 }
 
 /**
@@ -66,7 +68,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject(parent),
 	collection_(0),
 	project_qet_version_(-1),
-	read_only_(false)
+	read_only_(false),
+	titleblocks_(this)
 {
 	// ouvre le fichier
 	QFile project_file(path);
@@ -86,6 +89,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	// et construit le projet
 	readProjectXml();
 	
+	setupTitleBlockTemplatesCollection();
+	
 	// passe le projet en lecture seule si le fichier l'est
 	QFileInfo project_file_info(path);
 	if (!project_file_info.isWritable()) {
@@ -101,13 +106,16 @@ QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	QObject(parent),
 	collection_(0),
 	project_qet_version_(-1),
-	read_only_(false)
+	read_only_(false),
+	titleblocks_(this)
 {
 	// copie le contenu XML
 	document_root_.appendChild(document_root_.importNode(xml_element, true));
 	
 	// et construit le projet
 	readProjectXml();
+	
+	setupTitleBlockTemplatesCollection();
 }
 
 /**
@@ -164,6 +172,13 @@ int QETProject::folioIndex(const Diagram *diagram) const {
 */
 ElementsCollection *QETProject::embeddedCollection() const {
 	return(collection_);
+}
+
+/**
+	@return the title block templates collection enbeedded within this project
+*/
+TitleBlockTemplatesProjectCollection *QETProject::embeddedTitleBlockTemplatesCollection() {
+	return(&titleblocks_);
 }
 
 /**
@@ -286,8 +301,8 @@ void QETProject::setTitle(const QString &title) {
 /**
 	@return the list of the titleblock templates embedded within this project 
 */
-QList<QString> QETProject::embeddedTitleBlockTemplates() const {
-	return(titleblock_templates_xml_.keys());
+QList<QString> QETProject::embeddedTitleBlockTemplates() {
+	return(titleblocks_.templates());
 }
 
 /**
@@ -296,24 +311,7 @@ QList<QString> QETProject::embeddedTitleBlockTemplates() const {
 	name within the project
 */
 const TitleBlockTemplate *QETProject::getTemplateByName(const QString &template_name) {
-	// Do we have already loaded this template?
-	if (titleblock_templates_.contains(template_name)) {
-		return(titleblock_templates_[template_name]);
-	}
-	
-	// No? Do we even know of it?
-	if (!titleblock_templates_xml_.contains(template_name)) {
-		return(0);
-	}
-	
-	// Ok, we have its XML description, we have to generate an TitleBlockTemplate object
-	TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(this);
-	if (titleblock_template -> loadFromXmlElement(titleblock_templates_xml_[template_name])) {
-		titleblock_templates_.insert(template_name, titleblock_template);
-		return(titleblock_template);
-	} else {
-		return(0);
-	}
+	return(titleblocks_.getTemplate(template_name));
 }
 
 /**
@@ -322,16 +320,12 @@ const TitleBlockTemplate *QETProject::getTemplateByName(const QString &template_
 	if the project does not have such an titleblock template
 */
 QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_name) {
-	if (titleblock_templates_xml_.contains(template_name)) {
-		return(titleblock_templates_xml_[template_name]);
-	}
-	return(QDomElement());
+	return(titleblocks_.getTemplateXmlDescription(template_name));
 }
 
 /**
 	This methods allows adding or modifying a template embedded within the
-	project. This method emits the signal projectTemplatesChanged() if
-	necessary.
+	project.
 	@param template_name Name / Identifier of the template - will be used to
 	determine whether the given description will be added or will replace an
 	existing one.
@@ -340,53 +334,15 @@ QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_
 	@return false if a problem occured, true otherwise
 */
 bool QETProject::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_elmt) {
-	// checks basic stuff
-	if (xml_elmt.tagName() != "titleblocktemplate" || xml_elmt.attribute("name") != template_name) {
-		return(false);
-	}
-	
-	// we import the provided XML element in the project document
-	QDomElement import = document_root_.importNode(xml_elmt, true).toElement();
-	
-	// we either replace the previous description
-	if (titleblock_templates_xml_.contains(template_name)) {
-		QDomElement old_description = titleblock_templates_xml_[template_name];
-		if (!old_description.parentNode().isNull()) {
-			old_description.parentNode().replaceChild(import, old_description);
-		}
-	}
-	titleblock_templates_xml_.insert(template_name, import);
-	
-	if (titleblock_templates_.contains(template_name)) {
-		titleblock_templates_[template_name] -> loadFromXmlElement(titleblock_templates_xml_[template_name]);
-		foreach (Diagram *diagram, diagrams_) {
-			diagram -> titleBlockTemplateChanged(template_name);
-		}
-	}
-	emit(projectTemplatesChanged(this));
-	
-	return(true);
+	return(titleblocks_.setTemplateXmlDescription(template_name, xml_elmt));
 }
 
 /**
-	This methods allows removing a template embedded within the project. This
-	method emits the signal projectTemplatesChanged() if necessary.
+	This methods allows removing a template embedded within the project.
 	@param template_name Name of the template to be removed
 */
 void QETProject::removeTemplateByName(const QString &template_name) {
-	if (titleblock_templates_.contains(template_name)) {
-		// warn diagrams that the given template is about to be removed
-		foreach (Diagram *diagram, diagrams_) {
-			diagram -> titleBlockTemplateRemoved(template_name); /// TODO specify the default template of the project as a fallback
-		}
-	}
-	
-	// remove the template itself
-	titleblock_templates_xml_.remove(template_name);
-	titleblock_templates_.remove(template_name);
-	
-	// warn the rest of the world that the list of templates embedded within this project has changed
-	emit(projectTemplatesChanged(this));
+	return(titleblocks_.removeTemplate(template_name));
 }
 
 /**
@@ -451,11 +407,11 @@ QDomDocument QETProject::toXml() {
 	xml_doc.appendChild(project_root);
 	
 	// titleblock templates, if any
-	if (titleblock_templates_xml_.count()) {
-		qDebug() << qPrintable(QString("QETProject::toXml() : exporting %1 titleblock templates").arg(titleblock_templates_xml_.count()));
+	if (titleblocks_.templates().count()) {
 		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
-		foreach (QDomElement e, titleblock_templates_xml_) {
-			titleblocktemplates_elmt.appendChild(e);
+		foreach (QString template_name, titleblocks_.templates()) {
+			QDomElement e = titleblocks_.getTemplateXmlDescription(template_name);
+			titleblocktemplates_elmt.appendChild(xml_doc.importNode(e, true));
 		}
 		project_root.appendChild(titleblocktemplates_elmt);
 	}
@@ -819,6 +775,25 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 }
 
 /**
+	Set up signals/slots connections related to the title block templates
+	collection.
+*/
+void QETProject::setupTitleBlockTemplatesCollection() {
+	connect(
+		&titleblocks_,
+		SIGNAL(changed(TitleBlockTemplatesCollection *, const QString &)),
+		this,
+		SLOT(updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
+	);
+	connect(
+		&titleblocks_,
+		SIGNAL(aboutToRemove(TitleBlockTemplatesCollection *, const QString &)),
+		this,
+		SLOT(removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
+	);
+}
+
+/**
 	@return un pointeur vers la categorie racine de la collection embarquee, ou
 	0 si celle-ci n'est pas accessible.
 */
@@ -923,18 +898,7 @@ void QETProject::readDiagramsXml() {
 	Loads the embedded template from the XML description of the project
 */
 void QETProject::readEmbeddedTemplatesXml() {
-	foreach (QDomElement e, QET::findInDomElement(document_root_.documentElement(), "titleblocktemplates", "titleblocktemplate")) {
-		// each titleblock template must have a name
-		if (!e.hasAttribute("name")) continue;
-		QString titleblock_template_name = e.attribute("name");
-		
-		// if several templates have the same name, we keep the first one encountered
-		if (titleblock_templates_xml_.contains(titleblock_template_name)) continue;
-		
-		// we simply store the XML element describing the titleblock template,
-		// without any further analysis for the moment
-		titleblock_templates_xml_.insert(titleblock_template_name, e);
-	}
+	titleblocks_.fromXml(document_root_.documentElement());
 }
 
 /**
@@ -1145,6 +1109,33 @@ void QETProject::updateDiagramsFolioData() {
 	int total_folio = diagrams_.count();
 	for (int i = 0 ; i < total_folio ; ++ i) {
 		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio);
+	}
+}
+
+/**
+	Inform each diagram that the \a template_name title block changed.
+	@param collection Title block templates collection
+	@param template_name Name of the changed template
+*/
+void QETProject::updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
+	Q_UNUSED(collection)
+	
+	foreach (Diagram *diagram, diagrams_) {
+		diagram -> titleBlockTemplateChanged(template_name);
+	}
+}
+
+/**
+	Inform each diagram that the \a template_name title block is about to be removed.
+	@param collection Title block templates collection
+	@param template_name Name of the removed template
+*/
+void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
+	Q_UNUSED(collection)
+	
+	// warn diagrams that the given template is about to be removed
+	foreach (Diagram *diagram, diagrams_) {
+		diagram -> titleBlockTemplateRemoved(template_name);
 	}
 }
 

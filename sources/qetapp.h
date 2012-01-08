@@ -21,6 +21,7 @@
 #include <QTranslator>
 #include <QtGui>
 #include "elementslocation.h"
+#include "templatelocation.h"
 #include "qetarguments.h"
 class AboutQET;
 class QETDiagramEditor;
@@ -32,6 +33,8 @@ class FileElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 class TitleBlockTemplate;
+class TitleBlockTemplatesCollection;
+class TitleBlockTemplatesFilesCollection;
 class QETProject;
 class QETTitleBlockTemplateEditor;
 class QTextOrientationSpinBoxWidget;
@@ -65,9 +68,15 @@ class QETApp : public QETSingleApplication {
 	static ElementsCollection *customElementsCollection();
 	static QList<ElementsCollection *> availableCollections();
 	
+	static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
+	static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();
+	static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
+	
 	static QString userName();
 	static QString commonElementsDir();
 	static QString customElementsDir();
+	static QString commonTitleBlockTemplatesDir();
+	static QString customTitleBlockTemplatesDir();
 	static bool registerProject(QETProject *);
 	static bool unregisterProject(QETProject *);
 	static QMap<uint, QETProject *> registeredProjects();
@@ -85,6 +94,12 @@ class QETApp : public QETSingleApplication {
 	static void overrideCommonElementsDir(const QString &);
 	private:
 	static QString common_elements_dir; ///< Dossier contenant la collection d'elements commune
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	public:
+	static void overrideCommonTitleBlockTemplatesDir(const QString &);
+	private:
+	static QString common_tbt_dir_; ///< Directory containing the common title block templates collection
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	public:
@@ -145,6 +160,8 @@ class QETApp : public QETSingleApplication {
 	
 	static FileElementsCollection *common_collection;
 	static FileElementsCollection *custom_collection;
+	static TitleBlockTemplatesFilesCollection *common_tbt_collection_;
+	static TitleBlockTemplatesFilesCollection *custom_tbt_collection_;
 	static ElementsCollectionCache *collections_cache_;
 	static QMap<uint, QETProject *> registered_projects_;
 	static uint next_project_id;
@@ -176,7 +193,7 @@ class QETApp : public QETSingleApplication {
 	void openProjectFiles(const QStringList &);
 	void openElementFiles(const QStringList &);
 	void openElementLocations(const QList<ElementsLocation> &);
-	void openTitleBlockTemplate(QETProject *, const QString & = QString());
+	void openTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void configureQET();
 	void aboutQET();
 	

@@ -43,10 +43,12 @@ TitleBlockTemplateDeleter::~TitleBlockTemplateDeleter() {
 */
 bool TitleBlockTemplateDeleter::exec() {
 	if (!template_location_.isValid()) return(false);
-	QETProject *project = template_location_.project();
-	QString name = template_location_.name();
 	
-	if (!project -> embeddedTitleBlockTemplates().contains(name)) {
+	QString name = template_location_.name();
+	TitleBlockTemplatesCollection *collection = template_location_.parentCollection();
+	if (!collection) return(false);
+	
+	if (!collection -> templates().contains(name)) {
 		return(false);
 	}
 	
@@ -65,6 +67,6 @@ bool TitleBlockTemplateDeleter::exec() {
 	if (answer != QMessageBox::Yes) return(false);
 	
 	// delete the title block template
-	project -> removeTemplateByName(name);
+	collection -> removeTemplate(name);
 	return(true);
 }

@@ -56,6 +56,9 @@ QETArguments::QETArguments(const QETArguments &qet_arguments) :
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_(qet_arguments.common_elements_dir_),
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+common_tbt_dir_(qet_arguments.common_tbt_dir_),
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_(qet_arguments.config_dir_),
 #endif
@@ -77,6 +80,9 @@ QETArguments &QETArguments::operator=(const QETArguments &qet_arguments) {
 	unknown_options_ = qet_arguments.unknown_options_;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_ = qet_arguments.common_elements_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	common_tbt_dir_ = qet_arguments.common_tbt_dir_;
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_ = qet_arguments.config_dir_;
@@ -159,6 +165,9 @@ void QETArguments::clear() {
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_.clear();
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	common_tbt_dir_.clear();
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_.clear();
 #endif
@@ -205,6 +214,7 @@ void QETArguments::handleFileArgument(const QString &file) {
 	Gere les arguments correspondant potentiellement a une option.
 	Les options reconnues sont : 
 	  * --common-elements-dir=
+	  * --common-tbt-dir
 	  * --config-dir=
 	  * --lang-dir=
 	  * --help
@@ -234,6 +244,13 @@ void QETArguments::handleOptionArgument(const QString &option) {
 		return;
 	}
 	
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	QString ctbtd_arg("--common-tbt-dir=");
+	if (option.startsWith(ctbtd_arg)) {
+		common_tbt_dir_ = option.mid(ctbtd_arg.length());
+		return;
+	}
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString cd_arg("--config-dir=");
@@ -270,8 +287,26 @@ bool QETArguments::commonElementsDirSpecified() const {
 QString QETArguments::commonElementsDir() const {
 	return(common_elements_dir_);
 }
-
 #endif
+
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+/**
+	@return true if the user has specified a directory for the common title
+	block templates collection
+*/
+bool QETArguments::commonTitleBlockTemplatesDirSpecified() const {
+	return(!common_tbt_dir_.isEmpty());
+}
+
+/**
+	@return the directory of the common title block templates collection
+	specified by the user. If none were specified, return an empty string.
+*/
+QString QETArguments::commonTitleBlockTemplatesDir() const {
+	return(common_tbt_dir_);
+}
+#endif
+
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 /**
 	@return true si l'utilisateur a specifie un dossier pour la configuration.

@@ -1,6 +1,7 @@
 #include "templatelocationchooser.h"
 #include "qetapp.h"
 #include "qetproject.h"
+#include "templatescollection.h"
 
 /**
 	Constructor
@@ -27,15 +28,14 @@ TitleBlockTemplateLocationChooser::~TitleBlockTemplateLocationChooser() {
 	@return the current location
 */
 TitleBlockTemplateLocation TitleBlockTemplateLocationChooser::location() const {
-	return(TitleBlockTemplateLocation(project(), name()));
+	return(TitleBlockTemplateLocation(name(), collection()));
 }
 
 /**
-	@return the currently selected project
+	@return the currently selected collection
 */
-QETProject *TitleBlockTemplateLocationChooser::project() const {
-	uint project_id = projects_ -> itemData(projects_ -> currentIndex()).toUInt();
-	return(QETApp::project(project_id));
+TitleBlockTemplatesCollection *TitleBlockTemplateLocationChooser::collection() const {
+	return(collections_index_[collections_ -> currentIndex()]);
 }
 
 /**
@@ -51,15 +51,7 @@ QString TitleBlockTemplateLocationChooser::name() const {
 	@param location to be displayed by this widget
 */
 void TitleBlockTemplateLocationChooser::setLocation(const TitleBlockTemplateLocation &location) {
-	// we need a project id
-	int project_id = QETApp::projectId(location.project());
-	if (project_id == -1) return;
-	
-	// attempt to find this project id in our project combo box
-	int project_index = projects_ -> findData(QVariant(static_cast<uint>(project_id)));
-	if (project_index == -1) return;
-	
-	projects_ -> setCurrentIndex(project_index);
+	collections_ -> setCurrentIndex(collections_index_.keys(location.parentCollection()).first());
 	
 	if (!location.name().isEmpty()) {
 		int template_index = templates_ -> findText(location.name());
@@ -76,43 +68,64 @@ void TitleBlockTemplateLocationChooser::setLocation(const TitleBlockTemplateLoca
 	@param location Initial location displayed by the widget
 */
 void TitleBlockTemplateLocationChooser::init() {
-	projects_ = new QComboBox();
+	collections_ = new QComboBox();
 	templates_ = new QComboBox();
 	new_name_ = new QLineEdit();
 	
-	QMap<uint, QETProject *> projects = QETApp::registeredProjects();
-	foreach (uint project_id, projects.keys()) {
-		projects_ -> addItem(projects[project_id] -> title(), project_id);
-	}
-	updateTemplates();
-	connect(projects_, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTemplates()));
+	updateCollections();
+	connect(collections_, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTemplates()));
+	connect(templates_,   SIGNAL(currentIndexChanged(int)), this, SLOT(updateNewName()));
 	
 	QFormLayout *form_layout = new QFormLayout();
-	form_layout -> addRow(tr("Projet parent",   "used in save as form"), projects_);
-	form_layout -> addRow(tr("Modèle existant", "used in save as form"), templates_);
-	form_layout -> addRow(tr("ou nouveau nom",  "used in save as form"), new_name_);
+	form_layout -> addRow(tr("Collection parente",   "used in save as form"), collections_);
+	form_layout -> addRow(tr("Modèle existant",      "used in save as form"), templates_);
+	form_layout -> addRow(tr("ou nouveau nom",       "used in save as form"), new_name_);
 	setLayout(form_layout);
+}
+
+/**
+	Update the collections list
+*/
+void TitleBlockTemplateLocationChooser::updateCollections() {
+	collections_ -> clear();
+	collections_index_.clear();
+	
+	int index = 0;
+	foreach(TitleBlockTemplatesCollection *collection, QETApp::availableTitleBlockTemplatesCollections()) {
+		collections_ -> addItem(collection -> title());
+		collections_index_.insert(index, collection);
+		++ index;
+	}
+	
+	updateTemplates();
 }
 
 /**
 	Update the templates list according to the selected project.
 */
 void TitleBlockTemplateLocationChooser::updateTemplates() {
-	int current_index = projects_ -> currentIndex();
-	if (current_index == -1) return;
-	
-	uint project_id = projects_ -> itemData(current_index).toUInt();
-	QETProject *project = QETApp::project(project_id);
-	if (!project) return;
+	TitleBlockTemplatesCollection *current_collection = collection();
+	if (!current_collection) return;
 	
 	templates_ -> clear();
 	templates_ -> addItem(tr("Nouveau modèle (entrez son nom)", "combox box entry"), QVariant(false));
 	
-	QStringList available_templates = project -> embeddedTitleBlockTemplates();
+	QStringList available_templates = current_collection -> templates();
 	if (available_templates.count()) {
 		templates_ -> insertSeparator(1);
 		foreach (QString template_name, available_templates) {
 			templates_ -> addItem(template_name, QVariant(true));
 		}
 	}
+	
+	updateNewName();
+}
+
+/**
+	Enable or diable the "new name" text field depending of the selected
+	template.
+*/
+void TitleBlockTemplateLocationChooser::updateNewName() {
+	int template_index = templates_ -> currentIndex();
+	new_name_ -> setEnabled(!template_index);
 }

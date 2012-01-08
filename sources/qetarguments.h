@@ -46,6 +46,10 @@ class QETArguments : public QObject {
 	virtual bool commonElementsDirSpecified() const;
 	virtual QString commonElementsDir() const;
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	virtual bool commonTitleBlockTemplatesDirSpecified() const;
+	virtual QString commonTitleBlockTemplatesDir() const;
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	virtual bool configDirSpecified() const;
 	virtual QString configDir() const;
@@ -72,6 +76,9 @@ class QETArguments : public QObject {
 	QList<QString> unknown_options_;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	QString common_elements_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	QString common_tbt_dir_;
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString config_dir_;

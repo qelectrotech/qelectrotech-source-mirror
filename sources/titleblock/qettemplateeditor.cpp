@@ -32,7 +32,6 @@
 QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	QMainWindow(parent),
 	read_only(false),
-	parent_project_(0),
 	tb_template_(0),
 	logo_manager_(0)
 {
@@ -54,7 +53,30 @@ QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor() {
 	@return the location of the currently edited template
 */
 TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
-	return(TitleBlockTemplateLocation(parent_project_, template_name_));
+	return(location_);
+}
+
+/**
+	@param location Location of the tile block template to be edited.
+*/
+bool QETTitleBlockTemplateEditor::edit(const TitleBlockTemplateLocation &location) {
+	// the template name may be empty to create a new one
+	const TitleBlockTemplate *tb_template_orig;
+	if (location.name().isEmpty()) {
+		// loads the default title block template provided by the application
+		// it will be used as a start point to design the title block
+		tb_template_orig = QETApp::defaultTitleBlockTemplate();
+	} else {
+		tb_template_orig = location.getTemplate();
+	}
+	if (!tb_template_orig) {
+		/// TODO The TBT does not exist, manage error
+		return(false);
+	}
+	
+	location_ = location;
+	editCopyOf(tb_template_orig);
+	return(true);
 }
 
 /**
@@ -82,9 +104,42 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 		return(false);
 	}
 	
-	tb_template_ = tb_template_orig -> clone();
-	parent_project_ = project;
-	template_name_ = template_name;
+	location_.setParentCollection(project -> embeddedTitleBlockTemplatesCollection());
+	location_.setName(template_name);
+	return(editCopyOf(tb_template_orig));
+}
+
+/**
+	@param file_path Path of the template file to edit.
+	@return false if a problem occured while opening the template, true otherwise.
+*/
+bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
+	// get title block template object from the file, edit it
+	TitleBlockTemplate *tbt = new TitleBlockTemplate();
+	bool loading = tbt -> loadFromXmlFile(file_path);
+	if (!loading) {
+		/// TODO the file opening failed, warn the user?
+		return(false);
+	}
+	return(edit(tbt));
+}
+
+/**
+	@param tbt Title block template to be edited
+	@return false if a problem occured while opening the template, true otherwise.
+*/
+bool QETTitleBlockTemplateEditor::editCopyOf(const TitleBlockTemplate *tbt) {
+	if (!tbt) return(false);
+	return(edit(tbt -> clone()));
+}
+
+/**
+	@param tbt Title block template to be directly edited
+	@return false if a problem occured while opening the template, true otherwise.
+*/
+bool QETTitleBlockTemplateEditor::edit(TitleBlockTemplate *tbt) {
+	if (!tbt) return(false);
+	tb_template_ = tbt;
 	template_edition_area_view_ -> setTitleBlockTemplate(tb_template_);
 	template_cell_editor_widget_ -> updateLogosComboBox(tb_template_);
 	updateEditorTitle();
@@ -242,6 +297,9 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 	);
 }
 
+/**
+	Initialize the logo manager
+*/
 void QETTitleBlockTemplateEditor::initLogoManager() {
 	logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_);
 	connect(
@@ -302,7 +360,7 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 	);
 	
 	QString title;
-	if (template_name_.isEmpty()) {
+	if (location_.name().isEmpty()) {
 		title = min_title;
 	} else {
 		title = QString(
@@ -310,38 +368,37 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 				"%1 - %2",
 				"window title: %1 is the base window title, %2 is a template name"
 			)
-		).arg(min_title).arg(template_name_);
+		).arg(min_title).arg(location_.name());
 	}
 	setWindowTitle(title);
 }
 
 /**
-	Save the template as \a name within \a project.
+	Save the template under the provided location.
 	@see QETProject::setTemplateXmlDescription()
-	@param project Parent project
-	@param name Template name
+	@param location Location where the title block template should be saved.
 */
-void QETTitleBlockTemplateEditor::saveAs(QETProject *project, const QString &name) {
-	if (!project || name.isEmpty()) return;
+void QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &location) {
+	TitleBlockTemplatesCollection *collection = location.parentCollection();
+	if (!collection) return;
 	
 	QDomDocument doc;
 	QDomElement elmt = doc.createElement("root");
 	tb_template_ -> saveToXmlElement(elmt);
-	elmt.setAttribute("name", name);
+	elmt.setAttribute("name", location.name());
 	doc.appendChild(elmt);
 	
-	project -> setTemplateXmlDescription(name, elmt);
+	collection -> setTemplateXmlDescription(location.name(), elmt);
 	
-	parent_project_ = project;
-	template_name_ = name;
+	location_ = location;
 }
 
 /**
 	Save the currently edited title block template back to its parent project.
 */
 void QETTitleBlockTemplateEditor::save() {
-	if (parent_project_ && !template_name_.isEmpty()) {
-		saveAs(parent_project_, template_name_);
+	if (location_.isValid()) {
+		saveAs(location_);
 	} else {
 		saveAs();
 	}
@@ -353,13 +410,14 @@ void QETTitleBlockTemplateEditor::save() {
 void QETTitleBlockTemplateEditor::saveAs() {
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser();
 	if (location.isValid()) {
-		saveAs(location.project(), location.name());
+		saveAs(location);
 	}
 }
 
 /**
-	Ask the user for a title block template location
-	@return The location chosen by the user, or an empty TitleBlockTemplateLocation if the user cancelled the dialog
+	Ask the user for a title block template location @return The location chosen
+	by the user, or an empty TitleBlockTemplateLocation if the user cancelled the
+	dialog
 */
 TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser() {
 	TitleBlockTemplateLocationChooser *chooser = new TitleBlockTemplateLocationChooser(location());

@@ -19,6 +19,7 @@
 #define PANELAPPAREILS_H
 #include <QtGui>
 #include "elementslocation.h"
+#include "templatelocation.h"
 class QETProject;
 class Diagram;
 class ElementsCollection;
@@ -26,6 +27,8 @@ class ElementsCollectionItem;
 class ElementsCategory;
 class ElementDefinition;
 class ElementsCollectionCache;
+class TitleBlockTemplatesFilesCollection;
+
 /**
 	Cette classe represente le panel d'appareils (en tant qu'element
 	graphique) dans lequel l'utilisateur choisit les composants de
@@ -52,7 +55,7 @@ class ElementsPanel : public QTreeWidget {
 	bool itemIsADiagram(QTreeWidgetItem *) const;
 	bool itemHasLocation(QTreeWidgetItem *) const;
 	bool itemIsWritable(QTreeWidgetItem *) const;
-	bool itemIsATitleBlockTemplatesDirectory(QTreeWidgetItem *) const;
+	bool itemIsATitleBlockTemplatesCollection(QTreeWidgetItem *) const;
 	bool itemIsATitleBlockTemplate(QTreeWidgetItem *) const;
 	
 	// methodes pour obtenir ce que represente un item donne
@@ -62,8 +65,7 @@ class ElementsPanel : public QTreeWidget {
 	ElementsLocation locationForItem(QTreeWidgetItem *) const;
 	ElementsCategory *categoryForItem(QTreeWidgetItem *);
 	ElementsCategory *categoryForPos(const QPoint &);
-	QETProject *projectForTitleBlockTemplatesDirectory(QTreeWidgetItem *);
-	QETProject *projectForTitleBlockTemplate(QTreeWidgetItem *);
+	TitleBlockTemplateLocation locationForTitleBlockTemplate(QTreeWidgetItem *);
 	QString nameOfTitleBlockTemplate(QTreeWidgetItem *);
 	
 	// methodes pour determiner ce que represente l'item selectionne
@@ -91,7 +93,7 @@ class ElementsPanel : public QTreeWidget {
 	void requestForDiagram(Diagram *);
 	void requestForCollectionItem(ElementsCollectionItem *);
 	void requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint);
-	void requestForTitleBlockTemplate(QETProject *, const QString &);
+	void requestForTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void readingAboutToBegin();
 	void readingFinished();
 	void loadingProgressed(int, int);
@@ -103,7 +105,7 @@ class ElementsPanel : public QTreeWidget {
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);
 	void projectInformationsChanged(QETProject *);
-	void projectTemplatesChanged(QETProject *);
+	void titleBlockTemplatesCollectionChanged(TitleBlockTemplatesCollection*, const QString & = QString());
 	void diagramWasAdded(QETProject *, Diagram *);
 	void diagramWasRemoved(QETProject *, Diagram *);
 	void diagramTitleChanged(QETProject *, Diagram *);
@@ -123,14 +125,15 @@ class ElementsPanel : public QTreeWidget {
 	QTreeWidgetItem *addCollection(QTreeWidgetItem *, ElementsCollection *, const QString & = QString(), const QIcon & = QIcon());
 	QTreeWidgetItem *addCategory  (QTreeWidgetItem *, ElementsCategory   *, const QString & = QString(), const QIcon & = QIcon());
 	QTreeWidgetItem *addElement   (QTreeWidgetItem *, ElementDefinition  *, const QString & = QString());
+	QTreeWidgetItem *addTitleBlockTemplatesCollection(QTreeWidgetItem *, TitleBlockTemplatesCollection *, const QString & = QString(), const QIcon & = QIcon());
 	void saveExpandedCategories();
 	QTreeWidgetItem *findLocation(const ElementsLocation &) const;
 	QTreeWidgetItem *findLocation(const QString &) const;
 	void deleteItem(QTreeWidgetItem *);
 	void updateProjectItemInformations(QETProject *);
-	void updateProjectTemplates(QETProject *);
 	void updateDiagramLabel(QTreeWidgetItem *, int);
 	QString diagramTitleToDisplay(Diagram *) const;
+	QString titleBlockTemplateNameToDisplay(const QString &) const;
 	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
 	
 	// attributs
@@ -138,12 +141,15 @@ class ElementsPanel : public QTreeWidget {
 	QStringList expanded_directories;
 	QString last_selected_item;
 	QHash<QTreeWidgetItem *, ElementsLocation> locations_;
+	QHash<QTreeWidgetItem *, TitleBlockTemplateLocation> title_blocks_;
 	QSet<QETProject *> projects_to_display_;
 	QHash<QTreeWidgetItem *, QETProject *> projects_;
 	QHash<QTreeWidgetItem *, Diagram *> diagrams_;
-	QHash<QTreeWidgetItem *, QETProject *> title_blocks_directories_;
+	QHash<QTreeWidgetItem *, TitleBlockTemplatesCollection *> title_blocks_collections_;
 	QTreeWidgetItem *common_collection_item_;
+	QTreeWidgetItem *common_tbt_collection_item_;
 	QTreeWidgetItem *custom_collection_item_;
+	QTreeWidgetItem *custom_tbt_collection_item_;
 	int loading_progress_;
 	bool first_activation_;
 	bool first_reload_;

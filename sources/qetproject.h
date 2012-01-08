@@ -24,6 +24,7 @@
 #include "borderproperties.h"
 #include "conductorproperties.h"
 #include "titleblockproperties.h"
+#include "templatescollection.h"
 class Diagram;
 class ElementsCollection;
 class ElementsCategory;
@@ -75,6 +76,7 @@ class QETProject : public QObject {
 	QList<Diagram *> diagrams() const;
 	int folioIndex(const Diagram *) const;
 	ElementsCollection *embeddedCollection() const;
+	TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
 	QString filePath();
 	void setFilePath(const QString &);
 	QString currentDir() const;
@@ -82,7 +84,7 @@ class QETProject : public QObject {
 	QString title() const;
 	qreal declaredQElectroTechVersion();
 	void setTitle(const QString &);
-	QList<QString> embeddedTitleBlockTemplates() const;
+	QList<QString> embeddedTitleBlockTemplates();
 	const TitleBlockTemplate *getTemplateByName(const QString &template_name);
 	QDomElement getTemplateXmlDescriptionByName(const QString &);
 	bool setTemplateXmlDescription(const QString &, const QDomElement &);
@@ -123,12 +125,14 @@ class QETProject : public QObject {
 	void diagramAdded(QETProject *, Diagram *);
 	void diagramRemoved(QETProject *, Diagram *);
 	void readOnlyChanged(QETProject *, bool);
-	void projectTemplatesChanged(QETProject *);
 	
 	private slots:
 	void updateDiagramsFolioData();
+	void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
+	void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 	
 	private:
+	void setupTitleBlockTemplatesCollection();
 	ElementsCategory *rootCategory() const;
 	void readProjectXml();
 	void readDiagramsXml();
@@ -168,9 +172,7 @@ class QETProject : public QObject {
 	ConductorProperties default_conductor_properties_;
 	/// Proprietes par defaut du cartouche pour les nouveaux schemas dans ce projet
 	TitleBlockProperties default_titleblock_properties_;
-	/// XML descriptions of embedded titleblock templates
-	QHash<QString, QDomElement> titleblock_templates_xml_;
-	/// Already parsed embedded titleblock templates
-	QHash<QString, TitleBlockTemplate *> titleblock_templates_;
+	/// Embedded title block templates collection
+	TitleBlockTemplatesProjectCollection titleblocks_;
 };
 #endif

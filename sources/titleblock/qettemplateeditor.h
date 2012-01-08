@@ -51,10 +51,8 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	/// actions
 	QAction *save_, *save_as_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
 	QAction *zoom_in_, *zoom_out_, *zoom_fit_, *zoom_reset_;
-	/// Parent project of the currently edited template
-	QETProject *parent_project_;
-	/// Name of the currently edited template
-	QString template_name_;
+	/// Location of the currently edited template
+	TitleBlockTemplateLocation location_;
 	/// Template Object edited
 	TitleBlockTemplate *tb_template_;
 	/// Template preview
@@ -84,7 +82,11 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	
 	public slots:
 	void selectedCellsChanged(QList<TitleBlockCell *>);
+	bool edit(const TitleBlockTemplateLocation &);
 	bool edit(QETProject *, const QString &);
+	bool edit(const QString &);
+	bool editCopyOf(const TitleBlockTemplate *);
+	bool edit(TitleBlockTemplate *);
 	void editLogos();
 	void save();
 	void saveAs();
@@ -96,7 +98,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void pushGridUndoCommand(TitleBlockTemplateCommand *);
 	void pushUndoCommand(QUndoCommand *);
 	void updateEditorTitle();
-	void saveAs(QETProject *, const QString &);
+	void saveAs(const TitleBlockTemplateLocation &);
 };
 
 #endif

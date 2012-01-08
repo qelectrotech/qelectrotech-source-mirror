@@ -19,6 +19,8 @@
 #define TITLEBLOCK_SLASH_LOCATION_CHOOSER_H
 #include <QtGui>
 #include "templatelocation.h"
+class TitleBlockTemplateCollection;
+
 /**
 	This class is a widget that allows the user to choose a target title block
 	template.
@@ -35,7 +37,7 @@ class TitleBlockTemplateLocationChooser : public QWidget {
 	// methods
 	public:
 	TitleBlockTemplateLocation location() const;
-	QETProject *project() const;
+	TitleBlockTemplatesCollection *collection() const;
 	QString name() const;
 	void setLocation(const TitleBlockTemplateLocation &);
 	private:
@@ -43,12 +45,16 @@ class TitleBlockTemplateLocationChooser : public QWidget {
 	
 	// slots
 	private slots:
+	void updateCollections();
 	void updateTemplates();
+	void updateNewName();
 	
 	// attributes
 	private:
-	QComboBox *projects_;  ///< Projects combo box
-	QComboBox *templates_; ///< Existing templates combo box
-	QLineEdit *new_name_;  ///< New template name textfield
+	QComboBox *collections_;  ///< Collections combo box
+	/// Collections index within the combo box
+	QHash<int, TitleBlockTemplatesCollection *> collections_index_;
+	QComboBox *templates_;    ///< Existing templates combo box
+	QLineEdit *new_name_;     ///< New template name textfield
 };
 #endif
