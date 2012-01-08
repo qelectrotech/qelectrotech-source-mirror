@@ -1056,59 +1056,60 @@ Les changements seront définitifs.</source>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="595"/>
+        <location filename="../sources/elementspanel.cpp" line="594"/>
         <source>Collection projet</source>
         <translation>Коллекция проекта</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="715"/>
+        <location filename="../sources/elementspanel.cpp" line="714"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
         <translation>Этот элемент вы можете перетащить на вашу схему</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="716"/>
+        <location filename="../sources/elementspanel.cpp" line="715"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
         <translation>Перетащите элемент на схему, чтобы вставить</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="733"/>
+        <location filename="../sources/elementspanel.cpp" line="732"/>
         <source>%1 [non utilisé dans le projet]</source>
         <translation>%1 [не используется в проекте]</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="803"/>
+        <location filename="../sources/elementspanel.cpp" line="870"/>
         <source>Collection QET</source>
         <translation>Коллекция QET</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="809"/>
+        <location filename="../sources/elementspanel.cpp" line="881"/>
         <source>Collection utilisateur</source>
         <translation>Коллекция пользователя</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1161"/>
+        <location filename="../sources/elementspanel.cpp" line="1229"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
         <translation>Нет файлов</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1185"/>
+        <location filename="../sources/elementspanel.cpp" line="1326"/>
+        <source>Modèle &quot;%1&quot;</source>
+        <comment>used to display a title block template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/elementspanel.cpp" line="760"/>
         <source>Modèles de cartouche</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1198"/>
-        <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/elementspanel.cpp" line="1230"/>
+        <location filename="../sources/elementspanel.cpp" line="1303"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
         <translation type="unfinished">Безымянная схема</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="1237"/>
+        <location filename="../sources/elementspanel.cpp" line="1310"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
         <translation type="unfinished"></translation>
@@ -1237,24 +1238,24 @@ Les changements seront définitifs.</source>
         <translation>Фильтр : </translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="418"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="414"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
         <translation>Менеджер категорий</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="421"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="417"/>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Используйте этот менеджер, чтобы добавить, удалить или изменить категории.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="576"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="572"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="599"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="595"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation type="unfinished"></translation>
@@ -2202,178 +2203,190 @@ Les changements seront définitifs.</source>
 <context>
     <name>QETApp</name>
     <message>
-        <location filename="../sources/qetapp.cpp" line="97"/>
+        <location filename="../sources/qetapp.cpp" line="103"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="105"/>
+        <location filename="../sources/qetapp.cpp" line="111"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="112"/>
+        <location filename="../sources/qetapp.cpp" line="118"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка... Редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="115"/>
+        <location filename="../sources/qetapp.cpp" line="121"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка... Открытие файлов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="584"/>
+        <location filename="../sources/qetapp.cpp" line="306"/>
+        <source>Cartouches QET</source>
+        <comment>title of the title block templates collection provided by QElectroTech</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="319"/>
+        <source>Cartouches utilisateur</source>
+        <comment>title of the user&apos;s title block templates collection</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="680"/>
         <source>Q</source>
         <comment>Single-letter example text - translate length, not meaning</comment>
         <translation>Q</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="585"/>
+        <location filename="../sources/qetapp.cpp" line="681"/>
         <source>QET</source>
         <comment>Small example text - translate length, not meaning</comment>
         <translation>QET</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="586"/>
+        <location filename="../sources/qetapp.cpp" line="682"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Схема</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="587"/>
+        <location filename="../sources/qetapp.cpp" line="683"/>
         <source>Electrique</source>
         <comment>Normal example text - translate length, not meaning</comment>
         <translation>Электрическая</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="588"/>
+        <location filename="../sources/qetapp.cpp" line="684"/>
         <source>QElectroTech</source>
         <comment>Long example text - translate length, not meaning</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1039"/>
+        <location filename="../sources/qetapp.cpp" line="1140"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1108"/>
+        <location filename="../sources/qetapp.cpp" line="1213"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
         <translation>Загрузка...Значёк в трее</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1110"/>
+        <location filename="../sources/qetapp.cpp" line="1215"/>
         <source>QElectroTech</source>
         <comment>systray menu title</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1112"/>
+        <location filename="../sources/qetapp.cpp" line="1217"/>
         <source>&amp;Quitter</source>
         <translation>&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1113"/>
+        <location filename="../sources/qetapp.cpp" line="1218"/>
         <source>&amp;Masquer</source>
         <translation>&amp;Скрыть</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1114"/>
+        <location filename="../sources/qetapp.cpp" line="1219"/>
         <source>&amp;Restaurer</source>
         <translation>&amp;Показать</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1115"/>
+        <location filename="../sources/qetapp.cpp" line="1220"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
         <translation>&amp;Скрыть редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1116"/>
+        <location filename="../sources/qetapp.cpp" line="1221"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
         <translation>&amp;Показать редакторы схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1117"/>
+        <location filename="../sources/qetapp.cpp" line="1222"/>
         <source>&amp;Masquer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Скрыть редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1118"/>
+        <location filename="../sources/qetapp.cpp" line="1223"/>
         <source>&amp;Restaurer tous les éditeurs d&apos;élément</source>
         <translation>&amp;Показать редакторы элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1119"/>
+        <location filename="../sources/qetapp.cpp" line="1224"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1120"/>
+        <location filename="../sources/qetapp.cpp" line="1225"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1121"/>
+        <location filename="../sources/qetapp.cpp" line="1226"/>
         <source>&amp;Nouvel éditeur de schéma</source>
         <translation>&amp;Новый редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1122"/>
+        <location filename="../sources/qetapp.cpp" line="1227"/>
         <source>&amp;Nouvel éditeur d&apos;élément</source>
         <translation>&amp;Новый редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1124"/>
+        <location filename="../sources/qetapp.cpp" line="1229"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <translation>Закрыть QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1125"/>
+        <location filename="../sources/qetapp.cpp" line="1230"/>
         <source>Réduire QElectroTech dans le systray</source>
         <translation>Свернуть QElectroTech в трэй</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1126"/>
+        <location filename="../sources/qetapp.cpp" line="1231"/>
         <source>Restaurer QElectroTech</source>
         <translation>Восстановить QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1142"/>
+        <location filename="../sources/qetapp.cpp" line="1247"/>
         <source>QElectroTech</source>
         <comment>systray icon tooltip</comment>
         <translation>QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1181"/>
+        <location filename="../sources/qetapp.cpp" line="1286"/>
         <source>Éditeurs de schémas</source>
         <translation>Редактор схем</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1190"/>
+        <location filename="../sources/qetapp.cpp" line="1295"/>
         <source>Éditeurs d&apos;élément</source>
         <translation>Редактор элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1200"/>
+        <location filename="../sources/qetapp.cpp" line="1305"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1265"/>
+        <location filename="../sources/qetapp.cpp" line="1370"/>
         <source>Usage : </source>
         <translation>Usage: </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1265"/>
+        <location filename="../sources/qetapp.cpp" line="1370"/>
         <source> [options] [fichier]...
 
 </source>
@@ -2382,7 +2395,7 @@ Les changements seront définitifs.</source>
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1266"/>
+        <location filename="../sources/qetapp.cpp" line="1371"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.
 
 Options disponibles : 
@@ -2399,21 +2412,27 @@ Available options:
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1272"/>
+        <location filename="../sources/qetapp.cpp" line="1377"/>
         <source>  --common-elements-dir=DIR     Definir le dossier de la collection d&apos;elements
 </source>
         <translation>  --common-elements-dir=DIR     Define the elements collection directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1275"/>
+        <location filename="../sources/qetapp.cpp" line="1380"/>
+        <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/qetapp.cpp" line="1383"/>
         <source>  --config-dir=DIR              Definir le dossier de configuration
 </source>
         <translation>  --config-dir=DIR              Define configuration directory
 </translation>
     </message>
     <message>
-        <location filename="../sources/qetapp.cpp" line="1277"/>
+        <location filename="../sources/qetapp.cpp" line="1385"/>
         <source>  --lang-dir=DIR                Definir le dossier contenant les fichiers de langue
 </source>
         <translation>  --lang-dir=DIR                Define the language files directory</translation>
@@ -4034,59 +4053,59 @@ Available options:
 <context>
     <name>QETProject</name>
     <message>
-        <location filename="../sources/qetproject.cpp" line="222"/>
+        <location filename="../sources/qetproject.cpp" line="237"/>
         <source>Projet « %1 »</source>
         <comment>displayed title for a ProjectView - %1 is the project title</comment>
         <translation>Проект « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="229"/>
+        <location filename="../sources/qetproject.cpp" line="244"/>
         <source>Projet %1</source>
         <comment>displayed title for a title-less project - %1 is the file name</comment>
         <translation>Проект %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="236"/>
+        <location filename="../sources/qetproject.cpp" line="251"/>
         <source>Projet sans titre</source>
         <comment>displayed title for a project-less, file-less project</comment>
         <translation>Безымянный проект</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="245"/>
+        <location filename="../sources/qetproject.cpp" line="260"/>
         <source>%1 [lecture seule]</source>
         <comment>displayed title for a read-only project - %1 is a displayable title</comment>
         <translation>%1 [только чтение]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="649"/>
+        <location filename="../sources/qetproject.cpp" line="605"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>Невозможно создать категорию для интеграции элементов</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="660"/>
+        <location filename="../sources/qetproject.cpp" line="616"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="850"/>
+        <location filename="../sources/qetproject.cpp" line="825"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="677"/>
+        <location filename="../sources/qetproject.cpp" line="633"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Произошла ошибка при копировании категории %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="849"/>
+        <location filename="../sources/qetproject.cpp" line="824"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>Предупреждение</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1165"/>
+        <location filename="../sources/qetproject.cpp" line="1156"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Произошла ошибка при копировании элемента %1</translation>
     </message>
@@ -4094,187 +4113,187 @@ Que désirez vous faire ?</source>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="113"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="168"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation type="unfinished">&amp;Сохранить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="114"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="169"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Сохранить как</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="115"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation type="unfinished">&amp;Выход</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="116"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Увеличить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="117"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="172"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Уменьшить</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="118"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="173"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Подогнать размер</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="119"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="174"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Восстановить масштаб</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="120"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="175"/>
         <source>&amp;Configurer QElectroTech</source>
         <comment>menu entry</comment>
         <translation type="unfinished">&amp;Настройка QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="121"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="176"/>
         <source>À &amp;propos de QElectroTech</source>
         <comment>menu entry</comment>
         <translation type="unfinished">&amp;О программе</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="122"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="177"/>
         <source>À propos de &amp;Qt</source>
         <comment>menu entry</comment>
         <translation type="unfinished">О &amp;библиотеке Qt</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="123"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="178"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="124"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="179"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="127"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="182"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="128"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="183"/>
         <source>Ctrl+K</source>
         <comment>shortcut to merge cells</comment>
         <translation type="unfinished">Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="129"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="184"/>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
         <translation type="unfinished">Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="132"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="187"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
         <translation type="unfinished">Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="133"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="188"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
         <translation type="unfinished">Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="135"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="190"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
         <translation type="unfinished">Позволяет завать различные параметры QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="136"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="191"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
         <translation type="unfinished">Отобразить информацию о QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="137"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="192"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
         <translation type="unfinished">Отобразить информацию о библиотеке Qt</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="157"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="212"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Файл</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="158"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="213"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Правка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="159"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="214"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Вид</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="160"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="215"/>
         <source>&amp;Configuration</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Настройка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="161"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="216"/>
         <source>&amp;Aide</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Справка</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="201"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="256"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation type="unfinished">Нет изменений</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="203"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="258"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation type="unfinished">История</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="216"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="271"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="298"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="373"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="431"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation type="unfinished"></translation>
@@ -4962,105 +4981,6 @@ Que désirez vous faire ?</source>
     </message>
 </context>
 <context>
-    <name>TemplateEditor</name>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="38"/>
-        <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="71"/>
-        <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="72"/>
-        <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="88"/>
-        <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="89"/>
-        <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="102"/>
-        <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="103"/>
-        <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="131"/>
-        <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="133"/>
-        <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="140"/>
-        <location filename="../sources/templateeditor.cpp" line="149"/>
-        <source>Erreur</source>
-        <translation type="unfinished">Ошибка</translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="140"/>
-        <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="149"/>
-        <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="211"/>
-        <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="212"/>
-        <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="213"/>
-        <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="214"/>
-        <source>Quitter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="241"/>
-        <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="253"/>
-        <source>Non défini</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/templateeditor.cpp" line="257"/>
-        <source>Projet parent : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>TerminalEditor</name>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="39"/>
@@ -5521,13 +5441,13 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateDeleter</name>
     <message>
-        <location filename="../sources/titleblock/templatedeleter.cpp" line="56"/>
+        <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
+        <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
@@ -5537,25 +5457,25 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateLocationChooser</name>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="91"/>
-        <source>Projet parent</source>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
+        <source>Collection parente</source>
         <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="92"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="81"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="93"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="82"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="109"/>
+        <location filename="../sources/titleblock/templatelocationchooser.cpp" line="111"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
         <translation type="unfinished"></translation>
@@ -5783,6 +5703,21 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templateview.cpp" line="746"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplatesProjectCollection</name>
+    <message>
+        <location filename="../sources/titleblock/templatescollection.cpp" line="107"/>
+        <source>Cartouches du projet sans titre (id %1)</source>
+        <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatescollection.cpp" line="115"/>
+        <source>Cartouches du projet &quot;%1&quot;</source>
+        <comment>collection title when the project has a suitble title -- %1 is the project title</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

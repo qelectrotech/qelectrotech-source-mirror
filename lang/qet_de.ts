@@ -901,10 +901,6 @@ Die Änderungen sind endgültig.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Modèle &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
         <translation type="unfinished">Schema unbenannt</translation>
@@ -912,6 +908,11 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modèle &quot;%1&quot;</source>
+        <comment>used to display a title block template</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1979,6 +1980,21 @@ Options disponibles :
     <message>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cartouches QET</source>
+        <comment>title of the title block templates collection provided by QElectroTech</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cartouches utilisateur</source>
+        <comment>title of the user&apos;s title block templates collection</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
+</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4061,85 +4077,6 @@ Que désirez vous faire ?</source>
     </message>
 </context>
 <context>
-    <name>TemplateEditor</name>
-    <message>
-        <source>Nouveau-modele</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Not implemented yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sorry, Not implemented yet</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Un modèle de ce nom existe déjà</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Un modèle de ce nom existe déjà au sein du projet - veuillez choisir un autre nom.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Code XML non valide</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Le code XML du modèle ne semble pas être valide. Impossible d&apos;enregistrer le modèle.</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Sélectionnez un fichier image</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Erreur</source>
-        <translation type="unfinished">Fehler</translation>
-    </message>
-    <message>
-        <source>Impossible d&apos;ouvrir le fichier spécifié</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Intégrer un logo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Vérifier le modèle</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Enregistrer et appliquer</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Quitter</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>QElectroTech - Éditeur de modèle de cartouche</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Non défini</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Projet parent : %1</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Le code XML du modèle ne semble pas être valide.</source>
-        <translation type="unfinished"></translation>
-    </message>
-</context>
-<context>
     <name>TerminalEditor</name>
     <message>
         <source>Nord</source>
@@ -4526,11 +4463,6 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateLocationChooser</name>
     <message>
-        <source>Projet parent</source>
-        <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
@@ -4543,6 +4475,11 @@ Que désirez vous faire ?</source>
     <message>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection parente</source>
+        <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4726,6 +4663,19 @@ Que désirez vous faire ?</source>
     <message>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplatesProjectCollection</name>
+    <message>
+        <source>Cartouches du projet sans titre (id %1)</source>
+        <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cartouches du projet &quot;%1&quot;</source>
+        <comment>collection title when the project has a suitble title -- %1 is the project title</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
