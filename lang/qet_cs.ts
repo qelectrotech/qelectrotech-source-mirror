@@ -33,7 +33,7 @@
         <location filename="../sources/aboutqet.cpp" line="37"/>
         <source>À &amp;propos</source>
         <comment>tab title</comment>
-        <translation>&amp;O</translation>
+        <translation>&amp;O programu</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="38"/>
@@ -57,7 +57,7 @@
         <location filename="../sources/aboutqet.cpp" line="41"/>
         <source>&amp;Accord de licence</source>
         <comment>tab title</comment>
-        <translation>&amp;Souhlas s licencí</translation>
+        <translation>&amp;Povolení</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="90"/>
@@ -2844,17 +2844,17 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
         <source>en utilisant des onglets</source>
-        <translation>používají se karty</translation>
+        <translation>Karty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="222"/>
         <source>en utilisant des fenêtres</source>
-        <translation>používají se okna</translation>
+        <translation>Okna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="506"/>
         <source>Afficher les projets</source>
-        <translation>Zobrazit projekty</translation>
+        <translation>pohled na projekty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
