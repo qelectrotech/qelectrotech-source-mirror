@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">circulator</name>
         <name lang="fr">circulateur</name>
         <name lang="cs">Cirkulátor</name>
     </names>

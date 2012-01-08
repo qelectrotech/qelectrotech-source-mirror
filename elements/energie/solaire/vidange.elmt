@@ -1,6 +1,7 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnnn">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnnn">
     <names>
-        <name lang="fr">vidange égout</name>
+        <name lang="en">Emptying</name>
+        <name lang="fr">Vidange égout</name>
         <name lang="cs">Odtok</name>
     </names>
     <informations></informations>

@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnyn">
     <names>
-        <name lang="fr">flexcon</name>
+        <name lang="en">Flexcon</name>
+        <name lang="fr">Flexcon</name>
         <name lang="cs">Flexcon</name>
     </names>
     <informations></informations>

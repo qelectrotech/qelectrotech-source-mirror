@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">arrivée d'eau froide</name>
+        <name lang="en">Cold water supply</name>
+        <name lang="fr">Arrivée d'eau froide</name>
         <name lang="cs">Přívod studené vody</name>
     </names>
     <informations></informations>
     <description>
-        <polygon x4="1" y5="0" x5="1" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="1" y2="-7" x2="10" y3="7" x3="10" y4="0"/>
+        <polygon x4="1" y5="0" x5="1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="0" x1="1" y2="-7" x2="10" y3="7" x3="10" y4="0"/>
         <text x="-7" y="7" size="5" text="E.F."/>
         <circle x="-6.5" y="-0.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="1"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="1" y2="0" x2="-6"/>

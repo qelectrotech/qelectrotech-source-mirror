@@ -1,17 +1,18 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="70" height="140" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="40" hotspot_y="50" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="en">ECS Réchaufeur tubular</name>
         <name lang="fr">Réchaufeur ECS tubulaire</name>
         <name lang="cs">Trubkový ohřívač ECS</name>
     </names>
     <informations></informations>
     <description>
-        <text x="45" y="31" size="6" rotation="-90" text="Echangeur ECS"/>
+        <input x="46" y="36" size="6" rotation="270" rotate="true" text="Echangeur ECS"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="35" x1="0" y2="-37" x2="0"/>
         <circle x="-30.5" y="-31.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
         <rect width="2" x="-1" y="40" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="2" x="-1" y="-47" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <ellipse width="60" x="-30" y="-45" antialias="true" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" x2="20" x3="-20" x4="20" antialias="false" x5="-20" x6="20" x7="-30" x8="-30" closed="false" y1="-30" y2="-30" y3="-14" y4="0" y5="16" y6="30" y7="30" y8="30"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-30" x2="20" x3="-20" x4="20" antialias="true" x5="-20" x6="20" x7="-30" x8="-30" closed="false" y1="-30" y2="-30" y3="-14" y4="0" y5="16" y6="30" y7="30" y8="30"/>
         <circle x="-30.5" y="28.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
         <terminal x="-29" y="30" orientation="w"/>
         <terminal x="-29" y="-30" orientation="w"/>

@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="100" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Bottle guy delsol</name>
         <name lang="fr">Bouteille Guy Delsol</name>
         <name lang="cs">Láhev Guy Delsol</name>
     </names>
@@ -20,6 +21,6 @@
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="12.5" y2="25" x2="12.5"/>
         <terminal x="0" y="43" orientation="s"/>
         <terminal x="0" y="-40" orientation="n"/>
-        <terminal x="16" y="-21" orientation="e"/>
+        <terminal x="16" y="-20" orientation="e"/>
     </description>
 </definition>

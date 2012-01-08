@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">vanne 2 voies</name>
+        <name lang="en">2-way valve</name>
+        <name lang="fr">Vanne 2 voies</name>
         <name lang="cs">Dvousměrné hradítko</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <rect width="20" x="-10" y="-31" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="-5" y="-19" size="6" text="V1"/>
