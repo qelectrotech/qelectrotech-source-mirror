@@ -1,0 +1,12 @@
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">circulateur</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="14" y5="0" x5="14" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="14" y2="-12" x2="-7" y3="12" x3="-7" y4="0"/>
+        <circle x="-15.6525" y="-15.6525" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="31.305"/>
+        <terminal x="-16" y="0" orientation="w"/>
+        <terminal x="16" y="0" orientation="e"/>
+    </description>
+</definition>

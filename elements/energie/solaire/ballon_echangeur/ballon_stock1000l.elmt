@@ -1,0 +1,28 @@
+<definition width="150" version="0.3" hotspot_x="75" hotspot_y="65" height="260" type="element" orientation="ndny">
+    <names>
+        <name lang="fr">Ballon Stockage 1000L</name>
+    </names>
+    <informations/>
+    <description>
+        <input x="-55" y="36.5" size="7" rotate="true" text="  Ballon&#xa;Stockage&#xa;  1000L"/>
+        <circle x="-63.75" y="-33.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <circle x="38" y="-12" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="-2.75" y="175.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <circle x="-2.75" y="-53.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5.5"/>
+        <polygon x4="40" y5="174" x5="40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="169" x1="55" y2="184" x2="55" y3="184" x3="40" y4="174"/>
+        <polygon x4="-40" y5="174" x5="-40" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="169" x1="-55" y2="184" x2="-55" y3="184" x3="-40" y4="174"/>
+        <rect width="120" x="-60" y="-40" antialias="false" height="201" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <arc width="120" x="-60" y="142.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+        <arc width="120" x="-60" y="-57.5" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+        <circle x="-63.75" y="146.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
+        <circle x="38" y="129" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <circle x="38" y="56" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4"/>
+        <terminal x="-60" y="-30" orientation="w"/>
+        <terminal x="-60" y="150" orientation="w"/>
+        <terminal x="0" y="-51" orientation="n"/>
+        <terminal x="0" y="178" orientation="s"/>
+        <terminal x="40" y="-10" orientation="e"/>
+        <terminal x="40" y="58" orientation="e"/>
+        <terminal x="40" y="131" orientation="e"/>
+    </description>
+</definition>
