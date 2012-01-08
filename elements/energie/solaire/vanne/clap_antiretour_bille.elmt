@@ -1,6 +1,7 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="fr">clapet anti-retour à bille</name>
+        <name lang="cs">Kuličková klapka proti navrácení</name>
     </names>
     <informations></informations>
     <description>

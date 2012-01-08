@@ -1,6 +1,7 @@
 <definition width="160" version="0.3" hotspot_x="60" hotspot_y="40" height="100" type="element" orientation="ndny">
     <names>
         <name lang="fr">panneau solaire eau</name>
+        <name lang="cs">Sluneční panel voda</name>
     </names>
     <informations></informations>
     <description>

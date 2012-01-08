@@ -1,6 +1,7 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="5" height="10" type="element" orientation="dyyy">
     <names>
         <name lang="fr">direction</name>
+        <name lang="cs">Šipka 1</name>
     </names>
     <informations></informations>
     <description>

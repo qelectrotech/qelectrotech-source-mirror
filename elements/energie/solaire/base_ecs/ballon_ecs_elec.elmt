@@ -1,6 +1,7 @@
 <definition width="120" version="0.3" hotspot_x="60" hotspot_y="90" height="180" type="element" orientation="dyyy">
     <names>
         <name lang="fr">ballon ECS electrique</name>
+        <name lang="cs">Elektrický balón ECS</name>
     </names>
     <informations></informations>
     <description>

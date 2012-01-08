@@ -1,6 +1,7 @@
 <definition width="60" version="0.22" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="fr">circulateur_clapet</name>
+        <name lang="cs">Klapka cirkulátoru</name>
     </names>
     <informations></informations>
     <description>

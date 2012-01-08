@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="ndny">
     <names>
         <name lang="fr">vanne diferentielle</name>
+        <name lang="cs">Rozdílové hradítko</name>
     </names>
     <informations/>
     <description>

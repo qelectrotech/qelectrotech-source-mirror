@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="100" type="element" orientation="ndny">
     <names>
         <name lang="fr">echangeur à Plaques</name>
+        <name lang="cs">Deskový výměník</name>
     </names>
     <informations/>
     <description>

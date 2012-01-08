@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="fr">mitigeur thermostatique ECS</name>
+        <name lang="cs">Termostatický směšovač ECS</name>
     </names>
     <informations>Le mitigeur thermostatique posé en sortie de ballon permet de distribuer l'eau chaude sanitaire à une température constante.</informations>
     <description>
