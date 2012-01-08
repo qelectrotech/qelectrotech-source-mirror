@@ -3,6 +3,7 @@
         <name lang="en">Two-positions luminous rotative button</name>
         <name lang="fr">Bouton tournant lumineux, deux positions</name>
         <name lang="pl">Łącznik obrotowy przełączny, podświetlony</name>
+        <name lang="cs">Svítící dvoupolohové otočné tlačítko</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

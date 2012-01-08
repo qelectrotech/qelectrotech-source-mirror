@@ -1092,7 +1092,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/elementspanel.cpp" line="1326"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished">Vzor &quot;%1&quot;</translation>
+        <translation>Vzor &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="594"/>
@@ -2333,7 +2333,8 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="1380"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-tbt-dir=DIR          Stanovit adresář pro sbírku se vzory záhlaví výkresů
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1383"/>
@@ -2377,13 +2378,13 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="306"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished"></translation>
+        <translation>Záhlaví výkresů QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vlastní záhlaví výkresů</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="680"/>
@@ -2450,7 +2451,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="502"/>
         <source>Affiche ou non le panel d&apos;appareils</source>
-        <translation>Zobrazí/nezobrazí panel s prvky</translation>
+        <translation>Zobrazit/Nezobrazit panel s prvky</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="497"/>
@@ -2735,12 +2736,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="499"/>
         <source>Affiche ou non la barre d&apos;outils principale</source>
-        <translation>Zobrazit/skrýt hlavní pruh s nástroji</translation>
+        <translation>Zobrazit/Skrýt hlavní pruh s nástroji</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="500"/>
         <source>Affiche ou non la barre d&apos;outils Affichage</source>
-        <translation>Zobrazit/skrýt pruh s nástroji pro zobrazení</translation>
+        <translation>Zobrazit/Skrýt pruh s nástroji pro zobrazení</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="501"/>
@@ -2770,7 +2771,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="503"/>
         <source>Affiche ou non la liste des modifications</source>
-        <translation>Zobrazit/skrýt seznam kroků zpět</translation>
+        <translation>Zobrazit/Skrýt seznam kroků zpět</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
@@ -3594,7 +3595,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="384"/>
         <source>Afficha&amp;ge</source>
-        <translation>&amp;Zobrazení</translation>
+        <translation>&amp;Pohled</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="385"/>
@@ -4467,7 +4468,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="339"/>
         <source>modification dimensions/hotspot</source>
         <comment>undo caption</comment>
-        <translation>úprava velikosti/horké půdy</translation>
+        <translation>Úprava velikosti/horké půdy</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="400"/>
@@ -5465,7 +5466,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rodičovská sbírka</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="81"/>
@@ -5717,13 +5718,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="107"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Záhlaví výkresu projektu bez názvu (ID %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="115"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitble title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Záhlaví výkresu projektu &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
