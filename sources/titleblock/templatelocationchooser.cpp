@@ -51,7 +51,10 @@ QString TitleBlockTemplateLocationChooser::name() const {
 	@param location to be displayed by this widget
 */
 void TitleBlockTemplateLocationChooser::setLocation(const TitleBlockTemplateLocation &location) {
-	collections_ -> setCurrentIndex(collections_index_.keys(location.parentCollection()).first());
+	// hack: if o suitable index was found, set it to 1, which is supposed to be the user collection
+	int index = indexForCollection(location.parentCollection());
+	if (index == -1 && collections_ -> count() > 1) index = 1;
+	collections_ -> setCurrentIndex(index);
 	
 	if (!location.name().isEmpty()) {
 		int template_index = templates_ -> findText(location.name());
@@ -81,6 +84,16 @@ void TitleBlockTemplateLocationChooser::init() {
 	form_layout -> addRow(tr("Modèle existant",      "used in save as form"), templates_);
 	form_layout -> addRow(tr("ou nouveau nom",       "used in save as form"), new_name_);
 	setLayout(form_layout);
+}
+
+/**
+	@param coll A Title block templates collection which we want to know the index within the combo box of this dialog.
+	@return -1 if the collection is unknown to this dialog, or the index of \a coll
+*/
+int TitleBlockTemplateLocationChooser::indexForCollection(TitleBlockTemplatesCollection *coll) const {
+	QList<int> indexes = collections_index_.keys(coll);
+	if (indexes.count()) return(indexes.first());
+	return(-1);
 }
 
 /**

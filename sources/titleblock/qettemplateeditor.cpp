@@ -160,11 +160,22 @@ void QETTitleBlockTemplateEditor::editLogos() {
 }
 
 /**
+	Launch a new title block template editor.
+*/
+void QETTitleBlockTemplateEditor::newTemplate() {
+	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	qet_template_editor -> edit(TitleBlockTemplateLocation());
+	qet_template_editor -> showMaximized();
+	
+}
+
+/**
 	Initialize the various actions.
 */
 void QETTitleBlockTemplateEditor::initActions() {
 	QETApp *qet_app = QETApp::instance();
 	
+	new_            = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau",                     "menu entry"), this);
 	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
 	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
@@ -178,6 +189,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	merge_cells_    = new QAction(                                  tr("&Fusionner les cellules",      "menu entry"), this);
 	split_cell_     = new QAction(                                  tr("&S\351parer les cellules",     "menu entry"), this);
 	
+	new_              -> setShortcut(QKeySequence::New);
 	save_             -> setShortcut(QKeySequence::Save);
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
 	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
@@ -191,6 +203,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	about_qet_    -> setStatusTip(tr("Affiche des informations sur QElectroTech",                       "status bar tip"));
 	about_qt_     -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt",              "status bar tip"));
 	
+	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
 	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
 	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
 	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
@@ -221,6 +234,7 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	display_menu_ -> setTearOffEnabled(true);
 	help_menu_    -> setTearOffEnabled(true);
 	
+	file_menu_    -> addAction(new_);
 	file_menu_    -> addAction(save_);
 	file_menu_    -> addAction(save_as_);
 	file_menu_    -> addSeparator();

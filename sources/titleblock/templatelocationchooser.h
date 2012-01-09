@@ -40,8 +40,10 @@ class TitleBlockTemplateLocationChooser : public QWidget {
 	TitleBlockTemplatesCollection *collection() const;
 	QString name() const;
 	void setLocation(const TitleBlockTemplateLocation &);
+	
 	private:
 	void init();
+	int indexForCollection(TitleBlockTemplatesCollection *) const;
 	
 	// slots
 	private slots:

@@ -49,7 +49,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	/// menus TODO
 	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_,*/ *config_menu_, *help_menu_;
 	/// actions
-	QAction *save_, *save_as_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
+	QAction *new_, *save_, *save_as_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
 	QAction *zoom_in_, *zoom_out_, *zoom_fit_, *zoom_reset_;
 	/// Location of the currently edited template
 	TitleBlockTemplateLocation location_;
@@ -88,6 +88,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	bool editCopyOf(const TitleBlockTemplate *);
 	bool edit(TitleBlockTemplate *);
 	void editLogos();
+	void newTemplate();
 	void save();
 	void saveAs();
 	void quit();
