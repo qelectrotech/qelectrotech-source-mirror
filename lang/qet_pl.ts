@@ -1093,7 +1093,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="1326"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished">Szablon &quot;%1&quot;</translation>
+        <translation>Szablon &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="594"/>
@@ -2335,7 +2335,8 @@ Dostępne opcje :
         <location filename="../sources/qetapp.cpp" line="1380"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  -common-tbt-dir=DIR          Określ katalog kolekcji szblonów tabliczki rysunkowej
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1383"/>
@@ -2379,13 +2380,13 @@ Dostępne opcje :
         <location filename="../sources/qetapp.cpp" line="306"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tabliczka rysunkowa QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tabliczki rysunkowe użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="680"/>
@@ -5467,7 +5468,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja nadrzędna</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="81"/>
@@ -5719,13 +5720,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="107"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tabliczka rysunkowa projektu bez tytułu (id.%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="115"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitble title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tabliczka rysunkowa projektu &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
