@@ -3,6 +3,7 @@
         <name lang="en">manometer</name>
         <name lang="fr">Manometre</name>
         <name lang="cs">Manometr</name>
+        <name lang="pl">Manometr</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
