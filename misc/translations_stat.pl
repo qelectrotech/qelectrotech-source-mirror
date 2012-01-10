@@ -82,7 +82,7 @@ our %languages = (
 		'name'               => 'Polska',
 		'french_name'        => 'Polonais',
 		'translator_name'    => 'Pawel Smiech',
-		'translator_mail_ml' => 'pawel32640@interia.pl'
+		'translator_mail_ml' => 'pawel32640@gmail.com'
 	},
 	'ca' => {
 		'name'               => 'Català',
