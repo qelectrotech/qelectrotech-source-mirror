@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qettemplateeditor.h"
+#include "qetmessagebox.h"
 #include "qeticons.h"
 #include "qetapp.h"
 #include "qetproject.h"
@@ -54,6 +55,46 @@ QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor() {
 */
 TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
 	return(location_);
+}
+
+/**
+	@return true if the currently edited template can be closed. A template can be
+	closed if it has not been modified. If the template has been modified, this
+	method asks the user what he wants to do.
+*/
+bool QETTitleBlockTemplateEditor::canClose() {
+	if (undo_stack_ -> isClean()) return(true);
+	// ask the user whether he wants to save the current template
+	QMessageBox::StandardButton answer = QET::MessageBox::question(
+		this,
+		tr("Enregistrer le mod\350le en cours ?", "dialog title"),
+		QString(
+			tr(
+				"Voulez-vous enregistrer le mod\350le %1 ?",
+				"dialog content - %1 is a title block template name"
+			)
+		).arg(location_.name()),
+		QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
+		QMessageBox::Cancel
+	);
+	bool result;
+	switch(answer) {
+		case QMessageBox::Cancel: result = false;  break; // the user hits Cancel or closes the dialog: abort the closing
+		case QMessageBox::Yes:    result = save(); break; // the user hits Yes: la reussite depend de l'enregistrement
+		default:                  result = true;          // the user hits no: the editor can be closed
+	}
+	return(result);
+}
+
+/**
+	Handle the closing of the main window
+	@param qce The QCloseEvent event
+*/
+void QETTitleBlockTemplateEditor::closeEvent(QCloseEvent *qce) {
+	if (canClose()) {
+		setAttribute(Qt::WA_DeleteOnClose);
+		qce -> accept();
+	} else qce -> ignore();
 }
 
 /**
@@ -175,6 +216,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	QETApp *qet_app = QETApp::instance();
 	
 	new_            = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau",                     "menu entry"), this);
+	open_           = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir",                      "menu entry"), this);
 	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
 	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
@@ -189,6 +231,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	split_cell_     = new QAction(                                  tr("&S\351parer les cellules",     "menu entry"), this);
 	
 	new_              -> setShortcut(QKeySequence::New);
+	open_             -> setShortcut(QKeySequence::Open);
 	save_             -> setShortcut(QKeySequence::Save);
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
 	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
@@ -203,6 +246,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	about_qt_     -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt",              "status bar tip"));
 	
 	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
+	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));
 	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
 	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
 	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
@@ -234,6 +278,7 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	help_menu_    -> setTearOffEnabled(true);
 	
 	file_menu_    -> addAction(new_);
+	file_menu_    -> addAction(open_);
 	file_menu_    -> addAction(save_);
 	file_menu_    -> addAction(save_as_);
 	file_menu_    -> addSeparator();
@@ -391,9 +436,9 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 	@see QETProject::setTemplateXmlDescription()
 	@param location Location where the title block template should be saved.
 */
-void QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &location) {
+bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &location) {
 	TitleBlockTemplatesCollection *collection = location.parentCollection();
-	if (!collection) return;
+	if (!collection) return(false);
 	
 	QDomDocument doc;
 	QDomElement elmt = doc.createElement("root");
@@ -404,51 +449,78 @@ void QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 	collection -> setTemplateXmlDescription(location.name(), elmt);
 	
 	location_ = location;
+	undo_stack_ -> setClean();
+	return(true);
+}
+
+/**
+	
+*/
+void QETTitleBlockTemplateEditor::open() {
+	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
+		tr("Ouvrir un mod\350le", "File > open dialog window title"),
+		true
+	);
+	if (location.isValid()) {
+		QETApp::instance() -> openTitleBlockTemplate(location);
+	}
 }
 
 /**
 	Save the currently edited title block template back to its parent project.
 */
-void QETTitleBlockTemplateEditor::save() {
+bool QETTitleBlockTemplateEditor::save() {
 	if (location_.isValid()) {
-		saveAs(location_);
+		return(saveAs(location_));
 	} else {
-		saveAs();
+		return(saveAs());
 	}
 }
 
 /**
 	Ask the user where he wishes to save the currently edited template.
 */
-void QETTitleBlockTemplateEditor::saveAs() {
-	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser();
+bool QETTitleBlockTemplateEditor::saveAs() {
+	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
+		tr("Enregistrer le mod\350le sous", "dialog window title"),
+		false
+	);
 	if (location.isValid()) {
-		saveAs(location);
+		return(saveAs(location));
 	}
+	return(false);
 }
 
 /**
-	Ask the user for a title block template location @return The location chosen
-	by the user, or an empty TitleBlockTemplateLocation if the user cancelled the
-	dialog
+	Ask the user for a title block template location
+	@param title Title displayed by the dialog window
+	@param existing_only True for the user to be forced to choose an existing
+	template, false if he may specify the template name
+	@return The location chosen by the user, or an empty
+	TitleBlockTemplateLocation if the user cancelled the dialog
 */
-TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser() {
-	TitleBlockTemplateLocationSaver *saver = new TitleBlockTemplateLocationSaver(location());
+TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser(const QString &title, bool existing_only) {
+	TitleBlockTemplateLocationChooser *widget;
+	if (existing_only) {
+		widget = new TitleBlockTemplateLocationChooser(location());
+	} else {
+		widget = new TitleBlockTemplateLocationSaver(location());
+	}
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	QVBoxLayout *dialog_layout = new QVBoxLayout();
-	dialog_layout -> addWidget(saver);
+	dialog_layout -> addWidget(widget);
 	dialog_layout -> addWidget(buttons);
 	
 	QDialog dialog;
-	dialog.setWindowTitle(tr("Enregistrer le mod\350le sous", "dialog window title"));
+	dialog.setWindowTitle(title);
 	dialog.setLayout(dialog_layout);
 	
 	connect(buttons, SIGNAL(accepted()), &dialog, SLOT(accept()));
 	connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
 	
 	if (dialog.exec() == QDialog::Accepted) {
-		return(saver -> location());
+		return(widget -> location());
 	}
 	return TitleBlockTemplateLocation();
 }
@@ -457,6 +529,5 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 	Close the current editor.
 */
 void QETTitleBlockTemplateEditor::quit() {
-	/// TODO save if needed
 	close();
 }
