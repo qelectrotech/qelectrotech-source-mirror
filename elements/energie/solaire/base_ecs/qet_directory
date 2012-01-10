@@ -2,5 +2,6 @@
     <names>
         <name lang="fr">schéma de base ECS</name>
         <name lang="cs">Nákres základny ECS</name>
+        <name lang="pl">Układy podstawowe ECS</name>
     </names>
 </qet-directory>
