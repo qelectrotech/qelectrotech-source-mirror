@@ -43,7 +43,7 @@ TitleBlockTemplatesCollection *TitleBlockTemplateLocationChooser::collection() c
 */
 QString TitleBlockTemplateLocationChooser::name() const {
 	int template_index = templates_ -> currentIndex();
-	return(template_index ? templates_ -> currentText() : new_name_ -> text());
+	return(template_index != -1 ? templates_ -> currentText() : QString());
 }
 
 /**
@@ -51,9 +51,7 @@ QString TitleBlockTemplateLocationChooser::name() const {
 	@param location to be displayed by this widget
 */
 void TitleBlockTemplateLocationChooser::setLocation(const TitleBlockTemplateLocation &location) {
-	// hack: if o suitable index was found, set it to 1, which is supposed to be the user collection
 	int index = indexForCollection(location.parentCollection());
-	if (index == -1 && collections_ -> count() > 1) index = 1;
 	collections_ -> setCurrentIndex(index);
 	
 	if (!location.name().isEmpty()) {
@@ -73,17 +71,14 @@ void TitleBlockTemplateLocationChooser::setLocation(const TitleBlockTemplateLoca
 void TitleBlockTemplateLocationChooser::init() {
 	collections_ = new QComboBox();
 	templates_ = new QComboBox();
-	new_name_ = new QLineEdit();
 	
 	updateCollections();
 	connect(collections_, SIGNAL(currentIndexChanged(int)), this, SLOT(updateTemplates()));
-	connect(templates_,   SIGNAL(currentIndexChanged(int)), this, SLOT(updateNewName()));
 	
-	QFormLayout *form_layout = new QFormLayout();
-	form_layout -> addRow(tr("Collection parente",   "used in save as form"), collections_);
-	form_layout -> addRow(tr("Modèle existant",      "used in save as form"), templates_);
-	form_layout -> addRow(tr("ou nouveau nom",       "used in save as form"), new_name_);
-	setLayout(form_layout);
+	form_layout_ = new QFormLayout();
+	form_layout_ -> addRow(tr("Collection parente",   "used in save as form"), collections_);
+	form_layout_ -> addRow(tr("Modèle existant",      "used in save as form"), templates_);
+	setLayout(form_layout_);
 }
 
 /**
@@ -114,31 +109,18 @@ void TitleBlockTemplateLocationChooser::updateCollections() {
 }
 
 /**
-	Update the templates list according to the selected project.
+	Update the templates list according to the selected collection.
 */
 void TitleBlockTemplateLocationChooser::updateTemplates() {
 	TitleBlockTemplatesCollection *current_collection = collection();
 	if (!current_collection) return;
 	
 	templates_ -> clear();
-	templates_ -> addItem(tr("Nouveau modèle (entrez son nom)", "combox box entry"), QVariant(false));
 	
 	QStringList available_templates = current_collection -> templates();
 	if (available_templates.count()) {
-		templates_ -> insertSeparator(1);
 		foreach (QString template_name, available_templates) {
 			templates_ -> addItem(template_name, QVariant(true));
 		}
 	}
-	
-	updateNewName();
-}
-
-/**
-	Enable or diable the "new name" text field depending of the selected
-	template.
-*/
-void TitleBlockTemplateLocationChooser::updateNewName() {
-	int template_index = templates_ -> currentIndex();
-	new_name_ -> setEnabled(!template_index);
 }

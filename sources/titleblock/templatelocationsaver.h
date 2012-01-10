@@ -15,47 +15,41 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef TITLEBLOCK_SLASH_LOCATION_CHOOSER_H
-#define TITLEBLOCK_SLASH_LOCATION_CHOOSER_H
+#ifndef TITLEBLOCK_SLASH_LOCATION_SAVER_H
+#define TITLEBLOCK_SLASH_LOCATION_SAVER_H
 #include <QtGui>
-#include "templatelocation.h"
+#include "templatelocationchooser.h"
 class TitleBlockTemplateCollection;
 
 /**
 	This class is a widget that allows the user to choose a target title block
-	template.
+	template, with the intention to save it. Therefore, compared to a
+	TitleBlockTemplateLocationChooser, it includes an extra field for the user to
+	set the name of the new template if needed.
 */
-class TitleBlockTemplateLocationChooser : public QWidget {
+class TitleBlockTemplateLocationSaver : public TitleBlockTemplateLocationChooser {
 	Q_OBJECT
 	// Constructor, destructor
 	public:
-	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocation &, QWidget * = 0);
-	~TitleBlockTemplateLocationChooser();
+	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocation &, QWidget * = 0);
+	~TitleBlockTemplateLocationSaver();
 	private:
-	TitleBlockTemplateLocationChooser(const TitleBlockTemplateLocationChooser &);
+	TitleBlockTemplateLocationSaver(const TitleBlockTemplateLocationSaver &);
 	
 	// methods
-	public:
-	virtual TitleBlockTemplateLocation location() const;
-	virtual TitleBlockTemplatesCollection *collection() const;
 	virtual QString name() const;
 	virtual void setLocation(const TitleBlockTemplateLocation &);
 	
-	protected:
+	private:
 	void init();
-	virtual int indexForCollection(TitleBlockTemplatesCollection *) const;
 	
 	// slots
 	protected slots:
-	virtual void updateCollections();
 	virtual void updateTemplates();
+	virtual void updateNewName();
 	
 	// attributes
 	protected:
-	QFormLayout *form_layout_;
-	QComboBox *collections_;  ///< Collections combo box
-	/// Collections index within the combo box
-	QHash<int, TitleBlockTemplatesCollection *> collections_index_;
-	QComboBox *templates_;    ///< Existing templates combo box
+	QLineEdit *new_name_;     ///< New template name textfield
 };
 #endif

@@ -22,7 +22,7 @@
 #include "templatecellwidget.h"
 #include "templatecommands.h"
 #include "templateview.h"
-#include "templatelocationchooser.h"
+#include "templatelocationsaver.h"
 #include "templatelogomanager.h"
 #include "templatecellwidget.h"
 
@@ -166,7 +166,6 @@ void QETTitleBlockTemplateEditor::newTemplate() {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(TitleBlockTemplateLocation());
 	qet_template_editor -> showMaximized();
-	
 }
 
 /**
@@ -434,11 +433,11 @@ void QETTitleBlockTemplateEditor::saveAs() {
 	dialog
 */
 TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLocationFromUser() {
-	TitleBlockTemplateLocationChooser *chooser = new TitleBlockTemplateLocationChooser(location());
+	TitleBlockTemplateLocationSaver *saver = new TitleBlockTemplateLocationSaver(location());
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
 	QVBoxLayout *dialog_layout = new QVBoxLayout();
-	dialog_layout -> addWidget(chooser);
+	dialog_layout -> addWidget(saver);
 	dialog_layout -> addWidget(buttons);
 	
 	QDialog dialog;
@@ -449,7 +448,7 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 	connect(buttons, SIGNAL(rejected()), &dialog, SLOT(reject()));
 	
 	if (dialog.exec() == QDialog::Accepted) {
-		return(chooser -> location());
+		return(saver -> location());
 	}
 	return TitleBlockTemplateLocation();
 }
