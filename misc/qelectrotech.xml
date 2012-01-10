@@ -7,6 +7,7 @@
 		<comment xml:lang="es">Fichero proyecto QElectroTech</comment>
 		<comment xml:lang="ru">Файл проекта QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
+		<comment xml:lang="cs">Soubor s projektem pro QElectroTech</comment>
 		<comment xml:lang="pl">Plik projektu QElectrotech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<glob pattern="*.qet" />
@@ -18,6 +19,7 @@
 		<comment xml:lang="ru">Файл элемента QElectroTech</comment>
 		<comment xml:lang="es">Fichero elemento QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
+		<comment xml:lang="cs">Soubor s prvkem pro QElectroTech</comment>
 		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<glob pattern="*.elmt" />
