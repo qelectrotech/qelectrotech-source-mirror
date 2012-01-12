@@ -118,8 +118,38 @@ bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
 }
 
 /**
+	Save the title block template into an XML file.
+	@param filepath The file path this title block template should be saved to.
+	@return true if the operation succeeds, false otherwise
+*/
+bool TitleBlockTemplate::saveToXmlFile(const QString &filepath) {
+	if (filepath.isEmpty()) return(false);
+	
+	// open the file
+	QFile xml_file(filepath);
+	if (!xml_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
+		return(false);
+	}
+	
+	// generate the XML document
+	QDomDocument doc;
+	QDomElement e = doc.createElement("root");
+	bool saving = saveToXmlElement(e);
+	if (!saving) return(false);
+	doc.appendChild(e);
+	
+	// write the file
+	QTextStream out(&xml_file);
+	out.setCodec("UTF-8");
+	out << doc.toString(4);
+	xml_file.close();
+	
+	return(true);
+}
+
+/**
 	Save the title block template as XML.
-	@param xml_element The XMl element this title block template should be saved to.
+	@param xml_element The XML element this title block template should be saved to.
 	@return true if the export succeeds, false otherwise
 */
 bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {

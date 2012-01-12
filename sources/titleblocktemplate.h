@@ -47,6 +47,7 @@ class TitleBlockTemplate : public QObject {
 	static QFont fontForCell(const TitleBlockCell &);
 	bool loadFromXmlFile(const QString &);
 	bool loadFromXmlElement(const QDomElement &);
+	bool saveToXmlFile(const QString &);
 	bool saveToXmlElement(QDomElement &) const;
 	TitleBlockTemplate *clone() const;
 	QString name() const;
