@@ -33,6 +33,7 @@
 QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	QMainWindow(parent),
 	read_only(false),
+	opened_from_file_(false),
 	tb_template_(0),
 	logo_manager_(0)
 {
@@ -42,6 +43,7 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	initWidgets();
 	initActions();
 	initMenus();
+	
 }
 
 /**
@@ -115,7 +117,9 @@ bool QETTitleBlockTemplateEditor::edit(const TitleBlockTemplateLocation &locatio
 		return(false);
 	}
 	
+	opened_from_file_ = false;
 	location_ = location;
+	updateEditorTitle();
 	editCopyOf(tb_template_orig);
 	return(true);
 }
@@ -145,8 +149,10 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 		return(false);
 	}
 	
+	opened_from_file_ = false;
 	location_.setParentCollection(project -> embeddedTitleBlockTemplatesCollection());
 	location_.setName(template_name);
+	updateEditorTitle();
 	return(editCopyOf(tb_template_orig));
 }
 
@@ -162,7 +168,18 @@ bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
 		/// TODO the file opening failed, warn the user?
 		return(false);
 	}
-	return(edit(tbt));
+	
+	bool editing = edit(tbt);
+	if (!editing) {
+		/// TODO the file editing failed, warn the user?
+		return(false);
+	}
+	
+	filepath_ = file_path;
+	opened_from_file_ = true;
+	updateEditorTitle();
+	
+	return(true);
 }
 
 /**
@@ -217,8 +234,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	
 	new_            = new QAction(QET::Icons::DocumentNew,          tr("&Nouveau",                     "menu entry"), this);
 	open_           = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir",                      "menu entry"), this);
+	open_from_file_ = new QAction(QET::Icons::DocumentOpen,         tr("Ouvrir depuis un fichier",     "menu entry"), this);
 	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
 	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
+	save_as_file_   = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer vers un fichier",  "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
 	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
@@ -247,8 +266,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	
 	connect(new_,             SIGNAL(triggered()), this,     SLOT(newTemplate()));
 	connect(open_,            SIGNAL(triggered()), this,     SLOT(open()));
+	connect(open_from_file_,  SIGNAL(triggered()), this,     SLOT(openFromFile()));
 	connect(save_,            SIGNAL(triggered()), this,     SLOT(save()));
 	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
+	connect(save_as_file_,    SIGNAL(triggered()), this,     SLOT(saveAsFile()));
 	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
 	connect(zoom_in_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomIn()));
 	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
@@ -279,8 +300,10 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	
 	file_menu_    -> addAction(new_);
 	file_menu_    -> addAction(open_);
+	file_menu_    -> addAction(open_from_file_);
 	file_menu_    -> addAction(save_);
 	file_menu_    -> addAction(save_as_);
+	file_menu_    -> addAction(save_as_file_);
 	file_menu_    -> addSeparator();
 	file_menu_    -> addAction(quit_);
 	
@@ -353,6 +376,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 		this,
 		SLOT(pushGridUndoCommand(TitleBlockTemplateCommand *))
 	);
+	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(updateEditorTitle()));
 }
 
 /**
@@ -417,8 +441,15 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 		)
 	);
 	
+	QString titleblock_title;
+	if (opened_from_file_) {
+		titleblock_title = filepath_;
+	} else {
+		titleblock_title = location_.name();
+	}
+	
 	QString title;
-	if (location_.name().isEmpty()) {
+	if (titleblock_title.isEmpty()) {
 		title = min_title;
 	} else {
 		title = QString(
@@ -426,7 +457,7 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 				"%1 - %2",
 				"window title: %1 is the base window title, %2 is a template name"
 			)
-		).arg(min_title).arg(location_.name());
+		).arg(min_title).arg(titleblock_title);
 	}
 	setWindowTitle(title);
 }
@@ -448,13 +479,32 @@ bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 	
 	collection -> setTemplateXmlDescription(location.name(), elmt);
 	
+	opened_from_file_ = false;
 	location_ = location;
 	undo_stack_ -> setClean();
+	updateEditorTitle();
 	return(true);
 }
 
 /**
+	Save the template in the provided filepath.
+	@see TitleBlockTemplate::saveToXmlFile()
+	@param filepath location Location where the title block template should be saved.
+*/
+bool QETTitleBlockTemplateEditor::saveAs(const QString &filepath) {
+	bool saving = tb_template_ -> saveToXmlFile(filepath);
+	if (!saving) return(false);
 	
+	opened_from_file_ = true;
+	filepath_ = filepath;
+	undo_stack_ -> setClean();
+	updateEditorTitle();
+	return(true);
+}
+
+/**
+	Ask the user to choose a title block template from the known collections
+	then open it for edition.
 */
 void QETTitleBlockTemplateEditor::open() {
 	TitleBlockTemplateLocation location = getTitleBlockTemplateLocationFromUser(
@@ -467,13 +517,48 @@ void QETTitleBlockTemplateEditor::open() {
 }
 
 /**
+	Ask the user to choose a file supposed to contain a title block template,
+	then open it for edition.
+*/
+void QETTitleBlockTemplateEditor::openFromFile() {
+	// directory to show
+	QString initial_dir = filepath_.isEmpty() ? QETApp::customTitleBlockTemplatesDir() : QDir(filepath_).absolutePath();
+	
+	// ask the user to choose a filepath
+	QString user_filepath = QFileDialog::getOpenFileName(
+		this,
+		tr("Ouvrir un fichier", "dialog title"),
+		initial_dir,
+		tr(
+			"Mod\350les de cartouches QElectroTech (*%1);;"
+			"Fichiers XML (*.xml);;"
+			"Tous les fichiers (*)",
+			"filetypes allowed when opening a title block template file - %1 is the .titleblock extension"
+		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
+	);
+	
+	
+	if (!user_filepath.isEmpty()) QETApp::instance() -> openTitleBlockTemplate(user_filepath);
+}
+
+/**
 	Save the currently edited title block template back to its parent project.
 */
 bool QETTitleBlockTemplateEditor::save() {
-	if (location_.isValid()) {
-		return(saveAs(location_));
+	if (opened_from_file_) {
+		if (!filepath_.isEmpty()) {
+			return(saveAs(filepath_));
+		} else {
+			// Actually, this should never happen since opened_from_file_ is always set
+			// along with a valid path. There is a dedicated menu item to call this.s
+			return(saveAsFile());
+		}
 	} else {
-		return(saveAs());
+		if (location_.isValid()) {
+			return(saveAs(location_));
+		} else {
+			return(saveAs());
+		}
 	}
 }
 
@@ -489,6 +574,37 @@ bool QETTitleBlockTemplateEditor::saveAs() {
 		return(saveAs(location));
 	}
 	return(false);
+}
+
+/**
+	Ask the user where on the filesystem he wishes to save the currently edited template.
+*/
+bool QETTitleBlockTemplateEditor::saveAsFile() {
+	// directory to show
+	QString initial_dir = filepath_.isEmpty() ? QETApp::customTitleBlockTemplatesDir() : QDir(filepath_).absolutePath();
+	
+	// ask the user to choose a target file
+	QString filepath = QFileDialog::getSaveFileName(
+		this,
+		tr("Enregistrer sous", "dialog title"),
+		initial_dir,
+		tr(
+			"Mod\350les de cartouches QElectroTech (*%1)",
+			"filetypes allowed when saving a title block template file - %1 is the .titleblock extension"
+		).arg(QString(TITLEBLOCKS_FILE_EXTENSION))
+	);
+	
+	// if no name was entered, return false
+	if (filepath.isEmpty()) return(false);
+	
+	// if the name does not end with ".titleblock", add it
+	if (!filepath.endsWith(".titleblock", Qt::CaseInsensitive)) filepath += ".titleblock";
+	
+	// attempts to save the file
+	bool saving = saveAs(filepath);
+	
+	// retourne un booleen representatif de la reussite de l'enregistrement
+	return(saving);
 }
 
 /**

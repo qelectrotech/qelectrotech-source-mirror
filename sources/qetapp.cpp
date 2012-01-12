@@ -994,14 +994,21 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 
 /**
 	Launch a new title block template editor to edit the given template
-	@param project Parent project of the template to edit
-	@param template_name Name of the template to edit within its parent project
-	If no template name is supplied, the method assumes the editor has to be
-	launched for a template creation.
+	@param location location of the title block template to be edited
 */
 void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(location);
+	qet_template_editor -> showMaximized();
+}
+
+/**
+	Launch a new title block template editor to edit the given template
+	@param filepath Path of the .titleblock file to be opened
+*/
+void QETApp::openTitleBlockTemplate(const QString &filepath) {
+	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	qet_template_editor -> edit(filepath);
 	qet_template_editor -> showMaximized();
 }
 

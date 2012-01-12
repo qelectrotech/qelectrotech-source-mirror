@@ -49,10 +49,14 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	/// menus TODO
 	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_,*/ *config_menu_, *help_menu_;
 	/// actions
-	QAction *new_, *open_, *save_, *save_as_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
+	QAction *new_, *open_, *open_from_file_, *save_, *save_as_, *save_as_file_, *quit_, *configure_, *about_qt_, *about_qet_, *merge_cells_, *split_cell_;
 	QAction *zoom_in_, *zoom_out_, *zoom_fit_, *zoom_reset_;
 	/// Location of the currently edited template
 	TitleBlockTemplateLocation location_;
+	/// Filepath of the currently edited template, if opened from a file
+	QString filepath_;
+	/// Whether to consider the location or the filepath
+	bool opened_from_file_;
 	/// Template Object edited
 	TitleBlockTemplate *tb_template_;
 	/// Template preview
@@ -92,8 +96,10 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void editLogos();
 	void newTemplate();
 	void open();
+	void openFromFile();
 	bool save();
 	bool saveAs();
+	bool saveAsFile();
 	void quit();
 	
 	private slots:
@@ -103,6 +109,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void pushUndoCommand(QUndoCommand *);
 	void updateEditorTitle();
 	bool saveAs(const TitleBlockTemplateLocation &);
+	bool saveAs(const QString &);
 };
 
 #endif
