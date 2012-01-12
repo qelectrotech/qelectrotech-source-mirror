@@ -393,6 +393,35 @@ void QETTitleBlockTemplateEditor::initLogoManager() {
 }
 
 /**
+	@return a string describing what is being edited, along with [Changed] or
+	[Read only] tags. Useful to compose the window title.
+*/
+QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
+	QString titleblock_title;
+	if (opened_from_file_) {
+		titleblock_title = filepath_;
+	} else {
+		titleblock_title = location_.name();
+	}
+	
+	// if a (file)name has been added, also add a "[Changed]" tag if needed
+	if (!titleblock_title.isEmpty()) {
+		QString tag;
+		if (!undo_stack_ -> isClean()) {
+			tag = tr("[Modifi\351]", "window title tag");
+		}
+		titleblock_title = QString(
+			tr(
+				"%1 %2",
+				"part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag"
+			)
+		).arg(titleblock_title).arg(tag);
+	}
+	
+	return(titleblock_title);
+}
+
+/**
 	Update various things when user changes the selected cells.
 	@param selected_cells List of selected cells.
 */
@@ -434,6 +463,7 @@ void QETTitleBlockTemplateEditor::pushUndoCommand(QUndoCommand *command) {
 	Set the title of this editor.
 */
 void QETTitleBlockTemplateEditor::updateEditorTitle() {
+	// base title
 	QString min_title(
 		tr(
 			"QElectroTech - \311diteur de mod\350le de cartouche",
@@ -441,13 +471,10 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 		)
 	);
 	
-	QString titleblock_title;
-	if (opened_from_file_) {
-		titleblock_title = filepath_;
-	} else {
-		titleblock_title = location_.name();
-	}
+	// get the currently edited template (file)name
+	QString titleblock_title = currentlyEditedTitle();
 	
+	// generate the final window title
 	QString title;
 	if (titleblock_title.isEmpty()) {
 		title = min_title;

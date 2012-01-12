@@ -85,6 +85,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void initMenus();
 	void initWidgets();
 	void initLogoManager();
+	QString currentlyEditedTitle() const;
 	
 	public slots:
 	void selectedCellsChanged(QList<TitleBlockCell *>);
