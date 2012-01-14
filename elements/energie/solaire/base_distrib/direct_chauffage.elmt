@@ -1,7 +1,7 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">C échange direct</name>
-        <name lang="cs">C přímá výměna</name>
+        <name lang="cs">"C" přímý výměník</name>
         <name lang="pl">C Wymiennik pośredni</name>
     </names>
     <informations></informations>

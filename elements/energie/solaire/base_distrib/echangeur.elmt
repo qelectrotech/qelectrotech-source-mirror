@@ -1,7 +1,7 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">F bouteille</name>
-        <name lang="cs">F láhev</name>
+        <name lang="cs">"F" lahvový výměník</name>
         <name lang="pl">"F" zbiornikowy</name>
     </names>
     <informations></informations>

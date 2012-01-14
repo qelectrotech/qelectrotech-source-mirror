@@ -1,7 +1,7 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">B semi-direct</name>
-        <name lang="cs">B polopřímé</name>
+        <name lang="cs">"B" polopřímý</name>
         <name lang="pl">"B" półpośredni</name>
     </names>
     <informations></informations>

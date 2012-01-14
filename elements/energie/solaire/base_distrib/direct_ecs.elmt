@@ -1,7 +1,7 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">A" échange indirect / ballon ecs</name>
-        <name lang="cs">A" nepřímá výměna/balón ecs</name>
+        <name lang="cs">"A" nepřímý výměník/zásobník ECS</name>
         <name lang="pl">"A" wymiennik posredni / zasobnik ECS</name>
     </names>
     <informations></informations>
