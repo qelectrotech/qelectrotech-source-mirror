@@ -37,6 +37,15 @@ TitleBlockTemplateLocation::~TitleBlockTemplateLocation() {
 }
 
 /**
+	@param loc_str String describing the location of a title block template.
+*/
+TitleBlockTemplateLocation TitleBlockTemplateLocation::locationFromString(const QString &loc_str) {
+	TitleBlockTemplateLocation loc;
+	loc.fromString(loc_str);
+	return(loc);
+}
+
+/**
 	@return the parent collection of the template, or 0 if none was defined
 */
 TitleBlockTemplatesCollection *TitleBlockTemplateLocation::parentCollection() const {
@@ -70,6 +79,20 @@ void TitleBlockTemplateLocation::setName(const QString &name) {
 */
 bool TitleBlockTemplateLocation::isValid() const {
 	return(!name_.isEmpty());
+}
+
+/**
+	@param loc_str String describing the location of a title block template.
+*/
+void TitleBlockTemplateLocation::fromString(const QString &loc_str) {
+	collection_ = QETApp::titleBlockTemplatesCollection(QUrl(loc_str).scheme());
+	
+	QRegExp name_from_url("^[^:]*:\\/\\/(.*)$");
+	if (name_from_url.exactMatch(loc_str)) {
+		name_ = name_from_url.capturedTexts().at(1);
+	} else {
+		name_ = QString();
+	}
 }
 
 /**

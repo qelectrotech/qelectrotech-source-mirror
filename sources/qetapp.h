@@ -23,6 +23,10 @@
 #include "elementslocation.h"
 #include "templatelocation.h"
 #include "qetarguments.h"
+
+#define QETAPP_COMMON_TBT_PROTOCOL "commontbt"
+#define QETAPP_CUSTOM_TBT_PROTOCOL "customtbt"
+
 class AboutQET;
 class QETDiagramEditor;
 class QETElementEditor;
@@ -39,6 +43,7 @@ class QETProject;
 class QETTitleBlockTemplateEditor;
 class QTextOrientationSpinBoxWidget;
 class RecentFiles;
+
 /**
 	Cette classe represente l'application QElectroTech.
 	
@@ -71,6 +76,7 @@ class QETApp : public QETSingleApplication {
 	static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
 	static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();
 	static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
+	static TitleBlockTemplatesCollection *titleBlockTemplatesCollection(const QString &);
 	
 	static QString userName();
 	static QString commonElementsDir();
@@ -220,6 +226,8 @@ class QETApp : public QETSingleApplication {
 		const QList<QETTitleBlockTemplateEditor *> &
 	);
 	template <class T> void addWindowsListToMenu(QMenu *, const QList<T *> &);
+	static int projectIdFromString(const QString &);
+	static QETProject *projectFromString(const QString &);
 };
 
 /**

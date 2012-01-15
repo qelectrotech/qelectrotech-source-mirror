@@ -31,6 +31,10 @@ class TitleBlockTemplateLocation {
 	TitleBlockTemplateLocation(const QString & = QString(), TitleBlockTemplatesCollection * = 0);
 	virtual ~TitleBlockTemplateLocation();
 	
+	// static methods
+	public:
+	TitleBlockTemplateLocation locationFromString(const QString &);
+	
 	// methods
 	public:
 	TitleBlockTemplatesCollection *parentCollection() const;
@@ -38,6 +42,7 @@ class TitleBlockTemplateLocation {
 	QString name() const;
 	void setName(const QString &);
 	bool isValid() const;
+	void fromString(const QString &);
 	QString toString() const;
 	QETProject *parentProject() const;
 	QString protocol() const;

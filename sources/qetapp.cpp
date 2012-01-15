@@ -304,7 +304,7 @@ TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection(
 	if (!common_tbt_collection_) {
 		common_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
 		common_tbt_collection_ -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
-		common_tbt_collection_ -> setProtocol("commontbt");
+		common_tbt_collection_ -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
 	}
 	return(common_tbt_collection_);
 }
@@ -317,7 +317,7 @@ TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection(
 	if (!custom_tbt_collection_) {
 		custom_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
 		custom_tbt_collection_ -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
-		custom_tbt_collection_ -> setProtocol("customtbt");
+		custom_tbt_collection_ -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
 	}
 	return(custom_tbt_collection_);
 }
@@ -337,6 +337,24 @@ QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesColle
 	}
 	
 	return(collections_list);
+}
+
+/**
+	@param protocol Protocol string
+	@return the templates collection matching the provided protocol, or 0 if none could be found
+*/
+TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QString &protocol) {
+	if (protocol == QETAPP_COMMON_TBT_PROTOCOL) {
+		return(common_tbt_collection_);
+	} else if (protocol == QETAPP_CUSTOM_TBT_PROTOCOL) {
+		return(custom_tbt_collection_);
+	} else {
+		QETProject *project = QETApp::projectFromString(protocol);
+		if (project) {
+			return(project -> embeddedTitleBlockTemplatesCollection());
+		}
+	}
+	return(0);
 }
 
 /**
@@ -452,9 +470,9 @@ QString QETApp::realPath(const QString &sym_path) {
 		directory = commonElementsDir();
 	} else if (sym_path.startsWith("custom://")) {
 		directory = customElementsDir();
-	} else if (sym_path.startsWith("commontbt://")) {
+	} else if (sym_path.startsWith(QETAPP_COMMON_TBT_PROTOCOL "://")) {
 		directory = commonTitleBlockTemplatesDir();
-	} else if (sym_path.startsWith("customtbt://")) {
+	} else if (sym_path.startsWith(QETAPP_CUSTOM_TBT_PROTOCOL "://")) {
 		directory = customTitleBlockTemplatesDir();
 	} else return(QString());
 	return(directory + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
@@ -1274,6 +1292,36 @@ template <class T> void QETApp::addWindowsListToMenu(QMenu *menu, const QList<T 
 		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
 		signal_map.setMapping(current_menu, window);
 	}
+}
+
+/**
+	@param url The location of a collection item (title block template,
+	element, category, ...).
+	@return the id of the project mentionned in the URL, or -1 if none could be
+	found.
+*/
+int QETApp::projectIdFromString(const QString &url) {
+	QRegExp embedded("^project([0-9]+)\\+embed.*$", Qt::CaseInsensitive);
+	if (embedded.exactMatch(url)) {
+		bool conv_ok = false;
+		int project_id = embedded.capturedTexts().at(1).toInt(&conv_ok);
+		if (conv_ok) {
+			return(project_id);
+		}
+	}
+	return(-1);
+}
+
+/**
+	@param url The location of a collection item (title block template,
+	element, category, ...).
+	@return the project mentionned in the URL, or 0 if none could be
+	found.
+*/
+QETProject *QETApp::projectFromString(const QString &url) {
+	int project_id = projectIdFromString(url);
+	if (project_id == -1) return(0);
+	return(project(project_id));
 }
 
 /// construit le menu de l'icone dans le systray
