@@ -7,8 +7,8 @@
     </names>
     <informations></informations>
     <description>
+        <input x="10" y="156" size="6" rotate="true" text="__-__-__-__-__-__"/>
         <text x="424" y="23" size="6" text="INPUTS"/>
-        <text x="14" y="159" size="6" text="__-__-__-__-__-__"/>
         <text x="16" y="150" size="6" text=" MAC ADDRESS"/>
         <text x="415" y="79" size="6" text="DC/DC/DC"/>
         <text x="14" y="140" size="6" text="PROFINET (LAN)"/>
