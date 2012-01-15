@@ -231,6 +231,7 @@ void TitleBlockTemplateCellWidget::editLabelDisplayed() {
 void TitleBlockTemplateCellWidget::editLabel() {
 	if (!edited_cell_) return;
 	editTranslatableValue(edited_cell_ -> label, "label", tr("Label de cette cellule :"));
+	label_input_ -> setText(edited_cell_ -> label.name());
 }
 
 /**
@@ -240,6 +241,7 @@ void TitleBlockTemplateCellWidget::editLabel() {
 void TitleBlockTemplateCellWidget::editValue() {
 	if (!edited_cell_) return;
 	editTranslatableValue(edited_cell_ -> value, "value", tr("Valeur de cette cellule :"));
+	value_input_ -> setText(edited_cell_ -> value.name());
 }
 
 /**
@@ -347,6 +349,7 @@ void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const
 	edit_dialog.setLayout(editor_layout);
 	if (edit_dialog.exec() == QDialog::Accepted) {
 		emitModification(attribute, qVariantFromValue(names_widget -> names()));
+		
 	}
 }
 

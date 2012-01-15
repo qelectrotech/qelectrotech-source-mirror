@@ -239,6 +239,8 @@ void QETTitleBlockTemplateEditor::initActions() {
 	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
 	save_as_file_   = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer vers un fichier",  "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
+	undo_           = undo_stack_ -> createUndoAction(this);
+	redo_           = undo_stack_ -> createRedoAction(this);
 	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
 	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351",               "menu entry"), this);
@@ -249,10 +251,15 @@ void QETTitleBlockTemplateEditor::initActions() {
 	merge_cells_    = new QAction(                                  tr("&Fusionner les cellules",      "menu entry"), this);
 	split_cell_     = new QAction(                                  tr("&S\351parer les cellules",     "menu entry"), this);
 	
+	undo_ -> setIcon(QET::Icons::EditUndo);
+	redo_ -> setIcon(QET::Icons::EditRedo);
+	
 	new_              -> setShortcut(QKeySequence::New);
 	open_             -> setShortcut(QKeySequence::Open);
 	save_             -> setShortcut(QKeySequence::Save);
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
+	undo_             -> setShortcut(QKeySequence::Undo);
+	redo_             -> setShortcut(QKeySequence::Redo);
 	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
 	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to split merged cell")));
 	zoom_in_          -> setShortcut(QKeySequence::ZoomIn);
@@ -307,6 +314,9 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	file_menu_    -> addSeparator();
 	file_menu_    -> addAction(quit_);
 	
+	edit_menu_   -> addAction(undo_);
+	edit_menu_   -> addAction(redo_);
+	edit_menu_   -> addSeparator();
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
 	
