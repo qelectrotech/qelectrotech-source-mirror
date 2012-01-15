@@ -32,7 +32,7 @@
         <location filename="../sources/aboutqet.cpp" line="30"/>
         <source>À propos de QElectrotech</source>
         <comment>window title</comment>
-        <translation>A propositoo di QElectroTech</translation>
+        <translation>A proposito di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="37"/>
@@ -1085,7 +1085,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/elementspanel.cpp" line="1326"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished">Modello &quot;%1&quot;</translation>
+        <translation>Modello &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="594"/>
@@ -2235,13 +2235,13 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/qetapp.cpp" line="1224"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nascondi i &amp;modificatori di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1225"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Most&amp;ra i modificatori di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1226"/>
@@ -2282,7 +2282,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/qetapp.cpp" line="1305"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificatori di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1370"/>
@@ -2326,7 +2326,7 @@ Opzioni disponibili:
         <location filename="../sources/qetapp.cpp" line="1380"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-tbt-dir=DIR     Definisce la directory della collezione dei modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1383"/>
@@ -2369,13 +2369,13 @@ Opzioni disponibili:
         <location filename="../sources/qetapp.cpp" line="306"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cartiglio QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="319"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cartigli utente</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="680"/>
@@ -4127,25 +4127,25 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zoom avanti</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="172"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zoom indietro</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="173"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zoom adatta</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="174"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Resetta lo zoom</translation>
+        <translation>Nessuno zoom</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="175"/>
@@ -4199,13 +4199,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="187"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
-        <translation type="unfinished">Ctrl+9</translation>
+        <translation>Ctrl+9</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="188"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
-        <translation type="unfinished">Ctrl+0</translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="190"/>
@@ -4241,7 +4241,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="214"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
-        <translation type="unfinished">Mostra (&amp;g)</translation>
+        <translation>Mostra (&amp;g)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="215"/>
@@ -5435,14 +5435,14 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare il modello di cartiglio?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sei sicuro di voler eliminare questo modello di cartiglio (%1) ?</translation>
     </message>
 </context>
 <context>
@@ -5451,7 +5451,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Collezione padre</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="81"/>
@@ -5703,13 +5703,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="107"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cartiglio di progetto senza titolo (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="115"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitble title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cartiglio del progetto &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
