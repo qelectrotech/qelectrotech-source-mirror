@@ -18,6 +18,7 @@
 #ifndef TITLEBLOCK_SLASH_TEMPLATE_LOCATION_H
 #define TITLEBLOCK_SLASH_TEMPLATE_LOCATION_H
 #include <QtCore>
+#include <QDomElement>
 class QETProject;
 class TitleBlockTemplate;
 class TitleBlockTemplatesCollection;
@@ -46,11 +47,15 @@ class TitleBlockTemplateLocation {
 	QString toString() const;
 	QETProject *parentProject() const;
 	QString protocol() const;
+	QDomElement getTemplateXmlDescription() const;
 	TitleBlockTemplate *getTemplate() const;
 	
 	// attributes
 	private:
 	TitleBlockTemplatesCollection *collection_; ///< Collection the template belongs to
 	QString name_;                              ///< Name of the template
+	
+	public:
+	static int MetaTypeId; ///< Id of the corresponding Qt meta type
 };
 #endif

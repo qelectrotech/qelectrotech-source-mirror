@@ -19,6 +19,9 @@
 #include "templatescollection.h"
 #include "qetapp.h"
 
+// make this class usable with QVariant
+int t = qRegisterMetaType<TitleBlockTemplateLocation>("TitleBlockTemplateLocation");
+
 /**
 	Constructor
 	@param collection Parent collection of the title block template
@@ -122,6 +125,15 @@ QString TitleBlockTemplateLocation::protocol() const {
 		return(collection_ -> protocol());
 	}
 	return("unknown");
+}
+
+/**
+	This is a convenience method equivalent to
+	parentCollection() -> getTemplateXmlDescription
+*/
+QDomElement TitleBlockTemplateLocation::getTemplateXmlDescription() const {
+	if (!collection_ || name_.isEmpty()) return(QDomElement());
+	return(collection_ -> getTemplateXmlDescription(name_));
 }
 
 /**
