@@ -88,7 +88,7 @@ QString IntegrationMoveElementsHandler::newNameForElement(const ElementDefinitio
 }
 
 /**
-	Demande a l'utilisateur s'il souhaite ecraser l'elemen deja existant,
+	Demande a l'utilisateur s'il souhaite ecraser l'element deja existant,
 	renommer le nouveau ou bien annuler
 	@param src Element source
 	@param dst Element cible

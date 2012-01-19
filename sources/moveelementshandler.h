@@ -32,7 +32,7 @@ class ElementsCategory;
 	cet element existe deja. Il est alors possible d'ecraser l'element cible ou
 	d'abandonner l'operation. Cette decision est a la charge d'une classe fille
 	de MoveElementsHandler.
-	Cet objet peut etre effectuer des interactions avec l'utilisateur ou non.
+	Cet objet peut effectuer des interactions avec l'utilisateur ou non.
 	Cet aspect, ainsi que la politique de gestion des elements, est laisse aux
 	bons soins de l'implementation.
 	Il s'agit d'un pattern Strategie qui encapsule non pas l'algorithme de
