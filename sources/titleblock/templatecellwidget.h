@@ -45,6 +45,8 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	QLabel    *cell_type_label_;
 	QComboBox *cell_type_input_;
 	
+	QLabel *empty_label_;
+	
 	QLabel      *logo_label_;
 	QComboBox   *logo_input_;
 	QPushButton *add_logo_input_;
@@ -68,6 +70,7 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	QSpinBox      *font_size_input_;
 	QCheckBox     *font_adjust_input_;
 	QVBoxLayout   *cell_editor_layout_;
+	QHBoxLayout   *cell_editor_type_and_name_layout_;
 	QGridLayout   *cell_editor_text_layout_;
 	QHBoxLayout   *cell_editor_image_layout_;
 	

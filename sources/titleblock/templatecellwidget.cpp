@@ -44,19 +44,27 @@ TitleBlockTemplateCellWidget::~TitleBlockTemplateCellWidget() {
 	Initialize layout and widgets.
 */
 void TitleBlockTemplateCellWidget::initWidgets() {
+	// type combo box: always displayed
 	cell_type_label_ = new QLabel(tr("Type de cellule :"));
 	cell_type_input_ = new QComboBox();
 	cell_type_input_ -> addItem(tr("Vide"),  TitleBlockCell::EmptyCell);
 	cell_type_input_ -> addItem(tr("Texte"), TitleBlockCell::TextCell);
 	cell_type_input_ -> addItem(tr("Logo"),  TitleBlockCell::LogoCell);
 	
+	// name input: displayed for text and logo cells
+	name_label_ = new QLabel(tr("Nom :"));
+	name_input_ = new QLineEdit();
+	
+	// widgets specific to empty cells
+	empty_label_ = new QLabel(tr("Attention : les bordures des cellules vides n'apparaissent pas lors du rendu final sur le sch\351ma."));
+	
+	// widgets specific to logo cells
 	logo_label_ = new QLabel(tr("Logo"));
 	logo_input_ = new QComboBox();
 	logo_input_ -> addItem(tr("Aucun logo"));
 	add_logo_input_ = new QPushButton(tr("G\351rer les logos"));
 	
-	name_label_ = new QLabel(tr("Nom :"));
-	name_input_ = new QLineEdit();
+	// widgets specific to text cells
 	label_checkbox_ = new QCheckBox(tr("Afficher un label :"));
 	label_input_ = new QLineEdit();
 	label_input_ -> setReadOnly(true);
@@ -95,12 +103,14 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	value_edition -> addWidget(value_input_);
 	value_edition -> addWidget(value_edit_);
 	
-	/// TODO fix widget alignment when switching cell type
+	cell_editor_type_and_name_layout_ = new QHBoxLayout();
+	cell_editor_type_and_name_layout_ -> addWidget(cell_type_label_);
+	cell_editor_type_and_name_layout_ -> addWidget(cell_type_input_);
+	cell_editor_type_and_name_layout_ -> addWidget(name_label_);
+	cell_editor_type_and_name_layout_ -> addWidget(name_input_);
+	cell_editor_type_and_name_layout_ -> addStretch(5);
+	
 	cell_editor_text_layout_ = new QGridLayout();
-	cell_editor_text_layout_ -> addWidget(cell_type_label_,    0, 0);
-	cell_editor_text_layout_ -> addWidget(cell_type_input_,    0, 1);
-	cell_editor_text_layout_ -> addWidget(name_label_,         0, 2);
-	cell_editor_text_layout_ -> addWidget(name_input_,         0, 3);
 	cell_editor_text_layout_ -> addWidget(label_checkbox_,     2, 0);
 	cell_editor_text_layout_ -> addLayout(label_edition,       2, 1);
 	cell_editor_text_layout_ -> addWidget(value_label_,        3, 0);
@@ -116,8 +126,10 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	cell_editor_text_layout_ -> addWidget(logo_label_,         5, 0);
 	cell_editor_text_layout_ -> addWidget(logo_input_,         5, 1);
 	cell_editor_text_layout_ -> addWidget(add_logo_input_,     5, 2);
+	cell_editor_text_layout_ -> addWidget(empty_label_,        6, 0);
 	cell_editor_text_layout_ -> setColumnStretch(4, 4000);
 	cell_editor_layout_ = new QVBoxLayout();
+	cell_editor_layout_ -> addLayout(cell_editor_type_and_name_layout_);
 	cell_editor_layout_ -> addLayout(cell_editor_text_layout_);
 	cell_editor_layout_ -> addStretch();
 	setLayout(cell_editor_layout_);
@@ -151,6 +163,8 @@ void TitleBlockTemplateCellWidget::updateFormType(int cell_type) {
 	
 	name_label_        -> setVisible(cell_type);
 	name_input_        -> setVisible(cell_type);
+	
+	empty_label_       -> setVisible(cell_type == TitleBlockCell::EmptyCell);
 	
 	logo_label_        -> setVisible(cell_type == TitleBlockCell::LogoCell);
 	logo_input_        -> setVisible(cell_type == TitleBlockCell::LogoCell);
