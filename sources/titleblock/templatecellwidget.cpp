@@ -28,7 +28,7 @@
 */
 TitleBlockTemplateCellWidget::TitleBlockTemplateCellWidget(TitleBlockTemplate *parent_template, QWidget *parent) :
 	QWidget(parent),
-	read_only(false)
+	read_only_(false)
 {
 	initWidgets();
 	updateLogosComboBox(parent_template);
@@ -317,6 +317,25 @@ void TitleBlockTemplateCellWidget::updateLogosComboBox(const TitleBlockTemplate 
 }
 
 /**
+	@param read_only whether this edition widget should be read only
+*/
+void TitleBlockTemplateCellWidget::setReadOnly(bool read_only) {
+	if (read_only_ == read_only) return;
+	read_only_ = read_only;
+	
+	cell_type_input_ -> setEnabled(!read_only_);
+	logo_input_ -> setEnabled(!read_only_);
+	name_input_ -> setReadOnly(read_only_);
+	label_checkbox_ -> setEnabled(!read_only_);
+	label_edit_ -> setEnabled(!read_only_);
+	value_edit_ -> setEnabled(!read_only_);
+	horiz_align_input_ -> setEnabled(!read_only_);
+	vert_align_input_ -> setEnabled(!read_only_);
+	font_size_input_ -> setReadOnly(read_only_);
+	font_adjust_input_ -> setEnabled(!read_only_);
+}
+
+/**
 	Emit a horizontal alignment modification command.
 	@see ModifyTitleBlockCellCommand
 */
@@ -337,6 +356,13 @@ int TitleBlockTemplateCellWidget::verticalAlignment() const {
 */
 int TitleBlockTemplateCellWidget::alignment() const {
 	return(horizontalAlignment() | verticalAlignment());
+}
+
+/**
+	@return whether this edition widget is read only
+*/
+bool TitleBlockTemplateCellWidget::isReadOnly() const {
+	return(read_only_);
 }
 
 /**

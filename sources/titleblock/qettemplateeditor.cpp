@@ -32,8 +32,8 @@
 */
 QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	QMainWindow(parent),
-	read_only(false),
 	opened_from_file_(false),
+	read_only_(false),
 	tb_template_(0),
 	logo_manager_(0)
 {
@@ -394,6 +394,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 */
 void QETTitleBlockTemplateEditor::initLogoManager() {
 	logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_);
+	logo_manager_ -> setReadOnly(read_only_);
 	connect(
 		logo_manager_,
 		SIGNAL(logosChanged(const TitleBlockTemplate *)),
@@ -419,6 +420,9 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
 		QString tag;
 		if (!undo_stack_ -> isClean()) {
 			tag = tr("[Modifi\351]", "window title tag");
+		}
+		if (read_only_) {
+			tag = tr("[Lecture seule]", "window title tag");
 		}
 		titleblock_title = QString(
 			tr(
@@ -497,6 +501,16 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 		).arg(min_title).arg(titleblock_title);
 	}
 	setWindowTitle(title);
+}
+
+/**
+	Ensure the user interface remains consistent by enabling or disabling
+	adequate actions.
+*/
+void QETTitleBlockTemplateEditor::updateActions() {
+	/// TODO complete this method
+	merge_cells_ -> setEnabled(!read_only_);
+	split_cell_ -> setEnabled(!read_only_);
 }
 
 /**
@@ -642,6 +656,22 @@ bool QETTitleBlockTemplateEditor::saveAsFile() {
 	
 	// retourne un booleen representatif de la reussite de l'enregistrement
 	return(saving);
+}
+
+/**
+	@param read_only True to restrict this editor to visualization of the
+	currently edited template, false to allow full edition.
+*/
+void QETTitleBlockTemplateEditor::setReadOnly(bool read_only) {
+	if (read_only == read_only_) return;
+	read_only_ = read_only;
+	if (logo_manager_) {
+		logo_manager_ -> setReadOnly(read_only_);
+	}
+	template_cell_editor_widget_ -> setReadOnly(read_only_);
+	template_edition_area_view_ -> setReadOnly(read_only_);
+	updateActions();
+	updateEditorTitle();
 }
 
 /**

@@ -26,7 +26,8 @@
 */
 TitleBlockDimensionWidget::TitleBlockDimensionWidget(bool complete, QWidget *parent) :
 	QDialog(parent),
-	complete_(complete)
+	complete_(complete),
+	read_only_(false)
 {
 	initWidgets();
 	initLayouts();
@@ -83,6 +84,30 @@ void TitleBlockDimensionWidget::setValue(const TitleBlockDimension &dim) {
 		}
 	}
 	updateSpinBoxSuffix();
+}
+
+/**
+	@return Whether or not this widget should allow edition of the displayed
+	dimension.
+*/
+bool TitleBlockDimensionWidget::isReadOnly() const {
+	return(read_only_);
+}
+
+/**
+	@param read_only Whether or not this widget should allow edition of the
+	displayed dimension.
+*/
+void TitleBlockDimensionWidget::setReadOnly(bool read_only) {
+	if (read_only_ == read_only) return;
+	read_only_ = read_only;
+	
+	spinbox_ -> setReadOnly(read_only_);
+	if (complete_) {
+		absolute_button_  -> setEnabled(!read_only_);
+		relative_button_  -> setEnabled(!read_only_);
+		remaining_button_ -> setEnabled(!read_only_);
+	}
 }
 
 /**

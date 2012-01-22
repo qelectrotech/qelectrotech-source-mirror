@@ -41,6 +41,9 @@ class TitleBlockDimensionWidget : public QDialog {
 	QSpinBox *spinbox() const;
 	TitleBlockDimension value() const;
 	void setValue(const TitleBlockDimension &);
+	bool isReadOnly() const;
+	void setReadOnly(bool);
+	
 	private:
 	void initWidgets();
 	void initLayouts();
@@ -58,5 +61,6 @@ class TitleBlockDimensionWidget : public QDialog {
 	QRadioButton *remaining_button_;   ///< Radio button to indicate the length is relative to the remaining length
 	QButtonGroup *dimension_type_;     ///< QButtonGroup for the three radio buttons
 	QDialogButtonBox *buttons_;        ///< Buttons to validate the dialog
+	bool read_only_;                   ///< Whether or not this widget allow edition of the displayed dimension
 };
 #endif

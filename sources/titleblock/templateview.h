@@ -72,6 +72,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	void updateLayout();
 	void rowsDimensionsChanged();
 	void columnsDimensionsChanged();
+	void setReadOnly(bool);
 	
 	protected slots:
 	virtual void applyColumnsWidths(bool = true);
@@ -125,5 +126,6 @@ class TitleBlockTemplateView : public QGraphicsView {
 	int apply_columns_widths_count_;
 	int apply_rows_heights_count_;
 	bool first_activation_;                ///< Boolean used to detect the first display of this widget
+	bool read_only_;                       ///< Boolean stating whether this view allows template edition
 };
 #endif

@@ -51,6 +51,14 @@ QString TitleBlockTemplateLogoManager::currentLogo() const {
 }
 
 /**
+	@return Whether this logo manager should allow logo edition
+	(renaming, addition, deletion).
+*/
+bool TitleBlockTemplateLogoManager::isReadOnly() const {
+	return(read_only_);
+}
+
+/**
 	Emit the logosChanged() signal.
 */
 void TitleBlockTemplateLogoManager::emitLogosChangedSignal() {
@@ -328,4 +336,18 @@ void TitleBlockTemplateLogoManager::renameLogo() {
 		fillView();
 		emitLogosChangedSignal();
 	}
+}
+
+/**
+	@param read_only Whether this logo manager should allow logo edition
+	(renaming, addition, deletion)
+*/
+void TitleBlockTemplateLogoManager::setReadOnly(bool read_only) {
+	if (read_only_ == read_only) return;
+	read_only_ = read_only;
+	
+	add_button_ -> setEnabled(!read_only_);
+	delete_button_ -> setEnabled(!read_only_);
+	rename_button_ -> setEnabled(!read_only_);
+	logo_name_ -> setReadOnly(read_only_);
 }

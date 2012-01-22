@@ -41,7 +41,7 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	// attributes
 	private:
 	/// is the template read-only?
-	bool read_only;
+	bool read_only_;
 	QLabel    *cell_type_label_;
 	QComboBox *cell_type_input_;
 	
@@ -81,6 +81,7 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	int horizontalAlignment() const;
 	int verticalAlignment() const;
 	int alignment() const;
+	bool isReadOnly() const;
 	
 	protected:
 	void editTranslatableValue(NamesList &, const QString &, const QString &) const;
@@ -102,6 +103,7 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	void editAdjust();
 	void editLogo();
 	void updateLogosComboBox(const TitleBlockTemplate *);
+	void setReadOnly(bool);
 	
 	private slots:
 	

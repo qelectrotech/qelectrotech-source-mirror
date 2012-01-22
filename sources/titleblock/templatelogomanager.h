@@ -34,6 +34,8 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	// methods
 	public:
 	QString currentLogo() const;
+	bool isReadOnly() const;
+	void setReadOnly(bool);
 	
 	signals:
 	void logosChanged(const TitleBlockTemplate *);
@@ -69,5 +71,6 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	QLabel *logo_type_;                    ///< current logo type
 	QDialogButtonBox *buttons_;            ///< ok/cancel buttons
 	QDir open_dialog_dir_;                 ///< last opened directory
+	bool read_only_;                       ///< Whether this logo manager should allow logo edition (renaming, addition, deletion)
 };
 #endif

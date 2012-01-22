@@ -44,8 +44,6 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	
 	// attributes
 	private:
-	/// is the template read-only?
-	bool read_only;
 	/// menus TODO
 	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_,*/ *config_menu_, *help_menu_;
 	/// actions
@@ -60,6 +58,8 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	QString filepath_;
 	/// Whether to consider the location or the filepath
 	bool opened_from_file_;
+	/// whether the currently edited template is considered read only
+	bool read_only_;
 	/// Template Object edited
 	TitleBlockTemplate *tb_template_;
 	/// Template preview
@@ -104,6 +104,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	bool save();
 	bool saveAs();
 	bool saveAsFile();
+	void setReadOnly(bool);
 	void quit();
 	
 	private slots:
@@ -112,6 +113,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	void pushGridUndoCommand(TitleBlockTemplateCommand *);
 	void pushUndoCommand(QUndoCommand *);
 	void updateEditorTitle();
+	void updateActions();
 	bool saveAs(const TitleBlockTemplateLocation &);
 	bool saveAs(const QString &);
 };

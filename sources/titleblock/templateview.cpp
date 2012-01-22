@@ -45,7 +45,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QWidget *parent) :
 	preview_width_(DEFAULT_PREVIEW_WIDTH),
 	apply_columns_widths_count_(0),
 	apply_rows_heights_count_(0),
-	first_activation_(true)
+	first_activation_(true),
+	read_only_(false)
 {
 	init();
 }
@@ -61,7 +62,8 @@ TitleBlockTemplateView::TitleBlockTemplateView(QGraphicsScene *scene, QWidget *p
 	preview_width_(DEFAULT_PREVIEW_WIDTH),
 	apply_columns_widths_count_(0),
 	apply_rows_heights_count_(0),
-	first_activation_(true)
+	first_activation_(true),
+	read_only_(false)
 {
 	init();
 }
@@ -133,6 +135,7 @@ void TitleBlockTemplateView::zoomReset() {
 	menu.
 */
 void TitleBlockTemplateView::addColumnBefore() {
+	if (read_only_) return;
 	int index = lastContextMenuCellIndex();
 	if (index == -1) return;
 	requestGridModification(ModifyTemplateGridCommand::addColumn(tbtemplate_, index));
@@ -143,6 +146,7 @@ void TitleBlockTemplateView::addColumnBefore() {
 	menu.
 */
 void TitleBlockTemplateView::addRowBefore() {
+	if (read_only_) return;
 	int index = lastContextMenuCellIndex();
 	if (index == -1) return;
 	requestGridModification(ModifyTemplateGridCommand::addRow(tbtemplate_, index));
@@ -153,6 +157,7 @@ void TitleBlockTemplateView::addRowBefore() {
 	menu.
 */
 void TitleBlockTemplateView::addColumnAfter() {
+	if (read_only_) return;
 	int index = lastContextMenuCellIndex();
 	if (index == -1) return;
 	requestGridModification(ModifyTemplateGridCommand::addColumn(tbtemplate_, index + 1));
@@ -163,6 +168,7 @@ void TitleBlockTemplateView::addColumnAfter() {
 	menu.
 */
 void TitleBlockTemplateView::addRowAfter() {
+	if (read_only_) return;
 	int index = lastContextMenuCellIndex();
 	if (index == -1) return;
 	requestGridModification(ModifyTemplateGridCommand::addRow(tbtemplate_, index + 1));
@@ -179,10 +185,12 @@ void TitleBlockTemplateView::editColumn(HelperCell *cell) {
 	
 	TitleBlockDimension dimension_before = tbtemplate_ -> columnDimension(index);
 	TitleBlockDimensionWidget dialog(true, this);
+	dialog.setReadOnly(read_only_);
 	dialog.setWindowTitle(tr("Changer la largeur de la colonne", "window title when changing a column with"));
 	dialog.label() -> setText(tr("Largeur :", "text before the spinbox to change a column width"));
 	dialog.setValue(dimension_before);
-	if (dialog.exec() == QDialog::Accepted) {
+	int user_answer = dialog.exec();
+	if (!read_only_ && user_answer == QDialog::Accepted) {
 		ModifyTemplateDimension *command = new ModifyTemplateDimension(tbtemplate_);
 		command -> setType(false);
 		command -> setIndex(index);
@@ -203,10 +211,12 @@ void TitleBlockTemplateView::editRow(HelperCell *cell) {
 	
 	TitleBlockDimension dimension_before = TitleBlockDimension(tbtemplate_ -> rowDimension(index));
 	TitleBlockDimensionWidget dialog(false, this);
+	dialog.setReadOnly(read_only_);
 	dialog.setWindowTitle(tr("Changer la hauteur de la ligne", "window title when changing a row height"));
 	dialog.label() -> setText(tr("Hauteur :", "text before the spinbox to change a row height"));
 	dialog.setValue(dimension_before);
-	if (dialog.exec() == QDialog::Accepted) {
+	int user_answer = dialog.exec();
+	if (!read_only_ && user_answer == QDialog::Accepted) {
 		ModifyTemplateDimension *command = new ModifyTemplateDimension(tbtemplate_);
 		command -> setType(true);
 		command -> setIndex(index);
@@ -721,6 +731,22 @@ void TitleBlockTemplateView::rowsDimensionsChanged() {
 */
 void TitleBlockTemplateView::columnsDimensionsChanged() {
 	applyColumnsWidths();
+}
+
+/**
+	@param read_only whether this view should be read only.
+	
+*/
+void TitleBlockTemplateView::setReadOnly(bool read_only) {
+	if (read_only_ == read_only) return;
+	
+	read_only_ = read_only;
+	add_column_before_ -> setEnabled(!read_only_);
+	add_row_before_    -> setEnabled(!read_only_);
+	add_column_after_  -> setEnabled(!read_only_);
+	add_row_after_     -> setEnabled(!read_only_);
+	delete_column_     -> setEnabled(!read_only_);
+	delete_row_        -> setEnabled(!read_only_);
 }
 
 /**
