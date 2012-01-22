@@ -117,6 +117,8 @@ class ElementsPanel : public QTreeWidget {
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
 	void startDrag(Qt::DropActions);
+	void startElementDrag(const ElementsLocation &);
+	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
 	bool event(QEvent *);
 	
 	private:

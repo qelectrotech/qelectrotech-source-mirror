@@ -23,6 +23,7 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "integrationmoveelementshandler.h"
+#include "movetemplateshandler.h"
 #include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
 #include "titleblocktemplate.h"
@@ -606,7 +607,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 		return(QString());
 	}
 	
-	// accede a a categorie d'integration
+	// accede a la categorie d'integration
 	ElementsCategory *integ_cat = integrationCategory();
 	
 	// accede a l'element a integrer
@@ -641,18 +642,18 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	if (ElementDefinition *existing_elmt = target_cat -> element(integ_item -> pathName())) {
 		
 		// l'element existe deja - on demande au handler ce que l'on doit faire
-		QET::Action todo = handler -> elementAlreadyExists(integ_elmt, existing_elmt);
+		QET::Action action = handler -> elementAlreadyExists(integ_elmt, existing_elmt);
 		
-		if (todo == QET::Ignore) {
+		if (action == QET::Ignore) {
 			// il faut conserver et utiliser l'element deja integre
 			return(existing_elmt -> location().toString());
-		} else if (todo == QET::Erase) {
+		} else if (action == QET::Erase) {
 			// il faut ecraser l'element deja integre
 			BasicMoveElementsHandler *erase_handler = new BasicMoveElementsHandler();
 			ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
 			delete erase_handler;
 			return(result_loc.toString());
-		} else if (todo == QET::Rename) {
+		} else if (action == QET::Rename) {
 			// il faut faire cohabiter les deux elements en renommant le nouveau 
 			QString integ_element_name = handler -> nameForRenamingOperation();
 			BasicMoveElementsHandler *rename_handler = new BasicMoveElementsHandler();
@@ -670,6 +671,41 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 		ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
 		return(result_loc.toString());
 	}
+}
+
+/**
+	Integrate a title block template into this project.
+	@param src_tbt The locaiton of the title block template to be integrated into this project
+	@param handler 
+	@return the name of the template after integration, or an empty QString if a problem occured.
+*/
+QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation &src_tbt, MoveTitleBlockTemplatesHandler *handler) {
+	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &titleblocks_);
+	
+	// check whether a TBT having the same name already exists within this project
+	QString target_name = dst_tbt.name();
+	while (titleblocks_.templates().contains(target_name)) {
+		QET::Action action = handler -> templateAlreadyExists(src_tbt, dst_tbt);
+		if (action == QET::Retry) {
+			continue;
+		} else if (action == QET::Erase) {
+			break;
+		} else if (action == QET::Ignore || action == QET::Abort || action == QET::Managed) {
+			return(QString());
+		} else if (action == QET::Rename) {
+			target_name = handler -> nameForRenamingOperation();
+		}
+	}
+	
+	bool integration = setTemplateXmlDescription(
+		target_name,
+		src_tbt.getTemplateXmlDescription()
+	);
+	if (!integration) {
+		handler -> errorWithATemplate(src_tbt, tr("An error occured when integrating the element.", "error message"));
+		target_name = QString();
+	}
+	return(target_name);
 }
 
 /**

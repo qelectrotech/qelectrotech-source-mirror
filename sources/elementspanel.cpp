@@ -493,9 +493,24 @@ void ElementsPanel::dropEvent(QDropEvent *e) {
 void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
 	Q_UNUSED(supportedActions);
 	// recupere l'emplacement selectionne
-	ElementsLocation location = selectedLocation();
-	if (location.isNull()) return;
+	ElementsLocation element_location = selectedLocation();
+	if (!element_location.isNull()) {
+		startElementDrag(element_location);
+		return;
+	}
 	
+	TitleBlockTemplateLocation tbt_location = locationForTitleBlockTemplate(currentItem());
+	if (tbt_location.isValid()) {
+		startTitleBlockTemplateDrag(tbt_location);
+		return;
+	}
+}
+
+/**
+	Handle the dragging of an element.
+	@param location Location of the dragged element
+*/
+void ElementsPanel::startElementDrag(const ElementsLocation &location) {
 	// recupere la selection
 	ElementsCollectionItem *selected_item = QETApp::collectionItem(location);
 	if (!selected_item) return;
@@ -546,6 +561,23 @@ void ElementsPanel::startDrag(Qt::DropActions supportedActions) {
 	// realisation du drag'n drop
 	drag -> setMimeData(mimeData);
 	drag -> start(Qt::MoveAction | Qt::CopyAction);
+}
+
+/**
+	Handle the dragging of a title block template
+	@param location Location of the dragged template.
+*/
+void ElementsPanel::startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &location) {
+	QString location_string = location.toString();
+	
+	QMimeData *mime_data = new QMimeData();
+	mime_data -> setText(location_string);
+	mime_data -> setData("application/x-qet-titleblock-uri", location_string.toAscii());
+	
+	QDrag *drag = new QDrag(this);
+	drag -> setMimeData(mime_data);
+	drag -> setPixmap(QET::Icons::TitleBlock.pixmap(22, 16));
+	drag -> start(Qt::CopyAction);
 }
 
 /**
@@ -712,10 +744,13 @@ QTreeWidgetItem *ElementsPanel::addElement(QTreeWidgetItem *qtwi_parent, Element
 	QPixmap custom_element_pixmap = cache_ -> pixmap();
 	
 	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
-	QString tool_tip = tr("Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment ");
+	QString status_tip = tr(
+		"Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment \253 %1 \273",
+		"Tip displayed in the status bar when selecting an element"
+	);
 	QString final_name(elmt_name.isEmpty() ? custom_element_name : elmt_name);
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem(qtwi_parent, QStringList(final_name));
-	qtwi -> setStatusTip(0, tool_tip + "\253 " + custom_element_name + " \273");
+	qtwi -> setStatusTip(0, status_tip.arg(custom_element_name));
 	qtwi -> setToolTip(0, element -> location().toString());
 	qtwi -> setWhatsThis(0, whats_this);
 	qtwi -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsDragEnabled | Qt::ItemIsEnabled);
@@ -788,6 +823,20 @@ QTreeWidgetItem *ElementsPanel::addTitleBlockTemplatesCollection(
 		TitleBlockTemplateLocation template_location = collection -> location(template_name);
 		
 		QTreeWidgetItem *qtwi_tbt = new QTreeWidgetItem(qtwi_tbt_collection, QStringList(final_name));
+		qtwi_tbt -> setStatusTip(
+			0,
+			tr(
+				"Cliquer-d\351posez ce mod\350le de cartouche sur un sch\351ma pour l'y appliquer.",
+				"Tip displayed when selecting a title block template"
+			)
+		);
+		qtwi_tbt -> setWhatsThis(
+			0,
+			tr(
+				"Ceci est un mod\350le de cartouche, qui peut \320tre appliqu\351 a un sch\351ma.",
+				"\"What's this\" tip"
+			)
+		);
 		qtwi_tbt -> setToolTip(0, template_location.toString());
 		qtwi_tbt -> setIcon(0, QET::Icons::TitleBlock);
 		title_blocks_.insert(qtwi_tbt, template_location);

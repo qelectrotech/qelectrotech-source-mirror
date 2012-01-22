@@ -19,6 +19,7 @@
 #define DIAGRAMVIEW_H
 #include <QtGui>
 #include "elementslocation.h"
+#include "templatelocation.h"
 class Conductor;
 class Diagram;
 class Element;
@@ -78,8 +79,11 @@ class DiagramView : public QGraphicsView {
 	void dragLeaveEvent(QDragLeaveEvent *);
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
+	void handleElementDrop(QDropEvent *);
+	void handleTitleBlockDrop(QDropEvent *);
 	QRectF viewedSceneRect() const;
 	bool mustIntegrateElement(const ElementsLocation &) const;
+	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 	bool addElementAtPos(const ElementsLocation &, const QPoint &);
 	
 	signals:
@@ -93,6 +97,8 @@ class DiagramView : public QGraphicsView {
 	void titleChanged(DiagramView *, const QString &);
 	/// Signal emis avant l'integration d'un element
 	void aboutToAddElement();
+	/// Signal emitted before integrating a title block template
+	void aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	/// Signal emis lorsque l'utilisateur souhaite retrouver un element du schema dans les collections
 	void findElementRequired(const ElementsLocation &);
 	/// Signal emis lorsque l'utilisateur souhaite editer un element du schema
@@ -127,6 +133,7 @@ class DiagramView : public QGraphicsView {
 	
 	private slots:
 	void addDroppedElement();
+	void setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void adjustGridToZoom();
 	void applyReadOnly();
 };

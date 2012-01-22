@@ -33,6 +33,7 @@ class ElementsLocation;
 class TitleBlockTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
+class MoveTitleBlockTemplatesHandler;
 /**
 	Cette classe represente un projet QET. Typiquement enregistre dans un
 	fichier, il s'agit d'un document XML integrant des schemas ainsi qu'une
@@ -105,6 +106,7 @@ class QETProject : public QObject {
 	ElementsCategory *integrationCategory() const;
 	QString integrateElement(const QString &, QString &);
 	QString integrateElement(const QString &, MoveElementsHandler *, QString &);
+	QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 	bool usesElement(const ElementsLocation &);
 	void cleanUnusedElements(MoveElementsHandler *);
 	void cleanEmptyCategories(MoveElementsHandler *);

@@ -202,7 +202,7 @@ QDomElement TitleBlockTemplatesProjectCollection::getTemplateXmlDescription(cons
 */
 bool TitleBlockTemplatesProjectCollection::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_elmt) {
 	// check basic stuff
-	if (xml_elmt.tagName() != "titleblocktemplate" || xml_elmt.attribute("name") != template_name) {
+	if (xml_elmt.tagName() != "titleblocktemplate") {
 		return(false);
 	}
 	
@@ -211,6 +211,9 @@ bool TitleBlockTemplatesProjectCollection::setTemplateXmlDescription(const QStri
 	
 	// we import the provided XML element in the project document
 	QDomElement import = xml_document_.importNode(xml_elmt, true).toElement();
+	
+	// ensure the name stored in the XML description remains consistent with the provided template name
+	import.setAttribute("name", template_name);
 	
 	// we either replace the previous description
 	if (titleblock_templates_xml_.contains(template_name)) {

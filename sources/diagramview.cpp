@@ -27,10 +27,12 @@
 #include "elementtextitem.h"
 #include "independenttextitem.h"
 #include "titleblockpropertieswidget.h"
+#include "templatelocation.h"
 #include "qetapp.h"
 #include "qetproject.h"
 #include "borderpropertieswidget.h"
 #include "integrationmoveelementshandler.h"
+#include "integrationmovetemplateshandler.h"
 #include "qetdiagrameditor.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
@@ -73,6 +75,11 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	connect(&(scene -> undoStack()), SIGNAL(cleanChanged(bool)), this, SLOT(updateWindowTitle()));
 	
 	connect(this, SIGNAL(aboutToAddElement()), this, SLOT(addDroppedElement()), Qt::QueuedConnection);
+	connect(
+		this, SIGNAL(aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
+		this, SLOT(setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &)),
+		Qt::QueuedConnection
+	);
 	QShortcut *edit_conductor_color_shortcut = new QShortcut(QKeySequence(Qt::Key_F2), this);
 	connect(edit_conductor_color_shortcut, SIGNAL(activated()), this, SLOT(editSelectedConductorColor()));
 }
@@ -205,6 +212,8 @@ void DiagramView::rotateTexts() {
 void DiagramView::dragEnterEvent(QDragEnterEvent *e) {
 	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
 		e -> acceptProposedAction();
+	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
+		e -> acceptProposedAction();
 	} else {
 		e -> ignore();
 	}
@@ -228,13 +237,26 @@ void DiagramView::dragMoveEvent(QDragMoveEvent *e) {
 }
 
 /**
-	Gere les depots (drop) acceptes sur le schema. Cette methode emet le signal
-	aboutToAddElement si l'element depose est accessible.
-	@param e le QDropEvent correspondant au drag'n drop effectue
+	Handle the drops accepted on diagram (elements and title block templates). 
+	@param e the QDropEvent describing the current drag'n drop
 */
 void DiagramView::dropEvent(QDropEvent *e) {
-	// recupere l'emplacement de l'element depuis le drag'n drop
+
+	if (e -> mimeData() -> hasFormat("application/x-qet-element-uri")) {
+		handleElementDrop(e);
+	} else if (e -> mimeData() -> hasFormat("application/x-qet-titleblock-uri")) {
+		handleTitleBlockDrop(e);
+	}
+}
+
+/**
+	Handle the drop of an element.
+	@param e the QDropEvent describing the current drag'n drop
+*/
+void DiagramView::handleElementDrop(QDropEvent *e) {
+	// fetch the element location from the drop event
 	QString elmt_path = e -> mimeData() -> text();
+	
 	ElementsLocation location(ElementsLocation::locationFromString(elmt_path));
 	
 	// verifie qu'il existe un element correspondant a cet emplacement
@@ -245,6 +267,19 @@ void DiagramView::dropEvent(QDropEvent *e) {
 	next_position_ = e-> pos();
 	
 	emit(aboutToAddElement());
+}
+
+/**
+	Handle the drop of an element.
+	@param e the QDropEvent describing the current drag'n drop
+*/
+void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
+	// fetch the title block template location from the drop event
+	TitleBlockTemplateLocation tbt_loc;
+	tbt_loc.fromString(e -> mimeData() -> text());
+	if (tbt_loc.isValid()) {
+		emit(aboutToSetDroppedTitleBlockTemplate(tbt_loc));
+	}
 }
 
 /**
@@ -673,6 +708,20 @@ bool DiagramView::mustIntegrateElement(const ElementsLocation &location) const {
 }
 
 /**
+	@param tbt_loc A title block template location
+	@return true if the title block template needs to be integrated in the
+	parent project before being applied to the current diagram, or false if it
+	can be directly applied
+*/
+bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &tbt_loc) const {
+	// unlike elements, the integration of title block templates is mandatory, so we simply check whether the parent project of the 
+	QETProject *tbt_parent_project = tbt_loc.parentProject();
+	if (!tbt_parent_project) return(true);
+	
+	return(tbt_parent_project != scene -> project());
+}
+
+/**
 	@param location Emplacement de l'element a ajouter sur le schema
 	@param pos Position (dans les coordonnees de la vue) a laquelle l'element sera ajoute
 */
@@ -1095,7 +1144,7 @@ void DiagramView::mouseDoubleClickEvent(QMouseEvent *e) {
 }
 
 /**
-	Cette methode ajoute l'element deisgne par l'emplacement location a la
+	Cette methode ajoute l'element designe par l'emplacement location a la
 	position pos. Si necessaire, elle demande l'integration de l'element au
 	projet.
 	@see mustIntegrateElement
@@ -1117,5 +1166,36 @@ void DiagramView::addDroppedElement() {
 		}
 		addElementAtPos(ElementsLocation::locationFromString(integ_path), pos);
 	}
+	adjustSceneRect();
+}
+
+/**
+	@param tbt TitleBlockTemplateLocation
+*/
+void DiagramView::setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &tbt) {
+	// fetch the current title block properties
+	TitleBlockProperties titleblock_properties_before = scene -> border_and_titleblock.exportTitleBlock();
+	
+	// check the provided template is not already applied
+	QETProject *tbt_parent_project = tbt.parentProject();
+	if (tbt_parent_project && tbt_parent_project == scene -> project()) {
+		// same parent project and same name = same title block template
+		if (tbt.name() == titleblock_properties_before.template_name) return;
+	}
+	
+	// integrate the provided template into the project if needed
+	QString integrated_template_name = tbt.name();
+	if (mustIntegrateTitleBlockTemplate(tbt)) {
+		IntegrationMoveTitleBlockTemplatesHandler *handler = new IntegrationMoveTitleBlockTemplatesHandler(this);
+		//QString error_message;
+		integrated_template_name = scene -> project() -> integrateTitleBlockTemplate(tbt, handler);
+		if (integrated_template_name.isEmpty()) return;
+	}
+	
+	// apply the provided title block template
+	if (titleblock_properties_before.template_name == integrated_template_name) return;
+	TitleBlockProperties titleblock_properties_after = titleblock_properties_before;
+	titleblock_properties_after.template_name = integrated_template_name;
+	scene -> undoStack().push(new ChangeTitleBlockCommand(scene, titleblock_properties_before, titleblock_properties_after));
 	adjustSceneRect();
 }
