@@ -371,19 +371,20 @@ void ElementsPanelWidget::updateButtons() {
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
 		setElementsActionEnabled(false);
-	} else if (
-		elements_panel -> selectedItemIsATitleBlockTemplatesDirectory() ||
-		elements_panel -> selectedItemIsATitleBlockTemplate()
-	) {
+	} else if (elements_panel -> selectedItemIsATitleBlockTemplatesDirectory()) {
 		QTreeWidgetItem *item = elements_panel -> currentItem();
 		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(item);
-		bool is_writable;
-		if (location.isValid()) {
-			is_writable = !location.parentCollection() -> isReadOnly();
-			tbt_add    -> setEnabled(is_writable);
-			tbt_edit   -> setEnabled(is_writable);
-			tbt_remove -> setEnabled(is_writable);
-		}
+		tbt_add    -> setEnabled(!location.isReadOnly());
+		tbt_edit   -> setEnabled(false); // would not make sense
+		tbt_remove -> setEnabled(false); // would not make sense
+		setElementsActionEnabled(false);
+	} else if (elements_panel -> selectedItemIsATitleBlockTemplate()) {
+		QTreeWidgetItem *item = elements_panel -> currentItem();
+		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(item);
+		tbt_add    -> setEnabled(false); // would not make sense
+		tbt_edit   -> setEnabled(true); // the tbt editor has a read-only mode
+		// deleting a tbt requires its parent collection to be writable
+		tbt_remove -> setEnabled(location.parentCollection() && !(location.parentCollection() -> isReadOnly()));
 		setElementsActionEnabled(false);
 	}
 }
