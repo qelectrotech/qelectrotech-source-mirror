@@ -119,7 +119,7 @@ bool QETTitleBlockTemplateEditor::edit(const TitleBlockTemplateLocation &locatio
 	
 	opened_from_file_ = false;
 	location_ = location;
-	updateEditorTitle();
+	setReadOnly(location.isReadOnly());
 	editCopyOf(tb_template_orig);
 	return(true);
 }
@@ -152,7 +152,7 @@ bool QETTitleBlockTemplateEditor::edit(QETProject *project, const QString &templ
 	opened_from_file_ = false;
 	location_.setParentCollection(project -> embeddedTitleBlockTemplatesCollection());
 	location_.setName(template_name);
-	updateEditorTitle();
+	setReadOnly(project -> isReadOnly());
 	return(editCopyOf(tb_template_orig));
 }
 
@@ -175,10 +175,10 @@ bool QETTitleBlockTemplateEditor::edit(const QString &file_path) {
 		return(false);
 	}
 	
+	QFileInfo file_path_info(file_path);
 	filepath_ = file_path;
 	opened_from_file_ = true;
-	updateEditorTitle();
-	
+	setReadOnly(!file_path_info.isWritable());
 	return(true);
 }
 
@@ -509,6 +509,7 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 */
 void QETTitleBlockTemplateEditor::updateActions() {
 	/// TODO complete this method
+	save_ -> setEnabled(!read_only_);
 	merge_cells_ -> setEnabled(!read_only_);
 	split_cell_ -> setEnabled(!read_only_);
 }
@@ -533,7 +534,7 @@ bool QETTitleBlockTemplateEditor::saveAs(const TitleBlockTemplateLocation &locat
 	opened_from_file_ = false;
 	location_ = location;
 	undo_stack_ -> setClean();
-	updateEditorTitle();
+	setReadOnly(false);
 	return(true);
 }
 
@@ -549,7 +550,7 @@ bool QETTitleBlockTemplateEditor::saveAs(const QString &filepath) {
 	opened_from_file_ = true;
 	filepath_ = filepath;
 	undo_stack_ -> setClean();
-	updateEditorTitle();
+	setReadOnly(false);
 	return(true);
 }
 
@@ -598,18 +599,19 @@ void QETTitleBlockTemplateEditor::openFromFile() {
 bool QETTitleBlockTemplateEditor::save() {
 	if (opened_from_file_) {
 		if (!filepath_.isEmpty()) {
-			return(saveAs(filepath_));
-		} else {
-			// Actually, this should never happen since opened_from_file_ is always set
-			// along with a valid path. There is a dedicated menu item to call this.s
-			return(saveAsFile());
+			QFileInfo file_path_info(filepath_);
+			if (file_path_info.isWritable()) {
+				return(saveAs(filepath_));
+			}
 		}
+		return(saveAsFile());
 	} else {
 		if (location_.isValid()) {
-			return(saveAs(location_));
-		} else {
-			return(saveAs());
+			if (!location_.isReadOnly()) {
+				return(saveAs(location_));
+			}
 		}
+		return(saveAs());
 	}
 }
 
