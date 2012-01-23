@@ -48,7 +48,7 @@ class TitleBlockTemplatesCollection : public QObject {
 	virtual bool setTemplateXmlDescription(const QString &, const QDomElement &) = 0;
 	virtual void removeTemplate(const QString &) = 0;
 	virtual TitleBlockTemplateLocation location(const QString & = QString()) = 0;
-	virtual bool isReadOnly() const = 0;
+	virtual bool isReadOnly(const QString & = QString()) const = 0;
 	virtual QString title() const;
 	virtual void setTitle(const QString &);
 	virtual QString protocol() const;
@@ -94,7 +94,7 @@ class TitleBlockTemplatesProjectCollection : public TitleBlockTemplatesCollectio
 	virtual bool setTemplateXmlDescription(const QString &, const QDomElement &);
 	virtual void removeTemplate(const QString &);
 	virtual TitleBlockTemplateLocation location(const QString & = QString());
-	virtual bool isReadOnly() const;
+	virtual bool isReadOnly(const QString & = QString()) const;
 	virtual void fromXml(const QDomElement &);
 	
 	// attributes
@@ -130,7 +130,7 @@ class TitleBlockTemplatesFilesCollection : public TitleBlockTemplatesCollection 
 	virtual bool setTemplateXmlDescription(const QString &, const QDomElement &);
 	virtual void removeTemplate(const QString &);
 	virtual TitleBlockTemplateLocation location(const QString & = QString());
-	virtual bool isReadOnly() const;
+	virtual bool isReadOnly(const QString & = QString()) const;
 	
 	static QString toTemplateName(const QString &);
 	static QString toFileName(const QString &);

@@ -257,9 +257,12 @@ TitleBlockTemplateLocation TitleBlockTemplatesProjectCollection::location(const 
 }
 
 /**
-	@return true if this collection is read only
+	@param template_name Either an empty QString to know whether the collection
+	itself is read only, or a specific template name.
+	@return true if the specified template is read only, false otherwise
 */
-bool TitleBlockTemplatesProjectCollection::isReadOnly() const {
+bool TitleBlockTemplatesProjectCollection::isReadOnly(const QString &template_name) const {
+	Q_UNUSED(template_name)
 	if (project_) {
 		return(project_ -> isReadOnly());
 	}
@@ -431,11 +434,18 @@ TitleBlockTemplateLocation TitleBlockTemplatesFilesCollection::location(const QS
 }
 
 /**
-	@return true if this collection is read only, false otherwise
+	@param template_name Either an empty QString to know whether the collection
+	itself is read only, or a specific template name.
+	@return true if the specified template is read only, false otherwise
 */
-bool TitleBlockTemplatesFilesCollection::isReadOnly() const {
-	QFileInfo info(dir_.canonicalPath());
-	return(!info.isWritable());
+bool TitleBlockTemplatesFilesCollection::isReadOnly(const QString &template_name) const {
+	if (template_name.isEmpty()) {
+		QFileInfo info(dir_.canonicalPath());
+		return(!info.isWritable());
+	} else {
+		QFileInfo info(dir_.absoluteFilePath(toFileName(template_name)));
+		return(!info.isWritable());
+	}
 }
 
 /**

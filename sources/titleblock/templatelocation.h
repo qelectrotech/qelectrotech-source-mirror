@@ -49,6 +49,7 @@ class TitleBlockTemplateLocation {
 	QString protocol() const;
 	QDomElement getTemplateXmlDescription() const;
 	TitleBlockTemplate *getTemplate() const;
+	bool isReadOnly() const;
 	
 	// attributes
 	private:

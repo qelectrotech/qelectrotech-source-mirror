@@ -144,3 +144,12 @@ TitleBlockTemplate *TitleBlockTemplateLocation::getTemplate() const {
 	if (!collection_ || name_.isEmpty()) return(0);
 	return(collection_ -> getTemplate(name_));
 }
+
+/**
+	This is a convenience method equivalent to
+	parentCollection() -> isReadOnly(name())
+*/
+bool TitleBlockTemplateLocation::isReadOnly() const {
+	if (!collection_) return(false);
+	return(collection_ -> isReadOnly(name_));
+}
