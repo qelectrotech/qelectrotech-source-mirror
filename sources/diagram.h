@@ -165,6 +165,7 @@ class Diagram : public QGraphicsScene {
 	void continueMoveElementTexts(const QPointF &);
 	void endMoveElementTexts();
 	bool usesElement(const ElementsLocation &);
+	bool usesTitleBlockTemplate(const QString &);
 	
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
@@ -183,6 +184,7 @@ class Diagram : public QGraphicsScene {
 	signals:
 	void written();
 	void readOnlyChanged(bool);
+	void usedTitleBlockTemplateChanged(const QString &);
 };
 
 /**

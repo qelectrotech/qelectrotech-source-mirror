@@ -50,6 +50,7 @@ class TitleBlockTemplateLocation {
 	QDomElement getTemplateXmlDescription() const;
 	TitleBlockTemplate *getTemplate() const;
 	bool isReadOnly() const;
+	bool operator==(const TitleBlockTemplateLocation &) const;
 	
 	// attributes
 	private:

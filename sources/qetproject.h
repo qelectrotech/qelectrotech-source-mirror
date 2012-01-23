@@ -108,6 +108,7 @@ class QETProject : public QObject {
 	QString integrateElement(const QString &, MoveElementsHandler *, QString &);
 	QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 	bool usesElement(const ElementsLocation &);
+	bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void cleanUnusedElements(MoveElementsHandler *);
 	void cleanEmptyCategories(MoveElementsHandler *);
 	bool projectWasModified();
@@ -126,12 +127,14 @@ class QETProject : public QObject {
 	void projectInformationsChanged(QETProject *);
 	void diagramAdded(QETProject *, Diagram *);
 	void diagramRemoved(QETProject *, Diagram *);
+	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
 	
 	private slots:
 	void updateDiagramsFolioData();
 	void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
+	void usedTitleBlockTemplateChanged(const QString &);
 	
 	private:
 	void setupTitleBlockTemplatesCollection();

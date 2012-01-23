@@ -153,3 +153,12 @@ bool TitleBlockTemplateLocation::isReadOnly() const {
 	if (!collection_) return(false);
 	return(collection_ -> isReadOnly(name_));
 }
+
+/**
+	@param location other location that should be compared to this one
+	@return true if locations are equal, false otherwise
+*/
+bool TitleBlockTemplateLocation::operator==(const TitleBlockTemplateLocation &location) const {
+	return(location.collection_ == collection_ && location.name_ == name_);
+}
+

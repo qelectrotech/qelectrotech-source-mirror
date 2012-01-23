@@ -137,6 +137,7 @@ class ElementsPanel : public QTreeWidget {
 	QString diagramTitleToDisplay(Diagram *) const;
 	QString titleBlockTemplateNameToDisplay(const QString &) const;
 	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
+	void markItemAsUnused(QTreeWidgetItem *);
 	
 	// attributs
 	private:

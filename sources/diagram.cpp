@@ -761,6 +761,10 @@ void Diagram::setTitleBlockTemplate(const QString &template_name) {
 	QString current_name = border_and_titleblock.titleBlockTemplateName();
 	const TitleBlockTemplate *titleblock_template = project_ -> getTemplateByName(template_name);
 	border_and_titleblock.titleBlockTemplateRemoved(current_name, titleblock_template);
+	
+	if (template_name != current_name) {
+		emit(usedTitleBlockTemplateChanged(template_name));
+	}
 }
 
 /**
@@ -898,6 +902,15 @@ bool Diagram::usesElement(const ElementsLocation &location) {
 		}
 	}
 	return(false);
+}
+
+/**
+	@param a title block template name
+	@return true if the provided template is used by this diagram, false
+	otherwise.
+*/
+bool Diagram::usesTitleBlockTemplate(const QString &name) {
+	return(name == border_and_titleblock.titleBlockTemplateName());
 }
 
 /**

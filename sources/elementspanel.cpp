@@ -760,11 +760,7 @@ QTreeWidgetItem *ElementsPanel::addElement(QTreeWidgetItem *qtwi_parent, Element
 	if (QETProject *element_project = element -> location().project()) {
 		// affiche en rouge les elements inutilises dans un projet
 		if (!element_project -> usesElement(element -> location())) {
-			QLinearGradient t(0, 0, 200, 0);
-			t.setColorAt(0, QColor("#ffc0c0"));
-			t.setColorAt(1, QColor("#ffffff"));
-			qtwi -> setBackground(0, QBrush(t));
-			qtwi -> setToolTip(0, QString(tr("%1 [non utilis\351 dans le projet]")).arg(qtwi -> toolTip(0)));
+			markItemAsUnused(qtwi);
 		}
 	}
 	locations_.insert(qtwi, element -> location());
@@ -788,6 +784,8 @@ QTreeWidgetItem *ElementsPanel::addTitleBlockTemplatesCollection(
 ) {
 	if (!collection) return(0);
 	
+	QString selected_template;
+	
 	// check whether we have an item for the given collection
 	QTreeWidgetItem *qtwi_tbt_collection = title_blocks_collections_.key(collection);
 	if (!qtwi_tbt_collection) {
@@ -809,7 +807,24 @@ QTreeWidgetItem *ElementsPanel::addTitleBlockTemplatesCollection(
 			this,
 			SLOT(titleBlockTemplatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &))
 		);
+		// if the added collection is rattached to a project, we're interested in
+		// knowing how many times each template is used.
+		if (QETProject *project = collection -> parentProject()) {
+			connect(
+				project, SIGNAL(diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &)),
+				this, SLOT(titleBlockTemplatesCollectionChanged(TitleBlockTemplatesCollection *, const QString &))
+			);
+		}
 	} else {
+		// save the currently selected template, if any
+		if (QTreeWidgetItem *current_qtwi = currentItem()) {
+			for (int i = 0 ; i < qtwi_tbt_collection -> childCount() ; ++ i) {
+				if (qtwi_tbt_collection -> child(i) == current_qtwi) {
+					selected_template = nameOfTitleBlockTemplate(qtwi_tbt_collection -> child(i));
+				}
+			}
+		}
+		
 		// the collection has already been added
 		// remove the child title block templates
 		foreach(QTreeWidgetItem *qtwi_tbt, qtwi_tbt_collection -> takeChildren()) {
@@ -839,7 +854,25 @@ QTreeWidgetItem *ElementsPanel::addTitleBlockTemplatesCollection(
 		);
 		qtwi_tbt -> setToolTip(0, template_location.toString());
 		qtwi_tbt -> setIcon(0, QET::Icons::TitleBlock);
+		
+		// special action for templates that belong to a project
+		if (QETProject *tbt_project = template_location.parentProject()) {
+			// display unused templates using a red background
+			if (!tbt_project -> usesTitleBlockTemplate(template_location)) {
+				markItemAsUnused(qtwi_tbt);
+			}
+		}
+		
 		title_blocks_.insert(qtwi_tbt, template_location);
+	}
+	
+	// restore the previously selected template, if any
+	if (!selected_template.isEmpty()) {
+		TitleBlockTemplateLocation location = collection -> location(selected_template);
+		QTreeWidgetItem *previously_selected_item = title_blocks_.key(location, 0);
+		if (previously_selected_item) {
+			setCurrentItem(previously_selected_item);
+		}
 	}
 	return(qtwi_tbt_collection);
 }
@@ -892,6 +925,11 @@ void ElementsPanel::reload(bool reload_collections) {
 	}
 	
 	// vide l'arbre et le hash
+	foreach (TitleBlockTemplatesCollection *tbt_collection, title_blocks_collections_) {
+		if (QETProject *project = tbt_collection -> parentProject()) {
+			disconnect(project, 0, this, 0);
+		}
+	}
 	clear();
 	locations_.clear();
 	projects_.clear();
@@ -1397,5 +1435,17 @@ void ElementsPanel::ensureHierarchyIsVisible(QList<QTreeWidgetItem *> items) {
 	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
 		if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
 	}
+}
+
+/**
+	Mark the provided QTreeWidgetItem as unused in its parent project.
+	@param qtwi A QTreeWidgetItem
+*/
+void ElementsPanel::markItemAsUnused(QTreeWidgetItem *qtwi) {
+	QLinearGradient t(0, 0, 200, 0);
+	t.setColorAt(0, QColor("#ffc0c0"));
+	t.setColorAt(1, QColor("#ffffff"));
+	qtwi -> setBackground(0, QBrush(t));
+	qtwi -> setToolTip(0, QString(tr("%1 [non utilis\351 dans le projet]")).arg(qtwi -> toolTip(0)));
 }
 

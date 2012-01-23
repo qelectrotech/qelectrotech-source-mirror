@@ -724,6 +724,23 @@ bool QETProject::usesElement(const ElementsLocation &location) {
 }
 
 /**
+	@param location Location of a title block template
+	@return true if the provided template is used by at least one diagram
+	within this project, false otherwise
+*/
+bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
+	// a diagram can only use a title block template embedded wihtin its parent project
+	if (location.parentProject() != this) return(false);
+	
+	foreach (Diagram *diagram, diagrams()) {
+		if (diagram -> usesTitleBlockTemplate(location.name())) {
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
 	Supprime tous les elements inutilises dans le projet
 	@param handler Gestionnaire d'erreur
 */
@@ -1047,6 +1064,10 @@ void QETProject::addDiagram(Diagram *diagram) {
 		this,
 		SLOT(updateDiagramsFolioData())
 	);
+	connect(
+		diagram, SIGNAL(usedTitleBlockTemplateChanged(const QString &)),
+		this, SLOT(usedTitleBlockTemplateChanged(const QString &))
+	);
 	
 	// ajoute le schema au projet
 	diagrams_ << diagram;
@@ -1173,6 +1194,14 @@ void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection 
 	foreach (Diagram *diagram, diagrams_) {
 		diagram -> titleBlockTemplateRemoved(template_name);
 	}
+}
+
+/**
+	Handles the fact a digram changed the title block template it used
+	@param template_name Name of the template
+*/
+void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
+	emit(diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name));
 }
 
 /**
