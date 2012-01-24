@@ -96,6 +96,7 @@ class TitleBlockTemplatesProjectCollection : public TitleBlockTemplatesCollectio
 	virtual TitleBlockTemplateLocation location(const QString & = QString());
 	virtual bool isReadOnly(const QString & = QString()) const;
 	virtual void fromXml(const QDomElement &);
+	virtual void deleteUnusedTitleBlocKTemplates();
 	
 	// attributes
 	private:

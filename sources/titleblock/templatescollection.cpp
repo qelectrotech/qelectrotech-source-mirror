@@ -288,6 +288,19 @@ void TitleBlockTemplatesProjectCollection::fromXml(const QDomElement &xml_elemen
 }
 
 /**
+	Delete all title block templates not used within the parent project
+*/
+void TitleBlockTemplatesProjectCollection::deleteUnusedTitleBlocKTemplates() {
+	if (!project_) return;
+	
+	foreach (QString template_name, templates()) {
+		if (!project_ -> usesTitleBlockTemplate(location(template_name))) {
+			removeTemplate(template_name);
+		}
+	}
+}
+
+/**
 	Constructor
 	@param path Path of the directory containing the collection
 	@param parent Parent QObject

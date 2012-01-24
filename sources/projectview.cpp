@@ -643,11 +643,12 @@ bool ProjectView::saveAll() {
 }
 
 /**
-	Propose a l'utilisateur de nettoyer le projet ; cela inclut la possibilite :
-	  * de supprimer les elements inutilises dans le projet
-	  * de supprimer les categories vides
-	@return le nombre de traitements effectues (0 si rien n'a ete fait, 1 ou
-	2 sinon)
+	Allow the user to clean the project, which includes:
+	  * deleting unused title block templates
+	  * deleting unused elements
+	  * deleting empty categories
+	@return an integer value above zero if elements and/or categories were
+	cleaned.
 */
 int ProjectView::cleanProject() {
 	if (!project_) return(0);
@@ -663,10 +664,12 @@ int ProjectView::cleanProject() {
 	}
 	
 	// construit un petit dialogue pour parametrer le nettoyage
+	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les mod\350les de cartouche inutilisés dans le projet"));
 	QCheckBox *clean_elements   = new QCheckBox(tr("Supprimer les \351l\351ments inutilis\351s dans le projet"));
 	QCheckBox *clean_categories = new QCheckBox(tr("Supprimer les cat\351gories vides"));
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
+	clean_tbt        -> setChecked(true);
 	clean_elements   -> setChecked(true);
 	clean_categories -> setChecked(true);
 	
@@ -677,6 +680,7 @@ int ProjectView::cleanProject() {
 	
 	clean_dialog.setWindowTitle(tr("Nettoyer le projet", "window title"));
 	QVBoxLayout *clean_dialog_layout = new QVBoxLayout();
+	clean_dialog_layout -> addWidget(clean_tbt);
 	clean_dialog_layout -> addWidget(clean_elements);
 	clean_dialog_layout -> addWidget(clean_categories);
 	clean_dialog_layout -> addWidget(buttons);
@@ -687,6 +691,9 @@ int ProjectView::cleanProject() {
 	
 	int clean_count = 0;
 	if (clean_dialog.exec() == QDialog::Accepted) {
+		if (clean_tbt -> isChecked()) {
+			project_ -> cleanUnusedTitleBlocKTemplates();
+		}
 		if (clean_elements -> isChecked()) {
 			InteractiveMoveElementsHandler *handler = new InteractiveMoveElementsHandler(this);
 			project_ -> cleanUnusedElements(handler);

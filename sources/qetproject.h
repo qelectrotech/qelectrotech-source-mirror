@@ -109,6 +109,7 @@ class QETProject : public QObject {
 	QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 	bool usesElement(const ElementsLocation &);
 	bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
+	void cleanUnusedTitleBlocKTemplates();
 	void cleanUnusedElements(MoveElementsHandler *);
 	void cleanEmptyCategories(MoveElementsHandler *);
 	bool projectWasModified();

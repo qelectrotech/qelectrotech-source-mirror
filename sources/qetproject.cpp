@@ -741,6 +741,13 @@ bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &locati
 }
 
 /**
+	Delete all title block templates not used in the project
+*/
+void QETProject::cleanUnusedTitleBlocKTemplates() {
+	titleblocks_.deleteUnusedTitleBlocKTemplates();
+}
+
+/**
 	Supprime tous les elements inutilises dans le projet
 	@param handler Gestionnaire d'erreur
 */
