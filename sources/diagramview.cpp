@@ -455,6 +455,7 @@ void DiagramView::editDiagramProperties() {
 	
 	// construit le dialogue
 	QDialog popup(diagramEditor());
+	popup.setWindowModality(Qt::WindowModal);
 #ifdef Q_WS_MAC
 	popup.setWindowFlags(Qt::Sheet);
 #endif
@@ -473,6 +474,8 @@ void DiagramView::editDiagramProperties() {
 		// we have to parse again the TitleBlockProperties object, since the
 		// first parsing did not know of our templates
 		titleblock_infos -> setTitleBlockProperties(titleblock);
+		// relay the signal that requires a title block template edition
+		connect(titleblock_infos, SIGNAL(editTitleBlockTemplate(QString, bool)), this, SIGNAL(editTitleBlockTemplate(QString, bool)));
 	}
 	titleblock_infos -> setReadOnly(diagram_is_read_only);
 	

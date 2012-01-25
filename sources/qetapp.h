@@ -199,7 +199,7 @@ class QETApp : public QETSingleApplication {
 	void openProjectFiles(const QStringList &);
 	void openElementFiles(const QStringList &);
 	void openElementLocations(const QList<ElementsLocation> &);
-	void openTitleBlockTemplate(const TitleBlockTemplateLocation &);
+	void openTitleBlockTemplate(const TitleBlockTemplateLocation &, bool = false);
 	void openTitleBlockTemplate(const QString &);
 	void configureQET();
 	void aboutQET();

@@ -313,6 +313,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
 	connect(diagram, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
 	connect(diagram, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
+	connect(diagram, SIGNAL(editTitleBlockTemplate(const QString &, bool)), this, SLOT(editTitleBlockTemplateRequired(const QString &, bool)));
 	
 	// signale l'ajout du schema
 	emit(diagramAdded(diagram));
@@ -805,6 +806,22 @@ void ProjectView::tabMoved(int from, int to) {
 	
 	// emet un signal pour informer le reste du monde que l'ordre des schemas a change
 	emit(diagramOrderChanged(this, from, to));
+}
+
+/**
+	Require the edition of the \a template_name title blocke template.
+	@param template_name Name of the tempalte to be edited
+	@param duplicate If true, this methd will ask the user for a template name
+	in order to duplicate the \a template_name template
+*/
+void ProjectView::editTitleBlockTemplateRequired(const QString &template_name, bool duplicate) {
+	if (!project_) return;
+	emit(
+		editTitleBlockTemplate(
+			project_ -> embeddedTitleBlockTemplatesCollection() -> location(template_name),
+			duplicate
+		)
+	);
 }
 
 /**

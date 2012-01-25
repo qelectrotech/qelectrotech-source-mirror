@@ -17,7 +17,6 @@
 */
 #include "titleblockpropertieswidget.h"
 #include "qeticons.h"
-#include "qetapp.h"
 
 /**
 	Constructeur
@@ -39,6 +38,7 @@ TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockPropertie
 	// by default, we do not display the template combo box
 	titleblock_template_label -> setVisible(false);
 	titleblock_template_name  -> setVisible(false);
+	titleblock_template_button_ -> setVisible(false);
 }
 
 /// Destructeur
@@ -65,10 +65,8 @@ TitleBlockProperties TitleBlockPropertiesWidget::titleBlockProperties() const {
 		prop.date = QDate::currentDate();
 	}
 	
-	int index = titleblock_template_name -> currentIndex();
-	if (index != -1) {
-		prop.template_name = titleblock_template_name -> itemData(index).toString();
-	}
+	QString current_template_name = currentTitleBlockTemplateName();
+	if (!current_template_name.isEmpty()) prop.template_name = current_template_name;
 	
 	for (int i = 0 ; i < additional_fields_table -> rowCount() ; ++ i) {
 		QTableWidgetItem *qtwi_name  = additional_fields_table -> item(i, 0);
@@ -176,6 +174,18 @@ void TitleBlockPropertiesWidget::setTitleBlockTemplatesList(const QList<QString>
 void TitleBlockPropertiesWidget::setTitleBlockTemplatesVisible(bool visible) {
 	titleblock_template_name  -> setVisible(visible);
 	titleblock_template_label -> setVisible(visible);
+	titleblock_template_button_ -> setVisible(visible);
+}
+
+/**
+	@return the name of the currenlty selected title block template.
+*/
+QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const {
+	int index = titleblock_template_name -> currentIndex();
+	if (index != -1) {
+		return(titleblock_template_name -> itemData(index).toString());
+	}
+	return(QString());
 }
 
 /**
@@ -191,11 +201,45 @@ void TitleBlockPropertiesWidget::checkTableRows() {
 }
 
 /**
+	Edit the currently selected title block template
+*/
+void TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate() {
+	QString current_template_name = currentTitleBlockTemplateName();
+	if (current_template_name.isEmpty()) return;
+	emit(editTitleBlockTemplate(current_template_name, false));
+}
+
+/**
+	Duplicate the currently selected title block template (the user is asked
+	for a name), then edit it.
+*/
+void TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate() {
+	QString current_template_name = currentTitleBlockTemplateName();
+	if (current_template_name.isEmpty()) return;
+	emit(editTitleBlockTemplate(current_template_name, true));
+}
+
+/**
 	Builds the various child widgets for this widget
 */
 void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titleblock) {
+	// actions
+	titleblock_template_edit_ = new QAction(tr("\311diter ce mod\350le", "menu entry"), this);
+	titleblock_template_duplicate_ = new QAction(tr("Dupliquer et editer ce mod\350le", "menu entry"), this);
+	
+	connect(titleblock_template_edit_, SIGNAL(triggered()), this, SLOT(editCurrentTitleBlockTemplate()));
+	connect(titleblock_template_duplicate_, SIGNAL(triggered()), this, SLOT(duplicateCurrentTitleBlockTemplate()));
+	
+	// menu
+	titleblock_template_menu_ = new QMenu(tr("Title block templates actions"));
+	titleblock_template_menu_ -> addAction(titleblock_template_edit_);
+	titleblock_template_menu_ -> addAction(titleblock_template_duplicate_);
+	
+	// widgets
 	titleblock_template_label = new QLabel(tr("Mod\350le :"), this);
 	titleblock_template_name = new QComboBox(this);
+	titleblock_template_button_ = new QPushButton(QET::Icons::TitleBlock, QString());
+	titleblock_template_button_ -> setMenu(titleblock_template_menu_);
 	
 	titleblock_title    = new QLineEdit(this);
 	titleblock_author   = new QLineEdit(this);
@@ -301,6 +345,7 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	QHBoxLayout *template_layout = new QHBoxLayout();
 	template_layout -> addWidget(titleblock_template_label);
 	template_layout -> addWidget(titleblock_template_name);
+	template_layout -> addWidget(titleblock_template_button_);
 	template_layout -> setStretch(0, 1);
 	template_layout -> setStretch(1, 500);
 	

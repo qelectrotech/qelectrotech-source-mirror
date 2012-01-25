@@ -60,6 +60,13 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	bool opened_from_file_;
 	/// whether the currently edited template is considered read only
 	bool read_only_;
+	/**
+		Whether to ask the user a new template name when the window appears in order
+		to rename the edited template.
+	*/
+	bool duplicate_;
+	/// Used to track the first activation of the editor main window.
+	bool first_activation_;
 	/// Template Object edited
 	TitleBlockTemplate *tb_template_;
 	/// Template preview
@@ -78,9 +85,12 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	// methods
 	public:
 	TitleBlockTemplateLocation location() const;
+	void setOpenForDuplication(bool);
+	bool openForDuplication() const;
 	
 	protected:
 	bool canClose();
+	bool event(QEvent *);
 	void closeEvent(QCloseEvent *);
 	
 	private:
@@ -92,6 +102,7 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	
 	public slots:
 	void selectedCellsChanged(QList<TitleBlockCell *>);
+	void duplicateCurrentLocation();
 	bool edit(const TitleBlockTemplateLocation &);
 	bool edit(QETProject *, const QString &);
 	bool edit(const QString &);

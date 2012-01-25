@@ -1264,10 +1264,16 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	
 	// gere les demandes consistant a retrouver un element dans le panel
 	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SLOT(findElementInPanel(const ElementsLocation &)));
-
+	
 	// gere les demandes pour l'edition d'un element
 	connect(project_view, SIGNAL(editElementRequired(const ElementsLocation &)), this, SLOT(editElementInEditor(const ElementsLocation &)));
-		
+	
+	// handles requests to edit and/or duplicate an existing title block template
+	connect(
+		project_view, SIGNAL(editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool)),
+		QETApp::instance(), SLOT(openTitleBlockTemplate(TitleBlockTemplateLocation, bool))
+	);
+	
 	// affiche la fenetre
 	if (maximise) project_view -> showMaximized();
 	else project_view -> show();

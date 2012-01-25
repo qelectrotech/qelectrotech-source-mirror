@@ -1013,9 +1013,14 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 /**
 	Launch a new title block template editor to edit the given template
 	@param location location of the title block template to be edited
+	
+	@param duplicate if true, the template is opened for duplication, which means
+	the user will be prompter for a new template name.
+	@see QETTitleBlockTemplateEditor::setOpenForDuplication()
 */
-void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
+void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, bool duplicate) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
 	qet_template_editor -> showMaximized();
 }

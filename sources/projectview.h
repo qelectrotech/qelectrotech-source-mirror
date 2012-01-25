@@ -18,6 +18,7 @@
 #ifndef PROJECT_VIEW_H
 #define PROJECT_VIEW_H
 #include <QtGui>
+#include "templatelocation.h"
 class QETProject;
 class DiagramView;
 class Diagram;
@@ -67,6 +68,7 @@ class ProjectView : public QWidget {
 	void updateWindowTitle();
 	void updateTabTitle(DiagramView *, const QString &);
 	void tabMoved(int, int);
+	void editTitleBlockTemplateRequired(const QString &, bool);
 	
 	signals:
 	void diagramAdded(DiagramView *);
@@ -75,9 +77,10 @@ class ProjectView : public QWidget {
 	void diagramActivated(DiagramView *);
 	void diagramOrderChanged(ProjectView *, int, int);
 	void projectClosed(ProjectView *);
-	// Pour relayer les signaux
+	// relayed signals
 	void findElementRequired(const ElementsLocation &);
 	void editElementRequired(const ElementsLocation &);
+	void editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool);
 	
 	private:
 	void loadDiagrams();

@@ -34,6 +34,8 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	QMainWindow(parent),
 	opened_from_file_(false),
 	read_only_(false),
+	duplicate_(false),
+	first_activation_(true),
 	tb_template_(0),
 	logo_manager_(0)
 {
@@ -57,6 +59,22 @@ QETTitleBlockTemplateEditor::~QETTitleBlockTemplateEditor() {
 */
 TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
 	return(location_);
+}
+
+/**
+	@param true for this editor to prompt the user for a new template name as
+	soon as the window appears in order to duplicate the edited one.
+*/
+void QETTitleBlockTemplateEditor::setOpenForDuplication(bool duplicate) {
+	duplicate_ = duplicate;
+}
+
+/**
+	@return true if this editor will prompt the user for a new template name as
+	soon as the window appears in order to duplicate the edited one.
+*/
+bool QETTitleBlockTemplateEditor::openForDuplication() const {
+	return(duplicate_);
 }
 
 /**
@@ -89,6 +107,20 @@ bool QETTitleBlockTemplateEditor::canClose() {
 }
 
 /**
+	@param event Object describing the received event.
+*/
+bool QETTitleBlockTemplateEditor::event(QEvent *event) {
+	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
+		if (duplicate_ && !opened_from_file_ && location_.isValid()) {
+			// this editor is supposed to duplicate its current location
+			QTimer::singleShot(250, this, SLOT(duplicateCurrentLocation()));
+		}
+		first_activation_ = false;
+	}
+	return(QMainWindow::event(event));
+}
+
+/**
 	Handle the closing of the main window
 	@param qce The QCloseEvent event
 */
@@ -97,6 +129,29 @@ void QETTitleBlockTemplateEditor::closeEvent(QCloseEvent *qce) {
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
 	} else qce -> ignore();
+}
+
+/**
+	Ask the user for a new template name in order to duplicate the currently
+	edited template.
+*/
+void QETTitleBlockTemplateEditor::duplicateCurrentLocation() {
+	// this method does not work for templates edited from the filesystem
+	if (opened_from_file_) return;
+	
+	bool accepted = false;
+	QString new_template_name = QInputDialog::getText(
+		this,
+		tr("Dupliquer un mod\350le de cartouche", "input dialog title"),
+		tr("Pour dupliquer ce mod\350le, entrez le nom voulu pour sa copie", "input dialog text"),
+		QLineEdit::Normal,
+		QString("%1_copy").arg(location_.name()),
+		&accepted
+	);
+	if (accepted) {
+		TitleBlockTemplateLocation new_template_location(new_template_name, location_.parentCollection());
+		saveAs(new_template_location);
+	}
 }
 
 /**
@@ -665,13 +720,14 @@ bool QETTitleBlockTemplateEditor::saveAsFile() {
 	currently edited template, false to allow full edition.
 */
 void QETTitleBlockTemplateEditor::setReadOnly(bool read_only) {
-	if (read_only == read_only_) return;
-	read_only_ = read_only;
-	if (logo_manager_) {
-		logo_manager_ -> setReadOnly(read_only_);
+	if (read_only != read_only_) {
+		read_only_ = read_only;
+		if (logo_manager_) {
+			logo_manager_ -> setReadOnly(read_only_);
+		}
+		template_cell_editor_widget_ -> setReadOnly(read_only_);
+		template_edition_area_view_ -> setReadOnly(read_only_);
 	}
-	template_cell_editor_widget_ -> setReadOnly(read_only_);
-	template_edition_area_view_ -> setReadOnly(read_only_);
 	updateActions();
 	updateEditorTitle();
 }

@@ -41,10 +41,13 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void setReadOnly(bool);
 	void setTitleBlockTemplatesList(const QList<QString> &);
 	void setTitleBlockTemplatesVisible(bool);
+	QString currentTitleBlockTemplateName() const;
 	
 	// slots:
 	private slots:
 	void checkTableRows();
+	void editCurrentTitleBlockTemplate();
+	void duplicateCurrentTitleBlockTemplate();
 	
 	// private methods
 	private:
@@ -52,11 +55,18 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void initLayouts();
 	int nameLessRowsCount() const;
 	
+	signals:
+	void editTitleBlockTemplate(const QString &, bool);
+	
 	// attributs
 	private:
 	QStackedLayout *stack_layout;
 	QLabel       *titleblock_template_label;
 	QComboBox    *titleblock_template_name;
+	QPushButton  *titleblock_template_button_;
+	QMenu        *titleblock_template_menu_;
+	QAction      *titleblock_template_edit_;
+	QAction      *titleblock_template_duplicate_;
 	QLineEdit    *titleblock_title;
 	QLineEdit    *titleblock_author;
 	QDateEdit    *titleblock_date;

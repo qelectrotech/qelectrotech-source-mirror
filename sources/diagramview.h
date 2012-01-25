@@ -103,6 +103,8 @@ class DiagramView : public QGraphicsView {
 	void findElementRequired(const ElementsLocation &);
 	/// Signal emis lorsque l'utilisateur souhaite editer un element du schema
 	void editElementRequired(const ElementsLocation &);
+	/// Signal emitted when the user wants to edit and/or duplicate an existing title block template
+	void editTitleBlockTemplate(const QString &, bool);
 	
 	public slots:
 	void selectNothing();
