@@ -469,7 +469,7 @@ void DiagramView::editDiagramProperties() {
 	
 	TitleBlockPropertiesWidget  *titleblock_infos  = new TitleBlockPropertiesWidget(titleblock, false, &popup);
 	if (QETProject *parent_project = scene -> project()) {
-		titleblock_infos -> setTitleBlockTemplatesList(parent_project -> embeddedTitleBlockTemplates());
+		titleblock_infos -> setTitleBlockTemplatesCollection(parent_project -> embeddedTitleBlockTemplatesCollection());
 		titleblock_infos -> setTitleBlockTemplatesVisible(true);
 		// we have to parse again the TitleBlockProperties object, since the
 		// first parsing did not know of our templates

@@ -19,6 +19,7 @@
 #define TITLEBLOCK_PROPERTIES_WIDGET_H
 #include <QtGui>
 #include "titleblockproperties.h"
+class TitleBlockTemplatesCollection;
 /**
 	Ce widget permet d'editer un objet TitleBlockProperties, c'est-a-dire les
 	valeurs affichees par le cartouche d'un schema.
@@ -40,12 +41,15 @@ class TitleBlockPropertiesWidget : public QWidget {
 	bool isReadOnly() const;
 	void setReadOnly(bool);
 	void setTitleBlockTemplatesList(const QList<QString> &);
+	void setTitleBlockTemplatesCollection(TitleBlockTemplatesCollection *);
 	void setTitleBlockTemplatesVisible(bool);
 	QString currentTitleBlockTemplateName() const;
+	void setCurrentTitleBlockTemplateName(const QString &);
 	
 	// slots:
 	private slots:
 	void checkTableRows();
+	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
 	void duplicateCurrentTitleBlockTemplate();
 	
@@ -80,5 +84,6 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QLabel       *additional_fields_label;
 	QTableWidget *additional_fields_table;
 	QTabBar      *tabbar;
+	TitleBlockTemplatesCollection *tbt_collection_;
 };
 #endif

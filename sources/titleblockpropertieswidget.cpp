@@ -17,6 +17,7 @@
 */
 #include "titleblockpropertieswidget.h"
 #include "qeticons.h"
+#include "templatescollection.h"
 
 /**
 	Constructeur
@@ -26,7 +27,8 @@
 */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current, QWidget *parent) :
 	QWidget(parent),
-	display_current_date(false)
+	display_current_date(false),
+	tbt_collection_(0)
 {
 	initWidgets(titleblock);
 	initLayouts();
@@ -168,6 +170,21 @@ void TitleBlockPropertiesWidget::setTitleBlockTemplatesList(const QList<QString>
 }
 
 /**
+	@param tbt_collection Collection from which title block templates should be read.
+*/
+void TitleBlockPropertiesWidget::setTitleBlockTemplatesCollection(TitleBlockTemplatesCollection *tbt_collection) {
+	if (!tbt_collection) return;
+	if (tbt_collection_ && tbt_collection != tbt_collection_) {
+		// forget any connection with the previous collection
+		disconnect(tbt_collection_, 0, this, 0);
+	}
+	
+	tbt_collection_ = tbt_collection;
+	updateTemplateList();
+	connect(tbt_collection_, SIGNAL(changed(TitleBlockTemplatesCollection*, QString)), this, SLOT(updateTemplateList()));
+}
+
+/**
 	@param visible true to display the title block templates list, false to
 	hide it.
 */
@@ -189,6 +206,17 @@ QString TitleBlockPropertiesWidget::currentTitleBlockTemplateName() const {
 }
 
 /**
+	Set the currently selected title block template.
+	@param template_name Template to be selected
+*/
+void TitleBlockPropertiesWidget::setCurrentTitleBlockTemplateName(const QString &template_name) {
+	int matching_index = titleblock_template_name -> findData(template_name);
+	if (matching_index != -1) {
+		titleblock_template_name -> setCurrentIndex(matching_index);
+	}
+}
+
+/**
 	Adds a row in the additional fields table if needed.
 */
 void TitleBlockPropertiesWidget::checkTableRows() {
@@ -201,12 +229,21 @@ void TitleBlockPropertiesWidget::checkTableRows() {
 }
 
 /**
+	Update the title block templates list.
+*/
+void TitleBlockPropertiesWidget::updateTemplateList() {
+	if (!tbt_collection_) return;
+	
+	QString current_template_name = currentTitleBlockTemplateName();
+	setTitleBlockTemplatesList(tbt_collection_ -> templates());
+	setCurrentTitleBlockTemplateName(current_template_name);
+}
+
+/**
 	Edit the currently selected title block template
 */
 void TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate() {
-	QString current_template_name = currentTitleBlockTemplateName();
-	if (current_template_name.isEmpty()) return;
-	emit(editTitleBlockTemplate(current_template_name, false));
+	emit(editTitleBlockTemplate(currentTitleBlockTemplateName(), false));
 }
 
 /**
@@ -214,9 +251,7 @@ void TitleBlockPropertiesWidget::editCurrentTitleBlockTemplate() {
 	for a name), then edit it.
 */
 void TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate() {
-	QString current_template_name = currentTitleBlockTemplateName();
-	if (current_template_name.isEmpty()) return;
-	emit(editTitleBlockTemplate(current_template_name, true));
+	emit(editTitleBlockTemplate(currentTitleBlockTemplateName(), true));
 }
 
 /**

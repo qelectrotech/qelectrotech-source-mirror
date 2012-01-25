@@ -111,7 +111,7 @@ bool QETTitleBlockTemplateEditor::canClose() {
 */
 bool QETTitleBlockTemplateEditor::event(QEvent *event) {
 	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
-		if (duplicate_ && !opened_from_file_ && location_.isValid()) {
+		if (duplicate_ && !opened_from_file_ && location_.parentCollection()) {
 			// this editor is supposed to duplicate its current location
 			QTimer::singleShot(250, this, SLOT(duplicateCurrentLocation()));
 		}
@@ -139,13 +139,20 @@ void QETTitleBlockTemplateEditor::duplicateCurrentLocation() {
 	// this method does not work for templates edited from the filesystem
 	if (opened_from_file_) return;
 	
+	QString proposed_name;
+	if (location_.name().isEmpty()) {
+		proposed_name = tr("nouveau_modele", "template name suggestion when duplicating the default one");
+	} else {
+		proposed_name = QString("%1_copy").arg(location_.name());
+	}
+	
 	bool accepted = false;
 	QString new_template_name = QInputDialog::getText(
 		this,
 		tr("Dupliquer un mod\350le de cartouche", "input dialog title"),
 		tr("Pour dupliquer ce mod\350le, entrez le nom voulu pour sa copie", "input dialog text"),
 		QLineEdit::Normal,
-		QString("%1_copy").arg(location_.name()),
+		proposed_name,
 		&accepted
 	);
 	if (accepted) {
