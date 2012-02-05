@@ -75,6 +75,19 @@ QETProject *TitleBlockTemplatesCollection::parentProject() {
 }
 
 /**
+	@return the templates contained within this collection, as a list of location
+	objects.
+	@see templates()
+*/
+QList<TitleBlockTemplateLocation> TitleBlockTemplatesCollection::templatesLocations() {
+	QList<TitleBlockTemplateLocation> locations;
+	foreach (QString template_name, templates()) {
+		locations << location(template_name);
+	}
+	return(locations);
+}
+
+/**
 	Constructor
 	@param project Parent project
 	@param parent Parent QObject

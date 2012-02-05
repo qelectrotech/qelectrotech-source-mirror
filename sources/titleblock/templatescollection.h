@@ -54,6 +54,7 @@ class TitleBlockTemplatesCollection : public QObject {
 	virtual QString protocol() const;
 	virtual void setProtocol(const QString &);
 	virtual QETProject *parentProject();
+	virtual QList<TitleBlockTemplateLocation> templatesLocations();
 	
 	signals:
 	void changed(TitleBlockTemplatesCollection *, const QString & = QString());
