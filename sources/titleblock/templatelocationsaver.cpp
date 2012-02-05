@@ -37,7 +37,7 @@ QString TitleBlockTemplateLocationSaver::name() const {
 	@param location to be displayed by this widget
 */
 void TitleBlockTemplateLocationSaver::setLocation(const TitleBlockTemplateLocation &location) {
-	// hack: if o suitable index was found, set it to 1, which is supposed to be the user collection
+	// hack: if no suitable index was found, set it to 1, which is supposed to be the user collection
 	int index = indexForCollection(location.parentCollection());
 	if (index == -1 && collections_ -> count() > 1) index = 1;
 	collections_ -> setCurrentIndex(index);
@@ -46,10 +46,10 @@ void TitleBlockTemplateLocationSaver::setLocation(const TitleBlockTemplateLocati
 		int template_index = templates_ -> findText(location.name());
 		if (template_index != -1) {
 			templates_ -> setCurrentIndex(template_index);
-		} else {
-			templates_ -> setCurrentIndex(0);
+			return;
 		}
 	}
+	templates_ -> setCurrentIndex(0);
 }
 
 /**
