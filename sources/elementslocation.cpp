@@ -18,6 +18,9 @@
 #include "elementslocation.h"
 #include "qetapp.h"
 
+// make this class usable with QVariant
+int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
+
 /**
 	Constructeur par defaut
 */
@@ -204,4 +207,12 @@ ElementsLocation ElementsLocation::locationFromString(const QString &string) {
 	ElementsLocation location;
 	location.fromString(string);
 	return(location);
+}
+
+/**
+	@param location A standard element location
+	@return a hash identifying this location
+*/
+uint qHash(const ElementsLocation &location) {
+	return(qHash(location.toString()));
 }

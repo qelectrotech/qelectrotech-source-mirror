@@ -60,4 +60,6 @@ class TitleBlockTemplateLocation {
 	public:
 	static int MetaTypeId; ///< Id of the corresponding Qt meta type
 };
+Q_DECLARE_METATYPE(TitleBlockTemplateLocation)
+uint qHash(const TitleBlockTemplateLocation &);
 #endif

@@ -17,6 +17,7 @@
 */
 #ifndef ELEMENTS_LOCATION_H
 #define ELEMENTS_LOCATION_H
+#include <QtCore>
 #include <QString>
 class QETProject;
 /**
@@ -52,5 +53,10 @@ class ElementsLocation {
 	private:
 	QString path_;
 	QETProject *project_;
+	
+	public:
+	static int MetaTypeId; ///< Id of the corresponding Qt meta type
 };
+Q_DECLARE_METATYPE(ElementsLocation)
+uint qHash(const ElementsLocation &);
 #endif

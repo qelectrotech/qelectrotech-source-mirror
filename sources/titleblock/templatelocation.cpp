@@ -20,7 +20,7 @@
 #include "qetapp.h"
 
 // make this class usable with QVariant
-int t = qRegisterMetaType<TitleBlockTemplateLocation>("TitleBlockTemplateLocation");
+int TitleBlockTemplateLocation::MetaTypeId = qRegisterMetaType<TitleBlockTemplateLocation>("TitleBlockTemplateLocation");
 
 /**
 	Constructor
@@ -162,3 +162,10 @@ bool TitleBlockTemplateLocation::operator==(const TitleBlockTemplateLocation &lo
 	return(location.collection_ == collection_ && location.name_ == name_);
 }
 
+/**
+	@param location A standard title block template location
+	@return a hash identifying this location
+*/
+uint qHash(const TitleBlockTemplateLocation &location) {
+	return(qHash(location.toString()));
+}
