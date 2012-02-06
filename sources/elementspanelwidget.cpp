@@ -190,7 +190,9 @@ void ElementsPanelWidget::reloadAndFilter() {
 	elements_panel -> reload(true);
 	
 	// reapplique le filtre
-	elements_panel -> filter(filter_textfield -> text());
+	if (!filter_textfield -> text().isEmpty()) {
+		elements_panel -> filter(filter_textfield -> text());
+	}
 }
 
 /**
