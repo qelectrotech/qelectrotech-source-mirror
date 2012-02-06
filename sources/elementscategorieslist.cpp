@@ -66,7 +66,7 @@ void ElementsCategoriesList::reload() {
 	foreach(ElementsCollection *collection, QETApp::availableCollections()) {
 		if (collection == QETApp::commonElementsCollection()) continue;
 		if (collection == QETApp::customElementsCollection()) continue;
-		addElementsCollection(collection, invisibleRootItem(), options, tr("Collection projet")) -> setExpanded(true);
+		addElementsCollection(collection, invisibleRootItem(), options) -> setExpanded(true);
 	}
 	
 	// chargement des elements de la collection commune si droits d'ecriture
@@ -74,9 +74,7 @@ void ElementsCategoriesList::reload() {
 		addElementsCollection(
 			QETApp::commonElementsCollection(),
 			invisibleRootItem(),
-			options,
-			tr("Collection QET"),
-			QIcon(":/ico/16x16/qet.png")
+			options
 		) -> setExpanded(true);
 	}
 	
@@ -84,9 +82,7 @@ void ElementsCategoriesList::reload() {
 	addElementsCollection(
 		QETApp::customElementsCollection(),
 		invisibleRootItem(),
-		options,
-		tr("Collection utilisateur"),
-		QIcon(":/ico/16x16/go-home.png")
+		options
 	) -> setExpanded(true);
 	
 	if (first_load) first_load = false;

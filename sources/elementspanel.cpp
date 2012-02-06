@@ -399,10 +399,10 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 	@param icon Icone a utiliser pour l'affichage de la collection
 	@return Le QTreeWidgetItem insere le plus haut
 */
-QTreeWidgetItem *ElementsPanel::addCollection(ElementsCollection *collection, const QString &coll_name, const QIcon &icon) {
+QTreeWidgetItem *ElementsPanel::addCollection(ElementsCollection *collection) {
 	PanelOptions options = GenericPanel::AddAllChild;
 	options |= GenericPanel::DisplayElementsPreview;
-	return(addElementsCollection(collection, invisibleRootItem(), options, coll_name, icon));
+	return(addElementsCollection(collection, invisibleRootItem(), options));
 }
 
 QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
@@ -507,7 +507,7 @@ void ElementsPanel::reload(bool reload_collections) {
 	
 	// load the common elements collection
 	if (QETApp::commonElementsCollection()->rootCategory()) {
-		common_collection_item_ = addCollection(QETApp::commonElementsCollection(), tr("Collection QET"), system_icon);
+		common_collection_item_ = addCollection(QETApp::commonElementsCollection());
 		if (first_reload_) common_collection_item_ -> setExpanded(true);
 	}
 	
@@ -519,7 +519,7 @@ void ElementsPanel::reload(bool reload_collections) {
 	
 	// load the custom elements collection
 	if (QETApp::customElementsCollection()->rootCategory()) {
-		custom_collection_item_ = addCollection(QETApp::customElementsCollection(), tr("Collection utilisateur"), user_icon);
+		custom_collection_item_ = addCollection(QETApp::customElementsCollection());
 		if (first_reload_) custom_collection_item_ -> setExpanded(true);
 	}
 	

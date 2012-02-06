@@ -276,8 +276,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 		addElementsCollection(
 			project -> embeddedCollection(),
 			project_qtwi,
-			options,
-			tr("Collection projet")
+			options
 		);
 	}
 	return(project_qtwi);
@@ -544,14 +543,76 @@ QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtw
 	Add an elements category to the panel.
 	@param parent_item Parent for the created QTreeWidgetItem
 	@param collection Collection to be added to the panel
-	@param label Name displayed by the created QTreeWidgetItem
-	@param icon Icon displayed by the created QTreeWidgetItem
 	@param options Control the creation of child items
 	@return the created QTreeWidgetItem
 */
-QTreeWidgetItem *GenericPanel::addElementsCollection(ElementsCollection *collection, QTreeWidgetItem *parent_item, PanelOptions options, const QString &label, const QIcon &icon) {
+QTreeWidgetItem *GenericPanel::addElementsCollection(ElementsCollection *collection, QTreeWidgetItem *parent_item, PanelOptions options) {
+	if (!collection) return(0);
+	bool creation_required;
+	
+	QTreeWidgetItem *collection_qtwi = getItemForElementsCollection(collection, &creation_required);
+	updateElementsCollectionItem(collection_qtwi, collection, options, creation_required);
+	reparent(collection_qtwi, parent_item);
+	fillElementsCollectionItem(collection_qtwi, collection, options, creation_required);
+	
+	return(collection_qtwi);
+}
+
+/**
+	
+*/
+QTreeWidgetItem *GenericPanel::itemForElementsCollection(ElementsCollection *collection) {
+	if (!collection) return(0);
+	return(elements_.value(collection -> rootCategory() -> location(), 0));
+}
+
+/**
+	
+*/
+QTreeWidgetItem *GenericPanel::getItemForElementsCollection(ElementsCollection *collection, bool *created) {
 	if (!collection) return(0);
 	
+	QTreeWidgetItem *collection_item = elements_.value(collection -> rootCategory() -> location(), 0);
+	if (collection_item) {
+		if (created) *created = false;
+		return(collection_item);
+	}
+	
+	collection_item  = makeItem(QET::ElementsCollection);
+	if (created) *created = true;
+	return(collection_item);
+}
+
+/**
+	
+*/
+QTreeWidgetItem *GenericPanel::updateElementsCollectionItem(QTreeWidgetItem *collection_qtwi, ElementsCollection *collection, PanelOptions options, bool freshly_created) {
+	Q_UNUSED(options)
+	if (!collection) return(0);
+	
+	QString collection_title = collection -> title();
+	QIcon collection_icon    = collection -> icon();
+	
+	if (!collection_title.isEmpty()) collection_qtwi -> setText(0, collection_title);
+	if (!collection_icon.isNull())   collection_qtwi -> setIcon(0, collection_icon);
+	
+	if (freshly_created) {
+		collection_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(collection -> rootCategory() -> location()));
+		elements_.insert(collection -> rootCategory() -> location(), collection_qtwi);
+		
+		connect(
+			collection, SIGNAL(elementsCollectionChanged(ElementsCollection*)),
+			this,       SLOT(elementsCollectionChanged(ElementsCollection*))
+		);
+	}
+	
+	return(collection_qtwi);
+}
+
+/**
+	
+*/
+QTreeWidgetItem *GenericPanel::fillElementsCollectionItem(QTreeWidgetItem *collection_qtwi, ElementsCollection *collection, PanelOptions options, bool freshly_created) {
 	// use the cache from the provided collection, if any
 	bool restore_previous_cache = false;
 	ElementsCollectionCache *previous_cache = 0;
@@ -562,16 +623,13 @@ QTreeWidgetItem *GenericPanel::addElementsCollection(ElementsCollection *collect
 	
 	ElementsCollectionCache *cache = getElementsCache();
 	cache -> beginCollection(collection);
-	QTreeWidgetItem *collection_qtwi = addElementsCategory(collection -> rootCategory(), parent_item, options);
+	fillElementsCategoryItem(collection_qtwi, collection -> rootCategory(), options, freshly_created);
 	cache -> endCollection(collection);
-	if (!label.isEmpty()) collection_qtwi -> setText(0, label);
-	if (!icon.isNull()) collection_qtwi -> setIcon(0, icon);
 	
 	// restore the former cache
 	if (restore_previous_cache) {
 		setElementsCache(previous_cache);
 	}
-	
 	return(collection_qtwi);
 }
 
@@ -621,8 +679,7 @@ QTreeWidgetItem *GenericPanel::getItemForElementsCategory(ElementsCategory *cate
 		return(category_item);
 	}
 	
-	QET::ItemType type = category -> isRootCategory() ? QET::ElementsCollection : QET::ElementsCategory;
-	category_item = makeItem(type);
+	category_item = makeItem(QET::ElementsCategory);
 	if (created) *created = true;
 	return(category_item);
 }
@@ -852,8 +909,14 @@ void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*coll
 void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection, const QString &name) {
 	Q_UNUSED(collection)
 	Q_UNUSED(name)
-	qDebug() << Q_FUNC_INFO << name;
 	addTemplatesCollection(collection);
+}
+
+/**
+	
+*/
+void GenericPanel::elementsCollectionChanged(ElementsCollection *collection) {
+	addElementsCollection(collection, 0, 0);
 }
 
 /**

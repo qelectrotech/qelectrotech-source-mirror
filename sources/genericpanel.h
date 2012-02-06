@@ -127,8 +127,13 @@ class GenericPanel : public QTreeWidget {
 	
 	// elements collections methods
 	public:
-	virtual QTreeWidgetItem *addElementsCollection(ElementsCollection *, QTreeWidgetItem *, PanelOptions = AddAllChild, const QString & = QString(), const QIcon & = QIcon());
 	virtual QTreeWidgetItem *itemForElementsLocation(const ElementsLocation &);
+	virtual QTreeWidgetItem *addElementsCollection(ElementsCollection *, QTreeWidgetItem *, PanelOptions = AddAllChild);
+	virtual QTreeWidgetItem *itemForElementsCollection(ElementsCollection *);
+	protected:
+	virtual QTreeWidgetItem *getItemForElementsCollection(ElementsCollection *, bool * = 0);
+	virtual QTreeWidgetItem *updateElementsCollectionItem(QTreeWidgetItem *, ElementsCollection *, PanelOptions = AddAllChild, bool = false);
+	virtual QTreeWidgetItem *fillElementsCollectionItem  (QTreeWidgetItem *, ElementsCollection *, PanelOptions = AddAllChild, bool = false);
 	
 	// elements categories methods
 	public:
@@ -157,6 +162,7 @@ class GenericPanel : public QTreeWidget {
 	void diagramTitleChanged(Diagram *, const QString &);
 	void templatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &);
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
+	void elementsCollectionChanged(ElementsCollection *);
 	
 	// various other methods
 	protected:

@@ -92,7 +92,7 @@ class ElementsPanel : public GenericPanel {
 	
 	private:
 	QTreeWidgetItem *addProject   (QETProject *);
-	QTreeWidgetItem *addCollection(ElementsCollection *, const QString & = QString(), const QIcon & = QIcon());
+	QTreeWidgetItem *addCollection(ElementsCollection *);
 	QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false);
 	QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *,  PanelOptions, bool = false);
 	QTreeWidgetItem *updateElementItem         (QTreeWidgetItem *, ElementDefinition *, PanelOptions, bool = false);
