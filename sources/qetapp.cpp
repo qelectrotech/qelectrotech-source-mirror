@@ -297,6 +297,13 @@ QList<ElementsCollection *> QETApp::availableCollections() {
 }
 
 /**
+	@return the collection cache provided by the application itself.
+*/
+ElementsCollectionCache *QETApp::collectionCache() {
+	return(collections_cache_);
+}
+
+/**
 	@return the common title block templates collection, i.e. the one provided
 	by QElecrotTech
 */

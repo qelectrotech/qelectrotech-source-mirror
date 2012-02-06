@@ -72,6 +72,7 @@ class QETApp : public QETSingleApplication {
 	static ElementsCollection *commonElementsCollection();
 	static ElementsCollection *customElementsCollection();
 	static QList<ElementsCollection *> availableCollections();
+	static ElementsCollectionCache *collectionCache();
 	
 	static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
 	static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();
