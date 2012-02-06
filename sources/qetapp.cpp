@@ -256,6 +256,8 @@ void QETApp::newElementEditor() {
 ElementsCollection *QETApp::commonElementsCollection() {
 	if (!common_collection) {
 		common_collection = new FileElementsCollection(QETApp::commonElementsDir());
+		common_collection -> setTitle(tr("Collection QET"));
+		common_collection -> setIcon(QIcon(":/ico/16x16/qet.png"));
 		common_collection -> setProtocol("common");
 		common_collection -> setCache(collections_cache_);
 	}
@@ -268,6 +270,8 @@ ElementsCollection *QETApp::commonElementsCollection() {
 ElementsCollection *QETApp::customElementsCollection() {
 	if (!custom_collection) {
 		custom_collection = new FileElementsCollection(QETApp::customElementsDir());
+		custom_collection -> setTitle(tr("Collection utilisateur"));
+		custom_collection -> setIcon(QIcon(":/ico/16x16/go-home.png"));
 		custom_collection -> setProtocol("custom");
 		custom_collection -> setCache(collections_cache_);
 	}

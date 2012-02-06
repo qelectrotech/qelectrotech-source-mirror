@@ -981,6 +981,7 @@ void QETProject::readElementsCollectionXml() {
 		// sinon lit cette collection
 		collection_ = new XmlElementsCollection(collection_root);
 	}
+	collection_ -> setTitle(tr("Collection embarqu\351e"));
 	collection_ -> setProtocol("embed");
 	collection_ -> setProject(this);
 	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));

@@ -37,6 +37,38 @@ ElementsCollection::~ElementsCollection() {
 }
 
 /**
+	@return the title for this collection
+*/
+QString ElementsCollection::title() const {
+	return(title_);
+}
+
+/**
+	@param title New title for this collection
+*/
+void ElementsCollection::setTitle(const QString &title) {
+	if (title_ == title) return;
+	title_ = title;
+	emit(elementsCollectionChanged(this));
+}
+
+/**
+	@return the icon for this collection
+*/
+QIcon ElementsCollection::icon() const {
+	return(icon_);
+}
+
+/**
+	@param icon the icon for this collection
+*/
+void ElementsCollection::setIcon(const QIcon &icon) {
+	if (icon_.cacheKey() == icon.cacheKey()) return;
+	icon_ = icon;
+	emit(elementsCollectionChanged(this));
+}
+
+/**
 	@return toujours true
 */
 bool ElementsCollection::isCollection() const {

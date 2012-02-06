@@ -18,6 +18,7 @@
 #ifndef ELEMENTS_COLLECTION_H
 #define ELEMENTS_COLLECTION_H
 #include <QtCore>
+#include <QIcon>
 #include "elementscollectionitem.h"
 class QETProject;
 class ElementsCategory;
@@ -41,6 +42,10 @@ class ElementsCollection : public ElementsCollectionItem {
 	
 	// Implementations de methodes virtuelles pures des classes parentes
 	public:
+	virtual QString title() const;
+	virtual void setTitle(const QString &);
+	virtual QIcon icon() const;
+	virtual void setIcon(const QIcon &);
 	virtual bool isCollection() const;
 	virtual bool isRootCategory() const;
 	virtual bool isCategory()  const;
@@ -87,8 +92,15 @@ class ElementsCollection : public ElementsCollectionItem {
 	virtual ElementsCollectionCache *cache() const;
 	virtual void setCache(ElementsCollectionCache *);
 	
+	signals:
+	void elementsCollectionChanged(ElementsCollection *);
+	
 	// attributs
 	protected:
+	/// Title to be used when referring to this collection
+	QString title_;
+	/// Icon to be displayed when representing this collection
+	QIcon icon_;
 	/// Protocole utilise pour acceder a cette collection
 	QString protocol_;
 	/// Projet auquel appartient cette collection
