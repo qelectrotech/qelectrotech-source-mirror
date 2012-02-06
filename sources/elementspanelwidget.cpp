@@ -117,11 +117,11 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(copy_elements_,        SIGNAL(triggered()), this,           SLOT(copyElements()));
 	
 	connect(erase_textfield,       SIGNAL(triggered()),                 this,             SLOT(clearFilterTextField()));
-	connect(filter_textfield,      SIGNAL(textEdited(const QString &)), elements_panel,   SLOT(filter(const QString &)));
+	connect(filter_textfield,      SIGNAL(textEdited(const QString &)), this,             SLOT(filterEdited(const QString &)));
 	
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
-	connect(elements_panel,        SIGNAL(requestForCollectionItem(ElementsCollectionItem *)),       this, SLOT(handleCollectionRequest(ElementsCollectionItem *)));
+	connect(elements_panel,        SIGNAL(requestForCollectionItem(const ElementsLocation &)),       this, SLOT(handleCollectionRequest(const ElementsLocation &)));
 	connect(
 		elements_panel,
 		SIGNAL(requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint)),
@@ -179,7 +179,7 @@ ElementsPanelWidget::~ElementsPanelWidget() {
 void ElementsPanelWidget::clearFilterTextField() {
 	filter_textfield -> clear();
 	filter_textfield -> setFocus();
-	elements_panel -> filter(QString());
+	filterEdited(QString());
 }
 
 /**
@@ -263,9 +263,10 @@ void ElementsPanelWidget::addTitleBlockTemplate() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
 	if (!current_item) return;
 	
-	if (elements_panel -> itemIsATitleBlockTemplatesCollection(current_item)) {
-		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(current_item);
-		QETApp::instance() -> openTitleBlockTemplate(location);
+	if (current_item -> type() == QET::TitleBlockTemplatesCollection) {
+		QETApp::instance() -> openTitleBlockTemplate(
+			elements_panel -> templateLocationForItem(current_item)
+		);
 	}
 }
 
@@ -274,8 +275,10 @@ void ElementsPanelWidget::addTitleBlockTemplate() {
 */
 void ElementsPanelWidget::editTitleBlockTemplate() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
-	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
-		QETApp::instance() -> openTitleBlockTemplate(elements_panel -> locationForTitleBlockTemplate(current_item));
+	if (current_item && current_item -> type() == QET::TitleBlockTemplate) {
+		QETApp::instance() -> openTitleBlockTemplate(
+			elements_panel -> templateLocationForItem(current_item)
+		);
 	}
 }
 
@@ -284,9 +287,9 @@ void ElementsPanelWidget::editTitleBlockTemplate() {
 */
 void ElementsPanelWidget::removeTitleBlockTemplate() {
 	QTreeWidgetItem *current_item = elements_panel -> currentItem();
-	if (current_item && elements_panel -> itemIsATitleBlockTemplate(current_item)) {
+	if (current_item && current_item -> type() == QET::TitleBlockTemplate) {
 		TitleBlockTemplateDeleter(
-			elements_panel -> locationForTitleBlockTemplate(current_item),
+			elements_panel -> templateLocationForItem(current_item),
 			this
 		).exec();
 	}
@@ -342,9 +345,12 @@ void ElementsPanelWidget::newCategory() {
 	Met a jour les boutons afin d'assurer la coherence de l'interface
 */
 void ElementsPanelWidget::updateButtons() {
-	bool collection_selected = elements_panel -> selectedItemIsACollection();
-	bool category_selected = collection_selected || elements_panel -> selectedItemIsACategory();
-	bool element_selected = elements_panel -> selectedItemIsAnElement();
+	QTreeWidgetItem *current_item = elements_panel -> currentItem();
+	int current_type = elements_panel -> currentItemType();
+	
+	bool collection_selected = current_type == QET::ElementsCollection;
+	bool category_selected   = current_type & QET::ElementsContainer;
+	bool element_selected    = current_type == QET::Element;
 	
 	if (collection_selected || category_selected || element_selected) {
 		bool element_writable = elements_panel -> selectedItemIsWritable();
@@ -355,11 +361,11 @@ void ElementsPanelWidget::updateButtons() {
 		new_element       -> setEnabled(category_selected && element_writable);
 		edit_element      -> setEnabled(element_selected);
 		delete_element    -> setEnabled(element_selected && element_writable);
-	} else if (elements_panel -> selectedItemIsAProject()) {
+	} else if (current_type == QET::Project) {
 		bool is_writable = !(elements_panel -> selectedProject() -> isReadOnly());
 		prj_add_diagram -> setEnabled(is_writable);
 		setElementsActionEnabled(false);
-	} else if (elements_panel -> selectedItemIsADiagram()) {
+	} else if (current_type == QET::Diagram) {
 		Diagram    *selected_diagram         = elements_panel -> selectedDiagram();
 		QETProject *selected_diagram_project = selected_diagram -> project();
 		
@@ -371,16 +377,15 @@ void ElementsPanelWidget::updateButtons() {
 		prj_move_diagram_up   -> setEnabled(is_writable && diagram_position > 0);
 		prj_move_diagram_down -> setEnabled(is_writable && diagram_position < project_diagrams_count - 1);
 		setElementsActionEnabled(false);
-	} else if (elements_panel -> selectedItemIsATitleBlockTemplatesDirectory()) {
-		QTreeWidgetItem *item = elements_panel -> currentItem();
-		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(item);
+	} else if (current_type == QET::TitleBlockTemplatesCollection) {
+		TitleBlockTemplateLocation location = elements_panel -> templateLocationForItem(current_item);
 		tbt_add    -> setEnabled(!location.isReadOnly());
 		tbt_edit   -> setEnabled(false); // would not make sense
 		tbt_remove -> setEnabled(false); // would not make sense
 		setElementsActionEnabled(false);
-	} else if (elements_panel -> selectedItemIsATitleBlockTemplate()) {
+	} else if (current_type == QET::TitleBlockTemplate) {
 		QTreeWidgetItem *item = elements_panel -> currentItem();
-		TitleBlockTemplateLocation location = elements_panel -> locationForTitleBlockTemplate(item);
+		TitleBlockTemplateLocation location = elements_panel -> templateLocationForItem(item);
 		tbt_add    -> setEnabled(false); // would not make sense
 		tbt_edit   -> setEnabled(true); // the tbt editor has a read-only mode
 		// deleting a tbt requires its parent collection to be writable
@@ -441,42 +446,40 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	updateButtons();
 	context_menu -> clear();
 	
-	if (elements_panel -> itemHasLocation(item)) {
-		// recupere l'emplacement associe a l'item
-		ElementsCollectionItem *selected_item = elements_panel -> collectionItemForItem(item);
-		
-		if (selected_item) {
-			if (selected_item -> isCategory()) {
-				context_menu -> addAction(new_category);
-				context_menu -> addAction(edit_category);
-				context_menu -> addAction(delete_category);
-				context_menu -> addAction(new_element);
-			} else if (selected_item -> isElement()) {
-				context_menu -> addAction(edit_element);
-				context_menu -> addAction(delete_element);
-			} else if (selected_item -> isCollection()) {
-				// categorie racine / collection
-				context_menu -> addAction(new_category);
-				context_menu -> addAction(delete_collection);
-				context_menu -> addAction(new_element);
-			}
-		}
-	} else {
-		if (elements_panel -> itemIsAProject(item)) {
+	switch(item -> type()) {
+		case QET::ElementsCategory:
+			context_menu -> addAction(new_category);
+			context_menu -> addAction(edit_category);
+			context_menu -> addAction(delete_category);
+			context_menu -> addAction(new_element);
+			break;
+		case QET::Element:
+			context_menu -> addAction(edit_element);
+			context_menu -> addAction(delete_element);
+			break;
+		case QET::ElementsCollection:
+			context_menu -> addAction(new_category);
+			context_menu -> addAction(delete_collection);
+			context_menu -> addAction(new_element);
+			break;
+		case QET::Project:
 			context_menu -> addAction(prj_edit_prop);
 			context_menu -> addAction(prj_add_diagram);
 			context_menu -> addAction(prj_close);
-		} else if (elements_panel -> itemIsADiagram(item)) {
+			break;
+		case QET::Diagram:
 			context_menu -> addAction(prj_prop_diagram);
 			context_menu -> addAction(prj_del_diagram);
 			context_menu -> addAction(prj_move_diagram_up);
 			context_menu -> addAction(prj_move_diagram_down);
-		} else if (elements_panel -> itemIsATitleBlockTemplatesCollection(item)) {
+			break;
+		case QET::TitleBlockTemplatesCollection:
 			context_menu -> addAction(tbt_add);
-		} else if (elements_panel -> itemIsATitleBlockTemplate(item)) {
+			break;
+		case QET::TitleBlockTemplate:
 			context_menu -> addAction(tbt_edit);
 			context_menu -> addAction(tbt_remove);
-		}
+			break;
 	}
 	
 	// affiche le menu
@@ -489,7 +492,9 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	Gere les demandes d'edition de categories ou d'elements
 	@param item Item de la collection a editer
 */
-void ElementsPanelWidget::handleCollectionRequest(ElementsCollectionItem *item) {
+void ElementsPanelWidget::handleCollectionRequest(const ElementsLocation &item_location) {
+	if (item_location.isNull()) return;
+	ElementsCollectionItem *item = QETApp::collectionItem(item_location);
 	if (!item) return;
 	if (item -> isElement()) {
 		// il s'agit d'un element
@@ -601,6 +606,20 @@ void ElementsPanelWidget::updateProgressBar(int current, int maximum) {
 	progress_bar_ -> setValue(current);
 }
 
+void ElementsPanelWidget::filterEdited(const QString &next_text) {
+	if (previous_filter_.isEmpty() && next_text.length() == 1) {
+		// the field is not empty anymore: begin filtering
+		elements_panel -> filter(next_text, QET::BeginFilter);
+	} else if (!previous_filter_.isEmpty() && next_text.isEmpty()) {
+		// the field is now empty again: end of filtering
+		elements_panel -> filter(QString(), QET::EndFilter);
+	} else {
+		// regular filtering
+		elements_panel -> filter(next_text, QET::RegularFilter);
+	}
+	previous_filter_ = next_text;
+}
+
 /**
 	Copie l'item src dans l'item dst
 */
@@ -686,7 +705,10 @@ ElementsCategory *ElementsPanelWidget::writableSelectedCategory() {
 	if (!selected_qtwi) return(0);
 	
 	// l'element selectionne doit pouvoir correspondre a une categorie
-	ElementsCategory *selected_category = elements_panel -> categoryForItem(selected_qtwi);
+	if (!(selected_qtwi -> type() & QET::ElementsContainer)) return(0);
+	ElementsLocation category_location = elements_panel -> elementLocationForItem(selected_qtwi);
+	ElementsCollectionItem *category = QETApp::collectionItem(category_location, false);
+	ElementsCategory *selected_category = category -> toCategory();
 	if (!selected_category) return(0);
 	
 	// la categorie doit etre accessible en ecriture

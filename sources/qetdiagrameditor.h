@@ -129,7 +129,6 @@ class QETDiagramEditor : public QMainWindow {
 	void activateProject(QETProject *);
 	void activateProject(ProjectView *);
 	void activateWidget(QWidget *);
-	void diagramOrderChanged(ProjectView *, int, int);
 	void projectWasClosed(ProjectView *);
 	void editCurrentProjectProperties();
 	void editProjectProperties(ProjectView *);
@@ -147,7 +146,6 @@ class QETDiagramEditor : public QMainWindow {
 	void diagramWasAdded(DiagramView *);
 	void diagramIsAboutToBeRemoved(DiagramView *);
 	void diagramWasRemoved(DiagramView *);
-	void diagramTitleChanged(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
 	void editElementInEditor(const ElementsLocation &);
 	

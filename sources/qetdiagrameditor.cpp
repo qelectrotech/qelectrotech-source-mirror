@@ -27,6 +27,7 @@
 #include "qeticons.h"
 #include "qetelementeditor.h"
 #include "qetmessagebox.h"
+#include "genericpanel.h"
 
 /**
 	constructeur
@@ -968,20 +969,6 @@ void QETDiagramEditor::activateWidget(QWidget *widget) {
 }
 
 /**
-	@param project_view Projet concerne
-	@param from Index de l'onglet avant le deplacement
-	@param to   Index de l'onglet apres le deplacement
-*/
-void QETDiagramEditor::diagramOrderChanged(ProjectView *project_view, int from, int to) {
-	if (!project_view) return;
-	
-	QETProject *project = project_view -> project();
-	if (!project) return;
-	
-	pa -> elementsPanel().diagramOrderChanged(project, from, to);
-}
-
-/**
 	Effectue l'action "couper" sur le schema en cours
 */
 void QETDiagramEditor::slot_cut() {
@@ -1252,15 +1239,9 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(diagramWasRemoved(DiagramView *)));
 	connect(project_view, SIGNAL(diagramRemoved(DiagramView *)), this, SLOT(slot_updateActions()));
 	if (QETProject *project = project_view -> project()) {
-		connect(project, SIGNAL(diagramAdded  (QETProject *, Diagram*)), &(pa -> elementsPanel()), SLOT(diagramWasAdded  (QETProject *, Diagram*)));
-		connect(project, SIGNAL(diagramRemoved(QETProject *, Diagram*)), &(pa -> elementsPanel()), SLOT(diagramWasRemoved(QETProject *, Diagram*)));
-		
 		// on met aussi les menus a jour quand un projet passe en lecture seule ou non
 		connect(project, SIGNAL(readOnlyChanged(QETProject *, bool)), this, SLOT(slot_updateActions()));
 	}
-	
-	// gere les changements de l'ordre des schemas dans le projet
-	connect(project_view, SIGNAL(diagramOrderChanged(ProjectView *, int, int)), this, SLOT(diagramOrderChanged(ProjectView *, int, int)));
 	
 	// gere les demandes consistant a retrouver un element dans le panel
 	connect(project_view, SIGNAL(findElementRequired(const ElementsLocation &)), this, SLOT(findElementInPanel(const ElementsLocation &)));
@@ -1694,7 +1675,6 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
-	connect(dv, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(diagramTitleChanged(DiagramView *)));
 }
 
 /**
@@ -1713,18 +1693,6 @@ void QETDiagramEditor::diagramIsAboutToBeRemoved(DiagramView *dv) {
 void QETDiagramEditor::diagramWasRemoved(DiagramView *dv) {
 	Q_UNUSED(dv);
 	can_update_actions = true;
-}
-
-/**
-	Gere le changement de titre d'un schema dans un projet
-	@param dv DiagramView concerne
-*/
-void QETDiagramEditor::diagramTitleChanged(DiagramView *dv) {
-	if (Diagram *diagram = dv -> diagram()) {
-		if (QETProject *project = diagram -> project()) {
-			pa -> elementsPanel().diagramTitleChanged(project, diagram);
-		}
-	}
 }
 
 /**

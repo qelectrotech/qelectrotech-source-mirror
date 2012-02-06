@@ -51,9 +51,9 @@ ElementDialog::ElementDialog(uint mode, QWidget *parentWidget, QObject *parent) 
 	int selectables = 0;
 	switch(mode_) {
 		case OpenElement:  selectables = QET::Element; break;
-		case SaveElement:  selectables = QET::All; break;
-		case OpenCategory: selectables = QET::Category | QET::Collection; break;
-		case SaveCategory: selectables = QET::Category | QET::Collection; break;
+		case SaveElement:  selectables = QET::ElementsCollectionItem; break;
+		case OpenCategory: selectables = QET::ElementsContainer; break;
+		case SaveCategory: selectables = QET::ElementsContainer; break;
 	}
 	list_    = new ElementsCategoriesList(display_elements, selectables);
 	connect(list_, SIGNAL(locationChanged(const ElementsLocation &)), this, SLOT(locationChanged(const ElementsLocation &)));

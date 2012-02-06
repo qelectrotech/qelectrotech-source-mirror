@@ -88,7 +88,7 @@ class ElementsPanelWidget : public QWidget {
 	void setElementsActionEnabled(bool);
 	int  launchCategoriesManager();
 	void handleContextMenu(const QPoint &);
-	void handleCollectionRequest(ElementsCollectionItem *);
+	void handleCollectionRequest(const ElementsLocation &);
 	void handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint & = QPoint());
 	void moveElements();
 	void moveElements(ElementsCollectionItem *, ElementsCollectionItem *);
@@ -97,11 +97,13 @@ class ElementsPanelWidget : public QWidget {
 	void collectionsRead();
 	void collectionsReadFinished();
 	void updateProgressBar(int, int);
+	void filterEdited(const QString &);
 	
 	private:
 	void launchElementEditor(const ElementsLocation &);
 	void launchCategoryEditor(const ElementsLocation &);
 	ElementsCategory *writableSelectedCategory();
+	QString previous_filter_;
 };
 
 /**

@@ -69,6 +69,10 @@ Diagram::Diagram(QObject *parent) :
 		&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)),
 		this, SLOT(setTitleBlockTemplate(const QString &))
 	);
+	connect(
+		&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),
+		this, SLOT(titleChanged(const QString &))
+	);
 }
 
 /**
@@ -709,6 +713,10 @@ void Diagram::removeIndependentTextItem(IndependentTextItem *iti) {
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
 	);
+}
+
+void Diagram::titleChanged(const QString &title) {
+	emit(diagramTitleChanged(this, title));
 }
 
 /**

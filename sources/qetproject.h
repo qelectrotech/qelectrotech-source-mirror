@@ -128,6 +128,7 @@ class QETProject : public QObject {
 	void projectInformationsChanged(QETProject *);
 	void diagramAdded(QETProject *, Diagram *);
 	void diagramRemoved(QETProject *, Diagram *);
+	void projectDiagramsOrderChanged(QETProject *, int, int);
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
 	
@@ -181,4 +182,5 @@ class QETProject : public QObject {
 	/// Embedded title block templates collection
 	TitleBlockTemplatesProjectCollection titleblocks_;
 };
+Q_DECLARE_METATYPE(QETProject *)
 #endif

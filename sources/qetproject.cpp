@@ -832,6 +832,7 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	
 	diagrams_.move(old_index, new_index);
 	updateDiagramsFolioData();
+	emit(projectDiagramsOrderChanged(this, old_index, new_index));
 }
 
 /**

@@ -171,6 +171,7 @@ class Diagram : public QGraphicsScene {
 	QGIManager &qgiManager();
 	
 	public slots:
+	void titleChanged(const QString &);
 	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
 	void titleBlockTemplateChanged(const QString &);
 	void titleBlockTemplateRemoved(const QString &, const QString & = QString());
@@ -185,7 +186,9 @@ class Diagram : public QGraphicsScene {
 	void written();
 	void readOnlyChanged(bool);
 	void usedTitleBlockTemplateChanged(const QString &);
+	void diagramTitleChanged(Diagram *, const QString &);
 };
+Q_DECLARE_METATYPE(Diagram *)
 
 /**
 	Permet d'ajouter ou enlever le "poseur de conducteur", c'est-a-dire la

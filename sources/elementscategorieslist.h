@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "qet.h"
 #include "elementslocation.h"
+#include "genericpanel.h"
 class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
@@ -27,7 +28,7 @@ class ElementDefinition;
 	Cette classe fournit une liste graphique des categories d'elements de
 	l'utilisateur.
 */
-class ElementsCategoriesList : public QTreeWidget {
+class ElementsCategoriesList : public GenericPanel {
 	Q_OBJECT
 	
 	// Constructeurs, destructeur
@@ -40,15 +41,12 @@ class ElementsCategoriesList : public QTreeWidget {
 	
 	// methodes
 	public:
-	QString selectedCategoryName() const;
 	ElementsLocation selectedLocation() const;
 	bool selectLocation(const ElementsLocation &);
 	
 	private:
-	QTreeWidgetItem *addCollection(QTreeWidgetItem *, ElementsCollection *, const QString & = QString(), const QIcon & = QIcon());
-	QTreeWidgetItem *addCategory  (QTreeWidgetItem *, ElementsCategory   *, const QString & = QString(), const QIcon & = QIcon());
-	QTreeWidgetItem *addElement   (QTreeWidgetItem *, ElementDefinition  *, const QString & = QString(), const QIcon & = QIcon());
 	QString categoryName(QDir &);
+	QTreeWidgetItem *makeItem(QET::ItemType, QTreeWidgetItem *, const QString &, const QIcon &);
 	
 	public slots:
 	void reload();
@@ -64,6 +62,5 @@ class ElementsCategoriesList : public QTreeWidget {
 	bool display_elements_;
 	int selectables_;
 	bool first_load;
-	QHash<QTreeWidgetItem *, ElementsLocation> locations_;
 };
 #endif

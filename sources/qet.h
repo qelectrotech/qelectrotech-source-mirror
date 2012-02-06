@@ -68,12 +68,27 @@ namespace QET {
 		collection d'elements.
 	*/
 	enum ItemType {
-		Element    = 1, ///< Element
-		Category   = 2, ///< Categorie
-		Collection = 4, ///< Collection
-		All        = 7  ///< Tous
+		Element                           =    1,
+		ElementsCategory                  =    2,
+		ElementsCollection                =    4,
+		ElementsContainer                 =    6,
+		ElementsCollectionItem            =    7,
+		TitleBlockTemplate                =    8,
+		TitleBlockTemplatesCollection     =   16,
+		TitleBlockTemplatesCollectionItem =   24,
+		Diagram                           =   32,
+		Project                           =   64,
+		All                               =  127
 	};
 	
+	/**
+		This enum represents the various steps when applying a filter.
+	*/
+	enum Filtering {
+		BeginFilter,
+		RegularFilter,
+		EndFilter
+	};
 	
 	/**
 		Cet enum represente les differentes facons de gerer un probleme lors de
