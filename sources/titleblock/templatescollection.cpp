@@ -127,7 +127,7 @@ QString TitleBlockTemplatesProjectCollection::title() const {
 			final_title = QString(
 				tr(
 					"Cartouches du projet \"%1\"",
-					"collection title when the project has a suitble title -- %1 is the project title"
+					"collection title when the project has a suitable title -- %1 is the project title"
 				)
 			);
 			final_title = final_title.arg(project_title);
