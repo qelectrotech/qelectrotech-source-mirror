@@ -400,12 +400,14 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 	
 	if (TitleBlockTemplatesCollection *tbt_collection = project -> embeddedTitleBlockTemplatesCollection()) {
 		if (QTreeWidgetItem *tbt_collection_qtwi = itemForTemplatesCollection(tbt_collection)) {
+			tbt_collection_qtwi -> setText(0, tr("Cartouches embarqués"));
 			if (first_add) tbt_collection_qtwi -> setExpanded(true);
 		}
 	}
 	
 	if (ElementsCollection *elmt_collection = project -> embeddedCollection()) {
 		if (QTreeWidgetItem *elmt_collection_qtwi = itemForElementsCollection(elmt_collection)) {
+			elmt_collection_qtwi -> setText(0, tr("Collection embarquée"));
 			if (first_add) elmt_collection_qtwi -> setExpanded(true);
 		}
 	}

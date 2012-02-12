@@ -38,6 +38,7 @@ class XmlElementsCollection : public ElementsCollection {
 	
 	// methodes
 	public:
+	virtual QString title() const;
 	virtual ElementsCategory *rootCategory();
 	virtual bool hasFilePath();
 	virtual QString filePath();

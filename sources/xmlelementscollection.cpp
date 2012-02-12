@@ -18,6 +18,7 @@
 #include "xmlelementscollection.h"
 #include "xmlelementscategory.h"
 #include "qetproject.h"
+#include "qetapp.h"
 
 /**
 	Construit une collection vide
@@ -53,6 +54,35 @@ XmlElementsCollection::XmlElementsCollection(const QDomElement &xml_element, Ele
 */
 XmlElementsCollection::~XmlElementsCollection() {
 	deleteContent();
+}
+
+QString XmlElementsCollection::title() const {
+	if (!title_.isEmpty()) return(title_);
+	
+	// if the title attribute is empty, we generate a suitable one using the
+	// parent project
+	QString final_title;
+	if (project_) {
+		QString project_title = project_ -> title();
+		if (project_title.isEmpty()) {
+			final_title = QString(
+				tr(
+					"Collection du projet sans titre (id %1)",
+					"Elements collection title when the parent project has an empty title -- %1 is the project internal id"
+				)
+			);
+			final_title = final_title.arg(QETApp::projectId(project_));
+		} else {
+			final_title = QString(
+				tr(
+					"Collection du projet \"%1\"",
+					"Elements collection title when the project has a suitable title -- %1 is the project title"
+				)
+			);
+			final_title = final_title.arg(project_title);
+		}
+	}
+	return(final_title);
 }
 
 ElementsCategory *XmlElementsCollection::rootCategory() {
