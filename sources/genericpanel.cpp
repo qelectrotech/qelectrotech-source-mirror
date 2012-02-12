@@ -802,7 +802,9 @@ QTreeWidgetItem *GenericPanel::updateElementItem(QTreeWidgetItem *element_qtwi, 
 		element_qtwi -> setIcon(0, QIcon(cache -> pixmap()));
 	}
 	
+	// note the following lines are technically marking the element as used
 	element_qtwi -> setToolTip(0, element_location.toString());
+	element_qtwi -> setBackground(0, QBrush());
 	// actions speciales pour les elements appartenant a un projet
 	if (QETProject *element_project = element_location.project()) {
 		// affiche en rouge les elements inutilises dans un projet
