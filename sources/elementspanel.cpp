@@ -120,6 +120,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	);
 	
 	connect(this, SIGNAL(firstActivated()), this, SLOT(firstActivation()));
+	connect(this, SIGNAL(panelContentChanged()), this, SLOT(panelContentChange()));
 	
 	// emet un signal au lieu de gerer son menu contextuel
 	setContextMenuPolicy(Qt::CustomContextMenu);
@@ -371,6 +372,15 @@ void ElementsPanel::firstActivation() {
 }
 
 /**
+	Ensure the filter is applied again after the panel content has changed.
+*/
+void ElementsPanel::panelContentChange() {
+	if (!filter_.isEmpty()) {
+		filter(filter_);
+	}
+}
+
+/**
 	Methode permettant d'ajouter un projet au panel d'elements.
 	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere le projet
 	@param project Projet a inserer dans le panel d'elements
@@ -446,6 +456,20 @@ QTreeWidgetItem *ElementsPanel::updateElementItem(QTreeWidgetItem *element_qtwi,
 	
 	emit(loadingProgressed(++ loading_progress_, -1));
 	return(item);
+}
+
+/**
+	@return true if \a item matches the current filter, false otherwise
+*/
+bool ElementsPanel::matchesCurrentFilter(const QTreeWidgetItem *item) const {
+	if (!item) return(false);
+	
+	// no filter => we consider the item matches
+	if (filter_.isEmpty()) return(true);
+	
+	bool item_matches = item -> text(0).contains(filter_, Qt::CaseInsensitive);
+	
+	return(item_matches);
 }
 
 /**
@@ -628,15 +652,10 @@ void ElementsPanel::filter(const QString &m, QET::Filtering filtering) {
 	}
 	
 	if (filtering != QET::EndFilter) {
-		// repere les items correspondant au filtre
-		QList<QTreeWidgetItem *> matching_items;
-		foreach (QTreeWidgetItem *item, items) {
-			bool item_matches = item -> text(0).contains(m, Qt::CaseInsensitive);
-			if (item_matches) matching_items << item;
-			item -> setHidden(!item_matches);
-		}
-		ensureHierarchyIsVisible(matching_items);
+		filter_ = m;
+		applyCurrentFilter(items);
 	} else { // filtering == QET::EndFilter
+		filter_ = QString();
 		QTreeWidgetItem *current_item = currentItem();
 		
 		// restore the tree as it was before the filtering
@@ -691,10 +710,24 @@ bool ElementsPanel::scrollToElement(const ElementsLocation &location) {
 }
 
 /**
+	Apply the current filter to a given item.
+*/
+void ElementsPanel::applyCurrentFilter(const QList<QTreeWidgetItem *> &items) {
+	if (filter_.isEmpty()) return;
+	QList<QTreeWidgetItem *> matching_items;
+	foreach (QTreeWidgetItem *item, items) {
+		bool item_matches = matchesCurrentFilter(item);
+		if (item_matches) matching_items << item;
+		item -> setHidden(!item_matches);
+	}
+	ensureHierarchyIsVisible(matching_items);
+}
+
+/**
 	@param items une liste de QTreeWidgetItem pour lesquels il faut s'assurer
 	que eux et leurs parents sont visibles
 */
-void ElementsPanel::ensureHierarchyIsVisible(QList<QTreeWidgetItem *> items) {
+void ElementsPanel::ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &items) {
 	// remonte l'arborescence pour lister les categories contenant les elements filtres
 	QSet<QTreeWidgetItem *> parent_items;
 	foreach(QTreeWidgetItem *item, items) {

@@ -78,6 +78,8 @@ class ElementsPanel : public GenericPanel {
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);
 	bool scrollToElement(const ElementsLocation &);
+	void applyCurrentFilter(const QList<QTreeWidgetItem *> &);
+	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
 	
 	protected:
 	void dragEnterEvent(QDragEnterEvent *);
@@ -86,9 +88,11 @@ class ElementsPanel : public GenericPanel {
 	void startDrag(Qt::DropActions);
 	void startElementDrag(const ElementsLocation &);
 	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
+	bool matchesCurrentFilter(const QTreeWidgetItem *) const;
 	
 	protected slots:
 	void firstActivation();
+	void panelContentChange();
 	
 	private:
 	QTreeWidgetItem *addProject   (QETProject *);
@@ -96,8 +100,6 @@ class ElementsPanel : public GenericPanel {
 	QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false);
 	QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *,  PanelOptions, bool = false);
 	QTreeWidgetItem *updateElementItem         (QTreeWidgetItem *, ElementDefinition *, PanelOptions, bool = false);
-	
-	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
 	
 	// attributes
 	private:
@@ -108,5 +110,6 @@ class ElementsPanel : public GenericPanel {
 	QTreeWidgetItem *custom_tbt_collection_item_;  ///< pointer to the item representing the user templates collection
 	int loading_progress_;                         ///< used to track the loading progress of elements collections
 	bool first_reload_;                            ///< used to distinguish the first time this panel is reloaded
+	QString filter_;                               ///< Currently applied filter
 };
 #endif
