@@ -222,7 +222,7 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 		);
 	}
 	project_qtwi -> setToolTip(0, final_tooltip);
-	return(project_qtwi);
+	return(updateItem(project_qtwi, options, freshly_created));
 }
 
 /**
@@ -279,7 +279,7 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 			options
 		);
 	}
-	return(project_qtwi);
+	return(fillItem(project_qtwi, options, freshly_created));
 }
 
 /**
@@ -361,7 +361,7 @@ QTreeWidgetItem *GenericPanel::updateDiagramItem(QTreeWidgetItem *diagram_qtwi, 
 		);
 	}
 	
-	return(diagram_qtwi);
+	return(updateItem(diagram_qtwi, options, freshly_created));
 }
 
 /**
@@ -371,7 +371,7 @@ QTreeWidgetItem *GenericPanel::fillDiagramItem(QTreeWidgetItem *diagram_qtwi, Di
 	Q_UNUSED(diagram)
 	Q_UNUSED(options)
 	Q_UNUSED(freshly_created)
-	return(diagram_qtwi);
+	return(fillItem(diagram_qtwi, options, freshly_created));
 }
 
 /**
@@ -429,7 +429,7 @@ QTreeWidgetItem *GenericPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tb
 		tb_templates_.insert(tbt_collection -> location(), tbt_collection_qtwi);
 	}
 	
-	return(tbt_collection_qtwi);
+	return(updateItem(tbt_collection_qtwi, options, freshly_created));
 }
 
 /**
@@ -462,7 +462,7 @@ QTreeWidgetItem *GenericPanel::fillTemplatesCollectionItem(QTreeWidgetItem *tbt_
 		}
 	}
 	
-	return(tbt_collection_qtwi);
+	return(fillItem(tbt_collection_qtwi, options, freshly_created));
 }
 
 /**
@@ -526,7 +526,7 @@ QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_q
 		tb_template_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(tb_template));
 		tb_templates_.insert(tb_template, tb_template_qtwi);
 	}
-	return(tb_template_qtwi);
+	return(updateItem(tb_template_qtwi, options, freshly_created));
 }
 
 /**
@@ -536,7 +536,7 @@ QTreeWidgetItem *GenericPanel::fillTemplateItem(QTreeWidgetItem *tb_template_qtw
 	Q_UNUSED(tb_template)
 	Q_UNUSED(options)
 	Q_UNUSED(freshly_created)
-	return(tb_template_qtwi);
+	return(fillItem(tb_template_qtwi, options, freshly_created));
 }
 
 /**
@@ -606,7 +606,7 @@ QTreeWidgetItem *GenericPanel::updateElementsCollectionItem(QTreeWidgetItem *col
 		);
 	}
 	
-	return(collection_qtwi);
+	return(updateItem(collection_qtwi, options, freshly_created));
 }
 
 /**
@@ -630,7 +630,7 @@ QTreeWidgetItem *GenericPanel::fillElementsCollectionItem(QTreeWidgetItem *colle
 	if (restore_previous_cache) {
 		setElementsCache(previous_cache);
 	}
-	return(collection_qtwi);
+	return(fillItem(collection_qtwi, options, freshly_created));
 }
 
 /**
@@ -698,7 +698,7 @@ QTreeWidgetItem *GenericPanel::updateElementsCategoryItem(QTreeWidgetItem *categ
 		category_qtwi -> setData(0, GenericPanel::Item, qVariantFromValue(category -> location()));
 		elements_.insert(category -> location(), category_qtwi);
 	}
-	return(category_qtwi);
+	return(updateItem(category_qtwi, options, freshly_created));
 }
 
 /**
@@ -738,7 +738,7 @@ QTreeWidgetItem *GenericPanel::fillElementsCategoryItem(QTreeWidgetItem *categor
 		}
 	}
 	
-	return(category_qtwi);
+	return(fillItem(category_qtwi, options, freshly_created));
 }
 
 /**
@@ -787,11 +787,13 @@ QTreeWidgetItem *GenericPanel::getItemForElement(ElementDefinition *element, boo
 QTreeWidgetItem *GenericPanel::updateElementItem(QTreeWidgetItem *element_qtwi, ElementDefinition *element, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
 	Q_UNUSED(freshly_created)
-	if (!element_qtwi || !element) return(element_qtwi);
+	if (!element_qtwi || !element) {
+		return(updateItem(element_qtwi, options, freshly_created));
+	}
 	
 	ElementsCollectionCache *cache = getElementsCache();
 	if (!cache -> fetchElement(element)) {
-		return(element_qtwi);
+		return(updateItem(element_qtwi, options, freshly_created));
 	}
 	
 	ElementsLocation element_location = element -> location();
@@ -814,7 +816,7 @@ QTreeWidgetItem *GenericPanel::updateElementItem(QTreeWidgetItem *element_qtwi, 
 		elements_.insert(element_location, element_qtwi);
 	}
 	
-	return(element_qtwi);
+	return(updateItem(element_qtwi, options, freshly_created));
 }
 
 /**
@@ -825,7 +827,31 @@ QTreeWidgetItem *GenericPanel::fillElementItem (QTreeWidgetItem *element_qtwi, E
 	Q_UNUSED(element)
 	Q_UNUSED(options)
 	Q_UNUSED(freshly_created)
-	return(element_qtwi);
+	return(fillItem(element_qtwi, options, freshly_created));
+}
+
+/**
+	This generic method is called at the end of each update*Item method. Its
+	only purpose is being reimplemented in a subclass. The default
+	implementation does nothing.
+*/
+QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
+	Q_UNUSED(qtwi);
+	Q_UNUSED(options);
+	Q_UNUSED(freshly_created);
+	return(qtwi);
+}
+
+/**
+	This generic method is called at the end of each fill*Item method. Its
+	only purpose is being reimplemented in a subclass. The default
+	implementation does nothing.
+*/
+QTreeWidgetItem *GenericPanel::fillItem(QTreeWidgetItem *qtwi, PanelOptions options, bool freshly_created) {
+	Q_UNUSED(qtwi);
+	Q_UNUSED(options);
+	Q_UNUSED(freshly_created);
+	return(qtwi);
 }
 
 /**
@@ -833,6 +859,7 @@ QTreeWidgetItem *GenericPanel::fillElementItem (QTreeWidgetItem *element_qtwi, E
 */
 void GenericPanel::projectInformationsChanged(QETProject *project) {
 	addProject(project, 0, 0);
+	emit(panelContentChanged());
 }
 
 /**
@@ -841,6 +868,7 @@ void GenericPanel::projectInformationsChanged(QETProject *project) {
 void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
 	addProject(project, 0, GenericPanel::AddChildDiagrams);
+	emit(panelContentChanged());
 }
 
 /**
@@ -849,6 +877,7 @@ void GenericPanel::diagramAdded(QETProject *project, Diagram *diagram) {
 void GenericPanel::diagramRemoved(QETProject *project, Diagram *diagram) {
 	Q_UNUSED(diagram)
 	addProject(project, 0, GenericPanel::AddChildDiagrams);
+	emit(panelContentChanged());
 }
 
 /**
@@ -884,6 +913,7 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, in
 	if (was_selected) {
 		setCurrentItem(moved_qtwi_diagram);
 	}
+	emit(panelContentChanged());
 }
 
 /**
@@ -892,6 +922,7 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, in
 void GenericPanel::diagramTitleChanged(Diagram *diagram, const QString &title) {
 	Q_UNUSED(title)
 	GenericPanel::addDiagram(diagram);
+	emit(panelContentChanged());
 }
 
 /**
@@ -901,6 +932,7 @@ void GenericPanel::diagramTitleChanged(Diagram *diagram, const QString &title) {
 void GenericPanel::templatesCollectionChanged(TitleBlockTemplatesCollection*collection, const QString &template_name) {
 	Q_UNUSED(template_name)
 	addTemplatesCollection(collection);
+	emit(panelContentChanged());
 }
 
 /**
@@ -910,6 +942,7 @@ void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection
 	Q_UNUSED(collection)
 	Q_UNUSED(name)
 	addTemplatesCollection(collection);
+	emit(panelContentChanged());
 }
 
 /**
@@ -917,6 +950,7 @@ void GenericPanel::diagramUsedTemplate(TitleBlockTemplatesCollection *collection
 */
 void GenericPanel::elementsCollectionChanged(ElementsCollection *collection) {
 	addElementsCollection(collection, 0, 0);
+	emit(panelContentChanged());
 }
 
 /**
@@ -972,12 +1006,16 @@ QTreeWidgetItem *GenericPanel::makeItem(QET::ItemType type, QTreeWidgetItem *par
 }
 
 /**
-	
+	Delete and item and its children.
+	@param item item to delete
+	@param deleted_on_cascade true if the item is not being directly deleted
+	but is undergoing the deletion of its parent.
 */
-void GenericPanel::deleteItem(QTreeWidgetItem *item) {
+void GenericPanel::deleteItem(QTreeWidgetItem *item, bool deleted_on_cascade) {
+	Q_UNUSED(deleted_on_cascade)
 	// recursively delete child items first
 	for (int i = 0 ; i < item -> childCount() ; ++ i) {
-		deleteItem(item -> child(i));
+		deleteItem(item -> child(i), true);
 	}
 	
 	// delete the item itself
@@ -1019,6 +1057,9 @@ void GenericPanel::reparent(QTreeWidgetItem *item, QTreeWidgetItem *parent) {
 
 /**
 	@return the child items of \a item of type \a type
+	@param item Parent item that will be searched.
+	@param type Type of items to look for.
+	@param recursive Whether to search recursively.
 */
 QList<QTreeWidgetItem *> GenericPanel::childItems(QTreeWidgetItem *item, QET::ItemType type, bool recursive) const {
 	QList<QTreeWidgetItem *> items;
@@ -1037,12 +1078,17 @@ QList<QTreeWidgetItem *> GenericPanel::childItems(QTreeWidgetItem *item, QET::It
 }
 
 /**
-	
+	This variant of childItems() removes any child considered obsolete, i.e.
+	not found in \a expected_items.
+	@param expected_items A list of non-obsolete values
+	@param item Parent item that will be searched.
+	@param type Type of items to look for.
+	@param recursive Whether to search recursively.
+	@see GenericPanel::childItems()
 */
 template<typename T>
 void GenericPanel::removeObsoleteItems(const QList<T> &expected_items, QTreeWidgetItem *item, QET::ItemType type, bool recursive) {
-	// remove items unknown to the project (presumably removed)
-	
+	// remove items not found in expected_items
 	foreach (QTreeWidgetItem *child_item, childItems(item, type, recursive)) {
 		T child_value = valueForItem<T>(child_item);
 		if (!expected_items.contains(child_value)) {
@@ -1052,7 +1098,7 @@ void GenericPanel::removeObsoleteItems(const QList<T> &expected_items, QTreeWidg
 }
 
 /**
-	
+	@return the value stored in \a item
 */
 template<typename T>
 T GenericPanel::valueForItem(QTreeWidgetItem *item) const {

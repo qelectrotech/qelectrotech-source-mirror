@@ -153,23 +153,28 @@ class GenericPanel : public QTreeWidget {
 	virtual QTreeWidgetItem *updateElementItem(QTreeWidgetItem *, ElementDefinition *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillElementItem  (QTreeWidgetItem *, ElementDefinition *, PanelOptions = AddAllChild, bool = false);
 	
+	// generic methods
+	protected:
+	virtual QTreeWidgetItem *updateItem(QTreeWidgetItem *, PanelOptions = AddAllChild, bool = false);
+	virtual QTreeWidgetItem *fillItem  (QTreeWidgetItem *, PanelOptions = AddAllChild, bool = false);
+	
 	// slots used to receive change notifications from added objects
 	protected slots:
-	void projectInformationsChanged(QETProject *);
-	void diagramAdded(QETProject *, Diagram *);
-	void diagramRemoved(QETProject *, Diagram *);
-	void projectDiagramsOrderChanged(QETProject *, int, int);
-	void diagramTitleChanged(Diagram *, const QString &);
-	void templatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &);
-	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
-	void elementsCollectionChanged(ElementsCollection *);
+	virtual void projectInformationsChanged(QETProject *);
+	virtual void diagramAdded(QETProject *, Diagram *);
+	virtual void diagramRemoved(QETProject *, Diagram *);
+	virtual void projectDiagramsOrderChanged(QETProject *, int, int);
+	virtual void diagramTitleChanged(Diagram *, const QString &);
+	virtual void templatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &);
+	virtual void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
+	virtual void elementsCollectionChanged(ElementsCollection *);
 	
 	// various other methods
 	protected:
 	virtual QString defaultText(QET::ItemType);
 	virtual QIcon   defaultIcon(QET::ItemType);
 	virtual QTreeWidgetItem *makeItem(QET::ItemType, QTreeWidgetItem * = 0, const QString & = QString(), const QIcon & = QIcon());
-	virtual void deleteItem(QTreeWidgetItem *);
+	virtual void deleteItem(QTreeWidgetItem *, bool = false);
 	virtual void markItemAsContainer(QTreeWidgetItem *);
 	virtual void markItemAsUnused(QTreeWidgetItem *);
 	virtual void reparent(QTreeWidgetItem *, QTreeWidgetItem *);
@@ -183,6 +188,7 @@ class GenericPanel : public QTreeWidget {
 	
 	signals:
 	bool firstActivated();
+	void panelContentChanged();
 	
 	private slots:
 	void emitFirstActivated();
