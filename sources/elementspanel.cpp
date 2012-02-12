@@ -387,6 +387,8 @@ void ElementsPanel::panelContentChange() {
 	@return Le QTreeWidgetItem insere le plus haut
 */
 QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
+	bool first_add = (first_reload_ || !projects_to_display_.contains(project));
+	
 	// create the QTreeWidgetItem representing the project
 	QTreeWidgetItem *qtwi_project = GenericPanel::addProject(project, 0, GenericPanel::All);
 	// the project will be inserted right before the common tb templates collection
@@ -394,17 +396,17 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 		indexOfTopLevelItem(common_tbt_collection_item_),
 		qtwi_project
 	);
-	qtwi_project -> setExpanded(true);
+	if (first_add) qtwi_project -> setExpanded(true);
 	
 	if (TitleBlockTemplatesCollection *tbt_collection = project -> embeddedTitleBlockTemplatesCollection()) {
 		if (QTreeWidgetItem *tbt_collection_qtwi = itemForTemplatesCollection(tbt_collection)) {
-			tbt_collection_qtwi -> setExpanded(true);
+			if (first_add) tbt_collection_qtwi -> setExpanded(true);
 		}
 	}
 	
 	if (ElementsCollection *elmt_collection = project -> embeddedCollection()) {
 		if (QTreeWidgetItem *elmt_collection_qtwi = itemForElementsCollection(elmt_collection)) {
-			elmt_collection_qtwi -> setExpanded(true);
+			if (first_add) elmt_collection_qtwi -> setExpanded(true);
 		}
 	}
 	
@@ -688,8 +690,8 @@ void ElementsPanel::filter(const QString &m, QET::Filtering filtering) {
 	@param project Projet ouvert a rajouter au panel
 */
 void ElementsPanel::projectWasOpened(QETProject *project) {
-	projects_to_display_ << project;
 	addProject(project);
+	projects_to_display_ << project;
 	emit(panelContentChanged());
 }
 
