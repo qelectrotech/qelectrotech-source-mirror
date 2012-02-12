@@ -395,7 +395,18 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 		qtwi_project
 	);
 	qtwi_project -> setExpanded(true);
-	itemForTemplatesCollection(project -> embeddedTitleBlockTemplatesCollection()) -> setExpanded(true);
+	
+	if (TitleBlockTemplatesCollection *tbt_collection = project -> embeddedTitleBlockTemplatesCollection()) {
+		if (QTreeWidgetItem *tbt_collection_qtwi = itemForTemplatesCollection(tbt_collection)) {
+			tbt_collection_qtwi -> setExpanded(true);
+		}
+	}
+	
+	if (ElementsCollection *elmt_collection = project -> embeddedCollection()) {
+		if (QTreeWidgetItem *elmt_collection_qtwi = itemForElementsCollection(elmt_collection)) {
+			elmt_collection_qtwi -> setExpanded(true);
+		}
+	}
 	
 	return(qtwi_project);
 }
@@ -679,6 +690,7 @@ void ElementsPanel::filter(const QString &m, QET::Filtering filtering) {
 void ElementsPanel::projectWasOpened(QETProject *project) {
 	projects_to_display_ << project;
 	addProject(project);
+	emit(panelContentChanged());
 }
 
 /**
@@ -690,6 +702,7 @@ void ElementsPanel::projectWasClosed(QETProject *project) {
 		GenericPanel::deleteItem(item_to_remove);
 		projects_to_display_.remove(project);
 	}
+	emit(panelContentChanged());
 }
 
 /**
