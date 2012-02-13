@@ -18,6 +18,7 @@
 #ifndef TITLEBLOCK_SLASH_QET_TEMPLATE_EDITOR_H
 #define TITLEBLOCK_SLASH_QET_TEMPLATE_EDITOR_H
 #include <QtGui>
+#include "qetmainwindow.h"
 #include "qet.h"
 #include "templateview.h"
 #include "templatelocation.h"
@@ -32,7 +33,7 @@ class QETProject;
 	editor. This editor aims at allowing users to easily create their own title
 	block templates.
 */
-class QETTitleBlockTemplateEditor : public QMainWindow {
+class QETTitleBlockTemplateEditor : public QETMainWindow {
 	Q_OBJECT
 	
 	// constructor, destructor
@@ -45,13 +46,11 @@ class QETTitleBlockTemplateEditor : public QMainWindow {
 	// attributes
 	private:
 	/// menus TODO
-	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_,*/ *config_menu_, *help_menu_;
+	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_*/;
 	/// actions
 	QAction *new_, *open_, *open_from_file_, *save_, *save_as_, *save_as_file_, *quit_;
 	QAction *undo_, *redo_, *merge_cells_, *split_cell_;
 	QAction *zoom_in_, *zoom_out_, *zoom_fit_, *zoom_reset_;
-	QAction *configure_;
-	QAction *about_qt_, *about_qet_;
 	/// Location of the currently edited template
 	TitleBlockTemplateLocation location_;
 	/// Filepath of the currently edited template, if opened from a file
