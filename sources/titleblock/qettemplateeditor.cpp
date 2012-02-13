@@ -318,7 +318,9 @@ void QETTitleBlockTemplateEditor::initActions() {
 	
 	new_              -> setShortcut(QKeySequence::New);
 	open_             -> setShortcut(QKeySequence::Open);
+	open_from_file_   -> setShortcut(tr("Ctrl+Shift+O", "shortcut to open a template from a file"));
 	save_             -> setShortcut(QKeySequence::Save);
+	save_as_file_     -> setShortcut(tr("Ctrl+Shift+S", "shortcut to save a template to a file"));
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
 	undo_             -> setShortcut(QKeySequence::Undo);
 	redo_             -> setShortcut(QKeySequence::Redo);
