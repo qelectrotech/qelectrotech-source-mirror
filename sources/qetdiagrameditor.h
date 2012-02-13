@@ -18,6 +18,7 @@
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
+#include "qetmainwindow.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
 #include "titleblockproperties.h"
@@ -36,7 +37,7 @@ class RecentFiles;
 	"DiagramView" en guise de widget central et un "Panel d'Elements" en
 	guise de widget "Dock".
 */
-class QETDiagramEditor : public QMainWindow {
+class QETDiagramEditor : public QETMainWindow {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
@@ -80,7 +81,6 @@ class QETDiagramEditor : public QMainWindow {
 	void toolbar();
 	
 	public slots:
-	void toggleFullScreen();
 	void printDialog();
 	void exportDialog();
 	bool saveAsDialog();
@@ -108,7 +108,6 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_setSelectionMode();
 	void slot_setVisualisationMode();
 	void slot_updateActions();
-	void slot_updateFullScreenAction();
 	void slot_updateModeActions();
 	void slot_updateComplexActions();
 	void slot_updatePasteAction();
@@ -196,10 +195,6 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *zoom_out;           ///< Zoome arriere
 	QAction *zoom_fit;           ///< Ajuste le zoom de facon a voir l'integralite des elements
 	QAction *zoom_reset;         ///< Remet le zoom 1:1
-	QAction *about_qet;          ///< Lance le dialogue "A propos de QElectroTech"
-	QAction *about_qt;           ///< Lance le dialogue "A propos de Qt"
-	QAction *configure;          ///< Lance le dialogue de configuration de QElectroTech
-	QAction *fullscreen;         ///< Passe en mode plein ecran ou en sort
 	QAction *tile_window;        ///< Affiche les fenetre MDI en mosaique
 	QAction *cascade_window;     ///< Affiche les fenetres MDI en cascade
 	QAction *prev_window;        ///< Affiche la fenetre MDI precedente

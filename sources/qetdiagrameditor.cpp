@@ -35,7 +35,7 @@
 	@param parent le widget parent de la fenetre principale
  */
 QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
-	QMainWindow(parent),
+	QETMainWindow(parent),
 	open_dialog_dir(QDesktopServices::storageLocation(QDesktopServices::DesktopLocation)),
 	can_update_actions(true)
 {
@@ -165,13 +165,6 @@ void QETDiagramEditor::closeEvent(QCloseEvent *qce) {
 }
 
 /**
-	Fait passer la fenetre du mode plein ecran au mode normal et vice-versa
-*/
-void QETDiagramEditor::toggleFullScreen() {
-	setWindowState(windowState() ^ Qt::WindowFullScreen);
-}
-
-/**
 	Mise en place des actions
 */
 void QETDiagramEditor::actions() {
@@ -225,17 +218,10 @@ void QETDiagramEditor::actions() {
 	mode_selection    = new QAction(QET::Icons::PartSelect,            tr("Mode Selection"),                       this);
 	mode_visualise    = new QAction(QET::Icons::ViewMove,              tr("Mode Visualisation"),                   this);
 	
-	fullscreen        = new QAction(this);
-	slot_updateFullScreenAction();
-	configure         = new QAction(QET::Icons::Configure,             tr("&Configurer QElectroTech"),             this);
-	
 	tile_window        = new QAction(                                  tr("&Mosa\357que"),                         this);
 	cascade_window     = new QAction(                                  tr("&Cascade"),                             this);
 	next_window        = new QAction(                                  tr("Projet suivant"),                       this);
 	prev_window        = new QAction(                                  tr("Projet pr\351c\351dent"),               this);
-	
-	about_qet         = new QAction(QET::Icons::QETLogo,               tr("\300 &propos de QElectroTech"),         this);
-	about_qt          = new QAction(QET::Icons::QtLogo,                tr("\300 propos de &Qt"),                   this);
 	
 	// raccourcis clavier
 	new_file          -> setShortcut(QKeySequence::New);
@@ -273,8 +259,6 @@ void QETDiagramEditor::actions() {
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
 	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
 	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
-	
-	fullscreen        -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
 	
 	next_window       -> setShortcut(QKeySequence::NextChild);
 	prev_window       -> setShortcut(QKeySequence::PreviousChild);
@@ -321,15 +305,10 @@ void QETDiagramEditor::actions() {
 	mode_selection    -> setStatusTip(tr("Permet de s\351lectionner les \351l\351ments", "status bar tip"));
 	mode_visualise    -> setStatusTip(tr("Permet de visualiser le sch\351ma sans pouvoir le modifier", "status bar tip"));
 	
-	configure         -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech", "status bar tip"));
-	
 	tile_window       -> setStatusTip(tr("Dispose les fen\352tres en mosa\357que", "status bar tip"));
 	cascade_window    -> setStatusTip(tr("Dispose les fen\352tres en cascade", "status bar tip"));
 	next_window       -> setStatusTip(tr("Active le projet suivant", "status bar tip"));
 	prev_window       -> setStatusTip(tr("Active le projet pr\351c\351dent", "status bar tip"));
-	
-	about_qet         -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
-	about_qt          -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt", "status bar tip"));
 	
 	// traitements speciaux
 	add_text           -> setCheckable(true);
@@ -349,8 +328,6 @@ void QETDiagramEditor::actions() {
 	grp_view_mode -> addAction(tabbed_view_mode);
 	grp_view_mode -> setExclusive(true);
 	
-	QETApp *qet_app = QETApp::instance();
-	
 	// connexion a des slots
 	connect(quit_editor,        SIGNAL(triggered()), this,       SLOT(close())                     );
 	connect(select_all,         SIGNAL(triggered()), this,       SLOT(slot_selectAll())            );
@@ -359,14 +336,10 @@ void QETDiagramEditor::actions() {
 	connect(delete_selection,   SIGNAL(triggered()), this,       SLOT(slot_delete())               );
 	connect(rotate_selection,   SIGNAL(triggered()), this,       SLOT(slot_rotate())               );
 	connect(rotate_texts,       SIGNAL(triggered()), this,       SLOT(slot_rotateTexts())          );
-	connect(fullscreen,         SIGNAL(triggered()), this,       SLOT(toggleFullScreen())          );
-	connect(configure,          SIGNAL(triggered()), qet_app,    SLOT(configureQET())              );
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
 	connect(tabbed_view_mode,   SIGNAL(triggered()), this,       SLOT(setTabbedMode())             );
 	connect(mode_selection,     SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())     );
 	connect(mode_visualise,     SIGNAL(triggered()), this,       SLOT(slot_setVisualisationMode()) );
-	connect(about_qet,          SIGNAL(triggered()), qet_app,    SLOT(aboutQET())                  );
-	connect(about_qt,           SIGNAL(triggered()), qet_app,    SLOT(aboutQt())                   );
 	connect(prj_edit_prop,      SIGNAL(triggered()), this,       SLOT(editCurrentProjectProperties()));
 	connect(prj_add_diagram,    SIGNAL(triggered()), this,       SLOT(addDiagramToProject())       );
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
@@ -404,7 +377,6 @@ void QETDiagramEditor::actions() {
 	Gere les evenements du l'editeur de schema
 	Reimplemente ici pour :
 	  * eviter un conflit sur le raccourci clavier "Ctrl+W" (QKeySequence::Close)
-	  * mettre a jour l'action permettant d'entrer en mode plein ecran ou d'en sortir
 	@param e Evenement
 */
 bool QETDiagramEditor::event(QEvent *e) {
@@ -415,34 +387,27 @@ bool QETDiagramEditor::event(QEvent *e) {
 			e -> accept();
 			return(true);
 		}
-	} else if (e -> type() == QEvent::WindowStateChange) {
-		slot_updateFullScreenAction();
 	}
-	return(QMainWindow::event(e));
+	return(QETMainWindow::event(e));
 }
 
 /**
 	Mise en place des menus
 */
 void QETDiagramEditor::menus() {
-	QMenu *menu_fichier   = menuBar() -> addMenu(tr("&Fichier"));
-	QMenu *menu_edition   = menuBar() -> addMenu(tr("&\311dition"));
-	QMenu *menu_project   = menuBar() -> addMenu(tr("&Projet"));
-	QMenu *menu_affichage = menuBar() -> addMenu(tr("Afficha&ge"));
-	//QMenu *menu_outils    = menuBar() -> addMenu(tr("O&utils"));
-	QMenu *menu_config    = menuBar() -> addMenu(tr("&Configuration"));
-	windows_menu          = menuBar() -> addMenu(tr("Fe&n\352tres"));
-	QMenu *menu_aide      = menuBar() -> addMenu(tr("&Aide"));
 	
-	// tear off feature rulezz... pas ^^ mais bon...
-	menu_fichier   -> setTearOffEnabled(true);
-	menu_edition   -> setTearOffEnabled(true);
-	menu_project   -> setTearOffEnabled(true);
-	menu_affichage -> setTearOffEnabled(true);
-	//menu_outils    -> setTearOffEnabled(true);
-	menu_config    -> setTearOffEnabled(true);
-	windows_menu   -> setTearOffEnabled(true);
-	menu_aide      -> setTearOffEnabled(true);
+	QMenu *menu_fichier   = new QMenu(tr("&Fichier"));
+	QMenu *menu_edition   = new QMenu(tr("&\311dition"));
+	QMenu *menu_project   = new QMenu(tr("&Projet"));
+	QMenu *menu_affichage = new QMenu(tr("Afficha&ge"));
+	//QMenu *menu_outils    = new QMenu(tr("O&utils"));
+	windows_menu          = new QMenu(tr("Fe&n\352tres"));
+	
+	insertMenu(settings_menu_, menu_fichier);
+	insertMenu(settings_menu_, menu_edition);
+	insertMenu(settings_menu_, menu_project);
+	insertMenu(settings_menu_, menu_affichage);
+	insertMenu(help_menu_, windows_menu);
 	
 	// menu Fichier
 	menu_fichier -> addAction(new_file);
@@ -492,11 +457,6 @@ void QETDiagramEditor::menus() {
 	menu_project -> addAction(prj_del_diagram);
 	menu_project -> addAction(prj_clean);
 	
-	// menu Configurer > Afficher
-	QMenu *display_toolbars = createPopupMenu();
-	display_toolbars -> setTearOffEnabled(true);
-	display_toolbars -> setTitle(tr("Afficher"));
-	display_toolbars -> setIcon(QET::Icons::ConfigureToolbars);
 	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
 	diagram_bar -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Sch\351ma"));
@@ -518,17 +478,8 @@ void QETDiagramEditor::menus() {
 	menu_affichage -> addAction(zoom_fit);
 	menu_affichage -> addAction(zoom_reset);
 	
-	// menu Configuration
-	menu_config -> addMenu(display_toolbars);
-	menu_config -> addAction(fullscreen);
-	menu_config -> addAction(configure);
-	
 	// menu Fenetres
 	slot_updateWindowsMenu();
-	
-	// menu Aide
-	menu_aide -> addAction(about_qet);
-	menu_aide -> addAction(about_qt);
 }
 
 /**
@@ -1122,7 +1073,6 @@ void QETDiagramEditor::slot_updateActions() {
 		redo -> setEnabled(false);
 	}
 	
-	slot_updateFullScreenAction();
 	slot_updateModeActions();
 	slot_updatePasteAction();
 	slot_updateComplexActions();
@@ -1154,20 +1104,6 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	rotate_texts -> setEnabled(editable_diagram && selected_texts);
 }
 
-/**
-	Gere l'action permettant de passer en plein ecran ou d'en sortir
-*/
-void QETDiagramEditor::slot_updateFullScreenAction() {
-	if (windowState() & Qt::WindowFullScreen) {
-		fullscreen -> setText(tr("Sortir du &mode plein \351cran"));
-		fullscreen -> setIcon(QET::Icons::FullScreenExit);
-		fullscreen -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351", "status bar tip"));
-	} else {
-		fullscreen -> setText(tr("Passer en &mode plein \351cran"));
-		fullscreen -> setIcon(QET::Icons::FullScreenEnter);
-		fullscreen -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran", "status bar tip"));
-	}
-}
 
 /**
 	Gere les actions relatives au mode du schema
