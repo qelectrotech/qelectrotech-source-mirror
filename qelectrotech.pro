@@ -155,3 +155,8 @@ macx {
 	DEFINES += QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
 	DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
 }
+
+# Compilers-specific options
+*-g++* {
+	QMAKE_CXXFLAGS += -fno-ipa-sra
+}
