@@ -319,8 +319,8 @@ void QET::Icons::initIcons() {
 	XmlTextFile         .addFile(":/ico/16x16/text-xml.png");
 	XmlTextFile         .addFile(":/ico/22x22/text-xml.png");
 	XmlTextFile         .addFile(":/ico/32x32/text-xml.png");
-	ZoomFitBest         .addFile(":/ico/16x16/zoom-fit-best.png");
-	ZoomFitBest         .addFile(":/ico/22x22/zoom-fit-best.png");
+	ZoomFitBest         .addFile(":/ico/16x16/zoom-draw.png");
+	ZoomFitBest         .addFile(":/ico/22x22/zoom-draw.png");
 	ZoomIn              .addFile(":/ico/16x16/zoom-in.png");
 	ZoomIn              .addFile(":/ico/22x22/zoom-in.png");
 	ZoomOriginal        .addFile(":/ico/16x16/zoom-original.png");
