@@ -70,6 +70,14 @@ namespace QET {
 		extern QIcon EditPaste;
 		extern QIcon EditRedo;
 		extern QIcon EditSelectAll;
+		extern QIcon EditTableCellMerge;
+		extern QIcon EditTableCellSplit;
+		extern QIcon EditTableDeleteColumn;
+		extern QIcon EditTableDeleteRow;
+		extern QIcon EditTableInsertColumnLeft;
+		extern QIcon EditTableInsertColumnRight;
+		extern QIcon EditTableInsertRowAbove;
+		extern QIcon EditTableInsertRowUnder;
 		extern QIcon EditUndo;
 		extern QIcon Element;
 		extern QIcon ElementDelete;

@@ -304,8 +304,8 @@ void QETTitleBlockTemplateEditor::initActions() {
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
 	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351",               "menu entry"), this);
 	zoom_reset_     = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom",                  "menu entry"), this);
-	merge_cells_    = new QAction(                                  tr("&Fusionner les cellules",      "menu entry"), this);
-	split_cell_     = new QAction(                                  tr("&S\351parer les cellules",     "menu entry"), this);
+	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Fusionner les cellules",      "menu entry"), this);
+	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&S\351parer les cellules",     "menu entry"), this);
 	
 	undo_ -> setIcon(QET::Icons::EditUndo);
 	redo_ -> setIcon(QET::Icons::EditRedo);

@@ -24,6 +24,7 @@
 #include "templatecellsset.h"
 #include "dimensionwidget.h"
 #include "qetapp.h"
+#include "qeticons.h"
 #define ROW_OFFSET 2
 #define COL_OFFSET 1
 #define DEFAULT_PREVIEW_WIDTH 600
@@ -380,15 +381,15 @@ qreal TitleBlockTemplateView::zoomFactor() const {
 	Initialize this view (actions, signals/slots connections, etc.)
 */
 void TitleBlockTemplateView::init() {
-	add_column_before_    = new QAction(tr("Ajouter une colonne (avant)",              "context menu"), this);
-	add_row_before_       = new QAction(tr("Ajouter une ligne (avant)",                "context menu"), this);
-	add_column_after_     = new QAction(tr("Ajouter une colonne (apr\350s)",           "context menu"), this);
-	add_row_after_        = new QAction(tr("Ajouter une ligne (apr\350s)",             "context menu"), this);
-	edit_column_dim_      = new QAction(tr("Modifier les dimensions de cette colonne", "context menu"), this);
-	edit_row_dim_         = new QAction(tr("Modifier les dimensions de cette ligne",   "context menu"), this);
-	delete_column_        = new QAction(tr("Supprimer cette colonne",                  "context menu"), this);
-	delete_row_           = new QAction(tr("Supprimer cette ligne",                    "context menu"), this);
-	change_preview_width_ = new QAction(tr("Modifier la largeur de cet aper\347u",     "context menu"), this);
+	add_column_before_    = new QAction(QET::Icons::EditTableInsertColumnLeft,  tr("Ajouter une colonne (avant)",              "context menu"), this);
+	add_row_before_       = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Ajouter une ligne (avant)",                "context menu"), this);
+	add_column_after_     = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne (apr\350s)",           "context menu"), this);
+	add_row_after_        = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne (apr\350s)",             "context menu"), this);
+	edit_column_dim_      = new QAction(                                        tr("Modifier les dimensions de cette colonne", "context menu"), this);
+	edit_row_dim_         = new QAction(                                        tr("Modifier les dimensions de cette ligne",   "context menu"), this);
+	delete_column_        = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Supprimer cette colonne",                  "context menu"), this);
+	delete_row_           = new QAction(QET::Icons::EditTableDeleteRow,         tr("Supprimer cette ligne",                    "context menu"), this);
+	change_preview_width_ = new QAction(                                        tr("Modifier la largeur de cet aper\347u",     "context menu"), this);
 	
 	connect(add_column_before_,    SIGNAL(triggered()), this, SLOT(addColumnBefore()));
 	connect(add_row_before_,       SIGNAL(triggered()), this, SLOT(addRowBefore()));

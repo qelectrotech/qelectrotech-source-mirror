@@ -36,6 +36,14 @@
 	<file>ico/16x16/edit-paste.png</file>
 	<file>ico/16x16/edit-redo.png</file>
 	<file>ico/16x16/edit-select-all.png</file>
+	<file>ico/16x16/edit-table-insert-row-above.png</file>
+	<file>ico/16x16/edit-table-insert-column-left.png</file>
+	<file>ico/16x16/edit-table-insert-row-under.png</file>
+	<file>ico/16x16/edit-table-delete-row.png</file>
+	<file>ico/16x16/edit-table-insert-column-right.png</file>
+	<file>ico/16x16/edit-table-delete-column.png</file>
+	<file>ico/16x16/edit-table-cell-split.png</file>
+	<file>ico/16x16/edit-table-cell-merge.png</file>
 	<file>ico/16x16/edit-undo.png</file>
 	<file>ico/16x16/endline-circle.png</file>
 	<file>ico/16x16/endline-diamond.png</file>
@@ -112,6 +120,14 @@
 	<file>ico/22x22/edit-paste.png</file>
 	<file>ico/22x22/edit-redo.png</file>
 	<file>ico/22x22/edit-select-all.png</file>
+	<file>ico/22x22/edit-table-insert-row-above.png</file>
+	<file>ico/22x22/edit-table-insert-column-left.png</file>
+	<file>ico/22x22/edit-table-insert-row-under.png</file>
+	<file>ico/22x22/edit-table-delete-row.png</file>
+	<file>ico/22x22/edit-table-insert-column-right.png</file>
+	<file>ico/22x22/edit-table-delete-column.png</file>
+	<file>ico/22x22/edit-table-cell-split.png</file>
+	<file>ico/22x22/edit-table-cell-merge.png</file>
 	<file>ico/22x22/edit-undo.png</file>
 	<file>ico/22x22/element-delete.png</file>
 	<file>ico/22x22/element-edit.png</file>
