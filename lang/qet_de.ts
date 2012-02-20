@@ -675,21 +675,6 @@
     </message>
 </context>
 <context>
-    <name>ElementsCategoriesList</name>
-    <message>
-        <source>Collection projet</source>
-        <translation>Sammlung Projekte</translation>
-    </message>
-    <message>
-        <source>Collection QET</source>
-        <translation>Sammlung QET</translation>
-    </message>
-    <message>
-        <source>Collection utilisateur</source>
-        <translation>Sammlung Benutzer</translation>
-    </message>
-</context>
-<context>
     <name>ElementsCategoriesWidget</name>
     <message>
         <source>Recharger les catégories</source>
@@ -868,51 +853,30 @@ Die Änderungen sind endgültig.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <source>Collection projet</source>
-        <translation>Sammlung Projekte</translation>
-    </message>
-    <message>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
         <translation>Dies ist ein Element, das Sie in Ihre Zeichnung einfügen können durch Klicken und Ziehen</translation>
     </message>
     <message>
-        <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
-        <translation>Klicken und ziehen Sie das Element um es ins Schema einzufügen</translation>
-    </message>
-    <message>
-        <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1 [nicht im Projekt verwendet]</translation>
-    </message>
-    <message>
-        <source>Collection QET</source>
-        <translation>Sammlung QET</translation>
-    </message>
-    <message>
-        <source>Collection utilisateur</source>
-        <translation>Sammlung Benutzer</translation>
-    </message>
-    <message>
-        <source>Pas de fichier</source>
-        <comment>tooltip for a file-less project in the element panel</comment>
-        <translation>Keine Datei</translation>
-    </message>
-    <message>
-        <source>Modèles de cartouche</source>
+        <source>Cartouches embarqués</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Schéma sans titre</source>
-        <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Schema unbenannt</translation>
-    </message>
-    <message>
-        <source>%1 - %2</source>
-        <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
+        <source>Collection embarquée</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Modèle &quot;%1&quot;</source>
-        <comment>used to display a title block template</comment>
+        <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
+        <comment>Tip displayed when selecting a title block template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est un modèle de cartouche, qui peut Ðtre appliqué a un schéma.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
+        <comment>Tip displayed in the status bar when selecting an element</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1257,6 +1221,37 @@ Die Änderungen sind endgültig.</translation>
     </message>
 </context>
 <context>
+    <name>GenericPanel</name>
+    <message>
+        <source>Pas de fichier</source>
+        <comment>tooltip for a file-less project in the element panel</comment>
+        <translation type="unfinished">Keine Datei</translation>
+    </message>
+    <message>
+        <source>Schéma sans titre</source>
+        <comment>Fallback label when a diagram has no title</comment>
+        <translation type="unfinished">Schema unbenannt</translation>
+    </message>
+    <message>
+        <source>%1 - %2</source>
+        <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modèles de cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Modèle &quot;%1&quot;</source>
+        <comment>used to display a title block template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 [non utilisé dans le projet]</source>
+        <translation type="unfinished">%1 [nicht im Projekt verwendet]</translation>
+    </message>
+</context>
+<context>
     <name>GhostElement</name>
     <message>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
@@ -1336,6 +1331,53 @@ Die Änderungen sind endgültig.</translation>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
         <translation>Zwei Elemente zusammenfügen</translation>
+    </message>
+</context>
+<context>
+    <name>IntegrationMoveTitleBlockTemplatesHandler</name>
+    <message>
+        <source>Impossible d&apos;accéder à la catégorie parente</source>
+        <comment>error message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;obtenir la description XML de cet élément</source>
+        <comment>error message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <comment>message box title</comment>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Intégration d&apos;un modèle de cartouche</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
+        <comment>dialog content - %1 is a title block template name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Utiliser le modèle déjà intégré</source>
+        <comment>dialog content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Intégrer le modèle déposé</source>
+        <comment>dialog content</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Écraser l&apos;élément déjà intégré</source>
+        <comment>dialog content</comment>
+        <translation type="unfinished">Überschreiben eines bereits hinterlegten Elements</translation>
+    </message>
+    <message>
+        <source>Faire cohabiter les deux modèles</source>
+        <comment>dialog content</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1800,6 +1842,10 @@ Die Änderungen sind endgültig.</translation>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projekt</translation>
     </message>
+    <message>
+        <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETApp</name>
@@ -1997,6 +2043,19 @@ Options disponibles :
 </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>LTR</source>
+        <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection QET</source>
+        <translation type="unfinished">Sammlung QET</translation>
+    </message>
+    <message>
+        <source>Collection utilisateur</source>
+        <translation type="unfinished">Sammlung Benutzer</translation>
+    </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
@@ -2185,10 +2244,6 @@ Options disponibles :
         <translation>Mode Visualisation</translation>
     </message>
     <message>
-        <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Einstellung QElectroTech</translation>
-    </message>
-    <message>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Mosaik</translation>
     </message>
@@ -2203,14 +2258,6 @@ Options disponibles :
     <message>
         <source>Projet précédent</source>
         <translation>Vorheriges Projekt</translation>
-    </message>
-    <message>
-        <source>À &amp;propos de QElectroTech</source>
-        <translation> &amp;Über QElectroTech</translation>
-    </message>
-    <message>
-        <source>À propos de &amp;Qt</source>
-        <translation>Über &amp;Qt</translation>
     </message>
     <message>
         <source>Ctrl+Shift+I</source>
@@ -2263,10 +2310,6 @@ Options disponibles :
     <message>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <source>Crée un nouveau schéma</source>
@@ -2440,11 +2483,6 @@ Options disponibles :
         <translation>Zulassen von Visualisation der Elemente ohne sie verändern zu können</translation>
     </message>
     <message>
-        <source>Permet de régler différents paramètres de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
-    </message>
-    <message>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Anordnen der Fenster in Mosaik</translation>
@@ -2465,16 +2503,6 @@ Options disponibles :
         <translation>Aktiviert das vorherige Projekt</translation>
     </message>
     <message>
-        <source>Affiche des informations sur QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur la bibliothèque Qt</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über die Qt-Bibliothek</translation>
-    </message>
-    <message>
         <source>&amp;Fichier</source>
         <translation>&amp;Datei</translation>
     </message>
@@ -2491,20 +2519,8 @@ Options disponibles :
         <translation>Anzei&amp;ge</translation>
     </message>
     <message>
-        <source>&amp;Configuration</source>
-        <translation>&amp;Einstellung</translation>
-    </message>
-    <message>
         <source>Fe&amp;nêtres</source>
         <translation>Fe&amp;nster</translation>
-    </message>
-    <message>
-        <source>&amp;Aide</source>
-        <translation>&amp;Hilfe</translation>
-    </message>
-    <message>
-        <source>Afficher</source>
-        <translation>Anzeigen</translation>
     </message>
     <message>
         <source>Affiche ou non la barre d&apos;outils principale</source>
@@ -2575,24 +2591,6 @@ Options disponibles :
         <source>Il semblerait que le fichier %1 ne soit pas un fichier projet QElectroTech. Il ne peut donc être ouvert.</source>
         <comment>message box content</comment>
         <translation>Es scheint, dass die Datei %1 keine Projekt-Datei QElectroTech ist. Sie kann nicht geöffnet werden.</translation>
-    </message>
-    <message>
-        <source>Sortir du &amp;mode plein écran</source>
-        <translation>Velassen &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode fenêtré</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Fenstermodus</translation>
-    </message>
-    <message>
-        <source>Passer en &amp;mode plein écran</source>
-        <translation>Umschalten auf &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode plein écran</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Vollbild-Modus</translation>
     </message>
     <message>
         <source>Active le projet « %1 »</source>
@@ -2797,39 +2795,12 @@ Options disponibles :
         <translation>Textfeld zufügen</translation>
     </message>
     <message>
-        <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Einstellung QElectroTech</translation>
-    </message>
-    <message>
-        <source>À &amp;propos de QElectroTech</source>
-        <translation> &amp;Über QElectroTech</translation>
-    </message>
-    <message>
-        <source>À propos de &amp;Qt</source>
-        <translation>Über &amp;Qt</translation>
-    </message>
-    <message>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
         <translation>Halten Sie die Umschalttaste gedrückt, um mehrere aufeinander folgende Einfügungen zu machen</translation>
     </message>
     <message>
         <source>Utilisez le bouton droit de la souris pour poser le dernier point du polygone</source>
         <translation>Benutzen Sie die rechte Maustaste, um den letzten Punkt des Polygons zu setzen</translation>
-    </message>
-    <message>
-        <source>Permet de régler différents paramètres de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur la bibliothèque Qt</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über die Qt-Bibliothek</translation>
     </message>
     <message>
         <source>Annuler</source>
@@ -2874,10 +2845,6 @@ Options disponibles :
     <message>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <source>Ctrl+E</source>
@@ -2953,38 +2920,8 @@ Options disponibles :
         <translation>W&amp;erkzeuge</translation>
     </message>
     <message>
-        <source>&amp;Configuration</source>
-        <translation>&amp;Einstellung</translation>
-    </message>
-    <message>
-        <source>&amp;Aide</source>
-        <translation>&amp;Hilfe</translation>
-    </message>
-    <message>
         <source>Coller depuis...</source>
         <translation>Einfügen aus ...</translation>
-    </message>
-    <message>
-        <source>Afficher</source>
-        <translation>Anzeigen</translation>
-    </message>
-    <message>
-        <source>Sortir du &amp;mode plein écran</source>
-        <translation>Velassen &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode fenêtré</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Fenstermodus</translation>
-    </message>
-    <message>
-        <source>Passer en &amp;mode plein écran</source>
-        <translation>Umschalten auf &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode plein écran</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Vollbild-Modus</translation>
     </message>
     <message>
         <source>[Modifié]</source>
@@ -3178,6 +3115,73 @@ Options disponibles :
     </message>
 </context>
 <context>
+    <name>QETMainWindow</name>
+    <message>
+        <source>&amp;Configurer QElectroTech</source>
+        <translation type="unfinished">&amp;Einstellung QElectroTech</translation>
+    </message>
+    <message>
+        <source>Permet de régler différents paramètres de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
+    </message>
+    <message>
+        <source>À &amp;propos de QElectroTech</source>
+        <translation type="unfinished"> &amp;Über QElectroTech</translation>
+    </message>
+    <message>
+        <source>Affiche des informations sur QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zeigt Informationen über QElectroTech</translation>
+    </message>
+    <message>
+        <source>À propos de &amp;Qt</source>
+        <translation type="unfinished">Über &amp;Qt</translation>
+    </message>
+    <message>
+        <source>Affiche des informations sur la bibliothèque Qt</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zeigt Informationen über die Qt-Bibliothek</translation>
+    </message>
+    <message>
+        <source>&amp;Configuration</source>
+        <comment>window menu</comment>
+        <translation type="unfinished">&amp;Einstellung</translation>
+    </message>
+    <message>
+        <source>&amp;Aide</source>
+        <comment>window menu</comment>
+        <translation type="unfinished">&amp;Hilfe</translation>
+    </message>
+    <message>
+        <source>Sortir du &amp;mode plein écran</source>
+        <translation type="unfinished">Velassen &amp;Vollbild-Modus</translation>
+    </message>
+    <message>
+        <source>Affiche QElectroTech en mode fenêtré</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zeigt QElectroTech im Fenstermodus</translation>
+    </message>
+    <message>
+        <source>Passer en &amp;mode plein écran</source>
+        <translation type="unfinished">Umschalten auf &amp;Vollbild-Modus</translation>
+    </message>
+    <message>
+        <source>Affiche QElectroTech en mode plein écran</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished">Zeigt QElectroTech im Vollbild-Modus</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F</source>
+        <translation type="unfinished">Ctrl+Shift+F</translation>
+    </message>
+    <message>
+        <source>Afficher</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Anzeigen</translation>
+    </message>
+</context>
+<context>
     <name>QETPrintPreviewDialog</name>
     <message>
         <source>QElectroTech : Aperçu avant impression</source>
@@ -3351,6 +3355,11 @@ Que désirez vous faire ?</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>An error occured when integrating the element.</source>
+        <comment>error message</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
@@ -3368,21 +3377,6 @@ Que désirez vous faire ?</source>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
         <translation type="unfinished">Ctrl+J</translation>
-    </message>
-    <message>
-        <source>Permet de régler différents paramètres de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation type="unfinished">Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation type="unfinished">Zeigt Informationen über QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur la bibliothèque Qt</source>
-        <comment>status bar tip</comment>
-        <translation type="unfinished">Zeigt Informationen über die Qt-Bibliothek</translation>
     </message>
     <message>
         <source>Aucune modification</source>
@@ -3420,21 +3414,6 @@ Que désirez vous faire ?</source>
         <translation type="unfinished">&amp;Beenden</translation>
     </message>
     <message>
-        <source>&amp;Configurer QElectroTech</source>
-        <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Einstellung QElectroTech</translation>
-    </message>
-    <message>
-        <source>À &amp;propos de QElectroTech</source>
-        <comment>menu entry</comment>
-        <translation type="unfinished"> &amp;Über QElectroTech</translation>
-    </message>
-    <message>
-        <source>À propos de &amp;Qt</source>
-        <comment>menu entry</comment>
-        <translation type="unfinished">Über &amp;Qt</translation>
-    </message>
-    <message>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
@@ -3453,16 +3432,6 @@ Que désirez vous faire ?</source>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Ausgabe</translation>
-    </message>
-    <message>
-        <source>&amp;Configuration</source>
-        <comment>menu title</comment>
-        <translation type="unfinished">&amp;Einstellung</translation>
-    </message>
-    <message>
-        <source>&amp;Aide</source>
-        <comment>menu title</comment>
-        <translation type="unfinished">&amp;Hilfe</translation>
     </message>
     <message>
         <source>Enregistrer sous</source>
@@ -3508,6 +3477,101 @@ Que désirez vous faire ?</source>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation type="unfinished">Anzei&amp;ge</translation>
+    </message>
+    <message>
+        <source>Enregistrer le modèle en cours ?</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez-vous enregistrer le modèle %1 ?</source>
+        <comment>dialog content - %1 is a title block template name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nouveau_modele</source>
+        <comment>template name suggestion when duplicating the default one</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dupliquer un modèle de cartouche</source>
+        <comment>input dialog title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
+        <comment>input dialog text</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Nouveau</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Neu</translation>
+    </message>
+    <message>
+        <source>&amp;Ouvrir</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">&amp;Öffnen</translation>
+    </message>
+    <message>
+        <source>Ouvrir depuis un fichier</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrer vers un fichier</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+O</source>
+        <comment>shortcut to open a template from a file</comment>
+        <translation type="unfinished">Ctrl+Shift+O</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+S</source>
+        <comment>shortcut to save a template to a file</comment>
+        <translation type="unfinished">Ctrl+Shift+S</translation>
+    </message>
+    <message>
+        <source>[Modifié]</source>
+        <comment>window title tag</comment>
+        <translation type="unfinished">[Geändert]</translation>
+    </message>
+    <message>
+        <source>[Lecture seule]</source>
+        <comment>window title tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%1 %2</source>
+        <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ouvrir un modèle</source>
+        <comment>File &gt; open dialog window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ouvrir un fichier</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished">Öffnen einer Datei</translation>
+    </message>
+    <message>
+        <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
+        <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrer sous</source>
+        <comment>dialog title</comment>
+        <translation type="unfinished">Speichern unter</translation>
+    </message>
+    <message>
+        <source>Modèles de cartouches QElectroTech (*%1)</source>
+        <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4332,6 +4396,20 @@ Que désirez vous faire ?</source>
         <source>Informations du cartouche</source>
         <translation type="unfinished">Informationen über die Kartusche</translation>
     </message>
+    <message>
+        <source>Éditer ce modèle</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dupliquer et editer ce modèle</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title block templates actions</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TitleBlockTemplate</name>
@@ -4445,6 +4523,10 @@ Que désirez vous faire ?</source>
         <comment>label of and undo command when editing a cell</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TitleBlockTemplateDeleter</name>
@@ -4468,6 +4550,14 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Collection parente</source>
+        <comment>used in save as form</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLocationSaver</name>
+    <message>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
@@ -4475,11 +4565,6 @@ Que désirez vous faire ?</source>
     <message>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Collection parente</source>
-        <comment>used in save as form</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4675,7 +4760,20 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Cartouches du projet &quot;%1&quot;</source>
-        <comment>collection title when the project has a suitble title -- %1 is the project title</comment>
+        <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>XmlElementsCollection</name>
+    <message>
+        <source>Collection du projet sans titre (id %1)</source>
+        <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection du projet &quot;%1&quot;</source>
+        <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
