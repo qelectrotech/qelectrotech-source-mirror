@@ -168,6 +168,19 @@ void QETApp::setLanguage(const QString &desired_language) {
 		}
 	}
 	installTranslator(&qetTranslator);
+	
+	QString ltr_special_string = tr(
+		"LTR",
+		"Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR"
+	);
+	if (ltr_special_string == "RTL") switchLayout(Qt::RightToLeft);
+}
+
+/**
+	Switches the application to the provided layout.
+*/
+void QETApp::switchLayout(Qt::LayoutDirection direction) {
+	setLayoutDirection(direction);
 }
 
 /**

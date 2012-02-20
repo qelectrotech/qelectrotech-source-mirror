@@ -62,6 +62,7 @@ class QETApp : public QETSingleApplication {
 	public:
 	static QETApp *instance();
 	void setLanguage(const QString &);
+	void switchLayout(Qt::LayoutDirection);
 	static void printHelp();
 	static void printVersion();
 	static void printLicense();
