@@ -442,7 +442,7 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 	item -> setWhatsThis(
 		0,
 		tr(
-			"Ceci est un mod\350le de cartouche, qui peut \320tre appliqu\351 a un sch\351ma.",
+			"Ceci est un mod\350le de cartouche, qui peut \352tre appliqu\351 a un sch\351ma.",
 			"\"What's this\" tip"
 		)
 	);

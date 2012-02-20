@@ -702,7 +702,7 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 		src_tbt.getTemplateXmlDescription()
 	);
 	if (!integration) {
-		handler -> errorWithATemplate(src_tbt, tr("An error occured when integrating the element.", "error message"));
+		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'int\351gration du mod\350le.", "error message"));
 		target_name = QString();
 	}
 	return(target_name);

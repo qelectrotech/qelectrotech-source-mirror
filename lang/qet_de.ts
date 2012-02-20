@@ -870,13 +870,13 @@ Die Änderungen sind endgültig.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ceci est un modèle de cartouche, qui peut Ðtre appliqué a un schéma.</source>
-        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
+        <comment>Tip displayed in the status bar when selecting an element</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
-        <comment>Tip displayed in the status bar when selecting an element</comment>
+        <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -1341,11 +1341,6 @@ Die Änderungen sind endgültig.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Impossible d&apos;obtenir la description XML de cet élément</source>
-        <comment>error message</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Fehler</translation>
@@ -1370,12 +1365,17 @@ Die Änderungen sind endgültig.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Écraser l&apos;élément déjà intégré</source>
+        <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Überschreiben eines bereits hinterlegten Elements</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Faire cohabiter les deux modèles</source>
+        <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
+        <comment>error message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -3356,7 +3356,7 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>An error occured when integrating the element.</source>
+        <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation type="unfinished"></translation>
     </message>

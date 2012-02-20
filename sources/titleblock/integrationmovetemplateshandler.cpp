@@ -43,7 +43,7 @@ IntegrationMoveTitleBlockTemplatesHandler::~IntegrationMoveTitleBlockTemplatesHa
 */
 QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(const TitleBlockTemplateLocation &src, const TitleBlockTemplateLocation &dst) {
 	QString no_parent_collection_error_message(tr("Impossible d'acc\351der \340 la cat\351gorie parente", "error message"));
-	QString cant_get_xml_description_error_message(tr("Impossible d'obtenir la description XML de cet \351l\351ment", "error message"));
+	QString cant_get_xml_description_error_message(tr("Impossible d'obtenir la description XML de ce mod\350le", "error message"));
 	
 	// we'll need the parent collection of both templates
 	TitleBlockTemplatesCollection *src_tbt_parent_collection = src.parentCollection();
@@ -181,7 +181,7 @@ void IntegrationMoveTitleBlockTemplatesHandler::initDialog() {
 	erase_template_ = new QRadioButton(
 		QString(
 			tr(
-				"\311craser l'\351l\351ment d\351j\340 int\351gr\351",
+				"\311craser le mod\350le d\351j\340 int\351gr\351",
 				"dialog content"
 			)
 		)

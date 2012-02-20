@@ -1054,7 +1054,7 @@ Modificarea va fi definitiva.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="444"/>
-        <source>Ceci est un modèle de cartouche, qui peut Ðtre appliqué a un schéma.</source>
+        <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -1636,7 +1636,7 @@ Modificarea va fi definitiva.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
-        <source>Impossible d&apos;obtenir la description XML de cet élément</source>
+        <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -1671,9 +1671,9 @@ Modificarea va fi definitiva.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
-        <source>Écraser l&apos;élément déjà intégré</source>
+        <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Stergeti elementul deja integrat</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
@@ -4088,12 +4088,6 @@ Opțiuni disponibile:
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="705"/>
-        <source>An error occured when integrating the element.</source>
-        <comment>error message</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/qetproject.cpp" line="886"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
@@ -4104,6 +4098,12 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="634"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>A apărut o problemă în timpul copierii categoriei %1</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetproject.cpp" line="705"/>
+        <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
+        <comment>error message</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="885"/>
