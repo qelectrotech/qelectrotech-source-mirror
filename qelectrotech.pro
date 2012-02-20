@@ -157,6 +157,10 @@ macx {
 }
 
 # Compilers-specific options
-*-g++* {
-	QMAKE_CXXFLAGS += -fno-ipa-sra
+unix {
+	*-g++* {
+		system(g++ -v --help 2>&1 | grep -q fipa-sra) {
+			QMAKE_CXXFLAGS += -fno-ipa-sra
+		}
+	}
 }
