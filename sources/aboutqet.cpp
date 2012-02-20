@@ -70,13 +70,12 @@ QWidget *AboutQET::title() const {
 	// label "QElectroTech"
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
 	title -> setTextFormat(Qt::RichText);
-	// le tout dans une grille
-	QGridLayout *grid_layout = new QGridLayout();
-	grid_layout -> addWidget(icon, 0, 0);
-	grid_layout -> addWidget(title, 0, 1);
-	grid_layout -> setColumnStretch(0, 1);
-	grid_layout -> setColumnStretch(1, 100);
-	icon_and_title -> setLayout(grid_layout);
+	
+	QHBoxLayout *hlayout = new QHBoxLayout();
+	hlayout -> addWidget(icon);
+	hlayout -> addWidget(title);
+	hlayout -> addStretch();
+	icon_and_title -> setLayout(hlayout);
 	return(icon_and_title);
 }
 
@@ -186,7 +185,7 @@ QWidget *AboutQET::licenseTab() const {
 void AboutQET::addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work) const {
 	QString new_text = label -> text();
 	
-	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;<br><br>";
+	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;&lrm;<br/><br/>";
 	
 	// ajoute la fonction de la personne
 	new_text += author_template.arg(work).arg(name).arg(email);
