@@ -1034,35 +1034,35 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="403"/>
         <source>Cartouches embarqués</source>
-        <translation type="unfinished"></translation>
+        <translation>Cartiglio integrato</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="410"/>
         <source>Collection embarquée</source>
-        <translation type="unfinished"></translation>
+        <translation>Collezione integrata</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="437"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Clicca e lascia il modello di cartiglio su uno schema per applicarlo.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Questo è un modello di cartiglio, che può essere applicato ad uno schema.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="461"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation>Questo è un elemento che puoi inserire nel disegno trascinandolo col mouse</translation>
+        <translation>Questo è un elemento che puoi inserire nello schema trascinandolo col mouse</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="464"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
         <comment>Tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Clicca e lascia questo elemento sullo schema per inserire un elemento &lt;&lt;%1&gt;&gt;</translation>
     </message>
 </context>
 <context>
@@ -1489,35 +1489,35 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/genericpanel.cpp" line="219"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished">Nessun file</translation>
+        <translation>Nessun file</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="336"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Schema senza titolo</translation>
+        <translation>Schema senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="343"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished">%1 - %2</translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="422"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished">Modelli di cartiglio</translation>
+        <translation>Modelli di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="512"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished">Modello &quot;%1&quot;</translation>
+        <translation>Modello &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1048"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation type="unfinished">%1 [non utilizzato nel progetto]</translation>
+        <translation>%1 [non utilizzato nel progetto]</translation>
     </message>
 </context>
 <context>
@@ -1627,54 +1627,54 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>impossibile accedere alla categoria genitore</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile ottenere la descrizione XML di questo modello</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Integrazione di un modello di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Il modello è già stato integrato nel progetto. Tuttavia, la versione che tenti di applicare semra diversa. Che vuoi fare?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Utilizzare il modello già integrato</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Integrare il modello inserito</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare il modello già inserito</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Far coesistere i due modelli</translation>
     </message>
 </context>
 <context>
@@ -2198,7 +2198,7 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminare i modelli di cartiglio non utilizzati nel progetto</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="682"/>
@@ -2423,17 +2423,17 @@ Opzioni disponibili:
         <location filename="../sources/qetapp.cpp" line="172"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished"></translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="272"/>
         <source>Collection QET</source>
-        <translation type="unfinished">Collezione QET</translation>
+        <translation>Collezione QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="286"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Collezione utente</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="330"/>
@@ -3812,80 +3812,80 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="45"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished">&amp;Configura QElectroTech</translation>
+        <translation>&amp;Configura QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="46"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Permette di regolare vari parametri di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="53"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>A &amp;proposito di QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="54"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Mostra informazioni su QElectroTech</translation>
+        <translation>Mostra informazioni su QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished">A proposito di &amp;Qt</translation>
+        <translation>A proposito di &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mostra informazioni sulla libreria Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="66"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Configurazione</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="71"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation type="unfinished">&amp;Aiuto</translation>
+        <translation>&amp;Aiuto</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="115"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation type="unfinished"></translation>
+        <translation>Uscire dalla &amp;modalità a tutto schermo</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="117"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mostra QElectroTech in modalità finestra</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation type="unfinished"></translation>
+        <translation>Passare alla &amp;modalità a tutto schermo</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="121"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mostra QElectroTech a tutto schermo</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Ctrl+Shift+F</source>
-        <translation type="unfinished">Ctrl+Shift+F</translation>
+        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Mostra</translation>
+        <translation>Mostra</translation>
     </message>
 </context>
 <context>
@@ -4107,7 +4107,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/qetproject.cpp" line="705"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Si è verificato un errore durante l&apos;integrazione del modello.</translation>
     </message>
 </context>
 <context>
@@ -4116,49 +4116,49 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="89"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Registrare il modello in corso?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="91"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vuoi registrare il modello %1 ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="143"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
-        <translation type="unfinished"></translation>
+        <translation>nuovo_modello</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="151"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Duplicare un modello di cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="152"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Per duplicare questo modello, inserire il nome della copia</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="294"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Nuovo</translation>
+        <translation>&amp;Nuovo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="295"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Apri (&amp;O)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="296"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Aperto da un file</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="297"/>
@@ -4176,7 +4176,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="299"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Salvare in un file</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
@@ -4212,13 +4212,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="678"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Salva come</translation>
+        <translation>Salva come</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="680"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modello di cartiglio QElectroTech (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
@@ -4236,13 +4236,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="315"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
-        <translation type="unfinished">Ctrl+Shift+O</translation>
+        <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="317"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
-        <translation type="unfinished">Ctrl+Shift+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="318"/>
@@ -4314,19 +4314,19 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished">[Modificato]</translation>
+        <translation>[Modificato]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="461"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>[Solo lettura]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="464"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
-        <translation type="unfinished">%1% {1 %2?}</translation>
+        <translation>%1 %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="518"/>
@@ -4344,19 +4344,19 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="599"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Apri un modello</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="618"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Apri un file</translation>
+        <translation>Apri un file</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="620"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modelli di cartiglio QElectroTech (*%1);;File XML (*.xml);;Tutti i file (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
@@ -5280,18 +5280,18 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="262"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Editare questo modello</translation>
+        <translation>Editare questo modello</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="263"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Duplicare ed editare questo modello</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="269"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Azioni del blocco titoli</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
@@ -5433,7 +5433,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="59"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation type="unfinished"></translation>
+        <translation>Attenzione: i bordi delle celle vuote non vengono visualizzati nella rappresentazione finale sullo schema.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
@@ -5561,13 +5561,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="62"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">o nuovo nome</translation>
+        <translation>o nuovo nome</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="74"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished">Nuovo modello (inserire il nome)</translation>
+        <translation>Nuovo modello (inserire il nome)</translation>
     </message>
 </context>
 <context>
@@ -5807,7 +5807,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished">Cartiglio del progetto &quot;%1&quot;</translation>
+        <translation>Cartiglio del progetto &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -5816,13 +5816,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Collezione del progetto senza titolo (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Collezione del progetto &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
