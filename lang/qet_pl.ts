@@ -4772,37 +4772,37 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="400"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Wstaw linię</translation>
+        <translation>Wstawienie linii</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="402"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Usuń linię</translation>
+        <translation>Usuięcie linii</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="406"/>
         <source>Insertion d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Wstaw kolumnę</translation>
+        <translation>Wstawienie kolumny</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="408"/>
         <source>Suppression d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Usuń kolumnę</translation>
+        <translation>Usunięcie kolumny</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="541"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Zmień linię</translation>
+        <translation>Zmiana linii</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="543"/>
         <source>Modification d&apos;une colonne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Zmień kolumnę</translation>
+        <translation>Zmiana kolumny</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="606"/>
@@ -4814,7 +4814,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="723"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation>Podział komórek na %1</translation>
+        <translation>Podział komórki na %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="118"/>
@@ -5450,7 +5450,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="59"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation>Uwaga: krawędzie pustych komórek nie pojawią się w gotowym schemacie.</translation>
+        <translation>Uwaga: krawędzie pustych komórek nie pojawią się w schemacie.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
@@ -5547,14 +5547,14 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Usunąć szablon tabliczki rysunkowej ?</translation>
+        <translation>Usunąć ten szablon tabliczki rysunkowej ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Czy na pewno usunąć ten szablon tzbliczki rysunkowej (%1) ?
+        <translation>Czy na pewno chcesz usunąć ten szablon tabliczki rysunkowej (%1) ?
 </translation>
     </message>
 </context>
