@@ -79,7 +79,6 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	logos_view_ -> setMinimumSize(iconsize() * 2.9);
 	logos_view_ -> setIconSize(iconsize());
 	logos_view_ -> setWrapping(true);
-	logos_view_ -> setFlow(QListView::LeftToRight);
 	logos_view_ -> setMovement(QListView::Static);
 	logos_view_ -> setResizeMode(QListView::Adjust);
 	add_button_ = new QPushButton(tr("Ajouter un logo"));

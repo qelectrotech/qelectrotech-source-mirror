@@ -689,6 +689,8 @@ void TitleBlockTemplateView::loadTemplate(TitleBlockTemplate *tbt) {
 	
 	// assign the layout to a basic QGraphicsWidget
 	form_ = new QGraphicsWidget();
+	// enforce the layout direction to avoid reversing the template rendering
+	form_ -> setLayoutDirection(Qt::LeftToRight);
 	form_ -> setLayout(tbgrid_);
 	scene() -> addItem(form_);
 	adjustSceneRect();

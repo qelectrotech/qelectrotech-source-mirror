@@ -67,7 +67,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	color_layout -> addWidget(black_color);
 	color_layout -> addWidget(white_color);
 	color_layout -> addStretch();
-	main_layout -> addItem(color_layout);
+	main_layout -> addLayout(color_layout);
 	
 	QHBoxLayout *style_layout = new QHBoxLayout();
 	style_layout -> addWidget(new QLabel(tr("Style : ")));
@@ -75,7 +75,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	style_layout -> addWidget(dashed_style);
 	style_layout -> addWidget(dotted_style);
 	style_layout -> addStretch();
-	main_layout -> addItem(style_layout);
+	main_layout -> addLayout(style_layout);
 	
 	QHBoxLayout *weight_layout = new QHBoxLayout();
 	weight_layout -> addWidget(new QLabel(tr("\311paisseur : ")));
@@ -83,7 +83,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	weight_layout -> addWidget(thin_weight);
 	weight_layout -> addWidget(normal_weight);
 	weight_layout -> addStretch();
-	main_layout -> addItem(weight_layout);
+	main_layout -> addLayout(weight_layout);
 	
 	main_layout -> addWidget(new QLabel("<u>" + tr("Remplissage :") + "</u> "));
 	
@@ -92,7 +92,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_layout -> addWidget(black_filling);
 	filling_layout -> addWidget(white_filling);
 	filling_layout -> addStretch();
-	main_layout -> addItem(filling_layout);
+	main_layout -> addLayout(filling_layout);
 	
 	main_layout -> addStretch();
 	
