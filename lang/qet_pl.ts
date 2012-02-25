@@ -4340,7 +4340,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="464"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
-        <translation>%1% {1 %2?}</translation>
+        <translation>%1 %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="518"/>
@@ -5547,7 +5547,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Usunąć ten szablon tabliczki rysunkowej ?</translation>
+        <translation>Usunąć szablon tabliczki rysunkowej ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
