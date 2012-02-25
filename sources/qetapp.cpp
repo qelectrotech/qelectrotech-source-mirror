@@ -155,8 +155,11 @@ QETApp *QETApp::instance() {
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
 	
-	// charge les eventuelles traductions pour la lib Qt
-	qtTranslator.load("qt_" + desired_language, languages_path);
+	// load Qt library translations
+	QString qt_l10n_path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
+		qtTranslator.load("qt_" + desired_language, languages_path);
+	}
 	installTranslator(&qtTranslator);
 	
 	// charge les traductions pour l'application QET

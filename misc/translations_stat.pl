@@ -42,7 +42,8 @@ our %languages = (
 		'name'               => 'Français',
 		'french_name'        => 'Français',
 		'translator_name'    => 'Laurent Trinques',
-		'translator_mail_ml' => 'scorpio@qelectrotech.org'
+		'translator_mail_ml' => 'scorpio@qelectrotech.org',
+		'qt'                 => 1
 	},
 	'en' => {
 		'name'               => 'English',
@@ -58,61 +59,71 @@ our %languages = (
 		'name'               => 'Español',
 		'french_name'        => 'Espagnol',
 		'translator_name'    => 'Alfredo Carreto',
-		'translator_mail_ml' => 'electronicos_mx@yahoo.com.mx'
+		'translator_mail_ml' => 'electronicos_mx@yahoo.com.mx',
+		'qt'                 => 1
 	},
 	'ru' => {
 		'name'               => 'Russe',
 		'french_name'        => 'Русский',
 		'translator_name'    => 'Yuriy Litkevich',
-		'translator_mail_ml' => 'lit-uriy@yandex.ru'
+		'translator_mail_ml' => 'lit-uriy@yandex.ru',
+		'qt'                 => 1
 	},
 	'pt' => {
 		'name'               => 'Portugais',
 		'french_name'        => 'Português',
 		'translator_name'    => 'Jose Carlos Martins',
-		'translator_mail_ml' => 'jose@qelectrotech.org'
+		'translator_mail_ml' => 'jose@qelectrotech.org',
+		'qt'                 => 1
 	},
 	'cs' => {
 		'name'               => 'Czech',
 		'french_name'        => 'Tchèque',
 		'translator_name'    => 'Pavel Fric',
-		'translator_mail_ml' => 'pavelfric@seznam.cz'
+		'translator_mail_ml' => 'pavelfric@seznam.cz',
+		'qt'                 => 1
 	},
 	'pl' => {
 		'name'               => 'Polska',
 		'french_name'        => 'Polonais',
 		'translator_name'    => 'Pawel Smiech',
-		'translator_mail_ml' => 'pawel32640@gmail.com'
+		'translator_mail_ml' => 'pawel32640@gmail.com',
+		'qt'                 => 1
 	},
 	'ca' => {
 		'name'               => 'Català',
 		'french_name'        => 'Catalan',
 		'translator_name'    => 'Youssef Ouamalkran',
-		'translator_mail_ml' => 'youssefsan@gmail.com'
+		'translator_mail_ml' => 'youssefsan@gmail.com',
+		'qt'                 => 0
 	},
 	'ro' => {
 		'name'               => 'Română',
 		'french_name'        => 'Roumain',
 		'translator_name'    => 'Gabi Mandoc',
-		'translator_mail_ml' => 'gabriel.mandoc@gic.ro'
+		'translator_mail_ml' => 'gabriel.mandoc@gic.ro',
+		'qt'                 => 0
 	},
 	'de' => {
 		'name'               => 'Deutsch',
 		'french_name'        => 'Allemand',
 		'translator_name'    => 'Markus Budde',
-		'translator_mail_ml' => 'markus.budde@msn.com'
+		'translator_mail_ml' => 'markus.budde@msn.com',
+		'qt'                 => 1
 	},
 	'it' => {
 		'name'               => 'Italiano',
 		'french_name'        => 'Italiano',
 		'translator_name'    => 'Alessandro Conti',
-		'translator_mail_ml' => 'dr.slump@alexconti.it'
+		'translator_mail_ml' => 'dr.slump@alexconti.it',
+		'qt'                 => 1
 	},
 	'ar' => {
 		'name'               => 'Arabic',
 		'french_name'        => 'Arabe',
 		'translator_name'    => 'Mohamed Souabni',
-		'translator_mail_ml' => 'souabnimohamed@yahoo.fr'
+		'translator_mail_ml' => 'souabnimohamed@yahoo.fr',
+		'qt'                 => 1
 	}
 );
 
@@ -167,7 +178,6 @@ finddepth(\&analyze_element_file, 'elements');
 # Complete the "languages" hash with statistics
 for my $lang_key (@ordered_languages) {
 	my $lang = $languages{$lang_key};
-	$lang->{'qt'} = -f sprintf('lang/qt_%s.ts', $lang_key) ? 1 : 0 unless defined($lang->{'qt'});
 	
 	# strings statistics
 	my $ts_file = sprintf('lang/qet_%s.ts', $lang_key);
