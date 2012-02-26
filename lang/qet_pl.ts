@@ -1042,12 +1042,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="403"/>
         <source>Cartouches embarqués</source>
-        <translation>Tabliczka rysunkowa zablokowana</translation>
+        <translation>Tabliczki rysunkowe osadzone</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="410"/>
         <source>Collection embarquée</source>
-        <translation>Kolekcja zablokowana</translation>
+        <translation>Kolekcja osadzona</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="437"/>
@@ -2390,7 +2390,7 @@ Dostępne opcje :
         <location filename="../sources/qetapp.cpp" line="1464"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  -common-tbt-dir=DIR          Określ katalog kolekcji szblonów tabliczki rysunkowej
+        <translation>  -common-tbt-dir=DIR          Określ katalog kolekcji szblonów tabliczek rysunkowych
 </translation>
     </message>
     <message>
@@ -2451,7 +2451,7 @@ Dostępne opcje :
         <location filename="../sources/qetapp.cpp" line="330"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation>Tabliczka rysunkowa QET</translation>
+        <translation>Tabliczki rysunkowe QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="343"/>
@@ -5819,13 +5819,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Tabliczka rysunkowa projektu bez tytułu (id.%1)</translation>
+        <translation>Tabliczki rysunkowe projektu bez tytułu (id.%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Tabliczka rysunkowa projektu &quot;%1&quot;</translation>
+        <translation>Tabliczki rysunkowe projektu &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
