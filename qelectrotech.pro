@@ -163,3 +163,11 @@ unix {
 		}
 	}
 }
+
+# From Qt 4.8, we disable the QPicture-based cache for titleblock rendering
+# because it leads to bad rendering then crash.
+contains(QT_VERSION, ^4\\.[0-7]\\..*) {
+	message("Detected Qt < 4.8: disabling QPicture-based cache for titleblock rendering.")
+	DEFINES += QET_TBT_USE_QPICTURE_BASED_CACHE
+}
+

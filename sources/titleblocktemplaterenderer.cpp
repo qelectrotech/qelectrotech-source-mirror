@@ -61,6 +61,7 @@ int TitleBlockTemplateRenderer::height() const {
 void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblock_width) {
 	if (!titleblock_template_) return;
 	
+#ifdef QET_TBT_USE_QPICTURE_BASED_CACHE
 	// Do we really need to calculate all this again?
 	if (titleblock_width != last_known_titleblock_width_ || rendered_template_.isNull()) {
 		renderToQPicture(titleblock_width);
@@ -69,6 +70,9 @@ void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblo
 	provided_painter -> save();
 	rendered_template_.play(provided_painter);
 	provided_painter -> restore();
+#else
+	titleblock_template_ -> render(*provided_painter, context_, titleblock_width);
+#endif
 }
 
 /**
