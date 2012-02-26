@@ -1156,7 +1156,7 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 	// draw the titleblock border
 	painter.drawRect(QRect(0, 0, titleblock_width, titleblock_height));
 	
-	// run through each inidividual cell
+	// run through each individual cell
 	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 			if (cells_[i][j] -> spanner_cell || cells_[i][j] -> cell_type == TitleBlockCell::EmptyCell) continue;
@@ -1243,6 +1243,7 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 	@param cell_rect Rectangle delimiting the cell area
 */
 void TitleBlockTemplate::renderTextCell(QPainter &painter, const QString &text, const TitleBlockCell &cell, const QRectF &cell_rect) const {
+	if (text.isEmpty()) return;
 	QFont text_font = TitleBlockTemplate::fontForCell(cell);
 	painter.setFont(text_font);
 	
