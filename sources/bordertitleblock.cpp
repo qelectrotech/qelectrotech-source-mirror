@@ -35,6 +35,11 @@ BorderTitleBlock::BorderTitleBlock(QObject *parent) :
 	titleblock_template_renderer = new TitleBlockTemplateRenderer(this);
 	titleblock_template_renderer -> setTitleBlockTemplate(QETApp::defaultTitleBlockTemplate());
 	
+	// disable the QPicture-based cache from Qt 4.8 to avoid rendering errors and crashes
+	if (!QRegExp("4\\.[0-7]\\.").exactMatch(qVersion())) {
+		titleblock_template_renderer -> setUseCache(false);
+	}
+	
 	// dimensions par defaut du schema
 	importBorder(BorderProperties());
 	

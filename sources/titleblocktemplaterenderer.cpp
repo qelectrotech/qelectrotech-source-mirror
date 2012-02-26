@@ -8,6 +8,7 @@
 TitleBlockTemplateRenderer::TitleBlockTemplateRenderer(QObject *parent) :
 	QObject(parent),
 	titleblock_template_(0),
+	use_cache_(true),
 	last_known_titleblock_width_(-1)
 {
 }
@@ -61,18 +62,18 @@ int TitleBlockTemplateRenderer::height() const {
 void TitleBlockTemplateRenderer::render(QPainter *provided_painter, int titleblock_width) {
 	if (!titleblock_template_) return;
 	
-#ifdef QET_TBT_USE_QPICTURE_BASED_CACHE
-	// Do we really need to calculate all this again?
-	if (titleblock_width != last_known_titleblock_width_ || rendered_template_.isNull()) {
-		renderToQPicture(titleblock_width);
+	if (use_cache_) {
+		// Do we really need to calculate all this again?
+		if (titleblock_width != last_known_titleblock_width_ || rendered_template_.isNull()) {
+			renderToQPicture(titleblock_width);
+		}
+		
+		provided_painter -> save();
+		rendered_template_.play(provided_painter);
+		provided_painter -> restore();
+	} else {
+		titleblock_template_ -> render(*provided_painter, context_, titleblock_width);
 	}
-	
-	provided_painter -> save();
-	rendered_template_.play(provided_painter);
-	provided_painter -> restore();
-#else
-	titleblock_template_ -> render(*provided_painter, context_, titleblock_width);
-#endif
 }
 
 /**
@@ -98,3 +99,20 @@ void TitleBlockTemplateRenderer::renderToQPicture(int titleblock_width) {
 void TitleBlockTemplateRenderer::invalidateRenderedTemplate() {
 	rendered_template_ = QPicture();
 }
+
+/**
+	@param use_cache true for this renderer to use its QPicture-based cache,
+	false otherwise.
+*/
+void TitleBlockTemplateRenderer::setUseCache(bool use_cache) {
+	use_cache_ = use_cache;
+}
+
+/**
+	@return true if this renderer uses its QPicture-based cache, false
+	otherwise.
+*/
+bool TitleBlockTemplateRenderer::useCache() const {
+	return(use_cache_);
+}
+
