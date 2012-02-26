@@ -1,7 +1,7 @@
 <definition width="90" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="en">Selector switch 3-position stay put</name>
-        <name lang="fr">Bouton tournant 3 positions fi xes</name>
+        <name lang="fr">Bouton tournant 3 positions fixes</name>
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej</name>
         <name lang="cs">Otočný přepínač se 3 pevnými polohami, otevřený v prostřední poloze</name>
     </names>
