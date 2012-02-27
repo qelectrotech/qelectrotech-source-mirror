@@ -118,8 +118,6 @@ void TitleBlockDimensionWidget::initWidgets() {
 	spinbox_label_ = new QLabel(tr("Largeur :", "default dialog label"));
 	
 	spinbox_ = new QSpinBox();
-	spinbox_ -> setMinimum(5);
-	spinbox_ -> setMaximum(10000);
 	spinbox_ -> setValue(50);
 	
 	// extra widgets, for the user to specify whether the value is absolute, relative, etc.
@@ -167,8 +165,12 @@ void TitleBlockDimensionWidget::initLayouts() {
 void TitleBlockDimensionWidget::updateSpinBoxSuffix() {
 	if (complete_ && dimension_type_ -> checkedId() != QET::Absolute) {
 		spinbox_ -> setSuffix(tr("%", "spinbox suffix when changing the dimension of a row/column"));
+		spinbox_ -> setMinimum(1);
+		spinbox_ -> setMaximum(100);
 	} else {
 		spinbox_ -> setSuffix(tr("px", "spinbox suffix when changing the dimension of a row/column"));
+		spinbox_ -> setMinimum(5);
+		spinbox_ -> setMaximum(10000);
 	}
 	spinbox_ -> selectAll();
 }
