@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qeticons.h"
+#include <QApplication>
 
 // on redeclare ici les icones
 namespace QET {
@@ -156,6 +157,10 @@ namespace QET {
 	Initialise les icones de l'application QElectroTech
 */
 void QET::Icons::initIcons() {
+	// we may need to mirror some icons for right-to-left languages
+	bool rtl = QApplication::isRightToLeft();
+	QTransform reverse = QTransform().scale(-1, 1);
+	
 	AddColumn           .addFile(":/ico/16x16/add_col.png");
 	AddRow              .addFile(":/ico/16x16/add_row.png");
 	Allowed             .addFile(":/ico/16x16/user-online.png");
@@ -213,8 +218,14 @@ void QET::Icons::initIcons() {
 	East                .addFile(":/ico/16x16/east.png");
 	EditClear           .addFile(":/ico/16x16/edit-clear.png");
 	EditClear           .addFile(":/ico/22x22/edit-clear.png");
-	EditClearLocationBar.addFile(":/ico/16x16/edit-clear-locationbar-ltr.png");
-	EditClearLocationBar.addFile(":/ico/22x22/edit-clear-locationbar-ltr.png");
+	
+	if (rtl) {
+		EditClearLocationBar.addPixmap(QPixmap(":/ico/16x16/edit-clear-locationbar-ltr.png").transformed(reverse));
+		EditClearLocationBar.addPixmap(QPixmap(":/ico/22x22/edit-clear-locationbar-ltr.png").transformed(reverse));
+	} else {
+		EditClearLocationBar.addFile(":/ico/16x16/edit-clear-locationbar-ltr.png");
+		EditClearLocationBar.addFile(":/ico/22x22/edit-clear-locationbar-ltr.png");
+	}
 	EditCopy            .addFile(":/ico/16x16/edit-copy.png");
 	EditCopy            .addFile(":/ico/22x22/edit-copy.png");
 	EditCut             .addFile(":/ico/16x16/edit-cut.png");
@@ -223,8 +234,13 @@ void QET::Icons::initIcons() {
 	EditDelete          .addFile(":/ico/22x22/edit-delete.png");
 	EditPaste           .addFile(":/ico/22x22/edit-paste.png");
 	EditPaste           .addFile(":/ico/16x16/edit-paste.png");
-	EditRedo            .addFile(":/ico/16x16/edit-redo.png");
-	EditRedo            .addFile(":/ico/22x22/edit-redo.png");
+	if (rtl) {
+		EditRedo.addPixmap(QPixmap(":/ico/16x16/edit-redo.png").transformed(reverse));
+		EditRedo.addPixmap(QPixmap(":/ico/22x22/edit-redo.png").transformed(reverse));
+	} else {
+		EditRedo            .addFile(":/ico/16x16/edit-redo.png");
+		EditRedo            .addFile(":/ico/22x22/edit-redo.png");
+	}
 	EditSelectAll       .addFile(":/ico/16x16/edit-select-all.png");
 	EditSelectAll       .addFile(":/ico/22x22/edit-select-all.png");
 	EditTableCellMerge        .addFile(":ico/16x16/edit-table-cell-merge.png");
@@ -243,8 +259,13 @@ void QET::Icons::initIcons() {
 	EditTableInsertRowAbove   .addFile(":ico/22x22/edit-table-insert-row-above.png");
 	EditTableInsertRowUnder   .addFile(":ico/16x16/edit-table-insert-row-under.png");
 	EditTableInsertRowUnder   .addFile(":ico/22x22/edit-table-insert-row-under.png");
-	EditUndo            .addFile(":/ico/16x16/edit-undo.png");
-	EditUndo            .addFile(":/ico/22x22/edit-undo.png");
+	if (rtl) {
+		EditUndo.addPixmap(QPixmap(":/ico/16x16/edit-undo.png").transformed(reverse));
+		EditUndo.addPixmap(QPixmap(":/ico/22x22/edit-undo.png").transformed(reverse));
+	} else {
+		EditUndo            .addFile(":/ico/16x16/edit-undo.png");
+		EditUndo            .addFile(":/ico/22x22/edit-undo.png");
+	}
 	Element             .addFile(":/ico/oxygen-icons/16x16/mimetypes/application-x-qet-element.png");
 	Element             .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-element.png");
 	Element             .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-element.png");
@@ -335,8 +356,13 @@ void QET::Icons::initIcons() {
 	ViewFitWidth        .addFile(":/ico/22x22/view_fit_width.png");
 	ViewFitWindow       .addFile(":/ico/22x22/view_fit_window.png");
 	ViewMove            .addFile(":/ico/22x22/move.png");
-	ViewRefresh         .addFile(":/ico/16x16/view-refresh.png");
-	ViewRefresh         .addFile(":/ico/22x22/view-refresh.png");
+	if (rtl) {
+		ViewRefresh.addPixmap(QPixmap(":/ico/16x16/view-refresh.png").transformed(reverse));
+		ViewRefresh.addPixmap(QPixmap(":/ico/22x22/view-refresh.png").transformed(reverse));
+	} else {
+		ViewRefresh         .addFile(":/ico/16x16/view-refresh.png");
+		ViewRefresh         .addFile(":/ico/22x22/view-refresh.png");
+	}
 	West                .addFile(":/ico/16x16/west.png");
 	WindowNew           .addFile(":/ico/16x16/window-new.png");
 	WindowNew           .addFile(":/ico/22x22/window-new.png");
