@@ -69,6 +69,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	void splitSelectedCell();
 	void refresh();
 	void changePreviewWidth();
+	void setPreviewWidth(int);
 	void updateLayout();
 	void rowsDimensionsChanged();
 	void columnsDimensionsChanged();
@@ -93,11 +94,11 @@ class TitleBlockTemplateView : public QGraphicsView {
 	signals:
 	void selectedCellsChanged(QList<TitleBlockCell *>);
 	void gridModificationRequested(TitleBlockTemplateCommand *);
+	void previewWidthChanged(int, int);
 	
 	private:
 	QList<QAction *> rowsActions() const;
 	QList<QAction *> columnsActions() const;
-	void setPreviewWidth(int);
 	void updateTotalWidthLabel();
 	void requestGridModification(TitleBlockTemplateCommand *);
 	int lastContextMenuCellIndex() const;

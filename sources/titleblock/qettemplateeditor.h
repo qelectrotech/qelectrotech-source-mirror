@@ -116,6 +116,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	bool saveAsFile();
 	void setReadOnly(bool);
 	void quit();
+	void savePreviewWidthToApplicationSettings(int, int);
 	
 	private slots:
 	TitleBlockTemplateLocation getTitleBlockTemplateLocationFromUser(const QString & = QString(), bool existing_only = true);

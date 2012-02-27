@@ -23,7 +23,6 @@
 #include "templatecommands.h"
 #include "templatecellsset.h"
 #include "dimensionwidget.h"
-#include "qetapp.h"
 #include "qeticons.h"
 #define ROW_OFFSET 2
 #define COL_OFFSET 1
@@ -758,12 +757,15 @@ void TitleBlockTemplateView::setReadOnly(bool read_only) {
 */
 void TitleBlockTemplateView::setPreviewWidth(int width) {
 	if (preview_width_ == width) return;
+	int former_preview_width = preview_width_;
 	preview_width_ = width;
-	applyColumnsWidths();
-	updateTotalWidthLabel();
-	//adjustSceneRect();
-	centerOn(form_);
-	/// TODO center again the preview()
+	if (tbgrid_) {
+		applyColumnsWidths();
+		updateTotalWidthLabel();
+		//adjustSceneRect();
+		centerOn(form_);
+	}
+	emit(previewWidthChanged(former_preview_width, preview_width_));
 }
 
 /**

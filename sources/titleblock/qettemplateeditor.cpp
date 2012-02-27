@@ -377,6 +377,8 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	Initialize layouts and widgets
 */
 void QETTitleBlockTemplateEditor::initWidgets() {
+	QSettings &settings = QETApp::settings();
+	
 	// undo list on the right
 	undo_stack_ = new QUndoStack(this);
 	undo_view_ = new QUndoView(undo_stack_);
@@ -390,7 +392,12 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 	
 	// WYSIWYG editor as central widget
 	template_edition_area_scene_ = new QGraphicsScene(this);
-	template_edition_area_view_  = new TitleBlockTemplateView(template_edition_area_scene_); 
+	template_edition_area_view_  = new TitleBlockTemplateView(template_edition_area_scene_);
+	bool conv_ok;
+	int conf_preview_width = settings.value("titleblocktemplateeditor/preview_width", -1).toInt(&conv_ok);
+	if (conv_ok && conf_preview_width != -1) {
+		template_edition_area_view_ -> setPreviewWidth(conf_preview_width);
+	}
 	setCentralWidget(template_edition_area_view_);
 	
 	// cell edition widget at the bottom
@@ -421,6 +428,12 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 		SIGNAL(gridModificationRequested(TitleBlockTemplateCommand *)),
 		this,
 		SLOT(pushGridUndoCommand(TitleBlockTemplateCommand *))
+	);
+	connect(
+		template_edition_area_view_,
+		SIGNAL(previewWidthChanged(int,int)),
+		this,
+		SLOT(savePreviewWidthToApplicationSettings(int, int))
 	);
 	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(updateEditorTitle()));
 }
@@ -752,4 +765,14 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::getTitleBlockTemplateLoc
 */
 void QETTitleBlockTemplateEditor::quit() {
 	close();
+}
+
+/**
+	Save the new preview width to application settings
+	@param former_preview_width Unused, former preview width
+	@param new_preview_width New preview width
+*/
+void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int former_preview_width, int new_preview_width) {
+	Q_UNUSED(former_preview_width)
+	QETApp::settings().setValue("titleblocktemplateeditor/preview_width", new_preview_width);
 }
