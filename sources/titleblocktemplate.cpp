@@ -795,6 +795,69 @@ QList<int> TitleBlockTemplate::rowsHeights() const {
 }
 
 /**
+	@param a column type
+	@return the count of \a type columns 
+*/
+int TitleBlockTemplate::columnTypeCount(QET::TitleBlockColumnLength type) {
+	int count = 0;
+	
+	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
+		if (columns_width_.at(i).type == type) ++ count;
+	}
+	
+	return(count);
+}
+
+/**
+	@param a column type
+	@return the sum of values attached to \a type columns 
+*/
+int TitleBlockTemplate::columnTypeTotal(QET::TitleBlockColumnLength type) {
+	int total = 0;
+	
+	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
+		if (columns_width_.at(i).type == type) {
+			total += columns_width_.at(i).value;
+		}
+	}
+	
+	return(total);
+}
+
+/**
+	@return the minimum width for this template
+*/
+int TitleBlockTemplate::minimumWidth() {
+	// Abbreviations: ABS: absolute, RTT: relative to total, RTR: relative to
+	// remaining, TOT: total diagram/TBT width (variable).
+	
+	// Minimum size may be enforced by ABS and RTT widths:
+	// TOT >= ((sum(REL)/100)*TOT)+sum(ABS)
+	// => (1 - (sum(REL)/100))TOT >= sum(ABS)
+	// => TOT >= sum(ABS) / (1 - (sum(REL)/100))
+	// => TOT >= sum(ABS) / ((100 - sum(REL))/100))
+	return(
+		qRound(
+			columnTypeTotal(QET::Absolute)
+			/
+			((100.0 - columnTypeTotal(QET::RelativeToTotalLength)) / 100.0)
+		)
+	);
+}
+
+/**
+	@return the maximum width for this template, or -1 if it does not have any.
+*/
+int TitleBlockTemplate::maximumWidth() {
+	if (columnTypeCount(QET::Absolute) == columns_width_.count()) {
+		// The template is composed of absolute widths only,
+		// therefore it may not extend beyond their sum.
+		return(columnTypeTotal(QET::Absolute));
+	}
+	return(-1);
+}
+
+/**
 	@return the total effective width of this template
 	@param total_width The total width initially planned for the rendering
 */

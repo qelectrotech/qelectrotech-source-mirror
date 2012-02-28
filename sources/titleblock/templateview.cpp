@@ -465,6 +465,8 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 		).arg(total_applied_width - preview_width_);
 		total_width_helper_cell_ -> split_size = total_applied_width - preview_width_;
 	}
+	
+	updateDisplayedMinMaxWidth();
 }
 
 /**
@@ -736,6 +738,35 @@ void TitleBlockTemplateView::columnsDimensionsChanged() {
 }
 
 /**
+	Update the tooltip that displays the minimum and/or maximum width of the
+	template.
+*/
+void TitleBlockTemplateView::updateDisplayedMinMaxWidth() {
+	if (!tbtemplate_) return;
+	int min_width = tbtemplate_ -> minimumWidth();
+	int max_width = tbtemplate_ -> maximumWidth();
+	
+	QString min_max_width_sentence;
+	if (max_width != -1) {
+		min_max_width_sentence = QString(
+			tr(
+				"Minimum width: %1px\nMaximum width: %2px\n",
+				"tooltip showing the minimum and/or maximum width of the edited template"
+			)
+		).arg(min_width).arg(max_width);
+	} else {
+		min_max_width_sentence = QString(
+			tr(
+				"Minimum width: %1px\n",
+				"tooltip showing the minimum width of the edited template"
+			)
+		).arg(min_width);
+	}
+	
+	total_width_helper_cell_ -> setToolTip(makePrettyToolTip(min_max_width_sentence));
+}
+
+/**
 	@param read_only whether this view should be read only.
 	
 */
@@ -846,6 +877,20 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::makeCellsSetFromGraphicsItems
 		}
 	}
 	return(set);
+}
+
+/*
+	@param a text string
+	@return an HTML string that can be passed to setToolTip()
+*/
+QString TitleBlockTemplateView::makePrettyToolTip(const QString &string) {
+	QString css_style = QString("white-space: pre;");
+	
+	QString final_tooltip_content = QString(
+		"<div style=\"%1\">%2</div>"
+	).arg(css_style).arg(string);
+	
+	return(final_tooltip_content);
 }
 
 /**

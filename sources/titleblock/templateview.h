@@ -73,6 +73,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	void updateLayout();
 	void rowsDimensionsChanged();
 	void columnsDimensionsChanged();
+	void updateDisplayedMinMaxWidth();
 	void setReadOnly(bool);
 	
 	protected slots:
@@ -105,6 +106,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	int indexOf(QGraphicsLayoutItem *);
 	void removeItem(QGraphicsLayoutItem *);
 	TitleBlockTemplateCellsSet makeCellsSetFromGraphicsItems(const QList<QGraphicsItem *> &) const;
+	QString makePrettyToolTip(const QString &);
 	
 	private slots:
 	void updateLastContextMenuCell(HelperCell *);

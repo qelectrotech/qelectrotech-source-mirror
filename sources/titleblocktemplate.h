@@ -59,6 +59,10 @@ class TitleBlockTemplate : public QObject {
 	int rowsCount() const;
 	QList<int> columnsWidth(int) const;
 	QList<int> rowsHeights() const;
+	int columnTypeCount(QET::TitleBlockColumnLength);
+	int columnTypeTotal(QET::TitleBlockColumnLength);
+	int minimumWidth();
+	int maximumWidth();
 	int width(int);
 	int height() const;
 	
