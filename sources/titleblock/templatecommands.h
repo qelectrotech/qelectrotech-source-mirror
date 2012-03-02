@@ -222,4 +222,30 @@ class SplitCellsCommand : public TitleBlockTemplateCommand {
 	int col_span_before_;                  ///< the col_span attribute of the spanning cell after the merge
 };
 
+/**
+	This class represents the action of changing extra information of a title
+	block template.
+*/
+class ChangeTemplateInformationsCommand : public QUndoCommand {
+	// constructors, destructor
+	public:
+	ChangeTemplateInformationsCommand(TitleBlockTemplate *, const QString &, const QString &, QUndoCommand * = 0);
+	virtual ~ChangeTemplateInformationsCommand();
+	private:
+	ChangeTemplateInformationsCommand(const ChangeTemplateInformationsCommand &);
+	
+	// methods
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	// attributes
+	private:
+	/// chnged title block template
+	TitleBlockTemplate *tbtemplate_;
+	/// Informations before they are modified
+	QString old_information_;
+	/// Informations after they were modified
+	QString new_information_;
+};
 #endif

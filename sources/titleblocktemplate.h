@@ -51,6 +51,8 @@ class TitleBlockTemplate : public QObject {
 	bool saveToXmlElement(QDomElement &) const;
 	TitleBlockTemplate *clone() const;
 	QString name() const;
+	QString information() const;
+	void setInformation(const QString &);
 	int rowDimension(int);
 	void setRowDimension(int, const TitleBlockDimension &);
 	TitleBlockDimension columnDimension(int);
@@ -95,11 +97,13 @@ class TitleBlockTemplate : public QObject {
 	QString toString() const;
 	
 	protected:
+	void loadInformation(const QDomElement &);
 	bool loadLogos(const QDomElement &, bool = false);
 	bool loadLogo(const QDomElement &);
 	bool loadGrid(const QDomElement &);
 	bool loadCells(const QDomElement &);
 	void loadCell(const QDomElement &);
+	void saveInformation(QDomElement &) const;
 	void saveLogos(QDomElement &) const;
 	void saveLogo(const QString &, QDomElement &) const;
 	void saveGrid(QDomElement &) const;
@@ -125,7 +129,8 @@ class TitleBlockTemplate : public QObject {
 	
 	// attributes
 	private:
-	QString name_;                                   ///< name identifying the Title Block Template within its parent project
+	QString name_;                                   ///< name identifying the Title Block Template within its parent collection
+	QString information_;
 	
 	QHash<QString, QByteArray >    data_logos_;      ///< Logos raw data
 	QHash<QString, QString>        storage_logos_;   ///< Logos applied storage type (e.g. "xml" or "base64")
@@ -134,7 +139,7 @@ class TitleBlockTemplate : public QObject {
 	QHash<QString, QPixmap>        bitmap_logos_;    ///< Pixmaps for bitmap logos
 	
 	QList<int> rows_heights_;                        ///< rows heights -- simple integers
-	QList<TitleBlockDimension> columns_width_;    ///< columns widths -- @see TitleBlockColDimension
+	QList<TitleBlockDimension> columns_width_;       ///< columns widths -- @see TitleBlockColDimension
 	QList<TitleBlockCell *> registered_cells_;       ///< Cells objects created rattached to this template, but not mandatorily used
 	QList< QList<TitleBlockCell *> > cells_;         ///< Cells grid
 };

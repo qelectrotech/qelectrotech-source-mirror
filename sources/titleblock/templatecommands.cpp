@@ -777,3 +777,40 @@ void SplitCellsCommand::redo() {
 	
 	if (view_) view_ -> updateLayout();
 }
+
+
+/**
+	Constructor
+	@param tbt Changed title block template
+	@param old_info Former information
+	@param new_info New information
+	@param parent Parent QUndoCommand
+*/
+ChangeTemplateInformationsCommand::ChangeTemplateInformationsCommand(TitleBlockTemplate *tbt, const QString &old_info, const QString &new_info, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("modification des informations compl\351mentaires", "undo caption"), parent),
+	tbtemplate_(tbt),
+	old_information_(old_info),
+	new_information_(new_info)
+{
+}
+
+/**
+	Destructor
+*/
+ChangeTemplateInformationsCommand::~ChangeTemplateInformationsCommand() {
+}
+
+/**
+	Undo the information change
+*/
+void ChangeTemplateInformationsCommand::undo() {
+	if (!tbtemplate_) return;
+	tbtemplate_ -> setInformation(old_information_);
+}
+
+/**
+	Redo the information change
+*/
+void ChangeTemplateInformationsCommand::redo() {
+	tbtemplate_ -> setInformation(new_information_);
+}

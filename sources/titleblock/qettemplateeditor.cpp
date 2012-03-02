@@ -300,6 +300,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
 	undo_           = undo_stack_ -> createUndoAction(this);
 	redo_           = undo_stack_ -> createRedoAction(this);
+	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations compl\351mentaires", "menu entry"), this);
 	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
 	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351",               "menu entry"), this);
@@ -318,6 +319,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
 	undo_             -> setShortcut(QKeySequence::Undo);
 	redo_             -> setShortcut(QKeySequence::Redo);
+	edit_info_        -> setShortcut(QKeySequence(tr("Ctrl+Y", "shortcut to edit extra information")));
 	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
 	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to split merged cell")));
 	zoom_in_          -> setShortcut(QKeySequence::ZoomIn);
@@ -336,6 +338,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
 	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
 	connect(zoom_reset_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomReset()));
+	connect(edit_info_,       SIGNAL(triggered()), this, SLOT(editTemplateInformation()));
 	connect(merge_cells_,     SIGNAL(triggered()), template_edition_area_view_, SLOT(mergeSelectedCells()));
 	connect(split_cell_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(splitSelectedCell()));
 }
@@ -360,9 +363,10 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	edit_menu_   -> addAction(undo_);
 	edit_menu_   -> addAction(redo_);
 	edit_menu_   -> addSeparator();
+	
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
-	
+	edit_menu_   -> addAction(edit_info_);
 	display_menu_ -> addAction(zoom_in_);
 	display_menu_ -> addAction(zoom_out_);
 	display_menu_ -> addAction(zoom_fit_);
@@ -775,4 +779,47 @@ void QETTitleBlockTemplateEditor::quit() {
 void QETTitleBlockTemplateEditor::savePreviewWidthToApplicationSettings(int former_preview_width, int new_preview_width) {
 	Q_UNUSED(former_preview_width)
 	QETApp::settings().setValue("titleblocktemplateeditor/preview_width", new_preview_width);
+}
+
+/**
+	Edit extra information attached to the template.
+*/
+void QETTitleBlockTemplateEditor::editTemplateInformation() {
+	if (!tb_template_) return;
+	
+	QDialog dialog_author(this);
+	dialog_author.setModal(true);
+#ifdef Q_WS_MAC
+	dialog_author.setWindowFlags(Qt::Sheet);
+#endif
+	dialog_author.setMinimumSize(400, 260);
+	dialog_author.setWindowTitle(tr("\311diter les informations compl\351mentaires", "window title"));
+	QVBoxLayout *dialog_layout = new QVBoxLayout(&dialog_author);
+	
+	// explanation label
+	QLabel *information_label = new QLabel(tr("Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile."));
+	information_label -> setAlignment(Qt::AlignJustify | Qt::AlignVCenter);
+	information_label -> setWordWrap(true);
+	dialog_layout -> addWidget(information_label);
+	
+	// add a QTextEdit to the dialog
+	QTextEdit *text_field = new QTextEdit();
+	text_field -> setAcceptRichText(false);
+	text_field -> setPlainText(tb_template_ -> information());
+	text_field -> setReadOnly(read_only_);
+	dialog_layout -> addWidget(text_field);
+	
+	// add two buttons to the dialog
+	QDialogButtonBox *dialog_buttons = new QDialogButtonBox(read_only_ ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
+	dialog_layout -> addWidget(dialog_buttons);
+	connect(dialog_buttons, SIGNAL(accepted()),    &dialog_author, SLOT(accept()));
+	connect(dialog_buttons, SIGNAL(rejected()),    &dialog_author, SLOT(reject()));
+	
+	// run the dialog
+	if (dialog_author.exec() == QDialog::Accepted && !read_only_) {
+		QString new_info = text_field -> toPlainText();
+		if (new_info != tb_template_ -> information()) {
+			pushUndoCommand(new ChangeTemplateInformationsCommand(tb_template_, tb_template_ -> information(), new_info));
+		}
+	}
 }

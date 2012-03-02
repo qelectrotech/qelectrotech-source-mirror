@@ -111,6 +111,7 @@ bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
 	}
 	name_ = xml_element.attribute("name");
 	
+	loadInformation(xml_element);
 	loadLogos(xml_element, true);
 	loadGrid(xml_element);
 	
@@ -158,6 +159,7 @@ bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
 	
 	xml_element.setTagName("titleblocktemplate");
 	xml_element.setAttribute("name", name_);
+	saveInformation(xml_element);
 	saveLogos(xml_element);
 	saveGrid(xml_element);
 	return(true);
@@ -170,6 +172,7 @@ bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
 TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	TitleBlockTemplate *copy = new TitleBlockTemplate();
 	copy -> name_ = name_;
+	copy -> information_ = information_;
 	
 	// this does not really duplicates pixmaps, only the objects that hold a key to the implicitly shared pixmaps
 	foreach (QString logo_key, bitmap_logos_.keys()) {
@@ -212,6 +215,17 @@ TitleBlockTemplate *TitleBlockTemplate::clone() const {
 	}
 	
 	return(copy);
+}
+
+/**
+	Import text informations from a given XML title block template.
+*/
+void TitleBlockTemplate::loadInformation(const QDomElement &xml_element) {
+	for (QDomNode n = xml_element.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
+		if (n.isElement() && n.toElement().tagName() == "information") {
+			setInformation(n.toElement().text());
+		}
+	}
 }
 
 /**
@@ -454,6 +468,18 @@ void TitleBlockTemplate::loadCell(const QDomElement &cell_element) {
 }
 
 /**
+	Export this template's extra information.
+	@param xml_element XML element under which extra informations will be attached
+*/
+void TitleBlockTemplate::saveInformation(QDomElement &xml_element) const {
+	QDomNode information_text_node = xml_element.ownerDocument().createTextNode(information());
+	
+	QDomElement information_element = xml_element.ownerDocument().createElement("information");
+	information_element.appendChild(information_text_node);
+	xml_element.appendChild(information_element);
+}
+
+/**
 	Export this template's logos as XML
 	@param xml_element XML Element under which the \<logos\> element will be attached
 */
@@ -687,6 +713,20 @@ QString TitleBlockTemplate::toString() const {
 */
 QString TitleBlockTemplate::name() const {
 	return(name_);
+}
+
+/**
+	@return the information field attached to this template
+*/
+QString TitleBlockTemplate::information() const {
+	return(information_);
+}
+
+/**
+	@param info information to be attached to this template
+*/
+void TitleBlockTemplate::setInformation(const QString &info) {
+	information_ = info;
 }
 
 /**
