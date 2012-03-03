@@ -1041,24 +1041,24 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="403"/>
         <source>Cartouches embarqués</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložená záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="410"/>
         <source>Collection embarquée</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložená sbírka</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="437"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přetáhněte a upusťte tento vzor záhlaví výkresu na výkres pro jeho použití.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Toto je vzor záhlaví výkresu, kterou můžete přetáhnout a upustit na svůj výkres.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="461"/>
@@ -1069,7 +1069,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/elementspanel.cpp" line="464"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
         <comment>Tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přetáhněte a upusťte tento prvek na výkres pro vložení prvku &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -1496,35 +1496,35 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/genericpanel.cpp" line="219"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished">Žádný soubor</translation>
+        <translation>Žádný soubor</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="336"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Výkres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="343"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished">%1 - %2</translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="422"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished">Vzory záhlaví výkresu</translation>
+        <translation>Vzory záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="512"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished">Vzor &quot;%1&quot;</translation>
+        <translation>Vzor &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1048"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation type="unfinished">%1 [v projektu nepoužívaný]</translation>
+        <translation>%1 [v projektu nepoužívaný]</translation>
     </message>
 </context>
 <context>
@@ -1634,54 +1634,54 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nelze přistupovat k rodičovské skupině</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nelze dostat popis XML tohoto vzoru</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Začlenění vzoru záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vzor již byl začleněn v projektu. Nicméně se zdá, že verze, kterou hodláte použít, je jiná. Co chcete dělat?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Použít již začleněný vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Začlenit upuštěný vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vymazat již začleněný vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nechat oba dva vzory žít vedle sebe</translation>
     </message>
 </context>
 <context>
@@ -2205,7 +2205,7 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat v projektu nepoužívané vzory</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="682"/>
@@ -2432,17 +2432,17 @@ Dostupné volby:
         <location filename="../sources/qetapp.cpp" line="172"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zleva doprava</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="272"/>
         <source>Collection QET</source>
-        <translation type="unfinished">Sbírka QET</translation>
+        <translation>Sbírka QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="286"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished">Uživatelova sbírka</translation>
+        <translation>Uživatelova sbírka</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="330"/>
@@ -3823,80 +3823,80 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="45"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished">&amp;Nastavit QElectroTech</translation>
+        <translation>&amp;Nastavit QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="46"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Umožní pro QElectroTech stanovit různé parametry</translation>
+        <translation>Umožní pro QElectroTech stanovit různé parametry</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="53"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished">&amp;O QElectroTechu</translation>
+        <translation>&amp;O QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="54"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Zobrazí informace o QElectroTechu</translation>
+        <translation>Zobrazí informace o QElectroTechu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished">O &amp;Qt</translation>
+        <translation>O &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Zobrazí informace o knihovně Qt</translation>
+        <translation>Zobrazí informace o knihovně Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="66"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation type="unfinished">N&amp;astavení</translation>
+        <translation>N&amp;astavení</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="71"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation type="unfinished">&amp;Nápověda</translation>
+        <translation>&amp;Nápověda</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="115"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation type="unfinished">Ukončit režim &amp;na celou obrazovku</translation>
+        <translation>Ukončit režim &amp;na celou obrazovku</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="117"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Zobrazí QElectroTech v okenním režimu</translation>
+        <translation>Zobrazí QElectroTech v okenním režimu</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation type="unfinished">&amp;Režim na celou obrazovku</translation>
+        <translation>&amp;Režim na celou obrazovku</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="121"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Zobrazí QElectroTech v režimu na celou obrazovku</translation>
+        <translation>Zobrazí QElectroTech v režimu na celou obrazovku</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Ctrl+Shift+F</source>
-        <translation type="unfinished">Ctrl+Shift+F</translation>
+        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Zobrazit</translation>
+        <translation>Zobrazit</translation>
     </message>
 </context>
 <context>
@@ -4118,7 +4118,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/qetproject.cpp" line="705"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Během začleňování vzoru se vyskytla chyba.</translation>
     </message>
 </context>
 <context>
@@ -4127,49 +4127,49 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="89"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uložit nynější vzor?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="91"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Chcete uložit vzor %1?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="143"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nový vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="151"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zdvojit vzor záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="152"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Pro zdvojení tohoto vzoru zadejte, prosím, název pro jeho kopii</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="294"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Nový</translation>
+        <translation>&amp;Nový</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="295"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Otevřít</translation>
+        <translation>&amp;Otevřít</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="296"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít ze souboru</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="297"/>
@@ -4187,7 +4187,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="299"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Uložit do souboru</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
@@ -4223,13 +4223,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="678"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Uložit jako</translation>
+        <translation>Uložit jako</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="680"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vzory záhlaví výkresu QElectroTech (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
@@ -4247,13 +4247,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="315"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
-        <translation type="unfinished">Ctrl+Shift+O</translation>
+        <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="317"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
-        <translation type="unfinished">Ctrl+Shift+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="318"/>
@@ -4325,19 +4325,19 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished">[Změněno]</translation>
+        <translation>[Změněno]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="461"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished"></translation>
+        <translation> [Pouze pro čtení]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="464"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
-        <translation type="unfinished">%1% {1 %2?}</translation>
+        <translation>%1 %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="518"/>
@@ -4355,19 +4355,19 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="599"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="618"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">Otevřít soubor</translation>
+        <translation>Otevřít soubor</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="620"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vzory záhlaví výkresu QElectroTech (*%1);;Soubory XML (*.xml);;Všechny soubory (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
@@ -5294,18 +5294,18 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="262"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Upravit tento vzor</translation>
+        <translation>Upravit tento vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="263"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zdvojit a upravit tento vzor</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="269"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Činnosti pro vzory záhlaví výkresu</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
@@ -5447,7 +5447,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="59"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation type="unfinished"></translation>
+        <translation>Pozor: Okraje prázdných buněk nejsou na konečném výkresu nakresleny.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
@@ -5576,13 +5576,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="62"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">nebo nový název</translation>
+        <translation>nebo nový název</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="74"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished">Nový vzor (zadejte jeho název)</translation>
+        <translation>Nový vzor (zadejte jeho název)</translation>
     </message>
 </context>
 <context>
@@ -5822,7 +5822,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished">Záhlaví výkresu projektu &quot;%1&quot;</translation>
+        <translation>Záhlaví výkresu projektu &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -5831,13 +5831,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sbírka projektu bez názvu (ID %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sbírka projektu &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
