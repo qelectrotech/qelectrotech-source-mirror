@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">arret d'urgence tourné dévérouillé</name>
         <name lang="pl">Łącznik awaryjny odblokowywany przez obracanie</name>
+        <name lang="cs">Nouzové zastavení odblokované obrácením</name>
     </names>
     <informations></informations>
     <description>

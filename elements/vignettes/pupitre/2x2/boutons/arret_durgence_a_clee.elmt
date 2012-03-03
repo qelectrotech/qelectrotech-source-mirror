@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">arret d'urgence à clée</name>
         <name lang="pl">Przycisk awaryjny odblokowywany kluczykiem</name>
+        <name lang="cs">Nouzové zastavení odblokované klíčkem</name>
     </names>
     <informations></informations>
     <description>

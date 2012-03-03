@@ -3,5 +3,6 @@
         <name lang="fr">Depart moteur</name>
         <name lang="es">Start motor</name>
         <name lang="pl">Rozruch silnika</name>
+        <name lang="cs">Spuštění motoru</name>
         </names>
 </qet-directory>

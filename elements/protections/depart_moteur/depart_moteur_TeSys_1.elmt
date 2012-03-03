@@ -3,6 +3,7 @@
         <name lang="en">Start motor TeSys</name>
         <name lang="fr">depart moteur TeSys</name>
         <name lang="pl">Rozruch silnika TeSys</name>
+        <name lang="cs">Spuštění motoru TeSys</name>
     </names>
     <informations></informations>
     <description>
