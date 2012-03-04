@@ -180,6 +180,7 @@ class MergeCellsCommand : public TitleBlockTemplateCommand {
 	
 	// methods
 	public:
+	static bool canMerge(const TitleBlockTemplateCellsSet &, TitleBlockTemplate *);
 	bool isValid() const;
 	virtual void undo();
 	virtual void redo();
@@ -210,6 +211,7 @@ class SplitCellsCommand : public TitleBlockTemplateCommand {
 	
 	// methods
 	public:
+	static bool canSplit(const TitleBlockTemplateCellsSet &splitted_cells, TitleBlockTemplate *tbtemplate);
 	bool isValid() const;
 	virtual void undo();
 	virtual void redo();

@@ -499,6 +499,7 @@ void QETTitleBlockTemplateEditor::selectedCellsChanged(QList<TitleBlockCell *> s
 	} else {
 		template_cell_editor_widget_ -> setVisible(false);
 	}
+	updateActions();
 }
 
 /**
@@ -561,10 +562,15 @@ void QETTitleBlockTemplateEditor::updateEditorTitle() {
 	adequate actions.
 */
 void QETTitleBlockTemplateEditor::updateActions() {
-	/// TODO complete this method
 	save_ -> setEnabled(!read_only_);
-	merge_cells_ -> setEnabled(!read_only_);
-	split_cell_ -> setEnabled(!read_only_);
+	
+	bool can_merge;
+	bool can_split;
+	if (!read_only_) {
+		template_edition_area_view_ -> analyzeSelectedCells(&can_merge, &can_split);
+	}
+	merge_cells_ -> setEnabled(!read_only_ && can_merge);
+	split_cell_ -> setEnabled(!read_only_ && can_split);
 }
 
 /**

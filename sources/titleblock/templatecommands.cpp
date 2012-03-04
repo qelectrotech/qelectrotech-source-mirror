@@ -577,8 +577,7 @@ MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_ce
 	row_span_after_(-1),
 	col_span_after_(-1)
 {
-	// basic check
-	if (merged_cells.count() < 2) return;
+	if (!canMerge(merged_cells, tbtemplate)) return;
 	
 	// the spanning cell is the top left cell
 	TitleBlockTemplateVisualCell *top_left_cell = merged_cells.topLeftCell();
@@ -615,6 +614,25 @@ MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_ce
 	Destructor
 */
 MergeCellsCommand::~MergeCellsCommand() {
+}
+
+/**
+	@param merged_cells Cell sto be merged.
+	@param tbtemplate Modified title block template.
+	@return true if the merge is feasible, false otherwise
+*/
+bool MergeCellsCommand::canMerge(const TitleBlockTemplateCellsSet &merged_cells, TitleBlockTemplate *tbtemplate) {
+	// basic checks
+	if (!merged_cells.isRectangle()) return(false);
+	if (merged_cells.count() < 2) return(false);
+	
+	// the spanning cell is the top left cell
+	TitleBlockTemplateVisualCell *top_left_cell = merged_cells.topLeftCell();
+	if (!top_left_cell || !top_left_cell -> cell()) return(false);
+	
+	if (!getBottomRightCell(merged_cells)) return(false);
+	
+	return(true);
 }
 
 /**
@@ -703,17 +721,10 @@ SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_
 	row_span_before_(-1),
 	col_span_before_(-1)
 {
-	// basic check: the command applies to a single visual cell only
-	if (splitted_cells.count() != 1) return;
-	
-	// fetch the spanning cell
-	spanning_cell_ = splitted_cells.first() -> cell();
-	if (!spanning_cell_) return;
-	
-	// ensure the cell spans over other cells and therefore can be splitted
-	if (!spanning_cell_ -> spans()) return;
+	if (!canSplit(splitted_cells, tbtemplate)) return;
 	
 	// retrieve values necessary for the undo operation
+	spanning_cell_ = splitted_cells.first() -> cell();
 	spanned_cells_ = tbtemplate_ -> spannedCells(spanning_cell_);
 	row_span_before_ = spanning_cell_ -> row_span;
 	col_span_before_ = spanning_cell_ -> col_span;
@@ -732,6 +743,27 @@ SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_
 	Destructor
 */
 SplitCellsCommand::~SplitCellsCommand() {
+}
+
+/**
+	@param splitted_cells Cell to be splitted.
+	@param tbtemplate Modified title block template.
+	@return true if the split is feasible, false otherwise
+*/
+bool SplitCellsCommand::canSplit(const TitleBlockTemplateCellsSet &splitted_cells, TitleBlockTemplate *tbtemplate) {
+	Q_UNUSED(tbtemplate)
+	
+	// basic check: the command applies to a single visual cell only
+	if (splitted_cells.count() != 1) return(false);
+	
+	// fetch the spanning cell
+	TitleBlockCell *spanning_cell = splitted_cells.first() -> cell();
+	if (!spanning_cell) return(false);
+	
+	// ensure the cell spans over other cells and therefore can be splitted
+	if (!spanning_cell -> spans()) return(false);
+	
+	return(true);
 }
 
 /**

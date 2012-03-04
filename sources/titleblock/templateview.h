@@ -46,6 +46,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	virtual QList<TitleBlockCell *> selectedCells() const;
 	virtual TitleBlockTemplateCellsSet selectedCellsSet() const;
 	virtual TitleBlockTemplateCellsSet cells(const QRectF &) const;
+	virtual void analyzeSelectedCells(bool *, bool *);
 	virtual QSizeF templateSize() const;
 	virtual qreal templateWidth() const;
 	virtual qreal templateHeight() const;

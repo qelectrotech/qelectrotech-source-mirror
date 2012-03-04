@@ -251,19 +251,6 @@ void TitleBlockTemplateView::mergeSelectedCells() {
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
 	
-	// merging applies only to cells composing a rectangle
-	if (!selected_cells.isRectangle()) {
-		qDebug() << "selected cells are not composing a rectangle";
-		return;
-	}
-	
-	// the merge area may also be too small
-	if (selected_cells.count() < 2) {
-		qDebug() << "the merge area does not even contain 2 selected and mergeable cells";
-		return;
-	}
-	
-	qDebug() << Q_FUNC_INFO << "ok, ready for cells merge";
 	MergeCellsCommand *merge_command = new MergeCellsCommand(selected_cells, tbtemplate_);
 	if (merge_command -> isValid()) requestGridModification(merge_command);
 }
@@ -274,12 +261,6 @@ void TitleBlockTemplateView::mergeSelectedCells() {
 void TitleBlockTemplateView::splitSelectedCell() {
 	// retrieve the selected cells
 	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
-	
-	// we expect only one visual cell to be selected
-	if (selected_cells.count() != 1) {
-		qDebug() << "please select a single cell";
-		return;
-	}
 	
 	SplitCellsCommand *split_command = new SplitCellsCommand(selected_cells, tbtemplate_);
 	if (split_command -> isValid()) requestGridModification(split_command);
@@ -317,6 +298,30 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::cells(const QRectF &rect) con
 	QPolygonF mapped_rect(form_ -> mapToScene(rect));
 	QList<QGraphicsItem *> items = scene() -> items(mapped_rect, Qt::IntersectsItemShape);
 	return(makeCellsSetFromGraphicsItems(items));
+}
+
+/**
+	@param can_merge If non-zero, will be changed to reflect whether selected cells may be merged
+	@param can_merge If non-zero, will be changed to reflect whether selected cells may be splitted
+*/
+void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge, bool *can_split) {
+	if (!can_merge && !can_split) return;
+	
+	if (!tbtemplate_) {
+		if (can_merge) *can_merge = false;
+		if (can_split) *can_split = false;
+		return;
+	}
+	
+	// retrieve the selected cells
+	TitleBlockTemplateCellsSet selected_cells = selectedCellsSet();
+	
+	if (can_merge) {
+		*can_merge = MergeCellsCommand::canMerge(selected_cells, tbtemplate_);
+	}
+	if (can_split) {
+		*can_split = SplitCellsCommand::canSplit(selected_cells, tbtemplate_);
+	}
 }
 
 /**
