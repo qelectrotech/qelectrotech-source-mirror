@@ -511,17 +511,20 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 		else break;
 	}
 	if (i < 3) return(false);
-	QPointF points[i-1];
+	QVector<QPointF> points(i-1);
 	for (int j = 1 ; j < i ; ++ j) {
-		points[j-1] = QPointF(
-			e.attribute(QString("x%1").arg(j)).toDouble(),
-			e.attribute(QString("y%1").arg(j)).toDouble()
+		points.insert(
+			j - 1,
+			QPointF(
+				e.attribute(QString("x%1").arg(j)).toDouble(),
+				e.attribute(QString("y%1").arg(j)).toDouble()
+			)
 		);
 	}
 	qp.save();
 	setPainterStyle(e, qp);
-	if (e.attribute("closed") == "false") qp.drawPolyline(points, i-1);
-	else qp.drawPolygon(points, i-1);
+	if (e.attribute("closed") == "false") qp.drawPolyline(points.data(), i-1);
+	else qp.drawPolygon(points.data(), i-1);
 	qp.restore();
 	return(true);
 }
