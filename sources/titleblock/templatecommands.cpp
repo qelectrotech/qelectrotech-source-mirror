@@ -622,6 +622,8 @@ MergeCellsCommand::~MergeCellsCommand() {
 	@return true if the merge is feasible, false otherwise
 */
 bool MergeCellsCommand::canMerge(const TitleBlockTemplateCellsSet &merged_cells, TitleBlockTemplate *tbtemplate) {
+	Q_UNUSED(tbtemplate)
+	
 	// basic checks
 	if (!merged_cells.isRectangle()) return(false);
 	if (merged_cells.count() < 2) return(false);
