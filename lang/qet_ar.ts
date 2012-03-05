@@ -8,7 +8,7 @@
         <source>À propos de QElectrotech</source>
         <comment>window title</comment>
         <translatorcomment>نافذة عنوان</translatorcomment>
-        <translation></translation>
+        <translation> QElectrotech حول البرنامج</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="37"/>
@@ -128,7 +128,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="163"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation>هذا البرنامج تحت الترخيص GNU/GPL</translation>
+        <translation>هذا البرنامج تحت الترخيص  GNU/GPL</translation>
     </message>
 </context>
 <context>
@@ -333,7 +333,7 @@
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translatorcomment>عنوان نافذة</translatorcomment>
-        <translation>اعدادات البرنامج QElectrotech</translation>
+        <translation>QElectrotech إعدادات البرنامج</translation>
     </message>
 </context>
 <context>
@@ -360,13 +360,13 @@
         <location filename="../sources/diagramprintdialog.cpp" line="205"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
-        <translation>الطباعة في ملف بصيغة  PDF</translation>
+        <translation>الطباعة في ملف بصيغة PDF</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="206"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
-        <translation>الطباعة في ملف بصيغة  Post Script (PS)</translation>
+        <translation>الطباعة في ملف بصيغة  (Post script (PS</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="211"/>
@@ -492,12 +492,12 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="841"/>
         <source>Autorisées</source>
-        <translation>مسموح</translation>
+        <translation>مسموح </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="841"/>
         <source>Interdites</source>
-        <translation>ممنوع</translation>
+        <translation>ممنوع </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="842"/>
@@ -1076,24 +1076,24 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanel.cpp" line="403"/>
         <source>Cartouches embarqués</source>
-        <translation type="unfinished"></translation>
+        <translation>إطارات تعريف مضمنة</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="410"/>
         <source>Collection embarquée</source>
-        <translation type="unfinished"></translation>
+        <translation>تشكيلة مُضمنة</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="437"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر وانقل هذا النموذج لإطار التعريف في المخطط لتطبيقه عليه</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا نموذج اطار تعريف يُمكن تطبيقه على مخطط</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="461"/>
@@ -1104,7 +1104,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="464"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
         <comment>Tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -1412,22 +1412,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="142"/>
         <source>PNG (*.png)</source>
-        <translation>PNG (*.png)</translation>
+        <translation>(PNG (*.png</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="143"/>
         <source>JPEG (*.jpg)</source>
-        <translation>JPEG (*.jpg)</translation>
+        <translation>(JPEG (*.jpg</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="144"/>
         <source>Bitmap (*.bmp)</source>
-        <translation>Bitmap (*.bmp)</translation>
+        <translation>(Bitmap (*.bmp</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="145"/>
         <source>SVG (*.svg)</source>
-        <translation>SVG (*.svg)</translation>
+        <translation>(SVG (*.svg</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="151"/>
@@ -1511,7 +1511,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="119"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
-        <translation>الدمج الآلي للعناصر في المشاريع  ) مستحسن)</translation>
+        <translation>الدمج الآلي للعناصر في المشاريع (مستحسن)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
@@ -1531,35 +1531,35 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="219"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished">لا وجود لملف</translation>
+        <translation>لا وجود لملف</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="336"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">مخطط بدون عنوان</translation>
+        <translation>مخطط بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="343"/>
         <source>%1 - %2</source>
         <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
-        <translation type="unfinished">%1 - %2</translation>
+        <translation>%1 - %2</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="422"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished">نماذج إطار التعريف</translation>
+        <translation>نماذج إطار التعريف</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="512"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
-        <translation type="unfinished">نموذج  &quot;%1&quot;</translation>
+        <translation>نموذج  &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1048"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation type="unfinished">%1[غير مُستعمل في المشروع]</translation>
+        <translation>%1  ltr;[غير مستعمل قي المخطط]</translation>
     </message>
 </context>
 <context>
@@ -1669,54 +1669,54 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>استحالة الوصول إلى الصنف الأصلي rtl;(الأم)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>استحالة الحصول على توصيف XML  لهذا النموذج</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">خطأ</translation>
+        <translation>خطأ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>إدماج نموذج إطار تعريف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>النموذج سبق دمجه في المشروع. غير أن النسخة التي تحاول تطبيقها تبدو مختلفة.ما الذي تريد فعله؟ </translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>دمج العنصر الذي تمّ إيداعه</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>حذف عنصر سبق دمجه</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation>العقد بين العنصرين</translation>
     </message>
 </context>
 <context>
@@ -2029,7 +2029,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="158"/>
         <source>Saisissez les dimensions du nouvel élément ainsi que la position du hotspot (point de saisie de l&apos;élément à la souris) en considérant que l&apos;élément est dans son orientation par défaut.</source>
         <comment>wizard page subtitle</comment>
-        <translation>ادخل قياسات العنصر الجديد وكذلك موضع النقطة الفعالة  ) نقطة دخال العنصر بالماوس ( مع الأخذ في الإعتبار أنّ إتجاه العنصر في وضعه الافتراضي .</translation>
+        <translation>ادخل قياسات العنصر الجديد وكذلك موضع النقطة الفعالة - نقطة إدخال العنصر - مع الأخذ في الإعتبار أنّ إتجاه العنصر في وضعه الافتراضي .</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="175"/>
@@ -2253,7 +2253,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف نماذج اطارات التعريفالغير مستعملة في المشروع</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="669"/>
@@ -2325,12 +2325,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="272"/>
         <source>Collection QET</source>
-        <translation type="unfinished"></translation>
+        <translation>تشكيلة QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="286"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>تشكيلة المستعمل</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="330"/>
@@ -2437,7 +2437,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="1279"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>استرجع كلّ محرري إطار التعريف</translation>
+        <translation>&amp;استرجع كلّ محرري إطار التعريف</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1280"/>
@@ -3595,7 +3595,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="367"/>
         <source>Afficha&amp;ge</source>
-        <translation>عرض</translation>
+        <translation>&amp;عرض</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="368"/>
@@ -3652,12 +3652,12 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="608"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
-            <numerusform>%n الجزء أو الأجزاء المحددة.</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n جزء محدد</numerusform>
+            <numerusform>%n جزء محدد</numerusform>
+            <numerusform>%n جزءان محددان</numerusform>
+            <numerusform>%n أجزاء محددة</numerusform>
+            <numerusform>%n أجزاء محددة</numerusform>
+            <numerusform>%n جزء محدد</numerusform>
         </translation>
     </message>
     <message>
@@ -3827,7 +3827,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1245"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
-        <translation>عنااصر QElectrotech (*.elmt); ملفات XML(*.xml)::كل الملفات (*)</translation>
+        <translation>عناصر QElectrotech (*.elmt); ملفات XML(*.xml)::كل الملفات (*)</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1266"/>
@@ -3858,80 +3858,80 @@ Options disponibles :
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="45"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;اعدادات البرنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="46"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>يسمح بتعديل مختلف معالم QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="53"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;حول البرنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="54"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>عرض معلومات حول البرنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>حول &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>عرض معلومات حول مكتبة Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="66"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation type="unfinished">&amp;اعدادات</translation>
+        <translation>&amp;اعدادات</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="71"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation type="unfinished">&amp;مساعدة</translation>
+        <translation>&amp;مساعدة</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="115"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation type="unfinished"></translation>
+        <translation>الخروج من وضع &amp;ملئ الشاشة</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="117"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>عرض البرنامج QElectrotech في وضع النوافذ</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="119"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation type="unfinished">المرور إلى &amp;وضع ملئ الشاشة</translation>
+        <translation>المرور إلى &amp;وضع ملئ الشاشة</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="121"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>عرض البرنامج QElectrotech في وضع ملئ الشاشة</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Ctrl+Shift+F</source>
-        <translation type="unfinished">Ctrl+Shift+F</translation>
+        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="135"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>اعرض</translation>
     </message>
 </context>
 <context>
@@ -4134,7 +4134,7 @@ Options disponibles :
         <location filename="../sources/qetproject.cpp" line="705"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>حدث خطأ أثناء الإدماج</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="885"/>
@@ -4162,49 +4162,49 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="89"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>حفظ النموذج الحالي؟</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="91"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>هل تريد حفظ النموذج %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="143"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
-        <translation type="unfinished"></translation>
+        <translation>نموذج_جديد</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="151"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>تكرار نموذج اطار التعريف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="152"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation type="unfinished"></translation>
+        <translation>لتكرار هذا النموذج, ادخل الاسم لمطلوب لنسخته</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="294"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;جديد</translation>
+        <translation>&amp;جديد</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="295"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;فتح</translation>
+        <translation>&amp;فتح</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="296"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>فتح من ملف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="297"/>
@@ -4222,7 +4222,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="299"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>حفظ إلى ملف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
@@ -4258,13 +4258,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="678"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">حفظ باسم</translation>
+        <translation>حفظ باسم</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="680"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>نماذج اطارات تعريف QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
@@ -4282,13 +4282,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="315"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
-        <translation type="unfinished">Ctrl+Shift+O</translation>
+        <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="317"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
-        <translation type="unfinished">Ctrl+Shift+S</translation>
+        <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="318"/>
@@ -4360,19 +4360,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished">[مُعدّل]</translation>
+        <translation>[مُعدّل]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="461"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
-        <translation type="unfinished"></translation>
+        <translation>[للقراءة فقط]</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="464"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
-        <translation type="unfinished"> %1 {1 %2?}</translation>
+        <translation>%1 %2</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="518"/>
@@ -4390,19 +4390,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="599"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>فتح نموذج</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="618"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
-        <translation type="unfinished">فتح ملف</translation>
+        <translation>فتح ملف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="620"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>نماذج اطارات تعريف QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
@@ -5338,18 +5338,18 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="262"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">تحرير هذا النموذج</translation>
+        <translation>تحرير هذا النموذج</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="263"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>تكرار و تحرير هذا النموذج</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="269"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان كتلة قوالب الإجراءات</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
@@ -5492,7 +5492,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="59"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation type="unfinished"></translation>
+        <translation>تحذير: حدود الخلايا الفارغة لا تظهر عند التقديم النهائي على المخطط.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
@@ -5620,13 +5620,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="62"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">أو اسم جديد</translation>
+        <translation>أو اسم جديد</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="74"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished">نموذج جديد  (ادخل اسمه )</translation>
+        <translation>نموذج جديد - ادخل اسمه -</translation>
     </message>
 </context>
 <context>
@@ -5866,7 +5866,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished">اطار تعريف المشروع   &quot;%1&quot;</translation>
+        <translation>&quot;%1&quot; إطارات تعريف المشروع</translation>
     </message>
 </context>
 <context>
@@ -5875,13 +5875,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>(id%1) تشكيلة مشروع بدون اسم</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&quot;%1&quot; تشكيلة المشروع</translation>
     </message>
 </context>
 </TS>
