@@ -1,4 +1,4 @@
-<titleblocktemplate name="DIN_A4">
+<titleblocktemplate name="DIN_A4_2">
     <logos>
         <logo storage="xml" type="svg" name="logo.svg">
             <svg width="351.43362" version="1.0" xmlns="http://www.w3.org/2000/svg" height="331.25851">
@@ -60,8 +60,10 @@
             </value>
             <label/>
         </field>
-        <field valign="center" row="0" colspan="1" fontsize="6" hadjust="true" col="12" name="" displaylabel="false" align="left">
-            <value/>
+        <field valign="center" row="0" colspan="1" fontsize="6" hadjust="true" col="12" name="label4" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label4</translation>
+            </value>
             <label>
                 <translation lang="en">File</translation>
                 <translation lang="it">File</translation>
@@ -98,13 +100,11 @@
                 <translation lang="fr">design</translation>
             </label>
         </field>
-        <field valign="center" row="1" colspan="1" hadjust="true" col="12" name="" displaylabel="false" align="left">
-            <value/>
-            <label>
-                <translation lang="en">Folio</translation>
-                <translation lang="it">Foglio</translation>
-                <translation lang="fr">Folio</translation>
-            </label>
+        <field valign="center" row="1" colspan="1" fontsize="6" hadjust="true" col="12" name="label5" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label5</translation>
+            </value>
+            <label/>
         </field>
         <field valign="center" row="2" fontsize="6" hadjust="true" col="0" name="version" displaylabel="false" align="center">
             <value>
@@ -141,8 +141,10 @@
             </value>
             <label/>
         </field>
-        <field valign="center" rowspan="1" row="2" fontsize="9" hadjust="true" col="10" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" rowspan="1" row="2" fontsize="8" col="10" name="label3" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label3</translation>
+            </value>
             <label/>
         </field>
         <field valign="center" rowspan="1" row="2" colspan="1" fontsize="9" hadjust="true" col="11" name="" displaylabel="true" align="center">
@@ -195,15 +197,19 @@
             </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="6" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="6" name="label1" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label1</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="7" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="7" name="label2" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label2</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="8" name="origine" displaylabel="false" align="left">
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="8" name="origine" displaylabel="false" align="left">
             <value>
                 <translation lang="fr">ORIGINE</translation>
             </value>
