@@ -23,7 +23,7 @@
             <value/>
             <label/>
         </field>
-        <field valign="center" row="0" fontsize="9" hadjust="true" col="4" name="date" displaylabel="false" align="center">
+        <field valign="center" row="0" fontsize="6" hadjust="true" col="4" name="date" displaylabel="false" align="center">
             <value>
                 <translation lang="fr">DATE</translation>
             </value>
@@ -31,13 +31,11 @@
                 <translation lang="fr">date</translation>
             </label>
         </field>
-        <field valign="center" row="0" fontsize="9" hadjust="true" col="5" name="date" displaylabel="false" align="center">
+        <field valign="center" row="0" fontsize="6" hadjust="true" col="5" name="DATE1" displaylabel="false" align="left">
             <value>
-                <translation lang="fr">4.02.12</translation>
+                <translation lang="fr">%date1</translation>
             </value>
-            <label>
-                <translation lang="fr">%date</translation>
-            </label>
+            <label/>
         </field>
         <field valign="center" rowspan="2" row="0" colspan="1" fontsize="9" hadjust="true" col="6" name="" displaylabel="false" align="center">
             <value/>
@@ -46,7 +44,7 @@
             </label>
         </field>
         <logo rowspan="2" row="0" col="8" name="" resource="logo.svg"/>
-        <field valign="center" rowspan="3" row="0" hadjust="true" col="9" name="title" displaylabel="true" align="center">
+        <field valign="center" rowspan="3" row="0" hadjust="true" col="9" name="title" displaylabel="false" align="center">
             <value>
                 <translation lang="en">%title</translation>
             </value>
@@ -56,14 +54,14 @@
                 <translation lang="fr">Titre</translation>
             </label>
         </field>
-        <field valign="center" rowspan="1" row="0" colspan="1" fontsize="9" hadjust="true" col="10" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" rowspan="1" row="0" colspan="1" fontsize="6" hadjust="true" col="10" name="FICHIER" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%filename</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="0" colspan="1" hadjust="true" col="12" name="" displaylabel="false" align="left">
-            <value>
-                <translation lang="en">%filename</translation>
-            </value>
+        <field valign="center" row="0" colspan="1" fontsize="6" hadjust="true" col="12" name="" displaylabel="false" align="left">
+            <value/>
             <label>
                 <translation lang="en">File</translation>
                 <translation lang="it">File</translation>
@@ -86,48 +84,61 @@
             <value/>
             <label/>
         </field>
-        <field valign="center" row="1" fontsize="9" hadjust="true" col="4" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="1" fontsize="6" hadjust="true" col="4" name="" displaylabel="true" align="center">
+            <value>
+                <translation lang="fr">DESSINE</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="1" fontsize="9" hadjust="true" col="5" name="" displaylabel="false" align="center">
-            <value/>
+        <field valign="center" row="1" fontsize="6" hadjust="true" col="5" name="DESSIN" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%dessin</translation>
+            </value>
             <label>
                 <translation lang="fr">design</translation>
             </label>
         </field>
-        <field valign="center" row="1" colspan="1" hadjust="true" col="12" name="folio" displaylabel="true" align="left">
-            <value>
-                <translation lang="en">%{folio-id}/%{folio-total}</translation>
-            </value>
+        <field valign="center" row="1" colspan="1" hadjust="true" col="12" name="" displaylabel="false" align="left">
+            <value/>
             <label>
                 <translation lang="en">Folio</translation>
                 <translation lang="it">Foglio</translation>
                 <translation lang="fr">Folio</translation>
             </label>
         </field>
-        <field valign="center" row="2" fontsize="9" hadjust="true" col="0" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="0" name="version" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">%rev</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="2" fontsize="9" hadjust="true" col="1" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="1" name="emis" displaylabel="false" align="center">
+            <value>
+                <translation lang="it">Emissionne</translation>
+                <translation lang="fr">EMIS</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="2" fontsize="9" hadjust="true" col="2" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="2" name="DATE" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">%date2</translation>
+            </value>
             <label/>
         </field>
         <field valign="center" row="2" fontsize="9" hadjust="true" col="3" name="" displaylabel="true" align="center">
             <value/>
             <label/>
         </field>
-        <field valign="center" row="2" fontsize="9" hadjust="true" col="4" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="4" name="CONTROLE" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">CONTROL</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="2" fontsize="9" hadjust="true" col="5" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="5" name="CONTROL" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%control</translation>
+            </value>
             <label/>
         </field>
         <field valign="center" rowspan="1" row="2" fontsize="9" hadjust="true" col="10" name="" displaylabel="true" align="center">
@@ -138,34 +149,50 @@
             <value/>
             <label/>
         </field>
-        <field valign="center" row="2" fontsize="9" hadjust="true" col="13" name="" displaylabel="true" align="center">
-            <value/>
-            <label/>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="13" name="FOLIO" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%{folio-id}</translation>
+            </value>
+            <label>
+                <translation lang="fr">FOLIO</translation>
+            </label>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="0" name="rev" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="5" hadjust="true" col="0" name="rev" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">REV</translation>
+            </value>
             <label>
                 <translation lang="fr">rev</translation>
             </label>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="1" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="1" name="modification" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">MODIFICATION</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="2" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="2" name="DATE" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">DATE</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="3" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="3" name="FIRME" displaylabel="true" align="center">
+            <value>
+                <translation lang="fr">FIRME</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="4" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="4" name="APROUVE" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">APROUV</translation>
+            </value>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="5" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="5" name="APROUV" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%aprouv</translation>
+            </value>
             <label/>
         </field>
         <field valign="center" row="3" fontsize="9" hadjust="true" col="6" name="" displaylabel="true" align="center">
@@ -176,14 +203,18 @@
             <value/>
             <label/>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="8" name="origine" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="9" hadjust="true" col="8" name="origine" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">ORIGINE</translation>
+            </value>
             <label>
                 <translation lang="fr">origine</translation>
             </label>
         </field>
-        <field valign="center" row="3" fontsize="9" hadjust="true" col="13" name="" displaylabel="true" align="center">
-            <value/>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="13" name="TOTAL" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%{folio-total}</translation>
+            </value>
             <label/>
         </field>
     </grid>
