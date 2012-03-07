@@ -5598,7 +5598,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation>Logo wstawione do tego szablonu :</translation>
+        <translation>Logo osadzone w szablonie :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="85"/>
@@ -5645,7 +5645,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="209"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Istnieje już logo z nazwą &quot;%1&quot; w tym szablonie tabliczki. Chcesz zmienić czy określić inną nazwę dla nowego logo ?</translation>
+        <translation>Istnieje już logo z nazwą &quot;%1&quot; w tym szablonie tabliczki. Chcesz zmienić, czy określić inną nazwę dla nowego logo ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="245"/>

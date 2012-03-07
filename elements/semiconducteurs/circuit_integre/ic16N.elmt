@@ -1,8 +1,9 @@
-<definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="180" type="element" orientation="ydyy">
+<definition width="80" version="0.22" hotspot_x="40" hotspot_y="50" height="180" type="element" orientation="ydyy">
     <names>
         <name lang="de">Integrierte Schaltung, 16 Pin, nummeriert</name>
         <name lang="en">Integrated Circuit, 16 pins, numbered</name>
         <name lang="fr">Circuit integré 16 broches , numerotées</name>
+        <name lang="pl">Układ scalony, 16 pinów ponumerowanych</name>
     </names>
     <informations></informations>
     <description>
