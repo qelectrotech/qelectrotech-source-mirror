@@ -169,6 +169,15 @@ QList<TitleBlockCell *> TitleBlockTemplateView::copy() {
 }
 
 /**
+	@return true if the content of the clipboard looks interesting
+*/
+bool TitleBlockTemplateView::mayPaste() {
+	// retrieve the clipboard content
+	QClipboard *clipboard = QApplication::clipboard();
+	return(clipboard -> text().contains("<titleblocktemplate-partial"));
+}
+
+/**
 	Import the cells described in the clipboard.
 */
 void TitleBlockTemplateView::paste() {
@@ -385,8 +394,9 @@ TitleBlockTemplateCellsSet TitleBlockTemplateView::cells(const QRectF &rect) con
 /**
 	@param can_merge If non-zero, will be changed to reflect whether selected cells may be merged
 	@param can_merge If non-zero, will be changed to reflect whether selected cells may be splitted
+	@param count     If non-zero, will be changed to reflect the number of selected cells
 */
-void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge, bool *can_split) {
+void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge, bool *can_split, int *count) {
 	if (!can_merge && !can_split) return;
 	
 	if (!tbtemplate_) {
@@ -403,6 +413,9 @@ void TitleBlockTemplateView::analyzeSelectedCells(bool *can_merge, bool *can_spl
 	}
 	if (can_split) {
 		*can_split = SplitCellsCommand::canSplit(selected_cells, tbtemplate_);
+	}
+	if (count) {
+		*count = selectedCellsSet().count();
 	}
 }
 

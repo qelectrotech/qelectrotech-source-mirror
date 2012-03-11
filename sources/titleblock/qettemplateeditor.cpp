@@ -452,6 +452,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 		SLOT(savePreviewWidthToApplicationSettings(int, int))
 	);
 	connect(undo_stack_, SIGNAL(cleanChanged(bool)), this, SLOT(updateEditorTitle()));
+	connect(QApplication::clipboard(), SIGNAL(dataChanged()), this, SLOT(updateActions()));
 }
 
 /**
@@ -578,9 +579,13 @@ void QETTitleBlockTemplateEditor::updateActions() {
 	
 	bool can_merge;
 	bool can_split;
+	int count;
 	if (!read_only_) {
-		template_edition_area_view_ -> analyzeSelectedCells(&can_merge, &can_split);
+		template_edition_area_view_ -> analyzeSelectedCells(&can_merge, &can_split, &count);
 	}
+	cut_ -> setEnabled(!read_only_ && count);
+	copy_ -> setEnabled(count);
+	paste_ -> setEnabled(!read_only_ && count && template_edition_area_view_ -> mayPaste());
 	merge_cells_ -> setEnabled(!read_only_ && can_merge);
 	split_cell_ -> setEnabled(!read_only_ && can_split);
 }
