@@ -1064,7 +1064,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="461"/>
         <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation>Ten element można skopiować, przez przeciągnięcie do schematu</translation>
+        <translation>Ten element można wstawić, przez przeciągnięcie do schematu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="464"/>
@@ -2684,7 +2684,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Pas de zoom</source>
-        <translation>Przywróć powiększenie</translation>
+        <translation>Bez powiększenia</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
@@ -2836,7 +2836,7 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="288"/>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
-        <translation>Obrót zaznaczonego tekstu o dowolny kąt</translation>
+        <translation>Obraca zaznaczone teksty o dowolny kąt</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
@@ -3067,7 +3067,7 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="290"/>
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
-        <translation>Przywrócenie tras przewodów, niezależnie od zmian wprowadzonych przez użytkownika</translation>
+        <translation>Przywraca trasy przewodów, niezależnie od zmian wprowadzonych przez użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
@@ -3444,7 +3444,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="146"/>
         <source>Pas de zoom</source>
-        <translation>Skasuj powiększenie</translation>
+        <translation>Bez powiększenia</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="206"/>
@@ -4220,7 +4220,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="306"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
-        <translation>Przywróć powiększenie</translation>
+        <translation>Bez powiększenia</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="678"/>
@@ -4422,37 +4422,37 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
         <source>ajouter 1 %1</source>
         <comment>undo caption - %1 is an element name</comment>
-        <translation>wstaw 1 %1</translation>
+        <translation>wstawienie 1 %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="75"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
-        <translation>Wstaw pole tekstowe</translation>
+        <translation>Wstawienie pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="110"/>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation>wstaw przewód</translation>
+        <translation>wstawienie przewodu</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="149"/>
         <source>supprimer %1</source>
         <comment>undo caption - %1 is a sentence listing the removed content</comment>
-        <translation>usuń %1</translation>
+        <translation>usunięcie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="219"/>
         <source>coller %1</source>
         <comment>undo caption - %1 is a sentence listing the content to paste</comment>
-        <translation>wklej %1</translation>
+        <translation>wklejenie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="278"/>
         <source>couper %1</source>
         <comment>undo caption - %1 is a sentence listing the content to cut</comment>
-        <translation>wytnij %1</translation>
+        <translation>wycięcie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="318"/>
@@ -4460,7 +4460,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="525"/>
         <source>déplacer %1</source>
         <comment>undo caption - %1 is a sentence listing the moved content</comment>
-        <translation>przesuń %1</translation>
+        <translation>przesunięcie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="546"/>
@@ -4472,13 +4472,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="586"/>
         <source>pivoter %1</source>
         <comment>undo caption - %1 is a sentence listing the rotated content</comment>
-        <translation>obróć %1</translation>
+        <translation>obrócenie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
-        <translation>orientacji %1 na %2</translation>
+        <translation>zmiana orientacji %1 na %2</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="746"/>
@@ -4490,7 +4490,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="799"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
-        <translation>Przywróć %1</translation>
+        <translation>Przywrócenie %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="837"/>
@@ -4659,8 +4659,8 @@ Co chcesz zrobić ?</translation>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>element</numerusform>
-            <numerusform>%n elementy</numerusform>
+            <numerusform>elementu</numerusform>
+            <numerusform>%n elementów</numerusform>
             <numerusform>%n elementów</numerusform>
         </translation>
     </message>
@@ -4681,8 +4681,8 @@ Co chcesz zrobić ?</translation>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>przewód</numerusform>
-            <numerusform>%n przewody</numerusform>
+            <numerusform>przewodu</numerusform>
+            <numerusform>%n przewodów</numerusform>
             <numerusform>%n przewodów</numerusform>
         </translation>
     </message>
@@ -4697,8 +4697,8 @@ Co chcesz zrobić ?</translation>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>pole tekstowe</numerusform>
-            <numerusform>%n pola tekstowe</numerusform>
+            <numerusform>pola tekstowego</numerusform>
+            <numerusform>%n pól tekstowych</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
     </message>
@@ -4772,13 +4772,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="400"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Wstawienie linii</translation>
+        <translation>Wstawienie wiersza</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="402"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Usuięcie linii</translation>
+        <translation>Usuięcie wiersza</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="406"/>
@@ -4796,7 +4796,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="541"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Zmiana linii</translation>
+        <translation>Zmiana wiersza</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="543"/>
@@ -5729,7 +5729,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templateview.cpp" line="385"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
-        <translation>Wstaw linię (przed)</translation>
+        <translation>Wstaw wiersz (przed)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="386"/>
@@ -5741,7 +5741,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templateview.cpp" line="387"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
-        <translation>Wstaw linię (po)</translation>
+        <translation>Wstaw wiersz (po)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="388"/>
@@ -5753,7 +5753,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templateview.cpp" line="389"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
-        <translation>Zmiana rozmiaru tej linii</translation>
+        <translation>Zmiana rozmiaru tego wiersza</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="390"/>
@@ -5765,7 +5765,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templateview.cpp" line="391"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
-        <translation>Usuń tą linię</translation>
+        <translation>Usuń ten wiersz</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="392"/>
