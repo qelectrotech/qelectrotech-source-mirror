@@ -22,8 +22,8 @@
 #include <QUndoCommand>
 #include "dimension.h"
 #include "templatecellsset.h"
+#include "titleblockcell.h"
 class TitleBlockTemplateView;
-class TitleBlockCell;
 class TitleBlockTemplate;
 
 /**
@@ -251,6 +251,30 @@ class ChangeTemplateInformationsCommand : public QUndoCommand {
 	QString new_information_;
 };
 
+/**
+	This class represents the action of cutting a cells set.
+*/
+class CutTemplateCellsCommand : public TitleBlockTemplateCommand {
+	// constructors, destructor
+	public:
+	CutTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = 0);
+	virtual ~CutTemplateCellsCommand();
+	private:
+	CutTemplateCellsCommand(const CutTemplateCellsCommand &);
+	
+	// methods
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void setCutCells(const QList<TitleBlockCell *> &);
+	protected:
+	virtual void updateText();
+	
+	// attributes
+	public:
+	/// Cut cells
+	QHash<TitleBlockCell *, TitleBlockCell::TemplateCellType> cut_cells_;
+};
 
 /**
 	This class represents the action of pasting a cells set.

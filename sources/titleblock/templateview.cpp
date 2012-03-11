@@ -133,26 +133,39 @@ void TitleBlockTemplateView::zoomReset() {
 /**
 	Export currently selected cells to the clipboard before setting them as
 	empty.
+	@return the list of cells copied to the clipboard
 */
-void TitleBlockTemplateView::cut() {
-	/// TODO
+QList<TitleBlockCell *> TitleBlockTemplateView::cut() {
+	if (!tbtemplate_) return(QList<TitleBlockCell *>());
+	QList<TitleBlockCell *> copied_cells = copy();
+	
+	if (!copied_cells.isEmpty()) {
+		CutTemplateCellsCommand *cut_command = new CutTemplateCellsCommand(tbtemplate_);
+		cut_command -> setCutCells(copied_cells);
+		requestGridModification(cut_command);
+	}
+	return(copied_cells);
 }
 
 /**
 	Export currently selected cells to the clipboard.
+	@return the list of cells copied to the clipboard
 */
-void TitleBlockTemplateView::copy() {
-	if (!tbtemplate_) return;
+QList<TitleBlockCell *> TitleBlockTemplateView::copy() {
+	if (!tbtemplate_) return(QList<TitleBlockCell *>());
+	QList<TitleBlockCell *> copied_cells = selectedCells();
 	
 	QDomDocument xml_export;
 	QDomElement tbtpartial = xml_export.createElement("titleblocktemplate-partial");
 	xml_export.appendChild(tbtpartial);
-	foreach (TitleBlockCell *cell, selectedCells()) {
+	foreach (TitleBlockCell *cell, copied_cells) {
 		tbtemplate_ -> exportCellToXml(cell, tbtpartial);
 	}
 	
 	QClipboard *clipboard = QApplication::clipboard();
 	clipboard -> setText(xml_export.toString());
+	
+	return(copied_cells);
 }
 
 /**

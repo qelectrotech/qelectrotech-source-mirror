@@ -851,6 +851,59 @@ void ChangeTemplateInformationsCommand::redo() {
 
 /**
 	Constructor
+*/
+CutTemplateCellsCommand::CutTemplateCellsCommand(TitleBlockTemplate *tb_template, QUndoCommand *parent) :
+	TitleBlockTemplateCommand(tb_template, parent)
+{
+}
+
+/**
+	Destructor
+*/
+CutTemplateCellsCommand::~CutTemplateCellsCommand() {
+}
+
+/**
+	Undo a cut operation
+*/
+void CutTemplateCellsCommand::undo() {
+	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
+		cell -> cell_type = cut_cells_.value(cell);
+	}
+	if (view_) {
+		view_ -> refresh();
+	}
+}
+
+/**
+	Redo a cut operation
+*/
+void CutTemplateCellsCommand::redo() {
+	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
+		cell -> cell_type = TitleBlockCell::EmptyCell;
+	}
+	if (view_) {
+		view_ -> refresh();
+	}
+}
+
+void CutTemplateCellsCommand::setCutCells(const QList<TitleBlockCell *> &cells) {
+	foreach (TitleBlockCell *cell, cells) {
+		cut_cells_.insert(cell, cell -> cell_type);
+	}
+	updateText();
+}
+
+/**
+	Update the label describing this command
+*/
+void CutTemplateCellsCommand::updateText() {
+	setText(QObject::tr("Couper %n cellule(s)", "undo caption", cut_cells_.count()));
+}
+
+
+/**
+	Constructor
 	@param tb_template Changed title block template
 	@param parent Parent command
 */

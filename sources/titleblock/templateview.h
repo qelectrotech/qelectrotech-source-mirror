@@ -58,8 +58,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	void zoomOut();
 	void zoomFit();
 	void zoomReset();
-	void cut();
-	void copy();
+	QList<TitleBlockCell *> cut();
+	QList<TitleBlockCell *> copy();
 	void paste();
 	void addColumnBefore();
 	void addRowBefore();
