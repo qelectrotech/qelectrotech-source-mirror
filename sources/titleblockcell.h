@@ -46,6 +46,8 @@ class TitleBlockCell {
 	QVariant attribute(const QString &);
 	static QString attributeName(const QString &);
 	bool spans() const;
+	void loadContentFromXml(const QDomElement &);
+	void saveContentToXml(QDomElement &);
 	
 	// attributes
 	public:

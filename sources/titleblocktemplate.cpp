@@ -413,66 +413,7 @@ bool TitleBlockTemplate::loadCells(const QDomElement &xml_element) {
 void TitleBlockTemplate::loadCell(const QDomElement &cell_element) {
 	TitleBlockCell *loaded_cell;
 	if (!checkCell(cell_element, &loaded_cell)) return;
-	
-	// common properties
-	if (cell_element.hasAttribute("name") && !cell_element.attribute("name").isEmpty()) {
-		loaded_cell -> value_name = cell_element.attribute("name");
-	}
-	
-	// specific properties
-	if (cell_element.tagName() == "logo") {
-		if (cell_element.hasAttribute("resource") && !cell_element.attribute("resource").isEmpty()) {
-			loaded_cell -> cell_type = TitleBlockCell::LogoCell;
-			loaded_cell -> logo_reference = cell_element.attribute("resource");
-		}
-	} else if (cell_element.tagName() == "field") {
-		loaded_cell -> cell_type = TitleBlockCell::TextCell;
-		
-		QHash<QString, QString> names_options;
-		names_options["TagName"] = "translation";
-		
-		names_options["ParentTagName"] = "value";
-		NamesList value_nameslist;
-		value_nameslist.fromXml(cell_element, names_options);
-		if (!value_nameslist.name().isEmpty()) {
-			loaded_cell -> value = value_nameslist;
-		}
-		
-		names_options["ParentTagName"] = "label";
-		NamesList label_nameslist;
-		label_nameslist.fromXml(cell_element, names_options);
-		if (!label_nameslist.name().isEmpty()) {
-			loaded_cell -> label = label_nameslist;
-		}
-		
-		if (cell_element.hasAttribute("displaylabel")) {
-			if (cell_element.attribute("displaylabel").compare("false", Qt::CaseInsensitive) == 0) {
-				loaded_cell -> display_label = false;
-			}
-		}
-		int fontsize;
-		if (QET::attributeIsAnInteger(cell_element, "fontsize", &fontsize)) {
-			loaded_cell -> font_size = fontsize;
-		} else {
-			loaded_cell -> font_size = -1;
-		}
-		
-		// horizontal and vertical alignments
-		loaded_cell -> alignment = 0;
-		
-		QString halignment = cell_element.attribute("align", "left");
-		if (halignment == "right") loaded_cell -> alignment |= Qt::AlignRight;
-		else if (halignment == "center") loaded_cell -> alignment |= Qt::AlignHCenter;
-		else loaded_cell -> alignment |= Qt::AlignLeft;
-		
-		QString valignment = cell_element.attribute("valign", "center");
-		if (valignment == "bottom") loaded_cell -> alignment |= Qt::AlignBottom;
-		else if (valignment == "top") loaded_cell -> alignment |= Qt::AlignTop;
-		else loaded_cell -> alignment |= Qt::AlignVCenter;
-		
-		// horizontal text adjustment
-		loaded_cell -> hadjust = cell_element.attribute("hadjust", "true") == "true";
-	}
+	loaded_cell -> loadContentFromXml(cell_element);
 }
 
 /**
@@ -569,54 +510,16 @@ void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element
 	
 	
 	QDomElement cell_elmt = xml_element.ownerDocument().createElement("cell");
-	cell_elmt.setAttribute("name", cell -> value_name);
+	xml_element.appendChild(cell_elmt);
+	
+	// save information dependent from this template
 	cell_elmt.setAttribute("row", cell -> num_row);
 	cell_elmt.setAttribute("col", cell -> num_col);
 	if (cell -> row_span) cell_elmt.setAttribute("rowspan", cell -> row_span);
 	if (cell -> col_span) cell_elmt.setAttribute("colspan", cell -> col_span);
 	
-	if (cell -> type() == TitleBlockCell::EmptyCell) {
-		cell_elmt.setTagName("empty");
-	} else if (cell -> type() == TitleBlockCell::LogoCell) {
-		cell_elmt.setTagName("logo");
-		cell_elmt.setAttribute("resource", cell -> logo_reference);
-	} else {
-		cell_elmt.setTagName("field");
-		
-		QDomDocument parent_document = xml_element.ownerDocument();
-		
-		QHash<QString, QString> names_options;
-		names_options["TagName"] = "translation";
-		names_options["ParentTagName"] = "value";
-		cell_elmt.appendChild(cell -> value.toXml(parent_document, names_options));
-		names_options["ParentTagName"] = "label";
-		cell_elmt.appendChild(cell -> label.toXml(parent_document, names_options));
-		
-		cell_elmt.setAttribute("displaylabel", cell -> display_label ? "true" : "false");
-		if (cell -> font_size != -1) {
-			cell_elmt.setAttribute("fontsize", cell -> font_size);
-		}
-		
-		if (cell -> alignment & Qt::AlignRight) {
-			cell_elmt.setAttribute("align", "right");
-		} else if (cell -> alignment & Qt::AlignHCenter) {
-			cell_elmt.setAttribute("align", "center");
-		} else {
-			cell_elmt.setAttribute("align", "left");
-		}
-		
-		if (cell -> alignment & Qt::AlignBottom) {
-			cell_elmt.setAttribute("valign", "bottom");
-		} else if (cell -> alignment & Qt::AlignTop) {
-			cell_elmt.setAttribute("valign", "top");
-		} else {
-			cell_elmt.setAttribute("valign", "center");
-		}
-		
-		if (cell -> hadjust) cell_elmt.setAttribute("hadjust", "true");
-	}
-	
-	xml_element.appendChild(cell_elmt);
+	// save other information
+	cell -> saveContentToXml(cell_elmt);
 }
 
 /**
