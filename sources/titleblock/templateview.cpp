@@ -159,7 +159,44 @@ void TitleBlockTemplateView::copy() {
 	Import the cells described in the clipboard.
 */
 void TitleBlockTemplateView::paste() {
-	/// TODO
+	// retrieve the clipboard content and parse it as XML
+	QClipboard *clipboard = QApplication::clipboard();
+	QDomDocument xml_import;
+	
+	if (!xml_import.setContent(clipboard -> text().trimmed())) {
+		return;
+	}
+	
+	// ensure the XML document describes cells that can be pasted
+	if (xml_import.documentElement().tagName() != "titleblocktemplate-partial") {
+		return;
+	}
+	
+	// load pasted cells
+	QList<TitleBlockCell> pasted_cells;
+	QDomElement paste_root = xml_import.documentElement();
+	for (QDomElement e = paste_root.firstChildElement() ; !e.isNull() ; e = e.nextSiblingElement()) {
+		if (e.tagName() == "empty" || e.tagName() == "field" || e.tagName() == "logo") {
+			TitleBlockCell cell;
+			cell.loadContentFromXml(e);
+			pasted_cells << cell;
+		}
+	}
+	
+	// paste the first cell only
+	if (!pasted_cells.count()) return;
+	
+	// onto the first selected one
+	TitleBlockTemplateVisualCell *selected_cell = selectedCellsSet().topLeftCell();
+	if (!selected_cell) return;
+	
+	TitleBlockCell *erased_cell = selected_cell -> cell();
+	if (!erased_cell) return;
+	
+	PasteTemplateCellsCommand *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
+	paste_command -> addCell(erased_cell, *erased_cell, pasted_cells.first());
+	requestGridModification(paste_command);
+	/// TODO paste more cells, using some kind of heuristic to place them?
 }
 
 /**

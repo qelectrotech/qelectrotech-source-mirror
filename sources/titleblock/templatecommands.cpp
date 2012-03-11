@@ -848,3 +848,78 @@ void ChangeTemplateInformationsCommand::undo() {
 void ChangeTemplateInformationsCommand::redo() {
 	tbtemplate_ -> setInformation(new_information_);
 }
+
+/**
+	Constructor
+	@param tb_template Changed title block template
+	@param parent Parent command
+*/
+PasteTemplateCellsCommand::PasteTemplateCellsCommand(TitleBlockTemplate *tb_template, QUndoCommand *parent) :
+	TitleBlockTemplateCommand(tb_template, parent)
+{
+}
+
+/**
+	Destructor
+*/
+PasteTemplateCellsCommand::~PasteTemplateCellsCommand() {
+}
+
+/**
+	Update the label describing this command
+*/
+void PasteTemplateCellsCommand::updateText() {
+	setText(QObject::tr("Coller %n cellule(s)", "undo caption", erased_cells_.count()));
+}
+
+/**
+	Undo a paste action.
+*/
+void PasteTemplateCellsCommand::undo() {
+	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
+		cell -> loadContentFromCell(erased_cells_.value(cell));
+	}
+	if (view_) {
+		view_ -> refresh();
+	}
+}
+
+/**
+	Redo a paste action.
+*/
+void PasteTemplateCellsCommand::redo() {
+	// paste the first cell ony
+	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
+		cell -> loadContentFromCell(pasted_cells_.value(cell));
+	}
+	if (view_) {
+		view_ -> refresh();
+	}
+}
+
+/**
+	@param cell Pointer to the cell impacted by te paste operation
+	@param new_cell_content Content pasted to the cell
+*/
+void PasteTemplateCellsCommand::addPastedCell(TitleBlockCell *cell, const TitleBlockCell &new_cell_content) {
+	pasted_cells_.insert(cell, new_cell_content);
+}
+
+/**
+	@param cell Pointer to the cell impacted by te paste operation
+	@param former_cell_content Content of the cell before the paste operation
+*/
+void PasteTemplateCellsCommand::addErasedCell(TitleBlockCell *cell, const TitleBlockCell &former_cell_content) {
+	erased_cells_.insert(cell, former_cell_content);
+	updateText();
+}
+
+/**
+	This is a convenience function equivalent to:
+	addErasedCell(cell, before)
+	addPastedCell(cell, after)
+*/
+void PasteTemplateCellsCommand::addCell(TitleBlockCell *cell, const TitleBlockCell &before, const TitleBlockCell &after) {
+	addPastedCell(cell, after);
+	addErasedCell(cell, before);
+}

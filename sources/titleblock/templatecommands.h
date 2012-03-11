@@ -250,4 +250,34 @@ class ChangeTemplateInformationsCommand : public QUndoCommand {
 	/// Informations after they were modified
 	QString new_information_;
 };
+
+
+/**
+	This class represents the action of pasting a cells set.
+*/
+class PasteTemplateCellsCommand : public TitleBlockTemplateCommand {
+	// constructors, destructor
+	public:
+	PasteTemplateCellsCommand(TitleBlockTemplate *, QUndoCommand * = 0);
+	virtual ~PasteTemplateCellsCommand();
+	private:
+	PasteTemplateCellsCommand(const PasteTemplateCellsCommand &);
+	
+	// methods
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void addPastedCell(TitleBlockCell *, const TitleBlockCell &);
+	virtual void addErasedCell(TitleBlockCell *, const TitleBlockCell &);
+	virtual void addCell(TitleBlockCell *, const TitleBlockCell &, const TitleBlockCell &);
+	protected:
+	virtual void updateText();
+	
+	// attributes
+	public:
+	/// Pasted cells
+	QHash<TitleBlockCell *, TitleBlockCell> pasted_cells_;
+	/// Existing cells impacted by the paste operation
+	QHash<TitleBlockCell *, TitleBlockCell> erased_cells_;
+};
 #endif
