@@ -144,6 +144,22 @@ bool TitleBlockCell::spans() const {
 }
 
 /**
+	Copy the content of another cell.
+	@param other_cell Another cell
+*/
+void TitleBlockCell::loadContentFromCell(const TitleBlockCell &other_cell) {
+	value_name = other_cell.value_name;
+	cell_type = other_cell.cell_type;
+	logo_reference = other_cell.logo_reference;
+	value = other_cell.value;
+	label = other_cell.label;
+	display_label = other_cell.display_label;
+	font_size = other_cell.font_size;
+	alignment = other_cell.alignment;
+	hadjust = other_cell.hadjust;
+}
+
+/**
 	@param cell_element XML element from which cell content will be read
 */
 void TitleBlockCell::loadContentFromXml(const QDomElement &cell_element) {
