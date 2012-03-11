@@ -131,6 +131,38 @@ void TitleBlockTemplateView::zoomReset() {
 }
 
 /**
+	Export currently selected cells to the clipboard before setting them as
+	empty.
+*/
+void TitleBlockTemplateView::cut() {
+	/// TODO
+}
+
+/**
+	Export currently selected cells to the clipboard.
+*/
+void TitleBlockTemplateView::copy() {
+	if (!tbtemplate_) return;
+	
+	QDomDocument xml_export;
+	QDomElement tbtpartial = xml_export.createElement("titleblocktemplate-partial");
+	xml_export.appendChild(tbtpartial);
+	foreach (TitleBlockCell *cell, selectedCells()) {
+		tbtemplate_ -> exportCellToXml(cell, tbtpartial);
+	}
+	
+	QClipboard *clipboard = QApplication::clipboard();
+	clipboard -> setText(xml_export.toString());
+}
+
+/**
+	Import the cells described in the clipboard.
+*/
+void TitleBlockTemplateView::paste() {
+	/// TODO
+}
+
+/**
 	Add a column right before the last index selected when calling the context
 	menu.
 */

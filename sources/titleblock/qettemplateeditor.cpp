@@ -300,6 +300,9 @@ void QETTitleBlockTemplateEditor::initActions() {
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
 	undo_           = undo_stack_ -> createUndoAction(this);
 	redo_           = undo_stack_ -> createRedoAction(this);
+	cut_            = new QAction(QET::Icons::EditCut,              tr("Co&uper", "menu entry"),                      this);
+	copy_           = new QAction(QET::Icons::EditCopy,             tr("Cop&ier", "menu entry"),                      this);
+	paste_          = new QAction(QET::Icons::EditPaste,            tr("C&oller", "menu entry"),                      this);
 	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations compl\351mentaires", "menu entry"), this);
 	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
@@ -319,6 +322,9 @@ void QETTitleBlockTemplateEditor::initActions() {
 	quit_             -> setShortcut(QKeySequence(tr("Ctrl+Q", "shortcut to quit")));
 	undo_             -> setShortcut(QKeySequence::Undo);
 	redo_             -> setShortcut(QKeySequence::Redo);
+	cut_              -> setShortcut(QKeySequence::Cut);
+	copy_             -> setShortcut(QKeySequence::Copy);
+	paste_            -> setShortcut(QKeySequence::Paste);
 	edit_info_        -> setShortcut(QKeySequence(tr("Ctrl+Y", "shortcut to edit extra information")));
 	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
 	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to split merged cell")));
@@ -334,6 +340,9 @@ void QETTitleBlockTemplateEditor::initActions() {
 	connect(save_as_,         SIGNAL(triggered()), this,     SLOT(saveAs()));
 	connect(save_as_file_,    SIGNAL(triggered()), this,     SLOT(saveAsFile()));
 	connect(quit_,            SIGNAL(triggered()), this,     SLOT(quit()));
+	connect(cut_,             SIGNAL(triggered()), template_edition_area_view_, SLOT(cut()));
+	connect(copy_,            SIGNAL(triggered()), template_edition_area_view_, SLOT(copy()));
+	connect(paste_,           SIGNAL(triggered()), template_edition_area_view_, SLOT(paste()));
 	connect(zoom_in_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomIn()));
 	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
 	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
@@ -363,7 +372,10 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	edit_menu_   -> addAction(undo_);
 	edit_menu_   -> addAction(redo_);
 	edit_menu_   -> addSeparator();
-	
+	edit_menu_   -> addAction(cut_);
+	edit_menu_   -> addAction(copy_);
+	edit_menu_   -> addAction(paste_);
+	edit_menu_   -> addSeparator();
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
 	edit_menu_   -> addAction(edit_info_);

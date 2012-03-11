@@ -166,6 +166,14 @@ bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
 }
 
 /**
+	@param xml_element Parent XML element to be used when exporting \a cell
+	@param cell Cell to export
+*/
+void TitleBlockTemplate::exportCellToXml(TitleBlockCell *cell, QDomElement &xml_element) const {
+	saveCell(cell, xml_element, true);
+}
+
+/**
 	@return a deep copy of the current title block template (i.e. title block
 	cells are duplicated too and associated with their parent template).
 */
@@ -552,10 +560,13 @@ void TitleBlockTemplate::saveCells(QDomElement &xml_element) const {
 	Export a specific cell as XML
 	@param cell Cell to be exported as XML
 	@param xml_element XML element under which the \<cell\> element will be attached
+	@param save_empty If true, the cell will be saved even if it is an empty one
 */
-void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element) const {
-	if (!cell || cell -> cell_type == TitleBlockCell::EmptyCell) return;
+void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element, bool save_empty) const {
+	if (!cell) return;
 	if (cell -> spanner_cell) return;
+	if (!save_empty && cell -> cell_type == TitleBlockCell::EmptyCell) return;
+	
 	
 	QDomElement cell_elmt = xml_element.ownerDocument().createElement("cell");
 	cell_elmt.setAttribute("name", cell -> value_name);
@@ -564,7 +575,9 @@ void TitleBlockTemplate::saveCell(TitleBlockCell *cell, QDomElement &xml_element
 	if (cell -> row_span) cell_elmt.setAttribute("rowspan", cell -> row_span);
 	if (cell -> col_span) cell_elmt.setAttribute("colspan", cell -> col_span);
 	
-	if (cell -> type() == TitleBlockCell::LogoCell) {
+	if (cell -> type() == TitleBlockCell::EmptyCell) {
+		cell_elmt.setTagName("empty");
+	} else if (cell -> type() == TitleBlockCell::LogoCell) {
 		cell_elmt.setTagName("logo");
 		cell_elmt.setAttribute("resource", cell -> logo_reference);
 	} else {

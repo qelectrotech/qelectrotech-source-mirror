@@ -49,6 +49,7 @@ class TitleBlockTemplate : public QObject {
 	bool loadFromXmlElement(const QDomElement &);
 	bool saveToXmlFile(const QString &);
 	bool saveToXmlElement(QDomElement &) const;
+	void exportCellToXml(TitleBlockCell *,QDomElement &) const;
 	TitleBlockTemplate *clone() const;
 	QString name() const;
 	QString information() const;
@@ -108,7 +109,7 @@ class TitleBlockTemplate : public QObject {
 	void saveLogo(const QString &, QDomElement &) const;
 	void saveGrid(QDomElement &) const;
 	void saveCells(QDomElement &) const;
-	void saveCell(TitleBlockCell *, QDomElement &) const;
+	void saveCell(TitleBlockCell *, QDomElement &, bool = false) const;
 	QList<TitleBlockCell *> createCellsList(int);
 	
 	private:
