@@ -77,6 +77,7 @@ class TitleBlockTemplateCommand : public QUndoCommand {
 	void setTitleBlockTemplate(TitleBlockTemplate *);
 	TitleBlockTemplateView *view() const;
 	void setView(TitleBlockTemplateView *);
+	void refreshView();
 	
 	// attributes
 	protected:

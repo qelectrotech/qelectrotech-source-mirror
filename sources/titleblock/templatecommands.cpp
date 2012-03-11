@@ -201,6 +201,14 @@ void TitleBlockTemplateCommand::setView(TitleBlockTemplateView *view) {
 }
 
 /**
+	Refresh the view, if any.
+*/
+void TitleBlockTemplateCommand::refreshView() {
+	if (!view_) return;
+	view_ -> refresh();
+}
+
+/**
 	This static method is a convenience to create a ModifyTemplateGridCommand
 	that adds a row to \a tbtemplate at \a index.
 	@param tbtemplate Modified title block template
@@ -870,9 +878,7 @@ void CutTemplateCellsCommand::undo() {
 	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
 		cell -> cell_type = cut_cells_.value(cell);
 	}
-	if (view_) {
-		view_ -> refresh();
-	}
+	refreshView();
 }
 
 /**
@@ -882,9 +888,7 @@ void CutTemplateCellsCommand::redo() {
 	foreach (TitleBlockCell *cell, cut_cells_.keys()) {
 		cell -> cell_type = TitleBlockCell::EmptyCell;
 	}
-	if (view_) {
-		view_ -> refresh();
-	}
+	refreshView();
 }
 
 void CutTemplateCellsCommand::setCutCells(const QList<TitleBlockCell *> &cells) {
@@ -932,9 +936,7 @@ void PasteTemplateCellsCommand::undo() {
 	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
 		cell -> loadContentFromCell(erased_cells_.value(cell));
 	}
-	if (view_) {
-		view_ -> refresh();
-	}
+	refreshView();
 }
 
 /**
@@ -945,9 +947,7 @@ void PasteTemplateCellsCommand::redo() {
 	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
 		cell -> loadContentFromCell(pasted_cells_.value(cell));
 	}
-	if (view_) {
-		view_ -> refresh();
-	}
+	refreshView();
 }
 
 /**
