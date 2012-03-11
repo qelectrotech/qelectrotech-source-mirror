@@ -243,7 +243,7 @@ class ChangeTemplateInformationsCommand : public QUndoCommand {
 	
 	// attributes
 	private:
-	/// chnged title block template
+	/// Changed title block template
 	TitleBlockTemplate *tbtemplate_;
 	/// Informations before they are modified
 	QString old_information_;
