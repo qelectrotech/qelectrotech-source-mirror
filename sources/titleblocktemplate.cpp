@@ -716,7 +716,8 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 	
 	// we first iter to determine the absolute and total-width-related widths
 	QVector<int> final_widths(columns_width_.count());
-	int abs_widths_sum = 0;
+	int abs_widths_sum = 0, rel_widths_sum = 0;
+	QList<int> relative_columns;
 	
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 		TitleBlockDimension icd = columns_width_.at(i);
@@ -724,7 +725,8 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 			abs_widths_sum += icd.value;
 			final_widths[i] = icd.value;
 		} else if (icd.type == QET::RelativeToTotalLength) {
-			int abs_value = int(total_width * icd.value / 100);
+			int abs_value = qRound(total_width * icd.value / 100.0);
+			relative_columns << i;
 			abs_widths_sum += abs_value;
 			final_widths[i] = abs_value;
 		}
@@ -737,7 +739,34 @@ QList<int> TitleBlockTemplate::columnsWidth(int total_width) const {
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 		TitleBlockDimension icd = columns_width_.at(i);
 		if (icd.type == QET::RelativeToRemainingLength) {
-			final_widths[i] = int(remaining_width * icd.value / 100);
+			final_widths[i] = qRound(remaining_width * icd.value / 100.0);
+			relative_columns << i;
+			rel_widths_sum += final_widths[i];
+		}
+	}
+	
+	// Have we computed widths from percentage for relative columns?
+	if (relative_columns.count()) {
+		// Due to the rounding process, we may get a slight difference between the
+		// sum of the columns widths and the total width.
+		int difference = total_width - abs_widths_sum - rel_widths_sum;
+	
+		if (difference) {
+			// We consider we should not attempt to compensate this difference if it is
+			// under relative_columns_count * 0.5 (which means that each percent-based
+			// columns can "bring" up to 0.5px of difference).
+			qreal max_acceptable_difference = relative_columns.count() * 0.5;
+			
+			int share = difference > 0 ? 1 : -1;
+			if (qAbs(difference) <= max_acceptable_difference) {
+				while (difference) {
+					foreach (int index, relative_columns) {
+						final_widths[index] += share;
+						difference -= share;
+						if (!difference) break;
+					}
+				}
+			}
 		}
 	}
 	return(final_widths.toList());
