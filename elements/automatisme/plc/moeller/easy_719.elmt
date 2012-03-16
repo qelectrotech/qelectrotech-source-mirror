@@ -1,46 +1,42 @@
-<definition width="450" version="0.3" hotspot_x="10" hotspot_y="230" height="230" type="element" ic="true" orientation="dyyy">
+<definition width="450" version="0.3" hotspot_x="10" hotspot_y="250" height="250" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="en">Easy 620</name>
-        <name lang="fr">Easy 620</name>
-        <name lang="pl">Easy 620</name>
-        <name lang="cs">Easy 620</name>
+        <name lang="en">Easy 719</name>
+        <name lang="fr">Easy 719</name>
+        <name lang="pl">Easy 719</name>
+        <name lang="cs">Easy 719</name>
     </names>
     <informations></informations>
     <description>
         <rect width="430" x="0" y="-221" antialias="false" height="211" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <rect width="429" x="1" y="-199" antialias="false" height="169" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="384" y="-34" size="6" text="S8"/>
-        <text x="363" y="-34" size="6" text="S7"/>
-        <text x="314" y="-34" size="6" text="S6"/>
-        <text x="174" y="-34" size="6" text="S2"/>
+        <rect width="430" x="0" y="-199" antialias="false" height="169" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="430" x="0" y="-181" antialias="false" height="130" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-220" x1="100" y2="-199" x2="100"/>
         <ellipse width="8" x="62" y="-178" antialias="true" height="17" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <polygon x4="66" y5="-175.25" x5="66" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-175.25" x1="66" y2="-172.25" x2="65" y3="-172.25" x3="67" y4="-175.25"/>
         <text x="65" y="-166" size="4" text="M"/>
-        <text x="222" y="-34" size="6" text="S3"/>
-        <text x="293" y="-34" size="6" text="S5"/>
-        <text x="243" y="-34" size="6" text="S4"/>
-        <text x="154" y="-34" size="6" text="S1"/>
-        <text x="335" y="-189" size="6" text="A12"/>
-        <text x="315" y="-189" size="6" text="A11"/>
-        <text x="295" y="-189" size="6" text="A10"/>
-        <text x="275" y="-188.95" size="6" text="A9"/>
-        <text x="256" y="-189" size="6" text="A8"/>
-        <text x="237" y="-189" size="6" text="A7"/>
-        <text x="40" y="-34" size="6" text="+24V"/>
-        <text x="217" y="-189" size="6" text="A6"/>
-        <text x="105" y="-34" size="6" text="0V"/>
-        <text x="197" y="-189" size="6" text="A5"/>
-        <text x="65.5" y="-187.95" size="6" text="0V"/>
-        <text x="176" y="-189" size="6" text="A4"/>
-        <text x="44.5" y="-187.95" size="6" text="0V"/>
-        <text x="155" y="-189" size="6" text="A3"/>
-        <text x="134" y="-189" size="6" text="A2"/>
-        <text x="118" y="-189" size="6" text="A1"/>
+        <text x="236" y="-36" size="6" text="Q4"/>
+        <text x="373" y="-36" size="6" text="Q6"/>
+        <text x="303" y="-35" size="6" text="Q5"/>
+        <text x="162" y="-36" size="6" text="Q3"/>
+        <text x="335" y="-189" size="6" text="I12"/>
+        <text x="315" y="-189" size="6" text="I11"/>
+        <text x="296" y="-189" size="6" text="I10"/>
+        <text x="275" y="-188.95" size="6" text="I9"/>
+        <text x="256" y="-189" size="6" text="I8"/>
+        <text x="237" y="-189" size="6" text="I7"/>
+        <text x="40" y="-35" size="6" text="Q1"/>
+        <text x="217" y="-189" size="6" text="I6"/>
+        <text x="105" y="-35" size="6" text="Q2"/>
+        <text x="197" y="-189" size="6" text="I5"/>
+        <text x="65" y="-187" size="6" text="N"/>
+        <text x="176" y="-189" size="6" text="I4"/>
+        <text x="45" y="-187" size="6" text="N"/>
+        <text x="155" y="-189" size="6" text="I3"/>
+        <text x="134" y="-189" size="6" text="I2"/>
+        <text x="118" y="-189" size="6" text="I1"/>
         <text x="29" y="-161" size="7" text="oeller"/>
         <text x="20" y="-163" size="9" text="M"/>
-        <input x="17" y="-62" size="9" rotate="true" text="EASY 620 DC TE"/>
+        <input x="17" y="-62" size="9" rotate="true" text="EASY 719 AC RCX"/>
         <circle x="385" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
         <circle x="315" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
         <circle x="245" y="-25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
@@ -63,7 +59,7 @@
         <circle x="235" y="-215" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
         <circle x="155" y="-215" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="10"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-206" x1="67" y2="-213" x2="74"/>
-        <text x="14" y="-188" size="6" text="+24v"/>
+        <text x="26" y="-187" size="6" text="L"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="387" y2="-23" x2="394"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="317" y2="-23" x2="324"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="247" y2="-23" x2="254"/>
