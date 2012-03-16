@@ -3405,7 +3405,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="156"/>
         <source>Ajouter une ligne</source>
-        <translation>اضافة صف</translation>
+        <translation>اضافة سطر</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="157"/>
