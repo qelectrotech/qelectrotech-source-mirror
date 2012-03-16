@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Magnetic sensor</name>
         <name lang="fr">Capteurs_magnetique</name>
+        <name lang="pl">Czujniki magnetyczne</name>
         </names>
 </qet-directory>
