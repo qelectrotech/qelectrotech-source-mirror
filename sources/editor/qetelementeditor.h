@@ -121,6 +121,7 @@ class QETElementEditor : public QETMainWindow {
 	
 	protected:
 	void closeEvent(QCloseEvent *);
+	virtual void firstActivation(QEvent *);
 	
 	private:
 	void setupActions();

@@ -89,7 +89,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	
 	protected:
 	bool canClose();
-	bool event(QEvent *);
+	virtual void firstActivation(QEvent *);
 	void closeEvent(QCloseEvent *);
 	
 	private:

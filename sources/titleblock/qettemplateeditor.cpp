@@ -35,7 +35,6 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	opened_from_file_(false),
 	read_only_(false),
 	duplicate_(false),
-	first_activation_(true),
 	tb_template_(0),
 	logo_manager_(0)
 {
@@ -108,15 +107,12 @@ bool QETTitleBlockTemplateEditor::canClose() {
 /**
 	@param event Object describing the received event.
 */
-bool QETTitleBlockTemplateEditor::event(QEvent *event) {
-	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
-		if (duplicate_ && !opened_from_file_ && location_.parentCollection()) {
-			// this editor is supposed to duplicate its current location
-			QTimer::singleShot(250, this, SLOT(duplicateCurrentLocation()));
-		}
-		first_activation_ = false;
+void QETTitleBlockTemplateEditor::firstActivation(QEvent *event) {
+	Q_UNUSED(event)
+	if (duplicate_ && !opened_from_file_ && location_.parentCollection()) {
+		// this editor is supposed to duplicate its current location
+		QTimer::singleShot(250, this, SLOT(duplicateCurrentLocation()));
 	}
-	return(QETMainWindow::event(event));
 }
 
 /**

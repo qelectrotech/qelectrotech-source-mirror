@@ -39,7 +39,8 @@ class QETMainWindow : public QMainWindow {
 	QAction *actionForMenu(QMenu *);
 	
 	protected:
-	bool event(QEvent *);
+	virtual bool event(QEvent *);
+	virtual void firstActivation(QEvent *);
 	
 	// slots
 	public slots:
@@ -57,5 +58,6 @@ class QETMainWindow : public QMainWindow {
 	QMenu *help_menu_;                       ///< Help menu
 	QMenu *display_toolbars_;                ///< Show/hide toolbars/docks
 	QHash<QMenu *, QAction *> menu_actions_; ///< Store actions retrieved when inserting menus
+	bool first_activation_;                  ///< Used to detect whether the window is activated for the first time
 };
 #endif

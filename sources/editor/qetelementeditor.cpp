@@ -1117,6 +1117,14 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 }
 
 /**
+	
+*/
+void QETElementEditor::firstActivation(QEvent *event) {
+	Q_UNUSED(event)
+	if (ce_view) ce_view -> zoomFit();
+}
+
+/**
 	Remplit la liste des parties
 */
 void QETElementEditor::slot_createPartsList() {

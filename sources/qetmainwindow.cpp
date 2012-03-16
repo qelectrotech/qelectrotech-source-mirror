@@ -24,7 +24,8 @@
 */
 QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 	QMainWindow(widget, flags),
-	display_toolbars_(0)
+	display_toolbars_(0),
+	first_activation_(true)
 {
 	initCommonActions();
 	initCommonMenus();
@@ -144,6 +145,15 @@ void QETMainWindow::checkToolbarsmenu() {
 bool QETMainWindow::event(QEvent *e) {
 	if (e -> type() == QEvent::WindowStateChange) {
 		updateFullScreenAction();
+	} else if (first_activation_ && e -> type() == QEvent::WindowActivate) {
+		firstActivation(e);
+		first_activation_ = false;
 	}
 	return(QMainWindow::event(e));
+}
+
+/**
+	Base implementation of firstActivation (does nothing).
+*/
+void QETMainWindow::firstActivation(QEvent *) {
 }
