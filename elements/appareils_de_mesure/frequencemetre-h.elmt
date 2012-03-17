@@ -1,13 +1,14 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">مقياس تردد أفقي</name>
         <name lang="de">Frequenzmeßgerät, anzeigend</name>
         <name lang="en">Frequency meter h</name>
+        <name lang="it">Frequenzimetro orizzontale</name>
         <name lang="fr">Fréquencemètre horizontal</name>
         <name lang="pl">Częstotliwościomierz (poziomo)</name>
         <name lang="cs">Měřič kmitočtu, vodorovný</name>
-        <name lang="it">Frequenzimetro orizzontale</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-8" y="2.3333" size="9" text="Hz"/>

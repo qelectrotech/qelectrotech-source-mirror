@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">موحد أحادي الوجه</name>
         <name lang="de">Wehselstrom > Gleichstrom</name>
         <name lang="ru">Однофазный перем. ток > Пост. ток</name>
         <name lang="pt">Alterna monofásica > Continua</name>

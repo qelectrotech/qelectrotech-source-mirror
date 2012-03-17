@@ -1,10 +1,11 @@
-<definition width="60" version="0.22" hotspot_x="35" hotspot_y="10" height="20" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">دخل</name>
+        <name lang="de">Eingang</name>
         <name lang="en">IN</name>
         <name lang="fr">Entrée</name>
         <name lang="pl">Wejście adresowe</name>
         <name lang="cs">Vstup</name>
-        <name lang="de">Eingang</name>
     </names>
     <informations></informations>
     <description>

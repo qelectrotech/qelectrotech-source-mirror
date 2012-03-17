@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">مقطع : محول مستمر/ مستمر</name>
         <name lang="de">Direkt (DC/DC)</name>
         <name lang="ru">Пост. ток > Пост. ток</name>
         <name lang="pt">Contínua > Contínua</name>

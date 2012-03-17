@@ -1,11 +1,12 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">جلفانومتر أفقي</name>
         <name lang="de">Galvanometer h</name>
         <name lang="en">Galvanometer h</name>
+        <name lang="it">Galvanometro orizzontale</name>
         <name lang="fr">Galvanomètre horizontal</name>
         <name lang="pl">Galwanomert (poziomo)</name>
         <name lang="cs">Galvanometr, vodorovný</name>
-        <name lang="it">Galvanometro orizzontale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
