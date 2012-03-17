@@ -1117,11 +1117,11 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 }
 
 /**
-	
+	Executed the first time the window editor is displayed.
 */
 void QETElementEditor::firstActivation(QEvent *event) {
 	Q_UNUSED(event)
-	if (ce_view) ce_view -> zoomFit();
+	QTimer::singleShot(250, ce_view, SLOT(zoomFit()));
 }
 
 /**
