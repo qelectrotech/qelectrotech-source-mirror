@@ -1,12 +1,13 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">ثنائي حراري</name>
         <name lang="de">Thermoelement
 </name>
         <name lang="en">Thermocouple</name>
+        <name lang="it">Termocoppia</name>
         <name lang="fr">Thermocouple</name>
         <name lang="pl">Termopara</name>
         <name lang="cs">Termočlánek</name>
-        <name lang="it">Termocoppia</name>
     </names>
     <informations>EN 60617: 08-06-01</informations>
     <description>
