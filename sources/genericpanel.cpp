@@ -1016,7 +1016,7 @@ QTreeWidgetItem *GenericPanel::makeItem(QET::ItemType type, QTreeWidgetItem *par
 void GenericPanel::deleteItem(QTreeWidgetItem *item, bool deleted_on_cascade) {
 	Q_UNUSED(deleted_on_cascade)
 	// recursively delete child items first
-	for (int i = 0 ; i < item -> childCount() ; ++ i) {
+	for (int i = item -> childCount() - 1 ; i >= 0 ; -- i) {
 		deleteItem(item -> child(i), true);
 	}
 	
