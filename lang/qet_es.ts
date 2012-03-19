@@ -205,7 +205,7 @@ Iconos</translation>
         <location filename="../sources/borderpropertieswidget.cpp" line="111"/>
         <location filename="../sources/borderpropertieswidget.cpp" line="126"/>
         <source>Afficher les en-têtes</source>
-        <translation>Mostrar los encabezamientos</translation>
+        <translation>Mostrar los encabezados</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="114"/>
@@ -528,7 +528,7 @@ Iconos</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="951"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation>Eligir el nuevo color de este conductor</translation>
+        <translation>Elegir el nuevo color de este conductor</translation>
     </message>
 </context>
 <context>
@@ -549,7 +549,7 @@ Iconos</translation>
     <message>
         <location filename="../sources/elementdefinition.cpp" line="466"/>
         <source>La suppression de cet élément a échoué.</source>
-        <translation>No se ha podido eliminar este elemento.</translation>
+        <translation>El borrado de este elemento ha fallado.</translation>
     </message>
 </context>
 <context>
@@ -610,7 +610,7 @@ Iconos</translation>
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation>Elige un elemento en lo que quieres guardar su definición.</translation>
+        <translation>Elija el elemento en el cual quiere guardar su definición.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="69"/>
@@ -623,13 +623,13 @@ Iconos</translation>
         <location filename="../sources/elementdialog.cpp" line="73"/>
         <source>Choisissez une catégorie.</source>
         <comment>dialog content</comment>
-        <translation>Elige una categoría.</translation>
+        <translation>Elija una categoría.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="72"/>
         <source>Enregistrer une catégorie</source>
         <comment>dialog title</comment>
-        <translation>Guardar un elemento</translation>
+        <translation>Guardar una categoría</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="245"/>
@@ -642,45 +642,45 @@ Iconos</translation>
         <location filename="../sources/elementdialog.cpp" line="246"/>
         <source>Vous devez sélectionner un élément.</source>
         <comment>message box content</comment>
-        <translation>Tiene que seleccionar un elemento.</translation>
+        <translation>Debe seleccionar un elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="256"/>
         <location filename="../sources/elementdialog.cpp" line="294"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
-        <translation>No existe selección</translation>
+        <translation>Selección inexistente</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="257"/>
         <location filename="../sources/elementdialog.cpp" line="295"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation>Lo selectado no existe.</translation>
+        <translation>La selección no existe.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="266"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
-        <translation>Selección incorrecto</translation>
+        <translation>Selección incorrecta</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="267"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation>Lo selectado no es un elemento.</translation>
+        <translation>La selección no es un elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="284"/>
         <source>Vous devez sélectionner une catégorie ou un élément.</source>
         <comment>message box content</comment>
-        <translation>Tienes que seleccionar una categoría o un elemento.</translation>
+        <translation>Debe seleccionar una categoría o un elemento.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="307"/>
         <source>Nom manquant</source>
         <comment>message box title</comment>
-        <translation>Nombre faltando</translation>
+        <translation>Falta el nombre</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="308"/>
@@ -1040,7 +1040,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="403"/>
         <source>Cartouches embarqués</source>
-        <translation type="unfinished">Modelos integrados</translation>
+        <translation>Modelos integrados</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="410"/>
@@ -1057,7 +1057,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Este es un diseño, que puede ser aplicado a un esquema.</translation>
+        <translation>Este es un modelo, que puede ser aplicado a un esquema.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="461"/>
@@ -1068,7 +1068,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/elementspanel.cpp" line="464"/>
         <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
         <comment>Tip displayed in the status bar when selecting an element</comment>
-        <translation>Para insertar un elemento haga clic y colóquelo en el diagrama « %1 »</translation>
+        <translation>Para insertar un elemento haga clic y arrastrelo en el diagrama « %1 »</translation>
     </message>
 </context>
 <context>
@@ -1407,7 +1407,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="156"/>
         <source>Exporter le cadre</source>
-        <translation>Exportar el cuadro</translation>
+        <translation>Exportar el marco</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
@@ -1417,22 +1417,22 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="164"/>
         <source>Dessiner la grille</source>
-        <translation>Dibujar la reja</translation>
+        <translation>Dibujar la rejilla</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="168"/>
         <source>Dessiner le cadre</source>
-        <translation>Dibujar el cuadro</translation>
+        <translation>Dibujar el marco</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation>Dibujar el elemento</translation>
+        <translation>Dibujar la caja</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
-        <translation>Dibujar conectores</translation>
+        <translation>Dibujar los conectores</translation>
     </message>
 </context>
 <context>
@@ -1445,7 +1445,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="111"/>
         <source>Utiliser les couleurs du système</source>
-        <translation>Utilizar colores del sistema</translation>
+        <translation>Utilizar los colores del sistema</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="113"/>
@@ -1512,8 +1512,8 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/genericpanel.cpp" line="422"/>
         <source>Modèles de cartouche</source>
-        <translatorcomment>Modelos de </translatorcomment>
-        <translation type="unfinished">Modelos</translation>
+        <translatorcomment>Modelos de cajas</translatorcomment>
+        <translation>Modelos</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="512"/>
@@ -1614,7 +1614,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="156"/>
         <source>Écraser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation>Sobreescribir el elemento ya incluido</translation>
+        <translation>Sobreescribir el elemento ya integrado</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="166"/>
@@ -1635,7 +1635,7 @@ Los cambios no podrían ser revertidos.</translation>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
         <translatorcomment>Imposible acceder a la categoria padre</translatorcomment>
-        <translation type="unfinished">Imposible acceder a la categoría</translation>
+        <translation>Imposible acceder a la categoría</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
@@ -1652,8 +1652,8 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translatorcomment>Integración de un modelo de proyecto</translatorcomment>
-        <translation type="unfinished">Integración de un modelo</translation>
+        <translatorcomment>Integración de un modelo de caja</translatorcomment>
+        <translation>Integración de un modelo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
@@ -1672,7 +1672,8 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
         <source>Intégrer le modèle déposé</source>
         <comment>dialog content</comment>
-        <translation>Integrar el modelo registrado</translation>
+        <translatorcomment>déposé - depositar, soltar, dejar</translatorcomment>
+        <translation>Integrar el modelo depositado</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
@@ -1910,7 +1911,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="68"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
-        <translation>Tiene que escribir al menos un nombre.</translation>
+        <translation>Debe escribir al menos un nombre.</translation>
     </message>
 </context>
 <context>
@@ -1949,13 +1950,14 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/5 : Catégorie parente</source>
         <comment>wizard page title</comment>
+        <translatorcomment>Parente - pariente, padre</translatorcomment>
         <translation>Etapa 1/5: Caegoría padre</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
         <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation>Selecciona una categoría donde guardar el nuevo elemento.</translation>
+        <translation>Seleccione una categoría donde guardar el nuevo elemento.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
@@ -1992,7 +1994,7 @@ Los cambios no podrían ser revertidos.</translation>
         <source>Étape 4/5 : Dimensions et point de saisie</source>
         <comment>wizard page title</comment>
         <translatorcomment>point de saisie punto de inserción o punto de referencia</translatorcomment>
-        <translation type="unfinished">Etapa 4/5: Dimensiones y punto de inserción</translation>
+        <translation>Etapa 4/5: Dimensiones y punto de referencia</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="158"/>
@@ -2024,13 +2026,13 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/newelementwizard.cpp" line="219"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
-        <translation>Tiene que seleccionar una categoría.</translation>
+        <translation>Debe seleccionar una categoría.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="239"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
-        <translation>Tiene que dar un nombre de archivo</translation>
+        <translation>Debe dar un nombre de archivo</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="251"/>
@@ -2186,7 +2188,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/projectview.cpp" line="341"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>¿Estás seguro de eliminar el esquema del proyecto? Este cambio es irreversible.</translation>
+        <translation>¿Está seguro de eliminar el esquema del proyecto? Este cambio es irreversible.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="419"/>
@@ -2209,7 +2211,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation type="unfinished">Eliminar los modelos no usados en el proyecto</translation>
+        <translation>Eliminar los modelos no usados en el proyecto</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="682"/>
@@ -2306,7 +2308,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/qetapp.cpp" line="1279"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished">&amp;Restaurar todos los editores</translation>
+        <translation>&amp;Restaurar todos los editores</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1280"/>
@@ -2348,7 +2350,7 @@ Los cambios no podrían ser revertidos.</translation>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translatorcomment>Editores de proyecto, esquema o elemento</translatorcomment>
-        <translation type="unfinished">Editores</translation>
+        <translation>Editores de elementos</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1454"/>
@@ -2392,7 +2394,7 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="1464"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished">--common-tbt-dir=DIR Definir la carpeta de la colección de modelos</translation>
+        <translation>--common-tbt-dir=DIR Definir la carpeta de la colección de elementos</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1467"/>
@@ -2452,14 +2454,14 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="330"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished">Modelos QET</translation>
+        <translation>Modelos QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="343"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translatorcomment>Elementos o proyectos de usuario</translatorcomment>
-        <translation type="unfinished">Elementos de usuario</translation>
+        <translation>Modelos de usuario</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="722"/>
@@ -2894,7 +2896,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="725"/>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
-        <translation>Parece que el archivo que intenta abrir no se puede acceder en lectura. Por eso es imposible abrirlo. Por favor compruebe los permisos del archivo.</translation>
+        <translation>Parece que el archivo que intenta abrir no es accesible en lectura. Por eso es imposible abrirlo. Por favor compruebe los permisos del archivo.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="738"/>
@@ -2904,7 +2906,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="739"/>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
-        <translation>Parece que el proyecto que intenta abrir no se puede acceder en escritura. Por eso se abrira en sólo lectura.</translation>
+        <translation>Parece que el proyecto que intenta abrir no es accesible en escritura. Por eso se abrira en sólo lectura.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1650"/>
@@ -2914,12 +2916,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1656"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
-        <translation>Imposible de encontrar este elemento en el panel ... recarge el panel ...</translation>
+        <translation>Imposible encontrar este elemento en el panel ... recarge el panel ...</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1668"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
-        <translation>Imposible de encontrar este elemento en el panel</translation>
+        <translation>Imposible encontrar este elemento en el panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
@@ -3036,7 +3038,7 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Restaure l&apos;action annulée</source>
         <comment>status bar tip</comment>
-        <translation>Restaura la última acción deshecha</translation>
+        <translation>Restaurar la última acción deshecha</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
@@ -3619,19 +3621,19 @@ Opciones disponibles:
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
         <translatorcomment>hotspot punto de inserción o punto de referencia</translatorcomment>
-        <translation type="unfinished">Algunas partes gráficas (textos, círculos, lineas, ...) parecen no caber en el cuadro del elemento. Eso podría crear fallos gráficos cuando se las maneja en el esquema. Puede corregir este problema de dos maneras: moviendo estas partes o usando Editar&gt;Editar el tamaño o el hotspot (punto de referencia).</translation>
+        <translation>Algunas partes gráficas (textos, círculos, lineas, ...) parecen no caber en el cuadro del elemento. Eso podría crear fallos gráficos cuando se las maneja en el esquema. Puede corregir este problema de dos maneras: moviendo estas partes o usando Editar&gt;Editar el tamaño o el hotspot (punto de referencia).</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="659"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation>Conector faltando</translation>
+        <translation>Falta de conector</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="660"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation>El elemento no tiene ninguna conexión. Un elemento debe tener conexiones para que los conductores puedan conectarse con otros elementos.</translation>
+        <translation>El elemento no tiene ningun terminal. Un elemento debe tener terminales para que los conductores puedan conectarse con otros elementos.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -3780,7 +3782,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="1361"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
-        <translation>El camino virtual eligido no corresponde a un elemento.</translation>
+        <translation>El camino virtual elegido no corresponde a un elemento.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="166"/>
@@ -4006,12 +4008,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="190"/>
         <source>Mise en page</source>
-        <translation>Configurar página</translation>
+        <translation>Compaginación</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="207"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
-        <translation>Diseño (no existe para imprimir en PDF o PS bajo Windows)</translation>
+        <translation>compaginación (no existe para imprimir en PDF o PS bajo Windows)</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="235"/>
@@ -4036,7 +4038,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="245"/>
         <source>Si cette option est cochée, le schéma sera agrandi ou rétréci de façon à remplir toute la surface imprimable d&apos;une et une seule page.</source>
-        <translation>Si esta opción está seleccionada, el diagrama será reducido o expandido para ajustarse a la superficie imprimible de la hoja.</translation>
+        <translation>Si esta opción está seleccionada, el diagrama será reducido o expandido para ajustarse a la superficie imprimible de una sola pagina.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="261"/>
@@ -4131,7 +4133,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="89"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation>¿Guarde el modelo en curso?</translation>
+        <translation>Guarde el modelo en curso?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="91"/>
@@ -4149,8 +4151,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="151"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translatorcomment>Duplicar un modelo de propiedades o proyecto</translatorcomment>
-        <translation type="unfinished">Duplicar un modelo</translation>
+        <translatorcomment>Duplicar un modelo de titulo</translatorcomment>
+        <translation>Duplicar un modelo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="152"/>
@@ -4235,7 +4237,7 @@ Que désirez vous faire ?</source>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translatorcomment>Modelos de propiedades de QElectrotech (*%1)</translatorcomment>
-        <translation type="unfinished">Modelos de QElectroTech (*%1)</translation>
+        <translation>Modelos de QElectroTech (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
@@ -4350,7 +4352,7 @@ Que désirez vous faire ?</source>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translatorcomment>QElectroTech - Editor de modelo de propiedades</translatorcomment>
-        <translation type="unfinished">QElectroTech - Editor de modelo</translation>
+        <translation>QElectroTech - Editor de modelo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="533"/>
@@ -4374,7 +4376,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="620"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished">Modelos de QElectroTech (*%1);;Archivos XML (*.xml);;Todos los ficheros (*)</translation>
+        <translation>Modelos de QElectroTech (*%1);;Archivos XML (*.xml);;Todos los ficheros (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
@@ -4500,14 +4502,14 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="837"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translatorcomment>editar el modelo o elemento</translatorcomment>
-        <translation type="unfinished">editar el elemento</translation>
+        <translatorcomment>modificar el modelo o elemento</translatorcomment>
+        <translation>modificar el modelo</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="868"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
-        <translation>editar las dimensiones del esquema</translation>
+        <translation>modificar las dimensiones del esquema</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="895"/>
@@ -4537,7 +4539,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="264"/>
         <source>modification %1</source>
         <comment>undo caption</comment>
-        <translation>edición %1</translation>
+        <translation>modificación %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="299"/>
@@ -4597,7 +4599,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation>Modificación de información complementaria</translation>
+        <translation>Modificación de informaciones complementarias</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="49"/>
@@ -4745,7 +4747,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="664"/>
         <source>Réinitialiser les dimensions</source>
-        <translation>Reinicializar los tamaños</translation>
+        <translation>Reiniciar los tamaños</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="668"/>
@@ -4810,7 +4812,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="606"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation>Fusión de %1 filas</translation>
+        <translation>Fusión de %1 celdas</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="723"/>
@@ -5185,7 +5187,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="37"/>
         <source>Ne pas subir les rotations de l&apos;élément parent</source>
-        <translation>No hacer las rotaciones del elemento padre</translation>
+        <translation>No hacer las rotaciones del elemento</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="39"/>
@@ -5310,7 +5312,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="269"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished">Titulo bloques de plantillas</translation>
+        <translation>Titulo bloques de plantillas acciones</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
@@ -5344,7 +5346,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="307"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation>Aquí puede definir sus propias asociaciones nombres/valores para que el proyecto tenga cuenta de ellas. Por ejemplo: si asocia el nombre &quot;volta&quot; con el valor &quot;1745, se cambiarán %volta por 1745 en el proyecto.</translation>
+        <translation>Aquí puede definir sus propias asociaciones nombres/valores para que el proyecto tenga cuenta de ellas. Por ejemplo: si asocia el nombre &quot;volta&quot; con el valor &quot;1745&quot;, se cambiarán %volta por 1745 en el proyecto.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
@@ -5550,8 +5552,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translatorcomment>Suprimir el modelo del proyecto</translatorcomment>
-        <translation type="unfinished">Suprimir el modelo?</translation>
+        <translatorcomment>Suprimir el modelo de la caja de titulo</translatorcomment>
+        <translation>Suprimir el modelo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
