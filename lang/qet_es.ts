@@ -1040,7 +1040,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanel.cpp" line="403"/>
         <source>Cartouches embarqués</source>
-        <translation>Modelos integrados</translation>
+        <translation>Bloques de titulos integrados</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="410"/>
@@ -1051,13 +1051,13 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/elementspanel.cpp" line="437"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Tip displayed when selecting a title block template</comment>
-        <translation>Haga clic y deposite el modelo en su esquema para aplicarlo.</translation>
+        <translation>Haga clic y arrastre el bloque de titulo en su esquema para aplicarlo.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Este es un modelo, que puede ser aplicado a un esquema.</translation>
+        <translation>Este es un modelo bloque de titulo, que puede ser aplicado a un esquema.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="461"/>
@@ -1412,7 +1412,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="159"/>
         <source>Exporter les éléments</source>
-        <translation>Exportar los elementos</translation>
+        <translation>Exportar solo los elementos</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="164"/>
@@ -1427,7 +1427,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="172"/>
         <source>Dessiner le cartouche</source>
-        <translation>Dibujar la caja</translation>
+        <translation>Dibujar el bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
@@ -1513,7 +1513,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/genericpanel.cpp" line="422"/>
         <source>Modèles de cartouche</source>
         <translatorcomment>Modelos de cajas</translatorcomment>
-        <translation>Modelos</translation>
+        <translation>Modelos bloques de titulo</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="512"/>
@@ -1634,8 +1634,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translatorcomment>Imposible acceder a la categoria padre</translatorcomment>
-        <translation>Imposible acceder a la categoría</translation>
+        <translation>Imposible acceder a la categoría padre</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
@@ -1652,8 +1651,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translatorcomment>Integración de un modelo de caja</translatorcomment>
-        <translation>Integración de un modelo</translation>
+        <translation>Integración de un bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
@@ -2211,7 +2209,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation>Eliminar los modelos no usados en el proyecto</translation>
+        <translation>Eliminar los modelos bloque de titulo no usados en el proyecto</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="682"/>
@@ -2302,13 +2300,13 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/qetapp.cpp" line="1278"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Esconder todos los editores del proyecto</translation>
+        <translation>&amp;Esconder los editores de bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1279"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation>&amp;Restaurar todos los editores</translation>
+        <translation>&amp;Restaurar los editores de bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1280"/>
@@ -2350,7 +2348,7 @@ Los cambios no podrían ser revertidos.</translation>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
         <translatorcomment>Editores de proyecto, esquema o elemento</translatorcomment>
-        <translation>Editores de elementos</translation>
+        <translation>Editores de bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1454"/>
@@ -2454,14 +2452,14 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="330"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation>Modelos QET</translation>
+        <translation>Bloques de titulo QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="343"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
         <translatorcomment>Elementos o proyectos de usuario</translatorcomment>
-        <translation>Modelos de usuario</translation>
+        <translation>Bloques de titulo de usuario</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="722"/>
@@ -3092,7 +3090,7 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="291"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>Editar las informaciones mostradas en el esquema</translation>
+        <translation>Editar las informaciones mostradas en el bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -3313,7 +3311,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
         <source>Éditer la taille et le point de saisie</source>
         <translatorcomment>Editar el tamaño y el punto de inserción o punto de referencia</translatorcomment>
-        <translation>Editar el tamaño y el punto de referencia</translation>
+        <translation>Editar el tamaño y el hotspot</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
@@ -3633,7 +3631,7 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="660"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation>El elemento no tiene ningun terminal. Un elemento debe tener terminales para que los conductores puedan conectarse con otros elementos.</translation>
+        <translation>El elemento no tiene ningun conector. Un elemento debe tener conectores para que los conductores puedan conectarse con otros elementos.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -4008,12 +4006,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="190"/>
         <source>Mise en page</source>
-        <translation>Compaginación</translation>
+        <translation>Diseño de pagina</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="207"/>
         <source>Mise en page (non disponible sous Windows pour l&apos;impression PDF/PS)</source>
-        <translation>compaginación (no existe para imprimir en PDF o PS bajo Windows)</translation>
+        <translation>Diseño de pagina (no existe para imprimir en PDF o PS bajo Windows)</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="235"/>
@@ -4152,7 +4150,7 @@ Que désirez vous faire ?</source>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
         <translatorcomment>Duplicar un modelo de titulo</translatorcomment>
-        <translation>Duplicar un modelo</translation>
+        <translation>Duplicar un modelo de bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="152"/>
@@ -4237,7 +4235,7 @@ Que désirez vous faire ?</source>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translatorcomment>Modelos de propiedades de QElectrotech (*%1)</translatorcomment>
-        <translation>Modelos de QElectroTech (*%1)</translation>
+        <translation>Modelos bolque de titulo de QElectroTech (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
@@ -4352,7 +4350,7 @@ Que désirez vous faire ?</source>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translatorcomment>QElectroTech - Editor de modelo de propiedades</translatorcomment>
-        <translation>QElectroTech - Editor de modelo</translation>
+        <translation>QElectroTech - Editor modelos de bloque de titulo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="533"/>
@@ -4376,7 +4374,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="620"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation>Modelos de QElectroTech (*%1);;Archivos XML (*.xml);;Todos los ficheros (*)</translation>
+        <translation>Modelos bloque de titulo de QElectroTech (*%1);;Archivos XML (*.xml);;Todos los ficheros (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="659"/>
@@ -4502,7 +4500,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="837"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
-        <translatorcomment>modificar el modelo o elemento</translatorcomment>
+        <translatorcomment>modificar el bloque de titulo</translatorcomment>
         <translation>modificar el modelo</translation>
     </message>
     <message>
@@ -5312,7 +5310,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="269"/>
         <source>Title block templates actions</source>
-        <translation>Titulo bloques de plantillas acciones</translation>
+        <translation>Bloque de titulo plantillas acciones</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
@@ -5397,7 +5395,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="394"/>
         <source>Informations du cartouche</source>
         <translatorcomment>Informaciones sobre el esquema o proyecto</translatorcomment>
-        <translation>Informaciones sobre el esquema</translation>
+        <translation>Informaciones del bloque de titulo</translation>
     </message>
 </context>
 <context>
@@ -5553,7 +5551,7 @@ Que désirez vous faire ?</source>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
         <translatorcomment>Suprimir el modelo de la caja de titulo</translatorcomment>
-        <translation>Suprimir el modelo?</translation>
+        <translation>Suprimir el modelo de bloque de titulo?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
@@ -5570,7 +5568,7 @@ Que désirez vous faire ?</source>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
         <translatorcomment>Colección </translatorcomment>
-        <translation type="unfinished">Colección padre</translation>
+        <translation>Colección padre</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
@@ -5651,7 +5649,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="209"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Existe ya un logotipo con el mismo nombre &quot;%1&quot; en este modelo. ¿Quiere reemplazarlo o prefiere especificar otro nombre para este nuevo logotipo ?</translation>
+        <translation>Existe ya un logotipo con el mismo nombre &quot;%1&quot; en este modelo.de bloque de titulo ¿Quiere reemplazarlo o prefiere especificar otro nombre para este nuevo logotipo ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="245"/>
@@ -5825,13 +5823,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation>Colección del proyecto sin titulo (id %1)</translation>
+        <translation>Bloques de titulo del proyecto sin titulo (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation>Colección del proyecto &quot;%1&quot;</translation>
+        <translation>Bloques de titulo del proyecto &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
