@@ -47,6 +47,8 @@ class DiagramView : public QGraphicsView {
 	QAction *find_element_;
 	QPoint paste_here_pos;
 	bool is_adding_text;
+	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
+	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
 	ElementsLocation next_location_;
 	QPoint next_position_;
 	
@@ -71,7 +73,14 @@ class DiagramView : public QGraphicsView {
 	virtual void mouseDoubleClickEvent(QMouseEvent *);
 	virtual void contextMenuEvent(QContextMenuEvent *);
 	virtual void wheelEvent(QWheelEvent *);
+	virtual void focusInEvent(QFocusEvent *);
+	virtual void keyPressEvent(QKeyEvent *);
+	virtual void keyReleaseEvent(QKeyEvent *);
 	virtual bool event(QEvent *);
+	virtual bool switchToVisualisationModeIfNeeded(QInputEvent *e);
+	virtual bool switchToSelectionModeIfNeeded(QInputEvent *e);
+	virtual bool isCtrlShifting(QInputEvent *);
+	virtual bool selectedItemHasFocus();
 	
 	private:
 	void mousePressEvent(QMouseEvent *);

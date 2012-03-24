@@ -43,7 +43,7 @@
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
 	@param parent Le QWidget parent de cette vue de schema
 */
-DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), is_adding_text(false) {
+DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(parent), is_adding_text(false), is_moving_view_(false) {
 	setAttribute(Qt::WA_DeleteOnClose, true);
 	setInteractive(true);
 	
@@ -364,7 +364,7 @@ void DiagramView::copy() {
 	@param clipboard_mode Type de presse-papier a prendre en compte
 */
 void DiagramView::paste(const QPointF &pos, QClipboard::Mode clipboard_mode) {
-	if (scene -> isReadOnly()) return;
+	if (!isInteractive() || scene -> isReadOnly()) return;
 	
 	QString texte_presse_papier = QApplication::clipboard() -> text(clipboard_mode);
 	if ((texte_presse_papier).isEmpty()) return;
@@ -397,15 +397,21 @@ void DiagramView::pasteHere() {
 	 *  le clic pour ajouter un champ de texte independant
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
-	if (e -> buttons() == Qt::MidButton) {
-		paste(mapToScene(e -> pos()), QClipboard::Selection);
-	} else {
-		if (!scene -> isReadOnly() && is_adding_text && e -> buttons() == Qt::LeftButton) {
-			addDiagramTextAtPos(mapToScene(e -> pos()));
-			is_adding_text = false;
-		}
-		QGraphicsView::mousePressEvent(e);
+	if (fresh_focus_in_) {
+		switchToVisualisationModeIfNeeded(e);
+		fresh_focus_in_ = false;
 	}
+	if (isInteractive() && !scene -> isReadOnly()) {
+		if (e -> buttons() == Qt::MidButton) {
+			paste(mapToScene(e -> pos()), QClipboard::Selection);
+		} else {
+			if (is_adding_text && e -> buttons() == Qt::LeftButton) {
+				addDiagramTextAtPos(mapToScene(e -> pos()));
+				is_adding_text = false;
+			}
+		}
+	}
+	QGraphicsView::mousePressEvent(e);
 }
 
 /**
@@ -423,6 +429,35 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 	} else {
 		QAbstractScrollArea::wheelEvent(e);
 	}
+}
+
+/**
+	Handles "Focus in" events. Reimplemented here to store the fact the focus
+	was freshly acquired again using the mouse. This information is later used
+	in DiagramView::mousePressEvent().
+*/
+void DiagramView::focusInEvent(QFocusEvent *e) {
+	if (e -> reason() == Qt::MouseFocusReason) {
+		fresh_focus_in_ = true;
+	}
+}
+
+/**
+	Handles "key press" events. Reimplemented here to switch to visualisation
+	mode if needed.
+*/
+void DiagramView::keyPressEvent(QKeyEvent *e) {
+	switchToVisualisationModeIfNeeded(e);
+	QGraphicsView::keyPressEvent(e);
+}
+
+/**
+	Handles "key release" events. Reimplemented here to switch to selection
+	mode if needed.
+*/
+void DiagramView::keyReleaseEvent(QKeyEvent *e) {
+	switchToSelectionModeIfNeeded(e);
+	QGraphicsView::keyReleaseEvent(e);
 }
 
 /**
@@ -1005,14 +1040,72 @@ bool DiagramView::event(QEvent *e) {
 	// vue plutot que de remonter vers les QMenu / QAction
 	if (
 		e -> type() == QEvent::ShortcutOverride &&
-		scene -> hasFocus() &&
-		scene -> focusItem() &&
-		scene -> focusItem() -> isSelected()
+		selectedItemHasFocus()
 	) {
 		e -> accept();
 		return(true);
 	}
 	return(QGraphicsView::event(e));
+}
+
+/**
+	Switch to visualisation mode if the user is pressing Ctrl and Shift.
+	@return true if the view was switched to visualisation mode, false
+	otherwise.
+*/
+bool DiagramView::switchToVisualisationModeIfNeeded(QInputEvent *e) {
+	if (isCtrlShifting(e) && !selectedItemHasFocus()) {
+		if (dragMode() != QGraphicsView::ScrollHandDrag) {
+			is_moving_view_ = true;
+			setVisualisationMode();
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
+	Switch back to selection mode if the user is not pressing Ctrl and Shift.
+	@return true if the view was switched to selection mode, false
+	otherwise.
+*/
+bool DiagramView::switchToSelectionModeIfNeeded(QInputEvent *e) {
+	if (is_moving_view_ && !selectedItemHasFocus() && !isCtrlShifting(e)) {
+		setSelectionMode();
+		is_moving_view_ = false;
+		return(true);
+	}
+	return(false);
+}
+
+/**
+	@return true if the user is pressing Ctrl and Shift simultaneously.
+*/
+bool DiagramView::isCtrlShifting(QInputEvent *e) {
+	bool result = false;
+	// note: QInputEvent::modifiers and QKeyEvent::modifiers() do not return the
+	// same values, hence the casts
+	if (e -> type() == QEvent::KeyPress || e -> type() == QEvent::KeyRelease) {
+		if (QKeyEvent *ke = static_cast<QKeyEvent *>(e)) {
+			result = (ke -> modifiers() == (Qt::ControlModifier | Qt::ShiftModifier));
+		}
+	} else if (e -> type() >= QEvent::MouseButtonPress && e -> type() <= QEvent::MouseMove) {
+		if (QMouseEvent *me = static_cast<QMouseEvent *>(e)) {
+			result = (me -> modifiers() == (Qt::ControlModifier | Qt::ShiftModifier));
+		}
+	}
+	return(result);
+}
+
+/**
+	@return true if there is a selected item and that item has the focus.
+*/
+bool DiagramView::selectedItemHasFocus() {
+	return(
+		scene -> hasFocus() &&
+		scene -> focusItem() &&
+		scene -> focusItem() -> isSelected()
+	);
 }
 
 /**
@@ -1031,6 +1124,8 @@ void DiagramView::addText() {
 	@return le champ de texte ajoute
 */
 IndependentTextItem *DiagramView::addDiagramTextAtPos(const QPointF &pos) {
+	if (!isInteractive() || scene -> isReadOnly()) return(0);
+	
 	// cree un nouveau champ de texte
 	IndependentTextItem *iti = new IndependentTextItem("_");
 	
