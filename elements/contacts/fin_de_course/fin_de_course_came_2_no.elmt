@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.22" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="de">Grenzschalter</name>
         <name lang="ru">Концевой контакт (НР)</name>
@@ -6,7 +6,7 @@
         <name lang="en">Limit</name>
         <name lang="it">Finecorsa (NA)</name>
         <name lang="fr">Fin de course came (no)</name>
-        <name lang="pl">Zestyk zwierny łącznika krańcowego</name>
+        <name lang="pl">Łącznik krańcowy (zestyk zwierny)</name>
         <name lang="es">Final de carrera</name>
         <name lang="cs">Konec vodivého spojení</name>
     </names>

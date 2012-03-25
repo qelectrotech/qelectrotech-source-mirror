@@ -1,14 +1,14 @@
 <definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="de">Kontakt einfach (NC / wasserdicht)</name>
         <name lang="ru">Герметичный контакт (НЗ)</name>
         <name lang="pt">Contacto simples NC (NC / resistente à água)</name>
         <name lang="en">Simple contact (NC / tight)</name>
+        <name lang="it">Contatto semplice NC (stagno)</name>
         <name lang="fr">Contact simple (NF / étanche)</name>
-        <name lang="pl">Zestyk rozwierny</name>
+        <name lang="pl">Zestyk szczelny rozwierny</name>
         <name lang="es">Contactor simple (NC / resistente al agua)</name>
         <name lang="cs">Jednoduché vodivé spojení (NC / nepropustné)</name>
-        <name lang="de">Kontakt einfach (NC / wasserdicht)</name>
-        <name lang="it">Contatto semplice NC (stagno)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
