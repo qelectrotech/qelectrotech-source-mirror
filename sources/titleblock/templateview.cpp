@@ -178,24 +178,25 @@ bool TitleBlockTemplateView::mayPaste() {
 }
 
 /**
-	Import the cells described in the clipboard.
+	@return a list containing the pasted cells
 */
-void TitleBlockTemplateView::paste() {
+QList<TitleBlockCell> TitleBlockTemplateView::pastedCells() {
+	QList<TitleBlockCell> pasted_cells;
+	
 	// retrieve the clipboard content and parse it as XML
 	QClipboard *clipboard = QApplication::clipboard();
 	QDomDocument xml_import;
 	
 	if (!xml_import.setContent(clipboard -> text().trimmed())) {
-		return;
+		return(pasted_cells);
 	}
 	
 	// ensure the XML document describes cells that can be pasted
 	if (xml_import.documentElement().tagName() != "titleblocktemplate-partial") {
-		return;
+		return(pasted_cells);
 	}
 	
 	// load pasted cells
-	QList<TitleBlockCell> pasted_cells;
 	QDomElement paste_root = xml_import.documentElement();
 	for (QDomElement e = paste_root.firstChildElement() ; !e.isNull() ; e = e.nextSiblingElement()) {
 		if (e.tagName() == "empty" || e.tagName() == "field" || e.tagName() == "logo") {
@@ -204,6 +205,14 @@ void TitleBlockTemplateView::paste() {
 			pasted_cells << cell;
 		}
 	}
+	return(pasted_cells);
+}
+
+/**
+	Import the cells described in the clipboard.
+*/
+void TitleBlockTemplateView::paste() {
+	QList<TitleBlockCell> pasted_cells = pastedCells();
 	
 	// paste the first cell only
 	if (!pasted_cells.count()) return;
