@@ -1022,6 +1022,35 @@ QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(const TitleBlockCell *gi
 }
 
 /**
+	Export the span parameters of all cell in the current grid.
+*/
+QHash<TitleBlockCell *, QPair<int, int> > TitleBlockTemplate::getAllSpans() const {
+	QHash<TitleBlockCell *, QPair<int, int> > spans;
+	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
+		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
+			spans.insert(
+				cells_[i][j],
+				QPair<int, int>(
+					cells_[i][j] -> row_span,
+					cells_[i][j] -> col_span
+				)
+			);
+		}
+	}
+	return(spans);
+}
+
+/**
+	Restore a set of span parameters.
+*/
+void TitleBlockTemplate::setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &spans) {
+	foreach (TitleBlockCell *cell, spans.keys()) {
+		cell -> row_span = spans[cell].first;
+		cell -> col_span = spans[cell].second;
+	}
+}
+
+/**
 	@param logo_name Logo name to be added / replaced
 	@param logo_data Logo data
 */
@@ -1330,6 +1359,21 @@ void TitleBlockTemplate::forgetSpanning() {
 		for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
 			cells_[i][j] -> spanner_cell = 0;
 		}
+	}
+}
+
+/**
+	Set the spanner_cell attribute of every cell spanned by \a spanning_cell to 0.
+	@param modify_cell (Optional, defaults to true) Whether to set row_span and col_span of \a spanning_cell to 0.
+*/
+void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modify_cell) {
+	if (!spanning_cell) return;
+	foreach (TitleBlockCell *spanned_cell, spannedCells(spanning_cell)) {
+		spanned_cell -> spanner_cell = 0;
+	}
+	if (modify_cell) {
+		spanning_cell -> row_span = 0;
+		spanning_cell -> col_span = 0;
 	}
 }
 

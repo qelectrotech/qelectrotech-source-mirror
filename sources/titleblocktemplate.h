@@ -83,6 +83,8 @@ class TitleBlockTemplate : public QObject {
 	
 	TitleBlockCell *cell(int, int) const;
 	QSet<TitleBlockCell *> spannedCells(const TitleBlockCell *) const;
+	QHash<TitleBlockCell *, QPair<int, int> > getAllSpans() const;
+	void setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &);
 	bool addLogo(const QString &, QByteArray *, const QString & = "svg", const QString & = "xml");
 	bool addLogoFromFile(const QString &, const QString & = QString());
 	bool removeLogo(const QString &);
@@ -96,6 +98,13 @@ class TitleBlockTemplate : public QObject {
 	void render(QPainter &, const DiagramContext &, int) const;
 	void renderCell(QPainter &, const TitleBlockCell &, const DiagramContext &, const QRect &) const;
 	QString toString() const;
+	void applyCellSpans();
+	void forgetSpanning();
+	void forgetSpanning(TitleBlockCell *, bool = true);
+	bool checkCellSpan(TitleBlockCell *);
+	void applyCellSpan(TitleBlockCell *);
+	void applyRowColNums();
+	void rowColsChanged();
 	
 	protected:
 	void loadInformation(const QDomElement &);
@@ -121,12 +130,6 @@ class TitleBlockTemplate : public QObject {
 	int lengthRange(int, int, const QList<int> &) const;
 	QString finalTextForCell(const TitleBlockCell &, const DiagramContext &) const;
 	void renderTextCell(QPainter &, const QString &, const TitleBlockCell &, const QRectF &) const;
-	void applyCellSpans();
-	void forgetSpanning();
-	bool checkCellSpan(TitleBlockCell *);
-	void applyCellSpan(TitleBlockCell *);
-	void applyRowColNums();
-	void rowColsChanged();
 	
 	// attributes
 	private:

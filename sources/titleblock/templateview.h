@@ -97,6 +97,7 @@ class TitleBlockTemplateView : public QGraphicsView {
 	virtual qreal zoomFactor() const;
 	virtual void fillWithEmptyCells();
 	virtual bool event(QEvent *);
+	virtual void normalizeCells(QList<TitleBlockCell> &, int x = 0, int y = 0) const;
 	
 	signals:
 	void selectedCellsChanged(QList<TitleBlockCell *>);

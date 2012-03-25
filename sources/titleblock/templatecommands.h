@@ -78,6 +78,7 @@ class TitleBlockTemplateCommand : public QUndoCommand {
 	TitleBlockTemplateView *view() const;
 	void setView(TitleBlockTemplateView *);
 	void refreshView();
+	void refreshLayout();
 	
 	// attributes
 	protected:
@@ -300,6 +301,8 @@ class PasteTemplateCellsCommand : public TitleBlockTemplateCommand {
 	
 	// attributes
 	public:
+	/// Spans before operation
+	QHash<TitleBlockCell *, QPair<int, int> > spans_before_;
 	/// Pasted cells
 	QHash<TitleBlockCell *, TitleBlockCell> pasted_cells_;
 	/// Existing cells impacted by the paste operation

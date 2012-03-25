@@ -59,7 +59,6 @@ bool ModifyTitleBlockCellCommand::mergeWith(const QUndoCommand *command) {
 	if (other) {
 		if (other -> modified_cell_ == modified_cell_) {
 			if (other -> new_values_.keys() == new_values_.keys()) {
-				qDebug() << Q_FUNC_INFO << "merging";
 				new_values_ = other -> new_values_;
 				return(true);
 			}
@@ -206,6 +205,14 @@ void TitleBlockTemplateCommand::setView(TitleBlockTemplateView *view) {
 void TitleBlockTemplateCommand::refreshView() {
 	if (!view_) return;
 	view_ -> refresh();
+}
+
+/**
+	Refresh the view, including layout reloading, if any.
+*/
+void TitleBlockTemplateCommand::refreshLayout() {
+	if (!view_) return;
+	view_ -> updateLayout();
 }
 
 /**
@@ -933,21 +940,80 @@ void PasteTemplateCellsCommand::updateText() {
 	Undo a paste action.
 */
 void PasteTemplateCellsCommand::undo() {
+	bool span_management = erased_cells_.count() > 1;
 	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
 		cell -> loadContentFromCell(erased_cells_.value(cell));
 	}
-	refreshView();
+	if (span_management) {
+		// restore all span parameters as they were before the paste operation.
+		tbtemplate_ -> setAllSpans(spans_before_);
+		tbtemplate_ -> applyCellSpans();
+		refreshLayout();
+	} else {
+		refreshView();
+	}
 }
 
 /**
 	Redo a paste action.
 */
 void PasteTemplateCellsCommand::redo() {
-	// paste the first cell ony
-	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
-		cell -> loadContentFromCell(pasted_cells_.value(cell));
+	// we only play with spans when pasting more than one cell.
+	bool span_management = erased_cells_.count() > 1;
+	
+	if (span_management) {
+		// When pasting several cells, we may modify the span parameters of existing,
+		// non-erased cells. The easiest way to ensure everything can be restored at its
+		// initial state consists in saving the span parameters of every cell.
+		if (spans_before_.isEmpty()) {
+			spans_before_ = tbtemplate_ -> getAllSpans();
+		}
 	}
-	refreshView();
+	
+	// copy data from each pasted cell into each erased cell
+	foreach (TitleBlockCell *cell, erased_cells_.keys()) {
+		if (span_management) {
+			// the erased cell may be spanned by another cell
+			if (TitleBlockCell *spanning_cell = cell -> spanner_cell) {
+				// for the moment, we simply cancel the whole spanning
+				tbtemplate_ -> forgetSpanning(spanning_cell);
+			}
+		}
+		
+		// copy non-spans data
+		TitleBlockCell pasted_cell = pasted_cells_.value(cell);
+		cell -> loadContentFromCell(pasted_cell);
+		
+		if (span_management) {
+			// copy spans data
+			if ((pasted_cell.row_span != cell -> row_span) || (pasted_cell.col_span != cell -> col_span)) {
+				tbtemplate_ -> forgetSpanning(cell);
+				
+				// set the new/pasted span parameters
+				cell -> row_span = qBound(0, pasted_cell.row_span, tbtemplate_ -> rowsCount() - 1 - cell -> num_row);
+				cell -> col_span = qBound(0, pasted_cell.col_span, tbtemplate_ -> columnsCount() - 1 - cell -> num_col);
+				
+				if (cell -> row_span || cell -> col_span) {
+					// browse newly spanned cells...
+					foreach (TitleBlockCell *spanned_cell, tbtemplate_ -> spannedCells(cell)) {
+						// ... to ensure they are not already spanned by other cells
+						if (spanned_cell -> spanner_cell && spanned_cell -> spanner_cell != cell) {
+							// if so, simply cancel the whole spanning
+							tbtemplate_ -> forgetSpanning(spanned_cell -> spanner_cell);
+						}
+					}
+					
+					// set the spanner_cell attribute of newly spanned cells
+					tbtemplate_ -> applyCellSpan(cell);
+				}
+			}
+		}
+	}
+	if (span_management) {
+		refreshLayout();
+	} else {
+		refreshView();
+	}
 }
 
 /**

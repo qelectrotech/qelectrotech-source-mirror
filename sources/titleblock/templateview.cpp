@@ -160,6 +160,10 @@ QList<TitleBlockCell *> TitleBlockTemplateView::copy() {
 	xml_export.appendChild(tbtpartial);
 	foreach (TitleBlockCell *cell, copied_cells) {
 		tbtemplate_ -> exportCellToXml(cell, tbtpartial);
+		tbtpartial.setAttribute("row", cell -> num_row);
+		tbtpartial.setAttribute("col", cell -> num_col);
+		tbtpartial.setAttribute("row_span", cell -> row_span);
+		tbtpartial.setAttribute("col_span", cell -> col_span);
 	}
 	
 	QClipboard *clipboard = QApplication::clipboard();
@@ -202,6 +206,24 @@ QList<TitleBlockCell> TitleBlockTemplateView::pastedCells() {
 		if (e.tagName() == "empty" || e.tagName() == "field" || e.tagName() == "logo") {
 			TitleBlockCell cell;
 			cell.loadContentFromXml(e);
+			int row_num = -1, col_num = -1, row_span = -1, col_span = -1;
+			if (!QET::attributeIsAnInteger(e, "row", &row_num) || row_num < 0) {
+				continue;
+			}
+			if (!QET::attributeIsAnInteger(e, "col", &col_num) || col_num < 0) {
+				continue;
+			}
+			cell.num_row = row_num;
+			cell.num_col = col_num;
+			
+			// parse the rowspan and colspan attributes
+			if (QET::attributeIsAnInteger(e, "rowspan", &row_span) && row_span > 0) {
+				cell.row_span = row_span;
+			}
+			
+			if (QET::attributeIsAnInteger(e, "colspan", &col_span) && col_span > 0) {
+				cell.col_span = col_span;
+			}
 			pasted_cells << cell;
 		}
 	}
@@ -212,22 +234,27 @@ QList<TitleBlockCell> TitleBlockTemplateView::pastedCells() {
 	Import the cells described in the clipboard.
 */
 void TitleBlockTemplateView::paste() {
+	if (!tbtemplate_) return;
 	QList<TitleBlockCell> pasted_cells = pastedCells();
-	
-	// paste the first cell only
 	if (!pasted_cells.count()) return;
 	
-	// onto the first selected one
+	// the top left cell among the selected ones will be used to position the pasted cells
 	TitleBlockTemplateVisualCell *selected_cell = selectedCellsSet().topLeftCell();
 	if (!selected_cell) return;
-	
 	TitleBlockCell *erased_cell = selected_cell -> cell();
 	if (!erased_cell) return;
 	
+	// change num_row and num_col attributes of pasted cells so they get positionned relatively to selected_cell
+	normalizeCells(pasted_cells, erased_cell -> num_row, erased_cell -> num_col);
+	
 	PasteTemplateCellsCommand *paste_command = new PasteTemplateCellsCommand(tbtemplate_);
-	paste_command -> addCell(erased_cell, *erased_cell, pasted_cells.first());
+	foreach (TitleBlockCell cell, pasted_cells) {
+		TitleBlockCell *erased_cell = tbtemplate_ -> cell(cell.num_row, cell.num_col);
+		if (!erased_cell) continue;
+		paste_command -> addCell(erased_cell, *erased_cell, cell);
+	}
+	
 	requestGridModification(paste_command);
-	/// TODO paste more cells, using some kind of heuristic to place them?
 }
 
 /**
@@ -766,6 +793,25 @@ bool TitleBlockTemplateView::event(QEvent *event) {
 		first_activation_ = false;
 	}
 	return(QGraphicsView::event(event));
+}
+
+/**
+	Given a cells list, change their position so the top left one is at row \a x and column \a y.
+	@param cells Cells list
+*/
+void TitleBlockTemplateView::normalizeCells(QList<TitleBlockCell> &cells, int x, int y) const {
+	if (!cells.count()) return;
+	
+	int min_row = cells.at(0).num_row;
+	int min_col = cells.at(0).num_col;
+	for (int i = 1 ; i < cells.count() ; ++ i) {
+		if (cells.at(i).num_row < min_row) min_row = cells.at(i).num_row;
+		if (cells.at(i).num_col < min_col) min_col = cells.at(i).num_col;
+	}
+	for (int i = 0 ; i < cells.count() ; ++ i) {
+		cells[i].num_row = cells[i].num_row - min_row + x;
+		cells[i].num_col = cells[i].num_col - min_col + y;
+	}
 }
 
 /**
