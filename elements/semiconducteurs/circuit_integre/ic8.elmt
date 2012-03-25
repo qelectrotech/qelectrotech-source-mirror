@@ -1,9 +1,9 @@
-<definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="100" type="element" orientation="ydyy">
+<definition width="80" version="0.22" hotspot_x="40" hotspot_y="50" height="100" type="element" orientation="ydyy">
     <names>
         <name lang="de">Integrierte Schaltung, 8 Pin</name>
         <name lang="en">Integrated Circuit, 8 pins</name>
         <name lang="fr">Circuit integré 8 broches</name>
-        <name lang="pl">Układ scalony, 8 pinów</name>
+        <name lang="pl">Układ scalony, 8 nóżek</name>
         <name lang="cs">Integrovaný obvod, 8 kolíků</name>
     </names>
     <informations></informations>
