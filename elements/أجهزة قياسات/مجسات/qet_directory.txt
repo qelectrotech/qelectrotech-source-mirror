@@ -1,0 +1,14 @@
+<qet-directory>
+    <names>
+        <name lang="de">Sensoren</name>
+        <name lang="ru">–î–∞—Ç—á–∏–∫–∏</name>
+        <name lang="pt">Sondas</name>
+        <name lang="ar">„Ã”«  </name>
+        <name lang="en">Sensors</name>
+        <name lang="it">Sensori</name>
+        <name lang="fr">Sondes</name>
+        <name lang="pl">Sondy</name>
+        <name lang="es">Sondeos</name>
+        <name lang="cs">Sn√≠maƒçe</name>
+    </names>
+</qet-directory>

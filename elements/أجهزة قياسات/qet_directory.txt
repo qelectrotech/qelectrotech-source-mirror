@@ -1,0 +1,14 @@
+<qet-directory>
+    <names>
+        <name lang="de">Messinstrumente</name>
+        <name lang="ru">Измеррительные приборы</name>
+        <name lang="en">Measuring instruments</name>
+        <name lang="ar">����� ������ </name>
+        <name lang="fr">Appareils de mesure</name>
+        <name lang="es">Instrumento de medición</name>
+        <name lang="pt">Instrumentos de medição</name>
+        <name lang="cs">Měřící přístroje</name>
+        <name lang="pl">Przyrządy pomiarowe</name>
+        <name lang="it">Strumenti di misura</name>
+    </names>
+</qet-directory>
