@@ -1,7 +1,8 @@
-<definition width="60" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="en">Centrifugal contact (NC)</name>
         <name lang="fr">Contact  centrifuge (NF)</name>
+        <name lang="pl">Łącznik odśrodkowy (zestyk rozwierny)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
