@@ -554,6 +554,7 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	// determine la police a utiliser et en recupere les metriques associees
 	QFont used_font = QETApp::diagramTextsFont(size);
 	QFontMetrics qfm(used_font);
+	QColor text_color = (e.attribute("color") != "white"? Qt::black : Qt::white);
 	
 	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
 	// generer le rendu graphique du texte
@@ -591,12 +592,9 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	
 	qp.translate(qpainter_offset);
 	
-	/*
-		effectue le rendu du QTextDocument en forcant la palette utilisee
-		afin de rendre le texte en noir systematiquement
-	*/
+	// force the palette used to render the QTextDocument
 	QAbstractTextDocumentLayout::PaintContext ctx;
-	ctx.palette.setColor(QPalette::Text, QColor(Qt::black));
+	ctx.palette.setColor(QPalette::Text, text_color);
 	text_document.documentLayout() -> draw(&qp, ctx);
 	
 	qp.restore();

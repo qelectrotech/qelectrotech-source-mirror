@@ -35,6 +35,12 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	qle_text  = new QLineEdit();
 	font_size = new QSpinBox();
 	font_size -> setRange(0, 144);
+	black_color_ = new QRadioButton(tr("Noir", "element text part color"));
+	white_color_ = new QRadioButton(tr("Blanc", "element text part color"));
+	color_ = new QButtonGroup(this);
+	color_ -> addButton(black_color_, true);
+	color_ -> addButton(white_color_, false);
+	connect(color_, SIGNAL(buttonClicked(int)), this, SLOT(updateTextC()));
 	QLabel *rotation_angle_label = new QLabel(tr("Angle de rotation : "));
 	rotation_angle_label -> setWordWrap(true);
 	rotation_angle_ = QETApp::createTextOrientationSpinBoxWidget();
@@ -56,6 +62,13 @@ TextEditor::TextEditor(QETElementEditor *editor, PartText *text, QWidget *parent
 	fs -> addWidget(new QLabel(tr("Taille : ")));
 	fs -> addWidget(font_size);
 	main_layout -> addLayout(fs);
+	
+	QHBoxLayout *color_layout = new QHBoxLayout();
+	color_layout -> addWidget(new QLabel(tr("Couleur : ")));
+	color_layout -> addWidget(black_color_);
+	color_layout -> addWidget(white_color_);
+	color_layout -> addStretch();
+	main_layout -> addLayout(color_layout);
 	
 	QHBoxLayout *t = new QHBoxLayout();
 	t -> addWidget(new QLabel(tr("Texte : ")));
@@ -126,6 +139,8 @@ void TextEditor::updateTextY() { addChangePartCommand(tr("ordonn\351e"), part, "
 void TextEditor::updateTextT() { addChangePartCommand(tr("contenu"),     part, "text", qle_text -> text());         }
 /// Met a jour la taille du texte et cree un objet d'annulation
 void TextEditor::updateTextS() { addChangePartCommand(tr("taille"),      part, "size", font_size -> value());       }
+/// Update the text color and create an undo object
+void TextEditor::updateTextC() { addChangePartCommand(tr("couleur", "undo caption"), part, "color", color_ -> checkedId()); }
 /// Met a jour l'angle de rotation du champ de texte et cree un objet d'annulation
 void TextEditor::updateTextRotationAngle() { addChangePartCommand(tr("angle de rotation"), part, "rotation angle", rotation_angle_ -> value()); }
 
@@ -139,6 +154,9 @@ void TextEditor::updateForm() {
 	qle_y     -> setText(part -> property("y").toString());
 	qle_text  -> setText(part -> property("text").toString());
 	font_size -> setValue(part -> property("size").toInt());
+	if (QAbstractButton *button = color_ -> button(part -> property("color").toBool())) {
+		button -> setChecked(true);
+	}
 	rotation_angle_ -> setValue(part -> property("rotation angle").toDouble());
 	activeConnections(true);
 }

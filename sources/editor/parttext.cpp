@@ -40,6 +40,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
+	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
 	
 	adjustItemPosition(1);
@@ -61,6 +62,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	int font_size = xml_element.attribute("size").toInt(&ok);
 	if (!ok || font_size < 1) font_size = 20;
 	
+	setBlack(xml_element.attribute("color") != "white");
 	setFont(QETApp::diagramTextsFont(font_size));
 	setPlainText(xml_element.attribute("text"));
 	
@@ -90,6 +92,9 @@ const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	if (rotationAngle()) {
 		xml_element.setAttribute("rotation", QString("%1").arg(rotationAngle()));
 	}
+	if (!isBlack()) {
+		xml_element.setAttribute("color", "white");
+	}
 	return(xml_element);
 }
 
@@ -105,6 +110,22 @@ qreal PartText::rotationAngle() const {
 */
 void PartText::setRotationAngle(const qreal &angle) {
 	setRotation(QET::correctAngle(angle));
+}
+
+/**
+	@return true or false if this static text is rendered black or white,
+	respectively.
+*/
+bool PartText::isBlack() const {
+	return(defaultTextColor() == Qt::black);
+}
+
+/**
+	@param color whether this static text should be rendered black (true) or white
+	(false).
+*/
+void PartText::setBlack(bool color) {
+	setDefaultTextColor(color ? Qt::black : Qt::white);
 }
 
 /**
@@ -195,6 +216,8 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 		setPlainText(value.toString());
 	} else if (property == "rotation angle") {
 		setRotationAngle(value.toDouble());
+	} else if (property == "color") {
+		setBlack(value.toBool());
 	}
 	update();
 }
@@ -220,6 +243,8 @@ QVariant PartText::property(const QString &property) {
 		return(toPlainText());
 	} else if (property == "rotation angle") {
 		return(rotation());
+	} else if (property == "color") {
+		return(isBlack());
 	}
 	return(QVariant());
 }

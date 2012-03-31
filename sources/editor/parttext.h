@@ -49,6 +49,8 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	const QDomElement toXml(QDomDocument &) const;
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
+	bool isBlack() const;
+	void setBlack(bool);
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;

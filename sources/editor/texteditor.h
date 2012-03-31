@@ -40,6 +40,8 @@ class TextEditor : public ElementItemEditor {
 	PartText *part;
 	QLineEdit *qle_x, *qle_y, *qle_text;
 	QSpinBox *font_size;
+	QButtonGroup *color_;
+	QRadioButton *black_color_, *white_color_;
 	QTextOrientationSpinBoxWidget *rotation_angle_;
 	
 	// methodes
@@ -53,6 +55,7 @@ class TextEditor : public ElementItemEditor {
 	void updateTextY();
 	void updateTextT();
 	void updateTextS();
+	void updateTextC();
 	void updateTextRotationAngle();
 	void updateForm();
 	
