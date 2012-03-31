@@ -5,7 +5,7 @@
         <name lang="pl">Łącznik przyciskowy, odblokowywany przez obracanie (przycisk bezpieczeństwa), </name>
         <name lang="cs">Nouzové zastavení</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="7" y5="0" x5="12" antialias="true" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="-10" y2="0" x2="3" y3="3" x3="5" y4="0"/>

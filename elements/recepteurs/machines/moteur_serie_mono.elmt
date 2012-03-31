@@ -5,7 +5,7 @@
         <name lang="pl">Silnik jednofazowy szeregowy</name>
         <name lang="cs">Sériový elektromotor, jednofázový</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="20" y2="9" x2="20" y3="9" x3="15" y4="9"/>

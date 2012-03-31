@@ -5,7 +5,7 @@
         <name lang="pl">Pozycja wyjęcia kluczyka łącznika</name>
         <name lang="cs">Poloha přepnutí klíče spínače</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="-1" y2="-14" x2="-2" y3="-14" x3="2" y4="-17"/>

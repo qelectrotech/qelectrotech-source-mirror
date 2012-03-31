@@ -5,7 +5,7 @@
         <name lang="pl">Okap z wentylatorem i filtrem</name>
         <name lang="cs">Odsávač par s filtrem</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>

@@ -5,7 +5,7 @@
         <name lang="pl">Komórka fotoelektryczna - nadajnik</name>
         <name lang="cs">Fotoelektrické čidlo - vysílač</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-8" y="-15.6667" size="4" text="BN"/>

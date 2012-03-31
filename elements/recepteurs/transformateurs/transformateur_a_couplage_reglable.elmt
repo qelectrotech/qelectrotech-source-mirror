@@ -10,7 +10,7 @@ Transformator mit veränderbarer Kopplung&#xd;&#xd;
         <name lang="pl">Transformator regulacyjny</name>
         <name lang="cs">Transformátor s měnitelným zapojením</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="6" x1="-12" y2="-9" x2="14"/>

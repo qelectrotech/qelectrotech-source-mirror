@@ -5,7 +5,7 @@
         <name lang="pl">Manipulator dwukierunkowy bez powrotu samoczynnego</name>
         <name lang="cs">Manipulátor</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="70.5" y="-3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>

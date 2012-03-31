@@ -5,7 +5,7 @@
         <name lang="pl">Tranzystor biopolarny pnp</name>
         <name lang="cs">Dvoupólový tranzistor pnp</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="1" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-3" x1="1" y2="-8" x2="3" y3="-5" x3="6" y4="-3"/>

@@ -10,7 +10,7 @@
         <name lang="es">Contactor simple (NC / tiempo retardado de apago)</name>
         <name lang="cs">Jednoduché spojení (NC / časový spínač pro zpoždění vypnutí)</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.5" x1="2" y2="1.5" x2="12"/>

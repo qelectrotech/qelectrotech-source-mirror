@@ -5,7 +5,7 @@
         <name lang="pl">Kuchenka mikrofalowa</name>
         <name lang="cs">Mikrovlnná trouba</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.1054" x1="-12" y2="22.8945" x2="-12" y3="22.8945" x3="12" y4="-1.1054"/>

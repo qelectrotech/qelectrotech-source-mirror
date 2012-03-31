@@ -6,7 +6,7 @@
         <name lang="pl">Kondensator elektrolityczny</name>
         <name lang="cs">Polarizovaný kondenzátor</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-8" y="-6.3333" size="6" text="+"/>

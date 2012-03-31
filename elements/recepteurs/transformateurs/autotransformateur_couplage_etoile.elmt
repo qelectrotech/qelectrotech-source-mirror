@@ -9,7 +9,7 @@ three-phase</name>
         <name lang="pl">Autotransformator trójfazowy skojarzony w gwiazdę</name>
         <name lang="cs">Třífázový autotransformátor, hvězdicovité zapojení</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="20" x="-10" y="-14.5" antialias="true" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black" start="158" angle="-68"/>

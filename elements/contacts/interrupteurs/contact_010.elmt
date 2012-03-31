@@ -5,7 +5,7 @@
         <name lang="pl">Łącznik obrotowy przełączny, uruchamiany kluczykiem</name>
         <name lang="cs">Otočný spínač - 2 polohy</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="17" y5="0" x5="42" antialias="false" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="10" y2="0" x2="13" y3="3" x3="15" y4="0"/>

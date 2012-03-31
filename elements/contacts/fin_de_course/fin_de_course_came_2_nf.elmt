@@ -10,7 +10,7 @@
         <name lang="es">Final de carrera (NC)</name>
         <name lang="cs">Konec vodivého spojení (NC)</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-21" y5="-12" x5="-23" y6="10" x6="-23" y7="10" x7="-23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="-20" y2="-1" x2="-20" y3="-4" x3="-21" y4="-12"/>

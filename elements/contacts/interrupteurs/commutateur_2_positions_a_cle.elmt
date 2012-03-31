@@ -5,7 +5,7 @@
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>
         <name lang="cs">Klíčový spínač - 2 polohy</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-12" y="-6.6666" size="4" text="1"/>

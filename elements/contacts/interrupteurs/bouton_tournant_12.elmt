@@ -5,7 +5,7 @@
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej</name>
         <name lang="cs">Otočný přepínač se 3 pevnými polohami, otevřený v prostřední poloze</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="8" y5="0" x5="33" antialias="true" style="line-style:dashed;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="1" y2="0" x2="4" y3="3" x3="6" y4="0"/>

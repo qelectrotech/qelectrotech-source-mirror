@@ -5,7 +5,7 @@
         <name lang="pl">Silnik szeregowy prądu stałego</name>
         <name lang="cs">Sériový elektromotor, stejnosměrný proud</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-15" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-30" x1="-20" y2="10" x2="-20" y3="10" x3="-15" y4="10"/>

@@ -5,7 +5,7 @@
         <name lang="pl">Zestyk zwierny działający z opóźnieniem przy uruchamianiu i powrocie</name>
         <name lang="cs">Spínací kontakt - časovač zpoždění zapnutí/vypnutí spínače (NO)</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <arc width="10" x="-4" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>

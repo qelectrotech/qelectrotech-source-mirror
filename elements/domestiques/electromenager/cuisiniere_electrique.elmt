@@ -5,7 +5,7 @@
         <name lang="pl">Kuchenka elektryczna</name>
         <name lang="cs">Elektrický sporák</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-9.1622" y="12.8377" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="6.3245"/>

@@ -9,7 +9,7 @@ Fotoaccoppiatore&#xd;
         <name lang="pl">Transoptor</name>
         <name lang="cs">Optický vazební člen</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="45" x="-23" y="-10" antialias="false" height="21" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
