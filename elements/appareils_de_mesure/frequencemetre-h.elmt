@@ -8,7 +8,7 @@
         <name lang="pl">Częstotliwościomierz (poziomo)</name>
         <name lang="cs">Měřič kmitočtu, vodorovný</name>
     </names>
-    <informations>Author: The QElectroTech team&#xd;
+    <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-8" y="2.3333" size="9" text="Hz"/>
