@@ -3,6 +3,7 @@
         <name lang="en">Centrifugal contact (No)</name>
         <name lang="fr">Contact centrifuge (No)</name>
         <name lang="pl">Łącznik odśrodkowy (zestyk zwierny)</name>
+        <name lang="cs">Odstředivé spojení (NO)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

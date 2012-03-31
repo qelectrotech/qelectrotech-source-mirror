@@ -3,6 +3,7 @@
         <name lang="en">Simple contact (NC / switch-off/on delay timer)</name>
         <name lang="fr">Contact temporise au travail et au repos (NF)</name>
         <name lang="pl">Zesty rozwierny działający z opóźnieniem przy uruchamianiu i powrocie</name>
+        <name lang="cs">Spínací kontakt - časovač zpoždění vypnutí/zapnutí spínače (NC)</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
