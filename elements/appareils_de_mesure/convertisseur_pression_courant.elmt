@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="30" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">محوّل ضغط / تيّار</name>
         <name lang="en">Pressure converter / power</name>
         <name lang="fr">Convertisseur pression/courant</name>
         <name lang="pl">Przetwornik ciśnienia</name>
