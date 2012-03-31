@@ -1,11 +1,8 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="10" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Stirnkontaktverbindung&#xd;
-Trennstelle, Lasche geschlossen&#xd;
-</name>
+        <name lang="de">Stirnkontaktverbindung Trennstelle, Lasche geschlossen</name>
         <name lang="en">Terminal strip, closed</name>
-        <name lang="fr">Barrette de connexion, fermée&#xd;
-</name>
+        <name lang="fr">Barrette de connexion, fermée</name>
         <name lang="pl">Oddzielacz w stanie zamknięcia</name>
         <name lang="cs">Propojovací tyč, zavřená</name>
         <name lang="it">Barra di connessione, chiusa</name>

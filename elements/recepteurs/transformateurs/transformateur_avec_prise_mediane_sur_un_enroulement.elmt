@@ -1,10 +1,8 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
-        <name lang="de">Transformator mit Mittenanzapfung an einer&#xd;
-Wicklung&#xd;
-</name>
+        <name lang="de">Transformator mit Mittenanzapfung an einer Wicklung</name>
         <name lang="en">Transformer with centre tapping on one winding</name>
-        <name lang="it">Trasformatore monofase con presa centrale su un avvolgimento&#xd;
+        <name lang="it">Trasformatore monofase con presa centrale su un avvolgimento
 </name>
         <name lang="fr">Transformateur avec prise médiane sur un enroulement</name>
         <name lang="pl">Transformator z przewodem środkowym</name>

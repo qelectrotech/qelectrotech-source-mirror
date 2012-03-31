@@ -5,11 +5,11 @@
         <name lang="pl">Panel operatorski -  Satchwell MN 50 LCD</name>
         <name lang="cs">Obrazovka  Satchwell MN 50 LCD</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
-Langue : Fr&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
-Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;&#xd;
+    <informations>Auteur : C V C 71
+Langue : Fr
+
+Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
+
 Bonne utilisation !</informations>
     <description>
         <polygon x4="360" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="100" x1="360" y2="98" x2="364" y3="102" x3="364" y4="100"/>

@@ -4,11 +4,11 @@
         <name lang="cs">Deska PD4</name>
         <name lang="pl">Płyta PD4</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;
-Langue : Fr&#xd;
-&#xd;
-Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
-&#xd;
+    <informations>Auteur : C V C 71
+Langue : Fr
+
+Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
+
 Bonne utilisation !</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="170" x1="30" y2="146" x2="30"/>

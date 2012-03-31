@@ -1,10 +1,8 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Betriebsstundenzähler&#xd;
-</name>
+        <name lang="de">Betriebsstundenzähler</name>
         <name lang="en">Ampere Hour Meter</name>
-        <name lang="it">Amperorametro&#xd;
-</name>
+        <name lang="it">Amperorametro</name>
         <name lang="fr">Ampèreheuremètre</name>
         <name lang="pl">Licznik amperogodzin</name>
         <name lang="cs">Ampérmetr</name>

@@ -4,11 +4,11 @@
         <name lang="cs">Měnič ARO1</name>
         <name lang="pl">Przetwornik ARO1</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;&#xd;&#xd;&#xd;
-Langue : Fr&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;
-Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;&#xd;&#xd;
-&#xd;&#xd;&#xd;&#xd;
+    <informations>Auteur : C V C 71
+Langue : Fr
+
+Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
+
 Bonne utilisation !</informations>
     <description>
         <text x="66" y="152" size="4" text="10V"/>

@@ -4,11 +4,11 @@
         <name lang="pl">STR 250</name>
         <name lang="cs">STR 250</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;
-Langue : Fr&#xd;
-&#xd;
-Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
-&#xd;
+    <informations>Auteur : C V C 71
+Langue : Fr
+
+Cet élément est optinisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
+
 Bonne utilisation !</informations>
     <description>
         <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="112" x1="51" y2="115" x2="55" y3="112" x3="59"/>

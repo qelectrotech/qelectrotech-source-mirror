@@ -1,11 +1,8 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
-        <name lang="de">Drehstromtransformator,&#xd;
-Stern/Stern/Dreieckschaltung&#xd;
-</name>
+        <name lang="de">Drehstromtransformator, Stern/Stern/Dreieckschaltung</name>
         <name lang="en">Transformateur 2 secondaires étoile-étoile-triangle</name>
-        <name lang="it">Trasformatore trifase a tre avvolgi- menti, collegamento stella-stel- la-triangolo&#xd;
-</name>
+        <name lang="it">Trasformatore trifase a tre avvolgi- menti, collegamento stella-stel- la-triangolo</name>
         <name lang="fr">Transformateur 2 secondaires étoile-étoile-triangle</name>
         <name lang="pl">Transformator trójuzwojeniowy</name>
         <name lang="cs">Třífázový transformátor, hvězda-hvězda, trojúhelníkové zapojení</name>

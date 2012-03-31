@@ -1,11 +1,8 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
     <names>
-        <name lang="de">Spartransformator&#xd;
-</name>
-        <name lang="en">Auto-transformer&#xd;
-</name>
-        <name lang="it">Autotrasformatore&#xd;
-</name>
+        <name lang="de">Spartransformator</name>
+        <name lang="en">Auto-transformer</name>
+        <name lang="it">Autotrasformatore</name>
         <name lang="fr">Autotransformateur</name>
         <name lang="pl">Autotransformator</name>
         <name lang="cs">Autotransformátor</name>
