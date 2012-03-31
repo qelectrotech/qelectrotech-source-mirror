@@ -1,13 +1,13 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="de">Stromwandler mit Ringkern</name>
         <name lang="en">Current toroidal core</name>
         <name lang="fr">Tores de courant</name>
-        <name lang="ar">������ ����� �������</name>
-        <name lang="es">Núcleos toroidales de corriente</name>
-        <name lang="pt">Núcleos toroidais de corrente</name>
-        <name lang="cs">Prstencové jádro střídavého proudu</name>
-        <name lang="pl">Przekładnik prądowy z rdzeniem toroidalnym</name>
+        <name lang="ar">محولات حلقية للتيّار</name>
+        <name lang="es">Nأ؛cleos toroidales de corriente</name>
+        <name lang="pt">Nأ؛cleos toroidais de corrente</name>
+        <name lang="cs">Prstencovأ© jأ،dro stإ™أ­davأ©ho proudu</name>
+        <name lang="pl">Przekإ‚adnik prؤ…dowy z rdzeniem toroidalnym</name>
         <name lang="it">Nucleo toroidale di corrente</name>
     </names>
 </qet-directory>

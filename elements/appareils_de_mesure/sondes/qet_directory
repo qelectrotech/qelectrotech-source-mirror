@@ -1,4 +1,4 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="de">Sensoren</name>
         <name lang="ru">Датчики</name>
@@ -6,6 +6,7 @@
         <name lang="en">Sensors</name>
         <name lang="it">Sensori</name>
         <name lang="fr">Sondes</name>
+        <name lang="ar">مجسات</name>
         <name lang="pl">Sondy</name>
         <name lang="es">Sondeos</name>
         <name lang="cs">Snímače</name>
