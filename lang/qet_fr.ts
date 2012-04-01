@@ -54,18 +54,18 @@
         <location filename="../sources/titleblock/templatecommands.cpp" line="912"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Couper %n cellule</numerusform>
+            <numerusform>Couper %n cellules</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="936"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Coller %n cellule</numerusform>
+            <numerusform>Coller %n cellules</numerusform>
         </translation>
     </message>
 </context>
