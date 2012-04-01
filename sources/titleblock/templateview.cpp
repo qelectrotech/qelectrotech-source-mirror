@@ -905,14 +905,14 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth() {
 	if (max_width != -1) {
 		min_max_width_sentence = QString(
 			tr(
-				"Minimum width: %1px\nMaximum width: %2px\n",
+				"Longueur minimale\240: %1px\nLongueur maximale\240: %2px\n",
 				"tooltip showing the minimum and/or maximum width of the edited template"
 			)
 		).arg(min_width).arg(max_width);
 	} else {
 		min_max_width_sentence = QString(
 			tr(
-				"Minimum width: %1px\n",
+				"Longueur minimale\240: %1px\n",
 				"tooltip showing the minimum width of the edited template"
 			)
 		).arg(min_width);

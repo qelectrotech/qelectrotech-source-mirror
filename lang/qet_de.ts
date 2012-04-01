@@ -4825,14 +4825,14 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Minimum width: %1px
-Maximum width: %2px
+        <source>Longueur minimale : %1px
+Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Minimum width: %1px
+        <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
         <translation type="unfinished"></translation>
