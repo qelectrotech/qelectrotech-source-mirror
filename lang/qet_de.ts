@@ -3573,6 +3573,40 @@ Que désirez vous faire ?</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Co&amp;uper</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">A&amp;usschneiden</translation>
+    </message>
+    <message>
+        <source>Cop&amp;ier</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Kop&amp;ieren</translation>
+    </message>
+    <message>
+        <source>C&amp;oller</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">E&amp;infügen</translation>
+    </message>
+    <message>
+        <source>Éditer les informations complémentaires</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+Y</source>
+        <comment>shortcut to edit extra information</comment>
+        <translation type="unfinished">Ctrl+Y</translation>
+    </message>
+    <message>
+        <source>Éditer les informations complémentaires</source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QFileNameEdit</name>
@@ -3982,6 +4016,27 @@ Que désirez vous faire ?</source>
         <comment>title block cell property human name</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>modification des informations complémentaires</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <source>Couper %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>Coller %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
 </context>
 <context>
     <name>QTextOrientationWidget</name>
@@ -4231,6 +4286,25 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>angle de rotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Noir</source>
+        <comment>element text part color</comment>
+        <translation type="unfinished">Schwarz</translation>
+    </message>
+    <message>
+        <source>Blanc</source>
+        <comment>element text part color</comment>
+        <translation type="unfinished">Weiss</translation>
+    </message>
+    <message>
+        <source>Couleur : </source>
+        <translation type="unfinished">Farbe :</translation>
+    </message>
+    <message>
+        <source>couleur</source>
+        <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4748,6 +4822,19 @@ Que désirez vous faire ?</source>
     <message>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimum width: %1px
+Maximum width: %2px
+</source>
+        <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Minimum width: %1px
+</source>
+        <comment>tooltip showing the minimum width of the edited template</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>

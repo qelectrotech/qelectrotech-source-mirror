@@ -4,7 +4,7 @@
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="661"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="608"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="726"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="673"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -48,6 +48,24 @@
         <translation>
             <numerusform>%n champ de texte</numerusform>
             <numerusform>%n champs de texte</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/titleblock/templatecommands.cpp" line="912"/>
+        <source>Couper %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/titleblock/templatecommands.cpp" line="936"/>
+        <source>Coller %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
         </translation>
     </message>
 </context>
