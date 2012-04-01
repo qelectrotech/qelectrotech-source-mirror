@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="163"/>
+        <location filename="../sources/aboutqet.cpp" line="164"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>This program is under the GNU/GPL license.</translation>
     </message>
@@ -12,11 +12,6 @@
         <location filename="../sources/aboutqet.cpp" line="105"/>
         <source>Idée originale</source>
         <translation>Original concept</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>Programmation</source>
-        <translation>Programming</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="87"/>
@@ -65,6 +60,11 @@
         <translation>© 2006-2012 QElectroTech developers</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <source>Développement</source>
+        <translation>Development</translation>
+    </message>
+    <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
         <source>Traduction en espagnol</source>
         <translation>Spanish translation</translation>
@@ -105,22 +105,27 @@
         <translation>Italian translation</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="127"/>
+        <source>Traduction en arabe</source>
+        <translation>Arabic translation</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Paquets Fedora</source>
         <translation>Fedora packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Paquets Mandriva</source>
         <translation>Mandriva packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Paquets Debian</source>
         <translation>Debian packages</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Icônes</source>
         <translation>Icons</translation>
     </message>

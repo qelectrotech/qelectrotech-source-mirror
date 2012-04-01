@@ -42,10 +42,6 @@
         <translation>Grundidee</translation>
     </message>
     <message>
-        <source>Programmation</source>
-        <translation>Programmierung</translation>
-    </message>
-    <message>
         <source>Traduction en espagnol</source>
         <translation>Spanische Übersetzung</translation>
     </message>
@@ -100,6 +96,14 @@
     <message>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <translation>© 2006-2012 Die Entwickler von QElectroTech</translation>
+    </message>
+    <message>
+        <source>Développement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Traduction en arabe</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

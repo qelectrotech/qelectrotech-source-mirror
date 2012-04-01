@@ -103,7 +103,7 @@ QWidget *AboutQET::aboutTab() const {
 QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
 	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
-	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("Programmation"));
+	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("D\351veloppement"));
 	authors -> setAlignment(Qt::AlignCenter);
 	authors -> setOpenExternalLinks(true);
 	authors -> setTextFormat(Qt::RichText);
@@ -116,7 +116,7 @@ QWidget *AboutQET::authorsTab() const {
 QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
-	addAuthor(translators, "Youssef Oualmakran",         "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
+	addAuthor(translators, "Alfredo Carreto",            "electronicos_mx@yahoo.com.mx",tr("Traduction en espagnol"));
 	addAuthor(translators, "Yuriy Litkevich",            "yuriy@qelectrotech.org",      tr("Traduction en russe"));
 	addAuthor(translators, "Jos\351 Carlos Martins",     "jose@qelectrotech.org",       tr("Traduction en portugais"));
 	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
@@ -124,6 +124,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
 	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
 	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
+	addAuthor(translators, "Mohamed Souabni",            "souabnimohamed@yahoo.fr",     tr("Traduction en arabe"));
 	
 	translators -> setOpenExternalLinks(true);
 	translators -> setTextFormat(Qt::RichText);
@@ -145,13 +146,13 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 	
-        contributors -> setOpenExternalLinks(true);
-        contributors -> setTextFormat(Qt::RichText);
-
-        QWidget *contributors_widget = new QWidget();
-        QHBoxLayout *contributors_layout = new QHBoxLayout(contributors_widget);
-        contributors_layout -> addWidget(contributors, 0, Qt::AlignCenter);
-        return(contributors_widget);
+	contributors -> setOpenExternalLinks(true);
+	contributors -> setTextFormat(Qt::RichText);
+	
+	QWidget *contributors_widget = new QWidget();
+	QHBoxLayout *contributors_layout = new QHBoxLayout(contributors_widget);
+	contributors_layout -> addWidget(contributors, 0, Qt::AlignCenter);
+	return(contributors_widget);
 }
 
 /**

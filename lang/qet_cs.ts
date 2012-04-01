@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="163"/>
+        <location filename="../sources/aboutqet.cpp" line="164"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Tento program je pod licencí GNU/GPL.</translation>
     </message>
@@ -12,11 +12,6 @@
         <location filename="../sources/aboutqet.cpp" line="105"/>
         <source>Idée originale</source>
         <translation>Původní myšlenka</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>Programmation</source>
-        <translation>Programování</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="87"/>
@@ -65,6 +60,11 @@
         <translation>© 2006-2012 Vývojáři QElectroTechu</translation>
     </message>
     <message>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <source>Développement</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
         <source>Traduction en espagnol</source>
         <translation>Překlad do španělštiny</translation>
@@ -105,22 +105,27 @@
         <translation>Překlad do italštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="127"/>
+        <source>Traduction en arabe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Paquets Fedora</source>
         <translation>Balíčky pro Fedoru</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Paquets Mandriva</source>
         <translation>Balíčky pro Mandrivu</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Paquets Debian</source>
         <translation>Balíčky pro Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>

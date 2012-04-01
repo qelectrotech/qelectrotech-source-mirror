@@ -56,8 +56,8 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>Programmation</source>
-        <translation>Programare</translation>
+        <source>Développement</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
@@ -100,27 +100,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="127"/>
+        <source>Traduction en arabe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Paquets Fedora</source>
         <translation>Pachete pentru Fedora</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Paquets Mandriva</source>
         <translation>Pachete pentru Mandriva</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Paquets Debian</source>
         <translation>Pachete pentru Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Icônes</source>
         <translation>Icoane</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="163"/>
+        <location filename="../sources/aboutqet.cpp" line="164"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Acest program este publicat cu licenţă GNU/GPL.</translation>
     </message>

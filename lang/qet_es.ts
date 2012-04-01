@@ -14,11 +14,6 @@
         <translation>Idea original</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="106"/>
-        <source>Programmation</source>
-        <translation>Programación</translation>
-    </message>
-    <message>
         <location filename="../sources/aboutqet.cpp" line="120"/>
         <source>Traduction en russe</source>
         <translation>Traducción al ruso</translation>
@@ -54,28 +49,33 @@
         <translation>Traducción al italiano</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="127"/>
+        <source>Traduction en arabe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Paquets Fedora</source>
         <translation>Fedora paquetes</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Paquets Mandriva</source>
         <translation>Mandriva paquetes</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Paquets Debian</source>
         <translation>Debian paquetes</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="146"/>
+        <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Icônes</source>
         <translation>	
 Iconos</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="163"/>
+        <location filename="../sources/aboutqet.cpp" line="164"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Este programa está bajo licencia GNU/GPL.</translation>
     </message>
@@ -119,6 +119,11 @@ Iconos</translation>
         <location filename="../sources/aboutqet.cpp" line="89"/>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <translation>© 2006-2012 Los desarrolladores de QElectroTech</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="106"/>
+        <source>Développement</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
