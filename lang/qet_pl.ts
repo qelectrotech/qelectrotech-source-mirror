@@ -62,7 +62,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozwój</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Tłumaczenie na arabski</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="144"/>
@@ -775,7 +775,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="923"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation>Możesz wykorzystać puste pole na informacje o autorze, licencji i inne przydatne informacje.</translation>
+        <translation>Możesz wykorzystać to puste pole na informacje o autorze, licencji i inne przydatne informacje.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="967"/>
@@ -1488,7 +1488,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Każdy element posiada wolne pole na informacje o autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
+        <translation>Każdy element posiada puste pole na informacje o autorach, licencji i inne informacje, które uznasz za przydatne. Możesz tutaj określić domyślną zawartość tego pola, dla elementów które zostaną utworzone :</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="205"/>
@@ -4249,25 +4249,25 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="299"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Wytnij</translation>
+        <translation>&amp;Wytnij</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Kopiuj</translation>
+        <translation>&amp;Kopiuj</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="301"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Wklej</translation>
+        <translation>&amp;Wklej</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="302"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edytuj informacje dodatkowe</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="308"/>
@@ -4297,7 +4297,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="324"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
-        <translation type="unfinished">Ctrl+Y</translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="325"/>
@@ -4417,12 +4417,12 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="815"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja informacji dodatkowych</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="819"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Możesz wykożystać to puste pole na informacje o autorze tabliczki rysunkowej, licencji i inne przydatne informacje.</translation>
     </message>
 </context>
 <context>
@@ -4638,7 +4638,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="614"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation>zmiana dodatkowych informacji</translation>
+        <translation>zmiana informacji dodatkowych</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="49"/>
@@ -4866,14 +4866,14 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="839"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>zmiana informacji dodatkowych</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="912"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Wycięcie %n komórki(ek)</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -4882,8 +4882,8 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="936"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Wklejenie %n komórki(ek)</numerusform>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
@@ -5197,13 +5197,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Noir</source>
         <comment>element text part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Czarny</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="39"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Biały</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
@@ -5233,7 +5233,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
         <source>Couleur : </source>
-        <translation type="unfinished">Kolor : </translation>
+        <translation>Kolor : </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="74"/>
@@ -5259,7 +5259,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>kolor</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
@@ -5907,14 +5907,15 @@ Co chcesz zrobić ?</translation>
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Długość minimalna : %1px
+Długość maksymalna : %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="914"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Długość minimalna : %1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="963"/>
