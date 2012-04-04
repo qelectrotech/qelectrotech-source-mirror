@@ -7,8 +7,10 @@
     </names>
     <informations></informations>
     <description>
-        <input x="33" y="-432" size="9" rotate="true" text="tsx asy800"/>
-        <rect width="110" x="-1" y="-449" antialias="false" height="452" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="110" x="-2" y="-449" antialias="false" height="452" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="100" x="5" y="-443" antialias="true" height="28" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="24" y="-427" size="9" color="white" text="tsx asy800"/>
+        <input x="159" y="-417" size="9" rotate="true" text=""/>
         <input x="33" y="-427" size="9" rotate="true" text=""/>
         <circle x="61.5279" y="-385.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="61.5279" y="-243.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
@@ -287,5 +289,8 @@
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-384" x1="58" y2="-380" x2="57"/>
         <terminal x="87" y="-145" orientation="e"/>
         <terminal x="87" y="-97" orientation="e"/>
+        <terminal x="68" y="-310" orientation="w"/>
+        <terminal x="75" y="-128" orientation="w"/>
+        <terminal x="76" y="-112" orientation="w"/>
     </description>
 </definition>

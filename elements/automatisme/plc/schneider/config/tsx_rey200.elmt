@@ -7,13 +7,16 @@
     </names>
     <informations></informations>
     <description>
+        <text x="68" y="-438" size="9" text="T"/>
+        <text x="21" y="-430" size="9" color="white" text="tsx rey200"/>
+        <rect width="94" x="7" y="-443" antialias="true" height="33" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <circle x="62.3944" y="-262.606" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-159" x1="58" y2="-153" x2="62"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-168" x1="72" y2="-161" x2="75"/>
         <circle x="62.3944" y="-162.606" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <circle x="62.3944" y="-138.606" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <circle x="61.7574" y="-39.2426" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.48528"/>
-        <input x="35" y="-435" size="9" rotate="true" text="tsx rey200"/>
+        <input x="176" y="-406" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-405" x1="91" y2="-405" x2="11"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-176" x1="50" y2="-173" x2="50"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-173" x1="50" y2="-171" x2="51"/>
@@ -622,5 +625,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="110" y2="-4" x2="110"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="110" y2="-5" x2="110"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-445" x1="110" y2="-444" x2="110"/>
+        <terminal x="68" y="-212" orientation="w"/>
+        <terminal x="68" y="-83" orientation="w"/>
     </description>
 </definition>

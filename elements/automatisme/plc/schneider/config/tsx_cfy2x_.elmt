@@ -7,6 +7,8 @@
     </names>
     <informations></informations>
     <description>
+        <text x="26" y="-424" size="9" color="white" text="tsx cfy2x"/>
+        <rect width="98" x="5" y="-441" antialias="true" height="30" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-243" x1="84" y2="-240" x2="87"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-244" x1="71" y2="-242" x2="69"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-153" x1="82" y2="-160" x2="87"/>
@@ -25,7 +27,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-293" x1="92" y2="-297" x2="96"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-293" x1="64" y2="-298" x2="60"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-277" x1="73" y2="-284" x2="69"/>
-        <input x="46" y="-431" size="9" rotate="true" text="tsx cfy2x"/>
+        <input x="239" y="-365" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-448" x1="3" y2="-448" x2="105"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="105" y2="-2" x2="107"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="-2" x2="0"/>
@@ -437,5 +439,8 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="30" y2="-7" x2="21"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="21" y2="-7" x2="13"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="104" y2="-2" x2="105"/>
+        <terminal x="79" y="-337" orientation="w"/>
+        <terminal x="79" y="-209" orientation="w"/>
+        <terminal x="76" y="-76" orientation="w"/>
     </description>
 </definition>

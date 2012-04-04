@@ -7,13 +7,15 @@
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-167" x1="61" y2="-301" x2="61"/>
+        <rect width="90" x="12" y="-439" antialias="true" height="92" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="21" y="-416" size="9" color="white" text="tsx dmy28fk"/>
         <rect width="113" x="-1" y="-450" antialias="false" height="451" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-167" x1="61" y2="-301" x2="61"/>
         <text x="3" y="-85" size="10" text="D"/>
         <text x="94" y="-85" size="10" text="B"/>
         <text x="94" y="-231" size="9" text="A"/>
         <text x="4" y="-230" size="9" text="C"/>
-        <input x="29" y="-431" size="9" rotate="true" text="tsx dmy28fk"/>
+        <input x="208" y="-377" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="87" y2="-15" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="14" y2="-21" x2="92"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-453" x1="45" y2="-452" x2="44"/>
@@ -282,5 +284,9 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-267" x1="52" y2="-266" x2="52"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-266" x1="52" y2="-265" x2="54"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-265" x1="54" y2="-267" x2="55"/>
+        <terminal x="31" y="-235" orientation="w"/>
+        <terminal x="74" y="-233" orientation="w"/>
+        <terminal x="32" y="-82" orientation="w"/>
+        <terminal x="71" y="-82" orientation="w"/>
     </description>
 </definition>

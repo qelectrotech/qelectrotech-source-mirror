@@ -7,9 +7,11 @@
     </names>
     <informations></informations>
     <description>
+        <rect width="93" x="9" y="-438" antialias="true" height="90" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="22" y="-425" size="9" color="white" text="tsx pay262"/>
         <circle x="65.5279" y="-307.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="65.3944" y="-164.606" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
-        <input x="30" y="-429" size="9" rotate="true" text="tsx pay262"/>
+        <input x="30" y="-429" size="9" rotate="true" text=""/>
         <text x="18" y="-134" size="6" text=">>  PREVENTA   &lt;&lt;"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-299" x1="69" y2="-299" x2="70"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-299" x1="62" y2="-294" x2="70"/>
@@ -421,5 +423,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-331" x1="111" y2="-333" x2="111"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-333" x1="111" y2="-446" x2="111"/>
         <terminal x="0" y="0" orientation="e"/>
+        <terminal x="71" y="-230" orientation="w"/>
+        <terminal x="77" y="-69" orientation="w"/>
     </description>
 </definition>

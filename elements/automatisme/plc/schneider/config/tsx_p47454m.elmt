@@ -7,11 +7,15 @@
     </names>
     <informations></informations>
     <description>
+        <rect width="106" x="114" y="-446" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <text x="141" y="-432" size="9" color="white" text="tsx p4754"/>
+        <rect width="106" x="2" y="-446" antialias="true" height="36" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+        <circle x="52.3567" y="-373.643" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="33.2866"/>
         <polygon x4="46" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-271" x1="60" y2="-271" x2="47" y3="-271" x3="46" y4="-317"/>
         <polygon x4="44" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-197" x1="29" y2="-194" x2="29" y3="-194" x3="44" y4="-198"/>
         <circle x="59.566" y="-54.434" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18.868"/>
         <arc width="31" x="49" y="-209" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" start="135" angle="-190"/>
-        <input x="152" y="-438" size="9" rotate="true" text="tsx p4754"/>
+        <input x="343" y="-410" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-43.069" x1="65.45" y2="-42.069" x2="67.45"/>
         <circle x="55.566" y="-206.434" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18.868"/>
         <polygon x4="217" y5="-1" x5="220" y6="-3" x6="221" y7="-3" x7="221" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="1" y2="-1" x2="4" y3="0" x3="6" y4="0"/>
@@ -49,7 +53,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-198.069" x1="61.45" y2="-198.069" x2="60.45"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-46.069" x1="73.45" y2="-46.069" x2="72.45"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-198.069" x1="69.45" y2="-198.069" x2="68.45"/>
-        <circle x="52.3567" y="-373.643" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="33.2866"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-39.069" x1="67.45" y2="-39.069" x2="68.45"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-203.069" x1="66.45" y2="-203.069" x2="65.45"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-43" x1="44" y2="-43" x2="47"/>
@@ -398,5 +401,8 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-79" x1="90" y2="-79" x2="93"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-79" x1="93" y2="-82" x2="95"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-82" x1="95" y2="-85" x2="96"/>
+        <terminal x="70" y="-357" orientation="w"/>
+        <terminal x="70" y="-295" orientation="w"/>
+        <terminal x="77" y="-108" orientation="w"/>
     </description>
 </definition>
