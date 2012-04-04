@@ -1,4 +1,4 @@
-<definition width="130" version="0.3" hotspot_x="10" hotspot_y="460" height="460" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="10" hotspot_y="460" height="470" type="element" orientation="dyyy">
     <names>
         <name lang="en">tsx_dmy28fkmodel</name>
         <name lang="fr">tsx_dmy28fkmodel</name>
@@ -15,7 +15,6 @@
         <text x="94" y="-85" size="10" text="B"/>
         <text x="94" y="-231" size="9" text="A"/>
         <text x="4" y="-230" size="9" text="C"/>
-        <input x="208" y="-377" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="87" y2="-15" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="14" y2="-21" x2="92"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-453" x1="45" y2="-452" x2="44"/>

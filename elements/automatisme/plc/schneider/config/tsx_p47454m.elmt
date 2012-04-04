@@ -15,7 +15,6 @@
         <polygon x4="44" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-197" x1="29" y2="-194" x2="29" y3="-194" x3="44" y4="-198"/>
         <circle x="59.566" y="-54.434" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18.868"/>
         <arc width="31" x="49" y="-209" antialias="true" height="23" style="line-style:normal;line-weight:normal;filling:none;color:black" start="135" angle="-190"/>
-        <input x="343" y="-410" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-43.069" x1="65.45" y2="-42.069" x2="67.45"/>
         <circle x="55.566" y="-206.434" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18.868"/>
         <polygon x4="217" y5="-1" x5="220" y6="-3" x6="221" y7="-3" x7="221" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-4" x1="1" y2="-1" x2="4" y3="0" x3="6" y4="0"/>

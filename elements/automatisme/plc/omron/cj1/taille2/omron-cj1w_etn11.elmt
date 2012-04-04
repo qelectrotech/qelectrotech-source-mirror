@@ -10,11 +10,6 @@
         <circle x="53.101" y="-178.899" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.799"/>
         <circle x="53.101" y="-239.899" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.799"/>
         <circle x="53.101" y="-211.899" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="19.799"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="45" y2="5" x2="51"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="45" y2="-1" x2="45"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="51" y2="5" x2="75"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="75" y2="-1" x2="81"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="81" y2="-10" x2="81"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-284" x1="13" y2="-280" x2="13"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-284" x1="3" y2="-280" x2="3"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-284" x1="13" y2="-284" x2="3"/>
@@ -146,5 +141,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-68" x1="59" y2="-51" x2="59"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" x1="23" y2="-77" x2="23"/>
         <terminal x="0" y="0" orientation="e"/>
+        <terminal x="40" y="-59" orientation="w"/>
     </description>
 </definition>

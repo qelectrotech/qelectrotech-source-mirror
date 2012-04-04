@@ -7,7 +7,6 @@
     </names>
     <informations></informations>
     <description>
-        <polygon x4="73" y5="1" x5="79" y6="-9" x6="79" y7="-9" x7="79" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-9" x1="43" y2="1" x2="43" y3="7" x3="49" y4="7"/>
         <circle x="52.5" y="-253.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="23"/>
         <circle x="15.5" y="-253.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="23"/>
         <circle x="56.398" y="-226.602" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="17.2047"/>

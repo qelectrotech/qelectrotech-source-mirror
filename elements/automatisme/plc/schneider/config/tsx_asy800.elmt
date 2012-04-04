@@ -10,7 +10,6 @@
         <rect width="110" x="-2" y="-449" antialias="false" height="452" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="100" x="5" y="-443" antialias="true" height="28" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="24" y="-427" size="9" color="white" text="tsx asy800"/>
-        <input x="159" y="-417" size="9" rotate="true" text=""/>
         <input x="33" y="-427" size="9" rotate="true" text=""/>
         <circle x="61.5279" y="-385.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="61.5279" y="-243.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>

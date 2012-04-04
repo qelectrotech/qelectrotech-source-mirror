@@ -1,4 +1,4 @@
-<definition width="140" version="0.3" hotspot_x="10" hotspot_y="460" height="480" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="10" hotspot_y="460" height="470" type="element" orientation="dyyy">
     <names>
         <name lang="en">tsx_cty4a</name>
         <name lang="fr">tsx_cty4a</name>
@@ -9,7 +9,6 @@
     <description>
         <rect width="100" x="6" y="-444" antialias="true" height="28" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
         <text x="32" y="-429" size="9" color="white" text="tsx cty4a"/>
-        <input x="182" y="-383" size="9" rotate="true" text=""/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-451" x1="7" y2="-451" x2="106"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="43" y2="-4" x2="7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-2" x1="7" y2="-2" x2="107"/>
