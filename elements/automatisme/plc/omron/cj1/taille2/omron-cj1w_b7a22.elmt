@@ -223,6 +223,5 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-203" x1="42" y2="-217" x2="42"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-217" x1="25" y2="-217" x2="24"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-217" x1="24" y2="-203" x2="24"/>
-        <terminal x="0" y="0" orientation="e"/>
     </description>
 </definition>
