@@ -752,7 +752,7 @@ bool DiagramView::mustIntegrateElement(const ElementsLocation &location) const {
 	can be directly applied
 */
 bool DiagramView::mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &tbt_loc) const {
-	// unlike elements, the integration of title block templates is mandatory, so we simply check whether the parent project of the 
+	// unlike elements, the integration of title block templates is mandatory, so we simply check whether the parent project of the template is also the parent project of the diagram
 	QETProject *tbt_parent_project = tbt_loc.parentProject();
 	if (!tbt_parent_project) return(true);
 	

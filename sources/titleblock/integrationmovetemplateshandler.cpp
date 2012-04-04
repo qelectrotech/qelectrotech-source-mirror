@@ -68,7 +68,7 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::templateAlreadyExists(con
 	if (src_tbt_document.toString(0) == dst_tbt_document.toString(0)) {
 		// the templates are the same, consider the integration is done
 		qDebug() << Q_FUNC_INFO << "Not integrating" << src.parentCollection() << "/" << src.name()<< "because it is already present in the project";
-		return(QET::Ignore);
+		return(QET::Managed);
 	} else {
 		return(askUser(src, dst));
 	}
@@ -127,7 +127,7 @@ QET::Action IntegrationMoveTitleBlockTemplatesHandler::askUser(const TitleBlockT
 	int result = integ_dialog_ -> exec();
 	if (result == QDialog::Accepted) {
 		if (use_existing_template_ -> isChecked()) {
-			return(QET::Ignore);
+			return(QET::Managed);
 		} else if (erase_template_ -> isChecked()) {
 			return(QET::Erase);
 		} else {

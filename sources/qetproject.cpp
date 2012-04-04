@@ -675,7 +675,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 
 /**
 	Integrate a title block template into this project.
-	@param src_tbt The locaiton of the title block template to be integrated into this project
+	@param src_tbt The location of the title block template to be integrated into this project
 	@param handler 
 	@return the name of the template after integration, or an empty QString if a problem occured.
 */
@@ -690,10 +690,12 @@ QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation
 			continue;
 		} else if (action == QET::Erase) {
 			break;
-		} else if (action == QET::Ignore || action == QET::Abort || action == QET::Managed) {
+		} else if (action == QET::Abort || action == QET::Ignore) {
 			return(QString());
 		} else if (action == QET::Rename) {
 			target_name = handler -> nameForRenamingOperation();
+		} else if (action == QET::Managed) {
+			return(target_name);
 		}
 	}
 	
