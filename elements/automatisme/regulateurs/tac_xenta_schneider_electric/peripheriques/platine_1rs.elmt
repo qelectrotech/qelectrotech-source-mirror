@@ -1,14 +1,15 @@
 <definition width="80" version="0.3" hotspot_x="0" hotspot_y="0" height="110" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">لوحة 1RS</name>
         <name lang="fr">Platine_1RS</name>
-        <name lang="cs">Deska 1RS</name>
         <name lang="pl">Płyta 1RS</name>
+        <name lang="cs">Deska 1RS</name>
     </names>
-    <informations>Auteur : C V C 71
-Langue : Fr
-
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
-
+    <informations>Auteur : C V C 71&#xd;
+Langue : Fr&#xd;
+&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
+&#xd;
 Bonne utilisation !</informations>
     <description>
         <text x="43" y="29" size="5" text="KRS"/>

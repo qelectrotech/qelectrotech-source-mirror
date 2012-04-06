@@ -1,5 +1,6 @@
 <definition width="830" version="0.3" hotspot_x="4" hotspot_y="4" height="400" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">واجهة S550</name>
         <name lang="en">Facade S550</name>
         <name lang="fr">Façade S550</name>
         <name lang="pl">Lokalna jednostka telemetryczna S550</name>

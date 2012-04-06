@@ -1,5 +1,6 @@
 <definition width="380" version="0.3" hotspot_x="335" hotspot_y="65" height="120" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">AKCC550 - مداخل/2</name>
         <name lang="en">AKCC550 inputs/2</name>
         <name lang="fr">AKCC550 entrées/2</name>
         <name lang="pl">AKCC550 - wejścia 2</name>

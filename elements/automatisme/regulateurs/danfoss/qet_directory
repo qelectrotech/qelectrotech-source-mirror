@@ -1,7 +1,8 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="en">Danfoss</name>
         <name lang="fr">Danfoss</name>
+        <name lang="ar">Danfoss</name>
         <name lang="pl">Danfoss</name>
         <name lang="cs">Danfoss</name>
     </names>

@@ -1,5 +1,6 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
+        <name lang="ar">المخطط الوظيفي التعاقبي SFC </name>
         <name lang="en">Grafcet</name>
         <name lang="de">Grafcet</name>
         <name lang="fr">Grafcet</name>

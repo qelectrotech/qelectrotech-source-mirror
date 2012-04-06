@@ -1,5 +1,6 @@
-<definition width="430" version="0.22" hotspot_x="80" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="430" version="0.3" hotspot_x="80" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">6ED1 055-1MB00-0BA1 (part2/2)</name>
         <name lang="en">6ED1 055-1MB00-0BA1 (part2/2)</name>
         <name lang="fr">6ED1 055-1MB00-0BA1 (part2/2)</name>
         <name lang="pl">6ED1 055-1MB00-0BA1 (część 2/2)</name>

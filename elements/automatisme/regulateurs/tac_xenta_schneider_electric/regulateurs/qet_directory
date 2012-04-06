@@ -1,6 +1,7 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="fr">Regulateurs</name>
+        <name lang="ar">حاكمات</name>
         <name lang="pl">Sterowniki programowalne</name>
         <name lang="cs">Ovladače</name>
     </names>

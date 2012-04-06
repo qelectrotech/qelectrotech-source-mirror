@@ -1,5 +1,6 @@
-<definition width="900" version="0.22" hotspot_x="15" hotspot_y="45" height="110" type="element" orientation="dnnn">
+<definition width="900" version="0.3" hotspot_x="15" hotspot_y="45" height="110" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">ABE7-R16S210-1</name>
         <name lang="en">ABE7-R16S210-1</name>
         <name lang="fr">ABE7-R16S210-1</name>
         <name lang="pl">ABE7-R16S210-1</name>

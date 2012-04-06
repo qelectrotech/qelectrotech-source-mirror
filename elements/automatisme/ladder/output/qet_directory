@@ -1,4 +1,4 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="de">Ausgänge</name>
         <name lang="ru">Выходы</name>
@@ -9,5 +9,6 @@
         <name lang="cs">Výstupy</name>
         <name lang="pl">Wyjścia</name>
         <name lang="it"> Uscite</name>
-    </names>
+         <name lang="ar">مخارج</name>
+   </names>
 </qet-directory>

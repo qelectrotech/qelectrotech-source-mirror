@@ -1,5 +1,6 @@
 <definition width="130" version="0.3" hotspot_x="0" hotspot_y="0" height="190" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">STR_202</name>
         <name lang="fr">STR_202</name>
         <name lang="pl">STR 202</name>
         <name lang="cs">STR 202</name>

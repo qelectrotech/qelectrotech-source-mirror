@@ -1,14 +1,15 @@
 <definition width="130" version="0.3" hotspot_x="0" hotspot_y="0" height="190" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">STR_106_107</name>
         <name lang="fr">STR_106_107</name>
         <name lang="pl">STR 106 / 107</name>
         <name lang="cs">STR 106 / 107</name>
     </names>
-    <informations>Auteur : C V C 71
-Langue : Fr
-
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
-
+    <informations>Auteur : C V C 71&#xd;
+Langue : Fr&#xd;
+&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
+&#xd;
 Bonne utilisation !</informations>
     <description>
         <circle x="98.5858" y="118.586" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.8284"/>
@@ -40,7 +41,7 @@ Bonne utilisation !</informations>
         <circle x="98.5858" y="44.5858" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="2.8284"/>
         <rect width="10" x="15" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="95" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="98" x2="100" x3="102" x4="101" antialias="false" x5="101" x6="104" x7="100" x8="96" x9="99" closed="false" y1="55" y10="51" y2="52" y11="55" y3="55" y4="51" y12="55" y5="49" x10="99" y6="50" x11="98" y7="47" x12="98" y8="50" y9="49"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="98" x2="100" x3="102" x4="101" antialias="false" x5="101" x6="104" x7="100" x8="96" x9="99" closed="false" y1="55" y2="52" y10="51" y3="55" y11="55" y4="51" y12="55" y5="49" x10="99" y6="50" x11="98" y7="47" x12="98" y8="50" y9="49"/>
         <rect width="10" x="5" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="10" x="85" y="175" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="91.9377" y="41.9377" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="16.1245"/>

@@ -1,5 +1,6 @@
-<definition width="230" version="0.22" hotspot_x="10" hotspot_y="45" height="110" type="element" orientation="dnnn">
+<definition width="230" version="0.3" hotspot_x="10" hotspot_y="45" height="110" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">6AV6641-0CA01-0AX0</name>
         <name lang="en">6AV6641-0CA01-0AX0</name>
         <name lang="fr">6AV6641-0CA01-0AX0</name>
         <name lang="pl">6AV6641-0CA01-0AX0</name>

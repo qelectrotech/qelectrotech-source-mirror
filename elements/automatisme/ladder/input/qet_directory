@@ -1,6 +1,7 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
         <name lang="de">Eingänge</name>
+        <name lang="ar">مداخل</name>
         <name lang="ru">Входы</name>
         <name lang="en">Inputs</name>
         <name lang="fr">Entrées</name>

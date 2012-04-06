@@ -1,14 +1,15 @@
 <definition width="400" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">TAC_Xenta_451_452</name>
         <name lang="fr">TAC_Xenta_451_452</name>
         <name lang="pl">TAC Xenta 451A / 452A</name>
         <name lang="cs">TAC Xenta 451A / 452A</name>
     </names>
-    <informations>Auteur : C V C 71
-Langue : Fr
-
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
-
+    <informations>Auteur : C V C 71&#xd;
+Langue : Fr&#xd;
+&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
+&#xd;
 Bonne utilisation !</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="110" x1="140" y2="170" x2="140"/>

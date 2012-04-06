@@ -1,5 +1,6 @@
 <definition width="760" version="0.3" hotspot_x="4" hotspot_y="4" height="180" type="element" orientation="dnyn">
     <names>
+        <name lang="ar">لوحة DL/HF</name>
         <name lang="en">Board DL/HF</name>
         <name lang="fr">Carte DL/HF</name>
         <name lang="pl">Karta DL/HF</name>

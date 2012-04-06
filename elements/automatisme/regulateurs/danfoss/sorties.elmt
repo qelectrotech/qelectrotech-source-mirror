@@ -1,5 +1,6 @@
 <definition width="610" version="0.3" hotspot_x="345" hotspot_y="75" height="130" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مخارج AKCC 550</name>
         <name lang="fr">Sorties AKCC 550</name>
         <name lang="pl">AKCC 550 - wyjścia</name>
         <name lang="cs">AKCC 550 - výstupy</name>

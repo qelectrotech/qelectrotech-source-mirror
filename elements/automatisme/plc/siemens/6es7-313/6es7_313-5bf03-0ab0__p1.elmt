@@ -1,5 +1,6 @@
-<definition width="320" version="0.22" hotspot_x="15" hotspot_y="45" height="110" type="element" ic="true" orientation="dnnn">
+<definition width="320" version="0.3" hotspot_x="15" hotspot_y="45" height="110" type="element" ic="true" orientation="dnnn">
     <names>
+        <name lang="ar">6ES7 313-5BF03-0AB0 (part 1/8)</name>
         <name lang="en">6ES7 313-5BF03-0AB0 (part 1/8)</name>
         <name lang="fr">6ES7 313-5BF03-0AB0 (part 1/8)</name>
         <name lang="pl">6ES7 313-5BF03-0AB0 (część 1/8)</name>

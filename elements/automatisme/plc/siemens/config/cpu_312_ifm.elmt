@@ -1,5 +1,6 @@
 <definition width="170" version="0.3" hotspot_x="5" hotspot_y="20" height="280" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="en">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="fr">CPU 312 IFM   DI 10/DO 6xDC24V</name>
         <name lang="pl">CPU 312 IFM   DI 10/DO 6xDC24V</name>

@@ -1,5 +1,6 @@
 <definition width="760" version="0.3" hotspot_x="4" hotspot_y="4" height="180" type="element" orientation="dnyn">
     <names>
+        <name lang="ar">لوحة PSTN</name>
         <name lang="en">Board PSTN</name>
         <name lang="fr">Carte PSTN</name>
         <name lang="pl">Karta PSTN</name>

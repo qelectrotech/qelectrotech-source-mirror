@@ -1,15 +1,16 @@
 <definition width="750" version="0.3" hotspot_x="0" hotspot_y="0" height="250" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">Satchwell MN 550 (صفحة 3/2)</name>
         <name lang="en">Satchwell MN 550 ( 2/3)</name>
         <name lang="fr">Satchwell MN 550 (page 2/3)</name>
         <name lang="pl">Satchwell MN 550 (część 2/3)</name>
         <name lang="cs">Satchwell MN 550 (strana 2/3)</name>
     </names>
-    <informations>Auteur : C V C 71
-Langue : Fr
-
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
-
+    <informations>Auteur : C V C 71&#xd;
+Langue : Fr&#xd;
+&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
+&#xd;
 Bonne utilisation !</informations>
     <description>
         <text x="472" y="229" size="6" rotation="270" text="UI9 COM"/>

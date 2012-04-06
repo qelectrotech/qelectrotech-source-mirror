@@ -1,14 +1,15 @@
 <definition width="740" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">TAC_Xenta_lib</name>
         <name lang="fr">TAC_Xenta_lib</name>
-        <name lang="cs">TAC Xenta lib</name>
         <name lang="pl">TAC Xenta Lib</name>
+        <name lang="cs">TAC Xenta lib</name>
     </names>
-    <informations>Auteur : C V C 71
-Langue : Fr
-
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
-
+    <informations>Auteur : C V C 71&#xd;
+Langue : Fr&#xd;
+&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
+&#xd;
 Bonne utilisation !</informations>
     <description>
         <text x="275" y="149" size="6" text="Y4"/>

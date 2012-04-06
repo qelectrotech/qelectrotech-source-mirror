@@ -1,5 +1,6 @@
 <definition width="110" version="0.3" hotspot_x="10" hotspot_y="290" height="300" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">OMRON-CJ1W_ETN11</name>
         <name lang="en">OMRON-CJ1W_ETN11</name>
         <name lang="fr">OMRON-CJ1W_ETN11</name>
         <name lang="pl">OMRON-CJ1W_ETN11</name>

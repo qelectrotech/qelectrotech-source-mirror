@@ -1,8 +1,9 @@
 <definition width="260" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">Controlli_W500_TMB</name>
         <name lang="fr">Controlli_W500_TMB</name>
-        <name lang="cs">Controlli_W500_TMB</name>
         <name lang="pl">Controlli_W500_TMB</name>
+        <name lang="cs">Controlli_W500_TMB</name>
     </names>
     <informations>Auteur : C V C 71
 Langue : Fr
