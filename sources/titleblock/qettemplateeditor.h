@@ -95,6 +95,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	private:
 	void initActions();
 	void initMenus();
+	void initToolbars();
 	void initWidgets();
 	void initLogoManager();
 	QString currentlyEditedTitle() const;

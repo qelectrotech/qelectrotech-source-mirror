@@ -44,6 +44,7 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	initWidgets();
 	initActions();
 	initMenus();
+	initToolbars();
 }
 
 /**
@@ -390,6 +391,35 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	insertMenu(settings_menu_, file_menu_);
 	insertMenu(settings_menu_, edit_menu_);
 	insertMenu(settings_menu_, display_menu_);
+}
+
+/**
+	Initalize toolbars.
+*/
+void QETTitleBlockTemplateEditor::initToolbars() {
+	QToolBar *main_toolbar = new QToolBar(tr("Outils", "toolbar title"), this);
+	main_toolbar -> setObjectName("tbt_main_toolbar");
+	main_toolbar -> addAction(new_);
+	main_toolbar -> addAction(open_);
+	main_toolbar -> addAction(save_);
+	main_toolbar -> addAction(save_as_);
+	addToolBar(Qt::TopToolBarArea, main_toolbar);
+	
+	QToolBar *edit_toolbar = new QToolBar(tr("\311dition", "toolbar title"), this);
+	edit_toolbar -> addAction(undo_);
+	edit_toolbar -> addAction(redo_);
+	edit_toolbar -> addSeparator();
+	edit_toolbar -> addAction(merge_cells_);
+	edit_toolbar -> addAction(split_cell_);
+	addToolBar(Qt::TopToolBarArea, edit_toolbar);
+	
+	QToolBar *display_toolbar = new QToolBar(tr("Affichage", "toolbar title"), this);
+	display_toolbar -> setObjectName("tbt_display_toolbar");
+	display_toolbar -> addAction(zoom_in_);
+	display_toolbar -> addAction(zoom_out_);
+	display_toolbar -> addAction(zoom_fit_);
+	display_toolbar -> addAction(zoom_reset_);
+	addToolBar(Qt::TopToolBarArea, display_toolbar);
 }
 
 /**
