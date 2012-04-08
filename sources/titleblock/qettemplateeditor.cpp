@@ -292,8 +292,8 @@ void QETTitleBlockTemplateEditor::initActions() {
 	open_           = new QAction(QET::Icons::DocumentOpen,         tr("&Ouvrir",                      "menu entry"), this);
 	open_from_file_ = new QAction(QET::Icons::DocumentOpen,         tr("Ouvrir depuis un fichier",     "menu entry"), this);
 	save_           = new QAction(QET::Icons::DocumentSave,         tr("&Enregistrer",                 "menu entry"), this);
-	save_as_        = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer sous",             "menu entry"), this);
-	save_as_file_   = new QAction(QET::Icons::DocumentSave,         tr("Enregistrer vers un fichier",  "menu entry"), this);
+	save_as_        = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer sous",             "menu entry"), this);
+	save_as_file_   = new QAction(QET::Icons::DocumentSaveAs,       tr("Enregistrer vers un fichier",  "menu entry"), this);
 	quit_           = new QAction(QET::Icons::ApplicationExit,      tr("&Quitter",                     "menu entry"), this);
 	undo_           = undo_stack_ -> createUndoAction(this);
 	redo_           = undo_stack_ -> createRedoAction(this);
