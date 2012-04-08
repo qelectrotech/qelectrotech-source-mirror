@@ -198,6 +198,9 @@ class MergeCellsCommand : public TitleBlockTemplateCommand {
 	QHash<TitleBlockCell *, TitleBlockCell *> spanner_cells_before_merge_;
 	int row_span_before_; ///< the row_span attribute of the spanning cell before the merge
 	int col_span_before_; ///< the col_span attribute of the spanning cell before the merge
+	int applied_row_span_before_; ///< the applied_row_span attribute of the spanning cell before the merge
+	int applied_col_span_before_; ///< the applied_col_span attribute of the spanning cell before the merge
+	int span_state_before_; ///< the span_state attribute of the spanning cell before the merge
 	int row_span_after_;  ///< the row_span attribute of the spanning cell after the merge
 	int col_span_after_;  ///< the col_span attribute of the spanning cell after the merge
 };
@@ -222,8 +225,11 @@ class SplitCellsCommand : public TitleBlockTemplateCommand {
 	private:
 	TitleBlockCell *spanning_cell_;        ///< the cell spanning over the other ones
 	QSet<TitleBlockCell *> spanned_cells_; ///< the spanned cells
-	int row_span_before_;                  ///< the row_span attribute of the spanning cell after the merge
-	int col_span_before_;                  ///< the col_span attribute of the spanning cell after the merge
+	int row_span_before_;                  ///< the row_span attribute of the spanning cell before splitting
+	int col_span_before_;                  ///< the col_span attribute of the spanning cell before splitting
+	int applied_row_span_before_;          ///< the applied_row_span attribute of the spanning cell before splitting
+	int applied_col_span_before_;          ///< the applied_col_span attribute of the spanning cell before splitting
+	int span_state_before_;                ///< the span_state attribute of the spanning cell before splitting
 };
 
 /**

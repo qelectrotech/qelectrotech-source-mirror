@@ -30,6 +30,11 @@ class TitleBlockCell {
 		TextCell,
 		LogoCell
 	};
+	enum TemplateCellSpanState {
+		Disabled,     ///< the cell span parameters should not applied at all
+		Enabled,      ///< the cell span parameters should be applied without restriction
+		Restricted    ///< the cell span parameters should be applied with some restrictions
+	};
 	
 	// Constructor, destructor
 	public:
@@ -58,6 +63,9 @@ class TitleBlockCell {
 	int num_col;                       ///< x coordinate of the cell within its parent title block template grid
 	int row_span;                      ///< number of extra rows spanned by this cell
 	int col_span;                      ///< number of extra columns spanned by this cell
+	int span_state;                    ///< how should row_span and col_span be applied given other cells in the parent template
+	int applied_row_span;              ///< Actually applied row span
+	int applied_col_span;              ///< Actually applied column span
 	TitleBlockCell *spanner_cell;      ///< Cell spanning this cell, if any
 	QString value_name;                ///< name of the cell; not displayed when the title block template is rendered
 	NamesList value;                   ///< Text displayed by the cell

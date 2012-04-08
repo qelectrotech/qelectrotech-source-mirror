@@ -82,7 +82,7 @@ class TitleBlockTemplate : public QObject {
 	QList<TitleBlockCell *> createColumn();
 	
 	TitleBlockCell *cell(int, int) const;
-	QSet<TitleBlockCell *> spannedCells(const TitleBlockCell *) const;
+	QSet<TitleBlockCell *> spannedCells(const TitleBlockCell *, bool = false) const;
 	QHash<TitleBlockCell *, QPair<int, int> > getAllSpans() const;
 	void setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &);
 	bool addLogo(const QString &, QByteArray *, const QString & = "svg", const QString & = "xml");

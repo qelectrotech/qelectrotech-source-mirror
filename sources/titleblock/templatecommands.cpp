@@ -608,6 +608,9 @@ MergeCellsCommand::MergeCellsCommand(const TitleBlockTemplateCellsSet &merged_ce
 	// store the former values of the row_span and col_span attributes of the spanning cell
 	row_span_before_ = spanning_cell_ -> row_span;
 	col_span_before_ = spanning_cell_ -> col_span;
+	applied_row_span_before_ = spanning_cell_ -> applied_row_span;
+	applied_col_span_before_ = spanning_cell_ -> applied_col_span;
+	span_state_before_ = spanning_cell_ -> span_state;
 	
 	// calculate their new values after the merge operation
 	TitleBlockCell *bottom_right_cell = getBottomRightCell(merged_cells);
@@ -671,9 +674,12 @@ void MergeCellsCommand::undo() {
 		cell -> spanner_cell = spanner_cells_before_merge_[cell];
 	}
 	
-	// restore the row_span and col_span attributes of the spanning cell
+	// restore the span-related attributes of the spanning cell
 	spanning_cell_ -> row_span = row_span_before_;
 	spanning_cell_ -> col_span = col_span_before_;
+	spanning_cell_ -> applied_row_span = applied_row_span_before_;
+	spanning_cell_ -> applied_col_span = applied_col_span_before_;
+	spanning_cell_ -> span_state = span_state_before_;
 	
 	if (view_) view_ -> updateLayout();
 }
@@ -693,6 +699,9 @@ void MergeCellsCommand::redo() {
 	// set the new values of the row_span and col_span attributes
 	spanning_cell_ -> row_span = row_span_after_;
 	spanning_cell_ -> col_span = col_span_after_;
+	spanning_cell_ -> applied_row_span = row_span_after_;
+	spanning_cell_ -> applied_col_span = col_span_after_;
+	spanning_cell_ -> span_state = TitleBlockCell::Enabled;
 	
 	if (view_) view_ -> updateLayout();
 }
@@ -745,6 +754,9 @@ SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_
 	spanned_cells_ = tbtemplate_ -> spannedCells(spanning_cell_);
 	row_span_before_ = spanning_cell_ -> row_span;
 	col_span_before_ = spanning_cell_ -> col_span;
+	applied_row_span_before_ = spanning_cell_ -> row_span;
+	applied_col_span_before_ = spanning_cell_ -> col_span;
+	span_state_before_ = spanning_cell_ -> span_state;
 	
 	setText(
 		QString(
@@ -805,6 +817,9 @@ void SplitCellsCommand::undo() {
 	// the spanning cell span again
 	spanning_cell_ -> row_span = row_span_before_;
 	spanning_cell_ -> col_span = col_span_before_;
+	spanning_cell_ -> applied_row_span = applied_row_span_before_;
+	spanning_cell_ -> applied_col_span = applied_col_span_before_;
+	spanning_cell_ -> span_state = span_state_before_;
 	
 	if (view_) view_ -> updateLayout();
 }
@@ -823,6 +838,7 @@ void SplitCellsCommand::redo() {
 	// the spanning cell does not span anymore
 	spanning_cell_ -> row_span = 0;
 	spanning_cell_ -> col_span = 0;
+	tbtemplate_ -> checkCellSpan(spanning_cell_);
 	
 	if (view_) view_ -> updateLayout();
 }
@@ -989,13 +1005,14 @@ void PasteTemplateCellsCommand::redo() {
 			if ((pasted_cell.row_span != cell -> row_span) || (pasted_cell.col_span != cell -> col_span)) {
 				tbtemplate_ -> forgetSpanning(cell);
 				
+				// Note: the code below is similar to TitleBlockTemplate::checkCell() but is more aggressive (spans deletion).
 				// set the new/pasted span parameters
 				cell -> row_span = qBound(0, pasted_cell.row_span, tbtemplate_ -> rowsCount() - 1 - cell -> num_row);
 				cell -> col_span = qBound(0, pasted_cell.col_span, tbtemplate_ -> columnsCount() - 1 - cell -> num_col);
 				
 				if (cell -> row_span || cell -> col_span) {
 					// browse newly spanned cells...
-					foreach (TitleBlockCell *spanned_cell, tbtemplate_ -> spannedCells(cell)) {
+					foreach (TitleBlockCell *spanned_cell, tbtemplate_ -> spannedCells(cell, true)) {
 						// ... to ensure they are not already spanned by other cells
 						if (spanned_cell -> spanner_cell && spanned_cell -> spanner_cell != cell) {
 							// if so, simply cancel the whole spanning

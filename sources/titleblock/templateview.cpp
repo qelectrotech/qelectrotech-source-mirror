@@ -648,8 +648,10 @@ void TitleBlockTemplateView::updateRowsHelperCells() {
 	QList<int> heights = tbtemplate_ -> rowsHeights();
 	for (int i = 0 ; i < row_count ; ++ i) {
 		HelperCell *current_row_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(ROW_OFFSET + i, 0));
-		current_row_cell -> setType(QET::Absolute); // rows always have absolute heights
-		current_row_cell -> label = QString(tr("%1px", "format displayed in rows helper cells")).arg(heights.at(i));
+		if (current_row_cell) {
+			current_row_cell -> setType(QET::Absolute); // rows always have absolute heights
+			current_row_cell -> label = QString(tr("%1px", "format displayed in rows helper cells")).arg(heights.at(i));
+		}
 	}
 }
 
@@ -661,8 +663,10 @@ void TitleBlockTemplateView::updateColumnsHelperCells() {
 	for (int i = 0 ; i < col_count ; ++ i) {
 		TitleBlockDimension current_col_dim = tbtemplate_ -> columnDimension(i);
 		HelperCell *current_col_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(1, COL_OFFSET + i));
-		current_col_cell -> setType(current_col_dim.type);
-		current_col_cell -> label = current_col_dim.toString();
+		if (current_col_cell) {
+			current_col_cell -> setType(current_col_dim.type);
+			current_col_cell -> label = current_col_dim.toString();
+		}
 	}
 }
 
@@ -673,7 +677,6 @@ void TitleBlockTemplateView::updateColumnsHelperCells() {
 void TitleBlockTemplateView::addCells() {
 	int col_count = tbtemplate_ -> columnsCount();
 	int row_count = tbtemplate_ -> rowsCount();
-	if (row_count < 1 || col_count < 1) return;
 	
 	// we add a big cell to show the total width
 	total_width_helper_cell_ = new SplittedHelperCell();
@@ -725,7 +728,13 @@ void TitleBlockTemplateView::addCells() {
 			if (cell -> spanner_cell) continue;
 			TitleBlockTemplateVisualCell *cell_item = new TitleBlockTemplateVisualCell();
 			cell_item -> setTemplateCell(tbtemplate_, cell);
-			tbgrid_ -> addItem(cell_item, ROW_OFFSET + j, COL_OFFSET + i, cell -> row_span + 1, cell -> col_span + 1);
+			
+			int row_span = 0, col_span = 0;
+			if (cell -> span_state != TitleBlockCell::Disabled) {
+				row_span = cell -> applied_row_span;
+				col_span = cell -> applied_col_span;
+			}
+			tbgrid_ -> addItem(cell_item, ROW_OFFSET + j, COL_OFFSET + i, row_span + 1, col_span + 1);
 		}
 	}
 }
@@ -773,7 +782,6 @@ void TitleBlockTemplateView::fillWithEmptyCells() {
 	for (int i = 0 ; i < col_count ; ++ i) {
 		for (int j = 0 ; j < row_count ; ++ j) {
 			if (tbgrid_ -> itemAt(ROW_OFFSET + j, COL_OFFSET + i)) continue;
-			qDebug() << Q_FUNC_INFO << "looks like there is nothing there (" << j << "," << i << ")";
 			TitleBlockTemplateVisualCell *cell_item = new TitleBlockTemplateVisualCell();
 			if (TitleBlockCell *target_cell = tbtemplate_ -> cell(j, i)) {
 				qDebug() << Q_FUNC_INFO << "target_cell" << target_cell;

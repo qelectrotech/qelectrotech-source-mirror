@@ -154,8 +154,8 @@ bool TitleBlockTemplate::saveToXmlFile(const QString &filepath) {
 	@return true if the export succeeds, false otherwise
 */
 bool TitleBlockTemplate::saveToXmlElement(QDomElement &xml_element) const {
-	// we are supposed to have at least one row/column and a name
-	if (!columnsCount() || !rowsCount() || name_.isEmpty()) return(false);
+	// we are supposed to have at least a name
+	if (name_.isEmpty()) return(false);
 	
 	xml_element.setTagName("titleblocktemplate");
 	xml_element.setAttribute("name", name_);
@@ -538,8 +538,6 @@ bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCel
 #endif
 	
 	int row_num, col_num, row_span, col_span;
-	bool has_row_span = false;
-	bool has_col_span = false;
 	row_num = col_num = -1;
 	row_span = col_span = 0;
 	
@@ -565,28 +563,15 @@ bool TitleBlockTemplate::checkCell(const QDomElement &xml_element, TitleBlockCel
 	
 	// parse the rowspan and colspan attributes
 	if (QET::attributeIsAnInteger(xml_element, "rowspan", &row_span) && row_span > 0) {
-		if (row_num + row_span >= row_count) row_span = row_count - 1 - row_num;
-		has_row_span = true;
+		cell_ptr -> row_span = row_span;
 	}
 	
 	if (QET::attributeIsAnInteger(xml_element, "colspan", &col_span) && col_span > 0) {
-		if (col_num + col_span >= col_count) col_span = col_count - 1 - col_num;
-		has_col_span = true;
+		cell_ptr -> col_span = col_span;
 	}
+	// these attributes are stored "as is" -- whether they can be applied directly or must be restricted will be checked later
 	
-	// check if we can span on the required area
-	//if (!checkCellSpan(cell_ptr)) return(false);
-	
-	// at this point, the cell is ok - we fill the adequate cells in the matrix
-#ifdef TITLEBLOCK_TEMPLATE_DEBUG
-	qDebug() << Q_FUNC_INFO << "cell writing";
-#endif
-	if (has_row_span) cell_ptr -> row_span = row_span;
-	if (has_col_span) cell_ptr -> col_span = col_span;
 	if (titleblock_cell_ptr) *titleblock_cell_ptr = cell_ptr;
-	
-	//applyCellSpan(cell_ptr);
-	
 	return(true);
 }
 
@@ -1004,15 +989,23 @@ TitleBlockCell *TitleBlockTemplate::cell(int row, int col) const {
 
 /**
 	@param cell A cell belonging to this title block template
+	@param ignore_span_state (Optional, defaults to false) If true, will consider
+	cells theoretically spanned (i.e. row_span and col_span attributes).
+	Otherwise, will take span_state attribute into account.
 	@return the set of cells spanned by the provided cell
 	Note the returned set does not include the spanning, provided cell
 */
-QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(const TitleBlockCell *given_cell) const {
+QSet<TitleBlockCell *> TitleBlockTemplate::spannedCells(const TitleBlockCell *given_cell, bool ignore_span_state) const {
 	QSet<TitleBlockCell *> set;
-	if (!given_cell || !given_cell -> spans()) return(set);
+	if (!given_cell) return(set);
+	if (!ignore_span_state && given_cell -> span_state == TitleBlockCell::Disabled) return(set);
 	
-	for (int i = given_cell -> num_col ; i <= given_cell -> num_col + given_cell -> col_span ; ++ i) {
-		for (int j = given_cell -> num_row ; j <= given_cell -> num_row + given_cell -> row_span ; ++ j) {
+	int final_row_span = ignore_span_state ? given_cell -> row_span : given_cell -> applied_row_span;
+	int final_col_span = ignore_span_state ? given_cell -> col_span : given_cell -> applied_col_span;
+	if (!final_row_span && !final_col_span) return(set);
+	
+	for (int i = given_cell -> num_col ; i <= given_cell -> num_col + final_col_span ; ++ i) {
+		for (int j = given_cell -> num_row ; j <= given_cell -> num_row + final_row_span ; ++ j) {
 			if (i == given_cell -> num_col && j == given_cell -> num_row) continue;
 			TitleBlockCell *current_cell = cell(j, i);
 			if (current_cell) set << current_cell;
@@ -1241,8 +1234,14 @@ void TitleBlockTemplate::render(QPainter &painter, const DiagramContext &diagram
 			// calculate the border rect of the current cell
 			int x = lengthRange(0, cells_[i][j] -> num_col, widths);
 			int y = lengthRange(0, cells_[i][j] -> num_row, rows_heights_);
-			int w = lengthRange(cells_[i][j] -> num_col, cells_[i][j] -> num_col + 1 + cells_[i][j] -> col_span, widths);
-			int h = lengthRange(cells_[i][j] -> num_row, cells_[i][j] -> num_row + 1 + cells_[i][j] -> row_span, rows_heights_);
+			
+			int row_span = 0, col_span = 0;
+			if (cells_[i][j] -> span_state != TitleBlockCell::Disabled) {
+				row_span = cells_[i][j] -> applied_row_span;
+				col_span = cells_[i][j] -> applied_col_span;
+			}
+			int w = lengthRange(cells_[i][j] -> num_col, cells_[i][j] -> num_col + 1 + col_span, widths);
+			int h = lengthRange(cells_[i][j] -> num_row, cells_[i][j] -> num_row + 1 + row_span, rows_heights_);
 			QRect cell_rect(x, y, w, h);
 			
 			renderCell(painter, *cells_[i][j], diagram_context, cell_rect);
@@ -1374,6 +1373,9 @@ void TitleBlockTemplate::forgetSpanning(TitleBlockCell *spanning_cell, bool modi
 	if (modify_cell) {
 		spanning_cell -> row_span = 0;
 		spanning_cell -> col_span = 0;
+		spanning_cell -> applied_row_span = 0;
+		spanning_cell -> applied_col_span = 0;
+		spanning_cell -> span_state = TitleBlockCell::Enabled;
 	}
 }
 
@@ -1385,39 +1387,54 @@ void TitleBlockTemplate::applyCellSpans() {
 	forgetSpanning();
 	for (int i = 0 ; i < columns_width_.count() ; ++ i) {
 		for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
-			if (checkCellSpan(cells_[i][j])) {
-				applyCellSpan(cells_[i][j]);
-			}
+			checkCellSpan(cells_[i][j]);
+			applyCellSpan(cells_[i][j]);
 		}
 	}
 }
 
 /**
-	Check whether a given cell can be spanned according to its row_span and col_span attributes
+	Check whether a given cell can be spanned according to its row_span and
+	col_span attributes. the following attributes of \a cell are updated
+	according to what is really possible:
+	  * applied_col_span
+	  * applied_row_span
+	  * span_state
 	@param cell Cell we want to check
-	@return true if the spanned
+	@return false if no check could be performed, true otherwise
 */
-bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell/*, int policy = TitleBlockTemplate::???*/) {
+bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell) {
 	if (!cell) return(false);
-	if (!cell -> row_span && !cell -> col_span) return(true);
+	
+	cell -> span_state = TitleBlockCell::Enabled;
+	cell -> applied_row_span = cell -> row_span;
+	cell -> applied_col_span = cell -> col_span;
 	
 	// ensure the cell can span as far as required
-	if (cell -> num_col + cell -> col_span >= columnsCount()) return(false);
-	if (cell -> num_row + cell -> row_span >= rowsCount()) return(false);
+	if (cell -> num_col + cell -> col_span >= columnsCount()) {
+		cell -> applied_col_span = columnsCount() - 1 - cell -> num_col;
+		cell -> span_state = TitleBlockCell::Restricted;
+	}
+	if (cell -> num_row + cell -> row_span >= rowsCount()) {
+		cell -> applied_row_span = rowsCount() - 1 - cell -> num_row;
+		cell -> span_state = TitleBlockCell::Restricted;
+	}
 	
-	// ensure cells that will be spanned are free/empty
-	for (int i = cell -> num_col ; i <= cell -> num_col + cell -> col_span ; ++ i) {
-		for (int j = cell -> num_row ; j <= cell -> num_row + cell -> row_span ; ++ j) {
+	// ensure cells that will be spanned are either empty or free
+	for (int i = cell -> num_col ; i <= cell -> num_col + cell -> applied_col_span ; ++ i) {
+		for (int j = cell -> num_row ; j <= cell -> num_row + cell -> applied_row_span ; ++ j) {
 			if (i == cell -> num_col && j == cell -> num_row) continue;
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
 			qDebug() << Q_FUNC_INFO << "span check" << i << j;
 #endif
 			TitleBlockCell *current_cell = cells_[i][j];
 			if (current_cell -> cell_type != TitleBlockCell::EmptyCell || (current_cell -> spanner_cell && current_cell -> spanner_cell != cell)) {
-				return(false);
+				cell -> span_state = TitleBlockCell::Disabled;
+				return(true);
 			}
 		}
 	}
+	
 	return(true);
 }
 
@@ -1428,10 +1445,11 @@ bool TitleBlockTemplate::checkCellSpan(TitleBlockCell *cell/*, int policy = Titl
 */
 void TitleBlockTemplate::applyCellSpan(TitleBlockCell *cell) {
 	if (!cell || (!cell -> row_span && !cell -> col_span)) return;
+	if (cell -> span_state == TitleBlockCell::Disabled) return;
 	
 	// goes through every spanned cell
-	for (int i = cell -> num_col ; i <= cell -> num_col + cell -> col_span ; ++ i) {
-		for (int j = cell -> num_row ; j <= cell -> num_row + cell -> row_span ; ++ j) {
+	for (int i = cell -> num_col ; i <= cell -> num_col + cell -> applied_col_span ; ++ i) {
+		for (int j = cell -> num_row ; j <= cell -> num_row + cell -> applied_row_span ; ++ j) {
 			// avoid the spanning cell itself
 			if (i == cell -> num_col && j == cell -> num_row) continue;
 #ifdef TITLEBLOCK_TEMPLATE_DEBUG
