@@ -304,6 +304,8 @@ void QETTitleBlockTemplateEditor::initActions() {
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
 	zoom_fit_       = new QAction(QET::Icons::ZoomFitBest,          tr("Zoom adapt\351",               "menu entry"), this);
 	zoom_reset_     = new QAction(QET::Icons::ZoomOriginal,         tr("Pas de zoom",                  "menu entry"), this);
+	add_row_        = new QAction(QET::Icons::EditTableInsertRowAbove,    tr("Ajouter une &ligne",      "menu entry"), this);
+	add_col_        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une &colonne",    "menu entry"), this);
 	merge_cells_    = new QAction(QET::Icons::EditTableCellMerge,   tr("&Fusionner les cellules",      "menu entry"), this);
 	split_cell_     = new QAction(QET::Icons::EditTableCellSplit,   tr("&S\351parer les cellules",     "menu entry"), this);
 	
@@ -344,6 +346,8 @@ void QETTitleBlockTemplateEditor::initActions() {
 	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
 	connect(zoom_reset_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomReset()));
 	connect(edit_info_,       SIGNAL(triggered()), this, SLOT(editTemplateInformation()));
+	connect(add_row_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addRowAtEnd()));
+	connect(add_col_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addColumnAtEnd()));
 	connect(merge_cells_,     SIGNAL(triggered()), template_edition_area_view_, SLOT(mergeSelectedCells()));
 	connect(split_cell_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(splitSelectedCell()));
 }
@@ -372,8 +376,11 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	edit_menu_   -> addAction(copy_);
 	edit_menu_   -> addAction(paste_);
 	edit_menu_   -> addSeparator();
+	edit_menu_   -> addAction(add_row_);
+	edit_menu_   -> addAction(add_col_);
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
+	edit_menu_   -> addSeparator();
 	edit_menu_   -> addAction(edit_info_);
 	display_menu_ -> addAction(zoom_in_);
 	display_menu_ -> addAction(zoom_out_);
@@ -582,6 +589,8 @@ void QETTitleBlockTemplateEditor::updateActions() {
 	cut_ -> setEnabled(!read_only_ && count);
 	copy_ -> setEnabled(count);
 	paste_ -> setEnabled(!read_only_ && count && template_edition_area_view_ -> mayPaste());
+	add_row_ -> setEnabled(!read_only_);
+	add_col_ -> setEnabled(!read_only_);
 	merge_cells_ -> setEnabled(!read_only_ && can_merge);
 	split_cell_ -> setEnabled(!read_only_ && can_split);
 }

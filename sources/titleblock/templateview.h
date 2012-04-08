@@ -63,6 +63,8 @@ class TitleBlockTemplateView : public QGraphicsView {
 	bool mayPaste();
 	QList<TitleBlockCell> pastedCells();
 	void paste();
+	void addColumnAtEnd();
+	void addRowAtEnd();
 	void addColumnBefore();
 	void addRowBefore();
 	void addColumnAfter();

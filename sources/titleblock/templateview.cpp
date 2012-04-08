@@ -258,6 +258,22 @@ void TitleBlockTemplateView::paste() {
 }
 
 /**
+	Add a column right after the last one.
+*/
+void TitleBlockTemplateView::addColumnAtEnd() {
+	if (read_only_) return;
+	requestGridModification(ModifyTemplateGridCommand::addColumn(tbtemplate_, tbtemplate_ -> columnsCount()));
+}
+
+/**
+	Add a row right after the last one.
+*/
+void TitleBlockTemplateView::addRowAtEnd() {
+	if (read_only_) return;
+	requestGridModification(ModifyTemplateGridCommand::addRow(tbtemplate_, tbtemplate_ -> rowsCount()));
+}
+
+/**
 	Add a column right before the last index selected when calling the context
 	menu.
 */
