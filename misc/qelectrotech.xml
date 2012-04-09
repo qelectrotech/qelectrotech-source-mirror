@@ -24,4 +24,10 @@
 		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<glob pattern="*.elmt" />
 	</mime-type>
+	<mime-type type="application/x-qet-titleblock">
+		<sub-class-of type="text/xml"/>
+		<comment>QElectroTech title block template</comment>
+		<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
+		<glob pattern="*.titleblock" />
+	</mime-type>
 </mime-info>
