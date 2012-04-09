@@ -1050,7 +1050,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, 
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> setOpenForDuplication(duplicate);
 	qet_template_editor -> edit(location);
-	qet_template_editor -> showMaximized();
+	qet_template_editor -> show();
 }
 
 /**
@@ -1060,7 +1060,7 @@ void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, 
 void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
-	qet_template_editor -> showMaximized();
+	qet_template_editor -> show();
 }
 
 /**

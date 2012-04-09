@@ -45,6 +45,7 @@ QETTitleBlockTemplateEditor::QETTitleBlockTemplateEditor(QWidget *parent) :
 	initActions();
 	initMenus();
 	initToolbars();
+	readSettings();
 }
 
 /**
@@ -142,6 +143,7 @@ void QETTitleBlockTemplateEditor::firstActivation(QEvent *event) {
 */
 void QETTitleBlockTemplateEditor::closeEvent(QCloseEvent *qce) {
 	if (canClose()) {
+		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
 		qce -> accept();
 	} else qce -> ignore();
@@ -301,7 +303,7 @@ void QETTitleBlockTemplateEditor::editLogos() {
 void QETTitleBlockTemplateEditor::newTemplate() {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(TitleBlockTemplateLocation());
-	qet_template_editor -> showMaximized();
+	qet_template_editor -> show();
 }
 
 /**
@@ -426,6 +428,7 @@ void QETTitleBlockTemplateEditor::initToolbars() {
 	addToolBar(Qt::TopToolBarArea, main_toolbar);
 	
 	QToolBar *edit_toolbar = new QToolBar(tr("\311dition", "toolbar title"), this);
+	edit_toolbar -> setObjectName("tbt_edit_toolbar");
 	edit_toolbar -> addAction(undo_);
 	edit_toolbar -> addAction(redo_);
 	edit_toolbar -> addSeparator();
@@ -454,6 +457,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 	undo_view_ -> setEmptyLabel(tr("Aucune modification", "label displayed in the undo list when empty"));
 	
 	undo_dock_widget_ = new QDockWidget(tr("Annulations", "dock title"));
+	undo_dock_widget_ -> setObjectName("tbt_undo_dock");
 	undo_dock_widget_ -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	undo_dock_widget_ -> setWidget(undo_view_);
 	undo_dock_widget_ -> setMinimumWidth(290);
@@ -472,6 +476,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 	// cell edition widget at the bottom
 	template_cell_editor_widget_ = new TitleBlockTemplateCellWidget(tb_template_);
 	template_cell_editor_dock_widget_ = new QDockWidget(tr("Propri\351t\351s de la cellule", "dock title"), this);
+	template_cell_editor_dock_widget_ -> setObjectName("tbt_celleditor_dock");
 	template_cell_editor_dock_widget_ -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	template_cell_editor_dock_widget_ -> setWidget(template_cell_editor_widget_);
 	template_cell_editor_dock_widget_ -> setMinimumWidth(180);
@@ -552,6 +557,30 @@ QString QETTitleBlockTemplateEditor::currentlyEditedTitle() const {
 	}
 	
 	return(titleblock_title);
+}
+
+/**
+	Load template editor-related parameters.
+*/
+void QETTitleBlockTemplateEditor::readSettings() {
+	QSettings &settings = QETApp::settings();
+	
+	// window size and position
+	QVariant geometry = settings.value("titleblocktemplateeditor/geometry");
+	if (geometry.isValid()) restoreGeometry(geometry.toByteArray());
+	
+	// window state (toolbars, docks...)
+	QVariant state = settings.value("titleblocktemplateeditor/state");
+	if (state.isValid()) restoreState(state.toByteArray());
+}
+
+/**
+	Save template editor-related parameters.
+*/
+void QETTitleBlockTemplateEditor::writeSettings() {
+	QSettings &settings = QETApp::settings();
+	settings.setValue("titleblocktemplateeditor/geometry", saveGeometry());
+	settings.setValue("titleblocktemplateeditor/state", saveState());
 }
 
 /**
