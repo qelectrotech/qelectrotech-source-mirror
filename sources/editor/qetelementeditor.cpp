@@ -763,16 +763,16 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	@return true en cas de reussite, false sinon
 */
 bool QETElementEditor::toFile(const QString &fn) {
-	QFile file(fn);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		QET::MessageBox::warning(this, tr("Erreur", "message box title"), tr("Impossible d'\351crire dans ce fichier", "message box content"));
-		return(false);
+	QDomDocument element_xml = ce_scene -> toXml();
+	bool writing = QET::writeXmlFile(element_xml, fn);
+	if (!writing) {
+		QET::MessageBox::warning(
+			this,
+			tr("Erreur", "message box title"),
+			tr("Impossible d'\351crire dans ce fichier", "message box content")
+		);
 	}
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out << ce_scene -> toXml().toString(4);
-	file.close();
-	return(true);
+	return(writing);
 }
 
 /**

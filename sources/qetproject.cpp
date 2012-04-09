@@ -464,26 +464,16 @@ bool QETProject::write() {
 		return(true);
 	}
 	
-	// ouvre le fichier en ecriture
-	QFile file(file_path_);
-	bool file_opening = file.open(QIODevice::WriteOnly | QIODevice::Text);
-	if (!file_opening) {
-		qDebug() << qPrintable(QString("QETProject::write() : unable to open %1 with write access [%2]").arg(file_path_).arg(QET::pointerString(this)));
-		return(false);
-	}
-	
-	qDebug() << qPrintable(QString("QETProject::write() : writing to file %1 [%2]").arg(file_path_).arg(QET::pointerString(this)));
-	
 	// realise l'export en XML du projet dans le document XML interne
 	document_root_.clear();
 	document_root_.appendChild(document_root_.importNode(toXml().documentElement(), true));
 	
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out << document_root_.toString(4);
-	file.close();
-	
-	return(true);
+	QString error_message;
+	bool writing = QET::writeXmlFile(document_root_, file_path_, &error_message);
+	if (!writing) {
+		qDebug() << qPrintable(QString("QETProject::write() : %1 [%2]").arg(error_message).arg(QET::pointerString(this)));
+	}
+	return(writing);
 }
 
 /**

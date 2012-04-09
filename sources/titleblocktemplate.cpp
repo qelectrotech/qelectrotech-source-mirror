@@ -126,12 +126,6 @@ bool TitleBlockTemplate::loadFromXmlElement(const QDomElement &xml_element) {
 bool TitleBlockTemplate::saveToXmlFile(const QString &filepath) {
 	if (filepath.isEmpty()) return(false);
 	
-	// open the file
-	QFile xml_file(filepath);
-	if (!xml_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		return(false);
-	}
-	
 	// generate the XML document
 	QDomDocument doc;
 	QDomElement e = doc.createElement("root");
@@ -139,13 +133,7 @@ bool TitleBlockTemplate::saveToXmlFile(const QString &filepath) {
 	if (!saving) return(false);
 	doc.appendChild(e);
 	
-	// write the file
-	QTextStream out(&xml_file);
-	out.setCodec("UTF-8");
-	out << doc.toString(4);
-	xml_file.close();
-	
-	return(true);
+	return(QET::writeXmlFile(doc, filepath));
 }
 
 /**

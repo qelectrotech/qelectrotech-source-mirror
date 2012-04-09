@@ -148,5 +148,6 @@ namespace QET {
 	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
+	bool writeXmlFile(QDomDocument &, const QString &, QString * = 0);
 }
 #endif

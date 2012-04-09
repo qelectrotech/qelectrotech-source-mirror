@@ -20,6 +20,8 @@
 #include "fileelementscategory.h"
 #include "fileelementscollection.h"
 #include "qetapp.h"
+#include "qet.h"
+
 /**
 	Constructeur
 	@param uri Chemin du fichier contenant la definition de l'element
@@ -74,16 +76,7 @@ bool FileElementDefinition::setXml(const QDomElement &xml_element) {
 	@return true si l'operation a reussi, false sinon
 */
 bool FileElementDefinition::write() {
-	QFile file(file_path);
-	
-	// le fichier doit etre accessible en ecriture
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return(false);
-	
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out << xml_element_.toString(4);
-	file.close();
-	return(true);
+	return(QET::writeXmlFile(xml_element_, file_path));
 }
 
 /**

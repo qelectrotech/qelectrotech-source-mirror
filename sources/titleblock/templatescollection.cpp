@@ -417,17 +417,11 @@ bool TitleBlockTemplatesFilesCollection::setTemplateXmlDescription(const QString
 	// prevent the watcher from emitting signals while we open and write to file
 	blockSignals(true);
 	
-	QFile xml_file(path(template_name));
-	if (!xml_file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		return(false);
-	}
 	QDomDocument doc;
 	doc.appendChild(doc.importNode(xml_element, true));
 	
-	QTextStream out(&xml_file);
-	out.setCodec("UTF-8");
-	out << doc.toString(4);
-	xml_file.close();
+	bool writing = QET::writeXmlFile(doc, path(template_name));
+	if (!writing) return(false);
 	
 	// emit a single signal for the change
 	blockSignals(false);
