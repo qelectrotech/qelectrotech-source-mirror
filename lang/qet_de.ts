@@ -3611,6 +3611,31 @@ Que désirez vous faire ?</source>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Ajouter une &amp;ligne</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouter une &amp;colonne</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Outils</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished">Werkzeuge</translation>
+    </message>
+    <message>
+        <source>Édition</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Affichage</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished">Anzeige</translation>
+    </message>
 </context>
 <context>
     <name>QFileNameEdit</name>
@@ -4040,6 +4065,11 @@ Que désirez vous faire ?</source>
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
+        <comment>error message when attempting to write an XML file</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4603,6 +4633,10 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Police :</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

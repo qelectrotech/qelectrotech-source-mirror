@@ -344,60 +344,60 @@
 <context>
     <name>DiagramPrintDialog</name>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="112"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="120"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
         <translatorcomment>عنوان نافذة</translatorcomment>
         <translation>خيارات الطباعة</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="199"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="210"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
         <translation>أيّ نوع من الطباعة تريد إنجازه ؟</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="204"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="215"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
         <translation>الطباعة على طابعة مادية</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="205"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="216"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
         <translation>الطباعة في ملف بصيغة PDF</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="206"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="217"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
         <translation>الطباعة في ملف بصيغة  (Post script (PS</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="211"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="222"/>
         <source>Choix du type d&apos;impression</source>
         <translation>إختيار نوع الطباعة</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="292"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="303"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
         <translation>ملف ناقص</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="293"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="304"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
         <translation>لا بُدّ لك من تحديد مسار الملف PDF/PS المُراد إنشائه .</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="312"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="323"/>
         <source>Fichiers PDF (*.pdf)</source>
         <comment>file filter</comment>
         <translation>ملفات PDF (*.pdf)</translation>
     </message>
     <message>
-        <location filename="../sources/diagramprintdialog.cpp" line="316"/>
+        <location filename="../sources/diagramprintdialog.cpp" line="327"/>
         <source>Fichiers PostScript (*.ps)</source>
         <comment>file filter</comment>
         <translation>ملفات PostScript (*.ps)</translation>
@@ -3756,7 +3756,7 @@ Options disponibles :
         <translation>ليس لديك الصلاحيات الضرورية لتعديل هذا العنصر . وبالتالي سيُفتح للقراءة فقط.</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="771"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="797"/>
         <location filename="../sources/editor/qetelementeditor.cpp" line="808"/>
         <source>Erreur</source>
@@ -3764,7 +3764,7 @@ Options disponibles :
         <translation>خطأ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="768"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="772"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation>لايمكن الكتابة في هذا الملف</translation>
@@ -4121,34 +4121,34 @@ Options disponibles :
         <translation>%1 [قراءة فقط]</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="606"/>
+        <location filename="../sources/qetproject.cpp" line="596"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
         <translation>إستحالة إنشاء الصنف لإدماج العناصر</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="617"/>
+        <location filename="../sources/qetproject.cpp" line="607"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
         <translation>إستحالة المرور للعنصر المراد إدماجه</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="634"/>
+        <location filename="../sources/qetproject.cpp" line="624"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>حدث مشكل أثناء نسخ الصنف %1</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="705"/>
+        <location filename="../sources/qetproject.cpp" line="697"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>حدث خطأ أثناء الإدماج</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="885"/>
+        <location filename="../sources/qetproject.cpp" line="877"/>
         <source>Avertissement</source>
         <comment>message box title</comment>
         <translation>تنبيه</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="886"/>
+        <location filename="../sources/qetproject.cpp" line="878"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
@@ -4156,7 +4156,7 @@ Que désirez vous faire ?</source>
 ما تُريد فعله ؟</translation>
     </message>
     <message>
-        <location filename="../sources/qetproject.cpp" line="1229"/>
+        <location filename="../sources/qetproject.cpp" line="1221"/>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>حدث مشكل أثناء نسخ العنصر %1</translation>
     </message>
@@ -4164,295 +4164,325 @@ Que désirez vous faire ?</source>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="88"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="89"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
         <translation>حفظ النموذج الحالي؟</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="90"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="91"/>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
         <translation>هل تريد حفظ النموذج %1</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="139"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="140"/>
         <source>nouveau_modele</source>
         <comment>template name suggestion when duplicating the default one</comment>
         <translation>نموذج_جديد</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="147"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="148"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
         <translation>تكرار نموذج اطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="148"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="149"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
         <translation>لتكرار هذا النموذج, ادخل الاسم لمطلوب لنسخته</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="290"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="291"/>
         <source>&amp;Nouveau</source>
         <comment>menu entry</comment>
         <translation>&amp;جديد</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="291"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="292"/>
         <source>&amp;Ouvrir</source>
         <comment>menu entry</comment>
         <translation>&amp;فتح</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="292"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="293"/>
         <source>Ouvrir depuis un fichier</source>
         <comment>menu entry</comment>
         <translation>فتح من ملف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="293"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="294"/>
         <source>&amp;Enregistrer</source>
         <comment>menu entry</comment>
         <translation>&amp;حفظ</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="294"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="295"/>
         <source>Enregistrer sous</source>
         <comment>menu entry</comment>
         <translation>حفظ باسم</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="295"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="296"/>
         <source>Enregistrer vers un fichier</source>
         <comment>menu entry</comment>
         <translation>حفظ إلى ملف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="296"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="297"/>
         <source>&amp;Quitter</source>
         <comment>menu entry</comment>
         <translation>&amp;انهاء</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="303"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="304"/>
         <source>Zoom avant</source>
         <comment>menu entry</comment>
         <translation>تكبير</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="304"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="305"/>
         <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation>تصغير</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="305"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="306"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
         <translation>تهيئة تكبير / تصغير</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="306"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
         <translation>بدون تكبير</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="714"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="753"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation>حفظ باسم</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="716"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="755"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translation>نماذج اطارات تعريف QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="307"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="310"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;ادماج الخلايا</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="299"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
         <translation>&amp;قص</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="301"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
         <translation>&amp;نسخ</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="301"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="302"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
         <translation>&amp;لصق</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="302"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="303"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
         <translation>تحرير المعلومات الإضافية</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="308"/>
+        <source>Ajouter une &amp;ligne</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
+        <source>Ajouter une &amp;colonne</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="311"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation>&amp;فصل الخلايا</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="315"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="318"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
         <translation>Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="317"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="320"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
         <translation>Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="318"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="321"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="324"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="327"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
         <translation>Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="325"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
         <source>Ctrl+K</source>
         <comment>shortcut to merge cells</comment>
         <translation>Ctrl+K</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="326"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="329"/>
         <source>Ctrl+J</source>
         <comment>shortcut to split merged cell</comment>
         <translation>Ctrl+J</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="329"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
         <translation>Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="330"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
         <translation>Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="355"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="360"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation>&amp;عرض</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="361"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation>&amp;تحرير</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="357"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="362"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation>عر&amp;ض</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="397"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
+        <source>Outils</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished">أدوات</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="408"/>
+        <source>Édition</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="416"/>
+        <source>Affichage</source>
+        <comment>toolbar title</comment>
+        <translation type="unfinished">عرض</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="434"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation>لا تغيير</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="399"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="436"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation>الغاءات</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="417"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="454"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation>خصائص الخليّة</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="484"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="521"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation>[مُعدّل]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="487"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="524"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
         <translation>[للقراءة فقط]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="490"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="527"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
         <translation>%1 %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="545"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="582"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation>QElectrotech -محرر نموذج اطار التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="560"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="597"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation>%1 - %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="635"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="674"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
         <translation>فتح نموذج</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="654"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="693"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation>فتح ملف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="656"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="695"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
         <translation>نماذج اطارات تعريف QElectrotech</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="695"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="734"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation>حفظ النموذج باسم</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="815"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="854"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
         <translation>تحرير المعلومات الإضافية</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="819"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="858"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation>يُمكنكم إستعمال هذا الحقل الحر لذكر مؤلفي إطار التعريف , ترخيصه, أو أيّ معلومة أخرى ترونها مفيدة.</translation>
     </message>
@@ -4832,6 +4862,12 @@ Que désirez vous faire ?</source>
         <translation>الملف النصي المحتوي على ا لترخيص .موجود GNU/GPL لكن لم يتمّ فتحه- على كل حال أنت تعرفه عن ظهر قلب . لا ؟</translation>
     </message>
     <message>
+        <location filename="../sources/qet.cpp" line="549"/>
+        <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
+        <comment>error message when attempting to write an XML file</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/terminal.cpp" line="63"/>
         <source>Borne</source>
         <comment>tooltip</comment>
@@ -4892,25 +4928,25 @@ Que désirez vous faire ?</source>
         <translation>تعديل عمود</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="620"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
         <translation>ادماج %1 خلايا</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="751"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
         <translation>فصل خلية في %1</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecommands.cpp" line="839"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
         <translation>تغيير معلومات تكميلية</translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/titleblock/templatecommands.cpp" line="912"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
@@ -4923,7 +4959,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/titleblock/templatecommands.cpp" line="936"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
@@ -4936,55 +4972,55 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="118"/>
+        <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
         <translation>طراز</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="120"/>
+        <location filename="../sources/titleblockcell.cpp" line="122"/>
         <source>nom</source>
         <comment>title block cell property human name</comment>
         <translation>اسم</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="122"/>
+        <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
         <translation>شعار</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="124"/>
+        <location filename="../sources/titleblockcell.cpp" line="126"/>
         <source>label</source>
         <comment>title block cell property human name</comment>
         <translation>علامة</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="126"/>
+        <location filename="../sources/titleblockcell.cpp" line="128"/>
         <source>affichage du label</source>
         <comment>title block cell property human name</comment>
         <translation>عرض العلامة</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="128"/>
+        <location filename="../sources/titleblockcell.cpp" line="130"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
         <translation>القيمة المعروضة</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="130"/>
+        <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
         <translation>توجيه النص</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="132"/>
+        <location filename="../sources/titleblockcell.cpp" line="134"/>
         <source>taille du texte</source>
         <comment>title block cell property human name</comment>
         <translation>حجم النص</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockcell.cpp" line="134"/>
+        <location filename="../sources/titleblockcell.cpp" line="136"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
         <translation>التعديل الأفقي</translation>
@@ -5541,13 +5577,13 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplate</name>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1305"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1292"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
         <translation> %1 : %2</translation>
     </message>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1307"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1294"/>
         <source> %1</source>
         <translation> %1</translation>
     </message>
@@ -5655,6 +5691,11 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
         <source>Bas</source>
         <translation>أسفل</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="93"/>
+        <source>Police :</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="95"/>
@@ -5838,118 +5879,118 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateView</name>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="316"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="332"/>
         <source>Changer la largeur de la colonne</source>
         <comment>window title when changing a column with</comment>
         <translation>تغيير عرض العمود</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="317"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="333"/>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
         <translation>العرض:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="342"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="358"/>
         <source>Changer la hauteur de la ligne</source>
         <comment>window title when changing a row height</comment>
         <translation>تغيير ارتفاع الصف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="343"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="359"/>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
         <translation>الإرتفاع :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="519"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="535"/>
         <source>Ajouter une colonne (avant)</source>
         <comment>context menu</comment>
         <translation>ادراج عمود قبل</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="520"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="536"/>
         <source>Ajouter une ligne (avant)</source>
         <comment>context menu</comment>
         <translation>ادراج صف قبل</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="521"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="537"/>
         <source>Ajouter une colonne (après)</source>
         <comment>context menu</comment>
         <translation>ادراج عمود بعد</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="522"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="538"/>
         <source>Ajouter une ligne (après)</source>
         <comment>context menu</comment>
         <translation>ادراج صف بعد</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="523"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="539"/>
         <source>Modifier les dimensions de cette colonne</source>
         <comment>context menu</comment>
         <translation>تعديل مقاسات هذا العمود</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="524"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="540"/>
         <source>Modifier les dimensions de cette ligne</source>
         <comment>context menu</comment>
         <translation>تعديل مقاسات هذا الصف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="525"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="541"/>
         <source>Supprimer cette colonne</source>
         <comment>context menu</comment>
         <translation>حذف هذا العمود</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="526"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="542"/>
         <source>Supprimer cette ligne</source>
         <comment>context menu</comment>
         <translation>حذف هذا الصف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="527"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
         <translation>تعديل عرض هذه المُغاينة</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="591"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="607"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
         <translation>[%1px]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="600"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="616"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
         <translation>[%1px]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="652"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="669"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
         <translation>%1px</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="712"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="731"/>
         <source>%1px</source>
         <translation>%1px</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="757"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="782"/>
         <source>Changer la largeur de l&apos;aperçu</source>
         <translation>تغيير عرض هذه المُغاينة</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="758"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="783"/>
         <source>Largeur de l&apos;aperçu :</source>
         <translation>عرض المعاسنة :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="907"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="931"/>
         <source>Longueur minimale : %1px
 Longueur maximale : %2px
 </source>
@@ -5958,14 +5999,14 @@ Longueur maximale : %2px
 أقصى طول %2 بيكسل</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="914"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="938"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
         <translation>أدنى طول : %1 بيكسل</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="963"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="987"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
         <translation>العرض الكلي لهذه المُعاينة : %1 px</translation>
