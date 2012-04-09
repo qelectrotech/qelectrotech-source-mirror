@@ -4270,13 +4270,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="308"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw &amp;wiersz</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw &amp;kolumnę</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="311"/>
@@ -4354,19 +4354,19 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Narzędzia</translation>
+        <translation>Narzędzia</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="408"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edycja</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="416"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Widok</translation>
+        <translation>Widok</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="434"/>
@@ -4779,7 +4779,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qet.cpp" line="549"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nie można otworzyć pliku %1 do zpisu, błąd %2 napotkany.</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
@@ -5644,7 +5644,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="93"/>
         <source>Police :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rozmiar :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="95"/>
