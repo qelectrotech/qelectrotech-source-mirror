@@ -90,7 +90,7 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	vert_align_indexes_.insert(Qt::AlignTop,     0);
 	vert_align_indexes_.insert(Qt::AlignVCenter, 1);
 	vert_align_indexes_.insert(Qt::AlignBottom,  2);
-	font_size_label_ = new QLabel("Police :");
+	font_size_label_ = new QLabel(tr("Police :"));
 	font_size_input_ = new QSpinBox();
 	font_adjust_input_ = new QCheckBox(tr("Ajuster la taille de police si besoin"));
 	
