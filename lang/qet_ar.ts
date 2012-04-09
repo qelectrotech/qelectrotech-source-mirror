@@ -4305,13 +4305,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="308"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>إضافة &amp;صفّ</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>إضافة &amp;عمود</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="311"/>
@@ -4389,19 +4389,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">أدوات</translation>
+        <translation>أدوات</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="408"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحرير</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="416"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">عرض</translation>
+        <translation>عرض</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="434"/>
@@ -4865,7 +4865,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="549"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>إستحالة فتح الملف %1 للكتابة , مواجهة خطأ %2</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
@@ -4951,11 +4951,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform>قصّ الخليّة</numerusform>
-            <numerusform>قصّ الخليتان</numerusform>
-            <numerusform>قصّ %n خلايا</numerusform>
-            <numerusform>قصّ %n خليّة</numerusform>
-            <numerusform>قصّ %n خليّة</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -4964,11 +4959,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform>لصق الخلية</numerusform>
-            <numerusform>لصق الخليتان</numerusform>
-            <numerusform>لصق %n خلايا</numerusform>
-            <numerusform></numerusform>
-            <numerusform>لصق %n خليّة</numerusform>
         </translation>
     </message>
     <message>
@@ -5695,7 +5685,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="93"/>
         <source>Police :</source>
-        <translation type="unfinished"></translation>
+        <translation>خطّ :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="95"/>
