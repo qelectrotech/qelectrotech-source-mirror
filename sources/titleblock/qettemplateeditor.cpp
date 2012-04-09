@@ -875,7 +875,7 @@ void QETTitleBlockTemplateEditor::editTemplateInformation() {
 	
 	// run the dialog
 	if (dialog_author.exec() == QDialog::Accepted && !read_only_) {
-		QString new_info = text_field -> toPlainText();
+		QString new_info = text_field -> toPlainText().remove(QChar(13)); // CR-less text
 		if (new_info != tb_template_ -> information()) {
 			pushUndoCommand(new ChangeTemplateInformationsCommand(tb_template_, tb_template_ -> information(), new_info));
 		}

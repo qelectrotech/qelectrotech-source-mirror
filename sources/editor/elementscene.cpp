@@ -940,7 +940,7 @@ void ElementScene::slot_editAuthorInformations() {
 	
 	// lance le dialogue
 	if (dialog_author.exec() == QDialog::Accepted && !is_read_only) {
-		QString new_infos = text_field -> toPlainText();
+		QString new_infos = text_field -> toPlainText().remove(QChar(13)); // CR-less text
 		if (new_infos != informations()) {
 			undoStack().push(new ChangeInformationsCommand(this, informations(), new_infos));
 		}
