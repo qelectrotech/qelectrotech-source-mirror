@@ -534,8 +534,7 @@
     <message>
         <location filename="../sources/diagramview.cpp" line="986"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translatorcomment>Wybierz nowy kolor przewodu</translatorcomment>
-        <translation></translation>
+        <translation>Wybierz nowy kolor przewodu</translation>
     </message>
 </context>
 <context>
@@ -1118,8 +1117,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Ouvrir un fichier élément</source>
-        <translatorcomment>Otwórz element z pliku</translatorcomment>
-        <translation></translation>
+        <translation>Otwórz element z pliku</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
@@ -2212,8 +2210,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translatorcomment>Usuń nieużywane szablony projektu</translatorcomment>
-        <translation></translation>
+        <translation>Usuń nieużywane szablony projektu</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="682"/>
