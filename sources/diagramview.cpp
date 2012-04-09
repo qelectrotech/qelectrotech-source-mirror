@@ -1169,6 +1169,7 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addSeparator();
 			context_menu -> addAction(qde -> delete_selection);
 			context_menu -> addAction(qde -> rotate_selection);
+			context_menu -> addAction(qde -> rotate_texts);
 			context_menu -> addAction(qde -> selection_prop);
 		}
 		
