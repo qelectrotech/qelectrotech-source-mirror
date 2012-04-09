@@ -84,6 +84,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	// methods
 	public:
 	TitleBlockTemplateLocation location() const;
+	bool isEditing(const QString &ilepath);
 	void setOpenForDuplication(bool);
 	bool openForDuplication() const;
 	

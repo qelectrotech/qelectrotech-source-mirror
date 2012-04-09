@@ -42,6 +42,7 @@ class QETArguments : public QObject {
 	virtual QList<QString> files() const;
 	virtual QList<QString> projectFiles() const;
 	virtual QList<QString> elementFiles() const;
+	virtual QList<QString> titleBlockTemplateFiles() const;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	virtual bool commonElementsDirSpecified() const;
 	virtual QString commonElementsDir() const;
@@ -72,6 +73,7 @@ class QETArguments : public QObject {
 	private:
 	QList<QString> project_files_;
 	QList<QString> element_files_;
+	QList<QString> tbt_files_;
 	QList<QString> options_;
 	QList<QString> unknown_options_;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION

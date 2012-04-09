@@ -922,6 +922,7 @@ void QETApp::messageReceived(const QString &message) {
 void QETApp::openFiles(const QETArguments &args) {
 	openProjectFiles(args.projectFiles());
 	openElementFiles(args.elementFiles());
+	openTitleBlockTemplateFiles(args.titleBlockTemplateFiles());
 }
 
 /**
@@ -966,7 +967,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 
 /**
 	Ouvre les fichiers elements passes en parametre. Si un element est deja
-	ouvert, la fentre qui l'edite est activee.
+	ouvert, la fenetre qui l'edite est activee.
 	@param files_list Fichiers a ouvrir
 */
 void QETApp::openElementFiles(const QStringList &files_list) {
@@ -1060,6 +1061,45 @@ void QETApp::openTitleBlockTemplate(const QString &filepath) {
 	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
 	qet_template_editor -> edit(filepath);
 	qet_template_editor -> showMaximized();
+}
+
+/**
+	Open provided title block template files. If a title block template is already
+	opened, the adequate window is activated.
+	@param files_list Files to be opened
+*/
+void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
+	if (files_list.isEmpty()) return;
+	
+	// avoid duplicates in the provided files list
+	QSet<QString> files_set;
+	foreach (QString file, files_list) {
+		QString canonical_filepath = QFileInfo(file).canonicalFilePath();
+		if (!canonical_filepath.isEmpty()) files_set << canonical_filepath;
+	}
+	// here, we can assume all files in the set exist and are different
+	if (files_set.isEmpty()) return;
+	
+	// opened title block template editors
+	QList<QETTitleBlockTemplateEditor *> tbt_editors = titleBlockTemplateEditors();
+	
+	foreach(QString tbt_file, files_set) {
+		bool already_opened_in_existing_tbt_editor = false;
+		foreach(QETTitleBlockTemplateEditor *tbt_editor, tbt_editors) {
+			if (tbt_editor -> isEditing(tbt_file)) {
+				// this file is already opened
+				already_opened_in_existing_tbt_editor = true;
+				tbt_editor -> setVisible(true);
+				tbt_editor -> raise();
+				tbt_editor -> activateWindow();
+				break;
+			}
+		}
+		if (!already_opened_in_existing_tbt_editor) {
+			// this file is not opened yet
+			openTitleBlockTemplate(tbt_file);
+		}
+	}
 }
 
 /**

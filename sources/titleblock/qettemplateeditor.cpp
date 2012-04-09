@@ -61,6 +61,26 @@ TitleBlockTemplateLocation QETTitleBlockTemplateEditor::location() const {
 }
 
 /**
+	@return true if the provided filepath matches the currently edited template.
+	@param filepath path of a title block template on the filesystem
+*/
+bool QETTitleBlockTemplateEditor::isEditing(const QString &filepath) {
+	QString current_filepath;
+	if (opened_from_file_) {
+		current_filepath = filepath_;
+	} else {
+		current_filepath = QETApp::realPath(location_.toString());
+	}
+	
+	return(
+		QET::compareCanonicalFilePaths(
+			current_filepath,
+			filepath
+		)
+	);
+}
+
+/**
 	@param true for this editor to prompt the user for a new template name as
 	soon as the window appears in order to duplicate the edited one.
 */
