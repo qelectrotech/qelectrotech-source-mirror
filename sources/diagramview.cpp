@@ -985,7 +985,7 @@ void DiagramView::editConductorColor(Conductor *edited_conductor) {
 	QColorDialog *color_dialog = new QColorDialog(this);
 	color_dialog -> setWindowTitle(tr("Choisir la nouvelle couleur de ce conducteur"));
 #ifdef Q_WS_MAC
-	color_dialog.setWindowFlags(Qt::Sheet);
+	color_dialog -> setWindowFlags(Qt::Sheet);
 #endif
 	color_dialog -> setCurrentColor(initial_properties.color);
 	
