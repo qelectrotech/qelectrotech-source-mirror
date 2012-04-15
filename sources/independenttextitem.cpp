@@ -102,11 +102,14 @@ void IndependentTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 		
 		// on applique le mouvement impose par la souris
 		QPointF old_pos = pos();
-		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
+		if (first_move_) {
+			mouse_to_origin_movement_ = old_pos - e -> buttonDownScenePos(Qt::LeftButton);
+		}
+		QPointF expected_pos = e-> scenePos() + mouse_to_origin_movement_;
+		setPos(expected_pos); // setPos() will snap the expected position to the grid
 		
 		// on calcule le mouvement reellement applique par setPos()
 		QPointF effective_movement = pos() - old_pos;
-		
 		if (diagram_ptr) {
 			// on signale le mouvement ainsi applique au schema parent, qui
 			// l'appliquera aux autres items selectionnes selon son bon vouloir

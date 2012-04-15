@@ -52,5 +52,6 @@ class IndependentTextItem : public DiagramTextItem {
 	
 	private:
 	bool first_move_;
+	QPointF mouse_to_origin_movement_;
 };
 #endif

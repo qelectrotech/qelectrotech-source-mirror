@@ -142,8 +142,11 @@ void ConductorTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (textInteractionFlags() & Qt::TextEditable) {
 		QGraphicsTextItem::mouseMoveEvent(e);
 	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
-		QPointF intended_pos = mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton));
+		if (first_move_) {
+			mouse_to_origin_movement_ = before_mov_pos_ - mapToParent(e -> buttonDownPos(Qt::LeftButton));
+		}
 		
+		QPointF intended_pos = mapToParent(e -> pos()) + mouse_to_origin_movement_;
 		// si ce texte est attache a un conducteur, alors ses mouvements seront
 		// limites a une certaine distance du trace de ce conducteur
 		if (parent_conductor_) {

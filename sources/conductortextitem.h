@@ -61,5 +61,6 @@ class ConductorTextItem : public DiagramTextItem {
 	bool moved_by_user_;
 	QPointF before_mov_pos_;
 	bool first_move_;
+	QPointF mouse_to_origin_movement_;
 };
 #endif
