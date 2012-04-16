@@ -161,9 +161,12 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 		if (!movement.isNull() && !focusItem()) {
 			beginMoveElements();
 			continueMoveElements(movement);
+			e -> accept();
 		}
 	}
-	QGraphicsScene::keyPressEvent(e);
+	if (!e -> isAccepted()) {
+		QGraphicsScene::keyPressEvent(e);
+	}
 }
 
 /**
@@ -179,9 +182,12 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 			!e -> isAutoRepeat()
 		) {
 			endMoveElements();
+			e->accept();
 		}
 	}
-	QGraphicsScene::keyReleaseEvent(e);
+	if (!e -> isAccepted()) {
+		QGraphicsScene::keyReleaseEvent(e);
+	}
 }
 
 /**
