@@ -1,6 +1,9 @@
 <definition width="40" version="0.22" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >Clapet anti-retour</name>
+        <name lang="en" >Check valve</name>
+        <name lang="pl" >Zawory zwrotne</name>
+        <name lang="cs">Pojistné ventily</name>
     </names>
     <informations/>
     <description>

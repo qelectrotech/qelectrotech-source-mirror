@@ -1,6 +1,9 @@
 <definition width="90" version="0.22" hotspot_x="45" hotspot_y="35" height="70" type="element" orientation="dyyy" >
     <names>
         <name lang="fr" >Débit mètre</name>
+        <name lang="en">Flowmeter</name>
+        <name lang="pl">Przepływomierz</name>
+        <name lang="cs">Průtokoměr</name>
     </names>
     <informations/>
     <description>
