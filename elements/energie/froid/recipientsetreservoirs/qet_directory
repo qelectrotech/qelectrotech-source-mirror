@@ -1,5 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Récipients et réservoirs</name>
+        <name lang="fr" >Baches, reservoirs</name>
+	<name lang="en" >Tanks</name>
+	<name lang="pl" >Zbiorniki</name>
+        <name lang="cs">Vodní</name>
     </names>
 </qet-directory>

@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr">ballon échangeur et autres</name>
+        <name lang="fr">Ballon échangeur et autres</name>
         <name lang="cs">Výměník tepla</name>
         <name lang="pl">Zasobniki, wymienniki i inne</name>
+        <name lang="en">Balloon exchanger</name>
     </names>
 </qet-directory>
