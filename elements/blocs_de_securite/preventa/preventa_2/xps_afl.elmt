@@ -1,5 +1,6 @@
-<definition width="220" version="0.22" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="220" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">XPS-AFL</name>
         <name lang="en">XPS-AFL</name>
         <name lang="fr">XPS-AFL</name>
         <name lang="pl">XPS-AFL</name>
@@ -22,7 +23,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="23" y2="-28" x2="37"/>
         <circle x="97.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="55" x1="80" y2="40" x2="80" y3="20" x3="75"/>
-        <circle x="-2.5000" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="123" y2="-28" x2="140"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="103" y2="58" x2="117"/>
         <text x="27" y="2.3333" size="5" text="K1"/>

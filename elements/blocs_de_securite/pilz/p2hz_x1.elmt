@@ -1,5 +1,6 @@
-<definition width="280" version="0.22" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="280" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">P2HZX1</name>
         <name lang="en">P2HZ X1</name>
         <name lang="fr">P2HZ X1</name>
         <name lang="pl">P2HZ X1</name>
@@ -81,14 +82,14 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="103" y2="58" x2="117"/>
         <input x="135" y="-11" size="7" rotation="270" rotate="true" text="33"/>
         <input x="95" y="-11" size="7" rotation="270" rotate="true" text="13"/>
-        <circle x="-2.5000" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="60" y="-5" size="7" rotation="270" rotate="true" text="S22"/>
         <circle x="-42.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <rect width="22" x="62" y="22.6667" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <input x="115" y="59" size="7" rotation="270" rotate="true" text="24"/>
         <circle x="117.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="40" y="-5" size="7" rotation="270" rotate="true" text="S21"/>
-        <circle x="-2.5000" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <rect width="22" x="62" y="-7.3333" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="137.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="97.5001" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>

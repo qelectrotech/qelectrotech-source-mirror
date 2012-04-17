@@ -1,11 +1,12 @@
-<definition width="90" version="0.22" hotspot_x="25" hotspot_y="55" height="100" type="element" ic="true" orientation="dnny">
+<definition width="90" version="0.3" hotspot_x="25" hotspot_y="55" height="100" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="ar">XCS-DMC5902</name>
         <name lang="en">XCS-DMC5902</name>
         <name lang="fr">XCS-DMC5902</name>
         <name lang="pl">XCS-DMC5902</name>
         <name lang="cs">XCS-DMC5902</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <rect width="60" x="-20" y="-30" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

@@ -1,5 +1,6 @@
-<definition width="200" version="0.22" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="200" version="0.3" hotspot_x="70" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">XPS-BF</name>
         <name lang="en">XPS-BF</name>
         <name lang="fr">XPS-BF</name>
         <name lang="pl">XPS-BF</name>
@@ -27,7 +28,7 @@
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="55" x1="80" y2="40" x2="80" y3="20" x3="75"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="23" y2="-28" x2="37"/>
         <input x="75" y="-11" size="7" rotation="270" rotate="true" text="13"/>
-        <circle x="-2.5000" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="-22.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="95" y="-11" size="7" rotation="270" rotate="true" text="23"/>
         <input x="20" y="-5" size="7" rotation="270" rotate="true" text="S13"/>
@@ -42,7 +43,7 @@
         <text x="27" y="32.3333" size="5" text="K2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="43" y2="-28" x2="57"/>
         <circle x="37.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <circle x="-2.5000" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="60" y="-9" size="7" rotation="270" rotate="true" text="Y2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="43" y2="58" x2="57"/>
         <input x="40" y="-9" size="7" rotation="270" rotate="true" text="Y1"/>

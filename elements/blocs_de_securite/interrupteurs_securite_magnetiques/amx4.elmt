@@ -1,5 +1,6 @@
-<definition width="120" version="0.22" hotspot_x="0" hotspot_y="50" height="120" type="element" ic="true" orientation="dyyy">
+<definition width="120" version="0.3" hotspot_x="0" hotspot_y="50" height="120" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">AMX4</name>
         <name lang="en">AMX4</name>
         <name lang="fr">AMX4</name>
         <name lang="pl">AMX4</name>

@@ -1,8 +1,12 @@
-<qet-directory>
+﻿<qet-directory>
     <names>
 	<name lang="en">Preventa_1</name>
         <name lang="fr">Preventa_1</name>
-        <name lang="pl">Preventa_1</name>
-        <name lang="cs">Preventa_1</name>
+        <name 
+lang="pl">Preventa_1</name>
+        <name 
+lang="ar">Preventa_1</name>
+        <name 
+lang="cs">Preventa_1</name>
     </names>
 </qet-directory>
