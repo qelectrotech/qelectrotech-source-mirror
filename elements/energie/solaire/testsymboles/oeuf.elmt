@@ -1,0 +1,24 @@
+<definition width="180" version="0.3" hotspot_x="90" hotspot_y="85" height="300" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Oeuf dur</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="-46.5725" y="-57.5725" antialias="true" style="line-style:dotted;line-weight:thin;filling:none;color:black" diameter="93.145"/>
+        <arc width="116" x="-58" y="-67" antialias="true" height="116" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-190" angle="-160"/>
+        <circle x="-2.5" y="-69.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="38.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="118.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-2.5" y="-22.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <arc width="162" x="-80.5" y="39" antialias="true" height="162" style="line-style:normal;line-weight:normal;filling:none;color:black" start="10" angle="-200"/>
+        <circle x="-2.5" y="198.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <circle x="-61.5873" y="54.4127" antialias="true" style="line-style:dotted;line-weight:thin;filling:none;color:black" diameter="123.175"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="57" y2="106" x2="80"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="-57" y2="106" x2="-79"/>
+        <terminal x="0" y="-66" orientation="n"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="41" orientation="n"/>
+        <terminal x="0" y="122" orientation="n"/>
+        <terminal x="0" y="201" orientation="s"/>
+    </description>
+</definition>

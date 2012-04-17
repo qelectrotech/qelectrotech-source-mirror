@@ -1,0 +1,21 @@
+<definition width="80" version="0.3" hotspot_x="40" hotspot_y="60" height="120" type="element" orientation="dyyy">
+    <names>
+        <name lang="fr">Réchaufeur ECS tubulaire</name>
+    </names>
+    <informations/>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="30" x1="17" y2="30" x2="29"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-27" x1="-31" y2="-27" x2="-19"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-41" x1="0" y2="-56" x2="0"/>
+        <text x="-5" y="30" size="6" rotation="-90" text="Echangeur ECS"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="simple" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="35" x1="0" y2="-37" x2="0"/>
+        <circle x="-25.5" y="-28.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <rect width="2" x="-1" y="40" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="2" x="-1" y="-47" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <ellipse width="60" x="-30" y="-45" antialias="true" height="90" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="20.5" y="28.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <terminal x="0" y="46" orientation="s"/>
+        <terminal x="0" y="-55" orientation="n"/>
+        <terminal x="30" y="0" orientation="e"/>
+    </description>
+</definition>
