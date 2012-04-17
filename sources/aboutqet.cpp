@@ -84,12 +84,13 @@ QWidget *AboutQET::title() const {
 */
 QWidget *AboutQET::aboutTab() const {
 	QLabel *about = new QLabel(
-		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
+		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.", "about tab, description line") +
 		"<br><br>" +
-		tr("\251 2006-2012 Les d\351veloppeurs de QElectroTech") +
+		tr("\251 2006-2012 Les d\351veloppeurs de QElectroTech", "about tab, developers line") +
 		"<br><br>"
-		"<a href=\"http://qelectrotech.org/\">"
-		"http://qelectrotech.org/</a>"
+		"<a href=\"http://qelectrotech.org/\">http://qelectrotech.org/</a>"
+		"<br><br>" +
+		tr("Contact\240: <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org", "about tab, contact line")
 	);
 	about -> setAlignment(Qt::AlignCenter);
 	about -> setOpenExternalLinks(true);
@@ -104,6 +105,7 @@ QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
 	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
 	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("D\351veloppement"));
+	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Collection d'\351l\351ments"));
 	authors -> setAlignment(Qt::AlignCenter);
 	authors -> setOpenExternalLinks(true);
 	authors -> setTextFormat(Qt::RichText);
