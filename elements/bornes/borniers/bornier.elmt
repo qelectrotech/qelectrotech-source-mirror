@@ -1,11 +1,12 @@
 <definition width="110" version="0.3" hotspot_x="55" hotspot_y="155" height="220" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">طرف توصيل</name>
         <name lang="de">Klemmleiste</name>
         <name lang="en">Terminal</name>
+        <name lang="it">Terminale</name>
         <name lang="fr">Bornier</name>
         <name lang="pl">Listwa zaciskowa</name>
         <name lang="cs">Svorkoviště</name>
-        <name lang="it">Terminale</name>
     </names>
     <informations></informations>
     <description>

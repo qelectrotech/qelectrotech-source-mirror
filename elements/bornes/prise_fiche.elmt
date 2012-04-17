@@ -1,13 +1,14 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">قابس و مقبس</name>
         <name lang="de">Stecker und Buchse
 </name>
         <name lang="en">Plug and socket</name>
+        <name lang="it">Spina e presa</name>
         <name lang="fr">Fiche et prise
 </name>
         <name lang="pl">Złącze wtykowe</name>
         <name lang="cs">Zástrčka a zásuvka</name>
-        <name lang="it">Spina e presa</name>
     </names>
     <informations>EN 60617: 03-03-05</informations>
     <description>

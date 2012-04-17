@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="10" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">شريط ربط, مُغلق</name>
         <name lang="de">Stirnkontaktverbindung Trennstelle, Lasche geschlossen</name>
         <name lang="en">Terminal strip, closed</name>
+        <name lang="it">Barra di connessione, chiusa</name>
         <name lang="fr">Barrette de connexion, fermée</name>
         <name lang="pl">Oddzielacz w stanie zamknięcia</name>
         <name lang="cs">Propojovací tyč, zavřená</name>
-        <name lang="it">Barra di connessione, chiusa</name>
     </names>
     <informations>EN 60617: 03-03-18</informations>
     <description>
