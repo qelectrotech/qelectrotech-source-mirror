@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
         <name lang="fr" >Echangeurs</name>
-        <name lang="enr" >Exchanger</name>
+        <name lang="en" >Exchanger</name>
+        <name lang="pl" >Wymienniki</name>
     </names>
 </qet-directory>
