@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="40" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
+        <name lang="ar">خليّة كهرو ضوئي - باعث</name>
         <name lang="en">Photo-electric sensor -transmitter</name>
         <name lang="fr">Cellule photo-électrique - Emetteur</name>
         <name lang="pl">Komórka fotoelektryczna - nadajnik</name>

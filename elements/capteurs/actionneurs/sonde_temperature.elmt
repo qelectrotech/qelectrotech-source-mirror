@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مجس حرارة</name>
         <name lang="en">Temperature Probe</name>
         <name lang="fr">Sonde de Température</name>
         <name lang="pl">Czujnik temperatury</name>

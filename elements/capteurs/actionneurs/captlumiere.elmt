@@ -1,5 +1,6 @@
-<definition width="60" version="0.22" hotspot_x="35" hotspot_y="45" height="80" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="45" height="80" type="element" orientation="dnny">
     <names>
+        <name lang="ar">حساس إضاءة</name>
         <name lang="fr">Capteur luminosité</name>
         <name lang="pl">Łącznik zmierzchowy</name>
         <name lang="cs">Světelné čidlo</name>

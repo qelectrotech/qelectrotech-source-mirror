@@ -1,5 +1,6 @@
-<definition width="120" version="0.22" hotspot_x="60" hotspot_y="30" height="60" type="element" orientation="dnny">
+<definition width="120" version="0.3" hotspot_x="60" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
+        <name lang="ar">ساعة بمخرجين</name>
         <name lang="en">Time-switch 2 output</name>
         <name lang="fr">Horloge 2 sorties</name>
         <name lang="pl">Przekaźnik czasowy wielozestykowy</name>

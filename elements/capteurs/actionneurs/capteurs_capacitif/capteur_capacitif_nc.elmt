@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="25" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حساس سعوي NC</name>
         <name lang="de">Kapazitiver Sensor NC</name>
         <name lang="en">Capacitive sensor NC</name>
         <name lang="fr">Capteur capacitif NC</name>

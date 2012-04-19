@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="ynnd">
     <names>
+        <name lang="ar">مقياس تدفق بالنبضات</name>
         <name lang="de">Flussmeter puls</name>
         <name lang="en">Flowmeter pulse</name>
         <name lang="fr">Débitmètre à impulsions</name>

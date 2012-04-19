@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حسّاس حثّي 3NC</name>
         <name lang="en">Inductif sensor 3 terminals NC</name>
         <name lang="fr">Capteur inductif 3 NC</name>
         <name lang="pl">Czujnik indukcyjny trójprzewodowy, rozwierny</name>
