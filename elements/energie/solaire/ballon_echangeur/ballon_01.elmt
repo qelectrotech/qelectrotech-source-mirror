@@ -1,6 +1,7 @@
-<definition width="150" version="0.3" hotspot_x="75" hotspot_y="120" height="260" type="element" orientation="dyyy">
+<definition width="150" version="0.22" hotspot_x="75" hotspot_y="120" height="260" type="element" orientation="dyyy">
     <names>
         <name lang="fr">ballon version 1</name>
+        <name lang="pl">Zasobnik z wymiennikiem 1</name>
     </names>
     <informations></informations>
     <description>
@@ -17,8 +18,8 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="triangle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="53" y2="26" x2="59"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="86" x1="53" y2="86" x2="59"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="105" x1="59" y2="105" x2="53"/>
-        <polygon x4="-30" y5="20" x5="46" antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" closed="false" y1="80" x1="46" y2="70" x2="-30" y3="50" x3="30" y4="30"/>
-        <polygon x4="-30" y5="0" x5="46" y6="0" x6="46" antialias="true" style="line-style:dotted;line-weight:normal;filling:none;color:black" closed="false" y1="-60" x1="46" y2="-50" x2="-30" y3="-30" x3="30" y4="-10"/>
+        <polygon x4="-30" y5="20" x5="46" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="80" x1="46" y2="70" x2="-30" y3="50" x3="30" y4="30"/>
+        <polygon x4="-30" y5="0" x5="46" y6="0" x6="46" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-60" x1="46" y2="-50" x2="-30" y3="-30" x3="30" y4="-10"/>
         <circle x="46.125" y="-84" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
         <circle x="46.25" y="-3.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>
         <circle x="46.25" y="16.25" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.5"/>

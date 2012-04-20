@@ -1,6 +1,7 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Mitigeur01 ECS</name>
+        <name lang="pl">Mieszacz CWU</name>
     </names>
     <informations></informations>
     <description>
@@ -16,7 +17,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-6" y2="-13" x2="-6"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-4" y2="-13" x2="-4"/>
         <input x="-9" y="-7.5" size="5" rotate="true" text="°C"/>
-        <polygon y21="13" x15="13" y22="13" x16="10" x17="10" x18="4" x19="4" x20="5" x21="5" x22="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="-5" x3="-5" x4="-4" x5="-4" x6="-10" x7="-10" x8="-13" x9="-13" y1="13" y2="13" y3="10" y4="10" y5="4" y6="4" y7="5" y8="5" y10="-5" y9="-5" y11="-4" y12="-4" y13="-5" y14="-5" y15="5" y16="5" y17="4" y18="4" y19="10" x10="-10" x11="-10" x12="10" antialias="true" x13="10" x14="13" y20="10"/>
+        <polygon x15="13" y21="13" x16="10" y22="13" x17="10" x18="4" x19="4" x20="5" x21="5" x22="0" style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="-5" x3="-5" x4="-4" x5="-4" x6="-10" x7="-10" x8="-13" x9="-13" y1="13" y2="13" y3="10" y4="10" y5="4" y6="4" y7="5" y8="5" y10="-5" y9="-5" y11="-4" y12="-4" y13="-5" y14="-5" y15="5" y16="5" y17="4" y18="4" y19="10" x10="-10" x11="-10" x12="10" antialias="true" x13="10" x14="13" y20="10"/>
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="7" x1="0" y2="5" x2="-2" y3="5" x3="2" y4="7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="7" y2="0" x2="4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-8" y2="0" x2="-4"/>

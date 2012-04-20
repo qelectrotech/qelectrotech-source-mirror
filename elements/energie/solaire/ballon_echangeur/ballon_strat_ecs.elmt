@@ -1,10 +1,11 @@
-<definition width="150" version="0.3" hotspot_x="75" hotspot_y="75" height="260" type="element" orientation="dyyy">
+<definition width="150" version="0.22" hotspot_x="75" hotspot_y="75" height="260" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Ballon Stratification ECS</name>
+        <name lang="pl">Zasobnik warstwowy CWU</name>
     </names>
     <informations></informations>
     <description>
-        <polygon antialias="false" style="line-style:dotted;line-weight:normal;filling:none;color:black" closed="false" y1="155" x1="-59" y2="155" x2="-20" y3="168" x3="-20"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="155" x1="-59" y2="155" x2="-20" y3="168" x3="-20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="72" x1="46" y2="65" x2="42"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="66" x1="38" y2="71" x2="41"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="43" x1="42" y2="60" x2="42"/>
@@ -26,7 +27,7 @@
         <arc width="4" x="43.5" y="72" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <arc width="4" x="44.5" y="60" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
         <input x="12" y="98" size="7" rotate="true" text="800L"/>
-        <input x="-53" y="117" size="7" rotation="-90" rotate="true" text="Ballon Strati. et Ecs"/>
+        <input x="-53" y="117" size="7" rotate="true" text="Ballon Strati. et Ecs"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-42" x1="-60" y2="152" x2="-60"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="-38" y2="-46" x2="-41"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-60" x1="-42" y2="-44" x2="-45"/>
@@ -40,9 +41,9 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-45" x1="38" y2="-59" x2="38"/>
         <arc width="4" x="-45.5" y="-45" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="51" x1="-6" y2="51" x2="7"/>
-        <rect width="13" x="-6" y="-60" antialias="false" height="229" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
-        <rect width="4" x="-2" y="70" antialias="false" height="99" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
-        <rect width="4" x="-2" y="-60" antialias="false" height="108" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
+        <rect width="13" x="-6" y="-60" antialias="false" height="229" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="4" x="-2" y="70" antialias="false" height="99" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="4" x="-2" y="-60" antialias="false" height="108" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="42" y2="15" x2="42"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="42" y2="4" x2="42"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="42" y2="-6" x2="42"/>

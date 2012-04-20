@@ -1,6 +1,7 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.22" hotspot_x="15" hotspot_y="20" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="fr">robinet Melangeur</name>
+        <name lang="pl">Bateria mieszająca</name>
     </names>
     <informations></informations>
     <description>

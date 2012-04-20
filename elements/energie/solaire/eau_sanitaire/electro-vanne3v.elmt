@@ -1,6 +1,7 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="20" height="30" type="element" orientation="dyyy">
+<definition width="20" version="0.22" hotspot_x="10" hotspot_y="20" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Electro-vanne 3V "sanitaire"</name>
+        <name lang="pl">Elektrozawór trójdrożny</name>
     </names>
     <informations>24v et anti-bélier </informations>
     <description>
