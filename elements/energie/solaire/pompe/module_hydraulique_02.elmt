@@ -1,6 +1,7 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="50" height="100" type="element" orientation="dyyy">
+<definition width="50" version="0.22" hotspot_x="15" hotspot_y="50" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Module Hydraulique n°2</name>
+        <name lang="pl">Moduł hydrauliczny n°1</name>
     </names>
     <informations></informations>
     <description>
@@ -12,7 +13,7 @@
         <polygon x4="20" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="0" x1="10" y2="2" x2="14" y3="-1" x3="17" y4="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="32" x1="8" y2="31" x2="8"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="22" x1="8" y2="21" x2="8"/>
-        <rect width="42" x="-12" y="-40" antialias="false" height="80" style="line-style:dotted;line-weight:normal;filling:none;color:black"/>
+        <rect width="42" x="-12" y="-40" antialias="false" height="80" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="2" x="10" y="29" antialias="false" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="31" x1="6" y2="29" x2="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="29" x1="6" y2="31" x2="10"/>
