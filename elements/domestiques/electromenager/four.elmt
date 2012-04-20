@@ -1,14 +1,15 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">فرن</name>
         <name lang="de">Elektrischer Ofen</name>
         <name lang="ru">Духовой шкаф</name>
+        <name lang="pt">Forno eléctrico</name>
         <name lang="en">Electric oven</name>
+        <name lang="it">Forno elettrico</name>
         <name lang="fr">Four électrique</name>
+        <name lang="pl">Piekarnik elektryczny</name>
         <name lang="es">Horno eléctrico</name>
         <name lang="cs">Elektrická kamna</name>
-        <name lang="pt">Forno eléctrico</name>
-        <name lang="pl">Piekarnik elektryczny</name> 
-        <name lang="it">Forno elettrico</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

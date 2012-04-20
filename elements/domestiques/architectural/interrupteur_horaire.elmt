@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح زمني</name>
         <name lang="de">Schaltuhr
 </name>
         <name lang="en">Time switch

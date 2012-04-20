@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مُحرّك خطوة-خطوة</name>
         <name lang="de">Schrittmotor
 </name>
         <name lang="en">Stepping motor</name>

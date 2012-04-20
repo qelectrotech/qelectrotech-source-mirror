@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مصباح</name>
         <name lang="ru">Лампа</name>
         <name lang="pt">Lâmpada</name>
         <name lang="en">Light</name>
@@ -8,7 +9,7 @@
         <name lang="es">Lámpara</name>
         <name lang="cs">Světlo</name>
     </names>
-    <informations>EN 60617: 11-15-03
+    <informations>EN 60617: 11-15-03&#xd;
 </informations>
     <description>
         <circle x="-10" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>

@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="ar">عاكس</name>
         <name lang="de">Scheinwerfer</name>
         <name lang="en">Projector</name>
         <name lang="fr">Projecteur</name>

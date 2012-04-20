@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">قاعدة مقبس لطرفية إتّصال</name>
         <name lang="de">Fernmeldesteckdose, allgemein
 </name>
         <name lang="en">Socket outlet (telecommunica-

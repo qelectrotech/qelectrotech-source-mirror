@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="5" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="5" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">عدّاد طاقة</name>
         <name lang="en">Energy meter</name>
         <name lang="fr">Compteur d’énergie</name>
         <name lang="pl">Licznik energii</name>

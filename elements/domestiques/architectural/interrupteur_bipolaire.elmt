@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح ثنائي القطبيّة</name>
         <name lang="de">Schalter, zweipolig
 </name>
         <name lang="en">Two pole switch
@@ -9,7 +10,7 @@
         <name lang="fr">Interrupteur, bipolaire
 </name>
         <name lang="pl">Łącznik dwubiegunowy</name>
-<name lang="cs">Dvoupólový spínač</name>
+        <name lang="cs">Dvoupólový spínač</name>
     </names>
     <informations>EN 60617: 11-14-04</informations>
     <description>

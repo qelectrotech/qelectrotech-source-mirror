@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">عاكس بشعاع قليل التباعد</name>
         <name lang="de">Punktleuchte
 </name>
         <name lang="en">Slightly divergent beam projector</name>

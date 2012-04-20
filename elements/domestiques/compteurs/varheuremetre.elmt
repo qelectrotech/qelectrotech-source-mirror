@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
         <name lang="en">Var hour meter</name>
         <name lang="fr">Varheuremètre</name>
         <name lang="pl">Licznik warogodzin</name>

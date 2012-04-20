@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح أحادي القطب (مبدّل ذهاب-و-عودة)</name>
         <name lang="de">Serienschalter, einpolig
 </name>
         <name lang="en">Two-way single pole switch

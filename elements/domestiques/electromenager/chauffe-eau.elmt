@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">سخّان ماء</name>
         <name lang="de">Heißwassergerät
 </name>
         <name lang="en">Water heater</name>

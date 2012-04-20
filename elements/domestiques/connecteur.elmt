@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="15" hotspot_y="5" height="30" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="5" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">رابط</name>
         <name lang="en">Connector</name>
         <name lang="fr">Connecteur</name>
         <name lang="pl">Złącze</name>
