@@ -1,5 +1,6 @@
-<definition width="140" version="0.22" hotspot_x="25" hotspot_y="35" height="130" type="element" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="25" hotspot_y="35" height="130" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">Altistart 01N2</name>
         <name lang="en">Altistart 01N2</name>
         <name lang="fr">Altistart 01N2</name>
         <name lang="pl">Altistart 01N2</name>
@@ -32,7 +33,7 @@
         <input x="-4" y="58.5" size="4" rotate="true" text="LO1"/>
         <input x="69.5" y="-9" size="4" rotation="270" rotate="true" text="5/L3"/>
         <input x="49.5" y="-9" size="4" rotation="270" rotate="true" text="3/L2"/>
-        <circle x="-12.2361" y="-2.2360" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <circle x="-12.2361" y="-2.236" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
         <circle x="-12.2361" y="-12.2361" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
         <circle x="-12.2361" y="27.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
         <circle x="-12.2361" y="17.7639" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
