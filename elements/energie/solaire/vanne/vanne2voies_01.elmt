@@ -1,6 +1,7 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Vanne 2voies motorisées </name>
+        <name lang="pl">Zawór dwudrożny z napędem</name>
     </names>
     <informations></informations>
     <description>

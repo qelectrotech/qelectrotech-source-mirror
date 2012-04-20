@@ -1,6 +1,7 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="50" type="element" orientation="dyyy">
+<definition width="30" version="0.22" hotspot_x="15" hotspot_y="15" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Vanne d'équilibrage avec débimètre</name>
+        <name lang="pl">Zawór z przepływomierzem</name>
     </names>
     <informations></informations>
     <description>
@@ -15,7 +16,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="19" x1="-3" y2="19" x2="-2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-3" y2="16" x2="-2"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-3" y2="13" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="11" x1="-3" y2="25" x2="-3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-3" y2="25" x2="-3"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="4" y2="6" x2="6"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-6" y2="6" x2="-4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="7" x2="-5"/>

@@ -1,6 +1,7 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.22" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Soupape de sûreté thermique, avec capteur</name>
+        <name lang="pl">Zawór bezpieczeństwa z czujnikiem temperatury</name>
     </names>
     <informations></informations>
     <description>
