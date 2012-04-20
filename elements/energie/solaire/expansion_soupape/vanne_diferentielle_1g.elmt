@@ -1,6 +1,7 @@
-<definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="50" type="element" orientation="dyyy">
+<definition width="40" version="0.22" hotspot_x="20" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Vanne diférentielle "gauche"</name>
+        <name lang="pl">Zawór różnicowy</name>
     </names>
     <informations></informations>
     <description>
@@ -13,7 +14,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-15" y2="-14" x2="-11"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-16" x1="-13" y2="-12" x2="-13"/>
         <input x="-12" y="-21.5" size="5" text="xBar"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="-3" x4="3" antialias="true" x5="-3" x6="3" x7="-3" x8="3" x9="0" closed="false" y1="0" y10="-17" y2="-4" y11="-17" y3="-6" y4="-8" y12="-17" y5="-9" x10="0" y6="-11" x11="0" y7="-12" x12="0" y8="-14" y9="-15"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="0" x2="0" x3="-3" x4="3" antialias="true" x5="-3" x6="3" x7="-3" x8="3" x9="0" closed="false" y1="0" y2="-4" y10="-17" y3="-6" y11="-17" y4="-8" y12="-17" y5="-9" x10="0" y6="-11" x11="0" y7="-12" x12="0" y8="-14" y9="-15"/>
         <terminal x="-10" y="0" orientation="w"/>
         <terminal x="0" y="10" orientation="s"/>
     </description>

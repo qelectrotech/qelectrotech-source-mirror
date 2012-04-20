@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="80" type="element" orientation="dyyy">
+<definition width="50" version="0.22" hotspot_x="25" hotspot_y="30" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Vase Chauffage 02</name>
+        <name lang="pl">Naczynie wzbiorcze</name>
     </names>
     <informations></informations>
     <description>
         <polygon x4="0" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="3" x2="-3" y3="3" x3="3" y4="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-20" y2="0" x2="20"/>
         <input x="-12" y="36" size="7" rotate="true" text="50L"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="20" y2="20" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-20" y2="20" x2="-20"/>
