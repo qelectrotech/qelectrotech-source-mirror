@@ -51,7 +51,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción al árabe</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="144"/>
@@ -123,7 +123,7 @@ Iconos</translation>
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Desarrollo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
@@ -4252,37 +4252,37 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">C&amp;ortar</translation>
+        <translation>C&amp;ortar</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="301"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Copiar</translation>
+        <translation>&amp;Copiar</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="302"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Pegar</translation>
+        <translation>&amp;Pegar</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="303"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar las informaciones complementarias</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="308"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Añadir una línea</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Añadir una columna</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="311"/>
@@ -4312,7 +4312,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="327"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
-        <translation type="unfinished">Ctrl+Y</translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
@@ -4360,19 +4360,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Herramientas</translation>
+        <translation>Herramientas</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="408"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Edición</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="416"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Ver</translation>
+        <translation>Ver</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="434"/>
@@ -4451,12 +4451,12 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="854"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Editar las informaciones complementarias</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="858"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Puede utilizar este campo en blanco para indicar los autores del cartucho, de su licencia, o cualquier otra información que considere útil.</translation>
     </message>
 </context>
 <context>
@@ -4784,7 +4784,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="549"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Imposible abrir el archivo %1 para escritura, se han econtrado el error %2.</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
@@ -4904,14 +4904,14 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificación de informaciones complementarias</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Cortar %n celda(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -4919,8 +4919,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Copiar %n celda(s)</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5233,13 +5233,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Noir</source>
         <comment>element text part color</comment>
-        <translation type="unfinished">Negro</translation>
+        <translation>Negro</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="39"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
-        <translation type="unfinished">Blanco</translation>
+        <translation>Blanco</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
@@ -5269,7 +5269,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
         <source>Couleur : </source>
-        <translation type="unfinished">Color:</translation>
+        <translation>Color:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="74"/>
@@ -5295,7 +5295,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>color</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
@@ -5648,7 +5648,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="93"/>
         <source>Police :</source>
-        <translation type="unfinished"></translation>
+        <translation>Tipo de letra:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="95"/>
@@ -5950,14 +5950,14 @@ Que désirez vous faire ?</source>
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Longitud mínima: %1px Longitud máxima: %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="938"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Longitud mínima: %1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="987"/>
