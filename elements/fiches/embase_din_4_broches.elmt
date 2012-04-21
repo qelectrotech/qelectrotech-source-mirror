@@ -1,5 +1,6 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="30" height="70" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">قاعدة DINب 4 أطراف توصيل </name>
         <name lang="en">4-pin DIN socket</name>
         <name lang="fr">Embase DIN 4 broches</name>
         <name lang="pl">Złącze DIN czterostykowe</name>

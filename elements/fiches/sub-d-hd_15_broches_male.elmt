@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="40" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">رابط توصيلSUB-D HD 15 (ذكري)</name>
         <name lang="en">D-SUB HD 15 pin (male)</name>
         <name lang="fr">SUB-D HD 15 broches (male)</name>
         <name lang="pl">Wtyk D-Sub, piętnastostykowy</name>
