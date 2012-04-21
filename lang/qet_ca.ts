@@ -57,7 +57,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Desenvolupament</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
@@ -102,7 +102,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducció al àrab</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="144"/>
@@ -942,7 +942,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation>La categoria que ha demanat no existeix. Abandó</translation>
+        <translation>La categoria que ha demanat no existeix. Abandó.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="56"/>
@@ -2180,7 +2180,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="341"/>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Està segur de voler eleminar el esquema del projecte? És un canvi irreversible.</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="419"/>
@@ -2219,7 +2219,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="668"/>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Eliminar els models del cartutx que no es fen servir en el projecte</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="669"/>
@@ -2302,13 +2302,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="333"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cartutxos QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="346"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cartutxos usuari</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="725"/>
@@ -3621,8 +3621,6 @@ Opcions:
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -3654,8 +3652,6 @@ Opcions:
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -4752,8 +4748,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4774,8 +4768,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4789,8 +4781,6 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -4894,8 +4884,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -4903,8 +4891,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5223,13 +5209,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Noir</source>
         <comment>element text part color</comment>
-        <translation type="unfinished">Negre</translation>
+        <translation>Negre</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="39"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
-        <translation type="unfinished">Blanc</translation>
+        <translation>Blanc</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
@@ -5259,7 +5245,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
         <source>Couleur : </source>
-        <translation type="unfinished">Color:</translation>
+        <translation>Color:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="74"/>
@@ -5968,13 +5954,13 @@ Longueur maximale : %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Col·lecció del projecte sense títol (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Col·lecció del projecte &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>
