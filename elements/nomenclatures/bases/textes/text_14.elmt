@@ -1,5 +1,6 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حقل نصي T14</name>
         <name lang="de">T14 Textfeld</name>
         <name lang="en">T14 text area</name>
         <name lang="fr">Zone texte T14</name>
