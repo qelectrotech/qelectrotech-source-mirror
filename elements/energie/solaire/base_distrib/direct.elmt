@@ -1,8 +1,8 @@
-<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
+<definition width="100" version="0.22" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="fr">A échange indirecte</name>
+        <name lang="pl">A wymiennik pośredni</name>
         <name lang="cs">Nepřímý výměník A</name>
-        <name lang="pl">"A" wymiennik pośredni</name>
     </names>
     <informations></informations>
     <description>
