@@ -2,9 +2,9 @@
     <names>
         <name lang="en">Architectural</name>
         <name lang="fr">Architecture</name>
-		<name lang="ar">هندسية</name>
+        <name lang="ar">هندسية</name>
         <name lang="pl">Rysunek budowlany</name>
         <name lang="cs">Architektura</name>
-
+        <name lang="es">Arquitectura</name>
     </names>
 </qet-directory>
