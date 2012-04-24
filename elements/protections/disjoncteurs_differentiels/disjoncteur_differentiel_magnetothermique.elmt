@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="70" type="element" orientation="dnny">
     <names>
+        <name lang="ar">قاطع تفاضلي مغناطيسي - حراري</name>
         <name lang="en">Magneto-thermal differential switch</name>
         <name lang="fr">Disjoncteur différentiel magnéto-thermique</name>
         <name lang="pl">Wyłącznik różnicowoprądowy z członem nadprądowym</name>

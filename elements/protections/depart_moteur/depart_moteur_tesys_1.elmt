@@ -1,5 +1,6 @@
 <definition width="120" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">انطلاق محرك TeSys</name>
         <name lang="en">Start motor TeSys</name>
         <name lang="fr">depart moteur TeSys</name>
         <name lang="pl">Rozruch silnika TeSys</name>
