@@ -62,7 +62,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Vývoj</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="119"/>
@@ -107,7 +107,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="127"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do arabštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="144"/>
@@ -4246,37 +4246,37 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="300"/>
         <source>Co&amp;uper</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Vyjmout</translation>
+        <translation>&amp;Vyjmout</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="301"/>
         <source>Cop&amp;ier</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Kopírovat</translation>
+        <translation>&amp;Kopírovat</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="302"/>
         <source>C&amp;oller</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">&amp;Vložit</translation>
+        <translation>&amp;Vložit</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="303"/>
         <source>Éditer les informations complémentaires</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravit doplňující údaje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="308"/>
         <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat řá&amp;dek</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="309"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Přidat &amp;sloupec</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="311"/>
@@ -4306,7 +4306,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="327"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
-        <translation type="unfinished">Ctrl+Y</translation>
+        <translation>Ctrl+Y</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
@@ -4354,19 +4354,19 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="400"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Nástroje</translation>
+        <translation>Nástroje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="408"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Úpravy</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="416"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Zobrazení</translation>
+        <translation>Pohled</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="434"/>
@@ -4444,12 +4444,12 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="854"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Upravit doplňující údaje</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="858"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Toto pole můžete využít volně pro zmínění autorů výkresu, jeho licence, nebo cokoli dalšího, co považujete za užitečné.</translation>
     </message>
 </context>
 <context>
@@ -4779,7 +4779,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/qet.cpp" line="549"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nelze otevřít soubor %1 pro zápis, vrácena chyba %2.</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
@@ -4899,26 +4899,26 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Úprava doplňkových údajů</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vyjmout %n buňku</numerusform>
+            <numerusform>Vyjmout %n buňky</numerusform>
+            <numerusform>Vyjmout %n buněk</numerusform>
         </translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Vložit %n buňku</numerusform>
+            <numerusform>Vložit %n buňky</numerusform>
+            <numerusform>Vložit %n buněk</numerusform>
         </translation>
     </message>
     <message>
@@ -5230,13 +5230,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/texteditor.cpp" line="38"/>
         <source>Noir</source>
         <comment>element text part color</comment>
-        <translation type="unfinished">Černá</translation>
+        <translation>Černá</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="39"/>
         <source>Blanc</source>
         <comment>element text part color</comment>
-        <translation type="unfinished">Bílá</translation>
+        <translation>Bílá</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
@@ -5266,7 +5266,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
         <source>Couleur : </source>
-        <translation type="unfinished">Barva: </translation>
+        <translation>Barva: </translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="74"/>
@@ -5292,7 +5292,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>barva</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
@@ -5644,7 +5644,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="93"/>
         <source>Police :</source>
-        <translation type="unfinished"></translation>
+        <translation>Písmo:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="95"/>
@@ -5945,14 +5945,15 @@ Co chcete dělat?</translation>
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nejmenší délka: %1px
+Největší délka: %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="938"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Nejmenší délka: %1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="987"/>
