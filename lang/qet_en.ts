@@ -53,19 +53,19 @@
         <location filename="../sources/aboutqet.cpp" line="87"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech, an application to design electric diagrams.</translation>
+        <translation>QElectroTech, an application to design electric diagrams.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="89"/>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 QElectroTech developers</translation>
+        <translation>© 2006-2012 QElectroTech developers</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="93"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Contact: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="107"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="108"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Elements collection</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutantdes éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is the area in which you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="187"/>
@@ -1070,7 +1070,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/elementspanel.cpp" line="432"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand this embedded title blocks collection</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="440"/>
@@ -1081,79 +1081,79 @@ Changes will be definitive.</translation>
         <location filename="../sources/elementspanel.cpp" line="441"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand this embedded elements collection</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="446"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand this project</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="470"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished">Drag&apos;n drop this title block template onto a diagram to apply it.</translation>
+        <translation>Drag&apos;n drop this title block template onto a diagram to apply it.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="482"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand this elements category</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="494"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Drag&apos;n drop this element onto a diagram to insert an &quot;%1&quot; element in it, double-click to edit it</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="575"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand the QElectrotech title blocks collection</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="576"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is the title blocks collection provided along with QElectroTech. Installed as a system component, you normally cannot customize it.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="582"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand the QElectroTech elements collection</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="583"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is the elements collection provided along with QElectroTech. Installed as a system component, you normally cannot customize it.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand your own title blocks collection</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is your custom title blocks collection -- use it to create, store and edit your own title blocks.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="598"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Double-click to collapse or expand your own elements collection</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="599"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is your custom elements collection -- use it to create, store and edit your own elements.</translation>
     </message>
 </context>
 <context>
@@ -1586,19 +1586,19 @@ Changes will be definitive.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is a QElectroTech project, i.e. a .qet file containing several diagrams/folios. It also embeds element and title block templates used by these diagrams/folios.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is a collection embedded within a project file. It stores and manages elements used by diagrams from the parent project.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="293"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This elements category automatically integrates in the project any element used by a diagram from this project.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="352"/>
@@ -1627,19 +1627,19 @@ Changes will be definitive.</translation>
         <location filename="../sources/genericpanel.cpp" line="529"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is a title block template, which can be applied to a diagram.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is an elements category, a simple container to organize elements collections.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="847"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is an element, which can be added in a diagram.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1117"/>
@@ -3049,13 +3049,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="87"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Click an action to get back in the changes you made to your diagram</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="88"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This panel lists the various changes applied to the current diagram. Clicking a change gets the diagram back to its state right after it was applied.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
