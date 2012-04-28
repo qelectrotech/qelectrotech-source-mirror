@@ -80,6 +80,8 @@ class ElementsPanel : public GenericPanel {
 	bool scrollToElement(const ElementsLocation &);
 	void applyCurrentFilter(const QList<QTreeWidgetItem *> &);
 	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
+	void scrollToSelectedItem();
+	void highlightItems(const QList<QTreeWidgetItem *> &, const QObject * = 0, const char * = 0);
 	
 	protected:
 	void dragEnterEvent(QDragEnterEvent *);
@@ -93,6 +95,7 @@ class ElementsPanel : public GenericPanel {
 	protected slots:
 	void firstActivation();
 	void panelContentChange();
+	virtual QList<ElementsLocation> elementIntegrated(QETProject *, const ElementsLocation &);
 	
 	private:
 	QTreeWidgetItem *addProject   (QETProject *);

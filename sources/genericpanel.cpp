@@ -10,6 +10,7 @@
 #include "elementslocation.h"
 #include "qeticons.h"
 #include "elementscollectioncache.h"
+#include "qetapp.h"
 
 /**
 	Constructor
@@ -247,6 +248,10 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 			connect(
 				project, SIGNAL(projectDiagramsOrderChanged(QETProject *, int, int)),
 				this,    SLOT  (projectDiagramsOrderChanged(QETProject *, int, int))
+			);
+			connect(
+				project, SIGNAL(elementIntegrated(QETProject *, const ElementsLocation &)),
+				this,    SLOT(elementIntegrated(QETProject *, const ElementsLocation &))
 			);
 		} else {
 			// remove diagrams unknown to the project (presumably removed)
@@ -729,6 +734,8 @@ QTreeWidgetItem *GenericPanel::fillElementsCategoryItem(QTreeWidgetItem *categor
 	
 	int index = 0;
 	
+	category_qtwi -> setData(0, GenericPanel::PanelFlags, (int)options);
+	
 	if (options & AddChildElementsCategories) {
 		if (!freshly_created) {
 			QList<ElementsLocation> sub_categories;
@@ -759,6 +766,23 @@ QTreeWidgetItem *GenericPanel::fillElementsCategoryItem(QTreeWidgetItem *categor
 	}
 	
 	return(fillItem(category_qtwi, options, freshly_created));
+}
+
+/**
+	Refresh elements category at \a location.
+	@return the refreshed tree item
+*/
+QTreeWidgetItem *GenericPanel::refreshElementsCategory(const ElementsLocation &location) {
+	QTreeWidgetItem *item = itemForElementsLocation(location);
+	if (!item) return(0);
+	if (item -> type() != QET::ElementsCategory && item -> type() != QET::ElementsCollection) return(0);
+	QTreeWidgetItem *result = fillElementsCategoryItem(
+		item,
+		QETApp::collectionItem(location) -> toCategory(),
+		PanelOptions(QFlag(item -> data(0, GenericPanel::PanelFlags).toInt())),
+		false
+	);
+	return(result);
 }
 
 /**
@@ -938,6 +962,27 @@ void GenericPanel::projectDiagramsOrderChanged(QETProject *project, int from, in
 		setCurrentItem(moved_qtwi_diagram);
 	}
 	emit(panelContentChanged());
+}
+
+/**
+	Inform this panel the project \a project has integrated the element at \a location
+*/
+QList<ElementsLocation> GenericPanel::elementIntegrated(QETProject *project, const ElementsLocation &location) {
+	Q_UNUSED(project)
+	QList<ElementsLocation> added_locations;
+	
+	int i = 0;
+	ElementsLocation loc = location;
+	// starting from the provided location, goes up into the tree until a displayed location is reached
+	while (i < 100 && !(itemForElementsLocation(loc))) {
+		added_locations << loc;
+		loc = loc.parent();
+		++ i;
+	}
+	if (added_locations.count()) {
+		refreshElementsCategory(loc);
+	}
+	return(added_locations);
 }
 
 /**

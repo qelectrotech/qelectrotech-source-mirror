@@ -42,6 +42,7 @@ class ElementsLocation {
 	QString path() const;
 	void setPath(const QString &);
 	bool addToPath(const QString &);
+	ElementsLocation parent() const;
 	QETProject *project() const;
 	void setProject(QETProject *);
 	bool isNull() const;

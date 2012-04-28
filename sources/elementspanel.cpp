@@ -26,6 +26,7 @@
 #include "fileelementdefinition.h"
 #include "qeticons.h"
 #include "templatescollection.h"
+#include "treecoloranimation.h"
 
 /**
 	This class implements a thread reloading the following elements
@@ -379,6 +380,32 @@ void ElementsPanel::panelContentChange() {
 	if (!filter_.isEmpty()) {
 		filter(filter_);
 	}
+}
+
+/**
+	Inform this panel the project \a project has integrated the element at \a location
+*/
+QList<ElementsLocation> ElementsPanel::elementIntegrated(QETProject *project, const ElementsLocation &location) {
+	// the base implementation simply refreshes the adequate category and returns the list of added locations
+	QList<ElementsLocation> added_locations = GenericPanel::elementIntegrated(project, location);
+	if (!added_locations.count()) return(added_locations);
+	
+	// the additional job of this method consists in displaying the integrated elements...
+	if (QTreeWidgetItem *integrated_element_qtwi = itemForElementsLocation(location)) {
+		ensureHierarchyIsVisible(QList<QTreeWidgetItem *>() << integrated_element_qtwi);
+		scrollToItem(integrated_element_qtwi, QAbstractItemView::PositionAtCenter);
+	}
+	
+	// and make them "flash" (not too obviously though) so the user notices they have been integrated.
+	QList<QTreeWidgetItem *> items;
+	foreach (ElementsLocation loc, added_locations) {
+		if (QTreeWidgetItem *added_item = itemForElementsLocation(loc)) {
+			items << added_item;
+		}
+	}
+	highlightItems(items, this, SLOT(scrollToSelectedItem()));
+	
+	return(added_locations);
 }
 
 /**
@@ -773,4 +800,41 @@ void ElementsPanel::ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &ite
 	foreach(QTreeWidgetItem *parent_qtwi, parent_items) {
 		if (parent_qtwi -> isHidden()) parent_qtwi -> setHidden(false);
 	}
+}
+
+/**
+	Scroll to the currently selected item.
+*/
+void ElementsPanel::scrollToSelectedItem() {
+	QList<QTreeWidgetItem *> selected_items = selectedItems();
+	if (selected_items.count()) {
+		scrollToItem(selected_items.first(), QAbstractItemView::PositionAtCenter);
+	}
+}
+
+/**
+	Scroll to and highlight \a items. Once the animation is finished, the slot
+	\a method is called on the object \a receiver.
+*/
+void ElementsPanel::highlightItems(const QList<QTreeWidgetItem *> &items, const QObject *receiver, const char *method) {
+	TreeColorAnimation *animation1 = new TreeColorAnimation(items);
+	animation1 -> setStartValue(QColor(Qt::white));
+	animation1 -> setEndValue(QColor(Qt::yellow));
+	animation1 -> setDuration(400);
+	animation1 -> setEasingCurve(QEasingCurve::InQuad);
+	
+	TreeColorAnimation *animation2 = new TreeColorAnimation(items);
+	animation2 -> setStartValue(QColor(Qt::yellow));
+	animation2 -> setEndValue(QColor(Qt::white));
+	animation2 -> setDuration(500);
+	animation2 -> setEasingCurve(QEasingCurve::OutInQuint);
+	
+	QSequentialAnimationGroup *animation = new QSequentialAnimationGroup(this);
+	animation -> addAnimation(animation1);
+	animation -> addAnimation(new QPauseAnimation(700));
+	animation -> addAnimation(animation2);
+	if (receiver) {
+		connect(animation, SIGNAL(finished()), receiver, method);
+	}
+	animation -> start(QAbstractAnimation::DeleteWhenStopped);
 }

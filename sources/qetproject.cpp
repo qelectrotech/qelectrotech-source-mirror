@@ -629,6 +629,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	}
 	
 	// recopie l'element
+	ElementsLocation result;
 	if (ElementDefinition *existing_elmt = target_cat -> element(integ_item -> pathName())) {
 		
 		// l'element existe deja - on demande au handler ce que l'on doit faire
@@ -636,31 +637,31 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 		
 		if (action == QET::Ignore) {
 			// il faut conserver et utiliser l'element deja integre
-			return(existing_elmt -> location().toString());
+			result = existing_elmt -> location();
 		} else if (action == QET::Erase) {
 			// il faut ecraser l'element deja integre
 			BasicMoveElementsHandler *erase_handler = new BasicMoveElementsHandler();
-			ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
+			ElementsLocation result = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
 			delete erase_handler;
-			return(result_loc.toString());
 		} else if (action == QET::Rename) {
 			// il faut faire cohabiter les deux elements en renommant le nouveau 
 			QString integ_element_name = handler -> nameForRenamingOperation();
 			BasicMoveElementsHandler *rename_handler = new BasicMoveElementsHandler();
 			rename_handler -> setActionIfItemAlreadyExists(QET::Rename);
 			rename_handler -> setNameForRenamingOperation(integ_element_name);
-			ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, rename_handler, error_message);
+			result = copyElementWithHandler(integ_elmt, target_cat, rename_handler, error_message);
 			delete rename_handler;
-			return(result_loc.toString());
 		} else {
 			// il faut annuler la pose de l'element
-			return(QString());
+			result = ElementsLocation();
 		}
 	} else {
 		// integre l'element normalement
-		ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
-		return(result_loc.toString());
+		result = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
 	}
+	
+	if (!result.isNull()) emit(elementIntegrated(this, result));
+	return(result.toString());
 }
 
 /**

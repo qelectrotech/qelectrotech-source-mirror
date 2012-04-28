@@ -59,7 +59,8 @@ class GenericPanel : public QTreeWidget {
 	enum MetaData {
 		Item = Qt::UserRole + 1,
 		AliasItem,
-		Parent
+		Parent,
+		PanelFlags
 	};
 	
 	// Constructors, destructor
@@ -143,6 +144,7 @@ class GenericPanel : public QTreeWidget {
 	virtual QTreeWidgetItem *getItemForElementsCategory(ElementsCategory *, bool * = 0);
 	virtual QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillElementsCategoryItem  (QTreeWidgetItem *, ElementsCategory *, PanelOptions = AddAllChild, bool = false);
+	virtual QTreeWidgetItem *refreshElementsCategory(const ElementsLocation &);
 	
 	// elements methods
 	public:
@@ -164,6 +166,7 @@ class GenericPanel : public QTreeWidget {
 	virtual void diagramAdded(QETProject *, Diagram *);
 	virtual void diagramRemoved(QETProject *, Diagram *);
 	virtual void projectDiagramsOrderChanged(QETProject *, int, int);
+	virtual QList<ElementsLocation> elementIntegrated(QETProject *, const ElementsLocation &);
 	virtual void diagramTitleChanged(Diagram *, const QString &);
 	virtual void templatesCollectionChanged(TitleBlockTemplatesCollection*, const QString &);
 	virtual void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);

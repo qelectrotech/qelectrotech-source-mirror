@@ -136,6 +136,22 @@ bool ElementsLocation::addToPath(const QString &string) {
 }
 
 /**
+	@return the location of the parent category, or a copy of this location
+	when it represents a root category.
+*/
+ElementsLocation ElementsLocation::parent() const {
+	ElementsLocation copy(*this);
+	QRegExp re1("^([a-z]+://)(.*)/*$");
+	if (re1.exactMatch(path_)) {
+		QString path_proto = re1.capturedTexts().at(1);
+		QString path_path = re1.capturedTexts().at(2);
+		QString parent_path = path_path.remove(QRegExp("/*[^/]+$"));
+		copy.setPath(path_proto + parent_path);
+	}
+	return(copy);
+}
+
+/**
 	@return le projet de cet emplacement ou 0 si celui-ci n'est pas lie a
 	un projet.
 */
