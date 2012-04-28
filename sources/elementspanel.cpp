@@ -94,6 +94,7 @@ ElementsPanel::ElementsPanel(QWidget *parent) :
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setColumnCount(1);
 	setExpandsOnDoubleClick(true);
+	setMouseTracking(true);
 	
 	// drag'n drop autorise
 	setDragEnabled(true);
@@ -401,6 +402,8 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 	if (TitleBlockTemplatesCollection *tbt_collection = project -> embeddedTitleBlockTemplatesCollection()) {
 		if (QTreeWidgetItem *tbt_collection_qtwi = itemForTemplatesCollection(tbt_collection)) {
 			tbt_collection_qtwi -> setText(0, tr("Cartouches embarqués"));
+			tbt_collection_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection de cartouches embarqu\351e", "Status tip"));
+			
 			if (first_add) tbt_collection_qtwi -> setExpanded(true);
 		}
 	}
@@ -408,9 +411,12 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 	if (ElementsCollection *elmt_collection = project -> embeddedCollection()) {
 		if (QTreeWidgetItem *elmt_collection_qtwi = itemForElementsCollection(elmt_collection)) {
 			elmt_collection_qtwi -> setText(0, tr("Collection embarquée"));
+			elmt_collection_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection d'\351l\351ments embarqu\351e", "Status tip"));
 			if (first_add) elmt_collection_qtwi -> setExpanded(true);
 		}
 	}
+	
+	qtwi_project -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper ce projet", "Status tip"));
 	
 	return(qtwi_project);
 }
@@ -436,14 +442,7 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 		0,
 		tr(
 			"Cliquer-d\351posez ce mod\350le de cartouche sur un sch\351ma pour l'y appliquer.",
-			"Tip displayed when selecting a title block template"
-		)
-	);
-	item -> setWhatsThis(
-		0,
-		tr(
-			"Ceci est un mod\350le de cartouche, qui peut \352tre appliqu\351 a un sch\351ma.",
-			"\"What's this\" tip"
+			"Status tip displayed when selecting a title block template"
 		)
 	);
 	return(item);
@@ -451,6 +450,13 @@ QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_
 
 QTreeWidgetItem *ElementsPanel::updateElementsCategoryItem(QTreeWidgetItem *category_qtwi, ElementsCategory *category, PanelOptions options, bool freshly_created) {
 	QTreeWidgetItem *item = GenericPanel::updateElementsCategoryItem(category_qtwi, category, options, freshly_created);
+	item -> setStatusTip(
+		0,
+		tr(
+			"Double-cliquez pour r\351duire ou d\351velopper cette cat\351gorie d'\351l\351ments",
+			"Status tip displayed by elements category"
+		)
+	);
 	emit(loadingProgressed(++ loading_progress_, -1));
 	return(item);
 }
@@ -458,12 +464,9 @@ QTreeWidgetItem *ElementsPanel::updateElementsCategoryItem(QTreeWidgetItem *cate
 QTreeWidgetItem *ElementsPanel::updateElementItem(QTreeWidgetItem *element_qtwi, ElementDefinition *element, PanelOptions options, bool freshly_created) {
 	QTreeWidgetItem *item = GenericPanel::updateElementItem(element_qtwi, element, options, freshly_created);
 	
-	QString whats_this = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans votre sch\351ma par cliquer-d\351placer");
-	item -> setWhatsThis(0, whats_this);
-	
 	QString status_tip = tr(
-		"Cliquer-d\351posez cet \351l\351ment sur le sch\351ma pour ins\351rer un \351l\351ment \253 %1 \273",
-		"Tip displayed in the status bar when selecting an element"
+		"Cliquer-d\351posez cet \351l\351ment sur un sch\351ma pour y ins\351rer un \351l\351ment \253 %1 \273, double-cliquez dessus pour l'\351diter",
+		"Status tip displayed in the status bar when selecting an element"
 	);
 	item -> setStatusTip(0, status_tip.arg(item -> text(0)));
 	
@@ -542,11 +545,15 @@ void ElementsPanel::reload(bool reload_collections) {
 	TitleBlockTemplatesCollection *common_tbt_collection = QETApp::commonTitleBlockTemplatesCollection();
 	common_tbt_collection_item_ = addTemplatesCollection(common_tbt_collection, invisibleRootItem());
 	common_tbt_collection_item_ -> setIcon(0, system_icon);
+	common_tbt_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper la collection de cartouches QElectroTech", "Status tip"));
+	common_tbt_collection_item_ -> setWhatsThis(0, tr("Ceci est la collection de cartouches fournie avec QElectroTech. Install\351e en tant que composant syst\350me, vous ne pouvez normalement pas la personnaliser.", "\"What's this\" tip"));
 	if (first_reload_) common_tbt_collection_item_ -> setExpanded(true);
 	
 	// load the common elements collection
-	if (QETApp::commonElementsCollection()->rootCategory()) {
+	if (QETApp::commonElementsCollection() -> rootCategory()) {
 		common_collection_item_ = addCollection(QETApp::commonElementsCollection());
+		common_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper la collection d'\351l\351ments QElectroTech", "Status tip"));
+		common_collection_item_ -> setWhatsThis(0, tr("Ceci est la collection d'\351l\351ments fournie avec QElectroTech. Install\351e en tant que composant syst\350me, vous ne pouvez normalement pas la personnaliser.", "\"What's this\" tip"));
 		if (first_reload_) common_collection_item_ -> setExpanded(true);
 	}
 	
@@ -554,11 +561,15 @@ void ElementsPanel::reload(bool reload_collections) {
 	TitleBlockTemplatesCollection *custom_tbt_collection = QETApp::customTitleBlockTemplatesCollection();
 	custom_tbt_collection_item_ = addTemplatesCollection(custom_tbt_collection, invisibleRootItem());
 	custom_tbt_collection_item_ -> setIcon(0, user_icon);
+	custom_tbt_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper votre collection personnelle de cartouches", "Status tip"));
+	custom_tbt_collection_item_ -> setWhatsThis(0, tr("Ceci est votre collection personnelle de cartouches -- utilisez-la pour cr\351er, stocker et \351diter vos propres cartouches.", "\"What's this\" tip"));
 	if (first_reload_) custom_tbt_collection_item_ -> setExpanded(true);
 	
 	// load the custom elements collection
-	if (QETApp::customElementsCollection()->rootCategory()) {
+	if (QETApp::customElementsCollection() -> rootCategory()) {
 		custom_collection_item_ = addCollection(QETApp::customElementsCollection());
+		custom_collection_item_ -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper votre collection personnelle d'\351l\351ments", "Status tip"));
+		custom_collection_item_ -> setWhatsThis(0, tr("Ceci est votre collection personnelle d'\351l\351ments -- utilisez-la pour cr\351er, stocker et \351diter vos propres \351l\351ments.", "\"What's this\" tip"));
 		if (first_reload_) custom_collection_item_ -> setExpanded(true);
 	}
 	

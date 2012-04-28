@@ -222,6 +222,8 @@ QTreeWidgetItem *GenericPanel::updateProjectItem(QTreeWidgetItem *project_qtwi, 
 		);
 	}
 	project_qtwi -> setToolTip(0, final_tooltip);
+	QString project_whatsthis = tr("Ceci est un projet QElectroTech, c'est-\340-dire un fichier d'extension .qet regroupant plusieurs sch\351mas/folios. Il embarque \351galement les \351l\351ments et mod\350les de cartouches utilis\351s dans ces sch\351mas/folios.", "\"What's this\" tip");
+	project_qtwi -> setWhatsThis(0, project_whatsthis);
 	return(updateItem(project_qtwi, options, freshly_created));
 }
 
@@ -273,11 +275,20 @@ QTreeWidgetItem *GenericPanel::fillProjectItem(QTreeWidgetItem *project_qtwi, QE
 	}
 	
 	if (options & AddChildElementsCollections) {
-		addElementsCollection(
+		QTreeWidgetItem *collection_qtwi = addElementsCollection(
 			project -> embeddedCollection(),
 			project_qtwi,
 			options
 		);
+		QString collection_whatsthis = tr("Ceci est une collection embarqu\351e dans un fichier projet. Elle permet de stocker et g\351rer les \351l\351ments utilis\351s dans les sch\351mas du projet parent.", "\"What's this\" tip");
+		collection_qtwi -> setWhatsThis(0, collection_whatsthis);
+		
+		// special instructions for the integration category
+		if (QTreeWidgetItem *integration_qtwi = itemForElementsCategory(project -> integrationCategory())) {
+			QString integration_whats_this = tr("Cette cat\351gorie d'\351l\351ments est utilis\351e pour int\351grer automatiquement dans le projet tout \351l\351ment utilis\351 sur un des sch\351mas de ce projet.", "\"What's this\" tip");
+			integration_qtwi -> setWhatsThis(0, integration_whats_this);
+		}
+		
 	}
 	return(fillItem(project_qtwi, options, freshly_created));
 }
@@ -510,6 +521,11 @@ QTreeWidgetItem *GenericPanel::getItemForTemplate(const TitleBlockTemplateLocati
 QTreeWidgetItem *GenericPanel::updateTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
 	tb_template_qtwi -> setText(0, tr("Mod\350le \"%1\"", "used to display a title block template").arg(tb_template.name()));
+	QString tbt_whatsthis = tr(
+		"Ceci est un mod\350le de cartouche, qui peut \352tre appliqu\351 \340 un sch\351ma.",
+		"\"What's this\" tip"
+	);
+	tb_template_qtwi -> setWhatsThis(0, tbt_whatsthis);
 	// note the following lines are technically marking the template as used
 	tb_template_qtwi -> setToolTip(0, tb_template.toString());
 	tb_template_qtwi -> setBackground(0, QBrush());
@@ -690,7 +706,11 @@ QTreeWidgetItem *GenericPanel::getItemForElementsCategory(ElementsCategory *cate
 QTreeWidgetItem *GenericPanel::updateElementsCategoryItem(QTreeWidgetItem *category_qtwi, ElementsCategory *category, PanelOptions options, bool freshly_created) {
 	Q_UNUSED(options)
 	if (!category || !category_qtwi) return(0);
-	
+	QString category_whatsthis = tr(
+		"Ceci est une cat\351gorie d'\351l\351ments, un simple container permettant d'organiser les collections d'\351l\351ments",
+		"\"What's this\" tip"
+	);
+	category_qtwi -> setWhatsThis(0, category_whatsthis);
 	category_qtwi -> setText(0, category -> name());
 	markItemAsContainer(category_qtwi);
 	
@@ -798,6 +818,8 @@ QTreeWidgetItem *GenericPanel::updateElementItem(QTreeWidgetItem *element_qtwi, 
 	
 	ElementsLocation element_location = element -> location();
 	element_qtwi -> setText(0, cache -> name());
+	QString element_whatsthis = tr("Ceci est un \351l\351ment que vous pouvez ins\351rer dans un sch\351ma.", "\"What's this\" tip");
+	element_qtwi -> setWhatsThis(0, element_whatsthis);
 	if (options & DisplayElementsPreview) {
 		element_qtwi -> setIcon(0, QIcon(cache -> pixmap()));
 	}
