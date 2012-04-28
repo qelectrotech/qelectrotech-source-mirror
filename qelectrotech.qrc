@@ -59,6 +59,7 @@
 	<file>ico/16x16/item_cancel.png</file>
 	<file>ico/16x16/item_copy.png</file>
 	<file>ico/16x16/item_move.png</file>
+	<file>ico/16x16/label.png</file>
 	<file>ico/16x16/masquer.png</file>
 	<file>ico/16x16/neutral.png</file>
 	<file>ico/16x16/north.png</file>
@@ -140,6 +141,7 @@
 	<file>ico/22x22/go-home.png</file>
 	<file>ico/22x22/go-up.png</file>
 	<file>ico/22x22/hotspot.png</file>
+	<file>ico/22x22/label.png</file>
 	<file>ico/22x22/landscape.png</file>
 	<file>ico/22x22/line.png</file>
 	<file>ico/22x22/lower.png</file>
@@ -196,7 +198,6 @@
 	<file>ico/oxygen-icons/48x48/apps/qelectrotech.png</file>
 	<file>ico/oxygen-icons/64x64/apps/qelectrotech.png</file>
 	<file>ico/splash.png</file>
-	<file>ico/titleblock.png</file>
 	<file>titleblocks/default.titleblock</file>
 	<file>LICENSE</file>
 </qresource>

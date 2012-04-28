@@ -325,7 +325,6 @@ void QET::Icons::initIcons() {
 	PrintLandscape      .addFile(":/ico/22x22/landscape.png");
 	PrintPortrait       .addFile(":/ico/22x22/portrait.png");
 	PrintTwoPages       .addFile(":/ico/22x22/two_pages.png");
-	Project             .addFile(":/ico/16x16/project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/16x16/mimetypes/application-x-qet-project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/22x22/mimetypes/application-x-qet-project.png");
 	ProjectFile         .addFile(":/ico/oxygen-icons/32x32/mimetypes/application-x-qet-project.png");
@@ -350,7 +349,8 @@ void QET::Icons::initIcons() {
 	South               .addFile(":/ico/16x16/south.png");
 	Start               .addFile(":/ico/22x22/start.png");
 	Terminal            .addFile(":/ico/22x22/terminal.png");
-	TitleBlock          .addFile(":/ico/titleblock.png");
+	TitleBlock          .addFile(":/ico/16x16/label.png");
+	TitleBlock          .addFile(":/ico/22x22/label.png");
 	UserInformations    .addFile(":/ico/16x16/preferences-desktop-user.png");
 	UserInformations    .addFile(":/ico/22x22/preferences-desktop-user.png");
 	ViewFitWidth        .addFile(":/ico/22x22/view_fit_width.png");

@@ -1052,11 +1052,11 @@ QIcon GenericPanel::defaultIcon(QET::ItemType type) {
 	if (type & QET::ElementsContainer) {
 		return(QET::Icons::Folder);
 	} else if (type & QET::TitleBlockTemplatesCollectionItem) {
-		return(QET::Icons::TitleBlock);
+		return(QIcon(QET::Icons::TitleBlock.pixmap(QSize(16, 16))));
 	} else if (type == QET::Diagram) {
 		return(QET::Icons::Diagram);
 	} else if (type == QET::Project) {
-		return(QET::Icons::Project);
+		return(QIcon(QET::Icons::ProjectFile.pixmap(QSize(16, 16))));
 	}
 	return(QIcon());
 }

@@ -43,7 +43,7 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	project_(0)
 {
 	setObjectName("ProjectView");
-	setWindowIcon(QET::Icons::Project);
+	setWindowIcon(QET::Icons::ProjectFile);
 	
 	// construit le widget "fallback"
 	fallback_widget_ = new QWidget();
