@@ -34,10 +34,6 @@
         <translation>&amp;Lizenzvertrag</translation>
     </message>
     <message>
-        <source>QElectroTech, une application de réalisation de schémas électriques.</source>
-        <translation>QElectroTech ist eine Anwendung zur Umsetzung von Schaltplänen.</translation>
-    </message>
-    <message>
         <source>Idée originale</source>
         <translation>Grundidee</translation>
     </message>
@@ -94,15 +90,30 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>© 2006-2012 Les développeurs de QElectroTech</source>
-        <translation>© 2006-2012 Die Entwickler von QElectroTech</translation>
-    </message>
-    <message>
         <source>Développement</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Traduction en arabe</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>QElectroTech, une application de réalisation de schémas électriques.</source>
+        <comment>about tab, description line</comment>
+        <translation type="unfinished">QElectroTech ist eine Anwendung zur Umsetzung von Schaltplänen.</translation>
+    </message>
+    <message>
+        <source>© 2006-2012 Les développeurs de QElectroTech</source>
+        <comment>about tab, developers line</comment>
+        <translation type="unfinished">© 2006-2012 Die Entwickler von QElectroTech</translation>
+    </message>
+    <message>
+        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</source>
+        <comment>about tab, contact line</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Collection d&apos;éléments</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -437,6 +448,11 @@
     </message>
     <message>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutantdes éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
+        <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -857,10 +873,6 @@ Die Änderungen sind endgültig.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation>Dies ist ein Element, das Sie in Ihre Zeichnung einfügen können durch Klicken und Ziehen</translation>
-    </message>
-    <message>
         <source>Cartouches embarqués</source>
         <translation type="unfinished"></translation>
     </message>
@@ -869,17 +881,72 @@ Die Änderungen sind endgültig.</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer ce projet</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
-        <comment>Tip displayed when selecting a title block template</comment>
+        <comment>Status tip displayed when selecting a title block template</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément « %1 »</source>
-        <comment>Tip displayed in the status bar when selecting an element</comment>
+        <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
+        <comment>Status tip displayed by elements category</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Ceci est un modèle de cartouche, qui peut être appliqué a un schéma.</source>
+        <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
+        <comment>Status tip displayed in the status bar when selecting an element</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
@@ -1253,6 +1320,36 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>%1 [non utilisé dans le projet]</source>
         <translation type="unfinished">%1 [nicht im Projekt verwendet]</translation>
+    </message>
+    <message>
+        <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2628,6 +2725,16 @@ Options disponibles :
     <message>
         <source>Pivote les textes sélectionnés à un angle précis</source>
         <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
+        <comment>Status tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
