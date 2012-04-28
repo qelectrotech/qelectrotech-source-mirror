@@ -3,6 +3,7 @@
         <name lang="en">Cartridge filter</name>
         <name lang="fr">Filtre à cartouche</name>
         <name lang="pl">Filtr kasetowy</name>
+        <name lang="cs">Vložkový filtr</name>
     </names>
     <informations>Rotation possible</informations>
     <description>

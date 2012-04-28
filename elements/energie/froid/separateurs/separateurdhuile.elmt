@@ -3,6 +3,7 @@
         <name lang="en">Oil separator</name>
         <name lang="fr">Séparateur d'huile</name>
         <name lang="pl">Separator oleju</name>
+        <name lang="cs">Odlučovač oleje</name>
     </names>
     <informations>Rotation possible</informations>
     <description>

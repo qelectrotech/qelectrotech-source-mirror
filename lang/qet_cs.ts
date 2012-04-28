@@ -2521,7 +2521,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="402"/>
         <source>Afficha&amp;ge</source>
-        <translation>&amp;Zobrazení</translation>
+        <translation>&amp;Pohled</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="463"/>
@@ -2874,12 +2874,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
         <source>en utilisant des onglets</source>
-        <translation>Karty</translation>
+        <translation>Používat karty</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
         <source>en utilisant des fenêtres</source>
-        <translation>Okna</translation>
+        <translation>Používat okna</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="467"/>

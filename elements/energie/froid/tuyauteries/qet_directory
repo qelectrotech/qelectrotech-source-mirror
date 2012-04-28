@@ -3,5 +3,6 @@
         <name lang="fr" >Tuyauteries</name>
         <name lang="en" >pipes</name>
         <name lang="pl" >Rury</name>
+        <name lang="cs">Potrubí</name>
     </names>
 </qet-directory>
