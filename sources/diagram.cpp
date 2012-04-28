@@ -150,6 +150,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyPressEvent(QKeyEvent *e) {
+	bool transmit_event = true;
 	if (!isReadOnly()) {
 		QPointF movement;
 		switch(e -> key()) {
@@ -162,9 +163,10 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 			beginMoveElements();
 			continueMoveElements(movement);
 			e -> accept();
+			transmit_event = false;
 		}
 	}
-	if (!e -> isAccepted()) {
+	if (transmit_event) {
 		QGraphicsScene::keyPressEvent(e);
 	}
 }
@@ -174,6 +176,7 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyReleaseEvent(QKeyEvent *e) {
+	bool transmit_event = true;
 	if (!isReadOnly()) {
 		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
 		if (
@@ -182,10 +185,11 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 			!e -> isAutoRepeat()
 		) {
 			endMoveElements();
-			e->accept();
+			e -> accept();
+			transmit_event = false;
 		}
 	}
-	if (!e -> isAccepted()) {
+	if (transmit_event) {
 		QGraphicsScene::keyReleaseEvent(e);
 	}
 }
