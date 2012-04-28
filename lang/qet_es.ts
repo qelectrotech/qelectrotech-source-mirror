@@ -16,12 +16,6 @@
         <translation type="unfinished">© 2006-2012 Los desarrolladores de QElectroTech</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="93"/>
-        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</source>
-        <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
         <source>Idée originale</source>
         <translation>Idea original</translation>
@@ -132,6 +126,12 @@ Iconos</translation>
         <source>&amp;Accord de licence</source>
         <comment>tab title</comment>
         <translation>Acuerdo de &amp;licencia</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="93"/>
+        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
+        <comment>about tab, contact line</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="107"/>

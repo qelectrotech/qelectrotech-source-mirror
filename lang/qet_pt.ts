@@ -63,7 +63,7 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="93"/>
-        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</source>
+        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
         <translation type="unfinished"></translation>
     </message>

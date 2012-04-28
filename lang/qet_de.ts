@@ -108,12 +108,12 @@
         <translation type="unfinished">© 2006-2012 Die Entwickler von QElectroTech</translation>
     </message>
     <message>
-        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</source>
-        <comment>about tab, contact line</comment>
+        <source>Collection d&apos;éléments</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Collection d&apos;éléments</source>
+        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
+        <comment>about tab, contact line</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
