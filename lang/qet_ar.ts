@@ -49,19 +49,19 @@
         <location filename="../sources/aboutqet.cpp" line="87"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectrotech, تطبيقة لرسم المُخططات الكهربائية . </translation>
+        <translation>QElectrotech, تطبيقة لرسم المُخططات الكهربائية . </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="89"/>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 جميع الحقوق محفوظة للمصممين</translation>
+        <translation>© 2006-2012 جميع الحقوق محفوظة للمصممين</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="93"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>الإتصال :  &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
@@ -76,7 +76,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="108"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>مجموعة العناصر</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutantdes éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>في هذه المنطقة تحفظون مخططاتكم مع إضافة عناصر ووضع توصيلات بين نقاط الربط. كما يُمكن إضافة نصوص مستقلّة.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="75"/>
@@ -1106,7 +1106,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="432"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو لتطوير هذه المجموعة من إطارات التعريف المُضمّنة</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="440"/>
@@ -1117,79 +1117,80 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="441"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو تطوير هذه المجموعة من العناصر المُضمّنة</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="446"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو تطوير هذا المشروع</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="470"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished">انقر وانقل هذا النموذج لإطار التعريف في المخطط لتطبيقه عليه</translation>
+        <translation>انقر وانقل هذا النموذج لإطار التعريف في المخطط لتطبيقه عليه</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="482"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو لتطوير هذا الصنف من العناصر</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="494"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر وانقل هذا العنصر على مخطط لإدراج عنصر « %1 », انقر نقرا مزدوجا عليه لتحريره</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="575"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو تطوير هذا الصنف من إطارات تعريف QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="576"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا الصنف من إطارات التعريف مُزود من QElectrotech ز تمّ تنصيبه كمكونات نظام , لا يُمكن لكم شخصنته.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="582"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو تطوير الصنف من عناصر QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="583"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا الصنف من العناصر مُزوّد مع QElectrotech. تمّ تنصيبه كمكوّن نظام , لا يُمكن شخصنته.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر نقرا مزدوجا لإختزال أو لتطوير صنفكم الشخصي من إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا صنفكم الشخصي من إطارات التعريف -- استعمله لإحداث , تخزين أو تحرير إطارات التعريف الخاصة بكم.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="598"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>انقر نقرا مزدوجا لإختزال أو لتطوير صنفكم الشخصي من العناصر</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="599"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا صنفكم الشخصي من العناصر -- استعمله لإحداث, تخزين و تحرير العناصر الخاصة بكم.</translation>
     </message>
 </context>
 <context>
@@ -1622,19 +1623,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا الصنف المُضمّن في ملف المشروع. يسمح بتخزين و إدارة العناصر المستعملة في مخططات المشروع الأصل.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="293"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>يُستعمل هذا الصنف من العناصر لإدماج آليا في المشروع أيّ عنصر مستعمل في إحدى مخططاته.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="352"/>
@@ -1663,19 +1664,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="529"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا نموذج إطار تعريف, يُمكن تطبيقه على مُخطط.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا الصنف من العناصر حاوية بسيطة تسمح بتنظيم مجموعات العناصر</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="847"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>هذا العنصر يمكن إدراجه في مخطط.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1117"/>
@@ -2696,13 +2697,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="87"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>انقر على فعل للرجوع إلى الخلف في تحرير مخططتكم</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="88"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>يسرد هذا اللوح مختلف الإجراءات المتخذة بشأن المخطط الحالي. انقر فوق إجراء للعودة إلى حالة المخطط قبل تطبيق الإجراء</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="174"/>
@@ -5079,11 +5080,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5091,11 +5087,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
