@@ -716,6 +716,8 @@ QTreeWidgetItem *GenericPanel::updateElementsCategoryItem(QTreeWidgetItem *categ
 		"\"What's this\" tip"
 	);
 	category_qtwi -> setWhatsThis(0, category_whatsthis);
+	QString category_tooltip = category -> location().toString();
+	category_qtwi -> setToolTip(0, category_tooltip);
 	category_qtwi -> setText(0, category -> name());
 	markItemAsContainer(category_qtwi);
 	
