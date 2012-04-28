@@ -51,6 +51,8 @@ void QETMainWindow::initCommonActions() {
 	updateFullScreenAction();
 	connect(fullscreen_action_, SIGNAL(triggered()), this, SLOT(toggleFullScreen()));
 	
+	whatsthis_action_ = QWhatsThis::createAction(this);
+	
 	about_qet_ = new QAction(QET::Icons::QETLogo, tr("\300 &propos de QElectroTech"), this);
 	about_qet_ -> setStatusTip(tr("Affiche des informations sur QElectroTech", "status bar tip"));
 	connect(about_qet_,  SIGNAL(triggered()), qet_app, SLOT(aboutQET()));
@@ -69,7 +71,10 @@ void QETMainWindow::initCommonMenus() {
 	settings_menu_ -> addAction(configure_action_);
 	connect(settings_menu_, SIGNAL(aboutToShow()), this, SLOT(checkToolbarsmenu()));
 	
+	
 	help_menu_ = new QMenu(tr("&Aide", "window menu"));
+	help_menu_ -> addAction(whatsthis_action_);
+	help_menu_ -> addSeparator();
 	help_menu_ -> addAction(about_qet_);
 	help_menu_ -> addAction(about_qt_);
 	

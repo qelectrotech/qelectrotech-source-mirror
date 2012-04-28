@@ -52,6 +52,7 @@ class QETMainWindow : public QMainWindow {
 	protected:
 	QAction *configure_action_;              ///< Launch the QElectroTech configuration dialog
 	QAction *fullscreen_action_;             ///< Toggle full screen
+	QAction *whatsthis_action_;              ///< Toggle "What's this" mode
 	QAction *about_qet_;                     ///< Launch the "About QElectroTech" dialog
 	QAction *about_qt_;                      ///< launch the "About Qt" dialog
 	QMenu *settings_menu_;                   ///< Settings menu
