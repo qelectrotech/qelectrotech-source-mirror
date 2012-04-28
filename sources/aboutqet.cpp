@@ -90,7 +90,7 @@ QWidget *AboutQET::aboutTab() const {
 		"<br><br>"
 		"<a href=\"http://qelectrotech.org/\">http://qelectrotech.org/</a>"
 		"<br><br>" +
-		tr("Contact\240: <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org", "about tab, contact line")
+		tr("Contact\240: <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line")
 	);
 	about -> setAlignment(Qt::AlignCenter);
 	about -> setOpenExternalLinks(true);
