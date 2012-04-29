@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">Capteur Soupape Thermique</name>
         <name lang="pl">Czujnik temperatury zaworu</name>
+        <name lang="cs">Čidlo teploty uzávěru</name>
     </names>
     <informations></informations>
     <description>

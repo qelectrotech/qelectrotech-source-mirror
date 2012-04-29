@@ -2,6 +2,7 @@
     <names>
         <name lang="fr">Ballon Combinée ECS</name>
         <name lang="pl">Zasobnik kombinowany CWU</name>
+        <name lang="cs">Kombinovaný zásobnik ECS</name>
     </names>
     <informations></informations>
     <description>
