@@ -388,7 +388,9 @@ void ElementsPanel::panelContentChange() {
 QList<ElementsLocation> ElementsPanel::elementIntegrated(QETProject *project, const ElementsLocation &location) {
 	// the base implementation simply refreshes the adequate category and returns the list of added locations
 	QList<ElementsLocation> added_locations = GenericPanel::elementIntegrated(project, location);
-	if (!added_locations.count()) return(added_locations);
+	if (!added_locations.count() || !mustHighlightIntegratedElements()) {
+		return(added_locations);
+	}
 	
 	// the additional job of this method consists in displaying the integrated elements...
 	if (QTreeWidgetItem *integrated_element_qtwi = itemForElementsLocation(location)) {
@@ -548,6 +550,13 @@ int ElementsPanel::elementsCollectionItemsCount() {
 		}
 	}
 	return(items_count);
+}
+
+/**
+	@return true if freshly integrated elements should be highlighted, false otherwise.
+*/
+bool ElementsPanel::mustHighlightIntegratedElements() const {
+	return(QETApp::settings().value("diagrameditor/highlight-integrated-elements", true).toBool());
 }
 
 /**

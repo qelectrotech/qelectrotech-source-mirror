@@ -60,6 +60,7 @@ class ElementsPanel : public GenericPanel {
 	
 	void reloadCollections();
 	int elementsCollectionItemsCount();
+	bool mustHighlightIntegratedElements() const;
 	
 	signals:
 	void requestForProject(QETProject *);

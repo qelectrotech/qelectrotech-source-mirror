@@ -105,6 +105,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	bool use_system_colors = settings.value("usesystemcolors", "true").toBool();
 	bool tabbed = settings.value("diagrameditor/viewmode", "tabbed") == "tabbed";
 	bool integrate_elements = settings.value("diagrameditor/integrate-elements", true).toBool();
+	bool highlight_integrated_elements = settings.value("diagrameditor/highlight-integrated-elements", true).toBool();
 	QString default_element_informations = settings.value("elementeditor/default-informations", "").toString();
 	
 	appearance_ = new QGroupBox(tr("Apparence"), this);
@@ -116,7 +117,8 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	warning_view_mode_ = new QLabel(tr("Ces param\350tres s'appliqueront d\350s la prochaine ouverture d'un \351diteur de sch\351mas."));
 	
 	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
-	integrate_elements_ = new QCheckBox(tr("Int\351grer automatiquement les \351l\351ments dans les projets (recommand\351)"), elements_management_);
+	integrate_elements_ = new QCheckBox(tr("Int\351grer automatiquement les \351l\351ments dans les projets (recommand\351)"));
+	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les \351l\351ments fraichement int\351gr\351s", "configuration option"));
 	default_element_infos_label_ = new QLabel(
 		tr(
 			"Chaque \351l\351ment embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. "
@@ -136,6 +138,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	}
 	
 	integrate_elements_ -> setChecked(integrate_elements);
+	highlight_integrated_elements_ -> setChecked(highlight_integrated_elements);
 	default_element_infos_textfield_ -> setPlainText(default_element_informations);
 	
 	QVBoxLayout *appearance_layout = new QVBoxLayout();
@@ -150,6 +153,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	
 	QVBoxLayout *elements_management_layout = new QVBoxLayout();
 	elements_management_layout -> addWidget(integrate_elements_);
+	elements_management_layout -> addWidget(highlight_integrated_elements_);
 	elements_management_layout -> addWidget(default_element_infos_label_);
 	elements_management_layout -> addWidget(default_element_infos_textfield_);
 	elements_management_ -> setLayout(elements_management_layout);
@@ -192,6 +196,7 @@ void GeneralConfigurationPage::applyConf() {
 	settings.setValue("diagrameditor/viewmode", view_mode) ;
 	
 	settings.setValue("diagrameditor/integrate-elements", integrate_elements_ -> isChecked());
+	settings.setValue("diagrameditor/highlight-integrated-elements", highlight_integrated_elements_ -> isChecked());
 	settings.setValue("elementeditor/default-informations", default_element_infos_textfield_ -> toPlainText());
 }
 
