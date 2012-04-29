@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس طردي (NO)</name>
         <name lang="en">Centrifugal contact (No)</name>
         <name lang="fr">Contact centrifuge (No)</name>
         <name lang="pl">Łącznik odśrodkowy (zestyk zwierny)</name>
