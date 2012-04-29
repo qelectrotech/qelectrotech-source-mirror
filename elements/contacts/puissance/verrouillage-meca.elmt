@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dnny">
     <names>
+        <name lang="ar">قفل ميكانيكي</name>
         <name lang="en">Mechanical lock</name>
         <name lang="fr">Verrouillage Mécannique</name>
         <name lang="pl">Blokada mechaniczna</name>
