@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس فصل (NC) يُفتح ويُغلق بتأخير</name>
         <name lang="en">Simple contact (NC / switch-off/on delay timer)</name>
         <name lang="fr">Contact temporise au travail et au repos (NF)</name>
         <name lang="pl">Zesty rozwierny działający z opóźnieniem przy uruchamianiu i powrocie</name>
