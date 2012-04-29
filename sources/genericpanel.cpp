@@ -984,6 +984,15 @@ QList<ElementsLocation> GenericPanel::elementIntegrated(QETProject *project, con
 	if (added_locations.count()) {
 		refreshElementsCategory(loc);
 	}
+	
+	// Since we have refreshed the panel before the element is actually used by
+	// the diagram, it will appear as unused; we force it as unused.
+	// FIXME a better solution would be to get warned when an element gets used
+	// or unused.
+	if (QTreeWidgetItem *integrated_element_qtwi = itemForElementsLocation(location)) {
+		integrated_element_qtwi -> setToolTip(0, location.toString());
+		integrated_element_qtwi -> setBackground(0, QBrush());
+	}
 	return(added_locations);
 }
 
