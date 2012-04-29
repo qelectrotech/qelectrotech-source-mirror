@@ -1,14 +1,15 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مصباح</name>
+        <name lang="de">Leuchte</name>
         <name lang="ru">Лампа</name>
         <name lang="pt">Lâmpada</name>
         <name lang="en">Light</name>
+        <name lang="it">Luce</name>
         <name lang="fr">Lampe</name>
         <name lang="pl">Lampa</name>
         <name lang="es">Lámpara</name>
         <name lang="cs">Světlo</name>
-        <name lang="de">Leuchte</name>
-        <name lang="it">Luce</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="ar">محوّل D yn</name>
         <name lang="en">Transformer D Yn</name>
         <name lang="fr">Transformateur D Yn</name>
         <name lang="pl">Transformator Dyn</name>

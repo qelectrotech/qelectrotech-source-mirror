@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="ar">محوّل مثلثي نجمي Dy</name>
         <name lang="en">transformeur delta-star</name>
         <name lang="fr">Transformateur triangle étoile</name>
         <name lang="pl">Transformator Dy</name>

@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="ar">بطارية خليّة واحدة</name>
         <name lang="en">Battery one element</name>
         <name lang="fr">Pile 1 élément</name>
         <name lang="pl">Ogniwo elektrochemiczne</name>

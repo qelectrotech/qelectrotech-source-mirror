@@ -1,16 +1,17 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="ar">مُحوّل نجمي-مثلثي Yd</name>
         <name lang="de">Drehstromtransformator</name>
-        <name lang="en"> Three-phase transformer, connec-
-tion star-delta
+        <name lang="en"> Three-phase transformer, connec-&#xd;
+tion star-delta&#xd;
 </name>
-        <name lang="it">Trasformatore trifase, collegamen-to stella-triangolo
+        <name lang="it">Trasformatore trifase, collegamen-to stella-triangolo&#xd;
 </name>
         <name lang="fr">Transformateur étoile triangle</name>
         <name lang="pl">Transformator Yd</name>
         <name lang="cs">Třífázový transformátor, spojení do trojúhelníkové hvězdy (Yd)</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <circle x="-10" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>

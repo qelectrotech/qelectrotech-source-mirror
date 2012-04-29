@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="ar">مُحوّل ثلاثي الأوجه بملفات ثانوية مزدوجة نجمي-نجمي-مثلثي</name>
         <name lang="de">Drehstromtransformator, Stern/Stern/Dreieckschaltung</name>
         <name lang="en">Transformateur 2 secondaires étoile-étoile-triangle</name>
         <name lang="it">Trasformatore trifase a tre avvolgi- menti, collegamento stella-stel- la-triangolo</name>

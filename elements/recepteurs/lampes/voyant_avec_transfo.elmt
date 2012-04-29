@@ -1,10 +1,11 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مصباح بمُحوّل</name>
         <name lang="en">Light with transformer</name>
+        <name lang="it">Luce con trasformatore</name>
         <name lang="fr">Voyant avec transfo</name>
         <name lang="pl">Wskaźnik optyczny transformatorowy</name>
         <name lang="cs">Světlo s transformátorem (elektrickým měničem)</name>
-        <name lang="it">Luce con trasformatore</name>
     </names>
     <informations></informations>
     <description>

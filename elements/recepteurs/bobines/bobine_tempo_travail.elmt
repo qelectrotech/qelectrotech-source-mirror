@@ -1,7 +1,8 @@
 <definition width="80" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
-        <name lang="de">elektromechanischer Antrieb mit
-Ansprechverzögerung
+        <name lang="ar">ملف مُؤقت مع تاخير الإستجابة</name>
+        <name lang="de">elektromechanischer Antrieb mit&#xd;
+Ansprechverzögerung&#xd;
 </name>
         <name lang="ru">Обмотка</name>
         <name lang="en">Coil</name>
