@@ -1,5 +1,6 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="40" type="element" orientation="dnny">
     <names>
+        <name lang="ar">دايود نفقي</name>
         <name lang="de">Tunneldiode
 </name>
         <name lang="en">Tunnel diode</name>

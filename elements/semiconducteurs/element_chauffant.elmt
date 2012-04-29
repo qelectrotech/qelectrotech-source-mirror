@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">عنصر تسخين</name>
         <name lang="de">Heizelement
 </name>
         <name lang="en">Heating element</name>

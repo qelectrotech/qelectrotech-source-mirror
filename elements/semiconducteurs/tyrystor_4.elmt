@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="ar">ثايريستور</name>
         <name lang="de">Thyristortriode</name>
         <name lang="en">Triode thyristor</name>
         <name lang="it">Tiristore triodo</name>

@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
+        <name lang="ar">ثايريستور رباعي الأطراف مكبوح في الإنحياز العكسي</name>
         <name lang="de">rückwärts sperrende Thyristortetriode
 </name>
         <name lang="en">Reverse blocking thyristor tetrode

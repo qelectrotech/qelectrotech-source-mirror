@@ -1,12 +1,13 @@
 <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">ملف حثّي بقلب حديدي</name>
         <name lang="en">Self</name>
         <name lang="it">Induttanza</name>
         <name lang="fr">Inductance</name>
         <name lang="pl">Dławik</name>
         <name lang="cs">Tlumivka</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <input x="14.5" y="4.3333" size="9" rotate="true" text="_"/>
