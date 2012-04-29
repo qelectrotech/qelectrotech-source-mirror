@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">زرّ ضاغط مُضيئ</name>
         <name lang="en">Illuminated Push-button</name>
         <name lang="fr">Bouton poussoir lumineux</name>
         <name lang="pl">Łącznik przyciskowy podświetlony</name>

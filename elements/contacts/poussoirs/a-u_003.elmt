@@ -1,11 +1,11 @@
-<definition width="60" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">زرّ توقيف طارئ</name>
         <name lang="en">Push-button</name>
         <name lang="fr">Arret d`urgence</name>
         <name lang="pl">Łącznik przyciskowy, odblokowywany przez pociągnięcie (przycisk bezpieczeństwa), </name>
     </names>
-        <name lang="cs">Nouzové zastavení</name>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon x4="-7" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="4" x1="-7" y2="4" x2="-4" y3="-4" x3="-4" y4="-4"/>

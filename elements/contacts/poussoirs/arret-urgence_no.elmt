@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">زرّ توقف طارئ (NF)</name>
         <name lang="de">Druckknopf</name>
         <name lang="ru">Кнопка (НР)</name>
         <name lang="en">Push-button</name>

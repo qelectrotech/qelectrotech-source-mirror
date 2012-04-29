@@ -1,5 +1,6 @@
 <definition width="80" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">زرّ توقف طارئ - فتح بالدوران</name>
         <name lang="en">Emergency turn stop deverouiller</name>
         <name lang="fr">Arrêt d'urgence - Tourner déverrouiller</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
