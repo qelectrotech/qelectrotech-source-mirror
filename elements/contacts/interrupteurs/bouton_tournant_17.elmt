@@ -1,11 +1,12 @@
-<definition width="90" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">زرّ دوّار ب 3 وضعيات و استردادين إلى المركز</name>
         <name lang="en">Selector switch 3-position 2 spring return to centre</name>
         <name lang="fr">Bouton tournant 3 positions 2 rappels au centre</name>
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej z samoczynnym powrotem</name>
         <name lang="cs">Otočný přepínač se 3 pevnými polohami, otevřený v prostřední poloze se samočinným navrácením</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="0.5" antialias="true" end1="none" end2="simple" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-4" x1="0" y2="-5" x2="2"/>

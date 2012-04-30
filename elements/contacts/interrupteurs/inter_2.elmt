@@ -1,14 +1,15 @@
-<definition width="50" version="0.22" hotspot_x="10" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح بوضعين</name>
+        <name lang="de">Schalter 2 Positionen</name>
         <name lang="ru">Переключатель 2-х позиционный</name>
         <name lang="pt">Interruptor 2 posições</name>
         <name lang="en">Switch 2 positions</name>
+        <name lang="it">Interruttore 2 posizioni</name>
         <name lang="fr">Interrupteur 2 positions</name>
         <name lang="pl">Zestyk przełączny przerwowy</name>
         <name lang="es">Interruptor 2 posiciones</name>
         <name lang="cs">Dvoupolohový spínač</name>
-        <name lang="de">Schalter 2 Positionen</name>
-        <name lang="it">Interruttore 2 posizioni</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

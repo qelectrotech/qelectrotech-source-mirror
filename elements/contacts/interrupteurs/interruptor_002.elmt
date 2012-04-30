@@ -1,5 +1,6 @@
-<definition width="90" version="0.22" hotspot_x="40" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="40" hotspot_y="35" height="50" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح دوّار 1-0-2</name>
         <name lang="en">Switch 3 positions including neutral</name>
         <name lang="fr">Interrupteur rotatif 1-0-2</name>
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej, uruchamiany kluczykiem</name>

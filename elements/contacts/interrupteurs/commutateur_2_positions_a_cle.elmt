@@ -1,5 +1,6 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">بدّال بوضعين و بمفتاح</name>
         <name lang="en">2 position key switch</name>
         <name lang="fr">Commutateur a 2 positions à clé</name>
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>

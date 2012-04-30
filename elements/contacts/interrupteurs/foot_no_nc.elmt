@@ -1,5 +1,6 @@
 <definition width="80" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مفتاح بدوّاسة (NO/NC)</name>
         <name lang="en">Foot Switch (NO / NC)</name>
         <name lang="fr">Interrupteur a pedale (NO/NC)</name>
         <name lang="pl">Łącznik wielozestykowy napędzany nogą</name>

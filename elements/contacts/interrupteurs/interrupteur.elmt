@@ -1,14 +1,15 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مفتاح</name>
+        <name lang="de">Schalter</name>
         <name lang="ru">Переключатель</name>
         <name lang="pt">Interruptor</name>
         <name lang="en">Switch</name>
+        <name lang="it">Interruttore</name>
         <name lang="fr">Interrupteur</name>
         <name lang="pl">Łącznik</name>
         <name lang="es">Interruptor</name>
         <name lang="cs">Spínač</name>
-        <name lang="de">Schalter</name>
-        <name lang="it">Interruttore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
