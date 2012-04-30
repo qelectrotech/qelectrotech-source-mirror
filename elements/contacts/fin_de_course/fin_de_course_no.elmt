@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مفتاح نهاية مشوار (NO)</name>
         <name lang="de">Grenzschalter</name>
         <name lang="ru">Концевой контакт (НР)</name>
         <name lang="pt">Fim de curso (NO)</name>
