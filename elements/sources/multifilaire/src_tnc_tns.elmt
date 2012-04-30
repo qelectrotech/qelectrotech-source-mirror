@@ -1,5 +1,6 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">نقطة توزيع TN-C &lt; TN-S </name>
         <name lang="de">Netz TNC > TNS</name>
         <name lang="ru">Распределительный пункт TN-C >TN-S</name>
         <name lang="en">Distribution point TN-C >TN-S</name>

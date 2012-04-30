@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="50" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">مصدر ثلاثي القطبيّة</name>
         <name lang="de">Drehstrom</name>
         <name lang="ru">Трёхполюсный</name>
         <name lang="pt">Fonte tripolar</name>
@@ -10,7 +11,7 @@
         <name lang="es">Fuente tripolar</name>
         <name lang="cs">Třípólový zdroj</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>

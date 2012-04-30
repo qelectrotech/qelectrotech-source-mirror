@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="50" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">مصدر وحيد القطبية + أرضي PE + محايد N</name>
         <name lang="de">Wechselstrom + PE +N</name>
         <name lang="ru">Однополюсный + PE +N</name>
         <name lang="en">Single-pole source + PE +N</name>
