@@ -108,13 +108,13 @@
         <translation>© 2006-2012 Die Entwickler von QElectroTech</translation>
     </message>
     <message>
-        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</source>
-        <comment>about tab, contact line</comment>
-        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org</translation>
-    </message>
-    <message>
         <source>Collection d&apos;éléments</source>
         <translation></translation>
+    </message>
+    <message>
+        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
+        <comment>about tab, contact line</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -451,9 +451,9 @@
         <translation>Neue Farbe der Verbindung wählen</translation>
     </message>
     <message>
-        <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutantdes éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
+        <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation></translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1289,6 +1289,11 @@ Die Änderungen sind endgültig.</translation>
         <source>Général</source>
         <comment>configuration page title</comment>
         <translation>Allgemein</translation>
+    </message>
+    <message>
+        <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
+        <comment>configuration option</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
