@@ -49,7 +49,7 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	
 	QString whatsthis = tr(
 		"Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant"
-		"des éléments et en posant des conducteurs entre leurs bornes. Il est"
+		" des éléments et en posant des conducteurs entre leurs bornes. Il est"
 		" également possible d'ajouter des textes indépendants.",
 		"\"What's this?\" tip"
 	);
