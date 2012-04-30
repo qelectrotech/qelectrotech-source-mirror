@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مرجع الصفحة التالية</name>
         <name lang="en">Next folio</name>
         <name lang="fr">Reference folio suivant</name>
         <name lang="pl">Wyjście adresowe</name>
