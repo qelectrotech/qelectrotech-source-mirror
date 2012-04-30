@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مفتاح بسيط (محمي)</name>
         <name lang="de">Kontakt einfach (wasserdicht)</name>
         <name lang="ru">Герметичный контакт (НР)</name>
         <name lang="pt">Contacto simples NO (NO / resistente à água)</name>
