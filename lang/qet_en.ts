@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This is the area in which you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="187"/>
@@ -1566,7 +1566,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Highlight freshly integrated elements in the panel</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
