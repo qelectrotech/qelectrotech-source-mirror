@@ -1,5 +1,6 @@
-<definition width="110" version="0.22" hotspot_x="65" hotspot_y="85" height="140" type="element" orientation="dyyy">
+<definition width="110" version="0.3" hotspot_x="65" hotspot_y="85" height="140" type="element" orientation="dyyy">
     <names>
+        <name lang="en">JMO stove</name>
         <name lang="fr">Poele Jmo</name>
         <name lang="pl">Piec</name>
         <name lang="cs">Kamna</name>

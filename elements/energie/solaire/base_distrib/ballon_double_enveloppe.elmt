@@ -1,5 +1,6 @@
-<definition width="100" version="0.22" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
+        <name lang="en">C jacketed flask</name>
         <name lang="fr">C ballon double enveloppe</name>
         <name lang="pl">C zasobnik z podwójnym płaszczem</name>
         <name lang="cs">C zásobník s dvojitým pláštěm</name>

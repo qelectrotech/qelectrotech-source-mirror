@@ -1,5 +1,6 @@
-<definition width="100" version="0.22" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
+        <name lang="en">D ball and baffles</name>
         <name lang="fr">D ballon et chicanes</name>
         <name lang="pl">D zasobnik z przegrodami</name>
         <name lang="cs">D zásobník s přehradami</name>

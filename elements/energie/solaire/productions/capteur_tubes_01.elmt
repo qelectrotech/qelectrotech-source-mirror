@@ -1,5 +1,6 @@
-<definition width="160" version="0.22" hotspot_x="45" hotspot_y="25" height="100" type="element" orientation="dyyy">
+<definition width="160" version="0.3" hotspot_x="45" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Tube collectors</name>
         <name lang="fr">capteurs à tube</name>
         <name lang="pl">Kolektory</name>
         <name lang="cs">Kolektory</name>

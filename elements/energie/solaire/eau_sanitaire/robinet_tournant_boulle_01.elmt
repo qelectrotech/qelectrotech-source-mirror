@@ -1,6 +1,7 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Robinet tournant à boulle</name>
+        <name lang="en">Ball valve ball</name>
+        <name lang="fr">Robinet tournant à boule</name>
         <name lang="pl">Zawór kulowy</name>
         <name lang="cs">Kulový uzávěr</name>
     </names>

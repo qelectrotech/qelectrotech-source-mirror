@@ -1,5 +1,6 @@
-<definition width="100" version="0.22" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
+<definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
+        <name lang="en">A indirect exchange</name>
         <name lang="fr">A échange indirecte</name>
         <name lang="pl">A wymiennik pośredni</name>
         <name lang="cs">A nepřímý výměník A</name>

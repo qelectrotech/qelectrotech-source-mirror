@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Sanitary pump and valve</name>
         <name lang="fr">Circulateur Sanitaire et clapet</name>
         <name lang="pl">Pompa cyrkulacyjna CWU z zaworem zwrotnym</name>
         <name lang="cs">Sanitární cirkulační pumpa se zvratným uzávěrem</name>
