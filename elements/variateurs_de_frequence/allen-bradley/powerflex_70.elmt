@@ -1,9 +1,10 @@
-<definition width="520" version="0.22" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
+<definition width="520" version="0.3" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">POWERFLEX70</name>
         <name lang="en">POWERFLEX 70</name>
+        <name lang="it">POWERFLEX 70</name>
         <name lang="fr">POWERFLEX 70</name>
         <name lang="pl">POWERFLEX 70</name>
-        <name lang="it">POWERFLEX 70</name>
         <name lang="cs">POWERFLEX 70</name>
     </names>
     <informations></informations>

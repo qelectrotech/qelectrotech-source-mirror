@@ -1,9 +1,10 @@
-<definition width="400" version="0.22" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
+<definition width="400" version="0.3" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">FMV 1108</name>
         <name lang="en">FMV 1108</name>
+        <name lang="it">FMV 1108</name>
         <name lang="fr">FMV 1108</name>
         <name lang="pl">FMV 1108</name>
-        <name lang="it">FMV 1108</name>
         <name lang="cs">FMV 1108</name>
     </names>
     <informations></informations>

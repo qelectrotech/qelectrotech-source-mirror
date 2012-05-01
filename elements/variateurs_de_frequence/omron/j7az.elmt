@@ -1,9 +1,10 @@
-<definition width="390" version="0.22" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
+<definition width="390" version="0.3" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">J7AZ</name>
         <name lang="en">J7AZ</name>
+        <name lang="it">J7AZ</name>
         <name lang="fr">J7AZ</name>
         <name lang="pl">J7AZ</name>
-        <name lang="it">J7AZ</name>
         <name lang="cs">J7AZ</name>
     </names>
     <informations></informations>
