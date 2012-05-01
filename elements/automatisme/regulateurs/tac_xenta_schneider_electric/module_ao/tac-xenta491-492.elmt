@@ -1,15 +1,16 @@
 <definition width="400" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
     <names>
         <name lang="ar">TAC_Xenta_491_492</name>
+        <name lang="en">TAC Xenta 491 / 492</name>
         <name lang="fr">TAC_Xenta_491_492</name>
         <name lang="pl">TAC Xenta 491 / 492</name>
         <name lang="cs">TAC Xenta 491 / 492</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;
-Langue : Fr&#xd;
-&#xd;
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
-&#xd;
+    <informations>Auteur : C V C 71&#xd;&#xd;
+Langue : Fr&#xd;&#xd;
+&#xd;&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;
+&#xd;&#xd;
 Bonne utilisation !</informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="180" y2="0" x2="180"/>

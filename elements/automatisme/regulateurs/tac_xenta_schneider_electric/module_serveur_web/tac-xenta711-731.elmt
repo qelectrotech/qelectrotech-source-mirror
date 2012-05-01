@@ -1,17 +1,19 @@
 <definition width="440" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
     <names>
         <name lang="ar">TAC_Xenta_711_731</name>
+        <name lang="en">TAC Xenta 711 / 731</name>
         <name lang="fr">TAC_Xenta_711_731</name>
         <name lang="pl">TAC Xenta 711 / 731</name>
         <name lang="cs">TAC Xenta 711 / 731</name>
     </names>
-    <informations>Auteur : C V C 71&#xd;
-Langue : Fr&#xd;
-&#xd;
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
-&#xd;
+    <informations>Auteur : C V C 71&#xd;&#xd;
+Langue : Fr&#xd;&#xd;
+&#xd;&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;&#xd;
+&#xd;&#xd;
 Bonne utilisation !</informations>
     <description>
+        <rect width="440" x="0" y="0" antialias="false" height="170" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <text x="43" y="73" size="5" text="RS 232"/>
         <text x="68" y="92" size="4" text="B"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dotted;line-weight:normal;filling:none;color:black" y1="40" x1="370" y2="40" x2="390"/>
@@ -45,7 +47,6 @@ Bonne utilisation !</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="110" x1="330" y2="169" x2="330"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="420" y2="80" x2="416"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="50" y2="80" x2="46"/>
-        <rect width="440" x="0" y="0" antialias="false" height="170" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="390" y2="80" x2="394"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="80" x1="20" y2="80" x2="24"/>
         <rect width="440" x="0" y="60" antialias="false" height="50" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

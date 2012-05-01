@@ -1,15 +1,16 @@
 <definition width="260" version="0.3" hotspot_x="0" hotspot_y="0" height="170" type="element" orientation="dnnn">
     <names>
         <name lang="ar">Controlli_W500_TMB</name>
+        <name lang="en">Controlli_W500_TMB</name>
         <name lang="fr">Controlli_W500_TMB</name>
         <name lang="pl">Controlli_W500_TMB</name>
         <name lang="cs">Controlli_W500_TMB</name>
     </names>
-    <informations>Auteur : C V C 71
-Langue : Fr
-
-Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.
-
+    <informations>Auteur : C V C 71&#xd;
+Langue : Fr&#xd;
+&#xd;
+Cet élément est optimisé pour un folio de 15 colones X 50 px et de 6 lignes X 80 px.&#xd;
+&#xd;
 Bonne utilisation !</informations>
     <description>
         <rect width="120" x="70" y="50" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
