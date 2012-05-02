@@ -1,6 +1,7 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="ndny">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="ndny">
     <names>
-        <name lang="fr">purgeur</name>
+        <name lang="en">Trap</name>
+        <name lang="fr">Purgeur</name>
         <name lang="pl">Odpowietrznik</name>
         <name lang="cs">Vypouštěcí kohout</name>
     </names>

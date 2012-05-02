@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="50" height="100" type="element" orientation="dnnn">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="100" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Bottle self-emptying Guy Delsol</name>
         <name lang="fr">Bouteille auto-vidange Guy Delsol</name>
         <name lang="pl">Samoopróżniający się zasobnik Guy Delsol</name>
         <name lang="cs">Samočinně se vyprazdňující zásobník Guy Delsol</name>

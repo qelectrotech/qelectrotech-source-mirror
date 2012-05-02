@@ -1,5 +1,6 @@
-<definition width="60" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">ECS heater jacket</name>
         <name lang="fr">Réchauffeur ECS double enveloppe</name>
         <name lang="pl">Zasobnik z płaszczem CWU</name>
         <name lang="cs">Ohřívač s dvojitým pláštěm ECS</name>

@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Mixer 03 ECS</name>
         <name lang="fr">Mitigeur 03 ECS</name>
         <name lang="pl">Mieszacz CWU</name>
         <name lang="cs">Směšovač 03 ECS</name>

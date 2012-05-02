@@ -1,6 +1,7 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Vanne Pression Diférentielle</name>
+        <name lang="en">Differential Pressure Valve</name>
+        <name lang="fr">Vanne Pression Différentielle</name>
         <name lang="pl">Zawór różnicowy</name>
         <name lang="cs">Rozdílový uzávěr</name>
     </names>

@@ -1,5 +1,6 @@
-<definition width="60" version="0.22" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="ndny">
+<definition width="60" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="ndny">
     <names>
+        <name lang="en">ECS heater</name>
         <name lang="fr">Réchauffeur ECS</name>
         <name lang="pl">Ogrzewacz CWU</name>
         <name lang="cs">Ohřívač ECS</name>

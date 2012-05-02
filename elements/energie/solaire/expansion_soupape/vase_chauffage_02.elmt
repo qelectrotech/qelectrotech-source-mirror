@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="30" height="80" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="30" height="80" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Heating Vase 02</name>
         <name lang="fr">Vase Chauffage 02</name>
         <name lang="pl">Naczynie wzbiorcze</name>
         <name lang="cs">Nádoba, ohřívání 02</name>

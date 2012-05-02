@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="35" hotspot_y="35" height="60" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Thermostatic valve Recycling</name>
         <name lang="fr">Vanne de Recyclage Thermostatique</name>
         <name lang="pl">Zawór termostatyczny</name>
         <name lang="cs">Termostatický uzávěr</name>

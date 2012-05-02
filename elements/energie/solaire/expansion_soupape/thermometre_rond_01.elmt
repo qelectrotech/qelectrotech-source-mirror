@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="10" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Dial Thermometer</name>
         <name lang="fr">Thermomètre à cadran</name>
         <name lang="pl">Termometr</name>
         <name lang="cs">Teploměr s číselníkem</name>
