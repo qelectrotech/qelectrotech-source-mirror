@@ -1,6 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="15" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="ar">مُبدّل ذهاب-عودة</name>
+        <name lang="ar">مُبدّل وسط سلّم</name>
         <name lang="de">Kreuzschalter
 </name>
         <name lang="en">Intermediate switch
