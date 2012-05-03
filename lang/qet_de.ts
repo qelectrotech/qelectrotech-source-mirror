@@ -109,12 +109,12 @@
     </message>
     <message>
         <source>Collection d&apos;éléments</source>
-        <translation></translation>
+        <translation>Kollektion Elemente</translation>
     </message>
     <message>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -453,7 +453,7 @@
     <message>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dies ist die Zone in der Sie Ihre Schema gestalten können, Sie können Elemente hinzufügen und Kontakte mit Leitern verbinden. Es ist auch möglich, Text unabhängig hinzuzufügen.</translation>
     </message>
 </context>
 <context>
@@ -1293,7 +1293,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Entwickeln Sie in diesem Panel neu integierte Elemente</translation>
     </message>
 </context>
 <context>
