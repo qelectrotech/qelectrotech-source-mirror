@@ -1,9 +1,10 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="60" height="110" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">جدار تدفئة</name>
         <name lang="en">Wall heating</name>
         <name lang="fr">Mur chauffant</name>
-        <name lang="cs">Nástěnné topné těleso</name>
         <name lang="pl">Grzejnik ścienny</name>
+        <name lang="cs">Nástěnné topné těleso</name>
     </names>
     <informations></informations>
     <description>

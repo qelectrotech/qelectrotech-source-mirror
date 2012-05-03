@@ -1,5 +1,6 @@
 <definition width="60" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">راصد ضغط (بريسوستات) HP</name>
         <name lang="en">Pressostat HP</name>
         <name lang="fr">Pressostat HP</name>
         <name lang="pl">Presostat HP</name>

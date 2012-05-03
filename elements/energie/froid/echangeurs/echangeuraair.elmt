@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="60" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مُبادل هوائي</name>
         <name lang="en">Air heat exchanger</name>
         <name lang="fr">Echangeur à air</name>
         <name lang="pl">Wymiennik powietrza</name>

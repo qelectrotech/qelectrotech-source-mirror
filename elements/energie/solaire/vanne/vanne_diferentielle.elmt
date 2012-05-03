@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="ndny">
     <names>
+        <name lang="ar">صمّام ضغط تفاضلي</name>
         <name lang="en">Differential valve</name>
         <name lang="fr">Vanne différentielle</name>
-        <name lang="cs">Diferenciální ventil</name>
         <name lang="pl">Zawór różnicowy</name>
+        <name lang="cs">Diferenciální ventil</name>
     </names>
     <informations></informations>
     <description>

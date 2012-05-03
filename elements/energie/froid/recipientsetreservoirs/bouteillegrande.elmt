@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">قارورة كبيرة</name>
         <name lang="en">Large bottle</name>
         <name lang="fr">Bouteille grande</name>
         <name lang="pl">Duża butla</name>

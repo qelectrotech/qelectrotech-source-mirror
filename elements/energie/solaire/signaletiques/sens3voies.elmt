@@ -1,8 +1,9 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">لافتة 3 مسارات</name>
         <name lang="fr">signalétique V3voies</name>
-        <name lang="cs">Označení směru</name>
         <name lang="pl">Oznaczenie kierunku</name>
+        <name lang="cs">Označení směru</name>
     </names>
     <informations></informations>
     <description>

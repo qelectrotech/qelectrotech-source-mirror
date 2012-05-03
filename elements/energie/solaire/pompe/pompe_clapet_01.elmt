@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مضخّة بصمّام</name>
         <name lang="en">Pump with Valve</name>
         <name lang="fr">Pompe avec Clapet</name>
         <name lang="pl">Pompa z zaworem zwrotnym</name>

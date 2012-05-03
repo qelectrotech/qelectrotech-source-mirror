@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="2" height="10" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="2" height="10" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">أنابيب شعريّة</name>
         <name lang="en">Capillary tubing</name>
         <name lang="fr">Capillaire</name>
         <name lang="pl">Kapilara</name>

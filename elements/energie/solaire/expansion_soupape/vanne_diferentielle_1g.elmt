@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">"صمّام ضغط" يسار</name>
         <name lang="en">Differential valve "left"</name>
         <name lang="fr">Vanne différentielle "gauche"</name>
         <name lang="pl">Zawór różnicowy</name>

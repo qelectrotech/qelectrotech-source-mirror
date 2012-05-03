@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">دش</name>
         <name lang="en">shower</name>
         <name lang="fr">Douche</name>
-        <name lang="cs">Sprcha</name>
         <name lang="pl">Prysznic</name>
+        <name lang="cs">Sprcha</name>
     </names>
     <informations></informations>
     <description>

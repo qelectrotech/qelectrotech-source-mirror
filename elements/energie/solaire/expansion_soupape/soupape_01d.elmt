@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">"صمّام أمان" يمين</name>
         <name lang="en">Safety Valve "right"</name>
         <name lang="fr">Soupape de Sécurité "droite"</name>
         <name lang="pl">Zawór bezpieczeństwa</name>

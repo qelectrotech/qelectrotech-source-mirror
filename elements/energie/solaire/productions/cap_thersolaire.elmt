@@ -1,5 +1,6 @@
 <definition width="170" version="0.3" hotspot_x="60" hotspot_y="40" height="100" type="element" orientation="ndny">
     <names>
+        <name lang="ar">ألواح تسخين مياه بالطاقة الشمسية</name>
         <name lang="en">Solar water</name>
         <name lang="fr">Panneau solaire eau</name>
         <name lang="pl">Panele solarne</name>

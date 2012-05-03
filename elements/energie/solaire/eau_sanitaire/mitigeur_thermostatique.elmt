@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">صمّام خلط ترموستاتي ECS</name>
         <name lang="en">Thermostatic mixing valve ECS</name>
         <name lang="fr">Mitigeur thermostatique ECS</name>
-        <name lang="cs">Termostatický uzávěr ECS</name>
         <name lang="pl">Zawór termostatyczny CWU</name>
+        <name lang="cs">Termostatický uzávěr ECS</name>
     </names>
     <informations>Le mitigeur thermostatique posé en sortie de ballon permet de distribuer l'eau chaude sanitaire à une température constante.</informations>
     <description>

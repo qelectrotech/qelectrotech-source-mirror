@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مضخة صرف صحي</name>
         <name lang="en">Sanitary pump</name>
         <name lang="fr">Circulateur Sanitaire</name>
         <name lang="pl">Pompa cyrkulacyjna CWU</name>

@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مُخفّض ضغط الكتروني</name>
         <name lang="en">Electronic expansion valve</name>
         <name lang="fr">Détendeur électronique</name>
         <name lang="pl">Zaór elektroniczny</name>

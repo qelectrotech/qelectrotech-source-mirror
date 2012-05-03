@@ -1,9 +1,10 @@
 <definition width="60" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Disconnecteur "gauche"</name>
+        <name lang="ar">صمّام منع ارتجاع " يسار"</name>
         <name lang="en">Backflow</name>
-        <name lang="cs">Zpětný tok</name>
+        <name lang="fr">Disconnecteur "gauche"</name>
         <name lang="pl">Zawór odcinający powrót CWU</name>
+        <name lang="cs">Zpětný tok</name>
     </names>
     <informations></informations>
     <description>

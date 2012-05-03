@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="ndny">
     <names>
+        <name lang="ar">صمّام تفاضلي</name>
         <name lang="en">differential valve</name>
         <name lang="fr">Soupape différentielle</name>
-        <name lang="cs">Diferenciální ventil</name>
         <name lang="pl">Zawór różnicowy klapowy</name>
+        <name lang="cs">Diferenciální ventil</name>
     </names>
     <informations>ne pas confondre 
 soupape de pression différentielle

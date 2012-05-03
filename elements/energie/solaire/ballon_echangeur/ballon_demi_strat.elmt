@@ -1,10 +1,11 @@
 <definition width="150" version="0.3" hotspot_x="75" hotspot_y="125" height="260" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">خزّان تراتب</name>
         <name lang="en">Stratification storage tank 1000L</name>
         <name lang="fr">ballon 1000L chicane et strat</name>
-        <name lang="cs">Vrstvový zásobník 1000L</name>
         <name lang="pl">Zasobnik warstwowy 1000L</name>
-     </names>
+        <name lang="cs">Vrstvový zásobník 1000L</name>
+    </names>
     <informations></informations>
     <description>
         <input x="-25" y="73.5" size="9" rotate="true" text="2000L"/>

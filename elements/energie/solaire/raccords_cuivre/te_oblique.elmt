@@ -1,9 +1,10 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">رابط  T  بانحراف</name>
         <name lang="en">Ty crowbar</name>
         <name lang="fr">Té pied de biche</name>
-        <name lang="cs">Šikmý spojovací článek T</name>
         <name lang="pl">Złączka T</name>
+        <name lang="cs">Šikmý spojovací článek T</name>
     </names>
     <informations></informations>
     <description>

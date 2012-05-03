@@ -1,8 +1,9 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">سهم 4 طويل</name>
         <name lang="fr">fleche 4 long</name>
-        <name lang="cs">Směr 4 (dlouhá šipka)</name>
         <name lang="pl">Kierunek 4 (długa)</name>
+        <name lang="cs">Směr 4 (dlouhá šipka)</name>
     </names>
     <informations></informations>
     <description>

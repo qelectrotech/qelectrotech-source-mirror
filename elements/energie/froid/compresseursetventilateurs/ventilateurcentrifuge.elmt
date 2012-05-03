@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مروحة طرديّة</name>
         <name lang="en">Centrifugal fan</name>
         <name lang="fr">Ventilateur centrifuge</name>
         <name lang="pl">Wentylatot odsrodkowy</name>

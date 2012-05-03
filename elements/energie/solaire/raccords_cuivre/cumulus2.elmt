@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مُراكم كهربائي</name>
         <name lang="en">Electric cumulus</name>
         <name lang="fr">Cumulus electrique</name>
-        <name lang="cs">Elektrický ohřívač</name>
         <name lang="pl">Ogrzewacz elektryczny</name>
+        <name lang="cs">Elektrický ohřívač</name>
     </names>
     <informations></informations>
     <description>

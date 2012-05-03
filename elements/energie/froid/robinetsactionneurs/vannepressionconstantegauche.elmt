@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="16" hotspot_y="22" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="16" hotspot_y="22" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">صمّام بضغط ثابت (يسار)</name>
         <name lang="en">Constant pressure valve (left)</name>
         <name lang="fr">Vanne à pression constante (gauche)</name>
         <name lang="pl">Zawór stałego ćiśnienia (lewy)</name>

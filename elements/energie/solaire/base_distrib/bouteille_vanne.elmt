@@ -1,5 +1,6 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="40" height="80" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">اسطوانة و صمّام E</name>
         <name lang="en">E cylinder and valve</name>
         <name lang="fr">E bouteille et vanne</name>
         <name lang="pl">E zasobniki z zaworem</name>

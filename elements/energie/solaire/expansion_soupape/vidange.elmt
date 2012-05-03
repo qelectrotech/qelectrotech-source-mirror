@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">مجرى صرف</name>
         <name lang="en">Sewer drain</name>
         <name lang="fr">Vidange égout</name>
         <name lang="pl">Spust</name>
