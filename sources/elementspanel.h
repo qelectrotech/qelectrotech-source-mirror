@@ -99,11 +99,13 @@ class ElementsPanel : public GenericPanel {
 	virtual QList<ElementsLocation> elementIntegrated(QETProject *, const ElementsLocation &);
 	
 	private:
-	QTreeWidgetItem *addProject   (QETProject *);
-	QTreeWidgetItem *addCollection(ElementsCollection *);
-	QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false);
-	QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *,  PanelOptions, bool = false);
-	QTreeWidgetItem *updateElementItem         (QTreeWidgetItem *, ElementDefinition *, PanelOptions, bool = false);
+	virtual QTreeWidgetItem *addProject   (QETProject *);
+	virtual QTreeWidgetItem *addCollection(ElementsCollection *);
+	virtual QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false);
+	virtual QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false);
+	virtual QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *,  PanelOptions, bool = false);
+	virtual QTreeWidgetItem *updateElementsCollectionItem(QTreeWidgetItem *, ElementsCollection *,  PanelOptions, bool = false);
+	virtual QTreeWidgetItem *updateElementItem         (QTreeWidgetItem *, ElementDefinition *, PanelOptions, bool = false);
 	
 	// attributes
 	private:

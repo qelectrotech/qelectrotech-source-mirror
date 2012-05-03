@@ -430,17 +430,13 @@ QTreeWidgetItem *ElementsPanel::addProject(QETProject *project) {
 	
 	if (TitleBlockTemplatesCollection *tbt_collection = project -> embeddedTitleBlockTemplatesCollection()) {
 		if (QTreeWidgetItem *tbt_collection_qtwi = itemForTemplatesCollection(tbt_collection)) {
-			tbt_collection_qtwi -> setText(0, tr("Cartouches embarqués"));
-			tbt_collection_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection de cartouches embarqu\351e", "Status tip"));
-			
 			if (first_add) tbt_collection_qtwi -> setExpanded(true);
 		}
 	}
 	
 	if (ElementsCollection *elmt_collection = project -> embeddedCollection()) {
 		if (QTreeWidgetItem *elmt_collection_qtwi = itemForElementsCollection(elmt_collection)) {
-			elmt_collection_qtwi -> setText(0, tr("Collection embarquée"));
-			elmt_collection_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection d'\351l\351ments embarqu\351e", "Status tip"));
+
 			if (first_add) elmt_collection_qtwi -> setExpanded(true);
 		}
 	}
@@ -463,6 +459,15 @@ QTreeWidgetItem *ElementsPanel::addCollection(ElementsCollection *collection) {
 	PanelOptions options = GenericPanel::AddAllChild;
 	options |= GenericPanel::DisplayElementsPreview;
 	return(addElementsCollection(collection, invisibleRootItem(), options));
+}
+
+QTreeWidgetItem *ElementsPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
+	QTreeWidgetItem *tbtc_qtwi = GenericPanel::updateTemplatesCollectionItem(tbt_collection_qtwi, tbt_collection, options, freshly_created);
+	if (tbt_collection && tbt_collection -> parentProject()) {
+		tbtc_qtwi -> setText(0, tr("Cartouches embarqués"));
+		tbtc_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection de cartouches embarqu\351e", "Status tip"));
+	}
+	return(tbtc_qtwi);
 }
 
 QTreeWidgetItem *ElementsPanel::updateTemplateItem(QTreeWidgetItem *tb_template_qtwi, const TitleBlockTemplateLocation &tb_template, PanelOptions options, bool freshly_created) {
@@ -488,6 +493,15 @@ QTreeWidgetItem *ElementsPanel::updateElementsCategoryItem(QTreeWidgetItem *cate
 	);
 	emit(loadingProgressed(++ loading_progress_, -1));
 	return(item);
+}
+
+QTreeWidgetItem *ElementsPanel::updateElementsCollectionItem(QTreeWidgetItem *collection_qtwi, ElementsCollection *collection, PanelOptions options, bool freshly_created) {
+	QTreeWidgetItem *c_qtwi = GenericPanel::updateElementsCollectionItem(collection_qtwi, collection, options, freshly_created);
+	if (collection && collection -> project()) {
+		c_qtwi -> setText(0, tr("Collection embarquée"));
+		c_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection d'\351l\351ments embarqu\351e", "Status tip"));
+	}
+	return(c_qtwi);
 }
 
 QTreeWidgetItem *ElementsPanel::updateElementItem(QTreeWidgetItem *element_qtwi, ElementDefinition *element, PanelOptions options, bool freshly_created) {
