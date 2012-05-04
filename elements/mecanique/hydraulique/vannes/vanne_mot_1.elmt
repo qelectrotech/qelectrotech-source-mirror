@@ -1,8 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="20" height="50" type="element" orientation="dnnn">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="50" type="element" orientation="dnnn">
     <names>
-        <name lang="fr">Vanne - commande de la moteur</name>
+        <name lang="en">Motorized valve</name>
+        <name lang="fr">Vanne motorisée</name>
         <name lang="pl">Zawór zasuwowy odcinający sterowany silnikiem</name>
-        <name lang="cs" >Klapka řízená motorem</name>
+        <name lang="cs">Klapka řízená motorem</name>
     </names>
     <informations></informations>
     <description>

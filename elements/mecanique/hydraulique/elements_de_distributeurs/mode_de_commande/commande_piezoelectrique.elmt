@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="25" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="5" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Piezoelectric</name>
         <name lang="fr">Piézoélectrique</name>
         <name lang="pl">Piezoelektryczne</name>
         <name lang="cs">Piezoelektrické řízení</name>

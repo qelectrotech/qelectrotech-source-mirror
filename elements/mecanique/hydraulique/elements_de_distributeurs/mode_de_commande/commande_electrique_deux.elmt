@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Two electric coil</name>
         <name lang="fr">Electrique deux bobine</name>
         <name lang="pl">Elektryczne (dwie cewki)</name>
         <name lang="cs">Elektrické řízení (dvě cívky)</name>

@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Pedal two voices</name>
         <name lang="fr">Pédale deux voies</name>
         <name lang="pl">Pedał dwukierunkowy</name>
         <name lang="cs">Dvousměrový pedál</name>

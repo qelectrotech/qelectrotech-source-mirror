@@ -1,8 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnnn">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Valve - electromagnetic control</name>
         <name lang="fr">Vanne - commande électromagnétique</name>
         <name lang="pl">Zawór zasuwowy odcinający sterowany elektromagnetycznie</name>
-        <name lang="cs" >Klapka řízená elektromagnetem</name>
+        <name lang="cs">Klapka řízená elektromagnetem</name>
     </names>
     <informations></informations>
     <description>

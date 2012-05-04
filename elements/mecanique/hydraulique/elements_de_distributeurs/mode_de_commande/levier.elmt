@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Lever</name>
         <name lang="fr">Levier</name>
         <name lang="pl">Dźwignia</name>
         <name lang="cs">Páka</name>

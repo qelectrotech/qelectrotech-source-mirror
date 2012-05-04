@@ -1,6 +1,7 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">porte étiquette gauche/droite</name>
+        <name lang="en">Label holder left / right</name>
+        <name lang="fr">Porte étiquette gauche/droite</name>
         <name lang="pl">Prawo-lewo</name>
         <name lang="cs">Vpravo/Vlevo</name>
     </names>

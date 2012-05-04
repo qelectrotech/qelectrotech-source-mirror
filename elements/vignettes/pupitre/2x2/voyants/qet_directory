@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr">voyants</name>
+        <name lang="fr">Voyants</name>
+        <name lang="en">Lights</name>   
         <name lang="pl">Wskaźniki optyczne</name>
         <name lang="cs">Světelné signály</name>
     </names>

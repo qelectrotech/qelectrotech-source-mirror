@@ -1,5 +1,6 @@
 <definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Hydraulic transmission</name>
         <name lang="fr">Transmission hydraulique</name>
         <name lang="pl">Przekładnia hydrauliczna zwarta, o zmiennej prędkości, o jednym kierunku obrotów, z pompą o zmiennej objętości roboczej</name>
         <name lang="cs">Vodní převod</name>

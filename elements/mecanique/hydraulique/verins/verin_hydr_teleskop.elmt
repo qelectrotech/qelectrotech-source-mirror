@@ -1,6 +1,7 @@
-<definition width="90" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Verin hydraulique telscopique</name>
+        <name lang="en">Telescopic hydraulic cylinder</name>
+        <name lang="fr">Verin hydraulique telescopique</name>
         <name lang="pl">Cylinder (siłownik) teleskowpowy hydrauliczny dwustronnego działania</name>
         <name lang="cs">Zasouvací vodní válec</name>
     </names>

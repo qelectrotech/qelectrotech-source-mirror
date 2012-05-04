@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Control air pressure drop</name>
         <name lang="fr">Commande chute de pression d'air</name>
         <name lang="pl">Sterowane przez spadek ciśnienia</name>
         <name lang="cs">Řízeno úbytkem tlaku</name>

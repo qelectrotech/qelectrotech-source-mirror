@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Control air pressure</name>
         <name lang="fr">Commande pression de l'air</name>
         <name lang="pl">Sterowane za pomocą ciśnienia</name>
         <name lang="cs">Řízeno pomocí tlaku</name>

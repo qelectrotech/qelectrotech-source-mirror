@@ -1,5 +1,6 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Pump hydraulic motor 3</name>
         <name lang="fr">Pompe-moteur hydraulique 3</name>
         <name lang="pl">Pompa-silnik hydrauliczny o jednym kierunku przepływu, o stałej objętości roboczej i o jednym kierunku obrotów</name>
         <name lang="cs">Čerpadlo - vodní motor 3</name>

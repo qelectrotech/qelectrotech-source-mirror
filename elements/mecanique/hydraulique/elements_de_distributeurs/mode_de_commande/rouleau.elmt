@@ -1,5 +1,6 @@
-<definition width="30" version="0.22" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Roll</name>
         <name lang="fr">Rouleau</name>
         <name lang="pl">Rolka</name>
         <name lang="cs">Kolečko</name>

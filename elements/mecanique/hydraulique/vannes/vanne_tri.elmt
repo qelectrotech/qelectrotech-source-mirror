@@ -1,8 +1,9 @@
-<definition width="50" version="0.22" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnnn">
+<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="en">Three-way valve</name>
         <name lang="fr">Vanne trois voies</name>
         <name lang="pl">Zawór trójdrogowy</name>
-        <name lang="cs" >Trojcestná klapka</name>
+        <name lang="cs">Trojcestná klapka</name>
     </names>
     <informations></informations>
     <description>

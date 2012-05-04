@@ -1,5 +1,6 @@
-<definition width="70" version="0.22" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="en">hydraulic cylinder 2</name>
         <name lang="fr">Verin hydraulique 2</name>
         <name lang="pl">Siłownik hydrauliczny dwustronnego działania, nastawialny z hamowaniem jednostronnym</name>
         <name lang="cs">Vodní válec 2</name>

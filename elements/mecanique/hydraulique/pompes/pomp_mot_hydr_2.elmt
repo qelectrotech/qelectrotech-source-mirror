@@ -1,5 +1,6 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Pump hydraulic motor 2</name>
         <name lang="fr">Pompe-moteur hydraulique 2</name>
         <name lang="pl">Pompa-silnik hydrauliczny o zmiennym kierunku przepływu, o zmiennej objętości roboczej z odprowadzeniem przecieków, sterowany siłą mięśni, o dwóch kierunkach obrotów</name>
         <name lang="cs">Čerpadlo - vodní motor 2</name>

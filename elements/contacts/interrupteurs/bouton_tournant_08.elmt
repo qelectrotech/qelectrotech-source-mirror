@@ -1,6 +1,7 @@
 <definition width="100" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">زرّ دواّار بوضعين إسترداد من اليمين إلى اليسار, سحب المفتاح إلى اليسار</name>
+        <name lang="en">Knob 2 position spring return from right to left, key withdrawal left</name>
         <name lang="fr">Bouton tournant 2 positions à rappel de droite à gauche, retrait de la clé à gauche</name>
         <name lang="pl">Łącznik obrotowy przełączny z samoczynnym powrotem, uruchamiany kluczykiem</name>
         <name lang="cs">Otočný přepínač s 2 polohami se samočinným navrácením, uvedený do provozu klíčkem</name>

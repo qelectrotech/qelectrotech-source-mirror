@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr">boutons</name>
+        <name lang="fr">Boutons</name>
+        <name lang="en">Buttons</name>
         <name lang="pl">Przyciski</name>
         <name lang="cs">Tlačítka</name>
     </names>

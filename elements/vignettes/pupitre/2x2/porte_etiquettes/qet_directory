@@ -1,6 +1,7 @@
 <qet-directory>
     <names>
-        <name lang="fr">porte étiquettes</name>
+        <name lang="fr">Porte étiquettes</name>
+        <name lang="en">Door labels</name>
         <name lang="pl">Etykiety</name>
         <name lang="cs">Štítky</name>
     </names>

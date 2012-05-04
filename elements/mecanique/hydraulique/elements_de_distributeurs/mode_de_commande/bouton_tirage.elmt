@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Print button</name>
         <name lang="fr">Tirage bouton</name>
         <name lang="pl">Przycisk wyciągany</name>
         <name lang="cs">Tahové tlačítko</name>

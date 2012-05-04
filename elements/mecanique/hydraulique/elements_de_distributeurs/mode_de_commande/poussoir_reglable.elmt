@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="10" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Push adjustable length</name>
         <name lang="fr">Poussoir longueur réglable</name>
         <name lang="pl">Popychacz z nastawną długością</name>
         <name lang="cs">Táhlo s nastavitelnou délkou</name>

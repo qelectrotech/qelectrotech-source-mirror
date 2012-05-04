@@ -1,6 +1,7 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">bouton poussoir</name>
+        <name lang="en">Pushbutton</name>
+        <name lang="fr">Bouton poussoir</name>
         <name lang="pl">Przycisk</name>
         <name lang="cs">Tlačítko</name>
     </names>

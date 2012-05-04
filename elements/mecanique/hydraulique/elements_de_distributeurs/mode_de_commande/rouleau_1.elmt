@@ -1,5 +1,6 @@
-<definition width="40" version="0.22" hotspot_x="30" hotspot_y="10" height="30" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="30" hotspot_y="10" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Roll unidirectional</name>
         <name lang="fr">Rouleau unidirectionnel</name>
         <name lang="pl">Rolka jednokierunkowa</name>
         <name lang="cs">Jednosměrné kolečko</name>

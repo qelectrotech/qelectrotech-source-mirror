@@ -1,5 +1,6 @@
-<definition width="50" version="0.22" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="35" hotspot_y="5" height="20" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Increase in air pressure</name>
         <name lang="fr">Augmentation de la pression de l'air</name>
         <name lang="pl">Sterowane przez wzrost ciśnienia</name>
         <name lang="cs">Řízeno nárůstem tlaku</name>
