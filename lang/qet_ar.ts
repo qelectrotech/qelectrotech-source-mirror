@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>في هذه المنطقة تحتفظون بمخططاتكم للإضافة إليها عناصر أخرى و لوضع موصلات بين أطرافها. كما يُمكنكم إضافة نصوص مستقلّة.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="75"/>
@@ -1603,7 +1603,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>إبراز العناصر المُدمجة حديثا في اللوحة</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
@@ -5086,11 +5086,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5098,11 +5093,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
