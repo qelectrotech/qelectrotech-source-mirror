@@ -474,7 +474,8 @@
         <location filename="../sources/diagramview.cpp" line="879"/>
         <source>Folio : %1
 </source>
-        <translation>Folha : %1¶</translation>
+        <translation>Folha : %1
+</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="881"/>
@@ -5573,7 +5574,7 @@ O que deseja fazer?</translation>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation>As seguintes variáveis podem ser usadas no campo Folha:
+        <translation>As seguintes variáveis podem ser usadas no campo Folha :
   - %id: o corrente número do esquema no projecto
   - %total: o número total de esquemas do projecto</translation>
     </message>
@@ -5640,7 +5641,7 @@ O que deseja fazer?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="359"/>
         <source>Folio : </source>
-        <translation>Folha :</translation>
+        <translation>Folha : </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="394"/>
