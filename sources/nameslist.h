@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -37,6 +37,9 @@ class NamesList {
 	private:
 	QHash<QString, QString> hash_names;
 	
+	public:
+	static int MetaTypeId;
+	
 	// methodes
 	public:
 	// methodes relatives a la gestion de la liste
@@ -53,7 +56,11 @@ class NamesList {
 	QString name(const QString & = QString()) const;
 	
 	// methodes relatives a XML
-	void fromXml(const QDomElement &);
-	QDomElement toXml(QDomDocument &) const;
+	void fromXml(const QDomElement &, const QHash<QString, QString> & = QHash<QString, QString>());
+	QDomElement toXml(QDomDocument &, const QHash<QString, QString> & = QHash<QString, QString>()) const;
+	
+	protected:
+	QHash<QString, QString> getXmlOptions(const QHash<QString, QString> & = QHash<QString, QString>()) const;
 };
+Q_DECLARE_METATYPE(NamesList);
 #endif

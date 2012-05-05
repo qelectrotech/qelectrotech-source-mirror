@@ -1,0 +1,14 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Light</name>
+        <name lang="fr">Voyant</name>
+        <name lang="pl">Lampka sygnalizacyjna</name>
+        <name lang="cs">Světelný signál</name>
+    </names>
+    <informations></informations>
+    <description>
+        <arc width="28" x="-14" y="-14" antialias="true" height="28" style="line-style:normal;line-weight:thin;filling:none;color:black" start="0" angle="-270"/>
+        <circle x="-20" y="-20" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="40"/>
+        <circle x="-22" y="-22" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="44"/>
+    </description>
+</definition>

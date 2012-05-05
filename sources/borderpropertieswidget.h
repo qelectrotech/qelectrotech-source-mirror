@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -24,7 +24,7 @@ class QSpinBox;
 /**
 	Cette classe represente un widget permettant d'editer les dimensions et les
 	options d'affichage d'un schema, cartouche non inclus.
-	@see InsetPropertiesWidget
+	@see TitleBlockPropertiesWidget
 */
 class BorderPropertiesWidget : public QWidget {
 	Q_OBJECT

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -35,8 +35,9 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	
 	// style
 	style = new QButtonGroup(this);
-	style -> addButton(normal_style = new QRadioButton(tr("Normal", "element part line style")),       CustomElementGraphicPart::NormalStyle);
-	style -> addButton(dashed_style = new QRadioButton(tr("Pointill\351", "element part line style")), CustomElementGraphicPart::DashedStyle);
+	style -> addButton(normal_style = new QRadioButton(tr("Normal",       "element part line style")), CustomElementGraphicPart::NormalStyle);
+	style -> addButton(dashed_style = new QRadioButton(tr("Tiret",        "element part line style")), CustomElementGraphicPart::DashedStyle);
+	style -> addButton(dotted_style = new QRadioButton(tr("Pointill\351", "element part line style")), CustomElementGraphicPart::DottedStyle);
 	normal_style -> setChecked(true);
 	
 	// epaisseur
@@ -66,14 +67,15 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	color_layout -> addWidget(black_color);
 	color_layout -> addWidget(white_color);
 	color_layout -> addStretch();
-	main_layout -> addItem(color_layout);
+	main_layout -> addLayout(color_layout);
 	
 	QHBoxLayout *style_layout = new QHBoxLayout();
 	style_layout -> addWidget(new QLabel(tr("Style : ")));
 	style_layout -> addWidget(normal_style);
 	style_layout -> addWidget(dashed_style);
+	style_layout -> addWidget(dotted_style);
 	style_layout -> addStretch();
-	main_layout -> addItem(style_layout);
+	main_layout -> addLayout(style_layout);
 	
 	QHBoxLayout *weight_layout = new QHBoxLayout();
 	weight_layout -> addWidget(new QLabel(tr("\311paisseur : ")));
@@ -81,7 +83,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	weight_layout -> addWidget(thin_weight);
 	weight_layout -> addWidget(normal_weight);
 	weight_layout -> addStretch();
-	main_layout -> addItem(weight_layout);
+	main_layout -> addLayout(weight_layout);
 	
 	main_layout -> addWidget(new QLabel("<u>" + tr("Remplissage :") + "</u> "));
 	
@@ -90,7 +92,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_layout -> addWidget(black_filling);
 	filling_layout -> addWidget(white_filling);
 	filling_layout -> addStretch();
-	main_layout -> addItem(filling_layout);
+	main_layout -> addLayout(filling_layout);
 	
 	main_layout -> addStretch();
 	
@@ -123,15 +125,15 @@ void StyleEditor::updatePart() {
 }
 
 /// Met a jour l'antialiasing et cree un objet d'annulation
-void StyleEditor::updatePartAntialiasing()   { addChangePartCommand("style antialiasing", part, "antialias",   antialiasing -> isChecked()); }
+void StyleEditor::updatePartAntialiasing()   { addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked()); }
 /// Met a jour la couleur du trait et cree un objet d'annulation
-void StyleEditor::updatePartColor()          { addChangePartCommand("style couleur",      part, "color",       color -> checkedId());        }
+void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       color -> checkedId());        }
 /// Met a jour le style du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineStyle()      { addChangePartCommand("style ligne",        part, "line-style",  style -> checkedId());        }
+void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  style -> checkedId());        }
 /// Met a jour l'epaisseur du trait et cree un objet d'annulation
-void StyleEditor::updatePartLineWeight()     { addChangePartCommand("style epaisseur",    part, "line-weight", weight -> checkedId());       }
+void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", weight -> checkedId());       }
 /// Met a jour la couleur de fond et cree un objet d'annulation
-void StyleEditor::updatePartFilling()        { addChangePartCommand("style remplissage",  part, "filling",     filling -> checkedId());      }
+void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling -> checkedId());      }
 
 /**
 	Met a jour le formulaire d'edition

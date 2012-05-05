@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,10 +21,15 @@
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
 #include "elementscollectionitem.h"
+#include "elementscollectioncache.h"
 #include "fileelementscollection.h"
+#include "titleblocktemplate.h"
+#include "qettemplateeditor.h"
 #include "qetproject.h"
+#include "qtextorientationspinboxwidget.h"
 #include "recentfiles.h"
 #include "qeticons.h"
+#include "templatescollection.h"
 #include <cstdlib>
 #include <iostream>
 #define QUOTE(x) STRINGIFY(x)
@@ -33,17 +38,24 @@
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 QString QETApp::common_elements_dir = QString();
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+QString QETApp::common_tbt_dir_ = QString();
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 QString QETApp::config_dir = QString();
 #endif
 QString QETApp::lang_dir = QString();
 FileElementsCollection *QETApp::common_collection = 0;
 FileElementsCollection *QETApp::custom_collection = 0;
+TitleBlockTemplatesFilesCollection *QETApp::common_tbt_collection_;
+TitleBlockTemplatesFilesCollection *QETApp::custom_tbt_collection_;
+ElementsCollectionCache *QETApp::collections_cache_ = 0;
 QMap<uint, QETProject *> QETApp::registered_projects_ = QMap<uint, QETProject *>();
 uint QETApp::next_project_id = 0;
 RecentFiles *QETApp::projects_recent_files_ = 0;
 RecentFiles *QETApp::elements_recent_files_ = 0;
 AboutQET *QETApp::about_dialog_ = 0;
+TitleBlockTemplate *QETApp::default_titleblock_template_ = 0;
 
 /**
 	Constructeur
@@ -88,6 +100,19 @@ QETApp::QETApp(int &argc, char **argv) :
 	setQuitOnLastWindowClosed(false);
 	connect(this, SIGNAL(lastWindowClosed()), this, SLOT(checkRemainingWindows()));
 	
+	setSplashScreenStep(tr("Chargement... Initialisation du cache des collections d'\351l\351ments", "splash screen caption"));
+	if (!collections_cache_) {
+		QString cache_path = QETApp::configDir() + "/elements_cache.sqlite";
+		collections_cache_ = new ElementsCollectionCache(cache_path, this);
+		collections_cache_ -> setLocale(QLocale::system().name().left(2)); // @todo we need a unique function to get the good language
+	}
+	
+	// loads known collections into memory (this does not include items rendering made in elements panels)
+	setSplashScreenStep(tr("Chargement... Lecture des collections d'\351l\351ments", "splash screen caption"));
+	foreach(ElementsCollection *collection, availableCollections()) {
+		collection -> reload();
+	}
+	
 	// on ouvre soit les fichiers passes en parametre soit un nouvel editeur de projet
 	if (qet_arguments_.files().isEmpty()) {
 		setSplashScreenStep(tr("Chargement... \311diteur de sch\351mas", "splash screen caption"));
@@ -112,6 +137,8 @@ QETApp::~QETApp() {
 	delete qsti;
 	delete custom_collection;
 	delete common_collection;
+	if (custom_tbt_collection_) delete custom_tbt_collection_;
+	if (common_tbt_collection_) delete common_tbt_collection_;
 }
 
 /**
@@ -128,10 +155,13 @@ QETApp *QETApp::instance() {
 void QETApp::setLanguage(const QString &desired_language) {
 	QString languages_path = languagesPath();
 	
-	// charge les eventuelles traductions pour la lib Qt
-	qtTranslator.load("qt_" + desired_language, languages_path);
+	// load Qt library translations
+	QString qt_l10n_path = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+	if (!qtTranslator.load("qt_" + desired_language, qt_l10n_path)) {
+		qtTranslator.load("qt_" + desired_language, languages_path);
+	}
 	installTranslator(&qtTranslator);
-	qDebug() << desired_language << languages_path;
+	
 	// charge les traductions pour l'application QET
 	if (!qetTranslator.load("qet_" + desired_language, languages_path)) {
 		// en cas d'echec, on retombe sur les chaines natives pour le francais
@@ -141,6 +171,19 @@ void QETApp::setLanguage(const QString &desired_language) {
 		}
 	}
 	installTranslator(&qetTranslator);
+	
+	QString ltr_special_string = tr(
+		"LTR",
+		"Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR"
+	);
+	if (ltr_special_string == "RTL") switchLayout(Qt::RightToLeft);
+}
+
+/**
+	Switches the application to the provided layout.
+*/
+void QETApp::switchLayout(Qt::LayoutDirection direction) {
+	setLayoutDirection(direction);
 }
 
 /**
@@ -158,7 +201,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 		case QSystemTrayIcon::DoubleClick:
 		case QSystemTrayIcon::Trigger:
 			// reduction ou restauration de l'application
-			fetchWindowStats(diagramEditors(), elementEditors());
+			fetchWindowStats(diagramEditors(), elementEditors(), titleBlockTemplateEditors());
 			if (every_editor_reduced) restoreEveryEditor(); else reduceEveryEditor();
 			break;
 		case QSystemTrayIcon::Unknown:
@@ -171,6 +214,7 @@ void QETApp::systray(QSystemTrayIcon::ActivationReason reason) {
 void QETApp::reduceEveryEditor() {
 	reduceDiagramEditors();
 	reduceElementEditors();
+	reduceTitleBlockTemplateEditors();
 	every_editor_reduced = true;
 }
 
@@ -178,27 +222,38 @@ void QETApp::reduceEveryEditor() {
 void QETApp::restoreEveryEditor() {
 	restoreDiagramEditors();
 	restoreElementEditors();
+	restoreTitleBlockTemplateEditors();
 	every_editor_reduced = false;
 }
 
 /// Reduit tous les editeurs de schemas dans le systray
 void QETApp::reduceDiagramEditors() {
-	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, false);
+	setMainWindowsVisible<QETDiagramEditor>(false);
 }
 
 /// Restaure tous les editeurs de schemas dans le systray
 void QETApp::restoreDiagramEditors() {
-	foreach(QETDiagramEditor *e, diagramEditors()) setMainWindowVisible(e, true);
+	setMainWindowsVisible<QETDiagramEditor>(true);
 }
 
 /// Reduit tous les editeurs d'element dans le systray
 void QETApp::reduceElementEditors() {
-	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, false);
+	setMainWindowsVisible<QETElementEditor>(false);
 }
 
 /// Restaure tous les editeurs d'element dans le systray
 void QETApp::restoreElementEditors() {
-	foreach(QETElementEditor *e, elementEditors()) setMainWindowVisible(e, true);
+	setMainWindowsVisible<QETElementEditor>(true);
+}
+
+/// Reduce all known template editors
+void QETApp::reduceTitleBlockTemplateEditors() {
+	setMainWindowsVisible<QETTitleBlockTemplateEditor>(false);
+}
+
+/// Restore all known template editors
+void QETApp::restoreTitleBlockTemplateEditors() {
+	setMainWindowsVisible<QETTitleBlockTemplateEditor>(true);
 }
 
 /// lance un nouvel editeur de schemas
@@ -217,7 +272,10 @@ void QETApp::newElementEditor() {
 ElementsCollection *QETApp::commonElementsCollection() {
 	if (!common_collection) {
 		common_collection = new FileElementsCollection(QETApp::commonElementsDir());
+		common_collection -> setTitle(tr("Collection QET"));
+		common_collection -> setIcon(QIcon(":/ico/16x16/qet.png"));
 		common_collection -> setProtocol("common");
+		common_collection -> setCache(collections_cache_);
 	}
 	return(common_collection);
 }
@@ -228,7 +286,10 @@ ElementsCollection *QETApp::commonElementsCollection() {
 ElementsCollection *QETApp::customElementsCollection() {
 	if (!custom_collection) {
 		custom_collection = new FileElementsCollection(QETApp::customElementsDir());
+		custom_collection -> setTitle(tr("Collection utilisateur"));
+		custom_collection -> setIcon(QIcon(":/ico/16x16/go-home.png"));
 		custom_collection -> setProtocol("custom");
+		custom_collection -> setCache(collections_cache_);
 	}
 	return(custom_collection);
 }
@@ -253,6 +314,74 @@ QList<ElementsCollection *> QETApp::availableCollections() {
 	}
 	
 	return(coll_list);
+}
+
+/**
+	@return the collection cache provided by the application itself.
+*/
+ElementsCollectionCache *QETApp::collectionCache() {
+	return(collections_cache_);
+}
+
+/**
+	@return the common title block templates collection, i.e. the one provided
+	by QElecrotTech
+*/
+TitleBlockTemplatesFilesCollection *QETApp::commonTitleBlockTemplatesCollection() {
+	if (!common_tbt_collection_) {
+		common_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::commonTitleBlockTemplatesDir());
+		common_tbt_collection_ -> setTitle(tr("Cartouches QET", "title of the title block templates collection provided by QElectroTech"));
+		common_tbt_collection_ -> setProtocol(QETAPP_COMMON_TBT_PROTOCOL);
+	}
+	return(common_tbt_collection_);
+}
+
+/**
+	@return the custom title block templates collection, i.e. the one managed
+	by the end user
+*/
+TitleBlockTemplatesFilesCollection *QETApp::customTitleBlockTemplatesCollection() {
+	if (!custom_tbt_collection_) {
+		custom_tbt_collection_ = new TitleBlockTemplatesFilesCollection(QETApp::customTitleBlockTemplatesDir());
+		custom_tbt_collection_ -> setTitle(tr("Cartouches utilisateur", "title of the user's title block templates collection"));
+		custom_tbt_collection_ -> setProtocol(QETAPP_CUSTOM_TBT_PROTOCOL);
+	}
+	return(custom_tbt_collection_);
+}
+
+/**
+	@return the list of all available title block tempaltes collections,
+	beginning with the common and custom ones, plus the projects-embedded ones.
+*/
+QList<TitleBlockTemplatesCollection *> QETApp::availableTitleBlockTemplatesCollections() {
+	QList<TitleBlockTemplatesCollection *> collections_list;
+	
+	collections_list << common_tbt_collection_;
+	collections_list << custom_tbt_collection_;
+	
+	foreach(QETProject *opened_project, registered_projects_) {
+		collections_list << opened_project -> embeddedTitleBlockTemplatesCollection();
+	}
+	
+	return(collections_list);
+}
+
+/**
+	@param protocol Protocol string
+	@return the templates collection matching the provided protocol, or 0 if none could be found
+*/
+TitleBlockTemplatesCollection *QETApp::titleBlockTemplatesCollection(const QString &protocol) {
+	if (protocol == QETAPP_COMMON_TBT_PROTOCOL) {
+		return(common_tbt_collection_);
+	} else if (protocol == QETAPP_CUSTOM_TBT_PROTOCOL) {
+		return(custom_tbt_collection_);
+	} else {
+		QETProject *project = QETApp::projectFromString(protocol);
+		if (project) {
+			return(project -> embeddedTitleBlockTemplatesCollection());
+		}
+	}
+	return(0);
 }
 
 /**
@@ -300,6 +429,36 @@ QString QETApp::customElementsDir() {
 }
 
 /**
+	@return the path of the directory containing the common title block
+	templates collection.
+*/
+QString QETApp::commonTitleBlockTemplatesDir() {
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	if (common_tbt_dir_ != QString()) return(common_tbt_dir_);
+#endif
+#ifndef QET_COMMON_TBT_PATH
+	// without any compile-time option, use the "titleblocks" directory next to the executable binary
+	return(QCoreApplication::applicationDirPath() + "/titleblocks/");
+#else
+	#ifndef QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+		// the compile-time option represents a usual path (be it absolute or relative)
+		return(QUOTE(QET_COMMON_TBT_PATH));
+	#else
+		// the compile-time option represents a path relative to the directory that contains the executable binary
+		return(QCoreApplication::applicationDirPath() + "/" + QUOTE(QET_COMMON_TBT_PATH));
+	#endif
+#endif
+}
+
+/**
+	@return the path of the directory containing the custom title block
+	templates collection.
+*/
+QString QETApp::customTitleBlockTemplatesDir() {
+	return(configDir() + "titleblocks/");
+}
+
+/**
 	Renvoie le dossier de configuration de QET, c-a-d le chemin du dossier dans
 	lequel QET lira les informations de configuration et de personnalisation
 	propres a l'utilisateur courant. Ce dossier est generalement
@@ -338,6 +497,10 @@ QString QETApp::realPath(const QString &sym_path) {
 		directory = commonElementsDir();
 	} else if (sym_path.startsWith("custom://")) {
 		directory = customElementsDir();
+	} else if (sym_path.startsWith(QETAPP_COMMON_TBT_PROTOCOL "://")) {
+		directory = commonTitleBlockTemplatesDir();
+	} else if (sym_path.startsWith(QETAPP_CUSTOM_TBT_PROTOCOL "://")) {
+		directory = customTitleBlockTemplatesDir();
 	} else return(QString());
 	return(directory + QDir::toNativeSeparators(sym_path.right(sym_path.length() - 9)));
 }
@@ -392,6 +555,20 @@ void QETApp::overrideCommonElementsDir(const QString &new_ced) {
 	if (new_ced_info.isDir()) {
 		common_elements_dir = new_ced_info.absoluteFilePath();
 		if (!common_elements_dir.endsWith("/")) common_elements_dir += "/";
+	}
+}
+#endif
+
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+/**
+	Define the path of the directory containing the common title block
+	tempaltes collection.
+*/
+void QETApp::overrideCommonTitleBlockTemplatesDir(const QString &new_ctbtd) {
+	QFileInfo new_ctbtd_info(new_ctbtd);
+	if (new_ctbtd_info.isDir()) {
+		common_tbt_dir_ = new_ctbtd_info.absoluteFilePath();
+		if (!common_tbt_dir_.endsWith("/")) common_tbt_dir_ += "/";
 	}
 }
 #endif
@@ -472,19 +649,20 @@ bool QETApp::closeEveryEditor() {
 	La famille "Sans Serif" est utilisee par defaut mais peut etre surchargee
 	dans la configuration (diagramfont).
 */
-QFont QETApp::diagramTextsFont(int size) {
+QFont QETApp::diagramTextsFont(qreal size) {
 	// acces a la configuration de l'application
 	QSettings &qet_settings = QETApp::settings();
 	
 	// police a utiliser pour le rendu de texte
 	QString diagram_texts_family = qet_settings.value("diagramfont", "Sans Serif").toString();
-	int     diagram_texts_size   = qet_settings.value("diagramsize", 9).toInt();
+	qreal diagram_texts_size     = qet_settings.value("diagramsize", 9.0).toDouble();
 	
-	if (size != -1) {
+	if (size != -1.0) {
 		diagram_texts_size = size;
 	}
-	QFont diagram_texts_font = QFont(diagram_texts_family, diagram_texts_size);
-	if (diagram_texts_size <= 4) {
+	QFont diagram_texts_font = QFont(diagram_texts_family);
+	diagram_texts_font.setPointSizeF(diagram_texts_size);
+	if (diagram_texts_size <= 4.0) {
 		diagram_texts_font.setWeight(QFont::Light);
 	}
 	return(diagram_texts_font);
@@ -494,15 +672,78 @@ QFont QETApp::diagramTextsFont(int size) {
 	@return les editeurs de schemas
 */
 QList<QETDiagramEditor *> QETApp::diagramEditors() {
-	return(static_cast<QETApp *>(qApp) -> detectDiagramEditors());
+	return(QETApp::instance() -> detectWindows<QETDiagramEditor>());
 }
 
 /**
 	@return les editeurs d'elements
 */
 QList<QETElementEditor *> QETApp::elementEditors() {
-	return(static_cast<QETApp *>(qApp) -> detectElementEditors());
+	return(QETApp::instance() -> detectWindows<QETElementEditor>());
 }
+
+/**
+	@return the title block template editors
+*/
+QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors() {
+	return(QETApp::instance() -> detectWindows<QETTitleBlockTemplateEditor>());
+}
+
+/**
+	@param project Opened project object.
+	@return the list of title block template editors which are currently
+	editing a template embedded within \a project.
+*/
+QList<QETTitleBlockTemplateEditor *> QETApp::titleBlockTemplateEditors(QETProject *project) {
+	QList<QETTitleBlockTemplateEditor *> editors;
+	if (!project) return(editors);
+	
+	// foreach known template editor
+	foreach (QETTitleBlockTemplateEditor *tbt_editor, titleBlockTemplateEditors()) {
+		if (tbt_editor -> location().parentProject() == project) {
+			editors << tbt_editor;
+		}
+	}
+	
+	return(editors);
+}
+
+/**
+	Instancie un QTextOrientationSpinBoxWidget et configure :
+	  * sa police de caracteres
+	  * ses chaines de caracteres
+	A noter que la suppression du widget ainsi alloue est a la charge de
+	l'appelant.
+	@return un QTextOrientationSpinBoxWidget adapte pour une utilisation
+	"directe" dans QET.
+	@see QTextOrientationSpinBoxWidget
+*/
+QTextOrientationSpinBoxWidget *QETApp::createTextOrientationSpinBoxWidget() {
+	QTextOrientationSpinBoxWidget *widget = new QTextOrientationSpinBoxWidget();
+	widget -> orientationWidget() -> setFont(QETApp::diagramTextsFont());
+	widget -> orientationWidget() -> setUsableTexts(QList<QString>()
+		<< QETApp::tr("Q",            "Single-letter example text - translate length, not meaning")
+		<< QETApp::tr("QET",          "Small example text - translate length, not meaning")
+		<< QETApp::tr("Schema",       "Normal example text - translate length, not meaning")
+		<< QETApp::tr("Electrique",   "Normal example text - translate length, not meaning")
+		<< QETApp::tr("QElectroTech", "Long example text - translate length, not meaning")
+	);
+	return(widget);
+}
+
+/**
+	@return the default titleblock template for diagrams
+*/
+TitleBlockTemplate *QETApp::defaultTitleBlockTemplate() {
+	if (!QETApp::default_titleblock_template_) {
+		TitleBlockTemplate *titleblock_template = new TitleBlockTemplate(QETApp::instance());
+		if (titleblock_template -> loadFromXmlFile(":/titleblocks/default.titleblock")) {
+			QETApp::default_titleblock_template_ = titleblock_template;
+		}
+	}
+	return(default_titleblock_template_);
+}
+
 
 /**
 	@param project un projet
@@ -536,28 +777,29 @@ void QETApp::cleanup() {
 	qsti -> hide();
 }
 
-/// @return les editeurs de schemas ouverts
-QList<QETDiagramEditor *> QETApp::detectDiagramEditors() const {
-	QList<QETDiagramEditor *> diagram_editors;
-	foreach(QWidget *qw, topLevelWidgets()) {
-		if (!qw -> isWindow()) continue;
-		if (QETDiagramEditor *de = qobject_cast<QETDiagramEditor *>(qw)) {
-			diagram_editors << de;
+/**
+	@param T a class inheriting QMainWindow
+	@return the list of windows of type T
+*/
+template <class T> QList<T *> QETApp::detectWindows() const {
+	QList<T *> windows;
+	foreach(QWidget *widget, topLevelWidgets()) {
+		if (!widget -> isWindow()) continue;
+		if (T *window = qobject_cast<T *>(widget)) {
+			windows << window;
 		}
 	}
-	return(diagram_editors);
+	return(windows);
 }
 
-/// @return les editeurs d'elements ouverts
-QList<QETElementEditor *> QETApp::detectElementEditors() const {
-	QList<QETElementEditor *> element_editors;
-	foreach(QWidget *qw, topLevelWidgets()) {
-		if (!qw -> isWindow()) continue;
-		if (QETElementEditor *ee = qobject_cast<QETElementEditor *>(qw)) {
-			element_editors << ee;
-		}
+/**
+	@param T a class inheriting QMainWindow
+	@param visible whether detected main windows should be visible
+*/
+template <class T> void QETApp::setMainWindowsVisible(bool visible) {
+	foreach(T *e, detectWindows<T>()) {
+		setMainWindowVisible(e, visible);
 	}
-	return(element_editors);
 }
 
 /**
@@ -680,6 +922,7 @@ void QETApp::messageReceived(const QString &message) {
 void QETApp::openFiles(const QETArguments &args) {
 	openProjectFiles(args.projectFiles());
 	openElementFiles(args.elementFiles());
+	openTitleBlockTemplateFiles(args.titleBlockTemplateFiles());
 }
 
 /**
@@ -724,7 +967,7 @@ void QETApp::openProjectFiles(const QStringList &files_list) {
 
 /**
 	Ouvre les fichiers elements passes en parametre. Si un element est deja
-	ouvert, la fentre qui l'edite est activee.
+	ouvert, la fenetre qui l'edite est activee.
 	@param files_list Fichiers a ouvrir
 */
 void QETApp::openElementFiles(const QStringList &files_list) {
@@ -791,6 +1034,70 @@ void QETApp::openElementLocations(const QList<ElementsLocation> &locations_list)
 			// cet emplacement n'est ouvert dans aucun editeur
 			QETElementEditor *element_editor = new QETElementEditor();
 			element_editor -> fromLocation(element_location);
+		}
+	}
+}
+
+/**
+	Launch a new title block template editor to edit the given template
+	@param location location of the title block template to be edited
+	
+	@param duplicate if true, the template is opened for duplication, which means
+	the user will be prompter for a new template name.
+	@see QETTitleBlockTemplateEditor::setOpenForDuplication()
+*/
+void QETApp::openTitleBlockTemplate(const TitleBlockTemplateLocation &location, bool duplicate) {
+	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	qet_template_editor -> setOpenForDuplication(duplicate);
+	qet_template_editor -> edit(location);
+	qet_template_editor -> show();
+}
+
+/**
+	Launch a new title block template editor to edit the given template
+	@param filepath Path of the .titleblock file to be opened
+*/
+void QETApp::openTitleBlockTemplate(const QString &filepath) {
+	QETTitleBlockTemplateEditor *qet_template_editor = new QETTitleBlockTemplateEditor();
+	qet_template_editor -> edit(filepath);
+	qet_template_editor -> show();
+}
+
+/**
+	Open provided title block template files. If a title block template is already
+	opened, the adequate window is activated.
+	@param files_list Files to be opened
+*/
+void QETApp::openTitleBlockTemplateFiles(const QStringList &files_list) {
+	if (files_list.isEmpty()) return;
+	
+	// avoid duplicates in the provided files list
+	QSet<QString> files_set;
+	foreach (QString file, files_list) {
+		QString canonical_filepath = QFileInfo(file).canonicalFilePath();
+		if (!canonical_filepath.isEmpty()) files_set << canonical_filepath;
+	}
+	// here, we can assume all files in the set exist and are different
+	if (files_set.isEmpty()) return;
+	
+	// opened title block template editors
+	QList<QETTitleBlockTemplateEditor *> tbt_editors = titleBlockTemplateEditors();
+	
+	foreach(QString tbt_file, files_set) {
+		bool already_opened_in_existing_tbt_editor = false;
+		foreach(QETTitleBlockTemplateEditor *tbt_editor, tbt_editors) {
+			if (tbt_editor -> isEditing(tbt_file)) {
+				// this file is already opened
+				already_opened_in_existing_tbt_editor = true;
+				tbt_editor -> setVisible(true);
+				tbt_editor -> raise();
+				tbt_editor -> activateWindow();
+				break;
+			}
+		}
+		if (!already_opened_in_existing_tbt_editor) {
+			// this file is not opened yet
+			openTitleBlockTemplate(tbt_file);
 		}
 	}
 }
@@ -890,6 +1197,11 @@ void QETApp::parseArguments() {
 		overrideCommonElementsDir(qet_arguments_.commonElementsDir());
 	}
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	if (qet_arguments_.commonTitleBlockTemplatesDirSpecified()) {
+		overrideCommonTitleBlockTemplatesDir(qet_arguments_.commonTitleBlockTemplatesDir());
+	}
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	if (qet_arguments_.configDirSpecified()) {
 		overrideConfigDir(qet_arguments_.configDir());
@@ -967,6 +1279,7 @@ void QETApp::initStyle() {
 	Cette methode creera, si necessaire :
 	  * le dossier de configuration
 	  * le dossier de la collection perso
+	  * the directory for custom title blocks
 */
 void QETApp::initConfiguration() {
 	// cree les dossiers de configuration si necessaire
@@ -975,6 +1288,9 @@ void QETApp::initConfiguration() {
 	
 	QDir custom_elements_dir(QETApp::customElementsDir());
 	if (!custom_elements_dir.exists()) custom_elements_dir.mkpath(QETApp::customElementsDir());
+	
+	QDir custom_tbt_dir(QETApp::customTitleBlockTemplatesDir());
+	if (!custom_tbt_dir.exists()) custom_tbt_dir.mkpath(QETApp::customTitleBlockTemplatesDir());
 	
 	// lit le fichier de configuration
 	qet_settings = new QSettings(configDir() + "qelectrotech.conf", QSettings::IniFormat, this);
@@ -1002,6 +1318,8 @@ void QETApp::initSystemTray() {
 	restore_diagrams  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs de sch\351ma"),    this);
 	reduce_elements   = new QAction(QET::Icons::Hide,    tr("&Masquer tous les \351diteurs d'\351l\351ment"),   this);
 	restore_elements  = new QAction(QET::Icons::Restore,  tr("&Restaurer tous les \351diteurs d'\351l\351ment"), this);
+	reduce_templates  = new QAction(QET::Icons::Hide,      tr("&Masquer tous les \351diteurs de cartouche",   "systray submenu entry"), this);
+	restore_templates = new QAction(QET::Icons::Restore,   tr("&Restaurer tous les \351diteurs de cartouche", "systray submenu entry"), this);
 	new_diagram       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur de sch\351ma"),                 this);
 	new_element       = new QAction(QET::Icons::WindowNew, tr("&Nouvel \351diteur d'\351l\351ment"),              this);
 	
@@ -1016,6 +1334,8 @@ void QETApp::initSystemTray() {
 	connect(restore_diagrams, SIGNAL(triggered()), this, SLOT(restoreDiagramEditors()));
 	connect(reduce_elements,  SIGNAL(triggered()), this, SLOT(reduceElementEditors()));
 	connect(restore_elements, SIGNAL(triggered()), this, SLOT(restoreElementEditors()));
+	connect(reduce_templates, SIGNAL(triggered()), this, SLOT(reduceTitleBlockTemplateEditors()));
+	connect(restore_templates,SIGNAL(triggered()), this, SLOT(restoreTitleBlockTemplateEditors()));
 	connect(new_diagram,      SIGNAL(triggered()), this, SLOT(newDiagramEditor()));
 	connect(new_element,      SIGNAL(triggered()), this, SLOT(newElementEditor()));
 	
@@ -1027,6 +1347,55 @@ void QETApp::initSystemTray() {
 	qsti -> show();
 }
 
+/**
+	Add a list of \a windows to \a menu.
+	This template function assumes it will be given a QList of pointers to
+	objects inheriting the QMainWindow class.
+	@param T the class inheriting QMainWindow
+	@param menu the menu windows will be added to
+	@param windows A list of top-level windows.
+*/
+template <class T> void QETApp::addWindowsListToMenu(QMenu *menu, const QList<T *> &windows) {
+	menu -> addSeparator();
+	foreach (QMainWindow *window, windows) {
+		QAction *current_menu = menu -> addAction(window -> windowTitle());
+		current_menu -> setCheckable(true);
+		current_menu -> setChecked(window -> isVisible());
+		connect(current_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
+		signal_map.setMapping(current_menu, window);
+	}
+}
+
+/**
+	@param url The location of a collection item (title block template,
+	element, category, ...).
+	@return the id of the project mentionned in the URL, or -1 if none could be
+	found.
+*/
+int QETApp::projectIdFromString(const QString &url) {
+	QRegExp embedded("^project([0-9]+)\\+embed.*$", Qt::CaseInsensitive);
+	if (embedded.exactMatch(url)) {
+		bool conv_ok = false;
+		int project_id = embedded.capturedTexts().at(1).toInt(&conv_ok);
+		if (conv_ok) {
+			return(project_id);
+		}
+	}
+	return(-1);
+}
+
+/**
+	@param url The location of a collection item (title block template,
+	element, category, ...).
+	@return the project mentionned in the URL, or 0 if none could be
+	found.
+*/
+QETProject *QETApp::projectFromString(const QString &url) {
+	int project_id = projectIdFromString(url);
+	if (project_id == -1) return(0);
+	return(project(project_id));
+}
+
 /// construit le menu de l'icone dans le systray
 void QETApp::buildSystemTrayMenu() {
 	menu_systray -> clear();
@@ -1034,7 +1403,8 @@ void QETApp::buildSystemTrayMenu() {
 	// recupere les editeurs
 	QList<QETDiagramEditor *> diagrams = diagramEditors();
 	QList<QETElementEditor *> elements = elementEditors();
-	fetchWindowStats(diagrams, elements);
+	QList<QETTitleBlockTemplateEditor *> tbtemplates = titleBlockTemplateEditors();
+	fetchWindowStats(diagrams, elements, tbtemplates);
 	
 	// ajoute le bouton reduire / restaurer au menu
 	menu_systray -> addAction(every_editor_reduced ? restore_appli : reduce_appli);
@@ -1046,14 +1416,7 @@ void QETApp::buildSystemTrayMenu() {
 	diagrams_submenu -> addAction(new_diagram);
 	reduce_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_reduced);
 	restore_diagrams -> setEnabled(!diagrams.isEmpty() && !every_diagram_visible);
-	diagrams_submenu -> addSeparator();
-	foreach(QETDiagramEditor *diagram, diagrams) {
-		QAction *current_diagram_menu = diagrams_submenu -> addAction(diagram -> windowTitle());
-		current_diagram_menu -> setCheckable(true);
-		current_diagram_menu -> setChecked(diagram -> isVisible());
-		connect(current_diagram_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
-		signal_map.setMapping(current_diagram_menu, diagram);
-	}
+	addWindowsListToMenu<QETDiagramEditor>(diagrams_submenu, diagrams);
 	
 	// ajoute les editeurs d'elements au menu
 	QMenu *elements_submenu = menu_systray -> addMenu(tr("\311diteurs d'\351l\351ment"));
@@ -1063,13 +1426,15 @@ void QETApp::buildSystemTrayMenu() {
 	reduce_elements -> setEnabled(!elements.isEmpty() && !every_element_reduced);
 	restore_elements -> setEnabled(!elements.isEmpty() && !every_element_visible);
 	elements_submenu -> addSeparator();
-	foreach(QETElementEditor *element, elements) {
-		QAction *current_element_menu = elements_submenu -> addAction(element -> windowTitle());
-		current_element_menu -> setCheckable(true);
-		current_element_menu -> setChecked(element -> isVisible());
-		connect(current_element_menu, SIGNAL(triggered()), &signal_map, SLOT(map()));
-		signal_map.setMapping(current_element_menu, element);
-	}
+	addWindowsListToMenu<QETElementEditor>(elements_submenu, elements);
+	
+	// add title block template editors in a submenu
+	QMenu *tbtemplates_submenu = menu_systray -> addMenu(tr("\311diteurs de cartouche", "systray menu entry"));
+	tbtemplates_submenu -> addAction(reduce_templates);
+	tbtemplates_submenu -> addAction(restore_templates);
+	reduce_templates  -> setEnabled(!tbtemplates.isEmpty() && !every_template_reduced);
+	restore_templates -> setEnabled(!tbtemplates.isEmpty() && !every_template_visible);
+	addWindowsListToMenu<QETTitleBlockTemplateEditor>(tbtemplates_submenu, tbtemplates);
 	
 	// ajoute le bouton quitter au menu
 	menu_systray -> addSeparator();
@@ -1077,7 +1442,11 @@ void QETApp::buildSystemTrayMenu() {
 }
 
 /// Met a jour les booleens concernant l'etat des fenetres
-void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements) {
+void QETApp::fetchWindowStats(
+	const QList<QETDiagramEditor *> &diagrams,
+	const QList<QETElementEditor *> &elements,
+	const QList<QETTitleBlockTemplateEditor *> &tbtemplates
+) {
 	// compte le nombre de schemas visibles
 	int visible_diagrams = 0;
 	foreach(QMainWindow *w, diagrams) if (w -> isVisible()) ++ visible_diagrams;
@@ -1089,6 +1458,14 @@ void QETApp::fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const Q
 	foreach(QMainWindow *w, elements) if (w -> isVisible()) ++ visible_elements;
 	every_element_reduced = !visible_elements;
 	every_element_visible = visible_elements == elements.count();
+	
+	// count visible template editors
+	int visible_templates = 0;
+	foreach(QMainWindow *window, tbtemplates) {
+		if (window -> isVisible()) ++ visible_templates;
+	}
+	every_template_reduced = !visible_templates;
+	every_template_visible = visible_templates == tbtemplates.count();
 	
 	// determine si tous les elements sont reduits
 	every_editor_reduced = every_element_reduced && every_diagram_reduced;
@@ -1125,6 +1502,9 @@ void QETApp::printHelp() {
 		"  --license                     Afficher la licence\n")
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 		+ tr("  --common-elements-dir=DIR     Definir le dossier de la collection d'elements\n")
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+		+ tr("  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches\n")
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 		+ tr("  --config-dir=DIR              Definir le dossier de configuration\n")

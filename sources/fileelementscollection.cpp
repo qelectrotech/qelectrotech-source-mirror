@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,7 +30,6 @@ FileElementsCollection::FileElementsCollection(const QString &path, ElementsColl
 	protocol_ = "unknown";
 	project_ = 0;
 	root = 0;
-	reload();
 }
 
 /**
@@ -51,6 +50,7 @@ ElementsCategory *FileElementsCollection::rootCategory() {
 	Recharge l'arborescence des categories et elements.
 */
 void FileElementsCollection::reload() {
+	QMutexLocker reload_lock(&reload_mutex_);
 	// oublie l'arborescence precedente
 	deleteContent();
 	
@@ -121,5 +121,13 @@ bool FileElementsCollection::isWritable() {
 	@return toujours true
 */
 bool FileElementsCollection::write() {
+	return(true);
+}
+
+/**
+	@return always true, since a file-based elements collection can always be
+	cached.
+*/
+bool FileElementsCollection::isCacheable() const {
 	return(true);
 }

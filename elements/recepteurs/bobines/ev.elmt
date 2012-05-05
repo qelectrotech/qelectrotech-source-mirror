@@ -1,10 +1,11 @@
-<definition width="90" version="0.22" hotspot_x="0" hotspot_y="0" height="60" type="element" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="0" hotspot_y="0" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="de" >Magnetventil</name>
-        <name lang="en" >Solenoid valve</name> 
-        <name lang="fr" >Electrovanne</name>
-        <name lang="pl" >Elektrozawór</name>
-        <name lang="cs" >Elektrostavidlo</name>
+        <name lang="ar">صمّام كهربائي</name>
+        <name lang="de">Magnetventil</name>
+        <name lang="en">Solenoid valve</name>
+        <name lang="fr">Electrovanne</name>
+        <name lang="pl">Elektrozawór</name>
+        <name lang="cs">Elektrostavidlo</name>
     </names>
     <informations></informations>
     <description>
@@ -14,7 +15,7 @@
         <input x="40" y="47" size="4" rotate="true" text="A2"/>
         <input x="53" y="29.6667" size="8" rotate="true" text="YV_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="30" x1="13" y2="30" x2="20"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="7" y2="20" x2="17"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="7" y2="20" x2="17"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="40" x1="7" y2="40" x2="17"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="7" y2="40" x2="17"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="17" y2="40" x2="7"/>

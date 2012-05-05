@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,20 +21,20 @@
 #include "diagram.h"
 /**
 	Cette classe represente un champ de texte editable sur le schema.
+	Par defaut, les DiagramTextItem sont Selectable et Movable.
+	@see QGraphicsItem::GraphicsItemFlags
 */
 class DiagramTextItem : public QGraphicsTextItem {
 	Q_OBJECT
 	// constructeurs, destructeur
 	public:
-	DiagramTextItem(QGraphicsItem * = 0, QGraphicsScene * = 0);
-	DiagramTextItem(const QString &, QGraphicsItem * = 0, QGraphicsScene * = 0);
+	DiagramTextItem(QGraphicsItem * = 0, Diagram * = 0);
+	DiagramTextItem(const QString &, QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~DiagramTextItem();
 	
 	// attributs
 	public:
 	enum { Type = UserType + 1004 };
-	/// Texte precedent
-	QString previous_text;
 	
 	// methodes
 	public:
@@ -44,17 +44,25 @@ class DiagramTextItem : public QGraphicsTextItem {
 	*/
 	virtual int type() const { return Type; }
 	Diagram *diagram() const;
-	virtual void fromXml(const QDomElement &);
-	virtual QDomElement toXml(QDomDocument &) const;
+	virtual void fromXml(const QDomElement &) = 0;
+	virtual QDomElement toXml(QDomDocument &) const = 0;
 	virtual void setPos(const QPointF &);
 	virtual void setPos(qreal, qreal);
+	virtual QPointF pos() const;
+	qreal rotationAngle() const;
+	void setRotationAngle(const qreal &);
+	void rotateBy(const qreal &);
+	QPointF mapMovementToScene(const QPointF &) const;
+	QPointF mapMovementFromScene(const QPointF &) const;
+	QPointF mapMovementToParent(const QPointF &) const;
+	QPointF mapMovementFromParent(const QPointF &) const;
 	
 	protected:
+	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
+	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
-	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
-	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	virtual void applyRotation(const qreal &);
 	
 	// signaux
 	signals:
@@ -66,5 +74,12 @@ class DiagramTextItem : public QGraphicsTextItem {
 	// slots
 	public slots:
 	void setNonFocusable();
+	
+	// attributs prives
+	private:
+	/// Texte precedent
+	QString previous_text_;
+	/// angle de rotation du champ de texte
+	qreal rotation_angle_;
 };
 #endif

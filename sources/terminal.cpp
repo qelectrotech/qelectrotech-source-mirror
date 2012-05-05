@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,55 +22,45 @@
 #include "diagramcommands.h"
 #include "qetapp.h"
 
-QColor Terminal::couleur_neutre   = QColor(Qt::blue);
-QColor Terminal::couleur_autorise = QColor(Qt::darkGreen);
-QColor Terminal::couleur_prudence = QColor("#ff8000");
-QColor Terminal::couleur_interdit = QColor(Qt::red);
+QColor Terminal::neutralColor      = QColor(Qt::blue);
+QColor Terminal::allowedColor      = QColor(Qt::darkGreen);
+QColor Terminal::warningColor      = QColor("#ff8000");
+QColor Terminal::forbiddenColor    = QColor(Qt::red);
 const qreal Terminal::terminalSize = 4.0;
 
 /**
-	Fonction privee pour initialiser la borne.
+	Methode privee pour initialiser la borne.
 	@param pf  position du point d'amarrage pour un conducteur
 	@param o   orientation de la borne : Qt::Horizontal ou Qt::Vertical
 */
-void Terminal::initialise(QPointF pf, QET::Orientation o) {
+void Terminal::init(QPointF pf, QET::Orientation o) {
 	// definition du pount d'amarrage pour un conducteur
-	amarrage_conductor  = pf;
+	dock_conductor_  = pf;
 	
-	// definition de l'orientation de la terminal (par defaut : sud)
-	if (o < QET::North || o > QET::West) sens = QET::South;
-	else sens = o;
+	// definition de l'orientation de la borne (par defaut : sud)
+	if (o < QET::North || o > QET::West) ori_ = QET::South;
+	else ori_ = o;
 	
 	// calcul de la position du point d'amarrage a l'element
-	amarrage_elmt = amarrage_conductor;
-	switch(sens) {
-		case QET::North: amarrage_elmt += QPointF(0, Terminal::terminalSize);  break;
-		case QET::East : amarrage_elmt += QPointF(-Terminal::terminalSize, 0); break;
-		case QET::West : amarrage_elmt += QPointF(Terminal::terminalSize, 0);  break;
+	dock_elmt_ = dock_conductor_;
+	switch(ori_) {
+		case QET::North: dock_elmt_ += QPointF(0, Terminal::terminalSize);  break;
+		case QET::East : dock_elmt_ += QPointF(-Terminal::terminalSize, 0); break;
+		case QET::West : dock_elmt_ += QPointF(Terminal::terminalSize, 0);  break;
 		case QET::South:
-		default        : amarrage_elmt += QPointF(0, -Terminal::terminalSize);
+		default        : dock_elmt_ += QPointF(0, -Terminal::terminalSize);
 	}
 	
 	// par defaut : pas de conducteur
 	
 	// QRectF null
-	br = new QRectF();
-	terminal_precedente = NULL;
+	br_ = new QRectF();
+	previous_terminal_ = 0;
 	// divers
 	setAcceptsHoverEvents(true);
 	setAcceptedMouseButtons(Qt::LeftButton);
-	hovered = false;
+	hovered_ = false;
 	setToolTip(QObject::tr("Borne", "tooltip"));
-}
-
-/**
-	Constructeur par defaut
-*/
-Terminal::Terminal() :
-	QGraphicsItem(0, 0),
-	couleur_hovered(Terminal::couleur_neutre)
-{
-	initialise(QPointF(0.0, 0.0), QET::South);
 }
 
 /**
@@ -82,9 +72,10 @@ Terminal::Terminal() :
 */
 Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
-	couleur_hovered(Terminal::couleur_neutre)
+	parent_element_(e),
+	hovered_color_(Terminal::neutralColor)
 {
-	initialise(pf, o);
+	init(pf, o);
 }
 
 /**
@@ -97,9 +88,10 @@ Terminal::Terminal(QPointF pf, QET::Orientation o, Element *e, Diagram *s) :
 */
 Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagram *s) :
 	QGraphicsItem(e, s),
-	couleur_hovered(Terminal::couleur_neutre)
+	parent_element_(e),
+	hovered_color_(Terminal::neutralColor)
 {
-	initialise(QPointF(pf_x, pf_y), o);
+	init(QPointF(pf_x, pf_y), o);
 }
 
 /**
@@ -108,9 +100,8 @@ Terminal::Terminal(qreal pf_x, qreal pf_y, QET::Orientation o, Element *e, Diagr
 	associes.
 */
 Terminal::~Terminal() {
-	//qDebug() << "Terminal::~Terminal" << (void *)this;
-	foreach(Conductor *c, liste_conductors) delete c;
-	delete br;
+	foreach(Conductor *c, conductors_) delete c;
+	delete br_;
 }
 
 /**
@@ -125,15 +116,15 @@ QET::Orientation Terminal::orientation() const {
 		// orientations actuelle et par defaut de l'element
 		QET::Orientation ori_cur = elt -> orientation().current();
 		QET::Orientation ori_def = elt -> orientation().defaultOrientation();
-		if (ori_cur == ori_def) return(sens);
+		if (ori_cur == ori_def) return(ori_);
 		else {
 			// calcul l'angle de rotation implique par l'orientation de l'element parent
 			// angle de rotation de la borne sur la scene, divise par 90
-			int angle = ori_cur - ori_def + sens;
+			int angle = ori_cur - ori_def + ori_;
 			while (angle >= 4) angle -= 4;
 			return((QET::Orientation)angle);
 		}
-	} else return(sens);
+	} else return(ori_);
 }
 
 /**
@@ -152,7 +143,7 @@ bool Terminal::addConductor(Conductor *f) {
 	
 	// verifie que la borne n'est pas deja reliee avec l'autre borne
 	bool deja_liees = false;
-	foreach (Conductor* conductor, liste_conductors) {
+	foreach (Conductor* conductor, conductors_) {
 		if (conductor -> terminal1 == autre_terminal || conductor -> terminal2 == autre_terminal) deja_liees = true;
 	}
 	
@@ -160,7 +151,7 @@ bool Terminal::addConductor(Conductor *f) {
 	if (deja_liees) return(false);
 	
 	// sinon on ajoute le conducteur
-	liste_conductors.append(f);
+	conductors_.append(f);
 	return(true);
 }
 
@@ -169,10 +160,9 @@ bool Terminal::addConductor(Conductor *f) {
 	@param f Conducteur a enlever
 */
 void Terminal::removeConductor(Conductor *f) {
-	//qDebug() << "Terminal::removeConductor" << (void *)this;
-	int index = liste_conductors.indexOf(f);
+	int index = conductors_.indexOf(f);
 	if (index == -1) return;
-	liste_conductors.removeAt(index);
+	conductors_.removeAt(index);
 }
 
 /**
@@ -199,9 +189,7 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 				// orientations actuelle et par defaut de l'element
 				QET::Orientation ori_cur = elt -> orientation().current();
 				QET::Orientation ori_def = elt -> orientation().defaultOrientation();
-				applied_rotation = 90.0 * (ori_cur - ori_def);
-				while (applied_rotation < 360.0) applied_rotation += 360.0;
-				while (applied_rotation > 360.0) applied_rotation -= 360.0;
+				applied_rotation = QET::correctAngle(90.0 * (ori_cur - ori_def));
 			}
 			if (applied_rotation == 90.0) p -> translate(1.0, -1.0);
 			else if (applied_rotation == 180.0) p -> translate(-1.0, -1.0);
@@ -216,8 +204,8 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	p -> setRenderHint(QPainter::SmoothPixmapTransform, false);
 	
 	// on travaille avec les coordonnees de l'element parent
-	QPointF f = mapFromParent(amarrage_conductor);
-	QPointF e = mapFromParent(amarrage_elmt);
+	QPointF c = mapFromParent(dock_conductor_);
+	QPointF e = mapFromParent(dock_elmt_);
 	
 	QPen t;
 	t.setWidthF(1.0);
@@ -229,16 +217,16 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	// dessin de la borne en rouge
 	t.setColor(Qt::red);
 	p -> setPen(t);
-	p -> drawLine(f, e);
+	p -> drawLine(c, e);
 	
 	// dessin du point d'amarrage au conducteur en bleu
-	t.setColor(couleur_hovered);
+	t.setColor(hovered_color_);
 	p -> setPen(t);
-	p -> setBrush(couleur_hovered);
-	if (hovered) {
+	p -> setBrush(hovered_color_);
+	if (hovered_) {
 		p -> setRenderHint(QPainter::Antialiasing, true);
-		p -> drawEllipse(QRectF(f.x() - 2.5, f.y() - 2.5, 5.0, 5.0));
-	} else p -> drawPoint(f);
+		p -> drawEllipse(QRectF(c.x() - 2.5, c.y() - 2.5, 5.0, 5.0));
+	} else p -> drawPoint(c);
 	
 	p -> restore();
 }
@@ -247,26 +235,25 @@ void Terminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, QWidg
 	@return Le rectangle (en precision flottante) delimitant la borne et ses alentours.
 */
 QRectF Terminal::boundingRect() const {
-	if (br -> isNull()) {
-		qreal afx = amarrage_conductor.x();
-		qreal afy = amarrage_conductor.y();
-		qreal aex = amarrage_elmt.x();
-		qreal aey = amarrage_elmt.y();
-		QPointF origine;
-		origine = (afx <= aex && afy <= aey ? amarrage_conductor : amarrage_elmt);
-		origine += QPointF(-3.0, -3.0);
-		qreal w = qAbs((int)(afx - aex)) + 7;
-		qreal h = qAbs((int)(afy - aey)) + 7;
-		*br = QRectF(origine, QSizeF(w, h));
+	if (br_ -> isNull()) {
+		qreal dcx = dock_conductor_.x();
+		qreal dcy = dock_conductor_.y();
+		qreal dex = dock_elmt_.x();
+		qreal dey = dock_elmt_.y();
+		QPointF origin = (dcx <= dex && dcy <= dey ? dock_conductor_ : dock_elmt_);
+		origin += QPointF(-3.0, -3.0);
+		qreal w = qAbs((int)(dcx - dex)) + 7;
+		qreal h = qAbs((int)(dcy - dey)) + 7;
+		*br_ = QRectF(origin, QSizeF(w, h));
 	}
-	return(*br);
+	return(*br_);
 }
 
 /**
 	Gere l'entree de la souris sur la zone de la Borne.
 */
 void Terminal::hoverEnterEvent(QGraphicsSceneHoverEvent *) {
-	hovered = true;
+	hovered_ = true;
 	update();
 }
 
@@ -280,7 +267,7 @@ void Terminal::hoverMoveEvent(QGraphicsSceneHoverEvent *) {
 	Gere le fait que la souris sorte de la zone de la Borne.
 */
 void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
-	hovered = false;
+	hovered_ = false;
 	update();
 }
 
@@ -289,10 +276,10 @@ void Terminal::hoverLeaveEvent(QGraphicsSceneHoverEvent *) {
 	@param e L'evenement souris correspondant
 */
 void Terminal::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if (Diagram *s = diagram()) {
-		s -> setConductorStart(mapToScene(QPointF(amarrage_conductor)));
-		s -> setConductorStop(e -> scenePos());
-		s -> setConductor(true);
+	if (Diagram *d = diagram()) {
+		d -> setConductorStart(mapToScene(QPointF(dock_conductor_)));
+		d -> setConductorStop(e -> scenePos());
+		d -> setConductor(true);
 		//setCursor(Qt::CrossCursor);
 	}
 }
@@ -306,21 +293,21 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	//setCursor(Qt::CrossCursor);
 	
 	// d'un mouvement a l'autre, il faut retirer l'effet hover de la borne precedente
-	if (terminal_precedente != NULL) {
-		if (terminal_precedente == this) hovered = true;
-		else terminal_precedente -> hovered = false;
-		terminal_precedente -> couleur_hovered = terminal_precedente -> couleur_neutre;
-		terminal_precedente -> update();
+	if (previous_terminal_) {
+		if (previous_terminal_ == this) hovered_ = true;
+		else previous_terminal_ -> hovered_ = false;
+		previous_terminal_ -> hovered_color_ = previous_terminal_ -> neutralColor;
+		previous_terminal_ -> update();
 	}
 	
 	
-	Diagram *s = diagram();
-	if (!s) return;
+	Diagram *d = diagram();
+	if (!d) return;
 	// si la scene est un Diagram, on actualise le poseur de conducteur
-	s -> setConductorStop(e -> scenePos());
+	d -> setConductorStop(e -> scenePos());
 	
 	// on recupere la liste des qgi sous le pointeur
-	QList<QGraphicsItem *> qgis = s -> items(e -> scenePos());
+	QList<QGraphicsItem *> qgis = d -> items(e -> scenePos());
 	
 	/* le qgi le plus haut
 	   = le poseur de conductor
@@ -330,42 +317,27 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	*/
 	Q_ASSERT_X(!(qgis.isEmpty()), "Terminal::mouseMoveEvent", "La liste d'items ne devrait pas etre vide");
 	
-	// s'il y a autre chose que le poseur de conducteur dans la liste
-	if (qgis.size() > 1) {
-		// on prend le deuxieme element de la liste
-		QGraphicsItem *qgi = qgis.at(1);
-		// si le qgi est une borne...
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
-			// ...on lui applique l'effet hover approprie
-			if (p == this) {
-				// effet si l'on hover sur la borne de depart
-				couleur_hovered = couleur_interdit;
-			} else if (p -> parentItem() == parentItem()) {
-				// effet si l'on hover sur une borne du meme appareil
-				if (((Element *)parentItem()) -> internalConnections())
-					p -> couleur_hovered = p -> couleur_autorise;
-				else p -> couleur_hovered = p -> couleur_interdit;
-			} else if (p -> nbConductors()) {
-				// si la borne a deja un conducteur
-				// verifie que cette borne n'est pas deja reliee a l'autre borne
-				bool deja_reliee = false;
-				foreach (Conductor *f, liste_conductors) {
-					if (f -> terminal1 == p || f -> terminal2 == p) {
-						deja_reliee = true;
-						break;
-					}
-				}
-				// interdit si les bornes sont deja reliees, prudence sinon
-				p -> couleur_hovered = deja_reliee ? p -> couleur_interdit : p -> couleur_prudence;
-			} else {
-				// effet si on peut poser le conducteur
-				p -> couleur_hovered = p -> couleur_autorise;
-			}
-			terminal_precedente = p;
-			p -> hovered = true;
-			p -> update();
-		}
+	// s'il n'y rien d'autre que le poseur de conducteur dans la liste, on arrete la
+	if (qgis.size() <= 1) return;
+	
+	// sinon on prend le deuxieme element de la liste et on verifie s'il s'agit d'une borne
+	QGraphicsItem *qgi = qgis.at(1);
+	// si le qgi est une borne...
+	Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+	if (!other_terminal) return;
+	previous_terminal_ = other_terminal;
+	
+	// s'il s'agit d'une borne, on lui applique l'effet hover approprie
+	if (!canBeLinkedTo(other_terminal)) {
+		other_terminal -> hovered_color_ = forbiddenColor;
+	} else if (other_terminal -> conductorsCount()) {
+		other_terminal -> hovered_color_ = warningColor;
+	} else {
+		other_terminal -> hovered_color_ = allowedColor;
 	}
+	
+	other_terminal -> hovered_ = true;
+	other_terminal -> update();
 }
 
 /**
@@ -374,58 +346,84 @@ void Terminal::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 */
 void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 	//setCursor(Qt::ArrowCursor);
-	terminal_precedente = NULL;
-	couleur_hovered  = couleur_neutre;
+	previous_terminal_ = 0;
+	hovered_color_  = neutralColor;
 	// verifie que la scene est bien un Diagram
-	if (Diagram *s = diagram()) {
+	if (Diagram *d = diagram()) {
 		// on arrete de dessiner l'apercu du conducteur
-		s -> setConductor(false);
+		d -> setConductor(false);
 		// on recupere l'element sous le pointeur lors du MouseReleaseEvent
-		QGraphicsItem *qgi = s -> itemAt(e -> scenePos());
+		QGraphicsItem *qgi = d -> itemAt(e -> scenePos());
 		// s'il n'y a rien, on arrete la
 		if (!qgi) return;
 		// idem si l'element obtenu n'est pas une borne
-		Terminal *p = qgraphicsitem_cast<Terminal *>(qgi);
-		if (!p) return;
+		Terminal *other_terminal = qgraphicsitem_cast<Terminal *>(qgi);
+		if (!other_terminal) return;
 		// on remet la couleur de hover a sa valeur par defaut
-		p -> couleur_hovered = p -> couleur_neutre;
-		// idem s'il s'agit de la borne actuelle
-		if (p == this) return;
-		// idem s'il s'agit d'une borne de l'element actuel et que l'element n'a pas le droit de relier ses propres bornes
-		bool cia = ((Element *)parentItem()) -> internalConnections();
-		if (!cia) foreach(QGraphicsItem *item, parentItem() -> children()) if (item == p) return;
-		// derniere verification : verifier que cette borne n'est pas deja reliee a l'autre borne
-		foreach (Conductor *f, liste_conductors) if (f -> terminal1 == p || f -> terminal2 == p) return;
+		other_terminal -> hovered_color_ = neutralColor;
+		other_terminal -> hovered_ = false;
+		// on s'arrete la s'il n'est pas possible de relier les bornes
+		if (!canBeLinkedTo(other_terminal)) return;
 		// autrement, on pose un conducteur
-		Conductor * new_conductor = new Conductor(this, p);
-		new_conductor -> setProperties(s -> defaultConductorProperties);
-		s -> undoStack().push(new AddConductorCommand(s, new_conductor));
+		Conductor *new_conductor = new Conductor(this, other_terminal);
+		new_conductor -> setProperties(d -> defaultConductorProperties);
+		d -> undoStack().push(new AddConductorCommand(d, new_conductor));
 	}
 }
 
 /**
-	Met a jour l'eventuel conducteur relie a la Terminal.
+	Met a jour l'eventuel conducteur relie a la borne.
 	@param newpos Position de l'element parent a prendre en compte
 */
-void Terminal::updateConductor(QPointF newpos) {
+void Terminal::updateConductor() {
 	if (!scene() || !parentItem()) return;
-	foreach (Conductor *conductor, liste_conductors) {
+	foreach (Conductor *conductor, conductors_) {
 		if (conductor -> isDestroyed()) continue;
-		if (newpos == QPointF()) conductor -> update(QRectF());
-		else {
-			// determine la translation subie par l'element parent
-			QPointF translation = newpos - parentItem() -> pos();
-			// rafraichit le conducteur en tenant compte de la translation
-			conductor -> updateWithNewPos(QRectF(), this, amarrageConductor() + translation);
+		conductor -> updatePath();
+	}
+}
+
+/**
+	@param other_terminal Autre borne
+	@return true si cette borne est reliee a other_terminal, false sion
+*/
+bool Terminal::isLinkedTo(Terminal *other_terminal) {
+	if (other_terminal == this) return(false);
+	
+	bool already_linked = false;
+	foreach (Conductor *c, conductors_) {
+		if (c -> terminal1 == other_terminal || c -> terminal2 == other_terminal) {
+			already_linked = true;
+			break;
 		}
 	}
+	return(already_linked);
+}
+
+/**
+	@param other_terminal Autre borne
+	@return true si cette borne peut etre reliee a other_terminal, false sion
+*/
+bool Terminal::canBeLinkedTo(Terminal *other_terminal) {
+	if (other_terminal == this) return(false);
+	
+	// l'autre borne appartient-elle au meme element ?
+	bool same_element = other_terminal -> parentElement() == parentElement();
+	// les connexions internes sont-elles autorisees ?
+	bool internal_connections_allowed = parentElement() -> internalConnections();
+	// les deux bornes sont-elles deja liees ?
+	bool already_linked = isLinkedTo(other_terminal);
+	// la liaison des deux bornes est-elle interdite ?
+	bool link_forbidden = (same_element && !internal_connections_allowed) || already_linked;
+	
+	return(!link_forbidden);
 }
 
 /**
 	@return La liste des conducteurs lies a cette borne
 */
 QList<Conductor *> Terminal::conductors() const {
-	return(liste_conductors);
+	return(conductors_);
 }
 
 /**
@@ -435,9 +433,9 @@ QList<Conductor *> Terminal::conductors() const {
 */
 QDomElement Terminal::toXml(QDomDocument &doc) const {
 	QDomElement qdo = doc.createElement("terminal");
-	qdo.setAttribute("x", QString("%1").arg(amarrage_elmt.x()));
-	qdo.setAttribute("y",  QString("%1").arg(amarrage_elmt.y()));
-	qdo.setAttribute("orientation", sens);
+	qdo.setAttribute("x", QString("%1").arg(dock_elmt_.x()));
+	qdo.setAttribute("y",  QString("%1").arg(dock_elmt_.y()));
+	qdo.setAttribute("orientation", ori_);
 	return(qdo);
 }
 
@@ -484,13 +482,22 @@ bool Terminal::valideXml(QDomElement &terminal) {
 */
 bool Terminal::fromXml(QDomElement &terminal) {
 	return (
-		qFuzzyCompare(terminal.attribute("x").toDouble(), amarrage_elmt.x()) &&
-		qFuzzyCompare(terminal.attribute("y").toDouble(), amarrage_elmt.y()) &&
-		terminal.attribute("orientation").toInt() == sens
+		qFuzzyCompare(terminal.attribute("x").toDouble(), dock_elmt_.x()) &&
+		qFuzzyCompare(terminal.attribute("y").toDouble(), dock_elmt_.y()) &&
+		terminal.attribute("orientation").toInt() == ori_
 	);
 }
 
-/// @return le Diagram auquel cette borne appartient, ou 0 si cette borne est independant
+/**
+	@return le Diagram auquel cette borne appartient, ou 0 si cette borne est independant
+*/
 Diagram *Terminal::diagram() const {
 	return(qobject_cast<Diagram *>(scene()));
+}
+
+/**
+	@return L'element auquel cette borne est rattachee
+*/
+Element *Terminal::parentElement() const {
+	return(parent_element_);
 }

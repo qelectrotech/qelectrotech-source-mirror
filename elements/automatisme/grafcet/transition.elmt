@@ -1,16 +1,20 @@
-<definition width="60" version="0.2" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy" >
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
-        <name lang="de" >Übergang</name>
-        <name lang="en" >transition</name>
-        <name lang="fr" >transition</name>
-        <name lang="pl" >Tranzycja</name>
-        <name lang="cs" >Přechod</name>
+        <name lang="ar">إنتقاليّة</name>
+        <name lang="de">Übergang</name>
+        <name lang="en">transition</name>
+        <name lang="fr">transition</name>
+        <name lang="pl">Tranzycja</name>
+        <name lang="cs">Přechod</name>
+        <name lang="es">transición</name>
+        <name lang="pt">transição</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="15" y="2" size="8" rotate="true" text="T 00" />
-        <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black" />
-        <terminal x="0" y="5" orientation="s" />
-        <terminal x="0" y="-5" orientation="n" />
-        <terminal x="-12" y="0" orientation="w" />
+        <input x="15" y="2" size="8" rotate="true" text="T 00"/>
+        <rect width="26" x="-13" y="-2" antialias="false" height="4" style="line-style:normal;line-weight:thin;filling:black;color:black"/>
+        <terminal x="0" y="5" orientation="s"/>
+        <terminal x="0" y="-5" orientation="n"/>
+        <terminal x="-12" y="0" orientation="w"/>
     </description>
 </definition>

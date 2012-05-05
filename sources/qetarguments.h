@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -42,9 +42,14 @@ class QETArguments : public QObject {
 	virtual QList<QString> files() const;
 	virtual QList<QString> projectFiles() const;
 	virtual QList<QString> elementFiles() const;
+	virtual QList<QString> titleBlockTemplateFiles() const;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	virtual bool commonElementsDirSpecified() const;
 	virtual QString commonElementsDir() const;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	virtual bool commonTitleBlockTemplatesDirSpecified() const;
+	virtual QString commonTitleBlockTemplatesDir() const;
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	virtual bool configDirSpecified() const;
@@ -68,10 +73,14 @@ class QETArguments : public QObject {
 	private:
 	QList<QString> project_files_;
 	QList<QString> element_files_;
+	QList<QString> tbt_files_;
 	QList<QString> options_;
 	QList<QString> unknown_options_;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	QString common_elements_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	QString common_tbt_dir_;
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString config_dir_;

@@ -1,25 +1,28 @@
-<definition width="40" version="0.2" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dnnn" >
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dnnn">
     <names>
-        <name lang="de" >Drehstrom + PEN</name>
-        <name lang="ru" >Трёхполюсный + PEN</name>
-        <name lang="en" >Three-pole source + PEN</name>
-        <name lang="fr" >Source tripolaire + PEN</name>
-        <name lang="es" >Fuente tripolar + PEN</name>
-        <name lang="cs" >3 fáze + PEN</name>
-        <name lang="pl" >Zasilanie trójfazowe + PEN</name>
+        <name lang="ar">مصدر ثلاثي القطبيّة + PEN</name>
+        <name lang="de">Drehstrom + PEN</name>
+        <name lang="ru">Трёхполюсный + PEN</name>
+        <name lang="en">Three-pole source + PEN</name>
+        <name lang="it">Sorgente tripolare + PEN</name>
+        <name lang="fr">Source tripolaire + PEN</name>
+        <name lang="pl">Linia trójfazowa (PEN)</name>
+        <name lang="es">Fuente tripolar + PEN</name>
+        <name lang="cs">3 fáze + PEN</name>
     </names>
+    <informations></informations>
     <description>
-        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="6" y2="1" x2="16" />
-        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="6" y2="-9" x2="16" />
-        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="6" y2="11" x2="16" />
-        <text x="-12" y="13" size="5" text="PEN" />
-        <text x="-12" y="3" size="5" text="L3" />
-        <text x="-12" y="-7" size="5" text="L2" />
-        <text x="-12" y="-17" size="5" text="L1" />
-        <line length1="1,5" length2="1,5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="6" y2="-19" x2="16" />
-        <terminal x="16" y="-19" orientation="e" />
-        <terminal x="16" y="-9" orientation="e" />
-        <terminal x="16" y="1" orientation="e" />
-        <terminal x="16" y="11" orientation="e" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="6" y2="1" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="6" y2="-9" x2="16"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="6" y2="11" x2="16"/>
+        <text x="-12" y="13" size="5" text="PEN"/>
+        <text x="-12" y="3" size="5" text="L3"/>
+        <text x="-12" y="-7" size="5" text="L2"/>
+        <text x="-12" y="-17" size="5" text="L1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19" x1="6" y2="-19" x2="16"/>
+        <terminal x="16" y="-19" orientation="e"/>
+        <terminal x="16" y="-9" orientation="e"/>
+        <terminal x="16" y="1" orientation="e"/>
+        <terminal x="16" y="11" orientation="e"/>
     </description>
 </definition>

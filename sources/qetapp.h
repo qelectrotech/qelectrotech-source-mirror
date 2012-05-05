@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -21,17 +21,29 @@
 #include <QTranslator>
 #include <QtGui>
 #include "elementslocation.h"
+#include "templatelocation.h"
 #include "qetarguments.h"
+
+#define QETAPP_COMMON_TBT_PROTOCOL "commontbt"
+#define QETAPP_CUSTOM_TBT_PROTOCOL "customtbt"
+
 class AboutQET;
 class QETDiagramEditor;
 class QETElementEditor;
 class ElementsCollection;
+class ElementsCollectionCache;
 class ElementsCollectionItem;
 class FileElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
+class TitleBlockTemplate;
+class TitleBlockTemplatesCollection;
+class TitleBlockTemplatesFilesCollection;
 class QETProject;
+class QETTitleBlockTemplateEditor;
+class QTextOrientationSpinBoxWidget;
 class RecentFiles;
+
 /**
 	Cette classe represente l'application QElectroTech.
 	
@@ -50,6 +62,7 @@ class QETApp : public QETSingleApplication {
 	public:
 	static QETApp *instance();
 	void setLanguage(const QString &);
+	void switchLayout(Qt::LayoutDirection);
 	static void printHelp();
 	static void printVersion();
 	static void printLicense();
@@ -60,10 +73,18 @@ class QETApp : public QETSingleApplication {
 	static ElementsCollection *commonElementsCollection();
 	static ElementsCollection *customElementsCollection();
 	static QList<ElementsCollection *> availableCollections();
+	static ElementsCollectionCache *collectionCache();
+	
+	static TitleBlockTemplatesFilesCollection *commonTitleBlockTemplatesCollection();
+	static TitleBlockTemplatesFilesCollection *customTitleBlockTemplatesCollection();
+	static QList<TitleBlockTemplatesCollection *> availableTitleBlockTemplatesCollections();
+	static TitleBlockTemplatesCollection *titleBlockTemplatesCollection(const QString &);
 	
 	static QString userName();
 	static QString commonElementsDir();
 	static QString customElementsDir();
+	static QString commonTitleBlockTemplatesDir();
+	static QString customTitleBlockTemplatesDir();
 	static bool registerProject(QETProject *);
 	static bool unregisterProject(QETProject *);
 	static QMap<uint, QETProject *> registeredProjects();
@@ -82,6 +103,12 @@ class QETApp : public QETSingleApplication {
 	private:
 	static QString common_elements_dir; ///< Dossier contenant la collection d'elements commune
 #endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	public:
+	static void overrideCommonTitleBlockTemplatesDir(const QString &);
+	private:
+	static QString common_tbt_dir_; ///< Directory containing the common title block templates collection
+#endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	public:
 	static void overrideConfigDir(const QString &);
@@ -91,11 +118,15 @@ class QETApp : public QETSingleApplication {
 	public:
 	static void overrideLangDir(const QString &);
 	static QString lang_dir; ///< Dossier contenant les fichiers de langue
-	static QFont diagramTextsFont(int = -1);
+	static QFont diagramTextsFont(qreal = -1.0);
 	static QETDiagramEditor *diagramEditorForFile(const QString &);
 	static QList<QETDiagramEditor *> diagramEditors();
 	static QList<QETElementEditor *> elementEditors();
 	static QList<QETElementEditor *> elementEditors(QETProject *);
+	static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors();
+	static QList<QETTitleBlockTemplateEditor *> titleBlockTemplateEditors(QETProject *);
+	static QTextOrientationSpinBoxWidget *createTextOrientationSpinBoxWidget();
+	static TitleBlockTemplate *defaultTitleBlockTemplate();
 	
 	protected:
 #ifdef Q_OS_DARWIN
@@ -116,6 +147,8 @@ class QETApp : public QETSingleApplication {
 	QAction *restore_diagrams;
 	QAction *reduce_elements;
 	QAction *restore_elements;
+	QAction *reduce_templates;
+	QAction *restore_templates;
 	QAction *new_diagram;
 	QAction *new_element;
 	QHash<QMainWindow *, QByteArray> window_geometries;
@@ -125,6 +158,8 @@ class QETApp : public QETSingleApplication {
 	bool every_diagram_visible;
 	bool every_element_reduced;
 	bool every_element_visible;
+	bool every_template_reduced;
+	bool every_template_visible;
 	QSignalMapper signal_map;
 	QSettings *qet_settings;
 	QETArguments qet_arguments_;        ///< Analyseur d'arguments
@@ -133,11 +168,15 @@ class QETApp : public QETSingleApplication {
 	
 	static FileElementsCollection *common_collection;
 	static FileElementsCollection *custom_collection;
+	static TitleBlockTemplatesFilesCollection *common_tbt_collection_;
+	static TitleBlockTemplatesFilesCollection *custom_tbt_collection_;
+	static ElementsCollectionCache *collections_cache_;
 	static QMap<uint, QETProject *> registered_projects_;
 	static uint next_project_id;
 	static RecentFiles *projects_recent_files_;
 	static RecentFiles *elements_recent_files_;
 	static AboutQET *about_dialog_;
+	static TitleBlockTemplate *default_titleblock_template_;
 	
 	public slots:
 	void systray(QSystemTrayIcon::ActivationReason);
@@ -147,6 +186,8 @@ class QETApp : public QETSingleApplication {
 	void restoreDiagramEditors();
 	void reduceElementEditors();
 	void restoreElementEditors();
+	void reduceTitleBlockTemplateEditors();
+	void restoreTitleBlockTemplateEditors();
 	void newDiagramEditor();
 	void newElementEditor();
 	bool closeEveryEditor();
@@ -160,6 +201,9 @@ class QETApp : public QETSingleApplication {
 	void openProjectFiles(const QStringList &);
 	void openElementFiles(const QStringList &);
 	void openElementLocations(const QList<ElementsLocation> &);
+	void openTitleBlockTemplate(const TitleBlockTemplateLocation &, bool = false);
+	void openTitleBlockTemplate(const QString &);
+	void openTitleBlockTemplateFiles(const QStringList &);
 	void configureQET();
 	void aboutQET();
 	
@@ -168,8 +212,8 @@ class QETApp : public QETSingleApplication {
 	void cleanup();
 	
 	private:
-	QList<QETDiagramEditor *> detectDiagramEditors() const;
-	QList<QETElementEditor *> detectElementEditors() const;
+	template <class T> QList<T *> detectWindows() const;
+	template <class T> void setMainWindowsVisible(bool);
 	QList<QWidget *> floatingToolbarsAndDocksForMainWindow(QMainWindow *) const;
 	void parseArguments();
 	void initSplashScreen();
@@ -179,7 +223,14 @@ class QETApp : public QETSingleApplication {
 	void initConfiguration();
 	void initSystemTray();
 	void buildSystemTrayMenu();
-	void fetchWindowStats(const QList<QETDiagramEditor *> &diagrams, const QList<QETElementEditor *> &elements);
+	void fetchWindowStats(
+		const QList<QETDiagramEditor *> &,
+		const QList<QETElementEditor *> &,
+		const QList<QETTitleBlockTemplateEditor *> &
+	);
+	template <class T> void addWindowsListToMenu(QMenu *, const QList<T *> &);
+	static int projectIdFromString(const QString &);
+	static QETProject *projectFromString(const QString &);
 };
 
 /**

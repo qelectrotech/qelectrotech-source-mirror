@@ -1,0 +1,20 @@
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مُحرّك خطّي</name>
+        <name lang="de">Linearmotor
+</name>
+        <name lang="en">Linear motor
+</name>
+        <name lang="fr">Moteur linéaire
+</name>
+        <name lang="pl">Silnik liniowy</name>
+        <name lang="cs">Lineární motor</name>
+    </names>
+    <informations>EN 60617: 06-04-02</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-14" y2="0" x2="14"/>
+        <circle x="-12" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24"/>
+        <text x="-4.5" y="-6" size="8" text="M"/>
+        <terminal x="0" y="-20" orientation="n"/>
+    </description>
+</definition>

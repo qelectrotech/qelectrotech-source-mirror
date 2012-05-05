@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Normal geschlossen</name>
-        <name lang="ru" >Нормально замкнутые</name>
-        <name lang="en" >Normally closed</name>
-        <name lang="fr" >Normalement fermés</name>
-        <name lang="es" >Normalmente cerrados</name>
-        <name lang="pt" >Normalmente fechados</name>
-        <name lang="cs" >Obvykle zavřené</name>
-        <name lang="pl" >Zestyki rozwierne</name>
+        <name lang="de">Normal geschlossen</name>
+        <name lang="ru">Нормально замкнутые</name>
+        <name lang="en">Normally closed</name>
+        <name lang="fr">Normalement fermés</name>
+		<name lang="ar">عاديّا مُغلق</name>
+        <name lang="es">Normalmente cerrados</name>
+        <name lang="pt">Normalmente fechados</name>
+        <name lang="cs">Obvykle zavřené</name>
+        <name lang="pl">Zestyki rozwierne</name>
+        <name lang="it">Normalmente Chiuso</name>
     </names>
 </qet-directory>

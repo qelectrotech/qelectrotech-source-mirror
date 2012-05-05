@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,9 +15,8 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef BORNE_H
-#define BORNE_H
-#define TAILLE_BORNE 4
+#ifndef TERMINAL_H
+#define TERMINAL_H
 #include <QtGui>
 #include <QtXml>
 #include "qet.h"
@@ -25,14 +24,13 @@ class Conductor;
 class Diagram;
 class Element;
 /**
-	Classe modelisant la "borne" d'un appareil, c'est-a-dire un
-	branchement possible pour un Conducteur.
+	Cette classe represente une borne d'un element, c'est-a-dire un
+	branchement possible pour un conducteur.
 */
 class Terminal : public QGraphicsItem {
 	
 	// constructeurs, destructeur
 	public:
-	Terminal();
 	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
 	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
 	virtual ~Terminal();
@@ -55,14 +53,17 @@ class Terminal : public QGraphicsItem {
 	// methodes de manipulation des conducteurs lies a cette borne
 	bool addConductor(Conductor *);
 	void removeConductor(Conductor *);
-	int nbConductors() const;
+	int conductorsCount() const;
 	Diagram *diagram() const;
+	Element *parentElement() const;
 	
 	// methodes de lecture
 	QList<Conductor *> conductors() const;
 	QET::Orientation orientation() const;
-	QPointF amarrageConductor() const;
-	void updateConductor(QPointF = QPointF());
+	QPointF dockConductor() const;
+	void updateConductor();
+	bool isLinkedTo(Terminal *);
+	bool canBeLinkedTo(Terminal *);
 	
 	// methodes relatives a l'import/export au format XML
 	static bool valideXml(QDomElement  &);
@@ -86,44 +87,55 @@ class Terminal : public QGraphicsItem {
 	
 	// differentes couleurs statiques utilisables pour l'effet "hover"
 	/// couleur par defaut
-	static QColor couleur_neutre;
+	static QColor neutralColor;
 	/// couleur indiquant une action autorisee
-	static QColor couleur_autorise;
+	static QColor allowedColor;
 	/// couleur indiquant une action autorisee mais pas forcement recommandee
-	static QColor couleur_prudence;
+	static QColor warningColor;
 	/// couleur indiquant une action interdite
-	static QColor couleur_interdit;
+	static QColor forbiddenColor;
 	
+	// attributs prives
 	private:
-	// coordonnees des points d'amarrage
-	QPointF amarrage_conductor;
-	QPointF amarrage_elmt;
-	// orientation de la borne
-	QET::Orientation sens;
-	// liste des conductors lies a cette borne
-	QList<Conductor *> liste_conductors;
-	// pointeur vers un rectangle correspondant au bounding rect ; permet de ne calculer le bounding rect qu'une seule fois ; le pointeur c'est parce que le compilo exige une methode const
-	QRectF *br;
-	Terminal *terminal_precedente;
-	bool hovered;
+	/// Pointeur vers l'element parent
+	Element *parent_element_;
+	/// coordonnees du point d'amarrage du conducteur
+	QPointF dock_conductor_;
+	/// coordonnees du point d'amarrage de l'element
+	QPointF dock_elmt_;
+	/// orientation de la borne
+	QET::Orientation ori_;
+	/// liste des conductors lies a cette borne
+	QList<Conductor *> conductors_;
+	/// pointeur vers un rectangle correspondant au bounding rect
+	/// permet de ne calculer le bounding rect qu'une seule fois
+	/// le pointeur c'est parce que le compilo exige une methode const
+	QRectF *br_;
+	/// Derniere borne mise en contact avec celle-ci
+	Terminal *previous_terminal_;
+	/// Booleen indiquant si le pointeur est au-dessus de la borne ou non
+	bool hovered_;
+	/// couleur de l'effet hover de la borne
+	QColor hovered_color_;
+	
+	// methodes privees
+	private:
 	// methode initialisant les differents membres de la borne
-	void initialise(QPointF, QET::Orientation);
-	// couleur de l'effet hover de la patte
-	QColor couleur_hovered;
+	void init(QPointF, QET::Orientation);
 };
 
 /**
 	@return Le nombre de conducteurs associes a la borne
 */
-inline int Terminal::nbConductors() const {
-	return(liste_conductors.size());
+inline int Terminal::conductorsCount() const {
+	return(conductors_.size());
 }
 
 /**
 	@return La position du point d'amarrage de la borne
 */
-inline QPointF Terminal::amarrageConductor() const {
-	return(mapToScene(amarrage_conductor));
+inline QPointF Terminal::dockConductor() const {
+	return(mapToScene(dock_conductor_));
 }
 
 #endif

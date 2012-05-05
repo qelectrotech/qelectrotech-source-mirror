@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -30,6 +30,7 @@
 #include "hotspoteditor.h"
 #include "editorcommands.h"
 #include "elementcontent.h"
+#include "nameslist.h"
 
 /**
 	Constructeur
@@ -939,7 +940,7 @@ void ElementScene::slot_editAuthorInformations() {
 	
 	// lance le dialogue
 	if (dialog_author.exec() == QDialog::Accepted && !is_read_only) {
-		QString new_infos = text_field -> toPlainText();
+		QString new_infos = text_field -> toPlainText().remove(QChar(13)); // CR-less text
 		if (new_infos != informations()) {
 			undoStack().push(new ChangeInformationsCommand(this, informations(), new_infos));
 		}

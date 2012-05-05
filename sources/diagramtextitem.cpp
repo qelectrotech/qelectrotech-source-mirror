@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,35 +17,45 @@
 */
 #include "diagramtextitem.h"
 #include "diagramcommands.h"
+#include "qet.h"
 #include "qetapp.h"
 
 /**
 	Constructeur
 	@param parent Le QGraphicsItem parent du champ de texte
-	@param scene La scene a laquelle appartient le champ de texte
+	@param parent_diagram Le schema auquel appartient le champ de texte
 */
-DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsTextItem(parent, scene)
+DiagramTextItem::DiagramTextItem(QGraphicsItem *parent, Diagram *parent_diagram) :
+	QGraphicsTextItem(parent, parent_diagram),
+	previous_text_(),
+	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
 /**
 	Constructeur
-	@param parent Le QGraphicsItem parent du champ de texte
-	@param scene La scene a laquelle appartient le champ de texte
 	@param text Le texte affiche par le champ de texte
+	@param parent Le QGraphicsItem parent du champ de texte
+	@param parent_diagram Le schema auquel appartient le champ de texte
 */
-DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, QGraphicsScene *scene) :
-	QGraphicsTextItem(text, parent, scene),
-	previous_text(text)
+DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, Diagram *parent_diagram) :
+	QGraphicsTextItem(text, parent, parent_diagram),
+	previous_text_(text),
+	rotation_angle_(0.0)
 {
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsSelectable|QGraphicsItem::ItemIsMovable);
+#if QT_VERSION >= 0x040600
+	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
+#endif
 	connect(this, SIGNAL(lostFocus()), this, SLOT(setNonFocusable()));
 }
 
@@ -53,20 +63,160 @@ DiagramTextItem::DiagramTextItem(const QString &text, QGraphicsItem *parent, QGr
 DiagramTextItem::~DiagramTextItem() {
 }
 
-/// @return le Diagram auquel ce texte appartient, ou 0 si ce texte est independant
+/**
+	@return le Diagram auquel ce texte appartient, ou 0 si ce texte n'est
+	rattache a aucun schema
+*/
 Diagram *DiagramTextItem::diagram() const {
 	return(qobject_cast<Diagram *>(scene()));
 }
 
 /**
-	gere la perte de focus du champ de texte
+	@return l'angle de rotation actuel de ce texte
+*/
+qreal DiagramTextItem::rotationAngle() const {
+	return(rotation_angle_);
+}
+
+/**
+	Permet de tourner le texte a un angle donne de maniere absolue.
+	Un angle de 0 degres correspond a un texte horizontal non retourne.
+	@param rotation Nouvel angle de rotation de ce texte
+	@see applyRotation
+*/
+void DiagramTextItem::setRotationAngle(const qreal &rotation) {
+	qreal applied_rotation = QET::correctAngle(rotation);
+	applyRotation(applied_rotation - rotation_angle_);
+	rotation_angle_ = applied_rotation;
+}
+
+/**
+	Permet de tourner le texte de maniere relative.
+	L'angle added_rotation est ajoute a l'orientation actuelle du texte.
+	@param added_rotation Angle a ajouter a la rotation actuelle
+	@see applyRotation
+*/
+void DiagramTextItem::rotateBy(const qreal &added_rotation) {
+	qreal applied_added_rotation = QET::correctAngle(added_rotation);
+	rotation_angle_ = QET::correctAngle(rotation_angle_ + applied_added_rotation);
+	applyRotation(applied_added_rotation);
+}
+
+/**
+	Traduit en coordonnees de la scene un mouvement / vecteur initialement
+	exprime en coordonnees locales.
+	@param movement Vecteur exprime en coordonnees locales
+	@return le meme vecteur, exprime en coordonnees de la scene
+*/
+QPointF DiagramTextItem::mapMovementToScene(const QPointF &movement) const {
+	// on definit deux points en coordonnees locales
+	QPointF local_origin(0.0, 0.0);
+	QPointF local_movement_point(movement);
+	
+	// on les mappe sur la scene
+	QPointF scene_origin(mapToScene(local_origin));
+	QPointF scene_movement_point(mapToScene(local_movement_point));
+	
+	// on calcule le vecteur represente par ces deux points
+	return(scene_movement_point - scene_origin);
+}
+
+/**
+	Traduit en coordonnees locales un mouvement / vecteur initialement
+	exprime en coordonnees de la scene.
+	@param movement Vecteur exprime en coordonnees de la scene
+	@return le meme vecteur, exprime en coordonnees locales
+*/
+QPointF DiagramTextItem::mapMovementFromScene(const QPointF &movement) const {
+	// on definit deux points sur la scene
+	QPointF scene_origin(0.0, 0.0);
+	QPointF scene_movement_point(movement);
+	
+	// on les mappe sur ce QGraphicsItem
+	QPointF local_origin(mapFromScene(scene_origin));
+	QPointF local_movement_point(mapFromScene(scene_movement_point));
+	
+	// on calcule le vecteur represente par ces deux points
+	return(local_movement_point - local_origin);
+}
+
+/**
+	Traduit en coordonnees de l'item parent un mouvement / vecteur initialement
+	exprime en coordonnees locales.
+	@param movement Vecteur exprime en coordonnees locales
+	@return le meme vecteur, exprime en coordonnees du parent
+*/
+QPointF DiagramTextItem::mapMovementToParent(const QPointF &movement) const {
+	// on definit deux points en coordonnees locales
+	QPointF local_origin(0.0, 0.0);
+	QPointF local_movement_point(movement);
+	
+	// on les mappe sur la scene
+	QPointF parent_origin(mapToParent(local_origin));
+	QPointF parent_movement_point(mapToParent(local_movement_point));
+	
+	// on calcule le vecteur represente par ces deux points
+	return(parent_movement_point - parent_origin);
+}
+
+/**
+	Traduit en coordonnees locales un mouvement / vecteur initialement
+	exprime en coordonnees du parent.
+	@param movement Vecteur exprime en coordonnees du parent
+	@return le meme vecteur, exprime en coordonnees locales
+*/
+QPointF DiagramTextItem::mapMovementFromParent(const QPointF &movement) const {
+	// on definit deux points sur le parent
+	QPointF parent_origin(0.0, 0.0);
+	QPointF parent_movement_point(movement);
+	
+	// on les mappe sur ce QGraphicsItem
+	QPointF local_origin(mapFromParent(parent_origin));
+	QPointF local_movement_point(mapFromParent(parent_movement_point));
+	
+	// on calcule le vecteur represente par ces deux points
+	return(local_movement_point - local_origin);
+}
+
+/**
+	Dessine le champ de texte.
+	Cette methode delegue simplement le travail a QGraphicsTextItem::paint apres
+	avoir desactive l'antialiasing.
+	@param painter Le QPainter a utiliser pour dessiner le champ de texte
+	@param option Les options de style pour le champ de texte
+	@param widget Le QWidget sur lequel on dessine 
+*/
+void DiagramTextItem::paint(QPainter *painter, const QStyleOptionGraphicsItem *option, QWidget *widget) {
+	painter -> setRenderHint(QPainter::Antialiasing, false);
+	QGraphicsTextItem::paint(painter, option, widget);
+}
+
+/**
+	Gere la prise de focus du champ de texte
+	@param e Objet decrivant la prise de focus
+*/
+void DiagramTextItem::focusInEvent(QFocusEvent *e) {
+	QGraphicsTextItem::focusInEvent(e);
+	
+	// empeche le deplacement du texte pendant son edition
+	setFlag(QGraphicsItem::ItemIsMovable, false);
+	
+	// memorise le texte avant que l'utilisateur n'y touche
+	previous_text_ = toPlainText();
+	// cela permettra de determiner si l'utilisateur a modifie le texte a la fin de l'edition
+}
+
+/**
+	Gere la perte de focus du champ de texte
+	@param e Objet decrivant la perte de focus
 */
 void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
+	
 	// signale la modification du texte si besoin
-	if (toPlainText() != previous_text) {
-		emit(diagramTextChanged(this, previous_text, toPlainText()));
-		previous_text = toPlainText();
+	if (toPlainText() != previous_text_) {
+		emit(diagramTextChanged(this, previous_text_, toPlainText()));
+		previous_text_ = toPlainText();
 	}
 	
 	// deselectionne le texte
@@ -74,35 +224,12 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	cursor.clearSelection();
 	setTextCursor(cursor);
 	
-	if (flags() & QGraphicsItem::ItemIsMovable) {
-		// hack a la con pour etre re-entrant
-		setTextInteractionFlags(Qt::NoTextInteraction);
-		QTimer::singleShot(0, this, SIGNAL(lostFocus()));
-	}
-}
-
-/**
-	Permet de lire le texte a mettre dans le champ a partir d'un element XML.
-	Cette methode se base sur la position du champ pour assigner ou non la
-	valeur a ce champ.
-	@param e L'element XML representant le champ de texte
-*/
-void DiagramTextItem::fromXml(const QDomElement &e) {
-	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-	setPlainText(e.attribute("text"));
-	previous_text = e.attribute("text");
-}
-
-/**
-	@param document Le document XML a utiliser
-	@return L'element XML representant ce champ de texte
-*/
-QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
-	QDomElement result = document.createElement("input");
-	result.setAttribute("x", QString("%1").arg(pos().x()));
-	result.setAttribute("y", QString("%1").arg(pos().y()));
-	result.setAttribute("text", toPlainText());
-	return(result);
+	// hack a la con pour etre re-entrant
+	setTextInteractionFlags(Qt::NoTextInteraction);
+	
+	// autorise de nouveau le deplacement du texte
+	setFlag(QGraphicsItem::ItemIsMovable, true);
+	QTimer::singleShot(0, this, SIGNAL(lostFocus()));
 }
 
 /**
@@ -110,74 +237,26 @@ QDomElement DiagramTextItem::toXml(QDomDocument &document) const {
 	@param event un QGraphicsSceneMouseEvent decrivant le double-clic
 */
 void DiagramTextItem::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *event) {
-	if (flags() & QGraphicsItem::ItemIsMovable && !(textInteractionFlags() & Qt::TextEditable)) {
+	if (!(textInteractionFlags() & Qt::TextEditable)) {
 		// rend le champ de texte editable
 		setTextInteractionFlags(Qt::TextEditorInteraction);
 		
-		// simule un clic simple, ce qui edite le champ de texte
-		QGraphicsSceneMouseEvent *mouseEvent = new QGraphicsSceneMouseEvent(QEvent::GraphicsSceneMousePress);
-		mouseEvent -> setAccepted(true);
-		mouseEvent -> setPos(event -> pos());
-		mouseEvent -> setScenePos(event -> scenePos());
-		mouseEvent -> setScreenPos(event -> screenPos());
-		mouseEvent -> setButtonDownPos(Qt::LeftButton, event -> buttonDownPos(Qt::LeftButton));
-		mouseEvent -> setButtonDownScreenPos(Qt::LeftButton, event -> buttonDownScreenPos(Qt::LeftButton));
-		mouseEvent -> setButtonDownScenePos(Qt::LeftButton, event -> buttonDownScenePos(Qt::LeftButton));
-		mouseEvent -> setWidget(event -> widget());
-		QGraphicsTextItem::mousePressEvent(mouseEvent);
-		delete mouseEvent;
+		// edite le champ de texte
+		setFocus(Qt::MouseFocusReason);
 	} else {
 		QGraphicsTextItem::mouseDoubleClickEvent(event);
 	}
 }
 
 /**
-	Gere le clic sur le champ de texte
+	Effectue la rotation du texte en elle-meme
+	Pour les DiagramTextItem, la rotation s'effectue autour du point (0, 0).
+	Cette methode peut toutefois etre redefinie dans des classes filles
+	@param angle Angle de la rotation a effectuer
 */
-void DiagramTextItem::mousePressEvent(QGraphicsSceneMouseEvent *e) {
-	if (e -> modifiers() & Qt::ControlModifier) {
-		setSelected(!isSelected());
-	}
-	QGraphicsTextItem::mousePressEvent(e);
-}
-
-/**
-	Gere les mouvements de souris lies au champ de texte
-*/
-void DiagramTextItem::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
-	if (textInteractionFlags() & Qt::TextEditable) {
-		QGraphicsTextItem::mouseMoveEvent(e);
-	} else if ((flags() & QGraphicsItem::ItemIsMovable) && (e -> buttons() & Qt::LeftButton)) {
-		QPointF oldPos = pos();
-		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		if (Diagram *diagram_ptr = diagram()) {
-			diagram_ptr -> moveElements(pos() - oldPos, this);
-		}
-	} else e -> ignore();
-}
-
-/**
-	Gere le relachement de souris
-	Cette methode a ete reimplementee pour tenir a jour la liste des elements
-	et conducteurs a deplacer au niveau du schema.
-*/
-void DiagramTextItem::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	if (Diagram *diagram_ptr = diagram()) {
-		if ((flags() & QGraphicsItem::ItemIsMovable) && (!diagram_ptr -> current_movement.isNull())) {
-			diagram_ptr -> undoStack().push(
-				new MoveElementsCommand(
-					diagram_ptr,
-					diagram_ptr -> selectedContent(),
-					diagram_ptr -> current_movement
-				)
-			);
-			diagram_ptr -> current_movement = QPointF();
-		}
-		diagram_ptr -> invalidateMovedElements();
-	}
-	if (!(e -> modifiers() & Qt::ControlModifier)) {
-		QGraphicsTextItem::mouseReleaseEvent(e);
-	}
+void DiagramTextItem::applyRotation(const qreal &angle) {
+	// un simple appel a QGraphicsTextItem::setRotation suffit
+	QGraphicsTextItem::setRotation(QGraphicsTextItem::rotation() + angle);
 }
 
 /**
@@ -205,6 +284,13 @@ void DiagramTextItem::setPos(const QPointF &p) {
 */
 void DiagramTextItem::setPos(qreal x, qreal y) {
 	setPos(QPointF(x, y));
+}
+
+/**
+	@return la position du champ de texte
+*/
+QPointF DiagramTextItem::pos() const {
+	return(QGraphicsTextItem::pos());
 }
 
 /// Rend le champ de texte non focusable

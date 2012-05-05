@@ -2,9 +2,11 @@
 <mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="application/x-qet-project">
 	<comment>QElectroTech project file</comment>
 	<comment xml:lang="fr">Fichier projet QElectroTech</comment>
+	<comment xml:lang="ar">QElectroTech ملف مشروع</comment>
 	<comment xml:lang="es">Archivo proyecto QElectroTech</comment>
 	<comment xml:lang="ru">Файл проекта QElectroTech</comment>
 	<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
 	<comment xml:lang="cs">Soubor s projektem pro QElectroTech</comment>
 	<comment xml:lang="pl">Plik projektu QElectroTech</comment>
+	<comment xml:lang="it">File del progetto QElectroTech</comment>
 </mime-type>

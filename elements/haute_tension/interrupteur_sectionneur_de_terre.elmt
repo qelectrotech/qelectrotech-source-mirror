@@ -1,11 +1,12 @@
 <definition width="30" version="0.22" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
-        <name lang="de">Erdungsschalter</name>
         <name lang="pt">Interruptor-seccionador de terra</name>
         <name lang="en">Ground switch disconnector</name>
         <name lang="fr">Interrupteur-sectionneur de terre</name>
         <name lang="pl">Uziemnik</name>
-        <name lang="cs">Rozpojovač přepínání země</name>
+        <name lang="cs">Vypínač uzemnění</name>
+        <name lang="de">Erdungsschalter</name>
+        <name lang="it">Interruttore-sezionatore di terra</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

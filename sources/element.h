@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,6 +28,7 @@ class ElementTextItem;
 class Element : public QObject, public QGraphicsItem {
 	
 	Q_OBJECT
+	Q_INTERFACES(QGraphicsItem)
 	
 	// constructeurs, destructeur
 	public:
@@ -87,6 +88,8 @@ class Element : public QObject, public QGraphicsItem {
 	virtual QString name() const = 0;
 	Diagram *diagram() const;
 	
+	virtual bool isHighlighted() const;
+	virtual void setHighlighted(bool);
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	QSize setSize(int, int);
@@ -111,7 +114,7 @@ class Element : public QObject, public QGraphicsItem {
 	
 	// methodes relatives aux fichiers XML
 	static bool valideXml(QDomElement &);
-	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &);
+	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
 	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	
 	// methodes d'acces aux possibilites d'orientation
@@ -126,7 +129,10 @@ class Element : public QObject, public QGraphicsItem {
 	
 	private:
 	bool internal_connections;
+	bool must_highlight_;
+	bool first_move_;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
+	void drawHighlight(QPainter *, const QStyleOptionGraphicsItem *);
 	void updatePixmap();
 };
 

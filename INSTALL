@@ -74,3 +74,14 @@ $ qmake (qmake-qt4 dla systemów opartych na Debianie)
 $ make
 # umask 0022
 # make install
+
+[it]
+Dipendenze:
+libQt4 (vedi pacchetti libqt4*)
+cupsys-bsd per la stampa
+
+Come compilare:
+$ qmake (qmake-qt4 per sistemi basati su Debian)
+$ make
+# umask 0022
+# make install

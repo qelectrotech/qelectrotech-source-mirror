@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Klemmen</name>
-        <name lang="ru" >соеденителей</name>
-        <name lang="en" >Terminals</name>
-        <name lang="fr" >Bornes</name>
-        <name lang="es" >Terminales</name>
-        <name lang="pt" >Terminais</name>
-        <name lang="cs" >Svorky</name>
-        <name lang="pl" >Listwy zaciskowe</name>
+        <name lang="de">Klemmen</name>
+        <name lang="ru">соеденителей</name>
+        <name lang="en">Terminals</name>
+        <name lang="fr">Borniers</name>
+        <name lang="ar">أطراف توصيل</name>
+        <name lang="es">Terminales</name>
+        <name lang="pt">Terminais</name>
+        <name lang="cs">Svorky</name>
+        <name lang="pl">Listwy zaciskowe</name>
+        <name lang="it">Terminali</name>
     </names>
 </qet-directory>

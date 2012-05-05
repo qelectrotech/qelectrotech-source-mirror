@@ -1,9 +1,11 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">زرّ ضاغط (NC)</name>
         <name lang="de">Druck-Taster (NC)</name>
         <name lang="ru">Кнопка (НЗ)</name>
         <name lang="pt">Botão de pressão (NC)</name>
         <name lang="en">Push-button (NC)</name>
+        <name lang="it">Pulsante (NC)</name>
         <name lang="fr">Bouton poussoir (NF)</name>
         <name lang="pl">Łącznik przyciskowy z powrotem samoczynnym</name>
         <name lang="es">Pulsador (NC)</name>

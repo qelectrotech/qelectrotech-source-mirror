@@ -1,13 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Maschinen</name>
-        <name lang="de" >Maschinen</name>
-        <name lang="ru" >Эл. машины</name>
-        <name lang="en" >Machines</name>
-        <name lang="fr" >Machines</name>
-        <name lang="es" >Máquinas</name>
-        <name lang="cs" >Stroje</name>
-        <name lang="pt" >Máquinas</name>
-        <name lang="pl" >Maszyny</name>
+        <name lang="de">Maschinen</name>
+        <name lang="ru">Эл. машины</name>
+        <name lang="en">Machines</name>
+        <name lang="fr">Machines</name>
+		<name lang="ar">آلات</name>
+        <name lang="es">Máquinas</name>
+        <name lang="cs">Stroje</name>
+        <name lang="pt">Máquinas</name>
+        <name lang="pl">Maszyny</name>
+        <name lang="it">Macchine</name>
     </names>
 </qet-directory>

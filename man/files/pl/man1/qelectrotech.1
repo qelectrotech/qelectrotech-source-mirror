@@ -19,10 +19,10 @@ Każdy użytkownik posiada swoją kolekcję elementów, którą może zmienić w
 .SH OPTIONS
 .TP
 \fB\-\-common\-elements\-dir\fR=\fIDIR\fR
-Używa DIR jako katalogu głównego kolekcji wspólnych. Uwaga: opcja ta jest aktywna tylko w przypadku gdy dyrektywa QET_ALLOW_OVERRIDE_CED_OPTION zostanie określona w czasie kompilacji.
+Używa DIR jako katalogu głównego kolekcji wspólnych. Uwaga: opcja ta jest aktywna tylko w przypadku gdy komenda QET_ALLOW_OVERRIDE_CED_OPTION zostanie wydana w czasie kompilacji.
 .TP
 \fB\-\-config\-dir\fR=\fIDIR\fR
-Używa DIR jako katalogu konfiguracji aktualnego użytkownika. Ten katalog zawiera plik z konfiguracją aplikacji o nazwie qelectrotech.conf i podkatalogu o nazwie elements, który zawiera kolekcję elementów aktualnego użytkownika. Uwaga: opcja ta jest aktywna tylko w przypadku gdy dyrektywa QET_ALLOW_OVERRIDE_CD_OPTION zostanie określona w czasie kompilacji.
+Używa DIR jako katalogu konfiguracji aktualnego użytkownika. Ten katalog zawiera plik z konfiguracją aplikacji o nazwie qelectrotech.conf i podkatalog o nazwie elements, który zawiera kolekcję elementów aktualnego użytkownika. Uwaga: opcja ta jest aktywna tylko w przypadku gdy komenda QET_ALLOW_OVERRIDE_CD_OPTION zostanie wydana w czasie kompilacji.
 .TP
 \fB\-\-lang\-dir\fR=\fIDIR\fR
 Wyszukuje w katalogu DIR pliki z tłumaczeniami aplikacji.
@@ -36,9 +36,9 @@ Wyświetla wersję aplikacji (np.: 0.1)
 \fB\-\-license\fR
 Wyświetla licencję aplikacji (GNU / GPL)
 Należy pamiętać, że jeżeli jedno z trzech powyższych poleceń zostanie uruchomione w linii poleceń, zatrzyma program, i zostanie wyświetlona odpowiednia informacja.
-Jeżeli przypadkiem aplikacja uruchomiona przez użytkownika nadal działa, ten przypadek będzie rozważony w linii poleceń, a w szczególności otwarte pliki.
-Jednak operacje, które zmieniają definicję katalogów (wspólne kolekcje, pliki konfiguracyjne i tłumaczenie) nie będą wykonane.
-Jeżeli nazwa pliku ma rozszerzenie .emt, QElectroTech będzie próbował go otworzyć za pomocą edytora elementu.
+Jeżeli przypadkiem aplikacja uruchomiona przez użytkownika nadal działa, ten przypadek będzie rozwiązany w linii poleceń, a w szczególności otwarte pliki.
+Jednak operacje, które zmieniają zawartość katalogów (wspólne kolekcje, pliki konfiguracyjne i tłumaczenie) nie będą wykonane.
+Jeżeli nazwa pliku ma rozszerzenie .elmt, QElectroTech będzie próbował go otworzyć za pomocą edytora elementu.
 W przeciwnym razie, uzna go za schemat.
 .SH AUTHORS
 Benoit Ansieau <benoit.ansieau@gmail.com>

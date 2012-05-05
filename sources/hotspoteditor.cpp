@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -53,17 +53,17 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	sb_hotspot_y -> setSingleStep(10);
 	
 	diagram_scene = new Diagram();
-	diagram_scene -> border_and_inset.setColumnsWidth(50.0);
-	diagram_scene -> border_and_inset.setNbColumns(3);
-	diagram_scene -> border_and_inset.setRowsHeight(60.0);
-	diagram_scene -> border_and_inset.setNbRows(2);
-	diagram_scene -> border_and_inset.displayRows(false);
-	diagram_scene -> border_and_inset.displayInset(false);
+	diagram_scene -> border_and_titleblock.setColumnsWidth(50.0);
+	diagram_scene -> border_and_titleblock.setNbColumns(3);
+	diagram_scene -> border_and_titleblock.setRowsHeight(60.0);
+	diagram_scene -> border_and_titleblock.setNbRows(2);
+	diagram_scene -> border_and_titleblock.displayRows(false);
+	diagram_scene -> border_and_titleblock.displayTitleBlock(false);
 	
 	diagram_view = new QGraphicsView(diagram_scene);
 	diagram_view -> setMinimumSize(
-		qRound(diagram_scene -> border_and_inset.diagramWidth()  + (3 * Diagram::margin)),
-		qRound(diagram_scene -> border_and_inset.diagramHeight() + (3 * Diagram::margin))
+		qRound(diagram_scene -> border_and_titleblock.diagramWidth()  + (3 * Diagram::margin)),
+		qRound(diagram_scene -> border_and_titleblock.diagramHeight() + (3 * Diagram::margin))
 	);
 	diagram_view -> setTransformationAnchor(QGraphicsView::AnchorUnderMouse);
 	diagram_view -> setResizeAnchor(QGraphicsView::AnchorUnderMouse);

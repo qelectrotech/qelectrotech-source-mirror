@@ -36,6 +36,14 @@
 	<file>ico/16x16/edit-paste.png</file>
 	<file>ico/16x16/edit-redo.png</file>
 	<file>ico/16x16/edit-select-all.png</file>
+	<file>ico/16x16/edit-table-insert-row-above.png</file>
+	<file>ico/16x16/edit-table-insert-column-left.png</file>
+	<file>ico/16x16/edit-table-insert-row-under.png</file>
+	<file>ico/16x16/edit-table-delete-row.png</file>
+	<file>ico/16x16/edit-table-insert-column-right.png</file>
+	<file>ico/16x16/edit-table-delete-column.png</file>
+	<file>ico/16x16/edit-table-cell-split.png</file>
+	<file>ico/16x16/edit-table-cell-merge.png</file>
 	<file>ico/16x16/edit-undo.png</file>
 	<file>ico/16x16/endline-circle.png</file>
 	<file>ico/16x16/endline-diamond.png</file>
@@ -51,6 +59,7 @@
 	<file>ico/16x16/item_cancel.png</file>
 	<file>ico/16x16/item_copy.png</file>
 	<file>ico/16x16/item_move.png</file>
+	<file>ico/16x16/label.png</file>
 	<file>ico/16x16/masquer.png</file>
 	<file>ico/16x16/neutral.png</file>
 	<file>ico/16x16/north.png</file>
@@ -58,7 +67,6 @@
 	<file>ico/16x16/orientations.png</file>
 	<file>ico/16x16/phase.png</file>
 	<file>ico/16x16/preferences-desktop-user.png</file>
-	<file>ico/16x16/project.png</file>
 	<file>ico/16x16/qet.png</file>
 	<file>ico/16x16/remove_col.png</file>
 	<file>ico/16x16/remove_row.png</file>
@@ -71,7 +79,7 @@
 	<file>ico/16x16/view-restore.png</file>
 	<file>ico/16x16/west.png</file>
 	<file>ico/16x16/window-new.png</file>
-	<file>ico/16x16/zoom-fit-best.png</file>
+	<file>ico/16x16/zoom-draw.png</file>
 	<file>ico/16x16/zoom-in.png</file>
 	<file>ico/16x16/zoom-original.png</file>
 	<file>ico/16x16/zoom-out.png</file>
@@ -112,6 +120,14 @@
 	<file>ico/22x22/edit-paste.png</file>
 	<file>ico/22x22/edit-redo.png</file>
 	<file>ico/22x22/edit-select-all.png</file>
+	<file>ico/22x22/edit-table-insert-row-above.png</file>
+	<file>ico/22x22/edit-table-insert-column-left.png</file>
+	<file>ico/22x22/edit-table-insert-row-under.png</file>
+	<file>ico/22x22/edit-table-delete-row.png</file>
+	<file>ico/22x22/edit-table-insert-column-right.png</file>
+	<file>ico/22x22/edit-table-delete-column.png</file>
+	<file>ico/22x22/edit-table-cell-split.png</file>
+	<file>ico/22x22/edit-table-cell-merge.png</file>
 	<file>ico/22x22/edit-undo.png</file>
 	<file>ico/22x22/element-delete.png</file>
 	<file>ico/22x22/element-edit.png</file>
@@ -124,6 +140,7 @@
 	<file>ico/22x22/go-home.png</file>
 	<file>ico/22x22/go-up.png</file>
 	<file>ico/22x22/hotspot.png</file>
+	<file>ico/22x22/label.png</file>
 	<file>ico/22x22/landscape.png</file>
 	<file>ico/22x22/line.png</file>
 	<file>ico/22x22/lower.png</file>
@@ -153,7 +170,7 @@
 	<file>ico/22x22/view-refresh.png</file>
 	<file>ico/22x22/view-restore.png</file>
 	<file>ico/22x22/window-new.png</file>
-	<file>ico/22x22/zoom-fit-best.png</file>
+	<file>ico/22x22/zoom-draw.png</file>
 	<file>ico/22x22/zoom-in.png</file>
 	<file>ico/22x22/zoom-original.png</file>
 	<file>ico/22x22/zoom-out.png</file>
@@ -180,6 +197,7 @@
 	<file>ico/oxygen-icons/48x48/apps/qelectrotech.png</file>
 	<file>ico/oxygen-icons/64x64/apps/qelectrotech.png</file>
 	<file>ico/splash.png</file>
+	<file>titleblocks/default.titleblock</file>
 	<file>LICENSE</file>
 </qresource>
 </RCC>

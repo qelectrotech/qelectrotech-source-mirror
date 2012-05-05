@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -48,6 +48,7 @@ class FileElementsCollection : public ElementsCollection {
 	virtual bool isReadable();
 	virtual bool isWritable();
 	virtual bool write();
+	virtual bool isCacheable() const;
 	
 	private:
 	void deleteContent();
@@ -56,5 +57,6 @@ class FileElementsCollection : public ElementsCollection {
 	private:
 	QString coll_path;
 	FileElementsCategory *root;
+	QMutex reload_mutex_;       ///< Mutex used to avoid loading a collection twice at the same time
 };
 #endif

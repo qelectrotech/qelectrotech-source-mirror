@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "borderpropertieswidget.h"
 #include <QtGui>
 #include "qetapp.h"
-#include "borderinset.h"
+#include "bordertitleblock.h"
 
 /**
 	Constructeur
@@ -99,10 +99,11 @@ void BorderPropertiesWidget::build() {
 	QLabel *ds1 = new QLabel(tr("Colonnes :"));
 	
 	columns_count = new QSpinBox(diagram_size_box);
-	columns_count -> setMinimum(BorderInset::minNbColumns());
+	columns_count -> setMinimum(BorderTitleBlock::minNbColumns());
+	columns_count -> setMaximum(10000); // valeur arbitraire
 	
 	columns_width = new QSpinBox(diagram_size_box);
-	columns_width -> setMinimum(qRound(BorderInset::minColumnsWidth()));
+	columns_width -> setMinimum(qRound(BorderTitleBlock::minColumnsWidth()));
 	columns_width -> setSingleStep(10);
 	columns_width -> setPrefix(tr("\327", "multiplication symbol"));
 	columns_width -> setSuffix(tr("px",   "unit for cols width"));
@@ -113,10 +114,11 @@ void BorderPropertiesWidget::build() {
 	QLabel *ds2 = new QLabel(tr("Lignes :"));
 	
 	rows_count = new QSpinBox(diagram_size_box);
-	rows_count -> setMinimum(BorderInset::minNbRows());
+	rows_count -> setMinimum(BorderTitleBlock::minNbRows());
+	rows_count -> setMaximum(10000); // valeur arbitraire
 	
 	rows_height  = new QSpinBox(diagram_size_box);
-	rows_height -> setMinimum(qRound(BorderInset::minRowsHeight()));
+	rows_height -> setMinimum(qRound(BorderTitleBlock::minRowsHeight()));
 	rows_height -> setSingleStep(10);
 	rows_height -> setPrefix(tr("\327", "multiplication symbol"));
 	rows_height -> setSuffix(tr("px",   "unit for rows height"));

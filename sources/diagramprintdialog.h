@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -41,10 +41,10 @@ class DiagramPrintDialog : public QWidget {
 	QString fileName() const;
 	void setDocName(const QString &);
 	QString docName() const;
-	QRect diagramRect(Diagram *) const;
-	int pagesCount(Diagram *, bool = false) const;
-	int horizontalPagesCount(Diagram *, bool = false) const;
-	int verticalPagesCount(Diagram *, bool = false) const;
+	QRect diagramRect(Diagram *, const ExportProperties &) const;
+	int pagesCount(Diagram *, const ExportProperties &, bool = false) const;
+	int horizontalPagesCount(Diagram *, const ExportProperties &, bool = false) const;
+	int verticalPagesCount(Diagram *, const ExportProperties &, bool = false) const;
 	void exec();
 	
 	private:
@@ -54,7 +54,7 @@ class DiagramPrintDialog : public QWidget {
 	
 	private slots:
 	void print(const QList<Diagram *> &, bool, const ExportProperties);
-	void printDiagram(Diagram *, bool, const ExportProperties, QPainter *, QPrinter * = 0);
+	void printDiagram(Diagram *, bool, const ExportProperties &, QPainter *, QPrinter * = 0);
 	void updatePrintTypeDialog();
 	void acceptPrintTypeDialog();
 	void browseFilePrintTypeDialog();

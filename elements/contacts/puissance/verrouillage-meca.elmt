@@ -1,0 +1,15 @@
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dnny">
+    <names>
+        <name lang="ar">قفل ميكانيكي</name>
+        <name lang="en">Mechanical lock</name>
+        <name lang="fr">Verrouillage Mécannique</name>
+        <name lang="pl">Blokada mechaniczna</name>
+        <name lang="cs">Mechanický zámek</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon x4="8" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7" x1="8" y2="-7" x2="18" y3="4" x3="13" y4="-7"/>
+        <terminal x="4" y="0" orientation="w"/>
+        <terminal x="21" y="0" orientation="e"/>
+    </description>
+</definition>

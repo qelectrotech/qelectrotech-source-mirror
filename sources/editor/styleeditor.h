@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ class StyleEditor : public ElementItemEditor {
 	CustomElementGraphicPart *part;
 	QVBoxLayout *main_layout;
 	QButtonGroup *color, *style, *weight, *filling;
-	QRadioButton *black_color, *white_color, *normal_style, *dashed_style;
+	QRadioButton *black_color, *white_color, *normal_style, *dashed_style, *dotted_style;
 	QRadioButton *none_weight, *thin_weight, *normal_weight, *no_filling;
 	QRadioButton *black_filling, *white_filling;
 	QCheckBox *antialiasing;

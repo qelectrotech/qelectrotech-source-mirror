@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,6 +17,9 @@
 */
 #include "elementslocation.h"
 #include "qetapp.h"
+
+// make this class usable with QVariant
+int ElementsLocation::MetaTypeId = qRegisterMetaType<ElementsLocation>("ElementsLocation");
 
 /**
 	Constructeur par defaut
@@ -133,6 +136,22 @@ bool ElementsLocation::addToPath(const QString &string) {
 }
 
 /**
+	@return the location of the parent category, or a copy of this location
+	when it represents a root category.
+*/
+ElementsLocation ElementsLocation::parent() const {
+	ElementsLocation copy(*this);
+	QRegExp re1("^([a-z]+://)(.*)/*$");
+	if (re1.exactMatch(path_)) {
+		QString path_proto = re1.capturedTexts().at(1);
+		QString path_path = re1.capturedTexts().at(2);
+		QString parent_path = path_path.remove(QRegExp("/*[^/]+$"));
+		copy.setPath(path_proto + parent_path);
+	}
+	return(copy);
+}
+
+/**
 	@return le projet de cet emplacement ou 0 si celui-ci n'est pas lie a
 	un projet.
 */
@@ -204,4 +223,12 @@ ElementsLocation ElementsLocation::locationFromString(const QString &string) {
 	ElementsLocation location;
 	location.fromString(string);
 	return(location);
+}
+
+/**
+	@param location A standard element location
+	@return a hash identifying this location
+*/
+uint qHash(const ElementsLocation &location) {
+	return(qHash(location.toString()));
 }

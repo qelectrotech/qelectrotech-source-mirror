@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -26,11 +26,12 @@
 #include "qetelementeditor.h"
 #include "interactivemoveelementshandler.h"
 #include "borderpropertieswidget.h"
-#include "insetpropertieswidget.h"
+#include "titleblockpropertieswidget.h"
 #include "conductorpropertieswidget.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qettabbar.h"
+#include "qettemplateeditor.h"
 
 /**
 	Constructeur
@@ -42,7 +43,7 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	project_(0)
 {
 	setObjectName("ProjectView");
-	setWindowIcon(QET::Icons::Project);
+	setWindowIcon(QET::Icons::ProjectFile);
 	
 	// construit le widget "fallback"
 	fallback_widget_ = new QWidget();
@@ -221,6 +222,11 @@ bool ProjectView::tryClosingElementEditors() {
 	foreach(QETElementEditor *editor, editors) {
 		if (!editor -> close()) return(false);
 	}
+	
+	QList<QETTitleBlockTemplateEditor *> template_editors = QETApp::titleBlockTemplateEditors(project_);
+	foreach(QETTitleBlockTemplateEditor *template_editor, template_editors) {
+		if (!template_editor -> close()) return(false);
+	}
 	return(true);
 }
 
@@ -307,6 +313,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
 	connect(diagram, SIGNAL(findElementRequired(const ElementsLocation &)), this, SIGNAL(findElementRequired(const ElementsLocation &)));
 	connect(diagram, SIGNAL(editElementRequired(const ElementsLocation &)), this, SIGNAL(editElementRequired(const ElementsLocation &)));
+	connect(diagram, SIGNAL(editTitleBlockTemplate(const QString &, bool)), this, SLOT(editTitleBlockTemplateRequired(const QString &, bool)));
 	
 	// signale l'ajout du schema
 	emit(diagramAdded(diagram));
@@ -424,7 +431,7 @@ void ProjectView::editProjectProperties() {
 	bpw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut d'un cartouche
-	InsetPropertiesWidget *ipw = new InsetPropertiesWidget(project_ -> defaultInsetProperties(), true);
+	TitleBlockPropertiesWidget *ipw = new TitleBlockPropertiesWidget(project_ -> defaultTitleBlockProperties(), true);
 	ipw -> setReadOnly(project_is_read_only);
 	
 	// proprietes par defaut des conducteurs
@@ -469,7 +476,7 @@ void ProjectView::editProjectProperties() {
 	if (properties_dialog.exec() == QDialog::Accepted && !project_is_read_only) {
 		project_ -> setTitle(title_field -> text());
 		project_ -> setDefaultBorderProperties(bpw -> borderProperties());
-		project_ -> setDefaultInsetProperties(ipw -> insetProperties());
+		project_ -> setDefaultTitleBlockProperties(ipw -> titleBlockProperties());
 		project_ -> setDefaultConductorProperties(cpw -> conductorProperties());
 	}
 }
@@ -637,11 +644,12 @@ bool ProjectView::saveAll() {
 }
 
 /**
-	Propose a l'utilisateur de nettoyer le projet ; cela inclut la possibilite :
-	  * de supprimer les elements inutilises dans le projet
-	  * de supprimer les categories vides
-	@return le nombre de traitements effectues (0 si rien n'a ete fait, 1 ou
-	2 sinon)
+	Allow the user to clean the project, which includes:
+	  * deleting unused title block templates
+	  * deleting unused elements
+	  * deleting empty categories
+	@return an integer value above zero if elements and/or categories were
+	cleaned.
 */
 int ProjectView::cleanProject() {
 	if (!project_) return(0);
@@ -657,10 +665,12 @@ int ProjectView::cleanProject() {
 	}
 	
 	// construit un petit dialogue pour parametrer le nettoyage
+	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les mod\350les de cartouche inutilisés dans le projet"));
 	QCheckBox *clean_elements   = new QCheckBox(tr("Supprimer les \351l\351ments inutilis\351s dans le projet"));
 	QCheckBox *clean_categories = new QCheckBox(tr("Supprimer les cat\351gories vides"));
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
+	clean_tbt        -> setChecked(true);
 	clean_elements   -> setChecked(true);
 	clean_categories -> setChecked(true);
 	
@@ -671,6 +681,7 @@ int ProjectView::cleanProject() {
 	
 	clean_dialog.setWindowTitle(tr("Nettoyer le projet", "window title"));
 	QVBoxLayout *clean_dialog_layout = new QVBoxLayout();
+	clean_dialog_layout -> addWidget(clean_tbt);
 	clean_dialog_layout -> addWidget(clean_elements);
 	clean_dialog_layout -> addWidget(clean_categories);
 	clean_dialog_layout -> addWidget(buttons);
@@ -681,6 +692,9 @@ int ProjectView::cleanProject() {
 	
 	int clean_count = 0;
 	if (clean_dialog.exec() == QDialog::Accepted) {
+		if (clean_tbt -> isChecked()) {
+			project_ -> cleanUnusedTitleBlocKTemplates();
+		}
 		if (clean_elements -> isChecked()) {
 			InteractiveMoveElementsHandler *handler = new InteractiveMoveElementsHandler(this);
 			project_ -> cleanUnusedElements(handler);
@@ -792,6 +806,22 @@ void ProjectView::tabMoved(int from, int to) {
 	
 	// emet un signal pour informer le reste du monde que l'ordre des schemas a change
 	emit(diagramOrderChanged(this, from, to));
+}
+
+/**
+	Require the edition of the \a template_name title blocke template.
+	@param template_name Name of the tempalte to be edited
+	@param duplicate If true, this methd will ask the user for a template name
+	in order to duplicate the \a template_name template
+*/
+void ProjectView::editTitleBlockTemplateRequired(const QString &template_name, bool duplicate) {
+	if (!project_) return;
+	emit(
+		editTitleBlockTemplate(
+			project_ -> embeddedTitleBlockTemplatesCollection() -> location(template_name),
+			duplicate
+		)
+	);
 }
 
 /**

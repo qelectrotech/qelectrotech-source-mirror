@@ -1,11 +1,13 @@
-<definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس فصل يفتح متأخرا</name>
         <name lang="de">Kontakt Einfach (NC / einschaltverzögert)</name>
         <name lang="ru">Контакт с задержкой при срабатывании (НЗ)</name>
         <name lang="pt">Contacto simples (NC / tempo retardado de ligado)</name>
         <name lang="en">Simple contact (NC / switch-on delay timer)</name>
+        <name lang="it">Contatto semplice (NC ritardato all'apertura)</name>
         <name lang="fr">Contact simple (NF / tempo travail)</name>
-        <name lang="pl">Zestyk rozwierny</name>
+        <name lang="pl">Zestyk rozwierny działający z opóźnieniem</name>
         <name lang="es">Contactor simple (NC / tiempo retardado de encendido)</name>
         <name lang="cs">Jednoduché spojení (NC / časový spínač pro zpoždění zapnutí)</name>
     </names>

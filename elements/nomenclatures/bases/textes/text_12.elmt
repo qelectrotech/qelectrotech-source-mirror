@@ -1,12 +1,14 @@
-<definition width="20" version="0.2" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy" >
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
-        <name lang="de" >T12 Textfeld</name>
-        <name lang="fr" >Zone texte T12</name>
-        <name lang="en" >T12 text area</name>
-        <name lang="pl" >Obszar tekstowy T12</name>
-        <name lang="cs" >Textové pole T12</name>
+        <name lang="ar">حقل نصي T12</name>
+        <name lang="de">T12 Textfeld</name>
+        <name lang="en">T12 text area</name>
+        <name lang="fr">Zone texte T12</name>
+        <name lang="pl">Pole tekstowe T12</name>
+        <name lang="cs">Textové pole T12</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="-3" y="5.66667" size="12" rotate="true" text="_" />
+        <input x="-3" y="5.6666" size="12" rotate="true" text="_"/>
     </description>
 </definition>

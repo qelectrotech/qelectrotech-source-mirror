@@ -1,24 +1,27 @@
-<definition width="60" version="0.2" hotspot_x="20" hotspot_y="45" height="80" type="element" orientation="dnny" >
+<definition width="60" version="0.3" hotspot_x="20" hotspot_y="45" height="80" type="element" orientation="dnny">
     <names>
-        <name lang="de" >Spule</name>
-        <name lang="ru" >Обмотка</name>
-        <name lang="en" >Coil</name>
-        <name lang="fr" >Bobine</name>
-        <name lang="es" >Bobina</name>
-        <name lang="pl" >Cewka</name>
-        <name lang="cs" >Cívka</name>
+        <name lang="ar">ملف</name>
+        <name lang="de">Spule</name>
+        <name lang="ru">Обмотка</name>
+        <name lang="en">Coil</name>
+        <name lang="it">Bobina</name>
+        <name lang="fr">Bobine</name>
+        <name lang="pl">Cewka</name>
+        <name lang="es">Bobina</name>
+        <name lang="cs">Cívka</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="4" y="20" size="6" rotate="true" text="_" />
-        <input x="4" y="-22" size="6" rotate="true" text="_" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-8" x2="0" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="21" x2="0" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="14" y2="-8" x2="14" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-14" y2="8" x2="14" />
-        <input x="20" y="2.66667" size="9" text="_" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="14" y2="-8" x2="-14" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-14" y2="8" x2="-14" />
-        <terminal x="0" y="-20" orientation="n" />
-        <terminal x="0" y="21" orientation="s" />
+        <input x="4" y="20" size="6" rotate="true" text="_"/>
+        <input x="4" y="-22" size="6" rotate="true" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="0" y2="-8" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="0" y2="21" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="14" y2="-8" x2="14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-14" y2="8" x2="14"/>
+        <input x="20" y="2.6666" size="9" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="14" y2="-8" x2="-14"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-14" y2="8" x2="-14"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
     </description>
 </definition>

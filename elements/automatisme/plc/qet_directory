@@ -1,9 +1,11 @@
 <qet-directory>
     <names>
-        <name lang="de" >SPS</name>
-        <name lang="en" >Plc</name>
-        <name lang="fr" >Plc</name>
-        <name lang="pl" >Sterowniki PLC</name>
-        <name lang="cs" >PlC</name>
+        <name lang="de">SPS</name>
+        <name lang="en">Plc</name>
+           <name lang="ar">حاكمات منطقية قابلة للبرمجة PLC</name>
+      <name lang="fr">Plc</name>
+        <name lang="pl">Sterowniki PLC</name>
+        <name lang="cs">PlC</name>
+        <name lang="pt">PlC</name>
     </names>
 </qet-directory>

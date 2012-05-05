@@ -34,20 +34,8 @@
         <translation>&amp;Lizenzvertrag</translation>
     </message>
     <message>
-        <source>QElectroTech, une application de réalisation de schémas électriques.</source>
-        <translation>QElectroTech ist eine Anwendung zur Umsetzung von Schaltplänen.</translation>
-    </message>
-    <message>
-        <source>© 2006-2010 Les développeurs de QElectroTech</source>
-        <translation>© 2006-2010 Die Entwickler von QElectroTech</translation>
-    </message>
-    <message>
         <source>Idée originale</source>
         <translation>Grundidee</translation>
-    </message>
-    <message>
-        <source>Programmation</source>
-        <translation>Programmierung</translation>
     </message>
     <message>
         <source>Traduction en espagnol</source>
@@ -95,7 +83,38 @@
     </message>
     <message>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Rumänische Übersetzung</translation>
+    </message>
+    <message>
+        <source>Traduction en italien</source>
+        <translation>Italiänische Übersetzung</translation>
+    </message>
+    <message>
+        <source>Développement</source>
+        <translation>Entwicklung</translation>
+    </message>
+    <message>
+        <source>Traduction en arabe</source>
+        <translation>Arabische Übersetzung</translation>
+    </message>
+    <message>
+        <source>QElectroTech, une application de réalisation de schémas électriques.</source>
+        <comment>about tab, description line</comment>
+        <translation>QElectroTech ist eine Anwendung zur Umsetzung von Schaltplänen.</translation>
+    </message>
+    <message>
+        <source>© 2006-2012 Les développeurs de QElectroTech</source>
+        <comment>about tab, developers line</comment>
+        <translation>© 2006-2012 Die Entwickler von QElectroTech</translation>
+    </message>
+    <message>
+        <source>Collection d&apos;éléments</source>
+        <translation>Kollektion Elemente</translation>
+    </message>
+    <message>
+        <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
+        <comment>about tab, contact line</comment>
+        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
 </context>
 <context>
@@ -147,29 +166,6 @@
     <message>
         <source>angle</source>
         <translation>Winkel</translation>
-    </message>
-</context>
-<context>
-    <name>BorderInset</name>
-    <message>
-        <source> Auteur : %1</source>
-        <comment>inset content</comment>
-        <translation> Author : %1</translation>
-    </message>
-    <message>
-        <source> Date : %1</source>
-        <comment>inset content</comment>
-        <translation> Datum : %1</translation>
-    </message>
-    <message>
-        <source> Fichier : %1</source>
-        <comment>inset content</comment>
-        <translation> Datei : %1</translation>
-    </message>
-    <message>
-        <source> Folio : %1</source>
-        <comment>inset content</comment>
-        <translation> Blatt : %1</translation>
     </message>
 </context>
 <context>
@@ -441,9 +437,23 @@
         <translation>Leitereigenschaften bearbeiten</translation>
     </message>
     <message>
-        <source>Éditer les propriétés par défaut des conducteurs</source>
+        <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation>Standard-Leitereigenschaften bearbeiten</translation>
+        <translation>Ausrichtung des angewählten Textes</translation>
+    </message>
+    <message>
+        <source>Folio : %1
+</source>
+        <translation>Seite : %1</translation>
+    </message>
+    <message>
+        <source>Choisir la nouvelle couleur de ce conducteur</source>
+        <translation>Neue Farbe der Verbindung wählen</translation>
+    </message>
+    <message>
+        <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
+        <comment>&quot;What&apos;s this?&quot; tip</comment>
+        <translation>Dies ist die Zone in der Sie Ihre Schema gestalten können, Sie können Elemente hinzufügen und Kontakte mit Leitern verbinden. Es ist auch möglich, Text unabhängig hinzuzufügen.</translation>
     </message>
 </context>
 <context>
@@ -685,21 +695,6 @@
     </message>
 </context>
 <context>
-    <name>ElementsCategoriesList</name>
-    <message>
-        <source>Collection projet</source>
-        <translation>Sammlung Projekte</translation>
-    </message>
-    <message>
-        <source>Collection QET</source>
-        <translation>Sammlung QET</translation>
-    </message>
-    <message>
-        <source>Collection utilisateur</source>
-        <translation>Sammlung Benutzer</translation>
-    </message>
-</context>
-<context>
     <name>ElementsCategoriesWidget</name>
     <message>
         <source>Recharger les catégories</source>
@@ -878,37 +873,82 @@ Die Änderungen sind endgültig.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <source>Collection projet</source>
-        <translation>Sammlung Projekte</translation>
+        <source>Cartouches embarqués</source>
+        <translation>eingelegte Kartusche</translation>
     </message>
     <message>
-        <source>Ceci est un élément que vous pouvez insérer dans votre schéma par cliquer-déplacer</source>
-        <translation>Dies ist ein Element, das Sie in Ihre Zeichnung einfügen können durch Klicken und Ziehen</translation>
+        <source>Collection embarquée</source>
+        <translation>intergierte Kollektion</translation>
     </message>
     <message>
-        <source>Cliquer-déposez cet élément sur le schéma pour insérer un élément </source>
-        <translation>Klicken und ziehen Sie das Element um es ins Schema einzufügen</translation>
+        <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
+        <comment>Status tip</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern der Kollektion der eingelegten Kartusche</translation>
     </message>
     <message>
-        <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1 [nicht im Projekt verwendet]</translation>
+        <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
+        <comment>Status tip</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern der Kollektion der integierten Elemente</translation>
     </message>
     <message>
-        <source>Collection QET</source>
-        <translation>Sammlung QET</translation>
+        <source>Double-cliquez pour réduire ou développer ce projet</source>
+        <comment>Status tip</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern des Projektes</translation>
     </message>
     <message>
-        <source>Collection utilisateur</source>
-        <translation>Sammlung Benutzer</translation>
+        <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
+        <comment>Status tip displayed when selecting a title block template</comment>
+        <translation>Klicken und ziehen Sie dieses Modell der Kartusche um es auf ein Schema anzuwenden.</translation>
     </message>
     <message>
-        <source>Pas de fichier</source>
-        <comment>tooltip for a file-less project in the element panel</comment>
-        <translation>Keine Datei</translation>
+        <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
+        <comment>Status tip displayed by elements category</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern dieser Kategorie des Elements</translation>
     </message>
     <message>
-        <source>Schéma sans titre</source>
-        <translation>Schema unbenannt</translation>
+        <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
+        <comment>Status tip displayed in the status bar when selecting an element</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
+        <comment>Status tip</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern der Kollektion der QElectroTech Kartuschen</translation>
+    </message>
+    <message>
+        <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist die Kollektion von Kartuschen die von QElectroTech mitgeliefert wurde. Da dies eine Systemkomponente ist kann sie nicht einfach angepasst werden.</translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
+        <comment>Status tip</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist die Kollektion von Kartuschen die von QElectroTech mitgeliefert wurde. Da dies eine Systemkomponente ist kann sie normalerweise nicht angepasst werden.</translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
+        <comment>Status tip</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern der persönlichen Kollektion der Kartuschen</translation>
+    </message>
+    <message>
+        <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist Ihre persönliche Kollektion von Kartuschen. Verwenden Sie diese um Ihre eigenen Kartuschen zu erstellen, speichern und bearbeiten.</translation>
+    </message>
+    <message>
+        <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
+        <comment>Status tip</comment>
+        <translation>Doppelkick zum Reduzieren oder Erweitern ihrer persönlichen Kollektion von Elementen</translation>
+    </message>
+    <message>
+        <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist Ihre persönliche Kollektion von Elementen. Verwenden Sie diese um Ihre eigenen Elemente zu erstellen, speichern und bearbeiten.</translation>
     </message>
 </context>
 <context>
@@ -936,10 +976,6 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Nouvel élément</source>
         <translation>Neues Element</translation>
-    </message>
-    <message>
-        <source>Importer un élément</source>
-        <translation>Importieren eines Elements</translation>
     </message>
     <message>
         <source>Éditer l&apos;élément</source>
@@ -1005,6 +1041,32 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Vous pouvez utiliser ce gestionnaire pour ajouter, supprimer ou modifier les catégories.</source>
         <translation>Sie können die Verwaltung verwenden um Kategorien hinzuzufügen, löschen oder zu bearbeiten.</translation>
+    </message>
+    <message>
+        <source>Éditer ce modèle</source>
+        <translation>Modell bearbeiten</translation>
+    </message>
+    <message>
+        <source>Supprimer ce modèle</source>
+        <translation>Modell löschen</translation>
+    </message>
+    <message>
+        <source>Lecture...</source>
+        <comment>Reading of elements/categories files</comment>
+        <translation>Lesen...</translation>
+    </message>
+    <message>
+        <source>Chargement : %p%</source>
+        <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
+        <translation>Laden : %p%</translation>
+    </message>
+    <message>
+        <source>Ouvrir un fichier élément</source>
+        <translation>Element öffnen</translation>
+    </message>
+    <message>
+        <source>Nouveau modèle</source>
+        <translation>Neues Modell</translation>
     </message>
 </context>
 <context>
@@ -1228,6 +1290,72 @@ Die Änderungen sind endgültig.</translation>
         <comment>configuration page title</comment>
         <translation>Allgemein</translation>
     </message>
+    <message>
+        <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
+        <comment>configuration option</comment>
+        <translation>Entwickeln Sie in diesem Panel neu integierte Elemente</translation>
+    </message>
+</context>
+<context>
+    <name>GenericPanel</name>
+    <message>
+        <source>Pas de fichier</source>
+        <comment>tooltip for a file-less project in the element panel</comment>
+        <translation>Keine Datei</translation>
+    </message>
+    <message>
+        <source>Schéma sans titre</source>
+        <comment>Fallback label when a diagram has no title</comment>
+        <translation>Schema unbenannt</translation>
+    </message>
+    <message>
+        <source>%1 - %2</source>
+        <comment>label displayed for a diagram in the panel ; %1 is the folio index, %2 is the diagram title</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Modèles de cartouche</source>
+        <translation>Kartuschenmodell</translation>
+    </message>
+    <message>
+        <source>Modèle &quot;%1&quot;</source>
+        <comment>used to display a title block template</comment>
+        <translation>Modell &quot;%1&quot;</translation>
+    </message>
+    <message>
+        <source>%1 [non utilisé dans le projet]</source>
+        <translation>%1 [nicht im Projekt verwendet]</translation>
+    </message>
+    <message>
+        <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist ein Kartuschenmodell, welches auf ein Schema angewendet werden kann.</translation>
+    </message>
+    <message>
+        <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist eine Kategorie von Elementen, ein einfacher Container um die Kollektion der Elemente zu verwalten.</translation>
+    </message>
+    <message>
+        <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Dies ist ein Element das Sie in ein Schema einfügen können.</translation>
+    </message>
 </context>
 <context>
     <name>GhostElement</name>
@@ -1280,53 +1408,6 @@ Die Änderungen sind endgültig.</translation>
     </message>
 </context>
 <context>
-    <name>InsetPropertiesWidget</name>
-    <message>
-        <source>Informations du cartouche</source>
-        <translation>Informationen über die Kartusche</translation>
-    </message>
-    <message>
-        <source>Pas de date</source>
-        <translation>Kein Datum</translation>
-    </message>
-    <message>
-        <source>Date courante</source>
-        <translation>Aktuelles Datum</translation>
-    </message>
-    <message>
-        <source>Date fixe : </source>
-        <translation>Datum festgelegt : </translation>
-    </message>
-    <message>
-        <source>Les variables suivantes sont utilisables dans le champ Folio :
-  - %id : numéro du schéma courant dans le projet
-  - %total : nombre total de schémas dans le projet</source>
-        <translation>Die folgenden Variablen sind in dem Feld Seite eingesetzt:
-  -% ID-Nummer aus dem aktuellen Schema in dem Projekt
-  -% Gesamt: Gesamtanzahl der Schema in dem Projekt</translation>
-    </message>
-    <message>
-        <source>Titre : </source>
-        <translation>Titel : </translation>
-    </message>
-    <message>
-        <source>Auteur : </source>
-        <translation>Author : </translation>
-    </message>
-    <message>
-        <source>Date : </source>
-        <translation>Datum : </translation>
-    </message>
-    <message>
-        <source>Fichier : </source>
-        <translation>Datei : </translation>
-    </message>
-    <message>
-        <source>Folio : </source>
-        <translation>Seite : </translation>
-    </message>
-</context>
-<context>
     <name>IntegrationMoveElementsHandler</name>
     <message>
         <source>Intégration d&apos;un élément</source>
@@ -1356,6 +1437,53 @@ Die Änderungen sind endgültig.</translation>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
         <translation>Zwei Elemente zusammenfügen</translation>
+    </message>
+</context>
+<context>
+    <name>IntegrationMoveTitleBlockTemplatesHandler</name>
+    <message>
+        <source>Impossible d&apos;accéder à la catégorie parente</source>
+        <comment>error message</comment>
+        <translation>Kein Zugriff auf die übergeordnete Kategorie</translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <comment>message box title</comment>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <source>Intégration d&apos;un modèle de cartouche</source>
+        <translation>Integration eines Kartuschenmodelles</translation>
+    </message>
+    <message>
+        <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
+        <comment>dialog content - %1 is a title block template name</comment>
+        <translation>Das Modell wurde bereits in das Projekt integriert. Allerdings scheint die Version, anders zu sein. Was möchten Sie tun?</translation>
+    </message>
+    <message>
+        <source>Utiliser le modèle déjà intégré</source>
+        <comment>dialog content</comment>
+        <translation>Verwendung eines bereits integrieten Elements</translation>
+    </message>
+    <message>
+        <source>Intégrer le modèle déposé</source>
+        <comment>dialog content</comment>
+        <translation>Integrietes Element hinterlegen</translation>
+    </message>
+    <message>
+        <source>Faire cohabiter les deux modèles</source>
+        <comment>dialog content</comment>
+        <translation>Zwei Modelle zusammenfügen</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
+        <comment>error message</comment>
+        <translation>Es ist nicht möglich eine XML-Beschreibung dieses Modelles zu erhalten</translation>
+    </message>
+    <message>
+        <source>Écraser le modèle déjà intégré</source>
+        <comment>dialog content</comment>
+        <translation>Überschreiben eines bereits hinterlegten Modelles</translation>
     </message>
 </context>
 <context>
@@ -1820,6 +1948,10 @@ Die Änderungen sind endgültig.</translation>
         <comment>window title for a project-less ProjectView</comment>
         <translation>Projekt</translation>
     </message>
+    <message>
+        <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
+        <translation>Löschen von nicht verwendeten Kartuschenmodellen im Projekt</translation>
+    </message>
 </context>
 <context>
     <name>QETApp</name>
@@ -1952,6 +2084,84 @@ Options disponibles :
 </source>
         <translation>  --lang-dir=DIR                Definieren Sie den Ordner mit den Sprachdateien</translation>
     </message>
+    <message>
+        <source>Q</source>
+        <comment>Single-letter example text - translate length, not meaning</comment>
+        <translation>Q</translation>
+    </message>
+    <message>
+        <source>QET</source>
+        <comment>Small example text - translate length, not meaning</comment>
+        <translation>QET</translation>
+    </message>
+    <message>
+        <source>Schema</source>
+        <comment>Normal example text - translate length, not meaning</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Electrique</source>
+        <comment>Normal example text - translate length, not meaning</comment>
+        <translation>Elektrik</translation>
+    </message>
+    <message>
+        <source>QElectroTech</source>
+        <comment>Long example text - translate length, not meaning</comment>
+        <translation>QElectroTech</translation>
+    </message>
+    <message>
+        <source>Chargement... Lecture des collections d&apos;éléments</source>
+        <comment>splash screen caption</comment>
+        <translation>Laden... lesen der Kollektion der Elemente</translation>
+    </message>
+    <message>
+        <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
+        <comment>splash screen caption</comment>
+        <translation>Laden... Initialisierung Cache der Kollektion der Elemente</translation>
+    </message>
+    <message>
+        <source>&amp;Masquer tous les éditeurs de cartouche</source>
+        <comment>systray submenu entry</comment>
+        <translation>&amp;Alle verbergen Kartuscheneditoren</translation>
+    </message>
+    <message>
+        <source>&amp;Restaurer tous les éditeurs de cartouche</source>
+        <comment>systray submenu entry</comment>
+        <translation>&amp;Wieder herstellen aller Kartuscheneditoren</translation>
+    </message>
+    <message>
+        <source>Éditeurs de cartouche</source>
+        <comment>systray menu entry</comment>
+        <translation>Kartuscheneditoren</translation>
+    </message>
+    <message>
+        <source>Cartouches QET</source>
+        <comment>title of the title block templates collection provided by QElectroTech</comment>
+        <translation>Kartusche QET</translation>
+    </message>
+    <message>
+        <source>Cartouches utilisateur</source>
+        <comment>title of the user&apos;s title block templates collection</comment>
+        <translation>Kartuschen Benutzer</translation>
+    </message>
+    <message>
+        <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
+</source>
+        <translation>  --common-tbt-dir=DIR          Definieren Sie den Ordner der Kollektion der Kartuschenmodelle</translation>
+    </message>
+    <message>
+        <source>LTR</source>
+        <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
+        <translation>LTR</translation>
+    </message>
+    <message>
+        <source>Collection QET</source>
+        <translation>Sammlung QET</translation>
+    </message>
+    <message>
+        <source>Collection utilisateur</source>
+        <translation>Sammlung Benutzer</translation>
+    </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
@@ -2068,10 +2278,6 @@ Options disponibles :
         <translation>Leiter reinitialisien</translation>
     </message>
     <message>
-        <source>Conducteurs par défaut</source>
-        <translation>Standard-Leiter</translation>
-    </message>
-    <message>
         <source>Propriétés du schéma</source>
         <translation>Eigenschaften des Schemas</translation>
     </message>
@@ -2144,10 +2350,6 @@ Options disponibles :
         <translation>Mode Visualisation</translation>
     </message>
     <message>
-        <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Einstellung QElectroTech</translation>
-    </message>
-    <message>
         <source>&amp;Mosaïque</source>
         <translation>&amp;Mosaik</translation>
     </message>
@@ -2162,14 +2364,6 @@ Options disponibles :
     <message>
         <source>Projet précédent</source>
         <translation>Vorheriges Projekt</translation>
-    </message>
-    <message>
-        <source>À &amp;propos de QElectroTech</source>
-        <translation> &amp;Über QElectroTech</translation>
-    </message>
-    <message>
-        <source>À propos de &amp;Qt</source>
-        <translation>Über &amp;Qt</translation>
     </message>
     <message>
         <source>Ctrl+Shift+I</source>
@@ -2212,10 +2406,6 @@ Options disponibles :
         <translation>Ctrl+L</translation>
     </message>
     <message>
-        <source>Ctrl+D</source>
-        <translation>Ctrl+D</translation>
-    </message>
-    <message>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
     </message>
@@ -2226,10 +2416,6 @@ Options disponibles :
     <message>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <source>Crée un nouveau schéma</source>
@@ -2327,11 +2513,6 @@ Options disponibles :
         <translation>Entfernt ausgewählte Elemente aus dem Schema</translation>
     </message>
     <message>
-        <source>Pivote les éléments sélectionnés</source>
-        <comment>status bar tip</comment>
-        <translation>Dreht die ausgewählten Elemente</translation>
-    </message>
-    <message>
         <source>Édite les propriétés des objets sélectionné</source>
         <comment>status bar tip</comment>
         <translation>Bearbeiten der Eigenschaften der ausgewählten Objekte</translation>
@@ -2340,11 +2521,6 @@ Options disponibles :
         <source>Recalcule les chemins des conducteurs sans tenir compte des modifications</source>
         <comment>status bar tip</comment>
         <translation>Berechnet die Wege der Leiter, unabhängig von Veränderungen</translation>
-    </message>
-    <message>
-        <source>Spécifie les propriétés par défaut des conducteurs</source>
-        <comment>status bar tip</comment>
-        <translation>Festlegen der Standard-Eigenschaften der Leiter</translation>
     </message>
     <message>
         <source>Édite les informations affichées par le cartouche</source>
@@ -2413,11 +2589,6 @@ Options disponibles :
         <translation>Zulassen von Visualisation der Elemente ohne sie verändern zu können</translation>
     </message>
     <message>
-        <source>Permet de régler différents paramètres de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
-    </message>
-    <message>
         <source>Dispose les fenêtres en mosaïque</source>
         <comment>status bar tip</comment>
         <translation>Anordnen der Fenster in Mosaik</translation>
@@ -2438,16 +2609,6 @@ Options disponibles :
         <translation>Aktiviert das vorherige Projekt</translation>
     </message>
     <message>
-        <source>Affiche des informations sur QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur la bibliothèque Qt</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über die Qt-Bibliothek</translation>
-    </message>
-    <message>
         <source>&amp;Fichier</source>
         <translation>&amp;Datei</translation>
     </message>
@@ -2464,20 +2625,8 @@ Options disponibles :
         <translation>Anzei&amp;ge</translation>
     </message>
     <message>
-        <source>&amp;Configuration</source>
-        <translation>&amp;Einstellung</translation>
-    </message>
-    <message>
         <source>Fe&amp;nêtres</source>
         <translation>Fe&amp;nster</translation>
-    </message>
-    <message>
-        <source>&amp;Aide</source>
-        <translation>&amp;Hilfe</translation>
-    </message>
-    <message>
-        <source>Afficher</source>
-        <translation>Anzeigen</translation>
     </message>
     <message>
         <source>Affiche ou non la barre d&apos;outils principale</source>
@@ -2550,24 +2699,6 @@ Options disponibles :
         <translation>Es scheint, dass die Datei %1 keine Projekt-Datei QElectroTech ist. Sie kann nicht geöffnet werden.</translation>
     </message>
     <message>
-        <source>Sortir du &amp;mode plein écran</source>
-        <translation>Velassen &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode fenêtré</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Fenstermodus</translation>
-    </message>
-    <message>
-        <source>Passer en &amp;mode plein écran</source>
-        <translation>Umschalten auf &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode plein écran</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Vollbild-Modus</translation>
-    </message>
-    <message>
         <source>Active le projet « %1 »</source>
         <translation>Aktiviere Projekt « %1 »</translation>
     </message>
@@ -2582,6 +2713,34 @@ Options disponibles :
     <message>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Unmöglich das Element im Panel zu finden</translation>
+    </message>
+    <message>
+        <source>Orienter les textes</source>
+        <translation>Texte ausrichten</translation>
+    </message>
+    <message>
+        <source>Ctrl+Space</source>
+        <translation>Ctrl+Space</translation>
+    </message>
+    <message>
+        <source>Pivote les éléments et textes sélectionnés</source>
+        <comment>status bar tip</comment>
+        <translation>Dreht den ausgewählten Elemente und Texte</translation>
+    </message>
+    <message>
+        <source>Pivote les textes sélectionnés à un angle précis</source>
+        <comment>status bar tip</comment>
+        <translation>Dreht die ausgewählten Texte in einem exakten Winkel</translation>
+    </message>
+    <message>
+        <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
+        <comment>Status tip</comment>
+        <translation>Klicken Sie auf eine Aktion um in den Bearbeitungsmodus des Schemas zurück zu gelangen</translation>
+    </message>
+    <message>
+        <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation>Diese Tafel listet die auf dem auktuellen Schema durchgeführten Aktionen auf. Das klicken auf eine Aktion ermöglicht zum Zustand zugelangen, gleich nach seiner Anwendung.</translation>
     </message>
 </context>
 <context>
@@ -2752,39 +2911,12 @@ Options disponibles :
         <translation>Textfeld zufügen</translation>
     </message>
     <message>
-        <source>&amp;Configurer QElectroTech</source>
-        <translation>&amp;Einstellung QElectroTech</translation>
-    </message>
-    <message>
-        <source>À &amp;propos de QElectroTech</source>
-        <translation> &amp;Über QElectroTech</translation>
-    </message>
-    <message>
-        <source>À propos de &amp;Qt</source>
-        <translation>Über &amp;Qt</translation>
-    </message>
-    <message>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
         <translation>Halten Sie die Umschalttaste gedrückt, um mehrere aufeinander folgende Einfügungen zu machen</translation>
     </message>
     <message>
         <source>Utilisez le bouton droit de la souris pour poser le dernier point du polygone</source>
         <translation>Benutzen Sie die rechte Maustaste, um den letzten Punkt des Polygons zu setzen</translation>
-    </message>
-    <message>
-        <source>Permet de régler différents paramètres de QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur QElectroTech</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über QElectroTech</translation>
-    </message>
-    <message>
-        <source>Affiche des informations sur la bibliothèque Qt</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt Informationen über die Qt-Bibliothek</translation>
     </message>
     <message>
         <source>Annuler</source>
@@ -2829,10 +2961,6 @@ Options disponibles :
     <message>
         <source>Ctrl+0</source>
         <translation>Ctrl+0</translation>
-    </message>
-    <message>
-        <source>Ctrl+Shift+F</source>
-        <translation>Ctrl+Shift+F</translation>
     </message>
     <message>
         <source>Ctrl+E</source>
@@ -2908,38 +3036,8 @@ Options disponibles :
         <translation>W&amp;erkzeuge</translation>
     </message>
     <message>
-        <source>&amp;Configuration</source>
-        <translation>&amp;Einstellung</translation>
-    </message>
-    <message>
-        <source>&amp;Aide</source>
-        <translation>&amp;Hilfe</translation>
-    </message>
-    <message>
         <source>Coller depuis...</source>
         <translation>Einfügen aus ...</translation>
-    </message>
-    <message>
-        <source>Afficher</source>
-        <translation>Anzeigen</translation>
-    </message>
-    <message>
-        <source>Sortir du &amp;mode plein écran</source>
-        <translation>Velassen &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode fenêtré</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Fenstermodus</translation>
-    </message>
-    <message>
-        <source>Passer en &amp;mode plein écran</source>
-        <translation>Umschalten auf &amp;Vollbild-Modus</translation>
-    </message>
-    <message>
-        <source>Affiche QElectroTech en mode plein écran</source>
-        <comment>status bar tip</comment>
-        <translation>Zeigt QElectroTech im Vollbild-Modus</translation>
     </message>
     <message>
         <source>[Modifié]</source>
@@ -3133,6 +3231,73 @@ Options disponibles :
     </message>
 </context>
 <context>
+    <name>QETMainWindow</name>
+    <message>
+        <source>&amp;Configurer QElectroTech</source>
+        <translation>&amp;Einstellung QElectroTech</translation>
+    </message>
+    <message>
+        <source>Permet de régler différents paramètres de QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation>Zulassen von Einstellungen verschiedener Parameter in QElectroTech</translation>
+    </message>
+    <message>
+        <source>À &amp;propos de QElectroTech</source>
+        <translation> &amp;Über QElectroTech</translation>
+    </message>
+    <message>
+        <source>Affiche des informations sur QElectroTech</source>
+        <comment>status bar tip</comment>
+        <translation>Zeigt Informationen über QElectroTech</translation>
+    </message>
+    <message>
+        <source>À propos de &amp;Qt</source>
+        <translation>Über &amp;Qt</translation>
+    </message>
+    <message>
+        <source>Affiche des informations sur la bibliothèque Qt</source>
+        <comment>status bar tip</comment>
+        <translation>Zeigt Informationen über die Qt-Bibliothek</translation>
+    </message>
+    <message>
+        <source>&amp;Configuration</source>
+        <comment>window menu</comment>
+        <translation>&amp;Einstellung</translation>
+    </message>
+    <message>
+        <source>&amp;Aide</source>
+        <comment>window menu</comment>
+        <translation>&amp;Hilfe</translation>
+    </message>
+    <message>
+        <source>Sortir du &amp;mode plein écran</source>
+        <translation>Velassen &amp;Vollbild-Modus</translation>
+    </message>
+    <message>
+        <source>Affiche QElectroTech en mode fenêtré</source>
+        <comment>status bar tip</comment>
+        <translation>Zeigt QElectroTech im Fenstermodus</translation>
+    </message>
+    <message>
+        <source>Passer en &amp;mode plein écran</source>
+        <translation>Umschalten auf &amp;Vollbild-Modus</translation>
+    </message>
+    <message>
+        <source>Affiche QElectroTech en mode plein écran</source>
+        <comment>status bar tip</comment>
+        <translation>Zeigt QElectroTech im Vollbild-Modus</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+F</source>
+        <translation>Ctrl+Shift+F</translation>
+    </message>
+    <message>
+        <source>Afficher</source>
+        <comment>menu entry</comment>
+        <translation>Anzeigen</translation>
+    </message>
+</context>
+<context>
     <name>QETPrintPreviewDialog</name>
     <message>
         <source>QElectroTech : Aperçu avant impression</source>
@@ -3284,10 +3449,6 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <translation></translation>
     </message>
     <message>
-        <source>Impossible d&apos;accéder à l&apos;élément a intégrer</source>
-        <translation>Unmöglich der Zugriff auf das integriete Element</translation>
-    </message>
-    <message>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
         <translation>Ein Problem trat beim Kopieren der Kategorie %1 auf</translation>
     </message>
@@ -3297,13 +3458,295 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <translation>Warnung</translation>
     </message>
     <message>
-        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.</source>
-        <comment>message box content</comment>
-        <translation>Dieses Dokument scheint mit einer späteren Version von QElectroTech aufgezeichnet worden zu sein. Es ist möglich, dass die Öffnung des gesamten oder eines Teils dieses Dokument nicht vollständig funktioniert.</translation>
-    </message>
-    <message>
         <source>Un problème s&apos;est produit pendant la copie de l&apos;élément %1</source>
         <translation>Ein Problem trat beim Kopieren des Elements %1 auf</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
+        <translation>Kein Zugriff auf intergrierte Elemente </translation>
+    </message>
+    <message>
+        <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
+Que désirez vous faire ?</source>
+        <comment>message box content</comment>
+        <translation>Es scheint, dass die Datei die Sie zu öffnen versuchen mit einer neueren Version von QElectroTech erstellt wurde. Es ist möglich, dass das Öffnen dieses Dokumentes nur teilweise gelingt. Was möchten Sie tun?</translation>
+    </message>
+    <message>
+        <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
+        <comment>error message</comment>
+        <translation>Es ist ein Fehler bei der Integration des Modelles aufgetreten.</translation>
+    </message>
+</context>
+<context>
+    <name>QETTitleBlockTemplateEditor</name>
+    <message>
+        <source>Ctrl+Q</source>
+        <comment>shortcut to quit</comment>
+        <translation>Ctrl+Q</translation>
+    </message>
+    <message>
+        <source>Ctrl+K</source>
+        <comment>shortcut to merge cells</comment>
+        <translation>Ctrl+K</translation>
+    </message>
+    <message>
+        <source>Ctrl+J</source>
+        <comment>shortcut to split merged cell</comment>
+        <translation>Ctrl+J</translation>
+    </message>
+    <message>
+        <source>Aucune modification</source>
+        <comment>label displayed in the undo list when empty</comment>
+        <translation>Keine Veränderung</translation>
+    </message>
+    <message>
+        <source>Annulations</source>
+        <comment>dock title</comment>
+        <translation>Abbrüche</translation>
+    </message>
+    <message>
+        <source>Propriétés de la cellule</source>
+        <comment>dock title</comment>
+        <translation>Zelleigenschaften</translation>
+    </message>
+    <message>
+        <source>QElectroTech - Éditeur de modèle de cartouche</source>
+        <comment>titleblock template editor: base window title</comment>
+        <translation>QElectroTech - Editor des Kartuschenmodelles</translation>
+    </message>
+    <message>
+        <source>%1 - %2</source>
+        <comment>window title: %1 is the base window title, %2 is a template name</comment>
+        <translation>%1 - %2</translation>
+    </message>
+    <message>
+        <source>&amp;Enregistrer</source>
+        <comment>menu entry</comment>
+        <translation>&amp;Speichern</translation>
+    </message>
+    <message>
+        <source>&amp;Quitter</source>
+        <comment>menu entry</comment>
+        <translation>&amp;Beenden</translation>
+    </message>
+    <message>
+        <source>&amp;Fusionner les cellules</source>
+        <comment>menu entry</comment>
+        <translation>&amp;Zusammenführen der Zellen</translation>
+    </message>
+    <message>
+        <source>&amp;Séparer les cellules</source>
+        <comment>menu entry</comment>
+        <translation>&amp;Trennen der Zellen</translation>
+    </message>
+    <message>
+        <source>&amp;Fichier</source>
+        <comment>menu title</comment>
+        <translation>&amp;Datei</translation>
+    </message>
+    <message>
+        <source>&amp;Édition</source>
+        <comment>menu title</comment>
+        <translation>&amp;Ausgabe</translation>
+    </message>
+    <message>
+        <source>Enregistrer sous</source>
+        <comment>menu entry</comment>
+        <translation>Speichern unter</translation>
+    </message>
+    <message>
+        <source>Enregistrer le modèle sous</source>
+        <comment>dialog window title</comment>
+        <translation>Speichern des Modelles unter</translation>
+    </message>
+    <message>
+        <source>Zoom avant</source>
+        <comment>menu entry</comment>
+        <translation>Zoom in</translation>
+    </message>
+    <message>
+        <source>Zoom arrière</source>
+        <comment>menu entry</comment>
+        <translation>Zoom out</translation>
+    </message>
+    <message>
+        <source>Zoom adapté</source>
+        <comment>menu entry</comment>
+        <translation>Zoom angepasst</translation>
+    </message>
+    <message>
+        <source>Pas de zoom</source>
+        <comment>menu entry</comment>
+        <translation>Kein Zoom</translation>
+    </message>
+    <message>
+        <source>Ctrl+9</source>
+        <comment>shortcut to enable fit zoom</comment>
+        <translation>Ctrl+9</translation>
+    </message>
+    <message>
+        <source>Ctrl+0</source>
+        <comment>shortcut to reset zoom</comment>
+        <translation>Ctrl+0</translation>
+    </message>
+    <message>
+        <source>Afficha&amp;ge</source>
+        <comment>menu title</comment>
+        <translation>Anzei&amp;ge</translation>
+    </message>
+    <message>
+        <source>Enregistrer le modèle en cours ?</source>
+        <comment>dialog title</comment>
+        <translation>Speichern des aktuellen Modelles ?</translation>
+    </message>
+    <message>
+        <source>Voulez-vous enregistrer le modèle %1 ?</source>
+        <comment>dialog content - %1 is a title block template name</comment>
+        <translation>Wollen Sie das aktuelle Modell speichern %1 ?</translation>
+    </message>
+    <message>
+        <source>nouveau_modele</source>
+        <comment>template name suggestion when duplicating the default one</comment>
+        <translation>neues_Modell</translation>
+    </message>
+    <message>
+        <source>Dupliquer un modèle de cartouche</source>
+        <comment>input dialog title</comment>
+        <translation>Duplizieren eines Kartuschenmodelles</translation>
+    </message>
+    <message>
+        <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
+        <comment>input dialog text</comment>
+        <translation>Um dieses Modell zu kopieren, geben Sie den gewünschten Namen für die Kopie</translation>
+    </message>
+    <message>
+        <source>&amp;Nouveau</source>
+        <comment>menu entry</comment>
+        <translation>&amp;Neu</translation>
+    </message>
+    <message>
+        <source>&amp;Ouvrir</source>
+        <comment>menu entry</comment>
+        <translation>&amp;Öffnen</translation>
+    </message>
+    <message>
+        <source>Ouvrir depuis un fichier</source>
+        <comment>menu entry</comment>
+        <translation>Öffen von einer Datei</translation>
+    </message>
+    <message>
+        <source>Enregistrer vers un fichier</source>
+        <comment>menu entry</comment>
+        <translation>Speichern in eine Datei</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+O</source>
+        <comment>shortcut to open a template from a file</comment>
+        <translation>Ctrl+Shift+O</translation>
+    </message>
+    <message>
+        <source>Ctrl+Shift+S</source>
+        <comment>shortcut to save a template to a file</comment>
+        <translation>Ctrl+Shift+S</translation>
+    </message>
+    <message>
+        <source>[Modifié]</source>
+        <comment>window title tag</comment>
+        <translation>[Geändert]</translation>
+    </message>
+    <message>
+        <source>[Lecture seule]</source>
+        <comment>window title tag</comment>
+        <translation>[Nur lesen]</translation>
+    </message>
+    <message>
+        <source>%1 %2</source>
+        <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
+        <translation>%1 %2</translation>
+    </message>
+    <message>
+        <source>Ouvrir un modèle</source>
+        <comment>File &gt; open dialog window title</comment>
+        <translation>Öffnen eines Modelles</translation>
+    </message>
+    <message>
+        <source>Ouvrir un fichier</source>
+        <comment>dialog title</comment>
+        <translation>Öffnen einer Datei</translation>
+    </message>
+    <message>
+        <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
+        <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
+        <translation>Kartuschenmodelle QElectroTech (*%1);;XML-Dateien (*.xml);Alle Dateien (*)</translation>
+    </message>
+    <message>
+        <source>Enregistrer sous</source>
+        <comment>dialog title</comment>
+        <translation>Speichern unter</translation>
+    </message>
+    <message>
+        <source>Modèles de cartouches QElectroTech (*%1)</source>
+        <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
+        <translation>Kartuschenmodell QElectroTech (*%1)</translation>
+    </message>
+    <message>
+        <source>Co&amp;uper</source>
+        <comment>menu entry</comment>
+        <translation>A&amp;usschneiden</translation>
+    </message>
+    <message>
+        <source>Cop&amp;ier</source>
+        <comment>menu entry</comment>
+        <translation>Kop&amp;ieren</translation>
+    </message>
+    <message>
+        <source>C&amp;oller</source>
+        <comment>menu entry</comment>
+        <translation>E&amp;infügen</translation>
+    </message>
+    <message>
+        <source>Éditer les informations complémentaires</source>
+        <comment>menu entry</comment>
+        <translation>Zusatzinformationen bearbeiten</translation>
+    </message>
+    <message>
+        <source>Ctrl+Y</source>
+        <comment>shortcut to edit extra information</comment>
+        <translation>Ctrl+Y</translation>
+    </message>
+    <message>
+        <source>Éditer les informations complémentaires</source>
+        <comment>window title</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
+        <translation>Sie können dieses Leerfeld verwenden um Informationen über den Autor der Kartusche, seine Lizenz oder andere Informationen, die Sie für wichtig empfinden.</translation>
+    </message>
+    <message>
+        <source>Ajouter une &amp;ligne</source>
+        <comment>menu entry</comment>
+        <translation>Hinzufügen einer &amp;Zeile</translation>
+    </message>
+    <message>
+        <source>Ajouter une &amp;colonne</source>
+        <comment>menu entry</comment>
+        <translation>Hinzufügen einer &amp;Spalte</translation>
+    </message>
+    <message>
+        <source>Outils</source>
+        <comment>toolbar title</comment>
+        <translation>Werkzeuge</translation>
+    </message>
+    <message>
+        <source>Édition</source>
+        <comment>toolbar title</comment>
+        <translation>Ausgabe</translation>
+    </message>
+    <message>
+        <source>Affichage</source>
+        <comment>toolbar title</comment>
+        <translation>Anzeige</translation>
     </message>
 </context>
 <context>
@@ -3609,6 +4052,150 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <comment>tooltip</comment>
         <translation>Anschluss</translation>
     </message>
+    <message>
+        <source>orienter %1 à %2°</source>
+        <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
+        <translation>Ausrichten %1 nach %2°</translation>
+    </message>
+    <message>
+        <source>%1px</source>
+        <comment>titleblock: absolute width</comment>
+        <translation>%1px</translation>
+    </message>
+    <message>
+        <source>%1%</source>
+        <comment>titleblock: width relative to total length</comment>
+        <translation>%1%</translation>
+    </message>
+    <message>
+        <source>%1% du restant</source>
+        <comment>titleblock: width relative to remaining length</comment>
+        <translation>%1% bis Rest</translation>
+    </message>
+    <message>
+        <source>Insertion d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>Einfügen einer Zeile</translation>
+    </message>
+    <message>
+        <source>Suppression d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>Löschen einer Zeile</translation>
+    </message>
+    <message>
+        <source>Insertion d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>Einfügen einer Spalte</translation>
+    </message>
+    <message>
+        <source>Suppression d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>Löschen einer Spalte</translation>
+    </message>
+    <message>
+        <source>Modification d&apos;une ligne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>Veränderung einer Zeile</translation>
+    </message>
+    <message>
+        <source>Modification d&apos;une colonne</source>
+        <comment>label used in the title block template editor undo list</comment>
+        <translation>Veränderung einer Spalte</translation>
+    </message>
+    <message>
+        <source>Fusion de %1 cellules</source>
+        <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
+        <translation>Verbinden von %1 Zellen</translation>
+    </message>
+    <message>
+        <source>Séparation d&apos;une cellule en %1</source>
+        <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
+        <translation>Teilen einer Zelle in %1</translation>
+    </message>
+    <message>
+        <source>type</source>
+        <comment>title block cell property human name</comment>
+        <translation>Typ</translation>
+    </message>
+    <message>
+        <source>nom</source>
+        <comment>title block cell property human name</comment>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>logo</source>
+        <comment>title block cell property human name</comment>
+        <translation>Logo</translation>
+    </message>
+    <message>
+        <source>label</source>
+        <comment>title block cell property human name</comment>
+        <translation>Label</translation>
+    </message>
+    <message>
+        <source>affichage du label</source>
+        <comment>title block cell property human name</comment>
+        <translation>Anzeige des Labels</translation>
+    </message>
+    <message>
+        <source>valeur affichée</source>
+        <comment>title block cell property human name</comment>
+        <translation>angezeigter Wert</translation>
+    </message>
+    <message>
+        <source>alignement du texte</source>
+        <comment>title block cell property human name</comment>
+        <translation>Ausrichtung des Textes</translation>
+    </message>
+    <message>
+        <source>taille du texte</source>
+        <comment>title block cell property human name</comment>
+        <translation>Grösse des Textes</translation>
+    </message>
+    <message>
+        <source>ajustement horizontal</source>
+        <comment>title block cell property human name</comment>
+        <translation>Ausrichtung horizontal</translation>
+    </message>
+    <message>
+        <source>modification des informations complémentaires</source>
+        <comment>undo caption</comment>
+        <translation>Zusatzinformationen anpassen</translation>
+    </message>
+    <message numerus="yes">
+        <source>Couper %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation>
+            <numerusform>Ausschneiden %n Zelle(n)</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <source>Coller %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation>
+            <numerusform>Einfügen %n Zelle(n)</numerusform>
+            <numerusform></numerusform>
+        </translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
+        <comment>error message when attempting to write an XML file</comment>
+        <translation>Kann Datei nicht öffnen %1 im Schreibmodus, Fehler %2 aufgetreten.</translation>
+    </message>
+</context>
+<context>
+    <name>QTextOrientationWidget</name>
+    <message>
+        <source>Ex.</source>
+        <comment>Short example string</comment>
+        <translation>Ex.</translation>
+    </message>
+    <message>
+        <source>Exemple</source>
+        <comment>Longer example string</comment>
+        <translation>Beispiel</translation>
+    </message>
 </context>
 <context>
     <name>RecentFiles</name>
@@ -3728,6 +4315,31 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <source>Remplissage :</source>
         <translation>Füllung :</translation>
     </message>
+    <message>
+        <source>Tiret</source>
+        <comment>element part line style</comment>
+        <translation>Strich</translation>
+    </message>
+    <message>
+        <source>style antialiasing</source>
+        <translation>Stil Antialiasing</translation>
+    </message>
+    <message>
+        <source>style couleur</source>
+        <translation>Stil Farbe</translation>
+    </message>
+    <message>
+        <source>style ligne</source>
+        <translation>Stil Linie</translation>
+    </message>
+    <message>
+        <source>style epaisseur</source>
+        <translation>Stil Dicke</translation>
+    </message>
+    <message>
+        <source>style remplissage</source>
+        <translation>Stil Füllung</translation>
+    </message>
 </context>
 <context>
     <name>TerminalEditor</name>
@@ -3814,17 +4426,39 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
         <source>taille</source>
         <translation>Grösse</translation>
     </message>
+    <message>
+        <source>Angle de rotation : </source>
+        <translation>Rotationswinkel :</translation>
+    </message>
+    <message>
+        <source>angle de rotation</source>
+        <translation>Rotationswinkel</translation>
+    </message>
+    <message>
+        <source>Noir</source>
+        <comment>element text part color</comment>
+        <translation>Schwarz</translation>
+    </message>
+    <message>
+        <source>Blanc</source>
+        <comment>element text part color</comment>
+        <translation>Weiss</translation>
+    </message>
+    <message>
+        <source>Couleur : </source>
+        <translation>Farbe :</translation>
+    </message>
+    <message>
+        <source>couleur</source>
+        <comment>undo caption</comment>
+        <translation>Farbe</translation>
+    </message>
 </context>
 <context>
     <name>TextFieldEditor</name>
     <message>
         <source>contenu</source>
         <translation>Inhalt</translation>
-    </message>
-    <message>
-        <source>Maintenir horizontal malgré
- les rotations de l&apos;élément</source>
-        <translation>Horizontale halten trotz Drehung des Elements</translation>
     </message>
     <message>
         <source>Position : </source>
@@ -3861,6 +4495,524 @@ Wenn diese Option aktiviert ist, werden die Ränder des Blattes ignoriert und di
     <message>
         <source>propriété</source>
         <translation>Kopiert die ausgewählten Elemente in die Zwischenablage</translation>
+    </message>
+    <message>
+        <source>Ne pas subir les rotations de l&apos;élément parent</source>
+        <translation>Rotation nicht auf übergeordnete Elemente anwenden</translation>
+    </message>
+    <message>
+        <source>Angle de rotation par défaut : </source>
+        <translation>Rotationswinkel standardmäßig :</translation>
+    </message>
+    <message>
+        <source>angle de rotation</source>
+        <translation>Rotationswinkel</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockDimensionWidget</name>
+    <message>
+        <source>Largeur :</source>
+        <comment>default dialog label</comment>
+        <translation>Breite :</translation>
+    </message>
+    <message>
+        <source>%</source>
+        <comment>spinbox suffix when changing the dimension of a row/column</comment>
+        <translation></translation>
+    </message>
+    <message>
+        <source>px</source>
+        <comment>spinbox suffix when changing the dimension of a row/column</comment>
+        <translation>px</translation>
+    </message>
+    <message>
+        <source>Absolu</source>
+        <comment>a traditional, absolute measure</comment>
+        <translation>Absolut</translation>
+    </message>
+    <message>
+        <source>Relatif au total</source>
+        <comment>a percentage of the total width</comment>
+        <translation>Relativ zum Gesamt</translation>
+    </message>
+    <message>
+        <source>Relatif au restant</source>
+        <comment>a percentage of what remains from the total width</comment>
+        <translation>Relativ zum Rest</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockPropertiesWidget</name>
+    <message>
+        <source>Modèle par défaut</source>
+        <translation>Standard-Vorlage</translation>
+    </message>
+    <message>
+        <source>Modèle :</source>
+        <translation>Modell :</translation>
+    </message>
+    <message>
+        <source>Les variables suivantes sont utilisables dans le champ Folio :
+  - %id : numéro du schéma courant dans le projet
+  - %total : nombre total de schémas dans le projet</source>
+        <translation>Die folgenden Variablen sind in dem Feld Seite eingesetzt:
+  -% ID-Nummer aus dem aktuellen Schema in dem Projekt
+  -% Gesamt: Gesamtanzahl der Schema in dem Projekt</translation>
+    </message>
+    <message>
+        <source>Pas de date</source>
+        <translation>Kein Datum</translation>
+    </message>
+    <message>
+        <source>Date courante</source>
+        <translation>Aktuelles Datum</translation>
+    </message>
+    <message>
+        <source>Date fixe : </source>
+        <translation>Datum festgelegt : </translation>
+    </message>
+    <message>
+        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
+        <translation>Hier können Sie Ihren Verein Namen / Werte für die Kartusche eingeben, die berücksichtigt werden. Zum Beispiel : Verbinden des Namen &quot;Volta&quot; und Wert &quot;1745&quot; Volta ersetzt % 1745 in der Kartusche.</translation>
+    </message>
+    <message>
+        <source>Nom</source>
+        <translation>Name</translation>
+    </message>
+    <message>
+        <source>Valeur</source>
+        <translation>Wert</translation>
+    </message>
+    <message>
+        <source>Principales</source>
+        <translation>Haupt</translation>
+    </message>
+    <message>
+        <source>Personnalisées</source>
+        <translation>Persönlich</translation>
+    </message>
+    <message>
+        <source>Titre : </source>
+        <translation>Titel : </translation>
+    </message>
+    <message>
+        <source>Auteur : </source>
+        <translation>Author : </translation>
+    </message>
+    <message>
+        <source>Date : </source>
+        <translation>Datum : </translation>
+    </message>
+    <message>
+        <source>Fichier : </source>
+        <translation>Datei : </translation>
+    </message>
+    <message>
+        <source>Folio : </source>
+        <translation>Seite : </translation>
+    </message>
+    <message>
+        <source>Informations du cartouche</source>
+        <translation>Informationen über die Kartusche</translation>
+    </message>
+    <message>
+        <source>Éditer ce modèle</source>
+        <comment>menu entry</comment>
+        <translation>Modell bearbeiten</translation>
+    </message>
+    <message>
+        <source>Dupliquer et editer ce modèle</source>
+        <comment>menu entry</comment>
+        <translation>Dublizieren und bearbeiten des Modelles</translation>
+    </message>
+    <message>
+        <source>Title block templates actions</source>
+        <translation>Aktionen Titelblockvorlagen</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplate</name>
+    <message>
+        <source> %1 : %2</source>
+        <comment>titleblock content - please let the blank space at the beginning</comment>
+        <translation> %1 : %2</translation>
+    </message>
+    <message>
+        <source> %1</source>
+        <translation> %1</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateCellWidget</name>
+    <message>
+        <source>Type de cellule :</source>
+        <translation>Zelltyp :</translation>
+    </message>
+    <message>
+        <source>Vide</source>
+        <translation>Leer</translation>
+    </message>
+    <message>
+        <source>Texte</source>
+        <translation>Text</translation>
+    </message>
+    <message>
+        <source>Logo</source>
+        <translation>Logo</translation>
+    </message>
+    <message>
+        <source>Aucun logo</source>
+        <translation>Kein Logo</translation>
+    </message>
+    <message>
+        <source>Gérer les logos</source>
+        <translation>Verwalten der Logos</translation>
+    </message>
+    <message>
+        <source>Nom :</source>
+        <translation>Name :</translation>
+    </message>
+    <message>
+        <source>Afficher un label :</source>
+        <translation>Anzeigen eines Labels :</translation>
+    </message>
+    <message>
+        <source>Editer</source>
+        <translation>Bearbeiten</translation>
+    </message>
+    <message>
+        <source>Texte :</source>
+        <translation>Text :</translation>
+    </message>
+    <message>
+        <source>Alignement :</source>
+        <translation>Ausrichtung :</translation>
+    </message>
+    <message>
+        <source>horizontal :</source>
+        <translation>Horizontal :</translation>
+    </message>
+    <message>
+        <source>Gauche</source>
+        <translation>Links</translation>
+    </message>
+    <message>
+        <source>Centré</source>
+        <translation>Zentrum</translation>
+    </message>
+    <message>
+        <source>Droite</source>
+        <translation>Rechts</translation>
+    </message>
+    <message>
+        <source>vertical :</source>
+        <translation>Vertikal :</translation>
+    </message>
+    <message>
+        <source>Haut</source>
+        <translation>Hoch</translation>
+    </message>
+    <message>
+        <source>Milieu</source>
+        <translation>Mitte</translation>
+    </message>
+    <message>
+        <source>Bas</source>
+        <translation>Tief</translation>
+    </message>
+    <message>
+        <source>Ajuster la taille de police si besoin</source>
+        <translation>Anpassen der Textgrösse bei Bedarf</translation>
+    </message>
+    <message>
+        <source>Label de cette cellule :</source>
+        <translation>Label der Zelle :</translation>
+    </message>
+    <message>
+        <source>Valeur de cette cellule :</source>
+        <translation>Wert der Zelle :</translation>
+    </message>
+    <message>
+        <source>Aucun logo</source>
+        <comment>text displayed in the combo box when a template has no logo</comment>
+        <translation>Kein Logo</translation>
+    </message>
+    <message>
+        <source>Édition d&apos;une cellule : %1</source>
+        <comment>label of and undo command when editing a cell</comment>
+        <translation>Bearbeiten einer Zelle : %1</translation>
+    </message>
+    <message>
+        <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
+        <translation>Warnung : die Ränder der leeren Zellen werden im Schema nicht angezeigt.</translation>
+    </message>
+    <message>
+        <source>Police :</source>
+        <translation>Schrift :</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateDeleter</name>
+    <message>
+        <source>Supprimer le modèle de cartouche ?</source>
+        <comment>message box title</comment>
+        <translation>Löschen der Kartuschenmodelle ?</translation>
+    </message>
+    <message>
+        <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
+</source>
+        <comment>message box content</comment>
+        <translation>Sind Sie sicher das Kartuschenmodell zu löschen (%1) ?</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLocationChooser</name>
+    <message>
+        <source>Modèle existant</source>
+        <comment>used in save as form</comment>
+        <translation>bestehende Modelle</translation>
+    </message>
+    <message>
+        <source>Collection parente</source>
+        <comment>used in save as form</comment>
+        <translation>übergeordnete Kollektion</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLocationSaver</name>
+    <message>
+        <source>ou nouveau nom</source>
+        <comment>used in save as form</comment>
+        <translation>oder neuer Name</translation>
+    </message>
+    <message>
+        <source>Nouveau modèle (entrez son nom)</source>
+        <comment>combox box entry</comment>
+        <translation>Neues Modell (Namen eingeben)</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateLogoManager</name>
+    <message>
+        <source>Gestionnaire de logos</source>
+        <translation>Verwaltung Logos</translation>
+    </message>
+    <message>
+        <source>Logos embarqués dans ce modèle :</source>
+        <translation>vorhandene Logos in diesem Modell :</translation>
+    </message>
+    <message>
+        <source>Ajouter un logo</source>
+        <translation>Logo hinzufügen</translation>
+    </message>
+    <message>
+        <source>Supprimer ce logo</source>
+        <translation>Logo löschen</translation>
+    </message>
+    <message>
+        <source>Propriétés</source>
+        <translation>Eigenschaften</translation>
+    </message>
+    <message>
+        <source>Nom :</source>
+        <translation>Name :</translation>
+    </message>
+    <message>
+        <source>Renommer</source>
+        <translation>Umbenennen</translation>
+    </message>
+    <message>
+        <source>Type :</source>
+        <translation>Typ :</translation>
+    </message>
+    <message>
+        <source>Logo déjà existant</source>
+        <translation>Logo existiert bereits</translation>
+    </message>
+    <message>
+        <source>Remplacer</source>
+        <translation>Ersetzen</translation>
+    </message>
+    <message>
+        <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
+        <translation>Es gibt bereits ein Logo mit diesem Namen &quot;%1&quot; in dem Kartuschenmodell. Wollen Sie ihn ersetzen einen anderen Namen für das neue Logo eingeben ?</translation>
+    </message>
+    <message>
+        <source>Type : %1</source>
+        <translation>Typ : %1</translation>
+    </message>
+    <message>
+        <source>Choisir une image / un logo</source>
+        <translation>Wählen eines Bildes / Logos</translation>
+    </message>
+    <message>
+        <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
+        <translation>Vektorimage (*.svg);;Bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Alle Dateien (*)</translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier spécifié</source>
+        <translation>Kann angegebene Datei nicht öffnen</translation>
+    </message>
+    <message>
+        <source>Renommer un logo</source>
+        <translation>Umbenennen eines Logos</translation>
+    </message>
+    <message>
+        <source>Vous devez saisir un nouveau nom.</source>
+        <translation>Sie müssen einen neuen Namen wählen.</translation>
+    </message>
+    <message>
+        <source>Le nouveau nom ne peut pas être vide.</source>
+        <translation>Der neue Name kann nicht frei bleiben.</translation>
+    </message>
+    <message>
+        <source>Le nom saisi est déjà utilisé par un autre logo.</source>
+        <translation>Der gewählte Name besteht bereits in einem anderen Logo.</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplateView</name>
+    <message>
+        <source>Changer la largeur de la colonne</source>
+        <comment>window title when changing a column with</comment>
+        <translation>Ändern der Breite der Spalte</translation>
+    </message>
+    <message>
+        <source>Largeur :</source>
+        <comment>text before the spinbox to change a column width</comment>
+        <translation>Breite :</translation>
+    </message>
+    <message>
+        <source>Changer la hauteur de la ligne</source>
+        <comment>window title when changing a row height</comment>
+        <translation>Ändern der Zeilenhöhe</translation>
+    </message>
+    <message>
+        <source>Hauteur :</source>
+        <comment>text before the spinbox to change a row height</comment>
+        <translation>Höhe :</translation>
+    </message>
+    <message>
+        <source>Ajouter une colonne (avant)</source>
+        <comment>context menu</comment>
+        <translation>Einfügeb einer Spalte (vor)</translation>
+    </message>
+    <message>
+        <source>Ajouter une ligne (avant)</source>
+        <comment>context menu</comment>
+        <translation>Einfügen einer Zeile (vor)</translation>
+    </message>
+    <message>
+        <source>Ajouter une colonne (après)</source>
+        <comment>context menu</comment>
+        <translation>Einfügen einer Spalte (nach)</translation>
+    </message>
+    <message>
+        <source>Ajouter une ligne (après)</source>
+        <comment>context menu</comment>
+        <translation>Einfügen einer Zeile (nach)</translation>
+    </message>
+    <message>
+        <source>Modifier les dimensions de cette colonne</source>
+        <comment>context menu</comment>
+        <translation>Anpassen der Grösse der Spalte</translation>
+    </message>
+    <message>
+        <source>Modifier les dimensions de cette ligne</source>
+        <comment>context menu</comment>
+        <translation>Anpassen der Grösse der Zeile</translation>
+    </message>
+    <message>
+        <source>Supprimer cette colonne</source>
+        <comment>context menu</comment>
+        <translation>Löschen der Spalte</translation>
+    </message>
+    <message>
+        <source>Supprimer cette ligne</source>
+        <comment>context menu</comment>
+        <translation>Lösechen der Zeile</translation>
+    </message>
+    <message>
+        <source>Modifier la largeur de cet aperçu</source>
+        <comment>context menu</comment>
+        <translation>Modifizieren der Breite der Ansicht</translation>
+    </message>
+    <message>
+        <source>[%1px]</source>
+        <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
+        <translation>[%1px]</translation>
+    </message>
+    <message>
+        <source>[%1px]</source>
+        <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
+        <translation>[%1px]</translation>
+    </message>
+    <message>
+        <source>%1px</source>
+        <comment>format displayed in rows helper cells</comment>
+        <translation>%1px</translation>
+    </message>
+    <message>
+        <source>%1px</source>
+        <translation>%1px</translation>
+    </message>
+    <message>
+        <source>Changer la largeur de l&apos;aperçu</source>
+        <translation>Ändern der Breite der Ansicht</translation>
+    </message>
+    <message>
+        <source>Largeur de l&apos;aperçu :</source>
+        <translation>Angezeigte Breite :</translation>
+    </message>
+    <message>
+        <source>Largeur totale pour cet aperçu : %1px</source>
+        <comment>displayed at the top of the preview when editing a title block template</comment>
+        <translation>Gesamtbreite für die Anzeige : %1px</translation>
+    </message>
+    <message>
+        <source>Longueur minimale : %1px
+Longueur maximale : %2px
+</source>
+        <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
+        <translation>Mindestlänge : %1px
+Maximallänge : %2p</translation>
+    </message>
+    <message>
+        <source>Longueur minimale : %1px
+</source>
+        <comment>tooltip showing the minimum width of the edited template</comment>
+        <translation>Mindestlänge : %1px</translation>
+    </message>
+</context>
+<context>
+    <name>TitleBlockTemplatesProjectCollection</name>
+    <message>
+        <source>Cartouches du projet sans titre (id %1)</source>
+        <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
+        <translation>Kartuschen im Projekt ohne Namen (id %1)</translation>
+    </message>
+    <message>
+        <source>Cartouches du projet &quot;%1&quot;</source>
+        <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
+        <translation>Kartuschen im Projekt &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>XmlElementsCollection</name>
+    <message>
+        <source>Collection du projet sans titre (id %1)</source>
+        <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
+        <translation>Kollektion im Projekt ohne Namen (id %1)</translation>
+    </message>
+    <message>
+        <source>Collection du projet &quot;%1&quot;</source>
+        <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
+        <translation>Kollektion im Projekt &quot;%1&quot;</translation>
     </message>
 </context>
 </TS>

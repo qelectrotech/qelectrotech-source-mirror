@@ -1,10 +1,11 @@
-<definition width="650" version="0.22" hotspot_x="0" hotspot_y="0" height="10" type="element" orientation="dnnn">
+<definition width="650" version="0.3" hotspot_x="0" hotspot_y="0" height="10" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">سطر جدول تسمية</name>
         <name lang="de">Linienfeld Nomemklatur</name>
         <name lang="en">Line tableau nomenclature</name>
         <name lang="fr">Ligne de tableau de nomenclature</name>
         <name lang="pl">Tabliczka rysunkowa - linie</name>
-        <name lang="cs">Nomenklatura čára tabulky</name>
+        <name lang="cs">Čára nomenklaturní tabulky</name>
     </names>
     <informations></informations>
     <description>

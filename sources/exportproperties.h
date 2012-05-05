@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -41,7 +41,7 @@ class ExportProperties {
 	QString format;                 ///< Quel format d'image faut-il utiliser ?
 	bool draw_grid;                 ///< Faut-il dessiner la grille ?
 	bool draw_border;               ///< Faut-il dessiner le cadre ?
-	bool draw_inset;                ///< Faut-il dessiner le cartouche ?
+	bool draw_titleblock;                ///< Faut-il dessiner le cartouche ?
 	bool draw_terminals;            ///< Faut-il dessiner les bornes ?
 	bool draw_colored_conductors;   ///< Faut-il respecter les couleurs des conducteurs ?
 	QET::DiagramArea exported_area; ///< Zone du schema a exporter

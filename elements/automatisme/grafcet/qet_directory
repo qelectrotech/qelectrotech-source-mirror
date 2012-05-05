@@ -1,8 +1,11 @@
 <qet-directory>
     <names>
-        <name lang="de" >Grafcet</name>
-        <name lang="fr" >Grafcet</name>
-        <name lang="pl" >Grafcet</name>
-        <name lang="cs" >Grafcet</name>
+        <name lang="ar">المخطط الوظيفي التعاقبي SFC </name>
+        <name lang="en">Grafcet</name>
+        <name lang="de">Grafcet</name>
+        <name lang="fr">Grafcet</name>
+        <name lang="pl">Grafcet</name>
+        <name lang="cs">Grafcet</name>
+        <name lang="pt">Grafcet</name>
     </names>
 </qet-directory>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,6 +16,8 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "nameslist.h"
+// make this class usable with QVariant
+int NamesList::MetaTypeId = qRegisterMetaType<NamesList>("NamesList");
 
 /**
 	Constructeur
@@ -102,23 +104,28 @@ const QString NamesList::operator[](const QString &lang) const {
 	return(hash_names.value(lang));
 }
 
+
+
 /**
 	Charge la liste de noms depuis un element XML. Cet element est sense etre
 	le parent d'un element "names", qui contient lui meme les "name".
 	Les noms precedemment contenus dans la liste ne sont pas effaces mais
 	peuvent etre ecrases.
 	@param xml_element L'element XML a analyser
+	@param xml_options A set of options related to XML parsing.
+	@see getXmlOptions()
 */
-void NamesList::fromXml(const QDomElement &xml_element) {
+void NamesList::fromXml(const QDomElement &xml_element, const QHash<QString, QString> &xml_options) {
+	QHash<QString, QString> xml_opt = getXmlOptions(xml_options);
 	// parcourt les enfants "names" de l'element XML
 	for (QDomNode node = xml_element.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
 		QDomElement names = node.toElement();
-		if (names.isNull() || names.tagName() != "names") continue;
+		if (names.isNull() || names.tagName() != xml_opt["ParentTagName"]) continue;
 		// parcourt les petits-enfants "name"
 		for (QDomNode n = names.firstChild() ; !n.isNull() ; n = n.nextSibling()) {
 			QDomElement name = n.toElement();
-			if (name.isNull() || name.tagName() != "name") continue;
-			addName(name.attribute("lang"), name.text());
+			if (name.isNull() || name.tagName() != xml_opt["TagName"]) continue;
+			addName(name.attribute(xml_opt["LanguageAttribute"]), name.text());
 		}
 	}
 }
@@ -127,20 +134,43 @@ void NamesList::fromXml(const QDomElement &xml_element) {
 	Exporte la liste des noms vers un element XML. Veillez a verifier que la
 	liste de noms n'est pas vide avant de l'exporter.
 	@param xml_document Le document XML dans lequel l'element XML sera insere
+	@param xml_options A set of options related to XML parsing.
 	@return L'element XML correspondant a la section "names"
 	@see count()
 */
-QDomElement NamesList::toXml(QDomDocument &xml_document) const {
-	QDomElement names_elmt = xml_document.createElement("names");
+QDomElement NamesList::toXml(QDomDocument &xml_document, const QHash<QString, QString> &xml_options) const {
+	QHash<QString, QString> xml_opt = getXmlOptions(xml_options);
+	QDomElement names_elmt = xml_document.createElement(xml_opt["ParentTagName"]);
 	QHashIterator<QString, QString> names_iterator(hash_names);
 	while (names_iterator.hasNext()) {
 		names_iterator.next();
-		QDomElement name_elmt = xml_document.createElement("name");
-		name_elmt.setAttribute("lang", names_iterator.key());
+		QDomElement name_elmt = xml_document.createElement(xml_opt["TagName"]);
+		name_elmt.setAttribute(xml_opt["LanguageAttribute"], names_iterator.key());
 		name_elmt.appendChild(xml_document.createTextNode(names_iterator.value()));
 		names_elmt.appendChild(name_elmt);
 	}
 	return(names_elmt);
+}
+
+/**
+	@param xml_options A set of options related to XML parsing. Available keys:
+		* ParentTagName (falls back to "names")
+		* TagName (falls back to "name")
+		* LanguageAttribute (falls back to "lang")
+	@return the same set, with at least all the known options
+*/
+QHash<QString, QString> NamesList::getXmlOptions(const QHash<QString, QString> &xml_options) const {
+	QHash<QString, QString> new_xml_options = xml_options;
+	if (!xml_options.contains("ParentTagName")) {
+		new_xml_options.insert("ParentTagName", "names");
+	}
+	if (!xml_options.contains("TagName")) {
+		new_xml_options.insert("TagName", "name");
+	}
+	if (!xml_options.contains("LanguageAttribute")) {
+		new_xml_options.insert("LanguageAttribute", "lang");
+	}
+	return new_xml_options;
 }
 
 /**

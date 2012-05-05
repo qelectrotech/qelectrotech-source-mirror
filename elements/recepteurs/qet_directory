@@ -1,13 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Verbraucher</name>
-        <name lang="de" >Verbraucher</name>
-        <name lang="ru" >Приёмники</name>
-        <name lang="en" >Receivers</name>
-        <name lang="fr" >Récepteurs</name>
-        <name lang="es" >Receptores</name>
-        <name lang="cs" >Přijímače</name>
-        <name lang="pt" >Receptores</name>
-        <name lang="pl" >Odbiorniki</name>
+        <name lang="de">Verbraucher</name>
+        <name lang="ru">Приёмники</name>
+        <name lang="en">Receivers</name>
+		<name lang="ar">مستقبلات</name>
+        <name lang="fr">Récepteurs</name>
+        <name lang="es">Receptores</name>
+        <name lang="cs">Přijímače</name>
+        <name lang="pt">Receptores</name>
+        <name lang="pl">Odbiorniki</name>
+        <name lang="it">Utilizzatori</name>
     </names>
 </qet-directory>

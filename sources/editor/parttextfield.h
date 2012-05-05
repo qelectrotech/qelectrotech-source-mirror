@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -28,6 +28,8 @@ class QETElementEditor;
 	lorsque l'element sera pose sur un schema.
 */
 class PartTextField : public QGraphicsTextItem, public CustomElementPart {
+	Q_OBJECT
+	
 	// constructeurs, destructeur
 	public:
 	PartTextField(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
@@ -51,14 +53,17 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual QString xmlName() const { return(QString("input")); }
 	void fromXml(const QDomElement &);
 	const QDomElement toXml(QDomDocument &) const;
-	QPointF pos() const;
-	void setPos(const QPointF &);
-	void setPos(qreal, qreal);
+	qreal rotationAngle() const;
+	void setRotationAngle(const qreal &);
 	bool followParentRotations();
 	void setFollowParentRotations(bool);
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
+	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
+	
+	public slots:
+	void adjustItemPosition(int = 0);
 	
 	protected:
 	virtual void focusOutEvent(QFocusEvent *);
@@ -68,6 +73,9 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	
 	private:
 	QPointF margin() const;
+#ifdef QET_DEBUG_EDITOR_TEXTS
+	void drawPoint(QPainter *, const QPointF &);
+#endif
 	QString previous_text;
 };
 #endif

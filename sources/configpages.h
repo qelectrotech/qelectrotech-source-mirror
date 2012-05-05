@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,7 +20,7 @@
 #include <QtGui>
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
-class InsetPropertiesWidget;
+class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
 /**
 	Cette classe abstraite contient les methodes que toutes les pages de
@@ -65,7 +65,7 @@ class NewDiagramPage : public ConfigPage {
 	// attributs
 	public:
 	BorderPropertiesWidget *bpw;    ///< Widget d'edition des dimensions du schema
-	InsetPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
+	TitleBlockPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
 	ConductorPropertiesWidget *cpw; ///< Widget d'edition des proprietes par defaut des conducteurs
 };
 
@@ -99,6 +99,7 @@ class GeneralConfigurationPage : public ConfigPage {
 	QLabel *warning_view_mode_;
 	QGroupBox *elements_management_;
 	QCheckBox *integrate_elements_;
+	QCheckBox *highlight_integrated_elements_;
 	QLabel    *default_element_infos_label_;
 	QTextEdit *default_element_infos_textfield_;
 };

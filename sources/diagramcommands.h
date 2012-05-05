@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,15 +17,19 @@
 */
 #ifndef DIAGRAM_COMMANDS_H
 #define DIAGRAM_COMMANDS_H
-#include "qet.h"
-#include "diagram.h"
-#include "diagramcontent.h"
-#include "diagramtextitem.h"
-#include "conductor.h"
-#include "borderproperties.h"
-#include "conductorproperties.h"
-#include "insetproperties.h"
 #include <QtGui>
+#include "borderproperties.h"
+#include "conductor.h"
+#include "conductorproperties.h"
+#include "diagramcontent.h"
+#include "titleblockproperties.h"
+#include "qet.h"
+class Diagram;
+class DiagramTextItem;
+class Element;
+class ElementTextItem;
+class IndependentTextItem;
+
 /**
 	Cette classe represente l'action d'ajouter un element au schema
 */
@@ -58,7 +62,7 @@ class AddElementCommand : public QUndoCommand {
 class AddTextCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	AddTextCommand(Diagram *, DiagramTextItem *, const QPointF &, QUndoCommand * = 0);
+	AddTextCommand(Diagram *, IndependentTextItem *, const QPointF &, QUndoCommand * = 0);
 	virtual ~AddTextCommand();
 	private:
 	AddTextCommand(const AddTextCommand &);
@@ -71,7 +75,7 @@ class AddTextCommand : public QUndoCommand {
 	// attributs
 	private:
 	/// texte ajoute
-	DiagramTextItem *textitem;
+	IndependentTextItem *textitem;
 	/// schema sur lequel on ajoute le texte
 	Diagram *diagram;
 	/// position du texte sur le schema
@@ -103,8 +107,8 @@ class AddConductorCommand : public QUndoCommand {
 };
 
 /**
-	Cette classe represente l'action de supprimer des elements et / ou
-	conducteurs d'un schema
+	Cette classe represente l'action de supprimer des elements, conducteurs
+	et / ou textes independants d'un schema
 */
 class DeleteElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
@@ -185,6 +189,7 @@ class MoveElementsCommand : public QUndoCommand {
 	virtual void undo();
 	virtual void redo();
 	virtual void move(const QPointF &);
+	virtual void addConductorTextItemMovement(ConductorTextItem *, const QPointF &, const QPointF &);
 	
 	// attributs
 	private:
@@ -194,6 +199,77 @@ class MoveElementsCommand : public QUndoCommand {
 	DiagramContent content_to_move;
 	/// mouvement effectue
 	QPointF movement;
+	/**
+		Deplacer des elements ou champs de texte entraine des conducteurs.
+		Soit ces conducteurs sont betement deplaces, soit leur trajet est
+		recalcule.
+		Si leur trajet est recalcule, les champs de texte dont la position a ete
+		personnalisee par l'utilisateur
+		Liste des champs de texte de conducteurs dont la position a ete modifiee
+		par des mises
+	*/
+	QHash<ConductorTextItem *, QPair<QPointF, QPointF> > moved_conductor_texts_;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de deplacer des champs de texte rattaches
+	a des elements sur un schema
+*/
+class MoveElementsTextsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	MoveElementsTextsCommand(Diagram *, const QSet<ElementTextItem *> &, const QPointF &m, QUndoCommand * = 0);
+	virtual ~MoveElementsTextsCommand();
+	private:
+	MoveElementsTextsCommand(const MoveElementsTextsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void move(const QPointF &);
+	
+	// attributs
+	private:
+	/// schema sur lequel on deplace les elements
+	Diagram *diagram;
+	/// liste des champs de texte a deplacer
+	QSet<ElementTextItem *> texts_to_move;
+	/// mouvement effectue
+	QPointF movement;
+	/// booleen pour ne pas executer le premier redo()
+	bool first_redo;
+};
+
+/**
+	Cette classe represente l'action de deplacer des champs de texte rattaches
+	a des conducteurs sur un schema
+*/
+class MoveConductorsTextsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	MoveConductorsTextsCommand(Diagram *, QUndoCommand * = 0);
+	virtual ~MoveConductorsTextsCommand();
+	private:
+	MoveConductorsTextsCommand(const MoveConductorsTextsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void addTextMovement(ConductorTextItem *, const QPointF &, const QPointF &, bool = false);
+	
+	private:
+	void regenerateTextLabel();
+	
+	// attributs
+	private:
+	/// schema sur lequel on deplace les elements
+	Diagram *diagram;
+	/// liste des champs de texte a deplacer
+	QHash<ConductorTextItem *, QPair<QPointF, bool> > texts_to_move_;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
@@ -227,12 +303,12 @@ class ChangeDiagramTextCommand : public QUndoCommand {
 };
 
 /**
-	Cette classe represente l'action de pivoter plusieurs elements
+	Cette classe represente l'action de pivoter plusieurs elements ou champs de textes avec un meme angle
 */
 class RotateElementsCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand * = 0);
+	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &, QUndoCommand * = 0);
 	virtual ~RotateElementsCommand();
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
@@ -241,11 +317,46 @@ class RotateElementsCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
+	qreal appliedRotationAngle() const;
+	void setAppliedRotationAngle(const qreal &);
+	static void rotateElement(Element *, QET::Orientation);
 	
 	// attributs
 	private:
 	/// elements pivotes associes a leur ancienne orientation
 	QHash<Element *, QET::Orientation> elements_to_rotate;
+	/// textes a pivoter
+	QList<DiagramTextItem *> texts_to_rotate;
+	/// angle de rotation a appliquer aux textes (valeur utilisee dans le redo
+	qreal applied_rotation_angle_;
+};
+
+/**
+	Cette classe represente l'action d'orienter plusieurs textes a un meme angle de rotation bien precis
+*/
+class RotateTextsCommand : public QUndoCommand {
+	// constructeurs, destructeur
+	public:
+	RotateTextsCommand(const QHash<DiagramTextItem *, double> &, double, QUndoCommand * = 0);
+	RotateTextsCommand(const QList<DiagramTextItem *> &,         double, QUndoCommand * = 0);
+	virtual ~RotateTextsCommand();
+	private:
+	RotateTextsCommand(const RotateTextsCommand &);
+	
+	// methodes
+	public:
+	virtual void undo();
+	virtual void redo();
+	
+	private:
+	void defineCommandName();
+	
+	// attributs
+	private:
+	/// textes pivotes associes a leur ancienne orientation
+	QHash<DiagramTextItem *, double> texts_to_rotate;
+	/// angle de rotation a appliquer aux textes
+	double applied_rotation_angle_;
 };
 
 /**
@@ -263,6 +374,7 @@ class ChangeConductorCommand : public QUndoCommand {
 	public:
 	virtual void undo();
 	virtual void redo();
+	virtual void setConductorTextItemMove(const QPointF &, const QPointF &);
 	
 	// attributs
 	private:
@@ -274,6 +386,10 @@ class ChangeConductorCommand : public QUndoCommand {
 	ConductorProfile new_profile;
 	/// Type de trajet
 	Qt::Corner path_type;
+	/// Position du champ de texte avant le changement
+	QPointF text_pos_before_mov_;
+	/// Position du champ de texte apres le changement
+	QPointF text_pos_after_mov_;
 	/// booleen pour ne pas executer le premier redo()
 	bool first_redo;
 };
@@ -303,13 +419,13 @@ class ResetConductorCommand : public QUndoCommand {
 /**
 	Cette classe represente l'action de modifier les informations du cartouche d'un schema
 */
-class ChangeInsetCommand : public QUndoCommand {
+class ChangeTitleBlockCommand : public QUndoCommand {
 	// constructeurs, destructeur
 	public:
-	ChangeInsetCommand(Diagram *, const InsetProperties &, const InsetProperties &, QUndoCommand * = 0);
-	virtual ~ChangeInsetCommand();
+	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = 0);
+	virtual ~ChangeTitleBlockCommand();
 	private:
-	ChangeInsetCommand(const ChangeInsetCommand &);
+	ChangeTitleBlockCommand(const ChangeTitleBlockCommand &);
 	
 	// methodes
 	public:
@@ -321,9 +437,9 @@ class ChangeInsetCommand : public QUndoCommand {
 	/// schema modifie
 	Diagram *diagram;
 	/// proprietes avant changement
-	InsetProperties old_inset;
+	TitleBlockProperties old_titleblock;
 	/// proprietes apres changement
-	InsetProperties new_inset;
+	TitleBlockProperties new_titleblock;
 };
 
 /**

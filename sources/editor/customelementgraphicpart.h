@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -32,7 +32,8 @@ class CustomElementGraphicPart : public CustomElementPart {
 	/// Qualifie le style de ligne utilise pour dessiner la partie
 	enum LineStyle {
 		NormalStyle, ///< Ligne pleine
-		DashedStyle  ///< Ligne pointillee
+		DashedStyle, ///< Ligne pointillee (tirets)
+		DottedStyle  ///< Ligne pointillee (points)
 	};
 	
 	/// Qualifie l'epaisseur de ligne utilisee pour dessiner la partie

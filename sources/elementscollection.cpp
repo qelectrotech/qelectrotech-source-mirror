@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,7 +25,8 @@
 	@param parent Item parent
 */
 ElementsCollection::ElementsCollection(ElementsCollectionItem *parent) :
-	ElementsCollectionItem(parent)
+	ElementsCollectionItem(parent),
+	cache_(0)
 {
 }
 
@@ -33,6 +34,38 @@ ElementsCollection::ElementsCollection(ElementsCollectionItem *parent) :
 	Destructeur
 */
 ElementsCollection::~ElementsCollection() {
+}
+
+/**
+	@return the title for this collection
+*/
+QString ElementsCollection::title() const {
+	return(title_);
+}
+
+/**
+	@param title New title for this collection
+*/
+void ElementsCollection::setTitle(const QString &title) {
+	if (title_ == title) return;
+	title_ = title;
+	emit(elementsCollectionChanged(this));
+}
+
+/**
+	@return the icon for this collection
+*/
+QIcon ElementsCollection::icon() const {
+	return(icon_);
+}
+
+/**
+	@param icon the icon for this collection
+*/
+void ElementsCollection::setIcon(const QIcon &icon) {
+	if (icon_.cacheKey() == icon.cacheKey()) return;
+	icon_ = icon;
+	emit(elementsCollectionChanged(this));
 }
 
 /**
@@ -379,6 +412,15 @@ bool ElementsCollection::isEmpty() {
 }
 
 /**
+	@return the count of categories and elements within this collection
+*/
+int ElementsCollection::count() {
+	ElementsCategory *root_category = rootCategory();
+	if (!root_category) return(0);
+	return(root_category -> count());
+}
+
+/**
 	@param item_path chemin d'un item sous la forme d'une adresse
 	virtuelle comme common://cat1/cat2/cat3
 	@param prefer_collections true pour renvoyer la collection lorsque le
@@ -403,4 +445,18 @@ ElementsCollectionItem *ElementsCollection::item(const QString &item_path, bool 
 	if (!result) result = element(item_path);
 	
 	return(result);
+}
+
+/**
+	@return The cache used by this collection, or 0 if this collection does not have any
+*/
+ElementsCollectionCache *ElementsCollection::cache() const {
+	return(cache_);
+}
+
+/**
+	@param cache The cache to be used by this collection
+*/
+void ElementsCollection::setCache(ElementsCollectionCache *cache) {
+	cache_ = cache;
 }

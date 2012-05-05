@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Einfach</name>
-        <name lang="ru" >Однолинейные</name>
-        <name lang="en" >Single line</name>
-        <name lang="fr" >Monofilaires</name>
-        <name lang="es" >Monohilos</name>
-        <name lang="cs" >Jednoduché vedení</name>
-        <name lang="pt" >Monofilares</name>
-        <name lang="pl" >Schemat jednokreskowy</name>
+        <name lang="de">Einfach</name>
+        <name lang="ru">Однолинейные</name>
+        <name lang="en">Single line</name>
+        <name lang="fr">Monofilaires</name>
+		<name lang="ar">وحيدالخط</name>
+        <name lang="es">Monohilos</name>
+        <name lang="cs">Jednoduché vedení</name>
+        <name lang="pt">Monofilares</name>
+        <name lang="pl">Schemat jednokreskowy</name>
+        <name lang="it">Monofilare</name>
     </names>
 </qet-directory>

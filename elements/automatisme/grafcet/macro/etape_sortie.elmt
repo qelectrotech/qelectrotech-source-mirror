@@ -1,15 +1,19 @@
-<definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy" >
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="de" >Ausgangs Schritt</name>
-        <name lang="en" >Output step</name>
-        <name lang="fr" >Etape sortie</name>
-        <name lang="pl" >Krok (output)</name>
-        <name lang="cs" >Výstupní krok</name>
+        <name lang="ar">خطوة خرج</name>
+        <name lang="de">Ausgangs Schritt</name>
+        <name lang="en">Output step</name>
+        <name lang="fr">Etape sortie</name>
+        <name lang="pl">Krok (output)</name>
+        <name lang="cs">Výstupní krok</name>
+        <name lang="es">Etapa de salida</name>
+        <name lang="pt">Etapa de saída</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="-30" y="14" size="6" rotate="true" text="" />
-        <input x="-20" y="0" size="10" rotate="true" text="S 00" />
-        <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black" />
-        <terminal x="0" y="-25" orientation="n" />
+        <input x="-30" y="14" size="6" rotate="true" text=""/>
+        <input x="-20" y="0" size="10" rotate="true" text="S 00"/>
+        <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <terminal x="0" y="-25" orientation="n"/>
     </description>
 </definition>

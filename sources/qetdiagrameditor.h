@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,10 @@
 #ifndef QET_DIAGRAM_EDITOR_H
 #define QET_DIAGRAM_EDITOR_H
 #include <QtGui>
+#include "qetmainwindow.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
-#include "insetproperties.h"
+#include "titleblockproperties.h"
 #include "exportproperties.h"
 class QETProject;
 class ProjectView;
@@ -36,7 +37,7 @@ class RecentFiles;
 	"DiagramView" en guise de widget central et un "Panel d'Elements" en
 	guise de widget "Dock".
 */
-class QETDiagramEditor : public QMainWindow {
+class QETDiagramEditor : public QETMainWindow {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
@@ -52,11 +53,11 @@ class QETDiagramEditor : public QMainWindow {
 	void closeEvent(QCloseEvent *);
 	QList<ProjectView *> openedProjects() const;
 	void addProjectView(ProjectView *);
-	bool openAndAddProject(const QString &, bool interactive = true);
+	bool openAndAddProject(const QString &, bool = true, bool = true);
 	QList<DiagramView *> projectViews() const;
 	QList<QString> editedFiles() const;
 	ProjectView *viewForFile(const QString &) const;
-	static InsetProperties     defaultInsetProperties();
+	static TitleBlockProperties     defaultTitleBlockProperties();
 	static BorderProperties    defaultBorderProperties();
 	static ConductorProperties defaultConductorProperties();
 	static ExportProperties    defaultExportProperties();
@@ -67,7 +68,7 @@ class QETDiagramEditor : public QMainWindow {
 	virtual bool event(QEvent *);
 	
 	private:
-	bool addProject(QETProject *);
+	bool addProject(QETProject *, bool = true);
 	ProjectView *currentProject() const;
 	DiagramView *currentDiagram() const;
 	ProjectView *findProject(DiagramView *) const;
@@ -80,7 +81,6 @@ class QETDiagramEditor : public QMainWindow {
 	void toolbar();
 	
 	public slots:
-	void toggleFullScreen();
 	void printDialog();
 	void exportDialog();
 	bool saveAsDialog();
@@ -104,10 +104,10 @@ class QETDiagramEditor : public QMainWindow {
 	void slot_selectInvert();
 	void slot_delete();
 	void slot_rotate();
+	void slot_rotateTexts();
 	void slot_setSelectionMode();
 	void slot_setVisualisationMode();
 	void slot_updateActions();
-	void slot_updateFullScreenAction();
 	void slot_updateModeActions();
 	void slot_updateComplexActions();
 	void slot_updatePasteAction();
@@ -119,7 +119,6 @@ class QETDiagramEditor : public QMainWindow {
 	void editSelectionProperties();
 	void slot_editConductor();
 	void slot_resetConductors();
-	void slot_editDefaultConductors();
 	void slot_addText();
 	void setWindowedMode();
 	void setTabbedMode();
@@ -129,7 +128,6 @@ class QETDiagramEditor : public QMainWindow {
 	void activateProject(QETProject *);
 	void activateProject(ProjectView *);
 	void activateWidget(QWidget *);
-	void diagramOrderChanged(ProjectView *, int, int);
 	void projectWasClosed(ProjectView *);
 	void editCurrentProjectProperties();
 	void editProjectProperties(ProjectView *);
@@ -147,7 +145,6 @@ class QETDiagramEditor : public QMainWindow {
 	void diagramWasAdded(DiagramView *);
 	void diagramIsAboutToBeRemoved(DiagramView *);
 	void diagramWasRemoved(DiagramView *);
-	void diagramTitleChanged(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
 	void editElementInEditor(const ElementsLocation &);
 	
@@ -179,7 +176,8 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *select_nothing;     ///< Deselectionne tout
 	QAction *select_invert;      ///< Inverse la selection
 	QAction *delete_selection;   ///< Supprime la selection
-	QAction *rotate_selection;   ///< Pivote les elements selectionnes
+	QAction *rotate_selection;   ///< Pivote les elements et textes selectionnes de 90 degres
+	QAction *rotate_texts;       ///< Pivote les textes selectionnes selon un angle parametrable
 	QAction *selection_prop;     ///< Lance le dialogue de description ou d'edition de la selection
 	QAction *conductor_reset;    ///< Reinitialise les conducteurs selectionnes
 	QAction *conductor_default;  ///< Lance le dialogue d'edition des conducteurs par defaut
@@ -197,10 +195,6 @@ class QETDiagramEditor : public QMainWindow {
 	QAction *zoom_out;           ///< Zoome arriere
 	QAction *zoom_fit;           ///< Ajuste le zoom de facon a voir l'integralite des elements
 	QAction *zoom_reset;         ///< Remet le zoom 1:1
-	QAction *about_qet;          ///< Lance le dialogue "A propos de QElectroTech"
-	QAction *about_qt;           ///< Lance le dialogue "A propos de Qt"
-	QAction *configure;          ///< Lance le dialogue de configuration de QElectroTech
-	QAction *fullscreen;         ///< Passe en mode plein ecran ou en sort
 	QAction *tile_window;        ///< Affiche les fenetre MDI en mosaique
 	QAction *cascade_window;     ///< Affiche les fenetres MDI en cascade
 	QAction *prev_window;        ///< Affiche la fenetre MDI precedente

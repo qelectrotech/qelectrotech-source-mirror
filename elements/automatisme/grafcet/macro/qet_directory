@@ -1,9 +1,12 @@
 <qet-directory>
     <names>
-        <name lang="de" >Makro Schritte</name>
-        <name lang="en" >Macro steps</name>
-        <name lang="fr" >Macro etape</name>
-        <name lang="pl" >Kroki makro</name>
-        <name lang="cs" >Makro kroky</name>
+        <name lang="de">Makro Schritte</name>
+        <name lang="en">Macro steps</name>
+        <name lang="fr">Macro etape</name>
+        <name lang="ar">ماكرو خطوة</name>
+        <name lang="pl">Kroki makro</name>
+        <name lang="cs">Makro kroky</name>
+        <name lang="es">Macro etapas</name>
+        <name lang="pt">Etapas Macro</name>
     </names>
 </qet-directory>

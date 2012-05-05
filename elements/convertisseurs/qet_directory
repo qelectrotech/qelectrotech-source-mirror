@@ -1,13 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="de" >Umformer</name>
-        <name lang="de" >Umrichter</name>
-        <name lang="ru" >Преобразователи</name>
-        <name lang="en" >Converters</name>
-        <name lang="fr" >Convertisseurs</name>
-        <name lang="es" >Convertidores</name>
-        <name lang="pt" >Conversores</name>
-        <name lang="cs" >Měniče</name>
-        <name lang="pl" >Przekształtniki</name>
+        <name lang="ru">Преобразователи</name>
+        <name lang="en">Converters</name>
+        <name lang="fr">Convertisseurs</name>
+		<name lang="ar">مُحوّلات الكترونيات القدرة</name>
+        <name lang="es">Convertidores</name>
+        <name lang="pt">Conversores</name>
+        <name lang="cs">Měniče</name>
+        <name lang="pl">Przekształtniki</name>
+        <name lang="it">Convertitori</name>
     </names>
 </qet-directory>

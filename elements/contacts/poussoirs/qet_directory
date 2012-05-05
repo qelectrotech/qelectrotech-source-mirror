@@ -1,13 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="de" >Druckknopf</name>
-        <name lang="de" >Druckschalter</name>
-        <name lang="ru" >кнопок</name>
-        <name lang="en" >Push-buttons</name>
-        <name lang="fr" >Poussoirs</name>
-        <name lang="es" >Pulsadores</name>
-        <name lang="pt" >Botões de pressão</name>
-        <name lang="cs" >Tlačítka</name>
-        <name lang="pl" >Przyciski</name>
+        <name lang="ru">кнопок</name>
+        <name lang="en">Push-buttons</name>
+        <name lang="fr">Poussoirs</name>
+		<name lang="ar">مفاتيح ضاغطة</name>
+        <name lang="es">Pulsadores</name>
+        <name lang="pt">Botões de pressão</name>
+        <name lang="cs">Tlačítka</name>
+        <name lang="pl">Przyciski</name>
+        <name lang="it">Pulsanti</name>
     </names>
 </qet-directory>

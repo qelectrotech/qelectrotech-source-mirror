@@ -1,0 +1,16 @@
+<definition width="20" version="0.3" hotspot_x="15" hotspot_y="20" height="20" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">مرجع مُلامس NC (أفقي)</name>
+        <name lang="en">Reference contact NC h</name>
+        <name lang="fr">Reference contact NC h</name>
+        <name lang="pl">Odsyłacz_2 (pionowo)</name>
+        <name lang="cs">Odkaz_2 - kontakt NC (vodorovný)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-17" x1="-8" y2="-15" x2="0" y3="-15" x3="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-8" y2="-16" x2="-8"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-10" y2="-15" x2="-8"/>
+        <input x="-14" y="-7.5" size="5" rotate="true" text="_"/>
+    </description>
+</definition>

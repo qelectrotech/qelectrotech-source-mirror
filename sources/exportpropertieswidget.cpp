@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -50,7 +50,7 @@ ExportProperties ExportPropertiesWidget::exportProperties() const {
 	export_properties.format                  = format -> itemData(format -> currentIndex()).toString();
 	export_properties.draw_grid               = draw_grid      -> isChecked();
 	export_properties.draw_border             = draw_border    -> isChecked();
-	export_properties.draw_inset              = draw_inset     -> isChecked();
+	export_properties.draw_titleblock              = draw_titleblock     -> isChecked();
 	export_properties.draw_terminals          = draw_terminals -> isChecked();
 	export_properties.draw_colored_conductors = draw_colored_conductors -> isChecked();
 	export_properties.exported_area           = export_border -> isChecked() ? QET::BorderArea : QET::ElementsArea;
@@ -70,7 +70,7 @@ void ExportPropertiesWidget::setExportProperties(const ExportProperties &export_
 	
 	draw_grid               -> setChecked(export_properties.draw_grid);
 	draw_border             -> setChecked(export_properties.draw_border);
-	draw_inset              -> setChecked(export_properties.draw_inset);
+	draw_titleblock              -> setChecked(export_properties.draw_titleblock);
 	draw_terminals          -> setChecked(export_properties.draw_terminals);
 	draw_colored_conductors -> setChecked(export_properties.draw_colored_conductors);
 	
@@ -169,8 +169,8 @@ void ExportPropertiesWidget::build() {
 	optionshlayout -> addWidget(draw_border, 1, 0);
 	
 	// dessiner le cartouche
-	draw_inset = new QCheckBox(tr("Dessiner le cartouche"), groupbox_options);
-	optionshlayout -> addWidget(draw_inset, 2, 0);
+	draw_titleblock = new QCheckBox(tr("Dessiner le cartouche"), groupbox_options);
+	optionshlayout -> addWidget(draw_titleblock, 2, 0);
 	
 	// dessiner les bornes
 	draw_terminals = new QCheckBox(tr("Dessiner les bornes"), groupbox_options);
@@ -190,8 +190,8 @@ void ExportPropertiesWidget::build() {
 	setTabOrder(format, export_border);
 	setTabOrder(export_border, draw_border);
 	setTabOrder(draw_border, draw_grid);
-	setTabOrder(draw_grid, draw_inset);
-	setTabOrder(draw_inset, draw_terminals);
+	setTabOrder(draw_grid, draw_titleblock);
+	setTabOrder(draw_titleblock, draw_terminals);
 	setTabOrder(draw_terminals, draw_colored_conductors);
 	
 	// connexion du bouton permettant le choix du repertoire
@@ -202,7 +202,7 @@ void ExportPropertiesWidget::build() {
 	connect(exported_content_choices, SIGNAL(buttonClicked(QAbstractButton *)), this, SIGNAL(exportedAreaChanged()));
 	connect(draw_grid,                SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_border,              SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
-	connect(draw_inset,               SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
+	connect(draw_titleblock,               SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_terminals,           SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 	connect(draw_colored_conductors,  SIGNAL(stateChanged(int)),                   this, SIGNAL(optionChanged()));
 }

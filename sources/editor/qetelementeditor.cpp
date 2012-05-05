@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -52,7 +52,7 @@
 	@param parent QWidget parent
 */
 QETElementEditor::QETElementEditor(QWidget *parent) :
-	QMainWindow(parent),
+	QETMainWindow(parent),
 	read_only(false),
 	min_title(tr("QElectroTech - \311diteur d'\351l\351ment", "window title")),
 	opened_from_file(false)
@@ -162,11 +162,6 @@ void QETElementEditor::setupActions() {
 	add_arc         = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
 	add_terminal    = new QAction(QET::Icons::Terminal,             tr("Ajouter une borne"),                         this);
 	add_textfield   = new QAction(QET::Icons::PartTextField,        tr("Ajouter un champ de texte"),                 this);
-	fullscreen      = new QAction(this);
-	slot_updateFullScreenAction();
-	configure       = new QAction(QET::Icons::Configure,            tr("&Configurer QElectroTech"),                  this);
-	about_qet       = new QAction(QET::Icons::QETLogo,              tr("\300 &propos de QElectroTech"),              this);
-	about_qt        = new QAction(QET::Icons::QtLogo,               tr("\300 propos de &Qt"),                        this);
 	
 	QString add_status_tip = tr("Maintenez la touche Shift enfonc\351e pour effectuer plusieurs ajouts d'affil\351e");
 	add_line      -> setStatusTip(add_status_tip);
@@ -178,9 +173,6 @@ void QETElementEditor::setupActions() {
 	add_terminal  -> setStatusTip(add_status_tip);
 	add_textfield -> setStatusTip(add_status_tip);
 	add_polygon   -> setStatusTip(tr("Utilisez le bouton droit de la souris pour poser le dernier point du polygone"));
-	configure     -> setStatusTip(tr("Permet de r\351gler diff\351rents param\350tres de QElectroTech", "status bar tip"));
-	about_qet     -> setStatusTip(tr("Affiche des informations sur QElectroTech",                       "status bar tip"));
-	about_qt      -> setStatusTip(tr("Affiche des informations sur la biblioth\350que Qt",              "status bar tip"));
 	
 	undo = ce_scene -> undoStack().createUndoAction(this, tr("Annuler"));
 	redo = ce_scene -> undoStack().createRedoAction(this, tr("Refaire"));
@@ -214,8 +206,6 @@ void QETElementEditor::setupActions() {
 	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
 	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
 	
-	fullscreen        -> setShortcut(QKeySequence(tr("Ctrl+Shift+F")));
-	
 	edit_names        -> setShortcut(QKeySequence(tr("Ctrl+E")));
 	edit_size_hs      -> setShortcut(QKeySequence(tr("Ctrl+R")));
 	edit_ori          -> setShortcut(QKeySequence(tr("Ctrl+T")));
@@ -225,8 +215,6 @@ void QETElementEditor::setupActions() {
 	edit_lower        -> setShortcut(QKeySequence(tr("Ctrl+Shift+Down")));
 	edit_backward     -> setShortcut(QKeySequence(tr("Ctrl+Shift+End")));
 	edit_forward      -> setShortcut(QKeySequence(tr("Ctrl+Shift+Home")));
-	
-	QETApp *qet_app = QETApp::instance();
 	
 	connect(new_element,     SIGNAL(triggered()), this,     SLOT(slot_new()));
 	connect(open,            SIGNAL(triggered()), this,     SLOT(slot_open()));
@@ -252,8 +240,6 @@ void QETElementEditor::setupActions() {
 	connect(edit_delete,     SIGNAL(triggered()), ce_scene, SLOT(slot_delete()));
 	connect(edit_size_hs,    SIGNAL(triggered()), ce_scene, SLOT(slot_editSizeHotSpot()));
 	connect(edit_names,      SIGNAL(triggered()), ce_scene, SLOT(slot_editNames()));
-	connect(fullscreen,      SIGNAL(triggered()), this,     SLOT(toggleFullScreen()));
-	connect(configure,       SIGNAL(triggered()), qet_app,  SLOT(configureQET()));
 	connect(edit_ori,        SIGNAL(triggered()), ce_scene, SLOT(slot_editOrientations()));
 	connect(edit_author,     SIGNAL(triggered()), ce_scene, SLOT(slot_editAuthorInformations()));
 	connect(edit_forward,    SIGNAL(triggered()), ce_scene, SLOT(slot_bringForward()));
@@ -281,9 +267,6 @@ void QETElementEditor::setupActions() {
 	connect(add_arc,         SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_terminal,    SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_textfield,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	
-	connect(about_qet,       SIGNAL(triggered()), qet_app,  SLOT(aboutQET()));
-	connect(about_qt,        SIGNAL(triggered()), qet_app,  SLOT(aboutQt()));
 	
 	connect(ce_scene,        SIGNAL(needNormalMode()), this, SLOT(slot_setNormalMode()));
 	
@@ -383,15 +366,11 @@ void QETElementEditor::setupMenus() {
 	edit_menu    = new QMenu(tr("&\311dition"),    this);
 	display_menu = new QMenu(tr("Afficha&ge"),     this);
 	tools_menu   = new QMenu(tr("O&utils"),        this);
-	config_menu  = new QMenu(tr("&Configuration"), this);
-	help_menu    = new QMenu(tr("&Aide"),          this);
 	
 	file_menu    -> setTearOffEnabled(true);
 	edit_menu    -> setTearOffEnabled(true);
 	display_menu -> setTearOffEnabled(true);
 	tools_menu   -> setTearOffEnabled(true);
-	config_menu  -> setTearOffEnabled(true);
-	help_menu    -> setTearOffEnabled(true);
 	
 	file_menu    -> addAction(new_element);
 	file_menu    -> addAction(open);
@@ -441,24 +420,9 @@ void QETElementEditor::setupMenus() {
 	display_menu -> addAction(zoom_fit);
 	display_menu -> addAction(zoom_reset);
 	
-	// menu Configurer > Afficher
-	QMenu *display_toolbars = createPopupMenu();
-	display_toolbars -> setTearOffEnabled(true);
-	display_toolbars -> setTitle(tr("Afficher"));
-	
-	config_menu -> addMenu(display_toolbars);
-	config_menu -> addAction(fullscreen);
-	config_menu -> addAction(configure);
-	
-	help_menu -> addAction(about_qet);
-	help_menu -> addAction(about_qt);
-	
-	menuBar() -> addMenu(file_menu);
-	menuBar() -> addMenu(edit_menu);
-	menuBar() -> addMenu(display_menu);
-	//menuBar() -> addMenu(tools_menu);
-	menuBar() -> addMenu(config_menu);
-	menuBar() -> addMenu(help_menu);
+	insertMenu(settings_menu_, file_menu);
+	insertMenu(settings_menu_, edit_menu);
+	insertMenu(settings_menu_, display_menu);
 }
 
 /**
@@ -496,23 +460,6 @@ void QETElementEditor::slot_updateMenus() {
 	save            -> setEnabled(!read_only && !ce_scene -> undoStack().isClean());
 	undo            -> setEnabled(!read_only && ce_scene -> undoStack().canUndo());
 	redo            -> setEnabled(!read_only && ce_scene -> undoStack().canRedo());
-	
-	slot_updateFullScreenAction();
-}
-
-/**
-	Gere l'action permettant de passer en plein ecran ou d'en sortir
-*/
-void QETElementEditor::slot_updateFullScreenAction() {
-	if (windowState() & Qt::WindowFullScreen) {
-		fullscreen -> setText(tr("Sortir du &mode plein \351cran"));
-		fullscreen -> setIcon(QET::Icons::FullScreenExit);
-		fullscreen -> setStatusTip(tr("Affiche QElectroTech en mode fen\352tr\351", "status bar tip"));
-	} else {
-		fullscreen -> setText(tr("Passer en &mode plein \351cran"));
-		fullscreen -> setIcon(QET::Icons::FullScreenEnter);
-		fullscreen -> setStatusTip(tr("Affiche QElectroTech en mode plein \351cran", "status bar tip"));
-	}
 }
 
 /**
@@ -816,16 +763,16 @@ void QETElementEditor::fromFile(const QString &filepath) {
 	@return true en cas de reussite, false sinon
 */
 bool QETElementEditor::toFile(const QString &fn) {
-	QFile file(fn);
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) {
-		QET::MessageBox::warning(this, tr("Erreur", "message box title"), tr("Impossible d'\351crire dans ce fichier", "message box content"));
-		return(false);
+	QDomDocument element_xml = ce_scene -> toXml();
+	bool writing = QET::writeXmlFile(element_xml, fn);
+	if (!writing) {
+		QET::MessageBox::warning(
+			this,
+			tr("Erreur", "message box title"),
+			tr("Impossible d'\351crire dans ce fichier", "message box content")
+		);
 	}
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out << ce_scene -> toXml().toString(4);
-	file.close();
-	return(true);
+	return(writing);
 }
 
 /**
@@ -1170,16 +1117,11 @@ void QETElementEditor::closeEvent(QCloseEvent *qce) {
 }
 
 /**
-	Gere les evenements du l'editeur d'element
-	Reimplemente ici pour :
-	  * mettre a jour l'action permettant d'entrer en mode plein ecran ou d'en sortir
-	@param e Evenement
+	Executed the first time the window editor is displayed.
 */
-bool QETElementEditor::event(QEvent *e) {
-	if (e -> type() == QEvent::WindowStateChange) {
-		slot_updateFullScreenAction();
-	}
-	return(QMainWindow::event(e));
+void QETElementEditor::firstActivation(QEvent *event) {
+	Q_UNUSED(event)
+	QTimer::singleShot(250, ce_view, SLOT(zoomFit()));
 }
 
 /**
@@ -1251,13 +1193,6 @@ void QETElementEditor::slot_updateSelectionFromPartsList() {
 	ce_scene -> blockSignals(false);
 	slot_updateInformations();
 	slot_updateMenus();
-}
-
-/**
-	Fait passer la fenetre du mode plein ecran au mode normal et vice-versa
-*/
-void QETElementEditor::toggleFullScreen() {
-	setWindowState(windowState() ^ Qt::WindowFullScreen);
 }
 
 /// Lit les parametres de l'editeur d'element

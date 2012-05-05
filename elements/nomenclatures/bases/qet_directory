@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
-        <name lang="de" >Basis</name>
-        <name lang="en" >Bases</name>
-        <name lang="fr" >Bases</name>
-        <name lang="pl" >Dane podstawowe</name>
-        <name lang="cs" >Základy</name>
+        <name lang="de">Basis</name>
+        <name lang="en">Bases</name>
+        <name lang="fr">Bases</name>
+		<name lang="ar">أساسيات</name>
+        <name lang="pl">Dane podstawowe</name>
+        <name lang="cs">Základy</name>
     </names>
 </qet-directory>

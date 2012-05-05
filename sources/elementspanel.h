@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,19 +18,24 @@
 #ifndef PANELAPPAREILS_H
 #define PANELAPPAREILS_H
 #include <QtGui>
+#include "genericpanel.h"
 #include "elementslocation.h"
+#include "templatelocation.h"
 class QETProject;
 class Diagram;
 class ElementsCollection;
 class ElementsCollectionItem;
 class ElementsCategory;
 class ElementDefinition;
+class ElementsCollectionCache;
+class TitleBlockTemplatesFilesCollection;
+
 /**
 	Cette classe represente le panel d'appareils (en tant qu'element
 	graphique) dans lequel l'utilisateur choisit les composants de
 	son choix et les depose sur le schema par drag'n drop.
 */
-class ElementsPanel : public QTreeWidget {
+class ElementsPanel : public GenericPanel {
 	Q_OBJECT
 	
 	// constructeurs, destructeur
@@ -41,88 +46,76 @@ class ElementsPanel : public QTreeWidget {
 	private:
 	ElementsPanel(const ElementsPanel &);
 	
-	// methodes
+	// methods
 	public:
 	// methodes pour determiner ce que represente un item donne
-	bool itemIsACollection(QTreeWidgetItem *) const;
-	bool itemIsACategory(QTreeWidgetItem *) const;
-	bool itemIsAnElement(QTreeWidgetItem *) const;
-	bool itemIsAProject(QTreeWidgetItem *) const;
-	bool itemIsADiagram(QTreeWidgetItem *) const;
-	bool itemHasLocation(QTreeWidgetItem *) const;
 	bool itemIsWritable(QTreeWidgetItem *) const;
+	bool selectedItemIsWritable() const;
 	
 	// methodes pour obtenir ce que represente un item donne
 	ElementsCollectionItem *collectionItemForItem(QTreeWidgetItem *) const;
-	QETProject *projectForItem(QTreeWidgetItem *) const;
-	Diagram *diagramForItem(QTreeWidgetItem *) const;
-	ElementsLocation locationForItem(QTreeWidgetItem *) const;
+	ElementsCollectionItem *selectedItem() const;
 	ElementsCategory *categoryForItem(QTreeWidgetItem *);
 	ElementsCategory *categoryForPos(const QPoint &);
 	
-	// methodes pour determiner ce que represente l'item selectionne
-	bool selectedItemIsACollection() const;
-	bool selectedItemIsACategory() const;
-	bool selectedItemIsAnElement() const;
-	bool selectedItemIsAProject() const;
-	bool selectedItemIsADiagram() const;
-	bool selectedItemHasLocation() const;
-	bool selectedItemIsWritable() const;
-	
-	// methodes pour obtenir ce que represente l'item selectionne
-	ElementsCollectionItem *selectedItem() const;
-	QETProject *selectedProject() const;
-	Diagram *selectedDiagram() const;
-	ElementsLocation selectedLocation() const;
+	void reloadCollections();
+	int elementsCollectionItemsCount();
+	bool mustHighlightIntegratedElements() const;
 	
 	signals:
 	void requestForProject(QETProject *);
 	void requestForDiagram(Diagram *);
-	void requestForCollectionItem(ElementsCollectionItem *);
+	void requestForCollectionItem(const ElementsLocation &);
 	void requestForMoveElements(ElementsCollectionItem *, ElementsCollectionItem *, QPoint);
+	void requestForTitleBlockTemplate(const TitleBlockTemplateLocation &);
+	void readingAboutToBegin();
+	void readingFinished();
+	void loadingProgressed(int, int);
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
-	void reload(bool = true);
-	void filter(const QString &);
+	void reload(bool = false);
+	void filter(const QString &, QET::Filtering = QET::RegularFilter);
 	void projectWasOpened(QETProject *);
 	void projectWasClosed(QETProject *);
-	void projectInformationsChanged(QETProject *);
-	void diagramWasAdded(QETProject *, Diagram *);
-	void diagramWasRemoved(QETProject *, Diagram *);
-	void diagramTitleChanged(QETProject *, Diagram *);
-	void diagramOrderChanged(QETProject *, int, int);
 	bool scrollToElement(const ElementsLocation &);
+	void applyCurrentFilter(const QList<QTreeWidgetItem *> &);
+	void ensureHierarchyIsVisible(const QList<QTreeWidgetItem *> &);
+	void scrollToSelectedItem();
+	void highlightItems(const QList<QTreeWidgetItem *> &, const QObject * = 0, const char * = 0);
 	
 	protected:
 	void dragEnterEvent(QDragEnterEvent *);
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
 	void startDrag(Qt::DropActions);
+	void startElementDrag(const ElementsLocation &);
+	void startTitleBlockTemplateDrag(const TitleBlockTemplateLocation &);
+	bool matchesCurrentFilter(const QTreeWidgetItem *) const;
+	
+	protected slots:
+	void firstActivation();
+	void panelContentChange();
+	virtual QList<ElementsLocation> elementIntegrated(QETProject *, const ElementsLocation &);
 	
 	private:
-	QTreeWidgetItem *addProject   (QTreeWidgetItem *, QETProject         *);
-	QTreeWidgetItem *addDiagram   (QTreeWidgetItem *, Diagram            *);
-	QTreeWidgetItem *addCollection(QTreeWidgetItem *, ElementsCollection *, const QString & = QString(), const QIcon & = QIcon());
-	QTreeWidgetItem *addCategory  (QTreeWidgetItem *, ElementsCategory   *, const QString & = QString(), const QIcon & = QIcon());
-	QTreeWidgetItem *addElement   (QTreeWidgetItem *, ElementDefinition  *, const QString & = QString());
-	void saveExpandedCategories();
-	QTreeWidgetItem *findLocation(const ElementsLocation &) const;
-	QTreeWidgetItem *findLocation(const QString &) const;
-	void deleteItem(QTreeWidgetItem *);
-	void updateProjectItemInformations(QETProject *);
-	QString diagramTitleToDisplay(Diagram *) const;
-	void ensureHierarchyIsVisible(QList<QTreeWidgetItem *>);
+	virtual QTreeWidgetItem *addProject   (QETProject *);
+	virtual QTreeWidgetItem *addCollection(ElementsCollection *);
+	virtual QTreeWidgetItem *updateTemplatesCollectionItem(QTreeWidgetItem *, TitleBlockTemplatesCollection *, PanelOptions = AddAllChild, bool = false);
+	virtual QTreeWidgetItem *updateTemplateItem        (QTreeWidgetItem *, const TitleBlockTemplateLocation &,  PanelOptions, bool = false);
+	virtual QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *,  PanelOptions, bool = false);
+	virtual QTreeWidgetItem *updateElementsCollectionItem(QTreeWidgetItem *, ElementsCollection *,  PanelOptions, bool = false);
+	virtual QTreeWidgetItem *updateElementItem         (QTreeWidgetItem *, ElementDefinition *, PanelOptions, bool = false);
 	
-	// attributs
+	// attributes
 	private:
-	QStringList expanded_directories;
-	QString last_selected_item;
-	QHash<QTreeWidgetItem *, ElementsLocation> locations_;
-	QSet<QETProject *> projects_to_display_;
-	QHash<QTreeWidgetItem *, QETProject *> projects_;
-	QHash<QTreeWidgetItem *, Diagram *> diagrams_;
-	QTreeWidgetItem *common_collection_item_;
-	QTreeWidgetItem *custom_collection_item_;
+	QSet<QETProject *> projects_to_display_;       ///< list of projects that have been added to this panel
+	QTreeWidgetItem *common_collection_item_;      ///< pointer to the item representing the common elements collection
+	QTreeWidgetItem *common_tbt_collection_item_;  ///< pointer to the item representing the common templates collection
+	QTreeWidgetItem *custom_collection_item_;      ///< pointer to the item representing the user elements collection
+	QTreeWidgetItem *custom_tbt_collection_item_;  ///< pointer to the item representing the user templates collection
+	int loading_progress_;                         ///< used to track the loading progress of elements collections
+	bool first_reload_;                            ///< used to distinguish the first time this panel is reloaded
+	QString filter_;                               ///< Currently applied filter
 };
 #endif

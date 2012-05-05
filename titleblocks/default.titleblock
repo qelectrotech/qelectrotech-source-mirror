@@ -1,0 +1,56 @@
+<titleblocktemplate name="default">
+    <informations>Author: The QElectroTech team
+    License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <grid rows="25px;25px" cols="t22%;r100%;t22%">
+        <field row="0" col="0" name="author"  displaylabel="true"  align="left"   rowspan="0">
+            <label>
+                <translation lang="en">Author</translation>
+                <translation lang="fr">Auteur</translation>
+                <translation lang="it">Autore</translation>
+            </label>
+            <value>
+                <translation lang="en">%author</translation>
+            </value>
+        </field>
+        <field row="1" col="0" name="date"    displaylabel="true"  align="left"   rowspan="0">
+            <label>
+                <translation lang="en">Date</translation>
+                <translation lang="fr">Date</translation>
+                <translation lang="it">Data</translation>
+            </label>
+            <value>
+                <translation lang="en">%date</translation>
+            </value>
+        </field>
+        <field row="0" col="1" name="title"   displaylabel="false" align="center" rowspan="1">
+            <label>
+                <translation lang="en">Title</translation>
+                <translation lang="fr">Titre</translation>
+                <translation lang="it">Titolo</translation>
+            </label>
+            <value>
+                <translation lang="en">%title</translation>
+            </value>
+        </field>
+        <field row="0" col="2" name="file"    displaylabel="true"  align="left"   rowspan="0">
+            <label>
+                <translation lang="en">File</translation>
+                <translation lang="fr">Fichier</translation>
+                <translation lang="it">File</translation>
+            </label>
+            <value>
+                <translation lang="en">%filename</translation>
+            </value>
+        </field>
+        <field row="1" col="2" name="folio"   displaylabel="true"  align="left"   rowspan="0">
+            <label>
+                <translation lang="en">Folio</translation>
+                <translation lang="fr">Folio</translation>
+                <translation lang="it">Foglio</translation>
+            </label>
+            <value>
+                <translation lang="en">%{folio-id}/%{folio-total}</translation>
+            </value>
+        </field>
+    </grid>
+</titleblocktemplate>

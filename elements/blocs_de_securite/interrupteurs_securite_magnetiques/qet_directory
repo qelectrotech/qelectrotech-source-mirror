@@ -1,9 +1,12 @@
 <qet-directory>
     <names>
-        <name lang="de" >Kontakt magnetische Sicherheitsschalter</name>
-        <name lang="en" >Contact safety interlock magnetic</name>
-        <name lang="fr" >Interrupteurs de sécurité magnétiques</name>
-        <name lang="pl" >Kodowane łączniki magnetyczne</name>
-        <name lang="cs" >Bezpečnostní magnetické blokování kontaktů</name>
+        <name lang="ru">Контакты защитной магнитной блокировки</name>
+        <name lang="de">Kontakt magnetische Sicherheitsschalter</name>
+        <name lang="en">Contact safety interlock magnetic</name>
+        <name lang="fr">Interrupteurs de sécurité magnétiques</name>
+        <name lang="ar">مفاتيح سلامة مغناطييسية</name>
+        <name lang="pl">Kodowane łączniki magnetyczne</name>
+        <name lang="cs">Bezpečnostní magnetické blokování kontaktů</name>
+        <name lang="es">Interruptores de seguridad magnéticos</name>
     </names>
 </qet-directory>

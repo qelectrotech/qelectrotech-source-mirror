@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,14 +23,17 @@
 #include "elementslocation.h"
 #include "borderproperties.h"
 #include "conductorproperties.h"
-#include "insetproperties.h"
+#include "titleblockproperties.h"
+#include "templatescollection.h"
 class Diagram;
 class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 class ElementsLocation;
+class TitleBlockTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
+class MoveTitleBlockTemplatesHandler;
 /**
 	Cette classe represente un projet QET. Typiquement enregistre dans un
 	fichier, il s'agit d'un document XML integrant des schemas ainsi qu'une
@@ -60,27 +63,37 @@ class QETProject : public QObject {
 		Represente l'etat du projet
 	*/
 	enum ProjectState {
-		Ok                   = 0, /// Le projet n'est pas en erreur
-		FileOpenFailed       = 1, /// l'ouverture d'un fichier a echoue
-		XmlParsingFailed     = 2, /// l'analyse XML a echoue
-		ProjectParsingFailed = 3  /// la lecture en tant que projet a echoue
+		Ok                    = 0, /// Le projet n'est pas en erreur
+		FileOpenFailed        = 1, /// l'ouverture d'un fichier a echoue
+		XmlParsingFailed      = 2, /// l'analyse XML a echoue
+		ProjectParsingRunning = 3, /// la lecture du projet est en cours
+		ProjectParsingFailed  = 4, /// la lecture en tant que projet a echoue
+		FileOpenDiscard       = 5  /// the user cancelled the file opening
 	};
 	
 	// methodes
 	public:
 	ProjectState state() const;
 	QList<Diagram *> diagrams() const;
+	int folioIndex(const Diagram *) const;
 	ElementsCollection *embeddedCollection() const;
+	TitleBlockTemplatesProjectCollection *embeddedTitleBlockTemplatesCollection();
 	QString filePath();
 	void setFilePath(const QString &);
 	QString currentDir() const;
 	QString pathNameTitle() const;
 	QString title() const;
+	qreal declaredQElectroTechVersion();
 	void setTitle(const QString &);
+	QList<QString> embeddedTitleBlockTemplates();
+	const TitleBlockTemplate *getTemplateByName(const QString &template_name);
+	QDomElement getTemplateXmlDescriptionByName(const QString &);
+	bool setTemplateXmlDescription(const QString &, const QDomElement &);
+	void removeTemplateByName(const QString &);
 	BorderProperties defaultBorderProperties() const;
 	void setDefaultBorderProperties(const BorderProperties &);
-	InsetProperties defaultInsetProperties() const;
-	void setDefaultInsetProperties(const InsetProperties &);
+	TitleBlockProperties defaultTitleBlockProperties() const;
+	void setDefaultTitleBlockProperties(const TitleBlockProperties &);
 	ConductorProperties defaultConductorProperties() const;
 	void setDefaultConductorProperties(const ConductorProperties &);
 	QDomDocument toXml();
@@ -93,7 +106,10 @@ class QETProject : public QObject {
 	ElementsCategory *integrationCategory() const;
 	QString integrateElement(const QString &, QString &);
 	QString integrateElement(const QString &, MoveElementsHandler *, QString &);
+	QString integrateTitleBlockTemplate(const TitleBlockTemplateLocation &, MoveTitleBlockTemplatesHandler *handler);
 	bool usesElement(const ElementsLocation &);
+	bool usesTitleBlockTemplate(const TitleBlockTemplateLocation &);
+	void cleanUnusedTitleBlocKTemplates();
 	void cleanUnusedElements(MoveElementsHandler *);
 	void cleanEmptyCategories(MoveElementsHandler *);
 	bool projectWasModified();
@@ -112,16 +128,24 @@ class QETProject : public QObject {
 	void projectInformationsChanged(QETProject *);
 	void diagramAdded(QETProject *, Diagram *);
 	void diagramRemoved(QETProject *, Diagram *);
+	void projectDiagramsOrderChanged(QETProject *, int, int);
+	void elementIntegrated(QETProject *, const ElementsLocation &);
+	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
 	void readOnlyChanged(QETProject *, bool);
 	
 	private slots:
 	void updateDiagramsFolioData();
+	void updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
+	void removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &);
+	void usedTitleBlockTemplateChanged(const QString &);
 	
 	private:
+	void setupTitleBlockTemplatesCollection();
 	ElementsCategory *rootCategory() const;
 	void readProjectXml();
 	void readDiagramsXml();
 	void readElementsCollectionXml();
+	void readEmbeddedTemplatesXml();
 	void readDefaultPropertiesXml();
 	void writeDefaultPropertiesXml(QDomElement &);
 	void addDiagram(Diagram *);
@@ -142,6 +166,8 @@ class QETProject : public QObject {
 	XmlElementsCollection *collection_;
 	/// Titre du projet
 	QString project_title_;
+	/// Version de QElectroTech declaree dans le document XML lors de son ouverture
+	qreal project_qet_version_;
 	/// booleen indiquant si le projet est en ReadOnly ou non
 	bool read_only_;
 	/// Chemin du fichier pour lequel ce projet est considere comme etant en lecture seule
@@ -153,6 +179,9 @@ class QETProject : public QObject {
 	/// Proprietes par defaut des conducteurs pour les nouveaux schemas dans ce projet
 	ConductorProperties default_conductor_properties_;
 	/// Proprietes par defaut du cartouche pour les nouveaux schemas dans ce projet
-	InsetProperties default_inset_properties_;
+	TitleBlockProperties default_titleblock_properties_;
+	/// Embedded title block templates collection
+	TitleBlockTemplatesProjectCollection titleblocks_;
 };
+Q_DECLARE_METATYPE(QETProject *)
 #endif

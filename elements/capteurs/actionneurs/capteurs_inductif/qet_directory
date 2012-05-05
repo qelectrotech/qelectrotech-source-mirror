@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
-        <name lang="de" >Induktive Sensoren</name>
-        <name lang="en" >Inductive sensor</name>
-        <name lang="fr" >Capteurs_inductif</name>
-        <name lang="pl" >Czujniki indukcyjne</name>
-        <name lang="cs" >Induktivní snímače</name>
+        <name lang="de">Induktive Sensoren</name>
+        <name lang="en">Inductive sensor</name>
+        <name lang="fr">Capteurs_inductif</name>
+		<name lang="ar">حسّسات حثيّة</name>
+        <name lang="pl">Czujniki indukcyjne</name>
+        <name lang="cs">Indukční čidla</name>
         </names>
 </qet-directory>

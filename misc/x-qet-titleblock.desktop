@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=MimeType
+MimeType=application/x-qet-titleblock
+Icon=application-x-qet-titleblock
+DefaultApp=qelectrotech
+Patterns=*.titleblock;
+Comment=QElectroTech title block template
+Comment[fr]=Modèle de cartouche QElectroTech
+Comment[ar]=QElectroTech نموذج إطار تعريف

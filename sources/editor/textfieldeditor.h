@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include <QtGui>
 #include "elementitemeditor.h"
 class PartTextField;
+class QTextOrientationSpinBoxWidget;
 /**
 	Cette classe represente un editeur de champ de texte
 	Elle permet d'editer a travers une interface graphique les
@@ -41,6 +42,7 @@ class TextFieldEditor : public ElementItemEditor {
 	QLineEdit *qle_x, *qle_y, *qle_text;
 	QSpinBox *font_size;
 	QCheckBox *rotate;
+	QTextOrientationSpinBoxWidget *rotation_angle_;
 	
 	// methodes
 	public:
@@ -54,6 +56,7 @@ class TextFieldEditor : public ElementItemEditor {
 	void updateTextFieldT();
 	void updateTextFieldS();
 	void updateTextFieldR();
+	void updateTextFieldRotationAngle();
 	void updateForm();
 	
 	private:

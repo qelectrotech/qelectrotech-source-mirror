@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -29,7 +29,9 @@
 Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	QObject(),
 	QGraphicsItem(parent, scene),
-	internal_connections(false)
+	internal_connections(false),
+	must_highlight_(false),
+	first_move_(true)
 {
 	setZValue(10);
 }
@@ -38,6 +40,21 @@ Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	Destructeur
 */
 Element::~Element() {
+}
+
+/**
+	@return true si l'element est mis en evidence
+*/
+bool Element::isHighlighted() const {
+	return(must_highlight_);
+}
+
+/**
+	@param hl true pour mettre l'element en evidence, false sinon
+*/
+void Element::setHighlighted(bool hl) {
+	must_highlight_ = hl;
+	update();
 }
 
 /**
@@ -64,6 +81,8 @@ void Element::paint(QPainter *painter, const QStyleOptionGraphicsItem *options, 
 		}
 	}
 #endif
+	if (must_highlight_) drawHighlight(painter, options);
+	
 	// Dessin de l'element lui-meme
 	paint(painter, options);
 	
@@ -164,18 +183,8 @@ bool Element::setOrientation(QET::Orientation o) {
 	ori.setCurrent(o);
 	update();
 	foreach(QGraphicsItem *qgi, childItems()) {
-		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) p -> updateConductor();
-		else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(qgi)) {
-			// applique une rotation contraire si besoin
-			if (!eti -> followParentRotations())  {
-				QMatrix new_matrix = eti -> matrix();
-				qreal dx = eti -> boundingRect().width()  / 2.0;
-				qreal dy = eti -> boundingRect().height() / 2.0;
-				new_matrix.translate(dx, dy);
-				new_matrix.rotate(-rotation_value);
-				new_matrix.translate(-dx, -dy);
-				eti -> setMatrix(new_matrix);
-			}
+		if (Terminal *p = qgraphicsitem_cast<Terminal *>(qgi)) {
+			p -> updateConductor();
 		}
 	}
 	return(true);
@@ -219,6 +228,32 @@ void Element::drawSelection(QPainter *painter, const QStyleOptionGraphicsItem *o
 	t.setColor(Qt::gray);
 	t.setStyle(Qt::DashDotLine);
 	painter -> setPen(t);
+	// Le dessin se fait a partir du rectangle delimitant
+	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
+	painter -> restore();
+}
+
+/**
+	Dessine le cadre de selection de l'element de maniere systematiquement non antialiasee.
+	@param painter Le QPainter a utiliser pour dessiner les bornes.
+	@param options Les options de style a prendre en compte
+ */
+void Element::drawHighlight(QPainter *painter, const QStyleOptionGraphicsItem *options) {
+	Q_UNUSED(options);
+	painter -> save();
+	
+	qreal gradient_radius = qMin(boundingRect().width(), boundingRect().height()) / 2.0;
+	QRadialGradient gradient(
+		boundingRect().center(),
+		gradient_radius,
+		boundingRect().center()
+	);
+	gradient.setColorAt(0.0, QColor::fromRgb(69, 137, 255, 255));
+	gradient.setColorAt(1.0, QColor::fromRgb(69, 137, 255, 0));
+	QBrush brush(gradient);
+	
+	painter -> setPen(Qt::NoPen);
+	painter -> setBrush(brush);
 	// Le dessin se fait a partir du rectangle delimitant
 	painter -> drawRoundRect(boundingRect().adjusted(1, 1, -1, -1), 10, 10);
 	painter -> restore();
@@ -269,9 +304,11 @@ void Element::setPos(qreal x, qreal y) {
 }
 
 /**
-	Gere l'enfoncement d'un bouton de la souris
+	Gere le clic sur l'element
+	@param e Objet decrivant l'evenement souris
 */
 void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
+	first_move_ = true;
 	if (e -> modifiers() & Qt::ControlModifier) {
 		setSelected(!isSelected());
 	}
@@ -280,15 +317,37 @@ void Element::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 
 /**
 	Gere les mouvements de souris lies a l'element
+	@param e Objet decrivant l'evenement souris
 */
 void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	if (isSelected() && e -> buttons() & Qt::LeftButton) {
-		QPointF oldPos = pos();
+		// l'element est en train d'etre deplace
+		Diagram *diagram_ptr = diagram();
+		if (diagram_ptr) {
+			if (first_move_) {
+				// il s'agit du premier mouvement du deplacement, on le signale
+				// au schema parent
+				diagram_ptr -> beginMoveElements(this);
+			}
+		}
+		
+		// on applique le mouvement impose par la souris
+		QPointF old_pos = pos();
 		setPos(mapToParent(e -> pos()) - matrix().map(e -> buttonDownPos(Qt::LeftButton)));
-		if (Diagram *diagram_ptr = diagram()) {
-			diagram_ptr -> moveElements(pos() - oldPos, this);
+		
+		// on calcule le mouvement reellement applique par setPos()
+		QPointF effective_movement = pos() - old_pos;
+		
+		if (diagram_ptr) {
+			// on signale le mouvement ainsi applique au schema parent, qui
+			// l'appliquera aux autres items selectionnes selon son bon vouloir
+			diagram_ptr -> continueMoveElements(effective_movement);
 		}
 	} else e -> ignore();
+	
+	if (first_move_) {
+		first_move_ = false;
+	}
 }
 
 /**
@@ -297,20 +356,10 @@ void Element::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	et conducteurs a deplacer au niveau du schema.
 */
 void Element::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
-	Diagram *diagram_ptr = diagram();
-	if (diagram_ptr) {
-		if (!diagram_ptr -> current_movement.isNull()) {
-			diagram_ptr -> undoStack().push(
-				new MoveElementsCommand(
-					diagram_ptr,
-					diagram_ptr -> selectedContent(),
-					diagram_ptr -> current_movement
-				)
-			);
-			diagram_ptr -> current_movement = QPointF();
-		}
-		diagram_ptr -> invalidateMovedElements();
+	if (Diagram *diagram_ptr = diagram()) {
+		diagram_ptr -> endMoveElements();
 	}
+	
 	if (!(e -> modifiers() & Qt::ControlModifier)) {
 		QGraphicsItem::mouseReleaseEvent(e);
 	}
@@ -354,7 +403,7 @@ bool Element::valideXml(QDomElement &e) {
 	@return true si l'import a reussi, false sinon
 	
 */
-bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
+bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation) {
 	/*
 		les bornes vont maintenant etre recensees pour associer leurs id a leur adresse reelle
 		ce recensement servira lors de la mise en place des fils
@@ -373,7 +422,9 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 				if (p -> fromXml(qde)) {
 					priv_id_adr.insert(qde.attribute("id").toInt(), p);
 					terminal_trouvee = true;
-					break;
+					// We used to break here, because we did not expect
+					// several terminals to share the same position.
+					// Of course, it finally happened.
 				}
 			}
 			if (!terminal_trouvee) ++ terminals_non_trouvees;
@@ -404,14 +455,19 @@ bool Element::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
 		}
 	}
 	
-	// position, selection et orientation
+	// position, selection
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	
+	// orientation
 	bool conv_ok;
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = ori.defaultOrientation();
-	setOrientation((QET::Orientation)read_ori);
-	
+	if (handle_inputs_rotation) {
+		RotateElementsCommand::rotateElement(this, (QET::Orientation)read_ori);
+	} else {
+		setOrientation((QET::Orientation)read_ori);
+	}
 	return(true);
 }
 

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -65,6 +65,7 @@ class ElementsCategory : public ElementsCollectionItem {
 	virtual void deleteUnusedElements(MoveElementsHandler *handler);
 	virtual void deleteEmptyCategories(MoveElementsHandler *handler);
 	virtual bool isEmpty();
+	virtual int count();
 	
 	// Methodes propres a la classe ElementsCategory
 	public:

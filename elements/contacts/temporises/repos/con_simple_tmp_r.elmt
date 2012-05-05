@@ -1,24 +1,26 @@
-<definition width="40" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس مُؤقت للوصل (NO) يُفتح مُتأخرا</name>
         <name lang="de">Kontakt Einfach (abschaltverzögert)</name>
-        <name lang="ru">Контакт с задержкой при возврате (НР)</name>
-        <name lang="pt">Contacto simples (tempo de ligado retardado)</name>
-        <name lang="en">Simple contact (switch-off delay timer)</name>
-        <name lang="fr">Contact simple (tempo repos)</name>
-        <name lang="pl">Zestyk zwierny</name>
+        <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
+        <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
+        <name lang="en">Simple contact (switch-on delay timer)</name>
+        <name lang="it">Contatto semplice (ritardato alla chiusura)</name>
+        <name lang="fr">Contact simple (tempo travail)</name>
+        <name lang="pl">Zestyk zwierny działający z opóźnieniem</name>
         <name lang="es">Contactor simple (tiempo retardado de encendido)</name>
-        <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění vypnutí)</name>
+        <name lang="cs">Jednoduché spojení (časový spínač pro zpoždění zapnutí)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.5" x1="14" y2="1.5" x2="-2"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.5" x1="14" y2="-1.5" x2="-2.5"/>
-        <arc width="10" x="5" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <input x="17.75" y="3" size="9" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="0" y="21" orientation="s"/>
+        <arc width="10" x="-14" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="10" y3="20" x3="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1.5" x1="-4" y2="1.5" x2="7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.5" x1="-4" y2="-1.5" x2="7"/>
+        <input x="12.75" y="3" size="9" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-10" x2="10"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
     </description>
 </definition>

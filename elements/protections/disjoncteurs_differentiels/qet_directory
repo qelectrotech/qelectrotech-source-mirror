@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Differenz Lastschalter</name>
-        <name lang="ru" >Дифавтоматы</name>
-        <name lang="en" >Differential circuit-breakers</name>
-        <name lang="fr" >Disjoncteurs différentiels</name>
-        <name lang="es" >Dispositivos diferenciales residuales</name>
-        <name lang="cs" >Rozdílové jističe</name>
-        <name lang="pt" >Disjunctores diferenciais</name>
-        <name lang="pl" >Wyłączniki różnicowoprądowe</name>
+        <name lang="de">Differenz Lastschalter</name>
+        <name lang="ru">Дифавтоматы</name>
+        <name lang="en">Differential circuit-breakers</name>
+        <name lang="fr">Disjoncteurs différentiels</name>
+		<name lang="ar">قواطع تفاضلية</name>
+        <name lang="es">Dispositivos diferenciales residuales</name>
+        <name lang="cs">Rozdílové jističe</name>
+        <name lang="pt">Disjunctores diferenciais</name>
+        <name lang="pl">Wyłączniki różnicowoprądowe</name>
+        <name lang="it">Disgiuntori differenziali</name>
     </names>
 </qet-directory>

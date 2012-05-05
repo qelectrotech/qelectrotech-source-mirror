@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -23,8 +23,10 @@
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
 #include "integrationmoveelementshandler.h"
+#include "movetemplateshandler.h"
 #include "basicmoveelementshandler.h"
 #include "qetmessagebox.h"
+#include "titleblocktemplate.h"
 
 QString QETProject::integration_category_name = "import";
 
@@ -36,7 +38,10 @@ QString QETProject::integration_category_name = "import";
 */
 QETProject::QETProject(int diagrams, QObject *parent) :
 	QObject(parent),
-	read_only_(false)
+	collection_(0),
+	project_qet_version_(-1),
+	read_only_(false),
+	titleblocks_(this)
 {
 	// 0 a n schema(s) vide(s)
 	int diagrams_count = qMax(0, diagrams);
@@ -52,6 +57,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	
 	// une categorie dediee aux elements integres automatiquement
 	ensureIntegrationCategoryExists();
+	setupTitleBlockTemplatesCollection();
 }
 
 /**
@@ -61,7 +67,10 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 */
 QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject(parent),
-	read_only_(false)
+	collection_(0),
+	project_qet_version_(-1),
+	read_only_(false),
+	titleblocks_(this)
 {
 	// ouvre le fichier
 	QFile project_file(path);
@@ -81,6 +90,8 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	// et construit le projet
 	readProjectXml();
 	
+	setupTitleBlockTemplatesCollection();
+	
 	// passe le projet en lecture seule si le fichier l'est
 	QFileInfo project_file_info(path);
 	if (!project_file_info.isWritable()) {
@@ -94,13 +105,18 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 */
 QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	QObject(parent),
-	read_only_(false)
+	collection_(0),
+	project_qet_version_(-1),
+	read_only_(false),
+	titleblocks_(this)
 {
 	// copie le contenu XML
 	document_root_.appendChild(document_root_.importNode(xml_element, true));
 	
 	// et construit le projet
 	readProjectXml();
+	
+	setupTitleBlockTemplatesCollection();
 }
 
 /**
@@ -112,7 +128,9 @@ QETProject::~QETProject() {
 	
 	// supprime la collection
 	// qDebug() << "Suppression de la collection du projet" << ((void *)this);
-	delete collection_;
+	if (collection_) {
+		delete collection_;
+	}
 	// qDebug() << "Collection du projet" << ((void *)this) << "supprimee";
 	
 	// qDebug() << diagrams_;
@@ -140,10 +158,28 @@ QList<Diagram *> QETProject::diagrams() const {
 }
 
 /**
+	@param diagram Pointer to a Diagram object
+	@return the folio number of the given diagram object within the project,
+	or -1 if it is not part of this project.
+	Note: this returns 0 for the first diagram, not 1
+*/
+int QETProject::folioIndex(const Diagram *diagram) const {
+	// QList::indexOf returns -1 if no item matched.
+	return(diagrams_.indexOf(const_cast<Diagram *>(diagram)));
+}
+
+/**
 	@return la collection embarquee de ce projet
 */
 ElementsCollection *QETProject::embeddedCollection() const {
 	return(collection_);
+}
+
+/**
+	@return the title block templates collection enbeedded within this project
+*/
+TitleBlockTemplatesProjectCollection *QETProject::embeddedTitleBlockTemplatesCollection() {
+	return(&titleblocks_);
 }
 
 /**
@@ -240,6 +276,15 @@ QString QETProject::title() const {
 }
 
 /**
+	@return la version de QElectroTech declaree dans le fichier projet lorsque
+	celui-ci a ete ouvert ; si ce projet n'a jamais ete enregistre / ouvert
+	depuis un fichier, cette methode retourne -1.
+*/
+qreal QETProject::declaredQElectroTechVersion() {
+	return(project_qet_version_);
+}
+
+/**
 	@param title le nouveau titre du projet
 */
 void QETProject::setTitle(const QString &title) {
@@ -252,6 +297,53 @@ void QETProject::setTitle(const QString &title) {
 	project_title_ = title;
 	emit(projectTitleChanged(this, project_title_));
 	emit(projectInformationsChanged(this));
+}
+
+/**
+	@return the list of the titleblock templates embedded within this project 
+*/
+QList<QString> QETProject::embeddedTitleBlockTemplates() {
+	return(titleblocks_.templates());
+}
+
+/**
+	@param template_name Name of the requested template
+	@return the requested template, or 0 if there is no valid template of this
+	name within the project
+*/
+const TitleBlockTemplate *QETProject::getTemplateByName(const QString &template_name) {
+	return(titleblocks_.getTemplate(template_name));
+}
+
+/**
+	@param template_name Name of the requested template
+	@return the XML description of the requested template, or a null QDomElement
+	if the project does not have such an titleblock template
+*/
+QDomElement QETProject::getTemplateXmlDescriptionByName(const QString &template_name) {
+	return(titleblocks_.getTemplateXmlDescription(template_name));
+}
+
+/**
+	This methods allows adding or modifying a template embedded within the
+	project.
+	@param template_name Name / Identifier of the template - will be used to
+	determine whether the given description will be added or will replace an
+	existing one.
+	@param xml_elmt An \<titleblocktemplate\> XML element describing the
+	template. Its "name" attribute must equal to template_name.
+	@return false if a problem occured, true otherwise
+*/
+bool QETProject::setTemplateXmlDescription(const QString &template_name, const QDomElement &xml_elmt) {
+	return(titleblocks_.setTemplateXmlDescription(template_name, xml_elmt));
+}
+
+/**
+	This methods allows removing a template embedded within the project.
+	@param template_name Name of the template to be removed
+*/
+void QETProject::removeTemplateByName(const QString &template_name) {
+	return(titleblocks_.removeTemplate(template_name));
 }
 
 /**
@@ -275,17 +367,17 @@ void QETProject::setDefaultBorderProperties(const BorderProperties &border) {
 	@return le cartouche par defaut utilise lors de la creation d'un
 	nouveau schema dans ce projet.
 */
-InsetProperties QETProject::defaultInsetProperties() const {
-	return(default_inset_properties_);
+TitleBlockProperties QETProject::defaultTitleBlockProperties() const {
+	return(default_titleblock_properties_);
 }
 
 /**
 	Permet de specifier le cartouche par defaut utilise lors de la creation
 	d'un nouveau schema dans ce projet.
-	@param inset Cartouche d'un schema
+	@param titleblock Cartouche d'un schema
 */
-void QETProject::setDefaultInsetProperties(const InsetProperties &inset) {
-	default_inset_properties_ = inset;
+void QETProject::setDefaultTitleBlockProperties(const TitleBlockProperties &titleblock) {
+	default_titleblock_properties_ = titleblock;
 }
 
 /**
@@ -314,6 +406,16 @@ QDomDocument QETProject::toXml() {
 	project_root.setAttribute("version", QET::version);
 	project_root.setAttribute("title", project_title_);
 	xml_doc.appendChild(project_root);
+	
+	// titleblock templates, if any
+	if (titleblocks_.templates().count()) {
+		QDomElement titleblocktemplates_elmt = xml_doc.createElement("titleblocktemplates");
+		foreach (QString template_name, titleblocks_.templates()) {
+			QDomElement e = titleblocks_.getTemplateXmlDescription(template_name);
+			titleblocktemplates_elmt.appendChild(xml_doc.importNode(e, true));
+		}
+		project_root.appendChild(titleblocktemplates_elmt);
+	}
 	
 	// proprietes pour les nouveaux schemas
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
@@ -362,26 +464,16 @@ bool QETProject::write() {
 		return(true);
 	}
 	
-	// ouvre le fichier en ecriture
-	QFile file(file_path_);
-	bool file_opening = file.open(QIODevice::WriteOnly | QIODevice::Text);
-	if (!file_opening) {
-		qDebug() << qPrintable(QString("QETProject::write() : unable to open %1 with write access [%2]").arg(file_path_).arg(QET::pointerString(this)));
-		return(false);
-	}
-	
-	qDebug() << qPrintable(QString("QETProject::write() : writing to file %1 [%2]").arg(file_path_).arg(QET::pointerString(this)));
-	
 	// realise l'export en XML du projet dans le document XML interne
 	document_root_.clear();
 	document_root_.appendChild(document_root_.importNode(toXml().documentElement(), true));
 	
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out << document_root_.toString(4);
-	file.close();
-	
-	return(true);
+	QString error_message;
+	bool writing = QET::writeXmlFile(document_root_, file_path_, &error_message);
+	if (!writing) {
+		qDebug() << qPrintable(QString("QETProject::write() : %1 [%2]").arg(error_message).arg(QET::pointerString(this)));
+	}
+	return(writing);
 }
 
 /**
@@ -505,14 +597,14 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 		return(QString());
 	}
 	
-	// accede a a categorie d'integration
+	// accede a la categorie d'integration
 	ElementsCategory *integ_cat = integrationCategory();
 	
 	// accede a l'element a integrer
 	ElementsCollectionItem *integ_item = QETApp::collectionItem(ElementsLocation::locationFromString(elmt_path));
 	ElementDefinition *integ_elmt = integ_item ? integ_item -> toElement() : 0;
 	if (!integ_item || !integ_elmt) {
-		error_message = tr("Impossible d'acc\351der \340 l'\351l\351ment a int\351grer");
+		error_message = tr("Impossible d'acc\351der \340 l'\351l\351ment \340 int\351grer");
 		return(QString());
 	}
 	
@@ -537,38 +629,76 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 	}
 	
 	// recopie l'element
+	ElementsLocation result;
 	if (ElementDefinition *existing_elmt = target_cat -> element(integ_item -> pathName())) {
 		
 		// l'element existe deja - on demande au handler ce que l'on doit faire
-		QET::Action todo = handler -> elementAlreadyExists(integ_elmt, existing_elmt);
+		QET::Action action = handler -> elementAlreadyExists(integ_elmt, existing_elmt);
 		
-		if (todo == QET::Ignore) {
+		if (action == QET::Ignore) {
 			// il faut conserver et utiliser l'element deja integre
-			return(existing_elmt -> location().toString());
-		} else if (todo == QET::Erase) {
+			result = existing_elmt -> location();
+		} else if (action == QET::Erase) {
 			// il faut ecraser l'element deja integre
 			BasicMoveElementsHandler *erase_handler = new BasicMoveElementsHandler();
-			ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
+			ElementsLocation result = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
 			delete erase_handler;
-			return(result_loc.toString());
-		} else if (todo == QET::Rename) {
+		} else if (action == QET::Rename) {
 			// il faut faire cohabiter les deux elements en renommant le nouveau 
 			QString integ_element_name = handler -> nameForRenamingOperation();
 			BasicMoveElementsHandler *rename_handler = new BasicMoveElementsHandler();
 			rename_handler -> setActionIfItemAlreadyExists(QET::Rename);
 			rename_handler -> setNameForRenamingOperation(integ_element_name);
-			ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, rename_handler, error_message);
+			result = copyElementWithHandler(integ_elmt, target_cat, rename_handler, error_message);
 			delete rename_handler;
-			return(result_loc.toString());
 		} else {
 			// il faut annuler la pose de l'element
-			return(QString());
+			result = ElementsLocation();
 		}
 	} else {
 		// integre l'element normalement
-		ElementsLocation result_loc = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
-		return(result_loc.toString());
+		result = copyElementWithHandler(integ_elmt, target_cat, handler, error_message);
 	}
+	
+	if (!result.isNull()) emit(elementIntegrated(this, result));
+	return(result.toString());
+}
+
+/**
+	Integrate a title block template into this project.
+	@param src_tbt The location of the title block template to be integrated into this project
+	@param handler 
+	@return the name of the template after integration, or an empty QString if a problem occured.
+*/
+QString QETProject::integrateTitleBlockTemplate(const TitleBlockTemplateLocation &src_tbt, MoveTitleBlockTemplatesHandler *handler) {
+	TitleBlockTemplateLocation dst_tbt(src_tbt.name(), &titleblocks_);
+	
+	// check whether a TBT having the same name already exists within this project
+	QString target_name = dst_tbt.name();
+	while (titleblocks_.templates().contains(target_name)) {
+		QET::Action action = handler -> templateAlreadyExists(src_tbt, dst_tbt);
+		if (action == QET::Retry) {
+			continue;
+		} else if (action == QET::Erase) {
+			break;
+		} else if (action == QET::Abort || action == QET::Ignore) {
+			return(QString());
+		} else if (action == QET::Rename) {
+			target_name = handler -> nameForRenamingOperation();
+		} else if (action == QET::Managed) {
+			return(target_name);
+		}
+	}
+	
+	bool integration = setTemplateXmlDescription(
+		target_name,
+		src_tbt.getTemplateXmlDescription()
+	);
+	if (!integration) {
+		handler -> errorWithATemplate(src_tbt, tr("Une erreur s'est produite durant l'int\351gration du mod\350le.", "error message"));
+		target_name = QString();
+	}
+	return(target_name);
 }
 
 /**
@@ -584,6 +714,30 @@ bool QETProject::usesElement(const ElementsLocation &location) {
 		}
 	}
 	return(false);
+}
+
+/**
+	@param location Location of a title block template
+	@return true if the provided template is used by at least one diagram
+	within this project, false otherwise
+*/
+bool QETProject::usesTitleBlockTemplate(const TitleBlockTemplateLocation &location) {
+	// a diagram can only use a title block template embedded wihtin its parent project
+	if (location.parentProject() != this) return(false);
+	
+	foreach (Diagram *diagram, diagrams()) {
+		if (diagram -> usesTitleBlockTemplate(location.name())) {
+			return(true);
+		}
+	}
+	return(false);
+}
+
+/**
+	Delete all title block templates not used in the project
+*/
+void QETProject::cleanUnusedTitleBlocKTemplates() {
+	titleblocks_.deleteUnusedTitleBlocKTemplates();
 }
 
 /**
@@ -628,8 +782,8 @@ Diagram *QETProject::addNewDiagram() {
 	Diagram *diagram = new Diagram();
 	
 	// lui transmet les parametres par defaut
-	diagram -> border_and_inset.importBorder(defaultBorderProperties());
-	diagram -> border_and_inset.importInset(defaultInsetProperties());
+	diagram -> border_and_titleblock.importBorder(defaultBorderProperties());
+	diagram -> border_and_titleblock.importTitleBlock(defaultTitleBlockProperties());
 	diagram -> defaultConductorProperties = defaultConductorProperties();
 	
 	addDiagram(diagram);
@@ -671,6 +825,26 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	
 	diagrams_.move(old_index, new_index);
 	updateDiagramsFolioData();
+	emit(projectDiagramsOrderChanged(this, old_index, new_index));
+}
+
+/**
+	Set up signals/slots connections related to the title block templates
+	collection.
+*/
+void QETProject::setupTitleBlockTemplatesCollection() {
+	connect(
+		&titleblocks_,
+		SIGNAL(changed(TitleBlockTemplatesCollection *, const QString &)),
+		this,
+		SLOT(updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
+	);
+	connect(
+		&titleblocks_,
+		SIGNAL(aboutToRemove(TitleBlockTemplatesCollection *, const QString &)),
+		this,
+		SLOT(removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *, const QString &))
+	);
 }
 
 /**
@@ -689,37 +863,48 @@ ElementsCategory *QETProject::rootCategory() const {
 */
 void QETProject::readProjectXml() {
 	QDomElement root_elmt = document_root_.documentElement();
+	state_ = ProjectParsingRunning;
 	
 	// la racine du document XML est sensee etre un element "project"
 	if (root_elmt.tagName() == "project") {
 		// mode d'ouverture normal
 		if (root_elmt.hasAttribute("version")) {
 			bool conv_ok;
-			qreal diagram_version = root_elmt.attribute("version").toDouble(&conv_ok);
-			if (conv_ok && QET::version.toDouble() < diagram_version) {
-				QET::MessageBox::warning(
+			project_qet_version_ = root_elmt.attribute("version").toDouble(&conv_ok);
+			if (conv_ok && QET::version.toDouble() < project_qet_version_) {
+				
+				int ret = QET::MessageBox::warning(
 					0,
 					tr("Avertissement", "message box title"),
 					tr(
 						"Ce document semble avoir \351t\351 enregistr\351 avec "
 						"une version ult\351rieure de QElectroTech. Il est "
 						"possible que l'ouverture de tout ou partie de ce "
-						"document \351choue.",
+						"document \351choue.\n"
+						"Que d\351sirez vous faire ?",
 						"message box content"
-					)
+					),
+					QMessageBox::Open | QMessageBox::Cancel
 				);
+				
+				if (ret == QMessageBox::Cancel) {
+					state_ = FileOpenDiscard;
+					return;
+				}
+				
 			}
 		}
 		
 		setTitle(root_elmt.attribute("title"));
-	} else if (root_elmt.tagName() == "diagram") {
-		/// @todo gerer l'ouverture de fichiers dont la racine est un element \<diagram\>
 	} else {
 		state_ = ProjectParsingFailed;
 	}
 	
 	// charge les proprietes par defaut pour les nouveaux schemas
 	readDefaultPropertiesXml();
+	
+	// load the embedded titleblock templates
+	readEmbeddedTemplatesXml();
 	
 	// charge la collection embarquee
 	readElementsCollectionXml();
@@ -764,6 +949,13 @@ void QETProject::readDiagramsXml() {
 }
 
 /**
+	Loads the embedded template from the XML description of the project
+*/
+void QETProject::readEmbeddedTemplatesXml() {
+	titleblocks_.fromXml(document_root_.documentElement());
+}
+
+/**
 	Charge les schemas depuis la description XML du projet
 */
 void QETProject::readElementsCollectionXml() {
@@ -803,11 +995,11 @@ void QETProject::readDefaultPropertiesXml() {
 	
 	// par defaut, les valeurs sont celles de la configuration QElectroTech
 	default_border_properties_    = QETDiagramEditor::defaultBorderProperties();
-	default_inset_properties_     = QETDiagramEditor::defaultInsetProperties();
+	default_titleblock_properties_     = QETDiagramEditor::defaultTitleBlockProperties();
 	default_conductor_properties_ = QETDiagramEditor::defaultConductorProperties();
 	
 	// lecture des valeurs indiquees dans le projet
-	QDomElement border_elmt, inset_elmt, conductors_elmt;
+	QDomElement border_elmt, titleblock_elmt, conductors_elmt;
 	
 	// recherche des elements XML concernant les dimensions, le cartouche et les conducteurs
 	for (QDomNode child = newdiagrams_elmt.firstChild() ; !child.isNull() ; child = child.nextSibling()) {
@@ -816,7 +1008,7 @@ void QETProject::readDefaultPropertiesXml() {
 		if (child_elmt.tagName() == "border") {
 			border_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "inset") {
-			inset_elmt = child_elmt;
+			titleblock_elmt = child_elmt;
 		} else if (child_elmt.tagName() == "conductors") {
 			conductors_elmt = child_elmt;
 		}
@@ -824,7 +1016,7 @@ void QETProject::readDefaultPropertiesXml() {
 	
 	// dimensions, cartouche, et conducteurs
 	if (!border_elmt.isNull())     default_border_properties_.fromXml(border_elmt);
-	if (!inset_elmt.isNull())      default_inset_properties_.fromXml(inset_elmt);
+	if (!titleblock_elmt.isNull())      default_titleblock_properties_.fromXml(titleblock_elmt);
 	if (!conductors_elmt.isNull()) default_conductor_properties_.fromXml(conductors_elmt);
 }
 
@@ -845,9 +1037,9 @@ void QETProject::writeDefaultPropertiesXml(QDomElement &xml_element) {
 	xml_element.appendChild(border_elmt);
 	
 	// exporte le contenu du cartouche
-	QDomElement inset_elmt = xml_document.createElement("inset");
-	default_inset_properties_.toXml(inset_elmt);
-	xml_element.appendChild(inset_elmt);
+	QDomElement titleblock_elmt = xml_document.createElement("inset");
+	default_titleblock_properties_.toXml(titleblock_elmt);
+	xml_element.appendChild(titleblock_elmt);
 	
 	// exporte le type de conducteur par defaut
 	QDomElement conductor_elmt = xml_document.createElement("conductors");
@@ -868,10 +1060,14 @@ void QETProject::addDiagram(Diagram *diagram) {
 	// si le schema est ecrit, alors il faut reecrire le fichier projet
 	connect(diagram, SIGNAL(written()), this, SLOT(componentWritten()));
 	connect(
-		&(diagram -> border_and_inset),
+		&(diagram -> border_and_titleblock),
 		SIGNAL(needFolioData()),
 		this,
 		SLOT(updateDiagramsFolioData())
+	);
+	connect(
+		diagram, SIGNAL(usedTitleBlockTemplateChanged(const QString &)),
+		this, SLOT(usedTitleBlockTemplateChanged(const QString &))
 	);
 	
 	// ajoute le schema au projet
@@ -895,6 +1091,7 @@ NamesList QETProject::namesListForIntegrationCategory() {
 	names.addName("ru", QString(russian_data, 24));
 	names.addName("cs", "Zaveden\351 prvky");
 	names.addName("pl", "Elementy importowane");
+	names.addName("it", "Elementi importati");
 	
 	return(names);
 }
@@ -969,8 +1166,43 @@ bool QETProject::projectWasModified() {
 void QETProject::updateDiagramsFolioData() {
 	int total_folio = diagrams_.count();
 	for (int i = 0 ; i < total_folio ; ++ i) {
-		diagrams_[i] -> border_and_inset.setFolioData(i + 1, total_folio);
+		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio);
 	}
+}
+
+/**
+	Inform each diagram that the \a template_name title block changed.
+	@param collection Title block templates collection
+	@param template_name Name of the changed template
+*/
+void QETProject::updateDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
+	Q_UNUSED(collection)
+	
+	foreach (Diagram *diagram, diagrams_) {
+		diagram -> titleBlockTemplateChanged(template_name);
+	}
+}
+
+/**
+	Inform each diagram that the \a template_name title block is about to be removed.
+	@param collection Title block templates collection
+	@param template_name Name of the removed template
+*/
+void QETProject::removeDiagramsTitleBlockTemplate(TitleBlockTemplatesCollection *collection, const QString &template_name) {
+	Q_UNUSED(collection)
+	
+	// warn diagrams that the given template is about to be removed
+	foreach (Diagram *diagram, diagrams_) {
+		diagram -> titleBlockTemplateRemoved(template_name);
+	}
+}
+
+/**
+	Handles the fact a digram changed the title block template it used
+	@param template_name Name of the template
+*/
+void QETProject::usedTitleBlockTemplateChanged(const QString &template_name) {
+	emit(diagramUsedTemplate(embeddedTitleBlockTemplatesCollection(), template_name));
 }
 
 /**

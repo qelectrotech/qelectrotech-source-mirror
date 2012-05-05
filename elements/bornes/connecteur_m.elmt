@@ -1,9 +1,11 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">موصل ذكري</name>
         <name lang="de">Stecker (männlich)</name>
         <name lang="ru">Штырь (нов.)</name>
         <name lang="pt">Conector macho</name>
         <name lang="en">Male connector</name>
+        <name lang="it">Connettore maschio</name>
         <name lang="fr">Connecteur mâle</name>
         <name lang="pl">Wtyk</name>
         <name lang="es">Connector macho</name>

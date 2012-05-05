@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "qetarguments.h"
+#include "titleblock/templatescollection.h"
 
 /**
 	Constructeur par defaut
@@ -51,10 +52,14 @@ QETArguments::QETArguments(const QETArguments &qet_arguments) :
 	QObject(qet_arguments.parent()),
 	project_files_(qet_arguments.project_files_),
 	element_files_(qet_arguments.element_files_),
+	tbt_files_(qet_arguments.tbt_files_),
 	options_(qet_arguments.options_),
 	unknown_options_(qet_arguments.unknown_options_),
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_(qet_arguments.common_elements_dir_),
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+common_tbt_dir_(qet_arguments.common_tbt_dir_),
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_(qet_arguments.config_dir_),
@@ -73,10 +78,14 @@ QETArguments::QETArguments(const QETArguments &qet_arguments) :
 QETArguments &QETArguments::operator=(const QETArguments &qet_arguments) {
 	project_files_   = qet_arguments.project_files_;
 	element_files_   = qet_arguments.element_files_;
+	tbt_files_       = qet_arguments.tbt_files_;
 	options_         = qet_arguments.options_;
 	unknown_options_ = qet_arguments.unknown_options_;
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_ = qet_arguments.common_elements_dir_;
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	common_tbt_dir_ = qet_arguments.common_tbt_dir_;
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_ = qet_arguments.config_dir_;
@@ -109,7 +118,7 @@ void QETArguments::setArguments(const QList<QString> &args) {
 	projet puis element.
 */
 QList<QString> QETArguments::arguments() const {
-	return(options_ + unknown_options_ + project_files_ + element_files_);
+	return(options_ + unknown_options_ + project_files_ + element_files_ + tbt_files_);
 }
 
 /**
@@ -117,7 +126,7 @@ QList<QString> QETArguments::arguments() const {
 	Les fichiers de type projet viennent avant les fichiers de type element.
 */
 QList<QString> QETArguments::files() const {
-	return(project_files_ + element_files_);
+	return(project_files_ + element_files_ + tbt_files_);
 }
 
 /**
@@ -132,6 +141,13 @@ QList<QString> QETArguments::projectFiles() const {
 */
 QList<QString> QETArguments::elementFiles() const {
 	return(element_files_);
+}
+
+/**
+	@return title block template files
+*/
+QList<QString> QETArguments::titleBlockTemplateFiles() const {
+	return(tbt_files_);
 }
 
 /**
@@ -158,6 +174,9 @@ void QETArguments::clear() {
 	unknown_options_.clear();
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
 	common_elements_dir_.clear();
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	common_tbt_dir_.clear();
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	config_dir_.clear();
@@ -194,6 +213,10 @@ void QETArguments::handleFileArgument(const QString &file) {
 		if (!element_files_.contains(file)) {
 			element_files_ << file;
 		}
+	} else if (file.endsWith(TITLEBLOCKS_FILE_EXTENSION)) {
+		if (!tbt_files_.contains(file)) {
+			tbt_files_ << file;
+		}
 	} else {
 		if (!project_files_.contains(file)) {
 			project_files_ << file;
@@ -205,6 +228,7 @@ void QETArguments::handleFileArgument(const QString &file) {
 	Gere les arguments correspondant potentiellement a une option.
 	Les options reconnues sont : 
 	  * --common-elements-dir=
+	  * --common-tbt-dir
 	  * --config-dir=
 	  * --lang-dir=
 	  * --help
@@ -234,6 +258,13 @@ void QETArguments::handleOptionArgument(const QString &option) {
 		return;
 	}
 	
+#endif
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+	QString ctbtd_arg("--common-tbt-dir=");
+	if (option.startsWith(ctbtd_arg)) {
+		common_tbt_dir_ = option.mid(ctbtd_arg.length());
+		return;
+	}
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 	QString cd_arg("--config-dir=");
@@ -270,8 +301,26 @@ bool QETArguments::commonElementsDirSpecified() const {
 QString QETArguments::commonElementsDir() const {
 	return(common_elements_dir_);
 }
-
 #endif
+
+#ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
+/**
+	@return true if the user has specified a directory for the common title
+	block templates collection
+*/
+bool QETArguments::commonTitleBlockTemplatesDirSpecified() const {
+	return(!common_tbt_dir_.isEmpty());
+}
+
+/**
+	@return the directory of the common title block templates collection
+	specified by the user. If none were specified, return an empty string.
+*/
+QString QETArguments::commonTitleBlockTemplatesDir() const {
+	return(common_tbt_dir_);
+}
+#endif
+
 #ifdef QET_ALLOW_OVERRIDE_CD_OPTION
 /**
 	@return true si l'utilisateur a specifie un dossier pour la configuration.

@@ -1,13 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Halbleiter</name>
-        <name lang="de" >Halbleiter</name>
-        <name lang="ru" >Полупроводники</name>
-        <name lang="en" >Semiconductors</name>
-        <name lang="fr" >Semi-conducteurs</name>
-        <name lang="es" >Semiconductores</name>
-        <name lang="cs" >Polovodiče</name>
-        <name lang="pt" >Semi-conductores</name>
-        <name lang="pl" >Półprzewodniki</name>
+        <name lang="de">Halbleiter</name>
+        <name lang="ru">Полупроводники</name>
+        <name lang="en">Semiconductors</name>
+        <name lang="fr">Semi-conducteurs</name>
+		<name lang="ar">أشباه النواقل</name>
+        <name lang="es">Semiconductores</name>
+        <name lang="cs">Polovodiče</name>
+        <name lang="pt">Semi-conductores</name>
+        <name lang="pl">Półprzewodniki</name>
+        <name lang="it">Semiconduttori</name>
     </names>
 </qet-directory>

@@ -1,0 +1,12 @@
+<qet-directory>
+    <names>
+        <name lang="ru">Бытовая техника</name>
+        <name lang="pt">Electrodomésticos</name>
+        <name lang="en">Domestic</name>
+        <name lang="fr">Domestiques</name>
+		<name lang="ar">منزليات</name>
+        <name lang="pl">Instalacje w obiektach budowlanych</name>
+        <name lang="es">Electrodoméstico</name>
+        <name lang="cs">Domácí elektrotechnika</name>
+    </names>
+</qet-directory>

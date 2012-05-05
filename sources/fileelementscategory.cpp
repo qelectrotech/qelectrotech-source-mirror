@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,8 @@
 #include "fileelementscategory.h"
 #include "fileelementscollection.h"
 #include "fileelementdefinition.h"
+#include "qet.h"
+
 /**
 	Constructeur
 	@param path Chemin du dossier de la categorie
@@ -412,21 +414,8 @@ bool FileElementsCategory::write() {
 	document.appendChild(root);
 	root.appendChild(category_names.toXml(document));
 	
-	// repere le chemin du fichier de configuration de la categorie
-	QFile directory_conf(cat_dir.absolutePath() + "/qet_directory");
-	
-	// ouvre le fichier
-	if (!directory_conf.open(QIODevice::Text | QIODevice::WriteOnly)) return(false);
-	
-	// ecrit le fichier
-	QTextStream out(&directory_conf);
-	out.setCodec("UTF-8");
-	out << document.toString(4);
-	
-	// ferme le fichier
-	directory_conf.close();
-	
-	return(true);
+	QString filepath = cat_dir.absolutePath() + "/qet_directory";
+	return(QET::writeXmlFile(document, filepath));
 }
 
 /**

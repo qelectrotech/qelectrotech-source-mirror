@@ -1,0 +1,9 @@
+<qet-directory>
+    <names>
+        <name lang="fr" >Froid</name>
+		<name lang="ar" >تبريد</name>
+        <name lang="en" >Chiller</name>
+        <name lang="pl" >Chłodnictwo</name>
+        <name lang="cs" >Chlazení</name>
+    </names>
+</qet-directory>

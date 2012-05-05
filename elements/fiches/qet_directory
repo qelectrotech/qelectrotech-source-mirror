@@ -1,0 +1,9 @@
+<qet-directory>
+    <names>
+        <name lang="fr">Fiches</name>
+		<name lang="ar">روابط توصيل</name>
+        <name lang="pl">Złącza</name>
+        <name lang="en">Pins</name>
+        <name lang="cs">Kolíky</name>  
+    </names>
+</qet-directory>

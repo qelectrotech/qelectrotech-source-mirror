@@ -1,0 +1,12 @@
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="5" height="10" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">اتجاه</name>
+        <name lang="fr">direction</name>
+        <name lang="pl">Kierunek 1</name>
+        <name lang="cs">Směr 1</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="7"/>
+    </description>
+</definition>

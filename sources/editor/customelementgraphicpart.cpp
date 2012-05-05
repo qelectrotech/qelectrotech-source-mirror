@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -27,6 +27,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const {
 	
 	css_like_styles += "line-style:";
 	if      (_linestyle == DashedStyle) css_like_styles += "dashed";
+	if      (_linestyle == DottedStyle) css_like_styles += "dotted";
 	else if (_linestyle == NormalStyle) css_like_styles += "normal";
 	
 	css_like_styles += ";line-weight:";
@@ -65,6 +66,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 		QString style_value = rx.cap(2);
 		if (style_name == "line-style") {
 			if      (style_value == "dashed") _linestyle = DashedStyle;
+			if      (style_value == "dotted") _linestyle = DottedStyle;
 			else if (style_value == "normal") _linestyle = NormalStyle;
 			// il n'y a pas de else car les valeurs non conformes sont ignorees (idem par la suite)
 		} else if (style_name == "line-weight") {
@@ -107,6 +109,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 	
 	// applique le style de trait
 	if      (_linestyle == DashedStyle) pen.setStyle(Qt::DashLine);
+	if      (_linestyle == DottedStyle) pen.setStyle(Qt::DotLine);
 	else if (_linestyle == NormalStyle) pen.setStyle(Qt::SolidLine);
 	
 	// applique l'epaisseur de trait
@@ -150,22 +153,16 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 	@param value Valeur a attribuer a la propriete
 */
 void CustomElementGraphicPart::setProperty(const QString &property, const QVariant &value) {
-	bool change_made = false;
 	if (property == "line-style") {
 		setLineStyle(static_cast<LineStyle>(value.toInt()));
-		change_made = true;
 	} else if (property == "line-weight") {
 		setLineWeight(static_cast<LineWeight>(value.toInt()));
-		change_made = true;
 	} else if (property == "filling") {
 		setFilling(static_cast<Filling>(value.toInt()));
-		change_made = true;
 	} else if (property == "color") {
 		setColor(static_cast<Color>(value.toInt()));
-		change_made = true;
 	} else if (property == "antialias") {
 		setAntialiased(value.toBool());
-		change_made = true;
 	}
 }
 

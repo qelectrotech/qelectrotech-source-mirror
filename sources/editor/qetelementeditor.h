@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,6 +18,7 @@
 #ifndef CUSTOM_ELEMENT_EDITOR_H
 #define CUSTOM_ELEMENT_EDITOR_H
 #include <QtGui>
+#include "qetmainwindow.h"
 #include "qet.h"
 #include "elementscene.h"
 #include "orientationset.h"
@@ -29,7 +30,7 @@ class ElementView;
 	de dessiner, modifier et parametrer un element electrique. Le dessin se
 	fait par ajout de parties (Part).
 */
-class QETElementEditor : public QMainWindow {
+class QETElementEditor : public QETMainWindow {
 	Q_OBJECT
 	
 	// constructeur, destructeur
@@ -44,7 +45,7 @@ class QETElementEditor : public QMainWindow {
 	/// booleen indiquant si l'editeur est en mode "lecture seule" ou non
 	bool read_only;
 	/// menus
-	QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu, *config_menu, *help_menu;
+	QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu;
 	/// vue sur la scene d'edition
 	ElementView *ce_view;
 	/// scene d'edition
@@ -75,12 +76,6 @@ class QETElementEditor : public QMainWindow {
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
 	/// actions du menu affichage
 	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
-	/// actions du menu configurer
-	QAction *fullscreen;         ///< Passe en mode plein ecran ou en sort
-	QAction *configure;          ///< Lance le dialogue de configuration de QElectroTech
-	/// actions du menu aide
-	QAction *about_qet;          ///< Lance le dialogue "A propos de QElectroTech"
-	QAction *about_qt;           ///< Lance le dialogue "A propos de Qt"
 	/// barres d'outils
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// actions de la barre d'outils
@@ -126,7 +121,7 @@ class QETElementEditor : public QMainWindow {
 	
 	protected:
 	void closeEvent(QCloseEvent *);
-	virtual bool event(QEvent *);
+	virtual void firstActivation(QEvent *);
 	
 	private:
 	void setupActions();
@@ -151,12 +146,10 @@ class QETElementEditor : public QMainWindow {
 	void slot_setNormalMode();
 	void slot_updateInformations();
 	void slot_updateMenus();
-	void slot_updateFullScreenAction();
 	void slot_updateTitle();
 	void slot_createPartsList();
 	void slot_updatePartsList();
 	void slot_updateSelectionFromPartsList();
-	void toggleFullScreen();
 	void xmlPreview();
 	bool checkElement();
 	void pasteFromFile();

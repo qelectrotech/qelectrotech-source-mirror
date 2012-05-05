@@ -1,9 +1,11 @@
-<definition width="40" version="0.22" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">زرّ توقف طارئ (NC)</name>
         <name lang="de">Notaus (NC)</name>
         <name lang="ru">Аварийный стоп</name>
         <name lang="pt">Paragem de emergência (NC)</name>
         <name lang="en">Emergency stop (NC)</name>
+        <name lang="it">Stop di emergenza</name>
         <name lang="fr">Arrêt d'urgence (NF)</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="es">Parada de emergencia (NC)</name>

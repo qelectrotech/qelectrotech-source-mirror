@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Kontakt Plan (KOP)</name>
-        <name lang="ru" >Контактно-релейная схема</name>
-        <name lang="en" >Ladder</name>
-        <name lang="fr" >Ladder</name>
-        <name lang="es" >Ladder</name>
-        <name lang="pt" >Ladder</name>
-        <name lang="cs" >Žebřík</name>
-        <name lang="pl" >Schemat drabinkowy (LD)</name>
+        <name lang="de">Kontakt Plan (KOP)</name>
+        <name lang="ru">?????????-???????? ?????</name>
+        <name lang="en">Ladder</name>
+        <name lang="ar">المخطط السلمي Ladder</name>
+        <name lang="fr">Ladder</name>
+        <name lang="es">Ladder</name>
+        <name lang="pt">Ladder</name>
+        <name lang="cs">?eb??k</name>
+        <name lang="pl">Schemat drabinkowy (LD)</name>
+        <name lang="it">Ladder</name>
     </names>
 </qet-directory>

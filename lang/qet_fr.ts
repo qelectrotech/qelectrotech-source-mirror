@@ -4,7 +4,7 @@
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="635"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="608"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="700"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="673"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -24,7 +24,7 @@
 <context>
     <name>QObject</name>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="157"/>
+        <location filename="../sources/qet.cpp" line="204"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -33,7 +33,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="178"/>
+        <location filename="../sources/qet.cpp" line="225"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -42,12 +42,30 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="193"/>
+        <location filename="../sources/qet.cpp" line="240"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>%n champ de texte</numerusform>
             <numerusform>%n champs de texte</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/titleblock/templatecommands.cpp" line="912"/>
+        <source>Couper %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation>
+            <numerusform>Couper %n cellule</numerusform>
+            <numerusform>Couper %n cellules</numerusform>
+        </translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../sources/titleblock/templatecommands.cpp" line="936"/>
+        <source>Coller %n cellule(s)</source>
+        <comment>undo caption</comment>
+        <translation>
+            <numerusform>Coller %n cellule</numerusform>
+            <numerusform>Coller %n cellules</numerusform>
         </translation>
     </message>
 </context>

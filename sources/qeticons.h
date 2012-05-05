@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -70,6 +70,14 @@ namespace QET {
 		extern QIcon EditPaste;
 		extern QIcon EditRedo;
 		extern QIcon EditSelectAll;
+		extern QIcon EditTableCellMerge;
+		extern QIcon EditTableCellSplit;
+		extern QIcon EditTableDeleteColumn;
+		extern QIcon EditTableDeleteRow;
+		extern QIcon EditTableInsertColumnLeft;
+		extern QIcon EditTableInsertColumnRight;
+		extern QIcon EditTableInsertRowAbove;
+		extern QIcon EditTableInsertRowUnder;
 		extern QIcon EditUndo;
 		extern QIcon Element;
 		extern QIcon ElementDelete;
@@ -138,6 +146,7 @@ namespace QET {
 		extern QIcon South;
 		extern QIcon Start;
 		extern QIcon Terminal;
+		extern QIcon TitleBlock;
 		extern QIcon UserInformations;
 		extern QIcon ViewFitWidth;
 		extern QIcon ViewFitWindow;

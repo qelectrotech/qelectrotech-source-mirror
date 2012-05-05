@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@
 	@param parent QWidget parent de ce widget
 */
 ElementsCategoriesList::ElementsCategoriesList(bool display_elements, uint selectables, QWidget *parent) :
-	QTreeWidget(parent),
+	GenericPanel(parent),
 	display_elements_(display_elements),
 	selectables_(selectables),
 	first_load(true)
@@ -39,12 +39,15 @@ ElementsCategoriesList::ElementsCategoriesList(bool display_elements, uint selec
 	// selection unique
 	setSelectionMode(QAbstractItemView::SingleSelection);
 	setColumnCount(1);
-	header() -> hide();
 	
 	// charge les categories
+	setElementsCache(QETApp::collectionCache());
 	reload();
 	
-	connect(this, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(selectionChanged(QTreeWidgetItem *, QTreeWidgetItem *)));
+	connect(
+		this, SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)),
+		this, SLOT(selectionChanged(QTreeWidgetItem *, QTreeWidgetItem *))
+	);
 }
 
 /**
@@ -57,124 +60,57 @@ ElementsCategoriesList::~ElementsCategoriesList() {
 	Recharge l'arbre des categories
 */
 void ElementsCategoriesList::reload() {
-	// vide l'arbre
-	clear();
+	GenericPanel::PanelOptions  options = display_elements_ ? GenericPanel::AddAllChildElements : GenericPanel::AddChildElementsContainers;
+	options |= GenericPanel::DisplayElementsPreview;
 	
 	foreach(ElementsCollection *collection, QETApp::availableCollections()) {
 		if (collection == QETApp::commonElementsCollection()) continue;
 		if (collection == QETApp::customElementsCollection()) continue;
-		addCollection(invisibleRootItem(), collection, tr("Collection projet"));
+		addElementsCollection(collection, invisibleRootItem(), options) -> setExpanded(true);
 	}
 	
 	// chargement des elements de la collection commune si droits d'ecriture
 	if (QETApp::commonElementsCollection() -> isWritable()) {
-		if (!first_load) QETApp::commonElementsCollection() -> reload();
-		addCollection(invisibleRootItem(), QETApp::commonElementsCollection(), tr("Collection QET"), QET::Icons::QETLogo);
+		addElementsCollection(
+			QETApp::commonElementsCollection(),
+			invisibleRootItem(),
+			options
+		) -> setExpanded(true);
 	}
 	
 	// chargement des elements de la collection utilisateur
-	if (!first_load) QETApp::customElementsCollection() -> reload();
-	addCollection(invisibleRootItem(), QETApp::customElementsCollection(), tr("Collection utilisateur"), QET::Icons::Home);
+	addElementsCollection(
+		QETApp::customElementsCollection(),
+		invisibleRootItem(),
+		options
+	) -> setExpanded(true);
 	
 	if (first_load) first_load = false;
 }
 
 /**
-	Methode privee permettant d'ajouter une collection d'elements
-	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere la collection d'elements
-	@param collection Collection a inserer dans le panel d'elements
-	@param coll_name Nom a utiliser pour la collection
-	@param icon Icone a utiliser pour l'affichage de la collection
-	@return Le QTreeWidgetItem insere le plus haut
+	Create a QTreeWidgetItem
+	@param type Item type (e.g QET::Diagram, QET::Project, ...)
+	@param parent Parent for the created item
+	@param label Label for the created item
+	@param icon Icon for the created item
+	@return the create QTreeWidgetItem
 */
-QTreeWidgetItem *ElementsCategoriesList::addCollection(QTreeWidgetItem *qtwi_parent, ElementsCollection *collection, const QString &coll_name, const QIcon &icon) {
-	QTreeWidgetItem *qtwi_coll = addCategory(qtwi_parent, collection -> rootCategory(), coll_name, icon);
-	qtwi_coll -> setExpanded(true);
-	Qt::ItemFlags flags_coll = Qt::ItemIsEnabled;
-	if (selectables_ & QET::Collection) flags_coll |= Qt::ItemIsSelectable;
-	qtwi_coll -> setFlags(flags_coll);
-	return(qtwi_coll);
-}
-
-/**
-	Methode privee permettant d'ajouter une categorie
-	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere la categorie
-	@param category Categorie d'elements a inserer
-	@param cat_name Parametre facultatif permettant de forcer le nom affiche
-	S'il n'est pas precise, la methode utilise le nom declare par la categorie.
-	@param icon Icone a utiliser pour l'affichage de la categorie
-	Si elle n'est pas precisee, une icone par defaut est utilisee
-	@return Le QTreeWidgetItem insere le plus haut
-*/
-QTreeWidgetItem *ElementsCategoriesList::addCategory(QTreeWidgetItem *qtwi_parent, ElementsCategory *category, const QString &cat_name, const QIcon &icon) {
-	// recupere le nom de la categorie
-	QString final_name(cat_name.isEmpty() ? category -> name() : cat_name);
-	QIcon final_icon(icon.isNull() ? QET::Icons::Folder : icon);
-	
-	// creation du QTreeWidgetItem representant le dossier
-	QTreeWidgetItem *qtwi_category = new QTreeWidgetItem(qtwi_parent, QStringList(final_name));
-	qtwi_category -> setIcon(0, final_icon);
-	locations_.insert(qtwi_category, category -> location());
-	Qt::ItemFlags flags_category = Qt::ItemIsEnabled;
-	if (selectables_ & QET::Category) flags_category |= Qt::ItemIsSelectable;
-	qtwi_category -> setFlags(flags_category);
-	
-	// ajout des sous-categories
-	foreach(ElementsCategory *sub_cat, category -> categories()) addCategory(qtwi_category, sub_cat);
-	
-	if (display_elements_) {
-		foreach(ElementDefinition *elmt, category -> elements()) addElement(qtwi_category, elmt);
-	}
-	
-	return(qtwi_category);
-}
-
-/**
-	Methode privee permettant d'ajouter un element
-	@param qtwi_parent QTreeWidgetItem parent sous lequel sera insere l'element
-	@param element Element a inserer
-	@param elmt_name Parametre facultatif permettant de forcer le nom affiche
-	S'il n'est pas precise, la methode utilise le nom declare par la categorie.
-	@param icon Icone a utiliser pour l'affichage de l'element
-	@return Le QTreeWidgetItem insere
-*/
-QTreeWidgetItem *ElementsCategoriesList::addElement(QTreeWidgetItem *qtwi_parent, ElementDefinition *element, const QString &elmt_name, const QIcon &icon) {
-	int state;
-	CustomElement custom_elmt(element -> xml(), 0, 0, &state);
-	if (state) {
-		qDebug() << "ElementsCategoriesList::addElement() : Le chargement du composant" << qPrintable(element -> location().toString()) << "a echoue avec le code d'erreur" << state;
-		return(0);
-	}
-	QString final_name(elmt_name.isEmpty() ? custom_elmt.name() : elmt_name);
-	QTreeWidgetItem *qtwi = new QTreeWidgetItem(qtwi_parent, QStringList(final_name));
-	qtwi -> setToolTip(0, custom_elmt.name());
-	Qt::ItemFlags flags_element = Qt::ItemIsEnabled;
-	if (selectables_ & QET::Element) flags_element |= Qt::ItemIsSelectable;
-	qtwi -> setFlags(flags_element);
-	qtwi -> setIcon(0, icon);
-	locations_.insert(qtwi, element -> location());
-	
-	return(qtwi);
-}
-
-/**
-	@return Le nom de la categorie selectionnee
-*/
-QString ElementsCategoriesList::selectedCategoryName() const {
-	QTreeWidgetItem *qtwi = currentItem();
-	if (qtwi) return(qtwi -> data(0, Qt::DisplayRole).toString());
-	else return(QString());
+QTreeWidgetItem *ElementsCategoriesList::makeItem(QET::ItemType type, QTreeWidgetItem *parent, const QString &label, const QIcon &icon) {
+	QTreeWidgetItem *item = GenericPanel::makeItem(type, parent, label, icon);
+	Qt::ItemFlags flags = Qt::ItemIsEnabled;
+	if (selectables_ & item -> type()) flags |= Qt::ItemIsSelectable;
+	item -> setFlags(flags);
+	return(item);
 }
 
 /**
 	@return l'emplacement correspondant au QTreeWidgetItem selectionne
 */
 ElementsLocation ElementsCategoriesList::selectedLocation() const {
-	if (QTreeWidgetItem *current_qtwi = currentItem()) {
-		return(locations_[current_qtwi]);
-	} else {
-		return(ElementsLocation());
-	}
+	QTreeWidgetItem *current_qtwi = currentItem();
+	if (!current_qtwi) return(ElementsLocation());
+	return(valueForItem<ElementsLocation>(current_qtwi));
 }
 
 /**
@@ -184,11 +120,9 @@ ElementsLocation ElementsCategoriesList::selectedLocation() const {
 	@return true si la selection a pu etre effectuee, false sinon
 */
 bool ElementsCategoriesList::selectLocation(const ElementsLocation &location) {
-	if (QTreeWidgetItem *qtwi = locations_.key(location)) {
-		setCurrentItem(qtwi);
-		return(true);
-	}
-	return(false);
+	QTreeWidgetItem *qtwi = itemForElementsLocation(location);
+	if (qtwi) setCurrentItem(qtwi);
+	return(qtwi);
 }
 
 /**
@@ -201,7 +135,7 @@ void ElementsCategoriesList::selectionChanged(QTreeWidgetItem *current, QTreeWid
 	Q_UNUSED(previous);
 	ElementsLocation emited_location;
 	if (current) {
-		emited_location = locations_[current];
+		emited_location = valueForItem<ElementsLocation>(current);
 	}
 	emit(locationChanged(emited_location));
 }

@@ -1,0 +1,1964 @@
+<project title="LMDG_QET" version="0.3">
+    <newdiagrams>
+        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
+        <inset title="LMDG" folio="%id/%total" author="K" filename="" date="now"/>
+        <conductors neutral="true" phase="1" ground="true" type="single"/>
+    </newdiagrams>
+    <diagram title="LMDG" displayrows="true" version="0.3" cols="18" folio="%id/%total" displaycols="true" height="740" colsize="60" order="1" rows="9" author="K" filename="LMDG_QET" date="20120124" rowsize="80">
+        <defaultconductor neutral="true" phase="1" ground="true" type="single"/>
+        <elements>
+            <element x="80" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="0" orientation="0"/>
+                    <terminal x="0" y="17" id="1" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D2"/>
+                </inputs>
+            </element>
+            <element x="330" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="2" orientation="0"/>
+                    <terminal x="0" y="17" id="3" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="32A"/>
+                    <input x="0" y="-10.5" text="D7"/>
+                </inputs>
+            </element>
+            <element x="660" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="4" orientation="0"/>
+                    <terminal x="0" y="17" id="5" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D16"/>
+                </inputs>
+            </element>
+            <element x="370" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="6" orientation="0"/>
+                    <terminal x="0" y="17" id="7" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D8"/>
+                </inputs>
+            </element>
+            <element x="410" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="8" orientation="0"/>
+                    <terminal x="0" y="17" id="9" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D9"/>
+                </inputs>
+            </element>
+            <element x="700" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="10" orientation="0"/>
+                    <terminal x="0" y="17" id="11" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D17"/>
+                </inputs>
+            </element>
+            <element x="740" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="12" orientation="0"/>
+                    <terminal x="0" y="17" id="13" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D18"/>
+                </inputs>
+            </element>
+            <element x="450" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="14" orientation="0"/>
+                    <terminal x="0" y="17" id="15" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D10"/>
+                </inputs>
+            </element>
+            <element x="780" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="16" orientation="0"/>
+                    <terminal x="0" y="17" id="17" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D19"/>
+                </inputs>
+            </element>
+            <element x="690" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="18" orientation="0"/>
+                    <terminal x="0" y="17" id="19" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D15"/>
+                </inputs>
+            </element>
+            <element x="300" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="20" orientation="0"/>
+                    <terminal x="0" y="17" id="21" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D6"/>
+                </inputs>
+            </element>
+            <element x="650" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="22" orientation="0"/>
+                    <terminal x="0" y="17" id="23" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D14"/>
+                </inputs>
+            </element>
+            <element x="250" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="24" orientation="0"/>
+                    <terminal x="0" y="17" id="25" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="2A"/>
+                    <input x="0" y="-10.5" text="D5"/>
+                </inputs>
+            </element>
+            <element x="850" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="26" orientation="0"/>
+                    <terminal x="0" y="17" id="27" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D20"/>
+                </inputs>
+            </element>
+            <element x="890" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="28" orientation="0"/>
+                    <terminal x="0" y="17" id="29" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D21"/>
+                </inputs>
+            </element>
+            <element x="590" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="30" orientation="0"/>
+                    <terminal x="0" y="17" id="31" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D13"/>
+                </inputs>
+            </element>
+            <element x="930" y="530" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="32" orientation="0"/>
+                    <terminal x="0" y="17" id="33" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D23"/>
+                </inputs>
+            </element>
+            <element x="770" y="300" type="embed://k_elem/transfo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-22" id="34" orientation="0"/>
+                    <terminal x="10" y="22" id="35" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="16" y="12.5" text="12V"/>
+                    <input x="17" y="-12.5" text="230V"/>
+                    <input x="19" y="1" text="T1"/>
+                </inputs>
+            </element>
+            <element x="140" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="36" orientation="0"/>
+                    <terminal x="0" y="17" id="37" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D3"/>
+                </inputs>
+            </element>
+            <element x="200" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="38" orientation="0"/>
+                    <terminal x="0" y="17" id="39" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D4"/>
+                </inputs>
+            </element>
+            <element x="550" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="40" orientation="0"/>
+                    <terminal x="0" y="17" id="41" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D12"/>
+                </inputs>
+            </element>
+            <element x="970" y="530" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="42" orientation="0"/>
+                    <terminal x="0" y="17" id="43" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D24"/>
+                </inputs>
+            </element>
+            <element x="1010" y="530" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="44" orientation="0"/>
+                    <terminal x="0" y="17" id="45" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="10A"/>
+                    <input x="0" y="-10.5" text="D25"/>
+                </inputs>
+            </element>
+            <element x="510" y="490" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="46" orientation="0"/>
+                    <terminal x="0" y="17" id="47" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="20A"/>
+                    <input x="0" y="-10.5" text="D1"/>
+                </inputs>
+            </element>
+            <element x="1050" y="530" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="48" orientation="0"/>
+                    <terminal x="0" y="17" id="49" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="10A"/>
+                    <input x="0" y="-10.5" text="D26"/>
+                </inputs>
+            </element>
+            <element x="930" y="230" type="embed://k_elem/dijo.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="50" orientation="0"/>
+                    <terminal x="0" y="17" id="51" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="0" y="2.5" text="16A"/>
+                    <input x="0" y="-10.5" text="D22"/>
+                </inputs>
+            </element>
+            <element x="840" y="670" type="embed://import/collection_officielle/nomenclatures/bases/textes/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="820" y="640" type="embed://import/collection_officielle/nomenclatures/bases/textes/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="250" y="390" type="embed://import/bornes/borne_finale.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-6" id="52" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="5" y="8" text=""/>
+                    <input x="5" y="-5" text=""/>
+                </inputs>
+            </element>
+            <element x="270" y="290" type="embed://import/recepteurs/misc/telerupteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="30" y="-17" id="53" orientation="0"/>
+                    <terminal x="0" y="-17" id="54" orientation="0"/>
+                    <terminal x="0" y="17" id="55" orientation="2"/>
+                    <terminal x="30" y="17" id="56" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="300" y="70" type="embed://k_elem/dijo_s.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="57" orientation="0"/>
+                    <terminal x="0" y="17" id="58" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="7" y="23.6667" userx="4.26444" usery="16.1439" text="500mA Type S"/>
+                    <input x="7" y="-8" text="D1"/>
+                    <input x="8.5" y="7.66667" userx="4.39666" usery="4.24722" text="IN 15/45A"/>
+                </inputs>
+            </element>
+            <element x="1050" y="150" type="embed://k_elem/int_diff1.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="59" orientation="0"/>
+                    <terminal x="0" y="17" id="60" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="8.5" y="16.6667" userx="2.34498" usery="13.2472" text="Type HPI"/>
+                    <input x="6.5" y="-10" text="I5"/>
+                    <input x="7.5" y="2.66667" userx="1.34498" usery="1.29889" text="40A/30mA"/>
+                </inputs>
+            </element>
+            <element x="660" y="150" type="embed://k_elem/int_diff1.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="61" orientation="0"/>
+                    <terminal x="0" y="17" id="62" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="8.5" y="16.6667" userx="3.02888" usery="11.8795" text="Type AC"/>
+                    <input x="6.5" y="-10" text="I4"/>
+                    <input x="7.5" y="2.66667" userx="2.71277" usery="1.29889" text="40A30mA"/>
+                </inputs>
+            </element>
+            <element x="510" y="150" type="embed://k_elem/int_diff1.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="63" orientation="0"/>
+                    <terminal x="0" y="17" id="64" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="8.5" y="16.6667" userx="3.02888" usery="12.5634" text="Type AC"/>
+                    <input x="6.5" y="-10" text="I3"/>
+                    <input x="7.5" y="2.66667" userx="3.39666" usery="1.29889" text="40A/30mA"/>
+                </inputs>
+            </element>
+            <element x="300" y="150" type="embed://k_elem/int_diff1.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="65" orientation="0"/>
+                    <terminal x="0" y="17" id="66" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="8.5" y="16.6667" userx="3.71277" usery="11.8795" text="Type AC"/>
+                    <input x="6.5" y="-10" text="I1"/>
+                    <input x="7.5" y="2.66667" userx="2.02888" usery="1.98278" text="40A/30_mA"/>
+                </inputs>
+            </element>
+            <element x="780" y="360" type="embed://import/collection_officielle/domestiques/architectural/lampe.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="67" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="970" y="630" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="68" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="930" y="630" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="69" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="60" y="710" type="embed://import/collection_officielle/recepteurs/securite/terre.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-7" id="70" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="1040" y="640" type="embed://import/collection_officielle/domestiques/interphone.elmt" orientation="0">
+                <terminals>
+                    <terminal x="10" y="-16" id="71" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="60" y="650" type="embed://import/collection_officielle/bornes/barette_de_terre.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="72" orientation="0"/>
+                    <terminal x="0" y="17" id="73" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="890" y="360" type="embed://import/collection_officielle/domestiques/architectural/lampe.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="74" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="850" y="360" type="embed://import/collection_officielle/domestiques/architectural/lampe.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="75" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="820" y="360" type="embed://import/collection_officielle/domestiques/architectural/lampe.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-16" id="76" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="740" y="320" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="77" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="700" y="320" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="78" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="660" y="320" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="79" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="690" y="630" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="80" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="590" y="630" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="81" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="410" y="630" type="embed://import/recepteurs/lampes/lampe1.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="82" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="450" y="630" type="embed://import/recepteurs/misc/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="83" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="590" y="540" type="embed://import/collection_officielle/domestiques/electromenager/hotte_aspirante_filtrante.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-9" id="84" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="610" y="590" type="embed://import/collection_officielle/domestiques/electromenager/four_micro_onde.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-9" id="85" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="550" y="620" type="embed://import/recepteurs/domestiques/four.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="86" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="650" y="620" type="embed://import/collection_officielle/domestiques/electromenager/refrigerateur_avec_partie_conglateur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-9" id="87" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="330" y="620" type="embed://import/collection_officielle/domestiques/electromenager/plaque_cuisson.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="88" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="510" y="620" type="embed://import/collection_officielle/domestiques/electromenager/lave_vaiselle.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="89" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="370" y="620" type="embed://import/collection_officielle/domestiques/electromenager/lave_linge.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-9" id="90" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="300" y="370" type="embed://import/collection_officielle/domestiques/electromenager/chauffe_eau.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-9" id="91" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="200" y="380" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="92" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="220" y="350" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="93" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="200" y="300" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="94" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="140" y="380" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="95" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="160" y="350" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="96" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="140" y="300" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="97" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="100" y="300" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="98" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="80" y="380" type="embed://import/collection_officielle/domestiques/electromenager/convecteur.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-8" id="99" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="170" y="80" type="embed://import/collection_officielle/domestiques/compteurs/compteur_220v_monophase.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-25" id="100" orientation="0"/>
+                    <terminal x="0" y="14" id="101" orientation="2"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="1030" y="190" type="embed://import/collection_officielle/protections/interrupteurs_differentiels/int_diff1.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="660" y="190" type="embed://import/collection_officielle/protections/interrupteurs_differentiels/int_diff1.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="510" y="170" type="embed://import/collection_officielle/protections/interrupteurs_differentiels/int_diff1.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="440" y="80" type="embed://import/collection_officielle/protections/disjoncteurs_differentiels/dijo_s.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="440" y="190" type="embed://import/collection_officielle/protections/interrupteurs_differentiels/int_diff1.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="310" y="190" type="embed://import/collection_officielle/protections/interrupteurs_differentiels/int_diff1.elmt" orientation="0">
+                <terminals/>
+                <inputs/>
+            </element>
+            <element x="1010" y="620" type="embed://k_elem/vdi.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-9" id="102" orientation="0"/>
+                </terminals>
+                <inputs/>
+            </element>
+            <element x="70" y="360" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.16945" usery="19.0785" text="2,5 mm2"/>
+                </inputs>
+            </element>
+            <element x="600" y="680" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-3" usery="60.1666" text="Hotte&#xa;PC micro-onde&#xa;PC meuble-rideau"/>
+                </inputs>
+            </element>
+            <element x="650" y="710" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="3" usery="12.1666" text="Réfrigérateur"/>
+                </inputs>
+            </element>
+            <element x="690" y="680" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0" usery="60.9166" text="PC plan de travail"/>
+                </inputs>
+            </element>
+            <element x="550" y="680" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0.75" usery="0.1666" text="Four"/>
+                </inputs>
+            </element>
+            <element x="510" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0.75" usery="64.6666" text="Lave-vaisselle"/>
+                </inputs>
+            </element>
+            <element x="450" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="2.25" usery="53.4166" text="PC chambre&#xa;PC toilette"/>
+                </inputs>
+            </element>
+            <element x="410" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="2.25" usery="80.4166" text="Lumière chambre&#xa;WC, extér-bur"/>
+                </inputs>
+            </element>
+            <element x="370" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0" usery="47.4166" text="Lave-linge"/>
+                </inputs>
+            </element>
+            <element x="330" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0.75" usery="83.4166" text="Plaque de cuisson"/>
+                </inputs>
+            </element>
+            <element x="320" y="520" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.98556" usery="100.006" text="6mm2"/>
+                </inputs>
+            </element>
+            <element x="360" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.91945" usery="20.2183" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="400" y="610" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.23556" usery="11.2183" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="440" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.30167" usery="18.7844" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="130" y="360" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.16945" usery="20.6081" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="500" y="610" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.91945" usery="11.2183" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="190" y="360" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.16945" usery="20.6081" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="540" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.16945" usery="20.2844" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="570" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="13.2356" usery="17.2183" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="250" y="360" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-5.56687" usery="29.6902" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="280" y="330" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="13.9764" usery="41.0154" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="670" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-25.5456" usery="17.9683" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="80" y="410" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0.75" usery="78.9166" text="Chauffage séjour"/>
+                </inputs>
+            </element>
+            <element x="680" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.45441" usery="17.2183" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="140" y="410" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="1.5" usery="90.9166" text="Chauffage chambre&#xa;toilette, WC"/>
+                </inputs>
+            </element>
+            <element x="450" y="150" type="embed://k_elem/int_diff1.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-17" id="103" orientation="0"/>
+                    <terminal x="0" y="17" id="104" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="8.5" y="16.6667" userx="3.02888" usery="11.8795" text="Type A"/>
+                    <input x="6.5" y="-10" text="I2"/>
+                    <input x="7.5" y="2.66667" userx="2.02888" usery="-0.0688923" text="40A/30mA"/>
+                </inputs>
+            </element>
+            <element x="200" y="410" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="2.25" usery="81.1666" text="Chauffage entrée&#xa;cuisine, bureau"/>
+                </inputs>
+            </element>
+            <element x="240" y="410" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="10.9422" usery="108.328" text="Gestionnaire d'énergie"/>
+                </inputs>
+            </element>
+            <element x="280" y="370" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="21.2964" usery="97.7897" text="Chauffe-eau"/>
+                </inputs>
+            </element>
+            <element x="660" y="330" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-0.0866261" usery="103.391" text="PC entrée, cuisine&#xa;bureau"/>
+                </inputs>
+            </element>
+            <element x="700" y="340" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="1.5" usery="51.9166" text="PC séjour"/>
+                </inputs>
+            </element>
+            <element x="740" y="340" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="2.25" usery="65.4166" text="PC extérieur&#xa;PC Tableau"/>
+                </inputs>
+            </element>
+            <element x="780" y="350" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="42" usery="176.417" text="Lumière couloir, cuisine, entrée&#xa;séjour3, extér.-séjour"/>
+                </inputs>
+            </element>
+            <element x="780" y="350" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0.75" usery="129.917" text="Lumière toilette (12V)"/>
+                </inputs>
+            </element>
+            <element x="850" y="350" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="1.5" usery="153.917" text="Lumière cuisine2, cuisine3"/>
+                </inputs>
+            </element>
+            <element x="890" y="340" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0.75" usery="143.417" text="Lumière bureau, séjour"/>
+                </inputs>
+            </element>
+            <element x="930" y="350" type="embed://import/bornes/borne_finale.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-6" id="105" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="5" y="8" text=""/>
+                    <input x="5" y="-5" userx="5" usery="-5.75" text=""/>
+                </inputs>
+            </element>
+            <element x="970" y="340" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-37.5" usery="103.667" text="Volets-roulants"/>
+                </inputs>
+            </element>
+            <element x="1050" y="650" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="0" usery="81.1666" text="Alarme, portier"/>
+                </inputs>
+            </element>
+            <element x="1010" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="3.75" usery="52.6666" text="Tableau&#xa;multimédia"/>
+                </inputs>
+            </element>
+            <element x="970" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="2.25" usery="75.7547" text="PC home-cinéma&#xa;(séjour)"/>
+                </inputs>
+            </element>
+            <element x="930" y="660" type="embed://k_elem/text_7.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-22.5" usery="79.6666" text="Tableau informatique&#xa;électronique, audio"/>
+                </inputs>
+            </element>
+            <element x="650" y="300" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.23556" usery="-19.2012" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="690" y="290" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.23556" usery="-11.8266" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="730" y="270" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.23556" usery="10.1149" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="920" y="610" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.91945" usery="7.40216" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="950" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="13.9856" usery="17.1522" text="2,5mm2"/>
+                </inputs>
+            </element>
+            <element x="1000" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.16945" usery="-16.7301" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="1040" y="600" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="3.48556" usery="-16.5317" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="760" y="270" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="12.75" usery="7.6666" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="830" y="290" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="14.8974" usery="-6.0317" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="830" y="260" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-15.4856" usery="69.7593" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="880" y="300" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="4.85334" usery="-15.4945" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="960" y="300" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userrotation="-90" userx="-36.0365" usery="-15.531" text="1,5mm2"/>
+                </inputs>
+            </element>
+            <element x="110" y="540" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userx="-5.25" usery="-388.224" text="I1 : GÉNÉRAL CHAUFFAGE et CHAUFFE-EAU&#xa;À disjoncter impérativement avant toute&#xa;intervention sur le circuit de chauffage car&#xa;aucun fil pilote n'est coupé individuellement"/>
+                </inputs>
+            </element>
+            <element x="390" y="140" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userx="-39.6201" usery="45.2304" text="I2 : GÉNÉRAL CONTINU&#xa;(courant continu)"/>
+                </inputs>
+            </element>
+            <element x="530" y="180" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userx="-16.0304" usery="1.29958" text="I3 : GÉNÉRAL CUISINE"/>
+                </inputs>
+            </element>
+            <element x="720" y="140" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userx="-5.73556" usery="13.5207" text="I4 : Général PC et lumières&#xa;Volets-roulants"/>
+                </inputs>
+            </element>
+            <element x="940" y="140" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userx="35.25" usery="13.5207" text="I5 : GÉNÉRAL&#xa;MULTIMÉDIA&#xa;DOMOTIQUE"/>
+                </inputs>
+            </element>
+            <element x="60" y="600" type="embed://import/bornes/borne_continuite.elmt" orientation="0">
+                <terminals>
+                    <terminal x="0" y="-6" id="106" orientation="0"/>
+                    <terminal x="0" y="6" id="107" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="5" y="8" text=""/>
+                    <input x="5" y="-5" text="vers le bornier de terre"/>
+                </inputs>
+            </element>
+            <element x="60" y="110" type="embed://import/bornes/borne_continuite.elmt" orientation="1">
+                <terminals>
+                    <terminal x="0" y="-6" id="108" orientation="0"/>
+                    <terminal x="0" y="6" id="109" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="5" y="8" userrotation="-90" userx="14.55" usery="12.45" text=""/>
+                    <input x="5" y="-5" userrotation="-90" userx="13.05" usery="2.95" text=""/>
+                </inputs>
+            </element>
+            <element x="370" y="50" type="embed://k_elem/text_8.elmt" orientation="0">
+                <terminals/>
+                <inputs>
+                    <input x="-3" y="1.6666" userx="-22.133" usery="11.2707" text="D1 : DISJONTEUR GÉNÉRAL de L'INSTALLATION"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor neutral="true" phase="1" terminal1="24" ground="false" terminal2="20" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="22" ground="false" terminal2="18" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="0" ground="false" terminal2="36" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="3" ground="true" terminal2="88" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="98" ground="true" terminal2="1" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="30" ground="false" terminal2="22" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="38" ground="false" terminal2="24" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="56" ground="true" terminal2="91" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="40" ground="false" terminal2="30" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="36" ground="false" terminal2="38" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="5" ground="true" terminal2="79" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="1" ground="true" terminal2="99" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="7" ground="true" terminal2="90" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="46" ground="false" terminal2="40" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="11" ground="true" terminal2="78" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="9" ground="true" terminal2="82" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="64" ground="false" terminal2="46" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="13" ground="true" terminal2="77" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="100" ground="false" terminal2="57" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="66" ground="false" terminal2="20" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="15" ground="true" terminal2="83" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="76" ground="true" terminal2="34" type="single">
+                <segment length="-9" orientation="vertical"/>
+                <segment length="-61" orientation="vertical"/>
+                <segment length="-40" orientation="horizontal"/>
+                <segment length="-5" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor neutral="true" phase="1" terminal1="95" ground="true" terminal2="96" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="19" ground="true" terminal2="80" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="58" ground="false" terminal2="65" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="6" ground="false" terminal2="2" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="21" ground="true" terminal2="53" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="92" ground="true" terminal2="93" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="28" ground="false" terminal2="50" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="17" ground="true" terminal2="34" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="23" ground="true" terminal2="87" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="96" ground="true" terminal2="37" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="42" ground="false" terminal2="32" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="39" ground="true" terminal2="93" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="27" ground="true" terminal2="75" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="25" ground="true" terminal2="54" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="25" ground="true" terminal2="52" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="8" ground="false" terminal2="6" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="85" ground="true" terminal2="81" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="26" ground="false" terminal2="28" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="44" ground="false" terminal2="42" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="33" ground="true" terminal2="69" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="14" ground="false" terminal2="8" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="35" ground="true" terminal2="67" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="29" ground="true" terminal2="74" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="39" ground="true" terminal2="94" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="37" ground="true" terminal2="97" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="31" ground="true" terminal2="84" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="104" ground="false" terminal2="14" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="41" ground="true" terminal2="86" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="48" ground="false" terminal2="44" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="16" ground="false" terminal2="26" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="43" ground="true" terminal2="68" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="84" ground="true" terminal2="85" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="12" ground="false" terminal2="16" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="47" ground="true" terminal2="89" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="60" ground="false" terminal2="48" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="45" ground="true" terminal2="102" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="49" ground="true" terminal2="71" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="10" ground="false" terminal2="12" type="single"/>
+            <conductor neutral="false" phase="0" terminal1="73" ground="true" terminal2="70" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="4" ground="false" terminal2="10" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="51" ground="true" terminal2="105" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="62" ground="false" terminal2="4" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="58" ground="false" terminal2="103" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="58" ground="false" terminal2="63" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="58" ground="false" terminal2="61" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="58" ground="false" terminal2="59" type="single"/>
+            <conductor neutral="false" phase="0" terminal1="107" ground="true" terminal2="72" type="single"/>
+            <conductor neutral="true" phase="1" terminal1="108" ground="false" terminal2="101" type="single"/>
+        </conductors>
+        <inputs>
+            <input x="60" y="80" text="Arrivée EDF"/>
+            <input x="80" y="690" text="Arrivée terre bâtiment"/>
+        </inputs>
+    </diagram>
+    <collection>
+        <category name="k_elem">
+            <names>
+                <name lang="fr">K éléments</name>
+            </names>
+            <element name="int_diff1.elmt">
+                <definition width="60" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                    <names>
+                        <name lang="de">Differenz Schalter</name>
+                        <name lang="ru">УЗО</name>
+                        <name lang="pt">Interruptor diferencial</name>
+                        <name lang="en">Differential switch</name>
+                        <name lang="it">Interruttore differenziale</name>
+                        <name lang="fr">Interrupteur différentiel</name>
+                        <name lang="pl">Rozłącznik różnicowoprądowy</name>
+                        <name lang="es">Interruptor diferencial</name>
+                        <name lang="cs">Rozdílový spínač</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <input x="8.5" y="16.6667" size="5" rotate="true" text="Type___"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
+                        <input x="6.5" y="-10" size="8" text="I_"/>
+                        <ellipse width="10" x="-5" y="13" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-8" y2="0" x2="-3"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="15" x1="-6" y2="15" x2="-8"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-8" y2="15" x2="-8"/>
+                        <input x="7.5" y="2.66667" size="5" rotate="true" text="__A/__mA"/>
+                        <terminal x="0" y="-21" orientation="n"/>
+                        <terminal x="0" y="21" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="text_7.elmt">
+                <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                    <names>
+                        <name lang="de">T07 Textfeld</name>
+                        <name lang="en">T07 text area</name>
+                        <name lang="fr">Zone texte T07</name>
+                        <name lang="pl">Pole tekstowe T07</name>
+                        <name lang="cs">Textové pole T07</name>
+                    </names>
+                    <informations>K</informations>
+                    <description>
+                        <input x="-3" y="1.6666" size="7" rotate="true" text="_"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="transfo.elmt">
+                <definition width="50" version="0.3" hotspot_x="4" hotspot_y="30" height="60" type="element" ic="true" orientation="dnny">
+                    <names>
+                        <name lang="de">Trafo Einfach</name>
+                        <name lang="ru">Однолинейный трансформатор</name>
+                        <name lang="pt">Transformador unifilar</name>
+                        <name lang="en">Single line transducer</name>
+                        <name lang="it">Trasformatore unifilare</name>
+                        <name lang="fr">Transformateur unifilaire</name>
+                        <name lang="pl">Transformator</name>
+                        <name lang="es">Transformador unifilar</name>
+                        <name lang="cs">Jednoduchý transformátor</name>
+                    </names>
+                    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <input x="16" y="12.5" size="5" text="___V"/>
+                        <circle x="0" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                        <input x="17" y="-12.5" size="5" text="___V"/>
+                        <circle x="0" y="-15" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                        <input x="19" y="1" size="9" text="T_"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="10" y2="-15" x2="10"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="15" x1="10" y2="25" x2="10"/>
+                        <terminal x="10" y="-26" orientation="n"/>
+                        <terminal x="10" y="26" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="dijo_s.elmt">
+                <definition width="70" version="0.22" hotspot_x="10" hotspot_y="25" height="60" type="element" orientation="dnny">
+                    <names>
+                        <name lang="de">Differenz Lastschalter S</name>
+                        <name lang="ru">Дифавтомат S</name>
+                        <name lang="pt">Disjunctor diferencial S</name>
+                        <name lang="en">Differential circuit-breaker S type</name>
+                        <name lang="it">Disgiuntore differenziale S</name>
+                        <name lang="fr">Disjoncteur différentiel type S</name>
+                        <name lang="pl">Wyłącznik różnicowoprądowy S</name>
+                        <name lang="es">Dispositivo diferenciale residual S</name>
+                        <name lang="cs">Rozdílový jistič S</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <input x="7" y="23.6667" size="5" text="500mA Type S"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
+                        <input x="7" y="-8" size="9" text="D_"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
+                        <ellipse width="10" x="-5" y="13" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-8" y2="0" x2="-3"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="15" x1="-6" y2="15" x2="-8"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-8" y2="15" x2="-8"/>
+                        <input x="8.5" y="7.66667" size="5" text="IN __/__A"/>
+                        <terminal x="0" y="-21" orientation="n"/>
+                        <terminal x="0" y="21" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="text_8.elmt">
+                <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                    <names>
+                        <name lang="de">T06 Textfeld</name>
+                        <name lang="en">T06 text area</name>
+                        <name lang="fr">Zone texte T06</name>
+                        <name lang="pl">Pole tekstowe T06</name>
+                        <name lang="cs">Textové pole T06</name>
+                    </names>
+                    <informations>K</informations>
+                    <description>
+                        <input x="-3" y="1.6666" size="6" rotate="true" text="_"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="vdi.elmt">
+                <definition width="30" version="0.22" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                    <names>
+                        <name lang="fr">Tableau multimédia</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+                        <text x="-10" y="15" size="9" text="VDI"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+                        <terminal x="0" y="-13" orientation="n"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="dijo.elmt">
+                <definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                    <names>
+                        <name lang="de">Lastschalter</name>
+                        <name lang="ru">Выключатель</name>
+                        <name lang="pt">Disjuntor</name>
+                        <name lang="en">Circuit-breaker</name>
+                        <name lang="it">Disgiuntore</name>
+                        <name lang="fr">Disjoncteur</name>
+                        <name lang="pl">Wyłącznik</name>
+                        <name lang="es">Disyuntor</name>
+                        <name lang="cs">Jistič</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license
+K approché les textes (24/1/2012)</informations>
+                    <description>
+                        <input x="0" y="2.5" size="6" text="__A"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
+                        <input x="0" y="-10.5" size="8" text="D__"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
+                        <terminal x="0" y="-21" orientation="n"/>
+                        <terminal x="0" y="21" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+        </category>
+        <category name="import">
+            <names>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="en">Imported elements</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="cs">Zavedené prvky</name>
+            </names>
+            <category name="collection_officielle">
+                <names/>
+                <category name="domestiques">
+                    <names>
+                        <name lang="ru">Бытовая техника</name>
+                        <name lang="pt">Electrodomésticos</name>
+                        <name lang="en">Domestic</name>
+                        <name lang="fr">Domestiques</name>
+                        <name lang="pl">Instalacje w obiektach budowlanych</name>
+                        <name lang="es">Electrodoméstico</name>
+                        <name lang="cs">Domácí elektrotechnika</name>
+                    </names>
+                    <category name="compteurs">
+                        <names>
+                            <name lang="en">Meters</name>
+                            <name lang="fr">Compteurs</name>
+                            <name lang="pl">Liczniki</name>
+                            <name lang="cs">Počítadla</name>
+                        </names>
+                        <element name="compteur_220v_monophase.elmt">
+                            <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="60" type="element" orientation="dyyy">
+                                <names>
+                                    <name lang="en">220V single phase meter</name>
+                                    <name lang="fr">Compteur 220V monophase</name>
+                                    <name lang="pl">Licznik jednofazowy</name>
+                                    <name lang="cs">Jednofázové počítadlo 220V</name>
+                                </names>
+                                <informations/>
+                                <description>
+                                    <rect width="20" x="-10" y="5" antialias="false" height="9" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                    <rect width="20" x="-10" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                    <rect width="30" x="-15" y="-25" antialias="false" height="30" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                    <terminal x="0" y="-29" orientation="n"/>
+                                    <terminal x="0" y="18" orientation="s"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                    <category name="electromenager">
+                        <names>
+                            <name lang="en">ELECTRICAL</name>
+                            <name lang="fr">Electromenager</name>
+                            <name lang="pl">Urządzenia do użytku domowego</name>
+                            <name lang="cs">Spotřebiče</name>
+                        </names>
+                        <element name="refrigerateur_avec_partie_conglateur.elmt">
+                            <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="en">Refrigerator with freezer</name>
+                                    <name lang="fr">Réfrigérateur avec partie congélateur</name>
+                                    <name lang="pl">Chłodziarka z zamrażarką</name>
+                                    <name lang="cs">Lednička s mrazákem</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="6" y2="2" x2="8"/>
+                                    <rect width="24" x="-12" y="-1" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="6" y2="4" x2="8"/>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="5" y2="3" x2="9"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-8" y2="2" x2="-6"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="7" y2="5" x2="7"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-8" y2="4" x2="-6"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-9" y2="3" x2="-5"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="-7" y2="5" x2="-7"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-1" y2="2" x2="1"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="-2" y2="14" x2="2"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-1" y2="4" x2="1"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-2" y2="18" x2="2"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="-2.0593" y2="3" x2="1.9406"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="16" x1="-3" y2="16" x2="3"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="1" x1="0" y2="5" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="0" y2="19" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+                                    <terminal x="0" y="-13" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="convecteur.elmt">
+                            <definition width="30" version="0.2" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="de">Radiator</name>
+                                    <name lang="ru">Эл. конвектор</name>
+                                    <name lang="en">Electric convector</name>
+                                    <name lang="fr">Radiateur électrique</name>
+                                    <name lang="es">Radiador eléctrico</name>
+                                    <name lang="cs">Elektrické topné těleso</name>
+                                    <name lang="pt">Irradiador eléctrico</name>
+                                    <name lang="pl">Grzejnik konwekcyjny</name>
+                                    <name lang="it">Radiatore elettrico</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="15" x2="-12" y3="15" x3="12" y4="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4.5" x1="-12" y2="4.5" x2="12"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="-12" y2="3" x2="12"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="1.5" x1="-12" y2="1.5" x2="12"/>
+                                    <terminal x="0" y="-12" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="lave_linge.elmt">
+                            <definition width="30" version="0.22" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="de">Waschmaschine</name>
+                                    <name lang="ru">Стиральная машина</name>
+                                    <name lang="en">Washer</name>
+                                    <name lang="fr">Lave-linge</name>
+                                    <name lang="es">Lavarropas</name>
+                                    <name lang="cs">Pračka</name>
+                                    <name lang="pt">Máquina de lavar roupa</name>
+                                    <name lang="pl">Pralka</name>
+                                    <name lang="it">Lavatrice</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14.7775" x1="-2.3114" y2="8.7774" x2="3.6885"/>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="13.0445" x1="-3.8220" y2="7.0444" x2="2.1779"/>
+                                    <circle x="-9" y="2" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="18"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="11.733" x1="-4.2669" y2="6.7329" x2="0.7330"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+                                    <circle x="-4.4721" y="6.5278" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="8.9442"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="9.9999" x1="-4" y2="6.9999" x2="-0.9999"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15" x1="1" y2="12" x2="4"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="15.0445" x1="-0.9999" y2="10.0445" x2="4"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="14" x1="-3" y2="7.9999" x2="3"/>
+                                    <terminal x="0" y="-13" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="lave_vaiselle.elmt">
+                            <definition width="30" version="0.2" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="de">Geschirrspühler</name>
+                                    <name lang="ru">Посудомоечная машина</name>
+                                    <name lang="en">Dishwasher</name>
+                                    <name lang="fr">Lave-vaisselle</name>
+                                    <name lang="es">Lavavajillas</name>
+                                    <name lang="cs">Myčka na nádobí</name>
+                                    <name lang="pt">Máquina de lavar louça</name>
+                                    <name lang="pl">Zmywarka</name>
+                                    <name lang="it">Lavastoviglie</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="24" x2="-12" y3="24" x3="12" y4="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
+                                    <circle x="-8" y="6" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="16"/>
+                                    <circle x="-6" y="8" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="12"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-12" y2="4" x2="12"/>
+                                    <terminal x="0" y="-12" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="plaque_cuisson.elmt">
+                            <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="de">Herdplatte</name>
+                                    <name lang="ru">Эл. плита</name>
+                                    <name lang="en">Solid plate</name>
+                                    <name lang="fr">Plaque de cuisson</name>
+                                    <name lang="es">Placa de cocina</name>
+                                    <name lang="cs">Deska na vaření</name>
+                                    <name lang="pt">Placa de fogão</name>
+                                    <name lang="pl">Kuchenka elektryczna</name>
+                                    <name lang="it">Fornelli</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="24" x2="-12" y3="24" x3="12" y4="0"/>
+                                    <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
+                                    <circle x="-8.5" y="13.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+                                    <circle x="0.5" y="12.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9"/>
+                                    <circle x="-9.5" y="2.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="9"/>
+                                    <circle x="1.5" y="3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+                                    <terminal x="0" y="-12" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="hotte_aspirante_filtrante.elmt">
+                            <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="en">Cooker Hood filter</name>
+                                    <name lang="fr">Hotte aspirante filtrante</name>
+                                    <name lang="pl">Okap z wentylatorem i filtrem</name>
+                                    <name lang="cs">Odsávač par s filtrem</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1" x1="-12" y2="23" x2="-12" y3="23" x3="12" y4="-1"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="23" x1="0" y2="17" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="6" y2="6" x2="6"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="12" x1="-6" y2="6" x2="-6"/>
+                                    <rect width="24" x="-12" y="-1" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+                                    <arc width="4" x="-7.4982" y="0.5849" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-90" angle="-180"/>
+                                    <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5595" x1="4.9763" y2="4.5595" x2="-5.0236"/>
+                                    <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0.5595" x1="-5.0236" y2="4.5595" x2="4.9763"/>
+                                    <arc width="4" x="3.5610" y="0.5849" antialias="true" height="4" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+                                    <terminal x="0" y="-13" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="chauffe_eau.elmt">
+                            <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="en">Water heater</name>
+                                    <name lang="fr">Chauffe-eau</name>
+                                    <name lang="pl">Grzejnik wody</name>
+                                    <name lang="cs">Ohřívač vody</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="17" x1="-10" y2="17" x2="10"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-10" y2="5" x2="10"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-11" y2="14" x2="11"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="-11" y2="8" x2="11"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="11" x1="-12" y2="11" x2="12"/>
+                                    <circle x="-12.0416" y="-1.0415" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="24.0832"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+                                    <terminal x="0" y="-13" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                        <element name="four_micro_onde.elmt">
+                            <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                                <names>
+                                    <name lang="en">Microwave oven</name>
+                                    <name lang="fr">Four à micro-ondes</name>
+                                    <name lang="pl">Kuchenka mikrofalowa</name>
+                                    <name lang="cs">Mikrovlnná trouba</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-1.1054" x1="-12" y2="22.8945" x2="-12" y3="22.8945" x3="12" y4="-1.1054"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="5" x1="-5" y2="10" x2="5"/>
+                                    <arc width="5" x="3" y="5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="-5" y2="18" x2="5"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="9" x1="-5" y2="14" x2="5"/>
+                                    <arc width="5" x="-8" y="5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+                                    <arc width="5" x="3" y="12.8945" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+                                    <arc width="5" x="3" y="9" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+                                    <arc width="5" x="-8" y="12.8945" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+                                    <arc width="5" x="-8" y="9" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-90"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-1" x2="0"/>
+                                    <terminal x="0" y="-13" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                    <category name="architectural">
+                        <names>
+                            <name lang="en">Architectural</name>
+                            <name lang="fr">Architecture</name>
+                            <name lang="pl">Rysunek budowlany</name>
+                            <name lang="cs">Architektura</name>
+                        </names>
+                        <element name="lampe.elmt">
+                            <definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
+                                <names>
+                                    <name lang="ru">Лампа</name>
+                                    <name lang="pt">Lâmpada</name>
+                                    <name lang="en">Light</name>
+                                    <name lang="fr">Lampe</name>
+                                    <name lang="pl">Lampa</name>
+                                    <name lang="es">Lámpara</name>
+                                    <name lang="cs">Světlo</name>
+                                </names>
+                                <informations>EN 60617: 11-15-03&#xd;
+</informations>
+                                <description>
+                                    <circle x="-10" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.03" x1="7.03" y2="-2.97" x2="-7.03"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17.03" x1="-7.03" y2="-2.97" x2="7.03"/>
+                                    <terminal x="0" y="-20" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                    <element name="interphone.elmt">
+                        <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="en">Audio intercommunication equipment</name>
+                                <name lang="it">Interfono, citofono
+</name>
+                                <name lang="fr">interphone</name>
+                                <name lang="pl">Domofon</name>
+                                <name lang="cs">Domácí telefon</name>
+                            </names>
+                            <informations>EN 60617: 11-16-05</informations>
+                            <description>
+                                <line length1="1" length2="1" antialias="false" end1="triangle" end2="triangle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="-10" x1="20" y2="-10" x2="30"/>
+                                <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="15" y2="-1" x2="24"/>
+                                <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="15" y2="-19" x2="24"/>
+                                <rect width="4" x="11" y="-14" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <rect width="30" x="-5" y="-20" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+                                <terminal x="10" y="-20" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <category name="recepteurs">
+                    <names>
+                        <name lang="de">Verbraucher</name>
+                        <name lang="ru">Приёмники</name>
+                        <name lang="pt">Receptores</name>
+                        <name lang="en">Receivers</name>
+                        <name lang="it">Utilizzatori</name>
+                        <name lang="fr">Récepteurs</name>
+                        <name lang="pl">Odbiorniki</name>
+                        <name lang="es">Receptores</name>
+                        <name lang="cs">Přijímače</name>
+                    </names>
+                    <category name="lampes">
+                        <names>
+                            <name lang="de">Leuchten</name>
+                            <name lang="ru">Лампы</name>
+                            <name lang="pt">Lâmpadas</name>
+                            <name lang="en">Lights</name>
+                            <name lang="it">Luci</name>
+                            <name lang="fr">Lampes</name>
+                            <name lang="pl">Oświetlenie</name>
+                            <name lang="es">Lámparas</name>
+                            <name lang="cs">Světla</name>
+                        </names>
+                        <element name="lampe1.elmt">
+                            <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                                <names>
+                                    <name lang="de">Leuchte</name>
+                                    <name lang="ru">Лампа</name>
+                                    <name lang="pt">Lâmpada</name>
+                                    <name lang="en">Light</name>
+                                    <name lang="it">Luce</name>
+                                    <name lang="fr">Lampe</name>
+                                    <name lang="pl">Lampa</name>
+                                    <name lang="es">Lámpara</name>
+                                    <name lang="cs">Světlo</name>
+                                </names>
+                                <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                                    <input x="15" y="3" size="9" text="H_"/>
+                                    <terminal x="0" y="-21" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                    <category name="securite">
+                        <names>
+                            <name lang="de">Sicherheit</name>
+                            <name lang="ru">Безопасность</name>
+                            <name lang="pt">Segurança</name>
+                            <name lang="en">Security</name>
+                            <name lang="it">Sicurezza</name>
+                            <name lang="fr">Sécurité</name>
+                            <name lang="pl">Bezpieczeństwo</name>
+                            <name lang="es">Seguridad</name>
+                            <name lang="cs">Bezpečnost</name>
+                        </names>
+                        <element name="terre.elmt">
+                            <definition width="20" version="0.2" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dnny">
+                                <names>
+                                    <name lang="de">Erde</name>
+                                    <name lang="ru">Земля</name>
+                                    <name lang="en">Ground</name>
+                                    <name lang="fr">Terre</name>
+                                    <name lang="es">Tierra</name>
+                                    <name lang="cs">Země</name>
+                                    <name lang="pt">Terra</name>
+                                    <name lang="pl">Uziemienie</name>
+                                    <name lang="it">Terra</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="-3" y2="4" x2="3"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="2" x1="-5" y2="2" x2="5"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-7" y2="0" x2="7"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="0" x2="0"/>
+                                    <terminal x="0" y="-11" orientation="n"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+                <category name="bornes">
+                    <names>
+                        <name lang="de">Klemmen</name>
+                        <name lang="ru">соеденителей</name>
+                        <name lang="pt">Terminais</name>
+                        <name lang="en">Terminals</name>
+                        <name lang="it">Terminali</name>
+                        <name lang="fr">Bornes</name>
+                        <name lang="pl">Złącza i zaciski</name>
+                        <name lang="es">Terminales</name>
+                        <name lang="cs">Svorky</name>
+                    </names>
+                    <element name="barette_de_terre.elmt">
+                        <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnnn">
+                            <names>
+                                <name lang="en">Ground bar</name>
+                                <name lang="fr">Barette de terre</name>
+                                <name lang="pl">Złącze gniazdowe dwuprzerwowe</name>
+                                <name lang="cs">Zemnící tyč</name>
+                                <name lang="it">Barra di terra</name>
+                            </names>
+                            <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="0" y2="5" x2="0"/>
+                                <arc width="10" x="-5" y="0" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-180"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="20" x1="0" y2="10" x2="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-20" x2="0"/>
+                                <arc width="10" x="-5" y="-10" antialias="true" height="10" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                                <terminal x="0" y="21" orientation="s"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <category name="protections">
+                    <names>
+                        <name lang="de">Sicherheit</name>
+                        <name lang="ru">Защитные уст-ва</name>
+                        <name lang="pt">Protecções</name>
+                        <name lang="en">Protections</name>
+                        <name lang="it">Protezioni</name>
+                        <name lang="fr">Protections</name>
+                        <name lang="pl">Zabezpieczenia</name>
+                        <name lang="es">Protecciones</name>
+                        <name lang="cs">Ochrany</name>
+                    </names>
+                    <category name="disjoncteurs">
+                        <names>
+                            <name lang="de">Lastschalter</name>
+                            <name lang="ru">Выключатели</name>
+                            <name lang="pt">Disjuntores</name>
+                            <name lang="en">Circuit-breakers</name>
+                            <name lang="it">Disgiuntori</name>
+                            <name lang="fr">Disjoncteurs</name>
+                            <name lang="pl">Wyłączniki</name>
+                            <name lang="es">Disyuntores</name>
+                            <name lang="cs">Jističe</name>
+                        </names>
+                        <element name="disjoncteur1.elmt">
+                            <definition width="40" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                                <names>
+                                    <name lang="de">Lastschalter</name>
+                                    <name lang="ru">Выключатель</name>
+                                    <name lang="pt">Disjuntor</name>
+                                    <name lang="en">Circuit-breaker</name>
+                                    <name lang="it">Disgiuntore</name>
+                                    <name lang="fr">Disjoncteur</name>
+                                    <name lang="pl">Wyłącznik</name>
+                                    <name lang="es">Disyuntor</name>
+                                    <name lang="cs">Jistič</name>
+                                </names>
+                                <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                                <description>
+                                    <input x="8.5" y="7.66667" size="5" text="__A"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                                    <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
+                                    <input x="4.5" y="-8" size="8" text="D__"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
+                                    <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
+                                    <terminal x="0" y="-21" orientation="n"/>
+                                    <terminal x="0" y="21" orientation="s"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+            </category>
+            <category name="recepteurs">
+                <names>
+                    <name lang="ru">Приёмники</name>
+                    <name lang="pt">Receptores</name>
+                    <name lang="en">Receivers</name>
+                    <name lang="fr">Récepteurs</name>
+                    <name lang="es">Receptores</name>
+                    <name lang="cs">Přijímače</name>
+                </names>
+                <category name="domestiques">
+                    <names>
+                        <name lang="ru">Бытовая техника</name>
+                        <name lang="pt">Electrodomésticos</name>
+                        <name lang="en">Domestic</name>
+                        <name lang="fr">Domestiques</name>
+                        <name lang="es">Electrodoméstico</name>
+                        <name lang="cs">Domácí</name>
+                    </names>
+                    <element name="four.elmt">
+                        <definition width="30" version="0.2" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
+                            <names>
+                                <name lang="ru">Духовой шкаф</name>
+                                <name lang="en">Electric oven</name>
+                                <name lang="fr">Four électrique</name>
+                                <name lang="es">Horno eléctrico</name>
+                                <name lang="cs">Elektrická kamna</name>
+                                <name lang="pt">Forno eléctrico</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8.5" x1="-7" y2="8.5" x2="7"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="0" y2="0" x2="0"/>
+                                <polygon x4="10" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="6" x1="-10" y2="20" x2="-10" y3="20" x3="10" y4="6"/>
+                                <polygon x4="12" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-12" y2="24" x2="-12" y3="24" x3="12" y4="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="-12" y2="4" x2="12"/>
+                                <terminal x="0" y="-12" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <category name="lampes">
+                    <names>
+                        <name lang="ru">Лампы</name>
+                        <name lang="pt">Lâmpadas</name>
+                        <name lang="en">Lights</name>
+                        <name lang="fr">Lampes</name>
+                        <name lang="es">Lámparas</name>
+                        <name lang="cs">Světla</name>
+                    </names>
+                    <element name="lampe1.elmt">
+                        <definition width="40" version="0.22" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dnny">
+                            <names>
+                                <name lang="ru">Лампа</name>
+                                <name lang="pt">Lâmpada</name>
+                                <name lang="en">Light</name>
+                                <name lang="fr">Lampe</name>
+                                <name lang="es">Lámpara</name>
+                                <name lang="cs">Světlo</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <category name="misc">
+                    <names>
+                        <name lang="ru">Разное</name>
+                        <name lang="pt">Diversos</name>
+                        <name lang="en">Misc</name>
+                        <name lang="fr">Divers</name>
+                        <name lang="es">Diverso</name>
+                        <name lang="cs">Různé</name>
+                    </names>
+                    <element name="telerupteur.elmt">
+                        <definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                            <names>
+                                <name lang="en">Teleruptor</name>
+                                <name lang="fr">Télérupteur bipolaire</name>
+                            </names>
+                            <informations/>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-3" x1="5" y2="-3" x2="10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="5" y2="-3" x2="5"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="17" y2="0" x2="26"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="3" x1="0" y2="3" x2="5"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="-10" x2="25"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="30" y2="20" x2="30"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="30" y2="-10" x2="30"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="15" y2="-10" x2="15"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="-5" y2="10" x2="15"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="15" y2="-10" x2="-5"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="-5"/>
+                                <terminal x="30" y="-21" orientation="n"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                                <terminal x="0" y="21" orientation="s"/>
+                                <terminal x="30" y="21" orientation="s"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="pc.elmt">
+                        <definition width="30" version="0.2" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dnnn">
+                            <names>
+                                <name lang="ru">Розетка</name>
+                                <name lang="en">Outlet</name>
+                                <name lang="fr">Prise</name>
+                                <name lang="es">Enchufe</name>
+                                <name lang="cs">Zásuvka</name>
+                                <name lang="pt">Tomada</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <circle x="-13" y="-13" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="26"/>
+                                <circle x="-9" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+                                <circle x="3" y="-1" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="6"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-13" x1="0" y2="-20" x2="0"/>
+                                <circle x="-2.5" y="-8.5" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="5"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <category name="nomenclatures">
+                <names>
+                    <name lang="de">Nomenklatur</name>
+                    <name lang="en">Nomenclatures</name>
+                    <name lang="fr">Nomenclatures</name>
+                    <name lang="pl">Nomenklatura</name>
+                    <name lang="cs">Nomenklatura</name>
+                </names>
+                <category name="bases">
+                    <names>
+                        <name lang="de">Basis</name>
+                        <name lang="en">Bases</name>
+                        <name lang="fr">Bases</name>
+                        <name lang="pl">Dane podstawowe</name>
+                        <name lang="cs">Základy</name>
+                    </names>
+                    <category name="textes">
+                        <names>
+                            <name lang="de">Texte</name>
+                            <name lang="ru">Тексты</name>
+                            <name lang="en">Texts</name>
+                            <name lang="fr">Textes</name>
+                            <name lang="pl">Teksty</name>
+                            <name lang="cs">Texty</name>
+                        </names>
+                        <element name="text_8.elmt">
+                            <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
+                                <names>
+                                    <name lang="de">T08 Textfeld</name>
+                                    <name lang="en">T08 text area</name>
+                                    <name lang="fr">Zone texte T08</name>
+                                    <name lang="pl">Pole tekstowe T08</name>
+                                    <name lang="cs">Textové pole T08</name>
+                                </names>
+                                <informations/>
+                                <description>
+                                    <input x="-3" y="1.6666" size="8" rotate="true" text="_"/>
+                                </description>
+                            </definition>
+                        </element>
+                    </category>
+                </category>
+            </category>
+            <category name="bornes">
+                <names>
+                    <name lang="de">Klemmen</name>
+                    <name lang="ru">соеденителей</name>
+                    <name lang="pt">Terminais</name>
+                    <name lang="en">Terminals</name>
+                    <name lang="it">Terminali</name>
+                    <name lang="fr">Bornes</name>
+                    <name lang="pl">Złącza i zaciski</name>
+                    <name lang="es">Terminales</name>
+                    <name lang="cs">Svorky</name>
+                </names>
+                <element name="borne_continuite.elmt">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                        <names>
+                            <name lang="de">Klemmblock</name>
+                            <name lang="ru">Клеммное соединение</name>
+                            <name lang="en">Terminal block</name>
+                            <name lang="fr">Borne continuité</name>
+                            <name lang="es">Punto de combinación</name>
+                            <name lang="cs">Spojovací svorka</name>
+                            <name lang="pt">Terminal de combinação</name>
+                            <name lang="pl">Zacisk</name>
+                            <name lang="it">Terminale di unione</name>
+                        </names>
+                        <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <input x="5" y="8" size="7" text="_"/>
+                            <input x="5" y="-5" size="10" text="_"/>
+                            <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="3" x2="0"/>
+                            <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-3" x2="0"/>
+                            <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+                            <terminal x="0" y="-10" orientation="n"/>
+                            <terminal x="0" y="10" orientation="s"/>
+                        </description>
+                    </definition>
+                </element>
+                <element name="borne_finale.elmt">
+                    <definition width="30" version="0.1" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+                        <names>
+                            <name lang="de">Endklemme</name>
+                            <name lang="ru">Клеммник</name>
+                            <name lang="en">Terminal block</name>
+                            <name lang="fr">Borne finale</name>
+                            <name lang="es">Punto de unión</name>
+                            <name lang="cs">Koncová svorka</name>
+                            <name lang="pt">Terminal de fim</name>
+                            <name lang="pl">Zacisk</name>
+                            <name lang="it">Terminale di fine</name>
+                        </names>
+                        <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                        <description>
+                            <input x="5" y="8" size="7" text="_"/>
+                            <input x="5" y="-5" size="10" text="_"/>
+                            <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="-3" x2="0"/>
+                            <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+                            <terminal x="0" y="-10" orientation="n"/>
+                        </description>
+                    </definition>
+                </element>
+            </category>
+        </category>
+    </collection>
+</project>

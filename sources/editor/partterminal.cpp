@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -95,14 +95,14 @@ void PartTerminal::paint(QPainter *p, const QStyleOptionGraphicsItem *options, Q
 	t.setCosmetic(options && options -> levelOfDetail < 1.0);
 	
 	// dessin de la borne en rouge
-	t.setColor(isSelected() ? Terminal::couleur_neutre : Qt::red);
+	t.setColor(isSelected() ? Terminal::neutralColor : Qt::red);
 	p -> setPen(t);
 	p -> drawLine(QPointF(0.0, 0.0), second_point);
 	
 	// dessin du point d'amarrage au conducteur en bleu
-	t.setColor(isSelected() ? Qt::red : Terminal::couleur_neutre);
+	t.setColor(isSelected() ? Qt::red : Terminal::neutralColor);
 	p -> setPen(t);
-	p -> setBrush(Terminal::couleur_neutre);
+	p -> setBrush(Terminal::neutralColor);
 	p -> drawPoint(QPointF(0.0, 0.0));
 	p -> restore();
 }

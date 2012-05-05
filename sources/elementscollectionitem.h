@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -202,5 +202,13 @@ class ElementsCollectionItem : public QObject {
 		@return un nouvel element cree a partir d'un chemin virtuel
 	*/
 	virtual ElementDefinition *createElement(const QString &) = 0;
+	/**
+		@return true if the item is empty, false otherwise
+	*/
+	virtual bool isEmpty() = 0;
+	/**
+		@return the count of categories and elements within this item
+	*/
+	virtual int count() = 0;
 };
 #endif

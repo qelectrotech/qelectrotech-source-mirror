@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -22,7 +22,7 @@
 #include "conductorprofile.h"
 #include "conductorproperties.h"
 class ConductorSegment;
-class DiagramTextItem;
+class ConductorTextItem;
 class Element;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
@@ -35,7 +35,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	
 	// constructeurs, destructeur
 	public:
-	Conductor(Terminal *, Terminal *, Element * = 0, QGraphicsScene * = 0);
+	Conductor(Terminal *, Terminal *, Diagram * = 0);
 	virtual ~Conductor();
 	
 	private:
@@ -44,6 +44,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	// attributs
 	public:
 	enum { Type = UserType + 1001 };
+	enum Highlight { None, Normal, Alert };
 	
 	/// premiere borne a laquelle le fil est rattache
 	Terminal *terminal1;
@@ -61,11 +62,15 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	/// @return true si ce conducteur est detruit
 	bool isDestroyed() const { return(destroyed); }
 	Diagram *diagram() const;
-	void updateWithNewPos(const QRectF &, const Terminal *, const QPointF &);
-	void update(const QRectF & = QRectF());
+	ConductorTextItem *textItem() const;
+	void updatePath(const QRectF & = QRectF());
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	virtual QPainterPath shape() const;
+	virtual qreal nearDistance() const;
+	virtual QPainterPath nearShape() const;
+	virtual QPainterPath variableShape(const qreal &) const;
+	virtual bool isNearConductor(const QPointF &);
 	qreal length();
 	ConductorSegment *middleSegment();
 	bool containsPoint(const QPointF &) const;
@@ -82,10 +87,13 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void setProfiles(const ConductorProfilesGroup &);
 	ConductorProfilesGroup profiles() const;
 	void readProperties();
+	void adjustTextItemPosition();
+	virtual Highlight highlight() const;
+	virtual void setHighlighted(Highlight);
 	
 	public slots:
 	void displayedTextChanged();
-
+	
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
@@ -101,7 +109,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	/// booleen indiquant si le fil est encore valide
 	bool destroyed;
 	/// champ de texte editable pour les conducteurs non unifilaires
-	DiagramTextItem *text_item;
+	ConductorTextItem *text_item;
 	/// segments composant le conducteur
 	ConductorSegment *segments;
 	/// attributs lies aux manipulations a la souris
@@ -111,6 +119,7 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	int moved_point;
 	qreal previous_z_value;
 	ConductorSegment *moved_segment;
+	QPointF before_mov_text_pos_;
 	/// booleen indiquant si le conducteur a ete modifie manuellement par l'utilisateur
 	bool modified_path;
 	/// booleen indiquant s'il faut sauver le profil courant au plus tot
@@ -124,6 +133,8 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static bool pen_and_brush_initialized;
 	/// facteur de taille du carre de saisie du segment
 	qreal segments_squares_scale_;
+	/// Definit la facon dont le conducteur doit etre mis en evidence
+	Highlight must_highlight_;
 	
 	private:
 	void segmentsToPath();
@@ -147,5 +158,6 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	static qreal conductor_bound(qreal, qreal, qreal, qreal = 0.0);
 	static qreal conductor_bound(qreal, qreal, bool);
 	static Qt::Corner movementType(const QPointF &, const QPointF &);
+	static QPointF movePointIntoPolygon(const QPointF &, const QPainterPath &);
 };
 #endif

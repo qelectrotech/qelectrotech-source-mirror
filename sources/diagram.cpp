@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -16,16 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include <math.h>
-#include "qetapp.h"
 #include "conductor.h"
+#include "conductortextitem.h"
 #include "customelement.h"
 #include "diagram.h"
-#include "elementtextitem.h"
-#include "exportdialog.h"
-#include "ghostelement.h"
 #include "diagramcommands.h"
 #include "diagramcontent.h"
 #include "diagramposition.h"
+#include "elementtextitem.h"
+#include "elementsmover.h"
+#include "elementtextsmover.h"
+#include "exportdialog.h"
+#include "ghostelement.h"
+#include "independenttextitem.h"
+#include "qetapp.h"
 
 const int   Diagram::xGrid  = 10;
 const int   Diagram::yGrid  = 10;
@@ -39,11 +43,11 @@ Diagram::Diagram(QObject *parent) :
 	QGraphicsScene(parent),
 	draw_grid(true),
 	use_border(true),
-	moved_elements_fetched(false),
 	draw_terminals(true),
 	draw_colored_conductors_(true),
 	project_(0),
-	read_only_(false)
+	read_only_(false),
+	diagram_qet_version_(-1)
 {
 	undo_stack = new QUndoStack();
 	qgi_manager = new QGIManager(this);
@@ -56,6 +60,19 @@ Diagram::Diagram(QObject *parent) :
 	t.setStyle(Qt::DashLine);
 	conductor_setter -> setPen(t);
 	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
+	
+	// initialise les objets gerant les deplacements
+	elements_mover_ = new ElementsMover();           // deplacements d'elements/conducteurs/textes
+	element_texts_mover_ = new ElementTextsMover();  // deplacements d'ElementTextItem
+	
+	connect(
+		&border_and_titleblock, SIGNAL(needTitleBlockTemplate(const QString &)),
+		this, SLOT(setTitleBlockTemplate(const QString &))
+	);
+	connect(
+		&border_and_titleblock, SIGNAL(diagramTitleChanged(const QString &)),
+		this, SLOT(titleChanged(const QString &))
+	);
 }
 
 /**
@@ -67,6 +84,10 @@ Diagram::~Diagram() {
 	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
 	delete qgi_manager;
 	
+	// suppression des objets gerant les deplacements
+	delete elements_mover_;
+	delete element_texts_mover_;
+	
 	// recense les items supprimables
 	QList<QGraphicsItem *> deletable_items;
 	foreach(QGraphicsItem *qgi, items()) {
@@ -74,7 +95,7 @@ Diagram::~Diagram() {
 		if (qgraphicsitem_cast<Conductor *>(qgi)) continue;
 		deletable_items << qgi;
 	}
-
+	
 	// suppression des items supprimables
 	foreach(QGraphicsItem *qgi_d, deletable_items) {
 		delete qgi_d;
@@ -120,7 +141,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p -> drawPoints(points);
 	}
 	
-	if (use_border) border_and_inset.draw(p, margin, margin);
+	if (use_border) border_and_titleblock.draw(p, margin, margin);
 	p -> restore();
 }
 
@@ -129,6 +150,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyPressEvent(QKeyEvent *e) {
+	bool transmit_event = true;
 	if (!isReadOnly()) {
 		QPointF movement;
 		switch(e -> key()) {
@@ -138,10 +160,15 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 			case Qt::Key_Down:  movement = QPointF(0.0, +yGrid); break;
 		}
 		if (!movement.isNull() && !focusItem()) {
-			moveElements(movement);
+			beginMoveElements();
+			continueMoveElements(movement);
+			e -> accept();
+			transmit_event = false;
 		}
 	}
-	QGraphicsScene::keyPressEvent(e);
+	if (transmit_event) {
+		QGraphicsScene::keyPressEvent(e);
+	}
 }
 
 /**
@@ -149,20 +176,22 @@ void Diagram::keyPressEvent(QKeyEvent *e) {
 	@param e QKeyEvent decrivant l'evenement clavier
 */
 void Diagram::keyReleaseEvent(QKeyEvent *e) {
+	bool transmit_event = true;
 	if (!isReadOnly()) {
 		// detecte le relachement d'une touche de direction ( = deplacement d'elements)
 		if (
-			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||\
-			 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
-			!current_movement.isNull()  && !e -> isAutoRepeat()
+			(e -> key() == Qt::Key_Left || e -> key() == Qt::Key_Right  ||
+			 e -> key() == Qt::Key_Up   || e -> key() == Qt::Key_Down)  &&
+			!e -> isAutoRepeat()
 		) {
-			// cree un objet d'annulation pour le mouvement qui vient de se finir
-			undoStack().push(new MoveElementsCommand(this, selectedContent(), current_movement));
-			invalidateMovedElements();
-			current_movement = QPointF();
+			endMoveElements();
+			e -> accept();
+			transmit_event = false;
 		}
 	}
-	QGraphicsScene::keyReleaseEvent(e);
+	if (transmit_event) {
+		QGraphicsScene::keyReleaseEvent(e);
+	}
 }
 
 /**
@@ -181,8 +210,8 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 		source_area = QRectF(
 			0.0,
 			0.0,
-			border_and_inset.borderWidth () + 2.0 * margin,
-			border_and_inset.borderHeight() + 2.0 * margin
+			border_and_titleblock.borderWidth () + 2.0 * margin,
+			border_and_titleblock.borderHeight() + 2.0 * margin
 		);
 	}
 	
@@ -224,8 +253,8 @@ QSize Diagram::imageSize() const {
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
 	} else {
-		image_width  = border_and_inset.borderWidth();
-		image_height = border_and_inset.borderHeight();
+		image_width  = border_and_titleblock.borderWidth();
+		image_height = border_and_titleblock.borderHeight();
 	}
 	
 	image_width  += 2.0 * margin;
@@ -245,32 +274,24 @@ bool Diagram::isEmpty() const {
 
 /**
 	Exporte tout ou partie du schema 
-	@param diagram Booleen (a vrai par defaut) indiquant si le XML genere doit
-	representer tout le schema ou seulement les elements selectionnes
+	@param whole_content Booleen (a vrai par defaut) indiquant si le XML genere doit
+	representer l'integralite du schema ou seulement le contenu selectionne
 	@return Un Document XML (QDomDocument)
 */
-QDomDocument Diagram::toXml(bool diagram) {
+QDomDocument Diagram::toXml(bool whole_content) {
 	// document
 	QDomDocument document;
 	
 	// racine de l'arbre XML
 	QDomElement racine = document.createElement("diagram");
 	
+	// add the application version number
+	racine.setAttribute("version", QET::version);
+	
 	// proprietes du schema
-	if (diagram) {
-		if (!border_and_inset.author().isNull())    racine.setAttribute("author",   border_and_inset.author());
-		if (!border_and_inset.date().isNull())      racine.setAttribute("date",     border_and_inset.date().toString("yyyyMMdd"));
-		if (!border_and_inset.title().isNull())     racine.setAttribute("title",    border_and_inset.title());
-		if (!border_and_inset.fileName().isNull())  racine.setAttribute("filename", border_and_inset.fileName());
-		if (!border_and_inset.folio().isNull())     racine.setAttribute("folio",    border_and_inset.folio());
-		racine.setAttribute("cols",    border_and_inset.nbColumns());
-		racine.setAttribute("colsize", QString("%1").arg(border_and_inset.columnsWidth()));
-		racine.setAttribute("rows",    border_and_inset.nbRows());
-		racine.setAttribute("rowsize", QString("%1").arg(border_and_inset.rowsHeight()));
-		// attribut datant de la version 0.1 - laisse pour retrocompatibilite
-		racine.setAttribute("height",  QString("%1").arg(border_and_inset.diagramHeight()));
-		racine.setAttribute("displaycols", border_and_inset.columnsAreDisplayed() ? "true" : "false");
-		racine.setAttribute("displayrows", border_and_inset.rowsAreDisplayed()    ? "true" : "false");
+	if (whole_content) {
+		border_and_titleblock.titleBlockToXml(racine);
+		border_and_titleblock.borderToXml(racine);
 		
 		// type de conducteur par defaut
 		QDomElement default_conductor = document.createElement("defaultconductor");
@@ -290,18 +311,18 @@ QDomDocument Diagram::toXml(bool diagram) {
 	// Determine les elements a "XMLiser"
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *elmt = qgraphicsitem_cast<Element *>(qgi)) {
-			if (diagram) list_elements << elmt;
+			if (whole_content) list_elements << elmt;
 			else if (elmt -> isSelected()) list_elements << elmt;
 		} else if (Conductor *f = qgraphicsitem_cast<Conductor *>(qgi)) {
-			if (diagram) list_conductors << f;
+			if (whole_content) list_conductors << f;
 			// lorsqu'on n'exporte pas tout le diagram, il faut retirer les conducteurs non selectionnes
-			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas relie
-			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) list_conductors << f;
-		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
-			if (!dti -> parentItem()) {
-				if (diagram) list_texts << dti;
-				else if (dti -> isSelected()) list_texts << dti;
+			// et pour l'instant, les conducteurs non selectionnes sont les conducteurs dont un des elements n'est pas selectionne
+			else if (f -> terminal1 -> parentItem() -> isSelected() && f -> terminal2 -> parentItem() -> isSelected()) {
+				list_conductors << f;
 			}
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			if (whole_content) list_texts << iti;
+			else if (iti -> isSelected()) list_texts << iti;
 		}
 	}
 	
@@ -405,50 +426,20 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// lecture des attributs de ce schema
 	if (consider_informations) {
-		border_and_inset.setAuthor(root.attribute("author"));
-		border_and_inset.setTitle(root.attribute("title"));
-		border_and_inset.setDate(QDate::fromString(root.attribute("date"), "yyyyMMdd"));
-		border_and_inset.setFileName(root.attribute("filename"));
-		border_and_inset.setFolio(root.attribute("folio"));
-		
-		bool ok;
-		// nombre de colonnes
-		int nb_cols = root.attribute("cols").toInt(&ok);
-		if (ok) border_and_inset.setNbColumns(nb_cols);
-		
-		// taille des colonnes
-		double col_size = root.attribute("colsize").toDouble(&ok);
-		if (ok) border_and_inset.setColumnsWidth(col_size);
-		
-		// retrocompatibilite : les schemas enregistres avec la 0.1 ont un attribut "height"
-		if (root.hasAttribute("rows") && root.hasAttribute("rowsize")) {
-			// nombre de lignes
-			int nb_rows = root.attribute("rows").toInt(&ok);
-			if (ok) border_and_inset.setNbRows(nb_rows);
-			
-			// taille des lignes
-			double row_size = root.attribute("rowsize").toDouble(&ok);
-			if (ok) border_and_inset.setRowsHeight(row_size);
-		} else {
-			// hauteur du schema
-			double height = root.attribute("height").toDouble(&ok);
-			if (ok) border_and_inset.setDiagramHeight(height);
+		bool conv_ok;
+		qreal version_value = root.attribute("version").toDouble(&conv_ok);
+		if (conv_ok) {
+			diagram_qet_version_ = version_value;
 		}
 		
-		// affichage des lignes et colonnes
-		border_and_inset.displayColumns(root.attribute("displaycols") != "false");
-		border_and_inset.displayRows(root.attribute("displayrows") != "false");
-		
-		border_and_inset.adjustInsetToColumns();
+		border_and_titleblock.titleBlockFromXml(root);
+		border_and_titleblock.borderFromXml(root);
 		
 		// repere le permier element "defaultconductor"
-		for (QDomNode node = root.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
-			QDomElement elmts = node.toElement();
-			if(elmts.isNull() || elmts.tagName() != "defaultconductor") continue;
-			defaultConductorProperties.fromXml(elmts);
-			break;
+		QDomElement default_conductor_elmt = root.firstChildElement("defaultconductor");
+		if (!default_conductor_elmt.isNull()) {
+			defaultConductorProperties.fromXml(default_conductor_elmt);
 		}
-		
 	}
 	
 	// si la racine n'a pas d'enfant : le chargement est fini (schema vide)
@@ -457,14 +448,25 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		return(true);
 	}
 	
+	// Backward compatibility: prior to version 0.3, we need to compensate, at
+	// diagram-opening time, the rotation of the element for each of its
+	// textfields having the "FollowParentRotation" option disabled.
+	// After 0.3, elements textfields get userx, usery and userrotation attributes
+	// that explicitly specify their position and orientation.
+	qreal project_qet_version = declaredQElectroTechVersion(true);
+	bool handle_inputs_rotation = (
+		project_qet_version != -1 && project_qet_version < 0.3 &&
+		project_ -> state() == QETProject::ProjectParsingRunning
+	);
+	
 	// chargement de tous les elements du fichier XML
 	QList<Element *> added_elements;
 	QHash<int, Terminal *> table_adr_id;
-	foreach (QDomElement e, QET::findInDomElement(root, "elements", "element")) {
-		if (!Element::valideXml(e)) continue;
+	foreach (QDomElement element_xml, QET::findInDomElement(root, "elements", "element")) {
+		if (!Element::valideXml(element_xml)) continue;
 		
 		// cree un element dont le type correspond a l'id type
-		QString type_id = e.attribute("type");
+		QString type_id = element_xml.attribute("type");
 		ElementsLocation element_location = ElementsLocation(type_id);
 		if (type_id.startsWith("embed://")) element_location.setProject(project_);
 		
@@ -479,7 +481,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		}
 		
 		// charge les caracteristiques de l'element
-		if (nvel_elmt -> fromXml(e, table_adr_id)) {
+		if (nvel_elmt -> fromXml(element_xml, table_adr_id, handle_inputs_rotation)) {
 			// ajout de l'element au schema et a la liste des elements ajoutes
 			addElement(nvel_elmt);
 			added_elements << nvel_elmt;
@@ -490,12 +492,12 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	}
 	
 	// chargement de tous les textes du fichiers XML
-	QList<DiagramTextItem *> added_texts;
-	foreach (QDomElement f, QET::findInDomElement(root, "inputs", "input")) {
-		DiagramTextItem *dti = new DiagramTextItem(0, this);
-		dti -> fromXml(f);
-		addDiagramTextItem(dti);
-		added_texts << dti;
+	QList<IndependentTextItem *> added_texts;
+	foreach (QDomElement text_xml, QET::findInDomElement(root, "inputs", "input")) {
+		IndependentTextItem *iti = new IndependentTextItem(this);
+		iti -> fromXml(text_xml);
+		addIndependentTextItem(iti);
+		added_texts << iti;
 	}
 	
 	// gere la translation des nouveaux elements et texte si celle-ci est demandee
@@ -549,7 +551,7 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 					}
 				}
 				if (can_add_conductor) {
-					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), 0, this);
+					Conductor *c = new Conductor(table_adr_id.value(id_p1), table_adr_id.value(id_p2), this);
 					c -> fromXml(f);
 					added_conductors << c;
 				}
@@ -559,9 +561,9 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 	
 	// remplissage des listes facultatives
 	if (content_ptr) {
-		content_ptr -> elements         = added_elements;
-		content_ptr -> conductorsToMove = added_conductors;
-		content_ptr -> textFields       = added_texts;
+		content_ptr -> elements         = added_elements.toSet();
+		content_ptr -> conductorsToMove = added_conductors.toSet();
+		content_ptr -> textFields       = added_texts.toSet();
 	}
 	
 	return(true);
@@ -649,19 +651,19 @@ void Diagram::addConductor(Conductor *conductor) {
 
 /**
 	Aoute un champ de texte independant sur le schema
-	@param dti Champ de texte a ajouter
+	@param iti Champ de texte a ajouter
 */
-void Diagram::addDiagramTextItem(DiagramTextItem *dti) {
-	if (!dti || isReadOnly()) return;
+void Diagram::addIndependentTextItem(IndependentTextItem *iti) {
+	if (!iti || isReadOnly()) return;
 	
 	// ajoute le champ de texte au schema
-	if (dti -> scene() != this) {
-		addItem(dti);
+	if (iti -> scene() != this) {
+		addItem(iti);
 	}
 	
 	// surveille les modifications apportees au champ de texte
 	connect(
-		dti,
+		iti,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
@@ -706,21 +708,25 @@ void Diagram::removeConductor(Conductor *conductor) {
 
 /**
 	Enleve un champ de texte independant du schema
-	@param dti Champ de texte a enlever
+	@param iti Champ de texte a enlever
 */
-void Diagram::removeDiagramTextItem(DiagramTextItem *dti) {
-	if (!dti || isReadOnly()) return;
+void Diagram::removeIndependentTextItem(IndependentTextItem *iti) {
+	if (!iti || isReadOnly()) return;
 	
 	// enleve le champ de texte au schema
-	removeItem(dti);
+	removeItem(iti);
 	
 	// arrete la surveillance des modifications apportees au champ de texte
 	disconnect(
-		dti,
+		iti,
 		SIGNAL(diagramTextChanged(DiagramTextItem *, const QString &, const QString &)),
 		this,
 		SLOT(diagramTextChanged(DiagramTextItem *, const QString &, const QString &))
 	);
+}
+
+void Diagram::titleChanged(const QString &title) {
+	emit(diagramTitleChanged(this, title));
 }
 
 /**
@@ -732,6 +738,51 @@ void Diagram::removeDiagramTextItem(DiagramTextItem *dti) {
 void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_text, const QString &new_text) {
 	if (!text_item) return;
 	undo_stack -> push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
+}
+
+/**
+	This slot may be used to inform the diagram object that the given title
+	block template has changed. The diagram will thus flush its title
+	block-dedicated rendering cache.
+	@param template_name Name of the title block template that has changed
+*/
+void Diagram::titleBlockTemplateChanged(const QString &template_name) {
+	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;
+	
+	border_and_titleblock.titleBlockTemplateChanged(template_name);
+	update();
+}
+
+/**
+	This slot has to be be used to inform this class that the given title block
+	template is about to be removed and is no longer accessible. This class
+	will either use the provided  optional TitleBlockTemplate or the default
+	title block provided by QETApp::defaultTitleBlockTemplate()
+	@param template_name Name of the title block template that has changed
+	@param new_template (Optional) Name of the title block template to use instead
+*/
+void Diagram::titleBlockTemplateRemoved(const QString &template_name, const QString &new_template) {
+	if (border_and_titleblock.titleBlockTemplateName() != template_name) return;
+	
+	const TitleBlockTemplate *final_template = project_ -> getTemplateByName(new_template);
+	border_and_titleblock.titleBlockTemplateRemoved(template_name, final_template);
+	update();
+}
+
+/**
+	Set the template to use to render the title block of this diagram.
+	@param template_name Name of the title block template.
+*/
+void Diagram::setTitleBlockTemplate(const QString &template_name) {
+	if (!project_) return;
+	
+	QString current_name = border_and_titleblock.titleBlockTemplateName();
+	const TitleBlockTemplate *titleblock_template = project_ -> getTemplateByName(template_name);
+	border_and_titleblock.titleBlockTemplateRemoved(current_name, titleblock_template);
+	
+	if (template_name != current_name) {
+		emit(usedTitleBlockTemplateChanged(template_name));
+	}
 }
 
 /**
@@ -775,8 +826,8 @@ QRectF Diagram::border() const {
 		QRectF(
 			margin,
 			margin,
-			border_and_inset.borderWidth(),
-			border_and_inset.borderHeight()
+			border_and_titleblock.borderWidth(),
+			border_and_titleblock.borderHeight()
 		)
 	);
 }
@@ -785,7 +836,7 @@ QRectF Diagram::border() const {
 	@return le titre du cartouche
 */
 QString Diagram::title() const {
-	return(border_and_inset.title());
+	return(border_and_titleblock.title());
 }
 
 /**
@@ -802,88 +853,59 @@ QList<CustomElement *> Diagram::customElements() const {
 }
 
 /**
-	Oublie la liste des elements et conducteurs en mouvement
+	Initialise un deplacement d'elements, conducteurs et champs de texte sur le
+	schema.
+	@param driver_item Item deplace par la souris et ne necessitant donc pas
+	d'etre deplace lors des appels a continueMovement.
+	@see ElementsMover
 */
-void Diagram::invalidateMovedElements() {
-	if (!moved_elements_fetched) return;
-	moved_elements_fetched = false;
-	elements_to_move.clear();
-	conductors_to_move.clear();
-	conductors_to_update.clear();
-	texts_to_move.clear();
+int Diagram::beginMoveElements(QGraphicsItem *driver_item) {
+	return(elements_mover_ -> beginMovement(this, driver_item));
 }
 
 /**
-	Reconstruit la liste des elements et conducteurs en mouvement
+	Prend en compte un mouvement composant un deplacement d'elements,
+	conducteurs et champs de texte
+	@param movement mouvement a ajouter au deplacement en cours
+	@see ElementsMover
 */
-void Diagram::fetchMovedElements() {
-	// recupere les elements deplaces
-	foreach (QGraphicsItem *item, selectedItems()) {
-		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
-			elements_to_move << elmt;
-		} else if (DiagramTextItem *t = qgraphicsitem_cast<DiagramTextItem *>(item)) {
-			if (!t -> parentItem()) texts_to_move << t;
-		}
-	}
-	
-	// pour chaque element deplace, determine les conducteurs qui seront modifies
-	foreach(Element *elmt, elements_to_move) {
-		foreach(Terminal *terminal, elmt -> terminals()) {
-			foreach(Conductor *conductor, terminal -> conductors()) {
-				Terminal *other_terminal;
-				if (conductor -> terminal1 == terminal) {
-					other_terminal = conductor -> terminal2;
-				} else {
-					other_terminal = conductor -> terminal1;
-				}
-				// si les deux elements du conducteur sont deplaces
-				if (elements_to_move.contains(static_cast<Element *>(other_terminal -> parentItem()))) {
-					conductors_to_move << conductor;
-				} else {
-					conductors_to_update.insert(conductor, terminal);
-				}
-			}
-		}
-	}
-	moved_elements_fetched = true;
+void Diagram::continueMoveElements(const QPointF &movement) {
+	elements_mover_ -> continueMovement(movement);
 }
 
 /**
-	Deplace les elements, conducteurs et textes selectionnes en gerant au
-	mieux les conducteurs (seuls les conducteurs dont un seul des elements
-	est deplace sont recalcules, les autres sont deplaces).
-	@param diff Translation a effectuer
-	@param dontmove QGraphicsItem (optionnel) a ne pas deplacer ; note : ce
-	parametre ne concerne que les elements et les champs de texte.
+	Finalise un deplacement d'elements, conducteurs et champs de texte
+	@see ElementsMover
 */
-void Diagram::moveElements(const QPointF &diff, QGraphicsItem *dontmove) {
-	// inutile de deplacer les autres elements s'il n'y a pas eu de mouvement concret
-	if (diff.isNull()) return;
-	
-	current_movement += diff;
-	
-	// deplace les elements selectionnes
-	foreach(Element *element, elementsToMove()) {
-		if (dontmove && element == dontmove) continue;
-		element -> setPos(element -> pos() + diff);
-	}
-	
-	// deplace certains conducteurs
-	foreach(Conductor *conductor, conductorsToMove()) {
-		conductor -> setPos(conductor -> pos() + diff);
-	}
-	
-	// recalcule les autres conducteurs
-	const QHash<Conductor *, Terminal *> &conductors_modify = conductorsToUpdate();
-	foreach(Conductor *conductor, conductors_modify.keys()) {
-		conductor -> updateWithNewPos(QRectF(), conductors_modify[conductor], conductors_modify[conductor] -> amarrageConductor());
-	}
-	
-	// deplace les champs de texte
-	foreach(DiagramTextItem *dti, textsToMove()) {
-		if (dontmove && dti == dontmove) continue;
-		dti -> setPos(dti -> pos() + diff);
-	}
+void Diagram::endMoveElements() {
+	elements_mover_ -> endMovement();
+}
+
+/**
+	Initialise un deplacement d'ElementTextItems
+	@param driver_item Item deplace par la souris et ne necessitant donc pas
+	d'etre deplace lors des appels a continueMovement.
+	@see ElementTextsMover
+*/
+int Diagram::beginMoveElementTexts(QGraphicsItem *driver_item) {
+	return(element_texts_mover_ -> beginMovement(this, driver_item));
+}
+
+/**
+	Prend en compte un mouvement composant un deplacement d'ElementTextItems
+	@param movement mouvement a ajouter au deplacement en cours
+	@see ElementTextsMover
+*/
+void Diagram::continueMoveElementTexts(const QPointF &movement) {
+	element_texts_mover_ -> continueMovement(movement);
+}
+
+/**
+	Finalise un deplacement d'ElementTextItems
+	@see ElementTextsMover
+*/
+void Diagram::endMoveElementTexts() {
+	element_texts_mover_ -> endMovement();
 }
 
 /**
@@ -901,6 +923,15 @@ bool Diagram::usesElement(const ElementsLocation &location) {
 }
 
 /**
+	@param a title block template name
+	@return true if the provided template is used by this diagram, false
+	otherwise.
+*/
+bool Diagram::usesTitleBlockTemplate(const QString &name) {
+	return(name == border_and_titleblock.titleBlockTemplateName());
+}
+
+/**
 	Cette methode permet d'appliquer de nouvelles options de rendu tout en
 	accedant aux proprietes de rendu en cours.
 	@param new_properties Nouvelles options de rendu a appliquer
@@ -910,8 +941,8 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	// exporte les options de rendu en cours
 	ExportProperties old_properties;
 	old_properties.draw_grid               = displayGrid();
-	old_properties.draw_border             = border_and_inset.borderIsDisplayed();
-	old_properties.draw_inset              = border_and_inset.insetIsDisplayed();
+	old_properties.draw_border             = border_and_titleblock.borderIsDisplayed();
+	old_properties.draw_titleblock         = border_and_titleblock.titleBlockIsDisplayed();
 	old_properties.draw_terminals          = drawTerminals();
 	old_properties.draw_colored_conductors = drawColoredConductors();
 	old_properties.exported_area           = useBorder() ? QET::BorderArea : QET::ElementsArea;
@@ -921,8 +952,8 @@ ExportProperties Diagram::applyProperties(const ExportProperties &new_properties
 	setDrawTerminals              (new_properties.draw_terminals);
 	setDrawColoredConductors      (new_properties.draw_colored_conductors);
 	setDisplayGrid                (new_properties.draw_grid);
-	border_and_inset.displayBorder(new_properties.draw_border);
-	border_and_inset.displayInset (new_properties.draw_inset);
+	border_and_titleblock.displayBorder(new_properties.draw_border);
+	border_and_titleblock.displayTitleBlock (new_properties.draw_titleblock);
 	
 	// retourne les anciennes options de rendu
 	return(old_properties);
@@ -937,8 +968,8 @@ DiagramPosition Diagram::convertPosition(const QPointF &pos) {
 	// decale la position pour prendre en compte les marges en haut a gauche du schema
 	QPointF final_pos = pos - QPointF(margin, margin);
 	
-	// delegue le calcul au BorderInset
-	DiagramPosition diagram_position = border_and_inset.convertPosition(final_pos);
+	// delegue le calcul au BorderTitleBlock
+	DiagramPosition diagram_position = border_and_titleblock.convertPosition(final_pos);
 	
 	// embarque la position cartesienne
 	diagram_position.setPosition(pos);
@@ -980,6 +1011,24 @@ QSet<Conductor *> Diagram::selectedConductors() const {
 	return(conductors_set);
 }
 
+/**
+	@return la liste de tous les textes selectionnes : les textes independants,
+	mais aussi ceux rattaches a des conducteurs ou des elements
+*/
+QSet<DiagramTextItem *> Diagram::selectedTexts() const {
+	QSet<DiagramTextItem *> selected_texts;
+	foreach(QGraphicsItem *item, selectedItems()) {
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			selected_texts << cti;
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			selected_texts << eti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			selected_texts << iti;
+		}
+	}
+	return(selected_texts);
+}
+
 /// @return true si le presse-papier semble contenir un schema
 bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
@@ -1001,6 +1050,31 @@ QETProject *Diagram::project() const {
 */
 void Diagram::setProject(QETProject *project) {
 	project_ = project;
+}
+
+/**
+	@return the folio number of this diagram within its parent project, or -1
+	if it is has no parent project
+*/
+int Diagram::folioIndex() const {
+	if (!project_) return(-1);
+	return(project_ -> folioIndex(this));
+}
+
+/**
+	@param fallback_to_project When a diagram does not have a declared version,
+	this method will use the one declared by its parent project only if
+	fallback_to_project is true.
+	@return the declared QElectroTech version of this diagram
+*/
+qreal Diagram::declaredQElectroTechVersion(bool fallback_to_project) const {
+	if (diagram_qet_version_ != -1) {
+		return diagram_qet_version_;
+	}
+	if (fallback_to_project && project_) {
+		return(project_ -> declaredQElectroTechVersion());
+	}
+	return(-1);
 }
 
 /**
@@ -1029,8 +1103,8 @@ DiagramContent Diagram::content() const {
 	foreach(QGraphicsItem *qgi, items()) {
 		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			dc.elements << e;
-		} else if (DiagramTextItem *dti = qgraphicsitem_cast<DiagramTextItem *>(qgi)) {
-			dc.textFields << dti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			dc.textFields << iti;
 		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
 			dc.conductorsToMove << c;
 		}
@@ -1042,18 +1116,17 @@ DiagramContent Diagram::content() const {
 	@return le contenu selectionne du schema.
 */
 DiagramContent Diagram::selectedContent() {
-	invalidateMovedElements();
 	DiagramContent dc;
-	dc.elements           = elementsToMove().toList();
-	dc.textFields         = textsToMove().toList();
-	dc.conductorsToMove   = conductorsToMove().toList();
-	dc.conductorsToUpdate = conductorsToUpdate();
 	
-	// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
-	foreach(QGraphicsItem *qgi, items()) {
-		if (Conductor *c = qgraphicsitem_cast<Conductor *>(qgi)) {
+	// recupere les elements deplaces
+	foreach (QGraphicsItem *item, selectedItems()) {
+		if (Element *elmt = qgraphicsitem_cast<Element *>(item)) {
+			dc.elements << elmt;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			dc.textFields << iti;
+		} else if (Conductor *c = qgraphicsitem_cast<Conductor *>(item)) {
+			// recupere les conducteurs selectionnes isoles (= non deplacables mais supprimables)
 			if (
-				c -> isSelected() &&\
 				!c -> terminal1 -> parentItem() -> isSelected() &&\
 				!c -> terminal2 -> parentItem() -> isSelected()
 			) {
@@ -1061,7 +1134,27 @@ DiagramContent Diagram::selectedContent() {
 			}
 		}
 	}
-	invalidateMovedElements();
+	
+	// pour chaque element deplace, determine les conducteurs qui seront modifies
+	foreach(Element *elmt, dc.elements) {
+		foreach(Terminal *terminal, elmt -> terminals()) {
+			foreach(Conductor *conductor, terminal -> conductors()) {
+				Terminal *other_terminal;
+				if (conductor -> terminal1 == terminal) {
+					other_terminal = conductor -> terminal2;
+				} else {
+					other_terminal = conductor -> terminal1;
+				}
+				// si les deux elements du conducteur sont deplaces
+				if (dc.elements.contains(other_terminal -> parentElement())) {
+					dc.conductorsToMove << conductor;
+				} else {
+					dc.conductorsToUpdate << conductor;
+				}
+			}
+		}
+	}
+	
 	return(dc);
 }
 
@@ -1072,7 +1165,13 @@ DiagramContent Diagram::selectedContent() {
 */
 bool Diagram::canRotateSelection() const {
 	foreach(QGraphicsItem * qgi, selectedItems()) {
-		if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
+		if (qgraphicsitem_cast<IndependentTextItem *>(qgi)) {
+			return(true);
+		} else if (qgraphicsitem_cast<ElementTextItem *>(qgi)) {
+			return(true);
+		} else if (qgraphicsitem_cast<ConductorTextItem *>(qgi)) {
+			return(true);
+		} else if (Element *e = qgraphicsitem_cast<Element *>(qgi)) {
 			// l'element est-il pivotable ?
 			if (e -> orientation().current() != e -> orientation().next()) {
 				return(true);

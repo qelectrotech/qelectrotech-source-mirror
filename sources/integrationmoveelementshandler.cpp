@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -88,7 +88,7 @@ QString IntegrationMoveElementsHandler::newNameForElement(const ElementDefinitio
 }
 
 /**
-	Demande a l'utilisateur s'il souhaite ecraser l'elemen deja existant,
+	Demande a l'utilisateur s'il souhaite ecraser l'element deja existant,
 	renommer le nouveau ou bien annuler
 	@param src Element source
 	@param dst Element cible

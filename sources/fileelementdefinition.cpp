@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,10 +15,13 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "elementscollectioncache.h"
 #include "fileelementdefinition.h"
 #include "fileelementscategory.h"
 #include "fileelementscollection.h"
 #include "qetapp.h"
+#include "qet.h"
+
 /**
 	Constructeur
 	@param uri Chemin du fichier contenant la definition de l'element
@@ -43,7 +46,17 @@ FileElementDefinition::~FileElementDefinition() {
 	@return la definition XML de l'element
 */
 QDomElement FileElementDefinition::xml() {
-	return(xml_element_.documentElement());
+	// ouvre le fichier
+	QFile file(file_path);
+	
+	// charge le contenu du fichier en s'attendant a du XML
+	is_null = !xml_element_.setContent(&file);
+	if (is_null) {
+		return(QDomElement());
+	} else {
+		// l'ouverture de la definition a reussi
+		return(xml_element_.documentElement());
+	}
 }
 
 /**
@@ -63,16 +76,7 @@ bool FileElementDefinition::setXml(const QDomElement &xml_element) {
 	@return true si l'operation a reussi, false sinon
 */
 bool FileElementDefinition::write() {
-	QFile file(file_path);
-	
-	// le fichier doit etre accessible en ecriture
-	if (!file.open(QIODevice::WriteOnly | QIODevice::Text)) return(false);
-	
-	QTextStream out(&file);
-	out.setCodec("UTF-8");
-	out << xml_element_.toString(4);
-	file.close();
-	return(true);
+	return(QET::writeXmlFile(xml_element_, file_path));
 }
 
 /**
@@ -122,18 +126,21 @@ void FileElementDefinition::reload() {
 	}
 	file_path = file_info.canonicalFilePath();
 	
-	// ouvre le fichier
-	QFile file(file_path);
-	
-	// charge le contenu du fichier en s'attendant a du XML
-	bool read_xml = xml_element_.setContent(&file);
-	if (!read_xml) {
-		is_null = true;
-		return;
+	if (parentCollection()) {
+		ElementsCollectionCache *cache = parentCollection() -> cache();
+		if (cache && cache -> fetchNameFromCache(location().toString(), file_info.lastModified())) {
+			// the element file has not been modified since the last time
+			// we put its name in cache: we do not need to load it.
+			is_null = false;
+			return;
+		}
 	}
 	
-	// l'ouverture de la definition a reussi
-	is_null = false;
+	// we need to ensure this is a valid XML document
+	QFile file(file_path);
+	QDomDocument xml_document;
+	is_null = !xml_document.setContent(&file);
+	xml_document.clear();
 }
 
 /**
@@ -197,4 +204,15 @@ void FileElementDefinition::setFilePath(const QString &path) {
 		return;
 	}
 	file_path = file_info.canonicalFilePath();
+}
+
+/**
+	@return the time of the last modification (mtime) for this element file
+*/
+QDateTime FileElementDefinition::modificationTime() const {
+	QFileInfo file_info(file_path);
+	if (!file_info.exists() || !file_info.isReadable()) {
+		return QDateTime();
+	}
+	return(file_info.lastModified());
 }

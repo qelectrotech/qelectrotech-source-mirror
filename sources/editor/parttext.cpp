@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,13 +31,22 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	QGraphicsTextItem(parent, scene),
 	CustomElementPart(editor)
 {
+#if QT_VERSION >= 0x040500
+	document() -> setDocumentMargin(1.0);
+#endif
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
+	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
+	
+	adjustItemPosition(1);
+	// ajuste la position du champ de texte lorsqu'on lui ajoute/retire des lignes ou lorsqu'on change sa taille de police
+	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
+	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
 }
 
 /// Destructeur
@@ -53,8 +62,15 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	int font_size = xml_element.attribute("size").toInt(&ok);
 	if (!ok || font_size < 1) font_size = 20;
 	
+	setBlack(xml_element.attribute("color") != "white");
 	setFont(QETApp::diagramTextsFont(font_size));
 	setPlainText(xml_element.attribute("text"));
+	
+	qreal default_rotation_angle = 0.0;
+	if (QET::attributeIsAReal(xml_element, "rotation", &default_rotation_angle)) {
+		setRotationAngle(default_rotation_angle);
+	}
+	
 	setPos(
 		xml_element.attribute("x").toDouble(),
 		xml_element.attribute("y").toDouble()
@@ -68,37 +84,48 @@ void PartText::fromXml(const QDomElement &xml_element) {
 */
 const QDomElement PartText::toXml(QDomDocument &xml_document) const {
 	QDomElement xml_element = xml_document.createElement("text");
-	xml_element.setAttribute("x", QString("%1").arg((scenePos() + margin()).x()));
-	xml_element.setAttribute("y", QString("%1").arg((scenePos() + margin()).y()));
+	xml_element.setAttribute("x", QString("%1").arg(pos().x()));
+	xml_element.setAttribute("y", QString("%1").arg(pos().y()));
 	xml_element.setAttribute("text", toPlainText());
 	xml_element.setAttribute("size", font().pointSize());
+	// angle de rotation du champ de texte
+	if (rotationAngle()) {
+		xml_element.setAttribute("rotation", QString("%1").arg(rotationAngle()));
+	}
+	if (!isBlack()) {
+		xml_element.setAttribute("color", "white");
+	}
 	return(xml_element);
 }
 
 /**
-	Retourne la position du texte, l'origine etant le point en bas a gauche du
-	texte (et pas du cadre)
-	@return la position du texte
+	@return l'angle de rotation de ce champ de texte
 */
-QPointF PartText::pos() const {
-	return(QGraphicsTextItem::pos() + margin());
+qreal PartText::rotationAngle() const {
+	return(rotation());
 }
 
 /**
-	Specifie la position du texte statique
-	@param left_corner_pos Nouvelle position
+	@param angle Le nouvel angle de rotation de ce champ de texte
 */
-void PartText::setPos(const QPointF &left_corner_pos) {
-	QGraphicsTextItem::setPos(left_corner_pos - margin());
+void PartText::setRotationAngle(const qreal &angle) {
+	setRotation(QET::correctAngle(angle));
 }
 
 /**
-	Specifie la position du texte statique
-	@param x abscisse de la nouvelle position
-	@param y ordonnee de la nouvelle position
+	@return true or false if this static text is rendered black or white,
+	respectively.
 */
-void PartText::setPos(qreal x, qreal y) {
-	QGraphicsTextItem::setPos(QPointF(x, y) - margin());
+bool PartText::isBlack() const {
+	return(defaultTextColor() == Qt::black);
+}
+
+/**
+	@param color whether this static text should be rendered black (true) or white
+	(false).
+*/
+void PartText::setBlack(bool color) {
+	setDefaultTextColor(color ? Qt::black : Qt::white);
 }
 
 /**
@@ -107,9 +134,20 @@ void PartText::setPos(qreal x, qreal y) {
 QPointF PartText::margin() const {
 	QFont used_font = font();
 	QFontMetrics qfm(used_font);
+	
+	// marge du texte
+#if QT_VERSION >= 0x040500
+	qreal document_margin = document() -> documentMargin();
+#else
+	// il semblerait qu'avant Qt 4.5, ceci vaille non pas 4.0 mais 2.0
+	qreal document_margin = 2.0;
+#endif
+	
 	QPointF margin(
-		(boundingRect().width () - qfm.width(toPlainText())) / 2.0,
-		((boundingRect().height() - used_font.pointSizeF()) / 3.0) + used_font.pointSizeF()
+		// marge autour du texte
+		document_margin,
+		// marge au-dessus du texte + distance entre le plafond du texte et la baseline
+		document_margin + qfm.ascent()
 	);
 	return(margin);
 }
@@ -161,6 +199,7 @@ void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
 		* y : ordonnee de la position
 		* size : taille du texte
 		* text : texte
+		* "rotation angle" : amgle de rotation
 	@param value Valeur a attribuer a la propriete
 */
 void PartText::setProperty(const QString &property, const QVariant &value) {
@@ -175,6 +214,10 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 		setFont(QETApp::diagramTextsFont(value.toInt()));
 	} else if (property == "text") {
 		setPlainText(value.toString());
+	} else if (property == "rotation angle") {
+		setRotationAngle(value.toDouble());
+	} else if (property == "color") {
+		setBlack(value.toBool());
 	}
 	update();
 }
@@ -186,17 +229,22 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 		* y : ordonnee de la position
 		* size : taille du texte
 		* text : texte
+		* "rotation angle" : amgle de rotation
 	@return La valeur de la propriete property
 */
 QVariant PartText::property(const QString &property) {
 	if (property == "x") {
-		return((scenePos() + margin()).x());
+		return(pos().x());
 	} else if (property == "y") {
-		return((scenePos() + margin()).y());
+		return(pos().y());
 	} else if (property == "size") {
 		return(font().pointSize());
 	} else if (property == "text") {
 		return(toPlainText());
+	} else if (property == "rotation angle") {
+		return(rotation());
+	} else if (property == "color") {
+		return(isBlack());
 	}
 	return(QVariant());
 }
@@ -207,8 +255,10 @@ QVariant PartText::property(const QString &property) {
 	@param value Valeur numerique relative au changement
 */
 QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) {
-	if (scene()) {
-		if (change == QGraphicsItem::ItemPositionChange || change == QGraphicsItem::ItemSelectedChange) {
+	if (change == QGraphicsItem::ItemPositionHasChanged || change == QGraphicsItem::ItemSceneHasChanged) {
+		updateCurrentPartEditor();
+	} else if (change == QGraphicsItem::ItemSelectedHasChanged) {
+		if (value.toBool() == true) {
 			updateCurrentPartEditor();
 		}
 	}
@@ -220,7 +270,7 @@ QVariant PartText::itemChange(GraphicsItemChange change, const QVariant &value) 
 */
 QRectF PartText::boundingRect() const {
 	QRectF r = QGraphicsTextItem::boundingRect();
-	r.adjust(0.0, -2.0, 0.0, 0.0);
+	r.adjust(0.0, -1.1, 0.0, 0.0);
 	return(r);
 }
 
@@ -232,3 +282,61 @@ QRectF PartText::boundingRect() const {
 bool PartText::isUseless() const {
 	return(toPlainText().isEmpty());
 }
+
+/**
+	Dessine le texte statique.
+	@param painter QPainter a utiliser pour effectuer le rendu
+	@param qsogi   Pptions de dessin
+	@param widget  Widget sur lequel on dessine (facultatif)
+*/
+void PartText::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, QWidget *widget) {
+	QGraphicsTextItem::paint(painter, qsogi, widget);
+	
+#ifdef QET_DEBUG_EDITOR_TEXTS
+	painter -> setPen(Qt::blue);
+	painter -> drawRect(boundingRect());
+	
+	painter -> setPen(Qt::red);
+	drawPoint(painter, QPointF(0, 0));
+	
+	painter -> setPen(Qt::green);
+	drawPoint(painter, mapFromScene(pos()));
+#endif
+}
+
+/**
+	Cette methode s'assure que la position du champ de texte est coherente
+	en repositionnant son origine (c-a-d le milieu du bord gauche du champ de
+	texte) a la position originale. Cela est notamment utile lorsque le champ
+	de texte est agrandi ou retreci verticalement (ajout ou retrait de lignes).
+	@param new_block_count Nombre de blocs dans le PartText
+*/
+void PartText::adjustItemPosition(int new_block_count) {
+	Q_UNUSED(new_block_count);
+	QPointF origin_offset = margin();
+	
+	QTransform base_translation;
+	base_translation.translate(-origin_offset.x(), -origin_offset.y());
+	setTransform(base_translation, false);
+	setTransformOriginPoint(origin_offset);
+}
+
+#ifdef QET_DEBUG_EDITOR_TEXTS
+/**
+	Dessine deux petites fleches pour mettre un point en valeur
+	@param painter QPainter a utiliser pour effectuer le rendu
+	@param point   Point a dessiner
+*/
+void PartText::drawPoint(QPainter *painter, const QPointF &point) {
+	qreal px = point.x();
+	qreal py = point.y();
+	qreal size_1 = 5.0;
+	qreal size_2 = 1.0;
+	painter -> drawLine(QLineF(px, py, px + size_1, py));
+	painter -> drawLine(QLineF(px + size_1 - size_2, py - size_2, px + size_1, py));
+	painter -> drawLine(QLineF(px + size_1 - size_2, py + size_2, px + size_1, py));
+	painter -> drawLine(QLineF(px, py, px, py + size_1));
+	painter -> drawLine(QLineF(px, py + size_1, px - size_2, py + size_1 - size_2));
+	painter -> drawLine(QLineF(px, py + size_1, px + size_2, py + size_1 - size_2));
+}
+#endif

@@ -1,13 +1,15 @@
-<definition width="50" version="0.22" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">عاكس أحادي الوجه</name>
         <name lang="de">Gleichstrom > Wechselstrom</name>
         <name lang="ru">Пост. ток > Однофазный перем. ток</name>
         <name lang="pt">Contínua > Alterna monofásica</name>
         <name lang="en">Direct > One-phase alternating</name>
+        <name lang="it">Continua > alternata monofase</name>
         <name lang="fr">Continu > Alternatif monophasé</name>
         <name lang="pl">Falownik</name>
         <name lang="es">Continua > Alterna monofásica</name>
-        <name lang="cs">Přímý </name>
+        <name lang="cs">Stejnosměrný proud > střídavý proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
@@ -23,7 +25,7 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-17" x1="-5" y2="-17" x2="-6.5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="-5" y2="-15" x2="-12.5"/>
         <arc width="5" x="2.5" y="2.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-175"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.5" x1="14.5" y2="9.5" x2="-14.5"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.5" x1="14.5" y2="9.5" x2="-14.5"/>
         <terminal x="-21" y="-10" orientation="w"/>
         <terminal x="-21" y="0" orientation="w"/>
         <terminal x="21" y="-10" orientation="e"/>

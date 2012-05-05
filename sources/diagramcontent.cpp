@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,7 +18,7 @@
 #include "diagramcontent.h"
 #include <QGraphicsItem>
 #include "element.h"
-#include "diagramtextitem.h"
+#include "independenttextitem.h"
 #include "conductor.h"
 
 /**
@@ -50,16 +50,16 @@ DiagramContent::~DiagramContent() {
 	@return tous les conducteurs
 */
 QList<Conductor *> DiagramContent::conductors(int filter) const {
-	QList<Conductor *> result;
+	QSet<Conductor *> result;
 	if (filter & ConductorsToMove)   result += conductorsToMove;
-	if (filter & ConductorsToUpdate) result += conductorsToUpdate.keys();
+	if (filter & ConductorsToUpdate) result += conductorsToUpdate;
 	if (filter & OtherConductors)    result += otherConductors;
 	if (filter & SelectedOnly) {
 		foreach(Conductor *conductor, result) {
-			if (!conductor -> isSelected()) result.removeOne(conductor);
+			if (!conductor -> isSelected()) result.remove(conductor);
 		}
 	}
-	return(result);
+	return(result.toList());
 }
 
 /**
@@ -100,7 +100,7 @@ int DiagramContent::count(int filter) const {
 		if (filter & Elements)           foreach(Element *element,     elements)                  { if (element   -> isSelected()) ++ count; }
 		if (filter & TextFields)         foreach(DiagramTextItem *dti, textFields)                { if (dti       -> isSelected()) ++ count; }
 		if (filter & ConductorsToMove)   foreach(Conductor *conductor, conductorsToMove)          { if (conductor -> isSelected()) ++ count; }
-		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate.keys()) { if (conductor -> isSelected()) ++ count; }
+		if (filter & ConductorsToUpdate) foreach(Conductor *conductor, conductorsToUpdate)        { if (conductor -> isSelected()) ++ count; }
 		if (filter & OtherConductors)    foreach(Conductor *conductor, otherConductors)           { if (conductor -> isSelected()) ++ count; }
 	} else {
 		if (filter & Elements)           count += elements.count();
@@ -143,7 +143,7 @@ QDebug &operator<<(QDebug d, DiagramContent &content) {
 	/*
 	FIXME Le double-heritage QObject / QGraphicsItem a casse cet operateur
 	d << "  elements :" << c.elements << "\n";
-	d << "  conductorsToUpdate :" << c.conductorsToUpdate.keys() << "\n";
+	d << "  conductorsToUpdate :" << c.conductorsToUpdate << "\n";
 	d << "  conductorsToMove :" << c.conductorsToMove << "\n";
 	d << "  otherConductors :" << c.otherConductors << "\n";
 	*/

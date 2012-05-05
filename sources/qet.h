@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -25,9 +25,9 @@
 */
 namespace QET {
 	/// version de QElectroTech (utilisee pour estampiller les projets et elements)
-	const QString version = "0.22";
+	const QString version = "0.3";
 	/// version affichee de QElectroTech
-	const QString displayedVersion = "0.22";
+	const QString displayedVersion = "0.3";
 	QString license();
 	/// Orientation (utilise pour les bornes mais aussi pour les elements)
 	enum Orientation {North, East, South, West};
@@ -68,12 +68,27 @@ namespace QET {
 		collection d'elements.
 	*/
 	enum ItemType {
-		Element    = 1, ///< Element
-		Category   = 2, ///< Categorie
-		Collection = 4, ///< Collection
-		All        = 7  ///< Tous
+		Element                           =    1,
+		ElementsCategory                  =    2,
+		ElementsCollection                =    4,
+		ElementsContainer                 =    6,
+		ElementsCollectionItem            =    7,
+		TitleBlockTemplate                =    8,
+		TitleBlockTemplatesCollection     =   16,
+		TitleBlockTemplatesCollectionItem =   24,
+		Diagram                           =   32,
+		Project                           =   64,
+		All                               =  127
 	};
 	
+	/**
+		This enum represents the various steps when applying a filter.
+	*/
+	enum Filtering {
+		BeginFilter,
+		RegularFilter,
+		EndFilter
+	};
 	
 	/**
 		Cet enum represente les differentes facons de gerer un probleme lors de
@@ -97,6 +112,13 @@ namespace QET {
 		ElementsArea     ///< Exporte le contenu du schema sans le cadre et le cartouche
 	};
 	
+	/// enum used to specify the type of a length
+	enum TitleBlockColumnLength {
+		Absolute,                   ///< the length is absolute and should be applied as is
+		RelativeToTotalLength,      ///< the length is just a fraction of the total available length
+		RelativeToRemainingLength   ///< the length is just a fraction of the length that is still available when other types of lengths have been removed
+	};
+	
 	QET::Orientation nextOrientation(QET::Orientation);
 	QET::Orientation previousOrientation(QET::Orientation);
 	QET::Orientation orientationFromString(const QString &);
@@ -104,6 +126,8 @@ namespace QET {
 	bool surLeMemeAxe(QET::Orientation, QET::Orientation);
 	bool estHorizontale(QET::Orientation);
 	bool estVerticale(QET::Orientation);
+	bool lineContainsPoint(const QLineF &, const QPointF &);
+	bool orthogonalProjection(const QPointF &, const QLineF &, QPointF * = 0);
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
 	bool attributeIsAReal(const QDomElement &, QString , qreal * = NULL);
 	QString ElementsAndConductorsSentence(int, int, int = 0);
@@ -121,6 +145,9 @@ namespace QET {
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	QString pointerString(void *);
+	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
+	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
+	bool writeXmlFile(QDomDocument &, const QString &, QString * = 0);
 }
 #endif

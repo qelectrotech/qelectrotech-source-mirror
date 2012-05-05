@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -15,23 +15,27 @@
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef SCHEMA_H
-#define SCHEMA_H
+#ifndef DIAGRAM_H
+#define DIAGRAM_H
 #include <QtGui>
 #include <QtXml>
-#include "borderinset.h"
-#include "qgimanager.h"
+#include "bordertitleblock.h"
 #include "conductorproperties.h"
 #include "exportproperties.h"
-class Element;
-class CustomElement;
-class Terminal;
+#include "qgimanager.h"
 class Conductor;
-class DiagramTextItem;
+class CustomElement;
 class DiagramContent;
 class DiagramPosition;
-class QETProject;
+class DiagramTextItem;
+class Element;
 class ElementsLocation;
+class ElementsMover;
+class ElementTextItem;
+class ElementTextsMover;
+class IndependentTextItem;
+class QETProject;
+class Terminal;
 /**
 	Cette classe represente un schema electrique.
 	Elle gere les differents elements et conducteurs qui le composent
@@ -53,16 +57,14 @@ class Diagram : public QGraphicsScene {
 	/**
 		Represente les options possibles pour l'affichage du schema :
 		 * EmptyBorder : N'afficher que la bordure
-		 * Inset : Afficher le cartouche
+		 * TitleBlock : Afficher le cartouche
 		 * Columns : Afficher les colonnes
 	*/
-	enum BorderOptions { EmptyBorder, Inset, Columns };
+	enum BorderOptions { EmptyBorder, TitleBlock, Columns };
 	/// Proprietes par defaut des nouveaux conducteurs
 	ConductorProperties defaultConductorProperties;
 	/// Dimensions et cartouches du schema
-	BorderInset border_and_inset;
-	/// Mouvement en cours lors d'un deplacement d'elements et conducteurs
-	QPointF current_movement;
+	BorderTitleBlock border_and_titleblock;
 	/// taille de la grille en abscisse
 	static const int xGrid;
 	/// taille de la grille en ordonnee
@@ -72,13 +74,10 @@ class Diagram : public QGraphicsScene {
 	
 	private:
 	QGraphicsLineItem *conductor_setter;
+	ElementsMover *elements_mover_;
+	ElementTextsMover *element_texts_mover_;
 	bool draw_grid;
 	bool use_border;
-	bool moved_elements_fetched;
-	QSet<Element *> elements_to_move;
-	QSet<Conductor *> conductors_to_move;
-	QHash<Conductor *, Terminal *> conductors_to_update;
-	QSet<DiagramTextItem *> texts_to_move;
 	QGIManager *qgi_manager;
 	QUndoStack *undo_stack;
 	bool draw_terminals;
@@ -86,6 +85,7 @@ class Diagram : public QGraphicsScene {
 	QDomDocument xml_document;
 	QETProject *project_;
 	bool read_only_;
+	qreal diagram_qet_version_;
 	
 	// methodes
 	protected:
@@ -99,6 +99,8 @@ class Diagram : public QGraphicsScene {
 	// fonctions relatives au projet parent
 	QETProject *project() const;
 	void setProject(QETProject *);
+	int folioIndex() const;
+	qreal declaredQElectroTechVersion(bool = true) const;
 	
 	// fonctions relatives a la lecture seule
 	bool isReadOnly() const;
@@ -122,11 +124,11 @@ class Diagram : public QGraphicsScene {
 	// fonctions relative a l'ajout et a l'enlevement d'elements graphiques sur le schema
 	void addElement(Element *);
 	void addConductor(Conductor *);
-	void addDiagramTextItem(DiagramTextItem *);
+	void addIndependentTextItem(IndependentTextItem *);
 	
 	void removeElement(Element *);
 	void removeConductor(Conductor *);
-	void removeDiagramTextItem(DiagramTextItem *);
+	void removeIndependentTextItem(IndependentTextItem *);
 	
 	// fonctions relatives aux options graphiques
 	ExportProperties applyProperties(const ExportProperties &);
@@ -151,24 +153,29 @@ class Diagram : public QGraphicsScene {
 	bool isEmpty() const;
 	
 	QList<CustomElement *> customElements() const;
-	void invalidateMovedElements();
-	void fetchMovedElements();
-	const QSet<Element *> &elementsToMove();
-	const QSet<Conductor *> &conductorsToMove();
-	const QHash<Conductor *, Terminal *> &conductorsToUpdate();
-	const QSet<DiagramTextItem *> &textsToMove();
+	QSet<DiagramTextItem *> selectedTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();
 	bool canRotateSelection() const;
-	void moveElements(const QPointF &, QGraphicsItem * = 0);
+	int  beginMoveElements(QGraphicsItem * = 0);
+	void continueMoveElements(const QPointF &);
+	void endMoveElements();
+	int  beginMoveElementTexts(QGraphicsItem * = 0);
+	void continueMoveElementTexts(const QPointF &);
+	void endMoveElementTexts();
 	bool usesElement(const ElementsLocation &);
+	bool usesTitleBlockTemplate(const QString &);
 	
 	QUndoStack &undoStack();
 	QGIManager &qgiManager();
 	
 	public slots:
+	void titleChanged(const QString &);
 	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
+	void titleBlockTemplateChanged(const QString &);
+	void titleBlockTemplateRemoved(const QString &, const QString & = QString());
+	void setTitleBlockTemplate(const QString &);
 	
 	// fonctions relative a la selection sur le schema
 	void selectAll();
@@ -178,7 +185,10 @@ class Diagram : public QGraphicsScene {
 	signals:
 	void written();
 	void readOnlyChanged(bool);
+	void usedTitleBlockTemplateChanged(const QString &);
+	void diagramTitleChanged(Diagram *, const QString &);
 };
+Q_DECLARE_METATYPE(Diagram *)
 
 /**
 	Permet d'ajouter ou enlever le "poseur de conducteur", c'est-a-dire la
@@ -249,9 +259,9 @@ inline bool Diagram::useBorder() {
 	@see BorderOptions
 */
 inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
-	border_and_inset.displayBorder(!(bo & EmptyBorder));
-	border_and_inset.displayColumns(bo & Columns);
-	border_and_inset.displayInset(bo & Inset);
+	border_and_titleblock.displayBorder(!(bo & EmptyBorder));
+	border_and_titleblock.displayColumns(bo & Columns);
+	border_and_titleblock.displayTitleBlock(bo & TitleBlock);
 }
 
 /**
@@ -261,33 +271,9 @@ inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
 */
 inline Diagram::BorderOptions Diagram::borderOptions() {
 	BorderOptions retour = EmptyBorder;
-	if (border_and_inset.insetIsDisplayed()) retour = (BorderOptions)(retour|Inset);
-	if (border_and_inset.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
+	if (border_and_titleblock.titleBlockIsDisplayed()) retour = (BorderOptions)(retour|TitleBlock);
+	if (border_and_titleblock.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
 	return(retour);
-}
-
-/// @return la liste des elements a deplacer
-inline const QSet<Element *> &Diagram::elementsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(elements_to_move);
-}
-
-/// @return la liste des conducteurs a deplacer
-inline const QSet<Conductor *> &Diagram::conductorsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(conductors_to_move);
-}
-
-/// @return la liste des conducteurs a modifier (typiquement les conducteurs dont seul un element est deplace)
-inline const QHash<Conductor *, Terminal *> &Diagram::conductorsToUpdate() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(conductors_to_update);
-}
-
-/// @return la liste des textes a deplacer
-inline const QSet<DiagramTextItem *> &Diagram::textsToMove() {
-	if (!moved_elements_fetched) fetchMovedElements();
-	return(texts_to_move);
 }
 
 /// @return la pile d'annulations de ce schema

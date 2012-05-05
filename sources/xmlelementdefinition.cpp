@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -211,6 +211,17 @@ QString XmlElementDefinition::filePath() {
 */
 void XmlElementDefinition::setFilePath(const QString &) {
 	// une categorie XML n'a pas de chemin de type fichier
+}
+
+/**
+	@return a null QDateTime object since an XML element does not have a
+	modification time.
+*/
+/**
+	@return the time of the last modification (mtime) for this element file
+*/
+QDateTime XmlElementDefinition::modificationTime() const {
+	return QDateTime();
 }
 
 QDomElement XmlElementDefinition::writeXml(QDomDocument &xml_doc) const {

@@ -1,0 +1,15 @@
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="35" height="60" type="element" orientation="dyyy">
+    <names>
+        <name lang="en">Electrical drive</name>
+        <name lang="fr">Entrainement electrique</name>
+        <name lang="pl">Silnik elektryczny</name>
+        <name lang="cs">Elektrický pohon</name>
+    </names>
+    <informations></informations>
+    <description>
+        <circle x="-5" y="-20" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <text x="3" y="-0.3333" size="12" text="M"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="25" y2="-4" x2="40"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-6" x1="25" y2="-6" x2="40"/>
+    </description>
+</definition>

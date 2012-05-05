@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -613,6 +613,17 @@ void ElementsCategory::deleteEmptyCategories(MoveElementsHandler *handler) {
 */
 bool ElementsCategory::isEmpty() {
 	return(categories().count() || elements().count());
+}
+
+/**
+	@return the count of categories and elements within this collection
+*/
+int ElementsCategory::count() {
+	int items_count = elements().count();
+	foreach(ElementsCategory *category, categories()) {
+		items_count += category -> count();
+	}
+	return(items_count);
 }
 
 /**

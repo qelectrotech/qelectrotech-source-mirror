@@ -1,9 +1,11 @@
-<definition width="50" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس قدرة كونتكتور (NC)</name>
         <name lang="de">Leistungs Kontakt (NC)</name>
         <name lang="ru">Контакт контактора (НЗ)</name>
         <name lang="pt">Interruptor de potência contactor (NC)</name>
         <name lang="en">Contact power contactor (NC)</name>
+        <name lang="it">Interruttore di potenza (NC)</name>
         <name lang="fr">Contact puissance contacteur (NF)</name>
         <name lang="pl">Przerwnik</name>
         <name lang="es">Interruptor de potencia contactor (NC)</name>

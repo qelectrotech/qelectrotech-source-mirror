@@ -1,9 +1,11 @@
-<definition width="30" version="0.22" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">موصل أنثوي</name>
         <name lang="de">Stecker (weiblich)</name>
         <name lang="ru">Гнездо (нов.)</name>
         <name lang="pt">Conector fêmea</name>
         <name lang="en">Female connector</name>
+        <name lang="it">Connettore femmina</name>
         <name lang="fr">Connecteur femelle</name>
         <name lang="pl">Gniazdo</name>
         <name lang="es">Connector hembra</name>

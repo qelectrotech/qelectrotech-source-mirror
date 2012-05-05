@@ -1,0 +1,22 @@
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+    <names>
+        <name lang="ar">طرف نهائي</name>
+        <name lang="de">Endklemme</name>
+        <name lang="ru">Клеммник</name>
+        <name lang="pt">Terminal de fim</name>
+        <name lang="en">Terminal block</name>
+        <name lang="it">Termianle</name>
+        <name lang="fr">Borne finale</name>
+        <name lang="pl">Zacisk</name>
+        <name lang="es">Punto de unión</name>
+        <name lang="cs">Koncová svorka</name>
+    </names>
+    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <input x="8" y="0.6666" size="9" text="_"/>
+        <circle x="-2.5" y="-2.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
+        <terminal x="0" y="3" orientation="s"/>
+        <terminal x="0" y="-3" orientation="n"/>
+    </description>
+</definition>

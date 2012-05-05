@@ -1,24 +1,26 @@
-<definition width="30" version="0.1" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny" >
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
-        <name lang="de" >Lastschalter</name>
-        <name lang="ru" >Выключатель</name>
-        <name lang="en" >Circuit-breaker</name>
-        <name lang="fr" >Disjoncteur</name>
-        <name lang="es" >Disyuntor</name>
-        <name lang="cs" >Jistič</name>
-        <name lang="pt" >Disjuntor</name>
-        <name lang="pl" >Wyłącznik</name>
+        <name lang="ar">قاطع</name>
+        <name lang="de">Lastschalter</name>
+        <name lang="ru">Выключатель</name>
+        <name lang="pt">Disjuntor</name>
+        <name lang="en">Circuit-breaker</name>
+        <name lang="it">Disgiuntore</name>
+        <name lang="fr">Disjoncteur</name>
+        <name lang="pl">Wyłącznik</name>
+        <name lang="es">Disyuntor</name>
+        <name lang="cs">Jistič</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0" />
-        <line antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0" />
-        <input x="2.75" y="3" size="9" text="_" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2" />
-        <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2" />
-        <terminal x="0" y="-21" orientation="n" />
-        <terminal x="0" y="21" orientation="s" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
+        <input x="2.75" y="3" size="9" text="_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="21" orientation="s"/>
     </description>
 </definition>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -77,16 +77,24 @@ QString DiagramPrintDialog::docName() const {
 }
 
 /**
-	@param diagram Un schema
-	@return le rectangle a imprimer pour ce schema
+	@param diagram Diagram to be printed
+	@param include_titleblock (Optional, defaults to true) Whether the diagram
+	titleblock should be printed.
+	@return the rectangle to be printed
 */
-QRect DiagramPrintDialog::diagramRect(Diagram *diagram) const {
+QRect DiagramPrintDialog::diagramRect(Diagram *diagram, const ExportProperties &options) const {
 	if (!diagram) return(QRect());
 	
-	// ajuste la bordure du schema d'un pixel (epaisseur du trait)
-	QRect diagram_rect = diagram -> border().adjusted(0.0, 0.0, 1.0, 1.0).toAlignedRect();
+	QRectF diagram_rect = diagram -> border();
+	if (!options.draw_titleblock) {
+		qreal titleblock_height = diagram -> border_and_titleblock.titleBlockHeight();
+		diagram_rect.setHeight(diagram_rect.height() - titleblock_height);
+	}
 	
-	return(diagram_rect);
+	// ajuste la bordure du schema d'un pixel (epaisseur du trait)
+	diagram_rect = diagram_rect.adjusted(0.0, 0.0, 1.0, 1.0);
+	
+	return(diagram_rect.toAlignedRect());
 }
 
 /**
@@ -147,24 +155,26 @@ void DiagramPrintDialog::exec() {
 
 /**
 	@param diagram Schema a imprimer
+	@param options Rendering options
 	@param fullpage true pour utiliser toute la feuille dans le calcul
 	@return Le nombre de pages necessaires pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
-int DiagramPrintDialog::pagesCount(Diagram *diagram, bool fullpage) const {
-	return(horizontalPagesCount(diagram, fullpage) * verticalPagesCount(diagram, fullpage));
+int DiagramPrintDialog::pagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const {
+	return(horizontalPagesCount(diagram, options, fullpage) * verticalPagesCount(diagram, options, fullpage));
 }
 
 /**
 	@param diagram Schema a imprimer
+	@param options Rendering options
 	@param fullpage true pour utiliser toute la feuille dans le calcul
 	@return La largeur du "poster" en nombre de pages pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
-int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, bool fullpage) const {
+int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const {
 	// note : pageRect et Paper Rect tiennent compte de l'orientation du papier
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
-	QRect diagram_rect = diagramRect(diagram);
+	QRect diagram_rect = diagramRect(diagram, options);
 	
 	int h_pages_count = int(ceil(qreal(diagram_rect.width()) / qreal(printable_area.width())));
 	return(h_pages_count);
@@ -172,14 +182,15 @@ int DiagramPrintDialog::horizontalPagesCount(Diagram *diagram, bool fullpage) co
 
 /**
 	@param diagram Schema a imprimer
+	@param options Rendering options
 	@param fullpage true pour utiliser toute la feuille dans le calcul
 	@return La largeur du "poster" en nombre de pages pour imprimer le schema
 	avec l'orientation et le format papier utilise dans l'imprimante en cours.
 */
-int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, bool fullpage) const {
+int DiagramPrintDialog::verticalPagesCount(Diagram *diagram, const ExportProperties &options, bool fullpage) const {
 	// note : pageRect et Paper Rect tiennent compte de l'orientation du papier
 	QRect printable_area = fullpage ? printer_ -> paperRect() : printer_ -> pageRect();
-	QRect diagram_rect = diagramRect(diagram);
+	QRect diagram_rect = diagramRect(diagram, options);
 	
 	int v_pages_count = int(ceil(qreal(diagram_rect.height()) / qreal(printable_area.height())));
 	return(v_pages_count);
@@ -366,10 +377,10 @@ void DiagramPrintDialog::print(const QList<Diagram *> &diagrams, bool fit_page, 
 	@param qp QPainter a utiliser (deja initialise sur printer)
 	@param printer Imprimante a utiliser
 */
-void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const ExportProperties options, QPainter *qp, QPrinter *printer) {
+void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const ExportProperties &options, QPainter *qp, QPrinter *printer) {
 	//qDebug() << printer -> paperSize() << printer -> paperRect() << diagram -> title();
 	// l'imprimante utilise-t-elle toute la feuille ?
-	bool full_page = printer -> fullPage ();
+	bool full_page = printer -> fullPage();
 	
 	// impression physique (!= fichier PDF)
 	if (printer -> outputFileName().isEmpty()) {
@@ -396,12 +407,12 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 		view -> setInteractive(false);
 	}
 	
+	QRect diagram_rect = diagramRect(diagram, options);
 	if (fit_page) {
 		// impression adaptee sur une seule page
-		diagram -> render(qp, QRectF(), diagramRect(diagram), Qt::KeepAspectRatio);
+		diagram -> render(qp, QRectF(), diagram_rect, Qt::KeepAspectRatio);
 	} else {
 		// impression sur une ou plusieurs pages
-		QRect diagram_rect = diagramRect(diagram);
 		QRect printed_area = full_page ? printer -> paperRect() : printer -> pageRect();
 		//qDebug() << "impression sur une ou plusieurs pages";
 		//qDebug() << "  schema :" << diagram_rect;
@@ -409,8 +420,8 @@ void DiagramPrintDialog::printDiagram(Diagram *diagram, bool fit_page, const Exp
 		
 		int used_width  = printed_area.width();
 		int used_height = printed_area.height();
-		int h_pages_count = horizontalPagesCount(diagram, full_page);
-		int v_pages_count = verticalPagesCount(diagram, full_page);
+		int h_pages_count = horizontalPagesCount(diagram, options, full_page);
+		int v_pages_count = verticalPagesCount(diagram, options, full_page);
 		
 		QVector< QVector< QRect > > pages_grid;
 		// le schema est imprime sur une matrice de feuilles

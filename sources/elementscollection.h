@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,9 +18,11 @@
 #ifndef ELEMENTS_COLLECTION_H
 #define ELEMENTS_COLLECTION_H
 #include <QtCore>
+#include <QIcon>
 #include "elementscollectionitem.h"
 class QETProject;
 class ElementsCategory;
+class ElementsCollectionCache;
 class ElementDefinition;
 class MoveElementsHandler;
 /**
@@ -40,6 +42,10 @@ class ElementsCollection : public ElementsCollectionItem {
 	
 	// Implementations de methodes virtuelles pures des classes parentes
 	public:
+	virtual QString title() const;
+	virtual void setTitle(const QString &);
+	virtual QIcon icon() const;
+	virtual void setIcon(const QIcon &);
 	virtual bool isCollection() const;
 	virtual bool isRootCategory() const;
 	virtual bool isCategory()  const;
@@ -73,6 +79,7 @@ class ElementsCollection : public ElementsCollectionItem {
 	virtual ElementDefinition *element(const QString &);
 	virtual ElementDefinition *createElement(const QString &);
 	virtual bool isEmpty();
+	virtual int count();
 	
 	// Methodes propres a la classe ElementsCollection
 	public:
@@ -81,12 +88,24 @@ class ElementsCollection : public ElementsCollectionItem {
 	*/
 	virtual ElementsCategory *rootCategory() = 0;
 	virtual ElementsCollectionItem *item(const QString &, bool = true);
+	virtual bool isCacheable() const = 0;
+	virtual ElementsCollectionCache *cache() const;
+	virtual void setCache(ElementsCollectionCache *);
+	
+	signals:
+	void elementsCollectionChanged(ElementsCollection *);
 	
 	// attributs
 	protected:
+	/// Title to be used when referring to this collection
+	QString title_;
+	/// Icon to be displayed when representing this collection
+	QIcon icon_;
 	/// Protocole utilise pour acceder a cette collection
 	QString protocol_;
 	/// Projet auquel appartient cette collection
 	QETProject *project_;
+	/// Optional cache used to improve performance
+	ElementsCollectionCache *cache_;
 };
 #endif

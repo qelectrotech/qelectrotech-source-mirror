@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -173,6 +173,20 @@ ElementDefinition *ElementDefinition::element(const QString &path) {
 */
 ElementDefinition *ElementDefinition::createElement(const QString &) {
 	return(0);
+}
+
+/**
+	@return always true - an element contains nothing but itself
+*/
+bool ElementDefinition::isEmpty() {
+	return(false);
+}
+
+/**
+	@return always 1
+*/
+int ElementDefinition::count() {
+	return(1);
 }
 
 /**

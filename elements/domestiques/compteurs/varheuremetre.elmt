@@ -1,0 +1,17 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">عدّد طاقة تفاعليّة - فارساعة متر-</name>
+        <name lang="en">Var hour meter</name>
+        <name lang="fr">Varheuremètre</name>
+        <name lang="pl">Licznik warogodzin</name>
+        <name lang="cs">Počítadlo varhodin</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="-13" y="2.3333" size="9" text="Varh"/>
+        <rect width="30" x="-15" y="-11" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-15" y="-19" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-23" orientation="n"/>
+        <terminal x="0" y="15" orientation="s"/>
+    </description>
+</definition>

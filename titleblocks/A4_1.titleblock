@@ -1,0 +1,230 @@
+<titleblocktemplate name="A4_1">
+    <information></information>
+    <logos>
+        <logo storage="xml" type="svg" name="Qet.svg">
+            <svg width="600.000000pt" version="1.0" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" height="600.000000pt" viewBox="0 0 600.000000 600.000000">
+                <metadata>
+Created by potrace 1.10, written by Peter Selinger 2001-2011
+</metadata>
+                <g fill="#000000" stroke="none" transform="translate(0.000000,600.000000) scale(0.100000,-0.100000)">
+                    <path d="M3585 5980 c-33 -36 -52 -136 -44 -225 4 -44 8 -206 8 -360 l1 -281&#xa;-157 -47 c-288 -88 -484 -170 -537 -226 l-29 -30 38 -50 37 -51 60 0 c38 0&#xa;148 21 310 60 138 33 253 58 256 55 3 -2 -7 -118 -22 -257 -57 -552 -116&#xa;-1218 -116 -1324 l0 -43 -127 -40 c-314 -98 -571 -166 -747 -196 -105 -18&#xa;-138 -19 -153 -4 -8 8 -13 8 -17 0 -4 -7 -43 -11 -95 -11 -75 0 -93 3 -122 23&#xa;-36 24 -53 51 -64 105 l-7 32 64 0 c129 1 212 35 371 153 163 120 287 258 355&#xa;393 51 101 64 172 60 315 -3 117 -5 128 -30 167 -58 86 -181 123 -300 88 -96&#xa;-27 -199 -105 -280 -210 -140 -181 -264 -383 -334 -544 l-32 -74 -6 74 c-3 40&#xa;-8 141 -11 223 -22 613 -177 1181 -402 1480 -242 321 -489 475 -762 475 -335&#xa;0 -563 -209 -707 -648 -51 -154 -58 -209 -10 -77 118 324 285 507 512 561 89&#xa;21 183 14 337 -25 146 -37 185 -55 295 -141 220 -170 391 -418 497 -721 116&#xa;-333 161 -700 152 -1237 -6 -378 -35 -583 -119 -842 -37 -117 -130 -310 -196&#xa;-410 -56 -84 -162 -214 -176 -215 -5 0 -20 38 -33 85 -101 360 -213 628 -276&#xa;662 -49 26 -114 -15 -156 -99 -52 -104 -115 -458 -96 -543 11 -48 25 -35 25&#xa;23 0 73 27 226 57 320 44 141 116 188 168 109 33 -50 93 -211 155 -416 69&#xa;-231 70 -223 -10 -263 -173 -88 -352 -76 -522 36 -337 222 -502 671 -459 1247&#xa;36 474 160 851 398 1214 101 153 240 293 338 340 78 37 178 50 237 31 50 -17&#xa;113 -74 164 -150 56 -84 59 -53 4 45 -51 92 -124 173 -186 204 -41 21 -63 25&#xa;-130 25 -74 -1 -89 -4 -160 -39 -161 -80 -335 -297 -489 -611 -172 -349 -260&#xa;-721 -272 -1150 -9 -342 27 -558 145 -858 53 -133 114 -223 234 -345 151 -152&#xa;287 -217 458 -216 107 0 192 19 289 64 35 17 66 30 70 30 4 0 13 -22 19 -49&#xa;16 -72 125 -372 199 -551 242 -586 496 -937 737 -1020 72 -24 103 -25 202 -3&#xa;71 16 80 20 151 86 123 115 202 252 245 424 20 76 23 113 22 278 -1 142 -5&#xa;206 -17 252 -18 69 -57 151 -94 200 -34 44 -115 83 -172 83 -57 0 -138 -37&#xa;-172 -78 l-26 -30 -14 71 c-7 40 -12 79 -11 87 2 8 4 105 5 215 2 179 4 205&#xa;23 245 24 51 49 77 59 60 20 -32 36 30 19 74 -14 36 -65 4 -87 -54 -3 -8 -6&#xa;-2 -7 15 -1 17 -5 39 -9 50 -13 31 -25 -152 -26 -367 0 -104 -1 -188 -2 -188&#xa;0 0 -12 19 -26 43 -14 23 -41 58 -61 76 -34 33 -36 38 -36 100 0 40 16 138 40&#xa;247 47 212 93 477 115 653 8 68 16 125 17 126 2 1 41 7 88 13 164 23 362 98&#xa;536 203 98 59 264 180 331 242 l46 42 -6 -139 c-4 -77 -7 -188 -7 -247 0 -92&#xa;-2 -108 -15 -103 -12 5 -15 -2 -15 -32 0 -22 -7 -156 -15 -299 -7 -143 -17&#xa;-373 -21 -511 l-7 -251 -53 -32 c-61 -38 -107 -39 -112 -4 -2 14 3 23 16 27&#xa;42 14 102 171 102 267 0 105 -38 129 -77 49 -48 -99 -88 -329 -69 -403 21 -84&#xa;96 -73 166 25 l28 38 6 -52 c4 -29 9 -74 12 -100 7 -57 27 -89 45 -71 9 9 9&#xa;15 0 26 -18 22 -30 149 -31 317 0 173 17 634 29 780 8 94 8 94 10 26 2 -97 18&#xa;-143 71 -198 47 -49 73 -58 111 -38 39 21 53 69 57 198 4 119 4 122 -17 122&#xa;-17 0 -21 -6 -21 -35 0 -20 -5 -35 -12 -35 -21 0 6 554 57 1180 53 637 106&#xa;1162 121 1192 33 65 165 129 363 177 170 42 364 74 447 75 63 0 80 -4 145 -36&#xa;41 -21 102 -62 136 -93 33 -30 64 -55 67 -55 12 0 6 52 -10 83 -36 69 -120&#xa;181 -173 228 -83 74 -134 89 -297 89 l-134 0 -254 -70 c-139 -38 -256 -70&#xa;-259 -70 -4 0 -7 51 -7 113 0 182 -19 483 -35 559 -20 96 -35 118 -84 118 -25&#xa;0 -44 -7 -56 -20z m-878 -2002 c53 -50 10 -155 -141 -345 -100 -126 -261 -243&#xa;-383 -278 -30 -8 -29 -1 11 92 139 325 286 506 441 544 46 11 47 11 72 -13z&#xa;m-793 -1127 c47 -90 182 -161 309 -161 26 0 47 -5 47 -11 0 -6 -11 -88 -24&#xa;-182 -30 -206 -43 -356 -51 -577 -3 -91 -8 -198 -11 -237 l-6 -73 -49 0 c-69&#xa;0 -104 -21 -134 -80 -14 -27 -25 -55 -25 -62 1 -7 7 1 14 17 33 74 109 102&#xa;169 62 l27 -17 0 -134 c0 -183 18 -475 35 -565 15 -77 38 -125 58 -118 45 15&#xa;97 185 104 345 6 109 7 113 35 137 16 14 37 25 46 25 32 0 157 -27 178 -38 93&#xa;-50 153 -230 140 -418 -13 -191 -95 -395 -200 -500 -137 -136 -282 -125 -473&#xa;36 -230 193 -476 647 -665 1224 -32 99 -58 186 -58 195 0 9 25 45 56 81 221&#xa;258 383 624 444 1003 7 42 14 77 16 77 2 0 10 -13 18 -29z m416 -326 c-18&#xa;-140 -85 -518 -95 -540 -9 -18 5 229 20 360 27 231 46 334 64 338 9 2 19 1 23&#xa;-3 5 -3 -1 -73 -12 -155z m-49 -1096 c54 -85 81 -206 63 -281 -3 -16 -2 -28 3&#xa;-28 23 0 -29 -281 -59 -317 -44 -54 -77 174 -78 536 0 173 0 174 20 156 11&#xa;-10 34 -40 51 -66z"/>
+                    <path d="M4450 2678 c0 -13 -7 -140 -15 -283 -8 -143 -18 -380 -21 -527 -4&#xa;-148 -10 -268 -14 -268 -35 0 -62 106 -57 233 2 81 -16 114 -21 38 -3 -37 -6&#xa;-42 -23 -38 -52 14 -89 -81 -89 -229 0 -136 45 -156 86 -36 26 78 30 81 37 36&#xa;7 -42 32 -74 58 -74 19 0 21 -8 34 -111 7 -55 28 -89 45 -73 8 8 7 18 -4 38&#xa;-8 15 -17 63 -21 106 -6 66 -4 82 12 106 17 26 17 28 0 21 -16 -6 -17 5 -17&#xa;156 1 89 5 250 10 357 21 435 24 570 12 570 -7 0 -12 -10 -12 -22z"/>
+                    <path d="M4857 2665 c-10 -31 -25 -297 -33 -573 -6 -203 -10 -252 -20 -248&#xa;-20 8 -51 -39 -63 -95 -12 -54 -13 -199 -2 -238 10 -36 36 -49 58 -28 18 16&#xa;20 13 37 -53 10 -39 21 -70 25 -70 4 0 3 42 -2 92 -8 77 -6 109 9 188 l19 95&#xa;5 -137 c3 -81 10 -142 16 -148 8 -8 13 56 16 247 6 306 -7 377 -27 153 -6 -68&#xa;-30 -158 -47 -175 -10 -10 -10 31 13 666 11 302 10 370 -4 324z"/>
+                    <path d="M3777 2534 c-4 -4 -7 -72 -7 -151 0 -78 -4 -143 -8 -143 -21 0 -92&#xa;-73 -92 -94 0 -34 9 -37 52 -15 22 11 41 19 43 17 2 -2 -1 -79 -6 -173 -14&#xa;-283 -16 -642 -2 -655 18 -19 26 22 18 91 -10 84 15 738 29 769 14 30 71 70&#xa;102 70 13 0 30 -10 40 -22 16 -23 16 -23 10 11 -7 40 -31 80 -51 88 -8 3 -35&#xa;-7 -60 -21 l-45 -27 -1 108 c-1 111 -8 160 -22 147z"/>
+                    <path d="M5307 2076 c-3 -8 -9 -46 -13 -85 -5 -60 -9 -69 -19 -55 -16 23 -42&#xa;12 -56 -23 -18 -45 -41 -214 -36 -265 3 -40 1 -48 -13 -48 -21 0 -45 26 -56&#xa;60 -4 14 -8 75 -8 135 -1 64 -5 111 -11 113 -5 1 -11 -16 -13 -39 -3 -35 -6&#xa;-40 -23 -36 -52 14 -89 -81 -89 -229 0 -140 45 -155 90 -28 l24 69 8 -40 c14&#xa;-65 58 -96 88 -60 8 9 21 13 35 9 20 -5 27 1 49 43 l25 48 0 -250 0 -250 -90&#xa;-68 c-53 -39 -100 -67 -114 -67 -103 0 -110 -104 -9 -138 21 -8 58 -21 82 -29&#xa;24 -8 69 -39 101 -69 32 -30 62 -54 66 -54 5 0 5 94 2 210 l-6 209 52 46 c59&#xa;51 55 61 -5 14 -21 -17 -41 -30 -43 -27 -10 10 -6 622 5 716 12 99 8 186 -10&#xa;197 -4 3 -10 -1 -13 -9z m-7 -1111 c0 -74 -3 -135 -6 -135 -3 0 -16 13 -30 29&#xa;-13 16 -50 39 -81 51 -32 13 -60 25 -63 27 -5 5 161 162 173 163 4 0 7 -61 7&#xa;-135z"/>
+                    <path d="M5805 1993 c-4 -21 -15 -105 -25 -188 l-18 -150 5 176 c4 115 2 178&#xa;-4 182 -13 8 -20 -59 -29 -265 -3 -82 -10 -148 -14 -148 -36 0 -64 109 -55&#xa;220 3 43 1 81 -4 90 -9 13 -11 13 -15 0 -3 -8 -6 -28 -8 -45 -2 -24 -7 -30&#xa;-24 -28 -49 5 -84 -90 -84 -233 0 -136 45 -156 86 -36 26 78 30 81 37 36 7&#xa;-43 32 -74 60 -74 19 0 19 -5 14 -77 -14 -167 22 -165 49 2 8 50 8 50 12 13 3&#xa;-37 14 -48 27 -29 3 6 11 53 19 106 7 52 15 97 17 100 3 2 6 -87 7 -198 3&#xa;-267 21 -387 56 -387 16 0 51 67 61 115 l6 30 -14 -30 c-8 -17 -21 -36 -30&#xa;-44 -15 -11 -18 -10 -27 14 -24 62 -31 227 -24 554 6 284 5 333 -7 329 -10 -3&#xa;-19 -43 -31 -129 l-17 -124 1 105 c1 135 0 150 -11 150 -5 0 -12 -17 -16 -37z"/>
+                    <path d="M3835 1893 c-9 -147 -6 -473 5 -493 15 -26 19 24 22 230 3 194 3 195&#xa;31 243 23 39 31 46 42 37 32 -27 49 37 21 76 -18 24 -40 13 -73 -36 l-23 -33&#xa;0 47 c0 25 -4 46 -9 46 -4 0 -12 -53 -16 -117z"/>
+                    <path d="M5408 1980 c-11 -51 -22 -500 -14 -543 15 -82 24 -26 28 171 3 189 5&#xa;210 25 248 26 48 48 70 58 54 13 -22 25 -8 25 29 0 42 -20 67 -45 57 -8 -3&#xa;-25 -23 -38 -43 l-22 -38 -5 50 c-5 50 -5 50 -12 15z"/>
+                    <path d="M2545 1941 c-35 -40 -76 -206 -82 -332 -5 -109 -4 -118 16 -138 39&#xa;-39 88 -22 140 50 l29 39 6 -40 c12 -75 61 -91 121 -39 34 30 92 116 84 124&#xa;-3 2 -29 -12 -59 -31 -64 -41 -113 -44 -118 -7 -2 14 3 23 16 27 42 14 102&#xa;168 102 262 0 95 -31 132 -66 79 -23 -36 -62 -166 -76 -258 -12 -79 -12 -80&#xa;-57 -108 -43 -28 -111 -40 -111 -20 0 5 -3 16 -6 24 -3 9 2 16 15 20 24 6 63&#xa;67 85 130 45 133 19 281 -39 218z"/>
+                    <path d="M3446 1938 c-22 -35 -62 -173 -76 -261 -23 -138 0 -227 57 -227 27 0&#xa;109 71 119 102 5 16 8 18 15 7 5 -8 9 -24 9 -35 0 -32 38 -74 66 -74 18 0 31&#xa;12 54 53 37 65 38 74 1 48 -37 -27 -77 -27 -91 -2 -20 38 0 235 29 290 13 23&#xa;46 28 54 9 10 -24 7 41 -3 66 -13 34 -42 33 -62 -1 -20 -35 -46 -149 -54 -242&#xa;l-7 -72 -51 -30 c-62 -35 -109 -36 -114 -1 -2 15 2 22 12 22 41 0 106 162 106&#xa;265 0 97 -30 136 -64 83z"/>
+                    <path d="M4094 1916 c-29 -45 -46 -130 -50 -261 -5 -112 -3 -135 13 -165 20&#xa;-38 54 -50 79 -29 15 12 64 101 64 115 0 3 -14 -6 -31 -21 -41 -34 -79 -31&#xa;-97 8 -11 22 -11 46 -2 123 6 52 17 112 24 132 14 39 42 54 57 30 6 -8 9 1 9&#xa;28 0 63 -36 85 -66 40z"/>
+                </g>
+            </svg>
+        </logo>
+    </logos>
+    <grid cols="t6%;t4%;t2%;t1%;t7%;t3%;t4%;t3%;t4%;t22%;t18%;t4%;t17%;t5%;" rows="10;10;10;10;10;10;">
+        <field valign="center" row="0" fontsize="9" hadjust="true" col="0" name="date" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%date</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" fontsize="6" hadjust="true" col="1" name="" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">%auteur</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="0" colspan="1" fontsize="9" hadjust="true" col="2" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="0" colspan="3" fontsize="9" hadjust="true" col="4" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="0" fontsize="9" hadjust="true" col="8" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <logo rowspan="2" row="0" col="9" name="" resource="Qet.svg"/>
+        <field valign="center" row="0" fontsize="6" hadjust="true" col="10" name="projet" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%projet</translation>
+            </value>
+            <label>
+                <translation lang="fr">PROJET</translation>
+            </label>
+        </field>
+        <field valign="center" rowspan="1" row="0" colspan="2" fontsize="6" hadjust="true" col="11" name="client" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%client</translation>
+            </value>
+            <label>
+                <translation lang="fr">CLIENT</translation>
+            </label>
+        </field>
+        <field valign="center" row="1" fontsize="9" hadjust="true" col="0" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="1" fontsize="9" hadjust="true" col="1" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="1" colspan="1" fontsize="9" hadjust="true" col="2" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="1" colspan="3" fontsize="9" hadjust="true" col="4" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="1" fontsize="9" hadjust="true" col="8" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="1" fontsize="6" hadjust="true" col="10" name="objet" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%objet</translation>
+            </value>
+            <label>
+                <translation lang="fr">OBJET</translation>
+            </label>
+        </field>
+        <field valign="center" row="2" fontsize="9" hadjust="true" col="0" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="2" fontsize="9" hadjust="true" col="1" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="2" colspan="1" fontsize="9" hadjust="true" col="2" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="2" colspan="3" fontsize="9" hadjust="true" col="4" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="2" fontsize="9" hadjust="true" col="8" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="2" fontsize="6" hadjust="true" col="10" name="modele" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%model</translation>
+            </value>
+            <label>
+                <translation lang="fr">MODEL</translation>
+            </label>
+        </field>
+        <field valign="center" rowspan="1" row="2" colspan="2" fontsize="9" hadjust="true" col="11" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="0" name="" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">DATE</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="1" name="" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">NAME</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="3" colspan="1" fontsize="6" hadjust="true" col="2" name="" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">APPD</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="3" colspan="3" fontsize="6" hadjust="true" col="4" name="" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">REVISION</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="3" fontsize="6" hadjust="true" col="8" name="revison" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">%revision</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" rowspan="1" row="3" colspan="1" fontsize="6" hadjust="true" col="9" name="titre" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">%titre</translation>
+            </value>
+            <label>
+                <translation lang="fr">TITRE</translation>
+            </label>
+        </field>
+        <field valign="center" row="4" colspan="2" fontsize="6" hadjust="true" col="0" name="design" displaylabel="true" align="left">
+            <value/>
+            <label>
+                <translation lang="fr">DESIGN</translation>
+            </label>
+        </field>
+        <field valign="center" row="4" colspan="2" fontsize="6" hadjust="true" col="3" name="checked" displaylabel="true" align="left">
+            <value>
+                <translation lang="fr">CHKD</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="4" colspan="2" fontsize="6" hadjust="true" col="6" name="appd" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">APPD</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" rowspan="1" row="4" fontsize="6" hadjust="true" col="11" name="label1" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">%label1</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" rowspan="1" row="4" fontsize="6" hadjust="true" col="12" name="file" displaylabel="true" align="left">
+            <value>
+                <translation lang="en">%filename</translation>
+            </value>
+            <label>
+                <translation lang="en">File</translation>
+                <translation lang="it">File</translation>
+                <translation lang="fr">Fichier</translation>
+            </label>
+        </field>
+        <field valign="center" rowspan="1" row="4" fontsize="6" hadjust="true" col="13" name="folio" displaylabel="false" align="center">
+            <value>
+                <translation lang="fr">{folio-id}/%{folio-total}</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="5" colspan="4" fontsize="6" hadjust="true" col="0" name="file" displaylabel="true" align="left">
+            <value>
+                <translation lang="en">%filename</translation>
+            </value>
+            <label>
+                <translation lang="fr">FICHIER</translation>
+            </label>
+        </field>
+        <field valign="center" row="5" colspan="3" fontsize="9" hadjust="true" col="5" name="" displaylabel="true" align="center">
+            <value/>
+            <label/>
+        </field>
+        <field valign="center" row="5" fontsize="6" hadjust="true" col="9" name="label2" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label2</translation>
+            </value>
+            <label/>
+        </field>
+        <field valign="center" row="5" fontsize="6" hadjust="true" col="10" name="label3" displaylabel="false" align="left">
+            <value>
+                <translation lang="fr">%label3</translation>
+            </value>
+            <label/>
+        </field>
+    </grid>
+</titleblocktemplate>

@@ -1,0 +1,12 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">اسم عنصر جديد</name>
+        <name lang="fr">Nom du nouvel élément</name>
+        <name lang="pl">Kierunek 2</name>
+        <name lang="cs">Směr 2</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="triangle" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-31" x1="10" y2="30" x2="-11"/>
+    </description>
+</definition>

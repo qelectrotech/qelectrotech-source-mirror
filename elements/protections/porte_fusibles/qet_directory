@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Sicherungshalter</name>
-        <name lang="ru" >Выключатели-предохранители</name>
-        <name lang="en" >Fuses Holder</name>
-        <name lang="fr" >Porte-fusibles</name>
-        <name lang="es" >Portafusibles</name>
-        <name lang="cs" >Držák pojistek</name>
-        <name lang="pt" >Porta fusíveis</name>
-        <name lang="pl" >Odłączniki bezpiecznikowe</name>
+        <name lang="de">Sicherungshalter</name>
+        <name lang="ru">Выключатели-предохранители</name>
+        <name lang="en">Fuses Holder</name>
+        <name lang="fr">Porte-fusibles</name>
+		<name lang="ar">حوامل-مصهرات</name>
+        <name lang="es">Portafusibles</name>
+        <name lang="cs">Držák pojistek</name>
+        <name lang="pt">Porta fusíveis</name>
+        <name lang="pl">Odłączniki bezpiecznikowe</name>
+        <name lang="it">Portafusibili</name>
     </names>
 </qet-directory>

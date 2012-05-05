@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -511,17 +511,20 @@ bool CustomElement::parsePolygon(QDomElement &e, QPainter &qp) {
 		else break;
 	}
 	if (i < 3) return(false);
-	QPointF points[i-1];
+	QVector<QPointF> points(i-1);
 	for (int j = 1 ; j < i ; ++ j) {
-		points[j-1] = QPointF(
-			e.attribute(QString("x%1").arg(j)).toDouble(),
-			e.attribute(QString("y%1").arg(j)).toDouble()
+		points.insert(
+			j - 1,
+			QPointF(
+				e.attribute(QString("x%1").arg(j)).toDouble(),
+				e.attribute(QString("y%1").arg(j)).toDouble()
+			)
 		);
 	}
 	qp.save();
 	setPainterStyle(e, qp);
-	if (e.attribute("closed") == "false") qp.drawPolyline(points, i-1);
-	else qp.drawPolygon(points, i-1);
+	if (e.attribute("closed") == "false") qp.drawPolyline(points.data(), i-1);
+	else qp.drawPolygon(points.data(), i-1);
 	qp.restore();
 	return(true);
 }
@@ -547,8 +550,53 @@ bool CustomElement::parseText(QDomElement &e, QPainter &qp) {
 	
 	qp.save();
 	setPainterStyle(e, qp);
-	qp.setFont(QETApp::diagramTextsFont(size));
-	qp.drawText(QPointF(pos_x, pos_y), e.attribute("text"));
+	
+	// determine la police a utiliser et en recupere les metriques associees
+	QFont used_font = QETApp::diagramTextsFont(size);
+	QFontMetrics qfm(used_font);
+	QColor text_color = (e.attribute("color") != "white"? Qt::black : Qt::white);
+	
+	// instancie un QTextDocument (comme la classe QGraphicsTextItem) pour
+	// generer le rendu graphique du texte
+	QTextDocument text_document;
+	text_document.setDefaultFont(used_font);
+	text_document.setPlainText(e.attribute("text"));
+	
+	// Se positionne aux coordonnees indiquees dans la description du texte	
+	qp.setTransform(QTransform(), false);
+	qp.translate(pos_x, pos_y);
+	
+	// Pivote le systeme de coordonnees du QPainter pour effectuer le rendu
+	// dans le bon sens
+	qreal default_rotation_angle = 0.0;
+	if (QET::attributeIsAReal(e, "rotation", &default_rotation_angle)) {
+		qp.rotate(default_rotation_angle);
+	}
+	
+	/*
+		Deplace le systeme de coordonnees du QPainter pour effectuer le rendu au
+		bon endroit ; note : on soustrait l'ascent() de la police pour
+		determiner le coin superieur gauche du texte alors que la position
+		indiquee correspond a la baseline.
+	*/
+	QPointF qpainter_offset(0.0, -qfm.ascent());
+	
+	// ajuste le decalage selon la marge du document texte
+#if QT_VERSION >= 0x040500
+	text_document.setDocumentMargin(0.0);
+#else
+	// il semblerait qu'avant Qt 4.5, le documentMargin vaille 2.0 (et pas 4.0)
+	qpainter_offset.rx() -= 2.0;
+	qpainter_offset.ry() -= 2.0;
+#endif
+	
+	qp.translate(qpainter_offset);
+	
+	// force the palette used to render the QTextDocument
+	QAbstractTextDocumentLayout::PaintContext ctx;
+	ctx.palette.setColor(QPalette::Text, text_color);
+	text_document.documentLayout() -> draw(&qp, ctx);
+	
 	qp.restore();
 	return(true);
 }
@@ -575,9 +623,19 @@ ElementTextItem *CustomElement::parseInput(QDomElement &e) {
 	
 	ElementTextItem *eti = new ElementTextItem(e.attribute("text"), this);
 	eti -> setFont(QETApp::diagramTextsFont(size));
-	eti -> setPos(pos_x, pos_y);
+	
+	// position du champ de texte
 	eti -> setOriginalPos(QPointF(pos_x, pos_y));
-	if (e.attribute("rotate") == "true") eti -> setFollowParentRotations(true);
+	eti -> setPos(pos_x, pos_y);
+	
+	// rotation du champ de texte
+	qreal original_rotation_angle = 0.0;
+	QET::attributeIsAReal(e, "rotation", &original_rotation_angle);
+	eti -> setOriginalRotationAngle(original_rotation_angle);
+	eti -> setRotationAngle(original_rotation_angle);
+	
+	// comportement du champ lorsque son element parent est pivote
+	eti -> setFollowParentRotations(e.attribute("rotate") == "true");
 	
 	list_texts_ << eti;
 	
@@ -652,7 +710,8 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 	l'element XML e au QPainter qp
 	Les styles possibles sont :
 		- line-style : style du trait
-			- dashed : trait en pointilles
+			- dashed : trait en pointilles (tirets)
+			- dotted : trait en pointilles (points)
 			- normal : trait plein [par defaut]
 		- line-weight : epaiseur du trait
 			- thin : trait fin
@@ -693,6 +752,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			QString style_value = rx.cap(2);
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
+				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "thin") pen.setWidth(0);

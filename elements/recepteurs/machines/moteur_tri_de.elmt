@@ -1,31 +1,33 @@
-<definition width="70" version="0.2" hotspot_x="25" hotspot_y="25" height="70" type="element" orientation="dyyy" >
+<definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="de" >6-Phasen Motor</name>
-        <name lang="ru" >Шестифазный эл. мотор</name>
-        <name lang="en" >Six-phase engine</name>
-        <name lang="fr" >Moteur triphasé (double enroulement)</name>
-        <name lang="es" >Motor de seis fases</name>
-        <name lang="cs" >Šestifázový motor</name>
-        <name lang="pt" >Motor de seis fases (duplo enrolamento)</name>
-        <name lang="pl" >Silnik trójfazowy (6 przewodów)</name>
+        <name lang="ar">محرّك سداسي الأوجه</name>
+        <name lang="de">6-Phasen Motor</name>
+        <name lang="ru">Шестифазный эл. мотор</name>
+        <name lang="pt">Motor de seis fases (duplo enrolamento)</name>
+        <name lang="en">Six-phase engine</name>
+        <name lang="it">Motore trifase doppio avvolgimento</name>
+        <name lang="fr">Moteur triphasé (double enroulement)</name>
+        <name lang="pl">Silnik trójfazowy</name>
+        <name lang="es">Motor de seis fases</name>
+        <name lang="cs">Šestifázový motor</name>
     </names>
-    <informations>Author: The QElectroTech team
+    <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="-10" y2="40" x2="-10" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="10" y2="40" x2="10" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0" />
-        <text x="-10.25" y="18" size="18" text="M" />
-        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30" />
-        <input x="18" y="15" size="9" text="M_" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-1.5" x2="10" />
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-1.5" x2="-10" />
-        <terminal x="-10" y="41" orientation="s" />
-        <terminal x="10" y="41" orientation="s" />
-        <terminal x="-10" y="-21" orientation="n" />
-        <terminal x="10" y="-21" orientation="n" />
-        <terminal x="0" y="-21" orientation="n" />
-        <terminal x="0" y="41" orientation="s" />
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="-10" y2="40" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="21.5" x1="10" y2="40" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="25" x1="0" y2="40" x2="0"/>
+        <text x="-10.25" y="18" size="18" text="M"/>
+        <circle x="-15" y="-5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="30"/>
+        <input x="18" y="15" size="9" text="M_"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-5" x2="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-1.5" x2="10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="-10" y2="-1.5" x2="-10"/>
+        <terminal x="-10" y="41" orientation="s"/>
+        <terminal x="10" y="41" orientation="s"/>
+        <terminal x="-10" y="-21" orientation="n"/>
+        <terminal x="10" y="-21" orientation="n"/>
+        <terminal x="0" y="-21" orientation="n"/>
+        <terminal x="0" y="41" orientation="s"/>
     </description>
 </definition>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -102,6 +102,53 @@ QET::Orientation QET::previousOrientation(QET::Orientation o) {
 	if (o < 0 || o > 3) return(QET::North);
 	if (o == QET::North) return(QET::West);
 	return((QET::Orientation)(o - 1));
+}
+
+/**
+	@param line Un segment de droite
+	@param point Un point
+	@return true si le point appartient au segment de droite, false sinon
+*/
+bool QET::lineContainsPoint(const QLineF &line, const QPointF &point) {
+	QLineF point_line(line.p1(), point);
+	if (point_line.unitVector() != line.unitVector()) return(false);
+	return(point_line.length() <= line.length());
+}
+
+/**
+	@param point Un point donne
+	@param line Un segment de droite donnee
+	@param intersection si ce pointeur est different de 0, le QPointF ainsi
+	designe contiendra les coordonnees du projete orthogonal, meme si celui-ci
+	n'appartient pas au segment de droite
+	@return true si le projete orthogonal du point sur la droite appartient au
+	segment de droite.
+*/
+bool QET::orthogonalProjection(const QPointF &point, const QLineF &line, QPointF *intersection) {
+	// recupere le vecteur normal de `line'
+	QLineF line_normal_vector(line.normalVector());
+	QPointF normal_vector(line_normal_vector.dx(), line_normal_vector.dy());
+	
+	// cree une droite perpendiculaire a `line' passant par `point'
+	QLineF perpendicular_line(point, point + normal_vector);
+	
+	// determine le point d'intersection des deux droites = le projete orthogonal
+	QPointF intersection_point;
+	QLineF::IntersectType it = line.intersect(perpendicular_line, &intersection_point);
+	
+	// ne devrait pas arriver (mais bon...)
+	if (it == QLineF::NoIntersection) return(false);
+	
+	// fournit le point d'intersection a l'appelant si necessaire
+	if (intersection) {
+		*intersection = intersection_point;
+	}
+	
+	// determine si le point d'intersection appartient au segment de droite
+	if (QET::lineContainsPoint(line, intersection_point)) {
+		return(true);
+	}
+	return(false);
 }
 
 /**
@@ -436,6 +483,18 @@ QString QET::pointerString(void *ptr) {
 }
 
 /**
+	@param angle Un angle quelconque
+	@return l'angle passe en parametre, mais ramene entre -360.0 + 360.0 degres
+*/
+qreal QET::correctAngle(const qreal &angle) {
+	// ramene l'angle demande entre -360.0 et +360.0 degres
+	qreal corrected_angle = angle;
+	while (corrected_angle <= -360.0) corrected_angle += 360.0;
+	while (corrected_angle >=  360.0) corrected_angle -= 360.0;
+	return(corrected_angle);
+}
+
+/**
 	@param first  Un premier chemin vers un fichier
 	@param second Un second chemin vers un fichier
 	@return true si les deux chemins existent existent et sont identiques
@@ -455,4 +514,52 @@ bool QET::compareCanonicalFilePaths(const QString &first, const QString &second)
 #endif
 	
 	return(first_canonical_path == second_canonical_path);
+}
+
+/**
+	@param icl an TitleBlockColumnLength object
+	@see TitleBlockColumnLength
+	@return a string describing the type of this TitleBlockColumnLength object
+*/
+QString QET::titleBlockColumnLengthToString(const TitleBlockColumnLength  &icl) {
+	QString type_str;
+	if (icl== Absolute) type_str = "absolute";
+	else if (icl == RelativeToTotalLength) type_str = "relative to total";
+	else if (icl == RelativeToRemainingLength) type_str = "relative to remaining";
+	return(type_str);
+}
+
+/**
+	Export an XML document to an UTF-8 text file indented with 4 spaces, with LF
+	end of lines and no BOM.
+	@param xml_doc An XML document to be exported
+	@param filepath Path to the file to be written
+	@param error_message If non-zero, will contain an error message explaining
+	what happened when this function returns false.
+	@return false if an error occured, true otherwise
+*/
+bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *error_message) {
+	QFile file(filepath);
+	
+	// Note: we do not set QIODevice::Text to avoid generating CRLF end of lines
+	bool file_opening = file.open(QIODevice::WriteOnly);
+	if (!file_opening) {
+		if (error_message) {
+			*error_message = QString(
+				QObject::tr(
+					"Impossible d'ouvrir le fichier %1 en \351criture, erreur %2 rencontr\351e.",
+					"error message when attempting to write an XML file"
+				)
+			).arg(filepath).arg(file.error());
+		}
+		return(false);
+	}
+	
+	QTextStream out(&file);
+	out.setCodec("UTF-8");
+	out.setGenerateByteOrderMark(false);
+	out << xml_doc.toString(4);
+	file.close();
+	
+	return(true);
 }

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -70,13 +70,12 @@ QWidget *AboutQET::title() const {
 	// label "QElectroTech"
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
 	title -> setTextFormat(Qt::RichText);
-	// le tout dans une grille
-	QGridLayout *grid_layout = new QGridLayout();
-	grid_layout -> addWidget(icon, 0, 0);
-	grid_layout -> addWidget(title, 0, 1);
-	grid_layout -> setColumnStretch(0, 1);
-	grid_layout -> setColumnStretch(1, 100);
-	icon_and_title -> setLayout(grid_layout);
+	
+	QHBoxLayout *hlayout = new QHBoxLayout();
+	hlayout -> addWidget(icon);
+	hlayout -> addWidget(title);
+	hlayout -> addStretch();
+	icon_and_title -> setLayout(hlayout);
 	return(icon_and_title);
 }
 
@@ -85,12 +84,13 @@ QWidget *AboutQET::title() const {
 */
 QWidget *AboutQET::aboutTab() const {
 	QLabel *about = new QLabel(
-		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.") +
+		tr("QElectroTech, une application de r\351alisation de sch\351mas \351lectriques.", "about tab, description line") +
 		"<br><br>" +
-		tr("\251 2006-2010 Les d\351veloppeurs de QElectroTech") +
+		tr("\251 2006-2012 Les d\351veloppeurs de QElectroTech", "about tab, developers line") +
 		"<br><br>"
-		"<a href=\"http://qelectrotech.org/\">"
-		"http://qelectrotech.org/</a>"
+		"<a href=\"http://qelectrotech.org/\">http://qelectrotech.org/</a>"
+		"<br><br>" +
+		tr("Contact\240: <a href=\"mailto:qet@lists.tuxfamily.org\">qet@lists.tuxfamily.org</a>", "about tab, contact line")
 	);
 	about -> setAlignment(Qt::AlignCenter);
 	about -> setOpenExternalLinks(true);
@@ -104,7 +104,8 @@ QWidget *AboutQET::aboutTab() const {
 QWidget *AboutQET::authorsTab() const {
 	QLabel *authors = new QLabel();
 	addAuthor(authors, "Beno\356t Ansieau",  "benoit@qelectrotech.org",     tr("Id\351e originale"));
-	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("Programmation"));
+	addAuthor(authors, "Xavier Guerrin",     "xavier@qelectrotech.org",     tr("D\351veloppement"));
+	addAuthor(authors, "Laurent Trinques",   "scorpio@qelectrotech.org",    tr("Collection d'\351l\351ments"));
 	authors -> setAlignment(Qt::AlignCenter);
 	authors -> setOpenExternalLinks(true);
 	authors -> setTextFormat(Qt::RichText);
@@ -117,18 +118,23 @@ QWidget *AboutQET::authorsTab() const {
 QWidget *AboutQET::translatorsTab() const {
 	QLabel *translators = new QLabel();
 	
-	addAuthor(translators, "Youssef Oualmakran",         "youssefsan@qelectrotech.org", tr("Traduction en espagnol"));
+	addAuthor(translators, "Alfredo Carreto",            "electronicos_mx@yahoo.com.mx",tr("Traduction en espagnol"));
 	addAuthor(translators, "Yuriy Litkevich",            "yuriy@qelectrotech.org",      tr("Traduction en russe"));
 	addAuthor(translators, "Jos\351 Carlos Martins",     "jose@qelectrotech.org",       tr("Traduction en portugais"));
 	addAuthor(translators, "Pavel Fric",                 "pavelfric@seznam.cz",         tr("Traduction en tch\350que"));
-	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@interia.pl",       tr("Traduction en polonais"));
+	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@gmail.com",        tr("Traduction en polonais"));
 	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
 	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
+	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
+	addAuthor(translators, "Mohamed Souabni",            "souabnimohamed@yahoo.fr",     tr("Traduction en arabe"));
 	
-	translators -> setAlignment(Qt::AlignCenter);
 	translators -> setOpenExternalLinks(true);
 	translators -> setTextFormat(Qt::RichText);
-	return(translators);
+	
+	QWidget *translators_widget = new QWidget();
+	QHBoxLayout *translators_layout = new QHBoxLayout(translators_widget);
+	translators_layout -> addWidget(translators, 0, Qt::AlignCenter);
+	return(translators_widget);
 }
 
 /**
@@ -142,10 +148,13 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 	
-	contributors -> setAlignment(Qt::AlignCenter);
 	contributors -> setOpenExternalLinks(true);
 	contributors -> setTextFormat(Qt::RichText);
-	return(contributors);
+	
+	QWidget *contributors_widget = new QWidget();
+	QHBoxLayout *contributors_layout = new QHBoxLayout(contributors_widget);
+	contributors_layout -> addWidget(contributors, 0, Qt::AlignCenter);
+	return(contributors_widget);
 }
 
 /**
@@ -179,7 +188,7 @@ QWidget *AboutQET::licenseTab() const {
 void AboutQET::addAuthor(QLabel *label, const QString &name, const QString &email, const QString &work) const {
 	QString new_text = label -> text();
 	
-	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;<br><br>";
+	QString author_template = "<span style=\"text-decoration: underline;\">%1</span> : %2 &lt;<a href=\"mailto:%3\">%3</a>&gt;&lrm;<br/><br/>";
 	
 	// ajoute la fonction de la personne
 	new_text += author_template.arg(work).arg(name).arg(email);

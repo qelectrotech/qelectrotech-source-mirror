@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Stör</name>
-        <name lang="ru" >Паразитные</name>
-        <name lang="en" >Disturbance </name>
-        <name lang="fr" >Parasites</name>
-        <name lang="es" >Parásites</name>
-        <name lang="cs" >Poruchy</name>
-        <name lang="pt" >Parasitas</name>
-        <name lang="pl" >Elementy pasożytnicze</name>
+        <name lang="de">Stör</name>
+        <name lang="ru">Паразитные</name>
+        <name lang="en">Disturbance </name>
+        <name lang="fr">Parasites</name>
+		<name lang="ar">طُفيليّة</name>
+        <name lang="es">Parásites</name>
+        <name lang="cs">Poruchy</name>
+        <name lang="pt">Parasitas</name>
+        <name lang="pl">Elementy pasożytnicze</name>
+        <name lang="it">Parassite</name>
     </names>
 </qet-directory>

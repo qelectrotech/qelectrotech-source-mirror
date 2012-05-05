@@ -1,10 +1,11 @@
-<definition width="650" version="0.22" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dnnn">
+<definition width="650" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dnnn">
     <names>
+        <name lang="ar">عنوان جدول التسمية</name>
         <name lang="de">Titelfeld Nomenklatur</name>
         <name lang="en">Table Title Nomenclature</name>
         <name lang="fr">Titre tableau nomenclature</name>
         <name lang="pl">Tabliczka rysunkowa - tytuły</name>
-        <name lang="cs">Nomenklatura název tabulky</name>
+        <name lang="cs">Název nomenklaturní tabulky</name>
     </names>
     <informations></informations>
     <description>

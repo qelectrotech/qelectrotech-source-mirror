@@ -1,9 +1,11 @@
-<definition width="50" version="0.22" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مصباح رفّاف</name>
         <name lang="de">Blinklicht</name>
         <name lang="ru">Проблесковый маяк</name>
         <name lang="pt">Luz intermitente</name>
         <name lang="en">Flashing light</name>
+        <name lang="it">Luce intermittente</name>
         <name lang="fr">Lampe clignotante</name>
         <name lang="pl">Lampa sygnalizacyjna o świetle migowym</name>
         <name lang="es">Luz intermitente</name>

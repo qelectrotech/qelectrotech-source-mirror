@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -102,6 +102,8 @@ class ElementDefinition : public ElementsCollectionItem {
 	virtual QList<ElementDefinition *> elements();
 	virtual ElementDefinition *element(const QString &);
 	virtual ElementDefinition *createElement(const QString &);
+	virtual bool isEmpty();
+	virtual int count();
 	virtual ElementsCollectionItem *copy(ElementsCategory *, MoveElementsHandler *, bool = true);
 	virtual ElementsCollectionItem *move(ElementsCategory *, MoveElementsHandler *);
 	
@@ -115,6 +117,7 @@ class ElementDefinition : public ElementsCollectionItem {
 	virtual ElementDefinition *toElement();
 	virtual bool equals(ElementDefinition &);
 	virtual bool removeContent();
+	virtual QDateTime modificationTime() const = 0;
 	void copy(MoveElementsDescription *);
 	void move(MoveElementsDescription *);
 	

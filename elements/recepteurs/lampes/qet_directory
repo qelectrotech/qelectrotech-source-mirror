@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Leuchten</name>
-        <name lang="ru" >Лампы</name>
-        <name lang="en" >Lights</name>
-        <name lang="fr" >Lampes</name>
-        <name lang="es" >Lámparas</name>
-        <name lang="cs" >Světla</name>
-        <name lang="pt" >Lâmpadas</name>
-        <name lang="pl" >Oświetlenie</name>
+        <name lang="de">Leuchten</name>
+        <name lang="ru">Лампы</name>
+        <name lang="en">Lights</name>
+        <name lang="fr">Lampes</name>
+		<name lang="ar">مصابيح</name>
+        <name lang="es">Lámparas</name>
+        <name lang="cs">Světla</name>
+        <name lang="pt">Lâmpadas</name>
+        <name lang="pl">Oświetlenie</name>
+        <name lang="it">Luci</name>
     </names>
 </qet-directory>

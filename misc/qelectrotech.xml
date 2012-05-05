@@ -4,18 +4,33 @@
 		<sub-class-of type="text/xml"/>
 		<comment>QElectroTech project file</comment>
 		<comment xml:lang="fr">Fichier projet QElectroTech</comment>
+		<comment xml:lang="ar"> QElectrotech ملف مشروع</comment>
+		<comment xml:lang="es">Fichero proyecto QElectroTech</comment>
 		<comment xml:lang="ru">Файл проекта QElectroTech</comment>
-		<comment xml:lang="pt">Ficheiro de projecto QEletroTech</comment>
+		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
+		<comment xml:lang="cs">Soubor s projektem pro QElectroTech</comment>
 		<comment xml:lang="pl">Plik projektu QElectrotech</comment>
+		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<glob pattern="*.qet" />
 	</mime-type>
 	<mime-type type="application/x-qet-element">
 		<sub-class-of type="text/xml"/>
 		<comment>QElectroTech element file</comment>
 		<comment xml:lang="fr">Fichier élément QElectroTech</comment>
+		<comment xml:lang="ar"> QElectrotech ملف مشروع</comment>
 		<comment xml:lang="ru">Файл элемента QElectroTech</comment>
+		<comment xml:lang="es">Fichero elemento QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
+		<comment xml:lang="cs">Soubor s prvkem pro QElectroTech</comment>
 		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
+		<comment xml:lang="it">File del progetto QElectroTech</comment>
 		<glob pattern="*.elmt" />
+	</mime-type>
+	<mime-type type="application/x-qet-titleblock">
+		<sub-class-of type="text/xml"/>
+		<comment>QElectroTech title block template</comment>
+		<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
+		<comment xml:lang="ar"> QElectrotech نموذج إطار تعريف</comment>
+		<glob pattern="*.titleblock" />
 	</mime-type>
 </mime-info>

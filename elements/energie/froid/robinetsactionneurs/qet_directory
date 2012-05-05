@@ -1,0 +1,9 @@
+<qet-directory>
+    <names>
+        <name lang="fr" >Robinets actionneurs</name>
+		<name lang="ar" >صمّامات مشغلات</name>
+        <name lang="en" >Valves actuators</name>
+        <name lang="pl" >Zawory sterujące</name>
+        <name lang="cs">Ovládací ventily</name>
+    </names>
+</qet-directory>

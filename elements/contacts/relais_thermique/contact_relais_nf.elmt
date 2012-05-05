@@ -1,11 +1,13 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس مُرحّل حراري (NC)</name>
         <name lang="de">Relais Kontakt (NC)</name>
         <name lang="ru">Контакт теплового реле (НЗ)</name>
         <name lang="pt">Contacto relé térmico (NC)</name>
         <name lang="en">Contact thermal relay (NC)</name>
+        <name lang="it">Contatto relé térmico (NC)</name>
         <name lang="fr">Contact relais thermique (NF)</name>
-        <name lang="pl">Zestyk rozwierny</name>
+        <name lang="pl">Przekaźnik termiczny (zestyk rozwierny)</name>
         <name lang="es">Contacto relé térmico (NC)</name>
         <name lang="cs">Tepelné spojovací relé (NC)</name>
     </names>

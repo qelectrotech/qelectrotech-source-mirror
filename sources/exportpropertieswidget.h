@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -61,7 +61,7 @@ class ExportPropertiesWidget : public QWidget {
 	QComboBox *format;
 	QCheckBox *draw_grid;
 	QCheckBox *draw_border;
-	QCheckBox *draw_inset;
+	QCheckBox *draw_titleblock;
 	QCheckBox *draw_terminals;
 	QCheckBox *draw_colored_conductors;
 	QRadioButton *export_border;

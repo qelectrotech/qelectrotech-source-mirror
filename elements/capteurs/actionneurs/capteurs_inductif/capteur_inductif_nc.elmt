@@ -1,0 +1,24 @@
+<definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">حسّاس حثّي NC</name>
+        <name lang="en">Inductif sensor  NC</name>
+        <name lang="fr">Capteur inductif NC</name>
+        <name lang="pl">Czujnik indukcyjny rozwierny</name>
+        <name lang="cs">Indukční čidlo NC</name>
+    </names>
+    <informations></informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-6" x1="-2.6875" y2="-6" x2="9.3125"/>
+        <text x="-19" y="-9" size="4" text="e"/>
+        <text x="-21.6875" y="-9" size="9" text="F"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-15" x1="14.9375" y2="5" x2="9.9375" y3="15" x3="9.9375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="9.9375" y2="-14" x2="15.9375"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-25" x1="9.9375" y2="-14" x2="9.9375"/>
+        <input x="15.6875" y="-2" size="9" text="_"/>
+        <polygon x4="-12.6875" y5="-6" x5="-18.6875" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-6" x1="-18.6875" y2="-12" x2="-12.6875" y3="-6" x3="-6.6875" y4="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-11.6875" y2="-2" x2="-11.6875"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-13.6875" y2="-2" x2="-13.6875"/>
+        <terminal x="9.9375" y="-26" orientation="n"/>
+        <terminal x="9.9375" y="16" orientation="s"/>
+    </description>
+</definition>

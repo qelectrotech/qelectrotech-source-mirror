@@ -1,20 +1,23 @@
-<definition width="70" version="0.22" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
-        <name lang="de" >Spule</name>
+        <name lang="ar">ملف</name>
+        <name lang="de">Spule</name>
+        <name lang="ru">Обмотка</name>
         <name lang="en">Coil</name>
+        <name lang="it">Bobina</name>
         <name lang="fr">Bobine</name>
-        <name lang="es">Bobina</name>
         <name lang="pl">Cewka</name>
-        <name lang="cs" >Cívka</name>
+        <name lang="es">Bobina</name>
+        <name lang="cs">Cívka</name>
     </names>
     <informations></informations>
     <description>
-        <text x="2" y="-12" size="4" text="A1"/>
-        <text x="2" y="16" size="4" text="A2"/>
-        <rect width="30" x="-20" y="-10" antialias="false" height="20" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-        <input x="10" y="3" size="9" text="K_"/>
+        <rect width="28" x="-14" y="-8" antialias="false" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-8" x2="0"/>
+        <input x="2" y="19.3333" size="4" rotate="true" text="A2"/>
+        <input x="2" y="-16.6667" size="4" rotate="true" text="A1"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="8" x1="0" y2="20" x2="0"/>
+        <input x="25" y="3.3333" size="9" text="KA1"/>
         <terminal x="0" y="-21" orientation="n"/>
         <terminal x="0" y="21" orientation="s"/>
     </description>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -31,7 +31,7 @@ ExportProperties::ExportProperties() :
 	format("PNG"),
 	draw_grid(false),
 	draw_border(true),
-	draw_inset(true),
+	draw_titleblock(true),
 	draw_terminals(false),
 	draw_colored_conductors(true),
 	exported_area(QET::BorderArea)
@@ -54,7 +54,7 @@ void ExportProperties::toSettings(QSettings &settings, const QString &prefix) co
 	settings.setValue(prefix + "format",                format);
 	settings.setValue(prefix + "drawgrid",              draw_grid);
 	settings.setValue(prefix + "drawborder",            draw_border);
-	settings.setValue(prefix + "drawinset",             draw_inset);
+	settings.setValue(prefix + "drawtitleblock",             draw_titleblock);
 	settings.setValue(prefix + "drawterminals",         draw_terminals);
 	settings.setValue(prefix + "drawcoloredconductors", draw_colored_conductors);
 	settings.setValue(prefix + "area",                  QET::diagramAreaToString(exported_area));
@@ -74,7 +74,7 @@ void ExportProperties::fromSettings(QSettings &settings, const QString &prefix) 
 	
 	draw_grid               = settings.value(prefix + "drawgrid",              false).toBool();
 	draw_border             = settings.value(prefix + "drawborder",            true ).toBool();
-	draw_inset              = settings.value(prefix + "drawinset",             true ).toBool();
+	draw_titleblock              = settings.value(prefix + "drawtitleblock",             true ).toBool();
 	draw_terminals          = settings.value(prefix + "drawterminals",         false).toBool();
 	draw_colored_conductors = settings.value(prefix + "drawcoloredconductors", true ).toBool();
 	

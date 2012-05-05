@@ -1,9 +1,11 @@
-<definition width="30" version="0.22" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مُلامس بسيط (NC)</name>
         <name lang="de">Kontakt Einfach (NC)</name>
         <name lang="ru">Проктой контакт (НЗ)</name>
         <name lang="pt">Contacto simples (NC)</name>
         <name lang="en">Simple contact (NC)</name>
+        <name lang="it">Contatto semplice (NC)</name>
         <name lang="fr">Contact simple (NF)</name>
         <name lang="pl">Zestyk rozwierny</name>
         <name lang="es">Contactor simple (NC)</name>

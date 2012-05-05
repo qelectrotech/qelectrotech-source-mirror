@@ -1,0 +1,50 @@
+<definition width="160" version="0.3" hotspot_x="20" hotspot_y="45" height="90" type="element" ic="true" orientation="dnnn">
+    <names>
+        <name lang="ar">مُناور</name>
+        <name lang="en">Manipulator</name>
+        <name lang="fr">Manipulateur</name>
+        <name lang="pl">Manipulator czterokierunkowy bez powrotu samoczynnego</name>
+        <name lang="cs">Manipulátor</name>
+    </names>
+    <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+    <description>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-12" y2="0" x2="57"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="4" x1="90" y2="15" x2="90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-4" x1="90" y2="-15" x2="90"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="94" y2="0" x2="105"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="86" y2="0" x2="75"/>
+        <polygon x4="88" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="15" x1="88" y2="15" x2="92" y3="20" x3="90" y4="15"/>
+        <polygon x4="88" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-15" x1="88" y2="-15" x2="92" y3="-20" x3="90" y4="-15"/>
+        <circle x="86.5" y="-27.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <circle x="86.5" y="20.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <circle x="110.5" y="-3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <text x="88.25" y="-22" size="4" text="D"/>
+        <text x="88" y="26" size="4" text="C"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="55.2" y2="10" x2="60.2" y3="20" x3="60.2"/>
+        <circle x="62.5" y="-3.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="7"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="35.2" y2="10" x2="40.2" y3="20" x3="40.2"/>
+        <polygon x4="105" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="-2" x1="105" y2="2" x2="105" y3="0" x3="110" y4="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="60.2" y2="-10" x2="60.2"/>
+        <polygon x4="75" antialias="true" style="line-style:dashed;line-weight:thin;filling:black;color:black" y1="-2" x1="75" y2="2" x2="75" y3="0" x3="70" y4="-2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="40.2" y2="-10" x2="40.2"/>
+        <text x="64.25" y="2" size="4" text="A"/>
+        <text x="88.25" y="2.5" size="5" text="0"/>
+        <text x="112.5" y="2" size="4" text="B"/>
+        <input x="118" y="0.5" size="9" text="_"/>
+        <circle x="-11" y="10.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-15" y2="10" x2="-10"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="15" y2="10" x2="20" y3="20" x3="20"/>
+        <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-10" x2="20"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="20" y="-20" orientation="n"/>
+        <terminal x="20" y="20" orientation="s"/>
+        <terminal x="40.2" y="-20" orientation="n"/>
+        <terminal x="40.2" y="20" orientation="s"/>
+        <terminal x="60.2" y="-20" orientation="n"/>
+        <terminal x="60.2" y="20" orientation="s"/>
+    </description>
+</definition>

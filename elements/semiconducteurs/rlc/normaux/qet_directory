@@ -1,12 +1,14 @@
 <qet-directory>
     <names>
-        <name lang="de" >Normal</name>
-        <name lang="ru" >Нормальные</name>
-        <name lang="en" >Normal</name>
-        <name lang="fr" >Normaux</name>
-        <name lang="es" >Normales</name>
-        <name lang="cs" >Obyčejné</name>
-        <name lang="pt" >Normais</name>
-        <name lang="pl" >Schemat wielokreskowy</name>
+        <name lang="de">Normal</name>
+        <name lang="ru">Нормальные</name>
+        <name lang="en">Normal</name>
+        <name lang="fr">Normaux</name>
+		<name lang="ar">عادية</name>
+        <name lang="es">Normales</name>
+        <name lang="cs">Obyčejné</name>
+        <name lang="pt">Normais</name>
+        <name lang="pl">Schemat wielokreskowy</name>
+        <name lang="it">Normale</name>
     </names>
 </qet-directory>

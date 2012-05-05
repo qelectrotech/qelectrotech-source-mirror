@@ -9,6 +9,7 @@ unix {
 	INSTALL_PREFIX             = '/usr/local/'
 	QET_BINARY_PATH            = 'bin/'
 	QET_COMMON_COLLECTION_PATH = 'share/qelectrotech/elements/'
+	QET_COMMON_TBT_PATH        = 'share/qelectrotech/titleblocks/'
 	QET_LANG_PATH              = 'share/qelectrotech/lang/'
 	QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
@@ -25,6 +26,7 @@ win32 {
 	INSTALL_PREFIX             = './'
 	QET_BINARY_PATH            = './'
 	QET_COMMON_COLLECTION_PATH = 'elements/'
+	QET_COMMON_TBT_PATH        = 'titleblocks/'
 	QET_LANG_PATH              = 'lang/'
 	QET_LICENSE_PATH           = './'
 }
@@ -34,6 +36,7 @@ macx {
 	INSTALL_PREFIX             = '/usr/local/'
 	QET_BINARY_PATH            = 'bin/'
 	QET_COMMON_COLLECTION_PATH = '../Resources/elements/'
+	QET_COMMON_TBT_PATH        = '../Resources/titleblocks/'
 	QET_LANG_PATH              = '../Resources/lang/'
 	QET_EXAMPLES_PATH          = 'share/qelectrotech/examples/'
 	QET_LICENSE_PATH           = 'doc/qelectrotech/'
@@ -47,6 +50,9 @@ macx {
 # Commenter la ligne ci-dessous pour desactiver l'option --common-elements-dir
 DEFINES += QET_ALLOW_OVERRIDE_CED_OPTION
 
+# Comment the line below to disable the --common-tbt-dir option
+DEFINES += QET_ALLOW_OVERRIDE_CTBTD_OPTION
+
 # Commenter la ligne ci-dessous pour desactiver l'option --config-dir
 DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
@@ -54,11 +60,11 @@ DEFINES += QET_ALLOW_OVERRIDE_CD_OPTION
 
 TEMPLATE = app
 DEPENDPATH += .
-INCLUDEPATH += sources sources/editor
+INCLUDEPATH += sources sources/editor sources/titleblock
 
 # Fichiers sources
-HEADERS += sources/*.h   sources/editor/*.h
-SOURCES += sources/*.cpp sources/editor/*.cpp
+HEADERS += sources/*.h   sources/editor/*.h   sources/titleblock/*.h
+SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -67,11 +73,10 @@ RESOURCES += qelectrotech.qrc
 RC_FILE = ico/windows_icon/qelectrotech.rc
 
 # Fichiers de traduction qui seront installes
-TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts lang/qet_cs.ts lang/qet_pl.ts lang/qet_de.ts lang/qet_ro.ts
-TRANSLATIONS +=                lang/qt_es.ts  lang/qt_fr.ts  lang/qt_ru.ts  lang/qt_pt.ts  lang/qt_cs.ts  lang/qt_pl.ts  lang/qt_de.ts
+TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts lang/qet_cs.ts lang/qet_pl.ts lang/qet_de.ts lang/qet_ro.ts lang/qet_it.ts
 
 # Modules Qt utilises par l'application
-QT += xml svg network
+QT += xml svg network sql
 
 # Configuration de la compilation
 CONFIG += debug_and_release warn_on
@@ -87,6 +92,9 @@ target.path        = $$join(INSTALL_PREFIX,,,$${QET_BINARY_PATH})
 
 elements.path      = $$join(INSTALL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
 elements.files     = elements/*
+
+tbt.path           = $$join(INSTALL_PREFIX,,,$${QET_COMMON_TBT_PATH})
+tbt.files          = titleblocks/*
 
 lang.path          = $$join(INSTALL_PREFIX,,,$${QET_LANG_PATH})
 lang.files         = $$replace(TRANSLATIONS, '.ts', '.qm')
@@ -136,6 +144,8 @@ unix {
 	
 	# Chemin de la collection commune ; par defaut : elements/ dans le repertoire d'execution
 	DEFINES += QET_COMMON_COLLECTION_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_COLLECTION_PATH})
+	
+	DEFINES += QET_COMMON_TBT_PATH=$$join(COMPIL_PREFIX,,,$${QET_COMMON_TBT_PATH})
 }
 
 # Options de compilation specifiques a MacOS X
@@ -143,4 +153,13 @@ macx {
 	# les chemins definis precedemment sont relatifs au dossier contenant le binaire executable
 	DEFINES += QET_LANG_PATH_RELATIVE_TO_BINARY_PATH
 	DEFINES += QET_COMMON_COLLECTION_PATH_RELATIVE_TO_BINARY_PATH
+}
+
+# Compilers-specific options
+unix {
+	*-g++* {
+		system(g++ -v --help 2>&1 | grep -q fipa-sra) {
+			QMAKE_CXXFLAGS += -fno-ipa-sra
+		}
+	}
 }

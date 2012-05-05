@@ -1,9 +1,12 @@
 <qet-directory>
     <names>
-        <name lang="de" >Sicherheitsmodule</name>
-        <name lang="en" >Safety modules</name>
-        <name lang="fr" >Blocs de securité</name>
-        <name lang="pl" >Moduły bezpieczeństwa</name>
-        <name lang="cs" >Jistící bloky</name>
+        <name lang="ru">Модуль безопасности</name>
+        <name lang="de">Sicherheitsmodule</name>
+        <name lang="en">Safety modules</name>
+        <name lang="fr">Blocs de securité</name>
+        <name lang="ar">وحدات السلامة</name>
+        <name lang="pl">Moduły bezpieczeństwa</name>
+        <name lang="cs">Jistící bloky</name>
+        <name lang="es">Módulos de seguridad</name>
     </names>
 </qet-directory>

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -41,13 +41,15 @@ class ElementsPanelWidget : public QWidget {
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *delete_collection;
-	QAction *new_element, *import_element,  *edit_element,  *delete_element;
+	QAction *new_element, *edit_element, *delete_element, *open_element;
 	QAction *prj_close, *prj_edit_prop, *prj_prop_diagram, *prj_add_diagram, *prj_del_diagram, *prj_move_diagram_up, *prj_move_diagram_down;
+	QAction *tbt_add, *tbt_edit, *tbt_remove;
 	QAction *copy_elements_, *move_elements_, *cancel_elements_;
 	QMenu *context_menu;
 	QAction *erase_textfield;
 	QLineEdit *filter_textfield;
 	ElementsCollectionItem *dnd_item_src_, *dnd_item_dst_;
+	QProgressBar *progress_bar_;
 	
 	// methodes
 	public:
@@ -72,27 +74,36 @@ class ElementsPanelWidget : public QWidget {
 	void deleteDiagram();
 	void moveDiagramUp();
 	void moveDiagramDown();
+	void addTitleBlockTemplate();
+	void editTitleBlockTemplate();
+	void removeTitleBlockTemplate();
 	void newCategory();
 	void newElement();
-	void importElement();
+	void openElementFromFile();
 	void editCategory();
 	void editElement();
 	void deleteCategory();
 	void deleteElement();
 	void updateButtons();
+	void setElementsActionEnabled(bool);
 	int  launchCategoriesManager();
 	void handleContextMenu(const QPoint &);
-	void handleCollectionRequest(ElementsCollectionItem *);
+	void handleCollectionRequest(const ElementsLocation &);
 	void handleMoveElementsRequest(ElementsCollectionItem *, ElementsCollectionItem *, const QPoint & = QPoint());
 	void moveElements();
 	void moveElements(ElementsCollectionItem *, ElementsCollectionItem *);
 	void copyElements();
 	void copyElements(ElementsCollectionItem *, ElementsCollectionItem *);
+	void collectionsRead();
+	void collectionsReadFinished();
+	void updateProgressBar(int, int);
+	void filterEdited(const QString &);
 	
 	private:
 	void launchElementEditor(const ElementsLocation &);
 	void launchCategoryEditor(const ElementsLocation &);
 	ElementsCategory *writableSelectedCategory();
+	QString previous_filter_;
 };
 
 /**

@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -38,6 +38,7 @@ class XmlElementsCollection : public ElementsCollection {
 	
 	// methodes
 	public:
+	virtual QString title() const;
 	virtual ElementsCategory *rootCategory();
 	virtual bool hasFilePath();
 	virtual QString filePath();
@@ -47,6 +48,7 @@ class XmlElementsCollection : public ElementsCollection {
 	virtual bool isReadable();
 	virtual bool isWritable();
 	virtual bool write();
+	virtual bool isCacheable() const;
 	
 	virtual QDomElement writeXml(QDomDocument &) const;
 	

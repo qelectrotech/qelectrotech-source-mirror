@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -19,10 +19,11 @@
 #define DIAGRAMVIEW_H
 #include <QtGui>
 #include "elementslocation.h"
+#include "templatelocation.h"
 class Conductor;
 class Diagram;
-class DiagramTextItem;
 class Element;
+class IndependentTextItem;
 class QETDiagramEditor;
 /**
 	Classe representant graphiquement un schema electrique
@@ -46,6 +47,8 @@ class DiagramView : public QGraphicsView {
 	QAction *find_element_;
 	QPoint paste_here_pos;
 	bool is_adding_text;
+	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
+	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
 	ElementsLocation next_location_;
 	QPoint next_position_;
 	
@@ -61,14 +64,23 @@ class DiagramView : public QGraphicsView {
 	Diagram *diagram() { return(scene); }
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
+	bool hasCopiableItems();
+	bool hasDeletableItems();
 	void addText();
-	DiagramTextItem *addDiagramTextAtPos(const QPointF &);
+	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
 	
 	protected:
 	virtual void mouseDoubleClickEvent(QMouseEvent *);
 	virtual void contextMenuEvent(QContextMenuEvent *);
 	virtual void wheelEvent(QWheelEvent *);
+	virtual void focusInEvent(QFocusEvent *);
+	virtual void keyPressEvent(QKeyEvent *);
+	virtual void keyReleaseEvent(QKeyEvent *);
 	virtual bool event(QEvent *);
+	virtual bool switchToVisualisationModeIfNeeded(QInputEvent *e);
+	virtual bool switchToSelectionModeIfNeeded(QInputEvent *e);
+	virtual bool isCtrlShifting(QInputEvent *);
+	virtual bool selectedItemHasFocus();
 	
 	private:
 	void mousePressEvent(QMouseEvent *);
@@ -76,8 +88,11 @@ class DiagramView : public QGraphicsView {
 	void dragLeaveEvent(QDragLeaveEvent *);
 	void dragMoveEvent(QDragMoveEvent *);
 	void dropEvent(QDropEvent *);
+	void handleElementDrop(QDropEvent *);
+	void handleTitleBlockDrop(QDropEvent *);
 	QRectF viewedSceneRect() const;
 	bool mustIntegrateElement(const ElementsLocation &) const;
+	bool mustIntegrateTitleBlockTemplate(const TitleBlockTemplateLocation &) const;
 	bool addElementAtPos(const ElementsLocation &, const QPoint &);
 	
 	signals:
@@ -91,10 +106,14 @@ class DiagramView : public QGraphicsView {
 	void titleChanged(DiagramView *, const QString &);
 	/// Signal emis avant l'integration d'un element
 	void aboutToAddElement();
+	/// Signal emitted before integrating a title block template
+	void aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	/// Signal emis lorsque l'utilisateur souhaite retrouver un element du schema dans les collections
 	void findElementRequired(const ElementsLocation &);
 	/// Signal emis lorsque l'utilisateur souhaite editer un element du schema
 	void editElementRequired(const ElementsLocation &);
+	/// Signal emitted when the user wants to edit and/or duplicate an existing title block template
+	void editTitleBlockTemplate(const QString &, bool);
 	
 	public slots:
 	void selectNothing();
@@ -102,6 +121,7 @@ class DiagramView : public QGraphicsView {
 	void selectInvert();
 	void deleteSelection();
 	void rotateSelection();
+	void rotateTexts();
 	void setVisualisationMode();
 	void setSelectionMode();
 	void zoomIn();
@@ -115,14 +135,16 @@ class DiagramView : public QGraphicsView {
 	void adjustSceneRect();
 	void updateWindowTitle();
 	void editSelectionProperties();
+	void editSelectedConductorColor();
 	void editElement(Element *);
 	void editConductor();
 	void editConductor(Conductor *);
+	void editConductorColor(Conductor *);
 	void resetConductors();
-	void editDefaultConductorProperties();
 	
 	private slots:
 	void addDroppedElement();
+	void setDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
 	void adjustGridToZoom();
 	void applyReadOnly();
 };

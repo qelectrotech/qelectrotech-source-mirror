@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -18,8 +18,14 @@
 #include "diagramcommands.h"
 #include "element.h"
 #include "conductor.h"
+#include "conductortextitem.h"
 #include "diagram.h"
+#include "elementtextitem.h"
+#include "independenttextitem.h"
 #include "qgimanager.h"
+#include "diagram.h"
+#include "diagramtextitem.h"
+
 /**
 	Constructeur
 	@param d Schema auquel on ajoute un element
@@ -65,7 +71,7 @@ void AddElementCommand::redo() {
 	@param pos Position a laquelle le texte est ajoute
 	@param parent QUndoCommand parent
 */
-AddTextCommand::AddTextCommand(Diagram *dia, DiagramTextItem *text, const QPointF &pos, QUndoCommand *parent) :
+AddTextCommand::AddTextCommand(Diagram *dia, IndependentTextItem *text, const QPointF &pos, QUndoCommand *parent) :
 	QUndoCommand(QObject::tr("Ajouter un champ de texte", "undo caption"), parent),
 	textitem(text),
 	diagram(dia),
@@ -81,12 +87,12 @@ AddTextCommand::~AddTextCommand() {
 
 /// Annule l'ajout
 void AddTextCommand::undo() {
-	diagram -> removeDiagramTextItem(textitem);
+	diagram -> removeIndependentTextItem(textitem);
 }
 
-/// Refait l'ajour
+/// Refait l'ajout
 void AddTextCommand::redo() {
-	diagram -> addDiagramTextItem(textitem);
+	diagram -> addIndependentTextItem(textitem);
 	textitem -> setPos(position);
 }
 
@@ -167,8 +173,8 @@ void DeleteElementsCommand::undo() {
 	}
 	
 	// remet les textes
-	foreach(DiagramTextItem *t, removed_content.textFields) {
-		diagram -> addDiagramTextItem(t);
+	foreach(IndependentTextItem *t, removed_content.textFields) {
+		diagram -> addIndependentTextItem(t);
 	}
 }
 
@@ -185,8 +191,8 @@ void DeleteElementsCommand::redo() {
 	}
 	
 	// enleve les textes
-	foreach(DiagramTextItem *t, removed_content.textFields) {
-		diagram -> removeDiagramTextItem(t);
+	foreach(IndependentTextItem *t, removed_content.textFields) {
+		diagram -> removeIndependentTextItem(t);
 	}
 }
 
@@ -233,7 +239,7 @@ void PasteDiagramCommand::undo() {
 	foreach(Element *e, content.elements) diagram -> removeElement(e);
 	
 	// enleve les textes
-	foreach(DiagramTextItem *t, content.textFields) diagram -> removeDiagramTextItem(t);
+	foreach(IndependentTextItem *t, content.textFields) diagram -> removeIndependentTextItem(t);
 }
 
 /// refait le coller
@@ -247,11 +253,11 @@ void PasteDiagramCommand::redo() {
 		foreach(Conductor *c, content.conductorsToMove) diagram -> addConductor(c);
 		
 		// pose les textes
-		foreach(DiagramTextItem *t, content.textFields) diagram -> addDiagramTextItem(t);
+		foreach(IndependentTextItem *t, content.textFields) diagram -> addIndependentTextItem(t);
 	}
 	foreach(Element *e, content.elements) e -> setSelected(true);
 	foreach(Conductor *c, content.conductorsToMove) c -> setSelected(true);
-	foreach(DiagramTextItem *t, content.textFields) t -> setSelected(true);
+	foreach(IndependentTextItem *t, content.textFields) t -> setSelected(true);
 }
 
 /**
@@ -348,18 +354,180 @@ void MoveElementsCommand::move(const QPointF &actual_movement) {
 	}
 	
 	// recalcule les autres conducteurs
-	foreach(Conductor *conductor, content_to_move.conductorsToUpdate.keys()) {
-		conductor -> updateWithNewPos(
-			QRectF(),
-			content_to_move.conductorsToUpdate[conductor],
-			content_to_move.conductorsToUpdate[conductor] -> amarrageConductor()
-		);
+	foreach(Conductor *conductor, content_to_move.conductorsToUpdate) {
+		conductor -> updatePath();
+	}
+	
+	// repositionne les textes des conducteurs mis a jour
+	foreach(ConductorTextItem *text_item, moved_conductor_texts_.keys()) {
+		// determine s'il s'agit d'un undo ou d'un redo
+		qreal coef = actual_movement.x() / movement.x();
+		// -1 : undo, 1 : redo
+		QPointF desired_pos = coef > 0 ? moved_conductor_texts_[text_item].second : moved_conductor_texts_[text_item].first;
+		text_item -> setPos(desired_pos);
 	}
 	
 	// deplace les textes
 	foreach(DiagramTextItem *text, content_to_move.textFields) {
 		text -> setPos(text -> pos() + actual_movement);
 	}
+}
+
+/**
+	Ajoute un champ de texte de conducteur a deplacer
+	@param text_item Champ de texte a deplacer
+	@param old_pos Position du champ de texte avant le deplacement
+	@param new_pos Position du champ de texte apres le deplacement
+*/
+void MoveElementsCommand::addConductorTextItemMovement(ConductorTextItem *text_item, const QPointF &old_pos, const QPointF &new_pos) {
+	if (moved_conductor_texts_.contains(text_item)) return;
+	if (!text_item -> wasMovedByUser()) return;
+	if (new_pos == old_pos) return;
+	moved_conductor_texts_.insert(
+		text_item,
+		qMakePair(old_pos, new_pos)
+	);
+}
+
+/**
+	Constructeur
+	@param diagram Schema sur lequel on deplace des champs de texte
+	@param texts Liste des textes deplaces
+	@param m translation subie par les elements
+	@param parent QUndoCommand parent
+*/
+MoveElementsTextsCommand::MoveElementsTextsCommand(
+	Diagram *diagram,
+	const QSet<ElementTextItem *> &texts,
+	const QPointF &m,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	diagram(diagram),
+	texts_to_move(texts),
+	movement(m),
+	first_redo(true)
+{
+	QString moved_content_sentence = QET::ElementsAndConductorsSentence(0, 0, texts_to_move.count());
+	
+	setText(
+		QString(
+			QObject::tr(
+				"d\351placer %1",
+				"undo caption - %1 is a sentence listing the moved content"
+			).arg(moved_content_sentence)
+		)
+	);
+}
+
+/// Destructeur
+MoveElementsTextsCommand::~MoveElementsTextsCommand() {
+}
+
+/// annule le deplacement
+void MoveElementsTextsCommand::undo() {
+	move(-movement);
+}
+
+/// refait le deplacement
+void MoveElementsTextsCommand::redo() {
+	if (first_redo) first_redo = false;
+	else move(movement);
+}
+
+/**
+	deplace les elements et conducteurs
+	@param actual_movement translation a effectuer sur les elements et conducteurs
+*/
+void MoveElementsTextsCommand::move(const QPointF &actual_movement) {
+	// deplace les textes
+	foreach(ElementTextItem *text, texts_to_move) {
+		QPointF applied_movement = text -> mapMovementToParent(text -> mapMovementFromScene(actual_movement));
+		text -> setPos(text -> pos() + applied_movement);
+	}
+}
+
+/**
+	Constructeur
+	@param diagram Schema sur lequel on deplace des champs de texte
+	@param texts Textes deplaces : chaque ConductorTextItem est associe a un
+	couple de position : avant et apres le deplacement
+	@param m translation subie par les elements
+	@param parent QUndoCommand parent
+*/
+MoveConductorsTextsCommand::MoveConductorsTextsCommand(
+	Diagram *diagram,
+	QUndoCommand *parent
+) :
+	QUndoCommand(parent),
+	diagram(diagram),
+	first_redo(true)
+{
+}
+
+/// Destructeur
+MoveConductorsTextsCommand::~MoveConductorsTextsCommand() {
+}
+
+/// annule le deplacement
+void MoveConductorsTextsCommand::undo() {
+	foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
+		QPointF movement = texts_to_move_[cti].first;
+		bool was_already_moved = texts_to_move_[cti].second;
+		
+		cti -> forceMovedByUser(was_already_moved);
+		if (was_already_moved) {
+			cti -> setPos(cti -> pos() - movement);
+		}
+	}
+}
+
+/// refait le deplacement
+void MoveConductorsTextsCommand::redo() {
+	if (first_redo) {
+		first_redo = false;
+	} else {
+		foreach(ConductorTextItem *cti, texts_to_move_.keys()) {
+			QPointF movement = texts_to_move_[cti].first;
+			
+			cti -> forceMovedByUser(true);
+			cti -> setPos(cti -> pos() + movement);
+		}
+	}
+}
+
+/**
+	Ajout un mouvement de champ de texte a cet objet
+	@param text_item Champ de texte deplace ; si celui-ci est deja connu de l'objet d'annulation, il sera ignore
+	@param old_pos Position du champ de texte avant le mouvement
+	@param new_pos Position du champ de texte apres le mouvement
+	@param alread_moved true si le champ de texte etait deja a une position personnalisee par l'utilisateur, false sinon
+*/
+void MoveConductorsTextsCommand::addTextMovement(ConductorTextItem *text_item, const QPointF &old_pos, const QPointF &new_pos, bool already_moved) {
+	// si le champ de texte est deja connu de l'objet d'annulation, il sera ignore
+	if (texts_to_move_.contains(text_item)) return;
+	
+	// on memorise le champ de texte, en l'associant au mouvement effectue et a son etat avant le deplacement
+	texts_to_move_.insert(text_item, qMakePair(new_pos - old_pos, already_moved));
+	
+	// met a jour la description de l'objet d'annulation
+	regenerateTextLabel();
+}
+
+/**
+	Genere la description de l'objet d'annulation
+*/
+void MoveConductorsTextsCommand::regenerateTextLabel() {
+	QString moved_content_sentence = QET::ElementsAndConductorsSentence(0, 0, texts_to_move_.count());
+	
+	setText(
+		QString(
+			QObject::tr(
+				"d\351placer %1",
+				"undo caption - %1 is a sentence listing the moved content"
+			).arg(moved_content_sentence)
+		)
+	);
 }
 
 /**
@@ -390,26 +558,28 @@ ChangeDiagramTextCommand::~ChangeDiagramTextCommand() {
 /// annule la modification de texte
 void ChangeDiagramTextCommand::undo() {
 	text_item -> setPlainText(text_before);
-	text_item -> previous_text = text_before;
 }
 
 /// refait la modification de texte
 void ChangeDiagramTextCommand::redo() {
-	if (first_redo) first_redo = false;
-	else {
+	if (first_redo) {
+		first_redo = false;
+	} else {
 		text_item -> setPlainText(text_after);
-		text_item -> previous_text = text_after;
 	}
 }
 
 /**
 	Constructeur
 	@param elements Elements a pivoter associes a leur orientation d'origine
+	@param texts Textes a pivoter
 	@param parent QUndoCommand parent
 */
-RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, QUndoCommand *parent) :
+RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &texts, QUndoCommand *parent) :
 	QUndoCommand(parent),
-	elements_to_rotate(elements)
+	elements_to_rotate(elements),
+	texts_to_rotate(texts),
+	applied_rotation_angle_(-90.0)
 {
 	setText(
 		QString(
@@ -417,7 +587,7 @@ RotateElementsCommand::RotateElementsCommand(const QHash<Element *, QET::Orienta
 				"pivoter %1",
 				"undo caption - %1 is a sentence listing the rotated content"
 			)
-		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0))
+		).arg(QET::ElementsAndConductorsSentence(elements.count(), 0, texts.count()))
 	);
 }
 
@@ -428,16 +598,134 @@ RotateElementsCommand::~RotateElementsCommand() {
 /// defait le pivotement
 void RotateElementsCommand::undo() {
 	foreach(Element *e, elements_to_rotate.keys()) {
-		e -> setOrientation(elements_to_rotate[e]);
+		rotateElement(e, elements_to_rotate[e]);
+	}
+	foreach(DiagramTextItem *dti, texts_to_rotate) {
+		dti -> rotateBy(-applied_rotation_angle_);
 	}
 }
 
 /// refait le pivotement
 void RotateElementsCommand::redo() {
 	foreach(Element *e, elements_to_rotate.keys()) {
-		e -> setOrientation(e -> orientation().next());
-		e -> update();
+		rotateElement(e, e -> orientation().next());
 	}
+	foreach(DiagramTextItem *dti, texts_to_rotate) {
+		dti -> rotateBy(applied_rotation_angle_);
+	}
+}
+
+/**
+	@return l'angle de rotation applique aux textes
+*/
+qreal RotateElementsCommand::appliedRotationAngle() const {
+	return(applied_rotation_angle_);
+}
+
+/**
+	@param angle l'angle de rotation a appliquer aux textes
+*/
+void RotateElementsCommand::setAppliedRotationAngle(const qreal &angle) {
+	applied_rotation_angle_ = QET::correctAngle(angle);
+}
+
+/**
+	Passe un element a une orientation donnee, en prenant soin de gerer ses textes enfants
+	@param element Element a orienter soigneusement
+	@param orientation Nouvelle orientation de l'element
+*/
+void RotateElementsCommand::rotateElement(Element *element, QET::Orientation orientation) {
+	qreal rotation_value = 90.0 * (orientation - element -> orientation().current());
+	element -> setOrientation(orientation);
+	element -> update();
+	if (rotation_value) {
+		// repositionne les textes de l'element qui ne comportent pas l'option "FollowParentRotations"
+		foreach(ElementTextItem *eti, element -> texts()) {
+			if (!eti -> followParentRotations())  {
+				// on souhaite pivoter le champ de texte par rapport a son centre
+				QPointF eti_center = eti -> boundingRect().center();
+				// pour ce faire, on repere la position de son centre par rapport a son parent
+				QPointF parent_eti_center_before = eti -> mapToParent(eti_center);
+				// on applique ensuite une simple rotation contraire, qui sera donc appliquee sur le milieu du cote gauche du champ de texte
+				eti -> rotateBy(-rotation_value);
+				// on regarde ensuite la nouvelle position du centre du champ de texte par rapport a son parent
+				QPointF parent_eti_center_after = eti -> mapToParent(eti_center);
+				// on determine la translation a appliquer
+				QPointF eti_translation = parent_eti_center_before - parent_eti_center_after;
+				// on applique cette translation
+				eti -> setPos(eti -> pos() + eti_translation);
+			}
+		}
+	}
+}
+
+/**
+	Constructeur
+	@param previous_state Hash associant les textes impactes par l'action et leur angle de rotation avant l'action
+	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
+	@param parent QUndoCommand parent
+*/
+RotateTextsCommand::RotateTextsCommand(const QHash<DiagramTextItem *, double> &previous_state, double applied_rotation, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	texts_to_rotate(previous_state),
+	applied_rotation_angle_(applied_rotation)
+{
+	defineCommandName();
+}
+
+/**
+	Constructeur
+	@param texts Liste des textes impactes par l'action. L'objet retiendra leur angle de rotation au moment de sa construction.
+	@param applied_rotation Nouvel angle de rotation, a appliquer au textes concernes
+	@param parent QUndoCommand parent
+*/
+RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, double applied_rotation, QUndoCommand *parent) :
+	QUndoCommand(parent),
+	applied_rotation_angle_(applied_rotation)
+{
+	foreach(DiagramTextItem *text, texts) {
+		texts_to_rotate.insert(text, text -> rotationAngle());
+	}
+	defineCommandName();
+}
+
+/**
+	Destructeur
+*/
+RotateTextsCommand::~RotateTextsCommand() {
+}
+
+/**
+	Annule la rotation des textes
+*/
+void RotateTextsCommand::undo() {
+	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
+		text -> setRotationAngle(texts_to_rotate[text]);
+	}
+}
+
+/**
+	Applique l'angle de rotation aux textes
+*/
+void RotateTextsCommand::redo() {
+	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
+		text -> setRotationAngle(applied_rotation_angle_);
+	}
+}
+
+/**
+	Definit le nom de la commande d'annulation
+*/
+void RotateTextsCommand::defineCommandName() {
+	setText(
+		QString(
+			QObject::tr(
+				"orienter %1 \340 %2\260",
+				"undo caption - %1 looks like '42 texts', %2 is a rotation angle"
+			)
+		).arg(QET::ElementsAndConductorsSentence(0, 0, texts_to_rotate.count()))
+		.arg(applied_rotation_angle_)
+	);
 }
 
 /**
@@ -471,12 +759,28 @@ ChangeConductorCommand::~ChangeConductorCommand() {
 /// Annule la modification du conducteur
 void ChangeConductorCommand::undo() {
 	conductor -> setProfile(old_profile, path_type);
+	conductor -> textItem() -> setPos(text_pos_before_mov_);
 }
 
 /// Refait la modification du conducteur
 void ChangeConductorCommand::redo() {
-	if (first_redo) first_redo = false;
-	else conductor -> setProfile(new_profile, path_type);
+	if (first_redo) {
+		first_redo = false;
+	} else {
+		conductor -> setProfile(new_profile, path_type);
+		conductor -> textItem() -> setPos(text_pos_after_mov_);
+	}
+}
+
+/**
+	Integre dans cet objet d'annulation le repositionnement du champ de texte
+	du conducteur
+	@param pos_before Position du texte avant la modification du conducteur
+	@param pos_after  Position du texte apres la modification du conducteur
+*/
+void ChangeConductorCommand::setConductorTextItemMove(const QPointF &pos_before, const QPointF &pos_after) {
+	text_pos_before_mov_ = pos_before;
+	text_pos_after_mov_  = pos_after;
 }
 
 /**
@@ -524,32 +828,32 @@ void ResetConductorCommand::redo() {
 	@param new_ip Nouvelles proprietes du cartouche
 	@param parent QUndoCommand parent
 */
-ChangeInsetCommand::ChangeInsetCommand(
+ChangeTitleBlockCommand::ChangeTitleBlockCommand(
 	Diagram *d,
-	const InsetProperties &old_ip,
-	const InsetProperties &new_ip,
+	const TitleBlockProperties &old_ip,
+	const TitleBlockProperties &new_ip,
 	QUndoCommand *parent
 ) :
 	QUndoCommand(QObject::tr("modifier le cartouche", "undo caption"), parent),
 	diagram(d),
-	old_inset(old_ip),
-	new_inset(new_ip)
+	old_titleblock(old_ip),
+	new_titleblock(new_ip)
 {
 }
 
 /// Destructeur
-ChangeInsetCommand::~ChangeInsetCommand() {
+ChangeTitleBlockCommand::~ChangeTitleBlockCommand() {
 }
 
 /// Annule la modification de cartouche
-void ChangeInsetCommand::undo() {
-	diagram -> border_and_inset.importInset(old_inset);
+void ChangeTitleBlockCommand::undo() {
+	diagram -> border_and_titleblock.importTitleBlock(old_titleblock);
 	diagram -> invalidate(diagram -> border());
 }
 
 /// Refait la modification de cartouche
-void ChangeInsetCommand::redo() {
-	diagram -> border_and_inset.importInset(new_inset);
+void ChangeTitleBlockCommand::redo() {
+	diagram -> border_and_titleblock.importTitleBlock(new_titleblock);
 	diagram -> invalidate(diagram -> border());
 }
 
@@ -574,12 +878,12 @@ ChangeBorderCommand::~ChangeBorderCommand() {
 
 /// Annule les changements apportes au schema
 void ChangeBorderCommand::undo() {
-	diagram -> border_and_inset.importBorder(old_properties);
+	diagram -> border_and_titleblock.importBorder(old_properties);
 }
 
 /// Refait les changements apportes au schema
 void ChangeBorderCommand::redo() {
-	diagram -> border_and_inset.importBorder(new_properties);
+	diagram -> border_and_titleblock.importBorder(new_properties);
 }
 
 /**

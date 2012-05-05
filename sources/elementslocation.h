@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2010 Xavier Guerrin
+	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -17,6 +17,7 @@
 */
 #ifndef ELEMENTS_LOCATION_H
 #define ELEMENTS_LOCATION_H
+#include <QtCore>
 #include <QString>
 class QETProject;
 /**
@@ -41,6 +42,7 @@ class ElementsLocation {
 	QString path() const;
 	void setPath(const QString &);
 	bool addToPath(const QString &);
+	ElementsLocation parent() const;
 	QETProject *project() const;
 	void setProject(QETProject *);
 	bool isNull() const;
@@ -52,5 +54,10 @@ class ElementsLocation {
 	private:
 	QString path_;
 	QETProject *project_;
+	
+	public:
+	static int MetaTypeId; ///< Id of the corresponding Qt meta type
 };
+Q_DECLARE_METATYPE(ElementsLocation)
+uint qHash(const ElementsLocation &);
 #endif

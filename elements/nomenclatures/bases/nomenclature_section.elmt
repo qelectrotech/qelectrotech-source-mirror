@@ -1,0 +1,15 @@
+<definition width="60" version="0.3" hotspot_x="5" hotspot_y="20" height="30" type="element" orientation="dyyy">
+    <names>
+        <name lang="ar">تسمية مساحة المقطع </name>
+        <name lang="en">Classification Section</name>
+        <name lang="fr">Nomenclature section</name>
+        <name lang="pl">Oznaczenie - przekrój poprzeczny przewodu</name>
+        <name lang="cs">Část členění</name>
+    </names>
+    <informations></informations>
+    <description>
+        <input x="0" y="0" size="6" rotate="true" text="_"/>
+        <text x="48" y="-3.6666" size="4" text="2"/>
+        <text x="30" y="0" size="6" text="mm"/>
+    </description>
+</definition>

@@ -1,0 +1,9 @@
+<qet-directory>
+    <names>
+        <name lang="fr">ECS eau chaude sanitaire</name>
+		<name lang="ar">مياه ساخنة صحيّة</name>
+        <name lang="en">ECS hot water</name>
+        <name lang="cs">ECS teplá užitková voda</name>
+        <name lang="pl">CWU ciepła woda użytkowa</name>
+    </names>
+</qet-directory>

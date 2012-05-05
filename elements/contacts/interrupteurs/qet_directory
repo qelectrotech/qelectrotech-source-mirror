@@ -1,12 +1,13 @@
 <qet-directory>
     <names>
-        <name lang="de" >Schalter</name>
-        <name lang="ru" >переключателей</name>
-        <name lang="en" >Switchs</name>
-        <name lang="fr" >Interrupteurs</name>
-        <name lang="es" >Interruptores</name>
-        <name lang="pt" >Interruptores</name>
-        <name lang="cs" >Spínače</name>
-        <name lang="pl" >Przełącznik</name>
+        <name lang="de">Schalter</name>
+        <name lang="ru">переключателей</name>
+        <name lang="en">Switchs</name>
+        <name lang="fr">Interrupteurs</name>
+		<name lang="ar">مفاتيح</name>
+        <name lang="es">Interruptores</name>
+        <name lang="pt">Interruptores</name>
+        <name lang="cs">Spínače</name>
+        <name lang="pl">Przełącznik</name>
     </names>
 </qet-directory>

@@ -1,17 +1,21 @@
-<definition width="90" version="0.2" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy" >
+<definition width="90" version="0.3" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
-        <name lang="de" >Schritt</name>
-        <name lang="en" >Step</name>
-        <name lang="fr" >Etape</name>
-        <name lang="pl" >Krok</name>
-        <name lang="cs" >Krok</name>
+        <name lang="ar">خطوة</name>
+        <name lang="de">Schritt</name>
+        <name lang="en">Step</name>
+        <name lang="fr">Etape</name>
+        <name lang="pl">Krok</name>
+        <name lang="cs">Krok</name>
+        <name lang="es">Etapa</name>
+        <name lang="pt">Etapa</name>
     </names>
+    <informations></informations>
     <description>
-        <input x="-30" y="14" size="6" rotate="true" text="" />
-        <input x="-20" y="0" size="10" rotate="true" text="E 00" />
-        <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black" />
-        <terminal x="0" y="-25" orientation="n" />
-        <terminal x="0" y="25" orientation="s" />
-        <terminal x="40" y="-10" orientation="e" />
+        <input x="-30" y="14" size="6" rotate="true" text=""/>
+        <input x="-20" y="0" size="10" rotate="true" text="E 00"/>
+        <rect width="70" x="-35" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="0" y="-25" orientation="n"/>
+        <terminal x="0" y="25" orientation="s"/>
+        <terminal x="40" y="-10" orientation="e"/>
     </description>
 </definition>
