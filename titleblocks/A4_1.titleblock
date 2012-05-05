@@ -1,7 +1,6 @@
 <titleblocktemplate name="A4_1">
     <information></information>
     <logos>
-        <logo storage="" type="svg" name="logo.svg"/>
         <logo storage="xml" type="svg" name="Qet.svg">
             <svg width="600.000000pt" version="1.0" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" height="600.000000pt" viewBox="0 0 600.000000 600.000000">
                 <metadata>
@@ -23,7 +22,7 @@ Created by potrace 1.10, written by Peter Selinger 2001-2011
             </svg>
         </logo>
     </logos>
-    <grid cols="t6%;t4%;t3%;t1%;t7%;t3%;t4%;t3%;t4%;t22%;t18%;t4%;t17%;t5%;" rows="10;10;10;10;10;10;">
+    <grid cols="t6%;t4%;t2%;t1%;t7%;t3%;t4%;t3%;t4%;t22%;t18%;t4%;t17%;t5%;" rows="10;10;10;10;10;10;">
         <field valign="center" row="0" fontsize="9" hadjust="true" col="0" name="date" displaylabel="false" align="left">
             <value>
                 <translation lang="fr">%date</translation>
