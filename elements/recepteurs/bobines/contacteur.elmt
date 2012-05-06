@@ -1,7 +1,8 @@
-<definition width="70" version="0.3" hotspot_x="50" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="70" version="0.22" hotspot_x="50" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="en">contactor</name>
         <name lang="fr">Contacteur</name>
+        <name lang="pl">Przekaźnik</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
