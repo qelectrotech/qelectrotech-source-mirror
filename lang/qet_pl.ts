@@ -53,19 +53,19 @@
         <location filename="../sources/aboutqet.cpp" line="87"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech, aplikacja do tworzenia schematów elektrycznych.</translation>
+        <translation>QElectroTech, aplikacja do tworzenia schematów elektrycznych.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="89"/>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 Programiści QElectroTech</translation>
+        <translation>© 2006-2012 Programiści QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="93"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="107"/>
@@ -75,7 +75,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="108"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja elementów</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Obszar do tworzenia schematów, poprzez wstawienie elementów i przyłączenie zacisków przewodami. Możliwe jest również niezależne wstawianie tekstów.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="187"/>
@@ -1071,7 +1071,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="434"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję tabliczek rysunkowych osadzonych</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="442"/>
@@ -1082,79 +1082,79 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="443"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję elementów osadzonych</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="448"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija projekt</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="472"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished">Kliknij i przeciąg ten szblon tabliczki rysunkowej nad schemat, aby go wstawić.</translation>
+        <translation>Kliknij i przeciąg upuszczając nad schematem szblon tabliczki rysunkowej, aby go wstawić.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kategorię elementów</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="496"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kliknij i przeciąg upuszczając nad schematem element « %1 » aby wstawić, podwójne kliknięcie umożliwia edycję</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="584"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję tabliczek rysunkowych QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="585"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja tabliczek rysunkowych dostarczona z QElectroTech. Zainstalowana jest jako składnik oprogramowania i nie można jej personalizować.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="591"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję elementów QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja elementów dostarczona z QElectroTech. Zainstalowana jest jako składnik oprogramowania i nie można jej personalizować.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="600"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję tabliczek rysunkowych użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="601"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja tabliczek rysunkowych użytkownika, przeznaczona do tworzenia, przechowywania i edytowania własnych tabliczek rysunkowych.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="607"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija kolekcję elementów użytkownika</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="608"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja elementów użytkownika, przeznaczona do tworzenia, przechowywania i edytowania własnych elementów.</translation>
     </message>
 </context>
 <context>
@@ -1567,7 +1567,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odśwież panel po dodaniu nowych elementów</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
@@ -1593,19 +1593,19 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Plik projektu QElectroTech, o rozszerzeniu .qet grupuje wiele schematów/stron, jak również osadzone elementy i szablony tabliczek rysunkowych używanych w tych schematach/stronach.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja osadzona w pliku projektu. Elementy są przechowywane i można nimi zarządzać w schematach projektu powiązanego.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="293"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ta kategoria elementów służy do automatycznego włączenia do wzorców projektowych używanych elementów tego projektu.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="352"/>
@@ -1634,19 +1634,19 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="529"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Szablony tabliczek rysunkowych, które mogą być zastosowane w schemacie.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kategoria elementów, prosty pojemnik do organizowania kolekcji elementów</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="847"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Elementy, które można wstawić do schematu.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1126"/>
@@ -1761,7 +1761,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation>Nie można uzyskać dostępu do kategorii nadrzędnej</translation>
+        <translation>Nie można uzyskać dostępu do kategorii powiązanej</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
@@ -1778,7 +1778,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation>Łączenie szblonów tabliczki rysunkowej</translation>
+        <translation>Wstawianie szblonów tabliczki rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
@@ -2073,7 +2073,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
         <source>Étape 1/5 : Catégorie parente</source>
         <comment>wizard page title</comment>
-        <translation>Krok 1 z 5 : Kategoria nadrzędna</translation>
+        <translation>Krok 1 z 5 : Kategoria powiązana</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
@@ -3058,13 +3058,13 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="87"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kliknij wykonaną czynność z listy, aby powrócić do edycji schematu po jej zastosowaniu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="88"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Panel ten zawiera listę różnych czynności wykonywanych w aktualnym schemacie. Kliknij wykonaną czynność z listy aby powrócić do edycji schematu po jej zastosowaniu.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
@@ -5831,7 +5831,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="79"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation>Kolekcja nadrzędna</translation>
+        <translation>Kolekcja powiązana</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
