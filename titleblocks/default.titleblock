@@ -51,7 +51,7 @@
                 <translation lang="en">Folio</translation>
                 <translation lang="fr">Folio</translation>
                 <translation lang="it">Foglio</translation>
-                <translation lang="it">List</translation>
+                <translation lang="hr">List</translation>
             </label>
             <value>
                 <translation lang="en">%{folio-id}/%{folio-total}</translation>
