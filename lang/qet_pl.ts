@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>Obszar do tworzenia schematów, poprzez wstawienie elementów i przyłączenie zacisków przewodami. Możliwe jest również niezależne wstawianie tekstów.</translation>
+        <translation>Obszar do tworzenia schematów, poprzez wstawienie elementów i połączenie przewodami. Możliwe jest również niezależne wstawianie tekstów.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="187"/>
@@ -1100,13 +1100,13 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="484"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation>Podwójne kliknięcie zwija lub rozwija kategorię elementów</translation>
+        <translation>Podwójne kliknięcie zwija lub rozwija tą kategorię elementów</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="496"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation>Kliknij i przeciąg upuszczając nad schematem element « %1 » aby wstawić, podwójne kliknięcie umożliwia edycję</translation>
+        <translation>Kliknij i przeciąg upuszczając nad schematem element « %1 » aby go wstawić, podwójne kliknięcie umożliwia edycję</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="584"/>
@@ -1118,7 +1118,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="585"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Kolekcja tabliczek rysunkowych dostarczona z QElectroTech. Zainstalowana jest jako składnik oprogramowania i nie można jej personalizować.</translation>
+        <translation>Kolekcja tabliczek rysunkowych dostarczona z QElectroTech. Zainstalowana jest jako składnik oprogramowania i nie może być personalizowana.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="591"/>
@@ -1130,7 +1130,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="592"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Kolekcja elementów dostarczona z QElectroTech. Zainstalowana jest jako składnik oprogramowania i nie można jej personalizować.</translation>
+        <translation>Kolekcja elementów dostarczona z QElectroTech. Zainstalowana jest jako składnik oprogramowania i nie może być personalizowana.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="600"/>
@@ -1142,7 +1142,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="601"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Kolekcja tabliczek rysunkowych użytkownika, przeznaczona do tworzenia, przechowywania i edytowania własnych tabliczek rysunkowych.</translation>
+        <translation>Kolekcja tabliczek rysunkowych użytkownika -- przeznaczona do tworzenia, przechowywania i edytowania własnych tabliczek rysunkowych.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="607"/>
@@ -1154,7 +1154,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="608"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Kolekcja elementów użytkownika, przeznaczona do tworzenia, przechowywania i edytowania własnych elementów.</translation>
+        <translation>Kolekcja elementów użytkownika -- przeznaczona do tworzenia, przechowywania i edytowania własnych elementów.</translation>
     </message>
 </context>
 <context>
@@ -1567,7 +1567,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation>Odśwież panel po dodaniu nowych elementów</translation>
+        <translation>Wyróżnij w panelu elementy wstawiane jako nowe</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
@@ -1593,7 +1593,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Plik projektu QElectroTech, o rozszerzeniu .qet grupuje wiele schematów/stron, jak również osadzone elementy i szablony tabliczek rysunkowych używanych w tych schematach/stronach.</translation>
+        <translation>Projekt QElectroTech, o rozszerzeniu pliku.qet, grupuje wiele schematów/stron, jak również osadzone elementy i szablony tabliczek rysunkowych używanych w tych schematach/stronach.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
@@ -1605,7 +1605,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="293"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Ta kategoria elementów służy do automatycznego włączenia do wzorców projektowych używanych elementów tego projektu.</translation>
+        <translation>Kategoria elementów używanych, scalona automatycznie z tym projektem, elementy zostały użyte w jednym ze schematów tego projektu.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="352"/>
@@ -1640,7 +1640,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Kategoria elementów, prosty pojemnik do organizowania kolekcji elementów</translation>
+        <translation>Kategoria elementów, prosty zasobnik do organizowania kolekcji elementów</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="847"/>
@@ -3058,13 +3058,13 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="87"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation>Kliknij wykonaną czynność z listy, aby powrócić do edycji schematu po jej zastosowaniu</translation>
+        <translation>Kliknij wykonaną czynność z listy, aby powrócić do etapu edycji schematu po jej zastosowaniu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="88"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Panel ten zawiera listę różnych czynności wykonywanych w aktualnym schemacie. Kliknij wykonaną czynność z listy aby powrócić do edycji schematu po jej zastosowaniu.</translation>
+        <translation>Panel ten zawiera listę różnych czynności wykonanych w aktualnym schemacie. Kliknij wykonaną czynność z listy aby powrócić do etapu edycji schematu po jej zastosowaniu.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="197"/>
@@ -4913,7 +4913,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/qet.cpp" line="549"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation>Nie można otworzyć pliku %1 do zpisu, błąd %2 napotkany.</translation>
+        <translation>Nie można otworzyć pliku %1 do zpisu, napotkany błąd %2 .</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
@@ -5912,7 +5912,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="208"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Istnieje już logo z nazwą &quot;%1&quot; w tym szablonie tabliczki. Chcesz zmienić, czy określić inną nazwę dla nowego logo ?</translation>
+        <translation>Istnieje już logo z nazwą &quot;%1&quot; w tym szablonie tabliczki. Chcesz zastąpić, czy określić inną nazwę dla nowego logo ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="244"/>
