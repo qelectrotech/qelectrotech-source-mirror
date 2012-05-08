@@ -8,6 +8,7 @@ cd /d %current_dir%
 set expected_qet_exe=%current_dir%Lancer QET.bat
 set expected_project_ico=%current_dir%ico\application-x-qet-project.ico
 set expected_element_ico=%current_dir%ico\application-x-qet-element.ico
+set expected_titleblock_ico=%current_dir%ico\application-x-qet-titleblock.ico
 
 rem verifie la presence du fichier qelectrotech.exe
 if not exist "%expected_qet_exe%" (
@@ -30,10 +31,18 @@ if not exist "%expected_element_ico%" (
 	exit /b 1
 )
 
+rem verifie la presence du fichier qet-titleblock.ico
+if not exist "%expected_titleblock_ico%" (
+	echo Le fichier %expected_titleblock_ico% n'a pas ete trouve. Abandon.
+	pause
+	exit /b 1
+)
+
 rem echappe les backslashs dans les chemins absolus
 set final_qet_exe=%expected_qet_exe:\=\\%
 set final_project_ico=%expected_project_ico:\=\\%
 set final_element_ico=%expected_element_ico:\=\\%
+set final_titleblock_ico=%expected_titleblock_ico:\=\\%
 
 rem genere le fichier .reg pour enregistrer les associations de fichiers
 set reg_file=qet_install_file_associations.reg
@@ -49,7 +58,7 @@ set reg_file=qet_install_file_associations.reg
 	echo [HKEY_CLASSES_ROOT\.qet]
 	echo @="qet_diagram_file"
 	echo [HKEY_CLASSES_ROOT\qet_diagram_file]
-	echo @="Schéma QET"
+	echo @="QET diagram"
 	echo "EditFlags"=dword:00000000
 	echo "BrowserFlags"=dword:00000008
 	echo [HKEY_CLASSES_ROOT\qet_diagram_file\DefaultIcon]
@@ -61,12 +70,24 @@ set reg_file=qet_install_file_associations.reg
 	echo [HKEY_CLASSES_ROOT\.elmt]
 	echo @="qet_element_file"
 	echo [HKEY_CLASSES_ROOT\qet_element_file]
-	echo @="Élément QET"
+	echo @="QET element"
 	echo "EditFlags"=dword:00000000
 	echo "BrowserFlags"=dword:00000008
 	echo [HKEY_CLASSES_ROOT\qet_element_file\DefaultIcon]
 	echo @="%final_element_ico%,0"
 	echo [HKEY_CLASSES_ROOT\qet_element_file\shell\open\command]
+	echo @="\"%final_qet_exe%\" \"%%1\""
+	
+	rem association de fichier *.titleblock
+	echo [HKEY_CLASSES_ROOT\.titleblock]
+	echo @="qet_titleblock_file"
+	echo [HKEY_CLASSES_ROOT\qet_titleblock_file]
+	echo @="QET title block template"
+	echo "EditFlags"=dword:00000000
+	echo "BrowserFlags"=dword:00000008
+	echo [HKEY_CLASSES_ROOT\qet_titleblock_file\DefaultIcon]
+	echo @="%final_titleblock_ico%,0"
+	echo [HKEY_CLASSES_ROOT\qet_titleblock_file\shell\open\command]
 	echo @="\"%final_qet_exe%\" \"%%1\""
 ) > %reg_file%
 
