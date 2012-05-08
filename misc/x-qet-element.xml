@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="application/x-qet-element">
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+<mime-type type="application/x-qet-element">
 	<comment>QElectroTech element file</comment>
 	<comment xml:lang="fr">Fichier élément QElectroTech</comment>
 	<comment xml:lang="ar">QElectroTech ملف عنصر</comment>
@@ -10,3 +11,4 @@
 	<comment xml:lang="pl">Plik elementu QElectroTech</comment>
 	<comment xml:lang="it">File del progetto QElectroTech</comment>
 </mime-type>
+</mime-info>

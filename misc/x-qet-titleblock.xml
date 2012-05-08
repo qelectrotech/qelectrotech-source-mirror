@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="application/x-qet-titleblock">
+<mime-info xmlns="http://www.freedesktop.org/standards/shared-mime-info">
+<mime-type type="application/x-qet-titleblock">
 	<comment>QElectroTech title block template</comment>
 	<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
 	<comment xml:lang="ar">QElectroTech نموذج إطار تعريف</comment>
 </mime-type>
+</mime-info>
