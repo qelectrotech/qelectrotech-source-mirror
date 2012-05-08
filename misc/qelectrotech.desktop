@@ -1,8 +1,9 @@
 [Desktop Entry]
 Version=1.0
 Encoding=UTF-8
-Name=QElectroTech
-Exec=qelectrotech
+Name=QElectroTech 
+TryExec=qelectrotech
+Exec=qelectrotech %F
 Icon=qelectrotech
 Terminal=false
 Type=Application
