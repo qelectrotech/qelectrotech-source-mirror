@@ -8,6 +8,7 @@
                 <translation lang="fr">Auteur</translation>
                 <translation lang="it">Autore</translation>
                 <translation lang="hr">Autor</translation>
+                <translation lang="pl">Autor</translation>
             </label>
             <value>
                 <translation lang="en">%author</translation>
@@ -19,6 +20,7 @@
                 <translation lang="fr">Date</translation>
                 <translation lang="it">Data</translation>
                 <translation lang="hr">Datum</translation>
+                <translation lang="pl">Data</translation>
             </label>
             <value>
                 <translation lang="en">%date</translation>
@@ -30,6 +32,7 @@
                 <translation lang="fr">Titre</translation>
                 <translation lang="it">Titolo</translation>
                 <translation lang="hr">Naslov</translation>
+                <translation lang="pl">Tytuł</translation>
             </label>
             <value>
                 <translation lang="en">%title</translation>
@@ -41,6 +44,7 @@
                 <translation lang="fr">Fichier</translation>
                 <translation lang="it">File</translation>
                 <translation lang="hr">Datoteka</translation>
+                <translation lang="pl">Plik</translation>
             </label>
             <value>
                 <translation lang="en">%filename</translation>
@@ -52,6 +56,7 @@
                 <translation lang="fr">Folio</translation>
                 <translation lang="it">Foglio</translation>
                 <translation lang="hr">List</translation>
+                <translation lang="pl">Strona</translation>
             </label>
             <value>
                 <translation lang="en">%{folio-id}/%{folio-total}</translation>

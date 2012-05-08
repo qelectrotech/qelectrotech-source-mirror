@@ -31,6 +31,7 @@
 		<comment>QElectroTech title block template</comment>
 		<comment xml:lang="fr">Modèle de cartouche QElectroTech</comment>
 		<comment xml:lang="ar"> QElectrotech نموذج إطار تعريف</comment>
+		<comment xml:lang="pl">Szablon tabliczki rysunkowej QElectroTech</comment>
 		<glob pattern="*.titleblock" />
 	</mime-type>
 </mime-info>
