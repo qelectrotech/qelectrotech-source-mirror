@@ -43,19 +43,19 @@
         <location filename="../sources/aboutqet.cpp" line="87"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished">QElectroTech, program za crtanje elektro shema.</translation>
+        <translation>QElectroTech, program za crtanje elektro shema.</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="89"/>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 QElectroTech programeri</translation>
+        <translation>© 2006-2012 QElectroTech programeri</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="93"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="106"/>
@@ -70,7 +70,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="108"/>
         <source>Collection d&apos;éléments</source>
-        <translation type="unfinished"></translation>
+        <translation>Zbirka elemenata</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="121"/>
@@ -412,7 +412,8 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>&quot;Što je to?&quot; savjet</translatorcomment>
+        <translation>Područje u kojem ste dizajnirali shemu dodavanjem novih elemenata traži vodiče između svojih priključaka. Također možete dodati neovisan tekst.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="75"/>
@@ -1058,7 +1059,7 @@ Promjene su konačne.</translation>
         <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjenje ili povećanje projekta</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="467"/>
@@ -1069,19 +1070,19 @@ Promjene su konačne.</translation>
         <location filename="../sources/elementspanel.cpp" line="468"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjivanje ili proširenje ugrađene kolekcije</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="477"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished">Povuci i ispusti ovaj naslov grupe predložaka na shemu za prihvaćanje istog.</translation>
+        <translation>Povuci i ispusti ovaj naslov grupe predložaka na shemu za prihvaćanje istog.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="489"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjiti ili raširiti kategoriju elemenata</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="501"/>
@@ -1092,61 +1093,61 @@ Promjene su konačne.</translation>
         <location filename="../sources/elementspanel.cpp" line="502"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjiti ili raširiti ugrađenu kolekciju elemenata</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="510"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kliknite i ispustite ga na shemu da biste umetnuli stavku &quot;% 1&quot;, dvokliknite je da biste uredili</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="598"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjenje ili povećanje zbirke predložaka QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="599"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zbirka predložaka od QElectroTech-a. Instalirana je kao komponenta sustava, nije ju moguće prilagođavati.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="605"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjenje ili povećanje kolekcije elemenata QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="606"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zbirka elemenata od QElectroTech-a. Instalirana je kao komponenta sustava, nije ju moguće prilagođavati.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="614"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjenje ili povećanje osobne kolekcije predložaka</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="615"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Osobna zbirka predložaka - možete ju stvarati, spremati i uređivati kako želite.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="621"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dvoklik za smanjenje ili povećanje osobne kolekcije elemenata</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="622"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Osobna zbirka elemenata - možete ih stvarati, spremati i uređivati kako želite.</translation>
     </message>
 </context>
 <context>
@@ -1559,7 +1560,7 @@ Promjene su konačne.</translation>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Označite elemente u integriranoj ploči</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
@@ -1585,19 +1586,19 @@ Promjene su konačne.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>To je QElectrotech projekt sa ekstenzijom .qet za sheme/listove. Učitava i elemente i modele koji se nalaze na tim shemama/listovima.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zbirka ugrađena u datoteku projekta. Mogu se spremiti i uređivati elementi se koriste u shemama matičnog projekta.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="293"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ova kategorija elemenata automatski se integrira u obrasce dijelova projekta koji se koriste u ovom projektu.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="352"/>
@@ -1626,19 +1627,19 @@ Promjene su konačne.</translation>
         <location filename="../sources/genericpanel.cpp" line="529"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Model predloška koji se može koristiti na shemi.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kategorija elemanta, za organiziranje zbirke elemenata</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="847"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Element koji možete umetnuti u shemu.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1126"/>
@@ -2660,13 +2661,13 @@ Dostupne opcije:
         <location filename="../sources/qetdiagrameditor.cpp" line="87"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kliknite za uređivanje svoje sheme</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="88"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ova ploča navodi različite radnje izvršene na trenutnoj shemi. Klik na povratak vraća shemu u prethodno stanje.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="174"/>
@@ -4923,8 +4924,6 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
