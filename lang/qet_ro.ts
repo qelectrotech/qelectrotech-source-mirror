@@ -1061,95 +1061,95 @@ Modificarea va fi definitiva.</translation>
 <context>
     <name>ElementsPanel</name>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="433"/>
+        <location filename="../sources/elementspanel.cpp" line="467"/>
         <source>Cartouches embarqués</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="434"/>
+        <location filename="../sources/elementspanel.cpp" line="468"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="442"/>
+        <location filename="../sources/elementspanel.cpp" line="501"/>
         <source>Collection embarquée</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="443"/>
+        <location filename="../sources/elementspanel.cpp" line="502"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="448"/>
+        <location filename="../sources/elementspanel.cpp" line="444"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="472"/>
+        <location filename="../sources/elementspanel.cpp" line="477"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="484"/>
+        <location filename="../sources/elementspanel.cpp" line="489"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="496"/>
+        <location filename="../sources/elementspanel.cpp" line="510"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="584"/>
+        <location filename="../sources/elementspanel.cpp" line="598"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="585"/>
+        <location filename="../sources/elementspanel.cpp" line="599"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="591"/>
+        <location filename="../sources/elementspanel.cpp" line="605"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="592"/>
+        <location filename="../sources/elementspanel.cpp" line="606"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="600"/>
+        <location filename="../sources/elementspanel.cpp" line="614"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="601"/>
+        <location filename="../sources/elementspanel.cpp" line="615"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="607"/>
+        <location filename="../sources/elementspanel.cpp" line="621"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/elementspanel.cpp" line="608"/>
+        <location filename="../sources/elementspanel.cpp" line="622"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation type="unfinished"></translation>
@@ -2008,28 +2008,40 @@ Modificarea va fi definitiva.</translation>
 <context>
     <name>NamesListWidget</name>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="32"/>
+        <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Langue</source>
         <translation>Limba</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="32"/>
-        <source>Nom</source>
-        <translation>Nume</translation>
+        <location filename="../sources/nameslistwidget.cpp" line="34"/>
+        <source>Texte</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="35"/>
+        <location filename="../sources/nameslistwidget.cpp" line="37"/>
+        <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
         <translation>Adaugati o linie</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="67"/>
+        <location filename="../sources/nameslistwidget.cpp" line="49"/>
+        <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nameslistwidget.cpp" line="86"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
         <translation>Trebuie cel putin un nume.</translation>
     </message>
     <message>
-        <location filename="../sources/nameslistwidget.cpp" line="68"/>
+        <location filename="../sources/nameslistwidget.cpp" line="87"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
         <translation>Trebuie sa introduceti cel putin un nume.</translation>
@@ -4331,43 +4343,67 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="326"/>
-        <source>Zoom avant</source>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="325"/>
+        <source>Gérer les logos</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="327"/>
-        <source>Zoom arrière</source>
+        <source>Zoom avant</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
-        <source>Zoom adapté</source>
+        <source>Zoom arrière</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="329"/>
+        <source>Zoom adapté</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="330"/>
         <source>Pas de zoom</source>
         <comment>menu entry</comment>
         <translation type="unfinished">Fără zoom</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="802"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
+        <source>Ctrl+T</source>
+        <comment>shortcut to manage embedded logos</comment>
+        <translation type="unfinished">Ctrl+T</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="352"/>
+        <source>Ctrl+J</source>
+        <comment>shortcut to merge cells</comment>
+        <translation type="unfinished">Ctrl+J</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="353"/>
+        <source>Ctrl+K</source>
+        <comment>shortcut to split merged cell</comment>
+        <translation type="unfinished">Ctrl+K</translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="806"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="804"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="808"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
@@ -4391,193 +4427,181 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="325"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="326"/>
         <source>Éditer les informations complémentaires</source>
-        <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="330"/>
-        <source>Ajouter une &amp;ligne</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="331"/>
+        <source>Ajouter une &amp;ligne</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="332"/>
         <source>Ajouter une &amp;colonne</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="333"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="334"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
         <source>Ctrl+Shift+O</source>
         <comment>shortcut to open a template from a file</comment>
         <translation type="unfinished">Ctrl+Shift+O</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
         <source>Ctrl+Shift+S</source>
         <comment>shortcut to save a template to a file</comment>
         <translation type="unfinished">Ctrl+Shift+S</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="343"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
         <source>Ctrl+Q</source>
         <comment>shortcut to quit</comment>
         <translation type="unfinished">Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="351"/>
         <source>Ctrl+Y</source>
         <comment>shortcut to edit extra information</comment>
         <translation type="unfinished">Ctrl+Y</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
-        <source>Ctrl+K</source>
-        <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+K</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="351"/>
-        <source>Ctrl+J</source>
-        <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+J</translation>
-    </message>
-    <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="354"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
         <source>Ctrl+9</source>
         <comment>shortcut to enable fit zoom</comment>
         <translation type="unfinished">Ctrl+9</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="355"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="357"/>
         <source>Ctrl+0</source>
         <comment>shortcut to reset zoom</comment>
         <translation type="unfinished">Ctrl+0</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="382"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="385"/>
         <source>&amp;Fichier</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Fișier</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="383"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="386"/>
         <source>&amp;Édition</source>
         <comment>menu title</comment>
         <translation type="unfinished">&amp;Editare</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="384"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="387"/>
         <source>Afficha&amp;ge</source>
         <comment>menu title</comment>
         <translation type="unfinished">Afișa&amp;re</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="422"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="426"/>
         <source>Outils</source>
         <comment>toolbar title</comment>
         <translation type="unfinished">Utilitare</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="430"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="434"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="439"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="443"/>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation type="unfinished">Afișare</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="457"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="461"/>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation type="unfinished">Nicio modificare</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="459"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="463"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation type="unfinished">Anulări</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="478"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="482"/>
         <source>Propriétés de la cellule</source>
         <comment>dock title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="546"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="550"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation type="unfinished">[Modificat]</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="549"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="553"/>
         <source>[Lecture seule]</source>
         <comment>window title tag</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="552"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="556"/>
         <source>%1 %2</source>
         <comment>part of the window title - %1 is the filepath or template name, %2 is the [Changed] or [Read only] tag</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="631"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="635"/>
         <source>QElectroTech - Éditeur de modèle de cartouche</source>
         <comment>titleblock template editor: base window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="646"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="650"/>
         <source>%1 - %2</source>
         <comment>window title: %1 is the base window title, %2 is a template name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="723"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="727"/>
         <source>Ouvrir un modèle</source>
         <comment>File &gt; open dialog window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="742"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="746"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation type="unfinished">Deschidere fișier</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="744"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="748"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="783"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="787"/>
         <source>Enregistrer le modèle sous</source>
         <comment>dialog window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="903"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="907"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="907"/>
+        <location filename="../sources/titleblock/qettemplateeditor.cpp" line="911"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5551,29 +5575,34 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="262"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="224"/>
+        <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="263"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="280"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="269"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="286"/>
         <source>Title block templates actions</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="274"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="291"/>
         <source>Modèle :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="285"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
@@ -5582,72 +5611,82 @@ Que désirez vous faire ?</source>
   - %total : numarul total de scheme din proiect</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="294"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
         <source>Pas de date</source>
         <translation type="unfinished">Fara data</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="295"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="312"/>
         <source>Date courante</source>
         <translation type="unfinished">Data curenta</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="296"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="313"/>
         <source>Date fixe : </source>
         <translation type="unfinished">Data fixa:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="307"/>
-        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="325"/>
+        <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="334"/>
+        <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="338"/>
+        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
         <source>Nom</source>
         <translation type="unfinished">Nume</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
         <source>Valeur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="331"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="367"/>
         <source>Principales</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="332"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="368"/>
         <source>Personnalisées</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="351"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
         <source>Titre : </source>
         <translation type="unfinished">Titlu:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="389"/>
         <source>Auteur : </source>
         <translation type="unfinished">Autor:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="355"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="391"/>
         <source>Date : </source>
         <translation type="unfinished">Data:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="357"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="393"/>
         <source>Fichier : </source>
         <translation type="unfinished">Fisier:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="359"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="395"/>
         <source>Folio : </source>
         <translation type="unfinished">Pagina:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="394"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="431"/>
         <source>Informations du cartouche</source>
         <translation type="unfinished">Informatiile din cartus</translation>
     </message>
@@ -5655,13 +5694,13 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplate</name>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1292"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1291"/>
         <source> %1 : %2</source>
         <comment>titleblock content - please let the blank space at the beginning</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblocktemplate.cpp" line="1294"/>
+        <location filename="../sources/titleblocktemplate.cpp" line="1293"/>
         <source> %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -5669,135 +5708,145 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateCellWidget</name>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="48"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Type de cellule :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="50"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
         <source>Vide</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
         <source>Texte</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="62"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <source>Logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="64"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Aucun logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
         <source>Gérer les logos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="55"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Nom :</source>
         <translation type="unfinished">Nume:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="59"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="68"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Afficher un label :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="71"/>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="75"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
         <source>Editer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
         <source>Texte :</source>
         <translation type="unfinished">Text:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
         <translation type="unfinished">orizontal:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="79"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Gauche</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Centré</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Droite</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="85"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
         <source>vertical :</source>
         <translation type="unfinished">vertical:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="87"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>Haut</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
         <source>Milieu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Bas</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="93"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
         <source>Police :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="95"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="247"/>
-        <source>Label de cette cellule :</source>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
+        <source>Label de cette cellule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="257"/>
-        <source>Valeur de cette cellule :</source>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
+        <source>Valeur de cette cellule</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="304"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
+        <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatecellwidget.cpp" line="412"/>
+        <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
         <translation type="unfinished"></translation>
@@ -5852,104 +5901,104 @@ Que désirez vous faire ?</source>
 <context>
     <name>TitleBlockTemplateLogoManager</name>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="74"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
         <source>Gestionnaire de logos</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Logos embarqués dans ce modèle :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="84"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
         <source>Ajouter un logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="85"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Supprimer ce logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="86"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Propriétés</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Nom :</source>
         <translation type="unfinished">Nume:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="189"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="92"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="192"/>
         <source>Renommer</source>
         <translation type="unfinished">Redenumiti</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="248"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="93"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="251"/>
         <source>Type :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="182"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="185"/>
         <source>Logo déjà existant</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="188"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="191"/>
         <source>Remplacer</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="208"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="211"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="244"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="247"/>
         <source>Type : %1</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="261"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="264"/>
         <source>Choisir une image / un logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="263"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="266"/>
         <source>Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm);;Tous les fichiers (*)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="270"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="273"/>
         <source>Erreur</source>
         <translation type="unfinished">Eroare</translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="270"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="273"/>
         <source>Impossible d&apos;ouvrir le fichier spécifié</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="306"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="309"/>
         <source>Renommer un logo</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="311"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="314"/>
         <source>Vous devez saisir un nouveau nom.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="320"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="323"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templatelogomanager.cpp" line="329"/>
+        <location filename="../sources/titleblock/templatelogomanager.cpp" line="332"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
         <translation type="unfinished"></translation>
     </message>
@@ -6035,40 +6084,40 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="607"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="608"/>
         <source>[%1px]</source>
         <comment>content of the extra cell added when the total width of cells is less than the preview width</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="616"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="618"/>
         <source>[%1px]</source>
         <comment>content of the extra helper cell added when the total width of cells is greather than the preview width</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="669"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="671"/>
         <source>%1px</source>
         <comment>format displayed in rows helper cells</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="731"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="733"/>
         <source>%1px</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="782"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="783"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="931"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="933"/>
         <source>Longueur minimale : %1px
 Longueur maximale : %2px
 </source>
@@ -6076,14 +6125,14 @@ Longueur maximale : %2px
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="938"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/titleblock/templateview.cpp" line="987"/>
+        <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
         <translation type="unfinished"></translation>

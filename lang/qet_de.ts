@@ -1653,10 +1653,6 @@ Die Änderungen sind endgültig.</translation>
         <translation>Sprache</translation>
     </message>
     <message>
-        <source>Nom</source>
-        <translation>Name</translation>
-    </message>
-    <message>
         <source>Ajouter une ligne</source>
         <translation>Zeile hinzufügen</translation>
     </message>
@@ -1669,6 +1665,20 @@ Die Änderungen sind endgültig.</translation>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
         <translation>Sie müssen mindestens einen Namen eintragen.</translation>
+    </message>
+    <message>
+        <source>Texte</source>
+        <translation type="unfinished">Text</translation>
+    </message>
+    <message>
+        <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
+        <comment>&quot;What&apos;s this&quot; tip</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -3485,16 +3495,6 @@ Que désirez vous faire ?</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <source>Ctrl+K</source>
-        <comment>shortcut to merge cells</comment>
-        <translation>Ctrl+K</translation>
-    </message>
-    <message>
-        <source>Ctrl+J</source>
-        <comment>shortcut to split merged cell</comment>
-        <translation>Ctrl+J</translation>
-    </message>
-    <message>
         <source>Aucune modification</source>
         <comment>label displayed in the undo list when empty</comment>
         <translation>Keine Veränderung</translation>
@@ -3747,6 +3747,26 @@ Que désirez vous faire ?</source>
         <source>Affichage</source>
         <comment>toolbar title</comment>
         <translation>Anzeige</translation>
+    </message>
+    <message>
+        <source>Gérer les logos</source>
+        <comment>menu entry</comment>
+        <translation type="unfinished">Verwalten der Logos</translation>
+    </message>
+    <message>
+        <source>Ctrl+T</source>
+        <comment>shortcut to manage embedded logos</comment>
+        <translation type="unfinished">Ctrl+T</translation>
+    </message>
+    <message>
+        <source>Ctrl+J</source>
+        <comment>shortcut to merge cells</comment>
+        <translation type="unfinished">Ctrl+J</translation>
+    </message>
+    <message>
+        <source>Ctrl+K</source>
+        <comment>shortcut to split merged cell</comment>
+        <translation type="unfinished">Ctrl+K</translation>
     </message>
 </context>
 <context>
@@ -4573,10 +4593,6 @@ Que désirez vous faire ?</source>
         <translation>Datum festgelegt : </translation>
     </message>
     <message>
-        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %volta par 1745 dans le cartouche.</source>
-        <translation>Hier können Sie Ihren Verein Namen / Werte für die Kartusche eingeben, die berücksichtigt werden. Zum Beispiel : Verbinden des Namen &quot;Volta&quot; und Wert &quot;1745&quot; Volta ersetzt % 1745 in der Kartusche.</translation>
-    </message>
-    <message>
         <source>Nom</source>
         <translation>Name</translation>
     </message>
@@ -4629,6 +4645,22 @@ Que désirez vous faire ?</source>
     <message>
         <source>Title block templates actions</source>
         <translation>Aktionen Titelblockvorlagen</translation>
+    </message>
+    <message>
+        <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4726,14 +4758,6 @@ Que désirez vous faire ?</source>
         <translation>Anpassen der Textgrösse bei Bedarf</translation>
     </message>
     <message>
-        <source>Label de cette cellule :</source>
-        <translation>Label der Zelle :</translation>
-    </message>
-    <message>
-        <source>Valeur de cette cellule :</source>
-        <translation>Wert der Zelle :</translation>
-    </message>
-    <message>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
         <translation>Kein Logo</translation>
@@ -4750,6 +4774,22 @@ Que désirez vous faire ?</source>
     <message>
         <source>Police :</source>
         <translation>Schrift :</translation>
+    </message>
+    <message>
+        <source>Label de cette cellule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valeur de cette cellule</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
