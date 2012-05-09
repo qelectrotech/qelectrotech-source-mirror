@@ -102,6 +102,7 @@ namespace QET {
 		extern QIcon Hide;
 		extern QIcon Home;
 		extern QIcon HotSpot;
+		extern QIcon InsertImage;
 		extern QIcon Lower;
 		extern QIcon MoveFile;
 		extern QIcon Names;

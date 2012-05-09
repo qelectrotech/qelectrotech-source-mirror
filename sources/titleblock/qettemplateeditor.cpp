@@ -322,6 +322,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	cut_            = new QAction(QET::Icons::EditCut,              tr("Co&uper", "menu entry"),                      this);
 	copy_           = new QAction(QET::Icons::EditCopy,             tr("Cop&ier", "menu entry"),                      this);
 	paste_          = new QAction(QET::Icons::EditPaste,            tr("C&oller", "menu entry"),                      this);
+	edit_logos_     = new QAction(QET::Icons::InsertImage,          tr("G\351rer les logos", "menu entry"),           this);
 	edit_info_      = new QAction(QET::Icons::UserInformations,     tr("\311diter les informations compl\351mentaires", "menu entry"), this);
 	zoom_in_        = new QAction(QET::Icons::ZoomIn,               tr("Zoom avant",                   "menu entry"), this);
 	zoom_out_       = new QAction(QET::Icons::ZoomOut,              tr("Zoom arri\350re",              "menu entry"), this);
@@ -346,9 +347,10 @@ void QETTitleBlockTemplateEditor::initActions() {
 	cut_              -> setShortcut(QKeySequence::Cut);
 	copy_             -> setShortcut(QKeySequence::Copy);
 	paste_            -> setShortcut(QKeySequence::Paste);
+	edit_logos_       -> setShortcut(QKeySequence(tr("Ctrl+T", "shortcut to manage embedded logos")));
 	edit_info_        -> setShortcut(QKeySequence(tr("Ctrl+Y", "shortcut to edit extra information")));
-	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to merge cells")));
-	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to split merged cell")));
+	merge_cells_      -> setShortcut(QKeySequence(tr("Ctrl+J", "shortcut to merge cells")));
+	split_cell_       -> setShortcut(QKeySequence(tr("Ctrl+K", "shortcut to split merged cell")));
 	zoom_in_          -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out_         -> setShortcut(QKeySequence::ZoomOut);
 	zoom_fit_         -> setShortcut(QKeySequence(tr("Ctrl+9", "shortcut to enable fit zoom")));
@@ -368,6 +370,7 @@ void QETTitleBlockTemplateEditor::initActions() {
 	connect(zoom_out_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomOut()));
 	connect(zoom_fit_,        SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomFit()));
 	connect(zoom_reset_,      SIGNAL(triggered()), template_edition_area_view_, SLOT(zoomReset()));
+	connect(edit_logos_,      SIGNAL(triggered()), this, SLOT(editLogos()));
 	connect(edit_info_,       SIGNAL(triggered()), this, SLOT(editTemplateInformation()));
 	connect(add_row_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addRowAtEnd()));
 	connect(add_col_,         SIGNAL(triggered()), template_edition_area_view_, SLOT(addColumnAtEnd()));
@@ -404,6 +407,7 @@ void QETTitleBlockTemplateEditor::initMenus() {
 	edit_menu_   -> addAction(merge_cells_);
 	edit_menu_   -> addAction(split_cell_);
 	edit_menu_   -> addSeparator();
+	edit_menu_   -> addAction(edit_logos_);
 	edit_menu_   -> addAction(edit_info_);
 	display_menu_ -> addAction(zoom_in_);
 	display_menu_ -> addAction(zoom_out_);

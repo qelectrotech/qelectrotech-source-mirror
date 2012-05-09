@@ -95,6 +95,7 @@ namespace QET {
 		QIcon Hide;
 		QIcon Home;
 		QIcon HotSpot;
+		QIcon InsertImage;
 		QIcon Lower;
 		QIcon MoveFile;
 		QIcon Names;
@@ -297,6 +298,7 @@ void QET::Icons::initIcons() {
 	Home                .addFile(":/ico/16x16/go-home.png");
 	Home                .addFile(":/ico/22x22/go-home.png");
 	HotSpot             .addFile(":/ico/22x22/hotspot.png");
+	InsertImage         .addFile(":/ico/22x22/insert-image.png");
 	Lower               .addFile(":/ico/22x22/lower.png");
 	MoveFile            .addFile(":/ico/16x16/item_move.png");
 	Names               .addFile(":/ico/22x22/names.png");
