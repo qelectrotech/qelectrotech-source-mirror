@@ -21,6 +21,7 @@
 // on redeclare ici les icones
 namespace QET {
 	namespace Icons {
+		QIcon Add;
 		QIcon AddColumn;
 		QIcon AddRow;
 		QIcon Allowed;
@@ -62,6 +63,7 @@ namespace QET {
 		QIcon EditDelete;
 		QIcon EditPaste;
 		QIcon EditRedo;
+		QIcon EditRename;
 		QIcon EditSelectAll;
 		QIcon EditTableCellMerge;
 		QIcon EditTableCellSplit;
@@ -129,6 +131,7 @@ namespace QET {
 		QIcon QETOxygenLogo;
 		QIcon QtLogo;
 		QIcon Raise;
+		QIcon Remove;
 		QIcon RemoveColumn;
 		QIcon RemoveRow;
 		QIcon Restore;
@@ -162,6 +165,8 @@ void QET::Icons::initIcons() {
 	bool rtl = QApplication::isRightToLeft();
 	QTransform reverse = QTransform().scale(-1, 1);
 	
+	Add                 .addFile(":/ico/16x16/list-add.png");
+	Add                 .addFile(":/ico/22x22/list-add.png");
 	AddColumn           .addFile(":/ico/16x16/add_col.png");
 	AddRow              .addFile(":/ico/16x16/add_row.png");
 	Allowed             .addFile(":/ico/16x16/user-online.png");
@@ -242,6 +247,8 @@ void QET::Icons::initIcons() {
 		EditRedo            .addFile(":/ico/16x16/edit-redo.png");
 		EditRedo            .addFile(":/ico/22x22/edit-redo.png");
 	}
+	EditRename          .addFile(":/ico/16x16/edit-rename.png");
+	EditRename          .addFile(":/ico/22x22/edit-rename.png");
 	EditSelectAll       .addFile(":/ico/16x16/edit-select-all.png");
 	EditSelectAll       .addFile(":/ico/22x22/edit-select-all.png");
 	EditTableCellMerge        .addFile(":ico/16x16/edit-table-cell-merge.png");
@@ -342,6 +349,8 @@ void QET::Icons::initIcons() {
 	QETOxygenLogo       .addFile(":/ico/oxygen-icons/64x64/apps/qelectrotech.png");
 	QtLogo              .addFile(":/ico/32x32/qt.png");
 	Raise               .addFile(":/ico/22x22/raise.png");
+	Remove              .addFile(":/ico/16x16/list-remove.png");
+	Remove              .addFile(":/ico/22x22/list-remove.png");
 	RemoveColumn        .addFile(":/ico/16x16/remove_col.png");
 	RemoveRow           .addFile(":/ico/16x16/remove_row.png");
 	Restore             .addFile(":/ico/22x22/restaurer.png");

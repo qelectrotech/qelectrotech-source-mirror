@@ -28,6 +28,7 @@ namespace QET {
 		
 		// l'utilisation du mot-cle extern permet l'acces aux objets statiques
 		// depuis l'exterieur du namespace
+		extern QIcon Add;
 		extern QIcon AddColumn;
 		extern QIcon AddRow;
 		extern QIcon Allowed;
@@ -69,6 +70,7 @@ namespace QET {
 		extern QIcon EditDelete;
 		extern QIcon EditPaste;
 		extern QIcon EditRedo;
+		extern QIcon EditRename;
 		extern QIcon EditSelectAll;
 		extern QIcon EditTableCellMerge;
 		extern QIcon EditTableCellSplit;
@@ -138,6 +140,7 @@ namespace QET {
 		extern QIcon QETOxygenLogo;
 		extern QIcon QtLogo;
 		extern QIcon Raise;
+		extern QIcon Remove;
 		extern QIcon RemoveColumn;
 		extern QIcon RemoveRow;
 		extern QIcon Restore;

@@ -84,12 +84,12 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	logos_view_ -> setWrapping(true);
 	logos_view_ -> setMovement(QListView::Static);
 	logos_view_ -> setResizeMode(QListView::Adjust);
-	add_button_ = new QPushButton(tr("Ajouter un logo"));
-	delete_button_ = new QPushButton(tr("Supprimer ce logo"));
+	add_button_ = new QPushButton(QET::Icons::Add, tr("Ajouter un logo"));
+	delete_button_ = new QPushButton(QET::Icons::Remove, tr("Supprimer ce logo"));
 	logo_box_ = new QGroupBox(tr("Propri\351t\351s"));
 	logo_name_label_ = new QLabel(tr("Nom :"));
 	logo_name_ = new QLineEdit();
-	rename_button_ = new QPushButton(tr("Renommer"));
+	rename_button_ = new QPushButton(QET::Icons::EditRename, tr("Renommer"));
 	logo_type_ = new QLabel(tr("Type :"));
 	buttons_ = new QDialogButtonBox(QDialogButtonBox::Ok);
 	
