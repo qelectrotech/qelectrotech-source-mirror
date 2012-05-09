@@ -457,8 +457,8 @@ QString TitleBlockTemplateCellWidget::labelValueInformationString() const {
 		"Comme ce que vous \351ditez actuellement est un "
 		"<em>mod\350le</em> de cartouche, ne saisissez pas directement des "
 		"donn\351es brutes : ins\351rez plut\364t des variables sous la forme "
-		"%{nom-de-variable}, qui seront ensuite remplac\351es par la valeur "
-		"ad\351quate sur le folio."
+		"%{nom-de-variable}, qui seront ensuite remplac\351es par les valeurs "
+		"ad\351quates sur le folio."
 	);
 	return(lab_val_inf_string);
 }
