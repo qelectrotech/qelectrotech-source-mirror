@@ -119,6 +119,17 @@ QList<QAction *> HelperCell::actions() const {
 }
 
 /**
+	@param text New label displayed by this helper cell
+	@param set_as_tooltip If true, the text is also used as tooltip.
+*/
+void HelperCell::setLabel(const QString &text, bool set_as_tooltip) {
+	label = text;
+	if (set_as_tooltip) {
+		setToolTip(text);
+	}
+}
+
+/**
 	Handle context menu events.
 	@param event Context menu event.
 */

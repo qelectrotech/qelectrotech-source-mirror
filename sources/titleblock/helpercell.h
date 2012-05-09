@@ -52,6 +52,7 @@ class HelperCell : public QGraphicsObject, public QGraphicsLayoutItem {
 	virtual void setType(QET::TitleBlockColumnLength);
 	virtual void setActions(const QList<QAction *> &);
 	virtual QList<QAction *> actions() const;
+	virtual void setLabel(const QString &text, bool = true);
 	
 	protected:
 	void contextMenuEvent(QGraphicsSceneContextMenuEvent *);

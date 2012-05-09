@@ -48,7 +48,6 @@ void SplittedHelperCell::paint(QPainter *painter, const QStyleOptionGraphicsItem
 	}
 	QRectF first_drawing_rectangle(QPointF(0, 0), geometry().adjusted(0, 0, -split_size, 0).size());
 	QRectF second_drawing_rectangle(first_drawing_rectangle.topRight(), QSize(split_size, first_drawing_rectangle.height()));
-	qDebug() << first_drawing_rectangle << second_drawing_rectangle;
 	
 	painter -> setPen(Qt::black);
 	painter -> setBrush(background_color);

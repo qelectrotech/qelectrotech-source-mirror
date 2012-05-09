@@ -603,9 +603,11 @@ void TitleBlockTemplateView::applyColumnsWidths(bool animate) {
 		tbgrid_ -> addItem(extra_cells_width_helper_cell_, ROW_OFFSET - 1, COL_OFFSET + widths.count(), tbtemplate_ -> rowsCount() + 1, 1);
 		tbgrid_ -> addItem(total_width_helper_cell_, 0, COL_OFFSET, 1, widths.count() + 1);
 		tbgrid_ -> setColumnFixedWidth(COL_OFFSET + widths.count(), preview_width_ - total_applied_width);
-		extra_cells_width_helper_cell_ -> label = QString(
-			tr("[%1px]","content of the extra cell added when the total width of cells is less than the preview width")
-		).arg(preview_width_ - total_applied_width);
+		extra_cells_width_helper_cell_ -> setLabel(
+			QString(
+				tr("[%1px]","content of the extra cell added when the total width of cells is less than the preview width")
+			).arg(preview_width_ - total_applied_width)
+		);
 	} else if (total_applied_width > preview_width_) {
 		// preview width is smaller than the sum of cells widths
 		// we draw an extra header within th "preview width" cell.
@@ -666,7 +668,7 @@ void TitleBlockTemplateView::updateRowsHelperCells() {
 		HelperCell *current_row_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(ROW_OFFSET + i, 0));
 		if (current_row_cell) {
 			current_row_cell -> setType(QET::Absolute); // rows always have absolute heights
-			current_row_cell -> label = QString(tr("%1px", "format displayed in rows helper cells")).arg(heights.at(i));
+			current_row_cell -> setLabel(QString(tr("%1px", "format displayed in rows helper cells")).arg(heights.at(i)));
 		}
 	}
 }
@@ -681,7 +683,7 @@ void TitleBlockTemplateView::updateColumnsHelperCells() {
 		HelperCell *current_col_cell = static_cast<HelperCell *>(tbgrid_ -> itemAt(1, COL_OFFSET + i));
 		if (current_col_cell) {
 			current_col_cell -> setType(current_col_dim.type);
-			current_col_cell -> label = current_col_dim.toString();
+			current_col_cell -> setLabel(current_col_dim.toString());
 		}
 	}
 }
@@ -714,7 +716,7 @@ void TitleBlockTemplateView::addCells() {
 		TitleBlockDimension current_col_dim = tbtemplate_ -> columnDimension(i);
 		HelperCell *current_col_cell = new HelperCell();
 		current_col_cell -> setType(current_col_dim.type);
-		current_col_cell -> label = current_col_dim.toString();
+		current_col_cell -> setLabel(current_col_dim.toString());
 		current_col_cell -> setActions(columnsActions());
 		current_col_cell -> orientation = Qt::Horizontal;
 		current_col_cell -> index = i;
@@ -728,7 +730,7 @@ void TitleBlockTemplateView::addCells() {
 	for (int i = 0 ; i < row_count ; ++ i) {
 		HelperCell *current_row_cell = new HelperCell();
 		current_row_cell -> setType(QET::Absolute); // rows always have absolute heights
-		current_row_cell -> label = QString(tr("%1px")).arg(heights.at(i));
+		current_row_cell -> setLabel(QString(tr("%1px")).arg(heights.at(i)));
 		current_row_cell -> orientation = Qt::Vertical;
 		current_row_cell -> index = i;
 		current_row_cell -> setActions(rowsActions());
@@ -940,6 +942,12 @@ void TitleBlockTemplateView::updateDisplayedMinMaxWidth() {
 				"tooltip showing the minimum width of the edited template"
 			)
 		).arg(min_width);
+	}
+	
+	// the tooltip may also display the split label for readability purpose
+	if (total_width_helper_cell_ -> split_size) {
+		min_max_width_sentence += "---\n";
+		min_max_width_sentence += total_width_helper_cell_ -> split_label;
 	}
 	
 	total_width_helper_cell_ -> setToolTip(makePrettyToolTip(min_max_width_sentence));
