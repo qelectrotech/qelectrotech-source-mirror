@@ -2016,13 +2016,13 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This list enables you to enter a short text so it can be translated to other languages. To achieve this, it associates ISO 639-1 language codes (e.g. &quot;en&quot; for English) with translations of the input text to these same languages.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2033,7 +2033,7 @@ Changes will be definitive.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>This button adds a language/translation association to the above list.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="86"/>
@@ -4344,7 +4344,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="325"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Manage logos</translation>
+        <translation>Manage logos</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="327"/>
@@ -4374,19 +4374,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="350"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="352"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="353"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="806"/>
@@ -5571,7 +5571,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="224"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Names may only contain lowercase letters, digits and dashes.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
@@ -5622,17 +5622,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="325"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Available to title block templates as %1.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="334"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>%id and %total are available to title block templates as %{folio-id} and %{folio-total} respectively.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="338"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>You may define here your own name/value associations so the title block takes them into account. E.g. associating the &quot;volta&quot; name with the &quot;1745&quot; value will replace %{volta} with 1745 within the title block.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
@@ -5816,22 +5816,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Label for this cell</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Value for this cell</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>The following variables are available by default: &lt;ul&gt;&lt;li&gt;%{author}: folio author&lt;/li&gt;&lt;li&gt;%{date}: folio date&lt;/li&gt;&lt;li&gt;%{title}: folio title&lt;/li&gt;&lt;li&gt;%{filename}: project filename&lt;/li&gt;&lt;li&gt;%{folio}: folio-related information&lt;/li&gt;&lt;li&gt;%{folio-id}: folio index within the project&lt;/li&gt;&lt;li&gt;%{folio-total}: total number of folios within the project&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Each cell of a title block displays a value, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Since what you are currently editing is a title block &lt;em&gt;template&lt;/em&gt;, avoid entering raw data directly: prefer inserting variables like %{variable-name}, which will be replaced afterwards with adequate values from the folio.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
