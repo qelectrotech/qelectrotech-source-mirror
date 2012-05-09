@@ -1284,16 +1284,29 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 	QString cell_text = cell.value.name();
 	QString cell_label = cell.label.name();
 	
-	foreach (QString key, diagram_context.keys()) {
-		cell_text.replace("%{" + key + "}", diagram_context[key].toString());
-		cell_text.replace("%" + key,        diagram_context[key].toString());
-	}
+	cell_text = interpreteVariables(cell_text, diagram_context);
+	
 	if (cell.display_label && !cell.label.isEmpty()) {
+		cell_label = interpreteVariables(cell_label, diagram_context);
 		cell_text = QString(tr(" %1 : %2", "titleblock content - please let the blank space at the beginning")).arg(cell_label).arg(cell_text);
 	} else {
 		cell_text = QString(tr(" %1")).arg(cell_text);
 	}
 	return(cell_text);
+}
+
+/**
+ @param string A text containing 0 to n variables, e.g. "%var" or "%{var}"
+ @param diagram_context Diagram context to use to interprete variables
+ @return the provided string with variables replaced by the values from the diagram context
+*/
+QString TitleBlockTemplate::interpreteVariables(const QString &string, const DiagramContext &diagram_context) const {
+	QString interpreted_string = string;
+	foreach (QString key, diagram_context.keys()) {
+		interpreted_string.replace("%{" + key + "}", diagram_context[key].toString());
+		interpreted_string.replace("%" + key,        diagram_context[key].toString());
+	}
+	return(interpreted_string);
 }
 
 /**

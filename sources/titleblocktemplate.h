@@ -129,6 +129,7 @@ class TitleBlockTemplate : public QObject {
 	void initCells();
 	int lengthRange(int, int, const QList<int> &) const;
 	QString finalTextForCell(const TitleBlockCell &, const DiagramContext &) const;
+	QString interpreteVariables(const QString &, const DiagramContext &) const;
 	void renderTextCell(QPainter &, const QString &, const TitleBlockCell &, const QRectF &) const;
 	
 	// attributes
