@@ -35,6 +35,8 @@ class DiagramContext {
 	bool operator==(const DiagramContext &) const;
 	bool operator!=(const DiagramContext &) const;
 	
+	static QString validKeyRegExp();
+	
 	private:
 	bool keyIsAcceptable(const QString &) const;
 	/// Diagram context data (key/value pairs)

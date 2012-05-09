@@ -48,6 +48,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	
 	// slots:
 	private slots:
+	void refreshFieldsFormatLabel();
 	void checkTableRows();
 	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
@@ -58,6 +59,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void initWidgets(const TitleBlockProperties &);
 	void initLayouts();
 	int nameLessRowsCount() const;
+	int highlightNonAcceptableKeys();
 	
 	signals:
 	void editTitleBlockTemplate(const QString &, bool);
@@ -82,6 +84,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QRadioButton *titleblock_fixed_date;
 	bool display_current_date;
 	QLabel       *additional_fields_label;
+	QLabel       *additional_fields_format_label;
 	QTableWidget *additional_fields_table;
 	QTabBar      *tabbar;
 	TitleBlockTemplatesCollection *tbt_collection_;

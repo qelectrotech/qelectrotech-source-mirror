@@ -64,10 +64,18 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const {
 }
 
 /**
+	@return the regular expression used to check whether a given key is acceptable.
+	@see keyIsAcceptable()
+*/
+QString DiagramContext::validKeyRegExp() {
+	return("^[a-z0-9-]+$");
+}
+
+/**
 	@param key a key string
 	@return true if that key is acceptable, false otherwise
 */
 bool DiagramContext::keyIsAcceptable(const QString &key) const {
-	static QRegExp re("^[a-z0-9-]+$");
+	static QRegExp re(DiagramContext::validKeyRegExp());
 	return(re.exactMatch(key));
 }
