@@ -77,13 +77,13 @@ TitleBlockDimension TitleBlockDimensionWidget::value() const {
 	@param dim Dimension to be displayed and edited by this dialog
 */
 void TitleBlockDimensionWidget::setValue(const TitleBlockDimension &dim) {
-	spinbox_ -> setValue(dim.value);
 	if (complete_) {
 		if (QAbstractButton *button = dimension_type_ -> button(dim.type)) {
 			button -> setChecked(true);
 		}
 	}
 	updateSpinBoxSuffix();
+	spinbox_ -> setValue(dim.value);
 }
 
 /**
