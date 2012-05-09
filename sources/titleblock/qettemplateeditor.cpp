@@ -521,7 +521,7 @@ void QETTitleBlockTemplateEditor::initWidgets() {
 	Initialize the logo manager
 */
 void QETTitleBlockTemplateEditor::initLogoManager() {
-	logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_);
+	logo_manager_ = new TitleBlockTemplateLogoManager(tb_template_, this);
 	logo_manager_ -> setReadOnly(read_only_);
 	connect(
 		logo_manager_,

@@ -17,6 +17,7 @@
 */
 #include "templatelogomanager.h"
 #include "titleblocktemplate.h"
+#include "qeticons.h"
 
 /**
 	Constructor
@@ -72,6 +73,8 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	open_dialog_dir_ = QDesktopServices::storageLocation(QDesktopServices::DesktopLocation);
 	
 	setWindowTitle(tr("Gestionnaire de logos"));
+	setWindowIcon(QET::Icons::InsertImage);
+	setWindowFlags(Qt::Dialog);
 	logos_label_ = new QLabel(tr("Logos embarqu\351s dans ce mod\350le :"));
 	logos_view_ = new QListWidget();
 	logos_view_ -> setViewMode(QListView::IconMode);

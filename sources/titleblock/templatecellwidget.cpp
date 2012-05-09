@@ -21,6 +21,7 @@
 #include "nameslistwidget.h"
 #include "titleblocktemplate.h"
 #include "templatecommands.h"
+#include "qeticons.h"
 
 /**
 	Constructor
@@ -62,7 +63,7 @@ void TitleBlockTemplateCellWidget::initWidgets() {
 	logo_label_ = new QLabel(tr("Logo"));
 	logo_input_ = new QComboBox();
 	logo_input_ -> addItem(tr("Aucun logo"));
-	add_logo_input_ = new QPushButton(tr("G\351rer les logos"));
+	add_logo_input_ = new QPushButton(QET::Icons::InsertImage, tr("G\351rer les logos"));
 	
 	// widgets specific to text cells
 	label_checkbox_ = new QCheckBox(tr("Afficher un label :"));
