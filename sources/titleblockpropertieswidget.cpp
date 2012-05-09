@@ -303,6 +303,20 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
 	titleblock_date -> setCalendarPopup(true);
 	
+	// we add a bunch of tooltips for users to know how they can put these
+	// values into their title block templates
+	QString variable_tooltip = tr("Disponible en tant que %1 pour les mod\350les de cartouches.");
+	titleblock_title -> setToolTip(QString(variable_tooltip).arg("%title"));
+	titleblock_author -> setToolTip(QString(variable_tooltip).arg("%author"));
+	titleblock_filename -> setToolTip(QString(variable_tooltip).arg("%filename"));
+	titleblock_folio -> setToolTip(QString(variable_tooltip).arg("%folio"));
+	QString date_variable_tooltip = QString(variable_tooltip).arg("%date");
+	titleblock_current_date -> setToolTip(date_variable_tooltip);
+	titleblock_fixed_date -> setToolTip(date_variable_tooltip);
+	titleblock_date -> setToolTip(date_variable_tooltip);
+	folio_tip -> setToolTip(tr("%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les mod\350les de cartouches."));
+	
+	// widgets for users to enter their own name/value pairs
 	additional_fields_label = new QLabel(
 		tr(
 			"Vous pouvez définir ici vos propres associations noms/valeurs pour"
