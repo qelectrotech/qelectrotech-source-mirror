@@ -199,10 +199,10 @@ void QETDiagramEditor::actions() {
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
-	add_column        = new QAction(QET::Icons::AddColumn,             tr("Ajouter une colonne"),                  this);
-	remove_column     = new QAction(QET::Icons::RemoveColumn,          tr("Enlever une colonne"),                  this);
-	add_row           = new QAction(QET::Icons::AddRow,                tr("Ajouter une ligne"),                    this);
-	remove_row        = new QAction(QET::Icons::RemoveRow,             tr("Enlever une ligne"),                    this);
+	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
+	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
+	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
+	remove_row        = new QAction(QET::Icons::EditTableDeleteRow,         tr("Enlever une ligne"),               this);
 	
 	prj_edit_prop     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du projet"),           this);
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);

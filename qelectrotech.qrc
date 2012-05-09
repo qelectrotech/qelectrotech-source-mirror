@@ -4,8 +4,6 @@
 	<file>ico/128x128/settings.png</file>
 	<file>ico/128x128/document-export.png</file>
 	<file>ico/128x128/printer.png</file>
-	<file>ico/16x16/add_col.png</file>
-	<file>ico/16x16/add_row.png</file>
 	<file>ico/16x16/application-exit.png</file>
 	<file>ico/16x16/arrow-left-double.png</file>
 	<file>ico/16x16/arrow-left.png</file>
@@ -71,8 +69,6 @@
 	<file>ico/16x16/phase.png</file>
 	<file>ico/16x16/preferences-desktop-user.png</file>
 	<file>ico/16x16/qet.png</file>
-	<file>ico/16x16/remove_col.png</file>
-	<file>ico/16x16/remove_row.png</file>
 	<file>ico/16x16/south.png</file>
 	<file>ico/16x16/text-xml.png</file>
 	<file>ico/16x16/user-busy.png</file>

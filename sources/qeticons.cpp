@@ -22,8 +22,6 @@
 namespace QET {
 	namespace Icons {
 		QIcon Add;
-		QIcon AddColumn;
-		QIcon AddRow;
 		QIcon Allowed;
 		QIcon ApplicationExit;
 		QIcon ArrowLeft;
@@ -132,8 +130,6 @@ namespace QET {
 		QIcon QtLogo;
 		QIcon Raise;
 		QIcon Remove;
-		QIcon RemoveColumn;
-		QIcon RemoveRow;
 		QIcon Restore;
 		QIcon SendBackward;
 		QIcon Settings;
@@ -167,8 +163,6 @@ void QET::Icons::initIcons() {
 	
 	Add                 .addFile(":/ico/16x16/list-add.png");
 	Add                 .addFile(":/ico/22x22/list-add.png");
-	AddColumn           .addFile(":/ico/16x16/add_col.png");
-	AddRow              .addFile(":/ico/16x16/add_row.png");
 	Allowed             .addFile(":/ico/16x16/user-online.png");
 	ApplicationExit     .addFile(":/ico/16x16/application-exit.png");
 	ApplicationExit     .addFile(":/ico/22x22/application-exit.png");
@@ -351,8 +345,6 @@ void QET::Icons::initIcons() {
 	Raise               .addFile(":/ico/22x22/raise.png");
 	Remove              .addFile(":/ico/16x16/list-remove.png");
 	Remove              .addFile(":/ico/22x22/list-remove.png");
-	RemoveColumn        .addFile(":/ico/16x16/remove_col.png");
-	RemoveRow           .addFile(":/ico/16x16/remove_row.png");
 	Restore             .addFile(":/ico/22x22/restaurer.png");
 	SendBackward        .addFile(":/ico/22x22/send_backward.png");
 	Settings            .addFile(":/ico/128x128/settings.png");
