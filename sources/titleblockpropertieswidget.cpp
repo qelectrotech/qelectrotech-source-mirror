@@ -338,7 +338,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 		tr(
 			"Vous pouvez définir ici vos propres associations noms/valeurs pour"
 			" que le cartouche en tienne compte. Exemple : associer le nom "
-			"\"volta\" et la valeur \"1745\" remplacera %volta par 1745 dans le "
+			"\"volta\" et la valeur \"1745\" remplacera %{volta} par 1745 dans le "
 			"cartouche."
 		)
 	);

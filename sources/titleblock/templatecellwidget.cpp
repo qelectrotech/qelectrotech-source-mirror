@@ -245,7 +245,7 @@ void TitleBlockTemplateCellWidget::editLabelDisplayed() {
 */
 void TitleBlockTemplateCellWidget::editLabel() {
 	if (!edited_cell_) return;
-	editTranslatableValue(edited_cell_ -> label, "label", tr("Label de cette cellule :"));
+	editTranslatableValue(edited_cell_ -> label, "label", tr("Label de cette cellule"));
 	label_input_ -> setText(edited_cell_ -> label.name());
 }
 
@@ -255,7 +255,7 @@ void TitleBlockTemplateCellWidget::editLabel() {
 */
 void TitleBlockTemplateCellWidget::editValue() {
 	if (!edited_cell_) return;
-	editTranslatableValue(edited_cell_ -> value, "value", tr("Valeur de cette cellule :"));
+	editTranslatableValue(edited_cell_ -> value, "value", tr("Valeur de cette cellule"));
 	value_input_ -> setText(edited_cell_ -> value.name());
 }
 
@@ -372,19 +372,28 @@ bool TitleBlockTemplateCellWidget::isReadOnly() const {
 	ModifyTitleBlockCellCommand object through the cellModified() signal.
 	@param names Translatable string to be edited
 	@param attribute Name of the edited cell attribute
-	@param label Label to be displayed when editing the string
+	@param title Title of the dialog window
 */
-void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const QString &attribute, const QString &label) const {
+void TitleBlockTemplateCellWidget::editTranslatableValue(NamesList &names, const QString &attribute, const QString &title) const {
 	NamesListWidget *names_widget = new NamesListWidget();
 	names_widget -> setNames(names);
 	QDialogButtonBox * buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
 	
+	QLabel *information = new QLabel(labelValueInformationString());
+	information -> setTextFormat(Qt::RichText);
+	information -> setWordWrap(true);
+	
+	QLabel *def_var_label = new QLabel(defaultVariablesString());
+	def_var_label -> setTextFormat(Qt::RichText);
+	
 	QVBoxLayout *editor_layout = new QVBoxLayout();
-	editor_layout -> addWidget(new QLabel(label));
+	editor_layout -> addWidget(information);
 	editor_layout -> addWidget(names_widget);
+	editor_layout -> addWidget(def_var_label);
 	editor_layout -> addWidget(buttons);
 	
 	QDialog edit_dialog;
+	edit_dialog.setWindowTitle(title);
 	connect(buttons, SIGNAL(rejected()), &edit_dialog, SLOT(reject()));
 	connect(buttons, SIGNAL(accepted()), &edit_dialog, SLOT(accept()));
 	edit_dialog.setLayout(editor_layout);
@@ -410,8 +419,46 @@ void TitleBlockTemplateCellWidget::emitModification(const QString &attribute, co
 	ModifyTitleBlockCellCommand *command = new ModifyTitleBlockCellCommand(edited_cell_);
 	command -> addModification(attribute, new_value);
 	command -> setText(
-		tr("Édition d'une cellule : %1", "label of and undo command when editing a cell")
+		tr("\311dition d'une cellule : %1", "label of and undo command when editing a cell")
 		.arg(TitleBlockCell::attributeName(attribute))
 	);
 	emit(cellModified(command));
+}
+
+/**
+	@return a string describing the various variables provided by default by
+	the application.
+*/
+QString TitleBlockTemplateCellWidget::defaultVariablesString() const {
+	QString def_var_string = tr(
+		"Par d\351faut, les variables suivantes sont disponibles :"
+		"<ul>"
+		"<li>%{author} : auteur du folio</li>"
+		"<li>%{date} : date du folio</li>"
+		"<li>%{title} : titre du folio</li>"
+		"<li>%{filename} : nom de fichier du projet</li>"
+		"<li>%{folio} : indications relatives au folio</li>"
+		"<li>%{folio-id} : position du folio dans le projet</li>"
+		"<li>%{folio-total} : nombre total de folios dans le projet</li>"
+		"</ul>"
+	);
+	return(def_var_string);
+}
+
+/**
+	@return a string describing what the user may enter as cell label / value.
+*/
+QString TitleBlockTemplateCellWidget::labelValueInformationString() const {
+	QString lab_val_inf_string = tr(
+		"Chaque cellule d'un cartouche affiche une valeur, optionnellement "
+		"pr\351c\351d\351e d'un label. Tous deux peuvent \352tre traduits en "
+		"plusieurs langues."
+		"<br/>"
+		"Comme ce que vous \351ditez actuellement est un "
+		"<em>mod\350le</em> de cartouche, ne saisissez pas directement des "
+		"donn\351es brutes : ins\351rez plut\364t des variables sous la forme "
+		"%{nom-de-variable}, qui seront ensuite remplac\351es par la valeur "
+		"ad\351quate sur le folio."
+	);
+	return(lab_val_inf_string);
 }

@@ -86,6 +86,8 @@ class TitleBlockTemplateCellWidget : public QWidget {
 	protected:
 	void editTranslatableValue(NamesList &, const QString &, const QString &) const;
 	void emitModification(const QString &, const QVariant &) const;
+	QString defaultVariablesString() const;
+	QString labelValueInformationString() const;
 	
 	private:
 	void initWidgets();
