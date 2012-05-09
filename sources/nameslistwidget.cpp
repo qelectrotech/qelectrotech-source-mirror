@@ -17,6 +17,7 @@
 */
 #include "nameslistwidget.h"
 #include "qetmessagebox.h"
+#include "qeticons.h"
 
 /**
 	Constructeur
@@ -27,12 +28,30 @@ NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent), read_only(f
 	setLayout(names_list_layout);
 	
 	tree_names = new QTreeWidget();
+	tree_names -> setRootIsDecorated(false);
 	tree_names -> setColumnCount(2);
 	QStringList headers;
-	headers << tr("Langue") << tr("Nom");
+	headers << tr("Langue") << tr("Texte");
 	tree_names -> setHeaderLabels(headers);
+	tree_names -> setWhatsThis(
+		tr(
+			"Cette liste vous permet de saisir un court texte de façon \340 ce"
+			" qu'il soit traduisible dans d'autres langues. Pour ce faire, elle"
+			" associe des codes ISO 639-1 de langues (ex. : \"fr\" pour"
+			" fran\347ais) aux traductions du texte en question dans ces"
+			" m\352mes langues.",
+			"\"What's this\" tip"
+		)
+	);
 	
-	button_add_line = new QPushButton(tr("Ajouter une ligne"));
+	button_add_line = new QPushButton(QET::Icons::Add, tr("Ajouter une ligne"));
+	button_add_line -> setWhatsThis(
+		tr(
+			"Ce bouton permet d'ajouter une association langue / traduction "
+			"dans la liste ci-dessus.",
+			"\"What's this\" tip"
+		)
+	);
 	connect(button_add_line, SIGNAL(released()), this, SLOT(addLine()));
 	
 	names_list_layout -> addWidget(tree_names);
