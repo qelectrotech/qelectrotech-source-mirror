@@ -422,7 +422,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Toto je oblast, ve které plodíte své výkresy přidáváním prvků a umísťováním vodičů mezi jejich koncovkami. Také můžete přidat nezávislé texty.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="187"/>
@@ -1567,7 +1567,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zvýraznit čerstvě začleněné prvky v panelu</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>

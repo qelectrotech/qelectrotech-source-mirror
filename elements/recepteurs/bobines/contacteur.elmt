@@ -3,6 +3,7 @@
         <name lang="en">contactor</name>
         <name lang="fr">Contacteur</name>
         <name lang="pl">Przekaźnik</name>
+        <name lang="cs">Stykač</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
