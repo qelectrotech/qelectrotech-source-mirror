@@ -641,7 +641,7 @@ QString QETProject::integrateElement(const QString &elmt_path, MoveElementsHandl
 		} else if (action == QET::Erase) {
 			// il faut ecraser l'element deja integre
 			BasicMoveElementsHandler *erase_handler = new BasicMoveElementsHandler();
-			ElementsLocation result = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
+			result = copyElementWithHandler(integ_elmt, target_cat, erase_handler, error_message);
 			delete erase_handler;
 		} else if (action == QET::Rename) {
 			// il faut faire cohabiter les deux elements en renommant le nouveau 
