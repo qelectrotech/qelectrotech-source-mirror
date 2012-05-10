@@ -1565,7 +1565,7 @@ Zmiany zostaną zapisane.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
-        <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
+        <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>Wyróżnij w panelu elementy wstawiane jako nowe</translation>
     </message>

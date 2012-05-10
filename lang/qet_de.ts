@@ -1291,7 +1291,7 @@ Die Änderungen sind endgültig.</translation>
         <translation>Allgemein</translation>
     </message>
     <message>
-        <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
+        <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>Entwickeln Sie in diesem Panel neu integierte Elemente</translation>
     </message>

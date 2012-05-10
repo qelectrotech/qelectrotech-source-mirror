@@ -1565,7 +1565,7 @@ Provedené změny budou konečné.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
-        <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
+        <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>Zvýraznit čerstvě začleněné prvky v panelu</translation>
     </message>

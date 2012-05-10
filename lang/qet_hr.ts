@@ -1558,7 +1558,7 @@ Promjene su konačne.</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
-        <source>Mettre en valeur dans le panel les éléments fraichement intégrés</source>
+        <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
         <translation>Označite elemente u integriranoj ploči</translation>
     </message>

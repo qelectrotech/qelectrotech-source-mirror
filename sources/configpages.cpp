@@ -118,7 +118,7 @@ GeneralConfigurationPage::GeneralConfigurationPage(QWidget *parent) : ConfigPage
 	
 	elements_management_ = new QGroupBox(tr("Gestion des \351l\351ments"), this);
 	integrate_elements_ = new QCheckBox(tr("Int\351grer automatiquement les \351l\351ments dans les projets (recommand\351)"));
-	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les \351l\351ments fraichement int\351gr\351s", "configuration option"));
+	highlight_integrated_elements_ = new QCheckBox(tr("Mettre en valeur dans le panel les \351l\351ments fra\356chement int\351gr\351s", "configuration option"));
 	default_element_infos_label_ = new QLabel(
 		tr(
 			"Chaque \351l\351ment embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. "
