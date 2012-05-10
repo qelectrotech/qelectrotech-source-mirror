@@ -761,7 +761,7 @@ SplitCellsCommand::SplitCellsCommand(const TitleBlockTemplateCellsSet &splitted_
 	setText(
 		QString(
 			QObject::tr(
-				"Séparation d'une cellule en %1",
+				"S\351paration d'une cellule en %1",
 				"label used in the title block template editor undo list; %1 is the number of cells after the split"
 			)
 		).arg(spanned_cells_.count() + 1)

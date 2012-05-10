@@ -35,7 +35,7 @@ NamesListWidget::NamesListWidget(QWidget *parent) : QWidget(parent), read_only(f
 	tree_names -> setHeaderLabels(headers);
 	tree_names -> setWhatsThis(
 		tr(
-			"Cette liste vous permet de saisir un court texte de façon \340 ce"
+			"Cette liste vous permet de saisir un court texte de fa\347on \340 ce"
 			" qu'il soit traduisible dans d'autres langues. Pour ce faire, elle"
 			" associe des codes ISO 639-1 de langues (ex. : \"fr\" pour"
 			" fran\347ais) aux traductions du texte en question dans ces"

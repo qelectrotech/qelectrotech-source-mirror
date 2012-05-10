@@ -464,7 +464,7 @@ QTreeWidgetItem *ElementsPanel::addCollection(ElementsCollection *collection) {
 QTreeWidgetItem *ElementsPanel::updateTemplatesCollectionItem(QTreeWidgetItem *tbt_collection_qtwi, TitleBlockTemplatesCollection *tbt_collection, PanelOptions options, bool freshly_created) {
 	QTreeWidgetItem *tbtc_qtwi = GenericPanel::updateTemplatesCollectionItem(tbt_collection_qtwi, tbt_collection, options, freshly_created);
 	if (tbt_collection && tbt_collection -> parentProject()) {
-		tbtc_qtwi -> setText(0, tr("Cartouches embarqués"));
+		tbtc_qtwi -> setText(0, tr("Cartouches embarqu\351s"));
 		tbtc_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection de cartouches embarqu\351e", "Status tip"));
 	}
 	return(tbtc_qtwi);
@@ -498,7 +498,7 @@ QTreeWidgetItem *ElementsPanel::updateElementsCategoryItem(QTreeWidgetItem *cate
 QTreeWidgetItem *ElementsPanel::updateElementsCollectionItem(QTreeWidgetItem *collection_qtwi, ElementsCollection *collection, PanelOptions options, bool freshly_created) {
 	QTreeWidgetItem *c_qtwi = GenericPanel::updateElementsCollectionItem(collection_qtwi, collection, options, freshly_created);
 	if (collection && collection -> project()) {
-		c_qtwi -> setText(0, tr("Collection embarquée"));
+		c_qtwi -> setText(0, tr("Collection embarqu\351e"));
 		c_qtwi -> setStatusTip(0, tr("Double-cliquez pour r\351duire ou d\351velopper cette collection d'\351l\351ments embarqu\351e", "Status tip"));
 	}
 	return(c_qtwi);

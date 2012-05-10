@@ -665,7 +665,7 @@ int ProjectView::cleanProject() {
 	}
 	
 	// construit un petit dialogue pour parametrer le nettoyage
-	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les mod\350les de cartouche inutilisés dans le projet"));
+	QCheckBox *clean_tbt        = new QCheckBox(tr("Supprimer les mod\350les de cartouche inutilis\351s dans le projet"));
 	QCheckBox *clean_elements   = new QCheckBox(tr("Supprimer les \351l\351ments inutilis\351s dans le projet"));
 	QCheckBox *clean_categories = new QCheckBox(tr("Supprimer les cat\351gories vides"));
 	QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Ok | QDialogButtonBox::Cancel);

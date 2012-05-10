@@ -85,7 +85,7 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	QUndoView *undo_view = new QUndoView(&undo_group, this);
 	undo_view -> setEmptyLabel(tr("Aucune modification"));
 	undo_view -> setStatusTip(tr("Cliquez sur une action pour revenir en arri\350re dans l'\351dition de votre sch\351ma", "Status tip"));
-	undo_view -> setWhatsThis(tr("Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l'état du schéma juste après son application.", "\"What's this\" tip"));
+	undo_view -> setWhatsThis(tr("Ce panneau liste les diff\351rentes actions effectu\351es sur le sch\351ma courant. Cliquer sur une action permet de revenir \340 l'\351tat du sch\351ma juste apr\350s son application.", "\"What's this\" tip"));
 	qdw_undo -> setWidget(undo_view);
 	
 	addDockWidget(Qt::LeftDockWidgetArea, qdw_undo);

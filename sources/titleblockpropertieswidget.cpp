@@ -336,7 +336,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	// widgets for users to enter their own name/value pairs
 	additional_fields_label = new QLabel(
 		tr(
-			"Vous pouvez définir ici vos propres associations noms/valeurs pour"
+			"Vous pouvez d\351finir ici vos propres associations noms/valeurs pour"
 			" que le cartouche en tienne compte. Exemple : associer le nom "
 			"\"volta\" et la valeur \"1745\" remplacera %{volta} par 1745 dans le "
 			"cartouche."
@@ -365,7 +365,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	
 	tabbar = new QTabBar(this);
 	tabbar -> addTab(tr("Principales"));
-	tabbar -> addTab(tr("Personnalisées"));
+	tabbar -> addTab(tr("Personnalis\351es"));
 	tabbar -> setShape(QTabBar::RoundedSouth);
 }
 

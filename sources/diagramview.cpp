@@ -48,9 +48,9 @@ DiagramView::DiagramView(Diagram *diagram, QWidget *parent) : QGraphicsView(pare
 	setInteractive(true);
 	
 	QString whatsthis = tr(
-		"Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant"
-		" des éléments et en posant des conducteurs entre leurs bornes. Il est"
-		" également possible d'ajouter des textes indépendants.",
+		"Ceci est la zone dans laquelle vous concevez vos sch\351mas en y ajoutant"
+		" des \351l\351ments et en posant des conducteurs entre leurs bornes. Il est"
+		" \351galement possible d'ajouter des textes ind\351pendants.",
 		"\"What's this?\" tip"
 	);
 	setWhatsThis(whatsthis);
