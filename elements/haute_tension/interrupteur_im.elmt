@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="35" hotspot_y="55" height="130" type="element" orientation="dyyy">
     <names>
+        <name lang="en">IM switch</name>
         <name lang="fr">Interrupteur IM</name>
         <name lang="pl">Rozłącznik IM</name>
         <name lang="cs">Přerušovač IM</name>
