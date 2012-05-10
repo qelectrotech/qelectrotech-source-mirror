@@ -145,6 +145,7 @@ class GenericPanel : public QTreeWidget {
 	virtual QTreeWidgetItem *updateElementsCategoryItem(QTreeWidgetItem *, ElementsCategory *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *fillElementsCategoryItem  (QTreeWidgetItem *, ElementsCategory *, PanelOptions = AddAllChild, bool = false);
 	virtual QTreeWidgetItem *refreshElementsCategory(const ElementsLocation &);
+	virtual QTreeWidgetItem *refreshElement(const ElementsLocation &);
 	
 	// elements methods
 	public:

@@ -788,6 +788,27 @@ QTreeWidgetItem *GenericPanel::refreshElementsCategory(const ElementsLocation &l
 }
 
 /**
+	Refresh element at \a location.
+	@return the refreshed tree item
+*/
+QTreeWidgetItem *GenericPanel::refreshElement(const ElementsLocation &location) {
+	QTreeWidgetItem *item = itemForElementsLocation(location);
+	if (!item) return(0);
+	if (item -> type() != QET::Element) return(0);
+	
+	QTreeWidgetItem *parent = item -> parent();
+	if (!parent) return(0);
+	
+	QTreeWidgetItem *result = updateElementItem(
+		item,
+		QETApp::collectionItem(location) -> toElement(),
+		PanelOptions(QFlag(parent -> data(0, GenericPanel::PanelFlags).toInt())),
+		false
+	);
+	return(result);
+}
+
+/**
 	
 */
 QTreeWidgetItem *GenericPanel::addElement(ElementDefinition *element, QTreeWidgetItem *parent_item, PanelOptions options) {
@@ -983,10 +1004,14 @@ QList<ElementsLocation> GenericPanel::elementIntegrated(QETProject *project, con
 	}
 	if (added_locations.count()) {
 		refreshElementsCategory(loc);
+	} else {
+		if (refreshElement(location)) {
+			added_locations << location;
+		}
 	}
 	
 	// Since we have refreshed the panel before the element is actually used by
-	// the diagram, it will appear as unused; we force it as unused.
+	// the diagram, it will appear as unused; we force it as used.
 	// FIXME a better solution would be to get warned when an element gets used
 	// or unused.
 	if (QTreeWidgetItem *integrated_element_qtwi = itemForElementsLocation(location)) {
