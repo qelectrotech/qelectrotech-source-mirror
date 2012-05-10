@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام ب 3 مسارات مُحرّك</name>
+        <name lang="en">3-way motorized valve</name>
         <name lang="fr">Vanne 3 Voies motorisée</name>
         <name lang="pl">Zawór trójdrożny z napędem</name>
         <name lang="cs">Trojcestný ventil s pohonem</name>

@@ -1,6 +1,7 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط T  مستقيم</name>
+        <name lang="en">Right tees</name>
         <name lang="fr">Tés Droit</name>
         <name lang="pl">Złączka T</name>
         <name lang="cs">Spojovací článek T</name>

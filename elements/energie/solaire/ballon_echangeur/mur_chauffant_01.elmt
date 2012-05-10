@@ -1,6 +1,7 @@
 <definition width="120" version="0.3" hotspot_x="60" hotspot_y="50" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">جدار سخّان</name>
+        <name lang="en">Wall Heater</name>
         <name lang="fr">Mur Chauffant</name>
         <name lang="pl">Ogrzewanie ścienne</name>
         <name lang="cs">Stěnový ohřev</name>

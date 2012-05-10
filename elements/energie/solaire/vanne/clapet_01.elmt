@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">صمّام ضدّ الرجع بالجاذبية </name>
+        <name lang="en">Check valve to Gravity</name>
         <name lang="fr">Clapet anti-retour à Gravité </name>
         <name lang="pl">Zawór zwrotny grawitacyjny</name>
         <name lang="cs">Gravitační pojistný ventil</name>

@@ -1,6 +1,7 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مُرشّح بغربال</name>
+        <name lang="en">Filter Screens</name>
         <name lang="fr">Filtre à Tamis</name>
         <name lang="pl">Filtr</name>
         <name lang="cs">Filtr se sítkem</name>

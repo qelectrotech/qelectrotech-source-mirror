@@ -1,7 +1,8 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">اتجاه سائل</name>
-        <name lang="fr">sens fluide</name>
+        <name lang="en">Sense fluid 2</name>
+        <name lang="fr">Sens fluide</name>
         <name lang="pl">Kierunek przepływu cieczy</name>
         <name lang="cs">Směr průtoku kapaliny</name>
     </names>

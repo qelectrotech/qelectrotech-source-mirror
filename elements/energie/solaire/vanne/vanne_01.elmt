@@ -1,6 +1,7 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام توقّف</name>
+        <name lang="en">Stop valve</name>
         <name lang="fr">Vanne d'arret</name>
         <name lang="pl">Zawór odcinający</name>
         <name lang="cs">Uzavírací ventil</name>

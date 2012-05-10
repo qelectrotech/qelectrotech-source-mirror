@@ -1,7 +1,8 @@
 <definition width="80" version="0.3" hotspot_x="25" hotspot_y="35" height="110" type="element" orientation="dnnn">
     <names>
         <name lang="ar">صمّام 3 مسارات بمناطق</name>
-        <name lang="fr">circul. vanne 3voies à secteur</name>
+        <name lang="en">Circulation. 3-way valve to sector</name>
+        <name lang="fr">Circul. vanne 3voies à secteur</name>
         <name lang="pl">Cyrkulacja, zawory trójdrożne</name>
         <name lang="cs">Cirkulace, uzávěry 3 směry</name>
     </names>

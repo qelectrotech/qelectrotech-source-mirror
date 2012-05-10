@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام ضدّ الرجع بكرة</name>
+        <name lang="en">Check Valve Ball</name>
         <name lang="fr">Clapet anti-retour à Bille</name>
         <name lang="pl">Zawór zwrotny kulowy</name>
         <name lang="cs">Kuličkový pojistný ventil</name>

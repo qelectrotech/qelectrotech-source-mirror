@@ -1,7 +1,8 @@
 <qet-directory>
     <names>
-        <name lang="fr">signalétique</name>
-		<name lang="ar">لافتات</name>
+        <name lang="fr">Signalétique</name>
+        <name lang="en">Signage</name>
+        <name lang="ar">لافتات</name>
         <name lang="cs">Označení</name>
         <name lang="pl">Oznaczenia</name>
     </names>

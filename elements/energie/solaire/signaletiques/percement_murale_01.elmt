@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ممر حائطي</name>
+        <name lang="en">Passage wall</name>
         <name lang="fr">Passage murale </name>
         <name lang="pl">Przejście przez ścianę</name>
         <name lang="cs">Přechod přes stěnu</name>

@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام أمان مع استشعار حراري</name>
+        <name lang="en">Thermal safety valve, with sensor</name>
         <name lang="fr">Soupape de sûreté thermique, avec capteur</name>
         <name lang="pl">Zawór bezpieczeństwa z czujnikiem temperatury</name>
         <name lang="cs">Pojistný ventil s teplotním čidlem</name>

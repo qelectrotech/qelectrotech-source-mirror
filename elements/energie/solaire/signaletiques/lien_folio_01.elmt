@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط صفحة</name>
+        <name lang="en">Folio link</name>
         <name lang="fr">lien Folio</name>
         <name lang="pl">Wejście adresowe 1</name>
         <name lang="cs">Adresní místo 1</name>

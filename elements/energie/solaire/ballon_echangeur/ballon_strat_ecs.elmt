@@ -1,6 +1,7 @@
 <definition width="150" version="0.3" hotspot_x="75" hotspot_y="75" height="260" type="element" orientation="dyyy">
     <names>
         <name lang="ar">بالون تراتب</name>
+        <name lang="en">Stratification balloon ECS</name>
         <name lang="fr">Ballon Stratification ECS</name>
         <name lang="pl">Zasobnik warstwowy CWU</name>
         <name lang="cs">Vrstvový zásobnik ECS</name>

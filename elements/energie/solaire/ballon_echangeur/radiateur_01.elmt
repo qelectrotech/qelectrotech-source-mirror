@@ -1,6 +1,7 @@
 <definition width="140" version="0.3" hotspot_x="40" hotspot_y="20" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مشعاع</name>
+        <name lang="en">Steel radiator</name>
         <name lang="fr">Radiateur Acier</name>
         <name lang="pl">Grzejnik płytowy</name>
         <name lang="cs">Deskové topné těleso</name>

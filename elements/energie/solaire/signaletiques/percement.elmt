@@ -1,7 +1,8 @@
 <definition width="40" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ممر نفقي</name>
-        <name lang="fr">passage percement</name>
+        <name lang="en">Tunneling transition</name>
+        <name lang="fr">Passage percement</name>
         <name lang="pl">Przejście</name>
         <name lang="cs">Přechod</name>
     </names>

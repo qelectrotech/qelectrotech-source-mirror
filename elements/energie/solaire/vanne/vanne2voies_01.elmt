@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="40" height="60" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام بمسارين ومحرّك</name>
+        <name lang="en">2-way motorized valve</name>
         <name lang="fr">Vanne 2voies motorisées </name>
         <name lang="pl">Zawór dwudrożny z napędem</name>
         <name lang="cs">Dvoucestný ventil s pohonem</name>
