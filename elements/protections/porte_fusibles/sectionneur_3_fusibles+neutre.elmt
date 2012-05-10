@@ -1,7 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح عزل رباعي بثلاث مصهرات</name>
-        <name lang="en">Fuse-disconnector</name>
+        <name lang="en">switchfuses</name>
         <name lang="fr">Fusible-sectionneur</name>
         <name lang="pl">Odłącznik bezpiecznikowy</name>
         <name lang="cs">Tavný odpojovač</name>
