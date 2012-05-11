@@ -5912,7 +5912,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Export this logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
@@ -5985,17 +5985,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Choose a file to export this logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translation>All files (*);;Vector graphics (*.svg);;Bitmap graphics (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Unable to export to the specified file</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
