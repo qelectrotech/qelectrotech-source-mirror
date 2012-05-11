@@ -9,6 +9,14 @@
                 <translation lang="it">Autore</translation>
                 <translation lang="hr">Autor</translation>
                 <translation lang="pl">Autor</translation>
+                <translation lang="ar">المؤلف</translation>
+                <translation lang="ca">Autor</translation>
+                <translation lang="cs">Autor</translation>
+                <translation lang="de">Author</translation>
+                <translation lang="es">Autor</translation>
+                <translation lang="pt">Autor</translation>
+                <translation lang="ro">Autor</translation>
+                <translation lang="ru">Автор</translation>
             </label>
             <value>
                 <translation lang="en">%author</translation>
@@ -21,6 +29,14 @@
                 <translation lang="it">Data</translation>
                 <translation lang="hr">Datum</translation>
                 <translation lang="pl">Data</translation>
+                <translation lang="ar">تاريخ</translation>
+                <translation lang="ca">Data</translation>
+                <translation lang="cs">Datum</translation>
+                <translation lang="de">Datum</translation>
+                <translation lang="es">Fecha</translation>
+                <translation lang="pt">Data</translation>
+                <translation lang="ro">Data</translation>
+                <translation lang="ru">Дата</translation>
             </label>
             <value>
                 <translation lang="en">%date</translation>
@@ -33,6 +49,14 @@
                 <translation lang="it">Titolo</translation>
                 <translation lang="hr">Naslov</translation>
                 <translation lang="pl">Tytuł</translation>
+                <translation lang="ar">عنوان</translation>
+                <translation lang="ca">Títol</translation>
+                <translation lang="cs">Název</translation>
+                <translation lang="de">Titel</translation>
+                <translation lang="es">Título</translation>
+                <translation lang="pt">Título</translation>
+                <translation lang="ro">Titlu</translation>
+                <translation lang="ru">Название</translation>
             </label>
             <value>
                 <translation lang="en">%title</translation>
@@ -45,6 +69,14 @@
                 <translation lang="it">File</translation>
                 <translation lang="hr">Datoteka</translation>
                 <translation lang="pl">Plik</translation>
+                <translation lang="ar">ملف</translation>
+                <translation lang="ca">Fitxer</translation>
+                <translation lang="cs">Soubor</translation>
+                <translation lang="de">Datei</translation>
+                <translation lang="es">Archivo</translation>
+                <translation lang="pt">Ficheiro</translation>
+                <translation lang="ro">Fisier</translation>
+                <translation lang="ru">Файл</translation>
             </label>
             <value>
                 <translation lang="en">%filename</translation>
@@ -57,6 +89,14 @@
                 <translation lang="it">Foglio</translation>
                 <translation lang="hr">List</translation>
                 <translation lang="pl">Strona</translation>
+                <translation lang="ar">صفحة</translation>
+                <translation lang="ca">Folio</translation>
+                <translation lang="cs">Folio</translation>
+                <translation lang="de">Seite</translation>
+                <translation lang="es">Folio</translation>
+                <translation lang="pt">Folha</translation>
+                <translation lang="ro">Pagina</translation>
+                <translation lang="ru">Фолио</translation>
             </label>
             <value>
                 <translation lang="en">%{folio-id}/%{folio-total}</translation>
