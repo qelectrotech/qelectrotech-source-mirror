@@ -190,13 +190,15 @@ bool NamesList::operator==(const NamesList &nl) const {
 }
 
 /**
-	Retourne le nom approprie en fonction de la langue du systeme
-	Par ordre de preference, on prendra :
-		- le nom dans la langue du systeme
-		- le nom en anglais
-		- le nom du dossier
-	@param fallback_name Le nom a retourner si aucun nom approprie n'est trouve
-	@return Le nom approprie en fonction de la langue du systeme
+	Return the adequate name regarding the current system locale.
+	By order of preference, this function chooses:
+		- the name in the system language
+		- the English name
+		- the provided fallback name if non-empty
+		- the first language encountered in the list
+		- an empty string
+	@param fallback_name name to be returned when no adequate name has been found
+	@return The adequate name regarding the current system locale.
 */
 QString NamesList::name(const QString &fallback_name) const {
 	// recupere les deux premiers caracteres de la locale en cours du systeme
@@ -206,8 +208,10 @@ QString NamesList::name(const QString &fallback_name) const {
 		returned_name = hash_names[system_language];
 	} else if (!hash_names["en"].isEmpty()) {
 		returned_name = hash_names["en"];
-	} else {
+	} else if (!fallback_name.isEmpty()) {
 		returned_name = fallback_name;
+	} else if (hash_names.count()) {
+		returned_name = hash_names.value(hash_names.keys().first());
 	}
 	return(returned_name);
 }
