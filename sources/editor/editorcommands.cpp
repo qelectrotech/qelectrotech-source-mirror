@@ -236,6 +236,7 @@ void AddPartCommand::undo() {
 void AddPartCommand::redo() {
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
+		part -> setZValue(editor_scene -> items().count());
 		editor_scene -> clearSelection();
 		part -> setSelected(true);
 		first_redo = false;
