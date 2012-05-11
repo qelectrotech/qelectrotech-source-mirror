@@ -87,6 +87,7 @@ class TitleBlockTemplate : public QObject {
 	void setAllSpans(const QHash<TitleBlockCell *, QPair<int, int> > &);
 	bool addLogo(const QString &, QByteArray *, const QString & = "svg", const QString & = "xml");
 	bool addLogoFromFile(const QString &, const QString & = QString());
+	bool saveLogoToFile(const QString &, const QString &);
 	bool removeLogo(const QString &);
 	bool renameLogo(const QString &, const QString &);
 	void setLogoStorage(const QString &, const QString &);

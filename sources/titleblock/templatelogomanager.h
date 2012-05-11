@@ -52,6 +52,7 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	private slots:
 	void updateLogoInformations(QListWidgetItem *, QListWidgetItem *);
 	void addLogo();
+	void exportLogo();
 	void removeLogo();
 	void renameLogo();
 	
@@ -63,7 +64,8 @@ class TitleBlockTemplateLogoManager : public QWidget {
 	QLabel *logos_label_;                  ///< simple displayed label
 	QListWidget *logos_view_;              ///< area showing the logos
 	QPushButton *add_button_;              ///< button to add a new logo
-	QPushButton *delete_button_;           ///< button to delete an embeded logo
+	QPushButton *export_button_;           ///< button to export an embedded logo
+	QPushButton *delete_button_;           ///< button to delete an embedded logo
 	QGroupBox *logo_box_;                  ///< current logo properties box
 	QLabel *logo_name_label_;              ///< "name:" label
 	QLineEdit *logo_name_;                 ///< current logo name

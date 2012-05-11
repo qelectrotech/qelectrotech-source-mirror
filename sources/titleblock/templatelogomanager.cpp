@@ -85,6 +85,7 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	logos_view_ -> setMovement(QListView::Static);
 	logos_view_ -> setResizeMode(QListView::Adjust);
 	add_button_ = new QPushButton(QET::Icons::Add, tr("Ajouter un logo"));
+	export_button_ = new QPushButton(QET::Icons::DocumentExport, tr("Exporter ce logo"));
 	delete_button_ = new QPushButton(QET::Icons::Remove, tr("Supprimer ce logo"));
 	logo_box_ = new QGroupBox(tr("Propri\351t\351s"));
 	logo_name_label_ = new QLabel(tr("Nom :"));
@@ -99,7 +100,7 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	hlayout1_ -> addWidget(rename_button_);
 	
 	hlayout0_ = new QHBoxLayout();
-	hlayout0_ -> addWidget(add_button_);
+	hlayout0_ -> addWidget(export_button_);
 	hlayout0_ -> addWidget(delete_button_);
 	
 	vlayout1_ = new QVBoxLayout();
@@ -110,6 +111,7 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 	vlayout0_ = new QVBoxLayout();
 	vlayout0_ -> addWidget(logos_label_);
 	vlayout0_ -> addWidget(logos_view_);
+	vlayout0_ -> addWidget(add_button_);
 	vlayout0_ -> addLayout(hlayout0_);
 	vlayout0_ -> addWidget(logo_box_);
 	setLayout(vlayout0_);
@@ -121,6 +123,7 @@ void TitleBlockTemplateLogoManager::initWidgets() {
 		SLOT(updateLogoInformations(QListWidgetItem *, QListWidgetItem *))
 	);
 	connect(add_button_, SIGNAL(released()), this, SLOT(addLogo()));
+	connect(export_button_, SIGNAL(released()), this, SLOT(exportLogo()));
 	connect(delete_button_, SIGNAL(released()), this, SLOT(removeLogo()));
 	connect(rename_button_, SIGNAL(released()), this, SLOT(renameLogo()));
 }
@@ -282,6 +285,29 @@ void TitleBlockTemplateLogoManager::addLogo() {
 	if (managed_template_ -> addLogoFromFile(filepath, logo_name)) {
 		fillView();
 		emitLogosChangedSignal();
+	}
+}
+
+/**
+	Export the currently selected logo
+*/
+void TitleBlockTemplateLogoManager::exportLogo() {
+	QString current_logo = currentLogo();
+	if (current_logo.isNull()) return;
+	
+	QString filepath = QFileDialog::getSaveFileName(
+		this,
+		tr("Choisir un fichier pour exporter ce logo"),
+		open_dialog_dir_.absolutePath() + "/" + current_logo,
+		tr("Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)")
+	);
+	if (filepath.isEmpty()) return;
+	
+	bool save_logo = managed_template_ -> saveLogoToFile(current_logo, filepath);
+	if (!save_logo) {
+		QMessageBox::critical(this, tr("Erreur"), QString(tr("Impossible d'exporter vers le fichier sp\351cifi\351")));
+	} else {
+		open_dialog_dir_ = QDir(filepath);
 	}
 }
 

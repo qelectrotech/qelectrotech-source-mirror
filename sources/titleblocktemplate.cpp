@@ -1079,7 +1079,7 @@ bool TitleBlockTemplate::addLogo(const QString &logo_name, QByteArray *logo_data
 
 /**
 	@param filepath Path of the image file to add as a logo
-	@param logo_name Name used to store the logo; if none is provided, the
+	@param name Name used to store the logo; if none is provided, the
 	basename of the first argument is used.
 	@return true if the logo could be deleted, false otherwise
 */
@@ -1098,6 +1098,26 @@ bool TitleBlockTemplate::addLogoFromFile(const QString &filepath, const QString 
 	
 	// we then try to add it as a bitmap image
 	return addLogo(filename, &file_content, filepath_info.suffix(), "base64");
+}
+
+/*
+	@param logo_name Name used to store the logo
+	@param filepath Path the logo will be saved as
+	@return true if the logo could be exported, false otherwise
+*/
+bool TitleBlockTemplate::saveLogoToFile(const QString &logo_name, const QString &filepath) {
+	if (!data_logos_.contains(logo_name)) {
+		return(false);
+	}
+	
+	QFile target_file(filepath);
+	if (!target_file.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
+		return(false);
+	}
+	
+	target_file.write(data_logos_[logo_name]);
+	target_file.close();
+	return(true);
 }
 
 /**
