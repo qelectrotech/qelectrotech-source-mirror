@@ -4914,6 +4914,22 @@ Que désirez vous faire ?</source>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
         <translation>Der gewählte Name besteht bereits in einem anderen Logo.</translation>
     </message>
+    <message>
+        <source>Exporter ce logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Choisir un fichier pour exporter ce logo</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;exporter vers le fichier spécifié</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TitleBlockTemplateView</name>
