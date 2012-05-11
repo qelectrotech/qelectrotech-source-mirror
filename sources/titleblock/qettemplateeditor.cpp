@@ -293,7 +293,22 @@ void QETTitleBlockTemplateEditor::editLogos() {
 		if (!logo_manager_) {
 			initLogoManager();
 		}
-		logo_manager_ -> show();
+		
+		logo_manager_ -> layout() -> setContentsMargins(0, 0, 0, 0);
+		QDialogButtonBox *buttons = new QDialogButtonBox(QDialogButtonBox::Close);
+		
+		QVBoxLayout *vlayout0 = new QVBoxLayout();
+		vlayout0 -> addWidget(logo_manager_);
+		vlayout0 -> addWidget(buttons);
+		
+		QDialog d(this);
+		d.setWindowTitle(logo_manager_ -> windowTitle());
+		d.setLayout(vlayout0);
+		connect(buttons, SIGNAL(rejected()), &d, SLOT(reject()));
+		d.exec();
+		
+		// prevent the logo manager from being deleted along with the dialog
+		logo_manager_ -> setParent(this);
 	}
 }
 
