@@ -236,7 +236,9 @@ void AddPartCommand::undo() {
 void AddPartCommand::redo() {
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
-		part -> setZValue(editor_scene -> items().count());
+		QList<QGraphicsItem *> existing_items = editor_scene -> zItems();
+		qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
+		part -> setZValue(z);
 		editor_scene -> clearSelection();
 		part -> setSelected(true);
 		first_redo = false;

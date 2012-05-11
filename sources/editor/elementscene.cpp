@@ -1211,7 +1211,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 				else if (qde.tagName() == "arc")      cep = new PartArc      (element_editor, 0, 0);
 				else continue;
 				if (QGraphicsItem *qgi = dynamic_cast<QGraphicsItem *>(cep)) {
-					qgi -> setZValue(z++);
+					if (!qgi -> zValue()) qgi -> setZValue(z++);
 					loaded_parts << qgi;
 				}
 				cep -> fromXml(qde);
