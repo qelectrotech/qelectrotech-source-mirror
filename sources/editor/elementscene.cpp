@@ -1039,14 +1039,7 @@ QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
 	}
 	
 	// ordonne les parties par leur zValue
-	QMultiMap<qreal, QGraphicsItem *> mm;
-	foreach(QGraphicsItem *qgi, all_items_list) mm.insert(qgi -> zValue(), qgi);
-	all_items_list.clear();
-	QMapIterator<qreal, QGraphicsItem *> i(mm);
-	while (i.hasNext()) {
-		i.next();
-		all_items_list << i.value();
-	}
+	qSort(all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
 	
 	// rajoute eventuellement les bornes
 	if (include_terminals) all_items_list += terminals;
@@ -1299,4 +1292,11 @@ void ElementScene::snapToGrid(QPointF &point) {
 */
 bool ElementScene::mustSnapToGrid(QGraphicsSceneMouseEvent *e) {
 	return(!(e -> modifiers() & Qt::ControlModifier));
+}
+
+/**
+	@return true if \a item1's zValue() is less than \a item2's.
+*/
+bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
+	return(item1-> zValue() < item2 -> zValue());
 }

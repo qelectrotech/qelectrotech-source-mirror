@@ -159,6 +159,7 @@ class ElementScene : public QGraphicsScene {
 	void initPasteArea();
 	void snapToGrid(QPointF &);
 	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
+	static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
 	
 	public slots:
 	void slot_move();
