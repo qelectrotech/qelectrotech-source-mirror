@@ -2053,13 +2053,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>تسمح هذه القائمة بإدخال نص قصير بحيث يُمكن ترجمته إلى لغات أخرى.  للقيام بذلك اجمع بين الشفراتISO 639-1 للغات  &quot;fr&quot; للغة الفرنسية مثلا , و ترجمة النصّ ذو الصلة في تلك اللغات</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2070,7 +2070,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>يسمح هذا الزرّ بإضافة جمع لغة / ترجمة في القائمة أسفله</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="86"/>
@@ -4386,7 +4386,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">إدارة الشعارات</translation>
+        <translation>إدارة الشعارات</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
@@ -4416,19 +4416,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="821"/>
@@ -5110,11 +5110,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation>
             <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5122,11 +5117,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5633,7 +5623,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="224"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>الأسماء لا تحمل سوى الحروف الصغيرة, الأرقام والمطات</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
@@ -5685,17 +5675,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="325"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>جاهز ك %1 بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="334"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>%id و %total جاهزين ك %{folio-id} et %{folio-total} (على التوالي )  بالنسبة لنماذج التعريف . </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="338"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>هنا , يُمكنكم  تعريف الجمعيات الخاصة بكم  أسماء / قيّم لكي تُؤخذ في الإعتبار في إطار التغريف . مثال: جمع اسم &quot;volta&quot; و القيمة  &quot;1745  تُعوّض %{volta}   ب 1745 في إطار .التعريف</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
@@ -5879,22 +5869,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>علامة هاته الخليّة</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>قيمة هاته الخليّة</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>افتراضيا , توجد المتغيّرات التالية:  :&lt;ul&gt;&lt;li&gt;%{author} :مُؤلف الصفحة&lt;/li&gt;&lt;li&gt;%{date} :تاريخ الصفحة&lt;/li&gt;&lt;li&gt;%{title} :عنوان الصفحة&lt;/li&gt;&lt;li&gt;%{filename} : اسم ملف المشروع&lt;/li&gt;&lt;li&gt;%{folio} :تعليمات مُتعلّقة بالصفحة&lt;/li&gt;&lt;li&gt;%{folio-id} : موضع الصفحة في المشروعt&lt;/li&gt;&lt;li&gt;%{folio-total} :العدد الكلّي لصفحات المشروع&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>كلّ خليّة من إطار التعريف تعرض قيمة, مسبوقة إختياريا بعلامة . االإثنين يُمكن ترجمتهما في عدّة لغات. .&lt;br/&gt; كالتي تُحرّرها حاليا  هو &lt;em&gt;  نموذج &lt;/em&gt; إطار تعريف , لا تُدخل مباشرة البيانات الخام: ادرج المتغيرات على الشكل %{اسم-المتغيّر}, والتي تُعوّض لاحقا بالقيّم الملائمة في الصفحة.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -5975,7 +5965,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>تصدير هذا الشعار</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
@@ -6048,17 +6038,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>اختر ملفا لتصدير هذا الشعار</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translation>كلّ الملفات (*)  صور متجهيّة (*.svg)  صور نقطيّة (*.png, *.jpg, *.jpeg, *.gif, *.bmp, *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>استحالة التصدير نحو الملف المحدّد</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
