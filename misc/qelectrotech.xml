@@ -34,6 +34,7 @@
 		<comment xml:lang="pl">Szablon tabliczki rysunkowej QElectroTech</comment>
 		<comment xml:lang="es">Modelo de cartucho QElectroTech</comment>
 		<comment xml:lang="cs">Vzor záhlaví výkresu pro QElectroTech</comment>
+		<comment xml:lang="pt">Modelo de moldura QElectroTech</comment>
 		<glob pattern="*.titleblock" />
 	</mime-type>
 </mime-info>
