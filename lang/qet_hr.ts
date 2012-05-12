@@ -1586,7 +1586,7 @@ Promjene su konačne.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>To je QElectrotech projekt sa ekstenzijom .qet za sheme/listove. Učitava i elemente i modele koji se nalaze na tim shemama/listovima.</translation>
+        <translation type="unfinished">To je QElectrotech projekt sa ekstenzijom .qet za sheme/listove. Učitava i elemente i modele koji se nalaze na tim shemama/listovima.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
@@ -1615,7 +1615,7 @@ Promjene su konačne.</translation>
     <message>
         <location filename="../sources/genericpanel.cpp" line="438"/>
         <source>Modèles de cartouche</source>
-        <translation>Primjer predloška</translation>
+        <translation type="unfinished">Primjer grupe</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="528"/>
@@ -4355,7 +4355,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Uredi znak</translation>
+        <translation>Uredi znak</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
@@ -4433,7 +4433,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="366"/>
@@ -4445,13 +4445,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="371"/>
@@ -4948,8 +4948,6 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5570,7 +5568,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="224"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Naziv može sadržavati jedino mala slova, brojeve i crtice.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
@@ -5621,17 +5619,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="325"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupno grupi predložaka kao %1.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="334"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>%id i %total su dostupni kao grupe predložaka kao %{folio-id} i %{folio-total}respektivno.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="338"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Ovdje možete definirati vlastiti naziv/vrijednost tako da ih naslov grupe uzima u obzir. Npr. pridruživanje naiva &quot;volta&quot; vriejdnosti &quot;1745&quot; zamijenit će %{volta} sa 1745 u naslovu grupe.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
@@ -5815,22 +5813,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaka ćelije</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Vrijednost ćelije</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupne su slijedeće varijable: &lt;ul&gt;&lt;li&gt;%{author}: autor lista&lt;/li&gt;&lt;li&gt;%{date}: datum lista&lt;/li&gt;&lt;li&gt;%{title}: naziv lista&lt;/li&gt;&lt;li&gt;%{filename}: datoteka projekta&lt;/li&gt;&lt;li&gt;%{folio}: list-informacije&lt;/li&gt;&lt;li&gt;%{folio-id}: index lista u sklau s projektom&lt;/li&gt;&lt;li&gt;%{folio-total}: ukupan broj listova u projektu&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Svaka ćelija grupe prikazuje vrijednost , opcijski predviđena oznakom. Oboje može biti prevedeno na nekoliko jezika.&lt;br/&gt; Čak i kad trenutno uređujete grupu &lt;em&gt;template&lt;/em&gt;, izbjegavajte unos raw podataka direktno: prednost dajte varijablama kao %{naziv varijable}, koja se može zamijeniti adekvatnom vrijednosti s lista.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -5907,12 +5905,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
         <source>Ajouter un logo</source>
-        <translation>Dodaj logo</translation>
+        <translation>Dodaj oznaku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvezi oznaku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
@@ -5985,17 +5983,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Izvezi datoteku za izvoz oznake</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Sve datoteke (*);;Vektorska grafika (*.svg);; Bitmap grafika (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Nemoguće izvesti označenu datoteku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
