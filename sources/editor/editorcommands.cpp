@@ -236,9 +236,13 @@ void AddPartCommand::undo() {
 void AddPartCommand::redo() {
 	// le premier appel a redo, lors de la construction de l'objet, ne doit pas se faire
 	if (first_redo) {
-		QList<QGraphicsItem *> existing_items = editor_scene -> zItems();
-		qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
-		part -> setZValue(z);
+		if (!part -> zValue()) {
+			// the added part has no specific zValue already defined, we put it
+			// above existing items (but still under terminals)
+			QList<QGraphicsItem *> existing_items = editor_scene -> zItems();
+			qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
+			part -> setZValue(z);
+		}
 		editor_scene -> clearSelection();
 		part -> setSelected(true);
 		first_redo = false;
