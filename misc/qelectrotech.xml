@@ -33,6 +33,7 @@
 		<comment xml:lang="ar"> QElectrotech نموذج إطار تعريف</comment>
 		<comment xml:lang="pl">Szablon tabliczki rysunkowej QElectroTech</comment>
 		<comment xml:lang="fr">Modelo de cartucho QElectroTech</comment>
+		<comment xml:lang="cs">Vzor záhlaví výkresu pro QElectroTech</comment>
 		<glob pattern="*.titleblock" />
 	</mime-type>
 </mime-info>
