@@ -474,8 +474,7 @@
         <location filename="../sources/diagramview.cpp" line="879"/>
         <source>Folio : %1
 </source>
-        <translation>Folio : %1
-</translation>
+        <translation>Folio : %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="881"/>
@@ -2017,13 +2016,13 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tento seznam vám umožní zadání krátkého textu, takže tento může být přeložen do dalších jazyků. Aby toho dosáhl, spojuje kódy jazyků ISO 639-1 (např. &quot;cs&quot; pro češtinu) s překlady vstupního textu do těchto jazyků.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2034,7 +2033,7 @@ Provedené změny budou konečné.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Toto tlačítko přidá spojení jazyk/překlad do seznamu výše.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="86"/>
@@ -4350,7 +4349,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Spravovat loga</translation>
+        <translation>Spravovat loga</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
@@ -4380,19 +4379,19 @@ Co chcete dělat?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="821"/>
@@ -5582,7 +5581,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="224"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Názvy mohou obsahovat pouze malá písmena, číslice a spojovací čárky.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
@@ -5633,17 +5632,17 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="325"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Dostupné pro vzory záhlaví výkresu jako %1.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="334"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>%id a %total jsou dostupné pro vzory záhlaví výkresů jako %{folio-id} a %{folio-total} (v tomto pořadí).</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="338"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zda můžete stanovit svá vlastní spojení pro názvy/hodnoty, takže s ními záhlaví výkresu bude počítat. Např. spojení názvu &quot;volta&quot; s hodnotou &quot;1745&quot; nahradí %{volta} 1745 v záhlaví výkresu.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
@@ -5827,22 +5826,22 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Štítek pro tuto buňku</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Hodnota této buňky</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>Ve výchozím nastavení jsou dostupné následující proměnné: &lt;ul&gt;&lt;li&gt;%{author}: folio autor&lt;/li&gt;&lt;li&gt;%{date}: folio datum&lt;/li&gt;&lt;li&gt;%{title}: folio název&lt;/li&gt;&lt;li&gt;%{filename}: název souboru projektu&lt;/li&gt;&lt;li&gt;%{folio}: informace vztahující se k foliu&lt;/li&gt;&lt;li&gt;%{folio-id}: ukazatel folia v projektu&lt;/li&gt;&lt;li&gt;%{folio-total}: celkový počet folií v projektu&lt;/li&gt;&lt;/ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Každá buňka záhlaví výkresu zobrazuje hodnotu, optionally preceded by a label. Both can be translated to several languages.&lt;br/&gt;Protože to, co nyní upravujete je &lt;em&gt;vzor&lt;/em&gt; záhlaví výkresu, vyhněte se přímému zadávání surových dat: upřednostňujte vkládání proměnných jako %{variable-name}, jež budou později nahrazeny with přiměřenými hodnotami z folia.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -5870,8 +5869,7 @@ Co chcete dělat?</translation>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Opravdu chcete smazat tento vzor záhlaví výkresu (%1?
-</translation>
+        <translation>Opravdu chcete smazat tento vzor záhlaví výkresu (%1)?</translation>
     </message>
 </context>
 <context>
@@ -5924,7 +5922,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Vyvést toto logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
@@ -5997,17 +5995,17 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat soubor pro vyvedení tohoto loga</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Všechny soubory (*);;Vektorové obrázky (*.svg);;Bitmapové obrázky (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Nelze vyvést do daného souboru</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
