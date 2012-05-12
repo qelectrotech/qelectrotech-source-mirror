@@ -1,9 +1,10 @@
 <definition width="40" version="0.22" hotspot_x="10" hotspot_y="40" height="70" type="element" orientation="dyyy">
     <names>
-        <name lang="en">2 ports - P -> B connected</name>
-        <name lang="fr">2 voies - P -> B relies</name>
-        <name lang="cs">2 cesty - P -> B spojené</name>
-        <name lang="pl">2 drogi - P -> B połączone</name>
+        <name lang="en">2 ports - P -&gt; B connected</name>
+        <name lang="fr">2 voies - P -&gt; B relies</name>
+        <name lang="cs">2 cesty - P -&gt; B spojené</name>
+        <name lang="pl">2 drogi - P -&gt; B połączone</name>
+        <name lang="ar">مسارات - P - &gt; B  مُتّصلة 2</name>
     </names>
     <informations></informations>
     <description>

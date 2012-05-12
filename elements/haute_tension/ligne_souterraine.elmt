@@ -8,6 +8,7 @@ Erdkabel
 </name>
         <name lang="pl">Linia podziemna</name>
         <name lang="cs">Podzemní vodič, zemní kabel</name>
+        <name lang="ar">خط تحت أرضي</name>
     </names>
     <informations>EN 60617: 11-03-01</informations>
     <description>

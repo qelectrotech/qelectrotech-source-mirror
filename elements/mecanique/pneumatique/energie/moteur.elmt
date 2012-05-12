@@ -7,6 +7,7 @@ rotation
 </name>
         <name lang="pl">Silnik pneumatyczny</name>
         <name lang="cs">Motor s jedním směrem otáčení</name>
+        <name lang="ar">مُحرّك باتجاه دوران واحد</name>
     </names>
     <informations></informations>
     <description>

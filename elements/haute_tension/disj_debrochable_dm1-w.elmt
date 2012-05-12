@@ -4,6 +4,7 @@
         <name lang="fr">Disjoncteur debrochable DM-1W</name>
         <name lang="pl">Wyłącznik wysuwny DM-1W</name>
         <name lang="cs">Snímatelný jistič DM-1W</name>
+        <name lang="ar">قاطع بالسحب</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

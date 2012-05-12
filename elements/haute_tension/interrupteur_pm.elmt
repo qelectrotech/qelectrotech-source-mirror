@@ -4,6 +4,7 @@
         <name lang="fr">Interrupteur PM</name>
         <name lang="pl">Rozłącznik PM</name>
         <name lang="cs">Přerušovač PM</name>
+        <name lang="ar">مفتاح PM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

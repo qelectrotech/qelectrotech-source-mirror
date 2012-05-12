@@ -4,6 +4,7 @@
         <name lang="fr">Serrure avec cle toujours prisionniere</name>
         <name lang="pl">Zamek,  klucz niedostępny</name>
         <name lang="cs">Zámek, klíč vždy nedostupný</name>
+        <name lang="ar">قفل بمفتاح دائما سجين</name>
     </names>
     <informations></informations>
     <description>

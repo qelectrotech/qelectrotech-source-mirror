@@ -1,6 +1,6 @@
 <definition width="160" version="0.3" hotspot_x="0" hotspot_y="0" height="160" type="element" orientation="dnnn">
     <names>
-        <name lang="ar">توقف طارئ</name>
+        <name lang="ar">توقيف طارئ</name>
         <name lang="en">Label - Emergency stopping - fr</name>
         <name lang="fr">Etiquette - Arrêt d'urgence - fr</name>
         <name lang="pl">Etykieta - Zatrzymanie awaryjne - fr</name>
@@ -19,7 +19,7 @@
         <text x="18.4775" y="80.4578" size="16" rotation="81" text="D'"/>
         <text x="139.025" y="96.0481" size="16" rotation="279" text="E"/>
         <text x="108.361" y="42.532" size="16" rotation="45" text="T"/>
-        <text x="92.7788" y="34.6776" size="16" rotation="24" text="Ê"/>
+        <text x="92.7788" y="34.6776" size="16" rotation="24" text="&#xCA;"/>
         <text x="73" y="33" size="16" text="R"/>
         <text x="54.3587" y="40.7035" size="16" rotation="335" text="R"/>
         <text x="40.8492" y="52.435" size="16" rotation="315" text="A"/>

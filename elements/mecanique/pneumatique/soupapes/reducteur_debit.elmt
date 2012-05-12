@@ -4,6 +4,7 @@
         <name lang="fr">Régulateur de débit à deux voies avec compensation de température, avec un débit variable de sortie</name>
         <name lang="pl">Regulator przepływu dwudrogowy z wyrównaniem temperatury, ze zmiennym wyjściowym natężeniem przepływu</name>
         <name lang="cs">Dvoucestný ovladač průtoku s vyrovnáním teploty, s proměnlivou výstupní průtokovou rychlostí</name>
+        <name lang="ar">مُخفّض تدفق بمسارين و بتعويض حراري خرج التدفّق قابل للتعديل</name>
     </names>
     <informations></informations>
     <description>

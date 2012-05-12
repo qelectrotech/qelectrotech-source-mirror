@@ -4,6 +4,7 @@
         <name lang="fr">Contacteur CRM</name>
         <name lang="pl">Stycznik CRM</name>
         <name lang="cs">Stykač CRM</name>
+        <name lang="ar">كونتكتور CRM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

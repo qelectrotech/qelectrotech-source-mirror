@@ -4,6 +4,7 @@
         <name lang="fr">Interrupteur IMC</name>
         <name lang="pl">Rozłącznik IMC</name>
         <name lang="cs">Přerušovač IMC</name>
+        <name lang="ar">مفتاح IMC</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

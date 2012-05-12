@@ -8,6 +8,7 @@ rotation
 variable</name>
         <name lang="pl">Silnik pneumatyczny o zmiennej objętości roboczej</name>
         <name lang="cs">Motor s pouze jedním směrem otáčení</name>
+        <name lang="ar">مُحرّك اتجاه دوران واحد مُتغيّر</name>
     </names>
     <informations></informations>
     <description>

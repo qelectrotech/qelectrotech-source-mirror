@@ -4,6 +4,7 @@
         <name lang="fr">Interrupteur à fusible QMB</name>
         <name lang="pl">Rozłącznik z bezpiecznikiem QMB</name>
         <name lang="cs">Přerušovač s pojistkou QMB</name>
+        <name lang="ar">مفتاح بمصهر QMB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

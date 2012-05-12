@@ -4,6 +4,7 @@
         <name lang="fr">Commande chute de pression d'air</name>
         <name lang="pl">Sterowane przez spadek ciśnienia</name>
         <name lang="cs">Řízeno úbytkem tlaku</name>
+        <name lang="ar">تحكم هبوط ضغط الهواء</name>
     </names>
     <informations></informations>
     <description>

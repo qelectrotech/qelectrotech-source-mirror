@@ -4,8 +4,9 @@
         <name lang="fr">Répartiteurs</name>
         <name lang="pl">Rozdzielacz</name>
         <name lang="cs">Rozdělovač</name>
+        <name lang="ar">مُوزّع</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="circle" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="24" x1="20" y2="-1" x2="20"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:black;color:black" y1="2" x1="20" y2="-23" x2="20"/>
