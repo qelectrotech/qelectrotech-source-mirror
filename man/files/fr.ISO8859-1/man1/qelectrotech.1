@@ -4,7 +4,7 @@ qelectrotech \- Éditeur de schémas électriques
 .SH SYNOPSIS
 .B qelectrotech
 .B [\-\-common\-elements\-dir\fR=\fIREP\fB]
-.B [\-\-config\-dir\-elements\-dir\fR=\fIREP\fB]
+.B [\-\-config\-dir\fR=\fIREP\fB]
 .B [\-\-lang\-dir\fR=\fIREP\fB]
 .B [\-\-help]
 .B [\-v\fR|\fB\-\-version]
@@ -35,15 +35,19 @@ Affiche la version de l'application (exemple : 0.1).
 .TP
 \fB\-\-license\fR
 Affiche la licence de l'application (GNU/GPL).
+
+.P
 À noter que si l'une des trois dernières options est specifiée dans la ligne de commande, le programme s'arrête après affichage de l'information correspondante.
 Si une instance de l'application a déjà été lancée par l'utilisateur, c'est celle\-ci qui prendra en compte la ligne de commande, et notamment les fichiers à ouvrir.
 Les options redéfinissant les dossiers (collection commune, répertoire de configuration et fichiers de langue) ne seront toutefois pas pris en compte.
 Si le nom d'un fichier à ouvrir se termine par .elmt, QElectroTech essaiera de l'ouvrir dans un éditeur d'élément.
 Autrement, il les considérera comme des schémas.
 .SH AUTEURS
-Benoît Ansieau <benoit.ansieau@gmail.com>
+Benoît Ansieau <benoit@qelectrotech.org>
 .br
-Xavier Guerrin <xavier.guerrin@gmail.com>
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
 
 .SH SIGNALER DES BUGS
 Si vous rencontrez un comportement qui vous paraît anormal dans l'application, consultez notre FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> et notre BugTracker <http://qelectrotech.org/bugtracker/> pour voir si le problème n'est pas déjà connu. Dans la négative, soumettez un rapport de bug via le BugTracker. 

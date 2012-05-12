@@ -4,7 +4,7 @@ qelectrotech \- Eitore di shemi elettrici
 .SH SINOSSI
 .B qelectrotech
 .B [\-\-common\-elements\-dir\fR=\fIDIR\fB]
-.B [\-\-config\-dir\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-config\-dir\fR=\fIDIR\fB]
 .B [\-\-lang\-dir\fR=\fIDIR\fB]
 .B [\-\-help]
 .B [\-v\fR|\fB\-\-version]
@@ -35,6 +35,8 @@ Mostra la versione della applicazione (esempio: 0.1).
 .TP
 \fB\-\-license\fR
 Mostra la licenza dell'applicazione (GNU/GPL).
+
+.P
 Notare che se una delle ultime tre opzioni è specificata a linea di comando, il programma si ferma dopo aver mostrato le adeguate informazioni.
 Se una istanza dell'applicazione lanciata dall'utente è in esecuzione, essa terrà in considerazione la linea di comando, e specialmente per i file da aprire.
 Di contro, opzioni che ridefiniscono delle directory (collezione predefinita, configurazione e traduzioni) non saranno considerate.
@@ -42,9 +44,11 @@ Se il nome di un file finisce per .elmt, QElectroTech proverà ad aprirlo nell'e
 Altrimenti lo considererà come uno schema.
 
 .SH AUTORI
-Benoit Ansieau <benoit.ansieau@gmail.com>
+Benoit Ansieau <benoit@qelectrotech.org>
 .br
-Xavier Guerrin <xavier.guerrin@gmail.com>
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
 
 .SH COMUNICAZIONE BUG
 Se incontri un comportamento dell'applicazione che ti sembra inusuale, scorri le nostre FAQ <http://qelectrotech.org/wiki/doku.php?id=doc:faq> ed il nostro BugTracker <http://qelectrotech.org/bugtracker/> per controllare se il problema è già noto. In caso negativo, si prega di inviare un bugreport tramite il BugTracker. 

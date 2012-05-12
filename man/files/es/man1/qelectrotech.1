@@ -4,7 +4,7 @@ qelectrotech \- Editor de esquemas eléctricos
 .SH SYNOPSIS
 .B qelectrotech
 .B [\-\-common\-elements\-dir\fR=\fIREP\fB]
-.B [\-\-config\-dir\-elements\-dir\fR=\fIREP\fB]
+.B [\-\-config\-dir\fR=\fIREP\fB]
 .B [\-\-lang\-dir\fR=\fIREP\fB]
 .B [\-\-help]
 .B [\-v\fR|\fB\-\-version]
@@ -35,15 +35,19 @@ Exhibe la versión de la aplicación (ejemple: 0.1)
 .TP
 \fB\-\-license\fR
 Exhibe la licencia de la aplicación (GNU/GPL)
+
+.P
 A tener en cuenta que si una de las tres últimas opciones especificarse en la línea de comando, el programa se detenga después de exhibir  la información correspondiente.
 Si una instancia de la aplicación ya fue lanzada por el usuario, sera la que tendrá en cuenta la línea de comando, y, en particular, los ficheros que deben abrirse.
 Las opciones que redefinirán los expedientes (colección común, directorio de configuración y ficheros de lengua) no obstante no se tendrán en cuenta.
 Si el nombre de un fichero que debe abrirse termina en .elmt, QElectroTech intentará abrirse en un editor de elemento.
 De no ser así, los considerará como esquemas.
 .SH AUTORES 
-Benoit Ansieau <benoit.ansieau@gmail.com>
+Benoit Ansieau <benoit@qelectrotech.org>
 .br
-Xavier Guerrin <xavier.guerrin@gmail.com>
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
 
 
 . SH INDICAR BUGS

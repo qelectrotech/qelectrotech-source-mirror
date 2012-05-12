@@ -4,7 +4,7 @@ qelectrotech \- Electric diagrams editor
 .SH SYNOPSIS
 .B qelectrotech
 .B [\-\-common\-elements\-dir\fR=\fIDIR\fB]
-.B [\-\-config\-dir\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-config\-dir\fR=\fIDIR\fB]
 .B [\-\-lang\-dir\fR=\fIDIR\fB]
 .B [\-\-help]
 .B [\-v\fR|\fB\-\-version]
@@ -35,15 +35,19 @@ Zobrazí číslo verze programu (např.: 0.1).
 .TP
 \fB\-\-license\fR
 Zobrazí licenci k programu (GNU/GPL).
+
+.P
 Uvědomte si, že pokud je v příkazovém řádku zadána jedna z posledních tří voleb, program se po zobrazení odpovídajících údajů zastaví.
 Běží-li ještě nějaký proces programu, který byl spuštěn uživatelem, tento proces bude brát ohled na příkazový řádek, a zejména na soubory k otevření.
 Avšak na volby, které nově vymezují adresáře (společná sbírka, soubory s nastavením a překladové souboru), brán ohled nebude.
 Pokud končí název souboru příponou .elmt, QElectroTech se jej pokusí otevřít v editoru prvků.
 Jinak jej bude považovat za nákres.
 .SH AUTHORS
-Benoit Ansieau <benoit.ansieau@gmail.com>
+Benoit Ansieau <benoit@qelectrotech.org>
 .br
-Xavier Guerrin <xavier.guerrin@gmail.com>
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
 
 .SH REPORTING BUGS
 Pokud se v programu setkáte s chováním, které vám bude připadat neobvyklé, projděte se našimi často kladenými dotazy (FAQ) <http://qelectrotech.org/wiki/doku.php?id=doc:faq> a naším systémem pro sledování chyb <http://qelectrotech.org/bugtracker/>, abyste si ověřil, zda se už o těch potížích něco neví. Neví-li se, předložte, prosím, hlášení o chybě přes náš systém sledování chyb (BugTracker).

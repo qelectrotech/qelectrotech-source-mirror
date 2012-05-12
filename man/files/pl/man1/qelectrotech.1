@@ -4,7 +4,7 @@ qelectrotech \- Edytor schematów elektrycznych
 .SH SYNOPSIS
 .B qelectrotech
 .B [\-\-common\-elements\-dir\fR=\fIDIR\fB]
-.B [\-\-config\-dir\-elements\-dir\fR=\fIDIR\fB]
+.B [\-\-config\-dir\fR=\fIDIR\fB]
 .B [\-\-lang\-dir\fR=\fIDIR\fB]
 .B [\-\-help]
 .B [\-v\fR|\fB\-\-version]
@@ -35,15 +35,19 @@ Wyświetla wersję aplikacji (np.: 0.1)
 .TP
 \fB\-\-license\fR
 Wyświetla licencję aplikacji (GNU / GPL)
+
+.P
 Należy pamiętać, że jeżeli jedno z trzech powyższych poleceń zostanie uruchomione w linii poleceń, zatrzyma program, i zostanie wyświetlona odpowiednia informacja.
 Jeżeli przypadkiem aplikacja uruchomiona przez użytkownika nadal działa, ten przypadek będzie rozwiązany w linii poleceń, a w szczególności otwarte pliki.
 Jednak operacje, które zmieniają zawartość katalogów (wspólne kolekcje, pliki konfiguracyjne i tłumaczenie) nie będą wykonane.
 Jeżeli nazwa pliku ma rozszerzenie .elmt, QElectroTech będzie próbował go otworzyć za pomocą edytora elementu.
 W przeciwnym razie, uzna go za schemat.
 .SH AUTHORS
-Benoit Ansieau <benoit.ansieau@gmail.com>
+Benoit Ansieau <benoit@qelectrotech.org>
 .br
-Xavier Guerrin <xavier.guerrin@gmail.com>
+Xavier Guerrin <xavier@qelectrotech.org>
+.br
+Laurent Trinques <scorpio@qelectrotech.org>
 
 .SH REPORTING BUGS
 Jeżeli zauważysz, że oprogramowanie działa wadliwie, sprawdź najczęściej zadawane pytania na naszej stronie <http://qelectrotech.org/wiki/doku.php?id=doc:faq> <http://qelectrotech.org/ Bugtracker />, aby stwierdzić, czy problem jest już znany. Jeżeli nie, proszę wysłać raport o błędach przez BugTracker.
