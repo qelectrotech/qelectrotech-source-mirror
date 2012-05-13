@@ -6,6 +6,7 @@
         <name lang="pl">tsx_pay262_282</name>
         <name lang="cs">tsx_pay262_282</name>
         <name lang="pt">tsx_pay262_282</name>
+        <name lang="es">tsx_pay262_282</name>
     </names>
     <informations></informations>
     <description>
@@ -14,7 +15,7 @@
         <circle x="65.5279" y="-307.472" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="8.94427"/>
         <circle x="65.3944" y="-164.606" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7.2111"/>
         <input x="30" y="-429" size="9" rotate="true" text=""/>
-        <text x="18" y="-134" size="6" text=">>  PREVENTA   &lt;&lt;"/>
+        <text x="18" y="-134" size="6" text="&gt;&gt;  PREVENTA   &lt;&lt;"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-299" x1="69" y2="-299" x2="70"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-299" x1="62" y2="-294" x2="70"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-307" x1="62" y2="-299" x2="62"/>

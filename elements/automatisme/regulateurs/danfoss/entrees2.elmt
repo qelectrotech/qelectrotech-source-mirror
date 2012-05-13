@@ -5,11 +5,12 @@
         <name lang="fr">AKCC550 entrées/2</name>
         <name lang="pl">AKCC550 - wejścia 2</name>
         <name lang="cs">AKCC550 - vstupy 2</name>
+        <name lang="es">AKCC550 entradas/2</name>
     </names>
     <informations></informations>
     <description>
         <rect width="363" x="-320" y="-54" antialias="false" height="98" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-241" y="32.6667" size="9" text="Entrées ana AKCC 550"/>
+        <text x="-241" y="32.6667" size="9" text="Entr&#xE9;es ana AKCC 550"/>
         <text x="-69" y="27.6667" size="9" text="MODBUS"/>
         <text x="-79" y="-4.33333" size="9" text="+12V"/>
         <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-8" x1="-84" y2="-3" x2="-96"/>

@@ -5,13 +5,14 @@
         <name lang="fr">AKCC550 entrées</name>
         <name lang="pl">AKCC550 - wejścia 1</name>
         <name lang="cs">AKCC550 - vstupy 1</name>
+        <name lang="es">AKCC550 entradas</name>
     </names>
     <informations></informations>
     <description>
         <rect width="81" x="-224" y="-50" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="81" x="-311" y="-50" antialias="false" height="29" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="509" x="-317" y="-54" antialias="false" height="98" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <text x="-161" y="28.6667" size="9" text="Entrées AKCC 550 sondes et DI"/>
+        <text x="-161" y="28.6667" size="9" text="Entr&#xE9;es AKCC 550 sondes et DI"/>
         <text x="167" y="4" size="9" text="S6"/>
         <text x="121" y="5" size="9" text="S5"/>
         <rect width="85" x="102" y="-50" antialias="false" height="28" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
