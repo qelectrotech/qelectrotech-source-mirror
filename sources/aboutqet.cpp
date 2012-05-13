@@ -144,7 +144,7 @@ QWidget *AboutQET::translatorsTab() const {
 QWidget *AboutQET::contributorsTab() const {
 	QLabel *contributors = new QLabel();
 	
-	addAuthor(contributors, "Remi Collet",         "fedora@famillecollet.com",    tr("Paquets Fedora"));
+	addAuthor(contributors, "Remi Collet",         "remi@fedoraproject.org",      tr("Paquets Fedora et RedHat"));
 	addAuthor(contributors, "Trem",                "trem@mandriva.org",           tr("Paquets Mandriva"));
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
