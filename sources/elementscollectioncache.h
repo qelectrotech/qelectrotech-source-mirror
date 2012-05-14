@@ -49,8 +49,8 @@ class ElementsCollectionCache : public QObject {
 	bool fetchData(const ElementsLocation &);
 	bool fetchNameFromCache(const QString &, const QDateTime &);
 	bool fetchPixmapFromCache(const QString &, const QDateTime &);
-	bool cacheName(const QString &);
-	bool cachePixmap(const QString &);
+	bool cacheName(const QString &, const QDateTime & = QDateTime::currentDateTime());
+	bool cachePixmap(const QString &, const QDateTime & = QDateTime::currentDateTime());
 	
 	// attributes
 	private:

@@ -35,8 +35,8 @@ ElementsCollectionCache::ElementsCollectionCache(const QString &database_path, Q
 		select_pixmap_ = new QSqlQuery(cache_db_);
 		insert_name_   = new QSqlQuery(cache_db_);
 		insert_pixmap_ = new QSqlQuery(cache_db_);
-		select_name_   -> prepare("SELECT name FROM names WHERE path = :path AND locale = :locale AND mtime > :file_mtime");
-		select_pixmap_ -> prepare("SELECT pixmap FROM pixmaps WHERE path = :path AND mtime > :file_mtime");
+		select_name_   -> prepare("SELECT name FROM names WHERE path = :path AND locale = :locale AND mtime = :file_mtime");
+		select_pixmap_ -> prepare("SELECT pixmap FROM pixmaps WHERE path = :path AND mtime = :file_mtime");
 		insert_name_   -> prepare("REPLACE INTO names (path, locale, mtime, name) VALUES (:path, :locale, :mtime, :name)");
 		insert_pixmap_ -> prepare("REPLACE INTO pixmaps (path, mtime, pixmap) VALUES (:path, :mtime, :pixmap)");
 	}
@@ -134,14 +134,15 @@ bool ElementsCollectionCache::fetchElement(ElementDefinition *element) {
 		return(fetchData(element -> location()));
 	} else {
 		QString element_path = element -> location().toString();
-		bool got_name   = fetchNameFromCache(element_path, element -> modificationTime());
-		bool got_pixmap = fetchPixmapFromCache(element_path, element -> modificationTime());
+		QDateTime mtime = element -> modificationTime();
+		bool got_name   = fetchNameFromCache(element_path, mtime);
+		bool got_pixmap = fetchPixmapFromCache(element_path, mtime);
 		if (got_name && got_pixmap) {
 			return(true);
 		}
 		if (fetchData(element -> location())) {
-			cacheName(element_path);
-			cachePixmap(element_path);
+			cacheName(element_path, mtime);
+			cachePixmap(element_path, mtime);
 		}
 		return(true);
 	}
@@ -235,13 +236,14 @@ bool ElementsCollectionCache::fetchPixmapFromCache(const QString &path, const QD
 	Cache the current (i.e. last retrieved) name. The cache entry will use
 	the current date and time and the locale set via setLocale().
 	@param path Element path (as obtained using ElementsLocation::toString())
+	@param mtime Modification time associated with the cache entry -- defaults to current datetime
 	@return True if the caching succeeded, false otherwise.
 	@see name()
 */
-bool ElementsCollectionCache::cacheName(const QString &path) {
+bool ElementsCollectionCache::cacheName(const QString &path, const QDateTime &mtime) {
 	insert_name_ -> bindValue(":path",   path);
 	insert_name_ -> bindValue(":locale", locale_);
-	insert_name_ -> bindValue(":mtime",  QVariant(QDateTime::currentDateTime()));
+	insert_name_ -> bindValue(":mtime",  QVariant(mtime));
 	insert_name_ -> bindValue(":name",   current_name_);
 	if (!insert_name_ -> exec()) {
 		qDebug() << cache_db_.lastError();
@@ -254,16 +256,17 @@ bool ElementsCollectionCache::cacheName(const QString &path) {
 	Cache the current (i.e. last retrieved) pixmap. The cache entry will use
 	the current date and time.
 	@param path Element path (as obtained using ElementsLocation::toString())
+	@param mtime Modification time associated with the cache entry -- defaults to current datetime
 	@return True if the caching succeeded, false otherwise.
 	@see pixmap()
 */
-bool ElementsCollectionCache::cachePixmap(const QString &path) {
+bool ElementsCollectionCache::cachePixmap(const QString &path, const QDateTime &mtime) {
 	QByteArray ba;
 	QBuffer buffer(&ba);
 	buffer.open(QIODevice::WriteOnly);
 	current_pixmap_.save(&buffer, qPrintable(pixmap_storage_format_));
 	insert_pixmap_ -> bindValue(":path", path);
-	insert_pixmap_ -> bindValue(":mtime", QVariant(QDateTime::currentDateTime()));
+	insert_pixmap_ -> bindValue(":mtime", QVariant(mtime));
 	insert_pixmap_ -> bindValue(":pixmap", QVariant(ba));
 	if (!insert_pixmap_->exec()) {
 		qDebug() << cache_db_.lastError();
