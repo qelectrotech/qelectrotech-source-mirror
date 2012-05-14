@@ -131,7 +131,7 @@ man.files          = man/files/*
 man.extra          = sh man/compress_man_pages.sh
 
 # L'installation comprend la copie du binaire, des elements, des fichiers de langue et du fichier LICENSE
-INSTALLS += target elements lang copyright
+INSTALLS += target elements tbt lang copyright
 # Sous Unix, on installe egalement l'icone, un fichier .desktop, des fichiers mime et les pages de manuel
 unix {
 	INSTALLS += desktop mime_xml mime_desktop mime_package icons man examples
