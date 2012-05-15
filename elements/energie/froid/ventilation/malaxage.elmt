@@ -1,0 +1,13 @@
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
+    <names>
+        <name lang="en">Mixing box</name>
+        <name lang="fr">Boîte malaxage</name>
+        <name lang="pl">Komora mieszania</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="20" x="-10" y="-20" antialias="false" height="40" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <terminal x="10" y="0" orientation="e"/>
+        <terminal x="-10" y="0" orientation="w"/>
+    </description>
+</definition>
