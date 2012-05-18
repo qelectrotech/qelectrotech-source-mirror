@@ -1,10 +1,11 @@
 <definition width="60" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">ECL</name>
         <name lang="en">ECL</name>
         <name lang="fr">ECL</name>
         <name lang="pl">ECL</name>
-        <name lang="cs">ECL</name>
         <name lang="es">ECL</name>
+        <name lang="cs">ECL</name>
     </names>
     <informations></informations>
     <description>
