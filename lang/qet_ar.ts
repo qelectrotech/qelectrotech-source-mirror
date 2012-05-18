@@ -351,7 +351,7 @@
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
         <translatorcomment>عنوان نافذة</translatorcomment>
-        <translation>QElectrotech إعدادات البرنامج</translation>
+        <translation>إعدادات برنامج QElectrotech</translation>
     </message>
 </context>
 <context>
@@ -1183,8 +1183,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="621"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translatorcomment>انقر نقرا مزدوجا لإختزال أو لتطوير صنفكم الشخصي من العناصر</translatorcomment>
-        <translation></translation>
+        <translation>انقر نقرا مزدوجا لاختزال أو لتطوير صنفكم الشخصي من العناصر</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="622"/>
@@ -1629,7 +1628,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation></translation>
+        <translation>هذا مشروع QElectrotech , بمعنى ملف بامتداد .qet يجمع عدة مخططات / صفحات . كما يتضمّن عناصر ونماذج إطارات تعريف مُستعملة في هذه المخططات / الصفحات.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
@@ -1687,7 +1686,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1151"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1  ltr;[غير مستعمل قي المخطط]</translation>
+        <translation>%1 [غير مستعمل قي المخطط]</translation>
     </message>
 </context>
 <context>
@@ -1826,7 +1825,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation></translation>
+        <translation>استعمل الصنف المُدمج</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
@@ -2064,7 +2063,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation>إضافة خط</translation>
+        <translation>اضافة سطر</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -2091,7 +2090,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="93"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation>تخطيط جديد</translation>
+        <translation>مخطط جديد</translation>
     </message>
 </context>
 <context>
@@ -2741,7 +2740,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="177"/>
         <source>&amp;Enregistrer</source>
-        <translation>&amp;حغظ</translation>
+        <translation>&amp;حفظ</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="178"/>
@@ -2981,7 +2980,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="252"/>
         <source>Space</source>
-        <translation>Space</translation>
+        <translation> مسافة Space</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="253"/>
@@ -3842,11 +3841,11 @@ Options disponibles :
         <comment>message box content</comment>
         <translation>
             <numerusform>مراجعة العنصر أحدث %n إنذارات :</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>مراجعة العنصر أحدث %n انذارا :</numerusform>
+            <numerusform>مراجعة العنصر أحدث %n انذاران :</numerusform>
+            <numerusform>مراجعة العنصر أحدث %n إنذارات :</numerusform>
+            <numerusform>مراجعة العنصر أحدث %n إنذارات :</numerusform>
+            <numerusform>مراجعة العنصر أحدث %n انذار :</numerusform>
         </translation>
     </message>
     <message>
@@ -4668,7 +4667,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/customelement.cpp" line="118"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation>: تحذير حّفظ العنصر بإصدار لاحق</translation>
+        <translation>: تحذير حّفظ العنصر بإصدار لاحق من QElectrotech.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
@@ -4879,7 +4878,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/partline.h" line="60"/>
         <source>ligne</source>
         <comment>element part name</comment>
-        <translation>خط</translation>
+        <translation>صف</translation>
     </message>
     <message>
         <location filename="../sources/editor/partpolygon.h" line="47"/>
@@ -4959,11 +4958,11 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>%n  عنصر </numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%nعنصر </numerusform>
+            <numerusform>%n  عنصران</numerusform>
+            <numerusform>%n عناصر</numerusform>
+            <numerusform>%n عناصر</numerusform>
+            <numerusform>%n عنصر</numerusform>
         </translation>
     </message>
     <message>
@@ -4983,12 +4982,12 @@ Que désirez vous faire ?</source>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>%n  موصلات</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n  موصل</numerusform>
+            <numerusform>%n موصل</numerusform>
+            <numerusform>%n موصلان</numerusform>
+            <numerusform>%n موصلات</numerusform>
+            <numerusform>%n موصل</numerusform>
+            <numerusform>%n موصل</numerusform>
         </translation>
     </message>
     <message>
@@ -5003,11 +5002,11 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
             <numerusform>%n حقل نصي</numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+            <numerusform>%n حقل نصي</numerusform>
+            <numerusform>%n حقلان نصيان</numerusform>
+            <numerusform>%n حقول نصية</numerusform>
+            <numerusform>%n حقل نصي</numerusform>
+            <numerusform>%n حقل نصي</numerusform>
         </translation>
     </message>
     <message>
@@ -5042,7 +5041,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimension.cpp" line="39"/>
         <source>%1%</source>
         <comment>titleblock: width relative to total length</comment>
-        <translation> %1</translation>
+        <translation> %1%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimension.cpp" line="41"/>
@@ -5054,13 +5053,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
         <source>Insertion d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>إضافة خط</translation>
+        <translation>إضافة صف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>حذف الخط</translation>
+        <translation>حذف صف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
@@ -5078,7 +5077,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="556"/>
         <source>Modification d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>تعديل خط</translation>
+        <translation>تعديل صف</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="558"/>
@@ -5109,7 +5108,12 @@ Que désirez vous faire ?</source>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform></numerusform>
+            <numerusform>قطع %n خليّة</numerusform>
+            <numerusform>قطع %n خلية</numerusform>
+            <numerusform>قطع %n خليتان</numerusform>
+            <numerusform>قطع %n خلايا</numerusform>
+            <numerusform>قطع %n خلية</numerusform>
+            <numerusform>قطع %n خلية</numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5117,7 +5121,12 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
-            <numerusform></numerusform>
+            <numerusform>لصق %n خلية</numerusform>
+            <numerusform>لصق %n خلية</numerusform>
+            <numerusform>لصق %n خليتان</numerusform>
+            <numerusform>لصق %n خلايا</numerusform>
+            <numerusform>لصق %n خلية</numerusform>
+            <numerusform>لصق %n خلية</numerusform>
         </translation>
     </message>
     <message>
@@ -5160,7 +5169,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation>توجيه النص</translation>
+        <translation>اصطفاف النص</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
@@ -5446,7 +5455,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="44"/>
         <source>Angle de rotation : </source>
-        <translation>زاويةالدوران:</translation>
+        <translation>زاوية الدوران:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="52"/>
@@ -6182,7 +6191,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>عرض المعاسنة :</translation>
+        <translation>عرض المعاينة :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
