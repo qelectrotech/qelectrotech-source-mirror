@@ -3,6 +3,7 @@
         <name lang="en">Intake</name>
         <name lang="fr">Admission d'air</name>
         <name lang="pl">Czerpnia powietrza</name>
+        <name lang="cs" >Přívod vzduchu</name>
     </names>
     <informations></informations>
     <description>

@@ -3,5 +3,6 @@
         <name lang="fr" >Ventilation</name>
         <name lang="en" >Airing</name>
         <name lang="pl" >Wentylacja</name>
+        <name lang="cs" >Větrání</name>
     </names>
 </qet-directory>

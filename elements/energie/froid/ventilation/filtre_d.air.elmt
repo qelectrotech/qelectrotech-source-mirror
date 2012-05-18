@@ -3,6 +3,7 @@
         <name lang="en">Air filter</name>
         <name lang="fr">Filtre d'air</name>
         <name lang="pl">Filtr powietrza</name>
+        <name lang="cs" >Filtr vzduchu</name>
     </names>
     <informations></informations>
     <description>
