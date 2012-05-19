@@ -1,10 +1,10 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">قاعدة قابس تيّار (قدرة) بحماية  (EN 60617 11-13-04)</name>
         <name lang="de">Schutzkontaktsteckdose, allgemein (EN 60617 11-13-04)</name>
         <name lang="en">isolated ground receptacle (EN 60617 11-13-04)</name>
-        <name lang="fr">Socle de prise de courant (puissance) avec contact pour conducteur de protection (EN 60617 11-13-04)</name>
-        <name lang="ar">قاعدة مقبس تيّار بحماية</name>
         <name lang="it">Presa con contatto per conduttore di protezione</name>
+        <name lang="fr">Socle de prise de courant (puissance) avec contact pour conducteur de protection (EN 60617 11-13-04)</name>
         <name lang="pl">Gniazdo pojedyncze ze stykiem ochronnym</name>
         <name lang="cs">Zdířková zásuvka s ochranným kontaktem</name>
     </names>

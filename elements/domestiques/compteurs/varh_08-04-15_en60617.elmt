@@ -1,5 +1,6 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">فارساعة متر</name>
         <name lang="de">Blindverbrauchszähler</name>
         <name lang="en">reactive energy meter</name>
         <name lang="fr">Varheuremètre</name>

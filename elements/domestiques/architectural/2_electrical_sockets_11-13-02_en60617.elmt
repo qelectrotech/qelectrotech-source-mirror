@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">قاعدة مقبس تيّار (2) (EN 60617 11-13=01)</name>
         <name lang="de">Mehrfachsteckdose (2) (EN 60617 11-13-01)</name>
         <name lang="en">2 electrical socket (EN 60617 11-13-01)</name>
         <name lang="fr">Socle de prise de courant (2)  (EN 60617 11-13-01)</name>
