@@ -787,7 +787,7 @@
         <location filename="../sources/editor/elementscene.cpp" line="919"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation>Edit author informations</translation>
+        <translation>Edit author information</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="923"/>
@@ -1571,7 +1571,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Every element embeds informations about its authors, its license, or any information you may find useful in a freely usable textfield. You can specify here the default value of this textfield for the elements you will create:</translation>
+        <translation>Every element embeds information about its authors, its license, or any information you may find useful in a freely usable textfield. You can specify here the default value of this textfield for the elements you will create:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="210"/>
@@ -2887,7 +2887,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Propriétés du schéma</source>
-        <translation>Diagram Properties</translation>
+        <translation>Diagram properties</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="256"/>
@@ -3218,7 +3218,7 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>Edit informations displayed by the inset</translation>
+        <translation>Edit information displayed by the inset</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
@@ -3639,7 +3639,7 @@ Available options:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
         <source>Éditer les informations sur l&apos;auteur</source>
-        <translation>Edit author informations</translation>
+        <translation>Edit author information</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="201"/>
@@ -3722,7 +3722,7 @@ Available options:
         <location filename="../sources/editor/qetelementeditor.cpp" line="514"/>
         <source>Informations</source>
         <comment>dock title</comment>
-        <translation>Informations</translation>
+        <translation>Information</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="523"/>
@@ -3986,7 +3986,7 @@ Available options:
         <location filename="../sources/qetmainwindow.cpp" line="57"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Displays informations about QElectroTech</translation>
+        <translation>Displays information about QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="60"/>
@@ -3997,7 +3997,7 @@ Available options:
         <location filename="../sources/qetmainwindow.cpp" line="61"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation>Displays informations about Qt library</translation>
+        <translation>Displays information about Qt library</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="69"/>
@@ -4817,7 +4817,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="617"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation>modify author informations</translation>
+        <translation>modify author information</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="49"/>
@@ -5048,7 +5048,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation>modify extra informations</translation>
+        <translation>modify extra information</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
