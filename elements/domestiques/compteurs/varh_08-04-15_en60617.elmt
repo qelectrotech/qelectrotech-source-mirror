@@ -1,0 +1,15 @@
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
+    <names>
+        <name lang="de">Blindverbrauchszähler</name>
+        <name lang="en">reactive energy meter</name>
+        <name lang="fr">Varheuremètre</name>
+    </names>
+    <informations></informations>
+    <description>
+        <rect width="30" x="-15" y="-14" antialias="false" height="26" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <rect width="30" x="-15" y="-22" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <text x="-12" y="4" size="8" text="varh"/>
+        <terminal x="0" y="-27" orientation="n"/>
+        <terminal x="0" y="17" orientation="s"/>
+    </description>
+</definition>
