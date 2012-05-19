@@ -1,5 +1,6 @@
 <definition width="80" version="0.3" hotspot_x="20" hotspot_y="30" height="60" type="element" orientation="dnny">
     <names>
+        <name lang="ar">Omron HDE-M1</name>
         <name lang="en">Omron HDE-M1</name>
         <name lang="fr">Omron HDE-M1</name>
         <name lang="pl">Omron HDE-M1</name>
