@@ -5643,7 +5643,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="338"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation>Tutaj możesz zdefiniować własne skojażenia nazwy/wartości dla twojej tabliczki rysunkowej. Przykład: skojażenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zastąpienie nazwy %{volta} wartością 1745 w tabliczce rysunkowej.</translation>
+        <translation>Tutaj możesz zdefiniować własne skojarzenia nazwy/wartości dla twojej tabliczki rysunkowej. Przykład: skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zastąpienie nazwy %{volta} wartością 1745 w tabliczce rysunkowej.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="353"/>
