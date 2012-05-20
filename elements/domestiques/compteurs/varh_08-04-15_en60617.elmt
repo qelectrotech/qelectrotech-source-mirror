@@ -4,6 +4,7 @@
         <name lang="de">Blindverbrauchszähler</name>
         <name lang="en">reactive energy meter</name>
         <name lang="fr">Varheuremètre</name>
+        <name lang="cs">Měřič varhodin (hodin jalového výkonu)</name>
     </names>
     <informations></informations>
     <description>
