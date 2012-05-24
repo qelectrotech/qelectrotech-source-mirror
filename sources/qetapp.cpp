@@ -527,6 +527,38 @@ QString QETApp::symbolicPath(const QString &real_path) {
 }
 
 /**
+	@return the list of file extensions QElectroTech is able to open and
+	supposed to handle. Note they are provided with no leading point.
+*/
+QStringList QETApp::handledFileExtensions() {
+	static QStringList ext;
+	if (!ext.count()) {
+		ext << "qet";
+		ext << "elmt";
+		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegExp("^\."));
+	}
+	return(ext);
+}
+
+/**
+	@param an URLs list
+	@return the list of filepaths QElectroTech is able to open.
+*/
+QStringList QETApp::handledFiles(const QList<QUrl> &urls) {
+	QList<QString> filepaths;
+	foreach (QUrl url, urls) {
+		if (!url.isLocalFile()) continue;
+		QString local_path = url.toLocalFile();
+		QFileInfo local_path_info(local_path);
+		QString local_path_ext = local_path_info.completeSuffix();
+		if (handledFileExtensions().contains(local_path_ext)) {
+			filepaths << local_path;
+		}
+	}
+	return(filepaths);
+}
+
+/**
 	@param filepath Un chemin de fichier
 	Note : si filepath est une chaine vide, cette methode retourne 0.
 	@return le QETDiagramEditor editant le fichier filepath, ou 0 si ce fichier

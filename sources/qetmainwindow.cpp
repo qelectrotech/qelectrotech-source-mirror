@@ -29,6 +29,8 @@ QETMainWindow::QETMainWindow(QWidget *widget, Qt::WindowFlags flags) :
 {
 	initCommonActions();
 	initCommonMenus();
+	
+	setAcceptDrops(true);
 }
 
 /**
@@ -161,4 +163,32 @@ bool QETMainWindow::event(QEvent *e) {
 	Base implementation of firstActivation (does nothing).
 */
 void QETMainWindow::firstActivation(QEvent *) {
+}
+
+
+/**
+	Accept or refuse drag'n drop events depending on the dropped mime type;
+	especially, accepts only URLs to local files that we could open.
+	@param e le QDragEnterEvent correspondant au drag'n drop tente
+*/
+void QETMainWindow::dragEnterEvent(QDragEnterEvent *e) {
+	if (e -> mimeData() -> hasUrls()) {
+		if (QETApp::handledFiles(e -> mimeData() -> urls()).count()) {
+			e -> acceptProposedAction();
+		}
+	}
+}
+
+/**
+	Handle drops accepted on main windows; more specifically, open dropped files
+	as long as they are handled by QElectrotech.
+	@param e the QDropEvent describing the current drag'n drop
+*/
+void QETMainWindow::dropEvent(QDropEvent *e) {
+	if (e -> mimeData() -> hasUrls()) {
+		QStringList filepaths = QETApp::handledFiles(e -> mimeData() -> urls());
+		if (filepaths.count()) {
+			QETApp::instance() -> openFiles(QETArguments(filepaths));
+		}
+	}
 }

@@ -40,6 +40,8 @@ class QETMainWindow : public QMainWindow {
 	
 	protected:
 	virtual bool event(QEvent *);
+	virtual void dragEnterEvent(QDragEnterEvent *e);
+	virtual void dropEvent(QDropEvent *e);
 	virtual void firstActivation(QEvent *);
 	
 	// slots

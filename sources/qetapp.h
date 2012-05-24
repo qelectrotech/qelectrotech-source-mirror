@@ -95,6 +95,8 @@ class QETApp : public QETSingleApplication {
 	static QString languagesPath();
 	static QString realPath(const QString &);
 	static QString symbolicPath(const QString &);
+	static QStringList handledFileExtensions();
+	static QStringList handledFiles(const QList<QUrl> &);
 	static RecentFiles *projectsRecentFiles();
 	static RecentFiles *elementsRecentFiles();
 #ifdef QET_ALLOW_OVERRIDE_CED_OPTION
