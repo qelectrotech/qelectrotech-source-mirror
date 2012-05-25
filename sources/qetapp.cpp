@@ -547,7 +547,7 @@ QStringList QETApp::handledFileExtensions() {
 QStringList QETApp::handledFiles(const QList<QUrl> &urls) {
 	QList<QString> filepaths;
 	foreach (QUrl url, urls) {
-		if (!url.isLocalFile()) continue;
+		if (url.scheme() != "file") continue;
 		QString local_path = url.toLocalFile();
 		QFileInfo local_path_info(local_path);
 		QString local_path_ext = local_path_info.completeSuffix();
