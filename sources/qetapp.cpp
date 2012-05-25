@@ -535,7 +535,7 @@ QStringList QETApp::handledFileExtensions() {
 	if (!ext.count()) {
 		ext << "qet";
 		ext << "elmt";
-		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegExp("^\."));
+		ext << QString(TITLEBLOCKS_FILE_EXTENSION).remove(QRegExp("^\\."));
 	}
 	return(ext);
 }
