@@ -182,6 +182,14 @@ qreal ElementTextItem::originalRotationAngle() const {
 }
 
 /**
+	Set the font used to render the text item to \a font.
+*/
+void ElementTextItem::setFont(const QFont &font) {
+	DiagramTextItem::setFont(font);
+	adjustItemPosition(1);
+}
+
+/**
 	Cette methode s'assure que la position de l'ElementTextItem est coherente
 	en ajustant :
 		* la transformation de base qui permet de considerer que l'origine
