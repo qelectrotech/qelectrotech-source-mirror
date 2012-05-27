@@ -40,7 +40,7 @@ PartTextField::PartTextField(QETElementEditor *editor, QGraphicsItem *parent, QG
 	setPlainText(QObject::tr("_", "default text when adding a textfield in the element editor"));
 	
 	adjustItemPosition(1);
-	// ajuste la position du champ de texte lorsqu'on lui ajoute/retire des lignes ou lorsqu'on change sa taille de police
+	// adjust textfield position after line additions/deletions
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
 	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
 }
@@ -201,6 +201,8 @@ void PartTextField::setProperty(const QString &property, const QVariant &value) 
 	} else if (property == "rotate") {
 		follow_parent_rotations = value.toBool();
 	}
+	// adjust item position, especially useful when changing text or size
+	adjustItemPosition();
 	update();
 }
 

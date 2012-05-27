@@ -44,7 +44,7 @@ PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
 	
 	adjustItemPosition(1);
-	// ajuste la position du champ de texte lorsqu'on lui ajoute/retire des lignes ou lorsqu'on change sa taille de police
+	// adjust textfield position after line additions/deletions
 	connect(document(), SIGNAL(blockCountChanged(int)), this, SLOT(adjustItemPosition(int)));
 	connect(document(), SIGNAL(contentsChanged()),      this, SLOT(adjustItemPosition()));
 }
@@ -219,6 +219,8 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "color") {
 		setBlack(value.toBool());
 	}
+	// adjust item position, especially useful when changing text or size
+	adjustItemPosition();
 	update();
 }
 
