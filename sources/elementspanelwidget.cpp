@@ -62,6 +62,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	edit_element          = new QAction(QET::Icons::ElementEdit,               tr("\311diter l'\351l\351ment"),           this);
 	delete_element        = new QAction(QET::Icons::ElementDelete,             tr("Supprimer l'\351l\351ment"),           this);
 	open_element          = new QAction(QET::Icons::DocumentImport,            tr("Ouvrir un fichier \351l\351ment"),     this);
+	prj_activate          = new QAction(QET::Icons::ProjectFile,               tr("Basculer vers ce projet"),             this);
 	prj_close             = new QAction(QET::Icons::DocumentClose,             tr("Fermer ce projet"),                    this);
 	prj_edit_prop         = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du projet"),          this);
 	prj_prop_diagram      = new QAction(QET::Icons::DialogInformation,         tr("Propri\351t\351s du sch\351ma"),       this);
@@ -103,6 +104,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(edit_element,          SIGNAL(triggered()), this,           SLOT(editElement()));
 	connect(delete_element,        SIGNAL(triggered()), this,           SLOT(deleteElement()));
 	connect(open_element,          SIGNAL(triggered()), this,           SLOT(openElementFromFile()));
+	connect(prj_activate,          SIGNAL(triggered()), this,           SLOT(activateProject()));
 	connect(prj_close,             SIGNAL(triggered()), this,           SLOT(closeProject()));
 	connect(prj_edit_prop,         SIGNAL(triggered()), this,           SLOT(editProjectProperties()));
 	connect(prj_prop_diagram,      SIGNAL(triggered()), this,           SLOT(editDiagramProperties()));
@@ -121,6 +123,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	
 	connect(elements_panel,        SIGNAL(currentItemChanged(QTreeWidgetItem *, QTreeWidgetItem *)), this, SLOT(updateButtons()));
 	connect(elements_panel,        SIGNAL(customContextMenuRequested(const QPoint &)),               this, SLOT(handleContextMenu(const QPoint &)));
+	connect(elements_panel,        SIGNAL(requestForDiagram(Diagram*)),                              this, SIGNAL(requestForDiagram(Diagram*)));
 	connect(elements_panel,        SIGNAL(requestForCollectionItem(const ElementsLocation &)),       this, SLOT(handleCollectionRequest(const ElementsLocation &)));
 	connect(
 		elements_panel,
@@ -192,6 +195,15 @@ void ElementsPanelWidget::reloadAndFilter() {
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());
+	}
+}
+
+/**
+	* Emit the requestForProject signal with te selected project
+*/
+void ElementsPanelWidget::activateProject() {
+	if (QETProject *selected_project = elements_panel -> selectedProject()) {
+		emit(requestForProject(selected_project));
 	}
 }
 
@@ -465,6 +477,7 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 			context_menu -> addAction(new_element);
 			break;
 		case QET::Project:
+			context_menu -> addAction(prj_activate);
 			context_menu -> addAction(prj_edit_prop);
 			context_menu -> addAction(prj_add_diagram);
 			context_menu -> addAction(prj_close);

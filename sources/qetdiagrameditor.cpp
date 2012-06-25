@@ -65,9 +65,9 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	qdw_pa -> setFeatures(QDockWidget::AllDockWidgetFeatures);
 	qdw_pa -> setMinimumWidth(160);
 	qdw_pa -> setWidget(pa = new ElementsPanelWidget(qdw_pa));
-	connect(&(pa -> elementsPanel()), SIGNAL(requestForDiagram(Diagram *)),    this, SLOT(activateDiagram(Diagram *)));
-	connect(&(pa -> elementsPanel()), SIGNAL(requestForProject(QETProject *)), this, SLOT(activateProject(QETProject *)));
 	
+	connect(pa, SIGNAL(requestForDiagram(Diagram *)),                     this, SLOT(activateDiagram(Diagram *)));
+	connect(pa, SIGNAL(requestForProject(QETProject *)),                  this, SLOT(activateProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectClosing(QETProject *)),           this, SLOT(closeProject(QETProject *)));
 	connect(pa, SIGNAL(requestForProjectPropertiesEdition(QETProject *)), this, SLOT(editProjectProperties(QETProject *)));
 	connect(pa, SIGNAL(requestForDiagramPropertiesEdition(Diagram *)),    this, SLOT(editDiagramProperties(Diagram *)));
