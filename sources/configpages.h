@@ -18,31 +18,11 @@
 #ifndef CONFIG_PAGES_H
 #define CONFIG_PAGES_H
 #include <QtGui>
+#include "configpage.h"
 class BorderPropertiesWidget;
 class ConductorPropertiesWidget;
 class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
-/**
-	Cette classe abstraite contient les methodes que toutes les pages de
-	configuration doivent implementer.
-*/
-class ConfigPage : public QWidget {
-	Q_OBJECT
-	public:
-	/**
-		Constructeur
-		@param parent QWidget parent
-	*/
-	ConfigPage(QWidget *parent) : QWidget(parent) {};
-	/// Destructeur
-	virtual ~ConfigPage() {};
-	/// Applique la configuration saisie par l'utilisateur dans la page de configuration
-	virtual void applyConf() = 0;
-	/// @return le titre de la page de configuration
-	virtual QString title() const = 0;
-	/// @return l'icone de la page de configuration
-	virtual QIcon icon() const = 0;
-};
 
 /**
 	Cette classe represente la page de configuration des nouveaux schemas.
