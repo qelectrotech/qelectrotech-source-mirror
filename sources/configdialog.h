@@ -18,7 +18,7 @@
 #ifndef CONFIG_DIALOG_H
 #define CONFIG_DIALOG_H
 #include <QDialog>
-#include "configpages.h"
+class ConfigPage;
 class QListWidget;
 class QListWidgetItem;
 class QStackedWidget;
@@ -45,6 +45,7 @@ class ConfigDialog : public QDialog {
 	
 	private:
 	void buildPagesList();
+	void addPageToList(ConfigPage *);
 	
 	// attributs
 	private:

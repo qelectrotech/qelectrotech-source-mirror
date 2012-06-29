@@ -18,6 +18,7 @@
 #include "qetapp.h"
 #include "aboutqet.h"
 #include "configdialog.h"
+#include "configpages.h"
 #include "qetdiagrameditor.h"
 #include "qetelementeditor.h"
 #include "elementscollectionitem.h"
@@ -1144,6 +1145,12 @@ void QETApp::configureQET() {
 	
 	// cree le dialogue
 	ConfigDialog cd;
+	cd.setWindowTitle(tr("Configurer QElectroTech", "window title"));
+	cd.addPage(new GeneralConfigurationPage());
+	cd.addPage(new NewDiagramPage());
+	cd.addPage(new ExportConfigPage());
+	cd.addPage(new PrintConfigPage());
+	
 	
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {

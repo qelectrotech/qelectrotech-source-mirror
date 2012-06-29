@@ -16,6 +16,7 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "configdialog.h"
+#include "configpages.h"
 #include "qetapp.h"
 
 /**
@@ -23,9 +24,6 @@
 	@param parent QWidget parent
 */
 ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
-	
-	setWindowTitle(tr("Configurer QElectroTech", "window title"));
-	
 	// liste des pages
 	pages_list = new QListWidget();
 	pages_list -> setViewMode(QListView::IconMode);
@@ -37,11 +35,6 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	
 	// pages
 	pages_widget = new QStackedWidget();
-	addPage(new GeneralConfigurationPage());
-	addPage(new NewDiagramPage());
-	addPage(new ExportConfigPage());
-	addPage(new PrintConfigPage());
-	buildPagesList();
 	
 	// boutons
 	buttons = new QDialogButtonBox(QDialogButtonBox::Ok|QDialogButtonBox::Cancel);
@@ -80,12 +73,19 @@ void ConfigDialog::changePage(QListWidgetItem *current, QListWidgetItem *previou
 void ConfigDialog::buildPagesList() {
 	pages_list -> clear();
 	foreach(ConfigPage *page, pages) {
-		QListWidgetItem *new_button = new QListWidgetItem(pages_list);
-		new_button -> setIcon(page -> icon());
-		new_button -> setText(page -> title());
-		new_button -> setTextAlignment(Qt::AlignHCenter);
-		new_button -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
+		addPageToList(page);
 	}
+}
+
+/**
+	Add the \a page ConfigPage to this configuration dialog.
+*/
+void ConfigDialog::addPageToList(ConfigPage *page) {
+	QListWidgetItem *new_button = new QListWidgetItem(pages_list);
+	new_button -> setIcon(page -> icon());
+	new_button -> setText(page -> title());
+	new_button -> setTextAlignment(Qt::AlignHCenter);
+	new_button -> setFlags(Qt::ItemIsSelectable | Qt::ItemIsEnabled);
 }
 
 /**
@@ -105,4 +105,5 @@ void ConfigDialog::addPage(ConfigPage *page) {
 	if (!page || pages.contains(page)) return;
 	pages << page;
 	pages_widget -> addWidget(page);
+	addPageToList(page);
 }
