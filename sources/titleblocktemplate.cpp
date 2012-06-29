@@ -1316,13 +1316,13 @@ QString TitleBlockTemplate::finalTextForCell(const TitleBlockCell &cell, const D
 }
 
 /**
- @param string A text containing 0 to n variables, e.g. "%var" or "%{var}"
- @param diagram_context Diagram context to use to interprete variables
- @return the provided string with variables replaced by the values from the diagram context
+	@param string A text containing 0 to n variables, e.g. "%var" or "%{var}"
+	@param diagram_context Diagram context to use to interprete variables
+	@return the provided string with variables replaced by the values from the diagram context
 */
 QString TitleBlockTemplate::interpreteVariables(const QString &string, const DiagramContext &diagram_context) const {
 	QString interpreted_string = string;
-	foreach (QString key, diagram_context.keys()) {
+	foreach (QString key, diagram_context.keys(DiagramContext::DecreasingLength)) {
 		interpreted_string.replace("%{" + key + "}", diagram_context[key].toString());
 		interpreted_string.replace("%" + key,        diagram_context[key].toString());
 	}

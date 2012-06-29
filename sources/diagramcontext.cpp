@@ -21,8 +21,18 @@
 /**
 	@return a list containing all the keys in the context object.
 */
-QList<QString> DiagramContext::keys() const {
-	return(content_.keys());
+QList<QString> DiagramContext::keys(DiagramContext::KeyOrder order) const {
+	if (order == None) {
+		return content_.keys();
+	} else {
+		QList<QString> keys_list = content_.keys();
+		if (order == Alphabetical) {
+			qSort(keys_list);
+		} else {
+			qSort(keys_list.begin(), keys_list.end(), DiagramContext::stringLongerThan);
+		}
+		return(keys_list);
+	}
 }
 
 /**
@@ -69,6 +79,13 @@ bool DiagramContext::operator!=(const DiagramContext &dc) const {
 */
 QString DiagramContext::validKeyRegExp() {
 	return("^[a-z0-9-]+$");
+}
+
+/**
+	@return True if \a a is longer than \a b, false otherwise.
+*/
+bool DiagramContext::stringLongerThan(const QString &a, const QString &b) {
+	return (a.length() > b.length());
 }
 
 /**

@@ -27,7 +27,12 @@
 */
 class DiagramContext {
 	public:
-	QList<QString> keys() const;
+	enum KeyOrder {
+		None,
+		Alphabetical,
+		DecreasingLength
+	};
+	QList<QString> keys(KeyOrder = None) const;
 	bool contains(const QString &) const;
 	const QVariant operator[](const QString &) const;
 	bool addValue(const QString &, const QVariant &);
@@ -38,6 +43,7 @@ class DiagramContext {
 	static QString validKeyRegExp();
 	
 	private:
+	static bool stringLongerThan(const QString &, const QString &);
 	bool keyIsAcceptable(const QString &) const;
 	/// Diagram context data (key/value pairs)
 	QHash<QString, QVariant> content_;

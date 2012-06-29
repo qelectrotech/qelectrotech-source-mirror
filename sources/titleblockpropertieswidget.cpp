@@ -145,7 +145,7 @@ void TitleBlockPropertiesWidget::clearDiagramContext() {
 void TitleBlockPropertiesWidget::setDiagramContext(const DiagramContext &context) {
 	clearDiagramContext();
 	int i = 0;
-	foreach (QString key, context.keys()) {
+	foreach (QString key, context.keys(DiagramContext::Alphabetical)) {
 		additional_fields_table -> setItem(i, 0, new QTableWidgetItem(key));
 		additional_fields_table -> setItem(i, 1, new QTableWidgetItem(context[key].toString()));
 		++ i;
