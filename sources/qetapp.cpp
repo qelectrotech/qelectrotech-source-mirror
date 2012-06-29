@@ -1154,9 +1154,6 @@ void QETApp::configureQET() {
 	
 	// associe le dialogue a un eventuel widget parent
 	if (parent_widget) {
-#ifdef Q_WS_MAC
-		cd.setWindowFlags(Qt::Sheet);
-#endif
 		cd.setParent(parent_widget, cd.windowFlags());
 	}
 	

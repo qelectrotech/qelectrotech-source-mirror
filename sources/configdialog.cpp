@@ -53,6 +53,12 @@ ConfigDialog::ConfigDialog(QWidget *parent) : QDialog(parent) {
 	connect(buttons, SIGNAL(accepted()), this, SLOT(applyConf()));
 	connect(buttons, SIGNAL(rejected()), this, SLOT(reject()));
 	connect(pages_list, SIGNAL(currentItemChanged(QListWidgetItem *, QListWidgetItem *)), this, SLOT(changePage(QListWidgetItem *, QListWidgetItem*)));
+	
+#ifdef Q_WS_MAC
+	if (parent) {
+		setWindowFlags(Qt::Sheet);
+	}
+#endif
 }
 
 /// Destructeur
