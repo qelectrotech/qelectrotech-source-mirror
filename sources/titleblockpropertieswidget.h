@@ -37,6 +37,8 @@ class TitleBlockPropertiesWidget : public QWidget {
 	public:
 	TitleBlockProperties titleBlockProperties() const;
 	void setTitleBlockProperties(const TitleBlockProperties &);
+	void clearDiagramContext();
+	void setDiagramContext(const DiagramContext &);
 	bool displayCurrentDate() const;
 	bool isReadOnly() const;
 	void setReadOnly(bool);

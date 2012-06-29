@@ -125,6 +125,32 @@ void TitleBlockPropertiesWidget::setTitleBlockProperties(const TitleBlockPropert
 			titleblock_template_name -> setCurrentIndex(matching_index);
 		}
 	}
+	
+	setDiagramContext(titleblock.context);
+}
+
+/**
+	Clear the custom variables list.
+*/
+void TitleBlockPropertiesWidget::clearDiagramContext() {
+	additional_fields_table -> clearContents();
+	for (int i = 1 ; i < additional_fields_table -> rowCount() ; ++ i) {
+		additional_fields_table -> removeRow(i);
+	}
+}
+
+/**
+	Clear the custom variables table then add the key/value pairs from \a context to it.
+*/
+void TitleBlockPropertiesWidget::setDiagramContext(const DiagramContext &context) {
+	clearDiagramContext();
+	int i = 0;
+	foreach (QString key, context.keys()) {
+		additional_fields_table -> setItem(i, 0, new QTableWidgetItem(key));
+		additional_fields_table -> setItem(i, 1, new QTableWidgetItem(context[key].toString()));
+		++ i;
+	}
+	checkTableRows();
 }
 
 /**
@@ -348,17 +374,12 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	additional_fields_format_label -> setWordWrap(true);
 	additional_fields_format_label -> setAlignment(Qt::AlignJustify);
 	
-	int num_rows = titleblock.context.keys().count() + 1;
-	additional_fields_table = new QTableWidget(num_rows, 2);
+	additional_fields_table = new QTableWidget(0, 2);
+	additional_fields_table -> setSelectionMode(QAbstractItemView::SingleSelection);
 	additional_fields_table -> setHorizontalHeaderLabels(QStringList() << tr("Nom") << tr("Valeur"));
 	additional_fields_table -> horizontalHeader() -> setStretchLastSection(true);
 	
-	int i = 0;
-	foreach (QString key, titleblock.context.keys()) {
-		additional_fields_table -> setItem(i, 0, new QTableWidgetItem(key));
-		additional_fields_table -> setItem(i, 1, new QTableWidgetItem(titleblock.context[key].toString()));
-		++ i;
-	}
+	setDiagramContext(titleblock.context);
 	
 	refreshFieldsFormatLabel();
 	connect(additional_fields_table, SIGNAL(itemChanged(QTableWidgetItem *)), this, SLOT(checkTableRows()));
