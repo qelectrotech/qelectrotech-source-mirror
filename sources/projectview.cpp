@@ -17,6 +17,8 @@
 */
 #include "projectview.h"
 #include "qetproject.h"
+#include "configdialog.h"
+#include "projectconfigpages.h"
 #include "diagramview.h"
 #include "diagram.h"
 #include "diagramprintdialog.h"
@@ -400,85 +402,18 @@ void ProjectView::showDiagram(Diagram *diagram) {
 }
 
 /**
-	Affiche un dialogue permettant a l'utilisateur d'editer les proprietes du
-	projet.
+	Enable the user to edit properties of the current project through a
+	configuration dialog.
 */
 void ProjectView::editProjectProperties() {
 	if (!project_) return;
 	
-	bool project_is_read_only = project_ -> isReadOnly();
-	
-	// dialogue d'edition des proprietes du projet
-	QDialog properties_dialog(parentWidget());
-#ifdef Q_WS_MAC
-	properties_dialog.setWindowFlags(Qt::Sheet);
-#endif
-	
-	properties_dialog.setMinimumWidth(786);
-	properties_dialog.setMinimumHeight(585);
+	ConfigDialog properties_dialog(parentWidget());
+	properties_dialog.setMinimumSize(786, 585);
 	properties_dialog.setWindowTitle(tr("Propri\351t\351s du projet", "window title"));
-	
-	// titre du projet
-	QLabel *title_label = new QLabel(tr("Titre du projet :"));
-	QLineEdit *title_field = new QLineEdit(project_ -> title());
-	title_field -> setReadOnly(project_is_read_only);
-	
-	// proprietes des nouveaux schemas
-	QLabel *new_diagrams_prop = new QLabel(tr("Propri\351t\351s \340 utiliser lors de l'ajout d'un nouveau sch\351ma au projet :"));
-	
-	// dimensions par defaut d'un schema
-	BorderPropertiesWidget *bpw = new BorderPropertiesWidget(project_ -> defaultBorderProperties());
-	bpw -> setReadOnly(project_is_read_only);
-	
-	// proprietes par defaut d'un cartouche
-	TitleBlockPropertiesWidget *ipw = new TitleBlockPropertiesWidget(project_ -> defaultTitleBlockProperties(), true);
-	ipw -> setReadOnly(project_is_read_only);
-	
-	// proprietes par defaut des conducteurs
-	ConductorPropertiesWidget *cpw = new ConductorPropertiesWidget(project_ -> defaultConductorProperties());
-	cpw -> setContentsMargins(0, 0, 0, 0);
-	cpw -> setReadOnly(project_is_read_only);
-	
-	// boutons pour valider le dialogue
-	QDialogButtonBox *buttons = new QDialogButtonBox(project_is_read_only ? QDialogButtonBox::Ok : QDialogButtonBox::Ok | QDialogButtonBox::Cancel);
-	
-	connect(buttons, SIGNAL(accepted()), &properties_dialog, SLOT(accept()));
-	connect(buttons, SIGNAL(rejected()), &properties_dialog, SLOT(reject()));
-	
-	// agencement avec deux layouts : un vertical, un horizontal
-	QHBoxLayout *horiz_layout = new QHBoxLayout();
-	horiz_layout -> addWidget(title_label);
-	horiz_layout -> addWidget(title_field);
-	
-	QVBoxLayout *vlayout1 = new QVBoxLayout();
-	
-	vlayout1 -> addWidget(new_diagrams_prop);
-	
-	QHBoxLayout *hlayout1 = new QHBoxLayout();
-	QVBoxLayout *vlayout2 = new QVBoxLayout();
-	
-	vlayout2 -> addWidget(bpw);
-	vlayout2 -> addWidget(ipw);
-	vlayout2 -> setSpacing(5);
-	hlayout1 -> addLayout(vlayout2);
-	hlayout1 -> addWidget(cpw);
-	vlayout1 -> addLayout(hlayout1);
-	vlayout1 -> addStretch(1);
-	hlayout1 -> setAlignment(cpw, Qt::AlignTop);
-	
-	QVBoxLayout *vert_layout = new QVBoxLayout(&properties_dialog);
-	vert_layout -> addLayout(horiz_layout);
-	vert_layout -> addLayout(vlayout1);
-	vert_layout -> addStretch();
-	vert_layout -> addWidget(buttons);
-	
-	// si le dialogue est accepte
-	if (properties_dialog.exec() == QDialog::Accepted && !project_is_read_only) {
-		project_ -> setTitle(title_field -> text());
-		project_ -> setDefaultBorderProperties(bpw -> borderProperties());
-		project_ -> setDefaultTitleBlockProperties(ipw -> titleBlockProperties());
-		project_ -> setDefaultConductorProperties(cpw -> conductorProperties());
-	}
+	properties_dialog.addPage(new ProjectMainConfigPage(project_));
+	properties_dialog.addPage(new ProjectNewDiagramConfigPage(project_));
+	properties_dialog.exec();
 }
 
 /**
