@@ -39,7 +39,7 @@ class ConfigDialog : public QDialog {
 	
 	// methodes
 	public slots:
-    void changePage(QListWidgetItem *, QListWidgetItem *);
+	void changePage(QListWidgetItem *, QListWidgetItem *);
 	void applyConf();
 	void addPage(ConfigPage *);
 	
