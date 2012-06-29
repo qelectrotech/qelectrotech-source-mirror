@@ -45,7 +45,7 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &
 /// construit l'interface du widget
 void ConductorPropertiesWidget::buildInterface() {
 	
-	setFocusPolicy(Qt::StrongFocus);	
+	setFocusPolicy(Qt::StrongFocus);
 	setMinimumSize(380, 350);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
@@ -281,6 +281,7 @@ bool ConductorPropertiesWidget::isReadOnly() const {
 	@param ro true pour passer ce widget en lecture seule, false sinon
 */
 void ConductorPropertiesWidget::setReadOnly(bool ro) {
+	// enable or disable all child widgets according to the read only state
 	simple    -> setDisabled(ro);
 	multiline -> setDisabled(ro);
 	singleline -> setDisabled(ro);
@@ -291,6 +292,10 @@ void ConductorPropertiesWidget::setReadOnly(bool ro) {
 	neutral_checkbox -> setDisabled(ro);
 	color_button -> setDisabled(ro);
 	dashed_checkbox -> setDisabled(ro);
+	// if the widget is not read-only, we still need to disable some widgets for consistency
+	if (!ro) {
+		updateDisplay();
+	}
 }
 
 /**
