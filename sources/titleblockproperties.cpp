@@ -126,6 +126,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 		settings.setArrayIndex(i);
 		settings.setValue("name", key);
 		settings.setValue("value", context[key].toString());
+		++ i;
 	}
 	settings.endArray();
 }
