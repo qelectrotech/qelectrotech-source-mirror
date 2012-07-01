@@ -19,6 +19,7 @@
 #define TITLEBLOCK_PROPERTIES_WIDGET_H
 #include <QtGui>
 #include "titleblockproperties.h"
+class DiagramContextWidget;
 class TitleBlockTemplatesCollection;
 /**
 	Ce widget permet d'editer un objet TitleBlockProperties, c'est-a-dire les
@@ -50,8 +51,6 @@ class TitleBlockPropertiesWidget : public QWidget {
 	
 	// slots:
 	private slots:
-	void refreshFieldsFormatLabel();
-	void checkTableRows();
 	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
 	void duplicateCurrentTitleBlockTemplate();
@@ -60,8 +59,6 @@ class TitleBlockPropertiesWidget : public QWidget {
 	private:
 	void initWidgets(const TitleBlockProperties &);
 	void initLayouts();
-	int nameLessRowsCount() const;
-	int highlightNonAcceptableKeys();
 	
 	signals:
 	void editTitleBlockTemplate(const QString &, bool);
@@ -86,8 +83,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QRadioButton *titleblock_fixed_date;
 	bool display_current_date;
 	QLabel       *additional_fields_label;
-	QLabel       *additional_fields_format_label;
-	QTableWidget *additional_fields_table;
+	DiagramContextWidget *additional_fields_;
 	QTabBar      *tabbar;
 	TitleBlockTemplatesCollection *tbt_collection_;
 };

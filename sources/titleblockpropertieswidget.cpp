@@ -16,9 +16,9 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "titleblockpropertieswidget.h"
+#include "diagramcontextwidget.h"
 #include "qeticons.h"
 #include "templatescollection.h"
-
 /**
 	Constructeur
 	@param titleblock TitleBlockProperties a afficher
@@ -70,17 +70,7 @@ TitleBlockProperties TitleBlockPropertiesWidget::titleBlockProperties() const {
 	QString current_template_name = currentTitleBlockTemplateName();
 	if (!current_template_name.isEmpty()) prop.template_name = current_template_name;
 	
-	for (int i = 0 ; i < additional_fields_table -> rowCount() ; ++ i) {
-		QTableWidgetItem *qtwi_name  = additional_fields_table -> item(i, 0);
-		QTableWidgetItem *qtwi_value = additional_fields_table -> item(i, 1);
-		if (!qtwi_name || !qtwi_value) continue;
-		
-		QString key = qtwi_name -> text();
-		if (key.isEmpty()) continue;
-		
-		QString value = qtwi_value -> text();
-		prop.context.addValue(key, value);
-	}
+	prop.context = additional_fields_ -> context();
 	
 	return(prop);
 }
@@ -133,24 +123,14 @@ void TitleBlockPropertiesWidget::setTitleBlockProperties(const TitleBlockPropert
 	Clear the custom variables list.
 */
 void TitleBlockPropertiesWidget::clearDiagramContext() {
-	additional_fields_table -> clearContents();
-	for (int i = 1 ; i < additional_fields_table -> rowCount() ; ++ i) {
-		additional_fields_table -> removeRow(i);
-	}
+	additional_fields_ -> clear();
 }
 
 /**
 	Clear the custom variables table then add the key/value pairs from \a context to it.
 */
 void TitleBlockPropertiesWidget::setDiagramContext(const DiagramContext &context) {
-	clearDiagramContext();
-	int i = 0;
-	foreach (QString key, context.keys(DiagramContext::Alphabetical)) {
-		additional_fields_table -> setItem(i, 0, new QTableWidgetItem(key));
-		additional_fields_table -> setItem(i, 1, new QTableWidgetItem(context[key].toString()));
-		++ i;
-	}
-	checkTableRows();
+	additional_fields_ -> setContext(context);
 }
 
 /**
@@ -180,7 +160,7 @@ void TitleBlockPropertiesWidget::setReadOnly(bool ro) {
 	titleblock_current_date -> setDisabled(ro);
 	titleblock_fixed_date   -> setDisabled(ro);
 	titleblock_template_name -> setDisabled(ro);
-	additional_fields_table  -> setDisabled(ro);
+	additional_fields_       -> setDisabled(ro);
 }
 
 /**
@@ -239,35 +219,6 @@ void TitleBlockPropertiesWidget::setCurrentTitleBlockTemplateName(const QString 
 	int matching_index = titleblock_template_name -> findData(template_name);
 	if (matching_index != -1) {
 		titleblock_template_name -> setCurrentIndex(matching_index);
-	}
-}
-
-/**
-	Sets the text describing the acceptable format for keys when adding extra
-	key/value pairs.
-*/
-void TitleBlockPropertiesWidget::refreshFieldsFormatLabel() {
-	QString format_text = tr(
-		"Les noms ne peuvent contenir que des lettres minuscules, des "
-		"chiffres et des tirets."
-	);
-	
-	if (highlightNonAcceptableKeys()) {
-		format_text = QString("<span style=\"color: red;\">%1</span>").arg(format_text);
-	}
-	additional_fields_format_label -> setText(format_text);
-}
-
-/**
-	Adds a row in the additional fields table if needed.
-*/
-void TitleBlockPropertiesWidget::checkTableRows() {
-	refreshFieldsFormatLabel();
-	if (!nameLessRowsCount()) {
-		int new_idx = additional_fields_table -> rowCount();
-		additional_fields_table -> setRowCount(new_idx + 1);
-		additional_fields_table -> setItem(new_idx, 0, new QTableWidgetItem(""));
-		additional_fields_table -> setItem(new_idx, 1, new QTableWidgetItem(""));
 	}
 }
 
@@ -370,19 +321,8 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	);
 	additional_fields_label -> setWordWrap(true);
 	additional_fields_label -> setAlignment(Qt::AlignJustify);
-	additional_fields_format_label = new QLabel();
-	additional_fields_format_label -> setWordWrap(true);
-	additional_fields_format_label -> setAlignment(Qt::AlignJustify);
-	
-	additional_fields_table = new QTableWidget(0, 2);
-	additional_fields_table -> setSelectionMode(QAbstractItemView::SingleSelection);
-	additional_fields_table -> setHorizontalHeaderLabels(QStringList() << tr("Nom") << tr("Valeur"));
-	additional_fields_table -> horizontalHeader() -> setStretchLastSection(true);
-	
-	setDiagramContext(titleblock.context);
-	
-	refreshFieldsFormatLabel();
-	connect(additional_fields_table, SIGNAL(itemChanged(QTableWidgetItem *)), this, SLOT(checkTableRows()));
+	additional_fields_ = new DiagramContextWidget();
+	additional_fields_ -> setContext(titleblock.context);
 	
 	tabbar = new QTabBar(this);
 	tabbar -> addTab(tr("Principales"));
@@ -423,8 +363,7 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	QWidget *widget_user_fields = new QWidget(this);
 	QVBoxLayout *layout_user_fields = new QVBoxLayout(widget_user_fields);
 	layout_user_fields -> addWidget(additional_fields_label);
-	layout_user_fields -> addWidget(additional_fields_format_label);
-	layout_user_fields -> addWidget(additional_fields_table);
+	layout_user_fields -> addWidget(additional_fields_);
 	layout_user_fields -> setContentsMargins(0, 0, 0, 0);
 	
 	// stacked layout
@@ -458,41 +397,4 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	this_layout -> setContentsMargins(0, 0, 0, 0);
 	this_layout -> addWidget(titleblock_infos);
 	setLayout(this_layout);
-}
-
-/**
-	@return The count of name-less rows in the additional fields table.
-*/
-int TitleBlockPropertiesWidget::nameLessRowsCount() const {
-	int name_less_rows_count = 0;
-	for (int i = 0 ; i < additional_fields_table -> rowCount() ; ++ i) {
-		QTableWidgetItem *qtwi_name  = additional_fields_table -> item(i, 0);
-		if (qtwi_name && qtwi_name -> text().isEmpty()) ++ name_less_rows_count;
-	}
-	return(name_less_rows_count);
-}
-
-/**
-	Highlight keys that would not be accepted by a DiagramContext object.
-	@return the number of highlighted keys.
-*/
-int TitleBlockPropertiesWidget::highlightNonAcceptableKeys() {
-	static QRegExp re(DiagramContext::validKeyRegExp());
-	
-	QBrush fg_brush = additional_fields_table -> palette().brush(QPalette::WindowText);
-	
-	int invalid_keys = 0;
-	for (int i = 0 ; i < additional_fields_table -> rowCount() ; ++ i) {
-		QTableWidgetItem *qtwi_name  = additional_fields_table -> item(i, 0);
-		if (!qtwi_name) continue;
-		bool highlight = false;
-		if (!qtwi_name -> text().isEmpty()) {
-			if (!re.exactMatch(qtwi_name -> text())) {
-				highlight = true;
-				++ invalid_keys;
-			}
-		}
-		qtwi_name -> setForeground(highlight ? Qt::red : fg_brush);
-	}
-	return(invalid_keys);
 }
