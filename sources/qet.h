@@ -131,6 +131,7 @@ namespace QET {
 	bool attributeIsAnInteger(const QDomElement &, QString , int * = NULL);
 	bool attributeIsAReal(const QDomElement &, QString , qreal * = NULL);
 	QString ElementsAndConductorsSentence(int, int, int = 0);
+	QList<QDomElement> findInDomElement(const QDomElement &, const QString &);
 	QList<QDomElement> findInDomElement(const QDomElement &, const QString &, const QString &);
 	QList<QChar> forbiddenCharacters();
 	QString forbiddenCharactersString(bool = false);

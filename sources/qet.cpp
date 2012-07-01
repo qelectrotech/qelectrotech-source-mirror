@@ -247,6 +247,20 @@ QString QET::ElementsAndConductorsSentence(int elements_count, int conductors_co
 }
 
 /**
+	@return the list of \a tag_name elements directly under the \a e XML element.
+*/
+QList<QDomElement> QET::findInDomElement(const QDomElement &e, const QString &tag_name) {
+	QList<QDomElement> return_list;
+	for (QDomNode node = e.firstChild() ; !node.isNull() ; node = node.nextSibling()) {
+		if (!node.isElement()) continue;
+		QDomElement element = node.toElement();
+		if (element.isNull() || element.tagName() != tag_name) continue;
+		return_list << element;
+	}
+	return(return_list);
+}
+
+/**
 	Etant donne un element XML e, renvoie la liste de tous les elements
 	children imbriques dans les elements parent, eux-memes enfants de l'elememt e
 	@param e Element XML a explorer

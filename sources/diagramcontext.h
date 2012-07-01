@@ -17,7 +17,9 @@
 */
 #ifndef DIAGRAM_CONTEXT_H
 #define DIAGRAM_CONTEXT_H
+#include <QDomElement>
 #include <QHash>
+#include <QSettings>
 #include <QString>
 #include <QVariant>
 /**
@@ -37,9 +39,15 @@ class DiagramContext {
 	const QVariant operator[](const QString &) const;
 	bool addValue(const QString &, const QVariant &);
 	void clear();
+	int count();
 	
 	bool operator==(const DiagramContext &) const;
 	bool operator!=(const DiagramContext &) const;
+	
+	void toXml(QDomElement &, const QString & = "property") const;
+	void fromXml(const QDomElement &, const QString & = "property");
+	void toSettings(QSettings &, const QString &) const;
+	void fromSettings(QSettings &, const QString &);
 	
 	static QString validKeyRegExp();
 	
