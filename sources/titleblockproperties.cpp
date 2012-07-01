@@ -75,13 +75,7 @@ void TitleBlockProperties::toXml(QDomElement &e) const {
 	
 	if (context.keys().count()) {
 		QDomElement properties = e.ownerDocument().createElement("properties");
-		foreach (QString key, context.keys()) {
-			QDomElement property = e.ownerDocument().createElement("property");
-			property.setAttribute("name", key);
-			QDomText value = e.ownerDocument().createTextNode(context[key].toString());
-			property.appendChild(value);
-			properties.appendChild(property);
-		}
+		context.toXml(properties);
 		e.appendChild(properties);
 	}
 }
@@ -103,9 +97,8 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	
 	// reads the additional fields used to fill the title block
 	context.clear();
-	foreach (QDomElement property, QET::findInDomElement(e, "properties", "property")) {
-		if (!property.hasAttribute("name")) continue;
-		context.addValue(property.attribute("name"), QVariant(property.text()));
+	foreach (QDomElement e, QET::findInDomElement(e, "properties")) {
+		context.fromXml(e);
 	}
 }
 
@@ -120,16 +113,7 @@ void TitleBlockProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "filename", filename);
 	settings.setValue(prefix + "folio",    folio);
 	settings.setValue(prefix + "date",     exportDate());
-	
-	settings.beginWriteArray(prefix + "properties");
-	int i = 0;
-	foreach (QString key, context.keys()) {
-		settings.setArrayIndex(i);
-		settings.setValue("name", key);
-		settings.setValue("value", context[key].toString());
-		++ i;
-	}
-	settings.endArray();
+	context.toSettings(settings, prefix + "properties");
 }
 
 /**
@@ -143,15 +127,7 @@ void TitleBlockProperties::fromSettings(QSettings &settings, const QString &pref
 	filename = settings.value(prefix + "filename").toString();
 	folio    = settings.value(prefix + "folio", "%id/%total").toString();
 	setDateFromString(settings.value(prefix + "date").toString());
-	
-	int size = settings.beginReadArray(prefix + "properties");
-	for (int i = 0 ; i < size; ++ i) {
-		settings.setArrayIndex(i);
-		QString key = settings.value("name").toString();
-		if (key.isEmpty()) continue;
-		context.addValue(key, settings.value("value").toString());
-	}
-	settings.endArray();
+	context.fromSettings(settings, prefix + "properties");
 }
 
 /**
