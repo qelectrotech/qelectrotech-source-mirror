@@ -102,6 +102,7 @@ void TitleBlockProperties::fromXml(const QDomElement &e) {
 	if (e.hasAttribute("titleblocktemplate")) template_name = e.attribute("titleblocktemplate");
 	
 	// reads the additional fields used to fill the title block
+	context.clear();
 	foreach (QDomElement property, QET::findInDomElement(e, "properties", "property")) {
 		if (!property.hasAttribute("name")) continue;
 		context.addValue(property.attribute("name"), QVariant(property.text()));

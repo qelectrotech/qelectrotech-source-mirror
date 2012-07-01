@@ -36,6 +36,7 @@ class DiagramContext {
 	bool contains(const QString &) const;
 	const QVariant operator[](const QString &) const;
 	bool addValue(const QString &, const QVariant &);
+	void clear();
 	
 	bool operator==(const DiagramContext &) const;
 	bool operator!=(const DiagramContext &) const;

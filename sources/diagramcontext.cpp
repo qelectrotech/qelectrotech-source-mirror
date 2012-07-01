@@ -65,6 +65,13 @@ bool DiagramContext::addValue(const QString &key, const QVariant &value) {
 	return(false);
 }
 
+/**
+	Clear the content of this diagram context.
+*/
+void DiagramContext::clear() {
+	content_.clear();
+}
+
 bool DiagramContext::operator==(const DiagramContext &dc) const {
 	return(content_ == dc.content_);
 }
