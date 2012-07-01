@@ -417,6 +417,11 @@ QDomDocument QETProject::toXml() {
 		project_root.appendChild(titleblocktemplates_elmt);
 	}
 	
+	// project-wide properties
+	QDomElement project_properties = xml_doc.createElement("properties");
+	writeProjectPropertiesXml(project_properties);
+	project_root.appendChild(project_properties);
+	
 	// proprietes pour les nouveaux schemas
 	QDomElement new_diagrams_properties = xml_doc.createElement("newdiagrams");
 	writeDefaultPropertiesXml(new_diagrams_properties);
@@ -900,6 +905,9 @@ void QETProject::readProjectXml() {
 		state_ = ProjectParsingFailed;
 	}
 	
+	// load the project-wide properties
+	readProjectPropertiesXml();
+	
 	// charge les proprietes par defaut pour les nouveaux schemas
 	readDefaultPropertiesXml();
 	
@@ -977,6 +985,22 @@ void QETProject::readElementsCollectionXml() {
 	collection_ -> setProtocol("embed");
 	collection_ -> setProject(this);
 	connect(collection_, SIGNAL(written()), this, SLOT(componentWritten()));
+}
+
+/**
+	Load project properties from the XML description of the project
+*/
+void QETProject::readProjectPropertiesXml() {
+	foreach (QDomElement e, QET::findInDomElement(document_root_.documentElement(), "properties")) {
+		project_properties_.fromXml(e);
+	}
+}
+
+/**
+	Export project properties under the \a xml_element XML element.
+*/
+void QETProject::writeProjectPropertiesXml(QDomElement &xml_element) {
+	project_properties_.toXml(xml_element);
 }
 
 /**
@@ -1140,6 +1164,21 @@ bool QETProject::diagramsWereModified() {
 }
 
 /**
+	@return the project-wide properties made available to child diagrams.
+*/
+DiagramContext QETProject::projectProperties() {
+	return(project_properties_);
+}
+
+/**
+	Use \a context as project-wide properties made available to child diagrams.
+*/
+void QETProject::setProjectProperties(const DiagramContext &context) {
+	project_properties_ = context;
+	updateDiagramsFolioData();
+}
+
+/**
 	Cette methode sert a reperer un projet vide, c-a-d un projet identique a ce
 	que l'on obtient en faisant Fichier > Nouveau.
 	@return true si les schemas, la collection embarquee ou les proprietes de ce
@@ -1166,7 +1205,7 @@ bool QETProject::projectWasModified() {
 void QETProject::updateDiagramsFolioData() {
 	int total_folio = diagrams_.count();
 	for (int i = 0 ; i < total_folio ; ++ i) {
-		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio);
+		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, project_properties_);
 	}
 }
 

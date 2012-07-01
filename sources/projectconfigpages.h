@@ -7,6 +7,7 @@ class QETProject;
 class BorderPropertiesWidget;
 class TitleBlockPropertiesWidget;
 class ConductorPropertiesWidget;
+class DiagramContextWidget;
 
 /**
 	This class, derived from ConfigPage, aims at providing the basic skeleton
@@ -88,6 +89,8 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	protected:
 	QLabel *title_label_;
 	QLineEdit *title_value_;
+	QLabel *project_variables_label_;
+	DiagramContextWidget *project_variables_;
 };
 
 /**

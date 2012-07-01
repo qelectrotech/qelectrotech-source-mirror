@@ -115,6 +115,8 @@ class QETProject : public QObject {
 	bool projectWasModified();
 	bool embeddedCollectionWasModified();
 	bool diagramsWereModified();
+	DiagramContext projectProperties();
+	void setProjectProperties(const DiagramContext &);
 	
 	public slots:
 	void componentWritten();
@@ -146,6 +148,8 @@ class QETProject : public QObject {
 	void readDiagramsXml();
 	void readElementsCollectionXml();
 	void readEmbeddedTemplatesXml();
+	void readProjectPropertiesXml();
+	void writeProjectPropertiesXml(QDomElement &);
 	void readDefaultPropertiesXml();
 	void writeDefaultPropertiesXml(QDomElement &);
 	void addDiagram(Diagram *);
@@ -182,6 +186,8 @@ class QETProject : public QObject {
 	TitleBlockProperties default_titleblock_properties_;
 	/// Embedded title block templates collection
 	TitleBlockTemplatesProjectCollection titleblocks_;
+	/// project-wide variables that will be made available to child diagrams
+	DiagramContext project_properties_;
 };
 Q_DECLARE_METATYPE(QETProject *)
 #endif

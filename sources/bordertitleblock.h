@@ -142,7 +142,7 @@ class BorderTitleBlock : public QObject {
 	}
 	/// @param folio le nouveau contenu du champ "Folio"
 	void setFolio              (const QString &folio)    { bi_folio        = folio;    }
-	void setFolioData(int, int);
+	void setFolioData(int, int, const DiagramContext & = DiagramContext());
 	/// @param filename le nouveau contenu du champ "Fichier"
 	void setFileName           (const QString &filename) { bi_filename     = filename; }
 	
@@ -172,7 +172,7 @@ class BorderTitleBlock : public QObject {
 	
 	private:
 	void updateRectangles();
-	void updateDiagramContextForTitleBlock();
+	void updateDiagramContextForTitleBlock(const DiagramContext & = DiagramContext());
 	QString incrementLetters(const QString &);
 	
 	// signaux

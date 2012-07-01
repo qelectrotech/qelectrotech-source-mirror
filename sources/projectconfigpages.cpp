@@ -3,6 +3,7 @@
 #include "qetproject.h"
 #include "borderpropertieswidget.h"
 #include "conductorpropertieswidget.h"
+#include "diagramcontextwidget.h"
 #include "titleblockpropertieswidget.h"
 #include <QtGui>
 
@@ -105,6 +106,7 @@ QIcon ProjectMainConfigPage::icon() const {
 */
 void ProjectMainConfigPage::applyProjectConf() {
 	project_ -> setTitle(title_value_ -> text());
+	project_ -> setProjectProperties(project_variables_ -> context());
 }
 
 /**
@@ -120,6 +122,14 @@ QString ProjectMainConfigPage::projectTitle() const {
 void ProjectMainConfigPage::initWidgets() {
 	title_label_ = new QLabel(tr("Titre du projet\240:", "label when configuring"));
 	title_value_ = new QLineEdit();
+	project_variables_label_ = new QLabel(
+		tr(
+			"Vous pouvez d\351finir ci-dessous des variables qui seront disponibles pour tous les sch\351mas de ce projet (typiquement pour les cartouches).",
+			 "informative label"
+		)
+	);
+	project_variables_ = new DiagramContextWidget();
+	project_variables_ -> setContext(DiagramContext());
 }
 
 /**
@@ -131,7 +141,8 @@ void ProjectMainConfigPage::initLayout() {
 	title_layout0 -> addWidget(title_label_);
 	title_layout0 -> addWidget(title_value_);
 	main_layout0 -> addLayout(title_layout0);
-	main_layout0 -> addStretch();
+	main_layout0 -> addWidget(project_variables_label_);
+	main_layout0 -> addWidget(project_variables_);
 	setLayout(main_layout0);
 }
 
@@ -140,6 +151,7 @@ void ProjectMainConfigPage::initLayout() {
 */
 void ProjectMainConfigPage::readValuesFromProject() {
 	title_value_ -> setText(project_ -> title());
+	project_variables_ -> setContext(project_ -> projectProperties());
 }
 
 /**

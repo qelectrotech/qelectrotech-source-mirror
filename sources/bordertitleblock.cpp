@@ -192,8 +192,8 @@ void BorderTitleBlock::importTitleBlock(const TitleBlockProperties &ip) {
 	setFolio(ip.folio);
 	additional_fields_ = ip.context;
 	
-	emit(needFolioData());
-	updateDiagramContextForTitleBlock();
+	emit(needFolioData()); // Note: we expect additional data to be provided
+	// through setFolioData(), which in turn calls updateDiagramContextForTitleBlock().
 	emit(needTitleBlockTemplate(ip.template_name));
 }
 
@@ -572,10 +572,16 @@ DiagramPosition BorderTitleBlock::convertPosition(const QPointF &pos) {
 /**
 	Update the informations given to the titleblock template by regenerating a
 	DiagramContext object.
+	@param initial_context Base diagram context that will be overridden by
+	diagram-wide values
 */
-void BorderTitleBlock::updateDiagramContextForTitleBlock() {
-	// our final DiagramContext object is the "additional fields" one
-	DiagramContext context = additional_fields_;
+void BorderTitleBlock::updateDiagramContextForTitleBlock(const DiagramContext &initial_context) {
+	// Our final DiagramContext is the initial one (which is supposed to bring
+	// project-wide properties), overridden by the "additional fields" one...
+	DiagramContext context = initial_context;
+	foreach (QString key, additional_fields_.keys()) {
+		context.addValue(key, additional_fields_[key]);
+	}
 	
 	// ... overridden by the historical and/or dynamically generated fields
 	context.addValue("author",      bi_author);
@@ -609,8 +615,9 @@ QString BorderTitleBlock::incrementLetters(const QString &string) {
 /**
 	@param index numero du schema (de 1 a total)
 	@param total nombre total de schemas dans le projet
+	@param project_properties Project-wide properties, to be merged with diagram-wide ones.
 */
-void BorderTitleBlock::setFolioData(int index, int total) {
+void BorderTitleBlock::setFolioData(int index, int total, const DiagramContext &project_properties) {
 	if (index < 1 || total < 1 || index > total) return;
 	
 	// memorise les informations
@@ -622,5 +629,5 @@ void BorderTitleBlock::setFolioData(int index, int total) {
 	bi_final_folio.replace("%id",    QString::number(folio_index_));
 	bi_final_folio.replace("%total", QString::number(folio_total_));
 	
-	updateDiagramContextForTitleBlock();
+	updateDiagramContextForTitleBlock(project_properties);
 }
