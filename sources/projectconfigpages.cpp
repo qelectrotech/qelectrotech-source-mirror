@@ -122,12 +122,14 @@ QString ProjectMainConfigPage::projectTitle() const {
 void ProjectMainConfigPage::initWidgets() {
 	title_label_ = new QLabel(tr("Titre du projet\240:", "label when configuring"));
 	title_value_ = new QLineEdit();
+	title_information_ = new QLabel(tr("Ce titre sera disponible pour tous les sch\351mas de ce projet en tant que %projecttitle.", "informative label"));
 	project_variables_label_ = new QLabel(
 		tr(
-			"Vous pouvez d\351finir ci-dessous des variables qui seront disponibles pour tous les sch\351mas de ce projet (typiquement pour les cartouches).",
+			"Vous pouvez d\351finir ci-dessous des propri\351t\351s personnalis\351es qui seront disponibles pour tous les sch\351mas de ce projet (typiquement pour les cartouches).",
 			 "informative label"
 		)
 	);
+	project_variables_label_ -> setWordWrap(true);
 	project_variables_ = new DiagramContextWidget();
 	project_variables_ -> setContext(DiagramContext());
 }
@@ -141,6 +143,8 @@ void ProjectMainConfigPage::initLayout() {
 	title_layout0 -> addWidget(title_label_);
 	title_layout0 -> addWidget(title_value_);
 	main_layout0 -> addLayout(title_layout0);
+	main_layout0 -> addWidget(title_information_);
+	main_layout0 -> addSpacing(10);
 	main_layout0 -> addWidget(project_variables_label_);
 	main_layout0 -> addWidget(project_variables_);
 	setLayout(main_layout0);

@@ -297,6 +297,7 @@ void QETProject::setTitle(const QString &title) {
 	project_title_ = title;
 	emit(projectTitleChanged(this, project_title_));
 	emit(projectInformationsChanged(this));
+	updateDiagramsFolioData();
 }
 
 /**
@@ -1204,8 +1205,12 @@ bool QETProject::projectWasModified() {
 */
 void QETProject::updateDiagramsFolioData() {
 	int total_folio = diagrams_.count();
+	
+	DiagramContext project_wide_properties = project_properties_;
+	project_wide_properties.addValue("projecttitle", title());
+	
 	for (int i = 0 ; i < total_folio ; ++ i) {
-		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, project_properties_);
+		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, project_wide_properties);
 	}
 }
 

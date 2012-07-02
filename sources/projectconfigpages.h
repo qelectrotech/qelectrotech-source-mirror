@@ -89,6 +89,7 @@ class ProjectMainConfigPage : public ProjectConfigPage {
 	protected:
 	QLabel *title_label_;
 	QLineEdit *title_value_;
+	QLabel *title_information_;
 	QLabel *project_variables_label_;
 	DiagramContextWidget *project_variables_;
 };
