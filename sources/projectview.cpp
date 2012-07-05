@@ -287,6 +287,36 @@ bool ProjectView::tryClosingDiagrams() {
 }
 
 /**
+	Ask the user to provide a file path in which the currently edited project will
+	be saved.
+	@param assign When true, assign the provided filepath to the project through
+	setFilePath(). Defaults to true.
+	@return the file path, or an empty string if none were provided
+*/
+QString ProjectView::askUserForFilePath(bool assign) {
+	// ask the user for a filepath in order to save the project
+	QString filepath = QFileDialog::getSaveFileName(
+		this,
+		tr("Enregistrer sous", "dialog title"),
+		project_ -> currentDir(),
+		tr("Sch\351ma QElectroTech (*.qet)", "filetypes allowed when saving a diagram file")
+	);
+	
+	// if no filepath is provided, return an empty string
+	if (filepath.isEmpty()) return(filepath);
+	
+	// if the name does not end with the .qet extension, append it
+	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
+	
+	if (assign) {
+		// assign the provided filepath to the currently edited project
+		project_ -> setFilePath(filepath);
+	}
+	
+	return(filepath);
+}
+
+/**
 	Ajoute un nouveau schema au ProjectView
 */
 void ProjectView::addNewDiagram() {
@@ -555,25 +585,27 @@ bool ProjectView::save() {
 }
 
 /**
-	Enregistre tous les schemas du projet.
-	@see filePath()
-	@see setFilePath()
-	@return true si l'enregistrement a reussi, false sinon
+	Save all diagrams in the project.
+	@return False if something went wrong (no project, no filepath provided, write
+	error), true otherwise.
 */
 bool ProjectView::saveAll() {
 	if (project_) {
-		// on fait deja un appel a save
-		if (!save()) {
-			return(false);
-		} else {
-			// a ce stade, on suppose que l'on a un fichier, et que l'ecriture du schema en cours a reussi
-			// on enregistre les schemas
-			foreach(Diagram *diagram, project_ -> diagrams()) {
-				diagram -> write();
-			}
-			updateWindowTitle();
-			return(true);
+		if (project_ -> filePath().isEmpty()) {
+			QString filepath = askUserForFilePath();
+			if (filepath.isEmpty()) return(false);
 		}
+		foreach (Diagram *diagram, project_ -> diagrams()) {
+			// Diagram::write() emits the written() signal, which is connected to
+			// QETProject::write() through QETProject::componentWritten(). We do not want
+			// to write the project immediately, so we block this signal.
+			diagram -> blockSignals(true);
+			diagram -> write();
+			diagram -> blockSignals(false);
+		}
+		bool writing = project_ -> write();
+		updateWindowTitle();
+		return(writing);
 	}
 	return(false);
 }
@@ -655,23 +687,8 @@ int ProjectView::cleanProject() {
 	@return true si l'enregistrement a reussi, false sinon
 */
 bool ProjectView::saveAs() {
-	// demande un nom de fichier a l'utilisateur pour enregistrer le projet
-	QString filepath = QFileDialog::getSaveFileName(
-		this,
-		tr("Enregistrer sous", "dialog title"),
-		project_ -> currentDir(),
-		tr("Sch\351ma QElectroTech (*.qet)", "filetypes allowed when saving a diagram file")
-	);
-	
-	// si aucun nom n'est entre, renvoie faux.
+	QString filepath = askUserForFilePath();
 	if (filepath.isEmpty()) return(false);
-	
-	// si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee
-	if (!filepath.endsWith(".qet", Qt::CaseInsensitive)) filepath += ".qet";
-	
-	// le fichier est assigne au projet
-	project_ -> setFilePath(filepath);
-	
 	return(save());
 }
 

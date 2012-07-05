@@ -89,6 +89,7 @@ class ProjectView : public QWidget {
 	bool tryClosing();
 	bool tryClosingElementEditors();
 	bool tryClosingDiagrams();
+	QString askUserForFilePath(bool = true);
 	
 	private slots:
 	void tabChanged(int);
