@@ -1211,6 +1211,7 @@ void QETProject::updateDiagramsFolioData() {
 	
 	for (int i = 0 ; i < total_folio ; ++ i) {
 		diagrams_[i] -> border_and_titleblock.setFolioData(i + 1, total_folio, project_wide_properties);
+		diagrams_[i] -> update();
 	}
 }
 
