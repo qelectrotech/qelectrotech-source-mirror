@@ -105,8 +105,23 @@ QIcon ProjectMainConfigPage::icon() const {
 	Apply the configuration after user input
 */
 void ProjectMainConfigPage::applyProjectConf() {
-	project_ -> setTitle(title_value_ -> text());
-	project_ -> setProjectProperties(project_variables_ -> context());
+	bool modified_project = false;
+	
+	QString new_title = title_value_ -> text();
+	if (project_ -> title() != new_title) {
+		project_ -> setTitle(new_title);
+		modified_project = true;
+	}
+	
+	DiagramContext new_properties = project_variables_ -> context();
+	if (project_ -> projectProperties() != new_properties) {
+		project_ -> setProjectProperties(new_properties);
+		modified_project = true;
+	}
+	
+	if (modified_project) {
+		project_ -> setModified(true);
+	}
 }
 
 /**
@@ -202,9 +217,29 @@ QIcon ProjectNewDiagramConfigPage::icon() const {
 	Apply the configuration after user input
 */
 void ProjectNewDiagramConfigPage::applyProjectConf() {
-	project_ -> setDefaultBorderProperties(border_ -> borderProperties());
-	project_ -> setDefaultTitleBlockProperties(titleblock_ -> titleBlockProperties());
-	project_ -> setDefaultConductorProperties(conductor_ -> conductorProperties());
+	bool modified_project = false;
+	
+	BorderProperties new_border_prop = border_ -> borderProperties();
+	if (project_ -> defaultBorderProperties() != new_border_prop) {
+		project_ -> setDefaultBorderProperties(border_ -> borderProperties());
+		modified_project = true;
+	}
+	
+	TitleBlockProperties new_tbt_prop = titleblock_ -> titleBlockProperties();
+	if (project_ -> defaultTitleBlockProperties() != new_tbt_prop) {
+		project_ -> setDefaultTitleBlockProperties(titleblock_ -> titleBlockProperties());
+		modified_project = true;
+	}
+	
+	ConductorProperties new_conductor_prop = conductor_ -> conductorProperties();
+	if (project_ -> defaultConductorProperties() != new_conductor_prop) {
+		project_ -> setDefaultConductorProperties(conductor_ -> conductorProperties());
+		modified_project = true;
+	}
+	
+	if (modified_project) {
+		project_ -> setModified(modified_project);
+	}
 }
 
 /**

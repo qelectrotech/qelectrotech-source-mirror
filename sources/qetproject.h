@@ -113,7 +113,9 @@ class QETProject : public QObject {
 	void cleanUnusedElements(MoveElementsHandler *);
 	void cleanEmptyCategories(MoveElementsHandler *);
 	bool projectWasModified();
+	bool projectOptionsWereModified();
 	bool embeddedCollectionWasModified();
+	bool titleBlockTemplateCollectionWasModified();
 	bool diagramsWereModified();
 	DiagramContext projectProperties();
 	void setProjectProperties(const DiagramContext &);
@@ -123,6 +125,7 @@ class QETProject : public QObject {
 	Diagram *addNewDiagram();
 	void removeDiagram(Diagram *);
 	void diagramOrderChanged(int, int);
+	void setModified(bool);
 	
 	signals:
 	void projectFilePathChanged(QETProject *, const QString &);
@@ -130,6 +133,7 @@ class QETProject : public QObject {
 	void projectInformationsChanged(QETProject *);
 	void diagramAdded(QETProject *, Diagram *);
 	void diagramRemoved(QETProject *, Diagram *);
+	void projectModified(QETProject *, bool);
 	void projectDiagramsOrderChanged(QETProject *, int, int);
 	void elementIntegrated(QETProject *, const ElementsLocation &);
 	void diagramUsedTemplate(TitleBlockTemplatesCollection *, const QString &);
@@ -172,6 +176,8 @@ class QETProject : public QObject {
 	QString project_title_;
 	/// Version de QElectroTech declaree dans le document XML lors de son ouverture
 	qreal project_qet_version_;
+	/// Whether options were modified
+	bool modified_;
 	/// booleen indiquant si le projet est en ReadOnly ou non
 	bool read_only_;
 	/// Chemin du fichier pour lequel ce projet est considere comme etant en lecture seule

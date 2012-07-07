@@ -40,6 +40,7 @@ QETProject::QETProject(int diagrams, QObject *parent) :
 	QObject(parent),
 	collection_(0),
 	project_qet_version_(-1),
+	modified_(false),
 	read_only_(false),
 	titleblocks_(this)
 {
@@ -69,6 +70,7 @@ QETProject::QETProject(const QString &path, QObject *parent) :
 	QObject(parent),
 	collection_(0),
 	project_qet_version_(-1),
+	modified_(false),
 	read_only_(false),
 	titleblocks_(this)
 {
@@ -107,6 +109,7 @@ QETProject::QETProject(const QDomElement &xml_element, QObject *parent) :
 	QObject(parent),
 	collection_(0),
 	project_qet_version_(-1),
+	modified_(false),
 	read_only_(false),
 	titleblocks_(this)
 {
@@ -261,6 +264,14 @@ QString QETProject::pathNameTitle() const {
 			tr(
 				"%1 [lecture seule]",
 				"displayed title for a read-only project - %1 is a displayable title"
+			)
+		).arg(final_title);
+	}
+	if (modified_) {
+		final_title = QString(
+			tr(
+				"%1 [modifi\351]",
+				"displayed title for a modified project - %1 is a displayable title"
 			)
 		).arg(final_title);
 	}
@@ -478,6 +489,8 @@ bool QETProject::write() {
 	bool writing = QET::writeXmlFile(document_root_, file_path_, &error_message);
 	if (!writing) {
 		qDebug() << qPrintable(QString("QETProject::write() : %1 [%2]").arg(error_message).arg(QET::pointerString(this)));
+	} else {
+		setModified(false);
 	}
 	return(writing);
 }
@@ -835,6 +848,17 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 }
 
 /**
+	Mark this project as modified and emit the projectModified() signal.
+*/
+void QETProject::setModified(bool modified) {
+	if (modified_ != modified) {
+		modified_ = modified;
+		emit(projectModified(this, modified_));
+		emit(projectInformationsChanged(this));
+	}
+}
+
+/**
 	Set up signals/slots connections related to the title block templates
 	collection.
 */
@@ -1122,6 +1146,16 @@ NamesList QETProject::namesListForIntegrationCategory() {
 }
 
 /**
+	@return true if project options (title, project-wide properties, settings
+	for new diagrams, ...) were modified, false otherwise.
+*/
+bool QETProject::projectOptionsWereModified() {
+	// unlike similar methods, this method does not compare the content against
+	// expected values; instead, we just check whether we have been set as modified.
+	return(modified_);
+}
+
+/**
 	Cette methode sert a reperer un projet vide, c-a-d un projet identique a ce
 	que l'on obtient en faisant Fichier > Nouveau.
 	@return true si la collection d'elements embarquee a ete modifiee.
@@ -1147,6 +1181,16 @@ bool QETProject::embeddedCollectionWasModified() {
 	}
 	
 	return(false);
+}
+
+/**
+	@return true if the embedded title block templates collection was modified,
+	false otherwise.
+*/
+bool QETProject::titleBlockTemplateCollectionWasModified() {
+	// we do not expect a new project to embed any title block template (this may
+	// change in the future though).
+	return(titleblocks_.templates().count());
 }
 
 /**
@@ -1189,12 +1233,10 @@ void QETProject::setProjectProperties(const DiagramContext &context) {
 	@see diagramsWereModified(), embeddedCollectionWasModified()
 */
 bool QETProject::projectWasModified() {
-	// il doit avoir un titre vide
-	if (!title().isEmpty()) return(true);
-	
-	// ni ses schemas ni sa collection embarquee ne doivent avoir ete modifies
+	if (projectOptionsWereModified()) return(true);
 	if (diagramsWereModified()) return(true);
 	if (embeddedCollectionWasModified()) return(true);
+	if (titleBlockTemplateCollectionWasModified()) return(true);
 	
 	return(false);
 }

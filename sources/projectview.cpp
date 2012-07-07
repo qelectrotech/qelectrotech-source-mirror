@@ -106,6 +106,7 @@ void ProjectView::setProject(QETProject *project) {
 	if (!project_) {
 		project_ = project;
 		connect(project_, SIGNAL(projectTitleChanged(QETProject *, const QString &)), this, SLOT(updateWindowTitle()));
+		connect(project_, SIGNAL(projectModified    (QETProject *, bool)),            this, SLOT(updateWindowTitle()));
 		connect(project_, SIGNAL(readOnlyChanged    (QETProject *, bool)),            this, SLOT(adjustReadOnlyState()));
 		adjustReadOnlyState();
 		loadDiagrams();
@@ -562,6 +563,7 @@ void ProjectView::exportProject() {
 	@return true si l'enregistrement a reussi, false sinon
 */
 bool ProjectView::save() {
+	bool result = false;
 	if (project_) {
 		if (project_ -> filePath().isEmpty()) {
 			// le projet n'est pas encore enregistre dans un fichier
@@ -572,16 +574,15 @@ bool ProjectView::save() {
 		if (DiagramView *current_view = currentDiagram()) {
 			if (Diagram *diagram = current_view -> diagram()) {
 				diagram -> write();
-				updateWindowTitle();
-				return(true);
+				result = true;
 			}
 		} else {
 			// s'il n'y a pas de schema, on appelle directement la methode write()
-			project_ -> write();
+			result = project_ -> write();
 		}
-		return(true);
 	}
-	return(false);
+	updateWindowTitle();
+	return(result);
 }
 
 /**
