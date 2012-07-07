@@ -313,7 +313,7 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 	return(
 		other.type == type &&\
 		other.color == color &&\
-		other.color == style &&\
+		other.style == style &&\
 		other.text == text &&\
 		other.singleLineProperties == singleLineProperties
 	);
@@ -327,7 +327,7 @@ int ConductorProperties::operator!=(const ConductorProperties &other) {
 	return(
 		other.type != type ||\
 		other.color != color ||\
-		other.color != style ||\
+		other.style != style ||\
 		other.text != text ||\
 		other.singleLineProperties != singleLineProperties
 	);
