@@ -1,10 +1,10 @@
-<project title="Oprerational amplifier uA741" version="0.3">
+<project title="Operational amplifier uA741" version="0.3">
     <newdiagrams>
         <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
-        <inset title="Oprerational amplifier uA741" folio="%id/%total" author="pawel32640" filename="741.qet" date="20100921"/>
+        <inset title="Operational amplifier uA741" folio="%id/%total" author="pawel32640" filename="741.qet" date="20100921"/>
         <conductors num="" type="multi"/>
     </newdiagrams>
-    <diagram title="Oprerational amplifier uA741" displayrows="true" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="1" rows="8" author="pawel32640" filename="741.qet" date="20100921" rowsize="80">
+    <diagram title="Operational amplifier uA741" displayrows="true" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="1" rows="8" author="pawel32640" filename="741.qet" date="20100921" rowsize="80">
         <defaultconductor num="" type="multi"/>
         <elements>
             <element x="390" y="260" type="embed://import/oznaczenia/tekst_10.elmt" orientation="0">
