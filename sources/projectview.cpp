@@ -44,36 +44,9 @@ ProjectView::ProjectView(QETProject *project, QWidget *parent) :
 	QWidget(parent),
 	project_(0)
 {
-	setObjectName("ProjectView");
-	setWindowIcon(QET::Icons::ProjectFile);
-	
-	// construit le widget "fallback"
-	fallback_widget_ = new QWidget();
-	QVBoxLayout *fallback_widget_layout_ = new QVBoxLayout(fallback_widget_);
-	QLabel *label_widget = new QLabel(tr("Ce projet ne contient aucun sch\351ma"));
-	label_widget -> setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
-	fallback_widget_layout_ -> addWidget(label_widget);
-	
-	tabs_ = new QETTabWidget();
-	tabs_ -> setMovable(true);
-	connect(tabs_, SIGNAL(currentChanged(int)),   this, SLOT(tabChanged(int)));
-	connect(tabs_, SIGNAL(tabDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
-	connect(tabs_, SIGNAL(firstTabInserted()),    this, SLOT(firstTabInserted()));
-	connect(tabs_, SIGNAL(lastTabRemoved()),      this, SLOT(lastTabRemoved()));
-	connect(tabs_, SIGNAL(tabMoved(int, int)),    this, SLOT(tabMoved(int, int)));
-	
-	layout_ = new QVBoxLayout(this);
-#ifdef Q_WS_MAC
-	layout_ -> setContentsMargins(0, 8, 0, 0);
-#else
-	layout_ -> setContentsMargins(0, 0, 0, 0);
-#endif
-	layout_ -> setSpacing(0);
-	layout_ -> addWidget(fallback_widget_);
-	layout_ -> addWidget(tabs_);
-	
-	fallback_widget_ -> setVisible(false);
-	tabs_ -> setVisible(false);
+	initActions();
+	initWidgets();
+	initLayout();
 	
 	setProject(project);
 }
@@ -694,6 +667,68 @@ bool ProjectView::saveAs() {
 }
 
 /**
+	Initialize actions for this widget.
+*/
+void ProjectView::initActions() {
+	add_new_diagram_ = new QAction(QET::Icons::Add, tr("Ajouter un sch\351ma"), this);
+	connect(add_new_diagram_, SIGNAL(triggered()), this, SLOT(addNewDiagram()));
+}
+
+/**
+	Initialize child widgets for this widget.
+*/
+void ProjectView::initWidgets() {
+	setObjectName("ProjectView");
+	setWindowIcon(QET::Icons::ProjectFile);
+	
+	// initialize the "fallback" widget
+	fallback_widget_ = new QWidget();
+	fallback_label_ = new QLabel(
+		tr(
+			"Ce projet ne contient aucun sch\351ma",
+			"label displayed when a project contains no diagram"
+		)
+	);
+	fallback_label_ -> setAlignment(Qt::AlignVCenter | Qt::AlignHCenter);
+	
+	// initialize tabs
+	tabs_ = new QETTabWidget();
+	tabs_ -> setMovable(true);
+	
+	QToolButton *add_new_diagram_button = new QToolButton();
+	add_new_diagram_button -> setDefaultAction(add_new_diagram_);
+	add_new_diagram_button -> setAutoRaise(true);
+	tabs_ -> setCornerWidget(add_new_diagram_button, Qt::TopRightCorner);
+	
+	connect(tabs_, SIGNAL(currentChanged(int)),   this, SLOT(tabChanged(int)));
+	connect(tabs_, SIGNAL(tabDoubleClicked(int)), this, SLOT(tabDoubleClicked(int)));
+	connect(tabs_, SIGNAL(firstTabInserted()),    this, SLOT(firstTabInserted()));
+	connect(tabs_, SIGNAL(lastTabRemoved()),      this, SLOT(lastTabRemoved()));
+	connect(tabs_, SIGNAL(tabMoved(int, int)),    this, SLOT(tabMoved(int, int)));
+	
+	fallback_widget_ -> setVisible(false);
+	tabs_ -> setVisible(false);
+}
+
+/**
+	Initialize layout for this widget.
+*/
+void ProjectView::initLayout() {
+	QVBoxLayout *fallback_widget_layout_ = new QVBoxLayout(fallback_widget_);
+	fallback_widget_layout_ -> addWidget(fallback_label_);
+	
+	layout_ = new QVBoxLayout(this);
+#ifdef Q_WS_MAC
+	layout_ -> setContentsMargins(0, 8, 0, 0);
+#else
+	layout_ -> setContentsMargins(0, 0, 0, 0);
+#endif
+	layout_ -> setSpacing(0);
+	layout_ -> addWidget(fallback_widget_);
+	layout_ -> addWidget(tabs_);
+}
+
+/**
 	Charge les schemas du projet
 */
 void ProjectView::loadDiagrams() {
@@ -725,8 +760,12 @@ void ProjectView::updateWindowTitle() {
 	du mode lecture seule.
 */
 void ProjectView::adjustReadOnlyState() {
-	// on empeche l'utilisateur de deplacer les onglets
-	tabs_ -> setMovable(!(project_ -> isReadOnly()));
+	bool editable = !(project_ -> isReadOnly());
+	
+	// prevent users from moving existing diagrams
+	tabs_ -> setMovable(editable);
+	// prevent users from adding new diagrams
+	add_new_diagram_ -> setEnabled(editable);
 	
 	// on met a jour le titre du widget, qui reflete l'etat de lecture seule
 	updateWindowTitle();

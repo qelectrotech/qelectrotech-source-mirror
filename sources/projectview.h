@@ -83,6 +83,9 @@ class ProjectView : public QWidget {
 	void editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool);
 	
 	private:
+	void initActions();
+	void initWidgets();
+	void initLayout();
 	void loadDiagrams();
 	DiagramView *findDiagram(Diagram *);
 	void rebuildDiagramsMap();
@@ -101,9 +104,11 @@ class ProjectView : public QWidget {
 	
 	// attributs
 	private:
+	QAction *add_new_diagram_;
 	QETProject *project_;
 	QVBoxLayout *layout_;
 	QWidget *fallback_widget_;
+	QLabel *fallback_label_;
 	QETTabWidget *tabs_;
 	QMap<int, DiagramView *> diagram_ids_;
 	QList<DiagramView *> diagrams_;
