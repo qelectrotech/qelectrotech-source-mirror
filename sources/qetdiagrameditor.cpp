@@ -46,6 +46,10 @@ QETDiagramEditor::QETDiagramEditor(const QStringList &files, QWidget *parent) :
 	workspace.setBackground(QBrush(Qt::NoBrush));
 	workspace.setObjectName("mdiarea");
 	
+#if QT_VERSION >= 0x040800
+	workspace.setTabsClosable(true);
+#endif
+	
 	// mise en place du signalmapper
 	connect(&windowMapper, SIGNAL(mapped(QWidget *)), this, SLOT(activateWidget(QWidget *)));
 	
