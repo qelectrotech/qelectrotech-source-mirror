@@ -361,19 +361,19 @@
         <location filename="../sources/diagramprintdialog.cpp" line="215"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
-        <translation>Druk na drukarce fizycznej</translation>
+        <translation>Wydruk na drukarce fizycznej</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="216"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
-        <translation>Druk do pliku PDF</translation>
+        <translation>Wydruk do pliku PDF</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="217"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
-        <translation>Druk do pliku PostScript (PS)</translation>
+        <translation>Wydruk do pliku PostScript (PS)</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="222"/>
@@ -1030,7 +1030,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementscategoryeditor.cpp" line="141"/>
         <source>Le nom interne que vous avez choisi est déjà utilisé par une catégorie existante. Veuillez en choisir un autre.</source>
         <comment>message box content</comment>
-        <translation>Wybrana nazwa wewnętrzna jest już używana w innej kategorii. Proszę wybrać inną.</translation>
+        <translation>Wybrana nazwa wewnętrzna jest już używana w tej kategorii. Proszę wybrać inną.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="155"/>
@@ -1403,7 +1403,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/exportdialog.cpp" line="377"/>
         <source>Vous devez entrer un nom de fichier non vide et unique pour chaque schéma à exporter.</source>
         <comment>message box content</comment>
-        <translation>Musisz podać nie używaną nazwę pliku dla eksportowanych schematów.</translation>
+        <translation>Musisz podać nieużywaną nazwę pliku dla eksportowanych schematów.</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="646"/>
@@ -1651,7 +1651,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1151"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation>%1 [nie używany w projekcie]</translation>
+        <translation>%1 [nieużywany w projekcie]</translation>
     </message>
 </context>
 <context>
@@ -5842,7 +5842,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation>Zawartość komórki tabliczki rysunkowej może być opcjonalnie poprzedzona etykietą. Obie mogą być przetłumaczone na kilka języków.&lt;br/&gt;Aktualnie edytujesz &lt;em&gt;modèle&lt;/em&gt; tabliczki rysunkowej, nie należy wprowadzać bezpośrednio surowych danych zamiast zmiennych w postaci %{nazwa-zmiennej}, która następnie zostanie zastąpiona przez odpowiednie wartości dla strony.</translation>
+        <translation>Zawartość komórki tabliczki rysunkowej może być opcjonalnie poprzedzona etykietą. Obie mogą być przetłumaczone na kilka języków.&lt;br/&gt;Aktualnie edytujesz &lt;em&gt;szablon&lt;/em&gt; tabliczki rysunkowej, nie należy wprowadzać bezpośrednio surowych danych zamiast zmiennych w postaci %{nazwa-zmiennej}, która następnie zostanie zastąpiona przez odpowiednie wartości dla strony.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -5966,7 +5966,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="214"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Istnieje już logo z nazwą &quot;%1&quot; w tym szablonie tabliczki. Chcesz zastąpić, czy określić inną nazwę dla nowego logo ?</translation>
+        <translation>Istnieje już logo z nazwą &quot;%1&quot; w tym szablonie tabliczki. Chcesz zastąpić logo, czy określić inną nazwę dla nowego logo ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="250"/>
