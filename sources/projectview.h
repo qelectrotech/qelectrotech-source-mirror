@@ -19,6 +19,7 @@
 #define PROJECT_VIEW_H
 #include <QtGui>
 #include "templatelocation.h"
+#include "qetresult.h"
 class QETProject;
 class DiagramView;
 class Diagram;
@@ -29,6 +30,17 @@ class QETTabWidget;
 */
 class ProjectView : public QWidget {
 	Q_OBJECT
+	
+	public:
+	enum ProjectSaveOption {
+		ModifiedDiagramsOnly = 1,
+		CurrentDiagram = 2,
+		AllDiagramsButCurrent = 4,
+		AllDiagrams = 6
+	};
+	Q_DECLARE_FLAGS(ProjectSaveOptions, ProjectSaveOption)
+	
+	
 	// constructeurs, destructeur
 	public:
 	ProjectView(QETProject *, QWidget * = 0);
@@ -41,6 +53,7 @@ class ProjectView : public QWidget {
 	QETProject *project();
 	void setProject(QETProject *);
 	QList<DiagramView *> diagrams() const;
+	QList<Diagram *> getDiagrams(ProjectSaveOptions options);
 	DiagramView *currentDiagram() const;
 	void closeEvent(QCloseEvent *);
 	
@@ -61,9 +74,11 @@ class ProjectView : public QWidget {
 	void moveDiagramDown(Diagram *);
 	void printProject();
 	void exportProject();
-	bool save();
-	bool saveAs();
-	bool saveAll();
+	QETResult save();
+	QETResult saveAs(ProjectSaveOptions = ProjectSaveOptions(AllDiagrams | ModifiedDiagramsOnly));
+	QETResult saveCurrentDiagram();
+	QETResult doSave(ProjectSaveOptions);
+	void saveDiagrams(const QList<Diagram *> &);
 	int cleanProject();
 	void updateWindowTitle();
 	void updateTabTitle(DiagramView *, const QString &);
@@ -77,6 +92,7 @@ class ProjectView : public QWidget {
 	void diagramActivated(DiagramView *);
 	void diagramOrderChanged(ProjectView *, int, int);
 	void projectClosed(ProjectView *);
+	void errorEncountered(const QString &);
 	// relayed signals
 	void findElementRequired(const ElementsLocation &);
 	void editElementRequired(const ElementsLocation &);
@@ -91,8 +107,9 @@ class ProjectView : public QWidget {
 	void rebuildDiagramsMap();
 	bool tryClosing();
 	bool tryClosingElementEditors();
-	bool tryClosingDiagrams();
+	int tryClosingDiagrams();
 	QString askUserForFilePath(bool = true);
+	QETResult noProjectResult() const;
 	
 	private slots:
 	void tabChanged(int);
@@ -113,4 +130,5 @@ class ProjectView : public QWidget {
 	QMap<int, DiagramView *> diagram_ids_;
 	QList<DiagramView *> diagrams_;
 };
+Q_DECLARE_OPERATORS_FOR_FLAGS(ProjectView::ProjectSaveOptions)
 #endif

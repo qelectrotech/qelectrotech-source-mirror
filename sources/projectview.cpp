@@ -18,6 +18,7 @@
 #include "projectview.h"
 #include "qetproject.h"
 #include "configdialog.h"
+#include "closediagramsdialog.h"
 #include "projectconfigpages.h"
 #include "diagramview.h"
 #include "diagram.h"
@@ -94,6 +95,36 @@ QList<DiagramView *> ProjectView::diagrams() const {
 }
 
 /**
+	@return A list containing child diagrams matching provided \a options.
+*/
+QList<Diagram *> ProjectView::getDiagrams(ProjectSaveOptions options) {
+	QList<Diagram *> selection;
+	if ((options & AllDiagrams) == AllDiagrams) {
+		selection << project_ -> diagrams();
+	} else {
+		Diagram *current = 0;
+		if (DiagramView *view = currentDiagram()) {
+			current = view -> diagram();
+		}
+		if (options & CurrentDiagram) {
+			if (current) selection << current;
+		} else if (options & AllDiagramsButCurrent) {
+			selection = project_ -> diagrams();
+			selection.removeOne(current);
+		}
+	}
+	
+	if (options & ModifiedDiagramsOnly) {
+		foreach (Diagram *diagram, selection) {
+			if (!diagram -> undoStack().isClean() || !diagram -> wasWritten()) continue;
+			selection.removeOne(diagram);
+		}
+	}
+	
+	return(selection);
+}
+
+/**
 	@return le schema actuellement active
 */
 DiagramView *ProjectView::currentDiagram() const {
@@ -106,35 +137,7 @@ DiagramView *ProjectView::currentDiagram() const {
 	@param qce Le QCloseEvent decrivant l'evenement
 */
 void ProjectView::closeEvent(QCloseEvent *qce) {
-	// si la vue n'est pas liee a un projet, on ferme directement
-	if (!project_) {
-		qce -> accept();
-		emit(projectClosed(this));
-		return;
-	}
-	
-	// si le projet est comme neuf et n'est pas enregistre, on ferme directement
-	if (!project_ -> projectWasModified() && project_ -> filePath().isEmpty()) {
-		qce -> accept();
-		emit(projectClosed(this));
-		return;
-	}
-	
-	bool can_close_project = true;
-	if (!tryClosing()) {
-		// l'utilisateur a refuse la fermeture du projet - on arrete la
-		can_close_project = false;
-	} else {
-		// a ce stade, l'utilisateur a accepte la fermeture de tout le contenu du projet
-		if (!project_ -> filePath().isEmpty()) {
-			// si le projet a un chemin specifie, on l'enregistre et on le ferme
-			can_close_project = project_ -> write();
-		} else {
-			// l'utilisateur n'enregistre pas son projet
-			can_close_project = true;
-		}
-	}
-	
+	bool can_close_project = tryClosing();
 	if (can_close_project) {
 		qce -> accept();
 		emit(projectClosed(this));
@@ -152,34 +155,46 @@ void ProjectView::closeEvent(QCloseEvent *qce) {
 	@see tryClosingDiagrams()
 */
 bool ProjectView::tryClosing() {
+	if (!project_) return(true);
+	
+	// First step: require external editors closing -- users may either cancel
+	// the whole closing process or save (and therefore add) content into this
+	// project. Of course, they may also discard them.
 	if (!tryClosingElementEditors()) {
 		return(false);
 	}
 	
-	if (!tryClosingDiagrams()) {
-		return(false);
+	// Check how different the current situation is from a brand new, untouched project
+	if (project_ -> filePath().isEmpty() && !project_ -> projectWasModified()) {
+		return(true);
 	}
 	
-	// a ce stade, l'utilisateur a accepte de fermer tous les editeurs
-	// d'elements et tous les schemas
-	// on regarde s'il reste du contenu dans le projet
-	if (project_ -> projectWasModified() && project_ -> filePath().isEmpty()) {
-		// si oui, on propose a l'utilisateur d'enregistrer le projet
-		QMessageBox::StandardButton answer = QET::MessageBox::question(
-			this,
-			tr("Enregistrer le projet en cours ?", "message box title"),
-			QString(tr("Voulez-vous enregistrer le projet ?", "message box content")),
-			QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
-			QMessageBox::Cancel
-		);
-		if (answer == QMessageBox::Cancel) {
-			return(false);
-		} else if (answer == QMessageBox::Yes) {
-			return(save());
-		}
+	// Second step: users are presented with a dialog that enables them to
+	// choose whether they want to:
+	//   - cancel the closing process,
+	//   - discard all modifications,
+	//   - or specify what is to be saved, i.e. they choose whether they wants to
+	// save/give up/remove diagrams considered as modified.
+	int user_input = tryClosingDiagrams();
+	if (user_input == QDialogButtonBox::RejectRole) {
+		return(false); // the closing process was cancelled
+	} else if (user_input == QDialogButtonBox::DestructiveRole) {
+		return(true); // all modifications were discarded
 	}
 	
-	return(true);
+	// Check how different the current situation is from a brand new, untouched project (yes , again)
+	if (project_ -> filePath().isEmpty() && !project_ -> projectWasModified()) {
+		return(true);
+	}
+	
+	if (project_ -> filePath().isEmpty()) {
+		QString filepath = askUserForFilePath();
+		if (filepath.isEmpty()) return(false); // users may cancel the closing
+	}
+	QETResult result = project_ -> write();
+	updateWindowTitle();
+	if (!result.isOk()) emit(errorEncountered(result.errorMessage()));
+	return(result.isOk());
 }
 
 /**
@@ -215,49 +230,45 @@ bool ProjectView::tryClosingElementEditors() {
 	l'utilisateur s'il souhaite l'enlever.
 	@return true si tous les schemas peuvent etre fermes, false sinon
 */
-bool ProjectView::tryClosingDiagrams() {
-	if (!project_) return(true);
+int ProjectView::tryClosingDiagrams() {
+	if (!project_) return(QDialogButtonBox::DestructiveRole);
 	
-	foreach(DiagramView *diagram_view, diagrams()) {
-		if (!diagram_view -> diagram() -> undoStack().isClean()) {
-			// ce schema a ete modifie - on demande a l'utilisateur s'il veut l'enregistrer
-			showDiagram(diagram_view -> diagram());
-			QMessageBox::StandardButton answer = QET::MessageBox::question(
-				this,
-				tr("Enregistrer le sch\351ma en cours ?", "message box title"),
-				QString(tr("Voulez-vous enregistrer le sch\351ma %1 ?", "message box content - %1 is a diagram title")).arg(diagram_view -> windowTitle()),
-				QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
-				QMessageBox::Cancel
-			);
-			if (answer == QMessageBox::Cancel) {
-				return(false);
-			} else if (answer == QMessageBox::Yes) {
-				if (!save()) {
-					return(false);
-				}
-			}
-		} else if (!diagram_view -> diagram() -> wasWritten()) {
-			// ce schema a ete ajoute mais pas modifie - on demande a l'utilisateur s'il veut le conserver
-			showDiagram(diagram_view -> diagram());
-			QMessageBox::StandardButton answer = QET::MessageBox::question(
-				this,
-				tr("Enregistrer le nouveau sch\351ma ?", "message box title"),
-				tr("Ce sch\351ma a \351t\351 ajout\351 mais n'a \351t\351 ni modifi\351 ni enregistr\351. Voulez-vous le conserver ?", "message box content"),
-				QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel,
-				QMessageBox::Cancel
-			);
-			if (answer == QMessageBox::Cancel) {
-				return(false);
-			} else if (answer == QMessageBox::Yes) {
-				if (!save()) {
-					return(false);
-				}
-			} else if (answer == QMessageBox::No) {
-				removeDiagram(diagram_view);
-			}
+	QList<Diagram *> modified_diagrams = getDiagrams(AllDiagrams | ModifiedDiagramsOnly);
+	if (!modified_diagrams.count() && !project_ -> filePath().isEmpty()) {
+		// nothing was modified, and we have a filepath, i.e. everything was already
+		// saved, i.e we can close the project right now
+		return(QDialogButtonBox::DestructiveRole);
+	}
+	
+	CloseDiagramsDialog close_dialog(modified_diagrams, this);
+	if (!project_ -> title().isEmpty()) {
+		close_dialog.setWindowTitle(
+			QString(
+				tr(
+					"Fermer le projet \"%1\"",
+					"project closing dialog title -- %1 is a project title"
+				)
+			).arg(project_ -> title())
+		);
+	}
+	connect(&close_dialog, SIGNAL(showDiagram(Diagram*)), this, SLOT(showDiagram(Diagram*)));
+	if (close_dialog.exec() == QDialog::Rejected) {
+		return(QDialogButtonBox::RejectRole);
+	}
+	
+	if (close_dialog.answer() == QDialogButtonBox::AcceptRole) {
+		// save diagrams the user marked as to be saved
+		QList<Diagram *> to_save = close_dialog.diagramsByAction(CloseDiagramsDialog::Save);
+		saveDiagrams(to_save);
+		
+		// remove diagrams the user marked as to be removed
+		QList<Diagram *> to_close = close_dialog.diagramsByAction(CloseDiagramsDialog::Remove);
+		foreach (Diagram *diagram, to_close) {
+			removeDiagram(diagram);
 		}
 	}
-	return(true);
+	
+	return(close_dialog.answer());
 }
 
 /**
@@ -288,6 +299,15 @@ QString ProjectView::askUserForFilePath(bool assign) {
 	}
 	
 	return(filepath);
+}
+
+/**
+	@return the QETResult object to be returned when it appears this project
+	view is not associated to any project.
+*/
+QETResult ProjectView::noProjectResult() const {
+	QETResult no_project(tr("aucun projet affich\351", "error message"), false);
+	return(no_project);
 }
 
 /**
@@ -530,58 +550,78 @@ void ProjectView::exportProject() {
 }
 
 /**
-	Enregistre le projet dans un fichier.
+	Save project properties along with all modified diagrams.
 	@see filePath()
 	@see setFilePath()
-	@return true si l'enregistrement a reussi, false sinon
+	@return a QETResult object reflecting the situation
 */
-bool ProjectView::save() {
-	bool result = false;
-	if (project_) {
-		if (project_ -> filePath().isEmpty()) {
-			// le projet n'est pas encore enregistre dans un fichier
-			// save() equivaut alors a saveAs()
-			return(saveAs());
-		}
-		// on enregistre le schema en cours
-		if (DiagramView *current_view = currentDiagram()) {
-			if (Diagram *diagram = current_view -> diagram()) {
-				diagram -> write();
-				result = true;
-			}
-		} else {
-			// s'il n'y a pas de schema, on appelle directement la methode write()
-			result = project_ -> write();
-		}
+QETResult ProjectView::save() {
+	return(doSave(AllDiagrams | ModifiedDiagramsOnly));
+}
+
+/**
+	Ask users for a filepath in order to save the project.
+	@param options May be used to specify what should be saved; defaults to
+	all modified diagrams.
+	@return a QETResult object reflecting the situation; note that a valid
+	QETResult object is returned if the operation was cancelled.
+*/
+QETResult ProjectView::saveAs(ProjectSaveOptions options) {
+	if (!project_) return(noProjectResult());
+	
+	QString filepath = askUserForFilePath();
+	if (filepath.isEmpty()) return(QETResult());
+	return(doSave(options));
+}
+
+/**
+	Save the current diagram.
+	@return A QETResult object reflecting the situation.
+*/
+QETResult ProjectView::saveCurrentDiagram() {
+	return(doSave(CurrentDiagram));
+}
+
+/**
+	Save project content according to \a options, then write the project file. May
+	call saveAs if no filepath was provided before.
+	@param options May be used to specify what should be saved (e.g. modified
+	diagrams only).
+	@return a QETResult object reflecting the situation; note that a valid
+	QETResult object is returned if the operation was cancelled.
+*/
+QETResult ProjectView::doSave(ProjectSaveOptions options) {
+	if (!project_) return(noProjectResult());
+	
+	if (project_ -> filePath().isEmpty()) {
+		// The project has not been saved to a file yet,
+		// so save() actually means saveAs().
+		return(saveAs(options));
 	}
+	
+	// look for diagrams matching the required save options
+	saveDiagrams(getDiagrams(options));
+	
+	// write to file
+	QETResult result = project_ -> write();
 	updateWindowTitle();
 	return(result);
 }
 
 /**
-	Save all diagrams in the project.
-	@return False if something went wrong (no project, no filepath provided, write
-	error), true otherwise.
+	Save \a diagrams without emitting the written() signal and without writing
+	the project file itself.
 */
-bool ProjectView::saveAll() {
-	if (project_) {
-		if (project_ -> filePath().isEmpty()) {
-			QString filepath = askUserForFilePath();
-			if (filepath.isEmpty()) return(false);
-		}
-		foreach (Diagram *diagram, project_ -> diagrams()) {
-			// Diagram::write() emits the written() signal, which is connected to
-			// QETProject::write() through QETProject::componentWritten(). We do not want
-			// to write the project immediately, so we block this signal.
-			diagram -> blockSignals(true);
-			diagram -> write();
-			diagram -> blockSignals(false);
-		}
-		bool writing = project_ -> write();
-		updateWindowTitle();
-		return(writing);
+void ProjectView::saveDiagrams(const QList<Diagram *> &diagrams) {
+	foreach (Diagram *diagram, diagrams) {
+		// Diagram::write() emits the written() signal, which is connected
+		// to QETProject::write() through QETProject::componentWritten().
+		// We do not want to write the project immediately, so we block
+		// this signal.
+		diagram -> blockSignals(true);
+		diagram -> write();
+		diagram -> blockSignals(false);
 	}
-	return(false);
 }
 
 /**
@@ -650,20 +690,6 @@ int ProjectView::cleanProject() {
 		}
 	}
 	return(clean_count);
-}
-
-/**
-	Demande un nom de fichier a l'utilisateur pour enregistrer le projet
-	Si aucun nom n'est entre, elle renvoie faux.
-	Si le nom ne se termine pas par l'extension .qet, celle-ci est ajoutee.
-	Si l'enregistrement reussit, le nom du fichier est conserve et la fonction renvoie true.
-	Sinon, faux est renvoye.
-	@return true si l'enregistrement a reussi, false sinon
-*/
-bool ProjectView::saveAs() {
-	QString filepath = askUserForFilePath();
-	if (filepath.isEmpty()) return(false);
-	return(save());
 }
 
 /**

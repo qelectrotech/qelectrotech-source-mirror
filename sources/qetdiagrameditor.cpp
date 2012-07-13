@@ -27,6 +27,7 @@
 #include "qeticons.h"
 #include "qetelementeditor.h"
 #include "qetmessagebox.h"
+#include "qetresult.h"
 #include "genericpanel.h"
 
 /**
@@ -179,8 +180,8 @@ void QETDiagramEditor::actions() {
 	open_file         = new QAction(QET::Icons::DocumentOpen,          tr("&Ouvrir"),                              this);
 	close_file        = new QAction(QET::Icons::DocumentClose,         tr("&Fermer"),                              this);
 	save_file         = new QAction(QET::Icons::DocumentSave,          tr("&Enregistrer"),                         this);
-	save_file_sous    = new QAction(QET::Icons::DocumentSaveAs,        tr("Enregistrer sous"),                     this);
-	save_all          = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer tous les sch\351mas"),     this);
+	save_file_as      = new QAction(QET::Icons::DocumentSaveAs,        tr("Enregistrer sous"),                     this);
+	save_cur_diagram  = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer tous les sch\351mas"),     this);
 	import_diagram    = new QAction(QET::Icons::DocumentImport,        tr("&Importer"),                            this);
 	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
 	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
@@ -273,9 +274,9 @@ void QETDiagramEditor::actions() {
 	new_file          -> setStatusTip(tr("Cr\351e un nouveau sch\351ma", "status bar tip"));
 	open_file         -> setStatusTip(tr("Ouvre un sch\351ma existant", "status bar tip"));
 	close_file        -> setStatusTip(tr("Ferme le sch\351ma courant", "status bar tip"));
-	save_file         -> setStatusTip(tr("Enregistre le sch\351ma courant", "status bar tip"));
-	save_file_sous    -> setStatusTip(tr("Enregistre le sch\351ma courant avec un autre nom de fichier", "status bar tip"));
-	save_all          -> setStatusTip(tr("Enregistre tous les sch\351mas du projet courant", "status bar tip"));
+	save_file         -> setStatusTip(tr("Enregistre le projet courant et tous ses sch\351mas", "status bar tip"));
+	save_file_as      -> setStatusTip(tr("Enregistre le project courant avec un autre nom de fichier", "status bar tip"));
+	save_cur_diagram  -> setStatusTip(tr("Enregistre tous les sch\351mas du projet courant", "status bar tip"));
 	import_diagram    -> setStatusTip(tr("Importe un sch\351ma dans le sch\351ma courant", "status bar tip"));
 	export_diagram    -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format", "status bar tip"));
 	print             -> setStatusTip(tr("Imprime le sch\351ma courant", "status bar tip"));
@@ -356,9 +357,9 @@ void QETDiagramEditor::actions() {
 	connect(zoom_reset,         SIGNAL(triggered()), this,       SLOT(slot_zoomReset())            );
 	connect(print,              SIGNAL(triggered()), this,       SLOT(printDialog())               );
 	connect(export_diagram,     SIGNAL(triggered()), this,       SLOT(exportDialog())              );
-	connect(save_file_sous,     SIGNAL(triggered()), this,       SLOT(saveAsDialog())              );
+	connect(save_file_as,       SIGNAL(triggered()), this,       SLOT(saveAs())                    );
 	connect(save_file,          SIGNAL(triggered()), this,       SLOT(save())                      );
-	connect(save_all,           SIGNAL(triggered()), this,       SLOT(saveAll())                   );
+	connect(save_cur_diagram,   SIGNAL(triggered()), this,       SLOT(saveCurrentDiagram())        );
 	connect(new_file,           SIGNAL(triggered()), this,       SLOT(newProject())                );
 	connect(open_file,          SIGNAL(triggered()), this,       SLOT(openProject())               );
 	connect(close_file,         SIGNAL(triggered()), this,       SLOT(closeCurrentProject())       );
@@ -421,8 +422,8 @@ void QETDiagramEditor::menus() {
 	menu_fichier -> addMenu(QETApp::projectsRecentFiles() -> menu());
 	connect(QETApp::projectsRecentFiles(), SIGNAL(fileOpeningRequested(const QString &)), this, SLOT(openRecentFile(const QString &)));
 	menu_fichier -> addAction(save_file);
-	menu_fichier -> addAction(save_file_sous);
-	menu_fichier -> addAction(save_all);
+	menu_fichier -> addAction(save_file_as);
+	menu_fichier -> addAction(save_cur_diagram);
 	menu_fichier -> addAction(close_file);
 	menu_fichier -> addSeparator();
 	//menu_fichier -> addAction(import_diagram);
@@ -504,8 +505,8 @@ void QETDiagramEditor::toolbar() {
 	main_bar -> addAction(new_file);
 	main_bar -> addAction(open_file);
 	main_bar -> addAction(save_file);
-	main_bar -> addAction(save_file_sous);
-	main_bar -> addAction(save_all);
+	main_bar -> addAction(save_file_as);
+	main_bar -> addAction(save_cur_diagram);
 	main_bar -> addAction(close_file);
 	main_bar -> addAction(print);
 	main_bar -> addSeparator();
@@ -561,45 +562,45 @@ void QETDiagramEditor::exportDialog() {
 	Methode enregistrant le schema dans le dernier nom de fichier connu.
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool QETDiagramEditor::save() {
+void QETDiagramEditor::save() {
 	if (ProjectView *project_view = currentProject()) {
-		bool save_file = project_view -> save();
-		if (save_file) {
+		QETResult save_file = project_view -> save();
+		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
+		} else {
+			showError(save_file);
 		}
-		return(save_file);
 	}
-	return(false);
 }
 
 /**
 	Cette methode demande un nom de fichier a l'utilisateur pour enregistrer le schema
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool QETDiagramEditor::saveAsDialog() {
+void QETDiagramEditor::saveAs() {
 	if (ProjectView *project_view = currentProject()) {
-		bool save_file = project_view -> saveAs();
-		if (save_file) {
+		QETResult save_file = project_view -> saveAs();
+		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
+		} else {
+			showError(save_file);
 		}
-		return(save_file);
 	}
-	return(false);
 }
 
 /**
 	Methode enregistrant tous les schemas.
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool QETDiagramEditor::saveAll() {
+void QETDiagramEditor::saveCurrentDiagram() {
 	if (ProjectView *project_view = currentProject()) {
-		bool save_file = project_view -> saveAll();
-		if (save_file) {
+		QETResult save_file = project_view -> saveCurrentDiagram();
+		if (save_file.isOk()) {
 			QETApp::projectsRecentFiles() -> fileWasOpened(project_view -> project() -> filePath());
+		} else {
+			showError(save_file);
 		}
-		return(save_file);
 	}
-	return(false);
 }
 
 /**
@@ -1044,8 +1045,8 @@ void QETDiagramEditor::slot_updateActions() {
 	// actions ayant juste besoin d'un document ouvert
 	close_file        -> setEnabled(opened_project);
 	save_file         -> setEnabled(editable_project);
-	save_file_sous    -> setEnabled(opened_project);
-	save_all          -> setEnabled(editable_diagram);
+	save_file_as      -> setEnabled(opened_project);
+	save_cur_diagram  -> setEnabled(editable_diagram);
 	prj_edit_prop     -> setEnabled(opened_project);
 	prj_add_diagram   -> setEnabled(editable_project);
 	prj_del_diagram   -> setEnabled(editable_project);
@@ -1196,6 +1197,9 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 		project_view, SIGNAL(editTitleBlockTemplate(const TitleBlockTemplateLocation &, bool)),
 		QETApp::instance(), SLOT(openTitleBlockTemplate(TitleBlockTemplateLocation, bool))
 	);
+	
+	// display error messages sent by the project view
+	connect(project_view, SIGNAL(errorEncountered(QString)), this, SLOT(showError(const QString &)));
 	
 	// affiche la fenetre
 	if (maximise) project_view -> showMaximized();
@@ -1684,6 +1688,22 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 */
 void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
 	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
+}
+
+/**
+	Show the error message contained in \a result.
+*/
+void QETDiagramEditor::showError(const QETResult &result) {
+	if (result.isOk()) return;
+	showError(result.errorMessage());
+}
+
+/**
+	Show the \a error message.
+*/
+void QETDiagramEditor::showError(const QString &error) {
+	if (error.isEmpty()) return;
+	QET::MessageBox::critical(this, tr("Erreur", "message box title"), error);
 }
 
 /**

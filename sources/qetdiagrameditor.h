@@ -24,6 +24,7 @@
 #include "titleblockproperties.h"
 #include "exportproperties.h"
 class QETProject;
+class QETResult;
 class ProjectView;
 class Diagram;
 class DiagramView;
@@ -83,9 +84,9 @@ class QETDiagramEditor : public QETMainWindow {
 	public slots:
 	void printDialog();
 	void exportDialog();
-	bool saveAsDialog();
-	bool save();
-	bool saveAll();
+	void save();
+	void saveAs();
+	void saveCurrentDiagram();
 	bool newProject();
 	bool openProject();
 	bool openRecentFile(const QString &);
@@ -147,6 +148,8 @@ class QETDiagramEditor : public QETMainWindow {
 	void diagramWasRemoved(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
 	void editElementInEditor(const ElementsLocation &);
+	void showError(const QETResult &);
+	void showError(const QString &);
 	
 	// attributs
 	public:
@@ -160,9 +163,9 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *new_file;           ///< Cree un nouveau schema
 	QAction *open_file;          ///< OUvre un fichier
 	QAction *close_file;         ///< Ferme le fichier
-	QAction *save_file;          ///< Enregistre le fichier
-	QAction *save_file_sous;     ///< Enregistrer le fichier sous un nom donne
-	QAction *save_all;           ///< Enregistre tous les schemas
+	QAction *save_file;          ///< Save current project
+	QAction *save_file_as;       ///< Save current project as a specific file
+	QAction *save_cur_diagram;   ///< Save current diagram of the current project only
 	QAction *import_diagram;     ///< Importe un schema existant (non implemente)
 	QAction *export_diagram;     ///< Exporte le schema sous forme d'image
 	QAction *print;              ///< Imprime le schema

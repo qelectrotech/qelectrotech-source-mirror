@@ -22,6 +22,7 @@
 #include "elementscategory.h"
 #include "qetapp.h"
 #include "qetdiagrameditor.h"
+#include "qetresult.h"
 #include "integrationmoveelementshandler.h"
 #include "movetemplateshandler.h"
 #include "basicmoveelementshandler.h"
@@ -468,17 +469,15 @@ bool QETProject::close() {
 	@see setFilePath()
 	@return true si l'enregistrement a reussi, false sinon
 */
-bool QETProject::write() {
-	// le chemin du fichier doit etre connu
+QETResult QETProject::write() {
+	// this operation requires a filepath
 	if (file_path_.isEmpty()) {
-		qDebug() << qPrintable(QString("QETProject::write() : called without a known filepath [%1]").arg(QET::pointerString(this)));
-		return(false);
+		return(QString("unable to save project to file: no filepath was specified"));
 	}
 	
-	// si le projet a ete ouvert en mode lecture seule et que le fichier n'est pas accessible en ecriture, on n'effectue pas l'enregistrement
+	// if the project was opened read-only and the file is still non-writable, do not save the project
 	if (isReadOnly() && !QFileInfo(file_path_).isWritable()) {
-		qDebug() << qPrintable(QString("QETProject::write() : the file %1 was opened read-only and thus will not be written. [%2]").arg(file_path_).arg(QET::pointerString(this)));
-		return(true);
+		return(QString("the file %1 was opened read-only and thus will not be written").arg(file_path_));
 	}
 	
 	// realise l'export en XML du projet dans le document XML interne
@@ -488,11 +487,11 @@ bool QETProject::write() {
 	QString error_message;
 	bool writing = QET::writeXmlFile(document_root_, file_path_, &error_message);
 	if (!writing) {
-		qDebug() << qPrintable(QString("QETProject::write() : %1 [%2]").arg(error_message).arg(QET::pointerString(this)));
-	} else {
-		setModified(false);
+		return(error_message);
 	}
-	return(writing);
+	
+	setModified(false);
+	return(QETResult());
 }
 
 /**
@@ -1180,6 +1179,10 @@ bool QETProject::embeddedCollectionWasModified() {
 		return(true);
 	}
 	
+	// the integration category must be empty
+	if (integ_cat -> categories().count()) return(true);
+	if (integ_cat -> elements().count()) return(true);
+	
 	return(false);
 }
 
@@ -1205,7 +1208,7 @@ bool QETProject::diagramsWereModified() {
 	if (diagrams_.count() != 1) return(true);
 	
 	// dont la pile d'annulation est "clean"
-	return(!(diagrams_[0] -> undoStack().isClean()));
+	return(!(diagrams_[0] -> undoStack().isClean() && !diagrams_[0] -> wasWritten()));
 }
 
 /**

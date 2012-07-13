@@ -30,6 +30,7 @@ class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 class ElementsLocation;
+class QETResult;
 class TitleBlockTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
@@ -98,7 +99,7 @@ class QETProject : public QObject {
 	void setDefaultConductorProperties(const ConductorProperties &);
 	QDomDocument toXml();
 	bool close();
-	bool write();
+	QETResult write();
 	bool isReadOnly() const;
 	void setReadOnly(bool);
 	bool isEmpty() const;
