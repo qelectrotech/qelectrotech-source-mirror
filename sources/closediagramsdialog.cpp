@@ -138,7 +138,9 @@ void CloseDiagramsDialog::initWidgets() {
 	Initialize layout.
 */
 void CloseDiagramsDialog::initLayout() {
-	setMinimumSize(650, 340);
+	if (diagrams_list_.count()) {
+		setMinimumSize(650, 340);
+	}
 	
 	QVBoxLayout *vlayout0 = new QVBoxLayout();
 	vlayout0 -> addWidget(informative_label1_);
