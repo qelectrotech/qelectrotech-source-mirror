@@ -843,6 +843,7 @@ void QETProject::diagramOrderChanged(int old_index, int new_index) {
 	
 	diagrams_.move(old_index, new_index);
 	updateDiagramsFolioData();
+	setModified(true);
 	emit(projectDiagramsOrderChanged(this, old_index, new_index));
 }
 
@@ -1146,7 +1147,7 @@ NamesList QETProject::namesListForIntegrationCategory() {
 
 /**
 	@return true if project options (title, project-wide properties, settings
-	for new diagrams, ...) were modified, false otherwise.
+	for new diagrams, diagrams order...) were modified, false otherwise.
 */
 bool QETProject::projectOptionsWereModified() {
 	// unlike similar methods, this method does not compare the content against

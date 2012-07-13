@@ -233,8 +233,10 @@ bool ProjectView::tryClosingElementEditors() {
 int ProjectView::tryClosingDiagrams() {
 	if (!project_) return(QDialogButtonBox::DestructiveRole);
 	
+	bool project_modified = project_ -> projectOptionsWereModified();
 	QList<Diagram *> modified_diagrams = getDiagrams(AllDiagrams | ModifiedDiagramsOnly);
-	if (!modified_diagrams.count() && !project_ -> filePath().isEmpty()) {
+	bool has_filepath = !project_ -> filePath().isEmpty();
+	if (!project_modified && !modified_diagrams.count() && has_filepath) {
 		// nothing was modified, and we have a filepath, i.e. everything was already
 		// saved, i.e we can close the project right now
 		return(QDialogButtonBox::DestructiveRole);
