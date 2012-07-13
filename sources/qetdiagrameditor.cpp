@@ -181,7 +181,7 @@ void QETDiagramEditor::actions() {
 	close_file        = new QAction(QET::Icons::DocumentClose,         tr("&Fermer"),                              this);
 	save_file         = new QAction(QET::Icons::DocumentSave,          tr("&Enregistrer"),                         this);
 	save_file_as      = new QAction(QET::Icons::DocumentSaveAs,        tr("Enregistrer sous"),                     this);
-	save_cur_diagram  = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer tous les sch\351mas"),     this);
+	save_cur_diagram  = new QAction(QET::Icons::DocumentSaveAll,       tr("&Enregistrer le sch\351ma courant"),    this);
 	import_diagram    = new QAction(QET::Icons::DocumentImport,        tr("&Importer"),                            this);
 	export_diagram    = new QAction(QET::Icons::DocumentExport,        tr("E&xporter"),                            this);
 	print             = new QAction(QET::Icons::DocumentPrint,         tr("Imprimer"),                             this);
@@ -276,7 +276,7 @@ void QETDiagramEditor::actions() {
 	close_file        -> setStatusTip(tr("Ferme le sch\351ma courant", "status bar tip"));
 	save_file         -> setStatusTip(tr("Enregistre le projet courant et tous ses sch\351mas", "status bar tip"));
 	save_file_as      -> setStatusTip(tr("Enregistre le project courant avec un autre nom de fichier", "status bar tip"));
-	save_cur_diagram  -> setStatusTip(tr("Enregistre tous les sch\351mas du projet courant", "status bar tip"));
+	save_cur_diagram  -> setStatusTip(tr("Enregistre le sch\351ma courant du projet courant", "status bar tip"));
 	import_diagram    -> setStatusTip(tr("Importe un sch\351ma dans le sch\351ma courant", "status bar tip"));
 	export_diagram    -> setStatusTip(tr("Exporte le sch\351ma courant dans un autre format", "status bar tip"));
 	print             -> setStatusTip(tr("Imprime le sch\351ma courant", "status bar tip"));
