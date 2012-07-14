@@ -6,6 +6,7 @@
         <name lang="fr">Sonde de niveau</name>
         <name lang="pl">Czujnik poziomu</name>
         <name lang="cs">Hladinové čidlo</name>
+        <name lang="es">Sensor de nivel</name>
     </names>
     <informations></informations>
     <description>

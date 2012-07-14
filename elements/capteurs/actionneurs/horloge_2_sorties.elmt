@@ -5,6 +5,7 @@
         <name lang="fr">Horloge 2 sorties</name>
         <name lang="pl">Przekaźnik czasowy wielozestykowy</name>
         <name lang="cs">Časový spínač se dvěma výstupy</name>
+        <name lang="es">Reloj-switch 2 salidas</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

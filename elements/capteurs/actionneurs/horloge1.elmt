@@ -5,6 +5,7 @@
         <name lang="fr">Horloge</name>
         <name lang="pl">Przekaźnik czasowy</name>
         <name lang="cs">Časový spínač</name>
+        <name lang="es">Reloj-switch</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="fr">Arrêt d'urgence (VERROU)</name>
         <name lang="pl">Łącznik przyciskowy, odblokowywany kluczykiem (przycisk bezpieczeństwa)</name>
         <name lang="cs">Nouzové zastavení (LATCH)</name>
+        <name lang="es">Parada de emergencia</name>
     </names>
     <informations></informations>
     <description>

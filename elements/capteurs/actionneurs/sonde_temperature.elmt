@@ -5,6 +5,7 @@
         <name lang="fr">Sonde de Température</name>
         <name lang="pl">Czujnik temperatury</name>
         <name lang="cs">Teplotní čidlo</name>
+        <name lang="es">Probador de temperatura</name>
     </names>
     <informations></informations>
     <description>
