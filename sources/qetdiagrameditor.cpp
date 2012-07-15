@@ -1163,6 +1163,7 @@ void QETDiagramEditor::addProjectView(ProjectView *project_view) {
 	// ajoute la fenetre
 	QMdiSubWindow *sub_window = workspace.addSubWindow(project_view);
 	sub_window -> setWindowIcon(project_view -> windowIcon());
+	sub_window -> systemMenu() -> clear();
 	
 	// lie les schemas du projet a l'editeur :
 	// quand on change de schemas a l'interieur d'un projet, on met a jour les menus
