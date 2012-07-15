@@ -336,6 +336,7 @@ void ProjectView::addDiagram(DiagramView *diagram) {
 	
 	// ajoute un nouvel onglet pour le nouveau schema
 	tabs_ -> addTab(diagram, QET::Icons::Diagram, diagram -> title());
+	diagram -> setFrameStyle(QFrame::Plain | QFrame::NoFrame);
 	diagrams_ << diagram;
 	rebuildDiagramsMap();
 	connect(diagram, SIGNAL(titleChanged(DiagramView *, const QString &)), this, SLOT(updateTabTitle(DiagramView *, const QString &)));
