@@ -476,7 +476,7 @@ void ProjectView::moveDiagramUp(DiagramView *diagram_view) {
 		// le schema est le premier du projet
 		return;
 	}
-	tabs_ -> tabBar() -> moveTab(diagram_view_position, diagram_view_position - 1);
+	tabs_ -> moveTab(diagram_view_position, diagram_view_position - 1);
 }
 
 /**
@@ -497,7 +497,7 @@ void ProjectView::moveDiagramDown(DiagramView *diagram_view) {
 		// le schema est le dernier du projet
 		return;
 	}
-	tabs_ -> tabBar() -> moveTab(diagram_view_position, diagram_view_position + 1);
+	tabs_ -> moveTab(diagram_view_position, diagram_view_position + 1);
 }
 
 /**

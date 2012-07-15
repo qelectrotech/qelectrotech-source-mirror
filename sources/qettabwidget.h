@@ -40,6 +40,7 @@ class QETTabWidget : public QTabWidget {
 	public:
 	void setMovable(bool);
 	bool isMovable() const;
+	void moveTab(int, int);
 	QETTabBar *tabBar() const;
 	
 	protected:

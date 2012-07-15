@@ -66,6 +66,20 @@ bool QETTabWidget::isMovable() const {
 #endif
 }
 
+/**
+	Move the tab from index \a from to index \a to.
+*/
+void QETTabWidget::moveTab(int from, int to) {
+	tab_bar_ -> moveTab(from, to);
+	// workaround to a weird bug when moving the current tab
+	if (count() > 1) {
+		int current_index = tab_bar_ -> currentIndex();
+		// switch to any other index then back to the current one
+		tab_bar_ -> setCurrentIndex(current_index ? 0 : 1);
+		tab_bar_ -> setCurrentIndex(current_index);
+	}
+}
+
 QETTabBar *QETTabWidget::tabBar() const {
 	return(tab_bar_);
 }
