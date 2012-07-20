@@ -196,9 +196,9 @@ void QETArguments::parseArguments(const QList<QString> &arguments) {
 	foreach(QString argument, arguments) {
 		QFileInfo argument_info(argument);
 		if (argument_info.exists()) {
-            // on exprime les chemins des fichiers en absolu
+		// on exprime les chemins des fichiers en absolu
 			QString can_argument = argument_info.canonicalFilePath();
-            handleFileArgument(can_argument);
+			handleFileArgument(can_argument);
 		} else {
 			handleOptionArgument(argument);
 		}
