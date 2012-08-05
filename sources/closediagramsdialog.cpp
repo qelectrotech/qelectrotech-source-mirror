@@ -101,9 +101,13 @@ void CloseDiagramsDialog::initWidgets() {
 	QLabel *title_label = new QLabel(tr("Sch\351ma", "column header"));
 	
 	// header checkbox in order to check/uncheck all diagrams
-	all_checkbox_ = new QCheckBox(tr("Action",  "column header"));
+	QString action_label_text = tr("Action", "column header");
+	QLabel *action_label = new QLabel(action_label_text);
+	all_checkbox_ = new QCheckBox(action_label_text);
+	all_checkbox_ -> setToolTip(tr("Cocher ou d\351cocher toutes les cases \340 cocher", "checbox tooltip"));
 	all_checkbox_ -> setChecked(true);
 	connect(all_checkbox_, SIGNAL(stateChanged(int)), this, SLOT(topCheckBoxChangedState(int)));
+	QWidget *header_widget = diagrams_list_.count() > 1 ? static_cast<QWidget *>(all_checkbox_) : static_cast<QWidget *>(action_label);
 	
 	// spacers inserted in the header row
 	QSpacerItem *spacer1 = new QSpacerItem(10, 10, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -114,11 +118,11 @@ void CloseDiagramsDialog::initWidgets() {
 	
 	// widget layout
 	diagrams_list_layout_ = new QGridLayout();
-	diagrams_list_layout_ -> addWidget(state_label, 0, 1, 1, 1, Qt::AlignCenter);
+	diagrams_list_layout_ -> addWidget(title_label, 0, 1, 1, 1, Qt::AlignCenter);
 	diagrams_list_layout_ -> addItem(spacer1, 0, 2);
-	diagrams_list_layout_ -> addWidget(title_label, 0, 3, 1, 1, Qt::AlignCenter);
+	diagrams_list_layout_ -> addWidget(state_label, 0, 3, 1, 1, Qt::AlignCenter);
 	diagrams_list_layout_ -> addItem(spacer2, 0, 4);
-	diagrams_list_layout_ -> addWidget(all_checkbox_, 0, 5, 1, 1, Qt::AlignCenter);
+	diagrams_list_layout_ -> addWidget(header_widget, 0, 5, 1, 1, Qt::AlignCenter);
 	
 	// widget
 	diagrams_list_widget_ = new QWidget();
@@ -172,7 +176,8 @@ void CloseDiagramsDialog::loadDiagramsList() {
 */
 void CloseDiagramsDialog::addDiagram(Diagram *diagram, int row_id) {
 	QLabel *diagram_title = new QLabel(diagramTitle(diagram));
-	QPushButton *diagram_show = new QPushButton(QET::Icons::ZoomOriginal, ""); // tr("Afficher ce sch\351ma", "button label")
+	QPushButton *diagram_show = new QPushButton(QET::Icons::ZoomOriginal, "");
+	diagram_show -> setToolTip(tr("Afficher ce sch\351ma", "button tooltip"));
 	show_mapper_.setMapping(diagram_show, row_id - 1);
 	connect(diagram_show, SIGNAL(released()), &show_mapper_, SLOT(map()));
 	QLabel *diagram_status = new QLabel(diagramStatus(diagram));
