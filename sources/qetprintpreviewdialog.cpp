@@ -234,6 +234,7 @@ void QETPrintPreviewDialog::build() {
 	
 	print_options_box_= new QGroupBox(tr("Options d'impression"));
 	use_full_page_ = new QCheckBox(tr("Utiliser toute la feuille"));
+	use_full_page_ -> setChecked(printer_ -> fullPage());
 	use_full_page_label_ = new QLabel(tr(
 		"Si cette option est coch\351e, les marges de la feuille seront "
 		"ignor\351es et toute sa surface sera utilis\351e pour l'impression. "

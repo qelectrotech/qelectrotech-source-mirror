@@ -587,7 +587,7 @@ void DiagramPrintDialog::loadPageSetupForCurrentPrinter() {
 		if (conv_ok && value != -1.0) margins[i] = value;
 	}
 	printer_ -> setPageMargins(margins[0], margins[1], margins[2], margins[3], QPrinter::Millimeter);
-	printer_ -> setFullPage(settings.setValue("fullpage", "false") == "true");
+	printer_ -> setFullPage(settings.value("fullpage", "false").toString() == "true");
 }
 
 /**
