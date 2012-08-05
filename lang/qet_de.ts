@@ -58,10 +58,6 @@
         <translation>Polnische Übersetzung</translation>
     </message>
     <message>
-        <source>Paquets Fedora</source>
-        <translation>Fedora Pakete</translation>
-    </message>
-    <message>
         <source>Paquets Mandriva</source>
         <translation>Mandriva Pakete</translation>
     </message>
@@ -115,6 +111,14 @@
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
         <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+    </message>
+    <message>
+        <source>Traduction en croate</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Paquets Fedora et Red Hat</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -226,6 +230,64 @@
     </message>
 </context>
 <context>
+    <name>CloseDiagramsDialog</name>
+    <message>
+        <source>Fermer un projet</source>
+        <comment>window title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
+        <comment>informative label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez-vous enregistrer le projet ?</source>
+        <comment>informative label</comment>
+        <translation type="unfinished">Wollen Sie das Projekt speichern ?</translation>
+    </message>
+    <message>
+        <source>État</source>
+        <comment>column header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schéma</source>
+        <comment>column header</comment>
+        <translation type="unfinished">Schema</translation>
+    </message>
+    <message>
+        <source>Action</source>
+        <comment>column header</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schéma sans titre</source>
+        <comment>fallback diagram title</comment>
+        <translation type="unfinished">Schema unbenannt</translation>
+    </message>
+    <message>
+        <source>Modifié</source>
+        <comment>diagram status</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouté, non modifié</source>
+        <comment>diagram status</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistrer</source>
+        <comment>diagram action</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Conserver</source>
+        <comment>diagram action</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ConductorPropertiesWidget</name>
     <message>
         <source>Type de conducteur</source>
@@ -273,11 +335,20 @@
     </message>
 </context>
 <context>
-    <name>ConfigDialog</name>
+    <name>DiagramContextWidget</name>
     <message>
-        <source>Configurer QElectroTech</source>
-        <comment>window title</comment>
-        <translation>Einstellung QElectroTech</translation>
+        <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom</source>
+        <comment>table header</comment>
+        <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+        <source>Valeur</source>
+        <comment>table header</comment>
+        <translation type="unfinished">Wert</translation>
     </message>
 </context>
 <context>
@@ -1068,6 +1139,10 @@ Die Änderungen sind endgültig.</translation>
         <source>Nouveau modèle</source>
         <translation>Neues Modell</translation>
     </message>
+    <message>
+        <source>Basculer vers ce projet</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>EllipseEditor</name>
@@ -1857,41 +1932,43 @@ Die Änderungen sind endgültig.</translation>
     </message>
 </context>
 <context>
+    <name>ProjectMainConfigPage</name>
+    <message>
+        <source>Général</source>
+        <comment>configuration page title</comment>
+        <translation type="unfinished">Allgemein</translation>
+    </message>
+    <message>
+        <source>Titre du projet :</source>
+        <comment>label when configuring</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
+        <comment>informative label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
+        <comment>informative label</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ProjectNewDiagramConfigPage</name>
+    <message>
+        <source>Nouveau schéma</source>
+        <comment>project configuration page title</comment>
+        <translation type="unfinished">Neues Schema</translation>
+    </message>
+    <message>
+        <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
+        <comment>explicative label</comment>
+        <translation type="unfinished">Eigenschaften zur Benutzung beim Hinzufügen eines neuen Schemas im Projekt :</translation>
+    </message>
+</context>
+<context>
     <name>ProjectView</name>
-    <message>
-        <source>Ce projet ne contient aucun schéma</source>
-        <translation>Dieses Projekt enthält kein Schema</translation>
-    </message>
-    <message>
-        <source>Enregistrer le projet en cours ?</source>
-        <comment>message box title</comment>
-        <translation>Laufendes Projekt speichern ?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous enregistrer le projet ?</source>
-        <comment>message box content</comment>
-        <translation>Wollen Sie das Projekt speichern ?</translation>
-    </message>
-    <message>
-        <source>Enregistrer le schéma en cours ?</source>
-        <comment>message box title</comment>
-        <translation>Laufendes Schema speichern ?</translation>
-    </message>
-    <message>
-        <source>Voulez-vous enregistrer le schéma %1 ?</source>
-        <comment>message box content - %1 is a diagram title</comment>
-        <translation>Wollen Sie das Schema %1 speichern ?</translation>
-    </message>
-    <message>
-        <source>Enregistrer le nouveau schéma ?</source>
-        <comment>message box title</comment>
-        <translation>Neues Schema speichern ?</translation>
-    </message>
-    <message>
-        <source>Ce schéma a été ajouté mais n&apos;a été ni modifié ni enregistré. Voulez-vous le conserver ?</source>
-        <comment>message box content</comment>
-        <translation>Dieses Schema wurde hinzugefügt aber weder verändert noch gespeichert. Möchten Sie es beibehalten ?</translation>
-    </message>
     <message>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
@@ -1906,14 +1983,6 @@ Die Änderungen sind endgültig.</translation>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
         <translation>Eigenschaften des Projekts</translation>
-    </message>
-    <message>
-        <source>Titre du projet :</source>
-        <translation>Titel des Projekts :</translation>
-    </message>
-    <message>
-        <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
-        <translation>Eigenschaften zur Benutzung beim Hinzufügen eines neuen Schemas im Projekt :</translation>
     </message>
     <message>
         <source>projet</source>
@@ -1961,6 +2030,25 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Supprimer les modèles de cartouche inutilisés dans le projet</source>
         <translation>Löschen von nicht verwendeten Kartuschenmodellen im Projekt</translation>
+    </message>
+    <message>
+        <source>Fermer le projet &quot;%1&quot;</source>
+        <comment>project closing dialog title -- %1 is a project title</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>aucun projet affiché</source>
+        <comment>error message</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ajouter un schéma</source>
+        <translation type="unfinished">Schema zufügen</translation>
+    </message>
+    <message>
+        <source>Ce projet ne contient aucun schéma</source>
+        <comment>label displayed when a project contains no diagram</comment>
+        <translation type="unfinished">Dieses Projekt enthält kein Schema</translation>
     </message>
 </context>
 <context>
@@ -2172,6 +2260,11 @@ Options disponibles :
         <source>Collection utilisateur</source>
         <translation>Sammlung Benutzer</translation>
     </message>
+    <message>
+        <source>Configurer QElectroTech</source>
+        <comment>window title</comment>
+        <translation type="unfinished">Einstellung QElectroTech</translation>
+    </message>
 </context>
 <context>
     <name>QETDiagramEditor</name>
@@ -2218,10 +2311,6 @@ Options disponibles :
     <message>
         <source>Enregistrer sous</source>
         <translation>Speichern unter</translation>
-    </message>
-    <message>
-        <source>&amp;Enregistrer tous les schémas</source>
-        <translation>&amp;Speichern alle Schema</translation>
     </message>
     <message>
         <source>&amp;Importer</source>
@@ -2441,21 +2530,6 @@ Options disponibles :
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
         <translation>Aktuelles Schema schliessen</translation>
-    </message>
-    <message>
-        <source>Enregistre le schéma courant</source>
-        <comment>status bar tip</comment>
-        <translation>Aktuelles Schema speichern</translation>
-    </message>
-    <message>
-        <source>Enregistre le schéma courant avec un autre nom de fichier</source>
-        <comment>status bar tip</comment>
-        <translation>Aktuelles Schema mit anderem Dateinamen speichern</translation>
-    </message>
-    <message>
-        <source>Enregistre tous les schémas du projet courant</source>
-        <comment>status bar tip</comment>
-        <translation>Alle Schema im aktuellen Projekt speichern</translation>
     </message>
     <message>
         <source>Importe un schéma dans le schéma courant</source>
@@ -2751,6 +2825,30 @@ Options disponibles :
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translation>Diese Tafel listet die auf dem auktuellen Schema durchgeführten Aktionen auf. Das klicken auf eine Aktion ermöglicht zum Zustand zugelangen, gleich nach seiner Anwendung.</translation>
+    </message>
+    <message>
+        <source>&amp;Enregistrer le schéma courant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistre le projet courant et tous ses schémas</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistre le project courant avec un autre nom de fichier</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregistre le schéma courant du projet courant</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <comment>message box title</comment>
+        <translation type="unfinished">Fehler</translation>
     </message>
 </context>
 <context>
@@ -3485,6 +3583,11 @@ Que désirez vous faire ?</source>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
         <translation>Es ist ein Fehler bei der Integration des Modelles aufgetreten.</translation>
+    </message>
+    <message>
+        <source>%1 [modifié]</source>
+        <comment>displayed title for a modified project - %1 is a displayable title</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4593,14 +4696,6 @@ Que désirez vous faire ?</source>
         <translation>Datum festgelegt : </translation>
     </message>
     <message>
-        <source>Nom</source>
-        <translation>Name</translation>
-    </message>
-    <message>
-        <source>Valeur</source>
-        <translation>Wert</translation>
-    </message>
-    <message>
         <source>Principales</source>
         <translation>Haupt</translation>
     </message>
@@ -4645,10 +4740,6 @@ Que désirez vous faire ?</source>
     <message>
         <source>Title block templates actions</source>
         <translation>Aktionen Titelblockvorlagen</translation>
-    </message>
-    <message>
-        <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
