@@ -51,6 +51,9 @@ class DiagramPrintDialog : public QWidget {
 	void buildPrintTypeDialog();
 	void buildDialog();
 	void saveReloadDiagramParameters(Diagram *, const ExportProperties, bool);
+	void savePageSetupForCurrentPrinter();
+	void loadPageSetupForCurrentPrinter();
+	QString settingsSectionName(const QPrinter *);
 	
 	private slots:
 	void print(const QList<Diagram *> &, bool, const ExportProperties);

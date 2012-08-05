@@ -20,6 +20,7 @@
 #include <math.h>
 #include "diagramschooser.h"
 #include "exportproperties.h"
+#include "qetapp.h"
 #include "qeticons.h"
 #include "qetmessagebox.h"
 
@@ -104,6 +105,7 @@ void DiagramPrintDialog::exec() {
 	
 	// prise en compte du nom du document
 	if (!doc_name_.isEmpty()) printer_ -> setDocName(doc_name_);
+	printer_ -> setCreator(QString("QElectroTech %1").arg(QET::displayedVersion));
 	
 	// affichage d'un premier dialogue demandant a l'utilisateur le type
 	// d'impression qu'il souhaite effectuer
@@ -127,6 +129,7 @@ void DiagramPrintDialog::exec() {
 		printer_ -> setOutputFormat(QPrinter::PostScriptFormat);
 		printer_ -> setOutputFileName(filepath_field_ -> text());
 	}
+	loadPageSetupForCurrentPrinter();
 	
 	// Apercu avant impression
 #if defined Q_WS_X11
@@ -144,6 +147,8 @@ void DiagramPrintDialog::exec() {
 	DiagramsChooser *dc = preview_dialog.diagramsChooser();
 	dc -> setSelectedAllDiagrams();
 	if (preview_dialog.exec() == QDialog::Rejected) return;
+	
+	savePageSetupForCurrentPrinter();
 	
 	// effectue l'impression en elle-meme
 	print(
@@ -504,4 +509,99 @@ void DiagramPrintDialog::saveReloadDiagramParameters(Diagram *diagram, const Exp
 		// restaure les parametres relatifs au schema
 		diagram -> applyProperties(state_exportProperties);
 	}
+}
+
+/**
+	Save parameters set in the "page setup" dialog into the QElectroTech
+	configuration. Key/values pairs are associated to the printer for which
+	they have been set.
+*/
+void DiagramPrintDialog::savePageSetupForCurrentPrinter() {
+	QSettings &settings = QETApp::settings();
+	QString printer_section = settingsSectionName(printer_);
+	
+	while (!settings.group().isEmpty()) settings.endGroup();
+	settings.beginGroup("printers");
+	settings.beginGroup(printer_section);
+	
+	settings.setValue("orientation", printer_ -> orientation() == QPrinter::Portrait ? "portrait" : "landscape");
+	settings.setValue("papersize", int(printer_ -> paperSize()));
+	if (printer_ -> paperSize() == QPrinter::Custom) {
+		QSizeF size = printer_ -> paperSize(QPrinter::Millimeter);
+		settings.setValue("customwidthmm", size.width());
+		settings.setValue("customheightmm", size.height());
+	} else {
+		settings.remove("customwidthmm");
+		settings.remove("customheightmm");
+	}
+	qreal left, top, right, bottom;
+	printer_ -> getPageMargins(&left, &top, &right, &bottom, QPrinter::Millimeter);
+	settings.setValue("marginleft", left);
+	settings.setValue("margintop", top);
+	settings.setValue("marginright", right);
+	settings.setValue("marginbottom", bottom);
+	settings.setValue("fullpage", printer_ -> fullPage() ? "true" : "false");
+	settings.endGroup();
+	settings.endGroup();
+	settings.sync();
+}
+
+
+/**
+	Load parameters previously set in the "page setup" dialog for the current
+	printer, if any.
+*/
+void DiagramPrintDialog::loadPageSetupForCurrentPrinter() {
+	QSettings &settings = QETApp::settings();
+	QString printer_section = settingsSectionName(printer_);
+	
+	while (!settings.group().isEmpty()) settings.endGroup();
+	settings.beginGroup("printers");
+	if (!settings.childGroups().contains(printer_section)) return;
+	
+	settings.beginGroup(printer_section);
+	if (settings.contains("orientation")) {
+		QString value = settings.value("orientation", "landscape").toString();
+		printer_ -> setOrientation(value == "landscape" ? QPrinter::Landscape : QPrinter::Portrait);
+	}
+	if (settings.contains("papersize")) {
+		int value = settings.value("papersize", QPrinter::A4).toInt();
+		if (value == QPrinter::Custom) {
+			bool w_ok, h_ok;
+			int w = settings.value("customwidthmm", -1).toInt(&w_ok);
+			int h = settings.value("customheightmm", -1).toInt(&h_ok);
+			if (w_ok && h_ok && w != -1 && h != -1) {
+				printer_ -> setPaperSize(QSizeF(w, h), QPrinter::Millimeter);
+			}
+		} else if (value < QPrinter::Custom) {
+			printer_ -> setPaperSize(static_cast<QPrinter::PaperSize>(value));
+		}
+	}
+	
+	qreal margins[4];
+	printer_ -> getPageMargins(&margins[0], &margins[1], &margins[2], &margins[3], QPrinter::Millimeter);
+	QStringList margins_names(QStringList() << "left" << "top" << "right" << "bottom");
+	for (int i = 0 ; i < 4 ; ++ i) {
+		bool conv_ok;
+		qreal value = settings.value("margin" + margins_names.at(i), -1.0).toReal(&conv_ok);
+		if (conv_ok && value != -1.0) margins[i] = value;
+	}
+	printer_ -> setPageMargins(margins[0], margins[1], margins[2], margins[3], QPrinter::Millimeter);
+	printer_ -> setFullPage(settings.setValue("fullpage", "false") == "true");
+}
+
+/**
+	@return a section name for use with QSettings in order to store parameters
+	related to \a printer.
+*/
+QString DiagramPrintDialog::settingsSectionName(const QPrinter *printer) {
+	QPrinter::OutputFormat printer_format = printer -> outputFormat();
+	if (printer_format == QPrinter::NativeFormat) {
+		return(printer -> printerName().replace(" ", "_"));
+	} else if (printer_format == QPrinter::PdfFormat) {
+		return("QET_PDF_Printing");
+	} else if (printer_format == QPrinter::PostScriptFormat) {
+		return("QET_PS_Printing");
+	}
+	return(QString());
 }
