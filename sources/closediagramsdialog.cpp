@@ -108,6 +108,7 @@ void CloseDiagramsDialog::initWidgets() {
 	all_checkbox_ -> setChecked(true);
 	connect(all_checkbox_, SIGNAL(stateChanged(int)), this, SLOT(topCheckBoxChangedState(int)));
 	QWidget *header_widget = diagrams_list_.count() > 1 ? static_cast<QWidget *>(all_checkbox_) : static_cast<QWidget *>(action_label);
+	Qt::Alignment header_alignment = diagrams_list_.count() > 1 ? Qt::AlignLeft : Qt::AlignCenter;
 	
 	// spacers inserted in the header row
 	QSpacerItem *spacer1 = new QSpacerItem(10, 10, QSizePolicy::Expanding, QSizePolicy::Minimum);
@@ -122,7 +123,7 @@ void CloseDiagramsDialog::initWidgets() {
 	diagrams_list_layout_ -> addItem(spacer1, 0, 2);
 	diagrams_list_layout_ -> addWidget(state_label, 0, 3, 1, 1, Qt::AlignCenter);
 	diagrams_list_layout_ -> addItem(spacer2, 0, 4);
-	diagrams_list_layout_ -> addWidget(header_widget, 0, 5, 1, 1, Qt::AlignCenter);
+	diagrams_list_layout_ -> addWidget(header_widget, 0, 5, 1, 1, header_alignment);
 	
 	// widget
 	diagrams_list_widget_ = new QWidget();
@@ -188,7 +189,7 @@ void CloseDiagramsDialog::addDiagram(Diagram *diagram, int row_id) {
 	diagrams_list_layout_ -> addWidget(diagram_show,       row_id, 0, 1, 1, Qt::AlignCenter);
 	diagrams_list_layout_ -> addWidget(diagram_title,      row_id, 1, 1, 1, Qt::AlignCenter);
 	diagrams_list_layout_ -> addWidget(diagram_status,     row_id, 3, 1, 1, Qt::AlignCenter);
-	diagrams_list_layout_ -> addWidget(diagram_checkbox,   row_id, 5, 1, 1, Qt::AlignCenter);
+	diagrams_list_layout_ -> addWidget(diagram_checkbox,   row_id, 5, 1, 1, Qt::AlignLeft);
 }
 
 /**
