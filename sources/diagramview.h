@@ -127,6 +127,7 @@ class DiagramView : public QGraphicsView {
 	void zoomIn();
 	void zoomOut();
 	void zoomFit();
+	void zoomContent();
 	void zoomReset();
 	void cut();
 	void copy();

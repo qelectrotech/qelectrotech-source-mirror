@@ -155,6 +155,7 @@ namespace QET {
 		extern QIcon West;
 		extern QIcon WindowNew;
 		extern QIcon XmlTextFile;
+		extern QIcon ZoomDraw;
 		extern QIcon ZoomFitBest;
 		extern QIcon ZoomIn;
 		extern QIcon ZoomOriginal;

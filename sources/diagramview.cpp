@@ -338,6 +338,14 @@ void DiagramView::zoomFit() {
 }
 
 /**
+	Adjust zoom to fit all elements in the view, regardless of diagram borders.
+*/
+void DiagramView::zoomContent() {
+	fitInView(scene -> itemsBoundingRect(), Qt::KeepAspectRatio);
+	adjustGridToZoom();
+}
+
+/**
 	Reinitialise le zoom
 */
 void DiagramView::zoomReset() {

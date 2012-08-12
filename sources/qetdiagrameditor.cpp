@@ -216,6 +216,7 @@ void QETDiagramEditor::actions() {
 	
 	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
 	zoom_out          = new QAction(QET::Icons::ZoomOut,               tr("Zoom arri\350re"),                      this);
+	zoom_content      = new QAction(QET::Icons::ZoomDraw,              tr("Zoom sur le contenu"),                  this);
 	zoom_fit          = new QAction(QET::Icons::ZoomFitBest,           tr("Zoom adapt\351"),                       this);
 	zoom_reset        = new QAction(QET::Icons::ZoomOriginal,          tr("Pas de zoom"),                          this);
 	
@@ -264,6 +265,7 @@ void QETDiagramEditor::actions() {
 	
 	zoom_in           -> setShortcut(QKeySequence::ZoomIn);
 	zoom_out          -> setShortcut(QKeySequence::ZoomOut);
+	zoom_content      -> setShortcut(QKeySequence(tr("Ctrl+8")));
 	zoom_fit          -> setShortcut(QKeySequence(tr("Ctrl+9")));
 	zoom_reset        -> setShortcut(QKeySequence(tr("Ctrl+0")));
 	
@@ -303,6 +305,7 @@ void QETDiagramEditor::actions() {
 	
 	zoom_in           -> setStatusTip(tr("Agrandit le sch\351ma", "status bar tip"));
 	zoom_out          -> setStatusTip(tr("R\351tr\351cit le sch\351ma", "status bar tip"));
+	zoom_content      -> setStatusTip(tr("Adapte le zoom de fa\347on \340 afficher tout le contenu ind\351pendamment du cadre"));
 	zoom_fit          -> setStatusTip(tr("Adapte la taille du sch\351ma afin qu'il soit enti\350rement visible", "status bar tip"));
 	zoom_reset        -> setStatusTip(tr("Restaure le zoom par d\351faut", "status bar tip"));
 	
@@ -353,6 +356,7 @@ void QETDiagramEditor::actions() {
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
 	connect(zoom_in,            SIGNAL(triggered()), this,       SLOT(slot_zoomIn())               );
 	connect(zoom_out,           SIGNAL(triggered()), this,       SLOT(slot_zoomOut())              );
+	connect(zoom_content,       SIGNAL(triggered()), this,       SLOT(slot_zoomContent())          );
 	connect(zoom_fit,           SIGNAL(triggered()), this,       SLOT(slot_zoomFit())              );
 	connect(zoom_reset,         SIGNAL(triggered()), this,       SLOT(slot_zoomReset())            );
 	connect(print,              SIGNAL(triggered()), this,       SLOT(printDialog())               );
@@ -482,6 +486,7 @@ void QETDiagramEditor::menus() {
 	menu_affichage -> addSeparator();
 	menu_affichage -> addAction(zoom_in);
 	menu_affichage -> addAction(zoom_out);
+	menu_affichage -> addAction(zoom_content);
 	menu_affichage -> addAction(zoom_fit);
 	menu_affichage -> addAction(zoom_reset);
 	
@@ -527,6 +532,7 @@ void QETDiagramEditor::toolbar() {
 	view_bar -> addSeparator();
 	view_bar -> addAction(zoom_in);
 	view_bar -> addAction(zoom_out);
+	view_bar -> addAction(zoom_content);
 	view_bar -> addAction(zoom_fit);
 	view_bar -> addAction(zoom_reset);
 	
@@ -969,6 +975,13 @@ void QETDiagramEditor::slot_zoomFit() {
 }
 
 /**
+	Call the "zoom content" action for the current diagram.
+*/
+void QETDiagramEditor::slot_zoomContent() {
+	if(currentDiagram()) currentDiagram() -> zoomContent();
+}
+
+/**
 	Effectue l'action "zoom par defaut" sur le schema en cours
 */
 void QETDiagramEditor::slot_zoomReset() {
@@ -1059,6 +1072,7 @@ void QETDiagramEditor::slot_updateActions() {
 	select_invert     -> setEnabled(opened_diagram);
 	zoom_in           -> setEnabled(opened_diagram);
 	zoom_out          -> setEnabled(opened_diagram);
+	zoom_content      -> setEnabled(opened_diagram);
 	zoom_fit          -> setEnabled(opened_diagram);
 	zoom_reset        -> setEnabled(opened_diagram);
 	infos_diagram     -> setEnabled(opened_diagram);

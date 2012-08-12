@@ -79,6 +79,7 @@
 	<file>ico/16x16/west.png</file>
 	<file>ico/16x16/window-new.png</file>
 	<file>ico/16x16/zoom-draw.png</file>
+	<file>ico/16x16/zoom-fit-best.png</file>
 	<file>ico/16x16/zoom-in.png</file>
 	<file>ico/16x16/zoom-original.png</file>
 	<file>ico/16x16/zoom-out.png</file>
@@ -174,6 +175,7 @@
 	<file>ico/22x22/view-restore.png</file>
 	<file>ico/22x22/window-new.png</file>
 	<file>ico/22x22/zoom-draw.png</file>
+	<file>ico/22x22/zoom-fit-best.png</file>
 	<file>ico/22x22/zoom-in.png</file>
 	<file>ico/22x22/zoom-original.png</file>
 	<file>ico/22x22/zoom-out.png</file>

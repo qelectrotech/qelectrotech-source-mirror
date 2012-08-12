@@ -99,6 +99,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_zoomIn();
 	void slot_zoomOut();
 	void slot_zoomFit();
+	void slot_zoomContent();
 	void slot_zoomReset();
 	void slot_selectAll();
 	void slot_selectNothing();
@@ -196,7 +197,8 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *prj_clean;          ///< Nettoie un projet
 	QAction *zoom_in;            ///< Zoome avant
 	QAction *zoom_out;           ///< Zoome arriere
-	QAction *zoom_fit;           ///< Ajuste le zoom de facon a voir l'integralite des elements
+	QAction *zoom_fit;           ///< Adjust zoom to fit the whole diagram, including potential elements outside its borders, in the view
+	QAction *zoom_content;       ///< Adjust zoom to fit all elements in the view, regardless of diagram borders
 	QAction *zoom_reset;         ///< Remet le zoom 1:1
 	QAction *tile_window;        ///< Affiche les fenetre MDI en mosaique
 	QAction *cascade_window;     ///< Affiche les fenetres MDI en cascade
