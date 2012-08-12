@@ -459,7 +459,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 		properties_.singleLineProperties.draw(
 			qp,
 			middleSegment() -> isHorizontal() ? QET::Horizontal : QET::Vertical,
-			QRectF(middleSegment() -> middle() - QPointF(10.0, 7.5), QSizeF(20.0, 15.0))
+			QRectF(middleSegment() -> middle() - QPointF(12.0, 12.0), QSizeF(24.0, 24.0))
 		);
 		if (isSelected()) qp -> setBrush(Qt::NoBrush);
 	}
@@ -744,7 +744,7 @@ QVariant Conductor::itemChange(GraphicsItemChange change, const QVariant &value)
 */
 QRectF Conductor::boundingRect() const {
 	QRectF retour = QGraphicsPathItem::boundingRect();
-	retour.adjust(-5.0, -5.0, 5.0, 5.0);
+	retour.adjust(-11.0, -11.0, 11.0, 11.0);
 	return(retour);
 }
 
