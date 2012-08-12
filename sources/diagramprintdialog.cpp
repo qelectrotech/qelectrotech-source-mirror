@@ -557,7 +557,10 @@ void DiagramPrintDialog::loadPageSetupForCurrentPrinter() {
 	
 	while (!settings.group().isEmpty()) settings.endGroup();
 	settings.beginGroup("printers");
-	if (!settings.childGroups().contains(printer_section)) return;
+	if (!settings.childGroups().contains(printer_section)) {
+		settings.endGroup();
+		return;
+	}
 	
 	settings.beginGroup(printer_section);
 	if (settings.contains("orientation")) {
@@ -588,6 +591,9 @@ void DiagramPrintDialog::loadPageSetupForCurrentPrinter() {
 	}
 	printer_ -> setPageMargins(margins[0], margins[1], margins[2], margins[3], QPrinter::Millimeter);
 	printer_ -> setFullPage(settings.value("fullpage", "false").toString() == "true");
+	
+	settings.endGroup();
+	settings.endGroup();
 }
 
 /**
