@@ -23,6 +23,7 @@
 SingleLineProperties::SingleLineProperties() :
 	hasGround(true),
 	hasNeutral(true),
+	is_pen(false),
 	phases(1)
 {
 }
@@ -45,6 +46,15 @@ unsigned short int SingleLineProperties::phasesCount() {
 }
 
 /**
+	@return true if the singleline conductor should be drawn using the PEN
+	(Protective Earth Neutral) representation and if it features the ground and
+	the neutral.
+*/
+bool SingleLineProperties::isPen() const {
+	return(hasNeutral && hasGround && is_pen);
+}
+
+/**
 	Dessine les symboles propres a un conducteur unifilaire
 	@param painter QPainter a utiliser pour dessiner les symboles
 	@param direction direction du segment sur lequel les symboles apparaitront
@@ -59,38 +69,33 @@ void SingleLineProperties::draw(QPainter *painter, QET::ConductorSegmentType dir
 	QPen pen(painter -> pen());
 	pen.setCapStyle(Qt::FlatCap);
 	pen.setJoinStyle(Qt::MiterJoin);
+	pen.setStyle(Qt::SolidLine);
 	painter -> setPen(pen);
 	painter -> setRenderHint(QPainter::Antialiasing, true);
 	
-	uint symbols_count = (hasNeutral ? 1 : 0) + (hasGround ? 1 : 0) + phases;
-	qreal interleave;
-	qreal symbol_width;
-	if (direction == QET::Horizontal) {
-		interleave = rect.width() / (symbols_count + 1);
-		symbol_width = rect.width() / 12;
-		for (uint i = 1 ; i <= symbols_count ; ++ i) {
-			// dessine le tronc du symbole
-			QPointF symbol_p1(rect.x() + (i * interleave) + symbol_width, rect.y() + rect.height() * 0.75);
-			QPointF symbol_p2(rect.x() + (i * interleave) - symbol_width, rect.y() + rect.height() * 0.25);
-			painter -> drawLine(QLineF(symbol_p1, symbol_p2));
-			
-			// dessine le reste des symboles terre et neutre
-			if (hasGround && i == 1) {
-				drawGround(painter, direction, symbol_p2, symbol_width * 2.0);
-			} else if (hasNeutral && ((i == 1 && !hasGround) || (i == 2 && hasGround))) {
-				drawNeutral(painter, direction, symbol_p2, symbol_width * 1.35);
-			}
+	uint symbols_count = (hasNeutral ? 1 : 0) + (hasGround ? 1 : 0) - (isPen() ? 1 : 0) + phases;
+	qreal interleave_base = (direction == QET::Horizontal ? rect.width() : rect.height());
+	qreal interleave = interleave_base / (symbols_count + 1);;
+	qreal symbol_width = interleave_base / 12;
+	
+	for (uint i = 1 ; i <= symbols_count ; ++ i) {
+		// dessine le tronc du symbole
+		QPointF symbol_p1, symbol_p2;
+		if (direction == QET::Horizontal) {
+			symbol_p1 = QPointF(rect.x() + (i * interleave) + symbol_width, rect.y() + rect.height() * 0.75);
+			symbol_p2 = QPointF(rect.x() + (i * interleave) - symbol_width, rect.y() + rect.height() * 0.25);
+		} else {
+			symbol_p2 = QPointF(rect.x() + rect.width() * 0.75, rect.y() + (i * interleave) - symbol_width);
+			symbol_p1 = QPointF(rect.x() + rect.width() * 0.25, rect.y() + (i * interleave) + symbol_width);
 		}
-	} else {
-		interleave = rect.height() / (symbols_count + 1);
-		symbol_width = rect.height() / 12;
-		for (uint i = 1 ; i <= symbols_count ; ++ i) {
-			// dessine le tronc du symbole
-			QPointF symbol_p2(rect.x() + rect.width() * 0.75, rect.y() + (i * interleave) - symbol_width);
-			QPointF symbol_p1(rect.x() + rect.width() * 0.25, rect.y() + (i * interleave) + symbol_width);
-			painter -> drawLine(QLineF(symbol_p1, symbol_p2));
-			
-			// dessine le reste des symboles terre et neutre
+		painter -> drawLine(QLineF(symbol_p1, symbol_p2));
+		
+		// dessine le reste des symboles terre et neutre
+		if (isPen()) {
+			if (i == 1) {
+				drawPen(painter, direction, symbol_p2, symbol_width);
+			}
+		} else {
 			if (hasGround && i == 1) {
 				drawGround(painter, direction, symbol_p2, symbol_width * 2.0);
 			} else if (hasNeutral && ((i == 1 && !hasGround) || (i == 2 && hasGround))) {
@@ -160,6 +165,30 @@ void SingleLineProperties::drawNeutral(QPainter *painter, QET::ConductorSegmentT
 }
 
 /**
+	Draw the PEN (Protective Earth Neutral) symbol using \a painter at position \a
+	center, using a size hint of \a size.
+	@param direction Indicate the direction of the underlying conductor segment
+*/
+void SingleLineProperties::drawPen(QPainter *painter, QET::ConductorSegmentType direction, QPointF center, qreal size) {
+	painter -> save();
+	
+	//painter -> setBrush(Qt::white);
+	// desine le cercle representant le neutre
+	//painter -> drawEllipse(
+	//	QRectF(
+	//		center - QPointF(size * 1.5 / 2.0, size * 1.5 / 2.0),
+	//		QSizeF(size * 1.5, size * 1.5)
+	//	)
+	//);
+	drawNeutral(painter, direction, center, size * 1.5);
+	
+	int offset = (size * 1.5 / 2.0);
+	QPointF pos = center + (direction == QET::Horizontal ? QPointF(0.0, -offset - 0.5) : QPointF(offset + 0.5, 0.0));
+	drawGround(painter, direction, pos, 2.0 * size);
+	painter -> restore();
+}
+
+/**
 	Exporte les parametres du conducteur unifilaire sous formes d'attributs XML
 	ajoutes a l'element e.
 	@param e Element XML auquel seront ajoutes des attributs
@@ -168,6 +197,7 @@ void SingleLineProperties::toXml(QDomElement &e) const {
 	e.setAttribute("ground",  hasGround  ? "true" : "false");
 	e.setAttribute("neutral", hasNeutral ? "true" : "false");
 	e.setAttribute("phase",   phases);
+	if (isPen()) e.setAttribute("pen", "true");
 }
 
 /**
@@ -179,6 +209,7 @@ void SingleLineProperties::fromXml(QDomElement &e) {
 	hasGround  = e.attribute("ground")  == "true";
 	hasNeutral = e.attribute("neutral") == "true";
 	setPhasesCount(e.attribute("phase").toInt());
+	is_pen = (hasGround && hasNeutral && e.attribute("pen", "false") == "true");
 }
 
 /**
@@ -378,6 +409,7 @@ int SingleLineProperties::operator==(const SingleLineProperties &other) const {
 	return(
 		other.hasGround == hasGround &&\
 		other.hasNeutral == hasNeutral &&\
+		other.is_pen == is_pen &&\
 		other.phases == phases
 	);
 }
@@ -398,6 +430,7 @@ void SingleLineProperties::toSettings(QSettings &settings, const QString &prefix
 	settings.setValue(prefix + "hasGround",  hasGround);
 	settings.setValue(prefix + "hasNeutral", hasNeutral);
 	settings.setValue(prefix + "phases",     phases);
+	settings.setValue(prefix + "pen",        is_pen);
 }
 
 /**
@@ -408,4 +441,5 @@ void SingleLineProperties::fromSettings(QSettings &settings, const QString &pref
 	hasGround  = settings.value(prefix + "hasGround",  true).toBool();
 	hasNeutral = settings.value(prefix + "hasNeutral", true).toBool();
 	phases     = settings.value(prefix + "phases",     1).toInt();
+	is_pen     = settings.value(prefix + "pen",        false).toBool();
 }

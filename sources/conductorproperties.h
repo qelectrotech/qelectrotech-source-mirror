@@ -30,6 +30,7 @@ class SingleLineProperties {
 	
 	void setPhasesCount(int);
 	unsigned short int phasesCount();
+	bool isPen() const;
 	void draw(QPainter *, QET::ConductorSegmentType, const QRectF &);
 	void toXml(QDomElement &) const;
 	void fromXml(QDomElement &);
@@ -40,6 +41,8 @@ class SingleLineProperties {
 	bool hasGround;
 	/// indique si le conducteur unifilaire doit afficher le symbole neutre
 	bool hasNeutral;
+	/// Protective Earth Neutral: visually merge neutral and ground
+	bool is_pen;
 	
 	int operator==(const SingleLineProperties &) const;
 	int operator!=(const SingleLineProperties &) const;
@@ -48,6 +51,7 @@ class SingleLineProperties {
 	unsigned short int phases;
 	void drawGround (QPainter *, QET::ConductorSegmentType, QPointF, qreal);
 	void drawNeutral(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
+	void drawPen(QPainter *, QET::ConductorSegmentType, QPointF, qreal);
 };
 
 /**
