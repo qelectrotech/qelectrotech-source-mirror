@@ -361,7 +361,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
         <source>Multifilaire</source>
-        <translation>Wielokreskowy</translation>
+        <translation>Wieloliniowy</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="64"/>
@@ -371,7 +371,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
         <source>Unifilaire</source>
-        <translation>Jednokreskowy</translation>
+        <translation>Jednoliniowyy</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="72"/>
@@ -2379,7 +2379,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/projectconfigpages.cpp" line="142"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation>Można ustawić następujące właściwości niestandardowe, które są dostępne dla wszystkich schematów tego projektu (zwykle w tabliczkach rysunkowych).</translation>
+        <translation>Tutaj możesz zdefiniować właściwości niestandardowe, które będą dostępne we wszystkich schematach tego projektu (zwykle w tabliczkach rysunkowych).</translation>
     </message>
 </context>
 <context>
@@ -3893,7 +3893,7 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="660"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation>Element nie zawiera punktów pochwycenia. Element musi mieć punkty pochwycenia w celu przyłączenia przewodów i innych elementów.</translation>
+        <translation>Element nie zawiera punktów pochwycenia. Element musi posiadać punkty pochwycenia w celu przyłączenia przewodów i innych elementów.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
