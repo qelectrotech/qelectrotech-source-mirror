@@ -371,7 +371,7 @@
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
         <source>Unifilaire</source>
-        <translation>Jednoliniowyy</translation>
+        <translation>Jednoliniowy</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="72"/>
