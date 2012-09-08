@@ -3,5 +3,6 @@
         <name lang="fr">Armoire electrique</name>
         <name lang="pl">Rozdzielnica elektryczna</name>
         <name lang="en">electrical cabinet</name>
+        <name lang="cs">Elektrická skříň</name>
     </names>
 </qet-directory>

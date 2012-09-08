@@ -3,6 +3,7 @@
         <name lang="en">Miniature Circuit Breaker</name>
         <name lang="fr">Disjoncteur</name>
         <name lang="pl">Wyłącznik</name>
+        <name lang="cs">Jistič (samočinný vypínač)</name>
     </names>
     <informations></informations>
     <description>

@@ -3,6 +3,7 @@
         <name lang="en">Temperature sensor</name>
         <name lang="fr">Sonde de temperature</name>
         <name lang="pl">Czujnik temperatury</name>
+        <name lang="cs">Teplotní čidlo</name>
     </names>
     <informations></informations>
     <description>
