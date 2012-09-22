@@ -857,7 +857,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="354"/>
         <source>champ de texte</source>
-        <translation>pola tekstowego</translation>
+        <translation>pola tekstowe</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="372"/>
@@ -1015,7 +1015,7 @@
         <source>Êtes-vous sûr de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation>Czy napewno chcesz usunąć tę kategorię ?
+        <translation>Czy na pewno chcesz usunąć tę kategorię ?
 Wszystkie podkategorie i elementy zostaną usunięte.</translation>
     </message>
     <message>
@@ -1179,7 +1179,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/elementspanel.cpp" line="477"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation>Kliknij i przeciąg upuszczając nad schematem szblon tabliczki rysunkowej, aby go wstawić.</translation>
+        <translation>Kliknij i przeciąg upuszczając nad schematem szablon tabliczki rysunkowej, aby go wstawić.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="489"/>
@@ -1683,7 +1683,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/genericpanel.cpp" line="226"/>
         <source>Ceci est un projet QElectroTech, c&apos;est-à-dire un fichier d&apos;extension .qet regroupant plusieurs schémas/folios. Il embarque également les éléments et modèles de cartouches utilisés dans ces schémas/folios.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Projekt QElectroTech, o rozszerzeniu pliku.qet, grupuje wiele schematów/stron, jak również osadzone elementy i szablony tabliczek rysunkowych używanych w tych schematach/stronach.</translation>
+        <translation>Projekt QElectroTech, o rozszerzeniu pliku. qet, grupuje wiele schematów/stron, jak również osadzone elementy i szablony tabliczek rysunkowych używanych w tych schematach/stronach.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="288"/>
@@ -1868,7 +1868,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation>Wstawianie szblonów tabliczki rysunkowej</translation>
+        <translation>Wstawianie szablonów tabliczki rysunkowej</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
@@ -2460,7 +2460,7 @@ Zmiany zostaną zapisane.</translation>
         <location filename="../sources/projectview.cpp" line="249"/>
         <source>Fermer le projet &quot;%1&quot;</source>
         <comment>project closing dialog title -- %1 is a project title</comment>
-        <translation>Zamknij projek &quot;%1&quot;</translation>
+        <translation>Zamknij projekt &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="289"/>
@@ -2630,7 +2630,7 @@ Dostępne opcje :
         <location filename="../sources/qetapp.cpp" line="1543"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation>  -common-tbt-dir=DIR          Określ katalog kolekcji szblonów tabliczek rysunkowych
+        <translation>  -common-tbt-dir=DIR          Określ katalog kolekcji szablonów tabliczek rysunkowych
 </translation>
     </message>
     <message>
@@ -4400,7 +4400,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="110"/>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Zapisać aktualy szablon ?</translation>
+        <translation>Zapisać aktualny szablon ?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="112"/>
@@ -5137,7 +5137,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatecommands.cpp" line="417"/>
         <source>Suppression d&apos;une ligne</source>
         <comment>label used in the title block template editor undo list</comment>
-        <translation>Usuięcie wiersza</translation>
+        <translation>Usunięcie wiersza</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="421"/>
@@ -5241,7 +5241,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation>wyrównwnie tekstu</translation>
+        <translation>wyrównywanie tekstu</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
@@ -5987,7 +5987,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="79"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation>Kolekcja powiązana</translation>
+        <translation>Kolekcja nadrzędna</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
@@ -6031,7 +6031,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation>Export logo</translation>
+        <translation>Eksport logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
