@@ -7,7 +7,7 @@
         <name lang="pl">Karta wejść CD20 (powiększona)</name>
         <name lang="cs">Karta CD20 zoom vstupy</name>
         <name lang="pt">Carta de entradas zoom CD20</name>
-        <name lang="es">CD20 zoom tarjeta de entrada</name>
+        <name lang="es">CD20 tarjeta de entrada ampliada</name>
     </names>
     <informations></informations>
     <description>
@@ -15,7 +15,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="360" y2="0" x2="360"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="740" y2="0" x2="740"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="540" y2="0" x2="540"/>
-        <text x="384" y="34.6667" size="8" text="CROUZET CD20 Carte entr&#xE9;es"/>
+        <text x="384" y="34.6667" size="8" text="CROUZET CD20 Carte entrées"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="410" y2="0" x2="410"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="590" y2="0" x2="590"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="490" y2="0" x2="490"/>

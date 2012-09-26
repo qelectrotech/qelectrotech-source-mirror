@@ -9,6 +9,7 @@
         <name lang="fr">Connecteur</name>
         <name lang="pl">Złącze wtykowe</name>
         <name lang="cs">Spojka</name>
+        <name lang="es">Conector</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
