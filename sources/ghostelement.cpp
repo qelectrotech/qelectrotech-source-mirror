@@ -19,6 +19,7 @@
 #include "qet.h"
 #include "terminal.h"
 #include "elementtextitem.h"
+#include "diagramcommands.h"
 
 /**
 	Constructeur
@@ -53,7 +54,7 @@ GhostElement::~GhostElement() {
 	ajouter les bons couples (id, adresse).
 	@return true si l'import a reussi, false sinon
 */
-bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr) {
+bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr, bool handle_inputs_rotation) {
 	// instancie les bornes decrites dans l'element XML
 	terminalsFromXml(e, table_id_adr);
 	
@@ -78,14 +79,19 @@ bool GhostElement::fromXml(QDomElement &e, QHash<int, Terminal *> &table_id_adr)
 	// on peut desormais confectionner le rendu de l'element
 	generateDrawings();
 	
-	// position, selection et orientation
+	// position, selection
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
 	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	
+	// orientation
 	bool conv_ok;
 	int read_ori = e.attribute("orientation").toInt(&conv_ok);
 	if (!conv_ok || read_ori < 0 || read_ori > 3) read_ori = ori.defaultOrientation();
-	setOrientation((QET::Orientation)read_ori);
-	
+	if (handle_inputs_rotation) {
+		RotateElementsCommand::rotateElement(this, (QET::Orientation)read_ori);
+	} else {
+		setOrientation((QET::Orientation)read_ori);
+	}
 	return(true);
 }
 
