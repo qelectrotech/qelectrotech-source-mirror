@@ -857,7 +857,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="354"/>
         <source>champ de texte</source>
-        <translation>pola tekstowe</translation>
+        <translation>pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="372"/>
@@ -5050,7 +5050,7 @@ Co chcesz zrobić ?</translation>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>pola tekstowego</numerusform>
+            <numerusform>pole tekstowe</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
