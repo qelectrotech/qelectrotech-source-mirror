@@ -286,6 +286,16 @@
         <comment>diagram action</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Cocher ou décocher toutes les cases à cocher</source>
+        <comment>checbox tooltip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Afficher ce schéma</source>
+        <comment>button tooltip</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ConductorPropertiesWidget</name>
@@ -332,6 +342,16 @@
     <message>
         <source>Trait en pointillés</source>
         <translation>Punktlinie</translation>
+    </message>
+    <message>
+        <source>PEN</source>
+        <comment>Protective Earth Neutral</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Protective Earth Neutral</source>
+        <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2849,6 +2869,18 @@ Options disponibles :
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Zoom sur le contenu</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ctrl+8</source>
+        <translation type="unfinished">Ctrl+8</translation>
+    </message>
+    <message>
+        <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
