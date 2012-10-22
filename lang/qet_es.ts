@@ -68,12 +68,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="130"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducción en croata</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translation>Paquetes Fedora y Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="148"/>
@@ -290,79 +290,79 @@ Iconos</translation>
         <location filename="../sources/closediagramsdialog.cpp" line="81"/>
         <source>Fermer un projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar un proyecto</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="87"/>
         <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Los esquemas a continuación contienen cambios no guardados. ¿Hay que guardar?</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="96"/>
         <source>Voulez-vous enregistrer le projet ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished">¿Quiere guardar el proyecto?</translation>
+        <translation>¿Desea guardar el proyecto?</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="100"/>
         <source>État</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estado</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="101"/>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation type="unfinished">Esquema</translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
         <source>Action</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Acción</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="107"/>
         <source>Cocher ou décocher toutes les cases à cocher</source>
         <comment>checbox tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Active o desactive todas las casillas de verificación</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="181"/>
         <source>Afficher ce schéma</source>
         <comment>button tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Mostrar este esquema</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
         <source>Schéma sans titre</source>
         <comment>fallback diagram title</comment>
-        <translation type="unfinished">Esquema sin título</translation>
+        <translation>Esquema sin título</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="229"/>
         <source>Modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modificado</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="231"/>
         <source>Ajouté, non modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translation>Añadido, sin modificar</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="244"/>
         <source>Enregistrer</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Guardar</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="246"/>
         <source>Conserver</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Conservar</translation>
     </message>
 </context>
 <context>
@@ -396,13 +396,13 @@ Iconos</translation>
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
-        <translation type="unfinished"></translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translation>Protección tierra neutral</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
@@ -440,19 +440,19 @@ Iconos</translation>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="125"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Los Nombres sólo pueden contener letras minúsculas, números y guiones.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Nom</source>
         <comment>table header</comment>
-        <translation type="unfinished">Nombre</translation>
+        <translation>Nombre</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Valeur</source>
         <comment>table header</comment>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
 </context>
 <context>
@@ -1316,7 +1316,7 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Basculer vers ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Cambiar a este proyecto</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -1681,7 +1681,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Resaltar los elementos recién integrados en el panel</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
@@ -2134,13 +2134,14 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation type="unfinished">Texto</translation>
+        <translation>Texto</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Esta lista le permite introducir un texto corto de una manera que es traducible en otros idiomas.
+Para ello, asocia los códigos ISO 639-1 de idiomas (ejemplo &quot;fr&quot; por frances) las traducciones del texto en cuestión en esos idiomas.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2151,7 +2152,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Utilice este botón para agregar la asociación de un idioma / traducción de la lista anterior.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="86"/>
@@ -2390,25 +2391,25 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/projectconfigpages.cpp" line="94"/>
         <source>Général</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">General</translation>
+        <translation>General</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="138"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Título del proyecto:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="140"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Este título estará disponible para todos los esquemas de este proyecto como %titulo de proyecto.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="142"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Puede definir propiedades personalizadas que estarán disponibles para todos los esquemas de este proyecto (tipicamente para el bloque de título).</translation>
     </message>
 </context>
 <context>
@@ -2417,13 +2418,13 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/projectconfigpages.cpp" line="206"/>
         <source>Nouveau schéma</source>
         <comment>project configuration page title</comment>
-        <translation type="unfinished">Nuevo esquema</translation>
+        <translation>Nuevo esquema</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="250"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <comment>explicative label</comment>
-        <translation type="unfinished">Propiedades a utilizar al añadir un nuevo esquema al proyecto:</translation>
+        <translation>Propiedades a utilizar al añadir un nuevo esquema al proyecto:</translation>
     </message>
 </context>
 <context>
@@ -2489,7 +2490,7 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/projectview.cpp" line="249"/>
         <source>Fermer le projet &quot;%1&quot;</source>
         <comment>project closing dialog title -- %1 is a project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cerrar el proyecto &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="289"/>
@@ -2501,18 +2502,18 @@ Los cambios no podrían ser revertidos.</translation>
         <location filename="../sources/projectview.cpp" line="311"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ningún proyecto nuevo</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="702"/>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished">Añadir un esquema</translation>
+        <translation>Añadir un esquema</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="716"/>
         <source>Ce projet ne contient aucun schéma</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished">Este proyecto no contiene ningún esquema</translation>
+        <translation>Este proyecto no contiene ningún esquema</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="782"/>
@@ -2762,7 +2763,7 @@ Opciones disponibles:
         <location filename="../sources/qetapp.cpp" line="1148"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished">Configurar QElectroTech</translation>
+        <translation>Configurar QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1273"/>
@@ -3006,12 +3007,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="184"/>
         <source>&amp;Enregistrer le schéma courant</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Guardar el esquema actual</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Zoom sur le contenu</source>
-        <translation type="unfinished"></translation>
+        <translation>Ampliar el contenido</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="229"/>
@@ -3076,7 +3077,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
         <source>Ctrl+8</source>
-        <translation type="unfinished">Ctrl+8</translation>
+        <translation>Ctrl+8</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
@@ -3092,19 +3093,19 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Enregistre le projet courant et tous ses schémas</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Guarda el proyecto actual y todos sus esquemas</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Enregistre le project courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Guarda el proyecto actual con un nombre de archivo diferente</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Enregistre le schéma courant du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Guarda el esquema actual del proyecto actual</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="296"/>
@@ -3127,7 +3128,7 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Ajuste el zoom para ver todo el contenido independientemente del marco</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="410"/>
@@ -3248,7 +3249,7 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="1721"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
@@ -4423,7 +4424,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qetproject.cpp" line="273"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 [modificado]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="625"/>
@@ -4516,7 +4517,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Administrar los logotipos</translation>
+        <translation>Administrar los logotipos</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="342"/>
@@ -4546,19 +4547,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="365"/>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Ctrl+T</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="367"/>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Ctrl+J</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="368"/>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Ctrl+K</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="821"/>
@@ -5791,17 +5792,18 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Disponible como %1 para los modelos de título.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>%id y %total están disponibles como %{folio-id} y %{folio total} {respectivamente} para los modelos de título.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="315"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Aquí puede definir sus propias asociaciones de nombre / valor para el bloque de título a tener en cuenta.
+Ejemplo: asociar el nombre &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %{volta} por 1745 en el bloque de título.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="328"/>
@@ -5976,22 +5978,22 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
         <source>Label de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Etiqueta de esta celda</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="258"/>
         <source>Valeur de cette cellule</source>
-        <translation type="unfinished"></translation>
+        <translation>Valor de esta celda</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
         <source>Par défaut, les variables suivantes sont disponibles :&lt;ul&gt;&lt;li&gt;%{author} : auteur du folio&lt;/li&gt;&lt;li&gt;%{date} : date du folio&lt;/li&gt;&lt;li&gt;%{title} : titre du folio&lt;/li&gt;&lt;li&gt;%{filename} : nom de fichier du projet&lt;/li&gt;&lt;li&gt;%{folio} : indications relatives au folio&lt;/li&gt;&lt;li&gt;%{folio-id} : position du folio dans le projet&lt;/li&gt;&lt;li&gt;%{folio-total} : nombre total de folios dans le projet&lt;/li&gt;&lt;/ul&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>De forma predeterminada, las variables siguientes están disponibles: &lt;ul&gt;&lt;li&gt;%{autor}: autor del folio&lt;/li&gt;&lt;li&gt;%{folio}: indicación relativa al folio&lt;/li&gt;&lt;li&gt;%{folio-id}: posición del folio en el proyecto&lt;/li&gt;&lt;li&gt;{folio total}: nombre total de folios en el proyecto&lt;/li&gt;&lt;ul&gt;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="452"/>
         <source>Chaque cellule d&apos;un cartouche affiche une valeur, optionnellement précédée d&apos;un label. Tous deux peuvent être traduits en plusieurs langues.&lt;br/&gt;Comme ce que vous éditez actuellement est un &lt;em&gt;modèle&lt;/em&gt; de cartouche, ne saisissez pas directement des données brutes : insérez plutôt des variables sous la forme %{nom-de-variable}, qui seront ensuite remplacées par les valeurs adéquates sur le folio.</source>
-        <translation type="unfinished"></translation>
+        <translation>Cada celda de un bloque de titulo muestra un valor, opcionalmente precedido por una etiqueta. Todos pueden ser traducidos a varios idiomas.&lt;br/&gt;A medida que se está editando actualmente un &lt;em&gt;modelo&lt;/em&gt;de título, no ingresar directamente los datos en bruto: Inserte en su lugar las variables del formulario %{nombre-de-variable}, luego se reemplazará con los valores apropiados en el folio.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
@@ -6074,7 +6076,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Exportar este logotipo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
@@ -6147,17 +6149,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Seleccione un archivo para exportar este logotipo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
         <source>Tous les fichiers (*);;Images vectorielles (*.svg);;Images bitmap (*.png *.jpg *.jpeg *.gif *.bmp *.xpm)</source>
-        <translation type="unfinished"></translation>
+        <translation>Todos los archivos (*);;imagenes vectoriales (*.svg);;imagenes bitmap (*.png *.jpeg *.gif *.bmp *.xpm)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>No es posible exportar al archivo especificado</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
