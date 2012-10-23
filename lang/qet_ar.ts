@@ -126,12 +126,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="130"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation>ترجمة للكرواتية</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translation>حزم Fedora  و Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="148"/>
@@ -297,79 +297,79 @@
         <location filename="../sources/closediagramsdialog.cpp" line="81"/>
         <source>Fermer un projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>غلق مشروع</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="87"/>
         <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>تحتوي المخططات أعلاه على تعديلات غير محفوظة . هل تُريد حفظها؟</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="96"/>
         <source>Voulez-vous enregistrer le projet ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished">هل تريد حفظ المشروع ؟</translation>
+        <translation>هل تريد حفظ المشروع ؟</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="100"/>
         <source>État</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>حالة</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="101"/>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation type="unfinished">مخطط</translation>
+        <translation>مخطط</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
         <source>Action</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>فعل</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="107"/>
         <source>Cocher ou décocher toutes les cases à cocher</source>
         <comment>checbox tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>وضع أو إزالة العلامة عن كلّ المربعات</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="181"/>
         <source>Afficher ce schéma</source>
         <comment>button tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>عرض هذا المُخطط</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
         <source>Schéma sans titre</source>
         <comment>fallback diagram title</comment>
-        <translation type="unfinished">مخطط بدون عنوان</translation>
+        <translation>مخطط بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="229"/>
         <source>Modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translation>مُتغيّر</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="231"/>
         <source>Ajouté, non modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translation>مُضاف , غير مُتغيّر</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="244"/>
         <source>Enregistrer</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation>احفظ</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="246"/>
         <source>Conserver</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation>احتفظ</translation>
     </message>
 </context>
 <context>
@@ -403,13 +403,13 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
-        <translation type="unfinished"></translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translation>حماية الأرضي -المحايد</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
@@ -447,19 +447,19 @@
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="125"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished">الأسماء لا تحمل سوى الحروف الصغيرة, الأرقام والمطات</translation>
+        <translation>الأسماء لا تحمل سوى الحروف الصغيرة, الأرقام والمطات</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Nom</source>
         <comment>table header</comment>
-        <translation type="unfinished">اسم</translation>
+        <translation>اسم</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Valeur</source>
         <comment>table header</comment>
-        <translation type="unfinished">القيمة</translation>
+        <translation>القيمة</translation>
     </message>
 </context>
 <context>
@@ -1350,7 +1350,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Basculer vers ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation>الإنتقال إلى هذا المشروع</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
@@ -2419,25 +2419,25 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectconfigpages.cpp" line="94"/>
         <source>Général</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">عام</translation>
+        <translation>عام</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="138"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>عنوان المشروع:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="140"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>يكون هذا الإسم مُتاحا لجميع مُخططات هذا المشروع %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="142"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>ثمكنكم تعريف أسفله, الخصائص المُخصّصة والتّي ستكون مُتوفرة لكلّ مُخطّطات هذا المشروع  - لا سيّما إطارات التعريف -</translation>
     </message>
 </context>
 <context>
@@ -2446,13 +2446,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectconfigpages.cpp" line="206"/>
         <source>Nouveau schéma</source>
         <comment>project configuration page title</comment>
-        <translation type="unfinished">مخطط جديد</translation>
+        <translation>مخطط جديد</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="250"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <comment>explicative label</comment>
-        <translation type="unfinished">خاصيات للإستعمال عند إضافة مخطط جديد للمشروع :</translation>
+        <translation>خاصيات للإستعمال عند إضافة مخطط جديد للمشروع :</translation>
     </message>
 </context>
 <context>
@@ -2524,7 +2524,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="249"/>
         <source>Fermer le projet &quot;%1&quot;</source>
         <comment>project closing dialog title -- %1 is a project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>غلق المشروع  &quot;%&quot;</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="289"/>
@@ -2536,18 +2536,18 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="311"/>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>لا وجود لمشروع معروض</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="702"/>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>إضافة مُخطّط</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="716"/>
         <source>Ce projet ne contient aucun schéma</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished">هذا المشروع لا يحتوي على أي مخطط</translation>
+        <translation>هذا المشروع لا يحتوي على أي مخطط</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="782"/>
@@ -2644,7 +2644,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="1148"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished">إعدادات برنامج QElectrotech</translation>
+        <translation>إعدادات برنامج QElectrotech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1273"/>
@@ -3028,7 +3028,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Zoom sur le contenu</source>
-        <translation type="unfinished"></translation>
+        <translation>تكبير المحتوى</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
@@ -3143,7 +3143,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
         <source>Ctrl+8</source>
-        <translation type="unfinished">Ctrl+8</translation>
+        <translation>Ctrl+8</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="269"/>
@@ -3176,25 +3176,25 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="184"/>
         <source>&amp;Enregistrer le schéma courant</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;حفظ المخطط الحالي</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="279"/>
         <source>Enregistre le projet courant et tous ses schémas</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>حفظ المشروع الحالي وكلّ المُخططات</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="280"/>
         <source>Enregistre le project courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>حفظ المشروع الحالي باسم ملف آخر</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="281"/>
         <source>Enregistre le schéma courant du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>حفظ المُخطّط الحالي للمشروع الحالي</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
@@ -3343,7 +3343,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>مُلائمة التكبير لعرض المحتوى بالكامل بغضّ النظر عن الإطار</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
@@ -3541,7 +3541,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="1721"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">خطأ</translation>
+        <translation>خطأ</translation>
     </message>
 </context>
 <context>
@@ -4424,7 +4424,7 @@ Options disponibles :
         <location filename="../sources/qetproject.cpp" line="273"/>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1  [مُتغيّر]</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="614"/>
