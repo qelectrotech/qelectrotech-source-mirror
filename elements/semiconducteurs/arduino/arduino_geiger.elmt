@@ -1,6 +1,7 @@
 <definition width="220" version="0.3" hotspot_x="30" hotspot_y="35" height="350" type="element" orientation="dyyy">
     <names>
         <name lang="fr">Geiger Libelium</name>
+        <name lang="pl">Licznik geigera Libelium</name>
     </names>
     <informations>ezza</informations>
     <description>
@@ -56,13 +57,13 @@
         <rect width="6" x="167" y="147" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="6" x="157" y="7" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="175.586" y="293.586" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="2.82843"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="160" x2="158" x3="156" x4="156" antialias="false" x5="159" x6="161" x7="162" x8="164" x9="164" closed="false" y1="-12" y10="-12" y2="-12" y11="-12" y3="-10" y4="-7" y5="-5" x10="162" y6="-5" x11="160" y7="-5" y8="-7" y9="-10"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="160" x2="158" x3="156" x4="156" antialias="false" x5="159" x6="161" x7="162" x8="164" x9="164" closed="false" y1="-12" y2="-12" y10="-12" y3="-10" y11="-12" y4="-7" y5="-5" x10="162" y6="-5" x11="160" y7="-5" y8="-7" y9="-10"/>
         <rect width="15" x="-23" y="139" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-12" x3="-14" x4="-14" antialias="false" x5="-11" x6="-9" x7="-8" x8="-6" x9="-6" closed="false" y1="-4" y10="-4" y2="-4" y11="-4" y3="-2" y4="1" y5="3" x10="-8" y6="3" x11="-10" y7="3" y8="1" y9="-2"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-12" x3="-14" x4="-14" antialias="false" x5="-11" x6="-9" x7="-8" x8="-6" x9="-6" closed="false" y1="-4" y2="-4" y10="-4" y3="-2" y11="-4" y4="1" y5="3" x10="-8" y6="3" x11="-10" y7="3" y8="1" y9="-2"/>
         <rect width="15" x="-23" y="180" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="142" y="122" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4"/>
         <rect width="15" x="-23" y="169" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="160" x2="158" x3="156" x4="156" antialias="false" x5="159" x6="161" x7="162" x8="164" x9="164" closed="false" y1="-3" y10="-3" y2="-3" y11="-3" y3="-1" y4="2" y5="4" x10="162" y6="4" x11="160" y7="4" y8="2" y9="-1"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="160" x2="158" x3="156" x4="156" antialias="false" x5="159" x6="161" x7="162" x8="164" x9="164" closed="false" y1="-3" y2="-3" y10="-3" y3="-1" y11="-3" y4="2" y5="4" x10="162" y6="4" x11="160" y7="4" y8="2" y9="-1"/>
         <rect width="15" x="-23" y="149" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="6" x="167" y="157" antialias="false" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <circle x="142" y="72" antialias="true" style="line-style:normal;line-weight:normal;filling:black;color:black" diameter="4"/>
@@ -149,7 +150,7 @@
         <rect width="19" x="59" y="121" antialias="false" height="16" style="line-style:dotted;line-weight:thin;filling:none;color:black"/>
         <rect width="15" x="106" y="301" antialias="false" height="7" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="3" x="114" y="308" antialias="false" height="5" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
-        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-12" x3="-14" x4="-14" antialias="false" x5="-11" x6="-9" x7="-8" x8="-6" x9="-6" closed="false" y1="-14" y10="-14" y2="-14" y11="-14" y3="-12" y4="-9" y5="-7" x10="-8" y6="-7" x11="-10" y7="-7" y8="-9" y9="-12"/>
+        <polygon style="line-style:normal;line-weight:normal;filling:none;color:black" x1="-10" x2="-12" x3="-14" x4="-14" antialias="false" x5="-11" x6="-9" x7="-8" x8="-6" x9="-6" closed="false" y1="-14" y2="-14" y10="-14" y3="-12" y11="-14" y4="-9" y5="-7" x10="-8" y6="-7" x11="-10" y7="-7" y8="-9" y9="-12"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-21" x1="-4" y2="-14" x2="-4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-18" x1="-7" y2="-18" x2="-2"/>
         <text x="154" y="-11" size="4" rotation="180" text="GND"/>
