@@ -227,7 +227,7 @@ void ConductorPropertiesWidget::updateDisplay() {
 	ground_checkbox -> setChecked(properties_.singleLineProperties.hasGround);
 	neutral_checkbox -> setChecked(properties_.singleLineProperties.hasNeutral);
 	merge_checkbox -> setChecked(properties_.singleLineProperties.is_pen);
-	merge_checkbox -> setEnabled(!isReadOnly() && ground_checkbox -> isChecked() && neutral_checkbox -> isChecked());
+	merge_checkbox -> setEnabled(!isReadOnly() && properties_.type == ConductorProperties::Single && ground_checkbox -> isChecked() && neutral_checkbox -> isChecked());
 	phase_spinbox -> setValue(properties_.singleLineProperties.phasesCount());
 	phase_slider -> setValue(properties_.singleLineProperties.phasesCount());
 	phase_checkbox -> setChecked(properties_.singleLineProperties.phasesCount());
