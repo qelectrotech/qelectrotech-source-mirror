@@ -54,6 +54,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
 	void duplicateCurrentTitleBlockTemplate();
+    void setDateNow();
 	
 	// private methods
 	private:
@@ -75,6 +76,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QLineEdit    *titleblock_title;
 	QLineEdit    *titleblock_author;
 	QDateEdit    *titleblock_date;
+    QPushButton  *titleblock_dateNow;
 	QLineEdit    *titleblock_filename;
 	QLineEdit    *titleblock_folio;
 	QLabel       *folio_tip;

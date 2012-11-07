@@ -27,7 +27,7 @@
 */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current, QWidget *parent) :
 	QWidget(parent),
-	display_current_date(false),
+    display_current_date(false),
 	tbt_collection_(0)
 {
 	initWidgets(titleblock);
@@ -297,6 +297,14 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
 	titleblock_date -> setCalendarPopup(true);
 	
+    titleblock_dateNow = new QPushButton (this);
+    titleblock_dateNow -> setEnabled(titleblock_fixed_date -> isChecked());
+    QIcon icon_dateNow(QET::Icons::ArrowLeft);
+    titleblock_dateNow->setIcon(icon_dateNow);
+    titleblock_dateNow->setIconSize(QSize(16, 16));
+    connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_dateNow, SLOT(setEnabled(bool)));
+    connect(titleblock_dateNow, SIGNAL(clicked()), this, SLOT(setDateNow()));
+
 	// we add a bunch of tooltips for users to know how they can put these
 	// values into their title block templates
 	QString variable_tooltip = tr("Disponible en tant que %1 pour les mod\350les de cartouches.");
@@ -308,6 +316,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	titleblock_current_date -> setToolTip(date_variable_tooltip);
 	titleblock_fixed_date -> setToolTip(date_variable_tooltip);
 	titleblock_date -> setToolTip(date_variable_tooltip);
+    titleblock_dateNow -> setToolTip(tr("Appliquer la date actuelle"));
 	folio_tip -> setToolTip(tr("%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les mod\350les de cartouches."));
 	
 	// widgets for users to enter their own name/value pairs
@@ -340,6 +349,7 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	layout_date -> addWidget(titleblock_current_date, 1, 0);
 	layout_date -> addWidget(titleblock_fixed_date,   2, 0);
 	layout_date -> addWidget(titleblock_date,         2, 1);
+    layout_date -> addWidget(titleblock_dateNow,      2, 2);
 	layout_date -> setColumnStretch(0, 1);
 	layout_date -> setColumnStretch(1, 500);
 	
@@ -397,4 +407,11 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	this_layout -> setContentsMargins(0, 0, 0, 0);
 	this_layout -> addWidget(titleblock_infos);
 	setLayout(this_layout);
+}
+
+/**
+    Set the current Date to the combo Date
+  */
+void TitleBlockPropertiesWidget::setDateNow(){
+        titleblock_date->setDate( QDate::currentDate() );
 }
