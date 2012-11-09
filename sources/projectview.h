@@ -26,7 +26,8 @@ class Diagram;
 class ElementsLocation;
 class QETTabWidget;
 /**
-	Cette classe affiche les schemas d'un projet dans des onglets.
+	This class provides a widget displaying the diagrams of a particular
+	project using tabs.
 */
 class ProjectView : public QWidget {
 	Q_OBJECT
@@ -41,14 +42,14 @@ class ProjectView : public QWidget {
 	Q_DECLARE_FLAGS(ProjectSaveOptions, ProjectSaveOption)
 	
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ProjectView(QETProject *, QWidget * = 0);
 	virtual ~ProjectView();
 	private:
 	ProjectView(const ProjectView &);
 	
-	// methodes
+	// methods
 	public:
 	QETProject *project();
 	void setProject(QETProject *);
@@ -119,7 +120,7 @@ class ProjectView : public QWidget {
 	void setDisplayFallbackWidget(bool);
 	void adjustReadOnlyState();
 	
-	// attributs
+	// attributes
 	private:
 	QAction *add_new_diagram_;
 	QETProject *project_;

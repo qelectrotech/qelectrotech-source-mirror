@@ -22,21 +22,21 @@
 class QCheckBox;
 class QSpinBox;
 /**
-	Cette classe represente un widget permettant d'editer les dimensions et les
-	options d'affichage d'un schema, cartouche non inclus.
+	This class provides a widget to edit dimensions and display properties of a
+	diagram, title block excluded.
 	@see TitleBlockPropertiesWidget
 */
 class BorderPropertiesWidget : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	BorderPropertiesWidget(const BorderProperties &, QWidget * = 0);
 	virtual ~BorderPropertiesWidget();
 	private:
 	BorderPropertiesWidget(const BorderPropertiesWidget &);
 	
-	// methodes
+	// methods
 	public:
 	const BorderProperties &borderProperties();
 	bool isReadOnly() const;
@@ -46,14 +46,14 @@ class BorderPropertiesWidget : public QWidget {
 	private:
 	void build();
 	
-	// attributs
+	// attributes
 	private:
-	BorderProperties border_;       ///< Proprietes editees
-	QSpinBox *columns_count;        ///< Widget d'edition du nombre de colonnes
-	QSpinBox *columns_width;        ///< Widget d'edition de la largeur des colonnes
-	QCheckBox *display_columns;     ///< Case a cocher pour afficher ou non les entetes des colonnes
-	QSpinBox *rows_count;           ///< Widget d'edition du nombre de lignes
-	QSpinBox *rows_height;          ///< Widget d'edition de la hauteur des lignes
-	QCheckBox *display_rows;        ///< Case a cocher pour afficher ou non les entetes des lignes
+	BorderProperties border_;       ///< Edited properties
+	QSpinBox *columns_count;        ///< Widget to edit the columns count
+	QSpinBox *columns_width;        ///< Widget to edit the columns width
+	QCheckBox *display_columns;     ///< Checkbox stating whether to display column headers
+	QSpinBox *rows_count;           ///< Widget to edit the rows count
+	QSpinBox *rows_height;          ///< Widget to edit the rows height
+	QCheckBox *display_rows;        ///< Checkbox stating whether to display row headers
 };
 #endif

@@ -21,20 +21,20 @@
 class QETProject;
 class Diagram;
 /**
-	Cette classe represente un widget permettant de choisir 0 a n schemas parmi
-	ceux d'un projet.
+	This class provides a widget which allows users to select 0 to n diagrams
+	among those of a particular project.
 */
 class DiagramsChooser : public QScrollArea {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	DiagramsChooser(QETProject *, QWidget * = 0);
 	virtual ~DiagramsChooser();
 	private:
 	DiagramsChooser(const DiagramsChooser &);
 	
-	// methodes
+	// methods
 	public:
 	QETProject *project() const;
 	QList<Diagram *> selectedDiagrams() const;
@@ -52,7 +52,7 @@ class DiagramsChooser : public QScrollArea {
 	private:
 	void buildLayout();
 	
-	// attributs
+	// attributes
 	private:
 	QETProject *project_;
 	QWidget *widget0_;

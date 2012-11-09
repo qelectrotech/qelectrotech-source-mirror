@@ -22,25 +22,24 @@
 class PartEllipse;
 class StyleEditor;
 /**
-	Cette classe represente le widget d'edition d'une ellipse dans l'editeur
-	d'element.
+	This class provides a widget to edit ellipses within the element editor.
 */
 class EllipseEditor : public ElementItemEditor {
 	Q_OBJECT
-	//constructeurs, destructeur
+	// constructors, destructor
 	public:
 	EllipseEditor(QETElementEditor *, PartEllipse * = 0, QWidget * = 0);
 	virtual ~EllipseEditor();
 	private:
 	EllipseEditor(const EllipseEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartEllipse *part;
 	StyleEditor *style_;
 	QLineEdit *x, *y, *h, *v;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

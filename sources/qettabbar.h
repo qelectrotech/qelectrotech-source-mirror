@@ -20,16 +20,16 @@
 #include <QtGui>
 #include <QTabBar>
 /**
-	Cette classe represente une barre d'onglets.
-	Elle se distingue d'une QTabBar sur les points suivants :
-		*elle emet un signal lorsque le dernier onglet est ferme
-		*elle emet un signal lorsque le premier onglet est insere
-		*elle permet de passer d'un onglet a l'autre avec la rollette
+	This class provides a tab bar.
+	It is different from a QTabBar on the following points:
+	  * it emits a signal when the last tab is closed;
+	  * it emits a signal whe the first is inserted;
+	  * it allows switching tabs using the mouse wheel.
 */
 class QETTabBar : public QTabBar {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETTabBar(QWidget * = 0);
 	virtual~QETTabBar();
@@ -37,7 +37,7 @@ class QETTabBar : public QTabBar {
 	private:
 	QETTabBar(const QETTabBar &);
 	
-	// methodes
+	// methods
 	public:
 	void activateNextTab();
 	void activatePreviousTab();
@@ -70,7 +70,7 @@ class QETTabBar : public QTabBar {
 	int tabForMovedPosition(const QPoint &);
 	bool posMatchesTabRect(const QRect &, const QPoint &) const;
 	
-	// attributs
+	// attributes
 	private:
 	bool no_more_tabs_;
 	bool movable_tabs_;

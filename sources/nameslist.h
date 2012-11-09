@@ -27,22 +27,22 @@
 	pour le francais.
 */
 class NamesList {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	NamesList();
 	NamesList(const NamesList &);
 	virtual ~NamesList();
 	
-	// attributs
+	// attributes
 	private:
 	QHash<QString, QString> hash_names;
 	
 	public:
 	static int MetaTypeId;
 	
-	// methodes
+	// methods
 	public:
-	// methodes relatives a la gestion de la liste
+	// methods relatives a la gestion de la liste
 	void addName(const QString &, const QString &);
 	void removeName(const QString &);
 	void clearNames();
@@ -55,7 +55,7 @@ class NamesList {
 	bool operator==(const NamesList &) const;
 	QString name(const QString & = QString()) const;
 	
-	// methodes relatives a XML
+	// methods relatives a XML
 	void fromXml(const QDomElement &, const QHash<QString, QString> & = QHash<QString, QString>());
 	QDomElement toXml(QDomDocument &, const QHash<QString, QString> & = QHash<QString, QString>()) const;
 	

@@ -22,15 +22,15 @@
 class TextFieldEditor;
 class QETElementEditor;
 /**
-	Cette classe represente un champ de texte editable pouvant etre utilise
-	pour composer le dessin d'un element dans l'editeur d'element.
-	L'utilisateur peut specifier un valeur par defaut. Le champ sera editable
-	lorsque l'element sera pose sur un schema.
+	This class represents an editable text field which may be used to compose the
+	drawing of an electrical element within the element editor. Users may specify
+	a default value. The field will remain editable once the element is added onto
+	a diagram. lorsque l'element sera pose sur un schema.
 */
 class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartTextField(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartTextField();
@@ -38,15 +38,16 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	private:
 	PartTextField(const PartTextField &);
 	
-	// attributs
+	// attributes
 	bool follow_parent_rotations;
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1108 };
 	/**
-		permet de caster un QGraphicsItem en PartTextField avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartTextField.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("champ de texte", "element part name")); }

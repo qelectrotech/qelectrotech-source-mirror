@@ -22,79 +22,75 @@
 class ElementDefinition;
 class ElementsCategory;
 /**
-	Cette classe definit l'interface minimale pour implementer un objet capable
-	de prendre en main une operation de deplacement ou de copie d'elements.
-	Ce type d'objet est typiquement utilise dans les methodes move et copy des
-	classes ElementDefinition et ElementsCategory. Ces methodes font appel a cet
-	objet pour qu'il leur indique comment gerer les eventuels problemes
-	rencontres lors du deplacement / de la copie.
-	Exemple : lors de la recopie d'un element dans une categorie, il se peut que
-	cet element existe deja. Il est alors possible d'ecraser l'element cible ou
-	d'abandonner l'operation. Cette decision est a la charge d'une classe fille
-	de MoveElementsHandler.
-	Cet objet peut effectuer des interactions avec l'utilisateur ou non.
-	Cet aspect, ainsi que la politique de gestion des elements, est laisse aux
-	bons soins de l'implementation.
-	Il s'agit d'un pattern Strategie qui encapsule non pas l'algorithme de
-	deplacement / copie des categories / elements mais la gestion des erreurs
-	durant l'execution de cet algorithme.
+	This class defines the minimum interface required to implement an object able
+	to handle a move/copy operation among elements collections. This kind of
+	objects is typically useful in the move() and copy() method of the
+	ElementDefinition and ElementsCategory classes. These methods simply rely on
+	answers provided by an instance of this class as soon as they encounter
+	typical move/copy problems, such as conflicts or permission issues.
+	
+	For instance, when copying a particular element to a given category, that
+	element may already exist in the target category. It is then possible either
+	to erase the target element, change the target name or cancel the operation.
+	There is no systematic or calculable answer to this kind of questions, hence
+	the rational to delegate the decision process to a dedicated "Strategy" object.
+	
+	All we know from this object is the fact it implements the interface defined
+	below. It is then free to create complicated dialogs to ask a user what to do
+	or even to pick a random decision.
+	
 	@see ElementsCategory
 	@see ElementDefinition
 */
 class MoveElementsHandler : public QObject {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	MoveElementsHandler(QObject * = 0) {};
 	virtual ~MoveElementsHandler() {};
 	private:
 	MoveElementsHandler(const MoveElementsHandler &);
 	
-	// methodes
+	// methods
 	public:
 	/**
-		@return l'action a effectuer si la categorie cible existe deja
+		@return what to do if the target category already exists
 	*/
 	virtual QET::Action categoryAlreadyExists(ElementsCategory *src, ElementsCategory  *dst) = 0;
 	/**
-		@return l'action a effectuer si l'element cible existe deja
+		@return what to do if the target element already exists
 	*/
 	virtual QET::Action elementAlreadyExists(ElementDefinition *src, ElementDefinition *dst) = 0;
 	
 	/**
-		@return l'action a effectuer si la categorie existe deja
+		@return what to do if a category is not readable
 	*/
 	virtual QET::Action categoryIsNotReadable(ElementsCategory *) = 0;
 	/**
-		@return l'action a effectuer si l'element existe deja
+		@return what to do if an element is not readable
 	*/
 	virtual QET::Action elementIsNotReadable(ElementDefinition *) = 0;
 	
 	/**
-		@return l'action a effectuer si la categorie cible n'est pas accessible
-		en ecriture
+		@return what to do if the target category is not writable
 	*/
 	virtual QET::Action categoryIsNotWritable(ElementsCategory *) = 0;
 	/**
-		@return l'action a effectuer si l'element cible n'est pas accessible
-		en ecriture
+		@return what to do if the target element is not writable
 	*/
 	virtual QET::Action elementIsNotWritable(ElementDefinition *) = 0;
 	
 	/**
-		@return l'action a effectuer lorsque l'erreur decrite dans la QString
-		s'est produite avec la categorie indiquee
+		@return what to do when an error, described by the provided QString, occurs in relation with the given elements category.
 	*/
 	virtual QET::Action errorWithACategory(ElementsCategory *, const QString &) = 0;
 	/**
-		@return l'action a effectuer lorsque l'erreur decrite dans la QString
-		s'est produite avec l'element indique
+		@return what to do when an error, described by the provided QString, occurs in relation with the given element.
 	*/
 	virtual QET::Action errorWithAnElement(ElementDefinition *, const QString &) = 0;
 	
 	/**
-		@return le nom a utiliser pour le renommage si une methode de cet objet
-		a precedemment renvoye QET::Rename.
+		@return the name to be used along with the latest QET::Rename answer
 	*/
 	virtual QString nameForRenamingOperation() = 0;
 };

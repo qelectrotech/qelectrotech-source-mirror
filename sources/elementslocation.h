@@ -26,7 +26,7 @@ class QETProject;
 	encapsule un chemin virtuel.
 */
 class ElementsLocation {
-	// constructeurs, destructeur et operateur d'affectation
+	// constructors, destructor et operateur d'affectation
 	public:
 	ElementsLocation();
 	explicit ElementsLocation(const QString &, QETProject * = 0);
@@ -36,7 +36,7 @@ class ElementsLocation {
 	bool operator==(const ElementsLocation &) const;
 	bool operator!=(const ElementsLocation &) const;
 	
-	// methodes
+	// methods
 	public:
 	QString baseName() const;
 	QString path() const;
@@ -50,7 +50,7 @@ class ElementsLocation {
 	void fromString(const QString &);
 	static ElementsLocation locationFromString(const QString &);
 	
-	// attributs
+	// attributes
 	private:
 	QString path_;
 	QETProject *project_;

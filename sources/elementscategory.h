@@ -25,12 +25,13 @@ class ElementsCollection;
 class MoveElementsHandler;
 class MoveElementsDescription;
 /**
-	Cette classe abstraite represente une categorie d'elements.
+	This abstract class represents an elements category, i.e. a kind of
+	subfolder within elements collections.
 */
 class ElementsCategory : public ElementsCollectionItem {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementsCategory(ElementsCategory * = 0, ElementsCollection * = 0);
 	virtual ~ElementsCategory();
@@ -38,7 +39,7 @@ class ElementsCategory : public ElementsCollectionItem {
 	private:
 	ElementsCategory(const ElementsCategory &);
 	
-	// Implementations de methodes virtuelles pures des classes parentes
+	// Implementations of pure virtual methods from parent classes
 	public:
 	virtual QETProject *project();
 	virtual void setProject(QETProject *);
@@ -67,7 +68,7 @@ class ElementsCategory : public ElementsCollectionItem {
 	virtual bool isEmpty();
 	virtual int count();
 	
-	// Methodes propres a la classe ElementsCategory
+	// Methods specific to the ElementsCategory class
 	public:
 	virtual QString name() const;
 	virtual NamesList categoryNames() const;
@@ -77,13 +78,13 @@ class ElementsCategory : public ElementsCollectionItem {
 	void copy(MoveElementsDescription *);
 	void move(MoveElementsDescription *);
 	
-	// attributs
+	// attributes
 	protected:
-	/// Collection parente
+	/// parent collection
 	ElementsCollection *parent_collection_;
-	/// Categorie parente
+	/// parent category
 	ElementsCategory   *parent_category_;
-	/// Liste des noms de la categorie
+	/// names list for this category
 	NamesList           category_names;
 };
 #endif

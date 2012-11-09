@@ -22,39 +22,37 @@
 class ElementsCollection;
 class MoveElementsHandler;
 /**
-	Cette classe abstraite represente une definition XML d'element,
-	c'est-a-dire qu'elle definit l'interface a implementer pour acceder a la
-	definition XML d'un element, que celle-ci proviennt d'un fichier *.elmt ou
-	d'un fichier projet QET.
+	This abstract class represents a way to access the XML definition of an
+	element, be it from a .elmt file or from a QET project file.
 */
 class ElementDefinition : public ElementsCollectionItem {
 	Q_OBJECT
 	
 	public:
 	/**
-		Constructeur
+		Constructor
 	*/
 	ElementDefinition(ElementsCategory *category = 0, ElementsCollection *collection = 0) : ElementsCollectionItem(category), parent_category_(category), parent_collection_(collection) {};
 	
 	/**
-		Destructeur
+		Destructor
 	*/
 	virtual ~ElementDefinition() {};
 	
 	/**
-		@return la definition XML de l'element
+		@return the XML definition of a particular element
 	*/
 	virtual QDomElement xml() = 0;
 	
 	/**
-		Change la definition XML de l'element
-		@param xml_element Nouvelle definition XML de l'element
-		@return true si l'operation s'est bien passee, false sinon
+		Specify the XML definition of a particular element
+		@param xml_element New XML definition
+		@return true if everything went well, false otherwise
 	*/
 	virtual bool setXml(const QDomElement &xml_element) = 0;
 	
 	/**
-		@return true si la definition n'est pas disponible
+		@return true if the definition is not available
 	*/
 	virtual bool isNull() const = 0;
 	
@@ -63,35 +61,36 @@ class ElementDefinition : public ElementsCollectionItem {
 	virtual bool hasParentCategory();
 	
 	/**
-		@return true si l'element est rattache a une collection d'elements
-		Un element appartenant a une collection a forcement un chemin virtuel.
+		@return whether the element is attached to an elements collection
+		An elemet which belongs to a collection always has a virtual path.
 	*/
 	virtual bool hasParentCollection();
 	virtual bool isChildOf(ElementsCollectionItem *);
 	
 	/**
-		@return la collection d'element a laquelle appartient cet element
+		@return the elements collections this element belongs to
 	*/
 	virtual ElementsCollection *parentCollection();
 	
 	virtual QETProject *project();
 	virtual void setProject(QETProject *);
 	/**
-		@return le protocole utilise par la collection a laquelle appartient cet element
+		@return the "protocol" used by the parent collection
 	*/
 	virtual QString protocol();
 	/**
-		Ne fait rien.
+		Has no effect.
 	*/
 	virtual void setProtocol(const QString &);
 	
 	/**
-		@return le chemin virtuel complet de cet element (protocole + chemin)
+		@return the full virtual path for this element (i.e. "protocol" + path)
 	*/
 	virtual QString fullVirtualPath();
 	
 	/**
-		@return l'emplacement de cet element
+		@return the location of this element, as an ElementsLocation object.
+		@see ElementsLocation
 	*/
 	virtual ElementsLocation location();
 	
@@ -107,10 +106,10 @@ class ElementDefinition : public ElementsCollectionItem {
 	virtual ElementsCollectionItem *copy(ElementsCategory *, MoveElementsHandler *, bool = true);
 	virtual ElementsCollectionItem *move(ElementsCategory *, MoveElementsHandler *);
 	
-	virtual bool isCollection()   const { return(false); } ///< @return toujours false
-	virtual bool isRootCategory() const { return(false); } ///< @return toujours false
-	virtual bool isCategory()     const { return(false); } ///< @return toujours false
-	virtual bool isElement()      const { return(true ); } ///< @return toujours true
+	virtual bool isCollection()   const { return(false); } ///< @return always false
+	virtual bool isRootCategory() const { return(false); } ///< @return always false
+	virtual bool isCategory()     const { return(false); } ///< @return always false
+	virtual bool isElement()      const { return(true ); } ///< @return always  true
 	virtual ElementsCollection *toCollection();
 	virtual ElementsCategory *toCategory();
 	virtual ElementsCategory *toPureCategory();
@@ -121,7 +120,7 @@ class ElementDefinition : public ElementsCollectionItem {
 	void copy(MoveElementsDescription *);
 	void move(MoveElementsDescription *);
 	
-	// attributs
+	// attributes
 	private:
 	ElementsCategory *parent_category_;
 	ElementsCollection *parent_collection_;

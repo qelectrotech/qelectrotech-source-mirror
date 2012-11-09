@@ -22,8 +22,7 @@
 class FileElementsCategory;
 class FileElementsCollection;
 /**
-	Cette classe represente la definition d'un element stockee dans un fichier.
-	
+	This class represents an element definition stored into a file.
 */
 class FileElementDefinition : public ElementDefinition {
 	public:
@@ -33,7 +32,7 @@ class FileElementDefinition : public ElementDefinition {
 	private:
 	FileElementDefinition(const FileElementDefinition &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QDomElement xml();
 	virtual bool setXml(const QDomElement &);
@@ -51,7 +50,7 @@ class FileElementDefinition : public ElementDefinition {
 	virtual void setFilePath(const QString &);
 	virtual QDateTime modificationTime() const;
 	
-	// attributs
+	// attributes
 	private:
 	bool is_null;
 	QString file_path;

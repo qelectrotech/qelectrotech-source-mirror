@@ -22,14 +22,13 @@ class Conductor;
 class Element;
 class IndependentTextItem;
 /**
-	Cette classe est un conteneur pour passer facilement le contenu d'un schema
-	a une fonction. Il permet d'acceder rapidement aux differents types de
-	composants que l'on peut trouver sur un schema, comme les elements, les
-	champs de texte, les conducteurs (a deplacer ou a mettre a jour, en cas de
-	deplacements), etc.
-	A noter que ce container ne contient pas systematiquement l'integralite
-	d'un schema. Il peut n'en contenir qu'une partie, typiquement les
-	composants selectionnes.
+	This class provides a container that makes the transmission of diagram content
+	to other functions/methods easier. The different kind of items are made
+	available through a handful of filter-aware methods. Considering selected
+	elements are to be moved, the filter notably distinguishes conductors to be
+	moved from those to be updated.
+	Please note this container does not systematically contains a whole
+	diagram: it may describe only a part of it, e.g. selected items.
 */
 class DiagramContent {
 	public:
@@ -37,7 +36,7 @@ class DiagramContent {
 	DiagramContent(const DiagramContent &);
 	~DiagramContent();
 	
-	/// Permet de filtrer facilement les differentes parties d'un schema
+	/// Used to filter the different items carried by this container.
 	enum Filter {
 		Elements = 1,
 		TextFields = 2,
@@ -49,15 +48,15 @@ class DiagramContent {
 		SelectedOnly = 32
 	};
 	
-	/// Elements de texte du schema
+	/// Hold electrical elements
 	QSet<Element *> elements;
-	/// Champs de texte independants du schema
+	/// Hold independent text items
 	QSet<IndependentTextItem *> textFields;
-	/// Conducteurs a mettre a jour du schema
+	/// Hold conductors that would get updated considering electrical elements are moved
 	QSet<Conductor *> conductorsToUpdate;
-	/// Conducteurs a deplacer du schema
+	/// Hold conductors that would be moved as is considering electrical elements are moved
 	QSet<Conductor *> conductorsToMove;
-	/// Conducteurs isoles (ni a deplacer, ni a mettre a jour)
+	/// Hold conductors that would be left untouched considering electrical elements are moved
 	QSet<Conductor *> otherConductors;
 	
 	QList<Conductor *> conductors(int = AnyConductor) const;

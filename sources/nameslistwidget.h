@@ -20,13 +20,13 @@
 #include <QtGui>
 #include "nameslist.h"
 /**
-	Cette classe represente une interface permettant de saisir les noms des
-	categories et elements.
+	This class provides a widget enabling users to enter localized names for
+	categories and elements.
 */
 class NamesListWidget : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	NamesListWidget(QWidget * = 0);
 	virtual ~NamesListWidget();
@@ -34,14 +34,14 @@ class NamesListWidget : public QWidget {
 	private:
 	NamesListWidget(const NamesListWidget &);
 	
-	// attributs
+	// attributes
 	private:
 	QTreeWidget *tree_names;
 	QPushButton *button_add_line;
 	NamesList hash_names;
 	bool read_only;
 	
-	// methodes
+	// methods
 	public:
 	bool checkOneName();
 	NamesList names();
@@ -59,8 +59,8 @@ class NamesListWidget : public QWidget {
 	
 	signals:
 	/**
-		Signal emis lors de la verification de la saisie s'il y a au moins un
-		nom saisi
+		Signal emitted after the widget successfully checked there was at least one
+		name entered
 	*/
 	void inputChecked();
 };

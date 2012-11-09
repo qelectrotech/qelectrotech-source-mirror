@@ -27,13 +27,14 @@ class Element;
 typedef QPair<QPointF, Qt::Corner> ConductorBend;
 typedef QHash<Qt::Corner, ConductorProfile> ConductorProfilesGroup;
 /**
-	Cette classe represente un conducteur. Un conducteur relie deux bornes d'element.
+	This class represents a conductor, i.e. a wire between two element
+	terminals.
 */
 class Conductor : public QObject, public QGraphicsPathItem {
 	
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	Conductor(Terminal *, Terminal *, Diagram * = 0);
 	virtual ~Conductor();
@@ -41,26 +42,27 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	private:
 	Conductor(const Conductor &);
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1001 };
 	enum Highlight { None, Normal, Alert };
 	
-	/// premiere borne a laquelle le fil est rattache
+	/// First terminal the wire is attached to
 	Terminal *terminal1;
-	/// deuxieme borne a laquelle le fil est rattache
+	/// Second terminal the wire is attached to
 	Terminal *terminal2;
 	
-	// methodes
+	// methods
 	public:
 	/**
-		permet de caster un QGraphicsItem en Conductor avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		Conductor.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	void destroy();
-	/// @return true si ce conducteur est detruit
-	bool isDestroyed() const { return(destroyed); }
+	/// @return true if this conductor is destroyed
+	bool isDestroyed() const { return(destroyed_); }
 	Diagram *diagram() const;
 	ConductorTextItem *textItem() const;
 	void updatePath(const QRectF & = QRectF());
@@ -104,15 +106,15 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	
 	private:
-	/// caracteristiques du conducteur
+	/// Functional properties
 	ConductorProperties properties_;
-	/// booleen indiquant si le fil est encore valide
-	bool destroyed;
-	/// champ de texte editable pour les conducteurs non unifilaires
+	/// Whether this conductor is still valid
+	bool destroyed_;
+	/// Text input for non simple, non-singleline conductors
 	ConductorTextItem *text_item;
-	/// segments composant le conducteur
+	/// Segments composing the conductor
 	ConductorSegment *segments;
-	/// attributs lies aux manipulations a la souris
+	/// Attributs related to mouse interaction
 	QPointF press_point;
 	bool moving_point;
 	bool moving_segment;
@@ -120,28 +122,29 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	qreal previous_z_value;
 	ConductorSegment *moved_segment;
 	QPointF before_mov_text_pos_;
-	/// booleen indiquant si le conducteur a ete modifie manuellement par l'utilisateur
+	/// Whether the conductor was manually modified by users
 	bool modified_path;
-	/// booleen indiquant s'il faut sauver le profil courant au plus tot
+	/// Whether the current profile should be saved as soon as possible
 	bool has_to_save_profile;
-	/// profil du conducteur : "photo" de ce a quoi le conducteur doit ressembler - il y a un profil par type de trajet
+	/// conductor profile: "photography" of what the conductor is supposed to look
+	/// like - there is one profile per kind of traject
 	ConductorProfilesGroup conductor_profiles;
-	/// QPen et QBrush utilises pour dessiner les conducteurs
+	/// QPen et QBrush objects used to draw conductors
 	static QPen conductor_pen;
 	static QBrush conductor_brush;
 	static QBrush square_brush;
 	static bool pen_and_brush_initialized;
-	/// facteur de taille du carre de saisie du segment
+	/// Scale factor to render square used to move segments
 	qreal segments_squares_scale_;
-	/// Definit la facon dont le conducteur doit etre mis en evidence
+	/// Define whether and how the conductor should be highlighted
 	Highlight must_highlight_;
 	
 	private:
 	void segmentsToPath();
 	void saveProfile(bool = true);
-	void priv_calculeConductor(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
-	void priv_modifieConductor(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
-	uint nbSegments(QET::ConductorSegmentType = QET::Both) const;
+	void generateConductorPath(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
+	void updateConductorPath(const QPointF &, QET::Orientation, const QPointF &, QET::Orientation);
+	uint segmentsCount(QET::ConductorSegmentType = QET::Both) const;
 	QList<QPointF> segmentsToPoints() const;
 	QSet<Conductor *> relatedConductors() const;
 	QList<ConductorBend> bends() const;

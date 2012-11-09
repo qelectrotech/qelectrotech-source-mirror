@@ -21,14 +21,13 @@
 #include "elementscollection.h"
 class XmlElementsCategory;
 /**
-	Cette classe represente une collection d'elements accessible via un
-	document XML (exemple : un projet QET). Typiquement, il s'agit de la
-	collection embarquee d'un projet QET.
+	This class represents an elements collection stored within an XML document
+	(e.g. the embedded collection of a QET project).
 */
 class XmlElementsCollection : public ElementsCollection {
 	Q_OBJECT
 	public:
-	// constructeurs, destructeur
+	// constructors, destructor
 	XmlElementsCollection(ElementsCollectionItem * = 0);
 	XmlElementsCollection(const QDomElement &, ElementsCollectionItem * = 0);
 	virtual ~XmlElementsCollection();
@@ -36,7 +35,7 @@ class XmlElementsCollection : public ElementsCollection {
 	private:
 	XmlElementsCollection(const XmlElementsCollection &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QString title() const;
 	virtual ElementsCategory *rootCategory();
@@ -61,7 +60,7 @@ class XmlElementsCollection : public ElementsCollection {
 	private:
 	void deleteContent();
 	
-	// attributs
+	// attributes
 	private:
 	XmlElementsCategory *root;
 };

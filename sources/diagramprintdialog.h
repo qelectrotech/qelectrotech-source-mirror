@@ -22,20 +22,19 @@
 #include "diagram.h"
 #include "exportproperties.h"
 /**
-	Cette classe represente le dialogue de configuration de l'impression d'un
-	schema electrique.
-	Elle se charge egalement de l'impression elle-meme
+	This class implements both the dialog allowing users to configure the printing
+	of a project file and the printing itself.
 */
 class DiagramPrintDialog : public QWidget {
 	Q_OBJECT
-	// Constructeurs, destructeur
+	// Constructors, destructor
 	public:
 	DiagramPrintDialog(QETProject *, QWidget * = 0);
 	virtual ~DiagramPrintDialog();
 	private:
 	DiagramPrintDialog(const DiagramPrintDialog &);
 	
-	// methodes
+	// methods
 	public:
 	void setFileName(const QString &);
 	QString fileName() const;
@@ -62,14 +61,13 @@ class DiagramPrintDialog : public QWidget {
 	void acceptPrintTypeDialog();
 	void browseFilePrintTypeDialog();
 	
-	// attributs
+	// attributes
 	private:
 	QETProject *project_;
 	QPrinter *printer_;
 	QString doc_name_;
 	QString file_name_;
 	
-	/// Attributs relatifs au 1er dialogue
 	QDialog *dialog_;
 	QLabel *printtype_label_;
 	QGridLayout *glayout0_;

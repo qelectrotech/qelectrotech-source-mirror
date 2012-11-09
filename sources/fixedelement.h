@@ -19,18 +19,18 @@
 #define ELEMENTFIXE_H
 #include "element.h"
 /**
-	Cette classe represente un element avec un nombre fixe de bornes.
+	This class represents an element having a fixed number of terminals.
 */
 class FixedElement : public Element {
 	
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	FixedElement(QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~FixedElement();
 	
-	// methodes
+	// methods
 	public:
 	int minTerminalsCount() const;
 	int maxTerminalsCount() const;

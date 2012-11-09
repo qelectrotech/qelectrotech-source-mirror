@@ -25,49 +25,51 @@ class TitleBlockPropertiesWidget;
 class ExportPropertiesWidget;
 
 /**
-	Cette classe represente la page de configuration des nouveaux schemas.
+	This configuration page enables users to define the properties of new
+	diagrams to come.
 */
 class NewDiagramPage : public ConfigPage {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	NewDiagramPage(QWidget * = 0);
 	virtual ~NewDiagramPage();
 	private:
 	NewDiagramPage(const NewDiagramPage &);
 	
-	// methodes
+	// methods
 	public:
 	void applyConf();
 	QString title() const;
 	QIcon icon() const;
 	
-	// attributs
+	// attributes
 	public:
-	BorderPropertiesWidget *bpw;    ///< Widget d'edition des dimensions du schema
-	TitleBlockPropertiesWidget *ipw;     ///< Widget d'edition des proprietes par defaut du cartouche
-	ConductorPropertiesWidget *cpw; ///< Widget d'edition des proprietes par defaut des conducteurs
+	BorderPropertiesWidget *bpw;     ///< Widget to edit default diagram dimensions
+	TitleBlockPropertiesWidget *ipw; ///< Widget to edit default title block properties
+	ConductorPropertiesWidget *cpw;  ///< Widget to edit default conductor properties
 };
 
 /**
-	Cette classe represente la page de configuration generale.
+	This configuration page enables users to specify various options,most of
+	them applying to the whole application.
 */
 class GeneralConfigurationPage : public ConfigPage {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	GeneralConfigurationPage(QWidget * = 0);
 	virtual ~GeneralConfigurationPage();
 	private:
 	GeneralConfigurationPage(const GeneralConfigurationPage &);
 	
-	// methodes
+	// methods
 	public:
 	void applyConf();
 	QString title() const;
 	QIcon icon() const;
 	
-	// attributs
+	// attributes
 	public:
 	QLabel *title_label_;
 	QFrame *horiz_line_;
@@ -85,47 +87,47 @@ class GeneralConfigurationPage : public ConfigPage {
 };
 
 /**
-	Cette classe represente la page de configuration du dialogue d'exportation
+	This configuration page enables users to set default export options.
 */
 class ExportConfigPage : public ConfigPage {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ExportConfigPage(QWidget * = 0);
 	virtual ~ExportConfigPage();
 	private:
 	ExportConfigPage(const ExportConfigPage &);
 	
-	// methodes
+	// methods
 	public:
 	void applyConf();
 	QString title() const;
 	QIcon icon() const;
 	
-	// attributs
+	// attributes
 	public:
 	ExportPropertiesWidget *epw;
 };
 
 /**
-	Cette classe represente la page de configuration du dialogue d'impression
+	This configuration page enables users to set default printing options.
 */
 class PrintConfigPage : public ConfigPage {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PrintConfigPage(QWidget * = 0);
 	virtual ~PrintConfigPage();
 	private:
 	PrintConfigPage(const PrintConfigPage &);
 	
-	// methodes
+	// methods
 	public:
 	void applyConf();
 	QString title() const;
 	QIcon icon() const;
 	
-	// attributs
+	// attributes
 	public:
 	ExportPropertiesWidget *epw;
 };

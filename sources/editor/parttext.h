@@ -21,13 +21,13 @@
 #include "customelementpart.h"
 class TextEditor;
 /**
-	Cette classe represente un texte pouvant etre utilise pour composer le
-	dessin d'un element dans l'editeur d'element.
+	This class represents an static text primitive which may be used to compose
+	the drawing of an electrical element within the element editor.
 */
 class PartText : public QGraphicsTextItem, public CustomElementPart {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartText(QETElementEditor *, QGraphicsItem * = 0, ElementScene * = 0);
 	virtual ~PartText();
@@ -35,12 +35,13 @@ class PartText : public QGraphicsTextItem, public CustomElementPart {
 	private:
 	PartText(const PartText &);
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1107 };
 	/**
-		permet de caster un QGraphicsItem en PartText avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartText.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("texte", "element part name")); }

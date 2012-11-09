@@ -21,14 +21,14 @@
 #include "elementitemeditor.h"
 class CustomElementGraphicPart;
 /**
-	Cette classe represente un widget d'edition des styles que peut comporter
-	une partie d'elements (couleur, epaisseur et style du trait, remplissage,
-	antialiasing). Elle peut accueillir un widget sous cette interface grace a
-	la methode appendWidget.
+	This class provides a widget to edit styles (color, pen style and thickness,
+	filling, antialiasing) common to most primitives within the element editor.
+	Its appendWidget() method makes the insertion of another widget below it
+	easier.
 */
 class StyleEditor : public ElementItemEditor {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	StyleEditor(QETElementEditor *, CustomElementGraphicPart * = 0, QWidget * = 0);
 	virtual ~StyleEditor();
@@ -36,7 +36,7 @@ class StyleEditor : public ElementItemEditor {
 	private:
 	StyleEditor(const StyleEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	CustomElementGraphicPart *part;
 	QVBoxLayout *main_layout;
@@ -46,7 +46,7 @@ class StyleEditor : public ElementItemEditor {
 	QRadioButton *black_filling, *white_filling;
 	QCheckBox *antialiasing;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

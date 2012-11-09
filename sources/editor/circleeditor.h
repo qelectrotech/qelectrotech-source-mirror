@@ -22,9 +22,7 @@
 class PartCircle;
 class StyleEditor;
 /**
-	Cette classe represente un editeur de cercle.
-	Elle permet d'editer a travers une interface graphique les
-	proprietes d'une cercle composant le dessin d'un element.
+	This class provides a widget to edit circles within the element editor.
 */
 class CircleEditor : public ElementItemEditor {
 	Q_OBJECT
@@ -35,13 +33,13 @@ class CircleEditor : public ElementItemEditor {
 	private:
 	CircleEditor(const CircleEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartCircle *part;
 	StyleEditor *style_;
 	QLineEdit *x, *y, *r;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

@@ -21,19 +21,19 @@
 #include <QIcon>
 class QMenu;
 /**
-	Cette classe permet de gerer des fichiers recents.
+	This class provides a way to manage recently opened files.
 */
 class RecentFiles : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	RecentFiles(const QString &, int = 10, QObject * = 0);
 	virtual ~RecentFiles();
 	private:
 	RecentFiles(const RecentFiles &);
 	
-	// methodes
+	// methods
 	public:
 	int size() const;
 	QMenu *menu() const;
@@ -57,7 +57,7 @@ class RecentFiles : public QObject {
 	private slots:
 	void handleMenuRequest(const QString &);
 	
-	// attributs
+	// attributes
 	private:
 	QString identifier_;
 	int size_;

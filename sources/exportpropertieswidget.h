@@ -21,12 +21,12 @@
 #include "exportproperties.h"
 
 /**
-	Ce widget permet d'editer les differentes options utilisees
-	pour exporter un projet.
+	This widget enables users to edit the various options available when
+	exporting a project.
 */
 class ExportPropertiesWidget : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ExportPropertiesWidget(QWidget * = 0);
 	ExportPropertiesWidget(const ExportProperties &, QWidget * = 0);
@@ -34,7 +34,7 @@ class ExportPropertiesWidget : public QWidget {
 	private:
 	ExportPropertiesWidget(const ExportPropertiesWidget &);
 	
-	// methodes
+	// methods
 	public:
 	void setExportProperties(const ExportProperties &);
 	ExportProperties exportProperties() const;
@@ -48,11 +48,10 @@ class ExportPropertiesWidget : public QWidget {
 	void exportedAreaChanged();
 	void optionChanged();
 	
-	// methodes privees
 	private:
 	void build();
 	
-	// attributs
+	// attributes
 	private:
 	QLabel *dirpath_label;
 	QLineEdit *dirpath;

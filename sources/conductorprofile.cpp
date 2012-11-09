@@ -100,7 +100,7 @@ qreal ConductorProfile::height() const{
 	@param type Type de Segments
 	@return Le nombre de segments composant le conducteur.
 */
-uint ConductorProfile::nbSegments(QET::ConductorSegmentType type) const {
+uint ConductorProfile::segmentsCount(QET::ConductorSegmentType type) const {
 	if (type == QET::Both) return(segments.count());
 	uint nb_seg = 0;
 	foreach(ConductorSegmentProfile *csp, segments) {

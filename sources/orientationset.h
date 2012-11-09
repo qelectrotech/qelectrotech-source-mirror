@@ -19,23 +19,20 @@
 #define ORIENTATION_SET_H
 #include "qet.h"
 /**
-	Cette classe represente un containeur d'orientations, c'est-a-dire une
-	structure de donnees stockant une orientation par defaut, une orientation
-	courante et l'autorisation ou non d'utiliser les quatre autres orientations
-	: nord, est, sud, ouest.
-	Elle possede des methodes pour definir les autorisations. Le changement
-	d'autorisation peut echouer car il faut au moins une orientation autorisee.
-	Le changement d'autorisation peut eventuellement modifier les orientations
-	par defaut et courante.
+	This class provides a container for element orientations, i.e. a data
+	structure that stores, for a particular element:
+	  - its default orientation,
+	  - its current orientation,
+	  - whether the North, East, South and West orientations are allowed.
 */
 class OrientationSet {
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	OrientationSet();
 	virtual ~OrientationSet() {};
 	
-	// attributs
+	// attributes
 	private:
 	bool north_ori;
 	bool east_ori;
@@ -44,7 +41,7 @@ class OrientationSet {
 	QET::Orientation default_ori;
 	QET::Orientation current_ori;
 	
-	// methodes
+	// methods
 	public:
 	bool north() const;
 	bool east() const;
@@ -74,49 +71,49 @@ class OrientationSet {
 };
 
 /**
-	@return true si l'orientation "Nord" est autorisee, false sinon
+	@return whether the Northern orientation is allowed
 */
 inline bool OrientationSet::north() const {
 	return(north_ori);
 }
 
 /**
-	@return true si l'orientation "Est" est autorisee, false sinon
+	@return whether the Eastern orientation is allowed
 */
 inline bool OrientationSet::east() const {
 	return(east_ori);
 }
 
 /**
-	@return true si l'orientation "Sud" est autorisee, false sinon
+	@return whether the Southern orientation is allowed
 */
 inline bool OrientationSet::south() const {
 	return(south_ori);
 }
 
 /**
-	@return true si l'orientation "Ouest" est autorisee, false sinon
+	@return whether the Western orientation is allowed
 */
 inline bool OrientationSet::west() const {
 	return(west_ori);
 }
 
 /**
-	@param theValue La nouvelle orientation par defaut
+	@param new_default_orientation The new default orientation
 */
-inline void OrientationSet::setDefaultOrientation(const QET::Orientation& theValue) {
-	default_ori = theValue;
+inline void OrientationSet::setDefaultOrientation(const QET::Orientation& new_default_orientation) {
+	default_ori = new_default_orientation;
 }
 
 /**
-	@return L'orientation par defaut
+	@return the default orientation
 */
 inline QET::Orientation OrientationSet::defaultOrientation() const {
 	return(default_ori);
 }
 
 /**
-	@return L'orientation actuelle
+	@return the current orientation
 */
 inline QET::Orientation OrientationSet::current() const {
 	return(current_ori);

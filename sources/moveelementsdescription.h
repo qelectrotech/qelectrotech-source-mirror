@@ -22,21 +22,21 @@ class ElementsCollectionItem;
 class ElementsCategory;
 class MoveElementsHandler;
 /**
-	Cette classe represente la description d'un mouvement d'elements.
-	Il peut s'agir d'un deplacement ou d'une copie. La source n'est pas
-	mentionnee
+	This class describes the evolution of an elements item move (actually
+	either move or copy), i.e. whether the source was deleted, whether the
+	target changed and to what path, etc.
 */
 class MoveElementsDescription : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	MoveElementsDescription(QObject * = 0);
 	virtual ~MoveElementsDescription();
 	private:
 	MoveElementsDescription(const MoveElementsDescription &);
 	
-	// methodes
+	// methods
 	public:
 	bool isRecursive() const;
 	void setRecursive(bool);
@@ -62,7 +62,7 @@ class MoveElementsDescription : public QObject {
 	bool mustAbort() const;
 	void abort();
 	
-	// attributs
+	// attributes
 	private:
 	bool recursive_;
 	MoveElementsHandler *handler_;

@@ -31,14 +31,15 @@ class ElementsCollectionCache;
 class TitleBlockTemplatesFilesCollection;
 
 /**
-	Cette classe represente le panel d'appareils (en tant qu'element
-	graphique) dans lequel l'utilisateur choisit les composants de
-	son choix et les depose sur le schema par drag'n drop.
+	This class provides a tree widget listing known filesystem-based elements
+	collections and opened project files along with their content (diagrams,
+	embedded collections, ...). It enables users to perform various actions on
+	the displayed content
 */
 class ElementsPanel : public GenericPanel {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementsPanel(QWidget * = 0);
 	virtual ~ElementsPanel();
@@ -48,11 +49,11 @@ class ElementsPanel : public GenericPanel {
 	
 	// methods
 	public:
-	// methodes pour determiner ce que represente un item donne
+	// methods used to determine what is represented by a particular visual item
 	bool itemIsWritable(QTreeWidgetItem *) const;
 	bool selectedItemIsWritable() const;
 	
-	// methodes pour obtenir ce que represente un item donne
+	// methods used to get what is represented by a particular visual item
 	ElementsCollectionItem *collectionItemForItem(QTreeWidgetItem *) const;
 	ElementsCollectionItem *selectedItem() const;
 	ElementsCategory *categoryForItem(QTreeWidgetItem *);

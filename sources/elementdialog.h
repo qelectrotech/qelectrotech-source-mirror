@@ -24,30 +24,30 @@ class QDialogButtonBox;
 class ElementsCategoriesList;
 class QFileNameEdit;
 /**
-	Cette classe permet d'acceder a plusieurs types de dialogues lies a la
-	selection d'element ou de categorie.
+	This class provides several dialogs to select an element or a category
+	(e.g. new or existing, for opening or for saving...).
 */
 class ElementDialog : public QObject {
 	Q_OBJECT
 	// enumerations
 	/**
-		Cette enum represente les configurations possible pour ce dialogue
+		This enum represents the available configurations for the required dialog
 	*/
 	enum {
-		OpenElement  = 0, ///< Le dialogue sera en mode ouverture
-		SaveElement  = 1, ///< Le dialogue sera en mode enregistrement
-		OpenCategory = 2,  ///< Le dialogue concernera une categorie
-		SaveCategory = 3 ///< Le dialogue concernera un element
+		OpenElement  = 0, ///< The dialog should open an element
+		SaveElement  = 1, ///< The dialog should select an element for saving
+		OpenCategory = 2, ///< The dialog should open a category
+		SaveCategory = 3  ///< The dialog should select a category for saving
 	};
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementDialog(uint = ElementDialog::OpenElement, QWidget * = 0, QObject * = 0);
 	virtual ~ElementDialog();
 	private:
 	ElementDialog(const ElementDialog &);
 	
-	// methodes
+	// methods
 	public:
 	int exec();
 	ElementsLocation location() const;
@@ -69,7 +69,7 @@ class ElementDialog : public QObject {
 	private:
 	void makeInterface();
 	
-	// attributs
+	// attributes
 	private:
 	uint mode_;
 	ElementsLocation location_;

@@ -21,14 +21,13 @@
 #include "elementscollection.h"
 class FileElementsCategory;
 /**
-	Cette classe represente une collection d'elements accessible via un
-	systeme de fichier. Typiquement, il s'agit de la collection QET ou
-	de la collection utilisateur.
+	This class represents an elements collection stored on filesystem, like the
+	collection provided along with QET or users custom collection.
 */
 class FileElementsCollection : public ElementsCollection {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	FileElementsCollection(const QString &, ElementsCollectionItem *parent = 0);
 	virtual ~FileElementsCollection();
@@ -36,7 +35,7 @@ class FileElementsCollection : public ElementsCollection {
 	private:
 	FileElementsCollection(const FileElementsCollection &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void reload();
 	virtual ElementsCategory *rootCategory();
@@ -53,7 +52,7 @@ class FileElementsCollection : public ElementsCollection {
 	private:
 	void deleteContent();
 	
-	// attributs
+	// attributes
 	private:
 	QString coll_path;
 	FileElementsCategory *root;

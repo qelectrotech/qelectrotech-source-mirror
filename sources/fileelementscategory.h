@@ -22,13 +22,12 @@
 class FileElementsCollection;
 class FileElementDefinition;
 /**
-	Cette classe represente une categorie d'elements accessible via un systeme
-	de fichiers.
+	This class represents an elements category stored on a filesystem.
 */
 class FileElementsCategory : public ElementsCategory {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	FileElementsCategory(const QString & = QString(), FileElementsCategory * = 0, FileElementsCollection * = 0);
 	virtual ~FileElementsCategory();
@@ -36,7 +35,7 @@ class FileElementsCategory : public ElementsCategory {
 	private:
 	FileElementsCategory(const FileElementsCategory &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QString pathName() const;
 	virtual QString virtualPath();
@@ -67,17 +66,17 @@ class FileElementsCategory : public ElementsCategory {
 	void loadNames();
 	void deleteContent();
 	
-	// attributs
+	// attributes
 	protected:
-	/// Collection parente, de type fichier
+	/// Parent collection, stored on filesystem too
 	FileElementsCollection *file_parent_collection_;
-	/// Categorie parente, de type fichier
+	/// Paremt Collection, stored on filesystem too
 	FileElementsCategory   *file_parent_category_;
-	/// Sous-categories contenues dans cette categorie
+	/// Child sub-categories
 	QHash<QString, FileElementsCategory  *> categories_;
-	/// Elements contenus dans cette categorie
+	/// Child elements
 	QHash<QString, FileElementDefinition *> elements_;
-	/// Dossier representant cette categorie sur le systeme de fichiers
+	/// Directory matching this category on filesystem
 	QDir cat_dir;
 };
 #endif

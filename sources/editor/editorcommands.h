@@ -25,69 +25,69 @@
 #include "qgimanager.h"
 #include <QtGui>
 /**
-	Cette classe represente l'action de supprimer une ou plusieurs
-	parties lors de l'edition d'un element
+	This command deletes one or several primitives/parts when editing an
+	electrical element.
 */
 class DeletePartsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
 	virtual ~DeletePartsCommand();
 	private:
 	DeletePartsCommand(const DeletePartsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Liste des parties supprimees
+	/// Deleted primitives
 	QList<QGraphicsItem *> deleted_parts;
-	/// scene sur laquelle se produisent les actions
+	/// Element editor/view/scene the command should take place on
 	ElementScene *editor_scene;
 };
 
 /**
-	Cette classe represente l'action de coller quelque chose dans un element
+	This command pastes primitives when editing an electrical element.
 */
 class PastePartsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = 0);
 	virtual ~PastePartsCommand();
 	private:
 	PastePartsCommand(const PastePartsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	virtual void setOffset(int, const QPointF &, int, const QPointF &);
 	
-	// attributs
+	// attributes
 	private:
-	/// contenu  ajoute
+	/// Pasted content
 	ElementContent content_;
-	/// schema sur lequel on colle les elements et conducteurs
+	/// Element editor/view/scene the command should take place on
 	ElementView *editor_view_;
 	ElementScene *editor_scene_;
-	/// Informations pour annuler un c/c avec decalage
+	/// Data required to undo a copy/paste with offset
 	int old_offset_paste_count_;
 	QPointF old_start_top_left_corner_;
 	int new_offset_paste_count_;
 	QPointF new_start_top_left_corner_;
 	bool uses_offset;
-	/// booleen pour empecher le premier appel a redo
+	/// Prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de supprimer des parties d'un element
+	This command cut primitives when editing an electrical element.
 */
 class CutPartsCommand : public DeletePartsCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	CutPartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
 	virtual ~CutPartsCommand();
@@ -96,127 +96,127 @@ class CutPartsCommand : public DeletePartsCommand {
 };
 
 /**
-	Cette classe represente l'action de deplacer une ou plusieurs
-	parties lors de l'edition d'un element
+	This command moves primitives when editing an electrical element.
 */
 class MovePartsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
 	virtual ~MovePartsCommand();
 	private:
 	MovePartsCommand(const MovePartsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Liste des parties supprimees
+	/// List of moved primitives
 	QList<QGraphicsItem *> moved_parts;
-	/// scene sur laquelle se produisent les actions
+	/// Element editor/view/scene the command should take place on
 	ElementScene *editor_scene;
-	/// translation appliquee
+	/// applied movement
 	QPointF movement;
-	/// booleen pour eviter d'appeler redo() lors de la construction de l'objet
+	/// Prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action d'ajouter une partie lors de l'edition
-	d'un element
+	This command adds a primitive when editing an electrical element.
 */
 class AddPartCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = 0);
 	virtual ~AddPartCommand();
 	private:
 	AddPartCommand(const AddPartCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Liste des parties supprimees
+	/// Added primitive
 	QGraphicsItem *part;
-	/// scene sur laquelle se produisent les actions
+	/// Element editor/view/scene the command should take place on
 	ElementScene *editor_scene;
-	/// booleen pour eviter d'appeler redo() lors de la construction de l'objet
+	/// Prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de modifier une propriete d'une partie
-	lors de l'edition d'un element
+	This command changes a property of a primitive when editing an electrical
+	element.
 */
 class ChangePartCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangePartCommand(const QString &, CustomElementPart *, const QString &, const QVariant &, const QVariant &, QUndoCommand * = 0);
 	virtual ~ChangePartCommand();
 	private:
 	ChangePartCommand(const ChangePartCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Partie modifiee
+	/// Changed primitive
 	CustomElementPart *cep;
-	/// Propriete modifiee
+	/// Changed property
 	QString property;
-	/// ancienne valeur
+	/// Former value
 	QVariant old_value;
-	/// nouvelle valeur
+	/// New value
 	QVariant new_value;
 };
 
 /**
-	Cette classe represente l'action de modifier les points composants un polygone
+	This command changes the points of a polygon when editing an electrical
+	element.
 */
 class ChangePolygonPointsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangePolygonPointsCommand(PartPolygon *, const QVector<QPointF> &, const QVector<QPointF> &, QUndoCommand * = 0);
 	virtual ~ChangePolygonPointsCommand();
 	private:
 	ChangePolygonPointsCommand(const ChangePolygonPointsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
-	/// Polygone  modifie
+	// attributes
+	/// Changed polygon
 	PartPolygon *polygon;
-	/// anciens points
+	/// Former points
 	QVector<QPointF> old_points;
-	/// nouveaux points
+	/// New points
 	QVector<QPointF> new_points;
 };
 
 /**
-	Cette classe represente l'action de modifier les dimensions et le point de saisie d'un element
+	This command changes the dimensions and/or the hotspot of an electrical
+	element.
 */
 class ChangeHotspotCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeHotspotCommand(ElementScene *, const QSize &, const QSize &, const QPoint &, const QPoint &, const QPoint & = QPoint(), QUndoCommand * = 0);
 	virtual ~ChangeHotspotCommand();
 	private:
 	ChangeHotspotCommand(const ChangeHotspotCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
@@ -224,92 +224,93 @@ class ChangeHotspotCommand : public QUndoCommand {
 	private:
 	void applyOffset(const QPointF &);
 	
-	// attributs
-	/// Element edite auquel il faut appliquer les modifications
+	// attributes
+	/// Element editor/view/scene the command should take place on
 	ElementScene *element;
-	/// dimensions avant l'action
+	/// Former dimensions
 	QSize size_before;
-	/// dimensions apres l'action
+	/// new dimensions
 	QSize size_after;
-	/// point de saisie avant l'action
+	/// Former hotspot
 	QPoint hotspot_before;
-	/// point de saisie apres l'action
+	/// New hotspot
 	QPoint hotspot_after;
-	/// decalage a appliquer aux elements
+	/// Offset to be applied to primitives
 	QPoint offset;
 };
 
 /**
-	Cette classe represente l'action de changer les noms d'un element
+	This command changes the translated names of an electrical element.
 */
 class ChangeNamesCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeNamesCommand(ElementScene *, const NamesList &, const NamesList &, QUndoCommand * = 0);
 	virtual ~ChangeNamesCommand();
 	private:
 	ChangeNamesCommand(const ChangeNamesCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Liste des noms avant changement
+	/// List of former names
 	NamesList names_before;
-	/// Liste des noms apres changement
+	/// List of new names
 	NamesList names_after;
-	/// Element edite auquel il faut appliquer les modifications
+	/// Element editor/view/scene the command should take place on
 	ElementScene *element;
 };
 
 /**
-	Cette classe represente l'action de changer les noms d'un element
+	This command changes the allowed orientations of an electrical element.
 */
 class ChangeOrientationsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeOrientationsCommand(ElementScene *, const OrientationSet &, const OrientationSet &, QUndoCommand * = 0);
 	virtual ~ChangeOrientationsCommand();
 	private:
 	ChangeOrientationsCommand(const ChangeOrientationsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Orientations avant changement
+	/// Former orientations
 	OrientationSet ori_before;
-	/// Orientations apres changement
+	/// New orientations
 	OrientationSet ori_after;
-	/// Element edite auquel il faut appliquer les modifications
+	/// Element editor/view/scene the command should take place on
 	ElementScene *element;
 };
 
 /**
-	Cette classe represente l'action de changer les noms d'un element
+	This command changes the zValue of a set of primitives when editing an
+	electrical element.
 */
 class ChangeZValueCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
-	/// Qualifie le type de changement de zValue
+	/// List the various kind of changes for the zValue
 	enum Option {
-		BringForward, ///< Amene la partie a l'avant-plan ; elle a alors la plus haute zValue
-		Raise,        ///< Amene la partie un plan au-dessus ; la zValue de la partie est incrementee
-		Lower,        ///< Envoie la partie un plan en-dessous ; la zValue de la partie est decrementee
-		SendBackward  ///< Envoie la partie a l'arriere-plan ; elle a alors la plus faible zValue
+		BringForward, ///< Bring primitives to the foreground so they have the highest zValue
+		Raise,        ///< Raise primitives one layer above their current one; zValues are incremented
+		Lower,        ///< Send primitives one layer below their current one; zValues are decremented
+		SendBackward  ///< Send primitives to the background so they have the lowest zValue
 	};
 	ChangeZValueCommand(ElementScene *, Option, QUndoCommand * = 0);
 	virtual ~ChangeZValueCommand();
 	private:
 	ChangeZValueCommand(const ChangeZValueCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
@@ -320,67 +321,66 @@ class ChangeZValueCommand : public QUndoCommand {
 	void applyLower(const QList<QGraphicsItem *> &);
 	void applySendBackward(const QList<QGraphicsItem *> &);
 	
-	// attributs
+	// attributes
 	private:
-	/// zValues avant changement
+	/// associates impacted primitives with their former zValues
 	QHash<QGraphicsItem *, qreal> undo_hash;
-	/// zValues apres changement
+	/// associates impacted primitives with their new zValues
 	QHash<QGraphicsItem *, qreal> redo_hash;
-	/// Element edite auquel il faut appliquer les modifications
+	/// Element editor/view/scene the command should take place on
 	ElementScene *element;
-	/// type de traitement
+	/// kind of treatment to apply
 	Option option;
 };
 
 /**
-	Cette classe represente l'action d'autoriser ou non les connexions
-	internes pour un element.
+	This command enables or disables internal connections for an electrical
+	element.
 */
 class AllowInternalConnectionsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	AllowInternalConnectionsCommand(ElementScene *, bool, QUndoCommand * = 0);
 	virtual ~AllowInternalConnectionsCommand();
 	private:
 	AllowInternalConnectionsCommand(const AllowInternalConnectionsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Element edite auquel il faut appliquer les modifications
+	/// Element editor/view/scene the command should take place on
 	ElementScene *element;
-	/// autorisation des connexions internes apres modification
+	/// whether internal connections are allowed afterward
 	bool ic;
 };
 
 /**
-	Cette classe represente l'action de changer les informations
-	complementaires d'un element.
+	This command changes extra information carried by an electrical element.
 */
 class ChangeInformationsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeInformationsCommand(ElementScene *, const QString &, const QString &, QUndoCommand * = 0);
 	virtual ~ChangeInformationsCommand();
 	private:
 	ChangeInformationsCommand(const ChangeInformationsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// Element edite auquel il faut appliquer les modifications
+	/// Element editor/view/scene the command should take place on
 	ElementScene *element;
-	/// Informations avant modification
+	/// Former information
 	QString old_informations_;
-	/// Informations apres modification
+	/// New information
 	QString new_informations_;
 };
 #endif

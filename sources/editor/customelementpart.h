@@ -24,69 +24,67 @@ class CustomElement;
 class QETElementEditor;
 class ElementScene;
 /**
-	Cette classe abstraite represente une partie de la representation graphique
-	d'un element de schema electrique. Les attributs et methodes qu'elle
-	encapsule ne sont pas integres directement dans la classe CustomElement
-	afin de ne pas alourdir celle-ci. Il est en effet inutile pour cette classe
-	de retenir sa conception graphique autrement que sous la forme d'une
-	QImage.
+	This abstract class represents a primitive of the visual representation of an
+	electrical element. The Element, FixedElement and CustomElement classes do not
+	embed its attributes and methods in order to remain lightweight; indeed, there
+	is no point for those classes to store their visual representation with
+	anything more complex than a QImage.
 */
 class CustomElementPart {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	/**
-		Constructeur
-		@param editor Editeur d'element auquel cette partie est rattachee
+		Constructor
+		@param editor Element editor this primitive is attached to
 	*/
 	CustomElementPart(QETElementEditor *editor) : element_editor(editor) {}
-	/// Destructeur
+	/// Destructor
 	virtual ~CustomElementPart() {}
 	
 	private:
 	CustomElementPart(const CustomElementPart &);
 	
-	// attributs
+	// attributes
 	private:
 	QETElementEditor *element_editor;
 	
-	// methodes
+	// methods
 	public:
 	/**
-		Charge la partie depuis un element XML sense le decrire
+		Load the primitive from an XML element that describes it
 	*/
 	virtual void fromXml(const QDomElement &) = 0;
 	/**
-		Enregistre la partie dans un document XML
+		Export the primitive as an XML element
 	*/
 	virtual const QDomElement toXml(QDomDocument &) const = 0;
 	/**
-		Permet de modifier une des proprietes de la partie
+		Set a specific property of the primitive
 	*/
 	virtual void setProperty(const QString &, const QVariant &) = 0;
 	/**
-		Permet de lire une des proprietes de la partie
+		Get the current value of a specific primitive property
 	*/
 	virtual QVariant property(const QString &) = 0;
 	/**
-		@return true si la partie n'est pas pertinente, false sinon
-		Typiquement, une partie non pertinente n'est pas conservee lors de
-		l'enregistrement de l'element.
+		@return whether the primitive appears to be useless (e.g. 0-length line)
+		Typically, useless primitives are discarded when saving the element.
 	*/
 	virtual bool isUseless() const = 0;
-	/// @return un pointeur vers l'editeur d'element parent
+	/// @return a pointer to the parent element editor
 	virtual QETElementEditor *elementEditor() const;
 	/**
-		Appelle le slot updateCurrentPartEditor de l'editeur
+		Call the updateCurrentPartEditor() slot of the editor
 		@see QETElementEditor::updateCurrentPartEditor()
 	*/
 	virtual void updateCurrentPartEditor() const;
-	/// @return un pointeur vers la scene d'edition parente
+	/// @return a pointer to the parent editing scene
 	virtual ElementScene *elementScene() const;
-	/// @return la pile d'annulations a utiliser
+	/// @return the element editor undo stack
 	virtual QUndoStack &undoStack() const;
-	/// @return le nom de la partie
+	/// @return the name of the primitive
 	virtual QString name() const = 0;
-	/// @return le nom qui sera utilise pour nommer l'element XML lors de l'export
+	/// @return the name that will be used as XML tag when exporting the primitive
 	virtual QString xmlName() const = 0;
 };
 #endif

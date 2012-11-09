@@ -24,16 +24,15 @@
 class ElementTextItem;
 class Terminal;
 /**
-	Cette classe represente un element electrique. Elle est utilisable
-	comme un element fixe. La difference est que l'element perso lit
-	sa description (noms, dessin, comportement) dans un fichier XML a fournir
-	en parametre.
+	This class represents an electrical element; it may be used like a fixed
+	element, the difference being that the CustomElement reads its description
+	(names, drawing, behavior) from an XML document.
 */
 class CustomElement : public FixedElement {
 	
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	CustomElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0, int * = 0);
 	CustomElement(const QDomElement &,      QGraphicsItem * = 0, Diagram * = 0, int * = 0);
@@ -42,9 +41,9 @@ class CustomElement : public FixedElement {
 	private:
 	CustomElement(const CustomElement &);
 	
-	// attributs
+	// attributes
 	protected:
-	int elmt_state; // contient le code d'erreur si l'instanciation a echoue ou 0 si l'instanciation s'est bien passe
+	int elmt_state; // hold the error code in case the instanciation fails, or 0 if everything went well
 	NamesList names;
 	ElementsLocation location_;
 	QPicture drawing;
@@ -53,7 +52,7 @@ class CustomElement : public FixedElement {
 	QList<ElementTextItem *> list_texts_;
 	bool forbid_antialiasing;
 	
-	// methodes
+	// methods
 	public:
 	virtual QList<Terminal *> terminals() const;
 	virtual QList<Conductor *> conductors() const;
@@ -84,8 +83,8 @@ class CustomElement : public FixedElement {
 };
 
 /**
-	@return L'ID du type de l'element ; pour un CustomElement, cela revient au
-	nom du fichier
+	@return The element type ID; considering a CustomElement, this means the
+	@location of its XML description.
 	@see location()
 */
 inline QString CustomElement::typeId() const {
@@ -93,38 +92,38 @@ inline QString CustomElement::typeId() const {
 }
 
 /**
-	@return L'adresse du fichier contenant la description XML de cet element
+	@return the location of the XML document describing this element.
 */
 inline ElementsLocation CustomElement::location() const {
 	return(location_);
 }
 
 /**
-	@return true si cet element est nul, c'est-a-dire si le chargement de sa
-	description XML a echoue
+	@return true if this element is null, i.e. if its XML description could not
+	be loaded.
 */
 inline bool CustomElement::isNull() const {
 	return(elmt_state);
 }
 
 /**
-	@return Un entier representant l'etat de l'element :
-		- 0 : L'instanciation a reussi
-		- 1 : Le fichier n'existe pas
-		- 2 : Le fichier n'a pu etre ouvert
-		- 3 : Le fichier n'est pas un document XML
-		- 4 : Le document XML n'a pas une "definition" comme racine
-		- 5 : Les attributs de la definition ne sont pas presents et / ou valides
-		- 6 : La definition est vide
-		- 7 : L'analyse d'un element XML decrivant une partie du dessin de l'element a echoue
-		- 8 : Aucune partie du dessin n'a pu etre chargee
+	@return An integer representing the state of this element:
+		- 0: instantiation succeeded
+		- 1: the file does not exist
+		- 2: the file could not be opened
+		- 3: The file is not a valid XML document
+		- 4: The XML document does not have a "definition" root element.
+		- 5: The definition attributes are missing or invalid
+		- 6: The definition is empty
+		- 7: The parsing of an XML element describing an element drawing primitive failed
+		- 8: No primitive could be loadedAucune partie du dessin n'a pu etre chargee
 */
 inline int CustomElement::state() const {
 	return(elmt_state);
 }
 
 /**
-	@return Le nom de l'element
+	@return The name of this element.
 */
 inline QString CustomElement::name() const {
 	return(names.name(location_.baseName()));

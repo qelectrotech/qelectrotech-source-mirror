@@ -21,17 +21,18 @@
 #include <QtXml>
 #include "diagramcontext.h"
 /**
-	Cette classe est un conteneur pour les proprietes d'un cartouche de schema
-	: titre, auteur, date, nom de fichier et folio
+	This class provides a container for the properties of a particular title
+	block, i.e. title, author, date, filename, folio, template, custom
+	properties, ...
 */
 class TitleBlockProperties {
 	public:
 	TitleBlockProperties();
 	virtual ~TitleBlockProperties();
-	/// Specifie comment gerer la date
+	/// Lists the various ways to handle the date
 	enum DateManagement {
-		UseDateValue, ///< utilise l'attribut date
-		CurrentDate   ///< utilise la date courante
+		UseDateValue, ///< use the date attribute
+		CurrentDate   ///< use the current date
 	};
 	
 	bool operator==(const TitleBlockProperties &);
@@ -44,13 +45,13 @@ class TitleBlockProperties {
 	
 	QDate finalDate() const ;
 	
-	// attributs
-	QString title;            ///< Titre affiche par le cartouche
-	QString author;           ///< Auteur affiche par le cartouche
-	QDate date;               ///< Date affichee par le cartouche ; si la date est nulle, le champ reste vide
-	QString filename;         ///< Nom de fichier affiche par le cartouche
-	QString folio;            ///< Folio affiche par le cartouche
-	DateManagement useDate;   ///< Indique s'il faut utiliser ou non l'attribut date
+	// attributes
+	QString title;            ///< Folio title (displayed by the default template)
+	QString author;           ///< Author of the diagram/folio (displayed by the default template)
+	QDate date;               ///< Date (displayed by the default template)
+	QString filename;         ///< Filename (displayed by the default template)
+	QString folio;            ///< Folio information (displayed by the default template)
+	DateManagement useDate;   ///< Wheter to use the date attribute
 	QString template_name;    ///< Name of the template used to render the title block - an empty string means "the default template provided by the application"
 	DiagramContext context;   ///< Container for the additional, user-defined fields
 	

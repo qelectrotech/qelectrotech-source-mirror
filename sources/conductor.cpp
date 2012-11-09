@@ -40,7 +40,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	QGraphicsPathItem(0, parent_diagram),
 	terminal1(p1),
 	terminal2(p2),
-	destroyed(false),
+	destroyed_(false),
 	text_item(0),
 	segments(NULL),
 	moving_point(false),
@@ -77,7 +77,7 @@ Conductor::Conductor(Terminal *p1, Terminal* p2, Diagram *parent_diagram) :
 	conductor_profiles.insert(Qt::BottomRightCorner, ConductorProfile());
 
 	// calcul du rendu du conducteur
-	priv_calculeConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+	generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 	setFlags(QGraphicsItem::ItemIsSelectable);
 	setAcceptsHoverEvents(true);
 	
@@ -116,10 +116,10 @@ void Conductor::updatePath(const QRectF &rect) {
 	QPointF p1, p2;
 	p1 = terminal1 -> dockConductor();
 	p2 = terminal2 -> dockConductor();
-	if (nbSegments() && !conductor_profiles[currentPathType()].isNull())
-		priv_modifieConductor(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
+	if (segmentsCount() && !conductor_profiles[currentPathType()].isNull())
+		updateConductorPath(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	else
-		priv_calculeConductor(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
+		generateConductorPath(p1, terminal1 -> orientation(), p2, terminal2 -> orientation());
 	calculateTextItemPosition();
 	QGraphicsPathItem::update(rect);
 }
@@ -158,13 +158,13 @@ void Conductor::segmentsToPath() {
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conductor::priv_modifieConductor(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
+void Conductor::updateConductorPath(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
 	Q_UNUSED(o1);
 	Q_UNUSED(o2);
 	
 	ConductorProfile &conductor_profile = conductor_profiles[currentPathType()];
 	
-	Q_ASSERT_X(conductor_profile.nbSegments(QET::Both) > 1, "Conductor::priv_modifieConductor", "pas de points a modifier");
+	Q_ASSERT_X(conductor_profile.segmentsCount(QET::Both) > 1, "Conductor::priv_modifieConductor", "pas de points a modifier");
 	Q_ASSERT_X(!conductor_profile.isNull(),                 "Conductor::priv_modifieConductor", "pas de profil utilisable");
 	
 	// recupere les coordonnees fournies des bornes
@@ -286,7 +286,7 @@ QHash<ConductorSegmentProfile *, qreal> Conductor::shareOffsetBetweenSegments(
 	@param p2 Coordonnees du point d'amarrage de la borne 2
 	@param o2 Orientation de la borne 2
 */
-void Conductor::priv_calculeConductor(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
+void Conductor::generateConductorPath(const QPointF &p1, QET::Orientation o1, const QPointF &p2, QET::Orientation o2) {
 	QPointF sp1, sp2, depart, newp1, newp2, arrivee, depart0, arrivee0;
 	QET::Orientation ori_depart, ori_arrivee;
 	
@@ -509,7 +509,7 @@ void Conductor::paint(QPainter *qp, const QStyleOptionGraphicsItem *options, QWi
 	Methode de preparation a la destruction du conducteur ; le conducteur se detache de ses deux bornes
 */
 void Conductor::destroy() {
-	destroyed = true;
+	destroyed_ = true;
 	terminal1 -> removeConductor(this);
 	terminal2 -> removeConductor(this);
 }
@@ -862,7 +862,7 @@ qreal Conductor::conductor_bound(qreal tobound, qreal bound, bool positive) {
 	@param type Type de Segments
 	@return Le nombre de segments composant le conducteur.
 */
-uint Conductor::nbSegments(QET::ConductorSegmentType type) const {
+uint Conductor::segmentsCount(QET::ConductorSegmentType type) const {
 	QList<ConductorSegment *> segments_list = segmentsList();
 	if (type == QET::Both) return(segments_list.count());
 	uint nb_seg = 0;
@@ -1174,10 +1174,10 @@ void Conductor::setProfile(const ConductorProfile &cp, Qt::Corner path_type) {
 	// si le type de trajet correspond a l'actuel
 	if (currentPathType() == path_type) {
 		if (conductor_profiles[path_type].isNull()) {
-			priv_calculeConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+			generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = false;
 		} else {
-			priv_modifieConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+			updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 			modified_path = true;
 		}
 		if (type() == ConductorProperties::Multi) {
@@ -1468,10 +1468,10 @@ ConductorProfilesGroup Conductor::profiles() const {
 void Conductor::setProfiles(const ConductorProfilesGroup &cpg) {
 	conductor_profiles = cpg;
 	if (conductor_profiles[currentPathType()].isNull()) {
-		priv_calculeConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+		generateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = false;
 	} else {
-		priv_modifieConductor(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
+		updateConductorPath(terminal1 -> dockConductor(), terminal1 -> orientation(), terminal2 -> dockConductor(), terminal2 -> orientation());
 		modified_path = true;
 	}
 	if (type() == ConductorProperties::Multi) {

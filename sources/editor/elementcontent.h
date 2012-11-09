@@ -20,11 +20,12 @@
 #include <QList>
 class QGraphicsItem;
 /**
-	Lors de son edition dans l'editeur d'element, un element est decompose en
-	parties graphiques. La classe ElementContent represente un ensemble de parties
-	graphiques constituant tout ou partie d'un element.
-	Note : pour le moment, ElementContent est un typedef pour QList\<QGraphicsItem *\>
-	@see la documentation Qt de la classe QList
+	When edited using the element editor, electrical elements are decomposed into
+	visual primitives. The ElementContent class represents a set of visual
+	primitives composing all or a part of an electrical element.
+	
+	Note: currently, ElementContent is a simple typedef for
+	QList\<QGraphicsItem *\>
 */
 typedef QList<QGraphicsItem *> ElementContent;
 #endif

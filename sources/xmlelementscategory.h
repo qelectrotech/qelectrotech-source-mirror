@@ -22,13 +22,13 @@
 class XmlElementsCollection;
 class XmlElementDefinition;
 /**
-	Cette classe represente une categorie d'elements issue d'un document XML
-	(typiquement : un projet QET).
+	This class represents an elements category stored within an XML document
+	(e.g. the embedded collection of a QET project).
 */
 class XmlElementsCategory : public ElementsCategory {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	XmlElementsCategory(XmlElementsCategory * = 0, XmlElementsCollection * = 0);
 	XmlElementsCategory(const QDomElement &, XmlElementsCategory * = 0, XmlElementsCollection * = 0);
@@ -37,7 +37,7 @@ class XmlElementsCategory : public ElementsCategory {
 	private:
 	XmlElementsCategory(const XmlElementsCategory &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QString pathName() const;
 	virtual QString virtualPath();
@@ -77,19 +77,19 @@ class XmlElementsCategory : public ElementsCategory {
 	void deleteContent();
 	void loadContent(const QDomElement &);
 	
-	// attributs
+	// attributes
 	protected:
-	/// Collection parente, de type XML
+	/// Parent collection
 	XmlElementsCollection *xml_parent_collection_;
-	/// Categorie parente, de type XML
+	/// Parent category
 	XmlElementsCategory   *xml_parent_category_;
-	/// Sous-categories contenues dans cette categorie
+	/// Child categories
 	QHash<QString, XmlElementsCategory  *> categories_;
-	/// Elements contenus dans cette categorie
+	/// Child elements
 	QHash<QString, XmlElementDefinition *> elements_;
-	/// Nom de cette categorie dans l'arborescence
+	/// Nae of this category within the tree
 	QString name_;
-	/// Description XML de cette categorie
+	/// XML description of this category
 	QDomDocument xml_element_;
 };
 #endif

@@ -22,20 +22,19 @@
 class PartText;
 class QTextOrientationSpinBoxWidget;
 /**
-	Cette classe represente un editeur de champ de texte non editable
-	Elle permet d'editer a travers une interface graphique les
-	proprietes d'un champ de texte non editable.
+	This class provides a widget to edit static texts within the element
+	editor.
 */
 class TextEditor : public ElementItemEditor {
 	Q_OBJECT
-	// Constructeurs, destructeur
+	// Constructors, destructor
 	public:
 	TextEditor(QETElementEditor *, PartText * = 0, QWidget * = 0);
 	virtual ~TextEditor();
 	private:
 	TextEditor(const TextEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartText *part;
 	QLineEdit *qle_x, *qle_y, *qle_text;
@@ -44,7 +43,7 @@ class TextEditor : public ElementItemEditor {
 	QRadioButton *black_color_, *white_color_;
 	QTextOrientationSpinBoxWidget *rotation_angle_;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

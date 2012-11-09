@@ -20,14 +20,11 @@
 #include <QMessageBox>
 namespace QET {
 	/**
-		Ce namespace definit certaines methodes statiques visant a recreer le
-		comportement de certaines methodes statiques de la classe Qt
-		QMessageBox.
-		Le comportement est sense etre le meme sur les plateformes X11 et
-		Windows. En revanche, sous MacOS, si un widget parent est fourni, ces
-		methodes s'assurent que la boite de dialogue sera "window modal" mais
-		aussi qu'elle sera dotee du flag "Qt:Sheet", qui permet une meilleure
-		integration sous MacOS.
+		This namespace defines static methods behaving in a very similar way to some
+		static methods from the QMessageBox Qt class. The behavior is expected to be
+		the same under X11 and Windows. However, under MacOS, when a parent widget is
+		provided, these methodes ensure the dialog box is "window modal" and has the
+		Qt:Sheet flag, thus enabling a better MacOS integration.
 	*/
 	namespace MessageBox {
 		QMessageBox::StandardButton critical   (QWidget *, const QString &, const QString &, QMessageBox::StandardButtons = QMessageBox::Ok, QMessageBox::StandardButton = QMessageBox::NoButton);

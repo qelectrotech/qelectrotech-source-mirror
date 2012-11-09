@@ -20,11 +20,11 @@
 #include <QPointF>
 #include "qet.h"
 /**
-	Cette classe represente un segment de conducteur.
+	This class represents a conductor segment.
 */
 class ConductorSegment {
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ConductorSegment(const QPointF &, const QPointF &, ConductorSegment * = NULL, ConductorSegment * = NULL);
 	virtual ~ConductorSegment();
@@ -32,14 +32,14 @@ class ConductorSegment {
 	private:
 	ConductorSegment(const ConductorSegment &);
 	
-	// attributs
+	// attributes
 	private:
 	ConductorSegment *previous_segment;
 	ConductorSegment *next_segment;
 	QPointF point1;
 	QPointF point2;
 	
-	// methodes
+	// methods
 	public:
 	void moveX(const qreal &);
 	void moveY(const qreal &);

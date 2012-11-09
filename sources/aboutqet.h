@@ -20,13 +20,12 @@
 #include <QDialog>
 class QLabel;
 /**
-	Cette classe represente la boite de dialogue
-	"A propos de QElectroTech".
+	This class represents the "About QElectroTech" dialog.
 */
 class AboutQET : public QDialog {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	AboutQET(QWidget * = 0);
 	virtual ~AboutQET();
@@ -34,7 +33,7 @@ class AboutQET : public QDialog {
 	private:
 	AboutQET(AboutQET &);
 	
-	// methodes
+	// methods
 	private:
 	QWidget *title() const;
 	QWidget *aboutTab() const;

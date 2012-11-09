@@ -20,11 +20,11 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 /**
-	Cette classe represente un polygone pouvant etre utilise pour composer le
-	dessin d'un element dans l'editeur d'element.
+	This class represents a polygon primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
 */
 class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartPolygon(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartPolygon();
@@ -32,16 +32,17 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	private:
 	PartPolygon(const PartPolygon &);
 	
-	// attributs
+	// attributes
 	private:
 	bool closed;
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1105 };
 	/**
-		permet de caster un QGraphicsItem en PartPolygon avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartPolygon.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("polygone", "element part name")); }
@@ -61,16 +62,16 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 };
 
 /**
-	Specifie si le polygone doit etre ferme
-	@param c true pour un polygone ferme, false sinon
+	Whether the polygon should be closed.
+	@param c true for the polygon to be closed, false otherwise
 */
 inline void PartPolygon::setClosed(bool c) {
 	closed = c;
 }
 
 /**
-	Indique si le polygone est ferme
-	@return true si le polygone est ferme, false sinon
+	Indicate whether the polygon is closed.
+	@return true if the polygon is closed, false otherwise
 */
 inline bool PartPolygon::isClosed() const {
 	return(closed);

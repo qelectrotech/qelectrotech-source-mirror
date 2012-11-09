@@ -19,21 +19,21 @@
 #define BASIC_MOVE_ELEMENTS_HANDLER
 #include "moveelementshandler.h"
 /**
-	Cette classe implemente basiquement la classe strategie MoveElementsHandler
-	Elle retourne toujours la meme action (parametrable) pour une methode
-	donnee.
+	This class implements the MoveElementsHandler Strategy class in a baasic way.
+	It always returns the same (configurable) action or value for a particular
+	question.
 */
 class BasicMoveElementsHandler : public MoveElementsHandler {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	BasicMoveElementsHandler(QObject * = 0);
 	virtual ~BasicMoveElementsHandler();
 	private:
 	BasicMoveElementsHandler(const BasicMoveElementsHandler &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void setActionIfItemAlreadyExists(QET::Action);
 	virtual void setActionIfItemIsNotReadable(QET::Action);
@@ -51,7 +51,7 @@ class BasicMoveElementsHandler : public MoveElementsHandler {
 	virtual QET::Action errorWithAnElement(ElementDefinition *, const QString &);
 	virtual QString nameForRenamingOperation();
 	
-	// attributs
+	// attributes
 	private:
 	QET::Action already_exists_;
 	QET::Action not_readable_;

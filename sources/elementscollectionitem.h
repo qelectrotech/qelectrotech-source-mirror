@@ -24,13 +24,13 @@ class ElementsCategory;
 class ElementDefinition;
 class MoveElementsHandler;
 /**
-	Cette interface est la classe mere pour toutes les classes
-	modelisant une partie d'une collection d'elements.
+	This interface is the base class for all classes representing a part of an
+	elements collection.
 */
 class ElementsCollectionItem : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementsCollectionItem(ElementsCollectionItem *parent = 0) : QObject(parent) {};
 	virtual ~ElementsCollectionItem() {};
@@ -38,172 +38,170 @@ class ElementsCollectionItem : public QObject {
 	private:
 	ElementsCollectionItem(const ElementsCollectionItem &);
 	
-	// methodes
+	// methods
 	public:
-	/// @return true si l'item est une collection d'elements
+	/// @return whether the item is an elements collection
 	virtual bool isCollection() const = 0;
-	/// @return true si l'item est une categorie d'elements
+	/// @return whether the item is an elements category
 	virtual bool isCategory() const = 0;
-	/// @return true si l'item est la categorie racine de sa collection
+	/// @return whether the item is the root category of a collection
 	virtual bool isRootCategory() const = 0;
-	/// @return true si l'item est un element
+	/// @return whether the item is an element
 	virtual bool isElement() const = 0;
 	
 	/**
-		@return un pointeur sur cet item en tant que collection, ou 0 si cet item n'est pas une collection
+		@return a pointer to this item as a collection object, or 0 if this item is not a collection.
 	*/
 	virtual ElementsCollection *toCollection() = 0;
 	/**
-		@return un pointeur sur cet item en tant que categorie.
-		Si cet objet est une collection, un pointeur valide vers sa categorie racine sera renvoye.
-		Si cet objet est une categorie, un pointeur valide sera renvoye.
-		Si cet objet est un element, un pointeur valide vers sa categorie parente sera renvoye.
+		@return a pointer to this item as a category object.
+		If this item is a collection, return a valid pointer to its root category.
+		If this item is a category, return a valid pointer.
+		If this item is an element, return a valid pointer to its parent category.
 	*/
 	virtual ElementsCategory *toCategory() = 0;
 	/**
-		@return un pointeur sur cet item en tant que categorie si et seulement
-		si cet objet est une categorie non racine.
-		Si cet objet est une collection, 0 sera retourne
-		Si cet objet est une categorie, un pointeur valide sera renvoye.
-		Si cet objet est un element, 0 sera retourne.
+		@return a pointer to this item as a category if and only if this object is a non-root elements category.
+		If this item is a collection, return 0.
+		If this item is a category, return a valid pointer.
+		If this item is an element, return 0.
 	*/
 	virtual ElementsCategory *toPureCategory() = 0;
 	/**
-		@return un pointeur sur cet item en tant qu'element
+		@return a pointer to this item as an element object.
 	*/
 	virtual ElementDefinition *toElement() = 0;
 	
 	/**
-		Copie l'item vers la destination indiquee en parametre ; le booleen
-		doit etre a true pour une copie recursive, a false sinon.
+		Copy this item to the specified target, using a specific strategy to handle
+		corner cases (errors, conflicts, confirmations, ...), recursively or not.
 	*/
 	virtual ElementsCollectionItem *copy(ElementsCategory *, MoveElementsHandler *, bool = true) = 0;
 	
 	/**
-		Deplace l'item vers la destination indiquee en parametre.
+		Move this item to the specified destination, using a specific strategy to
+		handle corner cases (errors, conflicts, confirmations, ...).
 	*/
 	virtual ElementsCollectionItem *move(ElementsCategory *, MoveElementsHandler *) = 0;
 	
-	/// Recharge l'item
+	/// Reload this item
 	virtual void reload() = 0;
-	/// @return true si l'item existe
+	/// @return whether the item really exists
 	virtual bool exists() = 0;
-	/// @return true si l'item est lisible
+	/// @return whether the item is readable
 	virtual bool isReadable() = 0;
-	/// @return true si l'item est accessible en ecriture
+	/// @return whether the item is writable
 	virtual bool isWritable() = 0;
 	/**
-		supprime le contenu de l'item (categories et elements) sans supprimer
-		l'item lui-meme
-		@return true si l'operation a reussi, false sinon
+		Delete the item content (elements and subcategories) without deleting the item itself.
+		@return true if the operation succeeded, false otherwise
 	*/
 	virtual bool removeContent() = 0;
 	/**
-		supprime le contenu de l'item (categories et elements) puis l'item
-		lui-meme
-		@return true si l'operation a reussi, false sinon
+		Delete the item content (elements and categories) before deleting the item itself.
+		@return true if the operation succeeded, false otherwise
 	*/
 	virtual bool remove() = 0;
 	/**
-		Enregistre l'item
-		@return true si l'operation a reussi, false sinon
+		Save the item.
+		@return true if the operation succeeded, false otherwise
 	*/
 	virtual bool write() = 0;
 	/**
-		@return le projet auquel appartient cet item
+		@return the project this item belongs to
 	*/
 	virtual QETProject *project() = 0;
 	/**
-		Definit le projet auquel appartient cet item
+		Set the project this item belongs to.
 	*/
 	virtual void setProject(QETProject *) = 0;
 	/**
-		@return le protocole utilise pour acceder a la collection de cet item
+		@return the protocol used to access the collection this item belongs to.
 	*/
 	virtual QString protocol() = 0;
 	/**
-		Definit le protocole a utiliser pour acceder a la collection de cet item
+		Set the protocol used to access the collection this item belongs to.
 	*/
 	virtual void setProtocol(const QString &) = 0;
 	/**
-		@return la categorie parente de cet item, ou 0 si celui-ci n'en possede pas
+		@return the parent category of this item, or 0 if it does not have any
 	*/
 	virtual ElementsCategory *parentCategory() = 0;
 	/**
-		@return la liste des categories parentes de cet item
+		@return the list of parent categories of this item
 	*/
 	virtual QList<ElementsCategory *> parentCategories() = 0;
 	/**
-		@return true si cet item possede une categorie parente, false sinon
+		@return whether this item has a parent category
 	*/
 	virtual bool hasParentCategory() = 0;
 	/**
-		@return la collection parente de cet item, ou 0 si celui-ci n'en possede pas
+		@return the parent collection of this item, or 0 if it does not have any
 	*/
 	virtual ElementsCollection *parentCollection() = 0;
 	/**
-		@return true si cet item possede une collection parente, false sinon
+		@return whether this item belongs to an elements collection
 	*/
 	virtual bool hasParentCollection() = 0;
 	/**
-		@param other_item Autre item
-		@return true si other_item est parent (direct ou indirect) de other_item, false sinon
+		@param other_item other item
+		@return whether \a other_item is a direct or indirect parent of this item.
 	*/
 	virtual bool isChildOf(ElementsCollectionItem *other_item) = 0;
 	/**
-		@return le nom de cet item dans l'arborescence
+		@return the name of this item within the elements tree.
 	*/
 	virtual QString pathName() const = 0;
 	/**
-		@return le chemin virtuel vers cet item dans l'arborescence, sans le protocole
+		@return the virtual path to this item within the elements tree, protocol excluded.
 	*/
 	virtual QString virtualPath() = 0;
 	/**
-		@return le chemin virtuel vers cet item dans l'arborescence, avec le protocole
+		@return the virtual path to this item within the elements tree, protocol included.
 	*/
 	virtual QString fullVirtualPath() = 0;
 	/**
-		@return l'emplacement de cet item
+		@return the location of this item
 	*/
 	virtual ElementsLocation location() = 0;
 	/**
-		@return true si cet item est represente quelque part sur le systeme de fichiers
+		@return whether this item is stored somewhere on the filesystem.
 	*/
 	virtual bool hasFilePath() = 0;
 	/**
-		@return le chemin de cet item sur le systeme de fichiers
+		@return the path of this item within the filesystem
 	*/
 	virtual QString filePath() = 0;
 	/**
-		Definit le chemin de cet item sur le systeme de fichiers
+		Set the path to this item within the filesystem.
 	*/
 	virtual void setFilePath(const QString &) = 0;
 	/**
-		@return la liste des categories d'elements contenues dans cet item
+		@return the list of direct child elements category within this item
 	*/
 	virtual QList<ElementsCategory *> categories() = 0;
 	/**
-		@return une categorie a partir de son chemin virtuel
+		@return the specified category, provided its virtual path
 	*/
 	virtual ElementsCategory *category(const QString &) = 0;
 	/**
-		@return une nouvelle categorie creee a partir d'un chemin virtuel
+		@return a new category, created from the spcified virtual path
 	*/
 	virtual ElementsCategory *createCategory(const QString &) = 0;
 	/**
-		@return la liste des elements contenus dans cet item
+		@return the list of child elements within this item
 	*/
 	virtual QList<ElementDefinition *> elements() = 0;
 	/**
-		@return un element a partir de son chemin virtuel
+		@return an element, provided its virtual path
 	*/
 	virtual ElementDefinition *element(const QString &) = 0;
 	/**
-		@return un nouvel element cree a partir d'un chemin virtuel
+		@return a new element, created from the specified virtual path
 	*/
 	virtual ElementDefinition *createElement(const QString &) = 0;
 	/**
-		@return true if the item is empty, false otherwise
+		@return whether the item is empty
 	*/
 	virtual bool isEmpty() = 0;
 	/**

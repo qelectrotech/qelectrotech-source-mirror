@@ -21,25 +21,25 @@
 #include <QString>
 #include <QRegExp>
 /**
-	Cette classe represente la position d'un element sur le schema. Il ne
-	s'agit pas de ses coordonnees (bien que celles-ci puissent etre embarquees
-	par commodite), mais du secteur du schema dans lequel il se situe, par
-	exemple B2 ou C4.
+	This class stores the position of an electrical element on its parent diagram.
+	While exact coordinates can be stored for convenience, the concept of diagram
+	position as implemented by this class simply designates the intersection
+	between a column and a row, e.g. B2 or C4.
 */
 class DiagramPosition {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	DiagramPosition(const QString & = "", unsigned int = 0);
 	virtual ~DiagramPosition();
 	
-	// methodes
+	// methods
 	public:
 	QPointF position() const;
 	void setPosition(const QPointF &);
 	QString toString();
 	bool isOutOfBounds() const;
 	
-	// attributs
+	// attributes
 	private:
 	QString letter_;
 	unsigned int number_;

@@ -21,14 +21,13 @@
 class PartPolygon;
 class StyleEditor;
 /**
-	Cette classe represente le widget d'edition d'un polygone dans l'editeur
-	d'element.
+	This class provides a widget to edit polygons within the element editor.
 */
 class PolygonEditor : public ElementItemEditor {
 	
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PolygonEditor(QETElementEditor *, PartPolygon * = 0, QWidget * = 0);
 	virtual ~PolygonEditor();
@@ -36,14 +35,14 @@ class PolygonEditor : public ElementItemEditor {
 	private:
 	PolygonEditor(const PolygonEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartPolygon *part;
 	StyleEditor *style_;
 	QTreeWidget points_list;
 	QCheckBox close_polygon;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

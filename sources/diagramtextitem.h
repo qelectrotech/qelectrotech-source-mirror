@@ -20,27 +20,28 @@
 #include <QtGui>
 #include "diagram.h"
 /**
-	Cette classe represente un champ de texte editable sur le schema.
-	Par defaut, les DiagramTextItem sont Selectable et Movable.
+	This class represents a selectable, movable and editable text field on a
+	diagram.
 	@see QGraphicsItem::GraphicsItemFlags
 */
 class DiagramTextItem : public QGraphicsTextItem {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	DiagramTextItem(QGraphicsItem * = 0, Diagram * = 0);
 	DiagramTextItem(const QString &, QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~DiagramTextItem();
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1004 };
 	
-	// methodes
+	// methods
 	public:
 	/**
-		Cette methode permet d'utiliser qgraphicsitem_cast sur cet objet
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		DiagramTextItem
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	Diagram *diagram() const;
@@ -64,22 +65,19 @@ class DiagramTextItem : public QGraphicsTextItem {
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual void applyRotation(const qreal &);
 	
-	// signaux
 	signals:
-	/// signal emis lorsque le champ de texte perd le focus
+	/// signal emitted when the text field loses focus
 	void lostFocus();
-	/// signal emis lorsque le champ de texte a ete modifie
+	/// signal emitted after text was changed
 	void diagramTextChanged(DiagramTextItem *, const QString &, const QString &);
-
-	// slots
+	
 	public slots:
 	void setNonFocusable();
 	
-	// attributs prives
 	private:
-	/// Texte precedent
+	/// Previous text value
 	QString previous_text_;
-	/// angle de rotation du champ de texte
+	/// angle of rotation of the text field
 	qreal rotation_angle_;
 };
 #endif

@@ -24,12 +24,12 @@ class Conductor;
 class Diagram;
 class Element;
 /**
-	Cette classe represente une borne d'un element, c'est-a-dire un
-	branchement possible pour un conducteur.
+	This class represents a terminal of an electrical element, i.e. a possible
+	plug point for conductors.
 */
 class Terminal : public QGraphicsItem {
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	Terminal(QPointF,      QET::Orientation, Element * = 0, Diagram * = 0);
 	Terminal(qreal, qreal, QET::Orientation, Element * = 0, Diagram * = 0);
@@ -38,26 +38,26 @@ class Terminal : public QGraphicsItem {
 	private:
 	Terminal(const Terminal &);
 	
-	// methodes
+	// methods
 	public:
 	/**
-		permet de caster un QGraphicsItem en Terminal avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		Terminal
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	
-	// implementation des methodes virtuelles pures de QGraphicsItem
+	// implementation of QGraphicsItem pure virtual methods
 	void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget *);
 	QRectF boundingRect() const;
 	
-	// methodes de manipulation des conducteurs lies a cette borne
+	// methods to manage conductors attached to the terminal
 	bool addConductor(Conductor *);
 	void removeConductor(Conductor *);
 	int conductorsCount() const;
 	Diagram *diagram() const;
 	Element *parentElement() const;
 	
-	// methodes de lecture
 	QList<Conductor *> conductors() const;
 	QET::Orientation orientation() const;
 	QPointF dockConductor() const;
@@ -65,13 +65,13 @@ class Terminal : public QGraphicsItem {
 	bool isLinkedTo(Terminal *);
 	bool canBeLinkedTo(Terminal *);
 	
-	// methodes relatives a l'import/export au format XML
+	// methods related to XML import/export
 	static bool valideXml(QDomElement  &);
 	bool fromXml (QDomElement &);
 	QDomElement toXml (QDomDocument &) const;
 	
 	protected:
-	// methodes de gestion des evenements
+	// methods related to events management
 	void hoverEnterEvent  (QGraphicsSceneHoverEvent *);
 	void hoverMoveEvent   (QGraphicsSceneHoverEvent *);
 	void hoverLeaveEvent  (QGraphicsSceneHoverEvent *);
@@ -79,60 +79,58 @@ class Terminal : public QGraphicsItem {
 	void mouseMoveEvent   (QGraphicsSceneMouseEvent *);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1002 };
-	/// Longueur d'une borne
+	/// terminal length
 	static const qreal terminalSize;
 	
-	// differentes couleurs statiques utilisables pour l'effet "hover"
-	/// couleur par defaut
+	// Various static colors used for hover effects
+	/// default color
 	static QColor neutralColor;
-	/// couleur indiquant une action autorisee
+	/// color for legal actions
 	static QColor allowedColor;
-	/// couleur indiquant une action autorisee mais pas forcement recommandee
+	/// color for allowed but fuzzy or not recommended  actions
 	static QColor warningColor;
-	/// couleur indiquant une action interdite
+	/// color for forbidden actions
 	static QColor forbiddenColor;
 	
-	// attributs prives
 	private:
-	/// Pointeur vers l'element parent
+	/// Parent electrical element
 	Element *parent_element_;
-	/// coordonnees du point d'amarrage du conducteur
+	/// docking point for conductors
 	QPointF dock_conductor_;
-	/// coordonnees du point d'amarrage de l'element
+	/// docking point for parent element
 	QPointF dock_elmt_;
-	/// orientation de la borne
+	/// terminal orientation
 	QET::Orientation ori_;
-	/// liste des conductors lies a cette borne
+	/// List of conductors attached to the terminal
 	QList<Conductor *> conductors_;
-	/// pointeur vers un rectangle correspondant au bounding rect
-	/// permet de ne calculer le bounding rect qu'une seule fois
-	/// le pointeur c'est parce que le compilo exige une methode const
+	/// Pointer to a rectangle representing the terminal bounding rect;
+	/// used to calculate the bounding rect once only;
+	/// used a pointer because boundingRect() is supposed to be const.
 	QRectF *br_;
-	/// Derniere borne mise en contact avec celle-ci
+	/// Last terminal seen through an attached conductor
 	Terminal *previous_terminal_;
-	/// Booleen indiquant si le pointeur est au-dessus de la borne ou non
+	/// Whether the mouse pointer is hovering the terminal
 	bool hovered_;
-	/// couleur de l'effet hover de la borne
+	/// Color used for the hover effect
 	QColor hovered_color_;
 	
-	// methodes privees
 	private:
-	// methode initialisant les differents membres de la borne
 	void init(QPointF, QET::Orientation);
 };
 
 /**
-	@return Le nombre de conducteurs associes a la borne
+	@return the number of conductors attached to the terminal.
 */
 inline int Terminal::conductorsCount() const {
 	return(conductors_.size());
 }
 
 /**
-	@return La position du point d'amarrage de la borne
+	@return the position, relative to the scene, of the docking point for
+	conductors.
 */
 inline QPointF Terminal::dockConductor() const {
 	return(mapToScene(dock_conductor_));

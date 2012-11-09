@@ -20,11 +20,12 @@
 #include <QtGui>
 #include "orientationset.h"
 /**
-	Widget permettant d'editer un OrientationSet
+	Widget to edit an OrientationSet.
+	@see OrientationSet
 */
 class OrientationSetWidget : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	OrientationSetWidget(QWidget * = 0);
 	virtual ~OrientationSetWidget() {};
@@ -32,7 +33,7 @@ class OrientationSetWidget : public QWidget {
 	private:
 	OrientationSetWidget(const OrientationSetWidget &);
 	
-	// attributs
+	// attributes
 	private:
 	OrientationSet ori;
 	QComboBox *north_orientation;
@@ -45,7 +46,7 @@ class OrientationSetWidget : public QWidget {
 	QRadioButton *west_default;
 	QButtonGroup *default_radios;
 	
-	// methodes
+	// methods
 	public:
 	OrientationSet orientationSet() const;
 	void setOrientationSet(const OrientationSet &);

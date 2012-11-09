@@ -22,8 +22,8 @@
 class XmlElementsCategory;
 class XmlElementsCollection;
 /**
-	Cette classe represente la definition d'un element extraite d'un
-	document XML (typiquement : un projet QET).
+	This class represents an element definition stored within an XML document
+	(e.g. the embedded collection of a QET project).
 */
 class XmlElementDefinition : public ElementDefinition {
 	Q_OBJECT
@@ -36,7 +36,7 @@ class XmlElementDefinition : public ElementDefinition {
 	private:
 	XmlElementDefinition(const XmlElementDefinition &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QDomElement xml();
 	virtual bool setXml(const QDomElement &);
@@ -59,7 +59,7 @@ class XmlElementDefinition : public ElementDefinition {
 	void written();
 	void removed(const QString &);
 	
-	// attributs
+	// attributes
 	private:
 	bool is_null_;
 	QString name_;

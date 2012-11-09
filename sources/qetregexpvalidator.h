@@ -19,13 +19,13 @@
 #define QET_REGEXP_VALIDATOR_H
 #include <QRegExpValidator>
 /**
-	Cette classe agit comme un QRegExpValidator a ceci pres qu'elle emet un
-	signal lorsqu'elle ne valide pas une saisie.
+	This class acts like a QRegExpValidator except it emits a signal when the
+	input validation fails.
 */
 class QETRegExpValidator : public QRegExpValidator {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETRegExpValidator(QObject *);
 	QETRegExpValidator(const QRegExp &, QObject *);
@@ -33,7 +33,7 @@ class QETRegExpValidator : public QRegExpValidator {
 	private:
 	QETRegExpValidator(const QETRegExpValidator &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QValidator::State validate(QString &, int &) const;
 	

@@ -20,14 +20,14 @@
 #include <QGraphicsView>
 #include "elementscene.h"
 /**
-	Cette classe represente un widget permettant de visualiser une
-	ElementScene, c'est-a-dire la classe d'edition des elements.
+	This class provides a widget to render an ElementScene instance, i.e. the
+	edition class for electrical elements.
 */
 class ElementView : public QGraphicsView {
 	Q_OBJECT
 	friend class PastePartsCommand;
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementView(ElementScene *, QWidget * = 0);
 	virtual ~ElementView();
@@ -35,7 +35,7 @@ class ElementView : public QGraphicsView {
 	private:
 	ElementView(const ElementView &);
 	
-	// methodes
+	// methods
 	public:
 	ElementScene *scene() const;
 	void setScene(ElementScene *);
@@ -50,7 +50,6 @@ class ElementView : public QGraphicsView {
 	private:
 	QRectF applyMovement(const QRectF &, const QET::OrientedMovement &, const QPointF &);
 	
-	// slots
 	public slots:
 	void zoomIn();
 	void zoomOut();
@@ -69,7 +68,7 @@ class ElementView : public QGraphicsView {
 	ElementContent paste(const QDomDocument &, const QPointF &);
 	ElementContent pasteWithOffset(const QDomDocument &);
 	
-	//attributs
+	// attributes
 	private:
 	ElementScene *scene_;
 	QString to_paste_in_area_;

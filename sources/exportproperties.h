@@ -21,8 +21,8 @@
 #include "qet.h"
 
 /**
-	Cette classe represente les differentes options utilisees pour exporter un
-	schema sous forme d'image, ou encore pour l'imprimer.
+	This class is a container for various options used when printing or
+	exporting a diagram as an image file.
 */
 class ExportProperties {
 	// constructeur, destructeur
@@ -30,20 +30,20 @@ class ExportProperties {
 	ExportProperties();
 	virtual ~ExportProperties();
 	
-	// methodes
+	// methods
 	public:
 	void toSettings  (QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 	
-	// attributs
+	// attributes
 	public:
-	QDir destination_directory;     ///< Quel est le repertoire de destination du ou des fichiers generes ?
-	QString format;                 ///< Quel format d'image faut-il utiliser ?
-	bool draw_grid;                 ///< Faut-il dessiner la grille ?
-	bool draw_border;               ///< Faut-il dessiner le cadre ?
-	bool draw_titleblock;                ///< Faut-il dessiner le cartouche ?
-	bool draw_terminals;            ///< Faut-il dessiner les bornes ?
-	bool draw_colored_conductors;   ///< Faut-il respecter les couleurs des conducteurs ?
-	QET::DiagramArea exported_area; ///< Zone du schema a exporter
+	QDir destination_directory;     ///< Target directory for generated files
+	QString format;                 ///< Image format of generated files
+	bool draw_grid;                 ///< Whether to render the diagram grid
+	bool draw_border;               ///< Whether to render the border (along with rows/columns headers)
+	bool draw_titleblock;           ///< Whether to render the title block
+	bool draw_terminals;            ///< Whether to render terminals
+	bool draw_colored_conductors;   ///< Whether to render conductors colors
+	QET::DiagramArea exported_area; ///< Area of diagrams to be rendered
 };
 #endif

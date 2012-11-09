@@ -20,11 +20,11 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 /**
-	Cette classe represente une ellipse pouvant etre utilisee pour composer le
-	dessin d'un element dans l'editeur d'element.
+	This class represents an ellipse primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
 */
 class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartEllipse(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartEllipse();
@@ -32,12 +32,13 @@ class PartEllipse : public QGraphicsEllipseItem, public CustomElementGraphicPart
 	private:
 	PartEllipse(const PartEllipse &);
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1103 };
 	/**
-		permet de caster un QGraphicsItem en PartEllipse avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartEllipse.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);

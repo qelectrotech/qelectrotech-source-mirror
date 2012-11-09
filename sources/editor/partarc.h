@@ -20,11 +20,11 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 /**
-	Cette classe represente un arc pouvant etre utilise pour composer le
-	dessin d'un element dans l'editeur d'element.
+	This class represents an elliptical arc primitive which may be used to
+	compose the drawing of an electrical element within the element editor.
 */
 class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartArc(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartArc();
@@ -32,17 +32,18 @@ class PartArc : public QGraphicsEllipseItem, public CustomElementGraphicPart {
 	private:
 	PartArc(const PartArc &);
 	
-	// attributs
+	// attributes
 	private:
 	int _angle;
 	int start_angle;
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1101 };
 	/**
-		permet de caster un QGraphicsItem en PartArc avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartArc.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);

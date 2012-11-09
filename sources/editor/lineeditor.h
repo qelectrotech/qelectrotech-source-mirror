@@ -22,19 +22,18 @@
 class PartLine;
 class StyleEditor;
 /**
-	Cette classe represente le widget d'edition d'une ligne dans l'editeur
-	d'element.
+	This class provides a widget to edit lines within the element editor.
 */
 class LineEditor : public ElementItemEditor {
 	Q_OBJECT
-	//constructeurs, destructeur
+	// constructors, destructor
 	public:
 	LineEditor(QETElementEditor *, PartLine * = 0, QWidget * = 0);
 	virtual ~LineEditor();
 	private:
 	LineEditor(const LineEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartLine *part;
 	StyleEditor *style_;
@@ -42,7 +41,7 @@ class LineEditor : public ElementItemEditor {
 	QComboBox *end1_type, *end2_type;
 	QLineEdit *end1_length, *end2_length;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

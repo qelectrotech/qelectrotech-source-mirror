@@ -21,7 +21,7 @@
 #include <QtGui>
 #include <QtXml>
 /**
-	Cette classe represente les proprietes specifiques a un conducteur unifilaire
+	This class represents the properties of a singleline conductor.
 */
 class SingleLineProperties {
 	public:
@@ -37,9 +37,9 @@ class SingleLineProperties {
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 	
-	/// indique si le conducteur unifilaire doit afficher le symbole terre
+	/// Whether the singleline conductor should display the ground symbol
 	bool hasGround;
-	/// indique si le conducteur unifilaire doit afficher le symbole neutre
+	/// Whether the singleline conductor should display the neutral symbol
 	bool hasNeutral;
 	/// Protective Earth Neutral: visually merge neutral and ground
 	bool is_pen;
@@ -55,44 +55,44 @@ class SingleLineProperties {
 };
 
 /**
-	Cette classe represente les proprietes specifiques a un conducteur,
-	en dehors de ses bornes et de son trajet.
+	This class represents the functional properties of a particular conductor,
+	i.e. properties other than path and terminals.
 */
 class ConductorProperties {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ConductorProperties();
 	virtual ~ConductorProperties();
 	
 	/**
-		Represente le type d'un conducteur :
-		 * Simple : ni symbole ni champ de texte
-		 * Single : symboles unifilaires, pas de champ de texte
-		 * Multi : champ de texte, pas de symbole
+		Represents the kind of a particular conductor:
+		 * Simple: no symbols, no text input
+		 * Single: singleline symbols, no text input
+		 * Multi: text input, no symbol
 	*/
 	enum ConductorType { Simple, Single, Multi };
 	
-	// attributs
-	/// type du conducteur
+	// attributes
+	/// Conductor type
 	ConductorType type;
-	/// couleur du conducteur
+	/// Conductor color
 	QColor color;
-	/// texte affiche si le conducteur est multifilaire
+	/// Texte displayed for multiline conductors
 	QString text;
-	/// style du conducteur (Qt::SolidLine ou Qt::DashLine)
+	/// conducteur style (Qt::SolidLine or Qt::DashLine)
 	Qt::PenStyle style;
 	
-	/// proprietes si le conducteur est unifilaire
+	/// properties for singleline conductors
 	SingleLineProperties singleLineProperties;
 	
-	// methodes
+	// methods
 	void toXml(QDomElement &) const;
 	void fromXml(QDomElement &);
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 	static QString typeToString(ConductorType);
 	
-	// operateurs
+	// operators
 	int operator==(const ConductorProperties &);
 	int operator!=(const ConductorProperties &);
 	

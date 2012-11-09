@@ -20,25 +20,26 @@
 #include <QtGui>
 #include "diagramtextitem.h"
 /**
-	Cette classe represente un champ de texte editable independant sur le schema.
-	Il peut etre pivote et deplace.
+	This class represents an independent text field on a particular diagram.
+	It may be moved, edited, and rotated.
 */
 class IndependentTextItem : public DiagramTextItem {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	IndependentTextItem(Diagram * = 0);
 	IndependentTextItem(const QString &, Diagram* = 0);
 	virtual ~IndependentTextItem();
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1005 };
 	
-	// methodes
+	// methods
 	public:
 	/**
-		Cette methode permet d'utiliser qgraphicsitem_cast sur cet objet
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an
+		IndependentTextItem.
 		@return le type de QGraphicsItem
 	*/
 	virtual int type() const { return Type; }

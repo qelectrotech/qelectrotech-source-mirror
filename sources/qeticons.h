@@ -19,15 +19,15 @@
 #define QET_ICONS_H
 #include <QIcon>
 /**
-	Ce namespace est reserve a la declaration des icones de l'application
-	QElectroTech.
+	This namespace is meant to delare icons used within the QElectroTech
+	application.
 */
 namespace QET {
 	namespace Icons {
 		void initIcons();
 		
-		// l'utilisation du mot-cle extern permet l'acces aux objets statiques
-		// depuis l'exterieur du namespace
+		// using the extern keyword enables access to static objects from outside the
+		// namespace
 		extern QIcon Add;
 		extern QIcon Allowed;
 		extern QIcon ApplicationExit;

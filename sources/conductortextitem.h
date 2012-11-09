@@ -20,16 +20,16 @@
 #include "diagramtextitem.h"
 class Conductor;
 /**
-	Cette classe represente un champ de texte rattache a un conducteur.
-	Il est editable et deplacable par l'utilisateur.
-	Il peut egalement etre oriente a un angle quelconque.
-	Ses deplacements sont toutefois limites a une certaine distance autour de
-	son conducteur parent.
+	This class represents a text item attached to a parent conductor.
+	It may be moved and edited by users.
+	It may also be rotated to any angle.
+	Its movements are however limited to a particular distance around its
+	parent conductor.
 */
 class ConductorTextItem : public DiagramTextItem {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ConductorTextItem(Conductor * = 0, Diagram * = 0);
 	ConductorTextItem(const QString &, Conductor * = 0, Diagram * = 0);
@@ -37,14 +37,14 @@ class ConductorTextItem : public DiagramTextItem {
 	private:
 	ConductorTextItem(const ConductorTextItem &);
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1006 };
 	Conductor *parentConductor() const;
 	virtual void fromXml(const QDomElement &);
 	virtual QDomElement toXml(QDomDocument &) const;
 	
-	// methodes
+	// methods
 	public:
 	virtual int type() const { return Type; }
 	virtual bool wasMovedByUser() const;
@@ -55,7 +55,7 @@ class ConductorTextItem : public DiagramTextItem {
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
-	// attributs
+	// attributes
 	private:
 	Conductor *parent_conductor_;
 	bool moved_by_user_;

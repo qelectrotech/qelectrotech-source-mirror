@@ -29,7 +29,7 @@
 Element::Element(QGraphicsItem *parent, Diagram *scene) :
 	QObject(),
 	QGraphicsItem(parent, scene),
-	internal_connections(false),
+	internal_connections_(false),
 	must_highlight_(false),
 	first_move_(true)
 {

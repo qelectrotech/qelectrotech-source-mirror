@@ -54,9 +54,9 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	
 	diagram_scene = new Diagram();
 	diagram_scene -> border_and_titleblock.setColumnsWidth(50.0);
-	diagram_scene -> border_and_titleblock.setNbColumns(3);
+	diagram_scene -> border_and_titleblock.setColumnsCount(3);
 	diagram_scene -> border_and_titleblock.setRowsHeight(60.0);
-	diagram_scene -> border_and_titleblock.setNbRows(2);
+	diagram_scene -> border_and_titleblock.setRowsCount(2);
 	diagram_scene -> border_and_titleblock.displayRows(false);
 	diagram_scene -> border_and_titleblock.displayTitleBlock(false);
 	

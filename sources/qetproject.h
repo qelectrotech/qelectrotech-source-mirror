@@ -36,19 +36,15 @@ class XmlElementsCollection;
 class MoveElementsHandler;
 class MoveTitleBlockTemplatesHandler;
 /**
-	Cette classe represente un projet QET. Typiquement enregistre dans un
-	fichier, il s'agit d'un document XML integrant des schemas ainsi qu'une
-	collection d'elements embarques. Ce dernier attribut permet d'exporter des
-	schema sur d'autres machines sans se soucier de la presence des elements
-	sur celle-ci.
-	La classe QETProject gere l'enregistrement partiel. Ainsi, enregistrer les
-	modifications apportees a un element reenregistrera le fichier mais en
-	mettant a jour seulement les parties du document XML concerne.
+	This class represents a QET project. Typically saved as a .qet file, it
+	consists in an XML document grouping 0 to n diagrams and embedding an elements
+	collection. This collection enables users to export diagrams on remote
+	machines without wondering whether required elements are available to them.
 */
 class QETProject : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETProject(int = 1, QObject * = 0);
 	QETProject(const QString &, QObject * = 0);
@@ -61,18 +57,18 @@ class QETProject : public QObject {
 	// enums
 	public:
 	/**
-		Represente l'etat du projet
+		This enum lists possible states for a particular project.
 	*/
 	enum ProjectState {
-		Ok                    = 0, /// Le projet n'est pas en erreur
-		FileOpenFailed        = 1, /// l'ouverture d'un fichier a echoue
-		XmlParsingFailed      = 2, /// l'analyse XML a echoue
-		ProjectParsingRunning = 3, /// la lecture du projet est en cours
-		ProjectParsingFailed  = 4, /// la lecture en tant que projet a echoue
+		Ok                    = 0, /// no error
+		FileOpenFailed        = 1, /// file opening failed
+		XmlParsingFailed      = 2, /// XML parsing failed
+		ProjectParsingRunning = 3, /// the XML content is currently being processed
+		ProjectParsingFailed  = 4, /// the parsing of the XML content failed
 		FileOpenDiscard       = 5  /// the user cancelled the file opening
 	};
 	
-	// methodes
+	// methods
 	public:
 	ProjectState state() const;
 	QList<Diagram *> diagrams() const;
@@ -161,35 +157,35 @@ class QETProject : public QObject {
 	NamesList namesListForIntegrationCategory();
 	ElementsLocation copyElementWithHandler(ElementDefinition *, ElementsCategory *, MoveElementsHandler *, QString &);
 	
-	// attributs
+	// attributes
 	private:
-	/// Chemin du fichier dans lequel ce projet est enregistre
+	/// File path this project is saved to
 	QString file_path_;
-	/// Etat du projet
+	/// Current state of the project
 	ProjectState state_;
-	/// Element XML representant le projet
+	/// XML document representing the project
 	QDomDocument document_root_;
-	/// Schemas contenus dans le projet
+	/// Diagrams carried by the project
 	QList<Diagram *> diagrams_;
-	/// Collection d'elements embarquee
+	/// Embedded elements collection
 	XmlElementsCollection *collection_;
-	/// Titre du projet
+	/// Project title
 	QString project_title_;
-	/// Version de QElectroTech declaree dans le document XML lors de son ouverture
+	/// QElectroTech version declared in the XML document at opening time
 	qreal project_qet_version_;
 	/// Whether options were modified
 	bool modified_;
-	/// booleen indiquant si le projet est en ReadOnly ou non
+	/// Whether the project is read only
 	bool read_only_;
-	/// Chemin du fichier pour lequel ce projet est considere comme etant en lecture seule
+	/// Filepath for which this project is considered read only
 	QString read_only_file_path_;
-	/// Nom de la categorie a utiliser pour l'integration automatique des elements
+	/// Name of the category used when automatically integrating elements within the embedded collection
 	static QString integration_category_name;
-	/// Dimensions par defaut pour les nouveaux schemas dans ce projet
+	/// Default dimensions and properties for new diagrams created within the project
 	BorderProperties default_border_properties_;
-	/// Proprietes par defaut des conducteurs pour les nouveaux schemas dans ce projet
+	/// Default conductor properties for new diagrams created within the project
 	ConductorProperties default_conductor_properties_;
-	/// Proprietes par defaut du cartouche pour les nouveaux schemas dans ce projet
+	/// Default title block properties for new diagrams created within the project
 	TitleBlockProperties default_titleblock_properties_;
 	/// Embedded title block templates collection
 	TitleBlockTemplatesProjectCollection titleblocks_;

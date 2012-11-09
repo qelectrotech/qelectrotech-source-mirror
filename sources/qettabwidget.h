@@ -20,15 +20,14 @@
 #include <QTabWidget>
 class QETTabBar;
 /**
-	Cette classe se comporte comme un QTabWidget a ceci pres qu'elle utilise
-	un QETTAbBar pour gerer ses onglets.
-	Elle transmet aussi ses signaux lastTabRemoved() et firstTabInserted().
+	This class behaves like a QTabWidget except it uses a QETTAbBar to manage its
+	tabs. It also transmits the lastTabRemoved() and firstTabInserted() signals.
 	@see QETTabBar
 */
 class QETTabWidget : public QTabWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETTabWidget(QWidget * = 0);
 	virtual~QETTabWidget();
@@ -36,7 +35,7 @@ class QETTabWidget : public QTabWidget {
 	private:
 	QETTabWidget(const QETTabWidget &);
 	
-	// methodes
+	// methods
 	public:
 	void setMovable(bool);
 	bool isMovable() const;
@@ -52,7 +51,7 @@ class QETTabWidget : public QTabWidget {
 	void tabMoved(int, int);
 	void tabDoubleClicked(int);
 	
-	// attributs
+	// attributes
 	private:
 	QETTabBar *tab_bar_;
 };

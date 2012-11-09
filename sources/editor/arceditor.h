@@ -22,26 +22,25 @@
 class PartArc;
 class StyleEditor;
 /**
-	Cette classe represente le widget d'edition d'un arc dans l'editeur
-	d'element.
+	This class provides a widget to edit elliptical arcs within the element editor.
 */
 class ArcEditor : public ElementItemEditor {
 	Q_OBJECT
-	//constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ArcEditor(QETElementEditor *, PartArc * = 0, QWidget * = 0);
 	virtual ~ArcEditor();
 	private:
 	ArcEditor(const ArcEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartArc *part;
 	StyleEditor *style_;
 	QLineEdit *x, *y, *h, *v;
 	QSpinBox *angle, *start_angle;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

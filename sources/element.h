@@ -23,14 +23,14 @@
 class Diagram;
 class ElementTextItem;
 /**
-	Cette classe abstraite represente un element electrique.
+	This is the base class for electrical elements.
 */
 class Element : public QObject, public QGraphicsItem {
 	
 	Q_OBJECT
 	Q_INTERFACES(QGraphicsItem)
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	Element(QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~Element();
@@ -38,16 +38,16 @@ class Element : public QObject, public QGraphicsItem {
 	private:
 	Element(const Element &);
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1000 };
 	
 	protected:
 	/**
-		orientations de l'element :
-			* autorisations
-			* orientation en cours
-			* orientation par defaut
+		Hold orientations for the element :
+			* allowed orientations
+			* current orientation
+			* default orientation
 		@see OrientationSet
 	*/
 	OrientationSet ori;
@@ -57,34 +57,35 @@ class Element : public QObject, public QGraphicsItem {
 	QPoint  hotspot_coord;
 	QPixmap preview;
 	
-	// methodes
+	// methods
 	public:
 	/**
-		permet de caster un QGraphicsItem en Element avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into an
+		Element.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	
-	// methodes virtuelles pures a definir dans les classes enfants
-	/// @return la liste des bornes de cet element
+	// pure virtual methods to be defined in derived classes
+	/// @return the list of terminals for this element
 	virtual QList<Terminal *> terminals() const = 0;
-	/// @return la liste des conducteurs relies a cet element
+	/// @return the list of conductors attached to this element
 	virtual QList<Conductor *> conductors() const = 0;
-	/// @return la liste des champs de textes de cet element
+	/// @return the list of text items attached to this element
 	virtual QList<ElementTextItem *> texts() const = 0;
-	/// @return le nombre de bornes actuel de cet element
+	/// @return the current number of terminals of this element
 	virtual int terminalsCount() const = 0;
-	/// @return le nombre de bornes minimum de cet element
+	/// @return the minimum number of terminals for this element
 	virtual int minTerminalsCount() const = 0;
-	/// @return le nombre de bornes maximum de cet element
+	/// @return the maximum number of terminals for this element
 	virtual int maxTerminalsCount() const = 0;
 	/**
-		Dessine l'element
+		Draw this element
 	*/
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *) = 0;
-	/// @return L'ID du type de l'element
+	/// @return This element type ID
 	virtual QString typeId() const = 0;
-	/// @return Le nom de l'element
+	/// @return the human name for this element
 	virtual QString name() const = 0;
 	Diagram *diagram() const;
 	
@@ -96,28 +97,28 @@ class Element : public QObject, public QGraphicsItem {
 	QSize size() const;
 	QPixmap  pixmap();
 	
-	// methodes relatives au point de saisie
+	// methods related to the hotspot
 	QPoint setHotspot(QPoint);
 	QPoint hotspot() const;
 	
-	// methodes relatives a la selection
+	// selection-related methods
 	void select();
 	void deselect();
 	
-	// methodes relatives a la position
+	// position-related methods
 	void setPos(const QPointF &);
 	void setPos(qreal, qreal);
 	
-	// methodes relatives aux connexions internes
+	// methods related to internal connections
 	bool internalConnections();
 	void setInternalConnections(bool);
 	
-	// methodes relatives aux fichiers XML
+	// methods related to XML import/export
 	static bool valideXml(QDomElement &);
 	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
 	virtual QDomElement toXml(QDomDocument &, QHash<Terminal *, int> &) const;
 	
-	// methodes d'acces aux possibilites d'orientation
+	// orientation-related methods
 	bool setOrientation(QET::Orientation o);
 	const OrientationSet &orientation() const;
 	
@@ -128,7 +129,7 @@ class Element : public QObject, public QGraphicsItem {
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	
 	private:
-	bool internal_connections;
+	bool internal_connections_;
 	bool must_highlight_;
 	bool first_move_;
 	void drawSelection(QPainter *, const QStyleOptionGraphicsItem *);
@@ -137,27 +138,26 @@ class Element : public QObject, public QGraphicsItem {
 };
 
 /**
-	Permet de savoir si l'element accepte les connexions internes,
-	c'est-a-dire que ses bornes peuvent etre reliees entre elles
-	@return true si l'element accepte les connexions internes, false sinon
+	Indicate whether this element allows internal connections, i.e. whether its
+	terminals can be linked together using a conductor.
+	@return true if internal connections are accepted, false otherwise
 */
 inline bool Element::internalConnections() {
-	return(internal_connections);
+	return(internal_connections_);
 }
 
 /**
-	Permet de specifier si l'element accepte les connexions internes,
-	c'est-a-dire que ses bornes peuvent etre reliees entre elles
-	@param ic true pour que l'element accepte les connexions internes, false pour
-	qu'il les interdise
+	Specify whether this element allows internal connections, i.e. whether its
+	terminals can be linked together using a conductor.
+	@return true for internal connections to be accepted, false otherwise
 */
 inline void Element::setInternalConnections(bool ic) {
-	internal_connections = ic;
+	internal_connections_ = ic;
 }
 
 /**
-	Permet de connaitre l'orientation actuelle de l'element
-	@return L'orientation actuelle de l'element
+	Indicate the current orientation of this element
+	@return the current orientation of this element
 */
 inline const OrientationSet & Element::orientation() const {
 	return(ori);

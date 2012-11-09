@@ -28,13 +28,13 @@ class DiagramPosition;
 class TitleBlockTemplate;
 class TitleBlockTemplateRenderer;
 /**
-	Cette classe represente l'ensemble bordure + cartouche qui encadre le
-	schema electrique.
+	This class represents the border and the titleblock which frame a
+	particular electric diagram.
 */
 class BorderTitleBlock : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	BorderTitleBlock(QObject * = 0);
 	virtual ~BorderTitleBlock();
@@ -42,7 +42,7 @@ class BorderTitleBlock : public QObject {
 	private:
 	BorderTitleBlock(const BorderTitleBlock &);
 	
-	// methodes
+	// methods
 	public:
 	static int   minNbColumns();
 	static qreal minColumnsWidth();
@@ -51,100 +51,100 @@ class BorderTitleBlock : public QObject {
 	
 	void draw(QPainter *, qreal = 0.0, qreal = 0.0);
 	
-	// methodes d'acces en lecture aux dimensions
-	// colonnes
-	/// @return le nombre de colonnes du schema
-	int   nbColumns()           const { return(nb_columns);                    }
-	/// @return la largeur des colonnes en pixels
-	qreal columnsWidth()        const { return(columns_width);                 }
-	/// @return la taille de l'ensemble des colonnes, en-tete des lignes non inclus
-	qreal columnsTotalWidth()   const { return(nb_columns * columns_width);    }
-	/// @return la hauteur, en pixels, des en-tetes des colonnes
-	qreal columnsHeaderHeight() const { return(columns_header_height);         }
+	// methods to get dimensions
+	// columns
+	/// @return the number of columns
+	int   columnsCount() const { return(columns_count_); }
+	/// @return the columns width, in pixels
+	qreal columnsWidth() const { return(columns_width_); }
+	/// @return the total width of all columns, headers excluded
+	qreal columnsTotalWidth() const { return(columns_count_ * columns_width_); }
+	/// @return the column headers height, in pixels
+	qreal columnsHeaderHeight() const { return(columns_header_height_); }
 	
-	// lignes
-	/// @return le nombre de lignes du schema
-	int   nbRows()              const { return(nb_rows);                       }
-	/// @return la hauteur des lignes en pixels
-	qreal rowsHeight()          const { return(rows_height);                   }
-	/// @return la taille de l'ensemble des lignes, en-tete des colonnes non inclus
-	qreal rowsTotalHeight()     const { return(nb_rows * rows_height);         }
-	/// @return la largeur, en pixels, des en-tetes des lignes
-	qreal rowsHeaderWidth()     const { return(rows_header_width);             }
+	// rows
+	/// @return the number of rows
+	int rowsCount() const { return(rows_count_); }
+	/// @return the rows height, in pixels
+	qreal rowsHeight() const { return(rows_height_); }
+	/// @return the total height of all rows, headers excluded
+	qreal rowsTotalHeight() const { return(rows_count_ * rows_height_); }
+	/// @return la rows header width, in pixels
+	qreal rowsHeaderWidth() const { return(rows_header_width_); }
 	
-	// cadre sans le cartouche = schema
-	/// @return la largeur du schema, c'est-a-dire du cadre sans le cartouche
-	qreal diagramWidth()        const { return(columnsTotalWidth() + rowsHeaderWidth());    }
-	/// @return la hauteurdu schema, c'est-a-dire du cadre sans le cartouche
-	qreal diagramHeight()       const { return(rowsTotalHeight() + columnsHeaderHeight());  }
+	// border - title block = diagram
+	/// @return the diagram width, i.e. the width of the border without title block
+	qreal diagramWidth() const { return(columnsTotalWidth() + rowsHeaderWidth()); }
+	/// @return the diagram height, i.e. the height of the border without title block
+	qreal diagramHeight() const { return(rowsTotalHeight() + columnsHeaderHeight()); }
 	
-	// cartouche
-	/// @return la largeur du cartouche
-	qreal   titleBlockWidth()          const { return(titleblock_width);                 }
-	qreal   titleBlockHeight()         const;
+	// title block
+	/// @return the title block width
+	qreal titleBlockWidth()  const { return(titleblock_width_); }
+	qreal titleBlockHeight() const;
 	
-	// cadre avec le cartouche
-	/// @return la hauteur de la bordure
-	qreal   borderWidth()        const { return(diagramWidth());                  }
-	/// @return la hauteur de la bordure
-	qreal   borderHeight()       const { return(diagramHeight() + titleBlockHeight()); }
+	// border + title block
+	/// @return the border width
+	qreal borderWidth()  const { return(diagramWidth()); }
+	/// @return the border height
+	qreal borderHeight() const { return(diagramHeight() + titleBlockHeight()); }
 	
-	// methodes d'acces en lecture aux informations du cartouche
-	/// @return le champ "Auteur" du cartouche
-	QString author()              const { return(bi_author);             }
-	/// @return le champ "Date" du cartouche
-	QDate   date()                const { return(bi_date);               }
-	/// @return le champ "Titre" du cartouche
-	QString title()               const { return(bi_title);              }
-	/// @return le champ "Folio" du cartouche
-	QString folio()               const { return(bi_folio);              }
-	/// @return le champ "Fichier" du cartouche
-	QString fileName()            const { return(bi_filename);           }
+	// methods to get title block basic data
+	/// @return the value of the title block "Author" field
+	QString author() const { return(btb_author_); }
+	/// @return the value of the title block "Date" field
+	QDate date() const { return(btb_date_); }
+	/// @return the value of the title block "Title" field
+	QString title() const { return(btb_title_); }
+	/// @return the value of the title block "Folio" field
+	QString folio() const { return(btb_folio_); }
+	/// @return the value of the title block "File" field
+	QString fileName() const { return(btb_filename_); }
 	
-	// methodes d'acces en lecture aux options
+	// methods to get display options
 	/// @return true si le cartouche est affiche, false sinon
-	bool    titleBlockIsDisplayed()    const { return(display_titleblock);         }
+	bool titleBlockIsDisplayed() const { return(display_titleblock_); }
 	/// @return true si les entetes des colonnes sont affiches, false sinon
-	bool    columnsAreDisplayed() const { return(display_columns);       }
+	bool columnsAreDisplayed() const { return(display_columns_); }
 	/// @return true si les entetes des lignes sont affiches, false sinon
-	bool    rowsAreDisplayed()    const { return(display_rows);          }
+	bool rowsAreDisplayed() const { return(display_rows_); }
 	/// @return true si la bordure est affichee, false sinon
-	bool    borderIsDisplayed()   const { return(display_border);        }
+	bool borderIsDisplayed() const { return(display_border_); }
 	
-	// methodes d'acces en ecriture aux dimensions
-	void addColumn             ();
-	void addRow                ();
-	void removeColumn          ();
-	void removeRow             ();
-	void setNbColumns          (int);
-	void setNbRows             (int);
-	void setColumnsWidth       (const qreal &);
-	void setRowsHeight         (const qreal &);
+	// methods to set dimensions
+	void addColumn();
+	void addRow();
+	void removeColumn();
+	void removeRow();
+	void setColumnsCount(int);
+	void setRowsCount(int);
+	void setColumnsWidth(const qreal &);
+	void setRowsHeight(const qreal &);
 	void setColumnsHeaderHeight(const qreal &);
-	void setRowsHeaderWidth    (const qreal &);
-	void setDiagramHeight      (const qreal &);
-	void setTitleBlockWidth         (const qreal &);
-	void adjustTitleBlockToColumns  ();
+	void setRowsHeaderWidth(const qreal &);
+	void setDiagramHeight(const qreal &);
+	void setTitleBlockWidth(const qreal &);
+	void adjustTitleBlockToColumns();
 	
 	DiagramPosition convertPosition(const QPointF &);
 	
-	// methodes d'acces en ecriture aux informations du cartouche
-	/// @param author le nouveau contenu du champ "Auteur"
-	void setAuthor             (const QString &author)   { bi_author       = author;   }
-	/// @param date le nouveau contenu du champ "Date"
-	void setDate               (const QDate   &date)     { bi_date         = date;     }
-	/// @param title le nouveau contenu du champ "Titre"
-	void setTitle              (const QString &title) {
-		if (bi_title != title) {
-			bi_title = title;
+	// methods to set title block basic data
+	/// @param author the new value of the "Author" field
+	void setAuthor(const QString &author) { btb_author_ = author; }
+	/// @param author the new value of the "Date" field
+	void setDate(const QDate &date) { btb_date_ = date; }
+	/// @param author the new value of the "Title" field
+	void setTitle(const QString &title) {
+		if (btb_title_ != title) {
+			btb_title_ = title;
 			emit(diagramTitleChanged(title));
 		}
 	}
-	/// @param folio le nouveau contenu du champ "Folio"
-	void setFolio              (const QString &folio)    { bi_folio        = folio;    }
+	/// @param author the new value of the "Folio" field
+	void setFolio(const QString &folio) { btb_folio_ = folio; }
 	void setFolioData(int, int, const DiagramContext & = DiagramContext());
-	/// @param filename le nouveau contenu du champ "Fichier"
-	void setFileName           (const QString &filename) { bi_filename     = filename; }
+	/// @param author the new value of the "File" field
+	void setFileName(const QString &filename) { btb_filename_ = filename; }
 	
 	void titleBlockToXml(QDomElement &);
 	void titleBlockFromXml(const QDomElement &);
@@ -164,7 +164,7 @@ class BorderTitleBlock : public QObject {
 	void titleBlockTemplateChanged(const QString &);
 	void titleBlockTemplateRemoved(const QString &, const TitleBlockTemplate * = 0);
 	
-	// methodes d'acces en ecriture aux options
+	// methods to set display options
 	void displayTitleBlock(bool);
 	void displayColumns(bool);
 	void displayRows(bool);
@@ -175,27 +175,26 @@ class BorderTitleBlock : public QObject {
 	void updateDiagramContextForTitleBlock(const DiagramContext & = DiagramContext());
 	QString incrementLetters(const QString &);
 	
-	// signaux
 	signals:
 	/**
-		Signal emis lorsque la bordure change
-		@param old_border Ancienne bordure
-		@param new_border Nouvelle bordure
+		Signal emitted after the border has changed
+		@param old_border Former border
+		@param new_border New border
 	*/
 	void borderChanged(QRectF old_border, QRectF new_border);
 	/**
-		Signal emise lorsque des options d'affichage change
+		Signal emitted after display options have changed
 	*/
 	void displayChanged();
 	
 	/**
-		Signal emis lorsque le titre du schema change
+		Signal emitted after the title has changed
 	*/
 	void diagramTitleChanged(const QString &);
 	
 	/**
-		Signal emis lorsque le cartouche requiert une mise a jour des donnees
-		utilisees pour generer le folio.
+		Signal emitted when the title block requires its data to be updated in order
+		to generate the folio field.
 	*/
 	void needFolioData();
 	
@@ -206,43 +205,43 @@ class BorderTitleBlock : public QObject {
 	*/
 	void needTitleBlockTemplate(const QString &);
 	
-	// attributs
+	// attributes
 	private:
-	// informations du cartouche
-	QString bi_author;
-	QDate   bi_date;
-	QString bi_title;
-	QString bi_folio;
-	QString bi_final_folio;
+	// titleblock basic data
+	QString btb_author_;
+	QDate   btb_date_;
+	QString btb_title_;
+	QString btb_folio_;
+	QString btb_final_folio_;
 	int folio_index_;
 	int folio_total_;
-	QString bi_filename;
+	QString btb_filename_;
 	DiagramContext additional_fields_;
 	
-	// dimensions du cadre (lignes et colonnes)
-	// colonnes : nombres et dimensions
-	int    nb_columns;
-	qreal  columns_width;
-	qreal  columns_header_height;
+	// border dimensions (rows and columns)
+	// columns: number and dimensions
+	int columns_count_;
+	qreal columns_width_;
+	qreal columns_header_height_;
 	
-	// lignes : nombres et dimensions
-	int    nb_rows;
-	qreal  rows_height;
-	qreal  rows_header_width;
+	// rows: number and dimensions
+	int rows_count_;
+	qreal rows_height_;
+	qreal rows_header_width_;
 	
-	// dimensions du cartouche
-	qreal  titleblock_width;
-	qreal  titleblock_height;
+	// title block dimensions
+	qreal titleblock_width_;
+	qreal titleblock_height_;
 	
-	// rectangles utilises pour le dessin
-	QRectF  diagram;
-	QRectF  titleblock;
+	// rectangles used for drawing operations
+	QRectF diagram_rect_;
+	QRectF titleblock_rect_;
 	
-	// booleens pour les options de dessin
-	bool display_titleblock;
-	bool display_columns;
-	bool display_rows;
-	bool display_border;
-	TitleBlockTemplateRenderer *titleblock_template_renderer;
+	// display options
+	bool display_titleblock_;
+	bool display_columns_;
+	bool display_rows_;
+	bool display_border_;
+	TitleBlockTemplateRenderer *titleblock_template_renderer_;
 };
 #endif

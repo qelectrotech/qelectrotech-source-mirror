@@ -22,34 +22,34 @@
 class Conductor;
 class ConductorSegmentProfile;
 /**
-	Cette classe contient le profil (= les caracteristiques essentielles) d'un
-	conducteur.
+	This class represents the profile of a conductor, i.e. its primary
+	characteristics.
 */
 class ConductorProfile {
 	public:
-	// constructeurs, destructeur
+	// constructors, destructor
 	ConductorProfile();
 	ConductorProfile(Conductor *conductor);
 	ConductorProfile(const ConductorProfile &);
 	ConductorProfile &operator=(const ConductorProfile &);
 	virtual ~ConductorProfile();
 	
-	// attributs
+	// attributes
 	public:
-	/// Segment composant le profil du conducteur
+	/// Segments composing the conductor
 	QList<ConductorSegmentProfile *> segments;
-	/// Orientation de la borne de depart du profil
+	/// Orientation of the start terminal
 	QET::Orientation beginOrientation;
-	/// Orientation de la borne d'arrivee du profil
+	/// Orientation of the end terminal.
 	QET::Orientation endOrientation;
 	
-	// methodes
+	// methods
 	public:
 	bool isNull() const;
 	void setNull();
 	qreal width() const;
 	qreal height() const;
-	uint nbSegments(QET::ConductorSegmentType) const;
+	uint segmentsCount(QET::ConductorSegmentType) const;
 	QList<ConductorSegmentProfile *> horizontalSegments();
 	QList<ConductorSegmentProfile *> verticalSegments();
 	void fromConductor(Conductor *);

@@ -23,13 +23,13 @@ class ElementsCategory;
 class NamesListWidget;
 class QFileNameEdit;
 /**
-	Cette classe permet d'editer une categorie existante ou de creer une
-	categorie.
+	This class provides a dialog to edit an existing category or create a new
+	one.
 */
 class ElementsCategoryEditor : public QDialog {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementsCategoryEditor(const ElementsLocation &, bool = true, QWidget * = 0);
 	virtual ~ElementsCategoryEditor();
@@ -37,7 +37,7 @@ class ElementsCategoryEditor : public QDialog {
 	private:
 	ElementsCategoryEditor(const ElementsCategoryEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	ElementsCategory *category;
 	QDialogButtonBox *buttons;
@@ -46,7 +46,7 @@ class ElementsCategoryEditor : public QDialog {
 	QFileNameEdit *internal_name_;
 	bool mode_edit;
 	
-	// methodes
+	// methods
 	private:
 	void buildDialog();
 	

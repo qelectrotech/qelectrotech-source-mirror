@@ -45,12 +45,11 @@ class QTextOrientationSpinBoxWidget;
 class RecentFiles;
 
 /**
-	Cette classe represente l'application QElectroTech.
-	
+	This class represents the QElectroTech application.
 */
 class QETApp : public QETSingleApplication {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETApp(int &, char **);
 	virtual ~QETApp();
@@ -58,7 +57,7 @@ class QETApp : public QETSingleApplication {
 	private:
 	QETApp(const QETApp &);
 	
-	// methodes
+	// methods
 	public:
 	static QETApp *instance();
 	void setLanguage(const QString &);
@@ -103,7 +102,7 @@ class QETApp : public QETSingleApplication {
 	public:
 	static void overrideCommonElementsDir(const QString &);
 	private:
-	static QString common_elements_dir; ///< Dossier contenant la collection d'elements commune
+	static QString common_elements_dir; ///< Directory containing the common elements collection
 #endif
 #ifdef QET_ALLOW_OVERRIDE_CTBTD_OPTION
 	public:
@@ -115,11 +114,11 @@ class QETApp : public QETSingleApplication {
 	public:
 	static void overrideConfigDir(const QString &);
 	private:
-	static QString config_dir; ///< Dossier contenant la configuration et la collection d'elements de l'utilisateur
+	static QString config_dir; ///< Directory containing the user configuration and the custom elements collection
 #endif
 	public:
 	static void overrideLangDir(const QString &);
-	static QString lang_dir; ///< Dossier contenant les fichiers de langue
+	static QString lang_dir; ///< Directory containing localization files.
 	static QFont diagramTextsFont(qreal = -1.0);
 	static QETDiagramEditor *diagramEditorForFile(const QString &);
 	static QList<QETDiagramEditor *> diagramEditors();
@@ -135,7 +134,7 @@ class QETApp : public QETSingleApplication {
 	bool event(QEvent *);
 #endif
 	
-	// attributs
+	// attributes
 	private:
 	QTranslator qtTranslator;
 	QTranslator qetTranslator;
@@ -164,9 +163,9 @@ class QETApp : public QETSingleApplication {
 	bool every_template_visible;
 	QSignalMapper signal_map;
 	QSettings *qet_settings;
-	QETArguments qet_arguments_;        ///< Analyseur d'arguments
-	bool non_interactive_execution_;    ///< booleen indiquant si l'application va se terminer immediatement apres un court traitement
-	QPalette initial_palette_;          ///< Palette des couleurs systeme
+	QETArguments qet_arguments_;        ///< Comand-line arguments parser
+	bool non_interactive_execution_;    ///< Whether the application will end without any user interaction
+	QPalette initial_palette_;          ///< System color palette
 	
 	static FileElementsCollection *common_collection;
 	static FileElementsCollection *custom_collection;
@@ -209,7 +208,6 @@ class QETApp : public QETSingleApplication {
 	void configureQET();
 	void aboutQET();
 	
-	// methodes privees
 	private slots:
 	void cleanup();
 	
@@ -236,8 +234,8 @@ class QETApp : public QETSingleApplication {
 };
 
 /**
-	Cette classe represente le style de QElectroTech
-	Il s'agit de modifications simples appliquees aux styles communs de Qt
+	This class represents the custom QElectroTech style.
+	It implements simple modification such as extra standard icons.
 */
 class QETStyle : public QPlastiqueStyle {
 	Q_OBJECT

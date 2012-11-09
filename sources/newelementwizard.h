@@ -25,20 +25,21 @@ class OrientationSetWidget;
 class HotspotEditor;
 class QFileNameEdit;
 /**
-	Cette classe represente un dialogue qui permet a l'utilisateur de specifier
-	les premiers parametres de l'element qu'il va construire.
-	Ces parametres sont :
-	  - la categorie dans laquelle il faut enregistrer l'element
-	  - le nom du fichier dans lequel il faut enregistrer l'element
-	  - les noms de cet element
-	  - les dimensions
-	  - la position du hotspot
-	  - les orientations possibles
+	This class provides a wizard dialog enabling users to to specify the basic
+	parameters of the electrical elements they intend to draw.
+	
+	These parameters include:
+	  - the category the element should be saved to
+	  - the filename the element should be saved to
+	  - localized names
+	  - dimensions
+	  - hotspot position
+	  - allowed and default orientations
 */
 class NewElementWizard : public QWizard {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	NewElementWizard(QWidget * = 0, Qt::WindowFlags = 0);
 	virtual ~NewElementWizard();
@@ -46,12 +47,12 @@ class NewElementWizard : public QWizard {
 	private:
 	NewElementWizard(const NewElementWizard &);
 	
-	// methodes
+	// methods
 	public:
 	ElementsCategory *selectedCategory() const;
 	bool preselectCategory(ElementsCategory *);
 	
-	// attributs
+	// attributes
 	private:
 	enum WizardState { Category, Filename, Names, Dimensions, Orientations };
 	ElementsCategoriesWidget *categories_list;
@@ -63,7 +64,7 @@ class NewElementWizard : public QWizard {
 	QString chosen_file;
 	ElementsCategory *chosen_category;
 	
-	// methodes
+	// methods
 	private:
 	QWizardPage *buildStep1();
 	QWizardPage *buildStep2();

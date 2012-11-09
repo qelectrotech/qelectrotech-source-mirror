@@ -41,25 +41,25 @@ const qreal Diagram::margin = 5.0;
 */
 Diagram::Diagram(QObject *parent) :
 	QGraphicsScene(parent),
-	draw_grid(true),
-	use_border(true),
-	draw_terminals(true),
+	draw_grid_(true),
+	use_border_(true),
+	draw_terminals_(true),
 	draw_colored_conductors_(true),
 	project_(0),
 	read_only_(false),
 	diagram_qet_version_(-1)
 {
-	undo_stack = new QUndoStack();
-	qgi_manager = new QGIManager(this);
+	undo_stack_ = new QUndoStack();
+	qgi_manager_ = new QGIManager(this);
 	setBackgroundBrush(Qt::white);
-	conductor_setter = new QGraphicsLineItem(0, 0);
-	conductor_setter -> setZValue(1000000);
+	conductor_setter_ = new QGraphicsLineItem(0, 0);
+	conductor_setter_ -> setZValue(1000000);
 	QPen t;
 	t.setColor(Qt::black);
 	t.setWidthF(1.5);
 	t.setStyle(Qt::DashLine);
-	conductor_setter -> setPen(t);
-	conductor_setter -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
+	conductor_setter_ -> setPen(t);
+	conductor_setter_ -> setLine(QLineF(QPointF(0.0, 0.0), QPointF(0.0, 0.0)));
 	
 	// initialise les objets gerant les deplacements
 	elements_mover_ = new ElementsMover();           // deplacements d'elements/conducteurs/textes
@@ -80,9 +80,9 @@ Diagram::Diagram(QObject *parent) :
 */
 Diagram::~Diagram() {
 	// suppression de la liste des annulations - l'undo stack fait appel au qgimanager pour supprimer certains elements
-	delete undo_stack;
+	delete undo_stack_;
 	// suppression du QGIManager - tous les elements qu'il connait sont supprimes
-	delete qgi_manager;
+	delete qgi_manager_;
 	
 	// suppression des objets gerant les deplacements
 	delete elements_mover_;
@@ -120,7 +120,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 	p -> setBrush(Qt::white);
 	p -> drawRect(r);
 	
-	if (draw_grid) {
+	if (draw_grid_) {
 		// dessine les points de la grille
 		p -> setPen(Qt::black);
 		p -> setBrush(Qt::NoBrush);
@@ -141,7 +141,7 @@ void Diagram::drawBackground(QPainter *p, const QRectF &r) {
 		p -> drawPoints(points);
 	}
 	
-	if (use_border) border_and_titleblock.draw(p, margin, margin);
+	if (use_border_) border_and_titleblock.draw(p, margin, margin);
 	p -> restore();
 }
 
@@ -201,7 +201,7 @@ void Diagram::keyReleaseEvent(QKeyEvent *e) {
 bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::AspectRatioMode aspectRatioMode) {
 	// determine la zone source =  contenu du schema + marges
 	QRectF source_area;
-	if (!use_border) {
+	if (!use_border_) {
 		source_area = itemsBoundingRect();
 		source_area.translate(-margin, -margin);
 		source_area.setWidth (source_area.width () + 2.0 * margin);
@@ -248,7 +248,7 @@ bool Diagram::toPaintDevice(QPaintDevice &pix, int width, int height, Qt::Aspect
 QSize Diagram::imageSize() const {
 	// determine la zone source =  contenu du schema + marges
 	qreal image_width, image_height;
-	if (!use_border) {
+	if (!use_border_) {
 		QRectF items_rect = itemsBoundingRect();
 		image_width  = items_rect.width();
 		image_height = items_rect.height();
@@ -399,8 +399,8 @@ bool Diagram::initFromXml(QDomElement &document, QPointF position, bool consider
 	
 	// initialise le document XML interne a partir de l'element XML fourni en parametre
 	if (from_xml) {
-		xml_document.clear();
-		xml_document.appendChild(xml_document.importNode(document, true));
+		xml_document_.clear();
+		xml_document_.appendChild(xml_document_.importNode(document, true));
 		// a ce stade, le document XML interne contient le code XML qui a ete importe, et non pas une version re-exporte par la methode toXml()
 	}
 	return(from_xml);
@@ -585,8 +585,8 @@ void Diagram::write() {
 	@param element xml a enregistrer
 */
 void Diagram::write(const QDomElement &element) {
-	xml_document.clear();
-	xml_document.appendChild(xml_document.importNode(element, true));
+	xml_document_.clear();
+	xml_document_.appendChild(xml_document_.importNode(element, true));
 	emit(written());
 }
 
@@ -595,7 +595,7 @@ void Diagram::write(const QDomElement &element) {
 	si le document XML utilise en interne n'est pas vide), false sinon
 */
 bool Diagram::wasWritten() const {
-	return(!xml_document.isNull());
+	return(!xml_document_.isNull());
 }
 
 /**
@@ -606,7 +606,7 @@ QDomElement Diagram::writeXml(QDomDocument &xml_doc) const {
 	// si le schema n'a pas ete enregistre explicitement, on n'ecrit rien
 	if (!wasWritten()) return(QDomElement());
 	
-	QDomElement diagram_elmt = xml_document.documentElement();
+	QDomElement diagram_elmt = xml_document_.documentElement();
 	QDomNode new_node = xml_doc.importNode(diagram_elmt, true);
 	return(new_node.toElement());
 }
@@ -737,7 +737,7 @@ void Diagram::titleChanged(const QString &title) {
 */
 void Diagram::diagramTextChanged(DiagramTextItem *text_item, const QString &old_text, const QString &new_text) {
 	if (!text_item) return;
-	undo_stack -> push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
+	undo_stack_ -> push(new ChangeDiagramTextCommand(text_item, old_text, new_text));
 }
 
 /**

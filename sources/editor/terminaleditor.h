@@ -21,26 +21,24 @@
 #include "elementitemeditor.h"
 class PartTerminal;
 /**
-	Cette classe represente un editeur de borne.
-	Elle permet d'editer a travers une interface graphique les
-	proprietes d'une borne d'element.
+	This class provides a widget to edit terminals within the element editor.
 */
 class TerminalEditor : public ElementItemEditor {
 	Q_OBJECT
-	// Constructeurs, destructeur
+	// Constructors, destructor
 	public:
 	TerminalEditor(QETElementEditor *, PartTerminal * = 0, QWidget * = 0);
 	virtual ~TerminalEditor();
 	private:
 	TerminalEditor(const TerminalEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartTerminal *part;
 	QLineEdit *qle_x, *qle_y;
 	QComboBox *orientation;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

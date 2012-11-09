@@ -31,140 +31,139 @@ class ElementTextItem;
 class IndependentTextItem;
 
 /**
-	Cette classe represente l'action d'ajouter un element au schema
+	This command adds an element to a particular diagram.
 */
 class AddElementCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	AddElementCommand(Diagram *, Element *, const QPointF &, QUndoCommand * = 0);
 	virtual ~AddElementCommand();
 	private:
 	AddElementCommand(const AddElementCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// element ajoute
+	/// added element
 	Element *element;
-	/// schema sur lequel on ajoute l'element
+	/// diagram the element is added to
 	Diagram *diagram;
-	/// position de l'element sur le schema
+	/// position of the element on the diagram
 	QPointF position;
 };
 
 /**
-	Cette classe represente l'action d'ajouter du texte au schema
+	This command adds an independent (i.e. related to neither an element nor a
+	conductor) text item to a particular diagram.
 */
 class AddTextCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	AddTextCommand(Diagram *, IndependentTextItem *, const QPointF &, QUndoCommand * = 0);
 	virtual ~AddTextCommand();
 	private:
 	AddTextCommand(const AddTextCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// texte ajoute
+	/// added text item
 	IndependentTextItem *textitem;
-	/// schema sur lequel on ajoute le texte
+	/// diagram the text item is added to
 	Diagram *diagram;
-	/// position du texte sur le schema
+	/// position of the text item on the diagram
 	QPointF position;
 };
 
 /**
-	Cette classe represente l'action d'ajouter un conducteur au schema
+	This command adds a conductor to a particular diagram.
 */
 class AddConductorCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	AddConductorCommand(Diagram *, Conductor *, QUndoCommand * = 0);
 	virtual ~AddConductorCommand();
 	private:
 	AddConductorCommand(const AddConductorCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// conducteur ajoute
+	/// added conductor
 	Conductor *conductor;
-	/// schema auquel on ajoute le conducteur
+	/// diagram the conductor is added to
 	Diagram *diagram;
 };
 
 /**
-	Cette classe represente l'action de supprimer des elements, conducteurs
-	et / ou textes independants d'un schema
+	This command removes content from a particular diagram.
 */
 class DeleteElementsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	DeleteElementsCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
 	virtual ~DeleteElementsCommand();
 	private:
 	DeleteElementsCommand(const DeleteElementsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// contenu enleve
+	/// removed content
 	DiagramContent removed_content;
-	/// schema dont on supprime des elements et conducteurs
+	/// diagram which the content is removed from
 	Diagram *diagram;
 };
 
 /**
-	Cette classe represente l'action de coller quelque chose sur un schema
+	This command pastes some content onto a particular diagram.
 */
 class PasteDiagramCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PasteDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
 	virtual ~PasteDiagramCommand();
 	private:
 	PasteDiagramCommand(const PasteDiagramCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// contenu  ajoute
+	/// pasted content
 	DiagramContent content;
-	/// schema sur lequel on colle les elements et conducteurs
+	/// diagram content is pasted onto
 	Diagram *diagram;
-	/// entien pour filtrer le contenu du schema
+	/// filter stating what kinds of items should be pasted
 	int filter;
-	/// booleen pour empecher le premier appel a redo
+	/// prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de supprimer des elements et / ou
-	conducteurs d'un schema
+	This command cuts content from a particular diagram.
 */
 class CutDiagramCommand : public DeleteElementsCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	CutDiagramCommand(Diagram *, const DiagramContent &, QUndoCommand * = 0);
 	virtual ~CutDiagramCommand();
@@ -173,89 +172,84 @@ class CutDiagramCommand : public DeleteElementsCommand {
 };
 
 /**
-	Cette classe represente l'action de deplacer des elements et des
-	conducteurs sur un schema
+	This command moves some content on a particular diagram.
 */
 class MoveElementsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	MoveElementsCommand(Diagram *, const DiagramContent &, const QPointF &m, QUndoCommand * = 0);
 	virtual ~MoveElementsCommand();
 	private:
 	MoveElementsCommand(const MoveElementsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	virtual void move(const QPointF &);
 	virtual void addConductorTextItemMovement(ConductorTextItem *, const QPointF &, const QPointF &);
 	
-	// attributs
+	// attributes
 	private:
-	/// schema sur lequel on deplace les elements
+	/// diagram the movement takes place on.
 	Diagram *diagram;
-	/// contenu a deplacer
+	/// moved content
 	DiagramContent content_to_move;
-	/// mouvement effectue
+	/// applied movement
 	QPointF movement;
 	/**
-		Deplacer des elements ou champs de texte entraine des conducteurs.
-		Soit ces conducteurs sont betement deplaces, soit leur trajet est
-		recalcule.
-		Si leur trajet est recalcule, les champs de texte dont la position a ete
-		personnalisee par l'utilisateur
-		Liste des champs de texte de conducteurs dont la position a ete modifiee
-		par des mises
+		Moving elements impacts their conductors: either they are moved, or their path
+		needs to be generated again, which in turn tends to move their child text
+		items. This attribute holds both new and previous positions for each moved
+		text item.
 	*/
 	QHash<ConductorTextItem *, QPair<QPointF, QPointF> > moved_conductor_texts_;
-	/// booleen pour ne pas executer le premier redo()
+	/// prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de deplacer des champs de texte rattaches
-	a des elements sur un schema
+	This command moves text items related to elements on a particular diagram.
 */
 class MoveElementsTextsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	MoveElementsTextsCommand(Diagram *, const QSet<ElementTextItem *> &, const QPointF &m, QUndoCommand * = 0);
 	virtual ~MoveElementsTextsCommand();
 	private:
 	MoveElementsTextsCommand(const MoveElementsTextsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	virtual void move(const QPointF &);
 	
-	// attributs
+	// attributes
 	private:
-	/// schema sur lequel on deplace les elements
+	/// diagram the movement takes place on.
 	Diagram *diagram;
-	/// liste des champs de texte a deplacer
+	/// text items to be moved
 	QSet<ElementTextItem *> texts_to_move;
-	/// mouvement effectue
+	/// applied movement
 	QPointF movement;
-	/// booleen pour ne pas executer le premier redo()
+	/// prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de deplacer des champs de texte rattaches
-	a des conducteurs sur un schema
+	This command moves text items related to conductors on a particular
+	diagram.
 */
 class MoveConductorsTextsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	MoveConductorsTextsCommand(Diagram *, QUndoCommand * = 0);
 	virtual ~MoveConductorsTextsCommand();
 	private:
 	MoveConductorsTextsCommand(const MoveConductorsTextsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
@@ -264,56 +258,56 @@ class MoveConductorsTextsCommand : public QUndoCommand {
 	private:
 	void regenerateTextLabel();
 	
-	// attributs
+	// attributes
 	private:
-	/// schema sur lequel on deplace les elements
+	/// diagram the movement takes place on.
 	Diagram *diagram;
-	/// liste des champs de texte a deplacer
+	/// text items to be moved
 	QHash<ConductorTextItem *, QPair<QPointF, bool> > texts_to_move_;
-	/// booleen pour ne pas executer le premier redo()
+	/// prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente la modification d'un champ de texte
+	This commad modifies a text item.
 */
 class ChangeDiagramTextCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeDiagramTextCommand(DiagramTextItem *, const QString &before, const QString &after, QUndoCommand * = 0);
 	virtual ~ChangeDiagramTextCommand();
 	private:
 	ChangeDiagramTextCommand(const ChangeDiagramTextCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// DiagramTextItem modifie
+	/// modified text item
 	DiagramTextItem *text_item;
-	/// texte avant changement
+	/// former text
 	QString text_before;
-	/// texte apres changement
+	/// new text
 	QString text_after;
-	/// booleen pour ne pas executer le premier redo()
+	/// prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de pivoter plusieurs elements ou champs de textes avec un meme angle
+	This command rotates several elements or text items by a particular angle.
 */
 class RotateElementsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	RotateElementsCommand(const QHash<Element *, QET::Orientation> &elements, const QList<DiagramTextItem *> &, QUndoCommand * = 0);
 	virtual ~RotateElementsCommand();
 	private:
 	RotateElementsCommand(const RotateElementsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
@@ -321,21 +315,22 @@ class RotateElementsCommand : public QUndoCommand {
 	void setAppliedRotationAngle(const qreal &);
 	static void rotateElement(Element *, QET::Orientation);
 	
-	// attributs
+	// attributes
 	private:
-	/// elements pivotes associes a leur ancienne orientation
+	/// hold rotated elements along with their former orientation
 	QHash<Element *, QET::Orientation> elements_to_rotate;
-	/// textes a pivoter
+	/// text items to be rotated
 	QList<DiagramTextItem *> texts_to_rotate;
-	/// angle de rotation a appliquer aux textes (valeur utilisee dans le redo
+	/// angle of rotation to be applied to text items
 	qreal applied_rotation_angle_;
 };
 
 /**
-	Cette classe represente l'action d'orienter plusieurs textes a un meme angle de rotation bien precis
+	This command directs several text items to a same particular angle of
+	rotation.
 */
 class RotateTextsCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	RotateTextsCommand(const QHash<DiagramTextItem *, double> &, double, QUndoCommand * = 0);
 	RotateTextsCommand(const QList<DiagramTextItem *> &,         double, QUndoCommand * = 0);
@@ -343,7 +338,7 @@ class RotateTextsCommand : public QUndoCommand {
 	private:
 	RotateTextsCommand(const RotateTextsCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
@@ -351,152 +346,153 @@ class RotateTextsCommand : public QUndoCommand {
 	private:
 	void defineCommandName();
 	
-	// attributs
+	// attributes
 	private:
-	/// textes pivotes associes a leur ancienne orientation
+	/// hold rotated text items along with their former angle of rotation
 	QHash<DiagramTextItem *, double> texts_to_rotate;
-	/// angle de rotation a appliquer aux textes
+	/// angle of rotation of all text items after the command
 	double applied_rotation_angle_;
 };
 
 /**
-	Cette classe represente l'action de modifier un conducteur
+	This command changes a particular conductor.
 */
 class ChangeConductorCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeConductorCommand(Conductor *, const ConductorProfile &, const ConductorProfile &, Qt::Corner, QUndoCommand * = 0);
 	virtual ~ChangeConductorCommand();
 	private:
 	ChangeConductorCommand(const ChangeConductorCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	virtual void setConductorTextItemMove(const QPointF &, const QPointF &);
 	
-	// attributs
+	// attributes
 	private:
-	/// conducteur modifie
+	/// changed conductor
 	Conductor *conductor;
-	/// profil avant changement
+	/// profile before the change
 	ConductorProfile old_profile;
-	/// profil apres changement
+	/// profile after the change
 	ConductorProfile new_profile;
-	/// Type de trajet
+	/// Path type of the modified conductor
 	Qt::Corner path_type;
-	/// Position du champ de texte avant le changement
+	/// position of the text item before the change
 	QPointF text_pos_before_mov_;
-	/// Position du champ de texte apres le changement
+	/// position of the text item after the change
 	QPointF text_pos_after_mov_;
-	/// booleen pour ne pas executer le premier redo()
+	/// prevent the first call to redo()
 	bool first_redo;
 };
 
 /**
-	Cette classe represente l'action de reinitialiser des conducteurs
+	This command resets conductor paths.
 */
 class ResetConductorCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ResetConductorCommand(const QHash<Conductor *, ConductorProfilesGroup> &, QUndoCommand * = 0);
 	virtual ~ResetConductorCommand();
 	private:
 	ResetConductorCommand(const ResetConductorCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// conducteurs reinitialises associes a leur ancien profil
+	/// impacted conductors along with their former profiles
 	QHash<Conductor *, ConductorProfilesGroup> conductors_profiles;
 };
 
 /**
-	Cette classe represente l'action de modifier les informations du cartouche d'un schema
+	This command changes the title block properties for a particular diagram.
 */
 class ChangeTitleBlockCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeTitleBlockCommand(Diagram *, const TitleBlockProperties &, const TitleBlockProperties &, QUndoCommand * = 0);
 	virtual ~ChangeTitleBlockCommand();
 	private:
 	ChangeTitleBlockCommand(const ChangeTitleBlockCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// schema modifie
+	/// modified diagram
 	Diagram *diagram;
-	/// proprietes avant changement
+	/// properties before the change
 	TitleBlockProperties old_titleblock;
-	/// proprietes apres changement
+	/// properties after the change
 	TitleBlockProperties new_titleblock;
 };
 
 /**
-	Cette classe represente l'action de modifier les dimensions d'un schema
+	This command changes the border properties of a particular diagram.
 */
 class ChangeBorderCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeBorderCommand(Diagram *, const BorderProperties &, const BorderProperties &, QUndoCommand * = 0);
 	virtual ~ChangeBorderCommand();
 	private:
 	ChangeBorderCommand(const ChangeBorderCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	
-	// attributs
+	// attributes
 	private:
-	/// schema modifie
+	/// modified diagram
 	Diagram *diagram;
 	public:
-	/// anciennes dimensions du schema
+	/// properties before the change
 	BorderProperties old_properties;
-	/// nouvelles dimensions du schema
+	/// properties after the change
 	BorderProperties new_properties;
 };
 
 /**
-	Cette classe represente l'action de modifier les proprietes d'un conducteur
+	This command changes the properties for a particular conductor.
 */
 class ChangeConductorPropertiesCommand : public QUndoCommand {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ChangeConductorPropertiesCommand(Conductor *, QUndoCommand * = 0);
 	virtual ~ChangeConductorPropertiesCommand();
 	private:
 	ChangeConductorPropertiesCommand(const ChangeConductorPropertiesCommand &);
 	
-	// methodes
+	// methods
 	public:
 	virtual void undo();
 	virtual void redo();
 	virtual void setOldSettings(const ConductorProperties &);
 	virtual void setNewSettings(const ConductorProperties &);
 	
-	// attributs
+	// attributes
 	private:
-	/// conducteur modifie
+	/// modified conductor
 	Conductor *conductor;
-	/// anciennes proprietes
+	/// properties before the change
 	ConductorProperties old_properties;
-	/// nouvelles proprietes
+	/// properties after the change
 	ConductorProperties new_properties;
-	/// booleens indiquant si les proprietes ont ete definies ou non
+	/// track whether pre-change properties were set
 	bool old_settings_set;
+	/// track whether post-change properties were set
 	bool new_settings_set;
 };
 #endif

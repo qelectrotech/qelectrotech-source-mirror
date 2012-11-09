@@ -26,21 +26,21 @@ class ElementsCollectionCache;
 class ElementDefinition;
 class MoveElementsHandler;
 /**
-	Cette classe abstraite represente une collection d'elements. Il peut s'agir
-	de la collection QET, de la collection utilisateur ou encore de la
-	collection fournie par un fichier projet.
+	This abstract class represents an elements collection. For instance, it may
+	represent the collection provided along with QElectroTech, users custom
+	collections or collections embedded within QET project files.
 */
 class ElementsCollection : public ElementsCollectionItem {
 	Q_OBJECT
 	public:
-	// constructeurs, destructeur
+	// constructors, destructor
 	ElementsCollection(ElementsCollectionItem * = 0);
 	virtual ~ElementsCollection();
 	
 	private:
 	ElementsCollection(const ElementsCollection &);
 	
-	// Implementations de methodes virtuelles pures des classes parentes
+	// Implementations of pure virtual methodes from parent classes
 	public:
 	virtual QString title() const;
 	virtual void setTitle(const QString &);
@@ -81,10 +81,10 @@ class ElementsCollection : public ElementsCollectionItem {
 	virtual bool isEmpty();
 	virtual int count();
 	
-	// Methodes propres a la classe ElementsCollection
+	// Methods specific to the ElementsCollection class
 	public:
 	/**
-		@return la categorie racine de cette collection
+		@return the root category of this collection
 	*/
 	virtual ElementsCategory *rootCategory() = 0;
 	virtual ElementsCollectionItem *item(const QString &, bool = true);
@@ -95,15 +95,15 @@ class ElementsCollection : public ElementsCollectionItem {
 	signals:
 	void elementsCollectionChanged(ElementsCollection *);
 	
-	// attributs
+	// attributes
 	protected:
 	/// Title to be used when referring to this collection
 	QString title_;
 	/// Icon to be displayed when representing this collection
 	QIcon icon_;
-	/// Protocole utilise pour acceder a cette collection
+	/// "Protocol" used to access this collection
 	QString protocol_;
-	/// Projet auquel appartient cette collection
+	/// Project this collection belongs to, if any
 	QETProject *project_;
 	/// Optional cache used to improve performance
 	ElementsCollectionCache *cache_;

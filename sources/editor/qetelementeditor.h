@@ -26,72 +26,71 @@
 class ElementItemEditor;
 class ElementView;
 /**
-	Cette classe represente un editeur d'element. Elle permet a l'utilisateur
-	de dessiner, modifier et parametrer un element electrique. Le dessin se
-	fait par ajout de parties (Part).
+	This class represents an element editor, allowing users to draw, change and
+	configure a particular electrical element.
 */
 class QETElementEditor : public QETMainWindow {
 	Q_OBJECT
 	
-	// constructeur, destructeur
+	// constructor, destructor
 	public:
 	QETElementEditor(QWidget * = 0);
 	virtual ~QETElementEditor();
 	private:
 	QETElementEditor(const QETElementEditor &);
 	
-	// attributs
+	// attributes
 	private:
-	/// booleen indiquant si l'editeur est en mode "lecture seule" ou non
+	/// whether the editor is "read-only"
 	bool read_only;
 	/// menus
 	QMenu *file_menu, *edit_menu, *paste_from_menu, *display_menu, *tools_menu;
-	/// vue sur la scene d'edition
+	/// view widget for the editing scene
 	ElementView *ce_view;
-	/// scene d'edition
+	/// editing scene
 	ElementScene *ce_scene;
-	/// container pour les widgets d'edition des parties
+	/// container for widgets dedicated to primitive edition
 	QDockWidget *tools_dock;
-	/// Pile de widgets pour tools_dock
+	/// Stack of widgets for tools_dock
 	QStackedWidget *tools_dock_stack_;
-	/// label affiche lors de la selection de plusieurs elements
+	/// label displayed when several primitives are selected
 	QLabel *default_informations;
-	/// Hash permettant d'acceder aux widgets d'editions disponibles
+	/// Hash associating primitive names with their matching edition widget
 	QHash<QString, ElementItemEditor *> editors_;
-	/// ScrollArea pour le DockWidget affichant des infos sur la partie selectionnee
+	/// ScrollArea for the tools_dock DockWidget
 	QScrollArea *tools_dock_scroll_area_;
-	/// container pour la liste des annulations
+	/// container for the undo list
 	QDockWidget *undo_dock;
-	/// Container pour la liste des parties
+	/// Container for the list of existing primitives
 	QDockWidget *parts_dock;
-	/// Liste des parties
+	/// List of primitives
 	QListWidget *parts_list;
-	/// actions du menu fichier
+	/// actions for the "file" menu
 	QAction *new_element, *open, *open_file, *save, *save_as, *save_as_file, *reload, *quit;
-	/// actions du menu edition
+	/// actions for the "edit" menu
 	QAction *selectall, *deselectall, *inv_select;
 	QAction *cut, *copy, *paste, *paste_in_area, *paste_from_file, *paste_from_elmt;
 	QAction *undo, *redo;
 	QAction *edit_delete, *edit_size_hs, *edit_names, *edit_ori, *edit_author;
 	QAction *edit_raise, *edit_lower, *edit_backward, *edit_forward;
-	/// actions du menu affichage
+	/// actions for the "display" menu
 	QAction *zoom_in, *zoom_out, *zoom_fit, *zoom_reset;
-	/// barres d'outils
+	/// toolbars
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
-	/// actions de la barre d'outils
+	/// toolbars actions
 	QActionGroup *parts;
 	QAction *move, *add_line, *add_circle, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
 	QAction *add_arc, *add_terminal, *add_textfield;
-	/// titre minimal
+	/// minimum window title
 	QString min_title;
-	/// Nom de fichier de l'element edite
+	/// filename of the currently edited element
 	QString filename_;
-	/// Emplacement de l'element edite
+	/// location of the currently edited element
 	ElementsLocation location_;
-	/// booleen indiquant si l'element en cours d'edition provient d'un fichier ou d'un emplacement
+	/// whether the currently edited element comes from a file or a location
 	bool opened_from_file;
 	
-	// methodes
+	// methods
 	public:
 	void setSize(const QSize &);
 	QSize size() const;
@@ -158,7 +157,7 @@ class QETElementEditor : public QETMainWindow {
 };
 
 /**
-	@param siz La nouvelle taille de l'element edite
+	@param siz The new size for the currently edited element
 */
 inline void QETElementEditor::setSize(const QSize &siz) {
 	ce_scene -> setWidth(siz.width());
@@ -166,7 +165,7 @@ inline void QETElementEditor::setSize(const QSize &siz) {
 }
 
 /**
-	@return la taille de l'element edite
+	@return the size of the currently edited element
 */
 inline QSize QETElementEditor::size() const {
 	return(
@@ -178,56 +177,56 @@ inline QSize QETElementEditor::size() const {
 }
 
 /**
-	@param hs Le nouveau point de saisie de l'element edite
+	@param hs The new hotspot for the currently edited element
 */
 inline void QETElementEditor::setHotspot(const QPoint &hs) {
 	ce_scene -> setHotspot(hs);
 }
 
 /**
-	@return le point de saisie de l'element edite
+	@return the hotspot of the currently edited element
 */
 inline QPoint QETElementEditor::hotspot() const {
 	return(ce_scene -> hotspot());
 }
 
 /**
-	@param nameslist le nouvel ensemble de noms de l'element edite
+	@param nameslist the new list of names for the currently edited element
 */
 inline void QETElementEditor::setNames(const NamesList &nameslist) {
 	ce_scene -> setNames(nameslist);
 }
 
 /**
-	@param orientation_set le nouvel ensemble d'orientations de l'element edite
+	@param orientation_set the new set of orientations for the currently edited element
 */
 inline void QETElementEditor::setOrientations(const OrientationSet &orientation_set) {
 	ce_scene -> setOrientations(orientation_set);
 }
 
 /**
-	@return le nouvel ensemble d'orientations de l'element edite
+	@param the set of orientations for the currently edited element
 */
 inline OrientationSet QETElementEditor::orientations() const {
 	return(ce_scene -> orientations());
 }
 
 /**
-	@return l'emplacement de l'element edite
+	@return the location of the currently edited element
 */
 inline ElementsLocation QETElementEditor::location() const {
 	return(location_);
 }
 
 /**
-	@return le nom de fichier de l'element edite
+	@return the filename of the currently edited element
 */
 inline QString QETElementEditor::fileName() const {
 	return(filename_);
 }
 
 /**
-	@return la scene d'edition de l'element
+	@return the editing scene
 */
 inline ElementScene *QETElementEditor::elementScene() const {
 	return(ce_scene);

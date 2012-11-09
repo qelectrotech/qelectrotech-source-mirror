@@ -20,14 +20,13 @@
 #include <QtGui>
 class ElementsCategoriesList;
 /**
-	Cette classe represente un widget integrant la liste des categories
-	de l'utilisteur surplombee de boutons permettant d'ajouter, de modifier
-	ou de supprimer des categories
+	This class provides a widget listing available elements categories along
+	with buttons to add, change or create categories.
 */
 class ElementsCategoriesWidget : public QWidget {
 	Q_OBJECT
 	
-	// Constructeurs, destructeur
+	// Constructors, destructor
 	public:
 	ElementsCategoriesWidget(QWidget * = 0);
 	virtual ~ElementsCategoriesWidget();
@@ -35,7 +34,7 @@ class ElementsCategoriesWidget : public QWidget {
 	private:
 	ElementsCategoriesWidget(const ElementsCategoriesWidget &);
 	
-	// attributs
+	// attributes
 	private:
 	ElementsCategoriesList *elementscategorieslist;
 	QToolBar *toolbar;
@@ -44,7 +43,7 @@ class ElementsCategoriesWidget : public QWidget {
 	QAction *action_open;
 	QAction *action_delete;
 	
-	// methodes
+	// methods
 	public:
 	ElementsCategoriesList &elementsCategoriesList() const;
 	
@@ -56,7 +55,7 @@ class ElementsCategoriesWidget : public QWidget {
 };
 
 /**
-	@return La liste des categories d'elements du widget
+	@return The ElementsCategoriesList embedded within this widget.
 */
 inline ElementsCategoriesList &ElementsCategoriesWidget::elementsCategoriesList() const {
 	return(*elementscategorieslist);

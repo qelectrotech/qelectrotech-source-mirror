@@ -21,24 +21,23 @@
 #include "elementslocation.h"
 #include <QtGui>
 /**
-	Cette classe represente une couche d'abstraction pour supprimer
-	un element de la collection d'elements.
-	Elle demande notamment confirmation a l'utilisateur.
+	This class provides an abstract way to delete an element from its parent
+	collection. Especially, it requires a confirmation from users.
 */
 class ElementDeleter : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementDeleter(const ElementsLocation &, QWidget * = 0);
 	virtual ~ElementDeleter();
 	private:
 	ElementDeleter(const ElementsCategory &);
 	
-	// methodes
+	// methods
 	public slots:
 	bool exec();
 	
-	// attributs
+	// attributes
 	private:
 	ElementsCollectionItem *element;
 };

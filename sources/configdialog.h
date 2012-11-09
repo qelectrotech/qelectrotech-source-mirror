@@ -24,20 +24,20 @@ class QListWidgetItem;
 class QStackedWidget;
 class QDialogButtonBox;
 /**
-	Cette classe represente le dialogue de configuration de QElectroTech.
-	Il s'agit d'un dialogue affichant des "pages de configuration".
-	Chaque page de configuration doit fournir une icone et un titre.
+	This class represents the configuration dialog for QElectroTech.
+	It displays "configuration pages", each page having to provide an icon and
+	a title.
 */
 class ConfigDialog : public QDialog {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ConfigDialog(QWidget * = 0);
 	virtual ~ConfigDialog();
 	private:
 	ConfigDialog(const ConfigDialog &);
 	
-	// methodes
+	// methods
 	public slots:
 	void changePage(QListWidgetItem *, QListWidgetItem *);
 	void applyConf();
@@ -47,7 +47,7 @@ class ConfigDialog : public QDialog {
 	void buildPagesList();
 	void addPageToList(ConfigPage *);
 	
-	// attributs
+	// attributes
 	private:
 	QListWidget *pages_list;
 	QStackedWidget *pages_widget;

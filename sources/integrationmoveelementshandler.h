@@ -20,26 +20,25 @@
 #include "basicmoveelementshandler.h"
 #include <QtGui>
 /**
-	Cette classe implemente la classe strategie MoveElementsHandler.
-	Elle correspond a un BasiMoveElementsHandler configure pour repondre
-	QET::Abort a toutes les questions.
-	Elle redefinit seulement la methode elementAlreadyExists pour, dans le cadre
-	de l'integration d'un element dans un projet demander a l'utilisateur s'il souahite :
-	  * ecraser l'element precedent, manifestement different
-	  * conserver l'element precedent, en renommant le nouveau
-	  * annuler l'integration de l'element dans le projet
+	This class implements the MoveElementsHandler Strategy class.
+	It acts like a BasiMoveElementsHandler configured to answer QET::Abort to any question.
+	Please note this class was designed with the context of integrating an element definition into a project in mind.
+	For this purpose, the elementAlreadyExists method was redefined to ask users whether they wish to:
+	  * erase a different, already-existing element,
+	  * keep the already-existing element by renaming the new one,
+	  * or cancel the integration.
 */
 class IntegrationMoveElementsHandler : public BasicMoveElementsHandler {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	IntegrationMoveElementsHandler(QWidget * = 0);
 	virtual ~IntegrationMoveElementsHandler();
 	private:
 	IntegrationMoveElementsHandler(const IntegrationMoveElementsHandler &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QET::Action elementAlreadyExists(ElementDefinition *, ElementDefinition *);
 	virtual QString nameForRenamingOperation();
@@ -54,11 +53,11 @@ class IntegrationMoveElementsHandler : public BasicMoveElementsHandler {
 	private slots:
 	void correctRadioButtons();
 	
-	// attributs
+	// attributes
 	private:
-	QWidget *parent_widget_;              ///< Widget a utiliser comme parent pour l'affichage des dialogues
-	QString rename_;                      ///< Nom a utiliser lors d'une operation de renommage
-	QDialog *integ_dialog_;               ///< Dialogue en cas de conflit lors de l'integration d'un element
+	QWidget *parent_widget_;              ///< Widget to be used as parent when displaying dialogs
+	QString rename_;                      ///< Name to be used when renaming the integrated element
+	QDialog *integ_dialog_;               ///< Dialog in case of conflict when integration an element
 	QLabel *dialog_label_;
 	QVBoxLayout *dialog_vlayout_;
 	QGridLayout *dialog_glayout;

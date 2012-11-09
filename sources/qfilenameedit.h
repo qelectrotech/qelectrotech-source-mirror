@@ -22,16 +22,17 @@
 #include <QString>
 class QETRegExpValidator;
 /**
-	Cette classe represente un champ de texte dedie a la saisie d'un nom de
-	fichier. Il permet de saisir un nom correspondant a l'expression reguliere
-	^[0-9a-z_-\.]+$. Cela permet d'eviter les problemes avec des caracteres
-	accentues, en majuscules, sortant de la table ASCII ou non-imprimables, ce
-	qui devrait ameliorer la portabilite des elements crees par l'utilisateur.
+	This class represents a textfield dedicated to input a portable filename (not
+	a path).
+	It enables users to input a name matching the regular expression
+	^[0-9a-z_-\.]+$, thus avoiding problems with diacritics, non-printable,
+	non-ASCII or uppercase characters, which should improve the portability of
+	elements created by users.
 */
 class QFileNameEdit : public QLineEdit {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QFileNameEdit(QWidget * = 0);
 	QFileNameEdit(const QString &, QWidget * = 0);
@@ -39,7 +40,7 @@ class QFileNameEdit : public QLineEdit {
 	private:
 	QFileNameEdit(const QFileNameEdit &);
 	
-	// methodes
+	// methods
 	public:
 	bool isEmpty();
 	bool isValid();
@@ -51,7 +52,7 @@ class QFileNameEdit : public QLineEdit {
 	private slots:
 	void validationFailed();
 	
-	// attributs
+	// attributes
 	private:
 	QRegExp regexp_;
 	QETRegExpValidator *validator_;

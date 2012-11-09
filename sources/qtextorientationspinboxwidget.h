@@ -20,29 +20,28 @@
 #include <QtGui>
 #include "qtextorientationwidget.h"
 /**
-	Cette classe est un widget regroupant cote a cote un QTextOrientationWidget
-	et un QSpinBox.
+	This class provides a widget grouping a QTextOrientationWidget and QSpinBox
+	next to each other.
 	@see QTextOrientationWidget
 */
 class QTextOrientationSpinBoxWidget : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QTextOrientationSpinBoxWidget(QWidget * = 0);
 	virtual ~QTextOrientationSpinBoxWidget();
 	private:
 	QTextOrientationSpinBoxWidget(const QTextOrientationSpinBoxWidget &);
 	
-	// signaux
 	signals:
 	/**
-		Signaux emis lorsque l'utilisateur a fini d'editer l'orientation
+		Signals emitted when users have finished editing the orientation.
 	*/
 	void editingFinished(double);
 	void editingFinished();
 	
-	// methodes
+	// methods
 	public:
 	QTextOrientationWidget *orientationWidget() const;
 	QDoubleSpinBox *spinBox() const;
@@ -61,7 +60,7 @@ class QTextOrientationSpinBoxWidget : public QWidget {
 	private slots:
 	void emitChangeSignals();
 	
-	// attributs
+	// attributes
 	private:
 	QTextOrientationWidget *orientation_widget_;
 	QDoubleSpinBox *spin_box_;

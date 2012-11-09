@@ -31,10 +31,9 @@ class PartCircle;
 class PartPolygon;
 class PartArc;
 /**
-	Cette classe est le canevas permettant l'edition d'un element electrique.
-	Elle regroupe les differentes parties composant le dessin de l'element mais
-	egalement les informations complementaires : dimensions, orientations,
-	noms.
+	This class is the canvas allowing the visual edition of an electrial element.
+	It displays the various primitives composing the drawing of the element, the
+	border due to its fixed size and its hotspot.
 */
 class ElementScene : public QGraphicsScene {
 	Q_OBJECT
@@ -42,7 +41,7 @@ class ElementScene : public QGraphicsScene {
 	// enum
 	enum Behavior { Normal, Line, Rectangle, Circle, Ellipse, Polygon, Text, Terminal, Arc, TextField, PasteArea };
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementScene(QETElementEditor *, QObject * = 0);
 	virtual ~ElementScene();
@@ -50,37 +49,36 @@ class ElementScene : public QGraphicsScene {
 	private:
 	ElementScene(const ElementScene &);
 	
-	// attributs
+	// attributes
 	private:
-	/// longueur de l'element en dizaines de pixels
+	/// element width, in dozens of pixels
 	uint _width;
-	/// hauteur de l'element en dizaines de pixels
+	/// element height, in dozens of pixels
 	uint _height;
-	/// position du point de saisie
+	/// hotspot position
 	QPoint _hotspot;
-	/// Liste des noms de l'element
+	/// List of localized names
 	NamesList _names;
-	/// Liste des orientations de l'element
+	/// Set of orientations
 	OrientationSet ori;
-	/// booleen indiquant si les bornes de l'element peuvent etre reliees a des bornes de ce meme element
+	/// whether internal connections (i.e. connections between terminals of a same element) are accepted
 	bool internal_connections;
-	/// Chaine contenant les informations complementaires de l'element
+	/// Extra informations
 	QString informations_;
-	/// Gestionnaire de QGraphicsItem
+	/// QGraphicsItem manager
 	QGIManager qgi_manager;
-	/// Pile des actions annulables
+	/// Undo stack
 	QUndoStack undo_stack;
 	/**
-		fsi_pos (first selected item pos) : Position du premier item
-		selectionne : utilise pour annuler les deplacements a la souris ;
-		egalement utilise pour gerer les deplacements avec les fleches du
-		clavier.
+		fsi_pos (first selected item pos) : Position of the forst selected item: used
+		to cancel mouse movements; also used to handle movements using keybard
+		arrwows.
 	*/
 	QPointF fsi_pos;
 	QPointF moving_press_pos;
 	bool moving_parts_;
 	
-	/// Variables relatives a la gestion du dessin des parties sur la scene
+	/// Variables related to drawing
 	Behavior behavior;
 	PartLine *current_line;
 	PartRectangle *current_rectangle;
@@ -90,19 +88,19 @@ class ElementScene : public QGraphicsScene {
 	PartArc *current_arc;
 	QETElementEditor *element_editor;
 	
-	/// Variables relatives a la gestion de la zone de collage sur la scene
+	/// Variables to manage the paste area on the scene
 	QGraphicsRectItem *paste_area_;
 	QRectF defined_paste_area_;
 	
-	/// Variables relatives au copier-coller avec decalage
+	/// Variables to handle copy/paste with offset
 	QString last_copied_;
 	
-	///< Taille horizontale de la grille
+	///< Size of the horizontal grid step
 	int x_grid;
-	///< Taille verticale de la grille
+	///< Size of the vertical grid step
 	int y_grid;
 	
-	// methodes
+	// methods
 	public:
 	void setWidth(const uint &);
 	uint width() const;
@@ -188,22 +186,22 @@ class ElementScene : public QGraphicsScene {
 	
 	signals:
 	/**
-		Signal emis lorsque la scene exige que l'editeur d'element repasse
-		en mode normal
+		Signal emitted when the scene requires the element editor to switch back to
+		normal mode.
 	*/
 	void needNormalMode();
-	/// Signal emis lorsqu'une ou plusieurs parties sont ajoutees
+	/// Signal emitted after one or several parts were added
 	void partsAdded();
-	/// Signal emis lorsqu'une ou plusieurs parties sont enlevees
+	/// Signal emitted after one or several parts were removed
 	void partsRemoved();
-	/// Signal emis lorsque la zValue d'une ou plusieurs parties change
+	/// Signal emitted when the zValue of one or several parts change
 	void partsZValueChanged();
-	/// Signal emis lorsque l'utilisateur a fini de choisir une zone pour un copier/coller
+	/// Signal emitted when users have defined the copy/paste area
 	void pasteAreaDefined(const QRectF &);
 };
 
 /**
-	@param wid Nouvelle largeur de l'element edite
+	@param wid the new width for the currently edited element
 */
 inline void ElementScene::setWidth(const uint &wid) {
 	_width = wid;
@@ -212,14 +210,14 @@ inline void ElementScene::setWidth(const uint &wid) {
 }
 
 /**
-	@return la largeur de l'element edite
+	@return the height of the currently edited element
 */
 inline uint ElementScene::width() const {
 	return(_width * 10);
 }
 
 /**
-	@param hei Nouvelle hauteur de l'element edite
+	@param hei the new height for the currently edited element
 */
 inline void ElementScene::setHeight(const uint &hei) {
 	_height = hei;
@@ -228,77 +226,77 @@ inline void ElementScene::setHeight(const uint &hei) {
 }
 
 /**
-	@return la largeur de l'element edite
+	@return the width of the currently edited element
 */
 inline uint ElementScene::height() const {
 	return(_height * 10);
 }
 
 /**
-	@param hs Nouveau point de saisie de l'element edite
+	@param hs the new hotspot for the currently edited element
 */
 inline void ElementScene::setHotspot(const QPoint &hs) {
 	_hotspot = hs;
 }
 
 /**
-	@return le point de saisie de l'element edite
+	@return the hotspot of the currently edited element
 */
 inline QPoint ElementScene::hotspot() const {
 	return(_hotspot);
 }
 
 /**
-	@param nameslist Nouvel ensemble de noms de l'element edite
+	@param nameslist New set of naes for the currently edited element
 */
 inline void ElementScene::setNames(const NamesList &nameslist) {
 	_names = nameslist;
 }
 
 /**
-	@return l'ensemble de noms de l'element edite
+	@return the list of names of the currently edited element
 */
 inline NamesList ElementScene::names() const {
 	return(_names);
 }
 
 /**
-	@return l'ensemble d'orientations de l'element edite
+	@return the orientation set of the currently edited element
 */
 inline OrientationSet ElementScene::orientations() {
 	return(ori);
 }
 
 /**
-	@param orientation_set Nouvel ensemble d'orientations de l'element edite
+	@param orientation_set the new orientation set for the currently edited element
 */
 inline void ElementScene::setOrientations(const OrientationSet &orientation_set) {
 	ori = orientation_set;
 }
 
 /**
-	@return true si les connexions internes sont acceptees, false sinon
+	@return whether internal connections are accepted
 */
 inline bool ElementScene::internalConnections() {
 	return(internal_connections);
 }
 
 /**
-	@param ic true pour que les connexions internes soient acceptees, false sinon
+	@param ic true for internal connections to be accepted, false otherwise
 */
 inline void ElementScene::setInternalConnections(bool ic) {
 	internal_connections = ic;
 }
 
 /**
-	@return les informations complementaires de cet element
+	@return extra informations of the currently edited element
 */
 inline QString ElementScene::informations() const {
 	return(informations_);
 }
 
 /**
-	@param infos les nouvelles informations complementaires de cet element
+	@param infos new extra information for the currently edited element
 */
 inline void ElementScene::setInformations(const QString &infos) {
 	informations_ = infos;

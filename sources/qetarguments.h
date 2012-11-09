@@ -19,15 +19,14 @@
 #define QET_ARGUMENTS_H
 #include <QtCore>
 /**
-	Cette classe represente un ensemble d'arguments que l'application peut
-	recevoir en parametres. Initialisee a partir d'une liste de chaine de
-	caracteres, chaque instance de cette classe permet d'acceder aux differents
-	types de fichiers et options passes en parametres.
+	This class represents a set of arguments the application has received as
+	parameters. Initialized from a list of strings, an instance of this class
+	provides access to the differents options and files given on the command line.
 */
 class QETArguments : public QObject {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETArguments(QObject * = 0);
 	QETArguments(const QList<QString> &, QObject * = 0);
@@ -35,7 +34,7 @@ class QETArguments : public QObject {
 	QETArguments &operator=(const QETArguments &);
 	virtual ~QETArguments();
 	
-	// methodes
+	// methods
 	public:
 	virtual void setArguments(const QList<QString> &);
 	virtual QList<QString> arguments() const;
@@ -69,7 +68,7 @@ class QETArguments : public QObject {
 	void handleFileArgument(const QString &);
 	void handleOptionArgument(const QString &);
 	
-	// attributs
+	// attributes
 	private:
 	QList<QString> project_files_;
 	QList<QString> element_files_;

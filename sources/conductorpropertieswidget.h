@@ -20,14 +20,13 @@
 #include "conductorproperties.h"
 #include <QWidget>
 /**
-	Ce widget permet a l utilisateur d'editer les proprietes d'un conducteur.
-	Par proprietes, on entend non pas le trajet effectue par le conducteur mais
-	les options supplementaires : symboles unifilaires, presence ou non d'un
-	champ de texte, contenu de ce champ de texte, etc.
+	This widget enables users to change the properties of a particular
+	conductor; these properties include singleline symbols, style, color, and
+	conductor type but exclude the path it draws.
 */
 class ConductorPropertiesWidget : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ConductorPropertiesWidget(QWidget * = 0);
 	ConductorPropertiesWidget(const ConductorProperties &, QWidget * = 0);
@@ -36,7 +35,7 @@ class ConductorPropertiesWidget : public QWidget {
 	private:
 	ConductorPropertiesWidget(const ConductorPropertiesWidget  &);
 	
-	// methodes
+	// methods
 	public:
 	void setConductorProperties(const ConductorProperties &);
 	ConductorProperties conductorProperties() const;
@@ -57,7 +56,7 @@ class ConductorPropertiesWidget : public QWidget {
 	protected:
 	void focusInEvent(QFocusEvent *);
 	
-	// attributs prives
+	// private attributes
 	private:
 	QButtonGroup *radio_buttons;
 	QRadioButton *simple;
@@ -76,7 +75,7 @@ class ConductorPropertiesWidget : public QWidget {
 	
 	ConductorProperties properties_;
 	
-	// methodes privees
+	// private methods
 	void buildInterface();
 	void buildConnections();
 	void destroyConnections();

@@ -19,20 +19,19 @@
 #define _QET_H
 #include <QtXml>
 /**
-	Ce fichier contient des fonctions utiles pouvant etre appelees depuis
-	n'importe ou. Il contient egalement des enums utilises dans plusieurs
-	classes de l'application
+	This file provides useful functions and enums that may be used from
+	anywhere else within the QElectroTech application.
 */
 namespace QET {
-	/// version de QElectroTech (utilisee pour estampiller les projets et elements)
+	/// QElectroTech version (as string, used to mark projects and elements XML documents)
 	const QString version = "0.3";
-	/// version affichee de QElectroTech
+	/// QElectroTech displayed version
 	const QString displayedVersion = "0.3a";
 	QString license();
-	/// Orientation (utilise pour les bornes mais aussi pour les elements)
+	/// Orientation (used for electrical elements and their terminals)
 	enum Orientation {North, East, South, West};
 	
-	/// Mouvements orientes
+	/// Oriented movements
 	enum OrientedMovement {
 		ToNorth,
 		ToNorthEast,
@@ -44,28 +43,28 @@ namespace QET {
 		ToNorthWest
 	};
 	
-	/// Types de segment de conducteurs
+	/// Known kinds of conductor segments
 	enum ConductorSegmentType {
-		Horizontal = 1, ///< Segment horizontal
-		Vertical = 2,   ///< Segment vertical
-		Both = 3        ///< Segment en biais / invalide
+		Horizontal = 1, ///< Horizontal segment 
+		Vertical = 2,   ///< Vertical segment 
+		Both = 3        ///< Invalid segment
 	};
 	
 	/**
-		Cet enum represente les differents embouts possibles pour les
-		extremites d'une ligne.
+		This enum lists the various available endings for line primitives when drawing
+		an electrical element.
 	*/
 	enum EndType {
-		None,      ///< Ligne normale
-		Simple,    ///< Triangle sans base
+		None,      ///< Regular line
+		Simple,    ///< Base-less triangle
 		Triangle,  ///< Triangle
-		Circle,    ///< Cercle
-		Diamond    ///< Losange
+		Circle,    ///< Circle
+		Diamond    ///< Diamond
 	};
 	
 	/**
-		Cet enum represente les differents items manipulables dans une
-		collection d'elements.
+		This enums lists the various kind of items users can manage within the
+		application.
 	*/
 	enum ItemType {
 		Element                           =    1,
@@ -91,25 +90,25 @@ namespace QET {
 	};
 	
 	/**
-		Cet enum represente les differentes facons de gerer un probleme lors de
-		la recopie ou du deplacement d'un element ou d'une categorie.
+		This enums lists the various ways to handle a standard problem when copying
+		or moving element items (collections, categories, elements).
 		@see MoveElementsHandler
 	*/
 	enum Action {
-		Retry,   ///< il faut reessayer l'operation
-		Ignore,  ///< il faut passer a la suite
-		Erase,   ///< il faut ecraser le contenu cible
-		Abort,   ///< il faut arreter : ignorer l'item en cours et ne pas continuer
-		Managed, ///< le cas a ete gere par l'objet delegue : ne pas le traiter et passer a la suite
-		Rename   ///< il faut renommer la cible
+		Retry,   ///< The operation must be tried again
+		Ignore,  ///< Skip the current item
+		Erase,   ///< Erase the target content
+		Abort,   ///< abort the whole operation, ignoring the curent item
+		Managed, ///< the current item was handled by the Strategy object: do not treat it and continue
+		Rename   ///< the target has to be renamed
 	};
 	
 	/**
-		Cet enum represente la zone d'un schema a exporter / imprimer
+		This enum represents diagram areas that may be exported/printed.
 	*/
 	enum DiagramArea {
-		BorderArea,      ///< Exporte le schema avec son cadre et son cartouche
-		ElementsArea     ///< Exporte le contenu du schema sans le cadre et le cartouche
+		BorderArea,      ///< Export the diagram along with its border and title block
+		ElementsArea     ///< Export the content of the diagram only
 	};
 	
 	/// enum used to specify the type of a length

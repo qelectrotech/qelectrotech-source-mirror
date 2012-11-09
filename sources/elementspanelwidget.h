@@ -20,13 +20,14 @@
 #include <QtGui>
 #include "elementspanel.h"
 /**
-	Cette classe est un widget qui contient le panel d'elements surplombe d'une
-	barre d'outils avec differentes actions pour gerer les elements.
+	This class embeds an elements panel under a toolbar providing various actions
+	to manage elements.
+	@see ElementsPanel
 */
 class ElementsPanelWidget : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementsPanelWidget(QWidget * = 0);
 	virtual ~ElementsPanelWidget();
@@ -34,7 +35,7 @@ class ElementsPanelWidget : public QWidget {
 	private:
 	ElementsPanelWidget(const ElementsPanelWidget &);
 	
-	// attributs
+	// attributes
 	private:
 	ElementsPanel *elements_panel;
 	QToolBar *toolbar, *filter_toolbar;
@@ -51,7 +52,7 @@ class ElementsPanelWidget : public QWidget {
 	ElementsCollectionItem *dnd_item_src_, *dnd_item_dst_;
 	QProgressBar *progress_bar_;
 	
-	// methodes
+	// methods
 	public:
 	inline ElementsPanel &elementsPanel() const;
 	
@@ -110,7 +111,7 @@ class ElementsPanelWidget : public QWidget {
 };
 
 /**
-	@return Le panel d'elements imbrique dans ce widget
+	@return The elements panel embedded within this widget.
 */
 inline ElementsPanel &ElementsPanelWidget::elementsPanel() const {
 	return(*elements_panel);

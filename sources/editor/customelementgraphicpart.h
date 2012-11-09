@@ -23,44 +23,43 @@
 class QETElementEditor;
 typedef CustomElementGraphicPart CEGP;
 /**
-	Cette classe represente une partie graphique d'element
-	Elle encapsule des methodes afin de gerer les attributs de style communs
-	a la plupart des parties d'elements 
+	This class represents an element visual/geometric primitive. It provides
+	methods to manage style attributes common to most primitives.
 */
 class CustomElementGraphicPart : public CustomElementPart {
 	public:
-	/// Qualifie le style de ligne utilise pour dessiner la partie
+	/// This enum lists the various line styles available to draw primitives.
 	enum LineStyle {
-		NormalStyle, ///< Ligne pleine
-		DashedStyle, ///< Ligne pointillee (tirets)
-		DottedStyle  ///< Ligne pointillee (points)
+		NormalStyle, ///< Normal line
+		DashedStyle, ///< Dashed line
+		DottedStyle  ///< Dotted line
 	};
 	
-	/// Qualifie l'epaisseur de ligne utilisee pour dessiner la partie
+	/// This enum lists the various line weights available to draw primitives.
 	enum LineWeight {
-		NormalWeight, ///< Ligne normale
-		ThinWeight,   ///< Ligne fine
-		NoneWeight    ///< Ligne invisible
+		NormalWeight, ///< Normal line
+		ThinWeight,   ///< Thin line
+		NoneWeight    ///< Invisible line
 	};
 	
-	/// Qualifie la couleur utilisee pour remplir la partie
+	/// This enum lists the various filling colors available to draw primitives.
 	enum Filling {
-		NoneFilling,  ///< Remplissage transparent
-		BlackFilling, ///< Remplissage en noir
-		WhiteFilling  ///< Remplissage en blanc
+		NoneFilling,  ///< No filling (i.e. transparent)
+		BlackFilling, ///< Black filling
+		WhiteFilling  ///< White filling
 	};
 	
-	/// Qualifie la couleur de ligne utilisee pour dessiner la partie
+	/// This enum lists the various line colors available to draw primitives.
 	enum Color {
-		BlackColor, ///< Ligne noire
-		WhiteColor  ///< Ligne blanche
+		BlackColor, ///< Black line
+		WhiteColor  ///< White line
 	};
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	/**
-		Constructeur
-		@param editor Editeur d'element auquel cette partie est rattachee
+		Constructor
+		@param editor Element editor this primitive lives in.
 	*/
 	CustomElementGraphicPart(QETElementEditor *editor) :
 		CustomElementPart(editor),
@@ -72,11 +71,11 @@ class CustomElementGraphicPart : public CustomElementPart {
 	{
 	};
 	
-	/// Destructeur
+	/// Destructor
 	virtual ~CustomElementGraphicPart() {
 	};
 	
-	// attributs
+	// attributes
 	private:
 	LineStyle _linestyle;
 	LineWeight _lineweight;
@@ -84,7 +83,7 @@ class CustomElementGraphicPart : public CustomElementPart {
 	Color _color;
 	bool _antialiased;
 	
-	//methodes
+	// methods
 	public:
 	void setLineStyle(LineStyle);
 	void setLineWeight(LineWeight);
@@ -109,75 +108,75 @@ class CustomElementGraphicPart : public CustomElementPart {
 };
 
 /**
-	Change le style de trait
-	@param ls Le nouveau style de trait
+	Set the primitive line style.
+	@param ls the new line style
 */
 inline void CustomElementGraphicPart::setLineStyle(LineStyle ls) {
 	_linestyle = ls;
 }
 
 /**
-	Change l'epaisseur de trait
-	@param lw La nouvelle epaisseur de trait
+	Set the primitive line weight.
+	@param lw the new line weight
 */
 inline void CustomElementGraphicPart::setLineWeight(LineWeight lw) {
 	_lineweight = lw;
 }
 
 /**
-	Change la couleur de remplissage
-	@param f La nouvelle couleur de remplissage
+	Set the filling color.
+	@param f the new filling color
 */
 inline void CustomElementGraphicPart::setFilling(Filling f) {
 	_filling = f;
 }
 
 /**
-	Change la couleur de trait
-	@param c La nouvelle couleur de trait
+	Set the line color.
+	@param c the new line color
 */
 inline void CustomElementGraphicPart::setColor(Color c) {
 	_color = c;
 }
 
 /**
-	@return Le style de trait
+	@return the current line style
 */
 inline CustomElementGraphicPart::LineStyle CustomElementGraphicPart::lineStyle() const {
 	return(_linestyle);
 }
 
 /**
-	@return L'epaisseur de trait
+	@return the current line weight
 */
 inline CustomElementGraphicPart::LineWeight CustomElementGraphicPart::lineWeight() const {
 	return(_lineweight);
 }
 
 /**
-	@return La couleur de remplissage
+	@return the current filling color
 */
 inline CustomElementGraphicPart::Filling CustomElementGraphicPart::filling() const {
 	return(_filling);
 }
 
 /**
-	@return La couleur de trait
+	@return the current line color
 */
 inline CustomElementGraphicPart::Color CustomElementGraphicPart::color() const {
 	return(_color);
 }
 
 /**
-	Definit si la partie doit etre antialiasee ou non
-	@param aa True pour activer l'antialiasing, false pour le desactiver
+	Set whether the primitive should be drawn antialiased.
+	@param aa True to enable antialiasing, false to disable it.
 */
 inline void CustomElementGraphicPart::setAntialiased(bool aa) {
 	_antialiased = aa;
 }
 
 /**
-	@return true si la partie est antialiasee, false sinon
+	@return whether the primitive is drawn antialiased.
 */
 inline bool CustomElementGraphicPart::antialiased() const {
 	return(_antialiased);

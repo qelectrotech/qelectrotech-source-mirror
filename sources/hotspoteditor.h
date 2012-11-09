@@ -20,13 +20,13 @@
 #include <QtGui>
 #include "diagram.h"
 /**
-	Ce widget permet a l'utilisateur d'editer les dimensions ainsi que le point
-	de saisie d'un element.
+	This widget enable users to edit the dimensions and the hotspot of an
+	electrical element.
 */
 class HotspotEditor : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	HotspotEditor(QWidget * = 0);
 	virtual ~HotspotEditor() {};
@@ -34,7 +34,7 @@ class HotspotEditor : public QWidget {
 	private:
 	HotspotEditor(const HotspotEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	QLabel *informations_label_;
 	QSpinBox *sb_width;
@@ -49,7 +49,7 @@ class HotspotEditor : public QWidget {
 	bool parts_rect_enabled;
 	QVBoxLayout *vlayout;
 	
-	// methodes
+	// methods
 	public:
 	void setElementWidth(uint);
 	void setElementHeight(uint);

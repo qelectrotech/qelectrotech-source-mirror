@@ -21,18 +21,16 @@
 #include "customelementgraphicpart.h"
 #include "qet.h"
 /**
-	Cette classe represente une ligne pouvant etre utilisee pour composer le
-	dessin d'un element dans l'editeur d'element.
-	Une ligne est composee de deux points. Elle peut comporter des extremites
-	speciales definissables grace aux methodes setFirstEndType et
-	setSecondEndType. La taille des extremites est definissable via les
-	methodes setFirstEndLength et setSecondEndLength.
-	A noter que les extremites ne sont pas dessinees si la longueur requise
-	pour leur dessin n'est pas contenue dans la ligne. S'il n'y a de la place
-	que pour une seule extremite, c'est la premiere qui est privilegiee.
+	This class represents a line primitive which may be used to compose the
+	drawing of an electrical element within the element editor. Lines may have
+	specific visual ends (e.g. arrows) through the setFirstEndType and
+	setSecondEndType methods. Their size can be defined using the
+	setFirstEndLength and setSecondEndLength methods. Please note ends are not
+	drawn if the required length for their drawing is longer than the line itself.
+	In case there is room for a single end only, the first one get priority.
 */
 class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartLine(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartLine();
@@ -40,20 +38,21 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	private:
 	PartLine(const PartLine &);
 	
-	// attributs
+	// attributes
 	private:
 	QET::EndType first_end;
 	qreal first_length;
 	QET::EndType second_end;
 	qreal second_length;
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1104 };
 	
 	/**
-		permet de caster un QGraphicsItem en PartLine avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartLine.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);

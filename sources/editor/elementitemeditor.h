@@ -22,21 +22,20 @@ class QETElementEditor;
 class ElementScene;
 class CustomElementPart;
 /**
-	Cette classe est la classe de base pour les editeurs de parties dans
-	l'editeur d'element. Elle fournit des methodes pour acceder facilement
-	a l'editeur, a la pile d'annulation, a la scene d'edition ou encore pour
-	ajouter facilement une annulation de type ChangePartCommand.
+	This is the base class for primitives editors within the element editor. It
+	provides methods to access the editor itself, the undo stack, the edition
+	scene and even a method to easily take a ChangePartCommand into account.
 */
 class ElementItemEditor : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementItemEditor(QETElementEditor *, QWidget * = 0);
 	virtual ~ElementItemEditor() {};
 	private:
 	ElementItemEditor(const ElementItemEditor &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QETElementEditor *elementEditor() const;
 	virtual ElementScene *elementScene() const;
@@ -49,7 +48,7 @@ class ElementItemEditor : public QWidget {
 	virtual CustomElementPart *currentPart() const = 0;
 	virtual void updateForm() = 0;
 	
-	// attributs
+	// attributes
 	private:
 	QETElementEditor *element_editor;
 	QString element_type_name;

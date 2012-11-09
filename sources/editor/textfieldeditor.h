@@ -22,21 +22,18 @@
 class PartTextField;
 class QTextOrientationSpinBoxWidget;
 /**
-	Cette classe represente un editeur de champ de texte
-	Elle permet d'editer a travers une interface graphique les
-	proprietes d'un champ de texte : taille de la police, texte par
-	defaut et position.
+	This class provides a widget to edit text fields within the element editor.
 */
 class TextFieldEditor : public ElementItemEditor {
 	Q_OBJECT
-	// Constructeurs, destructeur
+	// Constructors, destructor
 	public:
 	TextFieldEditor(QETElementEditor *, PartTextField * = 0, QWidget * = 0);
 	virtual ~TextFieldEditor();
 	private:
 	TextFieldEditor(const TextFieldEditor &);
 	
-	// attributs
+	// attributes
 	private:
 	PartTextField *part;
 	QLineEdit *qle_x, *qle_y, *qle_text;
@@ -44,7 +41,7 @@ class TextFieldEditor : public ElementItemEditor {
 	QCheckBox *rotate;
 	QTextOrientationSpinBoxWidget *rotation_angle_;
 	
-	// methodes
+	// methods
 	public:
 	virtual bool setPart(CustomElementPart *);
 	virtual CustomElementPart *currentPart() const;

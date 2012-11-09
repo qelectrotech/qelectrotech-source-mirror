@@ -21,26 +21,26 @@
 #include "elementslocation.h"
 #include <QtGui>
 /**
-	Cette classe represente une couche d'abstraction pour supprimer
-	une categorie d'elements et les elements qu'elle contient.
-	Si la categorie racine d'une collection est fournie, elle sera
-	videe apres un avertissement.
-	Cette classe demande toujours confirmation a l'utilisateur par deux fois.
+	This class provide an abstract way to delete an elements category along with
+	its child elements and subcategories. It always requires a double confirmation
+	from users before actually proceeding to the deletion.
+	If the deletion of a whole elements collection is required, this class will
+	require an extra confirmation.
 */
 class ElementsCategoryDeleter : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementsCategoryDeleter(const ElementsLocation &, QWidget * = 0);
 	virtual ~ElementsCategoryDeleter();
 	private:
 	ElementsCategoryDeleter(const ElementsCategory &);
 	
-	// methodes
+	// methods
 	public slots:
 	bool exec();
 	
-	// attributs
+	// attributes
 	private:
 	ElementsCollectionItem *category;
 };

@@ -26,12 +26,13 @@ class Element;
 class IndependentTextItem;
 class QETDiagramEditor;
 /**
-	Classe representant graphiquement un schema electrique
+	This class provides a widget to render an electric diagram in an editable,
+	interactive way.
 */
 class DiagramView : public QGraphicsView {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	DiagramView(Diagram * = 0, QWidget * = 0);
 	virtual ~DiagramView();
@@ -39,7 +40,7 @@ class DiagramView : public QGraphicsView {
 	private:
 	DiagramView(const DiagramView &);
 	
-	// attributs
+	// attributes
 	private:
 	Diagram *scene;
 	QMenu *context_menu;
@@ -52,7 +53,7 @@ class DiagramView : public QGraphicsView {
 	ElementsLocation next_location_;
 	QPoint next_position_;
 	
-	// methodes
+	// methods
 	public:
 	QString title() const;
 	void editDiagramProperties();
@@ -60,7 +61,7 @@ class DiagramView : public QGraphicsView {
 	void removeColumn();
 	void addRow();
 	void removeRow();
-	/// @return Le schema visualise par ce DiagramView
+	/// @return the diagram rendered by this view
 	Diagram *diagram() { return(scene); }
 	QETDiagramEditor *diagramEditor() const;
 	bool hasSelectedItems();
@@ -96,23 +97,23 @@ class DiagramView : public QGraphicsView {
 	bool addElementAtPos(const ElementsLocation &, const QPoint &);
 	
 	signals:
-	/// Signal emis lorsque la selection change
+	/// Signal emitted after the selection changed
 	void selectionChanged();
-	/// Signal emis lorsque le mode de selection change
+	/// Signal emitted after the selection mode changed
 	void modeChanged();
-	/// Signal emis lorsqu'un texte a ete pose
+	/// Signal emitted after a text was added
 	void textAdded(bool);
-	/// Signal emis lorsque le titre du schema change
+	/// Signal emitted after the diagram title changed
 	void titleChanged(DiagramView *, const QString &);
-	/// Signal emis avant l'integration d'un element
+	/// Signal emitted before integrating an element
 	void aboutToAddElement();
 	/// Signal emitted before integrating a title block template
 	void aboutToSetDroppedTitleBlockTemplate(const TitleBlockTemplateLocation &);
-	/// Signal emis lorsque l'utilisateur souhaite retrouver un element du schema dans les collections
+	/// Signal emitted when users wish to locate an element from the diagram within elements collection
 	void findElementRequired(const ElementsLocation &);
-	/// Signal emis lorsque l'utilisateur souhaite editer un element du schema
+	/// Signal emitted when users wish to edit an element from the diagram
 	void editElementRequired(const ElementsLocation &);
-	/// Signal emitted when the user wants to edit and/or duplicate an existing title block template
+	/// Signal emitted when users want to edit and/or duplicate an existing title block template
 	void editTitleBlockTemplate(const QString &, bool);
 	
 	public slots:

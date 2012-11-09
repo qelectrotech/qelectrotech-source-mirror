@@ -22,19 +22,18 @@
 class DiagramContextWidget;
 class TitleBlockTemplatesCollection;
 /**
-	Ce widget permet d'editer un objet TitleBlockProperties, c'est-a-dire les
-	valeurs affichees par le cartouche d'un schema.
+	This widget enable users to edit the properties of a title block.
 */
 class TitleBlockPropertiesWidget : public QWidget {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock = TitleBlockProperties(), bool = false, QWidget * = 0);
 	virtual ~TitleBlockPropertiesWidget();
 	private:
 	TitleBlockPropertiesWidget(const TitleBlockPropertiesWidget &);
 	
-	// methodes
+	// methods
 	public:
 	TitleBlockProperties titleBlockProperties() const;
 	void setTitleBlockProperties(const TitleBlockProperties &);
@@ -49,14 +48,12 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QString currentTitleBlockTemplateName() const;
 	void setCurrentTitleBlockTemplateName(const QString &);
 	
-	// slots:
 	private slots:
 	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
 	void duplicateCurrentTitleBlockTemplate();
     void setDateNow();
 	
-	// private methods
 	private:
 	void initWidgets(const TitleBlockProperties &);
 	void initLayouts();
@@ -64,7 +61,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	signals:
 	void editTitleBlockTemplate(const QString &, bool);
 	
-	// attributs
+	// attributes
 	private:
 	QStackedLayout *stack_layout;
 	QLabel       *titleblock_template_label;

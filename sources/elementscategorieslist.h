@@ -25,13 +25,12 @@ class ElementsCollection;
 class ElementsCategory;
 class ElementDefinition;
 /**
-	Cette classe fournit une liste graphique des categories d'elements de
-	l'utilisateur.
+	This class provides a visual listing of available elements categories.
 */
 class ElementsCategoriesList : public GenericPanel {
 	Q_OBJECT
 	
-	// Constructeurs, destructeur
+	// Constructors, destructor
 	public:
 	ElementsCategoriesList(bool = false, uint = QET::All, QWidget * = 0);
 	virtual ~ElementsCategoriesList();
@@ -39,7 +38,7 @@ class ElementsCategoriesList : public GenericPanel {
 	private:
 	ElementsCategoriesList(const ElementsCategoriesList &);
 	
-	// methodes
+	// methods
 	public:
 	ElementsLocation selectedLocation() const;
 	bool selectLocation(const ElementsLocation &);
@@ -57,7 +56,7 @@ class ElementsCategoriesList : public GenericPanel {
 	signals:
 	void locationChanged(const ElementsLocation &);
 	
-	// attributs
+	// attributes
 	private:
 	bool display_elements_;
 	int selectables_;

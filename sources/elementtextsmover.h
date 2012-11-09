@@ -22,25 +22,25 @@
 class ElementTextItem;
 class Diagram;
 /**
-	Cette classe permet de gerer le deplacement des ElementTextItems d'un schema
-	electrique.
+	This class manages the interactive movement of element text items on a
+	particular diagram.
 */
 class ElementTextsMover {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementTextsMover();
 	virtual ~ElementTextsMover();
 	private:
 	ElementTextsMover(const ElementTextsMover &);
 	
-	// methodes
+	// methods
 	public:
 	bool isReady() const;
 	int  beginMovement(Diagram *, QGraphicsItem * = 0);
 	void continueMovement(const QPointF &);
 	void endMovement();
 	
-	// attributs
+	// attributes
 	private:
 	bool movement_running_;
 	QPointF current_movement_;

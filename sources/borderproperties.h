@@ -20,12 +20,12 @@
 #include <QtCore>
 #include <QtXml>
 /**
-	Cette classe est un conteneur pour les dimensions et proprietes d'affichage
-	d'un schema : affichage, nombre et dimensions des colonnes et lignes, ...
+	This class is a container for dimensions and display properties of a
+	diagram.
 */
 class BorderProperties {
 	public:
-	// constructeur, destructeur, operateurs
+	// constructor, destructor, operators
 	BorderProperties();
 	virtual ~BorderProperties();
 	
@@ -37,15 +37,15 @@ class BorderProperties {
 	void toSettings(QSettings &, const QString & = QString()) const;
 	void fromSettings(QSettings &, const QString & = QString());
 	
-	// attributs
-	int columns_count;            ///< Nombre de colonnes
-	qreal columns_width;          ///< Largeur des colonnes
-	qreal columns_header_height;  ///< Hauteur des entetes des colonnes
-	bool display_columns;         ///< Afficher ou non les entetes des colonnes
+	// attributes
+	int columns_count;            ///< Columns count
+	qreal columns_width;          ///< Columns width
+	qreal columns_header_height;  ///< Column headers height
+	bool display_columns;         ///< Whether to display column headers
 	
-	int rows_count;               ///< Nombre de lignes
-	qreal rows_height;            ///< Hauteur des lignes
-	qreal rows_header_width;      ///< Largeur des entetes des lignes
-	bool display_rows;            ///< Afficher ou non les entetes des lignes
+	int rows_count;               ///< Rows count
+	qreal rows_height;            ///< Rows height
+	qreal rows_header_width;      ///< Row headers width
+	bool display_rows;            ///< Whether to display row headers
 };
 #endif

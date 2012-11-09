@@ -27,22 +27,21 @@ class QHBoxLayout;
 class QVBoxLayout;
 class QLabel;
 /**
-	Cette classe implemente la classe strategie MoveElementsHandler.
-	Via une interface graphique, elle demande a l'utilisateur comment il faut
-	traiter tel ou tel probleme puis transmet la reponse via l'API de la classe
-	MoveElementsHandler.
+	This class implements the MoveElementsHandler Strategy class by asking
+	users how to handle the various expected problems through interactive
+	dialogs.
 */
 class InteractiveMoveElementsHandler : public BasicMoveElementsHandler {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	InteractiveMoveElementsHandler(QWidget * = 0);
 	virtual ~InteractiveMoveElementsHandler();
 	private:
 	InteractiveMoveElementsHandler(const InteractiveMoveElementsHandler &);
 	
-	// methodes
+	// methods
 	public:
 	virtual QET::Action categoryAlreadyExists(ElementsCategory *, ElementsCategory  *);
 	virtual QET::Action elementAlreadyExists(ElementDefinition *, ElementDefinition *);
@@ -68,15 +67,16 @@ class InteractiveMoveElementsHandler : public BasicMoveElementsHandler {
 	void simpleErrorMessage(const QString &) const;
 	
 	
-	// attributs
+	// attributes
 	private:
-	QWidget *parent_widget_;      ///< Widget a utiliser comme parent pour l'affichage des dialogues
-	QString rename_;              ///< Nom a utiliser lors d'une operation de renommage
-	bool always_erase_;           ///< Booleen indiquant qu'il faut toujours ecraser les cibles en conflit sans poser de question
-	bool always_skip_;            ///< Booleen indiquant qu'il faut toujours ignorer les cibles en conflit sans poser de question
-	bool aborted_;                /// Booleen indiquant que le mouvement a ete annule
+	QWidget *parent_widget_;      ///< Widget to be used as parent when displaying dialogs
+	QString rename_;              ///< Name to be used when renaming an item
+	bool always_erase_;           ///< Whether to systematically erase conflicting targets without bothering users
+	bool always_skip_;            ///< Whether to systematically ignore conflicting targets without bothering users
+	bool aborted_;                ///< Whether the movement has been cancelled
 	
-	// attributs relatifs au dialogue affiche pour les elements et categories deja existants (= dialogue de conflit)
+	// attributes related to the dialog displayed for already existing elements and
+	// categories (= i.e. conflict dialog)
 	QET::Action conflict_result_;
 	QDialog *conflict_dialog_;
 	QVBoxLayout *conflict_layout0_;
@@ -84,7 +84,7 @@ class InteractiveMoveElementsHandler : public BasicMoveElementsHandler {
 	QLabel *rename_label_;
 	QFileNameEdit *rename_textfield_;
 	
-	/// Boutons pour le dialogue de conflit
+	/// Buttons for the conflict dialog
 	QDialogButtonBox *conflict_buttons_;
 	QPushButton *rename_button_;
 	QPushButton *erase_button_;

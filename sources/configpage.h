@@ -4,7 +4,7 @@
 #include <QWidget>
 
 /**
-	This abstract class specifies methods all derived classes should should
+	This abstract class specifies methods all derived classes should
 	implement.
 */
 class ConfigPage : public QWidget {

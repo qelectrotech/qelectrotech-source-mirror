@@ -22,22 +22,19 @@
 class Diagram;
 class Element;
 /**
-	Cette classe represente un champ de texte rattache a un element.
-	Il est editable et deplacable (relativement a son element parent) par
-	l'utilisateur.
-	Il peut egalement etre oriente a un angle quelconque.
-	Il est possible pour ce champ de texte de rester dans le sens de la lecture
-	malgre les rotations de son element parent.
+	This class represents a text item attached to an element. Users can change its
+	value, adjust its position (defined relatively to its parent element), and
+	direct it to any angle.
 */
 class ElementTextItem : public DiagramTextItem {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ElementTextItem(Element * = 0, Diagram * = 0);
 	ElementTextItem(const QString &, Element * = 0, Diagram * = 0);
 	virtual ~ElementTextItem();
 	
-	// attributs
+	// attributes
 	public:
 	enum { Type = UserType + 1003 };
 	
@@ -48,11 +45,11 @@ class ElementTextItem : public DiagramTextItem {
 	qreal original_rotation_angle_;
 	bool first_move_;
 	
-	// methodes
+	// methods
 	public:
 	virtual int type() const { return Type; }
 	Element *parentElement() const;
-	/// @return le rectangle delimitant le champ de texte
+	/// @return the rectangle defining the bounds of this text item
 	virtual QRectF boundingRect() const { return(QGraphicsTextItem::boundingRect().adjusted(0.0, -1.1, 0.0, 0.0)); }
 	bool followParentRotations() const;
 	void setFollowParentRotations(bool);
@@ -78,18 +75,19 @@ class ElementTextItem : public DiagramTextItem {
 };
 
 /**
-	Permet de savoir si le champ de texte suit les rotations de son parent.
-	@return true si le champ de texte suit les rotations de son parent, false
-	sinon
+	Element text items can optionally be applied a counter-rotation when their
+	parent element is rotated, thus preserving their readability.
+	@return whether this text item follows the rotations of its parent element.
 */
 inline bool ElementTextItem::followParentRotations() const {
 	return(follow_parent_rotations);
 }
 
 /**
-	Permet de specifier si le champ de texte suit les rotations de son parent.
-	@param frp true si le champ de texte doit suivre  les rotations de son
-	parent, false pour qu'ils ne les suivent pas
+	Element text items can optionally be applied a counter-rotation when their
+	parent element is rotated, thus preserving their readability.
+	@param frp whether this text item should follow the rotations of its parent
+	element.
 */
 inline void ElementTextItem::setFollowParentRotations(bool frp) {
 	follow_parent_rotations = frp;

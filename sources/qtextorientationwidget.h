@@ -19,12 +19,12 @@
 #define Q_TEXT_ORIENTATION_WIDGET_H
 #include <QtGui>
 /**
-	Cette classe permet de representer graphiquement l'orientation d'un texte.
+	This class provides a visual representation of a text orientation.
 */
 class QTextOrientationWidget : public QWidget {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QTextOrientationWidget(QWidget * = 0);
 	virtual ~QTextOrientationWidget();
@@ -32,7 +32,7 @@ class QTextOrientationWidget : public QWidget {
 	QTextOrientationWidget(const QTextOrientationWidget &);
 	QTextOrientationWidget &operator=(const QTextOrientationWidget &);
 	
-	// methodes publiques
+	// methods
 	public:
 	double orientation() const;
 	void setFont(const QFont &);
@@ -44,7 +44,6 @@ class QTextOrientationWidget : public QWidget {
 	bool isReadOnly() const;
 	void setReadOnly(bool);
 	
-	// slots publics
 	public slots:
 	void setOrientation(const double &);
 	
@@ -55,34 +54,31 @@ class QTextOrientationWidget : public QWidget {
 	void mouseMoveEvent(QMouseEvent *);
 	void mouseReleaseEvent(QMouseEvent *);
 	
-	// signaux
 	signals:
 	/**
-		Signal emis lorsque l'utilisateur specifie une orientation en cliquant
-		sur le widget
+		Signal emitted when users specify an orientation by clicking the widget.
 	*/
 	void orientationChanged(double);
 	
-	// attributs prives
+	// attributes
 	private:
-	/// Intervalle entre les petits angles privilegies, en degres
+	/// Interval between commonly used angles (represented by squares), in degrees
 	double squares_interval_;
-	/// angle represente
+	/// current angle
 	double current_orientation_;
-	/// Booleen indiquant s'il faut afficher ou non un texte
+	/// Whether to display an example text
 	bool display_text_;
-	/// Police utilisee pour le texte affiche
+	/// Font used to render the example text
 	QFont text_font_;
-	/// Hash associant les textes disponible a leur longueur en pixels
+	/// Associate available example texts with their length (in pixels)
 	QHash<QString, qreal> text_size_hash_;
-	/// Angle specifique a mettre en valeur
+	/// Specific angle to be highlighted
 	double highlight_angle_;
-	/// Booleen indiquant s'il faut mettre en valeur un des angles
+	/// Whether to highlight a specific angle
 	bool must_highlight_angle_;
-	/// Booleen indiquant si le widget est en mode "lecture seule" ou non
+	/// Whether this widget is read only
 	bool read_only_;
 	
-	// methodes privees
 	private:
 	QString getMostUsableStringForRadius(const qreal &);
 	void generateTextSizeHash();

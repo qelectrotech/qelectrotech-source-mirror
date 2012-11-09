@@ -23,26 +23,24 @@ class QGraphicsItem;
 class ElementsLocation;
 class Terminal;
 /**
-	La classe GhostElement herite de la classe CustomElement. Un GhostElement
-	est destine a remplacer visuellement un CustomElement dont la definition
-	n'a pu etre trouvee. Ainsi, au lieu de ne pas charger un element, et donc
-	de perdre potentiellement :
-	  * sa position, son orientation, ses textes,
-	  * les conducteurs qui y sont lies,
-	on peut lui substituer un GhostElement. Celui-ci extrapolera depuis le
-	schema la position des bornes et des champs de texte.
-	Visuellement, il sera represente par un rectangle.
+	The GhostElement class inherits CustomElement. A GhostElement aims at
+	visually replacing a CustomElement whose definition could not be loaded.
+	This way, instead of not loading an element, thus potentially losing its
+	position, its orientation, its child text items and conductors, one can
+	substitute a GhostElement. The GhostElement will extrapolate the position
+	of terminals and text items from the rest of the diagram. It is visually
+	rendered using a simple rectangle.
 */
 class GhostElement : public CustomElement {
 	
 	Q_OBJECT
 	
-	// constructeur, destructeur
+	// constructor, destructor
 	public:
 	GhostElement(const ElementsLocation &, QGraphicsItem * = 0, Diagram * = 0);
 	virtual ~GhostElement();
 	
-	// methodes
+	// methods
 	public:
 	virtual bool fromXml(QDomElement &, QHash<int, Terminal *> &, bool = false);
 	

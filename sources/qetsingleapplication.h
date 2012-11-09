@@ -21,12 +21,12 @@
 #include <QSharedMemory>
 #include <QLocalServer>
 /**
-	Cette classe represente une application Qt ne s'executant qu'en un seul
-	exemplaire en fonction d'une cle unique (de type QString).
+	This class represents a Qt Application executing only a single instance
+	depending on a unique string key.
 */
 class QETSingleApplication : public QApplication {
 	Q_OBJECT
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETSingleApplication(int &, char **, const QString);
 	virtual ~QETSingleApplication();
@@ -34,7 +34,7 @@ class QETSingleApplication : public QApplication {
 	private:
 	QETSingleApplication(const QETSingleApplication &);
 	
-	// methodes
+	// methods
 	public:
 	bool isRunning();
 	bool sendMessage(const QString &);
@@ -45,7 +45,7 @@ class QETSingleApplication : public QApplication {
 	signals:
 	void messageAvailable(QString);
 	
-	// attributs
+	// attributes
 	private:
 	bool is_running_;
 	QString unique_key_;

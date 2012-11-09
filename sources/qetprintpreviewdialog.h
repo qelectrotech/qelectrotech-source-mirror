@@ -24,20 +24,20 @@ class DiagramsChooser;
 class ExportPropertiesWidget;
 class QETProject;
 /**
-	Cette classe represente un dialogue permettant d'affiner les options
-	d'impression d'un projet a l'aide d'un apercu du resultat sur papier.
+	This class provides a dialog for users to refine printing options for a
+	particular project by relying on a visual print preview.
 */
 class QETPrintPreviewDialog : public QDialog {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	QETPrintPreviewDialog(QETProject *, QPrinter *, QWidget * = 0, Qt::WindowFlags = 0);
 	virtual ~QETPrintPreviewDialog();
 	private:
 	QETPrintPreviewDialog(const QETPrintPreviewDialog &);
 	
-	// methodes
+	// methods
 	public:
 	DiagramsChooser *diagramsChooser();
 	bool fitDiagramsToPages() const;
@@ -60,7 +60,7 @@ class QETPrintPreviewDialog : public QDialog {
 	void selectAllDiagrams();
 	void selectNoDiagram();
 	
-	// attributs
+	// attributes
 	private:
 	QETProject *project_;
 	QPrinter *printer_;
@@ -99,7 +99,7 @@ class QETPrintPreviewDialog : public QDialog {
 	QLabel *fit_diagram_to_page_label_;
 	ExportPropertiesWidget *render_properties_;
 	
-	// methodes
+	// methods
 	private:
 	void build();
 	

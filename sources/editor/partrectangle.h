@@ -20,11 +20,11 @@
 #include <QtGui>
 #include "customelementgraphicpart.h"
 /**
-	Cette classe represente un rectangle pouvant etre utilise pour composer le
-	dessin d'un element dans l'editeur d'element.
+	This class represents a rectangle primitive which may be used to compose the
+	drawing of an electrical element within the element editor.
 */
 class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart {
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	PartRectangle(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartRectangle();
@@ -32,12 +32,13 @@ class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart 
 	private:
 	PartRectangle(const PartRectangle &);
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1109 };
 	/**
-		permet de caster un QGraphicsItem en PartRectangle avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartRectangle.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0);

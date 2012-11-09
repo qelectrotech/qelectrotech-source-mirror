@@ -21,28 +21,29 @@
 #include "qet.h"
 #include <QtGui>
 /**
-	Cette classe represente une borne pouvant etre utilisee pour composer le
-	dessin d'un element dans l'editeur d'element.
+	This class represents a terminal which may be used to compose the drawing of
+	an electrical element within the element editor.
 */
 class PartTerminal : public CustomElementPart, public QGraphicsItem {
 	public:
-	// constructeurs, destructeur
+	// constructors, destructor
 	PartTerminal(QETElementEditor *, QGraphicsItem * = 0, QGraphicsScene * = 0);
 	virtual ~PartTerminal();
 	private:
 	PartTerminal(const PartTerminal &);
 	
-	// attributs
+	// attributes
 	private:
 	QET::Orientation _orientation;
 	QPointF second_point;
 	
-	// methodes
+	// methods
 	public:
 	enum { Type = UserType + 1106 };
 	/**
-		permet de caster un QGraphicsItem en PartTerminal avec qgraphicsitem_cast
-		@return le type de QGraphicsItem
+		Enable the use of qgraphicsitem_cast to safely cast a QGraphicsItem into a
+		PartTerminal.
+		@return the QGraphicsItem type
 	*/
 	virtual int type() const { return Type; }
 	virtual QString name() const { return(QObject::tr("borne", "element part name")); }

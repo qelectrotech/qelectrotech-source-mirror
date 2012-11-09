@@ -23,13 +23,14 @@
 class QSvgGenerator;
 class ExportPropertiesWidget;
 /**
-	Cette classe represente le dialogue permettant d'exporter un schema
-	sous forme d'image selon les desirs de l'utilisateur
+	This class provides a dialog enabling users to export 1 to n diagrams from
+	a project as image files, with features like preview, copy to clipboard,
+	resize, etc.
 */
 class ExportDialog : public QDialog {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	ExportDialog(QETProject *, QWidget * = 0);
 	virtual ~ExportDialog();
@@ -37,11 +38,10 @@ class ExportDialog : public QDialog {
 	private:
 	ExportDialog(const ExportDialog &);
 	
-	// methodes
+	// methods
 	public:
 	int diagramsToExportCount() const;
 	
-	// classes privees
 	private:
 	class ExportDiagramLine {
 		public:
@@ -61,10 +61,10 @@ class ExportDialog : public QDialog {
 		QPushButton *clipboard;
 	};
 	
-	// attributs
+	// attributes
 	private:
 	QHash<int, ExportDialog::ExportDiagramLine *> diagram_lines_;
-	// elements graphiques
+	// visual items
 	QGridLayout *diagrams_list_layout_;
 	ExportPropertiesWidget *epw;
 	QDialogButtonBox *buttons;
@@ -76,10 +76,10 @@ class ExportDialog : public QDialog {
 	QSignalMapper *reset_mapper_;
 	QSignalMapper *clipboard_mapper_;
 	
-	// elements relatifs au traitement effectue par le dialogue
+	// project whose diagrams are to be exported
 	QETProject *project_;
 	
-	// methodes
+	// methods
 	private:
 	QWidget *initDiagramsListPart();
 	void saveReloadDiagramParameters(Diagram *, bool = true);

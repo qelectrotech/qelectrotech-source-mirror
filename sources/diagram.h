@@ -37,14 +37,13 @@ class IndependentTextItem;
 class QETProject;
 class Terminal;
 /**
-	Cette classe represente un schema electrique.
-	Elle gere les differents elements et conducteurs qui le composent
-	et en effectue le rendu graphique.
+	This class represents an electric diagram. It manages its various child
+	elements, conductors and texts and handles their graphic rendering.
 */
 class Diagram : public QGraphicsScene {
 	Q_OBJECT
 	
-	// constructeurs, destructeur
+	// constructors, destructor
 	public:
 	Diagram(QObject * = 0);
 	virtual ~Diagram();
@@ -52,42 +51,42 @@ class Diagram : public QGraphicsScene {
 	private:
 	Diagram(const Diagram &diagram);
 	
-	// attributs
+	// attributes
 	public:
 	/**
-		Represente les options possibles pour l'affichage du schema :
-		 * EmptyBorder : N'afficher que la bordure
-		 * TitleBlock : Afficher le cartouche
-		 * Columns : Afficher les colonnes
+		Represents available options when rendering a particular diagram:
+		 * EmptyBorder: display border only
+		 * TitleBlock: display title block
+		 * Columns: display columns
 	*/
 	enum BorderOptions { EmptyBorder, TitleBlock, Columns };
-	/// Proprietes par defaut des nouveaux conducteurs
+	/// Default properties for new conductors
 	ConductorProperties defaultConductorProperties;
-	/// Dimensions et cartouches du schema
+	/// Diagram dimensions and title block
 	BorderTitleBlock border_and_titleblock;
-	/// taille de la grille en abscisse
+	/// abscissa grid step size
 	static const int xGrid;
-	/// taille de la grille en ordonnee
+	/// ordinate grid step size
 	static const int yGrid;
-	/// marge autour du schema
+	/// margin around the diagram
 	static const qreal margin;
 	
 	private:
-	QGraphicsLineItem *conductor_setter;
+	QGraphicsLineItem *conductor_setter_;
 	ElementsMover *elements_mover_;
 	ElementTextsMover *element_texts_mover_;
-	bool draw_grid;
-	bool use_border;
-	QGIManager *qgi_manager;
-	QUndoStack *undo_stack;
-	bool draw_terminals;
+	bool draw_grid_;
+	bool use_border_;
+	QGIManager *qgi_manager_;
+	QUndoStack *undo_stack_;
+	bool draw_terminals_;
 	bool draw_colored_conductors_;
-	QDomDocument xml_document;
+	QDomDocument xml_document_;
 	QETProject *project_;
 	bool read_only_;
 	qreal diagram_qet_version_;
 	
-	// methodes
+	// methods
 	protected:
 	virtual void drawBackground(QPainter *, const QRectF &);
 	virtual void keyPressEvent(QKeyEvent *);
@@ -96,22 +95,22 @@ class Diagram : public QGraphicsScene {
 	public:
 	static bool clipboardMayContainDiagram();
 	
-	// fonctions relatives au projet parent
+	// methods related to parent project
 	QETProject *project() const;
 	void setProject(QETProject *);
 	int folioIndex() const;
 	qreal declaredQElectroTechVersion(bool = true) const;
 	
-	// fonctions relatives a la lecture seule
+	// methods related to read only mode
 	bool isReadOnly() const;
 	void setReadOnly(bool);
 	
-	// fonctions relatives a la pose de conducteurs
+	// methods related to conductor creation
 	void setConductor(bool);
 	void setConductorStart (QPointF);
 	void setConductorStop(QPointF);
 	
-	// fonctions relatives a l'import / export XML
+	// methods related to XML import/export
 	QDomDocument toXml(bool = true);
 	bool initFromXml(QDomElement &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
 	bool fromXml(QDomDocument &, QPointF = QPointF(), bool = true, DiagramContent * = 0);
@@ -121,7 +120,7 @@ class Diagram : public QGraphicsScene {
 	bool wasWritten() const;
 	QDomElement writeXml(QDomDocument &) const;
 	
-	// fonctions relative a l'ajout et a l'enlevement d'elements graphiques sur le schema
+	// methods related to graphics items addition/removal on the diagram
 	void addElement(Element *);
 	void addConductor(Conductor *);
 	void addIndependentTextItem(IndependentTextItem *);
@@ -130,7 +129,7 @@ class Diagram : public QGraphicsScene {
 	void removeConductor(Conductor *);
 	void removeIndependentTextItem(IndependentTextItem *);
 	
-	// fonctions relatives aux options graphiques
+	// methods related to graphics options
 	ExportProperties applyProperties(const ExportProperties &);
 	void setDisplayGrid(bool);
 	bool displayGrid();
@@ -177,7 +176,7 @@ class Diagram : public QGraphicsScene {
 	void titleBlockTemplateRemoved(const QString &, const QString & = QString());
 	void setTitleBlockTemplate(const QString &);
 	
-	// fonctions relative a la selection sur le schema
+	// methods related to graphics items selection
 	void selectAll();
 	void deselectAll();
 	void invertSelection();
@@ -191,71 +190,73 @@ class Diagram : public QGraphicsScene {
 Q_DECLARE_METATYPE(Diagram *)
 
 /**
-	Permet d'ajouter ou enlever le "poseur de conducteur", c'est-a-dire la
-	droite en pointilles qui apparait lorsqu'on pose un conducteur entre deux
-	bornes.
+	Display or hide the conductor setter, i.e. a dashed conductor stub which appears when creating a conductor between two terminals.
 	@param pf true pour ajouter le poseur de conducteur, false pour l'enlever
 */
-inline void Diagram::setConductor(bool pf) {
-	if (pf) {
-		if (!conductor_setter -> scene()) addItem(conductor_setter);
+inline void Diagram::setConductor(bool adding) {
+	if (adding) {
+		if (!conductor_setter_ -> scene()) addItem(conductor_setter_);
 	} else {
-		if (conductor_setter -> scene()) removeItem(conductor_setter);
+		if (conductor_setter_ -> scene()) removeItem(conductor_setter_);
 	}
 }
 
 /**
-	Specifie les coordonnees du point de depart du poseur de conducteur
-	@param d Le nouveau point de depart du poseur de conducteur
+	Set the start point of the conductor setter.
+	@param start the point (in scene coordinates) which the newly created
+	conductor should start from.
 */
-inline void Diagram::setConductorStart(QPointF d) {
-	conductor_setter -> setLine(QLineF(d, conductor_setter -> line().p2()));
+inline void Diagram::setConductorStart(QPointF start) {
+	conductor_setter_ -> setLine(QLineF(start, conductor_setter_ -> line().p2()));
 }
 
 /**
-	Specifie les coordonnees du point d'arrivee du poseur de conducteur
-	@param a Le nouveau point d'arrivee du poseur de conducteur
+	Set the end point of the conductor setter.
+	@param end the point (in scene coordinates) upon to which the newly created
+	conductor should be drawn.
 */
-inline void Diagram::setConductorStop(QPointF a) {
-	conductor_setter -> setLine(QLineF(conductor_setter -> line().p1(), a));
+inline void Diagram::setConductorStop(QPointF end) {
+	conductor_setter_ -> setLine(QLineF(conductor_setter_ -> line().p1(), end));
 }
 
 /**
-	Permet de specifier si la grille du schema doit etre dessinee ou non
-	@param dg true pour afficher la grille, false pour ne pas l'afficher
+	Set whether the diagram grid should be drawn.
+	@param dg true to render the grid, false otherwise.
 */
 inline void Diagram::setDisplayGrid(bool dg) {
-	draw_grid = dg;
+	draw_grid_ = dg;
 }
 
 /**
-	Permet de savoir si la grille du schema est dessinee ou non
-	@return true si la grille est affichee , false sinon
+	@return true if the grid is drawn, false otherwise.
 */
 inline bool Diagram::displayGrid() {
-	return(draw_grid);
+	return(draw_grid_);
 }
 
 /**
-	Permet de specifier si le cadre du schema doit etre pris en compte pour
-	determiner le contour du schema.
-	@param ub true pour prendre le schema en compte, false sinon
+	Set whether the diagram border (including rows/colums headers and the title
+	block) should be rendered along with the diagram. When set to false, the size
+	of the smallest rectangle containing all items is considered as the diagram
+	size.
+	@param ub true to take the border into account, false otherwise
 */
 inline void Diagram::setUseBorder(bool ub) {
-	use_border = ub;
+	use_border_ = ub;
 }
 
 /**
-	Permet de savoir si le cadre du schema est pris en compte pour
-	determiner le contour du schema.
+	@return true if the border is rendered and take into account, false
+	otherwise.
 */
 inline bool Diagram::useBorder() {
-	return(use_border);
+	return(use_border_);
 }
 
 /**
-	Permet de definir les options du cadre, des colonnes et du cartouche.
-	@param bo Un OU binaire entre les options possibles
+	Set the rendering options for the diagram border (including rows/colums
+	headers and the title block)
+	@param bo Enabled options ORed together
 	@see BorderOptions
 */
 inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
@@ -265,33 +266,32 @@ inline void Diagram::setBorderOptions(Diagram::BorderOptions bo) {
 }
 
 /**
-	Permet de savoir les options du cadre, des colonnes et du cartouche.
-	@return Un OU binaire entre les options possibles
-	@see BorderOptions
+	@return The rendering optios for the diagram border
+	@see setBorderOptions
 */
 inline Diagram::BorderOptions Diagram::borderOptions() {
-	BorderOptions retour = EmptyBorder;
-	if (border_and_titleblock.titleBlockIsDisplayed()) retour = (BorderOptions)(retour|TitleBlock);
-	if (border_and_titleblock.columnsAreDisplayed()) retour = (BorderOptions)(retour|Columns);
-	return(retour);
+	BorderOptions options = EmptyBorder;
+	if (border_and_titleblock.titleBlockIsDisplayed()) options = (BorderOptions)(options|TitleBlock);
+	if (border_and_titleblock.columnsAreDisplayed()) options = (BorderOptions)(options|Columns);
+	return(options);
 }
 
-/// @return la pile d'annulations de ce schema
+/// @return the diagram undo stack
 inline QUndoStack &Diagram::undoStack() {
-	return(*undo_stack);
+	return(*undo_stack_);
 }
 
-/// @return le egstionnaire de QGraphicsItem de ce schema
+/// @return the diagram graphics item manager
 inline QGIManager &Diagram::qgiManager() {
-	return(*qgi_manager);
+	return(*qgi_manager_);
 }
 
-/// @return true si les bornes sont affichees, false sinon
+/// @return true if terminals are rendered, false otherwise
 inline bool Diagram::drawTerminals() const {
-	return(draw_terminals);
+	return(draw_terminals_);
 }
 
-/// @return true si les couleurs des conducteurs sont respectees, false sinon
+/// @return true if conductors colors are rendered, false otherwise.
 inline bool Diagram::drawColoredConductors() const {
 	return(draw_colored_conductors_);
 }

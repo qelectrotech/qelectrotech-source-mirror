@@ -21,25 +21,24 @@
 #include <QGraphicsScene>
 #include <QGraphicsItem>
 /**
-	Cette classe represente un gestionnaire de QGraphicsItem.
-	Elle permet de supprimer des QGraphicsItem lorsqu'il n'y a plus aucune
-	reference vers eux et qu'ils ne sont plus sur la scene.
+	This class provides a QGraphicsItem manager, which can delete QGraphicsItem
+	as soon as there is no reference to them anymore.
 */
 class QGIManager {
-	// constructeurs, destructeurs
+	// constructors, destructors
 	public:
 	QGIManager(QGraphicsScene *);
 	virtual ~QGIManager();
 	private:
 	QGIManager(const QGIManager &);
 	
-	// attributs
+	// attributes
 	private:
 	QGraphicsScene *scene;
 	QHash<QGraphicsItem *, int> qgi_manager;
 	bool destroy_qgi_on_delete;
 	
-	//methodes
+	// methods
 	public:
 	void manage(QGraphicsItem *);
 	void release(QGraphicsItem *);
