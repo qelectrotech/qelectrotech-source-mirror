@@ -413,5 +413,5 @@ void TitleBlockPropertiesWidget::initLayouts() {
     Set the current Date to the combo Date
   */
 void TitleBlockPropertiesWidget::setDateNow(){
-        titleblock_date -> setDate( QDate::currentDate() );
+	titleblock_date -> setDate( QDate::currentDate() );
 }
