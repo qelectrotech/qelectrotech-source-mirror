@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -32,7 +32,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	virtual ~TitleBlockPropertiesWidget();
 	private:
 	TitleBlockPropertiesWidget(const TitleBlockPropertiesWidget &);
-	
+
 	// methods
 	public:
 	TitleBlockProperties titleBlockProperties() const;
@@ -47,20 +47,20 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void setTitleBlockTemplatesVisible(bool);
 	QString currentTitleBlockTemplateName() const;
 	void setCurrentTitleBlockTemplateName(const QString &);
-	
+
 	private slots:
 	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
 	void duplicateCurrentTitleBlockTemplate();
-	void setDateNow();
-	
+	void setDate_now();
+
 	private:
 	void initWidgets(const TitleBlockProperties &);
 	void initLayouts();
-	
+
 	signals:
 	void editTitleBlockTemplate(const QString &, bool);
-	
+
 	// attributes
 	private:
 	QStackedLayout *stack_layout;
@@ -73,7 +73,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	QLineEdit    *titleblock_title;
 	QLineEdit    *titleblock_author;
 	QDateEdit    *titleblock_date;
-    QPushButton  *titleblock_dateNow;
+	QPushButton  *titleblock_date_now;
 	QLineEdit    *titleblock_filename;
 	QLineEdit    *titleblock_folio;
 	QLabel       *folio_tip;

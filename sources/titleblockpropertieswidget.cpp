@@ -1,17 +1,17 @@
 /*
 	Copyright 2006-2012 Xavier Guerrin
 	This file is part of QElectroTech.
-	
+
 	QElectroTech is free software: you can redistribute it and/or modify
 	it under the terms of the GNU General Public License as published by
 	the Free Software Foundation, either version 2 of the License, or
 	(at your option) any later version.
-	
+
 	QElectroTech is distributed in the hope that it will be useful,
 	but WITHOUT ANY WARRANTY; without even the implied warranty of
 	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 	GNU General Public License for more details.
-	
+
 	You should have received a copy of the GNU General Public License
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
@@ -27,16 +27,16 @@
 */
 TitleBlockPropertiesWidget::TitleBlockPropertiesWidget(const TitleBlockProperties &titleblock, bool current, QWidget *parent) :
 	QWidget(parent),
-    display_current_date(false),
+	display_current_date(false),
 	tbt_collection_(0)
 {
 	initWidgets(titleblock);
 	initLayouts();
 	connect(tabbar, SIGNAL(currentChanged(int)), stack_layout, SLOT(setCurrentIndex(int)));
-	
+
 	titleblock_current_date -> setVisible(display_current_date = current);
 	setTitleBlockProperties(titleblock);
-	
+
 	// by default, we do not display the template combo box
 	titleblock_template_label -> setVisible(false);
 	titleblock_template_name  -> setVisible(false);
@@ -66,12 +66,12 @@ TitleBlockProperties TitleBlockPropertiesWidget::titleBlockProperties() const {
 		prop.useDate = TitleBlockProperties::CurrentDate;
 		prop.date = QDate::currentDate();
 	}
-	
+
 	QString current_template_name = currentTitleBlockTemplateName();
 	if (!current_template_name.isEmpty()) prop.template_name = current_template_name;
-	
+
 	prop.context = additional_fields_ -> context();
-	
+
 	return(prop);
 }
 
@@ -108,14 +108,14 @@ void TitleBlockPropertiesWidget::setTitleBlockProperties(const TitleBlockPropert
 			}
 		}
 	}
-	
+
 	if (!titleblock.template_name.isEmpty()) {
 		int matching_index = titleblock_template_name -> findData(titleblock.template_name);
 		if (matching_index != -1) {
 			titleblock_template_name -> setCurrentIndex(matching_index);
 		}
 	}
-	
+
 	setDiagramContext(titleblock.context);
 }
 
@@ -184,7 +184,7 @@ void TitleBlockPropertiesWidget::setTitleBlockTemplatesCollection(TitleBlockTemp
 		// forget any connection with the previous collection
 		disconnect(tbt_collection_, 0, this, 0);
 	}
-	
+
 	tbt_collection_ = tbt_collection;
 	updateTemplateList();
 	connect(tbt_collection_, SIGNAL(changed(TitleBlockTemplatesCollection*, QString)), this, SLOT(updateTemplateList()));
@@ -227,7 +227,7 @@ void TitleBlockPropertiesWidget::setCurrentTitleBlockTemplateName(const QString 
 */
 void TitleBlockPropertiesWidget::updateTemplateList() {
 	if (!tbt_collection_) return;
-	
+
 	QString current_template_name = currentTitleBlockTemplateName();
 	setTitleBlockTemplatesList(tbt_collection_ -> templates());
 	setCurrentTitleBlockTemplateName(current_template_name);
@@ -255,25 +255,25 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	// actions
 	titleblock_template_edit_ = new QAction(tr("\311diter ce mod\350le", "menu entry"), this);
 	titleblock_template_duplicate_ = new QAction(tr("Dupliquer et editer ce mod\350le", "menu entry"), this);
-	
+
 	connect(titleblock_template_edit_, SIGNAL(triggered()), this, SLOT(editCurrentTitleBlockTemplate()));
 	connect(titleblock_template_duplicate_, SIGNAL(triggered()), this, SLOT(duplicateCurrentTitleBlockTemplate()));
-	
+
 	// menu
 	titleblock_template_menu_ = new QMenu(tr("Title block templates actions"));
 	titleblock_template_menu_ -> addAction(titleblock_template_edit_);
 	titleblock_template_menu_ -> addAction(titleblock_template_duplicate_);
-	
+
 	// widgets
 	titleblock_template_label = new QLabel(tr("Mod\350le :"), this);
 	titleblock_template_name = new QComboBox(this);
 	titleblock_template_button_ = new QPushButton(QET::Icons::TitleBlock, QString());
 	titleblock_template_button_ -> setMenu(titleblock_template_menu_);
-	
+
 	titleblock_title    = new QLineEdit(this);
 	titleblock_author   = new QLineEdit(this);
 	titleblock_filename = new QLineEdit(this);
-	
+
 	titleblock_folio = new QLineEdit(this);
 	folio_tip = new QLabel(
 		tr(
@@ -283,7 +283,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 		)
 	);
 	folio_tip -> setWordWrap(true);
-	
+
 	QButtonGroup *date_policy_group = new QButtonGroup(this);
 	titleblock_no_date = new QRadioButton(tr("Pas de date"), this);
 	titleblock_current_date = new QRadioButton(tr("Date courante"), this);
@@ -296,14 +296,14 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	titleblock_current_date -> setVisible(display_current_date);
 	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
 	titleblock_date -> setCalendarPopup(true);
-	
-	titleblock_dateNow = new QPushButton (this);
-	titleblock_dateNow -> setEnabled(titleblock_fixed_date -> isChecked());
-	QIcon icon_dateNow(QET::Icons::ArrowLeft);
-	titleblock_dateNow -> setIcon(icon_dateNow);
-	titleblock_dateNow -> setIconSize(QSize(16, 16));
-	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_dateNow, SLOT(setEnabled(bool)));
-	connect(titleblock_dateNow, SIGNAL(clicked()), this, SLOT(setDateNow()));
+
+	titleblock_date_now = new QPushButton (this);
+	titleblock_date_now -> setEnabled(titleblock_fixed_date -> isChecked());
+	QIcon icon_date_now(QET::Icons::ArrowLeft);
+	titleblock_date_now -> setIcon(icon_date_now);
+	titleblock_date_now -> setIconSize(QSize(16, 16));
+	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date_now, SLOT(setEnabled(bool)));
+	connect(titleblock_date_now, SIGNAL(clicked()), this, SLOT(setdate_now()));
 
 	// we add a bunch of tooltips for users to know how they can put these
 	// values into their title block templates
@@ -316,9 +316,9 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	titleblock_current_date -> setToolTip(date_variable_tooltip);
 	titleblock_fixed_date -> setToolTip(date_variable_tooltip);
 	titleblock_date -> setToolTip(date_variable_tooltip);
-    titleblock_dateNow -> setToolTip(tr("Appliquer la date actuelle"));
+	titleblock_date_now -> setToolTip(tr("Appliquer la date actuelle"));
 	folio_tip -> setToolTip(tr("%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les mod\350les de cartouches."));
-	
+
 	// widgets for users to enter their own name/value pairs
 	additional_fields_label = new QLabel(
 		tr(
@@ -332,7 +332,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	additional_fields_label -> setAlignment(Qt::AlignJustify);
 	additional_fields_ = new DiagramContextWidget();
 	additional_fields_ -> setContext(titleblock.context);
-	
+
 	tabbar = new QTabBar(this);
 	tabbar -> addTab(tr("Principales"));
 	tabbar -> addTab(tr("Personnalis\351es"));
@@ -349,10 +349,10 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	layout_date -> addWidget(titleblock_current_date, 1, 0);
 	layout_date -> addWidget(titleblock_fixed_date,   2, 0);
 	layout_date -> addWidget(titleblock_date,         2, 1);
-    layout_date -> addWidget(titleblock_dateNow,      2, 2);
+	layout_date -> addWidget(titleblock_date_now,      2, 2);
 	layout_date -> setColumnStretch(0, 1);
 	layout_date -> setColumnStretch(1, 500);
-	
+
 	QWidget *widget_main_fields = new QWidget(this);
 	QGridLayout *layout_main_fields = new QGridLayout(widget_main_fields);
 	layout_main_fields -> addWidget(new QLabel(tr("Titre : ")),   0, 0);
@@ -368,21 +368,21 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	layout_main_fields -> addWidget(folio_tip,                    5, 1, Qt::AlignTop);
 	layout_main_fields -> setContentsMargins(0, 0, 0, 0);
 	layout_main_fields -> setRowStretch(5, 500);
-	
+
 	// layouts for tab #1
 	QWidget *widget_user_fields = new QWidget(this);
 	QVBoxLayout *layout_user_fields = new QVBoxLayout(widget_user_fields);
 	layout_user_fields -> addWidget(additional_fields_label);
 	layout_user_fields -> addWidget(additional_fields_);
 	layout_user_fields -> setContentsMargins(0, 0, 0, 0);
-	
+
 	// stacked layout
 	stack_layout = new QStackedLayout();
 	stack_layout -> addWidget(widget_main_fields);
 	stack_layout -> addWidget(widget_user_fields);
 	stack_layout -> setContentsMargins(0, 0, 0, 0);
 	stack_layout -> setCurrentIndex(0);
-	
+
 	// template layout
 	QHBoxLayout *template_layout = new QHBoxLayout();
 	template_layout -> addWidget(titleblock_template_label);
@@ -390,18 +390,18 @@ void TitleBlockPropertiesWidget::initLayouts() {
 	template_layout -> addWidget(titleblock_template_button_);
 	template_layout -> setStretch(0, 1);
 	template_layout -> setStretch(1, 500);
-	
+
 	// groupbox layout
 	QVBoxLayout *groupbox_layout = new QVBoxLayout();
 	groupbox_layout -> addLayout(template_layout);
 	groupbox_layout -> addLayout(stack_layout);
 	groupbox_layout -> addWidget(tabbar);
-	
+
 	// groupbox
 	QGroupBox *titleblock_infos = new QGroupBox(tr("Informations du cartouche"), this);
 	titleblock_infos -> setLayout(groupbox_layout);
 	titleblock_infos -> setMinimumSize(300, 330);
-	
+
 	// widget layout
 	QVBoxLayout *this_layout = new QVBoxLayout();
 	this_layout -> setContentsMargins(0, 0, 0, 0);
@@ -410,8 +410,9 @@ void TitleBlockPropertiesWidget::initLayouts() {
 }
 
 /**
-    Set the current Date to the combo Date
+	Set the current Date to the combo Date
   */
-void TitleBlockPropertiesWidget::setDateNow(){
+void TitleBlockPropertiesWidget::setDate_now(){
 	titleblock_date -> setDate( QDate::currentDate() );
 }
+
