@@ -52,7 +52,7 @@ class TitleBlockPropertiesWidget : public QWidget {
 	void updateTemplateList();
 	void editCurrentTitleBlockTemplate();
 	void duplicateCurrentTitleBlockTemplate();
-    void setDateNow();
+	void setDateNow();
 	
 	private:
 	void initWidgets(const TitleBlockProperties &);

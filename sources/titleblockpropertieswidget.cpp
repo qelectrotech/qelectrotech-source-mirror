@@ -297,13 +297,13 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
 	titleblock_date -> setCalendarPopup(true);
 	
-    titleblock_dateNow = new QPushButton (this);
-    titleblock_dateNow -> setEnabled(titleblock_fixed_date -> isChecked());
-    QIcon icon_dateNow(QET::Icons::ArrowLeft);
-    titleblock_dateNow->setIcon(icon_dateNow);
-    titleblock_dateNow->setIconSize(QSize(16, 16));
-    connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_dateNow, SLOT(setEnabled(bool)));
-    connect(titleblock_dateNow, SIGNAL(clicked()), this, SLOT(setDateNow()));
+	titleblock_dateNow = new QPushButton (this);
+	titleblock_dateNow -> setEnabled(titleblock_fixed_date -> isChecked());
+	QIcon icon_dateNow(QET::Icons::ArrowLeft);
+	titleblock_dateNow -> setIcon(icon_dateNow);
+	titleblock_dateNow -> setIconSize(QSize(16, 16));
+	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_dateNow, SLOT(setEnabled(bool)));
+	connect(titleblock_dateNow, SIGNAL(clicked()), this, SLOT(setDateNow()));
 
 	// we add a bunch of tooltips for users to know how they can put these
 	// values into their title block templates
@@ -413,5 +413,5 @@ void TitleBlockPropertiesWidget::initLayouts() {
     Set the current Date to the combo Date
   */
 void TitleBlockPropertiesWidget::setDateNow(){
-        titleblock_date->setDate( QDate::currentDate() );
+        titleblock_date -> setDate( QDate::currentDate() );
 }
