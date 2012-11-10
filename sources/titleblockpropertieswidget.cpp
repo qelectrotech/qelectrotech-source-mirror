@@ -297,13 +297,11 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date, SLOT(setEnabled(bool)));
 	titleblock_date -> setCalendarPopup(true);
 
-	titleblock_date_now = new QPushButton (this);
+	titleblock_date_now = new QPushButton (QET::Icons::Start, "", this);
 	titleblock_date_now -> setEnabled(titleblock_fixed_date -> isChecked());
-	QIcon icon_date_now(QET::Icons::ArrowLeft);
-	titleblock_date_now -> setIcon(icon_date_now);
 	titleblock_date_now -> setIconSize(QSize(16, 16));
 	connect(titleblock_fixed_date, SIGNAL(toggled(bool)), titleblock_date_now, SLOT(setEnabled(bool)));
-	connect(titleblock_date_now, SIGNAL(clicked()), this, SLOT(setdate_now()));
+	connect(titleblock_date_now, SIGNAL(clicked()), this, SLOT(setDate_now()));
 
 	// we add a bunch of tooltips for users to know how they can put these
 	// values into their title block templates
