@@ -324,13 +324,13 @@
         <location filename="../sources/closediagramsdialog.cpp" line="107"/>
         <source>Cocher ou décocher toutes les cases à cocher</source>
         <comment>checbox tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Check or uncheck all the checkboxes</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="181"/>
         <source>Afficher ce schéma</source>
         <comment>button tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Show this diagram</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
@@ -389,7 +389,7 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
-        <translation type="unfinished"></translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
@@ -3245,7 +3245,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="219"/>
         <source>Zoom sur le contenu</source>
-        <translation type="unfinished"></translation>
+        <translation>Zoom content</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="255"/>
@@ -3414,7 +3414,7 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Adapt zoom so that the whole content is displayed regardless of the frame</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
