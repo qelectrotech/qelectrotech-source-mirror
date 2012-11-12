@@ -570,6 +570,7 @@ void ElementsPanelWidget::moveElements(ElementsCollectionItem *src, ElementsColl
 	InteractiveMoveElementsHandler *interactive_handler = new InteractiveMoveElementsHandler();
 	src -> move(dst -> toCategory(), interactive_handler);
 	delete interactive_handler;
+	elements_panel -> reload(true);
 }
 
 /**
