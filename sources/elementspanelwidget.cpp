@@ -581,6 +581,7 @@ void ElementsPanelWidget::moveElements(ElementsCollectionItem *src, ElementsColl
 */
 void ElementsPanelWidget::copyElements() {
 	copyElements(dnd_item_src_, dnd_item_dst_);
+	elements_panel -> reload(true);
 }
 
 /**
