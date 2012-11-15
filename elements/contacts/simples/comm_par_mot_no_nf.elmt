@@ -3,6 +3,7 @@
         <name lang="en">Contact Motorized NC/NO</name>
         <name lang="fr">Commande par moteur électrique NO/NF</name>
         <name lang="pl">Zestyk przełączny sterowany silnikiem</name>
+        <name lang="cs">Kontakt NC/NO řízený motorem</name>
     </names>
     <informations></informations>
     <description>

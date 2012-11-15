@@ -4,6 +4,7 @@
         <name lang="fr">Actionné par énergie hydraulique ou
 pneumatique, à simple effet NO/NF</name>
         <name lang="pl">Zestyk przełączny sterowany pneumatycznie lub hydraulicznie, jednokierunkowy</name>
+        <name lang="cs">Kontakt NO/NC řízený pneumaticky nebo hydraulicky, jednocestný</name>
     </names>
     <informations></informations>
     <description>
