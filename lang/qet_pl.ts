@@ -1339,13 +1339,13 @@ Zmiany zostaną zapisane.</translation>
         <translation>Użyj tego menedżera, aby dodać, usunąć lub zmienić kategorie.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="593"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="595"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translation>Wczytywanie...</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="616"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="618"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation>Ładowanie : %p%</translation>
@@ -4987,37 +4987,37 @@ Co chcesz zrobić ?</translation>
         <translation>zmiana informacji dodatkowych</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="49"/>
+        <location filename="../sources/editor/partarc.h" line="50"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>łuk</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partcircle.h" line="44"/>
+        <location filename="../sources/editor/partcircle.h" line="45"/>
         <source>cercle</source>
         <comment>element part name</comment>
         <translation>okrąg</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="44"/>
+        <location filename="../sources/editor/partellipse.h" line="45"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>elipsa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="60"/>
+        <location filename="../sources/editor/partline.h" line="59"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>linia</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="47"/>
+        <location filename="../sources/editor/partpolygon.h" line="48"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>wielokąt</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="48"/>
+        <location filename="../sources/editor/partterminal.h" line="49"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>punkt pochwycenia</translation>
@@ -5029,7 +5029,7 @@ Co chcesz zrobić ?</translation>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="46"/>
+        <location filename="../sources/editor/parttext.h" line="47"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>tekst</translation>
@@ -5041,7 +5041,7 @@ Co chcesz zrobić ?</translation>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="52"/>
+        <location filename="../sources/editor/parttextfield.h" line="53"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>pole tekstowe</translation>
@@ -5118,7 +5118,7 @@ Co chcesz zrobić ?</translation>
         <translation>wytnij części</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="44"/>
+        <location filename="../sources/editor/partrectangle.h" line="45"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>prostokąt</translation>
@@ -5787,57 +5787,62 @@ Co chcesz zrobić ?</translation>
         <translation>Ustalona data : </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="308"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
         <translation>Dostępny w  %1 szablonów tabliczek rysunkowych.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="317"/>
+        <source>Appliquer la date actuelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
         <translation>%id i %total są dostępne jako %{folio-id} i %{folio-id} (odpowiednio) dla szablonów tabliczek rysunkowych.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="315"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="322"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Tutaj możesz zdefiniować własne skojarzenia nazwy/wartości dla twojej tabliczki rysunkowej. Przykład: skojarzenie nazwy &quot;volta&quot; i wartości &quot;1745&quot; spowoduje zastąpienie nazwy %{volta} wartością 1745 w tabliczce rysunkowej.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="328"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="335"/>
         <source>Principales</source>
         <translation>Podstawowe</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="329"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="336"/>
         <source>Personnalisées</source>
         <translation>Personalizacja</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="348"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="356"/>
         <source>Titre : </source>
         <translation>Tytuł : </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="350"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
         <source>Auteur : </source>
         <translation>Autor : </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="352"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="360"/>
         <source>Date : </source>
         <translation>Data : </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="354"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="362"/>
         <source>Fichier : </source>
         <translation>Plik : </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="356"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="364"/>
         <source>Folio : </source>
         <translation>Strona : </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="391"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="399"/>
         <source>Informations du cartouche</source>
         <translation>Informacje w polach danych tabliczki rysunkowej</translation>
     </message>

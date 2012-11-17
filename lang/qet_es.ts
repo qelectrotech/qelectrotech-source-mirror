@@ -1374,13 +1374,13 @@ Los cambios no podrían ser revertidos.</translation>
         <translation>Puede usar este gestor para agregar, eliminar o editar las categorías.</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="593"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="595"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translation>Leyendo...</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="616"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="618"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation>Cargando: %p%</translation>
@@ -4995,37 +4995,37 @@ Que désirez vous faire ?</source>
         <translation>Modificación de informaciones complementarias</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="49"/>
+        <location filename="../sources/editor/partarc.h" line="50"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>arco</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partcircle.h" line="44"/>
+        <location filename="../sources/editor/partcircle.h" line="45"/>
         <source>cercle</source>
         <comment>element part name</comment>
         <translation>círculo</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="44"/>
+        <location filename="../sources/editor/partellipse.h" line="45"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>elipse</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="60"/>
+        <location filename="../sources/editor/partline.h" line="59"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>linea</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="47"/>
+        <location filename="../sources/editor/partpolygon.h" line="48"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>polígono</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="48"/>
+        <location filename="../sources/editor/partterminal.h" line="49"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>conector</translation>
@@ -5037,7 +5037,7 @@ Que désirez vous faire ?</source>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="46"/>
+        <location filename="../sources/editor/parttext.h" line="47"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>texto</translation>
@@ -5049,7 +5049,7 @@ Que désirez vous faire ?</source>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="52"/>
+        <location filename="../sources/editor/parttextfield.h" line="53"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>campo de texto</translation>
@@ -5123,7 +5123,7 @@ Que désirez vous faire ?</source>
         <translation>cortar partes</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="44"/>
+        <location filename="../sources/editor/partrectangle.h" line="45"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>rectángulo</translation>
@@ -5790,58 +5790,63 @@ Que désirez vous faire ?</source>
         <translation>Fecha fija:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="308"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
         <translation>Disponible como %1 para los modelos de título.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="317"/>
+        <source>Appliquer la date actuelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
         <translation>%id y %total están disponibles como %{folio-id} y %{folio total} {respectivamente} para los modelos de título.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="315"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="322"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>Aquí puede definir sus propias asociaciones de nombre / valor para el bloque de título a tener en cuenta.
 Ejemplo: asociar el nombre &quot;volta&quot; y el valor &quot;1745&quot; reemplazara %{volta} por 1745 en el bloque de título.</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="328"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="335"/>
         <source>Principales</source>
         <translation>Principales</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="329"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="336"/>
         <source>Personnalisées</source>
         <translation>Personalizadas</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="348"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="356"/>
         <source>Titre : </source>
         <translation>Título:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="350"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
         <source>Auteur : </source>
         <translation>Autor:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="352"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="360"/>
         <source>Date : </source>
         <translation>Fecha:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="354"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="362"/>
         <source>Fichier : </source>
         <translation>Archivo:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="356"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="364"/>
         <source>Folio : </source>
         <translation>Folio:</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="391"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="399"/>
         <source>Informations du cartouche</source>
         <translatorcomment>Informaciones sobre el esquema o proyecto</translatorcomment>
         <translation>Informaciones del bloque de titulo</translation>

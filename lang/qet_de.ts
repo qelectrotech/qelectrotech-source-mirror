@@ -4785,6 +4785,10 @@ Que désirez vous faire ?</source>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Appliquer la date actuelle</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TitleBlockTemplate</name>

@@ -1439,13 +1439,13 @@ Les changements seront définitifs.</source>
         <translation>يُمكنكم اسنعمال هذه الإدارة لإضافة , حذف أو تعديل .الأصناف</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="593"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="595"/>
         <source>Lecture...</source>
         <comment>Reading of elements/categories files</comment>
         <translation>قراءة</translation>
     </message>
     <message>
-        <location filename="../sources/elementspanelwidget.cpp" line="616"/>
+        <location filename="../sources/elementspanelwidget.cpp" line="618"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
         <translation>تحميل : %p%</translation>
@@ -5017,43 +5017,43 @@ Que désirez vous faire ?</source>
         <translation>تعديل معلومات اضافية</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partarc.h" line="49"/>
+        <location filename="../sources/editor/partarc.h" line="50"/>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>قوس</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partcircle.h" line="44"/>
+        <location filename="../sources/editor/partcircle.h" line="45"/>
         <source>cercle</source>
         <comment>element part name</comment>
         <translation>دائرة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partellipse.h" line="44"/>
+        <location filename="../sources/editor/partellipse.h" line="45"/>
         <source>ellipse</source>
         <comment>element part name</comment>
         <translation>اهليج</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partline.h" line="60"/>
+        <location filename="../sources/editor/partline.h" line="59"/>
         <source>ligne</source>
         <comment>element part name</comment>
         <translation>صف</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partpolygon.h" line="47"/>
+        <location filename="../sources/editor/partpolygon.h" line="48"/>
         <source>polygone</source>
         <comment>element part name</comment>
         <translation>متعدد أضلع</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partrectangle.h" line="44"/>
+        <location filename="../sources/editor/partrectangle.h" line="45"/>
         <source>rectangle</source>
         <comment>element part name</comment>
         <translation>مستطيل</translation>
     </message>
     <message>
-        <location filename="../sources/editor/partterminal.h" line="48"/>
+        <location filename="../sources/editor/partterminal.h" line="49"/>
         <source>borne</source>
         <comment>element part name</comment>
         <translation>نهاية توصيل</translation>
@@ -5065,7 +5065,7 @@ Que désirez vous faire ?</source>
         <translation>T</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttext.h" line="46"/>
+        <location filename="../sources/editor/parttext.h" line="47"/>
         <source>texte</source>
         <comment>element part name</comment>
         <translation>نص</translation>
@@ -5077,7 +5077,7 @@ Que désirez vous faire ?</source>
         <translation>_</translation>
     </message>
     <message>
-        <location filename="../sources/editor/parttextfield.h" line="52"/>
+        <location filename="../sources/editor/parttextfield.h" line="53"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
         <translation>حقل نصي</translation>
@@ -5837,57 +5837,62 @@ Que désirez vous faire ?</source>
         <translation>تاريخ ثابت :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="302"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="308"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
         <translation>جاهز ك %1 بالنسبة لنماذج إطارات التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="317"/>
+        <source>Appliquer la date actuelle</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
         <translation>%id و %total جاهزين ك %{folio-id} et %{folio-total} (على التوالي )  بالنسبة لنماذج التعريف . </translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="315"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="322"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
         <translation>هنا , يُمكنكم  تعريف الجمعيات الخاصة بكم  أسماء / قيّم لكي تُؤخذ في الإعتبار في إطار التغريف . مثال: جمع اسم &quot;volta&quot; و القيمة  &quot;1745  تُعوّض %{volta}   ب 1745 في إطار .التعريف</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="328"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="335"/>
         <source>Principales</source>
         <translation>أساسية</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="329"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="336"/>
         <source>Personnalisées</source>
         <translation>مُخصّص</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="348"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="356"/>
         <source>Titre : </source>
         <translation>عنوان :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="350"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
         <source>Auteur : </source>
         <translation>المؤلف :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="352"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="360"/>
         <source>Date : </source>
         <translation>تاريخ :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="354"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="362"/>
         <source>Fichier : </source>
         <translation>ملف :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="356"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="364"/>
         <source>Folio : </source>
         <translation>صفحة :</translation>
     </message>
     <message>
-        <location filename="../sources/titleblockpropertieswidget.cpp" line="391"/>
+        <location filename="../sources/titleblockpropertieswidget.cpp" line="399"/>
         <source>Informations du cartouche</source>
         <translation>معلومات إطار التعريف</translation>
     </message>
