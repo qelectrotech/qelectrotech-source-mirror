@@ -395,7 +395,7 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translation>Protective Earth Neutral</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
@@ -3265,7 +3265,8 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
         <source>Ctrl+8</source>
-        <translation type="unfinished">Ctrl+8</translation>
+        <translatorcomment>Ctrl+8</translatorcomment>
+        <translation>Ctrl+8</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="276"/>
@@ -5783,7 +5784,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="317"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Set to current date</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
