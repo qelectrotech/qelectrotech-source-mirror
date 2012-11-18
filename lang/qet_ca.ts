@@ -120,12 +120,12 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="130"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Traucció al croat</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="147"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translation>Paquets Fedora i Red Hat</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="148"/>
@@ -291,7 +291,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="81"/>
         <source>Fermer un projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Tancar un projecte</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="87"/>
@@ -315,7 +315,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="101"/>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation type="unfinished">Esquema</translation>
+        <translation>Esquema</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
@@ -333,7 +333,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="181"/>
         <source>Afficher ce schéma</source>
         <comment>button tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Mostrar aquest esquema</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="220"/>
@@ -357,7 +357,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="244"/>
         <source>Enregistrer</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Desar</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="246"/>
@@ -447,13 +447,13 @@
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Nom</source>
         <comment>table header</comment>
-        <translation type="unfinished">Nom</translation>
+        <translation>Nom</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Valeur</source>
         <comment>table header</comment>
-        <translation type="unfinished">Valor</translation>
+        <translation>Valor</translation>
     </message>
 </context>
 <context>
@@ -1172,7 +1172,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/elementscollection.cpp" line="151"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation>No es pot moure una col·lecció</translation>
+        <translation>No es pot moure una col·lecció.</translation>
     </message>
 </context>
 <context>
@@ -1739,7 +1739,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/genericpanel.cpp" line="352"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Esquema sense títol</translation>
+        <translation>Esquema sense títol</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="359"/>
@@ -1751,40 +1751,40 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/genericpanel.cpp" line="438"/>
         <source>Modèles de cartouche</source>
-        <translation type="unfinished">Models de blocs de títol</translation>
+        <translation>Models de blocs de títol</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="528"/>
         <source>Modèle &quot;%1&quot;</source>
         <comment>used to display a title block template</comment>
         <translatorcomment>s&apos;usa per mostrar una plantilla de bloc de títol</translatorcomment>
-        <translation type="unfinished">Model &quot;%1&quot;</translation>
+        <translation>Model &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="529"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translatorcomment>&quot;Què és això?&quot;</translatorcomment>
-        <translation type="unfinished">Això ñes un model de bloc de títol, pot ésser aplicat a un esquema.</translation>
+        <translation type="unfinished">Això és un model de bloc de títol, que pot ésser aplicat a un esquema.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translatorcomment>&quot;Què és això?&quot;</translatorcomment>
-        <translation type="unfinished">Això és una categoria de símbols, un simple contenidor que permet d&apos;organitzar les col·leccions de símbols</translation>
+        <translation>Això és una categoria de símbols, un simple contenidor que permet organitzar les col·leccions de símbols</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="868"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
         <translatorcomment>&quot;Què és això?&quot;</translatorcomment>
-        <translation type="unfinished">Això és un símbol que pot ésser inserit dins d&apos;un esquema.</translation>
+        <translation>Això és un símbol que pot ésser inserit dins d&apos;un esquema.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1151"/>
         <source>%1 [non utilisé dans le projet]</source>
-        <translation type="unfinished">%1 [no usat al projecte]</translation>
+        <translation>%1 [no usat al projecte]</translation>
     </message>
 </context>
 <context>
@@ -1792,7 +1792,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/ghostelement.cpp" line="38"/>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation type="unfinished">&lt;u&gt;Falta símbol :&lt;/u&gt; %1</translation>
+        <translation>&lt;u&gt;Falta símbol :&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -1800,7 +1800,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="29"/>
         <source>L&apos;élément doit être assez grand pour contenir tout sa représentation graphique.</source>
-        <translation type="unfinished">El símbol ha de ser prou gran per qu&apos;hi càpiga tota la seva representació gràfica.</translation>
+        <translation>El símbol ha de ser prou gran per qu&apos;hi càpiga tota la seva representació gràfica.</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
@@ -1817,7 +1817,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="72"/>
         <source>Déplacer l&apos;élément avec le hotspot</source>
-        <translation type="unfinished">Moure el símbol amb el hotspot</translation>
+        <translation>Moure el símbol amb el hotspot</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="84"/>
@@ -1855,13 +1855,13 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="121"/>
         <source>Intégration d&apos;un élément</source>
-        <translation type="unfinished">Integració d&apos;un símbol</translation>
+        <translation>Integració d&apos;un símbol</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="125"/>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation type="unfinished">El símbol ja havia estat integrat al projecte. No obstant, la versió que vol inserir ara sembla diferent. Què vol fer?</translation>
+        <translation>El símbol ja havia estat integrat al projecte. No obstant, la versió que vol inserir ara sembla diferent. Què vol fer?</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
@@ -1885,7 +1885,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="166"/>
         <source>Faire cohabiter les deux éléments</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Fer coexistir tots dos símbols</translation>
+        <translation>Fer coexistir tots dos símbols</translation>
     </message>
 </context>
 <context>
@@ -1906,7 +1906,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
@@ -1935,13 +1935,13 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="183"/>
         <source>Écraser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Sobreescriure el model preexistent</translation>
+        <translation>Sobreescriure el model preexistent</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="193"/>
         <source>Faire cohabiter les deux modèles</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Fer coexistir tots dos models</translation>
+        <translation>Fer coexistir tots dos models</translation>
     </message>
 </context>
 <context>
@@ -1963,7 +1963,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">El símbol « %1 » ja existeix. Què vol fer?</translation>
+        <translation>El símbol « %1 » ja existeix. Què vol fer?</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="152"/>
@@ -2002,7 +2002,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="244"/>
         <source>Écraser tout</source>
-        <translation type="unfinished">Sobreescriure-ho tot</translation>
+        <translation>Sobreescriure-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="245"/>
@@ -2012,12 +2012,12 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="246"/>
         <source>Ignorer tout</source>
-        <translation type="unfinished">Ignorar-ho tot</translation>
+        <translation>Ignorar-ho tot</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="247"/>
         <source>Annuler</source>
-        <translation type="unfinished">Anul·lar</translation>
+        <translation>Anul·lar</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="362"/>
@@ -2039,7 +2039,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished">Fletxa simple</translation>
+        <translation>Fletxa simple</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="49"/>
@@ -2127,7 +2127,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="159"/>
         <source>longueur fin 1</source>
-        <translation type="unfinished">llargada fi 1</translation>
+        <translation>llargada fi 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="161"/>
@@ -2137,7 +2137,7 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
         <source>longueur fin 2</source>
-        <translation type="unfinished">llargada fi 2</translation>
+        <translation>llargada fi 2</translation>
     </message>
 </context>
 <context>
@@ -2145,12 +2145,12 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Langue</source>
-        <translation type="unfinished">Llengua</translation>
+        <translation>Llengua</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
@@ -2173,13 +2173,13 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/nameslistwidget.cpp" line="86"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Cal que hi hagi un nom com a mínim.</translation>
+        <translation>Cal que hi hagi un nom com a mínim.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="87"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Cal donar un nom com a mínim.</translation>
+        <translation>Cal donar un nom com a mínim.</translation>
     </message>
 </context>
 <context>
@@ -2188,7 +2188,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/configpages.cpp" line="93"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">Esquema nou</translation>
+        <translation>Esquema nou</translation>
     </message>
 </context>
 <context>
@@ -2197,7 +2197,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/newelementwizard.cpp" line="47"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
-        <translation type="unfinished">Crear un símbol nou: Assistent</translation>
+        <translation>Crear un símbol nou: Assistent</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="48"/>
@@ -2577,24 +2577,24 @@ L&apos;operació és irreversible.</translation>
     <message>
         <location filename="../sources/qetapp.cpp" line="276"/>
         <source>Collection QET</source>
-        <translation type="unfinished">Col·lecció QET</translation>
+        <translation>Col·lecció QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="290"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished">Col·lecció personal</translation>
+        <translation>Col·lecció personal</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="334"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished">Blocs de títol QET</translation>
+        <translation>Blocs de títol QET</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="347"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished">Blocs de títol personals</translation>
+        <translation>Blocs de títol personals</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="758"/>
@@ -2630,7 +2630,7 @@ L&apos;operació és irreversible.</translation>
         <location filename="../sources/qetapp.cpp" line="1148"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished">Configurar QElectroTech</translation>
+        <translation>Configurar QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1273"/>
@@ -4147,7 +4147,7 @@ Opcions:
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="48"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished">&amp;Configurar QElectroTech</translation>
+        <translation>&amp;Configurar QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="49"/>
@@ -4169,7 +4169,7 @@ Opcions:
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="62"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished">Quant a &amp;Qt</translation>
+        <translation>Quant a &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="63"/>
@@ -4181,13 +4181,13 @@ Opcions:
         <location filename="../sources/qetmainwindow.cpp" line="71"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation type="unfinished">&amp;Configuració</translation>
+        <translation>&amp;Configuració</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="77"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation type="unfinished">&amp;Ajuda</translation>
+        <translation>&amp;Ajuda</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
@@ -4810,7 +4810,7 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/customelement.cpp" line="118"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation type="unfinished">Avís: el símbol ha estat manipular amb una versió posterior del QElectroTech.</translation>
+        <translation type="unfinished">Avís: el símbol ha estat desat amb una versió posterior del QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
@@ -5324,7 +5324,7 @@ Què vol fer?</translation>
         <location filename="../sources/qtextorientationwidget.cpp" line="37"/>
         <source>Exemple</source>
         <comment>Longer example string</comment>
-        <translation type="unfinished">Exemple</translation>
+        <translation>Exemple</translation>
     </message>
 </context>
 <context>
@@ -5345,12 +5345,12 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="51"/>
         <source>Dimensions : </source>
-        <translation type="unfinished">Mides: </translation>
+        <translation>Mides: </translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="52"/>
         <source>Largeur :</source>
-        <translation type="unfinished">Amplada:</translation>
+        <translation>Amplada:</translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="54"/>
@@ -5522,7 +5522,7 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="42"/>
         <source>Ouest</source>
-        <translation type="unfinished">Oest</translation>
+        <translation>Oest</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="45"/>
@@ -5552,7 +5552,7 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>ordonnée</source>
-        <translation type="unfinished">ordenada</translation>
+        <translation>ordenada</translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
@@ -5603,7 +5603,7 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="62"/>
         <source>Taille : </source>
-        <translation type="unfinished">Mida:</translation>
+        <translation>Mida:</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="67"/>
@@ -5628,13 +5628,13 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="141"/>
         <source>taille</source>
-        <translation type="unfinished">mida</translation>
+        <translation>mida</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="143"/>
         <source>couleur</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">color</translation>
+        <translation>color</translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="145"/>
@@ -5678,7 +5678,7 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="57"/>
         <source>Taille : </source>
-        <translation type="unfinished">Mida:</translation>
+        <translation>Mida:</translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="62"/>
@@ -5717,40 +5717,40 @@ Què vol fer?</translation>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="118"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished">Amplada:</translation>
+        <translation>Amplada:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
         <translatorcomment>mida en valor absolut</translatorcomment>
-        <translation type="unfinished">Absolut</translation>
+        <translation>Absolut</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
         <translatorcomment>mida com a percentatge de l&apos;amplada disponible</translatorcomment>
-        <translation type="unfinished">Relatiu al total</translation>
+        <translation>Relatiu al total</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
         <translatorcomment>percentatge de l&apos;amplada que quedi lliure</translatorcomment>
-        <translation type="unfinished">Relatiu a la resta</translation>
+        <translation>Relatiu a la resta</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
         <source>%</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">%</translation>
+        <translation>%</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">px</translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -5764,13 +5764,13 @@ Què vol fer?</translation>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="256"/>
         <source>Éditer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Editar aquest model</translation>
+        <translation>Editar aquest model</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="257"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Duplicar i editar aquest model</translation>
+        <translation>Duplicar i editar aquest model</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="263"/>
@@ -5896,13 +5896,13 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="52"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <source>Logo</source>
-        <translation type="unfinished">Logo</translation>
+        <translation>Logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
@@ -5917,83 +5917,83 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Nom :</source>
-        <translation type="unfinished">Nom:</translation>
+        <translation>Nom:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation type="unfinished">Atenció: les vores de les cel·les buides no apareixen a la composició final de l&apos;esquema.</translation>
+        <translation>Atenció: les vores de les cel·les buides no apareixen a la composició final de l&apos;esquema.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Afficher un label :</source>
-        <translation type="unfinished">Mostrar una etiqueta:</translation>
+        <translation>Mostrar una etiqueta:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
         <source>Editer</source>
-        <translation type="unfinished">Editar</translation>
+        <translation>Editar</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
         <source>Texte :</source>
-        <translation type="unfinished">Text:</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
-        <translation type="unfinished">Aliniació:</translation>
+        <translation>Aliniació:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
-        <translation type="unfinished">horitzontal:</translation>
+        <translation>horitzontal:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
         <source>Gauche</source>
-        <translation type="unfinished">Esquerra</translation>
+        <translation>Esquerra</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="81"/>
         <source>Centré</source>
-        <translation type="unfinished">Centrat</translation>
+        <translation>Centrat</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="82"/>
         <source>Droite</source>
-        <translation type="unfinished">Dreta</translation>
+        <translation>Dreta</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
         <source>vertical :</source>
-        <translation type="unfinished">vertical:</translation>
+        <translation>vertical:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
         <source>Haut</source>
-        <translation type="unfinished">Dalt</translation>
+        <translation>Dalt</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="89"/>
         <source>Milieu</source>
-        <translation type="unfinished">Mig</translation>
+        <translation>Mig</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="90"/>
         <source>Bas</source>
-        <translation type="unfinished">Sota</translation>
+        <translation>Sota</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
         <source>Police :</source>
-        <translation type="unfinished">Tipus de lletra:</translation>
+        <translation>Tipus de lletra:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished">Ajustar la mida del text si fos necessari</translation>
+        <translation>Ajustar la mida del text si fos necessari</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
@@ -6034,14 +6034,14 @@ Què vol fer?</translation>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Suprimir el bloc de títol?</translation>
+        <translation>Suprimir el bloc de títol?</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Segur que vol suprimir aquest model de bloc de títol (%1)?</translation>
+        <translation>Segur que vol suprimir aquest model de bloc de títol (%1)?</translation>
     </message>
 </context>
 <context>
@@ -6056,7 +6056,7 @@ Què vol fer?</translation>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished">Model existent</translation>
+        <translation>Model existent</translation>
     </message>
 </context>
 <context>
@@ -6066,13 +6066,13 @@ Què vol fer?</translation>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
         <translatorcomment>emprat al diàleg d&apos;«anomena i desa»</translatorcomment>
-        <translation type="unfinished">o nom nou</translation>
+        <translation>o nom nou</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="74"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished">Model nou (entri&apos;n el nom)</translation>
+        <translation>Model nou (entri&apos;n el nom)</translation>
     </message>
 </context>
 <context>
@@ -6090,7 +6090,7 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
         <source>Ajouter un logo</source>
-        <translation type="unfinished">Afegir un logo</translation>
+        <translation>Afegir un logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
@@ -6100,29 +6100,29 @@ Què vol fer?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Supprimer ce logo</source>
-        <translation type="unfinished">Suprimir aquest logo</translation>
+        <translation>Suprimir aquest logo</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
         <source>Propriétés</source>
-        <translation type="unfinished">Propietats</translation>
+        <translation>Propietats</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
         <source>Nom :</source>
-        <translation type="unfinished">Nom:</translation>
+        <translation>Nom:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="93"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="195"/>
         <source>Renommer</source>
-        <translation type="unfinished">Canviar el nom</translation>
+        <translation>Canviar el nom</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="254"/>
         <source>Type :</source>
-        <translation type="unfinished">Tipus:</translation>
+        <translation>Tipus:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="188"/>
@@ -6344,13 +6344,13 @@ Longitud màxima: %2px</translation>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
         <translatorcomment>títol de la col·lecció quan el projecte pare no tingui títol -- %1 és l&apos;identificador intern de projecte</translatorcomment>
-        <translation type="unfinished">Blocs de títol del projecte sense títol (id %1)</translation>
+        <translation>Blocs de títol del projecte sense títol (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished">Blocs de títol del projecte &quot;%1&quot;</translation>
+        <translation>Blocs de títol del projecte &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
