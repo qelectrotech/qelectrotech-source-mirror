@@ -1,6 +1,7 @@
 <definition width="220" version="0.3" hotspot_x="30" hotspot_y="35" height="350" type="element" orientation="dyyy">
     <names>
-        <name lang="fr">Geiger Libelium</name>
+        <name lang="en">Libelium’s Geiger Counter</name>
+        <name lang="fr">Compteur Geiger Libelium</name>
         <name lang="pl">Licznik geigera Libelium</name>
         <name lang="cs">Geiger Libelium</name>
     </names>

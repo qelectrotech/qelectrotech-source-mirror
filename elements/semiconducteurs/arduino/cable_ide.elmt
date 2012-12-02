@@ -1,5 +1,6 @@
 <definition width="190" version="0.3" hotspot_x="25" hotspot_y="35" height="300" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Arduino LCD Ribbon cable</name>
         <name lang="fr">cable plat LCD Arduino</name>
         <name lang="pl">Przewód wstążkowy LCD Arduino</name>
         <name lang="cs">plochý převod LCD Arduino</name>

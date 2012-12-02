@@ -1,5 +1,6 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
+        <name lang="en">1W resistor</name>
         <name lang="fr">Resistance 1w</name>
         <name lang="pl">Rezystor 1W</name>
         <name lang="cs">Rezistor 1W</name>
