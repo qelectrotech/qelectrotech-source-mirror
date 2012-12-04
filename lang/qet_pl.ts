@@ -5794,7 +5794,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="317"/>
         <source>Appliquer la date actuelle</source>
-        <translation>Zastosuj bieżącą datę</translation>
+        <translation>Zastosuj aktualną datę</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
