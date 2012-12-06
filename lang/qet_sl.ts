@@ -123,27 +123,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="147"/>
-        <source>Paquets Fedora et Red Hat</source>
+        <location filename="../sources/aboutqet.cpp" line="131"/>
+        <source>Traduction en catalan</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="148"/>
-        <source>Paquets Mandriva</source>
+        <source>Paquets Fedora et Red Hat</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="149"/>
-        <source>Paquets Debian</source>
+        <source>Paquets Mandriva</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="150"/>
+        <source>Paquets Debian</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="151"/>
         <source>Icônes</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="167"/>
+        <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation type="unfinished"></translation>
     </message>

@@ -128,6 +128,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
 	addAuthor(translators, "Mohamed Souabni",            "souabnimohamed@yahoo.fr",     tr("Traduction en arabe"));
 	addAuthor(translators, "Antun Marakovi&#x0107;",     "antun.marakovic@lolaribar.hr",tr("Traduction en croate"));
+	addAuthor(translators, "Eduard Amor\363s",           "amoros@marmenuda.com",        tr("Traduction en catalan"));
 	
 	translators -> setOpenExternalLinks(true);
 	translators -> setTextFormat(Qt::RichText);

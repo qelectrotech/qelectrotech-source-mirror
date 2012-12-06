@@ -120,6 +120,10 @@
         <source>Paquets Fedora et Red Hat</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Traduction en catalan</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArcEditor</name>
