@@ -6,6 +6,7 @@
 		<comment xml:lang="fr">Fichier projet QElectroTech</comment>
 		<comment xml:lang="ar"> QElectrotech ملف مشروع</comment>
 		<comment xml:lang="es">Fichero proyecto QElectroTech</comment>
+		<comment xml:lang="ca">Fitxer projecte QElectroTech</comment>
 		<comment xml:lang="ru">Файл проекта QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
 		<comment xml:lang="cs">Soubor s projektem pro QElectroTech</comment>
@@ -20,6 +21,7 @@
 		<comment xml:lang="ar"> QElectrotech ملف مشروع</comment>
 		<comment xml:lang="ru">Файл элемента QElectroTech</comment>
 		<comment xml:lang="es">Fichero elemento QElectroTech</comment>
+		<comment xml:lang="ca">Fitxer símbol QElectroTech</comment>
 		<comment xml:lang="pt">Ficheiro de projecto QElectroTech</comment>
 		<comment xml:lang="cs">Soubor s prvkem pro QElectroTech</comment>
 		<comment xml:lang="pl">Plik elementu QElectroTech</comment>
@@ -33,6 +35,7 @@
 		<comment xml:lang="ar"> QElectrotech نموذج إطار تعريف</comment>
 		<comment xml:lang="pl">Szablon tabliczki rysunkowej QElectroTech</comment>
 		<comment xml:lang="es">Modelo de cartucho QElectroTech</comment>
+		<comment xml:lang="ca">Model de bloc de títol QElectroTech</comment>
 		<comment xml:lang="cs">Vzor záhlaví výkresu pro QElectroTech</comment>
 		<comment xml:lang="pt">Modelo de moldura QElectroTech</comment>
 		<glob pattern="*.titleblock" />
