@@ -1,12 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="ynnd">
+<definition width="70" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="ynnd">
     <names>
         <name lang="ar">مقياس تدفق بالنبضات</name>
         <name lang="de">Flussmeter puls</name>
         <name lang="en">Flowmeter pulse</name>
         <name lang="fr">Débitmètre à impulsions</name>
         <name lang="pl">Przepływomierz impulsowy</name>
-        <name lang="cs">Impulsový průtokoměr</name>
         <name lang="es">Medidor de flujo de pulsos</name>
+        <name lang="cs">Impulsový průtokoměr</name>
     </names>
     <informations></informations>
     <description>

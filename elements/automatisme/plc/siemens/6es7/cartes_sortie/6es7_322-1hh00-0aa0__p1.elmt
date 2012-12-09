@@ -1,18 +1,18 @@
 <definition width="770" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES7 322-1HH00-0AA0 (part 1/2)</name>
+        <name lang="pt">6ES7 322-1HH00-0AA0 (parte 1/2)</name>
         <name lang="en">6ES7 322-1HH00-0AA0 (part 1/2)</name>
         <name lang="fr">6ES7 322-1HH00-0AA0 (part 1/2)</name>
         <name lang="pl">6ES7 322-1HH00-0AA0 (część 1/2)</name>
-        <name lang="cs">6ES7 322-1HH00-0AA0 (část 1/2)</name>
-        <name lang="pt">6ES7 322-1HH00-0AA0 (parte 1/2)</name>
         <name lang="es">6ES7 322-1HH00-0AA0 (parte 1/2)</name>
+        <name lang="cs">6ES7 322-1HH00-0AA0 (část 1/2)</name>
     </names>
     <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="68" x1="733" y2="68" x2="750"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="750" y2="68" x2="750"/>
-        <input x="701" y="47" size="7" rotate="true" text="L+ DC24V"/>
+        <input x="694" y="47" size="7" rotate="true" text="L+ DC24V"/>
         <input x="636" y="47" size="7" rotate="true" text="Q0.7"/>
         <input x="556" y="47" size="7" rotate="true" text="Q0.6"/>
         <input x="476" y="47" size="7" rotate="true" text="Q0.5"/>

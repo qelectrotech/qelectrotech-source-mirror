@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">مُلامسات قدرة - كونتكتور (NC)</name>
         <name lang="de">Leistungs Kontakt (NC)</name>
@@ -27,11 +27,11 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="20" y2="-9" x2="26"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="20" y2="-9" x2="20"/>
         <arc width="5" x="17.5" y="-14.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
-        <terminal x="0" y="21" orientation="s"/>
-        <terminal x="0" y="-21" orientation="n"/>
-        <terminal x="10" y="21" orientation="s"/>
-        <terminal x="10" y="-21" orientation="n"/>
-        <terminal x="20" y="21" orientation="s"/>
-        <terminal x="20" y="-21" orientation="n"/>
+        <terminal x="0" y="20" orientation="s"/>
+        <terminal x="0" y="-20" orientation="n"/>
+        <terminal x="10" y="20" orientation="s"/>
+        <terminal x="10" y="-20" orientation="n"/>
+        <terminal x="20" y="20" orientation="s"/>
+        <terminal x="20" y="-20" orientation="n"/>
     </description>
 </definition>

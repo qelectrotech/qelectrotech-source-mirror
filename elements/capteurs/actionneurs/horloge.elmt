@@ -5,16 +5,16 @@
         <name lang="en">Contact clock</name>
         <name lang="fr">Contact horloge</name>
         <name lang="pl">Zegar sterujący</name>
-        <name lang="cs">Hodinový kontakt</name>
         <name lang="es">Contacto de reloj</name>
+        <name lang="cs">Hodinový kontakt</name>
     </names>
     <informations></informations>
     <description>
+        <circle x="-27" y="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12"/>
         <text x="2" y="20.8333" size="4" text="14"/>
         <text x="2" y="-17.6667" size="4" text="13"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-21" y2="0" x2="-18"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-21" y2="-4" x2="-23"/>
-        <circle x="-27" y="-6" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="12"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="-21" y2="-4" x2="-23"/>
         <text x="-27" y="-12.6667" size="4" text="Horloge"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="0" x1="-3" y2="0" x2="-15"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>

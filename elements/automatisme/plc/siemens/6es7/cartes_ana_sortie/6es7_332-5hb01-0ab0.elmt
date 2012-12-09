@@ -1,16 +1,15 @@
 <definition width="850" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES7 332-5HB01-0AB0</name>
+        <name lang="pt">6ES7 332-5HB01-0AB0</name>
         <name lang="en">6ES7 332-5HB01-0AB0</name>
         <name lang="fr">6ES7 332-5HB01-0AB0</name>
         <name lang="pl">6ES7 332-5HB01-0AB0</name>
-        <name lang="cs">6ES7 332-5HB01-0AB0</name>
-        <name lang="pt">6ES7 332-5HB01-0AB0</name>
         <name lang="es">6ES7 332-5HB01-0AB0</name>
+        <name lang="cs">6ES7 332-5HB01-0AB0</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-40" x1="770" y2="48" x2="770"/>
         <input x="802" y="27" size="7" rotate="true" text="M"/>
         <circle x="807.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-10" y2="48" x2="-10"/>

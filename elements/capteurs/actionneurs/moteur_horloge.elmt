@@ -1,11 +1,11 @@
-<definition width="90" version="0.3" hotspot_x="0" hotspot_y="0" height="60" type="element" orientation="dyyy">
+<definition width="140" version="0.3" hotspot_x="0" hotspot_y="10" height="80" type="element" orientation="dyyy">
     <names>
         <name lang="ar">محرك ساعة</name>
         <name lang="en">Motor time</name>
         <name lang="fr">Moteur horloge</name>
         <name lang="pl">Zegar</name>
-        <name lang="cs">Hodiny motoru</name>
         <name lang="es">Reloj de motor</name>
+        <name lang="cs">Hodiny motoru</name>
     </names>
     <informations></informations>
     <description>
