@@ -125,7 +125,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="131"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Traducció al catalá</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="148"/>
