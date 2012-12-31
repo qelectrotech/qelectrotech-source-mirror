@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Mecanique</name>
-        <name lang="en" >Mechanical</name>
-        <name lang="pl" >Mechanika</name>
-        <name lang="cs" >Mechanika</name>
+        <name lang="fr">Mecanique</name>
+        <name lang="en">Mechanical</name>
+        <name lang="pl">Mechanika</name>
+        <name lang="cs">Mechanika</name>
+        <name lang="it">Meccanica</name>
     </names>
 </qet-directory>

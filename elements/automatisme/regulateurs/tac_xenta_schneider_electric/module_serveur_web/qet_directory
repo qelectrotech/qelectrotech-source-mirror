@@ -6,5 +6,6 @@
         <name lang="pl">Moduły komunikacyjne</name>
         <name lang="cs">Serverové moduly</name>
         <name lang="es">Modulo Servidor Web</name>
+        <name lang="it">Moduli Web Server</name>
     </names>
 </qet-directory>

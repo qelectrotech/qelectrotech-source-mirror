@@ -4,6 +4,7 @@
         <name lang="ar">روابط توصيل</name>
         <name lang="pl">Złącza</name>
         <name lang="en">Pins</name>
-        <name lang="cs">Kolíky</name>  
+        <name lang="cs">Kolíky</name>
+        <name lang="it">Connettori</name>
     </names>
 </qet-directory>

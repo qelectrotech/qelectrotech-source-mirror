@@ -6,6 +6,7 @@
         <name lang="fr">Titre tableau nomenclature</name>
         <name lang="pl">Tabliczka rysunkowa - tytuły</name>
         <name lang="cs">Název nomenklaturní tabulky</name>
+        <name lang="it">Intestazione tabella elenco</name>
     </names>
     <informations></informations>
     <description>
@@ -14,8 +15,8 @@
         <rect width="650" x="0" y="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <rect width="400" x="0" y="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
         <text x="115" y="15" size="10" text="Fonction"/>
-        <text x="407" y="15" size="10" text="Désignation"/>
-        <text x="7" y="15" size="10" text="Repère"/>
+        <text x="407" y="15" size="10" text="D&#xE9;signation"/>
+        <text x="7" y="15" size="10" text="Rep&#xE8;re"/>
         <rect width="100" x="0" y="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
     </description>
 </definition>

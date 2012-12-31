@@ -6,5 +6,6 @@
         <name lang="pl">Urządzenia łagodnego rozruchu</name>
         <name lang="cs">Postupné spouštěče</name>
         <name lang="es">Arrancadores progresivos</name>
+        <name lang="it">Avviatore Soft-Start</name>
     </names>
 </qet-directory>
