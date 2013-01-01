@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="5" hotspot_y="5" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="fr">MKS</name>
+        <name lang="pl">MKS</name>
     </names>
     <informations></informations>
     <description>

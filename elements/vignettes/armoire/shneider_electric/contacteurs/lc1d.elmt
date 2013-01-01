@@ -2,8 +2,9 @@
     <names>
         <name lang="en">LC1D</name>
         <name lang="fr">LC1D</name>
+        <name lang="pl">LC1D</name>
     </names>
-    <informations/>
+    <informations></informations>
     <description>
         <rect width="45" x="0" y="-90" antialias="false" height="85" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="43" x="1" y="-58" antialias="false" height="24" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
