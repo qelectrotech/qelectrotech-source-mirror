@@ -915,10 +915,8 @@ void QETElementEditor::slot_openFile() {
 	@see openElement
 */
 void QETElementEditor::openRecentFile(const QString &filepath) {
-	if (!QFile::exists ( filepath )) 
-		QMessageBox::warning(this, tr("Attention"),
-							tr("Le fichier semble ne plus exister...")+"\n"+
-							tr("Fichier: ")+filepath+"\n");
+	// small hack to prevent all element editors from trying to topen the required
+	// recent file at the same time
 	if (qApp -> activeWindow() != this) return;
 	openElement(filepath);
 }
@@ -932,6 +930,18 @@ void QETElementEditor::openRecentFile(const QString &filepath) {
 */
 void QETElementEditor::openElement(const QString &filepath) {
 	if (filepath.isEmpty()) return;
+	// we have to test the file existence here because QETApp::openElementFiles()
+	// will discard non-existent files through QFileInfo::canonicalFilePath()
+	if (!QFile::exists(filepath)) {
+		QET::MessageBox::critical(
+			this,
+			tr("Impossible d'ouvrir le fichier", "message box title"),
+			QString(
+				tr("Il semblerait que le fichier %1 que vous essayez d'ouvrir"
+				" n'existe pas ou plus.")
+			).arg(filepath)
+		);
+	}
 	QETApp::instance() -> openElementFiles(QStringList() << filepath);
 }
 

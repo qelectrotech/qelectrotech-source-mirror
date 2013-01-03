@@ -637,10 +637,8 @@ bool QETDiagramEditor::newProject() {
 	@see openAndAddDiagram
 */
 bool QETDiagramEditor::openRecentFile(const QString &filepath) {
-	if (!QFile::exists ( filepath )) 
-		QMessageBox::warning(this, tr("Attention"),
-							tr("Le fichier semble ne plus exister...")+"\n"+
-							tr("Fichier: ")+filepath+"\n");
+	// small hack to prevent all diagram editors from trying to topen the required
+	// recent file at the same time
 	if (qApp -> activeWindow() != this) return(false);
 	return(openAndAddProject(filepath));
 }
@@ -735,12 +733,26 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		}
 	}
 	
+	// check the file exists
+	if (!filepath_info.exists()) {
+		if (interactive) {
+			QET::MessageBox::critical(
+				this,
+				tr("Impossible d'ouvrir le fichier", "message box title"),
+				QString(
+					tr("Il semblerait que le fichier %1 que vous essayez d'ouvrir"
+					" n'existe pas ou plus.")
+				).arg(filepath)
+			);
+		}
+	}
+	
 	// verifie que le fichier est accessible en lecture
 	if (!filepath_info.isReadable()) {
 		if (interactive) {
 			QET::MessageBox::critical(
 				this,
-				tr("Impossible d'ouvrir le fichier"),
+				tr("Impossible d'ouvrir le fichier", "message box title"),
 				tr("Il semblerait que le fichier que vous essayez d'ouvrir ne "
 				"soit pas accessible en lecture. Il est donc impossible de "
 				"l'ouvrir. Veuillez v\351rifier les permissions du fichier.")
@@ -754,7 +766,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		if (interactive) {
 			QET::MessageBox::warning(
 				this,
-				tr("Ouverture du projet en lecture seule"),
+				tr("Ouverture du projet en lecture seule", "message box title"),
 				tr("Il semblerait que le projet que vous essayez d'ouvrir ne "
 				"soit pas accessible en \351criture. Il sera donc ouvert en "
 				"lecture seule.")
