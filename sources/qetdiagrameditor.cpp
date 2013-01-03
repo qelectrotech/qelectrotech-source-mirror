@@ -30,6 +30,8 @@
 #include "qetresult.h"
 #include "genericpanel.h"
 
+#include <QMessageBox>
+
 /**
 	constructeur
 	@param files Liste de fichiers a ouvrir
@@ -635,6 +637,10 @@ bool QETDiagramEditor::newProject() {
 	@see openAndAddDiagram
 */
 bool QETDiagramEditor::openRecentFile(const QString &filepath) {
+	if (!QFile::exists ( filepath )) 
+		QMessageBox::warning(this, tr("Attention"),
+							tr("Le fichier semble ne plus exister...")+"\n"+
+							tr("Fichier: ")+filepath+"\n");
 	if (qApp -> activeWindow() != this) return(false);
 	return(openAndAddProject(filepath));
 }

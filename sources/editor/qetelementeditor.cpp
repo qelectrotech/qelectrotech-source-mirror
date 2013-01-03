@@ -40,6 +40,7 @@
 #include "texteditor.h"
 #include "textfieldeditor.h"
 
+#include <QMessageBox>
 /*
 	Nombre maximum de primitives affichees par la "liste des parties"
 	Au-dela, un petit message est affiche, indiquant que ce nombre a ete depasse
@@ -914,6 +915,10 @@ void QETElementEditor::slot_openFile() {
 	@see openElement
 */
 void QETElementEditor::openRecentFile(const QString &filepath) {
+	if (!QFile::exists ( filepath )) 
+		QMessageBox::warning(this, tr("Attention"),
+							tr("Le fichier semble ne plus exister...")+"\n"+
+							tr("Fichier: ")+filepath+"\n");
 	if (qApp -> activeWindow() != this) return;
 	openElement(filepath);
 }
