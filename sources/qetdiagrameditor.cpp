@@ -745,6 +745,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 				).arg(filepath)
 			);
 		}
+		return(false);
 	}
 	
 	// verifie que le fichier est accessible en lecture
@@ -1263,6 +1264,10 @@ ProjectView *QETDiagramEditor::viewForFile(const QString &filepath) const {
 	if (filepath.isEmpty()) return(0);
 	
 	QString searched_can_file_path = QFileInfo(filepath).canonicalFilePath();
+	if (searched_can_file_path.isEmpty()) {
+		// QFileInfo returns an empty path for non-existent files
+		return(0);
+	}
 	foreach (ProjectView *project_view, openedProjects()) {
 		QString project_can_file_path = QFileInfo(project_view -> project() -> filePath()).canonicalFilePath();
 		if (project_can_file_path == searched_can_file_path) {
