@@ -1,4 +1,4 @@
-<definition width="90" version="0.3" hotspot_x="0" hotspot_y="0" height="60" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="0" hotspot_y="0" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام كهربائي</name>
         <name lang="de">Magnetventil</name>
