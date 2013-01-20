@@ -4,6 +4,7 @@
         <name lang="fr">Relais à verrouillage
 mécanique</name>
         <name lang="pl">Przekaźnik z blokadą mechaniczną</name>
+        <name lang="cs">Relé s mechanickým zavíráním</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

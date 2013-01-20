@@ -4,6 +4,7 @@
         <name lang="fr">Relais à mise au
 travail retardée</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy wzbudzeniu</name>
+        <name lang="cs">Relé pracující při probuzení se zpožděním</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

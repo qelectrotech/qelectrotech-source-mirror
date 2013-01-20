@@ -3,6 +3,7 @@
         <name lang="en">Remanence relay</name>
         <name lang="fr">Relais à rémanence</name>
         <name lang="pl">Przekaźnik remanencyjny</name>
+        <name lang="cs">Přetrvávající relé</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

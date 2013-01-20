@@ -3,6 +3,7 @@
         <name lang="en">NF Actuated by the level of a liquid</name>
         <name lang="fr">Actionné par le niveau d'un liquide NF</name>
         <name lang="pl">Zestyk rozwierny sterowany poziomem cieczy</name>
+        <name lang="cs">Ovládáno hladinou kapaliny NC</name>
     </names>
     <informations></informations>
     <description>

@@ -3,6 +3,7 @@
         <name lang="en">Thermal overload relay</name>
         <name lang="fr">Organe de commande d'un relais thermique</name>
         <name lang="pl">Przekaźnik nadprądowy cieplny</name>
+        <name lang="cs">Řídící čidlo tepelného relé</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

@@ -3,6 +3,7 @@
         <name lang="en">NC/NO controlled relative humidity</name>
         <name lang="fr">Actionné par humidité relative NF/NO</name>
         <name lang="pl">Zestyk przełączny sterowany elektronicznie</name>
+        <name lang="cs">Ovládáno relativní vlhkostí NC/NO</name>
     </names>
     <informations></informations>
     <description>

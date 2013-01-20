@@ -3,6 +3,7 @@
         <name lang="en">NC controlled relative humidity</name>
         <name lang="fr">Actionné par humidité relative NF</name>
         <name lang="pl">Zestyk rozwierny sterowany poziomemi wilgotności względnej</name>
+        <name lang="cs">Ovládáno relativní vlhkostí NC</name>
     </names>
     <informations></informations>
     <description>
