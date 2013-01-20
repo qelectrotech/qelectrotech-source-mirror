@@ -4,13 +4,15 @@
         <name lang="en">XCS-E7511</name>
         <name lang="fr">XCS-E7511</name>
         <name lang="pl">XCS-E7511</name>
-        <name lang="cs">XCS-E7511</name>
         <name lang="es">XCS-E7511</name>
+        <name lang="cs">XCS-E7511</name>
     </names>
     <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="10" x1="0" y2="10" x2="57"/>
-        <circle x="-3.5" y="6.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="7"/>
+        <polygon x4="13" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="2" x1="13" y2="4" x2="13" y3="3" x3="16" y4="2"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="3" y2="3" x2="13"/>
+        <polygon x4="11" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" closed="false" y1="10" x1="6" y2="6" x2="6" y3="6" x3="11" y4="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="203" y2="48" x2="219"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="203" y2="-28" x2="220"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="45" x1="90" y2="20" x2="90"/>
