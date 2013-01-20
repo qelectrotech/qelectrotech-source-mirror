@@ -536,7 +536,7 @@
         <location filename="../sources/diagramview.cpp" line="50"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>Obszar do tworzenia schematów, poprzez wstawienie elementów i połączenie przewodami. Możliwe jest również niezależne wstawianie tekstów.</translation>
+        <translation>Obszar do tworzenia schematów, poprzez wstawienie elementów i przyłączenie przewodów. Możliwe jest również niezależne wstawianie tekstów.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="187"/>
@@ -609,7 +609,7 @@
         <location filename="../sources/diagramview.cpp" line="891"/>
         <source>Bornes : %1
 </source>
-        <translation>Punkt pochwycenia : %1
+        <translation>Terminal : %1
 </translation>
     </message>
     <message>
@@ -876,7 +876,7 @@
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="340"/>
         <source>borne</source>
-        <translation>punktu pochwycenia</translation>
+        <translation>termianala</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="347"/>
@@ -1632,7 +1632,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="176"/>
         <source>Dessiner les bornes</source>
-        <translation>Rysuj punkty pochwycenia</translation>
+        <translation>Rysuj terminale</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="180"/>
@@ -1680,7 +1680,7 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="120"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
-        <translation>Dołącz automatycznie elementy do  projektów (zalecane)</translation>
+        <translation>Dołącz automatycznie elementy do projektów (zalecane)</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
@@ -3621,7 +3621,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="163"/>
         <source>Ajouter une borne</source>
-        <translation>Wstaw punkt pochwycenia</translation>
+        <translation>Wstaw terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="164"/>
@@ -3931,13 +3931,13 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="659"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation>Brak punktu pochwycenia</translation>
+        <translation>Brak terminala</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="660"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation>Element nie zawiera punktów pochwycenia. Element musi posiadać punkty pochwycenia w celu przyłączenia przewodów i innych elementów.</translation>
+        <translation>Element nie zawiera trminali. Element musi posiadać terminale w celu przyłączenia przewodów i innych elementów.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="693"/>
@@ -4332,7 +4332,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="238"/>
         <source>Si cette option est cochée, les marges de la feuille seront ignorées et toute sa surface sera utilisée pour l&apos;impression. Cela peut ne pas être supporté par votre imprimante.</source>
-        <translation>Jeśli ta opcja jest zaznaczona, marginesy papieru są ignorowane, cała powierzchnia papieru jest wykorzystywana do druku. Może to nie być obsługiwane przez drukarkę.</translation>
+        <translation>Jeśli ta opcja jest zaznaczona, marginesy papieru są ignorowane i cała powierzchnia papieru jest wykorzystywana do druku. Może to nie być obsługiwane przez drukarkę.</translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="245"/>
@@ -5025,7 +5025,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/partterminal.h" line="49"/>
         <source>borne</source>
         <comment>element part name</comment>
-        <translation>punkt pochwycenia</translation>
+        <translation>terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="44"/>
@@ -5109,7 +5109,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/terminal.cpp" line="63"/>
         <source>Borne</source>
         <comment>tooltip</comment>
-        <translation>Punkt pochwycenia</translation>
+        <translation>Terminal</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="85"/>
