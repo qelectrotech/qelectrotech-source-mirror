@@ -1,4 +1,4 @@
-<definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
+<definition width="60" version="0.3" hotspot_x="5" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قابس و مقبس متعدّد الأقطاب</name>
         <name lang="de">Verbinder, Buchse und Stecker, allpolige
@@ -9,8 +9,8 @@ Darstellung
         <name lang="fr">Prise et fiche multipolaires
 </name>
         <name lang="pl">Złącze wielostykowe</name>
-        <name lang="cs">Spojka, zásuvka a zástrčka, vícepólové znázornění</name>
         <name lang="es">Plug múltiple</name>
+        <name lang="cs">Spojka, zásuvka a zástrčka, vícepólové znázornění</name>
     </names>
     <informations>EN 60617: 03-03-07</informations>
     <description>

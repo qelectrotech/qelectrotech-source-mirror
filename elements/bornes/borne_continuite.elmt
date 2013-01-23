@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">طرف توصيل</name>
         <name lang="de">Klemmblock</name>

@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="10" version="0.3" hotspot_x="5" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قابس ذكري</name>
         <name lang="de">Pol eines Steckers
@@ -8,8 +8,8 @@ Stecker
         <name lang="it">Contatto maschio</name>
         <name lang="fr">Contact mâle fiche</name>
         <name lang="pl">Wtyk</name>
-        <name lang="cs">Pól samčí zástrčky</name>
         <name lang="es">Plug macho</name>
+        <name lang="cs">Pól samčí zástrčky</name>
     </names>
     <informations>EN 60617: 03-03-03</informations>
     <description>

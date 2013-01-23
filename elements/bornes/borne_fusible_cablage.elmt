@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="20" height="100" type="element" ic="true" orientation="dyyy">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="80" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">طرف ربط مصهر</name>
         <name lang="de">Klemme mit Sicherung</name>
@@ -6,8 +6,8 @@
         <name lang="it">Terminale fusibile</name>
         <name lang="fr">Borne fusible cablage</name>
         <name lang="pl">Złącze bezpiecznikowe</name>
-        <name lang="cs">Tavná pojistka elektrického propojení</name>
         <name lang="es">Terminal fusible</name>
+        <name lang="cs">Tavná pojistka elektrického propojení</name>
     </names>
     <informations></informations>
     <description>

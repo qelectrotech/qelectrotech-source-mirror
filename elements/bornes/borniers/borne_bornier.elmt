@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dnnn">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="80" type="element" orientation="dnnn">
     <names>
         <name lang="ar">طرف</name>
         <name lang="de">Klemme</name>
@@ -6,8 +6,8 @@
         <name lang="it">Terminale</name>
         <name lang="fr">Borne de bornier</name>
         <name lang="pl">Zacisk</name>
-        <name lang="cs">Svorka svorkoviště</name>
         <name lang="es">Terminal</name>
+        <name lang="cs">Svorka svorkoviště</name>
     </names>
     <informations></informations>
     <description>

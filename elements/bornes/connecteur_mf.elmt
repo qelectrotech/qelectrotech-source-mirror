@@ -1,4 +1,4 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
+<definition width="10" version="0.3" hotspot_x="5" hotspot_y="15" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">موصل</name>
         <name lang="de">Stecker</name>
@@ -8,8 +8,8 @@
         <name lang="it">Connettore</name>
         <name lang="fr">Connecteur</name>
         <name lang="pl">Złącze wtykowe</name>
-        <name lang="cs">Spojka</name>
         <name lang="es">Conector</name>
+        <name lang="cs">Spojka</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

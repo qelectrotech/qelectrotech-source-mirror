@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="0" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="0" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح فصل</name>
         <name lang="de">Trennschalter Sicherung</name>
