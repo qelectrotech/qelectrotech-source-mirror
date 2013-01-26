@@ -1,17 +1,22 @@
-<definition width="460" version="0.3" hotspot_x="20" hotspot_y="35" height="100" type="element" orientation="dnnn">
+<definition width="510" version="0.3" hotspot_x="60" hotspot_y="45" height="110" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES5 095-8MA03 (part 3/8)</name>
+        <name lang="pt">6ES5 095-8MA03 (parte 3/8)</name>
         <name lang="en">6ES5 095-8MA03 (part 3/8)</name>
         <name lang="fr">6ES5 095-8MA03 (part 3/8)</name>
         <name lang="pl">6ES5 095-8MA03 (część 3/8)</name>
-        <name lang="cs">6ES5 095-8MA03 (part 3/8)</name>
-        <name lang="pt">6ES5 095-8MA03 (parte 3/8)</name>
         <name lang="es">6ES5 095-8MA03 (parte 3/8)</name>
+        <name lang="cs">6ES5 095-8MA03 (part 3/8)</name>
     </names>
     <informations>SIEMENS S5 (digital inputs)</informations>
     <description>
+        <polygon x4="-5" y5="8" x5="-10" y6="-35" x6="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="58" x1="-10" y2="14" x2="-10" y3="11" x3="-15" y4="11"/>
+        <input x="435" y="11" size="9" rotate="true" text="/"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="411" y2="60" x2="411"/>
+        <polygon x4="435" y5="8" x5="430" y6="-35" x6="430" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="58" x1="430" y2="14" x2="430" y3="11" x3="425" y4="11"/>
+        <input x="-55" y="11" size="9" rotate="true" text="/"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="331" y2="60" x2="331"/>
+        <input x="431" y="-18" size="9" rotate="true" text="_"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="251" y2="60" x2="251"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="171" y2="60" x2="171"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="91" y2="60" x2="91"/>
@@ -31,7 +36,6 @@
         <arc width="6" x="247" y="51" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="6" x="167" y="51" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
         <arc width="6" x="87" y="51" antialias="true" height="6" style="line-style:normal;line-weight:normal;filling:none;color:black" start="-180" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="430" y2="53" x2="430"/>
         <input x="2" y="45.5" size="5" rotate="true" text="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="54" x1="11" y2="60" x2="11"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="413" y2="53" x2="430"/>
@@ -49,7 +53,6 @@
         <input x="402" y="45.5" size="5" rotate="true" text="15"/>
         <input x="322" y="45.5" size="5" rotate="true" text="14"/>
         <input x="242" y="45.5" size="5" text="13"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-10" y2="53" x2="-10"/>
         <input x="82" y="33" size="7" rotate="true" text="M"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="53" x1="93" y2="53" x2="167"/>
         <input x="82" y="45.5" size="5" rotate="true" text="11"/>

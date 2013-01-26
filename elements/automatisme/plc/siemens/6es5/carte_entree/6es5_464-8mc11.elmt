@@ -1,12 +1,12 @@
-<definition width="780" version="0.3" hotspot_x="20" hotspot_y="35" height="100" type="element" orientation="dnnn">
+<definition width="790" version="0.3" hotspot_x="20" hotspot_y="35" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES5 464-8MC11</name>
+        <name lang="pt">6ES5 464-8MC11</name>
         <name lang="en">6ES5 464-8MC11</name>
         <name lang="fr">6ES5 464-8MC11</name>
         <name lang="pl">6ES5 464-8MC11</name>
-        <name lang="cs">6ES5 464-8MA11</name>
-        <name lang="pt">6ES5 464-8MC11</name>
         <name lang="es">6ES5 464-8MA11</name>
+        <name lang="cs">6ES5 464-8MA11</name>
     </names>
     <informations>SIEMENS S5 (digital inputs)</informations>
     <description>
@@ -55,8 +55,9 @@
         <input x="4" y="-19.5" size="5" rotate="true" text="1"/>
         <circle x="87.5" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <circle x="7.4999" y="-30.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
-        <input x="0" y="44.5" size="9" rotate="true" text="6ES5 464-8MC11   4 x &#xB1;10V"/>
+        <input x="0" y="44.5" size="9" rotate="true" text="6ES5 464-8MC11   4 x ±10V"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="750"/>
+        <input x="751" y="-16" size="9" rotate="true" text="_"/>
         <terminal x="170" y="-31" orientation="n"/>
         <terminal x="250" y="-31" orientation="n"/>
         <terminal x="330" y="-31" orientation="n"/>

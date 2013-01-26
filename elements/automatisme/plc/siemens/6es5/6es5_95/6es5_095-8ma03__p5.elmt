@@ -1,18 +1,22 @@
-<definition width="780" version="0.3" hotspot_x="10" hotspot_y="0" height="110" type="element" orientation="dnnn">
+<definition width="830" version="0.3" hotspot_x="50" hotspot_y="0" height="110" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES5 095-8MA03 (part 5/8)</name>
+        <name lang="pt">6ES5 095-8MA03 (parte 5/8)</name>
         <name lang="en">6ES5 095-8MA03 (part 5/8)</name>
         <name lang="fr">6ES5 095-8MA03 (part 5/8)</name>
         <name lang="pl">6ES5 095-8MA03 (część 5/8)</name>
-        <name lang="cs">6ES5 095-8MA03 (part 5/8)</name>
-        <name lang="pt">6ES5 095-8MA03 (parte 5/8)</name>
         <name lang="es">6ES5 095-8MA03 (parte 5/8)</name>
+        <name lang="cs">6ES5 095-8MA03 (part 5/8)</name>
     </names>
     <informations>SIEMENS S5 (digital outputs)</informations>
     <description>
+        <input x="-45" y="52" size="9" rotate="true" text="/"/>
+        <input x="765" y="53" size="9" rotate="true" text="/"/>
         <input x="732" y="77" size="7" rotate="true" text="M"/>
+        <polygon x4="765" y5="50" x5="760" y6="5" x6="760" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="103" x1="760" y2="56" x2="760" y3="53" x3="755" y4="53"/>
+        <polygon x4="5" y5="50" x5="0" y6="5" x6="0" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="103" x1="0" y2="56" x2="0" y3="53" x3="-5" y4="53"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="98" x1="743" y2="98" x2="760"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="760" y2="98" x2="760"/>
+        <input x="761" y="22" size="9" rotate="true" text="_"/>
         <input x="643" y="77" size="7" rotate="true" text="Q32.7"/>
         <input x="563" y="77" size="7" rotate="true" text="Q32.6"/>
         <input x="483" y="77" size="7" rotate="true" text="Q32.5"/>
@@ -20,7 +24,6 @@
         <input x="323" y="77" size="7" rotate="true" text="Q32.3"/>
         <input x="243" y="77" size="7" rotate="true" text="Q32.2"/>
         <input x="163" y="77" size="7" rotate="true" text="Q32.1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="98" x2="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="98" x1="663" y2="98" x2="737"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="98" x1="583" y2="98" x2="657"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="98" x1="503" y2="98" x2="577"/>

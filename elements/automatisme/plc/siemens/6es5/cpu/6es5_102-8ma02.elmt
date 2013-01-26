@@ -1,16 +1,18 @@
-<definition width="210" version="0.3" hotspot_x="20" hotspot_y="45" height="110" type="element" orientation="dnnn">
+<definition width="220" version="0.3" hotspot_x="20" hotspot_y="45" height="110" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES5 102-8MA02</name>
+        <name lang="pt">6ES5 102-8MA02</name>
         <name lang="en">6ES5 102-8MA02</name>
         <name lang="fr">6ES5 102-8MA02</name>
         <name lang="pl">6ES5 102-8MA02</name>
-        <name lang="cs">6ES5 102-8MA02</name>
-        <name lang="pt">6ES5 102-8MA02</name>
         <name lang="es">6ES5 102-8MA02</name>
+        <name lang="cs">6ES5 102-8MA02</name>
     </names>
     <informations></informations>
     <description>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-31" x1="163" y2="-35" x2="157"/>
         <input x="148" y="-16" size="7" rotate="true" text="MPI"/>
+        <text x="151" y="-34" size="4" text="15"/>
         <input x="1" y="-16" size="7" rotate="true" text="L+"/>
         <input x="22" y="-16" size="7" rotate="true" text="M"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="163" y2="-28" x2="180"/>
@@ -34,6 +36,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-15" x1="50" y2="-25" x2="50"/>
         <input x="0" y="44.5" size="9" rotate="true" text="6ES5 102-8MA02"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="60" x1="-10" y2="60" x2="180"/>
+        <input x="181" y="-16" size="9" rotate="true" text="_"/>
         <terminal x="10" y="-31" orientation="n"/>
         <terminal x="30" y="-31" orientation="n"/>
         <terminal x="50" y="-31" orientation="n"/>
