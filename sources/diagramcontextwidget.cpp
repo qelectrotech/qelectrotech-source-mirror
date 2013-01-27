@@ -172,3 +172,12 @@ void DiagramContextWidget::initLayout() {
 	vlayout0 -> addWidget(table_);
 	setLayout(vlayout0);
 }
+
+/**
+	Set Sorting on the table.
+*/
+void DiagramContextWidget::setSorting(bool enable, int column, Qt::SortOrder order ) {
+	table_ -> setSortingEnabled(enable);
+	table_ -> sortByColumn(column, order);
+}
+

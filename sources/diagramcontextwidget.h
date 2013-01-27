@@ -23,6 +23,7 @@ class DiagramContextWidget : public QWidget {
 	DiagramContext context() const;
 	void setContext(const DiagramContext &);
 	int nameLessRowsCount() const;
+	void setSorting(bool enable, int column, Qt::SortOrder order );
 	
 	signals:
 	
