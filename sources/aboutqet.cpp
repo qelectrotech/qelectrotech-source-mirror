@@ -69,11 +69,11 @@ QWidget *AboutQET::title() const {
 	icon -> setPixmap(QET::Icons::QETOxygenLogo.pixmap(48, 48));
 	// label "QElectroTech"
 	QLabel *title = new QLabel("<span style=\"font-weight:0;font-size:16pt;\">QElectroTech v" + QET::displayedVersion + "</span>");
-	QString sCompilation =	"<br>"+ tr("Compilation: ") +  __DATE__+ " " + __TIME__;
+	QString compilation_info = "<br />" + tr("Compilation : ") +  __DATE__ + " "  + __TIME__;
 #ifdef __GNUC__
-	sCompilation += " - GCC " + QString(__VERSION__);
+	compilation_info += " - GCC " + QString(__VERSION__);
 #endif
-	title -> setText( title->text() + sCompilation);
+	title -> setText(title->text() + compilation_info);
 	title -> setTextFormat(Qt::RichText);
 	
 	QHBoxLayout *hlayout = new QHBoxLayout();
