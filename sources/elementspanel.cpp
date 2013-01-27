@@ -28,37 +28,6 @@
 #include "templatescollection.h"
 #include "treecoloranimation.h"
 
-/**
-	This class implements a thread reloading the following elements
-	collections:
-	  * the common collection
-	  * the custom collection
-	  * the embedded collection of each project listed in the projects_
-	attribute.
-*/
-class ReloadCollectionThread : public QThread {
-	public:
-	void run();
-	/// list of projects whose embedded collection should be reloaded.
-	QList<QETProject *> projects_;
-};
-
-/**
-	Reloads collections.
-*/
-void ReloadCollectionThread::run() {
-	QETApp::commonElementsCollection() -> reload();
-	QETApp::customElementsCollection() -> reload();
-	
-	// reloads collection of every project displayed in this panel
-	foreach(QETProject *project, projects_) {
-		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
-			project_collection -> reload();
-		}
-	}
-	exit();
-}
-
 /*
 	Lorsque le flag ENABLE_PANEL_DND_CHECKS est defini, le panel d'elements
 	effectue des verifications lors des drag'n drop d'elements et categories.
@@ -540,11 +509,14 @@ bool ElementsPanel::matchesCurrentFilter(const QTreeWidgetItem *item) const {
 	  * collection of every project displayed in this panel
 */
 void ElementsPanel::reloadCollections() {
-	ReloadCollectionThread thread;
-	thread.projects_ = projects_to_display_.values();
-	thread.start();
-	while(!thread.wait(50)) {
-		QApplication::processEvents();
+	QETApp::commonElementsCollection() -> reload();
+	QETApp::customElementsCollection() -> reload();
+	
+	// reloads collection of every project displayed in this panel
+	foreach(QETProject *project, projects_to_display_) {
+		if (ElementsCollection *project_collection = project -> embeddedCollection()) {
+			project_collection -> reload();
+		}
 	}
 }
 

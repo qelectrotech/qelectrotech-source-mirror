@@ -89,7 +89,7 @@ void FileElementsCollection::setFilePath(const QString &path) {
 	Supprime le contenu en memoire de cette collection
 */
 void FileElementsCollection::deleteContent() {
-	if(!root)	delete root;
+	delete root;
 	root = 0;
 }
 
