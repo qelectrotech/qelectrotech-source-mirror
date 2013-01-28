@@ -164,3 +164,10 @@ unix {
 		}
 	}
 }
+win32 {
+	*-g++* {
+		system(g++ -v --help 2>&1 | find \"fipa-sra\" >NUL) {
+			QMAKE_CXXFLAGS += -fno-ipa-sra
+		}
+	}
+}
