@@ -9,13 +9,13 @@
     </names>
     <informations></informations>
     <description>
-        <polygon x4="93" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" y1="2" x1="93" y2="4" x2="93" y3="3" x3="96" y4="2"/>
+        <polygon x4="95" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" closed="false" y1="10" x1="90" y2="6" x2="90" y3="6" x3="95" y4="10"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="113" y2="48" x2="127"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="3" x1="83" y2="3" x2="93"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="89" y2="8" x2="89"/>
+        <arc width="8" x="76" y="6" antialias="true" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-270"/>
+        <polygon antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="84" y2="10" x2="80" y3="6" x3="80"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="113" y2="-28" x2="127"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="10" y2="48" x2="107"/>
-        <polygon x4="91" antialias="true" style="line-style:normal;line-weight:thin;filling:black;color:black" closed="false" y1="10" x1="86" y2="6" x2="86" y3="6" x3="91" y4="10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="4" x1="85" y2="8" x2="85"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-28" x1="10" y2="-28" x2="107"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="10" x1="80" y2="10" x2="189"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-25" x1="150" y2="0" x2="150" y3="20" x3="155"/>

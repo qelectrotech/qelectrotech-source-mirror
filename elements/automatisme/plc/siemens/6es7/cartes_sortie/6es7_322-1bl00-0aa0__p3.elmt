@@ -1,17 +1,21 @@
-<definition width="770" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
+<definition width="840" version="0.3" hotspot_x="65" hotspot_y="55" height="120" type="element" orientation="dnnn">
     <names>
         <name lang="ar">6ES7 322-1BL00-0AA0 (part 3/4)</name>
+        <name lang="pt">6ES7 322-1BL00-0AA0 (parte 3/4)</name>
         <name lang="en">6ES7 322-1BL00-0AA0 (part 3/4)</name>
         <name lang="fr">6ES7 322-1BL00-0AA0 (part 3/4)</name>
         <name lang="pl">6ES7 322-1BL00-0AA0 (część 3/4)</name>
-        <name lang="cs">6ES7 322-1BL00-0AA0 (část 3/4)</name>
-        <name lang="pt">6ES7 322-1BL00-0AA0 (parte 3/4)</name>
         <name lang="es">6ES7 322-1BL00-0AA0 (parte 3/4)</name>
+        <name lang="cs">6ES7 322-1BL00-0AA0 (část 3/4)</name>
     </names>
     <informations></informations>
     <description>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="750" y2="48" x2="750"/>
+        <input x="755" y="3" size="9" rotate="true" text="/"/>
+        <input x="-55" y="4" size="9" rotate="true" text="/"/>
+        <polygon x4="-5" y5="0" x5="-10" y6="-45" x6="-10" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="53" x1="-10" y2="6" x2="-10" y3="3" x3="-15" y4="3"/>
+        <polygon x4="755" y5="0" x5="750" y6="-45" x6="750" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="53" x1="750" y2="6" x2="750" y3="3" x3="745" y4="3"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="733" y2="48" x2="750"/>
+        <input x="751" y="-28" size="9" rotate="true" text="_"/>
         <input x="720" y="27" size="7" rotate="true" text="3M"/>
         <input x="636" y="27" size="7" rotate="true" text="Q2.7"/>
         <input x="556" y="27" size="7" rotate="true" text="Q2.6"/>
@@ -20,7 +24,6 @@
         <input x="316" y="27" size="7" rotate="true" text="Q2.3"/>
         <input x="236" y="27" size="7" rotate="true" text="Q2.2"/>
         <input x="156" y="27" size="7" rotate="true" text="Q2.1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-40" x1="-10" y2="48" x2="-10"/>
         <circle x="727.5" y="45.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="653" y2="48" x2="727"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="48" x1="573" y2="48" x2="647"/>
