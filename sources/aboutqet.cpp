@@ -72,6 +72,8 @@ QWidget *AboutQET::title() const {
 	QString compilation_info = "<br />" + tr("Compilation : ") +  __DATE__ + " "  + __TIME__;
 #ifdef __GNUC__
 	compilation_info += " - GCC " + QString(__VERSION__);
+	compilation_info += " - built with Qt " + QString(QT_VERSION_STR);
+	compilation_info += " - run with Qt "+ QString(qVersion());
 #endif
 	title -> setText(title->text() + compilation_info);
 	title -> setTextFormat(Qt::RichText);
