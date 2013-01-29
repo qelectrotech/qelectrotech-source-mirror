@@ -602,6 +602,8 @@ void ElementsPanel::reload(bool reload_collections) {
 	
 	// the first time, expand the first level of collections
 	if (first_reload_) first_reload_ = false;
+	
+	emit(loadingFinished());
 }
 
 /**

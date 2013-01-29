@@ -910,6 +910,7 @@ QTreeWidgetItem *GenericPanel::updateItem(QTreeWidgetItem *qtwi, PanelOptions op
 	Q_UNUSED(qtwi);
 	Q_UNUSED(options);
 	Q_UNUSED(freshly_created);
+	QApplication::processEvents();
 	return(qtwi);
 }
 

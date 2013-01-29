@@ -141,6 +141,7 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	connect(elements_panel, SIGNAL(loadingProgressed(int, int)),  this, SLOT(updateProgressBar(int, int)));
 	connect(elements_panel, SIGNAL(readingAboutToBegin()),        this, SLOT(collectionsRead()));
 	connect(elements_panel, SIGNAL(readingFinished()),            this, SLOT(collectionsReadFinished()));
+	connect(elements_panel, SIGNAL(loadingFinished()),            this, SLOT(loadingFinished()));
 	
 	// initialise la barre d'outils
 	toolbar = new QToolBar(this);
@@ -167,6 +168,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	vlayout -> addWidget(progress_bar_);
 	vlayout -> setStretchFactor(elements_panel, 75000);
 	setLayout(vlayout);
+	
+	// by default, the reload button is disabled
+	reload -> setEnabled(false);
 }
 
 /**
@@ -190,12 +194,16 @@ void ElementsPanelWidget::clearFilterTextField() {
 */
 void ElementsPanelWidget::reloadAndFilter() {
 	// recharge tous les elements
+	reload -> setEnabled(false);
 	elements_panel -> reload(true);
 	
+	// the reload button was enabled again through loadingFinished()
+	reload -> setEnabled(false);
 	// reapplique le filtre
 	if (!filter_textfield -> text().isEmpty()) {
 		elements_panel -> filter(filter_textfield -> text());
 	}
+	reload -> setEnabled(true);
 }
 
 /**
@@ -617,10 +625,18 @@ void ElementsPanelWidget::updateProgressBar(int current, int maximum) {
 	if (!current) {
 		progress_bar_ -> setFormat(tr("Chargement : %p%", "Visual rendering of elements/categories files - %p is the progress percentage"));
 		progress_bar_ -> setVisible(true);
-	} else if (current == provided_maximum) {
-		QTimer::singleShot(500, progress_bar_, SLOT(hide()));
 	}
 	progress_bar_ -> setValue(current);
+}
+
+/**
+	Reflects the fact the whole panel content was loaded by hiding the progress
+	bar and enabling again the reload button.
+*/
+void ElementsPanelWidget::loadingFinished() {
+	QTimer::singleShot(500, progress_bar_, SLOT(hide()));
+	reload -> setEnabled(true);
+	
 }
 
 void ElementsPanelWidget::filterEdited(const QString &next_text) {

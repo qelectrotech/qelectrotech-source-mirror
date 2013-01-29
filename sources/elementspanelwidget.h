@@ -101,6 +101,7 @@ class ElementsPanelWidget : public QWidget {
 	void collectionsRead();
 	void collectionsReadFinished();
 	void updateProgressBar(int, int);
+	void loadingFinished();
 	void filterEdited(const QString &);
 	
 	private:

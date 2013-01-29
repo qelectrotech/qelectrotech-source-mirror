@@ -72,6 +72,7 @@ class ElementsPanel : public GenericPanel {
 	void readingAboutToBegin();
 	void readingFinished();
 	void loadingProgressed(int, int);
+	void loadingFinished();
 	
 	public slots:
 	void slot_doubleClick(QTreeWidgetItem *, int);
