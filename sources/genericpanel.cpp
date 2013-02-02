@@ -1245,9 +1245,11 @@ void GenericPanel::clearPanel() {
 	firstActivated().
 */
 bool GenericPanel::event(QEvent *event) {
-	if (first_activation_ && event -> type() == QEvent::WindowActivate) {
-		QTimer::singleShot(250, this, SLOT(emitFirstActivated()));
-		first_activation_ = false;
+	if (first_activation_) {
+		if (event -> type() == QEvent::WindowActivate || event -> type() == QEvent::Show) {
+			QTimer::singleShot(250, this, SLOT(emitFirstActivated()));
+			first_activation_ = false;
+		}
 	}
 	return(QTreeWidget::event(event));
 }
