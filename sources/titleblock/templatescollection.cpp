@@ -270,6 +270,22 @@ TitleBlockTemplateLocation TitleBlockTemplatesProjectCollection::location(const 
 }
 
 /**
+	@return always false since a project collection is not stored on any
+	filesystem.
+*/
+bool TitleBlockTemplatesProjectCollection::hasFilePath() {
+	return(false);
+}
+
+/**
+	@return always an empty string since a project collection is not stored on
+	any filesystem.
+*/
+QString TitleBlockTemplatesProjectCollection::filePath() {
+	return(QString());
+}
+
+/**
 	@param template_name Either an empty QString to know whether the collection
 	itself is read only, or a specific template name.
 	@return true if the specified template is read only, false otherwise
@@ -451,6 +467,21 @@ void TitleBlockTemplatesFilesCollection::removeTemplate(const QString &template_
 */
 TitleBlockTemplateLocation TitleBlockTemplatesFilesCollection::location(const QString &template_name) {
 	return(TitleBlockTemplateLocation(template_name, this));
+}
+
+/**
+	@return always true since a files collection is always stored on a
+	filesystem.
+*/
+bool TitleBlockTemplatesFilesCollection::hasFilePath() {
+	return(true);
+}
+
+/**
+	@return The filesystem path where this files collection is actually stored.
+*/
+QString TitleBlockTemplatesFilesCollection::filePath() {
+	return(dir_.canonicalPath());
 }
 
 /**
