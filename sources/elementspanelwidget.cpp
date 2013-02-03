@@ -53,6 +53,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	elements_panel = new ElementsPanel(this);
 	
 	// initialise les actions
+	open_directory        = new QAction(QET::Icons::DocumentOpen,              tr("Ouvrir le dossier correspondant"),     this);
+	copy_path             = new QAction(QET::Icons::CopyFile,                  tr("Copier le chemin"),                    this);
 	reload                = new QAction(QET::Icons::ViewRefresh,               tr("Recharger les collections"),           this);
 	new_category          = new QAction(QET::Icons::FolderNew,                 tr("Nouvelle cat\351gorie"),               this);
 	edit_category         = new QAction(QET::Icons::FolderEdit,                tr("\311diter la cat\351gorie"),           this);
@@ -95,6 +97,8 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	
 	context_menu = new QMenu(this);
 	
+	connect(open_directory,        SIGNAL(triggered()), this,           SLOT(openDirectoryForSelectedItem()));
+	connect(copy_path,             SIGNAL(triggered()), this,           SLOT(copyPathForSelectedItem()));
 	connect(reload,                SIGNAL(triggered()), this,           SLOT(reloadAndFilter()));
 	connect(new_category,          SIGNAL(triggered()), this,           SLOT(newCategory()));
 	connect(edit_category,         SIGNAL(triggered()), this,           SLOT(editCategory()));
@@ -187,6 +191,33 @@ void ElementsPanelWidget::clearFilterTextField() {
 	filter_textfield -> clear();
 	filter_textfield -> setFocus();
 	filterEdited(QString());
+}
+
+/**
+	Require the desktop environment to open the directory containing the file
+	represented by the selected item, if any.
+*/
+void ElementsPanelWidget::openDirectoryForSelectedItem() {
+	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
+		QString dir_path = elements_panel -> dirPathForItem(qtwi);
+		if (!dir_path.isEmpty()) {
+			QDesktopServices::openUrl(dir_path);
+		}
+	}
+}
+
+/**
+	Copy the full path to the file represented by the selected item to the
+	clipboard.
+*/
+void ElementsPanelWidget::copyPathForSelectedItem() {
+	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
+		QString file_path = elements_panel -> filePathForItem(qtwi);
+		file_path = QDir::toNativeSeparators(file_path);
+		if (!file_path.isEmpty()) {
+			QApplication::clipboard() -> setText(file_path);
+		}
+	}
 }
 
 /**
@@ -467,6 +498,13 @@ void ElementsPanelWidget::handleContextMenu(const QPoint &pos) {
 	
 	updateButtons();
 	context_menu -> clear();
+	
+	QString dir_path = elements_panel -> dirPathForItem(item);
+	if (!dir_path.isEmpty()) {
+		context_menu -> addAction(open_directory);
+		context_menu -> addAction(copy_path);
+		context_menu -> addSeparator();
+	}
 	
 	switch(item -> type()) {
 		case QET::ElementsCategory:

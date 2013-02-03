@@ -39,6 +39,7 @@ class ElementsPanelWidget : public QWidget {
 	private:
 	ElementsPanel *elements_panel;
 	QToolBar *toolbar, *filter_toolbar;
+	QAction *open_directory, *copy_path;
 	QAction *reload;
 	QAction *new_category, *edit_category, *delete_category;
 	QAction *delete_collection;
@@ -69,6 +70,8 @@ class ElementsPanelWidget : public QWidget {
 	
 	public slots:
 	void clearFilterTextField();
+	void openDirectoryForSelectedItem();
+	void copyPathForSelectedItem();
 	void reloadAndFilter();
 	void activateProject();
 	void closeProject();
