@@ -201,7 +201,7 @@ void ElementsPanelWidget::openDirectoryForSelectedItem() {
 	if (QTreeWidgetItem *qtwi = elements_panel -> currentItem()) {
 		QString dir_path = elements_panel -> dirPathForItem(qtwi);
 		if (!dir_path.isEmpty()) {
-			QDesktopServices::openUrl(dir_path);
+			QDesktopServices::openUrl(QUrl::fromLocalFile(dir_path));
 		}
 	}
 }
