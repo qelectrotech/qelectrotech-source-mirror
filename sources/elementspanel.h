@@ -58,6 +58,8 @@ class ElementsPanel : public GenericPanel {
 	ElementsCollectionItem *selectedItem() const;
 	ElementsCategory *categoryForItem(QTreeWidgetItem *);
 	ElementsCategory *categoryForPos(const QPoint &);
+	QString dirPathForItem(QTreeWidgetItem *);
+	QString filePathForItem(QTreeWidgetItem *);
 	
 	void reloadCollections();
 	int elementsCollectionItemsCount();

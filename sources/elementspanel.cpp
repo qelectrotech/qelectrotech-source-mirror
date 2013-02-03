@@ -683,6 +683,53 @@ ElementsCategory *ElementsPanel::categoryForPos(const QPoint &pos) {
 }
 
 /**
+	@param qtwi a QTreeWidgetItem
+	@return the directory path of the object represented by \a qtwi
+*/
+QString ElementsPanel::dirPathForItem(QTreeWidgetItem *item) {
+	QString file_path = filePathForItem(item);
+	if (!file_path.isEmpty()) {
+		QFileInfo path_info(file_path);
+		if (path_info.isDir()) {
+			return(file_path);
+		}
+		else {
+			return(path_info.canonicalPath());
+		}
+	}
+	return(QString());
+}
+
+/**
+	@param qtwi a QTreeWidgetItem
+	@return the filepath of the object represented by \a qtwi
+*/
+QString ElementsPanel::filePathForItem(QTreeWidgetItem *item) {
+	if (!item) return(QString());
+	
+	ElementsCollectionItem *collection_item = collectionItemForItem(item);
+	if (collection_item) {
+		if (collection_item -> hasFilePath()) {
+			return(collection_item -> filePath());
+		}
+	}
+	else {
+		TitleBlockTemplateLocation tbt_location = templateLocationForItem(item);
+		TitleBlockTemplatesCollection *tbt_collection = tbt_location.parentCollection();
+		if (tbt_collection && tbt_collection -> hasFilePath()) {
+			return(tbt_collection -> filePath());
+		}
+		else {
+			QETProject *project = projectForItem(item);
+			if (project) {
+				return(project -> filePath());
+			}
+		}
+	}
+	return(QString());
+}
+
+/**
 	Hide items that do not match the provided string, ensure others are visible
 	along with their parent hierarchy. When ending the filtering, restore the tree
 	as it was before the filtering (except the current item) and scroll to the
