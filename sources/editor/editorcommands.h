@@ -24,11 +24,40 @@
 #include "elementcontent.h"
 #include "qgimanager.h"
 #include <QtGui>
+
+/**
+	ElementEditionCommand is the base class for all commands classes involved in
+	the edition of an electrical element. It provides commonly required methods
+	and attributes, such as accessors to the modified scene and view.
+*/
+class ElementEditionCommand : public QUndoCommand {
+	// constructors, destructor
+	public:
+	ElementEditionCommand(ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
+	ElementEditionCommand(const QString &, ElementScene * = 0, ElementView * = 0, QUndoCommand * = 0);
+	virtual ~ElementEditionCommand();
+	private:
+	ElementEditionCommand(const ElementEditionCommand &);
+	
+	// methods
+	public:
+	ElementScene *elementScene() const;
+	void setElementScene(ElementScene *);
+	ElementView *elementView() const;
+	void setElementView(ElementView *);
+	
+	// attributes
+	protected:
+	/// Element editor/view/scene the command should take place on
+	ElementScene *editor_scene_;
+	ElementView *editor_view_;
+};
+
 /**
 	This command deletes one or several primitives/parts when editing an
 	electrical element.
 */
-class DeletePartsCommand : public QUndoCommand {
+class DeletePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	DeletePartsCommand(ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
@@ -45,14 +74,12 @@ class DeletePartsCommand : public QUndoCommand {
 	private:
 	/// Deleted primitives
 	QList<QGraphicsItem *> deleted_parts;
-	/// Element editor/view/scene the command should take place on
-	ElementScene *editor_scene;
 };
 
 /**
 	This command pastes primitives when editing an electrical element.
 */
-class PastePartsCommand : public QUndoCommand {
+class PastePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	PastePartsCommand(ElementView *, const ElementContent &, QUndoCommand * = 0);
@@ -70,9 +97,6 @@ class PastePartsCommand : public QUndoCommand {
 	private:
 	/// Pasted content
 	ElementContent content_;
-	/// Element editor/view/scene the command should take place on
-	ElementView *editor_view_;
-	ElementScene *editor_scene_;
 	/// Data required to undo a copy/paste with offset
 	int old_offset_paste_count_;
 	QPointF old_start_top_left_corner_;
@@ -98,7 +122,7 @@ class CutPartsCommand : public DeletePartsCommand {
 /**
 	This command moves primitives when editing an electrical element.
 */
-class MovePartsCommand : public QUndoCommand {
+class MovePartsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	MovePartsCommand(const QPointF &, ElementScene *, const QList<QGraphicsItem *>, QUndoCommand * = 0);
@@ -115,8 +139,6 @@ class MovePartsCommand : public QUndoCommand {
 	private:
 	/// List of moved primitives
 	QList<QGraphicsItem *> moved_parts;
-	/// Element editor/view/scene the command should take place on
-	ElementScene *editor_scene;
 	/// applied movement
 	QPointF movement;
 	/// Prevent the first call to redo()
@@ -126,7 +148,7 @@ class MovePartsCommand : public QUndoCommand {
 /**
 	This command adds a primitive when editing an electrical element.
 */
-class AddPartCommand : public QUndoCommand {
+class AddPartCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	AddPartCommand(const QString &, ElementScene *, QGraphicsItem *, QUndoCommand * = 0);
@@ -143,8 +165,6 @@ class AddPartCommand : public QUndoCommand {
 	private:
 	/// Added primitive
 	QGraphicsItem *part;
-	/// Element editor/view/scene the command should take place on
-	ElementScene *editor_scene;
 	/// Prevent the first call to redo()
 	bool first_redo;
 };
@@ -153,7 +173,7 @@ class AddPartCommand : public QUndoCommand {
 	This command changes a property of a primitive when editing an electrical
 	element.
 */
-class ChangePartCommand : public QUndoCommand {
+class ChangePartCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangePartCommand(const QString &, CustomElementPart *, const QString &, const QVariant &, const QVariant &, QUndoCommand * = 0);
@@ -182,7 +202,7 @@ class ChangePartCommand : public QUndoCommand {
 	This command changes the points of a polygon when editing an electrical
 	element.
 */
-class ChangePolygonPointsCommand : public QUndoCommand {
+class ChangePolygonPointsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangePolygonPointsCommand(PartPolygon *, const QVector<QPointF> &, const QVector<QPointF> &, QUndoCommand * = 0);
@@ -208,7 +228,7 @@ class ChangePolygonPointsCommand : public QUndoCommand {
 	This command changes the dimensions and/or the hotspot of an electrical
 	element.
 */
-class ChangeHotspotCommand : public QUndoCommand {
+class ChangeHotspotCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangeHotspotCommand(ElementScene *, const QSize &, const QSize &, const QPoint &, const QPoint &, const QPoint & = QPoint(), QUndoCommand * = 0);
@@ -225,8 +245,6 @@ class ChangeHotspotCommand : public QUndoCommand {
 	void applyOffset(const QPointF &);
 	
 	// attributes
-	/// Element editor/view/scene the command should take place on
-	ElementScene *element;
 	/// Former dimensions
 	QSize size_before;
 	/// new dimensions
@@ -242,7 +260,7 @@ class ChangeHotspotCommand : public QUndoCommand {
 /**
 	This command changes the translated names of an electrical element.
 */
-class ChangeNamesCommand : public QUndoCommand {
+class ChangeNamesCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangeNamesCommand(ElementScene *, const NamesList &, const NamesList &, QUndoCommand * = 0);
@@ -261,14 +279,12 @@ class ChangeNamesCommand : public QUndoCommand {
 	NamesList names_before;
 	/// List of new names
 	NamesList names_after;
-	/// Element editor/view/scene the command should take place on
-	ElementScene *element;
 };
 
 /**
 	This command changes the allowed orientations of an electrical element.
 */
-class ChangeOrientationsCommand : public QUndoCommand {
+class ChangeOrientationsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangeOrientationsCommand(ElementScene *, const OrientationSet &, const OrientationSet &, QUndoCommand * = 0);
@@ -287,15 +303,13 @@ class ChangeOrientationsCommand : public QUndoCommand {
 	OrientationSet ori_before;
 	/// New orientations
 	OrientationSet ori_after;
-	/// Element editor/view/scene the command should take place on
-	ElementScene *element;
 };
 
 /**
 	This command changes the zValue of a set of primitives when editing an
 	electrical element.
 */
-class ChangeZValueCommand : public QUndoCommand {
+class ChangeZValueCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	/// List the various kind of changes for the zValue
@@ -327,8 +341,6 @@ class ChangeZValueCommand : public QUndoCommand {
 	QHash<QGraphicsItem *, qreal> undo_hash;
 	/// associates impacted primitives with their new zValues
 	QHash<QGraphicsItem *, qreal> redo_hash;
-	/// Element editor/view/scene the command should take place on
-	ElementScene *element;
 	/// kind of treatment to apply
 	Option option;
 };
@@ -337,7 +349,7 @@ class ChangeZValueCommand : public QUndoCommand {
 	This command enables or disables internal connections for an electrical
 	element.
 */
-class AllowInternalConnectionsCommand : public QUndoCommand {
+class AllowInternalConnectionsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	AllowInternalConnectionsCommand(ElementScene *, bool, QUndoCommand * = 0);
@@ -352,8 +364,6 @@ class AllowInternalConnectionsCommand : public QUndoCommand {
 	
 	// attributes
 	private:
-	/// Element editor/view/scene the command should take place on
-	ElementScene *element;
 	/// whether internal connections are allowed afterward
 	bool ic;
 };
@@ -361,7 +371,7 @@ class AllowInternalConnectionsCommand : public QUndoCommand {
 /**
 	This command changes extra information carried by an electrical element.
 */
-class ChangeInformationsCommand : public QUndoCommand {
+class ChangeInformationsCommand : public ElementEditionCommand {
 	// constructors, destructor
 	public:
 	ChangeInformationsCommand(ElementScene *, const QString &, const QString &, QUndoCommand * = 0);
@@ -376,8 +386,6 @@ class ChangeInformationsCommand : public QUndoCommand {
 	
 	// attributes
 	private:
-	/// Element editor/view/scene the command should take place on
-	ElementScene *element;
 	/// Former information
 	QString old_informations_;
 	/// New information

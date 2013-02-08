@@ -17,6 +17,63 @@
 */
 #include "editorcommands.h"
 
+/**
+	Constructs an ElementEditionCommand, thus embedding the provided \a scene and \a view.
+	@param parent Parent command
+*/
+ElementEditionCommand::ElementEditionCommand(ElementScene *scene, ElementView *view, QUndoCommand *parent):
+	QUndoCommand(parent),
+	editor_scene_(scene),
+	editor_view_(view)
+{
+}
+
+/**
+	Constructs an ElementEditionCommand, thus embedding the provided \a scene and \a view.
+	@param text Text describing the effect of the command
+	@param parent Parent command
+*/
+ElementEditionCommand::ElementEditionCommand(const QString &text, ElementScene *scene, ElementView *view, QUndoCommand *parent):
+	QUndoCommand(text, parent),
+	editor_scene_(scene),
+	editor_view_(view)
+{
+}
+
+/**
+	Destructor
+*/
+ElementEditionCommand::~ElementEditionCommand() {
+}
+
+/**
+	@return the element editor/scene the command should take place on
+*/
+ElementScene *ElementEditionCommand::elementScene() const {
+	return(editor_scene_);
+}
+
+/**
+	Define \a scene as the element editor/scene the command should take place
+*/
+void ElementEditionCommand::setElementScene(ElementScene *scene) {
+	editor_scene_ = scene;
+}
+
+/**
+	@return the view the effect of the command should be rendered on
+*/
+ElementView *ElementEditionCommand::elementView() const {
+	return(editor_view_);
+}
+
+/**
+	Define \a view as the view the effect of the command should be rendered on
+*/
+void ElementEditionCommand::setElementView(ElementView *view) {
+	editor_view_ = view;
+}
+
 /*** DeletePartsCommand ***/
 /**
 	Constructeur
@@ -29,38 +86,37 @@ DeletePartsCommand::DeletePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("suppression", "undo caption"), parent),
-	deleted_parts(parts),
-	editor_scene(scene)
+	ElementEditionCommand(QObject::tr("suppression", "undo caption"), scene, 0, parent),
+	deleted_parts(parts)
 {
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene -> qgiManager().manage(qgi);
+		editor_scene_ -> qgiManager().manage(qgi);
 	}
 }
 
 /// Destructeur : detruit egalement les parties supprimees
 DeletePartsCommand::~DeletePartsCommand() {
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene -> qgiManager().release(qgi);
+		editor_scene_ -> qgiManager().release(qgi);
 	}
 }
 
 /// Restaure les parties supprimees
 void DeletePartsCommand::undo() {
-	editor_scene -> blockSignals(true);
+	editor_scene_ -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene -> addItem(qgi);
+		editor_scene_ -> addItem(qgi);
 	}
-	editor_scene -> blockSignals(false);
+	editor_scene_ -> blockSignals(false);
 }
 
 /// Supprime les parties
 void DeletePartsCommand::redo() {
-	editor_scene -> blockSignals(true);
+	editor_scene_ -> blockSignals(true);
 	foreach(QGraphicsItem *qgi, deleted_parts) {
-		editor_scene -> removeItem(qgi);
+		editor_scene_ -> removeItem(qgi);
 	}
-	editor_scene -> blockSignals(false);
+	editor_scene_ -> blockSignals(false);
 }
 
 /*** CutPartsCommand ***/
@@ -75,10 +131,8 @@ PastePartsCommand::PastePartsCommand(
 	const ElementContent &c,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(parent),
+	ElementEditionCommand(view ? view -> scene() : 0, view, parent),
 	content_(c),
-	editor_view_(view),
-	editor_scene_(view -> scene()),
 	uses_offset(false),
 	first_redo(true)
 {
@@ -173,12 +227,11 @@ MovePartsCommand::MovePartsCommand(
 	const QList<QGraphicsItem *> parts,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("d\351placement", "undo caption"), parent),
+	ElementEditionCommand(QObject::tr("d\351placement", "undo caption"), scene, 0, parent),
 	movement(m),
 	first_redo(true)
 {
 	moved_parts = parts;
-	editor_scene  = scene;
 }
 
 /// Destructeur
@@ -214,22 +267,21 @@ AddPartCommand::AddPartCommand(
 	QGraphicsItem *p,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), parent),
+	ElementEditionCommand(QString(QObject::tr("ajout %1", "undo caption")).arg(name), scene, 0, parent),
 	part(p),
-	editor_scene(scene),
 	first_redo(true)
 {
-	editor_scene -> qgiManager().manage(part);
+	editor_scene_ -> qgiManager().manage(part);
 }
 
 /// Destructeur
 AddPartCommand::~AddPartCommand() {
-	editor_scene -> qgiManager().release(part);
+	editor_scene_ -> qgiManager().release(part);
 }
 
 /// Annule l'ajout
 void AddPartCommand::undo() {
-	editor_scene -> removeItem(part);
+	editor_scene_ -> removeItem(part);
 }
 
 /// Refait l'ajout
@@ -239,16 +291,16 @@ void AddPartCommand::redo() {
 		if (!part -> zValue()) {
 			// the added part has no specific zValue already defined, we put it
 			// above existing items (but still under terminals)
-			QList<QGraphicsItem *> existing_items = editor_scene -> zItems();
+			QList<QGraphicsItem *> existing_items = editor_scene_ -> zItems();
 			qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
 			part -> setZValue(z);
 		}
-		editor_scene -> clearSelection();
+		editor_scene_ -> clearSelection();
 		part -> setSelected(true);
 		first_redo = false;
 		return;
 	}
-	editor_scene -> addItem(part);
+	editor_scene_ -> addItem(part);
 }
 
 /**
@@ -268,7 +320,7 @@ ChangePartCommand::ChangePartCommand(
 	const QVariant &new_v,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QString(QObject::tr("modification %1", "undo caption")).arg(name), parent),
+	ElementEditionCommand(QString(QObject::tr("modification %1", "undo caption")).arg(name), 0, 0, parent),
 	cep(part),
 	property(prop),
 	old_value(old_v),
@@ -303,7 +355,7 @@ ChangePolygonPointsCommand::ChangePolygonPointsCommand(
 	const QVector<QPointF> &n_points,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification points polygone", "undo caption"), parent),
+	ElementEditionCommand(QObject::tr("modification points polygone", "undo caption"), 0, 0, parent),
 	polygon(p),
 	old_points(o_points),
 	new_points(n_points)
@@ -343,8 +395,7 @@ ChangeHotspotCommand::ChangeHotspotCommand(
 	const QPoint &o,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification dimensions/hotspot", "undo caption"), parent),
-	element(element_scene),
+	ElementEditionCommand(QObject::tr("modification dimensions/hotspot", "undo caption"), element_scene, 0, parent),
 	size_before(size_1),
 	size_after(size_2),
 	hotspot_before(hotspot_1),
@@ -359,26 +410,26 @@ ChangeHotspotCommand::~ChangeHotspotCommand() {
 
 /// Annule le changement
 void ChangeHotspotCommand::undo() {
-	QRectF sc(element -> sceneContent());
+	QRectF sc(editor_scene_ -> sceneContent());
 	
-	element -> setWidth(size_before.width());
-	element -> setHeight(size_before.height());
-	element -> setHotspot(hotspot_before);
+	editor_scene_ -> setWidth(size_before.width());
+	editor_scene_ -> setHeight(size_before.height());
+	editor_scene_ -> setHotspot(hotspot_before);
 	if (!offset.isNull()) applyOffset(-offset);
 	
-	element -> update(element -> sceneContent().unite(sc));
+	editor_scene_ -> update(editor_scene_ -> sceneContent().unite(sc));
 }
 
 /// Refait le changement
 void ChangeHotspotCommand::redo() {
-	QRectF sc(element -> sceneContent());
+	QRectF sc(editor_scene_ -> sceneContent());
 	
-	element -> setWidth(size_after.width());
-	element -> setHeight(size_after.height());
-	element -> setHotspot(hotspot_after);
+	editor_scene_ -> setWidth(size_after.width());
+	editor_scene_ -> setHeight(size_after.height());
+	editor_scene_ -> setHotspot(hotspot_after);
 	if (!offset.isNull()) applyOffset(offset);
 	
-	element -> update(element -> sceneContent().unite(sc));
+	editor_scene_ -> update(editor_scene_ -> sceneContent().unite(sc));
 }
 
 /**
@@ -386,7 +437,7 @@ void ChangeHotspotCommand::redo() {
 	@param o Translation a appliquer
 */
 void ChangeHotspotCommand::applyOffset(const QPointF &o) {
-	foreach(QGraphicsItem *qgi, element -> items()) {
+	foreach(QGraphicsItem *qgi, editor_scene_ -> items()) {
 		qgi -> translate(o.x(), o.y());
 	}
 }
@@ -404,10 +455,9 @@ ChangeNamesCommand::ChangeNamesCommand(
 	const NamesList &after,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification noms", "undo caption"), parent),
+	ElementEditionCommand(QObject::tr("modification noms", "undo caption"), element_scene, 0, parent),
 	names_before(before),
-	names_after(after),
-	element(element_scene)
+	names_after(after)
 {
 }
 
@@ -417,12 +467,12 @@ ChangeNamesCommand::~ChangeNamesCommand() {
 
 /// Annule le changement
 void ChangeNamesCommand::undo() {
-	element -> setNames(names_before);
+	editor_scene_ -> setNames(names_before);
 }
 
 /// Refait le changement
 void ChangeNamesCommand::redo() {
-	element -> setNames(names_after);
+	editor_scene_ -> setNames(names_after);
 }
 
 /**
@@ -438,10 +488,9 @@ ChangeOrientationsCommand::ChangeOrientationsCommand(
 	const OrientationSet &after,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(QObject::tr("modification orientations", "undo caption"), parent),
+	ElementEditionCommand(QObject::tr("modification orientations", "undo caption"), element_scene, 0, parent),
 	ori_before(before),
-	ori_after(after),
-	element(element_scene)
+	ori_after(after)
 {
 }
 
@@ -451,12 +500,12 @@ ChangeOrientationsCommand::~ChangeOrientationsCommand() {
 
 /// Annule le changement
 void ChangeOrientationsCommand::undo() {
-	element -> setOrientations(ori_before);
+	editor_scene_ -> setOrientations(ori_before);
 }
 
 /// Refait le changement
 void ChangeOrientationsCommand::redo() {
-	element -> setOrientations(ori_after);
+	editor_scene_ -> setOrientations(ori_after);
 }
 
 /**
@@ -470,12 +519,11 @@ ChangeZValueCommand::ChangeZValueCommand(
 	ChangeZValueCommand::Option o,
 	QUndoCommand *parent
 ) :
-	QUndoCommand(parent),
-	element(elmt),
+	ElementEditionCommand(elmt, 0, parent),
 	option(o)
 {
 	// recupere les parties de l'elements, sauf les bornes
-	QList<QGraphicsItem *> items_list = element -> zItems();
+	QList<QGraphicsItem *> items_list = editor_scene_ -> zItems();
 	
 	// prend un snapshot des zValues
 	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
@@ -590,8 +638,7 @@ void ChangeZValueCommand::applySendBackward(const QList<QGraphicsItem *> &items_
 	@param parent QUndoCommand parent
 */
 AllowInternalConnectionsCommand::AllowInternalConnectionsCommand(ElementScene *elmt, bool allow, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modification connexions internes", "undo caption"), parent),
-	element(elmt),
+	ElementEditionCommand(QObject::tr("modification connexions internes", "undo caption"), elmt, 0, parent),
 	ic(allow)
 {
 }
@@ -602,12 +649,12 @@ AllowInternalConnectionsCommand::~AllowInternalConnectionsCommand() {
 
 /// Annule le changement d'autorisation pour les connexions internes
 void AllowInternalConnectionsCommand::undo() {
-	element -> setInternalConnections(!ic);
+	editor_scene_ -> setInternalConnections(!ic);
 }
 
 /// Refait le changement d'autorisation pour les connexions internes
 void AllowInternalConnectionsCommand::redo() {
-	element -> setInternalConnections(ic);
+	editor_scene_ -> setInternalConnections(ic);
 }
 
 /**
@@ -618,8 +665,7 @@ void AllowInternalConnectionsCommand::redo() {
 	@param parent QUndoCommand parent
 */
 ChangeInformationsCommand::ChangeInformationsCommand(ElementScene *elmt, const QString &old_infos, const QString &new_infos, QUndoCommand *parent) :
-	QUndoCommand(QObject::tr("modification informations complementaires", "undo caption"), parent),
-	element(elmt),
+	ElementEditionCommand(QObject::tr("modification informations complementaires", "undo caption"), elmt, 0, parent),
 	old_informations_(old_infos),
 	new_informations_(new_infos)
 {
@@ -631,10 +677,10 @@ ChangeInformationsCommand::~ChangeInformationsCommand() {
 
 /// Annule le changement d'autorisation pour les connexions internes
 void ChangeInformationsCommand::undo() {
-	element -> setInformations(old_informations_);
+	editor_scene_ -> setInformations(old_informations_);
 }
 
 /// Refait le changement d'autorisation pour les connexions internes
 void ChangeInformationsCommand::redo() {
-	element -> setInformations(new_informations_);
+	editor_scene_ -> setInformations(new_informations_);
 }
