@@ -61,6 +61,8 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
+	virtual void startUserTransformation(const QRectF &);
+	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
 	
 	public slots:
@@ -78,5 +80,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	void drawPoint(QPainter *, const QPointF &);
 #endif
 	QString previous_text;
+	QPointF saved_point_;
+	int saved_font_size_;
 };
 #endif

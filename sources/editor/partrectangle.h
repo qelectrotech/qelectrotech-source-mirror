@@ -51,8 +51,13 @@ class PartRectangle : public QGraphicsRectItem, public CustomElementGraphicPart 
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
+	virtual void startUserTransformation(const QRectF &);
+	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);
+	
+	private:
+	QList<QPointF> saved_points_;
 };
 #endif

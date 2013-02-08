@@ -71,6 +71,14 @@ class CustomElementPart {
 		Typically, useless primitives are discarded when saving the element.
 	*/
 	virtual bool isUseless() const = 0;
+	/**
+		Inform this part a user-induced transformation is about to begin. This method can be used to save data required by handleUserTransformation().
+	*/
+	virtual void startUserTransformation(const QRectF &) = 0;
+	/**
+		Make this part fit into the provided rectangle.
+	*/
+	virtual void handleUserTransformation(const QRectF &, const QRectF &) = 0;
 	/// @return a pointer to the parent element editor
 	virtual QETElementEditor *elementEditor() const;
 	/**
@@ -86,5 +94,8 @@ class CustomElementPart {
 	virtual QString name() const = 0;
 	/// @return the name that will be used as XML tag when exporting the primitive
 	virtual QString xmlName() const = 0;
+	
+	protected:
+	QList<QPointF> mapPoints(const QRectF &, const QRectF &, const QList<QPointF> &);
 };
 #endif

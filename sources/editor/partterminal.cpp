@@ -219,3 +219,20 @@ void PartTerminal::updateSecondPoint() {
 bool PartTerminal::isUseless() const {
 	return(false);
 }
+
+/**
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a initial_selection_rect bounding rectangle.
+*/
+void PartTerminal::startUserTransformation(const QRectF &initial_selection_rect) {
+	Q_UNUSED(initial_selection_rect)
+	saved_position_ = scenePos();
+}
+
+/**
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+*/
+void PartTerminal::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+	QPointF mapped_point = mapPoints(initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_position_).first();
+	setPos(mapped_point);
+}

@@ -477,6 +477,24 @@ bool PartLine::isUseless() const {
 }
 
 /**
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a initial_selection_rect bounding rectangle.
+*/
+void PartLine::startUserTransformation(const QRectF &initial_selection_rect) {
+	Q_UNUSED(initial_selection_rect)
+	saved_points_.clear();
+	saved_points_ << sceneP1() << sceneP2();
+}
+
+/**
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+*/
+void PartLine::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
+	setLine(QLineF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
+}
+
+/**
 	@param end_type nouveau type d'embout pour l'extremite 1
 */
 void PartLine::setFirstEndType(const QET::EndType &end_type) {

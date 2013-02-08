@@ -190,6 +190,25 @@ bool PartEllipse::isUseless() const {
 }
 
 /**
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a initial_selection_rect bounding rectangle.
+*/
+void PartEllipse::startUserTransformation(const QRectF &initial_selection_rect) {
+	Q_UNUSED(initial_selection_rect)
+	// we keep track of our own rectangle at the moment in scene coordinates too
+	saved_points_.clear();
+	saved_points_ << mapToScene(rect().topLeft()) << mapToScene(rect().bottomRight());
+}
+
+/**
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+*/
+void PartEllipse::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
+	setRect(QRectF(mapFromScene(mapped_points.at(0)), mapFromScene(mapped_points.at(1))));
+}
+
+/**
 	@return le rectangle delimitant cette partie.
 */
 QRectF PartEllipse::boundingRect() const {

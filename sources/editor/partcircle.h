@@ -52,8 +52,14 @@ class PartCircle : public QGraphicsEllipseItem, public CustomElementGraphicPart 
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
+	virtual void startUserTransformation(const QRectF &);
+	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);
+	
+	private:
+	QPointF saved_center_;
+	qreal saved_diameter_;
 };
 #endif

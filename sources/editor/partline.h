@@ -44,6 +44,7 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	qreal first_length;
 	QET::EndType second_end;
 	qreal second_length;
+	QList<QPointF> saved_points_;
 	
 	// methods
 	public:
@@ -67,6 +68,8 @@ class PartLine : public QGraphicsLineItem, public CustomElementGraphicPart {
 	virtual void setProperty(const QString &, const QVariant &);
 	virtual QVariant property(const QString &);
 	virtual bool isUseless() const;
+	virtual void startUserTransformation(const QRectF &);
+	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual void setFirstEndType(const QET::EndType &);
 	virtual QET::EndType firstEndType() const;
 	virtual void setSecondEndType(const QET::EndType &);

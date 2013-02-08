@@ -286,6 +286,32 @@ bool PartText::isUseless() const {
 }
 
 /**
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a rect bounding rectangle.
+*/
+void PartText::startUserTransformation(const QRectF &rect) {
+	Q_UNUSED(rect)
+	saved_point_ = pos(); // scene coordinates, no need to mapFromScene()
+	saved_font_size_ = font().pointSize();
+}
+
+/**
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+*/
+void PartText::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+	// let's try the naive approach
+	QPointF new_pos = mapPoints(initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_point_).first();
+	setPos(new_pos);
+	
+	// adjust the font size following the smallest scale factor
+	qreal sx = new_selection_rect.width() / initial_selection_rect.width();
+	qreal sy = new_selection_rect.height() / initial_selection_rect.height();
+	qreal smallest_scale_factor = sx > sy ? sy : sx;
+	qreal new_font_size = saved_font_size_ * smallest_scale_factor;
+	setProperty("size", qMax(1, qRound(new_font_size)));
+}
+
+/**
 	Dessine le texte statique.
 	@param painter QPainter a utiliser pour effectuer le rendu
 	@param qsogi   Pptions de dessin

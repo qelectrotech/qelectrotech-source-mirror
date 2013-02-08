@@ -198,3 +198,30 @@ QRectF PartCircle::boundingRect() const {
 bool PartCircle::isUseless() const {
 	return(rect().isNull());
 }
+
+/**
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a initial_selection_rect bounding rectangle.
+*/
+void PartCircle::startUserTransformation(const QRectF &initial_selection_rect) {
+	Q_UNUSED(initial_selection_rect)
+	saved_center_ = mapToScene(rect().center());
+	saved_diameter_ = rect().width();
+}
+
+/**
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+*/
+void PartCircle::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+	QPointF new_center = mapPoints(initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_center_).first();
+	
+	qreal sx = new_selection_rect.width() / initial_selection_rect.width();
+	qreal sy = new_selection_rect.height() / initial_selection_rect.height();
+	qreal smallest_scale_factor = sx > sy ? sy : sx;
+	qreal new_diameter = saved_diameter_ * smallest_scale_factor;
+	
+	QRectF new_rect(QPointF(), QSizeF(new_diameter, new_diameter));
+	new_rect.moveCenter(mapFromScene(new_center));
+	
+	setRect(new_rect);
+}

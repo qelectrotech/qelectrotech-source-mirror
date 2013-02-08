@@ -43,3 +43,33 @@ ElementScene *CustomElementPart::elementScene() const {
 QUndoStack &CustomElementPart::undoStack() const {
 	return(elementScene() -> undoStack());
 }
+
+/**
+	Helper method to map points in CustomElementPart::handleUserTransformation()
+	@param initial_selection_rect Selection rectangle when the movement started, in scene coordinates
+	@param new_selection_rect New selection rectangle, in scene coordinates
+	@param points List of points when the movement started, in scene coordinates.
+	@return The list of points mapped from initial_selection_rect to new_selection_rect
+*/
+QList<QPointF> CustomElementPart::mapPoints(const QRectF &initial_selection_rect, const QRectF &new_selection_rect, const QList<QPointF> &points) {
+	QList<QPointF> new_points;
+	if (!points.count()) return(new_points);
+	
+	// compare the new selection rectangle with the stored one to get the scaling ratio
+	qreal sx = new_selection_rect.width() / initial_selection_rect.width();
+	qreal sy = new_selection_rect.height() / initial_selection_rect.height();
+	
+	QPointF initial_top_left = initial_selection_rect.topLeft();
+	qreal new_top_left_x = new_selection_rect.x();
+	qreal new_top_left_y = new_selection_rect.y();
+	
+	foreach (QPointF point, points) {
+		QPointF point_offset = point - initial_top_left;
+		new_points << QPointF(
+			new_top_left_x + (point_offset.rx() * sx),
+			new_top_left_y + (point_offset.y() * sy)
+		);
+	}
+	
+	return(new_points);
+}

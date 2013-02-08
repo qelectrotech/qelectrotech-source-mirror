@@ -164,6 +164,23 @@ bool PartPolygon::isUseless() const {
 }
 
 /**
+	Start the user-induced transformation, provided this primitive is contained
+	within the \a initial_selection_rect bounding rectangle.
+*/
+void PartPolygon::startUserTransformation(const QRectF &initial_selection_rect) {
+	Q_UNUSED(initial_selection_rect)
+	saved_points_ = mapToScene(polygon()).toList();
+}
+
+/**
+	Handle the user-induced transformation from \a initial_selection_rect to \a new_selection_rect
+*/
+void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect, const QRectF &new_selection_rect) {
+	QList<QPointF> mapped_points = mapPoints(initial_selection_rect, new_selection_rect, saved_points_);
+	setPolygon(mapFromScene(QPolygonF(mapped_points.toVector())));
+}
+
+/**
 	@return le rectangle delimitant cette partie.
 */
 QRectF PartPolygon::boundingRect() const {
