@@ -47,6 +47,8 @@ class ElementPrimitiveDecorator : public QGraphicsObject {
 	void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
+	void keyPressEvent(QKeyEvent *);
+	void keyReleaseEvent(QKeyEvent *);
 	QPointF snapConstPointToGrid(const QPointF &) const;
 	void snapPointToGrid(QPointF &) const;
 	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
@@ -85,6 +87,8 @@ class ElementPrimitiveDecorator : public QGraphicsObject {
 	QPointF first_pos_;            ///< First point involved within the current resizing operation
 	QPointF latest_pos_;           ///< Latest point involved within the current resizing operation
 	QPointF mouse_offset_;         ///< Offset between the mouse position and the point to be snapped to grid when moving selection
+	bool moving_by_keys_;          ///< Whether we are currently moving our decorated items using the arrow keys
+	QPointF keys_movement_;           ///< Movement applied to our decorated items using the arrow keys
 };
 
 #endif

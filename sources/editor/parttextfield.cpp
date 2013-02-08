@@ -185,7 +185,7 @@ bool PartTextField::sceneEventFilter(QGraphicsItem *watched, QEvent *event) {
 	else if (event -> type() == QEvent::KeyRelease || event -> type() == QEvent::KeyPress) {
 		// Intercept F2 and escape keystrokes to focus in and out
 		QKeyEvent *key_event = static_cast<QKeyEvent *>(event);
-		if (key_event -> key() == Qt::Key_F2) {
+		if (!hasFocus() && key_event -> key() == Qt::Key_F2) {
 			setEditable(true);
 			QTextCursor qtc = textCursor();
 			qtc.setPosition(qMax(0, document()->characterCount() - 1));
@@ -193,8 +193,10 @@ bool PartTextField::sceneEventFilter(QGraphicsItem *watched, QEvent *event) {
 		} else if (hasFocus() && key_event -> key() == Qt::Key_Escape) {
 			endEdition();
 		}
-		sceneEvent(event); // manually deliver the event to this item
-		return(true); // prevent this event from being delivered to any item
+		if (hasFocus()) {
+			sceneEvent(event); // manually deliver the event to this item
+			return(true); // prevent this event from being delivered to any item
+		}
 	}
 	return(false);
 }

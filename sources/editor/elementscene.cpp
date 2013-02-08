@@ -350,58 +350,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 }
 
 /**
-	Gere les enfoncements de touches du clavier
-	@param e QKeyEvent decrivant l'evenement clavier
-*/
-void ElementScene::keyPressEvent(QKeyEvent *e) {
-	bool is_read_only = element_editor && element_editor -> isReadOnly();
-	if (!is_read_only) {
-		const qreal movement_length = 1.0;
-		QPointF movement;
-		switch(e -> key()) {
-			case Qt::Key_Left:  movement = QPointF(-movement_length, 0.0); break;
-			case Qt::Key_Right: movement = QPointF(+movement_length, 0.0); break;
-			case Qt::Key_Up:    movement = QPointF(0.0, -movement_length); break;
-			case Qt::Key_Down:  movement = QPointF(0.0, +movement_length); break;
-		}
-		if (!movement.isNull() && !focusItem()) {
-			if (!moving_parts_) {
-				moving_parts_ = true;
-				fsi_pos = movement;
-			} else {
-				fsi_pos += movement;
-			}
-			foreach(QGraphicsItem *qgi, selectedItems()) {
-				qgi -> setPos(qgi -> pos() + movement);
-			}
-		}
-	}
-	QGraphicsScene::keyPressEvent(e);
-}
-
-/**
-	Gere les relachements de touches du clavier
-	@param e QKeyEvent decrivant l'evenement clavier
-*/
-void ElementScene::keyReleaseEvent(QKeyEvent *e) {
-	bool is_read_only = element_editor && element_editor -> isReadOnly();
-	if (!is_read_only) {
-		// detecte le relachement d'une touche de direction ( = deplacement de parties)
-		if (
-			(e -> key() == Qt::Key_Left  || e -> key() == Qt::Key_Right  ||\
-			 e -> key() == Qt::Key_Up    || e -> key() == Qt::Key_Down) &&\
-			moving_parts_  && !e -> isAutoRepeat()
-		) {
-			// cree un objet d'annulation pour le mouvement qui vient de se finir
-			undo_stack.push(new MovePartsCommand(fsi_pos, this, selectedItems()));
-			fsi_pos = QPointF();
-			moving_parts_ = false;
-		}
-	}
-	QGraphicsScene::keyReleaseEvent(e);
-}
-
-/**
 	Dessine l'arriere-plan de l'editeur, cad la grille.
 	@param p Le QPainter a utiliser pour dessiner
 	@param r Le rectangle de la zone a dessiner

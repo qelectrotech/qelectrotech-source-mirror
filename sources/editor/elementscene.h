@@ -149,8 +149,6 @@ class ElementScene : public QGraphicsScene {
 	virtual void mouseMoveEvent(QGraphicsSceneMouseEvent *);
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
 	virtual void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
-	virtual void keyPressEvent(QKeyEvent *);
-	virtual void keyReleaseEvent(QKeyEvent *);
 	virtual void drawBackground(QPainter *, const QRectF &);
 	virtual void drawForeground(QPainter *, const QRectF &);
 	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);
