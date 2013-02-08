@@ -30,7 +30,7 @@ PartTerminal::PartTerminal(QETElementEditor *editor, QGraphicsItem *parent, QGra
 	_orientation(QET::North)
 {
 	updateSecondPoint();
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif

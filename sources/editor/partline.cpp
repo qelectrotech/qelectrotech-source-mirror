@@ -32,7 +32,7 @@ PartLine::PartLine(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsSce
 	second_end(QET::None),
 	second_length(1.5)
 {
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif

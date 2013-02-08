@@ -17,6 +17,7 @@
 */
 #include "elementscene.h"
 #include "qetelementeditor.h"
+#include "elementprimitivedecorator.h"
 #include <cmath>
 #include "partline.h"
 #include "partrectangle.h"
@@ -44,17 +45,22 @@ ElementScene::ElementScene(QETElementEditor *editor, QObject *parent) :
 	_hotspot(15, 35),
 	internal_connections(false),
 	qgi_manager(this),
-	element_editor(editor)
+	element_editor(editor),
+	decorator_(0)
 {
 	setItemIndexMethod(NoIndex);
 	current_polygon = NULL;
 	setGrid(1, 1);
 	initPasteArea();
 	undo_stack.setClean();
+	decorator_lock_ = new QMutex(QMutex::NonRecursive);
+	connect(&undo_stack, SIGNAL(indexChanged(int)), this, SLOT(managePrimitivesGroups()));
+	connect(this, SIGNAL(selectionChanged()), this, SLOT(managePrimitivesGroups()));
 }
 
 /// Destructeur
 ElementScene::~ElementScene() {
+	delete decorator_lock_;
 }
 
 /**
@@ -187,25 +193,7 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				break;
 			case Normal:
 			default:
-				QList<QGraphicsItem *> selected_items = selectedItems();
-				if (!selected_items.isEmpty()) {
-					// mouvement de souris realise depuis le dernier press event
-					QPointF mouse_movement = e -> scenePos() - moving_press_pos;
-					
-					// application de ce mouvement a la fsi_pos enregistre dans le dernier press event
-					QPointF new_fsi_pos = fsi_pos + mouse_movement;
-					
-					// snap eventuel de la nouvelle fsi_pos
-					if (mustSnapToGrid(e)) snapToGrid(new_fsi_pos);
-					
-					// difference entre la fsi_pos finale et la fsi_pos courante = mouvement a appliquer
-					
-					QPointF current_fsi_pos = selected_items.first() -> scenePos();
-					QPointF final_movement = new_fsi_pos - current_fsi_pos;
-					foreach(QGraphicsItem *qgi, selected_items) {
-						qgi -> moveBy(final_movement.x(), final_movement.y());
-					}
-				}
+				QGraphicsScene::mouseMoveEvent(e);
 		}
 	} else if (behavior == Polygon && current_polygon != NULL) {
 		temp_polygon = current_polygon -> polygon();
@@ -263,16 +251,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 			case Normal:
 			default:
 				QGraphicsScene::mousePressEvent(e);
-				// gestion des deplacements de parties
-				if (!selectedItems().isEmpty()) {
-					fsi_pos = selectedItems().first() -> scenePos();
-					moving_press_pos = e -> scenePos();
-					moving_parts_ = true;
-				} else {
-					fsi_pos = QPoint();
-					moving_press_pos = QPoint();
-					moving_parts_ = false;
-				}
 		}
 	} else QGraphicsScene::mousePressEvent(e);
 }
@@ -358,12 +336,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 			case Normal:
 			default:
 				// detecte les deplacements de parties
-				if (!selectedItems().isEmpty() && moving_parts_) {
-					QPointF movement = selectedItems().first() -> scenePos() - fsi_pos;
-					if (!movement.isNull()) {
-						undo_stack.push(new MovePartsCommand(movement, this, selectedItems()));
-					}
-				}
 				QGraphicsScene::mouseReleaseEvent(e);
 				moving_parts_ = false;
 		}
@@ -657,7 +629,7 @@ QRectF ElementScene::borderRect() const {
 */
 QRectF ElementScene::sceneContent() const {
 	qreal adjustment = 5.0;
-	return(itemsBoundingRect().unite(borderRect()).adjusted(-adjustment, -adjustment, adjustment, adjustment));
+	return(elementContentBoundingRect(items()).unite(borderRect()).adjusted(-adjustment, -adjustment, adjustment, adjustment));
 }
 
 /**
@@ -666,7 +638,7 @@ QRectF ElementScene::sceneContent() const {
 	l'element.
 */
 bool ElementScene::borderContainsEveryParts() const {
-	return(borderRect().contains(itemsBoundingRect()));
+	return(borderRect().contains(elementContentBoundingRect(items())));
 }
 
 /**
@@ -800,7 +772,10 @@ void ElementScene::slot_delete() {
 	
 	// efface tout ce qui est selectionne
 	undo_stack.push(new DeletePartsCommand(this, selected_items));
+	
+	// removing items does not trigger QGraphicsScene::selectionChanged()
 	emit(partsRemoved());
+	emit(selectionChanged());
 }
 
 /**
@@ -825,7 +800,7 @@ void ElementScene::slot_editSizeHotSpot() {
 	hotspot_editor -> setElementHeight(static_cast<uint>(height() / 10));
 	hotspot_editor -> setHotspot(hotspot());
 	hotspot_editor -> setOldHotspot(hotspot());
-	hotspot_editor -> setPartsRect(itemsBoundingRect());
+	hotspot_editor -> setPartsRect(elementContentBoundingRect(items()));
 	hotspot_editor -> setPartsRectEnabled(true);
 	hotspot_editor -> setReadOnly(is_read_only);
 	dialog_layout -> addWidget(hotspot_editor);
@@ -1022,6 +997,19 @@ void ElementScene::slot_sendBackward() {
 }
 
 /**
+	@return the list of primitives currently present on the scene.
+*/
+QList<CustomElementPart *> ElementScene::primitives() const {
+	QList<CustomElementPart *> primitives_list;
+	foreach (QGraphicsItem *item, items()) {
+		if (CustomElementPart *primitive = dynamic_cast<CustomElementPart *>(item)) {
+			primitives_list << primitive;
+		}
+	}
+	return(primitives_list);
+}
+
+/**
 	@param include_terminals true pour inclure les bornes, false sinon
 	@return les parties de l'element ordonnes par zValue croissante
 */
@@ -1032,7 +1020,13 @@ QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
 	// enleve les bornes
 	QList<QGraphicsItem *> terminals;
 	foreach(QGraphicsItem *qgi, all_items_list) {
-		if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
+		if (
+			qgi -> type() == ElementPrimitiveDecorator::Type ||
+			qgi -> type() == QGraphicsRectItem::Type
+		) {
+			all_items_list.removeAt(all_items_list.indexOf(qgi));
+		}
+		else if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
 			all_items_list.removeAt(all_items_list.indexOf(qgi));
 			terminals << qgi;
 		}
@@ -1089,9 +1083,12 @@ void ElementScene::reset() {
 	@return le boundingRect de ces parties, exprime dans les coordonnes de la
 	scene
 */
-QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) {
+QRectF ElementScene::elementContentBoundingRect(const ElementContent &content) const {
 	QRectF bounding_rect;
 	foreach(QGraphicsItem *qgi, content) {
+		// skip non-primitives QGraphicsItems (paste area, selection decorator)
+		if (qgi -> type() == ElementPrimitiveDecorator::Type) continue;
+		if (qgi -> type() == QGraphicsRectItem::Type) continue;
 		bounding_rect |= qgi -> sceneBoundingRect();
 	}
 	return(bounding_rect);
@@ -1225,7 +1222,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 ElementContent ElementScene::addContent(const ElementContent &content, QString *error_message) {
 	Q_UNUSED(error_message);
 	foreach(QGraphicsItem *part, content) {
-		addItem(part);
+		addPrimitive(part);
 	}
 	return(content);
 }
@@ -1249,9 +1246,18 @@ ElementContent ElementScene::addContentAtPos(const ElementContent &content, cons
 	// ajoute les parties avec le decalage adequat
 	foreach(QGraphicsItem *part, content) {
 		part -> setPos(part -> pos() + offset);
-		addItem(part);
+		addPrimitive(part);
 	}
 	return(content);
+}
+
+/**
+	Add a primitive to the scene by wrapping it within an
+	ElementPrimitiveDecorator group.
+*/
+void ElementScene::addPrimitive(QGraphicsItem *primitive) {
+	if (!primitive) return;
+	addItem(primitive);
 }
 
 /**
@@ -1299,4 +1305,62 @@ bool ElementScene::mustSnapToGrid(QGraphicsSceneMouseEvent *e) {
 */
 bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
 	return(item1-> zValue() < item2 -> zValue());
+}
+
+/**
+	Ensure the decorator is adequately shown, hidden or updated so it always
+	represents the current selection.
+*/
+void ElementScene::managePrimitivesGroups() {
+	if (!decorator_lock_ -> tryLock()) return;
+	
+	if (!decorator_) {
+		decorator_ = new ElementPrimitiveDecorator();
+		connect(decorator_, SIGNAL(actionFinished(ElementEditionCommand*)), this, SLOT(stackAction(ElementEditionCommand *)));
+		addItem(decorator_);
+		decorator_ -> hide();
+	}
+	
+	QList<QGraphicsItem *> selected_items;
+	foreach (QGraphicsItem *item, items()) {
+		if (item -> type() == ElementPrimitiveDecorator::Type) continue;
+		if (item -> type() == QGraphicsRectItem::Type) continue;
+		if (item -> isSelected()) {
+			selected_items << item;
+		}
+	}
+	/// TODO export the above code to a proper method
+	
+	
+	// should we hide the decorator?
+	if (!selected_items.count()) {
+		decorator_ -> hide();
+	} else {
+		decorator_ -> setZValue(1000000);
+		decorator_ -> setPos(0, 0);
+		decorator_ -> setItems(selected_items);
+	}
+	decorator_lock_ -> unlock();
+}
+
+/**
+	Push the provided \a command on the undo stack.
+*/
+void ElementScene::stackAction(ElementEditionCommand *command) {
+	if (command -> elementScene()) {
+		if (command -> elementScene() != this) return;
+	} else {
+		command -> setElementScene(this);
+	}
+	
+	if (!command -> elementView()) {
+		foreach (QGraphicsView *view, views()) {
+			if (ElementView *element_view = dynamic_cast<ElementView *>(view)) {
+				command -> setElementView(element_view);
+				break;
+			}
+		}
+	}
+	
+	undoStack().push(command);
 }

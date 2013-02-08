@@ -29,7 +29,7 @@ PartPolygon::PartPolygon(QETElementEditor *editor, QGraphicsItem *parent, QGraph
 	CustomElementGraphicPart(editor),
 	closed(false)
 {
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif

@@ -43,6 +43,22 @@ namespace QET {
 		ToNorthWest
 	};
 	
+	/// List areas related to some common operations
+	enum OperationAreas {
+		ChangeInnerPoints = -4,
+		RotateArea = -3,
+		MoveArea = -2,
+		NoOperation = -1,
+		ResizeFromTopLeftCorner = 0,
+		ResizeFromTopCenterCorner = 1,
+		ResizeFromTopRightCorner = 2,
+		ResizeFromMiddleLeftCorner = 3,
+		ResizeFromMiddleRightCorner = 4,
+		ResizeFromBottomLeftCorner = 5,
+		ResizeFromBottomCenterCorner = 6,
+		ResizeFromBottomRightCorner = 7
+	};
+	
 	/// Known kinds of conductor segments
 	enum ConductorSegmentType {
 		Horizontal = 1, ///< Horizontal segment 
@@ -149,5 +165,6 @@ namespace QET {
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);
 	bool writeXmlFile(QDomDocument &, const QString &, QString * = 0);
+	QPointF graphicsSceneEventPos(QEvent *);
 }
 #endif

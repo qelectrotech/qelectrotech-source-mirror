@@ -24,7 +24,7 @@
 	@param scene La scene sur laquelle figure ce rectangle
 */
 PartRectangle::PartRectangle(QETElementEditor *editor, QGraphicsItem *parent, QGraphicsScene *scene) : QGraphicsRectItem(parent, scene), CustomElementGraphicPart(editor) {
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif

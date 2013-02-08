@@ -21,8 +21,10 @@
 #include <QtXml>
 #include <QImage>
 class CustomElement;
-class QETElementEditor;
+class ElementPrimitiveDecorator;
 class ElementScene;
+class QETElementEditor;
+
 /**
 	This abstract class represents a primitive of the visual representation of an
 	electrical element. The Element, FixedElement and CustomElement classes do not
@@ -94,6 +96,14 @@ class CustomElementPart {
 	virtual QString name() const = 0;
 	/// @return the name that will be used as XML tag when exporting the primitive
 	virtual QString xmlName() const = 0;
+	
+	virtual QGraphicsItem *toItem();
+	
+	virtual void setDecorator(ElementPrimitiveDecorator *);
+	virtual bool singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	virtual bool singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	virtual bool singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	virtual bool singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	
 	protected:
 	QList<QPointF> mapPoints(const QRectF &, const QRectF &, const QList<QPointF> &);

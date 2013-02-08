@@ -23,6 +23,9 @@
 #include "orientationsetwidget.h"
 #include "qgimanager.h"
 #include "elementcontent.h"
+class CustomElementPart;
+class ElementEditionCommand;
+class ElementPrimitiveDecorator;
 class QETElementEditor;
 class PartLine;
 class PartRectangle;
@@ -95,6 +98,9 @@ class ElementScene : public QGraphicsScene {
 	/// Variables to handle copy/paste with offset
 	QString last_copied_;
 	
+	/// Decorator item displayed when at least one item is selected
+	ElementPrimitiveDecorator *decorator_;
+	
 	///< Size of the horizontal grid step
 	int x_grid;
 	///< Size of the vertical grid step
@@ -123,6 +129,7 @@ class ElementScene : public QGraphicsScene {
 	virtual QRectF boundingRectFromXml(const QDomDocument &);
 	virtual void fromXml(const QDomDocument &, const QPointF & = QPointF(), bool = true, ElementContent * = 0);
 	virtual void reset();
+	virtual QList<CustomElementPart *> primitives() const;
 	virtual QList<QGraphicsItem *> zItems(bool = false) const;
 	virtual ElementContent selectedContent() const;
 	virtual void getPasteArea(const QRectF &);
@@ -149,15 +156,17 @@ class ElementScene : public QGraphicsScene {
 	virtual void endCurrentBehavior(const QGraphicsSceneMouseEvent *);
 	
 	private:
-	QRectF elementContentBoundingRect(const ElementContent &);
+	QRectF elementContentBoundingRect(const ElementContent &) const;
 	bool applyInformations(const QDomDocument &, QString * = 0);
 	ElementContent loadContent(const QDomDocument &, QString * = 0);
 	ElementContent addContent(const ElementContent &, QString * = 0);
 	ElementContent addContentAtPos(const ElementContent &, const QPointF &, QString * = 0);
+	void addPrimitive(QGraphicsItem *);
 	void initPasteArea();
 	void snapToGrid(QPointF &);
 	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
 	static bool zValueLessThan(QGraphicsItem *, QGraphicsItem *);
+	QMutex *decorator_lock_;
 	
 	public slots:
 	void slot_move();
@@ -183,6 +192,8 @@ class ElementScene : public QGraphicsScene {
 	void slot_raise();
 	void slot_lower();
 	void slot_sendBackward();
+	void managePrimitivesGroups();
+	void stackAction(ElementEditionCommand *);
 	
 	signals:
 	/**

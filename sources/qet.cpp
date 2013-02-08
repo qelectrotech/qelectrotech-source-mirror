@@ -17,6 +17,7 @@
 */
 #include "qet.h"
 #include <limits>
+#include <QGraphicsSceneContextMenuEvent>
 
 /**
 	Permet de convertir une chaine de caracteres ("n", "s", "e" ou "w")
@@ -576,4 +577,60 @@ bool QET::writeXmlFile(QDomDocument &xml_doc, const QString &filepath, QString *
 	file.close();
 	
 	return(true);
+}
+
+/**
+	@return the scene position where \a event occurred, provided it is
+	QGraphicsScene-related event; otherwise, this function returns a null
+	QPointF.
+*/
+QPointF QET::graphicsSceneEventPos(QEvent *event) {
+	QPointF event_scene_pos;
+	if (event -> type() < QEvent::GraphicsSceneContextMenu) return(event_scene_pos);
+	if (event -> type() > QEvent::GraphicsSceneWheel) return(event_scene_pos);
+	
+	switch (event -> type()) {
+		case QEvent::GraphicsSceneContextMenu: {
+			QGraphicsSceneContextMenuEvent *qgs_event = static_cast<QGraphicsSceneContextMenuEvent *>(event);
+			event_scene_pos = qgs_event -> scenePos();
+			break;
+		}
+		case QEvent::GraphicsSceneDragEnter:
+		case QEvent::GraphicsSceneDragLeave:
+		case QEvent::GraphicsSceneDragMove:
+		case QEvent::GraphicsSceneDrop: {
+			QGraphicsSceneDragDropEvent *qgs_event = static_cast<QGraphicsSceneDragDropEvent *>(event);
+			event_scene_pos = qgs_event -> scenePos();
+			break;
+		}
+		case QEvent::GraphicsSceneHelp: {
+			QGraphicsSceneHelpEvent *qgs_event = static_cast<QGraphicsSceneHelpEvent *>(event);
+			event_scene_pos = qgs_event -> scenePos();
+			break;
+		}
+		
+		case QEvent::GraphicsSceneHoverEnter:
+		case QEvent::GraphicsSceneHoverLeave:
+		case QEvent::GraphicsSceneHoverMove: {
+			QGraphicsSceneHoverEvent *qgs_event = static_cast<QGraphicsSceneHoverEvent *>(event);
+			event_scene_pos = qgs_event -> scenePos();
+			break;
+		}
+		case QEvent::GraphicsSceneMouseDoubleClick:
+		case QEvent::GraphicsSceneMouseMove:
+		case QEvent::GraphicsSceneMousePress:
+		case QEvent::GraphicsSceneMouseRelease: {
+			QGraphicsSceneMouseEvent *qgs_event = static_cast<QGraphicsSceneMouseEvent *>(event);
+			event_scene_pos = qgs_event -> scenePos();
+			break;
+		}
+		case QEvent::GraphicsSceneWheel: {
+			QGraphicsSceneWheelEvent *qgs_event = static_cast<QGraphicsSceneWheelEvent *>(event);
+			event_scene_pos = qgs_event -> scenePos();
+			break;
+		}
+		default:
+			break;
+	}
+	return(event_scene_pos);
 }

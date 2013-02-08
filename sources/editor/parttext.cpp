@@ -18,6 +18,7 @@
 #include "parttext.h"
 #include "texteditor.h"
 #include "editorcommands.h"
+#include "elementprimitivedecorator.h"
 #include "elementscene.h"
 #include "qetapp.h"
 
@@ -29,17 +30,21 @@
 */
 PartText::PartText(QETElementEditor *editor, QGraphicsItem *parent, ElementScene *scene) :
 	QGraphicsTextItem(parent, scene),
-	CustomElementPart(editor)
+	CustomElementPart(editor),
+	previous_text(),
+	decorator_(0)
 {
 #if QT_VERSION >= 0x040500
 	document() -> setDocumentMargin(1.0);
 #endif
 	setDefaultTextColor(Qt::black);
 	setFont(QETApp::diagramTextsFont());
-	setFlags(QGraphicsItem::ItemIsMovable | QGraphicsItem::ItemIsSelectable);
+	real_font_size_ = font().pointSize();
+	setFlags(QGraphicsItem::ItemIsSelectable);
 #if QT_VERSION >= 0x040600
 	setFlag(QGraphicsItem::ItemSendsGeometryChanges, true);
 #endif
+	setAcceptHoverEvents(true);
 	setDefaultTextColor(Qt::black);
 	setPlainText(QObject::tr("T", "default text when adding a text in the element editor"));
 	
@@ -63,7 +68,7 @@ void PartText::fromXml(const QDomElement &xml_element) {
 	if (!ok || font_size < 1) font_size = 20;
 	
 	setBlack(xml_element.attribute("color") != "white");
-	setFont(QETApp::diagramTextsFont(font_size));
+	setProperty("size" , font_size);
 	setPlainText(xml_element.attribute("text"));
 	
 	qreal default_rotation_angle = 0.0;
@@ -153,31 +158,24 @@ QPointF PartText::margin() const {
 }
 
 /**
-	Permet a l'element texte de redevenir deplacable a la fin de l'edition de texte
-	@param e Le QFocusEvent decrivant la perte de focus
+	@reimp QGraphicsItem::focusInEvent(QFocusEvent *)
+	@param e The QFocusEvent object describing the focus gain.
+	Start text edition when the item gains focus.
+*/
+void PartText::focusInEvent(QFocusEvent *e) {
+	startEdition();
+	QGraphicsTextItem::focusInEvent(e);
+}
+
+
+/**
+	@reimp QGraphicsItem::focusOutEvent(QFocusEvent *)
+	@param e The QFocusEvent object describing the focus loss.
+	End text edition when the item loses focus.
 */
 void PartText::focusOutEvent(QFocusEvent *e) {
 	QGraphicsTextItem::focusOutEvent(e);
-	if (previous_text != toPlainText()) {
-		undoStack().push(
-			new ChangePartCommand(
-				TextEditor::tr("contenu") + " " + name(),
-				this,
-				"text",
-				previous_text,
-				toPlainText()
-			)
-		);
-		previous_text = toPlainText();
-	}
-	
-	// deselectionne le texte
-	QTextCursor qtc = textCursor();
-	qtc.clearSelection();
-	setTextCursor(qtc);
-	
-	setTextInteractionFlags(Qt::NoTextInteraction);
-	setFlag(QGraphicsItem::ItemIsFocusable, false);
+	endEdition();
 }
 
 /**
@@ -185,11 +183,10 @@ void PartText::focusOutEvent(QFocusEvent *e) {
 	@param e Le QGraphicsSceneMouseEvent qui decrit le double-clic
 */
 void PartText::mouseDoubleClickEvent(QGraphicsSceneMouseEvent *e) {
-	setFlag(QGraphicsItem::ItemIsFocusable, true);
-	setTextInteractionFlags(Qt::TextEditorInteraction);
-	previous_text = toPlainText();
 	QGraphicsTextItem::mouseDoubleClickEvent(e);
-	setFocus(Qt::MouseFocusReason);
+	if (e -> button() == Qt::LeftButton) {
+		setEditable(true);
+	}
 }
 
 /**
@@ -212,6 +209,11 @@ void PartText::setProperty(const QString &property, const QVariant &value) {
 	} else if (property == "size") {
 		if (!value.canConvert(QVariant::Int)) return;
 		setFont(QETApp::diagramTextsFont(value.toInt()));
+		real_font_size_ = value.toInt();
+	} else if (property == "real_size") {
+		if (!value.canConvert(QVariant::Double)) return;
+		setFont(QETApp::diagramTextsFont(value.toInt()));
+		real_font_size_ = value.toDouble();
 	} else if (property == "text") {
 		setPlainText(value.toString());
 	} else if (property == "rotation angle") {
@@ -241,6 +243,8 @@ QVariant PartText::property(const QString &property) {
 		return(pos().y());
 	} else if (property == "size") {
 		return(font().pointSize());
+	} else if (property == "real_size") {
+		return(real_font_size_);
 	} else if (property == "text") {
 		return(toPlainText());
 	} else if (property == "rotation angle") {
@@ -292,7 +296,7 @@ bool PartText::isUseless() const {
 void PartText::startUserTransformation(const QRectF &rect) {
 	Q_UNUSED(rect)
 	saved_point_ = pos(); // scene coordinates, no need to mapFromScene()
-	saved_font_size_ = font().pointSize();
+	saved_font_size_ = real_font_size_;
 }
 
 /**
@@ -303,12 +307,10 @@ void PartText::handleUserTransformation(const QRectF &initial_selection_rect, co
 	QPointF new_pos = mapPoints(initial_selection_rect, new_selection_rect, QList<QPointF>() << saved_point_).first();
 	setPos(new_pos);
 	
-	// adjust the font size following the smallest scale factor
-	qreal sx = new_selection_rect.width() / initial_selection_rect.width();
+	// adjust the font size following the vertical scale factor
 	qreal sy = new_selection_rect.height() / initial_selection_rect.height();
-	qreal smallest_scale_factor = sx > sy ? sy : sx;
-	qreal new_font_size = saved_font_size_ * smallest_scale_factor;
-	setProperty("size", qMax(1, qRound(new_font_size)));
+	qreal new_font_size = saved_font_size_ * sy;
+	setProperty("real_size", qMax(1, qRound(new_font_size)));
 }
 
 /**
@@ -318,7 +320,12 @@ void PartText::handleUserTransformation(const QRectF &initial_selection_rect, co
 	@param widget  Widget sur lequel on dessine (facultatif)
 */
 void PartText::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, QWidget *widget) {
-	QGraphicsTextItem::paint(painter, qsogi, widget);
+	// According to the source code of QGraphicsTextItem::paint(), this should
+	// avoid the drawing of the dashed rectangle around the text.
+	QStyleOptionGraphicsItem our_qsogi(*qsogi);
+	our_qsogi.state = QStyle::State_None;
+	
+	QGraphicsTextItem::paint(painter, &our_qsogi, widget);
 	
 #ifdef QET_DEBUG_EDITOR_TEXTS
 	painter -> setPen(Qt::blue);
@@ -330,6 +337,124 @@ void PartText::paint(QPainter *painter, const QStyleOptionGraphicsItem *qsogi, Q
 	painter -> setPen(Qt::green);
 	drawPoint(painter, mapFromScene(pos()));
 #endif
+}
+
+/**
+	Handle context menu events.
+	@param event Object describing the context menu event to handle.
+*/
+void PartText::contextMenuEvent(QGraphicsSceneContextMenuEvent *event) {
+	Q_UNUSED(event);
+}
+
+/**
+	Handle events generated when the mouse hovers over the decorator.
+	@param event Object describing the hover event.
+*/
+void PartText::hoverMoveEvent(QGraphicsSceneHoverEvent *event) {
+	// force the cursor when the text is being edited
+	if (hasFocus() && decorator_) {
+		decorator_ -> setCursor(Qt::IBeamCursor);
+	}
+	QGraphicsTextItem::hoverMoveEvent(event);
+}
+
+/**
+	@reimp CustomElementPart::setDecorator(ElementPrimitiveDecorator *)
+	Install or remove a sceneEventFilter on the decorator and ensure it will
+	adjust itself while the text is being edited.
+*/
+void PartText::setDecorator(ElementPrimitiveDecorator *decorator) {
+	if (decorator) {
+		decorator -> installSceneEventFilter(this);
+		// ensure the decorator will adjust itself when the text area expands or shrinks
+		connect(document(), SIGNAL(contentsChanged()), decorator, SLOT(adjust()));
+	}
+	else {
+		decorator_ -> removeSceneEventFilter(this);
+		endEdition();
+	}
+	decorator_ = decorator;
+}
+
+/**
+	@reimp QGraphicsItem::sceneEventFilter(QGraphicsItem *, QEvent *).
+	Intercepts events before they reach the watched target, i.e. typically the
+	primitives decorator.
+	This method mainly works with key strokes (F2, escape) and double clicks to
+	begin or end text edition.
+*/
+bool PartText::sceneEventFilter(QGraphicsItem *watched, QEvent *event) {
+	if (watched != decorator_) return(false);
+	
+	QPointF event_scene_pos = QET::graphicsSceneEventPos(event);
+	if (!event_scene_pos.isNull()) {
+		if (contains(mapFromScene(event_scene_pos))) {
+			if (hasFocus()) {
+				return sceneEvent(event); // manually deliver the event to this item
+				return(true); // prevent this event from being delivered to any item
+			} else {
+				if (event -> type() == QEvent::GraphicsSceneMouseDoubleClick) {
+					mouseDoubleClickEvent(static_cast<QGraphicsSceneMouseEvent *>(event));
+				}
+			}
+		}
+	}
+	else if (event -> type() == QEvent::KeyRelease || event -> type() == QEvent::KeyPress) {
+		// Intercept F2 and escape keystrokes to focus in and out
+		QKeyEvent *key_event = static_cast<QKeyEvent *>(event);
+		if (key_event -> key() == Qt::Key_F2) {
+			setEditable(true);
+			QTextCursor qtc = textCursor();
+			qtc.setPosition(qMax(0, document()->characterCount() - 1));
+			setTextCursor(qtc);
+		} else if (hasFocus() && key_event -> key() == Qt::Key_Escape) {
+			endEdition();
+		}
+		sceneEvent(event); // manually deliver the event to this item
+		return(true); // prevent this event from being delivered to any item
+	}
+	return(false);
+}
+
+/**
+	Accept the mouse \a event relayed by \a decorator if this text item has focus.
+*/
+bool PartText::singleItemPressEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
+	Q_UNUSED(decorator)
+	Q_UNUSED(event)
+	return(hasFocus());
+}
+
+/**
+	Accept the mouse \a event relayed by \a decorator if this text item has focus.
+*/
+bool PartText::singleItemMoveEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
+	Q_UNUSED(decorator)
+	Q_UNUSED(event)
+	return(hasFocus());
+}
+
+/**
+	Accept the mouse \a event relayed by \a decorator if this text item has focus.
+*/
+bool PartText::singleItemReleaseEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
+	Q_UNUSED(decorator)
+	Q_UNUSED(event)
+	return(hasFocus());
+}
+
+/**
+	Accept the mouse \a event relayed by \a decorator if this text item has focus.
+*/
+bool PartText::singleItemDoubleClickEvent(ElementPrimitiveDecorator *decorator, QGraphicsSceneMouseEvent *event) {
+	Q_UNUSED(decorator)
+	// calling mouseDoubleClickEvent() will set this text item editable and grab keyboard focus
+	if (event -> button() == Qt::LeftButton) {
+		mouseDoubleClickEvent(event);
+		return(true);
+	}
+	return(false);
 }
 
 /**
@@ -347,6 +472,59 @@ void PartText::adjustItemPosition(int new_block_count) {
 	base_translation.translate(-origin_offset.x(), -origin_offset.y());
 	setTransform(base_translation, false);
 	setTransformOriginPoint(origin_offset);
+}
+
+/**
+	@param editable Whether this text item should be interactively editable.
+*/
+void PartText::setEditable(bool editable) {
+	if (editable) {
+		setFlag(QGraphicsItem::ItemIsFocusable, true);
+		setTextInteractionFlags(Qt::TextEditorInteraction);
+		setFocus(Qt::MouseFocusReason);
+	}
+	else {
+		setTextInteractionFlags(Qt::NoTextInteraction);
+		setFlag(QGraphicsItem::ItemIsFocusable, false);
+	}
+}
+
+/**
+	Start text edition by storing the former value of the text.
+*/
+void PartText::startEdition() {
+	// !previous_text.isNull() means the text is being edited
+	previous_text = toPlainText();
+}
+
+/**
+	End text edition, potentially generating a ChangePartCommand if the text
+	has changed.
+*/
+void PartText::endEdition() {
+	if (!previous_text.isNull()) {
+		// the text was being edited
+		QString new_text = toPlainText();
+		if (previous_text != new_text) {
+			// the text was changed
+			ChangePartCommand *text_change = new ChangePartCommand(
+				TextEditor::tr("contenu") + " " + name(),
+				this,
+				"text",
+				previous_text,
+				new_text
+			);
+			previous_text = QString();
+			undoStack().push(text_change);
+		}
+	}
+	
+	// deselectionne le texte
+	QTextCursor qtc = textCursor();
+	qtc.clearSelection();
+	setTextCursor(qtc);
+	
+	setEditable(false);
 }
 
 #ifdef QET_DEBUG_EDITOR_TEXTS

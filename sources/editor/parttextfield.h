@@ -21,6 +21,7 @@
 #include "customelementpart.h"
 class TextFieldEditor;
 class QETElementEditor;
+class ElementPrimitiveDecorator;
 /**
 	This class represents an editable text field which may be used to compose the
 	drawing of an electrical element within the element editor. Users may specify
@@ -65,10 +66,23 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
 	virtual void paint(QPainter *, const QStyleOptionGraphicsItem *, QWidget * = 0 );
 	
+	virtual void setDecorator(ElementPrimitiveDecorator *);
+	virtual bool singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	virtual bool singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	virtual bool singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	virtual bool singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
+	
 	public slots:
 	void adjustItemPosition(int = 0);
+	void setEditable(bool);
+	void startEdition();
+	void endEdition();
 	
 	protected:
+	virtual void contextMenuEvent(QGraphicsSceneContextMenuEvent *);
+	virtual void hoverMoveEvent(QGraphicsSceneHoverEvent *);
+	virtual bool sceneEventFilter(QGraphicsItem *, QEvent *);
+	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
@@ -80,7 +94,9 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	void drawPoint(QPainter *, const QPointF &);
 #endif
 	QString previous_text;
+	qreal real_font_size_;
 	QPointF saved_point_;
-	int saved_font_size_;
+	qreal saved_font_size_;
+	QGraphicsItem *decorator_;
 };
 #endif

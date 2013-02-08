@@ -44,6 +44,61 @@ QUndoStack &CustomElementPart::undoStack() const {
 	return(elementScene() -> undoStack());
 }
 
+/// @return this primitive as a QGraphicsItem
+QGraphicsItem *CustomElementPart::toItem() {
+	return(dynamic_cast<QGraphicsItem *>(this));
+}
+
+/**
+	This method is called by the decorator when it manages only a single
+	primitive. This brings the possibility to implement custom behaviour, such
+	as text edition, points edition or specific resizing.
+	The default implementation does nothing.
+*/
+void CustomElementPart::setDecorator(ElementPrimitiveDecorator *decorator) {
+	Q_UNUSED(decorator)
+}
+
+/**
+	This method is called by the decorator when it manages only a single
+	primitive and it received a mouse press event.
+	The implementation should return true if the primitive accepts the event, false otherwise.
+	The default implementation returns false.
+*/
+bool CustomElementPart::singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
+	return(false);
+}
+
+/**
+	This method is called by the decorator when it manages only a single
+	primitive and it received a mouse move event.
+	The implementation should return true if the primitive accepts the event, false otherwise.
+	The default implementation returns false.
+*/
+bool CustomElementPart::singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
+	return(false);
+}
+
+/**
+	This method is called by the decorator when it manages only a single
+	primitive and it received a mouse release event.
+	The implementation should return true if the primitive accepts the event, false otherwise.
+	The default implementation returns false.
+*/
+bool CustomElementPart::singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
+	return(false);
+}
+
+/**
+	This method is called by the decorator when it manages only a single
+	primitive and it received a mouse double click event.
+	The implementation should return true if the primitive accepts the event, false otherwise.
+	The default implementation returns false.
+*/
+bool CustomElementPart::singleItemDoubleClickEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *) {
+	return(false);
+}
+
 /**
 	Helper method to map points in CustomElementPart::handleUserTransformation()
 	@param initial_selection_rect Selection rectangle when the movement started, in scene coordinates

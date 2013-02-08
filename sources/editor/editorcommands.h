@@ -391,4 +391,42 @@ class ChangeInformationsCommand : public ElementEditionCommand {
 	/// New information
 	QString new_informations_;
 };
+
+/**
+	This command scales primitives when editing an electrical element.
+*/
+class ScalePartsCommand : public ElementEditionCommand {
+	// constructors, destructor
+	public:
+	ScalePartsCommand(ElementScene * = 0, QUndoCommand * = 0);
+	virtual ~ScalePartsCommand();
+	private:
+	ScalePartsCommand(const ScalePartsCommand &);
+	
+	// methods
+	public:
+	virtual void undo();
+	virtual void redo();
+	ElementScene *elementScene() const;
+	void setScaledPrimitives(const QList<CustomElementPart *> &);
+	QList<CustomElementPart *> scaledPrimitives() const;
+	void setTransformation(const QRectF &, const QRectF &);
+	QPair<QRectF, QRectF> transformation();
+	
+	protected:
+	void scale(const QRectF &before, const QRectF &after);
+	void adjustText();
+	
+	// attributes
+	private:
+	/// List of moved primitives
+	QList<CustomElementPart *> scaled_primitives_;
+	/// original rect items fit in
+	QRectF original_rect_;
+	/// new rect items should fit in
+	QRectF new_rect_;
+	/// Prevent the first call to redo()
+	bool first_redo;
+};
+
 #endif

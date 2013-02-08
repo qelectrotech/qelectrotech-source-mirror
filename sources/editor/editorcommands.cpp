@@ -684,3 +684,104 @@ void ChangeInformationsCommand::undo() {
 void ChangeInformationsCommand::redo() {
 	editor_scene_ -> setInformations(new_informations_);
 }
+
+/**
+	Constructor
+	@param scene Modified ElementScene
+	@param parent Parent QUndoCommand
+*/
+ScalePartsCommand::ScalePartsCommand(ElementScene *scene, QUndoCommand * parent) :
+	ElementEditionCommand(scene, 0, parent),
+	first_redo(true)
+{
+}
+
+/**
+	Destructor
+*/
+ScalePartsCommand::~ScalePartsCommand() {
+}
+
+/**
+	Undo the scaling operation
+*/
+void ScalePartsCommand::undo() {
+	scale(new_rect_, original_rect_);
+}
+
+/**
+	Redo the scaling operation
+*/
+void ScalePartsCommand::redo() {
+	if (first_redo) {
+		first_redo = false;
+		return;
+	}
+	scale(original_rect_, new_rect_);
+}
+
+/**
+	@return the element editor/scene the command should take place on
+*/
+ElementScene *ScalePartsCommand::elementScene() const {
+	return(editor_scene_);
+}
+
+/**
+	Set \a primitives as the list of primitives to be scaled by this command
+*/
+void ScalePartsCommand::setScaledPrimitives(const QList<CustomElementPart *> &primitives) {
+	scaled_primitives_ = primitives;
+	adjustText();
+}
+
+/**
+	@return the list of primitives to be scaled by this command
+*/
+QList<CustomElementPart *> ScalePartsCommand::scaledPrimitives() const {
+	return(scaled_primitives_);
+}
+
+/**
+	Define the transformation applied by this command
+	@param original_rect Bounding rectangle for all scaled primitives before the operation
+	@param original_rect Bounding rectangle for all scaled primitives after the operation
+*/
+void ScalePartsCommand::setTransformation(const QRectF &original_rect, const QRectF &new_rect) {
+	original_rect_ = original_rect;
+	new_rect_ = new_rect;
+}
+
+/**
+	@return the transformation applied by this command. The returned rectangles
+	are the bounding rectangles for all scaled primitives respectively before
+	and after the operation.
+*/
+QPair<QRectF, QRectF> ScalePartsCommand::transformation() {
+	return(QPair<QRectF, QRectF>(original_rect_, new_rect_));
+}
+
+/**
+	Apply the scaling operation from \a before to \a after.
+*/
+void ScalePartsCommand::scale(const QRectF &before, const QRectF &after) {
+	if (!scaled_primitives_.count()) return;
+	if (before == after) return;
+	if (!before.width() || !before.height()) return; // cowardly flee division by zero FIXME?
+	
+	foreach (CustomElementPart *part_item, scaled_primitives_) {
+		part_item -> startUserTransformation(before);
+		part_item -> handleUserTransformation(before, after);
+	}
+}
+
+/**
+	Generate the text describing what this command does exactly.
+*/
+void ScalePartsCommand::adjustText() {
+	if (scaled_primitives_.count() == 1) {
+		setText(QObject::tr("redimensionnement %1", "undo caption -- %1 is the resized primitive type name").arg(scaled_primitives_.first() -> name()));
+	} else {
+		setText(QObject::tr("redimensionnement de %1 primitives", "undo caption -- %1 always > 1").arg(scaled_primitives_.count()));
+	}
+}
