@@ -1145,7 +1145,7 @@ void QETElementEditor::firstActivation(QEvent *event) {
 void QETElementEditor::slot_createPartsList() {
 	parts_list -> blockSignals(true);
 	parts_list -> clear();
-	QList<QGraphicsItem *> qgis = ce_scene -> zItems(true);
+	QList<QGraphicsItem *> qgis = ce_scene -> zItems();
 	
 	// on ne construit plus la liste a partir de 200 primitives
 	// c'est ingerable : la maj de la liste prend trop de temps et le resultat
@@ -1179,7 +1179,7 @@ void QETElementEditor::slot_updatePartsList() {
 	} else if (items_count <= QET_MAX_PARTS_IN_ELEMENT_EDITOR_LIST) {
 		parts_list -> blockSignals(true);
 		int i = 0;
-		QList<QGraphicsItem *> items = ce_scene -> zItems(true);
+		QList<QGraphicsItem *> items = ce_scene -> zItems();
 		for (int j = items.count() - 1 ; j >= 0 ; -- j) {
 			QGraphicsItem *qgi = items[j];
 			QListWidgetItem *qlwi = parts_list -> item(i);

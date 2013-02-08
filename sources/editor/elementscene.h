@@ -42,7 +42,17 @@ class ElementScene : public QGraphicsScene {
 	Q_OBJECT
 	
 	// enum
+	public:
 	enum Behavior { Normal, Line, Rectangle, Circle, Ellipse, Polygon, Text, Terminal, Arc, TextField, PasteArea };
+	enum ItemOption {
+		SortByZValue = 1,
+		IncludeTerminals = 2,
+		IncludeHelperItems = 4,
+		Selected = 8,
+		NonSelected = 16,
+		SelectedOrNot = 24
+	};
+	Q_DECLARE_FLAGS(ItemOptions, ItemOption);
 	
 	// constructors, destructor
 	public:
@@ -130,7 +140,7 @@ class ElementScene : public QGraphicsScene {
 	virtual void fromXml(const QDomDocument &, const QPointF & = QPointF(), bool = true, ElementContent * = 0);
 	virtual void reset();
 	virtual QList<CustomElementPart *> primitives() const;
-	virtual QList<QGraphicsItem *> zItems(bool = false) const;
+	virtual QList<QGraphicsItem *> zItems(ItemOptions options = ItemOptions(SortByZValue | IncludeTerminals | SelectedOrNot)) const;
 	virtual ElementContent selectedContent() const;
 	virtual void getPasteArea(const QRectF &);
 	QRectF borderRect() const;
@@ -208,6 +218,8 @@ class ElementScene : public QGraphicsScene {
 	/// Signal emitted when users have defined the copy/paste area
 	void pasteAreaDefined(const QRectF &);
 };
+
+Q_DECLARE_OPERATORS_FOR_FLAGS(ElementScene::ItemOptions)
 
 /**
 	@param wid the new width for the currently edited element

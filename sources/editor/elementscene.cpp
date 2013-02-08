@@ -487,7 +487,7 @@ const QDomDocument ElementScene::toXml(bool all_parts) const {
 	
 	QDomElement description = xml_document.createElement("description");
 	// description de l'element
-	foreach(QGraphicsItem *qgi, zItems(true)) {
+	foreach(QGraphicsItem *qgi, zItems()) {
 		// si l'export ne concerne que la selection, on ignore les parties non selectionnees
 		if (!all_parts && !qgi -> isSelected()) continue;
 		if (CustomElementPart *ce = dynamic_cast<CustomElementPart *>(qgi)) {
@@ -961,30 +961,56 @@ QList<CustomElementPart *> ElementScene::primitives() const {
 	@param include_terminals true pour inclure les bornes, false sinon
 	@return les parties de l'element ordonnes par zValue croissante
 */
-QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
-	// recupere les elements
-	QList<QGraphicsItem *> all_items_list(items());
+QList<QGraphicsItem *> ElementScene::zItems(ItemOptions options) const {
+	// handle dummy request, i.e. when neither Selected nor NonSelected are set
+	if (!(options & ElementScene::Selected) && !(options & ElementScene::NonSelected)) {
+		return(QList<QGraphicsItem *>());
+	}
 	
-	// enleve les bornes
+	// retrieve all items
+	QList<QGraphicsItem *> all_items_list(items());
+	QMutableListIterator<QGraphicsItem *> i(all_items_list);
+	
+	// remove unrequired items
+	if ((options & ElementScene::SelectedOrNot) != ElementScene::SelectedOrNot) {
+		bool keep_selected = options & ElementScene::Selected;
+		while (i.hasNext()) {
+			if (i.next() -> isSelected() != keep_selected) {
+				i.remove();
+			}
+		}
+	}
+	
 	QList<QGraphicsItem *> terminals;
-	foreach(QGraphicsItem *qgi, all_items_list) {
+	QList<QGraphicsItem *> helpers;
+	for (i.toFront(); i.hasNext(); ) {
+		i.next();
+		QGraphicsItem *qgi = i.value();
 		if (
 			qgi -> type() == ElementPrimitiveDecorator::Type ||
 			qgi -> type() == QGraphicsRectItem::Type
 		) {
-			all_items_list.removeAt(all_items_list.indexOf(qgi));
+			i.remove();
+			helpers << qgi;
 		}
 		else if (qgraphicsitem_cast<PartTerminal *>(qgi)) {
-			all_items_list.removeAt(all_items_list.indexOf(qgi));
+			i.remove();
 			terminals << qgi;
 		}
 	}
 	
 	// ordonne les parties par leur zValue
-	qSort(all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
+	if (options & SortByZValue) {
+		qSort(all_items_list.begin(), all_items_list.end(), ElementScene::zValueLessThan);
+	}
 	
 	// rajoute eventuellement les bornes
-	if (include_terminals) all_items_list += terminals;
+	if (options & ElementScene::IncludeTerminals) {
+		all_items_list += terminals;
+	}
+	if (options & ElementScene::IncludeHelperItems) {
+		all_items_list += helpers;
+	}
 	return(all_items_list);
 }
 
@@ -993,7 +1019,7 @@ QList<QGraphicsItem *> ElementScene::zItems(bool include_terminals) const {
 */
 ElementContent ElementScene::selectedContent() const {
 	ElementContent content;
-	foreach(QGraphicsItem *qgi, zItems(true)) {
+	foreach(QGraphicsItem *qgi, zItems()) {
 		if (qgi -> isSelected()) content << qgi;
 	}
 	return(content);
@@ -1260,6 +1286,7 @@ bool ElementScene::zValueLessThan(QGraphicsItem *item1, QGraphicsItem *item2) {
 	represents the current selection.
 */
 void ElementScene::managePrimitivesGroups() {
+	// this function is not supposed to be reentrant
 	if (!decorator_lock_ -> tryLock()) return;
 	
 	if (!decorator_) {
@@ -1269,18 +1296,8 @@ void ElementScene::managePrimitivesGroups() {
 		decorator_ -> hide();
 	}
 	
-	QList<QGraphicsItem *> selected_items;
-	foreach (QGraphicsItem *item, items()) {
-		if (item -> type() == ElementPrimitiveDecorator::Type) continue;
-		if (item -> type() == QGraphicsRectItem::Type) continue;
-		if (item -> isSelected()) {
-			selected_items << item;
-		}
-	}
-	/// TODO export the above code to a proper method
-	
-	
 	// should we hide the decorator?
+	QList<QGraphicsItem *> selected_items = zItems(ElementScene::Selected | ElementScene::IncludeTerminals);
 	if (!selected_items.count()) {
 		decorator_ -> hide();
 	} else {

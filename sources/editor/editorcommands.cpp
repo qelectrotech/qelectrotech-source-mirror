@@ -291,7 +291,7 @@ void AddPartCommand::redo() {
 		if (!part -> zValue()) {
 			// the added part has no specific zValue already defined, we put it
 			// above existing items (but still under terminals)
-			QList<QGraphicsItem *> existing_items = editor_scene_ -> zItems();
+			QList<QGraphicsItem *> existing_items = editor_scene_ -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
 			qreal z = existing_items.count() ? existing_items.last() -> zValue() + 1 : 1;
 			part -> setZValue(z);
 		}
@@ -522,8 +522,8 @@ ChangeZValueCommand::ChangeZValueCommand(
 	ElementEditionCommand(elmt, 0, parent),
 	option(o)
 {
-	// recupere les parties de l'elements, sauf les bornes
-	QList<QGraphicsItem *> items_list = editor_scene_ -> zItems();
+	// retrieve all primitives but terminals
+	QList<QGraphicsItem *> items_list = editor_scene_ -> zItems(ElementScene::SortByZValue | ElementScene::SelectedOrNot);
 	
 	// prend un snapshot des zValues
 	foreach(QGraphicsItem *qgi, items_list) undo_hash.insert(qgi, qgi -> zValue());
