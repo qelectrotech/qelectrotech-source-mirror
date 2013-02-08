@@ -107,7 +107,9 @@ void ElementPrimitiveDecorator::setItems(const QList<CustomElementPart *> &items
 	end_setItems:
 	adjust();
 	show();
-	grabKeyboard();
+	if (focusItem() != this) {
+		setFocus();
+	}
 }
 
 /**
@@ -347,7 +349,7 @@ void ElementPrimitiveDecorator::keyPressEvent(QKeyEvent *e) {
 		case Qt::Key_Up:    movement = QPointF(0.0, -movement_length); break;
 		case Qt::Key_Down:  movement = QPointF(0.0, +movement_length); break;
 	}
-	if (!movement.isNull() && !focusItem()) {
+	if (!movement.isNull() && focusItem() == this) {
 		if (!moving_by_keys_) {
 			moving_by_keys_ = true;
 			keys_movement_ = movement;
@@ -385,7 +387,7 @@ void ElementPrimitiveDecorator::keyReleaseEvent(QKeyEvent *e) {
 	Initialize an ElementPrimitiveDecorator
 */
 void ElementPrimitiveDecorator::init() {
-	//setAcceptedMouseButtons(Qt::LeftButton);
+	setFlag(QGraphicsItem::ItemIsFocusable, true);
 	grid_step_x_ = grid_step_y_ = 1;
 	setAcceptHoverEvents(true);
 }
@@ -414,7 +416,6 @@ void ElementPrimitiveDecorator::startMovement() {
 	adjust();
 	
 	foreach(CustomElementPart *item, decorated_items_) {
-		qDebug() << Q_FUNC_INFO << "starting movement with rect" << original_bounding_rect_ << "i.e. in scene coordinates " << mapToScene(original_bounding_rect_).boundingRect();
 		item -> startUserTransformation(mapToScene(original_bounding_rect_).boundingRect());
 	}
 }
@@ -497,8 +498,6 @@ void ElementPrimitiveDecorator::scaleItems(const QRectF &original_rect, const QR
 	
 	QRectF scene_original_rect = mapToScene(original_rect).boundingRect();
 	QRectF scene_new_rect = mapToScene(new_rect).boundingRect();
-	qDebug() << Q_FUNC_INFO << "from " << original_rect << " to " << new_rect;
-	qDebug() << Q_FUNC_INFO << "from " << scene_original_rect << " to " << scene_new_rect << "(scene coordinates)";
 	
 	foreach(CustomElementPart *item, decorated_items_) {
 		item -> handleUserTransformation(scene_original_rect, scene_new_rect);

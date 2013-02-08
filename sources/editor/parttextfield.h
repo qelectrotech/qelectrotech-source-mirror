@@ -84,6 +84,7 @@ class PartTextField : public QGraphicsTextItem, public CustomElementPart {
 	virtual bool sceneEventFilter(QGraphicsItem *, QEvent *);
 	virtual void focusInEvent(QFocusEvent *);
 	virtual void focusOutEvent(QFocusEvent *);
+	virtual void keyPressEvent(QKeyEvent *);
 	virtual void mouseDoubleClickEvent(QGraphicsSceneMouseEvent *);
 	virtual QVariant itemChange(GraphicsItemChange, const QVariant &);
 	QRectF boundingRect() const;

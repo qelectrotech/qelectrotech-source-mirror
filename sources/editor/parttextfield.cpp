@@ -221,6 +221,20 @@ void PartTextField::focusOutEvent(QFocusEvent *e) {
 }
 
 /**
+	@reimp QGraphicsTextItem::keyPressEvent()
+	Used to handle the escape key when the event is delivered to the field, not
+	to the decorator.
+*/
+void PartTextField::keyPressEvent(QKeyEvent *event) {
+	if (event -> key() == Qt::Key_Escape) {
+		endEdition();
+	}
+	else {
+		QGraphicsTextItem::keyPressEvent(event);
+	}
+}
+
+/**
 	Permet a l'element texte de devenir editable lorsqu'on double-clique dessus
 	@param e Le QGraphicsSceneMouseEvent qui decrit le double-clic
 */
