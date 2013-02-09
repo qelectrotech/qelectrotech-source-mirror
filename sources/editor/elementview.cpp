@@ -130,6 +130,7 @@ void ElementView::adjustSceneRect() {
 void ElementView::cut() {
 	// delegue cette action a la scene
 	scene_ -> cut();
+	offset_paste_count_ = -1;
 }
 
 /**
@@ -273,21 +274,29 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	if (pasted_content_bounding_rect.isEmpty()) return(content_pasted);
 	
 	// copier/coller avec decalage
+	QRectF final_pasted_content_bounding_rect;
 	++ offset_paste_count_;
-	if (offset_paste_count_ == 1) {
+	if (!offset_paste_count_) {
+		// the pasted content was cut
 		start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
-	} else {
-		pasted_content_bounding_rect.moveTopLeft(start_top_left_corner_);
+		final_pasted_content_bounding_rect = pasted_content_bounding_rect;
 	}
-	
-	// on applique le decalage qui convient
-	QRectF final_pasted_content_bounding_rect = applyMovement(
-		pasted_content_bounding_rect,
-		QETElementEditor::pasteMovement(),
-		QETElementEditor::pasteOffset()
-	);
-	
-	QPointF old_start_top_left_corner_ = start_top_left_corner_;
+	else {
+		// the pasted content was copied
+		if (offset_paste_count_ == 1) {
+			start_top_left_corner_ = pasted_content_bounding_rect.topLeft();
+		} else {
+			pasted_content_bounding_rect.moveTopLeft(start_top_left_corner_);
+		}
+		
+		// on applique le decalage qui convient
+		final_pasted_content_bounding_rect = applyMovement(
+			pasted_content_bounding_rect,
+			QETElementEditor::pasteMovement(),
+			QETElementEditor::pasteOffset()
+		);
+	}
+	QPointF old_start_top_left_corner = start_top_left_corner_;
 	start_top_left_corner_ = final_pasted_content_bounding_rect.topLeft();
 	scene_ -> fromXml(xml_document, start_top_left_corner_, false, &content_pasted);
 	
@@ -295,7 +304,7 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	if (content_pasted.count()) {
 		scene_ -> clearSelection();
 		PastePartsCommand *undo_object = new PastePartsCommand(this, content_pasted);
-		undo_object -> setOffset(offset_paste_count_ - 1, old_start_top_left_corner_, offset_paste_count_, start_top_left_corner_);
+		undo_object -> setOffset(offset_paste_count_ - 1, old_start_top_left_corner, offset_paste_count_, start_top_left_corner_);
 		scene_ -> undoStack().push(undo_object);
 	}
 	return(content_pasted);
