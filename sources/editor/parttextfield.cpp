@@ -520,6 +520,9 @@ void PartTextField::endEdition() {
 	setTextCursor(qtc);
 	
 	setEditable(false);
+	if (decorator_) {
+		decorator_ -> setFocus();
+	}
 }
 
 #ifdef QET_DEBUG_EDITOR_TEXTS

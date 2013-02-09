@@ -75,21 +75,6 @@ void ElementView::setScene(ElementScene *s) {
 }
 
 /**
-	Gere les evenements envoyes a la vue.
-	Methode reimplentee pour gerer le conflit de raccourcis avec Suppr
-	(supprimer une partie ou supprimer le caractere suivant)
-	@param e evenement a gerer
-*/
-bool ElementView::event(QEvent *e) {
-	if (e -> type() == QEvent::ShortcutOverride && scene_ -> focusItem()) {
-		e -> accept();
-		return(true);
-	}
-	return(QGraphicsView::event(e));
-}
-
-
-/**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
 void ElementView::zoomIn() {

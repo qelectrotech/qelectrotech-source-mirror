@@ -42,7 +42,6 @@ class ElementView : public QGraphicsView {
 	QRectF viewedSceneRect() const;
 	
 	protected:
-	bool event(QEvent *);
 	void mousePressEvent(QMouseEvent *);
 	void wheelEvent(QWheelEvent *);
 	virtual void drawBackground(QPainter *, const QRectF &);
