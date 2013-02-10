@@ -124,6 +124,10 @@
         <source>Traduction en catalan</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Compilation : </source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArcEditor</name>
@@ -1165,6 +1169,14 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Basculer vers ce projet</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ouvrir le dossier correspondant</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Copier le chemin</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -2781,16 +2793,8 @@ Options disponibles :
         <translation>Schema QElectroTech (*.qet);;Dateien XML (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
-        <source>Impossible d&apos;ouvrir le fichier</source>
-        <translation>Öffnen der Datei unmöglich</translation>
-    </message>
-    <message>
         <source>Il semblerait que le fichier que vous essayez d&apos;ouvrir ne soit pas accessible en lecture. Il est donc impossible de l&apos;ouvrir. Veuillez vérifier les permissions du fichier.</source>
         <translation>Es scheint, dass die Datei die Sie zu öffnen versuchen, kein Lesemodus besitzt. Es ist daher unmöglich sie zu öffnen. Bitte überprüfen Sie die Dateiberechtigungen.</translation>
-    </message>
-    <message>
-        <source>Ouverture du projet en lecture seule</source>
-        <translation>Öffnen des Projekts in read-only</translation>
     </message>
     <message>
         <source>Il semblerait que le projet que vous essayez d&apos;ouvrir ne soit pas accessible en écriture. Il sera donc ouvert en lecture seule.</source>
@@ -2885,6 +2889,20 @@ Options disponibles :
     <message>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier</source>
+        <comment>message box title</comment>
+        <translation type="unfinished">Öffnen der Datei unmöglich</translation>
+    </message>
+    <message>
+        <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ouverture du projet en lecture seule</source>
+        <comment>message box title</comment>
+        <translation type="unfinished">Öffnen des Projekts in read-only</translation>
     </message>
 </context>
 <context>
@@ -3372,6 +3390,15 @@ Options disponibles :
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation>Der virtuelle gewählte Pfad, entspricht nicht einem Element.</translation>
+    </message>
+    <message>
+        <source>Impossible d&apos;ouvrir le fichier</source>
+        <comment>message box title</comment>
+        <translation type="unfinished">Öffnen der Datei unmöglich</translation>
+    </message>
+    <message>
+        <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -4341,6 +4368,16 @@ Que désirez vous faire ?</source>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Kann Datei nicht öffnen %1 im Schreibmodus, Fehler %2 aufgetreten.</translation>
+    </message>
+    <message>
+        <source>redimensionnement %1</source>
+        <comment>undo caption -- %1 is the resized primitive type name</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>redimensionnement de %1 primitives</source>
+        <comment>undo caption -- %1 always &gt; 1</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
