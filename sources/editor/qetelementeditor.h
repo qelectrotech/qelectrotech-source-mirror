@@ -79,7 +79,7 @@ class QETElementEditor : public QETMainWindow {
 	QToolBar *parts_toolbar, *main_toolbar, *view_toolbar, *depth_toolbar, *element_toolbar;
 	/// toolbars actions
 	QActionGroup *parts;
-	QAction *move, *add_line, *add_circle, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
+	QAction *move, *add_line, *add_rectangle, *add_ellipse, *add_polygon, *add_text;
 	QAction *add_arc, *add_terminal, *add_textfield;
 	/// minimum window title
 	QString min_title;

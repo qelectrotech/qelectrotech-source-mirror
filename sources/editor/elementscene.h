@@ -30,7 +30,6 @@ class QETElementEditor;
 class PartLine;
 class PartRectangle;
 class PartEllipse;
-class PartCircle;
 class PartPolygon;
 class PartArc;
 /**
@@ -96,7 +95,6 @@ class ElementScene : public QGraphicsScene {
 	PartLine *current_line;
 	PartRectangle *current_rectangle;
 	PartEllipse *current_ellipse;
-	PartCircle *current_circle;
 	PartPolygon *current_polygon;
 	PartArc *current_arc;
 	QETElementEditor *element_editor;

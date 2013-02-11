@@ -31,7 +31,6 @@
 
 // editeurs de primitives
 #include "arceditor.h"
-#include "circleeditor.h"
 #include "ellipseeditor.h"
 #include "lineeditor.h"
 #include "polygoneditor.h"
@@ -157,7 +156,6 @@ void QETElementEditor::setupActions() {
 	add_line        = new QAction(QET::Icons::PartLine,             tr("Ajouter une ligne"),                         this);
 	add_rectangle   = new QAction(QET::Icons::PartRectangle,        tr("Ajouter un rectangle"),                      this);
 	add_ellipse     = new QAction(QET::Icons::PartEllipse,          tr("Ajouter une ellipse"),                       this);
-	add_circle      = new QAction(QET::Icons::PartCircle,           tr("Ajouter un cercle"),                         this);
 	add_polygon     = new QAction(QET::Icons::PartPolygon,          tr("Ajouter un polygone"),                       this);
 	add_text        = new QAction(QET::Icons::PartText,             tr("Ajouter du texte"),                          this);
 	add_arc         = new QAction(QET::Icons::PartArc,              tr("Ajouter un arc de cercle"),                  this);
@@ -168,7 +166,6 @@ void QETElementEditor::setupActions() {
 	add_line      -> setStatusTip(add_status_tip);
 	add_rectangle -> setStatusTip(add_status_tip);
 	add_ellipse   -> setStatusTip(add_status_tip);
-	add_circle    -> setStatusTip(add_status_tip);
 	add_text      -> setStatusTip(add_status_tip);
 	add_arc       -> setStatusTip(add_status_tip);
 	add_terminal  -> setStatusTip(add_status_tip);
@@ -251,7 +248,6 @@ void QETElementEditor::setupActions() {
 	connect(add_line,        SIGNAL(triggered()), ce_scene, SLOT(slot_addLine()));
 	connect(add_rectangle,   SIGNAL(triggered()), ce_scene, SLOT(slot_addRectangle()));
 	connect(add_ellipse,     SIGNAL(triggered()), ce_scene, SLOT(slot_addEllipse()));
-	connect(add_circle,      SIGNAL(triggered()), ce_scene, SLOT(slot_addCircle()));
 	connect(add_polygon,     SIGNAL(triggered()), ce_scene, SLOT(slot_addPolygon()));
 	connect(add_text,        SIGNAL(triggered()), ce_scene, SLOT(slot_addText()));
 	connect(add_arc,         SIGNAL(triggered()), ce_scene, SLOT(slot_addArc()));
@@ -262,7 +258,6 @@ void QETElementEditor::setupActions() {
 	connect(add_line,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_rectangle,   SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_ellipse,     SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
-	connect(add_circle,      SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_polygon,     SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_text,        SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
 	connect(add_arc,         SIGNAL(triggered()), this,     SLOT(slot_setNoDragToView()));
@@ -275,7 +270,6 @@ void QETElementEditor::setupActions() {
 	add_line      -> setCheckable(true);
 	add_rectangle -> setCheckable(true);
 	add_ellipse   -> setCheckable(true);
-	add_circle    -> setCheckable(true);
 	add_polygon   -> setCheckable(true);
 	add_text      -> setCheckable(true);
 	add_arc       -> setCheckable(true);
@@ -287,7 +281,6 @@ void QETElementEditor::setupActions() {
 	parts -> addAction(add_line);
 	parts -> addAction(add_rectangle);
 	parts -> addAction(add_ellipse);
-	parts -> addAction(add_circle);
 	parts -> addAction(add_polygon);
 	parts -> addAction(add_arc);
 	parts -> addAction(add_text);
@@ -502,7 +495,6 @@ void QETElementEditor::setupInterface() {
 	
 	// widgets d'editions pour les parties
 	editors_["arc"]       = new ArcEditor(this);
-	editors_["circle"]    = new CircleEditor(this);
 	editors_["ellipse"]   = new EllipseEditor(this);
 	editors_["line"]      = new LineEditor(this);
 	editors_["polygon"]   = new PolygonEditor(this);

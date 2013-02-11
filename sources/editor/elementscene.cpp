@@ -22,7 +22,6 @@
 #include "partline.h"
 #include "partrectangle.h"
 #include "partellipse.h"
-#include "partcircle.h"
 #include "partpolygon.h"
 #include "partterminal.h"
 #include "parttext.h"
@@ -151,7 +150,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 	}
 	
 	QRectF temp_rect;
-	qreal radius;
 	QPointF temp_point;
 	QPolygonF temp_polygon;
 	if (e -> buttons() & Qt::LeftButton) {
@@ -173,16 +171,6 @@ void ElementScene::mouseMoveEvent(QGraphicsSceneMouseEvent *e) {
 				temp_rect = current_arc -> rect();
 				temp_rect.setBottomRight(event_pos);
 				current_arc -> setRect(temp_rect);
-				break;
-			case Circle:
-				temp_rect = current_circle -> rect();
-				temp_point = event_pos - current_circle -> mapToScene(temp_rect.center());
-				radius = sqrt(pow(temp_point.x(), 2) + pow(temp_point.y(), 2));
-				temp_rect = QRectF(
-					temp_rect.center() - QPointF(radius, radius),
-					QSizeF(2.0 * radius, 2.0 * radius)
-				);
-				current_circle -> setRect(temp_rect);
 				break;
 			case Polygon:
 				if (current_polygon == NULL) break;
@@ -232,11 +220,6 @@ void ElementScene::mousePressEvent(QGraphicsSceneMouseEvent *e) {
 				current_arc = new PartArc(element_editor, 0, this);
 				current_arc -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
 				current_arc -> setProperty("antialias", true);
-				break;
-			case Circle:
-				current_circle = new PartCircle(element_editor, 0, this);
-				current_circle -> setRect(QRectF(event_pos, QSizeF(0.0, 0.0)));
-				current_circle -> setProperty("antialias", true);
 				break;
 			case Polygon:
 				if (current_polygon == NULL) {
@@ -302,13 +285,6 @@ void ElementScene::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 				if (qgiManager().manages(current_arc)) break;
 				current_arc-> setRect(current_arc -> rect().normalized());
 				undo_stack.push(new AddPartCommand(tr("arc"), this, current_arc));
-				emit(partsAdded());
-				endCurrentBehavior(e);
-				break;
-			case Circle:
-				if (qgiManager().manages(current_circle)) break;
-				current_circle -> setRect(current_circle -> rect().normalized());
-				undo_stack.push(new AddPartCommand(tr("cercle"), this, current_circle));
 				emit(partsAdded());
 				endCurrentBehavior(e);
 				break;
@@ -1167,7 +1143,7 @@ ElementContent ElementScene::loadContent(const QDomDocument &xml_document, QStri
 				if      (qde.tagName() == "line")     cep = new PartLine     (element_editor, 0, 0);
 				else if (qde.tagName() == "rect")     cep = new PartRectangle(element_editor, 0, 0);
 				else if (qde.tagName() == "ellipse")  cep = new PartEllipse  (element_editor, 0, 0);
-				else if (qde.tagName() == "circle")   cep = new PartCircle   (element_editor, 0, 0);
+				else if (qde.tagName() == "circle")   cep = new PartEllipse  (element_editor, 0, 0);
 				else if (qde.tagName() == "polygon")  cep = new PartPolygon  (element_editor, 0, 0);
 				else if (qde.tagName() == "terminal") cep = new PartTerminal (element_editor, 0, 0);
 				else if (qde.tagName() == "text")     cep = new PartText     (element_editor, 0, 0);
