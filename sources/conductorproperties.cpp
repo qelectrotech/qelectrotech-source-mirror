@@ -383,6 +383,7 @@ void ConductorProperties::readStyle(const QString &style_string) {
 			QString style_value = rx.cap(2);
 			if (style_name == "line-style") {
 				if (style_value == "dashed") style = Qt::DashLine;
+				else if (style_value == "dashdotted") style = Qt::DashDotLine;
 				else if (style_value == "normal") style = Qt::SolidLine;
 			}
 		}
@@ -396,6 +397,8 @@ void ConductorProperties::readStyle(const QString &style_string) {
 QString ConductorProperties::writeStyle() const {
 	if (style == Qt::DashLine) {
 		return("line-style: dashed;");
+	} else if (style == Qt::DashDotLine) {
+		return("line-style: dashdotted");
 	} else {
 		return(QString());
 	}

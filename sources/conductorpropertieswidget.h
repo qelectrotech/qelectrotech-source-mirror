@@ -70,7 +70,7 @@ class ConductorPropertiesWidget : public QWidget {
 	QCheckBox *neutral_checkbox;
 	QLabel *preview;
 	QPushButton *color_button;
-	QCheckBox *dashed_checkbox;
+	QComboBox *line_style;
 	QCheckBox *merge_checkbox;
 	
 	ConductorProperties properties_;
