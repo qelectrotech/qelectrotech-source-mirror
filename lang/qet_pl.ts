@@ -52,7 +52,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Kompilacja : </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
@@ -1291,12 +1291,12 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation>Otwórz odpowiedni katalog</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopiuj ścieżkę</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="59"/>
@@ -3470,18 +3470,18 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="756"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Nie można otworzyć pliku</translation>
+        <translation>Nie można otworzyć pliku</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="743"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wydaje się, że plik %1 który próbujesz otworzyć nie istnieje.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Otwórz plik tylko do odczytu</translation>
+        <translation>Otwórz plik tylko do odczytu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1698"/>
@@ -4039,12 +4039,12 @@ Dostępne opcje :
         <location filename="../sources/editor/qetelementeditor.cpp" line="938"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Nie można otworzyć pliku</translation>
+        <translation>Nie można otworzyć pliku</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="940"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Wydaje się, że plik %1 który próbujesz otworzyć nie istnieje.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1167"/>
@@ -4859,7 +4859,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/diagramcommands.cpp" line="75"/>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
-        <translation>Wstawienie pola tekstowego</translation>
+        <translation>wstawienie pola tekstowego</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="110"/>
@@ -5029,13 +5029,13 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation>zniana rozmiaru %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="785"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished"></translation>
+        <translation>zmaina rozmiaru %1 figur począktowych</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="50"/>
@@ -5140,7 +5140,7 @@ Co chcesz zrobić ?</translation>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>pole tekstowe</numerusform>
+            <numerusform>pola tekstowego</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
