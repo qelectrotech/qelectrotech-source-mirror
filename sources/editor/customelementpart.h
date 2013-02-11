@@ -73,6 +73,7 @@ class CustomElementPart {
 		Typically, useless primitives are discarded when saving the element.
 	*/
 	virtual bool isUseless() const = 0;
+	virtual QRectF sceneGeometricRect() const = 0;
 	/**
 		Inform this part a user-induced transformation is about to begin. This method can be used to save data required by handleUserTransformation().
 	*/

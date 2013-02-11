@@ -190,6 +190,16 @@ bool PartEllipse::isUseless() const {
 }
 
 /**
+	@return the minimum, margin-less rectangle this part can fit into, in scene
+	coordinates. It is different from boundingRect() because it is not supposed
+	to imply any margin, and it is different from shape because it is a regular
+	rectangle, not a complex shape.
+*/
+QRectF PartEllipse::sceneGeometricRect() const {
+	return(mapToScene(rect()).boundingRect());
+}
+
+/**
 	Start the user-induced transformation, provided this primitive is contained
 	within the \a initial_selection_rect bounding rectangle.
 */
