@@ -436,7 +436,6 @@ void ProjectView::editProjectProperties() {
 	if (!project_) return;
 	
 	ConfigDialog properties_dialog(parentWidget());
-	properties_dialog.setMinimumSize(786, 585);
 	properties_dialog.setWindowTitle(tr("Propri\351t\351s du projet", "window title"));
 	properties_dialog.addPage(new ProjectMainConfigPage(project_));
 	properties_dialog.addPage(new ProjectNewDiagramConfigPage(project_));
