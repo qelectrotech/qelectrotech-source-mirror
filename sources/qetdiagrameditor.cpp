@@ -17,10 +17,13 @@
 */
 #include "qetdiagrameditor.h"
 #include "qetapp.h"
+#include "diagramcontent.h"
 #include "diagramview.h"
 #include "diagram.h"
+#include "element.h"
 #include "elementspanelwidget.h"
 #include "conductorpropertieswidget.h"
+#include "customelement.h"
 #include "qetproject.h"
 #include "projectview.h"
 #include "recentfiles.h"
@@ -202,6 +205,8 @@ void QETDiagramEditor::actions() {
 	delete_selection  = new QAction(QET::Icons::EditDelete,            tr("Supprimer"),                            this);
 	rotate_selection  = new QAction(QET::Icons::ObjectRotateRight,     tr("Pivoter"),                              this);
 	rotate_texts      = new QAction(QET::Icons::ObjectRotateRight,     tr("Orienter les textes"),                  this);
+	find_element      = new QAction(                                   tr("Retrouver dans le panel"),              this);
+	edit_element      = new QAction(QET::Icons::ElementEdit,           tr("\311diter l'\351l\351ment"),            this);
 	selection_prop    = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s de la s\351lection"),  this);
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
@@ -297,6 +302,8 @@ void QETDiagramEditor::actions() {
 	delete_selection  -> setStatusTip(tr("Enl\350ve les \351l\351ments s\351lectionn\351s du sch\351ma", "status bar tip"));
 	rotate_selection  -> setStatusTip(tr("Pivote les \351l\351ments et textes s\351lectionn\351s", "status bar tip"));
 	rotate_texts      -> setStatusTip(tr("Pivote les textes s\351lectionn\351s \340 un angle pr\351cis", "status bar tip"));
+	find_element      -> setStatusTip(tr("Retrouve l'\351l\351ment s\351lectionn\351 dans le panel", "status bar tip"));
+	edit_element      -> setStatusTip(tr("Retrouve l'\351l\351ment s\351lectionn\351 dans le panel avant de l'\351diter", "status bar tip"));
 	selection_prop    -> setStatusTip(tr("\311dite les propri\351t\351s des objets s\351lectionn\351", "status bar tip"));
 	conductor_reset   -> setStatusTip(tr("Recalcule les chemins des conducteurs sans tenir compte des modifications", "status bar tip"));
 	infos_diagram     -> setStatusTip(tr("\311dite les informations affich\351es par le cartouche", "status bar tip"));
@@ -348,6 +355,9 @@ void QETDiagramEditor::actions() {
 	connect(delete_selection,   SIGNAL(triggered()), this,       SLOT(slot_delete())               );
 	connect(rotate_selection,   SIGNAL(triggered()), this,       SLOT(slot_rotate())               );
 	connect(rotate_texts,       SIGNAL(triggered()), this,       SLOT(slot_rotateTexts())          );
+	connect(find_element,       SIGNAL(triggered()), this,       SLOT(findSelectedElementInPanel()));
+	connect(edit_element,       SIGNAL(triggered()), this,       SLOT(findSelectedElementInPanel()));
+	connect(edit_element,       SIGNAL(triggered()), this,       SLOT(editSelectedElementInEditor()));
 	connect(windowed_view_mode, SIGNAL(triggered()), this,       SLOT(setWindowedMode())           );
 	connect(tabbed_view_mode,   SIGNAL(triggered()), this,       SLOT(setTabbedMode())             );
 	connect(mode_selection,     SIGNAL(triggered()), this,       SLOT(slot_setSelectionMode())     );
@@ -869,6 +879,33 @@ DiagramView *QETDiagramEditor::currentDiagram() const {
 }
 
 /**
+	@return the selected element in the current diagram view, or 0 if:
+	  * no diagram is being viewed in this editor.
+	  * no element is selected
+	  * more than one element is selected
+*/
+Element *QETDiagramEditor::currentElement() const {
+	DiagramView *dv = currentDiagram();
+	if (!dv) return(0);
+	
+	QList<Element *> selected_elements = dv -> diagram() -> selectedContent().elements.toList();
+	if (selected_elements.count() != 1) return(0);
+	
+	return(selected_elements.first());
+}
+
+/**
+	@return the selected element in the current diagram view, or 0 if:
+	  * no diagram is being viewed in this editor.
+	  * no element is selected
+	  * more than one element is selected
+	  * the selected element is not a custom element
+*/
+CustomElement *QETDiagramEditor::currentCustomElement() const {
+	return(dynamic_cast<CustomElement *>(currentElement()));
+}
+
+/**
 	Cette methode permet de retrouver le projet contenant un schema donne.
 	@param diagram_view Schema dont il faut retrouver
 	@return la vue sur le projet contenant ce schema ou 0 s'il n'y en a pas
@@ -1129,6 +1166,11 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	// nombre de conducteurs selectionnes
 	int selected_conductors_count = dv ? dv -> diagram() -> selectedConductors().count() : 0;
 	conductor_reset  -> setEnabled(editable_diagram && selected_conductors_count);
+	
+	// number of selected elements
+	int selected_elements_count = dv ? dv -> diagram() -> selectedContent().count(DiagramContent::Elements) : 0;
+	find_element -> setEnabled(selected_elements_count == 1);
+	edit_element -> setEnabled(selected_elements_count == 1);
 	
 	// actions ayant aussi besoin d'items (elements, conducteurs, textes, ...) selectionnes
 	bool copiable_items  = dv ? (dv -> hasCopiableItems()) : false;
@@ -1719,6 +1761,15 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 	}
 }
 
+/**
+	Search the panel for the definition for the selected element in the current
+	diagram view.
+*/
+void QETDiagramEditor::findSelectedElementInPanel() {
+	if (CustomElement *selected_element = currentCustomElement()) {
+		findElementInPanel(selected_element -> location());
+	}
+}
 
 /**
 	Lance l'editeur d'element pour l'element filename
@@ -1726,6 +1777,16 @@ void QETDiagramEditor::findElementInPanel(const ElementsLocation &location) {
 */
 void QETDiagramEditor::editElementInEditor(const ElementsLocation &location) {
 	QETApp::instance() -> openElementLocations(QList<ElementsLocation>() << location);
+}
+
+/**
+	Launch an element editor to edit the selected element in the current
+	diagram view.
+*/
+void QETDiagramEditor::editSelectedElementInEditor() {
+	if (CustomElement *selected_element = currentCustomElement()) {
+		editElementInEditor(selected_element -> location());
+	}
 }
 
 /**

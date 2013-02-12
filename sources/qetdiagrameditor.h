@@ -26,8 +26,10 @@
 class QETProject;
 class QETResult;
 class ProjectView;
+class CustomElement;
 class Diagram;
 class DiagramView;
+class Element;
 class ElementsPanelWidget;
 class ElementsLocation;
 class RecentFiles;
@@ -69,6 +71,8 @@ class QETDiagramEditor : public QETMainWindow {
 	bool addProject(QETProject *, bool = true);
 	ProjectView *currentProject() const;
 	DiagramView *currentDiagram() const;
+	Element *currentElement() const;
+	CustomElement * currentCustomElement() const;
 	ProjectView *findProject(DiagramView *) const;
 	ProjectView *findProject(Diagram *) const;
 	ProjectView *findProject(QETProject *) const;
@@ -145,7 +149,9 @@ class QETDiagramEditor : public QETMainWindow {
 	void diagramIsAboutToBeRemoved(DiagramView *);
 	void diagramWasRemoved(DiagramView *);
 	void findElementInPanel(const ElementsLocation &);
+	void findSelectedElementInPanel();
 	void editElementInEditor(const ElementsLocation &);
+	void editSelectedElementInEditor();
 	void showError(const QETResult &);
 	void showError(const QString &);
 	
@@ -179,6 +185,8 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *delete_selection;   ///< Delete selection
 	QAction *rotate_selection;   ///< Rotate selected elements and text items by 90 degrees
 	QAction *rotate_texts;       ///< Direct selected text items to a specific angle
+	QAction *find_element;       ///< Find the selected element in the panel
+	QAction *edit_element;       ///< Edit the selected element
 	QAction *selection_prop;     ///< Show a dialog describing the selection
 	QAction *conductor_reset;    ///< Reset paths of selected conductors
 	QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
