@@ -104,6 +104,7 @@ void BorderPropertiesWidget::build() {
 	
 	columns_width = new QSpinBox(diagram_size_box);
 	columns_width -> setMinimum(qRound(BorderTitleBlock::minColumnsWidth()));
+	columns_width -> setMaximum(10000);
 	columns_width -> setSingleStep(10);
 	columns_width -> setPrefix(tr("\327", "multiplication symbol"));
 	columns_width -> setSuffix(tr("px",   "unit for cols width"));
@@ -119,6 +120,7 @@ void BorderPropertiesWidget::build() {
 	
 	rows_height  = new QSpinBox(diagram_size_box);
 	rows_height -> setMinimum(qRound(BorderTitleBlock::minRowsHeight()));
+	rows_height -> setMaximum(10000);
 	rows_height -> setSingleStep(10);
 	rows_height -> setPrefix(tr("\327", "multiplication symbol"));
 	rows_height -> setSuffix(tr("px",   "unit for rows height"));
