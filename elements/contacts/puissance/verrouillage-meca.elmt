@@ -1,4 +1,4 @@
-<definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dnny">
+<definition width="20" version="0.3" hotspot_x="0" hotspot_y="10" height="20" type="element" orientation="dnny">
     <names>
         <name lang="ar">قفل ميكانيكي</name>
         <name lang="en">Mechanical lock</name>

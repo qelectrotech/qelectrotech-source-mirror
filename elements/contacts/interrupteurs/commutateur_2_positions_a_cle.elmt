@@ -1,4 +1,4 @@
-<definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dnny">
     <names>
         <name lang="ar">بدّال بوضعين و بمفتاح</name>
         <name lang="en">2 position key switch</name>
@@ -10,13 +10,13 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <text x="-12" y="-6.6666" size="4" text="1"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="5" x1="-15" y2="-5" x2="-10"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-5" x1="-20" y2="5" x2="-15"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="5" x1="-15" y2="-5" x2="-10"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-20" y2="5" x2="-15"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-3" y2="0" x2="-27"/>
         <text x="-22" y="-6.6666" size="4" text="0"/>
-        <polygon x4="-14.55" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-13.441" x1="-16.55" y2="-9.4409" x2="-17.55" y3="-9.4409" x3="-13.55" y4="-13.441"/>
-        <polygon x4="-30" antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-5" x1="-24" y2="-5" x2="-27" y3="5" x3="-27" y4="5"/>
-        <circle x="-17.7861" y="-18.559" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="4.4721"/>
+        <polygon x4="-13.9826" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-12.9725" x1="-15.9826" y2="-8.97236" x2="-16.9826" y3="-8.97236" x3="-12.9826" y4="-12.9725"/>
+        <polygon x4="-30" antialias="false" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="-5" x1="-24" y2="-5" x2="-27" y3="5" x3="-27" y4="5"/>
+        <circle x="-17.25" y="-17.25" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="4.5"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
         <input x="6.5" y="2.3333" size="9" text="_"/>

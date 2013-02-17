@@ -1,14 +1,14 @@
 <qet-directory>
     <names>
+        <name lang="ar">ملامسات</name>
         <name lang="de">Kontakte</name>
         <name lang="ru">Контакты</name>
-        <name lang="en">Contacts</name>
-        <name lang="fr">Contacts</name>
-        <name lang="ar">ملامسات</name>
-        <name lang="es">Terminales</name>
         <name lang="pt">Contactos</name>
-        <name lang="cs">Kontakty</name>
-        <name lang="pl">Zestyki</name>
+        <name lang="en">Contacts</name>
         <name lang="it">Contatti</name>
+        <name lang="fr">Contacts</name>
+        <name lang="pl">Zestyki</name>
+        <name lang="es">Terminales</name>
+        <name lang="cs">Kontakty</name>
     </names>
 </qet-directory>

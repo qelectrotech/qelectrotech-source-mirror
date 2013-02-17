@@ -1,4 +1,4 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnny">
     <names>
         <name lang="ar">زرّ توقف طارئ (NC)</name>
         <name lang="de">Notaus (NC)</name>
@@ -15,13 +15,13 @@
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0"/>
-        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-2" x1="-4" y2="0" x2="-1"/>
-        <arc width="8" x="-11" y="-5" antialias="true" height="10" style="line-style:dashed;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-2" x1="-4" y2="0" x2="-4"/>
+        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2" x1="-4" y2="0" x2="-1"/>
+        <arc width="8" x="-11" y="-5" antialias="true" height="10" style="line-style:normal;line-weight:thin;filling:none;color:black" start="-90" angle="-180"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-2" x1="-4" y2="0" x2="-4"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="6"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
         <input x="5.75" y="3" size="9" text="_"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-5" x1="-7" y2="5" x2="-7"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-5" x1="-7" y2="5" x2="-7"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="0" x1="-7" y2="0" x2="3"/>
         <terminal x="0" y="-20" orientation="n"/>
         <terminal x="0" y="20" orientation="s"/>

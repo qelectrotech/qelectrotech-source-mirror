@@ -1,14 +1,14 @@
 <qet-directory>
     <names>
+        <name lang="ar">مؤقتة</name>
         <name lang="de">Schalter Verzögerung</name>
         <name lang="ru">с задержкой</name>
-        <name lang="en">Switch Delay</name>
-        <name lang="fr">Temporisés</name>
-        <name lang="ar">مؤقتة</name>
-        <name lang="es">Comutadores de retardo</name>
         <name lang="pt">Temporizados</name>
-        <name lang="cs">Opožděné sepnutí</name>
-        <name lang="pl">Zestyki zwierające z opóźnieniem</name>
+        <name lang="en">Switch Delay</name>
         <name lang="it">Timer</name>
+        <name lang="fr">Temporisés</name>
+        <name lang="pl">Zestyki zwierające z opóźnieniem</name>
+        <name lang="es">Comutadores de retardo</name>
+        <name lang="cs">Opožděné sepnutí</name>
     </names>
 </qet-directory>

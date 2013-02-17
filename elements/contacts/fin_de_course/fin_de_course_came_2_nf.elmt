@@ -1,4 +1,4 @@
-<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح نهاية مشوار بحدبة (NC)</name>
         <name lang="de">Grenzschalter (NC)</name>
@@ -14,9 +14,9 @@
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>
-        <polygon x4="-21" y5="-12" x5="-23" y6="10" x6="-23" y7="10" x7="-23" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="10" x1="-20" y2="-1" x2="-20" y3="-4" x3="-21" y4="-12"/>
-        <circle x="-20.4142" y="-4.41421" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2.82843"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:normal;filling:none;color:black" y1="-3" x1="-19" y2="-3" x2="3"/>
+        <polygon x4="-17" y5="-12" x5="-19" y6="10" x6="-19" y7="10" x7="-19" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="10" x1="-16" y2="-1" x2="-16" y3="-4" x3="-17" y4="-12"/>
+        <circle x="-16.5" y="-4.5" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" diameter="3"/>
+        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:dashed;line-weight:thin;filling:none;color:black" y1="-3" x1="-13.5" y2="-3" x2="3"/>
         <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="5" y2="10" x2="0" y3="20" x3="0"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-9" x1="0" y2="-9" x2="6"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-9" x2="0"/>
