@@ -48,7 +48,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>تجميع :</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
@@ -1315,12 +1315,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation>فتح المجلد المتناضر</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>نسخ المسار</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="58"/>
@@ -3198,18 +3198,18 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="756"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">إستحالة فتح الملف</translation>
+        <translation>إستحالة فتح الملف</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="743"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>يبدو أنّ الملف %1 الذي تُحاول فتحه غير موجود </translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="770"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">فتح المشروع للقراءة فقط</translation>
+        <translation>فتح المشروع للقراءة فقط</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="186"/>
@@ -4113,12 +4113,12 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="938"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">إستحالة فتح الملف</translation>
+        <translation>إستحالة فتح الملف</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="940"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>يبدو أنّ الملف %1 الذي تُحاول فتحه غير موجود .</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="957"/>
@@ -5059,13 +5059,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation>تغيير الحجم %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="785"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished"></translation>
+        <translation>تغيير الحجم %1 الأصلي</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="50"/>
