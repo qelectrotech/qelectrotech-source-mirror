@@ -46,7 +46,7 @@ class QETTitleBlockTemplateEditor : public QETMainWindow {
 	// attributes
 	private:
 	/// menus TODO
-	QMenu *file_menu_, *edit_menu_,/* *paste_from_menu_, */*display_menu_,/* *tools_menu_*/;
+	QMenu *file_menu_, *edit_menu_, *display_menu_;
 	/// actions
 	QAction *new_, *open_, *open_from_file_, *save_, *save_as_, *save_as_file_, *quit_;
 	QAction *undo_, *redo_, *cut_, *copy_, *paste_, *edit_logos_, *edit_info_, *add_row_, *add_col_, *merge_cells_, *split_cell_;
