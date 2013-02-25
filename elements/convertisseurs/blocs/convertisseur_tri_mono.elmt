@@ -5,6 +5,7 @@
         <name lang="fr">Convertisseur tri mono</name>
         <name lang="pl">Przekształtnik prądu przemiennego</name>
         <name lang="cs">Měnič třífázový/jednofázový proud</name>
+        <name lang="it">Convertitore AC trifase / AC monofase</name>
     </names>
     <informations></informations>
     <description>

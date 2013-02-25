@@ -5,6 +5,7 @@
         <name lang="fr">Moteur série, triphasé</name>
         <name lang="pl">Silnik trójfazowy szeregowy</name>
         <name lang="cs">Sériový elektromotor, třífázový</name>
+        <name lang="it">Motore serie, trifase</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

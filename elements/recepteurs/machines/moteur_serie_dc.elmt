@@ -5,6 +5,7 @@
         <name lang="fr">Moteur série,DC</name>
         <name lang="pl">Silnik szeregowy prądu stałego</name>
         <name lang="cs">Sériový elektromotor, stejnosměrný proud</name>
+        <name lang="it">Motore CC</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

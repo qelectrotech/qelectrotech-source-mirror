@@ -5,6 +5,7 @@
         <name lang="pl">Rozłącznik IMB</name>
         <name lang="cs">Přerušovač IMB</name>
         <name lang="ar">مفتاح IMB</name>
+        <name lang="it">Interruttore IMB</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

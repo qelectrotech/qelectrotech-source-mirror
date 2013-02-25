@@ -4,6 +4,7 @@
         <name lang="fr">Cle prisioniere pene entree manoeuvre bloquée</name>
         <name lang="pl">Klucz niedostępny, wejście niedozwolone</name>
         <name lang="cs">Klíč nedostupný, vstup nedovolen</name>
+        <name lang="it">Chiave bloccata, manovra bloccata</name>
     </names>
     <informations></informations>
     <description>

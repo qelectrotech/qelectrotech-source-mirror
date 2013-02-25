@@ -5,6 +5,7 @@
 alternatif</name>
         <name lang="pl">Przekaźnik prądu przemiennego</name>
         <name lang="cs">Relé střídavého proudu</name>
+        <name lang="it">Relè AC</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

@@ -5,6 +5,7 @@
         <name lang="fr">Ballon Stratification ECS</name>
         <name lang="pl">Zasobnik warstwowy CWU</name>
         <name lang="cs">Vrstvový zásobnik ECS</name>
+        <name lang="it">Scambiatore a stratificazione ACS</name>
     </names>
     <informations></informations>
     <description>

@@ -4,6 +4,7 @@
         <name lang="fr">Actionné par humidité relative NF/NO</name>
         <name lang="pl">Zestyk przełączny sterowany elektronicznie</name>
         <name lang="cs">Ovládáno relativní vlhkostí NC/NO</name>
+        <name lang="it">Controllato dall'umidità relativa NC/NO</name>
     </names>
     <informations></informations>
     <description>

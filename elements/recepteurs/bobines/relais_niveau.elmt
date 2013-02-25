@@ -5,6 +5,7 @@
         <name lang="fr">Relais de Niveau</name>
         <name lang="pl">Przekaźnik kontroli poziomu</name>
         <name lang="cs">Relé pro kontrolu hladiny</name>
+        <name lang="it">Relè di livello</name>
     </names>
     <informations></informations>
     <description>

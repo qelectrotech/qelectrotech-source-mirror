@@ -8,6 +8,7 @@
 </name>
         <name lang="pl">Silnik krokowy</name>
         <name lang="cs">Krokový motor</name>
+        <name lang="it">Motore passo-passo</name>
     </names>
     <informations>EN 60617: 06-04-03</informations>
     <description>

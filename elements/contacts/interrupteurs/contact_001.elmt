@@ -5,6 +5,7 @@
         <name lang="fr">Interrupteur rotatif</name>
         <name lang="pl">Łącznik obrotowy przełączny</name>
         <name lang="cs">Otočný spínač - 2 polohy</name>
+        <name lang="it">Selettore a 2 posizioni stabili</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

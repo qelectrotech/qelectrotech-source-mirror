@@ -4,6 +4,7 @@
         <name lang="fr">Télérupteur</name>
         <name lang="pl">Łącznik zdalnie sterowany</name>
         <name lang="cs">Dálkový spínač (přerušovač)</name>
+        <name lang="it">Teleruttore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

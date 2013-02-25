@@ -5,6 +5,7 @@
         <name lang="fr">Bouton poussoir</name>
         <name lang="pl">Łącznik przyciskowy podświetlony  z powrotem samoczynnym</name>
         <name lang="cs">Tlačítko</name>
+        <name lang="it">Pulsante luminoso</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

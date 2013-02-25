@@ -5,6 +5,7 @@
 courant alternatif</name>
         <name lang="pl">Przekaźnik niewrażliwy na prąd przemienny</name>
         <name lang="cs">Relé necitlivé na střídavý proud</name>
+        <name lang="it">Relè insensibile alla CA</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

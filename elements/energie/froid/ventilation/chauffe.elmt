@@ -3,7 +3,8 @@
         <name lang="en">Heater</name>
         <name lang="fr">Chauffe</name>
         <name lang="pl">Nagrzewnica</name>
-        <name lang="cs" >Ohřívač</name>
+        <name lang="cs">Ohřívač</name>
+        <name lang="it">Riscaldatore</name>
     </names>
     <informations></informations>
     <description>

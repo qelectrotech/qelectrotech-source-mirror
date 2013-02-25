@@ -9,6 +9,7 @@ Wächtermelder
 </name>
         <name lang="pl">Łącznik sterowany kluczem</name>
         <name lang="cs">Klíčový spínač</name>
+        <name lang="it">Comando a chiave</name>
     </names>
     <informations>EN 60617: 11-14-15</informations>
     <description>

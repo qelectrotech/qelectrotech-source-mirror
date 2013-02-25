@@ -6,6 +6,7 @@
         <name lang="fr">Compteur d'énergie active Wattheuremètre (en_60617)</name>
         <name lang="pl">Licznik watogodzin (en_60617)</name>
         <name lang="cs">Počítadlo watthodin(en_60617) </name>
+        <name lang="it">Misuratore di Wh (en_60617)</name>
     </names>
     <informations>https://github.com/jonasstein/qelectrotech-symbols
 EN 60617</informations>

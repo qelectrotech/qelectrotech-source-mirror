@@ -6,6 +6,7 @@
         <name lang="fr">Bouton-poussoir</name>
         <name lang="pl">Przycisk</name>
         <name lang="cs">Tlačítko</name>
+        <name lang="it">Pulsante</name>
     </names>
     <informations>EN 60617: 11-14-10</informations>
     <description>

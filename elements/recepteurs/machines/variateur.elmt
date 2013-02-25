@@ -5,6 +5,7 @@
         <name lang="fr">Variateur</name>
         <name lang="pl">Regulator</name>
         <name lang="cs">Regulátor</name>
+        <name lang="it">Regolatore</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

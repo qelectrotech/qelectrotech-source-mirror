@@ -5,6 +5,7 @@
         <name lang="cs">Brána NEBO (OR)</name>
         <name lang="pl">Przełącznik obiegu (zawór logiczny LUB)</name>
         <name lang="ar">بوابة كفاية (OR)</name>
+        <name lang="it">Porta logica OR</name>
     </names>
     <informations></informations>
     <description>

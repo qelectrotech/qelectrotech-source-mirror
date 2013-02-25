@@ -3,6 +3,7 @@
         <name lang="en">Danger general</name>
         <name lang="fr">Danger</name>
         <name lang="pl">Inne niebezpieczeństwo</name>
+        <name lang="it">Pericolo generico</name>
     </names>
     <informations></informations>
     <description>

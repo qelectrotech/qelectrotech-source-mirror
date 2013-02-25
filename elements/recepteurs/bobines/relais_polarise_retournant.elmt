@@ -6,6 +6,7 @@ du courant et retournant en position de repos
 après coupure</name>
         <name lang="pl">Przekaźnik spolaryzowany, działający przy jednym kierunku prądu w cewce</name>
         <name lang="cs">Polarizované relé, pracující v jednom směru proudu v cívce</name>
+        <name lang="it">Relè polarizzato</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

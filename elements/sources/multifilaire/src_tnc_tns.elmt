@@ -1,14 +1,14 @@
 <definition width="70" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dnnn">
     <names>
         <name lang="ar">نقطة توزيع TN-C &lt; TN-S </name>
-        <name lang="de">Netz TNC > TNS</name>
-        <name lang="ru">Распределительный пункт TN-C >TN-S</name>
-        <name lang="en">Distribution point TN-C >TN-S</name>
+        <name lang="de">Netz TNC &gt; TNS</name>
+        <name lang="ru">Распределительный пункт TN-C &gt;TN-S</name>
+        <name lang="en">Distribution point TN-C &gt;TN-S</name>
         <name lang="it">Punto di distribuzione TN-C</name>
-        <name lang="fr">Point de distribution TN-C >TN-S</name>
+        <name lang="fr">Point de distribution TN-C &gt;TN-S</name>
         <name lang="pl">Linia trójfazowa (TN-C-S)</name>
-        <name lang="es">Punto de distribución TN-C > TN-S</name>
-        <name lang="cs">Bod rozdělení TN-C > TN-S</name>
+        <name lang="es">Punto de distribución TN-C &gt; TN-S</name>
+        <name lang="cs">Bod rozdělení TN-C &gt; TN-S</name>
     </names>
     <informations></informations>
     <description>

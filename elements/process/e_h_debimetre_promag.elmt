@@ -1,9 +1,9 @@
 <definition width="220" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Endress+Hauser - مقياس تدفق Promag 50</name>
-        <name lang="en">Endress &amp; Hauser Promag 50 Flowmeter</name>
-        <name lang="it">Endress &amp; Hauser debimetro Promag 50</name>
-        <name lang="fr">Endress&amp;Hauser Débimétre PROMAG 50</name>
+        <name lang="en">Endress+Hauser Promag 50 Flowmeter</name>
+        <name lang="it">Debimetro Endress+Hauser Promag 50</name>
+        <name lang="fr">Endress+Hauser Débimétre PROMAG 50</name>
         <name lang="pl">Endress+Hauser - Przepływomierz Promag 50</name>
         <name lang="cs">Endress+Hauser - Průtokoměr Promag 50</name>
     </names>

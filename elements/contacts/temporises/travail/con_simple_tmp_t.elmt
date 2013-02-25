@@ -5,7 +5,7 @@
         <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
         <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
         <name lang="en">Simple contact (switch-on delay timer)</name>
-        <name lang="it">Contatto semplice (ritardato all'apertura)</name>
+        <name lang="it">Contatto NO (ritardato alla chiusura)</name>
         <name lang="fr">Contact simple (tempo travail)</name>
         <name lang="pl">Zestyk zwierny działający z opóźnieniem</name>
         <name lang="es">Contactor simple (tiempo retardado de encendido)</name>

@@ -5,6 +5,7 @@
         <name lang="fr">Transistor bipolaire pnp</name>
         <name lang="pl">Tranzystor biopolarny pnp</name>
         <name lang="cs">Dvoupólový tranzistor pnp</name>
+        <name lang="it">Transistor bipolare PNP</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -5,6 +5,7 @@
         <name lang="fr">Transformateur D Yn</name>
         <name lang="pl">Transformator Dyn</name>
         <name lang="cs">Transformátor D Yn</name>
+        <name lang="it">Trasformatore triangolo-stella + neutro</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

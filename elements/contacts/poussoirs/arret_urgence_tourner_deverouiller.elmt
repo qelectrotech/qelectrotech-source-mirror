@@ -5,6 +5,7 @@
         <name lang="fr">Arrêt d'urgence - Tourner déverrouiller</name>
         <name lang="pl">Łącznik przyciskowy (przycisk bezpieczeństwa)</name>
         <name lang="cs">Nouzové zastavení - obrácení uvolnění</name>
+        <name lang="it">Arresto d'emergenza con sblocco a rotazione</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

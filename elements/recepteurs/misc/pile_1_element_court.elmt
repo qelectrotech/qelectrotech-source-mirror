@@ -5,6 +5,7 @@
         <name lang="fr">Pile 1 élément (court)</name>
         <name lang="pl">Ogniwo elektrochemiczne</name>
         <name lang="cs">Akumulátor 1 prvek (krátký)</name>
+        <name lang="it">Batteria (un elemento corto)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

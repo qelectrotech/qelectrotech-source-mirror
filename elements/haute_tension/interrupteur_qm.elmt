@@ -5,6 +5,7 @@
         <name lang="pl">Rozłącznik z bezpiecznikiem QM</name>
         <name lang="cs">Přerušovač s pojistkou QM</name>
         <name lang="ar">مفتاح مصهر QM</name>
+        <name lang="it">Interruttore QM</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

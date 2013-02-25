@@ -5,6 +5,7 @@
         <name lang="pl">Brak klucza, wyjście niedozwolone</name>
         <name lang="cs">Klíči chybí zástrčka, výstup nedovolen</name>
         <name lang="ar">المفتاح مفقود غير مصرّح بالدخول</name>
+        <name lang="it">Chiave assente, manovra bloccata</name>
     </names>
     <informations></informations>
     <description>

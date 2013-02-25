@@ -6,6 +6,7 @@
         <name lang="pl">Przekaźnik czasowy</name>
         <name lang="es">Reloj-switch</name>
         <name lang="cs">Časový spínač</name>
+        <name lang="it">Contatto orologio NC/NO</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

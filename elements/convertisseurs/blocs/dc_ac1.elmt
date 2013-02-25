@@ -1,15 +1,15 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">عاكس أحادي الوجه</name>
-        <name lang="de">Gleichstrom > Wechselstrom</name>
-        <name lang="ru">Пост. ток > Однофазный перем. ток</name>
-        <name lang="pt">Contínua > Alterna monofásica</name>
-        <name lang="en">Direct > One-phase alternating</name>
-        <name lang="it">Continua > alternata monofase</name>
-        <name lang="fr">Continu > Alternatif monophasé</name>
+        <name lang="de">Gleichstrom &gt; Wechselstrom</name>
+        <name lang="ru">Пост. ток &gt; Однофазный перем. ток</name>
+        <name lang="pt">Contínua &gt; Alterna monofásica</name>
+        <name lang="en">Direct &gt; One-phase alternating</name>
+        <name lang="it">DC / AC monofase</name>
+        <name lang="fr">Continu &gt; Alternatif monophasé</name>
         <name lang="pl">Falownik</name>
-        <name lang="es">Continua > Alterna monofásica</name>
-        <name lang="cs">Stejnosměrný proud > střídavý proud</name>
+        <name lang="es">Continua &gt; Alterna monofásica</name>
+        <name lang="cs">Stejnosměrný proud &gt; střídavý proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

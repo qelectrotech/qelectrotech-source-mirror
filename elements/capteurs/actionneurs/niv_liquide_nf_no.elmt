@@ -4,6 +4,7 @@
         <name lang="fr">Actionné par le niveau d'un liquide NF/NO</name>
         <name lang="pl">Zestyk przełączny sterowany poziomem cieczy</name>
         <name lang="cs">Ovládáno hladinou kapaliny NC/NO</name>
+        <name lang="it">Azionato dal livello di un liquido NC/NO</name>
     </names>
     <informations></informations>
     <description>

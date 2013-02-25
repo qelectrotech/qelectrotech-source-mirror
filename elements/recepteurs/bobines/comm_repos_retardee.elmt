@@ -6,6 +6,7 @@ rest delayed</name>
 repos retardée</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy odwzbudzeniu</name>
         <name lang="cs">Relé uvedené v nečinnost se zpožděním</name>
+        <name lang="it">Relè ritardato all'apertura</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

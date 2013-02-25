@@ -6,6 +6,7 @@ work and quiescence delayed</name>
 travail et mise au repos retardées</name>
         <name lang="pl">Przekaźnik działający ze zwłoką przy odwzbudzeniu</name>
         <name lang="cs">Relé pracující při probuzení a uvedené v nečinnost se zpožděním</name>
+        <name lang="it">Relè ritardato all'apertura/chiusura</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

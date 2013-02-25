@@ -5,6 +5,7 @@
         <name lang="pl">Regulator przepływu dwudrogowy, ze zmiennym wyjściowym natężeniem przepływu</name>
         <name lang="cs">Dvoucestný ovladač průtoku, s proměnlivou výstupní průtokovou rychlostí</name>
         <name lang="ar">مُخفّض تدفّق ثنائي الإتجاه قابل للتعديل</name>
+        <name lang="it">Riduttore di flusso bidirezionale regolabile</name>
     </names>
     <informations></informations>
     <description>

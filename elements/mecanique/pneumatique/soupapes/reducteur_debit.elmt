@@ -5,6 +5,7 @@
         <name lang="pl">Regulator przepływu dwudrogowy z wyrównaniem temperatury, ze zmiennym wyjściowym natężeniem przepływu</name>
         <name lang="cs">Dvoucestný ovladač průtoku s vyrovnáním teploty, s proměnlivou výstupní průtokovou rychlostí</name>
         <name lang="ar">مُخفّض تدفق بمسارين و بتعويض حراري خرج التدفّق قابل للتعديل</name>
+        <name lang="it">Regolatore di flusso, con compensazione di temperatura e uscita variabile</name>
     </names>
     <informations></informations>
     <description>

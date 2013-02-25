@@ -5,6 +5,7 @@
 mécanique</name>
         <name lang="pl">Przekaźnik z blokadą mechaniczną</name>
         <name lang="cs">Relé s mechanickým zavíráním</name>
+        <name lang="it">Relè con interblocco meccanico</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

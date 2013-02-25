@@ -4,6 +4,7 @@
         <name lang="fr">Bamo_sonde_resistif_ste</name>
         <name lang="pl">Czujnik rezystancyjny Bamo STE</name>
         <name lang="cs">Rezistivní čidlo Bamo STE</name>
+        <name lang="it">Sonda resistiva BAMO STE</name>
     </names>
     <informations>Rafart Renaud</informations>
     <description>

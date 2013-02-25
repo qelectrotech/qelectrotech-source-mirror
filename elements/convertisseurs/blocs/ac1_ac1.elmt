@@ -1,15 +1,15 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">حاكم جهد أحادي الوجه</name>
-        <name lang="de">Wechselstrom > Wechselstrom</name>
-        <name lang="ru">Однофазный перем. ток > Однофазный перем. ток</name>
-        <name lang="pt">Alterna monofásica > Alterna monofásica</name>
-        <name lang="en">One-phase alternating > One-phase alternating</name>
-        <name lang="it">Alternata monofase > alternata monofase</name>
-        <name lang="fr">Alternatif monophasé > Alternatif monophasé</name>
+        <name lang="de">Wechselstrom &gt; Wechselstrom</name>
+        <name lang="ru">Однофазный перем. ток &gt; Однофазный перем. ток</name>
+        <name lang="pt">Alterna monofásica &gt; Alterna monofásica</name>
+        <name lang="en">One-phase alternating &gt; One-phase alternating</name>
+        <name lang="it">AC monofase &gt; AC monofase</name>
+        <name lang="fr">Alternatif monophasé &gt; Alternatif monophasé</name>
         <name lang="pl">Przekształtnik prądu przemiennego</name>
-        <name lang="es">Alterna monofásica > Alterna monofásica</name>
-        <name lang="cs">Střídavý proud > stejnosměrný proud</name>
+        <name lang="es">Alterna monofásica &gt; Alterna monofásica</name>
+        <name lang="cs">Střídavý proud &gt; stejnosměrný proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

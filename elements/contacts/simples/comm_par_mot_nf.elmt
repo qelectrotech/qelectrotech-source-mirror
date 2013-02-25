@@ -4,6 +4,7 @@
         <name lang="fr">Commande par moteur électrique NF</name>
         <name lang="pl">Zestyk rozwierny sterowany silnikiem</name>
         <name lang="cs">Kontakt NC řízený motorem</name>
+        <name lang="it">Contatto NC motorizzato</name>
     </names>
     <informations></informations>
     <description>

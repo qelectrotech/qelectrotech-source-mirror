@@ -4,6 +4,7 @@
         <name lang="fr">Arduino Uno</name>
         <name lang="pl">Arduino Uno</name>
         <name lang="cs">Arduino Uno</name>
+        <name lang="it">Arduino Uno</name>
     </names>
     <informations>ezza</informations>
     <description>
@@ -94,7 +95,7 @@
         <text x="128" y="123" size="7" text="~9"/>
         <text x="130" y="94" size="7" text="12"/>
         <text x="122" y="114" size="7" text="~10"/>
-        <text x="114" y="204" size="7" text="TX->1"/>
+        <text x="114" y="204" size="7" text="TX-&gt;1"/>
         <text x="114" y="214" size="7" text="RX&lt;-0"/>
         <text x="123" y="104" size="7" text="~11"/>
         <text x="136" y="133" size="7" text="8"/>

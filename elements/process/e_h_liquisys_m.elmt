@@ -1,9 +1,9 @@
 <definition width="510" version="0.3" hotspot_x="15" hotspot_y="35" height="130" type="element" ic="true" orientation="dyyy">
     <names>
-        <name lang="ar">Endress &amp; HAUSER Liquisys M</name>
-        <name lang="en">Endress &amp; Hauser Liquisys M</name>
-        <name lang="it">Endress &amp; Hauser Liquisys M</name>
-        <name lang="fr">Endress &amp; HAUSER Liquisys M</name>
+        <name lang="ar">Endress+Hauser Liquisys M</name>
+        <name lang="en">Endress+Hauser Liquisys M</name>
+        <name lang="it">Endress+Hauser Liquisys M</name>
+        <name lang="fr">Endress+Hauser Liquisys M</name>
         <name lang="pl">Endress+Hauser - Przetwornik pomiarowy mętności Liquisys M</name>
         <name lang="cs">Endress+Hauser Liquisys M</name>
     </names>

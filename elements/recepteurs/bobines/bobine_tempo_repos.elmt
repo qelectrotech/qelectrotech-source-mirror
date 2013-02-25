@@ -10,6 +10,7 @@ Rückfallverzögerung&#xd;
         <name lang="pl">Cewka przekaźnika działająca z opóźnieniem przy odwzbudzeniu</name>
         <name lang="es">Bobina</name>
         <name lang="cs">Cívka relé - klid</name>
+        <name lang="it">Bobina di relè temporizzato</name>
     </names>
     <informations></informations>
     <description>

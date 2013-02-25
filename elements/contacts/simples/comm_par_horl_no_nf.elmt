@@ -4,6 +4,7 @@
         <name lang="fr">Commande par horloge électrique NO/NF</name>
         <name lang="pl">Zestyk przełączny sterowany zegarem</name>
         <name lang="cs">Kontakt NC/NO řízený elektrickými hodinami</name>
+        <name lang="it">Contatto NC/NO comandato da orologio</name>
     </names>
     <informations></informations>
     <description>

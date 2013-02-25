@@ -5,7 +5,7 @@
         <name lang="ru">Контакт с задержкой при возврате (НЗ)</name>
         <name lang="pt">Contacto simples (NC / tempo de desligado retardado)</name>
         <name lang="en">Simple contact (NC / switch-off delay timer)</name>
-        <name lang="it">Contatto semplice (NC ritardato alla chiusura)</name>
+        <name lang="it">Contatto NC ritardato alla richiusura</name>
         <name lang="fr">Contact simple (NF / tempo repos)</name>
         <name lang="pl">Zestyk rozwierny działający z opóźnieniem</name>
         <name lang="es">Contactor simple (NC / tiempo retardado de apago)</name>

@@ -6,6 +6,7 @@
         <name lang="fr">Diode à avalanche bidirectionnelle</name>
         <name lang="pl">Dioda lawinowa dwukierunkowa</name>
         <name lang="cs">Lavinová dvojsměrná dioda</name>
+        <name lang="it">Diodo a valanga bidirezionale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

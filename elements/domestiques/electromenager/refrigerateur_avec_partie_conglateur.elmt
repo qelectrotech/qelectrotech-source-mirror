@@ -5,6 +5,7 @@
         <name lang="fr">Réfrigérateur avec partie congélateur</name>
         <name lang="pl">Chłodziarka z zamrażarką</name>
         <name lang="cs">Lednička s mrazákem</name>
+        <name lang="it">Frigorifero / congelatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

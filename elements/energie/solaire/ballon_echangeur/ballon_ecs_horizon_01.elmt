@@ -5,6 +5,7 @@
         <name lang="fr">Ballon ECS horizontal</name>
         <name lang="pl">Zasobnik poziomy CWU</name>
         <name lang="cs">Vodorovný zásobnik ECS</name>
+        <name lang="it">Scambiatore orizzontale ACS</name>
     </names>
     <informations></informations>
     <description>

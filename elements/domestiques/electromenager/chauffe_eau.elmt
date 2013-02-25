@@ -5,6 +5,7 @@
         <name lang="fr">Chauffe-eau</name>
         <name lang="pl">Grzejnik wody</name>
         <name lang="cs">Ohřívač vody</name>
+        <name lang="it">Scalda acqua</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -4,6 +4,7 @@
         <name lang="fr">Commande par horloge électrique NF</name>
         <name lang="pl">Zestyk rozwierny sterowany zegarem</name>
         <name lang="cs">Kontakt NC řízený elektrickými hodinami</name>
+        <name lang="it">Contatto NC comandato da orologio</name>
     </names>
     <informations></informations>
     <description>

@@ -5,6 +5,7 @@
         <name lang="fr">Boutons tournant à manette</name>
         <name lang="pl">Pozycja pokrętła łącznika</name>
         <name lang="cs">Poloha otočného knoflíku spínače</name>
+        <name lang="it">Comando, selettore</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

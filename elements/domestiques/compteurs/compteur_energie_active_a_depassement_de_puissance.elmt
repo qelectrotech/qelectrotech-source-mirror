@@ -5,15 +5,14 @@
 </name>
         <name lang="en"> Excess watt-hour meter&#xd;
 </name>
-        <name lang="it">Contatore di energia attiva a supe- ro di potenza&#xd;
-</name>
+        <name lang="it">Contatore di energia attiva a supero di potenza</name>
         <name lang="fr">Compteur à énergie active à dépassement de puissance</name>
         <name lang="pl">Licznik watogodzin szczytowy</name>
         <name lang="cs">Počítadlo překročení spotřeby watthodin</name>
     </names>
     <informations></informations>
     <description>
-        <text x="-10" y="7" size="9" text="P >"/>
+        <text x="-10" y="7" size="9" text="P &gt;"/>
         <text x="-10" y="-3" size="9" text="Wh"/>
         <rect width="30" x="-15" y="-12" antialias="false" height="22" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
         <rect width="30" x="-15" y="-20" antialias="false" height="8" style="line-style:normal;line-weight:normal;filling:none;color:black"/>

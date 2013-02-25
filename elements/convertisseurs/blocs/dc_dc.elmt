@@ -2,14 +2,14 @@
     <names>
         <name lang="ar">مقطع : محول مستمر/ مستمر</name>
         <name lang="de">Direkt (DC/DC)</name>
-        <name lang="ru">Пост. ток > Пост. ток</name>
-        <name lang="pt">Contínua > Contínua</name>
-        <name lang="en">Direct > Direct</name>
-        <name lang="it">Continua > continua</name>
-        <name lang="fr">Continu > Continu</name>
+        <name lang="ru">Пост. ток &gt; Пост. ток</name>
+        <name lang="pt">Contínua &gt; Contínua</name>
+        <name lang="en">Direct &gt; Direct</name>
+        <name lang="it">DC &gt; DC</name>
+        <name lang="fr">Continu &gt; Continu</name>
         <name lang="pl">Przekształtnik prądu stałego</name>
-        <name lang="es">Continua > Continua</name>
-        <name lang="cs">Stejnosměrný proud > stejnosměrný proud</name>
+        <name lang="es">Continua &gt; Continua</name>
+        <name lang="cs">Stejnosměrný proud &gt; stejnosměrný proud</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
