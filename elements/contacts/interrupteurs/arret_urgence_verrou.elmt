@@ -4,7 +4,7 @@
         <name lang="en">Emergency stop (POJISTKA)</name>
         <name lang="fr">Arrêt d'urgence (VERROU)</name>
         <name lang="pl">Łącznik przyciskowy, odblokowywany kluczykiem (przycisk bezpieczeństwa)</name>
-        <name lang="es">Parada de emergencia</name>
+        <name lang="es">Paro de emergencia</name>
         <name lang="cs">Nouzové zastavení (LATCH)</name>
         <name lang="it">Arresto d'emergenza</name>
     </names>
