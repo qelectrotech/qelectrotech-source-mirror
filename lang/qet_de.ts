@@ -215,29 +215,6 @@
     </message>
 </context>
 <context>
-    <name>CircleEditor</name>
-    <message>
-        <source>Centre : </source>
-        <translation>Zentrum :</translation>
-    </message>
-    <message>
-        <source>Diamètre : </source>
-        <translation>Durchmesser :</translation>
-    </message>
-    <message>
-        <source>abscisse</source>
-        <translation>Abszisse</translation>
-    </message>
-    <message>
-        <source>ordonnée</source>
-        <translation>Ordinate</translation>
-    </message>
-    <message>
-        <source>diamètre</source>
-        <translation>Durchmesser</translation>
-    </message>
-</context>
-<context>
     <name>CloseDiagramsDialog</name>
     <message>
         <source>Fermer un projet</source>
@@ -348,10 +325,6 @@
         <translation>Farbe :</translation>
     </message>
     <message>
-        <source>Trait en pointillés</source>
-        <translation>Punktlinie</translation>
-    </message>
-    <message>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
         <translation type="unfinished"></translation>
@@ -359,6 +332,26 @@
     <message>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Style :</source>
+        <comment>conductor line style</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trait plein</source>
+        <comment>conductor style: solid line</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Trait en pointillés</source>
+        <comment>conductor style: dashed line</comment>
+        <translation type="unfinished">Punktlinie</translation>
+    </message>
+    <message>
+        <source>Traits et points</source>
+        <comment>conductor style: dashed and dotted line</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -720,10 +713,6 @@
     <message>
         <source>arc</source>
         <translation>Bogen</translation>
-    </message>
-    <message>
-        <source>cercle</source>
-        <translation>Kreis</translation>
     </message>
     <message>
         <source>borne</source>
@@ -2904,6 +2893,24 @@ Options disponibles :
         <comment>message box title</comment>
         <translation type="unfinished">Öffnen des Projekts in read-only</translation>
     </message>
+    <message>
+        <source>Retrouver dans le panel</source>
+        <translation type="unfinished">Finden im Panel</translation>
+    </message>
+    <message>
+        <source>Éditer l&apos;élément</source>
+        <translation type="unfinished">Element bearbeiten</translation>
+    </message>
+    <message>
+        <source>Retrouve l&apos;élément sélectionné dans le panel</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
+        <comment>status bar tip</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
@@ -3047,10 +3054,6 @@ Options disponibles :
     <message>
         <source>Ajouter une ellipse</source>
         <translation>Ellipse hinzufügen</translation>
-    </message>
-    <message>
-        <source>Ajouter un cercle</source>
-        <translation>Kreis hinzufügen</translation>
     </message>
     <message>
         <source>Ajouter un polygone</source>
@@ -4111,11 +4114,6 @@ Que désirez vous faire ?</source>
         <source>arc</source>
         <comment>element part name</comment>
         <translation>Bogen</translation>
-    </message>
-    <message>
-        <source>cercle</source>
-        <comment>element part name</comment>
-        <translation>Kreis</translation>
     </message>
     <message>
         <source>ellipse</source>
