@@ -5,5 +5,6 @@
         <name lang="en">ECS hot water</name>
         <name lang="cs">ECS teplá užitková voda</name>
         <name lang="pl">CWU ciepła woda użytkowa</name>
+        <name lang="it">ACS acqua calda sanitaria</name>
     </names>
 </qet-directory>

@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Séparateurs</name>
-        <name lang="ar" >فواصل</name>
-        <name lang="en" >Separators</name>
-        <name lang="pl" >Separatory</name>
+        <name lang="fr">Séparateurs</name>
+        <name lang="ar">فواصل</name>
+        <name lang="en">Separators</name>
+        <name lang="pl">Separatory</name>
         <name lang="cs">Odlučovače</name>
+        <name lang="it">Separatori</name>
     </names>
 </qet-directory>

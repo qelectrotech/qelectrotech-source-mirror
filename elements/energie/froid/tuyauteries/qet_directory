@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Tuyauteries</name>
-        <name lang="ar" >أنابيب</name>
-        <name lang="en" >pipes</name>
-        <name lang="pl" >Rury</name>
+        <name lang="fr">Tuyauteries</name>
+        <name lang="ar">أنابيب</name>
+        <name lang="en">pipes</name>
+        <name lang="pl">Rury</name>
         <name lang="cs">Potrubí</name>
+        <name lang="it">Tubi</name>
     </names>
 </qet-directory>

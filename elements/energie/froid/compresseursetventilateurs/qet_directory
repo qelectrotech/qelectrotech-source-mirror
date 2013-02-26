@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Compresseurs, ventilateurs</name>
-        <name lang="ar" >ضاغطات , مراوح</name>
-        <name lang="en" >Compressors, fans</name>
-        <name lang="pl" >Kompresory i wentylatory</name>
+        <name lang="fr">Compresseurs, ventilateurs</name>
+        <name lang="ar">ضاغطات , مراوح</name>
+        <name lang="en">Compressors, fans</name>
+        <name lang="pl">Kompresory i wentylatory</name>
         <name lang="cs">Kompresory a ventilátory</name>
+        <name lang="it">Compressori, ventilatori</name>
     </names>
 </qet-directory>

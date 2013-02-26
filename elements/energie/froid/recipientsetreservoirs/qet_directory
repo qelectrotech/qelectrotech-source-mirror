@@ -1,9 +1,10 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Baches, reservoirs</name>
-        <name lang="en" >Tanks</name>
-        <name lang="ar" >خزّانات</name>
-        <name lang="pl" >Zbiorniki</name>
+        <name lang="fr">Baches, reservoirs</name>
+        <name lang="en">Tanks</name>
+        <name lang="ar">خزّانات</name>
+        <name lang="pl">Zbiorniki</name>
         <name lang="cs">Vodní nádrže</name>
+        <name lang="it">Serbatoi</name>
     </names>
 </qet-directory>

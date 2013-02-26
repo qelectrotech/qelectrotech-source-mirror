@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Baches hydrauliques</name>
-        <name lang="en" >Tanks hydraulic</name>
-        <name lang="pl" >Zbiorniki hydrauliczne</name>
+        <name lang="fr">Baches hydrauliques</name>
+        <name lang="en">Tanks hydraulic</name>
+        <name lang="pl">Zbiorniki hydrauliczne</name>
         <name lang="cs">Vodní nádrže</name>
+        <name lang="it">Serbatoi</name>
     </names>
 </qet-directory>

@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >distributeurs pneumatique</name>
-        <name lang="en" >Pneumatic valves</name>
-        <name lang="pl" >Zawory sterowane pneumatycznie</name>
+        <name lang="fr">distributeurs pneumatique</name>
+        <name lang="en">Pneumatic valves</name>
+        <name lang="pl">Zawory sterowane pneumatycznie</name>
         <name lang="cs">Vzduchové ventily</name>
+        <name lang="it">Valvole comando pneumatico</name>
     </names>
 </qet-directory>

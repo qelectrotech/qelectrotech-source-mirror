@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >4 voies relies</name>
-        <name lang="en" >4 ports connected</name>
+        <name lang="fr">4 voies relies</name>
+        <name lang="en">4 ports connected</name>
         <name lang="cs">4 cesty spojené</name>
         <name lang="pl">Czterodrogowe z przyłączami</name>
+        <name lang="it">2 vie con connessioni</name>
     </names>
 </qet-directory>

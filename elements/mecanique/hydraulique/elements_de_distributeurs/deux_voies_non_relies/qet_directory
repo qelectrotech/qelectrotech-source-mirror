@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >2 voies non relies</name>
-        <name lang="en" >2 ports no connected</name>
+        <name lang="fr">2 voies non relies</name>
+        <name lang="en">2 ports no connected</name>
         <name lang="cs">2 cesty nespojené</name>
         <name lang="pl">Dwudrogowe bez przyłączy</name>
+        <name lang="it">2 vie senza connessioni</name>
     </names>
 </qet-directory>

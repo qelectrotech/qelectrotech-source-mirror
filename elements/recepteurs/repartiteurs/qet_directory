@@ -4,6 +4,7 @@
         <name lang="fr">Technologie de connexion</name>
         <name lang="ar">تقنية التوصيل</name>
         <name lang="pl">Technika łączeniowa</name>
-        <name lang="cs">Spojovací technika</name>  
-        </names>
+        <name lang="cs">Spojovací technika</name>
+        <name lang="it">Ripartitori</name>
+    </names>
 </qet-directory>

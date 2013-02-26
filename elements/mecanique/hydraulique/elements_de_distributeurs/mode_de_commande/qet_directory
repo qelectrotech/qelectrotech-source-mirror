@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Mode de commande</name>
-        <name lang="en" >Control methods</name>
+        <name lang="fr">Mode de commande</name>
+        <name lang="en">Control methods</name>
         <name lang="cs">Způsob řízení</name>
         <name lang="pl">Sterowanie</name>
+        <name lang="it">Tipo di comando</name>
     </names>
 </qet-directory>

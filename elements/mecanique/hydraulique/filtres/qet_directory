@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Filtres</name>
-        <name lang="en" >Filters</name>
-        <name lang="pl" >Filtry</name>
+        <name lang="fr">Filtres</name>
+        <name lang="en">Filters</name>
+        <name lang="pl">Filtry</name>
         <name lang="cs">Filtry</name>
+        <name lang="it">Filtri</name>
     </names>
 </qet-directory>

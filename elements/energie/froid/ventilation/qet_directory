@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Ventilation</name>
-        <name lang="en" >Airing</name>
-        <name lang="pl" >Wentylacja</name>
-        <name lang="cs" >Větrání</name>
+        <name lang="fr">Ventilation</name>
+        <name lang="en">Airing</name>
+        <name lang="pl">Wentylacja</name>
+        <name lang="cs">Větrání</name>
+        <name lang="it">Ventilazione</name>
     </names>
 </qet-directory>

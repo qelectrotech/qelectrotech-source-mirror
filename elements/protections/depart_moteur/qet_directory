@@ -6,5 +6,6 @@
         <name lang="es">Start motor</name>
         <name lang="pl">Rozruch silnika</name>
         <name lang="cs">Spuštění motoru</name>
-        </names>
+        <name lang="it">Partenza motori</name>
+    </names>
 </qet-directory>

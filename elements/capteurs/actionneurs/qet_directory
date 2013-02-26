@@ -7,5 +7,6 @@
         <name lang="pl">Elementy wykonawcze</name>
         <name lang="cs">Ovladače</name>
         <name lang="es">Actuadores</name>
+        <name lang="it">Azionatori</name>
     </names>
 </qet-directory>

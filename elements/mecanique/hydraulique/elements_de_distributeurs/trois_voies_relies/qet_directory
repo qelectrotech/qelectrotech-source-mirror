@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >3 voies relies</name>
-        <name lang="en" >3 ports connected</name>
+        <name lang="fr">3 voies relies</name>
+        <name lang="en">3 ports connected</name>
         <name lang="cs">3 cesty spojené</name>
         <name lang="pl">Trójdrogowy z przyłączami</name>
+        <name lang="it">2 vie con connessioni</name>
     </names>
 </qet-directory>
