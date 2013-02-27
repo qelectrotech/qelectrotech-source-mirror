@@ -388,25 +388,25 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Rodzaj :</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ciągła</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Linia przerywana</translation>
+        <translation>Kreskowa</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kreskowo-kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
@@ -3239,12 +3239,12 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Znajdź w panelu</translation>
+        <translation>Znajdź w panelu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Edycja elementu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3376,13 +3376,13 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukuje zaznaczony element w panelu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wyszukuje zaznaczony element w panelu do edycji</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
@@ -5457,19 +5457,19 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="38"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Normalna</translation>
+        <translation>Ciągła</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
-        <translation>Kreskowana</translation>
+        <translation>Kreskowa</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
-        <translation>Kropkowana</translation>
+        <translation>Kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
