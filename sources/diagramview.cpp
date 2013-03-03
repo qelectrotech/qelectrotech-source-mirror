@@ -488,7 +488,7 @@ QString DiagramView::title() const {
 	if (diagram_title.isEmpty()) {
 		view_title = tr("Sch\351ma sans titre");
 	} else {
-		view_title = QString(tr("Sch\351ma %1", "%1 is a diagram title")).arg(diagram_title);
+		view_title = QString("%1").arg(diagram_title);
 	}
 	return(view_title);
 }
