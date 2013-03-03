@@ -5,6 +5,7 @@
         <name lang="fr">Disjoncteur différentiel magnéto-thermique</name>
         <name lang="pl">Wyłącznik różnicowoprądowy z członem nadprądowym</name>
         <name lang="cs">Rozdílový magnetotepelný jistič</name>
+        <name lang="it">Interr. magneto-termico differenziale</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

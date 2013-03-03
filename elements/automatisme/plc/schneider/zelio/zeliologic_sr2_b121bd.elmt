@@ -7,6 +7,7 @@
         <name lang="cs">Zelio Logic SR2 B121BD</name>
         <name lang="pt">Zelio Logic SR2 B121BD</name>
         <name lang="es">Zelio Logic SR2 B121BD</name>
+        <name lang="it">Zelio Logic SR2 B121BD</name>
     </names>
     <informations></informations>
     <description>
@@ -15,7 +16,7 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50" x1="125" y2="100" x2="125"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-50" x1="-125" y2="-50" x2="125"/>
         <text x="-20" y="15" size="8" text="SR2 B121BD"/>
-        <text x="-20" y="0" size="8" text="Z&#xE9;lio Logic"/>
+        <text x="-20" y="0" size="8" text="Zélio Logic"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-110" y2="-10" x2="-110"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="-30" y2="50" x2="-110"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-30" y2="50" x2="-30"/>

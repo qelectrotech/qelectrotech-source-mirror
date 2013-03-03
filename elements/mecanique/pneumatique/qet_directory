@@ -1,8 +1,9 @@
 <qet-directory>
     <names>
-        <name lang="fr" >Pneumatique</name>
-        <name lang="en" >Pneumatic</name>
-        <name lang="pl" >Pneumatyka</name>
+        <name lang="fr">Pneumatique</name>
+        <name lang="en">Pneumatic</name>
+        <name lang="pl">Pneumatyka</name>
         <name lang="cs">Plněné vzduchem</name>
+        <name lang="it">Pneumatica</name>
     </names>
 </qet-directory>

@@ -5,6 +5,7 @@
         <name lang="fr">Transformateur triangle étoile</name>
         <name lang="pl">Transformator Dy</name>
         <name lang="cs">Transformátor Dy</name>
+        <name lang="it">Transformatore Triangolo-stella</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
