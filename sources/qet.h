@@ -161,6 +161,8 @@ namespace QET {
 	QString diagramAreaToString(const QET::DiagramArea &);
 	QET::DiagramArea diagramAreaFromString(const QString &);
 	QString pointerString(void *);
+	qreal round(qreal, qreal);
+	QPointF roundPoint(const QPointF &, qreal);
 	qreal correctAngle(const qreal &);
 	bool compareCanonicalFilePaths(const QString &, const QString &);
 	QString titleBlockColumnLengthToString(const TitleBlockColumnLength  &);

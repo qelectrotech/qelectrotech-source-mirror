@@ -498,6 +498,21 @@ QString QET::pointerString(void *ptr) {
 }
 
 /**
+	Round \a x to the nearest multiple of the invert of \a epsilon.
+	For instance, epsilon = 10 will round to 1/10 = 0.1
+*/
+qreal QET::round(qreal x, qreal epsilon) {
+	return(int(x * epsilon) / epsilon);
+}
+
+/**
+	Round the coordinates of \a p to the nearest multiple of \a epsilon.
+*/
+QPointF QET::roundPoint(const QPointF &p, qreal epsilon) {
+	return(QPointF(QET::round(p.x(), epsilon), QET::round(p.y(), epsilon)));
+}
+
+/**
 	@param angle Un angle quelconque
 	@return l'angle passe en parametre, mais ramene entre -360.0 + 360.0 degres
 */
