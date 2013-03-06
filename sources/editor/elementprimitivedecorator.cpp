@@ -245,15 +245,30 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event) 
 	QPointF scene_pos = event -> scenePos();
 	QPointF movement = scene_pos - latest_pos_;
 	
-	// snap the movement to a non-visible grid when scaling selection
-	if (mustSnapToGrid(event)) {
-		// We now want some point belonging to the selection to be snapped to this rounded position
-		if (current_operation_square_ > QET::NoOperation) {
+	if (current_operation_square_ > QET::NoOperation) {
+		// This is a scaling operation.
+		
+		// For convenience purposes, we may need to adjust mouse movements.
+		QET::ScalingMethod scaling_method = scalingMethod(event);
+		if (scaling_method > QET::FreeScaling) {
 			// real, non-rounded movement from the mouse press event
 			QPointF global_movement = scene_pos - first_pos_;
 			
-			// real, rounded movement from the mouse press event
-			QPointF rounded_global_movement = snapConstPointToGrid(global_movement);
+			QPointF rounded_global_movement;
+			if (scaling_method == QET::SnapScalingPointToGrid) {
+				// real, rounded movement from the mouse press event
+				rounded_global_movement = snapConstPointToGrid(global_movement);
+			}
+			else {
+				QRectF new_bounding_rect = original_bounding_rect_;
+				applyMovementToRect(current_operation_square_, global_movement, new_bounding_rect);
+				
+				const qreal scale_epsilon = 20.0; // rounds to 0.05
+				QPointF delta = deltaForRoundScaling(original_bounding_rect_, new_bounding_rect, scale_epsilon);
+				
+				// real, rounded movement from the mouse press event
+				rounded_global_movement = global_movement + delta;
+			}
 			
 			// rounded position of the current mouse move event
 			QPointF rounded_scene_pos = first_pos_ + rounded_global_movement;
@@ -262,18 +277,22 @@ void ElementPrimitiveDecorator::mouseMoveEvent(QGraphicsSceneMouseEvent *event) 
 			QPointF current_position = mapToScene(rects.at(current_operation_square_).center());
 			// determine the final, effective movement
 			movement = rounded_scene_pos - current_position;
-		} else if (current_operation_square_ == QET::MoveArea) {
-			// when moving the selection, consider the position of the first selected item
-			QPointF current_position = scene_pos - mouse_offset_;
-			QPointF rounded_current_position = snapConstPointToGrid(current_position);
-			movement = rounded_current_position - decorated_items_.at(0) -> toItem() -> scenePos();
-		} else {
-			if (CustomElementPart *single_item = singleItem()) {
-				bool event_accepted = single_item -> singleItemMoveEvent(this, event);
-				if (event_accepted) {
-					event -> ignore();
-					return;
-				}
+		}
+	}
+	else if (current_operation_square_ == QET::MoveArea) {
+		// When moving the selection, consider the position of the first selected item
+		QPointF current_position = scene_pos - mouse_offset_;
+		QPointF rounded_current_position = snapConstPointToGrid(current_position);
+		movement = rounded_current_position - decorated_items_.at(0) -> toItem() -> scenePos();
+	}
+	else {
+		// Neither a movement nor a scaling operation -- perhaps the underlying item
+		// is interested in the mouse event for custom operations?
+		if (CustomElementPart *single_item = singleItem()) {
+			bool event_accepted = single_item -> singleItemMoveEvent(this, event);
+			if (event_accepted) {
+				event -> ignore();
+				return;
 			}
 		}
 	}
@@ -628,6 +647,30 @@ int ElementPrimitiveDecorator::resizingSquareAtPos(const QPointF &position) {
 }
 
 /**
+	Receive two rects, assuming they share a common corner and current is a \a
+	scaled version of \a original.
+	Calculate the scale ratios implied by this assumption, round them to the
+	nearest multiple of \a epsilon, then return the horizontal and vertical
+	offsets to be applied in order to pass from \a current to \a original scaled
+	by the rounded factors.
+	This method can be used to adjust a mouse movement so that it inputs a
+	round scaling operation.
+*/
+QPointF ElementPrimitiveDecorator::deltaForRoundScaling(const QRectF &original, const QRectF &current, qreal epsilon) {
+	qreal sx = current.width()  / original.width();
+	qreal sy = current.height() / original.height();
+	
+	qreal sx_rounded = QET::round(sx, epsilon);
+	qreal sy_rounded = QET::round(sy, epsilon);
+	
+	QPointF delta(
+		original.width()  * (sx_rounded - sx),
+		original.height() * (sy_rounded - sy)
+	);
+	return(delta);
+}
+
+/**
 	Round the coordinates of \a point so it is snapped to the grid defined by the
 	grid_step_x_ and grid_step_y_ attributes.
 */
@@ -655,4 +698,20 @@ void ElementPrimitiveDecorator::snapPointToGrid(QPointF &point) const {
 */
 bool ElementPrimitiveDecorator::mustSnapToGrid(QGraphicsSceneMouseEvent *event) {
 	return(!(event -> modifiers() & Qt::ControlModifier));
+}
+
+/**
+	@param event Mouse event during the scale operations -- simply passed to mustSnapToGrid()
+	@return the scaling method to be used for the currently decorated items.
+	@see QET::ScalingMethod
+	@see mustSnapToGrid()
+*/
+QET::ScalingMethod ElementPrimitiveDecorator::scalingMethod(QGraphicsSceneMouseEvent *event) {
+	if (event && !mustSnapToGrid(event)) {
+		return(QET::FreeScaling);
+	}
+	if (CustomElementPart *single_item = singleItem()) {
+		return single_item -> preferredScalingMethod();
+	}
+	return QET::RoundScaleRatios;
 }

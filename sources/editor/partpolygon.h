@@ -59,6 +59,7 @@ class PartPolygon : public QGraphicsPolygonItem, public CustomElementGraphicPart
 	virtual QRectF sceneGeometricRect() const;
 	virtual void startUserTransformation(const QRectF &);
 	virtual void handleUserTransformation(const QRectF &, const QRectF &);
+	virtual QET::ScalingMethod preferredScalingMethod() const;
 	
 	protected:
 	QVariant itemChange(GraphicsItemChange, const QVariant &);

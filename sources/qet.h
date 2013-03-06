@@ -59,6 +59,13 @@ namespace QET {
 		ResizeFromBottomRightCorner = 7
 	};
 	
+	/// Supported types of interactive scaling, typically for a single element primitive
+	enum ScalingMethod {
+		FreeScaling,              ///< do not interfer with the default scaling process
+		SnapScalingPointToGrid,   ///< snap the point used to define the new bounding rectangle to the grid
+		RoundScaleRatios          ///< adjust the scaling movement so that the induced scaling ratios are rounded
+	};
+	
 	/// Known kinds of conductor segments
 	enum ConductorSegmentType {
 		Horizontal = 1, ///< Horizontal segment 

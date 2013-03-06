@@ -60,6 +60,17 @@ void CustomElementPart::setDecorator(ElementPrimitiveDecorator *decorator) {
 }
 
 /**
+	This method is called by the decorator when it needs to determine the best
+	way to interactively scale a primitive. It is typically called when only a
+	single primitive is being scaled.
+	The default implementation systematically returns
+	QET::SnapScalingPointToGrid
+*/
+QET::ScalingMethod CustomElementPart::preferredScalingMethod() const {
+	return(QET::SnapScalingPointToGrid);
+}
+
+/**
 	This method is called by the decorator when it manages only a single
 	primitive and it received a mouse press event.
 	The implementation should return true if the primitive accepts the event, false otherwise.

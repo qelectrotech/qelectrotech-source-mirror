@@ -191,6 +191,17 @@ void PartPolygon::handleUserTransformation(const QRectF &initial_selection_rect,
 }
 
 /**
+	@reimp CustomElementPart::preferredScalingMethod
+	This method is called by the decorator when it needs to determine the best
+	way to interactively scale a primitive. It is typically called when only a
+	single primitive is being scaled.
+	This reimplementation systematically returns QET::RoundScaleRatios.
+*/
+QET::ScalingMethod PartPolygon::preferredScalingMethod() const {
+	return(QET::RoundScaleRatios);
+}
+
+/**
 	@return le rectangle delimitant cette partie.
 */
 QRectF PartPolygon::boundingRect() const {

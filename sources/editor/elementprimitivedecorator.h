@@ -1,6 +1,7 @@
 #ifndef ELEMENTPRIMITIVEDECORATOR_H
 #define ELEMENTPRIMITIVEDECORATOR_H
 #include <QGraphicsObject>
+#include "qet.h"
 class ElementEditionCommand;
 class ElementScene;
 class CustomElementPart;
@@ -49,9 +50,11 @@ class ElementPrimitiveDecorator : public QGraphicsObject {
 	void mouseReleaseEvent(QGraphicsSceneMouseEvent *);
 	void keyPressEvent(QKeyEvent *);
 	void keyReleaseEvent(QKeyEvent *);
+	QPointF deltaForRoundScaling(const QRectF &, const QRectF &, qreal);
 	QPointF snapConstPointToGrid(const QPointF &) const;
 	void snapPointToGrid(QPointF &) const;
 	bool mustSnapToGrid(QGraphicsSceneMouseEvent *);
+	QET::ScalingMethod scalingMethod(QGraphicsSceneMouseEvent *);
 	
 	private:
 	void init();

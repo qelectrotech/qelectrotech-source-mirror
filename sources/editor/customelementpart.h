@@ -20,6 +20,7 @@
 #include <QtGui>
 #include <QtXml>
 #include <QImage>
+#include "qet.h"
 class CustomElement;
 class ElementPrimitiveDecorator;
 class ElementScene;
@@ -101,6 +102,7 @@ class CustomElementPart {
 	virtual QGraphicsItem *toItem();
 	
 	virtual void setDecorator(ElementPrimitiveDecorator *);
+	virtual QET::ScalingMethod preferredScalingMethod() const;
 	virtual bool singleItemPressEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemMoveEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
 	virtual bool singleItemReleaseEvent(ElementPrimitiveDecorator *, QGraphicsSceneMouseEvent *);
