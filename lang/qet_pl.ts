@@ -5429,7 +5429,7 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Style : </source>
-        <translation>Styl : </translation>
+        <translation>Rodzaj : </translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="81"/>
