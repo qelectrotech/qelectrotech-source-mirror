@@ -140,7 +140,7 @@ Iconos</translation>
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Compilación:</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
@@ -395,25 +395,25 @@ Iconos</translation>
         <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Estilo:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Línea continua</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Línea de puntos</translation>
+        <translation>Línea en puntos</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Líneas y puntos</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
@@ -1389,12 +1389,13 @@ Los cambios no podrían ser revertidos.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir la carpeta correspondiente</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Copiar la ruta</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
@@ -3018,12 +3019,12 @@ Opciones disponibles:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Econtrar en el panel</translation>
+        <translation>Econtrar en el panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Editar el elemento</translation>
+        <translation>Editar el elemento</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="226"/>
@@ -3139,13 +3140,13 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Encontrar el elemento seleccionado en el panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Encontrar el elemento seleccionado en el panel antes de editarlo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="307"/>
@@ -3539,18 +3540,18 @@ Opciones disponibles:
         <location filename="../sources/qetdiagrameditor.cpp" line="766"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Imposible de abrir el archivo</translation>
+        <translation>Imposible de abrir el archivo</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Parece que el archivo %1 que usted está intentando abrir no existe.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Abriendo el proyecto en sólo lectura</translation>
+        <translation>Abriendo el proyecto en sólo lectura</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1357"/>
@@ -4048,12 +4049,12 @@ Opciones disponibles:
         <location filename="../sources/editor/qetelementeditor.cpp" line="930"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Imposible de abrir el archivo</translation>
+        <translation>Imposible de abrir el archivo</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="932"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Parece que el archivo %1 que usted está intentando abrir no existe.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
@@ -5040,13 +5041,14 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Cambio de tamaño %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="785"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Cambiar al tamaño original</translatorcomment>
+        <translation>Cambiar el tamaño %1 primitivo</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="50"/>
