@@ -156,6 +156,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Trem",                "trem@mandriva.org",           tr("Paquets Mandriva"));
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
+	addAuthor(contributors, "Cyril Frausti",       "cyril.frausti@gmail.com",     tr("D\351veloppeur"));
 	
 	contributors -> setOpenExternalLinks(true);
 	contributors -> setTextFormat(Qt::RichText);
