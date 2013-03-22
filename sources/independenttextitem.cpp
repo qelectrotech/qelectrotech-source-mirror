@@ -51,7 +51,7 @@ IndependentTextItem::~IndependentTextItem() {
 */
 void IndependentTextItem::fromXml(const QDomElement &e) {
 	setPos(e.attribute("x").toDouble(), e.attribute("y").toDouble());
-	setPlainText(e.attribute("text"));
+	setHtml(e.attribute("text"));
 	setRotationAngle(e.attribute("rotation").toDouble());
 }
 
@@ -63,7 +63,7 @@ QDomElement IndependentTextItem::toXml(QDomDocument &document) const {
 	QDomElement result = document.createElement("input");
 	result.setAttribute("x", QString("%1").arg(pos().x()));
 	result.setAttribute("y", QString("%1").arg(pos().y()));
-	result.setAttribute("text", toPlainText());
+	result.setAttribute("text", toHtml());
 	if (rotationAngle()) {
 		result.setAttribute("rotation", QString("%1").arg(rotationAngle()));
 	}

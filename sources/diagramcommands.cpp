@@ -557,7 +557,7 @@ ChangeDiagramTextCommand::~ChangeDiagramTextCommand() {
 
 /// annule la modification de texte
 void ChangeDiagramTextCommand::undo() {
-	text_item -> setPlainText(text_before);
+	text_item -> setHtml(text_before);
 }
 
 /// refait la modification de texte
@@ -565,7 +565,7 @@ void ChangeDiagramTextCommand::redo() {
 	if (first_redo) {
 		first_redo = false;
 	} else {
-		text_item -> setPlainText(text_after);
+		text_item -> setHtml(text_after);
 	}
 }
 

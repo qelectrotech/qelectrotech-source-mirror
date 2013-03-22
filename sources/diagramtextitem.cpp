@@ -202,7 +202,7 @@ void DiagramTextItem::focusInEvent(QFocusEvent *e) {
 	setFlag(QGraphicsItem::ItemIsMovable, false);
 	
 	// memorise le texte avant que l'utilisateur n'y touche
-	previous_text_ = toPlainText();
+	previous_text_ = toHtml();
 	// cela permettra de determiner si l'utilisateur a modifie le texte a la fin de l'edition
 }
 
@@ -215,8 +215,8 @@ void DiagramTextItem::focusOutEvent(QFocusEvent *e) {
 	
 	// signale la modification du texte si besoin
 	if (toPlainText() != previous_text_) {
-		emit(diagramTextChanged(this, previous_text_, toPlainText()));
-		previous_text_ = toPlainText();
+		emit(diagramTextChanged(this, previous_text_, toHtml()));
+		previous_text_ = toHtml();
 	}
 	
 	// deselectionne le texte
