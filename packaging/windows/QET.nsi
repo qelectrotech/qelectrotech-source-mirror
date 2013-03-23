@@ -12,7 +12,7 @@
 ;General
 	; General Product Description Definitions
 	!define SOFT_NAME     "QElectroTech"
-	!define SOFT_VERSION  "svn"
+	!define SOFT_VERSION  "0.3"
 	!define SOFT_WEB_SITE "http://qelectrotech.org/"
 	!define SOFT_BUILD    "1"
 	
