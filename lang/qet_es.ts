@@ -97,7 +97,12 @@
 Iconos</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="175"/>
+        <location filename="../sources/aboutqet.cpp" line="159"/>
+        <source>Développeur</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="176"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Este programa está bajo licencia GNU/GPL.</translation>
     </message>
@@ -520,11 +525,6 @@ Iconos</translation>
 <context>
     <name>DiagramView</name>
     <message>
-        <location filename="../sources/diagramview.cpp" line="489"/>
-        <source>Schéma sans titre</source>
-        <translation>Esquema sin título</translation>
-    </message>
-    <message>
         <location filename="../sources/diagramview.cpp" line="75"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
@@ -543,10 +543,10 @@ Iconos</translation>
         <translation>Orientar los textos seleccionados</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="491"/>
-        <source>Schéma %1</source>
-        <comment>%1 is a diagram title</comment>
-        <translation>Esquema %1</translation>
+        <location filename="../sources/diagramview.cpp" line="489"/>
+        <source>Sans titre</source>
+        <comment>what to display for untitled diagrams</comment>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="516"/>
@@ -5150,7 +5150,7 @@ Que désirez vous faire ?</source>
         </translation>
     </message>
     <message>
-        <location filename="../sources/qet.cpp" line="564"/>
+        <location filename="../sources/qet.cpp" line="579"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
         <translation>Imposible abrir el archivo %1 para escritura, se han econtrado el error %2.</translation>
@@ -6400,6 +6400,57 @@ Longueur maximale : %2px
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
         <translation>Colección del proyecto &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>nomenclature</name>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="52"/>
+        <source>NOMENCLATURE : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Ref</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Schéma</source>
+        <translation type="unfinished">Esquema</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="53"/>
+        <source>Désignation
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="63"/>
+        <source>nomenclature_</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="64"/>
+        <source>Enregister sous... </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="70"/>
+        <source>Erreur</source>
+        <translation type="unfinished">Error</translation>
+    </message>
+    <message>
+        <location filename="../sources/nomenclature.cpp" line="71"/>
+        <source>Impossible de remplacer le fichier!
+
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

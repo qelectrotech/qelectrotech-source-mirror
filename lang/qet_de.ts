@@ -128,6 +128,10 @@
         <source>Compilation : </source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Développeur</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>ArcEditor</name>
@@ -431,15 +435,6 @@
         <translation>hier einfügen</translation>
     </message>
     <message>
-        <source>Schéma sans titre</source>
-        <translation>Schema unbenannt</translation>
-    </message>
-    <message>
-        <source>Schéma %1</source>
-        <comment>%1 is a diagram title</comment>
-        <translation>Schema %1</translation>
-    </message>
-    <message>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Eigenschaften des Schemas</translation>
@@ -546,6 +541,11 @@
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
         <translation>Dies ist die Zone in der Sie Ihre Schema gestalten können, Sie können Elemente hinzufügen und Kontakte mit Leitern verbinden. Es ist auch möglich, Text unabhängig hinzuzufügen.</translation>
+    </message>
+    <message>
+        <source>Sans titre</source>
+        <comment>what to display for untitled diagrams</comment>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5235,6 +5235,48 @@ Maximallänge : %2p</translation>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
         <translation>Kollektion im Projekt &quot;%1&quot;</translation>
+    </message>
+</context>
+<context>
+    <name>nomenclature</name>
+    <message>
+        <source>NOMENCLATURE : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Ref</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schéma</source>
+        <translation type="unfinished">Schema</translation>
+    </message>
+    <message>
+        <source>Désignation
+</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>nomenclature_</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Enregister sous... </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Erreur</source>
+        <translation type="unfinished">Fehler</translation>
+    </message>
+    <message>
+        <source>Impossible de remplacer le fichier!
+
+</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>
