@@ -52,7 +52,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Compilazione : </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
@@ -160,7 +160,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Développeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Sviluppatore</translation>
     </message>
 </context>
 <context>
@@ -393,25 +393,25 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Stile :</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linea continua</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Linea tratteggiata</translation>
+        <translation>Linea tratteggiata</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Punto e linea</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
@@ -631,7 +631,7 @@
         <location filename="../sources/diagramview.cpp" line="489"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>Senza titolo</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="892"/>
@@ -1275,12 +1275,12 @@ I cambiamenti saranno irreversibili.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation>Aprire la cartella corrispondente</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiare il percorso</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="59"/>
@@ -1758,7 +1758,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation>Questa è una categoria di elementi, un semplice contenitore che permette di organizzare le collezioni di elementi.</translation>
+        <translation>Questa è una categoria di elementi, un semplice contenitore che permette di organizzare le collezioni di elementi</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="868"/>
@@ -3229,12 +3229,12 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Trova nel pannello</translation>
+        <translation>Visualizzare nello schema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Modificare l&apos;elemento</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3372,13 +3372,13 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Visualizza l&apos;elemento selezionato nello schema</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Visualizza l&apos;elemento selezionato nello schema, prima di modificare</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
@@ -3474,18 +3474,18 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="766"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Impossibile aprire il file</translation>
+        <translation>Impossibile aprire il file</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sembra che il file %1 che si è cercato di aprire non esista più.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Apertura del progetto in sola lettura</translation>
+        <translation>Apertura del progetto in sola lettura</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1740"/>
@@ -4036,12 +4036,12 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="930"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Impossibile aprire il file</translation>
+        <translation>Impossibile aprire il file</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="932"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Sembra che il file %1 che si è cercato di aprire non esista più.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
@@ -5026,13 +5026,13 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation>ri-dimensionamento %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="785"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished"></translation>
+        <translation>ri-dimensionamento di %1 primitive</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="50"/>
@@ -6388,50 +6388,53 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">CLASSIFICAZIONE : </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished"></translation>
+        <translation>Rif</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Foglio</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schema</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Destinazione
+</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished"></translation>
+        <translation>classificazione_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished"></translation>
+        <translation>Salva come... </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation type="unfinished">Errore</translation>
+        <translation>Errore</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Impossibile sostituire il file!
+
+</translation>
     </message>
 </context>
 </TS>
