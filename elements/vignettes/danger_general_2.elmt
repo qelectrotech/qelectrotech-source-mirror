@@ -4,6 +4,7 @@
         <name lang="fr">Danger</name>
         <name lang="pl">Inne niebezpieczeństwo</name>
         <name lang="it">Pericolo generico</name>
+        <name lang="cs">Jiné nebezpečí</name>
     </names>
     <informations></informations>
     <description>

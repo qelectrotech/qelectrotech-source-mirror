@@ -52,7 +52,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Sestavení: </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
@@ -135,7 +135,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Překlad do katalánštiny</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="155"/>
@@ -160,7 +160,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Développeur</source>
-        <translation type="unfinished"></translation>
+        <translation>Vývojář</translation>
     </message>
 </context>
 <context>
@@ -393,25 +393,25 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Styl:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Plná čára</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Tečkovaná čára</translation>
+        <translation>Tečkovaná čára</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Čárky a tečky</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
@@ -544,7 +544,7 @@
         <location filename="../sources/diagramview.cpp" line="489"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="516"/>
@@ -1276,12 +1276,12 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation>Otevřít příslušný adresář</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopírovat cestu</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="59"/>
@@ -3238,12 +3238,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Najít v panelu</translation>
+        <translation>Najít v panelu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Upravit prvek</translation>
+        <translation>Upravit prvek</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3375,13 +3375,13 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Najde prvek vybraný v panelu</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Najde prvek vybraný v panelu, dříve než je upraven</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="308"/>
@@ -3477,18 +3477,18 @@ Dostupné volby:
         <location filename="../sources/qetdiagrameditor.cpp" line="766"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Soubor nelze otevřít</translation>
+        <translation>Soubor nelze otevřít</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="753"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že soubor %1, který se pokoušíte otevřít, už neexistuje.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="780"/>
         <source>Ouverture du projet en lecture seule</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Otevření souboru pouze pro čtení</translation>
+        <translation>Otevření souboru pouze pro čtení</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="1740"/>
@@ -4041,12 +4041,12 @@ Dostupné volby:
         <location filename="../sources/editor/qetelementeditor.cpp" line="930"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Soubor nelze otevřít</translation>
+        <translation>Soubor nelze otevřít</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="932"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdá se, že soubor %1, který se pokoušíte otevřít, už neexistuje.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1159"/>
@@ -5031,13 +5031,13 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změna rozměru %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="785"/>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
-        <translation type="unfinished"></translation>
+        <translation>Změna rozměru %1 výchozích čísel</translation>
     </message>
     <message>
         <location filename="../sources/editor/partarc.h" line="50"/>
@@ -5841,7 +5841,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="317"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Použít nynější datum</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="318"/>
@@ -6398,50 +6398,51 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished"></translation>
+        <translation>ČÍSELNÍK: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished"></translation>
+        <translation>Odkaz</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>List</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation type="unfinished">Výkres</translation>
+        <translation>Výkres</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Označení</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished"></translation>
+        <translation>Číselník_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit jako... </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation type="unfinished">Chyba</translation>
+        <translation>Chyba</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Soubor nelze nahradit!
+</translation>
     </message>
 </context>
 </TS>
