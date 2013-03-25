@@ -73,6 +73,8 @@ void NamesListWidget::addLine() {
 	QTreeWidgetItem *qtwi = new QTreeWidgetItem();
 	qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 	tree_names -> addTopLevelItem(qtwi);
+ 	tree_names -> setCurrentItem(qtwi);
+    	tree_names -> editItem(qtwi);
 }
 
 /**
@@ -138,6 +140,7 @@ void NamesListWidget::setNames(const NamesList &provided_names) {
 		QTreeWidgetItem *qtwi = new QTreeWidgetItem(values);
 		if (!read_only) qtwi -> setFlags(Qt::ItemIsEditable | Qt::ItemIsEnabled | Qt::ItemIsSelectable);
 		tree_names -> addTopLevelItem(qtwi);
+		tree_names -> sortItems(0, Qt::AscendingOrder);
 	}
 }
 
