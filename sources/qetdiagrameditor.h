@@ -192,6 +192,7 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *conductor_default;  ///< Show a dialog to edit default conductor properties
 	QAction *infos_diagram;      ///< Show a dialog to edit diagram properties
 	QAction *add_text;           ///< Tool to add an independent text item on diagrams
+	QAction *add_edittext;       ///< Tool to add an independent text item on diagrams
 	QAction *add_column;         ///< Increase diagram width by adding an extra column
 	QAction *remove_column;      ///< Decrease diagram width by removing the last column
 	QAction *add_row;            ///< Increase diagram height by adding an extra row

@@ -71,6 +71,7 @@ namespace QET {
 		QIcon EditTableInsertColumnRight;
 		QIcon EditTableInsertRowAbove;
 		QIcon EditTableInsertRowUnder;
+		QIcon EditText;
 		QIcon EditUndo;
 		QIcon Element;
 		QIcon ElementDelete;
@@ -219,6 +220,7 @@ void QET::Icons::initIcons() {
 	East                .addFile(":/ico/16x16/east.png");
 	EditClear           .addFile(":/ico/16x16/edit-clear.png");
 	EditClear           .addFile(":/ico/22x22/edit-clear.png");
+	EditText           .addFile(":ico/Actions-format-text-bold-icon.png");
 	
 	if (rtl) {
 		EditClearLocationBar.addPixmap(QPixmap(":/ico/16x16/edit-clear-locationbar-ltr.png").transformed(reverse));

@@ -78,6 +78,7 @@ namespace QET {
 		extern QIcon EditTableInsertColumnRight;
 		extern QIcon EditTableInsertRowAbove;
 		extern QIcon EditTableInsertRowUnder;
+		extern QIcon EditText;
 		extern QIcon EditUndo;
 		extern QIcon Element;
 		extern QIcon ElementDelete;

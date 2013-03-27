@@ -211,6 +211,7 @@ void QETDiagramEditor::actions() {
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
+	add_edittext          = new QAction(QET::Icons::EditText,         tr("Editer un champ de texte"),            this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
@@ -331,6 +332,7 @@ void QETDiagramEditor::actions() {
 	
 	// traitements speciaux
 	add_text           -> setCheckable(true);
+	add_edittext       -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
@@ -390,6 +392,7 @@ void QETDiagramEditor::actions() {
 	connect(conductor_reset,    SIGNAL(triggered()), this,       SLOT(slot_resetConductors())      );
 	connect(infos_diagram,      SIGNAL(triggered()), this,       SLOT(editCurrentDiagramProperties()));
 	connect(add_text,           SIGNAL(triggered()), this,       SLOT(slot_addText())              );
+	connect(add_edittext,       SIGNAL(triggered()), this,       SLOT(slot_editText())              );
 	connect(add_column,         SIGNAL(triggered()), this,       SLOT(slot_addColumn())            );
 	connect(remove_column,      SIGNAL(triggered()), this,       SLOT(slot_removeColumn())         );
 	connect(add_row,            SIGNAL(triggered()), this,       SLOT(slot_addRow())               );
@@ -551,6 +554,7 @@ void QETDiagramEditor::toolbar() {
 	diagram_bar -> addAction(infos_diagram);
 	diagram_bar -> addAction(conductor_reset);
 	diagram_bar -> addAction(add_text);
+	diagram_bar -> addAction(add_edittext);
 	
 	// ajout de la barre d'outils a la fenetre principale
 	addToolBar(Qt::TopToolBarArea, main_bar);
@@ -1133,6 +1137,7 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_reset        -> setEnabled(opened_diagram);
 	infos_diagram     -> setEnabled(opened_diagram);
 	add_text          -> setEnabled(editable_diagram);
+	add_edittext      -> setEnabled(editable_diagram);
 	add_column        -> setEnabled(editable_diagram);
 	remove_column     -> setEnabled(editable_diagram);
 	add_row           -> setEnabled(editable_diagram);
@@ -1701,6 +1706,7 @@ void QETDiagramEditor::diagramWasAdded(DiagramView *dv) {
 	connect(dv,              SIGNAL(selectionChanged()),         this,     SLOT(slot_updateComplexActions()));
 	connect(dv,              SIGNAL(modeChanged()),              this,     SLOT(slot_updateModeActions()));
 	connect(dv,              SIGNAL(textAdded(bool)),            add_text, SLOT(setChecked(bool)));
+	connect(dv,              SIGNAL(textAdded(bool)),            add_edittext, SLOT(setChecked(bool)));
 }
 
 /**
