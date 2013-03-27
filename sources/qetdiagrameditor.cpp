@@ -476,6 +476,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(remove_column);
 	menu_edition -> addAction(add_row);
 	menu_edition -> addAction(remove_row);
+	menu_edition -> addAction(add_edittext);
 	
 	// menu Projet
 	menu_project -> addAction(prj_edit_prop);
@@ -554,8 +555,7 @@ void QETDiagramEditor::toolbar() {
 	diagram_bar -> addAction(infos_diagram);
 	diagram_bar -> addAction(conductor_reset);
 	diagram_bar -> addAction(add_text);
-	diagram_bar -> addAction(add_edittext);
-	
+
 	// ajout de la barre d'outils a la fenetre principale
 	addToolBar(Qt::TopToolBarArea, main_bar);
 	addToolBar(Qt::TopToolBarArea, view_bar);
