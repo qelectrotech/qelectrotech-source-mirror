@@ -220,7 +220,7 @@ void QET::Icons::initIcons() {
 	East                .addFile(":/ico/16x16/east.png");
 	EditClear           .addFile(":/ico/16x16/edit-clear.png");
 	EditClear           .addFile(":/ico/22x22/edit-clear.png");
-	EditText           .addFile(":ico/Actions-format-text-bold-icon.png");
+    EditText            .addFile(":/ico/22x22/names.png");
 	
 	if (rtl) {
 		EditClearLocationBar.addPixmap(QPixmap(":/ico/16x16/edit-clear-locationbar-ltr.png").transformed(reverse));
