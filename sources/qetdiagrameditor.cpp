@@ -211,7 +211,7 @@ void QETDiagramEditor::actions() {
 	conductor_reset   = new QAction(QET::Icons::ConductorSettings,     tr("R\351initialiser les conducteurs"),     this);
 	infos_diagram     = new QAction(QET::Icons::DialogInformation,     tr("Propri\351t\351s du sch\351ma"),        this);
 	add_text          = new QAction(QET::Icons::PartTextField,         tr("Ajouter un champ de texte"),            this);
-	add_edittext          = new QAction(QET::Icons::EditText,         tr("Editer un champ de texte"),            this);
+	add_edittext          = new QAction(QET::Icons::EditText,         tr("\311diter un champ de texte"),            this);
 	add_column        = new QAction(QET::Icons::EditTableInsertColumnRight, tr("Ajouter une colonne"),             this);
 	remove_column     = new QAction(QET::Icons::EditTableDeleteColumn,      tr("Enlever une colonne"),             this);
 	add_row           = new QAction(QET::Icons::EditTableInsertRowUnder,    tr("Ajouter une ligne"),               this);
