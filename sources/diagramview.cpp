@@ -1186,10 +1186,10 @@ void DiagramView::contextMenuEvent(QContextMenuEvent *e) {
 			context_menu -> addAction(qde -> delete_selection);
 			context_menu -> addAction(qde -> rotate_selection);
 			context_menu -> addAction(qde -> rotate_texts);
+			context_menu -> addAction(qde -> add_edittext);
 			context_menu -> addAction(qde -> find_element);
 			context_menu -> addAction(qde -> edit_element);
 			context_menu -> addAction(qde -> selection_prop);
-			context_menu -> addAction(qde -> add_edittext);
 		}
 		
 		// affiche le menu contextuel

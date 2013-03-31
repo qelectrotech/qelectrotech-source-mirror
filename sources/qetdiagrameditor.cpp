@@ -467,6 +467,7 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(delete_selection);
 	menu_edition -> addAction(rotate_selection);
 	menu_edition -> addAction(rotate_texts);
+	menu_edition -> addAction(add_edittext);
 	menu_edition -> addAction(selection_prop);
 	menu_edition -> addSeparator();
 	menu_edition -> addAction(conductor_reset);
@@ -476,7 +477,6 @@ void QETDiagramEditor::menus() {
 	menu_edition -> addAction(remove_column);
 	menu_edition -> addAction(add_row);
 	menu_edition -> addAction(remove_row);
-	menu_edition -> addAction(add_edittext);
 	
 	// menu Projet
 	menu_project -> addAction(prj_edit_prop);
