@@ -50,9 +50,6 @@ public:
 	void loadHtml(const QString &f);
 	void setSimpleDisplay(bool state);
 	
-protected:
-    virtual void closeEvent(QCloseEvent *e);
-
 private:
     void setupActions();
     void setupToolBar();
@@ -116,7 +113,9 @@ private:
     Ui_Dialog *ui_dialog;
     QDialog *insertHtmlDialog;
 	
-
+	private slots:
+		void on_buttonBox_accepted();
+		void on_buttonBox_rejected();
 };
 
 #endif // HTML_EDITOR_H

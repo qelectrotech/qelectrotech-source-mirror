@@ -27,14 +27,15 @@
 	- 26/03/2013 : Start integration...Compilation and object creation are successful
 */
 
-#include "htmleditor.h"
-#include "highlighter.h"
-
 #include "../ui/ui_htmleditor.h"
 #include "../ui/ui_inserthtmldialog.h"
 
+#include "htmleditor.h"
+#include "highlighter.h"
+
 #include <QtGui>
 #include <QtWebKit>
+#include <QFontDatabase>
 
 #define FORWARD_ACTION(action1, action2) \
     connect(action1, SIGNAL(triggered()), \
@@ -55,7 +56,7 @@ HtmlEditor::HtmlEditor(QWidget *parent)
     ui->tabWidget->setTabText(0, "Normal View");
     ui->tabWidget->setTabText(1, "HTML Source");
     connect(ui->tabWidget, SIGNAL(currentChanged(int)), SLOT(changeTab(int)));
-    resize(600, 600);
+    resize(600, 300);
 
     highlighter = new Highlighter(ui->plainTextEdit->document());
 
@@ -569,21 +570,6 @@ void HtmlEditor::changeZoom(int percent)
 }
 
 /**
- * @brief HtmlEditor::closeEvent and send a applyEditText signal!
- * @param e
- */
-void HtmlEditor::closeEvent(QCloseEvent *e)
-{
-    /*if (maybeSave())
-        e->accept();
-    else
-        e->ignore();*/
-	
-	//start applyEdit
-	emit applyEditText( ui->webView->page()->mainFrame()->toHtml() );
-}
-
-/**
  * @brief HtmlEditor::loadHtml to the editor
  * @param f
  */
@@ -642,4 +628,20 @@ void HtmlEditor::setCurrentFileName(const QString &fileName)
     ui->actionFileSave->setEnabled(allowSave);
 }
 
+
+/**
+ * @brief HtmlEditor::on_buttonBox_accepted
+ */ 
+void HtmlEditor::on_buttonBox_accepted() {
+	emit applyEditText( ui->webView->page()->mainFrame()->toHtml() );
+	this->close();
+}
+
+
+/**
+ * @brief HtmlEditor::on_buttonBox_rejected
+ */
+void HtmlEditor::on_buttonBox_rejected() {
+	this->close();
+}
 
