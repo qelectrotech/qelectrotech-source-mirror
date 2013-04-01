@@ -1144,9 +1144,7 @@ void DiagramView::editText() {
 	// Get text to edit
 	QList<DiagramTextItem *> texts_to_edit;
 	foreach (QGraphicsItem *item, scene -> selectedItems()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
-			texts_to_edit << cti;
-		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+		if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
 			texts_to_edit << iti;
 		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
 			// here...
