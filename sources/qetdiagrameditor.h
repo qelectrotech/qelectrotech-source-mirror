@@ -123,6 +123,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void slot_editConductor();
 	void slot_resetConductors();
 	void slot_addText();
+	void slot_editText();
 	void setWindowedMode();
 	void setTabbedMode();
 	void readSettings();

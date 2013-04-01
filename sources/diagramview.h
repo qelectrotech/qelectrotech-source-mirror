@@ -68,6 +68,7 @@ class DiagramView : public QGraphicsView {
 	bool hasCopiableItems();
 	bool hasDeletableItems();
 	void addText();
+	void editText();
 	IndependentTextItem *addDiagramTextAtPos(const QPointF &);
 	
 	protected:

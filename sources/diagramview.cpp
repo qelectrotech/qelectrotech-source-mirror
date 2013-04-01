@@ -38,6 +38,8 @@
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
 
+#include "htmleditor/htmleditor.h"
+
 /**
 	Constructeur
 	@param diagram Schema a afficher ; si diagram vaut 0, un nouveau Diagram est utilise
@@ -1131,6 +1133,29 @@ bool DiagramView::selectedItemHasFocus() {
 void DiagramView::addText() {
 	if (scene -> isReadOnly()) return;
 	is_adding_text = true;
+}
+
+
+/**
+	To edit the text through the htmlEditor
+*/
+void DiagramView::editText() {
+	if (scene -> isReadOnly()) return;
+	// Get text to edit
+	QList<DiagramTextItem *> texts_to_edit;
+	foreach (QGraphicsItem *item, scene -> selectedItems()) {
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			texts_to_edit << cti;
+		} else if (IndependentTextItem *iti = qgraphicsitem_cast<IndependentTextItem *>(item)) {
+			texts_to_edit << iti;
+		} else if (ElementTextItem *eti = qgraphicsitem_cast<ElementTextItem *>(item)) {
+			// here...
+			texts_to_edit << eti;
+		}
+	}
+	// Test if any text existe..
+	if (texts_to_edit.isEmpty()) return;	
+	else texts_to_edit.at(0)->edit();	
 }
 
 /**

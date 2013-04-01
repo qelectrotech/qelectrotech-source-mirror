@@ -1,5 +1,5 @@
 /*
-	Copyright 2006-2012 Xavier Guerrin
+	Copyright 2006-2013 QElectroTech Team
 	This file is part of QElectroTech.
 	
 	QElectroTech is free software: you can redistribute it and/or modify
@@ -20,6 +20,7 @@
 #include "qet.h"
 #include "qetapp.h"
 
+#include "htmleditor/htmleditor.h"
 /**
 	Constructeur
 	@param parent Le QGraphicsItem parent du champ de texte
@@ -297,3 +298,29 @@ QPointF DiagramTextItem::pos() const {
 void DiagramTextItem::setNonFocusable() {
 	setFlag(QGraphicsTextItem::ItemIsFocusable, false);
 }
+
+
+/**
+ * @brief DiagramTextItem::setHtmlText
+ * @param txt
+ */
+void DiagramTextItem::setHtmlText(const QString &txt) {
+	setHtml( txt );
+}
+
+/**
+ * @brief Edit the text with HtmlEditor
+ */
+void DiagramTextItem::edit() {
+	//Open the HtmlEditor
+	HtmlEditor *editor = new HtmlEditor();
+	// connect the in/out
+	connect(editor, SIGNAL(applyEditText(const QString &)), this, SLOT(setHtmlText(const QString &)));
+	// load the Html txt
+	editor->loadHtml( toHtml() );
+	// set the minimum controls
+	editor->setSimpleDisplay(true);
+	// show
+	editor->show();
+}
+

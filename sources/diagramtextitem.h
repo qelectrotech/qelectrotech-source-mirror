@@ -53,6 +53,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	qreal rotationAngle() const;
 	void setRotationAngle(const qreal &);
 	void rotateBy(const qreal &);
+	void edit();
 	QPointF mapMovementToScene(const QPointF &) const;
 	QPointF mapMovementFromScene(const QPointF &) const;
 	QPointF mapMovementToParent(const QPointF &) const;
@@ -73,6 +74,7 @@ class DiagramTextItem : public QGraphicsTextItem {
 	
 	public slots:
 	void setNonFocusable();
+	void setHtmlText(const QString &);
 	
 	private:
 	/// Previous text value
