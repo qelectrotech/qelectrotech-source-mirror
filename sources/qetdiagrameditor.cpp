@@ -332,7 +332,6 @@ void QETDiagramEditor::actions() {
 	
 	// traitements speciaux
 	add_text           -> setCheckable(true);
-	add_edittext       -> setCheckable(true);
 	windowed_view_mode -> setCheckable(true);
 	tabbed_view_mode   -> setCheckable(true);
 	mode_selection     -> setCheckable(true);
@@ -1137,7 +1136,6 @@ void QETDiagramEditor::slot_updateActions() {
 	zoom_reset        -> setEnabled(opened_diagram);
 	infos_diagram     -> setEnabled(opened_diagram);
 	add_text          -> setEnabled(editable_diagram);
-	add_edittext      -> setEnabled(editable_diagram);
 	add_column        -> setEnabled(editable_diagram);
 	remove_column     -> setEnabled(editable_diagram);
 	add_row           -> setEnabled(editable_diagram);
@@ -1189,6 +1187,7 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	// actions ayant besoin de textes selectionnes
 	bool selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
 	rotate_texts -> setEnabled(editable_diagram && selected_texts);
+	add_edittext ->setDisabled(selected_conductors_count);
 }
 
 
