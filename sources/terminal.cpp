@@ -368,6 +368,7 @@ void Terminal::mouseReleaseEvent(QGraphicsSceneMouseEvent *e) {
 		Conductor *new_conductor = new Conductor(this, other_terminal);
 		new_conductor -> setProperties(d -> defaultConductorProperties);
 		d -> undoStack().push(new AddConductorCommand(d, new_conductor));
+		new_conductor -> autoText();
 	}
 }
 

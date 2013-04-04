@@ -23,6 +23,7 @@
 #include "element.h"
 #include "diagram.h"
 #include "diagramcommands.h"
+#include "conductorautonumerotation.h"
 #define PR(x) qDebug() << #x " = " << x;
 
 bool Conductor::pen_and_brush_initialized = false;
@@ -1248,6 +1249,15 @@ void Conductor::setHighlighted(Conductor::Highlight hl) {
 }
 
 /**
+ * @brief Conductor::autoText
+ *lance l'autoNumerotation sur ce conducteur
+ */
+void Conductor::autoText() {
+	ConductorAutoNumerotation can(this);
+	can.numerate();
+}
+
+/**
 	Met a jour les proprietes du conducteur apres modification du champ de texte affiche
 */
 void Conductor::displayedTextChanged() {
@@ -1276,6 +1286,53 @@ QSet<Conductor *> Conductor::relatedConductors() const {
 	QSet<Conductor *> other_conductors = other_conductors_list.toSet();
 	other_conductors.remove(const_cast<Conductor *>(this));
 	return(other_conductors);
+}
+
+/**
+ * @param t_list terminaux a ne pas inclure dans la recherche
+ * @return les conducteurs avec lesquels ce conducteur partage
+ *  le meme potentiel electrique a l'exception de lui même
+ */
+QSet<Conductor *> Conductor::relatedPotentialConductors(QList <Terminal *> *t_list) {
+	if (t_list == 0)
+		t_list = new QList <Terminal *>;
+
+	QSet <Conductor *> other_conductors;
+	//renvoie tous les conducteurs du terminal 1
+	if (t_list->contains(terminal1) == false) {
+		t_list->append(terminal1);
+		QList <Conductor *> other_conductors_list_t1 = terminal1 -> conductors();
+		other_conductors_list_t1.removeAll(this);
+		//recherche les conducteurs connecté au conducteur déjà trouvé
+		foreach (Conductor *c, other_conductors_list_t1) {
+			other_conductors += c -> relatedPotentialConductors(t_list);
+		}
+		other_conductors += other_conductors_list_t1.toSet();
+	}
+	//renvoie tous les conducteurs du terminal 2
+	if (t_list->contains(terminal2) == false) {
+		t_list->append(terminal2);
+		QList <Conductor *> other_conductors_list_t2 = terminal2 -> conductors();
+		other_conductors_list_t2.removeAll(this);
+		//recherche les conducteurs connecté au conducteur déjà trouvé
+		foreach (Conductor *c, other_conductors_list_t2) {
+			other_conductors += c -> relatedPotentialConductors(t_list);
+		}
+		other_conductors += other_conductors_list_t2.toSet();
+	}
+	other_conductors.remove(const_cast<Conductor *>(this));
+	return(other_conductors);
+}
+
+/**
+ * @return l'editeur de schemas parent ou 0
+ */
+QETDiagramEditor* Conductor::diagramEditor() const {
+	QWidget *w = const_cast<QGraphicsView *>(diagram() -> views().at(0));
+	while (w -> parentWidget() && !w -> isWindow()) {
+		w = w -> parentWidget();
+	}
+	return(qobject_cast<QETDiagramEditor *>(w));
 }
 
 /**

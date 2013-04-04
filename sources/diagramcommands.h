@@ -495,4 +495,36 @@ class ChangeConductorPropertiesCommand : public QUndoCommand {
 	/// track whether post-change properties were set
 	bool new_settings_set;
 };
+
+/**
+	This command changes the properties for several conductors.
+*/
+class ChangeSeveralConductorsPropertiesCommand : public QUndoCommand {
+	// constructors, destructor
+	public:
+	ChangeSeveralConductorsPropertiesCommand(QSet<Conductor *>, QUndoCommand * = 0);
+	virtual ~ChangeSeveralConductorsPropertiesCommand();
+	private:
+	ChangeSeveralConductorsPropertiesCommand(const ChangeSeveralConductorsPropertiesCommand &);
+
+	// methods
+	public:
+	virtual void undo();
+	virtual void redo();
+	virtual void setOldSettings(const QList<ConductorProperties> &);
+	virtual void setNewSettings(const QList<ConductorProperties> &);
+
+	// attributes
+	private:
+	/// modified conductor
+	QSet<Conductor *> conductors;
+	/// properties before the change
+	QList <ConductorProperties> old_properties;
+	/// properties after the change
+	QList <ConductorProperties> new_properties;
+	/// track whether pre-change properties were set
+	bool old_settings_set;
+	/// track whether post-change properties were set
+	bool new_settings_set;
+};
 #endif

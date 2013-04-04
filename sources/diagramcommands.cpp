@@ -936,3 +936,62 @@ void ChangeConductorPropertiesCommand::redo() {
 		conductor -> update();
 	}
 }
+
+/**
+	Constructeur
+	@param c La liste des conducteurs dont on modifie les proprietes
+	@param parent QUndoCommand parent
+*/
+ChangeSeveralConductorsPropertiesCommand::ChangeSeveralConductorsPropertiesCommand(QSet<Conductor *>c, QUndoCommand *parent) :
+	QUndoCommand(QObject::tr("modifier les propri\351t\351s de plusieurs conducteurs", "undo caption"), parent),
+	conductors(c),
+	old_settings_set(false),
+	new_settings_set(false)
+{
+}
+
+/// Destructeur
+ChangeSeveralConductorsPropertiesCommand::~ChangeSeveralConductorsPropertiesCommand() {
+}
+
+/// definit l'ancienne configuration
+void ChangeSeveralConductorsPropertiesCommand::setOldSettings(const QList<ConductorProperties> &properties) {
+	old_properties = properties;
+	old_settings_set = true;
+}
+
+/// definit la nouvelle configuration
+void ChangeSeveralConductorsPropertiesCommand::setNewSettings(const QList<ConductorProperties> &properties) {
+	new_properties = properties;
+	new_settings_set = true;
+}
+
+/**
+	Annule les changements - Attention : les anciens et nouveaux parametres
+	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
+*/
+void ChangeSeveralConductorsPropertiesCommand::undo() {
+	if (old_settings_set && new_settings_set) {
+		int i=0;
+		foreach(Conductor *c, conductors) {
+			c -> setProperties(old_properties.at(i));
+			c -> update();
+			i++;
+		}
+	}
+}
+
+/**
+	Refait les changements - Attention : les anciens et nouveaux parametres
+	doivent avoir ete definis a l'aide de setNewSettings et setOldSettings
+*/
+void ChangeSeveralConductorsPropertiesCommand::redo() {
+	if (old_settings_set && new_settings_set) {
+		int i=0;
+		foreach(Conductor *c, conductors) {
+			c -> setProperties(new_properties.at(0));
+			c -> update();
+			i++;
+		}
+	}
+}

@@ -21,6 +21,7 @@
 #include "terminal.h"
 #include "conductorprofile.h"
 #include "conductorproperties.h"
+#include "qetdiagrameditor.h"
 class ConductorSegment;
 class ConductorTextItem;
 class Element;
@@ -92,6 +93,9 @@ class Conductor : public QObject, public QGraphicsPathItem {
 	void adjustTextItemPosition();
 	virtual Highlight highlight() const;
 	virtual void setHighlighted(Highlight);
+	void autoText();
+	QSet<Conductor *> relatedPotentialConductors(QList <Terminal *> *t_list=0);
+	QETDiagramEditor* diagramEditor() const;
 	
 	public slots:
 	void displayedTextChanged();
