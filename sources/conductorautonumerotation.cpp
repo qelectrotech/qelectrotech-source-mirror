@@ -21,8 +21,8 @@ strategy_(0)
 ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *c) :
 	conductor_ (c),
 	diagram_ (c -> diagram()),
-	strategy_(0),
-	conductor_list(c -> relatedPotentialConductors())
+	conductor_list(c -> relatedPotentialConductors()),
+	strategy_(0)
 {}
 
 /**

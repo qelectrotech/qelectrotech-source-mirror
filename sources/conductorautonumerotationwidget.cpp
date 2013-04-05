@@ -4,9 +4,9 @@
 #include "diagram.h"
 
 ConductorAutoNumerotationWidget::ConductorAutoNumerotationWidget(Conductor *c, QSet<Conductor *> cl, QWidget *parent) :
+	QDialog (parent),
 	conductor_(c),
-	c_list(cl),
-	QDialog (parent)
+	c_list(cl)
 {
 #ifdef Q_WS_MAC
 	setWindowFlags(Qt::Sheet);

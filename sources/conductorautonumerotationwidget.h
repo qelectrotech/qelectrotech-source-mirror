@@ -26,8 +26,8 @@ class ConductorAutoNumerotationWidget : public QDialog
 	void applyText();
 
 	//attributes
-	QSet<Conductor *> c_list; //liste des conducteurs au même potentiel
 	Conductor *conductor_;
+	QSet<Conductor *> c_list; //liste des conducteurs au même potentiel
 	QList <QRadioButton *> *radio_List;
 	QLineEdit *text_field;
 	QString text_;
