@@ -433,19 +433,14 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 }
 
 /**
-	Gere les actions liees a la rollette de la souris
-	@param e QWheelEvent decrivant l'evenement rollette
+	Manage wheel event of mouse
+	@param e QWheelEvent
 */
 void DiagramView::wheelEvent(QWheelEvent *e) {
-	// si la touche Ctrl est enfoncee, on zoome / dezoome
-	if (e -> modifiers() & Qt::ControlModifier) {
-		if (e -> delta() > 0) {
-			zoomIn();
-		} else {
-			zoomOut();
-		}
+	if (e -> delta() > 0) {
+		zoomIn();
 	} else {
-		QAbstractScrollArea::wheelEvent(e);
+		zoomOut();
 	}
 }
 
@@ -711,7 +706,7 @@ void DiagramView::updateWindowTitle() {
 }
 
 /**
-	Active ou desactive le dessin de grille selon la quantite de pixels affichee
+	Enables or disables the drawing grid according to the amount of pixels display
 */
 void DiagramView::adjustGridToZoom() {
 	QRectF viewed_scene = viewedSceneRect();
