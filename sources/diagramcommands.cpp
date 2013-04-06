@@ -989,7 +989,7 @@ void ChangeSeveralConductorsPropertiesCommand::redo() {
 	if (old_settings_set && new_settings_set) {
 		int i=0;
 		foreach(Conductor *c, conductors) {
-			c -> setProperties(new_properties.at(0));
+			c -> setProperties(new_properties.at(i));
 			c -> update();
 			i++;
 		}

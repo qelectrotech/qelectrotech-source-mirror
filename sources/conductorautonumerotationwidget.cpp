@@ -6,7 +6,8 @@
 ConductorAutoNumerotationWidget::ConductorAutoNumerotationWidget(Conductor *c, QSet<Conductor *> cl, QWidget *parent) :
 	QDialog (parent),
 	conductor_(c),
-	c_list(cl)
+	c_list(cl),
+	diagram_(c -> diagram())
 {
 #ifdef Q_WS_MAC
 	setWindowFlags(Qt::Sheet);
@@ -99,9 +100,12 @@ QMultiMap <int, QString> ConductorAutoNumerotationWidget::conductorsTextToMap(QS
  *applique le texte selectionne @text_ a tout les conducteur de @c_list et a @conducteur_
  */
 void ConductorAutoNumerotationWidget::applyText() {
+	QSet <Conductor *> conductorslist = c_list;
+	conductorslist << conductor_;
 	QList <ConductorProperties> old_properties, new_properties;
 	ConductorProperties cp;
-	foreach (Conductor *c, c_list) {
+
+	foreach (Conductor *c, conductorslist) {
 		old_properties << c -> properties();
 		cp = c -> properties();
 		cp.text = text_;
@@ -110,15 +114,10 @@ void ConductorAutoNumerotationWidget::applyText() {
 		c -> setText(text_);
 	}
 	// initialise l'objet UndoCommand correspondant
-	ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(c_list);
+	ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(conductorslist);
 	cscpc -> setOldSettings(old_properties);
 	cscpc -> setNewSettings(new_properties);
-	conductor_ -> diagram() -> undoStack().push(cscpc);
-
-	cp = conductor_ -> properties();
-	cp.text = text_;
-	conductor_ -> setProperties(cp);
-	conductor_ -> setText(text_);
+	diagram_ -> undoStack().push(cscpc);
 }
 
 /**

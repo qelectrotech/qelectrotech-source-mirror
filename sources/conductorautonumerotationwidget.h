@@ -7,6 +7,7 @@
 #include <QMultiMap>
 #include <QString>
 #include "conductor.h"
+#include "diagram.h"
 
 class ConductorAutoNumerotationWidget : public QDialog
 {
@@ -28,6 +29,7 @@ class ConductorAutoNumerotationWidget : public QDialog
 	//attributes
 	Conductor *conductor_;
 	QSet<Conductor *> c_list; //liste des conducteurs au même potentiel
+	Diagram *diagram_;
 	QList <QRadioButton *> *radio_List;
 	QLineEdit *text_field;
 	QString text_;
