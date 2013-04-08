@@ -410,9 +410,8 @@ void DiagramView::pasteHere() {
 }
 
 /**
-	Gere les clics et plus particulierement :
-	 *  le clic du milieu (= coller pour X11)
-	 *  le clic pour ajouter un champ de texte independant
+	Manage the events click mouse :
+	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (fresh_focus_in_) {
