@@ -419,16 +419,6 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
-	if (isInteractive() && !scene -> isReadOnly()) {
-		if (e -> buttons() == Qt::MidButton) {
-			paste(mapToScene(e -> pos()), QClipboard::Selection);
-		} else {
-			if (is_adding_text && e -> buttons() == Qt::LeftButton) {
-				addDiagramTextAtPos(mapToScene(e -> pos()));
-				is_adding_text = false;
-			}
-		}
-	}
 	QGraphicsView::mousePressEvent(e);
 }
 
@@ -437,10 +427,26 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 	@param e QWheelEvent
 */
 void DiagramView::wheelEvent(QWheelEvent *e) {
-	if (e -> delta() > 0) {
-		zoomIn();
-	} else {
-		zoomOut();
+	//Zoom and scrolling
+	if (e->buttons() != Qt::MidButton) {
+		if (!(e -> modifiers() & Qt::ControlModifier)) {
+			if (e -> delta() > 0)	zoomIn();
+			else					zoomOut();
+		}
+		else {
+			QAbstractScrollArea::wheelEvent(e);
+		}
+	}
+	// Or select visualisation or selection mode
+	else{
+		if (!is_moving_view_) {
+			setVisualisationMode();
+			is_moving_view_ = true;
+		}
+		else{
+			setSelectionMode();
+			is_moving_view_ = false;
+		}
 	}
 }
 
