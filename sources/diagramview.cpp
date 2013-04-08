@@ -419,6 +419,16 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
 	}
+		if (isInteractive() && !scene -> isReadOnly()) {
+			if (e -> buttons() == Qt::MidButton) {
+				//paste(mapToScene(e -> pos()), QClipboard::Selection);
+			} else {
+				if (is_adding_text && e -> buttons() == Qt::LeftButton) {
+					addDiagramTextAtPos(mapToScene(e -> pos()));
+					is_adding_text = false;
+				}
+			}
+		}
 	QGraphicsView::mousePressEvent(e);
 }
 
