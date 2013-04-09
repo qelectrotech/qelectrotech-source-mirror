@@ -63,11 +63,11 @@ DEPENDPATH += .
 INCLUDEPATH += sources sources/editor sources/titleblock
 
 # Fichiers sources
-HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h   sources/htmleditor/*.h
-SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/htmleditor/*.cpp
+HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h
+SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
-RESOURCES += qelectrotech.qrc  sources/htmleditor/htmleditor.qrc
+RESOURCES += qelectrotech.qrc
 
 # Liste des ressources Windows
 RC_FILE = ico/windows_icon/qelectrotech.rc
@@ -76,10 +76,10 @@ RC_FILE = ico/windows_icon/qelectrotech.rc
 TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang/qet_pt.ts lang/qet_cs.ts lang/qet_pl.ts lang/qet_de.ts lang/qet_ro.ts lang/qet_it.ts
 
 # Modules Qt utilises par l'application
-QT += xml svg network sql webkit
+QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
-FORMS = sources/htmleditor/htmleditor.ui sources/htmleditor/inserthtmldialog.ui
+FORMS = sources/richtext/addlinkdialog.ui
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 

@@ -38,7 +38,6 @@
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
 
-#include "htmleditor/htmleditor.h"
 
 /**
 	Constructeur

@@ -20,7 +20,8 @@
 #include "qet.h"
 #include "qetapp.h"
 
-#include "htmleditor/htmleditor.h"
+#include "richtext/richtexteditor_p.h"
+
 /**
 	Constructeur
 	@param parent Le QGraphicsItem parent du champ de texte
@@ -313,13 +314,11 @@ void DiagramTextItem::setHtmlText(const QString &txt) {
  */
 void DiagramTextItem::edit() {
 	//Open the HtmlEditor
-	HtmlEditor *editor = new HtmlEditor();
+	qdesigner_internal::RichTextEditorDialog *editor = new qdesigner_internal::RichTextEditorDialog();
 	// connect the in/out
 	connect(editor, SIGNAL(applyEditText(const QString &)), this, SLOT(setHtmlText(const QString &)));
 	// load the Html txt
-	editor->loadHtml( toHtml() );
-	// set the minimum controls
-	editor->setSimpleDisplay(true);
+	editor->setText( toHtml() );
 	// show
 	editor->show();
 }
