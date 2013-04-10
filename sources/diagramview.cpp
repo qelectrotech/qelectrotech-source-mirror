@@ -37,6 +37,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
+#include "conductorautonumerotation.h"
 
 
 /**
