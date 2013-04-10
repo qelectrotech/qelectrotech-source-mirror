@@ -402,7 +402,11 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
             tr("Justify"), editor, 0, alignment_group);
     addAction(m_align_justify_action);
 
-    addSeparator();
+	m_align_justify_action -> setVisible( false );
+	m_align_center_action  -> setVisible( false );
+	m_align_left_action   -> setVisible( false );
+	m_align_right_action   -> setVisible( false );
+    //addSeparator();
 
     // Superscript and subscript buttons
 
@@ -421,7 +425,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 	m_valign_sup_action -> setVisible( false );
 	m_valign_sub_action -> setVisible( false );
 
-/*    addSeparator();
+    //addSeparator();
 
     // Insert hyperlink and image buttons
 
@@ -433,7 +437,8 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
     connect(m_image_action, SIGNAL(triggered()), SLOT(insertImage()));
     addAction(m_image_action);
 
-    addSeparator();*/
+	m_image_action -> setVisible( false );
+    addSeparator();
 
     // Text color button
     connect(m_color_action, SIGNAL(colorChanged(QColor)),
