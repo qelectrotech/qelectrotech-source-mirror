@@ -20,11 +20,13 @@ class ConductorAutoNumerotationWidget : public QDialog
 	void setText (QString);
 	void accept();
 
+	signals:
+	void textIsSelected (QString);
+
 	private:
 	//methods
 	void buildInterface();
 	QVBoxLayout* buildRadioList();
-	void applyText();
 
 	//attributes
 	Conductor *conductor_;
