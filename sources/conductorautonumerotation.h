@@ -1,7 +1,9 @@
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
-#include <conductor.h>
+#include <QObject>
+#include "conductor.h"
+#include "diagram.h"
 
 class NumStrategy;
 
@@ -16,32 +18,48 @@ class ConductorAutoNumerotation
 	//methods
 	void setConductor(Conductor *);
 	void numerate();
+	void setText(QString);
 
 	protected:
 	//methods
-	void setNumStrategy (NumStrategy *);
+	void setNumStrategy ();
 
 	//attributes
 	Conductor *conductor_;
 	Diagram *diagram_;
 	QSet <Conductor *> conductor_list;
 	NumStrategy *strategy_;
+
+	private:
+	bool strategy_is_set;
 };
 
 
-class NumStrategy
+class NumStrategy: public QObject
 {
+	Q_OBJECT
+
 	public:
-	NumStrategy ();
+	NumStrategy (Conductor *);
 	virtual ~NumStrategy ();
-	virtual void createNumerotation(Conductor *, Diagram *) = 0; //cree la numerotation en fonction de la strategie utilisé
+	virtual void createNumerotation() = 0; //cree la numerotation en fonction de la strategie utilisé
+
+	public slots:
+	void applyText(QString);
+
+	protected:
+	Conductor *conductor_;
+	QSet <Conductor *> c_list;
+	Diagram *diagram_;
 
 };
 
 
 class SamePotential: public NumStrategy
 {
-	virtual void createNumerotation(Conductor *, Diagram *);
+	public:
+	SamePotential (Conductor *);
+	virtual void createNumerotation();
 };
 
 bool eachIsEqual (const QStringList &);

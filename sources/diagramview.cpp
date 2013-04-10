@@ -982,13 +982,27 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	if (conductor_dialog.exec() == QDialog::Accepted) {
 		// recupere les nouvelles proprietes
 		ConductorProperties new_properties = cpw -> conductorProperties();
-		
 		if (new_properties != old_properties) {
-			// initialise l'objet UndoCommand correspondant
-			ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
-			ccpc -> setOldSettings(old_properties);
-			ccpc -> setNewSettings(new_properties);
-			diagram() -> undoStack().push(ccpc);
+			int qmbreturn=0;
+			//if conductor isn't alone at this potential
+			//ask user to apply text on every conductors of this potential
+			if (edited_conductor -> relatedPotentialConductors().size() >= 1){
+				qmbreturn = QMessageBox::question(diagramEditor(), tr("Textes de conducteurs"),
+												  tr("Voulez-vous appliquer le nouveau texte \n"
+													 "\340 l'ensemble des conducteurs de ce potentiel ?"),
+												  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
+				if (qmbreturn == QMessageBox::Yes){
+					ConductorAutoNumerotation can(edited_conductor);
+					can.setText(new_properties.text);
+				}
+			}
+			if (qmbreturn == 0 || qmbreturn == QMessageBox::No) {
+				// initialise l'objet UndoCommand correspondant
+				ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
+				ccpc -> setOldSettings(old_properties);
+				ccpc -> setNewSettings(new_properties);
+				diagram() -> undoStack().push(ccpc);
+			}
 		}
 	}
 }
