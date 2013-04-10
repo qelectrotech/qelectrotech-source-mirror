@@ -1,8 +1,8 @@
 #include "conductorautonumerotationwidget.h"
+#include "conductorproperties.h"
+#include "diagramcommands.h"
+#include "diagram.h"
 
-/**
- * constructor
- */
 ConductorAutoNumerotationWidget::ConductorAutoNumerotationWidget(Conductor *c, QSet<Conductor *> cl, QWidget *parent) :
 	QDialog (parent),
 	conductor_(c),
@@ -15,9 +15,6 @@ ConductorAutoNumerotationWidget::ConductorAutoNumerotationWidget(Conductor *c, Q
 	buildInterface();
 }
 
-/**
- * @brief ConductorAutoNumerotationWidget::buildInterface
- */
 void ConductorAutoNumerotationWidget::buildInterface() {
 	QVBoxLayout *mainlayout = new QVBoxLayout;
 	QGroupBox *potential_groupbox = new QGroupBox(tr("Textes de potentiel"), this);
@@ -99,6 +96,31 @@ QMultiMap <int, QString> ConductorAutoNumerotationWidget::conductorsTextToMap(QS
 }
 
 /**
+ * @brief ConductorAutoNumerotationWidget::applyText
+ *applique le texte selectionne @text_ a tout les conducteur de @c_list et a @conducteur_
+ */
+void ConductorAutoNumerotationWidget::applyText() {
+	QSet <Conductor *> conductorslist = c_list;
+	conductorslist << conductor_;
+	QList <ConductorProperties> old_properties, new_properties;
+	ConductorProperties cp;
+
+	foreach (Conductor *c, conductorslist) {
+		old_properties << c -> properties();
+		cp = c -> properties();
+		cp.text = text_;
+		c -> setProperties(cp);
+		new_properties << c -> properties();
+		c -> setText(text_);
+	}
+	// initialise l'objet UndoCommand correspondant
+	ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(conductorslist);
+	cscpc -> setOldSettings(old_properties);
+	cscpc -> setNewSettings(new_properties);
+	diagram_ -> undoStack().push(cscpc);
+}
+
+/**
  * @brief ConductorAutoNumerotationWidget::setText
  * enregistre le texte @t passé en parametre
  */
@@ -112,9 +134,10 @@ void ConductorAutoNumerotationWidget::setText(QString t) {
  */
 void ConductorAutoNumerotationWidget::accept() {
 	if (text_field -> isEnabled()) {
-		emit textIsSelected(text_field -> text());
+		text_ = text_field -> text();
+		applyText();
 		}
 	else
-		emit textIsSelected(text_);
+		applyText();
 	close();
 }

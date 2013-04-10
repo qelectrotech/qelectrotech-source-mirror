@@ -37,8 +37,7 @@
 #include "qeticons.h"
 #include "qetmessagebox.h"
 #include "qtextorientationspinboxwidget.h"
-#include "htmleditor/htmleditor.h"
-#include "conductorautonumerotation.h"
+
 
 /**
 	Constructeur
@@ -410,9 +409,8 @@ void DiagramView::pasteHere() {
 }
 
 /**
-	Gere les clics et plus particulierement :
-	 *  le clic du milieu (= coller pour X11)
-	 *  le clic pour ajouter un champ de texte independant
+	Manage the events click mouse :
+	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
 	if (fresh_focus_in_) {
@@ -420,32 +418,39 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 		fresh_focus_in_ = false;
 	}
 	if (isInteractive() && !scene -> isReadOnly()) {
-		if (e -> buttons() == Qt::MidButton) {
-			paste(mapToScene(e -> pos()), QClipboard::Selection);
-		} else {
-			if (is_adding_text && e -> buttons() == Qt::LeftButton) {
-				addDiagramTextAtPos(mapToScene(e -> pos()));
-				is_adding_text = false;
-			}
+		if (is_adding_text && e -> buttons() == Qt::LeftButton) {
+			addDiagramTextAtPos(mapToScene(e -> pos()));
+			is_adding_text = false;
 		}
 	}
 	QGraphicsView::mousePressEvent(e);
 }
 
 /**
-	Gere les actions liees a la rollette de la souris
-	@param e QWheelEvent decrivant l'evenement rollette
+	Manage wheel event of mouse
+	@param e QWheelEvent
 */
 void DiagramView::wheelEvent(QWheelEvent *e) {
-	// si la touche Ctrl est enfoncee, on zoome / dezoome
-	if (e -> modifiers() & Qt::ControlModifier) {
-		if (e -> delta() > 0) {
-			zoomIn();
-		} else {
-			zoomOut();
+	//Zoom and scrolling
+	if (e->buttons() != Qt::MidButton) {
+		if (!(e -> modifiers() & Qt::ControlModifier)) {
+			if (e -> delta() > 0)	zoomIn();
+			else					zoomOut();
 		}
-	} else {
-		QAbstractScrollArea::wheelEvent(e);
+		else {
+			QAbstractScrollArea::wheelEvent(e);
+		}
+	}
+	// Or select visualisation or selection mode
+	else{
+		if (!is_moving_view_) {
+			setVisualisationMode();
+			is_moving_view_ = true;
+		}
+		else{
+			setSelectionMode();
+			is_moving_view_ = false;
+		}
 	}
 }
 
@@ -711,7 +716,7 @@ void DiagramView::updateWindowTitle() {
 }
 
 /**
-	Active ou desactive le dessin de grille selon la quantite de pixels affichee
+	Enables or disables the drawing grid according to the amount of pixels display
 */
 void DiagramView::adjustGridToZoom() {
 	QRectF viewed_scene = viewedSceneRect();
@@ -977,27 +982,13 @@ void DiagramView::editConductor(Conductor *edited_conductor) {
 	if (conductor_dialog.exec() == QDialog::Accepted) {
 		// recupere les nouvelles proprietes
 		ConductorProperties new_properties = cpw -> conductorProperties();
+		
 		if (new_properties != old_properties) {
-			int qmbreturn=0;
-			//if conductor isn't alone at this potential
-			//ask user to apply text on every conductors of this potential
-			if (edited_conductor -> relatedPotentialConductors().size() >= 1){
-				qmbreturn = QMessageBox::question(diagramEditor(), tr("Textes de conducteurs"),
-												  tr("Voulez-vous appliquer le nouveau texte \n"
-													 "\340 l'ensemble des conducteurs de ce potentiel ?"),
-												  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
-				if (qmbreturn == QMessageBox::Yes){
-					ConductorAutoNumerotation can(edited_conductor);
-					can.setText(new_properties.text);
-				}
-			}
-			if (qmbreturn == 0 || qmbreturn == QMessageBox::No) {
-				// initialise l'objet UndoCommand correspondant
-				ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
-				ccpc -> setOldSettings(old_properties);
-				ccpc -> setNewSettings(new_properties);
-				diagram() -> undoStack().push(ccpc);
-			}
+			// initialise l'objet UndoCommand correspondant
+			ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand(edited_conductor);
+			ccpc -> setOldSettings(old_properties);
+			ccpc -> setNewSettings(new_properties);
+			diagram() -> undoStack().push(ccpc);
 		}
 	}
 }
