@@ -64,7 +64,7 @@ INCLUDEPATH += sources sources/editor sources/titleblock
 
 # Fichiers sources
 HEADERS += sources/*.h   sources/ui/*.h   sources/editor/*.h   sources/titleblock/*.h  sources/richtext/*.h
-SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp
+SOURCES += sources/*.cpp sources/editor/*.cpp sources/titleblock/*.cpp sources/richtext/*.cpp  sources/ui/*.cpp
 
 # Liste des fichiers qui seront incorpores au binaire en tant que ressources Qt
 RESOURCES += qelectrotech.qrc
@@ -79,7 +79,7 @@ TRANSLATIONS += lang/qet_en.ts lang/qet_es.ts lang/qet_fr.ts lang/qet_ru.ts lang
 QT += xml svg network sql
 
 # UI DESIGNER FILES AND GENERATION SOURCES FILES
-FORMS = sources/richtext/addlinkdialog.ui
+FORMS += sources/richtext/addlinkdialog.ui  sources/ui/*.ui
 UI_SOURCES_DIR = sources/ui/
 UI_HEADERS_DIR = sources/ui/
 
