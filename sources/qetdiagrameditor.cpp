@@ -32,6 +32,9 @@
 #include "qetmessagebox.h"
 #include "qetresult.h"
 #include "genericpanel.h"
+#include "nomenclature.h"
+
+#include "ui/dialogconductorautonum.h"
 
 #include <QMessageBox>
 
@@ -221,6 +224,8 @@ void QETDiagramEditor::actions() {
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
+	prj_conductorANum = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les conducteurs (beta)"),              this);
+	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),            this);
 	
 	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
 	zoom_out          = new QAction(QET::Icons::ZoomOut,               tr("Zoom arri\350re"),                      this);
@@ -367,6 +372,8 @@ void QETDiagramEditor::actions() {
 	connect(prj_add_diagram,    SIGNAL(triggered()), this,       SLOT(addDiagramToProject())       );
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
+	connect(prj_conductorANum,  SIGNAL(triggered()), this,       SLOT(conductorAutoNumProject())   );
+	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
 	connect(zoom_in,            SIGNAL(triggered()), this,       SLOT(slot_zoomIn())               );
 	connect(zoom_out,           SIGNAL(triggered()), this,       SLOT(slot_zoomOut())              );
 	connect(zoom_content,       SIGNAL(triggered()), this,       SLOT(slot_zoomContent())          );
@@ -482,6 +489,9 @@ void QETDiagramEditor::menus() {
 	menu_project -> addAction(prj_add_diagram);
 	menu_project -> addAction(prj_del_diagram);
 	menu_project -> addAction(prj_clean);
+	menu_project -> addSeparator();
+	menu_project -> addAction(prj_conductorANum);
+	menu_project -> addAction(prj_nomenclature);
 	
 	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
 	view_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils Affichage"));
@@ -807,7 +817,7 @@ bool QETDiagramEditor::openAndAddProject(const QString &filepath, bool interacti
 		delete project;
 		return(false);
 	}
-	
+
 	// a ce stade, l'ouverture du fichier a reussi
 	// on l'ajoute a la liste des fichiers recents
 	QETApp::projectsRecentFiles() -> fileWasOpened(filepath);
@@ -1123,6 +1133,8 @@ void QETDiagramEditor::slot_updateActions() {
 	prj_add_diagram   -> setEnabled(editable_project);
 	prj_del_diagram   -> setEnabled(editable_project);
 	prj_clean         -> setEnabled(editable_project);
+	prj_conductorANum -> setEnabled(editable_project);
+	prj_nomenclature  -> setEnabled(editable_project);
 	import_diagram    -> setEnabled(editable_project);
 	export_diagram    -> setEnabled(opened_diagram);
 	print             -> setEnabled(opened_diagram);
@@ -1140,6 +1152,12 @@ void QETDiagramEditor::slot_updateActions() {
 	remove_column     -> setEnabled(editable_diagram);
 	add_row           -> setEnabled(editable_diagram);
 	remove_row        -> setEnabled(editable_diagram);
+	
+	//display the beta feature only in debug mode
+#ifdef QT_NO_DEBUG
+	prj_conductorANum -> setVisible(false);
+	prj_nomenclature  -> setVisible(false);
+#endif
 	
 	// affiche les actions correspondant au diagram view en cours
 	if (dv) {
@@ -1690,6 +1708,29 @@ void QETDiagramEditor::cleanCurrentProject() {
 		int clean_count = current_project -> cleanProject();
 		if (clean_count) pa -> reloadAndFilter();
 	}
+}
+
+/**
+ * @brief launch AutoNumConductor dialog
+ */
+void QETDiagramEditor::conductorAutoNumProject() {
+	//TODO: Test dialog autonum CYRIL F.
+	DialogConductorAutoNum *dg = new DialogConductorAutoNum();
+	dg->setModal(true);
+	dg->exec();
+	
+	delete dg;
+}
+
+/**
+ * @brief export nomemclature of schema
+ */
+void QETDiagramEditor::nomenclatureProject() {
+	//TODO: Test nomenclature CYRIL F.
+	nomenclature *nomencl= new nomenclature(currentProject()->project() ,this);
+	nomencl->saveToCSVFile();
+	
+	delete nomencl;
 }
 
 /**
