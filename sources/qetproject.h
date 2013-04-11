@@ -25,6 +25,7 @@
 #include "conductorproperties.h"
 #include "titleblockproperties.h"
 #include "templatescollection.h"
+
 class Diagram;
 class ElementsCollection;
 class ElementsCategory;
@@ -35,6 +36,7 @@ class TitleBlockTemplate;
 class XmlElementsCollection;
 class MoveElementsHandler;
 class MoveTitleBlockTemplatesHandler;
+
 /**
 	This class represents a QET project. Typically saved as a .qet file, it
 	consists in an XML document grouping 0 to n diagrams and embedding an elements

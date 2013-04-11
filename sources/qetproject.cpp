@@ -29,6 +29,8 @@
 #include "qetmessagebox.h"
 #include "titleblocktemplate.h"
 
+#include "ui/dialogwaiting.h"
+
 QString QETProject::integration_category_name = "import";
 
 /**
@@ -956,15 +958,24 @@ void QETProject::readDiagramsXml() {
 	// map destinee a accueillir les schemas
 	QMultiMap<int, Diagram *> loaded_diagrams;
 	
+	//show DialogWaiting
+	DialogWaiting* dlgWaiting = new DialogWaiting();
+	dlgWaiting -> setModal(true);
+	dlgWaiting -> show();
+	dlgWaiting -> setTitle( tr("<b>Ouverture du projet en cours...</b>") );
+	
 	// recherche les schemas dans le projet
 	QDomNodeList diagram_nodes = document_root_.elementsByTagName("diagram");
+	dlgWaiting->setProgressBarRange(0, diagram_nodes.length());
 	for (uint i = 0 ; i < diagram_nodes.length() ; ++ i) {
+		dlgWaiting->setProgressBar(i+1);
 		if (diagram_nodes.at(i).isElement()) {
 			QDomElement diagram_xml_element = diagram_nodes.at(i).toElement();
 			Diagram *diagram = new Diagram();
 			diagram -> setProject(this);
 			bool diagram_loading = diagram -> initFromXml(diagram_xml_element);
 			if (diagram_loading) {
+				dlgWaiting->setDetail( diagram->title() );
 				// recupere l'attribut order du schema
 				int diagram_order = -1;
 				if (!QET::attributeIsAnInteger(diagram_xml_element, "order", &diagram_order)) diagram_order = 500000;
@@ -979,6 +990,8 @@ void QETProject::readDiagramsXml() {
 	foreach(Diagram *diagram, loaded_diagrams.values()) {
 		addDiagram(diagram);
 	}
+	//delete dialog object
+	delete dlgWaiting;
 }
 
 /**
