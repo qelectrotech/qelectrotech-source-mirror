@@ -61,7 +61,7 @@ bool nomenclature::saveToCSVFile() {
 	
 	// SAVE IN FILE
 	QString name = tr("nomenclature_") + QString(m_project  -> title());
-	QString filename = QFileDialog::getSaveFileName(this->m_parent, tr("Enregister sous... "), name, "*.csv");
+	QString filename = QFileDialog::getSaveFileName(this->m_parent, tr("Enregister sous... "), name, tr("Fichiers csv (*.csv)"));
 	QFile file(filename);
 	if( !filename.isEmpty() ) {
 		if(QFile::exists ( filename )){
