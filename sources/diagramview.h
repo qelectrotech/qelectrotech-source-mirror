@@ -52,6 +52,7 @@ class DiagramView : public QGraphicsView {
 	bool fresh_focus_in_;               ///< Indicate the focus was freshly gained
 	ElementsLocation next_location_;
 	QPoint next_position_;
+	int FlagMouseButtons_;               ///< save the buttons of mouse
 	
 	// methods
 	public:
@@ -86,6 +87,7 @@ class DiagramView : public QGraphicsView {
 	
 	private:
 	void mousePressEvent(QMouseEvent *);
+	void mouseReleaseEvent(QMouseEvent *);
 	void dragEnterEvent(QDragEnterEvent *);
 	void dragLeaveEvent(QDragLeaveEvent *);
 	void dragMoveEvent(QDragMoveEvent *);

@@ -410,10 +410,12 @@ void DiagramView::pasteHere() {
 }
 
 /**
-	Manage the events click mouse :
+	Manage the press events click mouse :
 	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
+	// Save the button in flag
+	FlagMouseButtons_ = e->buttons();
 	if (fresh_focus_in_) {
 		switchToVisualisationModeIfNeeded(e);
 		fresh_focus_in_ = false;
@@ -424,34 +426,47 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 			is_adding_text = false;
 		}
 	}
+	// Select visualisation
+	if (e->buttons() == Qt::MidButton){
+		if (!is_moving_view_) {
+			setVisualisationMode();
+			is_moving_view_ = true;
+			// And Simulate the left click
+			QGraphicsView::mousePressEvent( new QMouseEvent(QEvent::MouseButtonPress, e->pos(), Qt::LeftButton, Qt::LeftButton, Qt::NoModifier) );
+		}
+	}
 	QGraphicsView::mousePressEvent(e);
 }
 
 /**
-	Manage wheel event of mouse
-	@param e QWheelEvent
+	Manage the release events click mouse :
 */
-void DiagramView::wheelEvent(QWheelEvent *e) {
-	//Zoom and scrolling
-	if (e->buttons() != Qt::MidButton) {
-		if (!(e -> modifiers() & Qt::ControlModifier)) {
-			if (e -> delta() > 0)	zoomIn();
-			else					zoomOut();
-		}
-		else {
-			QAbstractScrollArea::wheelEvent(e);
-		}
-	}
-	// Or select visualisation or selection mode
-	else{
-		if (!is_moving_view_) {
-			setVisualisationMode();
-			is_moving_view_ = true;
-		}
-		else{
+void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
+	// Selection mode
+	if (FlagMouseButtons_ == Qt::MidButton){
+		if (is_moving_view_) {
 			setSelectionMode();
 			is_moving_view_ = false;
 		}
+	}
+	QGraphicsView::mousePressEvent(e);
+}
+
+/**
+	Manage wheel event of mouse for Zoom and scrolling
+	@param e QWheelEvent
+*/
+void DiagramView::wheelEvent(QWheelEvent *e) {
+	if (!(e -> modifiers() & Qt::ControlModifier)) {
+		if (e -> delta() > 0) {
+			zoomIn();
+		}
+		else {
+			zoomOut();
+		}
+	}
+	else {
+		QAbstractScrollArea::wheelEvent(e);
 	}
 }
 
