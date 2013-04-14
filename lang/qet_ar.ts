@@ -161,7 +161,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Développeur</source>
-        <translation type="unfinished"></translation>
+        <translation>المُطوّر</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="176"/>
@@ -407,25 +407,29 @@
         <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>نمط خط الموصل</translatorcomment>
+        <translation>نمط :</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>نمط الموصل: خط مستمرّ</translatorcomment>
+        <translation>خط مستمرّ</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">خط متقطع</translation>
+        <translatorcomment>نمط الموصل: خط مُتقطّع</translatorcomment>
+        <translation>خط متقطع</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>نمط الموصل : نقاط و خطوط</translatorcomment>
+        <translation>خطوط و نقاط</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
@@ -554,7 +558,7 @@
         <location filename="../sources/diagramview.cpp" line="489"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="516"/>
@@ -2963,12 +2967,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">إيجاد في اللوحة</translation>
+        <translation>إيجاد في اللوحة</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير العنصر</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3192,13 +3196,13 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="305"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>إيجاد العنصر المُحدّد في اللوحة</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="306"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>إيجاد العنصر المُحدّد في اللوحة قبل تحريره</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="751"/>
@@ -6448,50 +6452,51 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished"></translation>
+        <translation>تسمية:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished"></translation>
+        <translation>المرجع</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation>ورقة</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation type="unfinished">مخطط</translation>
+        <translation>مخطط</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished"></translation>
+        <translation>تعيين</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished"></translation>
+        <translation>تسمية.</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished"></translation>
+        <translation>حفظ باسم...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation type="unfinished">خطأ</translation>
+        <translation>خطأ</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation>استحالة تعويض الملفّ
+</translation>
     </message>
 </context>
 </TS>
