@@ -32,10 +32,21 @@ ElementPrimitiveDecorator::~ElementPrimitiveDecorator() {
 */
 QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
 	if (!decorated_items_.count() || !scene()) return(QRectF());
-	
-	QRectF rect = getSceneBoundingRect(decorated_items_.first() -> toItem());
+
+	//if @decorated_items_ contain one item and if this item is a vertical or horizontal partline, apply a specific methode
+	if ((decorated_items_.count() == 1) && (decorated_items_.first() -> xmlName() == "line")) {
+		QRectF horto = decorated_items_.first() -> sceneGeometricRect();
+		if (!horto.width() || !horto.height()) {
+			QRectF rect = getSceneBoundingRect(decorated_items_.first() -> toItem());
+			foreach (CustomElementPart *item, decorated_items_) {
+				rect = rect.united(getSceneBoundingRect(item -> toItem()));
+			}
+			return (rect);
+		}
+	}
+	QRectF rect = decorated_items_.first() -> sceneGeometricRect();
 	foreach (CustomElementPart *item, decorated_items_) {
-		rect = rect.united(getSceneBoundingRect(item -> toItem()));
+		rect = rect.united(item -> sceneGeometricRect());
 	}
 	return(rect);
 }
