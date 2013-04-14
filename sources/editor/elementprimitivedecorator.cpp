@@ -33,13 +33,12 @@ ElementPrimitiveDecorator::~ElementPrimitiveDecorator() {
 QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
 	if (!decorated_items_.count() || !scene()) return(QRectF());
 	
-	QRectF rect = decorated_items_.first() -> sceneGeometricRect();
+	QRectF rect = getSceneBoundingRect(decorated_items_.first() -> toItem());
 	foreach (CustomElementPart *item, decorated_items_) {
-		rect = rect.united(item -> sceneGeometricRect());
+		rect = rect.united(getSceneBoundingRect(item -> toItem()));
 	}
 	return(rect);
 }
-
 /**
 	@return the outer bounds of the decorator as a rectangle.
 */
