@@ -37,11 +37,7 @@ QRectF ElementPrimitiveDecorator::internalBoundingRect() const {
 	if ((decorated_items_.count() == 1) && (decorated_items_.first() -> xmlName() == "line")) {
 		QRectF horto = decorated_items_.first() -> sceneGeometricRect();
 		if (!horto.width() || !horto.height()) {
-			QRectF rect = getSceneBoundingRect(decorated_items_.first() -> toItem());
-			foreach (CustomElementPart *item, decorated_items_) {
-				rect = rect.united(getSceneBoundingRect(item -> toItem()));
-			}
-			return (rect);
+			return (getSceneBoundingRect(decorated_items_.first() -> toItem()));
 		}
 	}
 	QRectF rect = decorated_items_.first() -> sceneGeometricRect();
