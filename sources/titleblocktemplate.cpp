@@ -1330,6 +1330,24 @@ QString TitleBlockTemplate::interpreteVariables(const QString &string, const Dia
 }
 
 /**
+	@brief Get list of variables
+	@return The list of string with variables
+*/
+QStringList TitleBlockTemplate::listOfVariables() {
+	QStringList list;
+	// run through each individual cell
+	for (int j = 0 ; j < rows_heights_.count() ; ++ j) {
+		for (int i = 0 ; i < columns_width_.count() ; ++ i) {
+			if (cells_[i][j] -> spanner_cell || cells_[i][j] -> cell_type == TitleBlockCell::EmptyCell) continue;
+			// TODO: not works on all cases...
+			list << cells_[i][j] -> value.name().replace("%","");
+		}	
+	}
+	qDebug() << list;
+	return list;
+}
+
+/**
 	This method uses a \a painter to render the \a text of a \a cell
 	into the \a cell_rect rectangle.
 	The alignment, font_size and other cell parameters are taken into account

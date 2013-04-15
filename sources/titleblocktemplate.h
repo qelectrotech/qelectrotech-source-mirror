@@ -106,6 +106,7 @@ class TitleBlockTemplate : public QObject {
 	void applyCellSpan(TitleBlockCell *);
 	void applyRowColNums();
 	void rowColsChanged();
+	QStringList listOfVariables();
 	
 	protected:
 	void loadInformation(const QDomElement &);

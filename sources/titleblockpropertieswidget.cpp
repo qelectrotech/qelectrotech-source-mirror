@@ -19,6 +19,8 @@
 #include "diagramcontextwidget.h"
 #include "qeticons.h"
 #include "templatescollection.h"
+#include "titleblocktemplate.h"
+
 /**
 	Constructeur
 	@param titleblock TitleBlockProperties a afficher
@@ -249,6 +251,26 @@ void TitleBlockPropertiesWidget::duplicateCurrentTitleBlockTemplate() {
 }
 
 /**
+ * @brief changeCurrentTitleBlockTemplate load the fields of the template to additional_fields_
+ * @param text
+ */
+void TitleBlockPropertiesWidget::changeCurrentTitleBlockTemplate(QString text) {
+	// delete all entry
+	additional_fields_ -> clear() ;
+	// get template
+	TitleBlockTemplate *tpl = tbt_collection_ -> getTemplate( text );
+	if(tpl != 0) {
+		// get all template fields
+		QStringList fields = tpl -> listOfVariables();
+		// set fields to additional_fields_ widget
+		DiagramContext templateContext;
+		for(int i =0; i<fields.count(); i++)
+			templateContext.addValue(fields.at(i), "");
+		setDiagramContext(templateContext);
+	}
+}
+
+/**
 	Builds the various child widgets for this widget
 */
 void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titleblock) {
@@ -267,6 +289,7 @@ void TitleBlockPropertiesWidget::initWidgets(const TitleBlockProperties &titlebl
 	// widgets
 	titleblock_template_label = new QLabel(tr("Mod\350le :"), this);
 	titleblock_template_name = new QComboBox(this);
+	connect(titleblock_template_name, SIGNAL(currentIndexChanged(QString)),this, SLOT(changeCurrentTitleBlockTemplate(QString)) );
 	titleblock_template_button_ = new QPushButton(QET::Icons::TitleBlock, QString());
 	titleblock_template_button_ -> setMenu(titleblock_template_menu_);
 
