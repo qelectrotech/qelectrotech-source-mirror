@@ -555,8 +555,6 @@ void QETDiagramEditor::toolbar() {
 	view_bar -> addAction(mode_selection);
 	view_bar -> addAction(mode_visualise);
 	view_bar -> addSeparator();
-	view_bar -> addAction(zoom_in);
-	view_bar -> addAction(zoom_out);
 	view_bar -> addAction(zoom_content);
 	view_bar -> addAction(zoom_fit);
 	view_bar -> addAction(zoom_reset);

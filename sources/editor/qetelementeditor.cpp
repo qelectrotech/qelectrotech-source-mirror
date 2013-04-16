@@ -319,8 +319,6 @@ void QETElementEditor::setupActions() {
 	main_toolbar -> addAction(redo);
 	main_toolbar -> addSeparator();
 	main_toolbar -> addAction(edit_delete);
-	view_toolbar -> addAction(zoom_in);
-	view_toolbar -> addAction(zoom_out);
 	view_toolbar -> addAction(zoom_fit);
 	view_toolbar -> addAction(zoom_reset);
 	element_toolbar -> addAction(edit_size_hs);
