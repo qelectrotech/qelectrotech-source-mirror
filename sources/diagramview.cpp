@@ -293,7 +293,7 @@ void DiagramView::handleTitleBlockDrop(QDropEvent *e) {
 }
 
 /**
-	Passe le Diagram en mode visualisation
+	Set the Diagram in visualisation mode
 */
 void DiagramView::setVisualisationMode() {
 	setDragMode(ScrollHandDrag);
@@ -303,7 +303,7 @@ void DiagramView::setVisualisationMode() {
 }
 
 /**
-	Passe le Diagram en mode Selection
+	Set the Diagram in Selection mode
 */
 void DiagramView::setSelectionMode() {
 	setDragMode(RubberBandDrag);
@@ -455,17 +455,6 @@ void DiagramView::wheelEvent(QWheelEvent *e) {
 		}
 		else {
 			QAbstractScrollArea::wheelEvent(e);
-		}
-	}
-	// Or select visualisation or selection mode
-	else{
-		if (!is_moving_view_) {
-			setVisualisationMode();
-			is_moving_view_ = true;
-		}
-		else{
-			setSelectionMode();
-			is_moving_view_ = false;
 		}
 	}
 }

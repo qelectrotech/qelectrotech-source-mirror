@@ -50,6 +50,8 @@ class ElementView : public QGraphicsView {
 	QRectF applyMovement(const QRectF &, const QET::OrientedMovement &, const QPointF &);
 	
 	public slots:
+	void setVisualisationMode();
+	void setSelectionMode();
 	void zoomIn();
 	void zoomOut();
 	void zoomFit();
@@ -59,6 +61,10 @@ class ElementView : public QGraphicsView {
 	void copy();
 	void paste();
 	void pasteInArea();
+	
+	signals:
+	/// Signal emitted after the mode changed
+	void modeChanged();
 	
 	private slots:
 	void getPasteArea(const QRectF &);
@@ -73,5 +79,6 @@ class ElementView : public QGraphicsView {
 	QString to_paste_in_area_;
 	int offset_paste_count_;
 	QPointF start_top_left_corner_;
+	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
 };
 #endif

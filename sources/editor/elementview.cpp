@@ -75,6 +75,24 @@ void ElementView::setScene(ElementScene *s) {
 }
 
 /**
+	Set the Diagram in visualisation mode
+*/
+void ElementView::setVisualisationMode() {
+	setDragMode(ScrollHandDrag);
+	setInteractive(false);
+	emit(modeChanged());
+}
+
+/**
+	Set the Diagram in Selection mode
+*/
+void ElementView::setSelectionMode() {
+	setDragMode(RubberBandDrag);
+	setInteractive(true);
+	emit(modeChanged());
+}
+
+/**
 	Agrandit le schema (+33% = inverse des -25 % de zoomMoins())
 */
 void ElementView::zoomIn() {
@@ -316,8 +334,16 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 	@param e QMouseEvent decrivant l'evenement souris
 */
 void ElementView::mousePressEvent(QMouseEvent *e) {
-	if (e -> buttons() & Qt::MidButton) {
-		paste(mapToScene(e -> pos()));
+	// Select visualisation or selection mode
+	if (e -> buttons() == Qt::MidButton) {
+		if (!is_moving_view_) {
+			setVisualisationMode();
+			is_moving_view_ = true;
+		}
+		else{
+			setSelectionMode();
+			is_moving_view_ = false;
+		}
 	}
 	QGraphicsView::mousePressEvent(e);
 }
@@ -327,15 +353,19 @@ void ElementView::mousePressEvent(QMouseEvent *e) {
 	@param e QWheelEvent decrivant l'evenement rollette
 */
 void ElementView::wheelEvent(QWheelEvent *e) {
-	// si la touche Ctrl est enfoncee, on zoome / dezoome
-	if (e -> modifiers() & Qt::ControlModifier) {
-		if (e -> delta() > 0) {
-			zoomIn();
-		} else {
-			zoomOut();
+	//Zoom and scrolling
+	if (e->buttons() != Qt::MidButton) {
+		if (!(e -> modifiers() & Qt::ControlModifier)) {
+			if (e -> delta() > 0){
+				zoomIn();
+			}
+			else{
+				zoomOut();
+			}
 		}
-	} else {
-		QAbstractScrollArea::wheelEvent(e);
+		else {
+			QAbstractScrollArea::wheelEvent(e);
+		}
 	}
 }
 
