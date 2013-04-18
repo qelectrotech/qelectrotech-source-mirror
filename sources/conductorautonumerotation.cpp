@@ -4,6 +4,7 @@
 #include "qetdiagrameditor.h"
 #include "QGraphicsView"
 #include "diagramcommands.h"
+#include "qetapp.h"
 
 /**
  * Constructor
@@ -78,6 +79,24 @@ void ConductorAutoNumerotation::setNumStrategy() {
 	}
 	else if (conductor_list.size() == 0) {
 		strategy_is_set = false;
+	}
+}
+
+
+/**
+ * @brief ConductorAutoNumerotation::removeNum_ofDiagram
+ * @param dg the diagram to remove text of Conductor
+ */
+void ConductorAutoNumerotation::removeNum_ofDiagram(Diagram *dg) {
+	// Setting of application
+	QSettings &qet_settings = QETApp::settings();
+	// Get the default text of conductor from conf file
+	QString Conductor_DefaultText = qet_settings.value("defaultconductortext", "_").toString();
+	// Get all conductors presents in diagram
+	QList<Conductor *> Conductors = dg -> content().conductors();
+	// Browse all conductors and set the default value
+	for (int i=0; i<Conductors.count(); i++) {
+		Conductors.at(i) -> setText( Conductor_DefaultText );
 	}
 }
 

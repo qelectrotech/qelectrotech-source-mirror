@@ -1712,8 +1712,7 @@ void QETDiagramEditor::cleanCurrentProject() {
  * @brief launch AutoNumConductor dialog
  */
 void QETDiagramEditor::conductorAutoNumProject() {
-	//TODO: Test dialog autonum CYRIL F.
-	DialogConductorAutoNum *dg = new DialogConductorAutoNum();
+	DialogConductorAutoNum *dg = new DialogConductorAutoNum(currentDiagram()->diagram(), this);
 	dg->setModal(true);
 	dg->exec();
 	

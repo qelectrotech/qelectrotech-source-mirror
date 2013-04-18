@@ -19,7 +19,8 @@ class ConductorAutoNumerotation
 	void setConductor(Conductor *);
 	void numerate();
 	void setText(QString);
-
+	void removeNum_ofDiagram(Diagram *);
+	
 	protected:
 	//methods
 	void setNumStrategy ();
