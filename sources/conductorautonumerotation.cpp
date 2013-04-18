@@ -84,19 +84,15 @@ void ConductorAutoNumerotation::setNumStrategy() {
 
 
 /**
- * @brief ConductorAutoNumerotation::removeNum_ofDiagram
- * @param dg the diagram to remove text of Conductor
+ * @brief Set the default text to all conductors of the diagram
+ * @param dg the diagram
  */
 void ConductorAutoNumerotation::removeNum_ofDiagram(Diagram *dg) {
-	// Setting of application
-	QSettings &qet_settings = QETApp::settings();
-	// Get the default text of conductor from conf file
-	QString Conductor_DefaultText = qet_settings.value("defaultconductortext", "_").toString();
 	// Get all conductors presents in diagram
 	QList<Conductor *> Conductors = dg -> content().conductors();
 	// Browse all conductors and set the default value
 	for (int i=0; i<Conductors.count(); i++) {
-		Conductors.at(i) -> setText( Conductor_DefaultText );
+		Conductors.at(i) -> setText( dg ->defaultConductorProperties.text );
 	}
 }
 
