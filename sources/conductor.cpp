@@ -1275,7 +1275,7 @@ void Conductor::displayedTextChanged() {
 											  QMessageBox::No| QMessageBox::Yes, QMessageBox::Yes);
 			if (qmbreturn == QMessageBox::Yes){
 				ConductorAutoNumerotation can(this);
-				can.setText(text_item -> toPlainText());
+				can.applyText(text_item -> toPlainText());
 			}
 		}
 		if (qmbreturn == 0 || qmbreturn == QMessageBox::No) {

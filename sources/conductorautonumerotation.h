@@ -7,8 +7,10 @@
 
 class NumStrategy;
 
-class ConductorAutoNumerotation
+class ConductorAutoNumerotation: public QObject
 {
+	Q_OBJECT
+
 	public:
 	//constructors & destructor
 	ConductorAutoNumerotation ();
@@ -18,8 +20,11 @@ class ConductorAutoNumerotation
 	//methods
 	void setConductor(Conductor *);
 	void numerate();
-	void setText(QString);
 	void removeNum_ofDiagram(Diagram *);
+
+	public slots:
+	void applyText(QString);
+
 	
 	protected:
 	//methods
@@ -30,9 +35,6 @@ class ConductorAutoNumerotation
 	Diagram *diagram_;
 	QSet <Conductor *> conductor_list;
 	NumStrategy *strategy_;
-
-	private:
-	bool strategy_is_set;
 };
 
 
@@ -45,22 +47,11 @@ class NumStrategy: public QObject
 	virtual ~NumStrategy ();
 	virtual void createNumerotation() = 0; //cree la numerotation en fonction de la strategie utilisé
 
-	public slots:
-	void applyText(QString);
-
 	protected:
 	Conductor *conductor_;
 	QSet <Conductor *> c_list;
 	Diagram *diagram_;
 
-};
-
-
-class SamePotential: public NumStrategy
-{
-	public:
-	SamePotential (Conductor *);
-	virtual void createNumerotation();
 };
 
 bool eachIsEqual (const QStringList &);

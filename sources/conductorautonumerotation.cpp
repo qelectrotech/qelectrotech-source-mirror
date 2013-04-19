@@ -12,8 +12,7 @@
 ConductorAutoNumerotation::ConductorAutoNumerotation() :
 conductor_ (0),
 diagram_ (0),
-strategy_ (0),
-strategy_is_set (false)
+strategy_ (0)
 {}
 
 /**
@@ -24,11 +23,8 @@ ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *c) :
 	conductor_ (c),
 	diagram_ (c -> diagram()),
 	conductor_list(c -> relatedPotentialConductors()),
-	strategy_ (0),
-	strategy_is_set (false)
-{
-	setNumStrategy();
-}
+	strategy_ (0)
+{}
 
 /**
  *destructor
@@ -44,7 +40,6 @@ void ConductorAutoNumerotation::setConductor(Conductor *c) {
 	conductor_ = c;
 	diagram_ = c -> diagram();
 	conductor_list = c -> relatedPotentialConductors();
-	setNumStrategy();
 }
 
 /**
@@ -52,35 +47,76 @@ void ConductorAutoNumerotation::setConductor(Conductor *c) {
  * execute the automatic numerotation
  */
 void ConductorAutoNumerotation::numerate() {
-	if (strategy_is_set)
-		strategy_ -> createNumerotation();
+	if (!conductor_) return;
+	//conductor is on an existing potential
+	if (conductor_list.size() >= 1 ) {
+		QStringList strl;
+		foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
+		//the texts is identicals
+		if (eachIsEqual(strl)) {
+			ConductorProperties cp;
+			cp.text = strl.at(0);
+			conductor_ -> setProperties(cp);
+			conductor_ -> setText(strl.at(0));
+		}
+		//the texts isn't identicals
+		else {
+			ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_, conductor_list, conductor_ -> diagramEditor());
+			connect(canw, SIGNAL(textIsSelected(QString)),
+					this, SLOT(applyText(QString)));
+			canw -> exec();
+		}
+	}
+	//conductor create a new potential
+	else {
+	}
 }
 
 /**
  * @brief ConductorAutoNumerotation::setText
  * apply the text @t by the strategy
  */
-void ConductorAutoNumerotation::setText(QString t) {
-	if (strategy_is_set)
-		strategy_ -> applyText(t);
+void ConductorAutoNumerotation::applyText(QString t) {
+	if (!conductor_) return;
+	if (conductor_list.empty()) {
+		//initialize the corresponding UndoCommand object
+		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand (conductor_);
+		ConductorProperties cp;
+		cp = conductor_ ->properties();
+		ccpc -> setOldSettings(cp);
+		cp.text = t;
+		ccpc -> setNewSettings(cp);
+		diagram_ -> undoStack().push(ccpc);
+		conductor_ -> setProperties(cp);
+		conductor_ -> setText(t);
+	}
+	else {
+		QSet <Conductor *> clist = conductor_list;
+		clist << conductor_;
+		QList <ConductorProperties> old_properties, new_properties;
+		ConductorProperties cp;
+
+		foreach (Conductor *c, clist) {
+			old_properties << c -> properties();
+			cp = c -> properties();
+			cp.text = t;
+			c -> setProperties(cp);
+			new_properties << c -> properties();
+			c -> setText(t);
+		}
+		//initialize the corresponding UndoCommand object
+		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(clist);
+		cscpc -> setOldSettings(old_properties);
+		cscpc -> setNewSettings(new_properties);
+		diagram_ -> undoStack().push(cscpc);
+	}
 }
 
 /**
  * @brief ConductorAutoNumerotation::setNumStrategy
  * apply the good strategy relative to the conductor
  */
-void ConductorAutoNumerotation::setNumStrategy() {
-	if (strategy_ != 0)
-		delete strategy_;
-
-	if (conductor_list.size() >= 1) {
-		strategy_ = new SamePotential (conductor_);
-		strategy_is_set = true;
-	}
-	else if (conductor_list.size() == 0) {
-		strategy_is_set = false;
-	}
-}
+void ConductorAutoNumerotation::setNumStrategy() {}
 
 
 /**
@@ -108,76 +144,6 @@ NumStrategy::NumStrategy (Conductor *c):
 
 NumStrategy::~NumStrategy() {}
 
-/**
- * @brief ConductorAutoNumerotationWidget::applyText
- *apply the text @t on every conductors of @c_list and @conductor_
- */
-void NumStrategy::applyText(QString t) {
-	if (!c_list.empty()) {
-		QSet <Conductor *> conductorslist = c_list;
-		conductorslist << conductor_;
-		QList <ConductorProperties> old_properties, new_properties;
-		ConductorProperties cp;
-
-		foreach (Conductor *c, conductorslist) {
-			old_properties << c -> properties();
-			cp = c -> properties();
-			cp.text = t;
-			c -> setProperties(cp);
-			new_properties << c -> properties();
-			c -> setText(t);
-		}
-		//initialize the corresponding UndoCommand object
-		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(conductorslist);
-		cscpc -> setOldSettings(old_properties);
-		cscpc -> setNewSettings(new_properties);
-		diagram_ -> undoStack().push(cscpc);
-	}
-	else {
-		//initialize the corresponding UndoCommand object
-		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand (conductor_);
-		ConductorProperties cp;
-		cp = conductor_ ->properties();
-		ccpc -> setOldSettings(cp);
-		cp.text = t;
-		ccpc -> setNewSettings(cp);
-		diagram_ -> undoStack().push(ccpc);
-		conductor_ -> setProperties(cp);
-		conductor_ -> setText(t);
-	}
-}
-
-
-/**
- * Constructor
- */
-SamePotential::SamePotential(Conductor *c):
-	NumStrategy(c)
-{}
-
-/**
- * @brief SamePotential::createNumerotation
- *create the numerotation for the conductor @c connected on an existing potential
- */
-void SamePotential::createNumerotation() {
-	QStringList strl;
-
-	foreach (const Conductor *cc, c_list) strl<<(cc->text());
-	//the texts is identicals
-	if (eachIsEqual(strl)) {
-		ConductorProperties cp;
-		cp.text = strl.at(0);
-		conductor_ -> setProperties(cp);
-		conductor_ -> setText(strl.at(0));
-	}
-	//the texts isn't identicals
-	else {
-		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_, c_list, conductor_ -> diagramEditor());
-		connect(canw, SIGNAL(textIsSelected(QString)),
-				this, SLOT(applyText(QString)));
-		canw -> exec();
-	}
-}
 
 /**
  * @return true if every text of qsl is identical, else false.
