@@ -14,13 +14,14 @@ class ConductorAutoNumerotation: public QObject
 	public:
 	//constructors & destructor
 	ConductorAutoNumerotation ();
-	ConductorAutoNumerotation(Conductor *);
+	ConductorAutoNumerotation (Conductor *);
+	ConductorAutoNumerotation (Diagram *);
 	~ConductorAutoNumerotation();
 
 	//methods
 	void setConductor(Conductor *);
 	void numerate();
-	void removeNum_ofDiagram(Diagram *);
+	void removeNum_ofDiagram();
 
 	public slots:
 	void applyText(QString);

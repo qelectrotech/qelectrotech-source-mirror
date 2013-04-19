@@ -273,6 +273,26 @@ bool Diagram::isEmpty() const {
 }
 
 /**
+ * @brief Diagram::potential
+ * @return all potential in the diagram
+ *each potential are in the QList and each conductors of one potential are in the QSet
+ */
+QList < QSet <Conductor *> > Diagram::potentials() {
+	QList < QSet <Conductor *> > potential_List;
+	if (content().conductors().size() == 0) return (potential_List); //return an empty potential
+	QList <Conductor *> conductors_list = content().conductors();
+
+	do {
+		QSet <Conductor *> one_potential = conductors_list.first() -> relatedPotentialConductors();
+		one_potential << conductors_list.takeFirst();
+		foreach (Conductor *c, one_potential) conductors_list.removeOne(c);
+		potential_List << one_potential;
+	} while (!conductors_list.empty());
+
+	return (potential_List);
+}
+
+/**
 	Exporte tout ou partie du schema 
 	@param whole_content Booleen (a vrai par defaut) indiquant si le XML genere doit
 	representer l'integralite du schema ou seulement le contenu selectionne

@@ -109,6 +109,7 @@ class Diagram : public QGraphicsScene {
 	void setConductor(bool);
 	void setConductorStart (QPointF);
 	void setConductorStop(QPointF);
+	QList < QSet <Conductor *> > potentials();
 	
 	// methods related to XML import/export
 	QDomDocument toXml(bool = true);

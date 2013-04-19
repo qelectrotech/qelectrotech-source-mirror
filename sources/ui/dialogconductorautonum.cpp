@@ -36,8 +36,8 @@ void DialogConductorAutoNum::on_pushButton_delete_clicked() {
 	
 	// if yes remove all
 	if( answer ==  QMessageBox::Yes) {
-		ConductorAutoNumerotation ConductorNum;
-		ConductorNum.removeNum_ofDiagram( dg_ );
+		ConductorAutoNumerotation can(dg_);
+		can.removeNum_ofDiagram();
 	}
 }
 

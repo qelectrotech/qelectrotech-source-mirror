@@ -27,6 +27,16 @@ ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *c) :
 {}
 
 /**
+ * Constructor
+ * @param d a diagram to apply automatic numerotation
+ */
+ConductorAutoNumerotation::ConductorAutoNumerotation(Diagram *d) :
+	conductor_ (0),
+	diagram_ (d),
+	strategy_ (0)
+{}
+
+/**
  *destructor
  */
 ConductorAutoNumerotation::~ConductorAutoNumerotation() {
@@ -120,15 +130,17 @@ void ConductorAutoNumerotation::setNumStrategy() {}
 
 
 /**
- * @brief Set the default text to all conductors of the diagram
+ * @brief Set the default text to all potentials of the diagram
  * @param dg the diagram
  */
-void ConductorAutoNumerotation::removeNum_ofDiagram(Diagram *dg) {
-	// Get all conductors presents in diagram
-	QList<Conductor *> Conductors = dg -> content().conductors();
-	// Browse all conductors and set the default value
-	for (int i=0; i<Conductors.count(); i++) {
-		Conductors.at(i) -> setText( dg ->defaultConductorProperties.text );
+void ConductorAutoNumerotation::removeNum_ofDiagram() {
+	if (!diagram_) return;
+	//Get all potentials presents in diagram
+	QList <QSet <Conductor *> > potential_list = diagram_ -> potentials();
+	//Browse all potentials and set the default text
+	for (int i=0; i < potential_list.size(); i++) {
+		ConductorAutoNumerotation can (potential_list.at(i).toList().first());
+		can.applyText(diagram_ -> defaultConductorProperties.text);
 	}
 }
 
