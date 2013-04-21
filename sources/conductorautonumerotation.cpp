@@ -50,6 +50,7 @@ void ConductorAutoNumerotation::setConductor(Conductor *c) {
 	conductor_ = c;
 	diagram_ = c -> diagram();
 	conductor_list = c -> relatedPotentialConductors();
+	if (strategy_) delete strategy_;
 }
 
 /**
@@ -139,8 +140,8 @@ void ConductorAutoNumerotation::removeNum_ofDiagram() {
 	QList <QSet <Conductor *> > potential_list = diagram_ -> potentials();
 	//Browse all potentials and set the default text
 	for (int i=0; i < potential_list.size(); i++) {
-		ConductorAutoNumerotation can (potential_list.at(i).toList().first());
-		can.applyText(diagram_ -> defaultConductorProperties.text);
+		setConductor (potential_list.at(i).toList().first());
+		applyText (diagram_ -> defaultConductorProperties.text);
 	}
 }
 
