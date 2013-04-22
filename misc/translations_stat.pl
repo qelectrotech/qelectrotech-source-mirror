@@ -139,6 +139,13 @@ our %languages = (
 		'translator_mail_ml' => 'antun.marakovic@lolaribar.hr',
 		'qt'                 => 1
 	}
+	'el' => {
+		'name'               => 'Greek',
+		'french_name'        => 'Greck',
+		'translator_name'    => 'Nikos Papadopoylos',
+		'translator_mail_ml' => '231036448@freemail.gr',
+		'qt'                 => 1
+	}
 );
 
 my $head_pattern = '^ %-32s ^ %-22s ^ %-8s ^ %-16s ^ %-16s ^ %-23s ^ %-20s ^ %-11s ^ %-7s ^ %-7s ^ %-7s ^ %-16s ^ %-38s ^'."\n";
