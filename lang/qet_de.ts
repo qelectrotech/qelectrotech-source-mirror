@@ -134,6 +134,21 @@
     </message>
 </context>
 <context>
+    <name>AddLinkDialog</name>
+    <message>
+        <source>Insert Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Title:</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>URL:</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>ArcEditor</name>
     <message>
         <source>Centre : </source>
@@ -283,6 +298,42 @@
     <message>
         <source>Afficher ce schéma</source>
         <comment>button tooltip</comment>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Conductor</name>
+    <message>
+        <source>Textes de conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez-vous appliquer le nouveau texte 
+à l&apos;ensemble des conducteurs de ce potentiel ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>ConductorAutoNumerotationWidget</name>
+    <message>
+        <source>Textes de potentiel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Les textes de ce potentiel électrique ne sont pas identiques.
+Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>  : est présent </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source> fois.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Autre</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -547,12 +598,77 @@
         <comment>what to display for untitled diagrams</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Textes de conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez-vous appliquer le nouveau texte 
+à l&apos;ensemble des conducteurs de ce potentiel ?</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiagramsChooser</name>
     <message>
         <source>Schéma sans titre</source>
         <translation>Schema unbenannt</translation>
+    </message>
+</context>
+<context>
+    <name>DialogConductorAutoNum</name>
+    <message>
+        <source>Annotation des conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>Sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>Numéroter le schéma actif</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>Numéroter le projet actif entier</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Format : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Supprimer l&apos;annotation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fermer</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Suppression des annotations conducteurs</source>
+        <comment>Attention</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez vraiment supprimer les annotations conducteurs de
+%1 ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>DialogWaiting</name>
+    <message>
+        <source>Merci de patienter</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -2911,6 +3027,18 @@ Options disponibles :
         <comment>status bar tip</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Éditer le champ de texte</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annoter les conducteurs (beta)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Exporter une nomenclature (beta)</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETElementEditor</name>
@@ -3655,6 +3783,10 @@ Que désirez vous faire ?</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>QETTitleBlockTemplateEditor</name>
@@ -4375,6 +4507,11 @@ Que désirez vous faire ?</source>
     <message>
         <source>redimensionnement de %1 primitives</source>
         <comment>undo caption -- %1 always &gt; 1</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>modifier les propriétés de plusieurs conducteurs</source>
+        <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5276,6 +5413,106 @@ Maximallänge : %2p</translation>
         <source>Impossible de remplacer le fichier!
 
 </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Fichiers csv (*.csv)</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>qdesigner_internal::ColorAction</name>
+    <message>
+        <source>Text Color</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>qdesigner_internal::HtmlTextEdit</name>
+    <message>
+        <source>Insert HTML entity</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>qdesigner_internal::RichTextEditorDialog</name>
+    <message>
+        <source>Edit text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rich Text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Source</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;OK</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&amp;Cancel</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>qdesigner_internal::RichTextEditorToolBar</name>
+    <message>
+        <source>Bold</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTRL+B</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Italic</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTRL+I</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Underline</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>CTRL+U</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Left Align</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Center</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Right Align</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Justify</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Superscript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Subscript</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert &amp;Link</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insert &amp;Image</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
