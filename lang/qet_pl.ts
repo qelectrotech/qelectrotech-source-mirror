@@ -6677,7 +6677,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="361"/>
         <source>Bold</source>
-        <translation>Bold</translation>
+        <translation>Pogrubione</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
@@ -6687,7 +6687,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="367"/>
         <source>Italic</source>
-        <translation>Italic</translation>
+        <translation>Kursywa</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
