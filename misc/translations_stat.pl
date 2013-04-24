@@ -141,7 +141,7 @@ our %languages = (
 	}
 	'el' => {
 		'name'               => 'Greek',
-		'french_name'        => 'Greck',
+		'french_name'        => 'Grec',
 		'translator_name'    => 'Nikos Papadopoylos',
 		'translator_mail_ml' => '231036448@freemail.gr',
 		'qt'                 => 1
