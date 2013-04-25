@@ -92,14 +92,11 @@ void ConductorAutoNumerotation::applyText(QString t) {
 	if (conductor_list.empty()) {
 		//initialize the corresponding UndoCommand object
 		ChangeConductorPropertiesCommand *ccpc = new ChangeConductorPropertiesCommand (conductor_);
-		ConductorProperties cp;
-		cp = conductor_ ->properties();
-		ccpc -> setOldSettings(cp);
+		ccpc -> setOldSettings (conductor_ -> properties());
+		ConductorProperties cp = conductor_ -> properties();
 		cp.text = t;
 		ccpc -> setNewSettings(cp);
 		diagram_ -> undoStack().push(ccpc);
-		conductor_ -> setProperties(cp);
-		conductor_ -> setText(t);
 	}
 	else {
 		QSet <Conductor *> clist = conductor_list;
@@ -111,9 +108,7 @@ void ConductorAutoNumerotation::applyText(QString t) {
 			old_properties << c -> properties();
 			cp = c -> properties();
 			cp.text = t;
-			c -> setProperties(cp);
-			new_properties << c -> properties();
-			c -> setText(t);
+			new_properties << cp;
 		}
 		//initialize the corresponding UndoCommand object
 		ChangeSeveralConductorsPropertiesCommand *cscpc = new ChangeSeveralConductorsPropertiesCommand(clist);
