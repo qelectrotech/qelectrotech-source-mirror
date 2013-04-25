@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Flow sensors</name>
         <name lang="fr">Capteurs debit</name>
+        <name lang="pl">Czujniki przepływu</name>
    </names>
 </qet-directory>

@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Humidity sensors</name>
         <name lang="fr">Capteurs humidité</name>
+        <name lang="pl">Czujnik wilgotności</name>
    </names>
 </qet-directory>

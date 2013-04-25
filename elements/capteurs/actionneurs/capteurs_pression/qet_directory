@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Pressure sensors</name>
         <name lang="fr">Capteurs pression</name>
+        <name lang="pl">Czujniki ciśnienia</name>
    </names>
 </qet-directory>

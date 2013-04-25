@@ -2,5 +2,6 @@
     <names>
         <name lang="en">Level sensors</name>
         <name lang="fr">Capteurs niveau</name>
+        <name lang="pl">Czujniki poziomu cieczy</name>
    </names>
 </qet-directory>
