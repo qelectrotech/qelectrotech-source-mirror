@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>400</width>
-    <height>136</height>
+    <height>147</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,10 +23,26 @@
      <item>
       <widget class="QLabel" name="labelTitle">
        <property name="text">
-        <string>TextLabel</string>
+        <string>Titre</string>
        </property>
        <property name="textFormat">
         <enum>Qt::AutoText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label">
+       <property name="text">
+        <string/>
+       </property>
+       <property name="pixmap">
+        <pixmap resource="../../qelectrotech.qrc">:/ico/48x48/user-away-extended.png</pixmap>
+       </property>
+       <property name="scaledContents">
+        <bool>false</bool>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -64,6 +80,8 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../qelectrotech.qrc"/>
+ </resources>
  <connections/>
 </ui>
