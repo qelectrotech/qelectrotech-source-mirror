@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>482</width>
-    <height>245</height>
+    <height>382</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,25 +27,7 @@
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_4">
         <item>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
-          <item>
-           <widget class="QRadioButton" name="radioButton_Diagram">
-            <property name="text">
-             <string>Numéroter le schéma actif</string>
-            </property>
-            <property name="checked">
-             <bool>true</bool>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QRadioButton" name="radioButton_Project">
-            <property name="text">
-             <string>Numéroter le projet actif entier</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+         <layout class="QVBoxLayout" name="verticalLayout_Selection"/>
         </item>
        </layout>
       </widget>
@@ -67,6 +49,14 @@
              <widget class="QLabel" name="label_format">
               <property name="text">
                <string>Format : </string>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="2">
+             <widget class="QPushButton" name="pushButton_info">
+              <property name="icon">
+               <iconset resource="../../qelectrotech.qrc">
+                <normaloff>:/ico/16x16/configure.png</normaloff>:/ico/16x16/configure.png</iconset>
               </property>
              </widget>
             </item>
@@ -120,6 +110,9 @@
       <widget class="QPushButton" name="pushButton_close">
        <property name="text">
         <string>Fermer</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
        </property>
       </widget>
      </item>

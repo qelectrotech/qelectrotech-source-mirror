@@ -1,9 +1,27 @@
+/*
+		Copyright 2006-2013 The QElectroTech Team
+		This file is part of QElectroTech.
+		
+		QElectroTech is free software: you can redistribute it and/or modify
+		it under the terms of the GNU General Public License as published by
+		the Free Software Foundation, either version 2 of the License, or
+		(at your option) any later version.
+		
+		QElectroTech is distributed in the hope that it will be useful,
+		but WITHOUT ANY WARRANTY; without even the implied warranty of
+		MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+		GNU General Public License for more details.
+		
+		You should have received a copy of the GNU General Public License
+		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #ifndef DIALOGCONDUCTORAUTONUM_H
 #define DIALOGCONDUCTORAUTONUM_H
 
 #include <QDialog>
 
 #include "diagram.h"
+#include "ui/diagramselection.h"
 
 namespace Ui {
 	class DialogConductorAutoNum;
@@ -18,13 +36,14 @@ class DialogConductorAutoNum : public QDialog
 	~DialogConductorAutoNum();
 	
 	private slots:
-	void on_pushButton_delete_clicked();
-	
+	void on_pushButton_delete_clicked();	
 	void on_pushButton_close_clicked();
 	
 	private:
 	Ui::DialogConductorAutoNum *ui;
 	Diagram *dg_;
+	diagramselection *dgselect_;	
+
 };
 
 #endif // DIALOGCONDUCTORAUTONUM_H
