@@ -160,7 +160,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Développeur</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Developer</translation>
     </message>
 </context>
 <context>
@@ -376,13 +376,14 @@
     <message>
         <location filename="../sources/conductor.cpp" line="1272"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conductors text</translation>
     </message>
     <message>
         <location filename="../sources/conductor.cpp" line="1273"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to apply the new text
+to all the conductors of this potential?</translation>
     </message>
 </context>
 <context>
@@ -390,13 +391,14 @@
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Potential texts</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">The texts of the electric potential are not identical.
+Apply a text to all of these drivers?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
@@ -411,7 +413,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Other</translation>
     </message>
 </context>
 <context>
@@ -726,13 +728,14 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="994"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Conductors text</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="995"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Do you want to apply the new text
+to all the conductors of this potential?</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1050"/>
@@ -753,55 +756,56 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="14"/>
         <source>Annotation des conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Annotation conductors</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="26"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Choice</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="34"/>
         <source>Numéroter le schéma actif</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dial the active diagram</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="44"/>
         <source>Numéroter le projet actif entier</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dial the entire active project</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="56"/>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="100"/>
         <source>Annotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Annotation</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="69"/>
         <source>Format : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Format :</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="111"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Deletion of the annotation</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="122"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Close</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.cpp" line="29"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Removing annotations conductors</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.cpp" line="31"/>
         <source>Voulez vraiment supprimer les annotations conducteurs de
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Really want to remove the conductors annotations
+1%?</translation>
     </message>
 </context>
 <context>
@@ -809,13 +813,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Thank you for your patience</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <location filename="../sources/ui/dialogwaiting.ui" line="59"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">TextLabel</translation>
     </message>
 </context>
 <context>
@@ -3396,17 +3400,17 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Edit the text field</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les conducteurs (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Annotate conductors</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Export a nomenclature</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -3534,13 +3538,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Find the selected item in the panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Find the item selected in the front panel to edit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
@@ -4580,7 +4584,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="965"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;b&gt; Opening project ... &lt;/ b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1326"/>
@@ -5108,7 +5112,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="946"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Modify the properties of multiple conductors </translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6562,17 +6566,17 @@ Maximum width: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">NOMENCLATURE:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ref</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Folio</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
@@ -6583,22 +6587,22 @@ Maximum width: %2px
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Description</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">nomenclature_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Save As ...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Files csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
@@ -6610,7 +6614,9 @@ Maximum width: %2px
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Unable to replace the file!
+
+</translation>
     </message>
 </context>
 <context>
