@@ -160,7 +160,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Développeur</source>
-        <translation type="unfinished">Developer</translation>
+        <translation>Developer</translation>
     </message>
 </context>
 <context>
@@ -169,19 +169,19 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
 </context>
 <context>
@@ -376,13 +376,13 @@
     <message>
         <location filename="../sources/conductor.cpp" line="1272"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished">Conductors text</translation>
+        <translation>Conductors text</translation>
     </message>
     <message>
         <location filename="../sources/conductor.cpp" line="1273"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished">Do you want to apply the new text
+        <translation>Do you want to apply the new text
 to all the conductors of this potential?</translation>
     </message>
 </context>
@@ -391,29 +391,29 @@ to all the conductors of this potential?</translation>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished">Potential texts</translation>
+        <translation>Potential texts</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">The texts of the electric potential are not identical.
+        <translation>The texts of the electric potential are not identical.
 Apply a text to all of these drivers?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation type="unfinished"></translation>
+        <translation>: Is this</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation type="unfinished"></translation>
+        <translation>time.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished">Other</translation>
+        <translation>Other</translation>
     </message>
 </context>
 <context>
@@ -459,25 +459,25 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Style :</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Solid line</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Dashed line</translation>
+        <translation>Dashed line</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dots and dashes</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
@@ -610,7 +610,7 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/diagramview.cpp" line="500"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>Untitled</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="527"/>
@@ -728,13 +728,13 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/diagramview.cpp" line="994"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished">Conductors text</translation>
+        <translation>Conductors text</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="995"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished">Do you want to apply the new text
+        <translation>Do you want to apply the new text
 to all the conductors of this potential?</translation>
     </message>
     <message>
@@ -756,56 +756,56 @@ to all the conductors of this potential?</translation>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="14"/>
         <source>Annotation des conducteurs</source>
-        <translation type="unfinished">Annotation conductors</translation>
+        <translation>Annotation conductors</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="26"/>
         <source>Sélection</source>
-        <translation type="unfinished">Choice</translation>
+        <translation>Choice</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="34"/>
         <source>Numéroter le schéma actif</source>
-        <translation type="unfinished">Dial the active diagram</translation>
+        <translation>Dial the active diagram</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="44"/>
         <source>Numéroter le projet actif entier</source>
-        <translation type="unfinished">Dial the entire active project</translation>
+        <translation>Dial the entire active project</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="56"/>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="100"/>
         <source>Annotation</source>
-        <translation type="unfinished">Annotation</translation>
+        <translation>Annotation</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="69"/>
         <source>Format : </source>
-        <translation type="unfinished">Format :</translation>
+        <translation>Format :</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="111"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished">Deletion of the annotation</translation>
+        <translation>Deletion of the annotation</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="122"/>
         <source>Fermer</source>
-        <translation type="unfinished">Close</translation>
+        <translation>Close</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.cpp" line="29"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished">Removing annotations conductors</translation>
+        <translation>Removing annotations conductors</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.cpp" line="31"/>
         <source>Voulez vraiment supprimer les annotations conducteurs de
 %1 ?</source>
-        <translation type="unfinished">Really want to remove the conductors annotations
-1%?</translation>
+        <translation>Really want to remove the conductors annotations
+%1.?</translation>
     </message>
 </context>
 <context>
@@ -813,13 +813,13 @@ to all the conductors of this potential?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished">Thank you for your patience</translation>
+        <translation>Thank you for your patience</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <location filename="../sources/ui/dialogwaiting.ui" line="59"/>
         <source>TextLabel</source>
-        <translation type="unfinished">TextLabel</translation>
+        <translation>TextLabel</translation>
     </message>
 </context>
 <context>
@@ -3385,12 +3385,12 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Find in the panel</translation>
+        <translation>Find in the panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Edit element</translation>
+        <translation>Edit element</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
@@ -3400,17 +3400,17 @@ Available options:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
-        <translation type="unfinished">Edit the text field</translation>
+        <translation>Edit the text field</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les conducteurs (beta)</source>
-        <translation type="unfinished">Annotate conductors</translation>
+        <translation>Annotate conductors</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation type="unfinished">Export a nomenclature</translation>
+        <translation>Export a nomenclature</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -3538,13 +3538,13 @@ Available options:
         <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Find the selected item in the panel</translation>
+        <translation>Find the selected item in the panel</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Find the item selected in the front panel to edit</translation>
+        <translation>Find the item selected in the front panel to edit</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
@@ -4584,7 +4584,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="965"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation type="unfinished">&lt;b&gt; Opening project ... &lt;/ b&gt;</translation>
+        <translation>&lt;b&gt; Opening project ... &lt;/ b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1326"/>
@@ -5112,7 +5112,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="946"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">Modify the properties of multiple conductors </translation>
+        <translation>Modify the properties of multiple conductors </translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6566,55 +6566,55 @@ Maximum width: %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation type="unfinished">NOMENCLATURE:</translation>
+        <translation>NOMENCLATURE:</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Ref</source>
-        <translation type="unfinished">Ref</translation>
+        <translation>Ref</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Folio</source>
-        <translation type="unfinished">Folio</translation>
+        <translation>Folio</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation type="unfinished">Diagram</translation>
+        <translation>Diagram</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation type="unfinished">Description</translation>
+        <translation>Description</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
         <source>nomenclature_</source>
-        <translation type="unfinished">nomenclature_</translation>
+        <translation>nomenclature_</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Enregister sous... </source>
-        <translation type="unfinished">Save As ...</translation>
+        <translation>Save As ...</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished">Files csv (*.csv)</translation>
+        <translation>Files csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation type="unfinished">Error</translation>
+        <translation>Error</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
         <source>Impossible de remplacer le fichier!
 
 </source>
-        <translation type="unfinished">Unable to replace the file!
+        <translation>Unable to replace the file!
 
 </translation>
     </message>
@@ -6624,7 +6624,7 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="250"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Text Color</translation>
     </message>
 </context>
 <context>
@@ -6632,7 +6632,7 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="192"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert HTML entity</translation>
     </message>
 </context>
 <context>
@@ -6640,27 +6640,27 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="669"/>
         <source>Edit text</source>
-        <translation type="unfinished"></translation>
+        <translation>Edit text</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="691"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Rich Text</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Source</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="698"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="700"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Cancel</translation>
     </message>
 </context>
 <context>
@@ -6668,72 +6668,72 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="361"/>
         <source>Bold</source>
-        <translation type="unfinished"></translation>
+        <translation>Bold</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="367"/>
         <source>Italic</source>
-        <translation type="unfinished"></translation>
+        <translation>Italic</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="373"/>
         <source>Underline</source>
-        <translation type="unfinished"></translation>
+        <translation>Underline</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="387"/>
         <source>Left Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Left Align</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="392"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Center</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="397"/>
         <source>Right Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Right Align</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="402"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>Justify</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="415"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Superscript</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="421"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Subscript</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="432"/>
         <source>Insert &amp;Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert &amp;Link</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="436"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Insert &amp;Image</translation>
     </message>
 </context>
 </TS>
