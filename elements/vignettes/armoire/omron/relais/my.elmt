@@ -1,9 +1,10 @@
 <definition width="30" version="0.3" hotspot_x="0" hotspot_y="30" height="30" type="element" orientation="dyyy">
     <names>
+        <name lang="en">MY</name>
+        <name lang="it">MY</name>
         <name lang="fr">MY</name>
         <name lang="pl">MY</name>
         <name lang="cs">MY</name>
-        <name lang="it">MY</name>
     </names>
     <informations></informations>
     <description>

@@ -1,9 +1,10 @@
 <definition width="20" version="0.3" hotspot_x="5" hotspot_y="55" height="90" type="element" orientation="dyyy">
     <names>
+        <name lang="en">Base P2RF 2</name>
+        <name lang="it">Base P2RF 2</name>
         <name lang="fr">embase P2RF 2</name>
         <name lang="pl">Podstawa P2RF 2</name>
         <name lang="cs">Patice P2RF 2</name>
-        <name lang="it">Base P2RF 2</name>
     </names>
     <informations></informations>
     <description>

@@ -1,9 +1,10 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="en">G2RS</name>
+        <name lang="it">G2RS</name>
         <name lang="fr">G2RS</name>
         <name lang="pl">G2RS</name>
         <name lang="cs">G2RS</name>
-        <name lang="it">G2RS</name>
     </names>
     <informations></informations>
     <description>
