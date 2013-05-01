@@ -766,12 +766,12 @@ to all the conductors of this potential?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="34"/>
         <source>Numéroter le schéma actif</source>
-        <translation>Dial the active diagram</translation>
+        <translation>Numbering the active diagram</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogconductorautonum.ui" line="44"/>
         <source>Numéroter le projet actif entier</source>
-        <translation>Dial the entire active project</translation>
+        <translation>Numbering the entire active project</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogconductorautonum.ui" line="56"/>
