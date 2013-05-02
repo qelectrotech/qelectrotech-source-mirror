@@ -19,10 +19,13 @@
 #define DIAGRAM_H
 #include <QtGui>
 #include <QtXml>
+#include <QHash>
 #include "bordertitleblock.h"
 #include "conductorproperties.h"
 #include "exportproperties.h"
 #include "qgimanager.h"
+#include "numerotationcontext.h"
+
 class Conductor;
 class CustomElement;
 class DiagramContent;
@@ -60,6 +63,8 @@ class Diagram : public QGraphicsScene {
 		 * Columns: display columns
 	*/
 	enum BorderOptions { EmptyBorder, TitleBlock, Columns };
+	/// Represents available option of Numerotation type.
+	enum NumerotationType { Conductors };
 	/// Default properties for new conductors
 	ConductorProperties defaultConductorProperties;
 	/// Diagram dimensions and title block
@@ -85,6 +90,7 @@ class Diagram : public QGraphicsScene {
 	QETProject *project_;
 	bool read_only_;
 	qreal diagram_qet_version_;
+	QHash <NumerotationType, NumerotationContext > numerotation_;
 	
 	// methods
 	protected:
@@ -94,6 +100,8 @@ class Diagram : public QGraphicsScene {
 	
 	public:
 	static bool clipboardMayContainDiagram();
+	bool setNumerotation (NumerotationType, NumerotationContext);
+	NumerotationContext getNumerotation (NumerotationType) const;
 	
 	// methods related to parent project
 	QETProject *project() const;
@@ -189,6 +197,31 @@ class Diagram : public QGraphicsScene {
 	void diagramTitleChanged(Diagram *, const QString &);
 };
 Q_DECLARE_METATYPE(Diagram *)
+
+/**
+ * @brief Diagram::setNumerotation, store a numerotation type
+ * @return true if storage is available
+ */
+inline bool Diagram::setNumerotation(Diagram::NumerotationType type, NumerotationContext context) {
+	switch (type) {
+		case Conductors:
+			numerotation_.insert(type, context);
+			return true;
+			break;
+		default:
+			return false;
+			break;
+	}
+}
+
+/**
+ * @brief Diagram::getNumerotation
+ * @return the NumerotationContext associated with the key.
+ * If numerotation_ contains no item with the key, the function returns a default-constructed NumerotationContext
+ */
+inline NumerotationContext Diagram::getNumerotation(Diagram::NumerotationType type) const {
+	return numerotation_.value(type);
+}
 
 /**
 	Display or hide the conductor setter, i.e. a dashed conductor stub which appears when creating a conductor between two terminals.
