@@ -80,3 +80,41 @@ void DialogConductorAutoNum::on_pushButton_close_clicked() {
 	close();
 }
 
+/**
+ * @brief set the autonum to all diagram selected
+ */
+void DialogConductorAutoNum::on_pushButton_annotation_clicked(){
+	// Get list of diagrams selected
+	QList<Diagram *>listDiag = dgselect_ ->list_of_DiagramSelected();
+	if(listDiag.count()<=0) return;
+	
+	QString diagramsTitle;
+	for(int i=0; i<listDiag.count(); i++){
+		diagramsTitle += listDiag.at(i)->title();
+		if(i+1<listDiag.count()) diagramsTitle += ", ";
+	}
+	// Ask if user is sure to numerate the conductor
+	QMessageBox::StandardButton answer = QET::MessageBox::warning(
+		this,
+		tr("Annotation des conducteurs", "Attention"),
+		QString(
+			tr("Voulez vraiment annoter les conducteurs de :\n\n%1 ?")
+		).arg(diagramsTitle),
+		QMessageBox::Yes | QMessageBox::No,
+		QMessageBox::No
+	);
+	
+	// if yes numerate all
+	if( answer ==  QMessageBox::Yes) {
+		NumerotationContext num;
+		for(int i=0; i<listDiag.count(); i++){
+			num.clear();
+			num.addValue("ten",5);
+			num.addValue("string","U");
+			num.addValue("folio");
+			listDiag.at(i)->setNumerotation(Diagram::Conductors, num);
+			qDebug() << "ok";
+		}
+	}
+}
+

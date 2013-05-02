@@ -36,7 +36,8 @@ class DialogConductorAutoNum : public QDialog
 	~DialogConductorAutoNum();
 	
 	private slots:
-	void on_pushButton_delete_clicked();	
+	void on_pushButton_annotation_clicked();
+	void on_pushButton_delete_clicked();
 	void on_pushButton_close_clicked();
 	
 	private:
