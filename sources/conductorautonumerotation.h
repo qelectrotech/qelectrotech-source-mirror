@@ -1,58 +1,51 @@
+/*
+	Copyright 2006-2013 The QElectroTech team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #ifndef CONDUCTORAUTONUMEROTATION_H
 #define CONDUCTORAUTONUMEROTATION_H
 
-#include <QObject>
 #include "conductor.h"
-#include "diagram.h"
+#include "numerotationcontext.h"
+#include "autonumerotation.h"
 
-class NumStrategy;
-
-class ConductorAutoNumerotation: public QObject
+class ConductorAutoNumerotation: public AutoNumerotation
 {
-	Q_OBJECT
-
 	public:
 	//constructors & destructor
-	ConductorAutoNumerotation ();
 	ConductorAutoNumerotation (Conductor *);
 	ConductorAutoNumerotation (Diagram *);
-	~ConductorAutoNumerotation();
 
 	//methods
 	void setConductor(Conductor *);
 	void numerate();
-	void removeNum_ofDiagram();
+	void numerateDiagram();
+	void removeNumOfDiagram();
 
 	public slots:
 	void applyText(QString);
 
-	
-	protected:
+	private:
 	//methods
-	void setNumStrategy ();
+	void numeratePotential ();
+	void numerateNewConductor ();
 
 	//attributes
 	Conductor *conductor_;
-	Diagram *diagram_;
 	QSet <Conductor *> conductor_list;
-	NumStrategy *strategy_;
-};
-
-
-class NumStrategy: public QObject
-{
-	Q_OBJECT
-
-	public:
-	NumStrategy (Conductor *);
-	virtual ~NumStrategy ();
-	virtual void createNumerotation() = 0; //cree la numerotation en fonction de la strategie utilisé
-
-	protected:
-	Conductor *conductor_;
-	QSet <Conductor *> c_list;
-	Diagram *diagram_;
-
 };
 
 bool eachIsEqual (const QStringList &);

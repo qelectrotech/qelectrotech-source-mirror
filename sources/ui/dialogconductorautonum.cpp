@@ -68,7 +68,7 @@ void DialogConductorAutoNum::on_pushButton_delete_clicked() {
 	if( answer ==  QMessageBox::Yes) {
 		for(int i=0; i<listDiag.count(); i++){
 			ConductorAutoNumerotation can(listDiag.at(i));
-			can.removeNum_ofDiagram();
+			can.removeNumOfDiagram();
 		}
 	}
 }

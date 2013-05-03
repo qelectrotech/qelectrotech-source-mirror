@@ -1,47 +1,45 @@
-#include <QStringList>
+/*
+	Copyright 2006-2013 The QElectroTech team
+	This file is part of QElectroTech.
+
+	QElectroTech is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 2 of the License, or
+	(at your option) any later version.
+
+	QElectroTech is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #include "conductorautonumerotation.h"
 #include "conductorautonumerotationwidget.h"
-#include "qetdiagrameditor.h"
-#include "QGraphicsView"
 #include "diagramcommands.h"
-#include "qetapp.h"
-
-/**
- * Constructor
- */
-ConductorAutoNumerotation::ConductorAutoNumerotation() :
-conductor_ (0),
-diagram_ (0),
-strategy_ (0)
-{}
+#include "numerotationcontextcommands.h"
 
 /**
  *Constructor
  * @param c the conductor to apply automatic numerotation
  */
 ConductorAutoNumerotation::ConductorAutoNumerotation(Conductor *c) :
+	AutoNumerotation (c -> diagram()),
 	conductor_ (c),
-	diagram_ (c -> diagram()),
-	conductor_list(c -> relatedPotentialConductors()),
-	strategy_ (0)
-{}
+	conductor_list(c -> relatedPotentialConductors())
+{
+	num_context = diagram_ -> getNumerotation(Diagram::Conductors);
+}
 
 /**
  * Constructor
  * @param d a diagram to apply automatic numerotation
  */
 ConductorAutoNumerotation::ConductorAutoNumerotation(Diagram *d) :
-	conductor_ (0),
-	diagram_ (d),
-	strategy_ (0)
+	AutoNumerotation (d),
+	conductor_ (NULL)
 {}
-
-/**
- *destructor
- */
-ConductorAutoNumerotation::~ConductorAutoNumerotation() {
-	delete strategy_;
-}
 
 /**
  * @param c the conductor to apply automatic numerotation
@@ -50,7 +48,7 @@ void ConductorAutoNumerotation::setConductor(Conductor *c) {
 	conductor_ = c;
 	diagram_ = c -> diagram();
 	conductor_list = c -> relatedPotentialConductors();
-	if (strategy_) delete strategy_;
+	num_context = diagram_ -> getNumerotation(Diagram::Conductors);
 }
 
 /**
@@ -59,33 +57,30 @@ void ConductorAutoNumerotation::setConductor(Conductor *c) {
  */
 void ConductorAutoNumerotation::numerate() {
 	if (!conductor_) return;
-	//conductor is on an existing potential
-	if (conductor_list.size() >= 1 ) {
-		QStringList strl;
-		foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
-		//the texts is identicals
-		if (eachIsEqual(strl)) {
-			ConductorProperties cp;
-			cp.text = strl.at(0);
-			conductor_ -> setProperties(cp);
-			conductor_ -> setText(strl.at(0));
-		}
-		//the texts isn't identicals
-		else {
-			ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_, conductor_list, conductor_ -> diagramEditor());
-			connect(canw, SIGNAL(textIsSelected(QString)),
-					this, SLOT(applyText(QString)));
-			canw -> exec();
-		}
-	}
-	//conductor create a new potential
-	else {
+	if (conductor_list.size() >= 1 ) numeratePotential();
+	else numerateNewConductor();
+}
+
+/**
+ * @brief ConductorAutoNumerotation::numerateDiagram
+ * Numerate all conductor in diagram
+ */
+void ConductorAutoNumerotation::numerateDiagram() {
+	if (!diagram_) return;
+	//Get all potentials presents in diagram
+	QList <QSet <Conductor *> > potential_list = diagram_ -> potentials();
+	//Browse all potentials and set new numerotation
+	for (int i=0; i < potential_list.size(); ++i) {
+		setConductor (potential_list.at(i).toList().first());
+		NumerotationContextCommands ncc(diagram_, num_context);
+		applyText(ncc.toRepresentedString());
+		diagram_ -> setNumerotation(Diagram::Conductors, ncc.next());
 	}
 }
 
 /**
- * @brief ConductorAutoNumerotation::setText
- * apply the text @t by the strategy
+ * @brief ConductorAutoNumerotation::applyText
+ * apply the text @t to @conductor_ and all conductors at the same potential
  */
 void ConductorAutoNumerotation::applyText(QString t) {
 	if (!conductor_) return;
@@ -119,17 +114,9 @@ void ConductorAutoNumerotation::applyText(QString t) {
 }
 
 /**
- * @brief ConductorAutoNumerotation::setNumStrategy
- * apply the good strategy relative to the conductor
- */
-void ConductorAutoNumerotation::setNumStrategy() {}
-
-
-/**
  * @brief Set the default text to all potentials of the diagram
- * @param dg the diagram
  */
-void ConductorAutoNumerotation::removeNum_ofDiagram() {
+void ConductorAutoNumerotation::removeNumOfDiagram() {
 	if (!diagram_) return;
 	//Get all potentials presents in diagram
 	QList <QSet <Conductor *> > potential_list = diagram_ -> potentials();
@@ -140,18 +127,39 @@ void ConductorAutoNumerotation::removeNum_ofDiagram() {
 	}
 }
 
+/**
+ * @brief ConductorAutoNumerotation::numeratePotential
+ * Numerate a conductor on an existing potential
+ */
+void ConductorAutoNumerotation::numeratePotential() {
+	QStringList strl;
+	foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
+	//the texts is identicals
+	if (eachIsEqual(strl)) {
+		ConductorProperties cp;
+		cp.text = strl.at(0);
+		conductor_ -> setProperties(cp);
+		conductor_ -> setText(strl.at(0));
+	}
+	//the texts isn't identicals
+	else {
+		ConductorAutoNumerotationWidget *canw = new ConductorAutoNumerotationWidget(conductor_, conductor_list, conductor_ -> diagramEditor());
+		connect(canw, SIGNAL(textIsSelected(QString)),
+				this, SLOT(applyText(QString)));
+		canw -> exec();
+	}
+}
 
 /**
- * Constructor
+ * @brief ConductorAutoNumerotation::numerateNewConductor
+ * create and apply a new numerotation to @conductor_
  */
-NumStrategy::NumStrategy (Conductor *c):
-	conductor_ (c),
-	c_list (c -> relatedPotentialConductors()),
-	diagram_ (c -> diagram())
-{}
-
-NumStrategy::~NumStrategy() {}
-
+void ConductorAutoNumerotation::numerateNewConductor() {
+	if (!conductor_) return;
+	NumerotationContextCommands ncc (diagram_, num_context);
+	applyText(ncc.toRepresentedString());
+	diagram_-> setNumerotation(Diagram::Conductors, ncc.next());
+}
 
 /**
  * @return true if every text of qsl is identical, else false.
