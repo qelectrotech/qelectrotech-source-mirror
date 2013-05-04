@@ -357,19 +357,20 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
     // Bold, italic and underline buttons
 
-    m_bold_action = createCheckableAction(QIcon(),
+    m_bold_action = createCheckableAction
+	(QIcon(":/ico/32x32/format-text-bold.png"),
             tr("Bold"), editor, SLOT(setFontBold(bool)), this);
     m_bold_action->setShortcut(tr("CTRL+B"));
     addAction(m_bold_action);
 
     m_italic_action = createCheckableAction(
-            QIcon(),
+	QIcon(":/ico/32x32/format-text-italic.png");
             tr("Italic"), editor, SLOT(setFontItalic(bool)), this);
     m_italic_action->setShortcut(tr("CTRL+I"));
     addAction(m_italic_action);
 
     m_underline_action = createCheckableAction(
-            QIcon(),
+	QIcon(":/ico/32x32/format-text-underline.png"),
             tr("Underline"), editor, SLOT(setFontUnderline(bool)), this);
     m_underline_action->setShortcut(tr("CTRL+U"));
     addAction(m_underline_action);

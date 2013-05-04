@@ -206,5 +206,8 @@
         <file>LICENSE</file>
         <file>ico/48x48/user-away.png</file>
         <file>ico/48x48/user-away-extended.png</file>
+        <file>ico/32x32/format-text-bold.png</file>
+        <file>ico/32x32/format-text-italic.png</file>
+        <file>ico/32x32/format-text-underline.png</file>
     </qresource>
 </RCC>
