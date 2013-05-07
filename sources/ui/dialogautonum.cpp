@@ -15,43 +15,48 @@
 		You should have received a copy of the GNU General Public License
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#include "dialogconductorautonum.h"
-#include "ui_dialogconductorautonum.h"
+#include "dialogautonum.h"
+#include "ui_dialogautonum.h"
 
 #include "conductorautonumerotation.h"
 #include "qetmessagebox.h"
 
-
-DialogConductorAutoNum::DialogConductorAutoNum(Diagram *dg, QWidget *parent) :
+/**
+ * @brief DialogAutoNum::DialogAutoNum
+ * @param dg
+ * @param parent
+ */
+DialogAutoNum::DialogAutoNum(Diagram *dg, QWidget *parent) :
 	QDialog(parent),
-	ui(new Ui::DialogConductorAutoNum)
+	ui(new Ui::DialogAutoNum)
 {
 	ui -> setupUi(this);
 	dg_ = dg;
 	
 	// create widget of diagram selection
-	dgselect_ = new diagramselection( dg_ ->project(), this );
+	dgselect_ = new diagramselection( dg_ -> project(), this );
 	ui -> verticalLayout_Selection -> addWidget( dgselect_ );
 }
 
-DialogConductorAutoNum::~DialogConductorAutoNum()
-{
+/**
+ * @brief Destructor
+ */
+DialogAutoNum::~DialogAutoNum(){
 	delete ui;
 }
 
-
 /**
- * @brief DialogConductorAutoNum::on_pushButton_delete_clicked
+ * @brief DialogAutoNum::on_pushButton_delete_clicked
  */
-void DialogConductorAutoNum::on_pushButton_delete_clicked() {
+void DialogAutoNum::on_pushButton_delete_clicked() {
 	// get list of diagrams selected
-	QList<Diagram *>listDiag = dgselect_ ->list_of_DiagramSelected();
+	QList<Diagram *>listDiag = dgselect_ -> list_of_DiagramSelected();
 	if(listDiag.count()<=0) return;
 	
 	QString diagramsTitle;
 	for(int i=0; i<listDiag.count(); i++){
-		diagramsTitle += listDiag.at(i)->title();
-		if(i+1<listDiag.count()) diagramsTitle += ", ";
+		diagramsTitle += listDiag.at(i) -> title();
+		if(i+1 < listDiag.count()) diagramsTitle += ", ";
 	}
 	// Ask if user is sure to delete the conductor numerotation
 	QMessageBox::StandardButton answer = QET::MessageBox::critical(
@@ -74,24 +79,17 @@ void DialogConductorAutoNum::on_pushButton_delete_clicked() {
 }
 
 /**
- * @brief Close the dialog
- */
-void DialogConductorAutoNum::on_pushButton_close_clicked() {
-	close();
-}
-
-/**
  * @brief set the autonum to all diagram selected
  */
-void DialogConductorAutoNum::on_pushButton_annotation_clicked(){
+void DialogAutoNum::on_pushButton_annotation_clicked(){
 	// Get list of diagrams selected
-	QList<Diagram *>listDiag = dgselect_ ->list_of_DiagramSelected();
+	QList<Diagram *>listDiag = dgselect_ -> list_of_DiagramSelected();
 	if(listDiag.count()<=0) return;
 	
 	QString diagramsTitle;
 	for(int i=0; i<listDiag.count(); i++){
-		diagramsTitle += listDiag.at(i)->title();
-		if(i+1<listDiag.count()) diagramsTitle += ", ";
+		diagramsTitle += listDiag.at(i) -> title();
+		if(i+1 < listDiag.count()) diagramsTitle += ", ";
 	}
 	// Ask if user is sure to numerate the conductor
 	QMessageBox::StandardButton answer = QET::MessageBox::warning(
@@ -106,15 +104,25 @@ void DialogConductorAutoNum::on_pushButton_annotation_clicked(){
 	
 	// if yes numerate all
 	if( answer ==  QMessageBox::Yes) {
-		NumerotationContext num;
-		for(int i=0; i<listDiag.count(); i++){
-			num.clear();
-			num.addValue("ten",5);
-			num.addValue("string","U");
-			num.addValue("folio");
-			listDiag.at(i)->setNumerotation(Diagram::Conductors, num);
-			qDebug() << "ok";
-		}
 	}
 }
+
+/**
+ * @brief Close the dialog
+ */
+void DialogAutoNum::on_pushButton_close_clicked() {
+	close();
+}
+
+/*
+	NumerotationContext num;
+	for(int i=0; i<listDiag.count(); i++){
+		num.clear();
+		num.addValue("ten",5);
+		num.addValue("string","U");
+		num.addValue("folio");
+		listDiag.at(i)->setNumerotation(Diagram::Conductors, num);
+		qDebug() << "ok";
+	}
+*/
 

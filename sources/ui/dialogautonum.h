@@ -15,8 +15,8 @@
 		You should have received a copy of the GNU General Public License
 		along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef DIALOGCONDUCTORAUTONUM_H
-#define DIALOGCONDUCTORAUTONUM_H
+#ifndef DIALOGAUTONUM_H
+#define DIALOGAUTONUM_H
 
 #include <QDialog>
 
@@ -24,16 +24,16 @@
 #include "ui/diagramselection.h"
 
 namespace Ui {
-	class DialogConductorAutoNum;
+	class DialogAutoNum;
 }
 
-class DialogConductorAutoNum : public QDialog
+class DialogAutoNum : public QDialog
 {
 	Q_OBJECT
 	
 	public:
-	explicit DialogConductorAutoNum(Diagram *dg, QWidget *parent = 0);
-	~DialogConductorAutoNum();
+	explicit DialogAutoNum(Diagram *dg, QWidget *parent = 0);
+	~DialogAutoNum();
 	
 	private slots:
 	void on_pushButton_annotation_clicked();
@@ -41,10 +41,10 @@ class DialogConductorAutoNum : public QDialog
 	void on_pushButton_close_clicked();
 	
 	private:
-	Ui::DialogConductorAutoNum *ui;
+	Ui::DialogAutoNum *ui;
 	Diagram *dg_;
 	diagramselection *dgselect_;	
 
 };
 
-#endif // DIALOGCONDUCTORAUTONUM_H
+#endif // DialogAutoNum_H

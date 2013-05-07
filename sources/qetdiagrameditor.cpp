@@ -34,7 +34,7 @@
 #include "genericpanel.h"
 #include "nomenclature.h"
 
-#include "ui/dialogconductorautonum.h"
+#include "ui/dialogautonum.h"
 
 #include <QMessageBox>
 
@@ -224,8 +224,8 @@ void QETDiagramEditor::actions() {
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
-	prj_conductorANum = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les conducteurs (beta)"),              this);
-	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),            this);
+	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas (beta)"),        this);
+	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
 	
 	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
 	zoom_out          = new QAction(QET::Icons::ZoomOut,               tr("Zoom arri\350re"),                      this);
@@ -372,7 +372,7 @@ void QETDiagramEditor::actions() {
 	connect(prj_add_diagram,    SIGNAL(triggered()), this,       SLOT(addDiagramToProject())       );
 	connect(prj_del_diagram,    SIGNAL(triggered()), this,       SLOT(removeDiagramFromProject())  );
 	connect(prj_clean,          SIGNAL(triggered()), this,       SLOT(cleanCurrentProject())       );
-	connect(prj_conductorANum,  SIGNAL(triggered()), this,       SLOT(conductorAutoNumProject())   );
+	connect(prj_diagramNum,     SIGNAL(triggered()), this,       SLOT(diagramNumProject())   );
 	connect(prj_nomenclature,   SIGNAL(triggered()), this,       SLOT(nomenclatureProject())       );
 	connect(zoom_in,            SIGNAL(triggered()), this,       SLOT(slot_zoomIn())               );
 	connect(zoom_out,           SIGNAL(triggered()), this,       SLOT(slot_zoomOut())              );
@@ -490,7 +490,7 @@ void QETDiagramEditor::menus() {
 	menu_project -> addAction(prj_del_diagram);
 	menu_project -> addAction(prj_clean);
 	menu_project -> addSeparator();
-	menu_project -> addAction(prj_conductorANum);
+	menu_project -> addAction(prj_diagramNum);
 	menu_project -> addAction(prj_nomenclature);
 	
 	main_bar    -> toggleViewAction() -> setStatusTip(tr("Affiche ou non la barre d'outils principale"));
@@ -1131,7 +1131,7 @@ void QETDiagramEditor::slot_updateActions() {
 	prj_add_diagram   -> setEnabled(editable_project);
 	prj_del_diagram   -> setEnabled(editable_project);
 	prj_clean         -> setEnabled(editable_project);
-	prj_conductorANum -> setEnabled(editable_project);
+	prj_diagramNum    -> setEnabled(editable_project);
 	prj_nomenclature  -> setEnabled(editable_project);
 	import_diagram    -> setEnabled(editable_project);
 	export_diagram    -> setEnabled(opened_diagram);
@@ -1153,7 +1153,7 @@ void QETDiagramEditor::slot_updateActions() {
 	
 	//display the beta feature only in debug mode
 #ifdef QT_NO_DEBUG
-	prj_conductorANum -> setVisible(false);
+	prj_diagramNum -> setVisible(false);
 	prj_nomenclature  -> setVisible(false);
 #endif
 	
@@ -1709,10 +1709,10 @@ void QETDiagramEditor::cleanCurrentProject() {
 }
 
 /**
- * @brief launch AutoNumConductor dialog
+ * @brief launch dialog for numerate diagram
  */
-void QETDiagramEditor::conductorAutoNumProject() {
-	DialogConductorAutoNum *dg = new DialogConductorAutoNum(currentDiagram()->diagram(), this);
+void QETDiagramEditor::diagramNumProject() {
+	DialogAutoNum *dg = new DialogAutoNum(currentDiagram()->diagram(), this);
 	dg->setModal(true);
 	dg->exec();
 	

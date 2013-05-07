@@ -146,7 +146,7 @@ class QETDiagramEditor : public QETMainWindow {
 	void moveDiagramUp(Diagram *);
 	void moveDiagramDown(Diagram *);
 	void cleanCurrentProject();
-	void conductorAutoNumProject();
+	void diagramNumProject();
 	void nomenclatureProject();
 	void diagramWasAdded(DiagramView *);
 	void diagramIsAboutToBeRemoved(DiagramView *);
@@ -204,7 +204,7 @@ class QETDiagramEditor : public QETMainWindow {
 	QAction *prj_add_diagram;    ///< Add a diagram to the current project.
 	QAction *prj_del_diagram;    ///< Delete a diagram from the current project
 	QAction *prj_clean;          ///< Clean the content of the curent project by removing useless items
-	QAction *prj_conductorANum;  ///< Auto numerotation conductors
+	QAction *prj_diagramNum;     ///< Numerotation des schemas
 	QAction *prj_nomenclature;   ///< generate nomenclature
 	QAction *zoom_in;            ///< Zoom in
 	QAction *zoom_out;           ///< Zoom out
