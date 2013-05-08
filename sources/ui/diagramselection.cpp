@@ -107,11 +107,11 @@ void diagramselection::on_tableDiagram_customContextMenuRequested(const QPoint &
 	QAction *ret = menu.exec(ui -> tableDiagram -> viewport() -> mapToGlobal(pos));	
 	if (ret == desl)	{
 		for(int i=0; i<ui -> tableDiagram -> rowCount();i++)
-			ui -> tableDiagram -> item(i, 1)->setCheckState(Qt::Unchecked);
+			ui -> tableDiagram -> item(i, 0)->setCheckState(Qt::Unchecked);
 	}
 	else{
 		for(int i=0; i<ui -> tableDiagram -> rowCount();i++)
-			ui -> tableDiagram -> item(i, 1)->setCheckState(Qt::Checked);
+			ui -> tableDiagram -> item(i, 0)->setCheckState(Qt::Checked);
 	}
 }
 
