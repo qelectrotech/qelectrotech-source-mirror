@@ -58,7 +58,7 @@ void diagramselection::load_TableDiagram() {
 	ui -> tableDiagram -> setEditTriggers		(QAbstractItemView::NoEditTriggers);
 	QStringList titles;
 	titles.clear();
-	titles << tr("Nom") << tr("S\351lection");
+	titles << tr("S\351lection") << tr("Nom");
 	ui-> tableDiagram -> setHorizontalHeaderLabels( titles );
 	
 	// List Diagrams
@@ -72,11 +72,12 @@ void diagramselection::load_TableDiagram() {
 		item_Name  -> setData(Qt::DisplayRole, diagram_title);
 		item_State -> setData(Qt::CheckStateRole, Qt::Checked);
 
-		ui -> tableDiagram -> setRowCount(j+1);		
-		ui -> tableDiagram -> setItem(j, 0, item_Name);
-		ui -> tableDiagram -> setItem(j, 1, item_State);
+		ui -> tableDiagram -> setRowCount(j+1);
+		ui -> tableDiagram -> setItem(j, 0, item_State);
+		ui -> tableDiagram -> setItem(j, 1, item_Name);
+
 	}
-	ui -> tableDiagram -> resizeColumnsToContents();
+	ui -> tableDiagram -> horizontalHeader() -> setStretchLastSection(true);
 }
 
 /**
@@ -86,11 +87,10 @@ void diagramselection::load_TableDiagram() {
 QList<Diagram *> diagramselection::list_of_DiagramSelected() {
 	QList<Diagram *> listDiag;
 	for(int i=0; i<ui -> tableDiagram -> rowCount();i++){
-		if(ui -> tableDiagram -> item(i, 1)->checkState()){
+		if(ui -> tableDiagram -> item(i, 0)->checkState()){
 			listDiag.push_back( list_diagram_[i] );
 		}
 	}
-	
 	return listDiag;
 }
 
