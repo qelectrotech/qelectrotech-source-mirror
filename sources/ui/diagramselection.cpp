@@ -27,7 +27,10 @@ diagramselection::diagramselection(QETProject *prj, QWidget *parent) :
 	// list all diagrams presents in project
 	list_diagram_ = prj_ -> diagrams();
 	
-	ui -> label_prj -> setText( tr("Projet : ") + prj_ -> title() );
+	QString project_title = prj_ -> title();
+	if (project_title.isEmpty()) project_title = tr("Projet sans titre");
+
+	ui -> label_prj -> setText( tr("Projet : ") + project_title );
 	load_TableDiagram();
 }
 
@@ -63,7 +66,10 @@ void diagramselection::load_TableDiagram() {
 		QTableWidgetItem *item_Name  = new QTableWidgetItem();
 		QTableWidgetItem *item_State = new QTableWidgetItem();
 
-		item_Name  -> setData(Qt::DisplayRole, list_diagram_.at(i) -> title() );
+		QString diagram_title = list_diagram_.at(i) -> title();
+		if (diagram_title.isEmpty()) diagram_title = tr("Sch\351ma sans titre");
+
+		item_Name  -> setData(Qt::DisplayRole, diagram_title);
 		item_State -> setData(Qt::CheckStateRole, Qt::Checked);
 
 		ui -> tableDiagram -> setRowCount(j+1);		
