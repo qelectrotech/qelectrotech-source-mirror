@@ -365,7 +365,7 @@ RichTextEditorToolBar::RichTextEditorToolBar(RichTextEditor *editor,
 
     m_italic_action = createCheckableAction(
 	QIcon(":/ico/32x32/format-text-italic.png"),
-			tr("Texte en ialique"), editor, SLOT(setFontItalic(bool)), this);
+			tr("Texte en italique"), editor, SLOT(setFontItalic(bool)), this);
     m_italic_action->setShortcut(tr("CTRL+I"));
     addAction(m_italic_action);
 

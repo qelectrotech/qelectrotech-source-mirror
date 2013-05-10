@@ -3,5 +3,6 @@
         <name lang="en">Flow sensors</name>
         <name lang="fr">Capteurs debit</name>
         <name lang="pl">Czujniki przepływu</name>
+	<name lang="it">Sensori di flusso</name>
    </names>
 </qet-directory>

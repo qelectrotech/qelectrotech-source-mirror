@@ -3,5 +3,7 @@
         <name lang="en">Level sensors</name>
         <name lang="fr">Capteurs niveau</name>
         <name lang="pl">Czujniki poziomu cieczy</name>
+	<name lang="it">Sensori di livello</name>
+
    </names>
 </qet-directory>

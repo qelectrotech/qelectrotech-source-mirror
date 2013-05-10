@@ -3,6 +3,7 @@
         <name lang="en">Pressure sensor</name>
         <name lang="fr">Capteur Pression</name>
         <name lang="pl">Czujnik ciśnienia</name>
+	<name lang="it">Sensore di pressione</name>
     </names>
     <informations></informations>
     <description>

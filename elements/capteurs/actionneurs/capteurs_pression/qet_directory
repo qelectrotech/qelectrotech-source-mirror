@@ -3,5 +3,6 @@
         <name lang="en">Pressure sensors</name>
         <name lang="fr">Capteurs pression</name>
         <name lang="pl">Czujniki ciśnienia</name>
+	<name lang="it">Sensori di pressione</name>
    </names>
 </qet-directory>
