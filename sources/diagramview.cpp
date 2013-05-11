@@ -409,7 +409,7 @@ void DiagramView::pasteHere() {
 }
 
 /**
-	Manage the events click mouse :
+	Manage the events press click mouse :
 	 *  click to add an independent text field
 */
 void DiagramView::mousePressEvent(QMouseEvent *e) {
@@ -423,18 +423,41 @@ void DiagramView::mousePressEvent(QMouseEvent *e) {
 			is_adding_text = false;
 		}
 	}
-	// Select visualisation or selection mode
+	// workaround for drag view with hold wheel click and drag mouse
+	// see also mouseMoveEvent() and mouseReleaseEvent()
 	if (e -> buttons() == Qt::MidButton) {
-		if (!is_moving_view_) {
-			setVisualisationMode();
-			is_moving_view_ = true;
-		}
-		else{
-			setSelectionMode();
-			is_moving_view_ = false;
-		}
+		setCursor(Qt::ClosedHandCursor);
+		reference_view_ = mapToScene(e -> pos());
+		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
+		return;
 	}
 	QGraphicsView::mousePressEvent(e);
+}
+
+/**
+ * @brief DiagramView::mouseMoveEvent
+ * Manage the event move mouse
+ */
+void DiagramView::mouseMoveEvent(QMouseEvent *e) {
+	if ((e -> buttons() & Qt::MidButton) == Qt::MidButton) {
+		QPointF move = reference_view_ - mapToScene(e -> pos());
+		this -> centerOn(center_view_ + move);
+		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
+		return;
+	}
+	QGraphicsView::mouseMoveEvent(e);
+}
+
+/**
+ * @brief DiagramView::mouseReleaseEvent
+ * Manage event release click mouse
+ */
+void DiagramView::mouseReleaseEvent(QMouseEvent *e) {
+	if (e -> button() == Qt::MidButton) {
+		setCursor(Qt::ArrowCursor);
+		return;
+	}
+	QGraphicsView::mouseReleaseEvent(e);
 }
 
 /**

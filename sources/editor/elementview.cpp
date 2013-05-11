@@ -336,16 +336,38 @@ ElementContent ElementView::pasteWithOffset(const QDomDocument &xml_document) {
 void ElementView::mousePressEvent(QMouseEvent *e) {
 	// Select visualisation or selection mode
 	if (e -> buttons() == Qt::MidButton) {
-		if (!is_moving_view_) {
-			setVisualisationMode();
-			is_moving_view_ = true;
-		}
-		else{
-			setSelectionMode();
-			is_moving_view_ = false;
-		}
+		setCursor(Qt::ClosedHandCursor);
+		reference_view_ = mapToScene(e -> pos());
+		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
+		return;
 	}
 	QGraphicsView::mousePressEvent(e);
+}
+
+/**
+ * @brief ElementView::mouseMoveEvent
+ * Manage the event move mouse
+ */
+void ElementView::mouseMoveEvent(QMouseEvent *e) {
+	if ((e -> buttons() & Qt::MidButton) == Qt::MidButton) {
+		QPointF move = reference_view_ - mapToScene(e -> pos());
+		this -> centerOn(center_view_ + move);
+		center_view_ = mapToScene(this -> viewport() -> rect()).boundingRect().center();
+		return;
+	}
+	QGraphicsView::mouseMoveEvent(e);
+}
+
+/**
+ * @brief ElementView::mouseReleaseEvent
+ * Manage event release click mouse
+ */
+void ElementView::mouseReleaseEvent(QMouseEvent *e) {
+	if (e -> button() == Qt::MidButton) {
+		setCursor(Qt::ArrowCursor);
+		return;
+	}
+	QGraphicsView::mouseReleaseEvent(e);
 }
 
 /**

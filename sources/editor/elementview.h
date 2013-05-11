@@ -43,6 +43,8 @@ class ElementView : public QGraphicsView {
 	
 	protected:
 	void mousePressEvent(QMouseEvent *);
+	void mouseMoveEvent(QMouseEvent *);
+	void mouseReleaseEvent(QMouseEvent *);
 	void wheelEvent(QWheelEvent *);
 	virtual void drawBackground(QPainter *, const QRectF &);
 	
@@ -79,6 +81,8 @@ class ElementView : public QGraphicsView {
 	QString to_paste_in_area_;
 	int offset_paste_count_;
 	QPointF start_top_left_corner_;
+	QPointF reference_view_;
+	QPointF center_view_;
 	bool is_moving_view_;               ///< Indicate whether the visualisation mode has been enabled due to mouse/keyboard interactions
 };
 #endif
