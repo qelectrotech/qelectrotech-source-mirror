@@ -616,29 +616,29 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
 </context>
 <context>
-    <name>DialogConductorAutoNum</name>
+    <name>DialogAutoNum</name>
+    <message utf8="true">
+        <source>Annotation des schémas</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
-        <source>Annotation des conducteurs</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <source>Sélection</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <source>Numéroter le schéma actif</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message utf8="true">
-        <source>Numéroter le projet actif entier</source>
+        <source>Configuration</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <source>Annotation</source>
         <translation type="unfinished"></translation>
     </message>
+    <message utf8="true">
+        <source>Sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
-        <source>Format : </source>
+        <source>Conducteurs</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Composants</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -655,7 +655,19 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Voulez vraiment supprimer les annotations conducteurs de
+        <source>Voulez vraiment supprimer les annotations conducteurs de :
+
+%1 ?</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation des conducteurs</source>
+        <comment>Attention</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez vraiment annoter les conducteurs de :
+
 %1 ?</source>
         <translation type="unfinished"></translation>
     </message>
@@ -668,6 +680,10 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Titre</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -3032,11 +3048,11 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Annoter les conducteurs (beta)</source>
+        <source>Exporter une nomenclature (beta)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Exporter une nomenclature (beta)</source>
+        <source>Annoter les schémas (beta)</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -5375,6 +5391,45 @@ Maximallänge : %2p</translation>
     </message>
 </context>
 <context>
+    <name>diagramselection</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>TextLabel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Projet sans titre</source>
+        <translation type="unfinished">Projekt unbenannt</translation>
+    </message>
+    <message>
+        <source>Projet : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Sélection</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Nom</source>
+        <translation type="unfinished">Name</translation>
+    </message>
+    <message>
+        <source>Schéma sans titre</source>
+        <translation type="unfinished">Schema unbenannt</translation>
+    </message>
+    <message>
+        <source>Désélectionner tout</source>
+        <translation type="unfinished">Alle abwählen</translation>
+    </message>
+    <message>
+        <source>Sélectionner tout</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>nomenclature</name>
     <message>
         <source>NOMENCLATURE : </source>
@@ -5460,23 +5515,11 @@ Maximallänge : %2p</translation>
 <context>
     <name>qdesigner_internal::RichTextEditorToolBar</name>
     <message>
-        <source>Bold</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CTRL+B</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Italic</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Underline</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -5508,11 +5551,23 @@ Maximallänge : %2p</translation>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Insert &amp;Link</source>
+        <source>Insert &amp;Image</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Insert &amp;Image</source>
+        <source>Texte en gras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texte en italique</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texte souligé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Insérer un lien</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

@@ -607,139 +607,139 @@ Zastosować oznaczenia dla wszystkich przewodów?</translation>
         <translation>Orientacja zaznaczonych tekstów</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="500"/>
+        <location filename="../sources/diagramview.cpp" line="523"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
         <translation>Bez tytułu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="527"/>
+        <location filename="../sources/diagramview.cpp" line="550"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Właściwości schematu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="851"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
         <translation>Właściwości zaznaczenia</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="853"/>
+        <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Zaznaczenie zawiera %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="888"/>
+        <location filename="../sources/diagramview.cpp" line="911"/>
         <source>Élément manquant</source>
         <translation>Brak elementu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="890"/>
+        <location filename="../sources/diagramview.cpp" line="913"/>
         <source>Élément</source>
         <translation>Element</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="895"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>Nom : %1
 </source>
         <translation>Nazwa : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="898"/>
+        <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
         <translation>Strona : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="900"/>
+        <location filename="../sources/diagramview.cpp" line="923"/>
         <source>Position : %1
 </source>
         <translation>Pozycja : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="901"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Wielkość : %1×%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="902"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Bornes : %1
 </source>
         <translation>Terminal : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="903"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Connexions internes : %1
 </source>
         <translation>Połączenia wewnętrzne : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="903"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Autorisées</source>
         <translation>Dozwolony</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="903"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Interdites</source>
         <translation>Zakazany</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="904"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Champs de texte : %1
 </source>
         <translation>Pole tekstowe : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="907"/>
+        <location filename="../sources/diagramview.cpp" line="930"/>
         <source>Emplacement : %1
 </source>
         <translation>Położenie : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="911"/>
+        <location filename="../sources/diagramview.cpp" line="934"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Właściwości zaznaczonego elementu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="912"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Retrouver dans le panel</source>
         <translation>Znajdź w panelu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="913"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Éditer l&apos;élément</source>
         <translation>Edycja elementu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="975"/>
+        <location filename="../sources/diagramview.cpp" line="998"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Edycja właściwości przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="994"/>
+        <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
         <translation>Oznaczenia przewodów</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="995"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Czy chcesz zastosować nowe oznaczenie
 dla wszystkich przewodów tego potencjału?</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1050"/>
+        <location filename="../sources/diagramview.cpp" line="1073"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Wybierz nowy kolor przewodu</translation>
     </message>
@@ -753,60 +753,73 @@ dla wszystkich przewodów tego potencjału?</translation>
     </message>
 </context>
 <context>
-    <name>DialogConductorAutoNum</name>
-    <message>
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="14"/>
-        <source>Annotation des conducteurs</source>
-        <translation>Adnotacja do przewodów</translation>
-    </message>
+    <name>DialogAutoNum</name>
     <message utf8="true">
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="26"/>
-        <source>Sélection</source>
-        <translation>Wybór</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="34"/>
-        <source>Numéroter le schéma actif</source>
-        <translation>Numeracja w aktywnym schemacie</translation>
-    </message>
-    <message utf8="true">
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="44"/>
-        <source>Numéroter le projet actif entier</source>
-        <translation>Numeracja w aktywnym projekcie</translation>
+        <location filename="../sources/ui/dialogautonum.ui" line="14"/>
+        <source>Annotation des schémas</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="56"/>
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="100"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="28"/>
+        <source>Configuration</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogautonum.ui" line="38"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="92"/>
         <source>Annotation</source>
-        <translation>Adnotacja</translation>
+        <translation type="unfinished">Adnotacja</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/dialogautonum.ui" line="46"/>
+        <source>Sélection</source>
+        <translation type="unfinished">Wybór</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="69"/>
-        <source>Format : </source>
-        <translation>Format :</translation>
+        <location filename="../sources/ui/dialogautonum.ui" line="54"/>
+        <source>Conducteurs</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="111"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="71"/>
+        <source>Composants</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogautonum.ui" line="103"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation>Usuń adnotację</translation>
+        <translation type="unfinished">Usuń adnotację</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogconductorautonum.ui" line="122"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="150"/>
         <source>Fermer</source>
-        <translation>Zamknij</translation>
+        <translation type="unfinished">Zamknij</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogconductorautonum.cpp" line="29"/>
+        <location filename="../sources/ui/dialogautonum.cpp" line="64"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation>Usunięcie adnotacji dla przewodów</translation>
+        <translation type="unfinished">Usunięcie adnotacji dla przewodów</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogconductorautonum.cpp" line="31"/>
-        <source>Voulez vraiment supprimer les annotations conducteurs de
+        <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
+        <source>Voulez vraiment supprimer les annotations conducteurs de :
+
 %1 ?</source>
-        <translation>Naprawdę chcesz usunąć adnotacje dla przewodów
-%1 ?</translation>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogautonum.cpp" line="97"/>
+        <source>Annotation des conducteurs</source>
+        <comment>Attention</comment>
+        <translation type="unfinished">Adnotacja do przewodów</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
+        <source>Voulez vraiment annoter les conducteurs de :
+
+%1 ?</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -818,7 +831,11 @@ dla wszystkich przewodów tego potencjału?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
-        <location filename="../sources/ui/dialogwaiting.ui" line="59"/>
+        <source>Titre</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
         <translation>Etykieta</translation>
     </message>
@@ -3247,6 +3264,11 @@ Dostępne opcje :
         <translation>Usuń schemat</translation>
     </message>
     <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
+        <source>Annoter les schémas (beta)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
@@ -3404,11 +3426,6 @@ Dostępne opcje :
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
         <translation>Edycja pola tekstowego</translation>
-    </message>
-    <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
-        <source>Annoter les conducteurs (beta)</source>
-        <translation>Adnotacja dla przewodów (beta)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -6571,6 +6588,54 @@ Długość maksymalna : %2px</translation>
     </message>
 </context>
 <context>
+    <name>diagramselection</name>
+    <message>
+        <location filename="../sources/ui/diagramselection.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.ui" line="22"/>
+        <source>TextLabel</source>
+        <translation type="unfinished">Etykieta</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="31"/>
+        <source>Projet sans titre</source>
+        <translation type="unfinished">Projekt bez tytułu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="33"/>
+        <source>Projet : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="61"/>
+        <source>Sélection</source>
+        <translation type="unfinished">Wybór</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="61"/>
+        <source>Nom</source>
+        <translation type="unfinished">Nazwa</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="70"/>
+        <source>Schéma sans titre</source>
+        <translation type="unfinished">Schemat bez tytułu</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="103"/>
+        <source>Désélectionner tout</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/diagramselection.cpp" line="104"/>
+        <source>Sélectionner tout</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>nomenclature</name>
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
@@ -6647,27 +6712,27 @@ Długość maksymalna : %2px</translation>
 <context>
     <name>qdesigner_internal::RichTextEditorDialog</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="669"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="670"/>
         <source>Edit text</source>
         <translation>Edycja tekstu</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="691"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Rich Text</source>
         <translation>Rich Text</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
         <source>Source</source>
         <translation>Źródło</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="698"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="699"/>
         <source>&amp;OK</source>
         <translation>&amp;OK</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="700"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="701"/>
         <source>&amp;Cancel</source>
         <translation>&amp;Skasuj</translation>
     </message>
@@ -6675,72 +6740,72 @@ Długość maksymalna : %2px</translation>
 <context>
     <name>qdesigner_internal::RichTextEditorToolBar</name>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="361"/>
-        <source>Bold</source>
-        <translation>Pogrubienie</translation>
-    </message>
-    <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="363"/>
         <source>CTRL+B</source>
         <translation>CTRL+B</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="367"/>
-        <source>Italic</source>
-        <translation>Kursywa</translation>
-    </message>
-    <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
         <source>CTRL+I</source>
         <translation>CTRL+I</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="373"/>
-        <source>Underline</source>
-        <translation>Podkreślenie</translation>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
+        <source>Texte en gras</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
+        <source>Texte en italique</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
+        <source>Texte souligé</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
         <source>CTRL+U</source>
         <translation>CTRL+U</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="387"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
         <source>Left Align</source>
         <translation>Wyrównaj do lewej</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="392"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="393"/>
         <source>Center</source>
         <translation>Wyrównaj do środka</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="397"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="398"/>
         <source>Right Align</source>
         <translation>Wyrównaj do prawej</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="402"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
         <source>Justify</source>
         <translation>Justowanie</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="415"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
         <source>Superscript</source>
         <translation>Indeks górny</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="421"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="422"/>
         <source>Subscript</source>
         <translation>Indeks dolny</translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="432"/>
-        <source>Insert &amp;Link</source>
-        <translation>Wstaw &amp;Link</translation>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
+        <source>Insérer un lien</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/richtext/richtexteditor.cpp" line="436"/>
+        <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
         <source>Insert &amp;Image</source>
         <translation>Wstaw &amp;Obraz</translation>
     </message>
