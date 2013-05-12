@@ -757,69 +757,73 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenia schematu</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Ustawienia</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="38"/>
         <location filename="../sources/ui/dialogautonum.ui" line="92"/>
         <source>Annotation</source>
-        <translation type="unfinished">Adnotacja</translation>
+        <translation>Oznaczenia</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="46"/>
         <source>Sélection</source>
-        <translation type="unfinished">Wybór</translation>
+        <translation>Wybór</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="54"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Przewody</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="71"/>
         <source>Composants</source>
-        <translation type="unfinished"></translation>
+        <translation>Komponent</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="103"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished">Usuń adnotację</translation>
+        <translation>Usuń oznaczenie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="150"/>
         <source>Fermer</source>
-        <translation type="unfinished">Zamknij</translation>
+        <translation>Zamknij</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="64"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished">Usunięcie adnotacji dla przewodów</translation>
+        <translation>Usunięcie oznaczenia dla przewodów</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Voulez vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Czy napewno chcesz usunąć oznaczenia przewodów :
+
+%1 ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="97"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished">Adnotacja do przewodów</translation>
+        <translation>Oznaczenia przewodów</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Voulez vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Czy chcesz oznaczyć przewody :
+
+%1 ?</translation>
     </message>
 </context>
 <context>
@@ -832,7 +836,7 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Tytuł</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
@@ -3266,7 +3270,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenia schematów (beta)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
@@ -5329,7 +5333,7 @@ Co chcesz zrobić ?</translation>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
-            <numerusform>pola tekstowego</numerusform>
+            <numerusform>pole tekstowe</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
             <numerusform>%n pól tekstowych</numerusform>
         </translation>
@@ -6592,47 +6596,47 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished">Etykieta</translation>
+        <translation>Etykieta</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="31"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Projekt bez tytułu</translation>
+        <translation>Projekt bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="33"/>
         <source>Projet : </source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt : </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="61"/>
         <source>Sélection</source>
-        <translation type="unfinished">Wybór</translation>
+        <translation>Wybór</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="61"/>
         <source>Nom</source>
-        <translation type="unfinished">Nazwa</translation>
+        <translation>Nazwa</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="70"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Schemat bez tytułu</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Odznacz wszystko</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="104"/>
         <source>Sélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Zaznacz wszystko</translation>
     </message>
 </context>
 <context>
@@ -6734,7 +6738,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="701"/>
         <source>&amp;Cancel</source>
-        <translation>&amp;Skasuj</translation>
+        <translation>&amp;Anuluj</translation>
     </message>
 </context>
 <context>
@@ -6752,17 +6756,17 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation>Pogrubienie</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation>Kursywa</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>Podkreślenie</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
@@ -6802,7 +6806,7 @@ Długość maksymalna : %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation>Wstaw link</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
