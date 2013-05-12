@@ -1,17 +1,19 @@
-<definition width="590" version="0.3" hotspot_x="80" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="630" version="0.3" hotspot_x="120" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">6ED1 053-1HB00-0BA2 (part 3/3)</name>
+        <name lang="pt">6ED1 053-1HB00-0BA2 (parte 3/3)</name>
         <name lang="en">6ED1 053-1HB00-0BA2 (part 3/3)</name>
+        <name lang="it">6ED1 053-1HB00-0BA2 (parte 3/3)</name>
         <name lang="fr">6ED1 053-1HB00-0BA2 (part 3/3)</name>
         <name lang="pl">6ED1 053-1HB00-0BA2 (część 3/3)</name>
-        <name lang="cs">6ED1 053-1HB00-0BA2 (část 3/3)</name>
-        <name lang="pt">6ED1 053-1HB00-0BA2 (parte 3/3)</name>
         <name lang="es">6ED1 053-1HB00-0BA2 (parte 3/3)</name>
-        <name lang="it">6ED1 053-1HB00-0BA2 (parte 3/3)</name>
+        <name lang="cs">6ED1 053-1HB00-0BA2 (část 3/3)</name>
     </names>
     <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="443" y2="58" x2="477"/>
+        <input x="-115" y="14" size="9" rotate="true" text="/"/>
+        <polygon x4="-65" y5="10" x5="-70" y6="-35" x6="-70" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="63" x1="-70" y2="16" x2="-70" y3="13" x3="-75" y4="13"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="483" y2="58" x2="500"/>
         <input x="470" y="47" size="7" rotate="true" text="Q8"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="293" y2="58" x2="327"/>
@@ -41,7 +43,6 @@
         <input x="240" y="47" size="7" rotate="true" text="Q5"/>
         <circle x="247.5" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <input x="-18" y="47" size="7" rotate="true" text="M"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-70" y2="58" x2="-70"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="103" y2="58" x2="137"/>
         <circle x="-12.4999" y="55.5" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="-70" y2="58" x2="-53"/>

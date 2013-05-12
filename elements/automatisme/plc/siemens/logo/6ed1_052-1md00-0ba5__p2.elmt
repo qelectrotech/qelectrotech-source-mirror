@@ -1,17 +1,19 @@
-<definition width="430" version="0.3" hotspot_x="80" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
+<definition width="470" version="0.3" hotspot_x="120" hotspot_y="40" height="110" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">6ED1 052-1MD00-0BA5 (part 2/2)</name>
+        <name lang="pt">6ED1 052-1MD00-0BA5 (parte 2/2)</name>
         <name lang="en">6ED1 052-1MD00-0BA5 (part 2/2)</name>
+        <name lang="it">6ED1 052-1MD00-0BA5 (parte 2/2)</name>
         <name lang="fr">6ED1 052-1MD00-0BA5 (part 2/2)</name>
         <name lang="pl">6ED1 052-1MD00-0BA5 (część 2/2)</name>
-        <name lang="cs">6ED1 052-1MD00-0BA5 (část 2/2)</name>
-        <name lang="pt">6ED1 052-1MD00-0BA5 (parte 2/2)</name>
         <name lang="es">6ED1 052-1MD00-0BA5 (parte 2/2)</name>
-        <name lang="it">6ED1 052-1MD00-0BA5 (parte 2/2)</name>
+        <name lang="cs">6ED1 052-1MD00-0BA5 (část 2/2)</name>
     </names>
     <informations></informations>
     <description>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="340" y2="58" x2="340"/>
+        <input x="-115" y="14" size="9" rotate="true" text="/"/>
+        <polygon x4="-65" y5="10" x5="-70" y6="-35" x6="-70" antialias="true" style="line-style:normal;line-weight:thin;filling:none;color:black" closed="false" y1="63" x1="-70" y2="16" x2="-70" y3="13" x3="-75" y4="13"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-70" y2="-30" x2="340"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="323" y2="58" x2="340"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="-7" y2="58" x2="57"/>
@@ -20,7 +22,6 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="103" y2="58" x2="167"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="63" y2="58" x2="97"/>
         <input x="-18" y="47" size="7" rotate="true" text="M"/>
-        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-30" x1="-70" y2="58" x2="-70"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="283" y2="58" x2="317"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="58" x1="173" y2="58" x2="207"/>
         <input x="92" y="47" size="7" rotate="true" text="M"/>
