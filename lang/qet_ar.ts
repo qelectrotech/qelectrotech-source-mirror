@@ -175,19 +175,19 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation type="unfinished"></translation>
+        <translation>إدراج رابط</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>العنوان:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>عنوان الموقع: </translation>
     </message>
 </context>
 <context>
@@ -385,13 +385,13 @@
     <message>
         <location filename="../sources/conductor.cpp" line="1272"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>نصوص الموصلات</translation>
     </message>
     <message>
         <location filename="../sources/conductor.cpp" line="1273"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل ترغب في إعتماد النص الجديد على مجموع الموصلات لهذا الكمون ؟</translation>
     </message>
 </context>
 <context>
@@ -399,28 +399,29 @@
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>نصوص الكمون</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished"></translation>
+        <translation>نصوص هذا الكمون الكهربائي ليست متطابقة .
+اعتمد النصّ على مجموع هذه الموصلات ؟</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation type="unfinished"></translation>
+        <translation>: موجود</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation type="unfinished"></translation>
+        <translation>مرّة.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation>أخرى</translation>
     </message>
 </context>
 <context>
@@ -735,13 +736,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>نصوص الموصلات</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل تُريد اعتماد النصّ الجديد على موصلات هذا الكمون ؟</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1073"/>
@@ -762,69 +763,69 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>شروح المخططات</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>ترتيب</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="38"/>
         <location filename="../sources/ui/dialogautonum.ui" line="92"/>
         <source>Annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>شروح</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="46"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="54"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>موصلات</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="71"/>
         <source>Composants</source>
-        <translation type="unfinished"></translation>
+        <translation>مكونات</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="103"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>حذف الشرح</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="150"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>غلق</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="64"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>حذف شروح الموصلات</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Voulez vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل تُريد فعلا حذف شروح موصلات %1 ؟</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="97"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>شرح الموصلات</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Voulez vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل تُريد فعلا شرح موصلات %1 ؟</translation>
     </message>
 </context>
 <context>
@@ -832,17 +833,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation>الرجاء الإنتظار</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation>العنوان</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>علامة نصيّة</translation>
     </message>
 </context>
 <context>
@@ -3160,7 +3161,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير الحقل النصّي</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="218"/>
@@ -3205,7 +3206,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>تصدير التسمية (بيتا)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="230"/>
@@ -3403,7 +3404,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>شرح المخططات (بيتا)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
@@ -4687,7 +4688,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="965"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;فتح المشروع الجاري ....&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1326"/>
@@ -5153,7 +5154,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/diagramcommands.cpp" line="946"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>تعديل خااصيات موصلات مُتعددة</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6641,47 +6642,47 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>علامة نصيّة</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="31"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">مشروع بدون عنوان</translation>
+        <translation>مشروع بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="33"/>
         <source>Projet : </source>
-        <translation type="unfinished"></translation>
+        <translation>مشروع:</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="61"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>تحديد</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="61"/>
         <source>Nom</source>
-        <translation type="unfinished">اسم</translation>
+        <translation>اسم</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="70"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">مخطط بدون عنوان</translation>
+        <translation>مخطط بدون عنوان</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished">إلغاء تحديد الكل</translation>
+        <translation>إلغاء تحديد الكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="104"/>
         <source>Sélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>حدّد الكلّ</translation>
     </message>
 </context>
 <context>
@@ -6725,7 +6726,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>ملفات  csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
@@ -6746,7 +6747,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="250"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>لون النص</translation>
     </message>
 </context>
 <context>
@@ -6754,7 +6755,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="192"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation>إدراج كائن HTML</translation>
     </message>
 </context>
 <context>
@@ -6762,27 +6763,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="670"/>
         <source>Edit text</source>
-        <translation type="unfinished"></translation>
+        <translation>تحرير نص</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>نص منسق</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation>مصدر</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="699"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;موافق</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="701"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;إلغاء</translation>
     </message>
 </context>
 <context>
@@ -6790,72 +6791,72 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="363"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation>نص عريض</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation>نص مائل</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>نص مُسطّر</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
         <source>Left Align</source>
-        <translation type="unfinished"></translation>
+        <translation>مُحاذاة إلى اليسار</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="393"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>وسط</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="398"/>
         <source>Right Align</source>
-        <translation type="unfinished"></translation>
+        <translation>مُحاذاة إلى اليمين</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>ملئ السطر</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation>خط مرتفع</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="422"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation>خط منخفض</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation>إدراج رابط</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation>إدراج &amp;صورة</translation>
     </message>
 </context>
 </TS>
