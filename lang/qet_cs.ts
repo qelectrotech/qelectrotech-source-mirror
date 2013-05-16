@@ -169,19 +169,19 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="5"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="104"/>
         <source>Insert Link</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit odkaz</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Název:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>Adresa (URL):</translation>
     </message>
 </context>
 <context>
@@ -376,13 +376,14 @@
     <message>
         <location filename="../sources/conductor.cpp" line="1272"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Texty vodičů</translation>
     </message>
     <message>
         <location filename="../sources/conductor.cpp" line="1273"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete nový text použít na všechny
+vodiče s tímto potenciálem?</translation>
     </message>
 </context>
 <context>
@@ -390,28 +391,29 @@
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Texty potenciálu</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished"></translation>
+        <translation>Texty tohoto elektrického potenciálu nejsou totožné.
+Použít text na všechny tyto vodiče?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation type="unfinished"></translation>
+        <translation>: Je toto</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation type="unfinished"></translation>
+        <translation> krát.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation>Jiný</translation>
     </message>
 </context>
 <context>
@@ -726,13 +728,14 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Texty vodičů</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Chcete nový text použít na všechny
+vodiče s tímto potenciálem?</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1073"/>
@@ -753,69 +756,73 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysvětlivky k výkresům</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation>Nastavení</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="38"/>
         <location filename="../sources/ui/dialogautonum.ui" line="92"/>
         <source>Annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysvětlivka</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="46"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Výběr</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="54"/>
         <source>Conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodiče</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="71"/>
         <source>Composants</source>
-        <translation type="unfinished"></translation>
+        <translation>Součástky</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="103"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Smazat vysvětlivku</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="150"/>
         <source>Fermer</source>
-        <translation type="unfinished"></translation>
+        <translation>Zavřít</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="64"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>Odstranění vysvětlivek k vodičům</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Voulez vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete smazat vysvětlivky k vodičům:
+
+%1?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="97"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>Vysvětlivky k vodičům</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Voulez vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete opatřit vysvětlivkami vodiče:
+
+%1?</translation>
     </message>
 </context>
 <context>
@@ -823,17 +830,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation>Děkujeme za trpělivost</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový štítek</translation>
     </message>
 </context>
 <context>
@@ -3262,7 +3269,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysvětlivky k výkresům (beta)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
@@ -3421,12 +3428,12 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit textové pole</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
         <source>Exporter une nomenclature (beta)</source>
-        <translation type="unfinished"></translation>
+        <translation>Uložit číselník (beta)</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
@@ -4602,7 +4609,7 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/qetproject.cpp" line="965"/>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;b&gt;Otevírá se projekt...&lt;/b&gt;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="1326"/>
@@ -5130,7 +5137,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/diagramcommands.cpp" line="946"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>upravit vlastnosti více vodičů</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="89"/>
@@ -6587,47 +6594,47 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.ui" line="22"/>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation>Textový štítek</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="31"/>
         <source>Projet sans titre</source>
-        <translation type="unfinished">Nepojmenovaný projekt</translation>
+        <translation>Nepojmenovaný projekt</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="33"/>
         <source>Projet : </source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt: </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="61"/>
         <source>Sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Výběr</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="61"/>
         <source>Nom</source>
-        <translation type="unfinished">Název</translation>
+        <translation>Název</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="70"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Výkres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Désélectionner tout</source>
-        <translation type="unfinished">Zrušit výběr</translation>
+        <translation>Zrušit výběr</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="104"/>
         <source>Sélectionner tout</source>
-        <translation type="unfinished"></translation>
+        <translation>Vybrat vše</translation>
     </message>
 </context>
 <context>
@@ -6671,7 +6678,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="64"/>
         <source>Fichiers csv (*.csv)</source>
-        <translation type="unfinished"></translation>
+        <translation>Soubory csv (*.csv)</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
@@ -6692,7 +6699,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="250"/>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation>Barva textu</translation>
     </message>
 </context>
 <context>
@@ -6700,7 +6707,7 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="192"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit HTML znak</translation>
     </message>
 </context>
 <context>
@@ -6708,27 +6715,27 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="670"/>
         <source>Edit text</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravit text</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Upravovatelný text</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Zdroj</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="699"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="701"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Z&amp;rušit</translation>
     </message>
 </context>
 <context>
@@ -6736,72 +6743,72 @@ Největší délka: %2px</translation>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="363"/>
         <source>CTRL+B</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+B</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
         <source>CTRL+I</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+I</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation>Tučné</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation>Kurzíva</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>Podtržení</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
         <source>CTRL+U</source>
-        <translation type="unfinished"></translation>
+        <translation>CTRL+U</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
         <source>Left Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnat k levému okraji</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="393"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnat na střed</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="398"/>
         <source>Right Align</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnat k pravému okraji</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>Zarovnat do bloku</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Horní index</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="422"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Dolní index</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit odkaz</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation>Vložit &amp;obrázek</translation>
     </message>
 </context>
 </TS>
