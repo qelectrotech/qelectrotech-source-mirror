@@ -43,8 +43,7 @@ class DialogAutoNum : public QDialog
 	private:
 	Ui::DialogAutoNum *ui;
 	Diagram *dg_;
-	diagramselection *dgselect_;	
-
+	diagramselection *dgselect_;
 };
 
 #endif // DialogAutoNum_H

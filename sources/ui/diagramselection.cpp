@@ -20,13 +20,12 @@
 
 diagramselection::diagramselection(QETProject *prj, QWidget *parent) :
 	QWidget(parent),
-	ui(new Ui::diagramselection)
+	ui(new Ui::diagramselection),
+	prj_ (prj),
+	list_diagram_ (prj -> diagrams())
 {
 	ui -> setupUi(this);
-	prj_ = prj;
-	// list all diagrams presents in project
-	list_diagram_ = prj_ -> diagrams();
-	
+
 	QString project_title = prj_ -> title();
 	if (project_title.isEmpty()) project_title = tr("Projet sans titre");
 

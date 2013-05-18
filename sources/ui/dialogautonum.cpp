@@ -20,6 +20,7 @@
 
 #include "conductorautonumerotation.h"
 #include "qetmessagebox.h"
+#include "ui/selectautonumw.h"
 
 /**
  * @brief DialogAutoNum::DialogAutoNum
@@ -28,14 +29,15 @@
  */
 DialogAutoNum::DialogAutoNum(Diagram *dg, QWidget *parent) :
 	QDialog(parent),
-	ui(new Ui::DialogAutoNum)
+	ui(new Ui::DialogAutoNum),
+	dg_ (dg)
 {
 	ui -> setupUi(this);
-	dg_ = dg;
 	
-	// create widget of diagram selection
-	dgselect_ = new diagramselection( dg_ -> project(), this );
-	ui -> verticalLayout_Selection -> addWidget( dgselect_ );
+	ui -> configuration_layout -> addWidget (new SelectAutonumW(dg_ -> project() -> diagrams(), ui -> configuration_tab));
+
+	dgselect_ = new diagramselection( dg_ -> project(), ui -> annotation_tab);
+	ui -> verticalLayout_Selection -> addWidget(dgselect_);
 }
 
 /**
@@ -63,7 +65,7 @@ void DialogAutoNum::on_pushButton_delete_clicked() {
 		this,
 		tr("Suppression des annotations conducteurs", "Attention"),
 		QString(
-			tr("Voulez vraiment supprimer les annotations conducteurs de :\n\n%1 ?")
+			tr("Voulez-vous vraiment supprimer les annotations conducteurs de :\n\n%1 ?")
 		).arg(diagramsTitle),
 		QMessageBox::Yes | QMessageBox::No,
 		QMessageBox::No
@@ -96,7 +98,7 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 		this,
 		tr("Annotation des conducteurs", "Attention"),
 		QString(
-			tr("Voulez vraiment annoter les conducteurs de :\n\n%1 ?")
+			tr("Voulez-vous vraiment annoter les conducteurs de :\n\n%1 ?")
 		).arg(diagramsTitle),
 		QMessageBox::Yes | QMessageBox::No,
 		QMessageBox::No
@@ -104,6 +106,10 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 	
 	// if yes numerate all
 	if( answer ==  QMessageBox::Yes) {
+		foreach (Diagram *d, listDiag) {
+			ConductorAutoNumerotation can(d);
+			can.numerateDiagram();
+		}
 	}
 }
 
@@ -113,16 +119,3 @@ void DialogAutoNum::on_pushButton_annotation_clicked(){
 void DialogAutoNum::on_pushButton_close_clicked() {
 	close();
 }
-
-/*
-	NumerotationContext num;
-	for(int i=0; i<listDiag.count(); i++){
-		num.clear();
-		num.addValue("ten",5);
-		num.addValue("string","U");
-		num.addValue("folio");
-		listDiag.at(i)->setNumerotation(Diagram::Conductors, num);
-		qDebug() << "ok";
-	}
-*/
-

@@ -224,7 +224,7 @@ void QETDiagramEditor::actions() {
 	prj_add_diagram   = new QAction(QET::Icons::DiagramAdd,            tr("Ajouter un sch\351ma"),                 this);
 	prj_del_diagram   = new QAction(QET::Icons::DiagramDelete,         tr("Supprimer le sch\351ma"),               this);
 	prj_clean         = new QAction(QET::Icons::EditClear,             tr("Nettoyer le projet"),                   this);
-	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas (beta)"),        this);
+	prj_diagramNum    = new QAction(QET::Icons::ConductorSettings,     tr("Annoter les sch\351mas"),        this);
 	prj_nomenclature  = new QAction(QET::Icons::DocumentExport,        tr("Exporter une nomenclature (beta)"),     this);
 	
 	zoom_in           = new QAction(QET::Icons::ZoomIn,                tr("Zoom avant"),                           this);
@@ -1153,7 +1153,6 @@ void QETDiagramEditor::slot_updateActions() {
 	
 	//display the beta feature only in debug mode
 #ifdef QT_NO_DEBUG
-	prj_diagramNum -> setVisible(false);
 	prj_nomenclature  -> setVisible(false);
 #endif
 	
