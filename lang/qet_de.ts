@@ -26,7 +26,7 @@
     <message>
         <source>&amp;Contributeurs</source>
         <comment>tab title</comment>
-        <translation>&amp;Mitarbeiter</translation>
+        <translation>&amp;Mitwirkende</translation>
     </message>
     <message>
         <source>&amp;Accord de licence</source>
@@ -105,24 +105,24 @@
     </message>
     <message>
         <source>Collection d&apos;éléments</source>
-        <translation>Kollektion Elemente</translation>
+        <translation>Symbolsammlung</translation>
     </message>
     <message>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation>Kontakt : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
+        <translation>Kontakt: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Kroatischische</translation>
     </message>
     <message>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translation>Pakete für Fedora und Red Hat</translation>
     </message>
     <message>
         <source>Traduction en catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Katalanische</translation>
     </message>
     <message>
         <source>Compilation : </source>
@@ -248,7 +248,7 @@
     <message>
         <source>Voulez-vous enregistrer le projet ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished">Wollen Sie das Projekt speichern ?</translation>
+        <translation type="unfinished">Projekt speichern?</translation>
     </message>
     <message>
         <source>État</source>
@@ -258,7 +258,7 @@
     <message>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation type="unfinished">Schema</translation>
+        <translation type="unfinished">Zeichnung</translation>
     </message>
     <message>
         <source>Action</source>
@@ -268,7 +268,7 @@
     <message>
         <source>Schéma sans titre</source>
         <comment>fallback diagram title</comment>
-        <translation type="unfinished">Schema unbenannt</translation>
+        <translation type="unfinished">Zeichnung unbenannt</translation>
     </message>
     <message>
         <source>Modifié</source>
@@ -488,7 +488,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation>Eigenschaften des Schemas</translation>
+        <translation type="unfinished">Eigenschaften der Zeichnung</translation>
     </message>
     <message>
         <source>Propriétés de la sélection</source>
@@ -510,31 +510,31 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Nom : %1
 </source>
-        <translation>Name : %1
+        <translation type="unfinished">Name: %1
 </translation>
     </message>
     <message>
         <source>Position : %1
 </source>
-        <translation>Position : %1
+        <translation type="unfinished">Position: %1
 </translation>
     </message>
     <message>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Dimensionen : %1×%2
+        <translation type="unfinished">Dimensionen: %1×%2
 </translation>
     </message>
     <message>
         <source>Bornes : %1
 </source>
-        <translation>Anschlüsse : %1
+        <translation type="unfinished">Anschlüsse: %1
 </translation>
     </message>
     <message>
         <source>Connexions internes : %1
 </source>
-        <translation>Interne Verbindungen : %1
+        <translation type="unfinished">Interne Verbindungen: %1
 </translation>
     </message>
     <message>
@@ -548,18 +548,18 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Champs de texte : %1
 </source>
-        <translation>Textfelder : %1
+        <translation type="unfinished">Textfelder: %1
 </translation>
     </message>
     <message>
         <source>Emplacement : %1
 </source>
-        <translation>Ort : %1
+        <translation type="unfinished">Ort: %1
 </translation>
     </message>
     <message>
         <source>Propriétés de l&apos;élément sélectionné</source>
-        <translation>Eigenschaften des ausgewählten Elements</translation>
+        <translation type="unfinished">Eigenschaften des ausgewählten Elementes</translation>
     </message>
     <message>
         <source>Retrouver dans le panel</source>
@@ -582,25 +582,25 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Folio : %1
 </source>
-        <translation>Seite : %1</translation>
+        <translation type="unfinished">Seite: %1</translation>
     </message>
     <message>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation>Neue Farbe der Verbindung wählen</translation>
+        <translation type="unfinished">Neue Leiterfarbe wählen</translation>
     </message>
     <message>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>Dies ist die Zone in der Sie Ihre Schema gestalten können, Sie können Elemente hinzufügen und Kontakte mit Leitern verbinden. Es ist auch möglich, Text unabhängig hinzuzufügen.</translation>
+        <translation type="unfinished">In diesem Bereich können Sie Ihre Zeichnung gestalten. Sie können Elemente hinzufügen und Kontakte mit Leitern verbinden und Text hinzufügen.</translation>
     </message>
     <message>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ohne Titel</translation>
     </message>
     <message>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beschriftung der Verbindung</translation>
     </message>
     <message>
         <source>Voulez-vous appliquer le nouveau texte 
@@ -684,7 +684,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
 </context>
 <context>
@@ -1037,7 +1037,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cette catégorie. Elle sera donc ouverte en lecture seule.</source>
         <comment>message box content</comment>
-        <translation>Sie haben keine Rechte, um diese Kategorie zu bearbeiten. Es wird in read-only geöffnet.</translation>
+        <translation>Sie haben nicht die notwendigen Rechte, um diese Kategorie zu bearbeiten. Es wird im Lesemodus geöffnet.</translation>
     </message>
     <message>
         <source>Nom interne : </source>
@@ -1251,7 +1251,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Filtrer : </source>
-        <translation>Filter :</translation>
+        <translation>Filter:</translation>
     </message>
     <message>
         <source>Gestionnaire de catégories</source>
@@ -1294,11 +1294,11 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ordner öffnen</translation>
     </message>
     <message>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Pfad kopieren</translation>
     </message>
 </context>
 <context>
@@ -1905,7 +1905,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Verwenden Sie ISO 639-1 Sprachcodes, um die Übersetzungen in der Liste zu kennzeichnen.</translation>
     </message>
     <message>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
@@ -2587,7 +2587,7 @@ Options disponibles :
     </message>
     <message>
         <source>Pas de zoom</source>
-        <translation>Kein Zoom</translation>
+        <translation type="unfinished">Zoom 1:1</translation>
     </message>
     <message>
         <source>en utilisant des onglets</source>
@@ -2855,7 +2855,7 @@ Options disponibles :
     </message>
     <message>
         <source>&amp;Édition</source>
-        <translation>&amp;Ausgabe</translation>
+        <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
         <source>&amp;Projet</source>
@@ -2953,7 +2953,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ctrl+Space</source>
-        <translation>Ctrl+Space</translation>
+        <translation>Strg+LEER</translation>
     </message>
     <message>
         <source>Pivote les éléments et textes sélectionnés</source>
@@ -2997,7 +2997,7 @@ Options disponibles :
     <message>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Fehler</translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <source>Zoom sur le contenu</source>
@@ -3005,7 +3005,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ctrl+8</source>
-        <translation type="unfinished">Ctrl+8</translation>
+        <translation>Strg+8</translation>
     </message>
     <message>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
@@ -3014,7 +3014,7 @@ Options disponibles :
     <message>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Öffnen der Datei unmöglich</translation>
+        <translation>Öffnen der Datei nicht möglich</translation>
     </message>
     <message>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
@@ -3161,7 +3161,7 @@ Options disponibles :
     </message>
     <message>
         <source>Éditer les orientations</source>
-        <translation>Bearbeiten der Ausrichtung</translation>
+        <translation>Ausrichtung Bearbeiten</translation>
     </message>
     <message>
         <source>Éditer les informations sur l&apos;auteur</source>
@@ -3334,7 +3334,7 @@ Options disponibles :
     </message>
     <message>
         <source>&amp;Édition</source>
-        <translation>&amp;Ausgabe</translation>
+        <translation>&amp;Bearbeiten</translation>
     </message>
     <message>
         <source>Afficha&amp;ge</source>
@@ -3521,7 +3521,7 @@ Options disponibles :
     <message>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
-        <translation>Element QElectroTech (*.qet);;Dateien XML (*.xml);;Alle Dateien (*)</translation>
+        <translation>QElectroTech Symbole (*.qet);;XML Dateien (*.xml);;Alle Dateien (*)</translation>
     </message>
     <message>
         <source>Élément inexistant.</source>
@@ -3541,7 +3541,7 @@ Options disponibles :
     <message>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Öffnen der Datei unmöglich</translation>
+        <translation>Öffnen der Datei nicht möglich</translation>
     </message>
     <message>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
@@ -3623,7 +3623,7 @@ Options disponibles :
     </message>
     <message>
         <source>Schémas à imprimer :</source>
-        <translation>Schema zu drucken :</translation>
+        <translation>Zeichnung drucken:</translation>
     </message>
     <message>
         <source>Tout cocher</source>
@@ -3797,7 +3797,7 @@ Que désirez vous faire ?</source>
     <message>
         <source>%1 [modifié]</source>
         <comment>displayed title for a modified project - %1 is a displayable title</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1 [geändert]</translation>
     </message>
     <message>
         <source>&lt;b&gt;Ouverture du projet en cours...&lt;/b&gt;</source>
@@ -4548,7 +4548,7 @@ Que désirez vous faire ?</source>
     <name>RecentFiles</name>
     <message>
         <source>&amp;Récemment ouvert(s)</source>
-        <translation>&amp;Kürzlich geöffnet</translation>
+        <translation>Zu&amp;letzt geöffnet...</translation>
     </message>
 </context>
 <context>
@@ -4897,7 +4897,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Modèle :</source>
-        <translation>Modell :</translation>
+        <translation type="unfinished">Modell:</translation>
     </message>
     <message>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
@@ -4929,23 +4929,23 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Titre : </source>
-        <translation>Titel : </translation>
+        <translation>Titel: </translation>
     </message>
     <message>
         <source>Auteur : </source>
-        <translation>Author : </translation>
+        <translation>Author: </translation>
     </message>
     <message>
         <source>Date : </source>
-        <translation>Datum : </translation>
+        <translation>Datum: </translation>
     </message>
     <message>
         <source>Fichier : </source>
-        <translation>Datei : </translation>
+        <translation>Datei: </translation>
     </message>
     <message>
         <source>Folio : </source>
-        <translation>Seite : </translation>
+        <translation>Seite: </translation>
     </message>
     <message>
         <source>Informations du cartouche</source>
@@ -5116,13 +5116,13 @@ Que désirez vous faire ?</source>
     <message>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation>Löschen der Kartuschenmodelle ?</translation>
+        <translation type="unfinished">Löschen der Kartuschenmodelle ?</translation>
     </message>
     <message>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation>Sind Sie sicher das Kartuschenmodell zu löschen (%1) ?</translation>
+        <translation type="unfinished">Sind Sie sicher das Kartuschenmodell zu löschen (%1) ?</translation>
     </message>
 </context>
 <context>
