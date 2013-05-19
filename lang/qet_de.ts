@@ -1207,7 +1207,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Fermer ce projet</source>
-        <translation>Projekt schliessen</translation>
+        <translation>Projekt schließen</translation>
     </message>
     <message>
         <source>Propriétés du projet</source>
@@ -3561,7 +3561,7 @@ Options disponibles :
     </message>
     <message>
         <source>À &amp;propos de QElectroTech</source>
-        <translation> &amp;Über QElectroTech</translation>
+        <translation>&amp;Über QElectroTech</translation>
     </message>
     <message>
         <source>Affiche des informations sur QElectroTech</source>
@@ -3589,7 +3589,7 @@ Options disponibles :
     </message>
     <message>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation>Velassen &amp;Vollbild-Modus</translation>
+        <translation>&amp;Fenster-Modus</translation>
     </message>
     <message>
         <source>Affiche QElectroTech en mode fenêtré</source>
@@ -3598,7 +3598,7 @@ Options disponibles :
     </message>
     <message>
         <source>Passer en &amp;mode plein écran</source>
-        <translation>Umschalten auf &amp;Vollbild-Modus</translation>
+        <translation>&amp;Vollbild-Modus</translation>
     </message>
     <message>
         <source>Affiche QElectroTech en mode plein écran</source>

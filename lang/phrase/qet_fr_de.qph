@@ -1,0 +1,27 @@
+<!DOCTYPE QPH>
+<QPH sourcelanguage="fr_FR" language="de_DE">
+<phrase>
+    <source>fichier</source>
+    <target>Datei</target>
+</phrase>
+<phrase>
+    <source>Ctrl</source>
+    <target>Strg</target>
+</phrase>
+<phrase>
+    <source>space</source>
+    <target>Leertaste</target>
+</phrase>
+<phrase>
+    <source>Schémas</source>
+    <target>Zeichnung</target>
+</phrase>
+<phrase>
+    <source>éléments</source>
+    <target>Symbol</target>
+</phrase>
+<phrase>
+    <source>fermer</source>
+    <target>schließen</target>
+</phrase>
+</QPH>
