@@ -598,7 +598,7 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/diagramview.cpp" line="51"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation>This is the area in which you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</translation>
+        <translation type="unfinished">In this area you conceive your diagrams by adding elements and conductors between their terminals. You may also add independent texts.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="188"/>
@@ -734,8 +734,8 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation>Do you want to apply the new text
-to all the conductors of this potential?</translation>
+        <translation type="unfinished">Do you want to apply the new text
+to all conductors of this potential?</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1073"/>
@@ -831,7 +831,7 @@ to all the conductors of this potential?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Title</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
@@ -1857,7 +1857,7 @@ Changes will be definitive.</translation>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Every element embeds information about its authors, its license, or any information you may find useful in a freely usable textfield. You can specify here the default value of this textfield for the elements you will create:</translation>
+        <translation>Element may include information about its authors, license, or other useful information. Specify the default value of this textfield for new elements below:</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="210"/>
@@ -5213,7 +5213,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="668"/>
         <source>modification informations complementaires</source>
         <comment>undo caption</comment>
-        <translation>modify author information</translation>
+        <translation type="unfinished">modify author information</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
@@ -6743,17 +6743,17 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">bold</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">italic</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">underline</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
@@ -6793,7 +6793,7 @@ Maximum width: %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">insert line</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
