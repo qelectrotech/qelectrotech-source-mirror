@@ -317,6 +317,13 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		QDomElement default_conductor = document.createElement("defaultconductor");
 		defaultConductorProperties.toXml(default_conductor);
 		racine.appendChild(default_conductor);
+
+		//autonumerotation of conductor
+		if (!getNumerotation(Diagram::Conductors).isEmpty()) {
+			QDomElement autonum = document.createElement("autonum");
+			autonum.appendChild(getNumerotation(Diagram::Conductors).toXML(document, "conductor"));
+			racine.appendChild(autonum);
+		}
 	}
 	document.appendChild(racine);
 	
@@ -459,6 +466,16 @@ bool Diagram::fromXml(QDomElement &document, QPointF position, bool consider_inf
 		QDomElement default_conductor_elmt = root.firstChildElement("defaultconductor");
 		if (!default_conductor_elmt.isNull()) {
 			defaultConductorProperties.fromXml(default_conductor_elmt);
+		}
+		// find the first element autonum
+		QDomElement num_auto = root.firstChildElement("autonum");
+		if (!num_auto.isNull()) {
+			QDomElement num_conductor = num_auto.firstChildElement("conductor");
+			//set the auto-numerotation of conductor
+			if (!num_conductor.isNull()) {
+				NumerotationContext nc(num_conductor);
+				setNumerotation(Diagram::Conductors, nc);
+			}
 		}
 	}
 	

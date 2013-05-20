@@ -20,6 +20,8 @@
 
 #include <QStringList>
 #include <QVariant>
+#include <QDomElement>
+
 /**
 	This class represents a numerotation context, i.e. the data (type, value, increase)
 	of a numerotation at a given time. It is notably used by conductor
@@ -28,16 +30,21 @@
 class NumerotationContext
 {
 	public:
+	NumerotationContext ();
+	NumerotationContext (QDomElement &);
 	void clear();
 	bool addValue(const QString &, const QVariant & = QVariant(1), const int = 1);
 	QString operator[] (const int &) const;
 	void operator << (const NumerotationContext &);
 	int size() const;
+	bool isEmpty() const;
 	QStringList itemAt(const int) const;
 	QString validRegExpNum () const;
 	QString validRegExpNumber() const;
 	bool keyIsAcceptable (const QString &) const;
 	bool keyIsNumber(const QString &) const;
+	QDomElement toXML(QDomDocument &, QString);
+	void fromXML(QDomElement &);
 
 	private:
 	QStringList content_;

@@ -16,6 +16,20 @@
 	along with QElectroTech.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "numerotationcontext.h"
+#include "qet.h"
+
+/**
+ * Constructor
+ */
+NumerotationContext::NumerotationContext(){
+}
+
+/**
+ * Constructor from xml
+ */
+NumerotationContext::NumerotationContext(QDomElement &e) {
+	fromXML(e);
+}
 
 /**
  * @brief NumerotationContext::clear, clear the content
@@ -65,6 +79,14 @@ int NumerotationContext::size() const {
 }
 
 /**
+ * @brief NumerotationContext::isEmpty
+ * @return true if numerotation contet is empty
+ */
+bool NumerotationContext::isEmpty() const {
+	if (content_.size() > 0) return false;
+	return true;
+}
+/**
  * @brief NumerotationContext::itemAt
  * @return the content at position @i 1:type 2:value 3:increase
  */
@@ -102,4 +124,30 @@ bool NumerotationContext::keyIsAcceptable(const QString &type) const {
  */
 bool NumerotationContext::keyIsNumber(const QString &type) const {
 	return (type.contains(QRegExp(validRegExpNumber())));
+}
+
+/**
+ * @brief NumerotationContext::toXML
+ * Save the numerotation context in a QDomElement under the element name @str
+ */
+QDomElement NumerotationContext::toXML(QDomDocument &d, QString str) {
+	QDomElement num_auto = d.createElement(str);
+	for (int i=0; i<content_.size(); ++i) {
+		QStringList strl = itemAt(i);
+		QDomElement part = d.createElement("part");
+		part.setAttribute("type", strl.at(0));
+		part.setAttribute("value", strl.at(1));
+		part.setAttribute("increase", strl.at(2));
+		num_auto.appendChild(part);
+	}
+	return num_auto;
+}
+
+/**
+ * @brief NumerotationContext::fromXML
+ * load numerotation context from @e
+ */
+void NumerotationContext::fromXML(QDomElement &e) {
+	clear();
+	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt());
 }
