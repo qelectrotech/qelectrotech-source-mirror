@@ -43,8 +43,8 @@ class NumerotationContext
 	QString validRegExpNumber() const;
 	bool keyIsAcceptable (const QString &) const;
 	bool keyIsNumber(const QString &) const;
-	QDomElement toXML(QDomDocument &, QString);
-	void fromXML(QDomElement &);
+	QDomElement toXml(QDomDocument &, QString);
+	void fromXml(QDomElement &);
 
 	private:
 	QStringList content_;

@@ -321,7 +321,7 @@ QDomDocument Diagram::toXml(bool whole_content) {
 		//autonumerotation of conductor
 		if (!getNumerotation(Diagram::Conductors).isEmpty()) {
 			QDomElement autonum = document.createElement("autonum");
-			autonum.appendChild(getNumerotation(Diagram::Conductors).toXML(document, "conductor"));
+			autonum.appendChild(getNumerotation(Diagram::Conductors).toXml(document, "conductor"));
 			racine.appendChild(autonum);
 		}
 	}

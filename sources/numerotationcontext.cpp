@@ -28,7 +28,7 @@ NumerotationContext::NumerotationContext(){
  * Constructor from xml
  */
 NumerotationContext::NumerotationContext(QDomElement &e) {
-	fromXML(e);
+	fromXml(e);
 }
 
 /**
@@ -127,10 +127,10 @@ bool NumerotationContext::keyIsNumber(const QString &type) const {
 }
 
 /**
- * @brief NumerotationContext::toXML
+ * @brief NumerotationContext::toXml
  * Save the numerotation context in a QDomElement under the element name @str
  */
-QDomElement NumerotationContext::toXML(QDomDocument &d, QString str) {
+QDomElement NumerotationContext::toXml(QDomDocument &d, QString str) {
 	QDomElement num_auto = d.createElement(str);
 	for (int i=0; i<content_.size(); ++i) {
 		QStringList strl = itemAt(i);
@@ -144,10 +144,10 @@ QDomElement NumerotationContext::toXML(QDomDocument &d, QString str) {
 }
 
 /**
- * @brief NumerotationContext::fromXML
+ * @brief NumerotationContext::fromXml
  * load numerotation context from @e
  */
-void NumerotationContext::fromXML(QDomElement &e) {
+void NumerotationContext::fromXml(QDomElement &e) {
 	clear();
 	foreach(QDomElement qde, QET::findInDomElement(e, "part")) addValue(qde.attribute("type"), qde.attribute("value"), qde.attribute("increase").toInt());
 }
