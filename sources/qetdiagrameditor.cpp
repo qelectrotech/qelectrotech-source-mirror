@@ -1198,7 +1198,7 @@ void QETDiagramEditor::slot_updateComplexActions() {
 	delete_selection -> setEnabled(editable_diagram && deletable_items);
 	rotate_selection -> setEnabled(editable_diagram && dv -> diagram() -> canRotateSelection());
 	selection_prop   -> setEnabled(deletable_items);
-	prj_diagramNum   -> setEnabled(editable_diagram && selected_conductors_count);
+	prj_diagramNum   -> setEnabled(editable_diagram);
 	
 	// actions ayant besoin de textes selectionnes
 	bool selected_texts = dv ? (dv -> diagram() -> selectedTexts().count()) : 0;
