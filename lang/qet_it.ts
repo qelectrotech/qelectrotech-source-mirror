@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="176"/>
+        <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Questo programma è sotto licenza GNU/GPL.</translation>
     </message>
@@ -74,93 +74,90 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="114"/>
+        <location filename="../sources/aboutqet.cpp" line="116"/>
+        <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>Développement</source>
         <translation>Sviluppo</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="115"/>
-        <source>Collection d&apos;éléments</source>
-        <translation>Raccolta di elementi</translation>
+        <source>Collection d&apos;éléments &amp; Développement</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="128"/>
+        <location filename="../sources/aboutqet.cpp" line="131"/>
         <source>Traduction en espagnol</source>
         <translation>Traduzione in spagnolo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="129"/>
+        <location filename="../sources/aboutqet.cpp" line="132"/>
         <source>Traduction en russe</source>
         <translation>Traduzione in russo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="130"/>
+        <location filename="../sources/aboutqet.cpp" line="133"/>
         <source>Traduction en portugais</source>
         <translation>Traduzione in portoghese</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="131"/>
+        <location filename="../sources/aboutqet.cpp" line="134"/>
         <source>Traduction en tchèque</source>
         <translation>Traduzione in ceco</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="132"/>
+        <location filename="../sources/aboutqet.cpp" line="135"/>
         <source>Traduction en polonais</source>
         <translation>Traduzione in polacco</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="133"/>
+        <location filename="../sources/aboutqet.cpp" line="136"/>
         <source>Traduction en allemand</source>
         <translation>Traduzione in alemanno</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="134"/>
+        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en roumain</source>
         <translation>Traduzione in rumeno</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="135"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en italien</source>
         <translation>Traduzione in italiano</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="136"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Traduction en arabe</source>
         <translation>Traduzione in arabo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Traduction en croate</source>
         <translation>Traduzione in croato</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en catalan</source>
         <translation>Traduzione in catalano</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="155"/>
+        <location filename="../sources/aboutqet.cpp" line="158"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Pacchetti per Fedora e Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="156"/>
+        <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Paquets Mandriva</source>
         <translation>Pacchetti per Mandriva</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="157"/>
+        <location filename="../sources/aboutqet.cpp" line="160"/>
         <source>Paquets Debian</source>
         <translation>Pacchetti per Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="158"/>
+        <location filename="../sources/aboutqet.cpp" line="161"/>
         <source>Icônes</source>
         <translation>Icone</translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="159"/>
-        <source>Développeur</source>
-        <translation>Sviluppatore</translation>
     </message>
 </context>
 <context>
@@ -764,65 +761,75 @@ dei conduttori di questo potenziale?</translation>
         <translation>Configurazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="38"/>
-        <location filename="../sources/ui/dialogautonum.ui" line="92"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
         <translation>Numerazione</translation>
     </message>
     <message utf8="true">
-        <location filename="../sources/ui/dialogautonum.ui" line="46"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="50"/>
         <source>Sélection</source>
         <translation>Selezione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="54"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="58"/>
         <source>Conducteurs</source>
         <translation>Conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="71"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
         <translation>Componenti</translation>
     </message>
+    <message utf8="true">
+        <location filename="../sources/ui/dialogautonum.ui" line="96"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="103"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="99"/>
+        <source>Annotation (alpha)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/dialogautonum.ui" line="110"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
         <translation>Cancellare la numerazione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.ui" line="150"/>
+        <location filename="../sources/ui/dialogautonum.ui" line="147"/>
         <source>Fermer</source>
         <translation>Chiudi</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="64"/>
+        <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
         <translation>Elimina la numerazione dei conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
-        <source>Voulez vraiment supprimer les annotations conducteurs de :
+        <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
+        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation>Conferma dell&apos;eliminazione della numerazione dei conduttori per:
-
-%1 ?</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/ui/dialogautonum.cpp" line="97"/>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation>Numerazione automatica dei conduttori</translation>
+        <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
+        <source>Voulez-vous vraiment annoter les conducteurs de :
+
+%1 ?</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
-        <source>Voulez vraiment annoter les conducteurs de :
-
-%1 ?</source>
-        <translation>Conferma della numerazione dei conduttori per:
-
-%1 ?</translation>
+        <source>Annotation des conducteurs</source>
+        <comment>Attention</comment>
+        <translation>Numerazione automatica dei conduttori</translation>
     </message>
 </context>
 <context>
@@ -2463,6 +2470,39 @@ I cambiamenti saranno irreversibili.</translation>
     </message>
 </context>
 <context>
+    <name>NumPartEditorW</name>
+    <message>
+        <location filename="../sources/ui/numparteditorw.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Modulo</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/numparteditorw.ui" line="29"/>
+        <source>Unité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/numparteditorw.ui" line="34"/>
+        <source>Dizaine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/numparteditorw.ui" line="39"/>
+        <source>Centaine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/numparteditorw.ui" line="44"/>
+        <source>Texte</source>
+        <translation type="unfinished">Testo</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/numparteditorw.ui" line="49"/>
+        <source>N° folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OrientationSetWidget</name>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="30"/>
@@ -3264,11 +3304,6 @@ Opzioni disponibili:
         <translation>Elimina uno schema</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
-        <source>Annoter les schémas (beta)</source>
-        <translation>Numerazione dello schema (beta)</translation>
-    </message>
-    <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="277"/>
         <source>Ctrl+T</source>
         <translation>Ctrl+T</translation>
@@ -3420,6 +3455,11 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="217"/>
         <source>Éditer le champ de texte</source>
         <translation>Modificare il campo di testo</translation>
+    </message>
+    <message>
+        <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
+        <source>Annoter les schémas</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -5595,6 +5635,59 @@ Cosa vuoi fare?</translation>
     </message>
 </context>
 <context>
+    <name>SelectAutonumW</name>
+    <message>
+        <location filename="../sources/ui/selectautonumw.ui" line="14"/>
+        <source>Form</source>
+        <translation type="unfinished">Modulo</translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.ui" line="25"/>
+        <source>Folio:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.ui" line="32"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/selectautonumw.ui" line="55"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/selectautonumw.ui" line="72"/>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/selectautonumw.ui" line="91"/>
+        <source>Définition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.ui" line="107"/>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.ui" line="117"/>
+        <source>Valeur</source>
+        <translation type="unfinished">Valore</translation>
+    </message>
+    <message utf8="true">
+        <location filename="../sources/ui/selectautonumw.ui" line="133"/>
+        <source>Incrémentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
+        <source>Schéma sans titre</source>
+        <translation type="unfinished">Schema senza titolo</translation>
+    </message>
+</context>
+<context>
     <name>StyleEditor</name>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
@@ -6592,37 +6685,37 @@ Lunghezza massima : %2px</translation>
         <translation>Etichetta</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="31"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="30"/>
         <source>Projet sans titre</source>
         <translation>Progetto senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="33"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
         <translation>Progetto : </translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="61"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Sélection</source>
         <translation>Selezione</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="61"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
         <translation>Nome</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="70"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Schéma sans titre</source>
         <translation>Schema senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="103"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="102"/>
         <source>Désélectionner tout</source>
         <translation>Deseleziona tutto</translation>
     </message>
     <message>
-        <location filename="../sources/ui/diagramselection.cpp" line="104"/>
+        <location filename="../sources/ui/diagramselection.cpp" line="103"/>
         <source>Sélectionner tout</source>
         <translation>Seleziona tutto</translation>
     </message>

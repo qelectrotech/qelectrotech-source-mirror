@@ -104,10 +104,6 @@
         <translation>© 2006-2012 Die Entwickler von QElectroTech</translation>
     </message>
     <message>
-        <source>Collection d&apos;éléments</source>
-        <translation>Symbolsammlung</translation>
-    </message>
-    <message>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
         <translation>Kontakt: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
@@ -129,7 +125,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Développeur</source>
+        <source>Collection d&apos;éléments &amp; Développement</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -305,7 +301,7 @@
     <name>Conductor</name>
     <message>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beschriftung der Verbindung</translation>
     </message>
     <message>
         <source>Voulez-vous appliquer le nouveau texte 
@@ -655,18 +651,30 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Voulez vraiment supprimer les annotations conducteurs de :
+        <source>Annotation des conducteurs</source>
+        <comment>Attention</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Annotation (alpha)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Annotation des conducteurs</source>
-        <comment>Attention</comment>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <source>Voulez vraiment annoter les conducteurs de :
+        <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
         <translation type="unfinished"></translation>
@@ -2017,6 +2025,33 @@ Die Änderungen sind endgültig.</translation>
     </message>
 </context>
 <context>
+    <name>NumPartEditorW</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>Unité</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Dizaine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Centaine</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Texte</source>
+        <translation type="unfinished">Text</translation>
+    </message>
+    <message utf8="true">
+        <source>N° folio</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>OrientationSetWidget</name>
     <message>
         <source>Possible</source>
@@ -3052,7 +3087,7 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>Annoter les schémas (beta)</source>
+        <source>Annoter les schémas</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -4584,6 +4619,49 @@ Que désirez vous faire ?</source>
     <message>
         <source>hauteur</source>
         <translation>Höhe</translation>
+    </message>
+</context>
+<context>
+    <name>SelectAutonumW</name>
+    <message>
+        <source>Form</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Folio:  </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message utf8="true">
+        <source>Définition</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Type</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Valeur</source>
+        <translation type="unfinished">Wert</translation>
+    </message>
+    <message utf8="true">
+        <source>Incrémentation</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Schéma sans titre</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>

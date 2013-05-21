@@ -4,7 +4,7 @@
 <context>
     <name>QETElementEditor</name>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="608"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="599"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation>
             <numerusform>%n partie sélectionnée.</numerusform>
@@ -12,7 +12,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="673"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="664"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation>
@@ -24,7 +24,7 @@
 <context>
     <name>QObject</name>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="204"/>
+        <location filename="../sources/qet.cpp" line="205"/>
         <source>%n élément(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -33,7 +33,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="225"/>
+        <location filename="../sources/qet.cpp" line="226"/>
         <source>%n conducteur(s)</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -42,7 +42,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/qet.cpp" line="240"/>
+        <location filename="../sources/qet.cpp" line="241"/>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation>
@@ -51,7 +51,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/titleblock/templatecommands.cpp" line="912"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
@@ -60,7 +60,7 @@
         </translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/titleblock/templatecommands.cpp" line="936"/>
+        <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation>
