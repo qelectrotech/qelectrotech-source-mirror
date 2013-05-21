@@ -155,7 +155,8 @@ void ConductorAutoNumerotation::numeratePotential() {
  * create and apply a new numerotation to @conductor_
  */
 void ConductorAutoNumerotation::numerateNewConductor() {
-	if (!conductor_) return;
+	if (!conductor_ || num_context.isEmpty()) return;
+
 	NumerotationContextCommands ncc (diagram_, num_context);
 	applyText(ncc.toRepresentedString());
 	diagram_-> setNumerotation(Diagram::Conductors, ncc.next());
