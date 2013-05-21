@@ -82,7 +82,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <source>Collection d&apos;éléments &amp; Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Kolekcja elementów i rozwój</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="131"/>
@@ -754,7 +754,7 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation>Oznaczenia schematu</translation>
+        <translation>Oznaczenia w schemacie</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -784,17 +784,17 @@ dla wszystkich przewodów tego potencjału?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ponumeruj zaznaczone strony&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenia (alfa)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Usuń numerację zaznaczonych stron&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
@@ -817,14 +817,18 @@ dla wszystkich przewodów tego potencjału?</translation>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Czy napewno chcesz usunąć oznaczenia przewodów :
+
+%1 ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Czy naprawdę chcesz oznaczyć przewody :
+
+%1 ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
@@ -2476,32 +2480,32 @@ Zmiany zostaną zapisane.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednostki</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Dizaine</source>
-        <translation type="unfinished"></translation>
+        <translation>Dziesiątki</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Centaine</source>
-        <translation type="unfinished"></translation>
+        <translation>Setki</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
         <source>Texte</source>
-        <translation type="unfinished">Tekst</translation>
+        <translation>Tekst</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Nr strony</translation>
     </message>
 </context>
 <context>
@@ -3469,7 +3473,7 @@ Dostępne opcje :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Oznaczenia w schemacie</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -5650,52 +5654,52 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Forma</translation>
+        <translation>Forma</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation type="unfinished"></translation>
+        <translation>Strona: </translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Wybierz stronę&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Usuń zmienna numeracji&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Dodaj zmienną numeracji&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation type="unfinished"></translation>
+        <translation>Definicja</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation type="unfinished">Wartość</translation>
+        <translation>Wartość</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Inkrementacja</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Schemat bez tytułu</translation>
+        <translation>Schemat bez tytułu</translation>
     </message>
 </context>
 <context>
