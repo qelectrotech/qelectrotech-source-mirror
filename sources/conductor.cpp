@@ -1124,6 +1124,7 @@ void Conductor::calculateTextItemPosition() {
 	} else {
 		// positionnement automatique basique
 		text_item -> setPos(middleSegment() -> middle());
+		middleSegment() -> isVertical()? text_item -> setRotationAngle(270): text_item -> setRotationAngle(0);
 	}
 }
 
