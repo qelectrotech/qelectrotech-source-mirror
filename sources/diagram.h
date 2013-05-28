@@ -39,6 +39,7 @@ class ElementTextsMover;
 class IndependentTextItem;
 class QETProject;
 class Terminal;
+class ConductorTextItem;
 /**
 	This class represents an electric diagram. It manages its various child
 	elements, conductors and texts and handles their graphic rendering.
@@ -162,6 +163,7 @@ class Diagram : public QGraphicsScene {
 	
 	QList<CustomElement *> customElements() const;
 	QSet<DiagramTextItem *> selectedTexts() const;
+	QSet<ConductorTextItem *> selectedConductorTexts() const;
 	QSet<Conductor *> selectedConductors() const;
 	DiagramContent content() const;
 	DiagramContent selectedContent();

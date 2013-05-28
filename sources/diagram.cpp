@@ -1066,6 +1066,20 @@ QSet<DiagramTextItem *> Diagram::selectedTexts() const {
 	return(selected_texts);
 }
 
+/**
+ * @brief Diagram::selectedConductorTexts
+ * @return the list of conductor texts selected
+ */
+QSet<ConductorTextItem *> Diagram::selectedConductorTexts() const {
+	QSet<ConductorTextItem *> selected_texts;
+	foreach(QGraphicsItem *item, selectedItems()) {
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(item)) {
+			selected_texts << cti;
+		}
+	}
+	return(selected_texts);
+}
+
 /// @return true si le presse-papier semble contenir un schema
 bool Diagram::clipboardMayContainDiagram() {
 	QString clipboard_text = QApplication::clipboard() -> text().trimmed();
