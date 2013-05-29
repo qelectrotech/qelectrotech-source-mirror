@@ -39,6 +39,10 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const {
 	if      (_filling == NoneFilling)  css_like_styles += "none";
 	else if (_filling == BlackFilling) css_like_styles += "black";
 	else if (_filling == WhiteFilling) css_like_styles += "white";
+	else if (_filling == GreenFilling) css_like_styles += "green";
+	else if (_filling == BlueFilling) css_like_styles += "blue";
+	else if (_filling == RedFilling) css_like_styles += "red";
+
 	
 	css_like_styles += ";color:";
 	if      (_color == WhiteColor) css_like_styles += "white";
@@ -76,6 +80,9 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 		} else if (style_name == "filling") {
 			if      (style_value == "white") _filling = WhiteFilling;
 			else if (style_value == "black") _filling = BlackFilling;
+			else if (style_value == "reed") _filling = RedFilling;
+			else if (style_value == "green") _filling = GreenFilling;
+			else if (style_value == "blue") _filling = BlueFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
 		} else if (style_name == "color") {
 			if      (style_value == "black") _color = BlackColor;
@@ -126,6 +133,15 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 	} else if (_filling == WhiteFilling) {
 		brush.setStyle(Qt::SolidPattern);
 		brush.setColor(Qt::white);
+	} else if (_filling == GreenFilling) {
+		brush.setStyle(Qt::SolidPattern);
+		brush.setColor(Qt::green);
+	} else if (_filling == RedFilling) {
+		brush.setStyle(Qt::SolidPattern);
+		brush.setColor(Qt::red);
+	} else if (_filling == BlueFilling) {
+		brush.setStyle(Qt::SolidPattern);
+		brush.setColor(Qt::blue);
 	}
 	
 	// applique la couleur de trait

@@ -46,7 +46,10 @@ class CustomElementGraphicPart : public CustomElementPart {
 	enum Filling {
 		NoneFilling,  ///< No filling (i.e. transparent)
 		BlackFilling, ///< Black filling
-		WhiteFilling  ///< White filling
+		WhiteFilling,  ///< White filling
+		GreenFilling, ///< Green filling
+		RedFilling,  ///< Red filling
+		BlueFilling  ///< Green filling
 	};
 	
 	/// This enum lists the various line colors available to draw primitives.

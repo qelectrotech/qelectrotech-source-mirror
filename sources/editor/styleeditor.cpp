@@ -32,6 +32,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	color = new QButtonGroup(this);
 	color -> addButton(black_color = new QRadioButton(tr("Noir", "element part color")),  CustomElementGraphicPart::BlackColor);
 	color -> addButton(white_color = new QRadioButton(tr("Blanc", "element part color")), CustomElementGraphicPart::WhiteColor);
+
 	
 	// style
 	style = new QButtonGroup(this);
@@ -51,7 +52,10 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling -> addButton(no_filling    = new QRadioButton(tr("Aucun", "element part filling")), CustomElementGraphicPart::NoneFilling );
 	filling -> addButton(black_filling = new QRadioButton(tr("Noir", "element part filling")),  CustomElementGraphicPart::BlackFilling);
 	filling -> addButton(white_filling = new QRadioButton(tr("Blanc", "element part filling")), CustomElementGraphicPart::WhiteFilling);
-	
+	filling -> addButton(green_filling = new QRadioButton(tr("Vert", "element part filling")),  CustomElementGraphicPart::GreenFilling);
+	filling -> addButton(red_filling   = new QRadioButton(tr("Rouge", "element part filling")),   CustomElementGraphicPart::RedFilling);
+	filling -> addButton(blue_filling  = new QRadioButton(tr("Blue", "element part filling")),   CustomElementGraphicPart::BlueFilling);
+
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
 	
@@ -91,11 +95,14 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling_layout -> addWidget(no_filling);
 	filling_layout -> addWidget(black_filling);
 	filling_layout -> addWidget(white_filling);
+	filling_layout -> addWidget(green_filling);
+	filling_layout -> addWidget(red_filling);
+	filling_layout -> addWidget(blue_filling);
 	filling_layout -> addStretch();
 	main_layout -> addLayout(filling_layout);
 	
 	main_layout -> addStretch();
-	
+
 	setLayout(main_layout);
 }
 

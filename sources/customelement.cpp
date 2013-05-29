@@ -765,6 +765,15 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 				} else if (style_value == "black") {
 					brush.setStyle(Qt::SolidPattern);
 					brush.setColor(Qt::black);
+				} else if (style_value == "blue") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::blue);
+				} else if (style_value == "red") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::red);
+				} else if (style_value == "green") {
+					brush.setStyle(Qt::SolidPattern);
+					brush.setColor(Qt::green);
 				} else if (style_value == "none") {
 					brush.setStyle(Qt::NoBrush);
 				}
