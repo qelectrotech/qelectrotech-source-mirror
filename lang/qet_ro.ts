@@ -371,12 +371,12 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1272"/>
+        <location filename="../sources/conductor.cpp" line="1273"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1273"/>
+        <location filename="../sources/conductor.cpp" line="1274"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
@@ -3416,7 +3416,7 @@ Opțiuni disponibile:
         <translation type="unfinished">Deschideți proiectul numai pentru citire</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1857"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1858"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation type="unfinished">Eroare</translation>
@@ -3751,22 +3751,22 @@ Opțiuni disponibile:
         <translation>Se pare că fișierul %1 nu este un proiect QElectroTech. În consecință, nu a putut fi deschis.</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1377"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1378"/>
         <source>Active le projet « %1 »</source>
         <translation>Activați proiectul « %1 »</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1792"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1793"/>
         <source>Impossible de retrouver cet élément dans le panel car il semble édité dans une autre fenêtre</source>
         <translation>Imposibil de deschis acest element din panou, se pare că este editat în altă fereastră</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1798"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1799"/>
         <source>Impossible de retrouver cet élément dans le panel... rechargement du panel...</source>
         <translation>Imposibil de deschis acest element din panou... reîmprospătare panou...</translation>
     </message>
     <message>
-        <location filename="../sources/qetdiagrameditor.cpp" line="1810"/>
+        <location filename="../sources/qetdiagrameditor.cpp" line="1811"/>
         <source>Impossible de retrouver cet élément dans le panel</source>
         <translation>Imposibil de deschis acest element din panou</translation>
     </message>
@@ -5705,111 +5705,129 @@ Que désirez vous faire ?</source>
         <translation>Alb</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="38"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="39"/>
         <source>Normal</source>
         <comment>element part line style</comment>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="39"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="40"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="40"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Punctat</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="46"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Nul</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="46"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="47"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Fin</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="47"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="48"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Fără</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="53"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Negru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="53"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="54"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Alb</translation>
     </message>
     <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <source>Vert</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <source>Rouge</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <source>Blue</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Antialiasing</source>
         <translation>Antialiasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="67"/>
         <source>Trait :</source>
         <translation>Linie:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="66"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Couleur : </source>
         <translation>Culoare:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="77"/>
         <source>Style : </source>
         <translation>Stil:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="85"/>
         <source>Épaisseur : </source>
         <translation>Grosime:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="88"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="92"/>
         <source>Remplissage :</source>
         <translation>Umplere:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="128"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="135"/>
         <source>style antialiasing</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="130"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="137"/>
         <source>style couleur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="132"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="139"/>
         <source>style ligne</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="134"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>style epaisseur</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="136"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style remplissage</source>
         <translation type="unfinished"></translation>
     </message>

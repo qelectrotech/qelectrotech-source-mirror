@@ -4765,6 +4765,21 @@ Que désirez vous faire ?</source>
         <source>style remplissage</source>
         <translation>Stil Füllung</translation>
     </message>
+    <message>
+        <source>Vert</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Rouge</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Blue</source>
+        <comment>element part filling</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TerminalEditor</name>

@@ -80,7 +80,7 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 		} else if (style_name == "filling") {
 			if      (style_value == "white") _filling = WhiteFilling;
 			else if (style_value == "black") _filling = BlackFilling;
-			else if (style_value == "reed") _filling = RedFilling;
+			else if (style_value == "red") _filling = RedFilling;
 			else if (style_value == "green") _filling = GreenFilling;
 			else if (style_value == "blue") _filling = BlueFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
