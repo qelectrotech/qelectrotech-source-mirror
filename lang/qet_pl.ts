@@ -5804,19 +5804,19 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zielony</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Czerwony</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Blue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Niebieski</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="135"/>
