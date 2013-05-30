@@ -54,7 +54,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	filling -> addButton(white_filling = new QRadioButton(tr("Blanc", "element part filling")), CustomElementGraphicPart::WhiteFilling);
 	filling -> addButton(green_filling = new QRadioButton(tr("Vert", "element part filling")),  CustomElementGraphicPart::GreenFilling);
 	filling -> addButton(red_filling   = new QRadioButton(tr("Rouge", "element part filling")),   CustomElementGraphicPart::RedFilling);
-	filling -> addButton(blue_filling  = new QRadioButton(tr("Blue", "element part filling")),   CustomElementGraphicPart::BlueFilling);
+	filling -> addButton(blue_filling  = new QRadioButton(tr("Bleu", "element part filling")),   CustomElementGraphicPart::BlueFilling);
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));

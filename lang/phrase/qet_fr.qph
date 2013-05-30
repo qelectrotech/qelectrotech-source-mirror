@@ -1,0 +1,37 @@
+<!DOCTYPE QPH>
+<QPH language="fr">
+<phrase>
+    <source>%n partie(s) sélectionnée(s).</source>
+    <target>%n partie sélectionnée.@%n parties sélectionnées.</target>
+</phrase>
+<phrase>
+    <source>La vérification de cet élément a généré %n avertissement(s) :</source>
+    <target>La vérification de cet élément a généré %n avertissement :@La vérification de cet élément a généré %n avertissements :</target>
+    <definition>message box content</definition>
+</phrase>
+<phrase>
+    <source>%n élément(s)</source>
+    <target>%n élément@%n éléments</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>%n conducteur(s)</source>
+    <target>%n conducteur@%n conducteurs</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>%n champ(s) de texte</source>
+    <target>%n champ de texte@%n champs de texte</target>
+    <definition>part of a sentence listing the content of a diagram</definition>
+</phrase>
+<phrase>
+    <source>Couper %n cellule(s)</source>
+    <target>Couper %n cellule@Couper %n cellules</target>
+    <definition>undo caption</definition>
+</phrase>
+<phrase>
+    <source>Coller %n cellule(s)</source>
+    <target>Coller %n cellule@Coller %n cellules</target>
+    <definition>undo caption</definition>
+</phrase>
+</QPH>
