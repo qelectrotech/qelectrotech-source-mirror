@@ -83,7 +83,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <source>Collection d&apos;éléments &amp; Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>مجموعة عناصر و التطوير</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="131"/>
@@ -790,17 +790,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;ترقيم الصفحات المحددة&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation type="unfinished"></translation>
+        <translation>شرح (ألفا)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;حذف ترقيم الصفحات المُحددة&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
@@ -823,14 +823,14 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل تُريد بالفعل حذف الملاحظات على الموصلات : %1؟</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>هل تُريد فعلا المُلاحظة على الموصلات : %1؟</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
@@ -2511,32 +2511,32 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>وحدة</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Dizaine</source>
-        <translation type="unfinished"></translation>
+        <translation>عشرات</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Centaine</source>
-        <translation type="unfinished"></translation>
+        <translation>مئات</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
         <source>Texte</source>
-        <translation type="unfinished">نص</translation>
+        <translation>نص</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation type="unfinished"></translation>
+        <translation>رقم الصفحة</translation>
     </message>
 </context>
 <context>
@@ -3250,7 +3250,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>شرح المُخططات</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -5700,52 +5700,52 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">شكل</translation>
+        <translation>شكل</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation type="unfinished"></translation>
+        <translation>صفحة:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;اختر الصفحة&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;حذف مُتغيّر ترقيم&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;إضافة مُتغيّر ترقيم&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation type="unfinished"></translation>
+        <translation>تعريف</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>نوع</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation type="unfinished">القيمة</translation>
+        <translation>قيمة</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation>زيادة</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">مخطط بدون عنوان</translation>
+        <translation>مخطط بدون عنوان</translation>
     </message>
 </context>
 <context>
@@ -5820,19 +5820,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>أخضر</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>أحمر</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Blue</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>أزرق</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
