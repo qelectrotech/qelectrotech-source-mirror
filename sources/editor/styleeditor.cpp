@@ -32,6 +32,9 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	color = new QButtonGroup(this);
 	color -> addButton(black_color = new QRadioButton(tr("Noir", "element part color")),  CustomElementGraphicPart::BlackColor);
 	color -> addButton(white_color = new QRadioButton(tr("Blanc", "element part color")), CustomElementGraphicPart::WhiteColor);
+	color -> addButton(green_color = new QRadioButton(tr("Vert", "element part color")), CustomElementGraphicPart::GreenColor);
+	color -> addButton(red_color = new QRadioButton(tr("Rouge", "element part color")), CustomElementGraphicPart::RedColor);
+	color -> addButton(blue_color = new QRadioButton(tr("Bleu", "element part color")),  CustomElementGraphicPart::BlueColor);
 
 	
 	// style
@@ -70,6 +73,9 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	color_layout -> addWidget(new QLabel(tr("Couleur : ")));
 	color_layout -> addWidget(black_color);
 	color_layout -> addWidget(white_color);
+	color_layout -> addWidget(green_color);
+	color_layout -> addWidget(red_color);
+	color_layout -> addWidget(blue_color);
 	color_layout -> addStretch();
 	main_layout -> addLayout(color_layout);
 	

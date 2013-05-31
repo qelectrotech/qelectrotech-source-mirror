@@ -737,6 +737,9 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 	pen.setJoinStyle(Qt::BevelJoin);
 	pen.setCapStyle(Qt::SquareCap);
 	pen.setColor(Qt::black);
+	pen.setColor(Qt::red);
+	pen.setColor(Qt::blue);
+	pen.setColor(Qt::green);
 	pen.setStyle(Qt::SolidLine);
 	pen.setWidthF(1.0);
 	brush.setStyle(Qt::NoBrush);
@@ -782,6 +785,12 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 					pen.setColor(QColor(0, 0, 0, pen.color().alpha()));
 				} else if (style_value == "white") {
 					pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
+				} else if (style_value == "red") {
+					pen.setColor(Qt::red);
+				}else if (style_value == "blue") {
+					pen.setColor(Qt::blue);
+				}else if (style_value == "green") {
+					pen.setColor(Qt::green);
 				}
 			}
 		}

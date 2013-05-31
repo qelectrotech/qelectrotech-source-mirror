@@ -55,7 +55,10 @@ class CustomElementGraphicPart : public CustomElementPart {
 	/// This enum lists the various line colors available to draw primitives.
 	enum Color {
 		BlackColor, ///< Black line
-		WhiteColor  ///< White line
+		WhiteColor, ///< White line
+		GreenColor, ///< Green line
+		RedColor,  ///<  Red line
+		BlueColor  ///<  Blue line
 	};
 	
 	// constructors, destructor

@@ -47,6 +47,9 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const {
 	css_like_styles += ";color:";
 	if      (_color == WhiteColor) css_like_styles += "white";
 	else if (_color == BlackColor) css_like_styles += "black";
+	else if (_color == GreenColor) css_like_styles += "black";
+	else if (_color == RedColor) css_like_styles += "black";
+	else if (_color == BlueColor) css_like_styles += "black";
 	
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
@@ -80,13 +83,16 @@ void CustomElementGraphicPart::stylesFromXml(const QDomElement &qde) {
 		} else if (style_name == "filling") {
 			if      (style_value == "white") _filling = WhiteFilling;
 			else if (style_value == "black") _filling = BlackFilling;
-			else if (style_value == "red") _filling = RedFilling;
+			else if (style_value == "red") _filling   = RedFilling;
 			else if (style_value == "green") _filling = GreenFilling;
-			else if (style_value == "blue") _filling = BlueFilling;
+			else if (style_value == "blue") _filling  = BlueFilling;
 			else if (style_value == "none")  _filling = NoneFilling;
 		} else if (style_name == "color") {
 			if      (style_value == "black") _color = BlackColor;
 			else if (style_value == "white") _color = WhiteColor;
+			else if (style_value == "green") _color = GreenColor;
+			else if (style_value == "red") _color   = RedColor;
+			else if (style_value == "blue") _color  = BlueColor;
 		}
 	}
 	
@@ -147,6 +153,9 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 	// applique la couleur de trait
 	if      (_color == WhiteColor) pen.setColor(QColor(255, 255, 255, pen.color().alpha()));
 	else if (_color == BlackColor) pen.setColor(QColor(  0,   0,   0, pen.color().alpha()));
+	else if (_color == GreenColor) pen.setColor(QColor(Qt::green));
+	else if (_color == RedColor) pen.setColor(QColor(Qt::red));
+	else if (_color == BlueColor) pen.setColor(QColor(Qt::blue));
 	
 	
 	// applique l'antialiasing
