@@ -5694,32 +5694,32 @@ Cosa vuoi fare?</translation>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Antialiasing</source>
         <translation>Antialiasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="67"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Trait :</source>
         <translation>Linea:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Couleur : </source>
         <translation>Colore: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="77"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
         <source>Style : </source>
         <translation>Stile: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="85"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
         <source>Épaisseur : </source>
         <translation>Spessore: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="92"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="98"/>
         <source>Remplissage :</source>
         <translation>Riempimento:</translation>
     </message>
@@ -5736,99 +5736,117 @@ Cosa vuoi fare?</translation>
         <translation>Bianco</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="39"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="35"/>
+        <source>Vert</source>
+        <comment>element part color</comment>
+        <translation type="unfinished">Verde</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="36"/>
+        <source>Rouge</source>
+        <comment>element part color</comment>
+        <translation type="unfinished">Rosso</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="37"/>
+        <source>Bleu</source>
+        <comment>element part color</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Normal</source>
         <comment>element part line style</comment>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="40"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
         <translation>Trattino</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="41"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Tratteggiato</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="46"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="47"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Fine</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="48"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="53"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Nero</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="54"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Bianco</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Verde</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Rosso</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
-        <source>Blue</source>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation>Blu</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="135"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
         <source>style antialiasing</source>
         <translation>stile antialiasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="137"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style couleur</source>
         <translation>stile colore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="139"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>style ligne</source>
         <translation>stile liea</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>style epaisseur</source>
         <translation>stile spessore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>style remplissage</source>
         <translation>stile riempimento</translation>
     </message>

@@ -47,9 +47,9 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const {
 	css_like_styles += ";color:";
 	if      (_color == WhiteColor) css_like_styles += "white";
 	else if (_color == BlackColor) css_like_styles += "black";
-	else if (_color == GreenColor) css_like_styles += "black";
-	else if (_color == RedColor) css_like_styles += "black";
-	else if (_color == BlueColor) css_like_styles += "black";
+	else if (_color == GreenColor) css_like_styles += "green";
+	else if (_color == RedColor) css_like_styles += "red";
+	else if (_color == BlueColor) css_like_styles += "blue";
 	
 	qde.setAttribute("style", css_like_styles);
 	qde.setAttribute("antialias", _antialiased ? "true" : "false");
