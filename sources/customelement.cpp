@@ -711,6 +711,7 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 	Les styles possibles sont :
 		- line-style : style du trait
 			- dashed : trait en pointilles (tirets)
+			- dashdotted : Traits et points
 			- dotted : trait en pointilles (points)
 			- normal : trait plein [par defaut]
 		- line-weight : epaiseur du trait
@@ -720,16 +721,9 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 			- white : remplissage blanc
 			- black : remplissage noir
 			- none : pas de remplissage [par defaut]
-			- red   : remplissage rouge
-			- blue  : remplissage bleu
-			- green : remplissage vert
-			
 		- color : couleur du trait et du texte
 			- white : trait noir [par defaut]
 			- black : trait blanc
-			- red   : trait rouge
-			- blue  : trait bleu
-			- green : trait vert
 			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
@@ -763,6 +757,7 @@ void CustomElement::setPainterStyle(QDomElement &e, QPainter &qp) {
 			if (style_name == "line-style") {
 				if (style_value == "dashed") pen.setStyle(Qt::DashLine);
 				else if (style_value == "dotted") pen.setStyle(Qt::DotLine);
+				else if (style_value == "dashdoted") pen.setStyle(Qt::DashDotLine);
 				else if (style_value == "normal") pen.setStyle(Qt::SolidLine);
 			} else if (style_name == "line-weight") {
 				if (style_value == "thin") pen.setWidth(0);

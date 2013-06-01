@@ -32,7 +32,8 @@ class CustomElementGraphicPart : public CustomElementPart {
 	enum LineStyle {
 		NormalStyle, ///< Normal line
 		DashedStyle, ///< Dashed line
-		DottedStyle  ///< Dotted line
+		DottedStyle,  ///< Dotted line
+		DashdottedStyle  ///< Dashdotted  line
 	};
 	
 	/// This enum lists the various line weights available to draw primitives.

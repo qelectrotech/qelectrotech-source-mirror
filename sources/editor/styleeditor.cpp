@@ -42,6 +42,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	style -> addButton(normal_style = new QRadioButton(tr("Normal",       "element part line style")), CustomElementGraphicPart::NormalStyle);
 	style -> addButton(dashed_style = new QRadioButton(tr("Tiret",        "element part line style")), CustomElementGraphicPart::DashedStyle);
 	style -> addButton(dotted_style = new QRadioButton(tr("Pointill\351", "element part line style")), CustomElementGraphicPart::DottedStyle);
+	style -> addButton(dashdotted_style = new QRadioButton(tr("Traits et points", "element part line style")), CustomElementGraphicPart::DashdottedStyle);
 	normal_style -> setChecked(true);
 	
 	// epaisseur
@@ -83,6 +84,7 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	style_layout -> addWidget(new QLabel(tr("Style : ")));
 	style_layout -> addWidget(normal_style);
 	style_layout -> addWidget(dashed_style);
+	style_layout -> addWidget(dashdotted_style);
 	style_layout -> addWidget(dotted_style);
 	style_layout -> addStretch();
 	main_layout -> addLayout(style_layout);

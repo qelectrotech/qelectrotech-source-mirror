@@ -41,7 +41,7 @@ class StyleEditor : public ElementItemEditor {
 	CustomElementGraphicPart *part;
 	QVBoxLayout *main_layout;
 	QButtonGroup *color, *style, *weight, *filling;
-	QRadioButton *black_color, *white_color,  *normal_style, *dashed_style, *dotted_style, *green_color, *red_color, *blue_color;
+	QRadioButton *black_color, *white_color,  *normal_style, *dashed_style, *dashdotted_style, *dotted_style, *green_color, *red_color, *blue_color;
 	QRadioButton *none_weight, *thin_weight, *normal_weight, *no_filling;
 	QRadioButton *black_filling, *white_filling, *green_filling, *red_filling, *blue_filling;
 	QCheckBox *antialiasing;

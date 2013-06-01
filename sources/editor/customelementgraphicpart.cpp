@@ -28,6 +28,7 @@ void CustomElementGraphicPart::stylesToXml(QDomElement &qde) const {
 	css_like_styles += "line-style:";
 	if      (_linestyle == DashedStyle) css_like_styles += "dashed";
 	if      (_linestyle == DottedStyle) css_like_styles += "dotted";
+	if      (_linestyle == DashdottedStyle)css_like_styles += "dashdotted";
 	else if (_linestyle == NormalStyle) css_like_styles += "normal";
 	
 	css_like_styles += ";line-weight:";
@@ -122,6 +123,7 @@ void CustomElementGraphicPart::applyStylesToQPainter(QPainter &painter) const {
 	
 	// applique le style de trait
 	if      (_linestyle == DashedStyle) pen.setStyle(Qt::DashLine);
+	if      (_linestyle == DashdottedStyle) pen.setStyle(Qt::DashDotLine);
 	if      (_linestyle == DottedStyle) pen.setStyle(Qt::DotLine);
 	else if (_linestyle == NormalStyle) pen.setStyle(Qt::SolidLine);
 	
