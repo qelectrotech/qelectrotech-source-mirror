@@ -452,7 +452,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
-        <translation>PEN</translation>
+        <translation>قلم</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
@@ -5802,7 +5802,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation type="unfinished">خطوط و نقاط</translation>
+        <translation>خطوط و نقاط</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
