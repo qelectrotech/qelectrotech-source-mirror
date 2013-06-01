@@ -5694,32 +5694,32 @@ Cosa vuoi fare?</translation>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Antialiasing</source>
         <translation>Antialiasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Trait :</source>
         <translation>Linea:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Couleur : </source>
         <translation>Colore: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Style : </source>
         <translation>Stile: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Épaisseur : </source>
         <translation>Spessore: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="98"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Remplissage :</source>
         <translation>Riempimento:</translation>
     </message>
@@ -5772,81 +5772,87 @@ Cosa vuoi fare?</translation>
         <translation>Tratteggiato</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <source>Traits et points</source>
+        <comment>element part line style</comment>
+        <translation>Punto e linea</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Fine</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normale</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Nessuno</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Nero</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Bianco</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Verde</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Rosso</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation>Blu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style antialiasing</source>
         <translation>stile antialiasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>style couleur</source>
         <translation>stile colore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>style ligne</source>
         <translation>stile liea</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>style epaisseur</source>
         <translation>stile spessore</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>style remplissage</source>
         <translation>stile riempimento</translation>
     </message>

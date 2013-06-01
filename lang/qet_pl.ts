@@ -5705,32 +5705,32 @@ Co chcesz zrobić ?</translation>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Antialiasing</source>
         <translation>Antyaliasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Trait :</source>
         <translation>Linia :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Couleur : </source>
         <translation>Kolor : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Style : </source>
         <translation>Rodzaj : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Épaisseur : </source>
         <translation>Grubość : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="98"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Remplissage :</source>
         <translation>Wypełnienie :</translation>
     </message>
@@ -5783,81 +5783,87 @@ Co chcesz zrobić ?</translation>
         <translation>Kropkowa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <source>Traits et points</source>
+        <comment>element part line style</comment>
+        <translation type="unfinished">Kreskowo-kropkowa</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Brak</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Cienka</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normalna</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Brak</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Czarne</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Białe</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Zielony</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Czerwony</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style antialiasing</source>
         <translation>antyaliasingu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>style couleur</source>
         <translation>koloru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>style ligne</source>
         <translation>stylu linii</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>style epaisseur</source>
         <translation>grubości</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>style remplissage</source>
         <translation>wypełnienia</translation>
     </message>

@@ -5764,111 +5764,117 @@ Què vol fer?</translation>
         <translation>Puntets</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <source>Traits et points</source>
+        <comment>element part line style</comment>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Nul·la</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Fina</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normal</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Cap</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Negre</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Blanc</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Antialiasing</source>
         <translation>Antialiàsing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Trait :</source>
         <translation>Traç:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Couleur : </source>
         <translation>Color:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Style : </source>
         <translation>Estil:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Épaisseur : </source>
         <translation>Gruix:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="98"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Remplissage :</source>
         <translation>Emplenament:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style antialiasing</source>
         <translation>estil d&apos;antialiàsing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>style couleur</source>
         <translation>estil de color</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>style ligne</source>
         <translation>estil de línia</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>style epaisseur</source>
         <translation>estil de gruix</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>style remplissage</source>
         <translation>estil d&apos;emplenament</translation>
     </message>

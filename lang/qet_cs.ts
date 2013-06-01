@@ -5700,32 +5700,32 @@ Co chcete dělat?</translation>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Antialiasing</source>
         <translation>Vyhlazování</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Trait :</source>
         <translation>Čára:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Couleur : </source>
         <translation>Barva: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Style : </source>
         <translation>Styl: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Épaisseur : </source>
         <translation>Váha: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="98"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Remplissage :</source>
         <translation>Výplň:</translation>
     </message>
@@ -5778,81 +5778,87 @@ Co chcete dělat?</translation>
         <translation>Tečkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <source>Traits et points</source>
+        <comment>element part line style</comment>
+        <translation type="unfinished">Čárky a tečky</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Žádná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Tenká</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Běžná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Žádná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Černá</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Bílá</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style antialiasing</source>
         <translation>styl vyhlazování</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>style couleur</source>
         <translation>styl barvy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>style ligne</source>
         <translation>styl čáry</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>style epaisseur</source>
         <translation>styl váhy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>style remplissage</source>
         <translation>výplně</translation>
     </message>

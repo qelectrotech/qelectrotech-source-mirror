@@ -5799,111 +5799,117 @@ Que désirez vous faire ?</source>
         <translation>متقطع</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <source>Traits et points</source>
+        <comment>element part line style</comment>
+        <translation type="unfinished">خطوط و نقاط</translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation> لا أحد</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>دقيقة</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>عادية</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>لا شيئ</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>أسود</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>أبيض</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>أخضر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>أحمر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation>أزرق</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
         <source>Antialiasing</source>
         <translation>مكافحة التعرج</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
         <source>Trait :</source>
         <translation>خط :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
         <source>Couleur : </source>
         <translation>لون:</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="83"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
         <source>Style : </source>
         <translation>نمط : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="91"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
         <source>Épaisseur : </source>
         <translation>سُمك :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="98"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
         <source>Remplissage :</source>
         <translation>تعبئة :</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="141"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
         <source>style antialiasing</source>
         <translation>نمط مكافحة التعرج</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
         <source>style couleur</source>
         <translation>نمط اللون</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
         <source>style ligne</source>
         <translation>نمط السطر</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
         <source>style epaisseur</source>
         <translation>نمط السُمك</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
         <source>style remplissage</source>
         <translation>نمط التعبئة</translation>
     </message>

@@ -4795,6 +4795,11 @@ Que désirez vous faire ?</source>
         <comment>element part filling</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Traits et points</source>
+        <comment>element part line style</comment>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>TerminalEditor</name>
