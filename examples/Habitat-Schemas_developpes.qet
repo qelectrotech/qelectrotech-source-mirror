@@ -1,0 +1,859 @@
+<project title="" version="0.3">
+    <properties/>
+    <newdiagrams>
+        <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
+        <inset title="" folio="%id/%total" author="" filename="" date="null"/>
+        <conductors num="_" type="multi"/>
+    </newdiagrams>
+    <diagram title="Eclairage Cuisine en simple allumage" displayrows="true" version="0.3" cols="10" folio="%id/%total" displaycols="true" height="420" colsize="60" order="1" rows="5" author="QElectroTech Team" filename="" date="20130601" rowsize="80">
+        <defaultconductor num="_" type="multi"/>
+        <elements>
+            <element x="430" y="340" type="embed://import/disj_neutre.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="0" orientation="0"/>
+                    <terminal x="0" y="17" id="1" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="6" y="3" userrotation="-270" userx="17.0161" usery="-16.2484" text="20A"/>
+                </inputs>
+            </element>
+            <element x="430" y="150" type="embed://import/disj_neutre.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="2" orientation="0"/>
+                    <terminal x="0" y="17" id="3" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="6" y="3" userrotation="-270" userx="17.0161" usery="-16.2484" text="10A"/>
+                </inputs>
+            </element>
+            <element x="320" y="270" type="embed://import/lampe_pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="4" orientation="0"/>
+                    <terminal x="0" y="17" id="5" orientation="2"/>
+                    <terminal x="-10" y="12" id="6" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="10" y="1" userrotation="-270" userx="21.45" usery="-11.55" text="L3"/>
+                </inputs>
+            </element>
+            <element x="320" y="210" type="embed://import/lampe_pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="7" orientation="0"/>
+                    <terminal x="0" y="17" id="8" orientation="2"/>
+                    <terminal x="-10" y="12" id="9" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="10" y="1" userrotation="-270" userx="21.45" usery="-11.55" text="L2"/>
+                </inputs>
+            </element>
+            <element x="320" y="150" type="embed://import/lampe_pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="10" orientation="0"/>
+                    <terminal x="0" y="17" id="11" orientation="2"/>
+                    <terminal x="-10" y="12" id="12" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="10" y="1" userrotation="-270" userx="21.45" usery="-11.55" text="L1"/>
+                </inputs>
+            </element>
+            <element x="140" y="350" type="embed://import/protections/disjoncteurs/disjonct-m.elmt" orientation="3">
+                <terminals>
+                    <terminal x="10" y="26" id="13" orientation="2"/>
+                    <terminal x="10" y="-16" id="14" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="16" y="3.6666" userrotation="-270" userx="31.95" usery="-13.3834" text="20A"/>
+                </inputs>
+            </element>
+            <element x="300" y="340" type="embed://import/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="1" y="0" id="15" orientation="1"/>
+                    <terminal x="-25" y="0" id="16" orientation="3"/>
+                    <terminal x="-12" y="6" id="17" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="-20" y="-22" text="PC1"/>
+                </inputs>
+            </element>
+            <element x="230" y="210" type="embed://import/contacts/interrupteurs/interrupteur.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="18" orientation="0"/>
+                    <terminal x="0" y="17" id="19" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2.75" y="3" userrotation="-270" userx="10.2" usery="-5.55" text="S2"/>
+                </inputs>
+            </element>
+            <element x="230" y="150" type="embed://import/contacts/interrupteurs/interrupteur.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="20" orientation="0"/>
+                    <terminal x="0" y="17" id="21" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2.75" y="3" userrotation="-270" userx="10.2" usery="-5.55" text="S1"/>
+                </inputs>
+            </element>
+            <element x="510" y="390" type="embed://import/sources/multifilaire/src_n.elmt" orientation="3">
+                <terminals>
+                    <terminal x="6" y="0" id="22" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-17" y="0" userrotation="-270" userx="-18.3219" usery="-9.76322" text=""/>
+                </inputs>
+            </element>
+            <element x="560" y="390" type="embed://import/sources/multifilaire/pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="6" y="0" id="23" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-23" y="0" userrotation="-270" userx="-16.969" usery="-13.55" text=""/>
+                </inputs>
+            </element>
+            <element x="90" y="400" type="embed://import/sources/multifilaire/src_p.elmt" orientation="3">
+                <terminals>
+                    <terminal x="6" y="0" id="24" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-16" y="0" userrotation="-270" userx="-13.5425" usery="16.5674" text=""/>
+                </inputs>
+            </element>
+            <element x="140" y="160" type="embed://import/protections/disjoncteurs/disjonct-m.elmt" orientation="3">
+                <terminals>
+                    <terminal x="10" y="26" id="25" orientation="2"/>
+                    <terminal x="10" y="-16" id="26" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="16" y="3.6666" userrotation="-270" userx="31.95" usery="-13.3834" text="10A"/>
+                </inputs>
+            </element>
+            <element x="560" y="80" type="embed://import/sources/multifilaire/pe.elmt" orientation="1">
+                <terminals>
+                    <terminal x="6" y="0" id="27" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-23" y="0" userrotation="-90" userx="-15.869" usery="12.45" text="PE"/>
+                </inputs>
+            </element>
+            <element x="90" y="80" type="embed://import/sources/multifilaire/src_p.elmt" orientation="1">
+                <terminals>
+                    <terminal x="6" y="0" id="28" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-16" y="0" userrotation="-90" userx="-14.5822" usery="6.73678" text="L"/>
+                </inputs>
+            </element>
+            <element x="510" y="80" type="embed://import/sources/multifilaire/src_n.elmt" orientation="1">
+                <terminals>
+                    <terminal x="6" y="0" id="29" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-17" y="0" userrotation="-90" userx="-17.2219" usery="7.23678" text="N"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="" rotation="270" terminal1="12" userx="360" terminal2="9" usery="190" type="multi" color="#00aa00">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="15" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="-15" orientation="horizontal"/>
+                <segment length="-9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" rotation="270" terminal1="5" userx="380" terminal2="2" usery="190" type="multi" color="#0000ff">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="30" orientation="horizontal"/>
+                <segment length="-120" orientation="vertical"/>
+                <segment length="20" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" rotation="270" terminal1="8" userx="380" terminal2="2" usery="180" type="multi" color="#0000ff">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="30" orientation="horizontal"/>
+                <segment length="-60" orientation="vertical"/>
+                <segment length="20" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" rotation="270" terminal1="9" terminal2="6" type="multi" color="#00aa00">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="15" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="-15" orientation="horizontal"/>
+                <segment length="-9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="0" terminal2="15" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="6" terminal2="27" type="multi" color="#00aa00"/>
+            <conductor num="" terminal1="1" terminal2="22" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="17" terminal2="23" type="multi" color="#00aa00">
+                <segment length="9" orientation="vertical"/>
+                <segment length="11" orientation="vertical"/>
+                <segment length="272" orientation="horizontal"/>
+                <segment length="1" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="3" terminal2="29" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="11" terminal2="2" type="multi" color="#0000ff"/>
+            <conductor num="" rotation="270" terminal1="19" terminal2="4" type="multi" color="#ff5500"/>
+            <conductor num="" terminal1="19" terminal2="7" type="multi" color="#ff5500"/>
+            <conductor num="" terminal1="21" terminal2="10" type="multi"/>
+            <conductor num="2,5mm²" terminal1="13" userx="200" terminal2="16" usery="350" type="multi" color="#ff0000"/>
+            <conductor num="1,5mm²" rotation="270" terminal1="20" userx="160" terminal2="18" usery="210" type="multi" color="#ff0000">
+                <segment length="-9" orientation="horizontal"/>
+                <segment length="-10" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="10" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="25" userx="160" terminal2="20" usery="120" type="multi" color="#ff0000"/>
+            <conductor num="" rotation="270" terminal1="14" terminal2="28" type="multi" color="#ff0000"/>
+            <conductor num="" rotation="270" terminal1="26" terminal2="28" type="multi" color="#ff0000"/>
+            <conductor num="" rotation="270" terminal1="22" terminal2="29" type="multi" color="#0000ff"/>
+            <conductor num="" rotation="270" terminal1="23" terminal2="27" type="multi" color="#00aa00"/>
+            <conductor num="" rotation="270" terminal1="24" terminal2="28" type="multi" color="#ff0000"/>
+        </conductors>
+        <inputs>
+            <input x="210" y="30" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>L1 en simple allumage par S1&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>L2 et L3 en simple allumage par S2&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>1 PC 2p+T&lt;/p>&lt;/body>&lt;/html>"/>
+        </inputs>
+    </diagram>
+    <diagram title="Eclairage du salon/séjour en double allumage" displayrows="true" version="0.3" cols="10" folio="%id/%total" displaycols="true" height="420" colsize="60" order="2" rows="5" author="QElectroTech Team" filename="" date="20130601" rowsize="80">
+        <defaultconductor num="_" type="multi"/>
+        <elements>
+            <element x="230" y="270" type="embed://import/contacts/interrupteurs/interrupteur.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="0" orientation="0"/>
+                    <terminal x="0" y="17" id="1" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2.75" y="3" userrotation="-270" userx="10.2" usery="-5.55" text="S2d"/>
+                </inputs>
+            </element>
+            <element x="510" y="80" type="embed://import/sources/multifilaire/src_n.elmt" orientation="1">
+                <terminals>
+                    <terminal x="6" y="0" id="2" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-17" y="0" userrotation="-90" userx="-17.2219" usery="7.23678" text="N"/>
+                </inputs>
+            </element>
+            <element x="90" y="80" type="embed://import/sources/multifilaire/src_p.elmt" orientation="1">
+                <terminals>
+                    <terminal x="6" y="0" id="3" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-16" y="0" userrotation="-90" userx="-14.5822" usery="6.73678" text="L"/>
+                </inputs>
+            </element>
+            <element x="560" y="80" type="embed://import/sources/multifilaire/pe.elmt" orientation="1">
+                <terminals>
+                    <terminal x="6" y="0" id="4" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-23" y="0" userrotation="-90" userx="-15.869" usery="12.45" text="PE"/>
+                </inputs>
+            </element>
+            <element x="140" y="160" type="embed://import/protections/disjoncteurs/disjonct-m.elmt" orientation="3">
+                <terminals>
+                    <terminal x="10" y="26" id="5" orientation="2"/>
+                    <terminal x="10" y="-16" id="6" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="16" y="3.6666" userrotation="-270" userx="31.95" usery="-13.3834" text="10A"/>
+                </inputs>
+            </element>
+            <element x="90" y="400" type="embed://import/sources/multifilaire/src_p.elmt" orientation="3">
+                <terminals>
+                    <terminal x="6" y="0" id="7" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-16" y="0" userrotation="-270" userx="-13.5425" usery="16.5674" text=""/>
+                </inputs>
+            </element>
+            <element x="560" y="390" type="embed://import/sources/multifilaire/pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="6" y="0" id="8" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-23" y="0" userrotation="-270" userx="-16.969" usery="-13.55" text=""/>
+                </inputs>
+            </element>
+            <element x="510" y="390" type="embed://import/sources/multifilaire/src_n.elmt" orientation="3">
+                <terminals>
+                    <terminal x="6" y="0" id="9" orientation="1"/>
+                </terminals>
+                <inputs>
+                    <input x="-17" y="0" userrotation="-270" userx="-18.3219" usery="-9.76322" text=""/>
+                </inputs>
+            </element>
+            <element x="230" y="150" type="embed://import/contacts/interrupteurs/interrupteur.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="10" orientation="0"/>
+                    <terminal x="0" y="17" id="11" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2.75" y="3" userrotation="-270" userx="10.2" usery="-5.55" text="S1"/>
+                </inputs>
+            </element>
+            <element x="230" y="210" type="embed://import/contacts/interrupteurs/interrupteur.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="12" orientation="0"/>
+                    <terminal x="0" y="17" id="13" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="2.75" y="3" userrotation="-270" userx="10.2" usery="-5.55" text="S2g"/>
+                </inputs>
+            </element>
+            <element x="300" y="340" type="embed://import/pc.elmt" orientation="0">
+                <terminals>
+                    <terminal x="1" y="0" id="14" orientation="1"/>
+                    <terminal x="-25" y="0" id="15" orientation="3"/>
+                    <terminal x="-12" y="6" id="16" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="-20" y="-22" text="PC1"/>
+                </inputs>
+            </element>
+            <element x="140" y="350" type="embed://import/protections/disjoncteurs/disjonct-m.elmt" orientation="3">
+                <terminals>
+                    <terminal x="10" y="26" id="17" orientation="2"/>
+                    <terminal x="10" y="-16" id="18" orientation="0"/>
+                </terminals>
+                <inputs>
+                    <input x="16" y="3.6666" userrotation="-270" userx="31.95" usery="-13.3834" text="20A"/>
+                </inputs>
+            </element>
+            <element x="320" y="150" type="embed://import/lampe_pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="19" orientation="0"/>
+                    <terminal x="0" y="17" id="20" orientation="2"/>
+                    <terminal x="-10" y="12" id="21" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="10" y="1" userrotation="-270" userx="21.45" usery="-11.55" text="L1"/>
+                </inputs>
+            </element>
+            <element x="320" y="210" type="embed://import/lampe_pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="22" orientation="0"/>
+                    <terminal x="0" y="17" id="23" orientation="2"/>
+                    <terminal x="-10" y="12" id="24" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="10" y="1" userrotation="-270" userx="21.45" usery="-11.55" text="L2"/>
+                </inputs>
+            </element>
+            <element x="320" y="270" type="embed://import/lampe_pe.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="25" orientation="0"/>
+                    <terminal x="0" y="17" id="26" orientation="2"/>
+                    <terminal x="-10" y="12" id="27" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="10" y="1" userrotation="-270" userx="21.45" usery="-11.55" text="L3"/>
+                </inputs>
+            </element>
+            <element x="430" y="150" type="embed://import/disj_neutre.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="28" orientation="0"/>
+                    <terminal x="0" y="17" id="29" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="6" y="3" userrotation="-270" userx="17.0161" usery="-16.2484" text="10A"/>
+                </inputs>
+            </element>
+            <element x="430" y="340" type="embed://import/disj_neutre.elmt" orientation="3">
+                <terminals>
+                    <terminal x="0" y="-17" id="30" orientation="0"/>
+                    <terminal x="0" y="17" id="31" orientation="2"/>
+                </terminals>
+                <inputs>
+                    <input x="6" y="3" userrotation="-270" userx="17.0161" usery="-16.2484" text="20A"/>
+                </inputs>
+            </element>
+        </elements>
+        <conductors>
+            <conductor num="" rotation="270" terminal1="5" terminal2="0" type="multi" color="#ff0000">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="11" orientation="horizontal"/>
+                <segment length="120" orientation="vertical"/>
+                <segment length="10" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" terminal1="1" terminal2="25" type="multi" color="#aa5500"/>
+            <conductor num="" rotation="270" terminal1="7" terminal2="3" type="multi" color="#ff0000"/>
+            <conductor num="" rotation="270" terminal1="8" terminal2="4" type="multi" color="#00aa00"/>
+            <conductor num="" rotation="270" terminal1="9" terminal2="2" type="multi" color="#0000ff"/>
+            <conductor num="" rotation="270" terminal1="6" terminal2="3" type="multi" color="#ff0000"/>
+            <conductor num="" rotation="270" terminal1="18" terminal2="3" type="multi" color="#ff0000"/>
+            <conductor num="" terminal1="5" userx="160" terminal2="10" usery="120" type="multi" color="#ff0000"/>
+            <conductor num="1,5mm²" rotation="270" terminal1="10" userx="160" terminal2="12" usery="210" type="multi" color="#ff0000">
+                <segment length="-9" orientation="horizontal"/>
+                <segment length="-10" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="10" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="2,5mm²" terminal1="17" userx="200" terminal2="15" usery="350" type="multi" color="#ff0000"/>
+            <conductor num="" terminal1="11" terminal2="19" type="multi"/>
+            <conductor num="" terminal1="13" terminal2="22" type="multi" color="#ff5500"/>
+            <conductor num="" terminal1="20" terminal2="28" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="29" terminal2="2" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="16" terminal2="8" type="multi" color="#00aa00">
+                <segment length="9" orientation="vertical"/>
+                <segment length="11" orientation="vertical"/>
+                <segment length="272" orientation="horizontal"/>
+                <segment length="1" orientation="vertical"/>
+                <segment length="9" orientation="vertical"/>
+            </conductor>
+            <conductor num="" terminal1="31" terminal2="9" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="30" terminal2="14" type="multi" color="#0000ff"/>
+            <conductor num="" terminal1="27" terminal2="4" type="multi" color="#00aa00"/>
+            <conductor num="" rotation="270" terminal1="24" terminal2="27" type="multi" color="#00aa00">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="15" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="-15" orientation="horizontal"/>
+                <segment length="-9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" rotation="270" terminal1="23" userx="380" terminal2="28" usery="180" type="multi" color="#0000ff">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="30" orientation="horizontal"/>
+                <segment length="-60" orientation="vertical"/>
+                <segment length="20" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" rotation="270" terminal1="26" userx="380" terminal2="28" usery="190" type="multi" color="#0000ff">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="30" orientation="horizontal"/>
+                <segment length="-120" orientation="vertical"/>
+                <segment length="20" orientation="horizontal"/>
+                <segment length="9" orientation="horizontal"/>
+            </conductor>
+            <conductor num="" rotation="270" terminal1="21" userx="360" terminal2="24" usery="190" type="multi" color="#00aa00">
+                <segment length="9" orientation="horizontal"/>
+                <segment length="15" orientation="horizontal"/>
+                <segment length="60" orientation="vertical"/>
+                <segment length="-15" orientation="horizontal"/>
+                <segment length="-9" orientation="horizontal"/>
+            </conductor>
+        </conductors>
+        <inputs>
+            <input x="210" y="30" text="&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;>&#xa;&lt;html>&lt;head>&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; />&lt;style type=&quot;text/css&quot;>&#xa;p, li { white-space: pre-wrap; }&#xa;&lt;/style>&lt;/head>&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>L1 en simple allumage par S1&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>L2 et L3 en double allumage par S2&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>    S2g -&amp;gt; L2&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>    S2d -&amp;gt; L3&lt;/p>&#xa;&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;>1 PC 2p+T&lt;/p>&lt;/body>&lt;/html>"/>
+        </inputs>
+    </diagram>
+    <collection>
+        <category name="import">
+            <names>
+                <name lang="ru">Импортированные элементы</name>
+                <name lang="en">Imported elements</name>
+                <name lang="it">Elementi importati</name>
+                <name lang="fr">Éléments importés</name>
+                <name lang="pl">Elementy importowane</name>
+                <name lang="es">Elementos importados</name>
+                <name lang="cs">Zavedené prvky</name>
+            </names>
+            <category name="recepteurs">
+                <names>
+                    <name lang="ar">مستقبلات</name>
+                    <name lang="de">Verbraucher</name>
+                    <name lang="ru">Приёмники</name>
+                    <name lang="pt">Receptores</name>
+                    <name lang="en">Receivers</name>
+                    <name lang="it">Utilizzatori</name>
+                    <name lang="fr">Récepteurs</name>
+                    <name lang="pl">Odbiorniki</name>
+                    <name lang="es">Receptores</name>
+                    <name lang="cs">Přijímače</name>
+                </names>
+                <category name="lampes">
+                    <names>
+                        <name lang="ar">مصابيح</name>
+                        <name lang="de">Leuchten</name>
+                        <name lang="ru">Лампы</name>
+                        <name lang="pt">Lâmpadas</name>
+                        <name lang="en">Lights</name>
+                        <name lang="it">Luci</name>
+                        <name lang="fr">Lampes</name>
+                        <name lang="pl">Oświetlenie</name>
+                        <name lang="es">Lámparas</name>
+                        <name lang="cs">Světla</name>
+                    </names>
+                    <element name="lampe2.elmt">
+                        <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                            <names>
+                                <name lang="ar">مصباح</name>
+                                <name lang="de">Leuchte</name>
+                                <name lang="ru">Лампа</name>
+                                <name lang="pt">Lâmpada</name>
+                                <name lang="en">Light</name>
+                                <name lang="it">Luce</name>
+                                <name lang="fr">Lampe</name>
+                                <name lang="pl">Lampa</name>
+                                <name lang="es">Lámpara</name>
+                                <name lang="cs">Světlo</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                                <input x="15" y="3" size="9" text="H_"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                                <terminal x="0" y="21" orientation="s"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <category name="sources">
+                <names>
+                    <name lang="ar">مصادر</name>
+                    <name lang="de">Quellen</name>
+                    <name lang="ru">Источники</name>
+                    <name lang="pt">Fontes</name>
+                    <name lang="en">Sources</name>
+                    <name lang="it">Sorgenti</name>
+                    <name lang="fr">Sources</name>
+                    <name lang="pl">Źródła zasilania</name>
+                    <name lang="es">Fuentes</name>
+                    <name lang="cs">Zdroje</name>
+                </names>
+                <category name="tevenin_norton">
+                    <names>
+                        <name lang="ar">ثفنان / نورتان</name>
+                        <name lang="de">Tevenin / Norton</name>
+                        <name lang="ru">Идеальные генераторы</name>
+                        <name lang="pt">Tevenin / Norton</name>
+                        <name lang="en">Tevenin / Norton</name>
+                        <name lang="it">Tevenin / Norton</name>
+                        <name lang="fr">Tevenin / Norton</name>
+                        <name lang="pl">Generatory</name>
+                        <name lang="es">Tevenin / Norton</name>
+                        <name lang="cs">Ideální generátory (Tevenin/Norton)</name>
+                    </names>
+                    <element name="courant_n.elmt">
+                        <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                            <names>
+                                <name lang="ar">مصدر تيّار (جديد)</name>
+                                <name lang="de">Stromquelle (neu)</name>
+                                <name lang="ru">Источник тока (новый)</name>
+                                <name lang="pt">Fonte de corrente (novo)</name>
+                                <name lang="en">Current source (new)</name>
+                                <name lang="it">Generatore di corrente (nuovo)</name>
+                                <name lang="fr">Source de courant (nouveau)</name>
+                                <name lang="pl">Źródło prądu (nowy)</name>
+                                <name lang="es">Fuente de corriente (nuevo)</name>
+                                <name lang="cs">Zdroj proudu (nový)</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="-10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                                <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                                <input x="12.75" y="3" size="9" text="_"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.75" x1="0" y2="-10" x2="0"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                                <terminal x="0" y="21" orientation="s"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+                <category name="multifilaire">
+                    <names>
+                        <name lang="ar">متعددة الأسلاك</name>
+                        <name lang="de">Mehradrig</name>
+                        <name lang="ru">Многолинейные</name>
+                        <name lang="pt">Multifilar</name>
+                        <name lang="en">Multiline</name>
+                        <name lang="it">Multifilari</name>
+                        <name lang="fr">Multifilaire</name>
+                        <name lang="pl">Schemat wielokreskowyowy</name>
+                        <name lang="es">Multihilo</name>
+                        <name lang="cs">Několik vedení</name>
+                    </names>
+                    <element name="pe.elmt">
+                        <definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="ru">Нейтраль</name>
+                                <name lang="fr">Protection Electrique</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+                                <input x="-23" y="0" size="9" text="PE"/>
+                                <terminal x="10" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="src_p.elmt">
+                        <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="ar">مصدر وجه</name>
+                                <name lang="de">Phase</name>
+                                <name lang="ru">Фаза</name>
+                                <name lang="pt">Fonte de fase</name>
+                                <name lang="en">Phase source</name>
+                                <name lang="it">Sorgente fase</name>
+                                <name lang="fr">Source phase</name>
+                                <name lang="pl">Przewód liniowy</name>
+                                <name lang="es">Fuente fase</name>
+                                <name lang="cs">Fázový zdroj</name>
+                            </names>
+                            <informations>Author: The QElectroTech team&#xd;
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+                                <input x="-16" y="0" size="9" text="L"/>
+                                <terminal x="10" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="src_n.elmt">
+                        <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dyyy">
+                            <names>
+                                <name lang="ar">مصدر محايد</name>
+                                <name lang="de">Neutralleiter</name>
+                                <name lang="ru">Нейтраль</name>
+                                <name lang="pt">Fonte de neutro</name>
+                                <name lang="en">Neutral source</name>
+                                <name lang="it">Sorgente neutro</name>
+                                <name lang="fr">Source neutre</name>
+                                <name lang="pl">Przewód neutralny</name>
+                                <name lang="es">Fuente neutro</name>
+                                <name lang="cs">Nulový zdroj</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
+                                <input x="-17" y="0" size="9" text="N"/>
+                                <terminal x="10" y="0" orientation="e"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <category name="protections">
+                <names>
+                    <name lang="ar">حمايات</name>
+                    <name lang="de">Sicherheit</name>
+                    <name lang="ru">Защитные уст-ва</name>
+                    <name lang="pt">Protecções</name>
+                    <name lang="en">Protections</name>
+                    <name lang="it">Protezioni</name>
+                    <name lang="fr">Protections</name>
+                    <name lang="pl">Zabezpieczenia</name>
+                    <name lang="es">Protecciones</name>
+                    <name lang="cs">Ochrany</name>
+                </names>
+                <category name="disjoncteurs">
+                    <names>
+                        <name lang="ar">قواطع</name>
+                        <name lang="de">Lastschalter</name>
+                        <name lang="ru">Выключатели</name>
+                        <name lang="pt">Disjuntores</name>
+                        <name lang="en">Circuit-breakers</name>
+                        <name lang="it">Interruttori</name>
+                        <name lang="fr">Disjoncteurs</name>
+                        <name lang="pl">Wyłączniki</name>
+                        <name lang="es">Disyuntores</name>
+                        <name lang="cs">Jističe</name>
+                    </names>
+                    <element name="disjoncteur1.elmt">
+                        <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                            <names>
+                                <name lang="ar">قاطع</name>
+                                <name lang="de">Lastschalter</name>
+                                <name lang="ru">Выключатель</name>
+                                <name lang="pt">Disjuntor</name>
+                                <name lang="en">Circuit-breaker</name>
+                                <name lang="it">Sezionatore 1P</name>
+                                <name lang="fr">Disjoncteur</name>
+                                <name lang="pl">Wyłącznik</name>
+                                <name lang="es">Disyuntor</name>
+                                <name lang="cs">Jistič</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                                <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
+                                <input x="2.75" y="3" size="9" text="_"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                                <terminal x="0" y="21" orientation="s"/>
+                            </description>
+                        </definition>
+                    </element>
+                    <element name="disjonct-m.elmt">
+                        <definition width="30" version="0.3" hotspot_x="0" hotspot_y="25" height="60" type="element" orientation="dnny">
+                            <names>
+                                <name lang="ar">قاطع أحدي القطب</name>
+                                <name lang="en">Circuit-breaker</name>
+                                <name lang="fr">Disjoncteur unipolaire</name>
+                                <name lang="pl">Wyłącznik</name>
+                                <name lang="cs">Jednopólový jistič</name>
+                                <name lang="it">Int. Aut. Magneto-termico 1P</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="26" x1="10" y2="30" x2="10"/>
+                                <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="13" x1="10" y2="10" x2="10" y3="-10" x3="5"/>
+                                <input x="16" y="3.6666" size="9" text="_"/>
+                                <arc width="8" x="6" y="20.5" antialias="true" height="5" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-180"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="10" y2="20" x2="10"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="18" x1="10" y2="18" x2="15"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="15" y2="18" x2="15"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="13" x1="10" y2="13" x2="15"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="10" y2="-10" x2="10"/>
+                                <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="12" y2="-8" x2="8"/>
+                                <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-12" x1="8" y2="-8" x2="12"/>
+                                <terminal x="10" y="30" orientation="s"/>
+                                <terminal x="10" y="-20" orientation="n"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <category name="contacts">
+                <names>
+                    <name lang="ar">ملامسات</name>
+                    <name lang="de">Kontakte</name>
+                    <name lang="ru">Контакты</name>
+                    <name lang="pt">Contactos</name>
+                    <name lang="en">Contacts</name>
+                    <name lang="it">Contatti</name>
+                    <name lang="fr">Contacts</name>
+                    <name lang="pl">Zestyki</name>
+                    <name lang="es">Terminales</name>
+                    <name lang="cs">Kontakty</name>
+                </names>
+                <category name="interrupteurs">
+                    <names>
+                        <name lang="ar">مفاتيح</name>
+                        <name lang="de">Schalter</name>
+                        <name lang="ru">переключателей</name>
+                        <name lang="pt">Interruptores</name>
+                        <name lang="en">Switchs</name>
+                        <name lang="it">Interruttori</name>
+                        <name lang="fr">Interrupteurs</name>
+                        <name lang="pl">Przełącznik</name>
+                        <name lang="es">Interruptores</name>
+                        <name lang="cs">Spínače</name>
+                    </names>
+                    <element name="interrupteur.elmt">
+                        <definition width="20" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dnny">
+                            <names>
+                                <name lang="ar">مفتاح</name>
+                                <name lang="de">Schalter</name>
+                                <name lang="ru">Переключатель</name>
+                                <name lang="pt">Interruptor</name>
+                                <name lang="en">Switch</name>
+                                <name lang="it">Interruttore</name>
+                                <name lang="fr">Interrupteur</name>
+                                <name lang="pl">Łącznik</name>
+                                <name lang="es">Interruptor</name>
+                                <name lang="cs">Spínač</name>
+                            </names>
+                            <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                            <description>
+                                <polygon antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" closed="false" y1="-10" x1="-5" y2="10" x2="0" y3="20" x3="0"/>
+                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-12.5" x2="0"/>
+                                <input x="2.75" y="3" size="9" text="_"/>
+                                <circle x="-1.75" y="-11.75" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="3.5"/>
+                                <terminal x="0" y="-21" orientation="n"/>
+                                <terminal x="0" y="21" orientation="s"/>
+                            </description>
+                        </definition>
+                    </element>
+                </category>
+            </category>
+            <element name="lampe_pe.elmt">
+                <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
+                    <names>
+                        <name lang="ar">مصباح</name>
+                        <name lang="de">Leuchte</name>
+                        <name lang="ru">Лампа</name>
+                        <name lang="pt">Lâmpada</name>
+                        <name lang="en">Light</name>
+                        <name lang="it">Luce</name>
+                        <name lang="fr">Lampe</name>
+                        <name lang="pl">Lampa</name>
+                        <name lang="es">Lámpara</name>
+                        <name lang="cs">Světlo</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                        <input x="10" y="1" size="9" text="L_"/>
+                        <arc width="15" x="-13" y="-3" antialias="true" height="16" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="-90"/>
+                        <terminal x="0" y="-21" orientation="n"/>
+                        <terminal x="0" y="21" orientation="s"/>
+                        <terminal x="-10" y="16" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="disj_neutre.elmt">
+                <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+                    <names>
+                        <name lang="ar">قاطع</name>
+                        <name lang="de">Lastschalter</name>
+                        <name lang="ru">Выключатель</name>
+                        <name lang="pt">Disjuntor</name>
+                        <name lang="en">Circuit-breaker</name>
+                        <name lang="it">Sezionatore 1P</name>
+                        <name lang="fr">Disjoncteur</name>
+                        <name lang="pl">Wyłącznik</name>
+                        <name lang="es">Disyuntor</name>
+                        <name lang="cs">Jistič</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
+                        <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="0" y2="10" x2="-5"/>
+                        <input x="6" y="3" size="9" text="_"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="2" y2="10" x2="-2"/>
+                        <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="14" x1="-2" y2="10" x2="2"/>
+                        <terminal x="0" y="-21" orientation="n"/>
+                        <terminal x="0" y="21" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+            <element name="pc.elmt">
+                <definition width="50" version="0.3" hotspot_x="35" hotspot_y="40" height="60" type="element" orientation="dyyy">
+                    <names>
+                        <name lang="ru">Нейтраль</name>
+                        <name lang="fr">Protection Electrique</name>
+                    </names>
+                    <informations>Author: The QElectroTech team
+License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
+                    <description>
+                        <arc width="18" x="-24" y="-9" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="270" angle="-90"/>
+                        <arc width="18" x="-24" y="-9" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="180" angle="-90"/>
+                        <arc width="18" x="-18" y="-9" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="90" angle="-90"/>
+                        <input x="-20" y="-22" size="9" text="_"/>
+                        <arc width="18" x="-18" y="-9" antialias="true" height="18" style="line-style:normal;line-weight:normal;filling:none;color:black" start="0" angle="-90"/>
+                        <rect width="4" x="-14" y="-5" antialias="false" height="10" style="line-style:normal;line-weight:normal;filling:black;color:black"/>
+                        <terminal x="5" y="0" orientation="e"/>
+                        <terminal x="-29" y="0" orientation="w"/>
+                        <terminal x="-12" y="10" orientation="s"/>
+                    </description>
+                </definition>
+            </element>
+        </category>
+    </collection>
+</project>
