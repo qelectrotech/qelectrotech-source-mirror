@@ -122,11 +122,11 @@
     </message>
     <message>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Kompiliert:</translation>
     </message>
     <message>
         <source>Collection d&apos;éléments &amp; Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Symbolbibliothek und Entwicklung</translation>
     </message>
 </context>
 <context>
@@ -137,11 +137,11 @@
     </message>
     <message>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel:</translation>
     </message>
     <message>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
 </context>
 <context>
@@ -234,7 +234,7 @@
     <message>
         <source>Fermer un projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Projekt schließen</translation>
     </message>
     <message>
         <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
@@ -692,7 +692,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Titre</source>
-        <translation type="unfinished">Titel</translation>
+        <translation>Titel</translation>
     </message>
 </context>
 <context>
@@ -4629,7 +4629,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Folio:  </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seite: </translation>
     </message>
     <message>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
@@ -4661,7 +4661,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Schéma sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Schema unbenannt</translation>
     </message>
 </context>
 <context>
@@ -4773,7 +4773,8 @@ Que désirez vous faire ?</source>
     <message>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rot
+</translation>
     </message>
     <message>
         <source>Vert</source>
@@ -4783,17 +4784,20 @@ Que désirez vous faire ?</source>
     <message>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rot
+</translation>
     </message>
     <message>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Blau
+</translation>
     </message>
     <message>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">
+</translation>
     </message>
     <message>
         <source>Traits et points</source>
@@ -5592,7 +5596,7 @@ Maximallänge : %2p</translation>
     <name>qdesigner_internal::ColorAction</name>
     <message>
         <source>Text Color</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Textfarbe</translation>
     </message>
 </context>
 <context>
@@ -5618,11 +5622,11 @@ Maximallänge : %2p</translation>
     </message>
     <message>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&amp;OK</translation>
     </message>
     <message>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Abbre&amp;chen</translation>
     </message>
 </context>
 <context>
