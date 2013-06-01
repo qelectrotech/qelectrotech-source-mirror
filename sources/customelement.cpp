@@ -720,10 +720,16 @@ bool CustomElement::validOrientationAttribute(const QDomElement &e) {
 		- filling : remplissage de la forme
 			- white : remplissage blanc
 			- black : remplissage noir
+			 - red   : remplissage rouge
+			- blue  : remplissage bleu
+			- green : remplissage vert
 			- none : pas de remplissage [par defaut]
 		- color : couleur du trait et du texte
 			- white : trait noir [par defaut]
 			- black : trait blanc
+			- red   : trait rouge
+			- blue  : trait bleu
+			- green : trait vert
 			
 	Les autres valeurs ne sont pas prises en compte.
 	@param e L'element XML a parser
