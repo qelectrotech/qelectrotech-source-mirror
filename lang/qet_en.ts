@@ -433,22 +433,22 @@ Apply a text to all of these drivers?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Angle of conductor labels:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertical</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>Unifilaire</source>
-        <translation>Singleline</translation>
+        <translation>Single line</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
@@ -471,7 +471,7 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation>Style :</translation>
+        <translation>Style:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>

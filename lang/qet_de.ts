@@ -137,7 +137,7 @@
     </message>
     <message>
         <source>Title:</source>
-        <translation type="unfinished">Titel:</translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <source>URL:</source>
@@ -239,7 +239,7 @@
     <message>
         <source>Les schémas ci-dessous contiennent des modifications non enregistrées. Faut-il les sauvegarder ?</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Die aufgelisteten Zeichnungen enhalten ungespeicherte Änderungen. Möchten Sie diese speichern?</translation>
     </message>
     <message>
         <source>Voulez-vous enregistrer le projet ?</source>
@@ -269,7 +269,7 @@
     <message>
         <source>Modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Verändert</translation>
     </message>
     <message>
         <source>Ajouté, non modifié</source>
@@ -306,7 +306,7 @@
     <message>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Soll der neue Text für alle Leiter dieses Potentials gelten?</translation>
     </message>
 </context>
 <context>
@@ -330,7 +330,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Autre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Andere</translation>
     </message>
 </context>
 <context>
@@ -378,44 +378,44 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
-        <translation type="unfinished"></translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translation>Protective Earth Neutral (Schutzleiter)</translation>
     </message>
     <message>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation>Linienstil</translation>
     </message>
     <message>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
-        <translation type="unfinished"></translation>
+        <translation>durchgehende Linie</translation>
     </message>
     <message>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
-        <translation type="unfinished">Punktlinie</translation>
+        <translation>Punktlinie</translation>
     </message>
     <message>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Strich-Punkt-Linie</translation>
     </message>
     <message>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel der Leiterbeschriftung</translation>
     </message>
     <message>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Vertikal:</translation>
     </message>
     <message>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal:</translation>
     </message>
 </context>
 <context>
@@ -631,7 +631,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Configuration</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Konfiguration</translation>
     </message>
     <message>
         <source>Annotation</source>
@@ -696,11 +696,11 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <name>DialogWaiting</name>
     <message>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vielen Dank für Ihre Geduld</translation>
     </message>
     <message>
         <source>TextLabel</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Beschriftung</translation>
     </message>
     <message>
         <source>Titre</source>
@@ -781,7 +781,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Nom :</source>
-        <translation>Name :</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <source>Pas de sélection</source>
@@ -840,7 +840,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation>Element überschreiben ?</translation>
+        <translation type="unfinished">Element überschreiben?</translation>
     </message>
     <message>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
@@ -1114,7 +1114,7 @@ Die Änderungen sind endgültig.</translation>
     <name>ElementsPanel</name>
     <message>
         <source>Cartouches embarqués</source>
-        <translation>eingelegte Kartusche</translation>
+        <translation type="unfinished">Eingebettete Elemente</translation>
     </message>
     <message>
         <source>Collection embarquée</source>
@@ -1239,7 +1239,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Ajouter un schéma</source>
-        <translation>Schema zufügen</translation>
+        <translation type="unfinished">Zeichnung hinzufügen</translation>
     </message>
     <message>
         <source>Supprimer ce schéma</source>
@@ -1267,7 +1267,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Effacer le filtre</source>
-        <translation>Filter reinigen</translation>
+        <translation>Filter aufheben</translation>
     </message>
     <message>
         <source>Filtrer : </source>
@@ -1298,7 +1298,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation>Laden : %p%</translation>
+        <translation type="unfinished">Laden: %p%</translation>
     </message>
     <message>
         <source>Ouvrir un fichier élément</source>
@@ -1310,7 +1310,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Basculer vers ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Projekt aktivieren</translation>
     </message>
     <message>
         <source>Ouvrir le dossier correspondant</source>
@@ -1558,7 +1558,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation>Schema unbenannt</translation>
+        <translation>Unbenannte Zeichnung</translation>
     </message>
     <message>
         <source>%1 - %2</source>
@@ -1613,7 +1613,7 @@ Die Änderungen sind endgültig.</translation>
     <name>GhostElement</name>
     <message>
         <source>&lt;u&gt;Élément manquant :&lt;/u&gt; %1</source>
-        <translation>&lt;u&gt;Fehlendes Element :&lt;/u&gt; %1</translation>
+        <translation type="unfinished">&lt;u&gt;Fehlendes Element:&lt;/u&gt; %1</translation>
     </message>
 </context>
 <context>
@@ -1920,7 +1920,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
@@ -1938,7 +1938,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation>Neues Schema</translation>
+        <translation type="unfinished">Neue Zeichnung</translation>
     </message>
 </context>
 <context>
@@ -1946,7 +1946,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
-        <translation>Ein neues Element erstellen : Assistent</translation>
+        <translation type="unfinished">Neues Symbol erstellen: Assistent</translation>
     </message>
     <message>
         <source>&amp;Suivant &gt;</source>
@@ -2124,7 +2124,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>fermeture du polygone</source>
-        <translation>schliessen des Polygons</translation>
+        <translation type="unfinished">schließen des Polygons</translation>
     </message>
 </context>
 <context>
@@ -2163,12 +2163,12 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Nouveau schéma</source>
         <comment>project configuration page title</comment>
-        <translation type="unfinished">Neues Schema</translation>
+        <translation>Neue Zeichnung</translation>
     </message>
     <message>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <comment>explicative label</comment>
-        <translation type="unfinished">Eigenschaften zur Benutzung beim Hinzufügen eines neuen Schemas im Projekt :</translation>
+        <translation>Voreinstellungen für neue Zeichnungen:</translation>
     </message>
 </context>
 <context>
@@ -2176,12 +2176,12 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
-        <translation>Löschen des Schemas ?</translation>
+        <translation>Zeichnung löschen?</translation>
     </message>
     <message>
         <source>Êtes-vous sûr de vouloir supprimer ce schéma du projet ? Ce changement est irréversible.</source>
         <comment>message box content</comment>
-        <translation>Sind Sie sicher, dass Sie das Schema im Projekt löschen wollen ? Diese Änderung ist endgültig.</translation>
+        <translation>Sind Sie sicher, dass Sie die Zeichnung aus dem Projekt löschen wollen? Diese Aktion ist endgültig.</translation>
     </message>
     <message>
         <source>Propriétés du projet</source>
@@ -2201,7 +2201,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Ce projet est en lecture seule. Il n&apos;est donc pas possible de le nettoyer.</source>
         <comment>message box content</comment>
-        <translation>Dieses Projekt kann nur gelesen werden. Es ist daher nicht möglich, es zu reinigen.</translation>
+        <translation>Dieses Projekt kann nur gelesen werden. Es ist daher nicht möglich, es zu löschen.</translation>
     </message>
     <message>
         <source>Supprimer les éléments inutilisés dans le projet</source>
@@ -2224,7 +2224,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Schéma QElectroTech (*.qet)</source>
         <comment>filetypes allowed when saving a diagram file</comment>
-        <translation>Schema QElectroTech (*.qet)</translation>
+        <translation>QElectroTech Zeichnung (*.qet)</translation>
     </message>
     <message>
         <source>Projet</source>
@@ -2238,21 +2238,21 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>Fermer le projet &quot;%1&quot;</source>
         <comment>project closing dialog title -- %1 is a project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt &quot;%1&quot; schließen</translation>
     </message>
     <message>
         <source>aucun projet affiché</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>kein aktuelles Projekt</translation>
     </message>
     <message>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished">Schema zufügen</translation>
+        <translation>Zeichnung hinzufügen</translation>
     </message>
     <message>
         <source>Ce projet ne contient aucun schéma</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished">Dieses Projekt enthält kein Schema</translation>
+        <translation>Dieses Projekt enthält keine Zeichnung</translation>
     </message>
 </context>
 <context>
@@ -2320,7 +2320,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Ferme l&apos;application QElectroTech</source>
-        <translation>Schliessen der Anwendung QElectroTech</translation>
+        <translation>Anwendung QElectroTech schließen</translation>
     </message>
     <message>
         <source>Réduire QElectroTech dans le systray</source>
@@ -2467,7 +2467,7 @@ Options disponibles :
     <message>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished">Einstellung QElectroTech</translation>
+        <translation>Einstellungen QElectroTech</translation>
     </message>
 </context>
 <context>
@@ -2490,7 +2490,7 @@ Options disponibles :
     <message>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Abbrüche</translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <source>Aucune modification</source>
@@ -2506,7 +2506,7 @@ Options disponibles :
     </message>
     <message>
         <source>&amp;Fermer</source>
-        <translation>&amp;Schliessen</translation>
+        <translation>&amp;Schließen</translation>
     </message>
     <message>
         <source>&amp;Enregistrer</source>
@@ -2586,11 +2586,11 @@ Options disponibles :
     </message>
     <message>
         <source>Ajouter un champ de texte</source>
-        <translation>Textfeld zufügen</translation>
+        <translation>Textfeld hinzufügen</translation>
     </message>
     <message>
         <source>Ajouter une colonne</source>
-        <translation>Spalte zufügen</translation>
+        <translation>Spalte hinzufügen</translation>
     </message>
     <message>
         <source>Enlever une colonne</source>
@@ -2610,7 +2610,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ajouter un schéma</source>
-        <translation>Schema zufügen</translation>
+        <translation>Zeichnung hinzufügen</translation>
     </message>
     <message>
         <source>Supprimer le schéma</source>
@@ -2634,7 +2634,7 @@ Options disponibles :
     </message>
     <message>
         <source>Pas de zoom</source>
-        <translation type="unfinished">Zoom 1:1</translation>
+        <translation>Zoom 1:1</translation>
     </message>
     <message>
         <source>en utilisant des onglets</source>
@@ -2733,7 +2733,7 @@ Options disponibles :
     <message>
         <source>Ferme le schéma courant</source>
         <comment>status bar tip</comment>
-        <translation>Aktuelles Schema schliessen</translation>
+        <translation>Aktuelle Zeichnung schließen</translation>
     </message>
     <message>
         <source>Importe un schéma dans le schéma courant</source>
@@ -2753,7 +2753,7 @@ Options disponibles :
     <message>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation>Schliessen der Anwendung QElectroTech</translation>
+        <translation>Anwendung QElectroTech schließen</translation>
     </message>
     <message>
         <source>Annule l&apos;action précédente</source>
@@ -2818,7 +2818,7 @@ Options disponibles :
     <message>
         <source>Ajoute une colonne au schéma</source>
         <comment>status bar tip</comment>
-        <translation>Spalte zufügen ins Schema</translation>
+        <translation>Spalte in der Zeichnung hinzufügen</translation>
     </message>
     <message>
         <source>Enlève une colonne au schéma</source>
@@ -3240,7 +3240,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ajouter un rectangle</source>
-        <translation>Rechteck zufügen</translation>
+        <translation type="unfinished">Rechteck hinzufügen</translation>
     </message>
     <message>
         <source>Ajouter une ellipse</source>
@@ -3248,7 +3248,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ajouter un polygone</source>
-        <translation>Polygon zufügen</translation>
+        <translation type="unfinished">Polygon hinzufügen</translation>
     </message>
     <message>
         <source>Ajouter du texte</source>
@@ -3256,7 +3256,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ajouter un arc de cercle</source>
-        <translation>Bogen zufügen</translation>
+        <translation type="unfinished">Bogen hinzufügen</translation>
     </message>
     <message>
         <source>Ajouter une borne</source>
@@ -3264,7 +3264,7 @@ Options disponibles :
     </message>
     <message>
         <source>Ajouter un champ de texte</source>
-        <translation>Textfeld zufügen</translation>
+        <translation type="unfinished">Textfeld hinzufügen</translation>
     </message>
     <message>
         <source>Maintenez la touche Shift enfoncée pour effectuer plusieurs ajouts d&apos;affilée</source>
@@ -3413,7 +3413,7 @@ Options disponibles :
     <message>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Abbrüche</translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <source>Aucune modification</source>
@@ -3866,7 +3866,7 @@ Que désirez vous faire ?</source>
     <message>
         <source>Annulations</source>
         <comment>dock title</comment>
-        <translation>Abbrüche</translation>
+        <translation>Rückgängig</translation>
     </message>
     <message>
         <source>Propriétés de la cellule</source>
@@ -4120,17 +4120,17 @@ Que désirez vous faire ?</source>
     <message>
         <source>Ctrl+T</source>
         <comment>shortcut to manage embedded logos</comment>
-        <translation type="unfinished">Ctrl+T</translation>
+        <translation>Strg+T</translation>
     </message>
     <message>
         <source>Ctrl+J</source>
         <comment>shortcut to merge cells</comment>
-        <translation type="unfinished">Ctrl+J</translation>
+        <translation>Strg+J</translation>
     </message>
     <message>
         <source>Ctrl+K</source>
         <comment>shortcut to split merged cell</comment>
-        <translation type="unfinished">Ctrl+K</translation>
+        <translation>Strg+K</translation>
     </message>
 </context>
 <context>
@@ -4164,12 +4164,12 @@ Que désirez vous faire ?</source>
     <message>
         <source>Ajouter un champ de texte</source>
         <comment>undo caption</comment>
-        <translation>Textfeld zufügen</translation>
+        <translation type="unfinished">Textfeld hinzufügen</translation>
     </message>
     <message>
         <source>ajouter un conducteur</source>
         <comment>undo caption</comment>
-        <translation>Leiter zufügen</translation>
+        <translation type="unfinished">Verbingung einfügen</translation>
     </message>
     <message>
         <source>supprimer %1</source>
@@ -4583,7 +4583,7 @@ Que désirez vous faire ?</source>
     <message>
         <source>Ex.</source>
         <comment>Short example string</comment>
-        <translation>Ex.</translation>
+        <translation>Bsp.</translation>
     </message>
     <message>
         <source>Exemple</source>
@@ -4669,11 +4669,11 @@ Que désirez vous faire ?</source>
     </message>
     <message utf8="true">
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Aufsteigend</translation>
     </message>
     <message>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Schema unbenannt</translation>
+        <translation>Unbenannte Zeichnung</translation>
     </message>
 </context>
 <context>
@@ -4990,7 +4990,7 @@ Que désirez vous faire ?</source>
     <message>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation>Breite :</translation>
+        <translation>Breite:</translation>
     </message>
     <message>
         <source>%</source>
@@ -5127,7 +5127,7 @@ Que désirez vous faire ?</source>
     <name>TitleBlockTemplateCellWidget</name>
     <message>
         <source>Type de cellule :</source>
-        <translation>Zelltyp :</translation>
+        <translation>Zelltyp:</translation>
     </message>
     <message>
         <source>Vide</source>
