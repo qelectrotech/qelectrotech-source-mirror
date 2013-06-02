@@ -346,6 +346,8 @@ int ConductorProperties::operator==(const ConductorProperties &other) {
 		other.color == color &&\
 		other.style == style &&\
 		other.text == text &&\
+		other.verti_rotate_text == verti_rotate_text &&\
+		other.horiz_rotate_text == horiz_rotate_text &&\
 		other.singleLineProperties == singleLineProperties
 	);
 }
@@ -360,6 +362,8 @@ int ConductorProperties::operator!=(const ConductorProperties &other) {
 		other.color != color ||\
 		other.style != style ||\
 		other.text != text ||\
+		other.verti_rotate_text != verti_rotate_text ||\
+		other.horiz_rotate_text != horiz_rotate_text ||\
 		other.singleLineProperties != singleLineProperties
 	);
 }

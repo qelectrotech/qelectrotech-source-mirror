@@ -1124,7 +1124,8 @@ void Conductor::calculateTextItemPosition() {
 	} else {
 		// positionnement automatique basique
 		text_item -> setPos(middleSegment() -> middle());
-		middleSegment() -> isVertical()? text_item -> setRotationAngle(270): text_item -> setRotationAngle(0);
+		middleSegment() -> isVertical()? text_item -> setRotationAngle(properties_.verti_rotate_text):
+										 text_item -> setRotationAngle(properties_.horiz_rotate_text);
 	}
 }
 
@@ -1222,6 +1223,7 @@ ConductorProperties Conductor::properties() const {
 void Conductor::readProperties() {
 	// la couleur n'est vraiment applicable que lors du rendu du conducteur
 	setText(properties_.text);
+	calculateTextItemPosition();
 	text_item -> setVisible(properties_.type == ConductorProperties::Multi);
 }
 

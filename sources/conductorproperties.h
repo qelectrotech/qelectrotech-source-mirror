@@ -79,6 +79,9 @@ class ConductorProperties {
 	QColor color;
 	/// Texte displayed for multiline conductors
 	QString text;
+	/// rotation angle texte
+	double verti_rotate_text;
+	double horiz_rotate_text;
 	/// conducteur style (Qt::SolidLine or Qt::DashLine)
 	Qt::PenStyle style;
 	

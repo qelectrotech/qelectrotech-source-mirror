@@ -18,6 +18,7 @@
 #ifndef CONDUCTOR_PROPERTIES_WIDGET_H
 #define CONDUCTOR_PROPERTIES_WIDGET_H
 #include "conductorproperties.h"
+#include "qtextorientationspinboxwidget.h"
 #include <QWidget>
 /**
 	This widget enables users to change the properties of a particular
@@ -62,6 +63,8 @@ class ConductorPropertiesWidget : public QWidget {
 	QRadioButton *simple;
 	QRadioButton *multiline;
 	QLineEdit *text_field;
+	QTextOrientationSpinBoxWidget *verti_select;
+	QTextOrientationSpinBoxWidget *horiz_select;
 	QRadioButton *singleline;
 	QCheckBox *phase_checkbox;
 	QSlider *phase_slider;

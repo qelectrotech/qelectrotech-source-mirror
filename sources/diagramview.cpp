@@ -545,8 +545,6 @@ void DiagramView::editDiagramProperties() {
 	popup.setWindowFlags(Qt::Sheet);
 #endif
 	
-	popup.setMinimumWidth(786);
-	popup.setMinimumHeight(500);
 	popup.setWindowTitle(tr("Propri\351t\351s du sch\351ma", "window title"));
 	
 	BorderPropertiesWidget *border_infos = new BorderPropertiesWidget(border, &popup);
@@ -588,6 +586,9 @@ void DiagramView::editDiagramProperties() {
 	layout_v.addLayout(hlayout1);
 	layout_v.addStretch();
 	layout_v.addWidget(&boutons);
+	//workaround to get a good size by default with this widget
+	popup.setMinimumSize(popup.minimumSizeHint());
+
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {
 		TitleBlockProperties new_titleblock   = titleblock_infos  -> titleBlockProperties();

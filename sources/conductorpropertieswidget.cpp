@@ -19,6 +19,7 @@
 #include <QtGui>
 #include "conductor.h"
 #include "qeticons.h"
+#include "qetapp.h"
 
 /**
 	Constructeur
@@ -46,7 +47,6 @@ ConductorPropertiesWidget::ConductorPropertiesWidget(const ConductorProperties &
 void ConductorPropertiesWidget::buildInterface() {
 	
 	setFocusPolicy(Qt::StrongFocus);
-	setMinimumSize(380, 350);
 	
 	QVBoxLayout *main_layout = new QVBoxLayout(this);
 	main_layout -> setContentsMargins(0, 0, 0, 0);
@@ -65,6 +65,22 @@ void ConductorPropertiesWidget::buildInterface() {
 	text_field = new QLineEdit();
 	multiline_layout -> addWidget(text);
 	multiline_layout -> addWidget(text_field);
+
+	QGridLayout *rotate_text_layout = new QGridLayout;
+	QLabel *rotate_label = new QLabel(tr("Rotation du texte sur conducteur :"));
+	rotate_text_layout -> addWidget(rotate_label, 0, 0);
+
+	QLabel *verti_text = new QLabel(tr("Vertical"));
+	verti_select = QETApp::createTextOrientationSpinBoxWidget();
+	rotate_text_layout -> addWidget(verti_text, 1, 0);
+	rotate_text_layout -> setAlignment(verti_text, Qt::AlignCenter);
+	rotate_text_layout -> addWidget(verti_select, 2, 0);
+
+	QLabel *horiz_text = new QLabel(tr("Horizontal"));
+	horiz_select = QETApp::createTextOrientationSpinBoxWidget();
+	rotate_text_layout -> addWidget(horiz_text, 1, 1);
+	rotate_text_layout -> setAlignment(horiz_text, Qt::AlignCenter);
+	rotate_text_layout -> addWidget(horiz_select, 2, 1);
 	
 	singleline = new QRadioButton(tr("Unifilaire"));
 	
@@ -132,12 +148,13 @@ void ConductorPropertiesWidget::buildInterface() {
 	groupbox_layout -> addWidget(simple);
 	groupbox_layout -> addWidget(multiline);
 	groupbox_layout -> addLayout(multiline_layout);
+	groupbox_layout -> addLayout(rotate_text_layout);
 	groupbox_layout -> addWidget(singleline);
 	groupbox_layout -> addLayout(singleline_layout1);
 	
 	groupbox2_layout -> addLayout(color_layout);
 	groupbox2_layout -> addLayout(style_layout);
-	
+
 	radio_buttons = new QButtonGroup(this);
 	radio_buttons -> addButton(simple,     ConductorProperties::Simple);
 	radio_buttons -> addButton(multiline,  ConductorProperties::Multi);
@@ -160,6 +177,8 @@ void ConductorPropertiesWidget::buildConnections() {
 	connect(text_field,        SIGNAL(textChanged(const QString &)), this,          SLOT(updateConfig()));
 	connect(line_style,        SIGNAL(currentIndexChanged(int)),     this,          SLOT(updateConfig()));
 	connect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor()));
+	connect(verti_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
+	connect(horiz_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
 }
 
 /**
@@ -204,10 +223,14 @@ void ConductorPropertiesWidget::destroyConnections() {
 	disconnect(text_field,        SIGNAL(textChanged(const QString &)), this,          SLOT(updateConfig()));
 	disconnect(color_button,      SIGNAL(clicked()),                    this,          SLOT(chooseColor()));
 	disconnect(line_style,        SIGNAL(currentIndexChanged(int)),     this,          SLOT(updateConfig()));
+	disconnect(verti_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
+	disconnect(horiz_select,      SIGNAL(editingFinished(double)),      this,          SLOT(updateConfig()));
 }
 
 /// Destructeur
 ConductorPropertiesWidget::~ConductorPropertiesWidget() {
+	delete verti_select;
+	delete horiz_select;
 }
 
 /// Met a jour les proprietes
@@ -216,6 +239,8 @@ void ConductorPropertiesWidget::updateConfig() {
 	properties_.color = colorButton();
 	properties_.style = static_cast<Qt::PenStyle>(line_style -> itemData(line_style -> currentIndex()).toInt());
 	properties_.text = text_field -> text();
+	properties_.verti_rotate_text = verti_select -> value();
+	properties_.horiz_rotate_text = horiz_select -> value();
 	properties_.singleLineProperties.hasGround = ground_checkbox -> isChecked();
 	properties_.singleLineProperties.hasNeutral = neutral_checkbox -> isChecked();
 	properties_.singleLineProperties.is_pen = merge_checkbox -> isChecked();
@@ -240,6 +265,8 @@ void ConductorPropertiesWidget::updateDisplay() {
 	phase_spinbox -> setValue(properties_.singleLineProperties.phasesCount());
 	phase_slider -> setValue(properties_.singleLineProperties.phasesCount());
 	phase_checkbox -> setChecked(properties_.singleLineProperties.phasesCount());
+	verti_select -> setValue(properties_.verti_rotate_text);
+	horiz_select -> setValue(properties_.horiz_rotate_text);
 	
 	buildConnections();
 	updatePreview();
