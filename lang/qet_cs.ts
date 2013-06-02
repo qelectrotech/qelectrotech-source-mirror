@@ -371,12 +371,12 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1273"/>
+        <location filename="../sources/conductor.cpp" line="1275"/>
         <source>Textes de conducteurs</source>
         <translation>Texty vodičů</translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1274"/>
+        <location filename="../sources/conductor.cpp" line="1276"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Chcete nový text použít na všechny
@@ -431,68 +431,83 @@ Použít text na všechny tyto vodiče?</translation>
         <translation>Text:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
+        <source>Rotation du texte sur conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <source>Vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
+        <source>Horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>Unifilaire</source>
         <translation>Jednoduché vedení</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
         <translation>Protective Earth Neutral (ochranné uzemnění nulovéí)</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
         <source>phase</source>
         <translation>fáze</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
         <translation>Styl:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Plná čára</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="139"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Tečkovaná čára</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="140"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Čárky a tečky</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
         <source>terre</source>
         <translation>uzemnění</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="89"/>
         <source>neutre</source>
         <translation>nulový</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="107"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Apparence du conducteur</source>
         <translation>Vzhled vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="114"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
         <source>Couleur :</source>
         <translation>Barva: </translation>
     </message>
@@ -610,132 +625,132 @@ Použít text na všechny tyto vodiče?</translation>
         <translation>Bez názvu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="550"/>
+        <location filename="../sources/diagramview.cpp" line="548"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Vlastnosti výkresu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="874"/>
+        <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Propriétés de la sélection</source>
         <translation>Vlastnosti výběru</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="876"/>
+        <location filename="../sources/diagramview.cpp" line="877"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Výběr obsahuje %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="911"/>
+        <location filename="../sources/diagramview.cpp" line="912"/>
         <source>Élément manquant</source>
         <translation>Chybějící prvek</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="913"/>
+        <location filename="../sources/diagramview.cpp" line="914"/>
         <source>Élément</source>
         <translation>Prvek</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="918"/>
+        <location filename="../sources/diagramview.cpp" line="919"/>
         <source>Nom : %1
 </source>
         <translation>Název: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="921"/>
+        <location filename="../sources/diagramview.cpp" line="922"/>
         <source>Folio : %1
 </source>
         <translation>Folio : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="923"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Position : %1
 </source>
         <translation>Poloha: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Velikost: %1×%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Bornes : %1
 </source>
         <translation>Zakončení: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Connexions internes : %1
 </source>
         <translation>Vnitřní spojení: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Autorisées</source>
         <translation>Povoleno</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Interdites</source>
         <translation>Zakázáno</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="928"/>
         <source>Champs de texte : %1
 </source>
         <translation>Textová pole: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="930"/>
+        <location filename="../sources/diagramview.cpp" line="931"/>
         <source>Emplacement : %1
 </source>
         <translation>Umístění: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Vlastnosti vybraného prvku</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Retrouver dans le panel</source>
         <translation>Najít v panelu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="937"/>
         <source>Éditer l&apos;élément</source>
         <translation>Upravit prvek</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="998"/>
+        <location filename="../sources/diagramview.cpp" line="999"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Upravit vlastnosti vodiče</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1017"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Textes de conducteurs</source>
         <translation>Texty vodičů</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1019"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Chcete nový text použít na všechny
 vodiče s tímto potenciálem?</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1073"/>
+        <location filename="../sources/diagramview.cpp" line="1074"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Vybrat novou barvu pro tento vodič</translation>
     </message>

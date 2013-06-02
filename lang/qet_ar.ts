@@ -380,12 +380,12 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1273"/>
+        <location filename="../sources/conductor.cpp" line="1275"/>
         <source>Textes de conducteurs</source>
         <translation>نصوص الموصلات</translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1274"/>
+        <location filename="../sources/conductor.cpp" line="1276"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>هل ترغب في إعتماد النص الجديد على مجموع الموصلات لهذا الكمون ؟</translation>
@@ -444,72 +444,87 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>نص :</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
+        <source>Rotation du texte sur conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <source>Vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
+        <source>Horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>Unifilaire</source>
         <translation>أحادي السلك</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
         <translation>قلم</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
         <translation>حماية الأرضي -المحايد</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
         <source>phase</source>
         <translation>طور</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
         <translatorcomment>نمط خط الموصل</translatorcomment>
         <translation>نمط :</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translatorcomment>نمط الموصل: خط مستمرّ</translatorcomment>
         <translation>خط مستمرّ</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="139"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translatorcomment>نمط الموصل: خط مُتقطّع</translatorcomment>
         <translation>خط متقطع</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="140"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translatorcomment>نمط الموصل : نقاط و خطوط</translatorcomment>
         <translation>خطوط و نقاط</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
         <source>terre</source>
         <translation>أرضي</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="89"/>
         <source>neutre</source>
         <translation>محايد</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="107"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Apparence du conducteur</source>
         <translation>ظهور الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="114"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
         <source>Couleur :</source>
         <translation>اللون:</translation>
     </message>
@@ -623,126 +638,126 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>بدون عنوان</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="550"/>
+        <location filename="../sources/diagramview.cpp" line="548"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translatorcomment>نافذة العنوان</translatorcomment>
         <translation>خاصيات المخطط</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="874"/>
+        <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Propriétés de la sélection</source>
         <translation>خصائص التحديد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="876"/>
+        <location filename="../sources/diagramview.cpp" line="877"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translatorcomment> %1.سرد الكائنات المحددة</translatorcomment>
         <translation>يحتوي التحديد %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="911"/>
+        <location filename="../sources/diagramview.cpp" line="912"/>
         <source>Élément manquant</source>
         <translation>عنصر ناقص</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="913"/>
+        <location filename="../sources/diagramview.cpp" line="914"/>
         <source>Élément</source>
         <translation>عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="918"/>
+        <location filename="../sources/diagramview.cpp" line="919"/>
         <source>Nom : %1
 </source>
         <translation>الاسم : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="921"/>
+        <location filename="../sources/diagramview.cpp" line="922"/>
         <source>Folio : %1
 </source>
         <translation>صفحة : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="923"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Position : %1
 </source>
         <translation>الموضع : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>مقاسات : %1x%2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Bornes : %1
 </source>
         <translation>نهايات التوصيل : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Connexions internes : %1
 </source>
         <translation>التوصيلات الداخلية : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Autorisées</source>
         <translation>مسموح </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Interdites</source>
         <translation>ممنوع </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="928"/>
         <source>Champs de texte : %1
 </source>
         <translation>حقل نصي  %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="930"/>
+        <location filename="../sources/diagramview.cpp" line="931"/>
         <source>Emplacement : %1
 </source>
         <translation>موضع : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>خاصيات العنصر المحدد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Retrouver dans le panel</source>
         <translation>إيجاد في اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="937"/>
         <source>Éditer l&apos;élément</source>
         <translation>نشر العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="998"/>
+        <location filename="../sources/diagramview.cpp" line="999"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>تحرير خاصيات الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1017"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Textes de conducteurs</source>
         <translation>نصوص الموصلات</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1019"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>هل تُريد اعتماد النصّ الجديد على موصلات هذا الكمون ؟</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1073"/>
+        <location filename="../sources/diagramview.cpp" line="1074"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>إختيار اللون الجديد لهذا الموصل</translation>
     </message>

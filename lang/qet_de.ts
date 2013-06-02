@@ -405,6 +405,18 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <source>Rotation du texte sur conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>Horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>DiagramContextWidget</name>

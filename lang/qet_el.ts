@@ -371,12 +371,12 @@
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1273"/>
+        <location filename="../sources/conductor.cpp" line="1275"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1274"/>
+        <location filename="../sources/conductor.cpp" line="1276"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
@@ -429,68 +429,83 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Κείμενο :</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
+        <source>Rotation du texte sur conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <source>Vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
+        <source>Horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>Unifilaire</source>
         <translation>Μονόκλωνο</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
         <source>phase</source>
         <translation>φάση</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="139"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation type="unfinished">Διακεκομμένη γραμμή</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="140"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
         <source>terre</source>
         <translation>γείωση</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="89"/>
         <source>neutre</source>
         <translation>ουδέτερος</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="107"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Apparence du conducteur</source>
         <translation>Εμφάνηση του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="114"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
         <source>Couleur :</source>
         <translation>Χρώμα :</translation>
     </message>
@@ -608,131 +623,131 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="550"/>
+        <location filename="../sources/diagramview.cpp" line="548"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Ιδιότητες του διαγράμματος</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="874"/>
+        <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Propriétés de la sélection</source>
         <translation>Ιδιότητες της επιλογής</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="876"/>
+        <location filename="../sources/diagramview.cpp" line="877"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>Η επιλογή εμπεριέχει %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="911"/>
+        <location filename="../sources/diagramview.cpp" line="912"/>
         <source>Élément manquant</source>
         <translation>Λείπει στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="913"/>
+        <location filename="../sources/diagramview.cpp" line="914"/>
         <source>Élément</source>
         <translation>Στοιχείο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="918"/>
+        <location filename="../sources/diagramview.cpp" line="919"/>
         <source>Nom : %1
 </source>
         <translation>Όνομα : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="921"/>
+        <location filename="../sources/diagramview.cpp" line="922"/>
         <source>Folio : %1
 </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="923"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Position : %1
 </source>
         <translation>Θέση : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Διαστάσεις : %1×%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Bornes : %1
 </source>
         <translation>Ακροδέκτες : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Connexions internes : %1
 </source>
         <translation>Εσωτερικές συνδέσεις : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Autorisées</source>
         <translation>Επιρέπεται</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Interdites</source>
         <translation>Απαγορεύεται</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="928"/>
         <source>Champs de texte : %1
 </source>
         <translation>Πεδία κειμένου : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="930"/>
+        <location filename="../sources/diagramview.cpp" line="931"/>
         <source>Emplacement : %1
 </source>
         <translation>Τοποθεσία : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Ιδιότητες των επιλεγμένων στοιχείων</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Retrouver dans le panel</source>
         <translation>Εύρεση στο πλαίσιο</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="937"/>
         <source>Éditer l&apos;élément</source>
         <translation>Επεξεγασία του στοιχείου</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="998"/>
+        <location filename="../sources/diagramview.cpp" line="999"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Επεξεργασία των ιδιοτήτων του αγωγού</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1017"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1019"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1073"/>
+        <location filename="../sources/diagramview.cpp" line="1074"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation type="unfinished"></translation>
     </message>

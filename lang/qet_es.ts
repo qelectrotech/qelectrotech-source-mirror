@@ -373,12 +373,12 @@ Iconos</translation>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1273"/>
+        <location filename="../sources/conductor.cpp" line="1275"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1274"/>
+        <location filename="../sources/conductor.cpp" line="1276"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
@@ -436,68 +436,83 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Texto:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="69"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
+        <source>Rotation du texte sur conducteur :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <source>Vertical</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
+        <source>Horizontal</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>Unifilaire</source>
         <translation>Monolínea</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="75"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
         <translation>PEN</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="76"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
         <translation>Protección tierra neutral</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
         <source>phase</source>
         <translation>fase</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="120"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
         <translation>Estilo:</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="122"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
         <source>Trait plein</source>
         <comment>conductor style: solid line</comment>
         <translation>Línea continua</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="139"/>
         <source>Trait en pointillés</source>
         <comment>conductor style: dashed line</comment>
         <translation>Línea en puntos</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="124"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="140"/>
         <source>Traits et points</source>
         <comment>conductor style: dashed and dotted line</comment>
         <translation>Líneas y puntos</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="71"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
         <source>terre</source>
         <translation>tierra</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="89"/>
         <source>neutre</source>
         <translation>neutro</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="107"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
         <source>Apparence du conducteur</source>
         <translation>Aspecto del conductor</translation>
     </message>
     <message>
-        <location filename="../sources/conductorpropertieswidget.cpp" line="114"/>
+        <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
         <source>Couleur :</source>
         <translation>Color:</translation>
     </message>
@@ -610,130 +625,130 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="550"/>
+        <location filename="../sources/diagramview.cpp" line="548"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
         <translation>Propiedades del esquema</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="874"/>
+        <location filename="../sources/diagramview.cpp" line="875"/>
         <source>Propriétés de la sélection</source>
         <translation>Propiedades de la selección</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="876"/>
+        <location filename="../sources/diagramview.cpp" line="877"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>La selección contiene %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="911"/>
+        <location filename="../sources/diagramview.cpp" line="912"/>
         <source>Élément manquant</source>
         <translation>Elemento faltante</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="913"/>
+        <location filename="../sources/diagramview.cpp" line="914"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="918"/>
+        <location filename="../sources/diagramview.cpp" line="919"/>
         <source>Nom : %1
 </source>
         <translation>Nombre: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="921"/>
+        <location filename="../sources/diagramview.cpp" line="922"/>
         <source>Folio : %1
 </source>
         <translation>Folio: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="923"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Position : %1
 </source>
         <translation>Posición: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Dimensiones: %1×%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Bornes : %1
 </source>
         <translation>Conectores: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Connexions internes : %1
 </source>
         <translation>Conecciones internas: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Autorisées</source>
         <translation>Autorizadas</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Interdites</source>
         <translation>Prohibidas</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="928"/>
         <source>Champs de texte : %1
 </source>
         <translation>Campos de texto: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="930"/>
+        <location filename="../sources/diagramview.cpp" line="931"/>
         <source>Emplacement : %1
 </source>
         <translation>Emplazamiento: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="934"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Propiedades del element seleccionado</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Retrouver dans le panel</source>
         <translation>Econtrar en el panel</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="937"/>
         <source>Éditer l&apos;élément</source>
         <translation>Editar el elemento</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="998"/>
+        <location filename="../sources/diagramview.cpp" line="999"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Editar las propiedades de un conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1017"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1019"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1073"/>
+        <location filename="../sources/diagramview.cpp" line="1074"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Elegir el nuevo color de este conductor</translation>
     </message>
