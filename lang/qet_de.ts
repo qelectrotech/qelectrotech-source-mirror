@@ -148,27 +148,27 @@
     <name>ArcEditor</name>
     <message>
         <source>Centre : </source>
-        <translation>Zentrum :</translation>
+        <translation>Zentrum:</translation>
     </message>
     <message>
         <source>Diamètres : </source>
-        <translation>Durchmesser :</translation>
+        <translation>Durchmesser:</translation>
     </message>
     <message>
         <source>horizontal :</source>
-        <translation>Horizontal :</translation>
+        <translation>Horizontal:</translation>
     </message>
     <message>
         <source>vertical :</source>
-        <translation>Vertikal :</translation>
+        <translation>Vertikal:</translation>
     </message>
     <message>
         <source>Angle de départ :</source>
-        <translation>Anfangswinkel :</translation>
+        <translation>Anfangswinkel:</translation>
     </message>
     <message>
         <source>Angle :</source>
-        <translation>Winkel :</translation>
+        <translation>Winkel:</translation>
     </message>
     <message>
         <source>abscisse</source>
@@ -203,7 +203,7 @@
     </message>
     <message>
         <source>Colonnes :</source>
-        <translation>Spalten :</translation>
+        <translation>Spalten:</translation>
     </message>
     <message>
         <source>×</source>
@@ -221,7 +221,7 @@
     </message>
     <message>
         <source>Lignes :</source>
-        <translation>Zeile :</translation>
+        <translation>Zeile:</translation>
     </message>
     <message>
         <source>px</source>
@@ -349,7 +349,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Texte :</source>
-        <translation>Text :</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <source>Unifilaire</source>
@@ -373,7 +373,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Couleur :</source>
-        <translation>Farbe :</translation>
+        <translation>Farbe:</translation>
     </message>
     <message>
         <source>PEN</source>
@@ -444,7 +444,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     </message>
     <message>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
-        <translation>Welcher Druck soll ausgeführt werden ?</translation>
+        <translation>Welcher Druck soll ausgeführt werden?</translation>
     </message>
     <message>
         <source>Impression sur une imprimante physique</source>
@@ -723,13 +723,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation>Element löschen ?</translation>
+        <translation>Element löschen?</translation>
     </message>
     <message>
         <source>Êtes-vous sûr de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation>Sind Sie sicher, dass Sie das Element löschen wollen ?</translation>
+        <translation>Sind Sie sicher, dass Sie das Element löschen wollen?</translation>
     </message>
     <message>
         <source>Suppression de l&apos;élément</source>
@@ -985,17 +985,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <source>Vider la collection ?</source>
         <comment>message box title</comment>
-        <translation>Kollektion leeren ?</translation>
+        <translation>Kollektion leeren?</translation>
     </message>
     <message>
         <source>Êtes-vous sûr de vouloir vider cette collection ?</source>
         <comment>message box content</comment>
-        <translation>Sind Sie sicher diese Kollektion zu leeren ?</translation>
+        <translation>Sind Sie sicher diese Kollektion zu leeren?</translation>
     </message>
     <message>
         <source>Supprimer la catégorie ?</source>
         <comment>message box title</comment>
-        <translation>Löschen der Kategorie ?</translation>
+        <translation>Löschen der Kategorie?</translation>
     </message>
     <message>
         <source>Êtes-vous sûr de vouloir supprimer la catégorie ?
@@ -1061,7 +1061,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Nom interne : </source>
-        <translation>interner Name :</translation>
+        <translation>interner Name:</translation>
     </message>
     <message>
         <source>Vous pouvez spécifier un nom par langue pour la catégorie.</source>
@@ -1325,11 +1325,11 @@ Die Änderungen sind endgültig.</translation>
     <name>EllipseEditor</name>
     <message>
         <source>Centre : </source>
-        <translation>Zentrum :</translation>
+        <translation>Zentrum:</translation>
     </message>
     <message>
         <source>Diamètres : </source>
-        <translation>Durchmesser :</translation>
+        <translation>Durchmesser:</translation>
     </message>
     <message>
         <source>horizontal :</source>
@@ -1337,7 +1337,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>vertical :</source>
-        <translation>Vertikal :</translation>
+        <translation>Vertikal:</translation>
     </message>
     <message>
         <source>abscisse</source>
@@ -1377,7 +1377,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Choisissez les schémas que vous désirez exporter ainsi que leurs dimensions :</source>
-        <translation>Wählen Sie die Schema, die Sie exportieren möchten und ihre Dimensionen :</translation>
+        <translation>Wählen Sie die Schema, die Sie exportieren möchten und ihre Dimensionen:</translation>
     </message>
     <message>
         <source>Schéma</source>
@@ -1439,7 +1439,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Dossier cible :</source>
-        <translation>Zielordner :</translation>
+        <translation>Zielordner:</translation>
     </message>
     <message>
         <source>Parcourir</source>
@@ -1447,7 +1447,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Format :</source>
-        <translation>Format :</translation>
+        <translation>Format:</translation>
     </message>
     <message>
         <source>PNG (*.png)</source>
@@ -1535,7 +1535,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Chaque élément embarque des informations sur ses auteurs, sa licence, ou tout autre renseignement que vous jugerez utile dans un champ libre. Vous pouvez spécifier ici la valeur par défaut de ce champ pour les éléments que vous créerez :</source>
-        <translation>Jedes Element besitzt die Möglichkeit Informationen über seine Authoren, Lizenzen, oder andere Angaben die Sie für wichtig halten, in einem Leerfeld zu hinterlegen. Sie können Standard-Werte für die Elemente, die Sie kreieren wollen, festlegen :</translation>
+        <translation>Jedes Element besitzt die Möglichkeit Informationen über seine Authoren, Lizenzen, oder andere Angaben die Sie für wichtig halten, in einem Leerfeld zu hinterlegen. Sie können Standard-Werte für die Elemente, die Sie kreieren wollen, festlegen:</translation>
     </message>
     <message>
         <source>Général</source>
@@ -1640,11 +1640,11 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Largeur :</source>
-        <translation>Breite :</translation>
+        <translation>Breite:</translation>
     </message>
     <message>
         <source>Hauteur :</source>
-        <translation>Höhe :</translation>
+        <translation>Höhe:</translation>
     </message>
     <message>
         <source>&lt;span style=&quot;text-decoration:underline;&quot;&gt;Hotspot&lt;/span&gt;</source>
@@ -1652,11 +1652,11 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Abscisse :</source>
-        <translation>Abszisse :</translation>
+        <translation>Abszisse:</translation>
     </message>
     <message>
         <source>Ordonnée :</source>
-        <translation>Ordinate :</translation>
+        <translation>Ordinate:</translation>
     </message>
 </context>
 <context>
@@ -1668,7 +1668,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>L&apos;élément a déjà été intégré dans le projet. Toutefois, la version que vous tentez de poser semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is an element&apos;s path name</comment>
-        <translation>Das Element ist bereits im Projekt integriert. Allerdings die Version, die Sie versuchen zu platzieren, versteht es anders. Was möchten Sie tun ?</translation>
+        <translation>Das Element ist bereits im Projekt integriert. Allerdings die Version, die Sie versuchen zu platzieren, versteht es anders. Was möchten Sie tun?</translation>
     </message>
     <message>
         <source>Utiliser l&apos;élément déjà intégré</source>
@@ -1753,7 +1753,7 @@ Die Änderungen sind endgültig.</translation>
     <message>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Das Element « %1 » ist bereits vorhanden. Was möchten Sie tun ?</translation>
+        <translation>Das Element « %1 » ist bereits vorhanden. Was möchten Sie tun?</translation>
     </message>
     <message>
         <source>La catégorie %1 n&apos;est pas accessible en lecture.</source>
@@ -2075,19 +2075,19 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Nord :</source>
-        <translation>Norden :</translation>
+        <translation>Norden:</translation>
     </message>
     <message>
         <source>Est :</source>
-        <translation>Osten :</translation>
+        <translation>Osten:</translation>
     </message>
     <message>
         <source>Sud :</source>
-        <translation>Süden :</translation>
+        <translation>Süden:</translation>
     </message>
     <message>
         <source>Ouest :</source>
-        <translation>Westen :</translation>
+        <translation>Westen:</translation>
     </message>
     <message>
         <source>Par défaut</source>
@@ -2110,7 +2110,7 @@ Die Änderungen sind endgültig.</translation>
     </message>
     <message>
         <source>Points du polygone :</source>
-        <translation>Polygon-Punkte :</translation>
+        <translation>Polygon-Punkte:</translation>
     </message>
     <message>
         <source>Erreur</source>
@@ -3533,7 +3533,7 @@ Options disponibles :
     <message>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
-        <translation>Sie haben Änderungen an diesem Element vorgenommen. Wenn Sie neu laden, gehen diese Änderungen verloren. Wollen Sie wirklich das Element neu laden ?</translation>
+        <translation>Sie haben Änderungen an diesem Element vorgenommen. Wenn Sie neu laden, gehen diese Änderungen verloren. Wollen Sie wirklich das Element neu laden?</translation>
     </message>
     <message>
         <source>Enregistrer sous</source>
@@ -3548,12 +3548,12 @@ Options disponibles :
     <message>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Laufendes Element speichern ?</translation>
+        <translation>Laufendes Element speichern?</translation>
     </message>
     <message>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
-        <translation>Wollen Sie das Element %1 speichern ?</translation>
+        <translation>Wollen Sie das Element %1 speichern?</translation>
     </message>
     <message>
         <source>Trop de primitives, liste non générée.</source>
@@ -3961,12 +3961,12 @@ Que désirez vous faire ?</source>
     <message>
         <source>Enregistrer le modèle en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Speichern des aktuellen Modelles ?</translation>
+        <translation>Speichern des aktuellen Modelles?</translation>
     </message>
     <message>
         <source>Voulez-vous enregistrer le modèle %1 ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation>Wollen Sie das aktuelle Modell speichern %1 ?</translation>
+        <translation>Wollen Sie das aktuelle Modell speichern %1?</translation>
     </message>
     <message>
         <source>nouveau_modele</source>
@@ -4602,19 +4602,19 @@ Que désirez vous faire ?</source>
     <name>RectangleEditor</name>
     <message>
         <source>Coin supérieur gauche : </source>
-        <translation>Oben links :</translation>
+        <translation>Oben links:</translation>
     </message>
     <message>
         <source>Dimensions : </source>
-        <translation>Dimensionen :</translation>
+        <translation>Dimensionen:</translation>
     </message>
     <message>
         <source>Largeur :</source>
-        <translation>Breite :</translation>
+        <translation>Breite:</translation>
     </message>
     <message>
         <source>Hauteur :</source>
-        <translation>Höhe :</translation>
+        <translation>Höhe:</translation>
     </message>
     <message>
         <source>abscisse</source>
@@ -4734,23 +4734,23 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Trait :</source>
-        <translation>Strich :</translation>
+        <translation>Strich:</translation>
     </message>
     <message>
         <source>Couleur : </source>
-        <translation>Farbe :</translation>
+        <translation>Farbe:</translation>
     </message>
     <message>
         <source>Style : </source>
-        <translation>Stil :</translation>
+        <translation>Stil:</translation>
     </message>
     <message>
         <source>Épaisseur : </source>
-        <translation>Stärke :</translation>
+        <translation>Stärke:</translation>
     </message>
     <message>
         <source>Remplissage :</source>
-        <translation>Füllung :</translation>
+        <translation>Füllung:</translation>
     </message>
     <message>
         <source>Tiret</source>
@@ -4837,19 +4837,19 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Position : </source>
-        <translation>Position :</translation>
+        <translation>Position:</translation>
     </message>
     <message>
         <source>x : </source>
-        <translation>x :</translation>
+        <translation>x:</translation>
     </message>
     <message>
         <source>y : </source>
-        <translation>y :</translation>
+        <translation>y:</translation>
     </message>
     <message>
         <source>Orientation : </source>
-        <translation>Ausrichtung :</translation>
+        <translation>Ausrichtung:</translation>
     </message>
     <message>
         <source>abscisse</source>
@@ -4872,23 +4872,23 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Position : </source>
-        <translation>Position :</translation>
+        <translation>Position:</translation>
     </message>
     <message>
         <source>x : </source>
-        <translation>x :</translation>
+        <translation>x:</translation>
     </message>
     <message>
         <source>y : </source>
-        <translation>y :</translation>
+        <translation>y:</translation>
     </message>
     <message>
         <source>Taille : </source>
-        <translation>Grösse :</translation>
+        <translation>Grösse:</translation>
     </message>
     <message>
         <source>Texte : </source>
-        <translation>Text :</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <source>abscisse</source>
@@ -4904,7 +4904,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Angle de rotation : </source>
-        <translation>Rotationswinkel :</translation>
+        <translation>Rotationswinkel:</translation>
     </message>
     <message>
         <source>angle de rotation</source>
@@ -4922,7 +4922,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Couleur : </source>
-        <translation>Farbe :</translation>
+        <translation>Farbe:</translation>
     </message>
     <message>
         <source>couleur</source>
@@ -4938,23 +4938,23 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Position : </source>
-        <translation>Position :</translation>
+        <translation>Position:</translation>
     </message>
     <message>
         <source>x : </source>
-        <translation>x :</translation>
+        <translation>x:</translation>
     </message>
     <message>
         <source>y : </source>
-        <translation>y :</translation>
+        <translation>y:</translation>
     </message>
     <message>
         <source>Taille : </source>
-        <translation>Grösse :</translation>
+        <translation>Grösse:</translation>
     </message>
     <message>
         <source>Texte par défaut : </source>
-        <translation>Standard-Text :</translation>
+        <translation>Standard-Text:</translation>
     </message>
     <message>
         <source>abscisse</source>
@@ -4978,7 +4978,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Angle de rotation par défaut : </source>
-        <translation>Rotationswinkel standardmäßig :</translation>
+        <translation>Rotationswinkel standardmäßig:</translation>
     </message>
     <message>
         <source>angle de rotation</source>
@@ -5151,11 +5151,11 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Nom :</source>
-        <translation>Name :</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <source>Afficher un label :</source>
-        <translation>Anzeigen eines Labels :</translation>
+        <translation>Anzeigen eines Labels:</translation>
     </message>
     <message>
         <source>Editer</source>
@@ -5163,15 +5163,15 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Texte :</source>
-        <translation>Text :</translation>
+        <translation>Text:</translation>
     </message>
     <message>
         <source>Alignement :</source>
-        <translation>Ausrichtung :</translation>
+        <translation>Ausrichtung:</translation>
     </message>
     <message>
         <source>horizontal :</source>
-        <translation>Horizontal :</translation>
+        <translation>Horizontal:</translation>
     </message>
     <message>
         <source>Gauche</source>
@@ -5187,7 +5187,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>vertical :</source>
-        <translation>Vertikal :</translation>
+        <translation>Vertikal:</translation>
     </message>
     <message>
         <source>Haut</source>
@@ -5221,7 +5221,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Police :</source>
-        <translation>Schrift :</translation>
+        <translation>Schrift:</translation>
     </message>
     <message>
         <source>Label de cette cellule</source>
@@ -5245,13 +5245,13 @@ Que désirez vous faire ?</source>
     <message>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Löschen der Kartuschenmodelle ?</translation>
+        <translation type="unfinished">Löschen der Kartuschenmodelle?</translation>
     </message>
     <message>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished">Sind Sie sicher das Kartuschenmodell zu löschen (%1) ?</translation>
+        <translation type="unfinished">Sind Sie sicher das Kartuschenmodell zu löschen (%1)?</translation>
     </message>
 </context>
 <context>
@@ -5288,7 +5288,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation>vorhandene Logos in diesem Modell :</translation>
+        <translation>vorhandene Logos in diesem Modell:</translation>
     </message>
     <message>
         <source>Ajouter un logo</source>
@@ -5304,7 +5304,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Nom :</source>
-        <translation>Name :</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <source>Renommer</source>
@@ -5312,7 +5312,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Type :</source>
-        <translation>Typ :</translation>
+        <translation>Typ:</translation>
     </message>
     <message>
         <source>Logo déjà existant</source>
@@ -5324,7 +5324,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation>Es gibt bereits ein Logo mit diesem Namen &quot;%1&quot; in dem Kartuschenmodell. Wollen Sie ihn ersetzen einen anderen Namen für das neue Logo eingeben ?</translation>
+        <translation>Es gibt bereits ein Logo mit diesem Namen &quot;%1&quot; in dem Kartuschenmodell. Wollen Sie ihn ersetzen einen anderen Namen für das neue Logo eingeben?</translation>
     </message>
     <message>
         <source>Type : %1</source>
@@ -5389,7 +5389,7 @@ Que désirez vous faire ?</source>
     <message>
         <source>Largeur :</source>
         <comment>text before the spinbox to change a column width</comment>
-        <translation>Breite :</translation>
+        <translation>Breite:</translation>
     </message>
     <message>
         <source>Changer la hauteur de la ligne</source>
@@ -5399,7 +5399,7 @@ Que désirez vous faire ?</source>
     <message>
         <source>Hauteur :</source>
         <comment>text before the spinbox to change a row height</comment>
-        <translation>Höhe :</translation>
+        <translation>Höhe:</translation>
     </message>
     <message>
         <source>Ajouter une colonne (avant)</source>
@@ -5471,7 +5471,7 @@ Que désirez vous faire ?</source>
     </message>
     <message>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>Angezeigte Breite :</translation>
+        <translation>Angezeigte Breite:</translation>
     </message>
     <message>
         <source>Largeur totale pour cet aperçu : %1px</source>
@@ -5490,7 +5490,7 @@ Maximallänge : %2p</translation>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation>Mindestlänge : %1px</translation>
+        <translation>Mindestlänge: %1px</translation>
     </message>
 </context>
 <context>
