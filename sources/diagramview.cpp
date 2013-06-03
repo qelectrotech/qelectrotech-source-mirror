@@ -586,8 +586,7 @@ void DiagramView::editDiagramProperties() {
 	layout_v.addLayout(hlayout1);
 	layout_v.addStretch();
 	layout_v.addWidget(&boutons);
-	//workaround to get a good size by default with this widget
-	popup.setMinimumSize(popup.minimumSizeHint());
+
 
 	// si le dialogue est accepte
 	if (popup.exec() == QDialog::Accepted && !diagram_is_read_only) {

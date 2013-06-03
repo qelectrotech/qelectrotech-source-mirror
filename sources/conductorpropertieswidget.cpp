@@ -116,7 +116,7 @@ void ConductorPropertiesWidget::buildInterface() {
 	
 	QHBoxLayout *singleline_layout1 = new QHBoxLayout();
 	preview = new QLabel();
-	preview -> setFixedSize(96, 96);
+	preview -> setFixedSize(150, 150);
 	singleline_layout1 -> addWidget(preview);
 	singleline_layout1 -> addLayout(singleline_layout2);
 	
