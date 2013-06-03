@@ -446,17 +446,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>دوران نص فوق الموصل</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>عمودي</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>أفقي</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
