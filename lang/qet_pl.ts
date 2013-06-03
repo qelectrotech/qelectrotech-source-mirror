@@ -395,22 +395,22 @@ dla przewodów o tym samym potencjale ?</translation>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Oznaczenia potencjału elektrycznego nie są identyczne.
-Zastosować oznaczenia dla wszystkich przewodów?</translation>
+Czy chcesz zastosować oznaczenia dla wszystkich przewodów?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation>  : czy to </translation>
+        <translation>  : jest aktualny </translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation>.pierwszy.</translation>
+        <translation> raz.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation>Drugi</translation>
+        <translation>Inny</translation>
     </message>
 </context>
 <context>
@@ -433,17 +433,17 @@ Zastosować oznaczenia dla wszystkich przewodów?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Obrót oznaczenia przewodu :</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Poziomo</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Pionowo</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
@@ -5765,19 +5765,19 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="35"/>
         <source>Vert</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Zielony</translation>
+        <translation>Zielona</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="36"/>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation type="unfinished">Czerwony</translation>
+        <translation>Czerwona</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="37"/>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Niebieska</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>
@@ -5801,7 +5801,7 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation type="unfinished">Kreskowo-kropkowa</translation>
+        <translation>Kreskowo-kropkowa</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -5843,19 +5843,19 @@ Co chcesz zrobić ?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation>Zielony</translation>
+        <translation>Zielone</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation>Czerwony</translation>
+        <translation>Czerwone</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Niebieskie</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="143"/>
