@@ -136,7 +136,7 @@ void ConductorAutoNumerotation::numeratePotential() {
 	foreach (const Conductor *cc, conductor_list) strl<<(cc->text());
 	//the texts is identicals
 	if (eachIsEqual(strl)) {
-		ConductorProperties cp;
+		ConductorProperties cp = conductor_ -> properties();
 		cp.text = strl.at(0);
 		conductor_ -> setProperties(cp);
 		conductor_ -> setText(strl.at(0));
