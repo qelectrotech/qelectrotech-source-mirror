@@ -293,6 +293,8 @@ void ConductorProperties::toSettings(QSettings &settings, const QString &prefix)
 	settings.setValue(prefix + "style", writeStyle());
 	settings.setValue(prefix + "type", typeToString(type));
 	settings.setValue(prefix + "text", text);
+	settings.setValue(prefix + "vertirotatetext", QString::number(verti_rotate_text));
+	settings.setValue(prefix + "horizrotatetext", QString::number(horiz_rotate_text));
 	singleLineProperties.toSettings(settings, prefix);
 }
 
@@ -319,7 +321,9 @@ void ConductorProperties::fromSettings(QSettings &settings, const QString &prefi
 	}
 	singleLineProperties.fromSettings(settings, prefix);
 	text = settings.value(prefix + "text", "_").toString();
-	
+	verti_rotate_text = settings.value((prefix + "vertirotatetext"), "270").toDouble();
+	horiz_rotate_text = settings.value((prefix + "horizrotatetext"), "0").toDouble();
+
 	// lit le style du conducteur
 	readStyle(settings.value(prefix + "style").toString());
 }
