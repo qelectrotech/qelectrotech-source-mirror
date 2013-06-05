@@ -220,6 +220,8 @@ ConductorProperties::ConductorProperties() :
 	type(Multi),
 	color(Qt::black),
 	text("_"),
+	verti_rotate_text(270),
+	horiz_rotate_text(0),
 	style(Qt::SolidLine)
 {
 }
