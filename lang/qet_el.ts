@@ -52,7 +52,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Μεταγλώττιση:</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
@@ -323,13 +323,13 @@
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
         <source>Action</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ενέργεια</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="107"/>
         <source>Cocher ou décocher toutes les cases à cocher</source>
         <comment>checbox tooltip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή ή αναίρεση επιλογής όλων των πλαισίων επιλογής</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="181"/>
@@ -353,7 +353,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="231"/>
         <source>Ajouté, non modifié</source>
         <comment>diagram status</comment>
-        <translation type="unfinished"></translation>
+        <translation>Προστέθηκε, αμετάβλητο</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="244"/>
@@ -365,7 +365,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="246"/>
         <source>Conserver</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διατήρηση</translation>
     </message>
 </context>
 <context>
@@ -421,7 +421,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
         <source>Multifilaire</source>
-        <translation>Πολύκλωνο</translation>
+        <translation>Πολυγραμμικό</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="64"/>
@@ -446,7 +446,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
         <source>Unifilaire</source>
-        <translation>Μονόκλωνο</translation>
+        <translation>Μονογραμμικό</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
@@ -458,7 +458,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ουδετέρωση</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
@@ -614,7 +614,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="51"/>
         <source>Ceci est la zone dans laquelle vous concevez vos schémas en y ajoutant des éléments et en posant des conducteurs entre leurs bornes. Il est également possible d&apos;ajouter des textes indépendants.</source>
         <comment>&quot;What&apos;s this?&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σε αυτή την περιοχή σχεδιάζετε τα διαγράμματά σας προσθέτοντας στοιχεία και αγωγούς μεταξύ των ακροδεκτών. Μπορείτε επίσης να προσθέσετε ανεξάρτητα κείμενα.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="523"/>
@@ -765,7 +765,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Σήμανση των διαγραμμάτων</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -775,7 +775,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
-        <translation type="unfinished"></translation>
+        <translation>Σήμανση</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
@@ -795,22 +795,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;αρίθμηση του επιλεγμένου διαγράμματος&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation type="unfinished"></translation>
+        <translation>Σήμανση (αλφα)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Αφαιρέθηκε η αρίθμηση του επιλεγμένου διαγράμματος&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation>Διαγραφή του σχολίου</translation>
+        <translation>Διαγραφή της σήμανσης</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
@@ -821,14 +821,16 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αφαίρεση της σήμανσης των αγωγών</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε πραγματικά να διαγράψετε τη σήμανση αγωγών:
+
+%1 ?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
@@ -841,7 +843,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σήμανση των αγωγών</translation>
     </message>
 </context>
 <context>
@@ -849,7 +851,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation>Ευχαριστούμε για την υπομονή σας</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
@@ -1359,7 +1361,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="413"/>
         <source>Double-cliquez pour réduire ou développer ce projet</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της εργασίας</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="436"/>
@@ -1370,19 +1372,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="437"/>
         <source>Double-cliquez pour réduire ou développer cette collection de cartouches embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της ενσωματωμένης συλλογής πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="446"/>
         <source>Cliquer-déposez ce modèle de cartouche sur un schéma pour l&apos;y appliquer.</source>
         <comment>Status tip displayed when selecting a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε και αφήστε αυτό το πρότυπο πινακίδας μέσα στο διάγραμμα για να εφαρμοστεί </translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="458"/>
         <source>Double-cliquez pour réduire ou développer cette catégorie d&apos;éléments</source>
         <comment>Status tip displayed by elements category</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="470"/>
@@ -1393,61 +1395,61 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanel.cpp" line="471"/>
         <source>Double-cliquez pour réduire ou développer cette collection d&apos;éléments embarquée</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της ενσωματωμένης συλλογής στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="479"/>
         <source>Cliquer-déposez cet élément sur un schéma pour y insérer un élément « %1 », double-cliquez dessus pour l&apos;éditer</source>
         <comment>Status tip displayed in the status bar when selecting an element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σύρετε και αφήστε αυτό το στοιχείο στο διάγραμμα για να εισάγετε ένα στοιχείο &quot;%1&quot; σε αυτό, διπλό πάτημα για επεξεργασία</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="570"/>
         <source>Double-cliquez pour réduire ou développer la collection de cartouches QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής πινακίδων του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="571"/>
         <source>Ceci est la collection de cartouches fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι η συλλογή πινακίδων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="577"/>
         <source>Double-cliquez pour réduire ou développer la collection d&apos;éléments QElectroTech</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση αυτής της συλλογής στοιχείων του QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="578"/>
         <source>Ceci est la collection d&apos;éléments fournie avec QElectroTech. Installée en tant que composant système, vous ne pouvez normalement pas la personnaliser.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι η συλλογή στοιχείων που παρέχεται μαζί με το QElectroTech. Εγκατεστημένη σαν στοιχείο του συστήματος,και δεν μπορείτε να τη προσαρμόσετε.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="586"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle de cartouches</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="587"/>
         <source>Ceci est votre collection personnelle de cartouches -- utilisez-la pour créer, stocker et éditer vos propres cartouches.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι η προσωπική σας συλλογή από πινακίδες --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικές σας πινακίδες.</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="593"/>
         <source>Double-cliquez pour réduire ou développer votre collection personnelle d&apos;éléments</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διπλό πάτημα για ανάπτυξη ή αναδίπλωση της προσωπικής σας συλλογής στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/elementspanel.cpp" line="594"/>
         <source>Ceci est votre collection personnelle d&apos;éléments -- utilisez-la pour créer, stocker et éditer vos propres éléments.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι η προσωπική σας συλλογή από στοιχεία --χρησιμοποιήστε τη για να δημιουργήσετε, να αποθηκεύσετε και να επεξεργαστείτε τις δικά σας στοιχεία.</translation>
     </message>
 </context>
 <context>
@@ -1562,22 +1564,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα του καταλόγου</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
         <source>Copier le chemin</source>
-        <translation type="unfinished"></translation>
+        <translation>Αντιγραφή της διαδρομής</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Άνοιγμα ενός αρχείου στοιχείου</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
         <source>Basculer vers ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενεργοποίηση αυτής της εργασίας</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
@@ -1875,7 +1877,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="121"/>
         <source>Mettre en valeur dans le panel les éléments fraîchement intégrés</source>
         <comment>configuration option</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επισήμανση των προσφάτως ενσωματωμένων στοιχείων στον πίνακα</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="123"/>
@@ -1908,13 +1910,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="288"/>
         <source>Ceci est une collection embarquée dans un fichier projet. Elle permet de stocker et gérer les éléments utilisés dans les schémas du projet parent.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι μια συλλογή ενσωματωμένη στο αρχείο εργασίας.αποθηκεύει και διαχειρίζεται στοιχεία που χρησιμοποιούνται από διαγράμματα της γονικής εργασίας.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="293"/>
         <source>Cette catégorie d&apos;éléments est utilisée pour intégrer automatiquement dans le projet tout élément utilisé sur un des schémas de ce projet.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η κατηγορία στοιχείων ενσωματώνει αυτόματα κάθε στοιχείο που χρησιμοποιείται από διαγράμματα αυτής της εργασίας.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="352"/>
@@ -1943,7 +1945,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="529"/>
         <source>Ceci est un modèle de cartouche, qui peut être appliqué à un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό είναι ένα πρότυπο πινακίδας, το οποίο μπορεί να προστεθεί σε ένα διάγραμμα.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="714"/>
@@ -2073,13 +2075,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="45"/>
         <source>Impossible d&apos;accéder à la catégorie parente</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αδυναμία μετάβασης στη γονική κατηγορία</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="46"/>
         <source>Impossible d&apos;obtenir la description XML de ce modèle</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αδυναμία ανάκτησης της περιγραφής XML αυτού του προτύπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
@@ -2090,13 +2092,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
         <source>Intégration d&apos;un modèle de cartouche</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενσωμάτωση ενός προτύπου πινακίδας</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="152"/>
         <source>Le modèle a déjà été intégré dans le projet. Toutefois, la version que vous tentez d&apos;appliquer semble différente. Que souhaitez-vous faire ?</source>
         <comment>dialog content - %1 is a title block template name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Το πρότυπο έχει ήδη ενσωματωθεί στην εργασία. Ωστόσο, η έκδοση που προσπαθείτε να εφαρμόσετε μοιάζει να είναι διαφορετική. Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
@@ -2329,13 +2331,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Texte</source>
-        <translation>Κείμενο:</translation>
+        <translation>Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="37"/>
         <source>Cette liste vous permet de saisir un court texte de façon à ce qu&apos;il soit traduisible dans d&apos;autres langues. Pour ce faire, elle associe des codes ISO 639-1 de langues (ex. : &quot;fr&quot; pour français) aux traductions du texte en question dans ces mêmes langues.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή η λίστα σας επιτρέπει να εισάγετε ένα μικρό κείμενο ώστε να μπορεί να μεταφραστεί σε άλλες γλώσσες. Για να επιτευχθεί αυτό, συνδυάζει κωδικούς γλωσσών ISO 639-1  (π.χ. &quot;el&quot; για Ελληνικά) με μεταφράσεις του εισαγόμενου κειμένου σε αυτές τις γλώσσες.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
@@ -2346,7 +2348,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
         <source>Ce bouton permet d&apos;ajouter une association langue / traduction dans la liste ci-dessus.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το κουμπί σας επιτρέπει να προσθέσετε ένα συνδυασμό γλώσσας/μετάφρασης στην παραπάνω λίστα.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="88"/>
@@ -2451,7 +2453,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="175"/>
         <source>Étape 5/5 : Orientations</source>
         <comment>wizard page title</comment>
-        <translation>Βήμα 50 από 5 : Προσανατολισμοί</translation>
+        <translation>Βήμα 5ο από 5 : Προσανατολισμοί</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="176"/>
@@ -2501,12 +2503,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Dizaine</source>
-        <translation type="unfinished"></translation>
+        <translation>Δεκάδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Centaine</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκατοντάδα</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -2586,7 +2588,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>fermeture du polygone</source>
-        <translation type="unfinished">Polygon closure</translation>
+        <translation>Κλείσιμο πολυγώνου</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
@@ -2628,7 +2630,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectconfigpages.cpp" line="140"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτός ο τίτλος θα είναι διαθέσιμος σε όλα τα διαγράμματα της εργασίας ως %projecttitle.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="142"/>
@@ -2795,13 +2797,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="1357"/>
         <source>&amp;Masquer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Α&amp;πόκρυψη όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1358"/>
         <source>&amp;Restaurer tous les éditeurs de cartouche</source>
         <comment>systray submenu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ε&amp;μφάνιση όλων των επεξεργαστών πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1359"/>
@@ -2821,7 +2823,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1363"/>
         <source>Réduire QElectroTech dans le systray</source>
-        <translation type="unfinished">Reduces QElectroTech into the systray</translation>
+        <translation>Ελαχιστοποιεί το QElectroTech στο πλαίσιο συστήματος</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1364"/>
@@ -2842,7 +2844,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="1468"/>
         <source>Éditeurs de cartouche</source>
         <comment>systray menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργαστές πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1533"/>
@@ -2891,7 +2893,8 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="1543"/>
         <source>  --common-tbt-dir=DIR          Definir le dossier de la collection de modeles de cartouches
 </source>
-        <translation type="unfinished"></translation>
+        <translation>  --common-elements-dir=ΚΑΤΑΛΟΓΟΣ     Προσδιόρισε τον κατάλογο της συλλογής των πινακίδων
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1546"/>
@@ -2916,7 +2919,7 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="104"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Φόρτωση... Αρχικοποίηση της προσωρινής μνήμης συλλογής στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="112"/>
@@ -2998,7 +3001,7 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="1346"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished">Φορτώνει ... Systray icon</translation>
+        <translation>Φόρτωση ... Εικονίδιο πλαισίου συστήματος</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1348"/>
@@ -3329,19 +3332,19 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="292"/>
         <source>Enregistre le projet courant et tous ses schémas</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση της τρέχουσας εργασίας και όλων των διαγραμμάτων της</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="293"/>
         <source>Enregistre le project courant avec un autre nom de fichier</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση της τρέχουσας εργασίας χρησιμοποιώντας διαφορετικό όνομα αρχείου</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="294"/>
         <source>Enregistre le schéma courant du projet courant</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αποθήκευση του τρέχοντος διαγράμματος της τρέχουσας εργασίας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="309"/>
@@ -6089,19 +6092,19 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
         <source>Absolu</source>
         <comment>a traditional, absolute measure</comment>
-        <translation type="unfinished"></translation>
+        <translation>Απόλυτο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="126"/>
         <source>Relatif au total</source>
         <comment>a percentage of the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικό του συνόλου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="127"/>
         <source>Relatif au restant</source>
         <comment>a percentage of what remains from the total width</comment>
-        <translation type="unfinished"></translation>
+        <translation>Σχετικό του υπολοίπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="167"/>
@@ -6113,7 +6116,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished">πιξελίδια</translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -6138,7 +6141,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="285"/>
         <source>Title block templates actions</source>
-        <translation type="unfinished"></translation>
+        <translation>Ενέργειες προτύπων πινακίδων</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="290"/>
@@ -6150,9 +6153,9 @@ Que désirez vous faire ?</source>
         <source>Les variables suivantes sont utilisables dans le champ Folio :
   - %id : numéro du schéma courant dans le projet
   - %total : nombre total de schémas dans le projet</source>
-        <translation type="unfinished">The following variables can be used in the Folio field:
-  - %id: the current diagram&apos;s number in the project
-  - %total: total number of diagrams in the project</translation>
+        <translation>Οι ακόλουθες μεταβλητές μπορούν να χρησιμοποιηθούν στο πεδίο Folio:
+  - %id: τρέχων αριθμός διαγράμματος στην εργασία
+  - %total: συνολικός αριθμός διαγραμμάτων στην εργασία</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="311"/>
@@ -6172,12 +6175,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="331"/>
         <source>Disponible en tant que %1 pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαθέσιμο ως %1 στα πρότυπα πινακίδων.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="340"/>
         <source>Appliquer la date actuelle</source>
-        <translation type="unfinished"></translation>
+        <translation>Εφαρμογή τρέχουσας ημερομηνίας</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="341"/>
@@ -6222,7 +6225,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
         <source>Folio : </source>
-        <translation type="unfinished">Folio: </translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="422"/>
@@ -6249,7 +6252,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Type de cellule :</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος κελιού:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
@@ -6265,7 +6268,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="53"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="63"/>
         <source>Logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Λογότυπο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
@@ -6275,17 +6278,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
         <source>Attention : les bordures des cellules vides n&apos;apparaissent pas lors du rendu final sur le schéma.</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσοχή: Τα περιθώρια των άδειων κελιών δεν αποτυπώνονται στο τελικό διάγραμμα.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="65"/>
         <source>Aucun logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς λογότυπο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="66"/>
         <source>Gérer les logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχείριση των λογότυπων</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
@@ -6296,7 +6299,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="76"/>
         <source>Editer</source>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="73"/>
@@ -6306,12 +6309,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
-        <translation type="unfinished"></translation>
+        <translation>Στοίχιση:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
-        <translation>οριζόντιο :</translation>
+        <translation>οριζόντια :</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
@@ -6356,7 +6359,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
         <source>Ajuster la taille de police si besoin</source>
-        <translation type="unfinished"></translation>
+        <translation>Ρυθμίστε το μέγεθος της γραμματοσειράς εάν είναι απαραίτητο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="248"/>
@@ -6372,13 +6375,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="305"/>
         <source>Aucun logo</source>
         <comment>text displayed in the combo box when a template has no logo</comment>
-        <translation type="unfinished"></translation>
+        <translation>Χωρίς λογότυπο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επεξεργασία κελιού: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="433"/>
@@ -6397,14 +6400,14 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="58"/>
         <source>Supprimer le modèle de cartouche ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή προτύπου πινακίδας</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatedeleter.cpp" line="60"/>
         <source>Êtes-vous sûr de vouloir supprimer ce modèle de cartouche (%1) ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Είστε σίγουροι ότι θέλετε να διαγράψετε αυτό το πρότυπο πινακίδας (%1);</translation>
     </message>
 </context>
 <context>
@@ -6413,13 +6416,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="79"/>
         <source>Collection parente</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Γονική συλλογή</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationchooser.cpp" line="80"/>
         <source>Modèle existant</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχων πρότυπο</translation>
     </message>
 </context>
 <context>
@@ -6442,27 +6445,27 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="75"/>
         <source>Gestionnaire de logos</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαχειριστής λογότυπων</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Λογότυπα ενσωματωμένα στο πρότυπο:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
         <source>Ajouter un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσθήκη λογότυπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="88"/>
         <source>Exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Εξαγωγή του λογότυπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="89"/>
         <source>Supprimer ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Διαγραφή του λογότυπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="90"/>
@@ -6484,12 +6487,12 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="254"/>
         <source>Type :</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="188"/>
         <source>Logo déjà existant</source>
-        <translation type="unfinished"></translation>
+        <translation>Το λογότυπο υπάρχει ήδη</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="194"/>
@@ -6504,12 +6507,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="250"/>
         <source>Type : %1</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
         <source>Choisir une image / un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλογή μιας εικόνας / ενός λογότυπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="269"/>
@@ -6530,7 +6533,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="300"/>
         <source>Choisir un fichier pour exporter ce logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε αρχείο για την εξαγωγή του λογότυπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="302"/>
@@ -6540,27 +6543,27 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Impossible d&apos;exporter vers le fichier spécifié</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδυναμία εξαγωγής στο καθορισμένο αρχείο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="335"/>
         <source>Renommer un logo</source>
-        <translation type="unfinished"></translation>
+        <translation>Μετονομασία ενός λογότυπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="340"/>
         <source>Vous devez saisir un nouveau nom.</source>
-        <translation type="unfinished"></translation>
+        <translation>Πρέπει να εισάγετε ένα νέο όνομα.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="349"/>
         <source>Le nouveau nom ne peut pas être vide.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το νέο όνομα δεν μπορεί να είναι κενό.</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="358"/>
         <source>Le nom saisi est déjà utilisé par un autre logo.</source>
-        <translation type="unfinished"></translation>
+        <translation>Το όνομα που δώσατε χρησιμοποιείται ήδη από άλλο λογότυπο</translation>
     </message>
 </context>
 <context>
@@ -6641,7 +6644,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templateview.cpp" line="543"/>
         <source>Modifier la largeur de cet aperçu</source>
         <comment>context menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή πλάτους της προεπισκόπησης</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="608"/>
@@ -6669,12 +6672,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="784"/>
         <source>Changer la largeur de l&apos;aperçu</source>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή πλάτους προεπισκόπησης</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation type="unfinished"></translation>
+        <translation>Πλάτος προεπισκόπησης:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -6682,7 +6685,8 @@ Que désirez vous faire ?</source>
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ελάχιστο πλάτος: %1px
+Μέγιστο πλάτος: %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
@@ -6695,7 +6699,7 @@ Longueur maximale : %2px
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συνολικό πλάτος αυτής της προεπισκόπησης: %1px</translation>
     </message>
 </context>
 <context>
@@ -6704,13 +6708,13 @@ Longueur maximale : %2px
         <location filename="../sources/titleblock/templatescollection.cpp" line="120"/>
         <source>Cartouches du projet sans titre (id %1)</source>
         <comment>collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδες ανώνυμης εργασίας (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatescollection.cpp" line="128"/>
         <source>Cartouches du projet &quot;%1&quot;</source>
         <comment>collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πινακίδες της εργασίας &quot;%1&quot;</translation>
     </message>
 </context>
 <context>
@@ -6719,13 +6723,13 @@ Longueur maximale : %2px
         <location filename="../sources/xmlelementscollection.cpp" line="69"/>
         <source>Collection du projet sans titre (id %1)</source>
         <comment>Elements collection title when the parent project has an empty title -- %1 is the project internal id</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συλλογές ανώνυμης εργασίας (id %1)</translation>
     </message>
     <message>
         <location filename="../sources/xmlelementscollection.cpp" line="77"/>
         <source>Collection du projet &quot;%1&quot;</source>
         <comment>Elements collection title when the project has a suitable title -- %1 is the project title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συλλογές της εργασίας (id %1)</translation>
     </message>
 </context>
 <context>
@@ -6802,7 +6806,8 @@ Longueur maximale : %2px
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Désignation
 </source>
-        <translation>Περιγραφή</translation>
+        <translation>Περιγραφή
+</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="63"/>
@@ -6847,7 +6852,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="192"/>
         <source>Insert HTML entity</source>
-        <translation type="unfinished"></translation>
+        <translation>Εισαγωγή οντότητας HTML</translation>
     </message>
 </context>
 <context>
@@ -6860,7 +6865,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Εμπλουτισμένο Κείμενο</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
@@ -6903,7 +6908,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπογραμμισμένο</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
@@ -6913,7 +6918,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
         <source>Left Align</source>
-        <translation>Αριστερά</translation>
+        <translation>Στοίχιση αριστερά</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="393"/>
@@ -6923,7 +6928,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="398"/>
         <source>Right Align</source>
-        <translation>Δεξιά</translation>
+        <translation>Στοίχιση Δεξιά</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
@@ -6933,12 +6938,12 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Εκθέτης</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="422"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation>Δείκτης</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
