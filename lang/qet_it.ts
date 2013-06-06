@@ -433,17 +433,17 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Rotazione del testo del conduttore:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Verticale</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>O)rizzontale</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
