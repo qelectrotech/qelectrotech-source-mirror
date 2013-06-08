@@ -173,13 +173,13 @@
         <location filename="../sources/richtext/addlinkdialog.ui" line="19"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="105"/>
         <source>Title:</source>
-        <translation type="unfinished"></translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../sources/richtext/addlinkdialog.ui" line="36"/>
         <location filename="../sources/richtext/ui_addlinkdialog.h" line="106"/>
         <source>URL:</source>
-        <translation type="unfinished"></translation>
+        <translation>URL:</translation>
     </message>
 </context>
 <context>
@@ -187,52 +187,52 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="50"/>
         <source>Centre : </source>
-        <translation type="unfinished"></translation>
+        <translation>Mittelpunkt</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="55"/>
         <source>Diamètres : </source>
-        <translation type="unfinished"></translation>
+        <translation>Durchmesser</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation type="unfinished"></translation>
+        <translation>horizontal</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>vertical :</source>
-        <translation type="unfinished"></translation>
+        <translation>vertikal</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="60"/>
         <source>Angle de départ :</source>
-        <translation type="unfinished"></translation>
+        <translation>Anfangswinkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="62"/>
         <source>Angle :</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="122"/>
         <source>abscisse</source>
-        <translation type="unfinished"></translation>
+        <translation>Abzisse</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="124"/>
         <source>ordonnée</source>
-        <translation type="unfinished"></translation>
+        <translation>Ordinante</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="126"/>
         <source>diamètre horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>horizontaler Durchmesser</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="128"/>
         <source>diamètre vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>vertikaler Durchmesser</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="130"/>
@@ -242,7 +242,7 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="132"/>
         <source>angle</source>
-        <translation type="unfinished"></translation>
+        <translation>Winkel</translation>
     </message>
 </context>
 <context>
@@ -250,12 +250,12 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="95"/>
         <source>Dimensions du schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeichnungsmaß</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="99"/>
         <source>Colonnes :</source>
-        <translation type="unfinished"></translation>
+        <translation>Spalten</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="109"/>
@@ -274,12 +274,12 @@
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
         <location filename="../sources/borderpropertieswidget.cpp" line="128"/>
         <source>Afficher les en-têtes</source>
-        <translation type="unfinished"></translation>
+        <translation>Kopfzeile</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="115"/>
         <source>Lignes :</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeilen</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="126"/>
