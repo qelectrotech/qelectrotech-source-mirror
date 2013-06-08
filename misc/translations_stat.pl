@@ -107,14 +107,14 @@ our %languages = (
 	'de' => {
 		'name'               => 'Deutsch',
 		'french_name'        => 'Allemand',
-		'translator_name'    => 'Markus Budde',
+		'translator_name'    => 'Markus Budde && Jonas Stein',
 		'translator_mail_ml' => 'markus.budde@msn.com',
 		'qt'                 => 1
 	},
 	'it' => {
 		'name'               => 'Italiano',
 		'french_name'        => 'Italiano',
-		'translator_name'    => 'Alessandro Conti',
+		'translator_name'    => 'Alessandro Conti && Silvio',
 		'translator_mail_ml' => 'dr.slump@alexconti.it',
 		'qt'                 => 1
 	},
@@ -142,7 +142,7 @@ our %languages = (
 	'el' => {
 		'name'               => 'Greek',
 		'french_name'        => 'Grec',
-		'translator_name'    => 'Nikos Papadopoylos',
+		'translator_name'    => 'Nikos Papadopoylos && 	Yannis Gyftomitros',
 		'translator_mail_ml' => '231036448@freemail.gr',
 		'qt'                 => 1
 	}
