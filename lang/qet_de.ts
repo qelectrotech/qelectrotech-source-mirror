@@ -7,157 +7,158 @@
         <location filename="../sources/aboutqet.cpp" line="30"/>
         <source>À propos de QElectrotech</source>
         <comment>window title</comment>
-        <translation type="unfinished">Über QElectroTech</translation>
+        <translation>Über QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="37"/>
         <source>À &amp;propos</source>
         <comment>tab title</comment>
-        <translation type="unfinished">&amp;Info</translation>
+        <translation>&amp;Info</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="38"/>
         <source>A&amp;uteurs</source>
         <comment>tab title</comment>
-        <translation type="unfinished">A&amp;utoren</translation>
+        <translation>A&amp;utoren</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="39"/>
         <source>&amp;Traducteurs</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translatorcomment>Übersetzer</translatorcomment>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="40"/>
         <source>&amp;Contributeurs</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Mitwirkende</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="41"/>
         <source>&amp;Accord de licence</source>
         <comment>tab title</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Lizenzvereinbarung</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation type="unfinished"></translation>
+        <translation>Kompiliert: </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
         <source>QElectroTech, une application de réalisation de schémas électriques.</source>
         <comment>about tab, description line</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech ist eine Anwendung zum Erstellen von Stromlaufplänen</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="96"/>
         <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished"></translation>
+        <translation>© 2006-2012 QElectroTech Entwickler</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
         <source>Contact : &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</source>
         <comment>about tab, contact line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kontakt: &lt;a href=&quot;mailto:qet@lists.tuxfamily.org&quot;&gt;qet@lists.tuxfamily.org&lt;/a&gt;</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="113"/>
         <source>Idée originale</source>
-        <translation type="unfinished"></translation>
+        <translation>Idee</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="114"/>
         <location filename="../sources/aboutqet.cpp" line="116"/>
         <location filename="../sources/aboutqet.cpp" line="117"/>
         <source>Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Programmierung</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <source>Collection d&apos;éléments &amp; Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteilbibliothek und Programmierung</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="131"/>
         <source>Traduction en espagnol</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Spanische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="132"/>
         <source>Traduction en russe</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Russische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="133"/>
         <source>Traduction en portugais</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Portugisische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="134"/>
         <source>Traduction en tchèque</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Tschechische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="135"/>
         <source>Traduction en polonais</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Polnische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="136"/>
         <source>Traduction en allemand</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Deutsche</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en roumain</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Rumänische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en italien</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Italienische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Traduction en arabe</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Arabische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Traduction en croate</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Kroatische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en catalan</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Katalanische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="158"/>
         <source>Paquets Fedora et Red Hat</source>
-        <translation type="unfinished"></translation>
+        <translation>Fedora und Redhat Pakete</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Paquets Mandriva</source>
-        <translation type="unfinished"></translation>
+        <translation>Mandriva Pakete</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="160"/>
         <source>Paquets Debian</source>
-        <translation type="unfinished"></translation>
+        <translation>Debian Pakete</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="161"/>
         <source>Icônes</source>
-        <translation type="unfinished"></translation>
+        <translation>Icons</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Programm ist unter GNU/GPL lizensiert.</translation>
     </message>
 </context>
 <context>
