@@ -5,6 +5,7 @@ Icon=application-x-qet-element
 DefaultApp=qelectrotech
 Patterns=*.elmt;
 Comment=QElectroTech element file
+Comment[de]=QElectrotech Symbol
 Comment[fr]=Fichier élément QElectroTech
 Comment[ar]=QElectrotech ملف عنصر 
 Comment[es]=Archivo elemento QElectroTech
