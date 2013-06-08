@@ -625,83 +625,83 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
         <translation>Proprietà dello schema</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="875"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
         <translation>Proprietà della selezione</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="877"/>
+        <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translation>La selezione contiene %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="912"/>
+        <location filename="../sources/diagramview.cpp" line="911"/>
         <source>Élément manquant</source>
         <translation>Elemento mancante</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="914"/>
+        <location filename="../sources/diagramview.cpp" line="913"/>
         <source>Élément</source>
         <translation>Elemento</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="919"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>Nom : %1
 </source>
         <translation>Nome : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="922"/>
+        <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
         <translation>Foglio : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="923"/>
         <source>Position : %1
 </source>
         <translation>Posizione : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Dimensioni : %1×%2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Bornes : %1
 </source>
         <translation>Terminali : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Connexions internes : %1
 </source>
         <translation>Connessioni interne : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="928"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Champs de texte : %1
 </source>
         <translation>Campo di testo : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="931"/>
+        <location filename="../sources/diagramview.cpp" line="930"/>
         <source>Emplacement : %1
 </source>
         <translation>Posizione : %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Autorisées</source>
         <translation>Permesso</translation>
     </message>
@@ -712,45 +712,45 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
         <translation>Senza titolo</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Interdites</source>
         <translation>Vietato</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="934"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Proprietà dell&apos;elemento selezionato</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Retrouver dans le panel</source>
         <translation>Trova nel pannello</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="937"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Éditer l&apos;élément</source>
         <translation>Modifica l&apos;elemento</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="998"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Modifica le proprietà di un conduttore</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
         <translation>testi dei conduttori</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1019"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Applicare il nuovo testo all&apos;insieme
 dei conduttori di questo potenziale?</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1074"/>
+        <location filename="../sources/diagramview.cpp" line="1073"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Scegliere il nuovo colore di questo conduttore</translation>
     </message>

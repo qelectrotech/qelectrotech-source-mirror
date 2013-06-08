@@ -637,125 +637,125 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>Propietats de l&apos;esquema</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="875"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
         <translation>Propietats de la selecció</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="877"/>
+        <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translatorcomment>%1 conté la llista d&apos;objectes marcats</translatorcomment>
         <translation>La selecció conté %1.</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="912"/>
+        <location filename="../sources/diagramview.cpp" line="911"/>
         <source>Élément manquant</source>
         <translation>Falta símbol</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="914"/>
+        <location filename="../sources/diagramview.cpp" line="913"/>
         <source>Élément</source>
         <translation>Símbol</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="919"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>Nom : %1
 </source>
         <translation>Nom: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="922"/>
+        <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
         <translation>Foli: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="923"/>
         <source>Position : %1
 </source>
         <translation>Posició: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>Dimensions: %1×%2
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Bornes : %1
 </source>
         <translation>Borns: %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Connexions internes : %1
 </source>
         <translation>Connexions internes: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Autorisées</source>
         <translation>Permeses</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Interdites</source>
         <translation>Prohibides</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="928"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Champs de texte : %1
 </source>
         <translation>Camps de text: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="931"/>
+        <location filename="../sources/diagramview.cpp" line="930"/>
         <source>Emplacement : %1
 </source>
         <translation>Emplaçament: %1
 </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="934"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>Propietats del símbol seleccionat</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Retrouver dans le panel</source>
         <translation>Cercar al panell</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="937"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Éditer l&apos;élément</source>
         <translation>Modificar el símbol</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="998"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>Modificar les propietats d&apos;un conductor</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1019"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1074"/>
+        <location filename="../sources/diagramview.cpp" line="1073"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>Triar un nou color per a aquest conductor</translation>
     </message>

@@ -645,119 +645,119 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <translation>خاصيات المخطط</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="875"/>
+        <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
         <translation>خصائص التحديد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="877"/>
+        <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
         <translatorcomment> %1.سرد الكائنات المحددة</translatorcomment>
         <translation>يحتوي التحديد %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="912"/>
+        <location filename="../sources/diagramview.cpp" line="911"/>
         <source>Élément manquant</source>
         <translation>عنصر ناقص</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="914"/>
+        <location filename="../sources/diagramview.cpp" line="913"/>
         <source>Élément</source>
         <translation>عنصر</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="919"/>
+        <location filename="../sources/diagramview.cpp" line="918"/>
         <source>Nom : %1
 </source>
         <translation>الاسم : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="922"/>
+        <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
         <translation>صفحة : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="924"/>
+        <location filename="../sources/diagramview.cpp" line="923"/>
         <source>Position : %1
 </source>
         <translation>الموضع : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="925"/>
+        <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Dimensions : %1×%2
 </source>
         <translation>مقاسات : %1x%2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="926"/>
+        <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Bornes : %1
 </source>
         <translation>نهايات التوصيل : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Connexions internes : %1
 </source>
         <translation>التوصيلات الداخلية : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Autorisées</source>
         <translation>مسموح </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="927"/>
+        <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Interdites</source>
         <translation>ممنوع </translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="928"/>
+        <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Champs de texte : %1
 </source>
         <translation>حقل نصي  %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="931"/>
+        <location filename="../sources/diagramview.cpp" line="930"/>
         <source>Emplacement : %1
 </source>
         <translation>موضع : %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="935"/>
+        <location filename="../sources/diagramview.cpp" line="934"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
         <translation>خاصيات العنصر المحدد</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="936"/>
+        <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Retrouver dans le panel</source>
         <translation>إيجاد في اللوحة</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="937"/>
+        <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Éditer l&apos;élément</source>
         <translation>نشر العنصر</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="999"/>
+        <location filename="../sources/diagramview.cpp" line="998"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
         <translation>تحرير خاصيات الموصل</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1018"/>
+        <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
         <translation>نصوص الموصلات</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1019"/>
+        <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>هل تُريد اعتماد النصّ الجديد على موصلات هذا الكمون ؟</translation>
     </message>
     <message>
-        <location filename="../sources/diagramview.cpp" line="1074"/>
+        <location filename="../sources/diagramview.cpp" line="1073"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
         <translation>إختيار اللون الجديد لهذا الموصل</translation>
     </message>
