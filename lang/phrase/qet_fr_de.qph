@@ -4,4 +4,12 @@
     <source>modifié</source>
     <target>verändert</target>
 </phrase>
+<phrase>
+    <source>projet</source>
+    <target>Projekt</target>
+</phrase>
+<phrase>
+    <source>Configuration</source>
+    <target>Einstellungen</target>
+</phrase>
 </QPH>

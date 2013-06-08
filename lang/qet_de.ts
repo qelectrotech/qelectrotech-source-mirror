@@ -621,7 +621,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="523"/>
         <source>Sans titre</source>
         <comment>what to display for untitled diagrams</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="548"/>
@@ -660,7 +660,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Seite: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="923"/>
@@ -2687,7 +2687,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="526"/>
         <source>projet</source>
         <comment>string used to generate a filename</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Projekt</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="644"/>
@@ -2737,7 +2737,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="781"/>
         <source>Projet</source>
         <comment>window title for a project-less ProjectView</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekt</translation>
     </message>
 </context>
 <context>
@@ -4382,69 +4382,69 @@ Options disponibles :
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="48"/>
         <source>&amp;Configurer QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Einstellungen QEle&amp;ctroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="49"/>
         <source>Permet de régler différents paramètres de QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Erlaubt Einstellungen von QElectroTech zu ändern </translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="58"/>
         <source>À &amp;propos de QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Ü&amp;ber QElectroTech </translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="59"/>
         <source>Affiche des informations sur QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zeigt Informationen zu QElectroTech</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="62"/>
         <source>À propos de &amp;Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>Über &amp;Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="63"/>
         <source>Affiche des informations sur la bibliothèque Qt</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zeigt Informationen zu Qt</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="71"/>
         <source>&amp;Configuration</source>
         <comment>window menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ein&amp;stellungen</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="77"/>
         <source>&amp;Aide</source>
         <comment>window menu</comment>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Hilfe</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation type="unfinished"></translation>
+        <translation>Beendet &amp;Vollbildschirm Darstellung</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="125"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Stellt QElectroTech im Fenstermodus dar</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
         <source>Passer en &amp;mode plein écran</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Vollbildschirm</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="129"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zeigt QElectroTech im Vollbild an</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="131"/>
@@ -4455,7 +4455,7 @@ Options disponibles :
         <location filename="../sources/qetmainwindow.cpp" line="143"/>
         <source>Afficher</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Anzeige</translation>
     </message>
 </context>
 <context>
@@ -6393,13 +6393,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="62"/>
         <source>ou nouveau nom</source>
         <comment>used in save as form</comment>
-        <translation type="unfinished"></translation>
+        <translation>oder neuer Name</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelocationsaver.cpp" line="74"/>
         <source>Nouveau modèle (entrez son nom)</source>
         <comment>combox box entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Neues Template (Namen eintragen)</translation>
     </message>
 </context>
 <context>
