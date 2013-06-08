@@ -379,7 +379,8 @@
         <location filename="../sources/conductor.cpp" line="1276"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε να εφαρμοστεί το νέο κείμενο
+σε όλους τους αγωγούς αυτού του δυναμικού;</translation>
     </message>
 </context>
 <context>
@@ -744,7 +745,8 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε να εφαρμοστεί το νέο κείμενο
+σε όλους τους αγωγούς αυτού του δυναμικού;</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1073"/>
@@ -3495,7 +3497,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="232"/>
         <source>Zoom sur le contenu</source>
-        <translation type="unfinished"></translation>
+        <translation>Εστίαση στο περιεχόμενο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
@@ -3617,7 +3619,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="311"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εύρεση του επιλεγμένου  στοιχείου στον πίνακα</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
@@ -3779,7 +3781,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="764"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Φαίνεται ότι το αρχείο 1% που προσπαθείτε να ανοίξετε δεν υπάρχει.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="791"/>
@@ -4202,7 +4204,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
-        <translation type="unfinished">The element does not contain any terminal. An element must have terminals in order to be connected to other elements by conductors.</translation>
+        <translation>Το στοιχείο δεν περιέχει κάποιον ακροδέκτη. Τα στοιχεία πρέπει μα έχουν ακροδέκτες ώστε να μπορούν να συνδεθούν με άλλα στοιχεία μέσω αγωγών.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
@@ -4286,7 +4288,7 @@ Options disponibles :
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="930"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
-        <translation type="unfinished"></translation>
+        <translation>Φαίνεται ότι το αρχείο 1% που προσπαθείτε να ανοίξετε δεν υπάρχει.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
@@ -4456,7 +4458,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="123"/>
         <source>Sortir du &amp;mode plein écran</source>
-        <translation type="unfinished"></translation>
+        <translation>Έξοδος από την λειτουργία πλήρους οθόνης</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="125"/>
@@ -4473,7 +4475,7 @@ Options disponibles :
         <location filename="../sources/qetmainwindow.cpp" line="129"/>
         <source>Affiche QElectroTech en mode plein écran</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εμφανίζει το QElectroTech σε κατάσταση λειτουργίας πλήρους οθόνης</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="131"/>
@@ -4647,25 +4649,26 @@ Options disponibles :
     <message>
         <location filename="../sources/qetproject.cpp" line="616"/>
         <source>Impossible de créer la catégorie pour l&apos;intégration des éléments</source>
-        <translation type="unfinished">Unable to create the category dedicated to the elements integration</translation>
+        <translation>Δεν είναι δυνατή η δημιουργία της κατηγορίας για την ενσωμάτωση των στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="644"/>
         <source>Un problème s&apos;est produit pendant la copie de la catégorie %1</source>
-        <translation type="unfinished">An error occured during the copy of the category %1</translation>
+        <translation>Παρουσιάστηκε σφάλμα κατά την αντιγραφή της κατηγορίας %1</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="718"/>
         <source>Une erreur s&apos;est produite durant l&apos;intégration du modèle.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation>Παρουσιάστηκε σφάλμα κατά την ενσωμάτωση του προτύπου.</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="911"/>
         <source>Ce document semble avoir été enregistré avec une version ultérieure de QElectroTech. Il est possible que l&apos;ouverture de tout ou partie de ce document échoue.
 Que désirez vous faire ?</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το έγγραφο φαίνεται να έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech. Είναι πιθανό ότι το άνοιγμα του συνόλου ή μέρους του παρόντος εγγράφου να αποτύχει.
+Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
         <location filename="../sources/qetproject.cpp" line="965"/>
@@ -4716,7 +4719,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qetproject.cpp" line="627"/>
         <source>Impossible d&apos;accéder à l&apos;élément à intégrer</source>
-        <translation type="unfinished"></translation>
+        <translation>Αδύνατη η πρόσβαση στο προς ενσωμάτωση στοιχείο</translation>
     </message>
 </context>
 <context>
@@ -4743,13 +4746,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="170"/>
         <source>Dupliquer un modèle de cartouche</source>
         <comment>input dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή ενός προτύπου πινακίδας</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="171"/>
         <source>Pour dupliquer ce modèle, entrez le nom voulu pour sa copie</source>
         <comment>input dialog text</comment>
-        <translation type="unfinished"></translation>
+        <translation>Για να αναπαραγάγετε αυτό το πρότυπο, εισάγετε το επιθυμητό όνομα για το αντίγραφο</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="328"/>
@@ -4815,7 +4818,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="340"/>
         <source>Gérer les logos</source>
         <comment>menu entry</comment>
-        <translation type="unfinished">Διαχείριση των λογότυπων</translation>
+        <translation>Διαχείριση των λογότυπων</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="341"/>
@@ -4839,7 +4842,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="344"/>
         <source>Zoom adapté</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ταιριαστή προβολή</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="345"/>
@@ -4863,13 +4866,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="348"/>
         <source>&amp;Fusionner les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συγχώνευση κελιών</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="349"/>
         <source>&amp;Séparer les cellules</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαίρεση κελιών</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="356"/>
@@ -5025,7 +5028,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="763"/>
         <source>Modèles de cartouches QElectroTech (*%1);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πρότυπα πινακίδων του QElectroTech (*%1);;Αρχεία XML (*.xml);;Όλα τα αρχεία (*)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="802"/>
@@ -5043,18 +5046,18 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="823"/>
         <source>Modèles de cartouches QElectroTech (*%1)</source>
         <comment>filetypes allowed when saving a title block template file - %1 is the .titleblock extension</comment>
-        <translation type="unfinished"></translation>
+        <translation>Πρότυπα πινακίδων QElectroTech (*%1)</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="922"/>
         <source>Éditer les informations complémentaires</source>
         <comment>window title</comment>
-        <translation type="unfinished">μετατροπή των πρόσθετων πληροφοριών</translation>
+        <translation>Επεξεργασία των πρόσθετων πληροφοριών</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="926"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs du cartouche, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείς να ορίσεις σε αυτό το πεδίο, τον συγγραφέα αυτής της πινακίδας, την άδεια χρήσης, ή όποια άλλη πληροφορία θεωρείς χρήσιμη.</translation>
     </message>
 </context>
 <context>
@@ -5084,17 +5087,17 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/qet.cpp" line="297"/>
         <source>Le fichier texte contenant la licence GNU/GPL est introuvable - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation type="unfinished">The text file containing the GNU/GPL license could not be found - however, you know it by heart, don&apos;t you?</translation>
+        <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL δεν μπορεί να βρεθεί - however, you know it by heart, don&apos;t you?</translation>
     </message>
     <message>
         <location filename="../sources/qet.cpp" line="301"/>
         <source>Le fichier texte contenant la licence GNU/GPL existe mais n&apos;a pas pu être ouvert - bon bah de toute façon, vous la connaissez par coeur non ?</source>
-        <translation type="unfinished">The text file containing the GNU/GPL license exists but could not be opened - however, you know it by heart, don&apos;t you?</translation>
+        <translation>Το αρχείο κειμένου που περιέχει την άδεια GNU/GPL υπάρχει αλλά δεν μπορεί να ανοιχτεί - however, you know it by heart, don&apos;t you?</translation>
     </message>
     <message>
         <location filename="../sources/customelement.cpp" line="118"/>
         <source>Avertissement : l&apos;élément  a été enregistré avec une version ultérieure de QElectroTech.</source>
-        <translation type="unfinished">Warning: the element has been saved with a more recent version of QElectroTech.</translation>
+        <translation>Προσοχή: Το στοιχείο έχει αποθηκευτεί με μια νεότερη έκδοση του QElectroTech.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcommands.cpp" line="42"/>
@@ -5282,7 +5285,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/editorcommands.cpp" line="783"/>
         <source>redimensionnement %1</source>
         <comment>undo caption -- %1 is the resized primitive type name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αλλαγή μεγέθους %1</translation>
     </message>
     <message>
         <location filename="../sources/editor/editorcommands.cpp" line="785"/>
@@ -5393,7 +5396,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/qet.cpp" line="579"/>
         <source>Impossible d&apos;ouvrir le fichier %1 en écriture, erreur %2 rencontrée.</source>
         <comment>error message when attempting to write an XML file</comment>
-        <translation type="unfinished"></translation>
+        <translation>Δεν είναι δυνατό το άνοιγμα του αρχείου %1 για εγγραφή, παρουσιάστηκε σφάλμα %2</translation>
     </message>
     <message>
         <location filename="../sources/terminal.cpp" line="63"/>
@@ -5459,7 +5462,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimension.cpp" line="41"/>
         <source>%1% du restant</source>
         <comment>titleblock: width relative to remaining length</comment>
-        <translation type="unfinished"></translation>
+        <translation>%1% του υπολοίπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="415"/>
@@ -5501,26 +5504,26 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="623"/>
         <source>Fusion de %1 cellules</source>
         <comment>label used in the title block template editor undo list; %1 is the number of merged cells</comment>
-        <translation type="unfinished"></translation>
+        <translation>Συγχώνευση %1 κελιών</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="763"/>
         <source>Séparation d&apos;une cellule en %1</source>
         <comment>label used in the title block template editor undo list; %1 is the number of cells after the split</comment>
-        <translation type="unfinished"></translation>
+        <translation>Διαίρεση ενός κελιού σε %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecommands.cpp" line="855"/>
         <source>modification des informations complémentaires</source>
         <comment>undo caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>επεξεργασία των πρόσθετων πληροφοριών</translation>
     </message>
     <message numerus="yes">
         <location filename="../sources/titleblock/templatecommands.cpp" line="928"/>
         <source>Couper %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Αποκοπή %n κελιού@Αποκοπή %n κελιών</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5528,8 +5531,8 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatecommands.cpp" line="952"/>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
-        <translation type="unfinished">
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Επικόλληση %n κελιού@Επικόλληση %n κελιών</numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5537,7 +5540,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockcell.cpp" line="120"/>
         <source>type</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="122"/>
@@ -5549,7 +5552,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockcell.cpp" line="124"/>
         <source>logo</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>Λογότυπο</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="126"/>
@@ -5567,13 +5570,13 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockcell.cpp" line="130"/>
         <source>valeur affichée</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>εμφανιζόμενη τιμή</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="132"/>
         <source>alignement du texte</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>στοίχιση κειμένου</translation>
     </message>
     <message>
         <location filename="../sources/titleblockcell.cpp" line="134"/>
@@ -5585,7 +5588,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockcell.cpp" line="136"/>
         <source>ajustement horizontal</source>
         <comment>title block cell property human name</comment>
-        <translation type="unfinished"></translation>
+        <translation>οριζόντια προσαρμογή</translation>
     </message>
 </context>
 <context>
@@ -5674,22 +5677,22 @@ Que désirez vous faire ?</source>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Διαγραφή μιας μεταβλητής αρίθμησης &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Προσθήκη μιας μεταβλητής αρίθμησης &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation type="unfinished"></translation>
+        <translation>Ορισμός</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Τύπος:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
@@ -5699,7 +5702,7 @@ Que désirez vous faire ?</source>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Αύξηση</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
@@ -6138,7 +6141,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="279"/>
         <source>Dupliquer et editer ce modèle</source>
         <comment>menu entry</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αναπαραγωγή και επεξεργασία αυτού του προτύπου</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="285"/>
@@ -6504,7 +6507,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="214"/>
         <source>Il existe déjà un logo portant le nom &quot;%1&quot; au sein de ce modèle de cartouche. Voulez-vous le remplacer ou préférez-vous spécifier un autre nom pour ce nouveau logo ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Υπάρχει ήδη ένα λογότυπο με όνομα &quot;% 1&quot; σε αυτό το πρότυπο πινακίδας. Θέλετε να το αντικαταστήσετε ή να ορίσετε ένα διαφορετικό όνομα για το νέο λογότυπο;</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="250"/>
@@ -6935,7 +6938,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>Ευθυγράμμιση</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
