@@ -323,6 +323,7 @@ class RotateElementsCommand : public QUndoCommand {
 	QList<DiagramTextItem *> texts_to_rotate;
 	/// angle of rotation to be applied to text items
 	qreal applied_rotation_angle_;
+	bool previous_rotate_by_user_;
 };
 
 /**
