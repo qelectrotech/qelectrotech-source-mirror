@@ -4,6 +4,7 @@
         <name lang="fr">Capteur Pression</name>
         <name lang="pl">Czujnik ciśnienia</name>
 	<name lang="it">Sensore di pressione</name>
+        <name lang="cs">Tlakové čidlo</name>
     </names>
     <informations></informations>
     <description>

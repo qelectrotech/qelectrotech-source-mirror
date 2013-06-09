@@ -4,5 +4,6 @@
         <name lang="fr">Capteurs debit</name>
         <name lang="pl">Czujniki przepływu</name>
 	<name lang="it">Sensori di flusso</name>
+        <name lang="cs">Průtoková čidla</name>
    </names>
 </qet-directory>

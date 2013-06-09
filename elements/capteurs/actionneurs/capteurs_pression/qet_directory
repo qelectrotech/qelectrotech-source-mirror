@@ -4,5 +4,6 @@
         <name lang="fr">Capteurs pression</name>
         <name lang="pl">Czujniki ciśnienia</name>
 	<name lang="it">Sensori di pressione</name>
+        <name lang="cs">Tlaková čidla</name>
    </names>
 </qet-directory>

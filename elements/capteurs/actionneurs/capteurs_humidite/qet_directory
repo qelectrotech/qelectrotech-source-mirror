@@ -4,5 +4,6 @@
         <name lang="fr">Capteurs humidité</name>
         <name lang="pl">Czujnik wilgotności</name>
 	<name lang="it">Sensori di umidità</name>
+        <name lang="cs">Vlhkostní čidla</name>
    </names>
 </qet-directory>

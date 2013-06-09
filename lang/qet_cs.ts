@@ -82,7 +82,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="115"/>
         <source>Collection d&apos;éléments &amp; Développement</source>
-        <translation type="unfinished"></translation>
+        <translation>Sbírka prvků a vývoj</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="131"/>
@@ -433,17 +433,17 @@ Použít text na všechny tyto vodiče?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
         <source>Rotation du texte sur conducteur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Natočení textu u vodiče:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="73"/>
         <source>Vertical</source>
-        <translation type="unfinished"></translation>
+        <translation>Svisle</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Vodorovně</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
@@ -798,17 +798,17 @@ vodiče s tímto potenciálem?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného folia&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
         <source>Annotation (alpha)</source>
-        <translation type="unfinished"></translation>
+        <translation>Vysvětlivka.(alfa)</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="110"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimé la numérotation des folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Číslování vybraného folia odstraněno&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
@@ -831,14 +831,18 @@ vodiče s tímto potenciálem?</translation>
         <source>Voulez-vous vraiment supprimer les annotations conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete odstranit vysvětlivky k vodičům:
+
+%1?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Opravdu chcete opatřit vysvětlivkami vodiče:
+
+%1?</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
@@ -2490,32 +2494,32 @@ Provedené změny budou konečné.</translation>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation>Jednotka</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Dizaine</source>
-        <translation type="unfinished"></translation>
+        <translation>Desítka</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Centaine</source>
-        <translation type="unfinished"></translation>
+        <translation>Stovka</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
         <source>Texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Číslo folia</translation>
     </message>
 </context>
 <context>
@@ -3483,7 +3487,7 @@ Dostupné volby:
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="227"/>
         <source>Annoter les schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Opatřit výkresy vysvětlivkami</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="228"/>
@@ -5664,52 +5668,52 @@ Co chcete dělat?</translation>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Formulář</translation>
+        <translation>Formulář</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation type="unfinished"></translation>
+        <translation>Folio: </translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Choisir le folio&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;vybrat výkres&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="55"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Supprimer une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Smazat proměnnou číslování&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="72"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Ajouter une variable de numérotation&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Přidat proměnnou číslování&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="91"/>
         <source>Définition</source>
-        <translation type="unfinished"></translation>
+        <translation>Vymezení</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="107"/>
         <source>Type</source>
-        <translation type="unfinished"></translation>
+        <translation>Typ</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation type="unfinished">Hodnota</translation>
+        <translation>Hodnota</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
         <source>Incrémentation</source>
-        <translation type="unfinished"></translation>
+        <translation>Přírůstek</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Výkres bez názvu</translation>
+        <translation>Výkres bez názvu</translation>
     </message>
 </context>
 <context>
@@ -5760,19 +5764,19 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="35"/>
         <source>Vert</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="36"/>
         <source>Rouge</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="37"/>
         <source>Bleu</source>
         <comment>element part color</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>
@@ -5796,7 +5800,7 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation type="unfinished">Čárky a tečky</translation>
+        <translation>Tečky a čárky</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -5838,19 +5842,19 @@ Co chcete dělat?</translation>
         <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Vert</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Zelená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Červená</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="61"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
-        <translation type="unfinished"></translation>
+        <translation>Modrá</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="143"/>
