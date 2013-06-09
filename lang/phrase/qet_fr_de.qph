@@ -36,4 +36,24 @@
     <source>Texte :</source>
     <target>Text:</target>
 </phrase>
+<phrase>
+    <source>Schéma</source>
+    <target>Schaltplan</target>
+</phrase>
+<phrase>
+    <source>Nom</source>
+    <target>Name</target>
+</phrase>
+<phrase>
+    <source></source>
+    <target>Vertikal</target>
+</phrase>
+<phrase>
+    <source>Horizontal</source>
+    <target>Horizontal</target>
+</phrase>
+<phrase>
+    <source>Centre</source>
+    <target>Mittelpunkt</target>
+</phrase>
 </QPH>

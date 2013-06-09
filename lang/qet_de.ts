@@ -318,7 +318,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="101"/>
         <source>Schéma</source>
         <comment>column header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="104"/>
@@ -423,7 +423,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="60"/>
         <source>Simple</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einzelleiter</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
@@ -448,7 +448,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="79"/>
         <source>Horizontal</source>
-        <translation type="unfinished"></translation>
+        <translation>Horizontal</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="85"/>
@@ -458,29 +458,29 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="87"/>
         <source>terre</source>
-        <translation type="unfinished"></translation>
+        <translation>Erde</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="89"/>
         <source>neutre</source>
-        <translation type="unfinished"></translation>
+        <translation>Neutralleiter</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="91"/>
         <source>PEN</source>
         <comment>Protective Earth Neutral</comment>
-        <translation type="unfinished"></translation>
+        <translation>PEN</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="92"/>
         <source>Protective Earth Neutral</source>
         <comment>Tooltip displaying the meaning of the &apos;PEN&apos; acronym</comment>
-        <translation type="unfinished"></translation>
+        <translation>PEN-Leiter (protective earth neutral)</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="103"/>
         <source>phase</source>
-        <translation type="unfinished"></translation>
+        <translation>Phase</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="123"/>
@@ -490,13 +490,13 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
         <source>Couleur :</source>
-        <translation type="unfinished"></translation>
+        <translation>Farbe:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stil:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
@@ -528,7 +528,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Nom</source>
         <comment>table header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
@@ -1608,7 +1608,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="47"/>
         <source>Centre : </source>
-        <translation type="unfinished"></translation>
+        <translation>Mittelpunkt:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="52"/>
@@ -1643,7 +1643,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
         <source>diamètre vertical</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Vertikale Achse </translation>
     </message>
 </context>
 <context>
@@ -1652,7 +1652,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="256"/>
         <source>Export</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Exportieren</translation>
     </message>
 </context>
 <context>
@@ -1676,7 +1676,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="116"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="117"/>
@@ -3689,7 +3689,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="532"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
@@ -6724,7 +6724,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
         <source>Nom</source>
-        <translation type="unfinished"></translation>
+        <translation>Name</translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
@@ -6762,7 +6762,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
         <source>Schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
