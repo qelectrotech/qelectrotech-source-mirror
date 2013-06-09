@@ -12,4 +12,28 @@
     <source>Configuration</source>
     <target>Einstellungen</target>
 </phrase>
+<phrase>
+    <source>Enregistrer</source>
+    <target>Speichern</target>
+</phrase>
+<phrase>
+    <source>QElectroTech</source>
+    <target>QElectroTech</target>
+</phrase>
+<phrase>
+    <source>&amp;Quitter</source>
+    <target>&amp;Beenden</target>
+</phrase>
+<phrase>
+    <source>Fermer</source>
+    <target>Schließen</target>
+</phrase>
+<phrase>
+    <source>Texte</source>
+    <target>Text</target>
+</phrase>
+<phrase>
+    <source>Texte :</source>
+    <target>Text:</target>
+</phrase>
 </QPH>
