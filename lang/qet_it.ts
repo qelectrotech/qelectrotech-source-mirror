@@ -52,7 +52,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="72"/>
         <source>Compilation : </source>
-        <translation>Compilazione : </translation>
+        <translation>Compilazione: </translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="94"/>
@@ -254,7 +254,7 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="99"/>
         <source>Colonnes :</source>
-        <translation>Colonne :</translation>
+        <translation>Colonne:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -265,7 +265,7 @@
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="115"/>
         <source>Lignes :</source>
-        <translation>Righe :</translation>
+        <translation>Righe:</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="109"/>
@@ -428,7 +428,7 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="64"/>
         <source>Texte :</source>
-        <translation>Testo :</translation>
+        <translation>Testo:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="70"/>
@@ -471,7 +471,7 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
         <location filename="../sources/conductorpropertieswidget.cpp" line="136"/>
         <source>Style :</source>
         <comment>conductor line style</comment>
-        <translation>Stile :</translation>
+        <translation>Stile:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="138"/>
@@ -509,7 +509,7 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="130"/>
         <source>Couleur :</source>
-        <translation>Colore :</translation>
+        <translation>Colore:</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="60"/>
@@ -649,55 +649,55 @@ Applicare un testo all&apos;insiema dei conduttori?</translation>
         <location filename="../sources/diagramview.cpp" line="918"/>
         <source>Nom : %1
 </source>
-        <translation>Nome : %1
+        <translation>Nome: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
-        <translation>Foglio : %1
+        <translation>Foglio: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="923"/>
         <source>Position : %1
 </source>
-        <translation>Posizione : %1
+        <translation>Posizione: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation>Dimensioni : %1×%2</translation>
+        <translation>Dimensioni: %1×%2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Bornes : %1
 </source>
-        <translation>Terminali : %1
+        <translation>Terminali: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Connexions internes : %1
 </source>
-        <translation>Connessioni interne : %1
+        <translation>Connessioni interne: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Champs de texte : %1
 </source>
-        <translation>Campo di testo : %1
+        <translation>Campo di testo: %1
 </translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="930"/>
         <source>Emplacement : %1
 </source>
-        <translation>Posizione : %1
+        <translation>Posizione: %1
 </translation>
     </message>
     <message>
@@ -2393,7 +2393,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/newelementwizard.cpp" line="47"/>
         <source>Créer un nouvel élément : Assistant</source>
         <comment>window title</comment>
-        <translation>Crea un nuovo elemento : Assistente</translation>
+        <translation>Crea un nuovo elemento: Assistente</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="97"/>
@@ -2624,7 +2624,7 @@ I cambiamenti saranno irreversibili.</translation>
         <location filename="../sources/projectconfigpages.cpp" line="138"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation>Titolo del progetto :</translation>
+        <translation>Titolo del progetto:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="140"/>
@@ -6206,7 +6206,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="379"/>
         <source>Titre : </source>
-        <translation>Titolo : </translation>
+        <translation>Titolo: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="381"/>
@@ -6221,12 +6221,12 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="385"/>
         <source>Fichier : </source>
-        <translation>File : </translation>
+        <translation>File: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
         <source>Folio : </source>
-        <translation>Foglio : </translation>
+        <translation>Foglio: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="422"/>
@@ -6253,7 +6253,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="49"/>
         <source>Type de cellule :</source>
-        <translation>Tipo di cella :</translation>
+        <translation>Tipo di cella:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="51"/>
@@ -6294,7 +6294,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="69"/>
         <source>Afficher un label :</source>
-        <translation>Visualizza un&apos;etichetta :</translation>
+        <translation>Visualizza un&apos;etichetta:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="72"/>
@@ -6310,7 +6310,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="77"/>
         <source>Alignement :</source>
-        <translation>Allineamento :</translation>
+        <translation>Allineamento:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
@@ -6355,7 +6355,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="94"/>
         <source>Police :</source>
-        <translation>Carattere :</translation>
+        <translation>Carattere:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="96"/>
@@ -6392,7 +6392,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="422"/>
         <source>Édition d&apos;une cellule : %1</source>
         <comment>label of and undo command when editing a cell</comment>
-        <translation>Modifica di una cella : %1</translation>
+        <translation>Modifica di una cella: %1</translation>
     </message>
 </context>
 <context>
@@ -6451,7 +6451,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="78"/>
         <source>Logos embarqués dans ce modèle :</source>
-        <translation>Loghi integrati nel modello :</translation>
+        <translation>Loghi integrati nel modello:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="87"/>
@@ -6488,7 +6488,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="94"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="254"/>
         <source>Type :</source>
-        <translation>Tipo :</translation>
+        <translation>Tipo:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="188"/>
@@ -6508,7 +6508,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="250"/>
         <source>Type : %1</source>
-        <translation>Tipo : %1</translation>
+        <translation>Tipo: %1</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="267"/>
@@ -6678,7 +6678,7 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="785"/>
         <source>Largeur de l&apos;aperçu :</source>
-        <translation>Larghezza dell&apos;anteprima :</translation>
+        <translation>Larghezza dell&apos;anteprima:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="933"/>
@@ -6686,21 +6686,21 @@ Cosa vuoi fare?</translation>
 Longueur maximale : %2px
 </source>
         <comment>tooltip showing the minimum and/or maximum width of the edited template</comment>
-        <translation>Lunghezza minima : %1px
-Lunghezza massima : %2px</translation>
+        <translation>Lunghezza minima: %1px
+Lunghezza massima: %2px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="940"/>
         <source>Longueur minimale : %1px
 </source>
         <comment>tooltip showing the minimum width of the edited template</comment>
-        <translation>Lunghezza minima : %1px</translation>
+        <translation>Lunghezza minima: %1px</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templateview.cpp" line="995"/>
         <source>Largeur totale pour cet aperçu : %1px</source>
         <comment>displayed at the top of the preview when editing a title block template</comment>
-        <translation>Larghezza totale di questa anteprima : %1px</translation>
+        <translation>Larghezza totale di questa anteprima: %1px</translation>
     </message>
 </context>
 <context>
@@ -6753,7 +6753,7 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="32"/>
         <source>Projet : </source>
-        <translation>Progetto : </translation>
+        <translation>Progetto: </translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="60"/>
@@ -6786,7 +6786,7 @@ Lunghezza massima : %2px</translation>
     <message>
         <location filename="../sources/nomenclature.cpp" line="52"/>
         <source>NOMENCLATURE : </source>
-        <translation>CLASSIFICAZIONE : </translation>
+        <translation>CLASSIFICAZIONE: </translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="53"/>
