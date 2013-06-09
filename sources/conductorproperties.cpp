@@ -248,6 +248,8 @@ void ConductorProperties::toXml(QDomElement &e) const {
 		singleLineProperties.toXml(e);
 	} else if (type == Multi) {
 		e.setAttribute("num", text);
+		e.setAttribute("vertirotatetext", verti_rotate_text);
+		e.setAttribute("horizrotatetext", horiz_rotate_text);
 	}
 	
 	QString conductor_style = writeStyle();
@@ -282,6 +284,8 @@ void ConductorProperties::fromXml(QDomElement &e) {
 	} else {
 		// recupere le champ de texte
 		text = e.attribute("num");
+		verti_rotate_text = e.attribute("vertirotatetext").toDouble();
+		horiz_rotate_text = e.attribute("horizrotatetext").toDouble();
 		type = Multi;
 	}
 }
