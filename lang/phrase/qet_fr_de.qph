@@ -56,4 +56,16 @@
     <source>Centre</source>
     <target>Mittelpunkt</target>
 </phrase>
+<phrase>
+    <source>px</source>
+    <target>px</target>
+</phrase>
+<phrase>
+    <source>Abscisse :</source>
+    <target>Abzisse:</target>
+</phrase>
+<phrase>
+    <source>Erreur</source>
+    <target>Fehler</target>
+</phrase>
 </QPH>

@@ -268,7 +268,7 @@
         <location filename="../sources/borderpropertieswidget.cpp" line="110"/>
         <source>px</source>
         <comment>unit for cols width</comment>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="112"/>
@@ -285,7 +285,7 @@
         <location filename="../sources/borderpropertieswidget.cpp" line="126"/>
         <source>px</source>
         <comment>unit for rows height</comment>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -1322,7 +1322,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="171"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="156"/>
@@ -1733,7 +1733,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="646"/>
         <location filename="../sources/exportdialog.cpp" line="651"/>
         <source>px</source>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -1973,7 +1973,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
         <location filename="../sources/hotspoteditor.cpp" line="44"/>
         <source> ×10 px</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> ×10 px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
@@ -2009,7 +2009,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="90"/>
         <source>Abscisse :</source>
-        <translation type="unfinished"></translation>
+        <translation>Abzisse:</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="92"/>
@@ -2073,7 +2073,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="86"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="148"/>
@@ -2191,7 +2191,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="384"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
 </context>
 <context>
@@ -2453,7 +2453,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="250"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="219"/>
@@ -2575,7 +2575,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
@@ -3765,7 +3765,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="1858"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
 </context>
 <context>
@@ -4248,7 +4248,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1344"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="737"/>
@@ -4270,7 +4270,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="799"/>
         <source>Erreur</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="763"/>
@@ -6081,7 +6081,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="171"/>
         <source>px</source>
         <comment>spinbox suffix when changing the dimension of a row/column</comment>
-        <translation type="unfinished"></translation>
+        <translation>px</translation>
     </message>
 </context>
 <context>
@@ -6486,7 +6486,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="308"/>
         <source>Erreur</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="276"/>
@@ -6788,7 +6788,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/nomenclature.cpp" line="70"/>
         <source>Erreur</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehler</translation>
     </message>
     <message>
         <location filename="../sources/nomenclature.cpp" line="71"/>
