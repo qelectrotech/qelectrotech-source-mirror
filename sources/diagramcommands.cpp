@@ -601,7 +601,18 @@ void RotateElementsCommand::undo() {
 		rotateElement(e, elements_to_rotate[e]);
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
-		dti -> rotateBy(-applied_rotation_angle_);
+		//ConductorTextItem have got a default rotation propertie
+		//so we apply specific undo method for him
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
+			cti -> forceRotateByUser(previous_rotate_by_user_);
+			//previous_rotate_by_user is false mean the rotation is propertie rotation
+			if (previous_rotate_by_user_ == false) {cti -> parentConductor() ->adjustTextItemPosition();}
+			else {cti -> rotateBy(-applied_rotation_angle_);}
+		}
+		//this isn't a ConductorTextItem
+		else {
+			dti -> rotateBy(-applied_rotation_angle_);
+		}
 	}
 }
 
@@ -611,6 +622,10 @@ void RotateElementsCommand::redo() {
 		rotateElement(e, e -> orientation().next());
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
+			previous_rotate_by_user_ = cti -> wasRotateByUser();
+			cti -> forceRotateByUser(true);
+		}
 		dti -> rotateBy(applied_rotation_angle_);
 	}
 }

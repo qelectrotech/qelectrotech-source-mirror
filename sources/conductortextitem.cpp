@@ -28,6 +28,7 @@ ConductorTextItem::ConductorTextItem(Conductor *parent_conductor, Diagram *paren
 	DiagramTextItem(parent_conductor, parent_diagram),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
+	rotate_by_user_(false),
 	first_move_(true)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
@@ -44,6 +45,7 @@ ConductorTextItem::ConductorTextItem(const QString &text, Conductor *parent_cond
 	DiagramTextItem(text, parent_conductor, parent_diagram),
 	parent_conductor_(parent_conductor),
 	moved_by_user_(false),
+	rotate_by_user_(false),
 	first_move_(true)
 {
 	// par defaut, les DiagramTextItem sont Selectable et Movable
@@ -108,6 +110,14 @@ bool ConductorTextItem::wasMovedByUser() const {
 }
 
 /**
+ * @brief ConductorTextItem::wasRotateByUser
+ * @return true if text was explicit moved by user else false
+ */
+bool ConductorTextItem::wasRotateByUser() const {
+	return(rotate_by_user_);
+}
+
+/**
 	@param moved_by_user true pour que la position du texte soit consideree
 	comme ayant ete definie par l'utilisateur (et donc soit sauvegardee), false
 	pour remettre le texte a sa position originelle
@@ -120,6 +130,21 @@ void ConductorTextItem::forceMovedByUser(bool moved_by_user) {
 		parent_conductor_ -> adjustTextItemPosition();
 	}
 	
+}
+
+/**
+ * @brief ConductorTextItem::forceRotateByUser
+ * @param rotate_by_user true pour que la rotation du texte soit consideree
+	comme ayant ete definie par l'utilisateur (et donc soit sauvegardee), false
+	pour remettre le texte a sont angle originelle
+ */
+void ConductorTextItem::forceRotateByUser(bool rotate_by_user) {
+	if (rotate_by_user == rotate_by_user_) return;
+
+	rotate_by_user_ = rotate_by_user;
+	if (!rotate_by_user && parent_conductor_) {
+		parent_conductor_ -> adjustTextItemPosition();
+	}
 }
 
 /**

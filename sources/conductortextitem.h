@@ -48,7 +48,9 @@ class ConductorTextItem : public DiagramTextItem {
 	public:
 	virtual int type() const { return Type; }
 	virtual bool wasMovedByUser() const;
+	virtual bool wasRotateByUser() const;
 	virtual void forceMovedByUser(bool);
+	virtual void forceRotateByUser(bool);
 	
 	protected:
 	virtual void mousePressEvent(QGraphicsSceneMouseEvent *);
@@ -59,6 +61,7 @@ class ConductorTextItem : public DiagramTextItem {
 	private:
 	Conductor *parent_conductor_;
 	bool moved_by_user_;
+	bool rotate_by_user_;
 	QPointF before_mov_pos_;
 	bool first_move_;
 	QPointF mouse_to_origin_movement_;

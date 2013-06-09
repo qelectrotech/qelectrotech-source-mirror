@@ -1113,6 +1113,7 @@ ConductorSegment *Conductor::middleSegment() {
 void Conductor::calculateTextItemPosition() {
 	if (!text_item) return;
 	
+	//position
 	if (text_item -> wasMovedByUser()) {
 		// le champ de texte a ete deplace par l'utilisateur :
 		// on verifie qu'il est encore a proximite du conducteur
@@ -1124,8 +1125,11 @@ void Conductor::calculateTextItemPosition() {
 	} else {
 		// positionnement automatique basique
 		text_item -> setPos(middleSegment() -> middle());
-		middleSegment() -> isVertical()? text_item -> setRotationAngle(properties_.verti_rotate_text):
-										 text_item -> setRotationAngle(properties_.horiz_rotate_text);
+		//rotation
+		if (!text_item -> wasRotateByUser()) {
+			middleSegment() -> isVertical()? text_item -> setRotationAngle(properties_.verti_rotate_text):
+											 text_item -> setRotationAngle(properties_.horiz_rotate_text);
+		}
 	}
 }
 
