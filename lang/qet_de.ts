@@ -946,7 +946,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/elementdialog.cpp" line="164"/>
         <source>Nom :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Name:</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="245"/>
@@ -1034,17 +1034,17 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="266"/>
         <source>ligne</source>
-        <translation type="unfinished"></translation>
+        <translation>Linie</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="273"/>
         <source>rectangle</source>
-        <translation type="unfinished"></translation>
+        <translation>Rechteck</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="280"/>
         <source>ellipse</source>
-        <translation type="unfinished"></translation>
+        <translation>Ellipse</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="287"/>
@@ -1054,7 +1054,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="294"/>
         <source>borne</source>
-        <translation type="unfinished"></translation>
+        <translation>Anschluss</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="301"/>
@@ -1064,12 +1064,12 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="308"/>
         <source>champ de texte</source>
-        <translation type="unfinished"></translation>
+        <translation>Textfeld</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="320"/>
         <source>polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Polygon</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="718"/>
@@ -1140,22 +1140,22 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/elementscategorieswidget.cpp" line="34"/>
         <source>Recharger les catégories</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorieen aktualisieren</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorieswidget.cpp" line="35"/>
         <source>Nouvelle catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Kategorie</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorieswidget.cpp" line="36"/>
         <source>Éditer la catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorieswidget.cpp" line="37"/>
         <source>Supprimer la catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie löschen</translation>
     </message>
 </context>
 <context>
@@ -6819,27 +6819,27 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="670"/>
         <source>Edit text</source>
-        <translation type="unfinished"></translation>
+        <translation>Text bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="692"/>
         <source>Rich Text</source>
-        <translation type="unfinished"></translation>
+        <translation>Rich Text</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Quelltext</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="699"/>
         <source>&amp;OK</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;OK</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="701"/>
         <source>&amp;Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbre&amp;chen</translation>
     </message>
 </context>
 <context>
