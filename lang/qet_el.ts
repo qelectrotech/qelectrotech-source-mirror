@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="179"/>
+        <location filename="../sources/aboutqet.cpp" line="186"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Αυτό το πρόγραμμα διατίθεται υπό την Άδεια GNU/GPL.</translation>
     </message>
@@ -111,51 +111,59 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="136"/>
+        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en allemand</source>
         <translation>Γερμανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en roumain</source>
         <translation>Ρουμανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Traduction en italien</source>
         <translation>Ιταλική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en arabe</source>
         <translation>Αραβική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en croate</source>
         <translation>Κροατική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Traduction en catalan</source>
         <translation>Καταλανική μετάφραση</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="158"/>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
+        <location filename="../sources/aboutqet.cpp" line="145"/>
+        <source>Traduction en grec</source>
+        <translation>Ελληνική μετάφραση</translation>
+    </message>
+    <message>
+        <location filename="../sources/aboutqet.cpp" line="165"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Πακέτο για Fedora και Red Hat </translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="159"/>
+        <location filename="../sources/aboutqet.cpp" line="166"/>
         <source>Paquets Mandriva</source>
         <translation>Πακέτο για Madriva</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="160"/>
+        <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Debian</source>
         <translation>Πακέτο για Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="161"/>
+        <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Icônes</source>
         <translation>Εικονίδια</translation>
     </message>
@@ -278,13 +286,13 @@
         <location filename="../sources/borderpropertieswidget.cpp" line="110"/>
         <source>px</source>
         <comment>unit for cols width</comment>
-        <translation>πιξελίδια</translation>
+        <translation>πιξελ</translation>
     </message>
     <message>
         <location filename="../sources/borderpropertieswidget.cpp" line="126"/>
         <source>px</source>
         <comment>unit for rows height</comment>
-        <translation>πιξελίδια</translation>
+        <translation>πιξελ</translation>
     </message>
 </context>
 <context>
@@ -388,13 +396,14 @@
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="23"/>
         <source>Textes de potentiel</source>
-        <translation type="unfinished"></translation>
+        <translation>Κείμενα δυναμικού</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα κείμενα αυτού του ηλεκτρικού δυναμικού δεν είναι ίδια.
+Εφαρμογή ενός κειμένου σε όλη την ομάδα αγωγών;</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
@@ -404,7 +413,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation>χρόνος</translation>
+        <translation> φορές.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
@@ -839,7 +848,9 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <source>Voulez-vous vraiment annoter les conducteurs de :
 
 %1 ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Θέλετε πραγματικά να σημάνετε τους αγωγούς:
+
+%1 ;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
@@ -1079,7 +1090,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="768"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
-        <translation type="unfinished">Default orientation is the orientation which the drawing of the element takes place with.</translation>
+        <translation>Προκαθορισμένος προσανατολισμός, είναι ο προσανατολισμός ο οποίος δημιουργούνται τα στοιχεία.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
@@ -1721,7 +1732,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="646"/>
         <location filename="../sources/exportdialog.cpp" line="651"/>
         <source>px</source>
-        <translation>πιξελίδια</translation>
+        <translation>πιξελ</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="376"/>
@@ -1953,7 +1964,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτή είναι μια κατηγορία στοιχείων, ένας απλός φάκελος για την οργάνωση των συλλογών στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="868"/>
@@ -1981,13 +1992,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/hotspoteditor.cpp" line="39"/>
         <location filename="../sources/hotspoteditor.cpp" line="44"/>
         <source> ×10 px</source>
-        <translation> ×10 πιξελίδια</translation>
+        <translation> ×10 πιξελ</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
         <location filename="../sources/hotspoteditor.cpp" line="52"/>
         <source> px</source>
-        <translation> πιξελίδια</translation>
+        <translation> πιξελ</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="72"/>
@@ -2638,7 +2649,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectconfigpages.cpp" line="142"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Μπορείτε να ορίσετε τις ακόλουθες προσαρμοσμένες ιδιότητες και οι οποίες  θα είναι διαθέσιμες σε όλα τα διαγράμματα αυτού του έργου (συνήθως για χρήση στις πινακίδες).</translation>
     </message>
 </context>
 <context>
@@ -2915,7 +2926,7 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="119"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
-        <translation>Φορτώνει... Επεξεργαστής διαγραμμάτων</translation>
+        <translation>Φόρτωση... Επεξεργαστής διαγραμμάτων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="104"/>
@@ -2927,13 +2938,13 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="112"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation>Φορτώνει... Γίνεται ανάγνωση των συλλογών των στοιχείων</translation>
+        <translation>Φόρτωση... Γίνεται ανάγνωση των συλλογών των στοιχείων</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="122"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
-        <translation>Φορτώνει... Ανοίγουν τα αρχεία</translation>
+        <translation>Φόρτωση... Ανοίγουν τα αρχεία</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="176"/>
@@ -2997,7 +3008,7 @@ Options disponibles :
         <location filename="../sources/qetapp.cpp" line="1273"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
-        <translation>Φορτώνει...</translation>
+        <translation>Φόρτωση...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1346"/>
@@ -3446,7 +3457,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="100"/>
         <source>Cliquez sur une action pour revenir en arrière dans l&apos;édition de votre schéma</source>
         <comment>Status tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Επιλέξτε μια ενέργεια για να επαναφέρετε τις αλλαγές που κάνατε στο διάγραμμα σας</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="101"/>
@@ -3625,7 +3636,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="312"/>
         <source>Retrouve l&apos;élément sélectionné dans le panel avant de l&apos;éditer</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Βρείτε το επιλεγμένο αντικείμενο στον μπροστινό πίνακα για επεξεργασία</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="314"/>
@@ -3678,7 +3689,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="323"/>
         <source>Adapte le zoom de façon à afficher tout le contenu indépendamment du cadre</source>
-        <translation type="unfinished"></translation>
+        <translation>Προσαρμόζει την εστίαση έτσι ώστε να εμφανιστούν όλα τα περιεχόμενα ανεξάρτητα από το πλαίσιο</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="324"/>
@@ -4464,7 +4475,7 @@ Options disponibles :
         <location filename="../sources/qetmainwindow.cpp" line="125"/>
         <source>Affiche QElectroTech en mode fenêtré</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Εμφανίζει το QElectroTech σε κατάσταση λειτουργίας παραθύρων</translation>
     </message>
     <message>
         <location filename="../sources/qetmainwindow.cpp" line="127"/>
@@ -6190,12 +6201,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="341"/>
         <source>%id et %total sont disponibles en tant que %{folio-id} et %{folio-total} (respectivement) pour les modèles de cartouches.</source>
-        <translation type="unfinished"></translation>
+        <translation>Τα %id και %total είναι διαθέσιμα στα πρότυπα πινακίδων σαν %{folio-id} και %{folio-total} αντίστοιχα.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="345"/>
         <source>Vous pouvez définir ici vos propres associations noms/valeurs pour que le cartouche en tienne compte. Exemple : associer le nom &quot;volta&quot; et la valeur &quot;1745&quot; remplacera %{volta} par 1745 dans le cartouche.</source>
-        <translation type="unfinished"></translation>
+        <translation>Εδώ μπορείτε να καθορίσετε τους δικούς σας συνδυασμούς ονόματος/τιμής ώστε οι πινακίδες να τα λαμβάνουν υπ&apos;όψη. Π.χ. συνδυάζοντας το όνομα &quot;volta&quot; με την τιμή &quot;1745&quot;  θα αντικαταστήσει το %{volta} με το 1745 μέσα στην πινακίδα.</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="358"/>
@@ -6875,7 +6886,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="693"/>
         <source>Source</source>
-        <translation type="unfinished"></translation>
+        <translation>Πηγαίος κώδικας</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="699"/>
