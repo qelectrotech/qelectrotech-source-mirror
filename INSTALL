@@ -96,3 +96,14 @@ $ qmake (qmake-qt4 per sistemi basati su Debian)
 $ make
 # umask 0022
 # make install
+
+[el]
+Απαιτήσεις:
+libQt4 (see packages libqt4*)
+cupsys-bsd for printing
+
+Πως να το μεταγλωττίσετε:
+$ qmake (qmake-qt4 for Debian-based systems)
+$ make
+# umask 0022
+# make install

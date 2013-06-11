@@ -29,3 +29,7 @@ Wykorzystuje XML do zapisywania plików elementów i projektów. Posiada edytor 
 [it]
 QElectroTech è una applicazione fatta in Qt4 per disegnare schemi elettrici.
 QET usa il formato XML per i suoi elementi e schemi, includendo anche un editor per gli stessi.
+
+[el]
+Το QElectroTech είναι μια εφαρμογή Qt4 για σχεδίαση ηλεκτρικών διαγραμμάτων.
+Χρησιμοποιεί αρχεία XML για στοιχεία και διαγράμματα, και περιλαμβάνει επεξεργαστή διαγραμμάτων καθώς και επεξεργαστή στοιχείων.
