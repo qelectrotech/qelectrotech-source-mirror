@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">خطوة أوليّة</name>
         <name lang="de">Initialisierungs Schritt</name>
+        <name lang="pt">Etapa inicial</name>
+        <name lang="el">Αρχικό βήμα</name>
         <name lang="en">Initial step</name>
+        <name lang="it">Inizio</name>
         <name lang="fr">Etape initiale</name>
         <name lang="pl">Krok początkowy</name>
-        <name lang="cs">Počáteční krok</name>
         <name lang="es">Etapa inicial</name>
-        <name lang="pt">Etapa inicial</name>
-        <name lang="it">Inizio</name>
+        <name lang="cs">Počáteční krok</name>
     </names>
     <informations></informations>
     <description>

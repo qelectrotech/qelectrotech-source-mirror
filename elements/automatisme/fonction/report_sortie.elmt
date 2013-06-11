@@ -3,12 +3,13 @@
         <name lang="ar">إرجاء خرج</name>
         <name lang="de">Ausgang Report</name>
         <name lang="pt">Relatório saída</name>
+        <name lang="el">Αναφορά Εξόδου</name>
         <name lang="en">Output Report</name>
         <name lang="it">Report uscita</name>
         <name lang="fr">Report Sortie</name>
         <name lang="pl">Wyjście adresowe</name>
-        <name lang="cs">Hlášení výstupu</name>
         <name lang="es">Reporte de salida</name>
+        <name lang="cs">Hlášení výstupu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

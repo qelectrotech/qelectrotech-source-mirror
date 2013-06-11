@@ -1,13 +1,14 @@
 <definition width="30" version="0.3" hotspot_x="5" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">الكترود</name>
+        <name lang="pt">Eléctrodo</name>
+        <name lang="el">Ηλεκτρόδιο</name>
         <name lang="en">Electrode</name>
         <name lang="it">Elettrodo</name>
         <name lang="fr">Electrode</name>
         <name lang="pl">Elektroda</name>
-        <name lang="cs">Elektroda</name>
         <name lang="es">Electrodo</name>
-        <name lang="pt">Eléctrodo</name>
+        <name lang="cs">Elektroda</name>
     </names>
     <informations></informations>
     <description>

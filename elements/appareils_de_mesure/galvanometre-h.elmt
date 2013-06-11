@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">جلفانومتر أفقي</name>
         <name lang="de">Galvanometer h</name>
+        <name lang="pt">Galvanómetro horizontal</name>
+        <name lang="el">Γαλβανόμετρο οριζόντιο</name>
         <name lang="en">Galvanometer h</name>
         <name lang="it">Galvanometro orizzontale</name>
         <name lang="fr">Galvanomètre horizontal</name>
         <name lang="pl">Galwanomert (poziomo)</name>
-        <name lang="cs">Galvanometr, vodorovný</name>
         <name lang="es">Galvanómetro horizontal</name>
-        <name lang="pt">Galvanómetro horizontal</name>
+        <name lang="cs">Galvanometr, vodorovný</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">جلفانومتر عمودي</name>
         <name lang="de">Galvanometer v</name>
+        <name lang="pt">Galvanómetro vertical</name>
+        <name lang="el">Γαλβανόμετρο κατακόρυφο</name>
         <name lang="en">galvanometer v</name>
         <name lang="it">Galvanometro verticale</name>
         <name lang="fr">Galvanomètre vertical</name>
         <name lang="pl">Galwanometr (pionowo)</name>
-        <name lang="cs">Galvanometr, svislý</name>
         <name lang="es">Galvanómetro vertical</name>
-        <name lang="pt">Galvanómetro vertical</name>
+        <name lang="cs">Galvanometr, svislý</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

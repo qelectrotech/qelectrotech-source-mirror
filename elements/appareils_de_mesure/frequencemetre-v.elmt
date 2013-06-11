@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">مقياس تردد عمودي</name>
         <name lang="de">Frequenzmeßgerät, anzeigend v</name>
+        <name lang="pt">Frequenciómetro vertical</name>
+        <name lang="el">Συχνόμετρο κατακόρυφο</name>
         <name lang="en">Frequency meter v</name>
         <name lang="it">Frequenzimetro verticale</name>
         <name lang="fr">Fréquencemètre vertical</name>
         <name lang="pl">Częstotliwościomierz (pionowo)</name>
-        <name lang="cs">Měřič kmitočtu, svislý</name>
         <name lang="es">Frecuencímetro vertical</name>
-        <name lang="pt">Frequenciómetro vertical</name>
+        <name lang="cs">Měřič kmitočtu, svislý</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

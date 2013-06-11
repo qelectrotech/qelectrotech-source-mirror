@@ -1,13 +1,14 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="30" type="element" orientation="dnnn">
     <names>
         <name lang="ar">محوّل ضغط / تيّار</name>
+        <name lang="pt">Conversor de pressão</name>
+        <name lang="el">Μετατροπέας πίεσης / ισχύος</name>
         <name lang="en">Pressure converter / power</name>
+        <name lang="it">Convertitore pressione/corrente</name>
         <name lang="fr">Convertisseur pression/courant</name>
         <name lang="pl">Przetwornik ciśnienia</name>
-        <name lang="cs">Tlakově-elektrický převodník</name>
         <name lang="es">Convertidor de presión/power</name>
-        <name lang="pt">Conversor de pressão</name>
-        <name lang="it">Convertitore pressione/corrente</name>
+        <name lang="cs">Tlakově-elektrický převodník</name>
     </names>
     <informations></informations>
     <description>

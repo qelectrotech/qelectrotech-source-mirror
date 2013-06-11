@@ -1,10 +1,11 @@
 <definition width="770" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
     <names>
+        <name lang="el">Κάρτα εξόδων (8 έξοδοι)</name>
         <name lang="en">Data outputs (8 outputs)</name>
+        <name lang="it">Scheda universale (8 uscite)</name>
         <name lang="fr">Carte universelle - 8 sorties</name>
         <name lang="pl">Karta wyjść (8 wyjść)</name>
         <name lang="cs">Datové výstupy (8 výstupů)</name>
-        <name lang="it">Scheda universale (8 uscite)</name>
     </names>
     <informations></informations>
     <description>

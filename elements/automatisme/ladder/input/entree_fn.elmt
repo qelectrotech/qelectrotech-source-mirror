@@ -4,6 +4,7 @@
         <name lang="de">Eingang (fallende Flanke)</name>
         <name lang="ru">Вход (задний фронт)</name>
         <name lang="pt">Entrada (descendente)</name>
+        <name lang="el">Είσοδος (αρνητικός παλμός)</name>
         <name lang="en">Input (down front)</name>
         <name lang="it">Ingresso (fronte discendente)</name>
         <name lang="fr">Entrée (front descendant)</name>

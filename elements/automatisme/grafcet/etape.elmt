@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">خطوة</name>
         <name lang="de">Schritt</name>
+        <name lang="pt">Etapa</name>
+        <name lang="el">Βήμα</name>
         <name lang="en">Step</name>
+        <name lang="it">Passo</name>
         <name lang="fr">Etape</name>
         <name lang="pl">Krok</name>
-        <name lang="cs">Krok</name>
         <name lang="es">Etapa</name>
-        <name lang="pt">Etapa</name>
-        <name lang="it">Passo</name>
+        <name lang="cs">Krok</name>
     </names>
     <informations></informations>
     <description>

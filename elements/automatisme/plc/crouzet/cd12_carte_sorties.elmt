@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">لوحة مخارج CD12</name>
         <name lang="de">CD12 Ausgangskarte</name>
+        <name lang="pt">Carta de saídas CD12</name>
+        <name lang="el">Κάρτα εξόδων CD12</name>
         <name lang="en">CD12 output board</name>
+        <name lang="it">Scheda uscite CD12</name>
         <name lang="fr">CD12 carte sorties</name>
         <name lang="pl">Karta wyjść CD12</name>
-        <name lang="cs">Karta CD12 výstupy</name>
-        <name lang="pt">Carta de saídas CD12</name>
         <name lang="es">CD12 tarjeta de salida</name>
-        <name lang="it">Scheda uscite CD12</name>
+        <name lang="cs">Karta CD12 výstupy</name>
     </names>
     <informations></informations>
     <description>

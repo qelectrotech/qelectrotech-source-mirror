@@ -4,12 +4,13 @@
         <name lang="de">Ausgang</name>
         <name lang="ru">Выход</name>
         <name lang="pt">Saída</name>
+        <name lang="el">Έξοδος</name>
         <name lang="en">Output</name>
         <name lang="it">Uscita</name>
         <name lang="fr">Sortie</name>
         <name lang="pl">Wyjście</name>
-        <name lang="cs">Výstup</name>
         <name lang="es">Salida</name>
+        <name lang="cs">Výstup</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

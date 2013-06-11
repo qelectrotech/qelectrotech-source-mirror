@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">ثنائي حراري</name>
         <name lang="de">Thermoelement</name>
+        <name lang="pt">Termopar</name>
+        <name lang="el">Θερμοστοιχείο</name>
         <name lang="en">Thermocouple</name>
         <name lang="it">Termocoppia</name>
         <name lang="fr">Thermocouple</name>
         <name lang="pl">Termopara</name>
-        <name lang="cs">Termočlánek</name>
         <name lang="es">Termopar</name>
-        <name lang="pt">Termopar</name>
+        <name lang="cs">Termočlánek</name>
     </names>
     <informations>EN 60617: 08-06-01</informations>
     <description>

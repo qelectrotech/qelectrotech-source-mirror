@@ -4,6 +4,7 @@
         <name lang="de">Eingang (steigende Flanke)</name>
         <name lang="ru">Вход (передний фронт)</name>
         <name lang="pt">Entrada (ascendente)</name>
+        <name lang="el">Είσοδος (θετικός παλμός)</name>
         <name lang="en">Input (up front)</name>
         <name lang="it">Ingresso (fronte ascendente)</name>
         <name lang="fr">Entrée (front montant)</name>

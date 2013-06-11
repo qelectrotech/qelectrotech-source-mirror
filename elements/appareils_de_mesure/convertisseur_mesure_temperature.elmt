@@ -1,13 +1,14 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">محول قياسات</name>
+        <name lang="pt">Conversor de temperatura</name>
+        <name lang="el">Μετατροπέας μέτρησης θερμοκρασίας</name>
         <name lang="en">Measure converter</name>
+        <name lang="it">Convertitore di misura</name>
         <name lang="fr">Convertisseur de mesure</name>
         <name lang="pl">Przetwornik temperatury</name>
-        <name lang="cs">Převodník měření</name>
         <name lang="es">Convertidor de temperatura</name>
-        <name lang="pt">Conversor de temperatura</name>
-        <name lang="it">Convertitore di misura</name>
+        <name lang="cs">Převodník měření</name>
     </names>
     <informations></informations>
     <description>

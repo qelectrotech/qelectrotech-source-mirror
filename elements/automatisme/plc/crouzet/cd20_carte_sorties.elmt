@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">لوحة مخارج CD20</name>
         <name lang="de">CD20 Ausgangskarte</name>
+        <name lang="pt">Carta de saídas CD20</name>
+        <name lang="el">Κάρτα εξόδων CD20</name>
         <name lang="en">CD20 output board</name>
+        <name lang="it">Scheda uscite CD20</name>
         <name lang="fr">CD20 Carte sorties</name>
         <name lang="pl">Karta wyjść CD20</name>
-        <name lang="cs">Karta CD20 výstupy</name>
-        <name lang="pt">Carta de saídas CD20</name>
         <name lang="es">CD20 tarjeta de salida</name>
-        <name lang="it">Scheda uscite CD20</name>
+        <name lang="cs">Karta CD20 výstupy</name>
     </names>
     <informations></informations>
     <description>

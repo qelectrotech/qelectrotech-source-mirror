@@ -1,10 +1,11 @@
 <definition width="770" version="0.3" hotspot_x="15" hotspot_y="35" height="100" type="element" ic="true" orientation="dnnn">
     <names>
+        <name lang="el">Κάρτα εισόδων (8 είσοδοι)</name>
         <name lang="en">Data inputs (8 inputs)</name>
+        <name lang="it">Scheda universale (8 ingressi)</name>
         <name lang="fr">Carte universelle - 8 entres</name>
         <name lang="pl">Karta wejść (8 wejść)</name>
         <name lang="cs">Datové vstupy (8 vstupů)</name>
-        <name lang="it">Scheda universale (8 ingressi)</name>
     </names>
     <informations></informations>
     <description>

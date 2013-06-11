@@ -2,17 +2,18 @@
     <names>
         <name lang="ar">لوحة مداخل CD12</name>
         <name lang="de">CD12 Eingangskarte</name>
+        <name lang="pt">Carta de entradas CD12</name>
+        <name lang="el">Κάρτα εισόδων CD 12</name>
         <name lang="en">CD12 input board</name>
+        <name lang="it">Scheda ingressi CD12</name>
         <name lang="fr">CD12 carte entrées</name>
         <name lang="pl">Karta wejść CD12</name>
-        <name lang="cs">Karta CD12 vstupy</name>
-        <name lang="pt">Carta de entradas CD12</name>
         <name lang="es">CD12 tarjeta de entrada</name>
-        <name lang="it">Scheda ingressi CD12</name>
+        <name lang="cs">Karta CD12 vstupy</name>
     </names>
     <informations></informations>
     <description>
-        <text x="125" y="32" size="8" text="CROUZET CD12 Carte entr&#xE9;es"/>
+        <text x="125" y="32" size="8" text="CROUZET CD12 Carte entrées"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="130" y2="0" x2="130"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="190" y2="0" x2="190"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="circle" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="160" y2="0" x2="160"/>

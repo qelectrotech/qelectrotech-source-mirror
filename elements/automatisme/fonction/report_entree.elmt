@@ -3,12 +3,13 @@
         <name lang="ar">إرجاء دخل</name>
         <name lang="de">Eingang Report</name>
         <name lang="pt">Relatório Entrada</name>
+        <name lang="el">Αναφορά εισόδου</name>
         <name lang="en">Input Report</name>
         <name lang="it">Report ingresso</name>
         <name lang="fr">Report Entrée</name>
         <name lang="pl">Wejście adresowe</name>
-        <name lang="cs">Hlášení vstupu</name>
         <name lang="es">Reporte de entrada</name>
+        <name lang="cs">Hlášení vstupu</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
