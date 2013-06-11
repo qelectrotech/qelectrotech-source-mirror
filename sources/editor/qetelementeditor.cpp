@@ -999,6 +999,7 @@ bool QETElementEditor::slot_save() {
 	Demande une localisation a l'utilisateur et enregistre l'element
 */
 bool QETElementEditor::slot_saveAs() {
+	if (!ce_scene -> borderContainsEveryParts()) return(false);
 	// demande une localisation a l'utilisateur
 	ElementsLocation location = ElementDialog::getSaveElementLocation(this);
 	if (location.isNull()) return(false);
@@ -1018,6 +1019,8 @@ bool QETElementEditor::slot_saveAs() {
 	Demande un nom de fichier a l'utilisateur et enregistre l'element
 */
 bool QETElementEditor::slot_saveAsFile() {
+	if (!ce_scene -> borderContainsEveryParts()) return(false);
+
 	// demande un nom de fichier a l'utilisateur pour enregistrer l'element
 	QString fn = QFileDialog::getSaveFileName(
 		this,
