@@ -977,7 +977,8 @@ void QETElementEditor::slot_reload() {
 bool QETElementEditor::slot_save() {
 	// verification avant d'enregistrer le fichier
 	checkElement();
-	
+	// Avertissement #1 : si les parties semblent deborder du cadre de l'element
+	if (!ce_scene -> borderContainsEveryParts()) return(false);
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (opened_from_file) {
 		if (filename_.isEmpty()) return(slot_saveAsFile());
