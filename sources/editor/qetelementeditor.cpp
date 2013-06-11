@@ -452,6 +452,7 @@ void QETElementEditor::slot_updateMenus() {
 	save            -> setEnabled(!read_only && !ce_scene -> undoStack().isClean() && ce_scene -> borderContainsEveryParts());
 	save_as -> setEnabled(ce_scene -> borderContainsEveryParts());
 	save_as_file -> setEnabled(ce_scene -> borderContainsEveryParts());
+	if (!ce_scene -> borderContainsEveryParts()) checkElement();
 	undo            -> setEnabled(!read_only && ce_scene -> undoStack().canUndo());
 	redo            -> setEnabled(!read_only && ce_scene -> undoStack().canRedo());
 }
