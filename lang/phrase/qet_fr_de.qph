@@ -68,4 +68,8 @@
     <source>Erreur</source>
     <target>Fehler</target>
 </phrase>
+<phrase>
+    <source>Aperçu</source>
+    <target>Vorschau</target>
+</phrase>
 </QPH>
