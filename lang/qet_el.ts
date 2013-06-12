@@ -408,7 +408,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation>  :είναι αυτό </translation>
+        <translation>  : αυτό υπάρχει </translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
@@ -4209,7 +4209,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
-        <translation>Λείπει το τερματικό</translation>
+        <translation>Απουσία ακροδέκτη</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>

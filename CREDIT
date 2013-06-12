@@ -25,12 +25,6 @@ Thanks to Antun Marakovic for his translations Croatian
 Thanks to Nikos Papadopoylos && Yannis Gyftomitros their Greek translations
 Thanks to Markos Chandras for Gentoo packaging.
 
-
-
-
-
-
-
 [fr]
 Merci à Qt Software pour la bibliothèque Qt ( http://www.qtsoftware.com/ ), sous licence GNU/GPL.
 Merci à Everaldo Coelho pour le thème d'icônes Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject ) sous licence LGPL.
@@ -57,10 +51,6 @@ Merci à Uroš Platiše pour ses traductions en Slovene
 Merci à Antun Marakovic pour ses traductions Croate
 Merci à Nikos Papadopoylos && Yannis Gyftomitros pour leurs traductions en grec
 Merci à Markos Chandras pour les paquets Gentoo
-
-
-
-
 
 [ru]
 Спасибо Qt Software за их библиотеку Qt ( http://www.qtsoftware.com/ ), лицензированную на условиях GNU/GPL.
@@ -163,3 +153,29 @@ Grazie a Antun Marakovic per la traduzione in croato.
 Grazie a Nikos Papadopoylos e Yannis Gyftomitros per la traduzione in greco.
 Grazie a Markos Chandras per i pacchetti per Gentoo.
 
+[el]
+Ευχαριστίες στην Qt Software για την βιβλιοθήκη Qt ( http://www.qtsoftware.com/ ), αδειοδοτημένο ως GNU/GPL.
+Ευχαριστίες στον Everaldo Coelho για τα εικονίδια του θέματος Crystal SVG ( http://www.iconfinder.com/iconsets/crystalproject) αδειοδοτημένο ως LGPL.
+Ευχαριστίες to Nuno Pinheiro για τα εικονίδια του θέματος Oxygen ( http://www.oxygen-icons.org/ ) αδειοδοτημένο ως LGPL και επίσης για τα εικονίδια ειδικά για το QElectroTech.
+Ευχαριστίες στο έργο KDE ( http://www.kde.org/ ).
+Ευχαριστίες στον Loic για τις εξηγήσεις σχετικές με μαθηματικά.
+Ευχαριστίες στον Remi Collet για τα πακέτα Fedora.
+Ευχαριστίες στον Laurent Trinques για τα πακέτα Debian.
+Ευχαριστίες στον `trem' για τα πακέτα Mandriva.
+Ευχαριστίες στο TuxFamily ( http://tuxfamily.org/ ) για τη φιλοξενία του έργου.
+Ευχαριστίες στον `Nishiki' για τα στοιχεία και την υποστήριξη του.
+Ευχαριστίες στο qtcentre.org για την κλάση SingleApplication.
+Ευχαριστίες στον Alfredo Carreto για τις μεταφράσεις του και για την επισκευή της Ισπανικής μετάφρασης ( http://electronicosmx.comxa.com )
+Ευχαριστίες στον 'Dr.Slump' και τον Sivio για τις μεταφράσεις τους στα Ιταλικά
+Ευχαριστίες στον Jose Carlos Martins για την μετάφραση στα Πορτογαλικά
+Ευχαριστίες στον Pavel Fric Για την μετάφραση στα Τσέχικα
+Ευχαριστίες στον Pawel Smiech για την Πολωνική μετάφραση
+Ευχαριστίες στον Yuriy Litkevich για τις μεταφράσεις του στα Ρώσικα
+Ευχαριστίες στον Youssef Ouamalkran για τις μεταφράσεις του στα Καταλανικά
+Ευχαριστίες στον Gabi Mandoc για τις μεταφράσεις του στα Ρουμανικά
+Ευχαριστίες στους Markus Budde  και Jonas Stein για τις μεταφράσεις τους στα Γερμανικά
+Ευχαριστίες στον Mohamed Souabni για τις μεταφράσεις του στα Αραβικά
+Ευχαριστίες στον Uroš Platiše για τις μεταφράσεις του στα Σλοβένικα
+Ευχαριστίες στον Antun Marakovic για τις μεταφράσεις του στα Κροατικά
+Ευχαριστίες στους Νίκο Παπαδόπουλο και Γιάννη Γυφτομήτρο για τις μεταφράσεις τους στα Ελληνικά
+Ευχαριστίες στον Markos Chandras για τα πακέτα Gentoo.
