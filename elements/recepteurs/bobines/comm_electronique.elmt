@@ -1,10 +1,11 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="el">Ηλεκτρονικό ρελέ</name>
         <name lang="en">Electronic relay</name>
+        <name lang="it">Relè a comando elettronico</name>
         <name lang="fr">Relais électronique</name>
         <name lang="pl">Przekaźnik elektroniczny</name>
         <name lang="cs">Elektronické relé</name>
-        <name lang="it">Relè a comando elettronico</name>
     </names>
     <informations>License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
     <description>

@@ -1,12 +1,13 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس سعوي ب 3 أطراف (NC)</name>
+        <name lang="el">Χωρητικός αισθητήρας κλειστή επαφή 3 ακρ</name>
         <name lang="en">Capacitive sensor 3 terminals NC</name>
+        <name lang="it">Sensore capacitivo a 3 terminali NC</name>
         <name lang="fr">Capteur capacitif NF</name>
         <name lang="pl">Czujnik pojemnościowy trójprzewodowy, rozwierny</name>
-        <name lang="cs">Kapacitní čidlo se třemi svorkami NC</name>
         <name lang="es">Sensor capacitivo 3 terminales NC</name>
-        <name lang="it">Sensore capacitivo a 3 terminali NC</name>
+        <name lang="cs">Kapacitní čidlo se třemi svorkami NC</name>
     </names>
     <informations></informations>
     <description>

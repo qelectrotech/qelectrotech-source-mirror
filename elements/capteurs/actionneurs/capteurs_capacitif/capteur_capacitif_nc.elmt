@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">حساس سعوي NC</name>
         <name lang="de">Kapazitiver Sensor NC</name>
+        <name lang="el">Χωρητικός αισθητήρας κλειστή επαφή (NC)</name>
         <name lang="en">Capacitive sensor NC</name>
+        <name lang="it">Sensore capacitivo NC</name>
         <name lang="fr">Capteur capacitif NC</name>
         <name lang="pl">Czujnik pojenmościowy rozwierny</name>
         <name lang="es">Sensor capacitivo NC</name>
         <name lang="cs">Kapacitní čidlo NC</name>
-        <name lang="it">Sensore capacitivo NC</name>
     </names>
     <informations></informations>
     <description>

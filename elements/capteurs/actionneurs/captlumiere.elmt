@@ -1,12 +1,13 @@
 <definition width="60" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" orientation="dnny">
     <names>
         <name lang="ar">حساس إضاءة</name>
+        <name lang="el">Αισθητήρας φωτεινότητας</name>
         <name lang="en">Brightness sensor</name>
+        <name lang="it">Sensore di luminosità</name>
         <name lang="fr">Capteur luminosité</name>
         <name lang="pl">Łącznik zmierzchowy</name>
         <name lang="es">Sensor de luz</name>
         <name lang="cs">Světelné čidlo</name>
-        <name lang="it">Sensore di luminosità</name>
     </names>
     <informations></informations>
     <description>

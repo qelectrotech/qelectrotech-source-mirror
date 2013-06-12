@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="25" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">مُحوّل ذاتي أحادي الوجه</name>
+        <name lang="el">Αυτομετασχηματιστής μονοφασικός</name>
         <name lang="en">Single phase autotransducer</name>
+        <name lang="it">Autotrasformatore monofase</name>
         <name lang="fr">Autotransformateur monophasé</name>
         <name lang="pl">Autotransformator jednofazowy</name>
         <name lang="cs">Jednofázový autotransformátor</name>
-        <name lang="it">Autotrasformatore monofase</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

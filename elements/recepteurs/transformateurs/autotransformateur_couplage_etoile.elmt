@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="80" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">مُحوّل ذاتي ربط نجمي Y</name>
+        <name lang="el">Αυτομετασχηματιστής, σύνδεση αστέρα τριφασική</name>
         <name lang="en">Auto-transformer, connection star three-phase</name>
         <name lang="it">Autotrasformatore trifase, collegamento a stella</name>
         <name lang="fr">Autotransformateur couplage étoile</name>

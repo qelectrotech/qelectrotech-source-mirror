@@ -1,9 +1,10 @@
 <definition width="120" version="0.3" hotspot_x="45" hotspot_y="30" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Αισθητήρας ροής</name>
         <name lang="en">Flow sensor</name>
+        <name lang="it">Sensore di flusso</name>
         <name lang="fr">Capteur Debit</name>
         <name lang="pl">Czujnik przepływu</name>
-	<name lang="it">Sensore di flusso</name>
         <name lang="cs">Průtokové čidlo</name>
     </names>
     <informations></informations>

@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">حسّاس سعوي ب 4 أطراف</name>
         <name lang="de">Kapazitiver Sensor 4-Leiter</name>
+        <name lang="el">Χωρητικός αισθητήρας 4 ακρ</name>
         <name lang="en">Capacitive sensor 4 terminals</name>
+        <name lang="it">Sensore capacitivo a 4 terminali</name>
         <name lang="fr">Capteur capacitif 4 bornes</name>
         <name lang="pl">Czujnik pojemnościowy czteroprzewodowy</name>
-        <name lang="cs">Kapacitní čidlo se čtyřmi svorkami</name>
         <name lang="es">Sensor capacitivo 4 terminales</name>
-        <name lang="it">Sensore capacitivo a 4 terminali</name>
+        <name lang="cs">Kapacitní čidlo se čtyřmi svorkami</name>
     </names>
     <informations></informations>
     <description>

@@ -3463,7 +3463,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="101"/>
         <source>Ce panneau liste les différentes actions effectuées sur le schéma courant. Cliquer sur une action permet de revenir à l&apos;état du schéma juste après son application.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation>Αυτό το πλαίσιο εμφανίζει τις διάφορες αλλαγές που εφαρμόστηκαν στο  τρέχον διάγραμμα. Πατώντας σε μια αλλαγή επαναφέρει το διάγραμμα στην κατάσταση που ήταν ακριβώς μετά την εφαρμογή της.</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="192"/>

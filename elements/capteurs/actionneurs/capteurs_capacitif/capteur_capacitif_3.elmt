@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">حسّاس سعوي ب 3 أطراف</name>
         <name lang="de">Kapazitiver Sensor 3-Leiter</name>
+        <name lang="el">Χωρητικός αισθητήρας 3 ακρ</name>
         <name lang="en">Capacitive sensor 3 terminals</name>
+        <name lang="it">Sensore capacitivo a 3 terminali</name>
         <name lang="fr">Capteur capacitif 3 bornes</name>
         <name lang="pl">Czujnik pojemnościowy trójprzewodowy</name>
-        <name lang="cs">Kapacitní čidlo se třemi svorkami</name>
         <name lang="es">Sensor capacitivo 3 terminales</name>
-        <name lang="it">Sensore capacitivo a 3 terminali</name>
+        <name lang="cs">Kapacitní čidlo se třemi svorkami</name>
     </names>
     <informations></informations>
     <description>
