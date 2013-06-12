@@ -165,6 +165,7 @@ QWidget *AboutQET::contributorsTab() const {
 	addAuthor(contributors, "Remi Collet",         "remi@fedoraproject.org",      tr("Paquets Fedora et Red Hat"));
 	addAuthor(contributors, "Trem",                "trem@mandriva.org",           tr("Paquets Mandriva"));
 	addAuthor(contributors, "Laurent Trinques",    "scorpio@qelectrotech.org",    tr("Paquets Debian"));
+	addAuthor(contributors, "Markos Chandras",     "hwoarang@gentoo.org.",        tr("Paquets gentoo"));
 	addAuthor(contributors, "Nuno Pinheiro",       "nuno@nuno-icons.com",         tr("Ic\364nes"));
 
 	
