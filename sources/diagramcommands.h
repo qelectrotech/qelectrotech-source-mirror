@@ -353,6 +353,7 @@ class RotateTextsCommand : public QUndoCommand {
 	QHash<DiagramTextItem *, double> texts_to_rotate;
 	/// angle of rotation of all text items after the command
 	double applied_rotation_angle_;
+	bool previous_rotate_by_user_;
 };
 
 /**
