@@ -226,6 +226,7 @@ FolioNum::FolioNum (Diagram *d):
  * @return the represented string of num
  */
 QString FolioNum::toRepresentedString(const QString str) const {
+	Q_UNUSED(str);
 	return (QString::number(diagram_ -> folioIndex() + 1));
 }
 
