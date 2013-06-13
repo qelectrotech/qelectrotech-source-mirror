@@ -950,7 +950,10 @@ bool Conductor::fromXml(QDomElement &e) {
 		text_item -> forceMovedByUser(true);
 		text_item -> setPos(user_pos_x, user_pos_y);
 	}
-	text_item -> setRotationAngle(e.attribute("rotation").toDouble());
+	if (e.hasAttribute("rotation")) {
+		text_item -> setRotationAngle(e.attribute("rotation").toDouble());
+		text_item -> forceRotateByUser(true);
+	}
 	
 	// parcourt les elements XML "segment" et en extrait deux listes de longueurs
 	// les segments non valides sont ignores
@@ -1045,7 +1048,7 @@ QDomElement Conductor::toXml(QDomDocument &d, QHash<Terminal *, int> &table_adr_
 	
 	// exporte la "configuration" du conducteur
 	properties_.toXml(e);
-	if (text_item -> rotationAngle()) {
+	if (text_item -> wasRotateByUser()) {
 		e.setAttribute("rotation", QString("%1").arg(text_item -> rotationAngle()));
 	}
 	if (text_item -> wasMovedByUser()) {
