@@ -3,11 +3,12 @@
         <name lang="ar">مُؤقت</name>
         <name lang="de">Zeitrelais
 </name>
+        <name lang="el">Χρονικό</name>
         <name lang="en">timer</name>
+        <name lang="it">Temporizzatore</name>
         <name lang="fr">Minuterie</name>
         <name lang="pl">Datownik czasu</name>
         <name lang="cs">Časový spínač</name>
-        <name lang="it">Temporizzatore</name>
     </names>
     <informations>EN 60617: 11-14-13</informations>
     <description>

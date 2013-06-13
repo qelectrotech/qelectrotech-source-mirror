@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="10" hotspot_y="15" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مفتاح ثلاثي الأقطاب</name>
+        <name lang="el">Τριπλός διακόπτης</name>
         <name lang="en">???</name>
+        <name lang="it">Interruttore tripolare</name>
         <name lang="fr">Interrupteur tripolaire</name>
         <name lang="pl">Łącznik trójbiegunowy</name>
         <name lang="cs">Třípólový spínač</name>
-        <name lang="it">Interruttore tripolare</name>
     </names>
     <informations></informations>
     <description>

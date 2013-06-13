@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">غسّالة أواني</name>
+        <name lang="el">Πλυντήριο πιάτων</name>
         <name lang="en">Dishwasher</name>
+        <name lang="it">Lava piatti</name>
         <name lang="fr">Lave vaisselles</name>
         <name lang="pl">Zmywarka</name>
         <name lang="cs">Myčka na nádobí</name>
-        <name lang="it">Lava piatti</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

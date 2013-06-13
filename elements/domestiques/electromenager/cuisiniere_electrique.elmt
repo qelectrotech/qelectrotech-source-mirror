@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">مطبخ كهربائي</name>
+        <name lang="el">Ηλεκτρικό μαγειρείο</name>
         <name lang="en">Electric cooker</name>
+        <name lang="it">Piastra elettrica</name>
         <name lang="fr">Cuisiniere electrique</name>
         <name lang="pl">Kuchenka elektryczna</name>
         <name lang="cs">Elektrický sporák</name>
-        <name lang="it">Piastra elettrica</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

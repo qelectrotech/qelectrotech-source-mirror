@@ -4,12 +4,13 @@
         <name lang="de">Sicherheitsleuchte mit eingebauter
 Stromversorgung
 </name>
+        <name lang="el">Αυτόνομο φωτιστικό ασφαλείας</name>
         <name lang="en">Self-containned emmergency lighting luminaire</name>
+        <name lang="it">Apparecchio autonomo per illuminazione di emergenza</name>
         <name lang="fr">Bloc autonome d'éclairage de sécurité
 </name>
         <name lang="pl">Oświetlenie ewakuacyjne autonomiczne</name>
         <name lang="cs">Bezpečnostní světla se zabudovanou dodávkou elektrického proudu</name>
-        <name lang="it">Apparecchio autonomo per illuminazione di emergenza</name>
     </names>
     <informations>EN 60617: 11-15-12</informations>
     <description>

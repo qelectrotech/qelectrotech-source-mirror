@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">جهاز كهرومنزلي</name>
+        <name lang="el">Ηλεκτρική συσκευή</name>
         <name lang="en">Appliance</name>
+        <name lang="it">Apparecchio elettrico</name>
         <name lang="fr">Appareil électroménager</name>
         <name lang="pl">Kuchenka elektryczna</name>
         <name lang="cs">Elektrický spotřebič</name>
-        <name lang="it">Apparecchio elettrico</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -3,12 +3,13 @@
         <name lang="ar">مصباح</name>
         <name lang="ru">Лампа</name>
         <name lang="pt">Lâmpada</name>
+        <name lang="el">Λάμπα</name>
         <name lang="en">Light</name>
+        <name lang="it">Lampada</name>
         <name lang="fr">Lampe</name>
         <name lang="pl">Lampa</name>
         <name lang="es">Lámpara</name>
         <name lang="cs">Světlo</name>
-        <name lang="it">Lampada</name>
     </names>
     <informations>EN 60617: 11-15-03&#xd;
 </informations>

@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">ثلاّجة بجزء للتجميد</name>
+        <name lang="el">Ψυγειοκαταψύκτης</name>
         <name lang="en">Refrigerator with freezer</name>
+        <name lang="it">Frigorifero / congelatore</name>
         <name lang="fr">Réfrigérateur avec partie congélateur</name>
         <name lang="pl">Chłodziarka z zamrażarką</name>
         <name lang="cs">Lednička s mrazákem</name>
-        <name lang="it">Frigorifero / congelatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

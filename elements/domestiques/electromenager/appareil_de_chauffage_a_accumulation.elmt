@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">سخّان بالتراكم</name>
+        <name lang="el">Θερμοσυσσωρευτής</name>
         <name lang="en">Heater has accumulated</name>
+        <name lang="it">Apparecchio di riscaldamento ad accumulo</name>
         <name lang="fr">Appareil de chauffage a accumulation</name>
         <name lang="pl">Grzejnik elektryczny akumulacyjny</name>
         <name lang="cs">Akumulační ohřívač, topné těleso</name>
-        <name lang="it">Apparecchio di riscaldamento ad accumulo</name>
     </names>
     <informations></informations>
     <description>

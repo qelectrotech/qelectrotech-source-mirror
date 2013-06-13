@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">عدّاد طاقة فعّالة - وات ساعة متر -</name>
         <name lang="de">Wattstundenzähler, Elektrizitätszähler</name>
+        <name lang="el">Μετρητής βατ/ώρα</name>
         <name lang="en">Watt hour meter</name>
+        <name lang="it">Misuratore di Wh</name>
         <name lang="fr">Compteur d'énergie active Wattheuremètre</name>
         <name lang="pl">Licznik watogodzin</name>
         <name lang="cs">Počítadlo watthodin</name>
-        <name lang="it">Misuratore di Wh</name>
     </names>
     <informations>EN 60617: 08-04-03</informations>
     <description>

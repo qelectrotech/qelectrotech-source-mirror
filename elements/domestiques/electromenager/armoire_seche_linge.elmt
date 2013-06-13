@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">مُجفّف ملابس</name>
+        <name lang="el">Στεγνωτήριο</name>
         <name lang="en">Drying cabinet</name>
+        <name lang="it">Asciugatrice</name>
         <name lang="fr">Armoire sèche-linge</name>
         <name lang="pl">Suszarka</name>
         <name lang="cs">Sušička, sušící skříň</name>
-        <name lang="it">Asciugatrice</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

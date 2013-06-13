@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">مُجمّد</name>
+        <name lang="el">Καταψύκτης</name>
         <name lang="en">Freezer</name>
+        <name lang="it">Congelatore</name>
         <name lang="fr">Congélateur</name>
         <name lang="pl">Zamrażarka</name>
         <name lang="cs">Mraznička, mrazák, mrazicí skříň</name>
-        <name lang="it">Congelatore</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

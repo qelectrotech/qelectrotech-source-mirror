@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">فرن ميكرو موجي</name>
+        <name lang="el">Φούρνος μικροκυμάτων</name>
         <name lang="en">Microwave oven</name>
+        <name lang="it">Forno micro-onde</name>
         <name lang="fr">Four à micro-ondes</name>
         <name lang="pl">Kuchenka mikrofalowa</name>
         <name lang="cs">Mikrovlnná trouba</name>
-        <name lang="it">Forno micro-onde</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
