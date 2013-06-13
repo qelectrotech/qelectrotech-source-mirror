@@ -452,7 +452,6 @@ void QETElementEditor::slot_updateMenus() {
 	save            -> setEnabled(!read_only && !ce_scene -> undoStack().isClean() && ce_scene -> borderContainsEveryParts());
 	save_as -> setEnabled(ce_scene -> borderContainsEveryParts());
 	save_as_file -> setEnabled(ce_scene -> borderContainsEveryParts());
-	if (!ce_scene -> borderContainsEveryParts()) checkElement();
 	undo            -> setEnabled(!read_only && ce_scene -> undoStack().canUndo());
 	redo            -> setEnabled(!read_only && ce_scene -> undoStack().canRedo());
 }
@@ -980,7 +979,11 @@ void QETElementEditor::slot_reload() {
 bool QETElementEditor::slot_save() {
 	// verification avant d'enregistrer le fichier
 	checkElement();
-	
+	// Avertissement #1 : si les parties semblent deborder du cadre de l'element
+	if (!ce_scene -> borderContainsEveryParts()) {
+		tr("Dimensions de l'\351l\351ment", "warning title");
+	return(false);
+	}
 	// si on ne connait pas le nom du fichier en cours, enregistrer revient a enregistrer sous
 	if (opened_from_file) {
 		if (filename_.isEmpty()) return(slot_saveAsFile());
@@ -1001,6 +1004,12 @@ bool QETElementEditor::slot_save() {
 	Demande une localisation a l'utilisateur et enregistre l'element
 */
 bool QETElementEditor::slot_saveAs() {
+	// verification avant d'enregistrer le fichier
+	checkElement();
+	if (!ce_scene -> borderContainsEveryParts()) {
+		tr("Dimensions de l'\351l\351ment", "warning title");
+	 return(false);
+	}
 	// demande une localisation a l'utilisateur
 	ElementsLocation location = ElementDialog::getSaveElementLocation(this);
 	if (location.isNull()) return(false);
@@ -1020,6 +1029,12 @@ bool QETElementEditor::slot_saveAs() {
 	Demande un nom de fichier a l'utilisateur et enregistre l'element
 */
 bool QETElementEditor::slot_saveAsFile() {
+	// verification avant d'enregistrer le fichier
+		checkElement();
+		if (!ce_scene -> borderContainsEveryParts()) {
+			tr("Dimensions de l'\351l\351ment", "warning title");
+			return(false);
+	}
 	// demande un nom de fichier a l'utilisateur pour enregistrer l'element
 	QString fn = QFileDialog::getSaveFileName(
 		this,
