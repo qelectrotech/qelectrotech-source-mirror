@@ -1,9 +1,10 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُقاومة مُتغيّرة</name>
         <name lang="de">Widerstand</name>
         <name lang="ru">Резистор</name>
         <name lang="pt">Resistência</name>
+        <name lang="el">Αντίσταση</name>
         <name lang="en">Resistor</name>
         <name lang="it">Resistore</name>
         <name lang="fr">Résistance</name>

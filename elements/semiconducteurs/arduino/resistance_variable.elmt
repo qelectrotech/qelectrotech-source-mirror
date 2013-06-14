@@ -1,10 +1,11 @@
 <definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Μεταβλητή αντίσταση</name>
         <name lang="en">Adjustable resistance</name>
+        <name lang="it">Resistenza variabile 10k</name>
         <name lang="fr">Potar</name>
         <name lang="pl">Rezystor regulacyjny 10k</name>
         <name lang="cs">Rezistor regulační 10k</name>
-        <name lang="it">Resistenza variabile 10k</name>
     </names>
     <informations>ezza</informations>
     <description>

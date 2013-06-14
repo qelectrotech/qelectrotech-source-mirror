@@ -1,9 +1,10 @@
-<definition width="40" version="0.3" hotspot_x="30" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح نهاية مشوار (NO)  بحدبة دورانية</name>
         <name lang="de">Grenzschalter</name>
         <name lang="ru">Концевой контакт (НР)</name>
         <name lang="pt">Fim de curso (NO)</name>
+        <name lang="el">Τερματικό, Ανοικτό</name>
         <name lang="en">Limit</name>
         <name lang="it">Finecorsa (NA)</name>
         <name lang="fr">Fin de course came (no)</name>

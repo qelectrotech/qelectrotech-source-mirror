@@ -1,12 +1,13 @@
-<definition width="80" version="0.3" hotspot_x="40" hotspot_y="110" height="220" type="element" orientation="ydyy">
+<definition width="80" version="0.3" hotspot_x="40" hotspot_y="110" height="230" type="element" orientation="ydyy">
     <names>
         <name lang="ar">دائرة مدمجة 20 دبوس</name>
         <name lang="de">Integrierte Schaltung, 20 Pin</name>
+        <name lang="el">Ολοκληρωμένο κύκλωμα 20 ακροδεκτών</name>
         <name lang="en">Integrated Circuit, 20 pins</name>
+        <name lang="it">Circuito integrato, 20 pin</name>
         <name lang="fr">Circuit integré 20 broches </name>
         <name lang="pl">Układ scalony, 20 nóżek</name>
         <name lang="cs">Integrovaný obvod, 20 kolíků</name>
-        <name lang="it">Circuito integrato, 20 pin</name>
     </names>
     <informations></informations>
     <description>

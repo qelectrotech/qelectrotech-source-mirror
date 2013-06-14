@@ -1,11 +1,12 @@
 <definition width="160" version="0.3" hotspot_x="60" hotspot_y="45" height="90" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قنطرة قرايتز</name>
+        <name lang="el">Γέφυρα Graetz</name>
         <name lang="en">Graetz bridge</name>
+        <name lang="it">Ponte di Graetz</name>
         <name lang="fr">Pont de Graetz</name>
         <name lang="pl">Mostek Graetz`a</name>
         <name lang="cs">Graetzův most</name>
-        <name lang="it">Ponte di Graetz</name>
     </names>
     <informations></informations>
     <description>

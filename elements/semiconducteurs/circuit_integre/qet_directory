@@ -1,11 +1,12 @@
 <qet-directory>
     <names>
+        <name lang="ar">دوائر مدمجة</name>
+        <name lang="cs">Integrované obvody</name>
         <name lang="de">Integrierte Schaltungen</name>
+        <name lang="el">Ολοκληρωμένα κυκλώματα</name>
         <name lang="en">Integrated Circuits</name>
         <name lang="fr">Circuits integrés</name>
-        <name lang="ar">دوائر مدمجة</name>
-        <name lang="pl">Układy scalone</name>
-        <name lang="cs">Integrované obvody</name>
         <name lang="it">Circuiti integrati</name>
+        <name lang="pl">Układy scalone</name>
     </names>
 </qet-directory>

@@ -1,9 +1,10 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="12" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مثلامس مرحل حراري (NO)</name>
         <name lang="de">Relais Kontakt (NO)</name>
         <name lang="ru">Контакт теплового реле (НР)</name>
         <name lang="pt">Contacto relé térmico (NO)</name>
+        <name lang="el">Επαφή θερμικού ανοικτή</name>
         <name lang="en">Contact thermal relay (NO)</name>
         <name lang="it">Contatto relè termico (NA)</name>
         <name lang="fr">Contact relais thermique (NO)</name>

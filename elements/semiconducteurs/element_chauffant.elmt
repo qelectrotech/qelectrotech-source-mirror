@@ -3,12 +3,13 @@
         <name lang="ar">عنصر تسخين</name>
         <name lang="de">Heizelement
 </name>
+        <name lang="el">Θερμαντικό στοιχείο</name>
         <name lang="en">Heating element</name>
+        <name lang="it">Riscaldatore</name>
         <name lang="fr">Elément chauffant
 </name>
         <name lang="pl">Grzejnik</name>
         <name lang="cs">Topný článek</name>
-        <name lang="it">Riscaldatore</name>
     </names>
     <informations>EN 60617 : 04-01-12</informations>
     <description>

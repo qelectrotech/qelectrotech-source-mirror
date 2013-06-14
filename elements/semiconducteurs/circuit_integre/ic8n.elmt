@@ -1,12 +1,13 @@
-<definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="100" type="element" orientation="ydyy">
+<definition width="80" version="0.3" hotspot_x="40" hotspot_y="50" height="110" type="element" orientation="ydyy">
     <names>
         <name lang="ar">دائرة مثدمجة 8 دبابيس, مُرقّمة</name>
         <name lang="de">Integrierte Schaltung, 8 Pin, nummeriert</name>
+        <name lang="el">Ολοκληρωμένο κύκλωμα 8 ακροδεκτών, αριθμημένο</name>
         <name lang="en">Integrated Circuit, 8 pins, numbered</name>
+        <name lang="it">Circuito integrato, 8 pin numerati</name>
         <name lang="fr">Circuit integré 8 broches, numerotées</name>
         <name lang="pl">Układ scalony, 8 nóżek (ponumerowany)</name>
         <name lang="cs">Integrovaný obvod, 8 očíslovaných kolíků</name>
-        <name lang="it">Circuito integrato, 8 pin numerati</name>
     </names>
     <informations></informations>
     <description>

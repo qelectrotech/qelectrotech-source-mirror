@@ -1,14 +1,15 @@
-<definition width="30" version="0.3" hotspot_x="25" hotspot_y="20" height="40" type="element" ic="true" orientation="dnyn">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="35" height="70" type="element" ic="true" orientation="dnyn">
     <names>
         <name lang="ar">مُلامس NO-NC</name>
         <name lang="de">Wechselkontakt (NO/NC)</name>
         <name lang="ru">Проктой контакт (НР)</name>
+        <name lang="el">Απλή μεταγωγική επαφή</name>
         <name lang="en">Simple contact</name>
+        <name lang="it">Contatto semplice (NC/NO)</name>
         <name lang="fr">Contact NO - NC</name>
         <name lang="pl">Zestyk przełączny przerwowy</name>
         <name lang="es">Contacto simple</name>
         <name lang="cs">Jednoduchý kontakt</name>
-        <name lang="it">Contatto semplice (NC/NO)</name>
     </names>
     <informations></informations>
     <description>

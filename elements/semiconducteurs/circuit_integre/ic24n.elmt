@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">دائرة مُدمجة 24 دبوس</name>
         <name lang="de">Integrierte Schaltung, 24 Pin, nummeriert</name>
+        <name lang="el">Ολοκληρωμένο κύκλωμα 24 ακροδεκτών, αριθμημένο</name>
         <name lang="en">Integrated Circuit, 24 pins, numbered</name>
+        <name lang="it">Circuito integrato, 24 pin numerati</name>
         <name lang="fr">Circuit integré 24 broches, numerotées</name>
         <name lang="pl">Układ scalony, 24 nóżki (ponumerowany)</name>
         <name lang="cs">Integrovaný obvod, 24 očíslovaných kolíků</name>
-        <name lang="it">Circuito integrato, 24 pin numerati</name>
     </names>
     <informations></informations>
     <description>

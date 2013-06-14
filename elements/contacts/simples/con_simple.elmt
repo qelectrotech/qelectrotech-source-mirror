@@ -1,9 +1,10 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُلامس بسيط (NO)</name>
         <name lang="de">Kontakt Einfach</name>
         <name lang="ru">Проктой контакт (НР)</name>
         <name lang="pt">Contacto simples (NO)</name>
+        <name lang="el">Απλή επαφή, ανοικτή</name>
         <name lang="en">Simple contact</name>
         <name lang="it">Contatto semplice (NO)</name>
         <name lang="fr">Contact simple</name>
