@@ -589,13 +589,13 @@ Apply a text to all of these drivers?</translation>
         <location filename="../sources/diagramprintdialog.cpp" line="328"/>
         <source>Fichiers PDF (*.pdf)</source>
         <comment>file filter</comment>
-        <translation>PDF Files (*.pdf)</translation>
+        <translation>Portable Document Format (*.pdf)</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="332"/>
         <source>Fichiers PostScript (*.ps)</source>
         <comment>file filter</comment>
-        <translation>PostScript Files (*.ps)</translation>
+        <translation>PostScript (*.ps)</translation>
     </message>
 </context>
 <context>

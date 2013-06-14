@@ -395,23 +395,23 @@ Verbindungen gleichen Potentials anwenden?</translation>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="26"/>
         <source>Les textes de ce potentiel électrique ne sont pas identiques.
 Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
-        <translation type="unfinished">Die Potential-Beschriftungen unterscheiden sich. Möchten Sie den neuen Text auf alle 
+        <translation>Die Potential-Beschriftungen unterscheiden sich. Möchten Sie den neuen Text auf alle 
 Verbindungen gleichen Potentials anwenden?</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source>  : est présent </source>
-        <translation type="unfinished"></translation>
+        <translation>: dieser</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="60"/>
         <source> fois.</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeit.</translation>
     </message>
     <message>
         <location filename="../sources/conductorautonumerotationwidget.cpp" line="73"/>
         <source>Autre</source>
-        <translation type="unfinished">Andere</translation>
+        <translation>Andere</translation>
     </message>
 </context>
 <context>
@@ -523,7 +523,7 @@ Verbindungen gleichen Potentials anwenden?</translation>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="125"/>
         <source>Les noms ne peuvent contenir que des lettres minuscules, des chiffres et des tirets.</source>
-        <translation type="unfinished"></translation>
+        <translation>Namen dürfen Kleinbuchstaben, Zahlen und Minuszeichen enthalten.</translation>
     </message>
     <message>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
@@ -535,7 +535,7 @@ Verbindungen gleichen Potentials anwenden?</translation>
         <location filename="../sources/diagramcontextwidget.cpp" line="159"/>
         <source>Valeur</source>
         <comment>table header</comment>
-        <translation type="unfinished"></translation>
+        <translation>Wert</translation>
     </message>
 </context>
 <context>
@@ -544,59 +544,59 @@ Verbindungen gleichen Potentials anwenden?</translation>
         <location filename="../sources/diagramprintdialog.cpp" line="122"/>
         <source>Options d&apos;impression</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Druckoptionen</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="215"/>
         <source>Quel type d&apos;impression désirez-vous effectuer ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Welche Druckvariante wünschen Sie?</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="220"/>
         <source>Impression sur une imprimante physique</source>
         <comment>Print type choice</comment>
-        <translation type="unfinished"></translation>
+        <translation>Auf physischem Drucker ausgeben.</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="221"/>
         <source>Impression vers un fichier au format PDF</source>
         <comment>Print type choice</comment>
-        <translation type="unfinished"></translation>
+        <translation>In PDF Datei drucken</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="222"/>
         <source>Impression vers un fichier au format PostScript (PS)</source>
         <comment>Print type choice</comment>
-        <translation type="unfinished"></translation>
+        <translation>In PostScript (PS) Datei drucken</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="227"/>
         <source>Choix du type d&apos;impression</source>
-        <translation type="unfinished"></translation>
+        <translation>Wahl der Druckausgabe</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="308"/>
         <source>Fichier manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Datei fehlt</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="309"/>
         <source>Vous devez indiquer le chemin du fichier PDF/PS à créer.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Geben Sie den Pfad der zu erzeugenden PDF/PS Datei an.</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="328"/>
         <source>Fichiers PDF (*.pdf)</source>
         <comment>file filter</comment>
-        <translation type="unfinished"></translation>
+        <translation>Portable Document Format (*.pdf)</translation>
     </message>
     <message>
         <location filename="../sources/diagramprintdialog.cpp" line="332"/>
         <source>Fichiers PostScript (*.ps)</source>
         <comment>file filter</comment>
-        <translation type="unfinished"></translation>
+        <translation>PostScript (*.ps)</translation>
     </message>
 </context>
 <context>
@@ -611,13 +611,13 @@ Verbindungen gleichen Potentials anwenden?</translation>
         <location filename="../sources/diagramview.cpp" line="76"/>
         <source>Coller ici</source>
         <comment>context menu action</comment>
-        <translation type="unfinished"></translation>
+        <translation>Hier einfügen</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="188"/>
         <source>Orienter les textes sélectionnés</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Orientierung für marktierten Text auswählen</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="523"/>
@@ -629,123 +629,124 @@ Verbindungen gleichen Potentials anwenden?</translation>
         <location filename="../sources/diagramview.cpp" line="548"/>
         <source>Propriétés du schéma</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan Eigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="874"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished"></translation>
+        <translation>Auswahl Eigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="876"/>
         <source>La sélection contient %1.</source>
         <comment>%1 is a sentence listing the selected objects</comment>
-        <translation type="unfinished"></translation>
+        <translation>Die Auswahl enthält %1.</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="911"/>
         <source>Élément manquant</source>
-        <translation type="unfinished"></translation>
+        <translation>Fehlendes Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="913"/>
         <source>Élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="918"/>
         <source>Nom : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Name: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="921"/>
         <source>Folio : %1
 </source>
-        <translation type="unfinished">Seite: %1</translation>
+        <translation>Seite: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="923"/>
         <source>Position : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Position: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="924"/>
         <source>Dimensions : %1×%2
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Abmessung: %1×%2</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="925"/>
         <source>Bornes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Anschlüsse: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Connexions internes : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Interne Anschlüsse: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Autorisées</source>
-        <translation type="unfinished"></translation>
+        <translation>Erlaubt</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="926"/>
         <source>Interdites</source>
-        <translation type="unfinished"></translation>
+        <translation>Verboten</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="927"/>
         <source>Champs de texte : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Textfelder: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="930"/>
         <source>Emplacement : %1
 </source>
-        <translation type="unfinished"></translation>
+        <translation>Position: %1</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="934"/>
         <source>Propriétés de l&apos;élément sélectionné</source>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschaften des ausgewählten Bauteils</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="935"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished"></translation>
+        <translation>Suche im Panel</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="936"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="998"/>
         <source>Éditer les propriétés d&apos;un conducteur</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Leitereigenschaften bearbeiten</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1017"/>
         <source>Textes de conducteurs</source>
-        <translation type="unfinished"></translation>
+        <translation>Leiterbeschriftung</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1018"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
-        <translation type="unfinished"></translation>
+        <translation>Möchten Sie den neuen Text auf alle 
+Verbindungen dises Potentials anwenden?</translation>
     </message>
     <message>
         <location filename="../sources/diagramview.cpp" line="1073"/>
         <source>Choisir la nouvelle couleur de ce conducteur</source>
-        <translation type="unfinished"></translation>
+        <translation>Neue Leiterfarbe wählen</translation>
     </message>
 </context>
 <context>
@@ -753,7 +754,7 @@ Verbindungen gleichen Potentials anwenden?</translation>
     <message>
         <location filename="../sources/diagramschooser.cpp" line="165"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan ohne Titel</translation>
     </message>
 </context>
 <context>

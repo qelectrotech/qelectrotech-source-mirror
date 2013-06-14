@@ -72,4 +72,12 @@
     <source>Aperçu</source>
     <target>Vorschau</target>
 </phrase>
+<phrase>
+    <source>élément</source>
+    <target>Bauteil</target>
+</phrase>
+<phrase>
+    <source>Élement</source>
+    <target>Bauteil</target>
+</phrase>
 </QPH>
