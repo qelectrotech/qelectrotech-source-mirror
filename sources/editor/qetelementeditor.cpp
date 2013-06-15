@@ -1116,6 +1116,8 @@ void QETElementEditor::copyAndPasteXml(const QDomDocument &xml_document) {
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
 void QETElementEditor::closeEvent(QCloseEvent *qce) {
+	// verification avant d'enregistrer le fichier
+	if (!ce_scene -> borderContainsEveryParts()) return;
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
