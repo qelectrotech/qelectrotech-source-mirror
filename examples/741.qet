@@ -1,8 +1,9 @@
 <project title="Operational amplifier uA741" version="0.3">
+    <properties/>
     <newdiagrams>
         <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
         <inset title="Operational amplifier uA741" folio="%id/%total" author="pawel32640" filename="741.qet" date="20100921"/>
-        <conductors num="" type="multi"/>
+        <conductors num="" vertirotatetext="0" type="multi" horizrotatetext="0"/>
     </newdiagrams>
     <diagram title="Operational amplifier uA741" displayrows="true" cols="17" folio="%id/%total" displaycols="true" height="660" colsize="60" order="1" rows="8" author="pawel32640" filename="741.qet" date="20100921" rowsize="80">
         <defaultconductor num="" type="multi"/>

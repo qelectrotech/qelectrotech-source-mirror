@@ -3,7 +3,7 @@
     <newdiagrams>
         <border displayrows="true" cols="17" displaycols="true" colsize="60" rows="8" rowsize="80"/>
         <inset title="" folio="%id/%total" author="" filename="" date="null"/>
-        <conductors num="_" type="multi"/>
+        <conductors num="_" vertirotatetext="0" type="multi" horizrotatetext="0"/>
     </newdiagrams>
     <diagram title="Eclairage Cuisine en simple allumage" displayrows="true" version="0.3" cols="10" folio="%id/%total" displaycols="true" height="420" colsize="60" order="1" rows="5" author="QElectroTech Team" filename="" date="20130601" rowsize="80">
         <defaultconductor num="_" type="multi"/>
@@ -450,62 +450,6 @@
                 <name lang="es">Elementos importados</name>
                 <name lang="cs">Zavedené prvky</name>
             </names>
-            <category name="recepteurs">
-                <names>
-                    <name lang="ar">مستقبلات</name>
-                    <name lang="de">Verbraucher</name>
-                    <name lang="ru">Приёмники</name>
-                    <name lang="pt">Receptores</name>
-                    <name lang="en">Receivers</name>
-                    <name lang="it">Utilizzatori</name>
-                    <name lang="fr">Récepteurs</name>
-                    <name lang="pl">Odbiorniki</name>
-                    <name lang="es">Receptores</name>
-                    <name lang="cs">Přijímače</name>
-                </names>
-                <category name="lampes">
-                    <names>
-                        <name lang="ar">مصابيح</name>
-                        <name lang="de">Leuchten</name>
-                        <name lang="ru">Лампы</name>
-                        <name lang="pt">Lâmpadas</name>
-                        <name lang="en">Lights</name>
-                        <name lang="it">Luci</name>
-                        <name lang="fr">Lampes</name>
-                        <name lang="pl">Oświetlenie</name>
-                        <name lang="es">Lámparas</name>
-                        <name lang="cs">Světla</name>
-                    </names>
-                    <element name="lampe2.elmt">
-                        <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
-                            <names>
-                                <name lang="ar">مصباح</name>
-                                <name lang="de">Leuchte</name>
-                                <name lang="ru">Лампа</name>
-                                <name lang="pt">Lâmpada</name>
-                                <name lang="en">Light</name>
-                                <name lang="it">Luce</name>
-                                <name lang="fr">Lampe</name>
-                                <name lang="pl">Lampa</name>
-                                <name lang="es">Lámpara</name>
-                                <name lang="cs">Světlo</name>
-                            </names>
-                            <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
-                            <description>
-                                <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="7.03" y2="7.03" x2="-7.03"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-7.03" x1="-7.03" y2="7.03" x2="7.03"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-                                <input x="15" y="3" size="9" text="H_"/>
-                                <terminal x="0" y="-21" orientation="n"/>
-                                <terminal x="0" y="21" orientation="s"/>
-                            </description>
-                        </definition>
-                    </element>
-                </category>
-            </category>
             <category name="sources">
                 <names>
                     <name lang="ar">مصادر</name>
@@ -519,47 +463,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                     <name lang="es">Fuentes</name>
                     <name lang="cs">Zdroje</name>
                 </names>
-                <category name="tevenin_norton">
-                    <names>
-                        <name lang="ar">ثفنان / نورتان</name>
-                        <name lang="de">Tevenin / Norton</name>
-                        <name lang="ru">Идеальные генераторы</name>
-                        <name lang="pt">Tevenin / Norton</name>
-                        <name lang="en">Tevenin / Norton</name>
-                        <name lang="it">Tevenin / Norton</name>
-                        <name lang="fr">Tevenin / Norton</name>
-                        <name lang="pl">Generatory</name>
-                        <name lang="es">Tevenin / Norton</name>
-                        <name lang="cs">Ideální generátory (Tevenin/Norton)</name>
-                    </names>
-                    <element name="courant_n.elmt">
-                        <definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
-                            <names>
-                                <name lang="ar">مصدر تيّار (جديد)</name>
-                                <name lang="de">Stromquelle (neu)</name>
-                                <name lang="ru">Источник тока (новый)</name>
-                                <name lang="pt">Fonte de corrente (novo)</name>
-                                <name lang="en">Current source (new)</name>
-                                <name lang="it">Generatore di corrente (nuovo)</name>
-                                <name lang="fr">Source de courant (nouveau)</name>
-                                <name lang="pl">Źródło prądu (nowy)</name>
-                                <name lang="es">Fuente de corriente (nuevo)</name>
-                                <name lang="cs">Zdroj proudu (nový)</name>
-                            </names>
-                            <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
-                            <description>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="10" y2="0" x2="-10"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-                                <circle x="-10" y="-10" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="20"/>
-                                <input x="12.75" y="3" size="9" text="_"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-19.75" x1="0" y2="-10" x2="0"/>
-                                <terminal x="0" y="-21" orientation="n"/>
-                                <terminal x="0" y="21" orientation="s"/>
-                            </description>
-                        </definition>
-                    </element>
-                </category>
                 <category name="multifilaire">
                     <names>
                         <name lang="ar">متعددة الأسلاك</name>
@@ -662,34 +565,6 @@ License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
                         <name lang="es">Disyuntores</name>
                         <name lang="cs">Jističe</name>
                     </names>
-                    <element name="disjoncteur1.elmt">
-                        <definition width="30" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
-                            <names>
-                                <name lang="ar">قاطع</name>
-                                <name lang="de">Lastschalter</name>
-                                <name lang="ru">Выключатель</name>
-                                <name lang="pt">Disjuntor</name>
-                                <name lang="en">Circuit-breaker</name>
-                                <name lang="it">Sezionatore 1P</name>
-                                <name lang="fr">Disjoncteur</name>
-                                <name lang="pl">Wyłącznik</name>
-                                <name lang="es">Disyuntor</name>
-                                <name lang="cs">Jistič</name>
-                            </names>
-                            <informations>Author: The QElectroTech team
-License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
-                            <description>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-20" x1="0" y2="-10" x2="0"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="10" x1="0" y2="20" x2="0"/>
-                                <line length1="1.5" length2="1.5" antialias="true" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-10" x1="-5" y2="10" x2="0"/>
-                                <input x="2.75" y="3" size="9" text="_"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="2" y2="-10" x2="-2"/>
-                                <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="-14" x1="-2" y2="-10" x2="2"/>
-                                <terminal x="0" y="-21" orientation="n"/>
-                                <terminal x="0" y="21" orientation="s"/>
-                            </description>
-                        </definition>
-                    </element>
                     <element name="disjonct-m.elmt">
                         <definition width="30" version="0.3" hotspot_x="0" hotspot_y="25" height="60" type="element" orientation="dnny">
                             <names>

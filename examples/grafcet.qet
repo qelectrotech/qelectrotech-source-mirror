@@ -1,8 +1,9 @@
-<project title="" version="0.22">
+<project title="" version="0.3">
+    <properties/>
     <newdiagrams>
         <border displayrows="true" cols="15" displaycols="true" colsize="50" rows="6" rowsize="80"/>
         <inset title="" folio="%id/%total" author="" filename="" date="null"/>
-        <conductors num="_" type="multi"/>
+        <conductors num="_" vertirotatetext="0" type="multi" horizrotatetext="0"/>
     </newdiagrams>
     <diagram title="General" displayrows="true" cols="15" folio="%id/%total" displaycols="true" height="500" colsize="50" order="1" rows="6" author="" filename="" rowsize="80">
         <defaultconductor num="_" type="multi"/>
@@ -468,21 +469,6 @@
                             <description>
                                 <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
                                 <text x="-12" y="3" size="5" text="L"/>
-                                <terminal x="10" y="0" orientation="e"/>
-                            </description>
-                        </definition>
-                    </element>
-                    <element name="src_n.elmt">
-                        <definition width="30" version="0.1" hotspot_x="15" hotspot_y="15" height="30" type="element" orientation="dnnn">
-                            <names>
-                                <name lang="ru">Нейтраль</name>
-                                <name lang="en">Neutral source</name>
-                                <name lang="fr">Source neutre</name>
-                                <name lang="es">Fuente neutro</name>
-                            </names>
-                            <description>
-                                <line antialias="false" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="0" x1="0" y2="0" x2="10"/>
-                                <text x="-12" y="3" size="5" text="N"/>
                                 <terminal x="10" y="0" orientation="e"/>
                             </description>
                         </definition>
