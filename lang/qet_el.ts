@@ -313,7 +313,7 @@
         <location filename="../sources/closediagramsdialog.cpp" line="96"/>
         <source>Voulez-vous enregistrer le projet ?</source>
         <comment>informative label</comment>
-        <translation>Θέλετε να γίνει αποθήκευση της εργασίας ;</translation>
+        <translation>Θέλετε να γίνει αποθήκευση της εργασίας;</translation>
     </message>
     <message>
         <location filename="../sources/closediagramsdialog.cpp" line="100"/>
@@ -850,7 +850,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
 %1 ?</source>
         <translation>Θέλετε πραγματικά να σημάνετε τους αγωγούς:
 
-%1 ;</translation>
+%1;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
@@ -1047,7 +1047,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <location filename="../sources/elementdialog.cpp" line="346"/>
         <source>L&apos;élément existe déjà. Voulez-vous l&apos;écraser ?</source>
         <comment>message box content</comment>
-        <translation>Υπάρχει ήδη το στοιχείο. Θέλετε να αντικατασταθεί ;</translation>
+        <translation>Υπάρχει ήδη το στοιχείο. Θέλετε να αντικατασταθεί;</translation>
     </message>
 </context>
 <context>
@@ -1238,7 +1238,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
         <source>Êtes-vous sûr de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation>Σίγουρα θέλετε να διαγραφεί η κατηγορία ;
+        <translation>Σίγουρα θέλετε να διαγραφεί η κατηγορία;
 Κάθε στοιχείο και κάθε υποκατηγορία της κατηγορίας θα διαγραφούν.</translation>
     </message>
     <message>
@@ -1246,7 +1246,7 @@ Tous les éléments et les catégories contenus dans cette catégorie seront sup
         <source>Êtes-vous vraiment sûr de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation>Σίγουρα θέλετε να διαγραφεί αυτή η κατηγορία ;
+        <translation>Σίγουρα θέλετε να διαγραφεί αυτή η κατηγορία;
 Αυτό θα είναι αμετάκλητο.</translation>
     </message>
     <message>
@@ -2050,7 +2050,7 @@ Les changements seront définitifs.</source>
         <translation>Το στοιχείο έχει, ήδη, ενσωματωθεί στην εργασία. 
 Όμως, η έκδοση, την οποία προσπαθείτε να τοποθετήσετε, φαίνεται να είναι διαφορετική.
 
-Τι θα θέλατε να γίνει ;</translation>
+Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
@@ -2181,13 +2181,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
         <source>La catégorie « %1 » (%2) existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Υπάρχει, ήδη, η κατηγορία «%1» (%2) . Τι θα θέλατε να γίνει ;</translation>
+        <translation>Υπάρχει, ήδη, η κατηγορία «%1» (%2) . Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="118"/>
         <source>L&apos;élément « %1 » existe déjà. Que souhaitez-vous faire ?</source>
         <comment>dialog content</comment>
-        <translation>Υπάρχει, ήδη, το στοιχείο «%1»  . Τι θα θέλατε να γίνει ;</translation>
+        <translation>Υπάρχει, ήδη, το στοιχείο «%1»  . Τι θα θέλατε να γίνει;</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="152"/>
@@ -4347,13 +4347,13 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="1057"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
-        <translation>Αποθήκευση του παρόντος διαγράμματος ;</translation>
+        <translation>Αποθήκευση του παρόντος διαγράμματος;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1059"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
-        <translation>Θέλεις να γίνει αποθήκευση του στοιχείου %1 ;</translation>
+        <translation>Θέλεις να γίνει αποθήκευση του στοιχείου %1;</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="1279"/>
