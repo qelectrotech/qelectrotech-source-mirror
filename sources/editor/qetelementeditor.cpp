@@ -1053,6 +1053,10 @@ bool QETElementEditor::slot_saveAsFile() {
 */
 bool QETElementEditor::canClose() {
 	if (ce_scene -> undoStack().isClean()) return(true);
+	//verification avant d'enregistrer le fichier
+	if (!ce_scene -> borderContainsEveryParts()) checkElement();
+	// si le symbole deborde, echec de la fermeture
+	if (!ce_scene -> borderContainsEveryParts()) return(false);
 	// demande d'abord a l'utilisateur s'il veut enregistrer l'element en cours
 	QMessageBox::StandardButton answer = QET::MessageBox::question(
 		this,
@@ -1116,8 +1120,6 @@ void QETElementEditor::copyAndPasteXml(const QDomDocument &xml_document) {
 	@param qce Le QCloseEvent correspondant a l'evenement de fermeture
 */
 void QETElementEditor::closeEvent(QCloseEvent *qce) {
-	// verification avant d'enregistrer le fichier
-	if (!ce_scene -> borderContainsEveryParts()) return;
 	if (canClose()) {
 		writeSettings();
 		setAttribute(Qt::WA_DeleteOnClose);
