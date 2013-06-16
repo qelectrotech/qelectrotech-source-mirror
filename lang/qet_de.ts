@@ -2556,22 +2556,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="34"/>
         <source>Polygone fermé</source>
-        <translation type="unfinished"></translation>
+        <translation>Geschlossenes Polygon</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
         <source>x</source>
-        <translation type="unfinished"></translation>
+        <translation>x</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="41"/>
         <source>y</source>
-        <translation type="unfinished"></translation>
+        <translation>y</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="49"/>
         <source>Points du polygone :</source>
-        <translation type="unfinished"></translation>
+        <translation>Eckpunkte des Polygons:</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="77"/>
@@ -2583,12 +2583,12 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/polygoneditor.cpp" line="78"/>
         <source>Le polygone doit comporter au moins deux points.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Ein Polygon muss durch mindestens zwei Punkte definiert werden.</translation>
     </message>
     <message>
         <location filename="../sources/editor/polygoneditor.cpp" line="92"/>
         <source>fermeture du polygone</source>
-        <translation type="unfinished"></translation>
+        <translation>Polygon schließen</translation>
     </message>
 </context>
 <context>
@@ -2597,7 +2597,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="310"/>
         <source>Impression</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Druck</translation>
     </message>
 </context>
 <context>
@@ -2606,25 +2606,25 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectconfigpages.cpp" line="94"/>
         <source>Général</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Allgemein</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="138"/>
         <source>Titre du projet :</source>
         <comment>label when configuring</comment>
-        <translation type="unfinished"></translation>
+        <translation>Projekttitel:</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="140"/>
         <source>Ce titre sera disponible pour tous les schémas de ce projet en tant que %projecttitle.</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Der Titel wird allen Schaltplänen des Projektes als %projecttitle bereitgestellt.</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="142"/>
         <source>Vous pouvez définir ci-dessous des propriétés personnalisées qui seront disponibles pour tous les schémas de ce projet (typiquement pour les cartouches).</source>
         <comment>informative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Definieren Sie hier benutzerdefinierte Einstellungen, die für alle Schaltpläne des Projektes gelten.  </translation>
     </message>
 </context>
 <context>
@@ -2749,53 +2749,53 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="104"/>
         <source>Chargement... Initialisation du cache des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade... Initialisiere die Bauteilbibliothek</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="112"/>
         <source>Chargement... Lecture des collections d&apos;éléments</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade... Lese die Bauteilbibliothek</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="119"/>
         <source>Chargement... Éditeur de schémas</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade... Schaltplaneditor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="122"/>
         <source>Chargement... Ouverture des fichiers</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade... Öffne Dateien</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="176"/>
         <source>LTR</source>
         <comment>Translate this string to RTL if you are translating to a Right-to-Left language, else translate to LTR</comment>
-        <translation type="unfinished"></translation>
+        <translation>LTR</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="276"/>
         <source>Collection QET</source>
-        <translation type="unfinished"></translation>
+        <translation>QET Sammlung</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="290"/>
         <source>Collection utilisateur</source>
-        <translation type="unfinished"></translation>
+        <translation>Werkzeugsammlung</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="334"/>
         <source>Cartouches QET</source>
         <comment>title of the title block templates collection provided by QElectroTech</comment>
-        <translation type="unfinished"></translation>
+        <translation>QET Bibliothek</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="347"/>
         <source>Cartouches utilisateur</source>
         <comment>title of the user&apos;s title block templates collection</comment>
-        <translation type="unfinished"></translation>
+        <translation>Benutzer Bibliothek</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="758"/>
@@ -2813,7 +2813,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="760"/>
         <source>Schema</source>
         <comment>Normal example text - translate length, not meaning</comment>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplan</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="761"/>
@@ -2831,19 +2831,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/qetapp.cpp" line="1148"/>
         <source>Configurer QElectroTech</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech Einstellungen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1273"/>
         <source>Chargement...</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade...</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1346"/>
         <source>Chargement... icône du systray</source>
         <comment>splash screen caption</comment>
-        <translation type="unfinished"></translation>
+        <translation>Lade... Systray Icons</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1348"/>
@@ -2859,22 +2859,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1351"/>
         <source>&amp;Masquer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verstecken</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1352"/>
         <source>&amp;Restaurer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zeigen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1353"/>
         <source>&amp;Masquer tous les éditeurs de schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Verstecke Schaltplaneditor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1354"/>
         <source>&amp;Restaurer tous les éditeurs de schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Zeige Schaltplaneditor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1355"/>
@@ -2911,7 +2911,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1362"/>
         <source>Ferme l&apos;application QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>Anwendung QElectroTech schließen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1363"/>
@@ -2932,12 +2932,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1449"/>
         <source>Éditeurs de schémas</source>
-        <translation type="unfinished"></translation>
+        <translation>Schaltplaneditor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1458"/>
         <source>Éditeurs d&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation>Bauteileditor</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1468"/>
@@ -2948,14 +2948,15 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1533"/>
         <source>Usage : </source>
-        <translation type="unfinished"></translation>
+        <translation>Verwendung: </translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1533"/>
         <source> [options] [fichier]...
 
 </source>
-        <translation type="unfinished"></translation>
+        <translation> [Optionen] [Datei]...
+</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1534"/>
