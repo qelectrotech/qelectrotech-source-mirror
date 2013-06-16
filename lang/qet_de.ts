@@ -2916,12 +2916,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/qetapp.cpp" line="1363"/>
         <source>Réduire QElectroTech dans le systray</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech minimieren</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1364"/>
         <source>Restaurer QElectroTech</source>
-        <translation type="unfinished"></translation>
+        <translation>QElectroTech wiederherstellen</translation>
     </message>
     <message>
         <location filename="../sources/qetapp.cpp" line="1380"/>
@@ -6853,7 +6853,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="362"/>
         <source>Texte en gras</source>
-        <translation type="unfinished"></translation>
+        <translation>fett</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="363"/>
@@ -6863,7 +6863,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="368"/>
         <source>Texte en italique</source>
-        <translation type="unfinished"></translation>
+        <translation>kursiv</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="369"/>
@@ -6873,7 +6873,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="374"/>
         <source>Texte souligé</source>
-        <translation type="unfinished"></translation>
+        <translation>unterstrichen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="375"/>
@@ -6883,42 +6883,42 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="388"/>
         <source>Left Align</source>
-        <translation type="unfinished"></translation>
+        <translation>linksbündig</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="393"/>
         <source>Center</source>
-        <translation type="unfinished"></translation>
+        <translation>zentriert</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="398"/>
         <source>Right Align</source>
-        <translation type="unfinished"></translation>
+        <translation>rechtsbündig</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="403"/>
         <source>Justify</source>
-        <translation type="unfinished"></translation>
+        <translation>Ausrichten</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="416"/>
         <source>Superscript</source>
-        <translation type="unfinished"></translation>
+        <translation>hochgestellt</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="422"/>
         <source>Subscript</source>
-        <translation type="unfinished"></translation>
+        <translation>tiefgestellt</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="433"/>
         <source>Insérer un lien</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeile einfügen</translation>
     </message>
     <message>
         <location filename="../sources/richtext/richtexteditor.cpp" line="437"/>
         <source>Insert &amp;Image</source>
-        <translation type="unfinished"></translation>
+        <translation>B&amp;ild Einfügen</translation>
     </message>
 </context>
 </TS>
