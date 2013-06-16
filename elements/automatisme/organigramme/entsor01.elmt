@@ -1,5 +1,6 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="15" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Είσοδος/Έξοδος</name>
         <name lang="en">Input / Output</name>
         <name lang="fr">Entrée/Sortie</name>
         <name lang="cs">Vstup/Výstup</name>

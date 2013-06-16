@@ -1,5 +1,6 @@
 <definition width="110" version="0.3" hotspot_x="15" hotspot_y="25" height="90" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Εργασία</name>
         <name lang="en">working</name>
         <name lang="fr">Préparation</name>
         <name lang="cs">Příprava</name>
