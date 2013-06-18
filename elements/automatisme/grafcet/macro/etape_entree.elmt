@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">خطوة دخل</name>
         <name lang="de">Eingangs Schritt</name>
+        <name lang="pt">Etapa de entrada</name>
+        <name lang="el">Βήμα εισόδου</name>
         <name lang="en">Imput step</name>
+        <name lang="it">Ingresso</name>
         <name lang="fr">Etape d'entree</name>
         <name lang="pl">Krok (input)</name>
-        <name lang="cs">Vstupní krok</name>
         <name lang="es">Etapa de entrada</name>
-        <name lang="pt">Etapa de entrada</name>
-        <name lang="it">Ingresso</name>
+        <name lang="cs">Vstupní krok</name>
     </names>
     <informations></informations>
     <description>

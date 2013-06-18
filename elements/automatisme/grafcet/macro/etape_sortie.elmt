@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">خطوة خرج</name>
         <name lang="de">Ausgangs Schritt</name>
+        <name lang="pt">Etapa de saída</name>
+        <name lang="el">Βήμα εξόδου</name>
         <name lang="en">Output step</name>
+        <name lang="it">Uscita</name>
         <name lang="fr">Etape sortie</name>
         <name lang="pl">Krok (output)</name>
-        <name lang="cs">Výstupní krok</name>
         <name lang="es">Etapa de salida</name>
-        <name lang="pt">Etapa de saída</name>
-        <name lang="it">Uscita</name>
+        <name lang="cs">Výstupní krok</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,14 @@
-<definition width="10" version="0.3" hotspot_x="5" hotspot_y="5" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="7" hotspot_y="5" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">إحالة على دخل </name>
         <name lang="de">Ausgangsklemme</name>
+        <name lang="el">Ακροδέκτης εξόδου</name>
         <name lang="en">Output terminal</name>
+        <name lang="it">Terminale di uscita</name>
         <name lang="fr">Renvoi schéma in</name>
         <name lang="pl">Wejście adresowe</name>
         <name lang="es">Punto de salida</name>
         <name lang="cs">Výstupy</name>
-        <name lang="it">Terminale di uscita</name>
     </names>
     <informations></informations>
     <description>

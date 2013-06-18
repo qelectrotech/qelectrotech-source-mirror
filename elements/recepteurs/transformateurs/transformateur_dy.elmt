@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="35" height="70" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">محوّل Dy</name>
+        <name lang="el">Μετασχηματιστής τρίγωνο-αστέρας</name>
         <name lang="en">Transformer Dy</name>
+        <name lang="it">Trasformatore triangolo-stella</name>
         <name lang="fr">Transformateur D Y</name>
         <name lang="pl">Transformator Dy</name>
         <name lang="cs">Transformátor D Y</name>
-        <name lang="it">Trasformatore triangolo-stella</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,13 +1,14 @@
 <definition width="320" version="0.3" hotspot_x="10" hotspot_y="230" height="230" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">Easy 410</name>
+        <name lang="pt">Easy 410</name>
+        <name lang="el">Easy 410</name>
         <name lang="en">Easy 410</name>
+        <name lang="it">Easy 410</name>
         <name lang="fr">Easy 410</name>
         <name lang="pl">Easy 410</name>
-        <name lang="cs">Easy 410</name>
-        <name lang="pt">Easy 410</name>
         <name lang="es">Easy 410</name>
-        <name lang="it">Easy 410</name>
+        <name lang="cs">Easy 410</name>
     </names>
     <informations></informations>
     <description>

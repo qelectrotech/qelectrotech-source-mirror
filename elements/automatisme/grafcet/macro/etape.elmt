@@ -2,13 +2,14 @@
     <names>
         <name lang="ar">ماكرو خطوة</name>
         <name lang="de">Makro Schritt</name>
+        <name lang="pt">Etapa Macro</name>
+        <name lang="el">Βήμα Makro</name>
         <name lang="en">Macro step</name>
+        <name lang="it">Macro</name>
         <name lang="fr">Macro etape</name>
         <name lang="pl">Krok makro</name>
-        <name lang="cs">Makro krok</name>
         <name lang="es">Macro etapa</name>
-        <name lang="pt">Etapa Macro</name>
-        <name lang="it">Macro</name>
+        <name lang="cs">Makro krok</name>
     </names>
     <informations></informations>
     <description>

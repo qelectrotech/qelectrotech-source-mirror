@@ -1,11 +1,12 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">محول ثلاثي الأوجه + خط محايد</name>
+        <name lang="el">Μετασχηματιστής τριφασικός + ουδέτερος</name>
         <name lang="en">Three-phase + neutral transducer</name>
+        <name lang="it">Trasformatore trifase + neutro</name>
         <name lang="fr">Transformateur triphasé + neutre</name>
         <name lang="pl">Transformator trójfazowy</name>
         <name lang="cs">Třífázový transformátor + neutrální</name>
-        <name lang="it">Trasformatore trifase + neutro</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

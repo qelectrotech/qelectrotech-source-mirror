@@ -1,11 +1,12 @@
-<definition width="120" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
+<definition width="130" version="0.3" hotspot_x="15" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">علامة مصدر ثلاثي الأطوار</name>
+        <name lang="el">Ετικέτα τριφασικού</name>
         <name lang="en">Label three phase</name>
+        <name lang="it">Etichetta trifase alternata</name>
         <name lang="fr">Courant alternatif etiquette</name>
         <name lang="pl">Oznaczenie - prąd przemienny trójfazowy</name>
         <name lang="cs">Štítek - tři fáze</name>
-        <name lang="it">Etichetta trifase alternata</name>
     </names>
     <informations>EN 60617: 02-02-07</informations>
     <description>

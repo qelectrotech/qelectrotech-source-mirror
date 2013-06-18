@@ -1,11 +1,12 @@
-<definition width="80" version="0.3" hotspot_x="40" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
+<definition width="80" version="0.3" hotspot_x="35" hotspot_y="45" height="90" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">محوّل ثلاثي الأوجه</name>
+        <name lang="el">Τριφασικός μετασχηματιστής</name>
         <name lang="en">Three-phase transducer</name>
+        <name lang="it">Trasformatore trifase</name>
         <name lang="fr">Transformateur triphasé</name>
         <name lang="pl">Transformator trójfazowy</name>
         <name lang="cs">Třífázový transformátor</name>
-        <name lang="it">Trasformatore trifase</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>
