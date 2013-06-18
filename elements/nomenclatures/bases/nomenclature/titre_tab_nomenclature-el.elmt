@@ -1,0 +1,23 @@
+<definition width="650" version="0.3" hotspot_x="0" hotspot_y="30" height="50" type="element" orientation="dnnn">
+    <names>
+        <name lang="ar">عنوان جدول التسمية</name>
+        <name lang="de">Titelfeld Nomenklatur</name>
+        <name lang="en">Table Title Nomenclature</name>
+        <name lang="fr">Titre tableau nomenclature</name>
+        <name lang="pl">Tabliczka rysunkowa - tytuły</name>
+        <name lang="cs">Název nomenklaturní tabulky</name>
+        <name lang="it">Intestazione tabella elenco</name>
+        <name lang="el">Επικεφαλίδα πίνακα (Ελληνικά)</name>
+    </names>
+    <informations></informations>
+    <description>
+        <text x="250" y="-10" size="15" text="ΥΠΟΜΝΗΜΑ"/>
+        <rect width="650" x="0" y="-30" antialias="false" height="30" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="650" x="0" y="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <rect width="400" x="0" y="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+        <text x="115" y="15" size="10" text="Λειτουργία"/>
+        <text x="407" y="15" size="10" text="Περιγραφή"/>
+        <text x="7" y="15" size="10" text="Θέση"/>
+        <rect width="100" x="0" y="0" antialias="false" height="20" style="line-style:normal;line-weight:thin;filling:none;color:black"/>
+    </description>
+</definition>
