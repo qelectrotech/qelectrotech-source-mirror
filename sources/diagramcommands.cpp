@@ -601,18 +601,13 @@ void RotateElementsCommand::undo() {
 		rotateElement(e, elements_to_rotate[e]);
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
-		//ConductorTextItem have got a default rotation propertie
-		//so we apply specific undo method for him
+		//ConductorTextItem have a default rotation angle, we apply a specific treatment
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
-			cti -> forceRotateByUser(previous_rotate_by_user_);
-			//previous_rotate_by_user is false mean the rotation is propertie rotation
-			if (previous_rotate_by_user_ == false) {cti -> parentConductor() ->adjustTextItemPosition();}
-			else {cti -> rotateBy(-applied_rotation_angle_);}
+			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
+			(cti -> wasRotateByUser()) ? cti -> rotateBy(-appliedRotationAngle()) :
+										 cti -> parentConductor() -> adjustTextItemPosition();
 		}
-		//this isn't a ConductorTextItem
-		else {
-			dti -> rotateBy(-applied_rotation_angle_);
-		}
+		else {dti -> rotateBy(-applied_rotation_angle_);}
 	}
 }
 
@@ -622,8 +617,9 @@ void RotateElementsCommand::redo() {
 		rotateElement(e, e -> orientation().next());
 	}
 	foreach(DiagramTextItem *dti, texts_to_rotate) {
+		//we grab the previous rotation by user of each ConductorTextItem
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(dti)) {
-			previous_rotate_by_user_ = cti -> wasRotateByUser();
+			previous_rotate_by_user_.insert(cti, cti -> wasRotateByUser());
 			cti -> forceRotateByUser(true);
 		}
 		dti -> rotateBy(applied_rotation_angle_);
@@ -685,9 +681,6 @@ RotateTextsCommand::RotateTextsCommand(const QHash<DiagramTextItem *, double> &p
 	texts_to_rotate(previous_state),
 	applied_rotation_angle_(applied_rotation)
 {
-	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) previous_rotate_by_user_ = cti -> wasRotateByUser();
-	}
 	defineCommandName();
 }
 
@@ -702,7 +695,6 @@ RotateTextsCommand::RotateTextsCommand(const QList<DiagramTextItem *> &texts, do
 	applied_rotation_angle_(applied_rotation)
 {
 	foreach(DiagramTextItem *text, texts) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) previous_rotate_by_user_ = cti -> wasMovedByUser();
 		texts_to_rotate.insert(text, text -> rotationAngle());
 	}
 	defineCommandName();
@@ -719,9 +711,8 @@ RotateTextsCommand::~RotateTextsCommand() {
 */
 void RotateTextsCommand::undo() {
 	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
-		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) {
-			cti -> forceRotateByUser(previous_rotate_by_user_);
-		}
+		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text))
+			cti -> forceRotateByUser(previous_rotate_by_user_[cti]);
 		text -> setRotationAngle(texts_to_rotate[text]);
 	}
 }
@@ -732,7 +723,8 @@ void RotateTextsCommand::undo() {
 void RotateTextsCommand::redo() {
 	foreach(DiagramTextItem *text, texts_to_rotate.keys()) {
 		if (ConductorTextItem *cti = qgraphicsitem_cast<ConductorTextItem *>(text)) {
-			previous_rotate_by_user_ = cti -> wasRotateByUser();
+			//we grab the previous rotation by user of each ConductorTextItem
+			previous_rotate_by_user_.insert(cti, cti -> wasRotateByUser());
 			cti -> forceRotateByUser(true);
 		}
 		text -> setRotationAngle(applied_rotation_angle_);
