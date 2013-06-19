@@ -43,6 +43,7 @@
 		<comment xml:lang="ca">Model de bloc de títol QElectroTech</comment>
 		<comment xml:lang="cs">Vzor záhlaví výkresu pro QElectroTech</comment>
 		<comment xml:lang="pt">Modelo de moldura QElectroTech</comment>
+		<comment xml:lang="it">Modello di cartiglio per QElectroTech</comment>
 		<comment xml:lang="el">Πρότυπο πινακίδας του QElectroTech</comment>
 		<glob pattern="*.titleblock" />
 	</mime-type>
