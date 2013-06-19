@@ -53,9 +53,9 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="96"/>
-        <source>© 2006-2013 Les développeurs de QElectroTech</source>
+        <source>© 2006-2012 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 QElectroTech Entwickler {2006-2013 ?}</translation>
+        <translation>© 2006-2012 QElectroTech Entwickler</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
@@ -107,69 +107,56 @@
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="136"/>
-        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en allemand</source>
         <translation>Übersetzung ins Deutsche</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="137"/>
         <source>Traduction en roumain</source>
         <translation>Übersetzung ins Rumänische</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
-        <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en italien</source>
         <translation>Übersetzung ins Italienische</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Traduction en arabe</source>
         <translation>Übersetzung ins Arabische</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="140"/>
         <source>Traduction en croate</source>
         <translation>Übersetzung ins Kroatische</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en catalan</source>
         <translation>Übersetzung ins Katalanische</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
-        <location filename="../sources/aboutqet.cpp" line="145"/>
-        <source>Traduction en grec</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="165"/>
+        <location filename="../sources/aboutqet.cpp" line="158"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Fedora und Redhat Pakete</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="166"/>
+        <location filename="../sources/aboutqet.cpp" line="159"/>
         <source>Paquets Mandriva</source>
         <translation>Mandriva Pakete</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="167"/>
+        <location filename="../sources/aboutqet.cpp" line="160"/>
         <source>Paquets Debian</source>
         <translation>Debian Pakete</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="168"/>
-        <source>Paquets gentoo</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../sources/aboutqet.cpp" line="169"/>
+        <location filename="../sources/aboutqet.cpp" line="161"/>
         <source>Icônes</source>
         <translation>Icons</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="187"/>
+        <location filename="../sources/aboutqet.cpp" line="179"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Das Programm ist unter GNU/GPL lizensiert.</translation>
     </message>
@@ -379,18 +366,18 @@
         <location filename="../sources/closediagramsdialog.cpp" line="246"/>
         <source>Conserver</source>
         <comment>diagram action</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">beibehalten</translation>
     </message>
 </context>
 <context>
     <name>Conductor</name>
     <message>
-        <location filename="../sources/conductor.cpp" line="1282"/>
+        <location filename="../sources/conductor.cpp" line="1275"/>
         <source>Textes de conducteurs</source>
         <translation>Leiterbeschriftung</translation>
     </message>
     <message>
-        <location filename="../sources/conductor.cpp" line="1283"/>
+        <location filename="../sources/conductor.cpp" line="1276"/>
         <source>Voulez-vous appliquer le nouveau texte 
 à l&apos;ensemble des conducteurs de ce potentiel ?</source>
         <translation>Möchten Sie den neuen Text auf alle 
@@ -859,12 +846,12 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="14"/>
         <source>Merci de patienter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bitte warten</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="26"/>
         <source>Titre</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Titel</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogwaiting.ui" line="88"/>
@@ -882,7 +869,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/elementdefinition.cpp" line="466"/>
         <source>La suppression de cet élément a échoué.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"> Löschen des Bauteils ist gescheitert.</translation>
     </message>
 </context>
 <context>
@@ -891,26 +878,26 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdeleter.cpp" line="56"/>
         <source>Supprimer l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteil löschen?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="57"/>
         <source>Êtes-vous sûr de vouloir supprimer cet élément ?
 </source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Wollen sie wircklich dieses Bauteil löschen?</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="70"/>
         <source>Suppression de l&apos;élément</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Element wird gelöscht</translation>
     </message>
     <message>
         <location filename="../sources/elementdeleter.cpp" line="71"/>
         <source>La suppression de l&apos;élément a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Löschen des Element ist gescheitert.</translation>
     </message>
 </context>
 <context>
@@ -919,7 +906,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="63"/>
         <source>Ouvrir un élément</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteil öffnen</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="64"/>
@@ -931,7 +918,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="66"/>
         <source>Enregistrer un élément</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteil speichern</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="67"/>
@@ -961,7 +948,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/elementdialog.cpp" line="164"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation>Name:</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="245"/>
@@ -1012,24 +999,24 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="307"/>
         <source>Nom manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Name erwuencht</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="308"/>
         <source>Vous devez entrer un nom pour l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bitte einen Namen fuer das Element eingeben</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="317"/>
         <source>Nom invalide</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ungueltiger Name</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="319"/>
         <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Folgende Charakter sind fuer den Namen des Bauteils nicht gueltig:%1</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="345"/>
@@ -1074,7 +1061,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="301"/>
         <source>texte</source>
-        <translation type="unfinished">Text</translation>
+        <translation>Text</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="308"/>
@@ -1101,7 +1088,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="768"/>
         <source>L&apos;orientation par défaut est l&apos;orientation dans laquelle s&apos;effectue la création de l&apos;élément.</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="780"/>
@@ -1117,7 +1104,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="822"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sie koennen dieses freie feld benutyen um </translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="862"/>
@@ -1198,7 +1185,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/elementscategory.cpp" line="583"/>
         <source>Impossible de supprimer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Es ist unmoeglich dieses Bauteil zu löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="604"/>
@@ -1225,33 +1212,35 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementscategorydeleter.cpp" line="90"/>
         <source>Supprimer la catégorie ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kategorie löschen?</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="77"/>
         <source>Êtes-vous sûr de vouloir supprimer la catégorie ?
 Tous les éléments et les catégories contenus dans cette catégorie seront supprimés.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Wollen sie Wircklich diese Kategorie löschen?
+Alle Bauteile und Kategorien in dieser Kategorie behalten werden gelöscht.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="91"/>
         <source>Êtes-vous vraiment sûr de vouloir supprimer cette catégorie ?
 Les changements seront définitifs.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sind sie wircklich sicher diese Kategorie löschen zu wollen?
+Veraenderungen werden endgueltig sein.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="104"/>
         <source>Suppression de la catégorie</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Löschen der Kategorie</translation>
     </message>
     <message>
         <location filename="../sources/elementscategorydeleter.cpp" line="105"/>
         <source>La suppression de la catégorie a échoué.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Löschen der Kategorie ist gescheitert.</translation>
     </message>
 </context>
 <context>
@@ -1260,13 +1249,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="47"/>
         <source>Catégorie inexistante</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Kategorie nicht vorhanden</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="48"/>
         <source>La catégorie demandée n&apos;existe pas. Abandon.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Die gewuenschte Kategorie ist nicht vorhanden. Aufgabe.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="56"/>
@@ -1278,13 +1267,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="64"/>
         <source>Créer une nouvelle catégorie</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neue Kategorie erschaffen</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="69"/>
         <source>Nom de la nouvelle catégorie</source>
         <comment>default name when creating a new category</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Nane der neuen Kategorie</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="77"/>
@@ -1343,13 +1332,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementscategoryeditor.cpp" line="156"/>
         <source>Impossible de créer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Erschaffen der Kategorie unmoeglich</translation>
     </message>
     <message>
         <location filename="../sources/elementscategoryeditor.cpp" line="172"/>
         <source>Impossible d&apos;enregistrer la catégorie</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Speichern der Kategorie unmoeglich</translation>
     </message>
 </context>
 <context>
@@ -1357,7 +1346,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementscollection.cpp" line="151"/>
         <source>Il n&apos;est pas possible de déplacer une collection.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Es ist nicht moeglich eine Samlung zu bewegen.</translation>
     </message>
 </context>
 <context>
@@ -1462,7 +1451,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="56"/>
         <source>Ouvrir le dossier correspondant</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Entsprechende Datei oeffnen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="57"/>
@@ -1482,7 +1471,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="60"/>
         <source>Éditer la catégorie</source>
-        <translation type="unfinished">Kategorie bearbeiten</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="61"/>
@@ -1492,7 +1481,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="62"/>
         <source>Vider la collection</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Samlung leeren</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="63"/>
@@ -1502,17 +1491,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="64"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Bauteil bearbeiten</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="65"/>
         <source>Supprimer l&apos;élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteil löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="66"/>
         <source>Ouvrir un fichier élément</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteil Datei oeffnen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="67"/>
@@ -1522,27 +1511,27 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="68"/>
         <source>Fermer ce projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekt schliessen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="69"/>
         <source>Propriétés du projet</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Eigenschaften des Projekts</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="70"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished">Schaltplan Eigenschaften</translation>
+        <translation>Diagram Eigenschaften</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="71"/>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished"></translation>
+        <translation>Diagram zufuegen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="72"/>
         <source>Supprimer ce schéma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diagram löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="73"/>
@@ -1557,7 +1546,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="75"/>
         <source>Nouveau modèle</source>
-        <translation type="unfinished"></translation>
+        <translation>Neues Model</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="76"/>
@@ -1567,38 +1556,38 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="77"/>
         <source>Supprimer ce modèle</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Model löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="78"/>
         <source>Déplacer dans cette catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">In diese Kategorie verschieben</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="79"/>
         <source>Copier dans cette catégorie</source>
-        <translation type="unfinished"></translation>
+        <translation>In diese Kategorie kopieren</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="80"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>abbrechen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="81"/>
         <source>Effacer le filtre</source>
-        <translation type="unfinished"></translation>
+        <translation>Filter löschen</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="84"/>
         <source>Filtrer : </source>
-        <translation type="unfinished"></translation>
+        <translation>Filter : </translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="473"/>
         <source>Gestionnaire de catégories</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kategorien Manager</translation>
     </message>
     <message>
         <location filename="../sources/elementspanelwidget.cpp" line="476"/>
@@ -1615,7 +1604,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/elementspanelwidget.cpp" line="664"/>
         <source>Chargement : %p%</source>
         <comment>Visual rendering of elements/categories files - %p is the progress percentage</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Laden:%p%</translation>
     </message>
 </context>
 <context>
@@ -1628,32 +1617,32 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="52"/>
         <source>Diamètres : </source>
-        <translation type="unfinished">Durchmesser</translation>
+        <translation>Durchmesser :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="53"/>
         <source>horizontal :</source>
-        <translation type="unfinished">horizontal</translation>
+        <translation>horizontal :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>vertical :</source>
-        <translation type="unfinished">vertikal</translation>
+        <translation type="unfinished">Senkrecht :</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
         <source>abscisse</source>
-        <translation type="unfinished">Abzisse</translation>
+        <translation>Abzisse</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="114"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="116"/>
         <source>diamètre horizontal</source>
-        <translation type="unfinished">horizontaler Durchmesser</translation>
+        <translation type="unfinished">Horizontalen Durchmesser</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="118"/>
@@ -1696,7 +1685,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportdialog.cpp" line="117"/>
         <source>Nom de fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei Namen</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="118"/>
@@ -1707,7 +1696,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="376"/>
         <source>Noms des fichiers cibles</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Namen der geyielten Dateien</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="377"/>
@@ -1731,7 +1720,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/exportdialog.cpp" line="434"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Es ist unmoeglich in diese Datei zu schreiben</translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="436"/>
@@ -1762,17 +1751,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="124"/>
         <source>Dossier cible :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Gezielte Datei :</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="129"/>
         <source>Parcourir</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">durchlaufen</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="139"/>
         <source>Format :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Format :</translation>
     </message>
     <message>
         <location filename="../sources/exportpropertieswidget.cpp" line="142"/>
@@ -1851,7 +1840,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="114"/>
         <source>Projets</source>
-        <translation type="unfinished"></translation>
+        <translation>Projekte</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="115"/>
@@ -1871,12 +1860,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/configpages.cpp" line="119"/>
         <source>Gestion des éléments</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteile Verwaltung</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="120"/>
         <source>Intégrer automatiquement les éléments dans les projets (recommandé)</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Automatisch Bauteile in die Projekte integrieren</translation>
     </message>
     <message>
         <location filename="../sources/configpages.cpp" line="121"/>
@@ -1902,7 +1891,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="220"/>
         <source>Pas de fichier</source>
         <comment>tooltip for a file-less project in the element panel</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Keine Datei</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="226"/>
@@ -1926,7 +1915,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="352"/>
         <source>Schéma sans titre</source>
         <comment>Fallback label when a diagram has no title</comment>
-        <translation type="unfinished">Schaltplan ohne Titel</translation>
+        <translation type="unfinished">Diagram ohne Titel</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="359"/>
@@ -1955,13 +1944,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/genericpanel.cpp" line="714"/>
         <source>Ceci est une catégorie d&apos;éléments, un simple container permettant d&apos;organiser les collections d&apos;éléments</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dies ist eine Bauteile Kategorie, einen einfachen Behaelter um die Bauteile-Samlungen zu organisieren</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="868"/>
         <source>Ceci est un élément que vous pouvez insérer dans un schéma.</source>
         <comment>&quot;What&apos;s this&quot; tip</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dies ist ein Bauteil, dass in ein Diagram hinzufuegbar ist.</translation>
     </message>
     <message>
         <location filename="../sources/genericpanel.cpp" line="1152"/>
@@ -1994,12 +1983,12 @@ Les changements seront définitifs.</source>
         <location filename="../sources/hotspoteditor.cpp" line="48"/>
         <location filename="../sources/hotspoteditor.cpp" line="52"/>
         <source> px</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">px</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="72"/>
         <source>Déplacer l&apos;élément avec le hotspot</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bauteil mit dem hotspot verschieben</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="84"/>
@@ -2009,12 +1998,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="85"/>
         <source>Largeur :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Breite :</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="87"/>
         <source>Hauteur :</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hoehe :</translation>
     </message>
     <message>
         <location filename="../sources/hotspoteditor.cpp" line="89"/>
@@ -2049,7 +2038,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="137"/>
         <source>Utiliser l&apos;élément déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bereits integriertes Bauteil benutzen</translation>
     </message>
     <message>
         <location filename="../sources/integrationmoveelementshandler.cpp" line="146"/>
@@ -2105,7 +2094,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="164"/>
         <source>Utiliser le modèle déjà intégré</source>
         <comment>dialog content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Bereits integrierte Model benutzen</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/integrationmovetemplateshandler.cpp" line="173"/>
@@ -2133,7 +2122,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="114"/>
         <source>Copie de %1 vers %2</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Kopieren von %1 nach %2</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="70"/>
@@ -2174,7 +2163,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="242"/>
         <source>Renommer</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neu Naenen</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="243"/>
@@ -2199,7 +2188,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="247"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Abbrechen</translation>
     </message>
     <message>
         <location filename="../sources/interactivemoveelementshandler.cpp" line="362"/>
@@ -2215,37 +2204,37 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="47"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation>Normal</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einfacher Pfeil</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="49"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dreieckiger Pfeil</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="50"/>
         <source>Cercle</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Rund</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="51"/>
         <source>Carré</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Viereck</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="53"/>
         <source>Normale</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Normal</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="54"/>
@@ -2274,17 +2263,17 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Ende 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="79"/>
         <source>Fin 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ende 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="149"/>
         <source>abscisse point 1</source>
-        <translation type="unfinished"></translation>
+        <translation>Abzisse Punkt 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="151"/>
@@ -2294,7 +2283,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="153"/>
         <source>abscisse point 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Abzisse Punkt 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="155"/>
@@ -2304,12 +2293,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="157"/>
         <source>type fin 1</source>
-        <translation type="unfinished"></translation>
+        <translation></translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="159"/>
         <source>longueur fin 1</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ende 1 laenge</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="161"/>
@@ -2319,7 +2308,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
         <source>longueur fin 2</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Ende 2 laenge</translation>
     </message>
 </context>
 <context>
@@ -2327,7 +2316,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
         <source>Langue</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sprache</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="34"/>
@@ -2343,7 +2332,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="47"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zeile zufuegen</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="49"/>
@@ -2355,13 +2344,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/nameslistwidget.cpp" line="88"/>
         <source>Il doit y avoir au moins un nom.</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Es muss mindestens einen Namen geben.</translation>
     </message>
     <message>
         <location filename="../sources/nameslistwidget.cpp" line="89"/>
         <source>Vous devez entrer au moins un nom.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sie mussen mindestens einen Namen einfugen.</translation>
     </message>
 </context>
 <context>
@@ -2370,7 +2359,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/configpages.cpp" line="93"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Neues Diagram</translation>
     </message>
 </context>
 <context>
@@ -2396,13 +2385,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="98"/>
         <source>Sélectionnez une catégorie dans laquelle enregistrer le nouvel élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Suchen sie eine Kategorie aus in der sie das neue Bauteil Speichern.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="114"/>
         <source>Étape 2/5 : Nom du fichier</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stufe 2 von 5: Dateiname</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="115"/>
@@ -2413,7 +2402,7 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="118"/>
         <source>nouvel_element</source>
-        <translation type="unfinished"></translation>
+        <translation>Neues_Bauteil</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="120"/>
@@ -2424,19 +2413,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="137"/>
         <source>Étape 3/5 : Noms de l&apos;élément</source>
         <comment>wizard page title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Stufe 3 von 5 Bauteilname</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="138"/>
         <source>Indiquez le ou les noms de l&apos;élément.</source>
         <comment>wizard page subtitle</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eine oder mehrere Namen fuer das Bauteil eingeben.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="143"/>
         <source>Nom du nouvel élément</source>
         <comment>default name when creating a new element</comment>
-        <translation type="unfinished"></translation>
+        <translation>Name des neuen Bauteils</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="157"/>
@@ -2474,19 +2463,19 @@ Les changements seront définitifs.</source>
         <location filename="../sources/newelementwizard.cpp" line="219"/>
         <source>Vous devez sélectionner une catégorie.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sie muessen eine Kategorie auswaehlen.</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="239"/>
         <source>Vous devez entrer un nom de fichier</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Sie mussen einen Dateinamen eingeben</translation>
     </message>
     <message>
         <location filename="../sources/newelementwizard.cpp" line="251"/>
         <source>Merci de ne pas utiliser les caractères suivants : \ / : * ? &quot; &lt; &gt; |</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bitte die folgenden Zeichen nicht benutzen : \ / : &quot; ? &lt; &gt; |</translation>
     </message>
 </context>
 <context>
@@ -2494,22 +2483,22 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished"></translation>
+        <translation>Form</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Unité</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Einheit</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Dizaine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zehnte</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Centaine</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Hunderte</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -2527,41 +2516,41 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="30"/>
         <source>Possible</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">moeglich</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="31"/>
         <source>Impossible</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">unmoeglich</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="50"/>
         <location filename="../sources/orientationsetwidget.cpp" line="62"/>
         <source>Nord :</source>
-        <translation type="unfinished"></translation>
+        <translation>Norden:</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="52"/>
         <location filename="../sources/orientationsetwidget.cpp" line="66"/>
         <source>Est :</source>
-        <translation type="unfinished"></translation>
+        <translation>Osten:</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="54"/>
         <location filename="../sources/orientationsetwidget.cpp" line="70"/>
         <source>Sud :</source>
-        <translation type="unfinished"></translation>
+        <translation>Sueden:</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="56"/>
         <location filename="../sources/orientationsetwidget.cpp" line="74"/>
         <source>Ouest :</source>
-        <translation type="unfinished"></translation>
+        <translation>Westen:</translation>
     </message>
     <message>
         <location filename="../sources/orientationsetwidget.cpp" line="60"/>
         <source>Par défaut</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Standart</translation>
     </message>
 </context>
 <context>
@@ -2646,13 +2635,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectconfigpages.cpp" line="206"/>
         <source>Nouveau schéma</source>
         <comment>project configuration page title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Neues Diagram</translation>
     </message>
     <message>
         <location filename="../sources/projectconfigpages.cpp" line="250"/>
         <source>Propriétés à utiliser lors de l&apos;ajout d&apos;un nouveau schéma au projet :</source>
         <comment>explicative label</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschaften benutzen bei hinfuegung eines neuen Diagram zum Projekt :</translation>
     </message>
 </context>
 <context>
@@ -2667,7 +2656,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="287"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Speichern unter</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="289"/>
@@ -2685,7 +2674,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="369"/>
         <source>Supprimer le schéma ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Diagram löschen?</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="370"/>
@@ -2697,7 +2686,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/projectview.cpp" line="439"/>
         <source>Propriétés du projet</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Eigenschaften des Projekts</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="526"/>
@@ -2725,12 +2714,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="652"/>
         <source>Supprimer les éléments inutilisés dans le projet</source>
-        <translation type="unfinished"></translation>
+        <translation>Nicht im Projekt benuzte Bauteile löschen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="653"/>
         <source>Supprimer les catégories vides</source>
-        <translation type="unfinished"></translation>
+        <translation>Leere Kategorien löschen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="665"/>
@@ -2741,13 +2730,13 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/projectview.cpp" line="701"/>
         <source>Ajouter un schéma</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Diagram einfuegen</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="715"/>
         <source>Ce projet ne contient aucun schéma</source>
         <comment>label displayed when a project contains no diagram</comment>
-        <translation type="unfinished"></translation>
+        <translation>Dieses Projekt enthaelt kein Diagram</translation>
     </message>
     <message>
         <location filename="../sources/projectview.cpp" line="781"/>
@@ -3093,7 +3082,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
         <source>Imprimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Drucken</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="196"/>
@@ -3103,7 +3092,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="198"/>
         <source>Annuler</source>
-        <translation type="unfinished"></translation>
+        <translation>Abbrechen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
@@ -3143,12 +3132,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="208"/>
         <source>Supprimer</source>
-        <translation type="unfinished"></translation>
+        <translation>Löschen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="209"/>
         <source>Pivoter</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Drehen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="210"/>
@@ -3158,17 +3147,17 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="211"/>
         <source>Retrouver dans le panel</source>
-        <translation type="unfinished">Suche im Panel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="212"/>
         <source>Éditer l&apos;élément</source>
-        <translation type="unfinished">Bauteil bearbeiten</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="213"/>
         <source>Propriétés de la sélection</source>
-        <translation type="unfinished">Auswahl Eigenschaften</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="214"/>
@@ -3178,7 +3167,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="215"/>
         <source>Propriétés du schéma</source>
-        <translation type="unfinished">Schaltplan Eigenschaften</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="216"/>
@@ -3203,7 +3192,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="220"/>
         <source>Ajouter une ligne</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Zeile einfuegen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="221"/>
@@ -3263,7 +3252,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="234"/>
         <source>Pas de zoom</source>
-        <translation type="unfinished"></translation>
+        <translation>Kein Zoom</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="236"/>
@@ -3308,7 +3297,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="252"/>
         <source>Ctrl+Shift+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+I</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="253"/>
@@ -3318,17 +3307,17 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="255"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="263"/>
         <source>Ctrl+Shift+A</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Shift+A</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="264"/>
         <source>Ctrl+I</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+I</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="268"/>
@@ -3373,12 +3362,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="282"/>
         <source>Ctrl+9</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+9</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="283"/>
         <source>Ctrl+0</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+0</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="289"/>
@@ -3438,7 +3427,7 @@ Options disponibles :
         <location filename="../sources/qetdiagrameditor.cpp" line="298"/>
         <source>Ferme l&apos;application QElectroTech</source>
         <comment>status bar tip</comment>
-        <translation type="unfinished">Anwendung QElectroTech schließen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="300"/>
@@ -3710,7 +3699,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="675"/>
         <source>Ouvrir un fichier</source>
-        <translation type="unfinished"></translation>
+        <translation>Datei oeffnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="677"/>
@@ -4114,7 +4103,7 @@ Options disponibles :
         <location filename="../sources/editor/qetelementeditor.cpp" line="307"/>
         <source>Élément</source>
         <comment>toolbar title</comment>
-        <translation type="unfinished">Bauteil</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="309"/>
@@ -4148,249 +4137,247 @@ Options disponibles :
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="467"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="464"/>
         <source>[Modifié]</source>
         <comment>window title tag</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="469"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="466"/>
         <source> [lecture seule]</source>
         <comment>window title tag</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="508"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="505"/>
         <source>Informations</source>
         <comment>dock title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="517"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="514"/>
         <source>Annulations</source>
         <comment>dock title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="524"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="521"/>
         <source>Aucune modification</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="535"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="532"/>
         <source>Parties</source>
         <comment>dock title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="547"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="544"/>
         <source>Éditeur d&apos;éléments</source>
         <comment>status bar message</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="602"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="599"/>
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="637"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="634"/>
         <source>Dimensions de l&apos;élément</source>
         <comment>warning title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="638"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="635"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="653"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="650"/>
         <source>Absence de borne</source>
         <comment>warning title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="654"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="651"/>
         <source>L&apos;élément ne comporte aucune borne. Un élément doit comporter des bornes afin de pouvoir étre relié à d&apos;autres éléments par l&apos;intermédiaire de conducteurs.</source>
         <comment>warning description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../sources/editor/qetelementeditor.cpp" line="667"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="664"/>
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="677"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="674"/>
         <source>&lt;b&gt;%1&lt;/b&gt; : %2</source>
         <comment>warning title: warning description</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="687"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="684"/>
         <source>Avertissements</source>
         <comment>messagebox title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="705"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="702"/>
         <source>Le fichier %1 n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="713"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1340"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="710"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1334"/>
         <source>Impossible d&apos;ouvrir le fichier %1.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="722"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1344"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="719"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1338"/>
         <source>Ce fichier n&apos;est pas un document XML valide</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="728"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1350"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="725"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1344"/>
         <source>Erreur</source>
         <comment>toolbar title</comment>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="740"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1313"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="737"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1307"/>
         <source>Édition en lecture seule</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="741"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1314"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="738"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1308"/>
         <source>Vous n&apos;avez pas les privilèges nécessaires pour modifier cet élement. Il sera donc ouvert en lecture seule.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="765"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="791"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="802"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="762"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="788"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="799"/>
         <source>Erreur</source>
         <comment>message box title</comment>
         <translation>Fehler</translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="766"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="763"/>
         <source>Impossible d&apos;écrire dans ce fichier</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="792"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="789"/>
         <source>Impossible d&apos;atteindre l&apos;élément</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="803"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="800"/>
         <source>Impossible d&apos;enregistrer l&apos;élément</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="931"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="928"/>
         <source>Impossible d&apos;ouvrir le fichier</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="933"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="930"/>
         <source>Il semblerait que le fichier %1 que vous essayez d&apos;ouvrir n&apos;existe pas ou plus.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="950"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="947"/>
         <source>Recharger l&apos;élément</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="951"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="948"/>
         <source>Vous avez efffectué des modifications sur cet élément. Si vous le rechargez, ces modifications seront perdues. Voulez-vous vraiment recharger l&apos;élément ?</source>
         <comment>dialog content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1025"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1023"/>
         <source>Enregistrer sous</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1027"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1025"/>
         <source>Éléments QElectroTech (*.elmt)</source>
         <comment>filetypes allowed when saving an element file</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1063"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1057"/>
         <source>Enregistrer l&apos;élément en cours ?</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1065"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1059"/>
         <source>Voulez-vous enregistrer l&apos;élément %1 ?</source>
         <comment>dialog content - %1 is an element name</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1163"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1157"/>
         <source>Trop de primitives, liste non générée.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1262"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1256"/>
         <source>Ouvrir un fichier</source>
         <comment>dialog title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1264"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1258"/>
         <source>Éléments QElectroTech (*.elmt);;Fichiers XML (*.xml);;Tous les fichiers (*)</source>
         <comment>filetypes allowed when opening an element file</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1285"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1294"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1370"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1379"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1279"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1288"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1364"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1373"/>
         <source>Élément inexistant.</source>
         <comment>message box title</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1286"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1371"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1280"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1365"/>
         <source>L&apos;élément n&apos;existe pas.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1295"/>
-        <location filename="../sources/editor/qetelementeditor.cpp" line="1380"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1289"/>
+        <location filename="../sources/editor/qetelementeditor.cpp" line="1374"/>
         <source>Le chemin virtuel choisi ne correspond pas à un élément.</source>
         <comment>message box content</comment>
         <translation type="unfinished"></translation>
@@ -4589,7 +4576,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="235"/>
         <source>Options d&apos;impression</source>
-        <translation type="unfinished">Druckoptionen</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/qetprintpreviewdialog.cpp" line="236"/>
@@ -5127,43 +5114,43 @@ Que désirez vous faire ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="748"/>
+        <location filename="../sources/diagramcommands.cpp" line="722"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="772"/>
+        <location filename="../sources/diagramcommands.cpp" line="746"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="825"/>
+        <location filename="../sources/diagramcommands.cpp" line="799"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="863"/>
+        <location filename="../sources/diagramcommands.cpp" line="837"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="894"/>
+        <location filename="../sources/diagramcommands.cpp" line="868"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="921"/>
+        <location filename="../sources/diagramcommands.cpp" line="895"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="972"/>
+        <location filename="../sources/diagramcommands.cpp" line="946"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation type="unfinished"></translation>
@@ -5309,7 +5296,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/partterminal.h" line="49"/>
         <source>borne</source>
         <comment>element part name</comment>
-        <translation type="unfinished">Anschluss</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/parttext.cpp" line="49"/>
@@ -5333,12 +5320,12 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/parttextfield.h" line="54"/>
         <source>champ de texte</source>
         <comment>element part name</comment>
-        <translation type="unfinished">Textfeld</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="633"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Schaltplan ohne Titel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/exportdialog.cpp" line="635"/>
@@ -5371,7 +5358,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5392,7 +5378,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5406,7 +5391,6 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5510,7 +5494,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5518,7 +5501,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5625,12 +5607,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="111"/>
         <source>abscisse</source>
-        <translation type="unfinished">Abzisse</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="113"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/rectangleeditor.cpp" line="115"/>
@@ -5683,7 +5665,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation type="unfinished">Wert</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
@@ -5693,7 +5675,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.cpp" line="34"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Schaltplan ohne Titel</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -5750,7 +5732,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/styleeditor.cpp" line="45"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
-        <translation type="unfinished">Strichpunkt-Linie</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="50"/>
@@ -5907,12 +5889,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="114"/>
         <source>abscisse</source>
-        <translation type="unfinished">Abzisse</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="116"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/terminaleditor.cpp" line="118"/>
@@ -5978,12 +5960,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="135"/>
         <source>abscisse</source>
-        <translation type="unfinished">Abzisse</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="137"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/texteditor.cpp" line="141"/>
@@ -6048,12 +6030,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="125"/>
         <source>abscisse</source>
-        <translation type="unfinished">Abzisse</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="127"/>
         <source>ordonnée</source>
-        <translation type="unfinished">Ordinante</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/editor/textfieldeditor.cpp" line="131"/>
@@ -6262,7 +6244,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="56"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="60"/>
@@ -6303,7 +6285,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="78"/>
         <source>horizontal :</source>
-        <translation type="unfinished">horizontal</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="80"/>
@@ -6323,7 +6305,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="86"/>
         <source>vertical :</source>
-        <translation type="unfinished">vertikal</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatecellwidget.cpp" line="88"/>
@@ -6464,7 +6446,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="91"/>
         <source>Nom :</source>
-        <translation type="unfinished">Name:</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/titleblock/templatelogomanager.cpp" line="93"/>
@@ -6755,7 +6737,7 @@ Longueur maximale : %2px
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="69"/>
         <source>Schéma sans titre</source>
-        <translation type="unfinished">Schaltplan ohne Titel</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../sources/ui/diagramselection.cpp" line="102"/>
