@@ -1,13 +1,14 @@
 <definition width="170" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
     <names>
         <name lang="ar">PS 307   5A</name>
+        <name lang="pt">PS 307   5A</name>
+        <name lang="el">PS 307   5A</name>
         <name lang="en">PS 307   5A</name>
+        <name lang="it">PS 307   5A</name>
         <name lang="fr">PS 307   5A</name>
         <name lang="pl">PS 307   5A</name>
-        <name lang="cs">PS 307   5A</name>
-        <name lang="pt">PS 307   5A</name>
         <name lang="es">PS 307   5A</name>
-        <name lang="it">PS 307   5A</name>
+        <name lang="cs">PS 307   5A</name>
     </names>
     <informations></informations>
     <description>

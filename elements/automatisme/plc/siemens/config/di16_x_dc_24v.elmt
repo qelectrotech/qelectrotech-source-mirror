@@ -1,13 +1,14 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
     <names>
         <name lang="ar">SM321   DI 16 x DC24V</name>
+        <name lang="pt">SM321   DI 16 x DC24V</name>
+        <name lang="el">SM321   DI 16 x DC24V</name>
         <name lang="en">SM321   DI 16 x DC24V</name>
+        <name lang="it">SM321   DI 16 x DC24V</name>
         <name lang="fr">SM321   DI 16 x DC24V</name>
         <name lang="pl">SM321   DI 16 x DC24V</name>
-        <name lang="cs">SM321   DI 16 x DC24V</name>
-        <name lang="pt">SM321   DI 16 x DC24V</name>
         <name lang="es">SM321   DI 16 x DC24V</name>
-        <name lang="it">SM321   DI 16 x DC24V</name>
+        <name lang="cs">SM321   DI 16 x DC24V</name>
     </names>
     <informations></informations>
     <description>

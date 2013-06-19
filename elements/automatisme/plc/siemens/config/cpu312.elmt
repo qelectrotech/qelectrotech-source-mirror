@@ -1,13 +1,14 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
     <names>
         <name lang="ar">CPU 312</name>
+        <name lang="pt">CPU 312</name>
+        <name lang="el">CPU 312</name>
         <name lang="en">CPU 312</name>
+        <name lang="it">CPU 312</name>
         <name lang="fr">CPU 312</name>
         <name lang="pl">CPU 312</name>
-        <name lang="cs">CPU 312</name>
-        <name lang="pt">CPU 312</name>
         <name lang="es">CPU 312</name>
-        <name lang="it">CPU 312</name>
+        <name lang="cs">CPU 312</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,14 @@
 <definition width="90" version="0.3" hotspot_x="15" hotspot_y="35" height="260" type="element" orientation="dnnn">
     <names>
         <name lang="ar">SM322   DO 32 x DC24V/0,5A</name>
+        <name lang="pt">SM322   DO 32 x DC24V/0,5A</name>
+        <name lang="el">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="en">SM322   DO 32 x DC24V/0,5A</name>
+        <name lang="it">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="fr">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="pl">SM322   DO 32 x DC24V/0,5A</name>
-        <name lang="cs">SM322   DO 32 x DC24V/0,5A</name>
-        <name lang="pt">SM322   DO 32 x DC24V/0,5A</name>
         <name lang="es">SM322   DO 32 x DC24V/0,5A</name>
-        <name lang="it">SM322   DO 32 x DC24V/0,5A</name>
+        <name lang="cs">SM322   DO 32 x DC24V/0,5A</name>
     </names>
     <informations></informations>
     <description>

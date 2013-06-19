@@ -1,13 +1,14 @@
 <definition width="320" version="0.3" hotspot_x="15" hotspot_y="45" height="110" type="element" ic="true" orientation="dnnn">
     <names>
         <name lang="ar">6ES7 360-3AA01-0AA0</name>
+        <name lang="pt">6ES7 360-3AA01-0AA0</name>
+        <name lang="el">6ES7 360-3AA01-0AA0</name>
         <name lang="en">6ES7 360-3AA01-0AA0</name>
+        <name lang="it">6ES7 360-3AA01-0AA0</name>
         <name lang="fr">6ES7 360-3AA01-0AA0</name>
         <name lang="pl">6ES7 360-3AA01-0AA0</name>
-        <name lang="cs">6ES7 360-3AA01-0AA0</name>
-        <name lang="pt">6ES7 360-3AA01-0AA0</name>
         <name lang="es">6ES7 360-3AA01-0AA0</name>
-        <name lang="it">6ES7 360-3AA01-0AA0</name>
+        <name lang="cs">6ES7 360-3AA01-0AA0</name>
     </names>
     <informations></informations>
     <description>
