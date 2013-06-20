@@ -135,6 +135,7 @@ QWidget *AboutQET::translatorsTab() const {
 	addAuthor(translators, "Pawe&#x0142; &#x015A;miech", "pawel32640@gmail.com",        tr("Traduction en polonais"));
 	addAuthor(translators, "Markus Budde",               "markus.budde@msn.com",        tr("Traduction en allemand"));
 	addAuthor(translators, "Jonas Stein",                "news@jonasstein.de",          tr("Traduction en allemand"));
+	addAuthor(translators, "Noah Braden",                "",                            tr("Traduction en allemand"));
 	addAuthor(translators, "Gabi Mandoc",                "gabriel.mandoc@gic.ro",       tr("Traduction en roumain"));
 	addAuthor(translators, "Alessandro Conti",           "dr.slump@alexconti.it",       tr("Traduction en italien"));
 	addAuthor(translators, "Silvio",                     "silvio@qelectrotech.org",     tr("Traduction en italien"));
