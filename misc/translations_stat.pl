@@ -107,7 +107,7 @@ our %languages = (
 	'de' => {
 		'name'               => 'Deutsch',
 		'french_name'        => 'Allemand',
-		'translator_name'    => 'Markus Budde && Jonas Stein',
+		'translator_name'    => 'Markus Budde && Jonas Stein &&	 Noah Braden',
 		'translator_mail_ml' => 'markus.budde@msn.com',
 		'qt'                 => 1
 	},
