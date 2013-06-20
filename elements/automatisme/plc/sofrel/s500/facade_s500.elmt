@@ -1,13 +1,13 @@
-<definition width="830" version="0.3" hotspot_x="4" hotspot_y="4" height="400" type="element" orientation="dnnn">
+<definition width="1160" version="0.3" hotspot_x="4" hotspot_y="10" height="400" type="element" orientation="dnnn">
     <names>
         <name lang="ar">واجهة S550</name>
+        <name lang="pt">Unidade de telemetria S550</name>
         <name lang="en">Facade S550</name>
+        <name lang="it">Frontale S550</name>
         <name lang="fr">Façade S550</name>
         <name lang="pl">Lokalna jednostka telemetryczna S550</name>
-        <name lang="cs">Místní telemetrická jednotka S550</name>
-        <name lang="pt">Unidade de telemetria S550</name>
         <name lang="es">Facade S550</name>
-        <name lang="it">Frontale S550</name>
+        <name lang="cs">Místní telemetrická jednotka S550</name>
     </names>
     <informations></informations>
     <description>

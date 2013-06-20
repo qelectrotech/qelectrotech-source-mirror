@@ -1,10 +1,11 @@
 <definition width="380" version="0.3" hotspot_x="10" hotspot_y="10" height="90" type="element" orientation="dyyy">
     <names>
+        <name lang="el">TWDALM3LT</name>
         <name lang="en">TWDALM3LT</name>
+        <name lang="it">TWDALM3LT</name>
         <name lang="fr">TWDALM3LT</name>
         <name lang="pl">TWDALM3LT</name>
         <name lang="cs">TWDALM3LT</name>
-        <name lang="it">TWDALM3LT</name>
     </names>
     <informations></informations>
     <description>

@@ -1,9 +1,10 @@
 <definition width="60" version="0.3" hotspot_x="10" hotspot_y="10" height="60" type="element" orientation="dnnn">
     <names>
+        <name lang="el">Κίνδυνος ηλεκτροπληξίας</name>
         <name lang="en">Danger electric</name>
+        <name lang="it">Pericolo elettrico</name>
         <name lang="fr">Danger electrique</name>
         <name lang="pl">Pod napięciem</name>
-        <name lang="it">Pericolo elettrico</name>
         <name lang="cs">Pod napětím</name>
     </names>
     <informations></informations>

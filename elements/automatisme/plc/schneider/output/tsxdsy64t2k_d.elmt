@@ -1,13 +1,14 @@
 <definition width="900" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">TSX DSY 64T2K (connecteur D)</name>
+        <name lang="pt">TSX DSY 64T2K (conector D)</name>
+        <name lang="el">TSX DSY 64T2K (conector D)</name>
         <name lang="en">TSX DSY 64T2K (connector D)</name>
+        <name lang="it">TSX DSY 64T2K (connettore D)</name>
         <name lang="fr">TSX DSY 64T2K (connecteur D)</name>
         <name lang="pl">TSX DSY 64T2K (część D)</name>
         <name lang="es">TSX DSY 64T2K (conector D)</name>
         <name lang="cs">TSX DSY 64T2K (spojka D)</name>
-        <name lang="pt">TSX DSY 64T2K (conector D)</name>
-        <name lang="it">TSX DSY 64T2K (connettore D)</name>
     </names>
     <informations></informations>
     <description>

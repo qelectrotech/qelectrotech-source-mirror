@@ -1,5 +1,6 @@
-<definition width="30" version="0.3" hotspot_x="0" hotspot_y="30" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="0" hotspot_y="35" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="el">MY</name>
         <name lang="en">MY</name>
         <name lang="it">MY</name>
         <name lang="fr">MY</name>

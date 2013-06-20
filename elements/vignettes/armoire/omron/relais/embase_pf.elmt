@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="5" hotspot_y="35" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Βάση PF</name>
         <name lang="en">Base PF</name>
         <name lang="it">Base PF</name>
         <name lang="fr">embase PF</name>

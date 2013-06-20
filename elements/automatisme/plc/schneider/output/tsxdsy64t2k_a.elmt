@@ -1,13 +1,14 @@
 <definition width="900" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">TSX DSY 64T2K ( A وصلة )</name>
+        <name lang="pt">TSX DSY 64T2K (conector A)</name>
+        <name lang="el">TSX DSY 64T2K (conector A)</name>
         <name lang="en">TSX DSY 64T2K (connector A)</name>
+        <name lang="it">TSX DSY 64T2K (connettore A)</name>
         <name lang="fr">TSX DSY 64T2K (connecteur A)</name>
         <name lang="pl">TSX DSY 64T2K (część A)</name>
         <name lang="es">TSX DSY 64T2K (conector A)</name>
         <name lang="cs">TSX DSY 64T2K (spojka A)</name>
-        <name lang="pt">TSX DSY 64T2K (conector A)</name>
-        <name lang="it">TSX DSY 64T2K (connettore A)</name>
     </names>
     <informations></informations>
     <description>

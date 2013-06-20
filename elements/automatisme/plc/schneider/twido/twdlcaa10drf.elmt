@@ -1,11 +1,12 @@
-<definition width="380" version="0.3" hotspot_x="20" hotspot_y="30" height="170" type="element" orientation="dyyy">
+<definition width="390" version="0.3" hotspot_x="25" hotspot_y="30" height="170" type="element" orientation="dyyy">
     <names>
         <name lang="ar">TWDLCAA10DRF</name>
+        <name lang="el">TWDLCAA10DRF</name>
         <name lang="en">TWDLCAA10DRF</name>
+        <name lang="it">TWDLCAA10DRF</name>
         <name lang="fr">TWDLCAA10DRF</name>
         <name lang="pl">TWDLCAA10DRF</name>
         <name lang="cs">TWDLCAA10DRF</name>
-        <name lang="it">TWDLCAA10DRF</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,14 @@
 <definition width="900" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">TSX DEY 64D2K (وصلة A)</name>
+        <name lang="pt">TSX DEY 64D2K (conector A)</name>
+        <name lang="el">TSX DEY 64D2K (conector A)</name>
         <name lang="en">TSX DEY 64D2K (connector A)</name>
+        <name lang="it">TSX DEY 64D2K (connettore A)</name>
         <name lang="fr">TSX DEY 64D2K (connecteur A)</name>
         <name lang="pl">TSX DEY 64D2K (część A)</name>
         <name lang="es">TSX DEY 64D2K (conector A)</name>
         <name lang="cs">TSX DEY 64D2K (spojka A)</name>
-        <name lang="pt">TSX DEY 64D2K (conector A)</name>
-        <name lang="it">TSX DEY 64D2K (connettore A)</name>
     </names>
     <informations></informations>
     <description>

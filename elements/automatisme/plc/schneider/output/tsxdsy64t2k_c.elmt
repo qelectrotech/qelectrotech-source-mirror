@@ -1,13 +1,14 @@
 <definition width="900" version="0.3" hotspot_x="15" hotspot_y="45" height="100" type="element" orientation="dnnn">
     <names>
         <name lang="ar">TSX DSY 64T2K (وصلة C)</name>
+        <name lang="pt">TSX DSY 64T2K (conector C)</name>
+        <name lang="el">TSX DSY 64T2K (conector C)</name>
         <name lang="en">TSX DSY 64T2K (connector C)</name>
+        <name lang="it">TSX DSY 64T2K (connettore C)</name>
         <name lang="fr">TSX DSY 64T2K (connecteur C)</name>
         <name lang="pl">TSX DSY 64T2K (część C)</name>
         <name lang="es">TSX DSY 64T2K (conector C)</name>
         <name lang="cs">TSX DSY 64T2K (spojka C)</name>
-        <name lang="pt">TSX DSY 64T2K (conector C)</name>
-        <name lang="it">TSX DSY 64T2K (connettore C)</name>
     </names>
     <informations></informations>
     <description>

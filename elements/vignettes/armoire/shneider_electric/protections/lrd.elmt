@@ -1,10 +1,11 @@
-<definition width="50" version="0.3" hotspot_x="0" hotspot_y="60" height="60" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="2" hotspot_y="58" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="el">LRD</name>
         <name lang="en">LRD</name>
+        <name lang="it">LRD</name>
         <name lang="fr">LRD</name>
         <name lang="pl">LRD</name>
         <name lang="cs">LRD</name>
-        <name lang="it">LRD</name>
     </names>
     <informations></informations>
     <description>

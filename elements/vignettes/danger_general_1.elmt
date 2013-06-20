@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="el">Κίνδυνος, γενικά</name>
         <name lang="en">Danger general</name>
+        <name lang="it">Pericolo Generico</name>
         <name lang="fr">Danger</name>
         <name lang="pl">Inne niebezpieczeństwo</name>
-        <name lang="it">Pericolo Generico</name>
         <name lang="cs">Jiné nebezpečí</name>
     </names>
     <informations></informations>

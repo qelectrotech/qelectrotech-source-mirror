@@ -1,5 +1,6 @@
-<definition width="20" version="0.3" hotspot_x="5" hotspot_y="55" height="90" type="element" orientation="dyyy">
+<definition width="20" version="0.3" hotspot_x="3" hotspot_y="53" height="90" type="element" orientation="dyyy">
     <names>
+        <name lang="el">Βάση P2RF 1</name>
         <name lang="en">Base P2RF 1</name>
         <name lang="it">Base P2RF 1</name>
         <name lang="fr">embase P2RF 1</name>

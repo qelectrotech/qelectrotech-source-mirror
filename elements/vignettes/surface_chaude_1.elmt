@@ -1,9 +1,10 @@
 <definition width="40" version="0.3" hotspot_x="0" hotspot_y="0" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="el">Θερμή επιφάνεια</name>
         <name lang="en">hot surface</name>
+        <name lang="it">Superfice calda</name>
         <name lang="fr">Surface chaude</name>
         <name lang="pl">Gorąca powierzchnia</name>
-        <name lang="it">Superfice calda</name>
         <name lang="cs">Horký povrch</name>
     </names>
     <informations></informations>
