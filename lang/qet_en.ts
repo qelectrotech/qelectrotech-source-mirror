@@ -64,7 +64,7 @@
         <location filename="../sources/aboutqet.cpp" line="96"/>
         <source>© 2006-2013 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 QElectroTech developers {2006-2013 ?}</translation>
+        <translation>© 2006-2012 QElectroTech developers {2006-2013}</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
@@ -145,7 +145,7 @@
         <location filename="../sources/aboutqet.cpp" line="144"/>
         <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Greek translation</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="165"/>
@@ -165,7 +165,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Paquets gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation>Gentoo packages</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>

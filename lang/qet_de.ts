@@ -55,7 +55,7 @@
         <location filename="../sources/aboutqet.cpp" line="96"/>
         <source>© 2006-2013 Les développeurs de QElectroTech</source>
         <comment>about tab, developers line</comment>
-        <translation type="unfinished">© 2006-2012 QElectroTech Entwickler {2006-2013 ?}</translation>
+        <translation>© 2006-2012 QElectroTech Entwickler {2006-2013}</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="100"/>
@@ -141,7 +141,7 @@
         <location filename="../sources/aboutqet.cpp" line="144"/>
         <location filename="../sources/aboutqet.cpp" line="145"/>
         <source>Traduction en grec</source>
-        <translation type="unfinished"></translation>
+        <translation>Übersetzung ins Griechische</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="165"/>
@@ -161,7 +161,7 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Paquets gentoo</source>
-        <translation type="unfinished"></translation>
+        <translation>Gentoo Pakete</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="169"/>
@@ -775,7 +775,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="14"/>
         <source>Annotation des schémas</source>
-        <translation type="unfinished">Diagram Anmerkung</translation>
+        <translation>Diagram Anmerkung</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="28"/>
@@ -785,12 +785,12 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="42"/>
         <source>Annotation</source>
-        <translation type="unfinished">Anmerkung</translation>
+        <translation>Anmerkung</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="50"/>
         <source>Sélection</source>
-        <translation type="unfinished">Auswahl</translation>
+        <translation>Auswahl</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="58"/>
@@ -800,12 +800,12 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="75"/>
         <source>Composants</source>
-        <translation type="unfinished">Komponenten</translation>
+        <translation>Komponenten</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/dialogautonum.ui" line="96"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Numérotée les folio sélectionné&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Nummerierung des ausgewählten Schaltplans&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="99"/>
@@ -820,7 +820,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="113"/>
         <source>Supprimer l&apos;annotation</source>
-        <translation type="unfinished">Anmerkung loeschen</translation>
+        <translation>Anmerkung löschen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.ui" line="147"/>
@@ -937,7 +937,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="67"/>
         <source>Choisissez l&apos;élément dans lequel vous souhaitez enregistrer votre définition.</source>
         <comment>dialog content</comment>
-        <translation type="unfinished">Bauteil waehlen in dem sie eure Definition speichern wollen.</translation>
+        <translation>Bauteil wählen, in dem Sie Ihre Definition speichern wollen.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="69"/>
@@ -968,13 +968,13 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="283"/>
         <source>Pas de sélection</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>keine Auswahl</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="246"/>
         <source>Vous devez sélectionner un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Sie mussen ein Bauteil auswaehlen.</translation>
+        <translation>Sie müssen ein Bauteil auswählen.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="256"/>
@@ -1006,36 +1006,36 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="284"/>
         <source>Vous devez sélectionner une catégorie ou un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Sie mussen eine Kategorie oder ein Bauteil auswaehlen.</translation>
+        <translation>Sie müssen eine Kategorie oder ein Bauteil auswählen.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="307"/>
         <source>Nom manquant</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Name erwuencht</translation>
+        <translation>Name erforderlich</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="308"/>
         <source>Vous devez entrer un nom pour l&apos;élément</source>
         <comment>message box content</comment>
-        <translation type="unfinished">Bitte einen Namen fuer das Element eingeben</translation>
+        <translation>Bitte einen Namen für das Element eingeben</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="317"/>
         <source>Nom invalide</source>
         <comment>message box title</comment>
-        <translation type="unfinished">Ungueltiger Name</translation>
+        <translation>Ungültiger Name</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="319"/>
         <source>Vous ne pouvez pas utiliser les caractères suivants dans le nom de l&apos;élément : %1</source>
-        <translation type="unfinished">Folgende Charakter sind fuer den Namen des Bauteils nicht gueltig:%1</translation>
+        <translation>Folgende Zeichen sind für den Namen des Bauteils nicht gültig:%1</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="345"/>
         <source>Écraser l&apos;élément ?</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bauteil überschreiben?</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="346"/>
@@ -1112,7 +1112,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
         <source>Éditer les informations sur l&apos;auteur</source>
         <comment>window title</comment>
-        <translation type="unfinished"></translation>
+        <translation>Bearbeite Autoreninformation</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="822"/>
@@ -2223,13 +2223,13 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
         <source>Flèche simple</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished">Einfacher Pfeil</translation>
+        <translation>Einfacher Pfeil</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="49"/>
         <source>Flèche triangulaire</source>
         <comment>type of the 1st end of a line</comment>
-        <translation type="unfinished">Dreieckiger Pfeil</translation>
+        <translation>Dreieckiger Pfeil</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="50"/>
@@ -2311,17 +2311,17 @@ Veraenderungen werden endgueltig sein.</translation>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="159"/>
         <source>longueur fin 1</source>
-        <translation type="unfinished">Ende 1 laenge</translation>
+        <translation>Ende 1 Länge</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="161"/>
         <source>type fin 2</source>
-        <translation type="unfinished"></translation>
+        <translation>Ende 2 Typ</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="163"/>
         <source>longueur fin 2</source>
-        <translation type="unfinished">Ende 2 laenge</translation>
+        <translation>Ende 2 Länge</translation>
     </message>
 </context>
 <context>
@@ -2372,7 +2372,7 @@ Veraenderungen werden endgueltig sein.</translation>
         <location filename="../sources/configpages.cpp" line="93"/>
         <source>Nouveau schéma</source>
         <comment>configuration page title</comment>
-        <translation type="unfinished">Neues Diagram</translation>
+        <translation>Neuer Schaltplan</translation>
     </message>
 </context>
 <context>
@@ -2501,17 +2501,17 @@ Veraenderungen werden endgueltig sein.</translation>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="29"/>
         <source>Unité</source>
-        <translation type="unfinished">Einheit</translation>
+        <translation>Einheit</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="34"/>
         <source>Dizaine</source>
-        <translation type="unfinished">Zehnte</translation>
+        <translation>Zehner</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="39"/>
         <source>Centaine</source>
-        <translation type="unfinished">Hunderte</translation>
+        <translation>Hunderter</translation>
     </message>
     <message>
         <location filename="../sources/ui/numparteditorw.ui" line="44"/>
@@ -2521,7 +2521,7 @@ Veraenderungen werden endgueltig sein.</translation>
     <message utf8="true">
         <location filename="../sources/ui/numparteditorw.ui" line="49"/>
         <source>N° folio</source>
-        <translation type="unfinished"></translation>
+        <translation>Seitenzahl</translation>
     </message>
 </context>
 <context>
@@ -3060,7 +3060,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="188"/>
         <source>&amp;Ouvrir</source>
-        <translation type="unfinished">&amp;Oeffnen</translation>
+        <translation>Ö&amp;ffnen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="189"/>
@@ -3070,7 +3070,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="190"/>
         <source>&amp;Enregistrer</source>
-        <translation type="unfinished">&amp;Speichern</translation>
+        <translation>&amp;Speichern</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="191"/>
@@ -3085,12 +3085,12 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="193"/>
         <source>&amp;Importer</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Importieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="194"/>
         <source>E&amp;xporter</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Exportieren</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="195"/>
@@ -3110,7 +3110,7 @@ Options disponibles :
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="200"/>
         <source>Refaire</source>
-        <translation type="unfinished">Erneuern</translation>
+        <translation>Wiederholen</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="202"/>
@@ -4195,7 +4195,6 @@ Options disponibles :
         <source>%n partie(s) sélectionnée(s).</source>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -4227,7 +4226,6 @@ Options disponibles :
         <source>La vérification de cet élément a généré %n avertissement(s) :</source>
         <comment>message box content</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5373,7 +5371,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5394,7 +5391,6 @@ Que désirez vous faire ?</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message>
@@ -5408,7 +5404,6 @@ Que désirez vous faire ?</source>
         <source>%n champ(s) de texte</source>
         <comment>part of a sentence listing the content of a diagram</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5512,7 +5507,6 @@ Que désirez vous faire ?</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
             <numerusform></numerusform>
-            <numerusform></numerusform>
         </translation>
     </message>
     <message numerus="yes">
@@ -5520,7 +5514,6 @@ Que désirez vous faire ?</source>
         <source>Coller %n cellule(s)</source>
         <comment>undo caption</comment>
         <translation type="unfinished">
-            <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
     </message>
@@ -5650,12 +5643,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="14"/>
         <source>Form</source>
-        <translation type="unfinished">Form</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="25"/>
         <source>Folio:  </source>
-        <translation type="unfinished"></translation>
+        <translation>Seite:</translation>
     </message>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="32"/>
@@ -5685,7 +5678,7 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/ui/selectautonumw.ui" line="117"/>
         <source>Valeur</source>
-        <translation type="unfinished">Wert</translation>
+        <translation>Wert</translation>
     </message>
     <message utf8="true">
         <location filename="../sources/ui/selectautonumw.ui" line="133"/>
@@ -6079,7 +6072,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="118"/>
         <source>Largeur :</source>
         <comment>default dialog label</comment>
-        <translation type="unfinished">Breite :</translation>
+        <translation>Breite:</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/dimensionwidget.cpp" line="125"/>
@@ -6156,12 +6149,12 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="312"/>
         <source>Date courante</source>
-        <translation type="unfinished"></translation>
+        <translation>Aktuelles Datum</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="313"/>
         <source>Date fixe : </source>
-        <translation type="unfinished"></translation>
+        <translation>Festes Datum:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="331"/>
@@ -6196,27 +6189,27 @@ Que désirez vous faire ?</source>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="379"/>
         <source>Titre : </source>
-        <translation type="unfinished"></translation>
+        <translation>Titel:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="381"/>
         <source>Auteur : </source>
-        <translation type="unfinished"></translation>
+        <translation>Autor:</translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="383"/>
         <source>Date : </source>
-        <translation type="unfinished"></translation>
+        <translation>Datum: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="385"/>
         <source>Fichier : </source>
-        <translation type="unfinished"></translation>
+        <translation>Datei: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="387"/>
         <source>Folio : </source>
-        <translation type="unfinished"></translation>
+        <translation>Seite: </translation>
     </message>
     <message>
         <location filename="../sources/titleblockpropertieswidget.cpp" line="422"/>
