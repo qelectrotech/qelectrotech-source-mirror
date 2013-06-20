@@ -5171,43 +5171,43 @@ Co chcesz zrobić ?</translation>
         <translation>obrócenie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="748"/>
+        <location filename="../sources/diagramcommands.cpp" line="740"/>
         <source>orienter %1 à %2°</source>
         <comment>undo caption - %1 looks like &apos;42 texts&apos;, %2 is a rotation angle</comment>
         <translation>zmiana orientacji %1 na %2</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="772"/>
+        <location filename="../sources/diagramcommands.cpp" line="764"/>
         <source>modifier un conducteur</source>
         <comment>undo caption</comment>
         <translation>zmiana przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="825"/>
+        <location filename="../sources/diagramcommands.cpp" line="817"/>
         <source>Réinitialiser %1</source>
         <comment>undo caption - %1 is a sentence listing the reset content</comment>
         <translation>Przywrócenie %1</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="863"/>
+        <location filename="../sources/diagramcommands.cpp" line="855"/>
         <source>modifier le cartouche</source>
         <comment>undo caption</comment>
         <translation>zmiana tabliczki rysunkowej</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="894"/>
+        <location filename="../sources/diagramcommands.cpp" line="886"/>
         <source>modifier les dimensions du schéma</source>
         <comment>undo caption</comment>
         <translation>zmiana rozmiaru schematu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="921"/>
+        <location filename="../sources/diagramcommands.cpp" line="913"/>
         <source>modifier les propriétés d&apos;un conducteur</source>
         <comment>undo caption</comment>
         <translation>zmiana właściwości przewodu</translation>
     </message>
     <message>
-        <location filename="../sources/diagramcommands.cpp" line="972"/>
+        <location filename="../sources/diagramcommands.cpp" line="964"/>
         <source>modifier les propriétés de plusieurs conducteurs</source>
         <comment>undo caption</comment>
         <translation>zmiana właściwości przewodów</translation>
