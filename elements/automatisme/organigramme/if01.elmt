@@ -2,9 +2,10 @@
     <names>
         <name lang="el">ΑΝ 01</name>
         <name lang="en">IF 01</name>
-        <name lang="fr">IF 01</name>
-        <name lang="cs">IF 01</name>
         <name lang="it">Decisione (IF)</name>
+        <name lang="fr">IF 01</name>
+        <name lang="pl">Blok decyzyjny, warunkowy</name>
+        <name lang="cs">IF 01</name>
     </names>
     <informations>ezza</informations>
     <description>

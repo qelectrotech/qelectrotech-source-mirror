@@ -2,9 +2,10 @@
     <names>
         <name lang="el">Έγγραφο</name>
         <name lang="en">Document</name>
-        <name lang="fr">Document</name>
-        <name lang="cs">Dokument</name>
         <name lang="it">Documento</name>
+        <name lang="fr">Document</name>
+        <name lang="pl">Dokument</name>
+        <name lang="cs">Dokument</name>
     </names>
     <informations>ezza</informations>
     <description>

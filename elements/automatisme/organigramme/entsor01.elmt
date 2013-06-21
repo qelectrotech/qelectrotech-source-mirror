@@ -2,9 +2,10 @@
     <names>
         <name lang="el">Είσοδος/Έξοδος</name>
         <name lang="en">Input / Output</name>
-        <name lang="fr">Entrée/Sortie</name>
-        <name lang="cs">Vstup/Výstup</name>
         <name lang="it">Ingresso/uscita</name>
+        <name lang="fr">Entrée/Sortie</name>
+        <name lang="pl">Blok wejścia/wyjścia</name>
+        <name lang="cs">Vstup/Výstup</name>
     </names>
     <informations>ezza</informations>
     <description>
