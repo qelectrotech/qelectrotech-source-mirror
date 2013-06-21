@@ -2,9 +2,10 @@
     <names>
         <name lang="el">Εργασία</name>
         <name lang="en">working</name>
-        <name lang="fr">Préparation</name>
-        <name lang="cs">Příprava</name>
         <name lang="it">Preparazione</name>
+        <name lang="fr">Préparation</name>
+        <name lang="pl">Blok wywołania podprogramu</name>
+        <name lang="cs">Příprava</name>
     </names>
     <informations>ezza</informations>
     <description>

@@ -2,9 +2,10 @@
     <names>
         <name lang="el">Υποπρόγραμμα</name>
         <name lang="en">under program</name>
-        <name lang="fr">sous prgramme</name>
-        <name lang="cs">Pod program</name>
         <name lang="it">Processo predefinito</name>
+        <name lang="fr">sous prgramme</name>
+        <name lang="pl">Blok fragmentu</name>
+        <name lang="cs">Pod program</name>
     </names>
     <informations>ezza</informations>
     <description>
