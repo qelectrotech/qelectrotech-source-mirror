@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ضاغط دوّار</name>
+        <name lang="el">Περιστροφικός συμπιεστής</name>
         <name lang="en">Rotary compressor</name>
+        <name lang="it">Compressore rotativo</name>
         <name lang="fr">Compresseur rotatif</name>
         <name lang="pl">Kompresor wirowy</name>
         <name lang="cs">Otáčivý kompresor</name>
-        <name lang="it">Compressore rotativo</name>
     </names>
     <informations></informations>
     <description>

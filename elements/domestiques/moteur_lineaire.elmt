@@ -1,15 +1,13 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="35" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مُحرّك خطّي</name>
-        <name lang="de">Linearmotor
-</name>
-        <name lang="en">Linear motor
-</name>
-        <name lang="fr">Moteur linéaire
-</name>
+        <name lang="de">Linearmotor</name>
+        <name lang="el">Γραμμικός ηλεκτροκινητήρας</name>
+        <name lang="en">Linear motor</name>
+        <name lang="it">Motore lineare</name>
+        <name lang="fr">Moteur linéaire</name>
         <name lang="pl">Silnik liniowy</name>
         <name lang="cs">Lineární motor</name>
-        <name lang="it">Motore lineare</name>
     </names>
     <informations>EN 60617: 06-04-02</informations>
     <description>

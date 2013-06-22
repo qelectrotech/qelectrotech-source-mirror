@@ -1,15 +1,10 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ساعة تسجيل</name>
-        <name lang="de">Zeiterfassungsgerät
-</name>
-        <name lang="en">Time clock
-Time recorder
-</name>
+        <name lang="de">Zeiterfassungsgerät</name>
+        <name lang="en">Time clock Time recorder</name>
         <name lang="it">Orologio segna tempo</name>
-        <name lang="fr">Horloge de pointage,
-Enregistreur horaire
-</name>
+        <name lang="fr">Horloge de pointage, Enregistreur horaire</name>
         <name lang="pl">Zegar kontrolny</name>
         <name lang="cs">Docházkové kontrolní hodiny</name>
     </names>

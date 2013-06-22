@@ -1,11 +1,12 @@
 <definition width="370" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">CSXi</name>
+        <name lang="el">CSXi</name>
         <name lang="en">CSXi</name>
+        <name lang="it">CSXi</name>
         <name lang="fr">CSXi</name>
         <name lang="pl">CSXi</name>
         <name lang="cs">CSXi</name>
-        <name lang="it">CSXi</name>
     </names>
     <informations></informations>
     <description>

@@ -1,13 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مربع توزيع ب4 قنوات</name>
-        <name lang="de">Verteiler&#xd;
-</name>
+        <name lang="de">Verteiler</name>
         <name lang="en">Assembly</name>
+        <name lang="it">Scatola di derivazione a 4 linee</name>
         <name lang="fr">Coffret de répartition avec 4 canalisations</name>
         <name lang="pl">Rozdzielnica</name>
         <name lang="cs">Rozvodna</name>
-        <name lang="it">Scatola di derivazione a 4 linee</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
 <definition width="420" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ASTAT-XT</name>
+        <name lang="el">ASTAT-XT</name>
         <name lang="en">ASTAT-XT</name>
+        <name lang="it">ASTAT-XT</name>
         <name lang="fr">ASTAT-XT</name>
         <name lang="pl">ASTAT-XT</name>
         <name lang="cs">ASTAT-XT</name>
-        <name lang="it">ASTAT-XT</name>
     </names>
     <informations></informations>
     <description>

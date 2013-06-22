@@ -1,13 +1,11 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قفل كهربائي</name>
-        <name lang="de">Türöffner
-</name>
-        <name lang="en">Electric lock
-</name>
+        <name lang="de">Türöffner</name>
+        <name lang="el">Ηλεκτρική κλειδαριά</name>
+        <name lang="en">Electric lock</name>
         <name lang="it">Serratura elettrica</name>
-        <name lang="fr">Gâche électrique
-</name>
+        <name lang="fr">Gâche électrique</name>
         <name lang="pl">Zamek elektryczny</name>
         <name lang="cs">Elektrický zámek</name>
     </names>

@@ -1,13 +1,11 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مروحة</name>
-        <name lang="de">Ventilator
-</name>
-        <name lang="en">Fan
-</name>
+        <name lang="de">Ventilator</name>
+        <name lang="el">Ανεμιστήρας</name>
+        <name lang="en">Fan</name>
         <name lang="it">Ventilatore</name>
-        <name lang="fr">Ventilateur
-</name>
+        <name lang="fr">Ventilateur</name>
         <name lang="pl">Wentylator</name>
         <name lang="cs">Větrák</name>
     </names>

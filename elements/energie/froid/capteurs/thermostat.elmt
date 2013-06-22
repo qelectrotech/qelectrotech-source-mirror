@@ -1,11 +1,12 @@
-<definition width="10" version="0.3" hotspot_x="5" hotspot_y="10" height="20" type="element" orientation="dyyy">
+<definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">راصد حراري (ترموستات)</name>
+        <name lang="el">Θερμοστάτης</name>
         <name lang="en">Thermostat</name>
+        <name lang="it">Termostato</name>
         <name lang="fr">Thermostat</name>
         <name lang="pl">Termostat</name>
         <name lang="cs">Termostat</name>
-        <name lang="it">Termostato</name>
     </names>
     <informations></informations>
     <description>

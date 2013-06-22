@@ -1,11 +1,12 @@
 <definition width="230" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">MCD 201</name>
+        <name lang="el">MCD 201</name>
         <name lang="en">MCD 201</name>
+        <name lang="it">MCD 201</name>
         <name lang="fr">MCD 201</name>
         <name lang="pl">MCD 201</name>
         <name lang="cs">MCD 201</name>
-        <name lang="it">MCD 201</name>
     </names>
     <informations></informations>
     <description>

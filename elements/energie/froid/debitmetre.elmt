@@ -1,11 +1,12 @@
 <definition width="90" version="0.3" hotspot_x="45" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مقياس تدفق</name>
+        <name lang="el">Μετρητής ροής</name>
         <name lang="en">Flowmeter</name>
+        <name lang="it">Misuratore di flusso</name>
         <name lang="fr">Débit mètre</name>
         <name lang="pl">Przepływomierz</name>
         <name lang="cs">Průtokoměr</name>
-        <name lang="it">Misuratore di flusso</name>
     </names>
     <informations></informations>
     <description>

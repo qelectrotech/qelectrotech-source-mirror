@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ضاغط ببرغي</name>
+        <name lang="el">Κοχλιοφόρος συμπιεστής</name>
         <name lang="en">Screw compressor</name>
+        <name lang="it">Compressore a vite</name>
         <name lang="fr">Compresseur à vis</name>
         <name lang="pl">Kompresor śrubowy</name>
         <name lang="cs">Šroubový kompresor</name>
-        <name lang="it">Compressore a vite</name>
     </names>
     <informations></informations>
     <description>

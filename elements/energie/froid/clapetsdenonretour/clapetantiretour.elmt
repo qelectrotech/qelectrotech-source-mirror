@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام ضدّ العودة</name>
+        <name lang="el">Ανεπίστροφη βαλβίδα</name>
         <name lang="en">Check valve</name>
+        <name lang="it">valvola di ritegno</name>
         <name lang="fr">Clapet anti-retour</name>
         <name lang="pl">Zawór zwrotny</name>
         <name lang="cs">Pojistné ventily</name>
-        <name lang="it">valvola di ritegno</name>
     </names>
     <informations></informations>
     <description>

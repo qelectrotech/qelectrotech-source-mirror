@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="5" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">رابط</name>
+        <name lang="el">Σύνδεσμος</name>
         <name lang="en">Connector</name>
+        <name lang="it">Connettore</name>
         <name lang="fr">Connecteur</name>
         <name lang="pl">Złącze</name>
         <name lang="cs">Spojka</name>
-        <name lang="it">Connettore</name>
     </names>
     <informations></informations>
     <description>

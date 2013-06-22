@@ -2,11 +2,12 @@
     <names>
         <name lang="ar">مُحرّك</name>
         <name lang="de">Motor</name>
+        <name lang="el">Ηλεκτροκινητήρας</name>
         <name lang="en">Motor</name>
+        <name lang="it">Motore</name>
         <name lang="fr">Moteur</name>
         <name lang="pl">Silnik</name>
         <name lang="cs">Motor</name>
-        <name lang="it">Motore</name>
     </names>
     <informations>EN 60617: 06-04-01</informations>
     <description>

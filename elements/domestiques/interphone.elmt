@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">هاتف داخلي</name>
+        <name lang="el">Ενδοεπικοινωνία</name>
         <name lang="en">Audio intercommunication equipment</name>
         <name lang="it">Interfono, citofono</name>
         <name lang="fr">interphone</name>

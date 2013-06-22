@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مروحة (رمز عام)</name>
+        <name lang="el">Ανεμιστήρας, γενικό σύμβολο</name>
         <name lang="en">Fan </name>
+        <name lang="it">Ventilatore (segno generale)</name>
         <name lang="fr">Ventilateur (général)</name>
         <name lang="pl">Wentylator, symbol ogólny</name>
         <name lang="cs">Ventilátor (obecný symbol)</name>
-        <name lang="it">Ventilatore (segno generale)</name>
     </names>
     <informations></informations>
     <description>

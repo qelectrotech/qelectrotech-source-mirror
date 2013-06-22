@@ -1,11 +1,12 @@
 <definition width="280" version="0.3" hotspot_x="15" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ERSSW05</name>
+        <name lang="el">ERSSW05</name>
         <name lang="en">ERSSW05</name>
+        <name lang="it">ERSSW05</name>
         <name lang="fr">ERSSW05</name>
         <name lang="pl">ERSSW05</name>
         <name lang="cs">ERSSW05</name>
-        <name lang="it">ERSSW05</name>
     </names>
     <informations></informations>
     <description>

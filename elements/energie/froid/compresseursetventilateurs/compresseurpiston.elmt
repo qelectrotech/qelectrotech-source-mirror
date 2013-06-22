@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ضاغط بمكبس</name>
+        <name lang="el">Εμβολοφόρος συμπιεστής</name>
         <name lang="en">Piston compressor</name>
+        <name lang="it">Compressore a pistone</name>
         <name lang="fr">Compresseur à piston</name>
         <name lang="pl">Kompresor tłokowy</name>
         <name lang="cs">Pístový kompresor</name>
-        <name lang="it">Compressore a pistone</name>
     </names>
     <informations></informations>
     <description>
