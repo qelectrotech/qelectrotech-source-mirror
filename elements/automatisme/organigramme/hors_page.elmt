@@ -1,6 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="en">Off-page reference</name>
+        <name lang="fr">Connecteur externe</name>
         <name lang="pl">Łącznik zewnętrzny</name>
     </names>
     <informations>ezza</informations>
