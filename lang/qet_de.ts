@@ -831,7 +831,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/ui/dialogautonum.cpp" line="66"/>
         <source>Suppression des annotations conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anmerkungen Treiber loeschen</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="68"/>
@@ -844,7 +844,7 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/ui/dialogautonum.cpp" line="99"/>
         <source>Annotation des conducteurs</source>
         <comment>Attention</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Anmerkung der Treiber</translation>
     </message>
     <message>
         <location filename="../sources/ui/dialogautonum.cpp" line="101"/>
@@ -877,7 +877,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/elementdefinition.cpp" line="384"/>
         <source>L&apos;élément cible n&apos;a pu être créé.</source>
-        <translation type="unfinished"></translation>
+        <translation>Das gezielte Bauteil konnte nicht geschaffen werden.</translation>
     </message>
     <message>
         <location filename="../sources/elementdefinition.cpp" line="466"/>
@@ -981,26 +981,26 @@ Verbindungen dises Potentials anwenden?</translation>
         <location filename="../sources/elementdialog.cpp" line="294"/>
         <source>Sélection inexistante</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auswahl nicht-existierend</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="257"/>
         <location filename="../sources/elementdialog.cpp" line="295"/>
         <source>La sélection n&apos;existe pas.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Die auswahl existiert nicht.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="266"/>
         <source>Sélection incorrecte</source>
         <comment>message box title</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Auswahl nicht korrekt</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="267"/>
         <source>La sélection n&apos;est pas un élément.</source>
         <comment>message box content</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Die auswahl ist kein Bauteil.</translation>
     </message>
     <message>
         <location filename="../sources/elementdialog.cpp" line="284"/>
@@ -1064,7 +1064,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="287"/>
         <source>arc</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">arc</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="294"/>
@@ -1106,7 +1106,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="780"/>
         <source>Autoriser les connexions internes</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Interne Verbindungen erlauben</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="818"/>
@@ -1117,7 +1117,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="822"/>
         <source>Vous pouvez utiliser ce champ libre pour mentionner les auteurs de l&apos;élément, sa licence, ou tout autre renseignement que vous jugerez utile.</source>
-        <translation type="unfinished">Sie koennen dieses freie feld benutyen um </translation>
+        <translation type="unfinished">Sie koennen dieses freie feld benutyen um frei die Autoren des Bautei, seine Lizenz, oder jede weitere Information die sie nuetzlich denken zu erwaehnen.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="862"/>
@@ -1128,14 +1128,14 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="866"/>
         <source>Vous pouvez spécifier le nom de l&apos;élément dans plusieurs langues.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Sie koennen den Namen des Bauteiles in verschiedenen Sprachen spezifieren.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1061"/>
         <location filename="../sources/editor/elementscene.cpp" line="1126"/>
         <source>Ce document XML n&apos;est pas une définition d&apos;élément.</source>
         <comment>error message</comment>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Dieses Dokument XML ist keine Bauteil Definition.</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="1075"/>
@@ -1193,7 +1193,7 @@ Verbindungen dises Potentials anwenden?</translation>
     <message>
         <location filename="../sources/elementscategory.cpp" line="556"/>
         <source>La suppression de cette catégorie a échoué.</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished">Das loeschen dieser Kategorie ist gescheitert.</translation>
     </message>
     <message>
         <location filename="../sources/elementscategory.cpp" line="583"/>
