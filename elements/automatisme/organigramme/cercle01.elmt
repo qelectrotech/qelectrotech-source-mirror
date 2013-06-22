@@ -2,9 +2,10 @@
     <names>
         <name lang="el">Κύκλος</name>
         <name lang="en">circle on</name>
-        <name lang="fr">cercle de suite</name>
-        <name lang="cs">Kruh</name>
         <name lang="it">riferimento interno</name>
+        <name lang="fr">cercle de suite</name>
+        <name lang="pl">Blok graniczny</name>
+        <name lang="cs">Kruh</name>
     </names>
     <informations>ezza</informations>
     <description>
