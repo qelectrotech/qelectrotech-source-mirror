@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="187"/>
+        <location filename="../sources/aboutqet.cpp" line="188"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Tento program je pod licencí GNU/GPL.</translation>
     </message>
@@ -112,63 +112,64 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="136"/>
         <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en allemand</source>
         <translation>Překlad do němčiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Traduction en roumain</source>
         <translation>Překlad do rumunštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
         <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en italien</source>
         <translation>Překlad do italštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en arabe</source>
         <translation>Překlad do arabštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Traduction en croate</source>
         <translation>Překlad do chorvatštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Traduction en catalan</source>
         <translation>Překlad do katalánštiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
         <location filename="../sources/aboutqet.cpp" line="145"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en grec</source>
         <translation>Překlad do řečtiny</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="165"/>
+        <location filename="../sources/aboutqet.cpp" line="166"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Balíčky pro Fedoru a Red Hat</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="166"/>
+        <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Mandriva</source>
         <translation>Balíčky pro Mandrivu</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="167"/>
+        <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Paquets Debian</source>
         <translation>Balíčky pro Debian</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="168"/>
+        <location filename="../sources/aboutqet.cpp" line="169"/>
         <source>Paquets gentoo</source>
         <translation>Balíčky pro Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="169"/>
+        <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -5732,32 +5733,22 @@ Co chcete dělat?</translation>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Antialiasing</source>
         <translation>Vyhlazování</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
-        <source>Trait :</source>
-        <translation>Čára:</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
-        <source>Couleur : </source>
-        <translation>Barva: </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Style : </source>
         <translation>Styl: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="90"/>
         <source>Épaisseur : </source>
         <translation>Váha: </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Remplissage :</source>
         <translation>Výplň:</translation>
     </message>
@@ -5792,105 +5783,120 @@ Co chcete dělat?</translation>
         <translation>Modrá</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Normal</source>
         <comment>element part line style</comment>
         <translation>Běžná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
         <translation>Čárkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Tečkovaná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
         <translation>Tečky a čárky</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Žádná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Tenká</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Běžná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Žádná</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Černá</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Bílá</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Zelená</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Červená</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation>Modrá</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <source>Apparence :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <source>Contour :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="99"/>
+        <source>Géométrie :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style antialiasing</source>
         <translation>styl vyhlazování</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style couleur</source>
         <translation>styl barvy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style ligne</source>
         <translation>styl čáry</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>style epaisseur</source>
         <translation>styl váhy</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>style remplissage</source>
         <translation>výplně</translation>
     </message>

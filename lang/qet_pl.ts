@@ -4,7 +4,7 @@
 <context>
     <name>AboutQET</name>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="187"/>
+        <location filename="../sources/aboutqet.cpp" line="188"/>
         <source>Ce programme est sous licence GNU/GPL.</source>
         <translation>Ten program jest na licencji GNU/GPL.</translation>
     </message>
@@ -112,63 +112,64 @@
     <message>
         <location filename="../sources/aboutqet.cpp" line="136"/>
         <location filename="../sources/aboutqet.cpp" line="137"/>
+        <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en allemand</source>
         <translation>Tłumaczenie na niemiecki</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="138"/>
+        <location filename="../sources/aboutqet.cpp" line="139"/>
         <source>Traduction en roumain</source>
         <translation>Tłumaczenie na rumuński</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="139"/>
         <location filename="../sources/aboutqet.cpp" line="140"/>
+        <location filename="../sources/aboutqet.cpp" line="141"/>
         <source>Traduction en italien</source>
         <translation>Tłumaczenie na włoski</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="141"/>
+        <location filename="../sources/aboutqet.cpp" line="142"/>
         <source>Traduction en arabe</source>
         <translation>Tłumaczenie na arabski</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="142"/>
+        <location filename="../sources/aboutqet.cpp" line="143"/>
         <source>Traduction en croate</source>
         <translation>Tłumaczenie na chorwacki</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="143"/>
+        <location filename="../sources/aboutqet.cpp" line="144"/>
         <source>Traduction en catalan</source>
         <translation>Tłumaczenie na kataloński</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="144"/>
         <location filename="../sources/aboutqet.cpp" line="145"/>
+        <location filename="../sources/aboutqet.cpp" line="146"/>
         <source>Traduction en grec</source>
         <translation>Tłumaczenie na grecki</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="165"/>
+        <location filename="../sources/aboutqet.cpp" line="166"/>
         <source>Paquets Fedora et Red Hat</source>
         <translation>Pakiety dla Fedory i Red Hata</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="166"/>
+        <location filename="../sources/aboutqet.cpp" line="167"/>
         <source>Paquets Mandriva</source>
         <translation>Pakiety dla Mandrivy</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="167"/>
+        <location filename="../sources/aboutqet.cpp" line="168"/>
         <source>Paquets Debian</source>
         <translation>Pakiety dla Debiana</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="168"/>
+        <location filename="../sources/aboutqet.cpp" line="169"/>
         <source>Paquets gentoo</source>
         <translation>Pakiety dla Gentoo</translation>
     </message>
     <message>
-        <location filename="../sources/aboutqet.cpp" line="169"/>
+        <location filename="../sources/aboutqet.cpp" line="170"/>
         <source>Icônes</source>
         <translation>Ikony</translation>
     </message>
@@ -5733,32 +5734,22 @@ Co chcesz zrobić ?</translation>
 <context>
     <name>StyleEditor</name>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="64"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="63"/>
         <source>Antialiasing</source>
         <translation>Antyaliasing</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="71"/>
-        <source>Trait :</source>
-        <translation>Linia :</translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="74"/>
-        <source>Couleur : </source>
-        <translation>Kolor : </translation>
-    </message>
-    <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="84"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="81"/>
         <source>Style : </source>
         <translation>Rodzaj : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="93"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="90"/>
         <source>Épaisseur : </source>
         <translation>Grubość : </translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="100"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="76"/>
         <source>Remplissage :</source>
         <translation>Wypełnienie :</translation>
     </message>
@@ -5793,105 +5784,120 @@ Co chcesz zrobić ?</translation>
         <translation>Niebieska</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Normal</source>
         <comment>element part line style</comment>
         <translation>Ciągła</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="42"/>
         <source>Tiret</source>
         <comment>element part line style</comment>
         <translation>Kreskowa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="43"/>
         <source>Pointillé</source>
         <comment>element part line style</comment>
         <translation>Kropkowa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="45"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="44"/>
         <source>Traits et points</source>
         <comment>element part line style</comment>
         <translation>Kreskowo-kropkowa</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="49"/>
         <source>Nulle</source>
         <comment>element part weight</comment>
         <translation>Brak</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="50"/>
         <source>Fine</source>
         <comment>element part weight</comment>
         <translation>Cienka</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="52"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="51"/>
         <source>Normale</source>
         <comment>element part weight</comment>
         <translation>Normalna</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="55"/>
         <source>Aucun</source>
         <comment>element part filling</comment>
         <translation>Brak</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="56"/>
         <source>Noir</source>
         <comment>element part filling</comment>
         <translation>Czarne</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="57"/>
         <source>Blanc</source>
         <comment>element part filling</comment>
         <translation>Białe</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="58"/>
         <source>Vert</source>
         <comment>element part filling</comment>
         <translation>Zielone</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="59"/>
         <source>Rouge</source>
         <comment>element part filling</comment>
         <translation>Czerwone</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="61"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="60"/>
         <source>Bleu</source>
         <comment>element part filling</comment>
         <translation>Niebieskie</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="143"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="70"/>
+        <source>Apparence :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="73"/>
+        <source>Contour :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="99"/>
+        <source>Géométrie :</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../sources/editor/styleeditor.cpp" line="132"/>
         <source>style antialiasing</source>
         <translation>antyaliasingu</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="145"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="134"/>
         <source>style couleur</source>
         <translation>koloru</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="147"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="136"/>
         <source>style ligne</source>
         <translation>stylu linii</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="149"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="138"/>
         <source>style epaisseur</source>
         <translation>grubości</translation>
     </message>
     <message>
-        <location filename="../sources/editor/styleeditor.cpp" line="151"/>
+        <location filename="../sources/editor/styleeditor.cpp" line="140"/>
         <source>style remplissage</source>
         <translation>wypełnienia</translation>
     </message>
