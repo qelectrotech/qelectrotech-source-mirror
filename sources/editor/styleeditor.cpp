@@ -29,14 +29,13 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	part(p)
 {
 	// couleur
-	color = new QButtonGroup(this);
-	color -> addButton(black_color = new QRadioButton(tr("Noir", "element part color")),  CustomElementGraphicPart::BlackColor);
-	color -> addButton(white_color = new QRadioButton(tr("Blanc", "element part color")), CustomElementGraphicPart::WhiteColor);
-	color -> addButton(green_color = new QRadioButton(tr("Vert", "element part color")), CustomElementGraphicPart::GreenColor);
-	color -> addButton(red_color = new QRadioButton(tr("Rouge", "element part color")), CustomElementGraphicPart::RedColor);
-	color -> addButton(blue_color = new QRadioButton(tr("Bleu", "element part color")),  CustomElementGraphicPart::BlueColor);
+	outline_color = new QComboBox(this);
+	outline_color -> addItem(tr("Noir", "element part color"), CustomElementGraphicPart::BlackColor);
+	outline_color -> addItem(tr("Blanc", "element part color"), CustomElementGraphicPart::WhiteColor);
+	outline_color -> addItem(tr("Vert", "element part color"), CustomElementGraphicPart::GreenColor);
+	outline_color -> addItem(tr("Rouge", "element part color"), CustomElementGraphicPart::RedColor);
+	outline_color -> addItem(tr("Bleu", "element part color"), CustomElementGraphicPart::BlueColor);
 
-	
 	// style
 	style = new QButtonGroup(this);
 	style -> addButton(normal_style = new QRadioButton(tr("Normal",       "element part line style")), CustomElementGraphicPart::NormalStyle);
@@ -52,13 +51,13 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	weight -> addButton(normal_weight = new QRadioButton(tr("Normale", "element part weight")), CustomElementGraphicPart::NormalWeight);
 	
 	// remplissage
-	filling = new QButtonGroup(this);
-	filling -> addButton(no_filling    = new QRadioButton(tr("Aucun", "element part filling")), CustomElementGraphicPart::NoneFilling );
-	filling -> addButton(black_filling = new QRadioButton(tr("Noir", "element part filling")),  CustomElementGraphicPart::BlackFilling);
-	filling -> addButton(white_filling = new QRadioButton(tr("Blanc", "element part filling")), CustomElementGraphicPart::WhiteFilling);
-	filling -> addButton(green_filling = new QRadioButton(tr("Vert", "element part filling")),  CustomElementGraphicPart::GreenFilling);
-	filling -> addButton(red_filling   = new QRadioButton(tr("Rouge", "element part filling")),   CustomElementGraphicPart::RedFilling);
-	filling -> addButton(blue_filling  = new QRadioButton(tr("Bleu", "element part filling")),   CustomElementGraphicPart::BlueFilling);
+	filling_color = new QComboBox (this);
+	filling_color -> addItem(tr("Aucun", "element part filling"), CustomElementGraphicPart::NoneFilling);
+	filling_color -> addItem(tr("Noir", "element part filling"), CustomElementGraphicPart::BlackFilling);
+	filling_color -> addItem(tr("Blanc", "element part filling"), CustomElementGraphicPart::WhiteFilling);
+	filling_color -> addItem(tr("Vert", "element part filling"), CustomElementGraphicPart::GreenFilling);
+	filling_color -> addItem(tr("Rouge", "element part filling"), CustomElementGraphicPart::RedFilling);
+	filling_color -> addItem(tr("Bleu", "element part filling"), CustomElementGraphicPart::BlueFilling);
 
 	// antialiasing
 	antialiasing = new QCheckBox(tr("Antialiasing"));
@@ -66,18 +65,16 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	updateForm();
 	
 	main_layout = new QVBoxLayout();
-	main_layout -> addWidget(antialiasing);
+	main_layout -> setMargin(0);
 	
-	main_layout -> addWidget(new QLabel("<u>" + tr("Trait :") + "</u> "));
+	main_layout -> addWidget(new QLabel("<u>" + tr("Apparence :") + "</u> "));
 	
 	QHBoxLayout *color_layout = new QHBoxLayout();
-	color_layout -> addWidget(new QLabel(tr("Couleur : ")));
-	color_layout -> addWidget(black_color);
-	color_layout -> addWidget(white_color);
-	color_layout -> addWidget(green_color);
-	color_layout -> addWidget(red_color);
-	color_layout -> addWidget(blue_color);
-	color_layout -> addStretch();
+	color_layout -> addWidget(new QLabel(tr("Contour :")), 0, Qt::AlignRight);
+	color_layout -> addWidget(outline_color);
+	color_layout -> addSpacing(10);
+	color_layout -> addWidget(new QLabel(tr("Remplissage :")), 0, Qt::AlignRight);
+	color_layout -> addWidget(filling_color);
 	main_layout -> addLayout(color_layout);
 	
 	QHBoxLayout *style_layout = new QHBoxLayout();
@@ -96,20 +93,12 @@ StyleEditor::StyleEditor(QETElementEditor *editor, CustomElementGraphicPart *p, 
 	weight_layout -> addWidget(normal_weight);
 	weight_layout -> addStretch();
 	main_layout -> addLayout(weight_layout);
-	
-	main_layout -> addWidget(new QLabel("<u>" + tr("Remplissage :") + "</u> "));
-	
-	QHBoxLayout *filling_layout = new QHBoxLayout();
-	filling_layout -> addWidget(no_filling);
-	filling_layout -> addWidget(black_filling);
-	filling_layout -> addWidget(white_filling);
-	filling_layout -> addWidget(green_filling);
-	filling_layout -> addWidget(red_filling);
-	filling_layout -> addWidget(blue_filling);
-	filling_layout -> addStretch();
-	main_layout -> addLayout(filling_layout);
-	
+	main_layout -> addWidget(antialiasing);
+
+	main_layout -> addSpacing(10);
+	main_layout -> addWidget(new QLabel("<u>" + tr("G\351om\351trie :") + "</u> "));
 	main_layout -> addStretch();
+
 
 	setLayout(main_layout);
 }
@@ -127,7 +116,7 @@ void StyleEditor::updatePart() {
 	part -> setAntialiased(antialiasing -> isChecked());
 	
 	// applique la couleur
-	part -> setColor(static_cast<CEGP::Color>(color -> checkedId()));
+	part -> setColor(static_cast<CEGP::Color>(outline_color -> currentIndex()));
 	
 	// applique le style
 	part -> setLineStyle(static_cast<CEGP::LineStyle>(style -> checkedId()));
@@ -136,19 +125,19 @@ void StyleEditor::updatePart() {
 	part -> setLineWeight(static_cast<CEGP::LineWeight>(weight -> checkedId()));
 	
 	// applique le remplissage
-	part -> setFilling(static_cast<CEGP::Filling>(filling -> checkedId()));
+	part -> setFilling(static_cast<CEGP::Filling>(filling_color -> currentIndex()));
 }
 
 /// Met a jour l'antialiasing et cree un objet d'annulation
 void StyleEditor::updatePartAntialiasing()   { addChangePartCommand(tr("style antialiasing"), part, "antialias",   antialiasing -> isChecked()); }
 /// Met a jour la couleur du trait et cree un objet d'annulation
-void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       color -> checkedId());        }
+void StyleEditor::updatePartColor()          { addChangePartCommand(tr("style couleur"),      part, "color",       outline_color -> currentIndex());}
 /// Met a jour le style du trait et cree un objet d'annulation
 void StyleEditor::updatePartLineStyle()      { addChangePartCommand(tr("style ligne"),        part, "line-style",  style -> checkedId());        }
 /// Met a jour l'epaisseur du trait et cree un objet d'annulation
 void StyleEditor::updatePartLineWeight()     { addChangePartCommand(tr("style epaisseur"),    part, "line-weight", weight -> checkedId());       }
 /// Met a jour la couleur de fond et cree un objet d'annulation
-void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling -> checkedId());      }
+void StyleEditor::updatePartFilling()        { addChangePartCommand(tr("style remplissage"),  part, "filling",     filling_color -> currentIndex());}
 
 /**
 	Met a jour le formulaire d'edition
@@ -160,7 +149,7 @@ void StyleEditor::updateForm() {
 	antialiasing -> setChecked(part -> antialiased());
 	
 	// lit la couleur
-	color -> button(part -> color()) -> setChecked(true);
+	outline_color -> setCurrentIndex(part -> color());
 	
 	// lit le style
 	style -> button(part -> lineStyle()) -> setChecked(true);
@@ -169,7 +158,7 @@ void StyleEditor::updateForm() {
 	weight -> button(part -> lineWeight()) -> setChecked(true);
 	
 	// lit le remplissage
-	filling -> button(part -> filling()) -> setChecked(true);
+	filling_color -> setCurrentIndex(part -> filling());
 	activeConnections(true);
 }
 
@@ -208,16 +197,16 @@ CustomElementPart *StyleEditor::currentPart() const {
 */
 void StyleEditor::activeConnections(bool active) {
 	if (active) {
-		connect(color,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartColor()));
+		connect (outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
 		connect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
 		connect(weight,       SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineWeight()));
-		connect(filling,      SIGNAL(buttonClicked(int)), this, SLOT(updatePartFilling()));
+		connect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		connect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
 	} else {
-		disconnect(color,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartColor()));
+		disconnect(outline_color, SIGNAL(activated(int)), this, SLOT(updatePartColor()));
 		disconnect(style,        SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineStyle()));
 		disconnect(weight,       SIGNAL(buttonClicked(int)), this, SLOT(updatePartLineWeight()));
-		disconnect(filling,      SIGNAL(buttonClicked(int)), this, SLOT(updatePartFilling()));
+		disconnect(filling_color, SIGNAL(activated(int)), this, SLOT(updatePartFilling()));
 		disconnect(antialiasing, SIGNAL(stateChanged(int)),  this, SLOT(updatePartAntialiasing()));
 	}
 }
