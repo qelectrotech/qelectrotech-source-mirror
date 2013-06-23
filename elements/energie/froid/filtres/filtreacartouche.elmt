@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="21" hotspot_y="10" height="20" type="element" orientation="dyyy">
+<definition width="40" version="0.3" hotspot_x="25" hotspot_y="15" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مصفاة</name>
+        <name lang="el">Κασέτα φίλτρου</name>
         <name lang="en">Cartridge filter</name>
+        <name lang="it">Filtro a cartuccia</name>
         <name lang="fr">Filtre à cartouche</name>
         <name lang="pl">Filtr kasetowy</name>
         <name lang="cs">Vložkový filtr</name>
-        <name lang="it">Filtro a cartuccia</name>
     </names>
     <informations>Rotation possible</informations>
     <description>

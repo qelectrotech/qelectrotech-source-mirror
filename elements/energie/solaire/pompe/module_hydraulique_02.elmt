@@ -1,11 +1,12 @@
 <definition width="50" version="0.3" hotspot_x="15" hotspot_y="50" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">وحدة هيدروليكية #2</name>
+        <name lang="el">Υδραυλική μονάδα Ν°2</name>
         <name lang="en">Hydraulic unit # 2</name>
-        <name lang="fr">Module Hydraulique n°2</name>
-        <name lang="pl">Moduł hydrauliczny n°1</name>
-        <name lang="cs">Hydraulický modul n°2</name>
         <name lang="it">Gruppo idraulico n°2</name>
+        <name lang="fr">Module Hydraulique n°2</name>
+        <name lang="pl">Moduł hydrauliczny n°2</name>
+        <name lang="cs">Hydraulický modul n°2</name>
     </names>
     <informations></informations>
     <description>

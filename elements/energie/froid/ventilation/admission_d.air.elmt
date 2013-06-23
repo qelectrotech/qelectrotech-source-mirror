@@ -1,10 +1,11 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
+        <name lang="el">Εισαγωγή</name>
         <name lang="en">Intake</name>
+        <name lang="it">Aspirazione aria</name>
         <name lang="fr">Admission d'air</name>
         <name lang="pl">Czerpnia powietrza</name>
         <name lang="cs">Přívod vzduchu</name>
-        <name lang="it">Aspirazione aria</name>
     </names>
     <informations></informations>
     <description>

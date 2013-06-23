@@ -6,5 +6,6 @@
         <name lang="pl">Zawory sterujące</name>
         <name lang="cs">Ovládací ventily</name>
         <name lang="it">Comando valvole</name>
+        <name lang="el">Βαλβίδες ελέγχου</name>
     </names>
 </qet-directory>

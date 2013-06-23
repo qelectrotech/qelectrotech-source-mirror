@@ -1,11 +1,12 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام ضدّ الرجع بكرة</name>
+        <name lang="el">Ανεπίστροφη βαλβίδα μπίλιας</name>
         <name lang="en">Check valve ball</name>
+        <name lang="it">Valvola di ritegno</name>
         <name lang="fr">clapet anti-retour à bille</name>
         <name lang="pl">Zawór zwrotny kulowy</name>
         <name lang="cs">Kuličkový pojistný ventil</name>
-        <name lang="it">Valvola di ritegno</name>
     </names>
     <informations></informations>
     <description>

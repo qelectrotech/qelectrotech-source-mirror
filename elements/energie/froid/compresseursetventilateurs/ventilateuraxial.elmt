@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مروحة محورية</name>
+        <name lang="el">Αξονικός ανεμιστήρας</name>
         <name lang="en">Axial fan</name>
+        <name lang="it">Ventilatore assiale</name>
         <name lang="fr">Ventilateur axial</name>
         <name lang="pl">Wentylator osiowy</name>
         <name lang="cs">Osový ventilátor</name>
-        <name lang="it">Ventilatore assiale</name>
     </names>
     <informations></informations>
     <description>

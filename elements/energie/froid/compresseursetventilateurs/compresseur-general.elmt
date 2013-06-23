@@ -1,7 +1,7 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ضاغط (رمز عام)</name>
-        <name lang="el">Αεροσυμπιεστής, γενικό σύμβολο</name>
+        <name lang="el">Συμπιεστής, γενικό σύμβολο</name>
         <name lang="en">Compressor (général)</name>
         <name lang="it">Compressore (segno generale)</name>
         <name lang="fr">Compresseur (général)</name>

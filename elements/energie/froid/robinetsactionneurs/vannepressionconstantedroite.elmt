@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="14" hotspot_y="22" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام بضغط ثابت (يمين)</name>
+        <name lang="el">Βαλβίδα σταθερής πίεσης (δεξιά)</name>
         <name lang="en">Constant pressure valve (right)</name>
+        <name lang="it">A pressione costante (destra)</name>
         <name lang="fr">Vanne à pression constante (droite)</name>
         <name lang="pl">Zawór stałego ciśnienia (prawy)</name>
         <name lang="cs">Ventil stálého tlaku (pravý)</name>
-        <name lang="it">A pressione costante (destra)</name>
     </names>
     <informations></informations>
     <description>

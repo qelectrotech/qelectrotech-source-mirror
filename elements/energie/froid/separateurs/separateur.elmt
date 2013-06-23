@@ -1,11 +1,12 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="15" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">فاصلة</name>
+        <name lang="el">Διαχωριστής</name>
         <name lang="en">separator</name>
+        <name lang="it">Separatore</name>
         <name lang="fr">Séparateur</name>
         <name lang="pl">Separator</name>
         <name lang="cs">Odlučovač</name>
-        <name lang="it">Separatore</name>
     </names>
     <informations>Rotation possible</informations>
     <description>

@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مضخّة متناوبة</name>
+        <name lang="el">Παλινδρομική αντλία</name>
         <name lang="en">Reciprocating pump</name>
+        <name lang="it">Pompa a pistone</name>
         <name lang="fr">Pompe alternative</name>
         <name lang="pl">Pompa tłokowa</name>
         <name lang="cs">Tlakové čerpadlo</name>
-        <name lang="it">Pompa a pistone</name>
     </names>
     <informations></informations>
     <description>

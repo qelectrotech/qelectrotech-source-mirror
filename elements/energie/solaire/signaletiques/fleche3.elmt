@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">اسم عنصر جديد</name>
+        <name lang="el">Βέλος 3</name>
         <name lang="en">Arrow 3</name>
+        <name lang="it">Freccia 3</name>
         <name lang="fr">Fleche 3</name>
         <name lang="pl">Kierunek 3</name>
         <name lang="cs">Směr 3</name>
-        <name lang="it">Freccia 3</name>
     </names>
     <informations></informations>
     <description>

@@ -1,11 +1,12 @@
 <definition width="20" version="0.3" hotspot_x="7" hotspot_y="17" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام أمان</name>
+        <name lang="el">Βαλβίδα ασφαλείας</name>
         <name lang="en">Safety valve</name>
+        <name lang="it">Valvola di sicurezza</name>
         <name lang="fr">Soupape de sécurité</name>
         <name lang="pl">Zawór bezpieczeństwa</name>
         <name lang="cs">Bezpečnostní ventil</name>
-        <name lang="it">Valvola di sicurezza</name>
     </names>
     <informations></informations>
     <description>

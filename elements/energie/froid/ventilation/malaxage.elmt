@@ -1,10 +1,11 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dynn">
     <names>
+        <name lang="el">Κιβώτιο μίξης</name>
         <name lang="en">Mixing box</name>
+        <name lang="it">Box di miscelazione</name>
         <name lang="fr">Boîte malaxage</name>
         <name lang="pl">Komora mieszania</name>
         <name lang="cs">Smíchávací komora</name>
-        <name lang="it">Box di miscelazione</name>
     </names>
     <informations></informations>
     <description>

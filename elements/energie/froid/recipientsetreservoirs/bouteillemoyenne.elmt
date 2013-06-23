@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قارورة متوسطة</name>
+        <name lang="el">Μέτρια φιάλη</name>
         <name lang="en">Average bottle</name>
+        <name lang="it">Bottiglia media</name>
         <name lang="fr">Bouteille moyenne</name>
         <name lang="pl">Średnia butla</name>
         <name lang="cs">Střední láhev</name>
-        <name lang="it">Bottiglia media</name>
     </names>
     <informations>Rotation possible</informations>
     <description>

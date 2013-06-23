@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مروحة طرديّة</name>
+        <name lang="el">Φυγοκεντρικός ανεμιστήρας</name>
         <name lang="en">Centrifugal fan</name>
+        <name lang="it">Ventilatore centrifugo</name>
         <name lang="fr">Ventilateur centrifuge</name>
         <name lang="pl">Wentylatot odsrodkowy</name>
         <name lang="cs">Odstředivý ventilátor</name>
-        <name lang="it">Ventilatore centrifugo</name>
     </names>
     <informations></informations>
     <description>

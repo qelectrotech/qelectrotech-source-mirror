@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">إمداد بالمياه الباردة</name>
+        <name lang="el">Παροχή κρύου νερού</name>
         <name lang="en">Cold water supply</name>
+        <name lang="it">Entrata acqua calda</name>
         <name lang="fr">Arrivée d'eau froide</name>
         <name lang="pl">Przyłącze zimnej wody</name>
         <name lang="cs">Přípojka studené vody</name>
-        <name lang="it">Entrata acqua calda</name>
     </names>
     <informations></informations>
     <description>

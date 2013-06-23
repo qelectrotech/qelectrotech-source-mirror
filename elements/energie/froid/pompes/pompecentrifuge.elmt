@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مضخّة طرديّة</name>
+        <name lang="el">Φυγοκεντρική αντλία</name>
         <name lang="en">Centrifugal pump</name>
+        <name lang="it">Pompa centrifuga</name>
         <name lang="fr">Pompe centrifuge</name>
         <name lang="pl">Pompa odśrodkowa</name>
         <name lang="cs">Odstředivé čerpadlo</name>
-        <name lang="it">Pompa centrifuga</name>
     </names>
     <informations></informations>
     <description>

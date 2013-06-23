@@ -1,10 +1,11 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnnn">
     <names>
+        <name lang="el">Εξαγωγή</name>
         <name lang="en">Exhaust air</name>
+        <name lang="it">Scarico aria</name>
         <name lang="fr">Échappement d'air</name>
         <name lang="pl">Wyrzutnia powietrza</name>
         <name lang="cs">Výfuk vzduchu</name>
-        <name lang="it">Scarico aria</name>
     </names>
     <informations></informations>
     <description>

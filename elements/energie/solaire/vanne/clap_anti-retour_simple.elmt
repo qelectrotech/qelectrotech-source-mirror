@@ -1,11 +1,12 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="10" height="20" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام ضدّ الرجع</name>
+        <name lang="el">Ανεπίστροφη βαλβίδα απλή</name>
         <name lang="en">Simple check valve</name>
+        <name lang="it">Valvola di ritegno</name>
         <name lang="fr">Clapet anti-retour simple</name>
         <name lang="pl">Zawór zwrotny</name>
         <name lang="cs">Jednoduchý pojistný ventil</name>
-        <name lang="it">Valvola di ritegno</name>
     </names>
     <informations></informations>
     <description>

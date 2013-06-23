@@ -1,11 +1,12 @@
 <definition width="100" version="0.3" hotspot_x="50" hotspot_y="70" height="140" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مرجل خشب</name>
+        <name lang="el">Καυστήρας ξύλου</name>
         <name lang="en">Wood boiler</name>
+        <name lang="it">Caldaia a legna</name>
         <name lang="fr">Chaudière Bois</name>
         <name lang="pl">Kocioł</name>
         <name lang="cs">Kotel na dřevo</name>
-        <name lang="it">Caldaia a legna</name>
     </names>
     <informations></informations>
     <description>

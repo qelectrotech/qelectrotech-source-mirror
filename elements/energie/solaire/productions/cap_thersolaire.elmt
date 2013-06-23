@@ -1,11 +1,12 @@
 <definition width="170" version="0.3" hotspot_x="60" hotspot_y="40" height="100" type="element" orientation="ndny">
     <names>
         <name lang="ar">ألواح تسخين مياه بالطاقة الشمسية</name>
+        <name lang="el">Ηλιακοί συλλέκτες</name>
         <name lang="en">Solar water</name>
+        <name lang="it">Pannello solare-termico</name>
         <name lang="fr">Panneau solaire eau</name>
         <name lang="pl">Panele solarne</name>
         <name lang="cs">Sluneční panely</name>
-        <name lang="it">Pannello solare-termico</name>
     </names>
     <informations></informations>
     <description>
@@ -34,12 +35,12 @@
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-24" x1="75" y2="41" x2="75"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-24" x1="67.5" y2="41" x2="67.5"/>
         <line length1="1.5" length2="1.5" antialias="false" end1="none" end2="none" style="line-style:normal;line-weight:thin;filling:none;color:black" y1="-24" x1="60" y2="41" x2="60"/>
-        <ellipse width="2" x="-51" y="49" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="-1" y="49" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="49" y="49" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="-10" y="-31" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="39" y="-31" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
-        <ellipse width="2" x="89" y="-31" antialias="true" height="2" style="line-style:normal;line-weight:normal;filling:none;color:black"/>
+        <circle x="-51" y="49" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-1" y="49" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="49" y="49" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="-10" y="-31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="39" y="-31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
+        <circle x="89" y="-31" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" diameter="2"/>
         <text x="-18" y="11" size="8" text="Panneaux Solaire"/>
         <polygon x4="94" y5="50" x5="50" y6="50" x6="50" antialias="true" style="line-style:normal;line-weight:normal;filling:none;color:black" y1="50" x1="50" y2="-26" x2="50" y3="-30" x3="94" y4="46"/>
         <terminal x="-50" y="50" orientation="s"/>

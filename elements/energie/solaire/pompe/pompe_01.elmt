@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="30" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مضخة</name>
+        <name lang="el">Αντλία</name>
         <name lang="en">Pump</name>
+        <name lang="it">Pompa</name>
         <name lang="fr">Pompe</name>
         <name lang="pl">Pompa</name>
         <name lang="cs">Pumpa</name>
-        <name lang="it">Pompa</name>
     </names>
     <informations></informations>
     <description>

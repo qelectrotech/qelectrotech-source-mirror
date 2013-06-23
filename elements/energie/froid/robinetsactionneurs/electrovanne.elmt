@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="22" height="30" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صمّام كهربائي</name>
+        <name lang="el">Ηλεκτροβάνα</name>
         <name lang="en">solenoid</name>
+        <name lang="it">Comando elettrico</name>
         <name lang="fr">Electrovanne</name>
         <name lang="pl">Elektrozawór</name>
         <name lang="cs">Elektrický ventil</name>
-        <name lang="it">Comando elettrico</name>
     </names>
     <informations></informations>
     <description>

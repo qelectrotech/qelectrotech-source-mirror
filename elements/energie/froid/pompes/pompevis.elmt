@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مضخّة لولبية</name>
+        <name lang="el">Κοχλιωτή αντλία</name>
         <name lang="en">Screw pump</name>
+        <name lang="it">Pompa a vite</name>
         <name lang="fr">Pompe à vis</name>
         <name lang="pl">Pompa śrubowa</name>
         <name lang="cs">Šroubové čerpadlo</name>
-        <name lang="it">Pompa a vite</name>
     </names>
     <informations></informations>
     <description>
