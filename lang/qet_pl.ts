@@ -5864,17 +5864,17 @@ Co chcesz zrobić ?</translation>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Apparence :</source>
-        <translation type="unfinished"></translation>
+        <translation>Wygląd :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Contour :</source>
-        <translation type="unfinished"></translation>
+        <translation>Kontur :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Géométrie :</source>
-        <translation type="unfinished"></translation>
+        <translation>Geometria :</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
