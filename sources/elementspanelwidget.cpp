@@ -79,7 +79,9 @@ ElementsPanelWidget::ElementsPanelWidget(QWidget *parent) : QWidget(parent) {
 	copy_elements_        = new QAction(QET::Icons::CopyFile,                  tr("Copier dans cette cat\351gorie"),      this);
 	cancel_elements_      = new QAction(QET::Icons::Cancel,                    tr("Annuler"),                             this);
 	erase_textfield       = new QAction(QET::Icons::EditClearLocationBar,      tr("Effacer le filtre"),                   this);
-	
+
+	reload            -> setShortcut(Qt::Key_F5);
+
 	// initialise le champ de texte pour filtrer avec une disposition horizontale
 	QLabel *filter_label = new QLabel(tr("Filtrer : "), this);
 	filter_textfield = new QLineEdit(this);
