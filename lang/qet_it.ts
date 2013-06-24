@@ -1147,7 +1147,7 @@ dei conduttori di questo potenziale?</translation>
         <location filename="../sources/editor/elementscene.cpp" line="764"/>
         <source>Éditer les orientations</source>
         <comment>window title</comment>
-        <translation>Edita gli orientamenti</translation>
+        <translation>Modifica gli orientamenti</translation>
     </message>
     <message>
         <location filename="../sources/editor/elementscene.cpp" line="862"/>
@@ -3369,7 +3369,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="313"/>
         <source>Édite les propriétés des objets sélectionné</source>
         <comment>status bar tip</comment>
-        <translation>Edita le proprietà degli oggetti selezionati</translation>
+        <translation>Modifica le proprietà degli oggetti selezionati</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="433"/>
@@ -3648,7 +3648,7 @@ Opzioni disponibili:
         <location filename="../sources/qetdiagrameditor.cpp" line="315"/>
         <source>Édite les informations affichées par le cartouche</source>
         <comment>status bar tip</comment>
-        <translation>Edita le informazioni visibili del cartiglio</translation>
+        <translation>Modifica le informazioni visibili del cartiglio</translation>
     </message>
     <message>
         <location filename="../sources/qetdiagrameditor.cpp" line="316"/>
@@ -3856,17 +3856,17 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="147"/>
         <source>Éditer la taille et le point de saisie</source>
-        <translation>Edita dimensioni e àncora</translation>
+        <translation>Modifica dimensioni e àncora</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="148"/>
         <source>Éditer les noms</source>
-        <translation>Edita nomi</translation>
+        <translation>Modifica nomi</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="149"/>
         <source>Éditer les orientations</source>
-        <translation>Edita orientamenti</translation>
+        <translation>Modifica orientamenti</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="155"/>
@@ -4082,7 +4082,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="150"/>
         <source>Éditer les informations sur l&apos;auteur</source>
-        <translation>Edita le informazioni sull&apos;autore</translation>
+        <translation>Modifica le informazioni sull&apos;autore</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="199"/>
@@ -4132,7 +4132,7 @@ Opzioni disponibili:
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="358"/>
         <source>&amp;Édition</source>
-        <translation>&amp;Edita</translation>
+        <translation>Modifica</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="359"/>
@@ -4203,7 +4203,7 @@ Opzioni disponibili:
         <location filename="../sources/editor/qetelementeditor.cpp" line="638"/>
         <source>Certaines parties graphiques (textes, cercles, lignes...) semblent déborder du cadre de l&apos;élément. Cela risque de générer des bugs graphiques lors de leur manipulation sur un schéma. Vous pouvez corriger cela soit en déplaçant ces parties, soit en vous rendant dans Édition &gt; Éditer la taille et le point de saisie.</source>
         <comment>warning description</comment>
-        <translation>Alcune parti grafiche (testi, circoli, linee, ...) sembrano essere fuori dal bordo dell&apos;elemento. Ciò può generare errori grafici quando l&apos;elemento e mosso su un diagramma. Puoi correggere il problema muovendo le parti o usando Edita &gt; Edita dimensioni e àncora.</translation>
+        <translation>Alcune parti grafiche (testi, circoli, linee, ...) sembrano essere fuori dal bordo dell&apos;elemento. Ciò può generare errori grafici quando l&apos;elemento e mosso su un diagramma. Puoi correggere il problema muovendo le parti o usando Modifica &gt; Modifica dimensioni e àncora.</translation>
     </message>
     <message>
         <location filename="../sources/editor/qetelementeditor.cpp" line="653"/>
@@ -4978,7 +4978,7 @@ Cosa vuoi fare?</translation>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="449"/>
         <source>Édition</source>
         <comment>toolbar title</comment>
-        <translation>Edita</translation>
+        <translation>Modifica</translation>
     </message>
     <message>
         <location filename="../sources/titleblock/qettemplateeditor.cpp" line="458"/>
