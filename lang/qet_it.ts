@@ -114,7 +114,7 @@
         <location filename="../sources/aboutqet.cpp" line="137"/>
         <location filename="../sources/aboutqet.cpp" line="138"/>
         <source>Traduction en allemand</source>
-        <translation>Traduzione in alemanno</translation>
+        <translation>Traduzione in tedesco</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="139"/>
