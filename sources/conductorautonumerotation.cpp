@@ -58,7 +58,8 @@ void ConductorAutoNumerotation::setConductor(Conductor *c) {
 void ConductorAutoNumerotation::numerate() {
 	if (!conductor_) return;
 	if (conductor_list.size() >= 1 ) numeratePotential();
-	else numerateNewConductor();
+	else if (conductor_ -> properties().type == ConductorProperties::Multi) numerateNewConductor();
+	else return;
 }
 
 /**
