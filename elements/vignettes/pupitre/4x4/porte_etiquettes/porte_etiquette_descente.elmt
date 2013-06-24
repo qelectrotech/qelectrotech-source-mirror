@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="53" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حامل ملصق أسفل</name>
+        <name lang="el">Ετικέτα, κάτω</name>
         <name lang="en">Label holder descent</name>
+        <name lang="it">Etichetta - Discesa</name>
         <name lang="fr">Porte étiquette descente</name>
         <name lang="pl">Dół</name>
         <name lang="cs">Dolů</name>
-        <name lang="ar">حامل ملصق أسفل</name>
-        <name lang="it">Etichetta - Discesa</name>
     </names>
     <informations></informations>
     <description>

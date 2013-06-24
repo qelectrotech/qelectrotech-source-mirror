@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="55" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حامل مُلصق فارغ</name>
+        <name lang="el">Ετικέτα πόρτας, κενή</name>
         <name lang="en">Label holder virgin</name>
+        <name lang="it">Etichetta vuota</name>
         <name lang="fr">Porte étiquette vièrge</name>
         <name lang="pl">Bez oznaczenia</name>
         <name lang="cs">Bez označení</name>
-        <name lang="ar">حامل مُلصق فارغ</name>
-        <name lang="it">Etichetta vuota</name>
     </names>
     <informations></informations>
     <description>

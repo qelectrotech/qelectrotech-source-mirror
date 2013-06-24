@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حامل مُلصق يسار / يمين</name>
+        <name lang="el">Ετικέτα, αριστερά/δεξιά</name>
         <name lang="en">Label holder left / right</name>
+        <name lang="it">Etichetta - Destra/Sinistra</name>
         <name lang="fr">Porte étiquette gauche/droite</name>
         <name lang="pl">Prawo-lewo</name>
         <name lang="cs">Vpravo/Vlevo</name>
-        <name lang="ar">حامل مُلصق يسار / يمين</name>
-        <name lang="it">Etichetta - Destra/Sinistra</name>
     </names>
     <informations></informations>
     <description>

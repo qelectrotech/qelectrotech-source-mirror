@@ -1,6 +1,7 @@
 <definition width="20" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnnn">
     <names>
         <name lang="ar">مشبك أرضي</name>
+        <name lang="el">Μπάρα γείωσης</name>
         <name lang="en">Ground bar</name>
         <name lang="it">Barra di terra</name>
         <name lang="fr">Barette de terre</name>

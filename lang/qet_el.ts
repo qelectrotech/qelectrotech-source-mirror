@@ -210,12 +210,12 @@
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="56"/>
         <source>horizontal :</source>
-        <translation>οριζόντιο:</translation>
+        <translation>οριζόντια:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="58"/>
         <source>vertical :</source>
-        <translation>κάθετο:</translation>
+        <translation>κάθετα:</translation>
     </message>
     <message>
         <location filename="../sources/editor/arceditor.cpp" line="60"/>
@@ -432,7 +432,7 @@ Appliquer un texte à l&apos;ensemble de ces conducteurs?</source>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="54"/>
         <source>Type de conducteur</source>
-        <translation>Τύπος Αγωγού</translation>
+        <translation>Τύπος αγωγού</translation>
     </message>
     <message>
         <location filename="../sources/conductorpropertieswidget.cpp" line="61"/>
@@ -1647,12 +1647,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="53"/>
         <source>horizontal :</source>
-        <translation>οριζόντιο:</translation>
+        <translation>οριζόντια:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="55"/>
         <source>vertical :</source>
-        <translation>κάθετο:</translation>
+        <translation>κάθετα:</translation>
     </message>
     <message>
         <location filename="../sources/editor/ellipseeditor.cpp" line="112"/>
@@ -2252,12 +2252,12 @@ Les changements seront définitifs.</source>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="76"/>
         <source>Fin 1</source>
-        <translation>Τέλος 1</translation>
+        <translation>Άκρη 1</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="79"/>
         <source>Fin 2</source>
-        <translation>Τέλος 2</translation>
+        <translation>Άκρη 2</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="157"/>
@@ -2283,7 +2283,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="47"/>
         <source>Normale</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Κανονικό</translation>
+        <translation>Απλό</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="48"/>
@@ -2307,13 +2307,13 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="51"/>
         <source>Carré</source>
         <comment>type of the 1st end of a line</comment>
-        <translation>Τετράγωνο</translation>
+        <translation>Ρόμβος</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="53"/>
         <source>Normale</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Κανονικό</translation>
+        <translation>Απλό</translation>
     </message>
     <message>
         <location filename="../sources/editor/lineeditor.cpp" line="54"/>
@@ -2337,7 +2337,7 @@ Les changements seront définitifs.</source>
         <location filename="../sources/editor/lineeditor.cpp" line="57"/>
         <source>Carré</source>
         <comment>type of the 2nd end of a line</comment>
-        <translation>Τετράγωνο</translation>
+        <translation>Ρόμβος</translation>
     </message>
 </context>
 <context>
@@ -5783,7 +5783,7 @@ Que désirez vous faire ?</source>
         <location filename="../sources/editor/styleeditor.cpp" line="41"/>
         <source>Normal</source>
         <comment>element part line style</comment>
-        <translation>Κανονικό</translation>
+        <translation>Απλή</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="42"/>

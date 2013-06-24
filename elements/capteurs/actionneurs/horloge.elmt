@@ -2,12 +2,13 @@
     <names>
         <name lang="ar">مفتاح ساعة</name>
         <name lang="de">Zeitblock</name>
+        <name lang="el">Επαφή χρονοδιακόπτη</name>
         <name lang="en">Contact clock</name>
+        <name lang="it">Contatto orologio NO</name>
         <name lang="fr">Contact horloge</name>
         <name lang="pl">Zegar sterujący</name>
         <name lang="es">Contacto temporizado</name>
         <name lang="cs">Hodinový kontakt</name>
-        <name lang="it">Contatto orologio NO</name>
     </names>
     <informations></informations>
     <description>

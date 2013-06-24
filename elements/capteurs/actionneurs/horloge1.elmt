@@ -1,12 +1,13 @@
 <definition width="90" version="0.3" hotspot_x="40" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح زمني</name>
+        <name lang="el">Χρονοδιακόπτης</name>
         <name lang="en">Time- switch</name>
+        <name lang="it">Contatto orologio NC/NO</name>
         <name lang="fr">Horloge</name>
         <name lang="pl">Przekaźnik czasowy</name>
         <name lang="es">Switch temporizado</name>
         <name lang="cs">Časový spínač</name>
-        <name lang="it">Contatto orologio NC/NO</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

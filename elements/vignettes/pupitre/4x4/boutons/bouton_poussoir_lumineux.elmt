@@ -1,11 +1,12 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح ضاغط مُضيئ</name>
+        <name lang="el">Μπουτόν φωτειζόμενο</name>
         <name lang="en">Illuminated pushbutton</name>
+        <name lang="it">Pulsante luminoso</name>
         <name lang="fr">Bouton poussoir lumineux</name>
         <name lang="pl">Przycisk podświetlony</name>
         <name lang="cs">Podsvícené tlačítko</name>
-        <name lang="ar">مفتاح ضاغط مُضيئ</name>
-        <name lang="it">Pulsante luminoso</name>
     </names>
     <informations></informations>
     <description>

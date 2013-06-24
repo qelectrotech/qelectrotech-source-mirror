@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="50" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="53" height="60" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حامل مُلصق أعلى / أسفل</name>
+        <name lang="el">Ετικέτα, πάνω/κάτω</name>
         <name lang="en">Label holder up / down</name>
+        <name lang="it">Etichetta - Salita/Discesa</name>
         <name lang="fr">Porte étiquette montée/descente</name>
         <name lang="pl">Góra-dół</name>
         <name lang="cs">Nahoru/Dolů</name>
-        <name lang="ar">حامل مُلصق أعلى / أسفل</name>
-        <name lang="it">Etichetta - Salita/Discesa</name>
     </names>
     <informations></informations>
     <description>

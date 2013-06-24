@@ -8,5 +8,6 @@
         <name lang="cs">Ovladače</name>
         <name lang="es">Actuadores</name>
         <name lang="it">Azionatori</name>
+        <name lang="el">Ενεργοποιητές</name>
     </names>
 </qet-directory>

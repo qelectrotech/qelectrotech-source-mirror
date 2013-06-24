@@ -1,11 +1,12 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح ضاغط سهم</name>
+        <name lang="el">Μπουτόν, βέλος πάνω</name>
         <name lang="en">Arrow button</name>
+        <name lang="it">Pulsante freccia</name>
         <name lang="fr">Bouton poussoir flèche</name>
         <name lang="pl">Przycisk ze strzałką</name>
         <name lang="cs">Tlačítko se šipkou</name>
-        <name lang="ar">مفتاح ضاغط سهم</name>
-        <name lang="it">Pulsante freccia</name>
     </names>
     <informations></informations>
     <description>

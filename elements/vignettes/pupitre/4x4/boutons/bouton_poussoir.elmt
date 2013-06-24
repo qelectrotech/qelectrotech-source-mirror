@@ -1,11 +1,12 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">مفتاح ضاغط</name>
+        <name lang="el">Μπουτόν</name>
         <name lang="en">Pushbutton</name>
+        <name lang="it">Pulsante</name>
         <name lang="fr">Bouton poussoir</name>
         <name lang="pl">Przycisk</name>
         <name lang="cs">Tlačítko</name>
-        <name lang="ar">مفتاح ضاغط</name>
-        <name lang="it">Pulsante</name>
     </names>
     <informations></informations>
     <description>

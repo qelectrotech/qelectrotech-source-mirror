@@ -1,7 +1,7 @@
 <definition width="70" version="0.3" hotspot_x="30" hotspot_y="35" height="70" type="element" orientation="dyyy">
     <names>
         <name lang="ar">حسّاس سعوي ب 3 أطراف NO</name>
-        <name lang="el">Χωρητικός αισθητήρας Ανοικτή επαφή 3 ακρ</name>
+        <name lang="el">Χωρητικός αισθητήρας, Ανοικτή επαφή 3 ακρ</name>
         <name lang="en">Capacitive sensor 3 terminals NO</name>
         <name lang="it">Sensore capacitivo a 3 terminali (NO)</name>
         <name lang="fr">Capteur capacitif 3 (NO)</name>

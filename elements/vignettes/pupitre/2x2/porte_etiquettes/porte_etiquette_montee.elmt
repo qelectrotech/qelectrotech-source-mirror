@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="30" type="element" orientation="dyyy">
+<definition width="30" version="0.3" hotspot_x="15" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">حامل مُلصق أعلى</name>
+        <name lang="el">Ετικέτα, πάνω</name>
         <name lang="en">Label holder mounted</name>
+        <name lang="it">Etichetta - Salita</name>
         <name lang="fr">Porte étiquette montée</name>
         <name lang="pl">Góra</name>
         <name lang="cs">Nahoru</name>
-        <name lang="ar">حامل مُلصق أعلى</name>
-        <name lang="it">Etichetta - Salita</name>
     </names>
     <informations></informations>
     <description>
