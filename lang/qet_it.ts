@@ -5853,17 +5853,17 @@ Cosa vuoi fare?</translation>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="70"/>
         <source>Apparence :</source>
-        <translation type="unfinished"></translation>
+        <translation>Aspetto:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="73"/>
         <source>Contour :</source>
-        <translation type="unfinished"></translation>
+        <translation>Contorno:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="99"/>
         <source>Géométrie :</source>
-        <translation type="unfinished"></translation>
+        <translation>Geometria:</translation>
     </message>
     <message>
         <location filename="../sources/editor/styleeditor.cpp" line="132"/>
