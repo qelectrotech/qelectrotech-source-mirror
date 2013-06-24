@@ -29,7 +29,7 @@ AboutQET::AboutQET(QWidget *parent) : QDialog(parent) {
 	// Titre, taille, comportement...
 	setWindowTitle(tr("\300 propos de QElectrotech", "window title"));
 	setMinimumWidth(680);
-	setMinimumHeight(350);
+	setMinimumHeight(690);
 	setModal(true);
 	
 	// Trois onglets
