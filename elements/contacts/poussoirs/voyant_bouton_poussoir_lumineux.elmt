@@ -1,11 +1,12 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُؤشّر ضوئي لمفتاح ضاغط</name>
+        <name lang="el">Μπουτόν, φωτειζόμενο με LED</name>
         <name lang="en">LED illuminated push-button</name>
+        <name lang="it">Spia luminosa a LED</name>
         <name lang="fr">Voyant à bouton poussoir lumineux</name>
         <name lang="pl">Łącznik przyciskowy podświetlony</name>
         <name lang="cs">LED podsvícené tlačítko</name>
-        <name lang="it">Spia luminosa a LED</name>
     </names>
     <informations></informations>
     <description>

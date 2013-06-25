@@ -1,11 +1,12 @@
-<definition width="40" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="35" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">بدّال بوضعين و بمفتاح</name>
+        <name lang="el">Διακόπτης 2 θέσεων, με κλειδί</name>
         <name lang="en">2 position key switch</name>
+        <name lang="it">Selettore a chiave, 2 posizioni stabili</name>
         <name lang="fr">Commutateur a 2 positions à clé</name>
         <name lang="pl">Łącznik obrotowy napędzany kluczykiem</name>
         <name lang="cs">Klíčový spínač - 2 polohy</name>
-        <name lang="it">Selettore a chiave, 2 posizioni stabili</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

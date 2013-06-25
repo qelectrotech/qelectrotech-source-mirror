@@ -1,9 +1,10 @@
-<definition width="40" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="ar">مُلامس قدرة- كونتكتور (NO)</name>
         <name lang="de">Leistungs Kontakt</name>
         <name lang="ru">Контакт контактора (НР)</name>
         <name lang="pt">Interruptor de potência contactor</name>
+        <name lang="el">Επαφές ρελέ ισχύος, ανοικτές</name>
         <name lang="en">Contact power contactor</name>
         <name lang="it">Contatto di potenza del contattore (NA)</name>
         <name lang="fr">Contact puissance contacteur</name>

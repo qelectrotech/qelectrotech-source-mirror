@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="5" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُلامس فصل (NC) يُفتح ويُغلق بتأخير</name>
+        <name lang="el">Κλειστή επαφή χρονικου, καθυστέρηση ενεργ/απεν</name>
         <name lang="en">Simple contact (NC / switch-off/on delay timer)</name>
+        <name lang="it">Contatto ritardato all'apertura e chiusura (NC)</name>
         <name lang="fr">Contact temporise au travail et au repos (NF)</name>
         <name lang="pl">Zesty rozwierny działający z opóźnieniem przy uruchamianiu i powrocie</name>
         <name lang="cs">Spínací kontakt - časovač zpoždění vypnutí/zapnutí spínače (NC)</name>
-        <name lang="it">Contatto ritardato all'apertura e chiusura (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,12 +1,13 @@
-<definition width="70" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="90" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">زرّ دواّار بوضعين إسترداد من اليمين إلى اليسار, سحب المفتاح إلى اليسار</name>
+        <name lang="el">Διακόπτης 2 θέσεων με επαναφορά αριστερά, αφαίρεση κλειδιού στην αριστερή θέση</name>
         <name lang="en">Knob 2 position spring return from right to left, key withdrawal left</name>
+        <name lang="it">Selettore a chiave, 2 posizioni, ritorno a molla a SX, estrazione chiave a SX</name>
         <name lang="fr">Bouton tournant 2 positions à rappel de droite à gauche, retrait de la clé à gauche</name>
         <name lang="pl">Łącznik obrotowy przełączny z samoczynnym powrotem, uruchamiany kluczykiem</name>
         <name lang="es">Switch selector_8 posiciones fijas con llave LH</name>
         <name lang="cs">Otočný přepínač s 2 polohami se samočinným navrácením, uvedený do provozu klíčkem</name>
-        <name lang="it">Selettore a chiave, 2 posizioni, ritorno a molla a SX, estrazione chiave a SX</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

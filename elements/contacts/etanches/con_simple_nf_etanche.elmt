@@ -1,9 +1,10 @@
-<definition width="20" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح بسيط (NC محمي)</name>
         <name lang="de">Kontakt einfach (NC / wasserdicht)</name>
         <name lang="ru">Герметичный контакт (НЗ)</name>
         <name lang="pt">Contacto simples NC (NC / resistente à água)</name>
+        <name lang="el">Απλή κλειστή επαφή, στεγανή</name>
         <name lang="en">Simple contact (NC / tight)</name>
         <name lang="it">Contatto semplice NC (stagno)</name>
         <name lang="fr">Contact simple (NF / étanche)</name>

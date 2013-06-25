@@ -1,11 +1,12 @@
-<definition width="40" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dnny">
+<definition width="60" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dnny">
     <names>
         <name lang="de">Zwei-Hand 1 (XPS-BC)</name>
+        <name lang="el">Δυο χεριών 1 (XPS-BC)</name>
         <name lang="en">Two-hand 1 (XPS-BC)</name>
+        <name lang="it">Comando a due mani 1 (XPS-BC)</name>
         <name lang="fr">Deux mains 1 (XPS-BC)</name>
         <name lang="pl">Łącznik przyciskowy (sterowanie dwuręczne 1)</name>
         <name lang="cs">Dvojruční 1 (XPS-BC)</name>
-        <name lang="it">Comando a due mani 1 (XPS-BC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

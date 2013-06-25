@@ -23,7 +23,7 @@
         <location filename="../sources/aboutqet.cpp" line="37"/>
         <source>À &amp;propos</source>
         <comment>tab title</comment>
-        <translation>&amp;Σχετικά με</translation>
+        <translation>&amp;Σχετικά</translation>
     </message>
     <message>
         <location filename="../sources/aboutqet.cpp" line="38"/>

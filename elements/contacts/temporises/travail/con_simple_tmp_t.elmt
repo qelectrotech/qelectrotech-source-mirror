@@ -1,9 +1,10 @@
-<definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُلامس وصل يُغلق متأخرا</name>
         <name lang="de">Kontakt Einfach (einschaltverzögert)</name>
         <name lang="ru">Контакт с задержкой при срабатывании (НР)</name>
         <name lang="pt">Contacto simples (tempo retardado de ligado)</name>
+        <name lang="el">Ανοικτή επαφή, καθυστέρηση ενεργοποίησης</name>
         <name lang="en">Simple contact (switch-on delay timer)</name>
         <name lang="it">Contatto NO (ritardato alla chiusura)</name>
         <name lang="fr">Contact simple (tempo travail)</name>

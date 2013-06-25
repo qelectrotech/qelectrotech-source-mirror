@@ -1,11 +1,12 @@
-<definition width="20" version="0.3" hotspot_x="0" hotspot_y="10" height="20" type="element" orientation="dnny">
+<definition width="30" version="0.3" hotspot_x="0" hotspot_y="10" height="20" type="element" orientation="dnny">
     <names>
         <name lang="ar">قفل ميكانيكي</name>
+        <name lang="el">Μηχανική μανδάλωση</name>
         <name lang="en">Mechanical lock</name>
+        <name lang="it">blocco meccanico</name>
         <name lang="fr">Verrouillage Mécannique</name>
         <name lang="pl">Blokada mechaniczna</name>
         <name lang="cs">Mechanický zámek</name>
-        <name lang="it">blocco meccanico</name>
     </names>
     <informations></informations>
     <description>

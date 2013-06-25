@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">زرّ ضاغط</name>
+        <name lang="el">Μπουτόν, φωτειζόμενο</name>
         <name lang="en">Push-button</name>
+        <name lang="it">Pulsante luminoso</name>
         <name lang="fr">Bouton poussoir</name>
         <name lang="pl">Łącznik przyciskowy podświetlony  z powrotem samoczynnym</name>
         <name lang="cs">Tlačítko</name>
-        <name lang="it">Pulsante luminoso</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="22" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُلامس طردي (NC)</name>
+        <name lang="el">Φυγοκεντρική επαφή, κλειστή</name>
         <name lang="en">Centrifugal contact (NC)</name>
+        <name lang="it">Contatto a comando centrifugo (NC)</name>
         <name lang="fr">Contact  centrifuge (NF)</name>
         <name lang="pl">Zestyk rozwierny łącznika odśrodkowego</name>
         <name lang="cs">Odstředivé spojení (NC)</name>
-        <name lang="it">Contatto a comando centrifugo (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

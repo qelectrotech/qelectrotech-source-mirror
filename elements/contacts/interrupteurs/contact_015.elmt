@@ -1,11 +1,12 @@
-<definition width="50" version="0.3" hotspot_x="13" hotspot_y="20" height="40" type="element" orientation="dyyy">
+<definition width="70" version="0.3" hotspot_x="13" hotspot_y="25" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">زرّ دوّار مُضيئ, بوضعين</name>
+        <name lang="el">Διακόπτης 2 θέσεων, φωτειζόμενος</name>
         <name lang="en">Two-positions luminous rotative button</name>
+        <name lang="it">Selettore luminoso</name>
         <name lang="fr">Bouton tournant lumineux, deux positions</name>
         <name lang="pl">Łącznik obrotowy przełączny, podświetlony</name>
         <name lang="cs">Svítící dvoupolohové otočné tlačítko</name>
-        <name lang="it">Selettore luminoso</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

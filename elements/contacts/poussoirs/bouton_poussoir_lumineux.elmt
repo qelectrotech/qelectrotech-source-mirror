@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="15" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="70" version="0.3" hotspot_x="15" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">زرّ ضاغط مُضيئ</name>
+        <name lang="el">Μπουτόν, φωτειζόμενο</name>
         <name lang="en">Illuminated Push-button</name>
+        <name lang="it">Arresto d'emergenza</name>
         <name lang="fr">Bouton poussoir lumineux</name>
         <name lang="pl">Łącznik przyciskowy podświetlony</name>
         <name lang="cs">Podsvícené tlačítko</name>
-        <name lang="it">Arresto d'emergenza</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

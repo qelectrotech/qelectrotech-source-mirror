@@ -1,14 +1,15 @@
-<definition width="20" version="0.3" hotspot_x="7" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="40" version="0.3" hotspot_x="10" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مفتاح بسحّاب</name>
         <name lang="de">Druckschalter</name>
         <name lang="ru">Кнопка (НР)</name>
+        <name lang="el">Μπουτόν</name>
         <name lang="en">Push-button</name>
+        <name lang="it">Pulsante a tirante</name>
         <name lang="fr">Tirette</name>
         <name lang="pl">Łącznik przyciskowy z powrotem samoczynnym</name>
         <name lang="es">Pulsador</name>
         <name lang="cs">Stiskací vypínač</name>
-        <name lang="it">Pulsante a tirante</name>
     </names>
     <informations></informations>
     <description>

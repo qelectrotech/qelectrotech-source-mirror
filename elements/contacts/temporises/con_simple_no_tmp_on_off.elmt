@@ -1,11 +1,12 @@
-<definition width="30" version="0.3" hotspot_x="10" hotspot_y="20" height="40" type="element" orientation="dnny">
+<definition width="50" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
         <name lang="ar">مُلامس وصل (NO) يُغلق و يُفتح بتأخير</name>
+        <name lang="el">Ανοικτή επαφή χρονικου, καθυστέρηση ενεργ/απ</name>
         <name lang="en">Simple contact (switch-on/off delay timer No)</name>
+        <name lang="it">Contatto ritardato all'apertura e chiusura (NC)</name>
         <name lang="fr">Contact temporise au travail et au repos (No)</name>
         <name lang="pl">Zestyk zwierny działający z opóźnieniem przy uruchamianiu i powrocie</name>
         <name lang="cs">Spínací kontakt - časovač zpoždění zapnutí/vypnutí spínače (NO)</name>
-        <name lang="it">Contatto ritardato all'apertura e chiusura (NC)</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

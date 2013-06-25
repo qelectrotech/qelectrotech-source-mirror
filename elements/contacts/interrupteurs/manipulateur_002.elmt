@@ -1,11 +1,12 @@
-<definition width="100" version="0.3" hotspot_x="20" hotspot_y="20" height="40" type="element" ic="true" orientation="dnnn">
+<definition width="120" version="0.3" hotspot_x="20" hotspot_y="25" height="50" type="element" ic="true" orientation="dnnn">
     <names>
         <name lang="ar">مُناور</name>
+        <name lang="el">Χειριστήριο</name>
         <name lang="en">Manipulator</name>
+        <name lang="it">Manipolatore</name>
         <name lang="fr">Manipulateur</name>
         <name lang="pl">Manipulator dwukierunkowy z powrotem samoczynnym</name>
         <name lang="cs">Manipulátor</name>
-        <name lang="it">Manipolatore</name>
     </names>
     <informations>Author: The QElectroTech team&#xd;
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

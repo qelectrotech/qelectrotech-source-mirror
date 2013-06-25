@@ -1,11 +1,12 @@
-<definition width="60" version="0.3" hotspot_x="33" hotspot_y="30" height="40" type="element" ic="true" orientation="dyyy">
+<definition width="80" version="0.3" hotspot_x="33" hotspot_y="34" height="50" type="element" ic="true" orientation="dyyy">
     <names>
         <name lang="ar">مفتاح دوّار 1-0-2</name>
+        <name lang="el">Διακόπτης 3 θέσεων, 1-0-2 με κλειδί</name>
         <name lang="en">Switch 3 positions including neutral</name>
+        <name lang="it">Selettore a chiave, 3 posizioni 1-0-2</name>
         <name lang="fr">Interrupteur rotatif 1-0-2</name>
         <name lang="pl">Łącznik obrotowy przełączny, otwarty w pozycji pośredniej, uruchamiany kluczykiem</name>
         <name lang="cs">Otočný spínač 1-0-2 - 3 polohy včetně neurální</name>
-        <name lang="it">Selettore a chiave, 3 posizioni 1-0-2</name>
     </names>
     <informations></informations>
     <description>
