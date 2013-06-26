@@ -1,12 +1,13 @@
-<definition width="50" version="0.3" hotspot_x="25" hotspot_y="20" height="50" type="element" orientation="dyyy">
+<definition width="50" version="0.3" hotspot_x="25" hotspot_y="15" height="50" type="element" orientation="dyyy">
     <names>
         <name lang="ar">قاعدة قابس تيّار (قدرة) بغطاء عازل  (EN 60617 11-13-0x)</name>
         <name lang="de">Schutzkontaktsteckdose mit Abdeckung (EN 60617 11-13-0x)</name>
+        <name lang="el">Πρίζα με αγωγό προστασίας και κάλυμμα</name>
         <name lang="en">covered isolated ground receptacle with  (EN 60617 11-13-0x)</name>
+        <name lang="it">Presa di corrente con contatto di protezione e coperchio (EN 60617 11-13-0x)</name>
         <name lang="fr">Socle de prise de courant (puissance) avec volet d'obturation (EN 60617 11-13-0x)</name>
         <name lang="pl">Gniazdo wtykowe ze stykiem ochronnym i z pokrywą</name>
         <name lang="cs">Krytá izolovaná zásuvka (EN 60617 11-13-0x)</name>
-        <name lang="it">Presa di corrente con contatto di protezione e coperchio (EN 60617 11-13-0x)</name>
     </names>
     <informations></informations>
     <description>

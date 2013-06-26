@@ -1,11 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="15" hotspot_y="35" height="90" type="element" orientation="dyyy">
     <names>
         <name lang="ar">صندوق توزيع</name>
+        <name lang="el">Κουτί διανομής</name>
         <name lang="en">Assembly</name>
+        <name lang="it">Scatola di derivazione</name>
         <name lang="fr">Coffret de repartition</name>
         <name lang="pl">Rozdzielnica</name>
         <name lang="cs">Rozvodna</name>
-        <name lang="it">Scatola di derivazione</name>
     </names>
     <informations></informations>
     <description>

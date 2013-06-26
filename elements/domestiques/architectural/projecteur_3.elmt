@@ -1,11 +1,9 @@
 <definition width="50" version="0.3" hotspot_x="20" hotspot_y="30" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">عاكس إضاءة</name>
-        <name lang="de">Punktleuchte
-</name>
+        <name lang="de">Punktleuchte</name>
         <name lang="en">Floodlight</name>
-        <name lang="fr">Projecteur d'illumination
-</name>
+        <name lang="fr">Projecteur d'illumination</name>
         <name lang="pl">Projektor o świetle rozproszonym</name>
         <name lang="cs">Bodová světla</name>
         <name lang="it">Faro a fascio largo</name>

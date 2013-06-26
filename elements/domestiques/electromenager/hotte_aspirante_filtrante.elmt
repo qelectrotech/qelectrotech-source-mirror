@@ -1,11 +1,12 @@
 <definition width="30" version="0.3" hotspot_x="15" hotspot_y="15" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">شفّاط  بمرشّح</name>
+        <name lang="el">Απορροφητήρας</name>
         <name lang="en">Cooker Hood filter</name>
+        <name lang="it">Cappa aspirante/filtrante</name>
         <name lang="fr">Hotte aspirante filtrante</name>
         <name lang="pl">Okap z wentylatorem i filtrem</name>
         <name lang="cs">Odsávač par s filtrem</name>
-        <name lang="it">Cappa aspirante/filtrante</name>
     </names>
     <informations>Author: The QElectroTech team
 License: see http://qelectrotech.org/wiki/doc/elements_license</informations>

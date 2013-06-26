@@ -1,21 +1,12 @@
 <definition width="40" version="0.3" hotspot_x="20" hotspot_y="25" height="30" type="element" orientation="dnny">
     <names>
         <name lang="ar">نقطة إنتظار لجهاز إضاءة حائطي</name>
-        <name lang="de">Leuchtenauslaß auf Putz
-</name>
-        <name lang="en">Lighting outlet on wall
- The symbol is shown with wiring
-from the left
-</name>
-        <name lang="it">Punto luce a parete.
-Il segno è rappresentato con conduttura proveniente da sinistra.
-</name>
-        <name lang="fr">Point d'attente d'appareil d'éclairage en
-applique murale
-</name>
+        <name lang="de">Leuchtenauslaß auf Putz</name>
+        <name lang="en">Lighting outlet on wall The symbol is shown with wiring from the left</name>
+        <name lang="it">Punto luce a parete. Il segno è rappresentato con conduttura proveniente da sinistra.</name>
+        <name lang="fr">Point d'attente d'appareil d'éclairage en applique murale</name>
         <name lang="pl">Kinkiet</name>
-        <name lang="cs">Zásuvka osvětlení na zdi
-Symbol je zobrazen s vedením zleva</name>
+        <name lang="cs">Zásuvka osvětlení na zdi Symbol je zobrazen s vedením zleva</name>
     </names>
     <informations>EN 60617: 11-15-02</informations>
     <description>

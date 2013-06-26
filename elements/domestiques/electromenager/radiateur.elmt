@@ -1,11 +1,12 @@
 <definition width="70" version="0.3" hotspot_x="35" hotspot_y="20" height="40" type="element" orientation="dyyy">
     <names>
         <name lang="ar">مشعاع</name>
+        <name lang="el">Θερμοσυσσωρευτής</name>
         <name lang="en">Radiator</name>
+        <name lang="it">Termoconvettore</name>
         <name lang="fr">Radiateur</name>
         <name lang="pl">Wymiennik ciepła</name>
         <name lang="cs">Topné těleso</name>
-        <name lang="it">Termoconvettore</name>
     </names>
     <informations></informations>
     <description>
