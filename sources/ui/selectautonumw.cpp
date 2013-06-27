@@ -72,7 +72,7 @@ NumerotationContext SelectAutonumW::toNumContext() const {
  *	Action on add_button, add a @NumPartEditor
  */
 void SelectAutonumW::on_add_button_clicked() {
-	applyEnable();
+	applyEnable(false);
 	NumPartEditorW *part = new NumPartEditorW(this);
 	connect (part, SIGNAL(changed()), this, SLOT(applyEnable()));
 	num_part_list_ << part;
@@ -84,13 +84,13 @@ void SelectAutonumW::on_add_button_clicked() {
  *	Action on remove button, remove the last @NumPartEditor
  */
 void SelectAutonumW::on_remove_button_clicked() {
-	applyEnable();
 	//remove if @num_part_list contains more than one item
 	if (num_part_list_.size() > 1) {
 		NumPartEditorW *part = num_part_list_.takeLast();
 		disconnect(part, SIGNAL(changed()), this, SLOT(applyEnable()));
 		delete part;
 	}
+	applyEnable();
 }
 
 /**
@@ -131,5 +131,11 @@ void SelectAutonumW::on_buttonBox_clicked(QAbstractButton *button) {
  * enable/disable the apply button
  */
 void SelectAutonumW::applyEnable(bool b) {
-	ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
+	if (b){
+		bool valid= true;
+		foreach (NumPartEditorW *npe, num_part_list_) if (!npe -> isValid()) valid= false;
+		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(valid);
+	}
+	else
+		ui -> buttonBox -> button(QDialogButtonBox::Apply) -> setEnabled(b);
 }

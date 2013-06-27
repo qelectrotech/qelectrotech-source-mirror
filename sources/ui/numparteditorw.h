@@ -21,10 +21,12 @@ class NumPartEditorW : public QWidget
 
 	enum type {unit,ten,hundred,string,folio};
 	NumerotationContext toNumContext();
+	bool isValid ();
+
 
 	private slots:
 	void on_type_combo_activated(int);
-	void on_value_field_textChanged();
+	void on_value_field_textEdited();
 	void on_increase_spinBox_valueChanged();
 	void setType (NumPartEditorW::type t);
 
@@ -35,6 +37,7 @@ class NumPartEditorW : public QWidget
 	Ui::NumPartEditorW *ui;
 	QValidator *intValidator;
 	QString type_str;
+	type type_;
 
 };
 

@@ -60,11 +60,19 @@ NumerotationContext NumPartEditorW::toNumContext() {
 }
 
 /**
+ * @brief NumPartEditorW::isValid
+ * @return true if value field isn't empty or if type is folio
+ */
+bool NumPartEditorW::isValid() {
+	if (type_ != folio && ui -> value_field -> text().isEmpty()) return false;
+	return true;
+}
+
+/**
  * @brief NumPartEditorW::on_type_combo_activated
  * Action when user change the type comboBox
  */
 void NumPartEditorW::on_type_combo_activated(int index) {
-	emit changed();
 	switch (index) {
 		case unit:
 			setType(unit);
@@ -82,13 +90,14 @@ void NumPartEditorW::on_type_combo_activated(int index) {
 			setType(folio);
 			break;
 	};
+	emit changed();
 }
 
 /**
  * @brief NumPartEditorW::on_value_field_textChanged
  * emit changed when @value_field text changed
  */
-void NumPartEditorW::on_value_field_textChanged() {
+void NumPartEditorW::on_value_field_textEdited() {
 	emit changed();
 }
 
@@ -97,7 +106,7 @@ void NumPartEditorW::on_value_field_textChanged() {
  *emit changed when @increase_spinBox value changed
  */
 void NumPartEditorW::on_increase_spinBox_valueChanged() {
-	emit changed();
+	if (!ui -> value_field -> text().isEmpty()) emit changed();
 }
 
 /**
@@ -108,6 +117,7 @@ void NumPartEditorW::setType(NumPartEditorW::type t) {
 	ui -> type_combo -> setCurrentIndex(t);
 	ui -> value_field -> clear();
 	ui -> increase_spinBox -> setValue(1);
+	type_= t;
 	switch (t) {
 		case unit:
 			ui -> value_field -> setEnabled(true);
