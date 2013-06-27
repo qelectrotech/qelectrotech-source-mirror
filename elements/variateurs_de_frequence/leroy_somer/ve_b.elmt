@@ -1,10 +1,11 @@
 <definition width="340" version="0.3" hotspot_x="25" hotspot_y="15" height="100" type="element" orientation="dyyy">
     <names>
+        <name lang="el">VE/B</name>
         <name lang="en">VE/B</name>
+        <name lang="it">VE/B</name>
         <name lang="fr">VE/B</name>
         <name lang="pl">VE/B</name>
         <name lang="cs">VE/B</name>
-        <name lang="it">VE/B</name>
     </names>
     <informations></informations>
     <description>

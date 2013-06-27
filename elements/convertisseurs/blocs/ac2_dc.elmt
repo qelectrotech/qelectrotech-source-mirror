@@ -1,6 +1,7 @@
 <definition width="50" version="0.3" hotspot_x="25" hotspot_y="25" height="40" type="element" orientation="dnnn">
     <names>
         <name lang="ar">موحد أحادي الوجه -2</name>
+        <name lang="el">Μονοφασικό εναλλασσόμενο &gt; Συνεχές</name>
         <name lang="en">One-phase alternating &gt; Direct</name>
         <name lang="fr">Alternatif monophasé &gt; Continu</name>
         <name lang="pl">Zasilacz jednofazowy</name>

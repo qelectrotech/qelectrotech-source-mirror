@@ -1,6 +1,7 @@
 <definition width="520" version="0.3" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">MOVITRAC B</name>
+        <name lang="el">MOVITRAC B</name>
         <name lang="en">MOVITRAC B</name>
         <name lang="it">MOVITRAC B</name>
         <name lang="fr">MOVITRAC B</name>

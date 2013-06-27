@@ -1,6 +1,7 @@
 <definition width="500" version="0.3" hotspot_x="20" hotspot_y="25" height="100" type="element" orientation="dyyy">
     <names>
         <name lang="ar">ACS300</name>
+        <name lang="el">ACS300</name>
         <name lang="en">ACS300</name>
         <name lang="it">ACS300</name>
         <name lang="fr">ACS300</name>
