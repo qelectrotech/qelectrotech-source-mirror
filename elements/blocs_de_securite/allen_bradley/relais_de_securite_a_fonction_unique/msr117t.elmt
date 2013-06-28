@@ -1,5 +1,6 @@
 <definition width="200" version="0.3" hotspot_x="25" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">MSR117T</name>
         <name lang="en">msr117t</name>
         <name lang="fr">msr117t</name>
         <name lang="pl">MSR117T</name>

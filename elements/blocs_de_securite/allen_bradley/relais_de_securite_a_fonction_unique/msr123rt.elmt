@@ -1,5 +1,6 @@
 <definition width="260" version="0.3" hotspot_x="175" hotspot_y="35" height="80" type="element" ic="true" orientation="dyyy">
     <names>
+        <name lang="ar">MSR123RT</name>
         <name lang="en">msr123rt</name>
         <name lang="fr">msr123rt</name>
         <name lang="pl">MSR123RT</name>
