@@ -1,5 +1,6 @@
 <definition width="240" version="0.3" hotspot_x="15" hotspot_y="35" height="150" type="element" orientation="dyyy">
     <names>
+        <name lang="ar">شاشة LCD 4X16</name>
         <name lang="en">screen LCD 4X16</name>
         <name lang="fr">Afficheur LCD 4X16</name>
         <name lang="pl">Wyświetlacz LCD 4x16</name>
