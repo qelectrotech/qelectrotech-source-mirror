@@ -71,6 +71,11 @@ HotspotEditor::HotspotEditor(QWidget *parent) :
 	
 	hotspot_sync = new QCheckBox(tr("D\351placer l'\351l\351ment avec le hotspot"));
 	hotspot_sync -> setChecked(true);
+	// TODO setvisible to disable checkbox hotspot_sync
+	// one for remove bug in element editor after un move hotspot_sync, selection is not focused on primitives
+	// two is not specialy used
+	// and for future auto boudinrect hotspot
+	hotspot_sync -> setVisible(false);
 	
 	connect(sb_width,     SIGNAL(valueChanged(int)), this, SLOT(updateHotspotLimits()));
 	connect(sb_height,    SIGNAL(valueChanged(int)), this, SLOT(updateHotspotLimits()));
