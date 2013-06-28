@@ -5,6 +5,11 @@
 #include <QValidator>
 #include "numerotationcontext.h"
 
+/**
+ *This class represent a single part num widget. By this widget, we can define and edit
+ *how the num auto must work .
+ *This widget is called by selectautonumw.
+ */
 namespace Ui {
 	class NumPartEditorW;
 }
@@ -28,7 +33,7 @@ class NumPartEditorW : public QWidget
 	void on_type_combo_activated(int);
 	void on_value_field_textEdited();
 	void on_increase_spinBox_valueChanged();
-	void setType (NumPartEditorW::type t);
+	void setType (NumPartEditorW::type t, bool=false);
 
 	signals:
 	void changed ();
@@ -36,7 +41,6 @@ class NumPartEditorW : public QWidget
 	private:
 	Ui::NumPartEditorW *ui;
 	QValidator *intValidator;
-	QString type_str;
 	type type_;
 
 };

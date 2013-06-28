@@ -11,7 +11,7 @@ NumPartEditorW::NumPartEditorW(QWidget *parent) :
 	intValidator (new QIntValidator(0,99999,this))
 {
 	ui -> setupUi(this);
-	setType(NumPartEditorW::unit);
+	setType(NumPartEditorW::unit, true);
 }
 
 /**
@@ -26,13 +26,13 @@ NumPartEditorW::NumPartEditorW (NumerotationContext &context, int i, QWidget *pa
 	ui -> setupUi(this);
 
 	//if @context contains nothing build with default value
-	if(context.size()==0) setType(NumPartEditorW::unit);
+	if(context.size()==0) setType(NumPartEditorW::unit, true);
 
 	else {
 		QStringList strl = context.itemAt(i);
-		if (strl.at(0)=="unit") setType(NumPartEditorW::unit);
-		else if (strl.at(0)=="ten") setType(NumPartEditorW::ten);
-		else if (strl.at(0)=="hundred") setType(NumPartEditorW::hundred);
+		if (strl.at(0)=="unit") setType(NumPartEditorW::unit, true);
+		else if (strl.at(0)=="ten") setType(NumPartEditorW::ten, true);
+		else if (strl.at(0)=="hundred") setType(NumPartEditorW::hundred, true);
 		else if (strl.at(0)=="string") setType(NumPartEditorW::string);
 		else if (strl.at(0)== "folio") setType(NumPartEditorW::folio);
 		ui -> value_field -> setText(strl.at(1));
@@ -55,6 +55,24 @@ NumPartEditorW::~NumPartEditorW()
  */
 NumerotationContext NumPartEditorW::toNumContext() {
 	NumerotationContext nc;
+	QString type_str;
+	switch (type_) {
+		case unit:
+			type_str = "unit";
+			break;
+		case ten:
+			type_str = "ten";
+			break;
+		case hundred:
+			type_str = "hundred";
+			break;
+		case string:
+			type_str = "string";
+			break;
+		case folio:
+			type_str = "folio";
+			break;
+	}
 	nc.addValue(type_str, ui -> value_field -> displayText(), ui -> increase_spinBox -> value());
 	return nc;
 }
@@ -103,7 +121,7 @@ void NumPartEditorW::on_value_field_textEdited() {
 
 /**
  * @brief NumPartEditorW::on_increase_spinBox_valueChanged
- *emit changed when @increase_spinBox value changed
+ * emit changed when @increase_spinBox value changed
  */
 void NumPartEditorW::on_increase_spinBox_valueChanged() {
 	if (!ui -> value_field -> text().isEmpty()) emit changed();
@@ -112,41 +130,33 @@ void NumPartEditorW::on_increase_spinBox_valueChanged() {
 /**
  * @brief NumPartEditorW::setType
  * Set good behavior by type @t
+ * @param t, type used
+ * @param fnum, force the behavior of numeric type
  */
-void NumPartEditorW::setType(NumPartEditorW::type t) {
+void NumPartEditorW::setType(NumPartEditorW::type t, bool fnum) {
 	ui -> type_combo -> setCurrentIndex(t);
-	ui -> value_field -> clear();
-	ui -> increase_spinBox -> setValue(1);
-	type_= t;
-	switch (t) {
-		case unit:
-			ui -> value_field -> setEnabled(true);
-			ui ->value_field -> setValidator(intValidator);
-			ui -> increase_spinBox -> setEnabled(true);
-			type_str = "unit";
-			break;
-		case ten:
-			ui -> value_field -> setEnabled(true);
-			ui ->value_field -> setValidator(intValidator);
-			ui -> increase_spinBox -> setEnabled(true);
-			type_str = "ten";
-			break;
-		case hundred:
-			ui -> value_field -> setEnabled(true);
-			ui ->value_field -> setValidator(intValidator);
-			ui -> increase_spinBox -> setEnabled(true);
-			type_str = "hundred";
-			break;
-		case string:
+
+	//if @t is a numeric type and preview type @type_ isn't a numeric type
+	//or @fnum is true, we set numeric behavior
+	if ( ((t==unit || t==ten || t==hundred) && (type_==string || type_==folio)) || fnum) {
+		ui -> value_field -> clear();
+		ui -> value_field -> setEnabled(true);
+		ui -> value_field -> setValidator(intValidator);
+		ui -> increase_spinBox -> setEnabled(true);
+		ui -> increase_spinBox -> setValue(1);
+	}
+	//@t isn't a numeric type
+	else if (t==string || t==folio) {
+		ui -> value_field -> clear();
+		ui -> increase_spinBox -> setDisabled(true);
+		if (t==string) {
 			ui -> value_field -> setValidator(0);
 			ui -> value_field -> setEnabled(true);
-			ui -> increase_spinBox -> setDisabled(true);
-			type_str = "string";
-			break;
-		case folio:
+		}
+		else if (t==folio) {
 			ui -> value_field -> setDisabled(true);
 			ui -> increase_spinBox -> setDisabled(true);
-			type_str = "folio";
-			break;
-	};
+		}
+	}
+	type_= t;
 }
