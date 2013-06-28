@@ -1,5 +1,6 @@
 <definition width="50" version="0.3" hotspot_x="30" hotspot_y="25" height="50" type="element" orientation="dnny">
     <names>
+        <name lang="ar">مرحّل مُستقطب</name>
         <name lang="en">Polarized relay</name>
         <name lang="fr">Relais polarisé</name>
         <name lang="pl">Przekaźnik spolaryzowany</name>
